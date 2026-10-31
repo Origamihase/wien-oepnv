@@ -1469,10 +1469,13 @@ Bedarf), und das API-Limit darf nicht überschritten werden.
   Englisch, F1 und F3 nur Deutsch, F1 mit zwei Meldungen, die gleichzeitig
   im Feed standen). Alles andere steht als „Nicht belegt“ im Bericht, zählt
   aber nicht (Michael, 2026-10-30: „Falsche Funde stören mich am meisten“).
-* Gratis-Kontingent: ein Prüflauf ist eine Anfrage, ohne neuen Versuch;
-  höchstens 10 Anfragen am Tag (Tag ab 0:00 Uhr Pazifikzeit), gezählt vom
-  Job `gate` aus den gestarteten Prüfläufen, die letzte bleibt dem täglichen
-  Lauf; die Eingabe ist auf 450.000 Zeichen begrenzt. Der Schlüssel
+* Gratis-Kontingent: ein Prüflauf sendet eine Anfrage; erschöpftes
+  Kontingent (429) wird nie wiederholt, nur ein überlastetes Modell (5xx)
+  nach einer und drei Minuten, höchstens dreimal. Höchstens 10 Anfragen am
+  Tag (Tag ab 0:00 Uhr Pazifikzeit): der Job `gate` zählt sie aus der
+  Anmerkung „Gemini-Anfragen“ jedes Prüflaufs und gibt jedem neuen Prüflauf
+  nur seinen Anteil am Rest; die letzte bleibt dem täglichen Lauf. Die
+  Eingabe ist auf 450.000 Zeichen begrenzt. Der Schlüssel
   `GEMINI_API_KEY` gehört zu einem Projekt ohne Abrechnung.
 * Der Bericht `docs/archive/audits/ki-waechter-YYYY-MM-DD.md` geht über
   `publish_to_main.sh` nach `main`; belegte Funde öffnen ein Issue (Label

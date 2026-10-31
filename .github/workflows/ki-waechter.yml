@@ -67,11 +67,15 @@ env:
   # First Vienna hour of the day in which the audit runs.
   KI_WAECHTER_START_HOUR: "15"
   # Gemini requests per day at most (free tier, day from 0:00 Pacific
-  # time). Each audit job sends exactly one; the gate counts the jobs of
-  # the day and runs nothing that would go beyond. The daily audit needs 1
-  # and always finds it, a pull request replay needs 3. Far below the
-  # free-tier daily limit (Michael 2026-10-31: "sorge auch hier dafür, dass
-  # das API-Limit nicht überschritten wird").
+  # time). The gate counts the requests of the day (annotation
+  # "Gemini-Anfragen" of every audit) and gives each audit of this run its
+  # share, at most 3; an audit sends one and repeats only while the model is
+  # overloaded. The last request of the day stays free for the daily audit.
+  # The free tier of Gemini 3.8 Flash allows 20 requests a day, 5 a minute
+  # and 250,000 input tokens a minute (AI Studio, 2026-10-31); rejected
+  # requests (503) count too.
+  # Michael 2026-10-31: "sorge auch hier dafür, dass das API-Limit nicht
+  # überschritten wird".
   KI_WAECHTER_MAX_REQUESTS: "10"
 
 jobs:
@@ -85,6 +89,7 @@ jobs:
       run: ${{ steps.decide.outputs.run }}
       revs: ${{ steps.decide.outputs.revs }}
       publish: ${{ steps.decide.outputs.publish }}
+      per_job: ${{ steps.decide.outputs.per_job }}
     steps:
       - name: Decide whether to audit
         id: decide
@@ -97,25 +102,39 @@ jobs:
           OWNER_REPO: ${{ github.repository }}
           PR_HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
           RUN_ID: ${{ github.run_id }}
+          # Most requests one audit may send (scripts/ki_waechter.py, MAX_REQUESTS_PER_AUDIT).
+          MAX_PER_AUDIT: "3"
         shell: bash
         run: |
           set -euo pipefail
           out() { echo "$1" >> "$GITHUB_OUTPUT"; }
           note() { echo "$1"; echo "$1" >> "$GITHUB_STEP_SUMMARY"; }
-          # Requests already used today. Every audit job sends exactly one
-          # request (no retries), so started audit jobs of this workflow
-          # since midnight Pacific time (when the free-tier day of the
-          # Gemini API resets) count; this run's own jobs are not started yet.
+          # Gemini requests already sent today, since midnight Pacific time
+          # (when the free-tier day of the Gemini API resets). Every audit
+          # job leaves the annotation "Gemini-Anfragen" with its count; a
+          # job still running counts with the most it may send, a finished
+          # one without the annotation with one request.
           used_today() {
-            local midnight since ids id n used=0
+            local midnight since ids id job status conclusion n used=0
             midnight="$(TZ=America/Los_Angeles date -d 'today 00:00' +%s)"
             since="$(date -u -d "@${midnight}" +%Y-%m-%dT%H:%M:%SZ)"
             ids="$(gh api "repos/${OWNER_REPO}/actions/workflows/ki-waechter.yml/runs?created=%3E%3D${since}&per_page=100" \
                      --jq ".workflow_runs[] | select(.id != ${RUN_ID}) | .id")"
             for id in ${ids}; do
-              n="$(gh api "repos/${OWNER_REPO}/actions/runs/${id}/jobs?per_page=100" \
-                     --jq '[.jobs[] | select(.name | startswith("audit")) | select(.conclusion != "skipped")] | length')"
-              used=$(( used + n ))
+              while read -r job status conclusion; do
+                [[ -n "${job}" ]] || continue
+                if [[ "${status}" != "completed" || "${conclusion}" == "cancelled" ]]; then
+                  n="${MAX_PER_AUDIT}"
+                else
+                  n="$(gh api "repos/${OWNER_REPO}/check-runs/${job}/annotations?per_page=100" \
+                         --jq '[.[] | select(.title == "Gemini-Anfragen") | .message | tonumber] | add // empty')"
+                  n="${n:-1}"
+                fi
+                used=$(( used + n ))
+              done < <(gh api "repos/${OWNER_REPO}/actions/runs/${id}/jobs?per_page=100" \
+                         --jq '.jobs[] | select(.name | startswith("audit")) | .id as $id
+                               | .steps[]? | select(.name == "Gemini reads and compares" and .conclusion != "skipped")
+                               | "\($id) \(.status) \(.conclusion)"')
             done
             echo "${used}"
           }
@@ -125,7 +144,7 @@ jobs:
               if [[ "${PR_HEAD_REPO}" != "${OWNER_REPO}" ]]; then out "run=false"; exit 0; fi
               out "publish=false"
               out 'revs=["001e47c665cec9f2d1d0c0c0d912230bb7f3795d","9e60b8de9dce438906b257e42a8b524e4f191f67","HEAD"]'
-              need=3; limit=$(( KI_WAECHTER_MAX_REQUESTS - 1 )) ;;
+              jobs=3; limit=$(( KI_WAECHTER_MAX_REQUESTS - 1 )) ;;
             workflow_dispatch)
               if [[ -z "${REV_INPUT}" ]]; then
                 out "publish=true"; out 'revs=["HEAD"]'
@@ -134,7 +153,7 @@ jobs:
               else
                 echo "::error title=KI-Wächter::rev muss ein Commit-Hash sein"; exit 1
               fi
-              need=1; limit=$(( KI_WAECHTER_MAX_REQUESTS - 1 )) ;;
+              jobs=1; limit=$(( KI_WAECHTER_MAX_REQUESTS - 1 )) ;;
             *)
               out "publish=true"; out 'revs=["HEAD"]'
               if [[ "${CYCLE_CONCLUSION}" != "success" || "${CYCLE_BRANCH}" != "main" ]]; then
@@ -153,17 +172,20 @@ jobs:
               fi
               # The daily audit may use the last request of the budget,
               # pull requests and manual runs leave it free.
-              need=1; limit="${KI_WAECHTER_MAX_REQUESTS}" ;;
+              jobs=1; limit="${KI_WAECHTER_MAX_REQUESTS}" ;;
           esac
           used="$(used_today)"
-          if (( used + need > limit )); then
-            note "KI-Wächter: ${used} von ${KI_WAECHTER_MAX_REQUESTS} Anfragen des Tages verbraucht, dieser Lauf bräuchte ${need}. Kein Aufruf, damit das Gratis-Kontingent nicht überschritten wird (der Tag des Kontingents beginnt um 0:00 Uhr Pazifikzeit, in Wien meist 9:00 Uhr)."
+          per_job=$(( (limit - used) / jobs ))
+          if (( per_job > MAX_PER_AUDIT )); then per_job="${MAX_PER_AUDIT}"; fi
+          if (( per_job < 1 )); then
+            note "KI-Wächter: ${used} von ${KI_WAECHTER_MAX_REQUESTS} Gemini-Anfragen des Tages verbraucht. Kein Aufruf, damit das Gratis-Kontingent nicht überschritten wird (der Tag des Kontingents beginnt um 0:00 Uhr Pazifikzeit, in Wien meist 9:00 Uhr)."
             if [[ "$EVENT" != "pull_request" ]]; then
               echo "::warning title=KI-Wächter::Tagesbudget der Gemini-Anfragen erreicht (${used}/${KI_WAECHTER_MAX_REQUESTS})"
             fi
             out "run=false"; exit 0
           fi
-          note "KI-Wächter: ${used} von ${KI_WAECHTER_MAX_REQUESTS} Anfragen des Tages verbraucht, dieser Lauf sendet ${need}."
+          note "KI-Wächter: ${used} von ${KI_WAECHTER_MAX_REQUESTS} Gemini-Anfragen des Tages verbraucht; dieser Lauf darf je Prüfung ${per_job} senden (eine, weitere nur bei Überlastung des Modells)."
+          out "per_job=${per_job}"
           out "run=true"
 
   audit:
@@ -236,8 +258,9 @@ jobs:
         timeout-minutes: 15
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          MAX_REQUESTS: ${{ needs.gate.outputs.per_job }}
         shell: bash
-        run: python scripts/ki_waechter.py ask --dir "${WORK}" --model "${KI_WAECHTER_MODEL}"
+        run: python scripts/ki_waechter.py ask --dir "${WORK}" --model "${KI_WAECHTER_MODEL}" --max-requests "${MAX_REQUESTS}"
 
       - name: Check every finding and write the audit file
         id: verify

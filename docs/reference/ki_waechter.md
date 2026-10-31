@@ -74,18 +74,26 @@ geprüften Meldungen schreibt das Skript, nicht das Modell.
 
 Michael, 2026-10-31: „Bitte sorge auch hier dafür, dass das API-Limit nicht
 überschritten wird.“ Der Schlüssel `GEMINI_API_KEY` gehört zu einem Projekt
-ohne Abrechnung, Kosten können also nicht entstehen; trotzdem bleibt der
-Wächter weit unter den Grenzen des Gratis-Kontingents:
+ohne Abrechnung, Kosten können also nicht entstehen. Die Grenzen für
+Gemini 3.8 Flash in diesem Projekt (AI Studio, 31.10.2026): 20 Anfragen am
+Tag, 5 pro Minute, 250.000 Eingabetokens pro Minute. Auch abgelehnte
+Anfragen (503) zählen. Der Wächter nutzt höchstens die Hälfte:
 
-- Ein Prüflauf ist genau eine Anfrage. Es gibt keinen neuen Versuch, weder im
-  Skript noch in der HTTP-Sitzung; eine Antwort 429 (Kontingent erschöpft)
-  macht den Lauf rot.
+- Ein Prüflauf sendet eine Anfrage. Eine Antwort 429 (Kontingent erschöpft)
+  wird nie wiederholt und macht den Lauf rot. Nur wenn das Modell überlastet
+  ist (500, 502, 503, 504; am 31.10.2026 bekam jede erste Anfrage „503 … high
+  demand“), fragt er nach einer und nach drei Minuten noch einmal, höchstens
+  drei Anfragen je Prüflauf und nie mehr als sein Anteil am Tagesbudget. Die
+  HTTP-Sitzung selbst wiederholt nichts.
 - Höchstens `KI_WAECHTER_MAX_REQUESTS` (10) Anfragen am Tag. Der Tag des
-  Kontingents beginnt um 0:00 Uhr Pazifikzeit, in Wien meist 9:00 Uhr. Der Job
-  `gate` zählt die gestarteten Prüfläufe dieses Workflows seit diesem
-  Zeitpunkt und startet keinen, der darüber ginge. Pull Requests (drei
-  Anfragen) und Läufe von Hand (eine) dürfen bis 9; die letzte Anfrage bleibt
-  dem täglichen Lauf.
+  Kontingents beginnt um 0:00 Uhr Pazifikzeit, in Wien meist 9:00 Uhr. Jeder
+  Prüflauf hinterlässt die Anmerkung „Gemini-Anfragen“ mit seiner Zahl. Der
+  Job `gate` zählt sie für alle Prüfläufe dieses Workflows seit diesem
+  Zeitpunkt (ein noch laufender zählt mit drei, ein beendeter ohne Anmerkung
+  mit einer) und gibt jedem Prüflauf des neuen Laufs den Rest geteilt durch
+  ihre Zahl, höchstens drei; bleibt keiner, startet er nichts. Pull Requests
+  und Läufe von Hand rechnen nur bis 9; die letzte Anfrage bleibt dem
+  täglichen Lauf.
 - Der tägliche Lauf startet am selben Tag nicht noch einmal von selbst, auch
   nicht nach einem Fehler.
 - Die Eingabe ist auf 450.000 Zeichen begrenzt (etwa 130.000 Tokens). Eine

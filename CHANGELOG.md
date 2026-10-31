@@ -28,8 +28,10 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
   F1 bis F6 wie im Jules-Prompt vom 30.10.) in einer Anfrage ohne Werkzeuge
   an Gemini und lässt einen Fund nur gelten, wenn seine Zitate wörtlich in
   Feed und Quelle stehen (Doppelungen nur bei gleichzeitig sichtbaren
-  Meldungen). Höchstens 10 Anfragen am Tag, keine Wiederholung, Eingabe
-  höchstens 450.000 Zeichen. Bericht
+  Meldungen). Höchstens 10 Anfragen am Tag, gezählt aus den Läufen selbst;
+  kein neuer Versuch bei erschöpftem Kontingent, bei überlastetem Modell
+  höchstens zwei innerhalb des Tagesbudgets; Eingabe höchstens 450.000
+  Zeichen. Bericht
   `docs/archive/audits/ki-waechter-YYYY-MM-DD.md`, belegte Funde als Issue
   (Label `ki-waechter`), ein Lauf, der nicht prüfen konnte, macht den
   Health check rot (`Nebenschritte`, `data/side_steps/ki-waechter.json`,

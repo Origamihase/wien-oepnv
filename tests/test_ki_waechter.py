@@ -301,7 +301,7 @@ def test_gemini_gets_one_request_with_the_key_in_a_header(monkeypatch: pytest.Mo
     answer = kw.ask_gemini("Prompt", "gemini-3.8-flash", "SECRET-KEY")
     assert answer.ok and answer.text == '{"funde": []}'  # thought parts are not the answer
     assert answer.tokens == {"promptTokenCount": 30000, "candidatesTokenCount": 400, "thoughtsTokenCount": 9000}
-    assert len(calls) == 1
+    assert len(calls) == 1 and answer.requests == 1
     call = calls[0]
     assert call["url"].endswith("/models/gemini-3.8-flash:generateContent")
     assert "SECRET-KEY" not in call["url"] and call["headers"]["x-goog-api-key"] == "SECRET-KEY"
@@ -318,10 +318,40 @@ def test_the_limit_is_never_retried_and_a_too_large_input_never_sent(monkeypatch
         return _Response(429, {"error": {"message": "Quota exceeded"}})
 
     monkeypatch.setattr(kw, "request_safe", fake_request)
-    answer = kw.ask_gemini("Prompt", "gemini-3.8-flash", "k")
-    assert not answer.ok and "Kontingent erschöpft, kein neuer Versuch" in answer.error and len(calls) == 1
-    big = kw.ask_gemini("x" * (kw.MAX_PROMPT_CHARS + 1), "gemini-3.8-flash", "k")
-    assert not big.ok and "nicht gesendet" in big.error and len(calls) == 1
+    answer = kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=3, sleep=lambda s: None)
+    assert not answer.ok and "Kontingent erschöpft, kein neuer Versuch" in answer.error
+    assert len(calls) == 1 and answer.requests == 1
+    big = kw.ask_gemini("x" * (kw.MAX_PROMPT_CHARS + 1), "gemini-3.8-flash", "k", max_requests=3)
+    assert not big.ok and "nicht gesendet" in big.error and len(calls) == 1 and big.requests == 0
+
+
+def _overloaded_then(monkeypatch: pytest.MonkeyPatch, replies: list[_Response]) -> list[str]:
+    calls: list[str] = []
+
+    def fake_request(session: object, url: str, **kwargs: Any) -> _Response:
+        calls.append(url)
+        return replies.pop(0)
+
+    monkeypatch.setattr(kw, "request_safe", fake_request)
+    return calls
+
+
+def test_an_overloaded_model_is_asked_again_within_the_share(monkeypatch: pytest.MonkeyPatch) -> None:
+    busy = {"error": {"message": "This model is currently experiencing high demand."}}
+    calls = _overloaded_then(monkeypatch, [_Response(503, busy), _Response(503, busy), _Response(200, _ok_payload("{}"))])
+    waits: list[float] = []
+    answer = kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=3, sleep=waits.append)
+    assert answer.ok and answer.requests == 3 and len(calls) == 3 and waits == [60, 180]
+    # A share of two ends after the second overloaded answer.
+    calls = _overloaded_then(monkeypatch, [_Response(503, busy), _Response(503, busy), _Response(200, _ok_payload("{}"))])
+    answer = kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=2, sleep=lambda s: None)
+    assert not answer.ok and "HTTP 503" in answer.error and answer.requests == 2 and len(calls) == 2
+    # Never more than three, whatever the share; no share, no request.
+    calls = _overloaded_then(monkeypatch, [_Response(503, busy)] * 5)
+    assert kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=9, sleep=lambda s: None).requests == 3
+    calls = _overloaded_then(monkeypatch, [])
+    none = kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=0)
+    assert not none.ok and none.requests == 0 and calls == []
 
 
 @pytest.mark.parametrize(
@@ -342,7 +372,7 @@ def test_ask_without_a_key_fails_and_says_so(tmp_path: Path, monkeypatch: pytest
     monkeypatch.delenv("GEMINI_API_KEY", raising=False)
     assert kw.main(["ask", "--dir", str(tmp_path), "--model", "gemini-3.8-flash"]) == 1
     answer = json.loads((tmp_path / "antwort.json").read_text(encoding="utf-8"))
-    assert answer["ok"] is False and "GEMINI_API_KEY ist leer" in answer["error"]
+    assert answer["ok"] is False and "GEMINI_API_KEY ist leer" in answer["error"] and answer["requests"] == 0
 
 
 def test_the_prompt_ends_with_the_input() -> None:
@@ -360,6 +390,7 @@ def test_workflow_gives_the_model_no_tools_and_the_key_to_one_step() -> None:
     ask = steps["Gemini reads and compares"]
     assert "ki_waechter.py ask" in ask["run"]
     assert text.count("secrets.GEMINI_API_KEY") == 1 and "GEMINI_API_KEY" in ask["env"]
+    assert "--max-requests" in ask["run"] and ask["env"]["MAX_REQUESTS"] == "${{ needs.gate.outputs.per_job }}"
     assert "CLAUDE_CODE_OAUTH_TOKEN" not in text and "claude" not in text.lower()
     assert doc["permissions"] == {"contents": "read"}
     prepare = steps["Prepare the input"]["run"]
@@ -380,18 +411,28 @@ def test_prompt_names_its_input_and_not_the_backtest_cases() -> None:
 # --- the daily request budget of the gate ------------------------------------------
 
 
-def _run_gate(tmp_path: Path, event: str, used: int, extra: dict[str, str] | None = None) -> dict[str, str]:
-    """Run the gate script with a fake ``gh``: one earlier run today with ``used`` audit jobs."""
+def _run_gate(tmp_path: Path, event: str, jobs: list[str], extra: dict[str, str] | None = None) -> dict[str, str]:
+    """Run the gate script with a fake ``gh``: one earlier run today with these audit jobs.
+
+    Each job is "<id> <status> <conclusion> <annotation>"; the annotation
+    "-" means the job left none.
+    """
     doc = yaml.safe_load((REPO / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8"))
     script = doc["jobs"]["gate"]["steps"][0]["run"]
     fake = tmp_path / "bin"
     fake.mkdir(parents=True)
+    lines = "\n".join(" ".join(j.split()[:3]) for j in jobs)
+    notes = "".join(
+        f'  *"/check-runs/{j.split()[0]}/annotations"*) echo "{"" if j.split()[3] == "-" else j.split()[3]}" ;;\n'
+        for j in jobs
+    )
     (fake / "gh").write_text(
         "#!/bin/bash\n"
         'case "$2" in\n'
         '  *"/runs?created="*) echo 11 ;;\n'
-        f'  *"/jobs?"*) echo {used} ;;\n'
-        "  *) exit 1 ;;\n"
+        f'  *"/runs/11/jobs?"*) printf "{lines}\\n" ;;\n'
+        + notes
+        + "  *) exit 1 ;;\n"
         "esac\n",
         encoding="utf-8",
     )
@@ -407,6 +448,7 @@ def _run_gate(tmp_path: Path, event: str, used: int, extra: dict[str, str] | Non
         "RUN_ID": "99",
         "REV_INPUT": "",
         "KI_WAECHTER_MAX_REQUESTS": str(doc["env"]["KI_WAECHTER_MAX_REQUESTS"]),
+        "MAX_PER_AUDIT": doc["jobs"]["gate"]["steps"][0]["env"]["MAX_PER_AUDIT"],
         "KI_WAECHTER_START_HOUR": "0",
         **(extra or {}),
     }
@@ -414,19 +456,38 @@ def _run_gate(tmp_path: Path, event: str, used: int, extra: dict[str, str] | Non
     return dict(line.split("=", 1) for line in output.read_text(encoding="utf-8").splitlines())
 
 
-def test_the_budget_stops_a_replay_before_the_free_limit(tmp_path: Path) -> None:
+def test_the_gate_counts_the_requests_of_the_day() -> None:
     doc = yaml.safe_load((REPO / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8"))
     assert doc["env"]["KI_WAECHTER_MAX_REQUESTS"] == "10"
+    assert doc["jobs"]["gate"]["steps"][0]["env"]["MAX_PER_AUDIT"] == str(kw.MAX_REQUESTS_PER_AUDIT)
     assert doc["jobs"]["gate"]["permissions"] == {"actions": "read", "contents": "read"}
-    assert _run_gate(tmp_path / "a", "pull_request", 6)["run"] == "true"  # 6 + 3 <= 9
-    assert _run_gate(tmp_path / "b", "pull_request", 7)["run"] == "false"  # 7 + 3 > 9
-    assert _run_gate(tmp_path / "c", "workflow_dispatch", 8)["run"] == "true"  # 8 + 1 <= 9
-    assert _run_gate(tmp_path / "d", "workflow_dispatch", 9)["run"] == "false"  # 9 + 1 > 9
-    assert "Kein Aufruf" in (tmp_path / "d" / "summary").read_text(encoding="utf-8")
 
 
-def test_the_daily_audit_keeps_its_last_request(tmp_path: Path) -> None:
+@pytest.mark.parametrize(
+    ("event", "jobs", "per_job"),
+    [
+        # Annotations 1 + 2 + 1 = 4 used; a replay gets (9 - 4) // 3 = 1 per audit.
+        ("pull_request", ["1 completed success 1", "2 completed failure 2", "3 completed success 1"], "1"),
+        # 4 + one still running (3) = 7; (9 - 7) // 3 = 0: no replay.
+        ("pull_request", ["1 completed success 1", "2 completed failure 2", "3 completed success 1",
+                          "4 in_progress null -"], None),
+        # A finished audit without annotation counts one, a cancelled one three: 4 used.
+        ("workflow_dispatch", ["1 completed success -", "2 cancelled cancelled -"], "3"),
+        # 8 used: a manual run still gets one, the daily audit keeps the last.
+        ("workflow_dispatch", ["1 completed success 3", "2 completed success 3", "3 completed success 2"], "1"),
+        ("workflow_dispatch", ["1 completed success 3", "2 completed success 3", "3 completed success 3"], None),
+        ("workflow_run", ["1 completed success 3", "2 completed success 3", "3 completed success 3"], "1"),
+        ("workflow_run", ["1 completed success 3", "2 completed success 3", "3 completed success 3",
+                          "4 completed success 1"], None),
+    ],
+)
+def test_each_audit_gets_its_share_of_the_daily_budget(
+    tmp_path: Path, event: str, jobs: list[str], per_job: str | None
+) -> None:
     cycle = {"CYCLE_CONCLUSION": "success", "CYCLE_BRANCH": "main"}
-    out = _run_gate(tmp_path / "a", "workflow_run", 9, cycle)  # replays stop at 9, the daily audit not
-    assert out["run"] == "true" and out["publish"] == "true"
-    assert _run_gate(tmp_path / "b", "workflow_run", 10, cycle)["run"] == "false"
+    out = _run_gate(tmp_path, event, jobs, cycle)
+    if per_job is None:
+        assert out["run"] == "false"
+        assert "Kein Aufruf" in (tmp_path / "summary").read_text(encoding="utf-8")
+    else:
+        assert out["run"] == "true" and out["per_job"] == per_job

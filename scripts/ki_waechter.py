@@ -108,14 +108,21 @@ GEMINI_KEY_ENV = "GEMINI_API_KEY"
 # One answer of a thinking model can take minutes.
 GEMINI_TIMEOUT = (10.0, 600.0)
 # Free-tier limits (Michael 2026-10-31: "sorge auch hier dafür, dass das
-# API-Limit nicht überschritten wird"). One audit is exactly one request: no
-# retry inside a run, a failed run is red and the gate of
-# ``ki-waechter.yml`` counts every started audit against the daily budget
-# ``KI_WAECHTER_MAX_REQUESTS``. The input is capped below the token-per-minute
-# limit; a larger input is not sent (red run) instead of being cut silently.
+# API-Limit nicht überschritten wird"). A quota answer (429) is never
+# repeated. Only an overloaded model (500, 502, 503, 504; on 2026-10-31 every
+# first request got "503 ... high demand") is asked again after one and after
+# three minutes, and only as often as ``--max-requests`` allows: the gate of
+# ``ki-waechter.yml`` hands each audit its share of the daily budget
+# ``KI_WAECHTER_MAX_REQUESTS`` and counts the requests of the day from the
+# annotation ``Gemini-Anfragen`` every audit leaves. The input is capped below
+# the token-per-minute limit; a larger input is not sent (red run) instead of
+# being cut silently.
 # German feed text runs at about 3.5 characters per token; 24 hours of
 # 2026-10-31 were 94,000 characters (about 30,000 tokens).
 MAX_PROMPT_CHARS = 450_000
+MAX_REQUESTS_PER_AUDIT = 3
+OVERLOAD_WAIT_S = (60, 180)
+OVERLOAD_STATUS = frozenset({500, 502, 503, 504})
 MAX_ANSWER_BYTES = 2_000_000
 # The answer's shape, enforced by the API (structured output). The script
 # still checks every field: the schema shapes the answer, it proves nothing.
@@ -623,6 +630,7 @@ class Answer:
     error: str = ""
     tokens: dict[str, int] = field(default_factory=dict)
     seconds: float = 0.0
+    requests: int = 0
 
 
 def build_prompt(input_text: str, prompt_template: str) -> str:
@@ -674,8 +682,17 @@ def gemini_answer(payload: Mapping[str, Any], model: str) -> Answer:
     return Answer(True, model, text=text, tokens=tokens)
 
 
-def ask_gemini(prompt: str, model: str, key: str) -> Answer:
-    """Send the prompt once; the key travels in a header, never in the URL or a log line."""
+def ask_gemini(
+    prompt: str,
+    model: str,
+    key: str,
+    max_requests: int = 1,
+    sleep: Callable[[float], None] = time.sleep,
+) -> Answer:
+    """Send the prompt; again only while the model is overloaded and ``max_requests`` allows.
+
+    The key travels in a header, never in the URL or a log line.
+    """
     if not re.fullmatch(r"[a-z0-9.-]{3,60}", model):
         raise ValueError("ungültiger Modellname")
     if len(prompt) > MAX_PROMPT_CHARS:
@@ -686,16 +703,35 @@ def ask_gemini(prompt: str, model: str, key: str) -> Answer:
     body = json.dumps(gemini_request(prompt), ensure_ascii=True, allow_nan=False)
     headers = {"Content-Type": "application/json", "x-goog-api-key": key}
     started = time.monotonic()
-    # total=0: the session itself never repeats the request.
+    limit = max(0, min(max_requests, MAX_REQUESTS_PER_AUDIT))
+    sent = 0
+    answer = Answer(False, model, error="kein Anfragebudget")
+    # total=0: the session itself never repeats a request; this loop counts every one.
     with session_with_retries("wien-oepnv-ki-waechter", timeout=GEMINI_TIMEOUT, total=0) as session:
-        try:
-            response = request_safe(
-                session, url, method="POST", data=body, headers=headers,
-                timeout=GEMINI_TIMEOUT, max_bytes=MAX_ANSWER_BYTES,
-                allowed_content_types=("application/json",), raise_for_status=False,
-            )
-        except (requests.RequestException, ValueError) as exc:
-            return Answer(False, model, error=f"Gemini nicht erreichbar ({type(exc).__name__})")
+        while sent < limit:
+            if sent:
+                wait = OVERLOAD_WAIT_S[min(sent, len(OVERLOAD_WAIT_S)) - 1]
+                print(f"Gemini überlastet, neuer Versuch in {wait} s ({sent + 1}. von höchstens {limit} Anfragen)")
+                sleep(wait)
+            sent += 1
+            try:
+                response = request_safe(
+                    session, url, method="POST", data=body, headers=headers,
+                    timeout=GEMINI_TIMEOUT, max_bytes=MAX_ANSWER_BYTES,
+                    allowed_content_types=("application/json",), raise_for_status=False,
+                )
+            except (requests.RequestException, ValueError) as exc:
+                answer = Answer(False, model, error=f"Gemini nicht erreichbar ({type(exc).__name__})")
+                break
+            answer = _answer_from(response, model)
+            if response.status_code not in OVERLOAD_STATUS:
+                break
+    answer.requests = sent
+    answer.seconds = round(time.monotonic() - started, 1)
+    return answer
+
+
+def _answer_from(response: requests.Response, model: str) -> Answer:
     try:
         payload = loads_finite(response.content.decode("utf-8"))
     except (UnicodeDecodeError, ValueError, RecursionError):
@@ -706,9 +742,7 @@ def ask_gemini(prompt: str, model: str, key: str) -> Answer:
             message = free_text((payload.get("error") or {}).get("message"))[:200]
         hint = " (Kontingent erschöpft, kein neuer Versuch)" if response.status_code == 429 else ""
         return Answer(False, model, error=f"Gemini HTTP {response.status_code}{hint}: {message or 'ohne Text'}")
-    answer = gemini_answer(payload, model)
-    answer.seconds = round(time.monotonic() - started, 1)
-    return answer
+    return gemini_answer(payload, model)
 
 
 # --- the audit file ----------------------------------------------------------------
@@ -846,12 +880,14 @@ def _cmd_ask(args: argparse.Namespace) -> int:
         template = read_capped_text(Path(args.prompt), label="ki_waechter")
         if input_text is None or template is None:
             raise ValueError("Eingabe oder Prompt fehlt")
-        answer = ask_gemini(build_prompt(input_text, template), args.model, key)
+        answer = ask_gemini(build_prompt(input_text, template), args.model, key, args.max_requests)
     _write_json(work / "antwort.json", asdict(answer))
+    # The gate of the next runs reads this annotation to count the day's requests.
+    print(f"::notice title=Gemini-Anfragen::{answer.requests}")
     if not answer.ok:
         print(f"::error title=KI-Wächter::{answer.error}")
         return 1
-    print(f"Gemini {answer.model}: {answer.seconds} s, Tokens {answer.tokens}")
+    print(f"Gemini {answer.model}: {answer.requests} Anfrage(n), {answer.seconds} s, Tokens {answer.tokens}")
     return 0
 
 
@@ -896,6 +932,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     a.add_argument("--dir", required=True)
     a.add_argument("--model", required=True)
     a.add_argument("--prompt", default=str(PROMPT_FILE))
+    a.add_argument("--max-requests", type=int, default=1,
+                   help=f"Anteil dieses Laufs am Tagesbudget (höchstens {MAX_REQUESTS_PER_AUDIT})")
     v = sub.add_parser("verify", help="Antwort der KI prüfen und Bericht schreiben")
     v.add_argument("--dir", required=True)
     v.add_argument("--report", default="")
