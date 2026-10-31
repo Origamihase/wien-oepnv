@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261031-0019-F01, I20261031-0019-F02, I20260922-0032, I20260925-0011, I20261031-0018-F01, I20261031-0018, I20260909-0007, I20261031-0014-F01, I20261020-0029"
+    "trafficInfoNameList": "I20261031-0019-F01, I20261031-0019-F02, I20260922-0032, I20260925-0011, I20261031-0020, I20260909-0007, I20261020-0029, I20261031-0018-F01, I20261031-0021"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R116-136, R117-136, R100-136, R101-136, R102-136, R103-136, R115-136, R45-136, R19-136, R130-136, R119-136, R118-136, R293-474, R1448-412, R1474-412, R318-437, R1125-229, R1125-429, R2558-125, R3886-480, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2343-433, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2420-411, R2343-229, R2343-429, R2378-627, R2343-531, R1974-466, R1272-440, R1301-440, R500-101, R8489-236, R1150-436, R1091-436, R1177-436, R1177-236, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R101-136, R130-136, R100-136, R119-136, R118-136, R117-136, R116-136, R45-136, R19-136, R115-136, R102-136, R103-136, R1448-412, R318-437, R293-474, R1474-412, R1125-229, R1125-429, R2558-125, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R3886-480, R1884-101, R2343-433, R2379-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2380-627, R2345-127, R2420-411, R2343-229, R2343-429, R2343-531, R1974-466, R1272-440, R1301-440, R500-101, R8489-236, R1150-436, R1177-436, R1091-436, R1177-236, R1930-111, R1931-111, R2258-111, R2260-111, R2259-111, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -208,99 +208,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "1": "ptTram"
-     }
-    },
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "1: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Franz-Josefs-Kai 3",
-    "name": "I20261031-0014-F01",
-    "owner": "WL",
-    "parentName": "I20261031-0014",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 101,
-      "lineName": "1",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-10-31T14:38:00.000+0100",
-     "end": "2026-10-31T16:42:00.000+0100",
-     "lastUpdate": "2026-10-31T15:44:00.000+0100",
-     "start": "2026-10-31T14:01:00.000+0100"
-    },
-    "title": "1: Verkehrsunfall"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "12A": "ptBusCity"
-     }
-    },
-    "description": "Linie 12A: Betrieb nur zwischen Schmelz, Gablenzgasse und Fendigasse. Voraussichtliche Dauer: 16:30 Uhr. Grund: Rettungseinsatz im Bereich Embelgasse.",
-    "descriptionHTML": "<p>Linie 12A:<br>Betrieb nur zwischen Schmelz, Gablenzgasse und Fendigasse.</p><p>Voraussichtliche Dauer: 16:30 Uhr.</p><p>Grund: Rettungseinsatz im Bereich Embelgasse.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 12A:<br>Betrieb nur zwischen Schmelz, Gablenzgasse und Fendigasse.</p><p>Voraussichtliche Dauer: 16:30 Uhr.</p><p>Grund: Rettungseinsatz im Bereich Embelgasse.</p>",
-       "descriptionPlain": "Linie 12A: Betrieb nur zwischen Schmelz, Gablenzgasse und Fendigasse. Voraussichtliche Dauer: 16:30 Uhr. Grund: Rettungseinsatz im Bereich Embelgasse.",
-       "title": "12A: Rettungseinsatz"
-      }
-     }
-    ],
-    "location": "Embelgasse",
-    "name": "I20261031-0018",
-    "owner": "WL",
-    "parentName": "I20261031-0018",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "12A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 412,
-      "lineName": "12A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-10-31T15:53:00.000+0100",
-     "end": "2026-10-31T16:28:00.000+0100",
-     "lastUpdate": "2026-10-31T16:28:00.000+0100",
-     "resume": "2026-10-31T16:28:00.000+0100",
-     "start": "2026-10-31T15:52:00.000+0100"
-    },
-    "title": "12A: Rettungseinsatz"
-   },
-   {
     "alertCause": "emergency medical services",
     "alertCauseId": 14,
     "attributes": {
@@ -340,8 +247,8 @@
     "status": "active",
     "time": {
      "created": "2026-10-31T16:28:00.000+0100",
-     "lastUpdate": "2026-10-31T16:28:00.000+0100",
-     "resume": "2026-10-31T16:28:00.000+0100",
+     "end": "2026-10-31T17:03:00.000+0100",
+     "lastUpdate": "2026-10-31T16:39:00.000+0100",
      "start": "2026-10-31T15:52:00.000+0100"
     },
     "title": "12A: Rettungseinsatz"
@@ -437,6 +344,98 @@
      "start": "2026-10-31T16:11:00.000+0100"
     },
     "title": "36B: Falschparker"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "30A": "ptBusCity"
+     }
+    },
+    "description": "Linie 30A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "<p>Linie 30A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 30A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+       "descriptionPlain": "Linie 30A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+       "title": "30A: Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261031-0020",
+    "owner": "WL",
+    "parentName": "I20261031-0020",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "30A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 430,
+      "lineName": "30A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-31T16:54:00.000+0100",
+     "lastUpdate": "2026-10-31T16:54:00.000+0100",
+     "resume": "2026-10-31T16:54:00.000+0100",
+     "start": "2026-10-31T16:54:00.000+0100"
+    },
+    "title": "30A: Verkehrsunfall"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "11": "ptTram"
+     }
+    },
+    "description": "Linie 11: Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse. Voraussichtliche Dauer: 17:20 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Otto-Probst-Straße.",
+    "descriptionHTML": "<p>Linie 11:<br>Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse.</p><p>Voraussichtliche Dauer: 17:20 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Otto-Probst-Straße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 11:<br>Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse.</p><p>Voraussichtliche Dauer: 17:20 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Otto-Probst-Straße.</p>",
+       "descriptionPlain": "Linie 11: Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse. Voraussichtliche Dauer: 17:20 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Otto-Probst-Straße.",
+       "title": "11: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261031-0021",
+    "owner": "WL",
+    "parentName": "I20261031-0021",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 111,
+      "lineName": "11",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     2232
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-10-31T16:59:00.000+0100",
+     "lastUpdate": "2026-10-31T16:59:00.000+0100",
+     "start": "2026-10-31T16:58:00.000+0100"
+    },
+    "title": "11: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1085,6 +1084,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1930-111",
+    "owner": "WL",
+    "parentName": "R1930-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     1930
+    ],
+    "time": {
+     "end": "2026-10-31T17:58:00.000+0100",
+     "start": "2026-10-31T16:58:25.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1931-111",
+    "owner": "WL",
+    "parentName": "R1931-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     1931
+    ],
+    "time": {
+     "end": "2026-10-31T17:58:00.000+0100",
+     "start": "2026-10-31T16:58:25.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "name": "R1974-466",
     "owner": "WL",
@@ -1104,6 +1149,75 @@
      "start": "2026-10-31T04:40:12.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2258-111",
+    "owner": "WL",
+    "parentName": "R2258-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2258
+    ],
+    "time": {
+     "end": "2026-10-31T17:58:00.000+0100",
+     "start": "2026-10-31T16:58:26.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2259-111",
+    "owner": "WL",
+    "parentName": "R2259-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2259
+    ],
+    "time": {
+     "end": "2026-10-31T17:58:00.000+0100",
+     "start": "2026-10-31T16:58:26.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2260-111",
+    "owner": "WL",
+    "parentName": "R2260-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2260
+    ],
+    "time": {
+     "end": "2026-10-31T17:58:00.000+0100",
+     "start": "2026-10-31T16:58:26.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
