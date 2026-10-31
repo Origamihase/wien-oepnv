@@ -349,16 +349,16 @@ def test_an_overloaded_model_hands_over_and_is_asked_again_within_the_share(
     ]
     assert answer.ok and answer.model == "gemini-3.8-flash" and answer.requests == 3 and waits == [60]
     # The fallback that answers is named in the answer.
-    calls = _overloaded_then(monkeypatch, [_Response(503, busy), _Response(200, _ok_payload("{}"))])
+    _overloaded_then(monkeypatch, [_Response(503, busy), _Response(200, _ok_payload("{}"))])
     answer = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", max_requests=3, sleep=lambda s: None)
     assert answer.ok and answer.model == "gemini-3.6-flash" and answer.requests == 2
     # One model: a share of two ends after the second overloaded answer.
-    calls = _overloaded_then(monkeypatch, [_Response(503, busy), _Response(503, busy), _Response(200, _ok_payload("{}"))])
+    _overloaded_then(monkeypatch, [_Response(503, busy), _Response(503, busy), _Response(200, _ok_payload("{}"))])
     waits = []
     answer = kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=2, sleep=waits.append)
     assert not answer.ok and "HTTP 503" in answer.error and answer.requests == 2 and waits == [60]
     # Never more than three, whatever the share; no share, no request.
-    calls = _overloaded_then(monkeypatch, [_Response(503, busy)] * 5)
+    _overloaded_then(monkeypatch, [_Response(503, busy)] * 5)
     assert kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=9, sleep=lambda s: None).requests == 3
     calls = _overloaded_then(monkeypatch, [])
     none = kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=0)
