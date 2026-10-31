@@ -85,11 +85,15 @@ Workflow, läuft der Wächter ohne Veröffentlichung an drei Feed-Ständen:
 
 | Commit | Stand | Erwartet |
 | --- | --- | --- |
-| `001e47c` | 27.10.2026 16:00 | F6 „algae path“ (Algenweg, behoben in #2075); F1 40A „Busse halten Liechtensteinstraße 39, Liechtensteinstraße 38“ neben der Verlegung Bauernfeldplatz |
+| `001e47c` | 27.10.2026 16:00 | F6 „algae path“ (Algenweg, behoben in #2075); F1 40A „Busse halten Liechtensteinstraße 39, Liechtensteinstraße 38“ neben der Verlegung Bauernfeldplatz; F2 „Liechtensteinstraße 37a gegenüber Bauernfeldplatz → …“ (beide behoben in #2087) |
 | `9e60b8d` | 30.10.2026 15:30 | F6 „All Saints' Worship“ (Allerheiligenverkehr, behoben in #2091) |
 | `HEAD` | aktueller Feed | keine falschen Funde |
 
 Der Prompt nennt keinen dieser Fälle (`tests/test_ki_waechter.py`).
+
+Erster Probelauf (PR #2092, 31.10.2026, Modell `claude-opus-5-5`): alle vier
+bekannten Funde erkannt, auch die zwei, die die Jules-Audits vom 27. bis
+29.10. als „OK“ führten; kein Zitat verworfen; 30 bis 70 Sekunden je Stand.
 
 ## Kosten
 

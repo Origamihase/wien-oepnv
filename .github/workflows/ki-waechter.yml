@@ -31,8 +31,9 @@ name: KI-Wächter
 # dead token for instance, must be noticed (Michael 2026-10-28).
 #
 # Pull requests that touch the watcher run it on two days with known
-# findings (27.10.2026: "algae path" for Algenweg, 40A twice; 30.10.2026:
-# "All Saints' Worship") and on the current feed, without publishing.
+# findings (27.10.2026: "algae path" for Algenweg, 40A twice, a stop
+# relocation cut at "→ …"; 30.10.2026: "All Saints' Worship") and on the
+# current feed, without publishing.
 
 on:
   workflow_run:
@@ -227,6 +228,9 @@ jobs:
           path: ${{ env.WORK }}/
           retention-days: 14
           if-no-files-found: ignore
+          # ``.ki-waechter`` starts with a dot; upload-artifact skips such
+          # paths unless told otherwise.
+          include-hidden-files: true
 
       - name: Record side-step outcome
         if: env.PUBLISH == 'true'

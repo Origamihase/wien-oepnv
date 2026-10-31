@@ -28,8 +28,10 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
   (Label `ki-waechter`), ein Lauf, der nicht prüfen konnte, macht den
   Health check rot (`Nebenschritte`, `data/side_steps/ki-waechter.json`,
   36 h). Ein Pull Request auf den Wächter spielt ihn an 27.10. und 30.10.
-  (bekannte Funde) und am aktuellen Feed ab (`docs/architecture.md` §1
-  „KI-Wächter“, `docs/reference/ki_waechter.md`).
+  (bekannte Funde) und am aktuellen Feed ab; der erste Probelauf erkannte
+  alle vier bekannten Funde, auch die zwei, die die Jules-Audits vom 27. bis
+  29.10. als „OK“ führten (`docs/architecture.md` §1 „KI-Wächter“,
+  `docs/reference/ki_waechter.md`).
 * **EN-Feed: „<Anlass>verkehr“ bei WL und ÖBB (2026-10-30)**: Das
   Jules-Audit vom 30.10. fand „38B/39B: All Saints' Worship 01.11.2026“ im
   englischen Feed; gemeint ist der Allerheiligenverkehr. Das
