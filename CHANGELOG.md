@@ -10,6 +10,23 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **Health check: Prüfung „Veröffentlichung“, Live-Feeds gegen das Repo
+  (2026-10-31)**: Der Architektur-Review vom 31.10. fand die eine Stufe der
+  Kette ohne eigene Prüfung: Zwischen dem Commit und dem Fernseher liegt der
+  Pages-Build von GitHub, und jede Prüfung las nur den Checkout. Lieferte
+  Pages nicht mehr aus, blieb der Fernseher auf dem alten Stand bei grünem
+  Update-Lauf, Health check und Feed-Wächter; der SEO-Lauf schaute einmal am
+  Tag mit Warnung und Exit 0. Michael: „Ja, A bauen“. Der Health check holt
+  jetzt `feed.xml` und `feed.en.xml` von der Pages-Adresse und vergleicht
+  `<lastBuildDate>` mit der Repo-Kopie: rot, wenn die Live-Kopie mehr als
+  vier Stunden hinterherhängt (`HEALTH_LIVE_LAG_MAX_HOURS`), grün bei
+  gleichem oder neuerem Stand, ein gescheiterter Abruf ist nach der
+  Alarmlinie vom 28.10. nur ein Hinweis (`check_published_feeds`,
+  `docs/architecture.md` §7 „Überwachung: Veröffentlichung“). Der Pages-Host
+  steht dafür in `PROXY_TRUSTED_HOSTS`. Probe am 31.10. 14:06 MEZ gegen die
+  echte Adresse: beide Feeds aktuell, Pages lieferte 65 Sekunden nach dem
+  Commit aus.
+
 * **EN-Feed: „<Anlass>verkehr“ bei WL und ÖBB (2026-10-30)**: Das
   Jules-Audit vom 30.10. fand „38B/39B: All Saints' Worship 01.11.2026“ im
   englischen Feed; gemeint ist der Allerheiligenverkehr. Das

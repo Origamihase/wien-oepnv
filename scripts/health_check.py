@@ -103,7 +103,10 @@ if str(SRC_DIR) not in sys.path:
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+from config.defaults import DEFAULT_PAGES_BASE_URL  # noqa: E402
 from utils.files import read_capped_json, read_capped_text  # noqa: E402
+from utils.http import fetch_content_safe, session_with_retries  # noqa: E402
+from utils.logging import sanitize_log_arg  # noqa: E402
 
 try:  # Vienna local time is a nice-to-have header detail; tzdata may be absent.
     _VIENNA: ZoneInfo | None = ZoneInfo("Europe/Vienna")
@@ -125,6 +128,30 @@ def _env_float(name: str, default: float) -> float:
 # Feed: update-cycle runs ~every 30 min (IFTTT) with an hourly cron floor, so a
 # build older than 4 h means several missed cycles → something is wrong.
 FEED_MAX_AGE_H = _env_float("HEALTH_FEED_MAX_AGE_HOURS", 4.0)
+# Published copy: GitHub Pages serves ``docs/`` from ``main``; a deploy follows
+# a commit within minutes. A live feed whose ``<lastBuildDate>`` is this far
+# behind the committed one means Pages has stopped deploying (the Update runs
+# stay green, so nothing else would notice, see :func:`check_published_feeds`).
+LIVE_LAG_MAX_H = _env_float("HEALTH_LIVE_LAG_MAX_HOURS", 4.0)
+
+
+def _pages_base_url() -> str:
+    """Where GitHub Pages serves ``docs/``: ``PAGES_BASE_URL``, else derived
+    from ``GITHUB_REPOSITORY`` (``owner/repo`` → ``https://owner.github.io/repo``,
+    as build-feed.yml does, so a fork checks its own site), else the default."""
+    explicit = os.getenv("PAGES_BASE_URL", "").strip().rstrip("/")
+    if explicit:
+        return explicit
+    owner, _, repo = os.getenv("GITHUB_REPOSITORY", "").strip().partition("/")
+    if owner and repo:
+        return f"https://{owner.lower()}.github.io/{repo}"
+    return str(DEFAULT_PAGES_BASE_URL)
+
+
+PAGES_BASE_URL = _pages_base_url()
+LIVE_FETCH_TIMEOUT_S = _env_float("HEALTH_LIVE_FETCH_TIMEOUT_SECONDS", 20.0)
+LIVE_FEED_MAX_BYTES = 2 * 1024 * 1024
+LIVE_FEED_CONTENT_TYPES = ("application/xml", "application/rss+xml", "text/xml")
 # Stations: update-stations runs weekly (Sun 01:00 UTC). 8 days = one full
 # cycle + jitter; older means a weekly run was missed.
 STATIONS_MAX_AGE_H = _env_float("HEALTH_STATIONS_MAX_AGE_HOURS", 192.0)
@@ -392,6 +419,20 @@ def _fmt_age(seconds: float) -> str:
     return f"{minutes}m"
 
 
+def _last_build_date(text: str) -> datetime | str:
+    """``<lastBuildDate>`` of an RSS document as an aware datetime, or the error."""
+    m = re.search(r"<lastBuildDate>\s*(.*?)\s*</lastBuildDate>", text)
+    if not m:
+        return "<lastBuildDate> fehlt"
+    try:
+        built = parsedate_to_datetime(m.group(1))
+    except (TypeError, ValueError) as exc:
+        return f"<lastBuildDate> nicht parsebar: {m.group(1)!r}: {exc}"[:200]
+    if built.tzinfo is None:
+        built = built.replace(tzinfo=UTC)
+    return built
+
+
 def check_feed_freshness(now: datetime) -> Check:
     name = "Feed-Build"
     path = REPO_ROOT / "docs" / "feed.xml"
@@ -399,18 +440,14 @@ def check_feed_freshness(now: datetime) -> Check:
     if text is None:
         return Check(name, ok=False,
                      summary="FEHLER — feed.xml fehlt, ist zu groß oder nicht lesbar")
-    m = re.search(r"<lastBuildDate>\s*(.*?)\s*</lastBuildDate>", text)
-    if not m:
-        return Check(name, ok=False,
-                     summary="FEHLER — <lastBuildDate> fehlt in feed.xml")
-    try:
-        built = parsedate_to_datetime(m.group(1))
-    except (TypeError, ValueError) as exc:
+    built = _last_build_date(text)
+    if isinstance(built, str):
+        if built.startswith("<lastBuildDate> fehlt"):
+            return Check(name, ok=False,
+                         summary="FEHLER — <lastBuildDate> fehlt in feed.xml")
         return Check(name, ok=False,
                      summary="FEHLER — <lastBuildDate> nicht parsebar",
-                     detail=f"{m.group(1)!r}: {exc}"[:200])
-    if built.tzinfo is None:
-        built = built.replace(tzinfo=UTC)
+                     detail=built.removeprefix("<lastBuildDate> nicht parsebar: "))
     age_s = (now - built).total_seconds()
     limit = f"Grenze {_fmt_age(FEED_MAX_AGE_H * 3600)}"
     if age_s > FEED_MAX_AGE_H * 3600:
@@ -421,6 +458,91 @@ def check_feed_freshness(now: datetime) -> Check:
                      "dem Commit ab.")
     return Check(name, ok=True,
                  summary=f"OK — vor {_fmt_age(age_s)} gebaut ({limit})")
+
+
+PUBLISHED_FEEDS: tuple[str, ...] = ("feed.xml", "feed.en.xml")
+
+
+def _fmt_moment(moment: datetime) -> str:
+    """A moment in Vienna time with its zone name (UTC when tzdata is missing)."""
+    if _VIENNA is not None:
+        return moment.astimezone(_VIENNA).strftime("%d.%m.%Y %H:%M %Z")
+    return moment.astimezone(UTC).strftime("%d.%m.%Y %H:%M UTC")
+
+
+def _fetch_live_feed(url: str) -> str | None:
+    """The published feed as text, or ``None`` when it cannot be fetched."""
+    with session_with_retries("wien-oepnv-health-check", timeout=LIVE_FETCH_TIMEOUT_S) as session:
+        content: bytes = fetch_content_safe(
+            session,
+            url,
+            max_bytes=LIVE_FEED_MAX_BYTES,
+            timeout=LIVE_FETCH_TIMEOUT_S,
+            allowed_content_types=LIVE_FEED_CONTENT_TYPES,
+        )
+    return content.decode("utf-8", errors="replace")
+
+
+def check_published_feeds(now: datetime) -> Check:
+    """Red when the feeds GitHub Pages serves lag the committed ones for hours.
+
+    The chain ends at the TV, not at ``docs/feed.xml`` in the repository:
+    between the commit and the display sits the Pages build, a stage without
+    a check of its own until 2026-10-31 (Architektur-Review). Every other
+    check reads the checkout, so a Pages deploy that stops leaves the live
+    feed stale while Update run, Health check and Feed-Wächter stay green.
+
+    Rule, following the alarm line of 2026-10-28 (red only for a lasting
+    technical fault): red when a live feed's ``<lastBuildDate>`` is more than
+    :data:`LIVE_LAG_MAX_H` behind the committed copy's. A live copy that is
+    newer than the checkout (a tick published since this run checked out) is
+    fine. A live copy that cannot be fetched or read is a note: one failed
+    request says nothing about duration, and a Pages outage keeps serving the
+    last deployment rather than failing, so the stale case is the one that
+    matters. The committed copy that cannot be read is already red in
+    ``Feed-Build``; here it is a note so the two do not double-count.
+    """
+    name = "Veröffentlichung"
+    limit = f"Grenze {_fmt_age(LIVE_LAG_MAX_H * 3600)}"
+    problems: list[str] = []
+    notes: list[str] = []
+    oks: list[str] = []
+    for file_name in PUBLISHED_FEEDS:
+        local_text = read_capped_text(REPO_ROOT / "docs" / file_name, label=file_name)
+        local_built = _last_build_date(local_text) if local_text is not None else "nicht lesbar"
+        if isinstance(local_built, str):
+            notes.append(f"{file_name}: Repo-Kopie {local_built}")
+            continue
+        url = f"{PAGES_BASE_URL}/{file_name}"
+        try:
+            live_text = _fetch_live_feed(url)
+        except Exception as exc:
+            reason = str(sanitize_log_arg(str(exc)))[:120]
+            notes.append(f"{file_name}: Live-Abruf fehlgeschlagen ({type(exc).__name__}: {reason})")
+            continue
+        live_built = _last_build_date(live_text) if live_text is not None else "nicht lesbar"
+        if isinstance(live_built, str):
+            notes.append(f"{file_name}: Live-Kopie {live_built}")
+            continue
+        lag_s = (local_built - live_built).total_seconds()
+        if lag_s > LIVE_LAG_MAX_H * 3600:
+            problems.append(
+                f"{file_name}: Live-Stand {_fmt_age(lag_s)} hinter dem Repo "
+                f"(live {_fmt_moment(live_built)}, Repo {_fmt_moment(local_built)})"
+            )
+        elif lag_s > 0:
+            oks.append(f"{file_name} {_fmt_age(lag_s)} hinter dem Repo")
+        else:
+            oks.append(f"{file_name} aktuell")
+    if problems:
+        return Check(name, ok=False,
+                     summary=f"FEHLER — GitHub Pages liefert nicht mehr aus ({limit})",
+                     detail="; ".join(problems + notes))
+    if notes:
+        return Check(name, ok=True, note=True,
+                     summary="HINWEIS — Live-Stand nicht geprüft: " + "; ".join(notes),
+                     detail="; ".join(oks))
+    return Check(name, ok=True, summary=f"OK — {', '.join(oks)} ({limit})")
 
 
 def check_stations(now: datetime) -> Check:
@@ -923,6 +1045,7 @@ def main() -> int:
     sources = [assess_source(check_source(name, script), script, now) for name, script in UPDATERS]
     outputs = [
         check_feed_freshness(now),
+        check_published_feeds(now),
         check_stations(now),
         check_station_sources(now),
         check_stammstrecke_abruf(now),
