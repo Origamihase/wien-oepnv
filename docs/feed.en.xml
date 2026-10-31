@@ -8,20 +8,20 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 31 Oct 2026 14:30:49 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 31 Oct 2026 15:00:58 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[1/2: Traffic accident]]></title>
+      <title><![CDATA[42: Service disruption]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">62f06119b4464fcd9c4d4ddb58f056adcb3b99d010028b4c6e115bd338c91913</guid>
-      <pubDate>Sat, 31 Oct 2026 14:01:00 +0100</pubDate>
+      <guid isPermaLink="false">4c07566c7a23fb7d996fff4b5c40565da92b6f9eb8a156734b6725e899186170</guid>
+      <pubDate>Sat, 31 Oct 2026 14:37:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sat, 31 Oct 2026 14:30:49 +0100</ext:first_seen>
-      <ext:starts_at>Sat, 31 Oct 2026 14:01:00 +0100</ext:starts_at>
-      <description>Diversions: 1 Karlsplatz U – Julius-Raab-Platz; 2 Marienbrücke – Parlament, U Volkstheater. Expected until 14:45. [Since 14:01]</description>
-      <content:encoded><![CDATA[Diversions: 1 Karlsplatz U – Julius-Raab-Platz; 2 Marienbrücke – Parlament, U Volkstheater. Expected until 14:45.<br/>[Since 14:01]]]></content:encoded>
+      <ext:first_seen>Sat, 31 Oct 2026 15:00:58 +0100</ext:first_seen>
+      <ext:starts_at>Sat, 31 Oct 2026 14:37:00 +0100</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 14:37]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 14:37]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[9: Contamination]]></title>
@@ -37,17 +37,30 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[Since 14:27]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[O: Traffic congestion]]></title>
+      <title><![CDATA[2: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d</guid>
-      <pubDate>Sat, 31 Oct 2026 13:28:00 +0100</pubDate>
+      <guid isPermaLink="false">499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc</guid>
+      <pubDate>Sat, 31 Oct 2026 14:01:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sat, 31 Oct 2026 13:28:00 +0100</ext:first_seen>
-      <ext:starts_at>Sat, 31 Oct 2026 13:28:00 +0100</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 13:28]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 13:28]]]></content:encoded>
+      <ext:first_seen>Sat, 31 Oct 2026 14:01:00 +0100</ext:first_seen>
+      <ext:starts_at>Sat, 31 Oct 2026 14:01:00 +0100</ext:starts_at>
+      <description>Boarding possible from Marienbrücke; service from Parlament, Volkstheater; service from Schwedenplatz. [Since 14:01]</description>
+      <content:encoded><![CDATA[Boarding possible from Marienbrücke; service from Parlament, Volkstheater; service from Schwedenplatz.<br/>[Since 14:01]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1: Traffic accident, track construction works]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">62f06119b4464fcd9c4d4ddb58f056adcb3b99d010028b4c6e115bd338c91913</guid>
+      <pubDate>Sat, 31 Oct 2026 14:01:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Sat, 31 Oct 2026 14:30:49 +0100</ext:first_seen>
+      <ext:starts_at>Sat, 31 Oct 2026 14:08:37 +0100</ext:starts_at>
+      <description>Traffic accident: diversion over Schwarzenbergplatz and line 2. Track construction works: trains stop at Quellenstraße 156 (line 6); service from Knöllgasse; no service. [Since today]</description>
+      <content:encoded><![CDATA[Traffic accident: diversion over Schwarzenbergplatz and line 2. Track construction works: trains stop at Quellenstraße 156 (line 6); service from Knöllgasse; no service.<br/>[Since today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[57A: Demonstration]]></title>
@@ -58,10 +71,9 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sat, 31 Oct 2026 14:26:08 +0100</ext:first_seen>
-      <ext:starts_at>Sat, 31 Oct 2026 14:26:08 +0100</ext:starts_at>
-      <ext:ends_at>Sat, 31 Oct 2026 15:25:00 +0100</ext:ends_at>
-      <description>Service obstruction. [Today]</description>
-      <content:encoded><![CDATA[Service obstruction.<br/>[Today]]]></content:encoded>
+      <ext:starts_at>Sat, 31 Oct 2026 14:43:00 +0100</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: demonstration. [Since today]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: demonstration.<br/>[Since today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N31: Crane works]]></title>
@@ -134,20 +146,6 @@
       <ext:ends_at>Sat, 31 Oct 2026 21:00:00 +0100</ext:ends_at>
       <description>Buses stop at Franz-Jonas-Platz 5-6 (34A). [Today]</description>
       <content:encoded><![CDATA[Buses stop at Franz-Jonas-Platz 5-6 (34A).<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[29A/29B: Crane works]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">481985865b3ca8fc88d3a172d3bb06ecd67edb9450d5ea380d1b88b5d82472fa</guid>
-      <pubDate>Sat, 31 Oct 2026 00:00:24 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 30 Oct 2026 21:00:53 +0100</ext:first_seen>
-      <ext:starts_at>Sat, 31 Oct 2026 00:00:27 +0100</ext:starts_at>
-      <ext:ends_at>Sat, 31 Oct 2026 23:59:59 +0100</ext:ends_at>
-      <description>Buses stop at Schloßhofer Straße 25-31. [Today]</description>
-      <content:encoded><![CDATA[Buses stop at Schloßhofer Straße 25-31.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>

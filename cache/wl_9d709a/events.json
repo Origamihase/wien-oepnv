@@ -686,22 +686,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/2: Verkehrsunfall",
-    "description": "Linie 1: Umleitung in Richtung Prater Hauptallee zwischen Karlsplatz U und Julius-Raab-Platz über Schwarzenbergplatz und Stubentor U. Linie 2: Umleitung in Richtung Dornbach zwischen Marienbrücke und Parlament, U Volkstheater über Schottenring. Haltestellen: Parlament, U Volkstheater: Einstiegstelle direkt vor dem Parlament. Voraussichtliche Dauer: 14:45 Uhr. Grund: Verkehrsunfall im Bereich Franz-Josefs-Kai 3.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "62f06119b4464fcd9c4d4ddb58f056adcb3b99d010028b4c6e115bd338c91913",
-    "pubDate": "2026-10-31T14:01:00+01:00",
-    "starts_at": "2026-10-31T14:01:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=1,2|D=2026-10-31|TK=1 2 verkehrsunfall",
-    "_wl_ids": [
-      "I20261031-0014"
-    ],
-    "_incident_start": "2026-10-31T14:01:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "11A: Busse halten Meiereistraße gegenüber 12",
     "description": "Bauarbeiten\nBusse halten Meiereistraße gegenüber 12",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -766,6 +750,34 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1: Verkehrsunfall Umleitung über Schwarzenbergplatz und Linie 2",
+    "description": "Gleisbauarbeiten\nUmleitung zum Reumannplatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "a8ba70cda76bd25ad99c44435ef8692615c7aebef6b5a98d838a46d6688684c5",
+    "pubDate": "2026-10-30T00:00:10+01:00",
+    "starts_at": "2026-10-31T14:08:37+01:00",
+    "ends_at": "2026-10-31T23:59:59+01:00",
+    "_identity": "wl|störung|L=1|D=2026-10-30|TK=umleitung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Verkehrsunfall",
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "6c9455b3b094392684c322ab8f2b761a9537a1a83acceaa982e1237d79b94be8",
+    "pubDate": "2026-10-31T14:01:00+01:00",
+    "starts_at": "2026-10-31T14:01:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=1|D=2026-10-31|TK=1 verkehrsunfall",
+    "_wl_ids": [
+      "I20261031-0014"
+    ],
+    "_incident_start": "2026-10-31T14:01:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "1: Betrieb ab Knöllgasse",
     "description": "Gleisbauarbeiten\nBetrieb ab Knöllgasse",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -790,6 +802,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e105ca57f2aa7daecce2d0c7b4277004ad37ec7461843c457618fc8980286aef",
+    "pubDate": "2026-10-31T14:01:35+01:00",
+    "starts_at": "2026-10-31T14:01:36+01:00",
+    "ends_at": "2026-10-31T15:01:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-10-31|TK=fahrtbehinderung verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "1: Kein Betrieb",
     "description": "Gleisbauarbeiten\nKein Betrieb",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -798,6 +822,30 @@
     "starts_at": "2026-10-31T00:00:26+01:00",
     "ends_at": "2026-10-31T23:59:59+01:00",
     "_identity": "wl|störung|L=1|D=2026-10-31|TK=kein betrieb"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Verkehrsunfall Betrieb ab Julius-Raab-Platz",
+    "description": "Verkehrsunfall\nBetrieb ab Julius-Raab-Platz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "dd6d0bc61549fa7af8d80f6fc550458c3525ec91ea12e8676ce787dfb53cc43d",
+    "pubDate": "2026-10-31T14:05:07+01:00",
+    "starts_at": "2026-10-31T14:05:07+01:00",
+    "ends_at": "2026-10-31T15:04:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-10-31|TK=verkehrsunfall betrieb ab julius raab platz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Verkehrsunfall Betrieb ab Resselgasse",
+    "description": "Verkehrsunfall\nBetrieb ab Resselgasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "3ba081d4452991e183ba634ee562260c61a3d0213d0076ce6501f66a908bfac4",
+    "pubDate": "2026-10-31T14:08:07+01:00",
+    "starts_at": "2026-10-31T14:13:38+01:00",
+    "ends_at": "2026-10-31T15:12:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-10-31|TK=verkehrsunfall betrieb ab resselgasse"
   },
   {
     "source": "Wiener Linien",
@@ -978,6 +1026,70 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Verkehrsunfall",
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc",
+    "pubDate": "2026-10-31T14:01:00+01:00",
+    "starts_at": "2026-10-31T14:01:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=2|D=2026-10-31|TK=2 verkehrsunfall",
+    "_wl_ids": [
+      "I20261031-0014"
+    ],
+    "_incident_start": "2026-10-31T14:01:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Verkehrsunfall Betrieb ab Parlament, Volkstheater",
+    "description": "Verkehrsunfall\nBetrieb ab Parlament, Volkstheater",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4dd043046e42d0df265fd60cc278f6b01822666bba9b9e2aca11a81a0c893eb0",
+    "pubDate": "2026-10-31T14:02:06+01:00",
+    "starts_at": "2026-10-31T14:03:37+01:00",
+    "ends_at": "2026-10-31T15:05:00+01:00",
+    "_identity": "wl|störung|L=2|D=2026-10-31|TK=verkehrsunfall betrieb ab parlament volkstheater"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Verkehrsunfall Betrieb ab Schwedenplatz",
+    "description": "Verkehrsunfall\nBetrieb ab Schwedenplatz >",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "757ab09be17a8678843ae51b7fe67b499421e3fdfef85dddca228338d3a34a7e",
+    "pubDate": "2026-10-31T14:10:37+01:00",
+    "starts_at": "2026-10-31T14:13:08+01:00",
+    "ends_at": "2026-10-31T15:12:00+01:00",
+    "_identity": "wl|störung|L=2|D=2026-10-31|TK=verkehrsunfall betrieb ab schwedenplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Verkehrsunfall Zustieg ab Marienbrücke möglich",
+    "description": "Verkehrsunfall\nZustieg ab Marienbrücke möglich",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "193b810c5b2f08143d0ef8b04b573422662f7b56bf7000921bb068dd29187288",
+    "pubDate": "2026-10-31T14:02:06+01:00",
+    "starts_at": "2026-10-31T14:02:06+01:00",
+    "ends_at": "2026-10-31T15:16:00+01:00",
+    "_identity": "wl|störung|L=2|D=2026-10-31|TK=verkehrsunfall zustieg ab marienbrücke möglich"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Verkehrsunfall Züge halten gegenüber",
+    "description": "Verkehrsunfall\nZüge halten gegenüber",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "2d085f5fcfefb8f7b7303d28fb852bad45b5d8a0ce606cfd32072e84d0d68034",
+    "pubDate": "2026-10-31T14:09:07+01:00",
+    "starts_at": "2026-10-31T14:09:07+01:00",
+    "ends_at": "2026-10-31T15:08:00+01:00",
+    "_identity": "wl|störung|L=2|D=2026-10-31|TK=verkehrsunfall züge halten gegenüber"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "33A: Kranarbeiten Busse halten bei Franz-Jonas-Platz 5-6 (34A)",
     "description": "Kranarbeiten\nBusse halten bei Franz-Jonas-Platz 5-6 (34A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1026,14 +1138,34 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "42: Betriebsstörung",
+    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4c07566c7a23fb7d996fff4b5c40565da92b6f9eb8a156734b6725e899186170",
+    "pubDate": "2026-10-31T14:37:00+01:00",
+    "starts_at": "2026-10-31T14:37:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=42|D=2026-10-31|TK=42 betriebsstörung",
+    "_wl_ids": [
+      "I20261031-0016"
+    ],
+    "_incident_start": "2026-10-31T14:37:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "57A: Fahrtbehinderung wegen Demonstration",
-    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "description": "Linie 57A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "96286a7f0df4710fd02917d4828da01c6be2f4262ae3bab0fc285406a2243348",
     "pubDate": "2026-10-31T14:26:08+01:00",
-    "starts_at": "2026-10-31T14:26:08+01:00",
-    "ends_at": "2026-10-31T15:25:00+01:00",
-    "_identity": "wl|störung|L=57A|D=2026-10-31|TK=demonstration"
+    "starts_at": "2026-10-31T14:43:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=57A|D=2026-10-31|TK=demonstration",
+    "_wl_ids": [
+      "I20261031-0017"
+    ],
+    "_incident_start": "2026-10-31T14:43:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1162,22 +1294,6 @@
     "starts_at": "2026-10-31T01:05:04+01:00",
     "ends_at": "2026-10-31T23:59:59+01:00",
     "_identity": "wl|störung|L=N31|D=2026-10-31|TK=kranarbeiten busse halten bei franz jonas platz 7 8 34a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Verkehrsüberlastung",
-    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d",
-    "pubDate": "2026-10-31T13:28:00+01:00",
-    "starts_at": "2026-10-31T13:28:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=O|D=2026-10-31|TK=o verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261031-0013"
-    ],
-    "_incident_start": "2026-10-31T13:28:00+01:00"
   },
   {
     "source": "Wiener Linien",
