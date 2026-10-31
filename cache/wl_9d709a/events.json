@@ -686,6 +686,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1/2: Verkehrsunfall",
+    "description": "Linie 1: Umleitung in Richtung Prater Hauptallee zwischen Karlsplatz U und Julius-Raab-Platz über Schwarzenbergplatz und Stubentor U. Linie 2: Umleitung in Richtung Dornbach zwischen Marienbrücke und Parlament, U Volkstheater über Schottenring. Haltestellen: Parlament, U Volkstheater: Einstiegstelle direkt vor dem Parlament. Voraussichtliche Dauer: 14:45 Uhr. Grund: Verkehrsunfall im Bereich Franz-Josefs-Kai 3.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "62f06119b4464fcd9c4d4ddb58f056adcb3b99d010028b4c6e115bd338c91913",
+    "pubDate": "2026-10-31T14:01:00+01:00",
+    "starts_at": "2026-10-31T14:01:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=1,2|D=2026-10-31|TK=1 2 verkehrsunfall",
+    "_wl_ids": [
+      "I20261031-0014"
+    ],
+    "_incident_start": "2026-10-31T14:01:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "11A: Busse halten Meiereistraße gegenüber 12",
     "description": "Bauarbeiten\nBusse halten Meiereistraße gegenüber 12",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -746,18 +762,6 @@
       "I20261020-0029"
     ],
     "_incident_start": "2026-10-20T11:58:00+02:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Umleitung zum Reumannplatz",
-    "description": "Gleisbauarbeiten\nUmleitung zum Reumannplatz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "a8ba70cda76bd25ad99c44435ef8692615c7aebef6b5a98d838a46d6688684c5",
-    "pubDate": "2026-10-30T00:00:10+01:00",
-    "starts_at": "2026-10-30T00:00:10+01:00",
-    "ends_at": "2026-10-31T23:59:59+01:00",
-    "_identity": "wl|störung|L=1|D=2026-10-30|TK=umleitung"
   },
   {
     "source": "Wiener Linien",
@@ -998,22 +1002,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "3A: Verspätungen",
-    "description": "Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "9d358731bdd90c07601bb9665d1fe894e602b065f0c6bead2062210847affb87",
-    "pubDate": "2026-10-31T12:38:00+01:00",
-    "starts_at": "2026-10-31T12:38:00+01:00",
-    "ends_at": "2026-10-31T14:15:00+01:00",
-    "_identity": "wl|störung|L=3A|D=2026-10-31|TK=3a verspätungen",
-    "_wl_ids": [
-      "I20261031-0011"
-    ],
-    "_incident_start": "2026-10-31T12:38:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "40A: Busse halten Liechtensteinstraße 38",
     "description": "Bauarbeiten\nBusse halten Liechtensteinstraße 38",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1038,18 +1026,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5B: Verspätungen",
-    "description": "Linie 5B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "title": "57A: Fahrtbehinderung wegen Demonstration",
+    "description": "Fahrtbehinderung\nwegen Demonstration",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "0a3c1c1be1c32d176aab8a2531b59a455f7d75eb4dddd961bb205ecf78eff835",
-    "pubDate": "2026-10-31T13:16:00+01:00",
-    "starts_at": "2026-10-31T13:16:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=5B|D=2026-10-31|TK=5b verspätungen",
-    "_wl_ids": [
-      "I20261031-0012"
-    ],
-    "_incident_start": "2026-10-31T13:16:00+01:00"
+    "guid": "96286a7f0df4710fd02917d4828da01c6be2f4262ae3bab0fc285406a2243348",
+    "pubDate": "2026-10-31T14:26:08+01:00",
+    "starts_at": "2026-10-31T14:26:08+01:00",
+    "ends_at": "2026-10-31T15:25:00+01:00",
+    "_identity": "wl|störung|L=57A|D=2026-10-31|TK=demonstration"
   },
   {
     "source": "Wiener Linien",
@@ -1086,6 +1070,22 @@
     "starts_at": "2026-10-31T00:00:26+01:00",
     "ends_at": "2026-10-31T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-10-31|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Verunreinigung",
+    "description": "Linie 9: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "69e4389a30b19b8a7dad29db47dec2aad0b288426e5f426d4490396563ef425d",
+    "pubDate": "2026-10-31T14:27:00+01:00",
+    "starts_at": "2026-10-31T14:27:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=9|D=2026-10-31|TK=9 verunreinigung",
+    "_wl_ids": [
+      "I20261031-0015"
+    ],
+    "_incident_start": "2026-10-31T14:27:00+01:00"
   },
   {
     "source": "Wiener Linien",
