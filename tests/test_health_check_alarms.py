@@ -133,6 +133,158 @@ def test_a_missing_feed_is_red(repo: Path) -> None:
     assert not hc.check_feed_freshness(_NOW).ok
 
 
+# --- Veröffentlichung: the live copy on GitHub Pages (Architektur-Review 31.10.) ---
+
+
+def _rss(built: datetime) -> str:
+    return (
+        "<rss><channel><lastBuildDate>"
+        + format_datetime(built)
+        + "</lastBuildDate></channel></rss>"
+    )
+
+
+def _both_feeds(repo: Path, built: datetime) -> None:
+    for name in hc.PUBLISHED_FEEDS:
+        (repo / "docs" / name).write_text(_rss(built), encoding="utf-8")
+
+
+def _live(monkeypatch: pytest.MonkeyPatch, by_url: dict[str, object]) -> list[str]:
+    """Serve *by_url* in place of GitHub Pages; a value that is an exception is raised."""
+    seen: list[str] = []
+
+    def fetch(url: str) -> str | None:
+        seen.append(url)
+        value = by_url[url]
+        if isinstance(value, BaseException):
+            raise value
+        return value  # type: ignore[return-value]
+
+    monkeypatch.setattr(hc, "_fetch_live_feed", fetch)
+    return seen
+
+
+def _urls() -> dict[str, str]:
+    return {name: f"{hc.PAGES_BASE_URL}/{name}" for name in hc.PUBLISHED_FEEDS}
+
+
+def test_live_feeds_that_match_the_repo_are_green(repo: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    _both_feeds(repo, _NOW - timedelta(minutes=20))
+    seen = _live(monkeypatch, {u: _rss(_NOW - timedelta(minutes=20)) for u in _urls().values()})
+    check = hc.check_published_feeds(_NOW)
+    assert check.ok and not check.note
+    assert "feed.xml aktuell" in check.summary and "feed.en.xml aktuell" in check.summary
+    # Both feeds are fetched from the Pages site, nothing else.
+    assert sorted(seen) == sorted(_urls().values())
+    assert all(u.startswith("https://") for u in seen)
+
+
+def test_a_live_copy_a_tick_behind_is_green(repo: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Pages deploys a minute or two after the commit; the check runs in between."""
+    _both_feeds(repo, _NOW)
+    _live(monkeypatch, {u: _rss(_NOW - timedelta(minutes=31)) for u in _urls().values()})
+    check = hc.check_published_feeds(_NOW)
+    assert check.ok and not check.note
+    assert "31m hinter dem Repo" in check.summary
+
+
+def test_a_live_copy_newer_than_the_checkout_is_green(repo: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """A tick published after this run checked out: the live site is ahead, fine."""
+    _both_feeds(repo, _NOW - timedelta(minutes=40))
+    _live(monkeypatch, {u: _rss(_NOW) for u in _urls().values()})
+    assert hc.check_published_feeds(_NOW).ok
+
+
+def test_a_live_copy_hours_behind_the_repo_is_red_and_names_both_stands(
+    repo: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The case nothing else catches: Pages stopped deploying, every run is green."""
+    _both_feeds(repo, _NOW)
+    stale = _NOW - timedelta(hours=hc.LIVE_LAG_MAX_H, minutes=1)
+    urls = _urls()
+    _live(monkeypatch, {urls["feed.xml"]: _rss(stale), urls["feed.en.xml"]: _rss(_NOW)})
+    check = hc.check_published_feeds(_NOW)
+    assert not check.ok
+    assert "GitHub Pages liefert nicht mehr aus" in check.summary
+    assert "feed.xml: Live-Stand 4h 1m hinter dem Repo" in check.detail
+    # Vienna time with its zone, never a UTC moment labelled as local time.
+    assert f"live {hc._fmt_moment(stale)}" in check.detail and f"Repo {hc._fmt_moment(_NOW)}" in check.detail
+    assert "08:59 CET" in check.detail and "13:00 CET" in check.detail
+    assert "feed.en.xml" not in check.detail
+
+
+def test_a_live_copy_just_inside_the_limit_is_green(repo: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    _both_feeds(repo, _NOW)
+    _live(monkeypatch, {u: _rss(_NOW - timedelta(hours=hc.LIVE_LAG_MAX_H) + timedelta(minutes=1)) for u in _urls().values()})
+    assert hc.check_published_feeds(_NOW).ok
+
+
+def test_a_failed_live_fetch_is_a_note_not_red(repo: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """One failed request says nothing about duration (alarm line 2026-10-28)."""
+    _both_feeds(repo, _NOW)
+    urls = _urls()
+    _live(monkeypatch, {urls["feed.xml"]: ConnectionError("boom"), urls["feed.en.xml"]: _rss(_NOW)})
+    check = hc.check_published_feeds(_NOW)
+    assert check.ok and check.note
+    assert "feed.xml: Live-Abruf fehlgeschlagen (ConnectionError: boom)" in check.summary
+    assert "feed.en.xml aktuell" in check.detail
+
+
+@pytest.mark.parametrize(
+    "content",
+    ["", "<rss><channel></channel></rss>", "<rss><lastBuildDate>gestern</lastBuildDate></rss>"],
+    ids=["empty", "no-lastBuildDate", "unparseable"],
+)
+def test_an_unreadable_live_copy_is_a_note(repo: Path, monkeypatch: pytest.MonkeyPatch, content: str) -> None:
+    _both_feeds(repo, _NOW)
+    _live(monkeypatch, {u: content for u in _urls().values()})
+    check = hc.check_published_feeds(_NOW)
+    assert check.ok and check.note
+    assert "Live-Kopie" in check.summary
+
+
+def test_an_unreadable_repo_copy_is_a_note_here_and_red_in_feed_build(
+    repo: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """``Feed-Build`` already turns red for it; this check must not double-count."""
+    (repo / "docs" / "feed.en.xml").write_text(_rss(_NOW), encoding="utf-8")
+    seen = _live(monkeypatch, {u: _rss(_NOW) for u in _urls().values()})
+    check = hc.check_published_feeds(_NOW)
+    assert check.ok and check.note
+    assert "feed.xml: Repo-Kopie nicht lesbar" in check.summary
+    assert seen == [_urls()["feed.en.xml"]]
+    assert not hc.check_feed_freshness(_NOW).ok
+
+
+@pytest.mark.parametrize(
+    ("explicit", "repository", "expected"),
+    [
+        ("", "", "https://origamihase.github.io/wien-oepnv"),
+        ("", "Origamihase/wien-oepnv", "https://origamihase.github.io/wien-oepnv"),
+        ("", "Someone/fork-name", "https://someone.github.io/fork-name"),
+        ("https://example.github.io/site/", "Someone/fork-name", "https://example.github.io/site"),
+    ],
+    ids=["default", "this-repository", "fork", "explicit"],
+)
+def test_the_pages_address_follows_the_repository(
+    monkeypatch: pytest.MonkeyPatch, explicit: str, repository: str, expected: str
+) -> None:
+    """Like build-feed.yml: a fork checks its own site, never this project's."""
+    monkeypatch.setenv("PAGES_BASE_URL", explicit)
+    monkeypatch.setenv("GITHUB_REPOSITORY", repository)
+    assert hc._pages_base_url() == expected
+
+
+def test_a_red_published_check_is_a_lasting_fault_in_main(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    _all_green(monkeypatch)
+    red = hc.Check("Veröffentlichung", ok=False, summary="FEHLER — GitHub Pages liefert nicht mehr aus")
+    monkeypatch.setattr(hc, "check_published_feeds", lambda _now: red)
+    assert hc.main() == 1
+    assert "::error title=Health: Veröffentlichung::" in capsys.readouterr().out
+
+
 # --- Stationsverzeichnis: the weekly station run --------------------------
 
 
@@ -199,6 +351,7 @@ def _all_green(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(hc, "assess_source", lambda probe, *_a: probe)
     for name in (
         "check_feed_freshness",
+        "check_published_feeds",
         "check_stations",
         "check_station_sources",
         "check_stammstrecke_abruf",
@@ -221,6 +374,7 @@ def test_main_is_green_when_every_check_is_green(monkeypatch: pytest.MonkeyPatch
     [
         "check_source",
         "check_feed_freshness",
+        "check_published_feeds",
         "check_stations",
         "check_station_sources",
         "check_stammstrecke_abruf",

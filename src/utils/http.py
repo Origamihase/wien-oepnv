@@ -1653,6 +1653,7 @@ PROXY_TRUSTED_HOSTS: frozenset[str] = frozenset({
     "data.wien.gv.at",  # scripts/update_baustellen_cache.py
     "fahrplan.oebb.at",  # src/providers/oebb.py, src/places/hafas_client.py
     "overpass-api.de",  # src/places/osm_client.py
+    "origamihase.github.io",  # scripts/health_check.py, veröffentlichte Feeds (DEFAULT_PAGES_BASE_URL)
     "overpass.kumi.systems",  # src/places/osm_client.py
     "raw.githubusercontent.com",  # scripts/sync_hafas_profile.py
     "routenplaner.verkehrsauskunft.at",  # src/providers/vor.py, Stammstrecke monitor

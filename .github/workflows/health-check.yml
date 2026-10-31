@@ -109,6 +109,10 @@ jobs:
         # scripts/health_check.py, kinds "required" and "optional"). The check
         # tests them for emptiness and prints names, never values; GitHub
         # masks them in the log as well.
+        # The check "Veröffentlichung" (since 2026-10-31) fetches both feeds
+        # from the GitHub Pages site and compares their <lastBuildDate> with
+        # the checkout; the site's address comes from GITHUB_REPOSITORY, so a
+        # fork checks its own site. No VAO request is involved.
         env:
           VOR_ACCESS_ID: ${{ secrets.VOR_ACCESS_ID }}
           VOR_BASE_URL: ${{ secrets.VOR_BASE_URL }}
