@@ -1436,40 +1436,56 @@ Baustellen) veränderten kleine Modelle auf CPU den Sinn jedes dritten Textes
 (erfundene Anfangszeiten, „U-Bahn“ statt Zug, „gesperrt“ statt „als Sackgasse
 möglich“), und ein 3B-Modell übersetzte schlechter als die heutige
 EN-Kette. Ein Regelfehler ist reproduzierbar und als Klasse behebbar, ein
-Modellfehler nicht. Auf seine Antwort „Einen Jules-Ersatz (Wächter-KI) im
+Modellfehler nicht; ein umgeschriebener Text ließe sich zudem nicht
+mechanisch belegen wie ein Fund, und der Feed bräuchte bei jedem Ausfall der
+API ohnehin die Regeln. Auf seine Antwort „Einen Jules-Ersatz (Wächter-KI) im
 Projekt selbst. Achte bitte weiterhin auf höchste Qualität und Effizienz.“
 entstand der tägliche KI-Wächter als Nachfolger der Jules-Audits (Jules nimmt
-nach dem 2026-11-11 keine Sitzungen mehr an).
+nach dem 2026-11-11 keine Sitzungen mehr an). Am selben Tag entschied er
+außerdem: geprüft werden alle Meldungstexte der letzten 24 Stunden („Ein
+Review der Meldungen der letzten 24h wäre besser“), das Modell ist Gemini
+über das Gratis-Kontingent der Gemini API (das Claude-Abo läuft nur bei
+Bedarf), und das API-Limit darf nicht überschritten werden.
 
 * `ki-waechter.yml` läuft einmal am Tag nach dem ersten erfolgreichen
   Update-Lauf ab 15:00 Wiener Zeit (`workflow_run`; GitHubs eigener Cron
   feuert hier nur wenige seiner Termine). Ein Lauf am selben Tag, auch ein
   gescheiterter, beendet jeden weiteren Versuch dieses Tages.
-* `scripts/ki_waechter.py prepare` schreibt die Eingabe: jede Meldung des
-  deutschen Feeds mit ihrer englischen Fassung und den Cache-Ereignissen
-  ihrer Linien. Kopf, GUIDs, Zahlen und Tabelle des Berichts kommen aus dem
-  Skript, nie vom Modell.
-* Claude Code liest headless mit `scripts/ki_waechter_prompt.md`, nur mit
-  Lese-Werkzeugen (Read, Grep, Glob; kein Bash, kein Schreiben, kein Netz).
-  Die Fundklassen F1 bis F6 sind geschlossen, entschiedene Formate stehen
-  als Nicht-Funde im Prompt; Stil und Verbesserungsideen sind nie Funde.
+* `scripts/ki_waechter.py prepare` liest jede Fassung des Feeds aus den
+  24 Stunden davor aus der Git-Historie (jeder Update-Lauf committet Feed und
+  Caches zusammen) und macht jeden verschiedenen Meldungstext zu einer
+  Nummer, mit der Zeit im Feed, den gleichzeitig sichtbaren Meldungen, der
+  englischen Fassung und den Cache-Ereignissen ihrer Linien. Kopf, GUIDs,
+  Zahlen, Zeiten und Tabelle des Berichts kommen aus dem Skript, nie vom
+  Modell.
+* `scripts/ki_waechter.py ask` schickt Prompt (`scripts/ki_waechter_prompt.md`)
+  und Eingabe in genau einer Anfrage an die Gemini API, ohne Werkzeuge, mit
+  festem JSON-Schema der Antwort. Die Fundklassen F1 bis F6 sind geschlossen,
+  entschiedene Formate stehen als Nicht-Funde im Prompt; Stil und
+  Verbesserungsideen sind nie Funde.
 * `scripts/ki_waechter.py verify` lässt einen Fund nur gelten, wenn sein
   Zitat wörtlich in der Meldung steht, bei einem falschen Fakt (F3) auch das
   Quellzitat wörtlich in den Quellen, und die Klasse zum Feed passt (F6 nur
-  Englisch, F1 und F3 nur Deutsch, F1 mit zwei Meldungen). Alles andere
-  steht als „Nicht belegt“ im Bericht, zählt aber nicht (Michael,
-  2026-10-30: „Falsche Funde stören mich am meisten“).
+  Englisch, F1 und F3 nur Deutsch, F1 mit zwei Meldungen, die gleichzeitig
+  im Feed standen). Alles andere steht als „Nicht belegt“ im Bericht, zählt
+  aber nicht (Michael, 2026-10-30: „Falsche Funde stören mich am meisten“).
+* Gratis-Kontingent: ein Prüflauf ist eine Anfrage, ohne neuen Versuch;
+  höchstens 10 Anfragen am Tag (Tag ab 0:00 Uhr Pazifikzeit), gezählt vom
+  Job `gate` aus den gestarteten Prüfläufen, die letzte bleibt dem täglichen
+  Lauf; die Eingabe ist auf 450.000 Zeichen begrenzt. Der Schlüssel
+  `GEMINI_API_KEY` gehört zu einem Projekt ohne Abrechnung.
 * Der Bericht `docs/archive/audits/ki-waechter-YYYY-MM-DD.md` geht über
   `publish_to_main.sh` nach `main`; belegte Funde öffnen ein Issue (Label
   `ki-waechter`). Der Feed bleibt unverändert.
-* Ein Lauf, der nicht prüfen konnte (leeres oder abgelaufenes
-  `CLAUDE_CODE_OAUTH_TOKEN`, Abbruch des Modells), ist rot und macht die
-  Prüfung `Nebenschritte` im Health check rot
-  (`data/side_steps/ki-waechter.json`, Grenze 36 h).
+* Ein Lauf, der nicht prüfen konnte (Schlüssel leer oder abgelehnt,
+  Kontingent erschöpft, Abbruch des Modells), ist rot und macht die Prüfung
+  `Nebenschritte` im Health check rot (`data/side_steps/ki-waechter.json`,
+  Grenze 36 h).
 * Ein Pull Request, der Skript, Prompt oder Workflow ändert, spielt den
-  Wächter an drei Feed-Ständen ab, ohne zu veröffentlichen: 27.10.2026
-  („algae path“ für Algenweg, 40A doppelt), 30.10.2026 („All Saints'
-  Worship“) und der aktuelle Stand. Der Prompt nennt diese Fälle nicht.
+  Wächter über die 24 Stunden vor drei Feed-Ständen ab, ohne zu
+  veröffentlichen: 27.10.2026 („algae path“ für Algenweg, 40A doppelt),
+  30.10.2026 („All Saints' Worship“) und der aktuelle Stand. Der Prompt nennt
+  diese Fälle nicht.
 
 Ablauf, Fundklassen und Grenzen: [`reference/ki_waechter.md`](reference/ki_waechter.md).
 

@@ -1,28 +1,36 @@
 # KI-Wächter
 
-Die tägliche Prüfung der Feed-Anzeige im Projekt selbst: Claude liest die zehn
-Meldungen des Feeds neben ihren Quelltexten und meldet, was der TV-Zuschauer
-falsch lesen würde. Der Wächter ändert den Feed nie.
+Die tägliche Prüfung der Feed-Anzeige im Projekt selbst: Gemini liest jeden
+Meldungstext, der in den letzten 24 Stunden im Feed stand, neben seinen
+Quelltexten und meldet, was der TV-Zuschauer falsch gelesen hat. Der Wächter
+ändert den Feed nie.
 
-Entscheidung des Betreibers vom 2026-10-31: Die Regeln bleiben die Feed-Kette,
-eine KI meldet nur. Die Gründe und die Messung dazu stehen in
-[`architecture.md`](../architecture.md), Abschnitt „KI-Wächter“.
+Entscheidungen des Betreibers vom 2026-10-31: Die Regeln bleiben die
+Feed-Kette, eine KI meldet nur. Geprüft werden die Meldungen der letzten
+24 Stunden, nicht nur die zehn aktuellen („Ein Review der Meldungen der
+letzten 24h wäre besser“). Das Modell ist Gemini über das Gratis-Kontingent der
+Gemini API, weil das Claude-Abo nur bei Bedarf läuft. Die Gründe und die
+Messung dazu stehen in [`architecture.md`](../architecture.md), Abschnitt
+„KI-Wächter“.
 
 ## Ablauf
 
 | Schritt | Wer | Was |
 | --- | --- | --- |
-| Auslöser | `.github/workflows/ki-waechter.yml`, Job `gate` | nach jedem Update-Lauf; weiter nur, wenn er erfolgreich war, es 15:00 Wiener Zeit oder später ist und heute noch kein Lauf in `data/side_steps/ki-waechter.json` steht |
-| Eingabe | `scripts/ki_waechter.py prepare` | `docs/feed.xml`, `docs/feed.en.xml`, `cache/*/events.json`; je Meldung DE, EN, das eigene Cache-Ereignis und bis zu sechs weitere Ereignisse derselben Linien; schreibt `.ki-waechter/eingabe.md` und `eingabe.json` |
-| Lesen | Claude Code (`claude -p`, Modell `KI_WAECHTER_MODEL`) | Prompt `scripts/ki_waechter_prompt.md`; Werkzeuge nur Read, Grep, Glob; Antwort ein JSON-Objekt |
+| Auslöser | `.github/workflows/ki-waechter.yml`, Job `gate` | nach jedem Update-Lauf; weiter nur, wenn er erfolgreich war, es 15:00 Wiener Zeit oder später ist, heute noch kein Lauf in `data/side_steps/ki-waechter.json` steht und das Tagesbudget eine Anfrage hergibt |
+| Eingabe | `scripts/ki_waechter.py prepare` | jede Fassung von `docs/feed.xml` und `docs/feed.en.xml` der 24 Stunden vor dem Commit (jeder Update-Lauf schreibt eine) und die `cache/*/events.json` derselben Commits; jeder verschiedene Meldungstext wird eine Nummer, mit der Zeit im Feed, den gleichzeitig sichtbaren Meldungen, dem eigenen Cache-Ereignis (beim ersten und letzten Auftreten) und bis zu sechs Ereignissen derselben Linien; jede Quelle steht einmal ganz da, danach mit ihrer Kennung (Q…); schreibt `.ki-waechter/eingabe.md` und `eingabe.json` |
+| Lesen | `scripts/ki_waechter.py ask` | ein Aufruf der Gemini API (Modell `KI_WAECHTER_MODEL`, derzeit `gemini-3.8-flash`) mit Prompt `scripts/ki_waechter_prompt.md` und Eingabe; keine Werkzeuge; Antwort im festen JSON-Schema; schreibt `antwort.json` |
 | Prüfen | `scripts/ki_waechter.py verify` | jedes Zitat wörtlich gegen Feed und Quellen; schreibt den Bericht und `ergebnis.json` |
 | Ablage | `scripts/publish_to_main.sh` | `docs/archive/audits/ki-waechter-YYYY-MM-DD.md` und `data/side_steps/ki-waechter.json` nach `main` |
 | Meldung | `gh issue create` | nur bei belegten Funden ein Issue, Label `ki-waechter` |
 
-Von Hand: Actions → „KI-Wächter“ → „Run workflow“. Ohne Eingabe prüft er den
-aktuellen Stand und veröffentlicht; mit einem Commit-Hash prüft er dessen Feed
-und veröffentlicht nichts (Bericht in der Zusammenfassung des Laufs und als
-Artefakt).
+Am 31.10.2026 waren es in 24 Stunden 50 Fassungen des Feeds mit 76
+verschiedenen Meldungstexten von 51 Meldungen, rund 94.000 Zeichen Eingabe.
+
+Von Hand: Actions → „KI-Wächter“ → „Run workflow“. Ohne Eingabe prüft er die
+24 Stunden bis zum aktuellen Stand und veröffentlicht; mit einem Commit-Hash
+prüft er die 24 Stunden bis zu diesem Commit und veröffentlicht nichts
+(Bericht in der Zusammenfassung des Laufs und als Artefakt).
 
 ## Fundklassen
 
@@ -30,7 +38,7 @@ Geschlossene Liste, gleich wie im letzten Jules-Prompt vom 2026-10-30:
 
 | Klasse | Inhalt | Feed |
 | --- | --- | --- |
-| F1 | dieselbe Sache zweimal | DE, zwei Meldungen mit je einem Zitat |
+| F1 | dieselbe Sache zweimal | DE, zwei Meldungen mit je einem Zitat, gleichzeitig im Feed |
 | F2 | Kernaussage abgeschnitten | DE oder EN |
 | F3 | Fakt weicht von der Quelle ab | DE, mit wörtlichem Quellzitat |
 | F4 | Titel widerspricht dem Text | DE oder EN |
@@ -43,27 +51,57 @@ Verbesserungsideen meldet der Wächter nie.
 
 ## Warum ein Fund belegt sein muss
 
-Michael, 2026-10-30: „Falsche Funde stören mich am meisten.“ Deshalb prüft das
-Skript jeden Fund, bevor er zählt:
+Michael, 2026-10-30: „Falsche Funde stören mich am meisten.“ Wörtlich heißt
+dabei nicht, dass der Feed den Quelltext wiederholen muss: Kürzen und
+Umformulieren sind die Aufgabe der Regeln, ob der Sinn stimmt, beurteilt das
+Modell. Wörtlich muss sein Beleg sein. Deshalb prüft das Skript jeden Fund,
+bevor er zählt:
 
 - Das Feed-Zitat steht wörtlich (nach Leerraum-Angleich) in genau dieser
   Meldung im genannten Feed, mindestens drei Zeichen.
 - F3: Das Quellzitat steht wörtlich in den Quellen dieser Meldung.
-- F1: Die zweite Meldung ist eine andere und enthält ihr Zitat.
+- F1: Die zweite Meldung hat eine andere GUID, stand gleichzeitig im Feed und
+  enthält ihr Zitat.
 - Die Klasse passt zum Feed (F6 nur EN, F1 und F3 nur DE), ein erwarteter Text
   ist angegeben.
+- Derselbe Fehler in mehreren Textständen einer Meldung zählt einmal.
 
 Ein Fund, der eine Prüfung nicht besteht, steht unter „Nicht belegt“ im
-Bericht und öffnet kein Issue. Kopf, Zahlen, GUIDs und die Tabelle der
+Bericht und öffnet kein Issue. Kopf, Zahlen, GUIDs, Zeiten und die Tabelle der
 geprüften Meldungen schreibt das Skript, nicht das Modell.
+
+## Gratis-Kontingent
+
+Michael, 2026-10-31: „Bitte sorge auch hier dafür, dass das API-Limit nicht
+überschritten wird.“ Der Schlüssel `GEMINI_API_KEY` gehört zu einem Projekt
+ohne Abrechnung, Kosten können also nicht entstehen; trotzdem bleibt der
+Wächter weit unter den Grenzen des Gratis-Kontingents:
+
+- Ein Prüflauf ist genau eine Anfrage. Es gibt keinen neuen Versuch, weder im
+  Skript noch in der HTTP-Sitzung; eine Antwort 429 (Kontingent erschöpft)
+  macht den Lauf rot.
+- Höchstens `KI_WAECHTER_MAX_REQUESTS` (10) Anfragen am Tag. Der Tag des
+  Kontingents beginnt um 0:00 Uhr Pazifikzeit, in Wien meist 9:00 Uhr. Der Job
+  `gate` zählt die gestarteten Prüfläufe dieses Workflows seit diesem
+  Zeitpunkt und startet keinen, der darüber ginge. Pull Requests (drei
+  Anfragen) und Läufe von Hand (eine) dürfen bis 9; die letzte Anfrage bleibt
+  dem täglichen Lauf.
+- Der tägliche Lauf startet am selben Tag nicht noch einmal von selbst, auch
+  nicht nach einem Fehler.
+- Die Eingabe ist auf 450.000 Zeichen begrenzt (etwa 130.000 Tokens). Eine
+  größere Eingabe wird nicht gesendet, der Lauf ist rot.
+- Die Läufe eines Pull Requests laufen nacheinander (`max-parallel: 1`).
+
+Im Gratis-Kontingent darf Google die Eingaben verwenden; sie bestehen nur aus
+den öffentlichen Texten des Feeds und der Betreiber.
 
 ## Sicherheit
 
-- Das Modell hat nur Lese-Werkzeuge. Es kann nichts schreiben, nichts
-  ausführen, nichts aus dem Netz holen und nichts veröffentlichen; das tun
-  die Schritte danach, mit festem Inhalt.
-- Nur der Schritt „Claude reads and compares“ bekommt
-  `CLAUDE_CODE_OAUTH_TOKEN`.
+- Das Modell bekommt nur den Prompt und die Eingabe, keine Werkzeuge. Es kann
+  nichts lesen, schreiben, ausführen oder veröffentlichen; das tun die
+  Schritte danach, mit festem Inhalt.
+- Nur der Schritt „Gemini reads and compares“ bekommt `GEMINI_API_KEY`. Der
+  Schlüssel geht im Kopf `x-goog-api-key` mit, nie in der URL oder im Log.
 - Die Texte der Betreiber sind Daten, keine Anweisungen; der Prompt sagt das,
   und die Eingabe rahmt sie mit `<<<DATEN … DATEN>>>`.
 - Freitext des Modells (Erwartet, Begründung, Vermutungen) wird vor dem
@@ -72,18 +110,19 @@ geprüften Meldungen schreibt das Skript, nicht das Modell.
 
 ## Ausfall
 
-Kann der Wächter nicht prüfen (Token leer oder abgelaufen, Modell bricht ab,
-Antwort ohne JSON), ist der Lauf rot, und die Prüfung `Nebenschritte` im
-Health check wird rot. Rot wird sie auch, wenn 36 Stunden kein Lauf
-aufgezeichnet wurde. Am selben Tag startet er nicht noch einmal von selbst;
-von Hand geht es jederzeit.
+Kann der Wächter nicht prüfen (Schlüssel leer oder abgelehnt, Kontingent
+erschöpft, Modell bricht ab, Antwort ohne JSON), ist der Lauf rot, und die
+Prüfung `Nebenschritte` im Health check wird rot. Rot wird sie auch, wenn
+36 Stunden kein Lauf aufgezeichnet wurde. Am selben Tag startet er nicht noch
+einmal von selbst; von Hand geht es, solange das Tagesbudget reicht.
 
 ## Probelauf im Pull Request
 
 Ändert ein Pull Request `scripts/ki_waechter.py`, den Prompt oder den
-Workflow, läuft der Wächter ohne Veröffentlichung an drei Feed-Ständen:
+Workflow, läuft der Wächter ohne Veröffentlichung über die 24 Stunden vor drei
+Feed-Ständen:
 
-| Commit | Stand | Erwartet |
+| Commit | Stand | Erwartet unter anderem |
 | --- | --- | --- |
 | `001e47c` | 27.10.2026 16:00 | F6 „algae path“ (Algenweg, behoben in #2075); F1 40A „Busse halten Liechtensteinstraße 39, Liechtensteinstraße 38“ neben der Verlegung Bauernfeldplatz; F2 „Liechtensteinstraße 37a gegenüber Bauernfeldplatz → …“ (beide behoben in #2087) |
 | `9e60b8d` | 30.10.2026 15:30 | F6 „All Saints' Worship“ (Allerheiligenverkehr, behoben in #2091) |
@@ -91,12 +130,6 @@ Workflow, läuft der Wächter ohne Veröffentlichung an drei Feed-Ständen:
 
 Der Prompt nennt keinen dieser Fälle (`tests/test_ki_waechter.py`).
 
-Erster Probelauf (PR #2092, 31.10.2026, Modell `claude-opus-5-5`): alle vier
-bekannten Funde erkannt, auch die zwei, die die Jules-Audits vom 27. bis
-29.10. als „OK“ führten; kein Zitat verworfen; 30 bis 70 Sekunden je Stand.
-
-## Kosten
-
-Der Wächter nutzt das vorhandene Secret `CLAUDE_CODE_OAUTH_TOKEN` (wie
-Code-Review und `@claude`), kein eigenes Abrechnungskonto. Ein Lauf liest
-etwa 15 bis 30 KB Eingabe und dauert wenige Minuten.
+Erster Probelauf (PR #2092, 31.10.2026, noch mit Claude und nur den zehn
+aktuellen Meldungen): alle vier bekannten Funde erkannt, auch die zwei, die
+die Jules-Audits vom 27. bis 29.10. als „OK“ führten; kein Zitat verworfen.

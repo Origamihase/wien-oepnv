@@ -1,12 +1,15 @@
 name: KI-Wächter
 
-# Daily display audit inside the project: Claude reads the ten feed items
-# next to their source texts and reports what the TV viewer would read
-# wrong. The successor of the Jules audits (Jules accepts no new sessions
-# after 2026-11-11). Operator decision 2026-10-31 (Michael): the rules stay
-# the feed chain; an AI only watches and reports, never rewrites. "Einen
-# Jules-Ersatz (Wächter-KI) im Projekt selbst. Achte bitte weiterhin auf
-# höchste Qualität und Effizienz." Details: docs/reference/ki_waechter.md.
+# Daily display audit inside the project: Gemini reads every item text the
+# feed showed in the last 24 hours next to its source texts and reports what
+# the TV viewer read wrong. The successor of the Jules audits (Jules accepts
+# no new sessions after 2026-11-11). Operator decision 2026-10-31 (Michael):
+# the rules stay the feed chain; an AI only watches and reports, never
+# rewrites. "Einen Jules-Ersatz (Wächter-KI) im Projekt selbst. Achte bitte
+# weiterhin auf höchste Qualität und Effizienz." The same day: the last
+# 24 hours, not only the current ten items, and Gemini through the free tier
+# of the Gemini API (secret GEMINI_API_KEY; a key without billing cannot
+# cost anything). Details: docs/reference/ki_waechter.md.
 #
 # When: once a day, on the first successful Update cycle from 15:00 Vienna
 # time. GitHub's own cron fires only a few of its slots a day here
@@ -17,18 +20,17 @@ name: KI-Wächter
 # ``data/side_steps/ki-waechter.json`` (also after a failure: no retries
 # that day, the Health check is red instead and a manual run is possible).
 #
-# How: ``scripts/ki_waechter.py prepare`` writes the input (feed, English
-# feed, source events); Claude Code runs headless with read-only tools
-# (Read, Grep, Glob; no Bash, no Write, no web) on
-# ``scripts/ki_waechter_prompt.md``; ``scripts/ki_waechter.py verify``
-# checks every quote verbatim against feed and sources before a finding
-# counts and writes ``docs/archive/audits/ki-waechter-YYYY-MM-DD.md``.
-# Findings open one GitHub issue (label ``ki-waechter``). The feed is never
-# changed.
+# How: ``scripts/ki_waechter.py prepare`` writes the input (every feed
+# version of 24 hours from the git history, the English feed, the source
+# events); ``ask`` sends it with ``scripts/ki_waechter_prompt.md`` to the
+# Gemini API in one call, without tools; ``verify`` checks every quote
+# verbatim against feed and sources before a finding counts and writes
+# ``docs/archive/audits/ki-waechter-YYYY-MM-DD.md``. Findings open one
+# GitHub issue (label ``ki-waechter``). The feed is never changed.
 #
 # A failed run is red here and turns the Health check red ("Nebenschritte",
 # record ``data/side_steps/ki-waechter.json``): a stage that cannot run, a
-# dead token for instance, must be noticed (Michael 2026-10-28).
+# missing or rejected key for instance, must be noticed (Michael 2026-10-28).
 #
 # Pull requests that touch the watcher run it on two days with known
 # findings (27.10.2026: "algae path" for Algenweg, 40A twice, a stop
@@ -59,18 +61,26 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  # Claude model of the audit. The quality of a finding matters more than
-  # the run time (Michael 2026-10-30: "Falsche Funde stören mich am meisten").
-  KI_WAECHTER_MODEL: claude-opus-5-5
-  # Claude Code CLI, pinned (same version as claude-code-action v1.0.242).
-  CLAUDE_CODE_VERSION: "2.1.290"
+  # Gemini model of the audit: the newest stable model in the free tier of
+  # the Gemini API (https://ai.google.dev/gemini-api/docs/pricing).
+  KI_WAECHTER_MODEL: gemini-3.8-flash
   # First Vienna hour of the day in which the audit runs.
   KI_WAECHTER_START_HOUR: "15"
+  # Gemini requests per day at most (free tier, day from 0:00 Pacific
+  # time). Each audit job sends exactly one; the gate counts the jobs of
+  # the day and runs nothing that would go beyond. The daily audit needs 1
+  # and always finds it, a pull request replay needs 3. Far below the
+  # free-tier daily limit (Michael 2026-10-31: "sorge auch hier dafür, dass
+  # das API-Limit nicht überschritten wird").
+  KI_WAECHTER_MAX_REQUESTS: "10"
 
 jobs:
   gate:
     runs-on: ubuntu-latest
     timeout-minutes: 3
+    permissions:
+      actions: read
+      contents: read
     outputs:
       run: ${{ steps.decide.outputs.run }}
       revs: ${{ steps.decide.outputs.revs }}
@@ -86,49 +96,81 @@ jobs:
           REV_INPUT: ${{ inputs.rev }}
           OWNER_REPO: ${{ github.repository }}
           PR_HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          RUN_ID: ${{ github.run_id }}
         shell: bash
         run: |
           set -euo pipefail
           out() { echo "$1" >> "$GITHUB_OUTPUT"; }
+          note() { echo "$1"; echo "$1" >> "$GITHUB_STEP_SUMMARY"; }
+          # Requests already used today. Every audit job sends exactly one
+          # request (no retries), so started audit jobs of this workflow
+          # since midnight Pacific time (when the free-tier day of the
+          # Gemini API resets) count; this run's own jobs are not started yet.
+          used_today() {
+            local midnight since ids id n used=0
+            midnight="$(TZ=America/Los_Angeles date -d 'today 00:00' +%s)"
+            since="$(date -u -d "@${midnight}" +%Y-%m-%dT%H:%M:%SZ)"
+            ids="$(gh api "repos/${OWNER_REPO}/actions/workflows/ki-waechter.yml/runs?created=%3E%3D${since}&per_page=100" \
+                     --jq ".workflow_runs[] | select(.id != ${RUN_ID}) | .id")"
+            for id in ${ids}; do
+              n="$(gh api "repos/${OWNER_REPO}/actions/runs/${id}/jobs?per_page=100" \
+                     --jq '[.jobs[] | select(.name | startswith("audit")) | select(.conclusion != "skipped")] | length')"
+              used=$(( used + n ))
+            done
+            echo "${used}"
+          }
           case "$EVENT" in
             pull_request)
               # A fork gets no secrets; its pull request skips the replay.
               if [[ "${PR_HEAD_REPO}" != "${OWNER_REPO}" ]]; then out "run=false"; exit 0; fi
-              out "run=true"; out "publish=false"
+              out "publish=false"
               out 'revs=["001e47c665cec9f2d1d0c0c0d912230bb7f3795d","9e60b8de9dce438906b257e42a8b524e4f191f67","HEAD"]'
-              exit 0 ;;
+              need=3; limit=$(( KI_WAECHTER_MAX_REQUESTS - 1 )) ;;
             workflow_dispatch)
               if [[ -z "${REV_INPUT}" ]]; then
-                out "run=true"; out "publish=true"; out 'revs=["HEAD"]'
+                out "publish=true"; out 'revs=["HEAD"]'
               elif [[ "${REV_INPUT}" =~ ^[0-9a-fA-F]{7,40}$ ]]; then
-                out "run=true"; out "publish=false"; out "revs=[\"${REV_INPUT}\"]"
+                out "publish=false"; out "revs=[\"${REV_INPUT}\"]"
               else
                 echo "::error title=KI-Wächter::rev muss ein Commit-Hash sein"; exit 1
               fi
-              exit 0 ;;
+              need=1; limit=$(( KI_WAECHTER_MAX_REQUESTS - 1 )) ;;
+            *)
+              out "publish=true"; out 'revs=["HEAD"]'
+              if [[ "${CYCLE_CONCLUSION}" != "success" || "${CYCLE_BRANCH}" != "main" ]]; then
+                echo "Update cycle ${CYCLE_CONCLUSION} on ${CYCLE_BRANCH}: no audit."; out "run=false"; exit 0
+              fi
+              hour="$(TZ=Europe/Vienna date +%-H)"
+              today="$(TZ=Europe/Vienna date +%F)"
+              if (( hour < KI_WAECHTER_START_HOUR )); then
+                echo "${hour}:xx Vienna time, audit starts at ${KI_WAECHTER_START_HOUR}:00."; out "run=false"; exit 0
+              fi
+              last="$(gh api "repos/${OWNER_REPO}/contents/data/side_steps/ki-waechter.json?ref=main" \
+                        -H "Accept: application/vnd.github.raw" 2>/dev/null \
+                      | jq -r '.steps["KI-Wächter"].at // empty' 2>/dev/null || true)"
+              if [[ -n "${last}" && "$(TZ=Europe/Vienna date -d "${last}" +%F)" == "${today}" ]]; then
+                echo "Today's audit already ran (${last})."; out "run=false"; exit 0
+              fi
+              # The daily audit may use the last request of the budget,
+              # pull requests and manual runs leave it free.
+              need=1; limit="${KI_WAECHTER_MAX_REQUESTS}" ;;
           esac
-          out "publish=true"; out 'revs=["HEAD"]'
-          if [[ "${CYCLE_CONCLUSION}" != "success" || "${CYCLE_BRANCH}" != "main" ]]; then
-            echo "Update cycle ${CYCLE_CONCLUSION} on ${CYCLE_BRANCH}: no audit."; out "run=false"; exit 0
+          used="$(used_today)"
+          if (( used + need > limit )); then
+            note "KI-Wächter: ${used} von ${KI_WAECHTER_MAX_REQUESTS} Anfragen des Tages verbraucht, dieser Lauf bräuchte ${need}. Kein Aufruf, damit das Gratis-Kontingent nicht überschritten wird (der Tag des Kontingents beginnt um 0:00 Uhr Pazifikzeit, in Wien meist 9:00 Uhr)."
+            if [[ "$EVENT" != "pull_request" ]]; then
+              echo "::warning title=KI-Wächter::Tagesbudget der Gemini-Anfragen erreicht (${used}/${KI_WAECHTER_MAX_REQUESTS})"
+            fi
+            out "run=false"; exit 0
           fi
-          hour="$(TZ=Europe/Vienna date +%-H)"
-          today="$(TZ=Europe/Vienna date +%F)"
-          if (( hour < KI_WAECHTER_START_HOUR )); then
-            echo "${hour}:xx Vienna time, audit starts at ${KI_WAECHTER_START_HOUR}:00."; out "run=false"; exit 0
-          fi
-          last="$(gh api "repos/${OWNER_REPO}/contents/data/side_steps/ki-waechter.json?ref=main" \
-                    -H "Accept: application/vnd.github.raw" 2>/dev/null \
-                  | jq -r '.steps["KI-Wächter"].at // empty' 2>/dev/null || true)"
-          if [[ -n "${last}" && "$(TZ=Europe/Vienna date -d "${last}" +%F)" == "${today}" ]]; then
-            echo "Today's audit already ran (${last})."; out "run=false"; exit 0
-          fi
+          note "KI-Wächter: ${used} von ${KI_WAECHTER_MAX_REQUESTS} Anfragen des Tages verbraucht, dieser Lauf sendet ${need}."
           out "run=true"
 
   audit:
     needs: gate
     if: needs.gate.outputs.run == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     permissions:
       contents: write
       issues: write
@@ -169,38 +211,33 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/install-deps
 
-      - name: Install Claude Code
-        shell: bash
-        run: npm install --global --no-fund --no-audit "@anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}"
-
       - name: Prepare the input
         shell: bash
         run: |
           set -euo pipefail
-          if [[ "${REV}" != "HEAD" ]]; then git fetch --quiet --depth=1 origin "${REV}"; fi
-          python scripts/ki_waechter.py prepare --rev "${REV}" --out "${WORK}"
+          # The audit reads every feed version of the 24 hours before REV
+          # (each Update cycle commits one), so the shallow checkout gets
+          # 26 hours of history behind REV. HEAD is the checked-out ref.
+          target="${REV}"
+          if [[ "${REV}" == "HEAD" ]]; then
+            target="${GITHUB_REF}"
+          else
+            git fetch --quiet --depth=1 origin "${REV}"
+          fi
+          since="$(( $(git show -s --format=%ct "${REV}") - 26 * 3600 ))"
+          git fetch --quiet --shallow-since="$(date -u -d "@${since}" +%Y-%m-%dT%H:%M:%SZ)" origin "${target}"
+          python scripts/ki_waechter.py prepare --rev "${REV}" --hours 24 --out "${WORK}"
 
-      - name: Claude reads and compares
+      # One request, no tools: the model sees only the prompt and the
+      # input, and only this step sees the key.
+      - name: Gemini reads and compares
         id: ai
         continue-on-error: true
         timeout-minutes: 15
         env:
-          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         shell: bash
-        run: |
-          set -euo pipefail
-          if [[ -z "${CLAUDE_CODE_OAUTH_TOKEN}" ]]; then
-            echo "::error title=KI-Wächter::CLAUDE_CODE_OAUTH_TOKEN ist leer"; exit 1
-          fi
-          prompt="$(sed "s|{EINGABE}|${WORK}/eingabe.md|" scripts/ki_waechter_prompt.md)"
-          claude -p "${prompt}" \
-            --model "${KI_WAECHTER_MODEL}" \
-            --output-format json \
-            --max-turns 40 \
-            --allowedTools "Read" "Grep" "Glob" \
-            --disallowedTools "Bash" "Edit" "Write" "NotebookEdit" "WebFetch" "WebSearch" "Task" \
-            > "${WORK}/claude.json"
-          jq -r '"Claude: \(.subtype), \(.num_turns) Schritte, \(.duration_ms / 1000 | floor) s"' "${WORK}/claude.json"
+        run: python scripts/ki_waechter.py ask --dir "${WORK}" --model "${KI_WAECHTER_MODEL}"
 
       - name: Check every finding and write the audit file
         id: verify
@@ -215,8 +252,7 @@ jobs:
           if [[ "${PUBLISH}" == "true" ]]; then
             report="docs/archive/audits/ki-waechter-$(TZ=Europe/Vienna date +%F).md"
           fi
-          python scripts/ki_waechter.py verify --dir "${WORK}" --claude-output "${WORK}/claude.json" \
-            --model "${KI_WAECHTER_MODEL}" --run-url "${RUN_URL}" --report "${report}"
+          python scripts/ki_waechter.py verify --dir "${WORK}" --run-url "${RUN_URL}" --report "${report}"
           echo "report=${report}" >> "$GITHUB_OUTPUT"
           cat "${report}" >> "$GITHUB_STEP_SUMMARY"
 
@@ -290,5 +326,5 @@ jobs:
           VERIFY_OUTCOME: ${{ steps.verify.outcome }}
         shell: bash
         run: |
-          echo "::error title=KI-Wächter::Prüfung nicht gelaufen (Claude: ${AI_OUTCOME}, Prüfung: ${VERIFY_OUTCOME:-nicht gestartet})"
+          echo "::error title=KI-Wächter::Prüfung nicht gelaufen (Gemini: ${AI_OUTCOME}, Prüfung: ${VERIFY_OUTCOME:-nicht gestartet})"
           exit 1

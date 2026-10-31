@@ -690,7 +690,12 @@ WORKFLOW_SECRETS: tuple[WorkflowSecret, ...] = (
     WorkflowSecret("VOR_BASE_URL", "optional",
                    "VAO-Host, Standard in src/providers/vor.py"),
     WorkflowSecret("CLAUDE_CODE_OAUTH_TOKEN", "tooling",
-                   "Claude-Workflows (Code-Review, @claude, KI-Wächter)"),
+                   "Claude-Workflows (Code-Review, @claude)"),
+    # A key of the free tier without billing (operator decision 2026-10-31).
+    # A missing or rejected key fails the KI-Wächter run, and that shows in
+    # "Nebenschritte".
+    WorkflowSecret("GEMINI_API_KEY", "tooling",
+                   "KI-Wächter (Gemini API, Gratis-Kontingent)"),
     WorkflowSecret("REPO_ADMIN_TOKEN", "tooling",
                    "SEO-Guard: Beschreibung und Homepage des Repositorys"),
 )

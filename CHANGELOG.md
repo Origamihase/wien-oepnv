@@ -18,20 +18,26 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
   Texten den Sinn jedes dritten (erfundene Anfangszeiten, „U-Bahn“ statt
   Zug) und übersetzten schlechter als die heutige EN-Kette. Michaels
   Entscheidung: Die Regeln bleiben die Feed-Kette, eine KI meldet nur („Einen
-  Jules-Ersatz (Wächter-KI) im Projekt selbst“). Neu: `ki-waechter.yml`
-  läuft nach dem ersten erfolgreichen Update-Lauf ab 15:00 Wiener Zeit;
-  `scripts/ki_waechter.py` bereitet Feed und Quellen vor, Claude Code liest
-  mit Lese-Werkzeugen nach `scripts/ki_waechter_prompt.md` (Fundklassen F1
-  bis F6 wie im Jules-Prompt vom 30.10.), und das Skript lässt einen Fund
-  nur gelten, wenn seine Zitate wörtlich in Feed und Quelle stehen. Bericht
+  Jules-Ersatz (Wächter-KI) im Projekt selbst“), geprüft werden alle
+  Meldungstexte der letzten 24 Stunden, das Modell ist Gemini über das
+  Gratis-Kontingent der Gemini API (Secret `GEMINI_API_KEY`), und das
+  API-Limit darf nicht überschritten werden. Neu: `ki-waechter.yml` läuft
+  nach dem ersten erfolgreichen Update-Lauf ab 15:00 Wiener Zeit;
+  `scripts/ki_waechter.py` liest die Feed-Fassungen der 24 Stunden aus der
+  Git-Historie, schickt sie mit `scripts/ki_waechter_prompt.md` (Fundklassen
+  F1 bis F6 wie im Jules-Prompt vom 30.10.) in einer Anfrage ohne Werkzeuge
+  an Gemini und lässt einen Fund nur gelten, wenn seine Zitate wörtlich in
+  Feed und Quelle stehen (Doppelungen nur bei gleichzeitig sichtbaren
+  Meldungen). Höchstens 10 Anfragen am Tag, keine Wiederholung, Eingabe
+  höchstens 450.000 Zeichen. Bericht
   `docs/archive/audits/ki-waechter-YYYY-MM-DD.md`, belegte Funde als Issue
   (Label `ki-waechter`), ein Lauf, der nicht prüfen konnte, macht den
   Health check rot (`Nebenschritte`, `data/side_steps/ki-waechter.json`,
   36 h). Ein Pull Request auf den Wächter spielt ihn an 27.10. und 30.10.
-  (bekannte Funde) und am aktuellen Feed ab; der erste Probelauf erkannte
-  alle vier bekannten Funde, auch die zwei, die die Jules-Audits vom 27. bis
-  29.10. als „OK“ führten (`docs/architecture.md` §1 „KI-Wächter“,
-  `docs/reference/ki_waechter.md`).
+  (bekannte Funde) und am aktuellen Feed ab; ein erster Probelauf mit Claude
+  über die zehn aktuellen Meldungen erkannte alle vier bekannten Funde, auch
+  die zwei, die die Jules-Audits vom 27. bis 29.10. als „OK“ führten
+  (`docs/architecture.md` §1 „KI-Wächter“, `docs/reference/ki_waechter.md`).
 * **EN-Feed: „<Anlass>verkehr“ bei WL und ÖBB (2026-10-30)**: Das
   Jules-Audit vom 30.10. fand „38B/39B: All Saints' Worship 01.11.2026“ im
   englischen Feed; gemeint ist der Allerheiligenverkehr. Das
