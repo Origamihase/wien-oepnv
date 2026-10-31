@@ -43,3 +43,6 @@ data/*.lock
 cache/**/*.lock
 .hypothesis/
 patch_lines.patch
+
+# KI-Wächter: input and Claude's answer of a run (scripts/ki_waechter.py)
+.ki-waechter/

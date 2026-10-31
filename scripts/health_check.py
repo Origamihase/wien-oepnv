@@ -66,9 +66,10 @@ only when the fetch is broken, never because no train runs).
 
    **Nebenschritte** (``data/side_steps/``, written by
    ``scripts/record_side_steps.py``): statistics, line check, Feed-Wächter
-   and HAFAS station lines run with ``continue-on-error``. Red while the last
-   run of one of them failed (operator decision 2026-10-28: "ein Fehler
-   sollte auffallen"; see :func:`check_side_steps`).
+   and HAFAS station lines run with ``continue-on-error``; the daily
+   KI-Wächter (``ki-waechter.yml``) records its run the same way. Red while
+   the last run of one of them failed (operator decision 2026-10-28: "ein
+   Fehler sollte auffallen"; see :func:`check_side_steps`).
 
 4. **Zugangsdaten (Secrets).** Every repository secret a workflow passes on is
    listed in :data:`WORKFLOW_SECRETS`. A secret the feed pipeline needs that
@@ -128,6 +129,9 @@ FEED_MAX_AGE_H = _env_float("HEALTH_FEED_MAX_AGE_HOURS", 4.0)
 # Stations: update-stations runs weekly (Sun 01:00 UTC). 8 days = one full
 # cycle + jitter; older means a weekly run was missed.
 STATIONS_MAX_AGE_H = _env_float("HEALTH_STATIONS_MAX_AGE_HOURS", 192.0)
+# The KI-Wächter runs once a day from 15:00 Vienna time; 36 h leaves room
+# for a late first Update cycle of the next day.
+KI_WAECHTER_MAX_AGE_H = _env_float("HEALTH_KI_WAECHTER_MAX_AGE_HOURS", 36.0)
 # Station sources: the weekly run downloads them and falls back to the copy
 # under data/ when a download fails, so a dead source would only show in the
 # log. 15 days = two weekly runs in a row without a good answer (one failed
@@ -686,7 +690,7 @@ WORKFLOW_SECRETS: tuple[WorkflowSecret, ...] = (
     WorkflowSecret("VOR_BASE_URL", "optional",
                    "VAO-Host, Standard in src/providers/vor.py"),
     WorkflowSecret("CLAUDE_CODE_OAUTH_TOKEN", "tooling",
-                   "Claude-Workflows (Code-Review, @claude)"),
+                   "Claude-Workflows (Code-Review, @claude, KI-Wächter)"),
     WorkflowSecret("REPO_ADMIN_TOKEN", "tooling",
                    "SEO-Guard: Beschreibung und Homepage des Repositorys"),
 )
@@ -786,6 +790,7 @@ def check_feed_watch(now: datetime) -> Check:
 SIDE_STEP_RECORDS: list[tuple[str, str, float]] = [
     ("update-cycle.json", "Update-Lauf", FEED_MAX_AGE_H),
     ("update-stations.json", "Stationslauf", STATIONS_MAX_AGE_H),
+    ("ki-waechter.json", "KI-Wächter", KI_WAECHTER_MAX_AGE_H),
 ]
 SIDE_STEP_DIR = REPO_ROOT / "data" / "side_steps"
 

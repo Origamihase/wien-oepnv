@@ -229,6 +229,7 @@ def test_no_workflow_force_pushes_or_pushes_on_its_own() -> None:
                 publishers.add(name)
     assert publishers == {
         "build-feed.yml",
+        "ki-waechter.yml",
         "manual-full-refresh.yml",
         "seo-guard.yml",
         "update-cycle.yml",
@@ -237,7 +238,8 @@ def test_no_workflow_force_pushes_or_pushes_on_its_own() -> None:
 
 
 def test_writers_hold_contents_write() -> None:
-    for name in ("build-feed.yml", "manual-full-refresh.yml", "seo-guard.yml", "update-cycle.yml", "update-stations.yml"):
+    writers = ("build-feed.yml", "ki-waechter.yml", "manual-full-refresh.yml", "seo-guard.yml", "update-cycle.yml", "update-stations.yml")
+    for name in writers:
         doc = yaml.safe_load((WORKFLOWS / name).read_text(encoding="utf-8"))
         perms = [job.get("permissions", {}).get("contents") for job in doc["jobs"].values()]
         assert "write" in perms, name

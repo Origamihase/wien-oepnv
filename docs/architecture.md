@@ -19,6 +19,7 @@ darunter.
   - [Rohdaten und Verwürfe des Abrufs (seit 2026-10-04)](#rohdaten-und-verwürfe-des-abrufs-seit-2026-10-04)
   - [Ausfall einer Quelle (seit 2026-10-04)](#ausfall-einer-quelle-seit-2026-10-04)
   - [Feed-Wächter (seit 2026-10-10)](#feed-wächter-seit-2026-10-10)
+  - [KI-Wächter (seit 2026-10-31)](#ki-wächter-seit-2026-10-31)
   - [Geodaten im Feed: GeoRSS nur, wo der Ort sicher ist (seit 2026-10-16)](#geodaten-im-feed-georss-nur-wo-der-ort-sicher-ist-seit-2026-10-16)
   - [Link und Quelle jeder Meldung (seit 2026-10-17)](#link-und-quelle-jeder-meldung-seit-2026-10-17)
   - [Ein einheitliches Bild je Meldung (seit 2026-10-19)](#ein-einheitliches-bild-je-meldung-seit-2026-10-19)
@@ -1424,6 +1425,53 @@ Hinweis) und je Regel als GitHub-Issue, das sich selbst schließt (dafür
 2026-10-11: ein Fund soll am selben Tag per Mail ankommen). Regeln,
 Schwellen und Rückprüfung über 1 975 Feed-Stände:
 [`reference/feed_watch.md`](reference/feed_watch.md).
+
+### KI-Wächter (seit 2026-10-31)
+
+Betreiberentscheidung (Michael, 2026-10-31): Die Regeln bleiben die
+Feed-Kette; eine KI liest nur mit und meldet, sie schreibt keinen Text um.
+Vorausgegangen war die Frage, ob ein kleines Sprachmodell die Quelltexte der
+Betreiber selbst neu schreiben könnte. Gemessen an 20 echten Texten (WL, ÖBB,
+Baustellen) veränderten kleine Modelle auf CPU den Sinn jedes dritten Textes
+(erfundene Anfangszeiten, „U-Bahn“ statt Zug, „gesperrt“ statt „als Sackgasse
+möglich“), und ein 3B-Modell übersetzte schlechter als die heutige
+EN-Kette. Ein Regelfehler ist reproduzierbar und als Klasse behebbar, ein
+Modellfehler nicht. Auf seine Antwort „Einen Jules-Ersatz (Wächter-KI) im
+Projekt selbst. Achte bitte weiterhin auf höchste Qualität und Effizienz.“
+entstand der tägliche KI-Wächter als Nachfolger der Jules-Audits (Jules nimmt
+nach dem 2026-11-11 keine Sitzungen mehr an).
+
+* `ki-waechter.yml` läuft einmal am Tag nach dem ersten erfolgreichen
+  Update-Lauf ab 15:00 Wiener Zeit (`workflow_run`; GitHubs eigener Cron
+  feuert hier nur wenige seiner Termine). Ein Lauf am selben Tag, auch ein
+  gescheiterter, beendet jeden weiteren Versuch dieses Tages.
+* `scripts/ki_waechter.py prepare` schreibt die Eingabe: jede Meldung des
+  deutschen Feeds mit ihrer englischen Fassung und den Cache-Ereignissen
+  ihrer Linien. Kopf, GUIDs, Zahlen und Tabelle des Berichts kommen aus dem
+  Skript, nie vom Modell.
+* Claude Code liest headless mit `scripts/ki_waechter_prompt.md`, nur mit
+  Lese-Werkzeugen (Read, Grep, Glob; kein Bash, kein Schreiben, kein Netz).
+  Die Fundklassen F1 bis F6 sind geschlossen, entschiedene Formate stehen
+  als Nicht-Funde im Prompt; Stil und Verbesserungsideen sind nie Funde.
+* `scripts/ki_waechter.py verify` lässt einen Fund nur gelten, wenn sein
+  Zitat wörtlich in der Meldung steht, bei einem falschen Fakt (F3) auch das
+  Quellzitat wörtlich in den Quellen, und die Klasse zum Feed passt (F6 nur
+  Englisch, F1 und F3 nur Deutsch, F1 mit zwei Meldungen). Alles andere
+  steht als „Nicht belegt“ im Bericht, zählt aber nicht (Michael,
+  2026-10-30: „Falsche Funde stören mich am meisten“).
+* Der Bericht `docs/archive/audits/ki-waechter-YYYY-MM-DD.md` geht über
+  `publish_to_main.sh` nach `main`; belegte Funde öffnen ein Issue (Label
+  `ki-waechter`). Der Feed bleibt unverändert.
+* Ein Lauf, der nicht prüfen konnte (leeres oder abgelaufenes
+  `CLAUDE_CODE_OAUTH_TOKEN`, Abbruch des Modells), ist rot und macht die
+  Prüfung `Nebenschritte` im Health check rot
+  (`data/side_steps/ki-waechter.json`, Grenze 36 h).
+* Ein Pull Request, der Skript, Prompt oder Workflow ändert, spielt den
+  Wächter an drei Feed-Ständen ab, ohne zu veröffentlichen: 27.10.2026
+  („algae path“ für Algenweg, 40A doppelt), 30.10.2026 („All Saints'
+  Worship“) und der aktuelle Stand. Der Prompt nennt diese Fälle nicht.
+
+Ablauf, Fundklassen und Grenzen: [`reference/ki_waechter.md`](reference/ki_waechter.md).
 
 ### Geodaten im Feed: GeoRSS nur, wo der Ort sicher ist (seit 2026-10-16)
 
@@ -2843,7 +2891,8 @@ Nebenschritte sind die Schritte mit `continue-on-error`, die die
 Veröffentlichung nie aufhalten dürfen: Statistik
 (`generate_markdown_stats.py`), Linienprüfung (`check_feed_lines.py`) und
 Feed-Wächter (`feed_watch.py`) im Update-Lauf, ÖBB-Stationslinien
-(`update_oebb_station_lines.py`) im Stationslauf. Bis 2026-10-28 hinterließ
+(`update_oebb_station_lines.py`) im Stationslauf; seit 2026-10-31 auch der
+tägliche KI-Wächter (`ki-waechter.yml`, Grenze 36 h). Bis 2026-10-28 hinterließ
 ihr Scheitern nur eine orange Annotation in einem grünen Lauf, und GitHub
 schickte keine Mail. Gemessen ist keiner gescheitert (Update-Läufe seit
 01.09.2026, Stationsläufe seit 01.01.2026), der Mangel war latent.

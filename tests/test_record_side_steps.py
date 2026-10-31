@@ -101,5 +101,9 @@ def test_the_workflows_record_every_side_step() -> None:
     assert "--state data/side_steps/update-stations.json" in stations
     assert stations.index("Record side-step outcomes") < stations.index("Commit and push changes")
     files = {name for name, _workflow, _age in hc.SIDE_STEP_RECORDS}
-    assert files == {"update-cycle.json", "update-stations.json"}
+    assert files == {"update-cycle.json", "update-stations.json", "ki-waechter.json"}
+    watcher = (REPO / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8")
+    assert "--state data/side_steps/ki-waechter.json" in watcher
+    assert '"KI-Wächter=${outcome}"' in watcher
+    assert watcher.index("Record side-step outcome") < watcher.index("Publish the audit file")
 
