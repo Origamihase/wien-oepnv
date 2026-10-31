@@ -162,12 +162,9 @@ def test_baustellen_main_survives_data_degradation(
 ) -> None:
     from scripts import update_baustellen_cache
 
-    # Import the original class definition from the SAME module the script
-    # uses (``utils.cache`` once the script has put ``src`` on sys.path).
-    # Under CI's ``PYTHONPATH=src`` ``utils.cache`` and ``src.utils.cache`` are
-    # distinct module objects with distinct ``DataDegradationError`` classes,
-    # so the raised type must match the one the script's ``except`` references.
-    from utils.cache import DataDegradationError
+    # The class the script's ``except`` references: the script imports
+    # ``src.utils.cache`` like every other module (code audit 2026-10-31).
+    from src.utils.cache import DataDegradationError
 
     def fake_fetch_remote(url: str, timeout: int) -> None:
         return None

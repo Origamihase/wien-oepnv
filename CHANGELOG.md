@@ -10,6 +10,35 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **Aufräumen nach dem Code-Audit (2026-10-31)**: Umsetzung der Empfehlung aus
+  dem Code-Audit vom 31.10. (kein schwerer Fund, sechs niedrige Klassen; Michael:
+  „Ja, Aufräum-PR bauen“). Skripte importieren Projektmodule nur noch über `src.`:
+  `update_baustellen_cache.py` und `health_check.py` luden `src/utils/*` zweimal,
+  als `utils.*` und als `src.utils.*`, mit getrennten Hook-Listen und zwei
+  HTTP-Aufräum-Threads; `configure_feed.py`, `scan_secrets.py` und
+  `validate_stations.py` legten `src/` ebenfalls auf den Pfad. Die Regel steht in
+  `docs/development.md` („Skripte im Überblick“), der neue Strukturtest
+  `tests/test_scripts_import_src_only.py` prüft jedes Skript. Mit den echten Typen
+  fand mypy zwei überflüssige Casts und eine ungeprüfte Verzweigung im Health
+  check (behoben). Je eine Quelle statt Kopien: Haversine
+  (`src/utils/geo.py: haversine_m`; zwei Kopien hatten keine Begrenzung des
+  `asin`-Arguments), Zeitzonen-Helfer (`src/utils/vienna_clock.py: vienna_aware`),
+  Stationsdatei-Schreiber (`src/places/merge.py: write_stations_payload`),
+  Pfad-Fingerprint (`src/utils/env.py`), Akzent-Helfer
+  (`src/utils/text.py: strip_accents`), WL-Störungsfilter (`src/feed/merge.py`).
+  Entfernt: vier Definitionen ohne Verweis (`vor._log_error`,
+  `wl_lines._strip_existing_line_block`, `_HbfDepartureObservation`,
+  `FLORIDSDORF_CANONICAL_SEED`) und zehn nie laufende Import-Rückfälle in acht
+  Skripten. Docstring und Test (`tests/test_identity_utc_day.py`) halten fest,
+  dass die Rückfall-Identität einer Meldung ohne Provider-`_identity` den
+  UTC-Tag des Beginns trägt (die WL-Identität selbst nimmt den Wiener Tag, und
+  alle heutigen Quellen setzen eine `guid`, an der `first_seen` hängt), damit
+  eine Änderung eine Entscheidung bleibt. Der Health check gibt seinen
+  Updater-Kindprozessen nur noch das Wurzelverzeichnis auf `PYTHONPATH`.
+  Kommentar zu den Baustellen-Daten mit `Z` berichtigt, Bedingung
+  in `_parse_range` vereinfacht, Einrückung in `oebb._fetch_xml` begradigt. Keine
+  Änderung an Feed-Inhalten: Replay alt gegen neu über alle 86 Feed-Stände seit
+  30.10. identisch (DE, EN, State).
 * **Health check: Werkzeug-Secrets fallen auf, wenn sie nicht mehr tragen
   (2026-10-31)**: Fund B des Architektur-Reviews vom 31.10. (Michael: „ja,
   bau das bitte“). `CLAUDE_CODE_OAUTH_TOKEN` und `REPO_ADMIN_TOKEN` gehen als

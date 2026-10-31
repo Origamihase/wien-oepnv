@@ -746,24 +746,6 @@ def _departure_delay_minutes(dep: Mapping[str, Any]) -> float | None:
 
 
 @dataclass(frozen=True)
-class _HbfDepartureObservation:
-    """One filtered + direction-classified departure at Wien Hauptbahnhof.
-
-    Field shapes mirror :class:`_SbahnLegObservation` so that the
-    existing :func:`_observe_legs` consumer (which duck-types on
-    ``.name`` / ``.scheduled`` / ``.delay_minutes``) accepts these
-    instances unchanged. The extra ``direction`` attribute is read by
-    the caller (which groups observations into per-direction lists
-    before invoking ``_observe_legs``).
-    """
-
-    direction: str  # label: "Meidling" or "Praterstern" (legacy: "Floridsdorf")
-    name: str       # canonicalised line designation (e.g., "S1", "REX3")
-    scheduled: datetime
-    delay_minutes: float
-
-
-@dataclass(frozen=True)
 class _CollectionDiagnostics:
     """Per-tick filter diagnostics for operator logging.
 

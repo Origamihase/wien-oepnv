@@ -37,7 +37,7 @@ Sites enumerated
         accepts the non-finite literals that ``json.loads`` parses
         from a compromised upstream JSON.
 
-      * :func:`scripts.enrich_station_aliases._write_stations_payload`
+      * :func:`scripts.enrich_station_aliases.write_stations_payload`
         — the alias-enrichment writer that re-reads ``data/stations.json``
         from the previous cron step and writes it back after appending
         aliases from VOR / GTFS / pendler-alternative-names sources.
@@ -45,7 +45,7 @@ Sites enumerated
         verbatim because the alias enricher never touches
         ``latitude`` / ``longitude``.
 
-      * :func:`scripts.update_all_stations._write_stations_payload` —
+      * :func:`scripts.update_all_stations.write_stations_payload` —
         the orchestrator that copies ``data/stations.json`` into a
         temp directory, runs every sub-script in sequence against the
         temp file, and atomically copies the result back to
@@ -139,9 +139,9 @@ that script on 2026-10-16):
 
   1. ``scripts/update_station_directory.py:write_json`` —
      pass ``allow_nan=False`` to ``json.dump``.
-  2. ``scripts/enrich_station_aliases.py:_write_stations_payload`` —
+  2. ``scripts/enrich_station_aliases.py:write_stations_payload`` —
      same.
-  3. ``scripts/update_all_stations.py:_write_stations_payload`` —
+  3. ``scripts/update_all_stations.py:write_stations_payload`` —
      same.
   4. ``scripts/update_wl_stations.py:merge_into_stations`` (the
      ``json.dump`` near line 1226) — same.
@@ -313,7 +313,7 @@ def test_inventory_update_station_directory_write_json_pins_allow_nan_false() ->
 
 
 # ---------------------------------------------------------------------------
-# (A2) ``enrich_station_aliases._write_stations_payload`` — PoC + inventory.
+# (A2) ``enrich_station_aliases.write_stations_payload`` — PoC + inventory.
 # ---------------------------------------------------------------------------
 
 
@@ -330,7 +330,7 @@ def test_enrich_station_aliases_writer_rejects_non_finite(
     lat: float,
     lon: float,
 ) -> None:
-    """PoC: ``scripts/enrich_station_aliases.py:_write_stations_payload``
+    """PoC: ``scripts/enrich_station_aliases.py:write_stations_payload``
     must refuse to serialise a poisoned station.  The alias enricher
     re-reads ``data/stations.json`` from the previous cron step; a
     planted ``NaN`` / ``Inf`` flows verbatim through the rewrite.
@@ -341,13 +341,13 @@ def test_enrich_station_aliases_writer_rejects_non_finite(
     out_path = tmp_path / "stations.json"
     poisoned = [_poisoned_station(lat=lat, lon=lon)]
     with pytest.raises(ValueError):
-        module._write_stations_payload(out_path, poisoned)
+        module.write_stations_payload(out_path, poisoned)
 
 
 def test_enrich_station_aliases_writer_accepts_legitimate(tmp_path: Path) -> None:
     module = _import_script("enrich_station_aliases")
     out_path = tmp_path / "stations.json"
-    module._write_stations_payload(out_path, [_legit_station()])
+    module.write_stations_payload(out_path, [_legit_station()])
     raw = out_path.read_text(encoding="utf-8")
     parsed = json.loads(raw, parse_constant=_raise_on_nan_or_infinity)
     assert parsed["stations"][0]["name"] == "Wien Hauptbahnhof"
@@ -355,12 +355,12 @@ def test_enrich_station_aliases_writer_accepts_legitimate(tmp_path: Path) -> Non
 
 def test_inventory_enrich_station_aliases_writer_pins_allow_nan_false() -> None:
     module = _import_script("enrich_station_aliases")
-    source = inspect.getsource(module._write_stations_payload)
+    source = inspect.getsource(module.write_stations_payload)
     assert "allow_nan=False" in source
 
 
 # ---------------------------------------------------------------------------
-# (A3) ``update_all_stations._write_stations_payload`` — PoC + inventory.
+# (A3) ``update_all_stations.write_stations_payload`` — PoC + inventory.
 # ---------------------------------------------------------------------------
 
 
@@ -388,13 +388,13 @@ def test_update_all_stations_writer_rejects_non_finite(
     out_path = tmp_path / "stations.json"
     poisoned = [_poisoned_station(lat=lat, lon=lon)]
     with pytest.raises(ValueError):
-        module._write_stations_payload(out_path, poisoned)
+        module.write_stations_payload(out_path, poisoned)
 
 
 def test_update_all_stations_writer_accepts_legitimate(tmp_path: Path) -> None:
     module = _import_script("update_all_stations")
     out_path = tmp_path / "stations.json"
-    module._write_stations_payload(out_path, [_legit_station()])
+    module.write_stations_payload(out_path, [_legit_station()])
     raw = out_path.read_text(encoding="utf-8")
     parsed = json.loads(raw, parse_constant=_raise_on_nan_or_infinity)
     assert parsed["stations"][0]["name"] == "Wien Hauptbahnhof"
@@ -402,7 +402,7 @@ def test_update_all_stations_writer_accepts_legitimate(tmp_path: Path) -> None:
 
 def test_inventory_update_all_stations_writer_pins_allow_nan_false() -> None:
     module = _import_script("update_all_stations")
-    source = inspect.getsource(module._write_stations_payload)
+    source = inspect.getsource(module.write_stations_payload)
     assert "allow_nan=False" in source
 
 
@@ -701,8 +701,8 @@ def test_inventory_every_committed_artefact_writer_pins_allow_nan_false() -> Non
 
     inventory: list[tuple[str, str]] = [
         ("update_station_directory", "write_json"),
-        ("enrich_station_aliases", "_write_stations_payload"),
-        ("update_all_stations", "_write_stations_payload"),
+        ("enrich_station_aliases", "write_stations_payload"),
+        ("update_all_stations", "write_stations_payload"),
         ("update_wl_stations", "merge_into_stations"),
     ]
     missing: list[str] = []
@@ -758,8 +758,8 @@ def test_module_imports_remain_clean() -> None:
     """
     for module_name, func_name in [
         ("update_station_directory", "write_json"),
-        ("enrich_station_aliases", "_write_stations_payload"),
-        ("update_all_stations", "_write_stations_payload"),
+        ("enrich_station_aliases", "write_stations_payload"),
+        ("update_all_stations", "write_stations_payload"),
         ("update_wl_stations", "merge_into_stations"),
         ("update_baustellen_cache", "_build_location"),
     ]:

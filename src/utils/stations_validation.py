@@ -23,6 +23,7 @@ from src.utils.files import (
     _reject_non_finite_float,
     read_capped_text,
 )
+from src.utils.geo import haversine_m
 from src.utils.stations import MAX_STATIONS_FILE_BYTES, _normalize_token
 from src.utils.text import escape_markdown, normalise_markdown_text
 
@@ -1368,24 +1369,6 @@ def _find_security_issues(
                     )
 
 
-def _haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
-    """Great-circle distance in metres (mean Earth radius).
-
-    Local copy mirroring ``scripts/update_wl_stations.py:_haversine_m`` so
-    the cross-name safety-net measures distance identically to the
-    write-time guard it backstops.
-    """
-    radius = 6_371_000.0
-    p1, p2 = math.radians(lat1), math.radians(lat2)
-    dp = math.radians(lat2 - lat1)
-    dl = math.radians(lon2 - lon1)
-    a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
-    # Clamp to the asin domain: floating-point error can push ``sqrt(a)`` a hair
-    # above 1.0 for near-antipodal inputs, which would raise ``ValueError`` (math
-    # domain error). Mirrors the robust form in ``geo.calculate_distance_meters``.
-    return 2 * radius * math.asin(min(1.0, math.sqrt(a)))
-
-
 # Distance beyond which an alias / ``wl_stop`` label that doubles as a
 # *different* station's canonical name is treated as contamination rather
 # than a legitimate interchange label. The 2 km value mirrors the
@@ -1568,7 +1551,7 @@ def _describe_claimant_disagreement(
     if len(coords) < 2:
         return None
     worst = max(
-        _haversine_m(a[0], a[1], b[0], b[1])
+        haversine_m(a[0], a[1], b[0], b[1])
         for i, a in enumerate(coords)
         for b in coords[i + 1 :]
     )
@@ -1671,7 +1654,7 @@ def _find_cross_name_alias_issues(
             if owner is None:
                 continue
             owner_name, coords = owner
-            distances = [_haversine_m(lat, lon, olat, olon) for olat, olon in coords]
+            distances = [haversine_m(lat, lon, olat, olon) for olat, olon in coords]
             if distances and all(dist > threshold_m for dist in distances):
                 yield CrossNameAliasIssue(
                     identifier=_format_identifier(entry),

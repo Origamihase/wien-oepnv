@@ -3,10 +3,22 @@
 
 import html
 import re
+import unicodedata
 from html.parser import HTMLParser
 
 
 _WS_RE = re.compile(r"[ \t\r\f\v]+")
+
+
+def strip_accents(value: str) -> str:
+    """*value* without diacritics: NFKD decomposition, combining marks dropped.
+
+    The one accent stripper of the station helpers (``src/utils/stations.py``,
+    ``src/places/normalize.py`` and the station scripts); ``ß`` is no accent
+    and stays.
+    """
+    return "".join(ch for ch in unicodedata.normalize("NFKD", value) if not unicodedata.combining(ch))
+
 
 # A disruption that is planned rather than an incident: an event, a
 # demonstration, works, a state visit, a drill, a relocated stop. Its time

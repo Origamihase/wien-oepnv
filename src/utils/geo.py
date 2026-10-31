@@ -8,6 +8,9 @@ math. It exposes:
   implementation is dependency-free (stdlib ``math`` only) and rejects
   non-finite or out-of-range inputs early so a malformed upstream payload
   cannot poison downstream callers.
+* :func:`haversine_m` — the Haversine formula itself, without the input
+  checks, for callers whose coordinates were validated when they were
+  parsed (``src/utils/stations_validation.py``, the station scripts).
 * :data:`STATION_DRIFT_TOLERANCE_METERS` — the coordinate-inertia
   threshold used by ``scripts/update_station_directory.py`` to decide
   whether an upstream API's new coordinate replaces the existing one.
@@ -91,7 +94,20 @@ def calculate_distance_meters(
         raise ValueError("Latitude must be between -90.0 and 90.0")
     if not (-180.0 <= lon1 <= 180.0 and -180.0 <= lon2 <= 180.0):
         raise ValueError("Longitude must be between -180.0 and 180.0")
+    return haversine_m(lat1, lon1, lat2, lon2)
 
+
+def haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    """Return the Haversine distance between two points in metres, unchecked.
+
+    The formula of :func:`calculate_distance_meters` without its input
+    checks, for callers whose coordinates were validated when they were
+    parsed. It is the one place the formula is written: the copies in the
+    station scripts and in ``src/utils/stations_validation.py`` had drifted
+    apart (code audit 2026-10-31). ``atan2`` keeps the result finite for
+    near-antipodal points, where ``asin(sqrt(a))`` leaves its domain
+    through rounding.
+    """
     phi1 = math.radians(lat1)
     phi2 = math.radians(lat2)
     d_phi = math.radians(lat2 - lat1)

@@ -203,16 +203,6 @@ def _log_warning(message: str, *args: Any) -> None:
         log.warning("%s", sanitized_msg)
 
 
-def _log_error(message: str, *args: Any) -> None:
-    # Ensure message is sanitized even if args are present
-    sanitized_msg = _sanitize_message(message)
-    if args:
-        sanitized_args = tuple(_sanitize_arg(arg) for arg in args)
-        log.error(sanitized_msg, *sanitized_args)
-    else:
-        log.error("%s", sanitized_msg)
-
-
 def _get_env(name: str) -> str:
     return (os.getenv(name) or "").strip()
 

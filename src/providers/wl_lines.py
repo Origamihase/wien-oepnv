@@ -356,12 +356,6 @@ def _extract_prefix_lines(title: str) -> tuple[str, list[str]]:
     return _strip_redundant_line_token(body, lines), lines
 
 
-def _strip_existing_line_block(title: str) -> str:
-    """Entfernt vorhandene Linienblöcke am Anfang (Slash/Plus/Komma/Rufbus)."""
-    body, _ = _extract_prefix_lines(title)
-    return body
-
-
 # Line lists the prefix reader above does not take, because WL wrote them
 # without the colon or with a line name of two words. Each one rendered the
 # list twice (WL cache and raw data 07.09.–04.10.2026):
