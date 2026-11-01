@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260922-0032, I20260925-0011, I20261101-0020, I20260909-0007, I20261101-0019, I20261020-0029"
+    "trafficInfoNameList": "I20261101-0021, I20260922-0032, I20260925-0011, I20261101-0020, I20260909-0007, I20261101-0019, I20261020-0029"
    },
    {
     "id": 3,
@@ -301,6 +301,52 @@
      "start": "2026-11-01T16:27:00.000+0100"
     },
     "title": "U4: Verspätungen"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "66A": "ptBusCity"
+     }
+    },
+    "description": "Linie 66A: Unregelmäßige Intervalle in Richtung Liesing S. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 66A:<br>Unregelmäßige Intervalle in Richtung Liesing S. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 66A:<br>Unregelmäßige Intervalle in Richtung Liesing S. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 66A: Unregelmäßige Intervalle in Richtung Liesing S. Grund: Rettungseinsatz.",
+       "title": "66A: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261101-0021",
+    "owner": "WL",
+    "parentName": "I20261101-0021",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "66A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 466,
+      "lineName": "66A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-11-01T16:44:00.000+0100",
+     "end": "2026-11-01T17:00:00.000+0100",
+     "lastUpdate": "2026-11-01T17:00:00.000+0100",
+     "resume": "2026-11-01T16:43:00.000+0100",
+     "start": "2026-11-01T16:43:00.000+0100"
+    },
+    "title": "66A: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
