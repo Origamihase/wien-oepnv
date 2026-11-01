@@ -5,13 +5,15 @@ openpyxl>=3.1.5,<4
 dnspython>=2.0.0,<3
 # XXE Mitigation applied
 # Translation engine (Helsinki-NLP/opus-mt-de-en, lazy-loaded in
-# src.build_feed._get_translation_pipeline). ``torch`` is intentionally
+# src.build_feed._get_translation_pipeline and called directly through
+# ``_MarianTranslator``: transformers 5 removed the ``translation_de_to_en``
+# pipeline task, 2026-11-01). ``torch`` is intentionally
 # omitted here — the GitHub Actions workflow installs the CPU-only
 # wheel from the official PyTorch index ahead of this requirements file
 # to keep the runner footprint small. Local contributors who exercise
 # the EN feed path can install ``torch`` separately via the same
 # index (see ``.github/workflows/build-feed.yml``).
-transformers>=4.41,<5
+transformers>=5.22.1,<6
 sentencepiece>=0.2.2,<1
 # pyhafas removed 2026-05-09: the released wheel on PyPI does not export
 # ``pyhafas.profile.OEBBProfile`` so the Stammstrecke monitor was migrated

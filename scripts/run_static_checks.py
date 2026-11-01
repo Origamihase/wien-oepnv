@@ -90,70 +90,16 @@ def main() -> int:
     # global toolchain packages (like ``pip`` itself) over which we have no
     # direct control in the CI runner.
     #
-    # The ``--ignore-vuln`` allowlist captures advisories that affect the
-    # ``transformers`` package on the ``>=4.41,<5`` line shipped with the
-    # bilingual feed (Round 2026-05). All listed IDs but one apply to
-    # features we do NOT exercise in this project; the exception,
-    # CVE-2026-80047, follows below:
-    #
-    # * The feed builder loads exactly ONE model
-    #   (``Helsinki-NLP/opus-mt-de-en``) via the inline shorthand task name
-    #   ``translation_de_to_en``. ``trust_remote_code`` defaults to
-    #   ``False`` and we never set it; the planted-model RCE family
-    #   (PYSEC-2025-211..218) requires a malicious model artefact whose
-    #   custom code we would actively opt in to execute.
-    # * CVE-2026-1839 is fixed only in 5.0.0rc3 (pre-release); the 4.x
-    #   line we depend on per spec has no backport.
-    # * The pipeline runs in the ``build-feed`` GitHub Actions workflow
-    #   on an ephemeral runner with no inbound network surface and the
-    #   single output is the sanitised RSS XML (``_sanitize_text`` strips
-    #   the canonical Trojan-Source / zero-width family before write).
-    #
-    # CVE-2026-80047 (GHSA-x9r9-c232-4q39, 4.49.0 to 5.8.1, no fixed
-    # release on 2026-10-01) is different: we DO run the affected code.
-    # ``from_pretrained`` calls ``load_custom_generate()`` on every model
-    # load, which writes a repo's ``custom_generate/generate.py`` into
-    # ``~/.cache/huggingface/modules`` before the ``trust_remote_code``
-    # check. Accepted because:
-    #
-    # * the only repo we load is ``Helsinki-NLP/opus-mt-de-en``; a write
-    #   needs that repo itself to be compromised and to gain the file;
-    # * the written file is never executed: execution stays behind
-    #   ``trust_remote_code``, which we never set;
-    # * the cache it would land in is the monthly ``actions/cache`` entry
-    #   of ``~/.cache/huggingface`` on ephemeral runners, never a
-    #   developer machine.
-    #
-    # The model is pinned to the revision it loaded on 2026-10-01
-    # (``_TRANSLATION_MODEL_REVISION`` in ``src/build_feed.py``), so a later
-    # push to the repo cannot reach the build at all (audit 2026-10-01).
-    #
-    # Re-evaluate whenever ``transformers`` bumps to a version that
-    # publishes fixes for these IDs on the 4.x line, or when the project
-    # moves to ``>=5``.
-    _TRANSFORMERS_IGNORED_VULNS = (
-        "PYSEC-2025-211",
-        "PYSEC-2025-212",
-        "PYSEC-2025-213",
-        "PYSEC-2025-214",
-        "PYSEC-2025-215",
-        "PYSEC-2025-216",
-        "PYSEC-2025-217",
-        "PYSEC-2025-218",
-        "CVE-2026-1839",
-        "PYSEC-2026-2288",
-        "PYSEC-2026-2289",
-        "PYSEC-2026-2290",
-        "CVE-2026-9856",
-        "CVE-2026-80047",
-    )
+    # No ``--ignore-vuln`` allowlist any more: up to 2026-11-01 it carried 14
+    # advisory IDs of the ``transformers`` 4.x line (planted-model RCE family,
+    # CVE-2026-1839, CVE-2026-80047, …). Since the move to ``transformers`` 5
+    # (direct Marian call, ``src.build_feed._MarianTranslator``) OSV lists
+    # none for the installed version, so every advisory fails the check again.
     pip_audit_cmd = [
         "pip-audit",
         "-r", "requirements.txt",
         "-r", "requirements-dev.txt",
     ]
-    for vuln_id in _TRANSFORMERS_IGNORED_VULNS:
-        pip_audit_cmd.extend(["--ignore-vuln", vuln_id])
     exit_codes.append(_run(pip_audit_cmd))
 
     # Fail if any check failed. ``max()`` is wrong here: a subprocess
