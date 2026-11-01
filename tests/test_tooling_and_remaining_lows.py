@@ -5,7 +5,10 @@ low-severity correctness gates).
    a baseline file that lists the same function twice (operator error /
    merge conflict) pre-fix took the LATER value via plain dict assignment,
    silently relaxing the gate to the higher complexity bound. Fix: take
-   the stricter (lower) value AND emit a workflow warning.
+   the stricter (lower) value AND emit a workflow warning. Since
+   2026-11-01 the gate requires the measurement to equal the baseline
+   exactly, so each line is one allowance and a duplicated line fails the
+   gate (``tests/test_check_complexity.py``).
 
 2. ``scripts/sync_hafas_profile._extract_profile`` — comment stripping:
    ``re.search`` returned the FIRST occurrence, so a stale doc-block
@@ -68,27 +71,23 @@ from src.utils.circuit_breaker import (
 # ---------------------------------------------------------------------------
 
 
-def test_parse_baseline_dedupes_to_stricter_value(
-    tmp_path: Path, capsys: pytest.CaptureFixture[str]
-) -> None:
-    """``foo 16`` then ``foo 20`` -> keep ``foo: 16`` AND warn."""
-    from scripts.check_complexity import _parse_baseline
+def test_parse_baseline_duplicate_line_cannot_relax_the_gate(tmp_path: Path) -> None:
+    """``foo 16`` then ``foo 20`` with one real ``foo`` of 17 -> the gate fails."""
+    from scripts.check_complexity import _compare, _parse_baseline
 
     baseline = tmp_path / "baseline.txt"
-    baseline.write_text("foo 16\nfoo 20\nbar 25\n")
+    baseline.write_text("src/x.py::foo 16\nsrc/x.py::foo 20\nsrc/x.py::bar 25\n")
     parsed = _parse_baseline(baseline)
-    assert parsed == {"foo": 16, "bar": 25}
-    stderr = capsys.readouterr().err
-    assert "duplicate baseline entry for 'foo'" in stderr
-    assert "keeping stricter 16" in stderr
+    assert parsed == [("src/x.py::foo", 16), ("src/x.py::foo", 20), ("src/x.py::bar", 25)]
+    assert not _compare(parsed, [("src/x.py::foo", 17), ("src/x.py::bar", 25)]).passed
 
 
 def test_parse_baseline_single_entry_unchanged(tmp_path: Path) -> None:
     from scripts.check_complexity import _parse_baseline
 
     baseline = tmp_path / "baseline.txt"
-    baseline.write_text("foo 16\nbar 25\n")
-    assert _parse_baseline(baseline) == {"foo": 16, "bar": 25}
+    baseline.write_text("src/x.py::foo 16\nsrc/x.py::bar 25\n")
+    assert _parse_baseline(baseline) == [("src/x.py::foo", 16), ("src/x.py::bar", 25)]
 
 
 # ---------------------------------------------------------------------------

@@ -356,52 +356,42 @@ def test_check_complexity_parse_baseline_rejects_oversized(
     the CI complexity check.
 
     Post-fix: ``read_capped_text`` returns ``None`` and
-    ``_parse_baseline`` returns ``{}`` (empty baseline = strictest
+    ``_parse_baseline`` returns ``[]`` (empty baseline = strictest
     state, exactly what missing-file already does)."""
-    import sys
+    from scripts import check_complexity
 
-    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-    try:
-        import check_complexity
-    finally:
-        # Don't pollute sys.path for other tests
-        sys.path.pop(0)
-
+    # Valid lines, so only the cap can empty the result (a flat "aaa..."
+    # payload is one malformed line and parses to [] without any cap).
     poisoned = tmp_path / "baseline.txt"
-    _write_oversized_text(poisoned, 4096)
+    poisoned.write_text("src/a.py::foo 16\n" * 300, encoding="utf-8")
+    assert len(check_complexity._parse_baseline(poisoned)) == 300
 
     monkeypatch.setattr(check_complexity, "MAX_BASELINE_FILE_BYTES", 1024)
 
     result = check_complexity._parse_baseline(poisoned)
-    assert result == {}
+    assert result == []
 
 
 def test_check_complexity_parse_baseline_accepts_normal(tmp_path: Path) -> None:
     """Regression: normal baseline files still parse correctly."""
-    import sys
-
-    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-    try:
-        import check_complexity
-    finally:
-        sys.path.pop(0)
+    from scripts import check_complexity
 
     baseline = tmp_path / "baseline.txt"
     baseline.write_text(
         "# header comment\n"
-        "fetch_events 51\n"
-        "_iter_messages 46\n"
+        "src/providers/wl_fetch.py::fetch_events 35\n"
+        "src/build_feed.py::_iter_messages 46\n"
         "\n"
-        "_format_item_content 33\n",
+        "src/build_feed.py::_format_item_content 33\n",
         encoding="utf-8",
     )
 
     result = check_complexity._parse_baseline(baseline)
-    assert result == {
-        "fetch_events": 51,
-        "_iter_messages": 46,
-        "_format_item_content": 33,
-    }
+    assert result == [
+        ("src/providers/wl_fetch.py::fetch_events", 35),
+        ("src/build_feed.py::_iter_messages", 46),
+        ("src/build_feed.py::_format_item_content", 33),
+    ]
 
 
 # ============================================================================

@@ -13,7 +13,9 @@
 #     2026-09-11, docs/archive/audits/audit-2026-09-12-force-push-history-loss.md).
 #     Whenever that rebase could not be finished and was aborted, the next
 #     attempt force-pushed the old base over every commit that had landed in
-#     between, a merged PR included. ``main`` has no branch protection.
+#     between, a merged PR included. ``main`` had no branch protection then;
+#     since 2026-10-16 the ruleset "main schützen" blocks force pushes and
+#     deletions (docs/development.md, "Veröffentlichen auf `main`").
 #   * No retry. seo-guard.yml, update-stations.yml and manual-full-refresh.yml
 #     pushed once through ``stefanzweifel/git-auto-commit-action``; a commit
 #     landing a second earlier rejected it (SEO Verify, 2026-10-04 17:27 UTC,

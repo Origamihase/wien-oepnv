@@ -10,6 +10,86 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
 
 ### November 2026
 
+* **Gates: C901 auch über `scripts/`, mypy mit Stubs, pre-commit wie CI
+  (2026-11-01)**: Paket 1, zweiter Teil, aus dem Technical Debt Assessment vom
+  01.11. (Michael: „ok“ auf die Frage, Paket 1 zu bauen). Keine Änderung an
+  Feed-Inhalten; unter `src/` ändern sich nur Annotationen in
+  `src/providers/oebb.py` und ein Kommentar in `src/providers/wl_fetch.py`.
+  - C901-Gate (`scripts/check_complexity.py`): Es misst `src/` und `scripts/`
+    (bisher nur `src/`; in `scripts/` lagen neun Funktionen über 15) und führt
+    jede Funktion mit Datei (`<pfad>::<funktion> <wert>`). Bisher galt nur der
+    Name; mit `scripts/` im Umfang wäre jedes weitere `main` bis 16 unter dem
+    Eintrag `scripts/generate_markdown_stats.py::main 16` durchgelaufen (38
+    Dateien definieren `main`). Grün ist das Gate nur noch bei genauer
+    Übereinstimmung: Auch ein gesunkener Wert und eine Funktion, die auf 15
+    oder darunter sinkt, machen es rot, bis
+    `bash scripts/regen_c901_baseline.sh` die Liste nachzieht. Bisher blieb
+    eine Verbesserung unbemerkt (`fetch_events` stand einen Monat mit 51 in
+    der Liste, gemessen waren 35). Kann ruff nicht
+    messen (nicht installiert, Abbruch, unlesbare Ausgabe), endet das Gate mit
+    Exit 2. Bisher meldete es bei einem ruff, der startete und abbrach, oder
+    bei unlesbarer Ausgabe alle 14 Einträge als behoben und blieb grün; fehlte
+    ruff oder hing es, endete das Skript mit einem Traceback.
+    `regen_c901_baseline.sh` schreibt die Liste jetzt über dasselbe Skript
+    (`--write-baseline`) statt über eine eigene `sed`-Kette, und ein Pfad mit
+    Leerzeichen liest das Gate so zurück, wie es ihn schreibt. Die neue
+    `.c901-baseline.txt` hat 23 Einträge (14 in `src/`, 9 in `scripts/`).
+    `tests/test_check_complexity.py` (41 Testfälle) prüft Abgleich, Format,
+    die Fehlerfälle der Messung und den Secret-Scan.
+  - Secret-Scan: `.c901-baseline.txt` und `.mypy-baseline.txt` stehen auf
+    `.secret-scan-ignore`. Beide bestehen aus Pfaden, die die Gates schreiben.
+    Der Scanner der statischen Checks meldete schon den ersten Kopf der neuen
+    Liste (`scripts/regen_c901_baseline.sh`) als hochentropischen
+    Token-String. Einen Eintrag für `scripts/check_i18n_coverage.py` hätte
+    das Gate verlangt und der Scanner ebenso gemeldet.
+  - mypy: `requirements-dev.txt` bringt `types-PyYAML`,
+    `types-python-dateutil`, `types-openpyxl` und `types-defusedxml`. Bisher
+    lief CI ohne Stubs, und 19 Meldungen zeigte nur ein lokales venv, das sie
+    hatte. Sie sind behoben: `src/providers/oebb.py` annotierte mit
+    `ET.Element`, das `defusedxml.ElementTree` nicht exportiert (jetzt das
+    `Element` der Standardbibliothek, nur für die Typprüfung importiert;
+    geparst wird weiter mit defusedxml), `scripts/update_station_directory.py`
+    prüft, dass die Arbeitsmappe ein aktives Blatt hat (sonst `ValueError` wie
+    bei einer kaputten Datei), und drei Tests verengen Optional-Werte mit
+    `assert`. `types-requests` fehlt mit Absicht: requests bringt seit 2.34
+    eigene Typen mit, die das Stub-Paket verdecken würde (die Messung im
+    Assessment zählte deshalb 26 Meldungen; sieben davon, fünf in
+    `src/utils/http.py` und zwei in Tests, kamen nur von diesen Stubs).
+    mypy prüft jetzt überall `src/`, `tests/` und `scripts/` (`files` in
+    `pyproject.toml`; Pre-Commit-Hook und `python -m src.cli checks` prüften
+    bisher nur `src/`), und `scripts/regen_mypy_baseline.sh` installiert dafür
+    `requirements-dev.txt` wie `mypy-strict.yml`.
+  - Coverage: Sie misst `src/` und `scripts/`. Der Gesamtwert im Log von
+    `test.yml` sinkt dadurch von 90,1 % auf 87,1 %; `src/` bleibt bei 90,1 %,
+    `scripts/` steht bei 82,8 %.
+  - pre-commit: ruff und Bandit laufen wie mypy und die eigenen Checks aus dem
+    venv (`language: system`), in den Versionen aus `requirements-dev.txt`, die
+    CI installiert und Dependabot nachzieht. Bisher pinnte der Hook ruff auf
+    0.4.7, während CI 0.17.3 nutzte. `UP038` steht nicht mehr in der
+    Ignore-Liste von ruff (ruff hat die Regel entfernt, der Eintrag wirkte
+    nicht).
+  - `pre-commit run --all-files`, der erste Befehl der PR-Vorlage, ist wieder
+    grün. Er scheiterte auf `main` an vier Dateien, die ein Programm schreibt
+    (`docs/feed.en.xml`, `site.min.css`, `site.min.js`, eine Jules-Datei im
+    Audit-Archiv), und an elf von Hand geschriebenen Dateien mit einer
+    überzähligen Leerzeile am Ende. Die beiden Leerzeilen-Hooks lassen jetzt
+    alle Dateien aus, die ein Programm schreibt; die Leerzeilen sind entfernt.
+  - SEO Verify: Der Schritt, der Beschreibung und Homepage des Repositorys mit
+    `REPO_ADMIN_TOKEN` setzt, läuft nur noch auf `main`, wie die
+    Veröffentlichung. Bisher setzte auch ein noch nicht gemergter Branch die
+    Werte live, allein am 01.11. in 14 Branch-Läufen bis 15:03 Uhr (bis dahin
+    mit denselben Werten wie auf `main`).
+  - Branch-Schutz: Drei Kommentare (`scripts/publish_to_main.sh`,
+    `update-cycle.yml`, `tests/test_publish_to_main.py`) sagten, `main` habe
+    keinen Branch-Schutz; sie nennen jetzt das Ruleset „main schützen“ (seit
+    16.10.).
+  - Die PR-Vorlage nennt die Prüfbefehle wie CI (`ruff check`,
+    `python3 -m mypy --no-pretty`, beide ohne Pfade) und die strengere Regel
+    für `.c901-baseline.txt`; `docs/development.md` und `CONTRIBUTING.md`
+    beschreiben Gate, Prüfumfang und Hooks. Die Änderung an `update-cycle.yml`
+    erneuert einmal den venv-Cache des Update-Laufs (sein Schlüssel enthält
+    die Workflow-Datei).
+
 * **Übersetzung auf `transformers` 5, Ladefehler fällt im Health check auf
   (2026-11-01)**: Dependabot schlug `transformers` 5 vor (#2114). Damit lud
   die Übersetzung nicht mehr, weil `transformers` 5 die Pipeline-Aufgabe

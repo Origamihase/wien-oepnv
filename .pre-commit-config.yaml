@@ -1,10 +1,11 @@
 # Run `pre-commit install` once after cloning to enable these hooks.
 # Run `pre-commit run --all-files` to check the whole repo manually.
 #
-# Mypy and the local secret scanner use language: system so they pick
-# up the exact versions installed in the contributor's venv (matching
-# what runs on CI). All other hooks pin upstream tool revisions to
-# reproducible SHAs.
+# Ruff, mypy, bandit and the project's own checks use language: system
+# so they run the exact versions installed in the contributor's venv
+# from requirements-dev.txt, the versions CI installs; Dependabot keeps
+# that one file current. Only the basic hygiene hooks pin an upstream
+# release tag here.
 default_language_version:
   python: python3.11
 
@@ -14,11 +15,19 @@ repos:
     rev: v5.0.0
     hooks:
       - id: trailing-whitespace
-        # docs/feed.xml is regenerated programmatically; let the
-        # builder own its own whitespace.
-        exclude: ^(docs/feed\.xml|docs/sitemap\.xml|cache/.*\.json|data/.*\.json|tests/fixtures/.*)$
+        # A file a program writes belongs to that program: the hook would
+        # only change a byte the next run writes again, and on the minified
+        # assets the drift check below then fails. Machine-written are
+        # cache/ and data/ (except the READMEs), the feeds, sitemap,
+        # llms.txt, statistics and station reports in docs/, the minified
+        # site assets and the test fixtures; the audit archive (Jules, the
+        # KI-Wächter, earlier reports) stays as written. Until 2026-11-01
+        # only docs/feed.xml, docs/sitemap.xml, the JSON files in cache/
+        # and data/ and the test fixtures were listed, and
+        # ``pre-commit run --all-files`` failed on main.
+        exclude: &machine_written '^(cache/|data/(?!(.*/)?README\.md$)|tests/fixtures/|docs/archive/audits/|docs/assets/[^/]+\.min\.(css|js)$|docs/(feed[^/]*\.xml|sitemap\.xml|llms\.txt|stats-summary\.json|statistik[^/]*\.md|stations_validation_report\.md|stations_diff\.md)$)'
       - id: end-of-file-fixer
-        exclude: ^(docs/feed\.xml|docs/sitemap\.xml|cache/.*\.json|data/.*\.json|tests/fixtures/.*)$
+        exclude: *machine_written
       - id: check-merge-conflict
       - id: check-yaml
       - id: check-toml
@@ -28,12 +37,18 @@ repos:
         args: ["--maxkb=1024"]
 
   # ── ruff (linter, includes the bugbear / security rules already
-  #    selected via pyproject.toml: E, F, S, B) ─────────────────────
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.4.7
+  #    selected via pyproject.toml: E, F, S, B, UP) ─────────────────
+  # Until 2026-11-01 this hook pinned ruff-pre-commit v0.4.7 while CI ran
+  # ruff 0.17.3 from requirements-dev.txt: two pins, and Dependabot only
+  # moves the one in requirements-dev.txt.
+  - repo: local
     hooks:
       - id: ruff
-        args: [--fix]
+        name: ruff check
+        entry: python -m ruff check --force-exclude --fix
+        language: system
+        types_or: [python, pyi]
+        require_serial: true
 
   # ── mypy --strict (uses the venv installation so the version and
   #    plugins match exactly what CI runs) ──────────────────────────
@@ -45,8 +60,9 @@ repos:
         language: system
         types: [python]
         # mypy's pyproject.toml config drives file selection; we let
-        # mypy itself walk src/ rather than pass each staged file
-        # individually (which would miss cross-module type errors).
+        # mypy itself walk src/, tests/ and scripts/ (``files``, the
+        # scope mypy-strict.yml checks) rather than pass each staged
+        # file individually (which would miss cross-module type errors).
         pass_filenames: false
         require_serial: true
 
@@ -64,20 +80,24 @@ repos:
   # Shift-left for the bandit gate so contributors catch B-class
   # issues before pushing instead of discovering them in CI.
   # ``-q`` suppresses non-error output; ``-r src scripts`` matches
-  # ``run_static_checks.py``'s invocation exactly.
-  - repo: https://github.com/PyCQA/bandit
-    rev: 1.9.4
+  # ``run_static_checks.py``'s invocation exactly, and like that run it
+  # uses the venv's bandit (until 2026-11-01 a second pin, rev 1.9.4).
+  - repo: local
     hooks:
       - id: bandit
-        args: ["-r", "src", "scripts", "-q"]
+        name: bandit
+        entry: python -m bandit -r src scripts -q
+        language: system
+        types: [python]
         pass_filenames: false
+        require_serial: true
 
   # ── C901 complexity gate (matches CI's complexity-gate workflow) ─
-  # Allowlist-style baseline check: rejects NEW functions whose
-  # McCabe complexity exceeds 15, or existing functions whose
-  # complexity has risen above what's recorded in
-  # ``.c901-baseline.txt``. Reducing complexity below baseline is
-  # always allowed; the baseline ratchets via
+  # Allowlist-style baseline check over src/ and scripts/: fails when the
+  # McCabe complexities above 15 differ from ``.c901-baseline.txt`` in
+  # any way (a new function above 15, a baselined one that got more
+  # complex, simpler or dropped to 15 or less) or when ruff cannot
+  # measure. After a refactor, lock the new values in with
   # ``bash scripts/regen_c901_baseline.sh``.
   - repo: local
     hooks:

@@ -73,4 +73,3 @@ def test_cached_debris_is_re_translated(echo_pipeline: list[str]) -> None:
     assert len(echo_pipeline) == 1, "the debris value must be a cache miss"
     assert "Bahnhof0X" not in out
     assert state["oebb|r40"]["translations"]["en"]["summary"] == out
-

@@ -14,4 +14,3 @@ class TestJsonLogLeak(unittest.TestCase):
         # We expect the secret to be redacted
         self.assertNotIn("secret", sanitized)
         self.assertIn("***", sanitized)
-

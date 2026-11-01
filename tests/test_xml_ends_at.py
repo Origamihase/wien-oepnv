@@ -31,15 +31,17 @@ class TestXmlEndsAt(unittest.TestCase):
         # Verification
         root = ET.fromstring(rss_xml)
         channel = root.find("channel")
+        assert channel is not None, "channel element missing"
         rss_item = channel.find("item")
+        assert rss_item is not None, "item element missing"
 
         ns = {"ext": "https://wien-oepnv.example/schema"}
 
         ends_at_elem = rss_item.find("ext:ends_at", ns)
         starts_at_elem = rss_item.find("ext:starts_at", ns)
 
-        self.assertIsNotNone(ends_at_elem, "ext:ends_at element missing")
-        self.assertIsNotNone(starts_at_elem, "ext:starts_at element missing")
+        assert ends_at_elem is not None, "ext:ends_at element missing"
+        assert starts_at_elem is not None, "ext:starts_at element missing"
 
         # 14:00 UTC = 16:00 CEST (Vienna Summer Time)
         from email.utils import format_datetime
@@ -64,7 +66,10 @@ class TestXmlEndsAt(unittest.TestCase):
 
         rss_xml = _make_rss([item], now, {})
         root = ET.fromstring(rss_xml)
-        rss_item = root.find("channel").find("item")
+        channel = root.find("channel")
+        assert channel is not None, "channel element missing"
+        rss_item = channel.find("item")
+        assert rss_item is not None, "item element missing"
         ns = {"ext": "https://wien-oepnv.example/schema"}
 
         ends_at_elem = rss_item.find("ext:ends_at", ns)

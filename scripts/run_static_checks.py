@@ -71,10 +71,10 @@ def main() -> int:
     # Enforce secret scanning failure
     exit_codes.append(_run([sys.executable, str(scanner)]))
 
-    # C901 complexity gate vs .c901-baseline.txt allowlist. Mirrors the
-    # mypy-strict allowlist pattern: rejects only NEW or worsened
-    # violations, never rejects pre-existing ones (those ratchet down
-    # over time via scripts/regen_c901_baseline.sh).
+    # C901 complexity gate vs .c901-baseline.txt allowlist (src/ and
+    # scripts/). Fails on any difference from the baseline, including a
+    # function that got simpler (lock it in with
+    # scripts/regen_c901_baseline.sh), and when ruff cannot measure.
     complexity_gate = PROJECT_ROOT / "scripts" / "check_complexity.py"
     exit_codes.append(_run([sys.executable, str(complexity_gate)]))
 

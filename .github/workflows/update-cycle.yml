@@ -669,7 +669,9 @@ jobs:
       #     edit next to the stats block, ``keep_local_lines``).
       #     Before, the re-fetch of that pull re-armed the lease, so a
       #     rebase that had to be aborted let the next attempt force-push
-      #     over the concurrent commit (``main`` has no branch protection).
+      #     over the concurrent commit (``main`` had no branch protection
+      #     then; since 2026-10-16 the ruleset "main schützen" blocks force
+      #     pushes and deletions).
       #   * if every attempt fails -> warning + exit 0. The just-built
       #     outputs are NOT published this tick, but the repo keeps the
       #     last good commit and the next tick rebuilds from fresh caches.
