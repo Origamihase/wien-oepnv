@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260922-0032, I20260925-0011, I20261101-0016-F01, I20260909-0007, I20261020-0029, I20261101-0008"
+    "trafficInfoNameList": "I20260922-0032, I20260925-0011, I20261101-0016-F01, I20261101-0017, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R100-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R45-136, R19-136, R130-136, R119-136, R118-136, R293-474, R1448-412, R1474-412, R318-437, R1125-229, R1125-429, R2558-125, R3886-480, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2343-229, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2343-429, R2420-411, R2378-627, R2343-626, R2343-125, R2359-125, R2343-531, R1974-466, R1301-440, R1272-440, R500-101, R1177-236, R1164-236, R8489-236, R1150-236, R1091-236, R8486-236, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R100-136, R101-136, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R102-136, R103-136, R293-474, R1448-412, R318-437, R1474-412, R1125-229, R1125-429, R2558-125, R3886-480, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2380-627, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2345-127, R2343-429, R2343-229, R2420-411, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2343-531, R1974-466, R1272-440, R1301-440, R500-101, R1091-236, R8486-236, R1376-146, R1378-146, R1377-146, R1375-146, R1381-146, R1380-146, R1379-146, R1394-146, R1392-146, R1393-146, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -208,54 +208,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-       "title": "U3: Betriebsstörung"
-      }
-     }
-    ],
-    "name": "I20261101-0008",
-    "owner": "WL",
-    "parentName": "I20261101-0008",
-    "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4921
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-01T10:22:00.000+0100",
-     "lastUpdate": "2026-11-01T10:22:00.000+0100",
-     "resume": "2026-11-01T10:20:00.000+0100",
-     "start": "2026-11-01T10:20:00.000+0100"
-    },
-    "title": "U3: Betriebsstörung"
-   },
-   {
     "alertCause": "police activity",
     "alertCauseId": 3,
     "attributes": {
@@ -300,6 +252,51 @@
      "start": "2026-11-01T13:47:00.000+0100"
     },
     "title": "36B: Polizeieinsatz"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "46": "ptTram"
+     }
+    },
+    "description": "Linie 46: Fahrtbehinderung in Richtung Parlament, U Volkstheater Voraussichtliche Dauer: 14:50 Uhr. Grund: Falschparker im Bereich Lerchenfelder Straße 59.",
+    "descriptionHTML": "<p>Linie 46:<br>Fahrtbehinderung in Richtung Parlament, U Volkstheater</p><p>Voraussichtliche Dauer: 14:50 Uhr.</p><p>Grund: Falschparker im Bereich Lerchenfelder Straße 59.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 46:<br>Fahrtbehinderung in Richtung Parlament, U Volkstheater</p><p>Voraussichtliche Dauer: 14:50 Uhr.</p><p>Grund: Falschparker im Bereich Lerchenfelder Straße 59.</p>",
+       "descriptionPlain": "Linie 46: Fahrtbehinderung in Richtung Parlament, U Volkstheater Voraussichtliche Dauer: 14:50 Uhr. Grund: Falschparker im Bereich Lerchenfelder Straße 59.",
+       "title": "46: Falschparker"
+      }
+     }
+    ],
+    "location": "Lerchenfelder Straße 59",
+    "name": "I20261101-0017",
+    "owner": "WL",
+    "parentName": "I20261101-0017",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 146,
+      "lineName": "46",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-01T14:19:00.000+0100",
+     "lastUpdate": "2026-11-01T14:19:00.000+0100",
+     "start": "2026-11-01T14:19:00.000+0100"
+    },
+    "title": "46: Falschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -488,29 +485,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1150-236",
-    "owner": "WL",
-    "parentName": "R1150-236",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "36B"
-    ],
-    "relatedStops": [
-     1150
-    ],
-    "time": {
-     "end": "2026-11-01T14:20:00.000+0100",
-     "start": "2026-11-01T13:21:13.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R116-136",
     "owner": "WL",
@@ -534,29 +508,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1164-236",
-    "owner": "WL",
-    "parentName": "R1164-236",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "36B"
-    ],
-    "relatedStops": [
-     1164
-    ],
-    "time": {
-     "end": "2026-11-01T14:11:00.000+0100",
-     "start": "2026-11-01T13:12:13.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R117-136",
     "owner": "WL",
@@ -576,29 +527,6 @@
      "start": "2026-10-30T00:00:12.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1177-236",
-    "owner": "WL",
-    "parentName": "R1177-236",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "36B"
-    ],
-    "relatedStops": [
-     1177
-    ],
-    "time": {
-     "end": "2026-11-01T14:11:00.000+0100",
-     "start": "2026-11-01T13:12:13.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -714,6 +642,236 @@
      "start": "2026-11-01T04:45:23.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Liechtensteinstraße 39"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1375-146",
+    "owner": "WL",
+    "parentName": "R1375-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1375
+    ],
+    "time": {
+     "end": "2026-11-01T15:19:00.000+0100",
+     "start": "2026-11-01T14:20:51.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1376-146",
+    "owner": "WL",
+    "parentName": "R1376-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1376
+    ],
+    "time": {
+     "end": "2026-11-01T15:19:00.000+0100",
+     "start": "2026-11-01T14:20:51.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1377-146",
+    "owner": "WL",
+    "parentName": "R1377-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1377
+    ],
+    "time": {
+     "end": "2026-11-01T15:19:00.000+0100",
+     "start": "2026-11-01T14:20:51.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1378-146",
+    "owner": "WL",
+    "parentName": "R1378-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1378
+    ],
+    "time": {
+     "end": "2026-11-01T15:19:00.000+0100",
+     "start": "2026-11-01T14:20:51.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1379-146",
+    "owner": "WL",
+    "parentName": "R1379-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1379
+    ],
+    "time": {
+     "end": "2026-11-01T15:19:00.000+0100",
+     "start": "2026-11-01T14:20:51.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1380-146",
+    "owner": "WL",
+    "parentName": "R1380-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1380
+    ],
+    "time": {
+     "end": "2026-11-01T15:19:00.000+0100",
+     "start": "2026-11-01T14:20:51.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1381-146",
+    "owner": "WL",
+    "parentName": "R1381-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1381
+    ],
+    "time": {
+     "end": "2026-11-01T15:19:00.000+0100",
+     "start": "2026-11-01T14:20:51.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nUmleitung bis Parlament, Volkstheater > über Linien 5 und 2",
+    "name": "R1392-146",
+    "owner": "WL",
+    "parentName": "R1392-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1392
+    ],
+    "time": {
+     "end": "2026-11-01T15:26:00.000+0100",
+     "start": "2026-11-01T14:27:52.000+0100"
+    },
+    "title": "Falschparker\nUmleitung bis Parlament, Volkstheater > über Linien 5 und 2"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1393-146",
+    "owner": "WL",
+    "parentName": "R1393-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1393
+    ],
+    "time": {
+     "end": "2026-11-01T15:27:00.000+0100",
+     "start": "2026-11-01T14:28:22.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1394-146",
+    "owner": "WL",
+    "parentName": "R1394-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1394
+    ],
+    "time": {
+     "end": "2026-11-01T15:27:00.000+0100",
+     "start": "2026-11-01T14:20:52.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1540,29 +1698,6 @@
     "time": {
      "end": "2026-11-01T14:33:00.000+0100",
      "start": "2026-11-01T13:33:49.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R8489-236",
-    "owner": "WL",
-    "parentName": "R8489-236",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "36B"
-    ],
-    "relatedStops": [
-     8489
-    ],
-    "time": {
-     "end": "2026-11-01T14:11:00.000+0100",
-     "start": "2026-11-01T13:12:17.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },

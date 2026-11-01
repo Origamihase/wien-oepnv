@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-01T13:01:26.145724+00:00",
- "built": "2026-11-01T14:01:11+01:00",
+ "updated": "2026-11-01T13:30:59.247609+00:00",
+ "built": "2026-11-01T14:30:47+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-01T14:01:11+01:00",
+  "built": "2026-11-01T14:30:47+01:00",
   "items": [
+   {
+    "title": "46: Falschparker",
+    "time_line": "Seit 14:19"
+   },
    {
     "title": "Wien Heiligenstadt ↔ Wien Franz-Josefs-Bahnhof",
     "time_line": "Seit 13:50"
@@ -15,10 +19,6 @@
    {
     "title": "36B: Polizeieinsatz",
     "time_line": "Seit 13:12"
-   },
-   {
-    "title": "U3: Betriebsstörung",
-    "time_line": "Seit 10:20"
    },
    {
     "title": "38B/39B: Allerheiligenverkehr 01.11.2026",
@@ -6751,17 +6751,37 @@
     "oebb": 8,
     "wl": 92
    }
+  },
+  {
+   "t": "2026-11-01T13:30:59.247609+00:00",
+   "raw": {
+    "wl-stoerungen": 72,
+    "wl-hinweise": 73,
+    "oebb": 154,
+    "baustellen-linien": 57,
+    "baustellen-punkte": 18
+   },
+   "discarded": {
+    "wl": 13,
+    "oebb": 131,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 8,
+    "wl": 93
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-01T13:01:26.145724+00:00"
+   "last_ok": "2026-11-01T13:30:59.247609+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-01T13:01:26.145724+00:00"
+   "last_ok": "2026-11-01T13:30:59.247609+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-01T13:01:26.145724+00:00"
+   "last_ok": "2026-11-01T13:30:59.247609+00:00"
   }
  }
 }
