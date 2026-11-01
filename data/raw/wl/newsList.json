@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1016542, ftazW_265, ftazW_1031289, ftazW_1016543, ftazW_1016957, ftazW_1031290, ftazW_266, ftazW_1016493, ftazW_593"
+    "trafficInfoNameList": "ftazW_1016542, ftazW_265, ftazW_1031289, ftazW_1016543, ftazW_1016957, ftazW_1031290, ftazW_266, ftazW_1016493, ftazW_593, ftazW_594, ftazW_1031895"
    }
   ],
   "poiCategoryGroups": [
@@ -3249,6 +3249,45 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "04.11.2026 05:15",
+     "ausVon": "04.11.2026 01:15",
+     "location": "18 Bahnsteig Richtung Burggasse - Passage",
+     "rbls": [
+      833
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1",
+      "18"
+     ],
+     "station": "Südtiroler Platz-Hauptbahnhof",
+     "status": "geplante Wartung",
+     "towards": "18 Schlachthausgasse"
+    },
+    "description": "18 Bahnsteig Richtung Burggasse - Passage",
+    "elevatorId": "SL 04",
+    "name": "ftazW_1031895",
+    "parentName": "ftazW_1031895",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1",
+     "18"
+    ],
+    "relatedStops": [
+     833
+    ],
+    "time": {
+     "end": "2026-11-04T05:15:00.000+0100",
+     "start": "2026-11-04T01:15:00.000+0100"
+    },
+    "title": "Südtiroler Platz-Hauptbahnhof"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "03.11.2026 00:45",
      "ausVon": "02.11.2026 20:45",
      "location": "Zwischengeschoss Zugang zur U3 und U4 - ÖBB Bahnsteig Richtung Floridsdorf",
@@ -3305,7 +3344,7 @@
     "attributes": {
      "ausBis": "04.11.2026 00:45",
      "ausVon": "03.11.2026 20:45",
-     "location": "Ausgang Kennedybrücke - U4 Bahnsteig Richtung Heiligenstadt",
+     "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Kennedybrücke",
      "rbls": [
       4409
      ],
@@ -3317,7 +3356,7 @@
      "status": "geplante Wartung",
      "towards": "U4 Heiligenstadt"
     },
-    "description": "Ausgang Kennedybrücke - U4 Bahnsteig Richtung Heiligenstadt",
+    "description": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Kennedybrücke",
     "elevatorId": "HI 01",
     "name": "ftazW_593",
     "parentName": "ftazW_593",
@@ -3333,6 +3372,43 @@
     "time": {
      "end": "2026-11-04T00:45:00.000+0100",
      "start": "2026-11-03T20:45:00.000+0100"
+    },
+    "title": "Hietzing"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "04.11.2026 05:15",
+     "ausVon": "04.11.2026 01:15",
+     "location": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Kennedybrücke",
+     "rbls": [
+      4428
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Hietzing",
+     "status": "geplante Wartung",
+     "towards": "U4 Hütteldorf"
+    },
+    "description": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Kennedybrücke",
+    "elevatorId": "HI 02",
+    "name": "ftazW_594",
+    "parentName": "ftazW_594",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4428
+    ],
+    "time": {
+     "end": "2026-11-04T05:15:00.000+0100",
+     "start": "2026-11-04T01:15:00.000+0100"
     },
     "title": "Hietzing"
    }
