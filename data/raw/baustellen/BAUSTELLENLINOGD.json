@@ -969,52 +969,6 @@
   {
    "geometry": {
     "first_position": [
-     16.38858797,
-     48.22715284
-    ],
-    "type": "LineString"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Ma 31 Kundencenter",
-    "ANSPRECHPERSON_TEL": "Tel.: 01-59959/31600",
-    "ANTRAGSTELLER": "MA31",
-    "BEHINDERUNGSART": "Rohrlegung",
-    "BEZEICHNUNG": "Nordbahnstraße von Alliiertenstraße bis Am Tabor",
-    "BEZIRK": 2,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-07-26Z",
-    "OBJEKT_ENDE": "2026-11-01Z",
-    "PRESSETEXT": "Die Arbeiten erfolgen abschnittsweise bei Sperre des betroffenen Bereiches der Nebenfahrbahn. Die Zufahrt bis zum gesperrten Bereich ist gestattet.DerFußgänger- und Radverkehr kann aufrecht gehalten werden.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
-     16.42112397,
-     48.2105957
-    ],
-    "type": "LineString"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Kundentelefon Wiener Linien",
-    "ANSPRECHPERSON_TEL": "Tel.: 01-7909/100",
-    "ANTRAGSTELLER": "Wiener Linien GmbH & Co KG",
-    "BEHINDERUNGSART": "Straßenbau",
-    "BEZEICHNUNG": "Olympiaplatz von Kreuzung Meiereistraße und Vorgartenstraße und Unbenannte Verkehrsfläche bis Kreuzu",
-    "BEZIRK": 2,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-10-22Z",
-    "OBJEKT_ENDE": "2026-11-01Z",
-    "PRESSETEXT": "Das Kreuzungsplateau wird für den motorisierten Verkehr gesperrt. Die Zufahrt bis zum gesperrten Bereich ist möglich. Die Meiereistraße, Engerthstraße, Olympiaplatz sowie Stephanie-Endres-Straße wird als Sackgassenbereich ausgebildet. Die offizielle Umleitung zu den Bereichen im Umfeld des Ernst-Happel-Stadions erfolgt über die Machstraße und Vorgartenstraße.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
      16.48694276,
      48.23262593
     ],
@@ -1239,29 +1193,6 @@
     "OBJEKT_BEGINN": "2026-11-02Z",
     "OBJEKT_ENDE": "2026-11-20Z",
     "PRESSETEXT": "DerVerkehr wird in Fahrtrichtung Jedlersdorfer Straße über den angrenzenden Parkstreifen geführt. Vor der Kreuzung Jedlersdorfer Straße wird ein Fahrstreifen gesperrt unter Aufrechterhaltung aller Fahrrelationen.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
-     16.38455157,
-     48.20896306
-    ],
-    "type": "LineString"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Kundenzentrum",
-    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
-    "ANTRAGSTELLER": "MA28",
-    "BEHINDERUNGSART": "Straßenbau",
-    "BEZEICHNUNG": "Vordere Zollamtsstraße von 5 bis 3",
-    "BEZIRK": 3,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-10-23Z",
-    "OBJEKT_ENDE": "2026-11-01Z",
-    "PRESSETEXT": "Ein Fahrstreifen in Fahrtrichtung Radetzkybrücke bzw. Obere Weißgerberstraße wird gesperrt. Die restlichenFahrstreifen werden aufrechtgehalten.",
     "SE_ANNO_CAD_DATA": null
    }
   },
