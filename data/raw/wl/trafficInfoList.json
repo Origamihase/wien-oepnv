@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261101-0004, I20260922-0032, I20260925-0011, I20261101-0005, I20260909-0007, I20261101-0003-F01, I20261101-0003-F02, I20261020-0029"
+    "trafficInfoNameList": "I20260922-0032, I20260925-0011, I20260909-0007, I20261101-0005-F01, I20261101-0003-F01, I20261101-0003-F02, I20261020-0029"
    },
    {
     "id": 3,
@@ -304,52 +304,6 @@
     "title": "2: Rettungseinsatz"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Unregelmäßige Intervalle in Richtung Leopoldau. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U1:<br>Unregelmäßige Intervalle in Richtung Leopoldau. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U1:<br>Unregelmäßige Intervalle in Richtung Leopoldau. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U1: Unregelmäßige Intervalle in Richtung Leopoldau. Grund: Schadhaftes Fahrzeug.",
-       "title": "U1: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261101-0004",
-    "owner": "WL",
-    "parentName": "I20261101-0004",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 301,
-      "lineName": "U1",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-01T05:49:00.000+0100",
-     "end": "2026-11-01T06:29:00.000+0100",
-     "lastUpdate": "2026-11-01T06:29:00.000+0100",
-     "resume": "2026-11-01T05:49:00.000+0100",
-     "start": "2026-11-01T05:49:00.000+0100"
-    },
-    "title": "U1: Verspätungen"
-   },
-   {
     "alertCause": "police activity",
     "alertCauseId": 3,
     "attributes": {
@@ -357,18 +311,18 @@
       "U1": "ptMetro"
      }
     },
-    "description": "Linie U1: Fahrtbehinderung in Richtung Leopoldau S U. Voraussichtliche Dauer: 06:50 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Nestroyplatz.",
-    "descriptionHTML": "<p>Linie U1:<br>Fahrtbehinderung in Richtung Leopoldau S U.</p><p>Voraussichtliche Dauer: 06:50 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Nestroyplatz.</p>",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie U1:<br>Fahrtbehinderung in Richtung Leopoldau S U.</p><p>Voraussichtliche Dauer: 06:50 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Nestroyplatz.</p>",
-       "descriptionPlain": "Linie U1: Fahrtbehinderung in Richtung Leopoldau S U. Voraussichtliche Dauer: 06:50 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Nestroyplatz.",
+       "descriptionHtml": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "U1: Polizeieinsatz"
       }
      }
     ],
-    "name": "I20261101-0005",
+    "name": "I20261101-0005-F01",
     "owner": "WL",
     "parentName": "I20261101-0005",
     "priority": "1",
@@ -388,10 +342,12 @@
     "relatedStops": [
      4115
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
-     "created": "2026-11-01T06:30:00.000+0100",
-     "lastUpdate": "2026-11-01T06:30:00.000+0100",
+     "created": "2026-11-01T06:34:00.000+0100",
+     "end": "2026-11-01T07:00:00.000+0100",
+     "lastUpdate": "2026-11-01T07:00:00.000+0100",
+     "resume": "2026-11-01T07:00:00.000+0100",
      "start": "2026-11-01T06:29:00.000+0100"
     },
     "title": "U1: Polizeieinsatz"
