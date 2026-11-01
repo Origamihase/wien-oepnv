@@ -8,21 +8,8 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 01 Nov 2026 00:30:53 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 01 Nov 2026 01:00:58 +0100</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[10/60: Police operation]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">42baa4779412719a3a97ea6949467e1177cc20ff0afab5894e7cde9603a9801d</guid>
-      <pubDate>Sun, 01 Nov 2026 00:18:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sun, 01 Nov 2026 00:30:53 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 01 Nov 2026 00:18:00 +0100</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: police operation. [Since 00:18]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: police operation.<br/>[Since 00:18]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[40A: Fire-brigade operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -148,6 +135,20 @@
       <ext:ends_at>Mon, 02 Nov 2026 05:00:00 +0100</ext:ends_at>
       <description>Due to construction works in the area of Rechte Nordbahngasse, there are service changes on lines 29A, 29B, 33A and N31. Measures: Lines 29A and 29B: short-running service … [Until Mon 02.11.]</description>
       <content:encoded><![CDATA[Due to construction works in the area of Rechte Nordbahngasse, there are service changes on lines 29A, 29B, 33A and N31. Measures: Lines 29A and 29B: short-running service …<br/>[Until Mon 02.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[29A/29B: Crane works]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">481985865b3ca8fc88d3a172d3bb06ecd67edb9450d5ea380d1b88b5d82472fa</guid>
+      <pubDate>Sat, 31 Oct 2026 00:00:24 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 30 Oct 2026 21:00:53 +0100</ext:first_seen>
+      <ext:starts_at>Sat, 31 Oct 2026 00:00:27 +0100</ext:starts_at>
+      <ext:ends_at>Sun, 01 Nov 2026 23:59:59 +0100</ext:ends_at>
+      <description>Buses stop at Schloßhofer Straße 25-31. [Today]</description>
+      <content:encoded><![CDATA[Buses stop at Schloßhofer Straße 25-31.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
