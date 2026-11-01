@@ -13,6 +13,8 @@ Wenn der Endpunkt einer API und der zugehörige API-Key als Secrets im GitHub-Re
 
 Legen Sie im Repository (z. B. in `.github/workflows/test-api.yml`) folgenden Workflow ab:
 
+<!-- {% raw %} -->
+
 ```yaml
 name: Test API call
 
@@ -37,6 +39,8 @@ jobs:
             --header "Accept: application/json" \
             "${API_URL}${{ github.event.inputs.resource || '' }}"
 ```
+
+<!-- {% endraw %} -->
 
 * `workflow_dispatch` ermöglicht es, den Workflow jederzeit manuell über die GitHub-Oberfläche oder die GitHub CLI (`gh workflow run`) auszulösen.
 * Die Secrets werden im Job als Umgebungsvariablen bereitgestellt und stehen dort sicher zur Verfügung.
