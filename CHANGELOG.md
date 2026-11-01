@@ -59,7 +59,9 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
     `main()` fiel so nicht auf, und mit einer echten
     `data/translation_status.json` nach zwei gescheiterten Builds wären
     vier Tests ohne Bezug rot geworden. Ein neuer Test verlangt, dass
-    `main()` jede `check_*`-Funktion aufruft.
+    `main()` jede `check_*`-Funktion aufruft, und die Platzhalter nehmen nur
+    die Argumente der echten Prüfung, sodass ein falscher Aufruf in `main()`
+    rot bleibt.
   - Neuer Workflow `pages-build-check.yml`: Jeder Pull Request mit
     Änderungen unter `docs/` baut die Website mit derselben Action wie
     GitHub Pages (`actions/jekyll-build-pages` 1.0.13, Quelle `./docs`) und

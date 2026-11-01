@@ -11,8 +11,11 @@ between 14.10. and 28.10.2026 (Wiener Linien 21.10., ÖBB 27.10.) were exit 1.
 
 from __future__ import annotations
 
+import ast
 import inspect
 import json
+import textwrap
+from collections.abc import Callable
 from datetime import UTC, datetime, timedelta
 from email.utils import format_datetime
 from pathlib import Path
@@ -364,16 +367,38 @@ def _checks() -> list[str]:
     )
 
 
+# Read once at import, before any test replaces a check.
+_CHECKS = _checks()
+_SIGNATURES = {name: inspect.signature(getattr(hc, name)) for name in _CHECKS}
+
+
+def _stub(name: str, result: hc.Check) -> Callable[..., hc.Check]:
+    """A stand-in that takes only what the real check takes, so a call with
+    the wrong arguments in ``main()`` still fails here."""
+    signature = _SIGNATURES[name]
+
+    def stub(*args: object, **kwargs: object) -> hc.Check:
+        signature.bind(*args, **kwargs)
+        return result
+
+    return stub
+
+
 def test_main_runs_every_check() -> None:
-    source = inspect.getsource(hc.main)
-    assert [name for name in _checks() if f"{name}(" not in source] == []
-    assert len(_checks()) >= 13
+    tree = ast.parse(textwrap.dedent(inspect.getsource(hc.main)))
+    called = {
+        node.func.id
+        for node in ast.walk(tree)
+        if isinstance(node, ast.Call) and isinstance(node.func, ast.Name)
+    }
+    assert [name for name in _CHECKS if name not in called] == []
+    assert len(_CHECKS) >= 13
 
 
 def _all_green(monkeypatch: pytest.MonkeyPatch) -> None:
     healthy = hc.Check("OK", ok=True, summary="OK")
-    for name in _checks():
-        monkeypatch.setattr(hc, name, lambda *_a, **_kw: healthy)
+    for name in _CHECKS:
+        monkeypatch.setattr(hc, name, _stub(name, healthy))
     monkeypatch.setattr(hc, "assess_source", lambda probe, *_a: probe)
     monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
 
@@ -383,13 +408,13 @@ def test_main_is_green_when_every_check_is_green(monkeypatch: pytest.MonkeyPatch
     assert hc.main() == 0
 
 
-@pytest.mark.parametrize("target", _checks())
+@pytest.mark.parametrize("target", _CHECKS)
 def test_main_is_red_when_one_check_is_red(
     monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str], target: str
 ) -> None:
     _all_green(monkeypatch)
     red = hc.Check("Kaputt", ok=False, summary="FEHLER — kaputt")
-    monkeypatch.setattr(hc, target, lambda *_a, **_kw: red)
+    monkeypatch.setattr(hc, target, _stub(target, red))
     assert hc.main() == 1
     out = capsys.readouterr().out
     assert "::error title=Health: Kaputt::FEHLER — kaputt" in out
@@ -402,7 +427,7 @@ def test_main_stays_green_for_a_note(
     """A note (Feed-Wächter, Stammstrecke direction) never turns the run red."""
     _all_green(monkeypatch)
     note = hc.Check("Hinweis", ok=True, note=True, summary="HINWEIS — nur ein Hinweis")
-    monkeypatch.setattr(hc, "check_feed_watch", lambda _now: note)
+    monkeypatch.setattr(hc, "check_feed_watch", _stub("check_feed_watch", note))
     assert hc.main() == 0
     assert "::warning title=Health: Hinweis::HINWEIS" in capsys.readouterr().out
 
@@ -772,7 +797,7 @@ def test_the_review_runs_read_reach_past_the_runs_listed_an_hour_late(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     """01.11.2026, 09:25 UTC: the API listed #521, #520 and #519 (created
-    08:25-08:34 UTC, shown 09:26-09:34 UTC) before #522 (09:20 UTC). Reading
+    08:26-08:34 UTC, shown 09:26-09:34 UTC) before #522 (09:20 UTC). Reading
     only the first listed run picks #521."""
     def review(number: int, created: datetime, conclusion: str) -> dict[str, object]:
         return {"run_number": number, "id": number, "conclusion": conclusion,
@@ -1301,7 +1326,8 @@ def test_malformed_answers_are_a_note_not_a_crash(monkeypatch: pytest.MonkeyPatc
 def test_the_pages_of_runs_fit_the_api_cap() -> None:
     """A run is about 13 to 15 KB of JSON as the check reads it (20 Pages
     runs were 257,496 bytes and 30 review runs 405,393 bytes on 01.11.2026;
-    GitHub sends more only to a curl User-Agent, pretty-printed); an answer
+    GitHub sends more, pretty-printed, to the default User-Agents of curl and
+    wget); an answer
     over GITHUB_API_MAX_BYTES would leave the check a note for good."""
     assert hc.PAGES_RUNS_PER_PAGE * 16_000 < hc.GITHUB_API_MAX_BYTES
     assert hc.TOOLING_RUNS_PER_PAGE * 16_000 < hc.GITHUB_API_MAX_BYTES

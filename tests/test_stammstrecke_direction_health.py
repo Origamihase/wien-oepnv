@@ -34,6 +34,7 @@ import logging
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
+from collections.abc import Callable
 from typing import Any
 
 import pytest
@@ -49,6 +50,17 @@ from src.utils.stats import (
 )
 
 VIENNA = ZoneInfo("Europe/Vienna")
+
+
+def _bound_stub(real: Callable[..., Any], result: Any) -> Callable[..., Any]:
+    """A stand-in for a health check that takes only what the real one takes."""
+    signature = inspect.signature(real)
+
+    def stub(*args: Any, **kwargs: Any) -> Any:
+        signature.bind(*args, **kwargs)
+        return result
+
+    return stub
 DIRECTIONS = ("Meidling", "Praterstern")
 NOW = datetime(2026, 9, 13, 20, 0, tzinfo=VIENNA)
 
@@ -238,9 +250,9 @@ def test_health_check_note_keeps_the_run_green(
     ]
     assert "check_translation" in checks and "check_pages_build" in checks
     for name in checks:
-        monkeypatch.setattr(f"{target}.{name}", lambda *_a, **_kw: healthy)
+        result = note if name == "check_stammstrecke_directions" else healthy
+        monkeypatch.setattr(f"{target}.{name}", _bound_stub(getattr(module, name), result))
     monkeypatch.setattr(f"{target}.assess_source", lambda probe, *_a: probe)
-    monkeypatch.setattr(f"{target}.check_stammstrecke_directions", lambda _now: note)
     monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
 
     assert health_check_main() == 0
@@ -293,8 +305,6 @@ def test_health_check_window_is_env_tunable(
 
 def test_health_check_is_registered_in_the_report() -> None:
     """The check must actually run — an unwired check alarms on nothing."""
-    import inspect
-
     # ``from``-style to match the other ``scripts.health_check`` imports in this
     # file. Mixing ``import x`` and ``from x import y`` for one module trips
     # CodeQL's py/import-and-import-from.

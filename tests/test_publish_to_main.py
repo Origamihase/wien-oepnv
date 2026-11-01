@@ -310,9 +310,14 @@ def test_a_feed_check_that_cannot_run_does_not_call_the_feed_malformed(tmp_path:
     assert _remote_file(origin, env, "docs/feed.xml") == "<rss>old</rss>"
 
 
-def test_a_feed_with_an_unknown_encoding_is_called_malformed(tmp_path: Path) -> None:
+# "foo" is unknown to Python (LookupError); "shift_jis" is known, but the
+# parser takes no multi-byte encoding (ValueError).
+@pytest.mark.parametrize("encoding", ["foo", "shift_jis"])
+def test_a_feed_with_an_encoding_the_parser_rejects_is_called_malformed(
+    tmp_path: Path, encoding: str
+) -> None:
     origin, work, _other, env = _setup(tmp_path)
-    _write(work, "docs/feed.xml", '<?xml version="1.0" encoding="foo"?>\n<rss>new</rss>\n')
+    _write(work, "docs/feed.xml", f'<?xml version="1.0" encoding="{encoding}"?>\n<rss>new</rss>\n')
     result = _publish(work, env, "--validate-feeds", "--all", "--message", "chore: update cycle")
     assert result.returncode == 0, result.stderr
     assert "docs/feed.xml is not well-formed XML" in result.stdout
