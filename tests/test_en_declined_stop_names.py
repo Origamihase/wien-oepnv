@@ -1,7 +1,7 @@
 """A declined stop name reaches the EN model in the form of the stop sign.
 
 KI watcher, 2026-11-01: the EN feed read "Continue via line 37 to High
-Wait." (line 38, 31.10.2026 18:30; "High Wait" also on 23.05.2026). WL wrote
+Wait." (line 38, 31.10.2026 18:30). WL wrote
 "Weiterfahrt über die Linie 37 bis Hohen Warte"; the directory knows "Hohe
 Warte", and the masker shields names only as written. ``_station_base_forms``
 turns the weak form of a name that opens with an adjective back into the
