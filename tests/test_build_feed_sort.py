@@ -11,7 +11,6 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     # Ensure we can import src modules
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
-    monkeypatch.syspath_prepend(str(root / "src"))
 
     # Mock providers to avoid import errors
     providers = types.ModuleType("providers")

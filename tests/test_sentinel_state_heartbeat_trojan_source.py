@@ -162,7 +162,6 @@ def _import_build_feed(
     module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
-    monkeypatch.syspath_prepend(str(root / "src"))
 
     providers = types.ModuleType("providers")
     wl = types.ModuleType("providers.wiener_linien")

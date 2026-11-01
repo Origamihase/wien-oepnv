@@ -113,7 +113,6 @@ jobs:
       issues: write
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-      PYTHONPATH: src
       # VOR/VAO API credentials — required by ``scripts/update_stammstrecke_hbf.py``
       # (the active producer; the legacy ``update_stammstrecke_status.py`` remains
       # only the documented rollback target). Without these env vars VAO rejects

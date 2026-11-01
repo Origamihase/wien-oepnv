@@ -10,7 +10,6 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
-    monkeypatch.syspath_prepend(str(root / "src"))
     # Provide lightweight provider stubs to avoid heavy deps during import
     providers = types.ModuleType("providers")
     wl = types.ModuleType("providers.wiener_linien")
