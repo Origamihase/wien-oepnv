@@ -1,10 +1,11 @@
 # Run `pre-commit install` once after cloning to enable these hooks.
 # Run `pre-commit run --all-files` to check the whole repo manually.
 #
-# Mypy and the local secret scanner use language: system so they pick
-# up the exact versions installed in the contributor's venv (matching
-# what runs on CI). All other hooks pin upstream tool revisions to
-# reproducible SHAs.
+# Ruff, mypy, bandit and the project's own checks use language: system
+# so they run the exact versions installed in the contributor's venv
+# from requirements-dev.txt, the versions CI installs; Dependabot keeps
+# that one file current. Only the basic hygiene hooks pin an upstream
+# release tag here.
 default_language_version:
   python: python3.11
 
@@ -28,12 +29,18 @@ repos:
         args: ["--maxkb=1024"]
 
   # ── ruff (linter, includes the bugbear / security rules already
-  #    selected via pyproject.toml: E, F, S, B) ─────────────────────
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.4.7
+  #    selected via pyproject.toml: E, F, S, B, UP) ─────────────────
+  # Until 2026-11-01 this hook pinned ruff-pre-commit v0.4.7 while CI ran
+  # ruff 0.17.3 from requirements-dev.txt: two pins, and Dependabot only
+  # moves the one in requirements-dev.txt.
+  - repo: local
     hooks:
       - id: ruff
-        args: [--fix]
+        name: ruff check
+        entry: python -m ruff check --force-exclude --fix
+        language: system
+        types_or: [python, pyi]
+        require_serial: true
 
   # ── mypy --strict (uses the venv installation so the version and
   #    plugins match exactly what CI runs) ──────────────────────────
@@ -45,8 +52,9 @@ repos:
         language: system
         types: [python]
         # mypy's pyproject.toml config drives file selection; we let
-        # mypy itself walk src/ rather than pass each staged file
-        # individually (which would miss cross-module type errors).
+        # mypy itself walk src/, tests/ and scripts/ (``files``, the
+        # scope mypy-strict.yml checks) rather than pass each staged
+        # file individually (which would miss cross-module type errors).
         pass_filenames: false
         require_serial: true
 
@@ -64,13 +72,17 @@ repos:
   # Shift-left for the bandit gate so contributors catch B-class
   # issues before pushing instead of discovering them in CI.
   # ``-q`` suppresses non-error output; ``-r src scripts`` matches
-  # ``run_static_checks.py``'s invocation exactly.
-  - repo: https://github.com/PyCQA/bandit
-    rev: 1.9.4
+  # ``run_static_checks.py``'s invocation exactly, and like that run it
+  # uses the venv's bandit (until 2026-11-01 a second pin, rev 1.9.4).
+  - repo: local
     hooks:
       - id: bandit
-        args: ["-r", "src", "scripts", "-q"]
+        name: bandit
+        entry: python -m bandit -r src scripts -q
+        language: system
+        types: [python]
         pass_filenames: false
+        require_serial: true
 
   # ── C901 complexity gate (matches CI's complexity-gate workflow) ─
   # Allowlist-style baseline check over src/ and scripts/: fails when the
