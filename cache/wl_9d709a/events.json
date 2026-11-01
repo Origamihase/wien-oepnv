@@ -362,18 +362,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "5A/5B/N31: Obere Augartenstraße",
-    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 5A in Richtung Griegstra&szlig;e,&nbsp;</span></u></strong><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">5B in Richtung Heiligenstadt S U und N31 in Richtung Stammersdorf</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;Obere Augartenstra&szlig;e&nbsp;</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Untere Augartenstra&szlig;e 40</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;</span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">Untere Augartenstra&szlig;e 42</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;30. September 2025, etwa 18:00 Uhr auf Dauer von etwa einem Jahr</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Dachgeschossausbau&nbsp;</span></p>",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "5cd26b46e3d83d83054e14525825191f05326ae3f22d63f0dcf5a305c21f2157",
-    "pubDate": "2025-09-25T13:00:00+02:00",
-    "starts_at": "2025-09-30T00:00:00+02:00",
-    "ends_at": "2026-11-01T11:11:00+01:00",
-    "_identity": "wl|hinweis|L=5A,5B,N31|D=2025-09-30|TK=5a 5b n31 obere augartenstrasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "5A/N31: Obere Augartenstraße",
     "description": "<p><strong><u>Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf</u></strong></p><p><strong><u>Haltestelle:</u></strong> Obere Augartenstraße</p><p><strong><u>Von:</u></strong> Untere Augartenstraße 40</p><p><strong><u>Nach:</u></strong> Untere Augartenstraße 42</p><p><strong><u>Dauer:</u></strong> Von 07.11.2026 ca. 05:00 Uhr bis 09.11.2026 ca. 07:00 Uhr</p><p><strong><u>Grund:</u></strong> Demontage eines Turmdrehkrans</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -966,6 +954,34 @@
     "starts_at": "2026-10-31T00:00:27+01:00",
     "ends_at": "2026-11-01T23:59:59+01:00",
     "_identity": "wl|störung|L=29B|D=2026-10-31|TK=kranarbeiten busse halten bei schlosshofer strasse 25 31"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Verkehrsunfall",
+    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "84f9fe1b5c4beaf00a73c1565363074e86a57541f0f409f0ef6b0f7aac539f50",
+    "pubDate": "2026-11-01T11:15:00+01:00",
+    "starts_at": "2026-11-01T11:15:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=31|D=2026-11-01|TK=31 verkehrsunfall",
+    "_wl_ids": [
+      "I20261101-0011"
+    ],
+    "_incident_start": "2026-11-01T11:15:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b3bce5b56b4f9b52769c8c21ebd335d7f9ae6e17dbf3f5187526cfd046403160",
+    "pubDate": "2026-11-01T11:16:04+01:00",
+    "starts_at": "2026-11-01T11:26:36+01:00",
+    "ends_at": "2026-11-01T12:19:00+01:00",
+    "_identity": "wl|störung|L=31|D=2026-11-01|TK=fahrtbehinderung verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
