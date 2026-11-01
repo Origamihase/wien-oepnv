@@ -4827,7 +4827,11 @@ def _model_revision(pipe: Any) -> str:
     ``trust_remote_code`` check (CVE-2026-80047, audit 2026-10-01). A pinned
     revision keeps a later push to the repo out of the build.
     """
-    commit = getattr(getattr(getattr(pipe, "model", None), "config", None), "_commit_hash", None)
+    commit = getattr(pipe, "commit", None)
+    if not (isinstance(commit, str) and commit):
+        # transformers 4 kept the commit on the model config; 5 no longer does
+        # (first build after #2118 logged "Revision unbekannt").
+        commit = getattr(getattr(getattr(pipe, "model", None), "config", None), "_commit_hash", None)
     return str(sanitize_log_arg(commit)) if isinstance(commit, str) and commit else "unbekannt"
 
 
@@ -4849,9 +4853,11 @@ class _MarianTranslator:
     and every test double keep working unchanged.
     """
 
-    def __init__(self, tokenizer: Any, model: Any) -> None:
+    def __init__(self, tokenizer: Any, model: Any, commit: str | None = None) -> None:
         self.tokenizer = tokenizer
         self.model = model
+        # The commit the files came from (see ``_model_revision``).
+        self.commit = commit
 
     def __call__(
         self, text: str, *, max_length: int | None = None, truncation: bool = True
@@ -4878,7 +4884,26 @@ def _load_translator() -> Any:
         _TRANSLATION_MODEL_NAME, revision=_TRANSLATION_MODEL_REVISION
     )
     model.eval()
-    return _MarianTranslator(tokenizer, model)
+    return _MarianTranslator(tokenizer, model, _loaded_commit())
+
+
+def _loaded_commit() -> str | None:
+    """The commit of the cached snapshot the model files were loaded from.
+
+    ``transformers`` 5 no longer records it on ``model.config._commit_hash``;
+    the snapshot directory of ``config.json`` in the Hugging Face cache is
+    named after it. ``None`` when it cannot be found (never fails the load).
+    """
+    try:
+        from transformers.utils.hub import cached_file, extract_commit_hash
+
+        path = cached_file(  # nosec B615 - pinned revision
+            _TRANSLATION_MODEL_NAME, "config.json", revision=_TRANSLATION_MODEL_REVISION
+        )
+        commit = extract_commit_hash(path, None) if path else None
+    except Exception:
+        return None
+    return commit if isinstance(commit, str) and commit else None
 
 
 def _get_translation_pipeline() -> Any:

@@ -15,6 +15,9 @@ Mutations checked against this file (each one caught, by the test named):
 * the revision is not passed to tokenizer or model → ``test_the_model_is_pinned_to_a_commit``.
 * ``max_length`` is dropped or special tokens are kept → ``test_the_translator_keeps_the_pipeline_shape``.
 * a failed load is not remembered → ``test_a_failed_load_keeps_its_error``.
+* the snapshot commit is not used (transformers 5 has no ``_commit_hash`` on
+  the config; the first build after #2118 logged "Revision unbekannt") →
+  ``test_transformers_5_logs_the_snapshot_commit``.
 """
 
 from __future__ import annotations
@@ -149,3 +152,31 @@ def test_a_failed_load_keeps_its_error(monkeypatch: pytest.MonkeyPatch) -> None:
     assert build_feed._TRANSLATION_STATE["load_failed"] is True
     assert "ImportError" in str(build_feed._TRANSLATION_STATE["error"])
     assert build_feed._get_translation_pipeline() is None  # no second attempt in the same build
+
+
+def test_transformers_5_logs_the_snapshot_commit(
+    monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
+) -> None:
+    snapshot = f"/cache/hub/models--Helsinki-NLP--opus-mt-de-en/snapshots/{COMMIT}/config.json"
+    seen: dict[str, Any] = {}
+
+    def _cached_file(name: str, filename: str, **kwargs: Any) -> str:
+        seen["cached_file"] = (name, filename, kwargs)
+        return snapshot
+
+    def _extract(path: str, _commit: Any) -> str:
+        return path.split("/snapshots/")[1].split("/")[0]
+
+    _fake_transformers(monkeypatch, _Model(None), _Tokenizer(), {})
+    monkeypatch.setitem(sys.modules, "transformers.utils", SimpleNamespace())
+    monkeypatch.setitem(
+        sys.modules, "transformers.utils.hub",
+        SimpleNamespace(cached_file=_cached_file, extract_commit_hash=_extract),
+    )
+    with caplog.at_level(logging.INFO):
+        translator = build_feed._get_translation_pipeline()
+    assert translator.commit == COMMIT
+    assert f"Revision {COMMIT}" in caplog.text
+    assert seen["cached_file"] == (
+        "Helsinki-NLP/opus-mt-de-en", "config.json", {"revision": build_feed._TRANSLATION_MODEL_REVISION}
+    )
