@@ -82,5 +82,17 @@
     "starts_at": "2026-10-31T00:00:00+01:00",
     "ends_at": "2026-11-04T23:59:59+01:00",
     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&915701"
+  },
+  {
+    "source": "ÖBB",
+    "category": "Störung",
+    "title": "Wien Heiligenstadt ↔ Wien Franz-Josefs-Bahnhof",
+    "description": "01.11.2026<br/><br/>Wegen eines defekten Zuges auf der Strecke sind zwischen <b>Wien Heiligenstadt Bahnhof (U) </b>und <b>Wien Franz-Josefs-Bahnhof </b>bis voraussichtlich <b>14:30 Uhr keine Fahrten</b> möglich.<br>Fahrgäste mit ÖBB-Tickets können zwischen <b>Wien Heiligenstadt Bahnhof (U) </b>und <b>Wien Franz-Josefs-Bahnhof </b>die <b>Wiener Linien </b>benutzen.<br>Wir bitten um Entschuldigung.",
+    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&923510",
+    "pubDate": "2026-11-01T13:50:02+01:00",
+    "starts_at": "2026-11-01T00:00:00+01:00",
+    "ends_at": "2026-11-01T23:59:59+01:00",
+    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&923510"
   }
 ]
