@@ -294,6 +294,39 @@ def test_regen_script_delegates_to_the_gate() -> None:
     assert "sed " not in script
 
 
+def test_every_baseline_the_gates_can_write_passes_the_secret_scan(tmp_path: Path) -> None:
+    """CI's static checks run ``scripts/scan_secrets.py`` over every tracked file.
+
+    The scanner reports a run of 24 or more characters from letters, digits
+    and ``/_-+=`` that mixes at least two of lower case, upper case and
+    digits (and has enough distinct characters) as a high-entropy token. A
+    path with digits forms such a run once ``/`` and ``_`` join its parts:
+    the first header named ``scripts/regen_c901_baseline.sh``, and an entry
+    for ``scripts/check_i18n_coverage.py`` (its ``main`` measures 14) would
+    have failed the scan the day it crossed 15, with the gate demanding the
+    line. Both gate baselines are therefore on ``.secret-scan-ignore``. This
+    test writes a line for every Python file either gate can report and
+    scans the files the way ``scan_secrets.py`` does.
+    """
+    from src.utils.secret_scanner import load_ignore_file, scan_repository
+
+    paths = sorted(
+        path.relative_to(REPO).as_posix()
+        for tree in (*gate.SCAN_PATHS, "tests")
+        for path in (REPO / tree).rglob("*.py")
+    )
+    assert any(path.endswith("check_i18n_coverage.py") for path in paths)
+    c901 = tmp_path / ".c901-baseline.txt"
+    c901.write_text(gate._format_baseline([(f"{path}::main", 16) for path in paths]), encoding="utf-8")
+    mypy = tmp_path / ".mypy-baseline.txt"
+    mypy.write_text("".join(f"{path}: error: Name \"x\" is not defined  [name-defined]\n" for path in paths), encoding="utf-8")
+    ignore = load_ignore_file(REPO)
+    assert scan_repository(tmp_path, paths=[c901, mypy], ignore_patterns=ignore) == []
+    assert scan_repository(REPO, paths=[REPO / ".c901-baseline.txt", REPO / ".mypy-baseline.txt"], ignore_patterns=ignore) == []
+    # Without the two entries the scan fails, so the test measures something.
+    assert scan_repository(tmp_path, paths=[c901])
+
+
 def test_the_real_ruff_measures_the_repository() -> None:
     """The real JSON shape parses; every key names a measured tree."""
     entries = gate._measure()
