@@ -1601,6 +1601,11 @@ def extract_stations(workbook_stream: BytesIO) -> list[Station]:
     workbook = openpyxl.load_workbook(workbook_stream, data_only=True, read_only=True)
     try:
         worksheet = workbook.active
+        if worksheet is None:
+            # openpyxl returns None when no sheet sits at the active index
+            # (a workbook without sheets); same failure as a file that is no
+            # workbook at all.
+            raise ValueError("Invalid workbook file: no active worksheet")
         header_row_index, column_map = _find_header_row(worksheet.iter_rows(min_row=1, max_row=25, values_only=True))
         logger.debug("Detected header row at index %s", header_row_index)
         stations: list[Station] = []

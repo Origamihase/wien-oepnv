@@ -74,6 +74,7 @@ def _build_minimal_xlsx() -> BytesIO:
 
     wb = openpyxl.Workbook()
     ws = wb.active
+    assert ws is not None
     ws.title = "Sheet1"
     ws.append(["BST_ID", "BST_CODE", "Verkehrsstation"])
     ws.append([1, "AB", "Wien Westbahnhof"])

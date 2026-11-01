@@ -583,7 +583,8 @@ def _parse_datetime(value: str | float | int | None) -> datetime | None:
             return None
     try:
         # Annotated so the result is a ``datetime`` for mypy with and without
-        # the dateutil stubs (CI has none: ``parse`` returns ``Any`` there).
+        # the dateutil stubs (without them ``parse`` returns ``Any``; CI has
+        # them since 2026-11-01, requirements-dev.txt).
         parsed: datetime = dtparser.parse(candidate)
     except (ValueError, OverflowError):
         return None

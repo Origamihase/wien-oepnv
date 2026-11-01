@@ -156,6 +156,14 @@ jobs:
         # ``data/side_steps/seo-guard.json`` mit und der Health check wird
         # rot (Prüfung ``Nebenschritte``, Betreiberentscheidung 2026-10-28).
         id: metadata
+        # Nur auf ``main`` wie die Veröffentlichung unten (Technical Debt
+        # Assessment 2026-11-01, W3): Der Workflow läuft auch bei Pushes auf
+        # Feature-Branches, und ohne diese Bedingung setzte ein noch nicht
+        # gemergter Branch Beschreibung und Homepage des Repositorys live
+        # (allein am 01.11. in 14 Branch-Läufen bis 15:03 Uhr, bis dahin mit
+        # denselben Werten wie auf ``main``). Die Prüfungen von Sitemap,
+        # llms.txt und Feed laufen auf Branches weiter.
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         continue-on-error: true
         shell: bash
         run: |

@@ -9,7 +9,8 @@ repositories:
   ``--force-with-lease``; the ``git pull --rebase`` between two attempts
   fetched ``origin/main`` and so re-armed the lease. Whenever that rebase had
   to be aborted, the next attempt force-pushed the old base over the commit
-  that had landed in between (``main`` has no branch protection; on
+  that had landed in between (``main`` had no branch protection then, the
+  ruleset "main schützen" blocks force pushes since 2026-10-16; on
   2026-09-11 the same lease mechanism dropped the merge of PR #1783). The
   test makes the rebase fail with a ``pre-rebase`` hook and checks that the
   concurrent commit survives.

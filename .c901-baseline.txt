@@ -1,14 +1,26 @@
-_acquire_file_lock 16
-_clean_title_keep_places 24
-_dedupe_items 18
-_normalise_access_token 16
-_parse_env_file 21
-_scan_content 26
-_station_lookup 29
-_title_has_unknown_endpoint 27
-_vienna_polygons 21
-deduplicate_fuzzy 21
-fetch_events 51
-submit 18
-to_markdown 18
-validate_http_url 34
+# C901 allowlist: every function in src/ and scripts/ above complexity 15.
+# Written by `bash scripts/regen_c901_baseline.sh`. The gate fails on any
+# difference, so regenerate this file instead of editing it by hand.
+scripts/apply_station_overrides.py::apply_overrides 18
+scripts/enrich_station_aliases.py::_alias_candidates 46
+scripts/generate_markdown_stats.py::main 16
+scripts/ki_waechter.py::prepare 17
+scripts/update_stammstrecke_hbf.py::_collect_hbf_observations 20
+scripts/update_station_directory.py::_load_existing_station_entries 18
+scripts/update_wl_stations.py::_merge_entry_group 16
+scripts/update_wl_stations.py::build_wl_entries 23
+scripts/update_wl_stations.py::merge_into_stations 23
+src/build_feed.py::_dedupe_items 18
+src/feed/merge.py::deduplicate_fuzzy 21
+src/feed/reporting.py::submit 18
+src/providers/oebb.py::_clean_title_keep_places 24
+src/providers/oebb.py::_title_has_unknown_endpoint 27
+src/providers/vor.py::_normalise_access_token 16
+src/providers/wl_fetch.py::fetch_events 35
+src/utils/env.py::_parse_env_file 21
+src/utils/http.py::validate_http_url 34
+src/utils/locking.py::_acquire_file_lock 16
+src/utils/secret_scanner.py::_scan_content 26
+src/utils/stations.py::_station_lookup 29
+src/utils/stations.py::_vienna_polygons 21
+src/utils/stations_validation.py::to_markdown 18

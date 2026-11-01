@@ -45,8 +45,9 @@ Beschreibung begründen, warum er auf diesen PR nicht zutrifft.
       `feed_config.PROVIDER_TIMEOUT`-Patch.
 
 ### Statische Analyse
-- [ ] `ruff check src/ tests/` ist sauber.
-- [ ] `python3 -m mypy --no-pretty src tests` (CI-Pinnung 2.4.x) ist sauber.
+- [ ] `ruff check` ist sauber.
+- [ ] `python3 -m mypy --no-pretty` (prüft `src/`, `tests/` und `scripts/` wie
+      CI, Version und Stubs aus `requirements-dev.txt`) ist sauber.
 - [ ] Keine neuen `# type: ignore` / `# noqa`, die eine strukturelle
       Schwäche verbergen.
 - [ ] Keine neuen Mypy-Allowlist-Einträge, sofern nicht dokumentiert.
@@ -54,9 +55,10 @@ Beschreibung begründen, warum er auf diesen PR nicht zutrifft.
 ### Komplexität
 - [ ] Keine neue Funktion übersteigt **C901 = 15** (durch
       `scripts/check_complexity.py` durchgesetzt).
-- [ ] Falls ein Refactor eine Baseline-Funktion unter den Threshold
-      bringt, wurde `.c901-baseline.txt` regeneriert
-      (`bash scripts/regen_c901_baseline.sh`).
+- [ ] Falls sich der Wert einer Funktion über 15 ändert (auch nach
+      unten) oder sie unter den Threshold fällt, ist `.c901-baseline.txt`
+      im selben Change regeneriert (`bash scripts/regen_c901_baseline.sh`);
+      sonst ist das Gate rot.
 - [ ] Extrahierte Helfer sind nach Möglichkeit reine Funktionen mit
       klar benennbarer Einzelverantwortung.
 

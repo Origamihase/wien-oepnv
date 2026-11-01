@@ -84,6 +84,12 @@ def _fake_transformers(
         ),
     )
     monkeypatch.setitem(sys.modules, "torch", SimpleNamespace(inference_mode=_NoGrad))
+    # ``_loaded_commit`` imports ``transformers.utils.hub``; without these
+    # entries an earlier test's real import plus a local model cache would
+    # answer instead of the fake (seen 2026-11-01, only on machines with the
+    # model cached). An empty module makes the import fail, as without a cache.
+    monkeypatch.setitem(sys.modules, "transformers.utils", SimpleNamespace())
+    monkeypatch.setitem(sys.modules, "transformers.utils.hub", SimpleNamespace())
     monkeypatch.setitem(build_feed._TRANSLATION_STATE, "pipeline", None)
     monkeypatch.setitem(build_feed._TRANSLATION_STATE, "load_failed", False)
     monkeypatch.setitem(build_feed._TRANSLATION_STATE, "error", None)

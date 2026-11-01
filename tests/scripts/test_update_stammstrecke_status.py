@@ -2713,4 +2713,3 @@ def test_format_drift_finalized_train_suppressed_on_respaced_reemission(
         "Re-emission with spaced name 'S 1' must be suppressed because "
         "'S1' was already finalised in tick A."
     )
-

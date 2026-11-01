@@ -98,4 +98,3 @@ class TestApplyAuthentication:
             "Bearer global_token",
             "https://global.com/"
         )
-

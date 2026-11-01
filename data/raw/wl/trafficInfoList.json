@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261101-0021, I20260922-0032, I20260925-0011, I20261101-0020, I20260909-0007, I20261101-0019, I20261020-0029"
+    "trafficInfoNameList": "I20260922-0032, I20260925-0011, I20261101-0022, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R117-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R45-136, R19-136, R130-136, R119-136, R118-136, R293-474, R1448-412, R1474-412, R318-437, R1125-229, R1125-429, R2558-125, R3886-480, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2378-627, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2420-411, R2343-429, R2343-229, R2343-626, R2343-531, R1974-466, R1301-440, R1272-440, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R102-136, R117-136, R116-136, R115-136, R100-136, R101-136, R103-136, R45-136, R19-136, R130-136, R119-136, R118-136, R318-437, R293-474, R1448-412, R1474-412, R1125-429, R1125-229, R2558-125, R3886-480, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2343-429, R2420-411, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2343-229, R2378-627, R2343-626, R2343-125, R2343-531, R1974-466, R1272-440, R1301-440, R500-101, R2032-0, R2031-0, R2312-0, R2974-0, R4733-0, R2680-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -208,145 +208,58 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "vandalism",
-    "alertCauseId": 16,
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
-       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-       "title": "U6: Verunreinigung"
-      }
-     }
-    ],
-    "name": "I20261101-0019",
-    "owner": "WL",
-    "parentName": "I20261101-0019",
-    "priority": "1",
-    "reasonId": 36,
-    "reasonName": "Verunreinigung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4624
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-01T16:24:00.000+0100",
-     "end": "2026-11-01T17:15:00.000+0100",
-     "lastUpdate": "2026-11-01T16:27:00.000+0100",
-     "resume": "2026-11-01T16:24:00.000+0100",
-     "start": "2026-11-01T16:24:00.000+0100"
-    },
-    "title": "U6: Verunreinigung"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "U4": "ptMetro"
+      "11": "ptTram",
+      "71": "ptTram"
      }
     },
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "description": "Linie 11: Betrieb nur zwischen Otto-Probst-Platz und Fickeysstraße. Linie 71: Betrieb nur zwischen Schottenring U und Fickeysstraße. Ersatz: Linien 71A, 73A, 71B und 73B. Voraussichtliche Dauer: 18:20 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Zentralfriedhof 2.Tor.",
+    "descriptionHTML": "<p>Linie 11:<br>Betrieb nur zwischen Otto-Probst-Platz und Fickeysstraße.<br>Linie 71:<br>Betrieb nur zwischen Schottenring U und Fickeysstraße.</p><p>Ersatz: Linien 71A, 73A, 71B und 73B.</p><p>Voraussichtliche Dauer: 18:20 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Zentralfriedhof 2.Tor.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U4: Verspätungen"
+       "descriptionHtml": "<p>Linie 11:<br>Betrieb nur zwischen Otto-Probst-Platz und Fickeysstraße.<br>Linie 71:<br>Betrieb nur zwischen Schottenring U und Fickeysstraße.</p><p>Ersatz: Linien 71A, 73A, 71B und 73B.</p><p>Voraussichtliche Dauer: 18:20 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Zentralfriedhof 2.Tor.</p>",
+       "descriptionPlain": "Linie 11: Betrieb nur zwischen Otto-Probst-Platz und Fickeysstraße. Linie 71: Betrieb nur zwischen Schottenring U und Fickeysstraße. Ersatz: Linien 71A, 73A, 71B und 73B. Voraussichtliche Dauer: 18:20 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Zentralfriedhof 2.Tor.",
+       "title": "11, 71: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261101-0020",
+    "name": "I20261101-0022",
     "owner": "WL",
-    "parentName": "I20261101-0020",
+    "parentName": "I20261101-0022",
     "priority": "1",
     "reasonId": 20,
     "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "U4"
+     "11",
+     "71"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 304,
-      "lineName": "U4",
-      "vehicleType": "ptMetro"
+      "lineId": 111,
+      "lineName": "11",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 171,
+      "lineName": "71",
+      "vehicleType": "ptTram"
      }
+    ],
+    "relatedStops": [
+     2028
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-01T16:28:00.000+0100",
-     "end": "2026-11-01T17:23:00.000+0100",
-     "lastUpdate": "2026-11-01T16:28:00.000+0100",
-     "resume": "2026-11-01T16:27:00.000+0100",
-     "start": "2026-11-01T16:27:00.000+0100"
+     "created": "2026-11-01T17:53:00.000+0100",
+     "lastUpdate": "2026-11-01T17:57:00.000+0100",
+     "start": "2026-11-01T17:52:00.000+0100"
     },
-    "title": "U4: Verspätungen"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "66A": "ptBusCity"
-     }
-    },
-    "description": "Linie 66A: Unregelmäßige Intervalle in Richtung Liesing S. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie 66A:<br>Unregelmäßige Intervalle in Richtung Liesing S. <br><br>Grund: Rettungseinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 66A:<br>Unregelmäßige Intervalle in Richtung Liesing S. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie 66A: Unregelmäßige Intervalle in Richtung Liesing S. Grund: Rettungseinsatz.",
-       "title": "66A: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261101-0021",
-    "owner": "WL",
-    "parentName": "I20261101-0021",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 466,
-      "lineName": "66A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-01T16:44:00.000+0100",
-     "end": "2026-11-01T17:00:00.000+0100",
-     "lastUpdate": "2026-11-01T17:00:00.000+0100",
-     "resume": "2026-11-01T16:43:00.000+0100",
-     "start": "2026-11-01T16:43:00.000+0100"
-    },
-    "title": "66A: Rettungseinsatz"
+    "title": "11, 71: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -926,6 +839,66 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug\nBetrieb ab \nFickeysstraße ",
+    "name": "R2031-0",
+    "owner": "WL",
+    "parentName": "R2031-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2031
+    ],
+    "time": {
+     "end": "2026-11-01T18:56:00.000+0100",
+     "start": "2026-11-01T17:57:42.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug\nBetrieb ab \nFickeysstraße "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug\nBetrieb ab \nFickeysstraße ",
+    "name": "R2032-0",
+    "owner": "WL",
+    "parentName": "R2032-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2032
+    ],
+    "time": {
+     "end": "2026-11-01T18:56:00.000+0100",
+     "start": "2026-11-01T17:57:42.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug\nBetrieb ab \nFickeysstraße "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug\nBetrieb ab \nFickeysstraße ",
+    "name": "R2312-0",
+    "owner": "WL",
+    "parentName": "R2312-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2312
+    ],
+    "time": {
+     "end": "2026-11-01T18:56:00.000+0100",
+     "start": "2026-11-01T17:57:42.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug\nBetrieb ab \nFickeysstraße "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2343-125",
     "owner": "WL",
@@ -1340,6 +1313,26 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug\nBetrieb ab \nFickeysstraße ",
+    "name": "R2680-0",
+    "owner": "WL",
+    "parentName": "R2680-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2680
+    ],
+    "time": {
+     "end": "2026-11-01T18:56:00.000+0100",
+     "start": "2026-11-01T17:57:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug\nBetrieb ab \nFickeysstraße "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -1359,6 +1352,26 @@
      "start": "2026-10-31T00:00:23.000+0100"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug\nBetrieb ab \nFickeysstraße ",
+    "name": "R2974-0",
+    "owner": "WL",
+    "parentName": "R2974-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2974
+    ],
+    "time": {
+     "end": "2026-11-01T18:56:00.000+0100",
+     "start": "2026-11-01T17:57:43.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug\nBetrieb ab \nFickeysstraße "
    },
    {
     "alertCause": "undefined alert cause",
@@ -1451,6 +1464,26 @@
      "start": "2026-10-30T00:00:12.000+0100"
     },
     "title": "Züge halten\nWipplingerstr 39"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug\nBetrieb ab \nFickeysstraße ",
+    "name": "R4733-0",
+    "owner": "WL",
+    "parentName": "R4733-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     4733
+    ],
+    "time": {
+     "end": "2026-11-01T18:56:00.000+0100",
+     "start": "2026-11-01T17:57:43.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug\nBetrieb ab \nFickeysstraße "
    },
    {
     "alertCause": "undefined alert cause",

@@ -1,28 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-01T16:01:15.356680+00:00",
- "built": "2026-11-01T17:01:04+01:00",
+ "updated": "2026-11-01T17:01:10.279303+00:00",
+ "built": "2026-11-01T18:00:58+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-01T17:01:04+01:00",
+  "built": "2026-11-01T18:00:58+01:00",
   "items": [
    {
-    "title": "U4: Verspätungen",
-    "time_line": "Seit 16:27"
-   },
-   {
-    "title": "U6: Verunreinigung",
-    "time_line": "Seit 16:24"
+    "title": "11/71: Schadhaftes Fahrzeug",
+    "time_line": "Seit 17:52"
    },
    {
     "title": "Wien Heiligenstadt ↔ Wien Franz-Josefs-Bahnhof",
     "time_line": "Seit 13:50"
-   },
-   {
-    "title": "38B/39B: Allerheiligenverkehr 01.11.2026",
-    "time_line": "Heute"
    },
    {
     "title": "N31: Kranarbeiten",
@@ -47,31 +39,19 @@
    {
     "title": "54A/54B: Bauarbeiten",
     "time_line": "Bis 10.11."
+   },
+   {
+    "title": "11: Wienerfeldgasse",
+    "time_line": "Bis 19.11."
+   },
+   {
+    "title": "40A: Bauernfeldplatz",
+    "time_line": "Seit 27.10."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-25T16:31:05.741146+00:00",
-   "raw": {
-    "wl-stoerungen": 140,
-    "wl-hinweise": 85,
-    "oebb": 158,
-    "baustellen-linien": 56,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 14,
-    "oebb": 134,
-    "baustellen": 71
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 117
-   }
-  },
   {
    "t": "2026-10-25T17:01:15.076591+00:00",
    "raw": {
@@ -6751,17 +6731,57 @@
     "oebb": 8,
     "wl": 92
    }
+  },
+  {
+   "t": "2026-11-01T16:30:55.250789+00:00",
+   "raw": {
+    "wl-stoerungen": 58,
+    "wl-hinweise": 73,
+    "oebb": 152,
+    "baustellen-linien": 57,
+    "baustellen-punkte": 18
+   },
+   "discarded": {
+    "wl": 13,
+    "oebb": 130,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 8,
+    "wl": 90
+   }
+  },
+  {
+   "t": "2026-11-01T17:01:10.279303+00:00",
+   "raw": {
+    "wl-stoerungen": 65,
+    "wl-hinweise": 72,
+    "oebb": 152,
+    "baustellen-linien": 57,
+    "baustellen-punkte": 18
+   },
+   "discarded": {
+    "wl": 13,
+    "oebb": 130,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 8,
+    "wl": 91
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-01T16:01:15.356680+00:00"
+   "last_ok": "2026-11-01T17:01:10.279303+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-01T16:01:15.356680+00:00"
+   "last_ok": "2026-11-01T17:01:10.279303+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-01T16:01:15.356680+00:00"
+   "last_ok": "2026-11-01T17:01:10.279303+00:00"
   }
  }
 }

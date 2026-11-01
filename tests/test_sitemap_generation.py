@@ -37,9 +37,13 @@ def test_sitemap_xml_validity(mock_docs_dir: Path) -> None:
 
     tree = ET.parse(sitemap_path)
     root = tree.getroot()
+    assert root is not None
 
     assert root.tag == "{http://www.sitemaps.org/schemas/sitemap/0.9}urlset"
-    urls = [elem.text for elem in root.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc")]
+    urls: list[str] = []
+    for elem in root.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc"):
+        assert elem.text is not None, "empty <loc>"
+        urls.append(elem.text)
 
     assert "https://forker.github.io/base/" in urls  # index.md -> /
     assert "https://forker.github.io/base/page.html" in urls

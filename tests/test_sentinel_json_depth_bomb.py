@@ -212,4 +212,3 @@ def test_verify_vor_access_id_handles_depth_bomb(
     assert any(
         "VOR response was not valid JSON" in r.getMessage() for r in caplog.records
     )
-
