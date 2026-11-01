@@ -1,5 +1,16 @@
 -r requirements.txt
 mypy>=2.4,<2.5
+# Type stubs for the runtime libraries that ship no types, so the mypy runs
+# (mypy-strict.yml, the pre-commit hook, `python -m src.cli checks`) see the
+# same types everywhere; until 2026-11-01 CI ran without them and a type error
+# showed only in a local venv that had them. requests ships its own types
+# since 2.34 (types-requests would shadow them). types-python-dateutil
+# describes 2.9; parser.parse, isoparse and ParserError, all the code uses,
+# are unchanged in 3.0.
+types-defusedxml>=0.7.0.20260504,<0.8
+types-openpyxl>=3.1.5.20261017,<3.2
+types-python-dateutil>=2.9.0.20261029,<2.10
+types-PyYAML>=6.0.12.20261030,<6.1
 ruff>=0.17.3,<0.18
 bandit>=1.9.4,<2.0
 pip-audit>=2.10.1,<3

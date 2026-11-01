@@ -25,7 +25,7 @@ from datetime import datetime, UTC
 from zoneinfo import ZoneInfo
 from email.utils import parsedate_to_datetime
 from itertools import pairwise
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import urlparse
 
 import requests
@@ -57,6 +57,13 @@ from ..utils.text import DROP_ACCESS, facility_drop_label, is_station_access_onl
 from ..utils.vienna_clock import vienna_wall_clock
 
 from defusedxml import ElementTree as ET # XXE Mitigation applied
+
+if TYPE_CHECKING:
+    # Annotations only: ``defusedxml.ElementTree`` parses into the standard
+    # library's nodes but exports no ``Element`` class (``ET.Element`` worked
+    # only because annotations are not evaluated). Parsing stays with
+    # defusedxml.
+    from xml.etree.ElementTree import Element  # nosec B405
 
 log = logging.getLogger(__name__)
 
@@ -1592,7 +1599,7 @@ def _find_stations_in_text(blob: str) -> list[str]:
     return sorted(filtered)
 
 # ---------------- Fetch/Parse ----------------
-def _fetch_xml(url: str, timeout: int = 25) -> ET.Element | None:
+def _fetch_xml(url: str, timeout: int = 25) -> Element | None:
     with session_with_retries(USER_AGENT) as s:
         for attempt in range(2):
             try:
@@ -1645,7 +1652,7 @@ def _fetch_xml(url: str, timeout: int = 25) -> ET.Element | None:
 
     return None
 
-def _get_text(elem: ET.Element | None, tag: str) -> str:
+def _get_text(elem: Element | None, tag: str) -> str:
     e = elem.find(tag) if elem is not None else None
     return (e.text or "") if e is not None else ""
 
@@ -2174,7 +2181,7 @@ def _parse_period(desc: str) -> tuple[datetime | None, datetime | None]:
     return start, end
 
 
-def _build_item_from_xml(item: ET.Element) -> FeedItem | str:
+def _build_item_from_xml(item: Element) -> FeedItem | str:
     """Convert one ``<item>`` XML element into a normalised ``FeedItem``,
     or return the drop reason (``_drop_reason``) when the Wien-relevance
     filter drops it. Pure ETL: no shared state, no I/O.
@@ -2225,7 +2232,7 @@ def _build_item_from_xml(item: ET.Element) -> FeedItem | str:
     }
 
 
-def _raw_snapshot(channel: ET.Element) -> dict[str, Any]:
+def _raw_snapshot(channel: Element) -> dict[str, Any]:
     """The RSS items as kept in ``data/raw/oebb/`` (``src/utils/raw_capture.py``).
 
     Every child element of every ``<item>`` as text, items ordered by

@@ -70,7 +70,7 @@ show_error_codes = true
 pretty = true
 ignore_missing_imports = true
 explicit_package_bases = false
-files = ["src"]
+files = ["src", "tests", "scripts"]
 disable_error_code = ["import-untyped"]
 enable_error_code = [
     "possibly-undefined",
@@ -89,10 +89,11 @@ pythonpath = ["."]
 
 [tool.coverage.run]
 branch = true
-source = ["src"]
+source = ["src", "scripts"]
 omit = [
   "src/__init__.py",
   "src/*/__init__.py",
+  "scripts/__init__.py",
 ]
 
 [tool.coverage.report]
