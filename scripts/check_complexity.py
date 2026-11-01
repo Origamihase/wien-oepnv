@@ -56,7 +56,6 @@ Exit codes:
 from __future__ import annotations
 
 import argparse
-import json
 import re
 import subprocess  # nosec B404
 import sys
@@ -66,7 +65,7 @@ from pathlib import Path
 if str(Path(__file__).resolve().parents[1]) not in sys.path:
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from src.utils.files import read_capped_text  # noqa: E402
+from src.utils.files import loads_finite, read_capped_text  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 BASELINE = REPO_ROOT / ".c901-baseline.txt"
@@ -223,9 +222,11 @@ def _entry_from_diagnostic(diagnostic: object) -> Entry:
 def _parse_ruff_output(stdout: str, returncode: int) -> list[Entry]:
     """Validate ruff's JSON output and its exit code against each other."""
     try:
-        diagnostics = json.loads(stdout)
-    except json.JSONDecodeError as exc:
-        raise MeasurementError(f"ruff output is not JSON ({exc.msg})") from exc
+        # loads_finite: the repository's JSON entry point (non-finite literals
+        # rejected); RecursionError covers a pathologically nested document.
+        diagnostics = loads_finite(stdout)
+    except (ValueError, RecursionError) as exc:
+        raise MeasurementError(f"ruff output is not JSON ({exc})") from exc
     if not isinstance(diagnostics, list):
         raise MeasurementError("ruff output is not a JSON list")
     entries = [_entry_from_diagnostic(diagnostic) for diagnostic in diagnostics]
