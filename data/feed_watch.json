@@ -1,15 +1,19 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-01T04:31:12.231717+00:00",
- "built": "2026-11-01T05:30:56+01:00",
+ "updated": "2026-11-01T05:01:19.436810+00:00",
+ "built": "2026-11-01T06:01:02+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-01T05:30:56+01:00",
+  "built": "2026-11-01T06:01:02+01:00",
   "items": [
    {
-    "title": "1/2: Rettungseinsatz",
+    "title": "U1: Verspätungen",
+    "time_line": "Seit 05:49"
+   },
+   {
+    "title": "2: Rettungseinsatz",
     "time_line": "Seit 04:58"
    },
    {
@@ -21,8 +25,12 @@
     "time_line": "Seit 31.10."
    },
    {
-    "title": "Wien Franz-Josefs-Bahnhof",
+    "title": "Wien Franz-Josefs-Bahnhof ↔ Wien Heiligenstadt",
     "time_line": "Heute"
+   },
+   {
+    "title": "1: Rettungseinsatz, Gleisbauarbeiten",
+    "time_line": "Seit heute"
    },
    {
     "title": "S45: Wien Hütteldorf ↔ Wien Handelskai",
@@ -39,14 +47,6 @@
    {
     "title": "R40/REX41/REX4/S40: Wien Franz-Josefs-Bahnhof ↔ Tulln an der Donau",
     "time_line": "Bis Mi 04.11."
-   },
-   {
-    "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
-    "time_line": "Bis 30.11."
-   },
-   {
-    "title": "29A/33A/29B/N31: Bauarbeiten",
-    "time_line": "Bis Mo 02.11."
    }
   ]
  },
@@ -6751,17 +6751,37 @@
     "oebb": 10,
     "wl": 96
    }
+  },
+  {
+   "t": "2026-11-01T05:01:19.436810+00:00",
+   "raw": {
+    "wl-stoerungen": 83,
+    "wl-hinweise": 74,
+    "oebb": 157,
+    "baustellen-linien": 57,
+    "baustellen-punkte": 18
+   },
+   "discarded": {
+    "wl": 13,
+    "oebb": 132,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 10,
+    "wl": 97
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-01T04:31:12.231717+00:00"
+   "last_ok": "2026-11-01T05:01:19.436810+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-01T04:31:12.231717+00:00"
+   "last_ok": "2026-11-01T05:01:19.436810+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-01T04:31:12.231717+00:00"
+   "last_ok": "2026-11-01T05:01:19.436810+00:00"
   }
  }
 }
