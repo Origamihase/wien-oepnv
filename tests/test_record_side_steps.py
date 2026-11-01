@@ -113,5 +113,9 @@ def test_the_workflows_record_every_side_step() -> None:
     assert 'if [[ -z "${ADMIN_TOKEN:-}" ]]' in metadata_step and "exit 1" in metadata_step
     assert "curl -fsS" in metadata_step
     files = {name for name, _workflow, _age in hc.SIDE_STEP_RECORDS}
-    assert files == {"update-cycle.json", "update-stations.json", "seo-guard.json"}
+    assert files == {"update-cycle.json", "update-stations.json", "seo-guard.json", "ki-waechter.json"}
+    watcher = (REPO / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8")
+    assert "--state data/side_steps/ki-waechter.json" in watcher
+    assert '"KI-Wächter=${outcome}"' in watcher
+    assert watcher.index("Record side-step outcome") < watcher.index("Publish the audit file")
 

@@ -434,11 +434,29 @@ def test_side_steps_all_clean_is_green(side_steps: Path) -> None:
     _record(side_steps, "update-cycle.json", tick, Statistik=_ok(tick), Linienprüfung=_ok(tick))
     _record(side_steps, "update-stations.json", _NOW - timedelta(days=3),
             **{"ÖBB-Stationslinien (HAFAS)": _ok(_NOW - timedelta(days=3))})
+    audit = _NOW - timedelta(hours=20)
+    _record(side_steps, "ki-waechter.json", audit, **{"KI-Wächter": _ok(audit)})
     _record(side_steps, "seo-guard.json", _NOW - timedelta(hours=20),
             **{"Repository-Metadaten": _ok(_NOW - timedelta(hours=20))})
     check = hc.check_side_steps(_NOW)
     assert check.ok and not check.note
-    assert "alle 4 Nebenschritte" in check.summary
+    assert "alle 5 Nebenschritte" in check.summary
+
+
+def test_a_ki_waechter_that_did_not_run_for_a_day_and_a_half_is_red(side_steps: Path) -> None:
+    """The daily audit records its run; a dead token or a stuck trigger must be noticed (2026-10-31)."""
+    tick = _NOW - timedelta(minutes=20)
+    _record(side_steps, "update-cycle.json", tick, Statistik=_ok(tick))
+    _record(side_steps, "update-stations.json", _NOW, **{"ÖBB-Stationslinien (HAFAS)": _ok(_NOW)})
+    stale = _NOW - timedelta(hours=37)
+    _record(side_steps, "ki-waechter.json", stale, **{"KI-Wächter": _ok(stale)})
+    check = hc.check_side_steps(_NOW)
+    assert not check.ok
+    assert "KI-Wächter: Nebenschritte seit" in check.summary
+    failed = {"outcome": "failure", "at": tick.isoformat(), "last_success": stale.isoformat()}
+    _record(side_steps, "ki-waechter.json", tick, **{"KI-Wächter": failed})
+    check = hc.check_side_steps(_NOW)
+    assert not check.ok and "KI-Wächter (KI-Wächter) gescheitert" in check.summary
 
 
 def test_a_failed_side_step_is_red_and_named(side_steps: Path) -> None:

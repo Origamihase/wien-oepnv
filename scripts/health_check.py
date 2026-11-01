@@ -66,9 +66,10 @@ only when the fetch is broken, never because no train runs).
 
    **Nebenschritte** (``data/side_steps/``, written by
    ``scripts/record_side_steps.py``): statistics, line check, Feed-Wächter
-   and HAFAS station lines run with ``continue-on-error``. Red while the last
-   run of one of them failed (operator decision 2026-10-28: "ein Fehler
-   sollte auffallen"; see :func:`check_side_steps`).
+   and HAFAS station lines run with ``continue-on-error``; the daily
+   KI-Wächter (``ki-waechter.yml``) records its run the same way. Red while
+   the last run of one of them failed (operator decision 2026-10-28: "ein
+   Fehler sollte auffallen"; see :func:`check_side_steps`).
 
 4. **Zugangsdaten (Secrets).** Every repository secret a workflow passes on is
    listed in :data:`WORKFLOW_SECRETS`. A secret the feed pipeline needs that
@@ -153,6 +154,10 @@ LIVE_FEED_CONTENT_TYPES = ("application/xml", "application/rss+xml", "text/xml")
 # Stations: update-stations runs weekly (Sun 01:00 UTC). 8 days = one full
 # cycle + jitter; older means a weekly run was missed.
 STATIONS_MAX_AGE_H = _env_float("HEALTH_STATIONS_MAX_AGE_HOURS", 192.0)
+# The KI-Wächter runs once a day from 9:00 Vienna time (again two hours
+# after a failure); 36 h leaves room for a late first Update cycle of the
+# next day.
+KI_WAECHTER_MAX_AGE_H = _env_float("HEALTH_KI_WAECHTER_MAX_AGE_HOURS", 36.0)
 # SEO run (seo-guard.yml): daily cron, which GitHub delivers hours late (see
 # docs/development.md, "Geplante Läufe"), plus every push touching docs/.
 # 48 h = two days without any run before its side-step record counts as stale.
@@ -814,6 +819,11 @@ WORKFLOW_SECRETS: tuple[WorkflowSecret, ...] = (
     # 2026-10-31 (Architektur-Review, Fund B).
     WorkflowSecret("CLAUDE_CODE_OAUTH_TOKEN", "tooling",
                    "Claude-Workflows (Code-Review, @claude)"),
+    # A key of the free tier without billing (operator decision 2026-10-31).
+    # A missing or rejected key fails the KI-Wächter run, and that shows in
+    # "Nebenschritte".
+    WorkflowSecret("GEMINI_API_KEY", "tooling",
+                   "KI-Wächter (Gemini API, Gratis-Kontingent)"),
     WorkflowSecret("REPO_ADMIN_TOKEN", "tooling",
                    "SEO-Guard: Beschreibung und Homepage des Repositorys"),
 )
@@ -913,6 +923,7 @@ def check_feed_watch(now: datetime) -> Check:
 SIDE_STEP_RECORDS: list[tuple[str, str, float]] = [
     ("update-cycle.json", "Update-Lauf", FEED_MAX_AGE_H),
     ("update-stations.json", "Stationslauf", STATIONS_MAX_AGE_H),
+    ("ki-waechter.json", "KI-Wächter", KI_WAECHTER_MAX_AGE_H),
     # Repository-Metadaten via REPO_ADMIN_TOKEN (Architektur-Review 2026-10-31, Fund B).
     ("seo-guard.json", "SEO-Lauf", SEO_MAX_AGE_H),
 ]

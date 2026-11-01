@@ -10,6 +10,48 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
 
 ### Oktober 2026
 
+* **KI-Wächter: tägliche Prüfung der Anzeige im Projekt (2026-10-31)**:
+  Michael fragte, ob eine kleine KI die Quelltexte von WL, ÖBB und Stadt Wien
+  selbst neu schreiben könnte, und ob NCM (HazyResearch) dafür taugt.
+  Gemessen: NCM ist ein Forschungsverfahren ohne Modell, das Anweisungen
+  befolgt; kleine Sprachmodelle (1,5B und 3B, CPU) veränderten an 20 echten
+  Texten den Sinn jedes dritten (erfundene Anfangszeiten, „U-Bahn“ statt
+  Zug) und übersetzten schlechter als die heutige EN-Kette. Michaels
+  Entscheidung: Die Regeln bleiben die Feed-Kette, eine KI meldet nur („Einen
+  Jules-Ersatz (Wächter-KI) im Projekt selbst“), geprüft werden alle
+  Meldungstexte der letzten 24 Stunden, das Modell ist Gemini über das
+  Gratis-Kontingent der Gemini API (Secret `GEMINI_API_KEY`), und das
+  API-Limit darf nicht überschritten werden. Neu: `ki-waechter.yml` läuft
+  nach dem ersten erfolgreichen Update-Lauf ab 9:00 Wiener Zeit, gleich
+  nach dem Beginn des Kontingent-Tags, und nach einem Fehler zwei Stunden
+  später noch einmal;
+  `scripts/ki_waechter.py` liest die Feed-Fassungen der 24 Stunden aus der
+  Git-Historie, schickt sie mit `scripts/ki_waechter_prompt.md` (Fundklassen
+  F1 bis F6 wie im Jules-Prompt vom 30.10.) in einer Anfrage ohne Werkzeuge
+  an Gemini und lässt einen Fund nur gelten, wenn seine Zitate wörtlich in
+  Feed und Quelle stehen (Doppelungen nur bei gleichzeitig sichtbaren
+  Meldungen). Höchstens 10 Anfragen am Tag, gezählt aus den Läufen selbst;
+  kein neuer Versuch bei erschöpftem Kontingent, bei überlastetem Modell
+  (am 31.10. antwortete Gemini 3.8 Flash stundenlang mit 503) höchstens zwei
+  innerhalb des Tagesbudgets, zuerst an das Ausweichmodell Gemini 3.6 Flash; Eingabe höchstens 450.000
+  Zeichen. Bericht
+  `docs/archive/audits/ki-waechter-YYYY-MM-DD.md`, belegte Funde als Issue
+  (Label `ki-waechter`), ein Lauf, der nicht prüfen konnte, macht den
+  Health check rot (`Nebenschritte`, `data/side_steps/ki-waechter.json`,
+  36 h). Ein Pull Request auf den Wächter spielt ihn an 27.10. und 30.10.
+  (bekannte Funde) und am aktuellen Feed ab; ein erster Probelauf mit Claude
+  über die zehn aktuellen Meldungen erkannte alle vier bekannten Funde, auch
+  die zwei, die die Jules-Audits vom 27. bis 29.10. als „OK“ führten.
+  Probelauf mit Gemini am 01.11. über je 24 Stunden: fünf Funde, alle
+  zutreffend, darunter zwei bis dahin unbekannte (Doppelung
+  „1/2/71/D: Veranstaltung“ neben „1/2/71/D: Nationalfeiertag“ am 26.10.;
+  „Continue via line 37 to High Wait.“ am 31.10., weil „bis Hohen Warte“ die
+  Maskierung des Haltestellennamens nicht traf); zwei bekannte Doppelungen
+  nicht erkannt, der Stand vom 30.10. wegen 503 nicht geprüft. Das Gate
+  zählt Anfragen seither nach der Startzeit des Jobs, weil ein erneut
+  gestarteter Lauf seine Anlegezeit behält und sechs Anfragen ungezählt
+  blieben (`docs/architecture.md` §1 „KI-Wächter“,
+  `docs/reference/ki_waechter.md`).
 * **Aufräumen nach dem Code-Audit (2026-10-31)**: Umsetzung der Empfehlung aus
   dem Code-Audit vom 31.10. (kein schwerer Fund, sechs niedrige Klassen; Michael:
   „Ja, Aufräum-PR bauen“). Skripte importieren Projektmodule nur noch über `src.`:

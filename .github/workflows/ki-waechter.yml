@@ -1,0 +1,377 @@
+name: KI-Wächter
+
+# Daily display audit inside the project: Gemini reads every item text the
+# feed showed in the last 24 hours next to its source texts and reports what
+# the TV viewer read wrong. The successor of the Jules audits (Jules accepts
+# no new sessions after 2026-11-11). Operator decision 2026-10-31 (Michael):
+# the rules stay the feed chain; an AI only watches and reports, never
+# rewrites. "Einen Jules-Ersatz (Wächter-KI) im Projekt selbst. Achte bitte
+# weiterhin auf höchste Qualität und Effizienz." The same day: the last
+# 24 hours, not only the current ten items, and Gemini through the free tier
+# of the Gemini API (secret GEMINI_API_KEY; a key without billing cannot
+# cost anything). Details: docs/reference/ki_waechter.md.
+#
+# When: once a day, on the first successful Update cycle from 9:00 Vienna
+# time; after a failure again two hours later, while the daily budget of
+# Gemini requests lasts. GitHub's own cron fires only a few of its slots a day here
+# (docs/architecture.md, Workflows), the IFTTT-driven Update cycle every
+# 30 minutes, so this workflow hangs off ``workflow_run`` of that cycle.
+# The ``gate`` job ends in seconds on every other tick: before 9:00, after
+# a failed cycle, when today's audit succeeded (``last_success`` in
+# ``data/side_steps/ki-waechter.json``), or within two hours of a failed one
+# (the Health check is red until an audit succeeds).
+#
+# How: ``scripts/ki_waechter.py prepare`` writes the input (every feed
+# version of 24 hours from the git history, the English feed, the source
+# events); ``ask`` sends it with ``scripts/ki_waechter_prompt.md`` to the
+# Gemini API in one call, without tools; ``verify`` checks every quote
+# verbatim against feed and sources before a finding counts and writes
+# ``docs/archive/audits/ki-waechter-YYYY-MM-DD.md``. Findings open one
+# GitHub issue (label ``ki-waechter``). The feed is never changed.
+#
+# A failed run is red here and turns the Health check red ("Nebenschritte",
+# record ``data/side_steps/ki-waechter.json``): a stage that cannot run, a
+# missing or rejected key for instance, must be noticed (Michael 2026-10-28).
+#
+# Pull requests that touch the watcher run it on two days with known
+# findings (27.10.2026: "algae path" for Algenweg, 40A twice, a stop
+# relocation cut at "→ …"; 30.10.2026: "All Saints' Worship") and on the
+# current feed, without publishing.
+
+on:
+  workflow_run:
+    workflows: ["Update cycle"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      rev:
+        description: "Commit, dessen Feed geprüft wird (leer: aktueller Stand; ein anderer Commit wird nicht veröffentlicht)"
+        required: false
+        default: ""
+  pull_request:
+    paths:
+      - scripts/ki_waechter.py
+      - scripts/ki_waechter_prompt.md
+      - .github/workflows/ki-waechter.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ki-waechter-${{ github.event_name == 'pull_request' && github.ref || 'main' }}
+  cancel-in-progress: false
+
+env:
+  # Gemini model of the audit: the newest stable model in the free tier of
+  # the Gemini API (https://ai.google.dev/gemini-api/docs/pricing), then the
+  # fallback the audit asks at once when the first is overloaded (each has
+  # its own quota; on 2026-10-31 Gemini 3.8 Flash answered 503 for hours).
+  KI_WAECHTER_MODEL: gemini-3.8-flash,gemini-3.6-flash
+  # First Vienna hour of the day in which the audit runs: the free-tier day
+  # of the Gemini API begins at 0:00 Pacific time (9:00 Vienna, 8:00 in the
+  # weeks between the European and the US clock change), so the audit runs
+  # first thing in a fresh quota day and has the day left for another try
+  # (Michael 2026-10-31, after Gemini 3.8 Flash answered 503 all afternoon).
+  KI_WAECHTER_START_HOUR: "9"
+  # Hours between a failed audit and the next try on the same day.
+  KI_WAECHTER_RETRY_HOURS: "2"
+  # Gemini requests per day at most (free tier, day from 0:00 Pacific
+  # time). The gate counts the requests of the day (annotation
+  # "Gemini-Anfragen" of every audit) and gives each audit of this run its
+  # share, at most 3; an audit sends one and repeats only while the model is
+  # overloaded. The last request of the day stays free for the daily audit.
+  # The free tier of Gemini 3.8 Flash allows 20 requests a day, 5 a minute
+  # and 250,000 input tokens a minute (AI Studio, 2026-10-31); rejected
+  # requests (503) count too.
+  # Michael 2026-10-31: "sorge auch hier dafür, dass das API-Limit nicht
+  # überschritten wird".
+  KI_WAECHTER_MAX_REQUESTS: "10"
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    permissions:
+      actions: read
+      contents: read
+    outputs:
+      run: ${{ steps.decide.outputs.run }}
+      revs: ${{ steps.decide.outputs.revs }}
+      publish: ${{ steps.decide.outputs.publish }}
+      per_job: ${{ steps.decide.outputs.per_job }}
+    steps:
+      - name: Decide whether to audit
+        id: decide
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT: ${{ github.event_name }}
+          CYCLE_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          CYCLE_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          REV_INPUT: ${{ inputs.rev }}
+          OWNER_REPO: ${{ github.repository }}
+          PR_HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          RUN_ID: ${{ github.run_id }}
+          # Most requests one audit may send (scripts/ki_waechter.py, MAX_REQUESTS_PER_AUDIT).
+          MAX_PER_AUDIT: "3"
+        shell: bash
+        run: |
+          set -euo pipefail
+          out() { echo "$1" >> "$GITHUB_OUTPUT"; }
+          note() { echo "$1"; echo "$1" >> "$GITHUB_STEP_SUMMARY"; }
+          # Gemini requests already sent today, since midnight Pacific time
+          # (when the free-tier day of the Gemini API resets). Every audit
+          # job leaves the annotation "Gemini-Anfragen" with its count; a
+          # job still running counts with the most it may send, a finished
+          # one without the annotation with one request.
+          # Jobs count by the time they started, not by the time their run
+          # was created: a re-run keeps the run's creation time (01.11.2026:
+          # a run from the evening before, re-run after midnight, had sent
+          # six requests that a filter on the creation time did not see).
+          # GitHub allows a re-run for 30 days, so the listing goes back a
+          # month and keeps the runs touched since midnight; the jobs of
+          # every attempt are read ("filter=all") and filtered by start.
+          used_today() {
+            local midnight since month ids id job status conclusion n used=0
+            midnight="$(TZ=America/Los_Angeles date -d 'today 00:00' +%s)"
+            since="$(date -u -d "@${midnight}" +%Y-%m-%dT%H:%M:%SZ)"
+            month="$(date -u -d "@$(( midnight - 31 * 86400 ))" +%Y-%m-%dT%H:%M:%SZ)"
+            ids="$(gh api "repos/${OWNER_REPO}/actions/workflows/ki-waechter.yml/runs?created=%3E%3D${month}&per_page=100" \
+                     --paginate --jq ".workflow_runs[] | select(.id != ${RUN_ID} and .updated_at >= \"${since}\") | .id")"
+            for id in ${ids}; do
+              while read -r job status conclusion; do
+                [[ -n "${job}" ]] || continue
+                if [[ "${status}" != "completed" || "${conclusion}" == "cancelled" ]]; then
+                  n="${MAX_PER_AUDIT}"
+                else
+                  n="$(gh api "repos/${OWNER_REPO}/check-runs/${job}/annotations?per_page=100" \
+                         --jq '[.[] | select(.title == "Gemini-Anfragen") | .message | tonumber] | add // empty')"
+                  n="${n:-1}"
+                fi
+                used=$(( used + n ))
+              done < <(gh api "repos/${OWNER_REPO}/actions/runs/${id}/jobs?filter=all&per_page=100" \
+                         --jq ".jobs[] | select((.name | startswith(\"audit\")) and .started_at >= \"${since}\") | .id as \$id
+                               | .steps[]? | select(.name == \"Gemini reads and compares\" and .conclusion != \"skipped\")
+                               | \"\(\$id) \(.status) \(.conclusion)\"")
+            done
+            echo "${used}"
+          }
+          case "$EVENT" in
+            pull_request)
+              # A fork gets no secrets; its pull request skips the replay.
+              if [[ "${PR_HEAD_REPO}" != "${OWNER_REPO}" ]]; then out "run=false"; exit 0; fi
+              out "publish=false"
+              out 'revs=["001e47c665cec9f2d1d0c0c0d912230bb7f3795d","9e60b8de9dce438906b257e42a8b524e4f191f67","HEAD"]'
+              jobs=3; limit=$(( KI_WAECHTER_MAX_REQUESTS - 1 )) ;;
+            workflow_dispatch)
+              if [[ -z "${REV_INPUT}" ]]; then
+                out "publish=true"; out 'revs=["HEAD"]'
+              elif [[ "${REV_INPUT}" =~ ^[0-9a-fA-F]{7,40}$ ]]; then
+                out "publish=false"; out "revs=[\"${REV_INPUT}\"]"
+              else
+                echo "::error title=KI-Wächter::rev muss ein Commit-Hash sein"; exit 1
+              fi
+              jobs=1; limit=$(( KI_WAECHTER_MAX_REQUESTS - 1 )) ;;
+            *)
+              out "publish=true"; out 'revs=["HEAD"]'
+              if [[ "${CYCLE_CONCLUSION}" != "success" || "${CYCLE_BRANCH}" != "main" ]]; then
+                echo "Update cycle ${CYCLE_CONCLUSION} on ${CYCLE_BRANCH}: no audit."; out "run=false"; exit 0
+              fi
+              hour="$(TZ=Europe/Vienna date +%-H)"
+              today="$(TZ=Europe/Vienna date +%F)"
+              if (( hour < KI_WAECHTER_START_HOUR )); then
+                echo "${hour}:xx Vienna time, audit starts at ${KI_WAECHTER_START_HOUR}:00."; out "run=false"; exit 0
+              fi
+              record="$(gh api "repos/${OWNER_REPO}/contents/data/side_steps/ki-waechter.json?ref=main" \
+                          -H "Accept: application/vnd.github.raw" 2>/dev/null || true)"
+              last="$(jq -r '.steps["KI-Wächter"].at // empty' <<<"${record}" 2>/dev/null || true)"
+              good="$(jq -r '.steps["KI-Wächter"].last_success // empty' <<<"${record}" 2>/dev/null || true)"
+              if [[ -n "${good}" && "$(TZ=Europe/Vienna date -d "${good}" +%F)" == "${today}" ]]; then
+                echo "Today's audit already ran (${good})."; out "run=false"; exit 0
+              fi
+              # A failed audit (an overloaded model, mostly) gets another
+              # try on a later tick the same day, while the budget lasts.
+              if [[ -n "${last}" && "$(TZ=Europe/Vienna date -d "${last}" +%F)" == "${today}" ]] \
+                 && (( $(date +%s) - $(date -d "${last}" +%s) < KI_WAECHTER_RETRY_HOURS * 3600 )); then
+                echo "Today's audit failed at ${last}; next try ${KI_WAECHTER_RETRY_HOURS} h later."; out "run=false"; exit 0
+              fi
+              # The daily audit may use the last request of the budget,
+              # pull requests and manual runs leave it free.
+              jobs=1; limit="${KI_WAECHTER_MAX_REQUESTS}" ;;
+          esac
+          used="$(used_today)"
+          per_job=$(( (limit - used) / jobs ))
+          if (( per_job > MAX_PER_AUDIT )); then per_job="${MAX_PER_AUDIT}"; fi
+          if (( per_job < 1 )); then
+            note "KI-Wächter: ${used} von ${KI_WAECHTER_MAX_REQUESTS} Gemini-Anfragen des Tages verbraucht. Kein Aufruf, damit das Gratis-Kontingent nicht überschritten wird (der Tag des Kontingents beginnt um 0:00 Uhr Pazifikzeit, in Wien meist 9:00 Uhr)."
+            if [[ "$EVENT" != "pull_request" ]]; then
+              echo "::warning title=KI-Wächter::Tagesbudget der Gemini-Anfragen erreicht (${used}/${KI_WAECHTER_MAX_REQUESTS})"
+            fi
+            out "run=false"; exit 0
+          fi
+          note "KI-Wächter: ${used} von ${KI_WAECHTER_MAX_REQUESTS} Gemini-Anfragen des Tages verbraucht; dieser Lauf darf je Prüfung ${per_job} senden (eine, weitere nur bei Überlastung des Modells)."
+          out "per_job=${per_job}"
+          out "run=true"
+
+  audit:
+    needs: gate
+    if: needs.gate.outputs.run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      issues: write
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        rev: ${{ fromJSON(needs.gate.outputs.revs) }}
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      PUBLISH: ${{ needs.gate.outputs.publish }}
+      REV: ${{ matrix.rev }}
+      WORK: .ki-waechter
+    steps:
+      # Workaround for actions/checkout#2351, as in the other workflows. The
+      # branch tip (``ref``), not the trigger commit: this run publishes.
+      - name: Check out repository (attempt 1/2)
+        id: checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 1
+        continue-on-error: true
+
+      - name: Check out repository (attempt 2/2 — runs only if attempt 1 hit checkout#2351)
+        if: steps.checkout.outcome == 'failure'
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-deps
+
+      - name: Prepare the input
+        shell: bash
+        run: |
+          set -euo pipefail
+          # The audit reads every feed version of the 24 hours before REV
+          # (each Update cycle commits one), so the shallow checkout gets
+          # 26 hours of history behind REV. HEAD is the checked-out ref.
+          target="${REV}"
+          if [[ "${REV}" == "HEAD" ]]; then
+            target="${GITHUB_REF}"
+          else
+            git fetch --quiet --depth=1 origin "${REV}"
+          fi
+          since="$(( $(git show -s --format=%ct "${REV}") - 26 * 3600 ))"
+          git fetch --quiet --shallow-since="$(date -u -d "@${since}" +%Y-%m-%dT%H:%M:%SZ)" origin "${target}"
+          python scripts/ki_waechter.py prepare --rev "${REV}" --hours 24 --out "${WORK}"
+
+      # One request, no tools: the model sees only the prompt and the
+      # input, and only this step sees the key.
+      - name: Gemini reads and compares
+        id: ai
+        continue-on-error: true
+        timeout-minutes: 15
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          MAX_REQUESTS: ${{ needs.gate.outputs.per_job }}
+        shell: bash
+        run: python scripts/ki_waechter.py ask --dir "${WORK}" --model "${KI_WAECHTER_MODEL}" --max-requests "${MAX_REQUESTS}"
+
+      - name: Check every finding and write the audit file
+        id: verify
+        if: steps.ai.outcome == 'success'
+        continue-on-error: true
+        env:
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          report="${WORK}/bericht.md"
+          if [[ "${PUBLISH}" == "true" ]]; then
+            report="docs/archive/audits/ki-waechter-$(TZ=Europe/Vienna date +%F).md"
+          fi
+          python scripts/ki_waechter.py verify --dir "${WORK}" --run-url "${RUN_URL}" --report "${report}"
+          echo "report=${report}" >> "$GITHUB_OUTPUT"
+          cat "${report}" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Keep the run's files
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: ki-waechter-${{ strategy.job-index }}
+          path: ${{ env.WORK }}/
+          retention-days: 14
+          if-no-files-found: ignore
+          # ``.ki-waechter`` starts with a dot; upload-artifact skips such
+          # paths unless told otherwise.
+          include-hidden-files: true
+
+      - name: Record side-step outcome
+        if: env.PUBLISH == 'true'
+        continue-on-error: true
+        timeout-minutes: 1
+        env:
+          AI_OUTCOME: ${{ steps.ai.outcome }}
+          VERIFY_OUTCOME: ${{ steps.verify.outcome }}
+        shell: bash
+        run: |
+          outcome=failure
+          if [[ "${AI_OUTCOME}" == "success" && "${VERIFY_OUTCOME}" == "success" ]]; then outcome=success; fi
+          python scripts/record_side_steps.py --state data/side_steps/ki-waechter.json "KI-Wächter=${outcome}"
+
+      # Publish through ``scripts/publish_to_main.sh``, the one publish path
+      # of every workflow that writes to ``main``: a plain push, never a
+      # force, 4 attempts with rebase. Only the audit file and the record.
+      - name: Publish the audit file
+        if: env.PUBLISH == 'true'
+        env:
+          REPORT: ${{ steps.verify.outputs.report }}
+        shell: bash
+        run: >-
+          bash scripts/publish_to_main.sh --strict --label ki-waechter
+          --message "docs: KI-Wächter $(TZ=Europe/Vienna date +%d.%m.%Y) [skip ci]"
+          -- ${REPORT:+"$REPORT"} data/side_steps/ki-waechter.json
+
+      - name: Open an issue for findings
+        if: env.PUBLISH == 'true' && steps.verify.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPORT: ${{ steps.verify.outputs.report }}
+          OWNER_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          count="$(jq -r '.funde' "${WORK}/ergebnis.json")"
+          if [[ "${count}" == "0" ]]; then echo "Keine Funde."; exit 0; fi
+          gh label create ki-waechter --repo "${OWNER_REPO}" --color 5319e7 \
+            --description "Fund des täglichen KI-Wächters" 2>/dev/null || true
+          {
+            echo "Der KI-Wächter fand heute ${count} belegte Fund(e) im Feed:"
+            echo
+            jq -r '.titel[] | "- " + .' "${WORK}/ergebnis.json"
+            echo
+            echo "Bericht mit Zitaten: [${REPORT}](${GITHUB_SERVER_URL}/${OWNER_REPO}/blob/main/${REPORT})"
+            echo
+            echo "Jedes Zitat wurde wörtlich gegen Feed und Quelle geprüft. Der Feed blieb unverändert."
+          } > "${WORK}/issue.md"
+          gh issue create --repo "${OWNER_REPO}" --label ki-waechter \
+            --title "KI-Wächter $(TZ=Europe/Vienna date +%d.%m.%Y): ${count} Fund(e)" --body-file "${WORK}/issue.md"
+
+      - name: Fail the run when the audit could not run
+        if: steps.ai.outcome != 'success' || steps.verify.outcome != 'success'
+        env:
+          AI_OUTCOME: ${{ steps.ai.outcome }}
+          VERIFY_OUTCOME: ${{ steps.verify.outcome }}
+        shell: bash
+        run: |
+          echo "::error title=KI-Wächter::Prüfung nicht gelaufen (Gemini: ${AI_OUTCOME}, Prüfung: ${VERIFY_OUTCOME:-nicht gestartet})"
+          exit 1
