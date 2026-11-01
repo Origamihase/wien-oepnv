@@ -60,6 +60,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from src.utils.files import atomic_write, read_capped_text  # noqa: E402
+from src.utils.liquid import liquid_safe  # noqa: E402
 from src.utils.logging import sanitize_log_arg  # noqa: E402
 from src.utils.serialize import scrub_trojan_source_primitives  # noqa: E402
 from src.utils.stammstrecke_poll import (  # noqa: E402
@@ -1891,11 +1892,14 @@ def write_dashboard(
     """Atomically write *markdown* to *output_path*.
 
     Uses :func:`src.utils.files.atomic_write` so a partially-written
-    dashboard cannot replace the previous one.
+    dashboard cannot replace the previous one. GitHub Pages renders the
+    dashboard with Liquid, and line names come from the VAO answers: a
+    ``{%`` in one would stop the Pages build, a ``{{ … }}`` would vanish
+    (:func:`src.utils.liquid.liquid_safe`, review of 2026-11-01).
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with atomic_write(output_path, mode="w", encoding="utf-8", permissions=0o644) as fh:
-        fh.write(markdown)
+        fh.write(liquid_safe(markdown))
 
 
 def write_year_archive(

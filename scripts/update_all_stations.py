@@ -41,6 +41,7 @@ if str(REPO_ROOT) not in sys.path:
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from src.places.merge import write_stations_payload  # noqa: E402
 from src.utils.files import atomic_write, read_capped_json  # noqa: E402  (import after path setup)
+from src.utils.liquid import liquid_safe  # noqa: E402
 from src.utils.geo import haversine_m  # noqa: E402
 from src.utils.stations_validation import (  # noqa: E402
     StationValidationError,
@@ -317,7 +318,10 @@ def _render_diff_markdown(
     # ``safe_markdown_codespan`` so the ``name:<raw>`` key form is
     # also normalised. Mirrors the canonical pattern pinned by the
     # 2026-05-09 ``Markdown Injection Drift Round 3`` entry for
-    # ``ValidationReport.to_markdown()``.
+    # ``ValidationReport.to_markdown()``. GitHub Pages also runs Liquid
+    # over the page: a ``{%`` in a name stops the Pages build, a
+    # ``{{ … }}`` vanishes, so the finished page goes through
+    # ``liquid_safe`` (src/utils/liquid.py, review of 2026-11-01).
     lines = [
         "# stations.json — Diff-Bericht",
         "",
@@ -364,7 +368,7 @@ def _render_diff_markdown(
         lambda it: f"- `{_safe_key(it[0])}` — {_safe_name(it[1])} ({it[2]} m)",
     )
 
-    return "\n".join(lines).rstrip() + "\n"
+    return liquid_safe("\n".join(lines).rstrip() + "\n")
 
 
 def _count_polygon_vertices(path: Path) -> int | None:

@@ -10,6 +10,126 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
 
 ### November 2026
 
+* **Gescheiterter Pages-Build fällt sofort auf (2026-11-01)**:
+  Betreiberentscheidung (Michael, Karte „Soll ein gescheiterter Pages-Build
+  künftig sofort auffallen?“, Antwort „Beides bauen“). Beim Ausfall vom
+  selben Tag hätte erst die Prüfung `Veröffentlichung` angeschlagen, nach
+  vier Stunden Rückstand gegen 13:00 Uhr Wiener Zeit; der Health check war
+  ab 10:01 Uhr Wiener Zeit rot, aber nur wegen des gescheiterten KI-Wächters.
+  - Neue Prüfung `Pages-Build` im Health check (`check_pages_build` in
+    `scripts/health_check.py`): Sie liest über die Actions-API den letzten
+    abgeschlossenen Lauf von „pages build and deployment“, nach Laufnummer;
+    Läufe, die GitHub wegen eines neueren Commits abbricht, zählen nicht.
+    Scheiterte er im Jekyll-Schritt, ist sie sofort rot und nennt, solange
+    der Beginn unter den bis zu 60 gelesenen Läufen liegt, den Commit, nach
+    dem der Build zuerst scheiterte; weitere Seiten liest sie, bis alle
+    Läufe vom neuesten bis zum neuesten sauberen gelesen sind. Scheiterte er
+    auf GitHubs Seite (Image, Upload, Auslieferung), ist ein einzelner Lauf
+    ein Hinweis und sind zwei in Folge rot (Alarmlinie vom 2026-10-28: ein
+    einzelner Aussetzer schickt keine Mail). Dazu zählt auch ein
+    Jekyll-Schritt, der an GitHubs API scheiterte (die Fehlermeldung des
+    Schritts nennt ungültige Zugangsdaten oder einen HTTP-Fehler von
+    `api.github.com`; dafür liest der Health check die Annotationen mit
+    `checks: read`): so am 23.05.2026 einmal und in der Nacht auf den
+    17.07.2026 dreimal in Folge, jedes Mal baute der nächste Lauf danach
+    wieder. Nachgerechnet über die Pages-Läufe vom 01.10. bis 01.11.2026 mit
+    einer Prüfung je Stunde wie seit dem 28.10.: rot nur am 01.11. um 9, 10
+    und 11 Uhr Wiener Zeit (zu den Zeiten der echten Health-check-Läufe um
+    09:01, 10:01 und 11:02 Uhr Wiener Zeit, jedes Mal mit #2092 als
+    Beginn), dazu drei Hinweise für die einzelnen Auslieferungsfehler vom
+    05.10. (zwei Stunden lang, bis zum nächsten Lauf) und 08.10.; die vom
+    14.10. und 20.10. endeten erst nach der Prüfung ihrer Stunde und waren
+    vor der nächsten behoben. Mit den echten Läufen der API-Ausfälle: am
+    23.05. ein Hinweis, am 17.07. ein Hinweis und ab dem zweiten
+    gescheiterten Lauf rot.
+  - Laufnummer statt Zeitstempel, auch für die Prüfung `Werkzeuge`: Am
+    01.11. gab die Actions-API den Läufen, die zwischen 08:00 und 08:59 UTC
+    begannen, eine Stunde zu späte Zeiten (Ende der US-Sommerzeit) und
+    listete sie vor neueren Läufen. Nach dieser Reihenfolge wäre ein
+    behobener Build bis zu einer Stunde rot geblieben und ein neuer Fehler
+    eine Stunde lang grün. Eine Zeit nach der Prüfung selbst bleibt weg.
+    `Werkzeuge` übergeht außerdem Läufe, die GitHub übersprang oder abbrach
+    (etwa neun Dependabot-PRs in Folge am 01.11.), und liest dafür 30 Läufe:
+    Bis dahin war der letzte Lauf eines Dependabot-PRs nur ein Hinweis, und
+    ein gescheitertes Review davor schlug nicht an.
+  - Die Tests von `main()` in `tests/test_health_check_alarms.py` und
+    `tests/test_stammstrecke_direction_health.py` lesen die Prüfungen aus
+    dem Modul statt aus einer Liste von Hand: Der Liste fehlte die Prüfung
+    `Übersetzung` (in der zweiten auch `Pages-Build`). Ein Wegfall aus
+    `main()` fiel so nicht auf, und mit einer echten
+    `data/translation_status.json` nach zwei gescheiterten Builds wären
+    vier Tests ohne Bezug rot geworden. Ein neuer Test verlangt, dass
+    `main()` jede `check_*`-Funktion aufruft, und die Platzhalter nehmen nur
+    die Argumente der echten Prüfung, sodass ein falscher Aufruf in `main()`
+    rot bleibt.
+  - Neuer Workflow `pages-build-check.yml`: Jeder Pull Request mit
+    Änderungen unter `docs/` baut die Website mit derselben Action wie
+    GitHub Pages (`actions/jekyll-build-pages` 1.0.13, Quelle `./docs`) und
+    liefert nichts aus. Seiten, die Workflows selbst nach `main` schreiben,
+    erreichen keinen Pull Request; für sie gilt der Liquid-Schritt in
+    `scripts/publish_to_main.sh`.
+
+* **Liquid-Schutz für alle Wege nach `docs/` (2026-11-01)**: Eine
+  unabhängige Prüfung von #2108 baute die Pages-Seiten mit dem Gem
+  `github-pages` 232 nach und fand Lücken. Der Test kannte Liquid nur
+  ungefähr: `{%- endraw` schließt einen `raw`-Block in Liquid 4.0.4 nicht, ein
+  `{` direkt vor dem öffnenden Tag macht daraus eine Ausgabe, ein
+  geschütztes Leerzeichen gilt in Ruby nicht als Leerraum, und `_posts/` und
+  `.htaccess` rendert Jekyll trotz des Unterstrichs bzw. Punkts. Ohne
+  Leerzeile neben einer Kommentarzeile macht kramdown aus einer Tabelle einen
+  Absatz, ohne dass GitHubs Ansicht es zeigt. Vor allem gehen Seiten, die
+  Workflows schreiben, ohne Testlauf auf Pages: Ein Stationsname mit `{%` in
+  `docs/stations_diff.md` hielt im Nachbau den Pages-Build an, ein Linienname
+  mit `{{` veränderte `docs/statistik.md` still, und das `liquid_safe` des
+  KI-Wächters ließ `{{{` durch. Eine zweite Gegenprobe (125.000 erzeugte
+  Textstücke gegen Liquid 4.0.4, echte Builds) fand im neuen Prüfer noch
+  zwei Lücken und im Ablauf drei: Bleibt in einem `raw`-Block ein Paar bis
+  zu einem weiteren Tag offen, gibt Liquid den Text von dort bis zum Tag
+  doppelt aus (eine Tabelle bekam eine dritte Spalte); eine Datei unter
+  `_posts/`, deren Name mit einem Datum beginnt, wird gerendert, mit jeder
+  Endung und ohne Front Matter; der Wächter-Bericht entfernte unsichtbare
+  Zeichen erst nach `liquid_safe` und fügte so `{` und `%` wieder zusammen;
+  Seiten mit Umlaut im Namen übersprang der Schritt im Skript; und er schrieb
+  auch korrekt geschützte Beispiele derselben Seite um.
+  - Neu `src/utils/liquid.py`: `liquid_safe` setzt ein Leerzeichen hinter
+    jede öffnende Klammer eines Paars (auch in `{{{`), `liquid_findings`
+    folgt der Zerlegung von Liquid 4.0.4 und erlaubt nur die einfache Form
+    der `raw`-Tags, `raw_marker_findings` verlangt die Kommentarzeilen ohne
+    Einrückung mit Leerzeilen, `rendered_pages` lässt nur Vorlagen- und
+    Datenordner aus und zählt alles unter `_posts/` mit.
+  - Eine dritte Gegenprobe (175.000 Textstücke, echte Builds) fand noch
+    vier Lücken, alle ohne Fall in `docs/` heute: Ein Post bekommt einen
+    Auszug, den Liquid ein zweites Mal liest und den der Prüfer nicht
+    nachbaut, deshalb verbietet ein Test `_posts` und `_drafts` unter
+    `docs/`; jeder Name, der mit `.htaccess` beginnt, wird trotz `exclude`
+    gerendert; bei einem Symlink machte Schritt 2b das Ziel unwirksam,
+    nahm aber nur den Link in den Commit, jetzt das Ziel; und eine Seite,
+    die der Schritt nicht lesen kann (nicht UTF-8), stand nur auf stderr,
+    jetzt meldet eine Warnung, dass nicht jede Seite geprüft wurde.
+  - Statistik (`write_dashboard`), Stations-Diff (`_render_diff_markdown`),
+    Validierungsbericht (`ValidationReport.to_markdown`) und Wächter-Bericht
+    (nach dem Entfernen unsichtbarer Zeichen) gehen durch `liquid_safe`;
+    `scripts/publish_to_main.sh` macht vor dem Commit in jeder vorgemerkten
+    Seite unter `docs/` die verbliebenen Paare unwirksam (intakte
+    `raw`-Blöcke bleiben, Pfade NUL-getrennt, also jeder Dateiname), mit
+    einer Warnung.
+  - `tests/test_docs_liquid.py` prüft die Fälle aus dem Nachbau einzeln,
+    dazu die Vorlagen auf das, was jeden Build anhält, Front Matter als
+    Zuordnung, Symlinks und Schlüssel in `docs/_config.yml`, die ändern
+    würden, welche Dateien Jekyll rendert; `tests/test_docs_writers_liquid.py`
+    die drei Schreiber, `tests/test_ki_waechter.py` den geschriebenen
+    Bericht, `tests/test_publish_to_main.py` den Schritt im Skript, auch
+    ohne `python` oder nur mit `python3` (beide Schritte des Skripts nutzen
+    denselben Interpreter, die Warnungen nennen, ob Python fehlte, eine
+    Seite nicht lesbar war oder die Prüfung abbrach; ein Interpreter, der
+    die Feed-Prüfung nicht ausführt, heißt nicht mehr „not well-formed XML“,
+    sondern „not checked“ mit Exit-Code). Jeder Test für einen
+    gefundenen Fall war gegen den Stand davor rot; die Wächter über den
+    Inhalt von `docs/` (Vorlagen, Front Matter, Symlinks, `_posts`,
+    `raw`-Zeilen, Schlüssel in `_config.yml`) waren auch davor grün,
+    `docs/` enthielt keinen solchen Fall. Ein echter Build von `docs/` mit
+    dem Gem `github-pages` 232 läuft ohne Fehler.
+
 * **Gates: C901 auch über `scripts/`, mypy mit Stubs, pre-commit wie CI
   (2026-11-01)**: Paket 1, zweiter Teil, aus dem Technical Debt Assessment vom
   01.11. (Michael: „ok“ auf die Frage, Paket 1 zu bauen). Keine Änderung an
@@ -190,13 +310,15 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
 * **Pages-Build wieder lauffähig, Liquid-Regel für `docs/` (2026-11-01)**: Der
   Absatz in `docs/reference/ki_waechter.md`, der das Liquid-Problem der
   Pages-Seiten erklärt, zitierte selbst ein `{%`. Ab dem Merge von #2092
-  (08:43 Uhr Wiener Zeit) scheiterte deshalb jeder Lauf von „pages build and
-  deployment“ („Liquid syntax error (line 74): Tag '{%' was not properly
-  terminated“). Die Update-Läufe blieben grün und schrieben den Feed ins
-  Repository, aber Website, `feed.xml` und `feed.en.xml` unter der
-  Pages-Adresse und damit der Fernseher blieben auf dem Stand von 08:30 Uhr.
-  Die Stelle und zwei weitere, die Liquid still auswertete, stehen jetzt
-  zwischen HTML-Kommentaren mit `raw` und `endraw`:
+  (08:43 Uhr Wiener Zeit) lief deshalb kein Lauf von „pages build and
+  deployment“ mehr durch (22 gescheitert mit „Liquid syntax error (line 74):
+  Tag '{%' was not properly terminated“, 4 abgebrochen). Die Update-Läufe
+  blieben grün und schrieben den Feed ins Repository, aber Website,
+  `feed.xml` und `feed.en.xml` unter der Pages-Adresse und damit der
+  Fernseher blieben bis 11:13 Uhr auf dem Stand von 08:30 Uhr (beides Wiener
+  Zeit). Die Stelle und zwei weitere, die Liquid auswertete, ohne dass der
+  Build scheiterte, stehen jetzt zwischen HTML-Kommentaren mit `raw` und
+  `endraw`:
   `docs/how-to/test-api-secrets.md` (die Workflow-Vorlage zeigte auf der
   Website `API_URL: $` statt des Secret-Ausdrucks) und
   `docs/archive/audits/audit-2026-09-13.md` (`update-stations-$`). Neu prüft

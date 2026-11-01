@@ -24,6 +24,7 @@ from src.utils.files import (
     read_capped_text,
 )
 from src.utils.geo import haversine_m
+from src.utils.liquid import liquid_safe
 from src.utils.stations import MAX_STATIONS_FILE_BYTES, _normalize_token
 from src.utils.text import escape_markdown, normalise_markdown_text
 
@@ -478,7 +479,10 @@ class ValidationReport:
         if not self.has_issues:
             lines.append("Keine Probleme festgestellt.")
 
-        return "\n".join(lines).rstrip() + "\n"
+        # GitHub Pages runs Liquid over docs/stations_validation_report.md: a
+        # ``{%`` in a station name would stop the Pages build, a ``{{ … }}``
+        # would vanish (src/utils/liquid.py, review of 2026-11-01).
+        return liquid_safe("\n".join(lines).rstrip() + "\n")
 
     def _render_identity_field_conflicts(self) -> list[str]:
         """Render the ``## Identity-Field-Konflikte`` section.

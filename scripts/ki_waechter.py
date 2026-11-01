@@ -72,6 +72,8 @@ if __package__ in (None, ""):
 
 from src.utils.files import loads_finite, read_capped_json, read_capped_text
 from src.utils.http import request_safe, session_with_retries
+# GitHub Pages renders the report under docs/ with Liquid (src/utils/liquid.py).
+from src.utils.liquid import liquid_safe
 from src.utils.serialize import scrub_trojan_source_primitives
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -838,22 +840,6 @@ def render_report(prep: Prepared, verdict: Verdict, now: datetime, model: str, r
     return liquid_safe("\n".join(out))
 
 
-def liquid_safe(text: str) -> str:
-    """Keep Jekyll's Liquid out of a Markdown file under ``docs/``.
-
-    GitHub Pages renders every Markdown file under ``docs/`` with Jekyll, with
-    or without front matter (``jekyll-optional-front-matter`` is part of the
-    Pages build and cannot be turned off). Liquid runs first: ``{{ … }}`` is
-    swallowed without a trace (seen live in ``archive/audits/audit-2026-09-13``,
-    where ``update-stations-${{ github.ref }}`` became ``update-stations-$``),
-    and ``{%`` with an unknown tag fails the Pages build, which stops the
-    website and the TV feed. The report quotes feed and model text, so both
-    openers get a space. ``{% raw %}`` would do the same but would show on
-    GitHub's own rendering of the file.
-    """
-    return text.replace("{{", "{ {").replace("{%", "{ %")
-
-
 # --- command line ------------------------------------------------------------------
 
 
@@ -927,7 +913,10 @@ def _cmd_verify(args: argparse.Namespace) -> int:
     report = render_report(prep, verdict, now, str(raw.get("model") or "?"), args.run_url)
     target = Path(args.report) if args.report else Path(args.dir) / "bericht.md"
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(scrub_trojan_source_primitives(report), encoding="utf-8")
+    # The scrub drops zero-width and BiDi characters, which can join a "{" and
+    # a "%" that render_report kept apart: liquid_safe comes last (review of
+    # 2026-11-01, "{\u200b% x" in a model answer).
+    target.write_text(liquid_safe(scrub_trojan_source_primitives(report)), encoding="utf-8")
     summary = {
         "funde": len(verdict.findings),
         "verworfen": len(verdict.rejected),

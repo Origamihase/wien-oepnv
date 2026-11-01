@@ -29,9 +29,12 @@ an absolute threshold.
 from __future__ import annotations
 
 import csv
+import inspect
 import logging
+import sys
 from datetime import datetime, timedelta
 from pathlib import Path
+from collections.abc import Callable
 from typing import Any
 
 import pytest
@@ -47,6 +50,17 @@ from src.utils.stats import (
 )
 
 VIENNA = ZoneInfo("Europe/Vienna")
+
+
+def _bound_stub(real: Callable[..., Any], result: Any) -> Callable[..., Any]:
+    """A stand-in for a health check that takes only what the real one takes."""
+    signature = inspect.signature(real)
+
+    def stub(*args: Any, **kwargs: Any) -> Any:
+        signature.bind(*args, **kwargs)
+        return result
+
+    return stub
 DIRECTIONS = ("Meidling", "Praterstern")
 NOW = datetime(2026, 9, 13, 20, 0, tzinfo=VIENNA)
 
@@ -218,25 +232,27 @@ def test_health_check_note_keeps_the_run_green(
     note = check_stammstrecke_directions(NOW)
     healthy = Check("Quelle", ok=True, summary="OK")
     target = "scripts.health_check"
-    monkeypatch.setattr(f"{target}.check_source", lambda *_a, **_kw: healthy)
+    # Every other check is stubbed, read from the module: they read the real
+    # repository, the environment and the network. The test passed only
+    # while an earlier test left ``VOR_ACCESS_ID`` set (test-suite audit
+    # 2026-10-28), a real Feed-Wächter finding or an aged station source or a
+    # side-step record would have decided it too, and since 2026-10-31 the
+    # published feeds were fetched for real (the Actions API is asked
+    # wherever ``GITHUB_TOKEN`` and ``GITHUB_REPOSITORY`` are set). A list by
+    # hand missed ``Pages-Build`` and ``Übersetzung`` (review of 2026-11-01).
+    module = sys.modules[target]
+    checks = [
+        name
+        for name, value in vars(module).items()
+        if name.startswith("check_")
+        and inspect.isfunction(value)
+        and value.__module__ == target
+    ]
+    assert "check_translation" in checks and "check_pages_build" in checks
+    for name in checks:
+        result = note if name == "check_stammstrecke_directions" else healthy
+        monkeypatch.setattr(f"{target}.{name}", _bound_stub(getattr(module, name), result))
     monkeypatch.setattr(f"{target}.assess_source", lambda probe, *_a: probe)
-    monkeypatch.setattr(f"{target}.check_feed_freshness", lambda _now: healthy)
-    monkeypatch.setattr(f"{target}.check_stations", lambda _now: healthy)
-    monkeypatch.setattr(f"{target}.check_stammstrecke_abruf", lambda _now: healthy)
-    monkeypatch.setattr(f"{target}.check_stammstrecke_directions", lambda _now: note)
-    # The remaining checks read the real repository, the environment and the
-    # network: the test passed only while an earlier test left
-    # ``VOR_ACCESS_ID`` set (test-suite audit 2026-10-28), a real Feed-Wächter
-    # finding or an aged station source or a side-step record would have
-    # decided it too, and since 2026-10-31 the published feeds were fetched
-    # for real (the Actions API is asked wherever ``GITHUB_TOKEN`` and
-    # ``GITHUB_REPOSITORY`` are set).
-    monkeypatch.setattr(f"{target}.check_published_feeds", lambda _now: healthy)
-    monkeypatch.setattr(f"{target}.check_station_sources", lambda _now: healthy)
-    monkeypatch.setattr(f"{target}.check_feed_watch", lambda _now: healthy)
-    monkeypatch.setattr(f"{target}.check_side_steps", lambda _now: healthy)
-    monkeypatch.setattr(f"{target}.check_tooling_runs", lambda _now: healthy)
-    monkeypatch.setattr(f"{target}.check_secrets", lambda: healthy)
     monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
 
     assert health_check_main() == 0
@@ -289,8 +305,6 @@ def test_health_check_window_is_env_tunable(
 
 def test_health_check_is_registered_in_the_report() -> None:
     """The check must actually run — an unwired check alarms on nothing."""
-    import inspect
-
     # ``from``-style to match the other ``scripts.health_check`` imports in this
     # file. Mixing ``import x`` and ``from x import y`` for one module trips
     # CodeQL's py/import-and-import-from.

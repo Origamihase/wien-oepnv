@@ -142,6 +142,186 @@ def test_malformed_feed_is_never_published(tmp_path: Path) -> None:
     result = _publish(work, env, "--validate-feeds", "--all", "--message", "chore: update cycle")
     assert result.returncode == 0, result.stderr
     assert "not well-formed XML" in result.stdout
+    assert "not checked" not in result.stdout
+    assert _remote_file(origin, env, "docs/feed.xml") == "<rss>old</rss>"
+
+
+def test_a_staged_page_with_liquid_is_made_inert(tmp_path: Path) -> None:
+    # 2026-11-01: one bare "{%" under docs/ failed every Pages build; bot
+    # commits start the Pages build but no test run (step 2b).
+    origin, work, _other, env = _setup(tmp_path)
+    _write(work, "docs/stations_diff.md", "# Diff\n\n- Wien Mitte {% Ersatz\n- S{{{1}}}\n")
+    _write(work, "docs/feed.xml", "<rss>{{ static }}</rss>\n")
+    _write(work, "docs/ok.md", "<!-- {% raw %} -->\n\n`${{ x }}`\n\n<!-- {% endraw %} -->\n")
+    result = _publish(work, env, "--all", "--label", "Stationspflege", "--message", "chore: stations")
+    assert result.returncode == 0, result.stderr
+    assert "::warning title=Stationspflege::Liquid in docs/stations_diff.md (line 3,4) made inert" in result.stdout
+    assert _remote_file(origin, env, "docs/stations_diff.md") == "# Diff\n\n- Wien Mitte { % Ersatz\n- S{ { {1}}}"
+    assert _remote_file(origin, env, "docs/feed.xml") == "<rss>{{ static }}</rss>"
+    assert "{{ x }}" in _remote_file(origin, env, "docs/ok.md")
+    assert "ok.md" not in result.stdout
+
+
+def test_a_page_with_any_file_name_is_made_inert(tmp_path: Path) -> None:
+    # git quotes a name with an umlaut or a quote in --name-only output
+    # unless -z is given; such a page passed step 2b unchanged until the
+    # review of 2026-11-01.
+    origin, work, _other, env = _setup(tmp_path)
+    for name in ("docs/Störung.md", 'docs/say "hi".md', "docs/with space.md"):
+        _write(work, name, "x {% y\n")
+    result = _publish(work, env, "--all", "--label", "Stationspflege", "--message", "chore: stations")
+    assert result.returncode == 0, result.stderr
+    for name in ("docs/Störung.md", 'docs/say "hi".md', "docs/with space.md"):
+        assert f"Liquid in {name} (line 1) made inert" in result.stdout
+        assert _remote_file(origin, env, name) == "x { % y"
+
+
+def test_a_clean_page_publishes_without_a_liquid_warning(tmp_path: Path) -> None:
+    origin, work, _other, env = _setup(tmp_path)
+    _write(work, "docs/statistik.md", "# Statistik\n\n| S1 | 3 |\n")
+    result = _publish(work, env, "--message", "chore: stats", "--", "docs/statistik.md")
+    assert result.returncode == 0, result.stderr
+    assert "Liquid" not in result.stdout
+    assert _remote_file(origin, env, "docs/statistik.md") == "# Statistik\n\n| S1 | 3 |"
+
+
+def test_a_symlinked_page_publishes_its_target_made_inert(tmp_path: Path) -> None:
+    # Review of 2026-11-01: the target was rewritten but only the
+    # link, whose blob does not change, was staged again; the Liquid went out.
+    origin, work, _other, env = _setup(tmp_path)
+    _write(work, "docs/note.md", "x {% y\n")
+    (work / "docs" / "alias.md").symlink_to("note.md")
+    _write(work, "docs/notiz.txt", "Notiz: {% ohne Tag\n")
+    (work / "docs" / "notiz.md").symlink_to("notiz.txt")
+    result = _publish(work, env, "--all", "--label", "L", "--message", "m")
+    assert result.returncode == 0, result.stderr
+    assert "Liquid in docs/note.md (line 1) made inert" in result.stdout
+    assert "Liquid in docs/notiz.txt (line 1) made inert" in result.stdout
+    assert _remote_file(origin, env, "docs/note.md") == "x { % y"
+    assert _remote_file(origin, env, "docs/notiz.txt") == "Notiz: { % ohne Tag"
+    assert _git(work, env, "status", "--porcelain") == ""
+
+
+def test_a_page_the_check_cannot_read_is_named_in_a_warning(tmp_path: Path) -> None:
+    origin, work, _other, env = _setup(tmp_path)
+    (work / "docs" / "latin1.md").write_bytes("# St\xf6rung\n\nText {% x\n".encode("latin-1"))
+    _write(work, "docs/ok.md", "fine {% z\n")
+    result = _publish(work, env, "--all", "--label", "L", "--message", "m")
+    assert result.returncode == 0, result.stderr
+    assert (
+        "::warning title=L::Liquid check passed over staged pages under docs/ it could not read"
+        " (liquid.py names them in the log)" in result.stdout
+    )
+    assert "latin1.md skipped (UnicodeDecodeError" in result.stderr
+    assert _remote_file(origin, env, "docs/ok.md") == "fine { % z"
+
+
+def _bare_path(tmp_path: Path, *, python3: bool) -> str:
+    """A PATH with only the tools the script needs, python at most as python3."""
+    bin_dir = tmp_path / "bare-bin"
+    bin_dir.mkdir()
+    for tool in ("git", "bash", "mktemp", "rm", "dirname", "sleep", "cat"):
+        found = shutil.which(tool)
+        assert found, tool
+        (bin_dir / tool).symlink_to(found)
+    if python3:
+        (bin_dir / "python3").symlink_to(sys.executable)
+    return str(bin_dir)
+
+
+def test_without_python_the_page_is_published_with_a_warning(tmp_path: Path) -> None:
+    origin, work, _other, env = _setup(tmp_path)
+    _write(work, "docs/x.md", "x {% y\n")
+    env = {**env, "PATH": _bare_path(tmp_path, python3=False)}
+    result = _publish(work, env, "--all", "--label", "L", "--message", "m")
+    assert result.returncode == 0, result.stderr
+    # liquid.py never ran, so the warning must not send the reader to its log.
+    assert "::warning title=L::Liquid check skipped: no python on PATH" in result.stdout
+    assert "names them" not in result.stdout
+    assert _remote_file(origin, env, "docs/x.md") == "x {% y"
+
+
+def test_a_liquid_check_that_stops_is_named_in_a_warning(tmp_path: Path) -> None:
+    # A python that fails before liquid.py writes anything (exit 1) names no
+    # page; only exit 2 does.
+    origin, work, _other, env = _setup(tmp_path)
+    _write(work, "docs/x.md", "x {% y\n")
+    bare = _bare_path(tmp_path, python3=False)
+    stub = Path(bare) / "python"
+    stub.write_text("#!/bin/bash\nexit 1\n", encoding="utf-8")
+    stub.chmod(0o755)
+    env = {**env, "PATH": bare}
+    result = _publish(work, env, "--all", "--label", "L", "--message", "m")
+    assert result.returncode == 0, result.stderr
+    assert "::warning title=L::Liquid check stopped (liquid.py exit 1)" in result.stdout
+    assert "names them" not in result.stdout
+    assert _remote_file(origin, env, "docs/x.md") == "x {% y"
+
+
+def test_with_only_python3_the_page_is_made_inert(tmp_path: Path) -> None:
+    origin, work, _other, env = _setup(tmp_path)
+    _write(work, "docs/x.md", "x {% y\n")
+    env = {**env, "PATH": _bare_path(tmp_path, python3=True)}
+    result = _publish(work, env, "--all", "--label", "L", "--message", "m")
+    assert result.returncode == 0, result.stderr
+    assert "Liquid in docs/x.md (line 1) made inert" in result.stdout
+    assert "Liquid check" not in result.stdout
+    assert _remote_file(origin, env, "docs/x.md") == "x { % y"
+
+
+def test_the_feed_check_uses_the_same_python_as_the_liquid_check(tmp_path: Path) -> None:
+    # Step 1 called a bare "python" while step 2b already found python3:
+    # with only python3, a well-formed feed was called malformed and the
+    # publish skipped (review of 2026-11-01).
+    origin, work, _other, env = _setup(tmp_path)
+    _write(work, "docs/feed.xml", "<rss>new</rss>\n")
+    env = {**env, "PATH": _bare_path(tmp_path, python3=True)}
+    result = _publish(work, env, "--validate-feeds", "--all", "--message", "chore: update cycle")
+    assert result.returncode == 0, result.stderr
+    assert "feed-validate" not in result.stdout
+    assert _remote_file(origin, env, "docs/feed.xml") == "<rss>new</rss>"
+
+
+def test_without_python_the_feed_is_not_published_and_the_warning_says_why(tmp_path: Path) -> None:
+    origin, work, _other, env = _setup(tmp_path)
+    _write(work, "docs/feed.xml", "<rss>new</rss>\n")
+    env = {**env, "PATH": _bare_path(tmp_path, python3=False)}
+    result = _publish(work, env, "--validate-feeds", "--all", "--message", "chore: update cycle")
+    assert result.returncode == 0, result.stderr
+    assert "::warning title=feed-validate::docs/feed.xml not checked: no python on PATH" in result.stdout
+    assert "not well-formed" not in result.stdout
+    assert _remote_file(origin, env, "docs/feed.xml") == "<rss>old</rss>"
+
+
+def test_a_feed_check_that_cannot_run_does_not_call_the_feed_malformed(tmp_path: Path) -> None:
+    # A python that fails before parsing (exit 1 here; 127 from a shim) was
+    # reported as "not well-formed XML" (review of 2026-11-01).
+    origin, work, _other, env = _setup(tmp_path)
+    _write(work, "docs/feed.xml", "<rss>new</rss>\n")
+    bare = _bare_path(tmp_path, python3=False)
+    stub = Path(bare) / "python"
+    stub.write_text("#!/bin/bash\nexit 1\n", encoding="utf-8")
+    stub.chmod(0o755)
+    env = {**env, "PATH": bare}
+    result = _publish(work, env, "--validate-feeds", "--all", "--message", "chore: update cycle")
+    assert result.returncode == 0, result.stderr
+    assert f"::warning title=feed-validate::docs/feed.xml not checked: {stub} exit 1" in result.stdout
+    assert "not well-formed" not in result.stdout
+    assert _remote_file(origin, env, "docs/feed.xml") == "<rss>old</rss>"
+
+
+# "foo" is unknown to Python (LookupError); "shift_jis" is known, but the
+# parser takes no multi-byte encoding (ValueError).
+@pytest.mark.parametrize("encoding", ["foo", "shift_jis"])
+def test_a_feed_with_an_encoding_the_parser_rejects_is_called_malformed(
+    tmp_path: Path, encoding: str
+) -> None:
+    origin, work, _other, env = _setup(tmp_path)
+    _write(work, "docs/feed.xml", f'<?xml version="1.0" encoding="{encoding}"?>\n<rss>new</rss>\n')
+    result = _publish(work, env, "--validate-feeds", "--all", "--message", "chore: update cycle")
+    assert result.returncode == 0, result.stderr
+    assert "docs/feed.xml is not well-formed XML" in result.stdout
+    assert "not checked" not in result.stdout
     assert _remote_file(origin, env, "docs/feed.xml") == "<rss>old</rss>"
 
 

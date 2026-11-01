@@ -21,6 +21,7 @@ import pytest
 import yaml
 
 from scripts import ki_waechter as kw
+from src.utils.liquid import liquid_findings, liquid_safe
 
 REPO = Path(__file__).resolve().parents[1]
 
@@ -178,7 +179,41 @@ def test_the_report_keeps_liquid_out_of_the_pages_build(prep: kw.Prepared) -> No
     report = kw.render_report(prep, verdict, datetime(2026, 10, 31, 14, 5, tzinfo=UTC), "m", "")
     assert "{{" not in report and "{%" not in report
     assert "{ { site.title }} und { % include x %}" in report
-    assert kw.liquid_safe("a {{b}} {%c%}") == "a { {b}} { %c%}"
+    assert liquid_safe("a {{b}} {%c%}") == "a { {b}} { %c%}"
+    # Until 2026-11-01 a plain replacement turned "{{{" into "{ {{", which
+    # Liquid still reads as an opener (src/utils/liquid.py).
+    assert liquid_safe("{{{ x }}}") == "{ { { x }}}"
+    assert liquid_safe("{{{{") == "{ { { {"
+    verdict = kw.verify(_answer({
+        "nr": 2, "klasse": "F6", "feed": "EN", "feed_zitat": "algae path", "erwartet": "Algenweg",
+        "begruendung": "Vorlage {{{ title }}} kaputt {{{",
+    }, geprueft=(1, 2)), prep)
+    report = kw.render_report(prep, verdict, datetime(2026, 10, 31, 14, 5, tzinfo=UTC), "m", "")
+    assert "{{" not in report and "{%" not in report
+
+
+def test_the_written_report_keeps_liquid_out_after_the_scrub(prep: kw.Prepared, tmp_path: Path) -> None:
+    """The scrub removes zero-width and soft-hyphen characters; done after
+    liquid_safe it joined "{" and "%" again (review of 2026-11-01, real
+    Pages build failed on the written report)."""
+    work = tmp_path / "w"
+    work.mkdir()
+    (work / "eingabe.json").write_text(json.dumps(kw.asdict(prep)), encoding="utf-8")
+    answer = {
+        "geprueft": [1, 2],
+        "funde": [{
+            "nr": 2, "klasse": "F6", "feed": "EN", "feed_zitat": "algae path", "erwartet": "Algenweg",
+            "begruendung": "Vorlage {\u200b% kaputt und {\u00ad{ site.title }}",
+        }],
+        "vermutungen": ["Hinweis {\ufeff% if"],
+    }
+    ok = {"ok": True, "model": "gemini-x", "text": json.dumps(answer, ensure_ascii=False)}
+    (work / "antwort.json").write_text(json.dumps(ok, ensure_ascii=False), encoding="utf-8")
+    report_path = tmp_path / "docs" / "archive" / "audits" / "ki-waechter-2026-11-02.md"
+    assert kw.main(["verify", "--dir", str(work), "--report", str(report_path)]) == 0
+    written = report_path.read_text(encoding="utf-8")
+    assert "Vorlage { % kaputt und { { site.title }}" in written
+    assert liquid_findings(written) == []
 
 
 def test_the_answer_is_the_last_json_block() -> None:

@@ -42,6 +42,7 @@ darunter.
   - [Überwachung: Abruf kaputt oder keine Züge (seit 2026-10-10)](#überwachung-abruf-kaputt-oder-keine-züge-seit-2026-10-10)
   - [Überwachung: Nebenschritte (seit 2026-10-28)](#überwachung-nebenschritte-seit-2026-10-28)
   - [Überwachung: Veröffentlichung (seit 2026-10-31)](#überwachung-veröffentlichung-seit-2026-10-31)
+  - [Überwachung: Pages-Build (seit 2026-11-01)](#überwachung-pages-build-seit-2026-11-01)
   - [Überwachung: Werkzeuge (seit 2026-10-31)](#überwachung-werkzeuge-seit-2026-10-31)
   - [Alarmwege: rot, Issue, Hinweis (seit 2026-10-28)](#alarmwege-rot-issue-hinweis-seit-2026-10-28)
 - [8. Der zweisprachige Feed (DE → EN)](#8-der-zweisprachige-feed-de--en)
@@ -2979,6 +2980,100 @@ Alarmlinie unten:
   Repo-Kopie, die nicht lesbar ist, ist in `Feed-Build` schon rot und hier nur
   ein Hinweis, damit sie nicht doppelt zählt.
 
+### Überwachung: Pages-Build (seit 2026-11-01)
+
+Betreiberentscheidung (Michael, 2026-11-01, Karte „Soll ein gescheiterter
+Pages-Build künftig sofort auffallen?“, Antwort „Beides bauen“). Anlass: Ab
+dem Merge von #2092 um 08:43 Uhr Wiener Zeit hielt ein Liquid-Tag in
+`docs/reference/ki_waechter.md` jeden Lauf von „pages build and deployment“
+an (bis 11:13 Uhr Wiener Zeit 22 gescheitert, 4 abgebrochen). Der Fernseher
+blieb auf dem Stand von 08:30 Uhr Wiener Zeit, die Update-Läufe blieben grün,
+und der Health check meldete den Ausfall nicht (rot war er ab 10:01 Uhr
+Wiener Zeit nur wegen des gescheiterten KI-Wächters, Prüfung
+`Nebenschritte`); `Veröffentlichung` hätte erst bei vier Stunden Rückstand
+gegen 13:00 Uhr Wiener Zeit angeschlagen. Beides gilt seither:
+
+* **Health check, Prüfung `Pages-Build`** (`check_pages_build` in
+  `scripts/health_check.py`). Sie liest über die Actions-API (`actions:
+  read`, eigenes `GITHUB_TOKEN` des Laufs) die letzten 20 abgeschlossenen
+  Läufe des Pages-Workflows; solange keiner davon sauber war oder zwischen
+  dem neuesten und dem neuesten sauberen eine Laufnummer fehlt, bis zu 40
+  weitere. Ein Lauf, den zwei Seiten listen, zählt einmal. Er hat keine
+  Datei im Repository; seine Id findet sie über den
+  Pfad `dynamic/pages/pages-build-deployment`. Läufe, die GitHub abbricht,
+  weil ein neuerer Commit kam (165 von 1.972 vom 01.10. bis 01.11.2026),
+  zählen nicht. Der letzte übrige Lauf nach **Laufnummer** entscheidet,
+  nicht nach GitHubs Zeitstempel: Am 01.11. gab die Actions-API allen
+  Läufen, die zwischen 08:00 und 08:59 UTC begannen, eine Stunde zu späte
+  Zeiten (Ende der US-Sommerzeit) und listete sie vor neueren Läufen. Eine
+  Zeit nach der Prüfung selbst kann nicht stimmen und bleibt weg. Dasselbe
+  gilt für die Prüfung `Werkzeuge`.
+  * `success`: grün.
+  * Gescheitert im Schritt „Build with Jekyll“ (außer an GitHubs API,
+    nächster Punkt): **sofort rot**. Der Inhalt unter `docs/` lässt sich
+    nicht bauen, und jeder weitere Lauf scheitert gleich, bis die Seite
+    korrigiert ist. Die Meldung nennt den Link zum
+    Lauf und, solange der erste gescheiterte Lauf unter den gelesenen (bis
+    zu 60) liegt, seit wann und wie viele Läufe in Folge und den Commit,
+    nach dem der Build zuerst scheiterte; sonst „mindestens N Läufe in
+    Folge“. 20 Läufe reichten im Oktober 2026 im Mittel etwa acht Stunden
+    zurück, am 01.11. um 11:02 Uhr Wiener Zeit wegen der vielen Merges
+    nicht bis zum Beginn um 08:43 Uhr Wiener Zeit.
+  * Gescheitert im Schritt „Build with Jekyll“, aber an GitHubs API (die
+    Fehlermeldung des Schritts, gelesen über die Annotationen des Jobs mit
+    `checks: read`, nennt einen HTTP-Fehler von `api.github.com` oder
+    ungültige Zugangsdaten): GitHubs Seite wie im nächsten Punkt. Das Gem
+    `jekyll-github-metadata` fragt die API bei jedem Build und fängt nur
+    Ratenlimit, 404 und Verbindungsabbruch ab; so scheiterte am 23.05.2026
+    um 12:01 Uhr Wiener Zeit ein einzelner Lauf (ungültige Zugangsdaten, der
+    nächste baute fünf Minuten später) und in der Nacht auf den 17.07.2026
+    von 00:31 bis 01:31 Uhr Wiener Zeit drei in Folge (HTTP 503). Ist die
+    Meldung nicht lesbar, bleibt es sofort rot.
+  * Gescheitert an anderer Stelle (Image laden, Upload, Auslieferung):
+    GitHubs Seite. Ein einzelner Lauf ist ein **Hinweis**, rot wird es,
+    wenn auch der Lauf davor scheiterte. Das folgt der Alarmlinie unten
+    (ein einzelner Aussetzer schickt keine Mail): Im Oktober 2026 scheiterte
+    die Auslieferung viermal, jedes Mal einzeln, und der nächste Lauf
+    lieferte wieder aus.
+  * Gescheitert, aber die Jobs des Laufs sind nicht lesbar: rot.
+  * Actions-API antwortet nicht, kein Pages-Workflow, kein abgeschlossener
+    Lauf: Hinweis.
+
+  Nachgerechnet über die Pages-Läufe vom 01.10. bis 01.11.2026, in der
+  Reihenfolge, in der die API sie listete, mit einer Prüfung je Stunde (wie
+  seit dem 28.10.): rot nur am 01.11. um 9, 10 und 11 Uhr Wiener Zeit, dazu
+  drei Hinweise für die Auslieferungsfehler vom 05.10. und 08.10.; die vom
+  14.10. und 20.10. endeten erst nach der Prüfung ihrer Stunde und waren vor
+  der nächsten behoben. Zu den Zeiten der echten Health-check-Läufe am
+  01.11. wäre `Pages-Build` um 09:01, 10:01 und 11:02 Uhr Wiener Zeit rot
+  gewesen, jedes Mal mit dem Merge von #2092 als Beginn. Mit den echten
+  Läufen der beiden API-Ausfälle: am 23.05. ein Hinweis, am 17.07. ein
+  Hinweis nach dem ersten und rot ab dem zweiten gescheiterten Lauf, bis der
+  vierte wieder baute. `Veröffentlichung` bleibt als Rückfall für einen
+  Ausfall ohne gescheiterten Lauf (Pages abgeschaltet, ein Lauf, der nie
+  startet).
+* **Pull Requests, Workflow `pages-build-check.yml`.** Jeder Pull Request
+  mit Änderungen unter `docs/` baut die Website mit derselben Action wie
+  der Pages-Lauf (`actions/jekyll-build-pages` 1.0.13, Jekyll 3.10 mit dem
+  Gem `github-pages`, Quelle `./docs`) und liefert nichts aus. Ein Fehler
+  zeigt sich als roter Check am PR, bevor er `main` erreicht (der Check ist
+  kein Pflicht-Check im Ruleset). Er fängt, was den Build anhält; gibt eine
+  Vorlage nur still etwas anderes aus (eine unbekannte Variable, ein
+  unbekannter Filter), bleibt er grün. Endet die erste Backtrace-Zeile im
+  Protokoll des Schritts „Build with Jekyll“ mit `(Octokit::…)`,
+  `(Faraday::…)` oder `(Jekyll::GitHubMetadata::Client::BadCredentialsError)`
+  (ungültige Zugangsdaten; das Gem meldet `Octokit::Unauthorized` unter
+  dieser Klasse, das Original steht weiter unten als Ursache), lag es an
+  GitHubs API, auch wenn darüber `Liquid Exception` steht
+  (`jekyll-github-metadata` fragt die API vor dem Rendern und noch einmal im
+  ersten Layout); ein neuer Lauf behebt es. Die Annotation am Check nennt
+  statt der Klasse den HTTP-Fehler von `api.github.com` oder die ungültigen
+  Zugangsdaten. Seiten, die Workflows
+  selbst nach `main` schreiben, erreichen keinen Pull Request (ein Push mit
+  dem `GITHUB_TOKEN` startet außer dem Pages-Build keinen Workflow); für sie
+  gilt der Liquid-Schritt in `scripts/publish_to_main.sh`
+  ([`development.md`](development.md), „Veröffentlichen auf `main`“).
+
 ### Überwachung: Werkzeuge (seit 2026-10-31)
 
 Fund B des Architektur-Reviews vom 2026-10-31 (Michael: „ja, bau das
@@ -3008,8 +3103,11 @@ gilt seither auch für sie, Regel vom 2026-10-28: „ein Fehler sollte auffallen
   kein Pflicht-Check im Ruleset und hält keinen Merge auf), und die neue
   Prüfung `Werkzeuge` (`check_tooling_runs`) liest über die Actions-API
   (`actions: read`, eigenes `GITHUB_TOKEN` des Laufs) das Ergebnis des
-  letzten abgeschlossenen Laufs: `success` grün, `cancelled`/`skipped`
-  Hinweis, alles andere rot mit Link zum Lauf, bis ein Review wieder lief.
+  letzten abgeschlossenen Laufs, der lief (nach Laufnummer, siehe
+  „Pages-Build“; übersprungene und abgebrochene Läufe zählen nicht, etwa die
+  von Dependabot, am 01.11. neun in Folge): `success` grün, alles andere
+  rot mit Link zum Lauf, bis ein Review wieder lief. Nur wenn keiner der
+  letzten 30 Läufe lief, ist das ein Hinweis.
   Pull Requests aus Forks und von Dependabot haben keine Secrets und werden
   wie bisher übersprungen. Eine Actions-API, die nicht antwortet, ist ein
   Hinweis, denn sie sagt nichts über das Werkzeug.
@@ -3023,9 +3121,9 @@ drei Fragen und hat damit genau einen Weg:
 
 | Weg | Frage | Wer meldet | Fälle |
 | --- | --- | --- | --- |
-| **Rot** (GitHub-Mail) | Arbeitet die Technik nicht, und zwar anhaltend? | Health check (`scripts/health_check.py`), stündlich | Eine Quelle (WL, ÖBB, Baustellen, Stammstrecke) gab den Update-Läufen seit **3 h** keine brauchbare Antwort; der Feed ist seit **4 h** nicht neu gebaut; die veröffentlichten Feeds auf GitHub Pages liegen seit **4 h** hinter dem Repo; der Stationslauf ist älter als 8 Tage, ein Teilschritt scheiterte oder die Validierung fand Sicherheitsprobleme; eine Quelle des Stationslaufs antwortete seit 15 Tagen nicht; ein Nebenschritt scheiterte im letzten Lauf oder seine Aufzeichnung ist veraltet; der SEO-Lauf konnte die Repository-Metadaten nicht setzen (`REPO_ADMIN_TOKEN`); der letzte Lauf des Code-Reviews scheiterte (`CLAUDE_CODE_OAUTH_TOKEN`); der Feed-Wächter konnte nicht prüfen; das Übersetzungsmodell lud in zwei Builds in Folge nicht (seit 2026-11-01); ein Pflicht-Secret ist leer. |
+| **Rot** (GitHub-Mail) | Arbeitet die Technik nicht, und zwar anhaltend? | Health check (`scripts/health_check.py`), stündlich | Eine Quelle (WL, ÖBB, Baustellen, Stammstrecke) gab den Update-Läufen seit **3 h** keine brauchbare Antwort; der Feed ist seit **4 h** nicht neu gebaut; die veröffentlichten Feeds auf GitHub Pages liegen seit **4 h** hinter dem Repo; der letzte Pages-Lauf scheiterte im Jekyll-Build (sofort) oder zwei Pages-Läufe in Folge scheiterten bei GitHub; der Stationslauf ist älter als 8 Tage, ein Teilschritt scheiterte oder die Validierung fand Sicherheitsprobleme; eine Quelle des Stationslaufs antwortete seit 15 Tagen nicht; ein Nebenschritt scheiterte im letzten Lauf oder seine Aufzeichnung ist veraltet; der SEO-Lauf konnte die Repository-Metadaten nicht setzen (`REPO_ADMIN_TOKEN`); der letzte Lauf des Code-Reviews scheiterte (`CLAUDE_CODE_OAUTH_TOKEN`); der Feed-Wächter konnte nicht prüfen; das Übersetzungsmodell lud in zwei Builds in Folge nicht (seit 2026-11-01); ein Pflicht-Secret ist leer. |
 | **Issue** (Lauf bleibt grün) | Arbeitet die Technik, aber Feed-Inhalt oder Quelle sehen falsch aus? | Feed-Wächter (`scripts/feed_watch.py`), jeder Update-Lauf; je Regel ein Issue, das sich nach zwei sauberen Läufen selbst schließt | Die Inhaltsregeln (doppelter Eintrag, Anzahl, alte Meldung als neu, „Seit“ zu früh, ÖBB-Zweitsatz, Zeitzeile, Zeit vorbei, Länge, Höflichkeitssatz) und die Quellenregeln (`quelle-leer`, `quelle-einbruch`, `verwurf-sprung`, seit 2026-10-29 `vao-version`: die automatisch gewählte VAO-Version hat gewechselt). |
-| **Hinweis** (ℹ️, `::warning`) | Ist die Lage bekannt und verlangt nichts? | Health check | Eine stille Stammstrecken-Richtung, ein Korridor ohne Züge (die Website meldet ihn), eine gescheiterte Stichprobe, während die Update-Läufe noch Antworten bekommen, ein Live-Abruf der veröffentlichten Feeds, der gerade nicht gelang, eine Aufzeichnung, die vor dem ersten Lauf noch fehlt. |
+| **Hinweis** (ℹ️, `::warning`) | Ist die Lage bekannt und verlangt nichts? | Health check | Eine stille Stammstrecken-Richtung, ein Korridor ohne Züge (die Website meldet ihn), eine gescheiterte Stichprobe, während die Update-Läufe noch Antworten bekommen, ein Live-Abruf der veröffentlichten Feeds, der gerade nicht gelang, ein einzelner Pages-Lauf, dessen Auslieferung bei GitHub oder dessen Jekyll-Build an GitHubs API scheiterte, eine Aufzeichnung, die vor dem ersten Lauf noch fehlt. |
 
 **Frühwarnung:** Zwei Technikfälle melden zusätzlich früher ein Issue, bevor
 sie rot werden: `quelle-ohne-antwort` nach 2 h (rot nach 3 h) und

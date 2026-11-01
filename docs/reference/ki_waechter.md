@@ -77,18 +77,23 @@ Front Matter, und lässt Liquid darüberlaufen: Ein zitiertes `{{ … }}`
 verschwindet dabei stillschweigend (so geschehen in
 `archive/audits/audit-2026-09-13`), ein `{%` ohne gültiges Tag lässt den
 Pages-Build scheitern, und Website und Fernseher bleiben stehen. Das Skript
-setzt deshalb im Bericht hinter das erste Zeichen jedes solchen Paars ein
-Leerzeichen (`liquid_safe`), bevor es ihn schreibt.
+setzt deshalb im Bericht hinter jede öffnende Klammer eines solchen Paars ein
+Leerzeichen (`liquid_safe` aus `src/utils/liquid.py`), bevor es ihn schreibt.
 
 <!-- {% endraw %} -->
 
 Von Hand geschriebene Seiten, die solche Zeichenpaare wörtlich zeigen, setzen
-sie zwischen zwei HTML-Kommentare mit dem Liquid-Tag `raw` und `endraw`, wie
-den Absatz darüber. Mit #2092 kam dieser Absatz am 2026-11-01 ungeschützt auf
-`main`: Bis zur Korrektur scheiterte jeder Pages-Build, und der Feed unter der
+sie zwischen zwei HTML-Kommentare mit den Liquid-Tags `raw` bzw. `endraw`
+(einfache Form ohne Bindestrich), jeder in einer eigenen Zeile mit einer
+Leerzeile davor und danach, so wie im Quelltext dieser Seite um den Absatz
+darüber. Mit #2092 kam dieser Absatz am
+2026-11-01 ungeschützt auf `main`: Bis zur Korrektur um 11:13 Uhr Wiener Zeit lief kein
+Pages-Build mehr durch (22 gescheitert, 4 abgebrochen), und der Feed unter der
 Pages-Adresse blieb auf dem Stand von 08:30 Uhr Wiener Zeit stehen.
 `tests/test_docs_liquid.py` prüft seitdem jede Seite unter `docs/`, die
-Jekyll rendert (Regel in `docs/development.md`).
+Jekyll rendert; `scripts/publish_to_main.sh` macht in jeder Seite, die ein
+Workflow zum Commit vormerkt, verbliebene Paare unwirksam (Regel in
+`docs/development.md`).
 
 ## Gratis-Kontingent
 
