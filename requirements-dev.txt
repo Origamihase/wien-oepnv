@@ -15,7 +15,7 @@ pytest-cov>=7.1.0,<8
 # the suite has held under ``-n 4`` since 2026-10-28 (docs/development.md,
 # "Test-Isolation").
 pytest-xdist>=3.8,<4
-pre-commit>=4.6.0,<5
+pre-commit>=4.7.0,<5
 # Static-site asset pipeline (docs/site.html + docs/assets/*). The
 # minifiers are pure-Python and required by both the pre-commit drift
 # check and the manual ``scripts/optimize_site_assets.py`` run. Pillow
