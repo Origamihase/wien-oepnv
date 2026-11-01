@@ -36,12 +36,12 @@ jobs:
     # 35 min is ~1.7x the slowest observed healthy run, which keeps the
     # hang-catching purpose intact while leaving room for the suite to
     # keep growing. If the wall clock itself becomes the problem,
-    # parallelising the suite is the fix — not another bump.
+    # parallelising the suite is the fix — not another bump. Since
+    # 2026-11-01 the suite runs on all runner cores (``-n auto`` below).
     timeout-minutes: 35
 
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-      PYTHONPATH: src
     steps:
       # Workaround for actions/checkout#2351 (sporadic includeIf credential
       # race on v6 → "could not read Username, terminal prompts disabled").
@@ -81,7 +81,10 @@ jobs:
         continue-on-error: true
 
       - name: Run pytest
-        run: python -m pytest --cov --cov-report=term --cov-report=xml
+        # All runner cores (``-n auto``, pytest-xdist; four on ubuntu-latest).
+        # The suite holds in parallel and in any order (docs/development.md,
+        # "Test-Isolation"); pytest-cov combines the coverage of the workers.
+        run: python -m pytest -n auto --cov --cov-report=term --cov-report=xml
 
       - name: Upload coverage report
         if: always()

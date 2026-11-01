@@ -6,7 +6,6 @@ import importlib
 import re
 import sys
 from datetime import datetime, UTC
-from pathlib import Path
 
 from types import ModuleType
 from typing import Any
@@ -15,7 +14,6 @@ import pytest
 
 def _load_build_feed(monkeypatch: pytest.MonkeyPatch) -> ModuleType:
     module_name = "src.build_feed"
-    monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[1] / "src"))
     sys.modules.pop(module_name, None)
     return importlib.import_module(module_name)
 

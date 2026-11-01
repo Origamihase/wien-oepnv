@@ -11,7 +11,6 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
-    monkeypatch.syspath_prepend(str(root / "src"))
     monkeypatch.delenv("OUT_PATH", raising=False)
     monkeypatch.delenv("LOG_DIR", raising=False)
     providers = types.ModuleType("providers")

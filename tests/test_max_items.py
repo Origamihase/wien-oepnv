@@ -1,7 +1,6 @@
 import importlib
 import sys
 from datetime import datetime, UTC
-from pathlib import Path
 from typing import Any
 
 import pytest
@@ -10,8 +9,6 @@ import pytest
 def test_max_items_non_negative(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("MAX_ITEMS", "-5")
     module_name = "src.build_feed"
-    # Ensure 'providers' package can be found
-    monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[1] / "src"))
     sys.modules.pop(module_name, None)
     build_feed = importlib.import_module(module_name)
     build_feed.refresh_from_env()
@@ -22,7 +19,6 @@ def test_max_items_non_negative(monkeypatch: pytest.MonkeyPatch) -> None:
 def test_make_rss_ignores_items_when_max_is_zero(monkeypatch: pytest.MonkeyPatch) -> None:
     module_name = "src.build_feed"
     monkeypatch.setenv("MAX_ITEMS", "0")
-    monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[1] / "src"))
     sys.modules.pop(module_name, None)
     build_feed = importlib.import_module(module_name)
     build_feed.refresh_from_env()

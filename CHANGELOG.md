@@ -36,6 +36,47 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
     Commit-SHA mit `# vX.Y.Z` gepinnt ist und dass eine Action überall
     denselben Pin hat (die Dependabot-PRs stammten von einem Stand vor
     `ki-waechter.yml`).
+* **Testlauf parallel und ohne Netz, `PYTHONPATH: src` entfernt (2026-11-01)**:
+  Paket 1, erster Teil, aus dem Technical Debt Assessment vom 01.11. (Michael:
+  „ok“ auf die Frage, Paket 1 zu bauen). Die CI startet pytest parallel auf
+  allen Kernen des Runners (`test.yml` und `test-vor-api.yml`: `-n auto`; neu
+  `pytest-xdist>=3.8,<4` in `requirements-dev.txt`). Die Parallelisierung war
+  seit dem 17.09. als Hebel benannt; ihre Vorbedingungen sind seit dem 28.10.
+  erfüllt (`docs/development.md`, „Test-Isolation“), die Coverage unter xdist
+  ist mit dieser Änderung geprüft. Zwei Tests (14 Testfälle) riefen ohne Mock
+  15-mal je Lauf die Adresse ab, auf die `_no_real_dns` jeden Namen auflöst;
+  jeder Abruf scheiterte und wurde viermal wiederholt (75
+  Verbindungsversuche, rund zweieinhalb Minuten je CI-Lauf): der
+  Baustellen-Timeout-Test über die Endpunkt-Diagnose
+  (`_log_endpoint_diagnostic`), der Health-check-Test zur Stammstrecke über
+  `check_published_feeds` vom 31.10. Beide sind gestubbt, im Health-check-Test
+  auch `check_tooling_runs`, das die Actions-API fragt, wo `GITHUB_TOKEN` und
+  `GITHUB_REPOSITORY` gesetzt sind. Der neue Wächter `_no_network` in `tests/conftest.py` lässt
+  jeden Test scheitern, der sich mit etwas anderem als Loopback oder einem
+  Unix-Socket verbindet, auch wenn der Code den Fehler schluckt, und nennt
+  Adresse und Aufrufstelle (`tests/test_no_network_guard.py`). Auf einem
+  frischen Runner holten außerdem Tests, die den englischen Feed ohne Stub
+  bauen, die `config.json` des Übersetzungsmodells von huggingface.co;
+  `tests/conftest.py` setzt deshalb `HF_HUB_OFFLINE=1`. `SafeDNSHTTPSConnection`
+  und `PinnedHTTPSConnection` in `src/utils/http.py` liefen bisher nur über
+  die echten Verbindungen, `SafeDNSHTTPConnection` gar nicht;
+  `tests/test_ssrf_pinned_connections.py` prüft alle drei jetzt gezielt und
+  offline (erste sichere Adresse, keine Verbindung ohne sichere Adresse, fest
+  gepinnte IP mit Hostname für SNI). `_baustellen_fallback_layers_reset`
+  beseitigt ein Zustandsleck zwischen Baustellen-Tests, das unter `-n auto`
+  bei manchen Größen der Suite rote Läufe auslösen konnte. `PYTHONPATH: src`
+  steht in keinem Workflow mehr (zehn Workflows und
+  `scripts/regen_mypy_baseline.sh`; seit dem Aufräumen vom 31.10. ohne
+  Wirkung, mypy mit und ohne Variable identisch).
+  `tests/test_scripts_import_src_only.py` prüft die Regel „Projektmodule nur
+  über `src.`“ nun auch für `src/` und `tests/`: nackte Importe, String-Ziele
+  von `mock.patch`, `patch.dict`, `monkeypatch.setattr` und `import_module`
+  sowie `sys.path`- und `monkeypatch.syspath_prepend`-Aufrufe mit `src/`. Die
+  28 wirkungslosen `syspath_prepend(… / "src")`-Zeilen in 27 Testdateien sind
+  entfernt; `tests/conftest.py` patcht nur noch die Modulobjekte
+  `src.utils.cache` und `src.utils.http`. Die Änderung an `update-cycle.yml`
+  erneuert einmal den venv-Cache des Update-Laufs (sein Schlüssel enthält die
+  Workflow-Datei). Keine Änderung an Code unter `src/` und an Feed-Inhalten.
 
 * **Pages-Build wieder lauffähig, Liquid-Regel für `docs/` (2026-11-01)**: Der
   Absatz in `docs/reference/ki_waechter.md`, der das Liquid-Problem der

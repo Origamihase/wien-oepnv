@@ -63,7 +63,6 @@ jobs:
 
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-      PYTHONPATH: src
     steps:
       # Workaround for actions/checkout#2351 (sporadic includeIf credential
       # race on v6 → "could not read Username, terminal prompts disabled").

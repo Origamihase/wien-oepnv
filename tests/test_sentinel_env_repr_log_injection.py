@@ -266,10 +266,13 @@ def test_baustellen_main_timeout_strips_primitive(
     poisoned = f"abc{primitive}def"
     caplog.set_level(logging.WARNING)
 
-    # Wire up a minimal stub: ``_fetch_remote`` returns None so
-    # ``_load_fallback`` runs, but we also stub that to return None.
-    # Both calls return None => ``main`` exits before
-    # ``write_cache`` / ``serialize_for_cache`` ever runs.
+    # Wire up a minimal stub: ``_fetch_remote`` returns None, so ``main``
+    # logs the endpoint diagnostic and tries ``_load_fallback``; both are
+    # stubbed as well (the diagnostic is a real GET, which ``_no_real_dns``
+    # sends to a GitHub server; unstubbed it cost about 8 s of retry backoff
+    # per case). ``_load_fallback``
+    # returns None => ``main`` exits before ``write_cache`` /
+    # ``serialize_for_cache`` ever runs.
     with (
         mock.patch.dict(
             "os.environ",
@@ -281,6 +284,7 @@ def test_baustellen_main_timeout_strips_primitive(
             clear=False,
         ),
         mock.patch.object(ubc, "_fetch_remote", return_value=None),
+        mock.patch.object(ubc, "_log_endpoint_diagnostic"),
         mock.patch.object(ubc, "_load_fallback", return_value=None),
         mock.patch.object(ubc, "configure_logging"),
     ):

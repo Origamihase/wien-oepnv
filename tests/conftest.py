@@ -1,11 +1,15 @@
 import contextlib
+import errno
 import fcntl
 import hashlib
+import ipaddress
 import json
 import os
 import shutil
+import socket
 import sys
 import tempfile
+import traceback
 import zipfile
 from pathlib import Path
 from collections.abc import Iterator
@@ -28,6 +32,18 @@ hypothesis_settings.load_profile("wien-oepnv")
 root = Path(__file__).resolve().parents[1]
 if str(root) not in sys.path:
     sys.path.insert(0, str(root))
+
+# The English feed build asks ``transformers.pipeline`` for the translation
+# model, and transformers fetches the model's ``config.json`` from
+# huggingface.co unless the pinned revision is in the local cache. A fresh CI
+# runner has no such cache, so every test that built the EN feed without a
+# stub went to the network; ``_no_network`` below refuses that, after about
+# 46 s of retries in ``huggingface_hub``. Offline, the lookup fails at once
+# and the build takes the fallback it took in CI before (the test jobs
+# install no torch, so the pipeline never loaded there). huggingface_hub
+# reads the variable when it is first imported, which no import above does
+# (review of 2026-11-01).
+os.environ["HF_HUB_OFFLINE"] = "1"
 
 _STRECKENDATEN_DIR = root / "data" / "streckendaten"
 _STRECKENDATEN_ARCHIVE = _STRECKENDATEN_DIR / "streckendaten_notfallmanagement.zip"
@@ -202,7 +218,8 @@ def _cleanup_created_paths(paths: list[Path]) -> None:
 # on those workers then failed in setup (4,190 errors in one
 # ``-n 4 -p randomly`` run, 2026-10-04). A file lock serialises setup and
 # teardown, and a count of the workers using the dataset leaves the cleanup
-# to the last one. Serial runs (CI) take the same path with a count of one.
+# to the last one. CI runs four workers (``-n auto``, since 2026-11-01); a
+# serial run takes the same path with a count of one.
 _STRECKENDATEN_LOCK = Path(tempfile.gettempdir()) / f"wien-oepnv-streckendaten-{_path_digest(_STRECKENDATEN_DIR)}"
 
 
@@ -421,6 +438,24 @@ def forget_resolved_tickers(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> 
     wl_resolved.forget()
 
 
+@pytest.fixture(autouse=True)
+def _baustellen_fallback_layers_reset() -> None:
+    """Start every test without the Baustellen fallback layers of an earlier one.
+
+    ``scripts/update_baustellen_cache.py`` lists in the module-level
+    ``_fallback_layers`` the layers that came from the last good answer, and
+    ``main()`` exits 3 while the list is not empty. Only ``_fetch_layers``
+    clears it, so a partial-outage test left it filled, and a later test
+    that fakes ``_fetch_layers`` got 3 instead of 0 unless a clearing test
+    ran in between (review of 2026-11-01: three such tests; the collection
+    order hid it, chunk borders under ``-n auto`` can move as the suite
+    grows). A test that never loads the script does not import it here.
+    """
+    module = sys.modules.get("scripts.update_baustellen_cache")
+    if module is not None:
+        module._fallback_layers.clear()
+
+
 @pytest.fixture
 def time_line_today(monkeypatch: pytest.MonkeyPatch) -> None:
     """Render time lines as on 2026-10-02, 12:00 Vienna, whatever today is.
@@ -583,10 +618,12 @@ def reset_circuit_breakers() -> Iterator[None]:
 # exercising the code under test.
 # ---------------------------------------------------------------------------
 
-#: Public (``is_ip_safe``-accepted) address returned by :func:`stub_public_dns`.
-#: The ``responses`` mock intercepts the request before any socket is opened,
-#: so no traffic ever reaches it. Documentation ranges (TEST-NET-1/2/3) cannot
-#: be used here because the production guard rejects them as non-global.
+#: Public (``is_ip_safe``-accepted) address returned by :func:`stub_public_dns`
+#: and :func:`_no_real_dns`. The ``responses`` mock intercepts the request
+#: before any socket is opened, so no traffic ever reaches it; a test without
+#: such a mock is stopped by :func:`_no_network`. Documentation ranges
+#: (TEST-NET-1/2/3) cannot be used here because the production guard rejects
+#: them as non-global.
 STUB_PUBLIC_IP = "140.82.121.6"
 
 
@@ -644,16 +681,14 @@ def _cache_dir_stays(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     age. Two Baustellen tests redirected only ``_cache_file``, so the prune
     ran on the real ``cache/`` and deleted ``cache/baustellen_*/events.json``
     whenever the checkout's copy was older than 48 hours (an older clone or
-    sandbox; CI checks out fresh). The scripts import the module as
-    ``utils.cache``, ``src`` as ``src.utils.cache``: both copies are patched.
-    A test that needs its own directory still patches ``_CACHE_DIR`` itself.
+    sandbox; CI checks out fresh). Scripts and feed share one module object,
+    ``src.utils.cache`` (code audit 2026-10-31; no workflow puts ``src/`` on
+    the path since 2026-11-01). A test that needs its own directory still
+    patches ``_CACHE_DIR`` itself.
     """
     from src.utils import cache as cache_module
 
-    target = tmp_path / "cache"
-    for module in {cache_module, sys.modules.get("utils.cache")}:
-        if module is not None:
-            monkeypatch.setattr(module, "_CACHE_DIR", target)
+    monkeypatch.setattr(cache_module, "_CACHE_DIR", tmp_path / "cache")
 
 
 @pytest.fixture(autouse=True)
@@ -712,9 +747,11 @@ def _no_real_dns(monkeypatch: pytest.MonkeyPatch) -> None:
     they failed without a network, and their outcome depended on zones the
     project does not control (test-suite audit 2026-10-04). Every name now
     resolves to one public IPv4 address, the answer the CI runners get for
-    the hosts in question; nothing leaves the machine. A test that needs
-    another answer patches ``dns.resolver.Resolver.resolve`` or
-    ``_resolve_hostname_safe`` itself, which takes precedence.
+    the hosts in question. The address belongs to a real server: a request
+    that no mock intercepts would connect to it, which :func:`_no_network`
+    refuses. A test that needs another answer patches
+    ``dns.resolver.Resolver.resolve`` or ``_resolve_hostname_safe`` itself,
+    which takes precedence.
     """
     import dns.resolver
     from types import SimpleNamespace
@@ -733,9 +770,7 @@ def stub_public_dns(monkeypatch: pytest.MonkeyPatch) -> str:
 
     Replaces only the resolver (``_resolve_hostname_safe``); the production
     SSRF checks (``is_ip_safe``, IP pinning, redirect re-validation) still
-    run against the returned address. Patched on both import aliases
-    (``src.utils.http`` and ``utils.http``) because some provider modules
-    import the package without the ``src.`` prefix.
+    run against the returned address.
 
     Returns:
         The stubbed IP, so tests can assert on the pinned address.
@@ -754,11 +789,104 @@ def stub_public_dns(monkeypatch: pytest.MonkeyPatch) -> str:
     def _resolve(hostname: str) -> list[tuple[Any, ...]]:
         return [(socket.AF_INET, socket.SOCK_STREAM, 6, "", (STUB_PUBLIC_IP, 0))]
 
-    for module_name in ("src.utils.http", "utils.http"):
-        module = sys.modules.get(module_name)
-        if module is not None:
-            monkeypatch.setattr(module, "_resolve_hostname_safe", _resolve)
+    monkeypatch.setattr(http_utils, "_resolve_hostname_safe", _resolve)
     return STUB_PUBLIC_IP
+
+
+# ---------------------------------------------------------------------------
+# No network
+#
+# ``_no_real_dns`` answers every name with :data:`STUB_PUBLIC_IP`, the address
+# of a real GitHub server. A request that no mock intercepted therefore went
+# to that server, failed, and the HTTP layer retried it four times with
+# backoff: two tests (14 cases) made 15 such requests, 75 connection attempts
+# per run, about two and a half minutes of every CI run (technical debt
+# assessment and review of 2026-11-01). ``_no_network`` refuses such a
+# connection at once and fails the test that opened it.
+# ---------------------------------------------------------------------------
+
+_REAL_CONNECT = socket.socket.connect
+_REAL_CONNECT_EX = socket.socket.connect_ex
+
+
+def _is_local_address(family: int, address: Any) -> bool:
+    """Loopback, ``localhost`` and Unix sockets stay allowed."""
+    if family == getattr(socket, "AF_UNIX", None):
+        return True
+    host = address[0] if isinstance(address, tuple) and address else address
+    if not isinstance(host, str):
+        return False
+    if host == "localhost":
+        return True
+    try:
+        ip = ipaddress.ip_address(host.split("%", 1)[0])
+    except ValueError:
+        return False
+    if isinstance(ip, ipaddress.IPv6Address) and ip.ipv4_mapped is not None:
+        return ip.ipv4_mapped.is_loopback
+    return ip.is_loopback
+
+
+def _connection_origin() -> str:
+    """Innermost frame of each project file on the way to the connection.
+
+    One frame per file, so the HTTP layer does not hide the caller:
+    ``src/utils/http.py … <- scripts/<updater>.py … <- tests/test_….py …``.
+    """
+    origin: dict[Path, str] = {}
+    for frame in reversed(traceback.extract_stack()):
+        try:
+            relative = Path(frame.filename).resolve().relative_to(root)
+        except ValueError:
+            continue
+        if relative.parts[0] not in {"src", "scripts", "tests"} or relative.name == "conftest.py":
+            continue
+        origin.setdefault(relative, f"{relative}:{frame.lineno} ({frame.name})")
+        if len(origin) == 4:
+            break
+    return " <- ".join(origin.values()) or "outside the project code"
+
+
+@pytest.fixture(autouse=True)
+def _no_network(monkeypatch: pytest.MonkeyPatch) -> Iterator[list[str]]:
+    """Fail every test that opens a network connection.
+
+    Each ``connect`` to anything but loopback or a Unix socket fails at once
+    with ``ENETUNREACH``, as on a machine without a network, so the code
+    under test takes its error path without waiting for a timeout. Because
+    that path may well swallow the error, the test fails afterwards in any
+    case, naming the address and the code that asked for it. The retry
+    backoff of the HTTP layer still runs first (about 8 s per request), so
+    mock the HTTP layer instead (``responses``, ``patch.object``).
+    Subprocesses are not covered. The fixture yields the refused attempts, so the guard's own
+    tests (``tests/test_no_network_guard.py``) can inspect and clear them.
+    """
+    attempts: list[str] = []
+
+    def _refuse(address: Any) -> None:
+        attempts.append(f"{address!r} from {_connection_origin()}")
+
+    def _connect(self: socket.socket, address: Any) -> None:
+        if not _is_local_address(self.family, address):
+            _refuse(address)
+            raise OSError(errno.ENETUNREACH, "network access is off in tests (tests/conftest.py)")
+        _REAL_CONNECT(self, address)
+
+    def _connect_ex(self: socket.socket, address: Any) -> int:
+        if not _is_local_address(self.family, address):
+            _refuse(address)
+            return errno.ENETUNREACH
+        return _REAL_CONNECT_EX(self, address)
+
+    monkeypatch.setattr(socket.socket, "connect", _connect)
+    monkeypatch.setattr(socket.socket, "connect_ex", _connect_ex)
+    yield attempts
+    if attempts:
+        pytest.fail(
+            "the test opened a network connection; mock the HTTP layer instead:\n  "
+            + "\n  ".join(attempts),
+            pytrace=False,
+        )
 
 
 # ---------------------------------------------------------------------------
