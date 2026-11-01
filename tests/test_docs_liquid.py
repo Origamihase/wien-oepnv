@@ -218,7 +218,7 @@ _LIQUID_ACTS = [
     "{% raw %}{%{%a%}{% endraw %}",
     "<!-- {% raw %} -->\n\n`{{% x %}`\n\n<!-- {% endraw %} -->\n",
     "<!-- {% raw %} -->\n\n| Zeichen | Wirkung |\n| --- | --- |\n| `{{` | öffnet `{{ x }}` |\n"
-    "| `{%` | öffnet `{% if x %}` |\n\n<!-- {% endraw %} -->\n",
+    + "| `{%` | öffnet `{% if x %}` |\n\n<!-- {% endraw %} -->\n",
     "<!-- {% raw %} -->\n\nEin `{{` oder `{%` öffnet ein Paar, z. B. `{% if x %}`.\n\n<!-- {% endraw %} -->\n",
 ]
 _LIQUID_LEAVES = [
