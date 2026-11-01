@@ -8,22 +8,20 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 01 Nov 2026 10:59:21 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 01 Nov 2026 11:01:32 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[Flughafen Wien]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;923475</guid>
-      <pubDate>Sun, 01 Nov 2026 10:24:14 +0100</pubDate>
-      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
+      <title><![CDATA[16A: Delays]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">efb7fda2bee4851ff1b6c083ce7930fb0893897126569c8481a6cda2e1134d04</guid>
+      <pubDate>Sun, 01 Nov 2026 10:35:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sun, 01 Nov 2026 10:30:39 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 01 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Sun, 01 Nov 2026 23:59:59 +0100</ext:ends_at>
-      <georss:point>48.120872 16.563007</georss:point>
-      <description>Due to persons on the tracks, no trains can run at Flughafen Wien station until approx. 10:30. For now, trains are waiting until the line reopens. [Since 10:24]</description>
-      <content:encoded><![CDATA[Due to persons on the tracks, no trains can run at Flughafen Wien station until approx. 10:30. For now, trains are waiting until the line reopens.<br/>[Since 10:24]]]></content:encoded>
+      <ext:first_seen>Sun, 01 Nov 2026 10:35:00 +0100</ext:first_seen>
+      <ext:starts_at>Sun, 01 Nov 2026 10:35:00 +0100</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: service disruption. [Since 10:35]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption.<br/>[Since 10:35]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Service disruption]]></title>
@@ -50,21 +48,6 @@
       <ext:starts_at>Sun, 01 Nov 2026 10:23:00 +0100</ext:starts_at>
       <description>Irregular intervals in both directions. Reason: event. [Since today]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: event.<br/>[Since today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Franz-Josefs-Bahnhof ↔ Wien Heiligenstadt]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;923451</guid>
-      <pubDate>Sun, 01 Nov 2026 10:03:49 +0100</pubDate>
-      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sun, 01 Nov 2026 05:30:56 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 01 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Sun, 01 Nov 2026 23:59:59 +0100</ext:ends_at>
-      <georss:line>48.226607 16.361443 48.249139 16.365131</georss:line>
-      <description>Due to extension of the construction works, no trains could run until 10:00. For now, allow up to 10 minutes of extra travel time. [Today]</description>
-      <content:encoded><![CDATA[Due to extension of the construction works, no trains could run until 10:00. For now, allow up to 10 minutes of extra travel time.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[38B/39B: All Saints service 01.11.2026]]></title>
@@ -151,6 +134,21 @@
       <ext:ends_at>Sun, 01 Nov 2026 23:59:59 +0100</ext:ends_at>
       <description>Buses stop at Schloßhofer Straße 25-31. [Today]</description>
       <content:encoded><![CDATA[Buses stop at Schloßhofer Straße 25-31.<br/>[Today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5A/5B/N31: Obere Augartenstraße]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">5cd26b46e3d83d83054e14525825191f05326ae3f22d63f0dcf5a305c21f2157</guid>
+      <pubDate>Thu, 29 Oct 2026 14:00:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 29 Oct 2026 14:00:00 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 30 Sep 2025 00:00:00 +0200</ext:starts_at>
+      <ext:ends_at>Mon, 09 Nov 2026 07:00:00 +0100</ext:ends_at>
+      <georss:point>48.222757 16.375308</georss:point>
+      <description>Untere Augartenstraße 40 → Untere Augartenstraße 42. Stop relocation of lines 5A towards Griegstraße, 5B towards Heiligenstadt S U and N31 … [Until 09.11.]</description>
+      <content:encoded><![CDATA[Untere Augartenstraße 40 → Untere Augartenstraße 42. Stop relocation of lines 5A towards Griegstraße, 5B towards Heiligenstadt S U and N31 …<br/>[Until 09.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

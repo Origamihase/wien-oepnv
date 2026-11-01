@@ -686,6 +686,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "16A: Verspätungen",
+    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "efb7fda2bee4851ff1b6c083ce7930fb0893897126569c8481a6cda2e1134d04",
+    "pubDate": "2026-11-01T10:35:00+01:00",
+    "starts_at": "2026-11-01T10:35:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=16A|D=2026-11-01|TK=16a verspätungen",
+    "_wl_ids": [
+      "I20261101-0010"
+    ],
+    "_incident_start": "2026-11-01T10:35:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
