@@ -17,6 +17,7 @@ Der Wien ÖPNV Feed bündelt Störungs- und Baustellenmeldungen von Wiener Linie
 - [GET /datainfo](https://origamihase.github.io/wien-oepnv/reference/datainfo.html): Beschreibung des Datainfo-Service inklusive Struktur der Betreiber-, Produkt- und Kategorienlisten für nachgelagerte Filter.
 - [GET /departureBoard](https://origamihase.github.io/wien-oepnv/reference/departureboard.html): Referenz für den DepartureBoard-Endpunkt mit Pflichtparametern, Filtern und Hinweisen zum Scrollen durch weitere Abfahrten.
 - [Feed-Wächter](https://origamihase.github.io/wien-oepnv/reference/feed_watch.html)
+- [KI-Wächter](https://origamihase.github.io/wien-oepnv/reference/ki_waechter.html)
 - [GET /location.details](https://origamihase.github.io/wien-oepnv/reference/location-details.html): Endpunktbeschreibung für detaillierte Ortspunktausgaben inklusive Ausstattung, Sharing-Angeboten und optionalen Wetterdaten.
 - [GET /location.name](https://origamihase.github.io/wien-oepnv/reference/location-name.html): Referenz für die Namenssuche nach Ortspunkten mit Filteroptionen für Typen, Produkte und Standortgewichtung.
 - [GET /location.nearbystops](https://origamihase.github.io/wien-oepnv/reference/location-nearbystops.html): Dokumentation der Umkreissuche mit Parametern für Radius, Treffertypen sowie Zusatzinformationen zu Sharing-Angeboten.
