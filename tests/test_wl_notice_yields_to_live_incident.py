@@ -8,7 +8,9 @@ incident without an end never lies within the notice. Now the notice gives
 way while the incident runs and covers all of its lines
 (``_yield_notices_to_incidents``). An incident on only some of the notice's
 lines (22.10., "4A/74A: Demonstration" beside the notice of 16 lines) says
-nothing about the others, and both stay.
+nothing about the others, and both stay. Only a notice of one operating
+day gives way: a notice of weeks ("1: Gleisbauarbeiten", 21.10. to
+05.12.2026) tells what holds after a short incident of its cause, and stays.
 
 The shapes are the entries of ``cache/wl_9d709a/events.json`` of those days.
 """
@@ -145,7 +147,42 @@ def test_an_incident_older_than_the_notice_leaves_it() -> None:
     assert len(bf._yield_notices_to_incidents([_notice(), incident], NOW)) == 2
 
 
+def test_a_notice_of_weeks_stays_beside_a_short_incident() -> None:
+    # "1: Gleisbauarbeiten" ran from 21.10. to 05.12.2026 04:00.
+    notice = _notice(ends_at=datetime(2026, 12, 5, 4, 0, tzinfo=CET))
+    assert len(bf._yield_notices_to_incidents([notice, _incident()], NOW)) == 2
+
+
+def test_a_notice_without_an_end_stays() -> None:
+    assert len(bf._yield_notices_to_incidents([_notice(ends_at=None), _incident()], NOW)) == 2
+
+
+def test_a_notice_to_the_end_of_the_operating_day_gives_way() -> None:
+    # WL's operating day ends 04:00 after the date.
+    notice = _notice(ends_at=datetime(2026, 10, 27, 4, 0, tzinfo=CET))
+    assert _titles(bf._yield_notices_to_incidents([notice, _incident()], NOW)) == ["1/2/71/D: Veranstaltung"]
+    later = _notice(ends_at=datetime(2026, 10, 27, 4, 1, tzinfo=CET))
+    assert len(bf._yield_notices_to_incidents([later, _incident()], NOW)) == 2
+
+
 def test_the_chain_shows_the_incident_once() -> None:
     state: dict[str, Any] = {}
     items = bf._assemble_feed_items([_notice(), _incident()], state, NOW)
     assert _titles(items) == ["1/2/71/D: Veranstaltung"]
+
+
+def test_an_incident_with_an_end_is_not_taken_into_the_notice() -> None:
+    # 11.10.2026: "18: Laufveranstaltung" (I20261011-0007, "bis 23:55") went
+    # into "18: LCC-Herbstmarathon am 11.10.2026" only because WL named an end.
+    incident = _incident()
+    incident["ends_at"] = datetime(2026, 10, 26, 18, 0, tzinfo=CET)
+    assert bf._absorb_works_tickers([_notice(), incident]) == [_notice(), incident]
+    items = bf._assemble_feed_items([_notice(), incident], {}, NOW)
+    assert _titles(items) == ["1/2/71/D: Veranstaltung"]
+
+
+def test_a_notice_of_weeks_still_takes_its_incident_with_an_end() -> None:
+    incident = _incident()
+    incident["ends_at"] = datetime(2026, 10, 26, 18, 0, tzinfo=CET)
+    notice = _notice(ends_at=datetime(2026, 12, 5, 4, 0, tzinfo=CET))
+    assert _titles(bf._absorb_works_tickers([notice, incident])) == ["1/2/71/D: Nationalfeiertag"]

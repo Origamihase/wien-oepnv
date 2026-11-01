@@ -21,19 +21,27 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
     laufender Vorfall kein Ende hat und so nie im Zeitraum des Hinweises liegt.
     Jetzt tritt ein geltender WL-Hinweis zurück, solange eine laufende
     WL-Störung mit Vorfallsbeginn dieselbe Ursache an einer gemeinsamen Straße
-    für jede seiner Linien meldet (`_yield_notices_to_incidents`,
-    Betreiberentscheidung 2026-11-01 „Störung bleibt“: sie nennt jede Linie und
-    WLs voraussichtliches Ende und geht, sobald WL sie schließt; Grundsatz
+    für jede seiner Linien meldet und der Hinweis nur einen Betriebstag gilt
+    (`_yield_notices_to_incidents`, Betreiberentscheidung 2026-11-01 „Störung
+    bleibt“: sie trägt WLs voraussichtliches Ende und geht, sobald WL sie
+    schließt; Grundsatz
     vom selben Tag: „Störungen haben höchste Priorität im Feed! Hinweise sind
     weniger wichtig.“). Meldet sie
-    nur einen Teil seiner Linien, bleiben beide. Replay über 555 Feed-Stände
-    seit 01.10. (DE, EN, State): nur die 19 Stände vom 26.10. ändern sich,
-    der Hinweis fällt weg und Platz 10 bekommt die nächste Meldung; verkettet
+    nur einen Teil seiner Linien, bleiben beide. Ein Hinweis über Wochen
+    („1: Gleisbauarbeiten“, 21.10. bis 05.12.) bleibt neben einer kurzen
+    Störung derselben Ursache. Ebenso nimmt `_absorb_works_tickers` eine
+    laufende Störung mit Ende nicht mehr in einen Hinweis eines Betriebstags
+    auf: Am 11.10. ging „18: Laufveranstaltung“ von 9:01 bis 14:30 Uhr in
+    „18: LCC-Herbstmarathon am 11.10.2026“ auf, nur weil WL ein Ende nannte;
+    jetzt steht die Störung. Replay über 555 Feed-Stände seit 01.10. und
+    alle 101 Stände vom 11.10., 26.10. und 30.10. 10:31 Uhr (DE, EN, State):
+    nur die 12 Stände vom 11.10. und die 19 Stände vom 26.10. ändern sich
+    (dazu der EN-Text unten); am 26.10. fällt der Hinweis weg und Platz 10 bekommt die nächste Meldung; verkettet
     gespielt steht der Hinweis nach dem Ende der Störung um 18:01 Uhr wieder
     auf demselben Platz wie vorher.
   - **„High Wait“:** WL schrieb „Weiterfahrt über die Linie 37 bis Hohen
     Warte“ (Linie 38, 31.10.), der englische Feed las „Continue via line 37 to
-    High Wait.“ (ebenso am 23.05.). Geschützt war nur „Hohe Warte“, wie im
+    High Wait.“ Geschützt war nur „Hohe Warte“, wie im
     Verzeichnis. `_normalise_for_translation` bringt einen gebeugten
     Haltestellennamen jetzt in die Form des Verzeichnisses, bevor maskiert wird
     (`_station_base_forms`: Name mit Adjektiv auf -e/-er/-es vorn, schwache
@@ -44,8 +52,8 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
     Hinweis „29A/33A/29B/N31: Bauarbeiten“ (30.10./31.10.) nennen
     Haltestellen, die der Kurztext des Hinweises nicht zeigt; wie bei der
     Regel vom 29.10. für verlegte Haltestellen behalten sie ihren Platz.
-  (`docs/architecture.md` §1, Abschnitt „Nach der Dedupe“ und
-  „Platzhalter“; Proben im Projektordner
+  (`docs/architecture.md` §1, Abschnitt „Nach der Dedupe“, und §8, „Die
+  Platzhalter“; Proben im Projektordner
   `reports/waechter-funde-2026-11-01-proben/`.)
 
 ### Oktober 2026

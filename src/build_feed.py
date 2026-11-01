@@ -3521,8 +3521,7 @@ def _station_entity_pattern() -> re.Pattern[str] | None:
 # wrote "Weiterfahrt über die Linie 37 bis Hohen Warte" (line 38, 31.10.2026),
 # the directory knows "Hohe Warte". The masker shields names as written, so
 # "Hohen Warte" reached the model as two words and the EN feed read "Continue
-# via line 37 to High Wait" (the KI watcher's finding of 01.11.2026; "High
-# Wait" also on 23.05.2026). Before the EN text is masked, such a declined
+# via line 37 to High Wait" (the KI watcher's finding of 01.11.2026). Before the EN text is masked, such a declined
 # name goes back to the form on the stop sign ("to Hohe Warte"), which the
 # station pass then shields. The rule is the grammar, not a list: for every
 # name of the directory whose first word ends like an adjective (-e, -er,
@@ -10903,6 +10902,9 @@ def _works_shown(item: FeedItem, notices: Sequence[FeedItem]) -> FeedItem | None
     for notice in notices:
         if not lines <= set(_ticker_lines(notice).split("/")) or not _within(item, notice):
             continue
+        if _notice_reported_live(notice, [item]) is not None:
+            # A live incident the notice gives way to (``_yield_notices_to_incidents``).
+            continue
         if cause and _notice_names_cause(notice, cause) and _shares_a_street(item, notice):
             return notice
         if _relocated_stops_shown(item, notice):
@@ -11008,18 +11010,40 @@ def _absorb_works_tickers(items: list[FeedItem]) -> list[FeedItem]:
 # merge already showed it once). ``_absorb_works_tickers`` does not take
 # the incident: a live incident has no end, so it never lies within the
 # notice (``_within``). The incident is the better of the two for the viewer:
-# its short form names every line (the notice lost lines 2 and 71 behind the
-# 180 cut), it carries WL's expected end ("Voraussichtlich bis 18:00 Uhr"),
-# and it leaves the feed the moment WL closes it. So the notice gives way
-# while a running WL incident (a long message with WL's incident start)
-# names its cause in its title, shares a street with it, began no earlier
+# it carries WL's expected end ("Voraussichtlich bis 18:00 Uhr") and leaves
+# the feed the moment WL closes it. So the notice gives way while a running
+# WL incident (a long message with WL's incident start) names its cause (in
+# the notice's title or its <h2>), shares a street with it, began no earlier
 # than a day before the notice and covers every line of the notice. An
 # incident on only some of the notice's lines ("4A/74A: Demonstration"
 # beside the notice of 16 lines on 22.10.) says nothing about the others,
-# and both stay. When the incident ends, the notice is back as before.
+# and both stay. Only a notice of one operating day gives way: it must end
+# by 04:00 after the incident's Vienna date (``_service_day_end``). A notice
+# of weeks ("1: Gleisbauarbeiten", 21.10. to 05.12.) tells what holds after
+# a short incident of the same cause is over, and it stays. The same holds
+# when WL gives the incident an end: ``_absorb_works_tickers`` no longer
+# takes such an incident into a notice of one day. On 11.10.2026 it took
+# "18: Laufveranstaltung" (I20261011-0007, "bis 23:55") into "18:
+# LCC-Herbstmarathon am 11.10.2026" from 09:01 to 14:30 Vienna time, the
+# opposite of the 26.10. rule only because WL named an end. When the
+# incident ends, the notice is back as before. The replay of 555 feed
+# states since 01.10. and of every state of 11.10. and 26.10. changes two
+# days only: 11.10. 09:01 to 14:30 and 26.10. 09:01 to 17:31 Vienna time.
 # Operator decision 2026-11-01 ("Störung bleibt"): of the two, the live
 # incident stays. His general rule of the same day: "Störungen haben höchste
 # Priorität im Feed! Hinweise sind weniger wichtig."
+
+
+# WL's operating day ends in the night: night works end "04:00" of the next
+# date ("1: Gleisbauarbeiten" … 05.12.2026 04:00).
+_SERVICE_DAY_END = timedelta(hours=4)
+
+
+def _service_day_end(moment: datetime) -> datetime:
+    """The end (UTC) of the WL operating day of the Vienna date of *moment*."""
+    local = _to_utc(moment).astimezone(_VIENNA_TZ)
+    midnight = datetime.combine(local.date() + timedelta(days=1), time(), tzinfo=_VIENNA_TZ)
+    return _to_utc(midnight + _SERVICE_DAY_END)
 
 
 def _notice_reported_live(notice: FeedItem, items: Sequence[FeedItem]) -> FeedItem | None:
@@ -11028,6 +11052,9 @@ def _notice_reported_live(notice: FeedItem, items: Sequence[FeedItem]) -> FeedIt
     if not lines:
         return None
     start = _parse_datetime(notice.get("starts_at"))
+    end = _parse_datetime(notice.get("ends_at"))
+    if not isinstance(end, datetime):
+        return None
     for item in items:
         if not _is_wl_ticker(item):
             continue
@@ -11035,6 +11062,8 @@ def _notice_reported_live(notice: FeedItem, items: Sequence[FeedItem]) -> FeedIt
         if begin is None:
             continue
         if isinstance(start, datetime) and _to_utc(begin) < _to_utc(start) - _WORKS_SPAN_SLACK:
+            continue
+        if _to_utc(end) > _service_day_end(begin):
             continue
         if not lines <= set(_ticker_lines(item).split("/")):
             continue
