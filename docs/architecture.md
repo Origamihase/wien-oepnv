@@ -3023,7 +3023,7 @@ drei Fragen und hat damit genau einen Weg:
 
 | Weg | Frage | Wer meldet | Fälle |
 | --- | --- | --- | --- |
-| **Rot** (GitHub-Mail) | Arbeitet die Technik nicht, und zwar anhaltend? | Health check (`scripts/health_check.py`), stündlich | Eine Quelle (WL, ÖBB, Baustellen, Stammstrecke) gab den Update-Läufen seit **3 h** keine brauchbare Antwort; der Feed ist seit **4 h** nicht neu gebaut; die veröffentlichten Feeds auf GitHub Pages liegen seit **4 h** hinter dem Repo; der Stationslauf ist älter als 8 Tage, ein Teilschritt scheiterte oder die Validierung fand Sicherheitsprobleme; eine Quelle des Stationslaufs antwortete seit 15 Tagen nicht; ein Nebenschritt scheiterte im letzten Lauf oder seine Aufzeichnung ist veraltet; der SEO-Lauf konnte die Repository-Metadaten nicht setzen (`REPO_ADMIN_TOKEN`); der letzte Lauf des Code-Reviews scheiterte (`CLAUDE_CODE_OAUTH_TOKEN`); der Feed-Wächter konnte nicht prüfen; ein Pflicht-Secret ist leer. |
+| **Rot** (GitHub-Mail) | Arbeitet die Technik nicht, und zwar anhaltend? | Health check (`scripts/health_check.py`), stündlich | Eine Quelle (WL, ÖBB, Baustellen, Stammstrecke) gab den Update-Läufen seit **3 h** keine brauchbare Antwort; der Feed ist seit **4 h** nicht neu gebaut; die veröffentlichten Feeds auf GitHub Pages liegen seit **4 h** hinter dem Repo; der Stationslauf ist älter als 8 Tage, ein Teilschritt scheiterte oder die Validierung fand Sicherheitsprobleme; eine Quelle des Stationslaufs antwortete seit 15 Tagen nicht; ein Nebenschritt scheiterte im letzten Lauf oder seine Aufzeichnung ist veraltet; der SEO-Lauf konnte die Repository-Metadaten nicht setzen (`REPO_ADMIN_TOKEN`); der letzte Lauf des Code-Reviews scheiterte (`CLAUDE_CODE_OAUTH_TOKEN`); der Feed-Wächter konnte nicht prüfen; das Übersetzungsmodell lud in zwei Builds in Folge nicht (seit 2026-11-01); ein Pflicht-Secret ist leer. |
 | **Issue** (Lauf bleibt grün) | Arbeitet die Technik, aber Feed-Inhalt oder Quelle sehen falsch aus? | Feed-Wächter (`scripts/feed_watch.py`), jeder Update-Lauf; je Regel ein Issue, das sich nach zwei sauberen Läufen selbst schließt | Die Inhaltsregeln (doppelter Eintrag, Anzahl, alte Meldung als neu, „Seit“ zu früh, ÖBB-Zweitsatz, Zeitzeile, Zeit vorbei, Länge, Höflichkeitssatz) und die Quellenregeln (`quelle-leer`, `quelle-einbruch`, `verwurf-sprung`, seit 2026-10-29 `vao-version`: die automatisch gewählte VAO-Version hat gewechselt). |
 | **Hinweis** (ℹ️, `::warning`) | Ist die Lage bekannt und verlangt nichts? | Health check | Eine stille Stammstrecken-Richtung, ein Korridor ohne Züge (die Website meldet ihn), eine gescheiterte Stichprobe, während die Update-Läufe noch Antworten bekommen, ein Live-Abruf der veröffentlichten Feeds, der gerade nicht gelang, eine Aufzeichnung, die vor dem ersten Lauf noch fehlt. |
 
@@ -3110,7 +3110,7 @@ flowchart TD
     Norm["_normalise_for_translation"]
     Glo["_apply_domain_glossary<br/>XGLO-Platzhalter"]
     Mask["_mask_entities<br/>XENT-Platzhalter"]
-    Marian["Helsinki-NLP/opus-mt-de-en<br/>(transformers-Pipeline, lazy)"]
+    Marian["Helsinki-NLP/opus-mt-de-en<br/>(transformers, direkter Aufruf, lazy)"]
     Unmask["_unmask_entities<br/>+ _normalise_placeholder_debris"]
     Guards["Nachkontrollen:<br/>_entities_dropped_by_translation<br/>_fix_glossary_articles<br/>Rest-Platzhalter"]
     OK{"Alle Felder<br/>übersetzt?"}
@@ -3699,22 +3699,40 @@ Nach dem Modelllauf wird nicht blind vertraut:
 
 ### Betrieb
 
-Die `transformers`-Pipeline wird **lazy** geladen
+Das Übersetzungsmodell wird **lazy** geladen
 (`_get_translation_pipeline`), damit CLI-Kommandos ohne Übersetzungsbedarf
 kein PyTorch anfassen.
 
+Seit 2026-11-01 ruft der Feed das Marian-Modell direkt auf
+(`_MarianTranslator`: Tokenizer, `generate`, Dekodieren), nicht mehr über
+`pipeline("translation_de_to_en")`. `transformers` 5 hat diese Aufgabe
+entfernt (Dependabot #2114: Mit 5.22.1 lud die Pipeline nicht mehr, der
+EN-Feed wäre still auf Deutsch zurückgefallen). Der direkte Aufruf liefert
+für alle 792 Modelleingaben der 3.003 EN-Texte seit Juli dieselbe Ausgabe
+wie die Pipeline unter 4.57.6, Zeichen für Zeichen. Deshalb bleibt die
+Epoche des Übersetzungs-Caches. Die Parameter (`num_beams` 4,
+`max_length` 512) kommen aus `generation_config.json` der festen Revision;
+`transformers` 5 liest sie nur noch dort.
+
+Jeder Build, der das Modell braucht, schreibt nach
+`data/translation_status.json`, ob es geladen wurde
+(`_record_translation_status`). Der Health check zeigt das als Punkt
+„Übersetzung“: Ein gescheiterter Build ist ein Hinweis, ab dem zweiten in
+Folge wird der Punkt rot (Betreiberentscheidung 2026-11-01, „Ja, Umstieg
+bauen“). Bis dahin stand ein Ladefehler nur als WARNING im Log; der Check
+„build“ am PR und die Tests blieben grün.
+
 Die Logzeile des Ladens nennt seit 2026-10-01 den Commit der geladenen
-Modell-Revision (`_model_revision`). Anlass ist CVE-2026-80047:
+Modell-Revision (`_model_revision`). Anlass war CVE-2026-80047:
 `transformers` 4.49 bis 5.8.1 schreibt bei jedem `from_pretrained` eine
 `custom_generate/generate.py` aus dem Modell-Repository in den Cache, bevor
-`trust_remote_code` geprüft wird. Ausgeführt wird sie nicht. Die Meldung
-steht mit Begründung auf der Ausnahmeliste von `pip-audit`
-(`scripts/run_static_checks.py`). Seit 2026-10-01 lädt der Feed das Modell
-fest in der Revision, die der Update-Zyklus an diesem Tag um 17:01 geloggt
-hat (`_TRANSLATION_MODEL_REVISION`); ein späterer Push in das Repository
-erreicht den Build nicht mehr. Die Übersetzungen ändern sich dadurch nicht,
-deshalb bleibt die Epoche des Übersetzungs-Caches. Wer auf eine neuere
-Revision wechselt, ändert die Konstante und erhöht die Epoche.
+`trust_remote_code` geprüft wird. Mit `transformers` 5.22.1 ist das behoben;
+`pip-audit` läuft seit 2026-11-01 ohne Ausnahmeliste. Der Feed lädt das
+Modell weiter fest in der Revision, die der Update-Zyklus am 2026-10-01 um
+17:01 geloggt hat (`_TRANSLATION_MODEL_REVISION`). Ein späterer Push in das
+Repository erreicht den Build nicht, die Übersetzungen bleiben gleich. Wer
+auf eine neuere Revision wechselt, ändert die Konstante und erhöht die
+Epoche.
 
 `torch` steht **absichtlich nicht** in `requirements.txt` — es ist ein
 mehrere hundert MB schweres Backend, das nur der EN-Pfad braucht. Alle
