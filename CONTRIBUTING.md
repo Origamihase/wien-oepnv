@@ -33,7 +33,10 @@ Das Projekt benötigt **Python 3.11+**.
    Das aktiviert lokale Checks bei jedem `git commit` (ruff, mypy `--strict`,
    Bandit, Secret-Scan, C901-Komplexitäts-Gate, Site-Asset-Drift, i18n-Gate
    sowie Whitespace-, Merge-Konflikt-, YAML-/TOML-/JSON- und
-   Dateigrößen-Hygiene; siehe `.pre-commit-config.yaml`). Manuell für alle Dateien ausführen:
+   Dateigrößen-Hygiene; siehe `.pre-commit-config.yaml`). Ruff, mypy und
+   Bandit kommen dabei aus dem aktiven venv (die Versionen aus
+   `requirements-dev.txt`, wie in CI), also im aktivierten venv committen.
+   Manuell für alle Dateien ausführen:
    ```bash
    pre-commit run --all-files
    ```
