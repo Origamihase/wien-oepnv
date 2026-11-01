@@ -1106,6 +1106,157 @@ def check_tooling_runs(now: datetime) -> Check:
     return Check(name, ok=True, summary=summary)
 
 
+# GitHub Pages builds ``docs/`` from ``main`` in a workflow GitHub creates
+# itself ("pages build and deployment"). It has no file in the repository and
+# the Actions API takes no path as its id, so the id is looked up by path.
+PAGES_WORKFLOW_PATH = "dynamic/pages/pages-build-deployment"
+# Runs read per check: a streak of failures over about ten hours of ticks
+# (a superseded run is cancelled and skipped), some 300 KB of JSON, well
+# under GITHUB_API_MAX_BYTES (50 runs were 757 KB on 2026-11-01).
+PAGES_RUNS_PER_PAGE = 20
+_PAGES_SKIPPED = frozenset({"cancelled", "skipped", "neutral"})
+# The Jekyll step of the build job ("Build with Jekyll"); the step before it,
+# "Pull ghcr.io/actions/jekyll-build-pages:…", is GitHub's side. Should GitHub
+# rename the step, a content failure counts as GitHub's side and turns red
+# with the next run, which fails the same way.
+_JEKYLL_STEP_RE = re.compile(r"build\b.*\bjekyll\b", re.IGNORECASE)
+
+
+def _pages_runs() -> list[dict[str, Any]] | None:
+    """The latest completed Pages runs, newest first; ``None`` without Pages."""
+    data = _github_api_json("/actions/workflows?per_page=100")
+    workflows = data.get("workflows") if isinstance(data, dict) else None
+    if not isinstance(workflows, list):
+        workflows = []
+    ids = [
+        wf.get("id")
+        for wf in workflows
+        if isinstance(wf, dict) and wf.get("path") == PAGES_WORKFLOW_PATH
+    ]
+    if not ids or not isinstance(ids[0], int):
+        return None
+    runs = _github_api_json(
+        f"/actions/workflows/{ids[0]}/runs?status=completed&per_page={PAGES_RUNS_PER_PAGE}"
+    )
+    listed = runs.get("workflow_runs") if isinstance(runs, dict) else None
+    return [run for run in listed if isinstance(run, dict)] if isinstance(listed, list) else []
+
+
+def _pages_failure_kind(run: dict[str, Any]) -> str:
+    """Which part of a failed Pages run failed.
+
+    ``"jekyll"``: the Jekyll step, so the content under ``docs/`` does not
+    build, and every later run fails the same way until it is fixed (the
+    case of 2026-11-01). ``"github"``: another step or job (image pull,
+    upload, deploy), GitHub's side; in October 2026 four such failures, each
+    gone with the next run. ``""``: the jobs could not be read.
+    """
+    try:
+        data = _github_api_json(f"/actions/runs/{int(run.get('id') or 0)}/jobs?per_page=20")
+    except Exception:
+        return ""
+    jobs = data.get("jobs") if isinstance(data, dict) else None
+    if not isinstance(jobs, list) or not jobs:
+        return ""
+    failed_steps = [
+        str(step.get("name") or "")
+        for job in jobs if isinstance(job, dict)
+        for step in (job.get("steps") or []) if isinstance(step, dict)
+        if step.get("conclusion") == "failure"
+    ]
+    return "jekyll" if any(_JEKYLL_STEP_RE.match(step) for step in failed_steps) else "github"
+
+
+def check_pages_build(now: datetime) -> Check:
+    """Red as soon as the latest Pages run failed in its Jekyll build.
+
+    Operator decision (Michael, 2026-11-01, card "Soll ein gescheiterter
+    Pages-Build künftig sofort auffallen?", answer "Beides bauen"): on
+    2026-11-01 a bare Liquid tag in ``docs/reference/ki_waechter.md`` stopped
+    every Pages build from 08:43 Vienna time (22 failed, 4 cancelled until
+    11:13);
+    the live feed the TV reads stayed at 08:30 while the Update runs stayed
+    green, and ``Veröffentlichung`` would have turned red only at about
+    13:00 (4 h lag). This check reads the latest completed run of "pages
+    build and deployment" from the Actions API (``actions: read``), skipping
+    runs GitHub cancelled because a newer commit came:
+
+    * ``success``: green.
+    * failed in the Jekyll step: red at once. The content does not build,
+      and it stays so until someone fixes ``docs/``.
+    * failed elsewhere (image pull, upload, deploy): GitHub's side. Red when
+      the run before failed too, a single failure is a note (alarm line of
+      2026-10-28: a single hiccup sends no mail; the next tick deploys
+      again). In October 2026 there were four, each gone with the next run.
+    * jobs that cannot be read: red, the failure is real.
+
+    An Actions API that does not answer, no Pages workflow, or no finished
+    run is a note. ``Veröffentlichung`` stays as the backstop for an outage
+    that shows no failed run.
+    """
+    name = "Pages-Build"
+    try:
+        runs = _pages_runs()
+    except Exception as exc:
+        reason = str(sanitize_log_arg(str(exc)))[:120]
+        return Check(name, ok=True, note=True,
+                     summary=f"HINWEIS — Actions-API nicht abgefragt ({type(exc).__name__}: {reason})")
+    if runs is None:
+        return Check(name, ok=True, note=True,
+                     summary=f"HINWEIS — kein Workflow {PAGES_WORKFLOW_PATH} gefunden")
+    finished = [run for run in runs if str(run.get("conclusion") or "") not in _PAGES_SKIPPED]
+    if not finished:
+        return Check(name, ok=True, note=True,
+                     summary="HINWEIS — kein abgeschlossener Pages-Lauf gefunden")
+    latest = finished[0]
+    ended = _parse_utc(latest.get("updated_at"))
+    when = f" am {_vienna_hhmm(ended)}" if ended is not None else ""
+    if str(latest.get("conclusion") or "") == "success":
+        return Check(name, ok=True, summary=f"OK — letzter Lauf sauber{when}")
+
+    streak = 0
+    for run in finished:
+        if str(run.get("conclusion") or "") == "success":
+            break
+        streak += 1
+    kind = _pages_failure_kind(latest)
+    what = {
+        "jekyll": "Jekyll-Build gescheitert",
+        "github": "Auslieferung durch GitHub gescheitert",
+    }.get(kind, "Pages-Lauf gescheitert")
+    text = f"{what}{when}"
+    # The first failed run of the streak names the commit that broke the
+    # build (on 2026-11-01 the merge of #2092); later ones are only ticks.
+    # When every listed run failed, the start lies before the listed runs.
+    first_failed: dict[str, Any] | None = finished[streak - 1]
+    if streak > 1 and streak == len(finished):
+        text += f", mindestens {streak} Läufe in Folge"
+        first_failed = None
+    elif streak > 1:
+        started = _parse_utc(finished[streak - 1].get("created_at"))
+        since = f" seit {_vienna_hhmm(started)}" if started is not None else ""
+        text += f", {streak} Läufe in Folge{since}"
+    details: list[str] = []
+    commit = first_failed.get("head_commit") if first_failed is not None else None
+    message = commit.get("message") if isinstance(commit, dict) else None
+    if isinstance(message, str) and message.strip():
+        first_line = str(sanitize_log_arg(message.strip().splitlines()[0]))[:80]
+        details.append(f"zuerst nach Commit „{first_line}“" if streak > 1 else f"Commit „{first_line}“")
+    link = str(latest.get("html_url") or "")
+    if link:
+        details.append(link)
+    detail = " — ".join(details)
+    if kind == "github" and streak == 1:
+        return Check(name, ok=True, note=True,
+                     summary=f"HINWEIS — {text}; der nächste Lauf liefert neu aus",
+                     detail=detail)
+    if kind == "jekyll":
+        text += " (Inhalt unter docs/ prüfen)"
+    return Check(name, ok=False,
+                 summary=f"FEHLER — {text}; GitHub Pages liefert den alten Stand aus",
+                 detail=detail)
+
+
 def _render_plain(
     now: datetime, sources: list[Check], outputs: list[Check], config: list[Check]
 ) -> str:
@@ -1166,6 +1317,7 @@ def main() -> int:
     outputs = [
         check_feed_freshness(now),
         check_published_feeds(now),
+        check_pages_build(now),
         check_stations(now),
         check_station_sources(now),
         check_stammstrecke_abruf(now),

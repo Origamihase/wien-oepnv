@@ -144,6 +144,45 @@ def test_malformed_feed_is_never_published(tmp_path: Path) -> None:
     assert _remote_file(origin, env, "docs/feed.xml") == "<rss>old</rss>"
 
 
+def test_a_staged_page_with_liquid_is_made_inert(tmp_path: Path) -> None:
+    # 2026-11-01: one bare "{%" under docs/ failed every Pages build; bot
+    # commits start the Pages build but no test run (step 2b).
+    origin, work, _other, env = _setup(tmp_path)
+    _write(work, "docs/stations_diff.md", "# Diff\n\n- Wien Mitte {% Ersatz\n- S{{{1}}}\n")
+    _write(work, "docs/feed.xml", "<rss>{{ static }}</rss>\n")
+    _write(work, "docs/ok.md", "<!-- {% raw %} -->\n\n`${{ x }}`\n\n<!-- {% endraw %} -->\n")
+    result = _publish(work, env, "--all", "--label", "Stationspflege", "--message", "chore: stations")
+    assert result.returncode == 0, result.stderr
+    assert "::warning title=Stationspflege::Liquid in docs/stations_diff.md (line 3,4) made inert" in result.stdout
+    assert _remote_file(origin, env, "docs/stations_diff.md") == "# Diff\n\n- Wien Mitte { % Ersatz\n- S{ { {1}}}"
+    assert _remote_file(origin, env, "docs/feed.xml") == "<rss>{{ static }}</rss>"
+    assert "{{ x }}" in _remote_file(origin, env, "docs/ok.md")
+    assert "ok.md" not in result.stdout
+
+
+def test_a_page_with_any_file_name_is_made_inert(tmp_path: Path) -> None:
+    # git quotes a name with an umlaut or a quote in --name-only output
+    # unless -z is given; such a page passed step 2b unchanged until the
+    # review of 2026-11-01.
+    origin, work, _other, env = _setup(tmp_path)
+    for name in ("docs/Störung.md", 'docs/say "hi".md', "docs/with space.md"):
+        _write(work, name, "x {% y\n")
+    result = _publish(work, env, "--all", "--label", "Stationspflege", "--message", "chore: stations")
+    assert result.returncode == 0, result.stderr
+    for name in ("docs/Störung.md", 'docs/say "hi".md', "docs/with space.md"):
+        assert f"Liquid in {name} (line 1) made inert" in result.stdout
+        assert _remote_file(origin, env, name) == "x { % y"
+
+
+def test_a_clean_page_publishes_without_a_liquid_warning(tmp_path: Path) -> None:
+    origin, work, _other, env = _setup(tmp_path)
+    _write(work, "docs/statistik.md", "# Statistik\n\n| S1 | 3 |\n")
+    result = _publish(work, env, "--message", "chore: stats", "--", "docs/statistik.md")
+    assert result.returncode == 0, result.stderr
+    assert "Liquid" not in result.stdout
+    assert _remote_file(origin, env, "docs/statistik.md") == "# Statistik\n\n| S1 | 3 |"
+
+
 def test_concurrent_push_is_rebased_not_rejected(tmp_path: Path) -> None:
     # SEO Verify, 2026-10-04: a commit landed between checkout and push.
     origin, work, other, env = _setup(tmp_path)

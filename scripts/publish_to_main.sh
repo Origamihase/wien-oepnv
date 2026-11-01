@@ -3,8 +3,9 @@
 # path of every workflow that writes to ``main``.
 #
 # Used by update-cycle.yml, build-feed.yml, seo-guard.yml,
-# update-stations.yml and manual-full-refresh.yml. Before 2026-10-10 each of
-# them pushed its own way; two failure classes followed from that:
+# update-stations.yml and manual-full-refresh.yml, since 2026-11-01 also by
+# ki-waechter.yml. Before 2026-10-10 the first five each pushed their own
+# way; two failure classes followed from that:
 #
 #   * History loss. update-cycle.yml and build-feed.yml pushed with
 #     ``--force-with-lease``. The ``git pull --rebase`` between two attempts
@@ -44,6 +45,9 @@
 #                     builder hiccup never pushes over the last good feed
 #   --strict          exit 1 when every attempt failed (default: warning and
 #                     exit 0, for runs whose output the next run rebuilds)
+#
+# Every staged page under docs/ that holds a Liquid pair is made inert
+# before the commit (step 2b).
 #
 # The branch is ``$GITHUB_REF_NAME`` (override with ``PUBLISH_BRANCH``); the
 # first back-off is 2 s (``PUBLISH_RETRY_DELAY``, for the tests).
@@ -119,6 +123,41 @@ fi
 if git diff --cached --quiet; then
   echo "No changes — nothing to commit or push."
   exit 0
+fi
+
+# 2b) Keep Liquid out of the Pages build. GitHub Pages runs Liquid over every
+# page under docs/, and a commit pushed here starts the Pages build but no
+# test run (a GITHUB_TOKEN push starts no workflow such as test.yml). The
+# page of 2026-11-01 (#2092, a bare "{%" that failed every Pages build until
+# #2108) came through a pull request, which the tests and since then
+# pages-build-check.yml cover; this step covers the bot commits. The writers
+# make their text inert themselves; every staged page that still holds a
+# Liquid pair goes through liquid_safe (src/utils/liquid.py, intact raw
+# blocks kept) and is staged again, with a warning naming the file and
+# lines. Paths travel NUL-separated, so any file name works and no argument
+# list can grow too long. The index matches the working tree here: step 2
+# staged from it just above.
+mapfile -d '' -t staged_docs < <(git diff --cached --name-only -z --diff-filter=d -- docs/)
+if [ "${#staged_docs[@]}" -gt 0 ]; then
+  liquid_py="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/src/utils/liquid.py"
+  liquid_python="$(command -v python || command -v python3 || true)"
+  liquid_out="$(mktemp)"
+  liquid_status=1
+  if [ -n "${liquid_python}" ]; then
+    printf '%s\0' "${staged_docs[@]}" \
+      | "${liquid_python}" "${liquid_py}" --fix --null --docs-root docs > "${liquid_out}"
+    liquid_status=$?
+  fi
+  # Entries are written as each page is rewritten: stage them even when the
+  # check stopped halfway.
+  while IFS= read -r -d '' entry; do
+    echo "::warning title=${label}::Liquid in ${entry%:*} (line ${entry##*:}) made inert before publishing, so the Pages build cannot stop on it."
+    git add -- "${entry%:*}"
+  done < "${liquid_out}"
+  rm -f "${liquid_out}"
+  if [ "${liquid_status}" -ne 0 ]; then
+    echo "::warning title=${label}::Liquid check of the staged pages did not finish; publishing without it."
+  fi
 fi
 git commit -q -m "${message}"
 

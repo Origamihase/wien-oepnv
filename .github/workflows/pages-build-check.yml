@@ -1,0 +1,53 @@
+name: Pages-Build prüfen
+
+# Baut die Website aus docs/ vor dem Merge so, wie GitHub Pages sie baut:
+# dieselbe Action wie der Workflow "pages build and deployment" (Jekyll 3.10
+# im Container ghcr.io/actions/jekyll-build-pages, github-pages-Gem), Quelle
+# ./docs, Theme und Plugins aus docs/_config.yml. Liefert nichts aus.
+#
+# Betreiberentscheidung (Michael, 2026-11-01, Karte "Soll ein gescheiterter
+# Pages-Build künftig sofort auffallen?", Antwort "Beides bauen"): Am
+# 2026-11-01 hielt ein Liquid-Tag in docs/reference/ki_waechter.md ab dem
+# Merge von #2092 jeden Pages-Build an; der Fernseher blieb auf dem Stand von
+# 08:30. Der PR-Check zeigt einen solchen Fehler, bevor er main erreicht; der
+# Health check meldet einen gescheiterten Pages-Lauf auf main (Prüfung
+# "Pages-Build"). Seiten, die Workflows selbst nach main schreiben, sieht
+# dieser Check nicht (ein Push mit dem GITHUB_TOKEN startet außer dem
+# Pages-Build keinen Workflow); für sie gilt die Liquid-Prüfung in
+# scripts/publish_to_main.sh.
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**'
+      - '.github/workflows/pages-build-check.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-build-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Jekyll-Build wie GitHub Pages
+    runs-on: ubuntu-latest
+    # Der Pages-Build braucht ein bis zwei Minuten (Median 59 s im Oktober
+    # 2026, mit Bereitstellung); 10 Minuten fangen einen hängenden Build ab.
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      # Dieselbe Version wie im Pages-Lauf (Schritt "Pull
+      # ghcr.io/actions/jekyll-build-pages:v1.0.13", Stand 2026-11-01).
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 # v1.0.13
+        with:
+          source: ./docs
+          destination: ./_site

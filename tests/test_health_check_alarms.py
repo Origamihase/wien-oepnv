@@ -352,6 +352,7 @@ def _all_green(monkeypatch: pytest.MonkeyPatch) -> None:
     for name in (
         "check_feed_freshness",
         "check_published_feeds",
+        "check_pages_build",
         "check_stations",
         "check_station_sources",
         "check_stammstrecke_abruf",
@@ -376,6 +377,7 @@ def test_main_is_green_when_every_check_is_green(monkeypatch: pytest.MonkeyPatch
         "check_source",
         "check_feed_freshness",
         "check_published_feeds",
+        "check_pages_build",
         "check_stations",
         "check_station_sources",
         "check_stammstrecke_abruf",
@@ -758,3 +760,155 @@ def test_the_review_workflow_fails_when_the_review_cannot_run() -> None:
     assert "actions: read" in health
     assert "GITHUB_TOKEN: ${{ github.token }}" in health
     assert {name for name, _label in hc.TOOLING_WORKFLOWS} == {"claude-code-review.yml"}
+
+
+# --- Pages-Build: the latest run of "pages build and deployment" (01.11.) ---
+
+_WORKFLOWS = "/actions/workflows?per_page=100"
+_PAGES_RUNS = f"/actions/workflows/189040121/runs?status=completed&per_page={hc.PAGES_RUNS_PER_PAGE}"
+_PAGES_WORKFLOW = {
+    "workflows": [
+        {"id": 189039912, "path": ".github/workflows/build-feed.yml"},
+        {"id": 189040121, "path": "dynamic/pages/pages-build-deployment"},
+    ]
+}
+
+
+def _pages_run(
+    run_id: int, conclusion: str, minutes_ago: int, message: str = "chore: update cycle"
+) -> dict[str, object]:
+    started = _NOW - timedelta(minutes=minutes_ago)
+    return {
+        "id": run_id,
+        "conclusion": conclusion,
+        "created_at": started.isoformat(),
+        "updated_at": (started + timedelta(minutes=1)).isoformat(),
+        "html_url": f"https://github.com/Origamihase/wien-oepnv/actions/runs/{run_id}",
+        "head_commit": {"message": message},
+    }
+
+
+def _jobs(failed_step: str | None) -> dict[str, object]:
+    """Jobs of a Pages run as the Actions API lists them (01.11.2026)."""
+    build_steps = ["Set up job", "Pull ghcr.io/actions/jekyll-build-pages:v1.0.13", "Checkout",
+                   "Build with Jekyll", "Upload artifact"]
+    deploy_steps = ["Set up job", "Deploy to GitHub Pages"]
+
+    def steps(names: list[str]) -> list[dict[str, str]]:
+        return [{"name": n, "conclusion": "failure" if n == failed_step else "success"} for n in names]
+
+    return {
+        "jobs": [
+            {"name": "build", "steps": steps(build_steps)},
+            {"name": "deploy", "steps": steps(deploy_steps)},
+        ]
+    }
+
+
+def _pages(monkeypatch: pytest.MonkeyPatch, runs: list[dict[str, object]],
+           jobs: dict[int, object] | None = None) -> list[str]:
+    by_path: dict[str, object] = {_WORKFLOWS: _PAGES_WORKFLOW, _PAGES_RUNS: {"workflow_runs": runs}}
+    for run_id, value in (jobs or {}).items():
+        by_path[f"/actions/runs/{run_id}/jobs?per_page=20"] = value
+    return _runs(monkeypatch, by_path)
+
+
+def test_a_green_pages_run_is_green_and_cancelled_runs_are_skipped(monkeypatch: pytest.MonkeyPatch) -> None:
+    """GitHub cancels a run a newer commit supersedes (165 of 1,972 in October)."""
+    seen = _pages(monkeypatch, [_pages_run(3, "cancelled", 5), _pages_run(2, "success", 30)])
+    check = hc.check_pages_build(_NOW)
+    assert check.ok and not check.note
+    assert check.summary == "OK — letzter Lauf sauber am 28.10. 12:31"
+    assert seen == [_WORKFLOWS, _PAGES_RUNS]
+
+
+def test_a_failed_jekyll_build_is_red_at_once_and_names_the_commit(monkeypatch: pytest.MonkeyPatch) -> None:
+    """01.11.2026: from the merge of #2092 every build failed in Jekyll."""
+    runs = [
+        _pages_run(5, "failure", 20),
+        _pages_run(4, "cancelled", 25),
+        _pages_run(3, "failure", 50, "Merge pull request #2092 from Origamihase/x\n\nKI-Wächter"),
+        _pages_run(2, "success", 80),
+    ]
+    _pages(monkeypatch, runs, {5: _jobs("Build with Jekyll")})
+    check = hc.check_pages_build(_NOW)
+    assert not check.ok
+    assert check.summary == (
+        "FEHLER — Jekyll-Build gescheitert am 28.10. 12:41, 2 Läufe in Folge seit 28.10. 12:10 "
+        "(Inhalt unter docs/ prüfen); GitHub Pages liefert den alten Stand aus"
+    )
+    assert check.detail == (
+        "zuerst nach Commit „Merge pull request #2092 from Origamihase/x“ — "
+        "https://github.com/Origamihase/wien-oepnv/actions/runs/5"
+    )
+
+
+def test_one_failed_jekyll_build_is_red(monkeypatch: pytest.MonkeyPatch) -> None:
+    _pages(monkeypatch, [_pages_run(3, "failure", 20), _pages_run(2, "success", 50)],
+           {3: _jobs("Build with Jekyll")})
+    check = hc.check_pages_build(_NOW)
+    assert not check.ok
+    assert "Jekyll-Build gescheitert am 28.10. 12:41 (Inhalt unter docs/ prüfen)" in check.summary
+    assert check.detail.startswith("Commit „chore: update cycle“ — ")
+
+
+@pytest.mark.parametrize(
+    "failed_step", ["Deploy to GitHub Pages", "Pull ghcr.io/actions/jekyll-build-pages:v1.0.13", None]
+)
+def test_one_failure_on_githubs_side_is_a_note(monkeypatch: pytest.MonkeyPatch, failed_step: str | None) -> None:
+    """October 2026: four deploy failures at GitHub, each gone with the next
+    run; on 05.10. the deploy job was cancelled without a failed step."""
+    _pages(monkeypatch, [_pages_run(3, "failure", 20), _pages_run(2, "success", 50)], {3: _jobs(failed_step)})
+    check = hc.check_pages_build(_NOW)
+    assert check.ok and check.note
+    assert check.summary == (
+        "HINWEIS — Auslieferung durch GitHub gescheitert am 28.10. 12:41; der nächste Lauf liefert neu aus"
+    )
+
+
+def test_two_failures_on_githubs_side_in_a_row_are_red(monkeypatch: pytest.MonkeyPatch) -> None:
+    runs = [_pages_run(4, "failure", 20), _pages_run(3, "failure", 50), _pages_run(2, "success", 80)]
+    _pages(monkeypatch, runs, {4: _jobs("Deploy to GitHub Pages")})
+    check = hc.check_pages_build(_NOW)
+    assert not check.ok
+    assert "Auslieferung durch GitHub gescheitert am 28.10. 12:41, 2 Läufe in Folge seit 28.10. 12:10" in check.summary
+
+
+@pytest.mark.parametrize("jobs", [RuntimeError("HTTP 502"), {"jobs": []}, {}])
+def test_a_failed_run_whose_jobs_cannot_be_read_is_red(monkeypatch: pytest.MonkeyPatch, jobs: object) -> None:
+    _pages(monkeypatch, [_pages_run(3, "failure", 20), _pages_run(2, "success", 50)], {3: jobs})
+    check = hc.check_pages_build(_NOW)
+    assert not check.ok
+    assert "Pages-Lauf gescheitert am 28.10. 12:41" in check.summary
+
+
+@pytest.mark.parametrize("conclusion", ["timed_out", "startup_failure", "action_required"])
+def test_every_other_conclusion_counts_as_failed(monkeypatch: pytest.MonkeyPatch, conclusion: str) -> None:
+    _pages(monkeypatch, [_pages_run(3, conclusion, 20)], {3: _jobs("Build with Jekyll")})
+    assert not hc.check_pages_build(_NOW).ok
+
+
+def test_a_streak_longer_than_the_listed_runs_says_at_least(monkeypatch: pytest.MonkeyPatch) -> None:
+    runs = [_pages_run(100 - i, "failure", 10 + 30 * i) for i in range(hc.PAGES_RUNS_PER_PAGE)]
+    _pages(monkeypatch, runs, {100: _jobs("Build with Jekyll")})
+    check = hc.check_pages_build(_NOW)
+    assert not check.ok
+    assert f"mindestens {hc.PAGES_RUNS_PER_PAGE} Läufe in Folge (Inhalt" in check.summary
+    assert check.detail == "https://github.com/Origamihase/wien-oepnv/actions/runs/100"
+
+
+def test_pages_notes_when_nothing_can_be_said(monkeypatch: pytest.MonkeyPatch) -> None:
+    _runs(monkeypatch, {_WORKFLOWS: RuntimeError("GITHUB_TOKEN oder GITHUB_REPOSITORY fehlt")})
+    check = hc.check_pages_build(_NOW)
+    assert check.ok and check.note
+    assert "Actions-API nicht abgefragt (RuntimeError: GITHUB_TOKEN" in check.summary
+
+    _runs(monkeypatch, {_WORKFLOWS: {"workflows": [{"id": 1, "path": ".github/workflows/test.yml"}]}})
+    check = hc.check_pages_build(_NOW)
+    assert check.ok and check.note
+    assert "kein Workflow dynamic/pages/pages-build-deployment gefunden" in check.summary
+
+    _pages(monkeypatch, [_pages_run(3, "cancelled", 20)])
+    check = hc.check_pages_build(_NOW)
+    assert check.ok and check.note
+    assert "kein abgeschlossener Pages-Lauf" in check.summary
