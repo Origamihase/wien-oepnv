@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260922-0032, I20260925-0011, I20261020-0029, I20261031-0036-F01, I20261031-0040, I20261031-0042-F01"
+    "trafficInfoNameList": "I20260909-0007, I20260922-0032, I20260925-0011, I20261020-0029, I20261031-0036-F01, I20261031-0040, I20261031-0042-F01, I20261101-0002"
    },
    {
     "id": 3,
@@ -342,6 +342,51 @@
      "start": "2026-10-31T23:41:00.000+0100"
     },
     "title": "40A: Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "N35": "ptBusNight"
+     }
+    },
+    "description": "Derzeit kommt es bei der Linie N35 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Derzeit kommt es bei der Linie N35 in beiden Richtungen zu unterschiedlichen Intervallen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Derzeit kommt es bei der Linie N35 in beiden Richtungen zu unterschiedlichen Intervallen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Derzeit kommt es bei der Linie N35 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug.",
+       "title": "N35: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261101-0002",
+    "owner": "WL",
+    "parentName": "I20261101-0002",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "N35"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 535,
+      "lineName": "N35",
+      "vehicleType": "ptBusNight"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-01T01:32:00.000+0100",
+     "lastUpdate": "2026-11-01T01:32:00.000+0100",
+     "resume": "2026-11-01T01:31:00.000+0100",
+     "start": "2026-11-01T01:31:00.000+0100"
+    },
+    "title": "N35: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",
