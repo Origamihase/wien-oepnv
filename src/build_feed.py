@@ -10902,6 +10902,9 @@ def _works_shown(item: FeedItem, notices: Sequence[FeedItem]) -> FeedItem | None
     for notice in notices:
         if not lines <= set(_ticker_lines(notice).split("/")) or not _within(item, notice):
             continue
+        if _notice_reported_live(notice, [item]) is not None:
+            # A live incident the notice gives way to (``_yield_notices_to_incidents``).
+            continue
         if cause and _notice_names_cause(notice, cause) and _shares_a_street(item, notice):
             return notice
         if _relocated_stops_shown(item, notice):
@@ -11017,10 +11020,15 @@ def _absorb_works_tickers(items: list[FeedItem]) -> list[FeedItem]:
 # and both stay. Only a notice of one operating day gives way: it must end
 # by 04:00 after the incident's Vienna date (``_service_day_end``). A notice
 # of weeks ("1: Gleisbauarbeiten", 21.10. to 05.12.) tells what holds after
-# a short incident of the same cause is over, and it stays. When the
-# incident ends, the notice is back as before. The replay of every feed
-# state since 01.10. found two days: 11.10. ("18: LCC-Herbstmarathon"
-# beside "18: Laufveranstaltung") and 26.10.
+# a short incident of the same cause is over, and it stays. The same holds
+# when WL gives the incident an end: ``_absorb_works_tickers`` no longer
+# takes such an incident into a notice of one day. On 11.10.2026 it took
+# "18: Laufveranstaltung" (I20261011-0007, "bis 23:55") into "18:
+# LCC-Herbstmarathon am 11.10.2026" from 09:01 to 14:30 Vienna time, the
+# opposite of the 26.10. rule only because WL named an end. When the
+# incident ends, the notice is back as before. The replay of 555 feed
+# states since 01.10. and of every state of 11.10. and 26.10. changes two
+# days only: 11.10. 09:01 to 14:30 and 26.10. 09:01 to 17:31 Vienna time.
 # Operator decision 2026-11-01 ("Störung bleibt"): of the two, the live
 # incident stays. His general rule of the same day: "Störungen haben höchste
 # Priorität im Feed! Hinweise sind weniger wichtig."

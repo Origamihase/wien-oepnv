@@ -224,7 +224,8 @@ WL-Hinweises (gleiche Ursache, Linien, Zeitraum und eine gemeinsame Straße),
 geht er in diesem Hinweis auf (`_absorb_works_tickers`). Meldet umgekehrt
 eine laufende WL-Störung mit Vorfallsbeginn (ausführliche Meldung) dieselbe
 Ursache an derselben Straße für jede Linie eines geltenden Hinweises über
-höchstens einen Betriebstag, tritt der Hinweis zurück, solange sie läuft (`_yield_notices_to_incidents`, seit
+höchstens einen Betriebstag, tritt der Hinweis zurück, solange sie läuft,
+auch wenn WL der Störung ein Ende gibt (`_yield_notices_to_incidents`, seit
 2026-11-01, Betreiberentscheidung „Störung bleibt“ und Grundsatz „Störungen
 haben höchste Priorität im Feed! Hinweise sind weniger wichtig.“; Anlass „1/2/71/D:
 Nationalfeiertag“ neben „1/2/71/D: Veranstaltung“ am 26.10.). Tests dazu lesen die Meldungen wie der Feed, über

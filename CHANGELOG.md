@@ -29,10 +29,14 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
     weniger wichtig.“). Meldet sie
     nur einen Teil seiner Linien, bleiben beide. Ein Hinweis über Wochen
     („1: Gleisbauarbeiten“, 21.10. bis 05.12.) bleibt neben einer kurzen
-    Störung derselben Ursache. Replay über 555 Feed-Stände seit 01.10. und
+    Störung derselben Ursache. Ebenso nimmt `_absorb_works_tickers` eine
+    laufende Störung mit Ende nicht mehr in einen Hinweis eines Betriebstags
+    auf: Am 11.10. ging „18: Laufveranstaltung“ von 9:01 bis 14:30 Uhr in
+    „18: LCC-Herbstmarathon am 11.10.2026“ auf, nur weil WL ein Ende nannte;
+    jetzt steht die Störung. Replay über 555 Feed-Stände seit 01.10. und
     alle 101 Stände vom 11.10., 26.10. und 30.10. 10:31 Uhr (DE, EN, State):
-    nur die 19 Stände vom 26.10. ändern sich,
-    der Hinweis fällt weg und Platz 10 bekommt die nächste Meldung; verkettet
+    nur die 12 Stände vom 11.10. und die 19 Stände vom 26.10. ändern sich
+    (dazu der EN-Text unten); am 26.10. fällt der Hinweis weg und Platz 10 bekommt die nächste Meldung; verkettet
     gespielt steht der Hinweis nach dem Ende der Störung um 18:01 Uhr wieder
     auf demselben Platz wie vorher.
   - **„High Wait“:** WL schrieb „Weiterfahrt über die Linie 37 bis Hohen
