@@ -27,6 +27,10 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
   - Neue Health-check-Prüfung `Übersetzung` (`data/translation_status.json`,
     geschrieben von jedem Build, der das Modell braucht): Lud es nicht, ist das
     ein Hinweis, ab dem zweiten Build in Folge rot.
+  - Nachtrag: Unter `transformers` 5 stand in der Ladezeile „Revision
+    unbekannt“, weil 5 den Commit nicht mehr an der Modellkonfiguration
+    ablegt. Die Zeile nennt ihn jetzt aus dem Snapshot-Ordner des Caches
+    (`_loaded_commit`).
   - Dependabot-Updates vom 01.11., zweite Runde: `pip-audit` ab 2.10.1
     (#2111), `responses` ab 0.26.3 (#2112), `pre-commit` ab 4.7.0 (#2113),
     `hypothesis` ab 6.170.13 (#2115). Die CI installierte diese Versionen schon
