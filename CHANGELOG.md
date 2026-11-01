@@ -10,6 +10,25 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
 
 ### November 2026
 
+* **Pages-Build wieder lauffähig, Liquid-Regel für `docs/` (2026-11-01)**: Der
+  Absatz in `docs/reference/ki_waechter.md`, der das Liquid-Problem der
+  Pages-Seiten erklärt, zitierte selbst ein `{%`. Ab dem Merge von #2092
+  (08:43 Uhr Wiener Zeit) scheiterte deshalb jeder Lauf von „pages build and
+  deployment“ („Liquid syntax error (line 74): Tag '{%' was not properly
+  terminated“). Die Update-Läufe blieben grün und schrieben den Feed ins
+  Repository, aber Website, `feed.xml` und `feed.en.xml` unter der
+  Pages-Adresse und damit der Fernseher blieben auf dem Stand von 08:30 Uhr.
+  Die Stelle und zwei weitere, die Liquid still auswertete, stehen jetzt
+  zwischen HTML-Kommentaren mit `raw` und `endraw`:
+  `docs/how-to/test-api-secrets.md` (die Workflow-Vorlage zeigte auf der
+  Website `API_URL: $` statt des Secret-Ausdrucks) und
+  `docs/archive/audits/audit-2026-09-13.md` (`update-stations-$`). Neu prüft
+  `tests/test_docs_liquid.py` jede Seite, die Jekyll rendert, auf `{{` und
+  `{%` außerhalb eines `raw`-Blocks; die Regel steht in
+  `docs/development.md`. Nachgestellt mit dem Gem `github-pages` 232 (Jekyll
+  3.10.0, Liquid 4.0.4): `main` scheiterte mit derselben Meldung, der Stand
+  mit der Korrektur baut ohne Warnung.
+
 * **Zwei Funde des KI-Wächters behoben (2026-11-01)**: Der erste Probelauf des
   Wächters (PR #2092) meldete zwei bis dahin unbekannte Fehler; Michael gab
   einen eigenen Pull Request dafür frei („ja, bitte“).

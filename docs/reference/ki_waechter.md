@@ -68,13 +68,27 @@ bevor er zählt:
 
 Ein Fund, der eine Prüfung nicht besteht, steht unter „Nicht belegt“ im
 Bericht und öffnet kein Issue. Kopf, Zahlen, GUIDs, Zeiten und die Tabelle der
-geprüften Meldungen schreibt das Skript, nicht das Modell. GitHub Pages
-rendert jede Markdown-Datei unter `docs/` mit Jekyll, auch ohne Front Matter,
-und lässt Liquid darüberlaufen: Ein zitiertes `{{ … }}` verschwindet dabei
-stillschweigend (so geschehen in `archive/audits/audit-2026-09-13`), ein `{%`
-mit unbekanntem Tag lässt den Pages-Build scheitern, und Website und Fernseher
-blieben stehen. Das Skript setzt deshalb im Bericht hinter das erste Zeichen
-jedes solchen Paars ein Leerzeichen (`liquid_safe`), bevor es ihn schreibt.
+geprüften Meldungen schreibt das Skript, nicht das Modell.
+
+<!-- {% raw %} -->
+
+GitHub Pages rendert jede Markdown-Datei unter `docs/` mit Jekyll, auch ohne
+Front Matter, und lässt Liquid darüberlaufen: Ein zitiertes `{{ … }}`
+verschwindet dabei stillschweigend (so geschehen in
+`archive/audits/audit-2026-09-13`), ein `{%` ohne gültiges Tag lässt den
+Pages-Build scheitern, und Website und Fernseher bleiben stehen. Das Skript
+setzt deshalb im Bericht hinter das erste Zeichen jedes solchen Paars ein
+Leerzeichen (`liquid_safe`), bevor es ihn schreibt.
+
+<!-- {% endraw %} -->
+
+Von Hand geschriebene Seiten, die solche Zeichenpaare wörtlich zeigen, setzen
+sie zwischen zwei HTML-Kommentare mit dem Liquid-Tag `raw` und `endraw`, wie
+den Absatz darüber. Mit #2092 kam dieser Absatz am 2026-11-01 ungeschützt auf
+`main`: Bis zur Korrektur scheiterte jeder Pages-Build, und der Feed unter der
+Pages-Adresse blieb auf dem Stand von 08:30 Uhr Wiener Zeit stehen.
+`tests/test_docs_liquid.py` prüft seitdem jede Seite unter `docs/`, die
+Jekyll rendert (Regel in `docs/development.md`).
 
 ## Gratis-Kontingent
 
