@@ -1482,7 +1482,8 @@ Bedarf), und das API-Limit darf nicht überschritten werden.
   3.8 Flash, höchstens dreimal. Höchstens 10 Anfragen am
   Tag (Tag ab 0:00 Uhr Pazifikzeit): der Job `gate` zählt sie aus der
   Anmerkung „Gemini-Anfragen“ jedes Prüflaufs und gibt jedem neuen Prüflauf
-  nur seinen Anteil am Rest; die letzte bleibt dem täglichen Lauf. Die
+  nur seinen Anteil am Rest; die letzten drei bleiben dem täglichen Lauf
+  (seit 2026-11-01, vorher eine). Die
   Eingabe ist auf 450.000 Zeichen begrenzt. Der Schlüssel
   `GEMINI_API_KEY` gehört zu einem Projekt ohne Abrechnung.
 * Der Bericht `docs/archive/audits/ki-waechter-YYYY-MM-DD.md` geht über

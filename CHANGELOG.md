@@ -10,6 +10,21 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
 
 ### November 2026
 
+* **KI-Wächter: drei Anfragen bleiben dem täglichen Lauf (2026-11-01)**:
+  Betreiberentscheidung (Michael: „Ich möchte das Kontingent effizient nutzen
+  und nicht überschreiten“, Ja zum Vorschlag). Pull Requests und Läufe von
+  Hand rechnen im Gate von `ki-waechter.yml` nur bis 7 der 10 Anfragen des
+  Tages statt bis 9; die letzten drei, so viele wie ein Prüflauf höchstens
+  sendet (`MAX_PER_AUDIT`), bleiben dem täglichen Lauf. Am 01.11. hatten die
+  Probeläufe von #2092 neun Anfragen verbraucht, der tägliche Lauf um
+  9:01 Uhr Wiener Zeit bekam eine, Gemini 3.8 Flash antwortete 503, und das
+  Ausweichmodell kam nicht mehr an die Reihe. Die Obergrenze bleibt bei
+  10 Anfragen am Tag, der Hälfte dessen, was Gemini 3.8 Flash im
+  Gratis-Kontingent allein erlaubt. Ein Probelauf im Pull Request bekommt
+  ohne Vorverbrauch 2 Anfragen je Stand (bisher 3), genug für das
+  Ausweichmodell. `tests/test_ki_waechter.py` spielt die Fälle durch, auch
+  den vom 01.11.
+
 * **Gescheiterter Pages-Build fällt sofort auf (2026-11-01)**:
   Betreiberentscheidung (Michael, Karte „Soll ein gescheiterter Pages-Build
   künftig sofort auffallen?“, Antwort „Beides bauen“). Beim Ausfall vom
