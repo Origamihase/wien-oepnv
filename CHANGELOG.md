@@ -195,8 +195,11 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
     bisher nur `src/`), und `scripts/regen_mypy_baseline.sh` installiert dafür
     `requirements-dev.txt` wie `mypy-strict.yml`.
   - Coverage: Sie misst `src/` und `scripts/`. Der Gesamtwert im Log von
-    `test.yml` sinkt dadurch von 90,1 % auf 87,1 %; `src/` bleibt bei 90,1 %,
-    `scripts/` steht bei 82,8 %.
+    `test.yml` sank dadurch von 90,1 % auf 87,2 % (Tests-Läufe 5424 und 5425
+    auf `main` am 01.11., der letzte vor und der erste nach der Umstellung).
+    Aus dem Artefakt `coverage-xml` von Lauf 5425 nachgerechnet (Zeilen und
+    Zweige je Datei, nach Verzeichnis summiert) liegt `src/` wie vorher bei
+    90,1 % und `scripts/` bei 82,9 %.
   - pre-commit: ruff und Bandit laufen wie mypy und die eigenen Checks aus dem
     venv (`language: system`), in den Versionen aus `requirements-dev.txt`, die
     CI installiert und Dependabot nachzieht. Bisher pinnte der Hook ruff auf
@@ -207,8 +210,14 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
     grün. Er scheiterte auf `main` an vier Dateien, die ein Programm schreibt
     (`docs/feed.en.xml`, `site.min.css`, `site.min.js`, eine Jules-Datei im
     Audit-Archiv), und an elf von Hand geschriebenen Dateien mit einer
-    überzähligen Leerzeile am Ende. Die beiden Leerzeilen-Hooks lassen jetzt
-    alle Dateien aus, die ein Programm schreibt; die Leerzeilen sind entfernt.
+    überzähligen Leerzeile am Ende; diese Leerzeilen sind entfernt. Die
+    beiden Whitespace-Hooks (`trailing-whitespace`, `end-of-file-fixer`)
+    lassen jetzt `cache/`, `data/` (außer den README), das Audit-Archiv, die
+    minifizierten Assets sowie Feeds, Sitemap, `llms.txt`, Statistik und
+    Stationsberichte in `docs/` aus, dazu wie bisher `tests/fixtures/` (ein
+    Verzeichnis, das es nicht gibt). Alle anderen Textdateien prüfen sie
+    weiter, auch solche, in die ein Programm schreibt, etwa `README.md`,
+    `docs/site.html`, `.c901-baseline.txt` und `.mypy-baseline.txt`.
   - SEO Verify: Der Schritt, der Beschreibung und Homepage des Repositorys mit
     `REPO_ADMIN_TOKEN` setzt, läuft nur noch auf `main`, wie die
     Veröffentlichung. Bisher setzte auch ein noch nicht gemergter Branch die
