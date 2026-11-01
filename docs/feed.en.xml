@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 01 Nov 2026 21:30:54 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 01 Nov 2026 22:00:58 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[71A: Traffic accident]]></title>
@@ -20,22 +20,9 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sun, 01 Nov 2026 21:26:00 +0100</ext:first_seen>
       <ext:starts_at>Sun, 01 Nov 2026 21:26:00 +0100</ext:starts_at>
+      <ext:ends_at>Sun, 01 Nov 2026 22:15:00 +0100</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: traffic accident. [Since 21:26]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 21:26]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U6: Police operation]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab</guid>
-      <pubDate>Sun, 01 Nov 2026 20:57:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sun, 01 Nov 2026 20:57:00 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 01 Nov 2026 20:57:00 +0100</ext:starts_at>
-      <ext:ends_at>Sun, 01 Nov 2026 21:45:00 +0100</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 20:57]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 20:57]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Heiligenstadt ↔ Wien Franz-Josefs-Bahnhof]]></title>
@@ -152,6 +139,20 @@
       <georss:point>48.158259 16.360289</georss:point>
       <description>Neilreichgasse 139C - 141 → Neilreichgasse 139A- 139B. Stop relocation of line 11 towards Kaiserebersdorf, Zinnergasse. Reason: track construction works. [Until 19.11.]</description>
       <content:encoded><![CDATA[Neilreichgasse 139C - 141 → Neilreichgasse 139A- 139B. Stop relocation of line 11 towards Kaiserebersdorf, Zinnergasse. Reason: track construction works.<br/>[Until 19.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: Bauernfeldplatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">1a8701132295c2998ee1771e7a46245b02b0b8abc95ee80038dbe79595a5ecf1</guid>
+      <pubDate>Thu, 22 Oct 2026 13:48:00 +0200</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 22 Oct 2026 13:48:00 +0200</ext:first_seen>
+      <ext:starts_at>Tue, 27 Oct 2026 00:00:00 +0100</ext:starts_at>
+      <georss:point>48.220878 16.360720</georss:point>
+      <description>Towards Döblinger Friedhof, Felix-Dahn-Straße: → Liechtensteinstraße 38. Towards Schottentor U: → Liechtensteinstraße 39. Stop relocation of line 40A in both … [Since 27.10.]</description>
+      <content:encoded><![CDATA[Towards Döblinger Friedhof, Felix-Dahn-Straße: → Liechtensteinstraße 38. Towards Schottentor U: → Liechtensteinstraße 39. Stop relocation of line 40A in both …<br/>[Since 27.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
