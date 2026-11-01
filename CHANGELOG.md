@@ -23,7 +23,9 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
     WL-Störung mit Vorfallsbeginn dieselbe Ursache an einer gemeinsamen Straße
     für jede seiner Linien meldet (`_yield_notices_to_incidents`,
     Betreiberentscheidung 2026-11-01 „Störung bleibt“: sie nennt jede Linie und
-    WLs voraussichtliches Ende und geht, sobald WL sie schließt). Meldet sie
+    WLs voraussichtliches Ende und geht, sobald WL sie schließt; Grundsatz
+    vom selben Tag: „Störungen haben höchste Priorität im Feed! Hinweise sind
+    weniger wichtig.“). Meldet sie
     nur einen Teil seiner Linien, bleiben beide. Replay über 555 Feed-Stände
     seit 01.10. (DE, EN, State): nur die 19 Stände vom 26.10. ändern sich,
     der Hinweis fällt weg und Platz 10 bekommt die nächste Meldung; verkettet

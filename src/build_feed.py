@@ -11018,7 +11018,8 @@ def _absorb_works_tickers(items: list[FeedItem]) -> list[FeedItem]:
 # beside the notice of 16 lines on 22.10.) says nothing about the others,
 # and both stay. When the incident ends, the notice is back as before.
 # Operator decision 2026-11-01 ("Störung bleibt"): of the two, the live
-# incident stays.
+# incident stays. His general rule of the same day: "Störungen haben höchste
+# Priorität im Feed! Hinweise sind weniger wichtig."
 
 
 def _notice_reported_live(notice: FeedItem, items: Sequence[FeedItem]) -> FeedItem | None:
