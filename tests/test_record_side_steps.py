@@ -112,6 +112,14 @@ def test_the_workflows_record_every_side_step() -> None:
     metadata_step = seo.split("id: metadata", 1)[1].split("- name:", 1)[0]
     assert 'if [[ -z "${ADMIN_TOKEN:-}" ]]' in metadata_step and "exit 1" in metadata_step
     assert "curl -fsS" in metadata_step
+    # W3 (Technical Debt Assessment 2026-11-01): the PATCH with
+    # REPO_ADMIN_TOKEN runs on ``main`` only, under the same condition as the
+    # publish step; before, a branch push that matched the workflow's path
+    # filter (docs/, the SEO scripts, the workflow) set the live repository
+    # metadata.
+    main_only = "if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'"
+    assert main_only in metadata_step
+    assert main_only in seo.split("- name: Publish sitemap.xml and llms.txt", 1)[1].split("- name:", 1)[0]
     files = {name for name, _workflow, _age in hc.SIDE_STEP_RECORDS}
     assert files == {"update-cycle.json", "update-stations.json", "seo-guard.json", "ki-waechter.json"}
     watcher = (REPO / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8")
