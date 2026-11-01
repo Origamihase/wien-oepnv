@@ -4,8 +4,11 @@
 version: 2
 updates:
   # GitHub Actions: SHA-gepinnte Actions werden mit jedem neuen Tag-Release
-  # automatisch als PR aktualisiert. Tag-Kommentar (z.B. "# v4") bleibt durch
-  # Dependabot erhalten.
+  # automatisch als PR aktualisiert. Den Kommentar hinter dem SHA schreibt
+  # Dependabot nur um, wenn er die bisherige volle Version nennt
+  # ("# v4.36.2" -> "# v4.39.1", #2102); ein Kommentar mit nur der
+  # Hauptversion bleibt stehen ("# v6" auf setup-python 7.1.0, #2105). Jeder
+  # Pin trägt deshalb "# vX.Y.Z" (tests/test_workflow_action_pins.py).
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

@@ -10,6 +10,33 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
 
 ### November 2026
 
+* **Monatliche Abhängigkeits-Updates und volle Versionskommentare der
+  Actions (2026-11-01)**: Michael hat die neun Dependabot-PRs vom 01.11. nach
+  Prüfung gemergt. Keiner ändert den Feed.
+  - Python: `python-dateutil` ab 3.0.0 und unter 4 (#2101; das Projekt nutzt
+    nur `dateutil.parser`, der in 2.9.0.post0 und 3.0.0 gleich ist; 671
+    Update-Stände vom 18.10. bis 01.11. einschließlich der Nacht der
+    Zeitumstellung ergaben mit beiden Versionen denselben Feed),
+    `sentencepiece` ab 0.2.2 (#2097), `pytest` ab 9.2.0 (#2098), `rjsmin` ab
+    1.3.0 (#2100; Minifier-Code unverändert), `ruff` 0.17.3 (#2099; keine
+    Befunde, C901-Liste unverändert).
+  - GitHub Actions: `github/codeql-action` 4.39.1 (#2102),
+    `anthropics/claude-code-action` 1.0.264 (#2103), `actions/upload-artifact`
+    7.0.2 (#2104), `actions/setup-python` 7.1.0 (#2105).
+  - Der erste Update-Lauf danach (11:00 Uhr Wiener Zeit, Umgebung neu
+    installiert) war grün, DE- und EN-Feed vollständig.
+  - Versionskommentare: Dependabot schreibt den Kommentar hinter dem SHA nur
+    um, wenn er die bisherige volle Version nennt (#2102: `# v4.36.2` wurde
+    `# v4.39.1`). Auf `actions/setup-python` 7.1.0 blieb deshalb `# v6`
+    stehen, auf `actions/upload-artifact` 7.0.2 `# v7`. Alle Pins tragen jetzt
+    die volle Version (`actions/checkout` `# v7.0.0`, `actions/setup-python`
+    `# v7.1.0`, `actions/upload-artifact` `# v7.0.2`), die Erklärung in
+    `.github/dependabot.yml` ist berichtigt. Neu prüft
+    `tests/test_workflow_action_pins.py`, dass jede fremde Action auf einen
+    Commit-SHA mit `# vX.Y.Z` gepinnt ist und dass eine Action überall
+    denselben Pin hat (die Dependabot-PRs stammten von einem Stand vor
+    `ki-waechter.yml`).
+
 * **Pages-Build wieder lauffähig, Liquid-Regel für `docs/` (2026-11-01)**: Der
   Absatz in `docs/reference/ki_waechter.md`, der das Liquid-Problem der
   Pages-Seiten erklärt, zitierte selbst ein `{%`. Ab dem Merge von #2092
