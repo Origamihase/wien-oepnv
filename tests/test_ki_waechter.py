@@ -491,6 +491,13 @@ def test_the_gate_counts_the_requests_of_the_day() -> None:
     assert doc["env"]["KI_WAECHTER_MAX_REQUESTS"] == "10"
     assert doc["jobs"]["gate"]["steps"][0]["env"]["MAX_PER_AUDIT"] == str(kw.MAX_REQUESTS_PER_AUDIT)
     assert doc["jobs"]["gate"]["permissions"] == {"actions": "read", "contents": "read"}
+    # A re-run keeps its run's creation time: jobs count by their own start,
+    # runs are listed a month back and kept when touched since midnight.
+    script = doc["jobs"]["gate"]["steps"][0]["run"]
+    assert 'select(.id != ${RUN_ID} and .updated_at >= \\"${since}\\")' in script
+    assert "jobs?filter=all&per_page=100" in script
+    assert '.started_at >= \\"${since}\\"' in script
+    assert "midnight - 31 * 86400" in script and "--paginate" in script
 
 
 @pytest.mark.parametrize(

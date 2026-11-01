@@ -98,12 +98,17 @@ Modelle zusammen gezählt:
 - Höchstens `KI_WAECHTER_MAX_REQUESTS` (10) Anfragen am Tag. Der Tag des
   Kontingents beginnt um 0:00 Uhr Pazifikzeit, in Wien meist 9:00 Uhr. Jeder
   Prüflauf hinterlässt die Anmerkung „Gemini-Anfragen“ mit seiner Zahl. Der
-  Job `gate` zählt sie für alle Prüfläufe dieses Workflows seit diesem
-  Zeitpunkt (ein noch laufender zählt mit drei, ein beendeter ohne Anmerkung
-  mit einer) und gibt jedem Prüflauf des neuen Laufs den Rest geteilt durch
-  ihre Zahl, höchstens drei; bleibt keiner, startet er nichts. Pull Requests
-  und Läufe von Hand rechnen nur bis 9; die letzte Anfrage bleibt dem
-  täglichen Lauf.
+  Job `gate` zählt sie für alle Prüfläufe dieses Workflows, die seit diesem
+  Zeitpunkt gestartet sind (ein noch laufender zählt mit drei, ein beendeter
+  ohne Anmerkung mit einer) und gibt jedem Prüflauf des neuen Laufs den Rest
+  geteilt durch ihre Zahl, höchstens drei; bleibt keiner, startet er nichts.
+  Pull Requests und Läufe von Hand rechnen nur bis 9; die letzte Anfrage
+  bleibt dem täglichen Lauf. Gezählt wird nach dem Start des Jobs, nicht nach
+  dem Anlegen des Laufs: Ein erneut gestarteter Lauf behält seine
+  Anlegezeit, und am 01.11.2026 übersah das Gate so sechs Anfragen eines am
+  Vorabend angelegten Laufs; seither liest es die Läufe eines Monats, behält
+  die seit Mitternacht veränderten und zählt deren Jobs aller Versuche nach
+  ihrer Startzeit.
 - Der tägliche Lauf beginnt um 9:00 Uhr Wiener Zeit, gleich nach dem Beginn
   des Kontingent-Tags (Michael, 31.10.2026, nachdem Gemini 3.8 Flash den
   ganzen Nachmittag mit 503 antwortete). Scheitert er, versucht er es
@@ -156,3 +161,17 @@ Der Prompt nennt keinen dieser Fälle (`tests/test_ki_waechter.py`).
 Erster Probelauf (PR #2092, 31.10.2026, noch mit Claude und nur den zehn
 aktuellen Meldungen): alle vier bekannten Funde erkannt, auch die zwei, die
 die Jules-Audits vom 27. bis 29.10. als „OK“ führten; kein Zitat verworfen.
+
+Probelauf mit Gemini über 24 Stunden (PR #2092, 01.11.2026 ab 8:16 Uhr
+Wiener Zeit, [Lauf](https://github.com/Origamihase/wien-oepnv/actions/runs/41271009232)):
+
+| Stand | Modell | Ergebnis |
+| --- | --- | --- |
+| `001e47c` (27.10.) | Gemini 3.6 Flash (3.8 Flash antwortete 503), 2 Anfragen, 37 s, 35.190 Eingabetokens | 67 Meldungstexte aus 48 Fassungen. Drei Funde, alle zutreffend: F6 „algae path“, F2 „Liechtensteinstraße 37a gegenüber Bauernfeldplatz → …“ und ein neuer F1: „1/2/71/D: Veranstaltung“ (WL-Störungsticker) und „1/2/71/D: Nationalfeiertag“ (WL-Hinweis) standen am 26.10. eine Stunde lang nebeneinander im Feed und beschreiben dieselben Maßnahmen auf der Ringstraße. Nicht erkannt: der bekannte F1 40A (Verlegung Bauernfeldplatz neben „Busse halten Liechtensteinstraße 39, Liechtensteinstraße 38“). |
+| `9e60b8d` (30.10.) | – | Zwei Versuche (8:18 und 8:23 Uhr, je drei Anfragen an 3.8, 3.6 und wieder 3.8 Flash): nur „503 … high demand“. Nicht geprüft; von Hand nachholen (Actions → „KI-Wächter“ → „Run workflow“ mit `9e60b8de9dce438906b257e42a8b524e4f191f67`). |
+| `HEAD` (24 h bis 01.11. 04:30) | Gemini 3.8 Flash, 1 Anfrage, 77 s, 40.186 Eingabetokens | 77 Meldungstexte aus 49 Fassungen. Ein Fund, zutreffend und bis dahin unbekannt: F6 „Continue via line 37 to High Wait.“ (31.10. 18:30, Linie 38 Polizeieinsatz; der WL-Text sagt „bis Hohen Warte“, die gebeugte Form traf die Maskierung des Haltestellennamens nicht). Keine falschen Funde; die Kranarbeiten-Ticker 29A/33A/N31 neben dem Hinweis „29A/33A/29B/N31: Bauarbeiten“ wurden nicht als Doppelung gemeldet. |
+
+Bilanz: fünf Funde, fünf zutreffend, kein Zitat verworfen; zwei bekannte
+Doppelungen (F1) nicht erkannt. Die Überlastung (503) traf an diesem Morgen
+beide Modelle unregelmäßig: 3.6 Flash antwortete um 8:17 Uhr, 3.8 Flash um
+8:19 Uhr, beide verweigerten um 8:18 und 8:23 Uhr.

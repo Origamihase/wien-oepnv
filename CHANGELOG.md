@@ -41,8 +41,17 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
   36 h). Ein Pull Request auf den Wächter spielt ihn an 27.10. und 30.10.
   (bekannte Funde) und am aktuellen Feed ab; ein erster Probelauf mit Claude
   über die zehn aktuellen Meldungen erkannte alle vier bekannten Funde, auch
-  die zwei, die die Jules-Audits vom 27. bis 29.10. als „OK“ führten
-  (`docs/architecture.md` §1 „KI-Wächter“, `docs/reference/ki_waechter.md`).
+  die zwei, die die Jules-Audits vom 27. bis 29.10. als „OK“ führten.
+  Probelauf mit Gemini am 01.11. über je 24 Stunden: fünf Funde, alle
+  zutreffend, darunter zwei bis dahin unbekannte (Doppelung
+  „1/2/71/D: Veranstaltung“ neben „1/2/71/D: Nationalfeiertag“ am 26.10.;
+  „Continue via line 37 to High Wait.“ am 31.10., weil „bis Hohen Warte“ die
+  Maskierung des Haltestellennamens nicht traf); zwei bekannte Doppelungen
+  nicht erkannt, der Stand vom 30.10. wegen 503 nicht geprüft. Das Gate
+  zählt Anfragen seither nach der Startzeit des Jobs, weil ein erneut
+  gestarteter Lauf seine Anlegezeit behält und sechs Anfragen ungezählt
+  blieben (`docs/architecture.md` §1 „KI-Wächter“,
+  `docs/reference/ki_waechter.md`).
 * **Aufräumen nach dem Code-Audit (2026-10-31)**: Umsetzung der Empfehlung aus
   dem Code-Audit vom 31.10. (kein schwerer Fund, sechs niedrige Klassen; Michael:
   „Ja, Aufräum-PR bauen“). Skripte importieren Projektmodule nur noch über `src.`:
