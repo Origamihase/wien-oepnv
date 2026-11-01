@@ -1,6 +1,6 @@
 -r requirements.txt
 mypy>=2.4,<2.5
-ruff>=0.4.7,<0.5
+ruff>=0.17.3,<0.18
 bandit>=1.9.4,<2.0
 pip-audit>=2.7,<3
 hypothesis>=6.152.4
