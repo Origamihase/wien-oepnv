@@ -8,21 +8,8 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 01 Nov 2026 04:00:54 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 01 Nov 2026 04:30:45 +0100</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[N35: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">6081a41bc3963431b1a00dceee04be43a54c4da88f6eaac292d93c74ea4c9124</guid>
-      <pubDate>Sun, 01 Nov 2026 01:31:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sun, 01 Nov 2026 02:00:55 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 01 Nov 2026 01:31:00 +0100</ext:starts_at>
-      <description>Derzeit kommt es bei der Linie N35 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug. [Seit 01:31]</description>
-      <content:encoded><![CDATA[Derzeit kommt es bei der Linie N35 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 01:31]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[40A: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -148,6 +135,20 @@
       <ext:ends_at>Mon, 02 Nov 2026 05:00:00 +0100</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Rechte Nordbahngasse kommt es zu Verkehrsmaßnahmen bei den Linien 29A, 29B, 33A und N31. Maßnahmen: Linien 29A und 29B: Kurzführung … [Bis Mo 02.11.]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Rechte Nordbahngasse kommt es zu Verkehrsmaßnahmen bei den Linien 29A, 29B, 33A und N31. Maßnahmen: Linien 29A und 29B: Kurzführung …<br/>[Bis Mo 02.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[29A/29B: Kranarbeiten]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">481985865b3ca8fc88d3a172d3bb06ecd67edb9450d5ea380d1b88b5d82472fa</guid>
+      <pubDate>Sat, 31 Oct 2026 00:00:24 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 30 Oct 2026 21:00:53 +0100</ext:first_seen>
+      <ext:starts_at>Sat, 31 Oct 2026 00:00:27 +0100</ext:starts_at>
+      <ext:ends_at>Sun, 01 Nov 2026 23:59:59 +0100</ext:ends_at>
+      <description>Busse halten bei Schloßhofer Straße 25-31. [Heute]</description>
+      <content:encoded><![CDATA[Busse halten bei Schloßhofer Straße 25-31.<br/>[Heute]]]></content:encoded>
     </item>
   </channel>
 </rss>
