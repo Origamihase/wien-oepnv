@@ -1,39 +1,23 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-01T05:01:19.436810+00:00",
- "built": "2026-11-01T06:01:02+01:00",
+ "updated": "2026-11-01T05:31:16.284791+00:00",
+ "built": "2026-11-01T06:31:01+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-01T06:01:02+01:00",
+  "built": "2026-11-01T06:31:01+01:00",
   "items": [
    {
-    "title": "U1: Verspätungen",
-    "time_line": "Seit 05:49"
+    "title": "U1: Polizeieinsatz",
+    "time_line": "Seit 06:29"
    },
    {
-    "title": "2: Rettungseinsatz",
+    "title": "1/2: Rettungseinsatz",
     "time_line": "Seit 04:58"
    },
    {
-    "title": "13A: Polizeieinsatz",
-    "time_line": "Seit 31.10."
-   },
-   {
-    "title": "O: Feuerwehreinsatz",
-    "time_line": "Seit 31.10."
-   },
-   {
     "title": "Wien Franz-Josefs-Bahnhof ↔ Wien Heiligenstadt",
-    "time_line": "Heute"
-   },
-   {
-    "title": "1: Rettungseinsatz, Gleisbauarbeiten",
-    "time_line": "Seit heute"
-   },
-   {
-    "title": "S45: Wien Hütteldorf ↔ Wien Handelskai",
     "time_line": "Heute"
    },
    {
@@ -47,51 +31,27 @@
    {
     "title": "R40/REX41/REX4/S40: Wien Franz-Josefs-Bahnhof ↔ Tulln an der Donau",
     "time_line": "Bis Mi 04.11."
+   },
+   {
+    "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
+    "time_line": "Bis 30.11."
+   },
+   {
+    "title": "29A/33A/29B/N31: Bauarbeiten",
+    "time_line": "Bis Mo 02.11."
+   },
+   {
+    "title": "29A/29B: Kranarbeiten",
+    "time_line": "Heute"
+   },
+   {
+    "title": "5A/5B/N31: Obere Augartenstraße",
+    "time_line": "Bis 09.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-25T05:01:27.715315+00:00",
-   "raw": {
-    "wl-stoerungen": 81,
-    "wl-hinweise": 85,
-    "oebb": 159,
-    "baustellen-linien": 56,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 9,
-    "oebb": 135,
-    "baustellen": 71
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 110
-   }
-  },
-  {
-   "t": "2026-10-25T05:30:56.880819+00:00",
-   "raw": {
-    "wl-stoerungen": 81,
-    "wl-hinweise": 85,
-    "oebb": 159,
-    "baustellen-linien": 56,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 9,
-    "oebb": 135,
-    "baustellen": 71
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 110
-   }
-  },
   {
    "t": "2026-10-25T06:01:24.005111+00:00",
    "raw": {
@@ -6771,17 +6731,37 @@
     "oebb": 10,
     "wl": 97
    }
+  },
+  {
+   "t": "2026-11-01T05:31:16.284791+00:00",
+   "raw": {
+    "wl-stoerungen": 62,
+    "wl-hinweise": 74,
+    "oebb": 156,
+    "baustellen-linien": 57,
+    "baustellen-punkte": 18
+   },
+   "discarded": {
+    "wl": 14,
+    "oebb": 132,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 9,
+    "wl": 94
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-01T05:01:19.436810+00:00"
+   "last_ok": "2026-11-01T05:31:16.284791+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-01T05:01:19.436810+00:00"
+   "last_ok": "2026-11-01T05:31:16.284791+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-01T05:01:19.436810+00:00"
+   "last_ok": "2026-11-01T05:31:16.284791+00:00"
   }
  }
 }
