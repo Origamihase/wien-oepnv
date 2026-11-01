@@ -926,6 +926,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "36B: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 36B: Fahrtbehinderung in Richtung Leopoldau S U. Voraussichtliche Dauer: 13:45 Uhr. Grund: Polizeieinsatz im Bereich Bunsengasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "c5dfcbf0ac6f53f5aa46354637fce7a274f1b74d1ac997528825ebf6a42a925c",
+    "pubDate": "2026-11-01T13:10:00+01:00",
+    "starts_at": "2026-11-01T13:21:13+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=36B|D=2026-11-01|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261101-0015"
+    ],
+    "_incident_start": "2026-11-01T13:10:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
