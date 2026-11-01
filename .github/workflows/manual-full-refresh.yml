@@ -106,10 +106,10 @@ jobs:
             huggingface-${{ runner.os }}-
 
       # PyTorch (CPU-only wheel) — installed BEFORE the project
-      # requirements so the transformers pipeline shipped in
+      # requirements so the transformers package shipped in
       # ``requirements.txt`` finds a working torch backend. Without
-      # this step ``pipeline("translation_de_to_en", …)`` raises a
-      # ``RuntimeError`` and every EN-feed item degrades to the
+      # this step the translator load (``_load_translator``) fails
+      # and every EN-feed item degrades to the
       # ``[Partially translated]`` marker.
       - name: Install PyTorch (CPU-only)
         run: pip install torch --index-url https://download.pytorch.org/whl/cpu

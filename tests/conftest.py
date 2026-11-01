@@ -33,8 +33,8 @@ root = Path(__file__).resolve().parents[1]
 if str(root) not in sys.path:
     sys.path.insert(0, str(root))
 
-# The English feed build asks ``transformers.pipeline`` for the translation
-# model, and transformers fetches the model's ``config.json`` from
+# The English feed build asks ``transformers`` for the translation model
+# (``src.build_feed._load_translator``), and transformers fetches the model's ``config.json`` from
 # huggingface.co unless the pinned revision is in the local cache. A fresh CI
 # runner has no such cache, so every test that built the EN feed without a
 # stub went to the network; ``_no_network`` below refuses that, after about
@@ -475,6 +475,22 @@ def time_line_today(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(
         build_feed, "format_local_times", partial(build_feed.format_local_times, now=today)
     )
+
+
+@pytest.fixture(autouse=True)
+def isolate_translation_status(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Iterator[None]:
+    """Keep ``data/translation_status.json`` out of test runs.
+
+    Every build that touches the translator records whether it loaded
+    (``build_feed._record_translation_status``, read by the Health check).
+    Tests drive builds with a stub translator; without this guard they would
+    rewrite the committed record. The variable (not a module attribute) is
+    set because some tests ``importlib.reload`` the build module. Outside
+    the allowed roots the write is refused and logged; tests of the record
+    itself ``chdir`` into *tmp_path* so ``validate_path`` accepts the path.
+    """
+    monkeypatch.setenv("TRANSLATION_STATUS_PATH", str(tmp_path / "data" / "translation_status.json"))
+    yield
 
 
 @pytest.fixture(autouse=True)

@@ -64,6 +64,11 @@ only when the fetch is broken, never because no train runs).
    German feed broke in the last run. A finding is a note, never red; a
    watcher that could not check is red (see :func:`check_feed_watch`).
 
+   **Übersetzung** (``data/translation_status.json``, written by every build
+   that needs the translation model): a model that did not load is a note
+   for one build and red from the second in a row (operator decision
+   2026-11-01; see :func:`check_translation`).
+
    **Nebenschritte** (``data/side_steps/``, written by
    ``scripts/record_side_steps.py``): statistics, line check, Feed-Wächter
    and HAFAS station lines run with ``continue-on-error``; the daily
@@ -918,6 +923,46 @@ def check_feed_watch(now: datetime) -> Check:
     )
 
 
+TRANSLATION_STATUS = REPO_ROOT / "data" / "translation_status.json"
+
+
+def check_translation(now: datetime) -> Check:
+    """Show whether the last build that needed the translation model loaded it.
+
+    Every build that needs the model records the outcome
+    (``src.build_feed._record_translation_status``). A model that cannot load
+    turns the EN feed into a German copy for every new item; until 2026-11-01
+    that was only a WARNING line in the log (Dependabot #2114: with
+    ``transformers`` 5 the old pipeline task was gone, the PR check stayed
+    green). Operator decision 2026-11-01 ("Ja, Umstieg bauen"): the first
+    failed build is a note (a single failed torch download heals on the next
+    tick), red from the second failed build in a row. A missing record stays
+    a note: builds whose EN texts all come from the cache do not load the
+    model and write nothing.
+    """
+    name = "Übersetzung"
+    data = read_capped_json(TRANSLATION_STATUS, label="translation_status")
+    if not isinstance(data, dict):
+        return Check(name, ok=True, note=True,
+                     summary="HINWEIS — noch kein Übersetzungsstatus "
+                     "(data/translation_status.json fehlt oder ist unlesbar)")
+    updated = _parse_utc(data.get("updated"))
+    when = f"Stand {_vienna_hhmm(updated)}" if updated else "Zeitpunkt unbekannt"
+    failed = data.get("failed_builds")
+    failed_builds = failed if isinstance(failed, int) and not isinstance(failed, bool) else 0
+    if data.get("loaded") is True:
+        return Check(name, ok=True, summary=f"OK — Übersetzungsmodell geladen ({when})")
+    detail = str(data.get("error") or "")[:200]
+    if failed_builds >= 2:
+        return Check(name, ok=False,
+                     summary=f"FEHLER — Übersetzungsmodell lädt nicht, {failed_builds} Builds "
+                     f"in Folge; neue EN-Meldungen bleiben deutsch ({when})",
+                     detail=detail)
+    return Check(name, ok=True, note=True,
+                 summary=f"HINWEIS — Übersetzungsmodell lud im letzten Build nicht ({when})",
+                 detail=detail)
+
+
 # One record per workflow, written by ``scripts/record_side_steps.py`` at the
 # end of the run (file name, workflow, oldest age before the record itself
 # counts as missing: the workflow's own freshness limit).
@@ -1487,6 +1532,7 @@ def main() -> int:
         check_stammstrecke_abruf(now),
         check_stammstrecke_directions(now),
         check_feed_watch(now),
+        check_translation(now),
         check_side_steps(now),
         check_tooling_runs(now),
     ]

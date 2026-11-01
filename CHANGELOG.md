@@ -118,6 +118,35 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
     `docs/` enthielt keinen solchen Fall. Ein echter Build von `docs/` mit
     dem Gem `github-pages` 232 läuft ohne Fehler.
 
+* **Übersetzung auf `transformers` 5, Ladefehler fällt im Health check auf
+  (2026-11-01)**: Dependabot schlug `transformers` 5 vor (#2114). Damit lud
+  die Übersetzung nicht mehr, weil `transformers` 5 die Pipeline-Aufgabe
+  `translation_de_to_en` entfernt hat. Der EN-Feed wäre für jede neue Meldung
+  still deutsch geblieben, der Check „build“ am PR war trotzdem grün.
+  Michael entschied am 01.11. auf der Karte: „Ja, Umstieg bauen“.
+  - Der Feed ruft das Marian-Modell jetzt direkt auf (`_MarianTranslator`:
+    Tokenizer, `generate`, Dekodieren), in derselben festen Revision.
+    `transformers` ab 5.22.1 und unter 6.
+  - Gleiche Übersetzungen: Alle 792 Modelleingaben der 3.003 EN-Texte seit
+    Juli ergeben dieselbe Ausgabe wie die Pipeline unter 4.57.6. Die Epoche
+    des Übersetzungs-Caches bleibt.
+  - `pip-audit` läuft ohne Ausnahmeliste. Die 14 Einträge galten der 4.x-Reihe;
+    für 5.22.1 meldet OSV keinen Hinweis.
+  - Neue Health-check-Prüfung `Übersetzung` (`data/translation_status.json`,
+    geschrieben von jedem Build, der das Modell braucht): Lud es nicht, ist das
+    ein Hinweis, ab dem zweiten Build in Folge rot.
+  - Nachtrag: Unter `transformers` 5 stand in der Ladezeile „Revision
+    unbekannt“, weil 5 den Commit nicht mehr an der Modellkonfiguration
+    ablegt. Die Zeile nennt ihn jetzt aus dem Snapshot-Ordner des Caches
+    (`_loaded_commit`).
+  - Dependabot-Updates vom 01.11., zweite Runde: `pip-audit` ab 2.10.1
+    (#2111), `responses` ab 0.26.3 (#2112), `pre-commit` ab 4.7.0 (#2113),
+    `hypothesis` ab 6.170.13 (#2115). Die CI installierte diese Versionen schon
+    vorher. Beim Merge von #2115 blieben die alten Zeilen von `pip-audit` und
+    `hypothesis` stehen; sie sind gestrichen. Ein neuer Test
+    (`tests/test_requirements_unique.py`) wird rot, wenn ein Paket in einer
+    requirements-Datei zweimal steht.
+
 * **Monatliche Abhängigkeits-Updates und volle Versionskommentare der
   Actions (2026-11-01)**: Michael hat die neun Dependabot-PRs vom 01.11. nach
   Prüfung gemergt. Keiner ändert den Feed.

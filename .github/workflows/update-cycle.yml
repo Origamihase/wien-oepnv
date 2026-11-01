@@ -301,10 +301,11 @@ jobs:
         # have built. Other workflows continue to use the composite.
         #
         # PyTorch (CPU-only wheel) is installed BEFORE the project
-        # requirements file so the transformers pipeline shipped in
+        # requirements file so the transformers package shipped in
         # ``requirements.txt`` finds a working torch backend at runtime.
-        # Without this step ``pipeline("translation_de_to_en", …)``
-        # raises ``RuntimeError: Models won't be available`` and every
+        # Without this step the translator load (``_load_translator``)
+        # fails (with transformers 4: ``RuntimeError: Models won't be
+        # available``) and every
         # EN-feed item degrades to the ``[Partially translated]``
         # marker (root cause of the partially-untranslated live feed
         # on 2026-05-21). Once the venv is cached the torch wheel sits
