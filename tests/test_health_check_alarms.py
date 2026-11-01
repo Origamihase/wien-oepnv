@@ -15,6 +15,7 @@ import json
 from datetime import UTC, datetime, timedelta
 from email.utils import format_datetime
 from pathlib import Path
+from urllib.parse import parse_qs
 
 import pytest
 
@@ -635,14 +636,33 @@ def test_the_update_run_starts_the_health_check_once_an_hour() -> None:
 # --- Werkzeuge: the latest run of a pull-request workflow (Fund B, 31.10.) ---
 
 
+class _Listing:
+    """Runs as the Actions API serves them: by ``created_at``, newest first,
+    only the page the query asks for (``per_page``, ``page``). Registered
+    under the path without its query, so a smaller page size or a missing
+    page parameter changes what the check reads."""
+
+    def __init__(self, runs: list[dict[str, object]]) -> None:
+        self.runs = runs
+
+    def answer(self, query: str) -> dict[str, object]:
+        asked = parse_qs(query)
+        per_page, page = int(asked["per_page"][0]), int(asked.get("page", ["1"])[0])
+        ordered = sorted(self.runs, key=lambda run: str(run["created_at"]), reverse=True)
+        return {"workflow_runs": ordered[(page - 1) * per_page : page * per_page]}
+
+
 def _runs(monkeypatch: pytest.MonkeyPatch, by_path: dict[str, object]) -> list[str]:
     seen: list[str] = []
 
     def api(path: str) -> object:
         seen.append(path)
-        value = by_path[path]
+        base, _, query = path.partition("?")
+        value = by_path[path] if path in by_path else by_path[base]
         if isinstance(value, BaseException):
             raise value
+        if isinstance(value, _Listing):
+            return value.answer(query)
         return value
 
     monkeypatch.setattr(hc, "_github_api_json", api)
@@ -713,6 +733,67 @@ def test_the_latest_review_run_is_chosen_by_run_number(monkeypatch: pytest.Monke
     first["conclusion"], third["conclusion"] = "success", "failure"
     check = hc.check_tooling_runs(_NOW)
     assert not check.ok and "actions/runs/12" in check.summary
+
+
+def _review(number: int, conclusion: str) -> dict[str, object]:
+    return {"run_number": number, "id": number, "conclusion": conclusion,
+            "updated_at": (_NOW - timedelta(minutes=50)).isoformat(),
+            "html_url": f"https://github.com/Origamihase/wien-oepnv/actions/runs/{number}"}
+
+
+@pytest.mark.parametrize("before", ["failure", "success"])
+def test_skipped_dependabot_runs_do_not_hide_the_last_review(
+    monkeypatch: pytest.MonkeyPatch, before: str
+) -> None:
+    """01.11.2026: Dependabot rebased nine pull requests in a row (#508-#516),
+    and the Code-Review skips them (no secrets); the review before them counts."""
+    skipped = [_review(number, "skipped") for number in range(516, 507, -1)]
+    _runs(monkeypatch, {_REVIEW_RUNS: {"workflow_runs": [*skipped, _review(507, before)]}})
+    check = hc.check_tooling_runs(_NOW)
+    if before == "failure":
+        assert not check.ok and "actions/runs/507" in check.summary, check.summary
+    else:
+        assert check.ok and not check.note, check.summary
+
+
+def test_a_window_of_only_skipped_runs_is_a_note(monkeypatch: pytest.MonkeyPatch) -> None:
+    runs = [_review(number, "skipped") for number in range(hc.TOOLING_RUNS_PER_PAGE, 0, -1)]
+    _runs(monkeypatch, {_REVIEW_RUNS: {"workflow_runs": runs}})
+    check = hc.check_tooling_runs(_NOW)
+    assert check.ok and check.note and "letzter Lauf skipped" in check.summary
+
+
+def test_dependabot_bursts_fit_into_the_tooling_window() -> None:
+    import yaml
+
+    root = Path(__file__).resolve().parents[1]
+    config = yaml.safe_load((root / ".github/dependabot.yml").read_text(encoding="utf-8"))
+    open_limit = sum(int(update.get("open-pull-requests-limit", 5)) for update in config["updates"])
+    assert hc.TOOLING_RUNS_PER_PAGE > open_limit
+
+
+def test_the_review_runs_read_reach_past_the_runs_listed_an_hour_late(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """01.11.2026, 09:25 UTC: the API listed #521, #520 and #519 (created
+    08:25-08:34 UTC, shown 09:26-09:34) before #522 (09:20 UTC). Reading
+    only the first listed run picks #521."""
+    def review(number: int, created: datetime, conclusion: str) -> dict[str, object]:
+        return {"run_number": number, "id": number, "conclusion": conclusion,
+                "created_at": created.isoformat(), "updated_at": created.isoformat(),
+                "html_url": f"https://github.com/Origamihase/wien-oepnv/actions/runs/{number}"}
+
+    runs = [review(522, _NOW - timedelta(minutes=5), "failure")] + [
+        review(number, _NOW + timedelta(minutes=minutes), "success")
+        for number, minutes in ((521, 9), (520, 5), (519, 1))
+    ]
+    _runs(monkeypatch, {"/actions/workflows/claude-code-review.yml/runs": _Listing(runs)})
+    check = hc.check_tooling_runs(_NOW)
+    assert not check.ok and check.summary.endswith("/actions/runs/522"), check.summary
+
+    runs[0]["conclusion"], runs[1]["conclusion"] = "success", "failure"
+    check = hc.check_tooling_runs(_NOW)
+    assert check.ok and not check.note, check.summary
 
 
 def test_an_unreachable_actions_api_is_a_note(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -834,18 +915,45 @@ def _jobs(failed_step: str | None) -> dict[str, object]:
 
     return {
         "jobs": [
-            {"name": "build", "steps": steps(build_steps)},
-            {"name": "deploy", "steps": steps(deploy_steps)},
+            {"id": 7001, "name": "build", "steps": steps(build_steps)},
+            {"id": 7002, "name": "deploy", "steps": steps(deploy_steps)},
         ]
     }
 
 
+_BUILD_ANNOTATIONS = "/check-runs/7001/annotations?per_page=50"
+
+
+def _annotation(tail: str) -> list[dict[str, object]]:
+    """The error annotation of a failed Jekyll step: the build's output on
+    one line, as actions/jekyll-build-pages 1.0.13 writes it."""
+    return [
+        {"annotation_level": "warning", "message": "Node.js 20 is deprecated."},
+        {"annotation_level": "failure",
+         "message": " Logging at level: debug GitHub Pages: github-pages v232 ... Layout source: theme "
+                    "GitHub Metadata: Calling @client.repository(\"Origamihase/wien-oepnv\", "
+                    "{:accept=>\"application/vnd.github.drax-preview+json\"}) github-pages 232 | " + tail},
+    ]
+
+
 def _pages(monkeypatch: pytest.MonkeyPatch, runs: list[dict[str, object]],
            jobs: dict[int, object] | None = None, *more_pages: object) -> list[str]:
-    by_path: dict[str, object] = {_WORKFLOWS: _PAGES_WORKFLOW, _PAGES_RUNS: {"workflow_runs": runs}}
+    # The build job's annotations name no error of GitHub's API.
+    by_path: dict[str, object] = {_WORKFLOWS: _PAGES_WORKFLOW, _PAGES_RUNS: {"workflow_runs": runs},
+                                  _BUILD_ANNOTATIONS: []}
     for page, value in enumerate(more_pages, start=2):
         by_path[_pages_page(page)] = value
     for run_id, value in (jobs or {}).items():
+        by_path[f"/actions/runs/{run_id}/jobs?per_page=20"] = value
+    return _runs(monkeypatch, by_path)
+
+
+def _pages_annotated(monkeypatch: pytest.MonkeyPatch, runs: list[dict[str, object]],
+                     jobs: dict[int, object], annotations: object) -> list[str]:
+    """Like :func:`_pages`, and the build job's annotations answer *annotations*."""
+    by_path: dict[str, object] = {_WORKFLOWS: _PAGES_WORKFLOW, _PAGES_RUNS: {"workflow_runs": runs},
+                                  _BUILD_ANNOTATIONS: annotations}
+    for run_id, value in jobs.items():
         by_path[f"/actions/runs/{run_id}/jobs?per_page=20"] = value
     return _runs(monkeypatch, by_path)
 
@@ -903,6 +1011,71 @@ def test_one_failure_on_githubs_side_is_a_note(monkeypatch: pytest.MonkeyPatch, 
     )
 
 
+@pytest.mark.parametrize(
+    "tail",
+    [
+        # Pages run #23181, 16.07.2026 22:31 UTC (and #23182, #23183): the next run built.
+        "Error: GET https://api.github.com/repos/Origamihase/wien-oepnv: 503 - <!DOCTYPE html>",
+        # Pages run #20334, 23.05.2026 10:01 UTC: the next run, five minutes later, built.
+        "Error: The GitHub API credentials you provided aren't valid. ",
+        # jekyll-github-metadata 2.16.1 asks for /pages first; Octokit::BadGateway.
+        "Error:  GET https://api.github.com/repos/Origamihase/wien-oepnv/pages: 502 - Server Error",
+    ],
+)
+def test_one_jekyll_failure_on_githubs_api_is_a_note(monkeypatch: pytest.MonkeyPatch, tail: str) -> None:
+    seen = _pages_annotated(monkeypatch, [_pages_run(3, "failure", 20), _pages_run(2, "success", 50)],
+                            {3: _jobs("Build with Jekyll")}, _annotation(tail))
+    check = hc.check_pages_build(_NOW)
+    assert check.ok and check.note, check.summary
+    assert check.summary == (
+        "HINWEIS — Jekyll-Build an GitHubs API gescheitert am 28.10. 12:41; der nächste Lauf baut neu"
+    )
+    assert _BUILD_ANNOTATIONS in seen
+
+
+def test_two_jekyll_failures_on_githubs_api_in_a_row_are_red(monkeypatch: pytest.MonkeyPatch) -> None:
+    """16.07.2026: three runs in a row failed on a 503 of the API (22:31-23:31 UTC)."""
+    runs = [_pages_run(4, "failure", 20), _pages_run(3, "failure", 50), _pages_run(2, "success", 80)]
+    _pages_annotated(monkeypatch, runs, {4: _jobs("Build with Jekyll")}, _annotation(
+        "Error: GET https://api.github.com/repos/Origamihase/wien-oepnv: 503 - <!DOCTYPE html>"))
+    check = hc.check_pages_build(_NOW)
+    assert not check.ok
+    assert check.summary == (
+        "FEHLER — Jekyll-Build an GitHubs API gescheitert am 28.10. 12:41, 2 Läufe in Folge seit "
+        "28.10. 12:10; GitHub Pages liefert den alten Stand aus"
+    )
+
+
+@pytest.mark.parametrize(
+    "annotations",
+    [
+        # 01.11.2026: the output was cut at 4096 characters before the error.
+        [{"annotation_level": "failure", "message": " Logging at level: debug ... Rendering: reference/trip.md"}],
+        _annotation("Error:  Liquid syntax error (line 1): Unknown tag 'endraw'"),
+        # A warning that quotes the API is not the step's error.
+        [{"annotation_level": "warning",
+          "message": "github-pages 232 | Error: GET https://api.github.com/repos/x/y: 503 - x"}],
+        RuntimeError("HTTP 403 Resource not accessible by integration"),
+        {"message": "Not Found"},
+    ],
+)
+def test_a_jekyll_failure_not_shown_to_be_githubs_api_stays_red(
+    monkeypatch: pytest.MonkeyPatch, annotations: object
+) -> None:
+    _pages_annotated(monkeypatch, [_pages_run(3, "failure", 20), _pages_run(2, "success", 50)],
+                     {3: _jobs("Build with Jekyll")}, annotations)
+    check = hc.check_pages_build(_NOW)
+    assert not check.ok
+    assert "Jekyll-Build gescheitert am 28.10. 12:41 (Inhalt unter docs/ prüfen)" in check.summary
+
+
+def test_the_health_check_may_read_the_annotations() -> None:
+    health = (Path(__file__).resolve().parents[1] / ".github" / "workflows" / "health-check.yml").read_text(
+        encoding="utf-8"
+    )
+    assert "checks: read" in health
+
+
 def test_two_failures_on_githubs_side_in_a_row_are_red(monkeypatch: pytest.MonkeyPatch) -> None:
     runs = [_pages_run(4, "failure", 20), _pages_run(3, "failure", 50), _pages_run(2, "success", 80)]
     _pages(monkeypatch, runs, {4: _jobs("Deploy to GitHub Pages")})
@@ -932,8 +1105,9 @@ def _failed_page(page: int) -> dict[str, object]:
 
 
 def test_while_every_run_read_failed_the_next_page_is_read(monkeypatch: pytest.MonkeyPatch) -> None:
-    """01.11.2026, 11:02: the 20 runs before reached back only to 10:30 (merges
-    came in), so the start of the streak (#2092, 08:43) lay on the next page."""
+    """01.11.2026, 10:02 UTC: the 20 runs before reached back only to 08:30
+    UTC (merges came in), so the start of the streak (#2092, 07:43 UTC) lay
+    on the next page."""
     page1 = _failed_page(1)["workflow_runs"]
     assert isinstance(page1, list)
     page2 = [_pages_run(980, "failure", 150, "Merge pull request #2092 from Origamihase/x"),
@@ -943,7 +1117,8 @@ def test_while_every_run_read_failed_the_next_page_is_read(monkeypatch: pytest.M
     assert not check.ok
     assert f", {hc.PAGES_RUNS_PER_PAGE + 1} Läufe in Folge seit 28.10. 10:30 (Inhalt" in check.summary
     assert check.detail.startswith("zuerst nach Commit „Merge pull request #2092 from Origamihase/x“")
-    assert seen == [_WORKFLOWS, _PAGES_RUNS, _pages_page(2), "/actions/runs/1000/jobs?per_page=20"]
+    assert seen == [_WORKFLOWS, _PAGES_RUNS, _pages_page(2), "/actions/runs/1000/jobs?per_page=20",
+                    _BUILD_ANNOTATIONS]
 
 
 def test_a_streak_longer_than_the_runs_read_says_at_least(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -959,6 +1134,56 @@ def test_a_streak_longer_than_the_runs_read_says_at_least(monkeypatch: pytest.Mo
     assert _pages_page(hc.PAGES_MAX_PAGES + 1) not in seen
 
 
+def test_a_success_listed_ahead_of_newer_runs_does_not_end_the_reading(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """01.11.2026: the API listed #29084 (created 08:56 UTC) as 09:56 UTC,
+    ahead of the runs of 09:00-09:55 UTC. Had it succeeded and the build
+    broken with the next run, page 1 would have held that success and page 2
+    the first failed run: the streak counted from page 1 alone was one short
+    and named the wrong commit."""
+    page1 = [_pages_run(n, "failure", 10 + 5 * (120 - n)) for n in range(120, 101, -1)]
+    page1.insert(10, _pages_run(100, "success", 55))
+    assert len(page1) == hc.PAGES_RUNS_PER_PAGE
+    page2 = [_pages_run(101, "failure", 120, "Merge pull request #2092 from Origamihase/x"),
+             _pages_run(99, "success", 130)]
+    seen = _pages(monkeypatch, page1, {120: _jobs("Build with Jekyll")}, {"workflow_runs": page2})
+    check = hc.check_pages_build(_NOW)
+    assert not check.ok
+    assert ", 20 Läufe in Folge seit 28.10. 11:00 (Inhalt" in check.summary
+    assert check.detail.startswith("zuerst nach Commit „Merge pull request #2092 from Origamihase/x“")
+    assert _pages_page(2) in seen
+
+
+def test_cancelled_runs_take_places_on_a_page_and_the_next_page_is_read(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """01.11.2026, from 09:53 UTC: 17 failed and 3 cancelled runs filled
+    page 1; the start of the streak lay on page 2."""
+    page1 = [_pages_run(1000 - i, "cancelled" if i in (3, 8, 9) else "failure", 10 + 5 * i)
+             for i in range(hc.PAGES_RUNS_PER_PAGE)]
+    page2 = [_pages_run(980, "failure", 150, "Merge pull request #2092 from Origamihase/x"),
+             _pages_run(979, "success", 160)]
+    seen = _pages(monkeypatch, page1, {1000: _jobs("Build with Jekyll")}, {"workflow_runs": page2})
+    check = hc.check_pages_build(_NOW)
+    assert not check.ok and ", 18 Läufe in Folge seit" in check.summary, check.summary
+    assert check.detail.startswith("zuerst nach Commit „Merge pull request #2092 from Origamihase/x“")
+    assert _pages_page(2) in seen
+
+
+def test_a_run_listed_on_two_pages_counts_once(monkeypatch: pytest.MonkeyPatch) -> None:
+    """A run that finishes between two page requests moves every run down by
+    one, so the last run of page 1 comes back first on page 2."""
+    page1 = _failed_page(1)["workflow_runs"]
+    assert isinstance(page1, list)
+    page2 = [page1[-1], _pages_run(980, "failure", 150, "Merge pull request #2092 from Origamihase/x"),
+             _pages_run(979, "success", 160)]
+    _pages(monkeypatch, page1, {1000: _jobs("Build with Jekyll")}, {"workflow_runs": page2})
+    check = hc.check_pages_build(_NOW)
+    assert not check.ok
+    assert f", {hc.PAGES_RUNS_PER_PAGE + 1} Läufe in Folge seit 28.10. 10:30 (Inhalt" in check.summary
+
+
 def test_a_later_page_that_does_not_answer_keeps_what_was_read(monkeypatch: pytest.MonkeyPatch) -> None:
     first = _failed_page(1)["workflow_runs"]
     assert isinstance(first, list)
@@ -966,6 +1191,24 @@ def test_a_later_page_that_does_not_answer_keeps_what_was_read(monkeypatch: pyte
     check = hc.check_pages_build(_NOW)
     assert not check.ok
     assert f"mindestens {hc.PAGES_RUNS_PER_PAGE} Läufe in Folge (Inhalt" in check.summary
+
+
+def test_a_good_run_on_a_full_first_page_ends_the_reading(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Each further page is some 300 KB and one more call per check."""
+    runs = [_pages_run(1000, "failure", 10)] + [_pages_run(999 - i, "success", 40 + 30 * i) for i in range(30)]
+    seen = _runs(monkeypatch, {_WORKFLOWS: _PAGES_WORKFLOW, "/actions/workflows/189040121/runs": _Listing(runs),
+                               "/actions/runs/1000/jobs?per_page=20": _jobs("Build with Jekyll"),
+                               _BUILD_ANNOTATIONS: []})
+    check = hc.check_pages_build(_NOW)
+    assert not check.ok
+    assert seen == [_WORKFLOWS, _PAGES_RUNS, "/actions/runs/1000/jobs?per_page=20", _BUILD_ANNOTATIONS]
+
+
+def test_a_first_page_that_does_not_answer_is_a_note_that_says_so(monkeypatch: pytest.MonkeyPatch) -> None:
+    _runs(monkeypatch, {_WORKFLOWS: _PAGES_WORKFLOW, _PAGES_RUNS: RuntimeError("HTTP 502")})
+    check = hc.check_pages_build(_NOW)
+    assert check.ok and check.note
+    assert check.summary == "HINWEIS — Actions-API nicht abgefragt (RuntimeError: HTTP 502)"
 
 
 def test_a_page_that_is_not_full_ends_the_reading(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -997,7 +1240,8 @@ def test_the_latest_pages_run_is_chosen_by_run_number(monkeypatch: pytest.Monkey
 
 
 def test_a_run_time_after_the_check_is_left_out(monkeypatch: pytest.MonkeyPatch) -> None:
-    """01.11.2026, 10:01: run #29084 had ended at 09:57, the API said 10:57."""
+    """01.11.2026, 09:01 UTC: run #29084 had ended at 08:57 UTC, the API
+    said 09:57 UTC."""
     late = _pages_run(4, "failure", -50)
     _pages(monkeypatch, [late, _pages_run(3, "failure", 20), _pages_run(2, "success", 50)],
            {4: _jobs("Build with Jekyll")})
@@ -1008,6 +1252,17 @@ def test_a_run_time_after_the_check_is_left_out(monkeypatch: pytest.MonkeyPatch)
     _runs(monkeypatch, {_REVIEW_RUNS: _run("success", _NOW + timedelta(minutes=60))})
     check = hc.check_tooling_runs(_NOW)
     assert check.ok and check.summary == "OK — Code-Review zuletzt sauber"
+
+    # A run that ended while the check ran keeps its time.
+    _runs(monkeypatch, {_REVIEW_RUNS: _run("success", _NOW + timedelta(minutes=3))})
+    check = hc.check_tooling_runs(_NOW)
+    assert check.summary == "OK — Code-Review zuletzt sauber am 28.10. 13:03"
+
+    # A streak whose first run the API dates after the check: no start time.
+    _pages(monkeypatch, [_pages_run(5, "failure", -50), _pages_run(4, "failure", -40), _pages_run(3, "success", 80)],
+           {5: _jobs("Build with Jekyll")})
+    check = hc.check_pages_build(_NOW)
+    assert check.summary.startswith("FEHLER — Jekyll-Build gescheitert, 2 Läufe in Folge (Inhalt"), check.summary
 
 
 def test_one_failed_jekyll_build_with_nothing_before_names_the_commit(monkeypatch: pytest.MonkeyPatch) -> None:

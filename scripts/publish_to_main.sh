@@ -97,6 +97,11 @@ export GIT_HTTP_LOW_SPEED_TIME="${GIT_HTTP_LOW_SPEED_TIME:-30}"
 git config user.name "github-actions[bot]"
 git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+# One interpreter for every check below (steps 1 and 2b): setup-python
+# provides ``python``, a bare system often only ``python3``. Empty when
+# neither is on PATH.
+python_bin="$(command -v python || command -v python3 || true)"
+
 # 1) Never ship a malformed or empty feed.
 if [ "${validate_feeds}" -eq 1 ]; then
   for feed in docs/feed.xml docs/feed.en.xml; do
@@ -105,7 +110,11 @@ if [ "${validate_feeds}" -eq 1 ]; then
       echo "::warning title=feed-validate::${feed} is empty — skipping publish (last good feed stays online)."
       exit 0
     fi
-    if ! python -c "import sys, xml.etree.ElementTree as ET; ET.parse(sys.argv[1])" "${feed}"; then
+    if [ -z "${python_bin}" ]; then
+      echo "::warning title=feed-validate::${feed} not checked: no python on PATH — skipping publish (last good feed stays online)."
+      exit 0
+    fi
+    if ! "${python_bin}" -c "import sys, xml.etree.ElementTree as ET; ET.parse(sys.argv[1])" "${feed}"; then
       echo "::warning title=feed-validate::${feed} is not well-formed XML — skipping publish (last good feed stays online)."
       exit 0
     fi
@@ -140,24 +149,29 @@ fi
 mapfile -d '' -t staged_docs < <(git diff --cached --name-only -z --diff-filter=d -- docs/)
 if [ "${#staged_docs[@]}" -gt 0 ]; then
   liquid_py="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/src/utils/liquid.py"
-  liquid_python="$(command -v python || command -v python3 || true)"
   liquid_out="$(mktemp)"
   liquid_status=1
-  if [ -n "${liquid_python}" ]; then
+  if [ -n "${python_bin}" ]; then
     printf '%s\0' "${staged_docs[@]}" \
-      | "${liquid_python}" "${liquid_py}" --fix --null --docs-root docs > "${liquid_out}"
+      | "${python_bin}" "${liquid_py}" --fix --null --docs-root docs > "${liquid_out}"
     liquid_status=$?
   fi
   # Entries are written as each page is rewritten (for a symlink: its
-  # target): stage them even when the check stopped halfway. Exit 2 means a
-  # page could not be read and was passed over.
+  # target): stage them even when the check stopped halfway. Exit 2 means
+  # liquid.py passed over a page it could not read and named it on stderr;
+  # any other non-zero status means it did not run or stopped early and
+  # named nothing beyond the entries.
   while IFS= read -r -d '' entry; do
     echo "::warning title=${label}::Liquid in ${entry%:*} (line ${entry##*:}) made inert before publishing, so the Pages build cannot stop on it."
     git add -- "${entry%:*}"
   done < "${liquid_out}"
   rm -f "${liquid_out}"
-  if [ "${liquid_status}" -ne 0 ]; then
-    echo "::warning title=${label}::Liquid check did not cover every staged page under docs/ (liquid.py names them in the log); those are published unchecked."
+  if [ -z "${python_bin}" ]; then
+    echo "::warning title=${label}::Liquid check skipped: no python on PATH; the staged pages under docs/ are published unchecked."
+  elif [ "${liquid_status}" -eq 2 ]; then
+    echo "::warning title=${label}::Liquid check passed over staged pages under docs/ it could not read (liquid.py names them in the log); those are published unchecked."
+  elif [ "${liquid_status}" -ne 0 ]; then
+    echo "::warning title=${label}::Liquid check stopped (liquid.py exit ${liquid_status}); staged pages under docs/ not named above may be published unchecked."
   fi
 fi
 git commit -q -m "${message}"

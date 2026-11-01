@@ -1017,14 +1017,18 @@ TOOLING_WORKFLOWS: tuple[tuple[str, str], ...] = (
 GITHUB_API_MAX_BYTES = 1024 * 1024
 # Runs read per tooling workflow: the newest is chosen by run number (see
 # _newest_first), and a run the API lists an hour late can stand only ahead
-# of the runs of the following hour.
-TOOLING_RUNS_PER_PAGE = 10
+# of the runs of the following hour. Runs GitHub skipped do not count, and
+# Dependabot can skip one run per open pull request in a row (up to 10 open
+# by .github/dependabot.yml; 9 in a row on 2026-11-01). 30 runs were some
+# 410 to 480 KB on 2026-11-01, under GITHUB_API_MAX_BYTES.
+TOOLING_RUNS_PER_PAGE = 30
 
 
 def _github_api_json(path: str) -> Any:
     """GET ``/repos/<GITHUB_REPOSITORY><path>`` from the GitHub API as JSON.
 
-    Read-only, with the run's own ``GITHUB_TOKEN`` (``actions: read``). Raises
+    Read-only, with the run's own ``GITHUB_TOKEN`` (``actions: read``; the
+    annotations of a check run need ``checks: read``). Raises
     on a missing token or repository, on an HTTP error and on bad JSON; the
     caller turns every exception into a note.
     """
@@ -1075,13 +1079,20 @@ def _conclusion(run: dict[str, Any]) -> str:
     return str(run.get("conclusion") or "")
 
 
+# Conclusions of a run that did not run: GitHub skipped it (a job-level
+# ``if``, such as Dependabot and fork pull requests on the Code-Review) or
+# cancelled it. Such a run says nothing about the tool or the build.
+_NOT_RUN = frozenset({"cancelled", "skipped", "neutral"})
+
+
 def _run_time(raw: object, now: datetime) -> str:
     """An Actions API time in Vienna time, or ``""``.
 
     A time after the check cannot be right: on 2026-11-01 the API gave the
     runs of 08:00-08:59 UTC their times one hour late (see
-    :func:`_newest_first`), so at 10:01 a run that had ended at 09:57 read
-    10:57. Such a time is left out rather than shown.
+    :func:`_newest_first`), so at the check of 09:01 UTC a run that had
+    ended at 08:57 UTC read 09:57 UTC (10:57 Vienna time). Such a time is
+    left out rather than shown.
     """
     moment = _parse_utc(raw)
     if moment is None or moment > now + timedelta(minutes=5):
@@ -1099,10 +1110,12 @@ def check_tooling_runs(now: datetime) -> Check:
     ran with ``continue-on-error`` until 2026-10-31, so an expired token left
     only a green check without comments (Architektur-Review 2026-10-31,
     Fund B). Now the run fails, and this check reads the conclusion of the
-    latest completed run (by run number, see :func:`_newest_first`):
-    ``success`` is green, a cancelled or skipped run is
-    a note, every other conclusion (``failure``, ``timed_out``,
-    ``startup_failure``) is red and names the run. An API that cannot be
+    latest completed run that ran (by run number, see :func:`_newest_first`;
+    runs GitHub skipped or cancelled, such as those of Dependabot pull
+    requests, are passed over): ``success`` is green, every other conclusion
+    (``failure``, ``timed_out``, ``startup_failure``) is red and names the
+    run. A window of :data:`TOOLING_RUNS_PER_PAGE` runs that all did not run
+    is a note. An API that cannot be
     asked, or a workflow that never ran, is a note: nothing says the tool is
     broken.
     """
@@ -1121,17 +1134,18 @@ def check_tooling_runs(now: datetime) -> Check:
             continue
         listed = data.get("workflow_runs") if isinstance(data, dict) else None
         runs = _newest_first(listed) if isinstance(listed, list) else []
-        run = runs[0] if runs else None
-        if run is None:
+        if not runs:
             notes.append(f"{label}: noch kein abgeschlossener Lauf")
             continue
+        ran = [run for run in runs if _conclusion(run) not in _NOT_RUN]
+        run = ran[0] if ran else runs[0]
         conclusion = _conclusion(run)
         finished = _run_time(run.get("updated_at"), now)
         when = f" am {finished}" if finished else ""
         link = str(run.get("html_url") or "")
         if conclusion == "success":
             oks.append(f"{label} zuletzt sauber{when}")
-        elif conclusion in {"cancelled", "skipped", "neutral"}:
+        elif conclusion in _NOT_RUN:
             notes.append(f"{label}: letzter Lauf {conclusion}{when}")
         else:
             text = f"{label} gescheitert{when} ({conclusion or 'ohne Ergebnis'})"
@@ -1156,19 +1170,31 @@ def check_tooling_runs(now: datetime) -> Check:
 PAGES_WORKFLOW_PATH = "dynamic/pages/pages-build-deployment"
 # Runs read per page: some 300 KB of JSON, well under GITHUB_API_MAX_BYTES
 # (50 runs were 757 KB on 2026-11-01). 20 runs reached back about eight
-# hours at the median in October 2026, but at 11:02 on 2026-11-01, with
-# many merges coming in, not to the start of the streak at 08:43; so while
-# every finished run read so far failed, the next page follows, up to
-# PAGES_MAX_PAGES, and the alarm can still name the commit that broke the
-# build.
+# hours at the median in October 2026, but at 10:02 UTC on 2026-11-01,
+# with many merges coming in, not to the start of the streak at 07:43 UTC;
+# so until every run from the newest down to the newest success has been
+# read (cancelled runs take places on a page too), the next page follows,
+# up to PAGES_MAX_PAGES, and the alarm can still name the commit that broke
+# the build.
 PAGES_RUNS_PER_PAGE = 20
 PAGES_MAX_PAGES = 3
-_PAGES_SKIPPED = frozenset({"cancelled", "skipped", "neutral"})
 # The Jekyll step of the build job ("Build with Jekyll"); the step before it,
 # "Pull ghcr.io/actions/jekyll-build-pages:…", is GitHub's side. Should GitHub
 # rename the step, a content failure counts as GitHub's side and turns red
 # with the next run, which fails the same way.
 _JEKYLL_STEP_RE = re.compile(r"build\b.*\bjekyll\b", re.IGNORECASE)
+# The Jekyll step also fails when GitHub's API fails it: jekyll-github-metadata
+# 2.16.1 asks it for every build and lets any error but 403 rate limit, 404
+# and a lost connection end the build. Pages runs #20334 (2026-05-23 10:01
+# UTC, "The GitHub API credentials you provided aren't valid.") and
+# #23181-#23183 (2026-07-16 22:31-23:31 UTC, "GET
+# https://api.github.com/repos/…: 503") failed so, and the run after them
+# built again. The step's error annotation (the build's output, cut at 4096
+# characters; both calls come in its first 2 KB) names it.
+_JEKYLL_GITHUB_ERROR_RE = re.compile(
+    r"\|\s*Error:\s+(?:[A-Z]+\s+https://api\.github\.com/\S*:\s*\d{3}\b"
+    r"|The GitHub API credentials you provided aren't valid)"
+)
 
 
 def _pages_workflow_id() -> int | None:
@@ -1189,14 +1215,18 @@ def _pages_finished_runs() -> list[dict[str, Any]] | None:
     """The finished Pages runs, newest first; ``None`` without Pages.
 
     Runs GitHub cancelled because a newer commit came, or skipped, do not
-    count. While no finished run read so far succeeded and the page was
-    full, the next page is read, up to :data:`PAGES_MAX_PAGES`; a later page
-    that does not answer leaves the streak at what was read.
+    count. While the page was full and the runs read do not hold every run
+    number from the newest down to the newest success
+    (:func:`_read_down_to_success`), the next page is read, up to
+    :data:`PAGES_MAX_PAGES`; a later page that does not answer leaves the
+    streak at what was read. A run that two pages both list (it moved down
+    when a run finished between the requests) is kept once.
     """
     workflow_id = _pages_workflow_id()
     if workflow_id is None:
         return None
     listed: list[object] = []
+    seen: set[int] = set()
     for page in range(1, PAGES_MAX_PAGES + 1):
         path = (
             f"/actions/workflows/{workflow_id}/runs?status=completed"
@@ -1210,12 +1240,55 @@ def _pages_finished_runs() -> list[dict[str, Any]] | None:
             break
         batch = data.get("workflow_runs") if isinstance(data, dict) else None
         batch = batch if isinstance(batch, list) else []
-        listed.extend(batch)
-        if len(batch) < PAGES_RUNS_PER_PAGE or any(
-            isinstance(run, dict) and _conclusion(run) == "success" for run in listed
-        ):
+        for run in batch:
+            run_id = run.get("id") if isinstance(run, dict) else None
+            if isinstance(run_id, int):
+                if run_id in seen:
+                    continue
+                seen.add(run_id)
+            listed.append(run)
+        if len(batch) < PAGES_RUNS_PER_PAGE or _read_down_to_success(_newest_first(listed)):
             break
-    return [run for run in _newest_first(listed) if _conclusion(run) not in _PAGES_SKIPPED]
+    return [run for run in _newest_first(listed) if _conclusion(run) not in _NOT_RUN]
+
+
+def _read_down_to_success(runs: list[dict[str, Any]]) -> bool:
+    """Whether *runs* (newest first) hold every run from the newest one down
+    to the newest success.
+
+    The API lists by ``created_at``, which can be an hour late (see
+    :func:`_newest_first`): on 2026-11-01 a run created at 08:56 UTC stood
+    ahead of the runs of 09:00-09:55 UTC, so a success on page 1 does not
+    mean that the newer runs were read. Run numbers count up by one, so a
+    gap is a run not read yet (or one still running, or deleted, which
+    costs a page more and changes nothing).
+    """
+    for index, run in enumerate(runs):
+        if _conclusion(run) == "success":
+            numbers = [r.get("run_number") for r in runs[: index + 1]]
+            return all(
+                isinstance(newer, int) and isinstance(older, int) and newer - older == 1
+                for newer, older in zip(numbers, numbers[1:], strict=False)
+            )
+    return False
+
+
+def _jekyll_failed_at_github(job: dict[str, Any]) -> bool:
+    """Whether the failed Jekyll step of *job* names an error of GitHub's API.
+
+    Reads the job's check-run annotations (``checks: read``); an answer that
+    does not come, or no such error, leaves the failure on the content.
+    """
+    try:
+        data = _github_api_json(f"/check-runs/{int(job.get('id') or 0)}/annotations?per_page=50")
+    except Exception:
+        return False
+    return isinstance(data, list) and any(
+        isinstance(note, dict)
+        and note.get("annotation_level") == "failure"
+        and _JEKYLL_GITHUB_ERROR_RE.search(str(note.get("message") or "")) is not None
+        for note in data
+    )
 
 
 def _pages_failure_kind(run: dict[str, Any]) -> str:
@@ -1223,9 +1296,12 @@ def _pages_failure_kind(run: dict[str, Any]) -> str:
 
     ``"jekyll"``: the Jekyll step, so the content under ``docs/`` does not
     build, and every later run fails the same way until it is fixed (the
-    case of 2026-11-01). ``"github"``: another step or job (image pull,
-    upload, deploy), GitHub's side; in October 2026 four such failures, each
-    gone with the next run. ``""``: the jobs could not be read.
+    case of 2026-11-01). ``"api"``: the Jekyll step, but on an error of
+    GitHub's API (:data:`_JEKYLL_GITHUB_ERROR_RE`), gone after one to three
+    runs so far.
+    ``"github"``: another step or job (image pull, upload, deploy), GitHub's
+    side; in October 2026 four such failures, each gone with the next run.
+    ``""``: the jobs could not be read.
     """
     try:
         data = _github_api_json(f"/actions/runs/{int(run.get('id') or 0)}/jobs?per_page=20")
@@ -1234,13 +1310,17 @@ def _pages_failure_kind(run: dict[str, Any]) -> str:
     jobs = data.get("jobs") if isinstance(data, dict) else None
     if not isinstance(jobs, list) or not jobs:
         return ""
-    failed_steps = [
-        str(step.get("name") or "")
-        for job in jobs if isinstance(job, dict)
-        for step in (job.get("steps") or []) if isinstance(step, dict)
-        if step.get("conclusion") == "failure"
+    jekyll_jobs = [
+        job for job in jobs if isinstance(job, dict)
+        and any(
+            isinstance(step, dict) and step.get("conclusion") == "failure"
+            and _JEKYLL_STEP_RE.match(str(step.get("name") or "")) is not None
+            for step in (job.get("steps") or [])
+        )
     ]
-    return "jekyll" if any(_JEKYLL_STEP_RE.match(step) for step in failed_steps) else "github"
+    if not jekyll_jobs:
+        return "github"
+    return "api" if all(_jekyll_failed_at_github(job) for job in jekyll_jobs) else "jekyll"
 
 
 def check_pages_build(now: datetime) -> Check:
@@ -1250,17 +1330,20 @@ def check_pages_build(now: datetime) -> Check:
     Pages-Build künftig sofort auffallen?", answer "Beides bauen"): on
     2026-11-01 a bare Liquid tag in ``docs/reference/ki_waechter.md`` stopped
     every Pages build from 08:43 Vienna time (22 failed, 4 cancelled until
-    11:13);
-    the live feed the TV reads stayed at 08:30 while the Update runs stayed
-    green, and ``Veröffentlichung`` would have turned red only at about
-    13:00 (4 h lag). This check reads the latest completed run of "pages
-    build and deployment" from the Actions API (``actions: read``), by run
-    number (:func:`_newest_first`), skipping runs GitHub cancelled because a
-    newer commit came:
+    11:13 Vienna time); the live feed the TV reads stayed at 08:30 while the
+    Update runs stayed green, and ``Veröffentlichung`` would have turned red
+    only at about 13:00 Vienna time (4 h lag). This check reads the latest
+    completed run of "pages build and deployment" from the Actions API
+    (``actions: read``), by run number (:func:`_newest_first`), skipping
+    runs GitHub cancelled because a newer commit came:
 
     * ``success``: green.
     * failed in the Jekyll step: red at once. The content does not build,
       and it stays so until someone fixes ``docs/``.
+    * failed in the Jekyll step on an error of GitHub's API (its error
+      annotation says so, read with ``checks: read``; 2026-05-23 and
+      2026-07-16 UTC): GitHub's side, as below. An annotation that cannot be
+      read leaves it red at once.
     * failed elsewhere (image pull, upload, deploy): GitHub's side. Red when
       the run before failed too, a single failure is a note (alarm line of
       2026-10-28: a single hiccup sends no mail; the next tick deploys
@@ -1298,6 +1381,7 @@ def check_pages_build(now: datetime) -> Check:
     kind = _pages_failure_kind(latest)
     what = {
         "jekyll": "Jekyll-Build gescheitert",
+        "api": "Jekyll-Build an GitHubs API gescheitert",
         "github": "Auslieferung durch GitHub gescheitert",
     }.get(kind, "Pages-Lauf gescheitert")
     text = f"{what}{when}"
@@ -1325,6 +1409,10 @@ def check_pages_build(now: datetime) -> Check:
     if kind == "github" and streak == 1:
         return Check(name, ok=True, note=True,
                      summary=f"HINWEIS — {text}; der nächste Lauf liefert neu aus",
+                     detail=detail)
+    if kind == "api" and streak == 1:
+        return Check(name, ok=True, note=True,
+                     summary=f"HINWEIS — {text}; der nächste Lauf baut neu",
                      detail=detail)
     if kind == "jekyll":
         text += " (Inhalt unter docs/ prüfen)"

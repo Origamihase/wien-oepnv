@@ -184,7 +184,7 @@ def test_a_clean_page_publishes_without_a_liquid_warning(tmp_path: Path) -> None
 
 
 def test_a_symlinked_page_publishes_its_target_made_inert(tmp_path: Path) -> None:
-    # Second check of 2026-11-01: the target was rewritten but only the
+    # Review of 2026-11-01: the target was rewritten but only the
     # link, whose blob does not change, was staged again; the Liquid went out.
     origin, work, _other, env = _setup(tmp_path)
     _write(work, "docs/note.md", "x {% y\n")
@@ -206,7 +206,10 @@ def test_a_page_the_check_cannot_read_is_named_in_a_warning(tmp_path: Path) -> N
     _write(work, "docs/ok.md", "fine {% z\n")
     result = _publish(work, env, "--all", "--label", "L", "--message", "m")
     assert result.returncode == 0, result.stderr
-    assert "::warning title=L::Liquid check did not cover every staged page under docs/" in result.stdout
+    assert (
+        "::warning title=L::Liquid check passed over staged pages under docs/ it could not read"
+        " (liquid.py names them in the log)" in result.stdout
+    )
     assert "latin1.md skipped (UnicodeDecodeError" in result.stderr
     assert _remote_file(origin, env, "docs/ok.md") == "fine { % z"
 
@@ -230,7 +233,26 @@ def test_without_python_the_page_is_published_with_a_warning(tmp_path: Path) -> 
     env = {**env, "PATH": _bare_path(tmp_path, python3=False)}
     result = _publish(work, env, "--all", "--label", "L", "--message", "m")
     assert result.returncode == 0, result.stderr
-    assert "::warning title=L::Liquid check did not cover every staged page under docs/" in result.stdout
+    # liquid.py never ran, so the warning must not send the reader to its log.
+    assert "::warning title=L::Liquid check skipped: no python on PATH" in result.stdout
+    assert "names them" not in result.stdout
+    assert _remote_file(origin, env, "docs/x.md") == "x {% y"
+
+
+def test_a_liquid_check_that_stops_is_named_in_a_warning(tmp_path: Path) -> None:
+    # A python that fails before liquid.py writes anything (exit 1) names no
+    # page; only exit 2 does.
+    origin, work, _other, env = _setup(tmp_path)
+    _write(work, "docs/x.md", "x {% y\n")
+    bare = _bare_path(tmp_path, python3=False)
+    stub = Path(bare) / "python"
+    stub.write_text("#!/bin/bash\nexit 1\n", encoding="utf-8")
+    stub.chmod(0o755)
+    env = {**env, "PATH": bare}
+    result = _publish(work, env, "--all", "--label", "L", "--message", "m")
+    assert result.returncode == 0, result.stderr
+    assert "::warning title=L::Liquid check stopped (liquid.py exit 1)" in result.stdout
+    assert "names them" not in result.stdout
     assert _remote_file(origin, env, "docs/x.md") == "x {% y"
 
 
@@ -241,8 +263,32 @@ def test_with_only_python3_the_page_is_made_inert(tmp_path: Path) -> None:
     result = _publish(work, env, "--all", "--label", "L", "--message", "m")
     assert result.returncode == 0, result.stderr
     assert "Liquid in docs/x.md (line 1) made inert" in result.stdout
-    assert "did not cover" not in result.stdout
+    assert "Liquid check" not in result.stdout
     assert _remote_file(origin, env, "docs/x.md") == "x { % y"
+
+
+def test_the_feed_check_uses_the_same_python_as_the_liquid_check(tmp_path: Path) -> None:
+    # Step 1 called a bare "python" while step 2b already found python3:
+    # with only python3, a well-formed feed was called malformed and the
+    # publish skipped (review of 2026-11-01).
+    origin, work, _other, env = _setup(tmp_path)
+    _write(work, "docs/feed.xml", "<rss>new</rss>\n")
+    env = {**env, "PATH": _bare_path(tmp_path, python3=True)}
+    result = _publish(work, env, "--validate-feeds", "--all", "--message", "chore: update cycle")
+    assert result.returncode == 0, result.stderr
+    assert "feed-validate" not in result.stdout
+    assert _remote_file(origin, env, "docs/feed.xml") == "<rss>new</rss>"
+
+
+def test_without_python_the_feed_is_not_published_and_the_warning_says_why(tmp_path: Path) -> None:
+    origin, work, _other, env = _setup(tmp_path)
+    _write(work, "docs/feed.xml", "<rss>new</rss>\n")
+    env = {**env, "PATH": _bare_path(tmp_path, python3=False)}
+    result = _publish(work, env, "--validate-feeds", "--all", "--message", "chore: update cycle")
+    assert result.returncode == 0, result.stderr
+    assert "::warning title=feed-validate::docs/feed.xml not checked: no python on PATH" in result.stdout
+    assert "not well-formed" not in result.stdout
+    assert _remote_file(origin, env, "docs/feed.xml") == "<rss>old</rss>"
 
 
 def test_concurrent_push_is_rebased_not_rejected(tmp_path: Path) -> None:

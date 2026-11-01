@@ -22,23 +22,36 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
     Läufe, die GitHub wegen eines neueren Commits abbricht, zählen nicht.
     Scheiterte er im Jekyll-Schritt, ist sie sofort rot und nennt, solange
     der Beginn unter den bis zu 60 gelesenen Läufen liegt, den Commit, nach
-    dem der Build zuerst scheiterte. Scheiterte er auf GitHubs Seite (Image,
-    Upload, Auslieferung), ist ein einzelner Lauf ein Hinweis und sind zwei
-    in Folge rot (Alarmlinie vom 2026-10-28: ein einzelner Aussetzer schickt
-    keine Mail). Nachgerechnet über die Pages-Läufe vom 01.10. bis
-    01.11.2026 mit einer Prüfung je Stunde wie seit dem 28.10.: rot nur am
-    01.11. um 9, 10 und 11 Uhr (zu den Zeiten der echten Health-check-Läufe
-    um 09:01, 10:01 und 11:02 Uhr, jedes Mal mit #2092 als Beginn), dazu
-    drei Hinweise für die einzelnen Auslieferungsfehler vom 05.10. (zwei
-    Stunden lang, bis zum nächsten Lauf) und 08.10.; die vom 14.10. und
-    20.10. endeten erst nach der Prüfung ihrer Stunde und waren vor der
-    nächsten behoben.
+    dem der Build zuerst scheiterte; weitere Seiten liest sie, bis alle
+    Läufe vom neuesten bis zum neuesten sauberen gelesen sind. Scheiterte er
+    auf GitHubs Seite (Image, Upload, Auslieferung), ist ein einzelner Lauf
+    ein Hinweis und sind zwei in Folge rot (Alarmlinie vom 2026-10-28: ein
+    einzelner Aussetzer schickt keine Mail). Dazu zählt auch ein
+    Jekyll-Schritt, der an GitHubs API scheiterte (die Fehlermeldung des
+    Schritts nennt ungültige Zugangsdaten oder einen HTTP-Fehler von
+    `api.github.com`; dafür liest der Health check die Annotationen mit
+    `checks: read`): so am 23.05.2026 einmal und in der Nacht auf den
+    17.07.2026 dreimal in Folge, jedes Mal baute der nächste Lauf danach
+    wieder. Nachgerechnet über die Pages-Läufe vom 01.10. bis 01.11.2026 mit
+    einer Prüfung je Stunde wie seit dem 28.10.: rot nur am 01.11. um 9, 10
+    und 11 Uhr Wiener Zeit (zu den Zeiten der echten Health-check-Läufe um
+    09:01, 10:01 und 11:02 Uhr Wiener Zeit, jedes Mal mit #2092 als
+    Beginn), dazu drei Hinweise für die einzelnen Auslieferungsfehler vom
+    05.10. (zwei Stunden lang, bis zum nächsten Lauf) und 08.10.; die vom
+    14.10. und 20.10. endeten erst nach der Prüfung ihrer Stunde und waren
+    vor der nächsten behoben. Mit den echten Läufen der API-Ausfälle: am
+    23.05. ein Hinweis, am 17.07. ein Hinweis und ab dem zweiten
+    gescheiterten Lauf rot.
   - Laufnummer statt Zeitstempel, auch für die Prüfung `Werkzeuge`: Am
     01.11. gab die Actions-API den Läufen, die zwischen 08:00 und 08:59 UTC
     begannen, eine Stunde zu späte Zeiten (Ende der US-Sommerzeit) und
     listete sie vor neueren Läufen. Nach dieser Reihenfolge wäre ein
     behobener Build bis zu einer Stunde rot geblieben und ein neuer Fehler
     eine Stunde lang grün. Eine Zeit nach der Prüfung selbst bleibt weg.
+    `Werkzeuge` übergeht außerdem Läufe, die GitHub übersprang oder abbrach
+    (etwa neun Dependabot-PRs in Folge am 01.11.), und liest dafür 30 Läufe:
+    Bis dahin war der letzte Lauf eines Dependabot-PRs nur ein Hinweis, und
+    ein gescheitertes Review davor schlug nicht an.
   - Neuer Workflow `pages-build-check.yml`: Jeder Pull Request mit
     Änderungen unter `docs/` baut die Website mit derselben Action wie
     GitHub Pages (`actions/jekyll-build-pages` 1.0.13, Quelle `./docs`) und
@@ -61,13 +74,13 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
   KI-Wächters ließ `{{{` durch. Eine zweite Gegenprobe (125.000 erzeugte
   Textstücke gegen Liquid 4.0.4, echte Builds) fand im neuen Prüfer noch
   zwei Lücken und im Ablauf drei: Bleibt in einem `raw`-Block ein Paar bis
-  zu einem weiteren Tag offen, gibt Liquid den Text ab dort doppelt aus
-  (eine Tabelle bekam eine dritte Spalte); eine Datei unter `_posts/`, deren
-  Name mit einem Datum beginnt, wird gerendert, mit jeder Endung und ohne
-  Front Matter; der Wächter-Bericht entfernte unsichtbare Zeichen erst
-  nach `liquid_safe` und fügte so `{` und `%` wieder zusammen; Seiten mit
-  Umlaut im Namen übersprang der Schritt im Skript; und er schrieb auch
-  korrekt geschützte Beispiele derselben Seite um.
+  zu einem weiteren Tag offen, gibt Liquid den Text von dort bis zum Tag
+  doppelt aus (eine Tabelle bekam eine dritte Spalte); eine Datei unter
+  `_posts/`, deren Name mit einem Datum beginnt, wird gerendert, mit jeder
+  Endung und ohne Front Matter; der Wächter-Bericht entfernte unsichtbare
+  Zeichen erst nach `liquid_safe` und fügte so `{` und `%` wieder zusammen;
+  Seiten mit Umlaut im Namen übersprang der Schritt im Skript; und er schrieb
+  auch korrekt geschützte Beispiele derselben Seite um.
   - Neu `src/utils/liquid.py`: `liquid_safe` setzt ein Leerzeichen hinter
     jede öffnende Klammer eines Paars (auch in `{{{`), `liquid_findings`
     folgt der Zerlegung von Liquid 4.0.4 und erlaubt nur die einfache Form
@@ -96,9 +109,14 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
     würden, welche Dateien Jekyll rendert; `tests/test_docs_writers_liquid.py`
     die drei Schreiber, `tests/test_ki_waechter.py` den geschriebenen
     Bericht, `tests/test_publish_to_main.py` den Schritt im Skript, auch
-    ohne `python` oder nur mit `python3`. Jeder neue Test war gegen den
-    Stand davor rot; ein echter Build von `docs/` mit dem
-    Gem `github-pages` 232 läuft ohne Fehler.
+    ohne `python` oder nur mit `python3` (beide Schritte des Skripts nutzen
+    denselben Interpreter, die Warnungen nennen, ob Python fehlte, eine
+    Seite nicht lesbar war oder die Prüfung abbrach). Jeder Test für einen
+    gefundenen Fall war gegen den Stand davor rot; die Wächter über den
+    Inhalt von `docs/` (Vorlagen, Front Matter, Symlinks, `_posts`,
+    `raw`-Zeilen, Schlüssel in `_config.yml`) waren auch davor grün,
+    `docs/` enthielt keinen solchen Fall. Ein echter Build von `docs/` mit
+    dem Gem `github-pages` 232 läuft ohne Fehler.
 
 * **Monatliche Abhängigkeits-Updates und volle Versionskommentare der
   Actions (2026-11-01)**: Michael hat die neun Dependabot-PRs vom 01.11. nach

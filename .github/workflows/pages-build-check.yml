@@ -9,11 +9,11 @@ name: Pages-Build prüfen
 # Pages-Build künftig sofort auffallen?", Antwort "Beides bauen"): Am
 # 2026-11-01 hielt ein Liquid-Tag in docs/reference/ki_waechter.md ab dem
 # Merge von #2092 jeden Pages-Build an; der Fernseher blieb auf dem Stand von
-# 08:30. Der PR-Check zeigt einen solchen Fehler, bevor er main erreicht; der
-# Health check meldet einen gescheiterten Pages-Lauf auf main (Prüfung
-# "Pages-Build"). Seiten, die Workflows selbst nach main schreiben, sieht
-# dieser Check nicht (ein Push mit dem GITHUB_TOKEN startet außer dem
-# Pages-Build keinen Workflow); für sie gilt die Liquid-Prüfung in
+# 08:30 Uhr Wiener Zeit. Der PR-Check zeigt einen solchen Fehler, bevor er
+# main erreicht; der Health check meldet einen gescheiterten Pages-Lauf auf
+# main (Prüfung "Pages-Build"). Seiten, die Workflows selbst nach main
+# schreiben, sieht dieser Check nicht (ein Push mit dem GITHUB_TOKEN startet
+# außer dem Pages-Build keinen Workflow); für sie gilt die Liquid-Prüfung in
 # scripts/publish_to_main.sh.
 
 on:

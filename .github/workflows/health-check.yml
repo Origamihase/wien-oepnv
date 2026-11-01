@@ -42,6 +42,10 @@ permissions:
   # claude-code-review.yml und von "pages build and deployment" über die
   # Actions-API.
   actions: read
+  # Prüfung ``Pages-Build``: liest die Fehlermeldung eines gescheiterten
+  # Jekyll-Schritts (Annotationen des Jobs), um GitHubs API vom Inhalt zu
+  # trennen.
+  checks: read
 
 concurrency:
   group: health-check

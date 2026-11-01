@@ -146,7 +146,7 @@ def test_docs_holds_no_posts() -> None:
     """Jekyll gives a post an excerpt (its first paragraph plus the link
     definitions of the rest, also from inside a raw block) and runs it
     through Liquid a second time; liquid.py does not rebuild it, so a post
-    it calls clean could stop the build (second check of 2026-11-01). A
+    it calls clean could stop the build (review of 2026-11-01). A
     file named ``_posts`` stops Jekyll 3.10 outright."""
     posts = [
         str(Path(directory, name).relative_to(ROOT))
@@ -341,7 +341,7 @@ def test_neutralise_follows_a_symlinked_page_and_survives_a_bad_path(tmp_path: P
     paths = [str(root / n) for n in ("notiz.md", "latin1.md", "later.md")]
     skipped: list[str] = []
     # The entry names the file written, the link's target: the publish step
-    # stages it (staging the link changed nothing, second check 2026-11-01).
+    # stages it (staging the link changed nothing, review of 2026-11-01).
     assert list(iter_neutralise(paths, root, skipped)) == [
         f"{(root / 'notiz.txt').resolve()}:1", f"{root / 'later.md'}:1"
     ]
@@ -358,6 +358,22 @@ def test_neutralise_judges_a_link_by_its_name_through_a_linked_directory(tmp_pat
     assert neutralise([str(tmp_path / "link" / "docs" / "notiz.md")], real / "docs") == [
         f"{(real / 'docs' / 'notiz.txt').resolve()}:1"
     ]
+
+
+def test_neutralise_judges_a_link_by_its_own_directory_not_its_targets(tmp_path: Path) -> None:
+    """Jekyll renders page.md -> _data/x.txt as a page and copies the file
+    plain.txt that _data/alias.md points to as it is: what counts is where
+    the link stands, not where its target lies (review of 2026-11-01)."""
+    root = tmp_path / "docs"
+    (root / "_data").mkdir(parents=True)
+    (root / "_data" / "x.txt").write_text("x {% y\n", encoding="utf-8")
+    (root / "page.md").symlink_to("_data/x.txt")
+    (root / "plain.txt").write_text("p {% y\n", encoding="utf-8")
+    (root / "_data" / "alias.md").symlink_to("../plain.txt")
+    paths = [str(root / "page.md"), str(root / "_data" / "alias.md")]
+    assert neutralise(paths, root) == [f"{(root / '_data' / 'x.txt').resolve()}:1"]
+    assert (root / "_data" / "x.txt").read_text(encoding="utf-8") == "x { % y\n"
+    assert (root / "plain.txt").read_text(encoding="utf-8") == "p {% y\n"
 
 
 def test_the_fix_run_exits_2_when_a_page_was_passed_over(
@@ -394,7 +410,9 @@ def test_pull_requests_build_the_site_like_pages() -> None:
     builds the site with the action of the Pages run, and delivers nothing."""
     workflow = yaml.safe_load((ROOT / ".github/workflows/pages-build-check.yml").read_text(encoding="utf-8"))
     triggers = workflow[True]  # PyYAML reads the key "on" as True
-    assert "docs/**" in triggers["pull_request"]["paths"]
+    # Every pull request event that touches docs/: a types, branches or
+    # negated paths filter would keep the check from running at all.
+    assert triggers["pull_request"] == {"paths": ["docs/**", ".github/workflows/pages-build-check.yml"]}
     assert workflow["permissions"] == {"contents": "read"}
     steps = workflow["jobs"]["build"]["steps"]
     builds = [step for step in steps if str(step.get("uses", "")).startswith("actions/jekyll-build-pages@")]
