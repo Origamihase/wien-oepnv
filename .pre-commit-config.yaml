@@ -15,11 +15,19 @@ repos:
     rev: v5.0.0
     hooks:
       - id: trailing-whitespace
-        # docs/feed.xml is regenerated programmatically; let the
-        # builder own its own whitespace.
-        exclude: ^(docs/feed\.xml|docs/sitemap\.xml|cache/.*\.json|data/.*\.json|tests/fixtures/.*)$
+        # A file a program writes belongs to that program: the hook would
+        # only change a byte the next run writes again, and on the minified
+        # assets the drift check below then fails. Machine-written are
+        # cache/ and data/ (except the READMEs), the feeds, sitemap,
+        # llms.txt, statistics and station reports in docs/, the minified
+        # site assets and the test fixtures; the audit archive (Jules, the
+        # KI-Wächter, earlier reports) stays as written. Until 2026-11-01
+        # only docs/feed.xml, docs/sitemap.xml, the JSON files in cache/
+        # and data/ and the test fixtures were listed, and
+        # ``pre-commit run --all-files`` failed on main.
+        exclude: &machine_written '^(cache/|data/(?!(.*/)?README\.md$)|tests/fixtures/|docs/archive/audits/|docs/assets/[^/]+\.min\.(css|js)$|docs/(feed[^/]*\.xml|sitemap\.xml|llms\.txt|stats-summary\.json|statistik[^/]*\.md|stations_validation_report\.md|stations_diff\.md)$)'
       - id: end-of-file-fixer
-        exclude: ^(docs/feed\.xml|docs/sitemap\.xml|cache/.*\.json|data/.*\.json|tests/fixtures/.*)$
+        exclude: *machine_written
       - id: check-merge-conflict
       - id: check-yaml
       - id: check-toml

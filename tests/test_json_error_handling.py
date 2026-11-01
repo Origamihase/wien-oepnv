@@ -15,4 +15,3 @@ def test_wl_fetch_json_error_handling() -> None:
             assert mock_log.called
             args, _ = mock_log.call_args
             assert "ungültig oder kein JSON" in args[0]
-

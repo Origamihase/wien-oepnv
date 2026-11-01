@@ -126,4 +126,3 @@ def test_the_workflows_record_every_side_step() -> None:
     assert "--state data/side_steps/ki-waechter.json" in watcher
     assert '"KI-Wächter=${outcome}"' in watcher
     assert watcher.index("Record side-step outcome") < watcher.index("Publish the audit file")
-

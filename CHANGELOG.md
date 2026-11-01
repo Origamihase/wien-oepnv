@@ -68,6 +68,12 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
     0.4.7, während CI 0.17.3 nutzte. `UP038` steht nicht mehr in der
     Ignore-Liste von ruff (ruff hat die Regel entfernt, der Eintrag wirkte
     nicht).
+  - `pre-commit run --all-files`, der erste Befehl der PR-Vorlage, ist wieder
+    grün. Er scheiterte auf `main` an vier Dateien, die ein Programm schreibt
+    (`docs/feed.en.xml`, `site.min.css`, `site.min.js`, eine Jules-Datei im
+    Audit-Archiv), und an elf von Hand geschriebenen Dateien mit einer
+    überzähligen Leerzeile am Ende. Die beiden Leerzeilen-Hooks lassen jetzt
+    alle Dateien aus, die ein Programm schreibt; die Leerzeilen sind entfernt.
   - SEO Verify: Der Schritt, der Beschreibung und Homepage des Repositorys mit
     `REPO_ADMIN_TOKEN` setzt, läuft nur noch auf `main`, wie die
     Veröffentlichung. Bisher setzte auch ein noch nicht gemergter Branch die

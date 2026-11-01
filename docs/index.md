@@ -156,4 +156,3 @@ Der Code steht unter der MIT-Lizenz. Die Meldungstexte im Feed und die Datensät
   ]
 }
 </script>
-
