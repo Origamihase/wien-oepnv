@@ -538,16 +538,24 @@ def test_the_gate_counts_the_requests_of_the_day() -> None:
 @pytest.mark.parametrize(
     ("event", "jobs", "per_job"),
     [
-        # Annotations 1 + 2 + 1 = 4 used; a replay gets (9 - 4) // 3 = 1 per audit.
+        # Pull requests and manual runs count up to 10 - 3 = 7: the last three
+        # requests of the day stay with the daily audit (2026-11-01).
+        # Nothing used yet: a replay gets 7 // 3 = 2 per audit.
+        ("pull_request", [], "2"),
+        # Annotations 1 + 2 + 1 = 4 used; a replay gets (7 - 4) // 3 = 1 per audit.
         ("pull_request", ["1 completed success 1", "2 completed failure 2", "3 completed success 1"], "1"),
-        # 4 + one still running (3) = 7; (9 - 7) // 3 = 0: no replay.
+        # 4 + one still running (3) = 7; (7 - 7) // 3 = 0: no replay.
         ("pull_request", ["1 completed success 1", "2 completed failure 2", "3 completed success 1",
                           "4 in_progress null -"], None),
         # A finished audit without annotation counts one, a cancelled one three: 4 used.
         ("workflow_dispatch", ["1 completed success -", "2 cancelled cancelled -"], "3"),
-        # 8 used: a manual run still gets one, the daily audit keeps the last.
-        ("workflow_dispatch", ["1 completed success 3", "2 completed success 3", "3 completed success 2"], "1"),
-        ("workflow_dispatch", ["1 completed success 3", "2 completed success 3", "3 completed success 3"], None),
+        # 6 used: a manual run still gets one; 7 used: none, the daily audit keeps three.
+        ("workflow_dispatch", ["1 completed success 3", "2 completed success 3"], "1"),
+        ("workflow_dispatch", ["1 completed success 3", "2 completed success 3", "3 completed success 1"], None),
+        # 01.11.2026: the trial runs used 9 and the daily audit got one request.
+        # Now they stop at 7 and the daily audit keeps all three: first model,
+        # fallback model, one more try.
+        ("workflow_run", ["1 completed success 3", "2 completed success 3", "3 completed success 1"], "3"),
         ("workflow_run", ["1 completed success 3", "2 completed success 3", "3 completed success 3"], "1"),
         ("workflow_run", ["1 completed success 3", "2 completed success 3", "3 completed success 3",
                           "4 completed success 1"], None),

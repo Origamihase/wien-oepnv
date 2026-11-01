@@ -121,8 +121,11 @@ Modelle zusammen gezählt:
   Zeitpunkt gestartet sind (ein noch laufender zählt mit drei, ein beendeter
   ohne Anmerkung mit einer) und gibt jedem Prüflauf des neuen Laufs den Rest
   geteilt durch ihre Zahl, höchstens drei; bleibt keiner, startet er nichts.
-  Pull Requests und Läufe von Hand rechnen nur bis 9; die letzte Anfrage
-  bleibt dem täglichen Lauf. Gezählt wird nach dem Start des Jobs, nicht nach
+  Pull Requests und Läufe von Hand rechnen nur bis 7; die letzten drei
+  Anfragen bleiben dem täglichen Lauf, damit er auch nach vielen
+  Probeläufen das Ausweichmodell und einen weiteren Versuch hat (seit
+  01.11.2026; bis dahin blieb ihm eine, und an diesem Tag bekam er nach
+  9 Anfragen der Probeläufe eine einzige, die mit 503 scheiterte). Gezählt wird nach dem Start des Jobs, nicht nach
   dem Anlegen des Laufs: Ein erneut gestarteter Lauf behält seine
   Anlegezeit, und am 01.11.2026 übersah das Gate so sechs Anfragen eines am
   Vorabend angelegten Laufs; seither liest es die Läufe eines Monats, behält

@@ -79,7 +79,12 @@ env:
   # time). The gate counts the requests of the day (annotation
   # "Gemini-Anfragen" of every audit) and gives each audit of this run its
   # share, at most 3; an audit sends one and repeats only while the model is
-  # overloaded. The last request of the day stays free for the daily audit.
+  # overloaded. Pull requests and manual runs leave the share of one daily
+  # audit free (MAX_PER_AUDIT, 3 requests): on 2026-11-01 the trial runs of
+  # #2092 used 9 of 10, the daily audit got one request, Gemini 3.8 Flash
+  # answered 503, and the fallback model was never asked (Michael
+  # 2026-11-01: "Ich möchte das Kontingent effizient nutzen und nicht
+  # überschreiten", yes to three requests for the daily audit).
   # The free tier of Gemini 3.8 Flash allows 20 requests a day, 5 a minute
   # and 250,000 input tokens a minute (AI Studio, 2026-10-31); rejected
   # requests (503) count too.
@@ -161,7 +166,7 @@ jobs:
               if [[ "${PR_HEAD_REPO}" != "${OWNER_REPO}" ]]; then out "run=false"; exit 0; fi
               out "publish=false"
               out 'revs=["001e47c665cec9f2d1d0c0c0d912230bb7f3795d","9e60b8de9dce438906b257e42a8b524e4f191f67","HEAD"]'
-              jobs=3; limit=$(( KI_WAECHTER_MAX_REQUESTS - 1 )) ;;
+              jobs=3; limit=$(( KI_WAECHTER_MAX_REQUESTS - MAX_PER_AUDIT )) ;;
             workflow_dispatch)
               if [[ -z "${REV_INPUT}" ]]; then
                 out "publish=true"; out 'revs=["HEAD"]'
@@ -170,7 +175,7 @@ jobs:
               else
                 echo "::error title=KI-Wächter::rev muss ein Commit-Hash sein"; exit 1
               fi
-              jobs=1; limit=$(( KI_WAECHTER_MAX_REQUESTS - 1 )) ;;
+              jobs=1; limit=$(( KI_WAECHTER_MAX_REQUESTS - MAX_PER_AUDIT )) ;;
             *)
               out "publish=true"; out 'revs=["HEAD"]'
               if [[ "${CYCLE_CONCLUSION}" != "success" || "${CYCLE_BRANCH}" != "main" ]]; then
@@ -194,8 +199,9 @@ jobs:
                  && (( $(date +%s) - $(date -d "${last}" +%s) < KI_WAECHTER_RETRY_HOURS * 3600 )); then
                 echo "Today's audit failed at ${last}; next try ${KI_WAECHTER_RETRY_HOURS} h later."; out "run=false"; exit 0
               fi
-              # The daily audit may use the last request of the budget,
-              # pull requests and manual runs leave it free.
+              # The daily audit may use the whole budget; pull requests
+              # and manual runs leave it one full audit (MAX_PER_AUDIT):
+              # the first model, the fallback and one more try.
               jobs=1; limit="${KI_WAECHTER_MAX_REQUESTS}" ;;
           esac
           used="$(used_today)"
