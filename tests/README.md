@@ -4,7 +4,7 @@ Dieses Verzeichnis enthält die automatisierte Test-Suite, basierend auf `pytest
 
 ## Struktur
 
-- **`conftest.py`**: Enthält globale Fixtures, darunter 15 autouse-Fixtures, die jeden Test von echten Dateien, dem Netz und dem Zustand früherer Tests fernhalten (umgeleitete Ledger, Caches und Zähler, zurückgesetzter Modulzustand, wiederhergestellte Umgebungsvariablen, kein echtes DNS). Die vollständige Liste mit Begründung steht in [`docs/development.md`](../docs/development.md) unter „Test-Isolation“.
+- **`conftest.py`**: Enthält globale Fixtures, darunter die autouse-Fixtures, die jeden Test von echten Dateien, dem Netz und dem Zustand früherer Tests fernhalten (umgeleitete Ledger, Caches und Zähler, zurückgesetzter Modulzustand, wiederhergestellte Umgebungsvariablen, kein echtes DNS, keine Netzverbindung). Die vollständige Liste mit Begründung steht in [`docs/development.md`](../docs/development.md) unter „Test-Isolation“.
 - **`test_*.py`**: Die eigentlichen Testdateien. Sie sind meist nach dem Modul benannt, das sie testen (`test_build_feed_atom.py`, `test_build_feed_cache.py`, … decken jeweils einen Aspekt von `src/build_feed.py` ab; das Pendant zu `src/build_feed.py` ist also kein einzelnes Modul, sondern eine Familie themenspezifischer Dateien).
 - **Unterverzeichnisse** für strukturierte Test-Suites:
   - `tests/places/` — Stationsverzeichnis-Pipeline (HAFAS; der OSM-Client hat seit 2026-10-17 keinen Aufruf im Produktivlauf mehr, die Google-Places-Stufe wurde am 2026-10-16 entfernt).
@@ -37,7 +37,7 @@ python -m pytest -k "dedupe"
 ### 1. Mocking von Netzwerkzugriffen
 Um externe Abhängigkeiten zu vermeiden und Tests deterministisch zu halten, werden Netzwerkaufrufe gemockt.
 - Wir nutzen die [`responses`](https://github.com/getsentry/responses)-Library (`requirements-dev.txt`) für HTTP-Stubs sowie `unittest.mock` / `pytest`-Fixtures für feinere Patches.
-- **Regel:** Kein Test darf echte HTTP-Anfragen an externe APIs senden (außer explizite Integrationstests, die gesondert markiert sind).
+- **Regel:** Kein Test öffnet eine Netzverbindung. `_no_network` in `conftest.py` lässt jeden Test scheitern, der sich mit etwas anderem als Loopback oder einem Unix-Socket verbindet, auch wenn der Code den Fehler schluckt (`docs/development.md`, „Test-Isolation“).
 
 ### 2. Pfad-Isolation
 Viele Tests schreiben temporäre Dateien. Dafür nutzen wir das `tmp_path` Fixture von pytest.

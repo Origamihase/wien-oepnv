@@ -94,5 +94,5 @@ Vor dem Push bitte ausführen — spiegelt die CI exakt:
 pre-commit run --all-files            # ruff + mypy + bandit + scan_secrets
 python scripts/run_static_checks.py   # vollständiger CI-Parity-Check
 python scripts/check_complexity.py    # C901-Gate gegen Baseline
-python -m pytest --timeout=120        # vollständige Test-Suite
+python -m pytest -n auto --timeout=120  # vollständige Test-Suite, parallel wie in der CI
 ```

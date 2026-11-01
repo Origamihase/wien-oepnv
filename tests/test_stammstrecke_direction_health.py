@@ -224,13 +224,18 @@ def test_health_check_note_keeps_the_run_green(
     monkeypatch.setattr(f"{target}.check_stations", lambda _now: healthy)
     monkeypatch.setattr(f"{target}.check_stammstrecke_abruf", lambda _now: healthy)
     monkeypatch.setattr(f"{target}.check_stammstrecke_directions", lambda _now: note)
-    # The remaining checks read the real repository and the environment: the
-    # test passed only while an earlier test left ``VOR_ACCESS_ID`` set
-    # (test-suite audit 2026-10-28), and a real Feed-Wächter finding or an
-    # aged station source or a side-step record would have decided it too.
+    # The remaining checks read the real repository, the environment and the
+    # network: the test passed only while an earlier test left
+    # ``VOR_ACCESS_ID`` set (test-suite audit 2026-10-28), a real Feed-Wächter
+    # finding or an aged station source or a side-step record would have
+    # decided it too, and since 2026-10-31 the published feeds were fetched
+    # for real (the Actions API is asked wherever ``GITHUB_TOKEN`` and
+    # ``GITHUB_REPOSITORY`` are set).
+    monkeypatch.setattr(f"{target}.check_published_feeds", lambda _now: healthy)
     monkeypatch.setattr(f"{target}.check_station_sources", lambda _now: healthy)
     monkeypatch.setattr(f"{target}.check_feed_watch", lambda _now: healthy)
     monkeypatch.setattr(f"{target}.check_side_steps", lambda _now: healthy)
+    monkeypatch.setattr(f"{target}.check_tooling_runs", lambda _now: healthy)
     monkeypatch.setattr(f"{target}.check_secrets", lambda: healthy)
     monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
 

@@ -78,7 +78,8 @@ Wichtige Befehle:
 
 ### Testing
 - Framework: `pytest`
-- Ausführung: `pytest` (im Root-Verzeichnis).
+- Ausführung: `pytest` (im Root-Verzeichnis); parallel wie in der CI: `python -m pytest -n auto`.
+- Tests öffnen keine Netzverbindung: `_no_network` in `tests/conftest.py` lässt jeden Test scheitern, der sich mit etwas anderem als Loopback oder einem Unix-Socket verbindet. Die HTTP-Schicht wird gemockt (`responses`, `patch.object`); wer in `main()` eine neue Prüfung mit Netzabruf ergänzt, stubbt sie auch in den Tests, die `main()` ausführen.
 - **Regel:** Vor jedem Commit müssen alle Tests bestehen. Neue Features oder Bugfixes müssen durch Tests abgedeckt sein.
 - Tests, die `main()` ausführen, leiten `OUT_PATH`, `STATE_FILE` und die beiden `FEED_HEALTH*`-Pfade nach `tmp_path` um und patchen mit `patch.object(bf, …)` statt über den String-Pfad `"src.build_feed.…"`. Autouse-Fixtures in `tests/conftest.py` wachen darüber (`docs/development.md`, „Test-Isolation“).
 

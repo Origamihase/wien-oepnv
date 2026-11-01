@@ -11,6 +11,10 @@ responses>=0.26.1,<1
 jsonschema>=4.26,<5
 pytest-timeout>=2.4.0,<3
 pytest-cov>=7.1.0,<8
+# CI runs the suite on all runner cores (test.yml, test-vor-api.yml: ``-n auto``);
+# the suite has held under ``-n 4`` since 2026-10-28 (docs/development.md,
+# "Test-Isolation").
+pytest-xdist>=3.8,<4
 pre-commit>=4.6.0,<5
 # Static-site asset pipeline (docs/site.html + docs/assets/*). The
 # minifiers are pure-Python and required by both the pre-commit drift
