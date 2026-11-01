@@ -1,16 +1,24 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-01T09:01:07.498651+00:00",
- "built": "2026-11-01T10:00:55+01:00",
+ "updated": "2026-11-01T09:30:50.471581+00:00",
+ "built": "2026-11-01T10:30:39+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-01T10:00:55+01:00",
+  "built": "2026-11-01T10:30:39+01:00",
   "items": [
    {
-    "title": "35A: Rettungseinsatz",
-    "time_line": "Seit 09:34"
+    "title": "Flughafen Wien",
+    "time_line": "Seit 10:24"
+   },
+   {
+    "title": "U3: Betriebsstörung",
+    "time_line": "Seit 10:20"
+   },
+   {
+    "title": "26A: Veranstaltung",
+    "time_line": "Seit heute"
    },
    {
     "title": "Wien Franz-Josefs-Bahnhof ↔ Wien Heiligenstadt",
@@ -39,14 +47,6 @@
    {
     "title": "29A/29B: Kranarbeiten",
     "time_line": "Heute"
-   },
-   {
-    "title": "5A/5B/N31: Obere Augartenstraße",
-    "time_line": "Bis 09.11."
-   },
-   {
-    "title": "54A/54B: Bauarbeiten",
-    "time_line": "Bis 10.11."
    }
   ]
  },
@@ -6751,17 +6751,37 @@
     "oebb": 9,
     "wl": 92
    }
+  },
+  {
+   "t": "2026-11-01T09:30:50.471581+00:00",
+   "raw": {
+    "wl-stoerungen": 60,
+    "wl-hinweise": 74,
+    "oebb": 156,
+    "baustellen-linien": 57,
+    "baustellen-punkte": 18
+   },
+   "discarded": {
+    "wl": 13,
+    "oebb": 131,
+    "baustellen": 68
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 10,
+    "wl": 93
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-01T09:01:07.498651+00:00"
+   "last_ok": "2026-11-01T09:30:50.471581+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-01T09:01:07.498651+00:00"
+   "last_ok": "2026-11-01T09:30:50.471581+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-01T09:01:07.498651+00:00"
+   "last_ok": "2026-11-01T09:30:50.471581+00:00"
   }
  }
 }

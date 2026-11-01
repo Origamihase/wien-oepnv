@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261101-0007, I20260922-0032, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260922-0032, I20261101-0009, I20260925-0011, I20260909-0007, I20261020-0029, I20261101-0008"
    },
    {
     "id": 3,
@@ -208,49 +208,97 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
+    "alertCause": "miscellaneous",
+    "alertCauseId": 137,
     "attributes": {
      "relatedLineTypes": {
-      "35A": "ptBusCity"
+      "U3": "ptMetro"
      }
     },
-    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-       "title": "35A: Rettungseinsatz"
+       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+       "title": "U3: Betriebsstörung"
       }
      }
     ],
-    "name": "I20261101-0007",
+    "name": "I20261101-0008",
     "owner": "WL",
-    "parentName": "I20261101-0007",
+    "parentName": "I20261101-0008",
     "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
+    "reasonId": 14,
+    "reasonName": "Betriebsstörung",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "35A"
+     "U3"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 435,
-      "lineName": "35A",
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4921
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-01T10:22:00.000+0100",
+     "lastUpdate": "2026-11-01T10:22:00.000+0100",
+     "resume": "2026-11-01T10:20:00.000+0100",
+     "start": "2026-11-01T10:20:00.000+0100"
+    },
+    "title": "U3: Betriebsstörung"
+   },
+   {
+    "alertCause": "special event",
+    "alertCauseId": 120,
+    "attributes": {
+     "relatedLineTypes": {
+      "26A": "ptBusCity"
+     }
+    },
+    "description": "Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Veranstaltung.",
+    "descriptionHTML": "<p>Linie 26A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Veranstaltung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 26A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Veranstaltung.</p>",
+       "descriptionPlain": "Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Veranstaltung.",
+       "title": "26A: Veranstaltung"
+      }
+     }
+    ],
+    "name": "I20261101-0009",
+    "owner": "WL",
+    "parentName": "I20261101-0009",
+    "priority": "1",
+    "reasonId": 35,
+    "reasonName": "Veranstaltung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "26A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 426,
+      "lineName": "26A",
       "vehicleType": "ptBusCity"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-01T09:34:00.000+0100",
-     "lastUpdate": "2026-11-01T09:34:00.000+0100",
-     "resume": "2026-11-01T09:34:00.000+0100",
-     "start": "2026-11-01T09:34:00.000+0100"
+     "created": "2026-11-01T10:23:00.000+0100",
+     "lastUpdate": "2026-11-01T10:23:00.000+0100",
+     "resume": "2026-11-01T10:23:00.000+0100",
+     "start": "2026-11-01T10:23:00.000+0100"
     },
-    "title": "35A: Rettungseinsatz"
+    "title": "26A: Veranstaltung"
    },
    {
     "alertCause": "undefined alert cause",
