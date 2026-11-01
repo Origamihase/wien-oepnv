@@ -11017,6 +11017,8 @@ def _absorb_works_tickers(items: list[FeedItem]) -> list[FeedItem]:
 # incident on only some of the notice's lines ("4A/74A: Demonstration"
 # beside the notice of 16 lines on 22.10.) says nothing about the others,
 # and both stay. When the incident ends, the notice is back as before.
+# Operator decision 2026-11-01 ("Störung bleibt"): of the two, the live
+# incident stays.
 
 
 def _notice_reported_live(notice: FeedItem, items: Sequence[FeedItem]) -> FeedItem | None:
