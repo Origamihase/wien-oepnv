@@ -80,7 +80,7 @@ def _fake_transformers(
             AutoModelForSeq2SeqLM=SimpleNamespace(from_pretrained=_mdl),
         ),
     )
-    monkeypatch.setitem(sys.modules, "torch", SimpleNamespace(inference_mode=lambda: _NoGrad()))
+    monkeypatch.setitem(sys.modules, "torch", SimpleNamespace(inference_mode=_NoGrad))
     monkeypatch.setitem(build_feed._TRANSLATION_STATE, "pipeline", None)
     monkeypatch.setitem(build_feed._TRANSLATION_STATE, "load_failed", False)
     monkeypatch.setitem(build_feed._TRANSLATION_STATE, "error", None)
