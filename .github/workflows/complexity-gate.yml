@@ -1,12 +1,14 @@
 name: Complexity gate (C901 allowlist)
 
 # Mirrors the structure of mypy-strict.yml: an allowlist baseline
-# (.c901-baseline.txt) records every function currently above the
-# C901 threshold (15). The gate fails only if a PR introduces a NEW
-# violation, OR if a baselined function has gotten more complex.
-# Reducing complexity below threshold is always allowed; it just
-# triggers a `::notice::` asking the contributor to regenerate the
-# baseline to lock in the improvement.
+# (.c901-baseline.txt) records every function in src/ and scripts/ above
+# the C901 threshold (15) as ``<path>::<function> <complexity>``. The gate
+# fails on any difference between that file and ruff's measurement: a NEW
+# violation, a baselined function that got more complex, and since
+# 2026-11-01 also one that got simpler or dropped to 15 or less (the
+# improvement is locked in by regenerating the baseline in the same
+# change, see scripts/check_complexity.py). It also fails when ruff
+# cannot measure.
 
 on:
   push:
@@ -25,8 +27,8 @@ jobs:
   c901-gate:
     name: C901 complexity gate (max 15 for new code)
     runs-on: ubuntu-latest
-    # Defense-in-depth ceiling: the C901 gate is a single radon-like AST
-    # walker over ~17 kLOC src + scripts; it completes in under a minute.
+    # Defense-in-depth ceiling: the C901 gate is one ruff run over src/ and
+    # scripts/ (~70 kLOC); it completes in under a minute.
     # 5 min gives ~5x headroom over the worst observed runtime while
     # catching hangs quickly. Without the cap the workflow inherits
     # GitHub's 360-min default. Mirrors the canonical defence shape

@@ -73,11 +73,11 @@ repos:
         pass_filenames: false
 
   # ── C901 complexity gate (matches CI's complexity-gate workflow) ─
-  # Allowlist-style baseline check: rejects NEW functions whose
-  # McCabe complexity exceeds 15, or existing functions whose
-  # complexity has risen above what's recorded in
-  # ``.c901-baseline.txt``. Reducing complexity below baseline is
-  # always allowed; the baseline ratchets via
+  # Allowlist-style baseline check over src/ and scripts/: fails when the
+  # McCabe complexities above 15 differ from ``.c901-baseline.txt`` in
+  # any way (a new function above 15, a baselined one that got more
+  # complex, simpler or dropped to 15 or less) or when ruff cannot
+  # measure. After a refactor, lock the new values in with
   # ``bash scripts/regen_c901_baseline.sh``.
   - repo: local
     hooks:
