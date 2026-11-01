@@ -10,8 +10,8 @@ website. A ``{%`` that does not form a valid tag stops the whole build. On
 2026-11-01 the paragraph in ``reference/ki_waechter.md`` that explained
 this quoted a bare ``{%``; from the merge of #2092 at 08:43 Vienna time no
 "pages build and deployment" run succeeded (22 failed, 4 cancelled), and
-the feed at the Pages address, which the TV reads, stayed at 08:30 while
-the update runs stayed green.
+the feed at the Pages address, which the TV reads, stayed at 08:30 Vienna
+time while the update runs stayed green.
 
 Rule: outside a ``raw`` block, a page Jekyll renders contains neither
 pair. A hand-written page that shows one wraps the whole block between two

@@ -11,6 +11,7 @@ between 14.10. and 28.10.2026 (Wiener Linien 21.10., ÖBB 27.10.) were exit 1.
 
 from __future__ import annotations
 
+import inspect
 import json
 from datetime import UTC, datetime, timedelta
 from email.utils import format_datetime
@@ -346,24 +347,34 @@ def test_a_missing_run_report_is_red(repo: Path) -> None:
 # --- main(): a red check must make the run red ----------------------------
 
 
+def _checks() -> list[str]:
+    """Every check function of the module, read from the module itself.
+
+    Until 2026-11-01 the tests below named the checks by hand; the check
+    ``Übersetzung`` came to ``main()`` without them, so dropping it went
+    unnoticed and the main() tests read the real
+    ``data/translation_status.json`` (review of 2026-11-01).
+    """
+    return sorted(
+        name
+        for name, value in vars(hc).items()
+        if name.startswith("check_")
+        and inspect.isfunction(value)
+        and value.__module__ == hc.__name__
+    )
+
+
+def test_main_runs_every_check() -> None:
+    source = inspect.getsource(hc.main)
+    assert [name for name in _checks() if f"{name}(" not in source] == []
+    assert len(_checks()) >= 13
+
+
 def _all_green(monkeypatch: pytest.MonkeyPatch) -> None:
     healthy = hc.Check("OK", ok=True, summary="OK")
-    monkeypatch.setattr(hc, "check_source", lambda *_a, **_kw: healthy)
+    for name in _checks():
+        monkeypatch.setattr(hc, name, lambda *_a, **_kw: healthy)
     monkeypatch.setattr(hc, "assess_source", lambda probe, *_a: probe)
-    for name in (
-        "check_feed_freshness",
-        "check_published_feeds",
-        "check_pages_build",
-        "check_stations",
-        "check_station_sources",
-        "check_stammstrecke_abruf",
-        "check_stammstrecke_directions",
-        "check_feed_watch",
-        "check_side_steps",
-        "check_tooling_runs",
-    ):
-        monkeypatch.setattr(hc, name, lambda _now: healthy)
-    monkeypatch.setattr(hc, "check_secrets", lambda: healthy)
     monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
 
 
@@ -372,22 +383,7 @@ def test_main_is_green_when_every_check_is_green(monkeypatch: pytest.MonkeyPatch
     assert hc.main() == 0
 
 
-@pytest.mark.parametrize(
-    "target",
-    [
-        "check_source",
-        "check_feed_freshness",
-        "check_published_feeds",
-        "check_pages_build",
-        "check_stations",
-        "check_station_sources",
-        "check_stammstrecke_abruf",
-        "check_feed_watch",
-        "check_side_steps",
-        "check_tooling_runs",
-        "check_secrets",
-    ],
-)
+@pytest.mark.parametrize("target", _checks())
 def test_main_is_red_when_one_check_is_red(
     monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str], target: str
 ) -> None:
@@ -776,7 +772,7 @@ def test_the_review_runs_read_reach_past_the_runs_listed_an_hour_late(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     """01.11.2026, 09:25 UTC: the API listed #521, #520 and #519 (created
-    08:25-08:34 UTC, shown 09:26-09:34) before #522 (09:20 UTC). Reading
+    08:25-08:34 UTC, shown 09:26-09:34 UTC) before #522 (09:20 UTC). Reading
     only the first listed run picks #521."""
     def review(number: int, created: datetime, conclusion: str) -> dict[str, object]:
         return {"run_number": number, "id": number, "conclusion": conclusion,
@@ -1194,7 +1190,7 @@ def test_a_later_page_that_does_not_answer_keeps_what_was_read(monkeypatch: pyte
 
 
 def test_a_good_run_on_a_full_first_page_ends_the_reading(monkeypatch: pytest.MonkeyPatch) -> None:
-    """Each further page is some 300 KB and one more call per check."""
+    """Each further page is some 260 KB and one more call per check."""
     runs = [_pages_run(1000, "failure", 10)] + [_pages_run(999 - i, "success", 40 + 30 * i) for i in range(30)]
     seen = _runs(monkeypatch, {_WORKFLOWS: _PAGES_WORKFLOW, "/actions/workflows/189040121/runs": _Listing(runs),
                                "/actions/runs/1000/jobs?per_page=20": _jobs("Build with Jekyll"),
@@ -1222,8 +1218,8 @@ def test_a_page_that_is_not_full_ends_the_reading(monkeypatch: pytest.MonkeyPatc
 
 
 def test_the_latest_pages_run_is_chosen_by_run_number(monkeypatch: pytest.MonkeyPatch) -> None:
-    """01.11.2026: the API listed #29084 (created 08:56 UTC, shown as 09:56)
-    before #29099 (09:55 UTC). By the API's order a fix after a broken
+    """01.11.2026: the API listed #29084 (created 08:56 UTC, shown as 09:56
+    UTC) before #29099 (09:55 UTC). By the API's order a fix after a broken
     build stayed red, and a break after a good run stayed green."""
     shifted = _pages_run(29084, "failure", 10)
     newer = _pages_run(29099, "success", 15)
@@ -1303,9 +1299,10 @@ def test_malformed_answers_are_a_note_not_a_crash(monkeypatch: pytest.MonkeyPatc
 
 
 def test_the_pages_of_runs_fit_the_api_cap() -> None:
-    """A run is about 15 KB of JSON (20 runs were 302,575 bytes on
-    01.11.2026); an answer over GITHUB_API_MAX_BYTES would leave the check a
-    note for good."""
+    """A run is about 13 to 15 KB of JSON as the check reads it (20 Pages
+    runs were 257,496 bytes and 30 review runs 405,393 bytes on 01.11.2026;
+    GitHub sends more only to a curl User-Agent, pretty-printed); an answer
+    over GITHUB_API_MAX_BYTES would leave the check a note for good."""
     assert hc.PAGES_RUNS_PER_PAGE * 16_000 < hc.GITHUB_API_MAX_BYTES
     assert hc.TOOLING_RUNS_PER_PAGE * 16_000 < hc.GITHUB_API_MAX_BYTES
 

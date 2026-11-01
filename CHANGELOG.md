@@ -15,7 +15,7 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
   künftig sofort auffallen?“, Antwort „Beides bauen“). Beim Ausfall vom
   selben Tag hätte erst die Prüfung `Veröffentlichung` angeschlagen, nach
   vier Stunden Rückstand gegen 13:00 Uhr Wiener Zeit; der Health check war
-  ab 10:01 Uhr rot, aber nur wegen des gescheiterten KI-Wächters.
+  ab 10:01 Uhr Wiener Zeit rot, aber nur wegen des gescheiterten KI-Wächters.
   - Neue Prüfung `Pages-Build` im Health check (`check_pages_build` in
     `scripts/health_check.py`): Sie liest über die Actions-API den letzten
     abgeschlossenen Lauf von „pages build and deployment“, nach Laufnummer;
@@ -52,6 +52,14 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
     (etwa neun Dependabot-PRs in Folge am 01.11.), und liest dafür 30 Läufe:
     Bis dahin war der letzte Lauf eines Dependabot-PRs nur ein Hinweis, und
     ein gescheitertes Review davor schlug nicht an.
+  - Die Tests von `main()` in `tests/test_health_check_alarms.py` und
+    `tests/test_stammstrecke_direction_health.py` lesen die Prüfungen aus
+    dem Modul statt aus einer Liste von Hand: Der Liste fehlte die Prüfung
+    `Übersetzung` (in der zweiten auch `Pages-Build`). Ein Wegfall aus
+    `main()` fiel so nicht auf, und mit einer echten
+    `data/translation_status.json` nach zwei gescheiterten Builds wären
+    vier Tests ohne Bezug rot geworden. Ein neuer Test verlangt, dass
+    `main()` jede `check_*`-Funktion aufruft.
   - Neuer Workflow `pages-build-check.yml`: Jeder Pull Request mit
     Änderungen unter `docs/` baut die Website mit derselben Action wie
     GitHub Pages (`actions/jekyll-build-pages` 1.0.13, Quelle `./docs`) und
@@ -111,7 +119,9 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
     Bericht, `tests/test_publish_to_main.py` den Schritt im Skript, auch
     ohne `python` oder nur mit `python3` (beide Schritte des Skripts nutzen
     denselben Interpreter, die Warnungen nennen, ob Python fehlte, eine
-    Seite nicht lesbar war oder die Prüfung abbrach). Jeder Test für einen
+    Seite nicht lesbar war oder die Prüfung abbrach; ein Interpreter, der
+    die Feed-Prüfung nicht ausführt, heißt nicht mehr „not well-formed XML“,
+    sondern „not checked“ mit Exit-Code). Jeder Test für einen
     gefundenen Fall war gegen den Stand davor rot; die Wächter über den
     Inhalt von `docs/` (Vorlagen, Front Matter, Symlinks, `_posts`,
     `raw`-Zeilen, Schlüssel in `_config.yml`) waren auch davor grün,
@@ -223,9 +233,10 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
   Tag '{%' was not properly terminated“, 4 abgebrochen). Die Update-Läufe
   blieben grün und schrieben den Feed ins Repository, aber Website,
   `feed.xml` und `feed.en.xml` unter der Pages-Adresse und damit der
-  Fernseher blieben bis 11:13 Uhr auf dem Stand von 08:30 Uhr. Die Stelle und
-  zwei weitere, die Liquid auswertete, ohne dass der Build scheiterte, stehen
-  jetzt zwischen HTML-Kommentaren mit `raw` und `endraw`:
+  Fernseher blieben bis 11:13 Uhr auf dem Stand von 08:30 Uhr (beides Wiener
+  Zeit). Die Stelle und zwei weitere, die Liquid auswertete, ohne dass der
+  Build scheiterte, stehen jetzt zwischen HTML-Kommentaren mit `raw` und
+  `endraw`:
   `docs/how-to/test-api-secrets.md` (die Workflow-Vorlage zeigte auf der
   Website `API_URL: $` statt des Secret-Ausdrucks) und
   `docs/archive/audits/audit-2026-09-13.md` (`update-stations-$`). Neu prüft

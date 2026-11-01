@@ -2986,12 +2986,12 @@ Betreiberentscheidung (Michael, 2026-11-01, Karte „Soll ein gescheiterter
 Pages-Build künftig sofort auffallen?“, Antwort „Beides bauen“). Anlass: Ab
 dem Merge von #2092 um 08:43 Uhr Wiener Zeit hielt ein Liquid-Tag in
 `docs/reference/ki_waechter.md` jeden Lauf von „pages build and deployment“
-an (bis 11:13 Uhr 22 gescheitert, 4 abgebrochen). Der Fernseher blieb auf
-dem Stand von 08:30 Uhr, die Update-Läufe blieben grün, und der Health check
-meldete den Ausfall nicht (rot war er ab 10:01 Uhr nur wegen des
-gescheiterten KI-Wächters, Prüfung `Nebenschritte`); `Veröffentlichung`
-hätte erst bei vier Stunden Rückstand gegen 13:00 Uhr angeschlagen. Beides
-gilt seither:
+an (bis 11:13 Uhr Wiener Zeit 22 gescheitert, 4 abgebrochen). Der Fernseher
+blieb auf dem Stand von 08:30 Uhr Wiener Zeit, die Update-Läufe blieben grün,
+und der Health check meldete den Ausfall nicht (rot war er ab 10:01 Uhr
+Wiener Zeit nur wegen des gescheiterten KI-Wächters, Prüfung
+`Nebenschritte`); `Veröffentlichung` hätte erst bei vier Stunden Rückstand
+gegen 13:00 Uhr Wiener Zeit angeschlagen. Beides gilt seither:
 
 * **Health check, Prüfung `Pages-Build`** (`check_pages_build` in
   `scripts/health_check.py`). Sie liest über die Actions-API (`actions:
@@ -3018,7 +3018,7 @@ gilt seither:
     nach dem der Build zuerst scheiterte; sonst „mindestens N Läufe in
     Folge“. 20 Läufe reichten im Oktober 2026 im Mittel etwa acht Stunden
     zurück, am 01.11. um 11:02 Uhr Wiener Zeit wegen der vielen Merges
-    nicht bis zum Beginn um 08:43 Uhr.
+    nicht bis zum Beginn um 08:43 Uhr Wiener Zeit.
   * Gescheitert im Schritt „Build with Jekyll“, aber an GitHubs API (die
     Fehlermeldung des Schritts, gelesen über die Annotationen des Jobs mit
     `checks: read`, nennt einen HTTP-Fehler von `api.github.com` oder
@@ -3060,12 +3060,15 @@ gilt seither:
   kein Pflicht-Check im Ruleset). Er fängt, was den Build anhält; gibt eine
   Vorlage nur still etwas anderes aus (eine unbekannte Variable, ein
   unbekannter Filter), bleibt er grün. Endet die erste Backtrace-Zeile im
-  Protokoll des Schritts „Build with Jekyll“ mit `(Octokit::…)` oder
-  `(Faraday::…)`, lag es an GitHubs API, auch wenn darüber `Liquid
-  Exception` steht (`jekyll-github-metadata` fragt die API vor dem Rendern
-  und noch einmal im ersten Layout); ein neuer Lauf behebt es. Die
-  Annotation am Check nennt statt der Klasse den HTTP-Fehler von
-  `api.github.com` oder die ungültigen Zugangsdaten. Seiten, die Workflows
+  Protokoll des Schritts „Build with Jekyll“ mit `(Octokit::…)`,
+  `(Faraday::…)` oder `(Jekyll::GitHubMetadata::Client::BadCredentialsError)`
+  (ungültige Zugangsdaten; das Gem meldet `Octokit::Unauthorized` unter
+  dieser Klasse, das Original steht weiter unten als Ursache), lag es an
+  GitHubs API, auch wenn darüber `Liquid Exception` steht
+  (`jekyll-github-metadata` fragt die API vor dem Rendern und noch einmal im
+  ersten Layout); ein neuer Lauf behebt es. Die Annotation am Check nennt
+  statt der Klasse den HTTP-Fehler von `api.github.com` oder die ungültigen
+  Zugangsdaten. Seiten, die Workflows
   selbst nach `main` schreiben, erreichen keinen Pull Request (ein Push mit
   dem `GITHUB_TOKEN` startet außer dem Pages-Build keinen Workflow); für sie
   gilt der Liquid-Schritt in `scripts/publish_to_main.sh`

@@ -114,8 +114,25 @@ if [ "${validate_feeds}" -eq 1 ]; then
       echo "::warning title=feed-validate::${feed} not checked: no python on PATH — skipping publish (last good feed stays online)."
       exit 0
     fi
-    if ! "${python_bin}" -c "import sys, xml.etree.ElementTree as ET; ET.parse(sys.argv[1])" "${feed}"; then
+    # Exit 3: the parser rejected the feed (an unknown declared encoding
+    # included). Any other non-zero status: the interpreter did not run the
+    # check (a broken install, a shim without a version), so the warning
+    # says that instead of calling a good feed malformed.
+    feed_status=0
+    "${python_bin}" -c '
+import sys
+import xml.etree.ElementTree as ET
+try:
+    ET.parse(sys.argv[1])
+except (ET.ParseError, LookupError, ValueError) as exc:
+    print(f"{sys.argv[1]}: {exc}", file=sys.stderr)
+    sys.exit(3)
+' "${feed}" || feed_status=$?
+    if [ "${feed_status}" -eq 3 ]; then
       echo "::warning title=feed-validate::${feed} is not well-formed XML — skipping publish (last good feed stays online)."
+      exit 0
+    elif [ "${feed_status}" -ne 0 ]; then
+      echo "::warning title=feed-validate::${feed} not checked: ${python_bin} exit ${feed_status} — skipping publish (last good feed stays online)."
       exit 0
     fi
   done

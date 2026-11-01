@@ -87,7 +87,7 @@ sie zwischen zwei HTML-Kommentare mit den Liquid-Tags `raw` bzw. `endraw`
 (einfache Form ohne Bindestrich), jeder in einer eigenen Zeile mit einer
 Leerzeile davor und danach, so wie im Quelltext dieser Seite um den Absatz
 darüber. Mit #2092 kam dieser Absatz am
-2026-11-01 ungeschützt auf `main`: Bis zur Korrektur um 11:13 Uhr lief kein
+2026-11-01 ungeschützt auf `main`: Bis zur Korrektur um 11:13 Uhr Wiener Zeit lief kein
 Pages-Build mehr durch (22 gescheitert, 4 abgebrochen), und der Feed unter der
 Pages-Adresse blieb auf dem Stand von 08:30 Uhr Wiener Zeit stehen.
 `tests/test_docs_liquid.py` prüft seitdem jede Seite unter `docs/`, die

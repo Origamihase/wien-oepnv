@@ -8,8 +8,9 @@ a page before Markdown does: a ``{{ … }}`` is replaced by its value, mostly
 nothing, and a ``{%`` that does not form a valid tag stops the whole build.
 From the merge of #2092 on 2026-11-01 (08:43 Vienna time) one bare ``{%``
 in ``docs/reference/ki_waechter.md`` failed every Pages build (22 failed,
-4 cancelled until 11:13), and the feed at the Pages address, which the TV reads, stayed at 08:30
-while the update runs stayed green.
+4 cancelled until 11:13 Vienna time), and the feed at the Pages address,
+which the TV reads, stayed at 08:30 Vienna time while the update runs
+stayed green.
 
 Two rules: no Liquid pair outside a ``raw`` block, and every raw tag of a
 Markdown page in a marker line of its own. The tools:

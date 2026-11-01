@@ -141,6 +141,7 @@ def test_malformed_feed_is_never_published(tmp_path: Path) -> None:
     result = _publish(work, env, "--validate-feeds", "--all", "--message", "chore: update cycle")
     assert result.returncode == 0, result.stderr
     assert "not well-formed XML" in result.stdout
+    assert "not checked" not in result.stdout
     assert _remote_file(origin, env, "docs/feed.xml") == "<rss>old</rss>"
 
 
@@ -288,6 +289,33 @@ def test_without_python_the_feed_is_not_published_and_the_warning_says_why(tmp_p
     assert result.returncode == 0, result.stderr
     assert "::warning title=feed-validate::docs/feed.xml not checked: no python on PATH" in result.stdout
     assert "not well-formed" not in result.stdout
+    assert _remote_file(origin, env, "docs/feed.xml") == "<rss>old</rss>"
+
+
+def test_a_feed_check_that_cannot_run_does_not_call_the_feed_malformed(tmp_path: Path) -> None:
+    # A python that fails before parsing (exit 1 here; 127 from a shim) was
+    # reported as "not well-formed XML" (review of 2026-11-01).
+    origin, work, _other, env = _setup(tmp_path)
+    _write(work, "docs/feed.xml", "<rss>new</rss>\n")
+    bare = _bare_path(tmp_path, python3=False)
+    stub = Path(bare) / "python"
+    stub.write_text("#!/bin/bash\nexit 1\n", encoding="utf-8")
+    stub.chmod(0o755)
+    env = {**env, "PATH": bare}
+    result = _publish(work, env, "--validate-feeds", "--all", "--message", "chore: update cycle")
+    assert result.returncode == 0, result.stderr
+    assert f"::warning title=feed-validate::docs/feed.xml not checked: {stub} exit 1" in result.stdout
+    assert "not well-formed" not in result.stdout
+    assert _remote_file(origin, env, "docs/feed.xml") == "<rss>old</rss>"
+
+
+def test_a_feed_with_an_unknown_encoding_is_called_malformed(tmp_path: Path) -> None:
+    origin, work, _other, env = _setup(tmp_path)
+    _write(work, "docs/feed.xml", '<?xml version="1.0" encoding="foo"?>\n<rss>new</rss>\n')
+    result = _publish(work, env, "--validate-feeds", "--all", "--message", "chore: update cycle")
+    assert result.returncode == 0, result.stderr
+    assert "docs/feed.xml is not well-formed XML" in result.stdout
+    assert "not checked" not in result.stdout
     assert _remote_file(origin, env, "docs/feed.xml") == "<rss>old</rss>"
 
 

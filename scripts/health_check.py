@@ -1065,7 +1065,8 @@ GITHUB_API_MAX_BYTES = 1024 * 1024
 # of the runs of the following hour. Runs GitHub skipped do not count, and
 # Dependabot can skip one run per open pull request in a row (up to 10 open
 # by .github/dependabot.yml; 9 in a row on 2026-11-01). 30 runs were some
-# 410 to 480 KB on 2026-11-01, under GITHUB_API_MAX_BYTES.
+# 400 to 410 KB of JSON on 2026-11-01 (at most 440 KB over all runs so far),
+# under GITHUB_API_MAX_BYTES.
 TOOLING_RUNS_PER_PAGE = 30
 
 
@@ -1213,8 +1214,8 @@ def check_tooling_runs(now: datetime) -> Check:
 # itself ("pages build and deployment"). It has no file in the repository and
 # the Actions API takes no path as its id, so the id is looked up by path.
 PAGES_WORKFLOW_PATH = "dynamic/pages/pages-build-deployment"
-# Runs read per page: some 300 KB of JSON, well under GITHUB_API_MAX_BYTES
-# (50 runs were 757 KB on 2026-11-01). 20 runs reached back about eight
+# Runs read per page: some 260 KB of JSON, well under GITHUB_API_MAX_BYTES
+# (50 runs were 644 KB on 2026-11-01). 20 runs reached back about eight
 # hours at the median in October 2026, but at 10:02 UTC on 2026-11-01,
 # with many merges coming in, not to the start of the streak at 07:43 UTC;
 # so until every run from the newest down to the newest success has been
@@ -1375,12 +1376,12 @@ def check_pages_build(now: datetime) -> Check:
     Pages-Build künftig sofort auffallen?", answer "Beides bauen"): on
     2026-11-01 a bare Liquid tag in ``docs/reference/ki_waechter.md`` stopped
     every Pages build from 08:43 Vienna time (22 failed, 4 cancelled until
-    11:13 Vienna time); the live feed the TV reads stayed at 08:30 while the
-    Update runs stayed green, and ``Veröffentlichung`` would have turned red
-    only at about 13:00 Vienna time (4 h lag). This check reads the latest
-    completed run of "pages build and deployment" from the Actions API
-    (``actions: read``), by run number (:func:`_newest_first`), skipping
-    runs GitHub cancelled because a newer commit came:
+    11:13 Vienna time); the live feed the TV reads stayed at 08:30 Vienna time
+    while the Update runs stayed green, and ``Veröffentlichung`` would have
+    turned red only at about 13:00 Vienna time (4 h lag). This check reads the
+    latest completed run of "pages build and deployment" from the Actions API
+    (``actions: read``), by run number (:func:`_newest_first`), skipping runs
+    GitHub cancelled because a newer commit came:
 
     * ``success``: green.
     * failed in the Jekyll step: red at once. The content does not build,
