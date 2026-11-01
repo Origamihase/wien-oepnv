@@ -221,7 +221,13 @@ Ursache nennen und höchstens zehn Minuten vor ihr begannen
 Gasrohrgebrechen“ stand am 11.10. sonst neben drei Tickern „Gasrohrbruch“).
 Zeigt ein solcher Eintrag nur die Baustelle eines
 WL-Hinweises (gleiche Ursache, Linien, Zeitraum und eine gemeinsame Straße),
-geht er in diesem Hinweis auf (`_absorb_works_tickers`). Tests dazu lesen die Meldungen wie der Feed, über
+geht er in diesem Hinweis auf (`_absorb_works_tickers`). Meldet umgekehrt
+eine laufende WL-Störung mit Vorfallsbeginn (ausführliche Meldung) dieselbe
+Ursache an derselben Straße für jede Linie eines geltenden Hinweises, tritt
+der Hinweis zurück, solange sie läuft (`_yield_notices_to_incidents`, seit
+2026-11-01, Betreiberentscheidung „Störung bleibt“ und Grundsatz „Störungen
+haben höchste Priorität im Feed! Hinweise sind weniger wichtig.“; Anlass „1/2/71/D:
+Nationalfeiertag“ neben „1/2/71/D: Veranstaltung“ am 26.10.). Tests dazu lesen die Meldungen wie der Feed, über
 `_post_filter_wl`. Danach sortiert der Build die
 Items nach `first_seen` (neueste zuerst; Gleichstand: Störung vor Baustelle,
 dann `pubDate`). Davor stehen immer die aktuellen Störungen
