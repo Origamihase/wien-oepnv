@@ -11,7 +11,7 @@ dnspython>=2.0.0,<3
 # to keep the runner footprint small. Local contributors who exercise
 # the EN feed path can install ``torch`` separately via the same
 # index (see ``.github/workflows/build-feed.yml``).
-transformers>=4.41,<5
+transformers>=5.21.1,<6
 sentencepiece>=0.2.2,<1
 # pyhafas removed 2026-05-09: the released wheel on PyPI does not export
 # ``pyhafas.profile.OEBBProfile`` so the Stammstrecke monitor was migrated
