@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 01 Nov 2026 17:30:44 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 01 Nov 2026 18:00:58 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[11/71: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">b28fa372d7e4ea422476441932d63eac6de1f499d11d44ccde7db31f3f2027db</guid>
+      <pubDate>Sun, 01 Nov 2026 17:52:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Sun, 01 Nov 2026 17:52:00 +0100</ext:first_seen>
+      <ext:starts_at>Sun, 01 Nov 2026 17:52:00 +0100</ext:starts_at>
+      <description>Betrieb nur: 11 Otto-Probst-Platz – Fickeysstraße; 71 Schottenring U – Fickeysstraße. Voraussichtlich bis 18:20 Uhr. [Seit 17:52]</description>
+      <content:encoded><![CDATA[Betrieb nur: 11 Otto-Probst-Platz – Fickeysstraße; 71 Schottenring U – Fickeysstraße. Voraussichtlich bis 18:20 Uhr.<br/>[Seit 17:52]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Heiligenstadt ↔ Wien Franz-Josefs-Bahnhof]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -24,20 +37,6 @@
       <georss:line>48.249139 16.365131 48.226607 16.361443</georss:line>
       <description>Wegen einer Oberleitungsstörung sind zwischen Wien Heiligenstadt Bahnhof (U) und Wien Franz-Josefs-Bahnhof bis voraussichtlich 22:00 Uhr keine Fahrten möglich. [Seit 13:50]</description>
       <content:encoded><![CDATA[Wegen einer Oberleitungsstörung sind zwischen Wien Heiligenstadt Bahnhof (U) und Wien Franz-Josefs-Bahnhof bis voraussichtlich 22:00 Uhr keine Fahrten möglich.<br/>[Seit 13:50]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38B/39B: Allerheiligenverkehr 01.11.2026]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">6f9b1807cf0978b7b95b8bc183dc89ea212bab6281ff0ea60d0187953f17ad94</guid>
-      <pubDate>Mon, 05 Oct 2026 13:40:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 30 Oct 2026 00:00:46 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 01 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Sun, 01 Nov 2026 18:00:00 +0100</ext:ends_at>
-      <description>Inbetriebnahme von Autobuslinien. Anlässlich des Feiertages Allerheiligen werden die Autobuslinien 38B und 39B in Betrieb genommen und diverse Linien zu Friedhöfen verstärkt … [Heute]</description>
-      <content:encoded><![CDATA[Inbetriebnahme von Autobuslinien. Anlässlich des Feiertages Allerheiligen werden die Autobuslinien 38B und 39B in Betrieb genommen und diverse Linien zu Friedhöfen verstärkt …<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N31: Kranarbeiten]]></title>
