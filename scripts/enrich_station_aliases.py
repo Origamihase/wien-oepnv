@@ -23,8 +23,6 @@ from __future__ import annotations
 
 import argparse
 import csv
-import hashlib
-import json
 import logging
 import re
 import sys
@@ -37,12 +35,10 @@ BASE_DIR = Path(__file__).resolve().parents[1]
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
-try:
-    from src.utils.files import atomic_write, read_capped_json, read_capped_text
-    from src.utils.serialize import scrub_trojan_source_primitives
-except ModuleNotFoundError:
-    from utils.files import atomic_write, read_capped_json, read_capped_text  # type: ignore[no-redef]
-    from utils.serialize import scrub_trojan_source_primitives  # type: ignore[no-redef]
+from src.places.merge import write_stations_payload  # noqa: E402
+from src.utils.env import _path_fingerprint  # noqa: E402
+from src.utils.files import read_capped_json, read_capped_text  # noqa: E402
+from src.utils.text import strip_accents  # noqa: E402
 
 DEFAULT_STATIONS = BASE_DIR / "data" / "stations.json"
 DEFAULT_VOR_STOPS = BASE_DIR / "data" / "vor-haltestellen.csv"
@@ -67,30 +63,6 @@ MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
 MAX_ALIAS_CSV_BYTES = 50 * 1024 * 1024
 
 log = logging.getLogger("enrich_station_aliases")
-
-
-def _path_fingerprint(path: Path) -> str:
-    """Return a one-way SHA-256 fingerprint of ``str(path)`` (12 hex chars).
-
-    Security (Path-Log Sibling Drift Round 2, ``scripts/`` closure):
-    mirrors the canonical sanitisation shape pinned in
-    :func:`src.utils.env._path_fingerprint` and the inline
-    :func:`src.utils.files.read_capped_json` fingerprint. The path
-    arguments at every caller-side WARNING / INFO log line in this
-    script come from operator-controlled CLI flags (``--vor-stops``,
-    ``--vor-mapping``, ``--gtfs-stops``, ``--pendler-candidates``,
-    ``--stations``). Interpolating the raw path bytes lets a hostile
-    path carrying Trojan-Source primitives (BiDi RLO, zero-width,
-    8-bit C1 CSI/OSC, Tag block, Variation Selectors, newline
-    log-forgery, ANSI ESC) flow verbatim into stderr / aggregated
-    cron logs / SIEM splitters. The hex-only fingerprint is
-    Trojan-Source-clean and a CodeQL-recognised barrier for the
-    ``py/clear-text-logging-sensitive-data`` taint. Operators
-    correlate by re-hashing the candidate path locally.
-    """
-    return hashlib.sha256(
-        str(path).encode("utf-8", errors="replace")
-    ).hexdigest()[:12]
 
 
 def parse_args() -> argparse.Namespace:
@@ -186,14 +158,8 @@ _GENERIC_ALIAS_BLOCKLIST = frozenset({
 })
 
 
-def _strip_accents(value: str) -> str:
-    import unicodedata
-
-    return "".join(ch for ch in unicodedata.normalize("NFKD", value) if not unicodedata.combining(ch))
-
-
 def _normalize_key(text: str) -> str:
-    cleaned = _strip_accents(text)
+    cleaned = strip_accents(text)
     cleaned = cleaned.replace("ß", "ss")
     cleaned = cleaned.casefold()
     cleaned = re.sub(r"\s*\([^)]*\)\s*", " ", cleaned)
@@ -214,7 +180,7 @@ _UMLAUT_TRANSLATION = str.maketrans(
 
 
 def _accent_free(value: str) -> str:
-    cleaned = _strip_accents(value.translate(_UMLAUT_TRANSLATION))
+    cleaned = strip_accents(value.translate(_UMLAUT_TRANSLATION))
     cleaned = cleaned.replace("ß", "ss").replace("ẞ", "SS")
     return cleaned
 
@@ -814,43 +780,6 @@ def _alias_candidates(
     return safe_aliases
 
 
-def _write_stations_payload(path: Path, stations: list[dict[str, object]]) -> None:
-    """Atomically rewrite *path* with the enriched stations wrapped in
-    the canonical ``{"stations": [...]}`` envelope.
-
-    Security (Trojan-Source / BiDi-Mark Drift Round 14, ingestion-boundary
-    defence): strip the canonical CVE-2021-42574 attack-byte union BEFORE
-    ``json.dump`` so a poisoned VOR / GTFS / pendler-alternative-names
-    source cannot leak raw BiDi marks into ``data/stations.json`` via
-    a planted alias. The file is committed to ``main`` by the weekly
-    ``update-stations.yml`` cron (when the orchestrator invokes this
-    script). Mirrors ``src/places/merge.py:write_stations`` (Round 13).
-
-    Security (Coordinate finite/range drift, companion-writer
-    defence-in-depth): ``allow_nan=False`` mirrors the canonical
-    writer-side pin established in Round 1485 at
-    ``src/places/merge.py:write_stations``. The alias-enrichment step
-    re-reads ``data/stations.json`` from the previous cron tick; a
-    poisoned ``NaN`` / ``Infinity`` coordinate value planted by an
-    upstream step (compromised OEBB Excel / Google Places / HAFAS /
-    WL OGD response) survives Python's ``json.loads`` (default
-    lenient mode) and flows verbatim through this rewrite. The pin
-    surfaces such a bypass as a loud ``ValueError`` rather than a
-    silent non-standard JSON literal in the committed artefact.
-    """
-    scrubbed = scrub_trojan_source_primitives(stations)
-    serialisable = scrubbed if isinstance(scrubbed, list) else stations
-    with atomic_write(path, mode="w", encoding="utf-8", permissions=0o644) as handle:
-        json.dump(
-            {"stations": serialisable},
-            handle,
-            ensure_ascii=False,
-            indent=2,
-            allow_nan=False,
-        )
-        handle.write("\n")
-
-
 def _order_aliases(station: Mapping[str, object], aliases: Iterable[str]) -> list[str]:
     ordered: list[str] = []
 
@@ -949,7 +878,7 @@ def main() -> int:
         )
         return 0
 
-    _write_stations_payload(args.stations, stations)
+    write_stations_payload(args.stations, stations)
     log.info(
         "Wrote enriched aliases to [path-sha256=%s]",
         _path_fingerprint(args.stations),

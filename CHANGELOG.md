@@ -43,6 +43,72 @@ Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [Septem
   über die zehn aktuellen Meldungen erkannte alle vier bekannten Funde, auch
   die zwei, die die Jules-Audits vom 27. bis 29.10. als „OK“ führten
   (`docs/architecture.md` §1 „KI-Wächter“, `docs/reference/ki_waechter.md`).
+* **Aufräumen nach dem Code-Audit (2026-10-31)**: Umsetzung der Empfehlung aus
+  dem Code-Audit vom 31.10. (kein schwerer Fund, sechs niedrige Klassen; Michael:
+  „Ja, Aufräum-PR bauen“). Skripte importieren Projektmodule nur noch über `src.`:
+  `update_baustellen_cache.py` und `health_check.py` luden `src/utils/*` zweimal,
+  als `utils.*` und als `src.utils.*`, mit getrennten Hook-Listen und zwei
+  HTTP-Aufräum-Threads; `configure_feed.py`, `scan_secrets.py` und
+  `validate_stations.py` legten `src/` ebenfalls auf den Pfad. Die Regel steht in
+  `docs/development.md` („Skripte im Überblick“), der neue Strukturtest
+  `tests/test_scripts_import_src_only.py` prüft jedes Skript. Mit den echten Typen
+  fand mypy zwei überflüssige Casts und eine ungeprüfte Verzweigung im Health
+  check (behoben). Je eine Quelle statt Kopien: Haversine
+  (`src/utils/geo.py: haversine_m`; zwei Kopien hatten keine Begrenzung des
+  `asin`-Arguments), Zeitzonen-Helfer (`src/utils/vienna_clock.py: vienna_aware`),
+  Stationsdatei-Schreiber (`src/places/merge.py: write_stations_payload`),
+  Pfad-Fingerprint (`src/utils/env.py`), Akzent-Helfer
+  (`src/utils/text.py: strip_accents`), WL-Störungsfilter (`src/feed/merge.py`).
+  Entfernt: vier Definitionen ohne Verweis (`vor._log_error`,
+  `wl_lines._strip_existing_line_block`, `_HbfDepartureObservation`,
+  `FLORIDSDORF_CANONICAL_SEED`) und zehn nie laufende Import-Rückfälle in acht
+  Skripten. Docstring und Test (`tests/test_identity_utc_day.py`) halten fest,
+  dass die Rückfall-Identität einer Meldung ohne Provider-`_identity` den
+  UTC-Tag des Beginns trägt (die WL-Identität selbst nimmt den Wiener Tag, und
+  alle heutigen Quellen setzen eine `guid`, an der `first_seen` hängt), damit
+  eine Änderung eine Entscheidung bleibt. Der Health check gibt seinen
+  Updater-Kindprozessen nur noch das Wurzelverzeichnis auf `PYTHONPATH`.
+  Kommentar zu den Baustellen-Daten mit `Z` berichtigt, Bedingung
+  in `_parse_range` vereinfacht, Einrückung in `oebb._fetch_xml` begradigt. Keine
+  Änderung an Feed-Inhalten: Replay alt gegen neu über alle 86 Feed-Stände seit
+  30.10. identisch (DE, EN, State).
+* **Health check: Werkzeug-Secrets fallen auf, wenn sie nicht mehr tragen
+  (2026-10-31)**: Fund B des Architektur-Reviews vom 31.10. (Michael: „ja,
+  bau das bitte“). `CLAUDE_CODE_OAUTH_TOKEN` und `REPO_ADMIN_TOKEN` gehen als
+  `tooling` nicht an den Health check, und ihre Schritte liefen so, dass ein
+  abgelaufenes Token nichts hinterließ: das Code-Review mit
+  `continue-on-error` (grüner Check ohne Kommentare), die
+  Repository-Metadaten im SEO-Lauf mit Exit 0 bei leerem Token. Jetzt
+  scheitert der Metadaten-Schritt bei leerem oder abgelehntem Token
+  (`curl -f`) und wird als Nebenschritt nach `data/side_steps/seo-guard.json`
+  aufgezeichnet (rot im Health check, Grenze 48 h,
+  `HEALTH_SEO_MAX_AGE_HOURS`); der Review-Schritt darf scheitern (kein
+  `continue-on-error` mehr, kein Pflicht-Check, hält keinen Merge auf), und
+  die neue Prüfung `Werkzeuge` liest über die Actions-API (`actions: read`)
+  das Ergebnis des letzten Review-Laufs: rot, solange er scheiterte. Pull
+  Requests aus Forks werden wie Dependabot übersprungen (keine Secrets).
+  Dazu zwei Absätze in `docs/development.md` aus dem Review: Zustand, der nur
+  im Commit eines Laufs überlebt (Fund C), und der IFTTT-Auslöser mit
+  persönlichem Token, den nur der Betreiber sieht (Fund D).
+  `docs/architecture.md` §7 „Überwachung: Werkzeuge“.
+
+* **Health check: Prüfung „Veröffentlichung“, Live-Feeds gegen das Repo
+  (2026-10-31)**: Der Architektur-Review vom 31.10. fand die eine Stufe der
+  Kette ohne eigene Prüfung: Zwischen dem Commit und dem Fernseher liegt der
+  Pages-Build von GitHub, und jede Prüfung las nur den Checkout. Lieferte
+  Pages nicht mehr aus, blieb der Fernseher auf dem alten Stand bei grünem
+  Update-Lauf, Health check und Feed-Wächter; der SEO-Lauf schaute einmal am
+  Tag mit Warnung und Exit 0. Michael: „Ja, A bauen“. Der Health check holt
+  jetzt `feed.xml` und `feed.en.xml` von der Pages-Adresse und vergleicht
+  `<lastBuildDate>` mit der Repo-Kopie: rot, wenn die Live-Kopie mehr als
+  vier Stunden hinterherhängt (`HEALTH_LIVE_LAG_MAX_HOURS`), grün bei
+  gleichem oder neuerem Stand, ein gescheiterter Abruf ist nach der
+  Alarmlinie vom 28.10. nur ein Hinweis (`check_published_feeds`,
+  `docs/architecture.md` §7 „Überwachung: Veröffentlichung“). Der Pages-Host
+  steht dafür in `PROXY_TRUSTED_HOSTS`. Probe am 31.10. 14:06 MEZ gegen die
+  echte Adresse: beide Feeds aktuell, Pages lieferte 65 Sekunden nach dem
+  Commit aus.
+
 * **EN-Feed: „<Anlass>verkehr“ bei WL und ÖBB (2026-10-30)**: Das
   Jules-Audit vom 30.10. fand „38B/39B: All Saints' Worship 01.11.2026“ im
   englischen Feed; gemeint ist der Allerheiligenverkehr. Das

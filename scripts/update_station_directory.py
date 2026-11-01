@@ -12,7 +12,6 @@ from __future__ import annotations
 
 import argparse
 import csv
-import hashlib
 import io
 import json
 import logging
@@ -23,7 +22,6 @@ import re
 # scripts. Inputs are static lists, never user-supplied.
 import subprocess  # nosec B404
 import sys
-import unicodedata
 from copy import deepcopy
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
@@ -45,40 +43,23 @@ _ROOT = Path(__file__).resolve().parents[1]
 if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
-try:  # pragma: no cover - convenience for module execution
-    from src.utils.files import (
-        atomic_write,
-        loads_finite,
-        read_capped_bytes,
-        read_capped_json,
-        read_capped_text,
-        validate_zip_archive_safe,
-    )
-    from src.utils.geo import (
-        apply_coordinate_inertia,
-        use_cached_polygon_result,
-    )
-    from src.utils.http import fetch_content_safe, session_with_retries
-    from src.utils.serialize import scrub_trojan_source_primitives
-    from src.utils.stations import is_in_vienna as _is_point_in_vienna
-    from src.utils.stations_validation import is_synthetic_vor_id
-except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
-    from utils.files import (  # type: ignore[no-redef]
-        atomic_write,
-        loads_finite,
-        read_capped_bytes,
-        read_capped_json,
-        read_capped_text,
-        validate_zip_archive_safe,
-    )
-    from utils.geo import (  # type: ignore[no-redef]
-        apply_coordinate_inertia,
-        use_cached_polygon_result,
-    )
-    from utils.http import fetch_content_safe, session_with_retries  # type: ignore[no-redef]
-    from utils.serialize import scrub_trojan_source_primitives  # type: ignore[no-redef]
-    from utils.stations import is_in_vienna as _is_point_in_vienna  # type: ignore[no-redef]
-    from utils.stations_validation import is_synthetic_vor_id  # type: ignore[no-redef]
+from src.utils.files import (  # noqa: E402
+    atomic_write,
+    loads_finite,
+    read_capped_bytes,
+    read_capped_json,
+    read_capped_text,
+    validate_zip_archive_safe,
+)
+from src.utils.geo import (  # noqa: E402
+    apply_coordinate_inertia,
+    use_cached_polygon_result,
+)
+from src.utils.http import fetch_content_safe, session_with_retries  # noqa: E402
+from src.utils.serialize import scrub_trojan_source_primitives  # noqa: E402
+from src.utils.stations import is_in_vienna as _is_point_in_vienna  # noqa: E402
+from src.utils.stations_validation import is_synthetic_vor_id  # noqa: E402
+from src.utils.text import strip_accents  # noqa: E402
 
 # Security cap against wide-but-flat JSON size-bomb attacks. Mirrors the
 # canonical ``MAX_*_FILE_BYTES`` contract from ``src/utils/cache.py`` /
@@ -125,16 +106,10 @@ MAX_CSV_LOCATIONS_BYTES = 50 * 1024 * 1024
 # missing cache file.
 MAX_CACHED_WORKBOOK_BYTES = 10 * 1024 * 1024
 
-try:  # pragma: no cover - convenience for module execution
-    from src.places.hafas_client import enrich_station_with_hafas
-    from src.places.merge import BoundingBox
-    from src.utils.env import get_bool_env, load_default_env_files
-    from src.utils.logging import sanitize_log_arg
-except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
-    from places.hafas_client import enrich_station_with_hafas  # type: ignore[no-redef]
-    from places.merge import BoundingBox  # type: ignore[no-redef]
-    from utils.env import get_bool_env, load_default_env_files  # type: ignore[no-redef]
-    from utils.logging import sanitize_log_arg  # type: ignore[no-redef]
+from src.places.hafas_client import enrich_station_with_hafas  # noqa: E402
+from src.places.merge import BoundingBox  # noqa: E402
+from src.utils.env import _path_fingerprint, get_bool_env, load_default_env_files  # noqa: E402
+from src.utils.logging import sanitize_log_arg  # noqa: E402
 
 DEFAULT_OUTPUT_PATH = _ROOT / "data" / "stations.json"
 DEFAULT_PENDLER_PATH = _ROOT / "data" / "pendler_bst_ids.json"
@@ -169,27 +144,6 @@ HEADER_VARIANTS: dict[str, set[str]] = {
 }
 
 logger = logging.getLogger("update_station_directory")
-
-
-def _path_fingerprint(path: Path) -> str:
-    """Return a one-way SHA-256 fingerprint of ``str(path)`` (12 hex chars).
-
-    Security (Path-Log Sibling Drift Round 2, ``scripts/`` closure):
-    mirrors :func:`src.utils.env._path_fingerprint`. The path arguments
-    at every caller-side WARNING / INFO log line in this script come
-    from operator-controlled CLI flags (``--output``, ``--pendler``,
-    ``--pendler-candidates``, ``--vor-stops``, ``--gtfs-stops``,
-    ``--wl-haltepunkte``). Interpolating the raw path bytes lets a
-    hostile path carrying Trojan-Source primitives (BiDi RLO,
-    zero-width, 8-bit C1 CSI/OSC, Tag block, Variation Selectors,
-    newline log-forgery, ANSI ESC) flow verbatim into stderr /
-    aggregated cron logs / SIEM splitters. The hex-only fingerprint
-    is Trojan-Source-clean and a CodeQL-recognised barrier for the
-    ``py/clear-text-logging-sensitive-data`` taint.
-    """
-    return hashlib.sha256(
-        str(path).encode("utf-8", errors="replace")
-    ).hexdigest()[:12]
 
 
 def _empty_args() -> tuple[str, ...]:
@@ -368,10 +322,6 @@ class LocationInfo:
         self.sources.add(source)
 
 
-def _strip_accents(value: str) -> str:
-    return "".join(ch for ch in unicodedata.normalize("NFKD", value) if not unicodedata.combining(ch))
-
-
 def _normalize_location_keys(name: str | None) -> list[str]:
     if not name:
         return []
@@ -392,7 +342,7 @@ def _normalize_location_keys(name: str | None) -> list[str]:
     tokens: list[str] = []
     seen: set[str] = set()
     for candidate in candidates:
-        token = _strip_accents(candidate)
+        token = strip_accents(candidate)
         token = token.replace("ß", "ss")
         token = token.casefold()
         token = re.sub(r"\b(?:bahnhof|bahnhst|bhf|hbf|bf)\b", "", token)
@@ -1446,12 +1396,8 @@ def configure_logging(verbose: bool) -> None:
     level = logging.DEBUG if verbose else logging.INFO
     # Sentinel: route through SafeFormatter so any raw exception text
     # logged via %s in this script is sanitised at the formatter layer.
-    # Lazy import to mirror the script's existing fallback shape (the
-    # try/except `from src.X import …` block at module top).
-    try:
-        from src.feed.logging_safe import setup_script_logging
-    except ModuleNotFoundError:  # pragma: no cover - fallback for installed-package mode
-        from feed.logging_safe import setup_script_logging  # type: ignore[no-redef]
+    from src.feed.logging_safe import setup_script_logging
+
     setup_script_logging(level)
     logging.getLogger("urllib3").setLevel(logging.WARNING)
 

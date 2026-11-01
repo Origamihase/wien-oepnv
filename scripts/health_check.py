@@ -90,21 +90,22 @@ from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from email.utils import parsedate_to_datetime
 from pathlib import Path
+from typing import Any
 from zoneinfo import ZoneInfo
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SRC_DIR = REPO_ROOT / "src"
-# Resolve the canonical size-/depth-capped file helpers regardless of how the
-# script is launched. Both ``src`` (for ``from utils.…``) and the repo root go
-# on the path, mirroring scripts/update_baustellen_cache.py. Using the capped
-# helpers (instead of ``Path.read_text`` / ``json.loads``) is mandatory: the
-# repo-wide audit-walker tests reject bare reads/parses in src/ and scripts/.
-if str(SRC_DIR) not in sys.path:
-    sys.path.insert(0, str(SRC_DIR))
+# Only the repository root goes on the path: every project module is
+# imported once, as ``src.…`` (docs/development.md, "Skripte im Überblick").
+# Using the capped file helpers (instead of ``Path.read_text`` /
+# ``json.loads``) is mandatory: the repo-wide audit-walker tests reject bare
+# reads/parses in src/ and scripts/.
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from utils.files import read_capped_json, read_capped_text  # noqa: E402
+from src.config.defaults import DEFAULT_PAGES_BASE_URL  # noqa: E402
+from src.utils.files import loads_finite, read_capped_json, read_capped_text  # noqa: E402
+from src.utils.http import fetch_content_safe, session_with_retries  # noqa: E402
+from src.utils.logging import sanitize_log_arg  # noqa: E402
 
 try:  # Vienna local time is a nice-to-have header detail; tzdata may be absent.
     _VIENNA: ZoneInfo | None = ZoneInfo("Europe/Vienna")
@@ -126,6 +127,30 @@ def _env_float(name: str, default: float) -> float:
 # Feed: update-cycle runs ~every 30 min (IFTTT) with an hourly cron floor, so a
 # build older than 4 h means several missed cycles → something is wrong.
 FEED_MAX_AGE_H = _env_float("HEALTH_FEED_MAX_AGE_HOURS", 4.0)
+# Published copy: GitHub Pages serves ``docs/`` from ``main``; a deploy follows
+# a commit within minutes. A live feed whose ``<lastBuildDate>`` is this far
+# behind the committed one means Pages has stopped deploying (the Update runs
+# stay green, so nothing else would notice, see :func:`check_published_feeds`).
+LIVE_LAG_MAX_H = _env_float("HEALTH_LIVE_LAG_MAX_HOURS", 4.0)
+
+
+def _pages_base_url() -> str:
+    """Where GitHub Pages serves ``docs/``: ``PAGES_BASE_URL``, else derived
+    from ``GITHUB_REPOSITORY`` (``owner/repo`` → ``https://owner.github.io/repo``,
+    as build-feed.yml does, so a fork checks its own site), else the default."""
+    explicit = os.getenv("PAGES_BASE_URL", "").strip().rstrip("/")
+    if explicit:
+        return explicit
+    owner, _, repo = os.getenv("GITHUB_REPOSITORY", "").strip().partition("/")
+    if owner and repo:
+        return f"https://{owner.lower()}.github.io/{repo}"
+    return str(DEFAULT_PAGES_BASE_URL)
+
+
+PAGES_BASE_URL = _pages_base_url()
+LIVE_FETCH_TIMEOUT_S = _env_float("HEALTH_LIVE_FETCH_TIMEOUT_SECONDS", 20.0)
+LIVE_FEED_MAX_BYTES = 2 * 1024 * 1024
+LIVE_FEED_CONTENT_TYPES = ("application/xml", "application/rss+xml", "text/xml")
 # Stations: update-stations runs weekly (Sun 01:00 UTC). 8 days = one full
 # cycle + jitter; older means a weekly run was missed.
 STATIONS_MAX_AGE_H = _env_float("HEALTH_STATIONS_MAX_AGE_HOURS", 192.0)
@@ -133,6 +158,10 @@ STATIONS_MAX_AGE_H = _env_float("HEALTH_STATIONS_MAX_AGE_HOURS", 192.0)
 # after a failure); 36 h leaves room for a late first Update cycle of the
 # next day.
 KI_WAECHTER_MAX_AGE_H = _env_float("HEALTH_KI_WAECHTER_MAX_AGE_HOURS", 36.0)
+# SEO run (seo-guard.yml): daily cron, which GitHub delivers hours late (see
+# docs/development.md, "Geplante Läufe"), plus every push touching docs/.
+# 48 h = two days without any run before its side-step record counts as stale.
+SEO_MAX_AGE_H = _env_float("HEALTH_SEO_MAX_AGE_HOURS", 48.0)
 # Station sources: the weekly run downloads them and falls back to the copy
 # under data/ when a download fails, so a dead source would only show in the
 # log. 15 days = two weekly runs in a row without a good answer (one failed
@@ -252,13 +281,12 @@ def _extract_reason(output: str) -> str:
 def _subprocess_env() -> dict[str, str]:
     """Env for the updater subprocesses.
 
-    The updaters mix import styles (``from src.…`` needs the repo root on the
-    path, ``from utils.…`` needs ``src/``), so expose both — mirrors what
-    update-cycle.yml achieves via ``PYTHONPATH: src`` plus each script's own
-    ``REPO_ROOT`` insertion.
+    Only the repository root goes on ``PYTHONPATH``: the updaters import
+    ``src.…`` (docs/development.md, "Skripte im Überblick"), and ``src/`` on
+    the path would load their modules a second time as ``utils.…``.
     """
     env = dict(os.environ)
-    extra = os.pathsep.join([str(REPO_ROOT), str(REPO_ROOT / "src")])
+    extra = str(REPO_ROOT)
     existing = env.get("PYTHONPATH", "")
     env["PYTHONPATH"] = f"{extra}{os.pathsep}{existing}" if existing else extra
     return env
@@ -397,6 +425,20 @@ def _fmt_age(seconds: float) -> str:
     return f"{minutes}m"
 
 
+def _last_build_date(text: str) -> datetime | str:
+    """``<lastBuildDate>`` of an RSS document as an aware datetime, or the error."""
+    m = re.search(r"<lastBuildDate>\s*(.*?)\s*</lastBuildDate>", text)
+    if not m:
+        return "<lastBuildDate> fehlt"
+    try:
+        built = parsedate_to_datetime(m.group(1))
+    except (TypeError, ValueError) as exc:
+        return f"<lastBuildDate> nicht parsebar: {m.group(1)!r}: {exc}"[:200]
+    if built.tzinfo is None:
+        built = built.replace(tzinfo=UTC)
+    return built
+
+
 def check_feed_freshness(now: datetime) -> Check:
     name = "Feed-Build"
     path = REPO_ROOT / "docs" / "feed.xml"
@@ -404,18 +446,14 @@ def check_feed_freshness(now: datetime) -> Check:
     if text is None:
         return Check(name, ok=False,
                      summary="FEHLER — feed.xml fehlt, ist zu groß oder nicht lesbar")
-    m = re.search(r"<lastBuildDate>\s*(.*?)\s*</lastBuildDate>", text)
-    if not m:
-        return Check(name, ok=False,
-                     summary="FEHLER — <lastBuildDate> fehlt in feed.xml")
-    try:
-        built = parsedate_to_datetime(m.group(1))
-    except (TypeError, ValueError) as exc:
+    built = _last_build_date(text)
+    if isinstance(built, str):
+        if built.startswith("<lastBuildDate> fehlt"):
+            return Check(name, ok=False,
+                         summary="FEHLER — <lastBuildDate> fehlt in feed.xml")
         return Check(name, ok=False,
                      summary="FEHLER — <lastBuildDate> nicht parsebar",
-                     detail=f"{m.group(1)!r}: {exc}"[:200])
-    if built.tzinfo is None:
-        built = built.replace(tzinfo=UTC)
+                     detail=built.removeprefix("<lastBuildDate> nicht parsebar: "))
     age_s = (now - built).total_seconds()
     limit = f"Grenze {_fmt_age(FEED_MAX_AGE_H * 3600)}"
     if age_s > FEED_MAX_AGE_H * 3600:
@@ -426,6 +464,91 @@ def check_feed_freshness(now: datetime) -> Check:
                      "dem Commit ab.")
     return Check(name, ok=True,
                  summary=f"OK — vor {_fmt_age(age_s)} gebaut ({limit})")
+
+
+PUBLISHED_FEEDS: tuple[str, ...] = ("feed.xml", "feed.en.xml")
+
+
+def _fmt_moment(moment: datetime) -> str:
+    """A moment in Vienna time with its zone name (UTC when tzdata is missing)."""
+    if _VIENNA is not None:
+        return moment.astimezone(_VIENNA).strftime("%d.%m.%Y %H:%M %Z")
+    return moment.astimezone(UTC).strftime("%d.%m.%Y %H:%M UTC")
+
+
+def _fetch_live_feed(url: str) -> str | None:
+    """The published feed as text, or ``None`` when it cannot be fetched."""
+    with session_with_retries("wien-oepnv-health-check", timeout=LIVE_FETCH_TIMEOUT_S) as session:
+        content: bytes = fetch_content_safe(
+            session,
+            url,
+            max_bytes=LIVE_FEED_MAX_BYTES,
+            timeout=LIVE_FETCH_TIMEOUT_S,
+            allowed_content_types=LIVE_FEED_CONTENT_TYPES,
+        )
+    return content.decode("utf-8", errors="replace")
+
+
+def check_published_feeds(now: datetime) -> Check:
+    """Red when the feeds GitHub Pages serves lag the committed ones for hours.
+
+    The chain ends at the TV, not at ``docs/feed.xml`` in the repository:
+    between the commit and the display sits the Pages build, a stage without
+    a check of its own until 2026-10-31 (Architektur-Review). Every other
+    check reads the checkout, so a Pages deploy that stops leaves the live
+    feed stale while Update run, Health check and Feed-Wächter stay green.
+
+    Rule, following the alarm line of 2026-10-28 (red only for a lasting
+    technical fault): red when a live feed's ``<lastBuildDate>`` is more than
+    :data:`LIVE_LAG_MAX_H` behind the committed copy's. A live copy that is
+    newer than the checkout (a tick published since this run checked out) is
+    fine. A live copy that cannot be fetched or read is a note: one failed
+    request says nothing about duration, and a Pages outage keeps serving the
+    last deployment rather than failing, so the stale case is the one that
+    matters. The committed copy that cannot be read is already red in
+    ``Feed-Build``; here it is a note so the two do not double-count.
+    """
+    name = "Veröffentlichung"
+    limit = f"Grenze {_fmt_age(LIVE_LAG_MAX_H * 3600)}"
+    problems: list[str] = []
+    notes: list[str] = []
+    oks: list[str] = []
+    for file_name in PUBLISHED_FEEDS:
+        local_text = read_capped_text(REPO_ROOT / "docs" / file_name, label=file_name)
+        local_built = _last_build_date(local_text) if local_text is not None else "nicht lesbar"
+        if isinstance(local_built, str):
+            notes.append(f"{file_name}: Repo-Kopie {local_built}")
+            continue
+        url = f"{PAGES_BASE_URL}/{file_name}"
+        try:
+            live_text = _fetch_live_feed(url)
+        except Exception as exc:
+            reason = str(sanitize_log_arg(str(exc)))[:120]
+            notes.append(f"{file_name}: Live-Abruf fehlgeschlagen ({type(exc).__name__}: {reason})")
+            continue
+        live_built = _last_build_date(live_text) if live_text is not None else "nicht lesbar"
+        if isinstance(live_built, str):
+            notes.append(f"{file_name}: Live-Kopie {live_built}")
+            continue
+        lag_s = (local_built - live_built).total_seconds()
+        if lag_s > LIVE_LAG_MAX_H * 3600:
+            problems.append(
+                f"{file_name}: Live-Stand {_fmt_age(lag_s)} hinter dem Repo "
+                f"(live {_fmt_moment(live_built)}, Repo {_fmt_moment(local_built)})"
+            )
+        elif lag_s > 0:
+            oks.append(f"{file_name} {_fmt_age(lag_s)} hinter dem Repo")
+        else:
+            oks.append(f"{file_name} aktuell")
+    if problems:
+        return Check(name, ok=False,
+                     summary=f"FEHLER — GitHub Pages liefert nicht mehr aus ({limit})",
+                     detail="; ".join(problems + notes))
+    if notes:
+        return Check(name, ok=True, note=True,
+                     summary="HINWEIS — Live-Stand nicht geprüft: " + "; ".join(notes),
+                     detail="; ".join(oks))
+    return Check(name, ok=True, summary=f"OK — {', '.join(oks)} ({limit})")
 
 
 def check_stations(now: datetime) -> Check:
@@ -690,6 +813,10 @@ WORKFLOW_SECRETS: tuple[WorkflowSecret, ...] = (
                    "Stammstrecken-Monitor (VOR/VAO ReST API)"),
     WorkflowSecret("VOR_BASE_URL", "optional",
                    "VAO-Host, Standard in src/providers/vor.py"),
+    # ``tooling`` secrets are not passed to the Health check; whether they
+    # still work shows in ``Werkzeuge`` (latest run of claude-code-review.yml)
+    # and ``Nebenschritte`` (Repository-Metadaten in seo-guard.yml), since
+    # 2026-10-31 (Architektur-Review, Fund B).
     WorkflowSecret("CLAUDE_CODE_OAUTH_TOKEN", "tooling",
                    "Claude-Workflows (Code-Review, @claude)"),
     # A key of the free tier without billing (operator decision 2026-10-31).
@@ -797,6 +924,8 @@ SIDE_STEP_RECORDS: list[tuple[str, str, float]] = [
     ("update-cycle.json", "Update-Lauf", FEED_MAX_AGE_H),
     ("update-stations.json", "Stationslauf", STATIONS_MAX_AGE_H),
     ("ki-waechter.json", "KI-Wächter", KI_WAECHTER_MAX_AGE_H),
+    # Repository-Metadaten via REPO_ADMIN_TOKEN (Architektur-Review 2026-10-31, Fund B).
+    ("seo-guard.json", "SEO-Lauf", SEO_MAX_AGE_H),
 ]
 SIDE_STEP_DIR = REPO_ROOT / "data" / "side_steps"
 
@@ -838,7 +967,7 @@ def check_side_steps(now: datetime) -> Check:
             continue
         data = read_capped_json(path, label="side_steps")
         steps = data.get("steps") if isinstance(data, dict) else None
-        if not isinstance(steps, dict):
+        if not isinstance(data, dict) or not isinstance(steps, dict):
             problems.append(f"{workflow}: {path.name} ist unlesbar")
             continue
         updated = _parse_utc(data.get("updated"))
@@ -870,6 +999,108 @@ def check_side_steps(now: datetime) -> Check:
                      summary="HINWEIS — noch kein Stand der Nebenschritte",
                      detail="; ".join(notes))
     summary = f"OK — alle {counted} Nebenschritte liefen zuletzt sauber"
+    if notes:
+        return Check(name, ok=True, note=True, summary=summary, detail="; ".join(notes))
+    return Check(name, ok=True, summary=summary)
+
+
+# Workflows that run on pull requests and therefore cannot record a side step
+# into ``data/side_steps/`` (no write to ``main``): the Health check reads the
+# conclusion of their latest completed run from the Actions API instead
+# (file name, label). Architektur-Review 2026-10-31, Fund B: until then the
+# review step ran with ``continue-on-error`` and an expired
+# ``CLAUDE_CODE_OAUTH_TOKEN`` left no trace but a green check without comments.
+TOOLING_WORKFLOWS: tuple[tuple[str, str], ...] = (
+    ("claude-code-review.yml", "Code-Review"),
+)
+GITHUB_API_MAX_BYTES = 1024 * 1024
+
+
+def _github_api_json(path: str) -> Any:
+    """GET ``/repos/<GITHUB_REPOSITORY><path>`` from the GitHub API as JSON.
+
+    Read-only, with the run's own ``GITHUB_TOKEN`` (``actions: read``). Raises
+    on a missing token or repository, on an HTTP error and on bad JSON; the
+    caller turns every exception into a note.
+    """
+    token = os.environ.get("GITHUB_TOKEN", "").strip()
+    repository = os.environ.get("GITHUB_REPOSITORY", "").strip()
+    if not token or not repository:
+        raise RuntimeError("GITHUB_TOKEN oder GITHUB_REPOSITORY fehlt")
+    api = os.environ.get("GITHUB_API_URL", "").strip().rstrip("/") or "https://api.github.com"
+    url = f"{api}/repos/{repository}{path}"
+    with session_with_retries("wien-oepnv-health-check", timeout=LIVE_FETCH_TIMEOUT_S) as session:
+        session.headers.update(
+            {
+                "Accept": "application/vnd.github+json",
+                "Authorization": f"Bearer {token}",
+                "X-GitHub-Api-Version": "2022-11-28",
+            }
+        )
+        content: bytes = fetch_content_safe(
+            session,
+            url,
+            max_bytes=GITHUB_API_MAX_BYTES,
+            timeout=LIVE_FETCH_TIMEOUT_S,
+            allowed_content_types=("application/json",),
+        )
+    return loads_finite(content)
+
+
+def check_tooling_runs(now: datetime) -> Check:
+    """Red while the latest run of a tooling workflow failed.
+
+    Same rule as ``Nebenschritte`` (operator decision 2026-10-28, "ein Fehler
+    sollte auffallen"), for the workflows that run on pull requests and so
+    cannot write a record into ``data/side_steps/``: the Code-Review
+    (``claude-code-review.yml``) with ``CLAUDE_CODE_OAUTH_TOKEN``. Its step
+    ran with ``continue-on-error`` until 2026-10-31, so an expired token left
+    only a green check without comments (Architektur-Review 2026-10-31,
+    Fund B). Now the run fails, and this check reads the conclusion of the
+    latest completed run: ``success`` is green, a cancelled or skipped run is
+    a note, every other conclusion (``failure``, ``timed_out``,
+    ``startup_failure``) is red and names the run. An API that cannot be
+    asked, or a workflow that never ran, is a note: nothing says the tool is
+    broken.
+    """
+    name = "Werkzeuge"
+    problems: list[str] = []
+    notes: list[str] = []
+    oks: list[str] = []
+    for file_name, label in TOOLING_WORKFLOWS:
+        try:
+            data = _github_api_json(
+                f"/actions/workflows/{file_name}/runs?status=completed&per_page=1"
+            )
+        except Exception as exc:
+            reason = str(sanitize_log_arg(str(exc)))[:120]
+            notes.append(f"{label}: Actions-API nicht abgefragt ({type(exc).__name__}: {reason})")
+            continue
+        runs = data.get("workflow_runs") if isinstance(data, dict) else None
+        run = runs[0] if isinstance(runs, list) and runs and isinstance(runs[0], dict) else None
+        if run is None:
+            notes.append(f"{label}: noch kein abgeschlossener Lauf")
+            continue
+        conclusion = str(run.get("conclusion") or "")
+        finished = _parse_utc(run.get("updated_at"))
+        when = f" am {_vienna_hhmm(finished)}" if finished is not None else ""
+        link = str(run.get("html_url") or "")
+        if conclusion == "success":
+            oks.append(f"{label} zuletzt sauber{when}")
+        elif conclusion in {"cancelled", "skipped", "neutral"}:
+            notes.append(f"{label}: letzter Lauf {conclusion}{when}")
+        else:
+            text = f"{label} gescheitert{when} ({conclusion or 'ohne Ergebnis'})"
+            if link:
+                text += f" — {link}"
+            problems.append(text)
+    if problems:
+        return Check(name, ok=False, summary=f"FEHLER — {problems[0]}",
+                     detail="; ".join(problems[1:] + notes + oks))
+    if notes and not oks:
+        return Check(name, ok=True, note=True,
+                     summary="HINWEIS — " + "; ".join(notes))
+    summary = "OK — " + ", ".join(oks)
     if notes:
         return Check(name, ok=True, note=True, summary=summary, detail="; ".join(notes))
     return Check(name, ok=True, summary=summary)
@@ -934,12 +1165,14 @@ def main() -> int:
     sources = [assess_source(check_source(name, script), script, now) for name, script in UPDATERS]
     outputs = [
         check_feed_freshness(now),
+        check_published_feeds(now),
         check_stations(now),
         check_station_sources(now),
         check_stammstrecke_abruf(now),
         check_stammstrecke_directions(now),
         check_feed_watch(now),
         check_side_steps(now),
+        check_tooling_runs(now),
     ]
     config = [check_secrets()]
     all_checks = sources + outputs + config

@@ -41,6 +41,8 @@ darunter.
   - [Der VAO-„Start“-Vertrag (geprüft 2026-10-17)](#der-vao-start-vertrag-geprüft-2026-10-17)
   - [Überwachung: Abruf kaputt oder keine Züge (seit 2026-10-10)](#überwachung-abruf-kaputt-oder-keine-züge-seit-2026-10-10)
   - [Überwachung: Nebenschritte (seit 2026-10-28)](#überwachung-nebenschritte-seit-2026-10-28)
+  - [Überwachung: Veröffentlichung (seit 2026-10-31)](#überwachung-veröffentlichung-seit-2026-10-31)
+  - [Überwachung: Werkzeuge (seit 2026-10-31)](#überwachung-werkzeuge-seit-2026-10-31)
   - [Alarmwege: rot, Issue, Hinweis (seit 2026-10-28)](#alarmwege-rot-issue-hinweis-seit-2026-10-28)
 - [8. Der zweisprachige Feed (DE → EN)](#8-der-zweisprachige-feed-de--en)
   - [Die beiden Invarianten](#die-beiden-invarianten)
@@ -2913,8 +2915,9 @@ Nebenschritte sind die Schritte mit `continue-on-error`, die die
 Veröffentlichung nie aufhalten dürfen: Statistik
 (`generate_markdown_stats.py`), Linienprüfung (`check_feed_lines.py`) und
 Feed-Wächter (`feed_watch.py`) im Update-Lauf, ÖBB-Stationslinien
-(`update_oebb_station_lines.py`) im Stationslauf; seit 2026-10-31 auch der
-tägliche KI-Wächter (`ki-waechter.yml`, Grenze 36 h). Bis 2026-10-28 hinterließ
+(`update_oebb_station_lines.py`) im Stationslauf, seit 2026-10-31 die
+Repository-Metadaten (`REPO_ADMIN_TOKEN`) im SEO-Lauf (siehe „Werkzeuge“
+unten) und der tägliche KI-Wächter (`ki-waechter.yml`, Grenze 36 h). Bis 2026-10-28 hinterließ
 ihr Scheitern nur eine orange Annotation in einem grünen Lauf, und GitHub
 schickte keine Mail. Gemessen ist keiner gescheitert (Update-Läufe seit
 01.09.2026, Stationsläufe seit 01.01.2026), der Mangel war latent.
@@ -2940,6 +2943,75 @@ schickte keine Mail. Gemessen ist keiner gescheitert (Update-Läufe seit
   Exit-Code 0, damit die Veröffentlichung weiterläuft, und sein Schritt
   zählt deshalb als sauber.
 
+### Überwachung: Veröffentlichung (seit 2026-10-31)
+
+Anlass war der Architektur-Review vom 2026-10-31 (Michael: „Ja, A bauen“ auf
+der Karte „Soll der Health check die Live-URL der Feeds gegen das Repo
+prüfen?“). Die Kette endet nicht bei `docs/feed.xml` im Repository, sondern
+am Fernseher: Zwischen dem Commit und der Anzeige liegt der Pages-Build von
+GitHub (`pages-build-deployment`, Jekyll mit dem Theme aus
+`docs/_config.yml`). Jede andere Prüfung liest den Checkout; ein Pages-Build,
+der nicht mehr ausliefert, ließ den Fernseher auf dem alten Stand, während
+Update-Lauf, Health check und Feed-Wächter grün blieben. Den einzigen Blick
+auf die Live-Adresse hatte der SEO-Lauf einmal am Tag, als Warnung mit
+Exit-Code 0 und ohne das Datum zu vergleichen.
+
+Die Prüfung `Veröffentlichung` (`check_published_feeds` in
+`scripts/health_check.py`) holt `feed.xml` und `feed.en.xml` von der
+Pages-Adresse (`PAGES_BASE_URL`, aus dem Repository-Namen abgeleitet wie in
+`build-feed.yml`; über `request_safe`, höchstens 2 MB, nur XML) und
+vergleicht ihr `<lastBuildDate>` mit der Kopie im Checkout. Nach der
+Alarmlinie unten:
+
+* **Rot**, wenn eine Live-Kopie mehr als 4 Stunden hinter der Repo-Kopie
+  liegt (`HEALTH_LIVE_LAG_MAX_HOURS`): Pages liefert anhaltend nicht aus. Die
+  Meldung nennt beide Stände.
+* **Grün**, wenn Live und Repo gleich sind oder die Live-Kopie neuer ist (ein
+  Update-Lauf hat seit dem Checkout dieses Laufs veröffentlicht) oder nur
+  Minuten dahinter (der Pages-Build braucht nach dem Commit ein bis zwei
+  Minuten; gemessen am 2026-10-31: 65 Sekunden).
+* **Hinweis**, wenn der Live-Abruf gerade nicht gelingt oder die Live-Kopie
+  kein `<lastBuildDate>` trägt: ein einzelner Abruf sagt nichts über die
+  Dauer, und bei einer Pages-Störung bleibt die letzte Auslieferung in der
+  Regel erreichbar, sodass der veraltete Stand der Fall ist, der zählt. Eine
+  Repo-Kopie, die nicht lesbar ist, ist in `Feed-Build` schon rot und hier nur
+  ein Hinweis, damit sie nicht doppelt zählt.
+
+### Überwachung: Werkzeuge (seit 2026-10-31)
+
+Fund B des Architektur-Reviews vom 2026-10-31 (Michael: „ja, bau das
+bitte“): Zwei Werkzeug-Secrets konnten still sterben. `claude-code-review.yml`
+ließ den Review-Schritt mit `continue-on-error` laufen (Entscheidung vom
+2026-05-30 gegen rote Checks bei Aussetzern), sodass ein abgelaufener
+`CLAUDE_CODE_OAUTH_TOKEN` nur einen grünen Check ohne Kommentare hinterließ;
+`seo-guard.yml` beendete den Schritt für Beschreibung und Homepage des
+Repositorys bei leerem `REPO_ADMIN_TOKEN` mit einer Zeile auf stderr und
+Exit 0. Die Prüfung `Secrets` sieht beide nicht, weil sie als `tooling`
+nicht an den Health check gehen ([„Nebenschritte“](#überwachung-nebenschritte-seit-2026-10-28)
+gilt seither auch für sie, Regel vom 2026-10-28: „ein Fehler sollte auffallen“).
+
+* **Repository-Metadaten (`seo-guard.yml`).** Der Schritt scheitert bei
+  leerem Token und bei einer abgelehnten Anfrage (`curl -f`, 401 bei
+  abgelaufenem Token), läuft mit `continue-on-error` vor der
+  Veröffentlichung, und `record_side_steps.py` schreibt sein Ergebnis nach
+  `data/side_steps/seo-guard.json`, das mit `sitemap.xml` und `llms.txt` im
+  selben Commit mitfährt. Die Prüfung `Nebenschritte` ist rot, solange der
+  letzte Lauf scheiterte oder die Aufzeichnung älter als 48 Stunden ist
+  (`HEALTH_SEO_MAX_AGE_HOURS`; der tägliche Cron kommt Stunden verspätet,
+  zwei Tage ohne Lauf sind ein Ausfall).
+* **Code-Review (`claude-code-review.yml`).** Der Workflow läuft auf Pull
+  Requests und kann nichts nach `main` schreiben, deshalb gibt es keine
+  Aufzeichnung. Stattdessen darf der Review-Schritt seit 2026-10-31
+  scheitern (kein `continue-on-error` mehr): Der Check am PR wird rot (er ist
+  kein Pflicht-Check im Ruleset und hält keinen Merge auf), und die neue
+  Prüfung `Werkzeuge` (`check_tooling_runs`) liest über die Actions-API
+  (`actions: read`, eigenes `GITHUB_TOKEN` des Laufs) das Ergebnis des
+  letzten abgeschlossenen Laufs: `success` grün, `cancelled`/`skipped`
+  Hinweis, alles andere rot mit Link zum Lauf, bis ein Review wieder lief.
+  Pull Requests aus Forks und von Dependabot haben keine Secrets und werden
+  wie bisher übersprungen. Eine Actions-API, die nicht antwortet, ist ein
+  Hinweis, denn sie sagt nichts über das Werkzeug.
+
 ### Alarmwege: rot, Issue, Hinweis (seit 2026-10-28)
 
 Betreiberentscheidung (Michael, 2026-10-28, Karte „Linie, Issue als
@@ -2949,9 +3021,9 @@ drei Fragen und hat damit genau einen Weg:
 
 | Weg | Frage | Wer meldet | Fälle |
 | --- | --- | --- | --- |
-| **Rot** (GitHub-Mail) | Arbeitet die Technik nicht, und zwar anhaltend? | Health check (`scripts/health_check.py`), stündlich | Eine Quelle (WL, ÖBB, Baustellen, Stammstrecke) gab den Update-Läufen seit **3 h** keine brauchbare Antwort; der Feed ist seit **4 h** nicht neu gebaut; der Stationslauf ist älter als 8 Tage, ein Teilschritt scheiterte oder die Validierung fand Sicherheitsprobleme; eine Quelle des Stationslaufs antwortete seit 15 Tagen nicht; ein Nebenschritt scheiterte im letzten Lauf oder seine Aufzeichnung ist veraltet; der Feed-Wächter konnte nicht prüfen; ein Pflicht-Secret ist leer. |
+| **Rot** (GitHub-Mail) | Arbeitet die Technik nicht, und zwar anhaltend? | Health check (`scripts/health_check.py`), stündlich | Eine Quelle (WL, ÖBB, Baustellen, Stammstrecke) gab den Update-Läufen seit **3 h** keine brauchbare Antwort; der Feed ist seit **4 h** nicht neu gebaut; die veröffentlichten Feeds auf GitHub Pages liegen seit **4 h** hinter dem Repo; der Stationslauf ist älter als 8 Tage, ein Teilschritt scheiterte oder die Validierung fand Sicherheitsprobleme; eine Quelle des Stationslaufs antwortete seit 15 Tagen nicht; ein Nebenschritt scheiterte im letzten Lauf oder seine Aufzeichnung ist veraltet; der SEO-Lauf konnte die Repository-Metadaten nicht setzen (`REPO_ADMIN_TOKEN`); der letzte Lauf des Code-Reviews scheiterte (`CLAUDE_CODE_OAUTH_TOKEN`); der Feed-Wächter konnte nicht prüfen; ein Pflicht-Secret ist leer. |
 | **Issue** (Lauf bleibt grün) | Arbeitet die Technik, aber Feed-Inhalt oder Quelle sehen falsch aus? | Feed-Wächter (`scripts/feed_watch.py`), jeder Update-Lauf; je Regel ein Issue, das sich nach zwei sauberen Läufen selbst schließt | Die Inhaltsregeln (doppelter Eintrag, Anzahl, alte Meldung als neu, „Seit“ zu früh, ÖBB-Zweitsatz, Zeitzeile, Zeit vorbei, Länge, Höflichkeitssatz) und die Quellenregeln (`quelle-leer`, `quelle-einbruch`, `verwurf-sprung`, seit 2026-10-29 `vao-version`: die automatisch gewählte VAO-Version hat gewechselt). |
-| **Hinweis** (ℹ️, `::warning`) | Ist die Lage bekannt und verlangt nichts? | Health check | Eine stille Stammstrecken-Richtung, ein Korridor ohne Züge (die Website meldet ihn), eine gescheiterte Stichprobe, während die Update-Läufe noch Antworten bekommen, eine Aufzeichnung, die vor dem ersten Lauf noch fehlt. |
+| **Hinweis** (ℹ️, `::warning`) | Ist die Lage bekannt und verlangt nichts? | Health check | Eine stille Stammstrecken-Richtung, ein Korridor ohne Züge (die Website meldet ihn), eine gescheiterte Stichprobe, während die Update-Läufe noch Antworten bekommen, ein Live-Abruf der veröffentlichten Feeds, der gerade nicht gelang, eine Aufzeichnung, die vor dem ersten Lauf noch fehlt. |
 
 **Frühwarnung:** Zwei Technikfälle melden zusätzlich früher ein Issue, bevor
 sie rot werden: `quelle-ohne-antwort` nach 2 h (rot nach 3 h) und

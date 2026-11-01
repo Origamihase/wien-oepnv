@@ -13,7 +13,6 @@ from __future__ import annotations
 
 import argparse
 import csv
-import hashlib
 import json
 import logging
 import math
@@ -28,24 +27,22 @@ from collections.abc import Callable, Iterable, Iterator, Mapping, Sequence
 
 
 def _path_fingerprint(path: Path) -> str:
-    """Return a one-way SHA-256 fingerprint of ``str(path)`` (12 hex chars).
+    """One-way SHA-256 fingerprint of ``str(path)`` for log lines (12 hex chars).
 
-    Security (Path-Log Sibling Drift Round 2, ``scripts/`` closure):
-    mirrors :func:`src.utils.env._path_fingerprint`. The path arguments
-    at every caller-side WARNING / INFO log line in this script come
-    from operator-controlled CLI flags (``--haltepunkte``,
-    ``--haltestellen``, ``--stations``, ``--vor-mapping``).
-    Interpolating the raw path bytes lets a hostile path carrying
-    Trojan-Source primitives (BiDi RLO, zero-width, 8-bit C1 CSI/OSC,
-    Tag block, Variation Selectors, newline log-forgery, ANSI ESC)
-    flow verbatim into stderr / aggregated cron logs / SIEM splitters.
-    The hex-only fingerprint is Trojan-Source-clean and a
-    CodeQL-recognised barrier for the
-    ``py/clear-text-logging-sensitive-data`` taint.
+    :func:`src.utils.env._path_fingerprint`, imported lazily like the other
+    ``src`` helpers of this module (``_load_is_in_vienna`` etc.) so the
+    script stays importable before the repository root is on ``sys.path``.
+    The path arguments logged below come from operator-controlled CLI
+    options; the hex-only fingerprint keeps Trojan-Source primitives and
+    ANSI escapes out of the log, and operators correlate by re-hashing
+    the candidate path locally.
     """
-    return hashlib.sha256(
-        str(path).encode("utf-8", errors="replace")
-    ).hexdigest()[:12]
+    base_dir = _project_root()
+    if str(base_dir) not in sys.path:
+        sys.path.insert(0, str(base_dir))
+    from src.utils.env import _path_fingerprint as fingerprint
+
+    return fingerprint(path)
 
 
 def _project_root() -> Path:
@@ -414,11 +411,7 @@ def _download_ogd_csv(url: str, target: Path) -> bool:
     base_dir = _project_root()
     if str(base_dir) not in sys.path:  # pragma: no cover - defensive
         sys.path.insert(0, str(base_dir))
-    try:
-        from src.utils.http import request_safe, session_with_retries
-    except ImportError:  # pragma: no cover - defensive
-        log.warning("HTTP utilities unavailable; cannot download %s", url)
-        return False
+    from src.utils.http import request_safe, session_with_retries
 
     validators = _read_cache_validators(target)
     headers: dict[str, str] = {"User-Agent": USER_AGENT, **validators}
@@ -1294,15 +1287,17 @@ def _merge_colocated_duplicates(
     return out
 
 
-def _haversine_m(
-    lat1: float, lon1: float, lat2: float, lon2: float
-) -> float:
-    radius = 6_371_000.0
-    p1, p2 = math.radians(lat1), math.radians(lat2)
-    dp = math.radians(lat2 - lat1)
-    dl = math.radians(lon2 - lon1)
-    a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
-    return 2 * radius * math.asin(math.sqrt(a))
+def _haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    """Great-circle distance in metres, :func:`src.utils.geo.haversine_m`.
+
+    Imported lazily like the other ``src`` helpers of this module.
+    """
+    base_dir = _project_root()
+    if str(base_dir) not in sys.path:
+        sys.path.insert(0, str(base_dir))
+    from src.utils.geo import haversine_m
+
+    return haversine_m(lat1, lon1, lat2, lon2)
 
 
 def _all_pairs_within(

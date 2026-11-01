@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1016542, ftazW_265, ftazW_1031289, ftazW_1016543, ftazW_1016957, ftazW_1031290, ftazW_266"
+    "trafficInfoNameList": "ftazW_1016542, ftazW_265, ftazW_1031289, ftazW_1016543, ftazW_1016957, ftazW_1031290, ftazW_266, ftazW_1016493, ftazW_593"
    }
   ],
   "poiCategoryGroups": [
@@ -3024,6 +3024,40 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "04.11.2026 00:45",
+     "ausVon": "03.11.2026 20:45",
+     "location": "Passage - Ausgang Südtirolerplatz",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U1",
+      "18"
+     ],
+     "station": "Südtiroler Platz-Hauptbahnhof",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Passage - Ausgang Südtirolerplatz",
+    "elevatorId": "SL 03",
+    "name": "ftazW_1016493",
+    "parentName": "ftazW_1016493",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1",
+     "18"
+    ],
+    "time": {
+     "end": "2026-11-04T00:45:00.000+0100",
+     "start": "2026-11-03T20:45:00.000+0100"
+    },
+    "title": "Südtiroler Platz-Hauptbahnhof"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "03.11.2026 00:45",
      "ausVon": "02.11.2026 20:45",
      "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Hietzinger Kai, Hadikgasse",
@@ -3264,6 +3298,43 @@
      "start": "2026-11-03T01:15:00.000+0100"
     },
     "title": "Landstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "04.11.2026 00:45",
+     "ausVon": "03.11.2026 20:45",
+     "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Kennedybrücke",
+     "rbls": [
+      4409
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Hietzing",
+     "status": "geplante Wartung",
+     "towards": "U4 Heiligenstadt"
+    },
+    "description": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Kennedybrücke",
+    "elevatorId": "HI 01",
+    "name": "ftazW_593",
+    "parentName": "ftazW_593",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4409
+    ],
+    "time": {
+     "end": "2026-11-04T00:45:00.000+0100",
+     "start": "2026-11-03T20:45:00.000+0100"
+    },
+    "title": "Hietzing"
    }
   ]
  },

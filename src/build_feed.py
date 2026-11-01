@@ -44,7 +44,7 @@ from .feed.glossary import (
     _GLOSSARY_BY_CATEGORY as _GLOSSARY_BY_CATEGORY,
     _GLOSSARY_BY_SOURCE as _GLOSSARY_BY_SOURCE,
 )
-from .feed.merge import deduplicate_fuzzy, member_guids
+from .feed.merge import _is_wl_disruption, deduplicate_fuzzy, member_guids
 from .feed.logging import configure_logging
 from .feed.providers import (
     iter_providers,
@@ -7076,6 +7076,16 @@ def _parse_lines_from_title(title: str) -> list[str]:
     return tokens
 
 def _ymd_or_none(dt: datetime | None) -> str:
+    """The UTC calendar day of *dt* as ``YYYY-MM-DD``; ``""`` without a time.
+
+    Used only by the fallback identity of :func:`_identity_for_item` for an
+    item without a provider ``_identity``. Every current provider also sets a
+    ``guid``, which ``_dedupe_key_for_item`` and ``_state_key_for_item``
+    prefer, so no running item and no ``first_seen`` depends on this day; the
+    Wiener Linien identity (``_wl_identity``) takes the Vienna day instead.
+    ``tests/test_identity_utc_day.py`` pins the UTC day of this fallback so
+    that a change is a decision, not an accident (code audit 2026-10-31).
+    """
     if isinstance(dt, datetime):
         return _to_utc(dt).date().isoformat()
     return ""
@@ -11124,13 +11134,6 @@ def _remember_item_identity(
             entry["earliest_published"] = earliest.isoformat()
         entry["members"] = member_guids(item)
         entry["members_seen"] = now_utc.isoformat()
-
-
-def _is_wl_disruption(item: FeedItem) -> bool:
-    return (
-        str(item.get("source") or "").strip().casefold() == "wiener linien"
-        and str(item.get("category") or "").strip().casefold() == "störung"
-    )
 
 
 def _reason_only_summary(category_word: str) -> str:

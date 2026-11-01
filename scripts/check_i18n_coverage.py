@@ -59,10 +59,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-try:
-    from src.utils.files import read_capped_text
-except ModuleNotFoundError:
-    from utils.files import read_capped_text  # type: ignore[no-redef]
+from src.utils.files import read_capped_text  # noqa: E402
 
 HTML_PATH = REPO_ROOT / "docs" / "site.html"
 JS_PATH = REPO_ROOT / "docs" / "assets" / "site.js"

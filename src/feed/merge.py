@@ -528,7 +528,7 @@ def _join_merged_names(ex_name: str, name: str) -> str:
     return _collapse_common_prefix(ex_name, name) or f"{ex_name} & {name}"
 
 
-def _is_wl_disruption(item: dict[str, Any]) -> bool:
+def _is_wl_disruption(item: Mapping[str, Any]) -> bool:
     """A Wiener-Linien disruption (``Störung``), not a notice (``Hinweis``)."""
     return (
         str(item.get("source") or "").strip().casefold() == "wiener linien"

@@ -21,6 +21,7 @@ import requests
 import responses
 
 from scripts import ki_waechter, sync_hafas_profile, update_baustellen_cache, update_station_directory, update_wl_stations
+from src.config.defaults import DEFAULT_PAGES_BASE_URL
 from src.places import hafas_client, osm_client
 from src.providers import oebb, vor, wl_fetch
 from src.utils.http import (
@@ -160,6 +161,7 @@ def _upstream_hosts() -> dict[str, set[str]]:
         "wl_stations": {_host(update_wl_stations.OGD_LINIEN_URL), _host(update_wl_stations.OGD_HALTESTELLEN_URL)},
         "reporting": {"api.github.com"},
         "ki_waechter": {_host(ki_waechter.GEMINI_URL)},
+        "health_check_live_feeds": {_host(DEFAULT_PAGES_BASE_URL)},
     }
     return {name: set(hosts) for name, hosts in sources.items()}
 

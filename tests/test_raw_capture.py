@@ -8,7 +8,6 @@ RSS items and the Stadt-Wien WFS FeatureCollection (``OBJECTID``,
 from __future__ import annotations
 
 import json
-import sys
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
@@ -27,8 +26,6 @@ from src.utils.files import atomic_write
 def raw_root(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     root = tmp_path / "raw"
     monkeypatch.setattr(raw_capture, "RAW_ROOT", root)
-    # The Baustellen script imports the module as ``utils.raw_capture``.
-    monkeypatch.setattr(sys.modules["utils.raw_capture"], "RAW_ROOT", root)
     monkeypatch.setenv(raw_capture.RAW_CAPTURE_ENV, "1")
     return root
 

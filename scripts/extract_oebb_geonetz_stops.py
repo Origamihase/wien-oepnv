@@ -47,16 +47,10 @@ _ROOT = Path(__file__).resolve().parents[1]
 if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
-try:  # pragma: no cover - convenience for module execution
-    from src.feed.logging_safe import setup_script_logging
-    from src.feed.config import warn_if_outside_allowed_roots
-    from src.utils.files import atomic_write, loads_finite, read_capped_bytes
-    from src.utils.serialize import scrub_trojan_source_primitives
-except ModuleNotFoundError:  # pragma: no cover - fallback when installed as package
-    from feed.logging_safe import setup_script_logging  # type: ignore[no-redef]
-    from feed.config import warn_if_outside_allowed_roots  # type: ignore[no-redef]
-    from utils.files import atomic_write, loads_finite, read_capped_bytes  # type: ignore[no-redef]
-    from utils.serialize import scrub_trojan_source_primitives  # type: ignore[no-redef]
+from src.feed.config import warn_if_outside_allowed_roots  # noqa: E402
+from src.feed.logging_safe import setup_script_logging  # noqa: E402
+from src.utils.files import atomic_write, loads_finite, read_capped_bytes  # noqa: E402
+from src.utils.serialize import scrub_trojan_source_primitives  # noqa: E402
 
 # Cap mirrors ``MAX_JSON_FILE_BYTES`` in scripts/update_station_directory.py.
 # The raw GeoNetz dump is ~23 MiB; 50 MiB leaves ~2x headroom for a future

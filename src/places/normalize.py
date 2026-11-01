@@ -3,12 +3,12 @@
 from __future__ import annotations
 
 import re
-import unicodedata
 
 # The canonical Haversine implementation lives in ``src.utils.geo``;
 # re-export under the legacy ``haversine_m`` name so existing
 # ``src.places.merge`` callers keep working without churn.
 from ..utils.geo import calculate_distance_meters as haversine_m
+from ..utils.text import strip_accents
 
 __all__ = ["normalize_name", "haversine_m"]
 
@@ -24,13 +24,6 @@ _NON_ALNUM_RUN_RE = re.compile(r"[^0-9a-z]+")
 # bounds matcher memory without affecting comparison semantics for any
 # real-world station name (the longest legitimate entry is ~80 chars).
 _NORMALISED_MAX_LEN = 250
-
-
-def _strip_accents(value: str) -> str:
-    """Return ``value`` without any accent characters."""
-
-    normalized = unicodedata.normalize("NFKD", value)
-    return "".join(ch for ch in normalized if not unicodedata.combining(ch))
 
 
 def normalize_name(name: str) -> str:
@@ -53,7 +46,7 @@ def normalize_name(name: str) -> str:
     """
     stripped = " ".join(name.strip().split())
     lowered = stripped.casefold()
-    no_accents = _strip_accents(lowered)
+    no_accents = strip_accents(lowered)
     collapsed = _NON_ALNUM_RUN_RE.sub(" ", no_accents).strip()
     if len(collapsed) > _NORMALISED_MAX_LEN:
         collapsed = collapsed[:_NORMALISED_MAX_LEN].rstrip()

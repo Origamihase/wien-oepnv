@@ -12,40 +12,24 @@ from getpass import getpass
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parents[1]
-SRC_DIR = BASE_DIR / "src"
-if str(SRC_DIR) not in sys.path:
-    sys.path.insert(0, str(SRC_DIR))
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
+
+from src.feed.config import warn_if_outside_allowed_roots  # noqa: E402
+from src.utils.configuration_wizard import (  # noqa: E402
+    ConfigOption,
+    CONFIG_OPTIONS,
+    ConfigurationError,
+    calculate_changes,
+    compute_non_interactive_configuration,
+    format_env_document,
+    mask_value,
+    normalize_existing_values,
+)
+from src.utils.env import load_env_file  # noqa: E402
+from src.utils.files import atomic_write  # noqa: E402
 
 LOGGER = logging.getLogger("configure_feed")
-
-try:  # pragma: no cover - allow execution via package and script
-    from utils.configuration_wizard import (
-        ConfigOption,
-        CONFIG_OPTIONS,
-        ConfigurationError,
-        calculate_changes,
-        compute_non_interactive_configuration,
-        format_env_document,
-        mask_value,
-        normalize_existing_values,
-    )
-    from feed.config import warn_if_outside_allowed_roots
-    from utils.env import load_env_file
-    from utils.files import atomic_write
-except ImportError:  # pragma: no cover - allow python scripts/configure_feed.py
-    from src.utils.configuration_wizard import (
-        ConfigOption,
-        CONFIG_OPTIONS,
-        ConfigurationError,
-        calculate_changes,
-        compute_non_interactive_configuration,
-        format_env_document,
-        mask_value,
-        normalize_existing_values,
-    )
-    from src.feed.config import warn_if_outside_allowed_roots
-    from src.utils.env import load_env_file
-    from src.utils.files import atomic_write
 
 _OPTION_BY_KEY: dict[str, ConfigOption] = {option.key: option for option in CONFIG_OPTIONS}
 

@@ -54,3 +54,14 @@ def vienna_wall_clock(dt: datetime) -> datetime:
         return dt
     corrected = wall.replace(tzinfo=VIENNA_TZ).utcoffset()
     return dt if corrected is None else wall.replace(tzinfo=timezone(corrected))
+
+
+def vienna_aware(dt: datetime) -> datetime:
+    """``dt`` as an aware datetime: a naive wall clock is read as Vienna time.
+
+    Naive values appear when a hand-edited ledger omits the offset
+    (``cache/stammstrecke/*.json``); an aware value is returned as it is.
+    """
+    if dt.tzinfo is None:
+        return dt.replace(tzinfo=VIENNA_TZ)
+    return dt

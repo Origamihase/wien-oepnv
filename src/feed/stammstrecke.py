@@ -50,6 +50,7 @@ from src.utils.stats import (
     StammstreckeObservation,
     read_recent_stammstrecke_observations,
 )
+from src.utils.vienna_clock import vienna_aware
 
 LOGGER = logging.getLogger("feed.stammstrecke")
 
@@ -195,19 +196,6 @@ DIRECTIONS_BY_LABEL: Final[dict[str, _Direction]] = {
 }
 
 
-def _coerce_aware(value: datetime) -> datetime:
-    """Force *value* to be timezone-aware in :data:`VIENNA_TZ`.
-
-    Mirrors the helper of the same name in the cron script: naive
-    datetimes can appear when a hand-edited state file omits the offset;
-    rather than rejecting the entry we localise it defensively so the
-    rest of the persisted state survives.
-    """
-    if value.tzinfo is None:
-        return value.replace(tzinfo=VIENNA_TZ)
-    return value
-
-
 def _load_episode_starts(path: Path) -> dict[str, datetime]:
     """Read the persisted-episode-start ledger from *path*.
 
@@ -252,7 +240,7 @@ def _load_episode_starts(path: Path) -> dict[str, datetime]:
             ts = datetime.fromisoformat(value)
         except ValueError:
             continue
-        out[str(key)] = _coerce_aware(ts)
+        out[str(key)] = vienna_aware(ts)
     return out
 
 
@@ -397,7 +385,7 @@ def _has_recent_exceedance(
     the narrow ``feed_window`` trigger gate fail does NOT wipe the persisted
     ``first_seen`` / GUID of a still-running disruption.
     """
-    cutoff = _coerce_aware(now).astimezone(UTC) - EPISODE_GAP_TOLERANCE
+    cutoff = vienna_aware(now).astimezone(UTC) - EPISODE_GAP_TOLERANCE
     return any(
         obs.delay_minutes > DELAY_THRESHOLD_MINUTES and obs.timestamp >= cutoff
         for obs in observations
@@ -483,7 +471,7 @@ def compute_stammstrecke_events(
     # ``current - feed_window`` would move its wall clock: on 25.10.2026 the
     # 1 h window would span two hours from 02:00 to 04:00 winter time, on
     # 28.03.2027 none at all from 03:00 to 04:00 summer time.
-    current_utc = _coerce_aware(current).astimezone(UTC)
+    current_utc = vienna_aware(current).astimezone(UTC)
     starts_path = episode_starts_path or EPISODE_STARTS_PATH
     persisted_starts = _load_episode_starts(starts_path)
     observations = read_recent_stammstrecke_observations(

@@ -131,6 +131,7 @@ from src.utils.stats import (  # noqa: E402
     append_ausfall_row,
     append_stammstrecke_row,
 )
+from src.utils.vienna_clock import vienna_aware  # noqa: E402
 
 LOGGER = logging.getLogger("update_stammstrecke_status")
 
@@ -142,12 +143,11 @@ LOGGER = logging.getLogger("update_stammstrecke_status")
 FLORIDSDORF_VOR_ID = "490033400"
 MEIDLING_VOR_ID = "490101500"
 
-# Canonical station-directory keys used to look up the user-facing labels
-# via ``src.utils.stations``. These names MUST exist in
-# ``data/stations.json`` (or one of the configured aliases) so the
-# directory lookup succeeds. The fallback path in ``_short_target_label``
-# preserves the literal value if the lookup fails.
-FLORIDSDORF_CANONICAL_SEED = "Wien Floridsdorf"
+# Canonical station-directory key used to look up the user-facing label
+# via ``src.utils.stations``. The name MUST exist in ``data/stations.json``
+# (or one of the configured aliases) so the directory lookup succeeds. The
+# fallback path in ``_short_target_label`` preserves the literal value if
+# the lookup fails.
 MEIDLING_CANONICAL_SEED = "Wien Meidling"
 
 # Threshold above which the per-sample mean delay of a direction
@@ -475,16 +475,13 @@ def _identity_key(direction: str, name: str, scheduled: datetime) -> str:
 
 
 def _coerce_aware(value: datetime) -> datetime:
-    """Force *value* to be timezone-aware in :data:`VIENNA_TZ`.
+    """*value* in :data:`VIENNA_TZ`; a naive wall clock is read as Vienna time.
 
-    Naive datetimes can appear when a hand-edited state file omits
-    the offset; rather than rejecting the entry we localise it
-    defensively so the rest of the state survives.
+    The ledgers are written with Vienna offsets, so an aware value with
+    another offset (a hand-edited entry) is converted when it is read.
+    :func:`src.utils.vienna_clock.vienna_aware` localises the naive case.
     """
-
-    if value.tzinfo is None:
-        return value.replace(tzinfo=VIENNA_TZ)
-    return value.astimezone(VIENNA_TZ)
+    return vienna_aware(value).astimezone(VIENNA_TZ)
 
 
 def _trip_to_json(trip: _PendingTrip) -> dict[str, Any]:

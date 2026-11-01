@@ -67,16 +67,17 @@ This is:
     and SIEM grouping.
 
 The script gains:
-  1. A module-level ``import hashlib``.
-  2. A module-level ``_path_fingerprint`` helper mirroring
-     :func:`src.utils.env._path_fingerprint`.
-  3. Every operator-controlled-path WARNING / INFO / ERROR log line is
+  1. ``_path_fingerprint`` imported from :mod:`src.utils.env` (Round 3 gave
+     the script a module-level copy with its own ``import hashlib``; the
+     code audit of 2026-10-31 replaced the copy by the import).
+  2. Every operator-controlled-path WARNING / INFO / ERROR log line is
      updated to use ``[path-sha256=%s]`` with ``_path_fingerprint(path)``
      in place of the raw ``path`` argument.
 """
 from __future__ import annotations
 
 import hashlib
+import importlib
 import logging
 from pathlib import Path
 
@@ -294,31 +295,32 @@ def test_baustellen_resolve_fallback_path_traversal_emits_fingerprint(
 # ============================================================================
 
 
-def test_baustellen_path_fingerprint_matches_canonical_shape() -> None:
-    """The module's ``_path_fingerprint`` helper MUST mirror the shape
-    pinned in :func:`src.utils.env._path_fingerprint` byte-for-byte so the
-    cross-script ``[path-sha256=...]`` token shape stays single-sourced.
+def test_baustellen_path_fingerprint_is_the_canonical_helper() -> None:
+    """The script logs paths through :func:`src.utils.env._path_fingerprint`
+    itself (one helper since the code audit of 2026-10-31, no local copy), so
+    the cross-script ``[path-sha256=...]`` token shape stays single-sourced.
     """
-    from scripts.update_baustellen_cache import _path_fingerprint as fp_baustellen
+    module = importlib.import_module("scripts.update_baustellen_cache")
     from src.utils.env import _path_fingerprint as fp_canonical
 
+    assert module._path_fingerprint is fp_canonical
     sample = Path("/tmp/some-path/baustellen.geojson")
-    assert fp_baustellen(sample) == fp_canonical(sample)
+    fingerprint = module._path_fingerprint(sample)
     # 12 hex characters, no padding, no separator.
-    assert len(fp_baustellen(sample)) == 12
-    assert all(c in "0123456789abcdef" for c in fp_baustellen(sample))
+    assert len(fingerprint) == 12
+    assert all(c in "0123456789abcdef" for c in fingerprint)
 
 
 def test_baustellen_path_fingerprint_handles_non_utf8_bytes() -> None:
     """``errors="replace"`` ensures a path with bytes that aren't valid
     UTF-8 still produces a stable fingerprint instead of raising.
     """
-    from scripts.update_baustellen_cache import _path_fingerprint
+    module = importlib.import_module("scripts.update_baustellen_cache")
 
     # ``str(Path)`` always returns ``str``; this exercises the .encode()
     # ``errors="replace"`` contract on the helper itself by feeding a path
     # that contains lone surrogates (which str.encode would otherwise reject).
     poisoned = Path("/tmp/\udc80-lone-surrogate")
-    fp = _path_fingerprint(poisoned)
+    fp = module._path_fingerprint(poisoned)
     assert len(fp) == 12
     assert all(c in "0123456789abcdef" for c in fp)

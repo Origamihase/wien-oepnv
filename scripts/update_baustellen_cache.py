@@ -3,7 +3,6 @@
 
 from __future__ import annotations
 
-import hashlib
 import json
 import logging
 import math
@@ -13,7 +12,7 @@ import sys
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Any, Final, cast
+from typing import Any, Final
 from collections.abc import Iterable, Sequence
 from urllib.parse import quote, urlparse
 
@@ -22,26 +21,22 @@ from requests.exceptions import RequestException
 from zoneinfo import ZoneInfo
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SRC_DIR = REPO_ROOT / "src"
-if str(SRC_DIR) not in sys.path:
-    sys.path.insert(0, str(SRC_DIR))
-# Also add the repo root so ``from src.feed.logging_safe`` resolves.
-# ``src/feed/logging_safe.py`` itself uses ``from ..utils.logging``
-# (relative import past the ``feed`` package), which only works when
-# the package is loaded as ``src.feed``, not ``feed``.
+# Only the repository root goes on the path: every project module is
+# imported once, as ``src.…`` (docs/development.md, "Skripte im Überblick").
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from src.providers.baustellen import is_transit_relevant, oepnv_lead  # noqa: E402
-from utils import raw_capture  # noqa: E402
-from utils.cache import DataDegradationError, cache_modified_at, write_cache  # noqa: E402
-from utils.files import loads_finite, read_capped_json  # noqa: E402
-from utils.http import fetch_content_safe, session_with_retries, validate_http_url  # noqa: E402
-from utils.ids import make_guid  # noqa: E402
-from utils.logging import sanitize_log_arg  # noqa: E402
-from utils.serialize import serialize_for_cache  # noqa: E402
-from utils.source_shape import MIN_RECORDS, missing_fields  # noqa: E402
+from src.utils import raw_capture  # noqa: E402
+from src.utils.cache import DataDegradationError, cache_modified_at, write_cache  # noqa: E402
+from src.utils.env import _path_fingerprint  # noqa: E402
+from src.utils.files import loads_finite, read_capped_json  # noqa: E402
+from src.utils.http import fetch_content_safe, session_with_retries, validate_http_url  # noqa: E402
+from src.utils.ids import make_guid  # noqa: E402
+from src.utils.logging import sanitize_log_arg  # noqa: E402
+from src.utils.serialize import serialize_for_cache  # noqa: E402
+from src.utils.source_shape import MIN_RECORDS, missing_fields  # noqa: E402
 
 # Security cap against wide-but-flat JSON size-bomb attacks on the
 # bundled fallback geojson. The depth-bomb catch alone misses
@@ -55,31 +50,6 @@ MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
 
 LOGGER = logging.getLogger("update_baustellen_cache")
 
-
-def _path_fingerprint(path: Path) -> str:
-    """Return a one-way SHA-256 fingerprint of ``str(path)`` (12 hex chars).
-
-    Security (Path-Log Sibling Drift Round 3, cron-pipeline ``scripts/``
-    closure): mirrors :func:`src.utils.env._path_fingerprint` and the
-    Round-2 siblings in ``scripts/{enrich_station_aliases,
-    update_station_directory, update_wl_stations}.py``. The fallback-path
-    argument logged at every caller-side ERROR / WARNING / INFO line
-    below is derived from the operator-controlled
-    ``BAUSTELLEN_FALLBACK_PATH`` env var. Interpolating the raw path
-    bytes lets a hostile env value carrying Trojan-Source primitives
-    (BiDi RLO, zero-width, 8-bit C1 CSI/OSC, Tag block, Variation
-    Selectors, newline log-forgery, ANSI ESC) flow verbatim into the
-    aggregated cron log file ``$log_dir/baustellen.log`` (captured by
-    ``.github/workflows/update-cycle.yml`` and ingested by any SIEM
-    forwarder), and into any ``LogRecord`` consumer that reads
-    ``record.args`` before :class:`SafeFormatter` sanitisation. The
-    hex-only fingerprint is Trojan-Source-clean and a CodeQL-recognised
-    barrier for the ``py/clear-text-logging-sensitive-data`` taint.
-    Operators correlate by re-hashing the candidate path locally.
-    """
-    return hashlib.sha256(
-        str(path).encode("utf-8", errors="replace")
-    ).hexdigest()[:12]
 
 DEFAULT_DATA_URL = (
     "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0"
@@ -442,7 +412,7 @@ def _validated_baustellen_data_url(raw: str) -> str | None:
     host = (parsed.hostname or "").lower()
     if host not in _BAUSTELLEN_TRUSTED_HOSTS:
         return None
-    return cast(str, safe)
+    return safe
 
 
 def _resolve_data_url(candidate: str | None) -> str:
@@ -596,14 +566,13 @@ def _parse_datetime(value: str | float | int | None) -> datetime | None:
     candidate = value.strip()
     if not candidate:
         return None
-    # Stadt-Wien WFS emits date-only values with a bare trailing ``Z``
-    # (e.g. ``2026-03-22Z``). ``dateutil`` rejects that shape, so we
-    # parse the YYYY-MM-DD directly. The trailing ``Z`` here is a
-    # date-shape marker — NOT a UTC tz indicator. Stadt Wien operates
-    # the WFS in Europe/Vienna local time, so treating ``Z`` as UTC
-    # midnight then converting to Vienna shifted the displayed
-    # timestamp by 1-2 h (and could shift the *date* across DST). Parse
-    # the date directly as Vienna-local midnight.
+    # Stadt-Wien WFS emits date-only values with a trailing ``Z``
+    # (e.g. ``2026-03-22Z``), a shape ``dateutil`` rejects. The value is
+    # the UTC date of a Vienna time of day (see ``_UTC_DATE_RE`` below):
+    # it is read as Vienna midnight of that calendar day, and
+    # ``_first_day`` moves a start taken from such a value to the
+    # following day. Reading the ``Z`` as UTC midnight instead shifted
+    # the time of day by 1-2 h.
     date_only_z = re.fullmatch(r"(\d{4}-\d{2}-\d{2})Z", candidate)
     if date_only_z:
         try:
@@ -613,14 +582,16 @@ def _parse_datetime(value: str | float | int | None) -> datetime | None:
         except ValueError:
             return None
     try:
-        parsed = dtparser.parse(candidate)
+        # Annotated so the result is a ``datetime`` for mypy with and without
+        # the dateutil stubs (CI has none: ``parse`` returns ``Any`` there).
+        parsed: datetime = dtparser.parse(candidate)
     except (ValueError, OverflowError):
         return None
     if not parsed.tzinfo:
         parsed = parsed.replace(tzinfo=VIENNA_TZ)
     else:
         parsed = parsed.astimezone(VIENNA_TZ)
-    return cast(datetime, parsed)
+    return parsed
 
 
 def _parse_range(properties: dict[str, Any]) -> tuple[datetime | None, datetime | None]:
@@ -634,7 +605,7 @@ def _parse_range(properties: dict[str, Any]) -> tuple[datetime | None, datetime 
         end = _parse_datetime(properties.get(key))
         if end:
             break
-    if (start and end) or (start and not end) or (end and not start):
+    if start or end:
         return start, end
     duration_value = properties.get("DAUER") or properties.get("ZEITRAUM")
     if isinstance(duration_value, str) and "/" in duration_value:

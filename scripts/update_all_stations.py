@@ -22,7 +22,6 @@ from __future__ import annotations
 import argparse
 import json
 import logging
-import math
 import shutil
 # Bandit B404: subprocess is required to invoke internal cache-refresh
 # scripts. Inputs are static lists, never user-supplied.
@@ -40,8 +39,9 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
+from src.places.merge import write_stations_payload  # noqa: E402
 from src.utils.files import atomic_write, read_capped_json  # noqa: E402  (import after path setup)
-from src.utils.serialize import scrub_trojan_source_primitives  # noqa: E402
+from src.utils.geo import haversine_m  # noqa: E402
 from src.utils.stations_validation import (  # noqa: E402
     StationValidationError,
     ValidationReport,
@@ -228,15 +228,6 @@ def _station_key(entry: Mapping[str, Any]) -> str:
     return f"name:{name}"
 
 
-def _haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
-    radius = 6_371_000.0
-    p1, p2 = math.radians(lat1), math.radians(lat2)
-    dp = math.radians(lat2 - lat1)
-    dl = math.radians(lon2 - lon1)
-    a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
-    return 2 * radius * math.asin(math.sqrt(a))
-
-
 class _DiffResult(TypedDict):
     added: list[tuple[str, str]]
     removed: list[tuple[str, str]]
@@ -287,7 +278,7 @@ def _compute_diff(
         ):
             continue
         try:
-            distance = _haversine_m(before_lat, before_lon, after_lat, after_lon)
+            distance = haversine_m(before_lat, before_lon, after_lat, after_lon)
         except (TypeError, ValueError):
             continue
         if distance >= _COORD_SHIFT_THRESHOLD_M:
@@ -656,43 +647,6 @@ def _dedupe_exact_duplicates(
     return deduped, removed
 
 
-def _write_stations_payload(
-    path: Path, stations: Sequence[Mapping[str, Any]]
-) -> None:
-    """Atomically rewrite *path* with the canonical wrapped JSON shape.
-
-    Mirrors the ``{"stations": [...]}`` envelope written by
-    ``scripts/update_station_directory.py:write_json`` so a downstream
-    consumer reading the merged temp file (and the final copy-back to
-    ``data/stations.json``) sees the same format as a clean run.
-
-    Security (Trojan-Source / BiDi-Mark Drift Round 14, ingestion-boundary
-    defence): strip the canonical CVE-2021-42574 attack-byte union BEFORE
-    ``json.dump`` so a poisoned upstream provider (OEBB Excel / OSM
-    Overpass / Wien OGD CSV) cannot leak raw BiDi marks into the
-    orchestrator's temp file. The temp file is copy-back'd to
-    ``data/stations.json`` and the weekly ``update-stations.yml`` cron
-    commits it to ``main`` with ``add_options: "-A"``. Mirrors
-    ``src/places/merge.py:write_stations`` (Round 13).
-
-    Security (Coordinate finite/range drift, companion-writer
-    defence-in-depth): ``allow_nan=False`` mirrors the canonical
-    writer-side pin established in Round 1485 at
-    ``src/places/merge.py:write_stations``. The orchestrator's temp
-    file is the LAST writer before the final copy-back to
-    ``data/stations.json`` — any poisoned ``NaN`` / ``Infinity``
-    coordinate that survived the per-script parser checks lands here
-    verbatim. Without this floor the temp file (and the
-    copy-back-destination committed to ``main``) silently carries
-    non-standard JSON literals (invalid per RFC 8259).
-    """
-    raw_payload = {"stations": [dict(entry) for entry in stations]}
-    payload = scrub_trojan_source_primitives(raw_payload)
-    with atomic_write(path, mode="w", encoding="utf-8") as handle:
-        json.dump(payload, handle, ensure_ascii=False, indent=2, allow_nan=False)
-        handle.write("\n")
-
-
 def _write_quarantine_file(
     path: Path,
     quarantined: Sequence[Mapping[str, Any]],
@@ -837,7 +791,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                 removed_duplicates,
                 "y" if removed_duplicates == 1 else "ies",
             )
-            _write_stations_payload(tmp_stations_path, deduped_stations)
+            write_stations_payload(tmp_stations_path, deduped_stations)
 
         # Run validation
         logging.info("Validating merged %s", tmp_stations_path)
@@ -869,7 +823,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             )
 
             if quarantined_stations:
-                _write_stations_payload(tmp_stations_path, valid_stations)
+                write_stations_payload(tmp_stations_path, valid_stations)
                 _write_quarantine_file(
                     quarantine_path,
                     quarantined_stations,

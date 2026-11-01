@@ -68,11 +68,13 @@ bevor er zählt:
 
 Ein Fund, der eine Prüfung nicht besteht, steht unter „Nicht belegt“ im
 Bericht und öffnet kein Issue. Kopf, Zahlen, GUIDs, Zeiten und die Tabelle der
-geprüften Meldungen schreibt das Skript, nicht das Modell. Der Bericht beginnt
-immer mit der Überschrift „# KI-Wächter TT.MM.JJJJ“, nie mit Front Matter
-(`---`): So kopiert GitHub Pages ihn wie die übrigen Dateien in
-`docs/archive/audits/` unverändert, statt ihn mit Jekyll zu rendern, und ein
-zitiertes `{{` kann den Pages-Build nicht stören.
+geprüften Meldungen schreibt das Skript, nicht das Modell. GitHub Pages
+rendert jede Markdown-Datei unter `docs/` mit Jekyll, auch ohne Front Matter,
+und lässt Liquid darüberlaufen: Ein zitiertes `{{ … }}` verschwindet dabei
+stillschweigend (so geschehen in `archive/audits/audit-2026-09-13`), ein `{%`
+mit unbekanntem Tag lässt den Pages-Build scheitern, und Website und Fernseher
+blieben stehen. Das Skript setzt deshalb im Bericht hinter das erste Zeichen
+jedes solchen Paars ein Leerzeichen (`liquid_safe`), bevor es ihn schreibt.
 
 ## Gratis-Kontingent
 

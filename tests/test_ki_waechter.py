@@ -161,15 +161,24 @@ def test_report_comes_from_the_script(prep: kw.Prepared) -> None:
         "nr": 2, "klasse": "F6", "feed": "EN", "feed_zitat": "algae path", "erwartet": "Algenweg", "begruendung": "b",
     }, geprueft=(1, 2)), prep)
     report = kw.render_report(prep, verdict, datetime(2026, 10, 31, 14, 5, tzinfo=UTC), "m", "")
-    # No front matter: GitHub Pages copies docs/archive/audits/ as static
-    # files only while a report does not start with "---"; with front matter
-    # Jekyll would render it and "{{" in a quoted text could break the build.
     assert report.startswith("# KI-Wächter 31.10.2026\n")
     assert "31.10.2026 15:05 Wiener Zeit, Commit abc1234, Modell m" in report
     assert "Feed gebaut 27.10.2026 16:00 bis 27.10.2026 16:00 Wiener Zeit, 1 Fassung, 3 verschiedene" in report
     assert "| 2 | 89A: Streckensperre | g2 | 27.10. 16:00 (zuletzt im Feed) | 89A: Streckensperre | Fund 1 |" in report
     assert "| 3 | 40A: Bauernfeldplatz | g3 | 27.10. 16:00 (zuletzt im Feed) | 40A: Bauernfeldplatz | nicht geprüft |" in report
     assert "Ergebnis: 1 Fund" in report
+
+
+def test_the_report_keeps_liquid_out_of_the_pages_build(prep: kw.Prepared) -> None:
+    """GitHub Pages runs Liquid over every Markdown file under docs/, front matter or not."""
+    verdict = kw.verify(_answer({
+        "nr": 2, "klasse": "F6", "feed": "EN", "feed_zitat": "algae path", "erwartet": "Algenweg",
+        "begruendung": "Vorlage {{ site.title }} und {% include x %} im Text",
+    }, geprueft=(1, 2)), prep)
+    report = kw.render_report(prep, verdict, datetime(2026, 10, 31, 14, 5, tzinfo=UTC), "m", "")
+    assert "{{" not in report and "{%" not in report
+    assert "{ { site.title }} und { % include x %}" in report
+    assert kw.liquid_safe("a {{b}} {%c%}") == "a { {b}} { %c%}"
 
 
 def test_the_answer_is_the_last_json_block() -> None:

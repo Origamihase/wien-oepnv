@@ -7,8 +7,8 @@ import os
 from copy import deepcopy
 from dataclasses import dataclass
 from pathlib import Path
-from typing import TypedDict, cast
-from collections.abc import Iterable, MutableMapping, Sequence
+from typing import Any, TypedDict, cast
+from collections.abc import Iterable, Mapping, MutableMapping, Sequence
 
 from ..utils.files import (
     _reject_non_finite_constant,
@@ -28,6 +28,7 @@ __all__ = [
     "StationEntry",
     "load_stations",
     "write_stations",
+    "write_stations_payload",
     "merge_places",
 ]
 
@@ -197,6 +198,29 @@ def write_stations(path: Path, stations: Sequence[StationEntry]) -> None:
     # Security: use atomic_write to avoid partial writes on crashes/power loss.
     with atomic_write(path, mode="w", encoding="utf-8", permissions=0o644) as handle:
         handle.write(payload + "\n")
+
+
+def write_stations_payload(path: Path, stations: Sequence[Mapping[str, Any]]) -> None:
+    """Write *stations* to *path* in the ``{"stations": [...]}`` envelope.
+
+    The writer of ``scripts/enrich_station_aliases.py`` and
+    ``scripts/update_all_stations.py``, one function since the code audit of
+    2026-10-31: entries in their given key order, ``indent=2``,
+    ``ensure_ascii=False`` and a trailing newline, the shape
+    ``scripts/update_station_directory.py:write_json`` writes.
+    :func:`write_stations` differs in sorting the keys.
+
+    Security: the Trojan-Source primitives are stripped before serialisation
+    (see :func:`write_stations`), and ``allow_nan=False`` rejects a
+    non-finite coordinate instead of writing invalid JSON to a file the
+    weekly ``update-stations.yml`` run commits to ``main``.
+    """
+    entries = [dict(entry) for entry in stations]
+    scrubbed = scrub_trojan_source_primitives(entries)
+    serialisable = scrubbed if isinstance(scrubbed, list) else entries
+    with atomic_write(path, mode="w", encoding="utf-8", permissions=0o644) as handle:
+        json.dump({"stations": serialisable}, handle, ensure_ascii=False, indent=2, allow_nan=False)
+        handle.write("\n")
 
 
 def merge_places(

@@ -777,9 +777,6 @@ def render_report(prep: Prepared, verdict: Verdict, now: datetime, model: str, r
     caches = ", ".join(f"{_CACHE_NAMES.get(k, k)} {v}" for k, v in sorted(prep.cache_counts.items()))
     first, last = prep.versions[0], prep.versions[-1]
     window = f"{_vienna(first.built_de, '%d.%m.%Y %H:%M')} bis {_vienna(last.built_de, '%d.%m.%Y %H:%M')}"
-    # The first line is always this heading, never front matter ("---"):
-    # GitHub Pages then copies the report as a static file and does not run
-    # Jekyll/Liquid over quoted feed or model text (``{{`` would break it).
     out = [
         f"# KI-Wächter {local:%d.%m.%Y}",
         "",
@@ -838,7 +835,23 @@ def render_report(prep: Prepared, verdict: Verdict, now: datetime, model: str, r
          "`docs/reference/ki_waechter.md`. Der Feed wird nicht verändert."),
         "",
     ]
-    return "\n".join(out)
+    return liquid_safe("\n".join(out))
+
+
+def liquid_safe(text: str) -> str:
+    """Keep Jekyll's Liquid out of a Markdown file under ``docs/``.
+
+    GitHub Pages renders every Markdown file under ``docs/`` with Jekyll, with
+    or without front matter (``jekyll-optional-front-matter`` is part of the
+    Pages build and cannot be turned off). Liquid runs first: ``{{ … }}`` is
+    swallowed without a trace (seen live in ``archive/audits/audit-2026-09-13``,
+    where ``update-stations-${{ github.ref }}`` became ``update-stations-$``),
+    and ``{%`` with an unknown tag fails the Pages build, which stops the
+    website and the TV feed. The report quotes feed and model text, so both
+    openers get a space. ``{% raw %}`` would do the same but would show on
+    GitHub's own rendering of the file.
+    """
+    return text.replace("{{", "{ {").replace("{%", "{ %")
 
 
 # --- command line ------------------------------------------------------------------
