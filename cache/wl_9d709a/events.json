@@ -926,18 +926,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "36B: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Linie 36B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "34A: Rettungseinsatz",
+    "description": "Linie 34A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "c5dfcbf0ac6f53f5aa46354637fce7a274f1b74d1ac997528825ebf6a42a925c",
-    "pubDate": "2026-11-01T13:33:46+01:00",
-    "starts_at": "2026-11-01T13:47:00+01:00",
+    "guid": "997c5c2696337e2b638d6044431629fb2cf4b65916dd2bc6ef6fcabe66bdd529",
+    "pubDate": "2026-11-01T14:40:00+01:00",
+    "starts_at": "2026-11-01T14:40:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=36B|D=2026-11-01|TK=polizeieinsatz",
+    "_identity": "wl|störung|L=34A|D=2026-11-01|TK=rettungseinsatz",
     "_wl_ids": [
-      "I20261101-0016"
+      "I20261101-0018"
     ],
-    "_incident_start": "2026-11-01T13:47:00+01:00"
+    "_incident_start": "2026-11-01T14:40:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -978,8 +978,8 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "46: Fahrtbehinderung Falschparker",
-    "description": "Linie 46: Fahrtbehinderung in Richtung Parlament, U Volkstheater Voraussichtliche Dauer: 14:50 Uhr. Grund: Falschparker im Bereich Lerchenfelder Straße 59.",
+    "title": "46: Falschparker Betrieb ab Schmerlingplatz, Volkstheater",
+    "description": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "e08bda9f03dce228e77674725b02e9f293ebd068205353f4d4fda7e87dffd0d9",
     "pubDate": "2026-11-01T14:19:00+01:00",
@@ -994,8 +994,8 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "46: Falschparker Umleitung bis Parlament, Volkstheater über Linien 5 und 2",
-    "description": "Falschparker\nUmleitung bis Parlament, Volkstheater > über Linien 5 und 2",
+    "title": "46: Falschparker Umleitung bis Schmerlingplatz, Volkstheater über Linien 5 und 2",
+    "description": "Falschparker\nUmleitung bis Schmerlingplatz, Volkstheater über Linien 5 und 2",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "47e6578bd0d4b6914b8d09064b84250f4ae0b76011d7965b223f5ed1f255366b",
     "pubDate": "2026-11-01T14:27:52+01:00",
