@@ -7,7 +7,9 @@
 #
 # Requirements:
 # - Python 3.11
-# - mypy 2.4.x (matches CI; pinned in requirements-dev.txt)
+# - mypy 2.4.x and the types-* stubs from requirements-dev.txt, the file
+#   mypy-strict.yml installs (stubs since 2026-11-01: without them mypy
+#   sees fewer errors than CI, and the baseline would not match the gate)
 #
 # Usage:
 #   bash scripts/regen_mypy_baseline.sh
@@ -18,8 +20,9 @@ set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO_ROOT"
 
-# Ensure a CI-matching mypy version is installed.
-pip install -q "mypy>=2.4,<2.5"
+# Install what CI installs: mypy and the stubs from requirements-dev.txt,
+# with the same interpreter that runs mypy below.
+python3 -m pip install -q -r requirements-dev.txt
 
 CURRENT="$(mktemp)"
 trap 'rm -f "$CURRENT"' EXIT
