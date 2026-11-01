@@ -183,6 +183,68 @@ def test_a_clean_page_publishes_without_a_liquid_warning(tmp_path: Path) -> None
     assert _remote_file(origin, env, "docs/statistik.md") == "# Statistik\n\n| S1 | 3 |"
 
 
+def test_a_symlinked_page_publishes_its_target_made_inert(tmp_path: Path) -> None:
+    # Second check of 2026-11-01: the target was rewritten but only the
+    # link, whose blob does not change, was staged again; the Liquid went out.
+    origin, work, _other, env = _setup(tmp_path)
+    _write(work, "docs/note.md", "x {% y\n")
+    (work / "docs" / "alias.md").symlink_to("note.md")
+    _write(work, "docs/notiz.txt", "Notiz: {% ohne Tag\n")
+    (work / "docs" / "notiz.md").symlink_to("notiz.txt")
+    result = _publish(work, env, "--all", "--label", "L", "--message", "m")
+    assert result.returncode == 0, result.stderr
+    assert "Liquid in docs/note.md (line 1) made inert" in result.stdout
+    assert "Liquid in docs/notiz.txt (line 1) made inert" in result.stdout
+    assert _remote_file(origin, env, "docs/note.md") == "x { % y"
+    assert _remote_file(origin, env, "docs/notiz.txt") == "Notiz: { % ohne Tag"
+    assert _git(work, env, "status", "--porcelain") == ""
+
+
+def test_a_page_the_check_cannot_read_is_named_in_a_warning(tmp_path: Path) -> None:
+    origin, work, _other, env = _setup(tmp_path)
+    (work / "docs" / "latin1.md").write_bytes("# St\xf6rung\n\nText {% x\n".encode("latin-1"))
+    _write(work, "docs/ok.md", "fine {% z\n")
+    result = _publish(work, env, "--all", "--label", "L", "--message", "m")
+    assert result.returncode == 0, result.stderr
+    assert "::warning title=L::Liquid check did not cover every staged page under docs/" in result.stdout
+    assert "latin1.md skipped (UnicodeDecodeError" in result.stderr
+    assert _remote_file(origin, env, "docs/ok.md") == "fine { % z"
+
+
+def _bare_path(tmp_path: Path, *, python3: bool) -> str:
+    """A PATH with only the tools the script needs, python at most as python3."""
+    bin_dir = tmp_path / "bare-bin"
+    bin_dir.mkdir()
+    for tool in ("git", "bash", "mktemp", "rm", "dirname", "sleep", "cat"):
+        found = shutil.which(tool)
+        assert found, tool
+        (bin_dir / tool).symlink_to(found)
+    if python3:
+        (bin_dir / "python3").symlink_to(sys.executable)
+    return str(bin_dir)
+
+
+def test_without_python_the_page_is_published_with_a_warning(tmp_path: Path) -> None:
+    origin, work, _other, env = _setup(tmp_path)
+    _write(work, "docs/x.md", "x {% y\n")
+    env = {**env, "PATH": _bare_path(tmp_path, python3=False)}
+    result = _publish(work, env, "--all", "--label", "L", "--message", "m")
+    assert result.returncode == 0, result.stderr
+    assert "::warning title=L::Liquid check did not cover every staged page under docs/" in result.stdout
+    assert _remote_file(origin, env, "docs/x.md") == "x {% y"
+
+
+def test_with_only_python3_the_page_is_made_inert(tmp_path: Path) -> None:
+    origin, work, _other, env = _setup(tmp_path)
+    _write(work, "docs/x.md", "x {% y\n")
+    env = {**env, "PATH": _bare_path(tmp_path, python3=True)}
+    result = _publish(work, env, "--all", "--label", "L", "--message", "m")
+    assert result.returncode == 0, result.stderr
+    assert "Liquid in docs/x.md (line 1) made inert" in result.stdout
+    assert "did not cover" not in result.stdout
+    assert _remote_file(origin, env, "docs/x.md") == "x { % y"
+
+
 def test_concurrent_push_is_rebased_not_rejected(tmp_path: Path) -> None:
     # SEO Verify, 2026-10-04: a commit landed between checkout and push.
     origin, work, other, env = _setup(tmp_path)

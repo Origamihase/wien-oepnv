@@ -86,6 +86,7 @@ import os
 import re
 import subprocess  # nosec B404
 import sys
+from collections.abc import Iterable
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from email.utils import parsedate_to_datetime
@@ -1014,6 +1015,10 @@ TOOLING_WORKFLOWS: tuple[tuple[str, str], ...] = (
     ("claude-code-review.yml", "Code-Review"),
 )
 GITHUB_API_MAX_BYTES = 1024 * 1024
+# Runs read per tooling workflow: the newest is chosen by run number (see
+# _newest_first), and a run the API lists an hour late can stand only ahead
+# of the runs of the following hour.
+TOOLING_RUNS_PER_PAGE = 10
 
 
 def _github_api_json(path: str) -> Any:
@@ -1047,6 +1052,43 @@ def _github_api_json(path: str) -> Any:
     return loads_finite(content)
 
 
+def _newest_first(runs: Iterable[object]) -> list[dict[str, Any]]:
+    """The runs among *runs*, newest first by run number.
+
+    The Actions API sorts runs by ``created_at``, and on 2026-11-01 GitHub
+    gave every run created between 08:00 and 08:59 UTC a ``created_at`` and
+    ``updated_at`` one hour late (the end of US daylight saving time): the
+    list showed Pages run #29084 (created 08:56 UTC) before #29099 (09:55
+    UTC), so the first listed run was not the latest. The run number counts
+    up with every run of a workflow and depends on no clock; the id breaks a
+    tie. The times shown stay the API's and can be an hour late for runs of
+    that hour.
+    """
+    def key(run: dict[str, Any]) -> tuple[int, int]:
+        number, run_id = run.get("run_number"), run.get("id")
+        return (number if isinstance(number, int) else -1, run_id if isinstance(run_id, int) else -1)
+
+    return sorted((run for run in runs if isinstance(run, dict)), key=key, reverse=True)
+
+
+def _conclusion(run: dict[str, Any]) -> str:
+    return str(run.get("conclusion") or "")
+
+
+def _run_time(raw: object, now: datetime) -> str:
+    """An Actions API time in Vienna time, or ``""``.
+
+    A time after the check cannot be right: on 2026-11-01 the API gave the
+    runs of 08:00-08:59 UTC their times one hour late (see
+    :func:`_newest_first`), so at 10:01 a run that had ended at 09:57 read
+    10:57. Such a time is left out rather than shown.
+    """
+    moment = _parse_utc(raw)
+    if moment is None or moment > now + timedelta(minutes=5):
+        return ""
+    return _vienna_hhmm(moment)
+
+
 def check_tooling_runs(now: datetime) -> Check:
     """Red while the latest run of a tooling workflow failed.
 
@@ -1057,7 +1099,8 @@ def check_tooling_runs(now: datetime) -> Check:
     ran with ``continue-on-error`` until 2026-10-31, so an expired token left
     only a green check without comments (Architektur-Review 2026-10-31,
     Fund B). Now the run fails, and this check reads the conclusion of the
-    latest completed run: ``success`` is green, a cancelled or skipped run is
+    latest completed run (by run number, see :func:`_newest_first`):
+    ``success`` is green, a cancelled or skipped run is
     a note, every other conclusion (``failure``, ``timed_out``,
     ``startup_failure``) is red and names the run. An API that cannot be
     asked, or a workflow that never ran, is a note: nothing says the tool is
@@ -1070,20 +1113,21 @@ def check_tooling_runs(now: datetime) -> Check:
     for file_name, label in TOOLING_WORKFLOWS:
         try:
             data = _github_api_json(
-                f"/actions/workflows/{file_name}/runs?status=completed&per_page=1"
+                f"/actions/workflows/{file_name}/runs?status=completed&per_page={TOOLING_RUNS_PER_PAGE}"
             )
         except Exception as exc:
             reason = str(sanitize_log_arg(str(exc)))[:120]
             notes.append(f"{label}: Actions-API nicht abgefragt ({type(exc).__name__}: {reason})")
             continue
-        runs = data.get("workflow_runs") if isinstance(data, dict) else None
-        run = runs[0] if isinstance(runs, list) and runs and isinstance(runs[0], dict) else None
+        listed = data.get("workflow_runs") if isinstance(data, dict) else None
+        runs = _newest_first(listed) if isinstance(listed, list) else []
+        run = runs[0] if runs else None
         if run is None:
             notes.append(f"{label}: noch kein abgeschlossener Lauf")
             continue
-        conclusion = str(run.get("conclusion") or "")
-        finished = _parse_utc(run.get("updated_at"))
-        when = f" am {_vienna_hhmm(finished)}" if finished is not None else ""
+        conclusion = _conclusion(run)
+        finished = _run_time(run.get("updated_at"), now)
+        when = f" am {finished}" if finished else ""
         link = str(run.get("html_url") or "")
         if conclusion == "success":
             oks.append(f"{label} zuletzt sauber{when}")
@@ -1110,10 +1154,15 @@ def check_tooling_runs(now: datetime) -> Check:
 # itself ("pages build and deployment"). It has no file in the repository and
 # the Actions API takes no path as its id, so the id is looked up by path.
 PAGES_WORKFLOW_PATH = "dynamic/pages/pages-build-deployment"
-# Runs read per check: a streak of failures over about ten hours of ticks
-# (a superseded run is cancelled and skipped), some 300 KB of JSON, well
-# under GITHUB_API_MAX_BYTES (50 runs were 757 KB on 2026-11-01).
+# Runs read per page: some 300 KB of JSON, well under GITHUB_API_MAX_BYTES
+# (50 runs were 757 KB on 2026-11-01). 20 runs reached back about eight
+# hours at the median in October 2026, but at 11:02 on 2026-11-01, with
+# many merges coming in, not to the start of the streak at 08:43; so while
+# every finished run read so far failed, the next page follows, up to
+# PAGES_MAX_PAGES, and the alarm can still name the commit that broke the
+# build.
 PAGES_RUNS_PER_PAGE = 20
+PAGES_MAX_PAGES = 3
 _PAGES_SKIPPED = frozenset({"cancelled", "skipped", "neutral"})
 # The Jekyll step of the build job ("Build with Jekyll"); the step before it,
 # "Pull ghcr.io/actions/jekyll-build-pages:…", is GitHub's side. Should GitHub
@@ -1122,8 +1171,8 @@ _PAGES_SKIPPED = frozenset({"cancelled", "skipped", "neutral"})
 _JEKYLL_STEP_RE = re.compile(r"build\b.*\bjekyll\b", re.IGNORECASE)
 
 
-def _pages_runs() -> list[dict[str, Any]] | None:
-    """The latest completed Pages runs, newest first; ``None`` without Pages."""
+def _pages_workflow_id() -> int | None:
+    """The id of the Pages workflow; ``None`` without Pages."""
     data = _github_api_json("/actions/workflows?per_page=100")
     workflows = data.get("workflows") if isinstance(data, dict) else None
     if not isinstance(workflows, list):
@@ -1133,13 +1182,40 @@ def _pages_runs() -> list[dict[str, Any]] | None:
         for wf in workflows
         if isinstance(wf, dict) and wf.get("path") == PAGES_WORKFLOW_PATH
     ]
-    if not ids or not isinstance(ids[0], int):
+    return ids[0] if ids and isinstance(ids[0], int) else None
+
+
+def _pages_finished_runs() -> list[dict[str, Any]] | None:
+    """The finished Pages runs, newest first; ``None`` without Pages.
+
+    Runs GitHub cancelled because a newer commit came, or skipped, do not
+    count. While no finished run read so far succeeded and the page was
+    full, the next page is read, up to :data:`PAGES_MAX_PAGES`; a later page
+    that does not answer leaves the streak at what was read.
+    """
+    workflow_id = _pages_workflow_id()
+    if workflow_id is None:
         return None
-    runs = _github_api_json(
-        f"/actions/workflows/{ids[0]}/runs?status=completed&per_page={PAGES_RUNS_PER_PAGE}"
-    )
-    listed = runs.get("workflow_runs") if isinstance(runs, dict) else None
-    return [run for run in listed if isinstance(run, dict)] if isinstance(listed, list) else []
+    listed: list[object] = []
+    for page in range(1, PAGES_MAX_PAGES + 1):
+        path = (
+            f"/actions/workflows/{workflow_id}/runs?status=completed"
+            f"&per_page={PAGES_RUNS_PER_PAGE}&page={page}"
+        )
+        try:
+            data = _github_api_json(path)
+        except Exception:
+            if page == 1:
+                raise
+            break
+        batch = data.get("workflow_runs") if isinstance(data, dict) else None
+        batch = batch if isinstance(batch, list) else []
+        listed.extend(batch)
+        if len(batch) < PAGES_RUNS_PER_PAGE or any(
+            isinstance(run, dict) and _conclusion(run) == "success" for run in listed
+        ):
+            break
+    return [run for run in _newest_first(listed) if _conclusion(run) not in _PAGES_SKIPPED]
 
 
 def _pages_failure_kind(run: dict[str, Any]) -> str:
@@ -1178,8 +1254,9 @@ def check_pages_build(now: datetime) -> Check:
     the live feed the TV reads stayed at 08:30 while the Update runs stayed
     green, and ``Veröffentlichung`` would have turned red only at about
     13:00 (4 h lag). This check reads the latest completed run of "pages
-    build and deployment" from the Actions API (``actions: read``), skipping
-    runs GitHub cancelled because a newer commit came:
+    build and deployment" from the Actions API (``actions: read``), by run
+    number (:func:`_newest_first`), skipping runs GitHub cancelled because a
+    newer commit came:
 
     * ``success``: green.
     * failed in the Jekyll step: red at once. The content does not build,
@@ -1196,27 +1273,26 @@ def check_pages_build(now: datetime) -> Check:
     """
     name = "Pages-Build"
     try:
-        runs = _pages_runs()
+        finished = _pages_finished_runs()
     except Exception as exc:
         reason = str(sanitize_log_arg(str(exc)))[:120]
         return Check(name, ok=True, note=True,
                      summary=f"HINWEIS — Actions-API nicht abgefragt ({type(exc).__name__}: {reason})")
-    if runs is None:
+    if finished is None:
         return Check(name, ok=True, note=True,
                      summary=f"HINWEIS — kein Workflow {PAGES_WORKFLOW_PATH} gefunden")
-    finished = [run for run in runs if str(run.get("conclusion") or "") not in _PAGES_SKIPPED]
     if not finished:
         return Check(name, ok=True, note=True,
                      summary="HINWEIS — kein abgeschlossener Pages-Lauf gefunden")
     latest = finished[0]
-    ended = _parse_utc(latest.get("updated_at"))
-    when = f" am {_vienna_hhmm(ended)}" if ended is not None else ""
-    if str(latest.get("conclusion") or "") == "success":
+    ended = _run_time(latest.get("updated_at"), now)
+    when = f" am {ended}" if ended else ""
+    if _conclusion(latest) == "success":
         return Check(name, ok=True, summary=f"OK — letzter Lauf sauber{when}")
 
     streak = 0
     for run in finished:
-        if str(run.get("conclusion") or "") == "success":
+        if _conclusion(run) == "success":
             break
         streak += 1
     kind = _pages_failure_kind(latest)
@@ -1227,14 +1303,14 @@ def check_pages_build(now: datetime) -> Check:
     text = f"{what}{when}"
     # The first failed run of the streak names the commit that broke the
     # build (on 2026-11-01 the merge of #2092); later ones are only ticks.
-    # When every listed run failed, the start lies before the listed runs.
+    # When every run read failed, the start lies before them.
     first_failed: dict[str, Any] | None = finished[streak - 1]
     if streak > 1 and streak == len(finished):
         text += f", mindestens {streak} Läufe in Folge"
         first_failed = None
     elif streak > 1:
-        started = _parse_utc(finished[streak - 1].get("created_at"))
-        since = f" seit {_vienna_hhmm(started)}" if started is not None else ""
+        started = _run_time(finished[streak - 1].get("created_at"), now)
+        since = f" seit {started}" if started else ""
         text += f", {streak} Läufe in Folge{since}"
     details: list[str] = []
     commit = first_failed.get("head_commit") if first_failed is not None else None

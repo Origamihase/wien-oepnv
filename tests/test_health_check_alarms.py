@@ -649,7 +649,9 @@ def _runs(monkeypatch: pytest.MonkeyPatch, by_path: dict[str, object]) -> list[s
     return seen
 
 
-_REVIEW_RUNS = "/actions/workflows/claude-code-review.yml/runs?status=completed&per_page=1"
+_REVIEW_RUNS = (
+    f"/actions/workflows/claude-code-review.yml/runs?status=completed&per_page={hc.TOOLING_RUNS_PER_PAGE}"
+)
 
 
 def _run(conclusion: str | None, finished: datetime = _NOW - timedelta(minutes=50)) -> dict[str, object]:
@@ -690,6 +692,27 @@ def test_a_cancelled_review_run_is_a_note(monkeypatch: pytest.MonkeyPatch, concl
     check = hc.check_tooling_runs(_NOW)
     assert check.ok and check.note
     assert f"letzter Lauf {conclusion}" in check.summary
+
+
+def test_the_latest_review_run_is_chosen_by_run_number(monkeypatch: pytest.MonkeyPatch) -> None:
+    """01.11.2026: the API gave runs created 08:00-08:59 UTC a created_at one
+    hour late (end of US daylight saving time) and listed them first."""
+    late = _NOW - timedelta(minutes=50)
+    runs: list[dict[str, object] | str] = [
+        {"run_number": 520, "id": 11, "conclusion": "failure", "updated_at": late.isoformat(),
+         "html_url": "https://github.com/Origamihase/wien-oepnv/actions/runs/11"},
+        "kein Lauf",
+        {"run_number": 521, "id": 12, "conclusion": "success", "updated_at": late.isoformat(),
+         "html_url": "https://github.com/Origamihase/wien-oepnv/actions/runs/12"},
+    ]
+    _runs(monkeypatch, {_REVIEW_RUNS: {"workflow_runs": runs}})
+    check = hc.check_tooling_runs(_NOW)
+    assert check.ok and not check.note, check.summary
+    first, third = runs[0], runs[2]
+    assert isinstance(first, dict) and isinstance(third, dict)
+    first["conclusion"], third["conclusion"] = "success", "failure"
+    check = hc.check_tooling_runs(_NOW)
+    assert not check.ok and "actions/runs/12" in check.summary
 
 
 def test_an_unreachable_actions_api_is_a_note(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -765,7 +788,13 @@ def test_the_review_workflow_fails_when_the_review_cannot_run() -> None:
 # --- Pages-Build: the latest run of "pages build and deployment" (01.11.) ---
 
 _WORKFLOWS = "/actions/workflows?per_page=100"
-_PAGES_RUNS = f"/actions/workflows/189040121/runs?status=completed&per_page={hc.PAGES_RUNS_PER_PAGE}"
+
+
+def _pages_page(page: int) -> str:
+    return f"/actions/workflows/189040121/runs?status=completed&per_page={hc.PAGES_RUNS_PER_PAGE}&page={page}"
+
+
+_PAGES_RUNS = _pages_page(1)
 _PAGES_WORKFLOW = {
     "workflows": [
         {"id": 189039912, "path": ".github/workflows/build-feed.yml"},
@@ -780,6 +809,7 @@ def _pages_run(
     started = _NOW - timedelta(minutes=minutes_ago)
     return {
         "id": run_id,
+        "run_number": run_id,
         "conclusion": conclusion,
         "created_at": started.isoformat(),
         "updated_at": (started + timedelta(minutes=1)).isoformat(),
@@ -789,13 +819,18 @@ def _pages_run(
 
 
 def _jobs(failed_step: str | None) -> dict[str, object]:
-    """Jobs of a Pages run as the Actions API lists them (01.11.2026)."""
+    """Jobs of a Pages run as the Actions API lists them (01.11.2026): the
+    steps after a failed one are ``skipped`` (run 41285931114)."""
     build_steps = ["Set up job", "Pull ghcr.io/actions/jekyll-build-pages:v1.0.13", "Checkout",
                    "Build with Jekyll", "Upload artifact"]
     deploy_steps = ["Set up job", "Deploy to GitHub Pages"]
 
     def steps(names: list[str]) -> list[dict[str, str]]:
-        return [{"name": n, "conclusion": "failure" if n == failed_step else "success"} for n in names]
+        failed = names.index(failed_step) if failed_step in names else len(names)
+        return [
+            {"name": n, "conclusion": "success" if i < failed else "failure" if i == failed else "skipped"}
+            for i, n in enumerate(names)
+        ]
 
     return {
         "jobs": [
@@ -806,15 +841,17 @@ def _jobs(failed_step: str | None) -> dict[str, object]:
 
 
 def _pages(monkeypatch: pytest.MonkeyPatch, runs: list[dict[str, object]],
-           jobs: dict[int, object] | None = None) -> list[str]:
+           jobs: dict[int, object] | None = None, *more_pages: object) -> list[str]:
     by_path: dict[str, object] = {_WORKFLOWS: _PAGES_WORKFLOW, _PAGES_RUNS: {"workflow_runs": runs}}
+    for page, value in enumerate(more_pages, start=2):
+        by_path[_pages_page(page)] = value
     for run_id, value in (jobs or {}).items():
         by_path[f"/actions/runs/{run_id}/jobs?per_page=20"] = value
     return _runs(monkeypatch, by_path)
 
 
 def test_a_green_pages_run_is_green_and_cancelled_runs_are_skipped(monkeypatch: pytest.MonkeyPatch) -> None:
-    """GitHub cancels a run a newer commit supersedes (165 of 1,972 in October)."""
+    """GitHub cancels a run a newer commit supersedes (165 of 1,972 from 01.10. to 01.11.2026)."""
     seen = _pages(monkeypatch, [_pages_run(3, "cancelled", 5), _pages_run(2, "success", 30)])
     check = hc.check_pages_build(_NOW)
     assert check.ok and not check.note
@@ -888,13 +925,134 @@ def test_every_other_conclusion_counts_as_failed(monkeypatch: pytest.MonkeyPatch
     assert not hc.check_pages_build(_NOW).ok
 
 
-def test_a_streak_longer_than_the_listed_runs_says_at_least(monkeypatch: pytest.MonkeyPatch) -> None:
-    runs = [_pages_run(100 - i, "failure", 10 + 30 * i) for i in range(hc.PAGES_RUNS_PER_PAGE)]
-    _pages(monkeypatch, runs, {100: _jobs("Build with Jekyll")})
+def _failed_page(page: int) -> dict[str, object]:
+    first = (page - 1) * hc.PAGES_RUNS_PER_PAGE
+    return {"workflow_runs": [_pages_run(1000 - i, "failure", 10 + 5 * i)
+                              for i in range(first, first + hc.PAGES_RUNS_PER_PAGE)]}
+
+
+def test_while_every_run_read_failed_the_next_page_is_read(monkeypatch: pytest.MonkeyPatch) -> None:
+    """01.11.2026, 11:02: the 20 runs before reached back only to 10:30 (merges
+    came in), so the start of the streak (#2092, 08:43) lay on the next page."""
+    page1 = _failed_page(1)["workflow_runs"]
+    assert isinstance(page1, list)
+    page2 = [_pages_run(980, "failure", 150, "Merge pull request #2092 from Origamihase/x"),
+             _pages_run(979, "success", 160)]
+    seen = _pages(monkeypatch, page1, {1000: _jobs("Build with Jekyll")}, {"workflow_runs": page2})
+    check = hc.check_pages_build(_NOW)
+    assert not check.ok
+    assert f", {hc.PAGES_RUNS_PER_PAGE + 1} Läufe in Folge seit 28.10. 10:30 (Inhalt" in check.summary
+    assert check.detail.startswith("zuerst nach Commit „Merge pull request #2092 from Origamihase/x“")
+    assert seen == [_WORKFLOWS, _PAGES_RUNS, _pages_page(2), "/actions/runs/1000/jobs?per_page=20"]
+
+
+def test_a_streak_longer_than_the_runs_read_says_at_least(monkeypatch: pytest.MonkeyPatch) -> None:
+    pages = [_failed_page(page) for page in range(1, hc.PAGES_MAX_PAGES + 1)]
+    first = pages[0]["workflow_runs"]
+    assert isinstance(first, list)
+    seen = _pages(monkeypatch, first, {1000: _jobs("Build with Jekyll")}, *pages[1:])
+    check = hc.check_pages_build(_NOW)
+    assert not check.ok
+    total = hc.PAGES_RUNS_PER_PAGE * hc.PAGES_MAX_PAGES
+    assert f"mindestens {total} Läufe in Folge (Inhalt" in check.summary
+    assert check.detail == "https://github.com/Origamihase/wien-oepnv/actions/runs/1000"
+    assert _pages_page(hc.PAGES_MAX_PAGES + 1) not in seen
+
+
+def test_a_later_page_that_does_not_answer_keeps_what_was_read(monkeypatch: pytest.MonkeyPatch) -> None:
+    first = _failed_page(1)["workflow_runs"]
+    assert isinstance(first, list)
+    _pages(monkeypatch, first, {1000: _jobs("Build with Jekyll")}, RuntimeError("HTTP 502"))
     check = hc.check_pages_build(_NOW)
     assert not check.ok
     assert f"mindestens {hc.PAGES_RUNS_PER_PAGE} Läufe in Folge (Inhalt" in check.summary
-    assert check.detail == "https://github.com/Origamihase/wien-oepnv/actions/runs/100"
+
+
+def test_a_page_that_is_not_full_ends_the_reading(monkeypatch: pytest.MonkeyPatch) -> None:
+    """A streak that began with the first run of all: no further page."""
+    seen = _pages(monkeypatch, [_pages_run(4, "failure", 20), _pages_run(3, "failure", 50)],
+                  {4: _jobs("Build with Jekyll")})
+    check = hc.check_pages_build(_NOW)
+    assert not check.ok
+    assert "mindestens 2 Läufe in Folge" in check.summary
+    assert _pages_page(2) not in seen
+
+
+def test_the_latest_pages_run_is_chosen_by_run_number(monkeypatch: pytest.MonkeyPatch) -> None:
+    """01.11.2026: the API listed #29084 (created 08:56 UTC, shown as 09:56)
+    before #29099 (09:55 UTC). By the API's order a fix after a broken
+    build stayed red, and a break after a good run stayed green."""
+    shifted = _pages_run(29084, "failure", 10)
+    newer = _pages_run(29099, "success", 15)
+    older = _pages_run(29083, "success", 70)
+    _pages(monkeypatch, [shifted, newer, older], {29084: _jobs("Build with Jekyll")})
+    check = hc.check_pages_build(_NOW)
+    assert check.ok and not check.note, check.summary
+
+    shifted["conclusion"], newer["conclusion"] = "success", "failure"
+    _pages(monkeypatch, [shifted, newer, older], {29099: _jobs("Build with Jekyll")})
+    check = hc.check_pages_build(_NOW)
+    assert not check.ok
+    assert check.detail.endswith("/actions/runs/29099")
+
+
+def test_a_run_time_after_the_check_is_left_out(monkeypatch: pytest.MonkeyPatch) -> None:
+    """01.11.2026, 10:01: run #29084 had ended at 09:57, the API said 10:57."""
+    late = _pages_run(4, "failure", -50)
+    _pages(monkeypatch, [late, _pages_run(3, "failure", 20), _pages_run(2, "success", 50)],
+           {4: _jobs("Build with Jekyll")})
+    check = hc.check_pages_build(_NOW)
+    assert not check.ok
+    assert check.summary.startswith("FEHLER — Jekyll-Build gescheitert, 2 Läufe in Folge seit 28.10. 12:40 (")
+
+    _runs(monkeypatch, {_REVIEW_RUNS: _run("success", _NOW + timedelta(minutes=60))})
+    check = hc.check_tooling_runs(_NOW)
+    assert check.ok and check.summary == "OK — Code-Review zuletzt sauber"
+
+
+def test_one_failed_jekyll_build_with_nothing_before_names_the_commit(monkeypatch: pytest.MonkeyPatch) -> None:
+    _pages(monkeypatch, [_pages_run(3, "failure", 20)], {3: _jobs("Build with Jekyll")})
+    check = hc.check_pages_build(_NOW)
+    assert not check.ok
+    assert "in Folge" not in check.summary
+    assert check.detail.startswith("Commit „chore: update cycle“ — ")
+
+
+def test_a_github_failure_after_a_good_run_is_a_note_whatever_came_before(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The streak ends at the last good run: an older failure does not count."""
+    runs = [_pages_run(5, "failure", 20), _pages_run(4, "success", 50), _pages_run(3, "failure", 80)]
+    _pages(monkeypatch, runs, {5: _jobs("Deploy to GitHub Pages")})
+    check = hc.check_pages_build(_NOW)
+    assert check.ok and check.note, check.summary
+
+
+@pytest.mark.parametrize("conclusion", ["cancelled", "skipped", "neutral"])
+def test_runs_github_did_not_finish_are_skipped(monkeypatch: pytest.MonkeyPatch, conclusion: str) -> None:
+    _pages(monkeypatch, [_pages_run(3, conclusion, 5), _pages_run(2, "success", 30)])
+    check = hc.check_pages_build(_NOW)
+    assert check.ok and not check.note, check.summary
+
+
+def test_malformed_answers_are_a_note_not_a_crash(monkeypatch: pytest.MonkeyPatch) -> None:
+    _runs(monkeypatch, {_WORKFLOWS: {"workflows": [{"id": "189040121", "path": hc.PAGES_WORKFLOW_PATH}]}})
+    check = hc.check_pages_build(_NOW)
+    assert check.ok and check.note
+    assert "kein Workflow" in check.summary
+
+    _runs(monkeypatch, {_WORKFLOWS: _PAGES_WORKFLOW, _PAGES_RUNS: {"workflow_runs": ["kein Lauf", None]}})
+    check = hc.check_pages_build(_NOW)
+    assert check.ok and check.note
+    assert "kein abgeschlossener Pages-Lauf" in check.summary
+
+
+def test_the_pages_of_runs_fit_the_api_cap() -> None:
+    """A run is about 15 KB of JSON (20 runs were 302,575 bytes on
+    01.11.2026); an answer over GITHUB_API_MAX_BYTES would leave the check a
+    note for good."""
+    assert hc.PAGES_RUNS_PER_PAGE * 16_000 < hc.GITHUB_API_MAX_BYTES
+    assert hc.TOOLING_RUNS_PER_PAGE * 16_000 < hc.GITHUB_API_MAX_BYTES
 
 
 def test_pages_notes_when_nothing_can_be_said(monkeypatch: pytest.MonkeyPatch) -> None:

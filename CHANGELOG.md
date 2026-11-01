@@ -14,22 +14,31 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
   Betreiberentscheidung (Michael, Karte „Soll ein gescheiterter Pages-Build
   künftig sofort auffallen?“, Antwort „Beides bauen“). Beim Ausfall vom
   selben Tag hätte erst die Prüfung `Veröffentlichung` angeschlagen, nach
-  vier Stunden Rückstand gegen 13:00 Uhr.
+  vier Stunden Rückstand gegen 13:00 Uhr Wiener Zeit; der Health check war
+  ab 10:01 Uhr rot, aber nur wegen des gescheiterten KI-Wächters.
   - Neue Prüfung `Pages-Build` im Health check (`check_pages_build` in
     `scripts/health_check.py`): Sie liest über die Actions-API den letzten
-    abgeschlossenen Lauf von „pages build and deployment“; Läufe, die GitHub
-    wegen eines neueren Commits abbricht, zählen nicht. Scheiterte er im
-    Jekyll-Schritt, ist sie sofort rot und nennt den Commit, nach dem der
-    Build zuerst scheiterte. Scheiterte er auf GitHubs Seite (Image, Upload,
-    Auslieferung), ist ein einzelner Lauf ein Hinweis und sind zwei in Folge
-    rot (Alarmlinie vom 2026-10-28: ein einzelner Aussetzer schickt keine
-    Mail). Nachgerechnet über die 1.972 Pages-Läufe vom 01.10. bis 01.11.2026
-    mit einer Prüfung je Stunde wie seit dem 28.10.: rot nur am 01.11. um 9,
-    10 und 11 Uhr (die echten Läufe des Health checks um 10:01 und 11:02 Uhr;
-    zwischen 08:31 und 10:01 Uhr lief keiner), dazu drei Hinweise für die einzelnen Auslieferungsfehler
-    vom 05.10. (zwei Stunden lang, bis zum nächsten Lauf) und 08.10.; die
-    vom 14.10. und 20.10. endeten erst nach der Prüfung ihrer Stunde und
-    waren vor der nächsten behoben.
+    abgeschlossenen Lauf von „pages build and deployment“, nach Laufnummer;
+    Läufe, die GitHub wegen eines neueren Commits abbricht, zählen nicht.
+    Scheiterte er im Jekyll-Schritt, ist sie sofort rot und nennt, solange
+    der Beginn unter den bis zu 60 gelesenen Läufen liegt, den Commit, nach
+    dem der Build zuerst scheiterte. Scheiterte er auf GitHubs Seite (Image,
+    Upload, Auslieferung), ist ein einzelner Lauf ein Hinweis und sind zwei
+    in Folge rot (Alarmlinie vom 2026-10-28: ein einzelner Aussetzer schickt
+    keine Mail). Nachgerechnet über die Pages-Läufe vom 01.10. bis
+    01.11.2026 mit einer Prüfung je Stunde wie seit dem 28.10.: rot nur am
+    01.11. um 9, 10 und 11 Uhr (zu den Zeiten der echten Health-check-Läufe
+    um 09:01, 10:01 und 11:02 Uhr, jedes Mal mit #2092 als Beginn), dazu
+    drei Hinweise für die einzelnen Auslieferungsfehler vom 05.10. (zwei
+    Stunden lang, bis zum nächsten Lauf) und 08.10.; die vom 14.10. und
+    20.10. endeten erst nach der Prüfung ihrer Stunde und waren vor der
+    nächsten behoben.
+  - Laufnummer statt Zeitstempel, auch für die Prüfung `Werkzeuge`: Am
+    01.11. gab die Actions-API den Läufen, die zwischen 08:00 und 08:59 UTC
+    begannen, eine Stunde zu späte Zeiten (Ende der US-Sommerzeit) und
+    listete sie vor neueren Läufen. Nach dieser Reihenfolge wäre ein
+    behobener Build bis zu einer Stunde rot geblieben und ein neuer Fehler
+    eine Stunde lang grün. Eine Zeit nach der Prüfung selbst bleibt weg.
   - Neuer Workflow `pages-build-check.yml`: Jeder Pull Request mit
     Änderungen unter `docs/` baut die Website mit derselben Action wie
     GitHub Pages (`actions/jekyll-build-pages` 1.0.13, Quelle `./docs`) und
@@ -51,10 +60,11 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
   mit `{{` veränderte `docs/statistik.md` still, und das `liquid_safe` des
   KI-Wächters ließ `{{{` durch. Eine zweite Gegenprobe (125.000 erzeugte
   Textstücke gegen Liquid 4.0.4, echte Builds) fand im neuen Prüfer noch
-  zwei Lücken und im Ablauf drei: Liquid gibt in einem `raw`-Block den Text
-  vor einem weiteren Tag doppelt aus (eine Tabelle bekam eine dritte
-  Spalte); jede Datei unter `_posts/` wird gerendert, mit jeder Endung und
-  ohne Front Matter; der Wächter-Bericht entfernte unsichtbare Zeichen erst
+  zwei Lücken und im Ablauf drei: Bleibt in einem `raw`-Block ein Paar bis
+  zu einem weiteren Tag offen, gibt Liquid den Text ab dort doppelt aus
+  (eine Tabelle bekam eine dritte Spalte); eine Datei unter `_posts/`, deren
+  Name mit einem Datum beginnt, wird gerendert, mit jeder Endung und ohne
+  Front Matter; der Wächter-Bericht entfernte unsichtbare Zeichen erst
   nach `liquid_safe` und fügte so `{` und `%` wieder zusammen; Seiten mit
   Umlaut im Namen übersprang der Schritt im Skript; und er schrieb auch
   korrekt geschützte Beispiele derselben Seite um.
@@ -64,6 +74,15 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
     der `raw`-Tags, `raw_marker_findings` verlangt die Kommentarzeilen ohne
     Einrückung mit Leerzeilen, `rendered_pages` lässt nur Vorlagen- und
     Datenordner aus und zählt alles unter `_posts/` mit.
+  - Eine dritte Gegenprobe (175.000 Textstücke, echte Builds) fand noch
+    vier Lücken, alle ohne Fall in `docs/` heute: Ein Post bekommt einen
+    Auszug, den Liquid ein zweites Mal liest und den der Prüfer nicht
+    nachbaut, deshalb verbietet ein Test `_posts` und `_drafts` unter
+    `docs/`; jeder Name, der mit `.htaccess` beginnt, wird trotz `exclude`
+    gerendert; bei einem Symlink machte Schritt 2b das Ziel unwirksam,
+    nahm aber nur den Link in den Commit, jetzt das Ziel; und eine Seite,
+    die der Schritt nicht lesen kann (nicht UTF-8), stand nur auf stderr,
+    jetzt meldet eine Warnung, dass nicht jede Seite geprüft wurde.
   - Statistik (`write_dashboard`), Stations-Diff (`_render_diff_markdown`),
     Validierungsbericht (`ValidationReport.to_markdown`) und Wächter-Bericht
     (nach dem Entfernen unsichtbarer Zeichen) gehen durch `liquid_safe`;
@@ -76,8 +95,9 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
     Zuordnung, Symlinks und Schlüssel in `docs/_config.yml`, die ändern
     würden, welche Dateien Jekyll rendert; `tests/test_docs_writers_liquid.py`
     die drei Schreiber, `tests/test_ki_waechter.py` den geschriebenen
-    Bericht, `tests/test_publish_to_main.py` den Schritt im Skript. Jeder neue
-    Test war gegen den Stand davor rot; ein echter Build von `docs/` mit dem
+    Bericht, `tests/test_publish_to_main.py` den Schritt im Skript, auch
+    ohne `python` oder nur mit `python3`. Jeder neue Test war gegen den
+    Stand davor rot; ein echter Build von `docs/` mit dem
     Gem `github-pages` 232 läuft ohne Fehler.
 
 * **Monatliche Abhängigkeits-Updates und volle Versionskommentare der

@@ -249,10 +249,12 @@ def is_rendered(path: Path, docs_root: Path) -> bool:
     counted (harmless), but no rendered one is missed. Left out are
     ``_config.yml`` and the template and data directories, whose files are
     no pages (``tests/test_docs_liquid.py`` checks the templates for what
-    stops the build). Every file below a ``_posts`` directory, at any depth,
-    is a post that Jekyll renders even without front matter, whatever its
-    extension; ``.htaccess`` is rendered although its name starts with
-    ``.``.
+    stops the build). Below a ``_posts`` directory, at any depth, Jekyll
+    renders a file whose name starts with a date even without front matter,
+    whatever its extension; every file there is counted. A post also gets
+    an excerpt, a second text run through Liquid that this module does not
+    rebuild, so ``docs/`` holds no ``_posts`` (a test forbids it).
+    ``.htaccess`` is rendered although its name starts with ``.``.
     """
     rel = path.relative_to(docs_root)
     if rel.parts and (rel.parts[0] in TEMPLATE_DIRS or rel.as_posix() == "_config.yml"):
@@ -265,11 +267,12 @@ def is_rendered(path: Path, docs_root: Path) -> bool:
 def _excluded(posix: str, excludes: Sequence[str]) -> bool:
     """Whether an ``exclude`` entry drops the file *posix* (relative path).
 
-    ``.htaccess`` stays: Jekyll's default ``include`` wins over ``exclude``.
-    An entry ending in ``/`` names a directory and drops only what lies
-    below it.
+    A name starting with ``.htaccess`` stays: Jekyll's default ``include``
+    (``.htaccess``) matches every name with that start and wins over
+    ``exclude``. An entry ending in ``/`` names a directory and drops only
+    what lies below it.
     """
-    if posix.rsplit("/", 1)[-1] == ".htaccess":
+    if posix.rsplit("/", 1)[-1].startswith(".htaccess"):
         return False
     for entry in excludes:
         if entry.endswith("/"):
@@ -329,8 +332,9 @@ def _neutralise_one(raw_path: str, root: Path) -> str | None:
         return None
     # A symlink counts as the page it is named as (Jekyll renders
     # ``notiz.md`` pointing to ``notiz.txt`` as Markdown) or as its target.
-    named = Path(os.path.abspath(raw_path))
-    if not (_rendered_at(named, Path(os.path.abspath(root))) or _rendered_at(resolved, root)):
+    # Only the directory is resolved, so the name stays the link's.
+    named = path.parent.resolve() / path.name
+    if not (_rendered_at(named, root) or _rendered_at(resolved, root)):
         return None
     text = read_page(resolved)
     findings = liquid_findings(text)
@@ -338,17 +342,26 @@ def _neutralise_one(raw_path: str, root: Path) -> str | None:
         return None
     resolved.write_text(liquid_safe_outside_raw(text), encoding="utf-8")
     lines = ",".join(str(line) for line in sorted({finding.line for finding in findings}))
-    return f"{raw_path}:{lines}"
+    # The entry names the file that was written: for a symlink its target,
+    # which is what the publish step must stage again (the link's own blob
+    # does not change).
+    written = raw_path
+    if path.is_symlink():
+        written = str(resolved) if path.is_absolute() else os.path.relpath(resolved)
+    return f"{written}:{lines}"
 
 
-def iter_neutralise(paths: Iterable[str], docs_root: Path) -> Iterable[str]:
+def iter_neutralise(
+    paths: Iterable[str], docs_root: Path, skipped: list[str] | None = None
+) -> Iterable[str]:
     """Rewrite each rendered page among *paths* that holds a Liquid pair.
 
     Front matter and intact raw blocks stay as they are; the rest goes
     through :func:`liquid_safe`. Yields ``"<path>:<line>,<line>"`` right
-    after each file is written, so a caller that stops halfway still knows
-    every rewritten file. A path that cannot be read (not UTF-8, too large,
-    a symlink loop) is reported on stderr and skipped; the other paths are
+    after each file is written (for a symlink, the path of its target), so
+    a caller that stops halfway still knows every rewritten file. A path
+    that cannot be read (not UTF-8, too large, a symlink loop) is reported
+    on stderr, added to *skipped* and passed over; the other paths are
     still checked.
     """
     root = docs_root.resolve()
@@ -357,6 +370,8 @@ def iter_neutralise(paths: Iterable[str], docs_root: Path) -> Iterable[str]:
             entry = _neutralise_one(raw_path, root)
         except Exception as exc:  # one bad path must not stop the rest
             print(f"liquid.py: {raw_path} skipped ({type(exc).__name__}: {exc})", file=sys.stderr)
+            if skipped is not None:
+                skipped.append(raw_path)
             continue
         if entry is not None:
             yield entry
@@ -381,11 +396,14 @@ def main(argv: Sequence[str] | None = None) -> int:
     if args.null:
         paths += [p for p in sys.stdin.buffer.read().decode("utf-8", "surrogateescape").split("\0") if p]
     if args.fix:
+        # Exit 2 when a page was passed over, so the publish step warns that
+        # not every staged page was checked.
         end = b"\0" if args.null else b"\n"
-        for entry in iter_neutralise(paths, docs_root):
+        skipped: list[str] = []
+        for entry in iter_neutralise(paths, docs_root, skipped):
             sys.stdout.buffer.write(entry.encode("utf-8", "surrogateescape") + end)
             sys.stdout.buffer.flush()
-        return 0
+        return 2 if skipped else 0
     found = False
     targets = [Path(p) for p in paths] or rendered_pages(docs_root)
     for path in targets:

@@ -2984,26 +2984,38 @@ Alarmlinie unten:
 
 Betreiberentscheidung (Michael, 2026-11-01, Karte „Soll ein gescheiterter
 Pages-Build künftig sofort auffallen?“, Antwort „Beides bauen“). Anlass: Ab
-dem Merge von #2092 um 08:43 Uhr hielt ein Liquid-Tag in
+dem Merge von #2092 um 08:43 Uhr Wiener Zeit hielt ein Liquid-Tag in
 `docs/reference/ki_waechter.md` jeden Lauf von „pages build and deployment“
-an (bis 11:13 Uhr 22 gescheitert, 4 abgebrochen). Der Fernseher blieb auf dem Stand von
-08:30 Uhr, Update-Läufe und Health check blieben grün, und
-`Veröffentlichung` hätte erst bei vier Stunden Rückstand gegen 13:00 Uhr
-angeschlagen. Beides gilt seither:
+an (bis 11:13 Uhr 22 gescheitert, 4 abgebrochen). Der Fernseher blieb auf
+dem Stand von 08:30 Uhr, die Update-Läufe blieben grün, und der Health check
+meldete den Ausfall nicht (rot war er ab 10:01 Uhr nur wegen des
+gescheiterten KI-Wächters, Prüfung `Nebenschritte`); `Veröffentlichung`
+hätte erst bei vier Stunden Rückstand gegen 13:00 Uhr angeschlagen. Beides
+gilt seither:
 
 * **Health check, Prüfung `Pages-Build`** (`check_pages_build` in
   `scripts/health_check.py`). Sie liest über die Actions-API (`actions:
   read`, eigenes `GITHUB_TOKEN` des Laufs) die letzten 20 abgeschlossenen
-  Läufe des Pages-Workflows. Er hat keine Datei im Repository; seine Id
-  findet sie über den Pfad `dynamic/pages/pages-build-deployment`. Läufe,
-  die GitHub abbricht, weil ein neuerer Commit kam (165 von 1.972 im
-  Oktober 2026), zählen nicht. Der letzte übrige Lauf entscheidet:
+  Läufe des Pages-Workflows; solange keiner davon sauber war, bis zu 40
+  weitere. Er hat keine Datei im Repository; seine Id findet sie über den
+  Pfad `dynamic/pages/pages-build-deployment`. Läufe, die GitHub abbricht,
+  weil ein neuerer Commit kam (165 von 1.972 vom 01.10. bis 01.11.2026),
+  zählen nicht. Der letzte übrige Lauf nach **Laufnummer** entscheidet,
+  nicht nach GitHubs Zeitstempel: Am 01.11. gab die Actions-API allen
+  Läufen, die zwischen 08:00 und 08:59 UTC begannen, eine Stunde zu späte
+  Zeiten (Ende der US-Sommerzeit) und listete sie vor neueren Läufen. Eine
+  Zeit nach der Prüfung selbst kann nicht stimmen und bleibt weg. Dasselbe
+  gilt für die Prüfung `Werkzeuge`.
   * `success`: grün.
   * Gescheitert im Schritt „Build with Jekyll“: **sofort rot**. Der Inhalt
     unter `docs/` lässt sich nicht bauen, und jeder weitere Lauf scheitert
-    gleich, bis die Seite korrigiert ist. Die Meldung nennt, seit wann und
-    wie viele Läufe in Folge, den Commit, nach dem der Build zuerst
-    scheiterte, und den Link zum Lauf.
+    gleich, bis die Seite korrigiert ist. Die Meldung nennt den Link zum
+    Lauf und, solange der erste gescheiterte Lauf unter den gelesenen (bis
+    zu 60) liegt, seit wann und wie viele Läufe in Folge und den Commit,
+    nach dem der Build zuerst scheiterte; sonst „mindestens N Läufe in
+    Folge“. 20 Läufe reichten im Oktober 2026 im Mittel etwa acht Stunden
+    zurück, am 01.11. um 11:02 Uhr wegen der vielen Merges nicht bis zum
+    Beginn um 08:43 Uhr.
   * Gescheitert an anderer Stelle (Image laden, Upload, Auslieferung):
     GitHubs Seite. Ein einzelner Lauf ist ein **Hinweis**, rot wird es,
     wenn auch der Lauf davor scheiterte. Das folgt der Alarmlinie unten
@@ -3014,13 +3026,14 @@ angeschlagen. Beides gilt seither:
   * Actions-API antwortet nicht, kein Pages-Workflow, kein abgeschlossener
     Lauf: Hinweis.
 
-  Nachgerechnet über die 1.972 Pages-Läufe vom 01.10. bis 01.11.2026 mit
-  einer Prüfung je Stunde (wie seit dem 28.10.): rot nur am 01.11. um 9, 10
-  und 11 Uhr, dazu drei Hinweise für die Auslieferungsfehler vom 05.10. und
-  08.10.; die vom 14.10. und 20.10. endeten erst nach der Prüfung ihrer
-  Stunde und waren vor der nächsten behoben. Die echten Läufe des Health
-  checks am 01.11. (zwischen 08:31 und 10:01 Uhr lief keiner) wären um
-  10:01 und 11:02 Uhr rot gewesen. `Veröffentlichung` bleibt als
+  Nachgerechnet über die Pages-Läufe vom 01.10. bis 01.11.2026, in der
+  Reihenfolge, in der die API sie listete, mit einer Prüfung je Stunde (wie
+  seit dem 28.10.): rot nur am 01.11. um 9, 10 und 11 Uhr Wiener Zeit, dazu
+  drei Hinweise für die Auslieferungsfehler vom 05.10. und 08.10.; die vom
+  14.10. und 20.10. endeten erst nach der Prüfung ihrer Stunde und waren vor
+  der nächsten behoben. Zu den Zeiten der echten Health-check-Läufe am
+  01.11. wäre `Pages-Build` um 09:01, 10:01 und 11:02 Uhr rot gewesen, jedes
+  Mal mit dem Merge von #2092 als Beginn. `Veröffentlichung` bleibt als
   Rückfall für einen Ausfall ohne gescheiterten Lauf (Pages abgeschaltet,
   ein Lauf, der nie startet).
 * **Pull Requests, Workflow `pages-build-check.yml`.** Jeder Pull Request
@@ -3028,7 +3041,10 @@ angeschlagen. Beides gilt seither:
   der Pages-Lauf (`actions/jekyll-build-pages` 1.0.13, Jekyll 3.10 mit dem
   Gem `github-pages`, Quelle `./docs`) und liefert nichts aus. Ein Fehler
   zeigt sich als roter Check am PR, bevor er `main` erreicht (der Check ist
-  kein Pflicht-Check im Ruleset). Seiten, die Workflows selbst nach `main`
+  kein Pflicht-Check im Ruleset). Er fängt, was den Build anhält; gibt eine
+  Vorlage nur still etwas anderes aus (eine unbekannte Variable, ein
+  unbekannter Filter), bleibt er grün. Steht in der Meldung `Octokit::` statt
+  `Liquid`, lag es an GitHubs API, und ein neuer Lauf behebt es. Seiten, die Workflows selbst nach `main`
   schreiben, erreichen keinen Pull Request (ein Push mit dem `GITHUB_TOKEN`
   startet außer dem Pages-Build keinen Workflow); für sie gilt der Liquid-Schritt in
   `scripts/publish_to_main.sh` ([`development.md`](development.md),
@@ -3063,8 +3079,9 @@ gilt seither auch für sie, Regel vom 2026-10-28: „ein Fehler sollte auffallen
   kein Pflicht-Check im Ruleset und hält keinen Merge auf), und die neue
   Prüfung `Werkzeuge` (`check_tooling_runs`) liest über die Actions-API
   (`actions: read`, eigenes `GITHUB_TOKEN` des Laufs) das Ergebnis des
-  letzten abgeschlossenen Laufs: `success` grün, `cancelled`/`skipped`
-  Hinweis, alles andere rot mit Link zum Lauf, bis ein Review wieder lief.
+  letzten abgeschlossenen Laufs (nach Laufnummer, siehe „Pages-Build“):
+  `success` grün, `cancelled`/`skipped` Hinweis, alles andere rot mit Link
+  zum Lauf, bis ein Review wieder lief.
   Pull Requests aus Forks und von Dependabot haben keine Secrets und werden
   wie bisher übersprungen. Eine Actions-API, die nicht antwortet, ist ein
   Hinweis, denn sie sagt nichts über das Werkzeug.

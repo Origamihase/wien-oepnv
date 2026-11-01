@@ -148,15 +148,16 @@ if [ "${#staged_docs[@]}" -gt 0 ]; then
       | "${liquid_python}" "${liquid_py}" --fix --null --docs-root docs > "${liquid_out}"
     liquid_status=$?
   fi
-  # Entries are written as each page is rewritten: stage them even when the
-  # check stopped halfway.
+  # Entries are written as each page is rewritten (for a symlink: its
+  # target): stage them even when the check stopped halfway. Exit 2 means a
+  # page could not be read and was passed over.
   while IFS= read -r -d '' entry; do
     echo "::warning title=${label}::Liquid in ${entry%:*} (line ${entry##*:}) made inert before publishing, so the Pages build cannot stop on it."
     git add -- "${entry%:*}"
   done < "${liquid_out}"
   rm -f "${liquid_out}"
   if [ "${liquid_status}" -ne 0 ]; then
-    echo "::warning title=${label}::Liquid check of the staged pages did not finish; publishing without it."
+    echo "::warning title=${label}::Liquid check did not cover every staged page under docs/ (liquid.py names them in the log); those are published unchecked."
   fi
 fi
 git commit -q -m "${message}"

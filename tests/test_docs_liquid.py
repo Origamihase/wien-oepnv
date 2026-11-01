@@ -37,6 +37,7 @@ from src.utils.liquid import (
     STOPS_BUILD_RAW_OPEN,
     STOPS_BUILD_UNTERMINATED,
     TEMPLATE_DIRS,
+    iter_neutralise,
     liquid_findings,
     liquid_safe,
     liquid_safe_outside_raw,
@@ -44,6 +45,7 @@ from src.utils.liquid import (
     raw_marker_findings,
     rendered_pages,
 )
+from src.utils.liquid import main as liquid_main
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
@@ -140,6 +142,21 @@ def test_docs_holds_no_symlink() -> None:
     assert not links, links
 
 
+def test_docs_holds_no_posts() -> None:
+    """Jekyll gives a post an excerpt (its first paragraph plus the link
+    definitions of the rest, also from inside a raw block) and runs it
+    through Liquid a second time; liquid.py does not rebuild it, so a post
+    it calls clean could stop the build (second check of 2026-11-01). A
+    file named ``_posts`` stops Jekyll 3.10 outright."""
+    posts = [
+        str(Path(directory, name).relative_to(ROOT))
+        for directory, dirs, files in os.walk(DOCS)
+        for name in dirs + files
+        if name in {"_posts", "_drafts"}
+    ]
+    assert not posts, posts
+
+
 def test_page_list_matches_what_jekyll_renders(tmp_path: Path) -> None:
     pages = {p.relative_to(DOCS).as_posix() for p in _pages()}
     # Markdown without front matter counts (jekyll-optional-front-matter).
@@ -168,6 +185,8 @@ def test_page_list_matches_what_jekyll_renders(tmp_path: Path) -> None:
         "_posts/sub/2025-10-06-nested.txt": "A ${{ x }} B\n",
         "deep/_posts/2025-10-16-deep.txt": "C ${{ x }} D\n",
         "sub/.htaccess": "---\n---\nx\n",
+        ".htaccess.md": "x\n",
+        ".htaccess-alt": "---\n---\nx\n",
         "notes": "---\n---\nx\n",
         "notes.d/a.md": "x\n",
     }
@@ -178,11 +197,13 @@ def test_page_list_matches_what_jekyll_renders(tmp_path: Path) -> None:
     assert found == {
         "_posts/2026-11-01-notiz.md", ".htaccess", "UPPER.MD", "matter.html", "long.html", "crlf.txt",
         "_posts/2025-10-03-notiz.html", "_posts/sub/2025-10-06-nested.txt", "deep/_posts/2025-10-16-deep.txt",
-        "sub/.htaccess", "notes", "notes.d/a.md",
+        "sub/.htaccess", ".htaccess.md", ".htaccess-alt", "notes", "notes.d/a.md",
     }
-    # Jekyll's default include [.htaccess] wins over exclude; "notes/" names a
-    # directory, so the file "notes" stays.
-    kept = {p.relative_to(root).as_posix() for p in rendered_pages(root, [".htaccess", "sub/.htaccess", "notes/", "notes.d"])}
+    # Jekyll's default include [.htaccess] matches every name starting with
+    # ".htaccess" and wins over exclude; "notes/" names a directory, so the
+    # file "notes" stays.
+    excludes = [".htaccess", "sub/.htaccess", ".htaccess.md", ".htaccess-alt", "notes/", "notes.d"]
+    kept = {p.relative_to(root).as_posix() for p in rendered_pages(root, excludes)}
     assert kept == found - {"notes.d/a.md"}
     assert TEMPLATE_DIRS == {"_layouts", "_includes", "_sass", "_data"}
 
@@ -318,8 +339,38 @@ def test_neutralise_follows_a_symlinked_page_and_survives_a_bad_path(tmp_path: P
     (root / "latin1.md").write_bytes("Gr\xfc\xdfe {{ x }}\n".encode("latin-1"))
     (root / "later.md").write_text("{{ y }}\n", encoding="utf-8")
     paths = [str(root / n) for n in ("notiz.md", "latin1.md", "later.md")]
-    assert neutralise(paths, root) == [f"{root / 'notiz.md'}:1", f"{root / 'later.md'}:1"]
+    skipped: list[str] = []
+    # The entry names the file written, the link's target: the publish step
+    # stages it (staging the link changed nothing, second check 2026-11-01).
+    assert list(iter_neutralise(paths, root, skipped)) == [
+        f"{(root / 'notiz.txt').resolve()}:1", f"{root / 'later.md'}:1"
+    ]
+    assert skipped == [str(root / "latin1.md")]
     assert (root / "notiz.txt").read_text(encoding="utf-8") == "Notiz: { % ohne Tag\n"
+
+
+def test_neutralise_judges_a_link_by_its_name_through_a_linked_directory(tmp_path: Path) -> None:
+    real = tmp_path / "real"
+    (real / "docs").mkdir(parents=True)
+    (tmp_path / "link").symlink_to(real)
+    (real / "docs" / "notiz.txt").write_text("Notiz: {% ohne Tag\n", encoding="utf-8")
+    (real / "docs" / "notiz.md").symlink_to("notiz.txt")
+    assert neutralise([str(tmp_path / "link" / "docs" / "notiz.md")], real / "docs") == [
+        f"{(real / 'docs' / 'notiz.txt').resolve()}:1"
+    ]
+
+
+def test_the_fix_run_exits_2_when_a_page_was_passed_over(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """So the publish step warns that not every staged page was checked."""
+    root = tmp_path / "docs"
+    root.mkdir()
+    (root / "ok.md").write_text("fine {% z\n", encoding="utf-8")
+    assert liquid_main(["--fix", "--docs-root", str(root), str(root / "ok.md")]) == 0
+    (root / "latin1.md").write_bytes("St\xf6rung {% x\n".encode("latin-1"))
+    assert liquid_main(["--fix", "--docs-root", str(root), str(root / "latin1.md")]) == 2
+    assert "latin1.md skipped (UnicodeDecodeError" in capsys.readouterr().err
 
 
 def test_neutralise_rewrites_only_pages_with_a_pair(tmp_path: Path) -> None:
@@ -350,3 +401,6 @@ def test_pull_requests_build_the_site_like_pages() -> None:
     assert len(builds) == 1
     assert builds[0]["with"] == {"source": "./docs", "destination": "./_site"}
     assert not any("deploy" in str(step.get("uses", "")) for step in steps)
+    # Nothing may keep the check from going red.
+    for node in (workflow["jobs"]["build"], *steps):
+        assert not {"if", "continue-on-error"} & node.keys(), node
