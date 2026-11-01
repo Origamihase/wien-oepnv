@@ -3497,8 +3497,85 @@ def _station_comma_forms(variants: set[str]) -> set[str]:
 
 @lru_cache(maxsize=1)
 def _station_entity_pattern() -> re.Pattern[str] | None:
-    """Build a regex that matches every meaningful station name from
-    the project's station directory.
+    """A regex that matches every name of :func:`_station_entity_names`.
+
+    A hyphen in a name may stand between two spaces: WL writes the
+    directory's "Burggasse-Stadthalle" as "Burggasse - Stadthalle" (U6
+    tickers since July). Only "Burggasse" was protected, and the model made
+    "Burggasse - City Hall" of the rest (16.10.2026). A space on one side
+    only ("Lorenz-Müller- Gasse") is a typo of the source; the model left
+    it as written in the probe of 16.10.2026, so the name stays a name.
+    """
+    sorted_names = _station_entity_names()
+    if not sorted_names:
+        return None
+    pattern = (
+        r"(?<!\w)(?:"
+        + "|".join(re.escape(name).replace(r"\-", r"(?: - |-)") for name in sorted_names)
+        + r")(?!\w)"
+    )
+    return re.compile(pattern, re.IGNORECASE)
+
+
+# A stop name that opens with an adjective is declined in running text: WL
+# wrote "Weiterfahrt über die Linie 37 bis Hohen Warte" (line 38, 31.10.2026),
+# the directory knows "Hohe Warte". The masker shields names as written, so
+# "Hohen Warte" reached the model as two words and the EN feed read "Continue
+# via line 37 to High Wait" (the KI watcher's finding of 01.11.2026; "High
+# Wait" also on 23.05.2026). Before the EN text is masked, such a declined
+# name goes back to the form on the stop sign ("to Hohe Warte"), which the
+# station pass then shields. The rule is the grammar, not a list: for every
+# name of the directory whose first word ends like an adjective (-e, -er,
+# -es: "Hohe Warte", "Hoher Markt", "Altes Landgut", "Obere Augartenstraße")
+# the weak form in -en ("Hohen Warte", "Hohen Markt", "Alten Landgut",
+# "Oberen Augartenstraße") stands for that name, unless the directory knows
+# that form as a name of its own. Place adjectives ("Döblinger Hauptstraße")
+# get a form no text writes ("Döblingen …"), which costs nothing. The German
+# feed keeps WL's wording.
+_DECLINABLE_NAME_HEAD_RE: re.Pattern[str] = re.compile(
+    r"^(?P<wien>(?:Wien )?)(?P<stem>[A-ZÄÖÜ][a-zäöüß]+?)(?:e|er|es)(?P<rest> [A-ZÄÖÜ].*)$"
+)
+
+
+@lru_cache(maxsize=1)
+def _declined_station_names() -> dict[str, str]:
+    """Declined form (``Hohen Warte``) → the directory's name (``Hohe Warte``)."""
+    names = _station_entity_names()
+    known = {name.casefold() for name in names}
+    forms: dict[str, str] = {}
+    for name in names:
+        match = _DECLINABLE_NAME_HEAD_RE.match(name)
+        if match is None:
+            continue
+        form = f"{match['wien']}{match['stem']}en{match['rest']}"
+        if form.casefold() not in known:
+            forms.setdefault(form, name)
+    return forms
+
+
+@lru_cache(maxsize=1)
+def _declined_station_pattern() -> re.Pattern[str] | None:
+    forms = _declined_station_names()
+    if not forms:
+        return None
+    return re.compile(
+        r"(?<![\w-])(?:" + "|".join(re.escape(form) for form in sorted(forms, key=len, reverse=True)) + r")(?![\w-])"
+    )
+
+
+def _station_base_forms(text: str) -> str:
+    """*text* with every declined stop name in the form the directory knows (see above)."""
+    pattern = _declined_station_pattern()
+    if pattern is None:
+        return text
+    forms = _declined_station_names()
+    return pattern.sub(lambda match: forms[match.group(0)], text)
+
+
+@lru_cache(maxsize=1)
+def _station_entity_names() -> tuple[str, ...]:
+    """Every meaningful station name from the project's station
+    directory, longest first.
 
     Three name forms per entry are emitted:
 
@@ -3543,7 +3620,7 @@ def _station_entity_pattern() -> re.Pattern[str] | None:
         # Defensive: keeps the entity masker functional even if the
         # stations helper is unavailable (e.g. a future refactor or a
         # stripped-down test fixture).
-        return None
+        return ()
 
     names: set[str] = set()
     for entry in _station_entries():
@@ -3613,22 +3690,7 @@ def _station_entity_pattern() -> re.Pattern[str] | None:
                 continue
             names.add(alias)
 
-    if not names:
-        return None
-
-    sorted_names = sorted(names, key=len, reverse=True)
-    # A hyphen in a name may stand between two spaces: WL writes the
-    # directory's "Burggasse-Stadthalle" as "Burggasse - Stadthalle" (U6
-    # tickers since July). Only "Burggasse" was protected, and the model made
-    # "Burggasse - City Hall" of the rest (16.10.2026). A space on one side
-    # only ("Lorenz-Müller- Gasse") is a typo of the source; the model left
-    # it as written in the probe of 16.10.2026, so the name stays a name.
-    pattern = (
-        r"(?<!\w)(?:"
-        + "|".join(re.escape(name).replace(r"\-", r"(?: - |-)") for name in sorted_names)
-        + r")(?!\w)"
-    )
-    return re.compile(pattern, re.IGNORECASE)
+    return tuple(sorted(names, key=len, reverse=True))
 
 
 @lru_cache(maxsize=1)
@@ -4264,6 +4326,10 @@ def _normalise_for_translation(text: str) -> str:
     """
     if not text:
         return text
+    # The stop sign's form of a declined stop name, so that the masker
+    # shields it ("bis Hohen Warte" → "bis Hohe Warte", see
+    # ``_station_base_forms``).
+    text = _station_base_forms(text)
     text = _HOUR_ONLY_CLOCK_RE.sub(
         lambda m: f"{m.group(1)}:{m.group(2) or '00'}", text
     )
@@ -10930,6 +10996,71 @@ def _absorb_works_tickers(items: list[FeedItem]) -> list[FeedItem]:
     return kept
 
 
+# --- A notice gives way to the live incident that reports it (2026-11-01) -----
+#
+# WL announces a planned event as a notice ("1/2/71/D: Nationalfeiertag",
+# <h2> "Veranstaltung", Ringstraße, in the feed since 16.10.) and, when the
+# day comes, opens a live incident for it as well ("1/2/71/D: Veranstaltung",
+# I20261026-0004, "Grund: Veranstaltung im Bereich Ringstraße."). Both said
+# the same diversions; on 26.10.2026 they stood side by side from 09:01 to
+# 17:31 Vienna time on two of the ten places (the KI watcher's finding of
+# 01.11.; on 25.10. the pair of that day shared one title, and the fuzzy
+# merge already showed it once). ``_absorb_works_tickers`` does not take
+# the incident: a live incident has no end, so it never lies within the
+# notice (``_within``). The incident is the better of the two for the viewer:
+# its short form names every line (the notice lost lines 2 and 71 behind the
+# 180 cut), it carries WL's expected end ("Voraussichtlich bis 18:00 Uhr"),
+# and it leaves the feed the moment WL closes it. So the notice gives way
+# while a running WL incident (a long message with WL's incident start)
+# names its cause in its title, shares a street with it, began no earlier
+# than a day before the notice and covers every line of the notice. An
+# incident on only some of the notice's lines ("4A/74A: Demonstration"
+# beside the notice of 16 lines on 22.10.) says nothing about the others,
+# and both stay. When the incident ends, the notice is back as before.
+
+
+def _notice_reported_live(notice: FeedItem, items: Sequence[FeedItem]) -> FeedItem | None:
+    """The running WL incident among *items* that reports *notice*'s measures, if any (see above)."""
+    lines = set(_ticker_lines(notice).split("/")) - {""}
+    if not lines:
+        return None
+    start = _parse_datetime(notice.get("starts_at"))
+    for item in items:
+        if not _is_wl_ticker(item):
+            continue
+        begin = _wl_incident_start(item)
+        if begin is None:
+            continue
+        if isinstance(start, datetime) and _to_utc(begin) < _to_utc(start) - _WORKS_SPAN_SLACK:
+            continue
+        if not lines <= set(_ticker_lines(item).split("/")):
+            continue
+        cause = _cause_key(_ticker_part(item).cause)
+        if cause and _notice_names_cause(notice, cause) and _shares_a_street(item, notice):
+            return item
+    return None
+
+
+def _yield_notices_to_incidents(items: list[FeedItem], now: datetime) -> list[FeedItem]:
+    """Drop a WL notice in force while a running WL incident reports the same measures (see above)."""
+    now_utc = _to_utc(now)
+    kept: list[FeedItem] = []
+    for item in items:
+        if _is_wl_notice(item):
+            start = _parse_datetime(item.get("starts_at"))
+            if not isinstance(start, datetime) or _to_utc(start) <= now_utc:
+                incident = _notice_reported_live(item, items)
+                if incident is not None:
+                    log.info(
+                        "WL-Hinweis tritt zurück, solange die Störung läuft: %s → %s",
+                        sanitize_log_arg(_rendered_title(item)),
+                        sanitize_log_arg(_rendered_title(incident)),
+                    )
+                    continue
+        kept.append(item)
+    return kept
+
+
 # --- One message, one GUID while it runs (2026-10-06) ------------------------
 #
 # A merged item carries the GUID and the ``pubDate`` of its messages: the
@@ -13050,6 +13181,9 @@ def _assemble_feed_items(
     # One WL incident, one slot — see ``_merge_wl_ticker_clusters``; the
     # display tickers of planned works go up in their notice.
     items = _absorb_works_tickers(_merge_wl_ticker_clusters(fuzzy_deduped))
+    # A notice gives way while WL's live incident reports it — see
+    # ``_yield_notices_to_incidents``.
+    items = _yield_notices_to_incidents(items, now)
     # A Baustelle that a running WL notice reports gives way to it.
     items = _drop_baustellen_twins(items, now)
     # A merged item keeps its GUID and begin while it runs — see

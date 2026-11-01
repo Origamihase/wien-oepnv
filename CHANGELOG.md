@@ -6,7 +6,45 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/en/1
 
 ## [Unreleased]
 
-Einträge nach Monaten, neueste zuerst: [Oktober 2026](#oktober-2026) · [September 2026](#september-2026) · [Juni 2026](#juni-2026) · [Mai 2026](#mai-2026).
+Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Oktober 2026](#oktober-2026) · [September 2026](#september-2026) · [Juni 2026](#juni-2026) · [Mai 2026](#mai-2026).
+
+### November 2026
+
+* **Zwei Funde des KI-Wächters behoben (2026-11-01)**: Der erste Probelauf des
+  Wächters (PR #2092) meldete zwei bis dahin unbekannte Fehler; Michael gab
+  einen eigenen Pull Request dafür frei („ja, bitte“).
+  - **Hinweis neben der Live-Störung:** „1/2/71/D: Nationalfeiertag“
+    (WL-Hinweis, `<h2>` „Veranstaltung“, Ringstraße) und „1/2/71/D:
+    Veranstaltung“ (laufender Vorfall I20261026-0004, „Grund: Veranstaltung im
+    Bereich Ringstraße.“) standen am 26.10. von 9:01 bis 17:31 Uhr auf zwei
+    der zehn Plätze. `_absorb_works_tickers` nahm die Störung nicht, weil ein
+    laufender Vorfall kein Ende hat und so nie im Zeitraum des Hinweises liegt.
+    Jetzt tritt ein geltender WL-Hinweis zurück, solange eine laufende
+    WL-Störung mit Vorfallsbeginn dieselbe Ursache an einer gemeinsamen Straße
+    für jede seiner Linien meldet (`_yield_notices_to_incidents`,
+    Betreiberentscheidung 2026-11-01 „Störung bleibt“: sie nennt jede Linie und
+    WLs voraussichtliches Ende und geht, sobald WL sie schließt). Meldet sie
+    nur einen Teil seiner Linien, bleiben beide. Replay über 555 Feed-Stände
+    seit 01.10. (DE, EN, State): nur die 19 Stände vom 26.10. ändern sich,
+    der Hinweis fällt weg und Platz 10 bekommt die nächste Meldung; verkettet
+    gespielt steht der Hinweis nach dem Ende der Störung um 18:01 Uhr wieder
+    auf demselben Platz wie vorher.
+  - **„High Wait“:** WL schrieb „Weiterfahrt über die Linie 37 bis Hohen
+    Warte“ (Linie 38, 31.10.), der englische Feed las „Continue via line 37 to
+    High Wait.“ (ebenso am 23.05.). Geschützt war nur „Hohe Warte“, wie im
+    Verzeichnis. `_normalise_for_translation` bringt einen gebeugten
+    Haltestellennamen jetzt in die Form des Verzeichnisses, bevor maskiert wird
+    (`_station_base_forms`: Name mit Adjektiv auf -e/-er/-es vorn, schwache
+    Form auf -en). Mit dem echten Modell: „to Hohe Warte“ in allen drei
+    Texten; in 14.447 Quelltexten seit Juli ändert sich nur die Eingabe der
+    vier mit „Hohen Warte“. Der deutsche Feed bleibt, wie WL schreibt.
+  - Nicht geändert: Die Kranarbeiten-Tafeln „29A/29B“ und „N31“ neben dem
+    Hinweis „29A/33A/29B/N31: Bauarbeiten“ (30.10./31.10.) nennen
+    Haltestellen, die der Kurztext des Hinweises nicht zeigt; wie bei der
+    Regel vom 29.10. für verlegte Haltestellen behalten sie ihren Platz.
+  (`docs/architecture.md` §1, Abschnitt „Nach der Dedupe“ und
+  „Platzhalter“; Proben im Projektordner
+  `reports/waechter-funde-2026-11-01-proben/`.)
 
 ### Oktober 2026
 

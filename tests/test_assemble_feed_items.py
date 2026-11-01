@@ -33,6 +33,7 @@ _CHAIN_STEPS = {
     "deduplicate_fuzzy",
     "_merge_wl_ticker_clusters",
     "_absorb_works_tickers",
+    "_yield_notices_to_incidents",
     "_drop_baustellen_twins",
     "_carry_item_identity",
     "_recency_sort_key",
