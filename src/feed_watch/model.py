@@ -391,4 +391,3 @@ def _is_current(time_line: str | None) -> bool:
     if time_line is None:
         return False
     return time_line == "Heute" or _SINCE_CLOCK_RE.fullmatch(time_line.replace(_NBSP, " ")) is not None
-

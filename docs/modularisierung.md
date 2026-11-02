@@ -99,3 +99,38 @@ Autouse-Fixtures nach ihrem Namen, die Reihenfolge bleibt also gleich:
 Der Setup-Plan aller 12.460 Tests (`pytest --setup-plan`) ist vorher und
 nachher gleich. Eine neue Fixture kommt in das Modul ihres Themas und wird
 in `tests/conftest.py` mit importiert.
+
+Etappe 6 (2026-11-02) teilt die zwölf langen Skripte (zusammen rund 18.400
+Zeilen). Wegen der Regel „Skripte importieren nur aus `src.`“ liegt der
+verschobene Code unter `src/`, das Skript behält Aufruf, Optionen und die
+Namen, die andere Dateien und Tests lesen (als ausdrückliche
+Weiterreichung, `from src.x import name as name`):
+
+| Skript | Neue Module |
+|---|---|
+| `enrich_station_aliases.py` | `src/places/station_aliases.py` |
+| `feed_watch.py` | `src/feed_watch/` (model, feed_rules, sources, evaluate, issues, state_io) |
+| `generate_markdown_stats.py` | `src/markdown_stats/` (rows, direction_coverage, markdown_report, readme, summary) |
+| `health_check.py` | `src/health_check/` (common, sources, outputs, workflow_secrets, github_runs) |
+| `ki_waechter.py` | `src/ki_waechter/` (inputs, audit) |
+| `update_all_stations.py` | `src/stations_refresh/` (diff, quarantine, heartbeat) |
+| `update_baustellen_cache.py` | `src/providers/baustellen_events.py`, `baustellen_wfs.py` |
+| `update_oebb_station_lines.py` | `src/oebb_lines/` (hafas, refresh) |
+| `update_stammstrecke_status.py`, `update_stammstrecke_hbf.py` | `src/stammstrecke/` (core, directions, ledger, vao_trip, legs, vao_errors, hbf_board, hbf_classify) |
+| `update_station_directory.py` | `src/station_directory/` (model, csv_sources, json_sources, matching, coordinates, workbook) |
+| `update_wl_stations.py` | `src/wl_stations/` (base, ogd_download, ogd_csv, entries, colocated, merge, reconcile) |
+
+Jedes Skript und jedes Modul hat höchstens 650 Zeilen. Der Code ist
+wörtlich verschoben: Ein Abgleich mit `ast` findet jede Anweisung der
+obersten Ebene des alten Skripts (außer Importen) mit gleichem Quelltext in
+genau einer neuen Datei. Ein Test, der eine Funktion ersetzt
+(`monkeypatch.setattr`), zielt jetzt auf das Modul, in dem der Aufruf
+aufgelöst wird; sonst würde die Ersetzung nicht mehr greifen. Wer eine
+Funktion eines Skripts in einem Test ersetzt, tut das daher im Modul unter
+`src/`, nicht im Skript. Logger-Namen und Pfade bleiben gleich, die
+Workflows `ki-waechter.yml` und `test-vor-api.yml` lösen auch bei
+Änderungen der neuen Module aus, und `.secret-scan-ignore` nennt die neuen
+Ordner wie vorher `scripts/*`. Replay: `generate_markdown_stats.py` schreibt
+in einer Kopie von `main` und einer Kopie des Umbaus dieselben Dateien
+(`README.md`, `docs/statistik.md`, `docs/stats-summary.json` bis auf den
+Zeitstempel), `ki_waechter.py prepare` dieselbe Eingabe.
