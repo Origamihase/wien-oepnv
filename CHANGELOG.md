@@ -10,6 +10,17 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
 
 ### November 2026
 
+* **Repo-Health-Check (2026-11-02)**: Das Repository ist aufgeräumt
+  (keine offenen Issues oder PRs, alle Actions per SHA gepinnt, alle
+  Workflows mit eigenem `permissions:`-Block). Zwei Branches, deren
+  Inhalt schon auf `main` lag, wurden gelöscht. In den Einstellungen
+  sind jetzt Dependency graph, Dependabot alerts und Dependabot
+  security updates an; die Vorgabe für den `GITHUB_TOKEN` ist
+  „nur lesen“, und Actions dürfen keine Pull Requests mehr anlegen oder
+  freigeben. Der Stand aller geprüften Einstellungen steht in
+  `docs/development.md` („Repository-Einstellungen“), `SECURITY.md`
+  nennt Private vulnerability reporting als aktiviert.
+
 * **Unabhängige Prüfung von #2129 (2026-11-02)**: Keepalive und Gate
   sauber. Das Keepalive erreicht jetzt den Socket, den `request_safe`
   öffnet (der neue Test schlägt mit dem alten `src/utils/http.py` fehl);
