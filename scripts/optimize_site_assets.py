@@ -2,12 +2,13 @@
 """Optimise the static assets served from ``docs/`` for GitHub Pages.
 
 This script produces minified copies of the dashboard's hand-maintained
-``site-css/`` / ``site.js`` sources and re-encodes the two large binary
+``site-css/`` / ``site-js/`` sources and re-encodes the two large binary
 assets (``train.png`` and ``footer-bg.jpg``) so the production payload
 shrinks without altering the visual result.
 
 Run it whenever a part in ``docs/assets/site-css/`` (``teil-NN.css``, joined
-in name order), ``docs/assets/site.js`` or one of the two image originals
+in name order), a module in ``docs/assets/site-js/`` (``teil-NN-<name>.js``,
+joined the same way) or one of the two image originals
 changes::
 
     python scripts/optimize_site_assets.py
@@ -176,7 +177,7 @@ ASSETS_DIR = REPO_ROOT / "docs" / "assets"
 
 CSS_SRC = ASSETS_DIR / "site-css"
 CSS_OUT = ASSETS_DIR / "site.min.css"
-JS_SRC = ASSETS_DIR / "site.js"
+JS_SRC = ASSETS_DIR / "site-js"
 JS_OUT = ASSETS_DIR / "site.min.js"
 
 TRAIN_PNG = ASSETS_DIR / "train.png"

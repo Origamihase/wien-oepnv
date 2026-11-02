@@ -1,11 +1,12 @@
 """Readable sources of the dashboard script and stylesheet, in parts.
 
 Since 2026-11-02 no file may have more than 700 lines. The dashboard's
-stylesheet is kept as parts, ``docs/assets/site-css/teil-NN.css``; joined in
-name order they are the whole source, and ``optimize_site_assets.py`` joins
-them the same way into ``site.min.css``, the only stylesheet the page loads.
-A single file instead of a folder is read as it is, so callers and tests can
-still point at one file (the script ``docs/assets/site.js`` for now).
+stylesheet is kept as parts, ``docs/assets/site-css/teil-NN.css``, and its
+script as modules, ``docs/assets/site-js/teil-NN-<name>.js``. Joined in name
+order they are the whole source, and ``optimize_site_assets.py`` joins them
+the same way into ``site.min.css`` / ``site.min.js``, the only files the
+page loads. A single file instead of a folder is read as it is, so tests can
+point at one file.
 """
 
 from __future__ import annotations
@@ -16,9 +17,8 @@ from pathlib import Path
 from src.utils.files import read_capped_text
 
 _REPO_ROOT = Path(__file__).resolve().parents[2]
-# The script is still one file; it becomes modules in its own step
-# (Michael 2026-11-02: "Echte Module").
-SITE_JS_DIR = _REPO_ROOT / "docs" / "assets" / "site.js"
+# Real modules with a shared namespace (Michael 2026-11-02: "Echte Module").
+SITE_JS_DIR = _REPO_ROOT / "docs" / "assets" / "site-js"
 SITE_CSS_DIR = _REPO_ROOT / "docs" / "assets" / "site-css"
 
 

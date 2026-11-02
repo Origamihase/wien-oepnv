@@ -80,7 +80,7 @@ def main() -> int:
 
     # Dashboard i18n coverage gate. Every ``data-i18n*`` attribute in
     # docs/site.html must have a matching key in the ``I18N_EN`` dict
-    # in docs/assets/site.js. Catches the regression that left section
+    # in docs/assets/site-js/. Catches the regression that left section
     # headings + footer untranslated when the bilingual UI shipped.
     i18n_gate = PROJECT_ROOT / "scripts" / "check_i18n_coverage.py"
     exit_codes.append(_run([sys.executable, str(i18n_gate)]))

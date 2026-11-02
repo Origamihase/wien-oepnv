@@ -402,7 +402,7 @@ im Repository. Was er für dieses Projekt bedeutet:
   VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH.“ überall zu
   führen: im `<copyright>` beider Feeds (`_VAO_BASIS_DE`/`_VAO_BASIS_EN` in
   `src/build_feed.py`), in der Fußzeile der Webseite (DE in
-  `docs/site.html`, EN in `docs/assets/site.js`), auf `docs/statistik.md`
+  `docs/site.html`, EN in `docs/assets/site-js/`), auf `docs/statistik.md`
   (`VAO_BASIS_NOTE` in `scripts/generate_markdown_stats.py`), im README und in
   `NOTICE.md`. VAO ist dort Grundlage, kein Lizenzgeber: Die
   Stammstrecken-Meldung ist ein eigener Text. Der Quellen-Tag `<source>`
@@ -495,7 +495,7 @@ Wer die Regel liest:
   ersten Fall; im zweiten grün mit „derzeit kein Stammstrecken-Zug auf
   der Tafel“. Kein ℹ️-Hinweis, weil die Nachtpause sonst jede Nacht
   einen erzeugte. Die Richtungsprüfung bleibt unverändert nie rot.
-* Website (`docs/assets/site.js`) und README/Statistik
+* Website (`docs/assets/site-js/`) und README/Statistik
   (`render_direction_coverage_note` in
   `scripts/generate_markdown_stats.py`): Den ganzen Korridor („Aktuell
   keine Fahrten von Wien Hbf Richtung Meidling und Praterstern“) nennen

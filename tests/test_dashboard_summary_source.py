@@ -1,6 +1,6 @@
 """The dashboard reads one small document, from its own origin.
 
-Audit E.3: ``docs/assets/site.js`` used to fetch the three raw yearly
+Audit E.3: ``docs/assets/site-js/`` used to fetch the three raw yearly
 ledgers straight from ``raw.githubusercontent.com`` on every page load —
 ``stammstrecke_2026.csv`` (430 KB), ``stoerungen_2026.csv`` (187 KB) and
 ``ausfaelle_2026.csv`` (87 KB), ~705 KB together — and roll them up in

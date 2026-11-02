@@ -21,7 +21,7 @@ enforced for months:
    ``.pre-commit-config.yaml`` at the ``site-assets-minified`` hook).
 2. ``JS_SRC.read_text(encoding="utf-8")`` /
    ``JS_OUT.read_text(encoding="utf-8")`` (line 126 / 154) — same shape,
-   ``docs/assets/site.js`` (~25 KiB) and ``docs/assets/site.min.js``
+   ``docs/assets/site-js/`` (~25 KiB) and ``docs/assets/site.min.js``
    (~19 KiB).
 3. ``Image.open(path)`` at five sites (lines 196, 212, 259, 288, 324) —
    loads ``docs/assets/train.png`` (1584×224 = ~355 K pixels legitimate)

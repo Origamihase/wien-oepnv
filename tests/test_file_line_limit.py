@@ -27,7 +27,7 @@ _SUFFIXES = frozenset(
 _EXEMPT_PREFIXES = ("data/", "cache/")
 # Number of entries on 2026-11-02. Lower it whenever an entry is deleted;
 # it may never go up.
-_ALTFAELLE_COUNT = 27
+_ALTFAELLE_COUNT = 26
 
 
 def _tracked_files() -> list[str]:
@@ -114,4 +114,4 @@ def test_exemptions() -> None:
     assert not is_counted("docs/assets/feed-item-raufaser.jpg")
     assert is_counted("src/build_feed.py")
     assert is_counted("docs/architecture.md")
-    assert is_counted("docs/assets/site.js")
+    assert is_counted("docs/assets/site-js/teil-01-grundlagen.js")

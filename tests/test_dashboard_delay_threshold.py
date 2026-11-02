@@ -6,7 +6,7 @@ DELAY_THRESHOLD_MINUTES`` — every consumer, incl.
 ``scripts/generate_markdown_stats.py``, uses that form and labels it
 ``Kritische Verspätungen (> 9 min)``).
 
-``docs/assets/site.js`` used to re-implement the same statistic
+``docs/assets/site-js/`` used to re-implement the same statistic
 client-side and had drifted on BOTH halves: it counted ``r.delay >= 9``
 and labelled the tile ``≥ 9 Minuten`` / ``≥ 9 minutes``. An observation
 of exactly 9.0 minutes was therefore counted on the website but not by

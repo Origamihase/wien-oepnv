@@ -120,8 +120,8 @@ repos:
 
   # ── Static-site asset drift check ────────────────────────────────
   # docs/assets/site.min.css and docs/assets/site.min.js are derived
-  # from their readable sources (site.js and the parts in site-css/,
-  # joined in name order); the dashboard's
+  # from their readable sources (the parts in site-css/ and the modules
+  # in site-js/, each joined in name order); the dashboard's
   # docs/site.html references the minified copies and carries a
   # content-hash ``?v=`` cache-bust token per reference. This hook fails
   # if the committed bundles fall out of sync with the source OR the
@@ -134,13 +134,13 @@ repos:
         name: docs/assets/site.min.* matches source
         entry: python scripts/optimize_site_assets.py --check
         language: system
-        files: ^docs/(site\.html|assets/site\.(js|min\.css|min\.js)|assets/site-css/.*)$
+        files: ^docs/(site\.html|assets/site\.(min\.css|min\.js)|assets/site-(css|js)/.*)$
         pass_filenames: false
         require_serial: true
 
   # ── Dashboard i18n coverage gate ─────────────────────────────────
   # Every ``data-i18n*`` attribute in docs/site.html must have a
-  # matching key in the ``I18N_EN`` dictionary in docs/assets/site.js.
+  # matching key in the ``I18N_EN`` dictionary in docs/assets/site-js/.
   # The pre-commit hook rejects drift the moment a new German UI
   # string is added to the HTML without an English equivalent — that
   # was the exact failure mode behind the partially-translated
@@ -151,6 +151,6 @@ repos:
         name: docs/site.html data-i18n keys covered by I18N_EN
         entry: python scripts/check_i18n_coverage.py
         language: system
-        files: ^docs/(site\.html|assets/site\.js)$
+        files: ^docs/(site\.html|assets/site-js/.*)$
         pass_filenames: false
         require_serial: true

@@ -1,6 +1,6 @@
 """The live tile "Ø Verspätung Stammstrecke" on ``docs/site.html``.
 
-Runs ``renderStammstreckeLiveTile`` from ``docs/assets/site.js`` in Node
+Runs ``renderStammstreckeLiveTile`` from ``docs/assets/site-js/`` in Node
 (skipped when Node is not installed). An empty 60-minute window reads
 "Keine Fahrten" only while the last successful fetch lies inside it;
 otherwise nothing was measured and the tile keeps "N/A". Operator

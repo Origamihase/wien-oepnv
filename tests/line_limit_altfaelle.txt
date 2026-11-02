@@ -4,7 +4,6 @@
 # Die Liste darf nur kürzer werden: Neue Einträge sind verboten, und eine
 # Datei, die auf 700 Zeilen oder darunter fällt, muss hier gelöscht werden
 # (der Test verlangt das).
-docs/assets/site.js
 scripts/enrich_station_aliases.py
 scripts/feed_watch.py
 scripts/generate_markdown_stats.py
