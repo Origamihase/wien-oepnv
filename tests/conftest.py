@@ -508,7 +508,7 @@ def isolate_stats_writes(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Ite
     sites that did not pass an explicit ``stats_dir`` keyword (which
     is the common case in production) pick up the test path. Tests
     that *do* explicitly target a different ``stats_dir`` (e.g.
-    ``test_utils_stats.py``) are unaffected because the explicit
+    ``test_utils_stats/``) are unaffected because the explicit
     keyword wins inside ``stats_path``.
     """
     from src.utils import stats as stats_utils

@@ -254,6 +254,18 @@ Liquid-Klammern aus Code-Beispielen). `tests/test_changelog_parts.py` prüft,
 dass die Übersicht jede Datei genau einmal nennt, keine Einträge enthält,
 die Tage absteigend listet und jede Tagesdatei ihren Wochentag im Kopf trägt.
 
+Etappe 2 (2026-11-02) teilt die langen Testmodule. Aus
+`tests/…/test_x.py` wird das Paket `tests/…/test_x/`: `__init__.py` trägt
+die alte Modulbeschreibung, `_support.py` alle Hilfen, Konstanten und
+Fixtures (mit `__all__`), `conftest.py` macht die Fixtures für pytest
+sichtbar (nur wo es Fixtures gibt), und `test_teil_<n>.py` enthält die Tests in ihrer alten
+Reihenfolge, jeder Teil unter 700 Zeilen. Pfade aus
+`Path(__file__).resolve().parents[N]` zählen eine Ebene mehr, weil der Code
+eine Ebene tiefer liegt. Testnamen und Reihenfolge bleiben gleich
+(Sammlung vorher und nachher: 2.251 Tests, gleiche Namen, gleiche
+Reihenfolge). Ein neuer Test für so ein Paket kommt in den passenden Teil;
+wird ein Teil zu lang, entsteht `test_teil_<n+1>.py`.
+
 ### Titel und Beschreibung im deutschen Feed
 
 Diese Regeln entscheiden, was ein Eintrag im deutschen Feed zeigt. Sie
@@ -2576,7 +2588,7 @@ Hot-Path triggert, der Statistik schreibt (der
 `_update_item_state`-strict-new-Branch, die
 Stammstrecken-Processing-Schleife) den committeten CSV-Ledger nicht
 verunreinigen kann. Tests, die explizit ein anderes `stats_dir` ansetzen
-(die dedizierten Unit-Tests in `tests/test_utils_stats.py`), bleiben
+(die dedizierten Unit-Tests in `tests/test_utils_stats/`), bleiben
 unberührt, weil das explizite Keyword innerhalb von `stats_path` immer
 gewinnt.
 
@@ -2743,7 +2755,7 @@ neuen Seite (Chromium, Uhr auf den Stand eingefroren): 37 Kacheln, deren
 Beginn oder Bis der Zeitzeile widersprach, und 314 mit einer Uhrzeit beim
 Ende vorher, 0 nachher. 61 echte Stände durch `build_feed.main()`: Titel und
 Texte gleich, es fehlen nur die `ext:ends_at`-Zeilen mit 11:11-Ablaufdatum. Tests:
-`tests/test_site_feed_tiles.py`, `tests/test_stammstrecke_direction_health.py`.
+`tests/test_site_feed_tiles.py`, `tests/test_stammstrecke_direction_health/`.
 
 ### Bilder ohne Marken, Hinweis „inoffiziell“ (2026-10-17)
 

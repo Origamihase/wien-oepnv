@@ -24,7 +24,7 @@ The writer-side **non-finite-literal** axis — ``allow_nan=False`` on
 every ``json.dump(...)`` / ``json.dumps(...)`` — was the missing
 fifth leg. Per-callsite source-grep tests
 (``tests/test_sentinel_committed_writer_allow_nan_drift.py``,
-``tests/test_sentinel_companion_writer_allow_nan_drift.py``,
+``tests/test_sentinel_companion_writer_allow_nan_drift/``,
 ``tests/test_sentinel_safe_json_formatter_allow_nan_drift.py``) pinned
 the canonical kwarg on the eleven documented disk-writing writers,
 but a future contributor adding a fresh ``json.dump(...)`` /
@@ -220,7 +220,7 @@ def _has_explicit_allow_nan_false(node: ast.Call) -> bool:
     rare in this codebase and would be caught by the per-callsite
     source-grep pins in
     ``tests/test_sentinel_committed_writer_allow_nan_drift.py`` and
-    ``tests/test_sentinel_companion_writer_allow_nan_drift.py``.
+    ``tests/test_sentinel_companion_writer_allow_nan_drift/``.
     """
     for kw in node.keywords:
         if kw.arg is None:

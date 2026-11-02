@@ -153,7 +153,7 @@ fix family was almost complete after the Trojan-Source scrub walker
 shipped — but the **writer-side non-finite-literal** axis
 (`allow_nan=False`) had only per-callsite source-grep tests at
 `tests/test_sentinel_committed_writer_allow_nan_drift.py` /
-`test_sentinel_companion_writer_allow_nan_drift.py` /
+`test_sentinel_companion_writer_allow_nan_drift/` /
 `test_sentinel_safe_json_formatter_allow_nan_drift.py`, never a
 programmatic walker. The drift this round closes: the missing
 writer-side dual of the parser-side

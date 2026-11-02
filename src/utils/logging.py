@@ -140,7 +140,7 @@ _CONTROL_CHARS_RE = re.compile(
 # (ae/oe/ue plus sharp s) and transit emoji are OUTSIDE the strip
 # ranges - the widening is additive only against the invisible-
 # character family. See
-# tests/test_sentinel_tag_chars_variation_selectors_invisible_drift.py
+# tests/test_sentinel_tag_chars_variation_selectors_invisible_drift/
 # for the additive-regression invariant.
 #
 # 2026-05-14 "Zero-Width Format Drift": widened to close the gap
@@ -214,7 +214,7 @@ _CONTROL_CHARS_RE = re.compile(
 # content flows through any provider feed, station name, sitemap
 # URL, RSS title, or operator log line. The structural invariant
 # pinned by
-# tests/test_sentinel_cf_format_drift_round.py:test_canonical_invisible_dangerous_re_covers_every_unicode_cf_character
+# tests/test_sentinel_cf_format_drift_round/:test_canonical_invisible_dangerous_re_covers_every_unicode_cf_character
 # enumerates every Cf code point in Unicode and asserts the floor
 # matches each one - any future Unicode-spec addition of a new
 # Format-category code point fails the test on the first pytest

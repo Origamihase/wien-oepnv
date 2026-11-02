@@ -96,7 +96,7 @@ from src.feed_types import FeedItem
 
 # ---------------------------------------------------------------------------
 # Canonical "Trojan-Source primitive" enumeration. Mirrors the inventory
-# pinned by ``tests/test_sentinel_tag_chars_variation_selectors_invisible_drift.py``
+# pinned by ``tests/test_sentinel_tag_chars_variation_selectors_invisible_drift/``
 # and the canonical floor in ``src/utils/logging.py:_INVISIBLE_DANGEROUS_RE``.
 # Every entry MUST be stripped by every downstream sink.
 # ---------------------------------------------------------------------------

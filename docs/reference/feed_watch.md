@@ -231,5 +231,5 @@ vor einem Datum.
    `docs/feed.xml` aus `git log`, der Stand von Lauf zu Lauf weitergegeben):
    An guten Tagen still, an den Tagen des Fehlers laut. Hält eine Regel an
    einem guten Tag nicht, ist sie keine harte Regel.
-3. Tests mit echten Feldformen in `tests/test_feed_watch.py`; Doku hier und
+3. Tests mit echten Feldformen in `tests/test_feed_watch/`; Doku hier und
    im CHANGELOG.
