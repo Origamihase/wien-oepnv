@@ -350,7 +350,7 @@ def test_gate_catches_drift_in_every_attribute_variant(
 def test_gate_passes_on_real_repo(
     capsys: pytest.CaptureFixture[str],
 ) -> None:
-    """Smoke test: the real ``docs/site.html`` + ``docs/assets/site.js``
+    """Smoke test: the real ``docs/site.html`` + ``docs/assets/site-js/``
     must satisfy the gate on every CI run. Runs ``main()`` against
     the on-disk paths (no monkeypatch) so the test exercises the
     actual repo state."""

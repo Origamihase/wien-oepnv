@@ -1,6 +1,6 @@
 """Error lines on the dashboard must follow the language switch.
 
-``docs/assets/site.js`` renders every failure as ``<prefix> <detail>``.
+``docs/assets/site-js/`` renders every failure as ``<prefix> <detail>``.
 The prefix was always a translation key, but the *detail* was the raw
 ``Error.message`` — and those messages were hard-coded German sentences
 ("Feed konnte nicht geparst werden", "Keine CSV-Daten für stoerungen
@@ -52,7 +52,7 @@ def _locate(haystack: str, marker: str, start: int = 0) -> int:
     at = haystack.find(marker, start)
     if at < 0:
         raise RuntimeError(
-            f"docs/assets/site.js no longer contains {marker!r} — the "
+            f"docs/assets/site-js/ no longer contains {marker!r} — the "
             "STATUS_TEXT parser in this module needs updating"
         )
     return at

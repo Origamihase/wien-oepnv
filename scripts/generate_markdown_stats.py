@@ -1276,7 +1276,7 @@ def render_readme_stammstrecke_live_block(
     otherwise "N/A". Operator decision 2026-10-30: on 30.10. every train
     of the hour was cancelled (track damage Meidling–Liesing) and "N/A"
     read like a broken fetch. Mirrors ``renderStammstreckeLiveTile`` in
-    ``docs/assets/site.js``.
+    ``docs/assets/site-js/``.
     """
     threshold_label = (
         f"{DELAY_THRESHOLD_MINUTES:.0f}"
@@ -1568,7 +1568,7 @@ def collect_year_data(
 
 # ----- Pre-computed dashboard summary --------------------------------
 #
-# Audit E.3: ``docs/assets/site.js`` used to fetch the three raw yearly
+# Audit E.3: ``docs/assets/site-js/`` used to fetch the three raw yearly
 # ledgers from ``raw.githubusercontent.com`` on every page load and do
 # the roll-up in the browser — ~705 KB in September, and growing every
 # tick, to render a handful of KPI tiles and bar charts. Two problems:
@@ -1752,7 +1752,7 @@ def build_stats_summary(
     window_days: int,
     poll: dict[str, object] | None = None,
 ) -> dict[str, object]:
-    """Assemble the JSON payload ``docs/assets/site.js`` renders from.
+    """Assemble the JSON payload ``docs/assets/site-js/`` renders from.
 
     Every number here is one the browser used to derive itself from the
     raw ledgers. ``avg_delay_minutes`` and ``max_delay_minutes`` are the

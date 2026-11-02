@@ -7,14 +7,14 @@ Threat model
 
   * The local pre-commit hook (``.pre-commit-config.yaml``), which runs
     on every commit that touches ``docs/site.html`` or
-    ``docs/assets/site.js``.
+    ``docs/assets/site-js/``.
   * The canonical CI gauntlet at ``scripts/run_static_checks.py``, which
     is itself invoked by ``.github/workflows/test.yml`` AND by the
     ``Run static checks`` step on every push / PR.
 
 Pre-fix both file reads used the unsafe ``Path.read_text(encoding=
 "utf-8")`` shape with NO byte-size cap. A planted multi-GiB
-``docs/site.html`` or ``docs/assets/site.js`` (hostile PR replacing the
+``docs/site.html`` or ``docs/assets/site-js/`` (hostile PR replacing the
 tracked source, compromised CI runner checkout, partial flush + power
 loss mid-edit) buffered via ``read_text()`` allocates O(file_size) bytes
 and raises :exc:`MemoryError`. ``MemoryError`` is a

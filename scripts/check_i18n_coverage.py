@@ -2,7 +2,7 @@
 """i18n coverage gate for the dashboard.
 
 The dashboard's ``data-i18n*`` attributes pair with entries in the
-``I18N_EN`` dictionary in ``docs/assets/site.js``. This gate scans both
+``I18N_EN`` dictionary in ``docs/assets/site-js/`` (module Sprache). This gate scans both
 files and rejects four drift modes:
 
   1. **Missing translation** — a ``data-i18n*`` attribute references a
@@ -65,10 +65,10 @@ from src.utils.site_sources import read_capped_source, source_exists  # noqa: E4
 HTML_PATH = REPO_ROOT / "docs" / "site.html"
 # A folder of parts works as well as a single file (700-line limit,
 # 2026-11-02); the tests point the gate at one file.
-JS_PATH = REPO_ROOT / "docs" / "assets" / "site.js"
+JS_PATH = REPO_ROOT / "docs" / "assets" / "site-js"
 
 # Security: per-loader byte cap for the two committed dashboard files
-# (``docs/site.html`` ~20 KiB, ``docs/assets/site.js`` ~50 KiB). Pre-fix
+# (``docs/site.html`` ~20 KiB, ``docs/assets/site-js/`` ~50 KiB). Pre-fix
 # both sites used the unsafe ``Path.read_text(encoding="utf-8")`` shape
 # with NO size cap — a planted multi-GiB file (hostile PR replacing the
 # tracked source, compromised CI runner / ``main`` checkout, partial
@@ -497,21 +497,21 @@ def main() -> int:
     if missing:
         print(
             "ERROR: data-i18n* keys in docs/site.html have no matching "
-            "entry in docs/assets/site.js I18N_EN dict:",
+            "entry in docs/assets/site-js/ I18N_EN dict:",
             file=sys.stderr,
         )
         for key in sorted(missing):
             print(f"  - {key}", file=sys.stderr)
         print(
             "  Hint: add the missing English translation(s) to the "
-            "I18N_EN dictionary in docs/assets/site.js.",
+            "I18N_EN dictionary in docs/assets/site-js/.",
             file=sys.stderr,
         )
         errors += len(missing)
 
     if empty:
         print(
-            "ERROR: I18N_EN keys in docs/assets/site.js have empty values:",
+            "ERROR: I18N_EN keys in docs/assets/site-js/ have empty values:",
             file=sys.stderr,
         )
         for key in sorted(empty):
@@ -521,7 +521,7 @@ def main() -> int:
     pair_problems = _locale_pair_errors(js_content)
     if pair_problems:
         print(
-            "ERROR: DE/EN dictionary pairs in docs/assets/site.js have "
+            "ERROR: DE/EN dictionary pairs in docs/assets/site-js/ have "
             "drifted apart:",
             file=sys.stderr,
         )

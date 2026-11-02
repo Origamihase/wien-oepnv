@@ -289,9 +289,34 @@ Byte für Byte gleich. Gelesen werden die Teile über
 `src/utils/site_sources.py` (`read_capped_source` mit derselben
 Größengrenze wie vorher, `read_site_css` für Tests). Ein neuer Abschnitt
 kommt in den Teil, in den er gehört; wird ein Teil zu lang, kommt ein neuer
-Teil dahinter. Das Skript `docs/assets/site.js` wird auf Michaels Wahl in
-einem eigenen Schritt zu echten Modulen (Feed, Statistik, Live-Kachel,
-Sprache) und steht bis dahin noch in der Altfall-Liste.
+Teil dahinter.
+
+Etappe 4b (2026-11-02) macht das Skript der Webseite auf Michaels Wahl
+(„Echte Module“) zu acht Modulen in `docs/assets/site-js/`:
+`teil-01-grundlagen.js` (Adressen, DOM-Helfer, Laden), `teil-02-sprache.js`
+(englische Texte, gewählte Sprache, Zahlen- und Datumsformate, Status- und
+Fehlerzeile), `teil-03-diagramme.js`, `teil-04-feed.js`,
+`teil-05-statistik.js` (Störungen, Zugausfälle), `teil-06-live-kachel.js`
+(Live-Kachel, Stammstrecke, Abdeckungshinweis), `teil-07-wetter.js` und
+`teil-08-start.js` (Laden, Nachladen beim Scrollen, Filter, Sprachwechsel).
+Jedes Modul ist eine eigene Funktion mit eigenem Gültigkeitsbereich. Was
+es von früheren Modulen braucht, holt es am Anfang aus dem gemeinsamen
+Namensraum `WienOepnv` (`const { … } = WienOepnv;`), was spätere brauchen,
+legt es am Ende dort ab (`Object.assign(WienOepnv, { … })`); den
+Namensraum legt nur das erste Modul an, als Konstante des Skripts, nicht
+als Eigenschaft von `window`. Ein Modul darf nur Namen früherer Module
+nehmen. Die gewählte Sprache lesen die anderen Module über `getLang()`,
+der Sprachwechsel läuft über `setLang()`. Die Zahlen- und Datumsformate
+sind feste Objekte, hinter denen `setLang()` das Intl-Format tauscht.
+Die Seite lädt weiter nur `site.min.js`: `optimize_site_assets.py` fügt
+die Module in Namensreihenfolge zusammen. Prüfung vorher/nachher in
+Chromium (Desktop und Telefon: Start, Statistik nach dem Scrollen, Filter,
+Englisch, zurück auf Deutsch, Aktualisieren): DOM in jedem Schritt gleich,
+Bildschirmfotos mit reduzierter Bewegung pixelgleich, keine Fehler in der
+Konsole. `tests/test_site_sources.py` prüft die Reihenfolge der Module,
+den Namensraum und den Sprachwechsel der Formate. Eine neue Funktion kommt
+in das Modul ihres Themas; braucht ein früheres Modul sie, gehört sie
+dorthin oder in ein früheres.
 
 ### Titel und Beschreibung im deutschen Feed
 

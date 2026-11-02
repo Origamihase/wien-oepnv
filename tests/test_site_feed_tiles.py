@@ -1,6 +1,6 @@
 """The feed tiles on ``docs/site.html`` agree with the item they show.
 
-Runs the real functions from ``docs/assets/site.js`` in Node (skipped when
+Runs the real functions from ``docs/assets/site-js/`` in Node (skipped when
 Node is not installed): the tile's source follows the item's RSS
 ``<source>``, "Beginn" follows ``starts_at`` like the item's time line, and
 "Bis" is a date, as on the TV.
