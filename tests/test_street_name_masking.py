@@ -350,3 +350,35 @@ def test_a_line_keeps_no_prefix() -> None:
     masked, mapping = _mask_entities("U6-Station Neue Donau")
     assert "U6" in mapping.values()
     assert _unmask_entities(masked, mapping) == "U6-Station Neue Donau"
+
+
+@pytest.mark.parametrize(
+    ("phrase", "name"),
+    [
+        # Live, WL 2, 30.10.2026: "service from Parlament/ Folktheter".
+        ("Feuerwehreinsatz: Betrieb ab Parlament/ Volkstheter.", "Volkstheter"),
+        ("14A: Verkehrsunfall Betrieb ab Laxenburger/Gudrunstraße", "Laxenburger"),
+        ("Betrieb ab Volkstheter/Parlament", "Volkstheter"),
+    ],
+)
+def test_the_unknown_half_of_a_slash_stop_name_is_shielded(phrase: str, name: str) -> None:
+    masked, mapping = _mask_entities(phrase)
+    assert name in mapping.values(), f"{name!r} leaks: {_unprotected(phrase)!r}"
+    assert _unmask_entities(masked, mapping) == phrase
+
+
+@pytest.mark.parametrize(
+    ("phrase", "word"),
+    [
+        ("Ersatz: U2/Umleitung", "Umleitung"),
+        ("Verkehr ÖBB/Westbahn", "Westbahn"),
+        # The name goes on: shielding one word split it for the real model
+        # ("Hauptbahnhof/Sankt is Marx closed", probe 2026-11-02).
+        ("zwischen Praterstern und Hauptbahnhof/Sankt Marx gesperrt", "Sankt"),
+        ("Wien Spittelau Bahnhst/Wien Mitte-Landstraße Bahnhof", "Bahnhst"),
+    ],
+)
+def test_no_slash_stop_name_half_is_shielded_alone(phrase: str, word: str) -> None:
+    masked, mapping = _mask_entities(phrase)
+    assert word not in mapping.values()
+    assert _unmask_entities(masked, mapping) == phrase
