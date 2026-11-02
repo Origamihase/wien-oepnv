@@ -23,8 +23,11 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
   beginnt keine neue Anfrage mehr, der Schritt in `ki-waechter.yml` darf
   25 statt 15 Minuten laufen, damit die Anmerkung „Gemini-Anfragen“ immer
   geschrieben wird; ein Prüflauf ohne Anmerkung zählt im Gate jetzt mit
-  drei Anfragen statt mit einer. `tests/test_ki_waechter.py` deckt
-  Abbruch, Zeitgrenze, Keepalive und Gate ab.
+  drei Anfragen statt mit einer. Jeder Versuch ohne Antwort steht mit
+  Modell und Dauer im Protokoll und in `antwort.json` (`attempts`). Der
+  Probelauf im PR prüfte erstmals den Stand vom 30.10. (zwei zutreffende
+  Funde, `docs/reference/ki_waechter.md`). `tests/test_ki_waechter.py` deckt
+  Abbruch, Zeitgrenze, Keepalive, Protokoll und Gate ab.
 
 * **KI-Wächter: drei Anfragen bleiben dem täglichen Lauf (2026-11-01)**:
   Betreiberentscheidung (Michael: „Ich möchte das Kontingent effizient nutzen

@@ -638,6 +638,8 @@ class Answer:
     tokens: dict[str, int] = field(default_factory=dict)
     seconds: float = 0.0
     requests: int = 0
+    # One line per request that got no answer: model, seconds, what happened.
+    attempts: list[str] = field(default_factory=list)
 
 
 def build_prompt(input_text: str, prompt_template: str) -> str:
@@ -715,6 +717,7 @@ def ask_gemini(
     started = time.monotonic()
     limit = max(0, min(max_requests, MAX_REQUESTS_PER_AUDIT))
     sent = 0
+    attempts: list[str] = []
     answer = Answer(False, models[0], error="kein Anfragebudget")
     # total=0: the session itself never repeats a request; this loop counts every one.
     # keepalive: the answer can take minutes without a byte on the wire.
@@ -734,6 +737,7 @@ def ask_gemini(
                 if wait:
                     sleep(wait)
             sent += 1
+            sent_at = time.monotonic()
             try:
                 response = request_safe(
                     session, GEMINI_URL.format(model=current), method="POST", data=body, headers=headers,
@@ -745,16 +749,28 @@ def ask_gemini(
                 # thinking) is handled like an overloaded model: next model,
                 # within the share; the request counts, it may have reached Google.
                 answer = Answer(False, current, error=f"Gemini nicht erreichbar ({type(exc).__name__})")
+                attempts.append(_attempt(current, sent_at, answer.error))
                 continue
             except (requests.RequestException, ValueError) as exc:
                 answer = Answer(False, current, error=f"Gemini nicht erreichbar ({type(exc).__name__})")
+                attempts.append(_attempt(current, sent_at, answer.error))
                 break
             answer = _answer_from(response, current)
+            if not answer.ok:
+                attempts.append(_attempt(current, sent_at, answer.error))
             if response.status_code not in OVERLOAD_STATUS:
                 break
+    answer.attempts = attempts
     answer.requests = sent
     answer.seconds = round(time.monotonic() - started, 1)
     return answer
+
+
+def _attempt(model: str, sent_at: float, error: str) -> str:
+    """One log line for a request without an answer (02.11.2026: which model, after how long)."""
+    line = f"{model} nach {time.monotonic() - sent_at:.0f} s: {error[:120]}"
+    print(f"Gemini-Versuch ohne Antwort: {line}", flush=True)
+    return line
 
 
 def _answer_from(response: requests.Response, model: str) -> Answer:

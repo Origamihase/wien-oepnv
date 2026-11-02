@@ -433,11 +433,16 @@ def test_a_dropped_connection_hands_over_like_an_overloaded_model(monkeypatch: p
     answer = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", max_requests=3, sleep=lambda s: None)
     assert calls == ["gemini-3.8-flash:generateContent", "gemini-3.6-flash:generateContent"]
     assert answer.ok and answer.model == "gemini-3.6-flash" and answer.requests == 2
+    # Every request without an answer is logged with its model (02.11.2026:
+    # the error of the first of two requests was not visible).
+    assert len(answer.attempts) == 1 and answer.attempts[0].startswith("gemini-3.8-flash nach ")
+    assert "ConnectionError" in answer.attempts[0]
     # Within the share only; the last error is the answer.
     replies[:] = [requests.ConnectionError("x")] * 3
     calls.clear()
     lost = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", max_requests=2, sleep=lambda s: None)
     assert not lost.ok and "nicht erreichbar (ConnectionError)" in lost.error and lost.requests == 2
+    assert [a.split(" ")[0] for a in lost.attempts] == ["gemini-3.8-flash", "gemini-3.6-flash"]
     # A timeout of the answer is not repeated: it already took ten minutes.
     replies[:] = [requests.ReadTimeout("x"), _Response(200, _ok_payload("{}"))]
     calls.clear()
