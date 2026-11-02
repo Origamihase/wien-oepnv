@@ -391,6 +391,7 @@ def test_all_script_writers_use_shared_scrubber_helper() -> None:
         "scripts/enrich_station_aliases.py": "write_stations_payload",
         "scripts/update_station_directory.py": "scrub_trojan_source_primitives",
         "scripts/update_wl_stations.py": "scrub_trojan_source_primitives",
+        "src/wl_stations/merge.py": "scrub_trojan_source_primitives",
         "src/places/merge.py": "scrub_trojan_source_primitives",
     }
     for rel, marker in targets.items():

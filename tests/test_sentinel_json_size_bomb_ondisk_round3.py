@@ -121,6 +121,7 @@ def test_canonical_size_cap_constants_inventory_round3() -> None:
         "src.station_directory.json_sources",
         "scripts.update_wl_stations",
         "scripts.validate_vor_mapping",
+        "src.wl_stations.merge",
     ]
 
     for module_name in inventory:
@@ -424,11 +425,14 @@ def test_update_wl_load_vor_mapping_rejects_oversized(
 ) -> None:
     """Pre-fix shape mirror; planted-huge VOR mapping file."""
     from scripts import update_wl_stations as uws
+    from src.wl_stations import merge as wl_merge
 
     fake_mapping = tmp_path / "vor-haltestellen.mapping.json"
     _write_oversized(fake_mapping, 4096)
 
-    monkeypatch.setattr(uws, "MAX_JSON_FILE_BYTES", 1024)
+    # ``load_vor_mapping`` moved to ``src/wl_stations/merge.py`` and reads
+    # the cap from there.
+    monkeypatch.setattr(wl_merge, "MAX_JSON_FILE_BYTES", 1024)
 
     with patch("src.utils.files.json.load") as mock_load:
         result = uws.load_vor_mapping(fake_mapping)
@@ -448,11 +452,14 @@ def test_update_wl_merge_rejects_oversized(
 ) -> None:
     """Pre-fix shape mirror of Site 13 for the WL merge."""
     from scripts import update_wl_stations as uws
+    from src.wl_stations import merge as wl_merge
 
     fake_stations = tmp_path / "stations.json"
     _write_oversized(fake_stations, 4096)
 
-    monkeypatch.setattr(uws, "MAX_JSON_FILE_BYTES", 1024)
+    # ``merge_into_stations`` moved to ``src/wl_stations/merge.py`` and
+    # reads the cap from there.
+    monkeypatch.setattr(wl_merge, "MAX_JSON_FILE_BYTES", 1024)
 
     wl_entries: list[dict[str, object]] = []
 

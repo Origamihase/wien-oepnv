@@ -310,9 +310,12 @@ def test_update_wl_stations_dict_reader_rejects_oversized_csv(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     import scripts.update_wl_stations as uws
+    from src.wl_stations import ogd_csv as wl_ogd_csv
 
     csv_path = tmp_path / "wl.csv"
-    monkeypatch.setattr(uws, "MAX_WL_CSV_BYTES", 1024)
+    # ``_dict_reader`` moved to ``src/wl_stations/ogd_csv.py`` and reads
+    # the cap from there.
+    monkeypatch.setattr(wl_ogd_csv, "MAX_WL_CSV_BYTES", 1024)
     _write_oversized_csv(csv_path, 4096)
 
     rows = list(uws._dict_reader(csv_path))
