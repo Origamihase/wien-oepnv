@@ -10,6 +10,41 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
 
 ### November 2026
 
+* **WL: zwei Ursachen in einem Zeitfenster stehen beide im Titel (2026-11-02)**:
+  Betreiberentscheidung (Michael, Ja zu „Titel nennt beide Ursachen“, Fund
+  des KI-Wächters). Am 29.10. hatte die 71 zwei Vorfälle neun Minuten
+  auseinander (I20261029-0032 Rettungseinsatz, -0034 Polizeieinsatz); weil
+  beide im selben Zeitfenster von zehn Minuten lagen, nannte der Titel nur
+  die häufigste Ursache, bei Gleichstand die erste, und der Feed las von
+  18:31 bis 18:59 Uhr Wiener Zeit „71: Rettungseinsatz“ über
+  „Fahrtbehinderung wegen Polizeieinsatz.“ (am selben Abend „42:
+  Falschparker“ über „Fahrtbehinderung wegen Rettungseinsatz.“). Zwei
+  Vorfälle mehr als zehn Minuten auseinander nannte der Titel schon beide
+  („U3: Polizeieinsatz, Rettungseinsatz“). `_merge_wl_ticker_clusters`
+  teilt jetzt ein Zeitfenster ohne eigene ausführliche Meldung nach Ursache
+  (`_split_by_cause`), bevor es die Linien zusammenlegt; jede Ursache ist
+  ein Vorfall, und der Eintrag nennt jede, die neueste zuerst: „71:
+  Polizeieinsatz, Rettungseinsatz“ über „Fahrtbehinderung.“ Sagen alle
+  Vorfälle dieselbe Folge, steht sie einmal (`_incident_sentences`). WLs
+  Namen derselben Ursache zählen als eine (`_CAUSE_SYNONYMS`, neu
+  „Fahrleitungsschaden“ = „Beschädigte Oberleitung“, 62 am 28.10.), ebenso
+  eine Ursache mit WLs Hinweis dahinter („Gleisschaden - Linie 11 benutzen“
+  neben „Gleisschaden“, O am 24.10., `_window_cause`). Eine Meldung ohne
+  Ursache bleibt bei der Ursache, die das Fenster bisher nannte. Wer eine
+  Ursache verursacht hat, steht im Text statt im Titel (Michael: „Der genaue
+  Grund (LKW) kann [in] die Beschreibung“): „27: Stromstörung,
+  Signalstörung, Beschädigte Oberleitung“ über „Beschädigte Oberleitung
+  durch einen LKW: Fahrtbehinderung.“ (`_title_cause`); jede Ursache bleibt
+  im Titel, auch über 50 Zeichen. Ein
+  Fenster mit eigener ausführlicher Meldung bleibt wie bisher. Replay alt
+  gegen neu über alle 1.295 Feed-Stände seit 01.10. (ganze Kette, DE und
+  EN): 57 Stände an 20 Stellen ändern sich, alle nennen eine Ursache, die
+  bisher nur im Text stand, im Titel oder ordnen eine Tafel-Meldung ihrer
+  eigenen Ursache zu („N20: … Busse halten auf der Hauptfahrbahn“ unter
+  „Gleisbauarbeiten“, wie die Tafel sagt). Am 20.10. um 13:01 und 13:31
+  Uhr belegt „18: Verkehrsunfall, Veranstaltung“ einen eigenen Platz statt
+  im Text von „18/62/O: Verkehrsunfall“ zu stehen. Doku: `docs/architecture.md`, „Titel und
+  Beschreibung im deutschen Feed“. Tests in `tests/test_wl_ticker_clusters.py`.
 * **KI-Wächter zum Stand vom 30.10.: Haltestellenpaar mit Tippfehler im
   EN-Feed (2026-11-02)**: Der Probelauf vom 02.11. prüfte den Feed-Stand
   `9e60b8d` vom 30.10. erstmals und fand drei Stellen. Zwei waren im Code

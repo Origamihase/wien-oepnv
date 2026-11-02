@@ -10290,6 +10290,9 @@ _CAUSE_SYNONYMS: dict[str, str] = {
     "oberleitungsgebr": "oberleitungsgebrechen",
     "rettungseinatz": "rettungseinsatz",
     "gasrohrbruch": "gasrohrgebrechen",
+    # "62: Beschädigte Oberleitung" beside "62: Fahrleitungsschaden Betrieb
+    # ab Hofwiesengasse" four minutes later (2026-10-28).
+    "fahrleitungsschaden": "oberleitungsgebrechen",
 }
 
 
@@ -10664,22 +10667,52 @@ def _incident_sentences(listed: Sequence[tuple[str, str]]) -> list[str]:
     is named by the title and takes no sentence; over the budget, the
     longest detail gives up its last consequence first (62 on 2026-09-28:
     "ÖBB Bauarbeiten: Züge halten bei Linie 18, Richtung Burggasse; Kein
-    Betrieb" beside "Oberleitungsgebrechen: …").
+    Betrieb" beside "Oberleitungsgebrechen: …"). A label whose agent the
+    title leaves out (:func:`_title_cause`) says it here, with or without
+    a detail: "Beschädigte Oberleitung durch einen LKW."
     """
     concrete = any(detail and not _WL_STOCK_SENTENCE_RE.match(f"{detail}.") for _, detail in listed)
-    kept = [
-        (label, detail.split("; "))
+    said = [
+        (label, detail if detail and not (concrete and _WL_STOCK_SENTENCE_RE.match(f"{detail}.")) else "")
         for label, detail in listed
-        if detail and not (concrete and _WL_STOCK_SENTENCE_RE.match(f"{detail}."))
     ]
+    kept = [(label, detail.split("; ") if detail else []) for label, detail in said if detail or _title_cause(label) != label]
     if not kept:
         return [_as_sentence(label) for label, _ in listed]
-    while len(" ".join(_as_sentence(f"{label}: {'; '.join(parts)}") for label, parts in kept)) > 180:
+
+    def sentence(label: str, parts: Sequence[str]) -> str:
+        return _as_sentence(f"{label}: {'; '.join(parts)}" if parts else label)
+
+    shared = {"; ".join(parts).casefold() for _, parts in kept if parts}
+    if len(kept) > 1 and len(shared) == 1 and all(parts or _title_cause(label) != label for label, parts in kept):
+        # Two incidents with one consequence say it once: "Fahrtbehinderung."
+        # under "71: Polizeieinsatz, Rettungseinsatz" (2026-10-29), not once
+        # per cause; an agent the title leaves out says it with it.
+        agents = [label for label, _ in kept if _title_cause(label) != label]
+        parts = next(parts for _, parts in kept if parts)
+        return [sentence(" und ".join(agents), parts) if agents else _as_sentence("; ".join(parts))]
+
+    while len(" ".join(sentence(label, parts) for label, parts in kept)) > 180:
         longest = max(kept, key=lambda entry: len("; ".join(entry[1])))
         if len(longest[1]) < 2:
             break
         longest[1].pop()
-    return [_as_sentence(f"{label}: {'; '.join(parts)}") for label, parts in kept]
+    return [sentence(label, parts) for label, parts in kept]
+
+
+# Who caused it stands in the text, not in the title (operator decision
+# 2026-11-02): "27: Stromstörung, Signalstörung, Beschädigte Oberleitung"
+# over "Beschädigte Oberleitung durch einen LKW." (2026-10-27). WL's causes
+# since July with such an agent: "Beschädigte Oberleitung durch einen LKW",
+# "Fahrleitungsgebrechen durch LKW"; a place ("PKW im Gleis", "Störung an
+# einem Bahnübergang") is part of the cause and stays.
+_CAUSE_AGENT_RE = re.compile(r"^(?P<cause>[A-ZÄÖÜ].*?)\s+durch\s+\S.*$")
+
+
+def _title_cause(label: str) -> str:
+    """*label* as a combined title names it: without the agent behind "durch"."""
+    match = _CAUSE_AGENT_RE.match(label)
+    return match["cause"] if match else label
 
 
 def _combined_incidents(entries: Sequence[FeedItem]) -> FeedItem:
@@ -10687,7 +10720,7 @@ def _combined_incidents(entries: Sequence[FeedItem]) -> FeedItem:
     lead = entries[0]
     merged = cast(FeedItem, dict(lead))
     listed = [_listed_incident(entry) for entry in entries]
-    merged["title"] = _ticker_prefix(_rendered_title(lead)) + ", ".join(label for label, _ in listed)
+    merged["title"] = _ticker_prefix(_rendered_title(lead)) + ", ".join(_title_cause(label) for label, _ in listed)
     merged["description"] = " ".join(_incident_sentences(listed))
     ends = [e for e in (entry.get("ends_at") for entry in entries) if isinstance(e, datetime)]
     merged["ends_at"] = max(ends, key=_to_utc) if len(ends) == len(entries) else None
@@ -10760,9 +10793,73 @@ def _with_unowned(entry: FeedItem, members: Sequence[FeedItem]) -> FeedItem:
     return merged
 
 
+# --- Two causes in one publication window (2026-11-02) -----------------------
+#
+# A publication window held every WL disruption of its lines, whatever its
+# cause, and ``_merged_ticker`` named only the most frequent cause, the
+# earliest on a tie. On 2026-10-29 from 18:31 to 18:59 Vienna time WL had two
+# incidents on the 71 nine minutes apart (I20261029-0032 and -0034), and the
+# feed read::
+#
+#     71: Rettungseinsatz
+#     Fahrtbehinderung wegen Polizeieinsatz.
+#
+# The second cause stood in the text only, as if it were the first one's
+# consequence ("42: Falschparker" over "Fahrtbehinderung wegen
+# Rettungseinsatz." the same evening). Two incidents ten minutes apart were
+# already listed side by side ("U3: Polizeieinsatz, Rettungseinsatz",
+# ``_combined_incidents``); within one window they were not.
+#
+# Now a window without a long message of its own (``_telling_long_message``)
+# is split by cause, WL's synonyms counted (``_CAUSE_SYNONYMS``) and a cause
+# with WL's advice behind it counted as the cause it opens with
+# (``_window_cause``), before the
+# line runs; each cause is an incident of the run, and the entry names each,
+# the newest first. A ticker without a cause stays with the cause the window
+# named so far. Where a cause is a sentence (``_MAX_LISTED_WORDS``) the
+# window stays whole: it would take a slot of its own. Operator decision
+# 2026-11-02 ("Titel nennt beide Ursachen").
+def _split_by_cause(items: Sequence[FeedItem], groups: Sequence[list[int]]) -> list[list[int]]:
+    """*groups* with each window of several causes split into one group per cause (see above)."""
+    split: list[list[int]] = []
+    for group in groups:
+        members = [items[index] for index in group]
+        parts = [_ticker_part(member) for member in members]
+        keys = {_cause_key(part.cause) for part in parts if part.cause}
+        causes = list(dict.fromkeys(_window_cause(part.cause, keys) for part in parts if part.cause))
+        if (
+            len(causes) < 2
+            or _telling_long_message(members) is not None
+            or any(len(cause.split()) > _MAX_LISTED_WORDS for cause in causes)
+        ):
+            split.append(group)
+            continue
+        chosen = _window_cause(_chosen_cause(parts), keys)
+        by_cause: dict[str, list[int]] = {cause: [] for cause in causes}
+        for index, part in zip(group, parts, strict=True):
+            by_cause[_window_cause(part.cause, keys) if part.cause else chosen].append(index)
+        split.extend(by_cause.values())
+    return split
+
+
+def _window_cause(cause: str, keys: set[str]) -> str:
+    """*cause*'s key, or that of another cause of its window it opens with.
+
+    "Gleisschaden - Linie 11 benutzen" is the "Gleisschaden" of the ticker
+    beside it (O on 2026-10-24): WL's display wrote the advice behind the
+    cause, and the title read "O: Gleisschaden - Linie 11 benutzen, Gleisschaden".
+    """
+    words = cause.casefold().split()
+    for end in range(1, len(words)):
+        key = _cause_key(" ".join(words[:end]))
+        if key in keys:
+            return key
+    return _cause_key(cause)
+
+
 def _merge_wl_ticker_clusters(items: list[FeedItem]) -> list[FeedItem]:
     """Join the WL disruptions of one incident, and of one line, into one item (see above)."""
-    groups = _ticker_groups(items)
+    groups = _split_by_cause(items, _ticker_groups(items))
     replaced: dict[int, FeedItem] = {}
     dropped: set[int] = set()
     for run in _line_runs(items, groups):

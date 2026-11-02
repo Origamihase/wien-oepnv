@@ -343,11 +343,37 @@ verdrängt eine andere Störung.
     Ursache der Titel der ersten Meldung. Die Ursache kommt aus dem Titel
     (`_reason_and_fragment`), aus einer ausführlichen Meldung mit dem
     Standardsatz oder aus der ersten Zeile der Tafel („Gleisbauarbeiten /
-    Betrieb ab Johnstraße U“).
+    Betrieb ab Johnstraße U“). „Häufigste“ entscheidet nur noch zwischen
+    WLs Namen derselben Ursache (`_CAUSE_SYNONYMS`): **Zwei Ursachen in
+    einem Zeitfenster nennt der Titel beide (seit 2026-11-02,
+    Betreiberentscheidung „Titel nennt beide Ursachen“).** Ein Zeitfenster
+    ohne eigene ausführliche Meldung, das verschiedene Ursachen meldet,
+    wird vor den Linien-Läufen nach Ursache geteilt (`_split_by_cause`);
+    jede Ursache ist ein Vorfall des Laufs, und der Eintrag nennt jede, die
+    neueste zuerst, wie zwei Vorfälle zehn Minuten auseinander (unten,
+    „66A: Rettungseinsatz, Bauarbeiten“). Eine Meldung ohne Ursache bleibt
+    bei der Ursache, die das Fenster bisher nannte; ist eine Ursache ein
+    Satz (mehr als `_MAX_LISTED_WORDS` Wörter), bleibt das Fenster ganz.
+    Anlass (Fund des KI-Wächters): Am 29.10. hatte die 71 zwei Vorfälle
+    neun Minuten auseinander (I20261029-0032 Rettungseinsatz, -0034
+    Polizeieinsatz), und der Feed las von 18:31 bis 18:59 Uhr „71:
+    Rettungseinsatz“ über „Fahrtbehinderung wegen Polizeieinsatz.“, als wäre
+    der Polizeieinsatz eine Folge; am selben Abend „42: Falschparker“ über
+    „Fahrtbehinderung wegen Rettungseinsatz.“. Jetzt: „71: Polizeieinsatz,
+    Rettungseinsatz“ über „Fahrtbehinderung.“ Sagen alle Vorfälle dieselbe
+    Folge, steht sie einmal und ohne Ursache davor (`_incident_sentences`).
+    Wer eine Ursache verursacht hat („durch einen LKW“), steht im Text, nicht
+    im Titel (`_title_cause`, Betreiberentscheidung 2026-11-02): „27:
+    Stromstörung, Signalstörung, Beschädigte Oberleitung“ über „Beschädigte
+    Oberleitung durch einen LKW: Fahrtbehinderung.“ (27.10.). Ein Ort gehört
+    zur Ursache und bleibt („PKW im Gleis“, „Störung an einem
+    Bahnübergang“). Ein solcher Titel darf länger als 50 Zeichen sein: Jede
+    Ursache bleibt im Titel.
+    Ein Zeitfenster mit eigener ausführlicher Meldung bleibt wie bisher:
+    WLs Text steht, eine Tafel-Meldung anderer Ursache bleibt draußen.
   - Beschreibung: alle Folgen in der Reihenfolge, in der WL sie
     veröffentlicht hat, mit „;“ zu einem Satz verbunden, weil die
-    Beschreibung höchstens zwei Sätze übernimmt. Eine andere Ursache behält
-    WLs Wortlaut („Fahrtbehinderung wegen Rettungseinsatz“). Was der Titel
+    Beschreibung höchstens zwei Sätze übernimmt. Was der Titel
     oder eine andere Meldung der Gruppe schon sagt, fällt weg; WLs
     Standardsatz „Nach einer Fahrtbehinderung …“ weicht allem Konkreten.
     Folgen mit denselben zwei ersten Wörtern nennen diese einmal
