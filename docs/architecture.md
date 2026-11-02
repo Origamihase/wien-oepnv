@@ -279,6 +279,20 @@ Teil, der die Überschrift hält. `tests/test_doc_parts.py` prüft die Kette,
 Stück. Wer einen Abschnitt ergänzt, schreibt ihn in den Teil, in den er
 gehört; wird der Teil zu lang, kommt ein neuer Teil dahinter.
 
+Etappe 4a (2026-11-02) teilt das Stylesheet der Webseite. Statt
+`docs/assets/site.css` gibt es `docs/assets/site-css/teil-01.css`,
+`teil-02.css` … ; geschnitten wird nur zwischen zwei Regeln der obersten
+Ebene, nie in einer Regel oder einem `@media`-Block. Die Seite lädt weiter
+nur `site.min.css`: `scripts/optimize_site_assets.py` fügt die Teile in
+Namensreihenfolge zusammen und minifiziert sie wie vorher, das Ergebnis ist
+Byte für Byte gleich. Gelesen werden die Teile über
+`src/utils/site_sources.py` (`read_capped_source` mit derselben
+Größengrenze wie vorher, `read_site_css` für Tests). Ein neuer Abschnitt
+kommt in den Teil, in den er gehört; wird ein Teil zu lang, kommt ein neuer
+Teil dahinter. Das Skript `docs/assets/site.js` wird auf Michaels Wahl in
+einem eigenen Schritt zu echten Modulen (Feed, Statistik, Live-Kachel,
+Sprache) und steht bis dahin noch in der Altfall-Liste.
+
 ### Titel und Beschreibung im deutschen Feed
 
 Diese Regeln entscheiden, was ein Eintrag im deutschen Feed zeigt. Sie

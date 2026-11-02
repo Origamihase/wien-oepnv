@@ -29,9 +29,9 @@ import re
 from pathlib import Path
 
 import pytest
+from src.utils.site_sources import read_site_js
 
 _DOCS = Path(__file__).resolve().parents[1] / "docs"
-_SITE_JS = _DOCS / "assets" / "site.js"
 _SITE_MIN_JS = _DOCS / "assets" / "site.min.js"
 
 # Keys whose value is an error *detail* (the second half of the line).
@@ -39,7 +39,7 @@ _DETAIL_KEY_PREFIX = "err-"
 
 
 def _site_js() -> str:
-    return _SITE_JS.read_text(encoding="utf-8")
+    return read_site_js()
 
 
 def _locate(haystack: str, marker: str, start: int = 0) -> int:

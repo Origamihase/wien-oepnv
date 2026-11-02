@@ -187,8 +187,8 @@ generisch aus.“ Daraus folgt, was bleibt und was neu ist:
 * **Bleibt, auf seinen Wunsch:** Aufbau und Reihenfolge der Sektionen,
   Farbpalette (alle Tokens in `:root`), der fahrende Zug, Kopfzeile und die
   Fußzeile mit Foto-Hintergrund. HTML und JavaScript sind unverändert; die
-  Änderung steckt allein in `docs/assets/site.css` (und dem daraus erzeugten
-  `site.min.css`).
+  Änderung steckt allein im Stylesheet (seit 2026-11-02 die Teile in
+  `docs/assets/site-css/`) und dem daraus erzeugten `site.min.css`.
 * **Neu: Jede Kachel trägt die Farbe dessen, wofür sie steht.** Eine Meldung
   hat die Farbe ihrer Quelle als `--src` (Randstreifen links, ein Hauch der
   Farbe hinter dem Etikett, das Etikett selbst in der Quellfarbe; ein

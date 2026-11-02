@@ -30,6 +30,7 @@ from ._support import (
     _ticks,
     _write_ledger,
 )
+from src.utils.site_sources import read_site_js
 
 
 # --- the rule itself --------------------------------------------------------
@@ -462,13 +463,10 @@ def test_coverage_note_asserts_no_cause() -> None:
 def test_site_coverage_texts_name_no_cause_and_match_python() -> None:
     """Both surfaces say the same thing, and neither invents a reason."""
     import re
-    from pathlib import Path
 
     from scripts.generate_markdown_stats import COVERAGE_ORIGIN_LABEL
 
-    js = (
-        Path(__file__).resolve().parents[2] / "docs" / "assets" / "site.js"
-    ).read_text(encoding="utf-8")
+    js = read_site_js()
     code_only = re.sub(r"//.*", "", js)
 
     for word in ("Kabelbrand", "cable-fire", "Bauarbeiten", "Streckensperre"):

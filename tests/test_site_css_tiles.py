@@ -1,4 +1,4 @@
-"""Sentinel for the dashboard tile design (``docs/assets/site.css``, 2026-10-17).
+"""Sentinel for the dashboard tile design (``docs/assets/site-css/``, 2026-10-17).
 
 Michael kept the layout, the colours, the train strip and the footer, and
 asked for less generic tiles. The design gives every tile the colour of what
@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import re
 from pathlib import Path
+from src.utils.site_sources import read_site_css
 
 ASSETS = Path(__file__).resolve().parents[1] / "docs" / "assets"
 
@@ -20,7 +21,7 @@ _COMMENT_RE = re.compile(r"/\*.*?\*/", re.DOTALL)
 
 
 def _css() -> str:
-    return _COMMENT_RE.sub("", (ASSETS / "site.css").read_text(encoding="utf-8"))
+    return _COMMENT_RE.sub("", read_site_css())
 
 
 def _rule(css: str, selector: str) -> str:
