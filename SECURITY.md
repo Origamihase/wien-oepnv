@@ -16,7 +16,7 @@ Wir nehmen die Sicherheit dieses Projekts ernst. Wer eine Schwachstelle entdeckt
 
 Bitte **keine** öffentlichen GitHub-Issues für Sicherheitsmeldungen verwenden. Stattdessen einen der folgenden Kanäle nutzen:
 
-1. **GitHub Security Advisories**: Falls für dieses Repository aktiviert, die Schaltfläche „Report a vulnerability" im Reiter *Security* benutzen.
+1. **GitHub Security Advisories**: Private vulnerability reporting ist für dieses Repository aktiviert; die Schaltfläche „Report a vulnerability" im Reiter *Security* benutzen.
 2. **E-Mail**: Falls GitHub Security Advisories nicht infrage kommen, eine E-Mail an die Repository-Inhaber:innen senden (Kontaktdaten typischerweise im GitHub-Profil).
 
 ### Was die Meldung enthalten sollte
