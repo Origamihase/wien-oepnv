@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261102-0011, I20261102-0007, I20261102-0012-F01, I20261102-0013-F01, I20260925-0011, I20260909-0007, I20260922-0032, I20261102-0014, I20261020-0029"
+    "trafficInfoNameList": "I20260909-0007, I20260922-0032, I20260925-0011, I20261020-0029, I20261102-0007, I20261102-0015, I20261102-0016, I20261102-0017"
    },
    {
     "id": 3,
@@ -265,188 +265,152 @@
     "title": "U1: Verspätungen"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
     "attributes": {
      "relatedLineTypes": {
-      "47A": "ptBusCity"
+      "U6": "ptMetro"
      }
     },
-    "description": "Linie 47A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 47A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 47A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 47A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-       "title": "47A: Verkehrsunfall"
+       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "U6: Rettungseinsatz"
       }
      }
     ],
-    "location": "Hochsatzengasse",
-    "name": "I20261102-0011",
+    "name": "I20261102-0015",
     "owner": "WL",
-    "parentName": "I20261102-0011",
+    "parentName": "I20261102-0015",
     "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "47A"
+     "U6"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 447,
-      "lineName": "47A",
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4637
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-02T13:06:00.000+0100",
+     "lastUpdate": "2026-11-02T13:06:00.000+0100",
+     "resume": "2026-11-02T13:05:00.000+0100",
+     "start": "2026-11-02T13:05:00.000+0100"
+    },
+    "title": "U6: Rettungseinsatz"
+   },
+   {
+    "alertCause": "miscellaneous",
+    "alertCauseId": 137,
+    "attributes": {
+     "relatedLineTypes": {
+      "29A": "ptBusCity",
+      "29B": "ptBusCity"
+     }
+    },
+    "description": "Linie 29B: Unregelmäßige Intervalle in beiden Richtungen. Linie 29A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "descriptionHTML": "<p>Linie 29B:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 29A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 29B:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 29A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+       "descriptionPlain": "Linie 29B: Unregelmäßige Intervalle in beiden Richtungen. Linie 29A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+       "title": "29B, 29A: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261102-0016",
+    "owner": "WL",
+    "parentName": "I20261102-0016",
+    "priority": "1",
+    "reasonId": 14,
+    "reasonName": "Betriebsstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "29B",
+     "29A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 229,
+      "lineName": "29B",
+      "vehicleType": "ptBusCity"
+     },
+     {
+      "lineId": 429,
+      "lineName": "29A",
       "vehicleType": "ptBusCity"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-02T12:12:00.000+0100",
-     "end": "2026-11-02T13:20:00.000+0100",
-     "lastUpdate": "2026-11-02T13:00:00.000+0100",
-     "resume": "2026-11-02T12:11:00.000+0100",
-     "start": "2026-11-02T12:11:00.000+0100"
+     "created": "2026-11-02T13:15:00.000+0100",
+     "lastUpdate": "2026-11-02T13:15:00.000+0100",
+     "resume": "2026-11-02T13:14:00.000+0100",
+     "start": "2026-11-02T13:14:00.000+0100"
     },
-    "title": "47A: Verkehrsunfall"
+    "title": "29B, 29A: Verspätungen"
    },
    {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
     "attributes": {
      "relatedLineTypes": {
-      "74A": "ptBusCity"
+      "U3": "ptMetro"
      }
     },
-    "description": "Linie 74A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 74A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie U3: Unregelmäßige Intervalle in Richtung Simmering. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in Richtung Simmering. <br><br>Grund: Rettungseinsatz.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 74A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 74A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "74A: Verkehrsstörung"
+       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in Richtung Simmering. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in Richtung Simmering. Grund: Rettungseinsatz.",
+       "title": "U3: Rettungseinsatz"
       }
      }
     ],
-    "location": "Landstraßer Hauptstraße / Vordere Zollamtsstraße",
-    "name": "I20261102-0012-F01",
+    "name": "I20261102-0017",
     "owner": "WL",
-    "parentName": "I20261102-0012",
+    "parentName": "I20261102-0017",
     "priority": "1",
-    "reasonId": 87,
-    "reasonName": "Verkehrsstörung",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "74A"
+     "U3"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 474,
-      "lineName": "74A",
-      "vehicleType": "ptBusCity"
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
      }
+    ],
+    "relatedStops": [
+     4931
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-02T12:34:00.000+0100",
-     "lastUpdate": "2026-11-02T12:34:00.000+0100",
-     "resume": "2026-11-02T12:34:00.000+0100",
-     "start": "2026-11-02T12:29:00.000+0100"
+     "created": "2026-11-02T13:20:00.000+0100",
+     "lastUpdate": "2026-11-02T13:20:00.000+0100",
+     "resume": "2026-11-02T13:19:00.000+0100",
+     "start": "2026-11-02T13:19:00.000+0100"
     },
-    "title": "74A: Verkehrsstörung"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "9": "ptTram"
-     }
-    },
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "9: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Hormayrgasse",
-    "name": "I20261102-0013-F01",
-    "owner": "WL",
-    "parentName": "I20261102-0013",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 109,
-      "lineName": "9",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-02T12:56:00.000+0100",
-     "lastUpdate": "2026-11-02T12:56:00.000+0100",
-     "resume": "2026-11-02T12:56:00.000+0100",
-     "start": "2026-11-02T12:44:00.000+0100"
-    },
-    "title": "9: Verkehrsunfall"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "48A": "ptBusCity"
-     }
-    },
-    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "descriptionHTML": "<p>Linie 48A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 48A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
-       "descriptionPlain": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-       "title": "48A: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261102-0014",
-    "owner": "WL",
-    "parentName": "I20261102-0014",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 448,
-      "lineName": "48A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-02T12:58:00.000+0100",
-     "lastUpdate": "2026-11-02T12:58:00.000+0100",
-     "resume": "2026-11-02T12:57:00.000+0100",
-     "start": "2026-11-02T12:57:00.000+0100"
-    },
-    "title": "48A: Polizeieinsatz"
+    "title": "U3: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",

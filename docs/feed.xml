@@ -8,20 +8,46 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Mon, 02 Nov 2026 13:00:57 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 02 Nov 2026 13:30:53 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[48A: Polizeieinsatz]]></title>
+      <title><![CDATA[29A/29B: Verspätungen]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">2f0f0b15cf1fdadadbd71826d1a850fb70259bc440a3ea35bc181776b55d7c6a</guid>
-      <pubDate>Mon, 02 Nov 2026 12:57:00 +0100</pubDate>
+      <guid isPermaLink="false">3a0f28dda0338814f61a9c465201a9f24edd812100574bd2f7fb6d23f51341d4</guid>
+      <pubDate>Mon, 02 Nov 2026 13:14:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 02 Nov 2026 12:57:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 02 Nov 2026 12:57:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Seit 12:57]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Seit 12:57]]]></content:encoded>
+      <ext:first_seen>Mon, 02 Nov 2026 13:30:53 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 02 Nov 2026 13:14:00 +0100</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Seit 13:14]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 13:14]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6</guid>
+      <pubDate>Mon, 02 Nov 2026 13:19:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 02 Nov 2026 13:19:00 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 02 Nov 2026 13:19:00 +0100</ext:starts_at>
+      <description>Unregelmäßige Intervalle in Richtung Simmering. Grund: Rettungseinsatz. [Seit 13:19]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in Richtung Simmering. Grund: Rettungseinsatz.<br/>[Seit 13:19]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
+      <pubDate>Mon, 02 Nov 2026 13:05:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 02 Nov 2026 13:05:00 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 02 Nov 2026 13:05:00 +0100</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Seit 13:05]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 13:05]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[9: Verkehrsunfall]]></title>
@@ -32,23 +58,10 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Mon, 02 Nov 2026 12:44:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 02 Nov 2026 12:44:00 +0100</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 12:44]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 12:44]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[47A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">64a60d5606788897aab464b73904107cef9f0bd55aeba104adb12381915a79e0</guid>
-      <pubDate>Mon, 02 Nov 2026 12:11:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 02 Nov 2026 12:30:45 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 02 Nov 2026 12:11:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 02 Nov 2026 13:20:00 +0100</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 12:11]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 12:11]]]></content:encoded>
+      <ext:starts_at>Mon, 02 Nov 2026 12:45:08 +0100</ext:starts_at>
+      <ext:ends_at>Mon, 02 Nov 2026 13:44:00 +0100</ext:ends_at>
+      <description>Fahrtbehinderung. [Seit 12:44]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 12:44]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Verspätungen]]></title>
@@ -62,19 +75,6 @@
       <ext:starts_at>Mon, 02 Nov 2026 08:39:00 +0100</ext:starts_at>
       <description>Unregelmäßige Intervalle in Richtung Leopoldau. Grund: Schadhaftes Fahrzeug. [Seit 08:39]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in Richtung Leopoldau. Grund: Schadhaftes Fahrzeug.<br/>[Seit 08:39]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Verkehrsstörung, Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">f7138a2e2c1ab4fd8d7d1e61ed3fcfe5aabe8646b0f6fc3cfbedbd3d63aa16fc</guid>
-      <pubDate>Mon, 02 Nov 2026 12:29:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 02 Nov 2026 13:00:57 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 02 Nov 2026 12:29:00 +0100</ext:starts_at>
-      <description>Bauarbeiten: Einstieg Leberstraße vor S-Bahn-Gebäude. [Seit heute]</description>
-      <content:encoded><![CDATA[Bauarbeiten: Einstieg Leberstraße vor S-Bahn-Gebäude.<br/>[Seit heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[REX50/REX51/S50: Wien Westbahnhof ↔ St. Pölten Hauptbahnhof]]></title>
