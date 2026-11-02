@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1016542, ftazW_265, ftazW_1031289, ftazW_1016543, ftazW_1016957, ftazW_1031290, ftazW_266, ftazW_1016493, ftazW_593, ftazW_594, ftazW_1031895, ftazW_1031299, ftazW_1032037"
+    "trafficInfoNameList": "ftazW_1016542, ftazW_265, ftazW_1031289, ftazW_1016543, ftazW_1016957, ftazW_1031290, ftazW_266, ftazW_1016493, ftazW_593, ftazW_594, ftazW_1031895, ftazW_1031299, ftazW_1032037, ftazW_262, ftazW_1031897"
    }
   ],
   "poiCategoryGroups": [
@@ -3133,6 +3133,40 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "05.11.2026 05:15",
+     "ausVon": "05.11.2026 01:15",
+     "location": "Passage - Zugang ÖBB Bahnsteig - Ausgang Favoritenstraße",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U1",
+      "18"
+     ],
+     "station": "Südtiroler Platz-Hauptbahnhof",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Passage - Zugang ÖBB Bahnsteig - Ausgang Favoritenstraße",
+    "elevatorId": "SL 06",
+    "name": "ftazW_1031897",
+    "parentName": "ftazW_1031897",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1",
+     "18"
+    ],
+    "time": {
+     "end": "2026-11-05T05:15:00.000+0100",
+     "start": "2026-11-05T01:15:00.000+0100"
+    },
+    "title": "Südtiroler Platz-Hauptbahnhof"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "05.11.2026 00:45",
      "ausVon": "04.11.2026 20:45",
      "location": "U4 Mittelbahnsteig - Ausgang Gigergasse",
@@ -3165,6 +3199,47 @@
     "time": {
      "end": "2026-11-05T00:45:00.000+0100",
      "start": "2026-11-04T20:45:00.000+0100"
+    },
+    "title": "Landstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "05.11.2026 05:15",
+     "ausVon": "05.11.2026 01:15",
+     "location": "Zwischengeschoss Zugang U3 und ÖBB Bahnsteige - U4 Mittelbahnsteig - Ausgang Landstraßer Hauptstraße",
+     "rbls": [
+      4425,
+      4412
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3",
+      "U4"
+     ],
+     "station": "Landstraße",
+     "status": "geplante Wartung",
+     "towards": "U4 beide Richtungen"
+    },
+    "description": "Zwischengeschoss Zugang U3 und ÖBB Bahnsteige - U4 Mittelbahnsteig - Ausgang Landstraßer Hauptstraße",
+    "elevatorId": "LA 01",
+    "name": "ftazW_262",
+    "parentName": "ftazW_262",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3",
+     "U4"
+    ],
+    "relatedStops": [
+     4425,
+     4412
+    ],
+    "time": {
+     "end": "2026-11-05T05:15:00.000+0100",
+     "start": "2026-11-05T01:15:00.000+0100"
     },
     "title": "Landstraße"
    },
