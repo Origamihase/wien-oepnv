@@ -12,6 +12,7 @@ from pathlib import Path
 import pytest
 
 from scripts import generate_markdown_stats as script  # noqa: E402
+from src.markdown_stats import readme as markdown_stats_readme  # noqa: E402
 
 from ._support import (
     NOW,
@@ -196,7 +197,7 @@ def test_patch_readme_oversize_returns_false(
     readme = tmp_path / "README.md"
     readme.write_text(_readme_with_markers(extra="x" * 100), encoding="utf-8")
     snapshot = readme.read_bytes()
-    monkeypatch.setattr(script, "README_MAX_BYTES", 10)  # ridiculously low
+    monkeypatch.setattr(markdown_stats_readme, "README_MAX_BYTES", 10)  # ridiculously low
     result = script.patch_readme_stats(readme, {"STAMMSTRECKE": "X\n"})
     assert result is False
     assert readme.read_bytes() == snapshot
