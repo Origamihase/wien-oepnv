@@ -258,7 +258,7 @@ Etappe 2 (2026-11-02) teilt die langen Testmodule. Aus
 `tests/…/test_x.py` wird das Paket `tests/…/test_x/`: `__init__.py` trägt
 die alte Modulbeschreibung, `_support.py` alle Hilfen, Konstanten und
 Fixtures (mit `__all__`), `conftest.py` macht die Fixtures für pytest
-sichtbar, und `test_teil_<n>.py` enthält die Tests in ihrer alten
+sichtbar (nur wo es Fixtures gibt), und `test_teil_<n>.py` enthält die Tests in ihrer alten
 Reihenfolge, jeder Teil unter 700 Zeilen. Pfade aus
 `Path(__file__).resolve().parents[N]` zählen eine Ebene mehr, weil der Code
 eine Ebene tiefer liegt. Testnamen und Reihenfolge bleiben gleich
