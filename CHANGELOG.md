@@ -10,6 +10,17 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
 
 ### November 2026
 
+* **Höchstens 700 Zeilen je Datei (2026-11-02)**: Michaels Regel für ein
+  modulareres Projekt. Sie gilt für jede Textdatei (Code, Tests, Workflows,
+  Doku, dieses CHANGELOG, die archivierten Audits); nur die Quelldaten unter
+  `data/` und `cache/` sowie JSON, CSV, XML und Bilder zählen nicht.
+  `tests/test_file_line_limit.py` meldet jede neue Datei über 700 Zeilen.
+  Die 58 Dateien, die schon länger sind, stehen in
+  `tests/line_limit_altfaelle.txt`; die Liste darf nur kürzer werden. Die
+  Aufteilung folgt in Etappen ohne Verhaltensänderung, jede mit Replay alt
+  gegen neu. Die Entscheidung vom 2026-10-15, `build_feed.py` nicht
+  aufzuteilen, ist damit aufgehoben (`docs/architecture.md`, §1).
+
 * **Repo-Health-Check (2026-11-02)**: Das Repository ist aufgeräumt
   (keine offenen Issues oder PRs, alle Actions per SHA gepinnt, alle
   Workflows mit eigenem `permissions:`-Block). Zwei Branches, deren
