@@ -362,6 +362,13 @@ verdrängt eine andere Störung.
     „Fahrtbehinderung wegen Rettungseinsatz.“. Jetzt: „71: Polizeieinsatz,
     Rettungseinsatz“ über „Fahrtbehinderung.“ Sagen alle Vorfälle dieselbe
     Folge, steht sie einmal und ohne Ursache davor (`_incident_sentences`).
+    Wer eine Ursache verursacht hat („durch einen LKW“), steht im Text, nicht
+    im Titel (`_title_cause`, Betreiberentscheidung 2026-11-02): „27:
+    Stromstörung, Signalstörung, Beschädigte Oberleitung“ über „Beschädigte
+    Oberleitung durch einen LKW: Fahrtbehinderung.“ (27.10.). Ein Ort gehört
+    zur Ursache und bleibt („PKW im Gleis“, „Störung an einem
+    Bahnübergang“). Ein solcher Titel darf länger als 50 Zeichen sein: Jede
+    Ursache bleibt im Titel.
     Ein Zeitfenster mit eigener ausführlicher Meldung bleibt wie bisher:
     WLs Text steht, eine Tafel-Meldung anderer Ursache bleibt draußen.
   - Beschreibung: alle Folgen in der Reihenfolge, in der WL sie

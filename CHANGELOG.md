@@ -30,7 +30,12 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
   „Fahrleitungsschaden“ = „Beschädigte Oberleitung“, 62 am 28.10.), ebenso
   eine Ursache mit WLs Hinweis dahinter („Gleisschaden - Linie 11 benutzen“
   neben „Gleisschaden“, O am 24.10., `_window_cause`). Eine Meldung ohne
-  Ursache bleibt bei der Ursache, die das Fenster bisher nannte; ein
+  Ursache bleibt bei der Ursache, die das Fenster bisher nannte. Wer eine
+  Ursache verursacht hat, steht im Text statt im Titel (Michael: „Der genaue
+  Grund (LKW) kann [in] die Beschreibung“): „27: Stromstörung,
+  Signalstörung, Beschädigte Oberleitung“ über „Beschädigte Oberleitung
+  durch einen LKW: Fahrtbehinderung.“ (`_title_cause`); jede Ursache bleibt
+  im Titel, auch über 50 Zeichen. Ein
   Fenster mit eigener ausführlicher Meldung bleibt wie bisher. Replay alt
   gegen neu über alle 1.295 Feed-Stände seit 01.10. (ganze Kette, DE und
   EN): 57 Stände an 20 Stellen ändern sich, alle nennen eine Ursache, die

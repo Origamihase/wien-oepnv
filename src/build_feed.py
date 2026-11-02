@@ -10600,26 +10600,52 @@ def _incident_sentences(listed: Sequence[tuple[str, str]]) -> list[str]:
     is named by the title and takes no sentence; over the budget, the
     longest detail gives up its last consequence first (62 on 2026-09-28:
     "ÖBB Bauarbeiten: Züge halten bei Linie 18, Richtung Burggasse; Kein
-    Betrieb" beside "Oberleitungsgebrechen: …").
+    Betrieb" beside "Oberleitungsgebrechen: …"). A label whose agent the
+    title leaves out (:func:`_title_cause`) says it here, with or without
+    a detail: "Beschädigte Oberleitung durch einen LKW."
     """
     concrete = any(detail and not _WL_STOCK_SENTENCE_RE.match(f"{detail}.") for _, detail in listed)
-    kept = [
-        (label, detail.split("; "))
+    said = [
+        (label, detail if detail and not (concrete and _WL_STOCK_SENTENCE_RE.match(f"{detail}.")) else "")
         for label, detail in listed
-        if detail and not (concrete and _WL_STOCK_SENTENCE_RE.match(f"{detail}."))
     ]
+    kept = [(label, detail.split("; ") if detail else []) for label, detail in said if detail or _title_cause(label) != label]
     if not kept:
         return [_as_sentence(label) for label, _ in listed]
-    if len(kept) > 1 and len({"; ".join(parts).casefold() for _, parts in kept}) == 1:
+
+    def sentence(label: str, parts: Sequence[str]) -> str:
+        return _as_sentence(f"{label}: {'; '.join(parts)}" if parts else label)
+
+    shared = {"; ".join(parts).casefold() for _, parts in kept if parts}
+    if len(kept) > 1 and len(shared) == 1 and all(parts or _title_cause(label) != label for label, parts in kept):
         # Two incidents with one consequence say it once: "Fahrtbehinderung."
-        # under "71: Polizeieinsatz, Rettungseinsatz" (2026-10-29), not once per cause.
-        return [_as_sentence("; ".join(kept[0][1]))]
-    while len(" ".join(_as_sentence(f"{label}: {'; '.join(parts)}") for label, parts in kept)) > 180:
+        # under "71: Polizeieinsatz, Rettungseinsatz" (2026-10-29), not once
+        # per cause; an agent the title leaves out says it with it.
+        agents = [label for label, _ in kept if _title_cause(label) != label]
+        parts = next(parts for _, parts in kept if parts)
+        return [sentence(" und ".join(agents), parts) if agents else _as_sentence("; ".join(parts))]
+
+    while len(" ".join(sentence(label, parts) for label, parts in kept)) > 180:
         longest = max(kept, key=lambda entry: len("; ".join(entry[1])))
         if len(longest[1]) < 2:
             break
         longest[1].pop()
-    return [_as_sentence(f"{label}: {'; '.join(parts)}") for label, parts in kept]
+    return [sentence(label, parts) for label, parts in kept]
+
+
+# Who caused it stands in the text, not in the title (operator decision
+# 2026-11-02): "27: Stromstörung, Signalstörung, Beschädigte Oberleitung"
+# over "Beschädigte Oberleitung durch einen LKW." (2026-10-27). WL's causes
+# since July with such an agent: "Beschädigte Oberleitung durch einen LKW",
+# "Fahrleitungsgebrechen durch LKW"; a place ("PKW im Gleis", "Störung an
+# einem Bahnübergang") is part of the cause and stays.
+_CAUSE_AGENT_RE = re.compile(r"^(?P<cause>[A-ZÄÖÜ].*?)\s+durch\s+\S.*$")
+
+
+def _title_cause(label: str) -> str:
+    """*label* as a combined title names it: without the agent behind "durch"."""
+    match = _CAUSE_AGENT_RE.match(label)
+    return match["cause"] if match else label
 
 
 def _combined_incidents(entries: Sequence[FeedItem]) -> FeedItem:
@@ -10627,7 +10653,7 @@ def _combined_incidents(entries: Sequence[FeedItem]) -> FeedItem:
     lead = entries[0]
     merged = cast(FeedItem, dict(lead))
     listed = [_listed_incident(entry) for entry in entries]
-    merged["title"] = _ticker_prefix(_rendered_title(lead)) + ", ".join(label for label, _ in listed)
+    merged["title"] = _ticker_prefix(_rendered_title(lead)) + ", ".join(_title_cause(label) for label, _ in listed)
     merged["description"] = " ".join(_incident_sentences(listed))
     ends = [e for e in (entry.get("ends_at") for entry in entries) if isinstance(e, datetime)]
     merged["ends_at"] = max(ends, key=_to_utc) if len(ends) == len(entries) else None

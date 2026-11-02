@@ -637,3 +637,33 @@ def test_the_stock_sentence_gives_way() -> None:
     assert [(it["title"], it["description"]) for it in _built([*D_INCIDENT[:-1], stock])] == [
         ("D: Gleisbauarbeiten", "Züge halten in Schleife, Wipplingerstr 39; Betrieb ab Augasse, Börse.")
     ]
+
+
+def test_the_agent_of_a_cause_stands_in_the_text_not_the_title() -> None:
+    # 27 on 2026-10-27, operator decision 2026-11-02: "27: Stromstörung,
+    # Signalstörung, Beschädigte Oberleitung", the lorry in the text.
+    items = [
+        _wl("27: Fahrtbehinderung wegen Stromstörung", "Fahrtbehinderung\nwegen Stromstörung"),
+        _wl(
+            "27: Beschädigte Oberleitung durch einen LKW",
+            "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+            71,
+        ),
+        _wl("27: Fahrtbehinderung Signalstörung", "Fahrtbehinderung\nSignalstörung", 93),
+    ]
+    (item,) = _merge(items)
+    assert item["title"] == "27: Signalstörung, Beschädigte Oberleitung, Stromstörung"
+    assert item["description"] == "Beschädigte Oberleitung durch einen LKW: Fahrtbehinderung."
+
+
+@pytest.mark.parametrize(
+    ("label", "title"),
+    [
+        ("Beschädigte Oberleitung durch einen LKW", "Beschädigte Oberleitung"),
+        ("Fahrleitungsgebrechen durch LKW", "Fahrleitungsgebrechen"),
+        ("PKW im Gleis", "PKW im Gleis"),
+        ("Störung an einem Bahnübergang", "Störung an einem Bahnübergang"),
+    ],
+)
+def test_only_the_agent_leaves_the_title(label: str, title: str) -> None:
+    assert bf._title_cause(label) == title
