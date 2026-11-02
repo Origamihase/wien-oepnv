@@ -614,6 +614,34 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10: Verkehrsunfall",
+    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "61b24b179dc99eec46268642e5c4452102c4449a15d1457fb096c76204442f5f",
+    "pubDate": "2026-11-02T18:49:00+01:00",
+    "starts_at": "2026-11-02T18:49:00+01:00",
+    "ends_at": "2026-11-02T19:01:00+01:00",
+    "_identity": "wl|störung|L=10|D=2026-11-02|TK=10 verkehrsunfall",
+    "_wl_ids": [
+      "I20261102-0027"
+    ],
+    "_incident_start": "2026-11-02T18:49:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "7091f5ceb189603887edeb672707027ab0765bd9fd7a0fa2d67f934f96a2ae34",
+    "pubDate": "2026-11-02T18:50:14+01:00",
+    "starts_at": "2026-11-02T18:50:14+01:00",
+    "ends_at": "2026-11-02T19:49:00+01:00",
+    "_identity": "wl|störung|L=10|D=2026-11-02|TK=fahrtbehinderung verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -656,7 +684,7 @@
     "guid": "2aa1df2c9f4ae19df070aff6c202cb045b5e46393e05c8496bd4773beeb1745f",
     "pubDate": "2026-11-02T18:06:00+01:00",
     "starts_at": "2026-11-02T18:06:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-02T19:18:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-11-02|TK=18 verkehrsunfall",
     "_wl_ids": [
       "I20261102-0026"
@@ -936,7 +964,7 @@
     "guid": "eed493b84b991f4fbb293a881224825ca49d2be64d70010ef16dbd19919e838a",
     "pubDate": "2026-11-02T18:06:00+01:00",
     "starts_at": "2026-11-02T18:06:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-02T19:50:00+01:00",
     "_identity": "wl|störung|L=62|D=2026-11-02|TK=62 verkehrsunfall",
     "_wl_ids": [
       "I20261102-0026"
@@ -988,7 +1016,7 @@
     "guid": "0db792f9373b33394ac9cbd54fe89c56f58770700c324d59539bd75f7e841cff",
     "pubDate": "2026-11-02T18:06:00+01:00",
     "starts_at": "2026-11-02T18:06:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-02T19:15:00+01:00",
     "_identity": "wl|störung|L=6|D=2026-11-02|TK=6 verkehrsunfall",
     "_wl_ids": [
       "I20261102-0026"
@@ -1104,7 +1132,7 @@
     "guid": "011d5e8498133bc00e1bdf3e9fc71ce953ee78ab3f1b6b1f28b0860bcee4fb84",
     "pubDate": "2026-11-02T17:23:00+01:00",
     "starts_at": "2026-11-02T17:23:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-02T19:33:00+01:00",
     "_identity": "wl|störung|L=O|D=2026-11-02|TK=rettungseinsatz",
     "_wl_ids": [
       "I20261102-0024"
@@ -1120,7 +1148,7 @@
     "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
     "pubDate": "2026-11-02T16:08:00+01:00",
     "starts_at": "2026-11-02T16:08:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-02T19:34:00+01:00",
     "_identity": "wl|störung|L=U4|D=2026-11-02|TK=u4 schadhaftes fahrzeug",
     "_wl_ids": [
       "I20261102-0022"
