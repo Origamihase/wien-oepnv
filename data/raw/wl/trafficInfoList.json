@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261102-0017, I20261102-0021-F01, I20261102-0022-F01, I20260925-0011, I20260909-0007, I20260922-0032, I20261020-0029, I20261102-0023-F01"
+    "trafficInfoNameList": "I20261102-0022-F01, I20260925-0011, I20260909-0007, I20261102-0023-F01, I20260922-0032, I20261020-0029, I20261102-0024-F01, I20261102-0024"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R118-136, R119-136, R130-136, R19-136, R45-136, R117-136, R102-136, R103-136, R115-136, R116-136, R100-136, R101-136, R1448-412, R1474-412, R318-437, R293-474, R1875-101, R2558-125, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R3886-480, R2359-125, R2378-627, R2343-125, R2343-626, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1974-466, R1272-440, R1301-440, R500-101, R532-109, R530-109, R526-109, R531-109, R556-109, R223-109, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R45-136, R19-136, R130-136, R119-136, R118-136, R103-136, R115-136, R116-136, R117-136, R100-136, R101-136, R102-136, R1448-412, R1474-412, R318-437, R293-474, R2558-125, R3886-480, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2343-626, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2359-125, R1974-466, R1272-440, R1301-440, R500-101, R299-170, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -217,103 +217,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Unregelmäßige Intervalle in Richtung Simmering. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in Richtung Simmering. <br><br>Grund: Rettungseinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in Richtung Simmering. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in Richtung Simmering. Grund: Rettungseinsatz.",
-       "title": "U3: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261102-0017",
-    "owner": "WL",
-    "parentName": "I20261102-0017",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4931
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-02T13:20:00.000+0100",
-     "lastUpdate": "2026-11-02T13:20:00.000+0100",
-     "resume": "2026-11-02T13:19:00.000+0100",
-     "start": "2026-11-02T13:19:00.000+0100"
-    },
-    "title": "U3: Rettungseinsatz"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U1: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261102-0021-F01",
-    "owner": "WL",
-    "parentName": "I20261102-0021",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 301,
-      "lineName": "U1",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4115,
-     4117
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-02T15:42:00.000+0100",
-     "lastUpdate": "2026-11-02T15:42:00.000+0100",
-     "resume": "2026-11-02T15:42:00.000+0100",
-     "start": "2026-11-02T15:35:00.000+0100"
-    },
-    "title": "U1: Schadhaftes Fahrzeug"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -400,14 +303,112 @@
     "relatedStops": [
      525
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-02T16:36:00.000+0100",
-     "lastUpdate": "2026-11-02T16:36:00.000+0100",
-     "resume": "2026-11-02T16:36:00.000+0100",
+     "end": "2026-11-02T17:29:00.000+0100",
+     "lastUpdate": "2026-11-02T17:29:00.000+0100",
+     "resume": "2026-11-02T17:29:00.000+0100",
      "start": "2026-11-02T16:24:00.000+0100"
     },
     "title": "9: Falschparker"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Die Linie O wird in Richtung Raxstraße zwischen Neilreichgasse / Troststraße und Raxstraße über die Linie 11 zum Frödenplatz umgeleitet. Die Haltestelle Raxstraße, Rudolfhügelstraße wird in der Neilreichgasse bei Linie 11 eingehalten. Voraussichtliche Dauer: 17:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Raxstraße.",
+    "descriptionHTML": "<p>Die Linie O wird in Richtung Raxstraße zwischen Neilreichgasse / Troststraße und Raxstraße über die Linie 11 zum Frödenplatz umgeleitet.</p><p>Die Haltestelle Raxstraße, Rudolfhügelstraße wird in der Neilreichgasse bei Linie 11 eingehalten.</p><p>Voraussichtliche Dauer: 17:50 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Raxstraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Die Linie O wird in Richtung Raxstraße zwischen Neilreichgasse / Troststraße und Raxstraße über die Linie 11 zum Frödenplatz umgeleitet.</p><p>Die Haltestelle Raxstraße, Rudolfhügelstraße wird in der Neilreichgasse bei Linie 11 eingehalten.</p><p>Voraussichtliche Dauer: 17:50 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Raxstraße.</p>",
+       "descriptionPlain": "Die Linie O wird in Richtung Raxstraße zwischen Neilreichgasse / Troststraße und Raxstraße über die Linie 11 zum Frödenplatz umgeleitet. Die Haltestelle Raxstraße, Rudolfhügelstraße wird in der Neilreichgasse bei Linie 11 eingehalten. Voraussichtliche Dauer: 17:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Raxstraße.",
+       "title": "O: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261102-0024",
+    "owner": "WL",
+    "parentName": "I20261102-0024",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 170,
+      "lineName": "O",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     299
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-11-02T17:24:00.000+0100",
+     "end": "2026-11-02T17:30:00.000+0100",
+     "lastUpdate": "2026-11-02T17:30:00.000+0100",
+     "resume": "2026-11-02T17:30:00.000+0100",
+     "start": "2026-11-02T17:23:00.000+0100"
+    },
+    "title": "O: Rettungseinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "O: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261102-0024-F01",
+    "owner": "WL",
+    "parentName": "I20261102-0024",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 170,
+      "lineName": "O",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     299
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-02T17:30:00.000+0100",
+     "lastUpdate": "2026-11-02T17:30:00.000+0100",
+     "resume": "2026-11-02T17:30:00.000+0100",
+     "start": "2026-11-02T17:23:00.000+0100"
+    },
+    "title": "O: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -941,29 +942,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R223-109",
-    "owner": "WL",
-    "parentName": "R223-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     223
-    ],
-    "time": {
-     "end": "2026-11-02T17:28:00.000+0100",
-     "start": "2026-11-02T16:29:30.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2343-125",
     "owner": "WL",
@@ -1309,6 +1287,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Rettungseinsatz\nZüge halten bei Li. 11",
+    "name": "R299-170",
+    "owner": "WL",
+    "parentName": "R299-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     299
+    ],
+    "time": {
+     "end": "2026-11-02T18:27:00.000+0100",
+     "start": "2026-11-02T17:28:04.000+0100"
+    },
+    "title": "Rettungseinsatz\nZüge halten bei Li. 11"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -1420,121 +1421,6 @@
      "start": "2026-11-02T05:00:21.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R526-109",
-    "owner": "WL",
-    "parentName": "R526-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     526
-    ],
-    "time": {
-     "end": "2026-11-02T17:28:00.000+0100",
-     "start": "2026-11-02T16:29:29.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R530-109",
-    "owner": "WL",
-    "parentName": "R530-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     530
-    ],
-    "time": {
-     "end": "2026-11-02T17:28:00.000+0100",
-     "start": "2026-11-02T16:29:29.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R531-109",
-    "owner": "WL",
-    "parentName": "R531-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     531
-    ],
-    "time": {
-     "end": "2026-11-02T17:28:00.000+0100",
-     "start": "2026-11-02T16:29:29.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R532-109",
-    "owner": "WL",
-    "parentName": "R532-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     532
-    ],
-    "time": {
-     "end": "2026-11-02T17:28:00.000+0100",
-     "start": "2026-11-02T16:29:29.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R556-109",
-    "owner": "WL",
-    "parentName": "R556-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     556
-    ],
-    "time": {
-     "end": "2026-11-02T17:28:00.000+0100",
-     "start": "2026-11-02T16:29:29.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
