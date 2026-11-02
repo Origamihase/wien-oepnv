@@ -238,6 +238,22 @@ Liste hat mehr als 700 Zeilen; die Liste bekommt keine neuen Einträge
 darunter fällt, wird aus der Liste gelöscht. Eine Datei, die wächst, wird
 geteilt, bevor sie die Grenze überschreitet.
 
+Das CHANGELOG ist seit Etappe 1 (2026-11-02) aufgeteilt, auf Michaels Wort
+nach Tagen wie die täglichen Audit-Dateien: `CHANGELOG.md` ist nur noch die
+Übersicht, die Einträge stehen in `changelog/<JJJJ-MM-TT>.md`, je Datei die
+neuesten oben. Maßgeblich ist das Datum im fett gesetzten Titel des
+Eintrags. 21 Einträge aus dem Mai 2026 tragen keines und stehen in
+`changelog/2026-05-ohne-tag.md`, die alten Versionsabschnitte in
+`changelog/bis-2026-05.md`. Der längste Tag (2026-09-12) hat knapp 500
+Zeilen; hätte ein Tag mehr als 700, geht es in `<JJJJ-MM-TT>-2.md` weiter.
+Ein neuer Eintrag kommt oben in die Datei seines Tages (Wiener Datum); gibt
+es sie noch nicht, wird sie mit demselben Kopf angelegt und in
+`CHANGELOG.md` verlinkt. Der Ordner liegt bewusst nicht unter `docs/`, damit
+GitHub Pages die Dateien nicht mit Jekyll rendert (das CHANGELOG enthält
+Liquid-Klammern aus Code-Beispielen). `tests/test_changelog_parts.py` prüft,
+dass die Übersicht jede Datei genau einmal nennt, keine Einträge enthält,
+die Tage absteigend listet und jede Tagesdatei ihren Wochentag im Kopf trägt.
+
 ### Titel und Beschreibung im deutschen Feed
 
 Diese Regeln entscheiden, was ein Eintrag im deutschen Feed zeigt. Sie
@@ -3956,8 +3972,8 @@ enthält deutsche Items — sichtbar, aber nicht kaputt.
 
 ## 9. Querverweise
 
-Die laufende Audit- und Refactoring-Historie liegt in `CHANGELOG.md`
-(aktuelle und unveröffentlichte Einträge) und unter
+Die laufende Audit- und Refactoring-Historie liegt in den Tagesdateien
+unter `changelog/` (Übersicht: `CHANGELOG.md`) und unter
 `docs/archive/audits/` (abgeschlossene Audit-Berichte). Architektur-
 relevante Änderungen sollten zusätzlich diese Karte und gegebenenfalls
 das jeweilige Mermaid-Diagramm aktualisieren.
