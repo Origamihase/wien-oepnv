@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1016543, ftazW_1016957, ftazW_1031290, ftazW_266, ftazW_593, ftazW_594, ftazW_1031895, ftazW_1031299, ftazW_262, ftazW_1031897"
+    "trafficInfoNameList": "ftazW_1016543, ftazW_1016957, ftazW_1031290, ftazW_1031895, ftazW_593, ftazW_594, ftazW_1031299, ftazW_1032037, ftazW_262"
    }
   ],
   "poiCategoryGroups": [
@@ -2987,8 +2987,8 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "05.11.2026 00:45",
-     "ausVon": "04.11.2026 20:45",
+     "ausBis": "04.11.2026 05:15",
+     "ausVon": "04.11.2026 01:15",
      "location": "18 Bahnsteig Richtung Schlachthausgasse - Passage - Ausgang Favoritenstraße",
      "rbls": [
       847
@@ -3017,8 +3017,8 @@
      847
     ],
     "time": {
-     "end": "2026-11-05T00:45:00.000+0100",
-     "start": "2026-11-04T20:45:00.000+0100"
+     "end": "2026-11-04T05:15:00.000+0100",
+     "start": "2026-11-04T01:15:00.000+0100"
     },
     "title": "Südtiroler Platz-Hauptbahnhof"
    },
@@ -3026,8 +3026,8 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "04.11.2026 05:15",
-     "ausVon": "04.11.2026 01:15",
+     "ausBis": "03.11.2026 05:15",
+     "ausVon": "03.11.2026 01:15",
      "location": "18 Bahnsteig Richtung Burggasse - Passage",
      "rbls": [
       833
@@ -3056,8 +3056,8 @@
      833
     ],
     "time": {
-     "end": "2026-11-04T05:15:00.000+0100",
-     "start": "2026-11-04T01:15:00.000+0100"
+     "end": "2026-11-03T05:15:00.000+0100",
+     "start": "2026-11-03T01:15:00.000+0100"
     },
     "title": "Südtiroler Platz-Hauptbahnhof"
    },
@@ -3065,35 +3065,40 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "05.11.2026 05:15",
-     "ausVon": "05.11.2026 01:15",
-     "location": "Passage - Zugang ÖBB Bahnsteig - Ausgang Favoritenstraße",
-     "rbls": [],
+     "ausBis": "05.11.2026 00:45",
+     "ausVon": "04.11.2026 20:45",
+     "location": "U4 Mittelbahnsteig - Ausgang Gigergasse",
+     "rbls": [
+      4425,
+      4412
+     ],
      "reason": "",
      "relatedLines": [
-      "U1",
-      "18"
+      "U4"
      ],
-     "station": "Südtiroler Platz-Hauptbahnhof",
+     "station": "Landstraße",
      "status": "geplante Wartung",
-     "towards": ""
+     "towards": "U4 beide Richtungen"
     },
-    "description": "Passage - Zugang ÖBB Bahnsteig - Ausgang Favoritenstraße",
-    "elevatorId": "SL 06",
-    "name": "ftazW_1031897",
-    "parentName": "ftazW_1031897",
+    "description": "U4 Mittelbahnsteig - Ausgang Gigergasse",
+    "elevatorId": "LA 06",
+    "name": "ftazW_1032037",
+    "parentName": "ftazW_1032037",
     "reasonId": 0,
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U1",
-     "18"
+     "U4"
+    ],
+    "relatedStops": [
+     4425,
+     4412
     ],
     "time": {
-     "end": "2026-11-05T05:15:00.000+0100",
-     "start": "2026-11-05T01:15:00.000+0100"
+     "end": "2026-11-05T00:45:00.000+0100",
+     "start": "2026-11-04T20:45:00.000+0100"
     },
-    "title": "Südtiroler Platz-Hauptbahnhof"
+    "title": "Landstraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3133,33 +3138,6 @@
     "time": {
      "end": "2026-11-05T05:15:00.000+0100",
      "start": "2026-11-05T01:15:00.000+0100"
-    },
-    "title": "Landstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "03.11.2026 05:15",
-     "ausVon": "03.11.2026 01:15",
-     "location": "Zwischengeschoss Zugang zur U3 und U4 - ÖBB Bahnsteig Richtung Meidling und Flughafen",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [],
-     "station": "Landstraße",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Zwischengeschoss Zugang zur U3 und U4 - ÖBB Bahnsteig Richtung Meidling und Flughafen",
-    "elevatorId": "LA 05",
-    "name": "ftazW_266",
-    "parentName": "ftazW_266",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "time": {
-     "end": "2026-11-03T05:15:00.000+0100",
-     "start": "2026-11-03T01:15:00.000+0100"
     },
     "title": "Landstraße"
    },

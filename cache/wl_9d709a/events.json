@@ -714,18 +714,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
-    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db",
-    "pubDate": "2026-11-02T05:00:21+01:00",
-    "starts_at": "2026-11-02T05:00:21+01:00",
-    "ends_at": "2026-11-02T23:00:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-11-02|TK=bhf hütteldorf öbb ersatzbus für 80"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "25/26/27: Gleisbauarbeiten",
     "description": "Linie 25: Betrieb nur zwischen Aspern, Oberdorfstraße und Josef-Baumann-Gasse. Weiterfahrt über Linie 27 bis Aspern Nord S U. Linie 26: Betrieb nur zwischen Hausfeldstraße U und Josef-Baumann-Gasse. Weiterfahrt nach Kagran U. Linie 27: Betrieb nur zwischen Strebersdorf, Meriangasse und Floridsdorf S U. Weichen Sie daher nach Möglichkeit großräumig auf die U1 und S-Bahn über Leopoldau S U oder Praterstern S U aus. Zwischen Kagraner Platz U und Floridsdorf S U können Sie auch auf die Linien 31A und anschließend 29A/29B oder 31A und S-Bahn ausweichen. Zwischen Kagran U und Floridsdorf S U können Sie auch auf die Linien 27A und anschließend 29A/29B ausweichen. Zwischen Floridsdorf S U und Josef-Baumann-Gasse fährt der Ersatzbus 26E. Beachten Sie, der 26E hat nicht die gleichen Kapazitäten wie eine Straßenbahn. Voraussichtliche Dauer: Ende 2026. Grund: Gleisbauarbeiten im Bereich Donaufelder Straße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -762,22 +750,6 @@
     "starts_at": "2026-10-31T00:00:27+01:00",
     "ends_at": "2026-11-02T23:59:59+01:00",
     "_identity": "wl|störung|L=25|D=2026-10-31|TK=züge halten donaufelder strasse 175 177"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Verspätungen",
-    "description": "Linie 25: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "1fada7614a788ccf1a33277fc05d810e42ffa22f80e787d1c7f2415eb1f42b8c",
-    "pubDate": "2026-11-02T21:48:00+01:00",
-    "starts_at": "2026-11-02T21:48:00+01:00",
-    "ends_at": "2026-11-02T23:11:00+01:00",
-    "_identity": "wl|störung|L=25|D=2026-11-02|TK=25 verspätungen",
-    "_wl_ids": [
-      "I20261102-0032"
-    ],
-    "_incident_start": "2026-11-02T21:48:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -918,6 +890,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "46: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 46: Fahrtbehinderung in Richtung Joachimsthalerplatz. Voraussichtliche Dauer: 23:15 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Strozzigasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "17245375550a341367d59df402e880c1611e9fbb35634da6ea980f6f056c6c9b",
+    "pubDate": "2026-11-02T22:52:05+01:00",
+    "starts_at": "2026-11-02T22:55:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=46|D=2026-11-02|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261102-0034"
+    ],
+    "_incident_start": "2026-11-02T22:55:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1014,38 +1002,6 @@
     "starts_at": "2026-10-30T00:00:12+01:00",
     "ends_at": "2026-11-02T23:59:59+01:00",
     "_identity": "wl|störung|L=D|D=2026-10-30|TK=züge halten wipplingerstr 39"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Polizeieinsatz",
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a",
-    "pubDate": "2026-11-02T21:57:00+01:00",
-    "starts_at": "2026-11-02T21:57:00+01:00",
-    "ends_at": "2026-11-02T22:58:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2026-11-02|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261102-0033"
-    ],
-    "_incident_start": "2026-11-02T21:57:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Polizeieinsatz",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab",
-    "pubDate": "2026-11-02T21:47:00+01:00",
-    "starts_at": "2026-11-02T21:47:00+01:00",
-    "ends_at": "2026-11-02T22:48:00+01:00",
-    "_identity": "wl|störung|L=U6|D=2026-11-02|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261102-0031"
-    ],
-    "_incident_start": "2026-11-02T21:47:00+01:00"
   },
   {
     "source": "Wiener Linien",
