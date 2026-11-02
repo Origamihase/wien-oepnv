@@ -766,6 +766,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "25: Verspätungen",
+    "description": "Linie 25: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1fada7614a788ccf1a33277fc05d810e42ffa22f80e787d1c7f2415eb1f42b8c",
+    "pubDate": "2026-11-02T21:48:00+01:00",
+    "starts_at": "2026-11-02T21:48:00+01:00",
+    "ends_at": "2026-11-02T23:11:00+01:00",
+    "_identity": "wl|störung|L=25|D=2026-11-02|TK=25 verspätungen",
+    "_wl_ids": [
+      "I20261102-0032"
+    ],
+    "_incident_start": "2026-11-02T21:48:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26E: Gleisbauarbeiten",
     "description": "Die Kapazitäten der Ersatzlinie 26E sind nicht mit denen einer Straßenbahn vergleichbar. Weichen Sie daher nach Möglichkeit auf die U1 und die S-Bahn über Leopoldau S U oder Praterstern S U aus. Ab Kagraner Platz U können Sie auf die Linie 31A und ab Leopoldauer Straße auf die Linie 29A umsteigen. Alternativ können Sie auch mit der Linie 31A bis Siemensstraße S fahren und dort in die S-Bahn umsteigen. Außerdem können Sie ab Kagran U auf die Linie 27A und ab Leopoldauer Straße auf die Linie 29A umsteigen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -902,22 +918,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60A: Verkehrsunfall",
-    "description": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "15ef57fce9c662ed7b76084303f102ef88811630f5a714caaf939a9b1b81af96",
-    "pubDate": "2026-11-02T21:13:00+01:00",
-    "starts_at": "2026-11-02T21:13:00+01:00",
-    "ends_at": "2026-11-02T22:14:00+01:00",
-    "_identity": "wl|störung|L=60A|D=2026-11-02|TK=60a verkehrsunfall",
-    "_wl_ids": [
-      "I20261102-0030"
-    ],
-    "_incident_start": "2026-11-02T21:13:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1014,6 +1014,38 @@
     "starts_at": "2026-10-30T00:00:12+01:00",
     "ends_at": "2026-11-02T23:59:59+01:00",
     "_identity": "wl|störung|L=D|D=2026-10-30|TK=züge halten wipplingerstr 39"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Polizeieinsatz",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a",
+    "pubDate": "2026-11-02T21:57:00+01:00",
+    "starts_at": "2026-11-02T21:57:00+01:00",
+    "ends_at": "2026-11-02T22:58:00+01:00",
+    "_identity": "wl|störung|L=U4|D=2026-11-02|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261102-0033"
+    ],
+    "_incident_start": "2026-11-02T21:57:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Polizeieinsatz",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab",
+    "pubDate": "2026-11-02T21:47:00+01:00",
+    "starts_at": "2026-11-02T21:47:00+01:00",
+    "ends_at": "2026-11-02T22:48:00+01:00",
+    "_identity": "wl|störung|L=U6|D=2026-11-02|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261102-0031"
+    ],
+    "_incident_start": "2026-11-02T21:47:00+01:00"
   },
   {
     "source": "Wiener Linien",
