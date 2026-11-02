@@ -30,6 +30,8 @@ from pathlib import Path
 
 import pytest
 
+from tests.doc_parts import read_doc
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 _DOC = REPO_ROOT / "docs" / "architecture.md"
 _SOURCE = REPO_ROOT / "src" / "build_feed.py"
@@ -39,7 +41,7 @@ _NEXT_HEADING = "## 9. Querverweise"
 
 
 def _section() -> str:
-    text = _DOC.read_text(encoding="utf-8")
+    text = read_doc(_DOC)
     assert _SECTION_HEADING in text, "§8 (DE → EN pipeline) is gone from the map"
     assert _NEXT_HEADING in text, "§9 (Querverweise) is gone from the map"
     start = text.index(_SECTION_HEADING)
@@ -58,7 +60,7 @@ _FEED_RULES_END = "## 2. Die `request_safe`-Security-State-Machine"
 
 
 def _feed_rules() -> str:
-    text = _DOC.read_text(encoding="utf-8")
+    text = read_doc(_DOC)
     assert _FEED_RULES_HEADING in text, "§1 lost its German-feed rules"
     start = text.index(_FEED_RULES_HEADING)
     end = text.index(_FEED_RULES_END)

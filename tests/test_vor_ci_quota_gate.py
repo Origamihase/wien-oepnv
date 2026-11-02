@@ -25,6 +25,8 @@ from pathlib import Path
 
 import pytest
 
+from tests.doc_parts import read_doc
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW_DIR = REPO_ROOT / ".github" / "workflows"
 
@@ -213,7 +215,7 @@ def test_architecture_doc_lists_the_ci_consumer() -> None:
     the Stammstrecke monitor the *only* automated consumer, so an operator
     planning against it under-counted the real spend.
     """
-    text = (REPO_ROOT / "docs" / "architecture.md").read_text(encoding="utf-8")
+    text = read_doc(REPO_ROOT / "docs" / "architecture.md")
     assert "test-vor-api.yml" in text, "§7 does not mention the CI consumer"
     assert "**einzige** automatisierte VOR-Konsument" not in text, (
         "§7 still claims a single automated VOR consumer"

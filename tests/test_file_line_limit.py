@@ -27,7 +27,7 @@ _SUFFIXES = frozenset(
 _EXEMPT_PREFIXES = ("data/", "cache/")
 # Number of entries on 2026-11-02. Lower it whenever an entry is deleted;
 # it may never go up.
-_ALTFAELLE_COUNT = 35
+_ALTFAELLE_COUNT = 28
 
 
 def _tracked_files() -> list[str]:
