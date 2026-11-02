@@ -51,19 +51,19 @@ from scripts.generate_markdown_stats import (
     write_stats_summary,
 )
 from src.utils.stats import STAMMSTRECKE_DIRECTIONS
+from src.utils.site_sources import read_site_js
 
 VIENNA_TZ = ZoneInfo("Europe/Vienna")
 NOW = datetime(2026, 9, 14, 12, 0, tzinfo=VIENNA_TZ)
 
 _REPO_ROOT = Path(__file__).resolve().parents[1]
 _DOCS = _REPO_ROOT / "docs"
-_SITE_JS = _DOCS / "assets" / "site.js"
 _SITE_HTML = _DOCS / "site.html"
 _SUMMARY = _DOCS / SUMMARY_FILENAME
 
 
 def _site_js() -> str:
-    return _SITE_JS.read_text(encoding="utf-8")
+    return read_site_js()
 
 
 def _rows(

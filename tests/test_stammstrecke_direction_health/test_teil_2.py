@@ -14,6 +14,7 @@ from ._support import (
     _peer_run,
     _sm_row,
 )
+from src.utils.site_sources import read_site_js
 
 
 def test_coverage_note_does_not_call_fresh_figures_a_partial_sample() -> None:
@@ -90,16 +91,13 @@ def test_summary_ships_the_evidence_the_browser_cannot_derive() -> None:
 def test_site_applies_the_same_thresholds_as_python() -> None:
     """The rule lives on both surfaces; only one of them may define it."""
     import re
-    from pathlib import Path
 
     from scripts.generate_markdown_stats import (
         CORRIDOR_SILENCE_NOTICE_HOURS,
         DIRECTION_SILENCE_NOTICE_PEER_ROWS,
     )
 
-    js = (
-        Path(__file__).resolve().parents[2] / "docs" / "assets" / "site.js"
-    ).read_text(encoding="utf-8")
+    js = read_site_js()
 
     # Each threshold must actually be READ off the payload. A bare substring
     # check would pass on "corridor_silence_hours" alone, and on a page that
@@ -166,13 +164,10 @@ def test_dashboard_flags_a_direction_absent_from_the_whole_year() -> None:
 def test_site_js_and_python_agree_on_the_directions() -> None:
     """The static site re-declares the labels; keep it in step with Python."""
     import re
-    from pathlib import Path
 
     from src.utils.stats import STAMMSTRECKE_DIRECTIONS
 
-    js = (
-        Path(__file__).resolve().parents[2] / "docs" / "assets" / "site.js"
-    ).read_text(encoding="utf-8")
+    js = read_site_js()
     match = re.search(r"const STAMMSTRECKE_DIRECTIONS = \[([^\]]*)\]", js)
     assert match, "site.js no longer declares STAMMSTRECKE_DIRECTIONS"
     js_dirs = tuple(re.findall(r'"([^"]+)"', match.group(1)))
@@ -208,11 +203,8 @@ def test_yearly_note_does_not_contradict_the_yearly_table() -> None:
 
 def test_site_judges_the_caveat_against_the_yearly_figures() -> None:
     """The page's figures are the year's too; its banner reads them, not the window."""
-    from pathlib import Path
 
-    js = (
-        Path(__file__).resolve().parents[2] / "docs" / "assets" / "site.js"
-    ).read_text(encoding="utf-8")
+    js = read_site_js()
     assert "renderCoverageNotice(stats.coverage, byDirection)" in js
     assert "const rowsIn = (dir) => bucket(yearByDirection, dir);" in js
     assert '"coverage-body-yearly"' in js

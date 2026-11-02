@@ -1,4 +1,4 @@
-"""Sentinel for the dashboard header on phones (``docs/assets/site.css``).
+"""Sentinel for the dashboard header on phones (``docs/assets/site-css/``).
 
 The header never had a narrow-screen layout: below ~1000 CSS px its nav
 stacked the links vertically, the sticky header grew to 232 px on every
@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import re
 from pathlib import Path
+from src.utils.site_sources import read_site_css
 
 ASSETS = Path(__file__).resolve().parents[1] / "docs" / "assets"
 
@@ -21,7 +22,8 @@ _COMMENT_RE = re.compile(r"/\*.*?\*/", re.DOTALL)
 
 
 def _css(name: str) -> str:
-    return _COMMENT_RE.sub("", (ASSETS / name).read_text(encoding="utf-8"))
+    assert name == "site.css"
+    return _COMMENT_RE.sub("", read_site_css())
 
 
 def _media_block(css: str, query: str) -> str:

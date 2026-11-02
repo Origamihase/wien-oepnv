@@ -12,13 +12,12 @@ from __future__ import annotations
 import json
 import shutil
 import subprocess
-from pathlib import Path
 
 import pytest
 
 from tests.test_site_feed_tiles import _block
+from src.utils.site_sources import read_site_js
 
-SITE_JS = Path(__file__).resolve().parents[1] / "docs" / "assets" / "site.js"
 
 NODE = shutil.which("node")
 
@@ -28,7 +27,7 @@ NOW = "2026-10-30T15:01:30Z"
 
 
 def _tile(live: object, poll: object, lang: str = "de") -> str:
-    js = SITE_JS.read_text(encoding="utf-8")
+    js = read_site_js()
     parts = [
         f"let currentLang = {json.dumps(lang)};",
         _block(js, "const CHART_TEXT_DE = {"),

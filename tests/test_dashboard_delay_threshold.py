@@ -28,16 +28,15 @@ from __future__ import annotations
 
 import inspect
 import re
-from pathlib import Path
 
 from scripts.generate_markdown_stats import aggregate_stammstrecke
 from src.feed.stammstrecke import DELAY_THRESHOLD_MINUTES
+from src.utils.site_sources import read_site_js
 
-_SITE_JS = Path(__file__).resolve().parents[1] / "docs" / "assets" / "site.js"
 
 
 def _site_js() -> str:
-    return _SITE_JS.read_text(encoding="utf-8")
+    return read_site_js()
 
 
 def test_dashboard_threshold_constant_matches_the_backend() -> None:

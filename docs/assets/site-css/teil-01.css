@@ -1,0 +1,647 @@
+/* Wien ÖPNV – Live-Dashboard
+ * Vanilla CSS, mobile-first, kein Build-Schritt.
+ * Farbpalette ist abgestimmt auf assets/og-default.svg.
+ *
+ * Kachel-Design (2026-10-17, Michael): Aufbau, Farben, der fahrende Zug
+ * und die Fußzeile mit Foto-Hintergrund bleiben, wie sie sind ("Der Aufbau
+ * selbst ist gut. Ich mag auch die Farben. Der kleine Zug ist ein
+ * Hingucker"); nur die Kacheln wirkten "ziemlich generisch". Seither trägt
+ * jede Kachel die Farbe dessen, wofür sie steht: Meldungen die Farbe ihrer
+ * Quelle (Randstreifen, Hauch im Hintergrund, Punkt im Etikett und im
+ * Filter), jede Statistik-Sektion einen eigenen Ton (``--tone``: Störungen
+ * Blau, Verspätungen Orange, Ausfälle Rot, passend zu ihren Balken), der
+ * Überschrift, Kennzahl und Zeilen-Hover färbt. Kein neues HTML, kein
+ * neues JS, keine neue Farbe: alles leitet sich aus den Tokens unten ab.
+ * Details: docs/architecture.md, "Gestaltung des Live-Dashboards".
+ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  --c-bg: #f5f7fb;
+  --c-bg-elev: #ffffff;
+  --c-surface: #ffffff;
+  --c-surface-2: #eef2f9;
+  --c-border: #e2e7f0;
+  --c-border-strong: #cbd2e1;
+  --c-text: #0f172a;
+  --c-text-muted: #475569;
+  --c-text-subtle: #64748b;
+
+  --c-brand: #0F1736;
+  --c-brand-2: #1f2c5e;
+  --c-brand-ink: #FFFFFF;
+  --c-accent: #2563eb;
+  --c-accent-2: #4CA9FF;
+  --c-accent-ink: #FFFFFF;
+
+  --c-wl: #E2002A;
+  --c-oebb: #C03021;
+  --c-vor: #5a8f12;
+  --c-baustellen: #f2b600;
+
+  --c-success: #0a7a59;
+  --c-warning: #b45309;
+  --c-danger: #b91c1c;
+  --c-info: #1d4ed8;
+
+  --radius: 16px;
+  --radius-lg: 24px;
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 36, 0.05), 0 2px 8px -3px rgba(15, 23, 36, 0.08);
+  --shadow: 0 2px 4px rgba(15, 23, 36, 0.04), 0 14px 32px -10px rgba(15, 23, 36, 0.18);
+  /* Hairline highlight along a tile's top edge (light falls from above). */
+  --edge: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  /* Section tone: the colour a section's tiles, heading marker and hover
+   * share. Sections below override it; see "Section tones". */
+  --tone: var(--c-accent);
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  --container: 1200px;
+  --header-h: 64px;
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --c-bg: #0a1126;
+    --c-bg-elev: #111a3a;
+    --c-surface: #121e44;
+    --c-surface-2: #1a2654;
+    --c-border: #24336a;
+    --c-border-strong: #2f4286;
+    --c-text: #eaf2ff;
+    --c-text-muted: #b3becf;
+    --c-text-subtle: #8b9ab5;
+
+    --c-brand: #0a1126;
+    --c-brand-2: #1d2b62;
+    --c-brand-ink: #eaf2ff;
+    --c-accent: #4CA9FF;
+    --c-accent-2: #7dc1ff;
+    --c-accent-ink: #0a1126;
+
+    --c-wl: #ff5f7e;
+    --c-oebb: #ff6f5e;
+    --c-vor: #a3d36b;
+    --c-baustellen: #f7c948;
+
+    --c-success: #34d3a4;
+    --c-warning: #fbbf24;
+    --c-danger: #fb7185;
+    --c-info: #7dc1ff;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 8px -3px rgba(0, 0, 0, 0.35);
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.35), 0 16px 36px -10px rgba(0, 0, 0, 0.65);
+    --edge: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  background: var(--c-bg);
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--c-text);
+  background:
+    radial-gradient(1100px 600px at 20% -10%, rgba(76, 169, 255, 0.10), transparent 60%),
+    radial-gradient(900px 500px at 110% 0%, rgba(226, 0, 42, 0.06), transparent 55%),
+    var(--c-bg);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg { max-width: 100%; height: auto; }
+
+a {
+  color: var(--c-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+a:hover { color: var(--c-accent-2); }
+a:focus-visible, button:focus-visible, .chip:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+code {
+  font-family: var(--font-mono);
+  background: var(--c-surface-2);
+  border: 1px solid var(--c-border);
+  border-radius: 6px;
+  padding: 0.05em 0.4em;
+  font-size: 0.92em;
+}
+
+/* Accessibility utility — visually hidden but exposed to assistive tech.
+ * Used to extend the accessible name of an element beyond its visible
+ * text without altering the rendered layout. Standard ``clip-path``
+ * pattern (the older ``clip: rect(...)`` form is deprecated). */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip-Link */
+.skip-link {
+  position: absolute;
+  /* Parked above the viewport by its own height plus a margin. The former
+   * fixed ``top: -2.5rem`` was ~2 px shorter than the link (line-height 1.6
+   * + padding), so a dark sliver of it showed at the top edge of the page. */
+  left: 1rem; top: 0.75rem;
+  transform: translateY(calc(-100% - 1rem));
+  background: var(--c-brand);
+  color: var(--c-brand-ink);
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  z-index: 1000;
+  transition: transform 0.15s ease;
+}
+.skip-link:focus { transform: none; }
+
+/* Container */
+.container {
+  width: min(100%, var(--container));
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2rem);
+}
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--c-bg-elev) 85%, transparent);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--c-border);
+}
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  /* Brand is anchored left via ``margin-inline-end: auto`` (below); the nav
+   * + weather + language switcher then form one compact, evenly-spaced
+   * cluster on the right instead of the former ``space-between`` spread that
+   * left the weather chip and nav floating with large gaps in the middle. */
+  gap: 0.55rem;
+  min-height: var(--header-h);
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-inline-end: auto;
+  text-decoration: none;
+  color: var(--c-text);
+}
+.brand__mark {
+  width: 34px;
+  height: 34px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 9px;
+  background: linear-gradient(135deg, var(--c-brand) 0%, var(--c-brand-2) 100%);
+  color: #FFD95B;
+  box-shadow: var(--shadow-sm);
+  flex: none;
+}
+.brand__mark svg { width: 100%; height: 100%; display: block; }
+.brand__mark rect { fill: transparent; }
+.brand__mark path { fill: currentColor; }
+.brand__text { display: grid; line-height: 1.1; }
+.brand__name { font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em; }
+.brand__sub { font-size: 0.78rem; color: var(--c-text-subtle); }
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+.site-nav a {
+  display: inline-block;
+  padding: 0.45rem 0.7rem;
+  border-radius: 8px;
+  color: var(--c-text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+.site-nav a:hover { background: var(--c-surface-2); color: var(--c-text); }
+.site-nav__cta {
+  border: 1px solid var(--c-border-strong);
+  color: var(--c-text) !important;
+  background: var(--c-surface);
+}
+.site-nav__cta:hover { background: var(--c-accent); color: var(--c-accent-ink) !important; border-color: transparent; }
+
+/* Language switcher (DE | EN). CSP-strict: no inline styles or scripts. */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid var(--c-border);
+  border-radius: 8px;
+  background: var(--c-surface);
+  font-size: 0.85rem;
+}
+.lang-switch__btn {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--c-text-muted);
+  font: inherit;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.45rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.lang-switch__btn:hover,
+.lang-switch__btn:focus-visible { color: var(--c-text); background: var(--c-surface-2); outline: none; }
+.lang-switch__btn.is-active { color: var(--c-accent-ink); background: var(--c-accent); }
+.lang-switch__sep { color: var(--c-text-subtle); user-select: none; }
+
+/* Weather widget (Vienna) — small icon + current temperature shown in the
+ * header's right-hand cluster, between the nav and the language switcher.
+ * Data comes from the Open-Meteo
+ * GeoSphere-Austria API (fetched in the browser, refreshed together with
+ * the transit data); site.js fills the icon + value at runtime. The temp
+ * slot reserves its eventual width so the bootstrap "–" → "21 °C" swap
+ * never shifts the surrounding header (no CLS). Every colour is a theme
+ * token, so dark mode needs no override. */
+.weather {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex: none;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--c-border);
+  border-radius: 999px;
+  background: var(--c-surface);
+  color: var(--c-text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  /* The widget is a link to open-meteo.com (attribution, see site.html). */
+  text-decoration: none;
+}
+a.weather:hover,
+a.weather:focus-visible { border-color: var(--c-text-subtle); }
+.weather__icon {
+  display: inline-flex;
+  flex: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  color: var(--c-text-subtle);
+}
+.weather__icon svg { width: 100%; height: 100%; display: block; }
+.weather__temp {
+  /* tabular-nums + a fixed min-width keep the widest realistic reading
+   * ("−15 °C") and the "–" placeholder in an identical box. */
+  display: inline-block;
+  min-width: 3.5em;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  color: var(--c-text);
+}
+
+/* Train strip between header and hero */
+.trainline {
+  position: relative;
+  width: 100%;
+  height: clamp(1.5rem, 4vw, 2.5rem);
+  overflow: hidden;
+  pointer-events: none;
+}
+.trainline__train {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: auto;
+  transform: translate3d(100vw, 0, 0);
+  animation: trainline-pass 26s linear infinite;
+}
+@keyframes trainline-pass {
+  from { transform: translate3d(100vw, 0, 0); }
+  to   { transform: translate3d(-100%, 0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trainline__train { animation: none; }
+}
+
+/* Hero */
+.hero {
+  margin: 0 0 clamp(1.5rem, 4vw, 2.5rem);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  /* Gradient hairline: the border picks up the accent blue top-left and the
+   * Wiener-Linien red bottom-right (padding-box/border-box layering, so the
+   * card body stays a solid surface). */
+  background:
+    linear-gradient(var(--c-bg-elev), var(--c-bg-elev)) padding-box,
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--c-accent) 55%, var(--c-border)) 0%,
+      var(--c-border) 35%,
+      var(--c-border) 65%,
+      color-mix(in srgb, var(--c-wl) 40%, var(--c-border)) 100%) border-box;
+  border: 1px solid transparent;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--edge), var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  /* Pixel-anchored offsets keep the decorative blob stable regardless
+   * of how tall the hero ends up. Earlier we used ``inset: -40% -10%``;
+   * because ``top`` percentages resolve against the *containing block's
+   * height*, any post-load growth of the hero (e.g. ``#last-update``
+   * going from "–" to "18. Mai 2026, 10:14 Uhr (Europe/Vienna)" and
+   * wrapping on narrow viewports) re-resolved ``-40%`` to a more
+   * negative pixel value and shifted the visible ``::before``. The
+   * 2026-05-19 mobile Lighthouse run pinned the full 0.21 CLS on this
+   * element. Fixed offsets break the dependency on hero height; the
+   * blob is purely decorative, so the slight visual delta versus the
+   * old percent-based geometry is irrelevant. */
+  top: -160px;
+  right: -48px;
+  width: 480px; height: 480px;
+  background:
+    radial-gradient(closest-side, rgba(76, 169, 255, 0.18), transparent 70%),
+    radial-gradient(closest-side, rgba(255, 217, 91, 0.10), transparent 60%);
+  pointer-events: none;
+}
+.hero__eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--c-text-subtle);
+}
+.hero h1 {
+  margin: 0 0 0.65rem;
+  font-size: clamp(1.65rem, 3.4vw, 2.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.hero__lead {
+  margin: 0;
+  font-size: clamp(1rem, 1.6vw, 1.1rem);
+  color: var(--c-text-muted);
+  max-width: 65ch;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 1.2rem;
+  padding: 0.45rem 0.85rem 0.45rem 0.65rem;
+  border: 1px solid var(--c-border);
+  background: var(--c-surface);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+  flex-wrap: wrap;
+}
+.status__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--c-text-subtle);
+  display: inline-block;
+}
+.status__dot[data-status="loading"] { background: var(--c-info); animation: pulse 1.4s ease-in-out infinite; }
+.status__dot[data-status="ok"] { background: var(--c-success); }
+.status__dot[data-status="warning"] { background: var(--c-warning); }
+.status__dot[data-status="error"] { background: var(--c-danger); }
+.status__text { font-size: 0.92rem; color: var(--c-text-muted); }
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.55; }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.75rem;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--c-text);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border-strong);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.btn:hover { background: var(--c-accent); color: var(--c-accent-ink); border-color: transparent; }
+.btn[disabled] { opacity: 0.6; cursor: progress; }
+.btn--ghost { background: transparent; }
+
+.hero__meta {
+  margin: 1rem 0 0;
+  font-size: 0.88rem;
+  color: var(--c-text-subtle);
+}
+.hero__meta a { color: inherit; text-decoration-color: var(--c-border-strong); }
+.hero__meta a:hover { color: var(--c-accent); }
+/* On phones the "Datenstand" line wraps once site.js swaps the "–"
+ * placeholder for the full stamp ("04.10.2026, 18:49 Uhr
+ * (Europe/Vienna)"), one line more than before. That pushed the feed list
+ * down while it was already in view (Lighthouse mobile CLS 0.055 once the
+ * two-row header brought it above the fold). Reserving the loaded height
+ * keeps it still; the ``em`` value is the fallback for engines without the
+ * ``lh`` unit. */
+@media (max-width: 699px) {
+  .hero__meta { min-height: 3.2em; min-height: 2lh; }
+}
+@media (max-width: 389px) {
+  .hero__meta { min-height: 4.8em; min-height: 3lh; }
+}
+
+/* Sections */
+.section {
+  margin: clamp(2rem, 5vw, 3.5rem) 0;
+  scroll-margin-top: calc(var(--header-h) + 16px);
+}
+
+/* Narrow screens (phones, small tablets): the one-row header needs ~1000 CSS
+ * px (brand + four nav links + RSS + weather + DE | EN). Below that the nav
+ * used to stack its links vertically, the sticky header grew to 232 px (a
+ * third of a phone screen, on every scroll position) and, below ~530 px, the
+ * DE | EN switch was pushed off-screen — ``html { overflow-x: clip }`` cut it
+ * off, so the English version could not be chosen on a phone at all.
+ * Two rows instead: brand + weather + language on top, the nav as one
+ * horizontally scrollable line below. ``order`` only moves the nav visually;
+ * the DOM (and so the tab order) stays brand, nav, weather, language. */
+@media (max-width: 767px) {
+  .site-header__inner {
+    flex-wrap: wrap;
+    row-gap: 0;
+    min-height: 0;
+    padding-block: 0.45rem 0.2rem;
+  }
+  .site-nav {
+    order: 3;
+    flex: 1 0 100%;
+    min-width: 0;
+  }
+  .site-nav ul {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    /* Align the first link's text with the brand mark above it. */
+    margin-inline: -0.7rem;
+  }
+  .site-nav ul::-webkit-scrollbar { display: none; }
+  .site-nav a { white-space: nowrap; }
+  /* Anchor jumps land below the taller two-row sticky header. */
+  .section { scroll-margin-top: 7rem; }
+}
+/* Phones narrower than 400 CSS px cannot fit the one-line brand name, its
+ * subtitle, weather and language switch in one row: the name goes on two
+ * lines ("Wien" / "ÖPNV") without the "Live-Dashboard" subtitle. Below
+ * 360 px (320 px phones) only the logo mark stays; the link keeps its
+ * accessible name through ``aria-label`` either way. */
+@media (max-width: 399px) {
+  .brand { gap: 0.55rem; }
+  .brand__name { width: min-content; }
+  .brand__sub { display: none; }
+}
+@media (max-width: 359px) {
+  .brand__text { display: none; }
+}
+.section__header {
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+}
+.section__header h2 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  letter-spacing: -0.015em;
+}
+/* Section marker: a small square in the section tone with a soft halo, so
+ * each section reads as its own block before the first tile. */
+.section__header h2::before {
+  content: "";
+  display: inline-block;
+  width: 0.55em;
+  height: 0.55em;
+  margin-inline-end: 0.6em;
+  border-radius: 0.18em;
+  vertical-align: 0.1em;
+  background: var(--tone);
+  box-shadow: 0 0 0 0.2em color-mix(in srgb, var(--tone) 22%, transparent);
+}
+
+/* Section tones. Each statistics section takes the colour of its own bars
+ * (``.bars--delay`` orange, ``.bars--cancel`` red; the Störungs bars use the
+ * accent blue of ``:root``), so heading, KPI tiles and chart hover match. */
+#stammstrecke { --tone: var(--c-warning); }
+#ausfaelle { --tone: var(--c-danger); }
+.section__header .year {
+  color: var(--c-text-subtle);
+  font-weight: 600;
+}
+/* Reserve a stable 4-character slot for the year placeholder so the
+ * paragraph height does not change once JS swaps the bootstrap "–"
+ * for the actual ``YYYY`` value (this was the third CLS culprit on
+ * desktop, inside ``section#ausfaelle > p.section__sub``). */
+[data-year-label] {
+  display: inline-block;
+  min-width: 4ch;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.section__sub {
+  margin: 0;
+  color: var(--c-text-muted);
+  font-size: 0.95rem;
+}
+.section__sub code { font-size: 0.85em; }
+
+.badge {
+  display: inline-block;
+  background: var(--c-surface-2);
+  border: 1px solid var(--c-border);
+  border-radius: 999px;
+  padding: 0.05rem 0.55rem;
+  font-size: 0.82rem;
+  color: var(--c-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--c-text-muted);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border-strong);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+/* Source chips carry the dot of their source (same ``--src`` as the feed
+ * pills below); "Alle" has none. */
+.chip[data-filter]:not([data-filter="all"])::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  flex: none;
+  background: var(--src);
+}
+.chip:hover { color: var(--c-text); background: var(--c-surface-2); border-color: var(--c-text-subtle); }
+/* Active chip: the text colour as background. The former ``--c-brand``
+ * fill was the page background in dark mode (#0a1126 on #0a1126), so the
+ * active "Alle" chip lost its outline there entirely. */
+.chip.is-active {
+  background: var(--c-text);
+  color: var(--c-bg);
+  border-color: var(--c-text);
+  box-shadow: var(--shadow);
+}

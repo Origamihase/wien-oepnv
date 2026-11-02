@@ -10,7 +10,8 @@ enforced for months:
 
 1. ``CSS_SRC.read_text(encoding="utf-8")`` /
    ``CSS_OUT.read_text(encoding="utf-8")`` (line 122 / 132) — read the
-   committed ``docs/assets/site.css`` (~22 KiB legitimate) and
+   committed stylesheet source (since 2026-11-02 the parts in
+   ``docs/assets/site-css/``, ~22 KiB legitimate) and
    ``docs/assets/site.min.css`` (~16 KiB legitimate) via unbounded
    ``Path.read_text()``. A planted multi-GiB file (hostile PR, compromised
    ``main`` checkout, partial flush + power loss) allocates O(file_size)

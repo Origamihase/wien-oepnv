@@ -120,7 +120,8 @@ repos:
 
   # ── Static-site asset drift check ────────────────────────────────
   # docs/assets/site.min.css and docs/assets/site.min.js are derived
-  # from their readable sources (site.css / site.js); the dashboard's
+  # from their readable sources (site.js and the parts in site-css/,
+  # joined in name order); the dashboard's
   # docs/site.html references the minified copies and carries a
   # content-hash ``?v=`` cache-bust token per reference. This hook fails
   # if the committed bundles fall out of sync with the source OR the
@@ -133,7 +134,7 @@ repos:
         name: docs/assets/site.min.* matches source
         entry: python scripts/optimize_site_assets.py --check
         language: system
-        files: ^docs/(site\.html|assets/site\.(css|js|min\.css|min\.js))$
+        files: ^docs/(site\.html|assets/site\.(js|min\.css|min\.js)|assets/site-css/.*)$
         pass_filenames: false
         require_serial: true
 

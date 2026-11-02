@@ -12,11 +12,10 @@ import json
 import re
 import shutil
 import subprocess
-from pathlib import Path
 
 import pytest
+from src.utils.site_sources import read_site_js
 
-SITE_JS = Path(__file__).resolve().parents[1] / "docs" / "assets" / "site.js"
 
 NODE = shutil.which("node")
 
@@ -41,7 +40,7 @@ def _block(js: str, start: str) -> str:
 
 
 def _run(expr: str) -> object:
-    js = SITE_JS.read_text(encoding="utf-8")
+    js = read_site_js()
     parts = [
         _block(js, "const SOURCE_TAGS = {"),
         _block(js, "const dtfViennaDay = new Intl.DateTimeFormat("),
@@ -105,5 +104,5 @@ def test_begin_follows_the_time_line(pub: str, start: str, begin: str, midnight:
 
 
 def test_end_is_shown_as_a_date() -> None:
-    js = SITE_JS.read_text(encoding="utf-8")
+    js = read_site_js()
     assert re.search(r"datetime: ends\.toISOString\(\) \}, text: dtfDate\.format\(ends\)", js)

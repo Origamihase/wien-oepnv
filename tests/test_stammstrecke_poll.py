@@ -40,6 +40,7 @@ from src.utils.stammstrecke_poll import (
     record_poll,
     save_poll_status,
 )
+from src.utils.site_sources import read_site_js
 
 VIENNA = ZoneInfo("Europe/Vienna")
 NOW = datetime(2026, 10, 10, 17, 0, tzinfo=VIENNA)
@@ -423,9 +424,7 @@ def test_summary_ships_the_poll_evidence() -> None:
 def test_site_reads_the_poll_gate_with_the_python_fallback() -> None:
     import re
 
-    js = (Path(__file__).resolve().parents[1] / "docs" / "assets" / "site.js").read_text(
-        encoding="utf-8"
-    )
+    js = read_site_js()
     assert re.search(r"coverage\s*&&\s*coverage\.poll\b", js)
     fallback = re.search(r"poll\.stale_hours,\s*(\d+)", js)
     assert fallback and int(fallback.group(1)) == int(POLL_STALE_HOURS)

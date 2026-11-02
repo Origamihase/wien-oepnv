@@ -60,8 +60,11 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from src.utils.files import read_capped_text  # noqa: E402
+from src.utils.site_sources import read_capped_source, source_exists  # noqa: E402
 
 HTML_PATH = REPO_ROOT / "docs" / "site.html"
+# A folder of parts works as well as a single file (700-line limit,
+# 2026-11-02); the tests point the gate at one file.
 JS_PATH = REPO_ROOT / "docs" / "assets" / "site.js"
 
 # Security: per-loader byte cap for the two committed dashboard files
@@ -436,7 +439,7 @@ def main() -> int:
     if not HTML_PATH.exists():
         print(f"ERROR: {HTML_PATH} not found", file=sys.stderr)
         return 1
-    if not JS_PATH.exists():
+    if not source_exists(JS_PATH):
         print(f"ERROR: {JS_PATH} not found", file=sys.stderr)
         return 1
 
@@ -458,7 +461,7 @@ def main() -> int:
             file=sys.stderr,
         )
         return 1
-    js_content = read_capped_text(
+    js_content = read_capped_source(
         JS_PATH, MAX_I18N_FILE_BYTES, label="site.js"
     )
     if js_content is None:

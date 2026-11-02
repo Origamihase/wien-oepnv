@@ -2,12 +2,13 @@
 """Optimise the static assets served from ``docs/`` for GitHub Pages.
 
 This script produces minified copies of the dashboard's hand-maintained
-``site.css`` / ``site.js`` sources and re-encodes the two large binary
+``site-css/`` / ``site.js`` sources and re-encodes the two large binary
 assets (``train.png`` and ``footer-bg.jpg``) so the production payload
 shrinks without altering the visual result.
 
-Run it whenever ``docs/assets/site.css``, ``docs/assets/site.js`` or one
-of the two image originals changes::
+Run it whenever a part in ``docs/assets/site-css/`` (``teil-NN.css``, joined
+in name order), ``docs/assets/site.js`` or one of the two image originals
+changes::
 
     python scripts/optimize_site_assets.py
 
@@ -73,6 +74,7 @@ if str(REPO_ROOT) not in sys.path:
 # can't bypass scrubbing on the way to stderr.
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
 from src.utils.files import atomic_write, read_capped_text  # noqa: E402
+from src.utils.site_sources import read_capped_source, source_parts  # noqa: E402
 
 # Pillow 10 renamed the resampling enum; expose a stable alias so the
 # downscale step works on both modern (``Image.Resampling.LANCZOS``)
@@ -138,7 +140,9 @@ def _read_capped_or_die(path: Path, label: str) -> str:
     planted-huge-file shape instead of silently rendering an empty
     output bundle.
     """
-    content = read_capped_text(
+    # Since 2026-11-02 the sources are folders of parts (700-line limit);
+    # ``read_capped_source`` joins them in name order under the same cap.
+    content = read_capped_source(
         path, MAX_CSS_FILE_BYTES, label=label, logger=LOG
     )
     if content is None:
@@ -170,7 +174,7 @@ def _read_capped_or_empty(path: Path, label: str) -> str:
 
 ASSETS_DIR = REPO_ROOT / "docs" / "assets"
 
-CSS_SRC = ASSETS_DIR / "site.css"
+CSS_SRC = ASSETS_DIR / "site-css"
 CSS_OUT = ASSETS_DIR / "site.min.css"
 JS_SRC = ASSETS_DIR / "site.js"
 JS_OUT = ASSETS_DIR / "site.min.js"
@@ -225,6 +229,11 @@ TRAIN_SMALL_WEBP_QUALITY = 90
 WEBP_ENCODE_METHOD = 6  # slowest/best compression; runs once per source change
 
 
+def _source_size(path: Path) -> int:
+    """Bytes of all parts behind *path* (for the size log line)."""
+    return sum(p.stat().st_size for p in source_parts(path))
+
+
 def _render_min_css() -> str:
     # rcssmin/rjsmin ship without type stubs; ``str()`` makes the
     # Any -> str boundary explicit so strict mypy is happy without an
@@ -264,9 +273,9 @@ def _minify_css(check_only: bool = False) -> bool:
         handle.write(expected)
     LOG.info(
         "CSS: %d -> %d bytes (%.1f%% smaller)",
-        CSS_SRC.stat().st_size,
+        _source_size(CSS_SRC),
         len(expected),
-        100 * (1 - len(expected) / max(CSS_SRC.stat().st_size, 1)),
+        100 * (1 - len(expected) / max(_source_size(CSS_SRC), 1)),
     )
     return True
 
@@ -290,9 +299,9 @@ def _minify_js(check_only: bool = False) -> bool:
         handle.write(expected)
     LOG.info(
         "JS:  %d -> %d bytes (%.1f%% smaller)",
-        JS_SRC.stat().st_size,
+        _source_size(JS_SRC),
         len(expected),
-        100 * (1 - len(expected) / max(JS_SRC.stat().st_size, 1)),
+        100 * (1 - len(expected) / max(_source_size(JS_SRC), 1)),
     )
     return True
 

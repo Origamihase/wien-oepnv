@@ -11,6 +11,7 @@ from zoneinfo import ZoneInfo
 from scripts import update_stammstrecke_hbf as monitor
 from scripts.generate_markdown_stats import NO_LINE_LABEL, ausfall_line_label
 from scripts.update_stammstrecke_status import _PendingTrip
+from src.utils.site_sources import read_site_js
 
 ROOT = Path(__file__).resolve().parents[1]
 VIENNA = ZoneInfo("Europe/Vienna")
@@ -74,5 +75,5 @@ def test_ledger_2026_holds_one_cancellation_per_departure() -> None:
 
 
 def test_site_translates_the_label() -> None:
-    js = (ROOT / "docs" / "assets" / "site.js").read_text(encoding="utf-8")
+    js = read_site_js()
     assert f'l === "{NO_LINE_LABEL}"' in js

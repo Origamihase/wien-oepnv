@@ -21,6 +21,7 @@ from pathlib import Path
 from types import ModuleType
 
 import pytest
+from src.utils.site_sources import read_site_js
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SCRIPT_PATH = REPO_ROOT / "scripts" / "check_i18n_coverage.py"
@@ -593,7 +594,7 @@ def test_every_locale_pair_in_the_real_site_js_is_discovered() -> None:
     the gate would go quietly green on zero pairs — the failure mode
     this assertion exists to prevent.
     """
-    js = gate.JS_PATH.read_text(encoding="utf-8")
+    js = read_site_js()
     pairs = gate._locale_pairs(js)
     assert set(pairs) >= {
         "CHART_TEXT",
