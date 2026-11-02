@@ -371,5 +371,56 @@ def main() -> int:
     return 1 if failed else 0
 
 
+# Names other files and tests read through this script; the code lives in
+# src/ (700-line limit, 2026-11-02). Listing them marks the imports as
+# deliberate re-exports.
+__all__ = [
+    "REPO_ROOT",
+    "check_stammstrecke_abruf",
+    "check_stammstrecke_directions",
+    "_render_plain",
+    "_render_markdown",
+    "main",
+    "_VIENNA",
+    "Check",
+    "_clean_line",
+    "_env_float",
+    "_fmt_age",
+    "_mark",
+    "check_pages_build",
+    "check_tooling_runs",
+    "check_feed_freshness",
+    "check_published_feeds",
+    "check_side_steps",
+    "check_station_sources",
+    "check_stations",
+    "check_translation",
+    "UPDATERS",
+    "assess_source",
+    "check_feed_watch",
+    "check_source",
+    "check_secrets",
+    "FEED_MAX_AGE_H",
+    "LIVE_LAG_MAX_H",
+    "PAGES_BASE_URL",
+    "STATIONS_MAX_AGE_H",
+    "_pages_base_url",
+    "GITHUB_API_MAX_BYTES",
+    "PAGES_MAX_PAGES",
+    "PAGES_RUNS_PER_PAGE",
+    "PAGES_WORKFLOW_PATH",
+    "TOOLING_RUNS_PER_PAGE",
+    "TOOLING_WORKFLOWS",
+    "_github_api_json",
+    "PUBLISHED_FEEDS",
+    "SIDE_STEP_RECORDS",
+    "STATION_SOURCES",
+    "_fmt_moment",
+    "SOURCE_STALE_H",
+    "WORKFLOW_SECRETS",
+    "WorkflowSecret",
+]
+
+
 if __name__ == "__main__":
     raise SystemExit(main())

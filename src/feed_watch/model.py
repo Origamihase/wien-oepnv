@@ -90,34 +90,9 @@ SOURCE_LABELS = {
 }
 
 _NBSP = "\u00a0"
-_WEEKDAY = r"(?:Mo|Di|Mi|Do|Fr|Sa|So)"
-_DAY = rf"(?:{_WEEKDAY}{_NBSP})?\d{{2}}\.\d{{2}}\.(?:\d{{4}})?"
-# Every form ``format_local_times`` writes (operator decisions 2026-10-02,
-# 2026-10-03; words joined with U+00A0 since #1971).
-_TIME_LINE_RE = re.compile(
-    rf"Heute|Seit{_NBSP}heute|Seit{_NBSP}\d{{2}}:\d{{2}}|Seit{_NBSP}{_DAY}"
-    rf"|Bis{_NBSP}{_DAY}|Am{_NBSP}{_DAY}|Ab{_NBSP}{_DAY}(?:{_NBSP}bis{_NBSP}{_DAY})?"
-)
 _TIME_LINE_AT_END_RE = re.compile(r"\s*\[([^\[\]]*)\]\s*$")
 _SINCE_CLOCK_RE = re.compile(r"Seit\s(\d{2}):(\d{2})")
-_DATE_RE = re.compile(r"(\d{2})\.(\d{2})\.(\d{4})?")
-_EXPECTED_UNTIL_RE = re.compile(r"(?:^|[.!?]\s)Voraussichtlich bis (\d{1,2})[:.](\d{2})")
 _LINE_PREFIX_RE = re.compile(r"^([A-Z0-9]{1,6}(?:/[A-Z0-9]{1,6})*):\s")
-_COURTESY = "Wir bitten um Entschuldigung"
-
-# ÖBB: the second sentence says what still applies (#1993). Where it would
-# not fit, the first sentence leaves out the stations the title names.
-_OEBB_COURTESY_RE = re.compile(
-    r"Wir bitten um Entschuldigung|Sobald uns weitere Informationen vorliegen|Details finden Sie hier"
-)
-_OEBB_DATE_PREFIX_RE = re.compile(r"^\s*\d{2}\.\d{2}\.\d{4}(?:\s*-\s*\d{2}\.\d{2}\.\d{4})?")
-_SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?])\s+(?=[A-ZÄÖÜ])")
-_ABBREVIATION_END_RE = re.compile(r"\b(?:St|Nr|ca|bzw|Hbf|Str|Bhf)\.$")
-_OEBB_PLACE_RE = re.compile(
-    r"\s(?:zwischen\s.+?\sund\s.+?|in\s.+?|im Bereich\s.+?)"
-    r"(?=\s(?:bis|derzeit|keine|kein|nur|Zugfahrten|können|sind|waren)\b)"
-)
-_STATION_WORDS_RE = re.compile(r"\b(?:Bahnhof|Bahnhst|Bhf|Hbf)\b\.?|\((?:U|Wien)\)")
 
 
 @dataclass(frozen=True)

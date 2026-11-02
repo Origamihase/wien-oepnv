@@ -511,11 +511,9 @@ def main(argv: list[str] | None = None) -> int:
     return 0
 
 
-if __name__ == "__main__":  # pragma: no cover - CLI entry point
-    raise SystemExit(main())
-
-
-# Exposed for tests; intentionally module-private otherwise.
+# Public names of this script: its own entry points and the names other
+# files and tests read through it. The code lives in src/ (700-line limit,
+# 2026-11-02); listing the imports marks them as deliberate re-exports.
 __all__ = [
     "CORRIDOR_SILENCE_NOTICE_HOURS",
     "COVERAGE_ORIGIN_LABEL",
@@ -551,7 +549,49 @@ __all__ = [
     "render_weekday_bars",
     "write_dashboard",
     "write_year_archive",
+    "_iter_csv_rows",
+    "_aware_fromisoformat",
+    "_parse_stammstrecke_rows",
+    "_parse_stoerung_rows",
+    "_parse_ausfall_rows",
+    "NO_LINE_LABEL",
+    "_TRAIN_NUMBER_RE",
+    "ausfall_line_label",
+    "_TimestampedRow",
+    "_last_seen_suffix",
+    "_last_seen_per_direction",
+    "VAO_BASIS_NOTE",
+    "STOERUNGEN_SOURCES_NOTE",
+    "MAX_BAR_WIDTH",
+    "_DASHBOARD_FIELD_MAX_LEN",
+    "BAR_GLYPHS",
+    "_scale_bar",
+    "_bar_line",
+    "render_avg_delay_weekday",
+    "render_avg_delay_hour",
+    "_format_summary_section",
+    "_format_directions_section",
+    "_format_providers_section",
+    "_format_ausfall_directions_section",
+    "_format_ausfall_lines_section",
+    "_format_thousands",
+    "_format_window_timestamp",
+    "_README_MARKER_RE_TEMPLATE",
+    "_build_marker_re",
+    "DEFAULT_SUMMARY_PATH",
+    "SUMMARY_SCHEMA_VERSION",
+    "LIVE_WINDOW_MINUTES",
+    "_live_window_delay",
+    "_direction_coverage",
+    "_round_floats",
 ]
+
+
+if __name__ == "__main__":  # pragma: no cover - CLI entry point
+    raise SystemExit(main())
+
+
+# Exposed for tests; intentionally module-private otherwise.
 
 
 # Sanity import check: ensure the WEEKDAY_LABELS constant from

@@ -45,7 +45,6 @@ MAX_SOURCE_CHARS = 2500
 MIN_QUOTE_CHARS = 3
 _LINE_PREFIX_RE = re.compile(r"^([0-9A-ZÄÖÜa-z]+(?:/[0-9A-ZÄÖÜa-z]+)*):\s")
 _TAG_RE = re.compile(r"<[^>]+>")
-_JSON_FENCE_RE = re.compile(r"```(?:json)?\s*(\{.*?\})\s*```", re.DOTALL)
 # Free text of the model goes into a public file. Whatever looks like a
 # credential is cut out, markup that could load or hide something is
 # neutralised (the model reads operator texts, which are untrusted data).

@@ -627,10 +627,9 @@ def main() -> int:
     return 0
 
 
-if __name__ == "__main__":  # pragma: no cover - CLI entry point
-    raise SystemExit(main())
-
-
+# Public names of this script: its own entry points and the names other
+# files and tests read through it. The code lives in src/ (700-line limit,
+# 2026-11-02); listing the imports marks them as deliberate re-exports.
 __all__ = [
     "DEPARTURE_BOARD_DURATION_MIN",
     "DIRECTION_LABELS",
@@ -642,4 +641,24 @@ __all__ = [
     "LEGACY_DIRECTION_LABEL_NORTHBOUND",
     "STAMMSTRECKE_HBF_TRACK_TRUNKS",
     "main",
+    "MAX_QUERY_TIMEOUT",
+    "QUERY_TIMEOUT",
+    "_S_BAHN_LINE_RE",
+    "_canonical_line_name",
+    "_elapsed_minutes",
+    "_parse_vao_dt",
+    "_SbahnLegObservation",
+    "_TRACK_TRUNK_RE",
+    "_is_sbahn_line",
+    "_track_trunk",
+    "_extract_track_string",
+    "_departure_line_name",
+    "_departure_is_cancelled",
+    "_departure_delay_minutes",
+    "_CollectionDiagnostics",
+    "_TRAIN_NUMBER_NAME_RE",
 ]
+
+
+if __name__ == "__main__":  # pragma: no cover - CLI entry point
+    raise SystemExit(main())

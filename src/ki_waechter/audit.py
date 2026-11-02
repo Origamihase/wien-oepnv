@@ -7,13 +7,13 @@ command line and the Gemini client stay there. See
 
 from __future__ import annotations
 
+import re
 from collections.abc import Mapping
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Any
 
 from src.ki_waechter.inputs import (
-    _JSON_FENCE_RE,
     CLASSES,
     MIN_QUOTE_CHARS,
     VIENNA,
@@ -28,6 +28,9 @@ from src.ki_waechter.inputs import (
 from src.utils.files import loads_finite
 # GitHub Pages renders the report under docs/ with Liquid (src/utils/liquid.py).
 from src.utils.liquid import liquid_safe
+
+
+_JSON_FENCE_RE = re.compile(r"```(?:json)?\s*(\{.*?\})\s*```", re.DOTALL)
 
 
 # --- checking the model's answer ------------------------------------------------

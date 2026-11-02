@@ -52,9 +52,6 @@ import time
 from collections.abc import Callable, Mapping, Sequence
 from dataclasses import asdict, dataclass, field
 
-__all__ = [
-    "asdict", "ask_gemini", "build_prompt", "git_snapshots", "main", "prepare", "render_input", "render_report", "verify",
-]
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -87,11 +84,6 @@ from src.utils.http import request_safe, session_with_retries
 from src.utils.liquid import liquid_safe
 from src.utils.serialize import scrub_trojan_source_primitives
 
-# Moved to src/ki_waechter/; re-exported because the tests read them as ``kw.<name>``.
-__all__ += [
-    "CLASSES", "VIENNA", "FeedItem", "Prepared", "Snapshot", "Verdict", "Version",
-    "extract_answer", "together", "visible", "working_tree_reader",
-]
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PROMPT_FILE = REPO_ROOT / "scripts" / "ki_waechter_prompt.md"
@@ -427,6 +419,33 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = parser.parse_args(argv)
     commands = {"prepare": _cmd_prepare, "ask": _cmd_ask, "verify": _cmd_verify}
     return commands[args.cmd](args)
+
+
+# Public names of this script: its own entry points and the names other
+# files and tests read through it. The code lives in src/ (700-line limit,
+# 2026-11-02); listing the imports marks them as deliberate re-exports.
+__all__ = [
+    "asdict",
+    "ask_gemini",
+    "build_prompt",
+    "git_snapshots",
+    "main",
+    "prepare",
+    "render_input",
+    "render_report",
+    "verify",
+    "CLASSES",
+    "VIENNA",
+    "FeedItem",
+    "Prepared",
+    "Snapshot",
+    "Verdict",
+    "Version",
+    "extract_answer",
+    "together",
+    "visible",
+    "working_tree_reader",
+]
 
 
 if __name__ == "__main__":

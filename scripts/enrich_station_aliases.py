@@ -418,5 +418,36 @@ def main() -> int:
     return 0
 
 
+# Names other files and tests read through this script; the code lives in
+# src/ (700-line limit, 2026-11-02). Listing them marks the imports as
+# deliberate re-exports.
+__all__ = [
+    "BASE_DIR",
+    "DEFAULT_STATIONS",
+    "DEFAULT_VOR_STOPS",
+    "DEFAULT_VOR_MAPPING",
+    "DEFAULT_GTFS_STOPS",
+    "DEFAULT_PENDLER_CANDIDATES",
+    "MAX_JSON_FILE_BYTES",
+    "MAX_ALIAS_CSV_BYTES",
+    "log",
+    "parse_args",
+    "configure_logging",
+    "_load_vor_names",
+    "_load_vor_mapping",
+    "_load_gtfs_index",
+    "_load_pendler_alternative_names",
+    "main",
+    "write_stations_payload",
+    "_path_fingerprint",
+    "read_capped_json",
+    "read_capped_text",
+    "_alias_candidates",
+    "_normalize_key",
+    "_order_aliases",
+    "_GENERIC_ALIAS_BLOCKLIST",
+]
+
+
 if __name__ == "__main__":  # pragma: no cover - CLI entry point
     raise SystemExit(main())
