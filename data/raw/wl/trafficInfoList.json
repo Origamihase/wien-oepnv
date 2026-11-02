@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20260922-0032, I20261102-0034-F01, I20261020-0029, I20261102-0035"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20260922-0032, I20261102-0035-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1974-466, R361-105, R362-105, R1448-412, R318-437, R293-474, R1474-412, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R1884-101, R1883-101, R118-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2558-125, R2379-627, R2380-627, R2345-127, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R2373-125, R2373-127, R2373-126, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1974-466, R361-105, R362-105, R1448-412, R1474-412, R318-437, R293-474, R1882-101, R1880-101, R1884-101, R1883-101, R1876-101, R1875-101, R1881-101, R2558-125, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R401-101, R2343-626, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2359-125, R367-105, R374-105, R370-105, R375-105, R364-105, R2013-571, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -217,54 +217,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "46": "ptTram"
-     }
-    },
-    "description": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 46: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 46: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "46: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261102-0034-F01",
-    "owner": "WL",
-    "parentName": "I20261102-0034",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 146,
-      "lineName": "46",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     1377
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-02T23:32:00.000+0100",
-     "end": "2026-11-03T00:45:00.000+0100",
-     "lastUpdate": "2026-11-02T23:32:00.000+0100",
-     "start": "2026-11-02T22:55:00.000+0100"
-    },
-    "title": "46: Polizeieinsatz"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -272,19 +224,19 @@
       "5": "ptTram"
      }
     },
-    "description": "Linie 5: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 00:10 Uhr. Grund: Schadhafter PKW im Bereich Kaiserstraße 85.",
-    "descriptionHTML": "<p>Linie 5:<br>Fahrtbehinderung in Richtung Westbahnhof S U.</p><p>Voraussichtliche Dauer: 00:10 Uhr.</p><p>Grund: Schadhafter PKW im Bereich Kaiserstraße 85.</p>",
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 5:<br>Fahrtbehinderung in Richtung Westbahnhof S U.</p><p>Voraussichtliche Dauer: 00:10 Uhr.</p><p>Grund: Schadhafter PKW im Bereich Kaiserstraße 85.</p>",
-       "descriptionPlain": "Linie 5: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 00:10 Uhr. Grund: Schadhafter PKW im Bereich Kaiserstraße 85.",
+       "descriptionHtml": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "5: Schadhafter PKW"
       }
      }
     ],
     "location": "Kaiserstraße 85",
-    "name": "I20261102-0035",
+    "name": "I20261102-0035-F01",
     "owner": "WL",
     "parentName": "I20261102-0035",
     "priority": "1",
@@ -303,8 +255,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-02T23:51:00.000+0100",
-     "lastUpdate": "2026-11-02T23:51:00.000+0100",
+     "created": "2026-11-03T00:14:00.000+0100",
+     "end": "2026-11-03T01:01:00.000+0100",
+     "lastUpdate": "2026-11-03T00:14:00.000+0100",
      "start": "2026-11-02T23:50:00.000+0100"
     },
     "title": "5: Schadhafter PKW"
@@ -795,6 +748,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten auf der Hauptfahrbahn ",
+    "name": "R2013-571",
+    "owner": "WL",
+    "parentName": "R2013-571",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N71"
+    ],
+    "relatedStops": [
+     2013
+    ],
+    "time": {
+     "end": "2026-11-03T05:30:00.000+0100",
+     "start": "2026-11-03T00:15:15.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten auf der Hauptfahrbahn "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2343-125",
     "owner": "WL",
@@ -1209,6 +1185,121 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "name": "R364-105",
+    "owner": "WL",
+    "parentName": "R364-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     364
+    ],
+    "time": {
+     "end": "2026-11-03T01:01:00.000+0100",
+     "start": "2026-11-03T00:02:12.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Pkw"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "name": "R367-105",
+    "owner": "WL",
+    "parentName": "R367-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     367
+    ],
+    "time": {
+     "end": "2026-11-03T01:01:00.000+0100",
+     "start": "2026-11-03T00:02:12.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Pkw"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "name": "R370-105",
+    "owner": "WL",
+    "parentName": "R370-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     370
+    ],
+    "time": {
+     "end": "2026-11-03T01:01:00.000+0100",
+     "start": "2026-11-03T00:02:12.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Pkw"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "name": "R374-105",
+    "owner": "WL",
+    "parentName": "R374-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     374
+    ],
+    "time": {
+     "end": "2026-11-03T01:01:00.000+0100",
+     "start": "2026-11-03T00:02:12.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Pkw"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "name": "R375-105",
+    "owner": "WL",
+    "parentName": "R375-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     375
+    ],
+    "time": {
+     "end": "2026-11-03T01:01:00.000+0100",
+     "start": "2026-11-03T00:02:12.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Pkw"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
     "name": "R3886-480",
     "owner": "WL",
@@ -1274,6 +1365,29 @@
      "start": "2026-11-03T00:00:14.000+0100"
     },
     "title": "Züge halten\nWipplingerstr 39"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
+    "name": "R500-101",
+    "owner": "WL",
+    "parentName": "R500-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     500
+    ],
+    "time": {
+     "end": "2026-11-03T04:59:00.000+0100",
+     "start": "2026-11-03T00:30:17.000+0100"
+    },
+    "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
    {
     "alertCause": "undefined alert cause",

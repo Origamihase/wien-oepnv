@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 03 Nov 2026 00:23:44 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 00:31:04 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[5: Schadhafter PKW]]></title>
@@ -20,22 +20,23 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Mon, 02 Nov 2026 23:50:00 +0100</ext:first_seen>
       <ext:starts_at>Mon, 02 Nov 2026 23:50:00 +0100</ext:starts_at>
-      <description>Fahrtbehinderung in Richtung Westbahnhof S U. Grund: Schadhafter PKW im Bereich Kaiserstraße 85. [Seit 02.11.]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Westbahnhof S U. Grund: Schadhafter PKW im Bereich Kaiserstraße 85.<br/>[Seit 02.11.]]]></content:encoded>
+      <ext:ends_at>Tue, 03 Nov 2026 01:01:00 +0100</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Heute]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[46: Polizeieinsatz]]></title>
+      <title><![CDATA[N71: Busse halten auf der Hauptfahrbahn]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">17245375550a341367d59df402e880c1611e9fbb35634da6ea980f6f056c6c9b</guid>
-      <pubDate>Mon, 02 Nov 2026 22:52:05 +0100</pubDate>
+      <guid isPermaLink="false">9a72ac18fe94358f1623c899652a559b28776e9c499166309e4591779708cc95</guid>
+      <pubDate>Tue, 03 Nov 2026 00:15:15 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 02 Nov 2026 22:52:05 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 02 Nov 2026 22:55:00 +0100</ext:starts_at>
-      <ext:ends_at>Tue, 03 Nov 2026 00:45:00 +0100</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Heute]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Heute]]]></content:encoded>
+      <ext:first_seen>Tue, 03 Nov 2026 00:31:04 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 03 Nov 2026 00:15:15 +0100</ext:starts_at>
+      <ext:ends_at>Tue, 03 Nov 2026 05:30:00 +0100</ext:ends_at>
+      <description>Grund: Gleisbauarbeiten. [Heute]</description>
+      <content:encoded><![CDATA[Grund: Gleisbauarbeiten.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[64A: Liesinger-Flur-Gasse]]></title>
