@@ -1,17 +1,13 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-01T23:31:10.640367+00:00",
- "built": "2026-11-02T00:30:53+01:00",
+ "updated": "2026-11-02T00:01:13.204968+00:00",
+ "built": "2026-11-02T01:01:04+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-02T00:30:53+01:00",
+  "built": "2026-11-02T01:01:04+01:00",
   "items": [
-   {
-    "title": "S-Bahn Stammstrecke Verspätungen",
-    "time_line": "Seit 01.11."
-   },
    {
     "title": "REX50/REX51/S50: Wien Westbahnhof ↔ St. Pölten Hauptbahnhof",
     "time_line": "Bis 11.11."
@@ -37,41 +33,25 @@
     "time_line": "Heute"
    },
    {
-    "title": "29A/29B: Kranarbeiten",
-    "time_line": "Heute"
-   },
-   {
     "title": "64A: Liesinger-Flur-Gasse",
     "time_line": "Ab Di 03.11. bis Fr 06.11."
    },
    {
     "title": "54A/54B: Bauarbeiten",
     "time_line": "Bis 10.11."
+   },
+   {
+    "title": "11: Wienerfeldgasse",
+    "time_line": "Bis 19.11."
+   },
+   {
+    "title": "40A: Bauernfeldplatz",
+    "time_line": "Seit 27.10."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-26T00:01:12.229042+00:00",
-   "raw": {
-    "wl-stoerungen": 72,
-    "wl-hinweise": 86,
-    "oebb": 160,
-    "baustellen-linien": 55,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 11,
-    "oebb": 136,
-    "baustellen": 70
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 113
-   }
-  },
   {
    "t": "2026-10-26T00:30:47.285413+00:00",
    "raw": {
@@ -6751,17 +6731,37 @@
     "oebb": 6,
     "wl": 87
    }
+  },
+  {
+   "t": "2026-11-02T00:01:13.204968+00:00",
+   "raw": {
+    "wl-stoerungen": 57,
+    "wl-hinweise": 72,
+    "oebb": 148,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 16
+   },
+   "discarded": {
+    "wl": 12,
+    "oebb": 128,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 6,
+    "wl": 89
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-01T23:31:10.640367+00:00"
+   "last_ok": "2026-11-02T00:01:13.204968+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-01T23:31:10.640367+00:00"
+   "last_ok": "2026-11-02T00:01:13.204968+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-01T23:31:10.640367+00:00"
+   "last_ok": "2026-11-02T00:01:13.204968+00:00"
   }
  }
 }
