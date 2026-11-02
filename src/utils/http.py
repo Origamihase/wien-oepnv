@@ -771,14 +771,40 @@ class SafeDNSHTTPSConnection(HTTPSConnection):
         return conn
 
 
+# TCP keepalive for a connection that waits minutes for its answer without a
+# byte on the wire (a thinking model): the first probe after 60 s idle, then
+# every 30 s, so no NAT or firewall on the way forgets the connection. On
+# 2026-11-02 the KI-Wächter request from a GitHub-hosted runner died after
+# 261 s with a ConnectionError while Gemini was still working.
+KEEPALIVE_SOCKET_OPTIONS: tuple[tuple[int, int, int], ...] = tuple(
+    opt for opt in (
+        (socket.IPPROTO_TCP, socket.TCP_NODELAY, 1),
+        (socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1),
+        (socket.IPPROTO_TCP, getattr(socket, "TCP_KEEPIDLE", -1), 60),
+        (socket.IPPROTO_TCP, getattr(socket, "TCP_KEEPINTVL", -1), 30),
+        (socket.IPPROTO_TCP, getattr(socket, "TCP_KEEPCNT", -1), 5),
+    ) if opt[1] != -1
+)
+
+
 class SafeDNSAdapter(TimeoutHTTPAdapter):
     """
     HTTPAdapter that forces safe DNS resolution for all connections.
+
+    ``keepalive=True`` turns on TCP keepalive (:data:`KEEPALIVE_SOCKET_OPTIONS`)
+    for requests that wait minutes for an answer.
     """
+    def __init__(self, *args: Any, keepalive: bool = False, **kwargs: Any) -> None:
+        # Set before ``super().__init__``, which builds the pool manager.
+        self.keepalive = keepalive
+        super().__init__(*args, **kwargs)
+
     def init_poolmanager(self, connections: int, maxsize: int, block: bool = False, **pool_kwargs: Any) -> None:
         self._pool_connections = connections
         self._pool_maxsize = maxsize
         self._pool_block = block
+        if getattr(self, "keepalive", False):
+            pool_kwargs["socket_options"] = list(KEEPALIVE_SOCKET_OPTIONS)
 
         self.poolmanager = PoolManager(
             num_pools=connections,
@@ -1087,6 +1113,8 @@ def _safe_rebuild_auth(self: requests.Session, prepared_request: requests.Prepar
 def session_with_retries(
     user_agent: str,
     timeout: int | float | tuple[float, float] = DEFAULT_TIMEOUT,
+    *,
+    keepalive: bool = False,
     **retry_opts: Any,
 ) -> requests.Session:
     """Return a :class:`requests.Session` pre-configured with retries and a default timeout.
@@ -1094,6 +1122,8 @@ def session_with_retries(
     Args:
         user_agent: User-Agent header that should be sent with every request.
         timeout: Default timeout in seconds for requests (default: (3.0, 15.0)).
+        keepalive: TCP keepalive for requests that wait minutes for their
+            answer (see :data:`KEEPALIVE_SOCKET_OPTIONS`).
         **retry_opts: Additional keyword arguments forwarded to
             :class:`urllib3.util.retry.Retry`.
     """
@@ -1119,7 +1149,7 @@ def session_with_retries(
             return min(float(self.backoff_max), jittered)
 
     retry = JitterRetry(**options)
-    adapter = SafeDNSAdapter(max_retries=retry, timeout=timeout)
+    adapter = SafeDNSAdapter(max_retries=retry, timeout=timeout, keepalive=keepalive)
     session.mount("http://", adapter)
     session.mount("https://", adapter)
     session.headers.update({
