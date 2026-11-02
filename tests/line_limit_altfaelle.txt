@@ -1,0 +1,64 @@
+# Altfälle der 700-Zeilen-Grenze (siehe tests/test_file_line_limit.py und
+# docs/architecture.md, Abschnitt "Höchstens 700 Zeilen je Datei").
+# Stand 2026-11-02: jede Textdatei, die an diesem Tag länger war.
+# Die Liste darf nur kürzer werden: Neue Einträge sind verboten, und eine
+# Datei, die auf 700 Zeilen oder darunter fällt, muss hier gelöscht werden
+# (der Test verlangt das).
+CHANGELOG.md
+docs/architecture.md
+docs/archive/audits/audit-2026-09-12-feed-darstellung.md
+docs/archive/audits/audit-2026-09-13.md
+docs/archive/audits/audit-2026-09-19_2.md
+docs/archive/audits/audit-2026-09-24.md
+docs/archive/audits/oebb_stammstrecke_audit.md
+docs/assets/site.css
+docs/assets/site.js
+docs/development.md
+scripts/enrich_station_aliases.py
+scripts/feed_watch.py
+scripts/generate_markdown_stats.py
+scripts/health_check.py
+scripts/ki_waechter.py
+scripts/update_all_stations.py
+scripts/update_baustellen_cache.py
+scripts/update_oebb_station_lines.py
+scripts/update_stammstrecke_hbf.py
+scripts/update_stammstrecke_status.py
+scripts/update_station_directory.py
+scripts/update_wl_stations.py
+src/build_feed.py
+src/feed/merge.py
+src/feed/reporting.py
+src/providers/oebb.py
+src/providers/vor.py
+src/providers/wl_fetch.py
+src/utils/http.py
+src/utils/logging.py
+src/utils/secret_scanner.py
+src/utils/stations.py
+src/utils/stations_validation.py
+src/utils/stats.py
+src/utils/text.py
+tests/conftest.py
+tests/scripts/test_generate_markdown_stats.py
+tests/scripts/test_generate_markdown_stats_readme.py
+tests/scripts/test_update_stammstrecke_hbf.py
+tests/scripts/test_update_stammstrecke_status.py
+tests/test_feed_entity_masking.py
+tests/test_feed_watch.py
+tests/test_health_check_alarms.py
+tests/test_ki_waechter.py
+tests/test_sentinel_cf_format_drift_round.py
+tests/test_sentinel_cicd_devops_token_log_sanitization_drift.py
+tests/test_sentinel_companion_writer_allow_nan_drift.py
+tests/test_sentinel_network_tainted_non_finite_drift.py
+tests/test_sentinel_path_log_sanitisation_scripts_round2.py
+tests/test_sentinel_secret_scanner_hoba_drift.py
+tests/test_sentinel_secret_scanner_token_scheme_drift.py
+tests/test_sentinel_tag_chars_variation_selectors_invisible_drift.py
+tests/test_sentinel_zero_width_invisible_drift.py
+tests/test_stammstrecke_direction_health.py
+tests/test_translation_coverage.py
+tests/test_update_baustellen_cache.py
+tests/test_update_wl_stations_merge.py
+tests/test_utils_stats.py

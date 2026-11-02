@@ -14,6 +14,7 @@ darunter.
 
 - [1. Die Pipeline für den Abruf der Verkehrsdaten](#1-die-pipeline-für-den-abruf-der-verkehrsdaten)
   - [Eine Feed-Kette, ein Modul (seit 2026-10-15)](#eine-feed-kette-ein-modul-seit-2026-10-15)
+  - [Höchstens 700 Zeilen je Datei (seit 2026-11-02)](#höchstens-700-zeilen-je-datei-seit-2026-11-02)
   - [Titel und Beschreibung im deutschen Feed](#titel-und-beschreibung-im-deutschen-feed)
   - [Zeitraum einer WL-Meldung: Plausibilitätsprüfung (seit 2026-10-02)](#zeitraum-einer-wl-meldung-plausibilitätsprüfung-seit-2026-10-02)
   - [Rohdaten und Verwürfe des Abrufs (seit 2026-10-04)](#rohdaten-und-verwürfe-des-abrufs-seit-2026-10-04)
@@ -211,6 +212,31 @@ Grund, wie es ist. Entscheidung: Der Code bleibt so; geordnet wurden nur
 die Dokumentation (Monatsüberschriften im CHANGELOG, Inhaltsverzeichnis
 oben in diesem Dokument). Die Größe von `build_feed.py` allein ist damit
 kein Befund für ein Audit.
+
+Diese Entscheidung gilt nicht mehr: Am 2026-11-02 hat Michael die Aufteilung
+beschlossen (nächster Abschnitt).
+
+### Höchstens 700 Zeilen je Datei (seit 2026-11-02)
+
+Michaels Regel vom 2026-11-02: Das Projekt wird modularer, keine Datei hat
+mehr als 700 Zeilen. Auf seine Wahl gilt die Grenze für **jede Textdatei**:
+Code, Tests, Workflows, Doku, `CHANGELOG.md` und die archivierten Audits in
+`docs/archive/`. Nicht gezählt werden nur die Quelldaten unter `data/` und
+`cache/` sowie Dateien, die keine Textendung tragen (JSON, CSV, XML, Bilder);
+die gezählten Endungen stehen in `_SUFFIXES` in
+`tests/test_file_line_limit.py`. Gezählt wird wie mit `wc -l`.
+
+Am 2026-11-02 lagen 58 Dateien darüber, zusammen rund 93.000 Zeilen (die
+größte `src/build_feed.py` mit 13.725 Zeilen). Sie stehen in
+`tests/line_limit_altfaelle.txt` und werden in Etappen aufgeteilt, jede
+Etappe eine reine Verschiebung ohne Verhaltensänderung mit Replay alt gegen
+neu (Plan: `CHANGELOG`, Tests, Doku, Skripte, `src/`, zuletzt
+`build_feed.py` in mehreren Schritten mit Umstellung der Test-Ersetzungen auf
+das neue Modul). Der Test hält drei Dinge fest: Keine Datei außerhalb der
+Liste hat mehr als 700 Zeilen; die Liste bekommt keine neuen Einträge
+(`_ALTFAELLE_COUNT` darf nur sinken); eine Datei, die auf 700 Zeilen oder
+darunter fällt, wird aus der Liste gelöscht. Eine Datei, die wächst, wird
+geteilt, bevor sie die Grenze überschreitet.
 
 ### Titel und Beschreibung im deutschen Feed
 
