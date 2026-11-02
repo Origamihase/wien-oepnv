@@ -3,7 +3,7 @@
 
 Reads the append-only CSV ledgers under ``data/stats/`` (written by
 :mod:`scripts.update_stammstrecke_status` and :mod:`src.build_feed`),
-aggregates them by weekday / hour / location, and writes a single
+aggregates them by weekday / hour / provider / line, and writes a single
 Markdown report to ``docs/statistik.md``.
 
 The script is **strictly zero-dependency** — only the Python standard
@@ -22,8 +22,8 @@ Design contract
   manual edit can never break the dashboard regeneration.
 * **Idempotent on the output**: running the script twice on the same
   data produces byte-identical Markdown. Any aggregation step that is
-  order-sensitive (top-N location ranking) breaks ties with a stable
-  secondary sort on the location name itself.
+  order-sensitive (ranked tables such as the lines) breaks ties with a
+  stable secondary sort on the name itself.
 * **Bounded read sizes**: each CSV file is capped at
   :data:`MAX_CSV_BYTES` (~25 MiB) on read. A planted-huge file is
   skipped with a WARNING instead of buffered into memory.
@@ -131,13 +131,10 @@ STOERUNGEN_SOURCES_NOTE: Final = (
 # Sentinel emitted by :func:`src.utils.stats.extract_location_name` when
 # no directory-anchored station can be identified for a disruption (the
 # upstream title/description simply doesn't mention a station name we
-# recognise). The Top-N "Häufigste Störungsorte" / "Hotspots" rankings
-# explicitly skip this bucket — without the filter, every period in
-# which most disruptions are line-only mentions ("Demonstration auf
-# Linie 5") would surface ``unbekannt`` as the #1 hotspot, which is not
-# useful operator information. The bucket is still counted in the
-# overall "Erfasste Störungen" total and in the weekday / hour
-# distributions so the temporal signal is preserved.
+# recognise). The dashboard shows no places today (the former
+# "Häufigste Störungsorte" / "Hotspots" sections were removed); rows with
+# this label count in the "Erfasste Störungen" total and in the weekday /
+# hour distributions like every other row.
 LOCATION_UNKNOWN: Final = "unbekannt"
 
 # Bar-chart geometry. The bar widths are intentionally short so the
@@ -372,6 +369,7 @@ def _parse_stoerung_rows(
         location = (row.get("location_name") or "unbekannt").strip() or "unbekannt"
         # Older rows carry the display name of their day ("St. Pölten
         # Hauptbahnhof" before 2026-11-02); one place keeps one label.
+        # No section renders the place today, so the output is unchanged.
         location = current_location_label(location)
         parsed.append(
             StoerungRow(
