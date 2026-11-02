@@ -714,18 +714,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Verkehrsunfall Betrieb ab Julius Raab Platz",
-    "description": "Verkehrsunfall\nBetrieb ab Julius Raab Platz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "dd6d0bc61549fa7af8d80f6fc550458c3525ec91ea12e8676ce787dfb53cc43d",
-    "pubDate": "2026-11-02T06:28:31+01:00",
-    "starts_at": "2026-11-02T06:37:01+01:00",
-    "ends_at": "2026-11-02T07:33:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-11-02|TK=verkehrsunfall betrieb ab julius raab platz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "25/26/27: Gleisbauarbeiten",
     "description": "Linie 25: Betrieb nur zwischen Aspern, Oberdorfstraße und Josef-Baumann-Gasse. Weiterfahrt über Linie 27 bis Aspern Nord S U. Linie 26: Betrieb nur zwischen Hausfeldstraße U und Josef-Baumann-Gasse. Weiterfahrt nach Kagran U. Linie 27: Betrieb nur zwischen Strebersdorf, Meriangasse und Floridsdorf S U. Weichen Sie daher nach Möglichkeit großräumig auf die U1 und S-Bahn über Leopoldau S U oder Praterstern S U aus. Zwischen Kagraner Platz U und Floridsdorf S U können Sie auch auf die Linien 31A und anschließend 29A/29B oder 31A und S-Bahn ausweichen. Zwischen Kagran U und Floridsdorf S U können Sie auch auf die Linien 27A und anschließend 29A/29B ausweichen. Zwischen Floridsdorf S U und Josef-Baumann-Gasse fährt der Ersatzbus 26E. Beachten Sie, der 26E hat nicht die gleichen Kapazitäten wie eine Straßenbahn. Voraussichtliche Dauer: Ende 2026. Grund: Gleisbauarbeiten im Bereich Donaufelder Straße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -930,30 +918,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "12c122fd59c34caf7f02ba0225ce436dc57cac19067265e4e00cf01131a3ccaf",
-    "pubDate": "2026-11-02T06:42:32+01:00",
-    "starts_at": "2026-11-02T06:42:32+01:00",
-    "ends_at": "2026-11-02T07:42:00+01:00",
-    "_identity": "wl|störung|L=71|D=2026-11-02|TK=fahrtbehinderung verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Verkehrsunfall Betrieb ab Schwarzenbergplatz",
-    "description": "Verkehrsunfall\nBetrieb ab Schwarzenbergplatz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "ec258ce73adc65025033078d5db8429a649cc5548bacc1db291dc2a3bacf52bb",
-    "pubDate": "2026-11-02T06:30:31+01:00",
-    "starts_at": "2026-11-02T06:42:02+01:00",
-    "ends_at": "2026-11-02T07:40:00+01:00",
-    "_identity": "wl|störung|L=71|D=2026-11-02|TK=verkehrsunfall betrieb ab schwarzenbergplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Einstieg Leberstraße vor S-Bahn-Gebäude",
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1038,34 +1002,6 @@
     "starts_at": "2026-10-30T00:00:12+01:00",
     "ends_at": "2026-11-02T23:59:59+01:00",
     "_identity": "wl|störung|L=D|D=2026-10-30|TK=züge halten wipplingerstr 39"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Verkehrsunfall Umleitung über den Franz Josefs Kai bis Börse",
-    "description": "Verkehrsunfall\nUmleitung über den Franz Josefs Kai bis Börse",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "e4ea8aacde43cecdf7f75a6d4fe1f5b28b6d8f81143e1c1769f3a8d6195d98a5",
-    "pubDate": "2026-11-02T06:40:32+01:00",
-    "starts_at": "2026-11-02T06:40:32+01:00",
-    "ends_at": "2026-11-02T07:38:00+01:00",
-    "_identity": "wl|störung|L=D|D=2026-11-02|TK=umleitung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U2: Verspätungen",
-    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
-    "pubDate": "2026-11-02T06:23:00+01:00",
-    "starts_at": "2026-11-02T06:23:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U2|D=2026-11-02|TK=u2 verspätungen",
-    "_wl_ids": [
-      "I20261102-0005"
-    ],
-    "_incident_start": "2026-11-02T06:23:00+01:00"
   },
   {
     "source": "Wiener Linien",
