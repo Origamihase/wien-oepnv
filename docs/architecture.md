@@ -28,6 +28,7 @@ darunter.
 - [4. Provider-Plugin-Vertrag](#4-provider-plugin-vertrag)
 - [5. Stationsverzeichnis-Anreicherung (GeoNetz → HAFAS)](#5-stationsverzeichnis-anreicherung-geonetz--hafas)
   - [5a. Wiener-Linien-OGD-Merge (die vierte Quelle)](#5a-wiener-linien-ogd-merge-die-vierte-quelle)
+  - [Anzeige von Hauptbahnhöfen (seit 2026-11-02)](#anzeige-von-hauptbahnhöfen-seit-2026-11-02)
 - [6. Statistik- und Dashboard-Pipeline](#6-statistik--und-dashboard-pipeline)
   - [Architektur-Ziele](#architektur-ziele)
   - [Resilienz-Schichten](#resilienz-schichten)
@@ -2407,6 +2408,29 @@ die WL-CSVs schon seit der ersten Form von `_download_ogd_csv` einen
 Soft-Fail-Pfad.
 
 ---
+
+### Anzeige von Hauptbahnhöfen (seit 2026-11-02)
+
+> **Entscheidung 2026-11-02 (Michael):** „Wenn der Ort länger als sieben
+> Zeichen lang ist, wird Hauptbahnhof abgekürzt.“ Es geht dabei auch um
+> die Optik: „Wien Hauptbahnhof“ und „Linz Hauptbahnhof“ lesen sich
+> schöner, „St. Pölten Hbf“ besser als „St. Pölten Hauptbahnhof“.
+
+Ein Stationsname, der auf „Hauptbahnhof“ oder „Hbf“ endet, erscheint im
+Feed mit „Hauptbahnhof“, wenn der Ort davor höchstens sieben Zeichen hat
+(Leerzeichen und Punkt mitgezählt), sonst mit „Hbf“: „Wien Hauptbahnhof“,
+„Linz Hauptbahnhof“, „Graz Hauptbahnhof“, „Villach Hauptbahnhof“, aber
+„Salzburg Hbf“, „St. Pölten Hbf“, „Wiener Neustadt Hbf“. Die Regel steht
+in der Anzeigeschicht des Verzeichnisses (`display_name` in
+`src/utils/stations.py`, `_main_station_form`), nicht in
+`data/stations.json`: Das Verzeichnis schreibt beide Formen („Linz Hbf“,
+„St. Pölten Hauptbahnhof“), und jede Aktualisierung durch
+`scripts/update_station_directory.py` darf das weiter tun, die Anzeige
+bleibt gleich. `tests/test_main_station_display.py` prüft jeden
+Hauptbahnhof des Verzeichnisses gegen die Regel, also auch nach jeder
+Aktualisierung in CI. Ein Name, in dem „Hauptbahnhof“ nicht am Ende steht
+(„Wien Hauptbahnhof Ost (WL)“), bleibt wie er ist; Beschreibungen behalten
+den Wortlaut der Quelle.
 
 ## 6. Statistik- und Dashboard-Pipeline
 

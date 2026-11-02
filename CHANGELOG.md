@@ -10,6 +10,19 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
 
 ### November 2026
 
+* **Hauptbahnhöfe: „Hbf“ hinter langen Ortsnamen (2026-11-02)**:
+  Betreiberentscheidung (Michael: „Wenn der Ort länger als sieben Zeichen
+  lang ist, wird Hauptbahnhof abgekürzt“, auch der Optik wegen).
+  `display_name` (`src/utils/stations.py`) zeigt einen Stationsnamen auf
+  „Hauptbahnhof“ oder „Hbf“ mit „Hauptbahnhof“, wenn der Ort höchstens
+  sieben Zeichen hat, sonst mit „Hbf“: „Wien Hauptbahnhof“, „Linz
+  Hauptbahnhof“ (bisher „Linz Hbf“), „St. Pölten Hbf“ (bisher „St. Pölten
+  Hauptbahnhof“), „Wiener Neustadt Hbf“. Die Regel gilt unabhängig davon,
+  welche Form `data/stations.json` nach einer Aktualisierung trägt;
+  `tests/test_main_station_display.py` prüft jeden Hauptbahnhof des
+  Verzeichnisses. Doku: `docs/architecture.md`, Abschnitt 5, „Anzeige von
+  Hauptbahnhöfen“.
+
 * **WL: zwei Ursachen in einem Zeitfenster stehen beide im Titel (2026-11-02)**:
   Betreiberentscheidung (Michael, Ja zu „Titel nennt beide Ursachen“, Fund
   des KI-Wächters). Am 29.10. hatte die 71 zwei Vorfälle neun Minuten
