@@ -860,14 +860,18 @@ class PinnedHTTPSAdapter(TimeoutHTTPAdapter):
     while preserving the original hostname for SNI and Host header.
     """
 
-    def __init__(self, pinned_ip: str, *args: Any, **kwargs: Any) -> None:
+    def __init__(self, pinned_ip: str, *args: Any, keepalive: bool = False, **kwargs: Any) -> None:
         self.pinned_ip = pinned_ip
+        # Set before ``super().__init__``, which builds the pool manager.
+        self.keepalive = keepalive
         super().__init__(*args, **kwargs)
 
     def init_poolmanager(self, connections: int, maxsize: int, block: bool = False, **pool_kwargs: Any) -> None:
         self._pool_connections = connections
         self._pool_maxsize = maxsize
         self._pool_block = block
+        if getattr(self, "keepalive", False):
+            pool_kwargs["socket_options"] = list(KEEPALIVE_SOCKET_OPTIONS)
 
         self.poolmanager = PoolManager(
             num_pools=connections,
@@ -897,9 +901,20 @@ class PinnedHTTPSAdapter(TimeoutHTTPAdapter):
         self.poolmanager.pool_classes_by_scheme["https"] = PinnedHTTPSConnectionPool
 
 
-def _get_pinned_session(target_ip: str, timeout: int | float | tuple[float, float] | None, max_retries: Any = 0) -> requests.Session:
-    """Retrieve or create a cached session with a PinnedHTTPSAdapter for the target IP."""
-    cache_key = f"{target_ip}_{max_retries}"
+def _get_pinned_session(
+    target_ip: str,
+    timeout: int | float | tuple[float, float] | None,
+    max_retries: Any = 0,
+    *,
+    keepalive: bool = False,
+) -> requests.Session:
+    """Retrieve or create a cached session with a PinnedHTTPSAdapter for the target IP.
+
+    *keepalive* carries the caller's TCP keepalive (``session_with_retries(...,
+    keepalive=True)``) to the pinned connection, which is the one an HTTPS
+    request of :func:`request_safe` really uses.
+    """
+    cache_key = f"{target_ip}_{max_retries}_{'keepalive' if keepalive else 'plain'}"
     with _HTTP_SESSION_LOCK:
         if cache_key in _HTTP_SESSION_CACHE:
             # Move to end to maintain LRU
@@ -911,7 +926,7 @@ def _get_pinned_session(target_ip: str, timeout: int | float | tuple[float, floa
 
         # Cache miss, create new
         session = requests.Session()
-        adapter = PinnedHTTPSAdapter(target_ip, timeout=timeout, max_retries=max_retries)
+        adapter = PinnedHTTPSAdapter(target_ip, timeout=timeout, max_retries=max_retries, keepalive=keepalive)
         session.mount("https://", adapter)
 
         # Add to cache and evict if necessary
@@ -2072,8 +2087,13 @@ def _send_https_pinned(
 
     original_adapter = session.get_adapter(current_url)
     current_retries = getattr(original_adapter, "max_retries", 0)
+    # The session's TCP keepalive goes along: the pinned adapter, not the
+    # session's own, opens the connection (until 2026-11-02 the KI-Wächter's
+    # ``keepalive=True`` reached only the session's adapter, which HTTPS
+    # requests through this function never use).
     pinned_session = _get_pinned_session(
-        str(target_ip), current_timeout, max_retries=current_retries
+        str(target_ip), current_timeout, max_retries=current_retries,
+        keepalive=bool(getattr(original_adapter, "keepalive", False)),
     )
 
     req = requests.Request(

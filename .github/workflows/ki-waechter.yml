@@ -115,7 +115,6 @@ jobs:
           REV_INPUT: ${{ inputs.rev }}
           OWNER_REPO: ${{ github.repository }}
           PR_HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
-          RUN_ID: ${{ github.run_id }}
           # Most requests one audit may send (scripts/ki_waechter.py, MAX_REQUESTS_PER_AUDIT).
           MAX_PER_AUDIT: "3"
         shell: bash
@@ -135,13 +134,18 @@ jobs:
           # GitHub allows a re-run for 30 days, so the listing goes back a
           # month and keeps the runs touched since midnight; the jobs of
           # every attempt are read ("filter=all") and filtered by start.
+          # This run counts too: a re-run of it is a new attempt of the
+          # same run, and the audits of its earlier attempts sent requests
+          # today (until 2026-11-02 the gate skipped its own run, so a
+          # re-run of the daily audit saw its first three requests as
+          # unused). The audits of this attempt have not started yet.
           used_today() {
             local midnight since month ids id job status conclusion n used=0
             midnight="$(TZ=America/Los_Angeles date -d 'today 00:00' +%s)"
             since="$(date -u -d "@${midnight}" +%Y-%m-%dT%H:%M:%SZ)"
             month="$(date -u -d "@$(( midnight - 31 * 86400 ))" +%Y-%m-%dT%H:%M:%SZ)"
             ids="$(gh api "repos/${OWNER_REPO}/actions/workflows/ki-waechter.yml/runs?created=%3E%3D${month}&per_page=100" \
-                     --paginate --jq ".workflow_runs[] | select(.id != ${RUN_ID} and .updated_at >= \"${since}\") | .id")"
+                     --paginate --jq ".workflow_runs[] | select(.updated_at >= \"${since}\") | .id")"
             for id in ${ids}; do
               while read -r job status conclusion; do
                 [[ -n "${job}" ]] || continue

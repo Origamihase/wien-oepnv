@@ -71,3 +71,33 @@ def test_every_main_station_of_the_directory_follows_the_rule() -> None:
 )
 def test_titles_show_the_display_form(title: str, shown: str) -> None:
     assert main_station_names(title) == shown
+
+
+@pytest.mark.parametrize(
+    ("stored", "shown"),
+    [
+        # Ledger rows written before the rule rank with the new ones.
+        ("St. Pölten Hauptbahnhof", "St. Pölten Hbf"),
+        ("Wiener Neustadt Hauptbahnhof", "Wiener Neustadt Hbf"),
+        ("St. Pölten Hbf", "St. Pölten Hbf"),
+        ("Wien Hauptbahnhof", "Wien Hauptbahnhof"),
+        ("unbekannt", "unbekannt"),
+        ("Musterort Hauptbahnhof", "Musterort Hauptbahnhof"),
+    ],
+)
+def test_statistics_show_older_rows_in_the_display_form(stored: str, shown: str) -> None:
+    from src.utils.stats import current_location_label
+
+    assert current_location_label(stored) == shown
+
+
+def test_the_dashboard_reads_ledger_rows_in_the_display_form() -> None:
+    import scripts.generate_markdown_stats as stats
+
+    rows = stats._parse_stoerung_rows(
+        [
+            {"timestamp": "2026-07-14T04:30:46+02:00", "provider": "ÖBB", "location_name": "St. Pölten Hauptbahnhof"},
+            {"timestamp": "2026-11-02T15:00:00+01:00", "provider": "ÖBB", "location_name": "St. Pölten Hbf"},
+        ]
+    )
+    assert {row.location_name for row in rows} == {"St. Pölten Hbf"}

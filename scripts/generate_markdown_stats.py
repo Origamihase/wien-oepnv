@@ -76,6 +76,7 @@ from src.utils.stats import (  # noqa: E402
     STAMMSTRECKE_HEADER,
     STOERUNGEN_HEADER,
     WEEKDAY_LABELS,
+    current_location_label,
     stats_path,
 )
 from src.feed.stammstrecke import DELAY_THRESHOLD_MINUTES, FEED_WINDOW  # noqa: E402
@@ -369,6 +370,9 @@ def _parse_stoerung_rows(
             hour = ts.hour
         provider = (row.get("provider") or "unbekannt").strip() or "unbekannt"
         location = (row.get("location_name") or "unbekannt").strip() or "unbekannt"
+        # Older rows carry the display name of their day ("St. Pölten
+        # Hauptbahnhof" before 2026-11-02); one place keeps one label.
+        location = current_location_label(location)
         parsed.append(
             StoerungRow(
                 timestamp=ts,

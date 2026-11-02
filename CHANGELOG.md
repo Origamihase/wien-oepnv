@@ -10,6 +10,25 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
 
 ### November 2026
 
+* **Unabhängige Prüfung von #2122 und #2124 bis #2127 (2026-11-02)**:
+  Drei Funde, behoben. (1) Das TCP-Keepalive aus #2124 erreichte die
+  Gemini-Verbindung nie: `request_safe` schickt HTTPS über einen auf die
+  geprüfte IP festgelegten Adapter (`_get_pinned_session`), und der bekam
+  die Einstellung der Sitzung nicht. Jetzt trägt `_send_https_pinned` sie
+  mit (`PinnedHTTPSAdapter(..., keepalive=...)`); ein Test prüft den Socket,
+  den `request_safe` wirklich öffnet (vorher nur `TCP_NODELAY`). (2) Das
+  Gate in `ki-waechter.yml` übersprang den eigenen Lauf; ein erneut
+  gestarteter täglicher Lauf zählte die Anfragen seiner früheren Versuche
+  nicht. Jetzt zählt er mit. (3) Die Statistik führte nach #2127 „St.
+  Pölten Hauptbahnhof“ (ältere Zeilen) und „St. Pölten Hbf“ (neue Zeilen)
+  als zwei Orte, ebenso Wiener Neustadt. `generate_markdown_stats.py`
+  liest jede gespeicherte Ortsangabe, die das Verzeichnis kennt, in ihrer
+  heutigen Anzeigeform (`current_location_label` in `src/utils/stats.py`);
+  das führt auch drei ältere Kurzformen wie „Siebenhirten“ mit „Wien
+  Siebenhirten (WL)“ zusammen. Die Ledger bleiben unverändert, das
+  Dashboard heute ebenso (keiner dieser Orte steht unter den häufigsten).
+  Doku: `docs/reference/ki_waechter.md`.
+
 * **Hauptbahnhöfe: „Hbf“ hinter langen Ortsnamen (2026-11-02)**:
   Betreiberentscheidung (Michael: „Wenn der Ort länger als sieben Zeichen
   lang ist, wird Hauptbahnhof abgekürzt“, auch der Optik wegen).
