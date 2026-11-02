@@ -41,6 +41,9 @@ ignore = [
 "scripts/generate_sitemap.py" = ["S603", "S607"]
 "scripts/run_static_checks.py" = ["S603"]
 "scripts/ki_waechter.py" = ["S603"]
+# git_reader/git_snapshots, moved out of scripts/ki_waechter.py: static
+# ``[GIT, ...]`` arg lists with a validated revision.
+"src/ki_waechter/inputs.py" = ["S603"]
 # Health watchdog runs the production cache updaters via a static
 # ``[sys.executable, <script>]`` arg list — never user input. The call
 # moved from scripts/health_check.py to src/health_check/sources.py
