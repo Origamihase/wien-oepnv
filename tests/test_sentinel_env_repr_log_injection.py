@@ -356,7 +356,15 @@ def test_inventory_no_env_repr_log_drift_in_canonical_sites() -> None:
     repo_root = Path(__file__).resolve().parents[1]
     sites = [
         repo_root / "scripts" / "update_station_directory.py",
+        repo_root / "src" / "station_directory" / "coordinates.py",
+        repo_root / "src" / "station_directory" / "csv_sources.py",
+        repo_root / "src" / "station_directory" / "json_sources.py",
+        repo_root / "src" / "station_directory" / "matching.py",
+        repo_root / "src" / "station_directory" / "model.py",
+        repo_root / "src" / "station_directory" / "workbook.py",
         repo_root / "scripts" / "update_baustellen_cache.py",
+        # ``_resolve_data_url`` (env ``BAUSTELLEN_DATA_URL``) moved here.
+        repo_root / "src" / "providers" / "baustellen_wfs.py",
         repo_root / "src" / "build_feed.py",
     ]
     # ``%r`` formatting of env-controlled values is the drift this round

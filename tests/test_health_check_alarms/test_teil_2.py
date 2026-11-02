@@ -11,6 +11,7 @@ from pathlib import Path
 import pytest
 
 import scripts.health_check as hc
+import src.health_check.github_runs as hc_github_runs
 
 from ._support import (
     _BUILD_ANNOTATIONS,
@@ -35,7 +36,7 @@ from ._support import (
 def test_without_a_token_the_api_is_not_called(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.delenv("GITHUB_TOKEN", raising=False)
     monkeypatch.setenv("GITHUB_REPOSITORY", "Origamihase/wien-oepnv")
-    monkeypatch.setattr(hc, "fetch_content_safe", lambda *_a, **_kw: pytest.fail("no request expected"))
+    monkeypatch.setattr(hc_github_runs, "fetch_content_safe", lambda *_a, **_kw: pytest.fail("no request expected"))
     with pytest.raises(RuntimeError):
         hc._github_api_json(_REVIEW_RUNS)
 

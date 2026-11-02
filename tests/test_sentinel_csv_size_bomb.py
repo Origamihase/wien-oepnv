@@ -100,11 +100,11 @@ def test_precondition_stations_validation_cap_exists() -> None:
 
 
 def test_precondition_update_station_directory_cap_exists() -> None:
-    import scripts.update_station_directory as usd
+    import src.station_directory.csv_sources as usd_csv_sources
 
-    assert isinstance(usd.MAX_CSV_LOCATIONS_BYTES, int)
-    assert usd.MAX_CSV_LOCATIONS_BYTES > 0
-    assert usd.MAX_CSV_LOCATIONS_BYTES >= 1_000_000
+    assert isinstance(usd_csv_sources.MAX_CSV_LOCATIONS_BYTES, int)
+    assert usd_csv_sources.MAX_CSV_LOCATIONS_BYTES > 0
+    assert usd_csv_sources.MAX_CSV_LOCATIONS_BYTES >= 1_000_000
 
 
 def test_precondition_update_wl_stations_cap_exists() -> None:
@@ -247,9 +247,10 @@ def test_load_gtfs_locations_rejects_oversized_csv(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     import scripts.update_station_directory as usd
+    import src.station_directory.csv_sources as usd_csv_sources
 
     csv_path = tmp_path / "stops.txt"
-    monkeypatch.setattr(usd, "MAX_CSV_LOCATIONS_BYTES", 1024)
+    monkeypatch.setattr(usd_csv_sources, "MAX_CSV_LOCATIONS_BYTES", 1024)
     _write_oversized_csv(csv_path, 4096)
 
     locations = usd._load_gtfs_locations(csv_path)
@@ -260,9 +261,10 @@ def test_load_wienerlinien_locations_rejects_oversized_csv(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     import scripts.update_station_directory as usd
+    import src.station_directory.csv_sources as usd_csv_sources
 
     csv_path = tmp_path / "haltepunkte.csv"
-    monkeypatch.setattr(usd, "MAX_CSV_LOCATIONS_BYTES", 1024)
+    monkeypatch.setattr(usd_csv_sources, "MAX_CSV_LOCATIONS_BYTES", 1024)
     _write_oversized_csv(csv_path, 4096)
 
     locations = usd._load_wienerlinien_locations(csv_path)
@@ -273,9 +275,10 @@ def test_load_vor_locations_rejects_oversized_csv(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     import scripts.update_station_directory as usd
+    import src.station_directory.csv_sources as usd_csv_sources
 
     csv_path = tmp_path / "vor.csv"
-    monkeypatch.setattr(usd, "MAX_CSV_LOCATIONS_BYTES", 1024)
+    monkeypatch.setattr(usd_csv_sources, "MAX_CSV_LOCATIONS_BYTES", 1024)
     _write_oversized_csv(csv_path, 4096)
 
     locations = usd._load_vor_locations(csv_path)
@@ -288,9 +291,10 @@ def test_load_vor_stops_rejects_oversized_csv(
     """``load_vor_stops`` consumes ``_iter_vor_rows`` — both must be
     capped end-to-end."""
     import scripts.update_station_directory as usd
+    import src.station_directory.csv_sources as usd_csv_sources
 
     csv_path = tmp_path / "vor-stops.csv"
-    monkeypatch.setattr(usd, "MAX_CSV_LOCATIONS_BYTES", 1024)
+    monkeypatch.setattr(usd_csv_sources, "MAX_CSV_LOCATIONS_BYTES", 1024)
     _write_oversized_csv(csv_path, 4096)
 
     stops = usd.load_vor_stops(csv_path)
@@ -306,9 +310,12 @@ def test_update_wl_stations_dict_reader_rejects_oversized_csv(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     import scripts.update_wl_stations as uws
+    from src.wl_stations import ogd_csv as wl_ogd_csv
 
     csv_path = tmp_path / "wl.csv"
-    monkeypatch.setattr(uws, "MAX_WL_CSV_BYTES", 1024)
+    # ``_dict_reader`` moved to ``src/wl_stations/ogd_csv.py`` and reads
+    # the cap from there.
+    monkeypatch.setattr(wl_ogd_csv, "MAX_WL_CSV_BYTES", 1024)
     _write_oversized_csv(csv_path, 4096)
 
     rows = list(uws._dict_reader(csv_path))

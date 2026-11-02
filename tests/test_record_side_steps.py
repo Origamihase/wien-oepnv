@@ -15,6 +15,7 @@ from pathlib import Path
 import pytest
 
 import scripts.health_check as hc
+import src.health_check.outputs as hc_outputs
 from scripts import record_side_steps as rec
 
 REPO = Path(__file__).resolve().parents[1]
@@ -74,8 +75,8 @@ def test_the_written_record_turns_the_health_check_red_and_green_again(
     def run(*pairs: str) -> None:
         assert rec.main(["--state", str(state), *pairs]) == 0
 
-    monkeypatch.setattr(hc, "SIDE_STEP_DIR", tmp_path / "data" / "side_steps")
-    monkeypatch.setattr(hc, "SIDE_STEP_RECORDS", [("update-cycle.json", "Update-Lauf", 4.0)])
+    monkeypatch.setattr(hc_outputs, "SIDE_STEP_DIR", tmp_path / "data" / "side_steps")
+    monkeypatch.setattr(hc_outputs, "SIDE_STEP_RECORDS", [("update-cycle.json", "Update-Lauf", 4.0)])
     run("Statistik=success", "Linienprüfung=failure", "Feed-Wächter=success")
     now = datetime.now(UTC)
     check = hc.check_side_steps(now)

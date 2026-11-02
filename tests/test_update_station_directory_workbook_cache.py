@@ -20,6 +20,7 @@ from typing import Any
 import pytest
 
 from scripts import update_station_directory
+from src.station_directory import workbook as usd_workbook
 
 
 def test_download_workbook_writes_cache_on_success(
@@ -45,10 +46,10 @@ def test_download_workbook_writes_cache_on_success(
         return payload
 
     monkeypatch.setattr(
-        update_station_directory, "session_with_retries", fake_session_with_retries
+        usd_workbook, "session_with_retries", fake_session_with_retries
     )
     monkeypatch.setattr(
-        update_station_directory, "fetch_content_safe", fake_fetch
+        usd_workbook, "fetch_content_safe", fake_fetch
     )
 
     buf = update_station_directory.download_workbook(
@@ -89,10 +90,10 @@ def test_download_workbook_falls_back_to_cache_on_network_failure(
         raise OSError("simulated data.oebb.at outage")
 
     monkeypatch.setattr(
-        update_station_directory, "session_with_retries", fake_session_with_retries
+        usd_workbook, "session_with_retries", fake_session_with_retries
     )
     monkeypatch.setattr(
-        update_station_directory, "fetch_content_safe", fake_fetch
+        usd_workbook, "fetch_content_safe", fake_fetch
     )
 
     buf = update_station_directory.download_workbook(
@@ -128,10 +129,10 @@ def test_download_workbook_raises_when_neither_url_nor_cache(
         raise OSError("simulated data.oebb.at outage")
 
     monkeypatch.setattr(
-        update_station_directory, "session_with_retries", fake_session_with_retries
+        usd_workbook, "session_with_retries", fake_session_with_retries
     )
     monkeypatch.setattr(
-        update_station_directory, "fetch_content_safe", fake_fetch
+        usd_workbook, "fetch_content_safe", fake_fetch
     )
 
     with pytest.raises(OSError, match="simulated data.oebb.at outage"):

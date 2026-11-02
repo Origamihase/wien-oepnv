@@ -18,6 +18,7 @@ from typing import Any
 import pytest
 
 from scripts import update_station_directory as usd
+from src.station_directory import coordinates as usd_coordinates
 
 
 def _location(lat: float, lon: float, *, source: str = "gtfs") -> usd.LocationInfo:
@@ -46,7 +47,7 @@ def test_skips_entries_that_already_have_coordinates(monkeypatch: pytest.MonkeyP
     def _explode_if_called(_name: str) -> object:
         raise AssertionError("HAFAS must not be called for entries with coords")
 
-    monkeypatch.setattr(usd, "enrich_station_with_hafas", _explode_if_called)
+    monkeypatch.setattr(usd_coordinates, "enrich_station_with_hafas", _explode_if_called)
     enriched = usd._enrich_manual_stations([entry], location_index)
 
     assert enriched == 0
@@ -63,7 +64,7 @@ def test_local_index_wins_before_hafas(monkeypatch: pytest.MonkeyPatch) -> None:
     def _explode_if_called(_name: str) -> object:
         raise AssertionError("HAFAS must not be called when local index hits")
 
-    monkeypatch.setattr(usd, "enrich_station_with_hafas", _explode_if_called)
+    monkeypatch.setattr(usd_coordinates, "enrich_station_with_hafas", _explode_if_called)
     enriched = usd._enrich_manual_stations([entry], location_index)
 
     assert enriched == 1
@@ -82,7 +83,7 @@ def test_hafas_fallback_when_local_index_misses(monkeypatch: pytest.MonkeyPatch)
         assert name == "Mariazell"
         return {"name": "Mariazell Bahnhof", "lat": 47.7717, "lon": 15.3175, "extId": "8100098"}
 
-    monkeypatch.setattr(usd, "enrich_station_with_hafas", _hafas_hit)
+    monkeypatch.setattr(usd_coordinates, "enrich_station_with_hafas", _hafas_hit)
     enriched = usd._enrich_manual_stations([entry], location_index)
 
     assert enriched == 1
@@ -96,7 +97,7 @@ def test_no_resolution_leaves_entry_unchanged(monkeypatch: pytest.MonkeyPatch) -
     """When both tiers miss the entry stays coordinate-less — no spurious
     keys appear, return count is 0."""
     entry = _manual("Mystery Halt")
-    monkeypatch.setattr(usd, "enrich_station_with_hafas", lambda _name: None)
+    monkeypatch.setattr(usd_coordinates, "enrich_station_with_hafas", lambda _name: None)
 
     enriched = usd._enrich_manual_stations([entry], {})
 
@@ -117,7 +118,7 @@ def test_hafas_exception_does_not_crash_pipeline(
     def _hafas_raises(_name: str) -> object:
         raise RuntimeError("simulated transient HAFAS failure")
 
-    monkeypatch.setattr(usd, "enrich_station_with_hafas", _hafas_raises)
+    monkeypatch.setattr(usd_coordinates, "enrich_station_with_hafas", _hafas_raises)
     entry = _manual("Sopron")
 
     # Must not raise
@@ -132,7 +133,7 @@ def test_empty_input_returns_zero(monkeypatch: pytest.MonkeyPatch) -> None:
     def _explode(_name: str) -> object:
         raise AssertionError("HAFAS must not be called for empty input")
 
-    monkeypatch.setattr(usd, "enrich_station_with_hafas", _explode)
+    monkeypatch.setattr(usd_coordinates, "enrich_station_with_hafas", _explode)
     assert usd._enrich_manual_stations([], {}) == 0
 
 
@@ -159,7 +160,7 @@ def test_skips_entry_with_blank_name(monkeypatch: pytest.MonkeyPatch) -> None:
     def _explode(_name: str) -> object:
         raise AssertionError("HAFAS must not be called for blank names")
 
-    monkeypatch.setattr(usd, "enrich_station_with_hafas", _explode)
+    monkeypatch.setattr(usd_coordinates, "enrich_station_with_hafas", _explode)
     entry: dict[str, object] = {"name": "  ", "source": "manual"}
 
     assert usd._enrich_manual_stations([entry], {}) == 0
@@ -180,7 +181,7 @@ def test_local_index_resolves_via_wl_diva_before_name(
     def _explode_if_called(_name: str) -> object:
         raise AssertionError("HAFAS must not be called when the WL DIVA resolves")
 
-    monkeypatch.setattr(usd, "enrich_station_with_hafas", _explode_if_called)
+    monkeypatch.setattr(usd_coordinates, "enrich_station_with_hafas", _explode_if_called)
     enriched = usd._enrich_manual_stations([entry], location_index)
 
     assert enriched == 1
@@ -201,7 +202,7 @@ def test_falls_back_to_name_when_wl_diva_not_indexed(
     def _explode_if_called(_name: str) -> object:
         raise AssertionError("HAFAS must not be called when the name index hits")
 
-    monkeypatch.setattr(usd, "enrich_station_with_hafas", _explode_if_called)
+    monkeypatch.setattr(usd_coordinates, "enrich_station_with_hafas", _explode_if_called)
     enriched = usd._enrich_manual_stations([entry], location_index)
 
     assert enriched == 1

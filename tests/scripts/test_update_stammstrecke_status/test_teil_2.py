@@ -15,6 +15,7 @@ import pytest
 import requests
 
 from scripts import update_stammstrecke_status as script  # noqa: E402
+from src.stammstrecke import directions, vao_trip  # noqa: E402
 
 from ._support import (
     VIENNA_TZ,
@@ -222,8 +223,8 @@ def test_short_target_label_strips_wien_prefix_on_directory_miss(
 ) -> None:
     """Falls back to a literal-with-prefix-stripped form on directory miss."""
 
-    monkeypatch.setattr(script, "canonical_name", lambda _name: None)
-    monkeypatch.setattr(script, "display_name", lambda _name: "")
+    monkeypatch.setattr(directions, "canonical_name", lambda _name: None)
+    monkeypatch.setattr(directions, "display_name", lambda _name: "")
     assert script._short_target_label("Wien Meidling") == "Meidling"
     assert script._short_target_label("Floridsdorf") == "Floridsdorf"
 
@@ -236,8 +237,8 @@ def test_short_target_label_handles_directory_exception(
     def boom(_name: str) -> str | None:
         raise RuntimeError("stations.json corrupt / unreadable")
 
-    monkeypatch.setattr(script, "canonical_name", boom)
-    monkeypatch.setattr(script, "display_name", lambda _name: "")
+    monkeypatch.setattr(directions, "canonical_name", boom)
+    monkeypatch.setattr(directions, "display_name", lambda _name: "")
     assert script._short_target_label("Wien Meidling") == "Meidling"
 
 
@@ -300,7 +301,7 @@ def test_query_trips_passes_canonical_parameters(
         captured["kwargs"] = kwargs
         return _make_response(status_code=200, body=b'{"Trip": []}')
 
-    monkeypatch.setattr(script, "request_safe", fake_request)
+    monkeypatch.setattr(vao_trip, "request_safe", fake_request)
     # Bypass the quota gate — the integration of charge → request is
     # tested separately below.
     monkeypatch.setattr(script, "_charge_one_request", lambda _now: None)
@@ -368,7 +369,7 @@ def test_query_trips_raises_http_error_with_populated_body_on_4xx(
         # because we passed ``raise_for_status=False``.
         return _make_response(status_code=400, body=body_bytes)
 
-    monkeypatch.setattr(script, "request_safe", fake_request)
+    monkeypatch.setattr(vao_trip, "request_safe", fake_request)
     monkeypatch.setattr(script, "_charge_one_request", lambda _now: None)
 
     with pytest.raises(requests.HTTPError) as exc_info:
@@ -402,7 +403,7 @@ def test_query_trips_normalises_single_trip_payload(
             body=json.dumps({"Trip": trip_obj}).encode("utf-8"),
         )
 
-    monkeypatch.setattr(script, "request_safe", fake_request)
+    monkeypatch.setattr(vao_trip, "request_safe", fake_request)
 
     trips = script._query_trips(
         session=cast(requests.Session, object()), direction=script.DIRECTIONS[0], when=_stable_now
@@ -419,7 +420,7 @@ def test_query_trips_raises_on_non_dict_payload(
 
     monkeypatch.setattr(script, "_charge_one_request", lambda _now: None)
     monkeypatch.setattr(
-        script,
+        vao_trip,
         "request_safe",
         lambda *a, **kw: _make_response(status_code=200, body=b'[1,2,3]'),
     )

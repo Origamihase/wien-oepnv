@@ -51,6 +51,7 @@ on:
   pull_request:
     paths:
       - scripts/ki_waechter.py
+      - src/ki_waechter/**
       - scripts/ki_waechter_prompt.md
       - .github/workflows/ki-waechter.yml
 

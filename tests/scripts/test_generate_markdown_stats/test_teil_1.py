@@ -11,6 +11,7 @@ from pathlib import Path
 import pytest
 
 from scripts import generate_markdown_stats as script  # noqa: E402
+from src.markdown_stats import rows as markdown_stats_rows  # noqa: E402
 from src.utils import stats as stats_utils  # noqa: E402
 
 from ._support import (
@@ -270,7 +271,7 @@ def test_collect_year_data_skips_oversized_file(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     """A planted-huge CSV must be skipped, not buffered into memory."""
-    monkeypatch.setattr(script, "MAX_CSV_BYTES", 64)
+    monkeypatch.setattr(markdown_stats_rows, "MAX_CSV_BYTES", 64)
     payload_rows = [
         ("2026-05-04T07:30:00+02:00", "Mo", "07", "Meidling", "5.50"),
     ] * 10

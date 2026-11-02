@@ -231,7 +231,12 @@ def test_health_check_never_calls_vao() -> None:
     It runs the WL, ÖBB and Baustellen updaters and reads committed files;
     the Stammstrecke is judged from ``poll_status.json``, never live.
     """
-    script = (REPO_ROOT / "scripts" / "health_check.py").read_text(encoding="utf-8")
+    # The checks moved to src/health_check/ on 2026-11-02 (700-line rule).
+    script = "\n".join(
+        path.read_text(encoding="utf-8")
+        for path in [REPO_ROOT / "scripts" / "health_check.py",
+                     *sorted((REPO_ROOT / "src" / "health_check").glob("*.py"))]
+    )
     # Importing a constant (``DIRECTION_LABELS``) is fine; a request path is not.
     for marker in ("providers.vor import", "providers import vor", "verkehrsauskunft",
                    "_charge_one_request", "VorAuth", "accessId"):

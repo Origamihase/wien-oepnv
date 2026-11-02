@@ -1,167 +1,24 @@
 #!/usr/bin/env python3
 """Stammstrecke delay monitor via VAO ``/departureBoard`` at Wien Hauptbahnhof.
 
-Architectural successor to ``scripts/update_stammstrecke_status.py``,
-written 2026-05-15 to lift the ``numF=6`` capture ceiling that the
-``/trip`` endpoint imposes.
-
-Motivation
-----------
-
-The pre-2026-05-15 pipeline queried ``/trip`` from Floridsdorf → Meidling
-and Meidling → Floridsdorf separately. ``numF`` is contractually capped
-at 6 (``docs/reference/trip.md:34``). Empirical analysis of
-``cache/stammstrecke/recently_finalised.json`` showed that the response
-consistently returned 6 trains spanning ~21 of 30 minutes, with the last
-9 minutes of every 30-min window falling outside both the current
-tick's and the next tick's coverage windows. At Vienna S-Bahn peak
-density (~3.5-min spacing) that 9-min gap routinely contains 2-3
-trains that were never observed — bypassed by the cap.
-
-``/departureBoard`` has only a SOFT ``maxJourneys`` limit (``docs/
-reference/departureboard.md:22``); we omit the parameter entirely so
-VAO returns every departure in the configured duration window. Querying
-at Wien Hauptbahnhof — geographically central on the Stammstrecke —
-catches every train that passes through the corridor, including the
-ones that originate / terminate at intermediate stations and never
-appeared in the Floridsdorf-to-Meidling ``/trip`` view.
-
-Quota
------
-
-The poll is ONE ``/departureBoard`` call per cron tick. At 48
-cron ticks/day that's 48 VAO requests/day — half of the
-contractual ``MAX_REQUESTS_PER_DAY = 100`` Start-tier limit. The
-~50% saving over the two-direction ``/trip`` polls gives manual
-``workflow_dispatch`` operators a substantial extra budget for
-out-of-band runs.
-
-Direction labelling
--------------------
-
-Each departure's ``direction`` field (the train's terminus as displayed
-on the station board) is classified into the two direction labels
-``"Meidling"`` (south) and ``"Praterstern"`` (north). The labels are
-named after the **next major Stammstrecke stop after Hbf** in each
-direction — the symmetry lets a short-turn terminating at Praterstern
-(or even Wien Mitte) live in the same bucket as a long-runner that
-continues to Floridsdorf, Stockerau, or Břeclav. Pre-2026-05-15 the
-northbound label was ``"Floridsdorf"``; the rename is a measurement
-semantic, not a routing change. The CSV migration commit (sibling of
-this rename) rewrites all historical rows to the new label and the
-backwards-compatibility alias :data:`LEGACY_DIRECTION_LABEL_NORTHBOUND`
-keeps any externally-restored old ledger / CSV readable by the feed
-renderer.
-
-The CSV schema is otherwise unchanged — the README dashboard, feed
-event renderer (``src/feed/stammstrecke.py``) and any external
-analysis continue to work byte-for-byte once they pick up the new
-direction value.
-
-Hybrid direction classification: the destination terminus is resolved
-through the central station directory (:func:`src.utils.stations.station_info`)
-and labelled by the terminus latitude relative to Wien Hauptbahnhof
-(geographic primary path). Departures whose terminus is unknown to the
-directory — or known but missing coordinates — fall back to the
-deterministic Bahnsteig-1/2 mapping enforced by the track-trunk gate.
-No trains are dropped for an unrecognised terminus; the track gate
-already restricts the sample to the two Stammstrecke platforms, so
-every survivor belongs to one of the two corridor directions by
-construction.
-
-Platform-level Stammstrecke gate
---------------------------------
-
-The Wien Hauptbahnhof track layout dedicates two platforms to the
-S-Bahn Stammstrecke (``Bahnsteig 1`` for southbound trains toward
-Meidling, ``Bahnsteig 2`` for northbound trains toward Floridsdorf).
-Every other Hbf platform (3 through 12, including the lettered
-half-platforms on longer surface tracks) serves long-distance trains
-(Railjet, IC, EC, NJ), terminating-at-Hbf REX services, the Marchegger
-Ostbahn (REX2 / REX5 / REX8 to Bratislava / Marchegg / Sopron), the
-Pottendorfer Linie, the Westbahn, and other corridors that do NOT
-traverse the Stammstrecke tunnel.
-
-The collector therefore gates every departure on its effective track
-(``rtTrack`` overrides ``track``) before doing any further filtering:
-only trains scheduled on Bahnsteig 1 or 2 — or moved to one of those
-platforms by a realtime announcement — are eligible for the
-Stammstrecke statistic. This eliminates the false-positive surface
-where a terminus string like ``"Bratislava-Petržalka"`` could be
-mistaken for a Stammstrecke + Břeclav corridor service: only those
-trains actually departing from Bahnsteig 1 or 2 survive the gate,
-regardless of which corridor their terminus name might suggest.
-
-Latest-wins re-observation
---------------------------
-
-A train scheduled 40 minutes in the future is observed at this tick
-with whatever rtTime VAO can forecast at the moment. The NEXT tick
-re-observes the same train (still ~10 minutes in the future) — the
-``_observe_legs`` ledger overwrites the older entry with the newer
-delay reading, so the value that eventually flows into the CSV is the
-closest-to-departure (therefore most accurate) one. The pending-trip
-ledger only finalises a train when its scheduled time has passed
-(``scheduled <= now``); long-horizon observations contribute to the
-CSV row of the cron tick that catches the actual departure, never the
-one that first saw the future train.
-
-Semantic break vs the pre-2026-05-15 ``/trip`` pipeline
--------------------------------------------------------
-
-The ``/trip`` predecessor measured delay **at the train's origin
-station** (Wien Floridsdorf for Meidling-bound trains, Wien Meidling
-for Floridsdorf-bound trains). This script measures delay **at Wien
-Hauptbahnhof** — a Stammstrecke midpoint. The two numbers are not
-interchangeable for the same physical train:
-
-* A delay that accumulates on the Stammstrecke between Floridsdorf and
-  Hbf shows up in the Hbf reading but not in the origin reading.
-* A delay that the train recovers on the way to Hbf (e.g., dwell-time
-  shortening at intermediate stops) shrinks in the Hbf reading.
-
-Operationally the Hbf measurement is the more representative
-``Stammstrecke delay`` signal — it samples IN the Stammstrecke rather
-than at its endpoints — but the README's 30-day average straddles the
-migration cutover, so trend comparisons across 2026-05-15 will show a
-discontinuity that is a measurement-semantic shift, not a real change
-in the underlying service quality. A CHANGELOG entry exists; readers
-of the dashboard who pre-date the migration should be aware.
-
-Reuse
------
-
-This script imports the shared infrastructure (pending state, finalise,
-ledger I/O, lock, quota charge, HTTP session) from
-``scripts/update_stammstrecke_status.py`` rather than duplicating it.
-The legacy script remains importable so its tests stay green during the
-transition; it is no longer wired into the cron workflow.
-
-The :func:`_observe_legs` identity key uses ``(direction, name,
-scheduled)``. Because ``scheduled`` here is the **Hbf** departure time
-while the legacy script used the **origin** departure time, a legacy
-pending-trip entry surviving in the ledger at migration time has a
-different key shape than a freshly-observed Hbf entry for the same
-physical train — the legacy entry finalises into its own CSV row
-under its old timestamp once its ``scheduled`` time passes, while
-the Hbf entry finalises separately. This produces at most a handful
-of mixed-shape CSV rows during the one-shot transition window; the
-``PENDING_TTL`` purge (6 h) bounds the residual artefact.
+The design notes (motivation, quota, direction labels, platform gate,
+latest-wins, migration) are the docstring of
+:mod:`src.stammstrecke.hbf_board`, which holds the moved request and
+constants; :mod:`src.stammstrecke.hbf_classify` holds the classifier.
 """
 
 from __future__ import annotations
 
 import logging
 import os
-import re
 import statistics
 import sys
-from collections.abc import Iterable, Mapping, Sequence
+from collections.abc import Mapping
 from contextlib import ExitStack
 from dataclasses import dataclass
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
-from typing import Any, Final
+from typing import Any
 
 import requests
 
@@ -175,11 +32,8 @@ from src.utils.circuit_breaker import (  # noqa: E402
     CircuitBreaker,
     CircuitBreakerOpen,
 )
-from src.utils.files import loads_finite  # noqa: E402
-from src.utils.http import request_safe  # noqa: E402
 from src.utils import logging as utils_logging  # noqa: E402
 from src.utils import vao_version  # noqa: E402
-from src.utils.stations import station_info  # noqa: E402
 from src.utils.stammstrecke_poll import (  # noqa: E402
     POLL_STATUS_PATH,
     RESULT_BREAKER,
@@ -200,200 +54,69 @@ from src.utils.stats import (  # noqa: E402
 # based monitor. The private prefix is intentional in that script;
 # importing across scripts is the transitional shape until the legacy
 # script is removed in a follow-up PR.
-from scripts.update_stammstrecke_status import (  # noqa: E402
-    BREAKER_FAILURE_THRESHOLD,
-    BREAKER_RECOVERY_TIMEOUT,
-    DELAY_THRESHOLD_MINUTES,
-    MAX_QUERY_TIMEOUT,
-    PENDING_TRIPS_LOCK_PATH,
-    PENDING_TRIPS_PATH,
-    PENDING_TTL,
-    QUERY_TIMEOUT,
-    RECENTLY_FINALISED_PATH,
-    _QuotaExceeded,
-    _build_session,
-    _canonical_line_name,
-    _charge_one_request,
-    _elapsed_minutes,
-    _finalize_departed,
-    _ledger_lock,
-    _load_pending_trips,
-    _load_recently_finalised,
-    _now_vienna,
-    _observe_legs,
-    _parse_vao_dt,
-    _purge_finalised_entries,
-    _purge_stale_entries,
-    _S_BAHN_LINE_RE,
-    _SbahnLegObservation,
-    _save_pending_trips,
-    _save_recently_finalised,
+from src.stammstrecke.core import (  # noqa: E402
+    BREAKER_FAILURE_THRESHOLD as BREAKER_FAILURE_THRESHOLD,
+    BREAKER_RECOVERY_TIMEOUT as BREAKER_RECOVERY_TIMEOUT,
+    DELAY_THRESHOLD_MINUTES as DELAY_THRESHOLD_MINUTES,
+    MAX_QUERY_TIMEOUT as MAX_QUERY_TIMEOUT,
+    PENDING_TRIPS_LOCK_PATH as PENDING_TRIPS_LOCK_PATH,
+    PENDING_TRIPS_PATH as PENDING_TRIPS_PATH,
+    PENDING_TTL as PENDING_TTL,
+    QUERY_TIMEOUT as QUERY_TIMEOUT,
+    RECENTLY_FINALISED_PATH as RECENTLY_FINALISED_PATH,
+    _now_vienna as _now_vienna,
+    _S_BAHN_LINE_RE as _S_BAHN_LINE_RE,
 )
-
-LOGGER = logging.getLogger("update_stammstrecke_hbf")
-
-
-# ---- Operating parameters --------------------------------------------------
-
-# VOR/VAO station ID for Wien Hauptbahnhof (HBF). Pinned here to avoid a
-# station-directory drift quietly changing which stop we poll. Sourced
-# from ``data/stations.json``: the canonical entry for ``Wien
-# Hauptbahnhof`` carries ``vor_id = "490134900"``.
-HAUPTBAHNHOF_VOR_ID: Final = "490134900"
-
-# /departureBoard duration window, in minutes.
-#
-# Sized at the 30-min cron interval plus a 15-min safety overlap so every
-# train scheduled in the poll window appears in BOTH this tick and the
-# next one — the pending-trip ledger then keeps the latest (closer-to-
-# departure, therefore more accurate) realtime reading via the
-# latest-wins overwrite in :func:`_observe_legs`.
-#
-# Why not 60 min: VAO returns ALL departures in the requested window, so
-# a longer window inflates JSON payload + parse cost + in-memory state
-# without giving us a more accurate observation (the train was already
-# covered in the prior window). 45 min is the 50%-overlap sweet spot.
-#
-# Effective coverage caveat: the 45-min window is what VAO RETURNS,
-# but the :func:`_departure_delay_minutes` filter drops every entry
-# without an ``rtTime`` field (see its docstring — coercing missing
-# realtime to 0.0 systematically biased the legacy sample). VAO only
-# populates ``rtTime`` once a train is roughly 20-25 min from its
-# scheduled departure, so the *effective* coverage per tick is the
-# intersection of the duration window and the rtTime forecast horizon
-# — empirically ~24 min from the cron tick. The 15-min cron-interval
-# overlap still holds because the next tick's rtTime horizon advances
-# 30 min while the duration window also advances 30 min; no train can
-# fall between two consecutive ticks' rtTime windows under normal
-# cron cadence. A SKIPPED tick (cron jitter >~30 min) is the only
-# shape that can lose trains, and that's a workflow-trigger issue,
-# not a script-tuning issue.
-DEPARTURE_BOARD_DURATION_MIN: Final = 45
-
-# A real-time reading at least this far from the plan is no delay reading
-# (see :func:`_departure_delay_minutes`).
-IMPLAUSIBLE_DELAY: Final = timedelta(hours=12)
-
-# ---- Stammstrecke platform (Bahnsteig) filter -----------------------------
-#
-# Wien Hauptbahnhof's track layout dedicates two platforms to the S-Bahn
-# Stammstrecke: ``Bahnsteig 1`` carries trains heading south toward
-# Meidling, ``Bahnsteig 2`` carries trains heading north toward
-# Floridsdorf. Every other platform (3 through 12, including the
-# lettered half-platforms "10A"/"10B" found on longer surface tracks)
-# serves long-distance services (Railjet/IC/EC/NJ), terminating-at-Hbf
-# REX trains, the Marchegger Ostbahn (REX2/REX5 to Bratislava/Marchegg),
-# the Pottendorfer Linie, the Westbahn, and other corridors that do
-# NOT traverse the Stammstrecke tunnel.
-#
-# Filtering departures by their effective track therefore provides a
-# deterministic, platform-level identification of trains that actually
-# use the Stammstrecke at Hbf — bypassing the false-positive surface
-# (e.g., a train to "Marchegg" or "Bratislava-Petržalka" departing Hbf
-# *eastward* via the Ostbahn would no longer slip into the statistic,
-# because it would land on track 11 / 12 instead of 1 / 2). The
-# track-trunk also serves as the deterministic fallback when
-# direction resolution via :func:`station_info` cannot place the
-# terminus on the geographic axis.
-#
-# Realtime override: the VAO ``rtTrack`` field overrides ``track`` when
-# present. A mid-disruption platform change from Bahnsteig 2 to
-# track 5 is therefore correctly excluded from the Stammstrecke
-# sample even when the scheduled timetable still says Bahnsteig 2.
-STAMMSTRECKE_HBF_TRACK_TRUNKS: Final[frozenset[str]] = frozenset({"1", "2"})
-
-# Track-string normaliser. VAO emits track values in several shapes
-# (Handbuch_VAO_ReST_API §13 + §11 example responses):
-#
-# * Plain integer: ``"1"``, ``"5"``
-# * Zero-padded: ``"01"``, ``"02"`` (some legacy serialisers)
-# * Sub-platform suffix: ``"1A"``, ``"1B"``, ``"2A"``, ``"10A-B"``
-# * Whitespace padding: ``"  1  "``
-#
-# The trunk is the leading numeric component, with optional zero
-# padding stripped: ``"01A"`` → ``"1"``, ``"10A-B"`` → ``"10"``.
-# The match is anchored so ``"-1"`` does NOT yield trunk ``"1"`` —
-# the leading ``-`` falls outside the allowed prefix and the function
-# returns ``None`` (defensive: track ``-1`` is not a real platform).
-_TRACK_TRUNK_RE: Final = re.compile(r"^\s*0*([0-9]+)")
-
-# Geographic-direction → CSV-label mapping. Pinned constants so a future
-# rename here cannot silently drift the README dashboard column values.
-#
-# Label history:
-# * 2026-05-09 (legacy ``/trip`` migration): the northbound label was
-#   "Floridsdorf" — the train's typical terminus on the Floridsdorf-
-#   to-Meidling ``/trip`` query.
-# * 2026-05-15 (this rename): the northbound label is "Praterstern".
-#   Rationale: not every northbound Stammstrecke train continues all
-#   the way to Floridsdorf — short-turns terminating at Praterstern
-#   (and even at Wien Mitte) appear in the live feed, and the
-#   southbound label "Meidling" already encodes the *next major
-#   Stammstrecke stop after Hbf* rather than the eventual far-end
-#   terminus. Using "Praterstern" for the symmetric northbound
-#   meaning gives both directions the same shape: "Stammstrecke
-#   trains heading toward <next Stammstrecke stop from Hbf>".
-DIRECTION_LABEL_SOUTHBOUND: Final = "Meidling"
-DIRECTION_LABEL_NORTHBOUND: Final = "Praterstern"
-
-# Legacy CSV / ledger / first-seen labels that the 2026-05-09 pipeline
-# wrote. Read paths accept either label so historical rows under the
-# old name (data/stats/stammstrecke_2026.csv pre-rename + any in-flight
-# pending-trip-state entries observed before the rename commit) still
-# fold into the canonical "Praterstern" bucket on the next read. This
-# shim is checked in :func:`src.feed.stammstrecke.compute_stammstrecke_
-# events` and in :func:`scripts.update_stammstrecke_hbf.main`'s
-# finalise-loop key resolver so the in-flight ledger transition is
-# transparent to operators.
-LEGACY_DIRECTION_LABEL_NORTHBOUND: Final = "Floridsdorf"
-
-DIRECTION_LABELS: Final[tuple[str, ...]] = (
-    DIRECTION_LABEL_SOUTHBOUND,
-    DIRECTION_LABEL_NORTHBOUND,
+from src.stammstrecke.ledger import (  # noqa: E402
+    _canonical_line_name as _canonical_line_name,
+    _ledger_lock as _ledger_lock,
+    _load_pending_trips as _load_pending_trips,
+    _load_recently_finalised as _load_recently_finalised,
+    _purge_finalised_entries as _purge_finalised_entries,
+    _purge_stale_entries as _purge_stale_entries,
+    _save_pending_trips as _save_pending_trips,
+    _save_recently_finalised as _save_recently_finalised,
 )
-
-
-# ---- Direction classification at Wien Hauptbahnhof ------------------------
-#
-# A Stammstrecke train's geographic direction is determined by its
-# terminus (the ``direction`` field in the ``/departureBoard`` response).
-# The Stammstrecke runs north↔south through Vienna:
-#
-#   Wien Floridsdorf — Praterstern — Wien Mitte — Rennweg — Quartier
-#   Belvedere — Wien Hauptbahnhof — Wien Meidling
-#
-# Trains heading SOUTH from Hbf next stop at Wien Meidling (and continue
-# further south to Mödling, Wiener Neustadt, Graz, etc.) → labelled
-# ``"Meidling"`` for CSV-column compatibility with the pre-2026-05-15
-# ``/trip``-based pipeline.
-#
-# Trains heading NORTH from Hbf reach Wien Mitte after two intermediate
-# stops (QB → Rennweg) and continue to Praterstern → Floridsdorf and
-# beyond to Stockerau, Hollabrunn, Břeclav, etc. → labelled
-# ``"Praterstern"``.
-#
-# Resolution is hybrid:
-#
-#   1. **Primary geographic path** — the ``direction`` string is looked
-#      up in the central station directory (:func:`station_info`) and
-#      the terminus latitude is compared against
-#      :data:`HBF_REFERENCE_LATITUDE`. Northern destinations
-#      → ``"Praterstern"``, southern → ``"Meidling"``.
-#   2. **Track-based fallback** — when the terminus is unknown to the
-#      directory (or known but missing coordinates) the track-trunk
-#      assignment alone determines the direction. The track-trunk
-#      gate above guarantees ``track_trunk`` is ``"1"`` or ``"2"``,
-#      so the fallback is exhaustive and no departure is dropped for
-#      an unrecognised terminus.
-
-# Reference latitude for the geographic direction split — sourced from
-# the Wien Hauptbahnhof entry in ``data/stations.json``. A terminus
-# whose latitude is strictly greater counts as northbound, strictly
-# less as southbound. The exact-equality boundary falls through to the
-# track-based fallback (immaterial in practice: only a terminus
-# co-located with Hbf would tie, and a Hbf-terminating departure does
-# not continue across the Stammstrecke).
-HBF_REFERENCE_LATITUDE: Final = 48.1851
+from src.stammstrecke.vao_trip import (  # noqa: E402
+    _QuotaExceeded as _QuotaExceeded,
+    _build_session as _build_session,
+    _charge_one_request as _charge_one_request,
+)
+from src.stammstrecke.legs import (  # noqa: E402
+    _elapsed_minutes as _elapsed_minutes,
+    _finalize_departed as _finalize_departed,
+    _observe_legs as _observe_legs,
+    _parse_vao_dt as _parse_vao_dt,
+    _SbahnLegObservation as _SbahnLegObservation,
+)
+from src.stammstrecke.hbf_board import (  # noqa: E402
+    HAUPTBAHNHOF_VOR_ID as HAUPTBAHNHOF_VOR_ID,
+    DEPARTURE_BOARD_DURATION_MIN as DEPARTURE_BOARD_DURATION_MIN,
+    IMPLAUSIBLE_DELAY as IMPLAUSIBLE_DELAY,
+    STAMMSTRECKE_HBF_TRACK_TRUNKS as STAMMSTRECKE_HBF_TRACK_TRUNKS,
+    _TRACK_TRUNK_RE as _TRACK_TRUNK_RE,
+    DIRECTION_LABEL_SOUTHBOUND as DIRECTION_LABEL_SOUTHBOUND,
+    DIRECTION_LABEL_NORTHBOUND as DIRECTION_LABEL_NORTHBOUND,
+    LEGACY_DIRECTION_LABEL_NORTHBOUND as LEGACY_DIRECTION_LABEL_NORTHBOUND,
+    DIRECTION_LABELS as DIRECTION_LABELS,
+    HBF_REFERENCE_LATITUDE as HBF_REFERENCE_LATITUDE,
+    _query_departure_board as _query_departure_board,
+)
+from src.stammstrecke.hbf_classify import (  # noqa: E402
+    LOGGER as LOGGER,
+    _is_sbahn_line as _is_sbahn_line,
+    _track_trunk as _track_trunk,
+    _extract_track_string as _extract_track_string,
+    _departure_line_name as _departure_line_name,
+    _departure_is_cancelled as _departure_is_cancelled,
+    _departure_delay_minutes as _departure_delay_minutes,
+    _CollectionDiagnostics as _CollectionDiagnostics,
+    _collect_hbf_observations as _collect_hbf_observations,
+    _log_track_drops as _log_track_drops,
+    _count_readable_departures as _count_readable_departures,
+    _TRAIN_NUMBER_NAME_RE as _TRAIN_NUMBER_NAME_RE,
+    _without_train_number_twins as _without_train_number_twins,
+)
 
 
 # ---- Departure-board request + parse --------------------------------------
@@ -414,586 +137,6 @@ def configure_logging() -> None:
     # workflow log without adding diagnostic value. Mirrors the existing
     # legacy-script pattern.
     logging.getLogger("urllib3").setLevel(logging.WARNING)
-
-
-def _query_departure_board(
-    session: requests.Session,
-    *,
-    when: datetime,
-    duration_min: int = DEPARTURE_BOARD_DURATION_MIN,
-    timeout: int = QUERY_TIMEOUT,
-) -> list[Mapping[str, Any]]:
-    """Call ``/departureBoard`` once at Wien Hauptbahnhof.
-
-    Returns the parsed ``Departure`` list (possibly empty). Validates
-    HTTP status, JSON shape, and the response wrapper (the VAO
-    serialiser can place the list at the top level under ``Departure``
-    OR nest it under ``DepartureBoard.Departure``; both shapes are
-    accepted).
-
-    The VAO daily quota is charged by the CALLER (before the circuit
-    breaker is consulted), not here: a quota breach is a local budget
-    signal and must not count as an upstream failure toward the breaker.
-    See the charge at the call site in the tick loop.
-    """
-
-    safe_timeout = max(1, min(timeout, MAX_QUERY_TIMEOUT))
-
-    params: dict[str, str] = {
-        "id": HAUPTBAHNHOF_VOR_ID,
-        "date": when.strftime("%Y-%m-%d"),
-        "time": when.strftime("%H:%M"),
-        "duration": str(duration_min),
-        # Filter on product classes Train (1) + S-Bahn (2). The
-        # post-filter in :func:`_is_sbahn_line` narrows further to
-        # S/R/REX/CJX line patterns, but the upstream filter saves us
-        # a ton of long-distance (RJ, IC, EC, NJ) entries in the
-        # response payload.
-        "products": "3",
-        # Enable server-side realtime data so ``rtTime`` is populated
-        # when available.
-        "rtMode": "SERVER_DEFAULT",
-        # The ``maxJourneys`` parameter is INTENTIONALLY OMITTED — it
-        # is a soft limit (``docs/reference/departureboard.md:22``)
-        # and omitting it lets VAO return every departure in the
-        # window, which is the point of the migration from the
-        # hard-capped ``/trip`` endpoint.
-    }
-
-    endpoint = f"{vor_provider.VOR_BASE_URL}departureBoard"
-
-    # Mirror the legacy script's response-handling pattern (read body
-    # before raising on HTTP error) so the downstream diagnostic
-    # helpers can inspect ``response.content`` even on 4xx/5xx.
-    response = request_safe(
-        session,
-        endpoint,
-        method="GET",
-        raise_for_status=False,
-        params=params,
-        headers={"Accept": "application/json"},
-        timeout=safe_timeout,
-        allowed_content_types=("application/json",),
-    )
-    if response.status_code >= 400:
-        raise requests.HTTPError(
-            f"VAO /departureBoard returned HTTP {response.status_code}",
-            response=response,
-        )
-
-    content = response.content
-
-    try:
-        # Security: ``loads_finite`` pins parse_constant + parse_float
-        # hooks (Round 1503 sibling) that reject NaN / Infinity / 1e1000
-        # literals from a compromised HAFAS VAO upstream / MITM. Without
-        # the hooks a planted non-finite literal in a departure-board
-        # payload propagates ``float('nan')`` / ``float('inf')`` into
-        # latency / delay arithmetic and round-trip-crashes the writer
-        # pin (Round 1485) on pending-trip state persistence.
-        payload = loads_finite(content)
-    except (ValueError, RecursionError) as exc:
-        # Drift defence (JSON Depth-Bomb): a depth-bomb body passes the
-        # size cap but blows the recursion limit on parse. Re-raise as
-        # ``ValueError`` so the caller's error-isolation branch runs
-        # without propagating the BaseException-rooted failure.
-        raise ValueError(
-            f"VAO /departureBoard returned unparseable JSON: {type(exc).__name__}: {exc}"
-        ) from exc
-
-    if not isinstance(payload, dict):
-        raise TypeError(
-            f"VAO /departureBoard returned non-dict payload: "
-            f"{type(payload).__name__}"
-        )
-
-    # VAO sometimes returns HTTP 200 with an error envelope —
-    # ``{"errorCode": "H730", "errorText": "..."}`` (quota / authentication
-    # errors are typical examples). Pre-fix the function silently
-    # returned ``[]`` for any payload without a ``Departure`` field,
-    # so an operator log showed a clean "0 departures" run while the
-    # real upstream state was an authentication failure. Surface the
-    # error explicitly so the caller's diagnostic branch logs it and
-    # the cron tick reports an error rather than success.
-    error_code = payload.get("errorCode")
-    if isinstance(error_code, str) and error_code:
-        error_text = payload.get("errorText")
-        text_part = f" ({error_text!r})" if isinstance(error_text, str) else ""
-        raise ValueError(
-            f"VAO /departureBoard returned errorCode "
-            f"{error_code!r}{text_part}"
-        )
-
-    # Response shape variants seen in the wild (audit docs 2026-02):
-    #   * ``{"Departure": [...]}`` — modern flat shape
-    #   * ``{"DepartureBoard": {"Departure": [...]}}`` — nested shape
-    # Accept either.
-    raw_deps: Any
-    if "DepartureBoard" in payload:
-        board = payload["DepartureBoard"]
-        if isinstance(board, Mapping):
-            raw_deps = board.get("Departure")
-        else:
-            raw_deps = None
-    else:
-        raw_deps = payload.get("Departure")
-
-    if raw_deps is None:
-        return []
-    if isinstance(raw_deps, Mapping):
-        # Single-element responses are sometimes serialised as the bare
-        # object rather than a one-element list.
-        return [raw_deps]
-    if not isinstance(raw_deps, list):
-        raise TypeError(
-            f"VAO /departureBoard Departure field has unexpected type: "
-            f"{type(raw_deps).__name__}"
-        )
-    return [d for d in raw_deps if isinstance(d, Mapping)]
-
-
-def _is_sbahn_line(name: str) -> bool:
-    """Return ``True`` if *name* matches the S/R/REX/CJX line-code pattern.
-
-    Mirrors the legacy ``_is_sbahn_leg`` line-name check but operates
-    on a bare string (the departure's ``name`` field) rather than a
-    full leg object. The regex is the same project-wide
-    :data:`_S_BAHN_LINE_RE` so any future widening propagates.
-    """
-
-    return bool(_S_BAHN_LINE_RE.match(name.strip()))
-
-
-def _track_trunk(track_value: object) -> str | None:
-    """Return the trunk number of a VAO ``track`` field, or ``None``.
-
-    Normalises:
-
-    * Leading zeros: ``"01"`` → ``"1"``.
-    * Sub-platform suffix: ``"1A"`` / ``"1B"`` → ``"1"``;
-      ``"10A-B"`` → ``"10"``.
-    * Whitespace padding: ``"  1  "`` → ``"1"``.
-
-    Returns ``None`` for ``None`` / empty / non-leading-digit inputs
-    (e.g., a VAO response that omits ``track`` entirely or reports a
-    non-numeric value like ``"Gleis A"``).
-    """
-
-    if track_value is None:
-        return None
-    if isinstance(track_value, bool):
-        # ``int(True) == 1`` so a stray boolean in the response would
-        # otherwise produce trunk ``"1"`` and falsely whitelist a
-        # bogus departure as Stammstrecke. Strict refusal is the
-        # safer default — VAO's documented ``track`` shape is a
-        # string, never a boolean.
-        return None
-    text = track_value if isinstance(track_value, str) else str(track_value)
-    match = _TRACK_TRUNK_RE.match(text)
-    if match is None:
-        return None
-    return match.group(1)
-
-
-def _extract_track_string(dep: Mapping[str, Any]) -> str | None:
-    """Return the effective track string for *dep* (rtTrack preferred).
-
-    Field-name priority mirrors the VAO Handbuch §11 + §13 inventory:
-
-    * ``rtTrack`` — realtime track at the station-board / trip departure.
-    * ``rtDepTrack`` — realtime departure-track in journey-detail shape.
-    * ``track`` — scheduled station-board / trip track.
-    * ``depTrack`` — scheduled departure-track in journey-detail shape.
-
-    Realtime fields override scheduled fields so an unscheduled
-    platform change during a disruption is respected. Returns
-    ``None`` when none of the candidates carries a non-empty string.
-    """
-
-    for key in ("rtTrack", "rtDepTrack", "track", "depTrack"):
-        value = dep.get(key)
-        if value is None:
-            continue
-        text = value if isinstance(value, str) else str(value)
-        if text.strip():
-            return text
-    return None
-
-
-def _departure_line_name(dep: Mapping[str, Any]) -> str:
-    """Extract the line designation from a ``/departureBoard`` entry.
-
-    VAO emits the line in several spots depending on serialiser
-    version:
-
-    * Top-level ``name`` field (e.g., ``"S 1"`` or ``"REX 3"``);
-    * Nested ``Product[].line`` or ``Product[].displayNumber`` or
-      ``Product[].name``.
-
-    Returns the first non-empty hit, or empty string when none of the
-    fields are populated.
-    """
-
-    top = str(dep.get("name") or "").strip()
-    if top:
-        return top
-    products = dep.get("Product")
-    if isinstance(products, list):
-        candidates = [p for p in products if isinstance(p, Mapping)]
-    elif isinstance(products, Mapping):
-        candidates = [products]
-    else:
-        candidates = []
-    for product in candidates:
-        for key in ("line", "displayNumber", "name"):
-            v = str(product.get(key) or "").strip()
-            if v:
-                return v
-    return ""
-
-
-def _departure_is_cancelled(dep: Mapping[str, Any]) -> bool:
-    """Return ``True`` when *dep* is flagged as cancelled.
-
-    VAO serialises the cancellation flag both as a JSON boolean and as
-    the literal string ``"true"`` depending on the response variant;
-    both shapes are observed in production payloads and both must
-    surface as cancellations in the statistics ledger. Other truthy
-    spellings (``"yes"``, ``"1"``, …) are deliberately refused — the
-    field is a contracted boolean, and accepting fuzzy strings would
-    open the door to false positives from a hand-edited / poisoned
-    cache.
-    """
-
-    cancelled = dep.get("cancelled")
-    if cancelled is True:
-        return True
-    if isinstance(cancelled, str) and cancelled.strip().lower() == "true":
-        return True
-    return False
-
-
-def _departure_delay_minutes(dep: Mapping[str, Any]) -> float | None:
-    """Return the departure delay in fractional minutes, or ``None``.
-
-    Same conservative-skip rules as the legacy
-    ``_leg_departure_delay_minutes`` but reads from the DEPARTURE-level
-    fields rather than from a nested ``Leg.Origin`` substructure:
-
-    * Cancelled departures return ``None`` (cancelled trains are
-      ``absent``, not ``delayed`` — counting them as delay-zero
-      systematically biases the sample downward).
-    * Missing ``rtTime`` returns ``None`` (no realtime signal — VAO
-      omits ``rtTime`` both for on-time AND for genuinely-unknown
-      trains, so coercing missing data to ``0.0`` would the
-      88%-zeros bias documented in the legacy script's docstring).
-    * Unparseable schedule or realtime fields return ``None``
-      (malformed entries are dropped, not silently coerced).
-    """
-
-    if _departure_is_cancelled(dep):
-        return None
-
-    sched_date = dep.get("date")
-    sched_time = dep.get("time")
-    scheduled = _parse_vao_dt(sched_date, sched_time)
-    if scheduled is None:
-        return None
-
-    rt_time = dep.get("rtTime") or dep.get("rtDepTime")
-    if not rt_time:
-        return None
-
-    rt_date_explicit = dep.get("rtDate") or dep.get("rtDepDate")
-    rt_date = rt_date_explicit or sched_date
-    actual = _parse_vao_dt(rt_date, rt_time)
-    if actual is None:
-        return None
-
-    # Midnight-rollover heuristic: when VAO omits ``rtDate`` (we fell
-    # back to ``sched_date``) AND the resulting ``actual`` lies more
-    # than 12 h BEFORE ``scheduled``, the realtime departure has
-    # crossed midnight relative to the schedule (e.g. scheduled
-    # 23:55, rtTime "00:05" → actual computed as same-day 00:05 yields
-    # a meaningless ≈-23:50 h "delay"). Bump ``actual`` by one day so
-    # the recorded delay reflects the true wall-clock difference. The
-    # 12 h threshold separates a legitimate (small-magnitude) early
-    # departure from a midnight wrap.
-    if rt_date_explicit is None and (scheduled - actual) > timedelta(hours=12):
-        actual = actual + timedelta(days=1)
-    # Symmetric wrap: a leg scheduled just AFTER midnight (e.g. 00:05)
-    # that departs a few minutes early (rtTime "23:54", i.e. the previous
-    # day) yields a same-day 23:54 ``actual`` and a bogus ≈ +23h49m
-    # "delay". Pull ``actual`` back one day so the recorded delay is the
-    # true small negative value (≈ −11 min) instead of ~+1429 min.
-    elif rt_date_explicit is None and (actual - scheduled) > timedelta(hours=12):
-        actual = actual - timedelta(days=1)
-
-    # A real-time reading twelve hours or more from the plan is not this
-    # train's delay; the same twelve hours the wrap above uses to tell a
-    # small early or late departure from another day. On 08.06.2026 the
-    # 20:00 board gave three Praterstern trains (S2 20:15, REX3 20:20,
-    # S3 20:27) a real time about 20 hours after the plan (1160, 1199 and
-    # 1196 minutes), with the next day as ``rtDate``; their tick row read
-    # 395.33 minutes, the year's maximum on the website, and lifted the
-    # 20h and Monday means. The largest reading besides them was 85
-    # minutes. Such an entry counts as one without a real-time reading:
-    # the train keeps the last plausible reading of an earlier tick.
-    if abs(actual - scheduled) >= IMPLAUSIBLE_DELAY:
-        return None
-
-    return _elapsed_minutes(scheduled, actual)
-
-
-@dataclass(frozen=True)
-class _CollectionDiagnostics:
-    """Per-tick filter diagnostics for operator logging.
-
-    The collection step drops every Departure that fails one of three
-    independent gates (non-S-Bahn-line / non-Stammstrecke track /
-    missing rtTime for non-cancelled trains). Each drop reason
-    surfaces as a separate counter so the operator log can pin the
-    dominant failure mode after a tick. Direction-classification no
-    longer produces a drop reason — the hybrid geographic-plus-track
-    resolver in :func:`_collect_hbf_observations` is exhaustive.
-
-    Fields:
-
-    * ``dropped_no_track`` — count of departures dropped because the
-      VAO response did not populate ``track``/``rtTrack`` at all.
-      A persistently-high value points to an upstream serialiser drift
-      (VAO releasing departures without platform info for the queried
-      station).
-    * ``dropped_non_stammstrecke_track`` — count of departures whose
-      effective track normalised to a trunk OTHER than ``1`` or ``2``
-      (i.e., not a Stammstrecke platform). High values are healthy
-      — they reflect long-distance Railjet / IC / EC / NJ services
-      and eastward REX / S60 / S80 / Westbahn departures that pass
-      through Hbf but never touch the Stammstrecke tunnel.
-    * ``cancelled_observed`` — count of Stammstrecke departures whose
-      ``cancelled`` flag was ``True`` and which were forwarded to the
-      pending-trip ledger for cancellation finalisation. Pre-fix the
-      collector silently dropped these, masking real outages from the
-      statistics dashboard; the counter is the observability hook so
-      operators can spot a sudden spike without reading the CSV.
-    """
-
-    dropped_no_track: int
-    dropped_non_stammstrecke_track: int
-    cancelled_observed: int = 0
-    #: S-Bahn departures on a Stammstrecke platform (or cancelled without
-    #: one), counted before the realtime gate: a train without ``rtTime``
-    #: is still a train on the board. Feeds ``poll_status.json``.
-    on_stammstrecke: int = 0
-
-
-def _collect_hbf_observations(
-    departures: Iterable[Any],
-) -> tuple[dict[str, list[_SbahnLegObservation]], _CollectionDiagnostics]:
-    """Filter + direction-classify a ``/departureBoard`` Departure list.
-
-    Returns a 2-tuple:
-
-    * ``{direction_label: [observations]}`` ready to feed to
-      :func:`_observe_legs` per-direction. Keys are always present
-      (empty list when no departures matched that direction).
-    * :class:`_CollectionDiagnostics` — per-failure-mode drop counters
-      plus the cancellation-capture counter. The caller logs them at
-      INFO so operators can spot platform-info drift and
-      Stammstrecke-foreign route patterns without scraping DEBUG output.
-
-    Filter pipeline (any failure drops the entry):
-
-    1. Departure entry is a :class:`Mapping`.
-    2. Line designation matches the S / R / REX pattern (``S1``,
-       ``REX 3``, ``R 81`` — :func:`_is_sbahn_line`). Long-distance
-       products (RJ, IC, EC, NJ, ICE, CAT, WB) are rejected here.
-    3. **Effective track is Bahnsteig 1 or 2.** The deterministic
-       Stammstrecke gate: only the Wien Hbf platforms dedicated to the
-       S-Bahn Stammstrecke pass. Realtime track (``rtTrack`` /
-       ``rtDepTrack``) overrides scheduled track when present so a
-       mid-disruption platform change is respected. Long-distance
-       services on tracks 3-12 and Marchegg / Bratislava / Sopron-bound
-       REX trains on the Ostbahn platforms are all rejected here.
-    4. Scheduled timestamp parses to a :class:`datetime`.
-    5. **Cancellation captured** — a cancelled departure is emitted
-       as an observation with ``cancelled=True`` and a placeholder
-       ``delay_minutes=0.0``. The pending-trip ledger then routes the
-       train to ``data/stats/ausfaelle_<YYYY>.csv`` at finalise time
-       instead of folding it into the delay mean (which would
-       systematically bias the mean toward zero — a cancelled train
-       is *absent*, not *on-time*). Pre-fix the collector silently
-       dropped cancelled departures, hiding real outages from the
-       statistics dashboard.
-    6. Non-cancelled departures need a realtime signal (``rtTime``
-       populated) — the conservative legacy rule, preserved verbatim.
-    7. **Direction resolution (hybrid)** — the ``direction`` string is
-       looked up in the central station directory
-       (:func:`station_info`); when a known terminus carries a
-       latitude, the geographic comparison against
-       :data:`HBF_REFERENCE_LATITUDE` labels the observation
-       (``"Praterstern"`` for northern destinations, ``"Meidling"``
-       for southern). An unknown terminus, or one without
-       coordinates, falls back to the track-trunk it survived: trunk
-       ``"1"`` → ``"Meidling"``, trunk ``"2"`` → ``"Praterstern"``.
-       The fallback is exhaustive because the track-trunk gate
-       already constrained ``track_trunk`` to ``{"1", "2"}``, so no
-       train is dropped here.
-
-    Compatible with :func:`_observe_legs` via the
-    :class:`_SbahnLegObservation` shape (``name``, ``scheduled``,
-    ``delay_minutes``, ``cancelled``); the ``direction`` field of the
-    observation is implicit in which list it lives in.
-    """
-
-    by_direction: dict[str, list[_SbahnLegObservation]] = {
-        label: [] for label in DIRECTION_LABELS
-    }
-    dropped_no_track = 0
-    dropped_non_stammstrecke_track = 0
-    cancelled_observed = 0
-    on_stammstrecke = 0
-
-    for dep in departures:
-        if not isinstance(dep, Mapping):
-            continue
-
-        raw_line = _departure_line_name(dep)
-        if not raw_line:
-            continue
-        if not _is_sbahn_line(raw_line):
-            continue
-        name = _canonical_line_name(raw_line)
-        if not name:
-            continue
-
-        # Compute cancellation up front so the track-gate below can let
-        # cancelled departures through without ``rtTrack`` — same
-        # rationale as the cancellation-before-rtTime-gate documented
-        # below. A cancelled S-Bahn train at Hbf often has its
-        # ``rtTrack`` removed by VAO (the train will never arrive at
-        # any platform), so the strict track gate would otherwise
-        # silently undercount outages in
-        # ``data/stats/ausfaelle_<YYYY>.csv``.
-        cancelled = _departure_is_cancelled(dep)
-
-        # Platform-level Stammstrecke gate. Applied EARLY (before the
-        # rtTime / direction resolution) so the diagnostic counters
-        # attribute every drop to its primary cause: a long-distance
-        # train on track 7 is counted as ``non-Stammstrecke track``
-        # rather than masked behind a downstream filter.
-        track_text = _extract_track_string(dep)
-        track_trunk: str | None
-        if track_text is None:
-            # Cancelled-no-track: keep so terminus-based direction
-            # resolution can still classify the outage. Non-cancelled
-            # departures with no track are genuinely unclassifiable
-            # and still drop here.
-            if not cancelled:
-                dropped_no_track += 1
-                continue
-            track_trunk = None
-        else:
-            track_trunk = _track_trunk(track_text)
-            if track_trunk is None or track_trunk not in STAMMSTRECKE_HBF_TRACK_TRUNKS:
-                dropped_non_stammstrecke_track += 1
-                continue
-        on_stammstrecke += 1
-
-        sched_date = dep.get("date")
-        sched_time = dep.get("time")
-        scheduled = _parse_vao_dt(sched_date, sched_time)
-        if scheduled is None:
-            continue
-
-        # Cancellation already decided above; the cancellation path
-        # uses ``delay_minutes=0.0`` as a placeholder while the
-        # observation is routed to the Ausfaelle ledger.
-        if not cancelled:
-            delay_value = _departure_delay_minutes(dep)
-            if delay_value is None:
-                continue
-        else:
-            delay_value = 0.0
-
-        # Hybrid direction resolution: directory lookup + geographic
-        # latitude split, with the surviving track trunk as the
-        # deterministic fallback. The track-trunk gate above already
-        # restricted ``track_trunk`` to ``{"1", "2"}``, so the
-        # fallback is exhaustive and no observation is dropped for an
-        # unrecognised terminus.
-        direction_str = str(dep.get("direction") or "").strip()
-        info = station_info(direction_str)
-        direction: str | None = None
-        if info is not None and info.latitude is not None:
-            if info.latitude > HBF_REFERENCE_LATITUDE:
-                direction = DIRECTION_LABEL_NORTHBOUND
-            elif info.latitude < HBF_REFERENCE_LATITUDE:
-                direction = DIRECTION_LABEL_SOUTHBOUND
-        if direction is None:
-            if track_trunk == "1":
-                direction = DIRECTION_LABEL_SOUTHBOUND
-            elif track_trunk == "2":
-                direction = DIRECTION_LABEL_NORTHBOUND
-        if direction is None:
-            # Reachable on the cancelled-no-track path when terminus
-            # lookup also failed (unknown destination or no recorded
-            # latitude). Drop these genuinely unclassifiable
-            # cancellations rather than misroute them into an
-            # arbitrary direction bucket. For the normal
-            # track-known path the trunk-fallback above is
-            # exhaustive (``track_trunk`` ∈ ``{"1", "2"}``), so this
-            # guard never fires there.
-            continue
-
-        observation = _SbahnLegObservation(
-            name=name,
-            scheduled=scheduled,
-            delay_minutes=delay_value,
-            cancelled=cancelled,
-        )
-        by_direction[direction].append(observation)
-        if cancelled:
-            cancelled_observed += 1
-
-    return (
-        by_direction,
-        _CollectionDiagnostics(
-            dropped_no_track=dropped_no_track,
-            dropped_non_stammstrecke_track=dropped_non_stammstrecke_track,
-            cancelled_observed=cancelled_observed,
-            on_stammstrecke=on_stammstrecke,
-        ),
-    )
-
-
-def _log_track_drops(
-    dropped_no_track: int, dropped_non_stammstrecke_track: int
-) -> None:
-    """Surface track-filter drop counts at INFO when non-zero.
-
-    Two independent signals:
-
-    * ``dropped_no_track`` — VAO response omitted ``track``/``rtTrack``
-      entirely for these departures. A persistently-high value is
-      a serialiser-drift alarm: Wien Hbf is a major station and
-      should always carry platform info. Operators investigate.
-    * ``dropped_non_stammstrecke_track`` — effective track resolved to
-      a trunk other than ``1``/``2``. A *healthy* count: it reflects
-      the long-distance + Ostbahn + Westbahn + S60/S80 departures
-      that legitimately don't use the Stammstrecke and are being
-      correctly excluded by the platform gate.
-    """
-
-    if not dropped_no_track and not dropped_non_stammstrecke_track:
-        return
-    LOGGER.info(
-        "Stammstrecke (Hbf): Track-Filter — %d Abfahrt(en) ohne Bahnsteig-"
-        "Info verworfen, %d Abfahrt(en) auf Nicht-Stammstrecke-Bahnsteig "
-        "(Gleis != 1/2) verworfen.",
-        dropped_no_track,
-        dropped_non_stammstrecke_track,
-    )
 
 
 # ---- Main flow ------------------------------------------------------------
@@ -1017,32 +160,6 @@ def _failure_reason(exc: BaseException) -> str:
     """Type and masked message of a failed poll (:func:`vor.describe_failure`)."""
 
     return vor_provider.describe_failure(exc)
-
-
-def _count_readable_departures(departures: Iterable[Any]) -> int:
-    """Departures that carry every field the monitor reads.
-
-    A line name, a parseable scheduled date and time, and a platform (a
-    cancelled train may lack the platform). Independent of the S-Bahn and
-    platform gates: a Railjet on platform 7 is a perfectly readable
-    departure. When a board lists departures and *none* is readable, the
-    answer is incomplete (:func:`src.utils.stammstrecke_poll.answer_is_incomplete`)
-    — a train-less board and a board whose fields went missing must not
-    look the same.
-    """
-
-    readable = 0
-    for dep in departures:
-        if not isinstance(dep, Mapping):
-            continue
-        if not _departure_line_name(dep):
-            continue
-        if _parse_vao_dt(dep.get("date"), dep.get("time")) is None:
-            continue
-        if _extract_track_string(dep) is None and not _departure_is_cancelled(dep):
-            continue
-        readable += 1
-    return readable
 
 
 def _process_tick(
@@ -1242,38 +359,6 @@ def _emit_workflow_warning(title: str, message: str) -> None:
     safe_title = utils_logging.sanitize_log_arg(title).replace("\n", " ")
     safe_message = utils_logging.sanitize_log_arg(message).replace("\n", " ")
     print(f"::warning title={safe_title}::{safe_message}", flush=True)
-
-
-# A VAO entry named by its train number ("S28809", "CJX2932") instead of its
-# line. From 19.05. to 07.07.2026 the departure board listed trains twice
-# in the same answer: under the line ("S2") and under the number, at the
-# same minute in the same direction (113 of the 122 number entries). The
-# identity key holds the name, so both were finalised: six trains stood
-# twice in the cancellation ledger, three that ran (only their number entry
-# said cancelled) stood there once, and running pairs counted twice in the
-# mean delay of their tick.
-_TRAIN_NUMBER_NAME_RE = re.compile(r"^(?:S|REX|R|CJX)\d{4,}$")
-
-
-def _without_train_number_twins(trips: Sequence[Any]) -> list[Any]:
-    """*trips* without a train-number entry whose train a line entry already names.
-
-    One departure per minute and direction leaves Wien Hbf on the
-    Stammstrecke, so a train-number entry at the minute of a line entry is
-    the same train: the line entry stands for it, cancelled or running. A
-    train-number entry without such a twin stays (it counts under "ohne
-    Linienangabe" in the statistics).
-    """
-    lined = {
-        trip.scheduled
-        for trip in trips
-        if not _TRAIN_NUMBER_NAME_RE.match(trip.name.strip())
-    }
-    return [
-        trip
-        for trip in trips
-        if not (_TRAIN_NUMBER_NAME_RE.match(trip.name.strip()) and trip.scheduled in lined)
-    ]
 
 
 def _report_silent_directions(now: datetime) -> list[str]:
@@ -1542,10 +627,9 @@ def main() -> int:
     return 0
 
 
-if __name__ == "__main__":  # pragma: no cover - CLI entry point
-    raise SystemExit(main())
-
-
+# Public names of this script: its own entry points and the names other
+# files and tests read through it. The code lives in src/ (700-line limit,
+# 2026-11-02); listing the imports marks them as deliberate re-exports.
 __all__ = [
     "DEPARTURE_BOARD_DURATION_MIN",
     "DIRECTION_LABELS",
@@ -1557,4 +641,24 @@ __all__ = [
     "LEGACY_DIRECTION_LABEL_NORTHBOUND",
     "STAMMSTRECKE_HBF_TRACK_TRUNKS",
     "main",
+    "MAX_QUERY_TIMEOUT",
+    "QUERY_TIMEOUT",
+    "_S_BAHN_LINE_RE",
+    "_canonical_line_name",
+    "_elapsed_minutes",
+    "_parse_vao_dt",
+    "_SbahnLegObservation",
+    "_TRACK_TRUNK_RE",
+    "_is_sbahn_line",
+    "_track_trunk",
+    "_extract_track_string",
+    "_departure_line_name",
+    "_departure_is_cancelled",
+    "_departure_delay_minutes",
+    "_CollectionDiagnostics",
+    "_TRAIN_NUMBER_NAME_RE",
 ]
+
+
+if __name__ == "__main__":  # pragma: no cover - CLI entry point
+    raise SystemExit(main())

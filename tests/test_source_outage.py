@@ -332,7 +332,7 @@ def test_health_check_names_a_partial_outage(monkeypatch: pytest.MonkeyPatch) ->
         stdout = ""
         stderr = "WARNING Baustellen: Layer BAUSTELLENLINOGD nicht abrufbar – letzte gute Antwort verwendet."
 
-    monkeypatch.setattr("scripts.health_check.subprocess.run", lambda *a, **k: Done())
+    monkeypatch.setattr("src.health_check.sources.subprocess.run", lambda *a, **k: Done())
     check = health_check.check_source("Baustellen", "update_baustellen_cache.py")
     assert not check.ok
     assert "Teil der Quelle" in check.summary

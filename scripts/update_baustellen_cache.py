@@ -5,20 +5,12 @@ from __future__ import annotations
 
 import json
 import logging
-import math
 import os
-import re
 import sys
-from dataclasses import dataclass
-from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Any, Final
-from collections.abc import Iterable, Sequence
-from urllib.parse import quote, urlparse
+from typing import Any
 
-from dateutil import parser as dtparser
 from requests.exceptions import RequestException
-from zoneinfo import ZoneInfo
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 # Only the repository root goes on the path: every project module is
@@ -27,16 +19,66 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from src.feed.logging_safe import setup_script_logging  # noqa: E402
-from src.providers.baustellen import is_transit_relevant, oepnv_lead  # noqa: E402
+from src.providers.baustellen import is_transit_relevant  # noqa: E402
 from src.utils import raw_capture  # noqa: E402
 from src.utils.cache import DataDegradationError, cache_modified_at, write_cache  # noqa: E402
 from src.utils.env import _path_fingerprint  # noqa: E402
 from src.utils.files import loads_finite, read_capped_json  # noqa: E402
 from src.utils.http import fetch_content_safe, session_with_retries, validate_http_url  # noqa: E402
-from src.utils.ids import make_guid  # noqa: E402
 from src.utils.logging import sanitize_log_arg  # noqa: E402
-from src.utils.serialize import serialize_for_cache  # noqa: E402
-from src.utils.source_shape import MIN_RECORDS, missing_fields  # noqa: E402
+# ``as`` re-exports explicitly: the feature parsing and the WFS helpers
+# live in ``src/providers/``; tests and callers read them from here.
+from src.providers.baustellen_events import (  # noqa: E402
+    DEFAULT_INFO_URL as DEFAULT_INFO_URL,
+    VIENNA_TZ as VIENNA_TZ,
+    TITLE_KEYS as TITLE_KEYS,
+    STREET_KEYS as STREET_KEYS,
+    FROM_KEYS as FROM_KEYS,
+    TO_KEYS as TO_KEYS,
+    INFO_KEYS as INFO_KEYS,
+    START_KEYS as START_KEYS,
+    END_KEYS as END_KEYS,
+    ConstructionEvent as ConstructionEvent,
+    _iter_features as _iter_features,
+    _feature_list as _feature_list,
+    _first_match as _first_match,
+    _parse_datetime as _parse_datetime,
+    _parse_range as _parse_range,
+    _UTC_DATE_RE as _UTC_DATE_RE,
+    _start_is_utc_date as _start_is_utc_date,
+    _first_day as _first_day,
+    _normalize_datetime as _normalize_datetime,
+    _build_context as _build_context,
+    _MAX_COORD_DEPTH as _MAX_COORD_DEPTH,
+    _first_lonlat as _first_lonlat,
+    _build_location as _build_location,
+    _format_description as _format_description,
+    _UPSTREAM_TITLE_CAP as _UPSTREAM_TITLE_CAP,
+    _mark_upstream_truncation as _mark_upstream_truncation,
+    _feature_to_event as _feature_to_event,
+    _RAW_VOLATILE_PROPERTIES as _RAW_VOLATILE_PROPERTIES,
+    _raw_snapshot as _raw_snapshot,
+    _raw_sort_key as _raw_sort_key,
+    _collect_events as _collect_events,
+)
+from src.providers.baustellen_wfs import (  # noqa: E402
+    DEFAULT_DATA_URL as DEFAULT_DATA_URL,
+    _BAUSTELLEN_TYPENAMES as _BAUSTELLEN_TYPENAMES,
+    _OUTPUT_FORMAT_CANDIDATES as _OUTPUT_FORMAT_CANDIDATES,
+    DEFAULT_FALLBACK_PATH as DEFAULT_FALLBACK_PATH,
+    _BAUSTELLEN_TRUSTED_HOSTS as _BAUSTELLEN_TRUSTED_HOSTS,
+    _validated_baustellen_data_url as _validated_baustellen_data_url,
+    _resolve_data_url as _resolve_data_url,
+    _with_output_format as _with_output_format,
+    _with_typename as _with_typename,
+    _resolve_fallback_path as _resolve_fallback_path,
+    _LAYER_MIN as _LAYER_MIN,
+    _properties as _properties,
+    _feature_position as _feature_position,
+    _LAYER_REQUIRED as _LAYER_REQUIRED,
+    _usable_layer as _usable_layer,
+    _from_snapshot as _from_snapshot,
+)
 
 # Security cap against wide-but-flat JSON size-bomb attacks on the
 # bundled fallback geojson. The depth-bomb catch alone misses
@@ -51,48 +93,11 @@ MAX_JSON_FILE_BYTES = 50 * 1024 * 1024
 LOGGER = logging.getLogger("update_baustellen_cache")
 
 
-DEFAULT_DATA_URL = (
-    "https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0"
-    "&typeName=ogdwien:BAUSTELLENLINOGD&srsName=EPSG:4326&outputFormat=json"
-)
-
-# The Stadt-Wien OGD migration (GeoServer "geoserverneuogd") split the old
-# single ``BAUSTELLEOGD`` layer into two "verkehrswirksame Baustellen"
-# feature types — one for line segments, one for point locations. Both are
-# fetched and merged so neither geometry kind is lost.
-_BAUSTELLEN_TYPENAMES: tuple[str, ...] = (
-    "ogdwien:BAUSTELLENLINOGD",
-    "ogdwien:BAUSTELLENPKTOGD",
-)
-
-# WFS servers disagree on the token that selects GeoJSON output: GeoServer
-# accepts ``json`` / ``application/json``, MapServer wants ``geojson`` /
-# ``GEOJSON``. When the configured token is not honoured the endpoint
-# answers with a GML / XML ServiceException (Content-Type
-# ``application/xml``) — which the strict ``_fetch_remote`` content-type
-# pin then (correctly) rejects, leaving the cron stuck on the bundled
-# fallback. Negotiating across the known tokens lets the fetch self-heal
-# across an upstream server/config change WITHOUT relaxing that pin: each
-# attempt still has to return a JSON content-type and parse as a GeoJSON
-# object, so a WAF/error page never slips through.
-_OUTPUT_FORMAT_CANDIDATES: tuple[str, ...] = (
-    "json",
-    "application/json",
-    "geojson",
-    "GEOJSON",
-)
-
 # Upper bound for the read-only diagnostic snippet logged when the WFS
 # refuses every outputFormat. An OGC ``ServiceExceptionReport`` naming the
 # offending parameter fits comfortably in 2 KiB; the cap keeps a hostile /
 # oversized upstream body from being buffered into the log.
 _DIAGNOSTIC_MAX_BYTES = 2048
-# Item link: the Stadt Wien page listing the current construction sites. The
-# former data.gv.at catalogue page answers 404 since the portal moved
-# (checked 17.10.2026); the feed also links every Stadt Wien item there.
-DEFAULT_INFO_URL = "https://www.wien.gv.at/verkehr/baustellen"
-DEFAULT_FALLBACK_PATH = REPO_ROOT / "data" / "samples" / "baustellen_sample.geojson"
-VIENNA_TZ = ZoneInfo("Europe/Vienna")
 USER_AGENT = "Origamihase-wien-oepnv/3.1 (+https://github.com/Origamihase/wien-oepnv)"
 
 # Security: ``MAX_BAUSTELLEN_TIMEOUT`` is the Slowloris-defence ceiling for the
@@ -107,115 +112,6 @@ USER_AGENT = "Origamihase-wien-oepnv/3.1 (+https://github.com/Origamihase/wien-o
 # ``src/feed/config.py``.
 DEFAULT_BAUSTELLEN_TIMEOUT = 20
 MAX_BAUSTELLEN_TIMEOUT = DEFAULT_BAUSTELLEN_TIMEOUT
-
-TITLE_KEYS: tuple[str, ...] = (
-    "BEZEICHNUNG",
-    "MASSNAHME",
-    "MASSNAHME_TEXT",
-    "BAUMASSNAHME",
-    "TITLE",
-    "NAME",
-)
-STREET_KEYS: tuple[str, ...] = (
-    "STRASSE",
-    "STRASSENNAME",
-    "STRASSEN",
-    "STR",
-)
-FROM_KEYS: tuple[str, ...] = (
-    "VON",
-    "ABSCHNITT_VON",
-    "VON_NR",
-    "VON_KM",
-)
-TO_KEYS: tuple[str, ...] = (
-    "BIS",
-    "ABSCHNITT_BIS",
-    "BIS_NR",
-    "BIS_KM",
-)
-INFO_KEYS: tuple[str, ...] = (
-    "PRESSETEXT",
-    "HINWEIS",
-    "INFO",
-    "BESCHREIBUNG",
-    "BEMERKUNG",
-    "DETAIL",
-    "DETAILS",
-    "ANMERKUNG",
-)
-START_KEYS: tuple[str, ...] = (
-    "OBJEKT_BEGINN",
-    "ANFANGSZEIT",
-    "BEGINN",
-    "BEGINN_DATUM",
-    "BEGINNZEIT",
-    "START",
-    "START_DATUM",
-    "STARTZEIT",
-    "DATUM_VON",
-    "VON_DATUM",
-)
-END_KEYS: tuple[str, ...] = (
-    "OBJEKT_ENDE",
-    "ENDEZEIT",
-    "ENDE",
-    "END_DATUM",
-    "ENDZEIT",
-    "ENDE_DATUM",
-    "DATUM_BIS",
-    "BIS_DATUM",
-    # NB: bare "BIS" is intentionally NOT an end-date key. It is a spatial
-    # "to" descriptor (sibling of BIS_NR / BIS_KM / ABSCHNITT_BIS in
-    # TO_KEYS); the explicit date variants are DATUM_BIS / BIS_DATUM. Since
-    # _parse_datetime uses the lenient dateutil parser, a spatial value such
-    # as a bare house number ("22") would otherwise be misread as a date
-    # (day-of-current-month), planting a bogus ends_at/GUID and risking the
-    # item being aged out as already-expired.
-)
-
-
-@dataclass(slots=True)
-class ConstructionEvent:
-    """Internal representation for cache items."""
-
-    guid: str
-    title: str
-    description: str
-    starts_at: datetime | None
-    ends_at: datetime | None
-    pub_date: datetime
-    source: str = "Stadt Wien – Baustellen"
-    category: str = "Baustelle"
-    link: str = DEFAULT_INFO_URL
-    context: dict[str, Any] | None = None
-    location: dict[str, Any] | None = None
-
-    def to_item(self) -> dict[str, Any]:
-        item: dict[str, Any] = {
-            "source": self.source,
-            "category": self.category,
-            "title": self.title,
-            "description": self.description,
-            "link": self.link,
-            "guid": self.guid,
-            "pubDate": self.pub_date,
-            # ``starts_at`` is a schema-required key (events.schema.json) that
-            # every other provider (WL/ÖBB/Stammstrecke) always emits, with a
-            # null value when unknown. Emit it unconditionally here too — the
-            # former ``if self.starts_at`` guard dropped the key entirely for a
-            # Baustelle without a parseable start date, producing a cache item
-            # that violates the published schema. ``ends_at`` stays optional
-            # (it is NOT in the schema's ``required`` set).
-            "starts_at": self.starts_at,
-        }
-        if self.ends_at:
-            item["ends_at"] = self.ends_at
-        if self.context:
-            item["context"] = self.context
-        if self.location:
-            item["location"] = self.location
-        return item
 
 
 def configure_logging() -> None:
@@ -376,663 +272,7 @@ def _load_fallback(path: Path) -> dict[str, Any] | None:
     return payload
 
 
-# Security: only accept env overrides that point at the official Stadt Wien
-# Open-Data host. ``data_url`` content is parsed and merged into the public
-# Baustellen feed cache (titles, descriptions, item links). An env-var
-# override to ``https://evil.com`` therefore lets an attacker inject arbitrary
-# construction notices into the public feed and (via JSON ``properties.HINWEIS``
-# fields and similar) attach attacker-controlled text under the project's
-# brand. ``validate_http_url()`` only checks SSRF/DNS-rebinding properties,
-# not host identity.
-#
-# 2026-05-10 (HTTPS-only Provider URL Drift, Round 2 — ``scripts/`` sibling):
-# the validator additionally pins the scheme to ``https``. ``validate_http_url``
-# accepts both ``http`` and ``https``; without this pin, an env override such
-# as ``BAUSTELLEN_DATA_URL=http://data.wien.gv.at/...`` would be accepted, the
-# fetcher would issue a plaintext request, and an MITM (compromised network,
-# BGP hijack, hostile public WiFi gateway) could substitute arbitrary GeoJSON
-# that flows verbatim into the public ``docs/feed.xml`` artefact. Mirrors the
-# canonical ``validate_public_feed_url`` HTTPS-only pin
-# (``src/utils/http.py``) and the ``_validated_vor_base_url`` /
-# ``_validated_oebb_url`` / ``_validated_wl_base`` siblings closed by
-# PR #1415. The closing-checklist grep for that round was scoped to ``src/``
-# only, missing this ``scripts/`` cousin — see the journal entry of the same
-# date for the full closing-checklist rule update.
-_BAUSTELLEN_TRUSTED_HOSTS = frozenset({"data.wien.gv.at"})
-
-
-def _validated_baustellen_data_url(raw: str) -> str | None:
-    safe = validate_http_url(raw)
-    if not safe:
-        return None
-    parsed = urlparse(safe)
-    # Security: refuse plaintext HTTP — see header above.
-    if parsed.scheme.lower() != "https":
-        return None
-    host = (parsed.hostname or "").lower()
-    if host not in _BAUSTELLEN_TRUSTED_HOSTS:
-        return None
-    return safe
-
-
-def _resolve_data_url(candidate: str | None) -> str:
-    text = (candidate or "").strip()
-    if not text:
-        return DEFAULT_DATA_URL
-    validated = _validated_baustellen_data_url(text)
-    if validated is None:
-        # Security (Path-Log Sibling Drift Round 4, env-repr closure):
-        # ``text`` is the operator-controlled ``BAUSTELLEN_DATA_URL``
-        # value. Pre-fix the WARNING line interpolated it via ``%r`` —
-        # Python's repr() escapes most attack bytes but lets all 256
-        # Variation Selectors (U+FE00-U+FE0F + U+E0100-U+E01EF) through
-        # verbatim into ``record.args[0]`` and ``record.getMessage()``.
-        # Route through ``sanitize_log_arg`` so the canonical
-        # ``_INVISIBLE_DANGEROUS_RE`` strips them BEFORE the value lands
-        # in caplog / non-SafeFormatter handlers (mirrors the canonical
-        # contract from PR #1475).
-        LOGGER.warning(
-            "Baustellen: BAUSTELLEN_DATA_URL %s ist kein bekannter Stadt-Wien-OGD-Host; verwende Standard.",
-            sanitize_log_arg(text),
-        )
-        return DEFAULT_DATA_URL
-    return validated
-
-
-def _with_output_format(url: str, output_format: str) -> str:
-    """Return ``url`` with its ``outputFormat`` query value set to
-    ``output_format`` (appended if absent).
-
-    Only the ``outputFormat`` token is rewritten — every other byte of the
-    URL (scheme, host, ``typeName``/``srsName`` colons, …) is left
-    untouched, so the host pin already applied by :func:`_resolve_data_url`
-    still holds and ``_fetch_remote`` re-validates the result anyway. The
-    value is percent-encoded (``/`` kept readable, as WFS endpoints expect
-    for ``application/json``).
-    """
-    encoded = quote(output_format, safe="/")
-    if re.search(r"(?i)[?&]outputFormat=", url):
-        return re.sub(r"(?i)([?&]outputFormat=)[^&]*", lambda m: m.group(1) + encoded, url, count=1)
-    sep = "&" if "?" in url else "?"
-    return f"{url}{sep}outputFormat={encoded}"
-
-
-def _with_typename(url: str, typename: str) -> str:
-    """Return ``url`` with its ``typeName``/``typeNames`` query value set to
-    ``typename`` (appended if absent).
-
-    Only the type-name token is rewritten — scheme/host/path and the other
-    parameters are preserved, so the host pin from :func:`_resolve_data_url`
-    still holds (``_fetch_remote`` re-validates regardless). The ``ogdwien:``
-    workspace colon is kept readable.
-    """
-    encoded = quote(typename, safe=":")
-    if re.search(r"(?i)[?&]typeNames?=", url):
-        return re.sub(
-            r"(?i)([?&]typeNames?=)[^&]*", lambda m: m.group(1) + encoded, url, count=1
-        )
-    sep = "&" if "?" in url else "?"
-    return f"{url}{sep}typeName={encoded}"
-
-
-def _resolve_fallback_path(candidate: str | None) -> Path:
-    """Resolve the fallback-path env override against ``REPO_ROOT``.
-
-    Security: ``BAUSTELLEN_FALLBACK_PATH`` is read from the environment and
-    later passed to ``Path.read_text()``. Without containment, an env-var-
-    controlled path (or a symlink it points at, since ``resolve()`` follows
-    symlinks) could read any file the process can access — exposing JSON-
-    shaped local files via the generated feed. We mirror the
-    ``_resolve_path`` pattern used by ``src/providers/vor.py`` to keep the
-    fallback strictly inside the repository tree.
-    """
-    text = (candidate or "").strip()
-    if not text:
-        return DEFAULT_FALLBACK_PATH
-    raw_path = Path(text)
-    if raw_path.is_absolute():
-        resolved = raw_path.resolve()
-    else:
-        resolved = (REPO_ROOT / raw_path).resolve()
-    try:
-        resolved.relative_to(REPO_ROOT)
-    except ValueError:
-        LOGGER.warning(
-            "Baustellen: Pfad-Traversal erkannt oder Pfad außerhalb von %s: [path-sha256=%s]. Nutze Standard.",
-            REPO_ROOT,
-            _path_fingerprint(raw_path),
-        )
-        return DEFAULT_FALLBACK_PATH
-    return resolved
-
-
-def _iter_features(payload: dict[str, Any]) -> Iterable[dict[str, Any]]:
-    return _feature_list(payload) or []
-
-
-def _feature_list(payload: dict[str, Any]) -> list[dict[str, Any]] | None:
-    """The features of a WFS answer, or ``None`` when it carries no feature list."""
-    if payload.get("type") == "FeatureCollection":
-        features: Any = payload.get("features")
-    elif "features" in payload:
-        features = payload.get("features")
-    elif "data" in payload and isinstance(payload["data"], dict):
-        features = payload["data"].get("features")
-    else:
-        features = None
-    # Zero Trust: ``payload`` is verified as a dict by ``_load_json_from_content``
-    # / ``_load_fallback`` (top-level shape), but the ``features`` value extracted
-    # from it is still ``Any`` — a misbehaving / compromised upstream peer (or a
-    # tampered local fallback file) could ship a truthy non-list shape such as
-    # ``42``, ``True``, ``{"a":"b"}`` or ``"abc"``. The existing ``or []``
-    # collapses falsy values but lets truthy non-lists through; the resulting
-    # ``for f in features`` then either raises ``TypeError`` (int/bool) — which
-    # is not caught by ``_collect_events`` and crashes the whole cache update —
-    # or silently iterates dict keys / string characters and emits zero events
-    # (looking like an empty upstream). Mirror the ``for entry in payload`` /
-    # ``for item in payload`` shape guards landed for the sibling VOR mapping
-    # loaders (``_load_vor_mapping`` in ``scripts/enrich_station_aliases.py``,
-    # ``scripts/update_wl_stations.py``, ``src/providers/vor.py``) so the
-    # documented ``return None`` / ``return []`` fallback runs instead.
-    if not isinstance(features, list):
-        return None
-    return [f for f in features if isinstance(f, dict)]
-
-
-def _first_match(properties: dict[str, Any], keys: Sequence[str]) -> str | None:
-    for key in keys:
-        value = properties.get(key)
-        if isinstance(value, str) and value.strip():
-            return value.strip()
-    return None
-
-
-def _parse_datetime(value: str | float | int | None) -> datetime | None:
-    if value is None:
-        return None
-    if isinstance(value, int | float):
-        try:
-            return datetime.fromtimestamp(float(value), tz=VIENNA_TZ)
-        except (ValueError, OSError, OverflowError):
-            # ``OverflowError`` (NOT a ValueError/OSError subclass) is raised by
-            # ``datetime.fromtimestamp`` for an out-of-range epoch — e.g. a
-            # garbled WFS ``BEGINN``/``ENDE`` numeric field carrying ``1e20``
-            # (``loads_finite`` admits any finite number). Without this catch it
-            # propagated through ``_feature_to_event`` → ``_collect_events`` →
-            # ``main`` and crashed the whole baustellen cache update. Mirrors the
-            # ``OverflowError`` already caught in the string/dateutil branch below.
-            return None
-    # value is narrowed to str here by the type annotation and prior branches
-    candidate = value.strip()
-    if not candidate:
-        return None
-    # Stadt-Wien WFS emits date-only values with a trailing ``Z``
-    # (e.g. ``2026-03-22Z``), a shape ``dateutil`` rejects. The value is
-    # the UTC date of a Vienna time of day (see ``_UTC_DATE_RE`` below):
-    # it is read as Vienna midnight of that calendar day, and
-    # ``_first_day`` moves a start taken from such a value to the
-    # following day. Reading the ``Z`` as UTC midnight instead shifted
-    # the time of day by 1-2 h.
-    date_only_z = re.fullmatch(r"(\d{4}-\d{2}-\d{2})Z", candidate)
-    if date_only_z:
-        try:
-            return datetime.strptime(
-                date_only_z.group(1), "%Y-%m-%d"
-            ).replace(tzinfo=VIENNA_TZ)
-        except ValueError:
-            return None
-    try:
-        # Annotated so the result is a ``datetime`` for mypy with and without
-        # the dateutil stubs (without them ``parse`` returns ``Any``; CI has
-        # them since 2026-11-01, requirements-dev.txt).
-        parsed: datetime = dtparser.parse(candidate)
-    except (ValueError, OverflowError):
-        return None
-    if not parsed.tzinfo:
-        parsed = parsed.replace(tzinfo=VIENNA_TZ)
-    else:
-        parsed = parsed.astimezone(VIENNA_TZ)
-    return parsed
-
-
-def _parse_range(properties: dict[str, Any]) -> tuple[datetime | None, datetime | None]:
-    start = None
-    end = None
-    for key in START_KEYS:
-        start = _parse_datetime(properties.get(key))
-        if start:
-            break
-    for key in END_KEYS:
-        end = _parse_datetime(properties.get(key))
-        if end:
-            break
-    if start or end:
-        return start, end
-    duration_value = properties.get("DAUER") or properties.get("ZEITRAUM")
-    if isinstance(duration_value, str) and "/" in duration_value:
-        raw_start, raw_end = duration_value.split("/", 1)
-        start = _parse_datetime(raw_start)
-        end = _parse_datetime(raw_end)
-    return start, end
-
-
-# Der Beginn steht im WFS einen Kalendertag zu früh. Das ``Z`` eines
-# Datums wie ``2026-06-22Z`` ist eine echte Zeitzonenangabe: Die Stadt hält
-# Beginn und Ende als Wiener Zeitpunkte und gibt davon das UTC-Datum aus.
-# Der Beginn (Mitternacht in Wien) fällt dabei auf den Vortag, das Ende
-# (Ende des letzten Tages) bleibt auf seinem Datum. Gemessen am 2026-10-06
-# an allen 69 Baustellen der Cache-Historie seit Mai, deren Text selbst ein
-# Datum nennt: 13 von 13 nennen als ersten Tag der ersten Bauphase den Tag
-# NACH ``OBJEKT_BEGINN`` ("Bauphase 1 von 2 (23.06.2026 bis 28.08.2026)" bei
-# ``2026-06-22Z``, "seit 28. März 2022" bei ``2022-03-27Z``), 8 von 9 als
-# letzten Tag genau ``OBJEKT_ENDE`` ("bis 13.10.2026" bei ``2026-10-13Z``).
-# Der Feed zeigte den Beginn deshalb einen Tag zu früh, und eine
-# angekündigte Baustelle rückte einen Tag zu früh nach vorne.
-_UTC_DATE_RE: Final = re.compile(r"\d{4}-\d{2}-\d{2}Z")
-
-
-def _start_is_utc_date(properties: dict[str, Any]) -> bool:
-    """True when the start :func:`_parse_range` takes is an UTC date (``…Z``)."""
-    for key in START_KEYS:
-        value = properties.get(key)
-        if _parse_datetime(value) is not None:
-            return isinstance(value, str) and bool(_UTC_DATE_RE.fullmatch(value.strip()))
-    return False
-
-
-def _first_day(start: datetime | None, end: datetime | None, properties: dict[str, Any]) -> datetime | None:
-    """The first day of the works, Vienna midnight (see :data:`_UTC_DATE_RE`).
-
-    Never later than the end: a site that would then start after its last
-    day keeps the date as delivered (not seen in the data so far).
-    """
-    if start is None or not _start_is_utc_date(properties):
-        return start
-    following = start.date() + timedelta(days=1)
-    first = datetime(following.year, following.month, following.day, tzinfo=VIENNA_TZ)
-    if end is not None and first.date() > end.date():
-        return start
-    return first
-
-
-def _normalize_datetime(value: datetime | None) -> datetime | None:
-    if value is None:
-        return None
-    if value.tzinfo is None:
-        return value.replace(tzinfo=VIENNA_TZ)
-    return value.astimezone(VIENNA_TZ)
-
-
-def _build_context(properties: dict[str, Any]) -> dict[str, Any]:
-    context: dict[str, Any] = {}
-    district = properties.get("BEZIRK") or properties.get("BZR")
-    if district:
-        context["district"] = str(district).strip()
-    measure = (
-        properties.get("BEHINDERUNGSART")
-        or properties.get("VERKEHRSMASSNAHME")
-        or properties.get("VERKEHRSART")
-    )
-    if measure:
-        context["measure"] = str(measure).strip()
-    status = properties.get("STATUS")
-    if status:
-        context["status"] = str(status).strip()
-    return context
-
-
-# GeoJSON geometries arrive as Point (``[lon, lat]``), LineString
-# (``[[lon, lat], ...]``), Polygon (``[[[lon, lat], ...]]``) or their
-# Multi* variants. The station-proximity test only needs one
-# representative coordinate, so we descend to the first vertex. The depth
-# is bounded so a maliciously deep nested array from a compromised
-# ``data.wien.gv.at`` upstream cannot drive unbounded recursion.
-_MAX_COORD_DEPTH = 8
-
-
-def _first_lonlat(coordinates: Any, _depth: int = 0) -> tuple[float, float] | None:
-    """Return the first ``(lon, lat)`` pair from a GeoJSON coordinate array."""
-    if _depth > _MAX_COORD_DEPTH:
-        return None
-    if not isinstance(coordinates, list | tuple) or not coordinates:
-        return None
-    first = coordinates[0]
-    if isinstance(first, bool):
-        return None
-    if isinstance(first, int | float):
-        # Leaf level: a coordinate needs at least a lon/lat pair.
-        if len(coordinates) < 2:
-            return None
-        try:
-            return float(coordinates[0]), float(coordinates[1])
-        except (TypeError, ValueError):
-            return None
-    return _first_lonlat(first, _depth + 1)
-
-
-def _build_location(properties: dict[str, Any], geometry: dict[str, Any]) -> dict[str, Any]:
-    location: dict[str, Any] = {}
-    address_parts: list[str] = []
-    street = _first_match(properties, STREET_KEYS)
-    if street:
-        address_parts.append(street)
-    from_desc = _first_match(properties, FROM_KEYS)
-    to_desc = _first_match(properties, TO_KEYS)
-    if from_desc and to_desc:
-        address_parts.append(f"zwischen {from_desc} und {to_desc}")
-    elif from_desc:
-        address_parts.append(f"auf Höhe {from_desc}")
-    if address_parts:
-        location["address"] = ", ".join(address_parts)
-    if isinstance(geometry, dict):
-        point = _first_lonlat(geometry.get("coordinates"))
-        if point is not None:
-            lon, lat = point
-            # Security (Coordinate finite/range drift, parser-level
-            # floor): mirror the canonical scrub pinned at
-            # ``src/places/hafas_client.py:_extract_first_location`` and
-            # ``src/places/osm_client.py:filter_complete_places``
-            # (Round 1485 / Round 1486). A compromised
-            # ``data.wien.gv.at`` upstream (or MITM / DNS rebind)
-            # planting GeoJSON ``coordinates: [NaN, Infinity]``
-            # otherwise lands the poisoned float in
-            # ``location["coordinates"]`` — which propagates verbatim
-            # through ``write_cache`` into ``cache/baustellen/
-            # events.json`` (committed to ``main`` by
-            # ``update-cycle.yml``).
-            # ``math.isfinite`` is the strict superset of
-            # ``not math.isnan`` — it rejects ``NaN`` AND ``±Inf``
-            # in one check. The WGS84-range guard (-90 <= lat <= 90,
-            # -180 <= lon <= 180) rejects pathological integer-
-            # overflow shapes. Pairs failing either guard are
-            # silently dropped (the rest of the event's address /
-            # metadata is preserved); the writer-side
-            # ``allow_nan=False`` pin in
-            # ``src/utils/cache.py:write_cache`` is the
-            # defence-in-depth second layer.
-            if (
-                math.isfinite(lat)
-                and math.isfinite(lon)
-                and -90.0 <= lat <= 90.0
-                and -180.0 <= lon <= 180.0
-            ):
-                location["coordinates"] = {"lat": lat, "lon": lon}
-    return location
-
-
-def _format_description(properties: dict[str, Any], start: datetime | None, end: datetime | None) -> str:
-    info = _first_match(properties, INFO_KEYS)
-    segments: list[str] = []
-    if info:
-        # Lead with the public-transport sentence so the ÖPNV impact
-        # survives the feed's description truncation.
-        segments.append(oepnv_lead(info))
-    if start:
-        segments.append(f"Beginn: {start.strftime('%d.%m.%Y %H:%M')} Uhr")
-    if end:
-        segments.append(f"Geplant bis: {end.strftime('%d.%m.%Y %H:%M')} Uhr")
-    context = _build_context(properties)
-    if context.get("measure"):
-        segments.append(f"Maßnahme: {context['measure']}")
-    if context.get("district"):
-        segments.append(f"Bezirk: {context['district']}")
-    return " \n".join(segments) if segments else "Baustelle ohne weitere Angaben"
-
-
-# Die Stadt Wien kappt ``BEZEICHNUNG`` bei 100 Zeichen. Wir kürzen nicht selbst
-# — der Abbruch steht so im WFS und landete bisher wörtlich im deutschen Feed:
-#
-#     Landstraßer Hauptstraße von … und Apostelgasse bis Sch      (100 Zeichen)
-#     Vordere Zollamtsstraße von … bis Unbenannte Verkehrsfl      (100 Zeichen)
-#     Kennedybrücke zwischen … auf Seite "Otto Wagner Hofpavillon  (99 Zeichen)
-#
-# Auf einem Info-Display, das Titel aus Entfernung und ohne Interaktion zeigt
-# (s. AGENTS.md, „Priorität der Ausgaben"), sieht das nach einem Fehler von uns
-# aus. Wiederherstellen können wir den fehlenden Text nicht; kenntlich machen
-# schon.
-#
-# Erkannt wird an zwei UNABHÄNGIGEN Signalen, nicht an der Länge allein:
-#
-# 1. ``len >= 100`` — die harte Obergrenze ist erreicht.
-# 2. Ein unpaariges ``"`` — ein vollständiger Titel hat keines. Das fängt den
-#    99-Zeichen-Fall: Upstream kappt bei 100 und entfernt danach Leerraum, ein
-#    gekappter Titel kann also auch bei 99 landen. Über die Länge allein wäre
-#    das nicht von einem echten 99-Zeichen-Titel zu unterscheiden — über das
-#    offene Anführungszeichen schon.
-_UPSTREAM_TITLE_CAP = 100
-
-
-def _mark_upstream_truncation(title: str) -> str:
-    """Make an upstream-truncated title read as shortened, not as broken.
-
-    Adds an ellipsis and drops an unpaired quotation mark. Der Text selbst
-    bleibt unangetastet: Ein abgeschnittenes Wort („… bis Sch…") sieht zwar
-    unschön aus, ist aber die Wahrheit über das, was die Quelle liefert —
-    es wegzukürzen würde Information vernichten, die sich nicht
-    zurückholen lässt, und zwar auf Verdacht.
-
-    NICHT für die GUID verwenden: Die leitet sich weiterhin vom ROHTITEL ab
-    (s. :func:`_feature_to_event`), sonst verschöbe diese Kosmetik die
-    Identität der Baustelle und setzte ihr ``first_seen`` zurück.
-
-    Was sich doch zurückholen lässt, holt die Feed-Seite: ein Wort, das die
-    Beschreibung desselben Items eindeutig vervollständigt („… bis Rad…" →
-    „… bis Radetzkybrücke"), ergänzt ``_repair_baustellen_title`` in
-    ``src/build_feed.py`` beim Bauen des Feeds; der Cache bleibt die
-    unveränderte Quelle.
-    """
-    if not title:
-        return title
-    has_unpaired_quote = title.count('"') % 2 == 1
-    if len(title) < _UPSTREAM_TITLE_CAP and not has_unpaired_quote:
-        return title
-
-    repaired = title
-    if has_unpaired_quote:
-        # Das letzte ``"`` ist im Kappungsfall das öffnende, dessen Partner
-        # abgeschnitten wurde. Ein Schließendes zu ERGÄNZEN wäre erfunden.
-        cut = repaired.rfind('"')
-        repaired = repaired[:cut] + repaired[cut + 1:]
-    repaired = repaired.rstrip()
-    if repaired.endswith("…"):
-        return repaired
-    return f"{repaired}…"
-
-
-def _feature_to_event(feature: dict[str, Any]) -> ConstructionEvent | None:
-    properties = feature.get("properties") or {}
-    geometry = feature.get("geometry") or {}
-    if not isinstance(properties, dict):
-        return None
-    raw_title = _first_match(properties, TITLE_KEYS)
-    if not raw_title:
-        street = _first_match(properties, STREET_KEYS)
-        if street:
-            raw_title = f"Baustelle {street}"
-        else:
-            return None
-    start, end = _parse_range(properties)
-    start = _normalize_datetime(start)
-    end = _normalize_datetime(end)
-    # Die GUID bleibt am gelieferten Datum: Sie trägt ``first_seen`` und die
-    # Übersetzung, und die Korrektur des Beginns soll keine Baustelle neu
-    # erscheinen lassen.
-    guid_start = start
-    start = _first_day(start, end, properties)
-    description = _format_description(properties, start, end)
-    location = _build_location(properties, geometry)
-    context = _build_context(properties)
-    # The Baustellen GUID must stay STABLE for the same physical construction
-    # site across WFS refreshes: it keys ``first_seen``, and a changing GUID
-    # makes the site look brand-new on every change, resetting first_seen so it
-    # perpetually dominates the first_seen-sorted feed. ``OBJECTID`` / ``ID`` are
-    # ArcGIS query-time row identifiers that are NOT stable across the upstream's
-    # re-indexing — observed churning 3x in two days for the *same* site
-    # (identical title + start + end, three different OBJECTIDs). Derive the
-    # identity from a stable open-data id when the layer offers one, otherwise
-    # from the stable title; never from the volatile OBJECTID/ID row number.
-    # ROHTITEL, nicht der reparierte: Die Kosmetik darf die Identität der
-    # Baustelle nicht verschieben (und damit first_seen zurücksetzen).
-    identifier = properties.get("OGD_ID") or raw_title
-    guid = make_guid(
-        "baustellen",
-        str(identifier),
-        guid_start.isoformat() if guid_start else "",
-        end.isoformat() if end else "",
-    )
-    pub_date = start or end or datetime.now(tz=VIENNA_TZ)
-    return ConstructionEvent(
-        guid=guid,
-        title=_mark_upstream_truncation(raw_title),
-        description=description,
-        starts_at=start,
-        ends_at=end,
-        pub_date=pub_date,
-        context=context or None,
-        location=location or None,
-    )
-
-
-# Feature fields that change without the site changing: ArcGIS row numbers
-# (see the GUID note in ``_feature_to_event``) and the WFS response header.
-_RAW_VOLATILE_PROPERTIES = frozenset({"OBJECTID"})
-
-
-def _raw_snapshot(payload: dict[str, Any]) -> dict[str, Any]:
-    """One WFS layer as kept in ``data/raw/baustellen/`` (``src/utils/raw_capture.py``).
-
-    Every feature's properties as delivered, minus the row number that the
-    upstream re-indexes, and of its geometry only the type and the first
-    position (the only part the cache uses, ``_first_lonlat``): a full
-    line geometry would dominate the file without telling anything about
-    the notice. The response header (``timeStamp``, ``numberMatched``, …)
-    and the volatile feature ``id`` are left out.
-    """
-    features: list[dict[str, Any]] = []
-    for feature in _iter_features(payload):
-        properties = feature.get("properties")
-        record: dict[str, Any] = {
-            "properties": {
-                k: v for k, v in properties.items() if k not in _RAW_VOLATILE_PROPERTIES
-            }
-            if isinstance(properties, dict)
-            else properties,
-        }
-        geometry = feature.get("geometry")
-        if isinstance(geometry, dict):
-            record["geometry"] = {
-                "type": geometry.get("type"),
-                "first_position": _first_lonlat(geometry.get("coordinates")),
-            }
-        features.append(record)
-    features.sort(key=lambda f: (_raw_sort_key(f), raw_capture.content_key(f)))
-    return {"features": features}
-
-
-def _raw_sort_key(feature: dict[str, Any]) -> str:
-    properties = feature.get("properties")
-    if not isinstance(properties, dict):
-        return ""
-    for key in ("OGD_ID", *TITLE_KEYS, *STREET_KEYS):
-        value = properties.get(key)
-        if value not in (None, ""):
-            return str(value)
-    return ""
-
-
-def _collect_events(payload: dict[str, Any]) -> list[dict[str, Any]]:
-    events: list[dict[str, Any]] = []
-    for feature in _iter_features(payload):
-        event = _feature_to_event(feature)
-        if not event:
-            properties = feature.get("properties")
-            raw_capture.note_drop(
-                "baustellen",
-                "ohne Titel und Straße",
-                properties.get("OGD_ID") if isinstance(properties, dict) else None,
-            )
-            continue
-        events.append(serialize_for_cache(event.to_item()))
-    return events
-
-
-# ---------------- Ausfall eines Teils der Quelle ----------------
-#
-# Die Baustellen kommen aus zwei WFS-Layern (Linien und Punkte). Fiel einer
-# aus, ging der Abruf früher mit dem anderen allein durch: Am echten Stand
-# vom 2026-10-04 schrumpfte der Cache ohne Linien-Layer von 15 auf 5
-# Baustellen, mit Exit-Code 0. Dasselbe bei einer Antwort, der ein Feld
-# fehlt (``src/utils/source_shape.py``): ohne Datumsfelder belegten
-# Baustellen neun der zehn Plätze. Jetzt kommt ein unbrauchbarer oder leerer
-# Layer (wenn seine letzte gute Antwort nicht auch leer war) aus
-# seiner letzten guten Antwort (``data/raw/baustellen/``), Exit-Code 3. Fehlt
-# die oder fallen alle Layer aus, bleibt der Cache stehen.
-
-_LAYER_MIN = MIN_RECORDS
-
-
-def _properties(feature: dict[str, Any]) -> dict[str, Any]:
-    properties = feature.get("properties")
-    return properties if isinstance(properties, dict) else {}
-
-
-def _feature_position(feature: dict[str, Any]) -> tuple[float, float] | None:
-    geometry = feature.get("geometry")
-    return _first_lonlat(geometry.get("coordinates")) if isinstance(geometry, dict) else None
-
-
-_LAYER_REQUIRED = {
-    "Beginn": (lambda f: _parse_range(_properties(f))[0] is not None, _LAYER_MIN),
-    "Ende": (lambda f: _parse_range(_properties(f))[1] is not None, _LAYER_MIN),
-    "Text": (lambda f: _first_match(_properties(f), INFO_KEYS) is not None, _LAYER_MIN),
-    "Lage": (lambda f: _feature_position(f) is not None, _LAYER_MIN),
-}
-
 _fallback_layers: list[str] = []
-
-
-def _usable_layer(payload: Any, name: str) -> bool:
-    """True when *payload* is a WFS answer with features in the expected shape."""
-    if not isinstance(payload, dict):
-        return False
-    features = _feature_list(payload)
-    if features is None:
-        LOGGER.warning("Baustellen: Layer %s ohne Feature-Liste – Antwort unbrauchbar.", name)
-        return False
-    missing = missing_fields(features, _LAYER_REQUIRED)
-    if missing:
-        LOGGER.warning(
-            "Baustellen: Layer %s – Angabe(n) %s fehlen in allen %d Einträgen – Antwort unbrauchbar.",
-            name,
-            ", ".join(missing),
-            len(features),
-        )
-        return False
-    return True
-
-
-def _from_snapshot(snapshot: Any) -> dict[str, Any] | None:
-    """A raw snapshot (``_raw_snapshot``) back in the shape of a WFS answer.
-
-    The snapshot keeps of each geometry only its first position, which is
-    all the cache uses (``_first_lonlat``).
-    """
-    if not isinstance(snapshot, dict) or not isinstance(snapshot.get("features"), list):
-        return None
-    features: list[Any] = []
-    for feature in snapshot["features"]:
-        if not isinstance(feature, dict):
-            continue
-        record = dict(feature)
-        geometry = feature.get("geometry")
-        if isinstance(geometry, dict) and "first_position" in geometry:
-            position = geometry.get("first_position")
-            record["geometry"] = {
-                "type": geometry.get("type"),
-                "coordinates": [position] if position is not None else None,
-            }
-        features.append(record)
-    return {"type": "FeatureCollection", "features": features}
 
 
 def _fetch_layers(data_url: str, timeout: int) -> list[dict[str, Any]] | None:
@@ -1214,6 +454,89 @@ def main() -> int:
         return 3
     LOGGER.info("Baustellen: Cache mit %d Einträgen aktualisiert.", len(relevant))
     return 0
+
+
+# Names other files and tests read through this script; the code lives in
+# src/ (700-line limit, 2026-11-02). Listing them marks the imports as
+# deliberate re-exports.
+__all__ = [
+    "REPO_ROOT",
+    "MAX_JSON_FILE_BYTES",
+    "LOGGER",
+    "_DIAGNOSTIC_MAX_BYTES",
+    "USER_AGENT",
+    "DEFAULT_BAUSTELLEN_TIMEOUT",
+    "MAX_BAUSTELLEN_TIMEOUT",
+    "configure_logging",
+    "_load_json_from_content",
+    "_fetch_remote",
+    "_log_endpoint_diagnostic",
+    "_load_fallback",
+    "_fallback_layers",
+    "_fetch_layers",
+    "_cache_exists",
+    "main",
+    "setup_script_logging",
+    "is_transit_relevant",
+    "raw_capture",
+    "DataDegradationError",
+    "cache_modified_at",
+    "write_cache",
+    "_path_fingerprint",
+    "loads_finite",
+    "read_capped_json",
+    "fetch_content_safe",
+    "session_with_retries",
+    "validate_http_url",
+    "sanitize_log_arg",
+    "_feature_list",
+    "_raw_snapshot",
+    "_collect_events",
+    "_BAUSTELLEN_TYPENAMES",
+    "_OUTPUT_FORMAT_CANDIDATES",
+    "_resolve_data_url",
+    "_with_output_format",
+    "_with_typename",
+    "_resolve_fallback_path",
+    "_LAYER_MIN",
+    "_usable_layer",
+    "_from_snapshot",
+    "DEFAULT_INFO_URL",
+    "VIENNA_TZ",
+    "TITLE_KEYS",
+    "STREET_KEYS",
+    "FROM_KEYS",
+    "TO_KEYS",
+    "INFO_KEYS",
+    "START_KEYS",
+    "END_KEYS",
+    "ConstructionEvent",
+    "_iter_features",
+    "_first_match",
+    "_parse_datetime",
+    "_parse_range",
+    "_UTC_DATE_RE",
+    "_start_is_utc_date",
+    "_first_day",
+    "_normalize_datetime",
+    "_build_context",
+    "_MAX_COORD_DEPTH",
+    "_first_lonlat",
+    "_build_location",
+    "_format_description",
+    "_UPSTREAM_TITLE_CAP",
+    "_mark_upstream_truncation",
+    "_feature_to_event",
+    "_RAW_VOLATILE_PROPERTIES",
+    "_raw_sort_key",
+    "DEFAULT_DATA_URL",
+    "DEFAULT_FALLBACK_PATH",
+    "_BAUSTELLEN_TRUSTED_HOSTS",
+    "_validated_baustellen_data_url",
+    "_properties",
+    "_feature_position",
+    "_LAYER_REQUIRED",
+]
 
 
 if __name__ == "__main__":  # pragma: no cover - CLI entry point

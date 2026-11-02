@@ -16,13 +16,17 @@ from urllib.parse import parse_qs
 import pytest
 
 import scripts.health_check as hc
+import src.health_check.github_runs as hc_github_runs
+import src.health_check.outputs as hc_outputs
+import src.health_check.sources as hc_sources
 
 _NOW = datetime(2026, 10, 28, 12, 0, tzinfo=UTC)
 
 
 @pytest.fixture
 def repo(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
-    monkeypatch.setattr(hc, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(hc_sources, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(hc_outputs, "REPO_ROOT", tmp_path)
     (tmp_path / "scripts").mkdir()
     (tmp_path / "docs").mkdir()
     (tmp_path / "data").mkdir()
@@ -77,7 +81,7 @@ def _live(monkeypatch: pytest.MonkeyPatch, by_url: dict[str, object]) -> list[st
             raise value
         return value  # type: ignore[return-value]
 
-    monkeypatch.setattr(hc, "_fetch_live_feed", fetch)
+    monkeypatch.setattr(hc_outputs, "_fetch_live_feed", fetch)
     return seen
 
 
@@ -117,7 +121,7 @@ def _checks() -> list[str]:
         for name, value in vars(hc).items()
         if name.startswith("check_")
         and inspect.isfunction(value)
-        and value.__module__ == hc.__name__
+        and (value.__module__ == hc.__name__ or value.__module__.startswith("src.health_check."))
     )
 
 
@@ -159,7 +163,7 @@ def _record(repo: Path, file_name: str, updated: datetime, **steps: dict[str, st
 
 @pytest.fixture
 def side_steps(repo: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
-    monkeypatch.setattr(hc, "SIDE_STEP_DIR", repo / "data" / "side_steps")
+    monkeypatch.setattr(hc_outputs, "SIDE_STEP_DIR", repo / "data" / "side_steps")
     return repo
 
 
@@ -175,7 +179,7 @@ def _watch_state(repo: Path, monkeypatch: pytest.MonkeyPatch, **fields: object) 
     state.update(fields)
     path = repo / "data" / "feed_watch.json"
     path.write_text(json.dumps(state), encoding="utf-8")
-    monkeypatch.setattr(hc, "FEED_WATCH_STATE", path)
+    monkeypatch.setattr(hc_sources, "FEED_WATCH_STATE", path)
 
 
 _OK_PROBE = hc.Check("Wiener Linien", ok=True, summary="OK — 105 Datensätze geholt")
@@ -216,7 +220,7 @@ def _runs(monkeypatch: pytest.MonkeyPatch, by_path: dict[str, object]) -> list[s
             return value.answer(query)
         return value
 
-    monkeypatch.setattr(hc, "_github_api_json", api)
+    monkeypatch.setattr(hc_github_runs, "_github_api_json", api)
     return seen
 
 

@@ -36,1298 +36,139 @@ each threshold.
 from __future__ import annotations
 
 import argparse
-import json
 import os
-import re
-import statistics
 import sys
-from collections.abc import Mapping, Sequence
-from dataclasses import dataclass, field
-from datetime import UTC, date, datetime, timedelta
-from email.utils import parsedate_to_datetime
-from html import unescape
-from logging import DEBUG, INFO, getLogger
+from collections.abc import Sequence
+from datetime import UTC, datetime
+from logging import DEBUG, INFO
 from pathlib import Path
-from typing import Any
-from zoneinfo import ZoneInfo
-
-from defusedxml import ElementTree as ET
 
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from src.feed.config import InvalidPathError, validate_path
 from src.feed.logging_safe import setup_script_logging
-from src.utils.files import atomic_write, read_capped_json, read_capped_text
-from src.utils.logging import sanitize_log_arg
-from src.utils.serialize import scrub_trojan_source_primitives
-from src.utils.vao_version import VersionState, load_state as load_vao_version
+from src.utils.files import read_capped_text
+from src.utils.vao_version import load_state as load_vao_version
 
-LOGGER = getLogger("feed_watch")
+# The watcher's code lives in src/feed_watch/; every module-level name of the
+# former single file stays reachable here (tests use ``scripts.feed_watch``).
+from src.feed_watch.model import (
+    LOGGER as LOGGER,
+    VIENNA as VIENNA,
+    MAX_FEED_BYTES as MAX_FEED_BYTES,
+    MAX_STATE_BYTES as MAX_STATE_BYTES,
+    MAX_SOURCE_BYTES as MAX_SOURCE_BYTES,
+    DEFAULT_MAX_ITEMS as DEFAULT_MAX_ITEMS,
+    BODY_CHAR_LIMIT as BODY_CHAR_LIMIT,
+    SINCE_LATE as SINCE_LATE,
+    EXPECTED_END_BEFORE_MESSAGE as EXPECTED_END_BEFORE_MESSAGE,
+    PREVIOUS_MAX_GAP as PREVIOUS_MAX_GAP,
+    OLD_AS_NEW as OLD_AS_NEW,
+    FEED_MAX_AGE as FEED_MAX_AGE,
+    HELD_RUNS_TO_CLOSE as HELD_RUNS_TO_CLOSE,
+    REOPEN_WINDOW as REOPEN_WINDOW,
+    SAMPLE_WINDOW as SAMPLE_WINDOW,
+    MAX_SAMPLES as MAX_SAMPLES,
+    MIN_REFERENCE_SAMPLES as MIN_REFERENCE_SAMPLES,
+    SOURCE_DROP_FACTOR as SOURCE_DROP_FACTOR,
+    SOURCE_DROP_MIN_REFERENCE as SOURCE_DROP_MIN_REFERENCE,
+    DISCARD_SHARE_JUMP as DISCARD_SHARE_JUMP,
+    EMPTY_CACHE_MIN_REFERENCE as EMPTY_CACHE_MIN_REFERENCE,
+    SOURCE_STALE as SOURCE_STALE,
+    VAO_VERSION_REPORT as VAO_VERSION_REPORT,
+    FETCH_SOURCES as FETCH_SOURCES,
+    SOURCE_LABELS as SOURCE_LABELS,
+    _NBSP as _NBSP,
+    _TIME_LINE_AT_END_RE as _TIME_LINE_AT_END_RE,
+    _SINCE_CLOCK_RE as _SINCE_CLOCK_RE,
+    _LINE_PREFIX_RE as _LINE_PREFIX_RE,
+    Rule as Rule,
+    RULES as RULES,
+    Item as Item,
+    Feed as Feed,
+    Finding as Finding,
+    SourceSample as SourceSample,
+    _clean as _clean,
+    _local as _local,
+    _parse_rfc2822 as _parse_rfc2822,
+    _parse_iso as _parse_iso,
+    _local_name as _local_name,
+    parse_feed as parse_feed,
+    _normalize as _normalize,
+    _line_keys as _line_keys,
+    _vienna_clock as _vienna_clock,
+    _since_clock as _since_clock,
+    _is_current as _is_current,
+)
+from src.feed_watch.feed_rules import (
+    _WEEKDAY as _WEEKDAY,
+    _DAY as _DAY,
+    _TIME_LINE_RE as _TIME_LINE_RE,
+    _DATE_RE as _DATE_RE,
+    _EXPECTED_UNTIL_RE as _EXPECTED_UNTIL_RE,
+    _COURTESY as _COURTESY,
+    _OEBB_COURTESY_RE as _OEBB_COURTESY_RE,
+    _OEBB_DATE_PREFIX_RE as _OEBB_DATE_PREFIX_RE,
+    _SENTENCE_SPLIT_RE as _SENTENCE_SPLIT_RE,
+    _ABBREVIATION_END_RE as _ABBREVIATION_END_RE,
+    _OEBB_PLACE_RE as _OEBB_PLACE_RE,
+    _STATION_WORDS_RE as _STATION_WORDS_RE,
+    check_duplicates as check_duplicates,
+    check_count as check_count,
+    check_old_as_new as check_old_as_new,
+    check_since_too_early as check_since_too_early,
+    _oebb_source_sentences as _oebb_source_sentences,
+    _oebb_key as _oebb_key,
+    _oebb_title_names as _oebb_title_names,
+    check_oebb_second_sentence as check_oebb_second_sentence,
+    check_time_line as check_time_line,
+    _time_line_end as _time_line_end,
+    check_past_end as check_past_end,
+    check_length as check_length,
+    check_courtesy as check_courtesy,
+    check_feed_age as check_feed_age,
+)
+from src.feed_watch.sources import (
+    _count_list as _count_list,
+    read_sources as read_sources,
+    _DISCARD_BASE as _DISCARD_BASE,
+    _discard_share as _discard_share,
+    check_sources as check_sources,
+    parse_fetch_exit as parse_fetch_exit,
+    _fmt_hours as _fmt_hours,
+    PollSample as PollSample,
+    check_fresh_answers as check_fresh_answers,
+    check_vao_version as check_vao_version,
+    load_poll_sample as load_poll_sample,
+)
+from src.feed_watch.evaluate import (
+    Result as Result,
+    evaluate as evaluate,
+    _next_rule_state as _next_rule_state,
+)
+from src.feed_watch.issues import (
+    ISSUE_LABEL as ISSUE_LABEL,
+    ISSUE_TITLE_PREFIX as ISSUE_TITLE_PREFIX,
+    IssueClient as IssueClient,
+    issue_client_from_env as issue_client_from_env,
+    _run_link as _run_link,
+    _issue_body as _issue_body,
+    sync_issues as sync_issues,
+    _open_or_reopen as _open_or_reopen,
+)
+from src.feed_watch.state_io import (
+    load_oebb_cache as load_oebb_cache,
+    load_state as load_state,
+    write_state as write_state,
+    _report as _report,
+)
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_FEED = REPO_ROOT / "docs" / "feed.xml"
 DEFAULT_STATE = REPO_ROOT / "data" / "feed_watch.json"
 DEFAULT_CACHE_DIR = REPO_ROOT / "cache"
 DEFAULT_RAW_DIR = REPO_ROOT / "data" / "raw"
-VIENNA = ZoneInfo("Europe/Vienna")
-
-MAX_FEED_BYTES = 5 * 1024 * 1024
-MAX_STATE_BYTES = 2 * 1024 * 1024
-MAX_SOURCE_BYTES = 8 * 1024 * 1024
-
-# The TV shows ten items (EasySignage, ``MaxItems``); the builder's default.
-DEFAULT_MAX_ITEMS = 10
-# EasySignage cuts a description at 180 characters, the builder at the same
-# limit (``_truncate_summary_180``); the time line comes on top.
-BODY_CHAR_LIMIT = 180
-
-# "Seit hh:mm" for an incident the feed shows for the first time, although
-# a line of it was not on screen and the screen had room: WL enters a
-# disruption at most 9 minutes after its start and the fetch sees it at most
-# 79 minutes later (all 366 unplanned WL messages from 2026-10-04 to
-# 2026-10-10, ``reports/seit-zeit-2026-10-10.md``); a display ticker may move
-# the begin up to 60 minutes earlier (PR #2001). Three hours lie above all of
-# that; "2/71: Polizeieinsatz [Seit 13:08]" appeared at 20:30, 7 h 22 min late.
-SINCE_LATE = timedelta(hours=3)
-# How far before an item's newest time "Voraussichtlich bis <Uhrzeit>" may
-# lie and still mean that day (``_EXPECTED_END_BEFORE_MESSAGE`` in the builder).
-EXPECTED_END_BEFORE_MESSAGE = timedelta(hours=3)
-# The previous build counts as "the screen before" only when it is this recent.
-PREVIOUS_MAX_GAP = timedelta(hours=2)
-# A message older than a day that the feed counts as first seen today has
-# taken over the identity of another one (line 25 on 2026-10-09: a stop
-# ticker from 07.10. with the GUID and first_seen of a delay from 09:36).
-OLD_AS_NEW = timedelta(hours=24)
-# A feed older than this when the watcher runs was not rebuilt by this run.
-FEED_MAX_AGE = timedelta(minutes=90)
-# An issue closes after the rule held in this many runs in a row.
-HELD_RUNS_TO_CLOSE = 2
-# A closed issue reopens instead of a new one when it closed this recently.
-REOPEN_WINDOW = timedelta(hours=24)
-
-# Source drift: one sample per run, compared with the samples of the last
-# seven days. The thresholds held from 2026-10-04 (the first raw answers) to
-# 2026-10-10 on every run; the raw counts moved between 56 and 196 (WL
-# disruptions), 74 and 97 (WL notices), 164 and 179 (ÖBB) and 66 and 77
-# (Baustellen).
-SAMPLE_WINDOW = timedelta(days=7)
-MAX_SAMPLES = 400
-MIN_REFERENCE_SAMPLES = 24
-SOURCE_DROP_FACTOR = 0.5
-SOURCE_DROP_MIN_REFERENCE = 10
-DISCARD_SHARE_JUMP = 0.25
-EMPTY_CACHE_MIN_REFERENCE = 5
-
-# Source without a fresh answer: the feed has been built from a source's last
-# good answer for this long. From 2026-10-01 to 2026-10-23 (1,087 runs with a
-# fetch) every outage of WL, ÖBB and Baustellen lasted at most 1 h except WL on
-# 2026-10-21 (502 Bad Gateway from 16:00 to 23:00, Health check red only once,
-# at 18:49); the VAO poll never went longer than 1 h without a success except
-# the same evening (17:31-20:01). Two hours stay silent on every short outage
-# and speak at 18:00 (WL) and 19:01 (VAO) on 2026-10-21.
-SOURCE_STALE = timedelta(hours=2)
-# A version change of the VAO API is reported in the run that made it and the
-# next one (two Update runs), so the issue opens once and closes itself.
-VAO_VERSION_REPORT = timedelta(minutes=45)
-# The free sources whose fetch exit code the Update run hands over
-# (``FEED_WATCH_FETCH_EXIT``); 0 = fresh answer, anything else = the feed keeps
-# the last good answer (1, 2, 3, 124, 137: see the fetch step in update-cycle.yml).
-FETCH_SOURCES = ("wl", "oebb", "baustellen")
-SOURCE_LABELS = {
-    "wl": "Wiener Linien",
-    "oebb": "ÖBB",
-    "baustellen": "Baustellen (Stadt Wien)",
-    "stammstrecke": "Stammstrecke (VAO)",
-}
-
-_NBSP = "\u00a0"
-_WEEKDAY = r"(?:Mo|Di|Mi|Do|Fr|Sa|So)"
-_DAY = rf"(?:{_WEEKDAY}{_NBSP})?\d{{2}}\.\d{{2}}\.(?:\d{{4}})?"
-# Every form ``format_local_times`` writes (operator decisions 2026-10-02,
-# 2026-10-03; words joined with U+00A0 since #1971).
-_TIME_LINE_RE = re.compile(
-    rf"Heute|Seit{_NBSP}heute|Seit{_NBSP}\d{{2}}:\d{{2}}|Seit{_NBSP}{_DAY}"
-    rf"|Bis{_NBSP}{_DAY}|Am{_NBSP}{_DAY}|Ab{_NBSP}{_DAY}(?:{_NBSP}bis{_NBSP}{_DAY})?"
-)
-_TIME_LINE_AT_END_RE = re.compile(r"\s*\[([^\[\]]*)\]\s*$")
-_SINCE_CLOCK_RE = re.compile(r"Seit\s(\d{2}):(\d{2})")
-_DATE_RE = re.compile(r"(\d{2})\.(\d{2})\.(\d{4})?")
-_EXPECTED_UNTIL_RE = re.compile(r"(?:^|[.!?]\s)Voraussichtlich bis (\d{1,2})[:.](\d{2})")
-_LINE_PREFIX_RE = re.compile(r"^([A-Z0-9]{1,6}(?:/[A-Z0-9]{1,6})*):\s")
-_COURTESY = "Wir bitten um Entschuldigung"
-
-# ÖBB: the second sentence says what still applies (#1993). Where it would
-# not fit, the first sentence leaves out the stations the title names.
-_OEBB_COURTESY_RE = re.compile(
-    r"Wir bitten um Entschuldigung|Sobald uns weitere Informationen vorliegen|Details finden Sie hier"
-)
-_OEBB_DATE_PREFIX_RE = re.compile(r"^\s*\d{2}\.\d{2}\.\d{4}(?:\s*-\s*\d{2}\.\d{2}\.\d{4})?")
-_SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?])\s+(?=[A-ZÄÖÜ])")
-_ABBREVIATION_END_RE = re.compile(r"\b(?:St|Nr|ca|bzw|Hbf|Str|Bhf)\.$")
-_OEBB_PLACE_RE = re.compile(
-    r"\s(?:zwischen\s.+?\sund\s.+?|in\s.+?|im Bereich\s.+?)"
-    r"(?=\s(?:bis|derzeit|keine|kein|nur|Zugfahrten|können|sind|waren)\b)"
-)
-_STATION_WORDS_RE = re.compile(r"\b(?:Bahnhof|Bahnhst|Bhf|Hbf)\b\.?|\((?:U|Wien)\)")
-
-
-@dataclass(frozen=True)
-class Rule:
-    """A rule of the German feed and why it matters on the TV."""
-
-    rule_id: str
-    title: str
-    rank: str
-    why: str
-
-
-RULES: dict[str, Rule] = {
-    rule.rule_id: rule
-    for rule in (
-        Rule(
-            "doppelter-eintrag",
-            "Doppelter Eintrag",
-            "Rang 1",
-            "Zwei Einträge mit derselben GUID oder demselben Titel. Auf dem TV verdrängt "
-            "jeder doppelte Eintrag eine andere Störung vollständig.",
-        ),
-        Rule(
-            "anzahl",
-            "Weniger oder mehr als zehn Einträge",
-            "Rang 1",
-            "Der TV zeigt zehn Folien. Fehlen Einträge, sind Meldungen verloren gegangen "
-            "oder fälschlich verworfen worden.",
-        ),
-        Rule(
-            "alte-meldung-als-neu",
-            "Alte Meldung als neue Störung",
-            "Rang 1",
-            "Eine Meldung, die älter als einen Tag ist, gilt als heute neu und steht als "
-            "aktuelle Störung vorne (Linie 25 am 09.10.2026: eine Haltestellen-Anzeige vom "
-            "07.10. übernahm GUID und Beginn einer Verspätung und stand bis auf Platz 2).",
-        ),
-        Rule(
-            "seit-zu-frueh",
-            "„Seit“-Zeit früher als die Störung",
-            "Rang 2",
-            "Eine Störung erscheint zum ersten Mal, obwohl ihre „Seit“-Zeit mehr als drei "
-            "Stunden zurückliegt und der Feed vorher Platz hatte („2/71: Polizeieinsatz "
-            "[Seit 13:08]“ für einen Einsatz ab 20:08 am 09.10.2026).",
-        ),
-        Rule(
-            "oebb-zweiter-satz",
-            "ÖBB-Text ohne zweiten Satz",
-            "Rang 2",
-            "ÖBB sagt im zweiten Satz, was noch gilt. Er fehlt, obwohl er Platz hätte, wenn "
-            "der erste Satz die Stationen weglässt, die der Titel schon nennt (#1993).",
-        ),
-        Rule(
-            "zeitzeile",
-            "Zeitzeile fehlt oder hat eine unbekannte Form",
-            "Rang 2",
-            "Jede Beschreibung endet mit einer Zeitzeile in einer der festgelegten Formen "
-            "(Heute, Seit, Bis, Am, Ab), Wörter mit geschütztem Leerzeichen verbunden (#1971).",
-        ),
-        Rule(
-            "ende-vorbei",
-            "Zeitangabe schon vorbei",
-            "Rang 2",
-            "Die Zeitzeile nennt ein Ende vor heute, eine „Seit“-Zeit in der Zukunft, oder der "
-            "Text sagt „Voraussichtlich bis <Uhrzeit>“, obwohl die Uhrzeit vorbei ist (#1975).",
-        ),
-        Rule(
-            "textlaenge",
-            "Beschreibung länger als 180 Zeichen",
-            "Rang 2",
-            "EasySignage schneidet nach 180 Zeichen ab; der Feed kürzt selbst, damit kein "
-            "Satz mitten im Wort endet.",
-        ),
-        Rule(
-            "hoeflichkeitssatz",
-            "„Wir bitten um Entschuldigung“ im Text",
-            "Rang 2",
-            "ÖBBs Höflichkeitssatz sagt am TV nichts und nimmt Platz (#1993).",
-        ),
-        Rule(
-            "quelle-leer",
-            "Quelle liefert nichts mehr für den Feed",
-            "Quelle",
-            "Der Cache eines Anbieters ist leer, obwohl er in den letzten sieben Tagen "
-            "regelmäßig Meldungen hatte.",
-        ),
-        Rule(
-            "quelle-einbruch",
-            "Quelle liefert deutlich weniger",
-            "Quelle",
-            "Die Rohantwort eines Anbieters hat weniger als die Hälfte der Meldungen, die sie "
-            "in den letzten sieben Tagen üblicherweise hatte.",
-        ),
-        Rule(
-            "quelle-ohne-antwort",
-            "Quelle ohne frische Antwort",
-            "Quelle",
-            "Ein Anbieter antwortet seit mindestens zwei Stunden nicht brauchbar; der Feed "
-            "läuft mit seiner letzten guten Antwort weiter und zeigt neue oder erledigte "
-            "Meldungen nicht (Wiener Linien am 21.10.2026 von 16:00 bis 23:00, 502 Bad Gateway).",
-        ),
-        Rule(
-            "vao-version",
-            "VAO-Version gewechselt",
-            "Quelle",
-            "Die Stammstrecke fragt eine andere VAO-Version als vorher: Die bisherige "
-            "antwortete nicht mehr brauchbar oder die VAO listet eine neuere "
-            "(automatische Wahl seit 29.10.2026; am 28.10.2026 zog die VAO v1.13.0 zurück). "
-            "Nur zur Kenntnis, nichts zu tun.",
-        ),
-        Rule(
-            "verwurf-sprung",
-            "Anteil verworfener Meldungen springt",
-            "Quelle",
-            "Der Anteil der beim Abruf verworfenen Meldungen weicht um mehr als 25 "
-            "Prozentpunkte vom Üblichen der letzten sieben Tage ab: Die Quelle hat ihr Format "
-            "oder ihren Inhalt geändert, oder ein Filter greift falsch.",
-        ),
-        Rule(
-            "feed-alter",
-            "Feed nicht neu gebaut",
-            "Betrieb",
-            "Der Feed war beim Lauf des Wächters älter als 90 Minuten: Der Lauf hat ihn nicht "
-            "neu gebaut.",
-        ),
-    )
-}
-
-
-@dataclass(frozen=True)
-class Item:
-    """One ``<item>`` of the German feed, as the TV shows it."""
-
-    title: str
-    guid: str
-    description: str
-    pub_date: datetime | None = None
-    first_seen: datetime | None = None
-    starts_at: datetime | None = None
-
-    @property
-    def time_line(self) -> str | None:
-        match = _TIME_LINE_AT_END_RE.search(self.description)
-        return match.group(1) if match else None
-
-    @property
-    def body(self) -> str:
-        return _TIME_LINE_AT_END_RE.sub("", self.description).strip()
-
-
-@dataclass(frozen=True)
-class Feed:
-    built: datetime | None
-    items: list[Item]
-
-
-@dataclass(frozen=True)
-class Finding:
-    rule_id: str
-    subject: str
-    text: str
-
-
-@dataclass
-class SourceSample:
-    """What the providers delivered in this run (counts only)."""
-
-    raw: dict[str, int] = field(default_factory=dict)
-    discarded: dict[str, int] = field(default_factory=dict)
-    cache: dict[str, int] = field(default_factory=dict)
-
-
-def _clean(value: object) -> str:
-    return str(sanitize_log_arg(str(value)))
-
-
-def _local(moment: datetime) -> datetime:
-    return moment.astimezone(VIENNA)
-
-
-def _parse_rfc2822(value: str | None) -> datetime | None:
-    if not value:
-        return None
-    try:
-        parsed = parsedate_to_datetime(value.strip())
-    except (TypeError, ValueError, IndexError):
-        return None
-    return parsed if parsed.tzinfo is not None else parsed.replace(tzinfo=UTC)
-
-
-def _parse_iso(value: object) -> datetime | None:
-    if not isinstance(value, str) or not value:
-        return None
-    try:
-        parsed = datetime.fromisoformat(value)
-    except ValueError:
-        return None
-    return parsed if parsed.tzinfo is not None else parsed.replace(tzinfo=UTC)
-
-
-def _local_name(tag: str) -> str:
-    return tag.rsplit("}", 1)[-1]
-
-
-def parse_feed(content: str) -> Feed:
-    """The items of the German feed. Raises ``ET.ParseError`` for invalid XML."""
-    root = ET.fromstring(content)
-    channel = root.find("channel")
-    built = _parse_rfc2822(channel.findtext("lastBuildDate") if channel is not None else None)
-    items: list[Item] = []
-    for node in root.iter("item"):
-        fields = {_local_name(child.tag): (child.text or "").strip() for child in node}
-        items.append(
-            Item(
-                title=fields.get("title", ""),
-                guid=fields.get("guid", ""),
-                description=fields.get("description", ""),
-                pub_date=_parse_rfc2822(fields.get("pubDate")),
-                first_seen=_parse_rfc2822(fields.get("first_seen")),
-                starts_at=_parse_rfc2822(fields.get("starts_at")),
-            )
-        )
-    return Feed(built, items)
-
-
-def _normalize(text: str) -> str:
-    return " ".join(text.replace(_NBSP, " ").split())
-
-
-def _line_keys(title: str) -> frozenset[str]:
-    """The lines of a title (``2/71: …`` → {2, 71}); the whole title for one without lines."""
-    match = _LINE_PREFIX_RE.match(title)
-    if match:
-        return frozenset(match.group(1).split("/"))
-    return frozenset({_normalize(title).casefold()})
-
-
-def _vienna_clock(day: date, hour: int, minute: int, built: datetime) -> datetime:
-    """The moment *hour*:*minute* Vienna time on *day*, in UTC.
-
-    In the hour that repeats when summer time ends (25.10.2026, 02:00 to
-    03:00 twice) a clock time names two moments; it is the later one that
-    is not after the build (the builder's own rule, ``format_local_times``
-    in src/build_feed.py, compares moments in UTC). ``replace()`` on the
-    build's local time kept the build's pass instead: at 02:01 winter time
-    "[Seit 02:26]" (summer time, 35 minutes before) read as 25 minutes
-    after the build, and the rule ``ende-vorbei`` fired.
-    """
-    wall = datetime(day.year, day.month, day.day, hour, minute)
-    moments = sorted({wall.replace(tzinfo=VIENNA, fold=fold).astimezone(UTC) for fold in (0, 1)})
-    limit = built.astimezone(UTC) + timedelta(minutes=1)
-    passed = [moment for moment in moments if moment <= limit]
-    return passed[-1] if passed else moments[0]
-
-
-def _since_clock(time_line: str | None, built: datetime) -> datetime | None:
-    """The moment (UTC) of a "Seit hh:mm" time line, on the Vienna day of the build."""
-    if time_line is None:
-        return None
-    match = _SINCE_CLOCK_RE.fullmatch(time_line.replace(_NBSP, " "))
-    if match is None:
-        return None
-    hour, minute = int(match.group(1)), int(match.group(2))
-    if hour > 23 or minute > 59:
-        return None
-    return _vienna_clock(_local(built).date(), hour, minute, built)
-
-
-def _is_current(time_line: str | None) -> bool:
-    """Whether the time line presents the item as today's disruption."""
-    if time_line is None:
-        return False
-    return time_line == "Heute" or _SINCE_CLOCK_RE.fullmatch(time_line.replace(_NBSP, " ")) is not None
-
-
-# --- rules of the German feed ------------------------------------------------
-
-
-def check_duplicates(items: Sequence[Item]) -> list[Finding]:
-    findings: list[Finding] = []
-    seen_guids: dict[str, int] = {}
-    seen_titles: dict[str, int] = {}
-    for place, item in enumerate(items, start=1):
-        title_key = _normalize(item.title).casefold()
-        if item.guid and item.guid in seen_guids:
-            findings.append(
-                Finding(
-                    "doppelter-eintrag",
-                    item.title,
-                    f"Platz {place} hat dieselbe GUID wie Platz {seen_guids[item.guid]}",
-                )
-            )
-        elif title_key and title_key in seen_titles:
-            findings.append(
-                Finding(
-                    "doppelter-eintrag",
-                    item.title,
-                    f"Platz {place} hat denselben Titel wie Platz {seen_titles[title_key]}",
-                )
-            )
-        seen_guids.setdefault(item.guid, place)
-        seen_titles.setdefault(title_key, place)
-    return findings
-
-
-def check_count(items: Sequence[Item], max_items: int) -> list[Finding]:
-    if len(items) == max_items:
-        return []
-    return [Finding("anzahl", "Feed", f"{len(items)} statt {max_items} Einträge")]
-
-
-def check_old_as_new(items: Sequence[Item]) -> list[Finding]:
-    """A message older than a day that the feed counts as first seen today."""
-    findings: list[Finding] = []
-    for item in items:
-        if not _is_current(item.time_line) or item.first_seen is None or item.pub_date is None:
-            continue
-        older = item.first_seen - item.pub_date > OLD_AS_NEW
-        started = item.starts_at is None or item.first_seen - item.starts_at > OLD_AS_NEW
-        if older and started:
-            findings.append(
-                Finding(
-                    "alte-meldung-als-neu",
-                    item.title,
-                    f"Meldung vom {_local(item.pub_date):%d.%m. %H:%M}, im Feed erstmals "
-                    f"{_local(item.first_seen):%d.%m. %H:%M}, Zeitzeile [{_normalize(item.time_line or '')}]",
-                )
-            )
-    return findings
-
-
-def check_since_too_early(
-    items: Sequence[Item],
-    built: datetime,
-    previous: Mapping[str, Any] | None,
-    flagged: Sequence[Mapping[str, Any]],
-) -> tuple[list[Finding], list[dict[str, Any]]]:
-    """Rule ``seit-zu-frueh``; also returns the incidents to keep flagging.
-
-    An incident (time line "Seit hh:mm") that appears for the first time,
-    while none of its lines stood on screen as an incident in the previous
-    build and that build had room (an item that was no incident: incidents
-    always come first), began long before it appeared only when its time is
-    wrong. Once flagged, the same lines stay flagged on that day while they
-    show a "Seit" time no later than an hour after the flagged one: on
-    2026-10-09 "2/71 [Seit 13:08]" became "2 [Seit 13:08]" and "71 [Seit
-    13:10]" at the next build.
-    """
-    today = _local(built).date().isoformat()
-    keep: list[dict[str, Any]] = [
-        dict(entry) for entry in flagged if isinstance(entry, Mapping) and entry.get("day") == today
-    ]
-    shown: set[str] = set()
-    room = False
-    usable = False
-    if isinstance(previous, Mapping):
-        previous_built = _parse_iso(previous.get("built"))
-        rows = previous.get("items")
-        if previous_built is not None and isinstance(rows, list):
-            usable = timedelta(0) < built - previous_built <= PREVIOUS_MAX_GAP
-            for row in rows:
-                if not isinstance(row, Mapping):
-                    continue
-                time_line = str(row.get("time_line") or "")
-                if _SINCE_CLOCK_RE.fullmatch(time_line.replace(_NBSP, " ")):
-                    shown |= _line_keys(str(row.get("title") or ""))
-                else:
-                    room = True
-    findings: list[Finding] = []
-    for item in items:
-        since = _since_clock(item.time_line, built)
-        if since is None or built - since <= SINCE_LATE:
-            continue
-        keys = _line_keys(item.title)
-        clock = f"{_local(since):%H:%M}"
-        still = any(
-            keys & set(entry.get("lines") or [])
-            and isinstance(entry.get("since"), str)
-            and since
-            <= _vienna_clock(
-                _local(built).date(), int(entry["since"][:2]), int(entry["since"][3:5]), built
-            )
-            + timedelta(hours=1)
-            for entry in keep
-        )
-        new = usable and room and not (keys & shown)
-        if not (still or new):
-            continue
-        findings.append(
-            Finding(
-                "seit-zu-frueh",
-                item.title,
-                f"[Seit {clock}] erscheint um {_local(built):%H:%M} zum ersten Mal, "
-                "obwohl der Feed vorher Platz hatte",
-            )
-        )
-        if new:
-            keep.append({"day": today, "lines": sorted(keys), "since": clock})
-    return findings, keep
-
-
-def _oebb_source_sentences(description: str) -> list[str]:
-    text = re.sub(r"<br\s*/?>", " ", description, flags=re.IGNORECASE)
-    text = unescape(re.sub(r"<[^>]+>", "", text))
-    text = _normalize(_OEBB_DATE_PREFIX_RE.sub("", _normalize(text)))
-    sentences: list[str] = []
-    for part in _SENTENCE_SPLIT_RE.split(text):
-        if sentences and _ABBREVIATION_END_RE.search(sentences[-1]):
-            sentences[-1] = f"{sentences[-1]} {part}"
-        else:
-            sentences.append(part)
-    return [s for s in sentences if s and not _OEBB_COURTESY_RE.search(s)]
-
-
-def _oebb_key(name: str) -> str:
-    key = re.sub(r"[\s.()]", "", _STATION_WORDS_RE.sub("", name)).casefold()
-    return key.removeprefix("wien")
-
-
-def _oebb_title_names(place: str, title: str) -> bool:
-    """Whether *title* names every station of the place phrase *place*."""
-    core = re.sub(r"^(?:zwischen|im Bereich|in)\s+", "", place.strip())
-    shown = re.sub(r"[\s.()]", "", title).casefold().replace("hbf", "hauptbahnhof")
-    keys = [_oebb_key(part).replace("hbf", "hauptbahnhof") for part in re.split(r"\s+und\s+", core)]
-    return all(len(key) >= 4 and key in shown for key in keys)
-
-
-def check_oebb_second_sentence(items: Sequence[Item], oebb_cache: Mapping[str, str]) -> list[Finding]:
-    """ÖBB's second sentence missing although it would fit without the stations (#1993)."""
-    findings: list[Finding] = []
-    for item in items:
-        source = oebb_cache.get(item.guid)
-        if not source:
-            continue
-        sentences = _oebb_source_sentences(source)
-        if len(sentences) < 2:
-            continue
-        first, second = sentences[0], sentences[1]
-        if second in _normalize(item.body):
-            continue
-        place = _OEBB_PLACE_RE.search(first)
-        if place is None or not _oebb_title_names(place.group(0), item.title):
-            continue
-        shorter = first[: place.start()] + first[place.end() :]
-        if len(shorter) + 1 + len(second) <= BODY_CHAR_LIMIT:
-            findings.append(
-                Finding("oebb-zweiter-satz", item.title, f"fehlt: „{second[:120]}“")
-            )
-    return findings
-
-
-def check_time_line(items: Sequence[Item]) -> list[Finding]:
-    findings: list[Finding] = []
-    for item in items:
-        time_line = item.time_line
-        if time_line is None:
-            findings.append(Finding("zeitzeile", item.title, "keine Zeitzeile"))
-        elif not _TIME_LINE_RE.fullmatch(time_line):
-            shown = time_line.replace(_NBSP, "·").replace(" ", "‿")
-            findings.append(Finding("zeitzeile", item.title, f"unbekannte Form [{shown}]"))
-    return findings
-
-
-def _time_line_end(time_line: str, today: date) -> date | None:
-    """The last day a "Bis …", "Am …" or "Ab … bis …" time line names."""
-    words = time_line.replace(_NBSP, " ")
-    if not words.startswith(("Bis ", "Am ", "Ab ")):
-        return None
-    if words.startswith("Ab ") and " bis " not in words:
-        return None
-    match = list(_DATE_RE.finditer(words))
-    if not match:
-        return None
-    last = match[-1]
-    try:
-        return date(int(last.group(3) or today.year), int(last.group(2)), int(last.group(1)))
-    except ValueError:
-        return None
-
-
-def check_past_end(items: Sequence[Item], built: datetime) -> list[Finding]:
-    findings: list[Finding] = []
-    local = _local(built)
-    for item in items:
-        time_line = item.time_line
-        if time_line is None:
-            continue
-        end = _time_line_end(time_line, local.date())
-        if end is not None and end < local.date():
-            findings.append(
-                Finding("ende-vorbei", item.title, f"[{_normalize(time_line)}] liegt vor heute")
-            )
-        since = _since_clock(time_line, built)
-        if since is not None and since > built.astimezone(UTC) + timedelta(minutes=1):
-            findings.append(
-                Finding(
-                    "ende-vorbei",
-                    item.title,
-                    f"[{_normalize(time_line)}] liegt nach dem Bau um {local:%H:%M}",
-                )
-            )
-        if not _is_current(time_line):
-            continue
-        # The clock time belongs to the day of the item's newest time, as in
-        # the builder (``_drop_passed_expected_end``): more than three hours
-        # before it, it is the next morning. "[Seit 23:30]" with
-        # "Voraussichtlich bis 00:30" at 23:45 is not past.
-        times = [t for t in (item.pub_date, item.starts_at, since) if t is not None]
-        anchor = _local(max(times, key=lambda t: t.astimezone(UTC)) if times else built)
-        for match in _EXPECTED_UNTIL_RE.finditer(item.body):
-            hour, minute = int(match.group(1)), int(match.group(2))
-            if hour > 23 or minute > 59:
-                continue
-            until = _vienna_clock(anchor.date(), hour, minute, built)
-            if until < anchor.astimezone(UTC) - EXPECTED_END_BEFORE_MESSAGE:
-                until = _vienna_clock(anchor.date() + timedelta(days=1), hour, minute, built)
-            if until < built.astimezone(UTC) - timedelta(minutes=1):
-                findings.append(
-                    Finding(
-                        "ende-vorbei",
-                        item.title,
-                        f"„Voraussichtlich bis {hour:02d}:{minute:02d}“ um {local:%H:%M}",
-                    )
-                )
-    return findings
-
-
-def check_length(items: Sequence[Item]) -> list[Finding]:
-    return [
-        Finding("textlaenge", item.title, f"{len(item.body)} Zeichen")
-        for item in items
-        if len(item.body) > BODY_CHAR_LIMIT
-    ]
-
-
-def check_courtesy(items: Sequence[Item]) -> list[Finding]:
-    return [
-        Finding("hoeflichkeitssatz", item.title, "„Wir bitten um Entschuldigung.“")
-        for item in items
-        if _COURTESY in item.description
-    ]
-
-
-def check_feed_age(built: datetime | None, now: datetime) -> list[Finding]:
-    if built is None:
-        return [Finding("feed-alter", "Feed", "keine lesbare <lastBuildDate>")]
-    if now - built > FEED_MAX_AGE:
-        minutes = int((now - built).total_seconds() // 60)
-        return [Finding("feed-alter", "Feed", f"zuletzt gebaut {_local(built):%d.%m. %H:%M}, vor {minutes} Minuten")]
-    return []
-
-
-# --- source drift ---------------------------------------------------------------
-
-
-def _count_list(payload: object, *keys: str) -> int | None:
-    node: object = payload
-    for key in keys:
-        if not isinstance(node, Mapping):
-            return None
-        node = node.get(key)
-    return len(node) if isinstance(node, list) else None
-
-
-def read_sources(cache_dir: Path, raw_dir: Path) -> SourceSample:
-    """Counts of the provider caches and the raw answers of this run."""
-    sample = SourceSample()
-    if cache_dir.is_dir():
-        for directory in sorted(cache_dir.iterdir()):
-            provider = directory.name.split("_", 1)[0]
-            if provider not in {"wl", "oebb", "baustellen"}:
-                continue
-            payload = read_capped_json(directory / "events.json", MAX_SOURCE_BYTES, label="cache", logger=LOGGER)
-            if isinstance(payload, list):
-                sample.cache[provider] = len(payload)
-    raw: dict[str, tuple[str, tuple[str, ...]]] = {
-        "wl-stoerungen": ("wl/trafficInfoList.json", ("data", "trafficInfos")),
-        "wl-hinweise": ("wl/newsList.json", ("data", "pois")),
-        "oebb": ("oebb/rss.json", ("items",)),
-        "baustellen-linien": ("baustellen/BAUSTELLENLINOGD.json", ("features",)),
-        "baustellen-punkte": ("baustellen/BAUSTELLENPKTOGD.json", ("features",)),
-    }
-    for name, (relative, keys) in raw.items():
-        payload = read_capped_json(raw_dir / relative, MAX_SOURCE_BYTES, label="raw", logger=LOGGER)
-        count = _count_list(payload, *keys)
-        if count is not None:
-            sample.raw[name] = count
-    for provider in ("wl", "oebb", "baustellen"):
-        payload = read_capped_json(
-            raw_dir / provider / "verworfen.json", MAX_SOURCE_BYTES, label="raw", logger=LOGGER
-        )
-        count = _count_list(payload, "verworfen")
-        if count is not None:
-            sample.discarded[provider] = count
-    return sample
-
-
-_DISCARD_BASE: dict[str, tuple[str, ...]] = {
-    "wl": ("wl-stoerungen", "wl-hinweise"),
-    "oebb": ("oebb",),
-    "baustellen": ("baustellen-linien", "baustellen-punkte"),
-}
-
-
-def _discard_share(sample: Mapping[str, Any], provider: str) -> float | None:
-    raw = sample.get("raw") or {}
-    discarded = sample.get("discarded") or {}
-    if not isinstance(raw, Mapping) or not isinstance(discarded, Mapping) or provider not in discarded:
-        return None
-    names = _DISCARD_BASE[provider]
-    if not all(name in raw for name in names):
-        return None
-    total = sum(int(raw[name]) for name in names)
-    return int(discarded[provider]) / total if total else None
-
-
-def check_sources(sample: SourceSample, history: Sequence[Mapping[str, Any]], now: datetime) -> list[Finding]:
-    """Compare this run's counts with the samples of the last seven days."""
-    reference = [
-        entry
-        for entry in history
-        if isinstance(entry, Mapping)
-        and (moment := _parse_iso(entry.get("t"))) is not None
-        and now - SAMPLE_WINDOW <= moment < now
-    ]
-    if len(reference) < MIN_REFERENCE_SAMPLES:
-        return []
-    findings: list[Finding] = []
-
-    def values(section: str, name: str) -> list[float]:
-        out: list[float] = []
-        for entry in reference:
-            part = entry.get(section)
-            if isinstance(part, Mapping) and isinstance(part.get(name), int | float):
-                out.append(float(part[name]))
-        return out
-
-    for provider, count in sample.cache.items():
-        past = values("cache", provider)
-        if count == 0 and past and statistics.median(past) >= EMPTY_CACHE_MIN_REFERENCE:
-            findings.append(
-                Finding(
-                    "quelle-leer",
-                    provider,
-                    f"Cache leer, üblich {statistics.median(past):.0f} Meldungen",
-                )
-            )
-    for name, count in sample.raw.items():
-        past = values("raw", name)
-        if not past:
-            continue
-        usual = statistics.median(past)
-        if usual >= SOURCE_DROP_MIN_REFERENCE and count < SOURCE_DROP_FACTOR * usual:
-            findings.append(
-                Finding("quelle-einbruch", name, f"{count} Meldungen, üblich {usual:.0f}")
-            )
-    current = {"raw": sample.raw, "discarded": sample.discarded}
-    for provider in _DISCARD_BASE:
-        share = _discard_share(current, provider)
-        if share is None:
-            continue
-        past_shares = [s for entry in reference if (s := _discard_share(entry, provider)) is not None]
-        if not past_shares:
-            continue
-        usual = statistics.median(past_shares)
-        if abs(share - usual) > DISCARD_SHARE_JUMP:
-            findings.append(
-                Finding(
-                    "verwurf-sprung",
-                    provider,
-                    f"{share:.0%} verworfen, üblich {usual:.0%}",
-                )
-            )
-    return findings
-
-
-# --- source without a fresh answer -----------------------------------------------
-
-
-def parse_fetch_exit(value: str | None) -> dict[str, int]:
-    """``"wl=0 oebb=1 baustellen=0"`` → exit code per source; unknown parts are left out."""
-    out: dict[str, int] = {}
-    for part in re.split(r"[\s,]+", value or ""):
-        name, _, code = part.partition("=")
-        if name in FETCH_SOURCES and code.strip().isdigit():
-            out[name] = int(code)
-    return out
-
-
-def _fmt_hours(delta: timedelta) -> str:
-    minutes = int(delta.total_seconds() // 60)
-    hours, minutes = divmod(minutes, 60)
-    return f"{hours} h {minutes:02d} min" if hours else f"{minutes} min"
-
-
-@dataclass(frozen=True)
-class PollSample:
-    """The VAO poll as ``cache/stammstrecke/poll_status.json`` records it."""
-
-    last_attempt: datetime
-    last_result: str
-    last_error: str = ""
-    last_success: datetime | None = None
-
-
-def check_fresh_answers(
-    fetch_exit: Mapping[str, int] | None,
-    poll: PollSample | None,
-    previous: object,
-    now: datetime,
-) -> tuple[list[Finding], dict[str, Any]]:
-    """Every source the feed has taken from its last good answer for :data:`SOURCE_STALE`.
-
-    The free sources: the Update run hands over the fetch exit codes; the state
-    keeps the time of the last fresh answer per source. A source without an exit
-    code in this run (step killed, local run) keeps its state and gives no
-    finding. The VAO poll keeps its own last success in its status file.
-    """
-    old = previous if isinstance(previous, Mapping) else {}
-    findings: list[Finding] = []
-    state: dict[str, Any] = {}
-    codes = fetch_exit or {}
-    for source in FETCH_SOURCES:
-        raw = old.get(source)
-        entry = dict(raw) if isinstance(raw, Mapping) else {}
-        code = codes.get(source)
-        if code == 0:
-            entry = {"last_ok": now.isoformat()}
-        elif code is not None:
-            entry["last_exit"] = code
-            # Before the first fresh answer the watcher saw, count from the first failure.
-            entry.setdefault("failing_since", now.isoformat())
-            last_ok = _parse_iso(entry.get("last_ok")) or _parse_iso(entry.get("failing_since")) or now
-            if now - last_ok >= SOURCE_STALE:
-                good = (
-                    f"; der Feed nutzt die letzte gute Antwort von {_local(last_ok):%d.%m. %H:%M}"
-                    if "last_ok" in entry
-                    else ""
-                )
-                findings.append(
-                    Finding(
-                        "quelle-ohne-antwort",
-                        SOURCE_LABELS[source],
-                        f"seit {_fmt_hours(now - last_ok)} keine brauchbare Antwort "
-                        f"(Abruf endet mit Exit {code}){good}",
-                    )
-                )
-        if entry:
-            state[source] = entry
-    if poll is not None and poll.last_success is not None and now - poll.last_success >= SOURCE_STALE:
-        reason = f"{poll.last_result} {poll.last_error}".strip()
-        findings.append(
-            Finding(
-                "quelle-ohne-antwort",
-                SOURCE_LABELS["stammstrecke"],
-                f"letzter erfolgreicher Abruf {_local(poll.last_success):%d.%m. %H:%M}, vor "
-                f"{_fmt_hours(now - poll.last_success)}; letzter Versuch "
-                f"{_local(poll.last_attempt):%H:%M}: {reason}",
-            )
-        )
-    return findings, state
-
-
-def check_vao_version(choice: VersionState | None, now: datetime) -> list[Finding]:
-    """The Stammstrecke monitor changed its VAO version shortly before this run."""
-    if choice is None or choice.previous is None or choice.version is None or choice.changed_at is None:
-        return []
-    if not timedelta(0) <= now - choice.changed_at <= VAO_VERSION_REPORT:
-        return []
-    return [
-        Finding(
-            "vao-version",
-            SOURCE_LABELS["stammstrecke"],
-            f"{choice.previous} → {choice.version} am {_local(choice.changed_at):%d.%m. %H:%M}; "
-            f"die VAO listet {', '.join(choice.listed) or 'keine lesbare Liste'}",
-        )
-    ]
-
-
-def load_poll_sample(path: Path) -> PollSample | None:
-    payload = read_capped_json(path, MAX_SOURCE_BYTES, label="Stammstrecke-Abrufstatus", logger=LOGGER)
-    if not isinstance(payload, Mapping):
-        return None
-    attempt = _parse_iso(payload.get("last_attempt"))
-    result = payload.get("last_result")
-    if attempt is None or not isinstance(result, str):
-        return None
-    error = payload.get("last_error")
-    return PollSample(
-        last_attempt=attempt,
-        last_result=result,
-        last_error=error if isinstance(error, str) else "",
-        last_success=_parse_iso(payload.get("last_success")),
-    )
-
-
-# --- one run ---------------------------------------------------------------------
-
-
-@dataclass
-class Result:
-    findings: list[Finding]
-    state: dict[str, Any]
-
-
-def evaluate(
-    feed: Feed,
-    *,
-    now: datetime,
-    state: Mapping[str, Any],
-    oebb_cache: Mapping[str, str],
-    sources: SourceSample | None,
-    max_items: int = DEFAULT_MAX_ITEMS,
-    fetch_exit: Mapping[str, int] | None = None,
-    poll: PollSample | None = None,
-    vao: VersionState | None = None,
-) -> Result:
-    """Every finding of this run and the state for the next one. Pure: no I/O."""
-    built = feed.built or now
-    items = feed.items
-    findings: list[Finding] = []
-    findings += check_duplicates(items)
-    findings += check_count(items, max_items)
-    findings += check_old_as_new(items)
-    previous = state.get("previous_feed")
-    flagged = state.get("seit_zu_frueh")
-    since_findings, keep = check_since_too_early(
-        items,
-        built,
-        previous if isinstance(previous, Mapping) else None,
-        flagged if isinstance(flagged, list) else [],
-    )
-    findings += since_findings
-    findings += check_oebb_second_sentence(items, oebb_cache)
-    findings += check_time_line(items)
-    findings += check_past_end(items, built)
-    findings += check_length(items)
-    findings += check_courtesy(items)
-    findings += check_feed_age(feed.built, now)
-
-    history = state.get("samples")
-    samples: list[Mapping[str, Any]] = (
-        [entry for entry in history if isinstance(entry, Mapping)] if isinstance(history, list) else []
-    )
-    if sources is not None:
-        findings += check_sources(sources, samples, now)
-        samples.append(
-            {"t": now.isoformat(), "raw": sources.raw, "discarded": sources.discarded, "cache": sources.cache}
-        )
-    fresh_findings, fetch_state = check_fresh_answers(fetch_exit, poll, state.get("fetch"), now)
-    findings += fresh_findings
-    findings += check_vao_version(vao, now)
-    kept = [
-        dict(entry)
-        for entry in samples
-        if (moment := _parse_iso(entry.get("t"))) is not None and now - moment <= SAMPLE_WINDOW
-    ][-MAX_SAMPLES:]
-
-    rules_state = _next_rule_state(state.get("rules"), findings, now)
-    new_state: dict[str, Any] = {
-        "version": 1,
-        "description": (
-            "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, "
-            "with the state the next run needs. A finding is a note; the feed is never "
-            "changed. See docs/reference/feed_watch.md."
-        ),
-        "updated": now.isoformat(),
-        "built": feed.built.isoformat() if feed.built else None,
-        "findings": [
-            {
-                "rule": f.rule_id,
-                "title": RULES[f.rule_id].title,
-                "rank": RULES[f.rule_id].rank,
-                "subject": f.subject,
-                "text": f.text,
-            }
-            for f in findings
-        ],
-        "rules": rules_state,
-        "previous_feed": {
-            "built": built.isoformat(),
-            "items": [{"title": item.title, "time_line": item.time_line or ""} for item in items],
-        },
-        "seit_zu_frueh": keep,
-        "samples": kept,
-        "fetch": fetch_state,
-    }
-    return Result(findings, new_state)
-
-
-def _next_rule_state(previous: object, findings: Sequence[Finding], now: datetime) -> dict[str, Any]:
-    """Per broken rule: since when, how many runs it has held since, and its issue.
-
-    A rule leaves the state once it has held in :data:`HELD_RUNS_TO_CLOSE`
-    runs in a row and has no open issue; with one, :func:`sync_issues`
-    removes it when it closes the issue.
-    """
-    old = previous if isinstance(previous, Mapping) else {}
-    broken = {f.rule_id for f in findings}
-    out: dict[str, Any] = {}
-    for rule_id in RULES:
-        raw = old.get(rule_id)
-        entry = dict(raw) if isinstance(raw, Mapping) else {}
-        if rule_id in broken:
-            entry.setdefault("since", now.isoformat())
-            entry["last"] = now.isoformat()
-            entry["held_runs"] = 0
-        elif entry:
-            entry["held_runs"] = int(entry.get("held_runs") or 0) + 1
-            if entry["held_runs"] >= HELD_RUNS_TO_CLOSE and not entry.get("issue"):
-                continue
-        if entry:
-            out[rule_id] = entry
-    return out
-
-
-# --- GitHub issues ---------------------------------------------------------------
-
-ISSUE_LABEL = "feed-waechter"
-ISSUE_TITLE_PREFIX = "Feed-Wächter: "
-
-
-class IssueClient:
-    """The few GitHub REST calls the watcher needs, through the project's safe HTTP stack."""
-
-    def __init__(self, repository: str, token: str, api_url: str) -> None:
-        self.repository = repository
-        self.token = token
-        self.api_url = api_url.rstrip("/")
-
-    def _request(self, method: str, path: str, payload: Mapping[str, Any] | None = None) -> Any:
-        from src.utils.files import _reject_non_finite_constant, _reject_non_finite_float
-        from src.utils.http import request_safe, session_with_retries, validate_http_url
-
-        url = f"{self.api_url}/repos/{self.repository}{path}"
-        if not validate_http_url(url.split("?", 1)[0]):
-            raise ValueError("unsafe GitHub API URL")
-        with session_with_retries(
-            user_agent="wien-oepnv-feed-watch",
-            # POST is not retried: a create GitHub carried out but answered
-            # with a 5xx or a timeout would open the issue or comment twice.
-            allowed_methods=("GET", "PATCH"),
-            raise_on_status=False,
-        ) as session:
-            session.headers.update(
-                {
-                    "Accept": "application/vnd.github+json",
-                    "Authorization": f"Bearer {self.token}",
-                    "X-GitHub-Api-Version": "2022-11-28",
-                }
-            )
-            kwargs: dict[str, Any] = {"json": dict(payload)} if payload is not None else {}
-            response = request_safe(session, url, method=method, timeout=10, raise_for_status=False, **kwargs)
-        if response.status_code >= 400:
-            raise RuntimeError(f"GitHub {method} {path.split('?', 1)[0]}: HTTP {response.status_code}")
-        if not response.content:
-            return None
-        try:
-            return response.json(
-                parse_constant=_reject_non_finite_constant,
-                parse_float=_reject_non_finite_float,
-            )
-        except (ValueError, RecursionError) as exc:
-            raise RuntimeError(f"GitHub {method}: unreadable answer") from exc
-
-    def issues(self) -> list[dict[str, Any]]:
-        data = self._request("GET", f"/issues?state=all&labels={ISSUE_LABEL}&per_page=50&sort=updated")
-        return [entry for entry in data if isinstance(entry, dict)] if isinstance(data, list) else []
-
-    def create(self, title: str, body: str) -> int | None:
-        data = self._request("POST", "/issues", {"title": title, "body": body, "labels": [ISSUE_LABEL]})
-        number = data.get("number") if isinstance(data, dict) else None
-        return number if isinstance(number, int) else None
-
-    def comment(self, number: int, body: str) -> None:
-        self._request("POST", f"/issues/{number}/comments", {"body": body})
-
-    def set_state(self, number: int, state: str) -> None:
-        payload: dict[str, Any] = {"state": state}
-        if state == "closed":
-            payload["state_reason"] = "completed"
-        self._request("PATCH", f"/issues/{number}", payload)
-
-
-def issue_client_from_env() -> IssueClient | None:
-    """A client when ``FEED_WATCH_ISSUES=1`` and a trusted token and repository are set."""
-    from src.feed.reporting import _is_trusted_github_api, _is_valid_github_repo_slug
-    from src.utils.env import get_bool_env, read_secret
-
-    if not get_bool_env("FEED_WATCH_ISSUES", False):
-        return None
-    repository = os.getenv("GITHUB_REPOSITORY") or ""
-    token = read_secret("GITHUB_TOKEN")
-    api_url = os.getenv("GITHUB_API_URL") or "https://api.github.com"
-    if not repository or not token:
-        LOGGER.warning("Feed-Wächter: keine Issues, GITHUB_TOKEN oder GITHUB_REPOSITORY fehlt")
-        return None
-    if not _is_valid_github_repo_slug(repository) or not _is_trusted_github_api(api_url):
-        LOGGER.warning("Feed-Wächter: keine Issues, Repository oder API-URL nicht vertrauenswürdig")
-        return None
-    return IssueClient(repository, token, api_url)
-
-
-def _run_link() -> str:
-    server = os.getenv("GITHUB_SERVER_URL", "https://github.com")
-    repository = os.getenv("GITHUB_REPOSITORY", "")
-    run_id = os.getenv("GITHUB_RUN_ID", "")
-    if repository and run_id.isdigit():
-        return f"{server}/{repository}/actions/runs/{run_id}"
-    return ""
-
-
-def _issue_body(rule: Rule, findings: Sequence[Finding], now: datetime) -> str:
-    lines = [
-        f"**{rule.title}** ({rule.rank}), festgestellt {_local(now):%d.%m.%Y %H:%M} Wiener Zeit.",
-        "",
-        rule.why,
-        "",
-        "Im Lauf gefunden:",
-        "",
-    ]
-    lines += [f"- {f.subject}: {f.text}" for f in findings[:10]]
-    if len(findings) > 10:
-        lines.append(f"- … und {len(findings) - 10} weitere")
-    link = _run_link()
-    lines += [
-        "",
-        "Das ist ein Hinweis, kein Fehler des Laufs: Der Feed wurde wie gebaut veröffentlicht, "
-        "der Update-Lauf bleibt grün (Regel „Inhaltsfunde nie rot“, docs/reference/feed_watch.md). "
-        f"Dieses Issue schließt sich selbst, sobald die Regel {HELD_RUNS_TO_CLOSE} Läufe in Folge hält.",
-    ]
-    if link:
-        lines += ["", f"Lauf: {link}"]
-    return "\n".join(lines)
-
-
-def sync_issues(client: IssueClient, result: Result, now: datetime) -> None:
-    """Open, reopen or close one issue per rule. Errors are logged, never raised."""
-    by_rule: dict[str, list[Finding]] = {}
-    for finding in result.findings:
-        by_rule.setdefault(finding.rule_id, []).append(finding)
-    rules_state: dict[str, Any] = result.state["rules"]
-    to_open = [r for r in by_rule if not rules_state.get(r, {}).get("issue")]
-    to_close = [
-        r
-        for r, entry in rules_state.items()
-        if r not in by_rule and entry.get("issue") and int(entry.get("held_runs") or 0) >= HELD_RUNS_TO_CLOSE
-    ]
-    if not to_open and not to_close:
-        return
-    try:
-        existing = client.issues() if to_open else []
-    except Exception as exc:  # network, permission: retried next run
-        LOGGER.warning("Feed-Wächter: Issues nicht lesbar: %s", _clean(exc))
-        return
-    for rule_id in to_open:
-        rule = RULES[rule_id]
-        title = f"{ISSUE_TITLE_PREFIX}{rule.title}"
-        body = _issue_body(rule, by_rule[rule_id], now)
-        try:
-            number = _open_or_reopen(client, existing, title, body, now)
-        except Exception as exc:
-            LOGGER.warning("Feed-Wächter: Issue zu %s nicht angelegt: %s", rule_id, _clean(exc))
-            continue
-        if number is not None:
-            rules_state.setdefault(rule_id, {})["issue"] = number
-            LOGGER.info("Feed-Wächter: Issue #%s für %s", number, rule_id)
-    for rule_id in to_close:
-        entry = rules_state[rule_id]
-        number = int(entry["issue"])
-        try:
-            client.comment(
-                number,
-                f"Die Regel hält wieder seit {HELD_RUNS_TO_CLOSE} Läufen "
-                f"(Stand {_local(now):%d.%m.%Y %H:%M} Wiener Zeit). Automatisch geschlossen.",
-            )
-            client.set_state(number, "closed")
-        except Exception as exc:
-            LOGGER.warning("Feed-Wächter: Issue #%s nicht geschlossen: %s", number, _clean(exc))
-            continue
-        rules_state.pop(rule_id, None)
-        LOGGER.info("Feed-Wächter: Issue #%s geschlossen (%s hält wieder)", number, rule_id)
-
-
-def _open_or_reopen(
-    client: IssueClient, existing: Sequence[Mapping[str, Any]], title: str, body: str, now: datetime
-) -> int | None:
-    same = [entry for entry in existing if entry.get("title") == title and "pull_request" not in entry]
-    for entry in same:
-        if entry.get("state") == "open" and isinstance(entry.get("number"), int):
-            return int(entry["number"])
-    for entry in same:
-        closed = _parse_iso(str(entry.get("closed_at") or "").replace("Z", "+00:00"))
-        if closed is not None and now - closed <= REOPEN_WINDOW and isinstance(entry.get("number"), int):
-            number = int(entry["number"])
-            client.set_state(number, "open")
-            client.comment(number, body)
-            return number
-    return client.create(title, body)
-
-
-# --- I/O --------------------------------------------------------------------------
-
-
-def load_oebb_cache(cache_dir: Path) -> dict[str, str]:
-    """GUID → raw description of every ÖBB message in the cache."""
-    out: dict[str, str] = {}
-    if not cache_dir.is_dir():
-        return out
-    for directory in sorted(cache_dir.glob("oebb*")):
-        payload = read_capped_json(directory / "events.json", MAX_SOURCE_BYTES, label="ÖBB cache", logger=LOGGER)
-        for entry in payload if isinstance(payload, list) else []:
-            if isinstance(entry, Mapping) and isinstance(entry.get("guid"), str):
-                out[entry["guid"]] = str(entry.get("description") or "")
-    return out
-
-
-def load_state(path: Path) -> dict[str, Any]:
-    payload = read_capped_json(path, MAX_STATE_BYTES, label="Feed-Wächter", logger=LOGGER)
-    return dict(payload) if isinstance(payload, Mapping) else {}
-
-
-def write_state(path: Path, state: Mapping[str, Any]) -> None:
-    scrubbed = scrub_trojan_source_primitives(dict(state))
-    with atomic_write(path, mode="w", encoding="utf-8", permissions=0o644) as handle:
-        json.dump(scrubbed, handle, ensure_ascii=False, indent=1, allow_nan=False)
-        handle.write("\n")
-
-
-def _report(findings: Sequence[Finding], now: datetime) -> None:
-    in_actions = os.getenv("GITHUB_ACTIONS") == "true"
-    for finding in findings:
-        rule = RULES[finding.rule_id]
-        LOGGER.warning("Feed-Wächter %s: %s: %s", finding.rule_id, _clean(finding.subject), _clean(finding.text))
-        if in_actions:
-            message = f"{finding.subject}: {finding.text}".replace("\n", " ").replace("::", ":")
-            print(f"::warning title=Feed-Wächter: {rule.title}::{_clean(message)}")
-    if not findings:
-        LOGGER.info("Feed-Wächter: alle %d Regeln halten", len(RULES))
-    summary_path = os.getenv("GITHUB_STEP_SUMMARY")
-    if not summary_path:
-        return
-    lines = [f"## Feed-Wächter — {_local(now):%d.%m.%Y %H:%M} Wiener Zeit", ""]
-    if findings:
-        lines += ["| Regel | Rang | Eintrag | Befund |", "| --- | --- | --- | --- |"]
-        for finding in findings:
-            rule = RULES[finding.rule_id]
-            cells = [rule.title, rule.rank, finding.subject, finding.text]
-            lines.append("| " + " | ".join(_clean(c).replace("|", "/") for c in cells) + " |")
-        lines += ["", "Hinweise, kein Fehler: Der Feed wurde wie gebaut veröffentlicht."]
-    else:
-        lines.append(f"Alle {len(RULES)} Regeln halten.")
-    try:
-        with open(summary_path, "a", encoding="utf-8") as handle:
-            handle.write("\n".join(lines) + "\n")
-    except OSError as exc:
-        # Die Zusammenfassung ist Zierde; Log und ::warning tragen die Funde schon.
-        LOGGER.debug("Feed-Wächter: Step-Summary nicht schreibbar: %s", _clean(str(exc)))
 
 
 def run(args: argparse.Namespace, now: datetime) -> int:
@@ -1389,6 +230,123 @@ def main(argv: Sequence[str] | None = None) -> int:
         except Exception as write_exc:  # pragma: no cover - last resort
             LOGGER.error("Feed-Wächter: Status nicht geschrieben: %s", _clean(write_exc))
         return 0
+
+
+# Names other files and tests read through this script; the code lives in
+# src/ (700-line limit, 2026-11-02). Listing them marks the imports as
+# deliberate re-exports.
+__all__ = [
+    "REPO_ROOT",
+    "DEFAULT_FEED",
+    "DEFAULT_STATE",
+    "DEFAULT_CACHE_DIR",
+    "DEFAULT_RAW_DIR",
+    "run",
+    "main",
+    "InvalidPathError",
+    "validate_path",
+    "setup_script_logging",
+    "read_capped_text",
+    "load_vao_version",
+    "LOGGER",
+    "MAX_FEED_BYTES",
+    "DEFAULT_MAX_ITEMS",
+    "_clean",
+    "parse_feed",
+    "read_sources",
+    "parse_fetch_exit",
+    "load_poll_sample",
+    "evaluate",
+    "issue_client_from_env",
+    "sync_issues",
+    "load_oebb_cache",
+    "load_state",
+    "write_state",
+    "_report",
+    "VIENNA",
+    "MAX_STATE_BYTES",
+    "MAX_SOURCE_BYTES",
+    "BODY_CHAR_LIMIT",
+    "SINCE_LATE",
+    "EXPECTED_END_BEFORE_MESSAGE",
+    "PREVIOUS_MAX_GAP",
+    "OLD_AS_NEW",
+    "FEED_MAX_AGE",
+    "HELD_RUNS_TO_CLOSE",
+    "REOPEN_WINDOW",
+    "SAMPLE_WINDOW",
+    "MAX_SAMPLES",
+    "MIN_REFERENCE_SAMPLES",
+    "SOURCE_DROP_FACTOR",
+    "SOURCE_DROP_MIN_REFERENCE",
+    "DISCARD_SHARE_JUMP",
+    "EMPTY_CACHE_MIN_REFERENCE",
+    "SOURCE_STALE",
+    "VAO_VERSION_REPORT",
+    "FETCH_SOURCES",
+    "SOURCE_LABELS",
+    "_NBSP",
+    "_WEEKDAY",
+    "_DAY",
+    "_TIME_LINE_RE",
+    "_TIME_LINE_AT_END_RE",
+    "_SINCE_CLOCK_RE",
+    "_DATE_RE",
+    "_EXPECTED_UNTIL_RE",
+    "_LINE_PREFIX_RE",
+    "_COURTESY",
+    "_OEBB_COURTESY_RE",
+    "_OEBB_DATE_PREFIX_RE",
+    "_SENTENCE_SPLIT_RE",
+    "_ABBREVIATION_END_RE",
+    "_OEBB_PLACE_RE",
+    "_STATION_WORDS_RE",
+    "Rule",
+    "RULES",
+    "Item",
+    "Feed",
+    "Finding",
+    "SourceSample",
+    "_local",
+    "_parse_rfc2822",
+    "_parse_iso",
+    "_local_name",
+    "_normalize",
+    "_line_keys",
+    "_vienna_clock",
+    "_since_clock",
+    "_is_current",
+    "check_duplicates",
+    "check_count",
+    "check_old_as_new",
+    "check_since_too_early",
+    "_oebb_source_sentences",
+    "_oebb_key",
+    "_oebb_title_names",
+    "check_oebb_second_sentence",
+    "check_time_line",
+    "_time_line_end",
+    "check_past_end",
+    "check_length",
+    "check_courtesy",
+    "check_feed_age",
+    "_count_list",
+    "_DISCARD_BASE",
+    "_discard_share",
+    "check_sources",
+    "_fmt_hours",
+    "PollSample",
+    "check_fresh_answers",
+    "check_vao_version",
+    "Result",
+    "_next_rule_state",
+    "ISSUE_LABEL",
+    "ISSUE_TITLE_PREFIX",
+    "IssueClient",
+    "_run_link",
+    "_issue_body",
+    "_open_or_reopen",
+]
 
 
 if __name__ == "__main__":  # pragma: no cover - CLI entry point

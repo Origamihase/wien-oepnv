@@ -53,7 +53,7 @@ def test_first_call_runs_polygon_check_and_populates_cache() -> None:
     station = _make_station()
     info = _location(48.185, 16.376)  # near Wien Hbf
     with patch(
-        "scripts.update_station_directory._is_point_in_vienna",
+        "src.station_directory.matching._is_point_in_vienna",
         return_value=True,
     ) as mock_polygon:
         result = _resolve_in_vienna_with_cache(station, info)
@@ -77,7 +77,7 @@ def test_drift_below_threshold_skips_polygon_check() -> None:
     # Same station, drifted ~5 m in latitude (well below 150 m).
     info = _location(48.18505, 16.376)
     with patch(
-        "scripts.update_station_directory._is_point_in_vienna",
+        "src.station_directory.matching._is_point_in_vienna",
     ) as mock_polygon:
         result = _resolve_in_vienna_with_cache(station, info)
     assert result is True
@@ -96,7 +96,7 @@ def test_cache_preserves_false_result() -> None:
     })
     info = _location(48.50001, 16.20001)  # ~1 m drift
     with patch(
-        "scripts.update_station_directory._is_point_in_vienna",
+        "src.station_directory.matching._is_point_in_vienna",
     ) as mock_polygon:
         result = _resolve_in_vienna_with_cache(station, info)
     assert result is False
@@ -115,7 +115,7 @@ def test_drift_above_threshold_recomputes() -> None:
     # 0.002° latitude shift ≈ 222 m (above the 150 m threshold)
     info = _location(48.187, 16.376)
     with patch(
-        "scripts.update_station_directory._is_point_in_vienna",
+        "src.station_directory.matching._is_point_in_vienna",
         return_value=True,
     ) as mock_polygon:
         result = _resolve_in_vienna_with_cache(station, info)
@@ -134,7 +134,7 @@ def test_polygon_result_can_flip_on_relocation() -> None:
     # Drift > 150 m AND polygon now says outside.
     info = _location(48.30, 16.376)
     with patch(
-        "scripts.update_station_directory._is_point_in_vienna",
+        "src.station_directory.matching._is_point_in_vienna",
         return_value=False,
     ):
         result = _resolve_in_vienna_with_cache(station, info)
@@ -167,7 +167,7 @@ def test_malformed_cache_recomputes() -> None:
     for bad in bad_caches:
         station = _make_station(extras={_IN_VIENNA_CACHE_KEY: bad})
         with patch(
-            "scripts.update_station_directory._is_point_in_vienna",
+            "src.station_directory.matching._is_point_in_vienna",
             return_value=True,
         ) as mock_polygon:
             result = _resolve_in_vienna_with_cache(station, info)

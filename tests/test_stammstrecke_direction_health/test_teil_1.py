@@ -178,7 +178,7 @@ def test_health_check_note_keeps_the_run_green(
         for name, value in vars(module).items()
         if name.startswith("check_")
         and inspect.isfunction(value)
-        and value.__module__ == target
+        and (value.__module__ == target or value.__module__.startswith("src.health_check."))
     ]
     assert "check_translation" in checks and "check_pages_build" in checks
     for name in checks:
@@ -446,11 +446,13 @@ def test_coverage_note_asserts_no_cause() -> None:
     # package so the module path is not pulled in by two different import
     # forms in one file (CodeQL py/import-and-import-from).
     from scripts import generate_markdown_stats as gms
+    from src.markdown_stats import direction_coverage
 
     assert not hasattr(gms, "DIRECTION_OUTAGE_CAUSE"), (
         "the hard-coded cause is gone; re-adding it re-creates a caption that "
         "outlives the outage it describes"
     )
+    assert not hasattr(direction_coverage, "DIRECTION_OUTAGE_CAUSE")
 
     window = [_sm_row(NOW - timedelta(hours=h), "Meidling") for h in range(1, 9)]
     older = [_sm_row(datetime(2026, 8, 14, 13, 57, tzinfo=VIENNA), "Praterstern")]
