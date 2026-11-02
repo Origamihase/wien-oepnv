@@ -2430,7 +2430,9 @@ bleibt gleich. `tests/test_main_station_display.py` prüft jeden
 Hauptbahnhof des Verzeichnisses gegen die Regel, also auch nach jeder
 Aktualisierung in CI. Ein Name, in dem „Hauptbahnhof“ nicht am Ende steht
 („Wien Hauptbahnhof Ost (WL)“), bleibt wie er ist; Beschreibungen behalten
-den Wortlaut der Quelle.
+den Wortlaut der Quelle. Die Statistik liest ältere Zeilen der Ledger
+(„St. Pölten Hauptbahnhof“) in der heutigen Form (`current_location_label`
+in `src/utils/stats.py`), damit ein Ort nicht zweimal in der Rangliste steht.
 
 ## 6. Statistik- und Dashboard-Pipeline
 

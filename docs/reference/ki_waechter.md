@@ -124,7 +124,12 @@ Modelle zusammen gezählt:
   Firewall auf dem Weg eine Verbindung vergisst, auf deren Antwort der
   Wächter minutenlang wartet (`keepalive=True` in `session_with_retries`,
   `KEEPALIVE_SOCKET_OPTIONS` in `src/utils/http.py`). Die anderen Abrufe
-  des Projekts warten höchstens Sekunden und bleiben ohne.
+  des Projekts warten höchstens Sekunden und bleiben ohne. `request_safe`
+  schickt HTTPS über einen eigenen, auf die geprüfte IP festgelegten
+  Adapter (`_get_pinned_session`) und gibt ihm die Keepalive-Einstellung
+  der Sitzung mit; bis zur unabhängigen Prüfung vom 02.11.2026 erreichte
+  sie nur den Adapter der Sitzung, den diese Anfragen nie benutzen, und die
+  Verbindung des Wächters lief ohne Keepalive.
 - Nach zwölf Minuten (Wartezeit eingerechnet) beginnt keine neue Anfrage
   mehr (`NO_NEW_REQUEST_AFTER_S`). So endet auch die letzte vor der
   Grenze des Schritts von 25 Minuten, und die Anmerkung „Gemini-Anfragen“
@@ -145,7 +150,11 @@ Modelle zusammen gezählt:
   Anlegezeit, und am 01.11.2026 übersah das Gate so sechs Anfragen eines am
   Vorabend angelegten Laufs; seither liest es die Läufe eines Monats, behält
   die seit Mitternacht veränderten und zählt deren Jobs aller Versuche nach
-  ihrer Startzeit.
+  ihrer Startzeit. Der eigene Lauf zählt mit (seit 02.11.2026): Ein erneut
+  gestarteter Lauf ist ein weiterer Versuch desselben Laufs, und bis dahin
+  übersah das Gate die Anfragen seiner früheren Versuche. „Re-run failed
+  jobs“ startet das Gate nicht neu und nimmt dessen alten Anteil; dafür
+  lieber den ganzen Lauf neu starten.
 - Der tägliche Lauf beginnt um 9:00 Uhr Wiener Zeit, gleich nach dem Beginn
   des Kontingent-Tags (Michael, 31.10.2026, nachdem Gemini 3.8 Flash den
   ganzen Nachmittag mit 503 antwortete). Scheitert er, versucht er es
@@ -218,6 +227,6 @@ Wiener Zeit, [Lauf](https://github.com/Origamihase/wien-oepnv/actions/runs/41417
 
 | Stand | Modell | Ergebnis |
 | --- | --- | --- |
-| `001e47c` (27.10.) | Gemini 3.8 Flash, 1 Anfrage, 242 s | Ein Fund, zutreffend: F6 „algae path“. Die Doppelung 1/2/71/D steht diesmal nur unter den Vermutungen, F2 40A fehlt; dieselbe Eingabe ergibt nicht jedes Mal dieselben Funde. Die Antwort kam nach mehr als vier Minuten über eine Verbindung mit Keepalive. |
+| `001e47c` (27.10.) | Gemini 3.8 Flash, 1 Anfrage, 242 s | Ein Fund, zutreffend: F6 „algae path“. Die Doppelung 1/2/71/D steht diesmal nur unter den Vermutungen, F2 40A fehlt; dieselbe Eingabe ergibt nicht jedes Mal dieselben Funde. Die Antwort kam nach mehr als vier Minuten, und zwar noch ohne Keepalive (es erreichte die Verbindung erst nach der Prüfung vom 02.11.). |
 | `9e60b8d` (30.10.) | Gemini 3.8 Flash, 1 Anfrage, 140 s | Erstmals geprüft. Zwei Funde, beide im Feed belegt: F2 „Liechtensteinstraße 37a gegenüber Bauernfeldplatz → …“ (40A, die neue Haltestelle Liechtensteinstraße 39 fehlt) und F6 „Under-Meidlinger Straße“ (7B, Straßenname „Unter-Meidlinger Straße“ übersetzt). Unter den Vermutungen außerdem „Parlament/ Folktheter“ statt Volkstheater im EN-Feed. F2 und F6 waren mit #2087 schon behoben (30.10., 10:44 Uhr); „Folktheter“ behebt der Schrägstrich-Schutz für Haltestellennamen (CHANGELOG, 02.11.). |
 | `HEAD` (24 h bis 02.11.) | – | 3.8 Flash, dann 3.6 Flash mit 503, zusammen 393 s; der Anteil des Probelaufs (2 Anfragen) war damit verbraucht. Welcher Fehler die erste Anfrage beendete, zeigte das Protokoll noch nicht; seither steht jeder Versuch ohne Antwort mit Modell und Dauer im Protokoll und in `antwort.json` (`attempts`). |

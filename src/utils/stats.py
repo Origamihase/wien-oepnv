@@ -596,6 +596,20 @@ def _scan_for_directory_station(haystack: str) -> str | None:
     return None
 
 
+def current_location_label(label: str) -> str:
+    """*label* of a stored ledger row as :func:`extract_location_name` writes it today.
+
+    The ledger keeps the display name of the day a row was written; when the
+    display layer changes (2026-11-02: "St. Pölten Hauptbahnhof" became
+    "St. Pölten Hbf", ``display_name``), older rows would rank as a second
+    place beside the new ones. A label the directory knows is shown through
+    the same path as a new row (``display_name(station_info(...).name)``);
+    any other label, ``unbekannt`` included, stays as stored.
+    """
+    info = station_info(label) if label and label != "unbekannt" else None
+    return display_name(info.name) if info is not None else label
+
+
 def extract_location_name(item: dict[str, Any]) -> str:
     """Pick a directory-validated location for *item* or ``"unbekannt"``.
 
@@ -1004,6 +1018,7 @@ __all__ = [
     "append_ausfall_row",
     "append_stammstrecke_row",
     "append_disruption_row",
+    "current_location_label",
     "extract_location_name",
     "read_recent_stammstrecke_observations",
     "stats_path",

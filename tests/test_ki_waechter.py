@@ -489,6 +489,50 @@ def test_the_gemini_session_keeps_its_connection_alive() -> None:
     assert "keepalive=True" in source
 
 
+@pytest.mark.parametrize("keepalive", [True, False])
+def test_the_socket_request_safe_opens_carries_the_keepalive(
+    monkeypatch: pytest.MonkeyPatch, keepalive: bool
+) -> None:
+    # The socket the Gemini request really uses: request_safe sends HTTPS
+    # through a pinned adapter, not through the session's own. Until
+    # 2026-11-02 the keepalive reached only the session's adapter, and the
+    # socket of the Wächter's request had TCP_NODELAY alone.
+    import socket
+
+    import src.utils.http as http
+
+    options: list[tuple[int, ...]] = []
+
+    class _Socket(socket.socket):
+        # Never connected: the TLS handshake on it fails with OSError.
+        def setsockopt(self, *option: Any) -> None:
+            options.append(option)
+            super().setsockopt(*option)
+
+    for name in ("HTTPS_PROXY", "HTTP_PROXY", "https_proxy", "http_proxy", "ALL_PROXY", "all_proxy"):
+        monkeypatch.delenv(name, raising=False)
+    monkeypatch.setattr(http, "_resolve_target_ip", lambda parsed, url: "142.250.185.106")
+    monkeypatch.setattr(http, "_resolve_hostname_safe", lambda host: [(0, 0, 0, "", ("142.250.185.106", 443))])
+    opened: list[socket.socket] = []
+
+    def _connect(*args: Any, **kwargs: Any) -> socket.socket:
+        opened.append(_Socket())
+        return opened[-1]
+
+    monkeypatch.setattr(socket, "create_connection", _connect)
+    monkeypatch.setattr(http, "_HTTP_SESSION_CACHE", type(http._HTTP_SESSION_CACHE)())
+    with http.session_with_retries("t", timeout=(10.0, 600.0), keepalive=keepalive, total=0) as session:
+        with pytest.raises(requests.RequestException):
+            http.request_safe(
+                session, "https://generativelanguage.googleapis.com/v1beta/models/x:generateContent",
+                method="POST", data=b"{}", timeout=(10.0, 600.0), raise_for_status=False,
+            )
+    for sock in opened:
+        sock.close()
+    assert options, "no socket was opened"
+    assert ((socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1) in options) is keepalive
+
+
 @pytest.mark.parametrize(
     ("reply", "error"),
     [
@@ -604,7 +648,9 @@ def test_the_gate_counts_the_requests_of_the_day() -> None:
     # A re-run keeps its run's creation time: jobs count by their own start,
     # runs are listed a month back and kept when touched since midnight.
     script = doc["jobs"]["gate"]["steps"][0]["run"]
-    assert 'select(.id != ${RUN_ID} and .updated_at >= \\"${since}\\")' in script
+    # Its own run counts as well: a re-run is a new attempt of it (2026-11-02).
+    assert 'select(.updated_at >= \\"${since}\\")' in script
+    assert "RUN_ID" not in script
     assert "jobs?filter=all&per_page=100" in script
     assert '.started_at >= \\"${since}\\"' in script
     assert "midnight - 31 * 86400" in script and "--paginate" in script
