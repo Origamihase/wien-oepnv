@@ -280,7 +280,7 @@ def test_an_expected_end_after_midnight_is_not_past() -> None:
 def test_issue_requests_do_not_retry_a_post() -> None:
     # A create GitHub carried out but answered with an error would open the
     # issue twice (Gesamtprüfung 11.10.2026).
-    source = (REPO_ROOT / "scripts" / "feed_watch.py").read_text(encoding="utf-8")
+    source = (REPO_ROOT / "src" / "feed_watch" / "issues.py").read_text(encoding="utf-8")
     assert 'allowed_methods=("GET", "PATCH")' in source
 
 
