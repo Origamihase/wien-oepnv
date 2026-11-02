@@ -28,6 +28,7 @@ import pytest
 
 import scripts.health_check as health_check
 import src.build_feed as build_feed
+import src.health_check.outputs as hc_outputs
 
 NOW = datetime(2026, 11, 1, 13, 30, tzinfo=UTC)
 
@@ -83,7 +84,7 @@ def _check(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, record: dict[str, An
     path = tmp_path / "translation_status.json"
     if record is not None:
         path.write_text(json.dumps(record), encoding="utf-8")
-    monkeypatch.setattr(health_check, "TRANSLATION_STATUS", path)
+    monkeypatch.setattr(hc_outputs, "TRANSLATION_STATUS", path)
     return health_check.check_translation(NOW)
 
 

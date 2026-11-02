@@ -532,7 +532,7 @@ def test_health_check_shows_findings_as_a_note_and_a_broken_watcher_red(
     path = tmp_path / "feed_watch.json"
     if state is not None:
         path.write_text(json.dumps(state), encoding="utf-8")
-    monkeypatch.setattr(health_check, "FEED_WATCH_STATE", path)
+    monkeypatch.setattr("src.health_check.sources.FEED_WATCH_STATE", path)
     check = health_check.check_feed_watch(datetime(2026, 10, 10, 19, 45, tzinfo=UTC))
     assert check.ok is ok
     assert check.note is note

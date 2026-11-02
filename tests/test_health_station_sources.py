@@ -15,6 +15,7 @@ from pathlib import Path
 import pytest
 
 import scripts.health_check as hc
+import src.health_check.outputs as hc_outputs
 
 _NOW = datetime(2026, 10, 25, 21, 0, tzinfo=UTC)
 
@@ -30,7 +31,7 @@ def _stamp_all(root: Path, when: datetime, key: str = "checked_at") -> None:
 
 @pytest.fixture
 def repo(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
-    monkeypatch.setattr(hc, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(hc_outputs, "REPO_ROOT", tmp_path)
     return tmp_path
 
 

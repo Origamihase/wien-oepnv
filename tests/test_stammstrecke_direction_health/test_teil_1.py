@@ -178,7 +178,7 @@ def test_health_check_note_keeps_the_run_green(
         for name, value in vars(module).items()
         if name.startswith("check_")
         and inspect.isfunction(value)
-        and value.__module__ == target
+        and (value.__module__ == target or value.__module__.startswith("src.health_check."))
     ]
     assert "check_translation" in checks and "check_pages_build" in checks
     for name in checks:

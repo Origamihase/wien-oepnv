@@ -6,7 +6,7 @@ no workflow since 2026-05-11, and two workflows passed ``VOR_VERSION`` /
 ``VOR_BASE``, which never existed as secrets; every missing value fell back
 silently. These tests keep three lists in step:
 
-* ``WORKFLOW_SECRETS`` in ``scripts/health_check.py``,
+* ``WORKFLOW_SECRETS`` in ``src/health_check/workflow_secrets.py``,
 * the ``secrets.*`` references under ``.github/workflows``,
 * the environment names the feed code reads.
 
@@ -64,7 +64,7 @@ def test_every_workflow_secret_is_registered() -> None:
     }
     assert not unknown, (
         "Workflow references secrets missing from WORKFLOW_SECRETS in "
-        f"scripts/health_check.py: {unknown}"
+        f"src/health_check/workflow_secrets.py: {unknown}"
     )
 
 
@@ -100,6 +100,7 @@ def test_feed_secret_is_read_by_the_code_under_its_own_name(name: str) -> None:
         for root in (REPO_ROOT / "src", REPO_ROOT / "scripts")
         for path in root.rglob("*.py")
         if path.name != "health_check.py"
+        and path != REPO_ROOT / "src" / "health_check" / "workflow_secrets.py"
         and f'"{name}"' in path.read_text(encoding="utf-8")
     ]
     assert readers, f"No code under src/ or scripts/ reads {name}"

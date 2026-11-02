@@ -15,6 +15,8 @@ from pathlib import Path
 import pytest
 
 import scripts.health_check as hc
+import src.health_check.github_runs as hc_github_runs
+import src.health_check.sources as hc_sources
 
 from ._support import (
     _BAD_PROBE,
@@ -84,7 +86,7 @@ def test_any_other_non_zero_exit_is_red(repo: Path, exit_code: int) -> None:
 def test_a_hung_updater_is_red(repo: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     script = repo / "scripts" / "hang.py"
     script.write_text("import time\ntime.sleep(30)\n", encoding="utf-8")
-    monkeypatch.setattr(hc, "FETCH_TIMEOUT_S", 1)
+    monkeypatch.setattr(hc_sources, "FETCH_TIMEOUT_S", 1)
     check = hc.check_source("ÖBB", "hang.py")
     assert not check.ok
     assert "Zeitüberschreitung" in check.summary
@@ -482,7 +484,7 @@ def test_main_judges_every_source_by_its_record(
     path.write_text(json.dumps({"updated": fresh, "fetch": {
         "wl": {"last_ok": stale, "last_exit": 1}, "oebb": {"last_ok": fresh}, "baustellen": {"last_ok": fresh},
     }}), encoding="utf-8")
-    monkeypatch.setattr(hc, "FEED_WATCH_STATE", path)
+    monkeypatch.setattr(hc_sources, "FEED_WATCH_STATE", path)
     assert hc.main() == 1
     out = capsys.readouterr().out
     assert "::error title=Health: OK::FEHLER — seit 5h 0m keine brauchbare Antwort" in out
@@ -641,8 +643,8 @@ def test_the_api_call_is_read_only_with_the_run_token(monkeypatch: pytest.Monkey
         calls.append((url, kwargs.get("allowed_content_types"), kwargs.get("max_bytes")))
         return b'{"workflow_runs": []}'
 
-    monkeypatch.setattr(hc, "session_with_retries", lambda *_a, **_kw: _Session())
-    monkeypatch.setattr(hc, "fetch_content_safe", fetch)
+    monkeypatch.setattr(hc_github_runs, "session_with_retries", lambda *_a, **_kw: _Session())
+    monkeypatch.setattr(hc_github_runs, "fetch_content_safe", fetch)
     assert hc._github_api_json(_REVIEW_RUNS) == {"workflow_runs": []}
     assert calls == [
         (
