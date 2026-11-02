@@ -38,6 +38,7 @@ from scripts import check_overpass_status, update_baustellen_cache
 from scripts import enrich_station_aliases as enrich
 import scripts.update_stammstrecke_hbf as hbf_script
 from src.providers import vor as vor_provider
+from src.stammstrecke import hbf_board
 
 
 # ---------------------------------------------------------------------------
@@ -130,7 +131,7 @@ def test_query_departure_board_raises_on_vao_error_envelope(
             return poisoned_payload
 
     monkeypatch.setattr(
-        hbf_script, "request_safe", lambda *_a, **_kw: _FakeResponse()
+        hbf_board, "request_safe", lambda *_a, **_kw: _FakeResponse()
     )
     # Avoid touching the live VOR base URL / auth.
     monkeypatch.setattr(

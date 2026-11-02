@@ -173,7 +173,7 @@ def test_inventory_update_stammstrecke_hbf_pins_hooks() -> None:
     """Source-grep ``_fetch_departure_board`` for ``loads_finite``."""
     path = (
         Path(__file__).resolve().parents[2]
-        / "scripts" / "update_stammstrecke_hbf.py"
+        / "src" / "stammstrecke" / "hbf_board.py"
     )
     source = path.read_text(encoding="utf-8")
     # Walk the function range around the post-VAO parse to assert the pin.
@@ -210,11 +210,11 @@ def test_inventory_update_stammstrecke_status_recently_finalised_pins_hooks() ->
 
 def test_inventory_update_stammstrecke_status_trip_pins_hooks() -> None:
     """Source-grep the VAO /trip fetch helper for the pin."""
-    path = (
-        Path(__file__).resolve().parents[2]
-        / "scripts" / "update_stammstrecke_status.py"
+    package = Path(__file__).resolve().parents[2] / "src" / "stammstrecke"
+    source = "".join(
+        (package / name).read_text(encoding="utf-8")
+        for name in ("ledger.py", "vao_trip.py", "vao_errors.py")
     )
-    source = path.read_text(encoding="utf-8")
     # Two distinct callsites in this script: /trip parse + error-envelope decode.
     assert source.count("loads_finite(") >= 4, (
         "scripts/update_stammstrecke_status.py: expected >=4 "

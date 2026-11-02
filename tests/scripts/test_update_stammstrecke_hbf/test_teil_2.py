@@ -13,6 +13,7 @@ import requests
 
 from scripts import update_stammstrecke_hbf as script  # noqa: E402
 from scripts import update_stammstrecke_status as _legacy_script  # noqa: E402
+from src.stammstrecke import hbf_board  # noqa: E402
 
 from ._support import (
     REPO_ROOT,
@@ -100,7 +101,7 @@ def test_query_departure_board_parses_modern_flat_shape(
         captured_url["endpoint"] = args[1] if len(args) >= 2 else kwargs.get("url", "")
         return _FakeResponse()
 
-    monkeypatch.setattr(script, "request_safe", fake_request_safe)
+    monkeypatch.setattr(hbf_board, "request_safe", fake_request_safe)
     monkeypatch.setattr(script, "_charge_one_request", lambda when: None)
 
     when = datetime(2026, 5, 15, 8, 0, tzinfo=VIENNA_TZ)
@@ -123,7 +124,7 @@ def test_query_departure_board_parses_nested_shape(
         )
 
     monkeypatch.setattr(
-        script,
+        hbf_board,
         "request_safe",
         lambda *args, **kwargs: _FakeResponse(),
     )
@@ -145,7 +146,7 @@ def test_query_departure_board_handles_single_departure_object(
         content = b'{"Departure": {"name": "S 1"}}'
 
     monkeypatch.setattr(
-        script,
+        hbf_board,
         "request_safe",
         lambda *args, **kwargs: _FakeResponse(),
     )
@@ -166,7 +167,7 @@ def test_query_departure_board_returns_empty_when_field_missing(
         content = b'{}'
 
     monkeypatch.setattr(
-        script,
+        hbf_board,
         "request_safe",
         lambda *args, **kwargs: _FakeResponse(),
     )
@@ -189,7 +190,7 @@ def test_query_departure_board_raises_on_http_error(
         content = b'{"errorCode": "API_GEN"}'
 
     monkeypatch.setattr(
-        script,
+        hbf_board,
         "request_safe",
         lambda *args, **kwargs: _FakeResponse(),
     )
@@ -210,7 +211,7 @@ def test_query_departure_board_raises_on_unparseable_json(
         content = b'{ not valid json'
 
     monkeypatch.setattr(
-        script,
+        hbf_board,
         "request_safe",
         lambda *args, **kwargs: _FakeResponse(),
     )
