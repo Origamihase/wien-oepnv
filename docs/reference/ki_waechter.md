@@ -113,13 +113,28 @@ Modelle zusammen gezählt:
   und nach einer Minute wieder 3.8 Flash; höchstens drei Anfragen je
   Prüflauf und nie mehr als sein Anteil am Tagesbudget. Welches Modell
   geantwortet hat, steht im Bericht. Die HTTP-Sitzung selbst wiederholt
-  nichts.
+  nichts. Eine abgebrochene Verbindung zählt wie ein überlastetes Modell
+  (seit 02.11.2026: an diesem Tag brach die Verbindung nach 261 Sekunden ab,
+  während das Modell noch rechnete, und der Lauf endete ohne Bericht, obwohl
+  er drei Anfragen hatte). Die Anfrage zählt, sie kann Google erreicht
+  haben. Eine Antwort, die nach zehn Minuten noch fehlt (Lesezeitgrenze),
+  wird nicht wiederholt.
+- Die Verbindung zu Gemini sendet TCP-Keepalive (erste Probe nach
+  60 Sekunden Stille, dann alle 30 Sekunden), damit kein NAT und keine
+  Firewall auf dem Weg eine Verbindung vergisst, auf deren Antwort der
+  Wächter minutenlang wartet (`keepalive=True` in `session_with_retries`,
+  `KEEPALIVE_SOCKET_OPTIONS` in `src/utils/http.py`). Die anderen Abrufe
+  des Projekts warten höchstens Sekunden und bleiben ohne.
+- Nach zwölf Minuten (Wartezeit eingerechnet) beginnt keine neue Anfrage
+  mehr (`NO_NEW_REQUEST_AFTER_S`). So endet auch die letzte vor der
+  Grenze des Schritts von 25 Minuten, und die Anmerkung „Gemini-Anfragen“
+  wird immer geschrieben.
 - Höchstens `KI_WAECHTER_MAX_REQUESTS` (10) Anfragen am Tag. Der Tag des
   Kontingents beginnt um 0:00 Uhr Pazifikzeit, in Wien meist 9:00 Uhr. Jeder
   Prüflauf hinterlässt die Anmerkung „Gemini-Anfragen“ mit seiner Zahl. Der
   Job `gate` zählt sie für alle Prüfläufe dieses Workflows, die seit diesem
-  Zeitpunkt gestartet sind (ein noch laufender zählt mit drei, ein beendeter
-  ohne Anmerkung mit einer) und gibt jedem Prüflauf des neuen Laufs den Rest
+  Zeitpunkt gestartet sind (ein noch laufender und ein beendeter ohne
+  Anmerkung, also abgebrochen oder abgestürzt, zählen mit drei) und gibt jedem Prüflauf des neuen Laufs den Rest
   geteilt durch ihre Zahl, höchstens drei; bleibt keiner, startet er nichts.
   Pull Requests und Läufe von Hand rechnen nur bis 7; die letzten drei
   Anfragen bleiben dem täglichen Lauf, damit er auch nach vielen

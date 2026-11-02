@@ -10,6 +10,22 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
 
 ### November 2026
 
+* **KI-Wächter: abgebrochene Verbindung bekommt das Ausweichmodell (2026-11-02)**:
+  Der tägliche Lauf am 02.11. um 9:01 Uhr Wiener Zeit hatte drei Anfragen,
+  aber die Verbindung zu Gemini 3.8 Flash brach nach 261 Sekunden mit
+  `ConnectionError` ab, während das Modell noch rechnete; der Lauf endete
+  ohne Bericht, das Ausweichmodell kam nicht an die Reihe.
+  `scripts/ki_waechter.py` behandelt eine abgebrochene Verbindung jetzt wie
+  ein überlastetes Modell (nächstes Modell, im Anteil des Tagesbudgets, die
+  Anfrage zählt). Die Verbindung sendet TCP-Keepalive (neu:
+  `session_with_retries(..., keepalive=True)`, `KEEPALIVE_SOCKET_OPTIONS`
+  in `src/utils/http.py`; nur der Wächter nutzt es). Nach zwölf Minuten
+  beginnt keine neue Anfrage mehr, der Schritt in `ki-waechter.yml` darf
+  25 statt 15 Minuten laufen, damit die Anmerkung „Gemini-Anfragen“ immer
+  geschrieben wird; ein Prüflauf ohne Anmerkung zählt im Gate jetzt mit
+  drei Anfragen statt mit einer. `tests/test_ki_waechter.py` deckt
+  Abbruch, Zeitgrenze, Keepalive und Gate ab.
+
 * **KI-Wächter: drei Anfragen bleiben dem täglichen Lauf (2026-11-01)**:
   Betreiberentscheidung (Michael: „Ich möchte das Kontingent effizient nutzen
   und nicht überschreiten“, Ja zum Vorschlag). Pull Requests und Läufe von

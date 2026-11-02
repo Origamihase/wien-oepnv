@@ -125,6 +125,10 @@ GEMINI_TIMEOUT = (10.0, 600.0)
 MAX_PROMPT_CHARS = 450_000
 MAX_REQUESTS_PER_AUDIT = 3
 OVERLOAD_WAIT_S = (60, 180)
+# No new request (wait included) after this many seconds: the last one (read
+# timeout 600 s) still ends inside the step limit of 25 minutes in
+# ``ki-waechter.yml``, so the annotation ``Gemini-Anfragen`` is always written.
+NO_NEW_REQUEST_AFTER_S = 720
 OVERLOAD_STATUS = frozenset({500, 502, 503, 504})
 MAX_ANSWER_BYTES = 2_000_000
 # The answer's shape, enforced by the API (structured output). The script
@@ -713,14 +717,20 @@ def ask_gemini(
     sent = 0
     answer = Answer(False, models[0], error="kein Anfragebudget")
     # total=0: the session itself never repeats a request; this loop counts every one.
-    with session_with_retries("wien-oepnv-ki-waechter", timeout=GEMINI_TIMEOUT, total=0) as session:
+    # keepalive: the answer can take minutes without a byte on the wire.
+    with session_with_retries(
+        "wien-oepnv-ki-waechter", timeout=GEMINI_TIMEOUT, keepalive=True, total=0,
+    ) as session:
         while sent < limit:
             current = models[sent % len(models)]
             if sent:
                 rounds = sent // len(models)
                 wait = OVERLOAD_WAIT_S[min(rounds, len(OVERLOAD_WAIT_S)) - 1] if sent % len(models) == 0 else 0
-                print(f"Gemini überlastet, {sent + 1}. von höchstens {limit} Anfragen an {current}"
-                      + (f" in {wait} s" if wait else ""))
+                if time.monotonic() - started + wait > NO_NEW_REQUEST_AFTER_S:
+                    print(f"Gemini: nach {time.monotonic() - started:.0f} s keine weitere Anfrage")
+                    break
+                print(f"Gemini überlastet oder Verbindung abgebrochen, {sent + 1}. von höchstens {limit} "
+                      f"Anfragen an {current}" + (f" in {wait} s" if wait else ""))
                 if wait:
                     sleep(wait)
             sent += 1
@@ -730,6 +740,12 @@ def ask_gemini(
                     timeout=GEMINI_TIMEOUT, max_bytes=MAX_ANSWER_BYTES,
                     allowed_content_types=("application/json",), raise_for_status=False,
                 )
+            except requests.ConnectionError as exc:
+                # A dropped connection (2026-11-02: after 261 s, the model still
+                # thinking) is handled like an overloaded model: next model,
+                # within the share; the request counts, it may have reached Google.
+                answer = Answer(False, current, error=f"Gemini nicht erreichbar ({type(exc).__name__})")
+                continue
             except (requests.RequestException, ValueError) as exc:
                 answer = Answer(False, current, error=f"Gemini nicht erreichbar ({type(exc).__name__})")
                 break

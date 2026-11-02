@@ -126,8 +126,8 @@ jobs:
           # Gemini requests already sent today, since midnight Pacific time
           # (when the free-tier day of the Gemini API resets). Every audit
           # job leaves the annotation "Gemini-Anfragen" with its count; a
-          # job still running counts with the most it may send, a finished
-          # one without the annotation with one request.
+          # job still running, or one that ended without the annotation
+          # (killed or crashed midway), counts with the most it may send.
           # Jobs count by the time they started, not by the time their run
           # was created: a re-run keeps the run's creation time (01.11.2026:
           # a run from the evening before, re-run after midnight, had sent
@@ -150,7 +150,7 @@ jobs:
                 else
                   n="$(gh api "repos/${OWNER_REPO}/check-runs/${job}/annotations?per_page=100" \
                          --jq '[.[] | select(.title == "Gemini-Anfragen") | .message | tonumber] | add // empty')"
-                  n="${n:-1}"
+                  n="${n:-${MAX_PER_AUDIT}}"
                 fi
                 used=$(( used + n ))
               done < <(gh api "repos/${OWNER_REPO}/actions/runs/${id}/jobs?filter=all&per_page=100" \
@@ -285,7 +285,9 @@ jobs:
       - name: Gemini reads and compares
         id: ai
         continue-on-error: true
-        timeout-minutes: 15
+        # Up to three requests of up to ten minutes each; the script starts
+        # none after twelve minutes (NO_NEW_REQUEST_AFTER_S).
+        timeout-minutes: 25
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           MAX_REQUESTS: ${{ needs.gate.outputs.per_job }}

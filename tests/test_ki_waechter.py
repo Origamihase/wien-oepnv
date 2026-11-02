@@ -13,11 +13,13 @@ from __future__ import annotations
 
 import json
 import subprocess
+from types import SimpleNamespace
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
 import pytest
+import requests
 import yaml
 
 from scripts import ki_waechter as kw
@@ -414,6 +416,71 @@ def test_an_overloaded_model_hands_over_and_is_asked_again_within_the_share(
         kw.ask_gemini("Prompt", "gemini-3.8-flash,../x", "k")
 
 
+def test_a_dropped_connection_hands_over_like_an_overloaded_model(monkeypatch: pytest.MonkeyPatch) -> None:
+    """2026-11-02: the connection died after 261 s while the model was still thinking."""
+    calls: list[str] = []
+    replies: list[object] = [requests.ConnectionError("Connection aborted."), _Response(200, _ok_payload("{}"))]
+
+    def fake_request(session: object, url: str, **kwargs: Any) -> _Response:
+        calls.append(url.split("/models/")[1])
+        reply = replies.pop(0)
+        if isinstance(reply, Exception):
+            raise reply
+        assert isinstance(reply, _Response)
+        return reply
+
+    monkeypatch.setattr(kw, "request_safe", fake_request)
+    answer = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", max_requests=3, sleep=lambda s: None)
+    assert calls == ["gemini-3.8-flash:generateContent", "gemini-3.6-flash:generateContent"]
+    assert answer.ok and answer.model == "gemini-3.6-flash" and answer.requests == 2
+    # Within the share only; the last error is the answer.
+    replies[:] = [requests.ConnectionError("x")] * 3
+    calls.clear()
+    lost = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", max_requests=2, sleep=lambda s: None)
+    assert not lost.ok and "nicht erreichbar (ConnectionError)" in lost.error and lost.requests == 2
+    # A timeout of the answer is not repeated: it already took ten minutes.
+    replies[:] = [requests.ReadTimeout("x"), _Response(200, _ok_payload("{}"))]
+    calls.clear()
+    slow = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", max_requests=3, sleep=lambda s: None)
+    assert not slow.ok and "ReadTimeout" in slow.error and slow.requests == 1
+
+
+def test_no_new_request_late_in_the_step(monkeypatch: pytest.MonkeyPatch) -> None:
+    """No request (wait included) starts after NO_NEW_REQUEST_AFTER_S."""
+    busy = {"error": {"message": "high demand"}}
+
+    def run(after_first: float, model: str) -> tuple[list[str], kw.Answer]:
+        times = [0.0, after_first]
+        monkeypatch.setattr(kw, "time", SimpleNamespace(monotonic=lambda: times.pop(0) if len(times) > 1 else times[0]))
+        calls = _overloaded_then(monkeypatch, [_Response(503, busy), _Response(200, _ok_payload("{}"))])
+        return calls, kw.ask_gemini("Prompt", model, "k", max_requests=3, sleep=lambda s: None)
+
+    # One model: the second request would wait 60 s, 690 + 60 > 720.
+    calls, answer = run(kw.NO_NEW_REQUEST_AFTER_S - 30.0, "gemini-3.8-flash")
+    assert len(calls) == 1 and not answer.ok and answer.requests == 1
+    # The fallback model is asked at once: 690 + 0 is still inside.
+    calls, answer = run(kw.NO_NEW_REQUEST_AFTER_S - 30.0, "gemini-3.8-flash,gemini-3.6-flash")
+    assert len(calls) == 2 and answer.ok and answer.requests == 2
+    # Past the limit: no fallback either.
+    calls, answer = run(kw.NO_NEW_REQUEST_AFTER_S + 1.0, "gemini-3.8-flash,gemini-3.6-flash")
+    assert len(calls) == 1 and not answer.ok
+
+
+def test_the_gemini_session_keeps_its_connection_alive() -> None:
+    import socket
+
+    from src.utils.http import KEEPALIVE_SOCKET_OPTIONS, session_with_retries
+
+    assert (socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1) in KEEPALIVE_SOCKET_OPTIONS
+    with session_with_retries("t", keepalive=True, total=0) as session:
+        pool_kw = session.get_adapter("https://generativelanguage.googleapis.com").poolmanager.connection_pool_kw
+        assert pool_kw["socket_options"] == list(KEEPALIVE_SOCKET_OPTIONS)
+    with session_with_retries("t") as session:
+        assert "socket_options" not in session.get_adapter("https://example.org").poolmanager.connection_pool_kw
+    source = (REPO / "scripts/ki_waechter.py").read_text(encoding="utf-8")
+    assert "keepalive=True" in source
+
+
 @pytest.mark.parametrize(
     ("reply", "error"),
     [
@@ -533,6 +600,17 @@ def test_the_gate_counts_the_requests_of_the_day() -> None:
     assert "jobs?filter=all&per_page=100" in script
     assert '.started_at >= \\"${since}\\"' in script
     assert "midnight - 31 * 86400" in script and "--paginate" in script
+    assert 'n="${n:-${MAX_PER_AUDIT}}"' in script
+
+
+def test_the_last_request_ends_inside_the_step_limit() -> None:
+    """The annotation is written only when the script ends by itself (2026-11-02)."""
+    doc = yaml.safe_load((REPO / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8"))
+    step = next(s for s in doc["jobs"]["audit"]["steps"] if s.get("name") == "Gemini reads and compares")
+    connect, read = kw.GEMINI_TIMEOUT
+    worst = kw.NO_NEW_REQUEST_AFTER_S + connect + read
+    assert worst + 60 <= step["timeout-minutes"] * 60
+    assert step["timeout-minutes"] + 3 <= doc["jobs"]["audit"]["timeout-minutes"]
 
 
 @pytest.mark.parametrize(
@@ -547,8 +625,10 @@ def test_the_gate_counts_the_requests_of_the_day() -> None:
         # 4 + one still running (3) = 7; (7 - 7) // 3 = 0: no replay.
         ("pull_request", ["1 completed success 1", "2 completed failure 2", "3 completed success 1",
                           "4 in_progress null -"], None),
-        # A finished audit without annotation counts one, a cancelled one three: 4 used.
-        ("workflow_dispatch", ["1 completed success -", "2 cancelled cancelled -"], "3"),
+        # A finished audit without annotation (killed or crashed midway) and a
+        # cancelled one count three each: 6 used, a manual run gets one.
+        ("workflow_dispatch", ["1 completed success -", "2 cancelled cancelled -"], "1"),
+        ("workflow_dispatch", ["1 completed failure -"], "3"),
         # 6 used: a manual run still gets one; 7 used: none, the daily audit keeps three.
         ("workflow_dispatch", ["1 completed success 3", "2 completed success 3"], "1"),
         ("workflow_dispatch", ["1 completed success 3", "2 completed success 3", "3 completed success 1"], None),
