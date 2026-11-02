@@ -469,14 +469,17 @@ def test_no_new_request_late_in_the_step(monkeypatch: pytest.MonkeyPatch) -> Non
 def test_the_gemini_session_keeps_its_connection_alive() -> None:
     import socket
 
-    from src.utils.http import KEEPALIVE_SOCKET_OPTIONS, session_with_retries
+    from src.utils.http import KEEPALIVE_SOCKET_OPTIONS, SafeDNSAdapter, session_with_retries
 
     assert (socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1) in KEEPALIVE_SOCKET_OPTIONS
     with session_with_retries("t", keepalive=True, total=0) as session:
-        pool_kw = session.get_adapter("https://generativelanguage.googleapis.com").poolmanager.connection_pool_kw
-        assert pool_kw["socket_options"] == list(KEEPALIVE_SOCKET_OPTIONS)
+        adapter = session.get_adapter("https://generativelanguage.googleapis.com")
+        assert isinstance(adapter, SafeDNSAdapter)
+        assert adapter.poolmanager.connection_pool_kw["socket_options"] == list(KEEPALIVE_SOCKET_OPTIONS)
     with session_with_retries("t") as session:
-        assert "socket_options" not in session.get_adapter("https://example.org").poolmanager.connection_pool_kw
+        adapter = session.get_adapter("https://example.org")
+        assert isinstance(adapter, SafeDNSAdapter)
+        assert "socket_options" not in adapter.poolmanager.connection_pool_kw
     source = (REPO / "scripts/ki_waechter.py").read_text(encoding="utf-8")
     assert "keepalive=True" in source
 
