@@ -503,18 +503,23 @@ def test_the_socket_request_safe_opens_carries_the_keepalive(
 
     options: list[tuple[int, ...]] = []
 
-    class _Socket:
-        def setsockopt(self, *option: int) -> None:
+    class _Socket(socket.socket):
+        # Never connected: the TLS handshake on it fails with OSError.
+        def setsockopt(self, *option: Any) -> None:
             options.append(option)
-
-        def __getattr__(self, name: str) -> object:
-            raise OSError(f"test socket: {name}")
+            super().setsockopt(*option)
 
     for name in ("HTTPS_PROXY", "HTTP_PROXY", "https_proxy", "http_proxy", "ALL_PROXY", "all_proxy"):
         monkeypatch.delenv(name, raising=False)
     monkeypatch.setattr(http, "_resolve_target_ip", lambda parsed, url: "142.250.185.106")
     monkeypatch.setattr(http, "_resolve_hostname_safe", lambda host: [(0, 0, 0, "", ("142.250.185.106", 443))])
-    monkeypatch.setattr(socket, "create_connection", lambda *args, **kwargs: _Socket())
+    opened: list[socket.socket] = []
+
+    def _connect(*args: Any, **kwargs: Any) -> socket.socket:
+        opened.append(_Socket())
+        return opened[-1]
+
+    monkeypatch.setattr(socket, "create_connection", _connect)
     monkeypatch.setattr(http, "_HTTP_SESSION_CACHE", type(http._HTTP_SESSION_CACHE)())
     with http.session_with_retries("t", timeout=(10.0, 600.0), keepalive=keepalive, total=0) as session:
         with pytest.raises(requests.RequestException):
@@ -522,6 +527,8 @@ def test_the_socket_request_safe_opens_carries_the_keepalive(
                 session, "https://generativelanguage.googleapis.com/v1beta/models/x:generateContent",
                 method="POST", data=b"{}", timeout=(10.0, 600.0), raise_for_status=False,
             )
+    for sock in opened:
+        sock.close()
     assert options, "no socket was opened"
     assert ((socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1) in options) is keepalive
 
