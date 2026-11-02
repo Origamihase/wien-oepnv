@@ -38,7 +38,7 @@ from src.providers.oebb import _clean_title_keep_places, _derive_guid, _strip_up
     ("raw", "expected"),
     [
         # The four titles published since 2026-08-01, verbatim.
-        ("Update 4 (25.09.2026 09:59) Verkehrseinschränkung: St.Pölten", "St. Pölten Hauptbahnhof"),
+        ("Update 4 (25.09.2026 09:59) Verkehrseinschränkung: St.Pölten", "St. Pölten Hbf"),
         (
             "Update 1 (19.09.2026 07:43) Aufhebung Verkehrseinschränkung: Wien Handelskai",
             "Aufhebung Verkehrseinschränkung: Wien Handelskai",
@@ -55,7 +55,7 @@ from src.providers.oebb import _clean_title_keep_places, _derive_guid, _strip_up
         # cleaned like any other ÖBB place.
         (
             "Update 5 (25.09.2026 10:48) Aufhebung Verkehrseinschränkung: St.Pölten",
-            "Aufhebung Verkehrseinschränkung: St. Pölten Hauptbahnhof",
+            "Aufhebung Verkehrseinschränkung: St. Pölten Hbf",
         ),
     ],
 )
@@ -125,13 +125,13 @@ def _cached_item(title: str) -> FeedItem:
 def test_the_cached_title_is_repaired_at_build_time() -> None:
     cached = "Update 4 (25.09.2026 09:59) Verkehrseinschränkung: St.Pölten"
     out = _post_filter_oebb([_cached_item(cached)])
-    assert [i["title"] for i in out] == ["St. Pölten Hauptbahnhof"]
+    assert [i["title"] for i in out] == ["St. Pölten Hbf"]
 
 
 def test_a_cached_all_clear_is_repaired_at_build_time() -> None:
     cached = "Update 5 (25.09.2026 10:48) Aufhebung Verkehrseinschränkung: St.Pölten"
     out = _post_filter_oebb([_cached_item(cached)])
-    assert [i["title"] for i in out] == ["Aufhebung Verkehrseinschränkung: St. Pölten Hauptbahnhof"]
+    assert [i["title"] for i in out] == ["Aufhebung Verkehrseinschränkung: St. Pölten Hbf"]
 
 
 def test_the_cached_item_is_not_mutated() -> None:

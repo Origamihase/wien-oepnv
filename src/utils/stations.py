@@ -969,7 +969,51 @@ def display_name(name: str | None) -> str:
     if not name:
         return ""
     cleaned = re.sub(r"\s+\(VOR\)$", "", name).strip()
-    return _FEED_DISPLAY_OVERRIDES.get(cleaned, cleaned)
+    return _main_station_form(_FEED_DISPLAY_OVERRIDES.get(cleaned, cleaned))
+
+
+# A main station keeps "Hauptbahnhof" behind a short place name and "Hbf"
+# behind a long one (operator decision 2026-11-02: "Wenn der Ort länger als
+# sieben Zeichen lang ist, wird Hauptbahnhof abgekürzt"): "Wien
+# Hauptbahnhof", "Linz Hauptbahnhof", "Graz Hauptbahnhof", but "St. Pölten
+# Hbf", "Wiener Neustadt Hbf", "Salzburg Hbf". The directory writes either
+# form ("Linz Hbf", "St. Pölten Hauptbahnhof"); only the display changes.
+_MAIN_STATION_RE = re.compile(r"^(?P<place>.+?)\s+(?:Hauptbahnhof|Hbf\.?)$")
+_MAIN_STATION_PLACE_MAX = 7
+
+
+_MAIN_STATION_IN_TEXT_RE = re.compile(r"(?P<words>(?:[A-ZÄÖÜ][\w.\-]*\s+)+)(?P<kind>Hauptbahnhof|Hbf)\b\.?")
+
+
+def main_station_names(text: str) -> str:
+    """*text* with every main station of the directory in its display form (see above).
+
+    For titles written before the rule (the ÖBB cache holds "St. Pölten
+    Hauptbahnhof" until its next refresh). Only a name the directory knows
+    changes, its longest form in front of "Hauptbahnhof"/"Hbf": "Bauarbeiten
+    Graz Hbf" keeps "Bauarbeiten" and shows "Bauarbeiten Graz Hauptbahnhof".
+    """
+
+    def shown(match: re.Match[str]) -> str:
+        words = match["words"].split()
+        for start in range(len(words)):
+            place = " ".join(words[start:])
+            if station_info(f"{place} Hbf") is None and station_info(f"{place} Hauptbahnhof") is None:
+                continue
+            lead = " ".join(words[:start])
+            return f"{lead} {_main_station_form(f'{place} Hbf')}".lstrip()
+        return match[0]
+
+    return _MAIN_STATION_IN_TEXT_RE.sub(shown, text)
+
+
+def _main_station_form(name: str) -> str:
+    """*name* with "Hauptbahnhof" or "Hbf" by the length of its place (see above)."""
+    match = _MAIN_STATION_RE.match(name)
+    if match is None:
+        return name
+    place = match["place"]
+    return f"{place} {'Hbf' if len(place) > _MAIN_STATION_PLACE_MAX else 'Hauptbahnhof'}"
 
 
 @lru_cache(maxsize=2048)

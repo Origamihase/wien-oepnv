@@ -29,5 +29,5 @@ def test_clean_title_compound_category() -> None:
     # Formatted as category: part1 part2...
     assert cleaned in (
         "ÖBB-Verspätung: Wien Hauptbahnhof St. Pölten",
-        "ÖBB-Verspätung: Wien Hauptbahnhof St. Pölten Hauptbahnhof",
+        "ÖBB-Verspätung: Wien Hauptbahnhof St. Pölten Hbf",
     )
