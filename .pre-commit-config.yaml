@@ -15,19 +15,28 @@ repos:
     rev: v5.0.0
     hooks:
       - id: trailing-whitespace
-        # A file a program writes belongs to that program: the hook would
-        # only change a byte the next run writes again, and on the minified
-        # assets the drift check below then fails. Machine-written are
-        # cache/ and data/ (except the READMEs), the feeds, sitemap,
-        # llms.txt, statistics and station reports in docs/, the minified
-        # site assets and the test fixtures; the audit archive (Jules, the
-        # KI-Wächter, earlier reports) stays as written. Until 2026-11-01
-        # only docs/feed.xml, docs/sitemap.xml, the JSON files in cache/
-        # and data/ and the test fixtures were listed, and
-        # ``pre-commit run --all-files`` failed on main.
-        exclude: &machine_written '^(cache/|data/(?!(.*/)?README\.md$)|tests/fixtures/|docs/archive/audits/|docs/assets/[^/]+\.min\.(css|js)$|docs/(feed[^/]*\.xml|sitemap\.xml|llms\.txt|stats-summary\.json|statistik[^/]*\.md|stations_validation_report\.md|stations_diff\.md)$)'
+        # Both whitespace hooks (this one and end-of-file-fixer) see text
+        # files only. They skip:
+        #   - output a program writes again on its next run: the feeds,
+        #     sitemap, llms.txt, statistics and station reports in docs/
+        #     and the minified site assets (on those, a fix would also fail
+        #     the drift check below);
+        #   - cache/ and data/ (except the READMEs) as whole directories:
+        #     program output and downloaded datasets, plus a few lists
+        #     kept by hand;
+        #   - the audit archive (Jules, the KI-Wächter, earlier reports),
+        #     which stays as written;
+        #   - tests/fixtures/, left over from the old list (the directory
+        #     does not exist).
+        # Every other text file is checked, also files a program writes
+        # into, such as README.md (STATS sections), docs/site.html (?v=
+        # tokens), .c901-baseline.txt and .mypy-baseline.txt. Until
+        # 2026-11-01 only docs/feed.xml, docs/sitemap.xml, the JSON files
+        # in cache/ and data/ and everything under tests/fixtures/ were
+        # listed, and ``pre-commit run --all-files`` failed on main.
+        exclude: &whitespace_skip '^(cache/|data/(?!(.*/)?README\.md$)|tests/fixtures/|docs/archive/audits/|docs/assets/[^/]+\.min\.(css|js)$|docs/(feed[^/]*\.xml|sitemap\.xml|llms\.txt|stats-summary\.json|statistik[^/]*\.md|stations_validation_report\.md|stations_diff\.md)$)'
       - id: end-of-file-fixer
-        exclude: *machine_written
+        exclude: *whitespace_skip
       - id: check-merge-conflict
       - id: check-yaml
       - id: check-toml
