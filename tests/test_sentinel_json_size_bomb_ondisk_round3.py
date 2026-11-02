@@ -118,7 +118,7 @@ def test_canonical_size_cap_constants_inventory_round3() -> None:
         "scripts.enrich_station_aliases",
         "scripts.update_all_stations",
         "scripts.update_baustellen_cache",
-        "scripts.update_station_directory",
+        "src.station_directory.json_sources",
         "scripts.update_wl_stations",
         "scripts.validate_vor_mapping",
     ]
@@ -320,11 +320,12 @@ def test_usd_load_existing_rejects_oversized(
     """Pre-fix shape mirror; planted-huge existing-state stations.json
     propagated ``MemoryError`` past the depth-bomb catch tuple."""
     from scripts import update_station_directory as usd
+    from src.station_directory import json_sources as usd_json_sources
 
     fake_stations = tmp_path / "stations.json"
     _write_oversized(fake_stations, 4096)
 
-    monkeypatch.setattr(usd, "MAX_JSON_FILE_BYTES", 1024)
+    monkeypatch.setattr(usd_json_sources, "MAX_JSON_FILE_BYTES", 1024)
 
     with patch("src.utils.files.json.load") as mock_load:
         mapping, manual = usd._load_existing_station_entries(fake_stations)
@@ -345,11 +346,12 @@ def test_usd_load_vor_mapping_rejects_oversized(
 ) -> None:
     """Pre-fix shape mirror for the VOR mapping file."""
     from scripts import update_station_directory as usd
+    from src.station_directory import json_sources as usd_json_sources
 
     fake_mapping = tmp_path / "vor-haltestellen.mapping.json"
     _write_oversized(fake_mapping, 4096)
 
-    monkeypatch.setattr(usd, "MAX_JSON_FILE_BYTES", 1024)
+    monkeypatch.setattr(usd_json_sources, "MAX_JSON_FILE_BYTES", 1024)
 
     with patch("src.utils.files.json.load") as mock_load:
         result = usd._load_vor_name_to_id_map(fake_mapping)
@@ -372,11 +374,12 @@ def test_usd_load_pendler_station_ids_rejects_oversized(
     past the entire try/except block. Post-fix: the size cap surfaces
     the same ``ValueError`` on miss, preserving the exit-1 contract."""
     from scripts import update_station_directory as usd
+    from src.station_directory import json_sources as usd_json_sources
 
     fake_pendler = tmp_path / "pendler_stations.json"
     _write_oversized(fake_pendler, 4096)
 
-    monkeypatch.setattr(usd, "MAX_JSON_FILE_BYTES", 1024)
+    monkeypatch.setattr(usd_json_sources, "MAX_JSON_FILE_BYTES", 1024)
 
     with patch("src.utils.files.json.load") as mock_load:
         with pytest.raises(ValueError):
@@ -396,11 +399,12 @@ def test_usd_load_pendler_name_candidates_rejects_oversized(
 ) -> None:
     """Pre-fix shape mirror; planted-huge pendler-candidates file."""
     from scripts import update_station_directory as usd
+    from src.station_directory import json_sources as usd_json_sources
 
     fake_pendler = tmp_path / "pendler_candidates.json"
     _write_oversized(fake_pendler, 4096)
 
-    monkeypatch.setattr(usd, "MAX_JSON_FILE_BYTES", 1024)
+    monkeypatch.setattr(usd_json_sources, "MAX_JSON_FILE_BYTES", 1024)
 
     with patch("src.utils.files.json.load") as mock_load:
         result = usd.load_pendler_name_candidates(fake_pendler)

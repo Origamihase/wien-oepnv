@@ -16,6 +16,12 @@ import pytest
 from scripts import update_station_directory as usd
 from scripts import update_wl_stations as uws
 from scripts.update_station_directory import Station, _fill_coordinates_from_geonetz
+from src.station_directory import coordinates as sd_coordinates
+from src.station_directory import csv_sources as sd_csv_sources
+from src.station_directory import json_sources as sd_json_sources
+from src.station_directory import matching as sd_matching
+from src.station_directory import model as sd_model
+from src.station_directory import workbook as sd_workbook
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
@@ -33,6 +39,11 @@ def test_directory_has_no_osm_source() -> None:
 def test_station_runs_have_no_osm_tier() -> None:
     assert not hasattr(usd, "_enrich_with_osm")
     assert not hasattr(usd, "fetch_osm_places")
+    # The coordinate tiers moved to ``src/station_directory/``; the guard
+    # covers every module of that package as well.
+    for module in (sd_coordinates, sd_csv_sources, sd_json_sources, sd_matching, sd_model, sd_workbook):
+        assert not hasattr(module, "_enrich_with_osm"), module.__name__
+        assert not hasattr(module, "fetch_osm_places"), module.__name__
     assert "--osm-enrich" not in usd.parse_args.__code__.co_consts
     assert not hasattr(uws, "_build_osm_index_loader")
 

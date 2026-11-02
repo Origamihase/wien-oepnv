@@ -65,14 +65,14 @@ def test_precondition_geonetz_size_cap_constants_exist() -> None:
     """Pin the canonical cap constants. If a future refactor renames or
     removes them, every regression test below would silently pass even on
     unfixed code — so we pin the precondition first."""
-    from scripts import update_station_directory as usd
+    from src.station_directory import json_sources as usd_json_sources
 
-    assert isinstance(usd.MAX_JSON_FILE_BYTES, int)
-    assert usd.MAX_JSON_FILE_BYTES > 0
+    assert isinstance(usd_json_sources.MAX_JSON_FILE_BYTES, int)
+    assert usd_json_sources.MAX_JSON_FILE_BYTES > 0
     # Cap must accommodate the largest legitimate on-disk file observed in
     # production. The committed ``data/oebb_geonetz_stops.json`` is ~234 KiB
     # today; the cap is 50 MiB which is ~218x headroom.
-    assert usd.MAX_JSON_FILE_BYTES >= 1_000_000
+    assert usd_json_sources.MAX_JSON_FILE_BYTES >= 1_000_000
 
 
 # ============================================================================
@@ -119,11 +119,12 @@ def test_load_geonetz_stops_rejects_oversized_file(
     missing and the loader returns the canonical empty dict.
     """
     from scripts import update_station_directory as usd
+    from src.station_directory import json_sources as usd_json_sources
 
     # Tighten the cap so we don't have to write a multi-MiB test fixture.
     # The fix shape uses the module-level ``MAX_JSON_FILE_BYTES`` binding,
     # so monkeypatching it is sufficient to exercise the cap path.
-    monkeypatch.setattr(usd, "MAX_JSON_FILE_BYTES", 1024, raising=False)
+    monkeypatch.setattr(usd_json_sources, "MAX_JSON_FILE_BYTES", 1024)
 
     target = tmp_path / "oebb_geonetz_stops.json"
     _write_oversized_json(target, 4096)

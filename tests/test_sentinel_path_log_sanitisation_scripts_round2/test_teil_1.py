@@ -246,7 +246,7 @@ def test_usd_load_gtfs_locations_csverror_strips_primitive(
         raise csv.Error("planted")
 
     caplog.set_level(logging.WARNING)
-    with patch("scripts.update_station_directory.csv.DictReader", _raising_reader):
+    with patch("src.station_directory.csv_sources.csv.DictReader", _raising_reader):
         result = _load_gtfs_locations(path)
     assert result == {}
     _assert_primitive_absent(
@@ -291,7 +291,7 @@ def test_usd_load_wl_locations_csverror_strips_primitive(
         raise csv.Error("planted")
 
     caplog.set_level(logging.WARNING)
-    with patch("scripts.update_station_directory.csv.DictReader", _raising_reader):
+    with patch("src.station_directory.csv_sources.csv.DictReader", _raising_reader):
         result = _load_wienerlinien_locations(path)
     assert result == {}
     _assert_primitive_absent(
@@ -339,7 +339,7 @@ def test_usd_load_vor_locations_csverror_strips_primitive(
         raise csv.Error("planted")
 
     caplog.set_level(logging.WARNING)
-    with patch("scripts.update_station_directory.csv.DictReader", _raising_reader):
+    with patch("src.station_directory.csv_sources.csv.DictReader", _raising_reader):
         result = _load_vor_locations(path)
     assert result == {}
     _assert_primitive_absent(
@@ -409,7 +409,7 @@ def test_usd_load_vor_stops_csverror_strips_primitive(
         raise csv.Error("planted")
 
     caplog.set_level(logging.WARNING)
-    with patch("scripts.update_station_directory.csv.DictReader", _raise_csv):
+    with patch("src.station_directory.csv_sources.csv.DictReader", _raise_csv):
         result = load_vor_stops(path)
     assert result == []
     _assert_primitive_absent(

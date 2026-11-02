@@ -83,6 +83,7 @@ from unittest.mock import patch
 import pytest
 
 from scripts import update_station_directory
+from src.station_directory import workbook as usd_workbook
 
 
 # ============================================================================
@@ -106,16 +107,16 @@ def test_precondition_read_capped_bytes_helper_exists() -> None:
 
 def test_precondition_max_cached_workbook_bytes_constant() -> None:
     """The per-script cap constant must be exposed for inventory tests."""
-    assert isinstance(update_station_directory.MAX_CACHED_WORKBOOK_BYTES, int)
+    assert isinstance(usd_workbook.MAX_CACHED_WORKBOOK_BYTES, int)
     # Cap must accommodate the production xlsx (~62 KiB) with comfortable
     # headroom (10 MiB == 169x production).
-    assert update_station_directory.MAX_CACHED_WORKBOOK_BYTES >= 1_000_000
+    assert usd_workbook.MAX_CACHED_WORKBOOK_BYTES >= 1_000_000
     # Cap must not exceed the HTTP-fetch upper bound — anything larger
     # than what HTTP could have legitimately produced is by definition
     # tampered cache state.
     from src.utils.http import MAX_PAYLOAD_SIZE
 
-    assert update_station_directory.MAX_CACHED_WORKBOOK_BYTES <= MAX_PAYLOAD_SIZE
+    assert usd_workbook.MAX_CACHED_WORKBOOK_BYTES <= MAX_PAYLOAD_SIZE
 
 
 # ============================================================================
@@ -167,16 +168,16 @@ def test_download_workbook_rejects_oversized_cache(
     # production cap is 10 MiB; the cap is a parameter to
     # ``read_capped_bytes`` so monkeypatching the module-level constant
     # here is sufficient to exercise the rejection branch.
-    monkeypatch.setattr(update_station_directory, "MAX_CACHED_WORKBOOK_BYTES", 1024)
+    monkeypatch.setattr(usd_workbook, "MAX_CACHED_WORKBOOK_BYTES", 1024)
     cache_path.write_bytes(b"PK\x03\x04" + b"\x00" * 4096)
 
     monkeypatch.setattr(
-        update_station_directory,
+        usd_workbook,
         "session_with_retries",
         _fake_session_factory(),
     )
     monkeypatch.setattr(
-        update_station_directory,
+        usd_workbook,
         "fetch_content_safe",
         _failing_fetch_factory(),
     )
@@ -203,21 +204,21 @@ def test_download_workbook_skips_bytesio_when_cache_oversized(
     and allocates O(file_size) bytes. Post-fix: the size cap rejects the
     file before ``BytesIO`` is touched."""
     cache_path = tmp_path / "oebb-verkehrsstationen.xlsx"
-    monkeypatch.setattr(update_station_directory, "MAX_CACHED_WORKBOOK_BYTES", 1024)
+    monkeypatch.setattr(usd_workbook, "MAX_CACHED_WORKBOOK_BYTES", 1024)
     cache_path.write_bytes(b"PK\x03\x04" + b"\x00" * 4096)
 
     monkeypatch.setattr(
-        update_station_directory,
+        usd_workbook,
         "session_with_retries",
         _fake_session_factory(),
     )
     monkeypatch.setattr(
-        update_station_directory,
+        usd_workbook,
         "fetch_content_safe",
         _failing_fetch_factory(),
     )
 
-    with patch.object(update_station_directory, "BytesIO") as mock_bytesio:
+    with patch.object(usd_workbook, "BytesIO") as mock_bytesio:
         with pytest.raises(OSError, match="simulated data.oebb.at outage"):
             update_station_directory.download_workbook(
                 "https://example.invalid/wb.xlsx", cache_path=cache_path
@@ -243,12 +244,12 @@ def test_download_workbook_serves_cache_under_cap(
     cache_path.write_bytes(cached_payload)
 
     monkeypatch.setattr(
-        update_station_directory,
+        usd_workbook,
         "session_with_retries",
         _fake_session_factory(),
     )
     monkeypatch.setattr(
-        update_station_directory,
+        usd_workbook,
         "fetch_content_safe",
         _failing_fetch_factory(),
     )
