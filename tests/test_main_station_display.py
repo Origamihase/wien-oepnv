@@ -76,7 +76,7 @@ def test_titles_show_the_display_form(title: str, shown: str) -> None:
 @pytest.mark.parametrize(
     ("stored", "shown"),
     [
-        # Ledger rows written before the rule rank with the new ones.
+        # Ledger rows written before the rule read like the new ones.
         ("St. Pölten Hauptbahnhof", "St. Pölten Hbf"),
         ("Wiener Neustadt Hauptbahnhof", "Wiener Neustadt Hbf"),
         ("St. Pölten Hbf", "St. Pölten Hbf"),

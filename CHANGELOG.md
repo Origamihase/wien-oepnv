@@ -10,6 +10,20 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
 
 ### November 2026
 
+* **Unabhängige Prüfung von #2129 (2026-11-02)**: Keepalive und Gate
+  sauber. Das Keepalive erreicht jetzt den Socket, den `request_safe`
+  öffnet (der neue Test schlägt mit dem alten `src/utils/http.py` fehl);
+  das Gate zählt die früheren Versuche des eigenen Laufs, die Audit-Jobs
+  des laufenden Versuchs starten erst nach ihm. Ein Fund in der Doku:
+  Sie beschrieb eine Rangliste der Orte im Dashboard, die es nicht mehr
+  gibt (die Abschnitte „Häufigste Störungsorte“ und „Hotspots“ wurden
+  früher entfernt). `current_location_label` bleibt; Nachbau der
+  Statistik mit altem und neuem Code auf den echten Ledgern ergibt
+  byte-gleiche `docs/statistik.md`, README-Blöcke und
+  `stats-summary.json`. Berichtigt in CHANGELOG, `docs/architecture.md`
+  und den Kommentaren in `scripts/generate_markdown_stats.py`,
+  `src/utils/stats.py` und `tests/test_main_station_display.py`.
+
 * **Unabhängige Prüfung von #2122 und #2124 bis #2127 (2026-11-02)**:
   Drei Funde, behoben. (1) Das TCP-Keepalive aus #2124 erreichte die
   Gemini-Verbindung nie: `request_safe` schickt HTTPS über einen auf die
@@ -19,14 +33,15 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
   den `request_safe` wirklich öffnet (vorher nur `TCP_NODELAY`). (2) Das
   Gate in `ki-waechter.yml` übersprang den eigenen Lauf; ein erneut
   gestarteter täglicher Lauf zählte die Anfragen seiner früheren Versuche
-  nicht. Jetzt zählt er mit. (3) Die Statistik führte nach #2127 „St.
+  nicht. Jetzt zählt er mit. (3) Seit #2127 stehen im Ledger „St.
   Pölten Hauptbahnhof“ (ältere Zeilen) und „St. Pölten Hbf“ (neue Zeilen)
-  als zwei Orte, ebenso Wiener Neustadt. `generate_markdown_stats.py`
+  für einen Ort, ebenso Wiener Neustadt. `generate_markdown_stats.py`
   liest jede gespeicherte Ortsangabe, die das Verzeichnis kennt, in ihrer
   heutigen Anzeigeform (`current_location_label` in `src/utils/stats.py`);
   das führt auch drei ältere Kurzformen wie „Siebenhirten“ mit „Wien
   Siebenhirten (WL)“ zusammen. Die Ledger bleiben unverändert, das
-  Dashboard heute ebenso (keiner dieser Orte steht unter den häufigsten).
+  Dashboard ebenso, weil es keine Orte zeigt (berichtigt nach der
+  unabhängigen Prüfung von #2129).
   Doku: `docs/reference/ki_waechter.md`.
 
 * **Hauptbahnhöfe: „Hbf“ hinter langen Ortsnamen (2026-11-02)**:

@@ -601,8 +601,9 @@ def current_location_label(label: str) -> str:
 
     The ledger keeps the display name of the day a row was written; when the
     display layer changes (2026-11-02: "St. Pölten Hauptbahnhof" became
-    "St. Pölten Hbf", ``display_name``), older rows would rank as a second
-    place beside the new ones. A label the directory knows is shown through
+    "St. Pölten Hbf", ``display_name``), older rows would count as a second
+    place beside the new ones in any analysis by place. The dashboard shows
+    no places today, so its output does not change. A label the directory knows is shown through
     the same path as a new row (``display_name(station_info(...).name)``);
     any other label, ``unbekannt`` included, stays as stored.
     """

@@ -2432,7 +2432,9 @@ Aktualisierung in CI. Ein Name, in dem „Hauptbahnhof“ nicht am Ende steht
 („Wien Hauptbahnhof Ost (WL)“), bleibt wie er ist; Beschreibungen behalten
 den Wortlaut der Quelle. Die Statistik liest ältere Zeilen der Ledger
 („St. Pölten Hauptbahnhof“) in der heutigen Form (`current_location_label`
-in `src/utils/stats.py`), damit ein Ort nicht zweimal in der Rangliste steht.
+in `src/utils/stats.py`), damit ein Ort bei einer Auswertung nach Orten
+nicht zweimal zählt. Das Dashboard zeigt heute keine Orte (siehe §6), seine
+Ausgabe bleibt daher gleich.
 
 ## 6. Statistik- und Dashboard-Pipeline
 
