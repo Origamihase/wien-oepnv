@@ -10,6 +10,35 @@ Einträge nach Monaten, neueste zuerst: [November 2026](#november-2026) · [Okto
 
 ### November 2026
 
+* **KI-Wächter zum Stand vom 30.10.: Haltestellenpaar mit Tippfehler im
+  EN-Feed (2026-11-02)**: Der Probelauf vom 02.11. prüfte den Feed-Stand
+  `9e60b8d` vom 30.10. erstmals und fand drei Stellen. Zwei waren im Code
+  schon behoben, bevor der Wächter sie sah (beide mit #2087 am 30.10. um
+  10:44 Uhr Wiener Zeit): „40A: Bauernfeldplatz“ endete mit „… gegenüber
+  Bauernfeldplatz → …“ ohne die neue Haltestelle (seither „Richtung
+  Schottentor U: → Liechtensteinstraße 39.“, `_relocation_first`), und
+  „Under-Meidlinger Straße“ (seither `_absorb_hyphen_prefixes`); mit dem
+  heutigen Code nachgespielt erscheint keine der beiden. Neu behoben:
+  WL schrieb „Betrieb ab Parlament/ Volkstheter“ (Linie 2, 30.10.), der
+  englische Feed las „service from Parlament/ Folktheter“. Das Verzeichnis
+  kannte „Parlament“, den Tippfehler nicht, und das Modell las die zweite
+  Hälfte als Text. Ein großgeschriebenes Wort, das per Schrägstrich an
+  einem geschützten Namen hängt, gehört jetzt zu diesem Haltestellennamen
+  und bleibt wörtlich, Tippfehler eingeschlossen; Tippfehler der Quelle
+  korrigiert der Feed weiterhin nicht (`_shield_slash_partners`,
+  `docs/architecture.md`, Übersetzung). Neben einer Linie oder Marke
+  („U2/U3“, „ÖBB/Westbahn“) gilt das nicht, ebenso wenig für ein Wort, an
+  dem der Name weitergeht („Hauptbahnhof/Sankt Marx“): Dort schrieb das
+  echte Modell mit einer breiteren ersten Fassung „Sankt is Marx closed“.
+  Über alle 11.222 Quelltexte seit Juli ändert sich die Modelleingabe von
+  acht (vier Meldungen, je Titel und Text), jedes Mal an einer Haltestelle
+  oder Straße („Laxenburger/Gudrunstraße“, „Währinger Str./ Volksoper“);
+  das echte Modell übersetzt sieben davon wie vorher, in der achten steht
+  jetzt „service from Parlament/ Volkstheter“. 401 Feed-Stände seit 01.10.
+  durch die ganze Kette nachgespielt: deutscher Feed und State gleich.
+  Übersetzungs-Epoche 31.
+  Tests: `tests/test_street_name_masking.py`.
+
 * **KI-Wächter: abgebrochene Verbindung bekommt das Ausweichmodell (2026-11-02)**:
   Der tägliche Lauf am 02.11. um 9:01 Uhr Wiener Zeit hatte drei Anfragen,
   aber die Verbindung zu Gemini 3.8 Flash brach nach 261 Sekunden mit

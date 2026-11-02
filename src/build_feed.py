@@ -2878,7 +2878,11 @@ _TRANSLATION_STATUS_DEFAULT = "data/translation_status.json"
 #       glossary. Cached under 29: "in the area of At the ice ponds", "Under-
 #       Meidlinger Straße", "Reason: Parked original stop."; the source
 #       digests are unchanged, so only a bump evicts them.
-_TRANSLATION_CACHE_EPOCH = 30
+#  31 — KI-Wächter of 2026-11-02 (feed state of 30.10.): the unknown half
+#       of a slash-joined stop name ("Parlament/ Volkstheter", WL's typo) is
+#       shielded verbatim. Cached under 30: "service from Parlament/
+#       Folktheter"; the source digest is unchanged, so only a bump evicts it.
+_TRANSLATION_CACHE_EPOCH = 31
 
 # Static lookup for the German words of the bracketed ``[…]`` time line (see
 # ``format_local_times``). Translating these via the ML model would be
@@ -3395,6 +3399,28 @@ _HYPHEN_PREFIX_RE: re.Pattern[str] = re.compile(
     r"(?<![\w-])(?:[A-ZÄÖÜ][a-zäöüß]+-)+(?=" + _ENTITY_PLACEHOLDER_RE.pattern + r")"
 )
 
+# A stop WL names as a pair, "Parlament/Volkstheater", "Schmerlingplatz/
+# Volkstheater": when one half is a typo the directory does not know, only
+# the other half was shielded and the model read the rest as prose
+# ("Betrieb ab Parlament/ Volkstheter" -> "service from Parlament/
+# Folktheter", WL 2, 30.10.2026). A capitalised word glued by a slash to a
+# shielded name belongs to that stop's name and stays as WL wrote it.
+_SLASH_PARTNER_WORD = r"[A-ZÄÖÜ][A-Za-zÄÖÜäöüß.-]*[A-Za-zÄÖÜäöüß]"
+_SLASH_PARTNER_AFTER_RE: re.Pattern[str] = re.compile(
+    r"(?P<name>" + _ENTITY_PLACEHOLDER_RE.pattern + r")/(?P<gap> ?)"
+    r"(?P<word>(?!XENT|XGLO)" + _SLASH_PARTNER_WORD + r")(?![\w/-])"
+)
+# The name goes on behind the half ("Sankt Marx") or came before it
+# ("Spittelau Bahnhst/…"): a capitalised word or a shielded name next to it.
+_SLASH_NAME_GOES_ON_RE: re.Pattern[str] = re.compile(r" (?:[A-ZÄÖÜ]|XENT)")
+_SLASH_NAME_CAME_BEFORE_RE: re.Pattern[str] = re.compile(
+    r"(?:[A-ZÄÖÜ][\w.-]*|" + _ENTITY_PLACEHOLDER_RE.pattern + r") $"
+)
+_SLASH_PARTNER_BEFORE_RE: re.Pattern[str] = re.compile(
+    r"(?<![\w./-])(?P<word>(?!XENT|XGLO)" + _SLASH_PARTNER_WORD + r")/(?P<gap> ?)"
+    r"(?P<name>" + _ENTITY_PLACEHOLDER_RE.pattern + r")"
+)
+
 # "Wien" as part of a stop's name: "Wien Schedifkaplatz" (Badner Bahn),
 # "Wien St.Marx Bahnhst", "Purkersdorf b.Wien Zentrum Bahnhst",
 # "Hennersdorf b.Wien Bahnhst". The directory knows none of these forms, so
@@ -3820,7 +3846,48 @@ def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
     # pass knows it ("Wien Schedifkaplatz": the street pass).
     working = _absorb_wien_into_names(working, mapping, _register)
     working = _absorb_hyphen_prefixes(working, mapping, _register)
+    working = _shield_slash_partners(working, mapping, _register)
     return working, mapping
+
+
+def _shield_slash_partners(
+    working: str,
+    mapping: dict[str, str],
+    register: Callable[[str], str],
+) -> str:
+    """Shield the unknown half of a slash-joined stop name (``_SLASH_PARTNER_*_RE``).
+
+    Only a half next to a shielded *name* counts: a line, a brand or a date
+    on the other side ("U2/U3", "ÖBB/WL") makes no stop name. The half is
+    shielded verbatim, a typo included, as WL wrote it. Only a one-word half
+    at the outer end of the pair counts: a half the name goes on behind
+    ("Hauptbahnhof/Sankt Marx") or in front of ("Wien Spittelau
+    Bahnhst/Wien Mitte") stays with the model, which read those whole names
+    better than a name split in two placeholders (real model, 2026-11-02).
+    """
+
+    def _shield(match: re.Match[str]) -> str:
+        surface = mapping.get(match.group("name"), "")
+        if (
+            not surface[:1].isupper()
+            or surface in _BRAND_ENTITIES
+            or _LINE_ENTITY_RE.fullmatch(surface)
+        ):
+            return match.group(0)
+        text = match.string
+        if match.re is _SLASH_PARTNER_AFTER_RE:
+            rest = text[match.end():]
+            if _SLASH_NAME_GOES_ON_RE.match(rest):
+                return match.group(0)
+        elif _SLASH_NAME_CAME_BEFORE_RE.search(text[: match.start()]):
+            return match.group(0)
+        word = register(match.group("word"))
+        if match.re is _SLASH_PARTNER_AFTER_RE:
+            return match.group("name") + "/" + match.group("gap") + word
+        return word + "/" + match.group("gap") + match.group("name")
+
+    working = _SLASH_PARTNER_AFTER_RE.sub(_shield, working)
+    return _SLASH_PARTNER_BEFORE_RE.sub(_shield, working)
 
 
 def _absorb_hyphen_prefixes(
