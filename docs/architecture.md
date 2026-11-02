@@ -238,6 +238,19 @@ Liste hat mehr als 700 Zeilen; die Liste bekommt keine neuen Einträge
 darunter fällt, wird aus der Liste gelöscht. Eine Datei, die wächst, wird
 geteilt, bevor sie die Grenze überschreitet.
 
+Das CHANGELOG ist seit Etappe 1 (2026-11-02) aufgeteilt: `CHANGELOG.md` ist
+nur noch die Übersicht, die Einträge stehen in Monatsteilen unter
+`changelog/` (`<JJJJ-MM>-teil-<n>.md`, Teil 1 die ältesten, im Teil die
+neuesten oben). Tagesdateien gingen nicht, weil die Einträge eines Tages
+nicht immer ein Datum im Titel tragen; Wochen-Dateien wären mit rund 260
+Zeilen am Tag zu groß. Ein neuer Eintrag kommt oben in den höchsten Teil des
+laufenden Monats; hätte der Teil danach mehr als 700 Zeilen, beginnt ein
+neuer Teil, der in `CHANGELOG.md` ergänzt wird. Der Ordner liegt bewusst
+nicht unter `docs/`, damit GitHub Pages die Teile nicht mit Jekyll rendert
+(das CHANGELOG enthält Liquid-Klammern aus Code-Beispielen).
+`tests/test_changelog_parts.py` prüft, dass die Übersicht jeden Teil genau
+einmal nennt, keine Einträge enthält und die Teile lückenlos nummeriert sind.
+
 ### Titel und Beschreibung im deutschen Feed
 
 Diese Regeln entscheiden, was ein Eintrag im deutschen Feed zeigt. Sie
@@ -3956,8 +3969,8 @@ enthält deutsche Items — sichtbar, aber nicht kaputt.
 
 ## 9. Querverweise
 
-Die laufende Audit- und Refactoring-Historie liegt in `CHANGELOG.md`
-(aktuelle und unveröffentlichte Einträge) und unter
+Die laufende Audit- und Refactoring-Historie liegt in den Monatsteilen
+unter `changelog/` (Übersicht: `CHANGELOG.md`) und unter
 `docs/archive/audits/` (abgeschlossene Audit-Berichte). Architektur-
 relevante Änderungen sollten zusätzlich diese Karte und gegebenenfalls
 das jeweilige Mermaid-Diagramm aktualisieren.
