@@ -1,16 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-02T11:01:06.085574+00:00",
- "built": "2026-11-02T12:00:59+01:00",
+ "updated": "2026-11-02T11:31:01.915390+00:00",
+ "built": "2026-11-02T12:30:45+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-02T12:00:59+01:00",
+  "built": "2026-11-02T12:30:45+01:00",
   "items": [
    {
-    "title": "42: Schadhaftes Fahrzeug",
-    "time_line": "Seit 11:04"
+    "title": "47A: Verkehrsunfall",
+    "time_line": "Seit 12:11"
    },
    {
     "title": "U1: Verspätungen",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-26T11:01:18.115224+00:00",
-   "raw": {
-    "wl-stoerungen": 128,
-    "wl-hinweise": 88,
-    "oebb": 157,
-    "baustellen-linien": 55,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 11,
-    "oebb": 133,
-    "baustellen": 70
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 112
-   }
-  },
   {
    "t": "2026-10-26T11:31:08.967255+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 6,
     "wl": 86
    }
+  },
+  {
+   "t": "2026-11-02T11:31:01.915390+00:00",
+   "raw": {
+    "wl-stoerungen": 54,
+    "wl-hinweise": 74,
+    "oebb": 165,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 16
+   },
+   "discarded": {
+    "wl": 13,
+    "oebb": 144,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 6,
+    "wl": 85
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-02T11:01:06.085574+00:00"
+   "last_ok": "2026-11-02T11:31:01.915390+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-02T11:01:06.085574+00:00"
+   "last_ok": "2026-11-02T11:31:01.915390+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-02T11:01:06.085574+00:00"
+   "last_ok": "2026-11-02T11:31:01.915390+00:00"
   }
  }
 }

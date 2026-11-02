@@ -890,30 +890,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "42: Schadhaftes Fahrzeug",
-    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "47A: Verkehrsunfall",
+    "description": "Linie 47A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "84ec1e565462216a9b1b50b2e219a7b33bcc5fcc85e93bca82a84eba9cebcfb9",
-    "pubDate": "2026-11-02T11:04:00+01:00",
-    "starts_at": "2026-11-02T11:04:00+01:00",
+    "guid": "64a60d5606788897aab464b73904107cef9f0bd55aeba104adb12381915a79e0",
+    "pubDate": "2026-11-02T12:11:00+01:00",
+    "starts_at": "2026-11-02T12:11:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=42|D=2026-11-02|TK=42 schadhaftes fahrzeug",
+    "_identity": "wl|störung|L=47A|D=2026-11-02|TK=47a verkehrsunfall",
     "_wl_ids": [
-      "I20261102-0010"
+      "I20261102-0011"
     ],
-    "_incident_start": "2026-11-02T11:04:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "42: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "4394f66a6d6d89c3ec38bb039c4256862ce5646c73c79ab083e21a4e3be0903b",
-    "pubDate": "2026-11-02T11:11:27+01:00",
-    "starts_at": "2026-11-02T11:11:29+01:00",
-    "ends_at": "2026-11-02T12:11:00+01:00",
-    "_identity": "wl|störung|L=42|D=2026-11-02|TK=fahrtbehinderung schadhafter zug"
+    "_incident_start": "2026-11-02T12:11:00+01:00"
   },
   {
     "source": "Wiener Linien",
