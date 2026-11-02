@@ -638,6 +638,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "15A: Verkehrsüberlastung",
+    "description": "Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "62756418fcbdf4e3b83649d0dfb730ca0b4cc640b14c00d9a9e4107b8b5363f9",
+    "pubDate": "2026-11-02T17:44:00+01:00",
+    "starts_at": "2026-11-02T17:44:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=15A|D=2026-11-02|TK=15a verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261102-0025"
+    ],
+    "_incident_start": "2026-11-02T17:44:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",

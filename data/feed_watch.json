@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-02T16:31:02.819982+00:00",
- "built": "2026-11-02T17:30:45+01:00",
+ "updated": "2026-11-02T17:01:03.539072+00:00",
+ "built": "2026-11-02T18:00:50+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-02T17:30:45+01:00",
+  "built": "2026-11-02T18:00:50+01:00",
   "items": [
+   {
+    "title": "15A: Verkehrsüberlastung",
+    "time_line": "Seit 17:44"
+   },
    {
     "title": "O: Rettungseinsatz",
     "time_line": "Seit 17:23"
@@ -43,35 +47,11 @@
    {
     "title": "11: Wienerfeldgasse",
     "time_line": "Bis 19.11."
-   },
-   {
-    "title": "40A: Bauernfeldplatz",
-    "time_line": "Seit 27.10."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-26T16:31:23.141404+00:00",
-   "raw": {
-    "wl-stoerungen": 138,
-    "wl-hinweise": 88,
-    "oebb": 155,
-    "baustellen-linien": 55,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 12,
-    "oebb": 131,
-    "baustellen": 70
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 107
-   }
-  },
   {
    "t": "2026-10-26T17:01:12.547866+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 6,
     "wl": 86
    }
+  },
+  {
+   "t": "2026-11-02T17:01:03.539072+00:00",
+   "raw": {
+    "wl-stoerungen": 56,
+    "wl-hinweise": 75,
+    "oebb": 174,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 14,
+    "oebb": 153,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 6,
+    "wl": 87
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-02T16:31:02.819982+00:00"
+   "last_ok": "2026-11-02T17:01:03.539072+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-02T16:31:02.819982+00:00"
+   "last_ok": "2026-11-02T17:01:03.539072+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-02T16:31:02.819982+00:00"
+   "last_ok": "2026-11-02T17:01:03.539072+00:00"
   }
  }
 }

@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261102-0022-F01, I20260925-0011, I20260909-0007, I20261102-0023-F01, I20260922-0032, I20261020-0029, I20261102-0024-F01, I20261102-0024"
+    "trafficInfoNameList": "I20261102-0022-F01, I20261102-0025, I20260925-0011, I20260909-0007, I20260922-0032, I20261020-0029, I20261102-0024-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R45-136, R19-136, R130-136, R119-136, R118-136, R103-136, R115-136, R116-136, R117-136, R100-136, R101-136, R102-136, R1448-412, R1474-412, R318-437, R293-474, R2558-125, R3886-480, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2343-626, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2359-125, R1974-466, R1272-440, R1301-440, R500-101, R299-170, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R45-136, R19-136, R130-136, R119-136, R118-136, R103-136, R115-136, R116-136, R117-136, R100-136, R101-136, R102-136, R1448-412, R1474-412, R318-437, R293-474, R2558-125, R3886-480, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2343-626, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2359-125, R1974-466, R1301-440, R1272-440, R500-101, R299-170, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -265,104 +265,6 @@
     "title": "U4: Schadhaftes Fahrzeug"
    },
    {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "9": "ptTram"
-     }
-    },
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "9: Falschparker"
-      }
-     }
-    ],
-    "name": "I20261102-0023-F01",
-    "owner": "WL",
-    "parentName": "I20261102-0023",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 109,
-      "lineName": "9",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     525
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-02T16:36:00.000+0100",
-     "end": "2026-11-02T17:29:00.000+0100",
-     "lastUpdate": "2026-11-02T17:29:00.000+0100",
-     "resume": "2026-11-02T17:29:00.000+0100",
-     "start": "2026-11-02T16:24:00.000+0100"
-    },
-    "title": "9: Falschparker"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "O": "ptTram"
-     }
-    },
-    "description": "Die Linie O wird in Richtung Raxstraße zwischen Neilreichgasse / Troststraße und Raxstraße über die Linie 11 zum Frödenplatz umgeleitet. Die Haltestelle Raxstraße, Rudolfhügelstraße wird in der Neilreichgasse bei Linie 11 eingehalten. Voraussichtliche Dauer: 17:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Raxstraße.",
-    "descriptionHTML": "<p>Die Linie O wird in Richtung Raxstraße zwischen Neilreichgasse / Troststraße und Raxstraße über die Linie 11 zum Frödenplatz umgeleitet.</p><p>Die Haltestelle Raxstraße, Rudolfhügelstraße wird in der Neilreichgasse bei Linie 11 eingehalten.</p><p>Voraussichtliche Dauer: 17:50 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Raxstraße.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Die Linie O wird in Richtung Raxstraße zwischen Neilreichgasse / Troststraße und Raxstraße über die Linie 11 zum Frödenplatz umgeleitet.</p><p>Die Haltestelle Raxstraße, Rudolfhügelstraße wird in der Neilreichgasse bei Linie 11 eingehalten.</p><p>Voraussichtliche Dauer: 17:50 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Raxstraße.</p>",
-       "descriptionPlain": "Die Linie O wird in Richtung Raxstraße zwischen Neilreichgasse / Troststraße und Raxstraße über die Linie 11 zum Frödenplatz umgeleitet. Die Haltestelle Raxstraße, Rudolfhügelstraße wird in der Neilreichgasse bei Linie 11 eingehalten. Voraussichtliche Dauer: 17:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Raxstraße.",
-       "title": "O: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261102-0024",
-    "owner": "WL",
-    "parentName": "I20261102-0024",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 170,
-      "lineName": "O",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     299
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-02T17:24:00.000+0100",
-     "end": "2026-11-02T17:30:00.000+0100",
-     "lastUpdate": "2026-11-02T17:30:00.000+0100",
-     "resume": "2026-11-02T17:30:00.000+0100",
-     "start": "2026-11-02T17:23:00.000+0100"
-    },
-    "title": "O: Rettungseinsatz"
-   },
-   {
     "alertCause": "emergency medical services",
     "alertCauseId": 14,
     "attributes": {
@@ -409,6 +311,51 @@
      "start": "2026-11-02T17:23:00.000+0100"
     },
     "title": "O: Rettungseinsatz"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "15A": "ptBusCity"
+     }
+    },
+    "description": "Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 15A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 15A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "15A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261102-0025",
+    "owner": "WL",
+    "parentName": "I20261102-0025",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "15A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 415,
+      "lineName": "15A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-02T17:45:00.000+0100",
+     "lastUpdate": "2026-11-02T17:45:00.000+0100",
+     "resume": "2026-11-02T17:44:00.000+0100",
+     "start": "2026-11-02T17:44:00.000+0100"
+    },
+    "title": "15A: Verkehrsüberlastung"
    },
    {
     "alertCause": "undefined alert cause",
