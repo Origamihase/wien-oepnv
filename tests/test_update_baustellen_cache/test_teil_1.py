@@ -1,0 +1,654 @@
+"""Teil 1 der Tests aus tests/test_update_baustellen_cache.py.
+
+Beschreibung in __init__.py.
+"""
+
+from __future__ import annotations
+
+import json
+from datetime import UTC, date, datetime
+from pathlib import Path
+from typing import Any
+
+import pytest
+
+from scripts import update_baustellen_cache
+
+from ._support import (
+    SAMPLE_PATH,
+    _bau_feature,
+    _patch_http_layer_bypass,
+)
+
+
+@pytest.mark.parametrize(
+    "duration, expected_start, expected_end",
+    [
+        ("2025-11-05/2025-11-20", date(2025, 11, 5), date(2025, 11, 20)),
+        ("2025-01-01T00:00:00+01:00/2025-01-02T12:00:00+01:00", date(2025, 1, 1), date(2025, 1, 2)),
+    ],
+)
+def test_parse_range_handles_duration(duration: str, expected_start: date, expected_end: date) -> None:
+    properties = {"DAUER": duration}
+    start, end = update_baustellen_cache._parse_range(properties)
+    assert start is not None and start.date() == expected_start
+    assert end is not None and end.date() == expected_end
+
+
+def test_parse_range_ignores_spatial_bis_value() -> None:
+    """Bare ``BIS`` is a spatial 'to' descriptor (sibling of BIS_NR/BIS_KM),
+    not an end-date. A house-number value like '22' must NOT be coerced by the
+    lenient date parser into a bogus end-date (day-22-of-current-month)."""
+    properties = {"OBJEKT_BEGINN": "2026-03-01Z", "BIS": "22"}
+    start, end = update_baustellen_cache._parse_range(properties)
+    assert start is not None and start.date() == date(2026, 3, 1)
+    assert end is None
+
+
+def test_parse_range_still_reads_explicit_until_date() -> None:
+    """The explicit date keys (DATUM_BIS / BIS_DATUM) remain valid end-dates."""
+    properties = {"OBJEKT_BEGINN": "2026-03-01Z", "DATUM_BIS": "2026-04-15Z"}
+    start, end = update_baustellen_cache._parse_range(properties)
+    assert start is not None and start.date() == date(2026, 3, 1)
+    assert end is not None and end.date() == date(2026, 4, 15)
+
+
+def test_to_item_always_emits_required_starts_at_key() -> None:
+    """``starts_at`` is a schema-required key (events.schema.json) that every
+    other provider emits — null when unknown. A Baustelle without a parsed
+    start must still emit it as null, not drop the key entirely."""
+    event = update_baustellen_cache.ConstructionEvent(
+        guid="g1",
+        title="Test",
+        description="desc",
+        starts_at=None,
+        ends_at=None,
+        pub_date=datetime(2026, 3, 1, tzinfo=UTC),
+    )
+    item = event.to_item()
+    assert "starts_at" in item and item["starts_at"] is None
+    for key in (
+        "source", "category", "title", "description", "link", "guid",
+        "pubDate", "starts_at",
+    ):
+        assert key in item, f"schema-required key {key!r} missing from to_item()"
+    # ends_at is optional in the schema → still omitted when None.
+    assert "ends_at" not in item
+
+
+def test_guid_stable_across_objectid_churn() -> None:
+    """The Baustellen GUID must NOT depend on the volatile ArcGIS OBJECTID.
+
+    The upstream WFS re-assigns OBJECTID on re-indexing; if the GUID changed
+    with it, first_seen would reset every churn and the site would perpetually
+    dominate the first_seen-sorted feed. Same title + start + end must yield
+    one guid regardless of OBJECTID.
+    """
+    ev1 = update_baustellen_cache._feature_to_event(_bau_feature(objectid=111))
+    ev2 = update_baustellen_cache._feature_to_event(_bau_feature(objectid=999))
+    assert ev1 is not None and ev2 is not None
+    assert ev1.guid == ev2.guid
+
+
+def test_guid_differs_for_distinct_sites() -> None:
+    """Distinct sites (different title) still get distinct guids."""
+    ev1 = update_baustellen_cache._feature_to_event(_bau_feature(name="Brünner Straße 59"))
+    ev2 = update_baustellen_cache._feature_to_event(_bau_feature(name="Gentzgasse 1"))
+    assert ev1 is not None and ev2 is not None
+    assert ev1.guid != ev2.guid
+
+
+def test_collect_events_from_sample_payload() -> None:
+    payload = json.loads(SAMPLE_PATH.read_text(encoding="utf-8"))
+    events = update_baustellen_cache._collect_events(payload)
+    assert len(events) == 2
+    first = events[0]
+    assert first["category"] == "Baustelle"
+    assert first["context"]["district"] == "21"
+    # OBJEKT_BEGINN "2025-10-01Z" is the UTC date of Vienna midnight on 2025-10-02
+    # (see ``_UTC_DATE_RE`` in the script).
+    assert first["starts_at"].startswith("2025-10-02")
+    assert "location" in first
+    assert first["location"]["coordinates"] == {"lat": 48.2562499, "lon": 16.4007}
+
+
+def test_main_uses_fallback_when_remote_fails(
+    monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
+) -> None:
+    import logging
+
+    calls: list[tuple[str, list[dict[str, Any]]]] = []
+
+    def fake_fetch_remote(url: str, timeout: int) -> None:
+        return None
+
+    def capture_cache(provider: str, items: list[dict[str, str]], **_kw: Any) -> None:
+        calls.append((provider, items))
+
+    monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", fake_fetch_remote)
+    monkeypatch.setattr(update_baustellen_cache, "write_cache", capture_cache)
+    # Stub the network diagnostic so the fallback path stays offline.
+    monkeypatch.setattr(update_baustellen_cache, "_log_endpoint_diagnostic", lambda *a, **k: None)
+    # The demo sample is only for a checkout without a cache.
+    monkeypatch.setattr(update_baustellen_cache, "_cache_exists", lambda: False)
+    monkeypatch.setenv("BAUSTELLEN_FALLBACK_PATH", str(SAMPLE_PATH))
+    caplog.set_level(logging.WARNING, logger="update_baustellen_cache")
+
+    exit_code = update_baustellen_cache.main()
+
+    # Exit 2 = degraded: the cache came from the fallback sample, not a
+    # live fetch. The previous silent ``return 0`` is what let the broken
+    # WFS fetch hide for weeks.
+    assert exit_code == 2
+    assert calls and calls[0][0] == "baustellen"
+    # Of the two sample sites only Thaliastraße names an effect on transit.
+    assert len(calls[0][1]) == 1
+    assert any(
+        "FALLBACK" in record.getMessage()
+        for record in caplog.records
+        if record.name == "update_baustellen_cache"
+    )
+
+
+def test_main_keeps_an_existing_cache_when_remote_fails(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A failed live fetch never writes the demo sample over a real cache.
+
+    The 20 % guard of ``write_cache`` let the two sample sites through
+    whenever the cache held ten or fewer, so every real construction site
+    vanished from the feed for the length of the outage.
+    """
+    calls: list[Any] = []
+    monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", lambda url, timeout: None)
+    monkeypatch.setattr(update_baustellen_cache, "write_cache", lambda *a, **_kw: calls.append(a))
+    monkeypatch.setattr(update_baustellen_cache, "_log_endpoint_diagnostic", lambda *a, **k: None)
+    monkeypatch.setattr(update_baustellen_cache, "_cache_exists", lambda: True)
+    monkeypatch.setenv("BAUSTELLEN_FALLBACK_PATH", str(SAMPLE_PATH))
+
+    assert update_baustellen_cache.main() == 1
+    assert calls == []
+
+
+def test_with_output_format_rewrites_only_the_token() -> None:
+    rewritten = update_baustellen_cache._with_output_format(
+        update_baustellen_cache.DEFAULT_DATA_URL, "application/json"
+    )
+    assert rewritten.endswith("outputFormat=application/json")
+    # Every other parameter is preserved byte-for-byte.
+    assert "typeName=ogdwien:BAUSTELLENLINOGD" in rewritten
+    assert "srsName=EPSG:4326" in rewritten
+    assert rewritten.startswith("https://data.wien.gv.at/daten/geo?")
+
+
+def test_with_output_format_appends_when_absent() -> None:
+    base = "https://data.wien.gv.at/daten/geo?service=WFS"
+    assert (
+        update_baustellen_cache._with_output_format(base, "geojson")
+        == base + "&outputFormat=geojson"
+    )
+
+
+def test_with_typename_rewrites_only_the_token() -> None:
+    rewritten = update_baustellen_cache._with_typename(
+        update_baustellen_cache.DEFAULT_DATA_URL, "ogdwien:BAUSTELLENPKTOGD"
+    )
+    assert "typeName=ogdwien:BAUSTELLENPKTOGD" in rewritten
+    assert "BAUSTELLENLINOGD" not in rewritten
+    # Other parameters untouched.
+    assert "outputFormat=json" in rewritten
+    assert "srsName=EPSG:4326" in rewritten
+
+
+def test_fetch_layers_merges_both_typenames(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Both feature types are fetched and their events merged."""
+    seen_typenames: list[str] = []
+
+    def fake_fetch_remote(url: str, timeout: int) -> dict[str, Any]:
+        # Record which layer was requested; return one feature per layer.
+        for typename in update_baustellen_cache._BAUSTELLEN_TYPENAMES:
+            if typename in url:
+                seen_typenames.append(typename)
+        return {"type": "FeatureCollection", "features": []}
+
+    monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", fake_fetch_remote)
+    events = update_baustellen_cache._fetch_layers(
+        update_baustellen_cache.DEFAULT_DATA_URL, timeout=5
+    )
+    assert events == []  # empty FeatureCollections → no events, but not None
+    assert set(seen_typenames) == set(update_baustellen_cache._BAUSTELLEN_TYPENAMES)
+
+
+def test_fetch_layers_returns_none_when_all_layers_fail(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", lambda url, timeout: None)
+    assert update_baustellen_cache._fetch_layers("https://data.wien.gv.at/x", timeout=5) is None
+
+
+def test_main_negotiates_output_format(monkeypatch: pytest.MonkeyPatch) -> None:
+    """The configured ``json`` token returns nothing (the production
+    failure mode); the negotiation must fall through to the next variant
+    and use it as a live success — NOT the degraded fallback.
+
+    The payload now carries one ÖPNV-relevant feature so the post-filter
+    yields a non-empty ``relevant`` list and the empty-payload-skip path
+    is not what's under test here.
+    """
+    seen: list[str] = []
+    payload = {
+        "type": "FeatureCollection",
+        "features": [_bau_feature(name="Haltestelle Großfeldsiedlung verlegt")],
+    }
+
+    def fake_fetch_remote(url: str, timeout: int) -> dict[str, Any] | None:
+        seen.append(url)
+        return payload if "outputFormat=application/json" in url else None
+
+    cached: list[tuple[str, list[dict[str, Any]]]] = []
+    monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", fake_fetch_remote)
+    monkeypatch.setattr(
+        update_baustellen_cache, "write_cache", lambda p, items, **_kw: cached.append((p, items))
+    )
+
+    exit_code = update_baustellen_cache.main()
+
+    assert exit_code == 0  # live success via the negotiated format, not fallback
+    assert seen[0].endswith("outputFormat=json")  # configured token tried first
+    assert any("outputFormat=application/json" in url for url in seen)
+    assert cached and cached[0][0] == "baustellen"
+
+
+def test_log_endpoint_diagnostic_logs_sanitised_snippet(
+    monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
+) -> None:
+    """When the WFS refuses every format, the diagnostic surfaces a snippet
+    of the refusing body (e.g. an OGC ServiceException) so the cause is
+    visible in the operator log."""
+    import logging
+
+    import responses
+
+    _patch_http_layer_bypass(monkeypatch)
+
+    @responses.activate
+    def run() -> None:
+        responses.get(
+            update_baustellen_cache.DEFAULT_DATA_URL,
+            body=(
+                '<?xml version="1.0"?><ServiceExceptionReport>'
+                '<ServiceException code="InvalidParameterValue" locator="typeName">'
+                "Unknown layer ogdwien:BAUSTELLEOGD</ServiceException>"
+                "</ServiceExceptionReport>"
+            ),
+            status=200,
+            content_type="application/xml",
+        )
+        caplog.set_level(logging.INFO, logger="update_baustellen_cache")
+        update_baustellen_cache._log_endpoint_diagnostic(
+            update_baustellen_cache.DEFAULT_DATA_URL, timeout=5
+        )
+        messages = [
+            record.getMessage()
+            for record in caplog.records
+            if record.name == "update_baustellen_cache"
+        ]
+        assert any(
+            "Endpoint-Diagnose" in message and "ServiceException" in message
+            for message in messages
+        )
+
+    run()
+
+
+def test_log_endpoint_diagnostic_swallows_errors(monkeypatch: pytest.MonkeyPatch) -> None:
+    """A diagnostic hiccup must never raise — it is strictly best-effort."""
+
+    def boom(*args: Any, **kwargs: Any) -> Any:
+        raise OSError("network down")
+
+    monkeypatch.setattr(update_baustellen_cache, "session_with_retries", boom)
+    # Must return cleanly rather than propagate.
+    update_baustellen_cache._log_endpoint_diagnostic(
+        update_baustellen_cache.DEFAULT_DATA_URL, timeout=5
+    )
+
+
+def test_resolve_fallback_path_default_when_unset() -> None:
+    assert update_baustellen_cache._resolve_fallback_path(None) == update_baustellen_cache.DEFAULT_FALLBACK_PATH
+    assert update_baustellen_cache._resolve_fallback_path("") == update_baustellen_cache.DEFAULT_FALLBACK_PATH
+    assert update_baustellen_cache._resolve_fallback_path("   ") == update_baustellen_cache.DEFAULT_FALLBACK_PATH
+
+
+def test_resolve_fallback_path_accepts_repo_relative() -> None:
+    """Paths inside the repo (the legitimate use case) must be honoured."""
+    relative = SAMPLE_PATH.relative_to(update_baustellen_cache.REPO_ROOT).as_posix()
+    resolved = update_baustellen_cache._resolve_fallback_path(relative)
+    assert resolved == SAMPLE_PATH
+
+
+def test_resolve_fallback_path_blocks_outside_repo(tmp_path: Path) -> None:
+    """An env-controlled absolute path outside the repo must be rejected."""
+    outside = tmp_path / "evil.json"
+    outside.write_text('{"features": []}', encoding="utf-8")
+    resolved = update_baustellen_cache._resolve_fallback_path(str(outside))
+    assert resolved == update_baustellen_cache.DEFAULT_FALLBACK_PATH
+
+
+def test_resolve_fallback_path_blocks_traversal_via_dotdot() -> None:
+    """A relative path that escapes the repo via ../ must be rejected."""
+    resolved = update_baustellen_cache._resolve_fallback_path("../../etc/passwd")
+    assert resolved == update_baustellen_cache.DEFAULT_FALLBACK_PATH
+
+
+@pytest.mark.parametrize(
+    "raw,expected",
+    [
+        ("99999", update_baustellen_cache.MAX_BAUSTELLEN_TIMEOUT),
+        ("21", update_baustellen_cache.MAX_BAUSTELLEN_TIMEOUT),
+        ("0", 1),
+        ("-5", 1),
+        ("5", 5),
+        ("", update_baustellen_cache.DEFAULT_BAUSTELLEN_TIMEOUT),
+        ("garbage", update_baustellen_cache.DEFAULT_BAUSTELLEN_TIMEOUT),
+    ],
+)
+def test_baustellen_timeout_env_is_clamped(
+    monkeypatch: pytest.MonkeyPatch, raw: str, expected: int
+) -> None:
+    """``BAUSTELLEN_TIMEOUT`` must never exceed ``MAX_BAUSTELLEN_TIMEOUT``.
+
+    Without the cap a sluggish or attacker-controlled upstream peer could hold
+    the fetch for ~28 hours via ``BAUSTELLEN_TIMEOUT=99999``, stalling the
+    feed-build cron pipeline (Slowloris vector mirrored from
+    ``MAX_PROVIDER_TIMEOUT`` and ``MAX_TIMEOUT_S``).
+    """
+    captured: list[int] = []
+
+    def fake_fetch_remote(url: str, timeout: int) -> None:
+        captured.append(timeout)
+        return None
+
+    monkeypatch.setattr(update_baustellen_cache, "_fetch_remote", fake_fetch_remote)
+    monkeypatch.setattr(update_baustellen_cache, "write_cache", lambda *args, **kwargs: None)
+    monkeypatch.setattr(update_baustellen_cache, "_log_endpoint_diagnostic", lambda *a, **k: None)
+    monkeypatch.setenv("BAUSTELLEN_FALLBACK_PATH", str(SAMPLE_PATH))
+    monkeypatch.setenv("BAUSTELLEN_TIMEOUT", raw)
+
+    update_baustellen_cache.main()
+
+    # main() now negotiates the outputFormat, so _fetch_remote is called
+    # once per candidate; every call must receive the clamped timeout.
+    assert captured
+    assert all(value == expected for value in captured)
+
+
+def test_resolve_fallback_path_blocks_symlink_escape(tmp_path: Path) -> None:
+    """A symlink inside the repo pointing outside must be rejected by resolve()."""
+    target = tmp_path / "outside.json"
+    target.write_text('{"features": []}', encoding="utf-8")
+    link = update_baustellen_cache.REPO_ROOT / "data" / "samples" / "_pytest_symlink_test.json"
+    link.symlink_to(target)
+    try:
+        resolved = update_baustellen_cache._resolve_fallback_path(
+            str(link.relative_to(update_baustellen_cache.REPO_ROOT))
+        )
+        assert resolved == update_baustellen_cache.DEFAULT_FALLBACK_PATH
+    finally:
+        link.unlink(missing_ok=True)
+
+
+def test_resolve_data_url_default_when_unset() -> None:
+    assert (
+        update_baustellen_cache._resolve_data_url(None)
+        == update_baustellen_cache.DEFAULT_DATA_URL
+    )
+    assert (
+        update_baustellen_cache._resolve_data_url("")
+        == update_baustellen_cache.DEFAULT_DATA_URL
+    )
+    assert (
+        update_baustellen_cache._resolve_data_url("   ")
+        == update_baustellen_cache.DEFAULT_DATA_URL
+    )
+
+
+def test_resolve_data_url_accepts_official_host() -> None:
+    """The Stadt Wien OGD host is the only legitimate override target."""
+    candidate = (
+        "https://data.wien.gv.at/daten/geo?service=WFS&typeName=ogdwien:BAUSTELLEOGD"
+    )
+    resolved = update_baustellen_cache._resolve_data_url(candidate)
+    assert resolved == candidate
+
+
+@pytest.mark.parametrize(
+    "url",
+    [
+        # Arbitrary attacker-controlled host
+        "https://evil.example.com/baustellen.json",
+        # Suffix attack: looks like the official host but isn't
+        "https://data.wien.gv.at.evil.com/baustellen.json",
+        # Different Vienna subdomain (e.g., not OGD)
+        "https://www.wien.gv.at/baustellen.json",
+        # Different OGD provider
+        "https://data.gv.at/baustellen.json",
+    ],
+)
+def test_resolve_data_url_rejects_untrusted_host(
+    caplog: pytest.LogCaptureFixture, url: str
+) -> None:
+    """An env-controlled URL pointing outside the OGD allowlist must NOT be used."""
+    import logging
+
+    caplog.set_level(logging.WARNING, logger="update_baustellen_cache")
+    resolved = update_baustellen_cache._resolve_data_url(url)
+    # Must fall back to the default — no fetch goes to the attacker.
+    assert resolved == update_baustellen_cache.DEFAULT_DATA_URL
+    assert any(
+        "kein bekannter Stadt-Wien-OGD-Host" in record.getMessage()
+        for record in caplog.records
+    )
+
+
+@pytest.mark.parametrize(
+    "content_type, body",
+    [
+        # CDN/WAF error pages and proxy responses are typically text/html.
+        # Without explicit content-type pinning these would be fed straight
+        # into json.loads() — wasting cycles on a guaranteed parse failure
+        # and potentially missing legitimate retry/fallback paths.
+        ("text/html", "<html>WAF block</html>"),
+        # A misconfigured upstream serving plain text (e.g., maintenance
+        # page) must also be rejected at the request layer.
+        ("text/plain", "not json"),
+        # Defence-in-depth: defang accidental XML responses from a WFS
+        # endpoint that flips outputFormat behind a feature flag.
+        ("application/xml", "<error/>"),
+    ],
+)
+def test_fetch_remote_rejects_unexpected_content_type(
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+    content_type: str,
+    body: str,
+) -> None:
+    """The Baustellen WFS endpoint advertises GeoJSON; everything else is
+    a CDN error, a WAF block, or an upstream misconfiguration — none of
+    which should reach _load_json_from_content. The other providers
+    (WL/VOR/ÖBB) already pin allowed_content_types; this confirms parity.
+
+    Asserting the failure happens at the *request* layer (Invalid
+    Content-Type) rather than the *parser* layer (Invalid JSON) is the
+    point — without ``allowed_content_types`` the body is still read into
+    memory and handed to ``json.loads``, which works only by accident."""
+    import logging
+    import responses
+
+    # Bypass DNS / IP checks (we're testing content-type filtering, not SSRF).
+    _patch_http_layer_bypass(monkeypatch)
+
+    @responses.activate
+    def run() -> None:
+        responses.get(
+            update_baustellen_cache.DEFAULT_DATA_URL,
+            body=body,
+            status=200,
+            content_type=content_type,
+        )
+        caplog.set_level(logging.WARNING, logger="update_baustellen_cache")
+        result = update_baustellen_cache._fetch_remote(
+            update_baustellen_cache.DEFAULT_DATA_URL, timeout=5
+        )
+        assert result is None, (
+            f"Expected None for Content-Type {content_type!r}, got {result!r}"
+        )
+        # The rejection must come from the request layer (Invalid Content-Type)
+        # so a future change to _load_json_from_content can't accidentally
+        # accept non-JSON payloads.
+        warning_messages = [
+            record.getMessage()
+            for record in caplog.records
+            if record.name == "update_baustellen_cache"
+        ]
+        assert any(
+            "Invalid Content-Type" in message for message in warning_messages
+        ), (
+            f"Content-Type {content_type!r} must be rejected at the request "
+            f"layer, not silently dropped by the JSON parser. Got: "
+            f"{warning_messages!r}"
+        )
+
+    run()
+
+
+@pytest.mark.parametrize(
+    "content_type",
+    [
+        "application/json",
+        "application/json; charset=utf-8",
+        # RFC 7946 GeoJSON registration — the OGD endpoint may emit this.
+        "application/geo+json",
+        # Older WFS/Apache mod_geowfs deployments use text/json.
+        "text/json",
+    ],
+)
+def test_fetch_remote_accepts_geojson_variants(
+    monkeypatch: pytest.MonkeyPatch, content_type: str
+) -> None:
+    """The accepted-content-type set must cover real-world WFS GeoJSON
+    responses — overshooting (rejecting a legitimate variant) would put the
+    feed into permanent fallback mode."""
+    import responses
+
+    _patch_http_layer_bypass(monkeypatch)
+
+    @responses.activate
+    def run() -> None:
+        responses.get(
+            update_baustellen_cache.DEFAULT_DATA_URL,
+            body='{"features": []}',
+            status=200,
+            content_type=content_type,
+        )
+        result = update_baustellen_cache._fetch_remote(
+            update_baustellen_cache.DEFAULT_DATA_URL, timeout=5
+        )
+        assert result == {"features": []}, (
+            f"Expected dict for Content-Type {content_type!r}, got {result!r}"
+        )
+
+    run()
+
+
+def test_patch_http_layer_bypass_fails_fast_without_responses_active(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """``_patch_http_layer_bypass`` must refuse to let a real HTTP
+    request reach the network.
+
+    Defense-in-depth contract: even if a future test author accidentally
+    calls the helper without wrapping the HTTP-using code in
+    ``@responses.activate``, the patched ``_resolve_hostname_safe`` must
+    detect that the ``responses`` mocker is inactive and raise
+    ``RuntimeError`` with a clear, actionable error message — instead of
+    letting the request silently time out at the OS networking layer
+    (the previous behaviour produced a 5-second hang via the TEST-NET-1
+    fallback IP).
+    """
+    _patch_http_layer_bypass(monkeypatch)
+
+    # ``responses`` is NOT activated here — invoking the production
+    # fetch path therefore exercises the runtime guard inside the
+    # patched ``_resolve_hostname_safe``.
+    with pytest.raises(RuntimeError) as exc_info:
+        update_baustellen_cache._fetch_remote(
+            update_baustellen_cache.DEFAULT_DATA_URL, timeout=5
+        )
+    msg = str(exc_info.value)
+    assert "responses" in msg
+    # The error must explicitly point at the missing decorator so the
+    # author doesn't need to spelunk into the helper to understand
+    # the failure.
+    assert "@responses.activate" in msg
+
+
+@pytest.mark.parametrize(
+    "payload",
+    [
+        # Truthy non-list values that the previous ``or []`` fallback let
+        # through. ``42`` and ``True`` would crash with ``TypeError`` because
+        # ``int`` / ``bool`` are not iterable; ``"abc"`` and the dict shape
+        # would silently iterate characters / keys and pretend the upstream
+        # returned zero features. Every shape must collapse to an empty
+        # iterator instead so ``_collect_events`` stays in its documented
+        # fallback path.
+        {"type": "FeatureCollection", "features": 42},
+        {"type": "FeatureCollection", "features": True},
+        {"type": "FeatureCollection", "features": "abc"},
+        {"type": "FeatureCollection", "features": {"a": "b"}},
+        {"features": 123},
+        {"features": "not-a-list"},
+        {"data": {"features": 1}},
+        {"data": {"features": True}},
+        {"data": {"features": "x"}},
+    ],
+)
+def test_iter_features_rejects_non_list_features(payload: dict[str, Any]) -> None:
+    """Zero Trust: ``_iter_features`` must never iterate a non-list ``features``
+    value extracted from the payload. The previous ``payload.get("features")
+    or []`` only collapsed *falsy* values; truthy non-lists slipped through
+    and either raised ``TypeError`` (int/bool) — propagating out of
+    ``_collect_events`` and crashing the cache update — or silently emitted
+    zero events. The fix must mirror the ``isinstance(raw, list)`` guard
+    landed for the sibling VOR mapping loaders so the documented fallback
+    runs instead.
+    """
+    result = list(update_baustellen_cache._iter_features(payload))
+    assert result == []
+
+
+def test_iter_features_returns_dicts_only() -> None:
+    """Sanity: legitimate FeatureCollection payloads still yield the dict
+    features (regression check that the new shape guard does not over-reject
+    valid GeoJSON)."""
+    payload = {
+        "type": "FeatureCollection",
+        "features": [
+            {"properties": {"BEZEICHNUNG": "Test"}},
+            "not-a-dict",
+            42,
+            None,
+            {"properties": {"BEZEICHNUNG": "Other"}},
+        ],
+    }
+    result = list(update_baustellen_cache._iter_features(payload))
+    assert len(result) == 2
+    assert all(isinstance(f, dict) for f in result)
+
+
+def test_iter_features_handles_data_wrapper_with_non_list_features() -> None:
+    """The ``"data": {...}`` branch must apply the same shape guard — a
+    ``data`` envelope containing a non-list ``features`` field must not
+    crash when iterated."""
+    payload = {"data": {"features": "should-not-iterate-as-chars"}}
+    result = list(update_baustellen_cache._iter_features(payload))
+    assert result == []

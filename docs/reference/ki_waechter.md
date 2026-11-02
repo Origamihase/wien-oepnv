@@ -202,7 +202,7 @@ Feed-Ständen:
 | `9e60b8d` | 30.10.2026 15:30 | F6 „All Saints' Worship“ (Allerheiligenverkehr, behoben in #2091) |
 | `HEAD` | aktueller Feed | keine falschen Funde |
 
-Der Prompt nennt keinen dieser Fälle (`tests/test_ki_waechter.py`).
+Der Prompt nennt keinen dieser Fälle (`tests/test_ki_waechter/`).
 
 Erster Probelauf (PR #2092, 31.10.2026, noch mit Claude und nur den zehn
 aktuellen Meldungen): alle vier bekannten Funde erkannt, auch die zwei, die

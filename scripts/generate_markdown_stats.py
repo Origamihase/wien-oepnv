@@ -2237,7 +2237,7 @@ def main(argv: list[str] | None = None) -> int:
     # to override ``--readme-path`` (or pass ``--skip-readme``) would
     # silently overwrite the production ``README.md`` with the
     # ``_wird berechnet…_`` placeholder block — that exact bug bit
-    # ``tests/scripts/test_generate_markdown_stats.py`` and stamped
+    # ``tests/scripts/test_generate_markdown_stats/`` and stamped
     # placeholders into the committed README on 2026-05-09 (audit
     # trail in PR #1397).
     sections: dict[str, str] = {}

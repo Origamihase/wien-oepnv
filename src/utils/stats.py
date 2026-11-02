@@ -916,7 +916,7 @@ def read_recent_stammstrecke_observations(
 #:
 #: Mirrors ``scripts.update_stammstrecke_hbf.DIRECTION_LABELS``; that module is
 #: the producer, but importing it here would drag ``requests`` into this
-#: stdlib-only module. ``tests/test_stammstrecke_direction_health.py`` pins the
+#: stdlib-only module. ``tests/test_stammstrecke_direction_health/`` pins the
 #: two tuples together so they cannot drift.
 STAMMSTRECKE_DIRECTIONS: Final = ("Meidling", "Praterstern")
 

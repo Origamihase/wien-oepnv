@@ -2600,7 +2600,7 @@ def _time_line_text(start_local: datetime | None, end_local: datetime | None, to
 # U+2060..U+2069 expansion folds in the existing BiDi-isolate band;
 # reserved U+2065 has no defined meaning so the additive strip is
 # safe. Inventory invariant pinned by
-# ``tests/test_sentinel_zero_width_invisible_drift.py``.
+# ``tests/test_sentinel_zero_width_invisible_drift/``.
 # 2026-05-14 "Cf-Format Drift": widened in lockstep with the canonical
 # ``src/utils/logging.py:_INVISIBLE_DANGEROUS_RE`` to cover the
 # remaining 13 Unicode Cf-class bands (44 code points): U+00AD SOFT
