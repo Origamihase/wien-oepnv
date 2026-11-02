@@ -3659,6 +3659,27 @@ Zwei Sorten, bewusst unterscheidbar:
   („Unter-Meidlinger Straße“, vorher „Under-Meidlinger Straße“;
   „Neu-Leopoldau“, `_absorb_hyphen_prefixes`, letzter Durchgang); vor einer
   Linie („U6-Station“) nicht.
+  Seit dem KI-Wächter vom 02.11. (Feed-Stand vom 30.10.) auch die zweite
+  Hälfte eines Haltestellenpaars mit Schrägstrich: WL schrieb „Betrieb ab
+  Parlament/ Volkstheter“ (Linie 2), das Verzeichnis kannte „Parlament“,
+  nicht den Tippfehler, und der englische Text las „service from Parlament/
+  Folktheter“. Ein großgeschriebenes Wort, das per Schrägstrich (mit oder
+  ohne Leerzeichen) an einem geschützten Namen hängt, gehört zu diesem
+  Haltestellennamen und bleibt, wie die Quelle es schreibt, Tippfehler
+  eingeschlossen („Laxenburger/Gudrunstraße“, „Währinger Str./ Volksoper“;
+  `_shield_slash_partners`, nach dem Bindestrich-Durchgang). Das gilt nur für
+  ein einzelnes Wort am äußeren Ende des Paars: Geht der Name dahinter
+  weiter („Hauptbahnhof/Sankt Marx“) oder steht davor ein weiteres Namenswort
+  („Wien Spittelau Bahnhst/Wien Mitte-Landstraße Bahnhof“), bleibt das Wort
+  beim Modell. Eine erste, breitere Fassung schützte dort „Sankt“ und
+  „Bahnhst“ allein, und das echte Modell schrieb „between Praterstern and
+  Hauptbahnhof/Sankt is Marx closed“ und „Wien Mitte-Landstraße Train
+  Station“. Neben einer Linie oder Marke („U2/U3“, „ÖBB/Westbahn“) gilt die
+  Regel nicht. Sie ist die Stellung im Text, keine Wortliste; über alle
+  11.222 Quelltexte seit Juli ändert sie die Modelleingabe von acht (vier
+  Meldungen, je Titel und Text), jedes Mal an einer Haltestelle oder Straße;
+  das echte Modell übersetzt sieben davon wie vorher, die achte ist die
+  Linie 2 mit „Volkstheter“.
   Seit dem KI-Wächter vom 01.11. auch Haltestellennamen in gebeugter Form:
   WL schrieb „Weiterfahrt über die Linie 37 bis Hohen Warte“ (Linie 38,
   31.10.), das Verzeichnis kennt „Hohe Warte“, und der englische Text las
