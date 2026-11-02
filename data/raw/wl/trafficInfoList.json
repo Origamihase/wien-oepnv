@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261102-0017, I20260925-0011, I20260909-0007, I20260922-0032, I20261102-0019, I20261020-0029"
+    "trafficInfoNameList": "I20261102-0017, I20261102-0021-F01, I20260925-0011, I20260909-0007, I20260922-0032, I20261020-0029"
    },
    {
     "id": 3,
@@ -265,30 +265,30 @@
     "title": "U3: Rettungseinsatz"
    },
    {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
       "U1": "ptMetro"
      }
     },
-    "description": "Linie U1: Unregelmäßige Intervalle in Richtung Oberlaa. Grund: Betriebsstörung.",
-    "descriptionHTML": "<p>Linie U1:<br>Unregelmäßige Intervalle in Richtung Oberlaa. <br><br>Grund: Betriebsstörung.</p>",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie U1:<br>Unregelmäßige Intervalle in Richtung Oberlaa. <br><br>Grund: Betriebsstörung.</p>",
-       "descriptionPlain": "Linie U1: Unregelmäßige Intervalle in Richtung Oberlaa. Grund: Betriebsstörung.",
-       "title": "U1: Betriebsstörung"
+       "descriptionHtml": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U1: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261102-0019",
+    "name": "I20261102-0021-F01",
     "owner": "WL",
-    "parentName": "I20261102-0019",
+    "parentName": "I20261102-0021",
     "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
      "U1"
@@ -301,16 +301,17 @@
      }
     ],
     "relatedStops": [
+     4115,
      4117
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-02T14:17:00.000+0100",
-     "lastUpdate": "2026-11-02T14:17:00.000+0100",
-     "resume": "2026-11-02T14:16:00.000+0100",
-     "start": "2026-11-02T14:16:00.000+0100"
+     "created": "2026-11-02T15:42:00.000+0100",
+     "lastUpdate": "2026-11-02T15:42:00.000+0100",
+     "resume": "2026-11-02T15:42:00.000+0100",
+     "start": "2026-11-02T15:35:00.000+0100"
     },
-    "title": "U1: Betriebsstörung"
+    "title": "U1: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
