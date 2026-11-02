@@ -1,15 +1,15 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-02T05:31:10.062467+00:00",
- "built": "2026-11-02T06:30:55+01:00",
+ "updated": "2026-11-02T06:01:05.899584+00:00",
+ "built": "2026-11-02T07:00:48+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-02T06:30:55+01:00",
+  "built": "2026-11-02T07:00:48+01:00",
   "items": [
    {
-    "title": "1/71/D: Fremder Verkehrsunfall",
+    "title": "71: Verkehrsunfall",
     "time_line": "Seit 06:26"
    },
    {
@@ -25,8 +25,12 @@
     "time_line": "Seit 06:09"
    },
    {
-    "title": "48A: Verspätungen",
-    "time_line": "Seit 05:09"
+    "title": "1: Verkehrsunfall, Gleisbauarbeiten",
+    "time_line": "Seit heute"
+   },
+   {
+    "title": "D: Verkehrsunfall, Gleisbauarbeiten",
+    "time_line": "Seit heute"
    },
    {
     "title": "REX50/REX51/S50: Wien Westbahnhof ↔ St. Pölten Hauptbahnhof",
@@ -43,10 +47,6 @@
    {
     "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
     "time_line": "Bis 30.11."
-   },
-   {
-    "title": "64A: Liesinger-Flur-Gasse",
-    "time_line": "Ab Di 03.11. bis Fr 06.11."
    }
   ]
  },
@@ -6751,17 +6751,37 @@
     "oebb": 6,
     "wl": 88
    }
+  },
+  {
+   "t": "2026-11-02T06:01:05.899584+00:00",
+   "raw": {
+    "wl-stoerungen": 88,
+    "wl-hinweise": 74,
+    "oebb": 148,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 16
+   },
+   "discarded": {
+    "wl": 13,
+    "oebb": 128,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 6,
+    "wl": 95
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-02T05:31:10.062467+00:00"
+   "last_ok": "2026-11-02T06:01:05.899584+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-02T05:31:10.062467+00:00"
+   "last_ok": "2026-11-02T06:01:05.899584+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-02T05:31:10.062467+00:00"
+   "last_ok": "2026-11-02T06:01:05.899584+00:00"
   }
  }
 }
