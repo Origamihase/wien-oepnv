@@ -18,6 +18,9 @@ Mutations checked against this file (each one caught, by the test named):
 
 * the window is widened tenfold → ``test_another_cause_eleven_minutes_later_is_listed_beside_it``.
 * the first cause wins instead of the most frequent → ``test_the_most_frequent_cause_names_the_item``.
+* a window of two causes is not split → ``test_two_incidents_in_one_window_are_both_named``,
+  ``test_another_cause_in_the_window_is_named_in_the_title``.
+* a causeless ticker forms an incident of its own → ``test_a_ticker_without_a_cause_stays_with_the_cause_named_so_far``.
 * the coverage check is dropped → ``test_a_long_message_absorbs_what_the_tickers_repeat``.
 * the stock sentence stays beside concrete consequences → ``test_the_most_frequent_cause_names_the_item``.
 * the consequences are joined as sentences → ``test_the_feed_shows_all_three_consequences``.
@@ -210,7 +213,6 @@ def test_the_stock_sentence_stays_when_it_is_all_there_is() -> None:
 def test_the_most_frequent_cause_names_the_item() -> None:
     items = [
         _wl("6: Fremder Verkehrsunfall", "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen."),
-        _wl("6: Fahrtbehinderung wegen Rettungseinsatz", "Fahrtbehinderung wegen Rettungseinsatz"),
         _wl("6: Fremdunfall Betrieb ab Matzleinsdorfer Platz", "Fremdunfall Betrieb ab Matzleinsdorfer Platz"),
         _wl("6: Fremdunfall Betrieb ab Quellenplatz", "Fremdunfall Betrieb ab Quellenplatz"),
         _wl("6: Fremdunfall Züge halten bei der Linie O", "Fremdunfall Züge halten bei der Linie O"),
@@ -218,13 +220,123 @@ def test_the_most_frequent_cause_names_the_item() -> None:
     assert _merged(items) == [
         (
             "6: Fremdunfall",
-            # Another cause keeps WL's wording; WL's synonym of the title's
-            # cause ("Fremder Verkehrsunfall") says nothing new; the stock
-            # sentence gives way.
-            "Fahrtbehinderung wegen Rettungseinsatz; Betrieb ab Matzleinsdorfer Platz, Quellenplatz; "
-            "Züge halten bei der Linie O.",
+            # WL's synonym of the title's cause ("Fremder Verkehrsunfall")
+            # says nothing new; the stock sentence gives way.
+            "Betrieb ab Matzleinsdorfer Platz, Quellenplatz; Züge halten bei der Linie O.",
         )
     ]
+
+
+def test_another_cause_in_the_window_is_named_in_the_title() -> None:
+    # Until 2026-11-02 the window named only "6: Fremdunfall", and the
+    # rescue stood in the text as "Fahrtbehinderung wegen Rettungseinsatz".
+    items = [
+        _wl("6: Fremder Verkehrsunfall", "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen."),
+        _wl("6: Fahrtbehinderung wegen Rettungseinsatz", "Fahrtbehinderung wegen Rettungseinsatz", 60),
+        _wl("6: Fremdunfall Betrieb ab Matzleinsdorfer Platz", "Fremdunfall Betrieb ab Matzleinsdorfer Platz"),
+        _wl("6: Fremdunfall Betrieb ab Quellenplatz", "Fremdunfall Betrieb ab Quellenplatz"),
+        _wl("6: Fremdunfall Züge halten bei der Linie O", "Fremdunfall Züge halten bei der Linie O"),
+    ]
+    assert _merged(items) == [
+        (
+            "6: Rettungseinsatz, Fremdunfall",
+            "Rettungseinsatz: Fahrtbehinderung. "
+            "Fremdunfall: Betrieb ab Matzleinsdorfer Platz, Quellenplatz; Züge halten bei der Linie O.",
+        )
+    ]
+
+
+# The two WL incidents of the 71 on 2026-10-29, nine minutes apart, as the
+# cache held them (I20261029-0032 and -0034).
+LINE_71 = [
+    _wl(
+        "71: Fahrtbehinderung wegen Rettungseinsatz",
+        "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+        guid="rettung",
+        ends_at=None,
+    ),
+    _wl(
+        "71: Fahrtbehinderung wegen Polizeieinsatz",
+        "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+        9 * 60,
+        guid="polizei",
+        ends_at=None,
+    ),
+]
+
+
+def test_two_incidents_in_one_window_are_both_named() -> None:
+    # Until 2026-11-02: "71: Rettungseinsatz" over "Fahrtbehinderung wegen Polizeieinsatz."
+    (item,) = _merge(LINE_71)
+    # The newest incident comes first and lends its GUID, as ten minutes apart.
+    assert (item["guid"], item["title"], item["description"]) == (
+        "polizei",
+        "71: Polizeieinsatz, Rettungseinsatz",
+        "Fahrtbehinderung.",
+    )
+    # Members are the newest incident's messages (``_merged_run``).
+    assert item["_members"] == ["polizei"]
+    assert item["ends_at"] is None
+
+
+def test_the_feed_names_both_causes() -> None:
+    merged = _merge(LINE_71)
+    de = bf._make_rss(merged, T0 + timedelta(hours=1), {}, lang="de")
+    assert "<![CDATA[71: Polizeieinsatz, Rettungseinsatz]]>" in de
+    assert "wegen Polizeieinsatz" not in de
+
+
+def test_a_ticker_without_a_cause_stays_with_the_cause_named_so_far() -> None:
+    items = [
+        _wl("43: Falschparker Betrieb ab Hernals", "Falschparker Betrieb ab Hernals"),
+        _wl("43: Falschparker Umleitung über Elterleinplatz", "Falschparker Umleitung über Elterleinplatz", 30),
+        _wl("43: Züge halten Jörgerstraße 12", "Züge halten Jörgerstraße 12", 60),
+        _wl("43: Fahrtbehinderung wegen Rettungseinsatz", "Fahrtbehinderung wegen Rettungseinsatz", 90),
+    ]
+    assert _merged(items) == [
+        (
+            "43: Rettungseinsatz, Falschparker",
+            "Rettungseinsatz: Fahrtbehinderung. "
+            "Falschparker: Betrieb ab Hernals; Umleitung über Elterleinplatz; Züge halten Jörgerstraße 12.",
+        )
+    ]
+
+
+def test_advice_behind_the_cause_is_the_same_cause() -> None:
+    # O on 2026-10-24: "Gleisschaden - Linie 11 benutzen" is the "Gleisschaden" beside it.
+    items = [
+        _wl("O: Gleisschaden", "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen."),
+        _wl("O: Fahrtbehinderung Gleisschaden - Linie 11 benutzen", "Fahrtbehinderung\nGleisschaden - Linie 11 benutzen", 60),
+        _wl("O: Gleisschaden Betrieb ab Gudrunstraße", "Gleisschaden\nBetrieb ab Gudrunstraße", 120),
+    ]
+    assert bf._split_by_cause(_read(items), [[0, 1, 2]]) == [[0, 1, 2]]
+
+
+def test_wl_synonyms_keep_the_window_whole() -> None:
+    # 62 on 2026-10-28: "Beschädigte Oberleitung" and "Fahrleitungsschaden" four minutes apart.
+    items = [
+        _wl("62: Beschädigte Oberleitung", "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen."),
+        _wl("62: Fahrleitungsschaden Betrieb ab Hofwiesengasse", "Fahrleitungsschaden\nBetrieb ab Hofwiesengasse", 240),
+    ]
+    assert bf._split_by_cause(_read(items), [[0, 1]]) == [[0, 1]]
+
+
+def test_a_cause_that_is_a_sentence_keeps_the_window_whole() -> None:
+    sentence = "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus aufgelassen"
+    items = [
+        _wl(f"18: {sentence}", f"Linie 18: {sentence}. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen."),
+        _wl("18: Fahrtbehinderung wegen Rettungseinsatz", "Fahrtbehinderung wegen Rettungseinsatz", 60),
+    ]
+    assert bf._split_by_cause(_read(items), [[0, 1]]) == [[0, 1]]
+
+
+def test_a_window_with_a_telling_long_message_stays_whole() -> None:
+    long_text = "Linie 48A: Die Linie 48A wird umgeleitet. Grund: Fremder Verkehrsunfall."
+    items = [
+        _wl("48A: Fremder Verkehrsunfall", long_text),
+        _wl("48A: Falschparker", "Falschparker", 60),
+    ]
+    assert bf._split_by_cause(_read(items), [[0, 1]]) == [[0, 1]]
 
 
 def test_without_any_cause_the_first_ticker_keeps_its_title() -> None:
