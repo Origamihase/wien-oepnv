@@ -13,7 +13,7 @@
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R100-136, R101-136, R318-437, R1448-412, R1474-412, R293-474, R2558-125, R3886-480, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2373-126, R2345-127, R2380-627, R2379-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2343-531, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R1448-549, R1474-549, R2371-520, R2372-520, R2378-520, R2379-520, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R45-136, R19-136, R130-136, R119-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R318-437, R293-474, R1448-412, R1474-412, R2558-125, R3886-480, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2373-127, R2345-127, R2380-627, R2379-627, R2373-126, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2343-531, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R1448-549, R1474-549, R2371-520, R2372-520, R2379-520, R2378-520, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -234,6 +234,52 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
+    "name": "R100-136",
+    "owner": "WL",
+    "parentName": "R100-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     100
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-30T00:00:12.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBetrieb ab Börse",
+    "name": "R101-136",
+    "owner": "WL",
+    "parentName": "R101-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     101
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-30T00:00:12.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R101-136",
     "owner": "WL",
     "parentName": "R101-136",
@@ -269,6 +315,52 @@
     ],
     "relatedStops": [
      102
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-30T00:00:12.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBetrieb ab Börse",
+    "name": "R102-136",
+    "owner": "WL",
+    "parentName": "R102-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     102
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-30T00:00:12.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBetrieb ab Börse",
+    "name": "R103-136",
+    "owner": "WL",
+    "parentName": "R103-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     103
     ],
     "time": {
      "end": "2026-11-02T23:59:59.000+0100",
@@ -326,6 +418,29 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
+    "name": "R115-136",
+    "owner": "WL",
+    "parentName": "R115-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     115
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-30T00:00:12.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R116-136",
     "owner": "WL",
     "parentName": "R116-136",
@@ -338,6 +453,52 @@
     ],
     "relatedStops": [
      116
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-30T00:00:12.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
+    "name": "R116-136",
+    "owner": "WL",
+    "parentName": "R116-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     116
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-30T00:00:12.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
+    "name": "R117-136",
+    "owner": "WL",
+    "parentName": "R117-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     117
     ],
     "time": {
      "end": "2026-11-02T23:59:59.000+0100",
@@ -394,6 +555,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
+    "name": "R118-136",
+    "owner": "WL",
+    "parentName": "R118-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     118
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-30T00:00:12.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Züge halten in\nSchleife",
+    "name": "R119-136",
+    "owner": "WL",
+    "parentName": "R119-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     119
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-30T00:00:12.000+0100"
+    },
+    "title": "Züge halten in\nSchleife"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Züge halten in\nSchleife",
     "name": "R119-136",
     "owner": "WL",
@@ -440,6 +647,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBetrieb ab Börse",
+    "name": "R130-136",
+    "owner": "WL",
+    "parentName": "R130-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     130
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-30T00:00:12.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Börse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U ",
     "name": "R1448-412",
     "owner": "WL",
@@ -457,6 +687,52 @@
     "time": {
      "end": "2026-11-02T23:59:59.000+0100",
      "start": "2026-10-31T00:00:23.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Johnstraße U "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U ",
+    "name": "R1448-412",
+    "owner": "WL",
+    "parentName": "R1448-412",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12A"
+    ],
+    "relatedStops": [
+     1448
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:23.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Johnstraße U "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U ",
+    "name": "R1448-549",
+    "owner": "WL",
+    "parentName": "R1448-549",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N49"
+    ],
+    "relatedStops": [
+     1448
+    ],
+    "time": {
+     "end": "2026-11-02T04:50:00.000+0100",
+     "start": "2026-11-02T01:00:24.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Johnstraße U "
    },
@@ -509,6 +785,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße 19-21",
+    "name": "R1474-412",
+    "owner": "WL",
+    "parentName": "R1474-412",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12A"
+    ],
+    "relatedStops": [
+     1474
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:23.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße 19-21"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße ",
     "name": "R1474-549",
     "owner": "WL",
@@ -528,6 +827,52 @@
      "start": "2026-11-02T01:00:24.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße ",
+    "name": "R1474-549",
+    "owner": "WL",
+    "parentName": "R1474-549",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N49"
+    ],
+    "relatedStops": [
+     1474
+    ],
+    "time": {
+     "end": "2026-11-02T05:00:00.000+0100",
+     "start": "2026-11-02T01:00:24.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A",
+    "name": "R1718-508",
+    "owner": "WL",
+    "parentName": "R1718-508",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N8"
+    ],
+    "relatedStops": [
+     1718
+    ],
+    "time": {
+     "end": "2026-11-02T04:45:00.000+0100",
+     "start": "2026-11-02T00:45:22.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A"
    },
    {
     "alertCause": "undefined alert cause",
@@ -578,6 +923,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
+    "name": "R1749-508",
+    "owner": "WL",
+    "parentName": "R1749-508",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N8"
+    ],
+    "relatedStops": [
+     1749
+    ],
+    "time": {
+     "end": "2026-11-02T05:15:00.000+0100",
+     "start": "2026-11-02T00:45:22.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nKein Betrieb",
     "name": "R1875-101",
     "owner": "WL",
@@ -591,6 +959,52 @@
     ],
     "relatedStops": [
      1875
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:26.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nKein Betrieb"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nKein Betrieb",
+    "name": "R1875-101",
+    "owner": "WL",
+    "parentName": "R1875-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1875
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:26.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nKein Betrieb"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nKein Betrieb",
+    "name": "R1876-101",
+    "owner": "WL",
+    "parentName": "R1876-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1876
     ],
     "time": {
      "end": "2026-11-02T23:59:59.000+0100",
@@ -648,6 +1062,29 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Knöllgasse",
+    "name": "R1880-101",
+    "owner": "WL",
+    "parentName": "R1880-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1880
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:26.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Knöllgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBetrieb ab Knöllgasse",
     "name": "R1881-101",
     "owner": "WL",
     "parentName": "R1881-101",
@@ -660,6 +1097,52 @@
     ],
     "relatedStops": [
      1881
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:26.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Knöllgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBetrieb ab Knöllgasse",
+    "name": "R1881-101",
+    "owner": "WL",
+    "parentName": "R1881-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1881
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:26.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Knöllgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBetrieb ab Knöllgasse",
+    "name": "R1882-101",
+    "owner": "WL",
+    "parentName": "R1882-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1882
     ],
     "time": {
      "end": "2026-11-02T23:59:59.000+0100",
@@ -716,6 +1199,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBetrieb ab Knöllgasse",
+    "name": "R1883-101",
+    "owner": "WL",
+    "parentName": "R1883-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1883
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:26.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Knöllgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nZüge halten Quellenstraße 156 (Linie 6)",
     "name": "R1884-101",
     "owner": "WL",
@@ -735,6 +1241,52 @@
      "start": "2026-10-31T00:00:26.000+0100"
     },
     "title": "Gleisbauarbeiten\nZüge halten Quellenstraße 156 (Linie 6)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nZüge halten Quellenstraße 156 (Linie 6)",
+    "name": "R1884-101",
+    "owner": "WL",
+    "parentName": "R1884-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1884
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:26.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nZüge halten Quellenstraße 156 (Linie 6)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
+    "name": "R19-136",
+    "owner": "WL",
+    "parentName": "R19-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     19
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-30T00:00:12.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
    },
    {
     "alertCause": "undefined alert cause",
@@ -785,6 +1337,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
+    "name": "R1974-566",
+    "owner": "WL",
+    "parentName": "R1974-566",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N66"
+    ],
+    "relatedStops": [
+     1974
+    ],
+    "time": {
+     "end": "2026-11-02T04:20:00.000+0100",
+     "start": "2026-11-02T01:00:24.000+0100"
+    },
+    "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2343-125",
     "owner": "WL",
@@ -804,6 +1379,52 @@
      "start": "2026-10-31T00:00:27.000+0100"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
+    "name": "R2343-125",
+    "owner": "WL",
+    "parentName": "R2343-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2343
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:27.000+0100"
+    },
+    "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Kranarbeiten\nBusse halten bei Franz-Jonas-Platz 7-8 (34A)",
+    "name": "R2343-531",
+    "owner": "WL",
+    "parentName": "R2343-531",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N31"
+    ],
+    "relatedStops": [
+     2343
+    ],
+    "time": {
+     "end": "2026-11-02T05:00:00.000+0100",
+     "start": "2026-10-31T01:05:04.000+0100"
+    },
+    "title": "Kranarbeiten\nBusse halten bei Franz-Jonas-Platz 7-8 (34A)"
    },
    {
     "alertCause": "undefined alert cause",
@@ -854,6 +1475,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Ersatzbus\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße",
+    "name": "R2343-626",
+    "owner": "WL",
+    "parentName": "R2343-626",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26E"
+    ],
+    "relatedStops": [
+     2343
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:27.000+0100"
+    },
+    "title": "Ersatzbus\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Züge halten bei\nLinie 31",
+    "name": "R2345-127",
+    "owner": "WL",
+    "parentName": "R2345-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2345
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:27.000+0100"
+    },
+    "title": "Züge halten bei\nLinie 31"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Züge halten bei\nLinie 31",
     "name": "R2345-127",
     "owner": "WL",
@@ -900,6 +1567,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Ersatzbus 26E\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße",
+    "name": "R2359-125",
+    "owner": "WL",
+    "parentName": "R2359-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2359
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:27.000+0100"
+    },
+    "title": "Ersatzbus 26E\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2370-125",
     "owner": "WL",
@@ -913,6 +1603,52 @@
     ],
     "relatedStops": [
      2370
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:27.000+0100"
+    },
+    "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
+    "name": "R2370-125",
+    "owner": "WL",
+    "parentName": "R2370-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2370
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:27.000+0100"
+    },
+    "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
+    "name": "R2371-125",
+    "owner": "WL",
+    "parentName": "R2371-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2371
     ],
     "time": {
      "end": "2026-11-02T23:59:59.000+0100",
@@ -969,6 +1705,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Bauarbeiten\nBusse halten Donaufelder Straße 40-42",
+    "name": "R2371-520",
+    "owner": "WL",
+    "parentName": "R2371-520",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N20"
+    ],
+    "relatedStops": [
+     2371
+    ],
+    "time": {
+     "end": "2026-11-02T04:50:00.000+0100",
+     "start": "2026-11-02T01:10:24.000+0100"
+    },
+    "title": "Bauarbeiten\nBusse halten Donaufelder Straße 40-42"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2372-125",
     "owner": "WL",
@@ -988,6 +1747,52 @@
      "start": "2026-10-31T00:00:27.000+0100"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
+    "name": "R2372-125",
+    "owner": "WL",
+    "parentName": "R2372-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2372
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:27.000+0100"
+    },
+    "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten auf der Hauptfahrbahn",
+    "name": "R2372-520",
+    "owner": "WL",
+    "parentName": "R2372-520",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N20"
+    ],
+    "relatedStops": [
+     2372
+    ],
+    "time": {
+     "end": "2026-11-02T04:52:00.000+0100",
+     "start": "2026-11-02T01:16:25.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten auf der Hauptfahrbahn"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1038,6 +1843,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Züge halten\nDonaufelder Straße 175-177",
+    "name": "R2373-125",
+    "owner": "WL",
+    "parentName": "R2373-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2373
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:27.000+0100"
+    },
+    "title": "Züge halten\nDonaufelder Straße 175-177"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Züge halten in\nTokiostraße",
     "name": "R2373-126",
     "owner": "WL",
@@ -1057,6 +1885,52 @@
      "start": "2026-10-31T00:00:27.000+0100"
     },
     "title": "Züge halten in\nTokiostraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Züge halten in\nTokiostraße",
+    "name": "R2373-126",
+    "owner": "WL",
+    "parentName": "R2373-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     2373
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:27.000+0100"
+    },
+    "title": "Züge halten in\nTokiostraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Linie 25 in\nTokiostraße benützen",
+    "name": "R2373-127",
+    "owner": "WL",
+    "parentName": "R2373-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2373
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:27.000+0100"
+    },
+    "title": "Linie 25 in\nTokiostraße benützen"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1107,6 +1981,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3",
+    "name": "R2378-520",
+    "owner": "WL",
+    "parentName": "R2378-520",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N20"
+    ],
+    "relatedStops": [
+     2378
+    ],
+    "time": {
+     "end": "2026-11-02T04:35:00.000+0100",
+     "start": "2026-11-02T01:30:26.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Busse halten\nSatzingerweg 41",
     "name": "R2378-627",
     "owner": "WL",
@@ -1126,6 +2023,52 @@
      "start": "2026-10-31T00:00:27.000+0100"
     },
     "title": "Busse halten\nSatzingerweg 41"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Busse halten\nSatzingerweg 41",
+    "name": "R2378-627",
+    "owner": "WL",
+    "parentName": "R2378-627",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26E"
+    ],
+    "relatedStops": [
+     2378
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:27.000+0100"
+    },
+    "title": "Busse halten\nSatzingerweg 41"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3",
+    "name": "R2379-520",
+    "owner": "WL",
+    "parentName": "R2379-520",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N20"
+    ],
+    "relatedStops": [
+     2379
+    ],
+    "time": {
+     "end": "2026-11-02T04:35:00.000+0100",
+     "start": "2026-11-02T01:30:26.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1176,6 +2119,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Busse halten\nBessemerstraße 1-3",
+    "name": "R2379-627",
+    "owner": "WL",
+    "parentName": "R2379-627",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26E"
+    ],
+    "relatedStops": [
+     2379
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:27.000+0100"
+    },
+    "title": "Busse halten\nBessemerstraße 1-3"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Busse halten\nHoßplatz 11",
     "name": "R2380-627",
     "owner": "WL",
@@ -1195,6 +2161,52 @@
      "start": "2026-10-31T00:00:27.000+0100"
     },
     "title": "Busse halten\nHoßplatz 11"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Busse halten\nHoßplatz 11",
+    "name": "R2380-627",
+    "owner": "WL",
+    "parentName": "R2380-627",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26E"
+    ],
+    "relatedStops": [
+     2380
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:27.000+0100"
+    },
+    "title": "Busse halten\nHoßplatz 11"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
+    "name": "R2558-125",
+    "owner": "WL",
+    "parentName": "R2558-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2558
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:26.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1245,6 +2257,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
+    "name": "R293-474",
+    "owner": "WL",
+    "parentName": "R293-474",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "74A"
+    ],
+    "relatedStops": [
+     293
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:23.000+0100"
+    },
+    "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -1264,6 +2299,52 @@
      "start": "2026-10-31T00:00:23.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
+    "name": "R318-437",
+    "owner": "WL",
+    "parentName": "R318-437",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "37A"
+    ],
+    "relatedStops": [
+     318
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:23.000+0100"
+    },
+    "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
+    "name": "R3886-480",
+    "owner": "WL",
+    "parentName": "R3886-480",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "80A"
+    ],
+    "relatedStops": [
+     3886
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-31T00:00:26.000+0100"
+    },
+    "title": "Bauarbeiten\nBetrieb ab Vivariumstraße 2"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1314,6 +2395,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nUmleitung zum Reumannplatz",
+    "name": "R401-101",
+    "owner": "WL",
+    "parentName": "R401-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     401
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-30T00:00:10.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 ",
+    "name": "R402-506",
+    "owner": "WL",
+    "parentName": "R402-506",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N6"
+    ],
+    "relatedStops": [
+     402
+    ],
+    "time": {
+     "end": "2026-11-02T05:05:00.000+0100",
+     "start": "2026-11-02T00:55:22.000+0100"
+    },
+    "title": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 ",
     "name": "R402-506",
     "owner": "WL",
@@ -1360,6 +2487,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
+    "name": "R407-506",
+    "owner": "WL",
+    "parentName": "R407-506",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N6"
+    ],
+    "relatedStops": [
+     407
+    ],
+    "time": {
+     "end": "2026-11-02T05:04:00.000+0100",
+     "start": "2026-11-02T00:54:22.000+0100"
+    },
+    "title": "Bauarbeiten\nBusse halten Quellenstraße 189"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Züge halten\nWipplingerstr 39",
     "name": "R45-136",
     "owner": "WL",
@@ -1379,6 +2529,52 @@
      "start": "2026-10-30T00:00:12.000+0100"
     },
     "title": "Züge halten\nWipplingerstr 39"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Züge halten\nWipplingerstr 39",
+    "name": "R45-136",
+    "owner": "WL",
+    "parentName": "R45-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     45
+    ],
+    "time": {
+     "end": "2026-11-02T23:59:59.000+0100",
+     "start": "2026-10-30T00:00:12.000+0100"
+    },
+    "title": "Züge halten\nWipplingerstr 39"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
+    "name": "R500-101",
+    "owner": "WL",
+    "parentName": "R500-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     500
+    ],
+    "time": {
+     "end": "2026-11-02T04:59:00.000+0100",
+     "start": "2026-11-02T00:30:19.000+0100"
+    },
+    "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
    {
     "alertCause": "undefined alert cause",
