@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260922-0032, I20260925-0011, I20261102-0004, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260922-0032, I20261102-0007, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
@@ -208,49 +208,52 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "60A": "ptBusCity"
+      "U1": "ptMetro"
      }
     },
-    "description": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie 60A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "description": "Linie U1: Unregelmäßige Intervalle in Richtung Leopoldau. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U1:<br>Unregelmäßige Intervalle in Richtung Leopoldau. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 60A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-       "title": "60A: Rettungseinsatz"
+       "descriptionHtml": "<p>Linie U1:<br>Unregelmäßige Intervalle in Richtung Leopoldau. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U1: Unregelmäßige Intervalle in Richtung Leopoldau. Grund: Schadhaftes Fahrzeug.",
+       "title": "U1: Verspätungen"
       }
      }
     ],
-    "name": "I20261102-0004",
+    "name": "I20261102-0007",
     "owner": "WL",
-    "parentName": "I20261102-0004",
+    "parentName": "I20261102-0007",
     "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "60A"
+     "U1"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 460,
-      "lineName": "60A",
-      "vehicleType": "ptBusCity"
+      "lineId": 301,
+      "lineName": "U1",
+      "vehicleType": "ptMetro"
      }
+    ],
+    "relatedStops": [
+     4134
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-02T06:10:00.000+0100",
-     "lastUpdate": "2026-11-02T06:10:00.000+0100",
-     "resume": "2026-11-02T06:10:00.000+0100",
-     "start": "2026-11-02T06:10:00.000+0100"
+     "created": "2026-11-02T08:40:00.000+0100",
+     "lastUpdate": "2026-11-02T08:40:00.000+0100",
+     "resume": "2026-11-02T08:39:00.000+0100",
+     "start": "2026-11-02T08:39:00.000+0100"
     },
-    "title": "60A: Rettungseinsatz"
+    "title": "U1: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",
