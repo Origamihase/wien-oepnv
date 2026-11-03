@@ -10,6 +10,14 @@ from __future__ import annotations
 
 import re
 
+# ``__all__`` lists every name this module defines. Some private names are
+# read only by other modules and tests; CodeQL (py/unused-global-variable)
+# counts such a read through an import only when the name is listed here.
+__all__ = [
+    "_BEARER_RE", "_BASIC_AUTH_RE", "_NEGOTIATE_RE", "_NTLM_RE", "_TOKEN_SCHEME_RE", "_HOBA_RE",
+]
+
+
 # Security: ``Bearer`` literal is matched case-insensitively per RFC 7235
 # §2.1 (HTTP auth-scheme is case-insensitive — ``Bearer`` / ``bearer`` /
 # ``BEARER`` / mixed-case are all canonical HTTP forms accepted by every

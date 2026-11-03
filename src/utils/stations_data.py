@@ -19,6 +19,19 @@ from typing import Any, NamedTuple
 
 from .files import _reject_non_finite_constant, _reject_non_finite_float
 
+# ``__all__`` lists every name this module defines. Some private names are
+# read only by other modules and tests; CodeQL (py/unused-global-variable)
+# counts such a read through an import only when the name is listed here.
+__all__ = [
+    "logger", "WLStop", "StationInfo", "_STATIONS_PATH", "_STATION_LINES_PATH",
+    "_GEONETZ_STOPS_PATH", "_WL_OGD_STOPS_PATH", "_WL_GTFS_STOPS_PATH", "_VIENNA_POLYGON_PATH",
+    "MAX_STATIONS_FILE_BYTES", "MAX_VIENNA_POLYGON_FILE_BYTES", "MAX_STATION_LINES_FILE_BYTES",
+    "MAX_GEONETZ_STOPS_FILE_BYTES", "MAX_WL_OGD_STOPS_FILE_BYTES", "MAX_WL_GTFS_STOPS_FILE_BYTES",
+    "WL_NETWORK_CENTRE", "MAX_WL_STOP_DISTANCE_M", "_WL_GTFS_STOP_ID_RE", "_read_capped_json",
+    "_station_entries",
+]
+
+
 # The logger keeps the name of the facade ``src.utils.stations`` (log
 # configuration and caplog filters in the tests match on it).
 logger = logging.getLogger("src.utils.stations")

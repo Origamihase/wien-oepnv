@@ -162,6 +162,17 @@ from src.stammstrecke.core import MAX_QUERY_TIMEOUT, QUERY_TIMEOUT
 from src.utils.files import loads_finite
 from src.utils.http import request_safe
 
+# ``__all__`` lists every name this module defines. Some private names are
+# read only by other modules and tests; CodeQL (py/unused-global-variable)
+# counts such a read through an import only when the name is listed here.
+__all__ = [
+    "HAUPTBAHNHOF_VOR_ID", "DEPARTURE_BOARD_DURATION_MIN", "IMPLAUSIBLE_DELAY",
+    "STAMMSTRECKE_HBF_TRACK_TRUNKS", "_TRACK_TRUNK_RE", "DIRECTION_LABEL_SOUTHBOUND",
+    "DIRECTION_LABEL_NORTHBOUND", "LEGACY_DIRECTION_LABEL_NORTHBOUND", "DIRECTION_LABELS",
+    "HBF_REFERENCE_LATITUDE", "_query_departure_board",
+]
+
+
 # ---- Operating parameters --------------------------------------------------
 
 # VOR/VAO station ID for Wien Hauptbahnhof (HBF). Pinned here to avoid a
