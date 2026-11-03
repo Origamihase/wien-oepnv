@@ -25,7 +25,7 @@ behind it:
 
 So that the 24 notices new to the feed do not all lead it at once, a stop
 notice seen for the first time sorts from when WL published it
-(``build_feed._initial_first_seen``).
+(``feed_build.item_history._initial_first_seen``).
 
 Mutations checked against this file (each one caught, by the test named):
 

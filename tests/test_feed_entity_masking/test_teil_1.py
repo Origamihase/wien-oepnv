@@ -157,7 +157,7 @@ def test_mask_entities_protects_unicode_route_separators() -> None:
 )
 def test_mask_entities_protects_every_glyph_class(glyph: str) -> None:
     """Every preserved-symbol class registered in
-    :data:`build_feed._PRESERVED_SYMBOLS_RE` must round-trip cleanly.
+    :data:`feed_build.masking._PRESERVED_SYMBOLS_RE` must round-trip cleanly.
     """
     text = f"A {glyph} B"
     masked, mapping = build_feed._mask_entities(text)

@@ -15,7 +15,7 @@ Two decisions worth knowing before changing anything here:
 * **Only the article goes.** Whether ``in Althanstraße`` should read
   ``on Althanstraße`` is a separate question with a far less certain
   answer. The preposition stays exactly as the model chose it.
-* **The street test is** :data:`~src.build_feed._STREET_SUFFIX_RE` —
+* **The street test is** :data:`~src.feed_build.entities._STREET_SUFFIX_RE` —
   the pattern the masker already uses to shield these names — rather
   than a second suffix list that could drift away from it. That reuse is
   also what keeps the rule off ``the Ernst-Happel-Stadion`` and ``the

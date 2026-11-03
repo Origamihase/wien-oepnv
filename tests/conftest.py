@@ -17,7 +17,7 @@ if str(root) not in sys.path:
     sys.path.insert(0, str(root))
 
 # The English feed build asks ``transformers`` for the translation model
-# (``src.build_feed._load_translator``), and transformers fetches the model's ``config.json`` from
+# (``src.feed_build.translator._load_translator``), and transformers fetches the model's ``config.json`` from
 # huggingface.co unless the pinned revision is in the local cache. A fresh CI
 # runner has no such cache, so every test that built the EN feed without a
 # stub went to the network; ``_no_network`` (tests/_conftest/netz.py) refuses that, after about

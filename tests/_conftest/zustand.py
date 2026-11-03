@@ -204,7 +204,7 @@ def isolate_translation_status(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) 
     """Keep ``data/translation_status.json`` out of test runs.
 
     Every build that touches the translator records whether it loaded
-    (``build_feed._record_translation_status``, read by the Health check).
+    (``feed_build.translator._record_translation_status``, read by the Health check).
     Tests drive builds with a stub translator; without this guard they would
     rewrite the committed record. The variable (not a module attribute) is
     set because some tests ``importlib.reload`` the build module. Outside

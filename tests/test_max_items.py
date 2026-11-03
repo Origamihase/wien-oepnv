@@ -3,7 +3,7 @@ from datetime import datetime, UTC
 from typing import Any
 
 import pytest
-from tests._conftest.build_feed_bindings import fresh_build_feed
+from tests._conftest.build_feed_bindings import fresh_build_feed, part
 
 
 def test_max_items_non_negative(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -23,7 +23,7 @@ def test_make_rss_ignores_items_when_max_is_zero(monkeypatch: pytest.MonkeyPatch
         def fail_emit(*_args: Any, **_kwargs: Any) -> None:  # pragma: no cover - should not be called
             raise AssertionError("_emit_item should not run when MAX_ITEMS is 0")
 
-        monkeypatch.setattr(build_feed, "_emit_item", fail_emit)
+        monkeypatch.setattr(part(build_feed, "rss"), "_emit_item", fail_emit)
 
         now = datetime.now(UTC)
         state: dict[str, dict[str, Any]] = {}

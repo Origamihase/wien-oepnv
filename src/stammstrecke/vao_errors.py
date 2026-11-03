@@ -16,7 +16,7 @@ from src.utils.files import loads_finite
 # ---- Cache field-preservation validators ---------------------------------
 
 # XML 1.0 control characters that have no readability value in a preserved
-# cache field. Mirrors ``src/build_feed.py:_CONTROL_RE`` so the per-field
+# cache field. Mirrors ``src/feed_build/base.py:_CONTROL_RE`` so the per-field
 # shape validators reject the same control-character set the canonical
 # 2026-05-09: the events.json cache has been retired. Feed events are
 # now derived from the CSV ledger by :mod:`src.feed.stammstrecke`, so

@@ -35,7 +35,7 @@ Attack path for ``_save_state``
      ``\\u202e`` (RIGHT-TO-LEFT OVERRIDE) — e.g.
      ``"Westbahnhof\\u202emoc.live"`` displays as
      ``Westbahnhofevil.com`` in any BiDi-honouring viewer.
-  2. ``src/build_feed.py:_identity_for_item`` computes a state-cache
+  2. ``src/feed_build/state.py:_identity_for_item`` computes a state-cache
      identity for the item. The WL/non-OEBB path interpolates the raw
      title verbatim — see ``build_feed.py:935`` and ``build_feed.py:944``:
      ``result = f"{base}|T={item['title']}|F={fuzzy_hash}"``.

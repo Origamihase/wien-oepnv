@@ -251,7 +251,7 @@ def _ticker_fold_target(
 # ("6/18: Schadhaftes Fahrzeug" became "6: …" and "18: …" on 2026-10-04).
 # The number stays while the messages, their lines and so their GUIDs change;
 # the feed follows an item from build to build by it
-# (``build_feed._carry_item_identity``). Display tickers (``R1345-143``)
+# (``feed_build.item_history._carry_item_identity``). Display tickers (``R1345-143``)
 # have none.
 _INCIDENT_NAME_RE = re.compile(r"^(I\d{8}-\d{4})(?:-F\d+)?$")
 

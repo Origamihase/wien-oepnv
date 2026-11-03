@@ -27,7 +27,7 @@ The resulting drift opened a **formula-injection bypass**:
      (``"\\u200b".isspace() is False``), and ``_normalise_location``
      splits/joins on ``str.split()`` which uses the same whitespace
      definition.
-  3. ``src.build_feed._update_item_state`` calls
+  3. ``src.feed_build.item_meta._update_item_state`` calls
      ``append_disruption_row(location_name="\\u200b=cmd|…")``.
   4. The pre-fix sanitiser strips control chars (no match — ZWSP is
      U+200B, outside ``[\\x00-\\x08\\x0B\\x0C\\x0E-\\x1F\\x7F]``), then

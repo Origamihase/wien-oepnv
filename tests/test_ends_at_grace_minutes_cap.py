@@ -1,7 +1,7 @@
 """Verify that ``ENDS_AT_GRACE_MINUTES`` env overrides cannot exceed ``MAX_ENDS_AT_GRACE_MINUTES``.
 
 ``feed_config.ENDS_AT_GRACE_MINUTES`` is consumed in
-``src/build_feed.py:_drop_old_items`` as
+``src/feed_build/filters.py:_drop_old_items`` as
 ``now_utc - timedelta(minutes=ENDS_AT_GRACE_MINUTES)`` (line 1057) and in
 ``src/providers/wl_fetch.py:_is_active`` as
 ``now - timedelta(minutes=ENDS_AT_GRACE_MINUTES)`` (line 140) to gate the

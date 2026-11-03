@@ -166,7 +166,7 @@ def file_lock(fileobj: Any, *, exclusive: bool, timeout: float = 15.0) -> Iterat
     ``atomic_write``-produced file see either the pre- or post-write inode
     in its entirety (never a partial write), so a missing reader lock only
     relaxes ordering, never integrity. The state file in
-    ``build_feed._load_state`` relies on this to keep startup robust under
+    ``feed_build.state._load_state`` relies on this to keep startup robust under
     contention with the periodic save.
     """
     # Step 1: Thread-level locking

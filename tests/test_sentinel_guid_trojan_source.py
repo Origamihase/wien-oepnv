@@ -5,7 +5,7 @@ Source primitive on the published feed.
 Threat model
 ------------
 
-The pre-fix flow in ``src/build_feed.py:_format_item_content`` applies
+The pre-fix flow in ``src/feed_build/item_format.py:_format_item_content`` applies
 ``_sanitize_text`` (which strips the canonical ``_CONTROL_RE`` set —
 C0/C1 controls + DEL + BiDi format controls + zero-width chars + line
 separators + BOM) to the **title** and **summary**. But the **guid**

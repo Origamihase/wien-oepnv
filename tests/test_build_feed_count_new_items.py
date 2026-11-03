@@ -1,4 +1,4 @@
-"""Regression tests for :func:`src.build_feed._count_new_items`.
+"""Regression tests for :func:`src.feed_build.item_history._count_new_items`.
 
 The persisted ``first_seen`` state is keyed by the guid-preferring scheme
 (:func:`_state_key_for_item`). ``_count_new_items`` previously compared the raw

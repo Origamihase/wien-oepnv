@@ -5,7 +5,7 @@ duplicate-summary JSON sink (:mod:`docs/feed-health.json`).
 Threat model
 ------------
 
-:func:`src.build_feed._summarize_duplicates` constructs
+:func:`src.feed_build.filters._summarize_duplicates` constructs
 :class:`src.feed.reporting.DuplicateSummary` objects from raw provider
 items. The ``dedupe_key`` is derived from each item's ``guid`` /
 ``_identity`` / ``link`` field; ``titles`` is derived from each item's

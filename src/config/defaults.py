@@ -46,7 +46,7 @@ DEFAULT_MAX_ITEMS = 10
 DEFAULT_MAX_ITEMS_PER_TOPIC = 3
 # Was später als so viele Tage nach heute beginnt, rückt hinter das Feld
 # (1: eine Ankündigung steht ab dem Vortag ihres Beginns vorn; freitags und
-# samstags reicht der Vorlauf bis Montag, siehe build_feed._preview_last_day).
+# samstags reicht der Vorlauf bis Montag, siehe feed_build.filters._preview_last_day).
 DEFAULT_UPCOMING_PREVIEW_DAYS = 1
 DEFAULT_MAX_ITEM_AGE_DAYS = 365
 DEFAULT_ABSOLUTE_MAX_ITEM_AGE_DAYS = 540

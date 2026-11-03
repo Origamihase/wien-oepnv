@@ -1,7 +1,7 @@
 """Verify that ``FRESH_PUBDATE_WINDOW_MIN`` env overrides cannot exceed ``MAX_FRESH_PUBDATE_WINDOW_MIN``.
 
 ``feed_config.FRESH_PUBDATE_WINDOW_MIN`` is consumed in
-``src/build_feed.py:_emit_item`` as
+``src/feed_build/rss.py:_emit_item`` as
 ``if age <= timedelta(minutes=FRESH_PUBDATE_WINDOW_MIN): pubDate = now`` (line
 1620) to gate the "newly arrived item gets now() as pubDate" rule. Without an
 upper bound an env override such as ``FRESH_PUBDATE_WINDOW_MIN=999999999999``
