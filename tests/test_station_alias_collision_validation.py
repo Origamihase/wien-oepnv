@@ -219,6 +219,12 @@ def test_the_validator_uses_the_loader_s_own_normalizer() -> None:
     # re-exportierten privaten Namen ab, ruff lehnt ``getattr`` mit konstantem
     # Namen ab — und die Weiterreichung selbst ist hier der Prüfgegenstand.
     assert vars(stations_validation)["_normalize_token"] is stations._normalize_token
+    # Die Prüfungen liegen seit 2026-11-02 in src/utils/station_checks/; der
+    # Normalizer muss dort ankommen, wo er aufgerufen wird.
+    from src.utils.station_checks import identity, names
+
+    assert vars(identity)["_normalize_token"] is stations._normalize_token
+    assert vars(names)["_normalize_token"] is stations._normalize_token
 
 
 def test_the_live_directory_reports_only_the_known_collision() -> None:
