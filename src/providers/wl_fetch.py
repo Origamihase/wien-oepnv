@@ -60,7 +60,6 @@ from .wl_item_fields import (
     _status_drop_reason,
 )
 from .wl_title_context import (
-    _HALT_SUFFIX_RE,
     _build_context_suffix,
     _description_info_score,
     _facility_drop_reason,
@@ -95,6 +94,8 @@ from .wl_aggregates import (
 
 
 log = logging.getLogger(__name__)
+
+_HALT_SUFFIX_RE = re.compile(r"\(\d+\s+Halt(?:e)?\)$")
 
 # Security: ``MAX_WL_FETCH_TIMEOUT`` is the Slowloris-defence ceiling for the
 # public ``fetch_events`` API. The ``timeout`` parameter flows through

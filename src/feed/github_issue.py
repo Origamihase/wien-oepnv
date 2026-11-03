@@ -11,7 +11,7 @@ import logging
 import os
 import re
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Any
+from typing import Any
 from urllib.parse import urlparse
 
 import requests
@@ -19,6 +19,7 @@ import requests
 from .feed_health import _format_timestamp
 from .logging import error_log_path
 from .report_messages import _sanitize_log_detail
+from .run_report_view import RunReportView
 
 from ..utils.env import get_bool_env, read_secret
 from ..utils.files import (
@@ -28,9 +29,6 @@ from ..utils.files import (
 from ..utils.http import request_safe, session_with_retries, validate_http_url
 from ..utils.logging import sanitize_log_arg
 from ..utils.text import escape_markdown, escape_markdown_cell, safe_markdown_codespan
-
-if TYPE_CHECKING:
-    from .reporting import RunReport
 
 log = logging.getLogger("build_feed")
 
@@ -214,7 +212,7 @@ class _GithubIssueReporter:
     def __init__(self, config: _GithubIssueConfig) -> None:
         self._config = config
 
-    def submit(self, report: RunReport) -> None:
+    def submit(self, report: RunReportView) -> None:
         if not self._config.enabled:
             return
         if not self._config.repository or not self._config.token:
@@ -411,10 +409,10 @@ class _GithubIssueReporter:
         else:
             log.info("Automatisches GitHub-Issue erstellt.")
 
-    def _build_title(self, report: RunReport) -> str:
+    def _build_title(self, report: RunReportView) -> str:
         return f"{self._config.title_prefix}: Feed-Lauf {report.run_id}"
 
-    def _build_body(self, report: RunReport) -> str:
+    def _build_body(self, report: RunReportView) -> str:
         started = _format_timestamp(report.started_at)
         finished = _format_timestamp(report.finished_at)
         errors = list(report.iter_error_messages())
@@ -519,7 +517,7 @@ class _GithubIssueReporter:
         return "\n".join(lines).strip() + "\n"
 
 
-def _submit_github_issue(report: RunReport) -> None:
+def _submit_github_issue(report: RunReportView) -> None:
     config = _GithubIssueConfig.from_env()
     reporter = _GithubIssueReporter(config)
     reporter.submit(report)

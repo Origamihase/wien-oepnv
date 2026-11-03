@@ -1,85 +1,15 @@
 """Generic and HTTP auth-scheme detector regexes of the secret scanner.
 
 Moved verbatim from ``src/utils/secret_scanner.py``, which re-exports every name.
+The generic detectors the scanner reads itself (``_HIGH_ENTROPY_RE``,
+``_SENSITIVE_ASSIGN_RE``, ``_AWS_ID_RE``, ``_AUTH_SCHEME_DETECTORS``, ``_PEM_RE``)
+are defined there, next to the code that reads them.
 """
 
 from __future__ import annotations
 
 import re
 
-_HIGH_ENTROPY_RE = re.compile(r"(?<![A-Za-z0-9])[A-Za-z0-9+/=_-]{24,}(?![A-Za-z0-9])")
-
-# Detect sensitive variable assignments (e.g. key = "value")
-# We use a broad list of keywords and allow common separators (hyphens, dots) in prefixes/suffixes
-# to catch variations like my-api-key, config.client_secret, etc.
-#
-# Security (ReDoS): every key-affix repetition below is BOUNDED ``{0,64}``
-# rather than the prior unbounded ``*``. The unbounded affixes caused
-# catastrophic O(n²) backtracking — a hostile committed line holding the
-# literal ``token`` followed by a long run of ``[a-z0-9_.-]`` chars with no
-# trailing ``[:=]`` (a long base64-ish blob, an npm ``integrity`` hash list,
-# a Tailscale ACL, …) made the greedy affix consume the whole run, the
-# required ``\s*[:=]`` fail, and the engine backtrack one char at a time at
-# every start position (~6 s for 4 KB, ~36 s for 10 KB), stalling the CI
-# secret gate so sibling files never got scanned. ``re.sub``/``finditer``
-# still advance the start position across the whole input, so a real key
-# preceded by a long prefix is still found — only the *per-position*
-# look-ahead is capped. 64 is far longer than any realistic key
-# identifier, so the bound is lossless for genuine secrets.
-_SENSITIVE_ASSIGN_RE = re.compile(
-    r"""(?xis)
-    (
-        # Group 1: The key
-        (?:
-            # ReDoS guard: anchor the match at a [a-z0-9_.-] run boundary. The
-            # bounded {0,64} prefix below was still retried at EVERY position
-            # inside a long run (each retry attempting the ~46-branch keyword
-            # alternation) -> O(N*64*alts), ~33 s/MB on a hostile committed
-            # line (base64 blob / minified bundle / lockfile). With this
-            # lookbehind, positions inside a run fail in O(1) and the prefix is
-            # only attempted at run starts -> linear. Realistic key names start
-            # at a boundary and are << 64 chars, so this is lossless for them.
-            (?<![a-z0-9_.-])
-            [a-z0-9_.-]{0,64}  # Prefix allowing letters, numbers, underscores, dots, hyphens
-            (?:
-                token|secret|password|passphrase|credential|
-                accessid|accesskey|access-key|access.key|
-                apikey|api-key|api.key|
-                privatekey|private-key|private.key|
-                secret-key|secret.key|client-secret|client.secret|
-                authorization|auth-token|auth.token|auth|
-                _key|ssh-key|ssh.key|id_rsa|
-                clientid|client-id|client.id|client_id|
-                session_id|session-id|session.id|sessionid|
-                cookie|signature|bearer|jwt|
-                webhook_url|webhook-url|webhook.url|webhook|
-                dsn|subscriptionkey
-            )
-            [a-z0-9_.-]{0,64}  # Suffix allowing letters, numbers, underscores, dots, hyphens
-        )
-        |
-        (?:
-            # Strict matching for short/risky keywords to avoid false positives (e.g. throughput)
-            (?<![a-z0-9_.-])  # ReDoS guard: see the boundary anchor above.
-            [a-z0-9_.-]{0,64}  # Prefix
-            (?:
-                glpat|ghp|otp
-            )
-            (?:[-_][a-z0-9_.-]{0,64})?  # Strict suffix (underscore/hyphen required or end)
-        )
-    )
-    \s*[:=]\s*  # Assignment operator (= or :) surrounded by flexible whitespace (including newlines)
-    (
-        (?:\"{3}.*?\"{3})|         # Triple-double-quoted value (non-greedy)
-        (?:'{3}.*?'{3})|           # Triple-single-quoted value (non-greedy)
-        (?:\"(?:\\.|[^\"\\])*\")|  # Double-quoted value
-        (?:'(?:\\.|[^'\\])*')|     # Single-quoted value
-        [^;#'\"\n]+                # Unquoted value (until comment or newline)
-    )
-    """
-)
-
-_AWS_ID_RE = re.compile(r"(?<![A-Za-z0-9])(AKIA|ASIA|ACCA)[A-Z0-9]{16}(?![A-Za-z0-9])")
 # Security: ``Bearer`` literal is matched case-insensitively per RFC 7235
 # §2.1 (HTTP auth-scheme is case-insensitive — ``Bearer`` / ``bearer`` /
 # ``BEARER`` / mixed-case are all canonical HTTP forms accepted by every
@@ -436,33 +366,3 @@ _TOKEN_SCHEME_RE = re.compile(r"(?i)token\s+([A-Za-z0-9_\-]{36,})")
 _HOBA_RE = re.compile(
     r'''(?i)HOBA\s+result\s*=\s*\\?["']([A-Za-z0-9_\-]{8,}(?:\.[A-Za-z0-9_\-]{8,}){3})\\?["']'''
 )
-
-# Security: ordered (regex, reason) table that ``_scan_content`` iterates
-# over to detect HTTP-auth-scheme-prefixed credentials. Each entry's regex
-# must capture the credential body in group(1) so the loop in
-# ``_scan_content`` can read ``match.group(1)`` uniformly. Order matters
-# for tie-breaking: more-specific auth-scheme literals (Bearer, Basic,
-# Negotiate, NTLM, HOBA) MUST appear BEFORE the generic ``token`` scheme
-# so their attribution wins via ``covered_ranges`` arbitration when a
-# token-shaped body sits inside one of those headers. The
-# ``is_covered`` check in ``_scan_content`` anchors the first matching
-# reason at each span. New auth-scheme detectors (e.g. RFC 7616
-# Digest, RFC 8120 Mutual, AWS SigV4 ``AWS4-HMAC-SHA256`` — a vendor
-# scheme with no IETF RFC) follow the same shape and inherit the
-# ``(?i)`` case-insensitivity invariant pinned per RFC 7235 §2.1.
-_AUTH_SCHEME_DETECTORS: tuple[tuple[re.Pattern[str], str], ...] = (
-    (_BEARER_RE, "Bearer-Token wirkt echt"),
-    (_BASIC_AUTH_RE, "HTTP Basic Authentication Credential gefunden"),
-    (_NEGOTIATE_RE, "SPNEGO/Negotiate Authentication Token gefunden"),
-    (_NTLM_RE, "NTLM Authentication Credential gefunden"),
-    (_HOBA_RE, "HOBA Authentication Credential gefunden"),
-    (_TOKEN_SCHEME_RE, "HTTP Token-Scheme Authentication Credential gefunden"),
-)
-
-# Security: the inter-anchor gap is bounded (``{0,8192}?`` — well above any
-# real PEM body, an RSA-4096 key is ~3.2 KiB) instead of the unbounded
-# ``(?:.|\n)*?``. An unbounded lazy quantifier makes ``finditer`` restart at
-# every ``BEGIN`` marker and scan to EOF when no ``END`` follows, which is
-# O(markers x filesize) — a crafted file (hostile-PR threat model) could hang
-# the secret-scan gate. The bound caps per-start-position work to a constant.
-_PEM_RE = re.compile(r"(-----BEGIN [A-Z ]*PRIVATE KEY-----)(?:.|\n){0,8192}?(-----END [A-Z ]*PRIVATE KEY-----)")

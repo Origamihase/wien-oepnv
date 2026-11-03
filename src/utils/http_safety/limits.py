@@ -1,4 +1,4 @@
-"""Retry-After parsing, retry options, timeouts and size limits.
+"""Retry-After parsing, timeouts and size limits.
 
 Moved verbatim from ``src/utils/http.py`` (700-line rule, 2026-11-02);
 import from ``src.utils.http``, which re-exports every name.
@@ -10,7 +10,6 @@ import math
 import re
 from datetime import UTC, datetime
 from email.utils import parsedate_to_datetime
-from typing import Any
 
 _RETRY_AFTER_NUMERIC_RE = re.compile(r"\d+(?:\.\d+)?")
 
@@ -58,13 +57,6 @@ def parse_retry_after(
         return None
     return max(0.0, delta_seconds)
 
-
-_DEFAULT_RETRY_OPTIONS: dict[str, Any] = {
-    "total": 4,
-    "backoff_factor": 0.6,
-    "status_forcelist": (429, 500, 502, 503, 504),
-    "allowed_methods": ("GET",),
-}
 
 # Default timeout in seconds if none is provided
 DEFAULT_TIMEOUT = (3.0, 15.0)

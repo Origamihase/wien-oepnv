@@ -39,7 +39,6 @@ def _facility_drop_reason(title: str) -> str | None:
 
 # Precompiled regex patterns
 _ALPHA_RE = re.compile(r"[A-Za-zÄÖÜäöüß]")
-_HALT_SUFFIX_RE = re.compile(r"\(\d+\s+Halt(?:e)?\)$")
 
 
 # A title that only lists lines says nothing the line prefix does not. The

@@ -40,7 +40,16 @@ from ..utils.http import (
 )
 from ..utils.logging import sanitize_log_arg, sanitize_log_message
 from ..utils.vao_version import ListedVersion, is_version, load_state, parse_version_list
-from .vor_env import BASE_DIR, DATA_DIR, _get_env
+from . import vor_env
+from .vor_env import (
+    BASE_DIR,
+    DATA_DIR,
+    DEFAULT_MAX_REQUESTS_PER_DAY,
+    MAX_REQUESTS_PER_DAY,
+    _get_env,
+    _load_int_env,
+    _resolve_path,
+)
 from .vor_auth import (
     VorAuth,
     _VOR_TRUSTED_HOSTS,
@@ -72,8 +81,6 @@ DEFAULT_BASE_URL = f"{DEFAULT_BASE}/{DEFAULT_VERSION}/"
 DEFAULT_USER_AGENT = "wien-oepnv/1.0 (+https://github.com/Origamihase/wien-oepnv)"
 
 DEFAULT_HTTP_TIMEOUT = 15
-# "VAO Start" contract limit: 100 requests per day (hard limit).
-DEFAULT_MAX_REQUESTS_PER_DAY = 100
 
 VOR_USER_AGENT = os.getenv("VOR_USER_AGENT", DEFAULT_USER_AGENT)
 # urllib3 retries are disabled here on purpose: every actual HTTP call to
@@ -169,23 +176,10 @@ def _log_warning(message: str, *args: Any) -> None:
         log.warning("%s", sanitized_msg)
 
 
-def _load_int_env(name: str, default: int) -> int:
-    raw = _get_env(name)
-    if not raw:
-        return default
-    try:
-        value = int(raw)
-    except ValueError:
-        _log_warning(
-            "Ungültiger Wert für %s: %s – verwende Standard %s", name, raw, default
-        )
-        return default
-    if value <= 0:
-        _log_warning(
-            "Ungültiger Wert für %s: %s – verwende Standard %s", name, raw, default
-        )
-        return default
-    return value
+# ``_load_int_env`` and ``_resolve_path`` (in ``vor_env``, so that
+# ``vor_quota`` does not import this module) warn through this function from
+# here on, as they did when they lived here.
+vor_env._log_warning = _log_warning
 
 
 # Security: ``DEFAULT_HTTP_TIMEOUT`` (15s) is the Slowloris-defence ceiling for
@@ -204,20 +198,6 @@ def _load_int_env(name: str, default: int) -> int:
 HTTP_TIMEOUT = min(
     _load_int_env("VOR_HTTP_TIMEOUT", DEFAULT_HTTP_TIMEOUT),
     DEFAULT_HTTP_TIMEOUT,
-)
-# Security: ``DEFAULT_MAX_REQUESTS_PER_DAY`` (100) is the *contractual* hard
-# cap of the "VAO Start" tier — exceeding it risks suspension of the access
-# ID by the upstream provider. ``_load_int_env`` itself only enforces a
-# lower bound (``value > 0``), so a benign-looking env override such as
-# ``VOR_MAX_REQUESTS_PER_DAY=99999`` (intentional misconfig, leaked CI env,
-# or compromised secret store) would silently disable every quota gate that
-# reads this constant (8 sites in this module, plus ``_limit_reached`` in
-# ``scripts/update_vor_cache.py``). The env var stays useful for *tightening*
-# the budget (e.g. set to 50 during testing), but can never raise it above
-# the documented contract limit.
-MAX_REQUESTS_PER_DAY = min(
-    _load_int_env("VOR_MAX_REQUESTS_PER_DAY", DEFAULT_MAX_REQUESTS_PER_DAY),
-    DEFAULT_MAX_REQUESTS_PER_DAY,
 )
 
 # How many in-memory increments to accumulate before flushing the quota
@@ -251,34 +231,6 @@ QUOTA_FLUSH_BATCH_SIZE = max(
         MAX_REQUESTS_PER_DAY,
     ),
 )
-
-
-
-def _resolve_path(candidate: str | None, *, default: Path) -> Path:
-    """
-    Resolve a file path from configuration, ensuring it stays within the data directory.
-
-    Protects against Path Traversal by enforcing that the resolved path is relative to ``DATA_DIR``.
-    """
-    text = (candidate or "").strip()
-    if not text:
-        return default
-    path = Path(text)
-    if not path.is_absolute():
-        resolved = (BASE_DIR / path).resolve()
-    else:
-        resolved = path.resolve()
-
-    try:
-        resolved.relative_to(DATA_DIR)
-    except ValueError:
-        _log_warning(
-            "Pfad-Traversal erkannt oder Pfad außerhalb von %s: %s. Nutze Standard.",
-            DATA_DIR,
-            text,
-        )
-        return default
-    return resolved
 
 
 from .vor_quota import (  # noqa: E402

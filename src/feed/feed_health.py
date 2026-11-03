@@ -9,16 +9,14 @@ import json
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import TYPE_CHECKING, Any
+from typing import Any
 
 from .config import LOG_TIMEZONE
 from .report_messages import _CONTROL_CHARS_RE
+from .run_report_view import RunReportView
 
 from ..utils.files import atomic_write
 from ..utils.text import escape_markdown, escape_markdown_cell, safe_markdown_codespan
-
-if TYPE_CHECKING:
-    from .reporting import RunReport
 
 @dataclass(frozen=True)
 class DuplicateSummary:
@@ -62,7 +60,7 @@ def _format_timestamp_iso(dt: datetime | None) -> str | None:
 
 
 def render_feed_health_markdown(
-    report: RunReport,
+    report: RunReportView,
     metrics: FeedHealthMetrics,
 ) -> str:
     """Render a human-readable Markdown summary of the latest feed build."""
@@ -181,7 +179,7 @@ def render_feed_health_markdown(
 
 
 def write_feed_health_report(
-    report: RunReport,
+    report: RunReportView,
     metrics: FeedHealthMetrics,
     *,
     output_path: Path,
@@ -196,7 +194,7 @@ def write_feed_health_report(
 
 
 def build_feed_health_payload(
-    report: RunReport,
+    report: RunReportView,
     metrics: FeedHealthMetrics,
 ) -> dict[str, Any]:
     """Create a JSON-serialisable structure summarising the feed build."""
@@ -298,7 +296,7 @@ def build_feed_health_payload(
 
 
 def write_feed_health_json(
-    report: RunReport,
+    report: RunReportView,
     metrics: FeedHealthMetrics,
     *,
     output_path: Path,

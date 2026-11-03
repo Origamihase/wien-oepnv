@@ -20,7 +20,7 @@ from urllib3.util.retry import Retry
 # The parts below were moved verbatim out of this module (700-line rule,
 # 2026-11-02). Every name stays importable and patchable from here.
 from .http_safety.limits import (
-    DEFAULT_TIMEOUT, DNS_TIMEOUT, MAX_PAYLOAD_SIZE, MAX_URL_LENGTH, _DEFAULT_RETRY_OPTIONS,
+    DEFAULT_TIMEOUT, DNS_TIMEOUT, MAX_PAYLOAD_SIZE, MAX_URL_LENGTH,
     _RETRY_AFTER_NUMERIC_RE, parse_retry_after,
 )
 from .http_safety.redaction import (
@@ -81,6 +81,13 @@ __all__ = [
 ]
 
 log = logging.getLogger(__name__)
+
+_DEFAULT_RETRY_OPTIONS: dict[str, Any] = {
+    "total": 4,
+    "backoff_factor": 0.6,
+    "status_forcelist": (429, 500, 502, 503, 504),
+    "allowed_methods": ("GET",),
+}
 
 
 def _check_response_security(response: requests.Response, *args: Any, **kwargs: Any) -> None:

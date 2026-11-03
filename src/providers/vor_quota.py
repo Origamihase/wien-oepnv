@@ -11,10 +11,8 @@ All quota state lives here and nowhere else: ``REQUEST_COUNT_FILE``,
 ledger patches this module (``src.providers.vor_quota``), not the facade.
 
 ``MAX_REQUESTS_PER_DAY``, ``log`` and ``_resolve_path`` come from
-``src.providers.vor``, imported at the end of this module: the facade imports
-this module only after it has defined them, and this module defines every name
-the facade takes from it before it imports the facade, so either import order
-works.
+``src.providers.vor_env``, which imports neither this module nor the facade,
+so this module does not import ``src.providers.vor``.
 """
 
 from __future__ import annotations
@@ -32,7 +30,13 @@ from zoneinfo import ZoneInfo
 from ..utils.files import atomic_write, read_capped_json
 from ..utils.locking import file_lock
 from ..utils.logging import sanitize_log_arg
-from .vor_env import DATA_DIR, _get_env
+from .vor_env import (
+    DATA_DIR,
+    MAX_REQUESTS_PER_DAY,
+    _get_env,
+    _resolve_path,
+    log,
+)
 
 # Global lock for thread-safe quota management within the process
 _QUOTA_LOCK = threading.RLock()
@@ -479,12 +483,6 @@ def save_request_count(now_ignored: datetime | None = None) -> int:
     _granted, total = reserve_request_slot()
     return total
 
-
-from .vor import (  # noqa: E402
-    MAX_REQUESTS_PER_DAY,
-    _resolve_path,
-    log,
-)
 
 REQUEST_COUNT_FILE = _resolve_path(
     _get_env("VOR_REQUEST_COUNT_FILE"), default=DATA_DIR / "vor_request_count.json"

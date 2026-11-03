@@ -74,8 +74,12 @@ def _reserve_in_process(
     os.environ["VOR_MAX_REQUESTS_PER_DAY"] = str(cap)
 
     import src.providers.vor as vor_facade
+    import src.providers.vor_env as vor_env
     import src.providers.vor_quota as vor_module
 
+    # ``MAX_REQUESTS_PER_DAY`` is computed in ``vor_env``; the facade and
+    # ``vor_quota`` bind it from there, so they are reloaded after it.
+    importlib.reload(vor_env)
     importlib.reload(vor_facade)
     importlib.reload(vor_module)
     vor_module.REQUEST_COUNT_FILE = _Path(count_file)
