@@ -307,9 +307,9 @@ def test_collision_check_covers_all_formatted_content_text_fields() -> None:
     flows into the serialised XML, this test fails until the collision
     check is updated to cover the new field.
     """
-    from pathlib import Path
+    import inspect
 
-    source = Path(src.build_feed.__file__).read_text(encoding="utf-8")
+    source = inspect.getsource(src.build_feed._placeholder_collides_with_formatted)
 
     # Every NamedTuple field on FormattedContent that carries upstream
     # text MUST be referenced in the placeholder collision check.
@@ -317,7 +317,7 @@ def test_collision_check_covers_all_formatted_content_text_fields() -> None:
         marker = f"formatted.{field_name}"
         assert marker in source, (
             f"Collision-check coverage gap: {marker!r} is not referenced "
-            f"anywhere in src/build_feed.py. The placeholder collision "
+            f"in _placeholder_collides_with_formatted. The placeholder collision "
             f"check in _emit_item MUST examine every text-bearing field "
             f"on FormattedContent. "
             f"{SENTINEL_FEED_XML_PLACEHOLDER_COLLISION}"

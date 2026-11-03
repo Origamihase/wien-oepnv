@@ -17,7 +17,7 @@ import pytest
 
 import src.build_feed as bf
 from src.feed_types import FeedItem
-from tests._conftest.build_feed_bindings import patch_all
+from tests._conftest.build_feed_bindings import part, patch_all
 
 NOW = datetime(2026, 9, 25, 13, 1, tzinfo=UTC)  # 15:01 Vienna
 
@@ -276,7 +276,7 @@ def test_a_new_occurrence_is_counted_once_when_it_reaches_the_feed() -> None:
     item = _item("U6: Rettungseinsatz", "gu6", pub)
 
     bf._restart_recurring_occurrences([item], state, NOW)
-    with patch.object(bf, "append_disruption_row") as append:
+    with patch.object(part(bf, "item_meta"), "append_disruption_row") as append:
         bf._update_item_state(item, NOW, state)
         bf._update_item_state(item, NOW, state)  # the English pass
         bf._update_item_state(item, NOW + timedelta(minutes=30), state)
@@ -292,7 +292,7 @@ def test_a_continuing_occurrence_is_not_counted_again() -> None:
     item = _item("25: Linie 26E hält Donaufelder Straße 148", "g25", pub)
 
     bf._restart_recurring_occurrences([item], state, NOW)
-    with patch.object(bf, "append_disruption_row") as append:
+    with patch.object(part(bf, "item_meta"), "append_disruption_row") as append:
         bf._update_item_state(item, NOW, state)
 
     assert append.call_count == 0
@@ -307,7 +307,7 @@ def test_a_restarted_occurrence_off_the_feed_is_counted_when_shown() -> None:
 
     bf._restart_recurring_occurrences([item], state, NOW)
     bf._restart_recurring_occurrences([item], state, NOW + timedelta(minutes=30))
-    with patch.object(bf, "append_disruption_row") as append:
+    with patch.object(part(bf, "item_meta"), "append_disruption_row") as append:
         bf._update_item_state(item, NOW + timedelta(hours=1), state)
         bf._update_item_state(item, NOW + timedelta(hours=2), state)
 
@@ -318,7 +318,7 @@ def test_a_strictly_new_disruption_is_still_counted() -> None:
     state: dict[str, dict[str, Any]] = {}
     item = _item("13A: Falschparker", "g13", NOW - timedelta(minutes=5))
 
-    with patch.object(bf, "append_disruption_row") as append:
+    with patch.object(part(bf, "item_meta"), "append_disruption_row") as append:
         bf._update_item_state(item, NOW, state)
         bf._update_item_state(item, NOW, state)
 
