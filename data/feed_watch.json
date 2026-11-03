@@ -1,13 +1,21 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-03T16:01:59.768310+00:00",
- "built": "2026-11-03T17:01:52+01:00",
+ "updated": "2026-11-03T16:31:01.310416+00:00",
+ "built": "2026-11-03T17:30:47+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-03T17:01:52+01:00",
+  "built": "2026-11-03T17:30:47+01:00",
   "items": [
+   {
+    "title": "U6: Verunreinigung",
+    "time_line": "Seit 17:27"
+   },
+   {
+    "title": "31: Falschparker",
+    "time_line": "Seit 17:22"
+   },
    {
     "title": "64A: Liesinger-Flur-Gasse",
     "time_line": "Bis Fr 06.11."
@@ -39,14 +47,6 @@
    {
     "title": "11: Wienerfeldgasse",
     "time_line": "Bis 19.11."
-   },
-   {
-    "title": "40A: Bauernfeldplatz",
-    "time_line": "Seit 27.10."
-   },
-   {
-    "title": "S1: Wien Leopoldau ↔ Deutsch Wagram",
-    "time_line": "Bis 28.11."
    }
   ]
  },
@@ -6751,17 +6751,37 @@
     "oebb": 7,
     "wl": 86
    }
+  },
+  {
+   "t": "2026-11-03T16:31:01.310416+00:00",
+   "raw": {
+    "wl-stoerungen": 56,
+    "wl-hinweise": 73,
+    "oebb": 181,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 12,
+    "oebb": 156,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 7,
+    "wl": 88
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-03T16:01:59.768310+00:00"
+   "last_ok": "2026-11-03T16:31:01.310416+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-03T16:01:59.768310+00:00"
+   "last_ok": "2026-11-03T16:31:01.310416+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-03T16:01:59.768310+00:00"
+   "last_ok": "2026-11-03T16:31:01.310416+00:00"
   }
  }
 }
