@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261103-0040, I20260925-0011, I20260909-0007, I20260922-0032, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20260922-0032, I20261103-0040-F01, I20261020-0029"
    },
    {
     "id": 3,
@@ -224,19 +224,19 @@
       "77A": "ptBusCity"
      }
     },
-    "description": "Linie 77A: Fahrtbehinderung in Richtung Rennweg S. Voraussichtliche Dauer: 23:30 Uhr. Grund: Falschparker im Bereich Rabengasse 2.",
-    "descriptionHTML": "<p>Linie 77A:<br>Fahrtbehinderung in Richtung Rennweg S.</p><p>Voraussichtliche Dauer: 23:30 Uhr.</p><p>Grund: Falschparker im Bereich Rabengasse 2.</p>",
+    "description": "Linie 77A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 77A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 77A:<br>Fahrtbehinderung in Richtung Rennweg S.</p><p>Voraussichtliche Dauer: 23:30 Uhr.</p><p>Grund: Falschparker im Bereich Rabengasse 2.</p>",
-       "descriptionPlain": "Linie 77A: Fahrtbehinderung in Richtung Rennweg S. Voraussichtliche Dauer: 23:30 Uhr. Grund: Falschparker im Bereich Rabengasse 2.",
+       "descriptionHtml": "<p>Linie 77A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 77A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "77A: Falschparker"
       }
      }
     ],
     "location": "Rabengasse 2",
-    "name": "I20261103-0040",
+    "name": "I20261103-0040-F01",
     "owner": "WL",
     "parentName": "I20261103-0040",
     "priority": "1",
@@ -255,8 +255,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-03T22:59:00.000+0100",
-     "lastUpdate": "2026-11-03T22:59:00.000+0100",
+     "created": "2026-11-03T23:20:00.000+0100",
+     "lastUpdate": "2026-11-03T23:20:00.000+0100",
+     "resume": "2026-11-03T23:20:00.000+0100",
      "start": "2026-11-03T22:58:00.000+0100"
     },
     "title": "77A: Falschparker"
