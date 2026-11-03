@@ -458,6 +458,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "79A/79B: Alberner Hafenzufahrtsstraße",
+    "description": "<p><strong><u>Haltestellenverlegung der Linien 79A und 79B in Richtung Kaiserebersdorf</u></strong></p><p><strong><u>Haltestelle:</u></strong> Alberner Hafenzufahrtsstraße</p><p><strong><u>Von:</u></strong> Landwehrstraße nach Alberner Hafenzufahrtsstraße</p><p><strong><u>Nach:</u></strong> ca. 40 Meter in Fahrtrichtung</p><p><strong><u>Dauer:</u></strong> 10. November 2026, etwa 07:00 Uhr bis 12. November 2026, etwa 18:00 Uhr</p><p><strong><u>Grund:</u></strong> Straßenbauarbeiten</p>",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "73df281ad5c608aa3c9f81b8e5eea17909c1ae0a8967d55f6159a50fefa08339",
+    "pubDate": "2026-11-03T12:05:00+01:00",
+    "starts_at": "2026-11-10T00:00:00+01:00",
+    "ends_at": "2026-11-12T18:00:00+01:00",
+    "_identity": "wl|hinweis|L=79A,79B|D=2026-11-10|TK=79a 79b alberner hafenzufahrtsstrasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "80A: ÖBB-Bauarbeiten",
     "description": "<h2>Bauarbeiten</h2> <p>Wegen der Neuerrichtung der &Ouml;BB-Bahnviadukte im Bereich Helenengasse und Stoffellagasse treten bei der Linie 80A Ma&szlig;nahmen in Kraft. Beachten Sie bitte die unterschiedlichen Ma&szlig;nahmen werktags bzw. am Wochenende.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Von Dienstag, 20. Oktober 2026 bis etwa September 2027.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Montag-Freitag, Linie 80A in Richtung Schlachthausgasse U:</strong><br />Umleitung ab Praterstern # Franzensbr&uuml;ckenstra&szlig;e &uuml;ber Praterstern - Hauptallee - Sportklubstra&szlig;e.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:</span><br />- Vivariumstra&szlig;e (Vivariumstra&szlig;e 6)<br /><span style=\"text-decoration: underline;\">Ersatzhaltestelle:</span><br />- Vivariumstra&szlig;e (Sportklubstra&szlig;e nach Vivariumstra&szlig;e)</p> <p><strong>Samstag, Sonntag und Feiertag, Linie 80A:</strong><br />Betrieb nur zwischen Schlachthausgasse U und Franzensbr&uuml;cke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen in Richtung Schlachthausgasse:</span><br />- Praterstern (Praterstern, 3. Haltestelleinsel unter dem Bahnhofsvordach)<br />- Vivariumstra&szlig;e (Vivariumstra&szlig;e 6)<br /><span style=\"text-decoration: underline;\">Ersatzhaltestellen:</span><br />- Franzensbr&uuml;cke (Vivariumstra&szlig;e 2, provisorische End- und Anfangshaltestelle an Sa, So, Fei)<br />- Vivariumstra&szlig;e (Sportklubstra&szlig;e nach Vivariumstra&szlig;e)</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -954,34 +966,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Schadhafter PKW",
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "201d29e8c544566afa85f7d705a9499ec8429ced2324e27a1b61ec5c0cfc8862",
-    "pubDate": "2026-11-03T11:07:00+01:00",
-    "starts_at": "2026-11-03T11:07:00+01:00",
-    "ends_at": "2026-11-03T12:25:00+01:00",
-    "_identity": "wl|störung|L=9|D=2026-11-03|TK=9 schadhafter pkw",
-    "_wl_ids": [
-      "I20261103-0016"
-    ],
-    "_incident_start": "2026-11-03T11:07:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Fahrtbehinderung Schadhafter PKW",
-    "description": "Fahrtbehinderung\nSchadhafter PKW",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "16b072dd40df82c56241e536ecbe7c613c73c73d601afdcf8db1b49fe92c3fe9",
-    "pubDate": "2026-11-03T11:09:27+01:00",
-    "starts_at": "2026-11-03T11:14:59+01:00",
-    "ends_at": "2026-11-03T12:13:00+01:00",
-    "_identity": "wl|störung|L=9|D=2026-11-03|TK=fahrtbehinderung schadhafter pkw"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "D: Gleisbauarbeiten",
     "description": "Linie D: Kein Betrieb zwischen Börse und Augasse. Ersatz: Linien S40, U2, U4, U6, 1, 5, 12, 37, 38, 71 und 40A. Voraussichtliche Dauer: 07. November 2026, 04:00 Uhr. Grund: Gleisbauarbeiten im Bereich Althanstraße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1047,49 +1031,17 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U1: Schadhaftes Fahrzeug",
-    "description": "Linie U1: Fahrtbehinderung in Richtung Leopoldau S U. Voraussichtliche Dauer: 12:30 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Karlsplatz.",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
     "pubDate": "2026-11-03T11:59:00+01:00",
     "starts_at": "2026-11-03T11:59:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-03T12:50:00+01:00",
     "_identity": "wl|störung|L=U1|D=2026-11-03|TK=u1 schadhaftes fahrzeug",
     "_wl_ids": [
       "I20261103-0020"
     ],
     "_incident_start": "2026-11-03T11:59:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U2: Schadhaftes Fahrzeug",
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104",
-    "pubDate": "2026-11-03T11:53:00+01:00",
-    "starts_at": "2026-11-03T11:53:00+01:00",
-    "ends_at": "2026-11-03T12:15:00+01:00",
-    "_identity": "wl|störung|L=U2|D=2026-11-03|TK=u2 schadhaftes fahrzeug",
-    "_wl_ids": [
-      "I20261103-0019"
-    ],
-    "_incident_start": "2026-11-03T11:53:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2026-11-03T11:34:00+01:00",
-    "starts_at": "2026-11-03T11:34:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U3|D=2026-11-03|TK=u3 verspätungen",
-    "_wl_ids": [
-      "I20261103-0018"
-    ],
-    "_incident_start": "2026-11-03T11:34:00+01:00"
   },
   {
     "source": "Wiener Linien",

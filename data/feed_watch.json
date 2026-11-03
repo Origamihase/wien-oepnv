@@ -1,32 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-03T11:01:39.021067+00:00",
- "built": "2026-11-03T12:01:19+01:00",
+ "updated": "2026-11-03T11:31:07.229040+00:00",
+ "built": "2026-11-03T12:30:56+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-03T12:01:19+01:00",
+  "built": "2026-11-03T12:30:56+01:00",
   "items": [
-   {
-    "title": "U2: Schadhaftes Fahrzeug",
-    "time_line": "Seit 11:53"
-   },
    {
     "title": "U1: Schadhaftes Fahrzeug",
     "time_line": "Seit 11:59"
    },
    {
-    "title": "U3: Verspätungen",
-    "time_line": "Seit 11:34"
-   },
-   {
     "title": "46: Rettungseinsatz",
     "time_line": "Seit 11:27"
-   },
-   {
-    "title": "9: Schadhafter PKW",
-    "time_line": "Seit 11:07"
    },
    {
     "title": "64A: Liesinger-Flur-Gasse",
@@ -47,31 +35,23 @@
    {
     "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
     "time_line": "Bis 30.11."
+   },
+   {
+    "title": "54A/54B: Bauarbeiten",
+    "time_line": "Bis 10.11."
+   },
+   {
+    "title": "12A: Henriettenplatz",
+    "time_line": "Ab Mi 04.11."
+   },
+   {
+    "title": "11: Wienerfeldgasse",
+    "time_line": "Bis 19.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-27T11:31:01.645543+00:00",
-   "raw": {
-    "wl-stoerungen": 99,
-    "wl-hinweise": 91,
-    "oebb": 166,
-    "baustellen-linien": 55,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 15,
-    "oebb": 141,
-    "baustellen": 70
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 112
-   }
-  },
   {
    "t": "2026-10-27T12:01:20.007124+00:00",
    "raw": {
@@ -6751,17 +6731,37 @@
     "oebb": 7,
     "wl": 90
    }
+  },
+  {
+   "t": "2026-11-03T11:31:07.229040+00:00",
+   "raw": {
+    "wl-stoerungen": 56,
+    "wl-hinweise": 72,
+    "oebb": 176,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 12,
+    "oebb": 151,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 7,
+    "wl": 87
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-03T11:01:39.021067+00:00"
+   "last_ok": "2026-11-03T11:31:07.229040+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-03T11:01:39.021067+00:00"
+   "last_ok": "2026-11-03T11:31:07.229040+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-03T11:01:39.021067+00:00"
+   "last_ok": "2026-11-03T11:31:07.229040+00:00"
   }
  }
 }
