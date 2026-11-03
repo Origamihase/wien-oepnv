@@ -106,7 +106,7 @@ Public sinks impacted
 =====================
 
   *  ``docs/feed.xml``            — RSS XML serialiser via
-                                    ``src/build_feed.py:_CONTROL_RE``.
+                                    ``src/feed_build/base.py:_CONTROL_RE``.
   *  ``docs/feed_health.json``    — public health report via the
                                     ``_CONTROL_CHARS_RE`` family in
                                     ``src/feed/reporting.py`` and

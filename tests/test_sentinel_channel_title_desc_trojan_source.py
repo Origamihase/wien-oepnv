@@ -5,7 +5,7 @@ control characters — Trojan-Source primitive on the published feed.
 Threat model
 ------------
 
-The pre-fix flow in ``src/build_feed.py:_make_rss`` writes the env-
+The pre-fix flow in ``src/feed_build/rss.py:_make_rss`` writes the env-
 controlled feed metadata directly into the channel-level RSS XML:
 
     ET.SubElement(channel, "title").text = feed_config.FEED_TITLE
@@ -102,7 +102,7 @@ Fix shape
 
 Apply ``_sanitize_text`` at the channel-emit site in ``_make_rss``,
 mirroring the per-item sinks already routed through the helper.
-Two-line change inside ``src/build_feed.py:_make_rss``:
+Two-line change inside ``src/feed_build/rss.py:_make_rss``:
 
     ET.SubElement(channel, "title").text = _sanitize_text(feed_config.FEED_TITLE)
     ET.SubElement(channel, "description").text = _sanitize_text(feed_config.FEED_DESC)
@@ -148,7 +148,7 @@ _NOW = datetime.datetime(2026, 1, 1, 12, 0, 0, tzinfo=datetime.UTC)
 # Canonical Trojan-Source / control character set the post-fix channel
 # emission MUST strip. Mirrors the set in
 # ``tests/test_sentinel_guid_trojan_source.py`` and the canonical
-# ``src/build_feed.py:_CONTROL_RE`` regex.
+# ``src/feed_build/base.py:_CONTROL_RE`` regex.
 CANONICAL_DANGEROUS_CHARS: tuple[tuple[str, str], ...] = (
     # CVE-2021-42574 BiDi Trojan-Source primitives
     ("‮", "RLO (Right-to-Left Override)"),

@@ -1,7 +1,7 @@
 """Verify that ``PROVIDER_TIMEOUT`` env overrides cannot exceed ``MAX_PROVIDER_TIMEOUT``.
 
 ``feed_config.PROVIDER_TIMEOUT`` and the per-provider ``PROVIDER_TIMEOUT_<X>``
-overrides resolved by ``build_feed._provider_timeout_override`` are consumed
+overrides resolved by ``feed_build.providers_setup._provider_timeout_override`` are consumed
 by the orchestrator as both the per-fetch HTTP timeout and the future
 deadline. Without an upper bound an env override such as
 ``PROVIDER_TIMEOUT=99999`` (intentional misconfig, leaked CI env, compromised

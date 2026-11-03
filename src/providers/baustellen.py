@@ -141,7 +141,7 @@ _NO_IMPACT_RE: Final = re.compile(
 #     Nähere Informationen zur Haltestellenverlegungen der .................
 #
 # It names no line and no stop. The feed emitter drops it from the summary
-# for that reason (``build_feed._format_item_content``, since 2026-09-18) —
+# for that reason (``feed_build.item_format._format_item_content``, since 2026-09-18) —
 # yet at the relevance gate the same sentence still counted as the ÖPNV
 # mention: 5 of 22 cached sites reached the feed on it alone and showed the
 # viewer a street name with nothing about transit underneath ("Ruthnergasse

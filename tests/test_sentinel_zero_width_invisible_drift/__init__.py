@@ -51,7 +51,7 @@ against the Tag block / Variation Selector family:
    ``docs/feed_health.json`` (a public artefact published to GitHub
    Pages), and the GitHub Issue body auto-submitted on every fail.
 3. **Public RSS feed** — Provider titles / descriptions / time-lines
-   are routed through ``src/build_feed.py:_sanitize_text`` ->
+   are routed through ``src/feed_build/base.py:_sanitize_text`` ->
    ``_CONTROL_RE``. WJ / Invisible Times / Invisible Separator bytes
    survive, land inside ``<title>`` / ``<description>`` of
    ``docs/feed.xml``, and reach every subscribed RSS reader.

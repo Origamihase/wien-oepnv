@@ -1,7 +1,7 @@
 """Verify that ``CACHE_MAX_AGE_HOURS`` env overrides cannot exceed ``MAX_CACHE_MAX_AGE_HOURS``.
 
 ``feed_config.CACHE_MAX_AGE_HOURS`` is consumed in
-``src/build_feed.py:_detect_stale_caches`` as
+``src/feed_build/providers_setup.py:_detect_stale_caches`` as
 ``threshold = timedelta(hours=CACHE_MAX_AGE_HOURS)`` (line 223) to gate the
 per-provider cache staleness warning. Without an upper bound an env override
 such as ``CACHE_MAX_AGE_HOURS=999999999999`` (intentional misconfig, leaked

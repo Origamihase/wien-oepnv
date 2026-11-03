@@ -258,3 +258,71 @@ Leitsatz), `translation_epoch` (Epoche, Verbatim- und Digest-Marken),
 `format_local_times` in `item_format`, dem einzigen Leser.
 Replay wie in den Schritten davor: 980 Stände einzeln und 400 nacheinander,
 deutscher und englischer Feed und Zustand in jedem Stand gleich.
+
+Schritt 5 verschiebt den RSS-Teil in das Modul `rss` (GeoRSS, ein `<item>`
+mit `_emit_item`, Kanal-Metadaten und Lizenzzeilen, `_make_rss`, 507 Zeilen).
+Tests ersetzen `_emit_item` in `rss`, dem einzigen Leser. `src/build_feed.py`
+hat danach 661 Zeilen und enthält nur noch die Kette (`lint`, `main`,
+`_assemble_feed_items`, `FeedAssemblyStats`, `refresh_from_env`,
+`_invoke_collect_items`, den Aufruf als Skript) und die Weiterreichung der
+übrigen Namen in einer Liste `__all__`. Weitergereicht wird nur noch, was
+`src/`, `scripts/` oder die Tests über die Fassade lesen: `PROVIDERS`,
+`DEFAULT_PROVIDERS`, `ThreadPoolExecutor` und `format_datetime` stehen nicht
+mehr in `__all__`, weil sie niemand mehr dort liest (die Registry lesen und
+ersetzen Tests in `providers_setup`), ebenso fallen Importe weg, die nur noch
+die Teile brauchen. `src/build_feed.py` verlässt die Altfall-Liste.
+Replay wie in den Schritten davor: 980 Stände einzeln und 400 nacheinander,
+deutscher und englischer Feed und Zustand in jedem Stand gleich; dazu der WL-
+und ÖBB-Abruf (`fetch_events`) über 1.397 aufgezeichnete Stände vom 04.10.
+bis 03.11. mit gleichen Meldungen und Verwerfungsgründen.
+
+Die Teile von `src/feed_build/` nach dem Schritt, in dem sie entstanden sind
+(`__init__.py` enthält nur die Beschreibung des Pakets und die Regel für
+Tests):
+
+| Modul | Inhalt |
+|---|---|
+| `base` | Logger `build_feed`, XML-Namensräume, Bereinigung von Texten, Datumswerte |
+| `entities` | Entitätsmuster für die Übersetzung (Marken, Linien, Straßen, Orte) |
+| `placeholders` | Platzhalterformate, ihre Nonce (einziger Besitzer) und das Fachglossar |
+| `relocation` | Felder einer Haltestellenverlegung (Pfeile zur Ersatzhaltestelle) |
+| `display_titles` | Anzeigetitel: WL-Satztitel, Baustellentitel, Titelvokabular |
+| `oebb_summary` | ÖBB-Zusammenfassung: Datumsgrammatik, Züge, die nicht fahren, Abschnittslabels |
+| `translator` | Übersetzungsmodell: Laden, Status, Dienst-Komposita; Besitzer von `_TRANSLATION_STATE` |
+| `masking` | Maskierung von Entitäten (Haltestellen, Linien, Marken) vor dem Modelllauf |
+| `pretranslate` | Deutsche Normalisierung vor der Übersetzung, Label-Records ohne Modell |
+| `en_repairs` | Englische Nachreparaturen (Artikel, Großschreibung, Anführungszeichen) |
+| `model_pass` | Modelllauf eines Textes und Prüfung auf Platzhalterreste |
+| `en_templates` | Nicht rekursive EN-Vorlagen für ÖBB- und WL-Sätze |
+| `translate_run` | Die Rekursion um `_translate_text_attempt` |
+| `translate_titles` | Übersetzung ganzer Texte und Titel auf `_translate_text_attempt` |
+| `state` | Zustandsdatei (first_seen), Identitäts- und Zustandsschlüssel eines Eintrags |
+| `providers_setup` | Provider-Registry (`PROVIDERS`, `DEFAULT_PROVIDERS`), Cache-Leser, Provider-Einstellungen |
+| `collect` | Abruf aller Provider: Cache-Leser und Thread-Pool |
+| `cache_filters` | Nachfilter der Caches von WL, ÖBB und Baustellen vor dem Feed-Bau |
+| `wl_measures` | WL-Beschreibungen: Linienpräfixe, wiederholte Abschnitte, Maßnahmen zuerst, jede Linie kurz |
+| `time_line` | Zeitzeile eines Eintrags („Seit“, „Bis“, Wochentage) und Beginn einer Störung |
+| `summary_text` | Sätze der Zusammenfassung: Bereinigung, voraussichtliches Ende, 180-Zeichen-Kürzung, Beschreibung |
+| `title_words` | Ursache und Folge im Titel, kleine gemeinsame Prüfungen eines Eintrags |
+| `item_history` | Buchführung über die Läufe: Auftreten, first_seen, Identitätsübertrag |
+| `item_meta` | Reihenfolge im Feed und Daten eines Eintrags: Links, Quellen, Bilder, Zustand |
+| `filters` | Alter, Duplikate, Themenbudget, Testmeldungen, Zurückstellungen |
+| `wl_tickers` | WL-Ticker: Teile, Veröffentlichungsfenster, Gruppen, Ursachen, Linienfolgen |
+| `wl_ticker_text` | Text eines zusammengeführten WL-Eintrags: Folgen, Vorfälle, Ursachen |
+| `wl_joins` | Zusammenlegen von WL-Einträgen, Einstieg `_merge_wl_ticker_clusters` |
+| `wl_notices` | WL-Hinweise: Baustellen-Zwillinge, Tafel-Meldungen zu Bauarbeiten, Hinweise hinter Störungen |
+| `oebb_lead` | ÖBB-Texte: Strecken eines Titels, Leitsatz, zweiter Satz |
+| `translation_epoch` | Epoche des Übersetzungs-Caches, Verbatim- und Digest-Marken |
+| `translation_cache` | Prüfung eines gecachten EN-Textes, Sprach-Overlay (`_apply_lang_overlay`) |
+| `item_format` | Titel und Beschreibung eines Eintrags (`_format_item_content`) mit Helfern |
+| `rss` | RSS-Dokument: GeoRSS, ein `<item>` (`_emit_item`), Kanal-Metadaten und Lizenzzeilen, `_make_rss` |
+
+Wer eine Funktion des Feed-Baus ändert, ändert sie in ihrem Teil; ein neuer
+Name kommt in den Teil seines Themas, und liest ihn `src/`, `scripts/` oder ein
+Test über `src.build_feed`, auch in die Weiterreichung der Fassade.
+
+Damit ist Etappe 8 abgeschlossen, und die Altfall-Liste der 700-Zeilen-Regel
+(`tests/line_limit_altfaelle.txt`) ist leer: Alle 58 Dateien, die am
+2026-11-02 länger waren, sind aufgeteilt. `tests/test_file_line_limit.py`
+hält die Grenze jetzt für jede gezählte Datei ohne Ausnahme fest
+(`_ALTFAELLE_COUNT` ist 0).

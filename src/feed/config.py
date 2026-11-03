@@ -44,7 +44,7 @@ log = logging.getLogger(__name__)
 # Security: ``MAX_PROVIDER_TIMEOUT`` is the Slowloris-defence ceiling for the
 # orchestrator's per-provider fetch budget. ``feed_config.PROVIDER_TIMEOUT``
 # (and per-provider overrides like ``PROVIDER_TIMEOUT_VOR`` resolved by
-# ``build_feed._provider_timeout_override``) is consumed by ``build_feed.py``
+# ``feed_build.providers_setup._provider_timeout_override``) is consumed by ``build_feed.py``
 # as both (a) the per-fetch HTTP timeout passed to provider fetch callables
 # and (b) the deadline on each ``ThreadPoolExecutor`` future. ``get_int_env``
 # only enforced a non-negative lower bound, so a benign-looking env override
@@ -96,7 +96,7 @@ MAX_LOG_BACKUP_COUNT = 500
 
 # Security: ``MAX_STATE_RETENTION_DAYS`` is the retention-window ceiling for
 # the ``first_seen`` state file. ``STATE_RETENTION_DAYS`` is consumed in
-# ``build_feed._load_state`` as ``now_utc - timedelta(days=STATE_RETENTION_DAYS)``
+# ``feed_build.state._load_state`` as ``now_utc - timedelta(days=STATE_RETENTION_DAYS)``
 # to discard entries older than the window. ``get_int_env`` only enforces a
 # non-negative lower bound, so a benign-looking env override such as
 # ``STATE_RETENTION_DAYS=99999999`` (intentional misconfig, leaked CI env,
@@ -118,7 +118,7 @@ MAX_STATE_RETENTION_DAYS = 3650
 
 # Security: ``MAX_ENDS_AT_GRACE_MINUTES`` is the grace-window ceiling for the
 # "drop expired item" filter. ``ENDS_AT_GRACE_MINUTES`` is consumed by
-# ``build_feed._drop_old_items`` as ``now_utc - timedelta(minutes=N)`` (line
+# ``feed_build.filters._drop_old_items`` as ``now_utc - timedelta(minutes=N)`` (line
 # 1057) and by ``providers.wl_fetch._is_active`` as ``now - timedelta(minutes=N)``
 # (line 140) — both direct ``datetime - timedelta`` arithmetic. ``get_int_env``
 # only enforced a non-negative lower bound, so a benign-looking env override
@@ -141,7 +141,7 @@ MAX_ENDS_AT_GRACE_MINUTES = 10080
 
 # Security: ``MAX_CACHE_MAX_AGE_HOURS`` is the staleness-warning ceiling for
 # the per-provider cache freshness check. ``CACHE_MAX_AGE_HOURS`` is consumed
-# by ``build_feed._detect_stale_caches`` as
+# by ``feed_build.providers_setup._detect_stale_caches`` as
 # ``threshold = timedelta(hours=CACHE_MAX_AGE_HOURS)`` (line 223) — direct
 # ``timedelta(hours=N)`` construction. ``get_int_env`` only enforced a
 # non-negative lower bound, so a benign-looking env override such as
@@ -167,7 +167,7 @@ MAX_CACHE_MAX_AGE_HOURS = 8760
 
 # Security: ``MAX_FRESH_PUBDATE_WINDOW_MIN`` is the freshness-window ceiling for
 # the "use now() as pubDate for newly-arrived items" rule. ``FRESH_PUBDATE_WINDOW_MIN``
-# is consumed by ``build_feed._emit_item`` as
+# is consumed by ``feed_build.rss._emit_item`` as
 # ``if age <= timedelta(minutes=FRESH_PUBDATE_WINDOW_MIN): pubDate = now`` (line
 # 1620) — direct ``timedelta(minutes=N)`` construction. ``get_int_env`` only
 # enforced a non-negative lower bound, so a benign-looking env override such as

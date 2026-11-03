@@ -35,14 +35,14 @@ but the inverse enumeration grep
      behaviour mirrors ``quota.py`` / ``tiling.py`` (raise
      ``ValueError`` with descriptive message).
 
-  4. ``src/build_feed.py:_load_state`` — orchestrator's load of
+  4. ``src/feed_build/state.py:_load_state`` — orchestrator's load of
      ``data/first_seen.json`` (cross-run dedup state). Already wrapped
      in ``except (FileNotFoundError, json.JSONDecodeError)`` then a
      broad ``except Exception`` returning ``{}``, so ``MemoryError``
      escapes BOTH handlers and crashes the orchestrator BEFORE any
      provider runs.
 
-  5. ``src/build_feed.py:_save_state`` data-merge guard — reads the
+  5. ``src/feed_build/state.py:_save_state`` data-merge guard — reads the
      EXISTING state file under exclusive lock before overwriting.
      Same ``MemoryError`` propagation as Site 4 but in the WRITE path:
      the state file is never atomically updated so the next run
@@ -273,7 +273,7 @@ def test_places_merge_load_stations_normal_file_unaffected(
 
 
 # ============================================================================
-# Site 4: src/build_feed.py:_load_state (orchestrator state file)
+# Site 4: src/feed_build/state.py:_load_state (orchestrator state file)
 # ============================================================================
 
 

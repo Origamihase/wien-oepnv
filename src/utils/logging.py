@@ -129,7 +129,7 @@ _CONTROL_CHARS_RE = re.compile(
 # four canonical sibling regexes already cover this set:
 #   * ``src/utils/text.py:_MARKDOWN_NORMALISE_UNSAFE_RE``
 #   * ``src/utils/stats.py:_CSV_CONTROL_CHARS_RE``
-#   * ``src/build_feed.py:_CONTROL_RE``
+#   * ``src/feed_build/base.py:_CONTROL_RE``
 # Only ``_INVISIBLE_DANGEROUS_RE`` was narrower. The C0 hole leaked
 # NUL (content truncation), BEL (terminal-bell denial-of-attention),
 # BS (visual-spoof primitive), FF (terminal-screen-wipe), bare ESC,

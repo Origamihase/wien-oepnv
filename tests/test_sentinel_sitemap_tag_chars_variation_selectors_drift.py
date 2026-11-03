@@ -15,7 +15,7 @@ Selectors (U+E0100..U+E01EF). The closing inventory enumerated:
   * ``src/utils/stations_validation.py:_UNSAFE_CHARS_RE``
   * ``src/utils/serialize.py:_TROJAN_SOURCE_PRIMITIVES_RE``
   * ``src/feed/reporting.py:_CONTROL_CHARS_RE``
-  * ``src/build_feed.py:_CONTROL_RE``
+  * ``src/feed_build/base.py:_CONTROL_RE``
 
 But the sibling ``scripts/generate_sitemap.py:_UNSAFE_URL_CHARS`` — added
 by the 2026-05-10 *BiDi-Mark Drift Round 6* closing round (#1452) and

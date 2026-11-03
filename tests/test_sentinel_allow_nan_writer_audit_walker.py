@@ -93,7 +93,7 @@ Three documented sites live here today:
   motivates the non-finite-literal axis (committed-to-main artefact
   that strict parsers must handle) does not apply.
 
-* ``src/build_feed.py:_identity_for_item`` (lines 2809 and 2818) —
+* ``src/feed_build/state.py:_identity_for_item`` (lines 2809 and 2818) —
   two ``json.dumps(item, sort_keys=True, default=str)`` calls compute
   the SHA-256 input for the feed-item identity hash. The serialised
   bytes flow into ``hashlib.sha256(raw.encode("utf-8", "surrogatepass")).hexdigest()``

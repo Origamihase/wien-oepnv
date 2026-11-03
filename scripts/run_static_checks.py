@@ -93,7 +93,7 @@ def main() -> int:
     # No ``--ignore-vuln`` allowlist any more: up to 2026-11-01 it carried 14
     # advisory IDs of the ``transformers`` 4.x line (planted-model RCE family,
     # CVE-2026-1839, CVE-2026-80047, …). Since the move to ``transformers`` 5
-    # (direct Marian call, ``src.build_feed._MarianTranslator``) OSV lists
+    # (direct Marian call, ``src.feed_build.translator._MarianTranslator``) OSV lists
     # none for the installed version, so every advisory fails the check again.
     pip_audit_cmd = [
         "pip-audit",

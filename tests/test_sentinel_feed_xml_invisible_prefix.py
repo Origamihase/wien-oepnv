@@ -1,6 +1,6 @@
 """Sentinel PoC: RSS-feed Trojan-Source attack via leading invisible /
 BiDi / line-terminator characters at the
-``src.build_feed._sanitize_text`` boundary.
+``src.feed_build.base._sanitize_text`` boundary.
 
 The 2026-05-09 / 2026-05-10 BiDi-Mark Drift family widened every
 canonical sanitiser regex (``src/utils/logging.py:_CONTROL_CHARS_RE``,
@@ -10,7 +10,7 @@ canonical sanitiser regex (``src/utils/logging.py:_CONTROL_CHARS_RE``,
 ``src/utils/http.py:_UNSAFE_URL_CHARS``,
 ``src/utils/stats.py:_CSV_CONTROL_CHARS_RE``) to mirror the
 canonical Trojan-Source / line-terminator union — but the sibling
-regex inside :func:`src.build_feed._sanitize_text` still covered only
+regex inside :func:`src.feed_build.base._sanitize_text` still covered only
 the ASCII XML-control class
 ``[\\x00-\\x08\\x0B\\x0C\\x0E-\\x1F\\x7F]``. That regex is the LAST
 sanitiser before every feed item title / description / time-line
@@ -67,7 +67,7 @@ compromise) returns an item with a planted invisible-character payload::
 
 The pipeline path:
 
-* ``src/build_feed.py:_format_item_content`` retrieves
+* ``src/feed_build/item_format.py:_format_item_content`` retrieves
   ``raw_title = it.get("title")`` and routes it through
   ``_sanitize_text`` (line 1890).
 * ``_sanitize_text`` returns the input unchanged because
@@ -301,7 +301,7 @@ def test_sanitize_text_neutralises_zwsp_dedup_bypass_payload() -> None:
 def test_control_re_covers_canonical_invisible_dangerous_set() -> None:
     """Inventory invariant: every character that
     :data:`src.utils.logging._INVISIBLE_DANGEROUS_RE` matches MUST
-    also match :data:`src.build_feed._CONTROL_RE`.
+    also match :data:`src.feed_build.base._CONTROL_RE`.
 
     A regression here means the two regexes have drifted apart again
     — either the build-feed sanitiser was narrowed (drift) or the

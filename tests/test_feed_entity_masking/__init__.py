@@ -2,10 +2,10 @@
 
 The Helsinki opus-mt-de-en translator routinely mistranslates Vienna
 transit proper nouns ("Stephansplatz" → "Stephen's Square",
-"Wiener Linien" → "Vienna Lines"). :func:`src.build_feed._mask_entities`
+"Wiener Linien" → "Vienna Lines"). :func:`src.feed_build.masking._mask_entities`
 replaces every known brand / station / line identifier with a stable
 ``XENT<n>X`` placeholder before inference, and
-:func:`src.build_feed._unmask_entities` restores the original surface
+:func:`src.feed_build.masking._unmask_entities` restores the original surface
 form afterwards. These tests pin the mask/unmask contract so future
 refactors cannot silently break the round-trip.
 """

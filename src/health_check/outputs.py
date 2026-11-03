@@ -264,7 +264,7 @@ def check_translation(now: datetime) -> Check:
     """Show whether the last build that needed the translation model loaded it.
 
     Every build that needs the model records the outcome
-    (``src.build_feed._record_translation_status``). A model that cannot load
+    (``src.feed_build.translator._record_translation_status``). A model that cannot load
     turns the EN feed into a German copy for every new item; until 2026-11-01
     that was only a WARNING line in the log (Dependabot #2114: with
     ``transformers`` 5 the old pipeline task was gone, the PR check stayed
