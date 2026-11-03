@@ -8,6 +8,8 @@ from __future__ import annotations
 
 import re
 
+from ..utils.name_letters import latin_names
+
 __all__ = [
     "_BRAND_ENTITIES", "_LINE_ENTITY_RE", "_TRAM_LETTER_LINE_RE", "_STREET_SUFFIX_RE", "_SPACED_STREET_NAME_RE",
     "_PLACE_NAME_ENTITY_RE", "_PREPOSITION_NAME_RE", "_DIRECTION_NAME_RE", "_MAIN_STATION_RE", "_GATE_SUFFIX_RE",
@@ -255,11 +257,11 @@ _STREET_ER_NAME = (
     r"(?!(?:" + _STREET_ER_EXCLUDED + r")\s)[A-ZÄÖÜ][a-zäöüß]+er\s+"
     r"(?:" + _STREET_NAME_BODY + r"|" + _STREET_WORD + r")"
 )
-_STREET_SUFFIX_RE: re.Pattern[str] = re.compile(
+_STREET_SUFFIX_RE: re.Pattern[str] = re.compile(latin_names(
     r"\b(?:" + _STREET_ATTRIBUTE + r")\s+(?:" + _STREET_NAME_BODY + r")"
     r"|\b" + _STREET_ER_NAME
     + r"|\b(?:" + _STREET_NAME_BODY + r")"
-)
+))
 
 # A street named after a person, written with spaces as WL's tickers do:
 # "Julius Raab Platz", "Victor Braun Platz". Neither word carries a street
@@ -277,12 +279,12 @@ _SPACED_NAME_EXCLUDED = (
     r"|Haltestellen|Station|Linie|Linien|Bahnhof|Umleitung|Betrieb|Busse|Züge"
     r"|Kreuzung|Einmündung"
 )
-_SPACED_STREET_NAME_RE: re.Pattern[str] = re.compile(
+_SPACED_STREET_NAME_RE: re.Pattern[str] = re.compile(latin_names(
     r"\b(?!(?:" + _SPACED_NAME_EXCLUDED + r")\s)[A-ZÄÖÜ][a-zäöüß]+"
     r" (?!(?:" + _SPACED_NAME_EXCLUDED + r")\s)(?![A-ZÄÖÜ][a-zäöüß]+er\s)[A-ZÄÖÜ][a-zäöüß]+"
     r" (?:Platz|Gasse|Straße|Allee|Ring|Weg|Brücke|Markt|Promenade|Kai|Zeile"
     r"|Steig|Lände|Damm|Gürtel)\b"
-)
+))
 
 # Vienna's places whose names are ordinary German nouns. WL writes them bare,
 # and the model translated them: "am Ring" → "on the ring", "Ring, Volkstheater
@@ -313,7 +315,7 @@ _PLACE_NAME_ENTITY_RE: re.Pattern[str] = re.compile(
 # preposition in lower case, so a capitalised one there opens a name. At the
 # start of a sentence, a field or a list item ("Am Samstag …", "Zeitraum: Am
 # 1. November") it is an ordinary preposition and stays with the model.
-_PREPOSITION_NAME_RE: re.Pattern[str] = re.compile(
+_PREPOSITION_NAME_RE: re.Pattern[str] = re.compile(latin_names(
     r"(?P<lead>[^\s.:!?;] |\()"
     r"(?P<name>(?:Am|An der|An den|An dem|Auf der|Auf dem|Auf den|In der|In den"
     r"|Im|Zum|Zur|Unter den|Hinter der|Bei der|Beim|Vor dem|Neben der)"
@@ -323,7 +325,7 @@ _PREPOSITION_NAME_RE: re.Pattern[str] = re.compile(
     # Volksgartenstraße …" (Stadt Wien) is a capitalised slip, not "In der" +
     # name. "Am Kaisermühlendamm", "Am Rollerdamm" keep the preposition.
     r"(?<!straße)(?<!strasse)(?<!gasse)"
-)
+))
 
 
 # The place a WL line runs towards is a stop's name, never a word to
@@ -332,19 +334,19 @@ _PREPOSITION_NAME_RE: re.Pattern[str] = re.compile(
 # ("Richtung Stammersdrof" → "towards Stammersdrif"). The word right after
 # "Richtung" is shielded unless it is a compass direction or a generic noun
 # the model should translate ("Richtung Süden", "Richtung Zentrum").
-_DIRECTION_NAME_RE: re.Pattern[str] = re.compile(
+_DIRECTION_NAME_RE: re.Pattern[str] = re.compile(latin_names(
     r"(?<=\bRichtung )(?!(?:Süden|Norden|Osten|Westen|Zentrum|Stadtzentrum|Stadtmitte"
     r"|Innenstadt|Stadtgrenze|Stadt|Wien|Haltestellen?|Linien?|Stationen?|Bahnhof"
     r"|Endstelle)\b)[A-ZÄÖÜ][a-zäöüß][A-Za-zÄÖÜäöüß-]*(?![\w:-])"
-)
+))
 
 # A main station as ÖBB writes it: ``Wien Hbf``, ``St.Pölten Hbf``,
 # ``Wr.Neustadt Hbf``. The directory knows the long forms only, so the model
 # saw the short ones and turned 96 ``Wien Hbf`` into "Vienna Hbf" while the
 # same item kept "Wien Meidling" (EN audit 2026-10-03).
-_MAIN_STATION_RE: re.Pattern[str] = re.compile(
+_MAIN_STATION_RE: re.Pattern[str] = re.compile(latin_names(
     r"(?<![\w.])(?:[A-ZÄÖÜ][a-zäöüß]{1,4}\.\s?)?[A-ZÄÖÜ][A-Za-zÄÖÜäöüß-]+ Hbf\b"
-)
+))
 
 # WL numbers the gates of the Zentralfriedhof and addresses the stops
 # by them ("Zentralfriedhof, 4. Tor" — the name printed on the stop

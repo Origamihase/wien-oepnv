@@ -77,6 +77,21 @@ Zwei Sorten, bewusst unterscheidbar:
   Text nennt den Namen wie am Schild („to Hohe Warte“, mit dem echten Modell
   geprüft), der deutsche Feed behält WLs Wortlaut. In 14.447 Quelltexten
   seit Juli änderte die Regel nur die vier mit „Hohen Warte“.
+  Seit dem KI-Wächter vom 03.11. (Feed-Stand vom 02.11. 14:30) kennt jeder
+  Namensdurchgang alle lateinischen Buchstaben, nicht nur die deutschen: WL
+  schrieb „Grund: Verkehrsstörung im Bereich Biróstraße 17“ (Linie 17A), das
+  „ó“ beendete den Namen vor dem Suffix, und der englische Text las „in the
+  area of Biró Street 17“. Die Namensmuster in `entities`, `masking` und
+  `placeholders` stehen weiter in deutscher Schreibweise (`[A-ZÄÖÜ]`,
+  `[a-zäöüß]`); `latin_names` (`src/utils/name_letters.py`) weitet sie beim
+  Kompilieren auf Basic Latin und U+00C0 bis U+024F („Bertégasse“,
+  „Esterházygasse“, „Dvořákgasse“, „Győr“). Dieselbe Regel gilt für WLs
+  Adressmaske vor der Linienerkennung (`ADDRESS_NO_RE`), wo die Hausnummer
+  einer solchen Straße sonst als Linie galt („Biróstraße 17“ → Linie 17).
+  In 23.302 Texten aller 17.035 Stände des deutschen Feeds änderte die
+  Regel die Modelleingabe von sechs (Biróstraße, Bertégasse,
+  Fertöszentmiklós), jedes Mal nur den Namen; das echte Modell schreibt jetzt „Biróstraße 17“ und
+  übersetzt die übrigen wie vorher.
   Werden nach dem Modelllauf **wortgleich** zurückgesetzt. Ein Datum wird
   **vor** den Linienkennungen maskiert: sonst wäre nur sein Tag ein
   Platzhalter, der am Punkt klebt, und das Modell verliert den Punkt
