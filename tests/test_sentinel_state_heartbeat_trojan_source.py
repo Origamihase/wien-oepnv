@@ -91,7 +91,6 @@ Both writers: switch from ``ensure_ascii=False`` to ``ensure_ascii=True``.
 
 from __future__ import annotations
 
-import importlib
 import json
 import sys
 import types
@@ -101,7 +100,7 @@ from typing import Any
 import pytest
 
 from scripts import update_all_stations as wrapper
-from tests._conftest.build_feed_bindings import setattr_all
+from tests._conftest.build_feed_bindings import fresh_build_feed, setattr_all
 
 
 # Canonical Trojan-Source / zero-width / Unicode-line-terminator / C1
@@ -160,7 +159,6 @@ def _import_build_feed(
     rather than the repo's real one. Mirrors the import shape used by
     ``tests/test_first_seen_cleanup.py``.
     """
-    module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
 
@@ -176,17 +174,12 @@ def _import_build_feed(
     monkeypatch.setitem(sys.modules, "providers.wiener_linien", wl)
     monkeypatch.setitem(sys.modules, "providers.oebb", oebb)
     monkeypatch.setitem(sys.modules, "providers.vor", vor)
-    sys.modules.pop(module_name, None)
-    sys.modules.pop("feed", None)
-    sys.modules.pop("feed.config", None)
-    sys.modules.pop("src.feed", None)
-    sys.modules.pop("src.feed.config", None)
 
     monkeypatch.chdir(tmp_path)
     (tmp_path / "data").mkdir(exist_ok=True)
     monkeypatch.setenv("STATE_PATH", "data/first_seen_sentinel.json")
 
-    build_feed = importlib.import_module(module_name)
+    build_feed = fresh_build_feed(extra_pops=("feed", "feed.config", "src.feed", "src.feed.config"))
     # Allow ``validate_path`` to pass through arbitrary tmp paths.
     setattr_all(monkeypatch, build_feed, "validate_path", lambda p, *args: p)
     return build_feed

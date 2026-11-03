@@ -17,8 +17,6 @@ the pass off.
 
 from __future__ import annotations
 
-import importlib
-import sys
 import types
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
@@ -31,7 +29,7 @@ import pytest
 from src.build_feed import _apply_topic_budget, _topic_budget_key
 from src.feed import config as feed_config
 from src.feed_types import FeedItem
-from tests._conftest.build_feed_bindings import setattr_all
+from tests._conftest.build_feed_bindings import fresh_build_feed, part, setattr_all
 
 
 def _item(title: str, *, starts_at: str = "2026-09-19T13:23:00+02:00", guid: str | None = None) -> FeedItem:
@@ -177,11 +175,9 @@ def test_the_budget_comes_from_the_environment(monkeypatch: pytest.MonkeyPatch) 
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
-    module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
-    sys.modules.pop(module_name, None)
-    return importlib.import_module(module_name)
+    return fresh_build_feed()
 
 
 def test_the_budget_is_wired_into_the_build(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
@@ -237,7 +233,7 @@ def test_the_budget_is_wired_into_the_build(monkeypatch: pytest.MonkeyPatch, tmp
     def fake_read_cache(provider: str) -> list[dict[str, Any]]:
         return [*tickers, *others] if provider == "wl" else []
 
-    monkeypatch.setattr(bf, "read_cache", fake_read_cache)
+    monkeypatch.setattr(part(bf, "providers_setup"), "read_cache", fake_read_cache)
     out_file = tmp_path / "feed.xml"
     setattr_all(monkeypatch, bf, "validate_path", lambda path, name: path)
     monkeypatch.setattr(bf.feed_config, "OUT_PATH", out_file)

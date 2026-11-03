@@ -1,13 +1,12 @@
-import importlib
 import sys
 from datetime import datetime, timedelta, UTC
 from pathlib import Path
 import pytest
 import types
+from tests._conftest.build_feed_bindings import fresh_build_feed
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch, env: dict[str, str] | None = None) -> types.ModuleType:
-    module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
     providers = types.ModuleType("providers")
@@ -21,8 +20,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch, env: dict[str, str] | No
     env = env or {}
     for k, v in env.items():
         monkeypatch.setenv(k, str(v))
-    sys.modules.pop(module_name, None)
-    module = importlib.import_module(module_name)
+    module = fresh_build_feed()
     module.refresh_from_env()
     return module
 

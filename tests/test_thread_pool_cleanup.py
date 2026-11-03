@@ -1,6 +1,7 @@
 
 from typing import Any
 from unittest.mock import patch
+from tests._conftest.build_feed_bindings import part
 
 def test_thread_pool_cleanup() -> None:
     # Import build_feed here to ensure we get the current module from sys.modules
@@ -17,9 +18,9 @@ def test_thread_pool_cleanup() -> None:
     assert getattr(mock_loader, "_provider_cache_name", None) is None
 
     # Patch PROVIDERS list in build_feed
-    with patch.object(build_feed, "PROVIDERS", [("TEST_ENV", mock_loader)]), \
-         patch("src.build_feed.iter_providers") as mock_iter, \
-         patch.object(build_feed, "_PROVIDERS_INITIALIZED", True):
+    with patch.object(part(build_feed, "providers_setup"), "PROVIDERS", [("TEST_ENV", mock_loader)]), \
+         patch("src.feed_build.providers_setup.iter_providers") as mock_iter, \
+         patch.object(part(build_feed, "providers_setup"), "_PROVIDERS_INITIALIZED", True):
 
         from src.feed.providers import ProviderSpec
         if hasattr(mock_loader, "_provider_cache_name"):
@@ -41,11 +42,11 @@ def test_thread_pool_cleanup() -> None:
         with patch("src.build_feed.feed_config.get_bool_env", return_value=True), \
              patch.object(build_feed.feed_config, "PROVIDER_TIMEOUT", 0.05):
             # Mock ThreadPoolExecutor
-            with patch("src.build_feed.ThreadPoolExecutor") as MockExecutor:
+            with patch("src.feed_build.collect.ThreadPoolExecutor") as MockExecutor:
                 mock_instance = MockExecutor.return_value
 
                 # Mock wait to return immediately
-                with patch("src.build_feed.wait", return_value=(set(), set())):
+                with patch("src.feed_build.collect.wait", return_value=(set(), set())):
                     build_feed._collect_items()
 
                 # Check if executor was created

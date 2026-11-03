@@ -28,8 +28,6 @@ Mutations checked against this file (each one caught, by the test named):
 
 from __future__ import annotations
 
-import importlib
-import sys
 import types
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
@@ -40,7 +38,7 @@ import pytest
 
 from src.build_feed import _defer_repeated_route_titles
 from src.feed_types import FeedItem
-from tests._conftest.build_feed_bindings import setattr_all
+from tests._conftest.build_feed_bindings import fresh_build_feed, part, setattr_all
 
 _ROUTE = "Wien Hauptbahnhof ↔ Gramatneusiedl"
 
@@ -154,11 +152,9 @@ def test_other_sources_are_left_alone(source: str) -> None:
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
-    module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
-    sys.modules.pop(module_name, None)
-    return importlib.import_module(module_name)
+    return fresh_build_feed()
 
 
 def test_the_pass_is_wired_into_the_build(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
@@ -214,7 +210,7 @@ def test_the_pass_is_wired_into_the_build(monkeypatch: pytest.MonkeyPatch, tmp_p
             return phases
         return []
 
-    monkeypatch.setattr(bf, "read_cache", fake_read_cache)
+    monkeypatch.setattr(part(bf, "providers_setup"), "read_cache", fake_read_cache)
     out_file = tmp_path / "feed.xml"
     setattr_all(monkeypatch, bf, "validate_path", lambda path, name: path)
     monkeypatch.setattr(bf.feed_config, "OUT_PATH", out_file)
@@ -305,7 +301,7 @@ def test_a_disruption_beside_running_works_leads_the_build(
             return [works, accident]
         return []
 
-    monkeypatch.setattr(bf, "read_cache", fake_read_cache)
+    monkeypatch.setattr(part(bf, "providers_setup"), "read_cache", fake_read_cache)
     out_file = tmp_path / "feed.xml"
     setattr_all(monkeypatch, bf, "validate_path", lambda path, name: path)
     monkeypatch.setattr(bf.feed_config, "OUT_PATH", out_file)

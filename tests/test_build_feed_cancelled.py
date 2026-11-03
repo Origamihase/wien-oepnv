@@ -2,7 +2,7 @@ import time
 from typing import Any
 from unittest.mock import MagicMock, patch
 import src.build_feed as bf
-from tests._conftest.build_feed_bindings import patch_all
+from tests._conftest.build_feed_bindings import part, patch_all
 
 def test_collect_items_cancelled_future() -> None:
     # Setup configuration
@@ -25,9 +25,9 @@ def test_collect_items_cancelled_future() -> None:
     report = MagicMock(spec=bf.RunReport)
 
     with patch_all(bf, "feed_config", mock_feed_config), \
-         patch.object(bf, "PROVIDERS", [("DUMMY_ENABLE", mock_fetch)]), \
-         patch.object(bf, "DEFAULT_PROVIDERS", ("DUMMY_ENABLE",)), \
-         patch("src.build_feed.iter_providers") as mock_iter:
+         patch.object(part(bf, "providers_setup"), "PROVIDERS", [("DUMMY_ENABLE", mock_fetch)]), \
+         patch.object(part(bf, "providers_setup"), "DEFAULT_PROVIDERS", ("DUMMY_ENABLE",)), \
+         patch("src.feed_build.providers_setup.iter_providers") as mock_iter:
 
         from src.feed.providers import ProviderSpec
 
@@ -44,7 +44,7 @@ def test_collect_items_cancelled_future() -> None:
         # However, `init_providers()` actually SETS it if we run it!
         # So we need to ensure that `init_providers()` doesn't turn it into a cache fetcher,
         # We temporarily patch `_PROVIDERS_INITIALIZED` to True to skip `init_providers` entirely for this mock setup.
-        with patch.object(bf, "_PROVIDERS_INITIALIZED", True):
+        with patch.object(part(bf, "providers_setup"), "_PROVIDERS_INITIALIZED", True):
             # Run _collect_items. The fetch should time out and the future will be cancelled.
             # Then, if the wait() returns a cancelled future, it won't be logged as "Fetch abgebrochen".
             bf._collect_items(report=report)

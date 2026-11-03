@@ -10,7 +10,6 @@ file-level suppression is the bulletproof choice.
 
 from __future__ import annotations
 
-import importlib
 import json
 import sys
 from datetime import datetime, UTC
@@ -21,7 +20,7 @@ from typing import Any, cast
 import pytest
 
 from src.feed_types import FeedItem
-from tests._conftest.build_feed_bindings import setattr_all
+from tests._conftest.build_feed_bindings import fresh_build_feed, part, setattr_all
 
 
 def _make_plugin_module(name: str, *, register_callable: Any = None, providers: Any = None) -> ModuleType:
@@ -113,20 +112,19 @@ def test_collect_items_uses_plugin_provider(monkeypatch: pytest.MonkeyPatch) -> 
 
     provider_mod.reset_registry()
 
-    build_feed = importlib.import_module("src.build_feed")
     try:
-        build_feed = importlib.reload(build_feed)
+        build_feed = fresh_build_feed()
         build_feed.reset_module_state()
         # Explicitly initialize config/plugins because import no longer does it
         build_feed.refresh_from_env()
         # Explicitly set false to not get side effects of the previous runs inside the current interpreter
-        setattr(build_feed, "PROVIDERS", [])
-        setattr(build_feed, "DEFAULT_PROVIDERS", tuple())
+        monkeypatch.setattr(part(build_feed, "providers_setup"), "PROVIDERS", [])
+        monkeypatch.setattr(part(build_feed, "providers_setup"), "DEFAULT_PROVIDERS", tuple())
         provider_mod.reset_registry(with_defaults=False)
 
         # We need to manually register the plugin for this test now since we cleared it!
         provider_mod.register_provider("PLUGIN_ENABLE", plugin_loader, cache_key="plugin")
-        build_feed.PROVIDERS.append(("PLUGIN_ENABLE", plugin_loader))
+        part(build_feed, "providers_setup").PROVIDERS.append(("PLUGIN_ENABLE", plugin_loader))
 
         monkeypatch.setenv("WL_ENABLE", "0")
         monkeypatch.setenv("OEBB_ENABLE", "0")
@@ -142,7 +140,7 @@ def test_collect_items_uses_plugin_provider(monkeypatch: pytest.MonkeyPatch) -> 
         provider_mod.reset_registry()
         monkeypatch.delenv("WIEN_OEPNV_PROVIDER_PLUGINS", raising=False)
         sys.modules.pop(module_name, None)
-        importlib.reload(build_feed)
+        fresh_build_feed()
 
 
 def test_main_generates_feed_and_health_with_plugin(
@@ -178,19 +176,17 @@ def test_main_generates_feed_and_health_with_plugin(
 
     provider_mod.reset_registry()
 
-    import src.build_feed as build_feed
-
-    build_feed = importlib.reload(build_feed)
+    build_feed = fresh_build_feed()
     build_feed.reset_module_state()
 
     try:
-        build_feed.PROVIDERS = []
-        build_feed.DEFAULT_PROVIDERS = tuple()
+        monkeypatch.setattr(part(build_feed, "providers_setup"), "PROVIDERS", [])
+        monkeypatch.setattr(part(build_feed, "providers_setup"), "DEFAULT_PROVIDERS", tuple())
         provider_mod.reset_registry(with_defaults=False)
 
         # Register manually the plugin
         provider_mod.register_provider("PLUGIN_ENABLE", plugin_loader, cache_key="plugin")
-        build_feed.PROVIDERS.append(("PLUGIN_ENABLE", plugin_loader))
+        part(build_feed, "providers_setup").PROVIDERS.append(("PLUGIN_ENABLE", plugin_loader))
 
         monkeypatch.setenv("WL_ENABLE", "0")
         monkeypatch.setenv("OEBB_ENABLE", "0")
@@ -252,7 +248,7 @@ def test_main_generates_feed_and_health_with_plugin(
         provider_mod.reset_registry()
         monkeypatch.delenv("WIEN_OEPNV_PROVIDER_PLUGINS", raising=False)
         sys.modules.pop(module_name, None)
-        importlib.reload(build_feed)
+        fresh_build_feed()
 
 def test_full_build_loads_plugins_subprocess(tmp_path: Path) -> None:
     import subprocess

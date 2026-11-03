@@ -13,7 +13,6 @@
 """
 from __future__ import annotations
 
-import importlib
 import sys
 import types
 from concurrent.futures import Future
@@ -22,10 +21,10 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+from tests._conftest.build_feed_bindings import fresh_build_feed
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
-    module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
     providers = types.ModuleType("providers")
@@ -34,8 +33,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
         setattr(mod, "fetch_events", lambda: [])
         monkeypatch.setitem(sys.modules, f"providers.{name}", mod)
     monkeypatch.setitem(sys.modules, "providers", providers)
-    sys.modules.pop(module_name, None)
-    return importlib.import_module(module_name)
+    return fresh_build_feed()
 
 
 def test_recency_sort_clamps_future_pubdate(monkeypatch: pytest.MonkeyPatch) -> None:

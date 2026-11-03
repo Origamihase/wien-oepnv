@@ -1,16 +1,14 @@
-import importlib
 import sys
 from datetime import datetime, UTC
 from typing import Any
 
 import pytest
+from tests._conftest.build_feed_bindings import fresh_build_feed
 
 
 def test_max_items_non_negative(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("MAX_ITEMS", "-5")
-    module_name = "src.build_feed"
-    sys.modules.pop(module_name, None)
-    build_feed = importlib.import_module(module_name)
+    build_feed = fresh_build_feed()
     build_feed.refresh_from_env()
     # Refactored build_feed uses feed_config.MAX_ITEMS
     assert build_feed.feed_config.MAX_ITEMS == 0
@@ -19,8 +17,7 @@ def test_max_items_non_negative(monkeypatch: pytest.MonkeyPatch) -> None:
 def test_make_rss_ignores_items_when_max_is_zero(monkeypatch: pytest.MonkeyPatch) -> None:
     module_name = "src.build_feed"
     monkeypatch.setenv("MAX_ITEMS", "0")
-    sys.modules.pop(module_name, None)
-    build_feed = importlib.import_module(module_name)
+    build_feed = fresh_build_feed()
     build_feed.refresh_from_env()
     try:
         def fail_emit(*_args: Any, **_kwargs: Any) -> None:  # pragma: no cover - should not be called

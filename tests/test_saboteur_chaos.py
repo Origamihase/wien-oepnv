@@ -22,6 +22,7 @@ from unittest.mock import MagicMock, patch
 import requests
 
 from src.providers import wl_fetch as wl
+from tests._conftest.build_feed_bindings import part
 
 
 # ============================================================================
@@ -175,9 +176,9 @@ def test_chaos_provider_bulkhead_one_crash_doesnt_drop_others() -> None:
         ProviderSpec(env_var="OEBB_ENABLED", loader=cast(Loader, oebb_returns_items), cache_key=""),
     ]
 
-    with patch.object(build_feed, "PROVIDERS", []), \
-         patch("src.build_feed.iter_providers", return_value=fake_specs), \
-         patch.object(build_feed, "_PROVIDERS_INITIALIZED", True), \
+    with patch.object(part(build_feed, "providers_setup"), "PROVIDERS", []), \
+         patch("src.feed_build.providers_setup.iter_providers", return_value=fake_specs), \
+         patch.object(part(build_feed, "providers_setup"), "_PROVIDERS_INITIALIZED", True), \
          patch("src.build_feed.feed_config.get_bool_env", return_value=True), \
          patch.object(build_feed.feed_config, "PROVIDER_TIMEOUT", 5.0):
         items = build_feed._collect_items()
@@ -222,9 +223,9 @@ def test_chaos_provider_bulkhead_one_returns_garbage_doesnt_crash() -> None:
         ProviderSpec(env_var="GARBAGE_ENABLED", loader=cast(Loader, garbage_provider), cache_key=""),
     ]
 
-    with patch.object(build_feed, "PROVIDERS", []), \
-         patch("src.build_feed.iter_providers", return_value=fake_specs), \
-         patch.object(build_feed, "_PROVIDERS_INITIALIZED", True), \
+    with patch.object(part(build_feed, "providers_setup"), "PROVIDERS", []), \
+         patch("src.feed_build.providers_setup.iter_providers", return_value=fake_specs), \
+         patch.object(part(build_feed, "providers_setup"), "_PROVIDERS_INITIALIZED", True), \
          patch("src.build_feed.feed_config.get_bool_env", return_value=True), \
          patch.object(build_feed.feed_config, "PROVIDER_TIMEOUT", 5.0):
         items = build_feed._collect_items()

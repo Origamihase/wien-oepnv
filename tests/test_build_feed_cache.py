@@ -135,7 +135,7 @@ def test_collect_items_reads_from_cache(monkeypatch: pytest.MonkeyPatch) -> None
         calls.append(provider)
         return [{"provider": provider}]
 
-    monkeypatch.setattr(build_feed, "read_cache", fake_read_cache)
+    monkeypatch.setattr(part(build_feed, "providers_setup"), "read_cache", fake_read_cache)
     monkeypatch.setenv("WL_ENABLE", "1")
     monkeypatch.setenv("OEBB_ENABLE", "1")
     # Stammstrecke uses a fixed-path cache (not via read_cache); disable

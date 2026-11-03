@@ -84,6 +84,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import pytest
+from tests._conftest.build_feed_bindings import part
 
 
 def _write_oversized(path: Path, size_bytes: int) -> None:
@@ -300,7 +301,7 @@ def test_load_state_rejects_oversized_file(
     _write_oversized(state_file, 4096)
 
     monkeypatch.setattr(feed_config, "STATE_FILE", state_file, raising=False)
-    monkeypatch.setattr(build_feed_mod, "MAX_STATE_FILE_BYTES", 1024, raising=False)
+    monkeypatch.setattr(part(build_feed_mod, "state"), "MAX_STATE_FILE_BYTES", 1024, raising=False)
 
     with patch("src.build_feed.json.load") as mock_load:
         result = build_feed_mod._load_state()
@@ -329,7 +330,7 @@ def test_save_state_merge_guard_handles_oversized_existing(
     _write_oversized(state_file, 4096)
 
     monkeypatch.setattr(feed_config, "STATE_FILE", state_file, raising=False)
-    monkeypatch.setattr(build_feed_mod, "MAX_STATE_FILE_BYTES", 1024, raising=False)
+    monkeypatch.setattr(part(build_feed_mod, "state"), "MAX_STATE_FILE_BYTES", 1024, raising=False)
 
     new_state = {
         "test-id": {"first_seen": "2025-01-01T00:00:00+00:00"}
@@ -399,7 +400,7 @@ def test_canonical_size_cap_constants_inventory() -> None:
         ("src.utils.stations_data", "MAX_STATIONS_FILE_BYTES"),
         ("src.places.merge", "MAX_STATIONS_FILE_BYTES"),
         ("src.utils.stations_validation", "MAX_STATIONS_FILE_BYTES"),
-        ("src.build_feed", "MAX_STATE_FILE_BYTES"),
+        ("src.feed_build.state", "MAX_STATE_FILE_BYTES"),
     ]
 
     for module_name, attribute in inventory:

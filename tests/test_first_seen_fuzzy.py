@@ -1,14 +1,12 @@
-import importlib
 import sys
 import pytest
 import types
 from pathlib import Path
 from datetime import datetime, timedelta, UTC
-from tests._conftest.build_feed_bindings import setattr_all
+from tests._conftest.build_feed_bindings import fresh_build_feed, setattr_all
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> types.ModuleType:
-    module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
     providers = types.ModuleType("providers")
@@ -22,15 +20,9 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> types
     monkeypatch.setitem(sys.modules, "providers.wiener_linien", wl)
     monkeypatch.setitem(sys.modules, "providers.oebb", oebb)
     monkeypatch.setitem(sys.modules, "providers.vor", vor)
-    sys.modules.pop(module_name, None)
-    # Ensure config is reloaded to pick up new env vars/paths
-    sys.modules.pop("feed", None)
-    sys.modules.pop("feed.config", None)
-    sys.modules.pop("src.feed", None)
-    sys.modules.pop("src.feed.config", None)
     monkeypatch.chdir(tmp_path)
     monkeypatch.setenv("STATE_PATH", "data/state_fuzzy.json")
-    return importlib.import_module(module_name)
+    return fresh_build_feed(extra_pops=("feed", "feed.config", "src.feed", "src.feed.config"))
 
 
 def test_first_seen_fuzzy_identity(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
