@@ -806,6 +806,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "26E: Verkehrsunfall",
+    "description": "Linie 26E: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "f776a992de8a539ba332bb142c4db37dc66ff6ebaff2b936498e5ee6caca5d70",
+    "pubDate": "2026-11-03T18:08:00+01:00",
+    "starts_at": "2026-11-03T18:08:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=26E|D=2026-11-03|TK=26e verkehrsunfall",
+    "_wl_ids": [
+      "I20261103-0035"
+    ],
+    "_incident_start": "2026-11-03T18:08:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26E: Busse halten Bessemerstraße 1-3",
     "description": "Busse halten\nBessemerstraße 1-3",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -890,12 +906,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "31: Falschparker Betrieb ab Gaußplatz",
+    "title": "31: Falschparker",
     "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "7fc5dec6c1828e780870a54d956a3e47494ba66068f3920d342fbe84b2c28065",
     "pubDate": "2026-11-03T17:22:00+01:00",
-    "starts_at": "2026-11-03T17:25:37+01:00",
+    "starts_at": "2026-11-03T17:22:00+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=31|D=2026-11-03|TK=falschparker",
     "_wl_ids": [
