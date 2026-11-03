@@ -57,10 +57,20 @@ def _with_members(entry: FeedItem, items: Sequence[FeedItem], groups: Sequence[l
 # halten in Schleife, Wipplingerstr 39; …"). Now a run whose incidents are
 # partly planned measures (their cause names one, ``names_planned_measure``)
 # gives two entries: the running incidents, and the planned ones with the
-# display texts older than every incident (``_with_unowned``), which are
-# the works' stops. The works' entry then goes into its notice
+# display texts older than every incident (``_with_unowned``) that are
+# planned themselves, the works' stops (``_planned_texts``: their words
+# name a planned measure, or WL switched them on at a full hour). Such stops
+# beside a running incident alone make an entry of their own as well. The works' entry then goes into its notice
 # (``_absorb_works_tickers``) or keeps its own place. Incidents among
 # themselves, and planned measures among themselves, still share one slot.
+def _planned_texts(items: Sequence[FeedItem], group: Sequence[int]) -> bool:
+    """Whether a group without a cause is a planned measure: its texts name one, or it began on a full hour."""
+    if any(names_planned_measure(f"{_rendered_title(items[index])} {_ticker_text(items[index])}") for index in group):
+        return True
+    starts = [_ticker_time(items[index]) for index in group]
+    return all(start is not None and _scheduled_clock(start) for start in starts)
+
+
 def _planned_incident(items: Sequence[FeedItem], groups: Sequence[list[int]]) -> bool:
     """Whether an incident of a run (its groups, the first one with its cause) is a planned measure.
 
@@ -81,17 +91,28 @@ def _merged_runs(items: Sequence[FeedItem], run: Sequence[list[int]]) -> list[tu
     found, unowned = _run_incidents(items, run)
     planned = [groups for groups in found if _planned_incident(items, groups)]
     running = [groups for groups in found if not _planned_incident(items, groups)]
-    if not planned or not running:
+    # Display texts older than every incident and planned themselves ("62A:
+    # Straßenbau Haltestelle verlegt …" beside "62A: Verkehrsunfall" on
+    # 2026-10-22) stay with the planned measures, too.
+    stops = [group for group in unowned if _planned_texts(items, group)]
+    rest = [group for group in unowned if not _planned_texts(items, group)]
+    if not running or not (planned or stops):
         place, entry = _merged_run(items, found, unowned)
         return [(place, entry, [index for group in run for index in group])]
     parts: list[tuple[int, FeedItem, list[int]]] = []
-    for incidents, rest in ((running, []), (planned, unowned)):
+    for incidents, others in ((running, rest), (planned, stops)):
+        if not incidents:
+            # Planned stops without a planned incident: one entry of their own,
+            # as ``_run_incidents`` makes of a run without an incident.
+            incidents, others = ([list(others)] if others else []), []
+        if not incidents:
+            continue
         indices = [index for groups in incidents for group in groups for index in group]
-        indices += [index for group in rest for index in group]
+        indices += [index for group in others for index in group]
         if len(indices) < 2:
             parts.append((indices[0], items[indices[0]], indices))
             continue
-        place, entry = _merged_run(items, incidents, rest)
+        place, entry = _merged_run(items, incidents, others)
         parts.append((place, entry, indices))
     return parts
 

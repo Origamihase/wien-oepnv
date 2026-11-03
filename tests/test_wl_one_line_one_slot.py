@@ -417,3 +417,22 @@ def test_consequences_that_open_alike_share_the_opening() -> None:
     assert bf._shared_openings(
         ["Züge halten Donaufelder Straße 175-177", "Züge halten bei Li. 18 Richtung Burggasse, Stadthalle"]
     ) == ["Züge halten Donaufelder Straße 175-177", "Züge halten bei Li. 18 Richtung Burggasse, Stadthalle"]
+
+
+def test_planned_stops_beside_an_accident_keep_their_own_slot() -> None:
+    # 62A on 2026-10-22: the stop moved for road works since the day before,
+    # a traffic accident at 16:20. Appended to the accident, "Straßenbau
+    # Haltestelle verlegt …" made it a planned measure without "[Seit]".
+    items = [
+        _wl("62A: Straßenbau Haltestelle verlegt zur Wienerbergbrücke vor Breitenfurter Straße",
+            "Straßenbau\nHaltestelle verlegt zur Wienerbergbrücke vor Breitenfurter Straße", "moved",
+            "2026-10-21T07:20:54+02:00", "2026-10-22T17:00:00+02:00"),
+        _wl("62A: Verkehrsunfall",
+            "Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.", "accident",
+            "2026-10-22T16:20:00+02:00", "2026-10-22T17:20:00+02:00"),
+    ]
+    built = _built(items)
+    assert sorted(str(it["guid"]) for it in built) == ["accident", "moved"]
+    (accident,) = (it for it in built if it["guid"] == "accident")
+    assert accident["description"] == "Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall."
+    assert bf._incident_since(accident, accident["starts_at"]) is not None
