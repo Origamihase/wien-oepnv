@@ -208,7 +208,9 @@ kleine Zuweisungen mit zusammen rund 1.020 Zeilen (die größte,
 Funktion, die es nutzt. Ein weiteres Datenmodul brächte deshalb wenig.
 `src/utils/secret_scanner.py` (3.059 Zeilen, davon 2.162 für die Liste
 `_KNOWN_TOKENS`, auf die die Tests 283-mal zugreifen) bleibt aus demselben
-Grund, wie es ist. Entscheidung: Der Code bleibt so; geordnet wurden nur
+Grund, wie es ist (seit Michaels Regel vom 2026-11-02, höchstens 700 Zeilen
+je Datei, steht die Liste in Teilen unter `src/utils/secret_patterns/`,
+siehe [Modularisierung](modularisierung.md)). Entscheidung: Der Code bleibt so; geordnet wurden nur
 die Dokumentation (Monatsüberschriften im CHANGELOG, Inhaltsverzeichnis
 oben in diesem Dokument). Die Größe von `build_feed.py` allein ist damit
 kein Befund für ein Audit.

@@ -39,7 +39,7 @@ Die Bahnhöfe im Text sucht `_find_stations_in_text` mit einem gleitenden Fenste
 Im Standardmodus (Flag aus) bleibt beides unverändert.
 
 ## Warnung für zukünftige Entwickler (Tech-Debt)
-Aktuell gibt es im Projekt zwei separate Stellen, an denen Schlüsselwörter für Kategorien und Liniencodes gepflegt werden — beide leben in `src/providers/oebb.py`:
+Aktuell gibt es im Projekt zwei separate Stellen, an denen Schlüsselwörter für Kategorien und Liniencodes gepflegt werden — beide leben in `src/providers/oebb_routes.py` (seit 2026-11-03 ein Teil von `src/providers/oebb.py`, das den Abruf und die öffentlichen Namen behält):
 
 1. Die Menge `NON_LOCATION_PREFIXES` — wird von `_is_category` ausgewertet, um Titel-Tokens als Kategorien (vs. echte Ortsnamen) zu erkennen.
 2. Der reguläre Ausdruck `base_pattern` innerhalb der Funktion `_strip_oebb_prefixes` — entfernt führende Linien-/Störungspräfixe iterativ aus dem Titel.

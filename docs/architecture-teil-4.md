@@ -520,7 +520,7 @@ generischen Schlüssel ebenfalls beansprucht, kippte die Auflösung still.
 heute nur deshalb nicht, weil alle seine Aliase `Inzersdorf` tragen.
 
 **Namens-Zuordnungskonflikte** (seit 2026-09-18,
-`_find_name_ownership_issues` in `src/utils/stations_validation.py`):
+`_find_name_ownership_issues` in `src/utils/station_checks/names.py`):
 Tragen zwei Einträge denselben kanonischen Namen, behält `_station_lookup`
 den zuerst registrierten, ohne Stärke und Quelle abzuwägen. Gemeldet wird
 nur der Fall, in dem dieser Gewinner keine Haltestelle des Namens hat,
@@ -562,7 +562,7 @@ Route im Titel wäre verworfen worden.
 der Donau“. Eine Route Wien ↔ Bruck/Leitha galt als Wien ↔ unbekannt, und
 die strenge Routenprüfung verwarf die Meldung. Der Cache kann solche Fälle
 nicht zeigen, weil eine verworfene Meldung nie gespeichert wird. Seit
-2026-10-01 versucht `_candidate_values` (`src/utils/stations.py`) für
+2026-10-01 versucht `_candidate_values` (`src/utils/stations_lookup.py`) für
 „X/Y“ zusätzlich „X an der Y“ und „X am Y“, nach allen anderen Varianten;
 ein Name, der wie geschrieben auflöst, behält seinen Bahnhof. Betroffen
 waren fünf Pendler-Bahnhöfe: Bruck an der Leitha, Tulln an der Donau,
@@ -607,7 +607,7 @@ Feed mit „Hauptbahnhof“, wenn der Ort davor höchstens sieben Zeichen hat
 „Linz Hauptbahnhof“, „Graz Hauptbahnhof“, „Villach Hauptbahnhof“, aber
 „Salzburg Hbf“, „St. Pölten Hbf“, „Wiener Neustadt Hbf“. Die Regel steht
 in der Anzeigeschicht des Verzeichnisses (`display_name` in
-`src/utils/stations.py`, `_main_station_form`), nicht in
+`src/utils/stations.py`, `_main_station_form` in `src/utils/stations_lookup.py`), nicht in
 `data/stations.json`: Das Verzeichnis schreibt beide Formen („Linz Hbf“,
 „St. Pölten Hauptbahnhof“), und jede Aktualisierung durch
 `scripts/update_station_directory.py` darf das weiter tun, die Anzeige
