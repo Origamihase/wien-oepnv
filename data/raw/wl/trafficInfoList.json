@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261103-0005-F01, I20260925-0011, I20261103-0007, I20260909-0007, I20260922-0032, I20261103-0004-F01, I20261020-0029, I20261103-0003-F04, I20261103-0006"
+    "trafficInfoNameList": "I20261103-0005-F01, I20260925-0011, I20260909-0007, I20261103-0009, I20260922-0032, I20261103-0004-F01, I20261020-0029, I20261103-0003-F04, I20261103-0006, I20261103-0007-F01, I20261103-0010-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R1474-412, R1448-412, R318-437, R1876-101, R1882-101, R1875-101, R1881-101, R1880-101, R1884-101, R1883-101, R401-101, R100-136, R102-136, R101-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R19-136, R45-136, R3886-480, R2558-125, R2343-125, R2378-627, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1974-466, R1272-440, R1301-440, R500-101, R851-101, R1714-101, R1715-101, R1713-101, R1712-101, R1711-101, R1709-101, R851-399, R427-399, R477-399, R1713-399, R1711-399, R1715-399, R1717-399, R1718-399, R1712-399, R1709-399, R1714-399, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1474-412, R318-437, R293-474, R1448-412, R1880-101, R1876-101, R1884-101, R1875-101, R1883-101, R1882-101, R1881-101, R45-136, R118-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R100-136, R119-136, R130-136, R19-136, R3886-480, R401-101, R2558-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R1974-466, R1272-440, R1301-440, R500-101, R851-101, R1714-101, R1715-101, R1709-101, R1711-101, R1712-101, R1713-101, R851-399, R477-399, R427-399, R1712-399, R1711-399, R1709-399, R1714-399, R1715-399, R1717-399, R1718-399, R1713-399, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -408,22 +408,21 @@
     "alertCauseId": 137,
     "attributes": {
      "relatedLineTypes": {
-      "1": "ptTram",
-      "LB": "ptTramWLB"
+      "1": "ptTram"
      }
     },
-    "description": "Linie 1: Fahrtbehinderung in Richtung Stefan-Fadinger-Platz. Badner Bahn: Fahrtbehinderung in Richtung Baden, Josefsplatz. Grund: Betriebsstörung.",
-    "descriptionHTML": "<p>Linie 1:<br>Fahrtbehinderung in Richtung Stefan-Fadinger-Platz.<br>Badner Bahn:<br>Fahrtbehinderung in Richtung Baden, Josefsplatz.</p><p>Grund: Betriebsstörung.</p>",
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 1:<br>Fahrtbehinderung in Richtung Stefan-Fadinger-Platz.<br>Badner Bahn:<br>Fahrtbehinderung in Richtung Baden, Josefsplatz.</p><p>Grund: Betriebsstörung.</p>",
-       "descriptionPlain": "Linie 1: Fahrtbehinderung in Richtung Stefan-Fadinger-Platz. Badner Bahn: Fahrtbehinderung in Richtung Baden, Josefsplatz. Grund: Betriebsstörung.",
-       "title": "1, Badner Bahn: Betriebsstörung"
+       "descriptionHtml": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "1: Betriebsstörung"
       }
      }
     ],
-    "name": "I20261103-0007",
+    "name": "I20261103-0007-F01",
     "owner": "WL",
     "parentName": "I20261103-0007",
     "priority": "1",
@@ -431,28 +430,118 @@
     "reasonName": "Betriebsstörung",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "1",
-     "LB"
+     "1"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 101,
       "lineName": "1",
       "vehicleType": "ptTram"
-     },
-     {
-      "lineId": 399,
-      "lineName": "LB",
-      "vehicleType": "ptTramWLB"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-03T07:59:00.000+0100",
-     "lastUpdate": "2026-11-03T07:59:00.000+0100",
+     "created": "2026-11-03T08:06:00.000+0100",
+     "lastUpdate": "2026-11-03T08:06:00.000+0100",
+     "resume": "2026-11-03T08:06:00.000+0100",
      "start": "2026-11-03T07:58:00.000+0100"
     },
-    "title": "1, Badner Bahn: Betriebsstörung"
+    "title": "1: Betriebsstörung"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Die Linie U6 fährt derzeit zwischen den Stationen Dresdner Straße und Handelskai in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 08:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Dresdner Straße.",
+    "descriptionHTML": "<p>Die Linie U6 fährt derzeit zwischen den Stationen Dresdner Straße und Handelskai in beiden Richtungen über Gleis 1.</p><p>Voraussichtliche Dauer: 08:40 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Dresdner Straße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Die Linie U6 fährt derzeit zwischen den Stationen Dresdner Straße und Handelskai in beiden Richtungen über Gleis 1.</p><p>Voraussichtliche Dauer: 08:40 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Dresdner Straße.</p>",
+       "descriptionPlain": "Die Linie U6 fährt derzeit zwischen den Stationen Dresdner Straße und Handelskai in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 08:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Dresdner Straße.",
+       "title": "U6: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261103-0009",
+    "owner": "WL",
+    "parentName": "I20261103-0009",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4642
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-03T08:14:00.000+0100",
+     "lastUpdate": "2026-11-03T08:16:00.000+0100",
+     "start": "2026-11-03T08:13:00.000+0100"
+    },
+    "title": "U6: Rettungseinsatz"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U2": "ptMetro"
+     }
+    },
+    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U2: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261103-0010-F01",
+    "owner": "WL",
+    "parentName": "I20261103-0010",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 302,
+      "lineName": "U2",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4252
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-03T08:26:00.000+0100",
+     "lastUpdate": "2026-11-03T08:26:00.000+0100",
+     "resume": "2026-11-03T08:26:00.000+0100",
+     "start": "2026-11-03T08:26:00.000+0100"
+    },
+    "title": "U2: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -779,7 +868,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "name": "R1709-101",
     "owner": "WL",
     "parentName": "R1709-101",
@@ -797,12 +886,12 @@
      "end": "2026-11-03T08:57:00.000+0100",
      "start": "2026-11-03T07:59:11.000+0100"
     },
-    "title": "Fahrtbehinderung\nBetriebsstörung"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "name": "R1709-399",
     "owner": "WL",
     "parentName": "R1709-399",
@@ -820,12 +909,12 @@
      "end": "2026-11-03T08:59:00.000+0100",
      "start": "2026-11-03T08:00:12.000+0100"
     },
-    "title": "Fahrtbehinderung\nBetriebsstörung"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "name": "R1711-101",
     "owner": "WL",
     "parentName": "R1711-101",
@@ -843,12 +932,12 @@
      "end": "2026-11-03T08:57:00.000+0100",
      "start": "2026-11-03T07:59:11.000+0100"
     },
-    "title": "Fahrtbehinderung\nBetriebsstörung"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "name": "R1711-399",
     "owner": "WL",
     "parentName": "R1711-399",
@@ -866,12 +955,12 @@
      "end": "2026-11-03T08:59:00.000+0100",
      "start": "2026-11-03T08:00:12.000+0100"
     },
-    "title": "Fahrtbehinderung\nBetriebsstörung"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "name": "R1712-101",
     "owner": "WL",
     "parentName": "R1712-101",
@@ -889,12 +978,12 @@
      "end": "2026-11-03T08:57:00.000+0100",
      "start": "2026-11-03T07:59:11.000+0100"
     },
-    "title": "Fahrtbehinderung\nBetriebsstörung"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "name": "R1712-399",
     "owner": "WL",
     "parentName": "R1712-399",
@@ -912,12 +1001,12 @@
      "end": "2026-11-03T08:59:00.000+0100",
      "start": "2026-11-03T08:00:12.000+0100"
     },
-    "title": "Fahrtbehinderung\nBetriebsstörung"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "name": "R1713-101",
     "owner": "WL",
     "parentName": "R1713-101",
@@ -935,12 +1024,12 @@
      "end": "2026-11-03T08:57:00.000+0100",
      "start": "2026-11-03T07:59:11.000+0100"
     },
-    "title": "Fahrtbehinderung\nBetriebsstörung"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "name": "R1713-399",
     "owner": "WL",
     "parentName": "R1713-399",
@@ -958,12 +1047,12 @@
      "end": "2026-11-03T08:59:00.000+0100",
      "start": "2026-11-03T08:00:12.000+0100"
     },
-    "title": "Fahrtbehinderung\nBetriebsstörung"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "name": "R1714-101",
     "owner": "WL",
     "parentName": "R1714-101",
@@ -981,12 +1070,12 @@
      "end": "2026-11-03T08:57:00.000+0100",
      "start": "2026-11-03T07:59:11.000+0100"
     },
-    "title": "Fahrtbehinderung\nBetriebsstörung"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "name": "R1714-399",
     "owner": "WL",
     "parentName": "R1714-399",
@@ -1004,12 +1093,12 @@
      "end": "2026-11-03T08:59:00.000+0100",
      "start": "2026-11-03T08:00:12.000+0100"
     },
-    "title": "Fahrtbehinderung\nBetriebsstörung"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "name": "R1715-101",
     "owner": "WL",
     "parentName": "R1715-101",
@@ -1027,12 +1116,12 @@
      "end": "2026-11-03T08:57:00.000+0100",
      "start": "2026-11-03T07:59:11.000+0100"
     },
-    "title": "Fahrtbehinderung\nBetriebsstörung"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "name": "R1715-399",
     "owner": "WL",
     "parentName": "R1715-399",
@@ -1050,12 +1139,12 @@
      "end": "2026-11-03T08:59:00.000+0100",
      "start": "2026-11-03T08:00:12.000+0100"
     },
-    "title": "Fahrtbehinderung\nBetriebsstörung"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "name": "R1717-399",
     "owner": "WL",
     "parentName": "R1717-399",
@@ -1073,12 +1162,12 @@
      "end": "2026-11-03T08:59:00.000+0100",
      "start": "2026-11-03T08:00:12.000+0100"
     },
-    "title": "Fahrtbehinderung\nBetriebsstörung"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "name": "R1718-399",
     "owner": "WL",
     "parentName": "R1718-399",
@@ -1096,7 +1185,7 @@
      "end": "2026-11-03T08:59:00.000+0100",
      "start": "2026-11-03T08:00:12.000+0100"
     },
-    "title": "Fahrtbehinderung\nBetriebsstörung"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1699,7 +1788,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "description": "Gleisbauarbeiten\nUmleitung zum Reumannplatz",
     "name": "R401-101",
     "owner": "WL",
     "parentName": "R401-101",
@@ -1714,15 +1803,15 @@
      401
     ],
     "time": {
-     "end": "2026-11-03T08:57:00.000+0100",
+     "end": "2026-11-03T23:59:59.000+0100",
      "start": "2026-11-03T00:00:14.000+0100"
     },
-    "title": "Fahrtbehinderung\nBetriebsstörung"
+    "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "name": "R427-399",
     "owner": "WL",
     "parentName": "R427-399",
@@ -1740,7 +1829,7 @@
      "end": "2026-11-03T08:59:00.000+0100",
      "start": "2026-11-03T08:00:10.000+0100"
     },
-    "title": "Fahrtbehinderung\nBetriebsstörung"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1768,7 +1857,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "name": "R477-399",
     "owner": "WL",
     "parentName": "R477-399",
@@ -1786,7 +1875,7 @@
      "end": "2026-11-03T08:59:00.000+0100",
      "start": "2026-11-03T08:00:10.000+0100"
     },
-    "title": "Fahrtbehinderung\nBetriebsstörung"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1814,7 +1903,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "name": "R851-101",
     "owner": "WL",
     "parentName": "R851-101",
@@ -1832,12 +1921,12 @@
      "end": "2026-11-03T08:57:00.000+0100",
      "start": "2026-11-03T07:59:09.000+0100"
     },
-    "title": "Fahrtbehinderung\nBetriebsstörung"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "name": "R851-399",
     "owner": "WL",
     "parentName": "R851-399",
@@ -1855,7 +1944,7 @@
      "end": "2026-11-03T08:59:00.000+0100",
      "start": "2026-11-03T08:00:09.000+0100"
     },
-    "title": "Fahrtbehinderung\nBetriebsstörung"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
