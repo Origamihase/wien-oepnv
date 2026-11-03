@@ -509,8 +509,8 @@ Sie sind damit ohne zusätzlichen Build-Schritt sofort für externe Automationen
 Für Python-Anwendungen existieren zwei bequeme Zugriffspfade:
 
 - **Direkter Cache-Zugriff** – `src.utils.cache.read_cache()` liest die zwischengespeicherten Provider-Events als Python-Liste
-  von Dictionaries ein (Wrapper wie `src.build_feed.read_cache_wl()` sind bereits vorkonfiguriert für „wl", „oebb" und
-  „baustellen"; zusätzlich erzeugt `src.build_feed.read_cache_stammstrecke()` die Stammstrecke-Events on-the-fly aus dem
+  von Dictionaries ein (Wrapper wie `src.feed_build.providers_setup.read_cache_wl()` sind bereits vorkonfiguriert für „wl", „oebb" und
+  „baustellen"; zusätzlich erzeugt `src.feed_build.providers_setup.read_cache_stammstrecke()` die Stammstrecke-Events on-the-fly aus dem
   CSV-Ledger statt aus einer Cache-Datei). VOR hat seit 2026-05-11 keine eigene JSON-Cache-Datei mehr (siehe `cache/`-Hinweis oben).
 - **Live-Abruf der Provider** – Die Module `src.providers.wl_fetch` und `src.providers.oebb` stellen jeweils eine Funktion
   `fetch_events()` bereit, die die Rohdaten der Wiener Linien bzw. ÖBB direkt normalisiert. `src.providers.vor` ist seit der

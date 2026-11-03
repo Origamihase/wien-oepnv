@@ -218,3 +218,18 @@ Replay mit echtem `main()`: 980 Feed-Stände vom 15.10. bis 03.11. einzeln
 neu gebaut und 400 Stände vom 26.10. bis 03.11. nacheinander, jeder mit dem
 Zustand seines Vorgängers samt Übersetzungen; deutscher und englischer Feed
 und Zustand sind in jedem Stand gleich.
+
+Schritt 2 verschiebt Zustand und Abruf in fünf Module: `state`
+(Zustandsdatei, Identität, Schlüssel), `providers_setup` (Provider-Registry
+mit `PROVIDERS`, `DEFAULT_PROVIDERS`, `reset_module_state`, dem Laden der
+Plugins beim Import und den Cache-Lesern),
+`collect` (Abruf der Provider im Thread-Pool), `cache_filters` (Nachfilter für
+WL, ÖBB und Baustellen) und `wl_measures` (WL-Beschreibung und Maßnahmen), je
+305 bis 521 Zeilen; `src/build_feed.py` hat danach 6.460 Zeilen. Die Registry
+hat nur noch einen Besitzer: Tests ersetzen `PROVIDERS` und
+`DEFAULT_PROVIDERS` in `providers_setup`, und statt `importlib.reload` laden
+die Tests Fassade und Teile mit `fresh_build_feed()` neu. Der Generator hat
+dafür eine Stufe `--stage pr2`, die auf der schon geteilten Fassade arbeitet
+und die Teile aus Schritt 1 unverändert lässt.
+Replay wie in Schritt 1: 980 Stände einzeln und 400 nacheinander, deutscher
+und englischer Feed und Zustand in jedem Stand gleich.
