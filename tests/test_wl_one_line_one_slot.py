@@ -22,6 +22,7 @@ Mutations checked against this file (each one caught, by the test named):
 * a running incident joins the works of its line again (operator decision 2026-11-03)
   → ``test_an_incident_and_the_works_of_its_line_keep_their_slots`` and the three tests after it.
 * a ticker WL switched on at a full hour counts as a running incident → ``test_a_standing_long_message_keeps_the_stops_of_its_line``.
+* the full hour wins over an incident cause → ``test_an_incident_cause_beats_the_full_hour``.
 * a sentence-long cause is listed → ``test_a_standing_message_joins_no_incident``.
 * a group without a cause joins the oldest incident → ``test_a_message_without_cause_joins_the_nearest_incident``.
 * WL's synonyms are not resolved → ``test_wl_synonyms_are_one_incident``.
@@ -436,3 +437,20 @@ def test_planned_stops_beside_an_accident_keep_their_own_slot() -> None:
     (accident,) = (it for it in built if it["guid"] == "accident")
     assert accident["description"] == "Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall."
     assert bf._incident_since(accident, accident["starts_at"]) is not None
+
+
+def test_an_incident_cause_beats_the_full_hour() -> None:
+    # 11A on 2026-10-24 00:31: "Schadhafter PKW" switched on at 00:00:28, the
+    # mark of a pre-entered measure, and stood as a second entry "[Heute]"
+    # beside the parked car. Operator decision 2026-11-03: a cause that names
+    # an incident wins over the clock, so both incidents share the line's slot.
+    items = [
+        _wl("11A: Falschparker Betrieb nur bis Elderschplatz",
+            "Die Linie 11A fährt derzeit nur zwischen Bahnhof Heiligenstadt S U und Elderschplatz. "
+            "Grund: Falschparker im Bereich Offenbachgasse.", "parked",
+            "2026-10-24T00:03:29+02:00", None, published="2026-10-23T23:37:00+02:00"),
+        _wl("11A: Fahrtbehinderung Schadhafter PKW", "Fahrtbehinderung\nSchadhafter PKW", "car",
+            "2026-10-24T00:00:28+02:00", "2026-10-24T00:59:00+02:00"),
+    ]
+    (item,) = _built(items)
+    assert item["title"] == "11A: Falschparker, Schadhafter PKW"

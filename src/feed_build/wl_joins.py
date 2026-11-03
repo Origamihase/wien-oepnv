@@ -8,6 +8,7 @@ re-exports every name that src/, scripts/ or the tests read from it.
 
 from __future__ import annotations
 
+import re
 from collections import defaultdict
 from collections.abc import Sequence
 from datetime import datetime, timedelta
@@ -75,17 +76,36 @@ def _planned_texts(items: Sequence[FeedItem], group: Sequence[int]) -> bool:
     )
 
 
+# WL causes that name the measure, not a reason: "N71: Ersatzverkehr Busse
+# halten …", "31: Kein Betrieb …" (the parser reads "Kein"). Over the WL cache
+# since July 2026 all four began on a full hour; they stay with the clock rule.
+_MEASURE_CAUSE_RE = re.compile(r"^(?:ersatz(?:verkehr|bus)|kein)\b", re.IGNORECASE)
+
+
+def _names_incident(cause: str) -> bool:
+    """Whether *cause* names an incident: set, no planned measure, no measure word."""
+    return bool(cause) and not names_planned_measure(cause) and not _MEASURE_CAUSE_RE.match(cause)
+
+
 def _planned_incident(items: Sequence[FeedItem], groups: Sequence[list[int]]) -> bool:
     """Whether an incident of a run (its groups, the first one with its cause) is a planned measure.
 
-    Its cause names one, or every message of it began on a full hour, the
-    mark of a measure WL entered ahead (``_scheduled_clock``, the rule of the
-    time line): "26E: Ersatzbus hält Karl-Waldbrunner-Platz …" switched on at
-    00:00:14 belongs to the works of the 26E, though "Ersatzbus" reads as its
-    cause.
+    Its cause names one, or it names no incident and every message of it
+    began on a full hour, the mark of a measure WL entered ahead
+    (``_scheduled_clock``, the rule of the time line): "26E: Ersatzbus hält
+    Karl-Waldbrunner-Platz …" (no cause) switched on at 00:00:14 belongs to
+    the works of the 26E. A cause that names an incident wins over the clock
+    (operator decision 2026-11-03, "Störungswort gewinnt"): "11A: Fahrtbehinderung
+    Schadhafter PKW" began at 00:00:28 on 2026-10-24 and stood as "[Heute]"
+    beside "11A: Falschparker [Seit 00:03]", a second entry for the line that
+    pushed a notice off place 10. An incident begins on a full hour about once
+    in sixty (about 60 WL tickers with an incident cause since July).
     """
-    if names_planned_measure(_group_cause([items[index] for index in groups[0]])):
+    cause = _group_cause([items[index] for index in groups[0]])
+    if names_planned_measure(cause):
         return True
+    if _names_incident(cause):
+        return False
     starts = [_ticker_time(items[index]) for group in groups for index in group]
     return all(start is not None and _scheduled_clock(start) for start in starts)
 

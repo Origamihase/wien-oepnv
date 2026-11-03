@@ -588,9 +588,16 @@ verdrängt eine andere Störung.
     ohne Ursache, die keine nennen („25: Züge halten Donaufelder Straße
     175-177“), folgen weiter der Störung (Prüfung vom 09.10.). Geplant ist ein Vorfall, wenn
     seine Ursache eine geplante Maßnahme nennt (`names_planned_measure`)
-    oder jede seiner Meldungen zur vollen Stunde begann
-    (`_scheduled_clock`, die Regel der Zeitzeile; „26E: Ersatzbus hält
-    Karl-Waldbrunner-Platz …“ ab 00:00:14 gehört zur Baustelle). Der
+    oder er keine Störung nennt und jede seiner Meldungen zur vollen Stunde
+    begann (`_scheduled_clock`, die Regel der Zeitzeile; „26E: Ersatzbus
+    hält Karl-Waldbrunner-Platz …“ ohne Ursache ab 00:00:14 gehört zur
+    Baustelle). Ein Störungswort als Ursache („Schadhafter PKW“,
+    „Rettungseinsatz“) hat Vorrang vor der vollen Stunde (Michaels
+    Entscheidung vom 03.11.2026, `_names_incident`): Am 24.10. um 00:31
+    stand sonst „11A: Schadhafter PKW [Heute]“ (ab 00:00:28) als zweiter
+    Eintrag neben „11A: Falschparker [Seit 00:03]“. „Ersatzverkehr“ und
+    „Kein (Betrieb)“ nennen die Maßnahme, keinen Grund, und bleiben bei der
+    Regel der vollen Stunde. Der
     Eintrag der Baustelle geht in ihren Hinweis auf
     (`_absorb_works_tickers`) oder behält seinen Platz. Störungen
     untereinander und geplante Maßnahmen untereinander teilen sich weiter
