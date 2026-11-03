@@ -233,3 +233,15 @@ dafür eine Stufe `--stage pr2`, die auf der schon geteilten Fassade arbeitet
 und die Teile aus Schritt 1 unverändert lässt.
 Replay wie in Schritt 1: 980 Stände einzeln und 400 nacheinander, deutscher
 und englischer Feed und Zustand in jedem Stand gleich.
+
+Schritt 3 verschiebt Zeitzeile, Texte, Filter und Verlauf in sechs Module:
+`time_line` (Zeitzeile, `format_local_times`, Entwarnung), `summary_text`
+(Satzbereinigung, 180-Zeichen-Kürzung, `_compose_description`), `title_words`
+(Ursache und Folge im Titel, gemeinsame Prädikate), `item_history`
+(Vorkommen, first_seen, Identitätsübertrag), `item_meta` (Reihenfolge, Links,
+Quellen, Bilder, `_update_item_state`) und `filters` (Alter, Duplikate,
+Themenbudget, Testmeldungen, Zurückstellungen), je 303 bis 554 Zeilen; `src/build_feed.py`
+hat danach 4.104 Zeilen. `_dedupe_items` steht in `.c901-baseline.txt` jetzt
+unter `src/feed_build/filters.py`, mit unverändertem Wert 18.
+Replay wie in Schritt 1 und 2: 980 Stände einzeln und 400 nacheinander,
+deutscher und englischer Feed und Zustand in jedem Stand gleich.
