@@ -80,6 +80,41 @@ def test_a_planned_measure_keeps_today(title: str) -> None:
     assert _line(_wl(title, _at(3, 9, 38), _at(3, 9, 38))) == "Heute"
 
 
+# Operator decision 2026-11-03: "Eine Verlegung der Haltestelle ist zB nur
+# ein Hinweis, aber keine Störung." Real WL display tickers that read "[Seit
+# hh:mm]" in the feed (62A on 21.10., place 1; S80 from 06. to 14.10.).
+@pytest.mark.parametrize(
+    ("title", "description"),
+    [
+        ("62A: Straßenbau Haltestelle verlegt zur Wienerbergbrücke vor Breitenfurter Straße",
+         "Straßenbau\nHaltestelle verlegt zur Wienerbergbrücke vor Breitenfurter Straße"),
+        ("Haltestelle aufgelassen Einstieg bei Wienerbergbrücke",
+         "Haltestelle aufgelassen\nEinstieg bei Wienerbergbrücke"),
+        ("S80: ÖBB-Ersatzbus", "Bhf. Hütteldorf"),
+        ("18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen.",
+         "Bitte auf nahegelegene Haltestellen ausweichen."),
+        ("12A: Haltestellenauflassung Henriettenplatz", "Grund: Grabungen"),
+        ("6: Gleisbau Züge halten Quellenstraße 156", "Gleisbau\nZüge halten Quellenstraße 156"),
+    ],
+)
+def test_a_moved_or_closed_stop_is_no_incident(title: str, description: str) -> None:
+    item = _wl(title, _at(3, 7, 20), _at(3, 7, 20), description=description)
+    assert _line(item) == "Heute"
+
+
+@pytest.mark.parametrize(
+    ("title", "description"),
+    [
+        ("60: Fremdunfall Betrieb ab Hofwiesengasse", "Betrieb ab Hofwiesengasse; Züge halten bei Linie 62 Richtung Lainz."),
+        ("9: Gleisschaden Züge halten Taubergasse 5-7", "Fahrtbehinderung; Betrieb ab Johann-Nepomuk-Berger-Platz."),
+        ("N71: Polizeieinsatz, Ersatzverkehr", "Ersatzverkehr: Busse halten bei Haltestelle N71."),
+    ],
+)
+def test_an_incident_that_moves_where_trains_stop_keeps_its_begin(title: str, description: str) -> None:
+    item = _wl(title, _at(3, 10, 42), _at(3, 10, 42), description=description)
+    assert _line(item) == "Seit 10:42"
+
+
 def test_a_planned_cause_in_the_description_counts_too() -> None:
     item = _wl(
         "71: Betrieb ab Schwarzenbergplatz",

@@ -262,16 +262,16 @@ def test_without_notes_nothing_changes() -> None:
 
 
 def test_a_combined_entry_counts_its_newest_incident() -> None:
-    """"66A: Rettungseinsatz, Bauarbeiten": the works keep their own GUID when the rescue ends."""
-    start = datetime(2026, 10, 3, 14, 0, tzinfo=UTC)
-    works = _item("works", start - timedelta(days=1), title="66A: Bauarbeiten Busse halten Salvatorianerplatz")
-    works["description"] = "Bauarbeiten\nBusse halten Salvatorianerplatz"
-    works["ends_at"] = start + timedelta(days=1)
+    """"66A: Rettungseinsatz, Polizeieinsatz": the police operation keeps its own GUID when the rescue ends."""
+    start = datetime(2026, 10, 3, 14, 7, tzinfo=UTC)
+    police = _item("police", start - timedelta(minutes=20), title="66A: Fahrtbehinderung Polizeieinsatz")
+    police["description"] = "Fahrtbehinderung\nPolizeieinsatz"
+    police["ends_at"] = start + timedelta(hours=1)
     rescue = _item("rescue", start, title="66A: Rettungseinsatz")
     rescue["description"] = "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen."
     rescue["ends_at"] = start + timedelta(hours=1)
-    (entry,) = bf._merge_wl_ticker_clusters([works, rescue])
-    assert entry["title"] == "66A: Rettungseinsatz, Bauarbeiten"
+    (entry,) = bf._merge_wl_ticker_clusters([police, rescue])
+    assert entry["title"] == "66A: Rettungseinsatz, Polizeieinsatz"
     assert (entry["guid"], member_guids(entry)) == ("rescue", ["rescue"])
 
 
