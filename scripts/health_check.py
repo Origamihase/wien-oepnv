@@ -215,7 +215,7 @@ def check_stammstrecke_directions(now: datetime) -> Check:
             find_silent_directions,
             summarise_direction_activity,
         )
-        from scripts.update_stammstrecke_hbf import DIRECTION_LABELS
+        from src.stammstrecke.hbf_board import DIRECTION_LABELS
     except Exception as exc:  # pragma: no cover - import-environment guard
         return Check(
             name,
