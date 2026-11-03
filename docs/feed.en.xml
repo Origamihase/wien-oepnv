@@ -8,20 +8,48 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 03 Nov 2026 23:31:01 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 00:00:53 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[77A: Illegally parked vehicle]]></title>
+      <title><![CDATA[52A: Construction works]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">660f28330b16b21973d919d0ca7b3d0827062ed7398171f828b0ccfbf543928b</guid>
-      <pubDate>Tue, 03 Nov 2026 22:58:00 +0100</pubDate>
+      <guid isPermaLink="false">882b31fbc0f7931f30d7f8633f06be5cdcfec9e422fb92b0b8931432f57288f4</guid>
+      <pubDate>Mon, 02 Nov 2026 15:36:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 03 Nov 2026 22:58:00 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 03 Nov 2026 22:58:00 +0100</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 22:58]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 22:58]]]></content:encoded>
+      <ext:first_seen>Wed, 04 Nov 2026 00:00:53 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 05 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <description>Due to roadworks in Knödelhüttenstraße, line 52A is redirected. [From Thu 05.11.]</description>
+      <content:encoded><![CDATA[Due to roadworks in Knödelhüttenstraße, line 52A is redirected.<br/>[From Thu 05.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12A: Henriettenplatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">a6cf4b6dfdd6a30caa130293fcef872955167da368915b5ee81ce366e6071172</guid>
+      <pubDate>Wed, 28 Oct 2026 16:52:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 28 Oct 2026 16:52:00 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 04 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <georss:point>48.190171 16.331974</georss:point>
+      <description>Stop closure of line 12A towards Eichenstraße. Stop: Henriettenplatz. Reason: excavation works. [Since today]</description>
+      <content:encoded><![CDATA[Stop closure of line 12A towards Eichenstraße. Stop: Henriettenplatz. Reason: excavation works.<br/>[Since today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[16A: Franzosenweg]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">bfcf9103da96d852d983cd2d77d66864b5c5f9a83273de0d2f27fc14ddc931e4</guid>
+      <pubDate>Tue, 03 Nov 2026 13:21:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 03 Nov 2026 13:21:00 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 05 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <georss:point>48.140153 16.382791</georss:point>
+      <description>Himberger Straße 34 → approx. 50 metres in the direction of travel. Stop relocation of line 16A towards Hetzendorf S. Reason: roadwork. [From Thu 05.11.]</description>
+      <content:encoded><![CDATA[Himberger Straße 34 → approx. 50 metres in the direction of travel. Stop relocation of line 16A towards Hetzendorf S. Reason: roadwork.<br/>[From Thu 05.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[64A: Liesinger-Flur-Gasse]]></title>
@@ -80,8 +108,8 @@
       <ext:starts_at>Sat, 31 Oct 2026 00:00:00 +0100</ext:starts_at>
       <ext:ends_at>Wed, 04 Nov 2026 23:59:59 +0100</ext:ends_at>
       <georss:line>48.226607 16.361443 48.327338 16.064302</georss:line>
-      <description>Due to construction works, no R 40 trains can run between Wien Franz-Josefs-Bahnhof and St. Andrä-Wördern station from 02.11.2026 to 03.11.2026. [Until Wed 04.11.]</description>
-      <content:encoded><![CDATA[Due to construction works, no R 40 trains can run between Wien Franz-Josefs-Bahnhof and St. Andrä-Wördern station from 02.11.2026 to 03.11.2026.<br/>[Until Wed 04.11.]]]></content:encoded>
+      <description>Due to construction works, no R 40 trains can run between Wien Franz-Josefs-Bahnhof and St. Andrä-Wördern station from 02.11.2026 to 03.11.2026. [Today]</description>
+      <content:encoded><![CDATA[Due to construction works, no R 40 trains can run between Wien Franz-Josefs-Bahnhof and St. Andrä-Wördern station from 02.11.2026 to 03.11.2026.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
@@ -109,22 +137,8 @@
       <ext:first_seen>Wed, 28 Oct 2026 17:01:03 +0100</ext:first_seen>
       <ext:starts_at>Fri, 30 Oct 2026 15:00:00 +0100</ext:starts_at>
       <ext:ends_at>Tue, 10 Nov 2026 09:00:00 +0100</ext:ends_at>
-      <description>Due to roadworks in the area of Einsiedeleigasse, lines 54A and 54B are redirected. [Until 10.11.]</description>
-      <content:encoded><![CDATA[Due to roadworks in the area of Einsiedeleigasse, lines 54A and 54B are redirected.<br/>[Until 10.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12A: Henriettenplatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">a6cf4b6dfdd6a30caa130293fcef872955167da368915b5ee81ce366e6071172</guid>
-      <pubDate>Wed, 28 Oct 2026 16:52:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 28 Oct 2026 16:52:00 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 04 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.190171 16.331974</georss:point>
-      <description>Stop closure of line 12A towards Eichenstraße. Stop: Henriettenplatz. Reason: excavation works. [From Wed 04.11.]</description>
-      <content:encoded><![CDATA[Stop closure of line 12A towards Eichenstraße. Stop: Henriettenplatz. Reason: excavation works.<br/>[From Wed 04.11.]]]></content:encoded>
+      <description>Due to roadworks in the area of Einsiedeleigasse, lines 54A and 54B are redirected. [Until Tue 10.11.]</description>
+      <content:encoded><![CDATA[Due to roadworks in the area of Einsiedeleigasse, lines 54A and 54B are redirected.<br/>[Until Tue 10.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11: Wienerfeldgasse]]></title>
@@ -140,20 +154,6 @@
       <georss:point>48.158259 16.360289</georss:point>
       <description>Neilreichgasse 139C - 141 → Neilreichgasse 139A- 139B. Stop relocation of line 11 towards Kaiserebersdorf, Zinnergasse. Reason: track construction works. [Until 19.11.]</description>
       <content:encoded><![CDATA[Neilreichgasse 139C - 141 → Neilreichgasse 139A- 139B. Stop relocation of line 11 towards Kaiserebersdorf, Zinnergasse. Reason: track construction works.<br/>[Until 19.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Bauernfeldplatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">1a8701132295c2998ee1771e7a46245b02b0b8abc95ee80038dbe79595a5ecf1</guid>
-      <pubDate>Thu, 22 Oct 2026 13:48:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 13:48:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 27 Oct 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.220878 16.360720</georss:point>
-      <description>Towards Döblinger Friedhof, Felix-Dahn-Straße: → Liechtensteinstraße 38. Towards Schottentor U: → Liechtensteinstraße 39. Stop relocation of line 40A in both … [Since 27.10.]</description>
-      <content:encoded><![CDATA[Towards Döblinger Friedhof, Felix-Dahn-Straße: → Liechtensteinstraße 38. Towards Schottentor U: → Liechtensteinstraße 39. Stop relocation of line 40A in both …<br/>[Since 27.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
