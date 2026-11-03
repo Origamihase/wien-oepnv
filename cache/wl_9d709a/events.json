@@ -74,6 +74,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "16A: Franzosenweg",
+    "description": "<p><strong><u>Haltestellenverlegung der Linie 16A in Richtung Hetzendorf S</u></strong></p><p><strong><u>Haltestelle:</u></strong> Franzosenweg</p><p><strong><u>Von:</u></strong> Himberger Straße 34</p><p><strong><u>Nach:</u></strong> ca. 50 Meter in Fahrtrichtung</p><p><strong><u>Dauer:</u></strong> 05. November 2026, ca. 21:00 Uhr bis 06. November 2026, etwa 07:00 Uhr</p><p><strong><u>Grund:</u></strong> Straßenarbeiten</p>",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "bfcf9103da96d852d983cd2d77d66864b5c5f9a83273de0d2f27fc14ddc931e4",
+    "pubDate": "2026-11-03T13:21:00+01:00",
+    "starts_at": "2026-11-05T00:00:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|hinweis|L=16A|D=2026-11-05|TK=16a franzosenweg"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "18: Veranstaltung am 08.11.26",
     "description": "<h2><strong>Veranstaltung</strong></h2><p>Wegen einer Veranstaltung im Bereich der Prater Hauptallee wird die Linie 18 <strong>kurzgeführt</strong>.</p><p><strong><u>Zeitraum:</u></strong><br>Sonntag, 08. November 2026, von ca. 09:15 Uhr bis ca. 12:30 Uhr.</p><p><strong><u>Maßnahme:</u></strong></p><p><strong>Linie 18:</strong></p><p>Kurzführung in Richtung Stadion U bis Schlachthausgasse U, und wieder zurück in Richtung Burggasse, Stadthalle U.</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -906,22 +918,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "3A: Feuerwehreinsatz",
-    "description": "Linie 3A: Fahrtbehinderung in Richtung Oper, Karlsplatz U. Voraussichtliche Dauer: 13:10 Uhr. Grund: Feuerwehreinsatz im Bereich Wollzeile.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "11700a1dc04ca36bf391a98ac2e1e216e67c252cb15f41f9b2f14dcabdb9504e",
-    "pubDate": "2026-11-03T12:49:00+01:00",
-    "starts_at": "2026-11-03T12:49:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=3A|D=2026-11-03|TK=feuerwehreinsatz",
-    "_wl_ids": [
-      "I20261103-0022"
-    ],
-    "_incident_start": "2026-11-03T12:49:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "40A: Busse halten Liechtensteinstraße 38",
     "description": "Bauarbeiten\nBusse halten Liechtensteinstraße 38",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1058,6 +1054,22 @@
     "starts_at": "2026-11-03T00:00:14+01:00",
     "ends_at": "2026-11-03T23:59:59+01:00",
     "_identity": "wl|störung|L=D|D=2026-11-03|TK=züge halten wipplingerstr 39"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Polizeieinsatz",
+    "description": "Linie O: Kein Betrieb zwischen Hintere Zollamtsstraße und Praterstern S U. Voraussichtliche Dauer: 14:00 Uhr. Grund: Polizeieinsatz im Bereich Franzensbrückenstraße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b3799ddddf61cd5c6404f1e8b07bf577d21dbd25d292c9833575d0f1f823d0c6",
+    "pubDate": "2026-11-03T13:26:00+01:00",
+    "starts_at": "2026-11-03T13:26:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=O|D=2026-11-03|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261103-0023"
+    ],
+    "_incident_start": "2026-11-03T13:26:00+01:00"
   },
   {
     "source": "Wiener Linien",
