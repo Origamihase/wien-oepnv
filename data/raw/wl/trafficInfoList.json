@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261103-0023-F01, I20261103-0021, I20261103-0026-F01, I20260925-0011, I20260909-0007, I20261103-0025, I20260922-0032, I20261020-0029, I20261103-0024"
+    "trafficInfoNameList": "I20261103-0028, I20261103-0023-F01, I20261103-0026-F01, I20260925-0011, I20260909-0007, I20261103-0025, I20260922-0032, I20261020-0029, I20261103-0024, I20261103-0027"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1448-412, R1474-412, R293-474, R318-437, R1880-101, R1881-101, R1875-101, R1876-101, R1883-101, R1882-101, R1884-101, R19-136, R45-136, R2558-125, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R130-136, R3886-480, R401-101, R2380-627, R2378-627, R2345-127, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R1974-466, R1301-440, R1272-440, R500-101, R676-413, R673-413, R39-413, R40-413, R556-109, R223-109, R526-109, R530-109, R532-109, R531-109, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1474-412, R1448-412, R293-474, R318-437, R1880-101, R1882-101, R1875-101, R1876-101, R1884-101, R1883-101, R1881-101, R45-136, R130-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R118-136, R119-136, R19-136, R3886-480, R401-101, R2558-125, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1974-466, R1301-440, R1272-440, R500-101, R40-413, R39-413, R556-109, R223-109, R526-109, R530-109, R532-109, R531-109, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -217,55 +217,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "32A": "ptBusCity"
-     }
-    },
-    "description": "Linie 32A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie 32A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 32A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie 32A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-       "title": "32A: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261103-0021",
-    "owner": "WL",
-    "parentName": "I20261103-0021",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "32A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 432,
-      "lineName": "32A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "relatedStops": [
-     1164
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-03T12:35:00.000+0100",
-     "end": "2026-11-03T14:46:00.000+0100",
-     "lastUpdate": "2026-11-03T14:16:00.000+0100",
-     "resume": "2026-11-03T12:35:00.000+0100",
-     "start": "2026-11-03T12:35:00.000+0100"
-    },
-    "title": "32A: Rettungseinsatz"
-   },
-   {
     "alertCause": "police activity",
     "alertCauseId": 3,
     "attributes": {
@@ -446,6 +397,96 @@
      "start": "2026-11-03T14:17:00.000+0100"
     },
     "title": "9: Falschparker"
+   },
+   {
+    "alertCause": "poor weather",
+    "alertCauseId": 85,
+    "attributes": {
+     "relatedLineTypes": {
+      "42": "ptTram"
+     }
+    },
+    "description": "Linie 42: Unregelmäßige Intervalle in beiden Richtungen. Grund: Witterung.",
+    "descriptionHTML": "<p>Linie 42:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Witterung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 42:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Witterung.</p>",
+       "descriptionPlain": "Linie 42: Unregelmäßige Intervalle in beiden Richtungen. Grund: Witterung.",
+       "title": "42: Witterung"
+      }
+     }
+    ],
+    "name": "I20261103-0027",
+    "owner": "WL",
+    "parentName": "I20261103-0027",
+    "priority": "1",
+    "reasonId": 40,
+    "reasonName": "Witterung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 142,
+      "lineName": "42",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-03T14:47:00.000+0100",
+     "lastUpdate": "2026-11-03T14:47:00.000+0100",
+     "resume": "2026-11-03T14:46:00.000+0100",
+     "start": "2026-11-03T14:46:00.000+0100"
+    },
+    "title": "42: Witterung"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "94A": "ptBusCity"
+     }
+    },
+    "description": "Linie 94A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 94A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 94A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 94A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "94A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261103-0028",
+    "owner": "WL",
+    "parentName": "I20261103-0028",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "94A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 494,
+      "lineName": "94A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-03T14:51:00.000+0100",
+     "lastUpdate": "2026-11-03T14:51:00.000+0100",
+     "resume": "2026-11-03T14:51:00.000+0100",
+     "start": "2026-11-03T14:51:00.000+0100"
+    },
+    "title": "94A: Verkehrsüberlastung"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1619,52 +1660,6 @@
      "start": "2026-11-03T14:17:45.000+0100"
     },
     "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R673-413",
-    "owner": "WL",
-    "parentName": "R673-413",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedStops": [
-     673
-    ],
-    "time": {
-     "end": "2026-11-03T14:56:00.000+0100",
-     "start": "2026-11-03T13:56:44.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R676-413",
-    "owner": "WL",
-    "parentName": "R676-413",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedStops": [
-     676
-    ],
-    "time": {
-     "end": "2026-11-03T14:56:00.000+0100",
-     "start": "2026-11-03T13:56:44.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
