@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_593, ftazW_594, ftazW_1031299, ftazW_1032037, ftazW_262, ftazW_1018067, ftazW_263"
+    "trafficInfoNameList": "ftazW_1031895, ftazW_593, ftazW_594, ftazW_1031299, ftazW_1032037, ftazW_262, ftazW_1018067, ftazW_263, ftazW_264, ftazW_1016957, ftazW_1018068"
    }
   ],
   "poiCategoryGroups": [
@@ -2872,6 +2872,45 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "06.11.2026 05:15",
+     "ausVon": "06.11.2026 01:15",
+     "location": "U1 Mittelbahnsteig - Ausgang Tilgnerstraße",
+     "rbls": [
+      4107,
+      4122
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Taubstummengasse",
+     "status": "geplante Wartung",
+     "towards": "U1 beide Richtungen"
+    },
+    "description": "U1 Mittelbahnsteig - Ausgang Tilgnerstraße",
+    "elevatorId": "TA 01",
+    "name": "ftazW_1016957",
+    "parentName": "ftazW_1016957",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4107,
+     4122
+    ],
+    "time": {
+     "end": "2026-11-06T05:15:00.000+0100",
+     "start": "2026-11-06T01:15:00.000+0100"
+    },
+    "title": "Taubstummengasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "06.11.2026 00:45",
      "ausVon": "05.11.2026 20:45",
      "location": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Stadion",
@@ -2902,6 +2941,43 @@
     "time": {
      "end": "2026-11-06T00:45:00.000+0100",
      "start": "2026-11-05T20:45:00.000+0100"
+    },
+    "title": "Stadion"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "06.11.2026 05:15",
+     "ausVon": "06.11.2026 01:15",
+     "location": "U2 Bahnsteig Richtung Seestadt - Ausgang Stadion",
+     "rbls": [
+      4266
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Stadion",
+     "status": "geplante Wartung",
+     "towards": "U2 Seestadt"
+    },
+    "description": "U2 Bahnsteig Richtung Seestadt - Ausgang Stadion",
+    "elevatorId": "SW 04",
+    "name": "ftazW_1018068",
+    "parentName": "ftazW_1018068",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4266
+    ],
+    "time": {
+     "end": "2026-11-06T05:15:00.000+0100",
+     "start": "2026-11-06T01:15:00.000+0100"
     },
     "title": "Stadion"
    },
@@ -2941,6 +3017,45 @@
     "time": {
      "end": "2026-11-04T05:15:00.000+0100",
      "start": "2026-11-04T01:15:00.000+0100"
+    },
+    "title": "Südtiroler Platz-Hauptbahnhof"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "04.11.2026 00:45",
+     "ausVon": "03.11.2026 20:45",
+     "location": "18 Bahnsteig Richtung Burggasse - Passage",
+     "rbls": [
+      833
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1",
+      "18"
+     ],
+     "station": "Südtiroler Platz-Hauptbahnhof",
+     "status": "geplante Wartung",
+     "towards": "18 Schlachthausgasse"
+    },
+    "description": "18 Bahnsteig Richtung Burggasse - Passage",
+    "elevatorId": "SL 04",
+    "name": "ftazW_1031895",
+    "parentName": "ftazW_1031895",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1",
+     "18"
+    ],
+    "relatedStops": [
+     833
+    ],
+    "time": {
+     "end": "2026-11-04T00:45:00.000+0100",
+     "start": "2026-11-03T20:45:00.000+0100"
     },
     "title": "Südtiroler Platz-Hauptbahnhof"
    },
@@ -3048,6 +3163,47 @@
     "time": {
      "end": "2026-11-06T00:45:00.000+0100",
      "start": "2026-11-05T20:45:00.000+0100"
+    },
+    "title": "Landstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "06.11.2026 05:15",
+     "ausVon": "06.11.2026 01:15",
+     "location": "U3 Mittelbahnsteig - Zwischengeschoss Zugang zur U4 und ÖBB",
+     "rbls": [
+      4913,
+      4904
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4",
+      "U3"
+     ],
+     "station": "Landstraße",
+     "status": "geplante Wartung",
+     "towards": "U3 beide Richtungen"
+    },
+    "description": "U3 Mittelbahnsteig - Zwischengeschoss Zugang zur U4 und ÖBB",
+    "elevatorId": "LA 03",
+    "name": "ftazW_264",
+    "parentName": "ftazW_264",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4",
+     "U3"
+    ],
+    "relatedStops": [
+     4913,
+     4904
+    ],
+    "time": {
+     "end": "2026-11-06T05:15:00.000+0100",
+     "start": "2026-11-06T01:15:00.000+0100"
     },
     "title": "Landstraße"
    },
