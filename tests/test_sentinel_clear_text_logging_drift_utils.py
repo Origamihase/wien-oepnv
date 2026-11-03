@@ -392,6 +392,9 @@ WALKER_MODULES: tuple[str, ...] = (
     # site or removed an existing ``sanitize_log_arg`` wrap.
     "src/feed/providers.py",
     "src/feed/reporting.py",
+    "src/feed/report_messages.py",
+    "src/feed/feed_health.py",
+    "src/feed/github_issue.py",
     "src/providers/vor.py",
     "src/providers/oebb.py",
     "src/providers/wl_fetch.py",

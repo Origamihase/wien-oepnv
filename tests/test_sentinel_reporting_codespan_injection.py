@@ -227,7 +227,7 @@ def test_github_issue_body_error_log_path_backtick_breaks_inline_code_span(
     # imported at module load time. Instead we monkeypatch the imported
     # reference inside reporting so the test exercises the real sink.
     poisoned_path = Path("log`<script>alert('xss')</script>`/errors.log")
-    monkeypatch.setattr("src.feed.reporting.error_log_path", poisoned_path)
+    monkeypatch.setattr("src.feed.github_issue.error_log_path", poisoned_path)
 
     report = _make_report()
     report.add_error_message("test error to trigger issue submission")
@@ -305,7 +305,11 @@ def test_inline_code_span_sinks_inventory_pinned() -> None:
     Markdown-injection vector. This test fails on any drift away from
     the canonical helper for the audited sinks.
     """
-    reporting_src = Path("src/feed/reporting.py").read_text(encoding="utf-8")
+    # The module was split (700-line rule); read every part of it.
+    reporting_src = "\n".join(
+        Path(f"src/feed/{name}.py").read_text(encoding="utf-8")
+        for name in ("reporting", "report_messages", "feed_health", "github_issue")
+    )
 
     # The three audited sinks must reference safe_markdown_codespan
     # in their immediate textual neighbourhood.

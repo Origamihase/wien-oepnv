@@ -375,9 +375,18 @@ def test_log_results_strips_full_attack_payload(
 # ============================================================================
 
 
-def _read_reporting_source() -> str:
+# ``src/feed/reporting.py`` was split (700-line rule); the
+# ``log.warning(..., self._config.api_url)`` sites now live in
+# ``src/feed/github_issue.py``. Each part is parsed on its own.
+_REPORTING_PARTS = ("reporting", "report_messages", "feed_health", "github_issue")
+
+
+def _read_reporting_sources() -> list[str]:
     repo_root = Path(__file__).resolve().parents[1]
-    return (repo_root / "src" / "feed" / "reporting.py").read_text(encoding="utf-8")
+    return [
+        (repo_root / "src" / "feed" / f"{name}.py").read_text(encoding="utf-8")
+        for name in _REPORTING_PARTS
+    ]
 
 
 def test_no_bare_api_url_log_in_reporting() -> None:
@@ -388,11 +397,10 @@ def test_no_bare_api_url_log_in_reporting() -> None:
     drift in the codebase (e.g. ``test_no_bare_exc_logging_in_clear_
     text_logging_modules``).
     """
-    source = _read_reporting_source()
-    tree = ast.parse(source)
+    trees = [ast.parse(source) for source in _read_reporting_sources()]
 
     bare_sites: list[str] = []
-    for node in ast.walk(tree):
+    for node in (node for tree in trees for node in ast.walk(tree)):
         if not isinstance(node, ast.Call):
             continue
         # Match ``log.warning`` / ``log.error`` / ``log.info`` /
