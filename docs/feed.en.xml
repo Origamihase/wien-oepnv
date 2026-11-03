@@ -8,20 +8,20 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 03 Nov 2026 17:39:56 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 18:00:56 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U6: Contamination]]></title>
+      <title><![CDATA[60: Third-party traffic accident]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">915e18ead502dc8610d1f4cabb6ce6d6bdc2826f1da93bdee9f3fb85f4d65515</guid>
-      <pubDate>Tue, 03 Nov 2026 17:27:00 +0100</pubDate>
+      <guid isPermaLink="false">fa13a977753886fe597c353a144a3e24d7a3675a48c2729c300f9be73e720a96</guid>
+      <pubDate>Tue, 03 Nov 2026 17:35:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 03 Nov 2026 17:27:00 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 03 Nov 2026 17:27:00 +0100</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: contamination. [Since 17:27]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[Since 17:27]]]></content:encoded>
+      <ext:first_seen>Tue, 03 Nov 2026 17:35:00 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 03 Nov 2026 17:35:00 +0100</ext:starts_at>
+      <description>Service from Hofwiesengasse; trains stop at the stop of line 62 direction Lainz. [Since 17:35]</description>
+      <content:encoded><![CDATA[Service from Hofwiesengasse; trains stop at the stop of line 62 direction Lainz.<br/>[Since 17:35]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[31: Illegally parked vehicle]]></title>
@@ -33,8 +33,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Tue, 03 Nov 2026 17:22:00 +0100</ext:first_seen>
       <ext:starts_at>Tue, 03 Nov 2026 17:25:37 +0100</ext:starts_at>
-      <description>Service from Gaußplatz. Diversion towards Schottenring U between Jägerstraße U and Gaußplatz via Jägerstraße. Expected until 17:50. [Since 17:22]</description>
-      <content:encoded><![CDATA[Service from Gaußplatz. Diversion towards Schottenring U between Jägerstraße U and Gaußplatz via Jägerstraße. Expected until 17:50.<br/>[Since 17:22]]]></content:encoded>
+      <description>Service from Gaußplatz. After a service obstruction, there are irregular intervals. [Since 17:22]</description>
+      <content:encoded><![CDATA[Service from Gaußplatz. After a service obstruction, there are irregular intervals.<br/>[Since 17:22]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[64A: Liesinger-Flur-Gasse]]></title>
