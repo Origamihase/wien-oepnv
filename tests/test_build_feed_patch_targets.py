@@ -15,8 +15,13 @@ Namen nicht mitzählen).
 Geprüft wird per AST über ``tests/**/*.py``:
 
 1. jeder Namens-Patch auf ``src.build_feed`` oder ``src.feed_build.*``:
-   ``monkeypatch.setattr``, ``setattr``, ``patch.object``, ``patch("...")``
-   (auch als Dekorator), ``monkeypatch.delattr`` und direkte Zuweisung.
+   ``monkeypatch.setattr`` (auch in der Punkt-Form ``"src.build_feed.X"``),
+   ``setattr``, ``patch.object``, ``patch.multiple``, ``patch("...")`` (auch als
+   Dekorator), ``monkeypatch.delattr`` und direkte Zuweisung, auch mit
+   ``target=``/``name=``/``attribute=`` als Schlüsselwort. Ein Patch eines
+   Feed-Build-Namens auf ein Ziel, das sich nicht auflösen lässt (etwa einen
+   Parameter einer Hilfsfunktion), schlägt fehl; die Selbsttests am Ende prüfen
+   die Formen;
    Aliase werden über Importe, ``part(...)``, ``owner(...)`` und die Re-Import-Helfer
    aufgelöst. Patches auf Attribute geteilter Objekte (``json.load``,
    ``feed_config.OUT_PATH``, ``setitem`` auf ``_TRANSLATION_STATE``) werden
@@ -89,6 +94,7 @@ class Census:
     shared: list[str] = dataclasses.field(default_factory=list)
     reads: list[Read] = dataclasses.field(default_factory=list)
     reimport_files: set[str] = dataclasses.field(default_factory=set)
+    unresolved: list[str] = dataclasses.field(default_factory=list)
 
 
 # ------------------------------------------------------------------ modules
@@ -168,6 +174,31 @@ def _string(node: ast.AST | None) -> str | None:
     return None
 
 
+_KEYWORD_SLOTS = {
+    # Funktionsname -> Schlüsselwörter der ersten beiden Positionsargumente
+    "setattr": (("target",), ("name",)),
+    "delattr": (("target",), ("name",)),
+    "object": (("target",), ("attribute",)),
+    "patch": (("target",), ()),
+    "multiple": (("target",), ()),
+}
+
+
+def _call_args(node: ast.Call, name: str) -> list[ast.expr]:
+    """Positionsargumente, ergänzt um ``target=``/``name=``/``attribute=``."""
+
+    args = list(node.args)
+    by_keyword = {keyword.arg: keyword.value for keyword in node.keywords if keyword.arg}
+    for index, slot in enumerate(_KEYWORD_SLOTS.get(name, ())):
+        if len(args) > index:
+            continue
+        value = next((by_keyword[key] for key in slot if key in by_keyword), None)
+        if value is None:
+            break
+        args.append(value)
+    return args
+
+
 def _call_name(node: ast.Call) -> str:
     func = node.func
     if isinstance(func, ast.Name):
@@ -178,11 +209,11 @@ def _call_name(node: ast.Call) -> str:
 
 
 class _FileScan:
-    def __init__(self, path: Path, census: Census) -> None:
+    def __init__(self, path: Path, census: Census, text: str | None = None) -> None:
         self.path = path
-        self.rel = str(path.relative_to(ROOT))
+        self.rel = str(path.relative_to(ROOT)) if path.is_relative_to(ROOT) else path.name
         self.census = census
-        self.text = path.read_text(encoding="utf-8")
+        self.text = path.read_text(encoding="utf-8") if text is None else text
         self.tree = ast.parse(self.text)
         self.aliases: dict[str, str] = {name: FACADE for name in FACADE_ALIASES}
         self.top_aliases: set[str] = set()
@@ -213,6 +244,11 @@ class _FileScan:
                 self.aliases[local] = module
                 if id(node) in top and module != FACADE:
                     self.top_aliases.add(local)
+
+    def _feed_build_name(self, attr: str) -> bool:
+        """``attr`` ist ein Name, den ein Modul von ``src.build_feed`` selbst definiert."""
+
+        return any(attr in names for names in module_definitions().values())
 
     def resolve(self, node: ast.AST) -> str | None:
         """Der Modulname, zu dem ``node`` auswertet, oder ``None``."""
@@ -274,14 +310,24 @@ class _FileScan:
 
     def _scan_call(self, node: ast.Call, function: str) -> None:
         name = _call_name(node)
-        args = node.args
+        args = _call_args(node, name)
+        if name == "multiple" and args:
+            # patch.multiple(bf, X=...) / patch.multiple("src.build_feed", X=...)
+            module = self.resolve(args[0]) or _string(args[0])
+            if module in module_names():
+                for keyword in node.keywords:
+                    if keyword.arg is not None:
+                        self._add(node.lineno, module, keyword.arg, False, function, args[0])
+            return
         if name in MULTI_FUNCS:
             # setattr_all(monkeypatch, bf, "X", v) / patch_all(bf, "X", ...)
             strings = [s for s in (_string(a) for a in args) if s is not None]
             if strings:
                 self._add(node.lineno, FACADE, strings[0], True, function, None)
             return
-        if name in PATCH_FUNCS and len(args) >= 2:
+        # Ein String als erstes Argument ist die Punkt-Form
+        # (``monkeypatch.setattr("src.build_feed.X", v)``) und läuft unten weiter.
+        if name in PATCH_FUNCS and len(args) >= 2 and _string(args[0]) is None:
             module = self.resolve(args[0])
             attr = _string(args[1])
             if module is not None and attr is not None:
@@ -290,6 +336,10 @@ class _FileScan:
             inner = args[0]
             if attr is not None and isinstance(inner, ast.Attribute) and self.resolve(inner.value):
                 self.census.shared.append(f"{self.rel}:{node.lineno} {_dotted(inner)}.{attr}")
+            elif attr is not None and isinstance(inner, ast.Name) and self._feed_build_name(attr):
+                # Ziel ist ein Parameter oder eine sonst unbekannte Variable:
+                # der Wächter kann das Modul nicht bestimmen.
+                self.census.unresolved.append(f"{self.rel}:{node.lineno} {inner.id}.{attr}")
             return
         if name == "setitem" and args and isinstance(args[0], ast.Attribute) and self.resolve(args[0].value):
             self.census.shared.append(f"{self.rel}:{node.lineno} {_dotted(args[0])}[...]")
@@ -322,9 +372,9 @@ def census() -> Census:
 # ------------------------------------------------------------------ tests
 
 
-def test_every_patch_hits_the_modules_that_read_the_name() -> None:
+def patch_problems(patches: list[Patch]) -> list[str]:
     problems: list[str] = []
-    for patch in census().patches:
+    for patch in patches:
         if patch.multi:
             if not any(patch.name in names for names in module_bindings().values()):
                 problems.append(f"{patch.where()}: no module of {FACADE} binds {patch.name}")
@@ -341,6 +391,16 @@ def test_every_patch_hits_the_modules_that_read_the_name() -> None:
             else:
                 hint = f"patch {next(iter(who))} (owner: {owner_name(patch.name)})"
             problems.append(f"{patch.where()}: patch of {patch.name} on {patch.module} misses its readers; {hint}")
+    return problems
+
+
+def test_every_patch_hits_the_modules_that_read_the_name() -> None:
+    problems = patch_problems(census().patches)
+    problems += [
+        f"{entry}: the guard cannot resolve the patched module; patch through an alias of "
+        f"{FACADE}/{PACKAGE} or use setattr_all/patch_all"
+        for entry in census().unresolved
+    ]
     assert not problems, "\n".join(problems)
 
 
@@ -397,3 +457,51 @@ def test_the_readers_are_computed_from_the_code() -> None:
     assert readers("_get_translation_pipeline") == {f"{PACKAGE}.translator", f"{PACKAGE}.translate_run"}
     assert {FACADE, f"{PACKAGE}.base"} <= readers("feed_config")
     assert FACADE not in readers("_placeholder_nonce")
+
+
+# ------------------------------------------------------------- self-tests
+
+MUTANTS = {
+    "string_setattr": 'def test_m(monkeypatch):\n    monkeypatch.setattr("src.build_feed._mask_entities", f)\n',
+    "string_delattr": 'def test_m(monkeypatch):\n    monkeypatch.delattr("src.build_feed._mask_entities")\n',
+    "string_setattr_kw": (
+        "def test_m(monkeypatch):\n"
+        '    monkeypatch.setattr(target="src.build_feed._mask_entities", value=f)\n'
+    ),
+    "object_keywords": (
+        "from unittest import mock\nimport src.build_feed as feedmod\n"
+        "def test_m():\n"
+        '    with mock.patch.object(target=feedmod, attribute="_mask_entities"):\n        pass\n'
+    ),
+    "patch_multiple": (
+        "from unittest import mock\nfrom src import build_feed\n"
+        "def test_m():\n    with mock.patch.multiple(build_feed, _mask_entities=f):\n        pass\n"
+    ),
+    "patch_multiple_string": (
+        "from unittest import mock\n"
+        "def test_m():\n"
+        '    with mock.patch.multiple("src.build_feed", _mask_entities=f):\n        pass\n'
+    ),
+}
+
+
+def _scan_source(source: str) -> Census:
+    result = Census()
+    _FileScan(TESTS / "test_zz_mutant.py", result, text=source).scan()
+    return result
+
+
+def test_the_guard_flags_facade_patches_in_every_form() -> None:
+    # Jede Form patcht ``_mask_entities`` auf der Fassade; gelesen wird der
+    # Name nur in ``translate_run``, also muss der Wächter jede melden.
+    for label, source in MUTANTS.items():
+        patches = _scan_source(source).patches
+        assert [(p.module, p.name) for p in patches] == [(FACADE, "_mask_entities")], label
+        assert patch_problems(patches), label
+
+
+def test_the_guard_reports_unresolvable_patch_targets() -> None:
+    source = 'def helper(mod, mp):\n    mp.setattr(mod, "_mask_entities", None)\n'
+    result = _scan_source(source)
+    assert result.unresolved == ["tests/test_zz_mutant.py:2 mod._mask_entities"]
+    assert not result.patches
