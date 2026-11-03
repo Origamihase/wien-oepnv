@@ -45,7 +45,7 @@ def test_fetch_events_response_too_large(
     def mock_fetch_safe_fail(*args: Any, **kwargs: Any) -> None:
         raise ValueError("Response too large")
 
-    monkeypatch.setattr("src.providers.wl_fetch.fetch_content_safe", mock_fetch_safe_fail)
+    monkeypatch.setattr("src.providers.wl_api.fetch_content_safe", mock_fetch_safe_fail)
 
     # Mock session_with_retries to return a context manager
     monkeypatch.setattr("src.providers.wl_fetch.session_with_retries", lambda *a, **k: MockSessionContext())
@@ -66,7 +66,7 @@ def test_wl_fetch_uses_fetch_content_safe(
 
     # Mock fetch_content_safe to track calls
     mock_fetch_safe = MagicMock(return_value=b'{"data": {"trafficInfos": [], "pois": []}}')
-    monkeypatch.setattr("src.providers.wl_fetch.fetch_content_safe", mock_fetch_safe)
+    monkeypatch.setattr("src.providers.wl_api.fetch_content_safe", mock_fetch_safe)
 
     # Mock session
     class DummySession:

@@ -28,16 +28,40 @@ import csv
 import io
 import logging
 import math
-import re
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from typing import Any, Final
+from typing import Final
 from zoneinfo import ZoneInfo
 
 from src.utils.files import read_capped_text
 from src.utils.logging import sanitize_log_arg
-from src.utils.stations import display_name, station_info, station_named_in_text
+
+# The CSV sanitiser and the location extraction live in sibling modules
+# (700-line limit, 2026-11-02); every name stays reachable here.
+from src.utils.stats_sanitize import (
+    _CSV_CONTROL_CHARS_RE as _CSV_CONTROL_CHARS_RE,
+    _CSV_FORMULA_PREFIXES as _CSV_FORMULA_PREFIXES,
+    _CSV_TEXT_FIELD_MAX_LEN as _CSV_TEXT_FIELD_MAX_LEN,
+    _sanitize_csv_text_field as _sanitize_csv_text_field,
+)
+from src.utils.stats_location import (
+    MAX_LABELLED_SCAN_CHARS as MAX_LABELLED_SCAN_CHARS,
+    _BETWEEN_RE as _BETWEEN_RE,
+    _GENERIC_DIRECTORY_TOKENS as _GENERIC_DIRECTORY_TOKENS,
+    _HALTESTELLE_RE as _HALTESTELLE_RE,
+    _LABELED_LOCATION_RE as _LABELED_LOCATION_RE,
+    _MAX_STATION_WINDOW as _MAX_STATION_WINDOW,
+    _NOISE_TOKEN_RE as _NOISE_TOKEN_RE,
+    _RICHTUNG_RE as _RICHTUNG_RE,
+    _TOKEN_SPLIT_RE as _TOKEN_SPLIT_RE,
+    _WIEN_PREFIX_RE as _WIEN_PREFIX_RE,
+    _normalise_location as _normalise_location,
+    _resolve_via_directory as _resolve_via_directory,
+    _scan_for_directory_station as _scan_for_directory_station,
+    current_location_label as current_location_label,
+    extract_location_name as extract_location_name,
+)
 
 LOGGER = logging.getLogger("utils.stats")
 
@@ -78,261 +102,6 @@ AUSFAELLE_HEADER: Final = (
 # (0 = Monday). The aggregator renders these verbatim, so any change here
 # also changes the dashboard labels.
 WEEKDAY_LABELS: Final = ("Mo", "Di", "Mi", "Do", "Fr", "Sa", "So")
-
-# Heuristic field-extraction patterns. All patterns operate on the
-# already-sanitised plain-text title/description coming out of the
-# providers — no HTML, no control bytes, no upstream-controlled
-# unbounded length (the providers cap titles at ~200 chars and
-# descriptions at a few hundred). The patterns are deliberately broad-
-# but-bounded: ``{2,80}`` upper bounds keep ReDoS off the table even on
-# pathological input.
-# CSV formula-injection (CWE-1236, OWASP "CSV Injection") defence.
-#
-# Excel, LibreOffice Calc, and Google Sheets evaluate any cell whose
-# content begins with one of these characters as a *formula* on file
-# open. The append-only stats writers persist three operator-/upstream-
-# influenced text fields (``provider``, ``location_name`` for the
-# disruption ledger; ``direction`` for the Stammstrecke ledger) — each
-# is the boundary where defence-in-depth must clamp a payload that
-# could otherwise have been planted via a poisoned cache file
-# (``cache/wl/*.json`` re-emits ``ev["source"]`` verbatim into
-# ``provider`` — see ``src/providers/wl_fetch.py`` lines 736 and 858),
-# a poisoned station directory (``data/stations.json`` flows through
-# ``display_name`` into ``direction``), or a future loosening of
-# :func:`extract_location_name`'s directory-anchored gate. The
-# OWASP-recommended neutralisation is a leading single quote ``'``,
-# which spreadsheets render as plain text (the apostrophe itself is
-# hidden in display) — defanged but still visible to operators
-# scanning the CSV for indicators of compromise.
-_CSV_FORMULA_PREFIXES: Final = ("=", "+", "-", "@", "\t", "\r")
-# C0/C1 control-byte + BiDi / zero-width / line-terminator stripper.
-#
-# The character class union mirrors the canonical sanitiser
-# :data:`src.utils.text._MARKDOWN_NORMALISE_UNSAFE_RE` (and its parent
-# :data:`src.utils.logging._INVISIBLE_DANGEROUS_RE`) so the four
-# orthogonal threat classes are closed at the CSV write boundary too:
-#
-# 1. **C0 controls** (``\x00-\x08`` + ``\x0B-\x0C`` + ``\x0E-\x1F``)
-#    plus DEL (``\x7F``). NUL silently truncates fields in some
-#    downstream CSV reader variants; BEL / VT / FF / SI / SO mangle
-#    operator-facing terminal output. Excludes TAB (``\x09``), LF
-#    (``\x0A``), and CR (``\x0D``) from the body since :mod:`csv`
-#    already QUOTE_MINIMAL-wraps fields containing newlines and
-#    embedded TAB is benign for the default ``,`` delimiter — *leading*
-#    TAB / CR are still defanged by the formula-prefix branch below.
-# 2. **C1 controls** (``\x7F-\x9F``). U+0085 NEXT LINE in particular is
-#    treated as a record terminator by several CSV / SIEM splitters
-#    (and by some Excel locales), splitting a single cell into multiple
-#    rows downstream — same exfiltration shape as an embedded newline.
-# 3. **BiDi format controls** (U+061C ALM, U+202A-U+202E
-#    LRE/RLE/PDF/LRO/**RLO**, U+2066-U+2069 LRI/RLI/FSI/PDI). These are
-#    the canonical CVE-2021-42574 Trojan-Source primitives. Stripping
-#    them at the writer also closes a *formula-injection bypass*:
-#    leading invisible characters (``<U+200B>=cmd…`` /
-#    ``<U+202E>=cmd…``) survive ``str.strip()`` (they are not whitespace per
-#    :func:`str.isspace`), so the downstream
-#    ``cleaned.startswith(_CSV_FORMULA_PREFIXES)`` check returns
-#    ``False`` and the apostrophe-defang is never applied. Excel /
-#    LibreOffice Calc / Google Sheets render the cell with the
-#    invisible prefix collapsed and may still evaluate the residual
-#    ``=cmd…`` as a formula. The fix shape — strip the invisible
-#    prefix at sanitiser entry — re-aligns the formula-prefix check
-#    with the visible cell content.
-# 4. **Zero-width characters** (U+200B-U+200F ZWSP/ZWNJ/ZWJ + LRM/RLM,
-#    U+FEFF BOM). Same formula-injection bypass surface as the BiDi
-#    formatting controls; LRM/RLM are full BiDi primitives despite
-#    being zero-width.
-#
-# The pre-fix regex covered only (1); the BiDi-Mark Drift family
-# (Rounds 2-4) widened ``_CONTROL_CHARS_RE``,
-# ``_INVISIBLE_DANGEROUS_RE``, ``_MARKDOWN_NORMALISE_UNSAFE_RE``,
-# ``_UNSAFE_CHARS_RE``, and ``_UNSAFE_URL_CHARS`` to cover (2)-(4) but
-# explicitly deferred this CSV writer's regex. The inventory test
-# ``test_csv_control_chars_regex_covers_canonical_invisible_dangerous_set``
-# in ``tests/test_sentinel_csv_formula_injection_invisible_prefix.py``
-# pins the invariant programmatically — any future widening of the
-# canonical log-sanitiser fails the test until this regex widens too.
-# 2026-05-11 "Tag-Character / Variation-Selector Drift": widened in
-# lockstep with the canonical ``_INVISIBLE_DANGEROUS_RE`` union to
-# cover the Unicode Tag block (U+E0000..U+E007F), the BMP Variation
-# Selectors (U+FE00..U+FE0F), and the supplementary Variation
-# Selectors (U+E0100..U+E01EF). Tag-character variants of a provider
-# / location name silently fracture downstream pivot-table analytics:
-# Excel / LibreOffice Calc / Google Sheets render the invisible-tag
-# variant as visually-identical text but aggregate it as a distinct
-# cell from the visible cousin. Closing the variant gap at the CSV
-# writer keeps the operator's analytics view consistent with the
-# rendered cells.
-# 2026-05-14 "Zero-Width Format Drift": widened in lockstep with the
-# canonical _INVISIBLE_DANGEROUS_RE union to cover U+180E (MONGOLIAN
-# VOWEL SEPARATOR) and U+2060..U+2064 (WORD JOINER, FUNCTION
-# APPLICATION, INVISIBLE TIMES, INVISIBLE SEPARATOR, INVISIBLE PLUS).
-# Pre-fix invisible-Format variants of a provider/location name
-# silently fractured pivot-table aggregation in the committed CSV
-# stats ledger (Excel/LibreOffice/Sheets render the bytes as zero
-# width, so operators see two visually identical cells aggregating
-# as distinct keys). The U+2060..U+2069 expansion folds the existing
-# BiDi-isolate band into the new range; reserved U+2065 has no
-# defined meaning so the additive strip is safe.
-# 2026-05-14 "Cf-Format Drift": widened in lockstep with the canonical
-# _INVISIBLE_DANGEROUS_RE union to cover the remaining 13 Unicode
-# Cf-class bands (44 code points): U+00AD SOFT HYPHEN, U+0600..U+0605
-# Arabic prefix marks, U+06DD, U+070F, U+0890..U+0891, U+08E2,
-# U+206A..U+206F deprecated BiDi controls (folds the existing
-# U+2060..U+2069 band into U+2060..U+206F), U+FFF9..U+FFFB INTERLINEAR
-# ANNOTATION, U+110BD/U+110CD KAITHI, U+13430..U+13438 EGYPTIAN
-# HIEROGLYPH, U+1BCA0..U+1BCA3 SHORTHAND FORMAT, and U+1D173..U+1D17A
-# MUSICAL SYMBOL formatting. Pre-fix Cf-class invisible variants of
-# a provider/location name silently fractured pivot-table aggregation
-# (Excel/LibreOffice/Sheets render Cf bytes as zero width). SOFT
-# HYPHEN especially is the canonical "invisible-by-default" character
-# used in real-world dedup-key spoofing attacks since 2018.
-_CSV_CONTROL_CHARS_RE: Final = re.compile(
-    r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F"
-    r"\u00ad\u0600-\u0605\u061c\u06dd\u070f\u0890\u0891\u08e2\u180e"
-    r"\u200b-\u200f\u2028-\u202e\u2060-\u206f"
-    r"\ufe00-\ufe0f\ufeff\ufff9-\ufffb"
-    r"\U000110bd\U000110cd"
-    r"\U00013430-\U00013438"
-    r"\U0001bca0-\U0001bca3"
-    r"\U0001d173-\U0001d17a"
-    r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
-)
-# Hard cap on persisted text-field length. Generous enough that any
-# legitimate provider/location/direction string survives untouched;
-# tight enough that an attacker who lands an unbounded string into one
-# of the upstream fields cannot inflate ``data/stats/*.csv`` past a
-# predictable per-row footprint. The location-name heuristic already
-# caps at 80 in :func:`_normalise_location`; this is a second-layer
-# clamp at the CSV boundary itself.
-_CSV_TEXT_FIELD_MAX_LEN: Final = 200
-
-
-def _sanitize_csv_text_field(value: str) -> str:
-    """Neutralise spreadsheet formula injection in *value*.
-
-    Pipeline:
-
-    1. Strip control characters (the regex preserves embedded TAB / LF /
-       CR — :mod:`csv` already QUOTE_MINIMAL-wraps newlines, embedded
-       TAB is benign for the default ``,`` delimiter, *leading* TAB / CR
-       are still defanged in step 4).
-    2. Strip leading/trailing whitespace. Performed *before* the
-       formula-prefix check so a payload like ``"   =cmd"`` (leading
-       whitespace as a known evasion vector — some CSV consumers and
-       spreadsheet importers trim whitespace before evaluating) cannot
-       slip past the prefix branch and then have its whitespace
-       collapsed by a downstream ``.strip()``.
-    3. Cap length at :data:`_CSV_TEXT_FIELD_MAX_LEN` (defends against
-       an unbounded operator/upstream string inflating ``data/stats``).
-    4. Prepend a single quote (``'``) to any value beginning with one
-       of :data:`_CSV_FORMULA_PREFIXES`. The leading apostrophe is
-       hidden in spreadsheet display but forces the cell to be parsed
-       as text; operators scanning the raw CSV still see the (defanged)
-       payload, which preserves the indicator-of-compromise signal.
-    """
-    cleaned = _CSV_CONTROL_CHARS_RE.sub("", value).strip()
-    if len(cleaned) > _CSV_TEXT_FIELD_MAX_LEN:
-        cleaned = cleaned[:_CSV_TEXT_FIELD_MAX_LEN].rstrip()
-    if cleaned.startswith(_CSV_FORMULA_PREFIXES):
-        return "'" + cleaned
-    return cleaned
-
-
-# Upper bound for the *anchored* label scans in
-# :func:`extract_location_name` (``| Haltestelle:`` / ``| Station:`` /
-# ``| Location:``). Sized against live data: WL descriptions in
-# ``cache/wl_*/events.json`` topped out at 4972 chars on 2026-09-13,
-# with 69% above the 1024-char bound that the unanchored scans still
-# use. 8192 leaves ~1.6x headroom over that observed maximum while
-# keeping an explicit ceiling on adversarial input — the label regexes
-# are anchored on a literal and cap their capture at 200 chars, so the
-# cost here is a bounded literal search, not a backtracking scan.
-MAX_LABELLED_SCAN_CHARS: Final = 8192
-
-# Structured-signal patterns. Each captures a *labelled* location segment
-# that the providers already serialise into ``description`` (or ``title``)
-# in a deterministic shape — these are the cleanest signals because the
-# field came out of a curated upstream API field (WL ``relatedStops`` /
-# attrs.station / attrs.location) or out of our own VOR ``in Richtung``
-# render. The capture group is then passed through
-# :func:`_resolve_via_directory`, which only returns a value when
-# :func:`station_info` recognises it — so a poisoned upstream string can
-# never silently land as a "location" cell on the dashboard.
-#
-# All upper bounds are explicit (``{1,200}`` for the labelled-segment
-# captures, ``{1,80}`` for the free-text scans) to keep the regex engine
-# bounded on adversarial inputs (ReDoS hardening); the captured value is
-# later clamped to 80 chars in :func:`_normalise_location`.
-_HALTESTELLE_RE: Final = re.compile(
-    r"\|\s*Haltestelle:\s*([^|]{1,200})",
-    re.IGNORECASE,
-)
-_LABELED_LOCATION_RE: Final = re.compile(
-    r"\|\s*(?:Station|Location)\s*:\s*([^|]{1,200})",
-    re.IGNORECASE,
-)
-_RICHTUNG_RE: Final = re.compile(
-    r"\bin\s+Richtung\s+([^,\.\[\|]{1,80})",
-    re.IGNORECASE,
-)
-_BETWEEN_RE: Final = re.compile(
-    r"\bzwischen\s+([A-ZÄÖÜ][\w\.\-’']{1,80}?(?:\s+[A-ZÄÖÜ][\w\.\-’']{1,80}){0,3})"
-    r"\s+und\s+",
-    re.IGNORECASE,
-)
-_WIEN_PREFIX_RE: Final = re.compile(
-    r"\bWien\s+([A-ZÄÖÜ][\wäöüÄÖÜß\-’']{1,40}(?:\s+[A-ZÄÖÜ][\wäöüÄÖÜß\-’']{1,40})?)"
-)
-
-# Sliding-window scan parameters. ``_MAX_STATION_WINDOW`` mirrors the
-# value used in :mod:`src.providers.oebb._find_stations_in_text` so the
-# two scans behave consistently — a station name that resolves there
-# also resolves here. The token-split character class strips arrow /
-# slash / dash punctuation that appears in route titles
-# (``"A ↔ B"`` / ``"A / B"``) and would otherwise corrupt window joins.
-_MAX_STATION_WINDOW: Final = 4
-_TOKEN_SPLIT_RE: Final = re.compile(r"[\s/]+")
-_NOISE_TOKEN_RE: Final = re.compile(r"^[↔→←↗↘↙↖<>=–—\-«»‹›]+$")
-# Single-token chunks that the directory's alias-expansion rules would
-# silently collapse into flagship stations. ``Hbf`` aliases to
-# ``Wien Hauptbahnhof`` even when the surrounding text is talking about
-# a different station ("Verbindungen zum Hbf umgeleitet"); ``Bahnhof`` /
-# ``Bf`` likewise; ``Wien`` alone aliases on its own (and would land
-# every Vienna-related disruption under the same node). Mirrors the
-# ``oebb._GENERIC_STATION_TOKENS`` filter to keep the two scans in sync.
-_GENERIC_DIRECTORY_TOKENS: Final = frozenset(
-    {
-        "hbf",
-        "bhf",
-        "bf",
-        "bahnhof",
-        "bahnhst",
-        "hauptbahnhof",
-        "westbahnhof",
-        "westbf",
-        "ostbahnhof",
-        "ostbf",
-        "südbahnhof",
-        "suedbahnhof",
-        "südbf",
-        "suedbf",
-        "nordbahnhof",
-        "nordbf",
-        "station",
-        "wien",
-        "vor",
-        # Audit 2026-09-13: four Badner-Bahn stops up to 5.6 km apart
-        # ("Wien Guntramsdorf Lokalbahn (WL)", "Wien Neu Guntramsdorf
-        # (WL)", "Wien Möllersdorf (WL)", "Wien Traiskirchen Lokalbahn
-        # (WL)") all claim the bare "lokalbahn" alias, so a generic
-        # mention collapsed every Badner-Bahn incident onto whichever
-        # one won the tie-break (Guntramsdorf) — the same flagship-node
-        # skew this set exists to prevent for "hbf".
-        "lokalbahn",
-    }
-)
-
 
 def to_vienna(dt: datetime) -> datetime:
     """Return *dt* localised to ``Europe/Vienna``.
@@ -514,226 +283,6 @@ def append_ausfall_row(
         _sanitize_csv_text_field(line) or "unbekannt",
     )
     return _append_row(path, AUSFAELLE_HEADER, row)
-
-
-def _normalise_location(value: str) -> str:
-    """Trim, collapse whitespace, and cap *value* at a sensible length."""
-    cleaned = " ".join(value.split())
-    if len(cleaned) > 80:
-        cleaned = cleaned[:80].rstrip()
-    return cleaned
-
-
-def _resolve_via_directory(candidate: str, *, fragment: bool = False) -> str | None:
-    """Return the *display* name when *candidate* resolves via the station
-    directory, ``None`` otherwise.
-
-    The directory in ``data/stations.json`` is the project's only
-    curated source of truth for "is this a real Vienna-network
-    station?". A regex-extracted candidate is only accepted as a
-    location when :func:`station_info` recognises it (canonical or
-    alias). The returned string is the user-facing
-    :func:`display_name` (e.g. ``Wien Mitte`` rather than the
-    canonical ``Wien Mitte-Landstraße``) so the dashboard renders the
-    label operators expect to read.
-    """
-    cleaned = _normalise_location(candidate)
-    if not cleaned:
-        return None
-    # A *fragment* is a run of words the sliding-window scan cut out of a
-    # sentence; it only matches through a station name, never through a code
-    # or ID (:func:`station_named_in_text`).
-    info = station_named_in_text(cleaned) if fragment else station_info(cleaned)
-    if info is None:
-        return None
-    return display_name(info.name)
-
-
-def _scan_for_directory_station(haystack: str) -> str | None:
-    """Sliding-window scan for a directory-known station in *haystack*.
-
-    Matches longest first within each starting position so that a
-    multi-token name (``Wien Mitte``) wins over the substring match
-    (``Mitte``) when both resolve, and returns the *first* match in
-    source order so the natural reading order of the title/description
-    drives the choice. Mirrors
-    :func:`src.providers.oebb._find_stations_in_text` semantically but
-    is purposefully scoped to the stats-extraction surface (no HTML
-    stripping — the callers already pass plain text).
-
-    ``_GENERIC_DIRECTORY_TOKENS`` filters single-token chunks that the
-    directory's alias rules silently collapse to flagship stations
-    (``Hbf`` → ``Wien Hauptbahnhof`` etc.) — without that filter, every
-    ÖBB description that mentions ``Hbf`` would land all incidents under
-    a single node and skew the dashboard.
-    """
-    if not haystack:
-        return None
-    tokens = [t for t in _TOKEN_SPLIT_RE.split(haystack) if t]
-    tokens = [t for t in tokens if not _NOISE_TOKEN_RE.match(t)]
-    if not tokens:
-        return None
-    n = len(tokens)
-    window = min(_MAX_STATION_WINDOW, n)
-    for start in range(n):
-        max_size = min(window, n - start)
-        for size in range(max_size, 0, -1):
-            chunk_tokens = tokens[start : start + size]
-            chunk = " ".join(chunk_tokens)
-            if size == 1:
-                token_norm = chunk.casefold().rstrip(".:,;")
-                if token_norm in _GENERIC_DIRECTORY_TOKENS:
-                    continue
-                # Drop ultra-short chunks ("S1") to avoid line-token
-                # alias collisions; mirrors the 3-letter floor in the
-                # ÖBB scan.
-                alpha = re.sub(r"[^A-Za-zÄÖÜäöüß]", "", chunk)
-                if len(alpha) < 3:
-                    continue
-            resolved = _resolve_via_directory(chunk.rstrip(".:,;"), fragment=True)
-            if resolved:
-                return resolved
-    return None
-
-
-def current_location_label(label: str) -> str:
-    """*label* of a stored ledger row as :func:`extract_location_name` writes it today.
-
-    The ledger keeps the display name of the day a row was written; when the
-    display layer changes (2026-11-02: "St. Pölten Hauptbahnhof" became
-    "St. Pölten Hbf", ``display_name``), older rows would count as a second
-    place beside the new ones in any analysis by place. The dashboard shows
-    no places today, so its output does not change. A label the directory knows is shown through
-    the same path as a new row (``display_name(station_info(...).name)``);
-    any other label, ``unbekannt`` included, stays as stored.
-    """
-    info = station_info(label) if label and label != "unbekannt" else None
-    return display_name(info.name) if info is not None else label
-
-
-def extract_location_name(item: dict[str, Any]) -> str:
-    """Pick a directory-validated location for *item* or ``"unbekannt"``.
-
-    The strategy is **catalogue-first**: a candidate string is only
-    returned when it resolves through :func:`station_info` (the curated
-    directory in ``data/stations.json``). Free-form regex matches over
-    capitalised tokens were dropped in 2026-05-09 because German nouns
-    are all capitalised — the heuristic accepted disruption types like
-    ``Demonstration Linie`` / ``Rettungseinsatz Linie`` /
-    ``Polizeieinsatz Linie`` as if they were station names, polluting
-    the README "Häufigste Störungsorte" table with non-locations.
-
-    Pipeline (return on first hit):
-
-    1. ``" | Haltestelle: ..."`` — WL provider serialises the
-       ``relatedStops`` API field into the description with this
-       prefix; the first comma-separated entry is the primary stop.
-       When the WL stop name is not in the heavy-rail directory we
-       still accept it verbatim (subject to the 80-char clamp) because
-       the stop list comes from a curated upstream source.
-    2. ``" | Station: ..."`` / ``" | Location: ..."`` — WL extras
-       fallback (also curated upstream); only accepted when it
-       resolves through the directory.
-    3. ``"in Richtung X"`` — the Stammstrecke renderer in
-       ``scripts/update_stammstrecke_status.py``; only accepted when
-       it resolves through the directory.
-    4. ``"zwischen X und Y"`` — canonical ÖBB phrasing; only accepted
-       when X resolves through the directory.
-    5. ``"Wien <Stadtteil>"`` — common in ÖBB / VOR descriptions; only
-       accepted when ``"Wien <Stadtteil>"`` resolves through the
-       directory.
-    6. Sliding-window directory scan over the title + description.
-       Filters single-token generic aliases (``Hbf`` etc.) so
-       arbitrary mentions of those words do not auto-canonicalise to
-       flagship stations.
-    7. Final fallback: ``"unbekannt"``. We deliberately do NOT
-       fall back to a free-form regex match here — the previous fix
-       round demonstrated that any such fallback re-pollutes the
-       statistics ledger.
-
-    Steps 1-2 scan up to :data:`MAX_LABELLED_SCAN_CHARS` characters so a
-    long provider description cannot push the label out of view; steps
-    3-6 stay bounded to the first 1024 characters. See the inline
-    comment below for why the two windows differ.
-
-    The function never raises — a malformed item just returns the
-    fallback string.
-    """
-    title = str(item.get("title") or "")
-    description = str(item.get("description") or "")
-    haystack = " ".join(part for part in (title, description) if part)
-    if not haystack:
-        return "unbekannt"
-
-    # Two search windows, deliberately different in size.
-    #
-    # ``labelled_haystack`` feeds the *anchored* label regexes
-    # (``_HALTESTELLE_RE`` / ``_LABELED_LOCATION_RE``). Those match on a
-    # literal ``| <Label>:`` prefix and cap their capture at 200 chars,
-    # so they stay linear-time on long input and need no tight bound.
-    # They must see the whole description: the WL provider appends
-    # ``" | Haltestelle: …"`` to the *end* of the built description
-    # (``src/providers/wl_fetch.py`` — ``desc += f" | Haltestelle: …"``),
-    # and 69% of live WL descriptions exceed 1024 chars (observed max
-    # 4972 on 2026-09-13). Under the previous single 1024-char window
-    # that marker fell outside the haystack and the most authoritative
-    # signal the WL API gives us — the curated ``relatedStops`` list —
-    # was silently dropped, landing the incident in the dashboard's
-    # "Häufigste Störungsorte" table as ``unbekannt``.
-    #
-    # ``haystack`` keeps the historical 1024-char bound for the
-    # *unanchored* heuristics and the sliding-window scan below. Those
-    # are the ReDoS-sensitive ones, and widening them would also hurt
-    # precision: the scan returns the first directory hit in reading
-    # order, which deep inside a long description is typically a street
-    # mentioned in passing rather than the affected stop.
-    labelled_haystack = haystack[:MAX_LABELLED_SCAN_CHARS]
-    haystack = haystack[:1024]
-
-    halt = _HALTESTELLE_RE.search(labelled_haystack)
-    if halt:
-        first_stop = halt.group(1).split(",")[0].strip()
-        resolved = _resolve_via_directory(first_stop)
-        if resolved:
-            return resolved
-        normalised = _normalise_location(first_stop)
-        if normalised:
-            return normalised
-
-    labeled = _LABELED_LOCATION_RE.search(labelled_haystack)
-    if labeled:
-        first_label = labeled.group(1).split(",")[0].strip()
-        resolved = _resolve_via_directory(first_label)
-        if resolved:
-            return resolved
-
-    richtung = _RICHTUNG_RE.search(haystack)
-    if richtung:
-        target = richtung.group(1).strip()
-        resolved = _resolve_via_directory(target)
-        if resolved:
-            return resolved
-
-    between = _BETWEEN_RE.search(haystack)
-    if between:
-        endpoint = _normalise_location(between.group(1).strip())
-        resolved = _resolve_via_directory(endpoint)
-        if resolved:
-            return resolved
-
-    wien = _WIEN_PREFIX_RE.search(haystack)
-    if wien:
-        suffix = wien.group(1).strip()
-        if suffix:
-            resolved = _resolve_via_directory(f"Wien {suffix}")
-            if resolved:
-                return resolved
-
-    scan = _scan_for_directory_station(haystack)
-    if scan:
-        return scan
-
-    return "unbekannt"
 
 
 # Hard byte cap on the per-year ``stammstrecke_<YYYY>.csv`` file before
@@ -1024,4 +573,21 @@ __all__ = [
     "read_recent_stammstrecke_observations",
     "stats_path",
     "to_vienna",
+    "_CSV_CONTROL_CHARS_RE",
+    "_CSV_FORMULA_PREFIXES",
+    "_CSV_TEXT_FIELD_MAX_LEN",
+    "_sanitize_csv_text_field",
+    "_BETWEEN_RE",
+    "_GENERIC_DIRECTORY_TOKENS",
+    "_HALTESTELLE_RE",
+    "_LABELED_LOCATION_RE",
+    "_MAX_STATION_WINDOW",
+    "_NOISE_TOKEN_RE",
+    "_RICHTUNG_RE",
+    "_TOKEN_SPLIT_RE",
+    "_WIEN_PREFIX_RE",
+    "_normalise_location",
+    "_resolve_via_directory",
+    "_scan_for_directory_station",
+    "_parse_stammstrecke_row",
 ]

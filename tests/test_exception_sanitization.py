@@ -3,6 +3,7 @@ from unittest.mock import patch
 import requests
 import socket
 from src.utils.http import session_with_retries, request_safe
+from tests._conftest.http_bindings import patch_all
 
 class TestExceptionSanitization(unittest.TestCase):
     def test_request_safe_sanitizes_exception_message(self) -> None:
@@ -12,7 +13,7 @@ class TestExceptionSanitization(unittest.TestCase):
         safe_ip = "8.8.8.8"
         mock_addr_info = [(socket.AF_INET, socket.SOCK_STREAM, 6, '', (safe_ip, 80))]
 
-        with patch('src.utils.http._resolve_hostname_safe', return_value=mock_addr_info):
+        with patch_all("_resolve_hostname_safe", return_value=mock_addr_info):
             # With PinnedHTTPSAdapter, requests for HTTPS bypass session.request.
             # We mock PinnedHTTPSAdapter.send to raise the exception.
             with patch('src.utils.http.PinnedHTTPSAdapter.send') as mock_send:

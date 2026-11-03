@@ -3,6 +3,7 @@ import pytest
 import requests
 from unittest.mock import patch, MagicMock
 from src.utils.http import request_safe
+from tests._conftest.http_bindings import patch_all
 
 def test_auth_kwargs_leak_on_redirect() -> None:
     # We want to verify that if we pass auth=('user', 'pass'),
@@ -40,7 +41,7 @@ def test_auth_kwargs_leak_on_redirect() -> None:
                                             MagicMock(__enter__=lambda x: resp2, __exit__=lambda x,y,z,w: None)]
 
         # We also need to mock _resolve_hostname_safe to allow the request to proceed
-        with patch("src.utils.http._resolve_hostname_safe") as mock_resolve, \
+        with patch_all("_resolve_hostname_safe") as mock_resolve, \
              patch("src.utils.http.verify_response_ip") as mock_verify, \
              patch("src.utils.http.validate_http_url") as mock_validate, \
              patch("src.utils.http._pin_url_to_ip") as mock_pin:

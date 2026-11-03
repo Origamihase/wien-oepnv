@@ -5,15 +5,3 @@
 # Datei, die auf 700 Zeilen oder darunter fällt, muss hier gelöscht werden
 # (der Test verlangt das).
 src/build_feed.py
-src/feed/merge.py
-src/feed/reporting.py
-src/providers/oebb.py
-src/providers/vor.py
-src/providers/wl_fetch.py
-src/utils/http.py
-src/utils/logging.py
-src/utils/secret_scanner.py
-src/utils/stations.py
-src/utils/stations_validation.py
-src/utils/stats.py
-src/utils/text.py

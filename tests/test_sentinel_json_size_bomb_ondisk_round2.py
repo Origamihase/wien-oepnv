@@ -154,17 +154,17 @@ def test_station_entries_rejects_oversized_file(
     ``open`` is called and the loader returns the canonical empty
     tuple — keeping every station-lookup path operational on
     degraded data."""
-    from src.utils import stations
+    from src.utils import stations, stations_data
 
     fake_stations = tmp_path / "stations.json"
     _write_oversized(fake_stations, 4096)
 
-    monkeypatch.setattr(stations, "_STATIONS_PATH", fake_stations, raising=False)
-    monkeypatch.setattr(stations, "MAX_STATIONS_FILE_BYTES", 1024, raising=False)
+    monkeypatch.setattr(stations_data, "_STATIONS_PATH", fake_stations, raising=False)
+    monkeypatch.setattr(stations_data, "MAX_STATIONS_FILE_BYTES", 1024, raising=False)
     # Bust the @lru_cache so the loader actually runs against the patched path.
     stations._station_entries.cache_clear()
 
-    with patch("src.utils.stations.json.load") as mock_load:
+    with patch("src.utils.stations_data.json.load") as mock_load:
         result = stations._station_entries()
 
     # Post-fix: json.load is never reached because the size cap fires first.
@@ -178,7 +178,7 @@ def test_station_entries_normal_file_unaffected(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     """Sanity check: the size cap must not reject normal-sized stations files."""
-    from src.utils import stations
+    from src.utils import stations, stations_data
 
     fake_stations = tmp_path / "stations.json"
     fake_stations.write_text(
@@ -186,7 +186,7 @@ def test_station_entries_normal_file_unaffected(
         encoding="utf-8",
     )
 
-    monkeypatch.setattr(stations, "_STATIONS_PATH", fake_stations, raising=False)
+    monkeypatch.setattr(stations_data, "_STATIONS_PATH", fake_stations, raising=False)
     stations._station_entries.cache_clear()
 
     result = stations._station_entries()
@@ -220,7 +220,7 @@ def test_vienna_polygons_rejects_oversized_file(
     )
     stations._vienna_polygons.cache_clear()
 
-    with patch("src.utils.stations.json.load") as mock_load:
+    with patch("src.utils.stations_data.json.load") as mock_load:
         result = stations._vienna_polygons()
 
     mock_load.assert_not_called()
@@ -396,6 +396,7 @@ def test_canonical_size_cap_constants_inventory() -> None:
         # Round 2 (this file)
         ("src.utils.stations", "MAX_STATIONS_FILE_BYTES"),
         ("src.utils.stations", "MAX_VIENNA_POLYGON_FILE_BYTES"),
+        ("src.utils.stations_data", "MAX_STATIONS_FILE_BYTES"),
         ("src.places.merge", "MAX_STATIONS_FILE_BYTES"),
         ("src.utils.stations_validation", "MAX_STATIONS_FILE_BYTES"),
         ("src.build_feed", "MAX_STATE_FILE_BYTES"),

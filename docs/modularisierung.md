@@ -134,3 +134,50 @@ Ordner wie vorher `scripts/*`. Replay: `generate_markdown_stats.py` schreibt
 in einer Kopie von `main` und einer Kopie des Umbaus dieselben Dateien
 (`README.md`, `docs/statistik.md`, `docs/stats-summary.json` bis auf den
 Zeitstempel), `ki_waechter.py prepare` dieselbe Eingabe.
+
+Etappe 7 (2026-11-03) teilt die zwölf langen Module unter `src/` außer
+`build_feed.py` (zusammen rund 20.100 Zeilen). Jedes behält seinen Pfad als
+Fassade: Es enthält den Rest seines Codes und reicht jeden Namen weiter, den
+andere Dateien importieren oder Tests lesen, in genau einer Liste
+`__all__ = [...]` (CodeQL liest nur eine solche Liste). Importe im übrigen
+Projekt ändern sich daher nicht. Der verschobene Code steht in Nachbarmodulen
+oder einem Unterpaket:
+
+| Modul | Neue Module |
+|---|---|
+| `src/utils/logging.py` | `log_patterns_generic.py`, `log_patterns_cloud_ai.py`, `log_patterns_devops_saas.py`, `log_patterns_platforms.py` |
+| `src/utils/secret_scanner.py` | `src/utils/secret_patterns/` (detectors, tokens_vcs_payment_ai, tokens_devtools_saas, tokens_gitlab_commerce, tokens_cloud_platform) |
+| `src/utils/http.py` | `src/utils/http_safety/` (limits, redaction, ip_guard, url_guard, peer, adapters, sessions, request_steps) |
+| `src/utils/stations.py` | `stations_normalize.py`, `stations_geometry.py`, `stations_data.py`, `stations_lookup.py` |
+| `src/utils/stations_validation.py` | `src/utils/station_checks/` (issues, report, basic, identity, security, names) |
+| `src/utils/stats.py` | `stats_sanitize.py`, `stats_location.py` |
+| `src/utils/text.py` | `text_html.py`, `text_markdown.py`, `text_repair.py` |
+| `src/feed/merge.py` | `merge_titles.py`, `merge_texts.py`, `merge_items.py` |
+| `src/feed/reporting.py` | `report_messages.py`, `feed_health.py`, `github_issue.py` |
+| `src/providers/oebb.py` | `oebb_title.py`, `oebb_routes.py`, `oebb_scope.py`, `oebb_relevance.py`, `oebb_route_title.py` |
+| `src/providers/vor.py` | `vor_env.py`, `vor_auth.py`, `vor_quota.py` |
+| `src/providers/wl_fetch.py` | `wl_api.py`, `wl_item_fields.py`, `wl_title_context.py`, `wl_source_outage.py`, `wl_ticker_fold.py`, `wl_aggregates.py` |
+
+Jede Datei hat höchstens 650 Zeilen, der Code ist wie in Etappe 6 wörtlich
+verschoben (Abgleich mit `ast`). Zwei Ausnahmen betreffen nur Daten: Die 85
+Suchmuster von `sanitize_log_message` waren eine Liste, die die Funktion bei
+jedem Aufruf neu baute (1.537 Zeilen); sie stehen jetzt als feste Listen in
+den vier `log_patterns_*`-Modulen, die Fassade hängt sie in der alten
+Reihenfolge zu `_PATTERNS` zusammen. Ebenso ist `_KNOWN_TOKENS` des
+Secret-Scanners (2.162 Zeilen) auf vier Teillisten verteilt. Beide Listen
+sind Eintrag für Eintrag gleich (Muster, Flags, Ersatztext, Reihenfolge), und
+alte und neue Fassung liefern für rund 43.000 Texte aus `tests/`, `src/` und
+`scripts/` dasselbe Ergebnis; jeder Kommentar steht weiter bei seinem
+Eintrag. Wer eine Funktion in einem Test ersetzt, tut das im Modul, in dem
+der Aufruf aufgelöst wird; für `_resolve_hostname_safe` und `is_ip_safe`,
+die mehrere Module von `http_safety` lesen, gibt es `patch_all` in
+`tests/_conftest/http_bindings.py`. Logger-Namen bleiben gleich: Die Teile
+loggen unter dem Namen ihrer Fassade, etwa `src.utils.http`. Wächtertests, die Dateien nach
+Mustern durchsuchen, lesen die neuen Module mit, und
+`.secret-scan-ignore` nennt die neuen Unterpakete. Replay: Der echte Feed-Bau
+(`build_feed.main()`) liefert über 982 Feed-Stände vom 15.10. bis 03.11. mit
+alter und neuer Fassung dieselben Feeds (DE, EN) und denselben State, der
+Abruf von WL und ÖBB (`fetch_events` mit den Rohantworten aus `data/raw/`)
+über 395 Stände vom 04.10. bis 03.11. dieselben Meldungen und
+Verwerfungsgründe. Damit steht nur noch `src/build_feed.py` auf der
+Altfall-Liste.

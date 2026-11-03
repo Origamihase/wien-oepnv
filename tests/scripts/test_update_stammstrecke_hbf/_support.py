@@ -14,6 +14,7 @@ import pytest
 
 from scripts import update_stammstrecke_status as _legacy_script  # noqa: E402
 from src.providers import vor as vor_provider  # noqa: E402
+from src.providers import vor_quota  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 
@@ -39,7 +40,7 @@ def _isolated_quota_counter(
     """Redirect the VOR daily-quota counter to ``tmp_path``."""
 
     count_file = tmp_path / "vor_request_count.json"
-    monkeypatch.setattr(vor_provider, "REQUEST_COUNT_FILE", count_file)
+    monkeypatch.setattr(vor_quota, "REQUEST_COUNT_FILE", count_file)
     vor_provider._flush_quota_cache()
     yield count_file
     vor_provider._flush_quota_cache()

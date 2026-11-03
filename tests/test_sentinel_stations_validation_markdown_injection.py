@@ -342,8 +342,10 @@ def test_to_markdown_sink_inventory_is_pinned() -> None:
     family. The test counts the literal sink count today; bumping it
     requires explicitly re-validating that the new sink is sanitised.
     """
-    src = Path(__file__).resolve().parents[1] / "src" / "utils" / "stations_validation.py"
+    # to_markdown() lives in src/utils/station_checks/report.py since 2026-11-02.
+    src = Path(__file__).resolve().parents[1] / "src" / "utils" / "station_checks" / "report.py"
     text = src.read_text(encoding="utf-8")
+    assert "def to_markdown(" in text
     # Each of the eight issue categories renders one bullet line with
     # f-string interpolation of issue fields. The exact count is not
     # the security gate (escape_markdown is); the count is the audit

@@ -1,9 +1,9 @@
 
 from collections.abc import Iterator
-from unittest.mock import patch
 import pytest
 
 from src.utils.http import validate_http_url
+from tests._conftest.http_bindings import patch_all
 
 # Mock DNS resolution to return a safe IP
 # This isolates the TLD check from DNS check.
@@ -12,7 +12,7 @@ SAFE_IP_INFO = [(2, 1, 6, '', ('8.8.8.8', 80))]
 
 @pytest.fixture
 def mock_dns_safe() -> Iterator[None]:
-    with patch("src.utils.http._resolve_hostname_safe", return_value=SAFE_IP_INFO):
+    with patch_all("_resolve_hostname_safe", return_value=SAFE_IP_INFO):
         yield
 
 def test_tld_local_blocked_standard(mock_dns_safe: None) -> None:

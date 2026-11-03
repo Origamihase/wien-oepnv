@@ -340,6 +340,7 @@ def test_no_function_uses_unsafe_stat_then_open_pattern() -> None:
     modules = [
         _BASE_DIR / "src" / "utils" / "files.py",
         _BASE_DIR / "src" / "utils" / "stations.py",
+        _BASE_DIR / "src" / "utils" / "stations_data.py",
         _BASE_DIR / "src" / "utils" / "cache.py",
         _BASE_DIR / "src" / "utils" / "stations_validation.py",
         _BASE_DIR / "src" / "places" / "merge.py",

@@ -169,12 +169,12 @@ def test_stations_vienna_polygons_handles_depth_bomb(tmp_path: Path) -> None:
 
 
 def test_stations_station_entries_handles_depth_bomb(tmp_path: Path) -> None:
-    from src.utils import stations
+    from src.utils import stations, stations_data
 
     poisoned = tmp_path / "stations.json"
     poisoned.write_text(DEEP_BOMB_STR, encoding="utf-8")
 
-    with patch.object(stations, "_STATIONS_PATH", poisoned):
+    with patch.object(stations_data, "_STATIONS_PATH", poisoned):
         stations._station_entries.cache_clear()
         try:
             result = stations._station_entries()

@@ -74,7 +74,7 @@ sites:
   viewer — the threat model that motivates the Trojan-Source axis
   does not apply.
 
-* ``src/feed/reporting.py:build_feed_health_payload`` /
+* ``src/feed/feed_health.py:build_feed_health_payload`` /
   ``write_feed_health_json`` — per-field
   ``_CONTROL_CHARS_RE.sub("", ...)`` calls strip the canonical
   attack-byte union from every user-controlled string field
@@ -140,7 +140,7 @@ ALLOWLIST: Mapping[tuple[str, str], int] = MappingProxyType(
         # Feed-health JSON sink; per-field ``_CONTROL_CHARS_RE.sub("",
         # ...)`` calls strip the canonical attack-byte union from every
         # user-controlled string field before ``json.dump``.
-        ("src/feed/reporting.py", "write_feed_health_json"): 1,
+        ("src/feed/feed_health.py", "write_feed_health_json"): 1,
         # JSON log formatter; ``sanitize_log_message(dumped,
         # strip_control_chars=False)`` always strips the canonical
         # attack-byte union via ``_INVISIBLE_DANGEROUS_RE.sub("",
@@ -680,6 +680,6 @@ def test_allowlist_is_minimal_and_documented() -> None:
     # site for another (without updating the docstring) also fails.
     assert dict(ALLOWLIST) == {
         ("src/places/hafas_client.py", "_serialise_payload"): 1,
-        ("src/feed/reporting.py", "write_feed_health_json"): 1,
+        ("src/feed/feed_health.py", "write_feed_health_json"): 1,
         ("src/feed/logging_safe.py", "SafeJSONFormatter.format"): 2,
     }

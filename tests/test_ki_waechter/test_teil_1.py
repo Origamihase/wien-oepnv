@@ -389,6 +389,8 @@ def test_the_socket_request_safe_opens_carries_the_keepalive(
     import socket
 
     import src.utils.http as http
+    import src.utils.http_safety.sessions as http_sessions
+    from tests._conftest.http_bindings import setattr_all
 
     options: list[tuple[int, ...]] = []
 
@@ -401,7 +403,7 @@ def test_the_socket_request_safe_opens_carries_the_keepalive(
     for name in ("HTTPS_PROXY", "HTTP_PROXY", "https_proxy", "http_proxy", "ALL_PROXY", "all_proxy"):
         monkeypatch.delenv(name, raising=False)
     monkeypatch.setattr(http, "_resolve_target_ip", lambda parsed, url: "142.250.185.106")
-    monkeypatch.setattr(http, "_resolve_hostname_safe", lambda host: [(0, 0, 0, "", ("142.250.185.106", 443))])
+    setattr_all(monkeypatch, "_resolve_hostname_safe", lambda host: [(0, 0, 0, "", ("142.250.185.106", 443))])
     opened: list[socket.socket] = []
 
     def _connect(*args: Any, **kwargs: Any) -> socket.socket:
@@ -409,7 +411,8 @@ def test_the_socket_request_safe_opens_carries_the_keepalive(
         return opened[-1]
 
     monkeypatch.setattr(socket, "create_connection", _connect)
-    monkeypatch.setattr(http, "_HTTP_SESSION_CACHE", type(http._HTTP_SESSION_CACHE)())
+    # The cache lives in src/utils/http_safety/sessions.py (its only users).
+    monkeypatch.setattr(http_sessions, "_HTTP_SESSION_CACHE", type(http._HTTP_SESSION_CACHE)())
     with http.session_with_retries("t", timeout=(10.0, 600.0), keepalive=keepalive, total=0) as session:
         with pytest.raises(requests.RequestException):
             http.request_safe(

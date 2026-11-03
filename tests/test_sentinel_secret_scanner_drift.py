@@ -544,8 +544,14 @@ def test_known_tokens_carry_post_fix_taxonomy() -> None:
     canonical set so any such regression fails at PR-review time.
     """
     repo_root = Path(__file__).resolve().parents[1]
-    source = (repo_root / "src" / "utils" / "secret_scanner.py").read_text(
-        encoding="utf-8"
+    # The _KNOWN_TOKENS entries live in src/utils/secret_patterns/ since the
+    # 2026-11-02 split; read the facade together with its pattern modules.
+    source = "".join(
+        p.read_text(encoding="utf-8")
+        for p in [
+            repo_root / "src" / "utils" / "secret_scanner.py",
+            *sorted((repo_root / "src" / "utils" / "secret_patterns").glob("*.py")),
+        ]
     )
 
     expected_reasons = [

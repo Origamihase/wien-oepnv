@@ -384,6 +384,17 @@ WALKER_MODULES: tuple[str, ...] = (
     "src/utils/cache.py",
     "src/utils/locking.py",
     "src/utils/http.py",
+    # Parts of http.py, reporting.py, vor.py, oebb.py and wl_fetch.py
+    # (700-line limit, 2026-11-03), also those without log calls today.
+    "src/utils/http_safety/__init__.py",
+    "src/utils/http_safety/adapters.py",
+    "src/utils/http_safety/ip_guard.py",
+    "src/utils/http_safety/limits.py",
+    "src/utils/http_safety/peer.py",
+    "src/utils/http_safety/redaction.py",
+    "src/utils/http_safety/request_steps.py",
+    "src/utils/http_safety/sessions.py",
+    "src/utils/http_safety/url_guard.py",
     "src/build_feed.py",
     # Extended in the post-Scribe Sentinel sweep (2026-05-08): every
     # production module whose ``except Exception as exc`` paths log
@@ -392,9 +403,26 @@ WALKER_MODULES: tuple[str, ...] = (
     # site or removed an existing ``sanitize_log_arg`` wrap.
     "src/feed/providers.py",
     "src/feed/reporting.py",
+    "src/feed/report_messages.py",
+    "src/feed/feed_health.py",
+    "src/feed/github_issue.py",
     "src/providers/vor.py",
+    "src/providers/vor_auth.py",
+    "src/providers/vor_env.py",
+    "src/providers/vor_quota.py",
     "src/providers/oebb.py",
+    "src/providers/oebb_title.py",
+    "src/providers/oebb_routes.py",
+    "src/providers/oebb_scope.py",
+    "src/providers/oebb_relevance.py",
+    "src/providers/oebb_route_title.py",
     "src/providers/wl_fetch.py",
+    "src/providers/wl_api.py",
+    "src/providers/wl_item_fields.py",
+    "src/providers/wl_source_outage.py",
+    "src/providers/wl_ticker_fold.py",
+    "src/providers/wl_title_context.py",
+    "src/providers/wl_aggregates.py",
     # Forward-defensive (2026-05-08): ``geo.py`` currently has no log
     # calls (it's pure math + ValueError on invalid input), but
     # locking it into the walker now prevents a future contributor

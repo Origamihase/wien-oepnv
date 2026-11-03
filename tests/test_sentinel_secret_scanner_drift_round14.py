@@ -367,7 +367,13 @@ def test_secret_scanner_module_contains_abia_known_token_entry() -> None:
     """
     from src.utils import secret_scanner
 
-    source = Path(secret_scanner.__file__).read_text(encoding="utf-8")
+    # The _KNOWN_TOKENS entries live in src/utils/secret_patterns/ since the
+    # 2026-11-02 split; read the facade together with its pattern modules.
+    scanner_path = Path(secret_scanner.__file__)
+    source = "".join(
+        p.read_text(encoding="utf-8")
+        for p in [scanner_path, *sorted((scanner_path.parent / "secret_patterns").glob("*.py"))]
+    )
     assert "ABIA" in source, (
         "secret_scanner.py must contain an ABIA detection pattern "
         "(STS service bearer token credential prefix)"

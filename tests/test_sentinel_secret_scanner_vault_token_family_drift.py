@@ -360,8 +360,14 @@ def test_known_tokens_vault_family_taxonomy() -> None:
     ``test_known_tokens_round6_taxonomy`` for HCP Vault Secrets).
     """
     repo_root = Path(__file__).resolve().parents[1]
-    source = (repo_root / "src" / "utils" / "secret_scanner.py").read_text(
-        encoding="utf-8"
+    # The _KNOWN_TOKENS entries live in src/utils/secret_patterns/ since the
+    # 2026-11-02 split; read the facade together with its pattern modules.
+    source = "".join(
+        p.read_text(encoding="utf-8")
+        for p in [
+            repo_root / "src" / "utils" / "secret_scanner.py",
+            *sorted((repo_root / "src" / "utils" / "secret_patterns").glob("*.py")),
+        ]
     )
 
     expected_reasons = [

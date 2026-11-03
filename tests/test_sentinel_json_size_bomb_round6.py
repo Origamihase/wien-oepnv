@@ -272,7 +272,7 @@ def test_vor_load_request_count_rejects_oversized_file(
     ``(None, 0)`` is returned, mirroring the file-not-found / corrupt-
     file shape.
     """
-    from src.providers import vor
+    from src.providers import vor_quota as vor
 
     poisoned = tmp_path / "vor_request_count.json"
     _write_oversized_json(poisoned, 4096)
@@ -306,7 +306,7 @@ def test_vor_save_request_count_rejects_oversized_file(
     in-memory delta is committed, restoring the canonical schema for
     the next reader.
     """
-    from src.providers import vor
+    from src.providers import vor_quota as vor
 
     poisoned = tmp_path / "vor_request_count.json"
     _write_oversized_json(poisoned, 4096)

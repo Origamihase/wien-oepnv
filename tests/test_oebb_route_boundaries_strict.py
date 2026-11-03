@@ -14,6 +14,7 @@ from __future__ import annotations
 import pytest
 
 import src.providers.oebb as oebb
+import src.providers.oebb_relevance as oebb_relevance
 
 
 class TestRouteBoundaryTokens:
@@ -52,7 +53,7 @@ def test_lone_pendler_dropped_only_under_strict(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     msg = ("Störung Mödling", "Wegen einer Störung kommt es zu Verspätungen.")
-    monkeypatch.setattr(oebb, "OEBB_ONLY_VIENNA", True)
+    monkeypatch.setattr(oebb_relevance, "OEBB_ONLY_VIENNA", True)
     assert oebb._is_relevant(*msg) is False
-    monkeypatch.setattr(oebb, "OEBB_ONLY_VIENNA", False)
+    monkeypatch.setattr(oebb_relevance, "OEBB_ONLY_VIENNA", False)
     assert oebb._is_relevant(*msg) is True

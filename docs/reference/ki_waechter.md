@@ -123,7 +123,7 @@ Modelle zusammen gezählt:
   60 Sekunden Stille, dann alle 30 Sekunden), damit kein NAT und keine
   Firewall auf dem Weg eine Verbindung vergisst, auf deren Antwort der
   Wächter minutenlang wartet (`keepalive=True` in `session_with_retries`,
-  `KEEPALIVE_SOCKET_OPTIONS` in `src/utils/http.py`). Die anderen Abrufe
+  `KEEPALIVE_SOCKET_OPTIONS` in `src/utils/http_safety/adapters.py`). Die anderen Abrufe
   des Projekts warten höchstens Sekunden und bleiben ohne. `request_safe`
   schickt HTTPS über einen eigenen, auf die geprüfte IP festgelegten
   Adapter (`_get_pinned_session`) und gibt ihm die Keepalive-Einstellung

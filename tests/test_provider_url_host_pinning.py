@@ -14,14 +14,14 @@ import pytest
 
 
 def _reload_wl(monkeypatch: pytest.MonkeyPatch, value: str | None) -> ModuleType:
-    """Re-import wl_fetch with a controlled WL_RSS_URL value."""
+    """Re-import wl_api (home of WL_BASE, see wl_fetch) with a controlled WL_RSS_URL value."""
     if value is None:
         monkeypatch.delenv("WL_RSS_URL", raising=False)
     else:
         monkeypatch.setenv("WL_RSS_URL", value)
-    import src.providers.wl_fetch as wl_fetch
+    import src.providers.wl_api as wl_api
 
-    return importlib.reload(wl_fetch)
+    return importlib.reload(wl_api)
 
 
 def test_wl_default_when_env_unset(monkeypatch: pytest.MonkeyPatch) -> None:

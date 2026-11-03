@@ -11,7 +11,7 @@ from collections.abc import Iterator
 import pytest
 from zoneinfo import ZoneInfo
 
-import src.providers.vor as vor
+import src.providers.vor_quota as vor
 
 
 def _save_request_count_in_process(
@@ -23,7 +23,7 @@ def _save_request_count_in_process(
     from datetime import datetime
     from pathlib import Path
 
-    import src.providers.vor as vor_module
+    import src.providers.vor_quota as vor_module
 
     vor_module.REQUEST_COUNT_FILE = Path(count_file)
     # Ensure memory cache is cleared so each process reads from file

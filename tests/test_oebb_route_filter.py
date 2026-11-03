@@ -123,5 +123,7 @@ def test_stationsname_enthaelt_selbst_doppelpunkt(monkeypatch: pytest.MonkeyPatc
             )
         return original_station_info(name)
 
-    monkeypatch.setattr("src.providers.oebb.station_info", mock_station_info)
+    monkeypatch.setattr("src.providers.oebb_relevance.station_info", mock_station_info)
+    monkeypatch.setattr("src.providers.oebb_routes.station_info", mock_station_info)
+    monkeypatch.setattr("src.providers.oebb_route_title.station_info", mock_station_info)
     assert _is_relevant(title, description) is True

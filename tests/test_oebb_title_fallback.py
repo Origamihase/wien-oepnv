@@ -47,8 +47,8 @@ def mock_xml_response(items: list[dict[str, Any]]) -> str:
 
 @patch("src.providers.oebb._fetch_xml")
 @patch("src.providers.oebb.station_by_oebb_id")
-@patch("src.providers.oebb.canonical_name")
-@patch("src.providers.oebb.station_info")
+@patch("src.providers.oebb_title.canonical_name")
+@patch("src.providers.oebb_relevance.station_info")
 def test_oebb_title_fallback_id(
     mock_station_info: MagicMock,
     mock_canon: MagicMock,
@@ -75,7 +75,9 @@ def test_oebb_title_fallback_id(
     mock_fetch.return_value = root
 
     # Run
-    with patch("src.providers.oebb.station_named_in_text", _named_like(mock_canon)):
+    with patch("src.providers.oebb_relevance.station_named_in_text", _named_like(mock_canon)), \
+            patch("src.providers.oebb_routes.station_info", mock_station_info), \
+            patch("src.providers.oebb_route_title.station_info", mock_station_info):
         events = fetch_events()
 
     # Verify
@@ -86,8 +88,8 @@ def test_oebb_title_fallback_id(
 
 @patch("src.providers.oebb._fetch_xml")
 @patch("src.providers.oebb.station_by_oebb_id")
-@patch("src.providers.oebb.canonical_name")
-@patch("src.providers.oebb.station_info")
+@patch("src.providers.oebb_title.canonical_name")
+@patch("src.providers.oebb_relevance.station_info")
 def test_oebb_title_fallback_text(
     mock_station_info: MagicMock,
     mock_canon: MagicMock,
@@ -117,7 +119,9 @@ def test_oebb_title_fallback_text(
     root = ET.fromstring(mock_xml_response(items))
     mock_fetch.return_value = root
 
-    with patch("src.providers.oebb.station_named_in_text", _named_like(mock_canon)):
+    with patch("src.providers.oebb_relevance.station_named_in_text", _named_like(mock_canon)), \
+            patch("src.providers.oebb_routes.station_info", mock_station_info), \
+            patch("src.providers.oebb_route_title.station_info", mock_station_info):
         events = fetch_events()
 
     assert len(events) == 1
@@ -125,8 +129,8 @@ def test_oebb_title_fallback_text(
 
 @patch("src.providers.oebb._fetch_xml")
 @patch("src.providers.oebb.station_by_oebb_id")
-@patch("src.providers.oebb.canonical_name")
-@patch("src.providers.oebb.station_info")
+@patch("src.providers.oebb_title.canonical_name")
+@patch("src.providers.oebb_relevance.station_info")
 def test_oebb_title_fallback_truncation(
     mock_station_info: MagicMock,
     mock_canon: MagicMock,
@@ -147,7 +151,9 @@ def test_oebb_title_fallback_truncation(
     root = ET.fromstring(mock_xml_response(items))
     mock_fetch.return_value = root
 
-    with patch("src.providers.oebb.station_named_in_text", _named_like(mock_canon)):
+    with patch("src.providers.oebb_relevance.station_named_in_text", _named_like(mock_canon)), \
+            patch("src.providers.oebb_routes.station_info", mock_station_info), \
+            patch("src.providers.oebb_route_title.station_info", mock_station_info):
         events = fetch_events()
 
     assert len(events) == 1

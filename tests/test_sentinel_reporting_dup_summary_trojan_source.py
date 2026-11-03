@@ -79,6 +79,7 @@ from __future__ import annotations
 import inspect
 import json
 import re
+import sys
 from typing import Any
 
 import pytest
@@ -381,6 +382,19 @@ def test_sanitize_code_span_helper_removed_or_canonical() -> None:
     re-introduces a narrow helper fails this invariant.
     """
     reporting_mod = _get_reporting_module()
+    _check_sanitize_code_span_helper(reporting_mod)
+    # ``src/feed/reporting.py`` was split (700-line rule): the renderer
+    # now lives in ``src.feed.feed_health``. Check every part.
+    for module_name in (
+        "src.feed.reporting",
+        "src.feed.report_messages",
+        "src.feed.feed_health",
+        "src.feed.github_issue",
+    ):
+        _check_sanitize_code_span_helper(sys.modules[module_name])
+
+
+def _check_sanitize_code_span_helper(reporting_mod: Any) -> None:
     helper = getattr(reporting_mod, "_sanitize_code_span", None)
     if helper is None:
         return  # Removed — best outcome.

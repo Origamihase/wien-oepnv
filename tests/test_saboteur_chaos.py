@@ -41,7 +41,7 @@ def test_chaos_wl_truncated_json_payload_returns_empty_dict() -> None:
     """
     truncated_body = b'{"data": {"trafficInfos": [{"name": "U1", "des'
 
-    with patch("src.providers.wl_fetch.fetch_content_safe", return_value=truncated_body):
+    with patch("src.providers.wl_api.fetch_content_safe", return_value=truncated_body):
         session = MagicMock(spec=requests.Session)
         result = wl._get_json("trafficInfos", session=session, timeout=5)
 
@@ -54,7 +54,7 @@ def test_chaos_wl_invalid_json_chars_returns_empty_dict() -> None:
     decompression bugs)."""
     garbage = b"\x00\xff\xfe garbage \x00"
 
-    with patch("src.providers.wl_fetch.fetch_content_safe", return_value=garbage):
+    with patch("src.providers.wl_api.fetch_content_safe", return_value=garbage):
         session = MagicMock(spec=requests.Session)
         result = wl._get_json("trafficInfos", session=session, timeout=5)
 
@@ -64,7 +64,7 @@ def test_chaos_wl_invalid_json_chars_returns_empty_dict() -> None:
 def test_chaos_wl_empty_body_returns_empty_dict() -> None:
     """Scenario: 200 OK + zero-byte body. Some CDNs serve this when a
     misconfigured upstream returns a 'normalised' empty response."""
-    with patch("src.providers.wl_fetch.fetch_content_safe", return_value=b""):
+    with patch("src.providers.wl_api.fetch_content_safe", return_value=b""):
         session = MagicMock(spec=requests.Session)
         result = wl._get_json("trafficInfos", session=session, timeout=5)
 
@@ -81,7 +81,7 @@ def test_chaos_wl_array_payload_returns_empty_dict() -> None:
     The Zero-Trust type check rejects this — the function returns ``{}``
     rather than crashing or silently treating the array as a dict."""
     with patch(
-        "src.providers.wl_fetch.fetch_content_safe",
+        "src.providers.wl_api.fetch_content_safe",
         return_value=json.dumps([{"item": "x"}]).encode("utf-8"),
     ):
         session = MagicMock(spec=requests.Session)
@@ -94,7 +94,7 @@ def test_chaos_wl_string_payload_returns_empty_dict() -> None:
     """Scenario: API returns a top-level JSON string ('"error"') —
     valid JSON, wrong type."""
     with patch(
-        "src.providers.wl_fetch.fetch_content_safe",
+        "src.providers.wl_api.fetch_content_safe",
         return_value=b'"error"',
     ):
         session = MagicMock(spec=requests.Session)
@@ -106,7 +106,7 @@ def test_chaos_wl_string_payload_returns_empty_dict() -> None:
 def test_chaos_wl_null_payload_returns_empty_dict() -> None:
     """Scenario: API returns a literal ``null`` body."""
     with patch(
-        "src.providers.wl_fetch.fetch_content_safe",
+        "src.providers.wl_api.fetch_content_safe",
         return_value=b"null",
     ):
         session = MagicMock(spec=requests.Session)
@@ -277,7 +277,7 @@ def test_chaos_wl_deep_nested_payload_does_not_crash() -> None:
     deep = b"[" * 5000 + b"]" * 5000
 
     with patch(
-        "src.providers.wl_fetch.fetch_content_safe",
+        "src.providers.wl_api.fetch_content_safe",
         return_value=deep,
     ):
         session = MagicMock(spec=requests.Session)
@@ -298,7 +298,7 @@ def test_chaos_wl_huge_dict_payload_handled() -> None:
     downstream type check."""
     big = {f"key_{i}": i for i in range(10_000)}
     with patch(
-        "src.providers.wl_fetch.fetch_content_safe",
+        "src.providers.wl_api.fetch_content_safe",
         return_value=json.dumps(big).encode("utf-8"),
     ):
         session = MagicMock(spec=requests.Session)

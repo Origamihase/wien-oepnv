@@ -2,6 +2,7 @@
 import pytest
 import responses
 from src.providers.oebb import fetch_events
+from tests._conftest.http_bindings import patch_all
 
 # Full description from cache. "Wien" mention removed to ensure filter drops it.
 # Changed encoding to UTF-8 to handle special chars safely in test environment.
@@ -52,7 +53,7 @@ def test_oebb_filtering_strict_route() -> None:
     # We need to mock DNS and PinnedHTTPSAdapter.send because request_safe bypasses session adapters for HTTPS.
     # This renders responses.add ineffective for request_safe calls on HTTPS.
 
-    with patch("src.utils.http._resolve_hostname_safe") as mock_resolve:
+    with patch_all("_resolve_hostname_safe") as mock_resolve:
         mock_resolve.return_value = [(2, 1, 6, '', ('93.184.216.34', 443))]
 
         with patch("src.utils.http.PinnedHTTPSAdapter.send") as mock_send:
