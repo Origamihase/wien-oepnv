@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-03T12:30:56.551731+00:00",
- "built": "2026-11-03T13:30:44+01:00",
+ "updated": "2026-11-03T13:01:14.591457+00:00",
+ "built": "2026-11-03T14:00:59+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-03T13:30:44+01:00",
+  "built": "2026-11-03T14:00:59+01:00",
   "items": [
+   {
+    "title": "13A: Rettungseinsatz",
+    "time_line": "Seit 13:56"
+   },
    {
     "title": "O: Polizeieinsatz",
     "time_line": "Seit 13:26"
@@ -15,10 +19,6 @@
    {
     "title": "32A: Rettungseinsatz",
     "time_line": "Seit 12:35"
-   },
-   {
-    "title": "46: Rettungseinsatz",
-    "time_line": "Seit 11:27"
    },
    {
     "title": "64A: Liesinger-Flur-Gasse",
@@ -52,46 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-27T12:30:57.145044+00:00",
-   "raw": {
-    "wl-stoerungen": 70,
-    "wl-hinweise": 91,
-    "oebb": 166,
-    "baustellen-linien": 55,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 14,
-    "oebb": 141,
-    "baustellen": 70
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 110
-   }
-  },
-  {
-   "t": "2026-10-27T13:01:09.294211+00:00",
-   "raw": {
-    "wl-stoerungen": 82,
-    "wl-hinweise": 91,
-    "oebb": 166,
-    "baustellen-linien": 55,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 16,
-    "oebb": 141,
-    "baustellen": 70
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 111
-   }
-  },
   {
    "t": "2026-10-27T13:31:09.919390+00:00",
    "raw": {
@@ -6771,17 +6731,37 @@
     "oebb": 7,
     "wl": 89
    }
+  },
+  {
+   "t": "2026-11-03T13:01:14.591457+00:00",
+   "raw": {
+    "wl-stoerungen": 59,
+    "wl-hinweise": 73,
+    "oebb": 177,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 12,
+    "oebb": 152,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 7,
+    "wl": 89
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-03T12:30:56.551731+00:00"
+   "last_ok": "2026-11-03T13:01:14.591457+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-03T12:30:56.551731+00:00"
+   "last_ok": "2026-11-03T13:01:14.591457+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-03T12:30:56.551731+00:00"
+   "last_ok": "2026-11-03T13:01:14.591457+00:00"
   }
  }
 }
