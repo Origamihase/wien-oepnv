@@ -210,6 +210,28 @@ Build-Lauf (`build_feed.main`, Ende von `src/build_feed.py`), der den
 fertigen deutschen Feed schreibt und danach denselben Item-Satz ein zweites
 Mal durch `_make_rss(..., lang="en")` schickt.
 
+Der Code der Übersetzung steht seit 2026-11-03 in Teilen unter
+`src/feed_build/` (Etappe 8, [Modularisierung](modularisierung.md));
+`src/build_feed.py` reicht die Namen weiter. Die Schritte des Diagramms
+unten liegen so:
+
+| Teil | Schritte |
+| --- | --- |
+| `translation_cache` | `_apply_lang_overlay`, `_cached_translation`, `_cached_translation_defect` |
+| `translation_epoch` | `_TRANSLATION_CACHE_EPOCH`, `_evict_stale_translations`, `_stamp_translation_epoch`, `_record_source_digest` |
+| `pretranslate` | `_split_label_record`, `_normalise_for_translation` |
+| `translate_run` | `_translate_text_attempt`, `_render_label_record` |
+| `translate_titles` | `_translate_text`, `_translate_title_attempt` |
+| `placeholders` | `_PLACEHOLDER_NONCE`, `_placeholder_nonce`, `_apply_domain_glossary`, `_normalise_placeholder_debris` |
+| `entities`, `masking` | Entitätsmuster, `_mask_entities`, `_unmask_entities` |
+| `model_pass` | `_model_pass`, Prüfung auf Platzhalterreste |
+| `en_repairs`, `en_templates` | `_entities_dropped_by_translation`, `_fix_glossary_articles`, EN-Vorlagen |
+| `translator` | `_get_translation_pipeline`, `_MarianTranslator`, `_TRANSLATION_STATE`, `_record_translation_status` |
+
+Ein Test ersetzt einen dieser Namen in dem Teil, dessen Code ihn liest;
+`_get_translation_pipeline` lesen mehrere Teile, dort ersetzt `setattr_all`
+ihn in jedem.
+
 Übersetzt wird **auf Item-Ebene, nach der deutschen Formatierung**. Das ist
 wichtig für das Verständnis der ganzen Kette: Kürzung auf 180 Zeichen,
 Satz-Auswahl, Dedupe gegen den Titel und `MaxItems` sind zu diesem Zeitpunkt
@@ -273,7 +295,8 @@ bevor der Straßen-Suffix-Masker existierte — wird ohne Epochen-Bump für die
 Lebensdauer des Items weiter ausgeliefert. Das ist die praktische Regel:
 **wer Masking oder Glossar verbessert, erhöht die Epoche im selben PR**,
 sonst sieht niemand die Verbesserung. Die Epochen-Historie steht als
-Kommentar bei der Konstante in `src/build_feed.py` und ist dort zu ergänzen.
+Kommentar bei der Konstante in `src/feed_build/translation_epoch.py` und ist
+dort zu ergänzen.
 
 ### Was am Modell vorbeigeht
 

@@ -1,7 +1,7 @@
 """Verify that ``STATE_RETENTION_DAYS`` env overrides cannot exceed ``MAX_STATE_RETENTION_DAYS``.
 
 ``feed_config.STATE_RETENTION_DAYS`` is consumed in
-``src/build_feed.py:_load_state`` as
+``src/feed_build/state.py:_load_state`` as
 ``now_utc - timedelta(days=STATE_RETENTION_DAYS)`` to discard ``first_seen``
 state entries older than the window. Without an upper bound an env override
 such as ``STATE_RETENTION_DAYS=99999999`` (intentional misconfig, leaked CI

@@ -70,7 +70,7 @@ closes is everything that PR #1503 did NOT enumerate:
    NOT enumerate three sibling readers that share the same threat
    model:
 
-   * ``src/build_feed.py:_read_state_capped`` — the second
+   * ``src/feed_build/state.py:_read_state_capped`` — the second
      ``data/first_seen.json`` reader, called from ``_save_state``
      to merge with existing state.  Same file as the Round-1503
      ``_load_state`` reader but a separate function.

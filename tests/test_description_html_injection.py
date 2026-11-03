@@ -10,7 +10,7 @@ XML providers that survives one XML-decode layer).
 True)``, which DECODES those entities back into live ``<`` / ``>`` characters
 in its *plain-text* output. That plain text becomes ``summary`` and flows into
 ``_compose_description`` -> ``desc_text_truncated`` -> the per-item
-``<description>`` element (``src/build_feed.py:_emit_item``).
+``<description>`` element (``src/feed_build/rss.py:_emit_item``).
 
 ``<description>`` is an XML TEXT node, so ElementTree escapes ``<>&`` for XML
 well-formedness on serialise. That is the trap the sibling ``<content:encoded>``
@@ -79,7 +79,7 @@ class _ReaderModel(HTMLParser):
 def _published_description_textnode(description: str) -> str:
     """Return the ``<description>`` content as the reader's XML parser sees it.
 
-    Drives the real per-item builder (``src/build_feed.py:_emit_item``),
+    Drives the real per-item builder (``src/feed_build/rss.py:_emit_item``),
     serialises the actually-published ``<description>`` element to XML bytes,
     then re-parses them so the returned string is what a reader gets *after its
     single XML-decode* — i.e. the exact input handed to HTML rendering.

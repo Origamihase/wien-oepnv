@@ -14,7 +14,7 @@ the canonical floor across four canonical sibling regexes:
 * ``src/utils/logging.py:_INVISIBLE_DANGEROUS_RE`` — always-strip floor
 * ``src/utils/text.py:_MARKDOWN_NORMALISE_UNSAFE_RE``
 * ``src/utils/stats.py:_CSV_CONTROL_CHARS_RE``
-* ``src/build_feed.py:_CONTROL_RE`` (the RSS-XML writer)
+* ``src/feed_build/base.py:_CONTROL_RE`` (the RSS-XML writer)
 
 But ``src/feed/reporting.py`` declares its OWN ``_CONTROL_CHARS_RE``
 at module level — a name-collision sibling of the canonical

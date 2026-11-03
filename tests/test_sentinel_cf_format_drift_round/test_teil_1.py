@@ -201,7 +201,7 @@ def test_unsafe_chars_re_matches_missing_code_point(
 def test_build_feed_control_re_matches_missing_code_point(
     code_point: str, label: str
 ) -> None:
-    """``src/build_feed.py:_CONTROL_RE`` is the LAST sanitiser before
+    """``src/feed_build/base.py:_CONTROL_RE`` is the LAST sanitiser before
     every RSS-feed title / description / time-line lands inside
     ``docs/feed.xml`` (served from
     ``https://origamihase.github.io/wien-oepnv/feed.xml``). Pre-fix

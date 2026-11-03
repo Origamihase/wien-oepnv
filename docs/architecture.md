@@ -176,6 +176,10 @@ sie auf; bis zur Nachprüfung vom 2026-10-15 trug es eine eigene Kopie ohne
 `_note_announced_starts`. `tests/test_assemble_feed_items.py` hält fest, dass
 `main()` keinen Kettenschritt mehr selbst aufruft und keine andere Funktion
 mehr als einen Kettenschritt aufruft, also keine zweite Kette entsteht.
+Seit Etappe 8 der 700-Zeilen-Regel (2026-11-03) steht die Kette weiter in
+`src/build_feed.py`, die einzelnen Schritte stehen in den Teilen unter
+`src/feed_build/` (etwa `filters`, `wl_joins`, `wl_notices`, `item_history`,
+`rss`; Liste in [Modularisierung](modularisierung.md)).
 
 `build_feed.py` bleibt ansonsten ein Modul. Michaels Entscheidung vom
 2026-10-15 nach Jules' Modularisierungs-Audit vom 2026-10-14
@@ -216,7 +220,11 @@ oben in diesem Dokument). Die Größe von `build_feed.py` allein ist damit
 kein Befund für ein Audit.
 
 Diese Entscheidung gilt nicht mehr: Am 2026-11-02 hat Michael die Aufteilung
-beschlossen (nächster Abschnitt).
+beschlossen (nächster Abschnitt). Seit 2026-11-03 ist `src/build_feed.py`
+Einstieg und Fassade mit der Kette (661 Zeilen), der übrige Code steht in 34
+Modulen unter `src/feed_build/`. Tests ersetzen einen Namen in dem Modul, das
+ihn liest (`tests/_conftest/build_feed_bindings.py`,
+`tests/test_build_feed_patch_targets.py`).
 
 ### Höchstens 700 Zeilen je Datei (seit 2026-11-02)
 
@@ -238,11 +246,14 @@ das neue Modul). Der Test hält drei Dinge fest: Keine Datei außerhalb der
 Liste hat mehr als 700 Zeilen; die Liste bekommt keine neuen Einträge
 (`_ALTFAELLE_COUNT` darf nur sinken); eine Datei, die auf 700 Zeilen oder
 darunter fällt, wird aus der Liste gelöscht. Eine Datei, die wächst, wird
-geteilt, bevor sie die Grenze überschreitet.
+geteilt, bevor sie die Grenze überschreitet. Seit 2026-11-03 ist die Liste
+leer: Mit dem letzten Schritt von Etappe 8 ist auch `src/build_feed.py`
+aufgeteilt, und die Grenze gilt für jede gezählte Datei ohne Ausnahme.
 
 Wie die Altfälle Etappe für Etappe aufgeteilt werden und wie die geteilten
 Dateien aufgebaut sind (CHANGELOG nach Tagen, Testpakete, Markdown-Teile,
-Stylesheet-Teile, Skript-Module, Fixtures von `tests/conftest.py`), steht in
+Stylesheet-Teile, Skript-Module, Fixtures von `tests/conftest.py`,
+Fassaden unter `src/`, die Teile von `src/feed_build/`), steht in
 [Modularisierung](modularisierung.md). Wer eine geteilte Datei ergänzt, liest
 dort, wohin der neue Teil gehört.
 

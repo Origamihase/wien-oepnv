@@ -318,7 +318,7 @@ Beide Feeds (`feed.xml`, `feed.en.xml`) tragen in einem Item höchstens ein
 `http://www.georss.org/georss`, Koordinaten „Breite Länge“ mit sechs
 Nachkommastellen). Reader ohne GeoRSS übergehen die Elemente wie die seit
 Langem vorhandenen `ext:`-Felder; Titel und Beschreibung ändern sich nicht.
-Gebaut in `_item_geometry` (`src/build_feed.py`), aufgerufen von `_emit_item`.
+Gebaut in `_item_geometry` (`src/feed_build/rss.py`), aufgerufen von `_emit_item`.
 
 **Entscheidung des Betreibers (2026-10-16):** „Ich möchte das Projekt so gut
 wie möglich machen. Eine präzise Variante würde das Projekt aufwerten.
@@ -374,7 +374,7 @@ Quellenangabe als Tag beinhalten. Meldungen der Wiener Linien sollen zu den
 Wiener Linien verlinken und eine Quellenangabe als Tag für die Wiener Linien
 haben. Das Selbe für Baustellenmeldungen der Stadt Wien u.s.w.“
 
-Die Tabelle `_ITEM_SOURCES` in `src/build_feed.py` legt je Quelle (Feld
+Die Tabelle `_ITEM_SOURCES` in `src/feed_build/item_meta.py` legt je Quelle (Feld
 `source` des Items) drei Dinge fest: den Namen im RSS-Element `<source>`, die
 Adresse in dessen Pflichtattribut `url` und die Domains, auf die der
 `<link>` zeigen darf. Ein Link auf eine andere Domain (eine tote
@@ -416,7 +416,7 @@ dasselbe eigene Bild (1920 × 1080; bis 23.10. das schlichte weiße
 als `<enclosure>` (RSS 2.0) und als `<media:content>` (Media RSS). Unter der
 dunklen Schicht von EasySignage erscheint Weiß als das gewählte Grau. Die
 Links bleiben beim Betreiber (Abschnitt oben). `_ITEM_IMAGE_BYTES` in
-`src/build_feed.py` ist die Dateigröße für das Pflichtattribut `length`;
+`src/feed_build/item_meta.py` ist die Dateigröße für das Pflichtattribut `length`;
 `tests/test_item_image.py` hält sie und die Maße gleich mit der Datei. Andere
 Feed-Leser können das Bild als helle Vorschau anzeigen. Titel, Texte, GUIDs,
 Links und Reihenfolge ändern sich nicht (Nachbau von 216 Feed-Ständen

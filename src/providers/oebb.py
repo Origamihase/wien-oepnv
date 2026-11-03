@@ -335,7 +335,7 @@ _OEBB_TZ = ZoneInfo("Europe/Vienna")
 #   ohne Öffnen der Beschreibung nicht zu unterscheiden.
 #
 # Beides löst sich, sobald der Zeitraum in ``starts_at``/``ends_at``
-# landet: :func:`build_feed.format_local_times` rendert daraus von sich
+# landet: :func:`feed_build.time_line.format_local_times` rendert daraus von sich
 # aus „03.10.2026 – 05.10.2026", „Am 01.11.2026" oder „Ab …".
 _PERIOD_PREFIX_RE = re.compile(
     r"^\s*(\d{2})\.(\d{2})\.(\d{4})"
@@ -355,7 +355,7 @@ def _parse_period(desc: str) -> tuple[datetime | None, datetime | None]:
     (publication date as start, no end).
 
     A single date means a one-day disruption: start and end fall on the
-    same day, which :func:`build_feed.format_local_times` renders as
+    same day, which :func:`feed_build.time_line.format_local_times` renders as
     ``"Am TT.MM."`` (``"Heute"`` on the day itself).
     """
     match = _PERIOD_PREFIX_RE.match(desc or "")

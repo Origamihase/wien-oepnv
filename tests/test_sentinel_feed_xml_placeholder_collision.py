@@ -1,5 +1,5 @@
 """Sentinel drift coverage for the RSS feed CDATA-placeholder collision
-check in ``src/build_feed.py:_emit_item``.
+check in ``src/feed_build/rss.py:_emit_item``.
 
 Vulnerability
 =============

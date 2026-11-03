@@ -14,7 +14,7 @@ PR #1491) pinned ``allow_nan=False`` on every committed-to-main
       coordinate writers)
     * :func:`src.feed.reporting.write_feed_health_json`
       (``docs/feed-health.json``), :func:`src.utils.cache.write_status`,
-      :func:`src.build_feed._save_state`,
+      :func:`src.feed_build.state._save_state`,
       :func:`src.providers.vor._write_request_count_file`,
       :func:`scripts.update_all_stations._write_heartbeat_file`,
       :func:`scripts.update_all_stations._write_quarantine_file`,
@@ -129,7 +129,7 @@ Sites migrated this round (8 production sites in src/):
     * :func:`src.utils.files.read_capped_json` (the canonical helper)
     * :func:`src.utils.stations._read_capped_json` (duplicate helper
       used for ``data/stations.json`` + ``vienna_polygons.json``)
-    * :func:`src.build_feed._load_state` (inline reader for
+    * :func:`src.feed_build.state._load_state` (inline reader for
       ``data/first_seen.json``)
     * :func:`src.utils.cache.read_cache` (``cache/<provider>/events.json``)
     * :func:`src.utils.cache.write_cache` (existing-cache check inside

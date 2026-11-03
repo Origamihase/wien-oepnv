@@ -70,7 +70,7 @@ def member_guids(item: Mapping[str, Any]) -> list[str]:
     """The GUIDs of the source messages *item* stands for, and WL incident numbers, sorted.
 
     A merge writes them to ``_members``; an item no merge touched stands
-    for itself. ``build_feed._carry_item_identity`` follows an item from
+    for itself. ``feed_build.item_history._carry_item_identity`` follows an item from
     build to build by them, so its GUID does not change when the message
     whose GUID it carries leaves the data before the others.
     """

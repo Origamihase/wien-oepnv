@@ -37,7 +37,7 @@ already cover the C0-minus-readable-whitespace set:
 * ``src/utils/text.py:_MARKDOWN_NORMALISE_UNSAFE_RE`` —
   ``[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f\\x7f-\\x9f...]``
 * ``src/utils/stats.py:_CSV_CONTROL_CHARS_RE`` — same shape.
-* ``src/build_feed.py:_CONTROL_RE`` — same shape (Round 6 of the
+* ``src/feed_build/base.py:_CONTROL_RE`` — same shape (Round 6 of the
   BiDi-Mark Drift family widened it to the canonical floor).
 
 Only ``src/utils/logging.py:_INVISIBLE_DANGEROUS_RE`` was left at:
@@ -502,7 +502,7 @@ def test_invisible_dangerous_re_covers_c0_minus_readable_whitespace() -> None:
 
     * ``src/utils/text.py:_MARKDOWN_NORMALISE_UNSAFE_RE``
     * ``src/utils/stats.py:_CSV_CONTROL_CHARS_RE``
-    * ``src/build_feed.py:_CONTROL_RE``
+    * ``src/feed_build/base.py:_CONTROL_RE``
 
     The always-strip floor in ``_INVISIBLE_DANGEROUS_RE`` MUST agree
     with this canonical floor so every ``strip_control_chars=False``

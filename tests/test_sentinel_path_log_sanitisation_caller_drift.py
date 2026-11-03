@@ -33,18 +33,18 @@ through the bare ``%s`` format spec:
      UTF-8 / I/O error), interpolating ``path`` verbatim. Same
      env-controlled candidate-list surface as Site 2.
 
-  4. ``src/build_feed.py:_load_state`` — orchestrator state file
+  4. ``src/feed_build/state.py:_load_state`` — orchestrator state file
      (``data/first_seen.json`` or ``STATE_PATH``-overridden path).
      The path is ``feed_config.STATE_FILE`` which is operator-
      controlled via the ``STATE_PATH`` environment variable. Two
      WARNING log lines (size-cap and read-cap branches) interpolate
      ``path`` verbatim.
 
-  5. ``src/build_feed.py:_read_state_capped`` — orchestrator state
+  5. ``src/feed_build/state.py:_read_state_capped`` — orchestrator state
      file's safe-merge path under exclusive lock. Same path surface
      and same two-WARNING log shape as Site 4.
 
-  6. ``src/build_feed.py:_save_state`` lock-failure branch —
+  6. ``src/feed_build/state.py:_save_state`` lock-failure branch —
      interpolates ``path`` verbatim into a WARNING when the
      advisory file-lock cannot be acquired. Same path surface as
      Sites 4 / 5.
@@ -379,7 +379,7 @@ def test_load_env_file_oversize_log_carries_fingerprint(
 
 
 # ============================================================================
-# Site 5: src/build_feed.py:_load_state  (state-file size-cap WARNING)
+# Site 5: src/feed_build/state.py:_load_state  (state-file size-cap WARNING)
 # ============================================================================
 
 
@@ -458,7 +458,7 @@ def test_load_state_size_cap_log_carries_fingerprint(
 
 
 # ============================================================================
-# Site 6: src/build_feed.py:_read_state_capped (safe-merge WARNING)
+# Site 6: src/feed_build/state.py:_read_state_capped (safe-merge WARNING)
 # ============================================================================
 
 
@@ -522,7 +522,7 @@ def test_read_state_capped_log_carries_fingerprint(
 
 
 # ============================================================================
-# Site 7: src/build_feed.py:_save_state lock-failure branch
+# Site 7: src/feed_build/state.py:_save_state lock-failure branch
 # ============================================================================
 
 

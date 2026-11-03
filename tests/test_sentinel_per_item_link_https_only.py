@@ -4,7 +4,7 @@ is not enforced HTTPS-only — TLS-strip primitive on subscribers.
 Threat model
 ------------
 
-The pre-fix flow in ``src/build_feed.py:_format_item_content`` validates
+The pre-fix flow in ``src/feed_build/item_format.py:_format_item_content`` validates
 upstream-supplied per-item links via::
 
     sanitized_link = validate_http_url(link, check_dns=False) if link else ""

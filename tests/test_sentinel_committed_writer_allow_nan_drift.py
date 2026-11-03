@@ -54,7 +54,7 @@ environment-controlled values.
     3. (formerly ``src.places.quota.MonthlyQuota.save_atomic`` —
        ``data/places_quota.json``; removed with the Google Places
        stage on 2026-10-16.)
-    4. :func:`src.build_feed._save_state` (the inline
+    4. :func:`src.feed_build.state._save_state` (the inline
        ``json.dump(merged_state, ...)``) — ``data/first_seen.json``.
        The state dict's values are ISO date strings today but the
        ``Any``-typed value slot accepts any JSON literal that
@@ -140,7 +140,7 @@ Eight coordinated edits, all pinned by this test file:
   2. ``src/utils/cache.py:write_status`` — same.
   3. (``src/places/quota.py:MonthlyQuota.save_atomic`` — removed
      2026-10-16 together with the Google Places stage.)
-  4. ``src/build_feed.py:_save_state`` — same.
+  4. ``src/feed_build/state.py:_save_state`` — same.
   5. ``src/providers/vor.py:_write_request_count_file`` — same.
   6. ``scripts/update_all_stations.py:_write_heartbeat_file`` — same.
   7. ``scripts/update_all_stations.py:_write_quarantine_file`` — same.
