@@ -926,18 +926,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60: Fremder Verkehrsunfall",
-    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "42: Fahrtbehinderung Falschparker",
+    "description": "Linie 42: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 19:30 Uhr. Grund: Falschparker im Bereich Kreuzgasse 29.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "fa13a977753886fe597c353a144a3e24d7a3675a48c2729c300f9be73e720a96",
-    "pubDate": "2026-11-03T17:35:00+01:00",
-    "starts_at": "2026-11-03T17:35:00+01:00",
-    "ends_at": "2026-11-03T19:26:00+01:00",
-    "_identity": "wl|störung|L=60|D=2026-11-03|TK=60 fremder verkehrsunfall",
+    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
+    "pubDate": "2026-11-03T19:06:00+01:00",
+    "starts_at": "2026-11-03T19:16:46+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=42|D=2026-11-03|TK=falschparker",
     "_wl_ids": [
-      "I20261103-0034"
+      "I20261103-0036"
     ],
-    "_incident_start": "2026-11-03T17:35:00+01:00"
+    "_incident_start": "2026-11-03T19:06:00+01:00"
   },
   {
     "source": "Wiener Linien",
