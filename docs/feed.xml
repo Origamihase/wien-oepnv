@@ -8,21 +8,46 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 03 Nov 2026 07:30:57 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 08:00:39 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[38/40/41/42: Verkehrsunfall]]></title>
+      <title><![CDATA[1/LB: Betriebsstörung]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">31f255c87f5a1575177df04a76beabf6426a71727ee2fef75eb69ab752e4775f</guid>
-      <pubDate>Tue, 03 Nov 2026 06:30:00 +0100</pubDate>
+      <guid isPermaLink="false">3183b17b45a2c2fae2693d822cbaedecd19c00516905503d28caed67b1d7601f</guid>
+      <pubDate>Tue, 03 Nov 2026 07:58:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 03 Nov 2026 06:30:00 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 03 Nov 2026 06:33:01 +0100</ext:starts_at>
-      <ext:ends_at>Tue, 03 Nov 2026 07:33:00 +0100</ext:ends_at>
-      <description>Fahrtbehinderung. [Seit 06:30]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 06:30]]]></content:encoded>
+      <ext:first_seen>Tue, 03 Nov 2026 08:00:39 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 03 Nov 2026 07:58:00 +0100</ext:starts_at>
+      <description>Fahrtbehinderung: 1, Badner Bahn. [Seit 07:58]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung: 1, Badner Bahn.<br/>[Seit 07:58]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[16A: Verkehrsüberlastung]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">08f8f9d0c414c51fe010c32727e4eaf8cc098f2c840c0b9f9cbd2fc85b0426e7</guid>
+      <pubDate>Tue, 03 Nov 2026 07:32:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 03 Nov 2026 07:32:00 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 03 Nov 2026 07:32:00 +0100</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 07:32]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 07:32]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[31: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">93779f2373f8195241c5ab62df54f31689b7c4f93a9f65654658fd3b67c3a983</guid>
+      <pubDate>Tue, 03 Nov 2026 07:31:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 03 Nov 2026 07:31:00 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 03 Nov 2026 07:31:00 +0100</ext:starts_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 07:31]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 07:31]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[37: Verkehrsunfall]]></title>
@@ -38,7 +63,7 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 06:30]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[16A/67B: Störung an einem Bahnübergang]]></title>
+      <title><![CDATA[67B: Störung an einem Bahnübergang]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">64adf3f111f665b0756e206081b736c33bee655dba42034dde513aed6f0ef56b</guid>
       <pubDate>Tue, 03 Nov 2026 06:16:00 +0100</pubDate>
@@ -124,34 +149,6 @@
       <georss:line>48.185201 16.376296 48.034917 16.491315</georss:line>
       <description>Wegen Bauarbeiten können keine Nahverkehrszüge fahren: jeweils von Samstag 23:15 Uhr bis Sonntag 04:40 Uhr und von Sonntag 23:15 Uhr bis Montag 04:40 Uhr. [Bis 30.11.]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können keine Nahverkehrszüge fahren: jeweils von Samstag 23:15 Uhr bis Sonntag 04:40 Uhr und von Sonntag 23:15 Uhr bis Montag 04:40 Uhr.<br/>[Bis 30.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[54A/54B: Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">368e944a9eb2af06010f464af138f6047466adea7e5bb23fd6f4ce14094d53dc</guid>
-      <pubDate>Fri, 30 Oct 2026 15:00:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 28 Oct 2026 17:01:03 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 30 Oct 2026 15:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Tue, 10 Nov 2026 09:00:00 +0100</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten im Bereich Einsiedeleigasse werden die Linien 54A und 54B umgeleitet. [Bis 10.11.]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Einsiedeleigasse werden die Linien 54A und 54B umgeleitet.<br/>[Bis 10.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12A: Henriettenplatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">a6cf4b6dfdd6a30caa130293fcef872955167da368915b5ee81ce366e6071172</guid>
-      <pubDate>Wed, 28 Oct 2026 16:52:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 28 Oct 2026 16:52:00 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 04 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.190171 16.331974</georss:point>
-      <description>Haltestellenauflassung der Linie 12A in Richtung Eichenstraße. Haltestelle: Henriettenplatz. Grund: Grabungsarbeiten. [Ab Mi 04.11.]</description>
-      <content:encoded><![CDATA[Haltestellenauflassung der Linie 12A in Richtung Eichenstraße. Haltestelle: Henriettenplatz. Grund: Grabungsarbeiten.<br/>[Ab Mi 04.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
