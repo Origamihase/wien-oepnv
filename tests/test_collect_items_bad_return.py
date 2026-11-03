@@ -1,12 +1,11 @@
-import importlib
 import sys
 from pathlib import Path
 from typing import Any
 import pytest
 import types
+from tests._conftest.build_feed_bindings import fresh_build_feed, part
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
-    module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
     providers = types.ModuleType("providers")
@@ -20,8 +19,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     monkeypatch.setitem(sys.modules, "providers.wiener_linien", wl)
     monkeypatch.setitem(sys.modules, "providers.oebb", oebb)
     monkeypatch.setitem(sys.modules, "providers.vor", vor)
-    sys.modules.pop(module_name, None)
-    return importlib.import_module(module_name)
+    return fresh_build_feed()
 
 
 def test_collect_items_logs_and_skips_invalid_return(
@@ -37,7 +35,7 @@ def test_collect_items_logs_and_skips_invalid_return(
         return {"p": "bad"}
 
     monkeypatch.setattr(
-        build_feed,
+        part(build_feed, "providers_setup"),
         "PROVIDERS",
         [
             ("GOOD_ENABLE", good_provider),

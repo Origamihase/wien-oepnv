@@ -1,15 +1,14 @@
 import sys
 import json
-import importlib
 from typing import Any
 from collections.abc import Iterator
 import pytest
 import types
 from pathlib import Path
 from contextlib import contextmanager
+from tests._conftest.build_feed_bindings import fresh_build_feed, part
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
-    module_name = "src.build_feed"
     # Ensure we can import src modules
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
@@ -24,8 +23,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     monkeypatch.setitem(sys.modules, "providers.wiener_linien", wl)
     monkeypatch.setitem(sys.modules, "providers.oebb", oebb)
 
-    sys.modules.pop(module_name, None)
-    module = importlib.import_module(module_name)
+    module = fresh_build_feed()
     module.refresh_from_env()
     return module
 
@@ -53,7 +51,7 @@ def test_save_state_uses_separate_lock_file(
         with original_file_lock(fileobj, exclusive=exclusive):
             yield
 
-    monkeypatch.setattr(build_feed, "file_lock", spy_file_lock)
+    monkeypatch.setattr(part(build_feed, "state"), "file_lock", spy_file_lock)
 
     # Save state
     state_data = {"test": {"first_seen": "2023-01-01T12:00:00+00:00"}}

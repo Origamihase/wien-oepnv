@@ -5,7 +5,7 @@ IFTTT-triggered ``update-cycle.yml`` (Cycle-Tick alle ~30 Min), so a
 filter improvement does not reach the feed until the next cache
 refresh — meanwhile the live feed can carry items that the *current*
 spec considers irrelevant. The post-
-filter in `build_feed.read_cache_oebb` re-runs `_is_relevant` against
+filter in `feed_build.providers_setup.read_cache_oebb` re-runs `_is_relevant` against
 each cached item so the feed always reflects the latest filter state.
 """
 

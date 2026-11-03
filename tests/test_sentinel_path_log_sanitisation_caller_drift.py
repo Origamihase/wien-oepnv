@@ -98,7 +98,7 @@ from pathlib import Path
 from typing import Any, NoReturn
 
 import pytest
-from tests._conftest.build_feed_bindings import setattr_all
+from tests._conftest.build_feed_bindings import part, setattr_all
 
 
 _PRIMITIVES: list[tuple[str, str]] = [
@@ -410,7 +410,7 @@ def test_load_state_size_cap_log_strips_path_primitives(
         raising=False,
     )
     monkeypatch.setattr(
-        build_feed_mod, "MAX_STATE_FILE_BYTES", 1024, raising=False
+        part(build_feed_mod, "state"), "MAX_STATE_FILE_BYTES", 1024, raising=False
     )
 
     caplog.set_level(logging.WARNING)
@@ -444,7 +444,7 @@ def test_load_state_size_cap_log_carries_fingerprint(
         raising=False,
     )
     monkeypatch.setattr(
-        build_feed_mod, "MAX_STATE_FILE_BYTES", 1024, raising=False
+        part(build_feed_mod, "state"), "MAX_STATE_FILE_BYTES", 1024, raising=False
     )
 
     caplog.set_level(logging.WARNING)
@@ -481,7 +481,7 @@ def test_read_state_capped_size_cap_log_strips_path_primitives(
     state_file.write_bytes(b"x" * 4096)
 
     monkeypatch.setattr(
-        build_feed_mod, "MAX_STATE_FILE_BYTES", 1024, raising=False
+        part(build_feed_mod, "state"), "MAX_STATE_FILE_BYTES", 1024, raising=False
     )
 
     caplog.set_level(logging.WARNING)
@@ -508,7 +508,7 @@ def test_read_state_capped_log_carries_fingerprint(
     state_file.write_bytes(b"x" * 4096)
 
     monkeypatch.setattr(
-        build_feed_mod, "MAX_STATE_FILE_BYTES", 1024, raising=False
+        part(build_feed_mod, "state"), "MAX_STATE_FILE_BYTES", 1024, raising=False
     )
 
     caplog.set_level(logging.WARNING)
@@ -558,7 +558,7 @@ def test_save_state_lock_fail_log_strips_path_primitives(
         raise OSError("simulated lock acquisition failure")
 
     monkeypatch.setattr(
-        build_feed_mod, "file_lock", _raise_oserror, raising=False,
+        part(build_feed_mod, "state"), "file_lock", _raise_oserror, raising=False,
     )
     monkeypatch.setattr(
         locking_module, "file_lock", _raise_oserror, raising=False,

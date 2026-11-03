@@ -161,7 +161,7 @@ ALLOWLIST: Mapping[tuple[str, str], int] = MappingProxyType(
         # line and are not retained anywhere else. No parser-consumed
         # artefact, so the threat model does not apply. Two sites: the
         # lines-present and the lines-absent branch.
-        ("src/build_feed.py", "_identity_for_item"): 2,
+        ("src/feed_build/state.py", "_identity_for_item"): 2,
     }
 )
 
@@ -607,5 +607,5 @@ def test_allowlist_is_minimal_and_documented() -> None:
     # site for another (without updating the docstring) also fails.
     assert dict(ALLOWLIST) == {
         ("src/places/hafas_client.py", "_serialise_payload"): 1,
-        ("src/build_feed.py", "_identity_for_item"): 2,
+        ("src/feed_build/state.py", "_identity_for_item"): 2,
     }

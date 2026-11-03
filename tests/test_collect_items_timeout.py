@@ -1,4 +1,3 @@
-import importlib
 import sys
 import threading
 import time
@@ -7,10 +6,10 @@ from typing import Any
 
 import pytest
 import types
+from tests._conftest.build_feed_bindings import fresh_build_feed, part
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
-    module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
     providers = types.ModuleType("providers")
@@ -24,8 +23,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     monkeypatch.setitem(sys.modules, "providers.wiener_linien", wl)
     monkeypatch.setitem(sys.modules, "providers.oebb", oebb)
     monkeypatch.setitem(sys.modules, "providers.vor", vor)
-    sys.modules.pop(module_name, None)
-    module = importlib.import_module(module_name)
+    module = fresh_build_feed()
     module.refresh_from_env()
     return module
 
@@ -44,12 +42,12 @@ def test_slow_provider_does_not_block(monkeypatch: pytest.MonkeyPatch) -> None:
         return [{"guid": "fast"}]
 
     monkeypatch.setattr(
-        build_feed,
+        part(build_feed, "providers_setup"),
         "PROVIDERS",
         [("SLOW", slow_fetch), ("FAST", fast_fetch)],
     )
     # temporarily patch to skip init_providers
-    monkeypatch.setattr(build_feed, "_PROVIDERS_INITIALIZED", True)
+    monkeypatch.setattr(part(build_feed, "providers_setup"), "_PROVIDERS_INITIALIZED", True)
     monkeypatch.setenv("SLOW", "1")
     monkeypatch.setenv("FAST", "1")
     start = time.time()
@@ -78,12 +76,12 @@ def test_provider_specific_timeout_override(monkeypatch: pytest.MonkeyPatch) -> 
     fast_fetch.__name__ = "fast"
 
     monkeypatch.setattr(
-        build_feed,
+        part(build_feed, "providers_setup"),
         "PROVIDERS",
         [("SLOW", slow_fetch), ("FAST", fast_fetch)],
     )
     # temporarily patch to skip init_providers
-    monkeypatch.setattr(build_feed, "_PROVIDERS_INITIALIZED", True)
+    monkeypatch.setattr(part(build_feed, "providers_setup"), "_PROVIDERS_INITIALIZED", True)
     monkeypatch.setenv("SLOW", "1")
     monkeypatch.setenv("FAST", "1")
     # Override slow provider to 1s timeout
@@ -118,7 +116,7 @@ def test_cache_providers_run_sequentially(monkeypatch: pytest.MonkeyPatch) -> No
     cache_b = make_cache_provider("oebb")
 
     monkeypatch.setattr(
-        build_feed,
+        part(build_feed, "providers_setup"),
         "PROVIDERS",
         [
             ("WL_ENABLE", cache_a),
@@ -132,7 +130,7 @@ def test_cache_providers_run_sequentially(monkeypatch: pytest.MonkeyPatch) -> No
     def fail_executor(*args: Any, **kwargs: Any) -> None:
         raise AssertionError("ThreadPoolExecutor should not be used for cache providers")
 
-    monkeypatch.setattr(build_feed, "ThreadPoolExecutor", fail_executor)
+    monkeypatch.setattr(part(build_feed, "collect"), "ThreadPoolExecutor", fail_executor)
 
     items = build_feed._collect_items()
 
@@ -172,7 +170,7 @@ def test_provider_worker_limit(monkeypatch: pytest.MonkeyPatch) -> None:
     second = make_fetch("second")
 
     monkeypatch.setattr(
-        build_feed,
+        part(build_feed, "providers_setup"),
         "PROVIDERS",
         [("FIRST", first), ("SECOND", second)],
     )

@@ -290,7 +290,7 @@ def test_the_segment_split_references_the_shared_line_token() -> None:
     """
     import ast
 
-    source = pathlib.Path(build_feed.__file__).read_text(encoding="utf-8")
+    source = (pathlib.Path(build_feed.__file__).parent / "feed_build" / "wl_measures.py").read_text(encoding="utf-8")
     for node in ast.walk(ast.parse(source)):
         targets: list[ast.expr]
         if isinstance(node, ast.AnnAssign):

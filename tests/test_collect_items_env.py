@@ -1,12 +1,11 @@
-import importlib
 import sys
 from pathlib import Path
 import types
 import pytest
+from tests._conftest.build_feed_bindings import fresh_build_feed, part
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
-    module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
     providers = types.ModuleType("providers")
@@ -20,8 +19,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     monkeypatch.setitem(sys.modules, "providers.wiener_linien", wl)
     monkeypatch.setitem(sys.modules, "providers.oebb", oebb)
     monkeypatch.setitem(sys.modules, "providers.vor", vor)
-    sys.modules.pop(module_name, None)
-    return importlib.import_module(module_name)
+    return fresh_build_feed()
 
 
 @pytest.mark.parametrize(
@@ -40,7 +38,7 @@ def test_disabling_provider_suppresses_items(
     build_feed = _import_build_feed(monkeypatch)
 
     monkeypatch.setattr(
-        build_feed,
+        part(build_feed, "providers_setup"),
         "PROVIDERS",
         [
             ("WL_ENABLE", lambda timeout=None: [{"p": "wl"}]),
@@ -69,7 +67,7 @@ def test_env_disabling_ignores_whitespace_and_case(
     build_feed = _import_build_feed(monkeypatch)
 
     monkeypatch.setattr(
-        build_feed,
+        part(build_feed, "providers_setup"),
         "PROVIDERS",
         [
             ("WL_ENABLE", lambda timeout=None: [{"p": "wl"}]),
@@ -88,7 +86,7 @@ def test_enabling_vor_yields_items(monkeypatch: pytest.MonkeyPatch) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
     monkeypatch.setattr(
-        build_feed,
+        part(build_feed, "providers_setup"),
         "PROVIDERS",
         [
             ("WL_ENABLE", lambda timeout=None: []),

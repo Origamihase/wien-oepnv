@@ -1,15 +1,13 @@
-import importlib
 import sys
 from pathlib import Path
 from typing import Any
 
 import pytest
 import types
-from tests._conftest.build_feed_bindings import setattr_all
+from tests._conftest.build_feed_bindings import fresh_build_feed, setattr_all
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
-    module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
     providers = types.ModuleType("providers")
@@ -20,13 +18,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     monkeypatch.setitem(sys.modules, "providers", providers)
     monkeypatch.setitem(sys.modules, "providers.wiener_linien", wl)
     monkeypatch.setitem(sys.modules, "providers.oebb", oebb)
-    sys.modules.pop(module_name, None)
-    # Ensure config is reloaded to pick up new env vars/paths
-    sys.modules.pop("feed", None)
-    sys.modules.pop("feed.config", None)
-    sys.modules.pop("src.feed", None)
-    sys.modules.pop("src.feed.config", None)
-    return importlib.import_module(module_name)
+    return fresh_build_feed(extra_pops=("feed", "feed.config", "src.feed", "src.feed.config"))
 
 
 def test_main_does_not_save_state_on_io_error(

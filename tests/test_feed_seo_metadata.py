@@ -2,20 +2,17 @@
 
 from __future__ import annotations
 
-import importlib
 import re
-import sys
 from datetime import datetime, UTC
 
 from types import ModuleType
 from typing import Any
 import pytest
+from tests._conftest.build_feed_bindings import fresh_build_feed
 
 
 def _load_build_feed(monkeypatch: pytest.MonkeyPatch) -> ModuleType:
-    module_name = "src.build_feed"
-    sys.modules.pop(module_name, None)
-    return importlib.import_module(module_name)
+    return fresh_build_feed()
 
 
 # Any: bf is dynamically-loaded build_feed module; item/state shapes vary per test

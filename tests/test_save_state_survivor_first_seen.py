@@ -23,7 +23,6 @@ with no surviving twin. ``_save_state``'s existing pruning semantics
 """
 from __future__ import annotations
 
-import importlib
 import json
 import sys
 import types
@@ -31,14 +30,13 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 import pytest
-from tests._conftest.build_feed_bindings import setattr_all
+from tests._conftest.build_feed_bindings import fresh_build_feed, setattr_all
 
 
 def _import_build_feed(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Path
 ) -> types.ModuleType:
     """Mirror the setup used by ``tests/test_first_seen_cleanup.py``."""
-    module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
 
@@ -54,16 +52,11 @@ def _import_build_feed(
     monkeypatch.setitem(sys.modules, "providers.wiener_linien", wl)
     monkeypatch.setitem(sys.modules, "providers.oebb", oebb)
     monkeypatch.setitem(sys.modules, "providers.vor", vor)
-    sys.modules.pop(module_name, None)
-    sys.modules.pop("feed", None)
-    sys.modules.pop("feed.config", None)
-    sys.modules.pop("src.feed", None)
-    sys.modules.pop("src.feed.config", None)
 
     monkeypatch.chdir(tmp_path)
     monkeypatch.setenv("STATE_PATH", "data/state_survivor.json")
 
-    return importlib.import_module(module_name)
+    return fresh_build_feed(extra_pops=("feed", "feed.config", "src.feed", "src.feed.config"))
 
 
 def test_drop_old_items_excludes_surviving_twin_from_dropped(

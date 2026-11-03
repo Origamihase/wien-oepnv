@@ -1,4 +1,3 @@
-import importlib
 import sys
 from pathlib import Path
 from typing import Any
@@ -6,10 +5,10 @@ from typing import Any
 import pytest
 import types
 from datetime import datetime, timedelta, UTC
+from tests._conftest.build_feed_bindings import fresh_build_feed
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch, env: dict[str, str]) -> types.ModuleType:
-    module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
     # Provide lightweight provider stubs to avoid heavy deps during import
@@ -23,8 +22,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch, env: dict[str, str]) -> 
     monkeypatch.setitem(sys.modules, "providers.oebb", oebb)
     for k, v in env.items():
         monkeypatch.setenv(k, str(v))
-    sys.modules.pop(module_name, None)
-    return importlib.import_module(module_name)
+    return fresh_build_feed()
 
 
 def test_main_filters_items_older_than_max(

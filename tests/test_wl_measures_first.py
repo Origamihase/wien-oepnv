@@ -167,7 +167,7 @@ def test_the_measure_patterns_reference_the_shared_line_token() -> None:
     The two patterns share one label (``_WL_MEASURE_LABEL``, 2026-10-24),
     which in turn is built on the line token.
     """
-    source = pathlib.Path(build_feed.__file__).read_text(encoding="utf-8")
+    source = (pathlib.Path(build_feed.__file__).parent / "feed_build" / "wl_measures.py").read_text(encoding="utf-8")
     wanted = {"_WL_MEASURE_LABEL", "_WL_MEASURE_START_RE", "_WL_MEASURE_JOIN_RE"}
     found: set[str] = set()
     for node in ast.walk(ast.parse(source)):

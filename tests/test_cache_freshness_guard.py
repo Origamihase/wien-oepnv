@@ -7,6 +7,7 @@ from typing import Any
 import pytest
 
 from src import build_feed
+from tests._conftest.build_feed_bindings import part
 
 
 # Any: returns closure with dynamically-set attribute (_provider_cache_name)
@@ -27,13 +28,13 @@ def test_detect_stale_caches_records_warning(monkeypatch: pytest.MonkeyPatch) ->
     spec = DummySpec()
     spec.loader = loader
 
-    monkeypatch.setattr(build_feed, "iter_providers", lambda: [spec])
+    monkeypatch.setattr(part(build_feed, "providers_setup"), "iter_providers", lambda: [spec])
     monkeypatch.setattr(build_feed.feed_config, "CACHE_MAX_AGE_HOURS", 1)
     now = datetime.now(UTC)
     report = build_feed.RunReport([(loader._provider_cache_name, True)])
 
     monkeypatch.setattr(
-        build_feed, "cache_modified_at", lambda name: now - timedelta(hours=2)
+        part(build_feed, "providers_setup"), "cache_modified_at", lambda name: now - timedelta(hours=2)
     )
 
     messages = build_feed._detect_stale_caches(report, now)
@@ -52,13 +53,13 @@ def test_detect_stale_caches_skips_recent(monkeypatch: pytest.MonkeyPatch) -> No
     spec = DummySpec()
     spec.loader = loader
 
-    monkeypatch.setattr(build_feed, "iter_providers", lambda: [spec])
+    monkeypatch.setattr(part(build_feed, "providers_setup"), "iter_providers", lambda: [spec])
     monkeypatch.setattr(build_feed.feed_config, "CACHE_MAX_AGE_HOURS", 2)
     now = datetime.now(UTC)
     report = build_feed.RunReport([(loader._provider_cache_name, True)])
 
     monkeypatch.setattr(
-        build_feed, "cache_modified_at", lambda name: now - timedelta(hours=1)
+        part(build_feed, "providers_setup"), "cache_modified_at", lambda name: now - timedelta(hours=1)
     )
 
     messages = build_feed._detect_stale_caches(report, now)

@@ -1,13 +1,12 @@
 import sys
-import importlib
 import pytest
 import types
 from pathlib import Path
 from datetime import datetime, UTC
 from typing import Any
+from tests._conftest.build_feed_bindings import fresh_build_feed
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
-    module_name = "src.build_feed"
     # Ensure we can import src modules
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
@@ -22,8 +21,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     monkeypatch.setitem(sys.modules, "providers.wiener_linien", wl)
     monkeypatch.setitem(sys.modules, "providers.oebb", oebb)
 
-    sys.modules.pop(module_name, None)
-    module = importlib.import_module(module_name)
+    module = fresh_build_feed()
     module.refresh_from_env()
     return module
 

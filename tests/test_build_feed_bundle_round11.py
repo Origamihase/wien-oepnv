@@ -26,6 +26,7 @@ import pytest
 
 import src.build_feed as build_feed
 from src.feed.reporting import RunReport
+from tests._conftest.build_feed_bindings import part
 
 
 # ---------------------------------------------------------------------------
@@ -105,22 +106,22 @@ def test_submit_network_fetches_shares_semaphore_across_concurrency_group(
     # ``_provider_concurrency_key`` returns the SAME key for both
     # providers — they form one group.
     monkeypatch.setattr(
-        build_feed, "_provider_concurrency_key",
+        part(build_feed, "collect"), "_provider_concurrency_key",
         lambda fetch, name: "shared-pool",
     )
     # Only provider B has an env-set positive limit.
     monkeypatch.setattr(
-        build_feed, "_provider_worker_limit",
+        part(build_feed, "collect"), "_provider_worker_limit",
         lambda fetch, env_name, name, key: 3 if name == "provider_b" else None,
     )
     monkeypatch.setattr(
-        build_feed, "_provider_timeout_override",
+        part(build_feed, "collect"), "_provider_timeout_override",
         lambda *_a, **_kw: 5,
     )
     monkeypatch.setattr(
-        build_feed, "_fetch_supports_timeout", lambda *_a, **_kw: False,
+        part(build_feed, "collect"), "_fetch_supports_timeout", lambda *_a, **_kw: False,
     )
-    monkeypatch.setattr(build_feed, "_build_run_fetch", fake_build_run_fetch)
+    monkeypatch.setattr(part(build_feed, "collect"), "_build_run_fetch", fake_build_run_fetch)
 
     executor = MagicMock()
     executor.submit = lambda func: MagicMock()

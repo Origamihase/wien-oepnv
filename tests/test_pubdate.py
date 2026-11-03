@@ -1,4 +1,3 @@
-import importlib
 import sys
 from datetime import datetime, timedelta, UTC
 from pathlib import Path
@@ -6,10 +5,10 @@ from typing import Any
 import pytest
 import types
 from defusedxml import ElementTree as ET
+from tests._conftest.build_feed_bindings import fresh_build_feed
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
-    module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
     providers = types.ModuleType("providers")
@@ -20,8 +19,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     monkeypatch.setitem(sys.modules, "providers", providers)
     monkeypatch.setitem(sys.modules, "providers.wiener_linien", wl)
     monkeypatch.setitem(sys.modules, "providers.oebb", oebb)
-    sys.modules.pop(module_name, None)
-    return importlib.import_module(module_name)
+    return fresh_build_feed()
 
 
 # Any: build_feed is dynamically-loaded module; item/state shapes vary per test

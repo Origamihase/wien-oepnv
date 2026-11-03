@@ -12,7 +12,6 @@ previously-capped ``VOR_HTTP_TIMEOUT`` and ``REQUEST_TIMEOUT_S``.
 
 from __future__ import annotations
 
-import importlib
 import sys
 import types
 from pathlib import Path
@@ -21,10 +20,10 @@ from typing import Any
 import pytest
 
 from src.feed import config as feed_config
+from tests._conftest.build_feed_bindings import fresh_build_feed
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
-    module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
     providers = types.ModuleType("providers")
@@ -38,8 +37,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
     monkeypatch.setitem(sys.modules, "providers.wiener_linien", wl)
     monkeypatch.setitem(sys.modules, "providers.oebb", oebb)
     monkeypatch.setitem(sys.modules, "providers.vor", vor)
-    sys.modules.pop(module_name, None)
-    module = importlib.import_module(module_name)
+    module = fresh_build_feed()
     module.refresh_from_env()
     return module
 
