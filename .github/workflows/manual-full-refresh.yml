@@ -20,11 +20,16 @@ on:
 permissions:
   contents: read
 
-# Teilt sich die Sperre mit update-cycle.yml, test-vor-api.yml und
-# build-feed.yml (auf main), damit nicht parallel auf die gleichen
-# externen APIs zugegriffen wird.
+# Teilt sich auf main die Sperre mit update-cycle.yml und build-feed.yml,
+# damit nicht parallel auf die gleichen externen APIs
+# zugegriffen wird. Ein Start auf einem anderen Zweig veröffentlicht nur auf
+# diesen Zweig und hat eine eigene Gruppe je Zweig: GitHub hält je Gruppe nur
+# einen wartenden Lauf, ein weiterer bricht ihn ab, ein Zweiglauf könnte so
+# einen wartenden Takt oder Rebuild auf main verdrängen (wie am 03.11.2026
+# der Zweig-Push von Test VOR API, damals in dieser Gruppe, den Rebuild nach
+# #2146).
 concurrency:
-  group: external-api-fetch
+  group: ${{ github.ref == 'refs/heads/main' && 'external-api-fetch' || format('manual-full-refresh-{0}', github.ref) }}
   cancel-in-progress: false
 
 jobs:

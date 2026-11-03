@@ -313,7 +313,7 @@ für Details zum Stammstrecken-Monitor.
 | Konsument | Default-Calls/Tag | Konfigurierbar |
 | :--- | ---: | :--- |
 | **Stammstrecke `/departureBoard`** (ca. alle 30 Min × 1 Hbf-Call) | 48 | IFTTT-Cadence des `update-cycle.yml`-Triggers |
-| **CI-Smoke-Test `location.name`** (`test-vor-api.yml`) | **0–4** | feuert nur bei Push auf VOR-Pfade; Pre-flight-Gate + `external-api-fetch`-Concurrency |
+| **CI-Smoke-Test `location.name`** (`test-vor-api.yml`) | **0–4** | feuert nur bei Push auf VOR-Pfade; Pre-flight-Gate (Reserve 1), eigene Concurrency-Gruppe |
 | **Station-Enrichment `location.name`** | **0** (Pfad und Skript 2026-05-11 entfernt) | — |
 | **Disruption-Polling `departureBoard`** | **0** (Pfad und Skript 2026-05-11 entfernt) | — |
 | **Auth-Diagnose** (`verify_vor_access_id.py`, `check_vor_auth.py`) | **0–2** | nur manueller Operator-Aufruf, einmalige Smoke-Tests |
@@ -342,8 +342,11 @@ Zwei zusammenwirkende Mechanismen schützen das Budget:
    bleiben für gezielte manuelle Smoke-Tests verfügbar. Der einzige
    weitere automatisierte Pfad ist `test-vor-api.yml`: er ruft
    `verify_vor_access_id.py` auf, ist seit 2026-09-13 auf die
-   VOR-relevanten Pfade verengt, hängt in derselben
-   `external-api-fetch`-Concurrency-Gruppe und wird vom selben
+   VOR-relevanten Pfade verengt, hing bis 2026-11-03 in derselben
+   `external-api-fetch`-Concurrency-Gruppe und hat seitdem eine eigene
+   Gruppe je Zweig, damit er keinen wartenden Takt oder Rebuild auf `main`
+   abbricht (die gemeinsame Gruppe schützte das Budget nicht, weil der
+   Workflow den Zähler nie committet). Er wird vom selben
    Pre-flight-Gate abgeschaltet, sobald der Zähler keinen Slot mehr
    lässt.
 

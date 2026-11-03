@@ -72,8 +72,8 @@ name: Update cycle
 #      external commit action — see that step's header for the rationale)
 #
 # Concurrency: the workflow holds the ``external-api-fetch`` lock
-# (shared with ``manual-full-refresh.yml``, ``test-vor-api.yml`` and
-# ``build-feed.yml`` runs on ``main``) so the project never has two
+# (shared with ``manual-full-refresh.yml`` and ``build-feed.yml`` runs on
+# ``main``) so the project never has two
 # parallel API-fetching cycles in flight.
 
 on:
@@ -90,8 +90,15 @@ on:
 permissions:
   contents: read
 
+# ``external-api-fetch`` on ``main`` serialises the workflows that write the
+# feed and state files there (build-feed.yml, manual-full-refresh.yml);
+# test-vor-api.yml writes nothing and has its own lane. A manual start on another branch publishes only to that
+# branch and gets its own per-ref lane: GitHub keeps one pending run per
+# group and a new pending run cancels it, so a branch run must never sit in
+# the lane of a pending ``main`` tick (03.11.2026: a branch push of Test VOR
+# API, then still in this group, cancelled the pending rebuild after #2146).
 concurrency:
-  group: external-api-fetch
+  group: ${{ github.ref == 'refs/heads/main' && 'external-api-fetch' || format('update-cycle-{0}', github.ref) }}
   cancel-in-progress: false
 
 jobs:

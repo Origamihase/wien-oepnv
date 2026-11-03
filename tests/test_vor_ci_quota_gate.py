@@ -16,6 +16,10 @@ The consumption was real but invisible to the counter, and
 ``docs/architecture.md`` §7 consequently listed ``location.name`` at 0
 calls/day (**F.1**). These tests pin the shape of the fix so a future edit
 cannot quietly reintroduce an unaccounted VAO call from CI.
+
+Since 2026-11-03 the smoke test has its own concurrency lane again (it never
+commits the counter, and in the shared lane it cancelled a pending ``main``
+rebuild); the pre-flight gate is its budget guard.
 """
 
 from __future__ import annotations
@@ -64,19 +68,83 @@ def _strip_comments(text: str) -> str:
     )
 
 
-@pytest.mark.parametrize("workflow", _vor_workflows(), ids=lambda p: p.name)
-def test_vor_workflow_uses_the_shared_concurrency_group(workflow: Path) -> None:
-    """Every quota-bound workflow queues in ``external-api-fetch``.
+#: The one allowed form of the shared lane: ``external-api-fetch`` on
+#: ``main`` only, a per-ref group everywhere else.
+_MAIN_LANE = "group: ${{ github.ref == 'refs/heads/main' && 'external-api-fetch' || format('"
 
-    Without a shared group two VAO-spending workflows run in parallel and the
-    daily budget is decided by a race. ``test-vor-api.yml`` was the one
-    exception before this fix.
+#: The VOR smoke test writes nothing and has a lane of its own on every ref
+#: (Michael 2026-11-03). It never commits ``data/vor_request_count.json``, so
+#: the shared lane did not protect the budget; the pre-flight gate does.
+_SMOKE_TEST = "test-vor-api.yml"
+
+
+def _groups(path: Path) -> list[str]:
+    return [
+        line.strip()
+        for line in _strip_comments(path.read_text(encoding="utf-8")).splitlines()
+        if line.strip().startswith("group:")
+    ]
+
+
+@pytest.mark.parametrize(
+    "workflow",
+    [p for p in _vor_workflows() if p.name != _SMOKE_TEST],
+    ids=lambda p: p.name,
+)
+def test_vor_workflow_uses_the_shared_concurrency_group(workflow: Path) -> None:
+    """Every feed-writing, quota-bound workflow queues in ``external-api-fetch`` on ``main``.
+
+    Without a shared group two VAO-spending cycles run in parallel and the
+    daily budget is decided by a race.
     """
     text = workflow.read_text(encoding="utf-8")
-    assert "group: external-api-fetch" in text, (
+    assert _MAIN_LANE in text, (
         f"{workflow.name} spends VAO budget but is not in the "
-        "external-api-fetch concurrency group"
+        "external-api-fetch concurrency group on main"
     )
+
+
+def test_vor_smoke_test_has_its_own_lane() -> None:
+    """The smoke test never waits in, or cancels a run of, ``external-api-fetch``.
+
+    GitHub keeps one pending run per concurrency group; a new pending run
+    cancels it. On 03.11.2026 a branch push of ``test-vor-api.yml`` (run 1057)
+    queued in this group and cancelled the pending ``main`` rebuild Build feed
+    10480 after the merge of #2146.
+    """
+    assert _groups(WORKFLOW_DIR / _SMOKE_TEST) == ["group: test-vor-api-${{ github.ref }}"]
+
+
+def test_external_api_fetch_lane_is_main_only() -> None:
+    """No run outside ``main`` may queue in ``external-api-fetch``.
+
+    Same cancellation as above: a branch run in the shared lane can cancel a
+    pending tick or rebuild on ``main``. Every workflow in the lane therefore
+    scopes it to ``main`` and gives other refs a group of their own.
+    """
+    users = [
+        path
+        for path in sorted(WORKFLOW_DIR.glob("*.yml"))
+        if "external-api-fetch" in _strip_comments(path.read_text(encoding="utf-8"))
+    ]
+    assert {p.name for p in users} == {
+        "build-feed.yml",
+        "manual-full-refresh.yml",
+        "update-cycle.yml",
+    }
+    for path in users:
+        groups = _groups(path)
+        assert groups, f"{path.name} names external-api-fetch outside a group"
+        for group in groups:
+            if "external-api-fetch" not in group:
+                continue
+            assert group.startswith(_MAIN_LANE), (
+                f"{path.name}: external-api-fetch must be limited to main, got {group!r}"
+            )
+            own = group[len(_MAIN_LANE):]
+            assert "external-api-fetch" not in own, (
+                f"{path.name}: other refs need a group of their own, got {group!r}"
+            )
 
 
 @pytest.mark.parametrize("workflow", _vor_workflows(), ids=lambda p: p.name)

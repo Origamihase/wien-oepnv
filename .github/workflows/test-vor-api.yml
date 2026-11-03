@@ -30,12 +30,21 @@ on:
 permissions:
   contents: read
 
-# Audit A.1: the smoke test below spends real VAO budget, so it must queue
-# behind every other quota-bound job instead of racing them. ``update-cycle``,
-# ``build-feed`` and ``manual-full-refresh`` already share this group; this
-# workflow sat outside it and could run concurrently with a Stammstrecke tick.
+# Own lane on every ref, outside ``external-api-fetch`` (Michael 03.11.2026).
+# Audit A.1 (13.09.2026) put this workflow into that group so the smoke test
+# would not race the quota-bound jobs. The group never protected the budget:
+# this workflow has ``contents: read`` and never commits
+# ``data/vor_request_count.json``, so the committed counter does not see its
+# one request on any branch; the pre-flight gate below (margin 1) is what
+# keeps it inside the budget. It did cost feed runs: GitHub keeps one pending
+# run per group, and a new pending run cancels the older one. On 03.11.2026
+# the merge of #2146 (18:48:17 UTC) queued Build feed 10480 behind Test VOR
+# API 1056 on ``main``; a branch push at 18:49:10 queued Test VOR API 1057 in
+# the same group and cancelled the pending rebuild at 18:49:12, before it
+# started. A merge touching the VOR paths also queued this test and the
+# rebuild side by side, so a running tick let one cancel the other.
 concurrency:
-  group: external-api-fetch
+  group: test-vor-api-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -50,7 +59,7 @@ jobs:
     # pytest-timeout of 60 s still catches genuine hangs. Without the cap the
     # workflow inherits GitHub's 360-min default. Since 2026-11-01 the suite
     # runs on all runner cores (``-n auto``), like in test.yml, which also
-    # shortens the time this job holds the ``external-api-fetch`` group.
+    # shortens the run.
     timeout-minutes: 20
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
