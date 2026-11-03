@@ -75,11 +75,11 @@
   // ----- Feed rendering -----
 
   // Every item carries an RSS ``<source>`` naming where it comes from
-  // (``_ITEM_SOURCES`` in src/build_feed.py, German and English names). It
-  // decides the tile, so the label says what the tag says: the Stammstrecke
-  // monitor links to the ÖBB route information but comes from VOR/VAO, and
-  // Stadt Wien construction works link to wien.gv.at. The link and title
-  // patterns below only serve an item without a known tag.
+  // (``_ITEM_SOURCES`` in src/feed_build/item_meta.py, German and English
+  // names). It decides the tile, so the label says what the tag says: the
+  // Stammstrecke monitor links to the ÖBB route information but comes from
+  // VOR/VAO, and Stadt Wien construction works link to wien.gv.at. The link
+  // and title patterns below only serve an item without a known tag.
   const SOURCE_TAGS = {
     "wiener linien": "wienerlinien",
     "öbb": "oebb",
@@ -227,7 +227,7 @@
 
   // "Beginn" and "Bis" say what the item's own time line says ("[Seit
   // 22.10.]", "[Am Mo 26.10.]", "[Bis 02.11.]", see ``_time_line_text`` in
-  // src/build_feed.py), so a tile does not contradict its text.
+  // src/feed_build/time_line.py), so a tile does not contradict its text.
   //
   // ``pubDate`` is not the begin: WL publishes planned events days ahead
   // ("Nationalfeiertag", published 16.10. for 26.10.) and ÖBB moves it on

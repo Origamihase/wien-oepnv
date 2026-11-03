@@ -56,7 +56,7 @@ flowchart LR
 | **CI/CD-Entkoppelung** — `docs/statistik.md` wird nur auf den Cycle-Ticks zwischen 00:00 und 00:29 Wiener Zeit neu gerendert (in der Regel einer am Tag), gegated durch ein Inline-`TZ=Europe/Vienna date +%H%M`-Check in `update-cycle.yml`; die README-STATS-Marker und `docs/stats-summary.json` werden bei jedem ca. 30-Min-Cycle-Tick aktualisiert (`--skip-dashboard`) | `.github/workflows/update-cycle.yml`, Step „Refresh statistics dashboard and README snapshot" (der separate `generate-stats.yml`-Workflow wurde zusammen mit den per-Provider-Escapes entfernt; Ad-hoc-Regenerationen laufen jetzt über `manual-full-refresh.yml`) |
 | **Strikt null Data-Science-Abhängigkeiten** — kein `numpy`, `pandas`, `matplotlib`; die CI-Installation bleibt sub-sekundär | `scripts/generate_markdown_stats.py` kommt ohne externe Data-Science-Pakete aus — nur Python-Standardbibliothek (u. a. `csv`, `datetime`, `statistics`, `zoneinfo`) und projekteigene `src.*`-Module |
 | **Append-only, lock-freie Producer** — Einzelzeilen-Writes sind unter POSIX bis `PIPE_BUF` (4 KiB) atomar, parallele Cycle-Ticks können also nicht mitten in einer Zeile Bytes verschachteln | `src/utils/stats.py:_append_row` (Modus `"a"`, kein `flock`) |
-| **Eine Zeile je Auftreten** — eine langlebige Meldung wird einmal aufgezeichnet, nicht einmal pro Build; eine wiederkehrende WL-Meldung (gleiche guid, neues Auftreten) zählt bei jedem Auftreten neu | `src/build_feed.py:_update_item_state` schreibt beim State-Cache-Miss (weder `_identity` noch `guid` hatten einen Vorgängereintrag) und bei einem Eintrag, den `_restart_recurring_occurrences` als neues Auftreten markiert hat (`new_occurrence`), jeweils beim ersten Erscheinen im Feed |
+| **Eine Zeile je Auftreten** — eine langlebige Meldung wird einmal aufgezeichnet, nicht einmal pro Build; eine wiederkehrende WL-Meldung (gleiche guid, neues Auftreten) zählt bei jedem Auftreten neu | `src/feed_build/item_meta.py:_update_item_state` schreibt beim State-Cache-Miss (weder `_identity` noch `guid` hatten einen Vorgängereintrag) und bei einem Eintrag, den `_restart_recurring_occurrences` als neues Auftreten markiert hat (`new_occurrence`), jeweils beim ersten Erscheinen im Feed |
 | **Idempotente, byte-stabile Ausgabe** — ein erneuter Aggregator-Lauf auf identischer Eingabe erzeugt byte-identisches Markdown, damit der Commit-Schritt der Workflows (`scripts/publish_to_main.sh`) zum No-op wird, wenn sich nichts geändert hat | Stabiler Sekundär-Sort (alphabetische Tie-Breaks, z. B. `key=lambda pair: (-pair[1], pair[0])` in `_format_providers_section`, `_format_ausfall_directions_section`, `_format_ausfall_lines_section`) in jeder Rangliste; der Renderer liest `now()` nur für den Zeitstempel im Header |
 | **Per-Jahr-Datei-Rotation** — die einzelne Ledger-Größe bleibt auch über Mehrjahres-Betrieb beschränkt | Dateiname wird aus dem Wien-lokalen `timestamp.year` der Zeile abgeleitet, nicht aus der Prozess-Uhr |
 
@@ -151,7 +151,7 @@ die Uhr des Browsers, damit ein liegengebliebener Stand nicht weiter
 | **Wann** bündeln sich Disruption-Events? | „Störungen" — per-Provider-Tabelle plus Wochentag- und Stunden-Verteilung |
 
 `extract_location_name` ist weiterhin Teil der Producer-Pipeline (siehe
-`src/utils/stats.py` und `src/build_feed.py`) und persistiert die
+`src/utils/stats.py` und `src/feed_build/item_meta.py`) und persistiert die
 abgeleitete Location pro Disruption-Zeile in
 `data/stats/stoerungen_<YYYY>.csv`. Die aktuelle Dashboard-Renderung
 aggregiert die Daten allerdings nur nach `provider`, `weekday` und
@@ -227,7 +227,7 @@ wirkt (Bildschirm, Schrift, Bewegung), beurteilt Michael selbst.
 Die Kachel einer Meldung auf `site.html` sagt dasselbe wie ihr Text am TV:
 
 * **Quelle:** Etikett, Farbe und Filter-Chip folgen dem RSS-`<source>` der
-  Meldung (`_ITEM_SOURCES` in `src/build_feed.py`, deutsche und englische
+  Meldung (`_ITEM_SOURCES` in `src/feed_build/item_meta.py`, deutsche und englische
   Namen). Link und Titel entscheiden nur noch bei einer Meldung ohne
   bekannten Tag. Vorher entschied der Link: Baustellen der Stadt Wien
   verlinken seit 17.10.2026 auf `wien.gv.at/verkehr/baustellen` und wären
@@ -282,7 +282,7 @@ Bildern erzeugt. Aus demselben Grund steht am Anfang des `<copyright>` beider
 Feeds, in der Fußzeile (DE/EN) und im README der Satz „Inoffizielles Projekt
 ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind
 die verlinkten Originalmeldungen.“ (`_UNOFFICIAL_DE`/`_EN` in
-`src/build_feed.py`, Test `tests/test_channel_copyright.py`). Titel und Texte
+`src/feed_build/rss.py`, Test `tests/test_channel_copyright.py`). Titel und Texte
 der Meldungen ändern sich dadurch nicht. Ein neues Bild für die Seite trägt
 keine Marke eines Verkehrsunternehmens.
 
@@ -401,7 +401,7 @@ im Repository. Was er für dieses Projekt bedeutet:
   entschieden, den Satz „Stammstrecken-Daten: Grundlage ist der
   VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH.“ überall zu
   führen: im `<copyright>` beider Feeds (`_VAO_BASIS_DE`/`_VAO_BASIS_EN` in
-  `src/build_feed.py`), in der Fußzeile der Webseite (DE in
+  `src/feed_build/rss.py`), in der Fußzeile der Webseite (DE in
   `docs/site.html`, EN in `docs/assets/site-js/`), auf `docs/statistik.md`
   (`VAO_BASIS_NOTE` in `scripts/generate_markdown_stats.py`), im README und in
   `NOTICE.md`. VAO ist dort Grundlage, kein Lizenzgeber: Die

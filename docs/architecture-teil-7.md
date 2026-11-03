@@ -87,9 +87,10 @@ Zwei Sorten, bewusst unterscheidbar:
   von `_resolve_glossary`), damit betreiberspezifisches Vokabular nur bei
   Items dieses Betreibers greift. Die Tabellen (samt `_FIELD_LABEL_EN`)
   stehen seit 2026-10-15 als reine Daten in `src/feed/glossary.py`;
-  `build_feed` importiert sie unter denselben Namen, und alle Funktionen, die
-  sie anwenden, bleiben dort (Begründung in §1, „Eine Feed-Kette, ein
-  Modul“).
+  `src/build_feed.py` und die Teile `placeholders`, `en_repairs` und
+  `pretranslate` unter `src/feed_build/` importieren sie unter denselben
+  Namen, die Funktionen, die sie anwenden, stehen seit 2026-11-03 in diesen
+  Teilen (§1, „Eine Feed-Kette, ein Modul“).
 
 Die Reihenfolge ist kein Zufall: **Glossar zuerst, Entitäten danach.** Nach
 dem Glossar-Durchlauf stehen dort `XGLO…`-Platzhalter, die der Entity-Masker
