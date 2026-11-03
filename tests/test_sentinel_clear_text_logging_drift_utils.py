@@ -400,6 +400,13 @@ WALKER_MODULES: tuple[str, ...] = (
     "src/providers/vor_env.py",
     "src/providers/vor_quota.py",
     "src/providers/oebb.py",
+    # Forward-defensive (2026-11-03): code moved out of ``oebb.py``
+    # (700-line limit); these siblings have no log calls today.
+    "src/providers/oebb_title.py",
+    "src/providers/oebb_routes.py",
+    "src/providers/oebb_scope.py",
+    "src/providers/oebb_relevance.py",
+    "src/providers/oebb_route_title.py",
     "src/providers/wl_fetch.py",
     # Moved out of wl_fetch.py (700-line rule, 2026-11-02); the
     # bound-exception log sites in ``_get_json`` / ``_iso`` live here now.

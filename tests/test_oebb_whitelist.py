@@ -5,6 +5,7 @@ from typing import Any
 import pytest
 
 import src.providers.oebb as oebb
+import src.providers.oebb_relevance as oebb_relevance
 from src.utils import stations as station_utils
 
 _STATIONS_PATH = Path(__file__).resolve().parents[1] / "data" / "stations.json"
@@ -37,9 +38,9 @@ def test_bare_wien_phantom_suppressed_under_only_vienna(
     # (a phantom station). Under OEBB_ONLY_VIENNA that must NOT seed a
     # relevant station from a generic "ab/bis Wien" notice. Default mode
     # (flag off) keeps the existing behaviour.
-    monkeypatch.setattr(oebb, "OEBB_ONLY_VIENNA", True)
+    monkeypatch.setattr(oebb_relevance, "OEBB_ONLY_VIENNA", True)
     assert oebb._is_relevant("Bauarbeiten ab Wien", "Hinweise zu Reisen ab Wien.") is False
-    monkeypatch.setattr(oebb, "OEBB_ONLY_VIENNA", False)
+    monkeypatch.setattr(oebb_relevance, "OEBB_ONLY_VIENNA", False)
     assert oebb._is_relevant("Bauarbeiten ab Wien", "Hinweise zu Reisen ab Wien.") is True
 
 
@@ -88,7 +89,7 @@ def test_only_vienna_env(
 ) -> None:
     # Test that setting OEBB_ONLY_VIENNA correctly filters out connections
     # that are not strictly inside Vienna.
-    monkeypatch.setattr(oebb, "OEBB_ONLY_VIENNA", True)
+    monkeypatch.setattr(oebb_relevance, "OEBB_ONLY_VIENNA", True)
     # Because one station (pendler_station) is outside Vienna, it should be rejected
     assert not oebb._is_relevant(f"{vienna_station} ↔ {pendler_station}", "")
 
@@ -96,5 +97,5 @@ def test_only_vienna_env(
     assert oebb._is_relevant(f"{vienna_station} ↔ Wien Praterstern", "")
 
     # When the flag is False, the same mixed connection should be accepted
-    monkeypatch.setattr(oebb, "OEBB_ONLY_VIENNA", False)
+    monkeypatch.setattr(oebb_relevance, "OEBB_ONLY_VIENNA", False)
     assert oebb._is_relevant(f"{vienna_station} ↔ {pendler_station}", "")
