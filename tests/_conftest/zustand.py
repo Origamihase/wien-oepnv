@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+from tests._conftest.build_feed_bindings import part
 
 root = Path(__file__).resolve().parents[2]
 
@@ -194,7 +195,7 @@ def time_line_today(monkeypatch: pytest.MonkeyPatch) -> None:
 
     today = datetime(2026, 10, 2, 12, 0, tzinfo=ZoneInfo("Europe/Vienna"))
     monkeypatch.setattr(
-        build_feed, "format_local_times", partial(build_feed.format_local_times, now=today)
+        part(build_feed, "item_format"), "format_local_times", partial(part(build_feed, "time_line").format_local_times, now=today)
     )
 
 

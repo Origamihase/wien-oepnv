@@ -16,6 +16,7 @@ from zoneinfo import ZoneInfo
 
 import src.build_feed as bf
 from src.feed_types import FeedItem
+from tests._conftest.build_feed_bindings import part
 
 VIENNA = ZoneInfo("Europe/Vienna")
 NOW = datetime(2026, 10, 3, 11, 20, tzinfo=VIENNA)
@@ -208,7 +209,7 @@ def test_other_sources_keep_no_first_publication() -> None:
 def test_the_rendered_oebb_item_keeps_its_first_publication(monkeypatch: pytest.MonkeyPatch) -> None:
     from functools import partial
 
-    monkeypatch.setattr(bf, "format_local_times", partial(bf.format_local_times, now=NOW))
+    monkeypatch.setattr(part(bf, "item_format"), "format_local_times", partial(part(bf, "time_line").format_local_times, now=NOW))
     state: dict[str, dict[str, Any]] = {"oebb": {"first_seen": _at(3, 9, 0, 30).isoformat()}}
     for pub in (_at(3, 8, 48, 11), _at(3, 10, 26, 29)):
         item = _oebb_as_fetched(pub)
@@ -316,7 +317,7 @@ def test_the_rendered_item_carries_the_line(monkeypatch: pytest.MonkeyPatch) -> 
     # The whole path of the German feed: _format_item_content builds the line.
     from functools import partial
 
-    monkeypatch.setattr(bf, "format_local_times", partial(bf.format_local_times, now=NOW))
+    monkeypatch.setattr(part(bf, "item_format"), "format_local_times", partial(part(bf, "time_line").format_local_times, now=NOW))
     item = _wl("87A: Fahrtbehinderung wegen Rettungseinsatz", _at(3, 10, 37), _at(3, 10, 54, 13))
     content = bf._format_item_content(cast(FeedItem, item), "ident", item["starts_at"], item["ends_at"])
     assert f"[Seit{NBSP}10:37]" in content.desc_html
