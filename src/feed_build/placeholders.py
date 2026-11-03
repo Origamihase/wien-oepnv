@@ -15,6 +15,7 @@ from functools import lru_cache
 from typing import Any
 
 from ..feed.glossary import _GLOSSARY_BASE, _GLOSSARY_BY_CATEGORY, _GLOSSARY_BY_SOURCE
+from ..utils.name_letters import latin_names
 
 __all__ = [
     "_resolve_glossary", "_norm_metadata", "_placeholder_nonce", "_PLACEHOLDER_NONCE",
@@ -152,9 +153,9 @@ _ENTITY_PLACEHOLDER_RE: re.Pattern[str] = re.compile("XENT" + _PLACEHOLDER_NONCE
 # pass took "Meidlinger Straße"), "Neu-Leopoldau", "Groß-Enzersdorfer Straße".
 # The model saw the prefix alone and wrote "Under-Meidlinger Straße" (WL 7B,
 # 29.10.2026). Glued to the name, the prefix belongs to it.
-_HYPHEN_PREFIX_RE: re.Pattern[str] = re.compile(
+_HYPHEN_PREFIX_RE: re.Pattern[str] = re.compile(latin_names(
     r"(?<![\w-])(?:[A-ZÄÖÜ][a-zäöüß]+-)+(?=" + _ENTITY_PLACEHOLDER_RE.pattern + r")"
-)
+))
 
 # A stop WL names as a pair, "Parlament/Volkstheater", "Schmerlingplatz/
 # Volkstheater": when one half is a typo the directory does not know, only
@@ -163,20 +164,20 @@ _HYPHEN_PREFIX_RE: re.Pattern[str] = re.compile(
 # Folktheter", WL 2, 30.10.2026). A capitalised word glued by a slash to a
 # shielded name belongs to that stop's name and stays as WL wrote it.
 _SLASH_PARTNER_WORD = r"[A-ZÄÖÜ][A-Za-zÄÖÜäöüß.-]*[A-Za-zÄÖÜäöüß]"
-_SLASH_PARTNER_AFTER_RE: re.Pattern[str] = re.compile(
+_SLASH_PARTNER_AFTER_RE: re.Pattern[str] = re.compile(latin_names(
     r"(?P<name>" + _ENTITY_PLACEHOLDER_RE.pattern + r")/(?P<gap> ?)"
     r"(?P<word>(?!XENT|XGLO)" + _SLASH_PARTNER_WORD + r")(?![\w/-])"
-)
+))
 # The name goes on behind the half ("Sankt Marx") or came before it
 # ("Spittelau Bahnhst/…"): a capitalised word or a shielded name next to it.
-_SLASH_NAME_GOES_ON_RE: re.Pattern[str] = re.compile(r" (?:[A-ZÄÖÜ]|XENT)")
-_SLASH_NAME_CAME_BEFORE_RE: re.Pattern[str] = re.compile(
+_SLASH_NAME_GOES_ON_RE: re.Pattern[str] = re.compile(latin_names(r" (?:[A-ZÄÖÜ]|XENT)"))
+_SLASH_NAME_CAME_BEFORE_RE: re.Pattern[str] = re.compile(latin_names(
     r"(?:[A-ZÄÖÜ][\w.-]*|" + _ENTITY_PLACEHOLDER_RE.pattern + r") $"
-)
-_SLASH_PARTNER_BEFORE_RE: re.Pattern[str] = re.compile(
+))
+_SLASH_PARTNER_BEFORE_RE: re.Pattern[str] = re.compile(latin_names(
     r"(?<![\w./-])(?P<word>(?!XENT|XGLO)" + _SLASH_PARTNER_WORD + r")/(?P<gap> ?)"
     r"(?P<name>" + _ENTITY_PLACEHOLDER_RE.pattern + r")"
-)
+))
 
 # "Wien" as part of a stop's name: "Wien Schedifkaplatz" (Badner Bahn),
 # "Wien St.Marx Bahnhst", "Purkersdorf b.Wien Zentrum Bahnhst",
@@ -195,11 +196,11 @@ _WIEN_NAME_WORD = (
     r"(?!" + _WIEN_NAME_STATION_NOUNS + r")(?!XENT|XGLO)"
     r"[A-ZÄÖÜ][A-Za-zÄÖÜäöüß]*(?:\.[A-ZÄÖÜ][A-Za-zÄÖÜäöüß]+)*(?![\w-])"
 )
-_WIEN_NAME_RE: re.Pattern[str] = re.compile(
+_WIEN_NAME_RE: re.Pattern[str] = re.compile(latin_names(
     r"(?<![\w.-])(?:(?:(?:" + _ENTITY_PLACEHOLDER_RE.pattern + r"|(?!XENT|XGLO)[A-ZÄÖÜ][A-Za-zÄÖÜäöüß-]*) )?"
     r"b\.\s?Wien(?: " + _WIEN_NAME_WORD + r")?(?![\w-])"
     r"|Wien (?:" + _ENTITY_PLACEHOLDER_RE.pattern + r"|" + _WIEN_NAME_WORD + r"))"
-)
+))
 
 
 # Glossary placeholders use a distinct ``XGLO<n>X`` prefix so the

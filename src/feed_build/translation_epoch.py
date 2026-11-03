@@ -212,6 +212,10 @@ __all__ = [
 #       of a slash-joined stop name ("Parlament/ Volkstheter", WL's typo) is
 #       shielded verbatim. Cached under 30: "service from Parlament/
 #       Folktheter"; the source digest is unchanged, so only a bump evicts it.
+#  (no bump) KI-Wächter of 2026-11-03: the name patterns accept every Latin
+#       letter (``latin_names``; "Biróstraße 17" read "Biró Street 17"). No
+#       cached translation held such a name when the rule came, so nothing
+#       needed evicting; new items go through the widened shield anyway.
 _TRANSLATION_CACHE_EPOCH = 31
 
 

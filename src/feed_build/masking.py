@@ -11,6 +11,7 @@ from collections import Counter
 from collections.abc import Callable
 from functools import lru_cache
 
+from ..utils.name_letters import latin_names
 from .entities import (
     _BRAND_ENTITIES, _DATE_ENTITY_RE, _DIRECTION_NAME_RE, _GATE_SUFFIX_RE, _LINE_ENTITY_RE, _MAIN_STATION_RE,
     _PLACE_NAME_ENTITY_RE, _PREPOSITION_NAME_RE, _SPACED_STREET_NAME_RE, _STREET_SUFFIX_RE, _TRAM_LETTER_LINE_RE,
@@ -80,18 +81,18 @@ _STATION_PAREN_SUFFIX_RE: re.Pattern[str] = re.compile(r"\s*\([^)]*\)\s*$")
 # ``Währinger Straße-Volksoper``): a word of four letters or more on either
 # side. Only names with a single hyphen get a comma form, so
 # ``Franz-Josefs-Bahnhof`` and other hyphenated names stay whole.
-_STATION_PART_HYPHEN_RE: re.Pattern[str] = re.compile(
+_STATION_PART_HYPHEN_RE: re.Pattern[str] = re.compile(latin_names(
     r"(?<=[a-zäöüß]{4})-(?=[A-ZÄÖÜ][a-zäöüß]{3})"
-)
+))
 
 # Aliases must look like a clean, short ``Wien X`` station name to be
 # eligible for inclusion. Length cap keeps the regex bounded; the
 # character class keeps spelling variants ("Wien Schwedenplatz",
 # "Wien Heiligenstadt", "Wien Mitte") in while filtering out anything
 # carrying digits, parentheses, slashes, or other markup.
-_ALIAS_CLEAN_RE: re.Pattern[str] = re.compile(
+_ALIAS_CLEAN_RE: re.Pattern[str] = re.compile(latin_names(
     r"^[A-Za-zÄÖÜäöüß][A-Za-zÄÖÜäöüß. \-]{6,28}$"
-)
+))
 
 
 def _station_comma_forms(variants: set[str]) -> set[str]:
@@ -148,9 +149,9 @@ def _station_entity_pattern() -> re.Pattern[str] | None:
 # that form as a name of its own. Place adjectives ("Döblinger Hauptstraße")
 # get a form no text writes ("Döblingen …"), which costs nothing. The German
 # feed keeps WL's wording.
-_DECLINABLE_NAME_HEAD_RE: re.Pattern[str] = re.compile(
+_DECLINABLE_NAME_HEAD_RE: re.Pattern[str] = re.compile(latin_names(
     r"^(?P<wien>(?:Wien )?)(?P<stem>[A-ZÄÖÜ][a-zäöüß]+?)(?:e|er|es)(?P<rest> [A-ZÄÖÜ].*)$"
-)
+))
 
 
 @lru_cache(maxsize=1)

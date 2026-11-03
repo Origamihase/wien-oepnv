@@ -18,6 +18,18 @@ from ..utils.logging import sanitize_log_arg
 from ..utils.source_shape import MIN_RECORDS, missing_fields
 from .baustellen_events import INFO_KEYS, _feature_list, _first_lonlat, _first_match, _parse_range
 
+# ``__all__`` lists every name this module defines. Some private names are
+# read only by other modules and tests; CodeQL (py/unused-global-variable)
+# counts such a read through an import only when the name is listed here.
+__all__ = [
+    "REPO_ROOT", "LOGGER", "DEFAULT_DATA_URL", "_BAUSTELLEN_TYPENAMES", "_OUTPUT_FORMAT_CANDIDATES",
+    "DEFAULT_FALLBACK_PATH", "_BAUSTELLEN_TRUSTED_HOSTS", "_validated_baustellen_data_url",
+    "_resolve_data_url", "_with_output_format", "_with_typename", "_resolve_fallback_path",
+    "_LAYER_MIN", "_properties", "_feature_position", "_LAYER_REQUIRED", "_usable_layer",
+    "_from_snapshot",
+]
+
+
 # Same value as ``REPO_ROOT`` in ``scripts/update_baustellen_cache.py``.
 REPO_ROOT = Path(__file__).resolve().parents[2]
 

@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Any
 
 from ..utils.files import read_capped_text
+from ..utils.name_letters import latin_names
 
 # WL's own order of its lines: the ``SortingHelp`` column of the open line
 # data (``data/wienerlinien-ogd-linien.csv``, refreshed weekly by
@@ -500,7 +501,7 @@ DATE_SHORT_RE = re.compile(r"\b\d{1,2}\.\d{1,2}\b")
 # WL line via the ``[0-9]{1,3}[A-Z]?`` branch of ``LINE_CODE_RE``
 # (``Sperre 17:30:45 Ausfall`` -> phantom line ``45``).
 TIME_RE = re.compile(r"\b\d{1,2}:\d{2}(?::\d{2})?\b")
-ADDRESS_NO_RE = re.compile(
+ADDRESS_NO_RE = re.compile(latin_names(
     # Two shapes covered:
     #   1) Compound street names where the suffix is glued onto the prefix
     #      ("Wienerstraße 12", "Pasettistraße 200"). Suffix list is the
@@ -520,7 +521,7 @@ ADDRESS_NO_RE = re.compile(
     # alpha suffix ("12a"). Without the range, "Breitenfurter Straße
     # 236-238" leaves "-238" behind which then matches LINE_CODE_RE as
     # a phantom line.
-    r"\s+\d+(?:\s*[-–—/]\s*\d+)?[A-Za-z]?\b",
+    r"\s+\d+(?:\s*[-–—/]\s*\d+)?[A-Za-z]?\b"),
     re.IGNORECASE,
 )
 # ``[A-Za-z]?`` captures the optional alpha suffix on a house number.

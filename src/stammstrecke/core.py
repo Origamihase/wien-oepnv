@@ -16,6 +16,19 @@ from pathlib import Path
 from typing import Final
 from zoneinfo import ZoneInfo
 
+# ``__all__`` lists every name this module defines. Some private names are
+# read only by other modules and tests; CodeQL (py/unused-global-variable)
+# counts such a read through an import only when the name is listed here.
+__all__ = [
+    "REPO_ROOT", "LOGGER", "FLORIDSDORF_VOR_ID", "MEIDLING_VOR_ID", "MEIDLING_CANONICAL_SEED",
+    "DELAY_THRESHOLD_MINUTES", "MAX_TRIPS_PER_QUERY", "PENDING_TRIPS_PATH",
+    "PENDING_TRIPS_MAX_BYTES", "PENDING_TTL", "RECENTLY_FINALISED_PATH",
+    "RECENTLY_FINALISED_MAX_BYTES", "PENDING_TRIPS_LOCK_PATH", "_PendingTrip", "QUERY_TIMEOUT",
+    "MAX_QUERY_TIMEOUT", "BREAKER_FAILURE_THRESHOLD", "BREAKER_RECOVERY_TIMEOUT", "_S_BAHN_LINE_RE",
+    "VIENNA_TZ", "_now_vienna", "_format_minutes",
+]
+
+
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
 LOGGER = logging.getLogger("update_stammstrecke_status")
