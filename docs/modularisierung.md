@@ -182,6 +182,16 @@ Abruf von WL und ÖBB (`fetch_events` mit den Rohantworten aus `data/raw/`)
 Verwerfungsgründe. Damit steht nur noch `src/build_feed.py` auf der
 Altfall-Liste.
 
+Nachtrag (2026-11-03): Auch das Teilmodul, das einen Namen definiert, führt
+ihn in `__all__`, sobald ein anderes Modul oder ein Test ihn liest. CodeQL
+(`py/unused-global-variable`) zählt das Lesen eines privaten Namens über
+einen Import sonst nicht als Nutzung und meldet ihn als ungenutzt. 16 solche
+Fehlalarme standen nach Etappe 6 und 7 offen auf `main`; seither tragen
+`src/utils/stations_data.py`, `src/utils/secret_patterns/detectors.py`,
+`src/stammstrecke/core.py`, `src/stammstrecke/hbf_board.py` und
+`src/providers/baustellen_wfs.py` je eine Liste aller Namen, die sie
+definieren. Kein Modul wird mit `*` importiert, das Verhalten bleibt gleich.
+
 Etappe 8 (ab 2026-11-03) teilt `src/build_feed.py` (13.725 Zeilen) in fünf
 Schritten auf das Paket `src/feed_build/` auf (Plan mit Modulliste und
 Reihenfolge: Übersetzung, Zustand und Abruf, Filter und Verlauf, Texte und
