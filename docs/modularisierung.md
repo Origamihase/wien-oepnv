@@ -271,7 +271,10 @@ hat danach 661 Zeilen und enthält nur noch die Kette (`lint`, `main`,
 mehr in `__all__`, weil sie niemand mehr dort liest (die Registry lesen und
 ersetzen Tests in `providers_setup`), ebenso fallen Importe weg, die nur noch
 die Teile brauchen. `src/build_feed.py` verlässt die Altfall-Liste.
-Replay wie in den Schritten davor: 980 Stände einzeln und 400 nacheinander, deutscher und englischer Feed und Zustand in jedem Stand gleich; dazu der WL- und ÖBB-Abruf (`fetch_events`) über 1.397 aufgezeichnete Stände vom 04.10. bis 03.11. mit gleichen Meldungen und Verwerfungsgründen.
+Replay wie in den Schritten davor: 980 Stände einzeln und 400 nacheinander,
+deutscher und englischer Feed und Zustand in jedem Stand gleich; dazu der WL-
+und ÖBB-Abruf (`fetch_events`) über 1.397 aufgezeichnete Stände vom 04.10.
+bis 03.11. mit gleichen Meldungen und Verwerfungsgründen.
 
 Die Teile von `src/feed_build/` nach dem Schritt, in dem sie entstanden sind
 (`__init__.py` enthält nur die Beschreibung des Pakets und die Regel für

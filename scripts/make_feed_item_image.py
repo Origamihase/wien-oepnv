@@ -13,7 +13,7 @@ left and mapped onto near-white. All steps work on a periodic grid
 tiles seamlessly. The output is deterministic for the fixed seed.
 
 Run it whenever the texture parameters change, then update
-``_ITEM_IMAGE_BYTES`` in ``src/build_feed.py`` (tests/test_item_image.py
+``_ITEM_IMAGE_BYTES`` in ``src/feed_build/item_meta.py`` (tests/test_item_image.py
 checks it)::
 
     python scripts/make_feed_item_image.py
