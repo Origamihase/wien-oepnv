@@ -31,6 +31,7 @@ import pytest
 from src.build_feed import _apply_topic_budget, _topic_budget_key
 from src.feed import config as feed_config
 from src.feed_types import FeedItem
+from tests._conftest.build_feed_bindings import setattr_all
 
 
 def _item(title: str, *, starts_at: str = "2026-09-19T13:23:00+02:00", guid: str | None = None) -> FeedItem:
@@ -238,7 +239,7 @@ def test_the_budget_is_wired_into_the_build(monkeypatch: pytest.MonkeyPatch, tmp
 
     monkeypatch.setattr(bf, "read_cache", fake_read_cache)
     out_file = tmp_path / "feed.xml"
-    monkeypatch.setattr(bf, "validate_path", lambda path, name: path)
+    setattr_all(monkeypatch, bf, "validate_path", lambda path, name: path)
     monkeypatch.setattr(bf.feed_config, "OUT_PATH", out_file)
     monkeypatch.setattr(bf.feed_config, "STATE_FILE", tmp_path / "state.json")
     monkeypatch.setattr(bf.feed_config, "FEED_HEALTH_PATH", tmp_path / "feed-health.md")

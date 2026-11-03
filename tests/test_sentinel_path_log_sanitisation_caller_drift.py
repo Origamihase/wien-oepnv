@@ -98,6 +98,7 @@ from pathlib import Path
 from typing import Any, NoReturn
 
 import pytest
+from tests._conftest.build_feed_bindings import setattr_all
 
 
 _PRIMITIVES: list[tuple[str, str]] = [
@@ -404,8 +405,7 @@ def test_load_state_size_cap_log_strips_path_primitives(
     state_file = state_dir / "state.json"
     state_file.write_bytes(b"x" * 4096)
 
-    monkeypatch.setattr(
-        build_feed_mod, "validate_path",
+    setattr_all(monkeypatch, build_feed_mod, "validate_path",
         lambda *args, **kwargs: state_file,
         raising=False,
     )
@@ -439,8 +439,7 @@ def test_load_state_size_cap_log_carries_fingerprint(
     state_file = tmp_path / "data" / "state.json"
     state_file.write_bytes(b"x" * 4096)
 
-    monkeypatch.setattr(
-        build_feed_mod, "validate_path",
+    setattr_all(monkeypatch, build_feed_mod, "validate_path",
         lambda *args, **kwargs: state_file,
         raising=False,
     )
@@ -546,8 +545,7 @@ def test_save_state_lock_fail_log_strips_path_primitives(
     state_dir.mkdir()
     state_file = state_dir / "state.json"
 
-    monkeypatch.setattr(
-        build_feed_mod, "validate_path",
+    setattr_all(monkeypatch, build_feed_mod, "validate_path",
         lambda *args, **kwargs: state_file,
         raising=False,
     )

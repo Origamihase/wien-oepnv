@@ -27,6 +27,7 @@ import src.build_feed as bf
 from src.feed.merge import deduplicate_fuzzy
 from src.feed_types import FeedItem
 import pytest
+from tests._conftest.build_feed_bindings import patch_all
 
 # Rendered time lines name no year and no "Heute" relative to a fixed day.
 pytestmark = pytest.mark.usefixtures("time_line_today")
@@ -184,8 +185,8 @@ def test_main_takes_the_tickers_into_the_notice() -> None:
          patch.object(bf, "_load_state", return_value={}), \
          patch.object(bf, "_make_rss", side_effect=fake_make_rss), \
          patch.object(bf, "_save_state", MagicMock()), \
-         patch.object(bf, "atomic_write", MagicMock()), \
-         patch.object(bf, "validate_path", MagicMock()), \
+         patch_all(bf, "atomic_write", MagicMock()), \
+         patch_all(bf, "validate_path", MagicMock()), \
          patch.object(bf, "write_feed_health_report", MagicMock()), \
          patch.object(bf, "write_feed_health_json", MagicMock()):
         assert bf.main() == 0

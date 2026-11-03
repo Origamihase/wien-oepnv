@@ -10,6 +10,7 @@ from typing import Any
 import pytest
 
 from src import build_feed
+from tests._conftest.build_feed_bindings import setattr_all
 
 
 def test_mask_entities_protects_brands() -> None:
@@ -621,7 +622,7 @@ def test_translate_text_round_trip_preserves_entities_when_pipeline_missing(
     """Even without a translation pipeline, ``_translate_text`` must
     return the original text (with entities intact) so the EN feed
     degrades gracefully."""
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: None)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: None)
     text = "U6: Verspätung zwischen Wien Hauptbahnhof und Stephansplatz."
     assert build_feed._translate_text(text) == text
 
@@ -640,7 +641,7 @@ def test_translate_text_pipes_masked_text_through_pipeline(
         # verify the unmask step preserves the original entities.
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: fake_pipeline)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: fake_pipeline)
     text = "U6 verspätet bei Stephansplatz; Wiener Linien informieren."
     out = build_feed._translate_text(text)
     # The masked input given to the pipeline must NOT contain the

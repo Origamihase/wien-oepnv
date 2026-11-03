@@ -52,6 +52,7 @@ import pytest
 
 from src import build_feed
 from src.feed_types import FeedItem
+from tests._conftest.build_feed_bindings import setattr_all
 
 # Verbatim from the live 2026-09-19 23:01 build.
 _CAPTURED_LEAK = (
@@ -133,7 +134,7 @@ def test_translate_text_attempt_fails_closed_on_the_leaked_shape(
     def corrupting_pipeline(text: str, **kwargs: Any) -> list[dict[str, str]]:
         return [{"translation_text": _CAPTURED_LEAK}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: corrupting_pipeline)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: corrupting_pipeline)
     # "N6: Busse halten …" is fully glossed since the EN audit of 2026-10-03
     # and never reaches a model; an untranslated word keeps the model in play.
     result = build_feed._translate_text_attempt(
@@ -180,7 +181,7 @@ def test_the_item_falls_back_to_german_instead_of_leaking(
             return [{"translation_text": _CAPTURED_LEAK}]
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: corrupting_pipeline)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: corrupting_pipeline)
     item = cast(
         FeedItem,
         {

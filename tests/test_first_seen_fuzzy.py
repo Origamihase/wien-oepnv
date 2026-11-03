@@ -4,6 +4,7 @@ import pytest
 import types
 from pathlib import Path
 from datetime import datetime, timedelta, UTC
+from tests._conftest.build_feed_bindings import setattr_all
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> types.ModuleType:
@@ -53,7 +54,7 @@ def test_first_seen_fuzzy_identity(monkeypatch: pytest.MonkeyPatch, tmp_path: Pa
     }
 
     # Mock validate_path to allow temp paths
-    monkeypatch.setattr(build_feed, "validate_path", lambda p, *args: p)
+    setattr_all(monkeypatch, build_feed, "validate_path", lambda p, *args: p)
 
     state = build_feed._load_state()
     build_feed._make_rss([item_a], now, state)

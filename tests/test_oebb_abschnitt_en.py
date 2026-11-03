@@ -24,6 +24,7 @@ from typing import Any
 import pytest
 
 from src import build_feed as bf
+from tests._conftest.build_feed_bindings import setattr_all
 
 _OEBB = "ÖBB"
 
@@ -54,7 +55,7 @@ def model(monkeypatch: Any) -> list[str]:
             text = "Due to " + text[len("Wegen "):]
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(bf, "_get_translation_pipeline", lambda: pipe)
+    setattr_all(monkeypatch, bf, "_get_translation_pipeline", lambda: pipe)
     return seen
 
 
@@ -93,7 +94,7 @@ def test_a_model_answer_without_its_label_falls_back_to_the_body(monkeypatch: An
             return [{"translation_text": "Some trains cannot run, see U1: Wien Hbf."}]
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(bf, "_get_translation_pipeline", lambda: pipe)
+    setattr_all(monkeypatch, bf, "_get_translation_pipeline", lambda: pipe)
     out = bf._translate_text_attempt("Teilausfall: Einige Züge fahren nicht.", source=_OEBB)
     assert out == "Partial cancellation: Einige Züge fahren nicht."
     assert seen[-1] == "Einige Züge fahren nicht."

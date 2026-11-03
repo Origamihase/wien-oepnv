@@ -31,6 +31,7 @@ import pytest
 
 from src import build_feed
 from src.build_feed import _drop_article_before_street
+from tests._conftest.build_feed_bindings import setattr_all
 
 
 @pytest.mark.parametrize(
@@ -117,7 +118,7 @@ def test_the_rule_is_wired_into_the_translation_path(monkeypatch: Any) -> None:
         assert placeholder is not None, text
         return [{"translation_text": f"Works in the {placeholder.group(0)} today"}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: model)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: model)
     out = build_feed._translate_text_attempt("Arbeiten in der Althanstraße heute")
 
     assert out is not None

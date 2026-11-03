@@ -15,6 +15,7 @@ from typing import Any
 import pytest
 
 from src import build_feed
+from tests._conftest.build_feed_bindings import setattr_all
 
 _WL = "Wiener Linien"
 
@@ -40,7 +41,7 @@ def model(monkeypatch: Any) -> list[str]:
                 return [{"translation_text": english + text[len(german):]}]
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: pipe)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: pipe)
     return seen
 
 
@@ -100,7 +101,7 @@ def test_a_failed_main_clause_fails_the_text(monkeypatch: Any) -> None:
     def broken(text: str, **_kwargs: Any) -> list[dict[str, str]]:
         raise RuntimeError("model down")
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: broken)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: broken)
     assert build_feed._translate_text_attempt(
         "Wegen Bauarbeiten im Bereich Wildbadgasse wird die Linie 20A umgeleitet.",
         source=_WL,
@@ -122,7 +123,7 @@ def test_a_cause_the_model_renders_as_a_bare_noun_gets_due_to(monkeypatch: Any) 
             return [{"translation_text": "Renovation of the platform"}]
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: pipe)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: pipe)
     out = build_feed._translate_text_attempt(
         "Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in "
         "Richtung Siebenhirten U ein.",
@@ -132,8 +133,7 @@ def test_a_cause_the_model_renders_as_a_bare_noun_gets_due_to(monkeypatch: Any) 
 
 
 def test_a_name_in_a_bare_cause_keeps_its_capital(monkeypatch: Any) -> None:
-    monkeypatch.setattr(
-        build_feed,
+    setattr_all(monkeypatch, build_feed,
         "_get_translation_pipeline",
         lambda: lambda text, **_k: [{"translation_text": "Vienna City Marathon"}],
     )

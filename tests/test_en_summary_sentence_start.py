@@ -33,6 +33,7 @@ import pytest
 
 from src import build_feed
 from src.build_feed import _capitalise_sentence_start, _capitalise_title_body
+from tests._conftest.build_feed_bindings import setattr_all
 
 
 @pytest.mark.parametrize(
@@ -96,7 +97,7 @@ def test_the_shipped_description_is_capitalised(monkeypatch: pytest.MonkeyPatch)
         "Haltestellenverlegung der Linie 7A in Richtung Meidling Hauptstraße U":
             "stop relocation of line 7A towards Meidling Hauptstraße U",
     }
-    monkeypatch.setattr(build_feed, "_translate_text_attempt", lambda text, **_kw: replies[text])
+    setattr_all(monkeypatch, build_feed, "_translate_text_attempt", lambda text, **_kw: replies[text])
     state: dict[str, dict[str, Any]] = {}
 
     out = build_feed._apply_lang_overlay(
@@ -117,7 +118,7 @@ def test_a_cached_lower_case_description_ships_capitalised(monkeypatch: pytest.M
     def _never(text: str, **_kw: Any) -> str:
         raise AssertionError(f"the model must not run for a cache hit: {text!r}")
 
-    monkeypatch.setattr(build_feed, "_translate_text_attempt", _never)
+    setattr_all(monkeypatch, build_feed, "_translate_text_attempt", _never)
     state: dict[str, dict[str, Any]] = {
         "wl|7A|x": {
             "translations": {

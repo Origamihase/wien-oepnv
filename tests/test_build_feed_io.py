@@ -5,6 +5,7 @@ from typing import Any
 
 import pytest
 import types
+from tests._conftest.build_feed_bindings import setattr_all
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
@@ -41,7 +42,7 @@ def test_main_does_not_save_state_on_io_error(
 
     monkeypatch.setattr(build_feed.feed_config, "OUT_PATH", out_file)
     monkeypatch.setattr(build_feed.feed_config, "STATE_FILE", state_file)
-    monkeypatch.setattr(build_feed, "validate_path", lambda path, name: path)
+    setattr_all(monkeypatch, build_feed, "validate_path", lambda path, name: path)
 
     # Disable network/cache
     monkeypatch.setenv("WL_ENABLE", "0")
@@ -68,7 +69,7 @@ def test_main_does_not_save_state_on_io_error(
                 pass
         return FailingContextManager()
 
-    monkeypatch.setattr(build_feed, "atomic_write", failing_atomic_write)
+    setattr_all(monkeypatch, build_feed, "atomic_write", failing_atomic_write)
 
     # We expect main to raise the IOError
     try:

@@ -31,6 +31,7 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 import pytest
+from tests._conftest.build_feed_bindings import setattr_all
 
 
 def _import_build_feed(
@@ -134,7 +135,7 @@ def test_end_to_end_survivor_first_seen_is_preserved_on_disk(
     identity, treating it as brand-new every cycle.
     """
     build_feed = _import_build_feed(monkeypatch, tmp_path)
-    monkeypatch.setattr(build_feed, "validate_path", lambda p, *args: p)
+    setattr_all(monkeypatch, build_feed, "validate_path", lambda p, *args: p)
     now = datetime(2026, 5, 29, 12, 0, tzinfo=UTC)
 
     expired = {

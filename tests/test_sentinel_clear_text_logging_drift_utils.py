@@ -82,6 +82,7 @@ import pytest
 from src.utils import cache as cache_module
 from src.utils.files import sanitize_filename
 from src.utils.locking import file_lock
+from tests._conftest.build_feed_bindings import setattr_all
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -342,8 +343,7 @@ def test_build_feed_save_state_lock_failure_sanitises_logged_exception(
     monkeypatch.setattr(feed_config, "STATE_FILE", state_file, raising=False)
 
     # Force ``feed_config.validate_path`` to accept the tmp_path location.
-    monkeypatch.setattr(
-        build_feed_module,
+    setattr_all(monkeypatch, build_feed_module,
         "validate_path",
         lambda path, _name: path,
         raising=True,
@@ -396,6 +396,7 @@ WALKER_MODULES: tuple[str, ...] = (
     "src/utils/http_safety/sessions.py",
     "src/utils/http_safety/url_guard.py",
     "src/build_feed.py",
+    *sorted(str(p.relative_to(REPO_ROOT)) for p in (REPO_ROOT / "src" / "feed_build").glob("*.py")),  # its parts (Etappe 8)
     # Extended in the post-Scribe Sentinel sweep (2026-05-08): every
     # production module whose ``except Exception as exc`` paths log
     # the bound exception now appears in this list. A regression here

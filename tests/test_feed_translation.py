@@ -14,6 +14,7 @@ from typing import Any, cast
 
 from src import build_feed
 from src.feed_types import FeedItem
+from tests._conftest.build_feed_bindings import setattr_all
 
 
 def test_translate_time_line_swaps_known_prefixes() -> None:
@@ -34,7 +35,7 @@ def test_translate_time_line_passthrough_for_ranges_and_empty() -> None:
 def test_translate_text_returns_original_without_pipeline(
     monkeypatch: Any,
 ) -> None:
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: None)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: None)
     assert build_feed._translate_text("Verspätung") == "Verspätung"
 
 
@@ -47,7 +48,7 @@ def test_cached_translation_returns_success_flag(monkeypatch: Any) -> None:
     so subsequent runs (with a healthy pipeline) still served the
     cached German text.
     """
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: None)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: None)
     state: dict[str, dict[str, Any]] = {}
     text, succeeded = build_feed._cached_translation(
         "Hallo", "title", "ident-1", state
@@ -84,7 +85,7 @@ def test_format_item_content_en_falls_back_when_pipeline_unavailable(
     cannot translate the item, the EN feed item is byte-identical to
     the DE item for that disruption.
     """
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: None)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: None)
     item = cast(
         FeedItem,
         {
@@ -132,7 +133,7 @@ def test_make_rss_en_writes_english_metadata_and_atom_self(
 ) -> None:
     """``_make_rss(lang="en")`` emits ``<language>en</language>`` and the
     EN atom self href."""
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: None)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: None)
     state: dict[str, dict[str, Any]] = {}
     now = datetime(2026, 5, 16, 12, 0, tzinfo=UTC)
     xml = build_feed._make_rss([], now, state, lang="en")
@@ -144,7 +145,7 @@ def test_make_rss_en_writes_english_metadata_and_atom_self(
 def test_make_rss_de_writes_german_metadata_default(
     monkeypatch: Any,
 ) -> None:
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: None)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: None)
     state: dict[str, dict[str, Any]] = {}
     now = datetime(2026, 5, 16, 12, 0, tzinfo=UTC)
     xml = build_feed._make_rss([], now, state)

@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Any
 import pytest
 import types
+from tests._conftest.build_feed_bindings import part
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
@@ -48,7 +49,7 @@ def test_fmt_rfc2822_fallback_locale_independent(monkeypatch: pytest.MonkeyPatch
     # Force the fallback by breaking format_datetime
     def broken_formatter(_: Any) -> None:
         raise RuntimeError("simulated failure")
-    monkeypatch.setattr(build_feed, "format_datetime", broken_formatter)
+    monkeypatch.setattr(part(build_feed, "base"), "format_datetime", broken_formatter)
 
     # Create a specific datetime: March 1, 2023, 12:00:00 UTC
     dt = datetime(2023, 3, 1, 12, 0, 0, tzinfo=UTC)

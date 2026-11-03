@@ -27,11 +27,11 @@ from __future__ import annotations
 
 import json
 from typing import Any
-from unittest.mock import patch
 
 import pytest
 
 from src import build_feed
+from tests._conftest.build_feed_bindings import patch_all
 
 _STATION_ONLY = "Wien Hauptbahnhof ↔ Felixdorf"
 
@@ -61,7 +61,7 @@ _ECHO = "<echo the input>"
 def _run_builds(
     model: _Model, state: dict[str, dict[str, Any]], text: str, count: int
 ) -> None:
-    with patch.object(build_feed, "_translate_text_attempt", side_effect=model):
+    with patch_all(build_feed, "_translate_text_attempt", side_effect=model):
         for _ in range(count):
             build_feed._cached_translation(text, "title", "oebb-835981", state)
 
@@ -96,7 +96,7 @@ def test_the_cached_value_is_still_served_unchanged() -> None:
     state: dict[str, dict[str, Any]] = {}
     _run_builds(model, state, _STATION_ONLY, 1)
 
-    with patch.object(build_feed, "_translate_text_attempt", side_effect=model):
+    with patch_all(build_feed, "_translate_text_attempt", side_effect=model):
         out, ok = build_feed._cached_translation(
             _STATION_ONLY, "title", "oebb-835981", state
         )
@@ -110,7 +110,7 @@ def test_the_mark_survives_the_json_round_trip() -> None:
     _run_builds(model, state, _STATION_ONLY, 1)
 
     revived = json.loads(json.dumps(state))
-    with patch.object(build_feed, "_translate_text_attempt", side_effect=model):
+    with patch_all(build_feed, "_translate_text_attempt", side_effect=model):
         build_feed._cached_translation(_STATION_ONLY, "title", "oebb-835981", revived)
     assert len(model.calls) == 1, "nach dem Neuladen lief das Modell erneut"
 
@@ -127,7 +127,7 @@ def test_a_failed_translation_never_earns_the_mark() -> None:
     """
     model = _Model(None)
     state: dict[str, dict[str, Any]] = {}
-    with patch.object(build_feed, "_translate_text_attempt", side_effect=model):
+    with patch_all(build_feed, "_translate_text_attempt", side_effect=model):
         out, ok = build_feed._cached_translation(_STATION_ONLY, "title", "x", state)
 
     assert (out, ok) == (_STATION_ONLY, False)
@@ -146,7 +146,7 @@ def test_an_unmarked_legacy_entry_is_still_retried() -> None:
     state: dict[str, dict[str, Any]] = {
         "legacy": {"translations": {"en": {"title": _STATION_ONLY}}}
     }
-    with patch.object(build_feed, "_translate_text_attempt", side_effect=model):
+    with patch_all(build_feed, "_translate_text_attempt", side_effect=model):
         build_feed._cached_translation(_STATION_ONLY, "title", "legacy", state)
 
     assert len(model.calls) == 1, "der Drift-Guard darf Altbestand nicht durchwinken"
@@ -159,7 +159,7 @@ def test_the_mark_is_withdrawn_when_the_model_translates_after_all() -> None:
     state: dict[str, dict[str, Any]] = {
         "z": {"translations": {"en": {}, build_feed._VERBATIM_FIELDS_KEY: ["title"]}}
     }
-    with patch.object(
+    with patch_all(
         build_feed, "_translate_text_attempt", return_value="Vienna Hbf ↔ Felixdorf"
     ):
         out, ok = build_feed._cached_translation(_STATION_ONLY, "title", "z", state)
@@ -185,7 +185,7 @@ def test_a_residual_placeholder_beats_the_mark() -> None:
             }
         }
     }
-    with patch.object(build_feed, "_translate_text_attempt", side_effect=model):
+    with patch_all(build_feed, "_translate_text_attempt", side_effect=model):
         out, _ok = build_feed._cached_translation(corrupted, "title", "w", state)
 
     assert len(model.calls) == 1, "der Self-Heal muss den Marker schlagen"
@@ -224,7 +224,7 @@ def test_a_translatable_text_leaves_no_mark_behind() -> None:
     pure weight.
     """
     state: dict[str, dict[str, Any]] = {}
-    with patch.object(
+    with patch_all(
         build_feed, "_translate_text_attempt", return_value="track construction works"
     ):
         build_feed._cached_translation("Gleisbauarbeiten", "title", "n", state)
@@ -235,9 +235,9 @@ def test_a_translatable_text_leaves_no_mark_behind() -> None:
 def test_two_fields_are_tracked_independently() -> None:
     """``title`` and ``summary`` are cached separately and can differ."""
     state: dict[str, dict[str, Any]] = {}
-    with patch.object(build_feed, "_translate_text_attempt", side_effect=lambda t, *a, **k: t):
+    with patch_all(build_feed, "_translate_text_attempt", side_effect=lambda t, *a, **k: t):
         build_feed._cached_translation(_STATION_ONLY, "title", "m", state)
-    with patch.object(
+    with patch_all(
         build_feed, "_translate_text_attempt", return_value="Due to construction works …"
     ):
         build_feed._cached_translation("Wegen Bauarbeiten …", "summary", "m", state)
@@ -268,7 +268,7 @@ def test_the_overlay_stops_re_translating_across_builds(builds: int) -> None:
     state: dict[str, dict[str, Any]] = {}
     base = _content(_STATION_ONLY, _STATION_ONLY)
 
-    with patch.object(build_feed, "_translate_text_attempt", side_effect=model):
+    with patch_all(build_feed, "_translate_text_attempt", side_effect=model):
         for _ in range(builds):
             build_feed._apply_lang_overlay(
                 base, _STATION_ONLY, "[Seit 01.09.2026]", "oebb-1", "en", state

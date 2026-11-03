@@ -151,6 +151,8 @@ def _resolve_repo_callers() -> list[tuple[str, str, bool]]:
         "src/providers/vor.py",
         "src/providers/vor_quota.py",
         "src/build_feed.py",
+        # Its parts (Etappe 8, 700-line rule).
+        *sorted(str(path.relative_to(repo)) for path in (repo / "src" / "feed_build").glob("*.py")),
     ):
         text = (repo / relpath).read_text(encoding="utf-8")
         for lineno, line in enumerate(text.splitlines(), start=1):

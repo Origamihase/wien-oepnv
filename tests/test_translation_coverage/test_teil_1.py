@@ -18,6 +18,7 @@ from ._support import (
     _fake_marian_translation,
     _fc,
 )
+from tests._conftest.build_feed_bindings import setattr_all
 
 
 def test_complex_disruption_is_fully_translated_with_entity_preservation(
@@ -31,8 +32,7 @@ def test_complex_disruption_is_fully_translated_with_entity_preservation(
       (b) The German remainder around the entities is fully translated
           (no German connectors survive in the rendered description).
     """
-    monkeypatch.setattr(
-        build_feed, "_get_translation_pipeline", lambda: _fake_marian_translation
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: _fake_marian_translation
     )
     item = cast(
         FeedItem,
@@ -119,7 +119,7 @@ def test_en_feed_falls_back_to_de_when_pipeline_unavailable(
     falls back to a verbatim copy of the German item so the two feeds
     are content-identical when translation is unavailable.
     """
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: None)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: None)
     item = cast(
         FeedItem,
         {
@@ -178,7 +178,7 @@ def test_truncation_kwarg_is_forwarded_to_pipeline(
         captured["kwargs"] = kwargs
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: fake_pipeline)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: fake_pipeline)
     build_feed._translate_text("Eine Meldung über die U6.")
     assert captured["kwargs"].get("truncation") is True
     assert captured["kwargs"].get("max_length") == 512
@@ -194,7 +194,7 @@ def test_failure_log_includes_identity(
     def fake_pipeline(text: str, **kwargs: Any) -> list[dict[str, str]]:
         raise RuntimeError("simulated model crash")
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: fake_pipeline)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: fake_pipeline)
 
     import logging
     with caplog.at_level(logging.WARNING, logger="build_feed"):
@@ -222,8 +222,7 @@ def test_cache_repair_after_sticky_german(
     # Healthy pipeline now produces a real translation. The source needs the
     # model: a lone glossary term ("Verspätung") is rendered from the glossary
     # without it (see ``_is_non_translatable_content``).
-    monkeypatch.setattr(
-        build_feed,
+    setattr_all(monkeypatch, build_feed,
         "_get_translation_pipeline",
         lambda: lambda text, **kwargs: [{"translation_text": "Delay"}],
     )
@@ -248,7 +247,7 @@ def test_de_and_en_feed_items_have_identical_content_set(
     the same order as the DE feed — no item dropped, no item
     duplicated, no item silently re-ordered.
     """
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: None)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: None)
     items = [
         cast(
             FeedItem,
@@ -284,7 +283,7 @@ def test_de_and_en_feed_items_are_byte_identical_when_pipeline_fails(
     to the corresponding block in feed.xml. No mixed-language text,
     no marker leaking into the EN feed body.
     """
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: None)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: None)
     item = cast(
         FeedItem,
         {
@@ -346,8 +345,7 @@ def test_metadata_glossary_activates_wiener_linien_overlay(
     def pass_through(text: str, **kwargs: Any) -> list[dict[str, str]]:
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(
-        build_feed, "_get_translation_pipeline", lambda: pass_through
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: pass_through
     )
     item = cast(
         FeedItem,
@@ -390,8 +388,7 @@ def test_metadata_glossary_activates_oebb_overlay(
     def pass_through(text: str, **kwargs: Any) -> list[dict[str, str]]:
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(
-        build_feed, "_get_translation_pipeline", lambda: pass_through
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: pass_through
     )
     item = cast(
         FeedItem,
@@ -436,8 +433,7 @@ def test_metadata_glossary_no_cross_operator_contamination(
     def pass_through(text: str, **kwargs: Any) -> list[dict[str, str]]:
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(
-        build_feed, "_get_translation_pipeline", lambda: pass_through
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: pass_through
     )
     # Synthetic text that contains both surface forms — they never
     # co-occur in a real item, but the test is about overlay scoping,
@@ -490,7 +486,7 @@ def test_stale_epoch_evicts_and_retranslates(
         out = text.replace("Fahrbahn", "Roadway").replace(" bis ", " to ")
         return [{"translation_text": out}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: fake)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: fake)
 
     ident = "stadt wien – baustellen|baustelle|L=|D=2026-03-09|T=Fahrbahn|F=abc"
     de_title = "Fahrbahn Hauptstraße von Apostelgasse bis Schlachthausgasse"
@@ -530,7 +526,7 @@ def test_current_epoch_cache_is_trusted_without_pipeline(
     def boom(text: str, **kwargs: Any) -> list[dict[str, str]]:
         raise AssertionError("pipeline must not be called for fresh cache")
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: boom)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: boom)
     ident = "fresh-cache-1"
     state: dict[str, dict[str, Any]] = {
         ident: {
@@ -559,7 +555,7 @@ def test_fresh_translation_stamps_current_epoch(
     def fake(text: str, **kwargs: Any) -> list[dict[str, str]]:
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: fake)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: fake)
     ident = "fresh-stamp-1"
     state: dict[str, dict[str, Any]] = {}
     build_feed._apply_lang_overlay(
@@ -578,7 +574,7 @@ def test_epoch_not_stamped_when_pipeline_fails(
     """A transient pipeline failure must NOT advance the epoch — the
     item stays flagged stale so the next (healthy) build retries
     instead of locking in a half-empty cache at the current epoch."""
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: None)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: None)
     ident = "fail-epoch-1"
     state: dict[str, dict[str, Any]] = {
         ident: {"translations": {"en": {"title": "stale"}}},  # epoch 0
@@ -605,8 +601,7 @@ def test_metadata_glossary_translates_ggue_to_opp(
     def pass_through(text: str, **kwargs: Any) -> list[dict[str, str]]:
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(
-        build_feed, "_get_translation_pipeline", lambda: pass_through
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: pass_through
     )
     item = cast(
         FeedItem,

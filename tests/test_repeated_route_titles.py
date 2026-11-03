@@ -40,6 +40,7 @@ import pytest
 
 from src.build_feed import _defer_repeated_route_titles
 from src.feed_types import FeedItem
+from tests._conftest.build_feed_bindings import setattr_all
 
 _ROUTE = "Wien Hauptbahnhof ↔ Gramatneusiedl"
 
@@ -215,7 +216,7 @@ def test_the_pass_is_wired_into_the_build(monkeypatch: pytest.MonkeyPatch, tmp_p
 
     monkeypatch.setattr(bf, "read_cache", fake_read_cache)
     out_file = tmp_path / "feed.xml"
-    monkeypatch.setattr(bf, "validate_path", lambda path, name: path)
+    setattr_all(monkeypatch, bf, "validate_path", lambda path, name: path)
     monkeypatch.setattr(bf.feed_config, "OUT_PATH", out_file)
     monkeypatch.setattr(bf.feed_config, "STATE_FILE", tmp_path / "state.json")
     monkeypatch.setattr(bf.feed_config, "FEED_HEALTH_PATH", tmp_path / "feed-health.md")
@@ -306,7 +307,7 @@ def test_a_disruption_beside_running_works_leads_the_build(
 
     monkeypatch.setattr(bf, "read_cache", fake_read_cache)
     out_file = tmp_path / "feed.xml"
-    monkeypatch.setattr(bf, "validate_path", lambda path, name: path)
+    setattr_all(monkeypatch, bf, "validate_path", lambda path, name: path)
     monkeypatch.setattr(bf.feed_config, "OUT_PATH", out_file)
     monkeypatch.setattr(bf.feed_config, "STATE_FILE", tmp_path / "state.json")
     monkeypatch.setattr(bf.feed_config, "FEED_HEALTH_PATH", tmp_path / "feed-health.md")

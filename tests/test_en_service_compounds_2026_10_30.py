@@ -14,6 +14,7 @@ from typing import Any
 import pytest
 
 from src import build_feed
+from tests._conftest.build_feed_bindings import setattr_all
 
 _WL = "Wiener Linien"
 _OEBB = "ÖBB"
@@ -37,7 +38,7 @@ def model(monkeypatch: Any) -> list[str]:
         seen.append(text)
         return [{"translation_text": _OCCASIONS.get(text, text)}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: pipe)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: pipe)
     return seen
 
 
@@ -117,7 +118,7 @@ def test_occasion_with_german_letters_left_keeps_the_model(
         seen.append(text)
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: pipe)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: pipe)
     build_feed._translate_text_attempt("Mariä-Empfängnis-Verkehr", source=_WL)
     # The occasion came back German, so the compound went to the model whole.
     assert seen[-1] == "Mariä-Empfängnis-Verkehr"

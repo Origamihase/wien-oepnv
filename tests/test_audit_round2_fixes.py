@@ -20,6 +20,7 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 import pytest
+from tests._conftest.build_feed_bindings import setattr_all
 
 
 # ---------------------------------------------------------------------------
@@ -33,7 +34,7 @@ def test_save_state_prunes_resurrected_expired_disk_entries(
     from src.feed import config as feed_config
 
     state_path = tmp_path / "first_seen.json"
-    monkeypatch.setattr(build_feed, "validate_path", lambda p, *a: Path(state_path))
+    setattr_all(monkeypatch, build_feed, "validate_path", lambda p, *a: Path(state_path))
     monkeypatch.setattr(feed_config, "STATE_FILE", state_path)
     monkeypatch.setattr(feed_config, "STATE_RETENTION_DAYS", 60)
 
@@ -68,7 +69,7 @@ def test_save_state_keeps_state_entries_even_if_old(
     from src.feed import config as feed_config
 
     state_path = tmp_path / "first_seen.json"
-    monkeypatch.setattr(build_feed, "validate_path", lambda p, *a: Path(state_path))
+    setattr_all(monkeypatch, build_feed, "validate_path", lambda p, *a: Path(state_path))
     monkeypatch.setattr(feed_config, "STATE_FILE", state_path)
     monkeypatch.setattr(feed_config, "STATE_RETENTION_DAYS", 60)
 

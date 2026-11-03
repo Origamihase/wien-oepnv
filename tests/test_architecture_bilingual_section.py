@@ -34,7 +34,8 @@ from tests.doc_parts import read_doc
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 _DOC = REPO_ROOT / "docs" / "architecture.md"
-_SOURCE = REPO_ROOT / "src" / "build_feed.py"
+# src/build_feed.py and its parts in src/feed_build/ (Etappe 8, 700-line rule).
+_SOURCES = [REPO_ROOT / "src" / "build_feed.py", *sorted((REPO_ROOT / "src" / "feed_build").glob("*.py"))]
 
 _SECTION_HEADING = "## 8. Der zweisprachige Feed (DE → EN)"
 _NEXT_HEADING = "## 9. Querverweise"
@@ -90,10 +91,10 @@ def test_the_section_names_symbols_at_all() -> None:
 
 @pytest.mark.parametrize("symbol", _named_symbols(_section()))
 def test_every_named_symbol_still_exists(symbol: str) -> None:
-    source = _SOURCE.read_text(encoding="utf-8")
+    source = "\n".join(path.read_text(encoding="utf-8") for path in _SOURCES)
     assert symbol in source, (
         f"architecture.md §8 names {symbol!r}, which no longer exists in "
-        "src/build_feed.py — rename the reference or drop it"
+        "src/build_feed.py or src/feed_build/ — rename the reference or drop it"
     )
 
 

@@ -101,6 +101,7 @@ from typing import Any
 import pytest
 
 from scripts import update_all_stations as wrapper
+from tests._conftest.build_feed_bindings import setattr_all
 
 
 # Canonical Trojan-Source / zero-width / Unicode-line-terminator / C1
@@ -187,7 +188,7 @@ def _import_build_feed(
 
     build_feed = importlib.import_module(module_name)
     # Allow ``validate_path`` to pass through arbitrary tmp paths.
-    monkeypatch.setattr(build_feed, "validate_path", lambda p, *args: p)
+    setattr_all(monkeypatch, build_feed, "validate_path", lambda p, *args: p)
     return build_feed
 
 

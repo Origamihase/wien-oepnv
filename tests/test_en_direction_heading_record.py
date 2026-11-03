@@ -17,6 +17,7 @@ from typing import Any
 import pytest
 
 import src.build_feed as build_feed
+from tests._conftest.build_feed_bindings import setattr_all
 
 STRAMPFERGASSE = (
     "Richtung Bhf. Atzgersdorf S: Hermesstraße nach Strampfergasse → etwa 100 Meter "
@@ -37,7 +38,7 @@ def _no_model(monkeypatch: pytest.MonkeyPatch) -> list[str]:
         calls.append(text)
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: _pipe)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: _pipe)
     return calls
 
 

@@ -50,6 +50,7 @@ from src.build_feed import (
     _mask_entities,
     _unmask_entities,
 )
+from tests._conftest.build_feed_bindings import setattr_all
 
 GLUED_TO_A_DIGIT = re.compile(_ENTITY_PLACEHOLDER_RE.pattern + r"\.\d")
 
@@ -134,7 +135,7 @@ def echo_pipeline(monkeypatch: pytest.MonkeyPatch) -> list[str]:
         calls.append(text)
         return [{"translation_text": "EN " + text}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: _pipe)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: _pipe)
     return calls
 
 

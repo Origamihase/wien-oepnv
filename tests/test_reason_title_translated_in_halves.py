@@ -40,6 +40,7 @@ import pytest
 
 from src import build_feed
 from src.feed_types import FeedItem
+from tests._conftest.build_feed_bindings import setattr_all
 
 # ---------------------------------------------------------------------------
 # The split
@@ -95,7 +96,7 @@ def _recording_attempt(
             return None
         return f"<{text}>"
 
-    monkeypatch.setattr(build_feed, "_translate_text_attempt", fake_attempt)
+    setattr_all(monkeypatch, build_feed, "_translate_text_attempt", fake_attempt)
     return seen
 
 
@@ -192,7 +193,7 @@ def test_the_model_never_sees_the_dash_end_to_end(monkeypatch: pytest.MonkeyPatc
         received.append(text)
         return _fake_pipeline(text, **kwargs)
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: observing_pipeline)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: observing_pipeline)
     item = cast(
         FeedItem,
         {

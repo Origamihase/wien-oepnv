@@ -1,6 +1,7 @@
 from typing import Any
 from unittest.mock import MagicMock, patch
 import src.build_feed as bf
+from tests._conftest.build_feed_bindings import patch_all
 
 def test_build_feed_mutation() -> None:
     items = [{"title": "original", "guid": "123"}]
@@ -13,7 +14,7 @@ def test_build_feed_mutation() -> None:
          patch.object(bf, "_make_rss", return_value=""), \
          patch.object(bf, "_load_state", return_value={}), \
          patch.object(bf, "_save_state"), \
-         patch.object(bf, "atomic_write", MagicMock()):
+         patch_all(bf, "atomic_write", MagicMock()):
 
         # Make a hook to capture pre_dedupe_items before it goes to dedupe functions
         original_summarize = bf._summarize_duplicates
@@ -24,7 +25,7 @@ def test_build_feed_mutation() -> None:
 
         with patch.object(bf, "_summarize_duplicates", side_effect=mock_summarize):
             # To avoid hitting actual paths
-            with patch.object(bf, "validate_path", MagicMock()), \
+            with patch_all(bf, "validate_path", MagicMock()), \
                  patch.object(bf, "write_feed_health_report", MagicMock()), \
                  patch.object(bf, "write_feed_health_json", MagicMock()):
                 bf.main()

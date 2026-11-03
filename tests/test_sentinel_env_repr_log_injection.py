@@ -366,6 +366,8 @@ def test_inventory_no_env_repr_log_drift_in_canonical_sites() -> None:
         # ``_resolve_data_url`` (env ``BAUSTELLEN_DATA_URL``) moved here.
         repo_root / "src" / "providers" / "baustellen_wfs.py",
         repo_root / "src" / "build_feed.py",
+        # Its parts (Etappe 8, 700-line rule).
+        *sorted((repo_root / "src" / "feed_build").glob("*.py")),
     ]
     # ``%r`` formatting of env-controlled values is the drift this round
     # closes. The canonical pattern is ``%s`` + ``sanitize_log_arg``.

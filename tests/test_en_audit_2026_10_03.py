@@ -23,6 +23,7 @@ from src.build_feed import (
     _split_label_record,
     _unmask_entities,
 )
+from tests._conftest.build_feed_bindings import setattr_all
 
 _WL = "Wiener Linien"
 _OEBB = "ÖBB"
@@ -60,7 +61,7 @@ def test_wl_reason_titles_need_no_model(
     monkeypatch: Any, title: str, english: str, was_published_as: str
 ) -> None:
     seen: list[str] = []
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: _echo(seen))
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: _echo(seen))
     out = build_feed._translate_title_attempt(title, source=_WL)
     assert out is not None
     assert build_feed._capitalise_title_body(out) == english, was_published_as
@@ -91,7 +92,7 @@ def test_a_known_reason_renders_without_the_model(monkeypatch: Any) -> None:
     """Published 2026-10-03 11:31: "Duration: 13:50. Reason: Fremder traffic
     accident in the area of Hernalser Hauptstraße"."""
     seen: list[str] = []
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: _echo(seen))
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: _echo(seen))
     out = _render_label_record(
         "Voraussichtliche Dauer: 13:50 Uhr. Grund: Fremder Verkehrsunfall im "
         "Bereich Hernalser Hauptstraße.",
@@ -108,7 +109,7 @@ def test_a_known_reason_renders_without_the_model(monkeypatch: Any) -> None:
 def test_the_stop_area_is_english(monkeypatch: Any) -> None:
     """Published 2026-10-03 10:23: "Reason: rescue operation im
     Haltestellenbereich Taubstummengasse"."""
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", _echo)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", _echo)
     out = _render_label_record(
         "Voraussichtliche Dauer: 12:30 Uhr. Grund: Rettungseinsatz im "
         "Haltestellenbereich Taubstummengasse.",
@@ -125,7 +126,7 @@ def test_an_unknown_reason_goes_through_the_model(monkeypatch: Any) -> None:
     """Before: "Reason: Tiere im Gleis im Haltestellenbereich Reumannplatz"
     with nothing translated, because the record never saw the model."""
     seen: list[str] = []
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: _echo(seen))
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: _echo(seen))
     out = _render_label_record(
         "Dauer: 14:00 Uhr. Grund: Hitzeschäden im Haltestellenbereich Reumannplatz.",
         source=_WL,
@@ -141,7 +142,7 @@ def test_a_failed_reason_fails_the_record(monkeypatch: Any) -> None:
     def dropping(text: str, **_kwargs: Any) -> list[dict[str, str]]:
         return [{"translation_text": re.sub(r"XENT(?:[0-9a-f]{16}X)?\d+X", "", text, count=1)}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: dropping)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: dropping)
     assert build_feed._translate_text_attempt(
         "Fahrtbehinderung. Voraussichtliche Dauer: 14:00 Uhr. Grund: Hitzeschäden "
         "im Haltestellenbereich Reumannplatz.",
@@ -188,7 +189,7 @@ def test_the_referral_loses_its_separable_aus() -> None:
 def test_a_stop_named_after_a_line(monkeypatch: Any) -> None:
     """Published 2026-10-03: "Buses stop at N71"."""
     seen: list[str] = []
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: _echo(seen))
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: _echo(seen))
     out = build_feed._translate_text_attempt("Busse halten bei Haltestelle N71.", source=_WL)
     assert out == "buses stop at the stop of line N71."
     assert seen == []
@@ -250,7 +251,7 @@ def cause_stub(monkeypatch: Any) -> list[str]:
                 return [{"translation_text": english + text[len(german):]}]
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: model)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: model)
     return seen
 
 
@@ -402,7 +403,7 @@ def test_a_failed_cause_fails_the_text(monkeypatch: Any) -> None:
     def broken(text: str, **_kwargs: Any) -> list[dict[str, str]]:
         raise RuntimeError("model down")
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: broken)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: broken)
     assert build_feed._translate_text_attempt(
         "Wegen einer Weichenstörung sind in St.Pölten Hbf derzeit keine Fahrten möglich.",
         source=_OEBB,

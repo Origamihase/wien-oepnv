@@ -14,6 +14,7 @@ import pytest
 
 from src import build_feed
 from src.build_feed import _cached_translation, _cached_translation_defect
+from tests._conftest.build_feed_bindings import setattr_all
 
 _SOURCE = (
     "Wegen Bauarbeiten können von 02.11.2026 bis 03.11.2026 zwischen Wien "
@@ -34,7 +35,7 @@ def echo_pipeline(monkeypatch: pytest.MonkeyPatch) -> list[str]:
         calls.append(text)
         return [{"translation_text": "EN " + text}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: _pipe)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: _pipe)
     return calls
 
 

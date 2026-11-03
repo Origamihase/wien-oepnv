@@ -27,6 +27,7 @@ import pytest
 from src import build_feed
 from src.build_feed import _separate_reason_word
 from src.feed_types import FeedItem
+from tests._conftest.build_feed_bindings import setattr_all
 
 # Rendered time lines name no year and no "Heute" relative to a fixed day.
 pytestmark = pytest.mark.usefixtures("time_line_today")
@@ -165,7 +166,7 @@ def test_the_english_title_reads_as_reason_and_consequence(
 ) -> None:
     """``Demonstration service from …`` was the C.5 complaint; with the dash
     the English reads ``Demonstration – service from …``."""
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: _fake_translation)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: _fake_translation)
     item = cast(
         FeedItem,
         {

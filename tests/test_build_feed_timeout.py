@@ -1,6 +1,7 @@
 from typing import Any
 from unittest.mock import MagicMock, patch
 import src.build_feed as bf
+from tests._conftest.build_feed_bindings import patch_all
 
 def test_collect_items_timeout_zero() -> None:
     mock_feed_config = MagicMock()
@@ -16,7 +17,7 @@ def test_collect_items_timeout_zero() -> None:
     # cache loader runs without a timeout. The test passed in the full suite
     # only while a re-imported ``src.build_feed`` kept the reset fixture from
     # reaching this module (test-suite audit 2026-10-04).
-    with patch.object(bf, "feed_config", mock_feed_config), \
+    with patch_all(bf, "feed_config", mock_feed_config), \
          patch.object(bf, "_PROVIDERS_INITIALIZED", True), \
          patch.object(bf, "PROVIDERS", [("DUMMY_ENABLE", mock_fetch)]), \
          patch.object(bf, "DEFAULT_PROVIDERS", ("DUMMY_ENABLE",)), \

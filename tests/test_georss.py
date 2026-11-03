@@ -16,6 +16,7 @@ import pytest
 from src import build_feed as bf
 from src.feed_types import FeedItem
 from src.utils import stations
+from tests._conftest.build_feed_bindings import setattr_all
 
 GEORSS = "{http://www.georss.org/georss}"
 _NOW = datetime(2026, 10, 16, 18, 0, tzinfo=UTC)
@@ -156,7 +157,7 @@ def test_items_without_a_certain_place_carry_no_georss() -> None:
 
 def test_en_feed_carries_the_same_geometry(monkeypatch: pytest.MonkeyPatch) -> None:
     item = _oebb("Wien Hauptbahnhof ↔ Felixdorf")
-    monkeypatch.setattr(bf, "_get_translation_pipeline", lambda: None)
+    setattr_all(monkeypatch, bf, "_get_translation_pipeline", lambda: None)
     xml = bf._make_rss([item], _NOW, {}, lang="en")
     assert "<georss:line>48.185201 16.376296 47.886955 16.247838</georss:line>" in xml
 

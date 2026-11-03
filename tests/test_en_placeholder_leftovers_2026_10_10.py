@@ -36,6 +36,7 @@ from typing import Any
 import pytest
 
 import src.build_feed as build_feed
+from tests._conftest.build_feed_bindings import setattr_all
 
 # Glossary placeholders only: the case no other check sees.
 SUMMARY = "Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz."
@@ -83,7 +84,7 @@ def _install(monkeypatch: pytest.MonkeyPatch, model: Callable[[str], str]) -> li
         calls.append(text)
         return [{"translation_text": model(text)}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: _pipe)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: _pipe)
     return calls
 
 
