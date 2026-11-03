@@ -15,7 +15,7 @@ from typing import Any
 
 import pytest
 
-from src.utils import stations
+from src.utils import stations, stations_data
 from src.utils.stations import StationInfo
 
 
@@ -24,7 +24,7 @@ def _lookup_with(
 ) -> dict[str, StationInfo]:
     temp_file = tmp_path / "stations.json"
     temp_file.write_text(json.dumps(data), encoding="utf-8")
-    monkeypatch.setattr(stations, "_STATIONS_PATH", temp_file)
+    monkeypatch.setattr(stations_data, "_STATIONS_PATH", temp_file)
     stations._station_entries.cache_clear()
     stations._station_lookup.cache_clear()
     try:

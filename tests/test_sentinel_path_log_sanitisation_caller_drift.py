@@ -141,16 +141,16 @@ def test_station_entries_size_cap_log_strips_path_primitives(
     bare ``%s`` format spec; post-fix the SHA-256 fingerprint replaces
     the path string at the boundary.
     """
-    from src.utils import stations
+    from src.utils import stations, stations_data
 
     poisoned_dir = tmp_path / f"dir{primitive}"
     poisoned_dir.mkdir()
     poisoned = poisoned_dir / "stations.json"
     poisoned.write_bytes(b"x" * 4096)
 
-    monkeypatch.setattr(stations, "_STATIONS_PATH", poisoned, raising=False)
+    monkeypatch.setattr(stations_data, "_STATIONS_PATH", poisoned, raising=False)
     monkeypatch.setattr(
-        stations, "MAX_STATIONS_FILE_BYTES", 1024, raising=False
+        stations_data, "MAX_STATIONS_FILE_BYTES", 1024, raising=False
     )
     stations._station_entries.cache_clear()
 
@@ -175,14 +175,14 @@ def test_station_entries_size_cap_log_carries_fingerprint(
 ) -> None:
     """Operator-correlation invariant: the size-cap WARNING carries the
     truncated SHA-256 of the path bytes."""
-    from src.utils import stations
+    from src.utils import stations, stations_data
 
     benign = tmp_path / "stations.json"
     benign.write_bytes(b"x" * 4096)
 
-    monkeypatch.setattr(stations, "_STATIONS_PATH", benign, raising=False)
+    monkeypatch.setattr(stations_data, "_STATIONS_PATH", benign, raising=False)
     monkeypatch.setattr(
-        stations, "MAX_STATIONS_FILE_BYTES", 1024, raising=False
+        stations_data, "MAX_STATIONS_FILE_BYTES", 1024, raising=False
     )
     stations._station_entries.cache_clear()
 
