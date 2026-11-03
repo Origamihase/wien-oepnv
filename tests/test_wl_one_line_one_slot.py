@@ -43,6 +43,7 @@ import src.build_feed as bf
 from src.feed.merge import deduplicate_fuzzy
 from src.feed_types import FeedItem
 import pytest
+from tests._conftest.build_feed_bindings import part
 
 # Rendered time lines name no year and no "Heute" relative to a fixed day.
 pytestmark = pytest.mark.usefixtures("time_line_today")
@@ -170,9 +171,9 @@ def test_the_feed_shows_both_causes(monkeypatch: pytest.MonkeyPatch) -> None:
     # moment the feed is built here. Unpinned, the expected "[Heute]" only
     # held on 2026-10-02 and the test failed on main from 2026-10-03 on.
     monkeypatch.setattr(
-        bf,
+        part(bf, "item_format"),
         "format_local_times",
-        partial(bf.format_local_times, now=datetime.fromisoformat("2026-10-01T10:01:00+02:00")),
+        partial(part(bf, "time_line").format_local_times, now=datetime.fromisoformat("2026-10-01T10:01:00+02:00")),
     )
     xml = bf._make_rss(_built([SALVATORIANERPLATZ, RESCUE_66A]), _at("2026-10-01T10:01:00+02:00"), {}, lang="de")
     assert xml.count("<item>") == 1

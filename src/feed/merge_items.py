@@ -95,7 +95,7 @@ def _merge_validity(target: dict[str, Any], source: dict[str, Any]) -> None:
     other one's: a WL notice ending 02.10. absorbed the disruption of the
     same works ending 07.11. and took it out of the feed on 02.10.
     An open end of either keeps the merged item open, as in
-    ``build_feed._span_group``. Values that are not ``datetime`` are left
+    ``feed_build.wl_ticker_text._span_group``. Values that are not ``datetime`` are left
     alone; a naive/aware mix cannot be ordered and keeps the survivor's.
     """
     starts = [s for s in (target.get("starts_at"), source.get("starts_at")) if isinstance(s, datetime)]

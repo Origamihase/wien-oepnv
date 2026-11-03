@@ -245,3 +245,16 @@ hat danach 4.104 Zeilen. `_dedupe_items` steht in `.c901-baseline.txt` jetzt
 unter `src/feed_build/filters.py`, mit unverändertem Wert 18.
 Replay wie in Schritt 1 und 2: 980 Stände einzeln und 400 nacheinander,
 deutscher und englischer Feed und Zustand in jedem Stand gleich.
+
+Schritt 4 verschiebt WL-Ticker, ÖBB-Leitsatz, Übersetzungs-Cache und
+Textformat in acht Module: `wl_tickers` (Ticker lesen und gruppieren),
+`wl_ticker_text` (Text eines zusammengeführten Eintrags), `wl_joins`
+(Einstieg `_merge_wl_ticker_clusters`), `wl_notices` (Baustellen-Zwillinge,
+Bauarbeiten-Ticker, Hinweise hinter Störungen), `oebb_lead` (ÖBB-Strecken und
+Leitsatz), `translation_epoch` (Epoche, Verbatim- und Digest-Marken),
+`translation_cache` (Cache-Prüfung, `_apply_lang_overlay`) und `item_format`
+(`_format_item_content` mit Helfern), je 303 bis 523 Zeilen;
+`src/build_feed.py` hat danach 1.142 Zeilen. Tests ersetzen
+`format_local_times` in `item_format`, dem einzigen Leser.
+Replay wie in den Schritten davor: 980 Stände einzeln und 400 nacheinander,
+deutscher und englischer Feed und Zustand in jedem Stand gleich.
