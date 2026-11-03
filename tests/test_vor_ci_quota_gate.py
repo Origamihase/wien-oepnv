@@ -64,19 +64,63 @@ def _strip_comments(text: str) -> str:
     )
 
 
+#: The one allowed form of the shared lane: ``external-api-fetch`` on
+#: ``main`` only, a per-ref group everywhere else.
+_MAIN_LANE = "group: ${{ github.ref == 'refs/heads/main' && 'external-api-fetch' || format('"
+
+
 @pytest.mark.parametrize("workflow", _vor_workflows(), ids=lambda p: p.name)
 def test_vor_workflow_uses_the_shared_concurrency_group(workflow: Path) -> None:
-    """Every quota-bound workflow queues in ``external-api-fetch``.
+    """Every quota-bound workflow queues in ``external-api-fetch`` on ``main``.
 
     Without a shared group two VAO-spending workflows run in parallel and the
     daily budget is decided by a race. ``test-vor-api.yml`` was the one
     exception before this fix.
     """
     text = workflow.read_text(encoding="utf-8")
-    assert "group: external-api-fetch" in text, (
+    assert _MAIN_LANE in text, (
         f"{workflow.name} spends VAO budget but is not in the "
-        "external-api-fetch concurrency group"
+        "external-api-fetch concurrency group on main"
     )
+
+
+def test_external_api_fetch_lane_is_main_only() -> None:
+    """No run outside ``main`` may queue in ``external-api-fetch``.
+
+    GitHub keeps one pending run per concurrency group; a new pending run
+    cancels it. On 03.11.2026 a branch push of ``test-vor-api.yml`` (run 1057)
+    queued in this group and cancelled the pending ``main`` rebuild Build feed
+    10480 after the merge of #2146. Every workflow in the lane therefore
+    scopes it to ``main`` and gives other refs a group of their own.
+    """
+    users = [
+        path
+        for path in sorted(WORKFLOW_DIR.glob("*.yml"))
+        if "external-api-fetch" in _strip_comments(path.read_text(encoding="utf-8"))
+    ]
+    assert {p.name for p in users} >= {
+        "build-feed.yml",
+        "manual-full-refresh.yml",
+        "test-vor-api.yml",
+        "update-cycle.yml",
+    }
+    for path in users:
+        groups = [
+            line.strip()
+            for line in _strip_comments(path.read_text(encoding="utf-8")).splitlines()
+            if line.strip().startswith("group:")
+        ]
+        assert groups, f"{path.name} names external-api-fetch outside a group"
+        for group in groups:
+            if "external-api-fetch" not in group:
+                continue
+            assert group.startswith(_MAIN_LANE), (
+                f"{path.name}: external-api-fetch must be limited to main, got {group!r}"
+            )
+            own = group[len(_MAIN_LANE):]
+            assert "external-api-fetch" not in own, (
+                f"{path.name}: other refs need a group of their own, got {group!r}"
+            )
 
 
 @pytest.mark.parametrize("workflow", _vor_workflows(), ids=lambda p: p.name)

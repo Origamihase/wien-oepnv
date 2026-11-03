@@ -30,12 +30,19 @@ on:
 permissions:
   contents: read
 
-# Audit A.1: the smoke test below spends real VAO budget, so it must queue
-# behind every other quota-bound job instead of racing them. ``update-cycle``,
-# ``build-feed`` and ``manual-full-refresh`` already share this group; this
-# workflow sat outside it and could run concurrently with a Stammstrecke tick.
+# Audit A.1: the smoke test below spends real VAO budget, so on ``main`` it
+# queues behind every other quota-bound job instead of racing them
+# (``update-cycle``, ``build-feed`` and ``manual-full-refresh`` share
+# ``external-api-fetch`` there). Branch pushes keep their own per-ref lane,
+# like build-feed.yml: GitHub keeps one pending run per group, and a new
+# pending run cancels the older one. On 03.11.2026 the merge of #2146
+# (18:48:17 UTC) queued Build feed 10480 behind Test VOR API 1056 on
+# ``main``; the branch push at 18:49:10 queued Test VOR API 1057 in the same
+# group and cancelled the pending rebuild at 18:49:12, before it started. The
+# shared lane gave a branch run no budget protection either: this workflow
+# has ``contents: read`` and never commits ``data/vor_request_count.json``.
 concurrency:
-  group: external-api-fetch
+  group: ${{ github.ref == 'refs/heads/main' && 'external-api-fetch' || format('test-vor-api-{0}', github.ref) }}
   cancel-in-progress: false
 
 jobs:

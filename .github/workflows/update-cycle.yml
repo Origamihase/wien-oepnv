@@ -90,8 +90,15 @@ on:
 permissions:
   contents: read
 
+# ``external-api-fetch`` on ``main`` serialises the workflows that write the
+# feed and state files there (build-feed.yml, manual-full-refresh.yml) and
+# test-vor-api.yml. A manual start on another branch publishes only to that
+# branch and gets its own per-ref lane: GitHub keeps one pending run per
+# group and a new pending run cancels it, so a branch run must never sit in
+# the lane of a pending ``main`` tick (03.11.2026: a branch push of Test VOR
+# API cancelled the pending rebuild after #2146).
 concurrency:
-  group: external-api-fetch
+  group: ${{ github.ref == 'refs/heads/main' && 'external-api-fetch' || format('update-cycle-{0}', github.ref) }}
   cancel-in-progress: false
 
 jobs:
