@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261103-0038-F01, I20260925-0011, I20260909-0007, I20260922-0032, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20260922-0032, I20261020-0029, I20261103-0039-F01"
    },
    {
     "id": 3,
@@ -217,52 +217,50 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
+    "alertCause": "track circuit problem",
+    "alertCauseId": 48,
     "attributes": {
      "relatedLineTypes": {
-      "U1": "ptMetro"
+      "18": "ptTram"
      }
     },
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 18: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U1: Polizeieinsatz"
+       "descriptionHtml": "<p>Linie 18: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "18: Stromstörung"
       }
      }
     ],
-    "name": "I20261103-0038-F01",
+    "location": "Schlachthausgasse / Baumgasse",
+    "name": "I20261103-0039-F01",
     "owner": "WL",
-    "parentName": "I20261103-0038",
+    "parentName": "I20261103-0039",
     "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
+    "reasonId": 33,
+    "reasonName": "Stromstörung",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "U1"
+     "18"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 301,
-      "lineName": "U1",
-      "vehicleType": "ptMetro"
+      "lineId": 118,
+      "lineName": "18",
+      "vehicleType": "ptTram"
      }
-    ],
-    "relatedStops": [
-     4101
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-03T20:53:00.000+0100",
-     "lastUpdate": "2026-11-03T20:53:00.000+0100",
-     "resume": "2026-11-03T20:53:00.000+0100",
-     "start": "2026-11-03T20:46:00.000+0100"
+     "created": "2026-11-03T22:24:00.000+0100",
+     "lastUpdate": "2026-11-03T22:24:00.000+0100",
+     "resume": "2026-11-03T22:24:00.000+0100",
+     "start": "2026-11-03T22:22:00.000+0100"
     },
-    "title": "U1: Polizeieinsatz"
+    "title": "18: Stromstörung"
    },
    {
     "alertCause": "undefined alert cause",
