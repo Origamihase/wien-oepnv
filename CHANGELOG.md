@@ -17,6 +17,7 @@ Einträge (`tests/test_changelog_parts.py`).
 
 ### November 2026
 
+- [Dienstag, 3. November 2026](changelog/2026-11-03.md)
 - [Montag, 2. November 2026](changelog/2026-11-02.md)
 - [Sonntag, 1. November 2026](changelog/2026-11-01.md)
 
