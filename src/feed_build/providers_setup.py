@@ -31,10 +31,11 @@ from .base import log
 from .cache_filters import _post_filter_baustellen, _post_filter_oebb, _post_filter_wl
 
 __all__ = [
-    "DEFAULT_PROVIDERS", "PROVIDERS", "reset_module_state", "init_providers", "_provider_display_name",
-    "_detect_stale_caches", "_provider_statuses", "_log_startup_summary", "_validate_configuration",
-    "_read_optional_non_negative_int", "_provider_timeout_override", "_provider_concurrency_key",
-    "_provider_worker_limit", "_fetch_supports_timeout", "_call_fetch_with_timeout", "_categorize_providers",
+    "DEFAULT_PROVIDERS", "PROVIDERS", "_PROVIDERS_INITIALIZED", "reset_module_state", "init_providers",
+    "_provider_display_name", "_detect_stale_caches", "_provider_statuses", "_log_startup_summary",
+    "_validate_configuration", "_read_optional_non_negative_int", "_provider_timeout_override",
+    "_provider_concurrency_key", "_provider_worker_limit", "_fetch_supports_timeout", "_call_fetch_with_timeout",
+    "_categorize_providers",
 ]
 
 
