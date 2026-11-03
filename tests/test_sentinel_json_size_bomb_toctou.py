@@ -345,6 +345,8 @@ def test_no_function_uses_unsafe_stat_then_open_pattern() -> None:
         _BASE_DIR / "src" / "utils" / "stations_validation.py",
         _BASE_DIR / "src" / "places" / "merge.py",
         _BASE_DIR / "src" / "build_feed.py",
+        # Its parts (Etappe 8, 700-line rule).
+        *sorted((_BASE_DIR / "src" / "feed_build").glob("*.py")),
     ]
 
     findings: dict[Path, list[tuple[int, str]]] = {}

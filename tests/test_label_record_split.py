@@ -49,6 +49,7 @@ from src.build_feed import (
     _render_label_record,
     _split_label_record,
 )
+from tests._conftest.build_feed_bindings import setattr_all
 
 # The three live descriptions carrying a record, verbatim.
 DE_72A = (
@@ -166,7 +167,7 @@ def test_the_model_never_sees_the_record(monkeypatch: Any) -> None:
         seen.append(text)
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: echo)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: echo)
     build_feed._translate_text_attempt(DE_72A)
 
     assert seen, "the prose should still have reached the model"
@@ -184,7 +185,7 @@ def test_the_prose_still_reaches_the_model(monkeypatch: Any) -> None:
         seen.append(text)
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: echo)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: echo)
     build_feed._translate_text_attempt(DE_72A)
 
     assert len(seen) == 1
@@ -195,7 +196,7 @@ def test_prose_and_record_are_rejoined(monkeypatch: Any) -> None:
     def echo(text: str, **kwargs: Any) -> list[dict[str, str]]:
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: echo)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: echo)
     out = build_feed._translate_text_attempt(DE_72A)
 
     assert out is not None
@@ -212,7 +213,7 @@ def test_a_record_only_text_needs_no_model(monkeypatch: Any) -> None:
         seen.append(text)
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: echo)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: echo)
     out = build_feed._translate_text_attempt(
         "Von: Anzengruberstraße 77a Nach: Hüttergasse 6A-6B"
     )
@@ -234,7 +235,7 @@ def test_a_failing_prose_translation_still_rejects_everything(
     def dropping(text: str, **kwargs: Any) -> list[dict[str, str]]:
         return [{"translation_text": re.sub(r"XENT(?:[0-9a-f]{16}X)?\d+X", "", text, count=1)}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: dropping)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: dropping)
     assert build_feed._translate_text_attempt(DE_72A) is None
 
 

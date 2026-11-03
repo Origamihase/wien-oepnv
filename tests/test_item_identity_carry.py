@@ -44,6 +44,7 @@ import src.build_feed as bf
 from src.feed.merge import member_guids
 from src.feed_types import FeedItem
 from src.providers import wl_fetch
+from tests._conftest.build_feed_bindings import setattr_all
 
 G_TICKER = "cc281c6508ba062820ee6ec97a11514a795c1ba829397c43d3f8f6719026c771"
 G_LONG = "de57d7fc844121db03d0e532febfd7d62faf7f8cc5ced1951f3e1470fcd4d6c8"
@@ -114,7 +115,7 @@ def _build(
 
     out_file = tmp_path / "feed.xml"
     monkeypatch.setattr(bf, "read_cache", lambda provider: cache if provider == "wl" else [])
-    monkeypatch.setattr(bf, "validate_path", lambda path, name: path)
+    setattr_all(monkeypatch, bf, "validate_path", lambda path, name: path)
     monkeypatch.setattr(bf.feed_config, "OUT_PATH", out_file)
     monkeypatch.setattr(bf.feed_config, "STATE_FILE", tmp_path / "state.json")
     monkeypatch.setattr(bf.feed_config, "FEED_HEALTH_PATH", tmp_path / "feed-health.md")

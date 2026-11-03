@@ -37,6 +37,7 @@ from typing import Any
 import pytest
 
 import src.build_feed as build_feed
+from tests._conftest.build_feed_bindings import setattr_all
 
 _PLACEHOLDER_NONCE = build_feed._PLACEHOLDER_NONCE
 
@@ -62,7 +63,7 @@ def _install(monkeypatch: pytest.MonkeyPatch, model: Model) -> list[str]:
         calls.append(text)
         return [{"translation_text": model(text)}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: _pipe)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: _pipe)
     return calls
 
 
@@ -119,7 +120,7 @@ def test_a_pipeline_error_is_not_retried(monkeypatch: pytest.MonkeyPatch) -> Non
         calls.append(text)
         raise RuntimeError("model crashed")
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: _pipe)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: _pipe)
     assert build_feed._translate_text_attempt(SUMMARY, ident="60A") is None
     assert len(calls) == 1
 

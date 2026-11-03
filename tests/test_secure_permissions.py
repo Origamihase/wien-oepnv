@@ -5,6 +5,7 @@ from unittest.mock import patch
 from collections.abc import Iterator
 import pytest
 import src.build_feed
+from tests._conftest.build_feed_bindings import patch_all
 
 @pytest.fixture
 def mock_feed_config(monkeypatch: pytest.MonkeyPatch) -> Iterator[None]:
@@ -19,7 +20,7 @@ def test_save_state_secure_permissions(tmp_path: Path, mock_feed_config: None) -
 
     # Patch src.build_feed.feed_config.STATE_FILE.
     with patch.object(src.build_feed.feed_config, "STATE_FILE", state_file), \
-         patch("src.build_feed.validate_path", side_effect=lambda p, n: Path(p).resolve()):
+         patch_all(None, "validate_path", side_effect=lambda p, n: Path(p).resolve()):
 
         test_state = {"test_item": {"first_seen": "2023-01-01T00:00:00+00:00"}}
 

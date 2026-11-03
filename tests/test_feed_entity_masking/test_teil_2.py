@@ -9,6 +9,7 @@ from typing import Any
 
 
 from src import build_feed
+from tests._conftest.build_feed_bindings import setattr_all
 
 
 def test_translate_text_handles_dropped_placeholder_gracefully(
@@ -21,7 +22,7 @@ def test_translate_text_handles_dropped_placeholder_gracefully(
         # model that aggressively rewrites unfamiliar tokens.
         return [{"translation_text": build_feed._ENTITY_PLACEHOLDER_RE.sub("", text)}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: fake_pipeline)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: fake_pipeline)
     text = "Wiener Linien informieren über U6."
     out = build_feed._translate_text(text)
     # No stray placeholders survive into the published feed.

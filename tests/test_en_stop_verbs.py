@@ -21,6 +21,7 @@ from src.build_feed import (
     _normalise_for_translation,
     _unmask_entities,
 )
+from tests._conftest.build_feed_bindings import setattr_all
 
 _WL = "Wiener Linien"
 
@@ -99,7 +100,7 @@ def test_the_title_reads_as_published(monkeypatch: Any) -> None:
         seen.append(text)
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: echo)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: echo)
     out = build_feed._translate_title_attempt("66A: Busse halten Salvatorianerplatz", source=_WL)
     assert out is not None
     assert build_feed._capitalise_title_body(out) == "66A: Buses stop at Salvatorianerplatz"

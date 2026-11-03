@@ -14,6 +14,7 @@ from typing import Any
 import pytest
 
 from src import build_feed
+from tests._conftest.build_feed_bindings import setattr_all
 
 _WL = "Wiener Linien"
 
@@ -35,7 +36,7 @@ def model(monkeypatch: Any) -> list[str]:
                 return [{"translation_text": english + text[len(german):]}]
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: pipe)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: pipe)
     return seen
 
 

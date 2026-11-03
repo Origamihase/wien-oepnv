@@ -37,6 +37,7 @@ from src.build_feed import (
     _render_label_record,
     _unmask_entities,
 )
+from tests._conftest.build_feed_bindings import setattr_all
 
 
 def _glossed(text: str, source: str) -> tuple[str, dict[str, str]]:
@@ -168,7 +169,7 @@ def test_a_cached_value_ships_with_the_capital(monkeypatch: pytest.MonkeyPatch) 
     def _never(text: str, **_kw: Any) -> str:
         raise AssertionError(f"the model must not run for a cache hit: {text!r}")
 
-    monkeypatch.setattr(build_feed, "_translate_text_attempt", _never)
+    setattr_all(monkeypatch, build_feed, "_translate_text_attempt", _never)
     ident = "wl|U1|x"
     state: dict[str, dict[str, Any]] = {
         ident: {

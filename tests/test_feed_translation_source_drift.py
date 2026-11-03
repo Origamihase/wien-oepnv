@@ -36,6 +36,7 @@ from typing import Any
 import pytest
 
 from src import build_feed
+from tests._conftest.build_feed_bindings import setattr_all
 
 
 def _fc(title: str) -> build_feed.FormattedContent:
@@ -67,7 +68,7 @@ def recording_pipeline(monkeypatch: pytest.MonkeyPatch) -> list[str]:
         calls.append(text)
         return f"EN<{text}>"
 
-    monkeypatch.setattr(build_feed, "_translate_text_attempt", _fake)
+    setattr_all(monkeypatch, build_feed, "_translate_text_attempt", _fake)
     return calls
 
 
@@ -156,8 +157,7 @@ def test_failed_translation_stamps_no_digest(
     so no digest may be cached either — otherwise the next build could pair a
     matching digest with a missing string.
     """
-    monkeypatch.setattr(
-        build_feed,
+    setattr_all(monkeypatch, build_feed,
         "_translate_text_attempt",
         lambda text, **_kw: None,
     )
@@ -288,8 +288,7 @@ def test_overlay_capitalises_the_shipped_title(
     Drives the real overlay with a pipeline that returns exactly what the NMT
     model produced live for ``44: Veranstaltung``.
     """
-    monkeypatch.setattr(
-        build_feed,
+    setattr_all(monkeypatch, build_feed,
         "_translate_text_attempt",
         lambda text, **_kw: "44: event trains stop Rosensteingasse",
     )
@@ -347,8 +346,7 @@ def test_balanced_text_is_untouched(text: str) -> None:
 
 def test_overlay_drops_the_unpaired_quote(monkeypatch: pytest.MonkeyPatch) -> None:
     """End-to-end: the stray quote never reaches the rendered title."""
-    monkeypatch.setattr(
-        build_feed,
+    setattr_all(monkeypatch, build_feed,
         "_translate_text_attempt",
         lambda text, **_kw: 'Kennedybrücke, on page "Otto Wagner Hofpavillon',
     )

@@ -24,6 +24,7 @@ import pytest
 
 import src.build_feed as bf
 from src.feed_types import FeedItem
+from tests._conftest.build_feed_bindings import setattr_all
 
 # Rendered time lines name no year and no "Heute" relative to a fixed day.
 pytestmark = pytest.mark.usefixtures("time_line_today")
@@ -329,7 +330,7 @@ def test_the_english_item_needs_no_model(monkeypatch: pytest.MonkeyPatch) -> Non
     def no_model(*_: object, **__: object) -> list[dict[str, str]]:
         raise AssertionError("the model must not run")
 
-    monkeypatch.setattr(bf, "_get_translation_pipeline", lambda: no_model)
+    setattr_all(monkeypatch, bf, "_get_translation_pipeline", lambda: no_model)
     formatted = bf._format_item_content(
         _item("11A: Fahrtbehinderung Verkehrsunfall", "Fahrtbehinderung\nVerkehrsunfall", guid="t-en"),
         ident="t-en",

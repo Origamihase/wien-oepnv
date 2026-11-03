@@ -33,6 +33,7 @@ import pytest
 
 from src import build_feed as bf
 from src.feed_types import FeedItem
+from tests._conftest.build_feed_bindings import setattr_all
 
 _OEBB = "ÖBB"
 
@@ -86,7 +87,7 @@ def model(monkeypatch: Any) -> list[str]:
             text = "Due to " + text[len("Wegen "):]
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(bf, "_get_translation_pipeline", lambda: pipe)
+    setattr_all(monkeypatch, bf, "_get_translation_pipeline", lambda: pipe)
     return seen
 
 

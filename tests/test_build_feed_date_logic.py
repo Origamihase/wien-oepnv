@@ -31,13 +31,13 @@ def test_format_local_times_end_before_start_future(
 ) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
-    # Mock datetime.now inside build_feed to have a fixed "today"
+    # A fixed "today", passed to format_local_times as ``now``
     class MockDatetime(dt_module.datetime):
         @classmethod
         def now(cls, tz: Any = None) -> datetime:  # type: ignore[override]
             return cls(2023, 1, 1, 12, 0, tzinfo=tz)
 
-    monkeypatch.setattr(build_feed, "datetime", MockDatetime)
+    today = MockDatetime.now(build_feed._VIENNA_TZ)
 
     # Start date in the future
     start = MockDatetime(2023, 1, 5, 12, 0, tzinfo=dt_module.UTC)
@@ -45,7 +45,7 @@ def test_format_local_times_end_before_start_future(
     end = MockDatetime(2023, 1, 4, 12, 0, tzinfo=dt_module.UTC)
 
     with caplog.at_level(logging.WARNING):
-        result = build_feed.format_local_times(start, end)
+        result = build_feed.format_local_times(start, end, now=today)
 
     # Since start is in the future, it should use 'Ab ...' (in the coming
     # week with its weekday, inside the current year without it).
@@ -62,13 +62,13 @@ def test_format_local_times_end_before_start_past(
 ) -> None:
     build_feed = _import_build_feed(monkeypatch)
 
-    # Mock datetime.now inside build_feed to have a fixed "today"
+    # A fixed "today", passed to format_local_times as ``now``
     class MockDatetime(dt_module.datetime):
         @classmethod
         def now(cls, tz: Any = None) -> datetime:  # type: ignore[override]
             return cls(2023, 1, 10, 12, 0, tzinfo=tz)
 
-    monkeypatch.setattr(build_feed, "datetime", MockDatetime)
+    today = MockDatetime.now(build_feed._VIENNA_TZ)
 
     # Start date in the past
     start = MockDatetime(2023, 1, 5, 12, 0, tzinfo=dt_module.UTC)
@@ -76,7 +76,7 @@ def test_format_local_times_end_before_start_past(
     end = MockDatetime(2023, 1, 4, 12, 0, tzinfo=dt_module.UTC)
 
     with caplog.at_level(logging.WARNING):
-        result = build_feed.format_local_times(start, end)
+        result = build_feed.format_local_times(start, end, now=today)
 
     # Since start is in the past, it should use 'Seit ...'
     assert result == "Seit\u00a005.01."
@@ -97,7 +97,7 @@ def test_format_local_times_long_range_keeps_end(
         def now(cls, tz: Any = None) -> datetime:  # type: ignore[override]
             return cls(2026, 6, 1, 12, 0, tzinfo=tz)
 
-    monkeypatch.setattr(build_feed, "datetime", MockDatetime)
+    today = MockDatetime.now(build_feed._VIENNA_TZ)
 
     # ~274-day span: longer than the old hard-coded 180-day cap but well
     # within ABSOLUTE_MAX_AGE_DAYS (540), so the explicit end date must
@@ -106,7 +106,7 @@ def test_format_local_times_long_range_keeps_end(
     end = MockDatetime(2026, 10, 2, 12, 0, tzinfo=dt_module.UTC)
 
     with caplog.at_level(logging.WARNING):
-        result = build_feed.format_local_times(start, end)
+        result = build_feed.format_local_times(start, end, now=today)
 
     # The item already runs, so the line names its end ("Bis …"), not the
     # single-date "Seit …" form: the explicit end date is preserved. (Words

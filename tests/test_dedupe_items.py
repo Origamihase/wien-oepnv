@@ -58,7 +58,6 @@ def test_main_dedupes_items(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> 
     monkeypatch.setattr(build_feed, "_collect_items", fake_collect)
     monkeypatch.setattr(build_feed, "_make_rss", fake_make_rss)
     monkeypatch.chdir(tmp_path)
-    setattr(build_feed, "OUT_PATH", "docs/feed.xml")
 
     build_feed.main()
 

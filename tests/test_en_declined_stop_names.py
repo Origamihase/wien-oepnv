@@ -17,6 +17,7 @@ import pytest
 
 from src import build_feed
 from src.build_feed import _mask_entities, _normalise_for_translation, _station_base_forms
+from tests._conftest.build_feed_bindings import setattr_all
 
 
 def _echo(seen: list[str]) -> Any:
@@ -60,7 +61,7 @@ def test_the_declined_name_is_shielded_like_the_name() -> None:
 
 def test_the_model_never_sees_the_declined_name(monkeypatch: Any) -> None:
     seen: list[str] = []
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: _echo(seen))
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: _echo(seen))
     english = build_feed._translate_text_attempt(
         "Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Weiterfahrt über die Linie 37 bis Hohen Warte.",
         source="Wiener Linien",

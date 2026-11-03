@@ -42,6 +42,7 @@ import pytest
 
 from src import build_feed
 from src.build_feed import _agreeing_article, _fix_glossary_articles
+from tests._conftest.build_feed_bindings import setattr_all
 
 # A mapping shaped like a real one: glossary placeholders carry English,
 # entity placeholders carry the German surface verbatim.
@@ -221,7 +222,7 @@ def test_the_repair_is_wired_into_the_translation_path(monkeypatch: Any) -> None
         # Marian's own behaviour: "an" is correct for the placeholder token.
         return [{"translation_text": "Due to an " + text.split()[-1]}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: model)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: model)
     out = build_feed._translate_text_attempt("Wegen einer Weichenstörung")
 
     assert out is not None

@@ -68,7 +68,6 @@ def test_main_filters_items_older_than_max(
     monkeypatch.setattr(build_feed, "_load_state", lambda: dict(fake_state))
     monkeypatch.setattr(build_feed, "_save_state", lambda *a, **k: None)
     monkeypatch.chdir(tmp_path)
-    setattr(build_feed, "OUT_PATH", "docs/feed.xml")
 
     build_feed.main()
 
@@ -116,7 +115,6 @@ def test_main_filters_items_older_than_absolute(
     monkeypatch.setattr(build_feed, "_load_state", lambda: dict(fake_state))
     monkeypatch.setattr(build_feed, "_save_state", lambda *a, **k: None)
     monkeypatch.chdir(tmp_path)
-    setattr(build_feed, "OUT_PATH", "docs/feed.xml")
 
     build_feed.main()
 

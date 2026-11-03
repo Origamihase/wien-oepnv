@@ -13,6 +13,7 @@ import ast
 import inspect
 import textwrap
 from datetime import UTC, datetime, timedelta
+from pathlib import Path
 from typing import Any
 from unittest.mock import MagicMock, patch
 
@@ -20,6 +21,7 @@ import pytest
 
 import src.build_feed as bf
 from src.feed_types import FeedItem
+from tests._conftest.build_feed_bindings import patch_all
 
 # Every step of the chain. ``main`` must reach them only through
 # ``_assemble_feed_items``, so the chain exists exactly once.
@@ -81,10 +83,13 @@ def test_no_other_function_copies_the_chain() -> None:
     # restarts and announced starts), so its counts could differ from the
     # health report of a build. One chain step in a helper is fine; two or
     # more mean a second chain.
-    tree = ast.parse(inspect.getsource(bf))
+    # The facade and its parts in src/feed_build/ (Etappe 8, 700-line rule).
+    parts = sorted((Path(inspect.getfile(bf)).parent / "feed_build").glob("*.py"))
+    sources = [inspect.getsource(bf), *(path.read_text(encoding="utf-8") for path in parts)]
     copies = {
         node.name
-        for node in tree.body
+        for source in sources
+        for node in ast.parse(source).body
         if isinstance(node, ast.FunctionDef)
         and node.name != "_assemble_feed_items"
         and len(_called_names(node) & _CHAIN_STEPS) > 1
@@ -118,8 +123,8 @@ def test_main_renders_what_assemble_returns() -> None:
          patch.object(bf, "_load_state", return_value={}), \
          patch.object(bf, "_make_rss", side_effect=fake_make_rss), \
          patch.object(bf, "_save_state", MagicMock()), \
-         patch.object(bf, "atomic_write", MagicMock()), \
-         patch.object(bf, "validate_path", MagicMock()), \
+         patch_all(bf, "atomic_write", MagicMock()), \
+         patch_all(bf, "validate_path", MagicMock()), \
          patch.object(bf, "write_feed_health_report", MagicMock()), \
          patch.object(bf, "write_feed_health_json", MagicMock()):
         assert bf.main() == 0

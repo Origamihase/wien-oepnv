@@ -181,3 +181,40 @@ Abruf von WL und ÖBB (`fetch_events` mit den Rohantworten aus `data/raw/`)
 über 395 Stände vom 04.10. bis 03.11. dieselben Meldungen und
 Verwerfungsgründe. Damit steht nur noch `src/build_feed.py` auf der
 Altfall-Liste.
+
+Etappe 8 (ab 2026-11-03) teilt `src/build_feed.py` (13.725 Zeilen) in fünf
+Schritten auf das Paket `src/feed_build/` auf (Plan mit Modulliste und
+Reihenfolge: Übersetzung, Zustand und Abruf, Filter und Verlauf, Texte und
+WL-Meldungen, RSS). `src/build_feed.py` bleibt Einstieg und Fassade: Es
+behält die Kette (`lint`, `main`, `_assemble_feed_items`) und reicht jeden
+Namen weiter, den `src/`, `scripts/` oder die Tests lesen, in genau einer
+Liste `__all__`. Veränderliche Objekte haben genau einen Besitzer und werden
+als dasselbe Objekt weitergereicht (`_TRANSLATION_STATE` in `translator`, die
+Platzhalter-Nonce in `placeholders`, der Logger `build_feed` in `base`).
+
+Für Tests gilt seit Etappe 8 eine feste Regel: Ein Name wird in dem Modul
+ersetzt, dessen Code ihn als globalen Namen liest. Lesen ihn mehrere Module
+(etwa `_get_translation_pipeline`, `validate_path`, `atomic_write`,
+`feed_config`), ersetzt `setattr_all` oder `patch_all` aus
+`tests/_conftest/build_feed_bindings.py` ihn in jedem davon, so wie früher
+der eine Patch auf `src.build_feed`. `part(bf, "translate_run")` liefert einen
+Teil, `fresh_build_feed()` importiert Fassade und Teile neu.
+`tests/test_build_feed_patch_targets.py` liest jeden Ersatz der Tests
+(`monkeypatch.setattr` auch in der Punkt-Form, `patch`, `patch.object`,
+`patch.multiple`, direkte Zuweisung) und schlägt fehl, wenn er nicht genau
+die Module trifft, die den Namen lesen; die Meldung nennt das richtige
+Modul. Damit fällt der Grund weg, aus dem die Aufteilung am 2026-10-15
+unterblieb.
+
+Schritt 1 verschiebt die Übersetzung in 14 Module (`base`, `entities`,
+`placeholders`, `relocation`, `display_titles`, `oebb_summary`, `translator`,
+`masking`, `pretranslate`, `en_repairs`, `model_pass`, `en_templates`,
+`translate_run`, `translate_titles`, je 85 bis 581 Zeilen);
+`src/build_feed.py` hat danach 8.528 Zeilen und bleibt bis zum letzten
+Schritt auf der Altfall-Liste. Die Teile entstehen mit einem Generator, der
+jede Anweisung wörtlich in ihr Modul schreibt und bei einem unbekannten Namen
+abbricht, sodass er vor dem Merge auf dem neuesten `main` neu laufen kann.
+Replay mit echtem `main()`: 980 Feed-Stände vom 15.10. bis 03.11. einzeln
+neu gebaut und 400 Stände vom 26.10. bis 03.11. nacheinander, jeder mit dem
+Zustand seines Vorgängers samt Übersetzungen; deutscher und englischer Feed
+und Zustand sind in jedem Stand gleich.

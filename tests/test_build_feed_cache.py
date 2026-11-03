@@ -1,12 +1,12 @@
 import builtins
 import importlib
 import logging
-import sys
 import types
 import pytest
 from pathlib import Path
 from datetime import datetime, UTC
 from typing import Any, cast
+from tests._conftest.build_feed_bindings import fresh_build_feed, part, setattr_all
 
 
 def _import_build_feed_without_providers(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
@@ -15,12 +15,11 @@ def _import_build_feed_without_providers(monkeypatch: pytest.MonkeyPatch) -> typ
     The guard ensures build_feed.py does not pull in network providers as a
     regression test. It does NOT remove the providers from sys.modules — that
     would pollute other tests which import src.providers.* at module level.
+    The parts in src/feed_build/ are imported afresh too, so the guard sees
+    their imports (Etappe 8).
     """
-    module_name = "src.build_feed"
     root = Path(__file__).resolve().parents[1]
     monkeypatch.syspath_prepend(str(root))
-
-    sys.modules.pop(module_name, None)
 
     real_import = builtins.__import__
 
@@ -36,7 +35,7 @@ def _import_build_feed_without_providers(monkeypatch: pytest.MonkeyPatch) -> typ
         return real_import(name, globals, locals, fromlist, level)
 
     monkeypatch.setattr(builtins, "__import__", guard)
-    return importlib.import_module(module_name)
+    return fresh_build_feed()
 
 
 def _patch_empty_cache(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
@@ -95,7 +94,7 @@ def test_main_runs_without_network(
     out_file = tmp_path / "feed.xml"
     state_file = tmp_path / "state.json"
 
-    monkeypatch.setattr(build_feed, "validate_path", lambda path, name: path)
+    setattr_all(monkeypatch, build_feed, "validate_path", lambda path, name: path)
     monkeypatch.setattr(build_feed.feed_config, "OUT_PATH", out_file)
     monkeypatch.setattr(build_feed.feed_config, "STATE_FILE", state_file)
     monkeypatch.setattr(build_feed.feed_config, "FEED_HEALTH_PATH", tmp_path / "feed-health.md")
@@ -168,7 +167,7 @@ def test_fmt_rfc2822_logs_and_uses_fallback(
     def broken_formatter(_: Any) -> None:
         raise RuntimeError("kaputtes Datum")
 
-    monkeypatch.setattr(build_feed, "format_datetime", broken_formatter)
+    monkeypatch.setattr(part(build_feed, "base"), "format_datetime", broken_formatter)
 
     caplog.set_level(logging.WARNING, logger="build_feed")
 

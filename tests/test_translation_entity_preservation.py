@@ -54,6 +54,7 @@ from src.build_feed import (
     _normalise_placeholder_debris,
     _unmask_entities,
 )
+from tests._conftest.build_feed_bindings import setattr_all
 
 # The two live sources, verbatim.
 DE_LINES = "Haltestellenverlegung der Linien 12A und 14A in Richtung Schmelz"
@@ -283,8 +284,7 @@ def test_a_dropping_translation_falls_back_to_german(monkeypatch: Any) -> None:
 
         return [{"translation_text": re.sub(r"XENT(?:[0-9a-f]{16}X)?\d+X", "", text, count=1)}]
 
-    monkeypatch.setattr(
-        build_feed, "_get_translation_pipeline", lambda: dropping_pipeline
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: dropping_pipeline
     )
 
     assert build_feed._translate_text_attempt(DE_LINES) is None
@@ -301,8 +301,7 @@ def test_a_bare_record_no_longer_depends_on_the_model(monkeypatch: Any) -> None:
     def dropping_pipeline(text: str, **kwargs: Any) -> list[dict[str, str]]:
         return [{"translation_text": ""}]
 
-    monkeypatch.setattr(
-        build_feed, "_get_translation_pipeline", lambda: dropping_pipeline
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: dropping_pipeline
     )
 
     out = build_feed._translate_text_attempt(DE_ADDRESS)
@@ -318,8 +317,7 @@ def test_a_debris_translation_still_succeeds(monkeypatch: Any) -> None:
 
         return [{"translation_text": re.sub(r"(XENT(?:[0-9a-f]{16}X)?\d+X)", r"\1X", text, count=1)}]
 
-    monkeypatch.setattr(
-        build_feed, "_get_translation_pipeline", lambda: debris_pipeline
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: debris_pipeline
     )
 
     out = build_feed._translate_text_attempt(DE_LINES)

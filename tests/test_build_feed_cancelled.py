@@ -2,6 +2,7 @@ import time
 from typing import Any
 from unittest.mock import MagicMock, patch
 import src.build_feed as bf
+from tests._conftest.build_feed_bindings import patch_all
 
 def test_collect_items_cancelled_future() -> None:
     # Setup configuration
@@ -23,7 +24,7 @@ def test_collect_items_cancelled_future() -> None:
 
     report = MagicMock(spec=bf.RunReport)
 
-    with patch.object(bf, "feed_config", mock_feed_config), \
+    with patch_all(bf, "feed_config", mock_feed_config), \
          patch.object(bf, "PROVIDERS", [("DUMMY_ENABLE", mock_fetch)]), \
          patch.object(bf, "DEFAULT_PROVIDERS", ("DUMMY_ENABLE",)), \
          patch("src.build_feed.iter_providers") as mock_iter:

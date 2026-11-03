@@ -33,6 +33,7 @@ import pytest
 
 import src.build_feed as bf
 from src.feed_types import FeedItem
+from tests._conftest.build_feed_bindings import setattr_all
 
 pytestmark = pytest.mark.usefixtures("time_line_today")
 
@@ -236,7 +237,7 @@ def cause_stub(monkeypatch: Any) -> list[str]:
                 return [{"translation_text": english + text[len(german):]}]
         return [{"translation_text": text}]
 
-    monkeypatch.setattr(bf, "_get_translation_pipeline", lambda: model)
+    setattr_all(monkeypatch, bf, "_get_translation_pipeline", lambda: model)
     return seen
 
 

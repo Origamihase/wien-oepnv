@@ -21,6 +21,7 @@ from typing import Any, cast
 import pytest
 
 from src.feed_types import FeedItem
+from tests._conftest.build_feed_bindings import setattr_all
 
 
 def _make_plugin_module(name: str, *, register_callable: Any = None, providers: Any = None) -> ModuleType:
@@ -211,7 +212,7 @@ def test_main_generates_feed_and_health_with_plugin(
 
         # Patch feed_config on build_feed module to ensure we target the right one
         monkeypatch.setattr(build_feed.feed_config, "validate_path", lambda path, name: Path(path))
-        monkeypatch.setattr(build_feed, "validate_path", lambda path, name: Path(path))
+        setattr_all(monkeypatch, build_feed, "validate_path", lambda path, name: Path(path))
 
         monkeypatch.setattr(build_feed.feed_config, "OUT_PATH", out_path)
         monkeypatch.setattr(build_feed.feed_config, "FEED_HEALTH_PATH", health_path)

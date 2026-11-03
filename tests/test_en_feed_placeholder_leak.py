@@ -23,6 +23,7 @@ from unittest.mock import MagicMock
 import pytest
 
 from src import build_feed as bf
+from tests._conftest.build_feed_bindings import part, setattr_all
 
 
 # --------------------------------------------------------------------------- #
@@ -112,10 +113,10 @@ def test_entity_only_title_bypasses_model(monkeypatch: pytest.MonkeyPatch) -> No
         f"XENT{nonce}X1X": "86A",
         f"XENT{nonce}X2X": "87A",
     }
-    monkeypatch.setattr(bf, "_apply_domain_glossary", lambda t, **k: (t, {}))
-    monkeypatch.setattr(bf, "_mask_entities", lambda t: (masked, mapping))
+    monkeypatch.setattr(part(bf, "translate_run"), "_apply_domain_glossary", lambda t, **k: (t, {}))
+    monkeypatch.setattr(part(bf, "translate_run"), "_mask_entities", lambda t: (masked, mapping))
     pipe = MagicMock()
-    monkeypatch.setattr(bf, "_get_translation_pipeline", lambda: pipe)
+    setattr_all(monkeypatch, bf, "_get_translation_pipeline", lambda: pipe)
 
     result = bf._translate_text_attempt("86A/87A: Wiedgasse", ident="bypass-1")
 
@@ -127,7 +128,7 @@ def test_line_and_glossary_title_bypasses_model(monkeypatch: pytest.MonkeyPatch)
     # Real masking, no stubs: the title reaches the bypass through the glossary
     # and the entity masker exactly as in the build.
     pipe = MagicMock(side_effect=AssertionError("model must not run"))
-    monkeypatch.setattr(bf, "_get_translation_pipeline", lambda: pipe)
+    setattr_all(monkeypatch, bf, "_get_translation_pipeline", lambda: pipe)
 
     result = bf._translate_text_attempt(
         "94A: Verkehrsunfall", ident="bypass-2", source="Wiener Linien", category="Störung"
@@ -143,13 +144,12 @@ def test_residual_after_unmask_discards_translation(
     nonce = bf._PLACEHOLDER_NONCE
     masked = f"XENT{nonce}X0X Stoerung"
     mapping = {f"XENT{nonce}X0X": "Praterstern"}
-    monkeypatch.setattr(bf, "_apply_domain_glossary", lambda t, **k: (t, {}))
-    monkeypatch.setattr(bf, "_mask_entities", lambda t: (masked, mapping))
+    monkeypatch.setattr(part(bf, "translate_run"), "_apply_domain_glossary", lambda t, **k: (t, {}))
+    monkeypatch.setattr(part(bf, "translate_run"), "_mask_entities", lambda t: (masked, mapping))
     # The model mangles the placeholder (drops the last nonce char) so the
     # exact-nonce unmask cannot restore it.
     mangled = f"XENT{nonce[:-1]}X0X disruption"
-    monkeypatch.setattr(
-        bf, "_get_translation_pipeline",
+    setattr_all(monkeypatch, bf, "_get_translation_pipeline",
         lambda: (lambda *a, **k: [{"translation_text": mangled}]),
     )
 
@@ -162,12 +162,11 @@ def test_clean_translation_passes_through(monkeypatch: pytest.MonkeyPatch) -> No
     nonce = bf._PLACEHOLDER_NONCE
     masked = f"XENT{nonce}X0X Stoerung"
     mapping = {f"XENT{nonce}X0X": "Praterstern"}
-    monkeypatch.setattr(bf, "_apply_domain_glossary", lambda t, **k: (t, {}))
-    monkeypatch.setattr(bf, "_mask_entities", lambda t: (masked, mapping))
+    monkeypatch.setattr(part(bf, "translate_run"), "_apply_domain_glossary", lambda t, **k: (t, {}))
+    monkeypatch.setattr(part(bf, "translate_run"), "_mask_entities", lambda t: (masked, mapping))
     # Model echoes the placeholder intact -> unmask restores it cleanly.
     good = f"XENT{nonce}X0X disruption"
-    monkeypatch.setattr(
-        bf, "_get_translation_pipeline",
+    setattr_all(monkeypatch, bf, "_get_translation_pipeline",
         lambda: (lambda *a, **k: [{"translation_text": good}]),
     )
 
@@ -190,7 +189,7 @@ def test_cache_self_heals_poisoned_hit(monkeypatch: pytest.MonkeyPatch) -> None:
         calls.append(text)
         return "U1: Stephansplatz"
 
-    monkeypatch.setattr(bf, "_translate_text_attempt", fake_attempt)
+    setattr_all(monkeypatch, bf, "_translate_text_attempt", fake_attempt)
 
     out, ok = bf._cached_translation("U1: Stephansplatz", "title", "poison-id", state)
 
@@ -213,7 +212,7 @@ def test_clean_cache_hit_served_without_retranslation(
     def boom(*_a: Any, **_k: Any) -> str:
         raise AssertionError("a clean cache hit must not be re-translated")
 
-    monkeypatch.setattr(bf, "_translate_text_attempt", boom)
+    setattr_all(monkeypatch, bf, "_translate_text_attempt", boom)
 
     out, ok = bf._cached_translation("U6: Aufzug außer Betrieb", "title", "clean-id", state)
 

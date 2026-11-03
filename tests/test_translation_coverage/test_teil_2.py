@@ -12,6 +12,7 @@ import pytest
 
 from src import build_feed
 from src.feed_types import FeedItem
+from tests._conftest.build_feed_bindings import setattr_all
 
 
 def test_suffixed_station_name_preserved_end_to_end(
@@ -35,7 +36,7 @@ def test_suffixed_station_name_preserved_end_to_end(
         )
         return [{"translation_text": out}]
 
-    monkeypatch.setattr(build_feed, "_get_translation_pipeline", lambda: fake)
+    setattr_all(monkeypatch, build_feed, "_get_translation_pipeline", lambda: fake)
     item = cast(
         FeedItem,
         {
