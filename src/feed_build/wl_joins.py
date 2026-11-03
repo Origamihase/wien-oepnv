@@ -58,17 +58,21 @@ def _with_members(entry: FeedItem, items: Sequence[FeedItem], groups: Sequence[l
 # partly planned measures (their cause names one, ``names_planned_measure``)
 # gives two entries: the running incidents, and the planned ones with the
 # display texts older than every incident (``_with_unowned``) that are
-# planned themselves, the works' stops (``_planned_texts``: their words
-# name a planned measure, or WL switched them on at a full hour). Such stops
+# planned themselves, the works' stops whose words name a planned measure
+# (``_planned_texts``; stops that name none follow the incident). Such stops
 # beside a running incident alone make an entry of their own as well. The works' entry then goes into its notice
 # (``_absorb_works_tickers``) or keeps its own place. Incidents among
 # themselves, and planned measures among themselves, still share one slot.
 def _planned_texts(items: Sequence[FeedItem], group: Sequence[int]) -> bool:
-    """Whether a group without a cause is a planned measure: its texts name one, or it began on a full hour."""
-    if any(names_planned_measure(f"{_rendered_title(items[index])} {_ticker_text(items[index])}") for index in group):
-        return True
-    starts = [_ticker_time(items[index]) for index in group]
-    return all(start is not None and _scheduled_clock(start) for start in starts)
+    """Whether a group without a cause names a planned measure in its texts.
+
+    Only the words count, not a start on a full hour: stops that name no
+    measure ("25: Züge halten Donaufelder Straße 175-177") leave the incident
+    its "[Seit]" and still follow it in its slot (check of 2026-10-09).
+    """
+    return any(
+        names_planned_measure(f"{_rendered_title(items[index])} {_ticker_text(items[index])}") for index in group
+    )
 
 
 def _planned_incident(items: Sequence[FeedItem], groups: Sequence[list[int]]) -> bool:

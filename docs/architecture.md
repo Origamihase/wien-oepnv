@@ -583,7 +583,10 @@ verdrängt eine andere Störung.
     ersten zehn. Jetzt gibt ein Lauf mit geplanten und laufenden Vorfällen
     zwei Einträge (`_merged_runs` in `src/feed_build/wl_joins.py`): die
     laufenden, und die geplanten mit den älteren Tafel-Meldungen ohne
-    Ursache (den Haltestellen der Baustelle). Geplant ist ein Vorfall, wenn
+    Ursache, deren Text eine geplante Maßnahme nennt (den Haltestellen der
+    Baustelle, „62A: Straßenbau Haltestelle verlegt …“). Tafel-Meldungen
+    ohne Ursache, die keine nennen („25: Züge halten Donaufelder Straße
+    175-177“), folgen weiter der Störung (Prüfung vom 09.10.). Geplant ist ein Vorfall, wenn
     seine Ursache eine geplante Maßnahme nennt (`names_planned_measure`)
     oder jede seiner Meldungen zur vollen Stunde begann
     (`_scheduled_clock`, die Regel der Zeitzeile; „26E: Ersatzbus hält
