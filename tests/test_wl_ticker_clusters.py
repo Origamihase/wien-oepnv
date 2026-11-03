@@ -159,11 +159,15 @@ def test_a_ticker_eleven_minutes_later_joins_its_incident() -> None:
     ]
 
 
-def test_another_cause_eleven_minutes_later_is_listed_beside_it() -> None:
-    # Inside the window the most frequent cause would name the item alone.
+def test_an_accident_eleven_minutes_later_keeps_its_own_slot() -> None:
+    # Operator decision 2026-11-03: a running incident never joins the
+    # planned works of its line; joined, it read as works ("62: Verkehrsunfall,
+    # ÖBB Bauarbeiten") and lost its "[Seit hh:mm]".
     later = _wl("62: Fahrtbehinderung Verkehrsunfall", "Fahrtbehinderung\nVerkehrsunfall", 11 * 60, guid="later")
-    (item,) = _merge([*LINE_62, later])
-    assert (item["guid"], item["title"]) == ("later", "62: Verkehrsunfall, ÖBB Bauarbeiten")
+    assert sorted((str(it["guid"]), str(it["title"])) for it in _merge([*LINE_62, later])) == [
+        ("f1211a44", "62: ÖBB Bauarbeiten"),
+        ("later", "62: Fahrtbehinderung Verkehrsunfall"),
+    ]
 
 
 @pytest.mark.parametrize(
@@ -592,15 +596,15 @@ FIRE_D = _wl(
 )
 
 
-def test_another_cause_of_the_line_is_listed_beside_it() -> None:
-    # Operator decision 2026-10-01: one line, one slot. The newer incident leads.
-    (item,) = _built([D_INCIDENT[-1], FIRE_D])
-    assert (item["guid"], item["title"], item["description"]) == (
-        "9d8f98",
-        "D: Feuerwehreinsatz, Gleisbauarbeiten",
-        "Feuerwehreinsatz: Betrieb ab Schwarzenbergplatz. Gleisbauarbeiten: Kein Betrieb zwischen Börse und Augasse.",
-    )
-    assert item["ends_at"] == D_LONG_END
+def test_a_fire_beside_the_track_works_keeps_its_own_slot() -> None:
+    # Operator decision 2026-10-01: one line, one slot; since 2026-11-03 not
+    # for a running incident beside planned works ("Störungen haben höchste
+    # Priorität im Feed, Hinweise sind weniger wichtig").
+    items = _built([D_INCIDENT[-1], FIRE_D])
+    assert sorted(str(it["guid"]) for it in items) == sorted([str(D_INCIDENT[-1]["guid"]), "9d8f98"])
+    (fire,) = (it for it in items if it["guid"] == "9d8f98")
+    assert fire["title"] == "D: Feuerwehreinsatz Betrieb ab Schwarzenbergplatz"
+    assert fire["ends_at"] == FIRE_D["ends_at"]
 
 
 def test_another_line_keeps_its_slot() -> None:

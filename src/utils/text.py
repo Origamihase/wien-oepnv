@@ -79,9 +79,24 @@ def strip_accents(value: str) -> str:
 # (ÖBB, 27.08.2026), "dringende Reperaturarbeiten an den Treppen" (WL,
 # "U3: Betriebsstörung", 17.09.2026) keep their "Seit". ``wl_resolved`` uses it
 # to tell the display tickers of planned measures from those of incidents.
+#
+# A moved or closed stop is a notice, not an incident (operator decision
+# 2026-11-03: "Eine Verlegung der Haltestelle ist zB nur ein Hinweis, aber
+# keine Störung"). WL's display tickers say so in other words than its
+# notices: "62A: Straßenbau Haltestelle verlegt zur Wienerbergbrücke vor
+# Breitenfurter Straße" stood on place 1 of the feed as "[Seit 07:20]" on
+# 2026-10-21, above four running incidents, and "S80: ÖBB-Ersatzbus" (where
+# the bus for ÖBB's works stops, "Bhf. Hütteldorf") read "[Seit 00:30]" from
+# 06. to 14.10. So the participles ("verlegt", "aufgelassen"), "Auflassung",
+# a construction as cause ("Straßenbau", "Gleisbau", "Brückenbau",
+# "Kanalbau") and WL's "ÖBB-Ersatzbus" count as planned too; ÖBB reports a
+# disruption of its own lines itself. Over all WL and ÖBB disruptions cached
+# from 20.09. to 03.11.2026 these words met five planned measures and no
+# incident.
 PLANNED_DISRUPTION_RE: re.Pattern[str] = re.compile(
     r"veranstaltung|demonstration|kundgebung|(?<!rep[ae]ratur)arbeiten\b|staatsbesuch|übung\b"
-    r"|verlegung\b|netzänderung",
+    r"|verlegung\b|netzänderung"
+    r"|verlegt\b|aufgelassen\b|auflassung\b|(?:straßen|strassen|gleis|brücken|kanal)bau\b|öbb[-\s]?ersatzbus",
     re.IGNORECASE,
 )
 

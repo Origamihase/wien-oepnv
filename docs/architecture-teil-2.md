@@ -569,7 +569,22 @@
   - **Geplant** heißt `_PLANNED_DISRUPTION_RE` in Titel oder Beschreibung:
     Veranstaltung, Demonstration, Kundgebung, „…arbeiten“, Staatsbesuch,
     „…übung“, „…verlegung“, Netzänderung, die geplanten Ursachen unter den
-    WL-Störungen seit Juli. „Reparaturarbeiten“ (auch WLs „Reperaturarbeiten“)
+    WL-Störungen seit Juli. Seit 2026-11-03 auch eine verlegte oder
+    aufgelassene Haltestelle in den Worten der Anzeigetafel („verlegt“,
+    „aufgelassen“, „Auflassung“), ein Bau als Ursache („Straßenbau“,
+    „Gleisbau“, „Brückenbau“, „Kanalbau“) und WLs „ÖBB-Ersatzbus“
+    (Betreiberentscheidung: „Eine Verlegung der Haltestelle ist zB nur ein
+    Hinweis, aber keine Störung.“). Anlass: „62A: Straßenbau Haltestelle
+    verlegt zur Wienerbergbrücke vor Breitenfurter Straße [Seit 07:20]“
+    stand am 21.10. um 07:31 Uhr auf Platz 1, über vier laufenden
+    Störungen, und 33 Stände lang vorn; „S80: ÖBB-Ersatzbus – Bhf.
+    Hütteldorf [Seit 00:30]“ (die Haltestelle des Ersatzbusses für die
+    ÖBB-Bauarbeiten) vom 06. bis 14.10. 65 Stände lang, sechsmal auf Platz
+    1. Unter allen WL- und ÖBB-Störungen vom 20.09. bis 03.11. trafen die
+    neuen Wörter fünf geplante Maßnahmen und keinen Vorfall. Dieselbe Liste
+    entscheidet über die Pause einer wiederkehrenden Meldung
+    (`_PLANNED_OCCURRENCE_GAP`) und die Zuordnung erledigter Kurzmeldungen
+    (`wl_resolved`). „Reparaturarbeiten“ (auch WLs „Reperaturarbeiten“)
     zählen nicht dazu, sie folgen auf einen Vorfall („Wegen Reparaturarbeiten
     nach einem Unfall“, ÖBB 27.08.). Stadt-Wien-Baustellen sind keine Störungen.
 * **Zeitumstellung (geprüft 2026-10-03 für den 25.10.2026 und den 28.03.2027).**

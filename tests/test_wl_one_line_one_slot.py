@@ -19,6 +19,9 @@ Mutations checked against this file (each one caught, by the test named):
 * the lines are not compared → ``test_different_lines_keep_their_slots``.
 * the oldest incident leads → ``test_two_causes_of_line_66a_share_one_slot``.
 * a combined entry counts as a ticker → ``test_two_causes_of_line_66a_share_one_slot``.
+* a running incident joins the works of its line again (operator decision 2026-11-03)
+  → ``test_an_incident_and_the_works_of_its_line_keep_their_slots`` and the three tests after it.
+* a ticker WL switched on at a full hour counts as a running incident → ``test_a_standing_long_message_keeps_the_stops_of_its_line``.
 * a sentence-long cause is listed → ``test_a_standing_message_joins_no_incident``.
 * a group without a cause joins the oldest incident → ``test_a_message_without_cause_joins_the_nearest_incident``.
 * WL's synonyms are not resolved → ``test_wl_synonyms_are_one_incident``.
@@ -152,21 +155,41 @@ RESCUE_66A = _wl(
 )
 
 
+POLICE_66A = _wl(
+    "66A: Fahrtbehinderung Polizeieinsatz", "Fahrtbehinderung\nPolizeieinsatz", "5c1e0a77",
+    "2026-10-01T09:31:00+02:00", "2026-10-01T10:30:00+02:00",
+)
+
+
 def test_two_causes_of_line_66a_share_one_slot() -> None:
-    (item,) = _built([SALVATORIANERPLATZ, RESCUE_66A])
+    (item,) = _built([POLICE_66A, RESCUE_66A])
     # The newest incident leads: its GUID keeps the entry at the top of the feed.
     assert (item["guid"], item["title"], item["description"]) == (
         "2be107df",
-        "66A: Rettungseinsatz, Bauarbeiten",
-        "Rettungseinsatz: Unregelmäßige Intervalle in beiden Richtungen. "
-        "Bauarbeiten: Busse halten Salvatorianerplatz.",
+        "66A: Rettungseinsatz, Polizeieinsatz",
+        "Rettungseinsatz: Unregelmäßige Intervalle in beiden Richtungen. Polizeieinsatz: Fahrtbehinderung.",
     )
-    assert (item["starts_at"], item["ends_at"]) == (RESCUE_66A["starts_at"], SALVATORIANERPLATZ["ends_at"])
+    assert (item["starts_at"], item["ends_at"]) == (RESCUE_66A["starts_at"], RESCUE_66A["ends_at"])
     # Its title lists causes; the feed must not split it like a ticker's.
     assert not bf._is_wl_ticker(item)
 
 
-def test_the_feed_shows_both_causes(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_an_incident_and_the_works_of_its_line_keep_their_slots() -> None:
+    # Operator decision 2026-11-03: "Störungen haben höchste Priorität im
+    # Feed, Hinweise sind weniger wichtig." Joined, the works' word made the
+    # rescue a planned measure without "[Seit hh:mm]" ("1: Rettungseinsatz,
+    # Gleisbauarbeiten [Heute]" on place 9 on 2026-10-21).
+    items = _built([SALVATORIANERPLATZ, RESCUE_66A])
+    assert sorted((str(it["guid"]), str(it["title"])) for it in items) == [
+        ("2be107df", "66A: Rettungseinsatz"),
+        ("f420c43d", "66A: Busse halten Salvatorianerplatz"),
+    ]
+    (rescue,) = (it for it in items if it["guid"] == "2be107df")
+    assert rescue["description"] == "Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz."
+    assert (rescue["starts_at"], rescue["ends_at"]) == (RESCUE_66A["starts_at"], RESCUE_66A["ends_at"])
+
+
+def test_the_feed_shows_the_rescue_with_its_begin(monkeypatch: pytest.MonkeyPatch) -> None:
     # The time line is relative to the day it is rendered on; pin it to the
     # moment the feed is built here. Unpinned, the expected "[Heute]" only
     # held on 2026-10-02 and the test failed on main from 2026-10-03 on.
@@ -176,12 +199,9 @@ def test_the_feed_shows_both_causes(monkeypatch: pytest.MonkeyPatch) -> None:
         partial(part(bf, "time_line").format_local_times, now=datetime.fromisoformat("2026-10-01T10:01:00+02:00")),
     )
     xml = bf._make_rss(_built([SALVATORIANERPLATZ, RESCUE_66A]), _at("2026-10-01T10:01:00+02:00"), {}, lang="de")
-    assert xml.count("<item>") == 1
-    assert "<![CDATA[66A: Rettungseinsatz, Bauarbeiten]]>" in xml
-    assert (
-        "Rettungseinsatz: Unregelmäßige Intervalle in beiden Richtungen. "
-        "Bauarbeiten: Busse halten Salvatorianerplatz. [Bis\u00a0Fr\u00a002.10.]"
-    ) in xml
+    assert xml.count("<item>") == 2
+    assert "<![CDATA[66A: Rettungseinsatz]]>" in xml
+    assert "Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Seit\u00a009:52]" in xml
 
 
 def test_incidents_that_do_not_meet_keep_their_slots() -> None:
@@ -283,11 +303,18 @@ def test_the_stock_sentence_gives_way_in_a_combined_entry() -> None:
         _wl("7A: Verkehrsüberlastung", "Linie 7A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
             "d42feba3", "2026-10-01T15:50:00+02:00", "2026-10-01T23:55:00+02:00"),
     ]
-    assert _shown(items) == [("7A: Verkehrsüberlastung, Bauarbeiten", "Bauarbeiten: Busse halten Laxenburger Straße 66.")]
+    # Since 2026-11-03 the works keep their own slot (see
+    # ``test_an_incident_and_the_works_of_its_line_keep_their_slots``).
+    assert _shown(items) == [
+        ("7A: Busse halten Laxenburger Straße 66", "Bauarbeiten\nBusse halten Laxenburger Straße 66"),
+        ("7A: Verkehrsüberlastung", "Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen."),
+    ]
 
 
 def test_a_long_combined_entry_gives_up_its_last_consequences_first() -> None:
     # 62 on 2026-09-28: both incidents fit once the last consequence of the longer one goes.
+    # (The second one was "ÖBB Bauarbeiten" that evening; since 2026-11-03 planned works
+    # keep their own slot, so a rescue of the same shape stands in for it.)
     items = [
         _wl("62: Fahrtbehinderung Beschädigte Oberleitung", "Fahrtbehinderung\nBeschädigte Oberleitung", "o1",
             "2026-09-28T21:40:00+02:00", "2026-09-29T00:30:00+02:00"),
@@ -295,19 +322,19 @@ def test_a_long_combined_entry_gives_up_its_last_consequences_first() -> None:
             "2026-09-28T21:41:00+02:00", "2026-09-29T00:30:00+02:00"),
         _wl("62: Oberleitungsgebr Betrieb ab Eichenstraße", "Oberleitungsgebr\nBetrieb ab Eichenstraße", "o3",
             "2026-09-28T21:42:00+02:00", "2026-09-29T00:30:00+02:00"),
-        _wl("62: ÖBB Bauarbeiten Betrieb ab Kliebergasse", "ÖBB Bauarbeiten\nBetrieb ab Kliebergasse", "b1",
-            "2026-09-28T04:00:00+02:00", "2026-09-29T23:00:00+02:00"),
+        _wl("62: Rettungseinsatz Betrieb ab Kliebergasse", "Rettungseinsatz\nBetrieb ab Kliebergasse", "b1",
+            "2026-09-28T19:04:10+02:00", "2026-09-29T00:30:00+02:00"),
         _wl("62: Züge halten bei Linie 18, Richtung Burggasse", "Züge halten bei\nLinie 18, Richtung Burggasse", "b2",
-            "2026-09-28T04:00:30+02:00", "2026-09-29T23:00:00+02:00"),
-        _wl("62: ÖBB Bauarbeiten Kein Betrieb", "ÖBB Bauarbeiten\nKein Betrieb", "b3",
-            "2026-09-28T04:01:26+02:00", "2026-09-29T23:00:00+02:00"),
+            "2026-09-28T19:04:30+02:00", "2026-09-29T00:30:00+02:00"),
+        _wl("62: Rettungseinsatz Kein Betrieb", "Rettungseinsatz\nKein Betrieb", "b3",
+            "2026-09-28T19:05:26+02:00", "2026-09-29T00:30:00+02:00"),
     ]
     assert _shown(items) == [
         (
-            "62: Oberleitungsgebrechen, ÖBB Bauarbeiten",
+            "62: Oberleitungsgebrechen, Rettungseinsatz",
             # "; Kein Betrieb" would take the text to 183 characters.
             "Oberleitungsgebrechen: Fahrtbehinderung; Betrieb ab Hofwiesengasse, Eichenstraße. "
-            "ÖBB Bauarbeiten: Betrieb ab Kliebergasse; Züge halten bei Linie 18, Richtung Burggasse.",
+            "Rettungseinsatz: Betrieb ab Kliebergasse; Züge halten bei Linie 18, Richtung Burggasse.",
         )
     ]
 
@@ -351,28 +378,33 @@ def test_a_bare_hindrance_gives_way_to_the_long_messages_sentence() -> None:
             "Grund: Polizeieinsatz im Bereich Wollzeile.",
             "612ada6e", "2026-09-17T14:12:46+02:00", "2026-09-17T23:55:00+02:00"),
     ]
+    # The network change is planned and keeps its own slot (2026-11-03); the
+    # police operation reads its long message, not the bare hindrance.
     assert _shown(items) == [
         (
-            "3A: Polizeieinsatz, Netzänderung",
-            "Polizeieinsatz: Betrieb nur zwischen Schottenring U und Stephansplatz U. "
-            "Netzänderung: Betrieb ab Riemergasse; Busse halten Kärntner Ring 5.",
-        )
+            "3A: Fahrtbehinderung wegen Polizeieinsatz",
+            "Betrieb nur zwischen Schottenring U und Stephansplatz U. Voraussichtliche Dauer: 14:45 Uhr. "
+            "Grund: Polizeieinsatz im Bereich Wollzeile.",
+        ),
+        ("3A: Netzänderung", "Betrieb ab Riemergasse; Busse halten Kärntner Ring 5."),
     ]
 
 
 def test_the_display_names_what_the_stock_sentence_does_not() -> None:
-    # D on 2026-09-28: a fire brigade operation beside the track works.
+    # D on 2026-09-28: a fire brigade operation beside a rescue (the
+    # evening's second cause was the track works, which keep their own
+    # slot since 2026-11-03).
     items = [
         _wl("D: Feuerwehreinsatz Betrieb ab Schwarzenbergplatz",
             "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.", "fire",
             "2026-09-28T18:20:00+02:00", "2026-09-28T23:55:00+02:00"),
-        _wl("D: Betrieb ab Augasse", "Gleisbauarbeiten\nBetrieb ab Augasse", "works",
-            "2026-09-28T04:00:07+02:00", "2026-09-30T23:59:59+02:00"),
+        _wl("D: Rettungseinsatz Betrieb ab Augasse", "Rettungseinsatz\nBetrieb ab Augasse", "rescue",
+            "2026-09-28T18:04:07+02:00", "2026-09-28T23:55:00+02:00"),
     ]
     assert _shown(items) == [
         (
-            "D: Feuerwehreinsatz, Gleisbauarbeiten",
-            "Feuerwehreinsatz: Betrieb ab Schwarzenbergplatz. Gleisbauarbeiten: Betrieb ab Augasse.",
+            "D: Feuerwehreinsatz, Rettungseinsatz",
+            "Feuerwehreinsatz: Betrieb ab Schwarzenbergplatz. Rettungseinsatz: Betrieb ab Augasse.",
         )
     ]
 
@@ -385,3 +417,22 @@ def test_consequences_that_open_alike_share_the_opening() -> None:
     assert bf._shared_openings(
         ["Züge halten Donaufelder Straße 175-177", "Züge halten bei Li. 18 Richtung Burggasse, Stadthalle"]
     ) == ["Züge halten Donaufelder Straße 175-177", "Züge halten bei Li. 18 Richtung Burggasse, Stadthalle"]
+
+
+def test_planned_stops_beside_an_accident_keep_their_own_slot() -> None:
+    # 62A on 2026-10-22: the stop moved for road works since the day before,
+    # a traffic accident at 16:20. Appended to the accident, "Straßenbau
+    # Haltestelle verlegt …" made it a planned measure without "[Seit]".
+    items = [
+        _wl("62A: Straßenbau Haltestelle verlegt zur Wienerbergbrücke vor Breitenfurter Straße",
+            "Straßenbau\nHaltestelle verlegt zur Wienerbergbrücke vor Breitenfurter Straße", "moved",
+            "2026-10-21T07:20:54+02:00", "2026-10-22T17:00:00+02:00"),
+        _wl("62A: Verkehrsunfall",
+            "Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.", "accident",
+            "2026-10-22T16:20:00+02:00", "2026-10-22T17:20:00+02:00"),
+    ]
+    built = _built(items)
+    assert sorted(str(it["guid"]) for it in built) == ["accident", "moved"]
+    (accident,) = (it for it in built if it["guid"] == "accident")
+    assert accident["description"] == "Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall."
+    assert bf._incident_since(accident, accident["starts_at"]) is not None

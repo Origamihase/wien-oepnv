@@ -563,9 +563,38 @@ verdrängt eine andere Störung.
     geteilt:
 
     ```
-    66A: Rettungseinsatz, Bauarbeiten
-    Rettungseinsatz: Unregelmäßige Intervalle in beiden Richtungen. Bauarbeiten: Busse halten Salvatorianerplatz. [01.10.2026 – 02.10.2026]
+    11A: Falschparker, Schadhafter PKW
+    Falschparker: Fahrtbehinderung in Richtung Bahnhof Heiligenstadt S U. Schadhafter PKW: Fahrtbehinderung.
     ```
+
+  - **Eine laufende Störung nie mit geplanten Arbeiten (seit 2026-11-03,
+    Betreiberentscheidung „Ja, beide beheben“, mit dem Grundsatz vom
+    01.11.: „Störungen haben höchste Priorität im Feed! Hinweise sind
+    weniger wichtig.“).** Bis dahin stand eine Störung mit der
+    Tafel-Meldung einer Baustelle derselben Linie in einem Eintrag
+    („66A: Rettungseinsatz, Bauarbeiten“). Das Wort der Baustelle machte
+    den ganzen Eintrag geplant (`_incident_since`): kein „[Seit hh:mm]“,
+    nicht vorn, manchmal mit dem alten ersten Erscheinen der Baustelle. Am
+    21.10. um 15:31 Uhr stand „1: Rettungseinsatz, Gleisbauarbeiten
+    [Heute]“ auf Platz 9, unter zwei Haltestellenverlegungen; am 16.10. las
+    „D: Rettungseinsatz, Gleisbauarbeiten“ nur die Haltestellen der
+    Baustelle. Im Replay über 890 Stände vom 20.09. bis 03.11. standen 62
+    solche Einträge, in 34 Ständen unter einem Hinweis, in 7 außerhalb der
+    ersten zehn. Jetzt gibt ein Lauf mit geplanten und laufenden Vorfällen
+    zwei Einträge (`_merged_runs` in `src/feed_build/wl_joins.py`): die
+    laufenden, und die geplanten mit den älteren Tafel-Meldungen ohne
+    Ursache, deren Text eine geplante Maßnahme nennt (den Haltestellen der
+    Baustelle, „62A: Straßenbau Haltestelle verlegt …“). Tafel-Meldungen
+    ohne Ursache, die keine nennen („25: Züge halten Donaufelder Straße
+    175-177“), folgen weiter der Störung (Prüfung vom 09.10.). Geplant ist ein Vorfall, wenn
+    seine Ursache eine geplante Maßnahme nennt (`names_planned_measure`)
+    oder jede seiner Meldungen zur vollen Stunde begann
+    (`_scheduled_clock`, die Regel der Zeitzeile; „26E: Ersatzbus hält
+    Karl-Waldbrunner-Platz …“ ab 00:00:14 gehört zur Baustelle). Der
+    Eintrag der Baustelle geht in ihren Hinweis auf
+    (`_absorb_works_tickers`) oder behält seinen Platz. Störungen
+    untereinander und geplante Maßnahmen untereinander teilen sich weiter
+    einen Platz.
 
   - Eine Meldung ohne eigene Ursache geht zum Vorfall, der ihr zeitlich
     am nächsten veröffentlicht wurde, unter denen, die schon begonnen

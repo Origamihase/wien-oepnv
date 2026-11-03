@@ -16,12 +16,14 @@ from typing import cast
 from ..feed_types import FeedItem
 from ..feed.merge import member_guids
 from ..utils.logging import sanitize_log_arg
+from ..utils.text import names_planned_measure
 
 from .base import _to_utc, log
+from .time_line import _scheduled_clock
 from .wl_measures import _SHORT_LINE_MARKER_RE, _short_measure, _text_names_line
 from .title_words import _HINDRANCE, _as_sentence, _is_wl_ticker, _rendered_title
 from .wl_tickers import (
-    _MAX_LISTED_WORDS, _cause_key, _chosen_cause, _distinct_messages, _group_span, _line_runs, _message_tokens,
+    _MAX_LISTED_WORDS, _group_cause, _cause_key, _chosen_cause, _distinct_messages, _group_span, _line_runs, _message_tokens,
     _run_incidents, _spans_meet, _telling_long_message, _ticker_groups, _ticker_line_tokens, _ticker_part,
     _ticker_text, _ticker_time, _without_cause,
 )
@@ -42,14 +44,92 @@ def _with_members(entry: FeedItem, items: Sequence[FeedItem], groups: Sequence[l
     return marked
 
 
-def _merged_run(items: Sequence[FeedItem], run: Sequence[list[int]]) -> tuple[int, FeedItem]:
-    """The entry for *run* and the index it takes.
+# --- An incident never joins planned works (operator decision 2026-11-03) ---
+#
+# "Störungen haben höchste Priorität im Feed, Hinweise sind weniger wichtig."
+# One line took one slot (2026-10-01), so a running incident joined the
+# display texts of the line's planned works: "1: Rettungseinsatz,
+# Gleisbauarbeiten". The works' word made the whole entry planned
+# (``_incident_since``), and the incident lost its "[Seit hh:mm]" and its
+# place in front: on 2026-10-21 at 15:31 Vienna time that entry stood on
+# place 9, under two stop relocations, and on 2026-10-16 at 12:01 "D:
+# Rettungseinsatz, Gleisbauarbeiten" read only the works' stops ("Züge
+# halten in Schleife, Wipplingerstr 39; …"). Now a run whose incidents are
+# partly planned measures (their cause names one, ``names_planned_measure``)
+# gives two entries: the running incidents, and the planned ones with the
+# display texts older than every incident (``_with_unowned``) that are
+# planned themselves, the works' stops whose words name a planned measure
+# (``_planned_texts``; stops that name none follow the incident). Such stops
+# beside a running incident alone make an entry of their own as well. The works' entry then goes into its notice
+# (``_absorb_works_tickers``) or keeps its own place. Incidents among
+# themselves, and planned measures among themselves, still share one slot.
+def _planned_texts(items: Sequence[FeedItem], group: Sequence[int]) -> bool:
+    """Whether a group without a cause names a planned measure in its texts.
+
+    Only the words count, not a start on a full hour: stops that name no
+    measure ("25: Züge halten Donaufelder Straße 175-177") leave the incident
+    its "[Seit]" and still follow it in its slot (check of 2026-10-09).
+    """
+    return any(
+        names_planned_measure(f"{_rendered_title(items[index])} {_ticker_text(items[index])}") for index in group
+    )
+
+
+def _planned_incident(items: Sequence[FeedItem], groups: Sequence[list[int]]) -> bool:
+    """Whether an incident of a run (its groups, the first one with its cause) is a planned measure.
+
+    Its cause names one, or every message of it began on a full hour, the
+    mark of a measure WL entered ahead (``_scheduled_clock``, the rule of the
+    time line): "26E: Ersatzbus hält Karl-Waldbrunner-Platz …" switched on at
+    00:00:14 belongs to the works of the 26E, though "Ersatzbus" reads as its
+    cause.
+    """
+    if names_planned_measure(_group_cause([items[index] for index in groups[0]])):
+        return True
+    starts = [_ticker_time(items[index]) for group in groups for index in group]
+    return all(start is not None and _scheduled_clock(start) for start in starts)
+
+
+def _merged_runs(items: Sequence[FeedItem], run: Sequence[list[int]]) -> list[tuple[int, FeedItem, list[int]]]:
+    """The entries of *run*: the index each takes, the entry and the indices it stands for (see above)."""
+    found, unowned = _run_incidents(items, run)
+    planned = [groups for groups in found if _planned_incident(items, groups)]
+    running = [groups for groups in found if not _planned_incident(items, groups)]
+    # Display texts older than every incident and planned themselves ("62A:
+    # Straßenbau Haltestelle verlegt …" beside "62A: Verkehrsunfall" on
+    # 2026-10-22) stay with the planned measures, too.
+    stops = [group for group in unowned if _planned_texts(items, group)]
+    rest = [group for group in unowned if not _planned_texts(items, group)]
+    if not running or not (planned or stops):
+        place, entry = _merged_run(items, found, unowned)
+        return [(place, entry, [index for group in run for index in group])]
+    parts: list[tuple[int, FeedItem, list[int]]] = []
+    for incidents, others in ((running, rest), (planned, stops)):
+        if not incidents:
+            # Planned stops without a planned incident: one entry of their own,
+            # as ``_run_incidents`` makes of a run without an incident.
+            incidents, others = ([list(others)] if others else []), []
+        if not incidents:
+            continue
+        indices = [index for groups in incidents for group in groups for index in group]
+        indices += [index for group in others for index in group]
+        if len(indices) < 2:
+            parts.append((indices[0], items[indices[0]], indices))
+            continue
+        place, entry = _merged_run(items, incidents, others)
+        parts.append((place, entry, indices))
+    return parts
+
+
+def _merged_run(
+    items: Sequence[FeedItem], found: Sequence[list[list[int]]], unowned: Sequence[list[int]]
+) -> tuple[int, FeedItem]:
+    """The entry for a run's incidents *found* and the groups of none, *unowned*, and the index it takes.
 
     Its ``_members`` are the messages of the incident whose GUID it carries
     (see ``_carry_item_identity``): of several incidents, the newest. What
     belongs to no incident comes last and is no member (``_with_unowned``).
     """
-    found, unowned = _run_incidents(items, run)
     incidents = [
         (place, _with_members(entry, items, groups))
         for groups in found
@@ -170,17 +250,18 @@ def _merge_wl_ticker_clusters(items: list[FeedItem]) -> list[FeedItem]:
     replaced: dict[int, FeedItem] = {}
     dropped: set[int] = set()
     for run in _line_runs(items, groups):
-        members = [index for group in run for index in group]
-        if len(members) < 2:
+        if sum(len(group) for group in run) < 2:
             continue
-        place, entry = _merged_run(items, run)
-        replaced[place] = entry
-        dropped.update(index for index in members if index != place)
-        log.info(
-            "WL-Kurzmeldungen zusammengelegt: %s ← %s",
-            sanitize_log_arg(entry["title"]),
-            sanitize_log_arg(" | ".join(_rendered_title(items[index]) for index in sorted(members))),
-        )
+        for place, entry, members in _merged_runs(items, run):
+            if len(members) < 2:
+                continue
+            replaced[place] = entry
+            dropped.update(index for index in members if index != place)
+            log.info(
+                "WL-Kurzmeldungen zusammengelegt: %s ← %s",
+                sanitize_log_arg(entry["title"]),
+                sanitize_log_arg(" | ".join(_rendered_title(items[index]) for index in sorted(members))),
+            )
     if dropped:
         items = [replaced.get(index, item) for index, item in enumerate(items) if index not in dropped]
     return _join_part_line_tickers(items)
