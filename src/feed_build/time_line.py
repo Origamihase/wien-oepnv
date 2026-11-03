@@ -15,6 +15,7 @@ from ..feed import config as feed_config
 from ..providers.wl_plausibility import incident_begin
 from ..utils.text import html_to_text
 
+from .wl_tickers import _incident_cause
 from .base import _OEBB_SOURCE, _PLANNED_DISRUPTION_RE, _VIENNA_TZ, _parse_datetime, _parse_state_time, _to_utc, log
 
 __all__ = [
@@ -152,7 +153,8 @@ def _scheduled_clock(when: datetime) -> bool:
     Busse halten …" 01:00:15), and display tickers reused for a new
     incident keep such a start from days before ("10A: Fahrtbehinderung"
     with 09.07. 00:00:25 on 11.07.). An incident begins on a full hour about
-    once in sixty; it then keeps its previous line.
+    once in sixty; :func:`_incident_since` lets a disruption whose cause
+    names an incident keep it (operator decision 2026-11-03).
     """
     return _to_utc(when).astimezone(_VIENNA_TZ).minute == 0
 
@@ -210,7 +212,11 @@ def _incident_since(
     the incident — and per-line tickers from 10:42:44 to 10:54:13 as
     ``starts_at``. The earliest time is the begin, as long as it is from the
     same Vienna day and not a scheduled full hour (:func:`_scheduled_clock`),
-    the marks of the stale tickers seen since July. ÖBB's begin is the
+    the marks of the stale tickers seen since July. A disruption whose cause
+    names an incident (:func:`wl_tickers._incident_cause`: "U2: Verspätungen
+    … Grund: Schadhaftes Fahrzeug") keeps its full hour: an incident can be
+    reported on one (operator decision 2026-11-03); measures switched on at
+    the full hour ("71E: Ersatzverkehr Busse halten …") keep "Heute". ÖBB's begin is the
     minute it first published the message, ``first_published``
     (:func:`_first_published`): its ``starts_at`` is the date the
     message's validity begins (00:00, since 2026-09-12), and its
@@ -243,7 +249,11 @@ def _incident_since(
         and not _scheduled_clock(pub_date)
     ):
         since = pub_date
-    return None if _scheduled_clock(since) else since
+    # An incident cause beats the full hour of the begin (operator decision
+    # 2026-11-03, "[Seit hh:00] bringt mehr Infos"): "N71: Polizeieinsatz"
+    # from 02:00:25. An earlier ``pubDate`` on a full hour still does not
+    # date the item back: that is the mark of a reused stale ticker.
+    return since if not _scheduled_clock(since) or _incident_cause(it) else None
 
 
 # ÖBB reports a disruption that is already over in the past tense: "Wegen

@@ -14,7 +14,7 @@ from typing import NamedTuple
 
 from ..feed_types import FeedItem
 from ..providers.wl_lines import line_order_key
-from ..utils.text import html_to_text
+from ..utils.text import html_to_text, names_planned_measure
 
 from .base import _to_utc
 from .display_titles import _TITLE_BODY_RE
@@ -25,7 +25,7 @@ __all__ = [
     "_distinct_messages", "_shared_openings", "_without_cause", "_ticker_time", "_ticker_lines",
     "_publication_key", "_ticker_groups", "_ticker_line_tokens", "_union_prefix", "_twin_labels",
     "_telling_long_message", "_cause_key", "_chosen_cause", "_group_span", "_spans_meet", "_MAX_LISTED_WORDS",
-    "_line_runs", "_run_incidents",
+    "_line_runs", "_run_incidents", "_names_incident", "_incident_cause",
 ]
 
 
@@ -124,6 +124,43 @@ def _ticker_part(item: FeedItem) -> _TickerPart:
             return _TickerPart(lead, body, body, "")
         return _TickerPart("", body, body, "")
     return _TickerPart("", body, body, text)
+
+
+# WL causes that name the measure, not a reason: "N71: Ersatzverkehr Busse
+# halten …", "31: Kein Betrieb …" (the parser reads "Kein"), "26E: Busse
+# halten Satzingerweg 41", "27: Linie 25 in Tokiostraße benützen", "40/41/42:
+# Derzeit kein Linienbetrieb", "12: Betrieb ab Franz-Josefs-Bahnhof" (a title
+# without a cause reads as one). Over the WL cache since July 2026 such
+# messages began on a full hour; they keep the clock rule
+# (:func:`time_line._scheduled_clock`).
+_MEASURE_CAUSE_RE = re.compile(
+    r"^(?:ersatz(?:verkehr|bus)|(?:derzeit\s+)?kein|(?:busse|züge)\s+halten|linie\b.*\bbenützen"
+    r"|betrieb\s+(?:ab|über|bis|nur|zwischen)|umleitung)\b",
+    re.IGNORECASE,
+)
+# The display text names the reason of a delay: "Unregelmäßige Intervalle in
+# beiden Richtungen. Grund: Schadhaftes Fahrzeug." under "U2: Verspätungen".
+_GRUND_RE = re.compile(r"\bGrund:\s*([^.#]+)")
+
+
+def _names_incident(cause: str) -> bool:
+    """Whether *cause* names an incident: set, no planned measure, no measure word."""
+    cause = cause.strip()
+    return bool(cause) and not names_planned_measure(cause) and not _MEASURE_CAUSE_RE.match(cause)
+
+
+def _incident_cause(item: FeedItem) -> bool:
+    """Whether the WL disruption *item* names an incident as its cause.
+
+    The cause of its title (:func:`_ticker_part`) or the "Grund:" of its
+    text. Such a disruption is an incident even when it began on a full hour
+    (operator decision 2026-11-03, "Eine Störung kann auch zur vollen Stunde
+    gemeldet werden").
+    """
+    if _names_incident(_ticker_part(item).cause):
+        return True
+    match = _GRUND_RE.search(html_to_text(str(item.get("description") or "")))
+    return match is not None and _names_incident(match.group(1))
 
 
 def _message_tokens(text: str) -> frozenset[str]:

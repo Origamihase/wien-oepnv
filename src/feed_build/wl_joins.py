@@ -8,7 +8,6 @@ re-exports every name that src/, scripts/ or the tests read from it.
 
 from __future__ import annotations
 
-import re
 from collections import defaultdict
 from collections.abc import Sequence
 from datetime import datetime, timedelta
@@ -26,6 +25,7 @@ from .title_words import _HINDRANCE, _as_sentence, _is_wl_ticker, _rendered_titl
 from .wl_tickers import (
     _MAX_LISTED_WORDS, _group_cause, _cause_key, _chosen_cause, _distinct_messages, _group_span, _line_runs, _message_tokens,
     _run_incidents, _spans_meet, _telling_long_message, _ticker_groups, _ticker_line_tokens, _ticker_part,
+    _names_incident,
     _ticker_text, _ticker_time, _without_cause,
 )
 from .wl_ticker_text import (
@@ -74,17 +74,6 @@ def _planned_texts(items: Sequence[FeedItem], group: Sequence[int]) -> bool:
     return any(
         names_planned_measure(f"{_rendered_title(items[index])} {_ticker_text(items[index])}") for index in group
     )
-
-
-# WL causes that name the measure, not a reason: "N71: Ersatzverkehr Busse
-# halten …", "31: Kein Betrieb …" (the parser reads "Kein"). Over the WL cache
-# since July 2026 all four began on a full hour; they stay with the clock rule.
-_MEASURE_CAUSE_RE = re.compile(r"^(?:ersatz(?:verkehr|bus)|kein)\b", re.IGNORECASE)
-
-
-def _names_incident(cause: str) -> bool:
-    """Whether *cause* names an incident: set, no planned measure, no measure word."""
-    return bool(cause) and not names_planned_measure(cause) and not _MEASURE_CAUSE_RE.match(cause)
 
 
 def _planned_incident(items: Sequence[FeedItem], groups: Sequence[list[int]]) -> bool:
