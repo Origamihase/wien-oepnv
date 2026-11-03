@@ -1,16 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-02T23:31:23.694610+00:00",
- "built": "2026-11-03T00:31:04+01:00",
+ "updated": "2026-11-03T00:01:11.134374+00:00",
+ "built": "2026-11-03T01:00:52+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-03T00:31:04+01:00",
+  "built": "2026-11-03T01:00:52+01:00",
   "items": [
    {
-    "title": "5: Schadhafter PKW",
-    "time_line": "Heute"
+    "title": "5: Schadhafter Pkw",
+    "time_line": "Seit 00:02"
    },
    {
     "title": "N71: Busse halten auf der Hauptfahrbahn",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-27T00:01:00.929808+00:00",
-   "raw": {
-    "wl-stoerungen": 73,
-    "wl-hinweise": 89,
-    "oebb": 155,
-    "baustellen-linien": 55,
-    "baustellen-punkte": 23
-   },
-   "discarded": {
-    "wl": 15,
-    "oebb": 131,
-    "baustellen": 70
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 113
-   }
-  },
   {
    "t": "2026-10-27T00:31:08.949078+00:00",
    "raw": {
@@ -6751,17 +6731,37 @@
     "oebb": 6,
     "wl": 85
    }
+  },
+  {
+   "t": "2026-11-03T00:01:11.134374+00:00",
+   "raw": {
+    "wl-stoerungen": 62,
+    "wl-hinweise": 71,
+    "oebb": 172,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 14,
+    "oebb": 151,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 6,
+    "wl": 90
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-02T23:31:23.694610+00:00"
+   "last_ok": "2026-11-03T00:01:11.134374+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-02T23:31:23.694610+00:00"
+   "last_ok": "2026-11-03T00:01:11.134374+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-02T23:31:23.694610+00:00"
+   "last_ok": "2026-11-03T00:01:11.134374+00:00"
   }
  }
 }
