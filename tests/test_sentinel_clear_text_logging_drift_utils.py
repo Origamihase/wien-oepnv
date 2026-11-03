@@ -401,6 +401,14 @@ WALKER_MODULES: tuple[str, ...] = (
     "src/providers/vor_quota.py",
     "src/providers/oebb.py",
     "src/providers/wl_fetch.py",
+    # Moved out of wl_fetch.py (700-line rule, 2026-11-02); the
+    # bound-exception log sites in ``_get_json`` / ``_iso`` live here now.
+    "src/providers/wl_api.py",
+    "src/providers/wl_item_fields.py",
+    "src/providers/wl_source_outage.py",
+    "src/providers/wl_ticker_fold.py",
+    "src/providers/wl_title_context.py",
+    "src/providers/wl_aggregates.py",
     # Forward-defensive (2026-05-08): ``geo.py`` currently has no log
     # calls (it's pure math + ValueError on invalid input), but
     # locking it into the walker now prevents a future contributor

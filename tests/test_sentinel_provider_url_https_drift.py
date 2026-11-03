@@ -268,16 +268,16 @@ def test_wl_module_env_override_falls_back_to_default_on_http(
     effect — module-level reload keeps the safe HTTPS default.
     """
     monkeypatch.setenv("WL_RSS_URL", "http://www.wienerlinien.at/ogd_realtime")
-    from src.providers import wl_fetch
+    from src.providers import wl_api
 
     with caplog.at_level(logging.WARNING):
-        importlib.reload(wl_fetch)
+        importlib.reload(wl_api)
 
-    assert wl_fetch.WL_BASE == "https://www.wienerlinien.at/ogd_realtime"
+    assert wl_api.WL_BASE == "https://www.wienerlinien.at/ogd_realtime"
     assert "WL_RSS_URL" in caplog.text
 
     monkeypatch.delenv("WL_RSS_URL", raising=False)
-    importlib.reload(wl_fetch)
+    importlib.reload(wl_api)
 
 
 # ---------------------------------------------------------------------------

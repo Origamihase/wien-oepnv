@@ -88,7 +88,7 @@ def test_fetch_events_handles_invalid_json(
     def fake_fetch_content_safe(*args: Any, **kwargs: Any) -> None:
         raise ValueError("Ungültige JSON-Antwort")
 
-    monkeypatch.setattr("src.providers.wl_fetch.fetch_content_safe", fake_fetch_content_safe)
+    monkeypatch.setattr("src.providers.wl_api.fetch_content_safe", fake_fetch_content_safe)
 
     # Invalid JSON is no usable answer: without a last good one the fetch
     # fails, and the cache updater keeps the cache.

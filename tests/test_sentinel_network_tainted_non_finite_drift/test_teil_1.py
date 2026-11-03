@@ -91,7 +91,7 @@ def test_inventory_wl_fetch_get_json_pins_hooks() -> None:
 
     _assert_non_finite_pin(
         _get_json,
-        where="src/providers/wl_fetch.py:_get_json (Wiener Linien API)",
+        where="src/providers/wl_api.py:_get_json (Wiener Linien API)",
     )
 
 
@@ -271,13 +271,13 @@ def test_poc_wl_fetch_get_json_rejects_planted_NaN(monkeypatch: pytest.MonkeyPat
 
     Marker: SENTINEL_NETWORK_TAINTED_NON_FINITE_DRIFT.
     """
-    from src.providers import wl_fetch
+    from src.providers import wl_api, wl_fetch
 
     def _mock_fetch(*_args: Any, **_kwargs: Any) -> bytes:
         return b'{"latency_ms": NaN, "ok": true}'
 
-    monkeypatch.setattr(wl_fetch, "fetch_content_safe", _mock_fetch)
-    monkeypatch.setattr(wl_fetch, "validate_http_url", lambda _u: True)
+    monkeypatch.setattr(wl_api, "fetch_content_safe", _mock_fetch)
+    monkeypatch.setattr(wl_api, "validate_http_url", lambda _u: True)
 
     # Use the public _get_json entry point; the inner _fetch closure
     # runs over a Session passed via session_with_retries — patch it.
@@ -291,7 +291,7 @@ def test_poc_wl_fetch_get_json_rejects_planted_NaN(monkeypatch: pytest.MonkeyPat
         def close(self) -> None:
             pass
 
-    monkeypatch.setattr(wl_fetch, "session_with_retries", lambda *_a, **_k: _FakeSession())
+    monkeypatch.setattr(wl_api, "session_with_retries", lambda *_a, **_k: _FakeSession())
 
     result = wl_fetch._get_json("trafficInfoList", session=cast(requests.Session, _FakeSession()))
     # Post-fix: planted NaN is treated as a decode failure → {}.
@@ -306,13 +306,13 @@ def test_poc_wl_fetch_get_json_rejects_planted_scientific_overflow(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     """``1e1000`` upstream value must NOT propagate as ``float('inf')``."""
-    from src.providers import wl_fetch
+    from src.providers import wl_api, wl_fetch
 
     def _mock_fetch(*_args: Any, **_kwargs: Any) -> bytes:
         return b'{"latency_ms": 1e1000}'
 
-    monkeypatch.setattr(wl_fetch, "fetch_content_safe", _mock_fetch)
-    monkeypatch.setattr(wl_fetch, "validate_http_url", lambda _u: True)
+    monkeypatch.setattr(wl_api, "fetch_content_safe", _mock_fetch)
+    monkeypatch.setattr(wl_api, "validate_http_url", lambda _u: True)
 
     class _FakeSession:
         def __enter__(self) -> _FakeSession:
@@ -324,7 +324,7 @@ def test_poc_wl_fetch_get_json_rejects_planted_scientific_overflow(
         def close(self) -> None:
             pass
 
-    monkeypatch.setattr(wl_fetch, "session_with_retries", lambda *_a, **_k: _FakeSession())
+    monkeypatch.setattr(wl_api, "session_with_retries", lambda *_a, **_k: _FakeSession())
 
     result = wl_fetch._get_json("trafficInfoList", session=cast(requests.Session, _FakeSession()))
     assert result == {}
@@ -334,13 +334,13 @@ def test_poc_wl_fetch_get_json_finite_payload_round_trips(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     """A finite upstream payload must still parse correctly post-fix."""
-    from src.providers import wl_fetch
+    from src.providers import wl_api, wl_fetch
 
     def _mock_fetch(*_args: Any, **_kwargs: Any) -> bytes:
         return b'{"latency_ms": 12.5, "ok": true}'
 
-    monkeypatch.setattr(wl_fetch, "fetch_content_safe", _mock_fetch)
-    monkeypatch.setattr(wl_fetch, "validate_http_url", lambda _u: True)
+    monkeypatch.setattr(wl_api, "fetch_content_safe", _mock_fetch)
+    monkeypatch.setattr(wl_api, "validate_http_url", lambda _u: True)
 
     class _FakeSession:
         def __enter__(self) -> _FakeSession:
@@ -352,7 +352,7 @@ def test_poc_wl_fetch_get_json_finite_payload_round_trips(
         def close(self) -> None:
             pass
 
-    monkeypatch.setattr(wl_fetch, "session_with_retries", lambda *_a, **_k: _FakeSession())
+    monkeypatch.setattr(wl_api, "session_with_retries", lambda *_a, **_k: _FakeSession())
 
     result = wl_fetch._get_json("trafficInfoList", session=cast(requests.Session, _FakeSession()))
     assert result == {"latency_ms": 12.5, "ok": True}
