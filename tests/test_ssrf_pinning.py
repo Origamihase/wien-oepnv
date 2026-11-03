@@ -4,6 +4,7 @@ from src.utils.http import fetch_content_safe
 import socket
 import requests
 from urllib.parse import urlparse
+from tests._conftest.http_bindings import patch_all
 
 def test_fetch_content_safe_pins_dns() -> None:
     # Setup
@@ -11,7 +12,7 @@ def test_fetch_content_safe_pins_dns() -> None:
     safe_ip = "93.184.216.34"
 
     # Mock _resolve_hostname_safe to return safe IP
-    with patch("src.utils.http._resolve_hostname_safe") as mock_resolve:
+    with patch_all("_resolve_hostname_safe") as mock_resolve:
         mock_resolve.return_value = [(socket.AF_INET, socket.SOCK_STREAM, 6, '', (safe_ip, 80))]
 
         session = requests.Session()
@@ -52,7 +53,7 @@ def test_fetch_content_safe_https_skipped() -> None:
     url = "https://example.com/foo"
     safe_ip = "93.184.216.34"
 
-    with patch("src.utils.http._resolve_hostname_safe") as mock_resolve:
+    with patch_all("_resolve_hostname_safe") as mock_resolve:
         mock_resolve.return_value = [(socket.AF_INET, socket.SOCK_STREAM, 6, '', (safe_ip, 443))]
 
         session = requests.Session()

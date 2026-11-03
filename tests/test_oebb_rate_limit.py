@@ -9,6 +9,7 @@ import requests
 
 import src.providers.oebb as oebb
 from tests.mock_utils import get_mock_socket_structure
+from tests._conftest.http_bindings import patch_all
 
 
 class DummyResponse:
@@ -122,8 +123,7 @@ def test_rate_limit_retries_once_after_wait(
     caplog.set_level(logging.WARNING, logger=oebb.log.name)
 
     # Mock DNS resolution to return a known IP, as request_safe pins HTTP URLs
-    from unittest.mock import patch
-    with patch("src.utils.http._resolve_hostname_safe") as mock_resolve:
+    with patch_all("_resolve_hostname_safe") as mock_resolve:
         mock_resolve.return_value = [(2, 1, 6, '', ('1.2.3.4', 80))]
 
         # Use HTTP to avoid SSL/PinnedAdapter complexity in mock
@@ -157,8 +157,7 @@ def test_rate_limit_raises_http_error_after_retry(monkeypatch: pytest.MonkeyPatc
     monkeypatch.setattr(oebb, "session_with_retries", lambda *a, **kw: DummySession(responses, calls))
 
     # Mock DNS resolution to return a known IP
-    from unittest.mock import patch
-    with patch("src.utils.http._resolve_hostname_safe") as mock_resolve:
+    with patch_all("_resolve_hostname_safe") as mock_resolve:
         mock_resolve.return_value = [(2, 1, 6, '', ('1.2.3.4', 80))]
 
         import pytest

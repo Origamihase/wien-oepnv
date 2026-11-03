@@ -384,6 +384,15 @@ WALKER_MODULES: tuple[str, ...] = (
     "src/utils/cache.py",
     "src/utils/locking.py",
     "src/utils/http.py",
+    # The parts of src/utils/http.py (split 2026-11-02, 700-line rule).
+    "src/utils/http_safety/__init__.py",
+    "src/utils/http_safety/adapters.py",
+    "src/utils/http_safety/ip_guard.py",
+    "src/utils/http_safety/limits.py",
+    "src/utils/http_safety/peer.py",
+    "src/utils/http_safety/redaction.py",
+    "src/utils/http_safety/request_steps.py",
+    "src/utils/http_safety/sessions.py",
     "src/build_feed.py",
     # Extended in the post-Scribe Sentinel sweep (2026-05-08): every
     # production module whose ``except Exception as exc`` paths log

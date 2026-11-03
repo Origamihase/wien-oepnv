@@ -2,6 +2,7 @@
 import responses
 from unittest.mock import MagicMock, patch
 from src.utils.http import session_with_retries, validate_http_url
+from tests._conftest.http_bindings import patch_all
 
 def test_redirect_limit_enforcement() -> None:
     """Verify that the session redirect limit is securely configured."""
@@ -71,7 +72,7 @@ def test_extended_unsafe_tlds_blocked() -> None:
 def test_unsafe_tlds_blocked_with_dns_check() -> None:
     """Verify that infrastructure TLDs are blocked even if DNS check is enabled and resolves."""
 
-    with patch("src.utils.http._resolve_hostname_safe") as mock_resolve:
+    with patch_all("_resolve_hostname_safe") as mock_resolve:
         # Simulate resolving to a safe public IP to mimic an attacker
         # tricking DNS or an internal environment resolving .local
         mock_resolve.return_value = [(2, 1, 6, '', ('8.8.8.8', 80))]

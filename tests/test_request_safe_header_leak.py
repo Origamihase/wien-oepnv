@@ -1,6 +1,7 @@
 import responses
 from unittest.mock import patch
 from src.utils.http import request_safe, session_with_retries
+from tests._conftest.http_bindings import patch_all
 
 @responses.activate
 def test_request_safe_strips_session_headers_on_redirect() -> None:
@@ -28,7 +29,7 @@ def test_request_safe_strips_session_headers_on_redirect() -> None:
     )
 
     # Mock DNS resolution to return safe IP
-    with patch("src.utils.http._resolve_hostname_safe") as mock_resolve:
+    with patch_all("_resolve_hostname_safe") as mock_resolve:
         # Return a safe IP for any hostname
         mock_resolve.return_value = [
             (2, 1, 6, '', (target_ip, 80))

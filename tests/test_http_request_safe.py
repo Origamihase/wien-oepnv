@@ -3,6 +3,7 @@ from unittest.mock import MagicMock, patch
 import requests
 import socket
 from src.utils.http import session_with_retries, request_safe
+from tests._conftest.http_bindings import patch_all
 
 class TestHTTPRequestSafe(unittest.TestCase):
     def test_request_safe_post_redirect_method_handling(self) -> None:
@@ -15,7 +16,7 @@ class TestHTTPRequestSafe(unittest.TestCase):
         # Mock getaddrinfo to always return safe IP
         mock_addr_info = [(socket.AF_INET, socket.SOCK_STREAM, 6, '', (safe_ip, 80))]
 
-        with patch('src.utils.http._resolve_hostname_safe', return_value=mock_addr_info):
+        with patch_all("_resolve_hostname_safe", return_value=mock_addr_info):
             # We mock session.request to control responses directly
             with patch('requests.Session.request') as mock_request:
 
@@ -81,7 +82,7 @@ class TestHTTPRequestSafe(unittest.TestCase):
         safe_ip = "8.8.8.8"
         mock_addr_info = [(socket.AF_INET, socket.SOCK_STREAM, 6, '', (safe_ip, 80))]
 
-        with patch('src.utils.http._resolve_hostname_safe', return_value=mock_addr_info):
+        with patch_all("_resolve_hostname_safe", return_value=mock_addr_info):
             with patch('requests.Session.request') as mock_request:
 
                 # Response 1: 307 Temporary Redirect
@@ -136,7 +137,7 @@ class TestHTTPRequestSafe(unittest.TestCase):
         safe_ip = "8.8.8.8"
         mock_addr_info = [(socket.AF_INET, socket.SOCK_STREAM, 6, '', (safe_ip, 80))]
 
-        with patch('src.utils.http._resolve_hostname_safe', return_value=mock_addr_info):
+        with patch_all("_resolve_hostname_safe", return_value=mock_addr_info):
             with patch('requests.Session.request') as mock_request:
                 resp = requests.Response()
                 resp.status_code = 200
@@ -181,7 +182,7 @@ class TestHTTPRequestSafe(unittest.TestCase):
         def custom_hook(response: requests.Response, *args: object, **kwargs: object) -> None:
             custom_hook_calls.append("called")
 
-        with patch('src.utils.http._resolve_hostname_safe', return_value=mock_addr_info):
+        with patch_all("_resolve_hostname_safe", return_value=mock_addr_info):
             with patch('requests.Session.request') as mock_request:
                 resp = requests.Response()
                 resp.status_code = 200
@@ -226,7 +227,7 @@ class TestHTTPRequestSafe(unittest.TestCase):
         safe_ip = "8.8.8.8"
         mock_addr_info = [(socket.AF_INET, socket.SOCK_STREAM, 6, '', (safe_ip, 80))]
 
-        with patch('src.utils.http._resolve_hostname_safe', return_value=mock_addr_info):
+        with patch_all("_resolve_hostname_safe", return_value=mock_addr_info):
             # We freeze monotonic so we can control elapsed time precisely.
             # Sequence of monotonic reads inside request_safe:
             #   (1) start_time = time.monotonic()           — t=0

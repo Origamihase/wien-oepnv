@@ -193,6 +193,7 @@ def stub_public_dns(monkeypatch: pytest.MonkeyPatch) -> str:
     from typing import Any
 
     import src.utils.http as http_utils
+    from tests._conftest.http_bindings import setattr_all
 
     # Guard: the stub must survive the real safety check, otherwise every
     # test using it would fail for the wrong reason. (Bound to a name first
@@ -203,7 +204,9 @@ def stub_public_dns(monkeypatch: pytest.MonkeyPatch) -> str:
     def _resolve(hostname: str) -> list[tuple[Any, ...]]:
         return [(socket.AF_INET, socket.SOCK_STREAM, 6, "", (STUB_PUBLIC_IP, 0))]
 
-    monkeypatch.setattr(http_utils, "_resolve_hostname_safe", _resolve)
+    # Every binding: since 2026-11-02 the resolver is also read from
+    # src/utils/http_safety/*.py (validate_http_url, the SafeDNS connections).
+    setattr_all(monkeypatch, "_resolve_hostname_safe", _resolve)
     return STUB_PUBLIC_IP
 
 

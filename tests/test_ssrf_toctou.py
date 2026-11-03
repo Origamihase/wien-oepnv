@@ -3,13 +3,14 @@ import pytest
 import requests
 from unittest.mock import MagicMock, patch
 from src.utils.http import fetch_content_safe
+from tests._conftest.http_bindings import patch_all
 
 def test_fetch_content_safe_ssrf_bypass_on_error() -> None:
     # Setup
     url = "http://evil.com/secret"
 
     # 1. Mock DNS to pass initial validation (return a public IP)
-    with patch("src.utils.http._resolve_hostname_safe") as mock_dns:
+    with patch_all("_resolve_hostname_safe") as mock_dns:
         # 93.184.216.34 is example.com (safe)
         mock_dns.return_value = [(2, 1, 6, '', ('93.184.216.34', 80))]
 

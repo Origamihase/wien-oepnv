@@ -13,6 +13,7 @@ from typing import Any
 import pytest
 
 from scripts import update_baustellen_cache
+from tests._conftest.http_bindings import setattr_all
 
 
 def _patch_http_layer_bypass(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -117,8 +118,10 @@ def _patch_http_layer_bypass(monkeypatch: pytest.MonkeyPatch) -> None:
     module = sys.modules["src.utils.http"]
     monkeypatch.setattr(module, "validate_http_url", lambda url, **kw: url)
     monkeypatch.setattr(module, "verify_response_ip", lambda _: None)
-    monkeypatch.setattr(module, "_resolve_hostname_safe", _guarded_resolve)
-    monkeypatch.setattr(module, "is_ip_safe", lambda _ip, **_kw: True)
+    # Since the split of src/utils/http.py (2026-11-02) both names are also
+    # read from src/utils/http_safety/*.py: replace every binding.
+    setattr_all(monkeypatch, "_resolve_hostname_safe", _guarded_resolve)
+    setattr_all(monkeypatch, "is_ip_safe", lambda _ip, **_kw: True)
 
 
 SAMPLE_PATH = Path(__file__).resolve().parents[2] / "data" / "samples" / "baustellen_sample.geojson"

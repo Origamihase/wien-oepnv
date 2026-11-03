@@ -4,10 +4,11 @@ from typing import Any
 from unittest.mock import MagicMock, patch
 import requests
 from src.utils.http import request_safe
+from tests._conftest.http_bindings import patch_all
 
 class TestRedirectParamStripping(unittest.TestCase):
-    @patch("src.utils.http._resolve_hostname_safe")
-    @patch("src.utils.http.is_ip_safe")
+    @patch_all("_resolve_hostname_safe")
+    @patch_all("is_ip_safe")
     def test_sensitive_param_stripping_on_redirect(
         self,
         mock_is_ip_safe: MagicMock,

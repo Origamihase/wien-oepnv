@@ -21,7 +21,6 @@ from typing import Any
 
 import pytest
 
-from src.utils import http as http_utils
 from src.utils.http import (
     PinnedHTTPSAdapter,
     PinnedHTTPSConnection,
@@ -30,6 +29,7 @@ from src.utils.http import (
     SafeDNSHTTPSConnection,
 )
 from tests.conftest import STUB_PUBLIC_IP
+from tests._conftest.http_bindings import setattr_all
 
 OTHER_PUBLIC_IP = "140.82.121.7"
 
@@ -84,7 +84,7 @@ def _resolve_to(monkeypatch: pytest.MonkeyPatch, *ips: str) -> list[str]:
         looked_up.append(hostname)
         return _answers(*ips)
 
-    monkeypatch.setattr(http_utils, "_resolve_hostname_safe", _resolve)
+    setattr_all(monkeypatch, "_resolve_hostname_safe", _resolve)
     return looked_up
 
 
