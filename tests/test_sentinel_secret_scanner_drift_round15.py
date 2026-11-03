@@ -534,7 +534,13 @@ def test_secret_scanner_module_contains_xoxe_known_token_entry() -> None:
     (direct AND chained shapes)."""
     from src.utils import secret_scanner
 
-    source = Path(secret_scanner.__file__).read_text(encoding="utf-8")
+    # The _KNOWN_TOKENS entries live in src/utils/secret_patterns/ since the
+    # 2026-11-02 split; read the facade together with its pattern modules.
+    scanner_path = Path(secret_scanner.__file__)
+    source = "".join(
+        p.read_text(encoding="utf-8")
+        for p in [scanner_path, *sorted((scanner_path.parent / "secret_patterns").glob("*.py"))]
+    )
     assert "xoxe" in source, (
         "secret_scanner.py must contain an xoxe- detection pattern "
         "(Slack V2 token rotation refresh token)"
@@ -549,7 +555,13 @@ def test_secret_scanner_module_contains_xoxc_known_token_entry() -> None:
     """Inventory pin: ``xoxc-`` browser session token detector present."""
     from src.utils import secret_scanner
 
-    source = Path(secret_scanner.__file__).read_text(encoding="utf-8")
+    # The _KNOWN_TOKENS entries live in src/utils/secret_patterns/ since the
+    # 2026-11-02 split; read the facade together with its pattern modules.
+    scanner_path = Path(secret_scanner.__file__)
+    source = "".join(
+        p.read_text(encoding="utf-8")
+        for p in [scanner_path, *sorted((scanner_path.parent / "secret_patterns").glob("*.py"))]
+    )
     assert "xoxc-" in source, (
         "secret_scanner.py must contain an xoxc- detection pattern "
         "(Slack browser session token)"
@@ -561,7 +573,13 @@ def test_secret_scanner_module_contains_xoxd_known_token_entry() -> None:
     """Inventory pin: ``xoxd-`` cookie session token detector present."""
     from src.utils import secret_scanner
 
-    source = Path(secret_scanner.__file__).read_text(encoding="utf-8")
+    # The _KNOWN_TOKENS entries live in src/utils/secret_patterns/ since the
+    # 2026-11-02 split; read the facade together with its pattern modules.
+    scanner_path = Path(secret_scanner.__file__)
+    source = "".join(
+        p.read_text(encoding="utf-8")
+        for p in [scanner_path, *sorted((scanner_path.parent / "secret_patterns").glob("*.py"))]
+    )
     assert "xoxd-" in source, (
         "secret_scanner.py must contain an xoxd- detection pattern "
         "(Slack cookie session token)"

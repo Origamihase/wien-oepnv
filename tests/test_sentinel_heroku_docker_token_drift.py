@@ -652,7 +652,13 @@ def test_secret_scanner_module_contains_heroku_known_token_entry() -> None:
 
     from src.utils import secret_scanner
 
-    source = Path(secret_scanner.__file__).read_text(encoding="utf-8")
+    # The _KNOWN_TOKENS entries live in src/utils/secret_patterns/ since the
+    # 2026-11-02 split; read the facade together with its pattern modules.
+    scanner_path = Path(secret_scanner.__file__)
+    source = "".join(
+        p.read_text(encoding="utf-8")
+        for p in [scanner_path, *sorted((scanner_path.parent / "secret_patterns").glob("*.py"))]
+    )
     assert "HRKU-" in source, (
         "secret_scanner.py must contain an HRKU- detection pattern "
         "(Heroku Platform API Token)"
@@ -669,7 +675,13 @@ def test_secret_scanner_module_contains_docker_hub_known_token_entry() -> None:
 
     from src.utils import secret_scanner
 
-    source = Path(secret_scanner.__file__).read_text(encoding="utf-8")
+    # The _KNOWN_TOKENS entries live in src/utils/secret_patterns/ since the
+    # 2026-11-02 split; read the facade together with its pattern modules.
+    scanner_path = Path(secret_scanner.__file__)
+    source = "".join(
+        p.read_text(encoding="utf-8")
+        for p in [scanner_path, *sorted((scanner_path.parent / "secret_patterns").glob("*.py"))]
+    )
     assert "dckr_pat_" in source, (
         "secret_scanner.py must contain a dckr_pat_ detection pattern "
         "(Docker Hub Personal Access Token)"
