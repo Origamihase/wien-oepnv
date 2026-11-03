@@ -235,7 +235,9 @@
   // the same Vienna day is the minute WL entered the incident, which the
   // time line reads as its start too (``_since_time``), unless it sits on a
   // full hour, the mark of a pre-entered measure (``_scheduled_clock``;
-  // Vienna's offsets are whole hours, so the UTC minute is Vienna's). A begin at 00:00
+  // Vienna's offsets are whole hours, so the UTC minute is Vienna's). The
+  // time line still shows a full-hour ``starts_at`` of an incident cause
+  // (``_incident_cause``, 2026-11-03); the tile shows that start too. A begin at 00:00
   // Vienna time marks a day and shows as a date. An end shows as a date
   // alone, like on the TV: its clock time is a buffer (23:59, 01:00, 04:00),
   // not an announced time.

@@ -593,11 +593,13 @@ verdrängt eine andere Störung.
     hält Karl-Waldbrunner-Platz …“ ohne Ursache ab 00:00:14 gehört zur
     Baustelle). Ein Störungswort als Ursache („Schadhafter PKW“,
     „Rettungseinsatz“) hat Vorrang vor der vollen Stunde (Michaels
-    Entscheidung vom 03.11.2026, `_names_incident`): Am 24.10. um 00:31
+    Entscheidung vom 03.11.2026, `_names_incident` in
+    `src/feed_build/wl_tickers.py`): Am 24.10. um 00:31
     stand sonst „11A: Schadhafter PKW [Heute]“ (ab 00:00:28) als zweiter
-    Eintrag neben „11A: Falschparker [Seit 00:03]“. „Ersatzverkehr“ und
-    „Kein (Betrieb)“ nennen die Maßnahme, keinen Grund, und bleiben bei der
-    Regel der vollen Stunde. Der
+    Eintrag neben „11A: Falschparker [Seit 00:03]“. „Ersatzverkehr“,
+    „Ersatzbus“, „(Derzeit) kein“, „Busse/Züge halten“, „Linie … benützen“,
+    „Betrieb ab/über …“ und „Umleitung“ nennen die Maßnahme, keinen Grund,
+    und bleiben bei der Regel der vollen Stunde. Der
     Eintrag der Baustelle geht in ihren Hinweis auf
     (`_absorb_works_tickers`) oder behält seinen Platz. Störungen
     untereinander und geplante Maßnahmen untereinander teilen sich weiter

@@ -512,8 +512,18 @@
     15:06:30). Vorab eingetragene Maßnahmen schaltet WL zur vollen Stunde
     ein, wenige Sekunden später („12: Betrieb ab Franz-Josefs-Bahnhof“
     04:00:16), ohne dass der Titel die Ursache nennt; ein Beginn auf einer
-    vollen Stunde zeigt deshalb keine Uhrzeit. Ein Einsatz, der zufällig zur
-    vollen Stunde beginnt, zeigt weiter „[Heute]“. Die Beginne passen zur
+    vollen Stunde zeigt deshalb keine Uhrzeit. Nennt die Ursache eine
+    Störung, zeigt auch ein Beginn zur vollen Stunde die Uhrzeit (Michaels
+    Entscheidung vom 03.11.2026: „Eine Störung kann auch zur vollen Stunde
+    gemeldet werden“, „[Seit hh:00] bringt mehr Infos“; `_incident_cause`
+    in `src/feed_build/wl_tickers.py`): die Ursache im Titel („N71:
+    Polizeieinsatz“ ab 02:00:25) oder das „Grund:“ im Text („U2:
+    Verspätungen“ mit „Grund: Schadhaftes Fahrzeug.“). Maßnahmewörter
+    („Ersatzverkehr“, „Busse halten“, „Betrieb ab …“) zählen nicht als
+    Störung. Ein früheres `pubDate` auf einer vollen Stunde zieht den Beginn
+    weiter nicht vor, es ist das Zeichen einer alten Kurzmeldung. Über jeden
+    dritten Stand seit Juli (2 056) zeigen 65 Störungen jetzt „[Seit hh:00]“
+    statt „[Heute]“, alle 26 Maßnahmen bleiben bei „[Heute]“. Die Beginne passen zur
     Beobachtung: 2 038 der 2 324 WL-Störungen seit Juli tauchten binnen 35
     Minuten nach ihrem `starts_at` im Feed auf (Takt 30 Minuten).
     Eine Kurzmeldung darf den Beginn der Störungsmeldung (WL-Nummer
