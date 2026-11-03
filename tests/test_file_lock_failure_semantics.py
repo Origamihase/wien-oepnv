@@ -148,7 +148,7 @@ def _resolve_repo_callers() -> list[tuple[str, str, bool]]:
     callers: list[tuple[str, str, bool]] = []
     repo = Path(__file__).resolve().parents[1]
     for relpath in (
-        "src/providers/vor.py",
+        "src/providers/vor_quota.py",
         "src/build_feed.py",
     ):
         text = (repo / relpath).read_text(encoding="utf-8")

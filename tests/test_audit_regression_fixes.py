@@ -138,7 +138,7 @@ def test_sanitize_masks_access_id_variants(line: str) -> None:
 def test_load_request_count_cache_includes_unsaved_delta(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    from src.providers import vor
+    from src.providers import vor_quota as vor
 
     today = datetime.now(ZoneInfo("Europe/Vienna")).strftime("%Y-%m-%d")
     monkeypatch.setitem(vor._QUOTA_CACHE, "date", today)

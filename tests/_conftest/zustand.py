@@ -116,7 +116,7 @@ def _root_logger_stays_clean() -> Iterator[None]:
 
 @pytest.fixture(autouse=True)
 def reset_vor_request_count(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Iterator[None]:
-    import src.providers.vor as vor
+    import src.providers.vor_quota as vor
 
     path = tmp_path / "vor_request_count.json"
     monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", path)

@@ -396,6 +396,9 @@ WALKER_MODULES: tuple[str, ...] = (
     "src/feed/feed_health.py",
     "src/feed/github_issue.py",
     "src/providers/vor.py",
+    "src/providers/vor_auth.py",
+    "src/providers/vor_env.py",
+    "src/providers/vor_quota.py",
     "src/providers/oebb.py",
     "src/providers/wl_fetch.py",
     # Forward-defensive (2026-05-08): ``geo.py`` currently has no log

@@ -9,6 +9,9 @@ on:
     # VOR behaviour belong here.
     paths:
       - "src/providers/vor.py"
+      - "src/providers/vor_auth.py"
+      - "src/providers/vor_env.py"
+      - "src/providers/vor_quota.py"
       - "scripts/update_stammstrecke_hbf.py"
       - "scripts/update_stammstrecke_status.py"
       - "src/stammstrecke/core.py"

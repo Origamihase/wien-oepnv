@@ -50,7 +50,7 @@ from zoneinfo import ZoneInfo
 
 import pytest
 
-import src.providers.vor as vor
+import src.providers.vor_quota as vor
 
 
 @pytest.fixture(autouse=True)
@@ -203,7 +203,7 @@ def test_vor_quota_load_site_carries_clamp_against_negative_drift() -> None:
     canonical post-fix shape so any such regression fails at PR-review.
     """
     repo_root = Path(__file__).resolve().parents[1]
-    source = (repo_root / "src" / "providers" / "vor.py").read_text(
+    source = (repo_root / "src" / "providers" / "vor_quota.py").read_text(
         encoding="utf-8"
     )
 
@@ -211,14 +211,14 @@ def test_vor_quota_load_site_carries_clamp_against_negative_drift() -> None:
     # block must include the `max(0, int_count)` clamp adjacent to the
     # try/except ValueError/TypeError guard.
     assert "int_count = max(0, int_count)" in source, (
-        "src/providers/vor.py:load_request_count must clamp int_count at 0 "
+        "src/providers/vor_quota.py:load_request_count must clamp int_count at 0 "
         "via `int_count = max(0, int_count)` to defeat the negative-count "
         "quota-bypass attack from a poisoned data/vor_request_count.json. "
         "See tests/test_sentinel_vor_quota_negative_bypass.py for PoC."
     )
 
     assert "disk_count = max(0, disk_count)" in source, (
-        "src/providers/vor.py:save_request_count must also clamp disk_count "
+        "src/providers/vor_quota.py:save_request_count must also clamp disk_count "
         "at 0 inside the file_lock block. Without it, the tampered file is "
         "re-read under lock and the negative offset is perpetuated to "
         "subsequent runs even after load_request_count is fixed."

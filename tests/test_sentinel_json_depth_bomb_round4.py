@@ -117,7 +117,7 @@ def test_precondition_deep_bomb_raises_recursion_error() -> None:
 
 
 def test_vor_load_request_count_handles_depth_bomb(tmp_path: Path) -> None:
-    from src.providers import vor
+    from src.providers import vor_quota as vor
 
     poisoned = tmp_path / "vor_request_count.json"
     poisoned.write_text(DEEP_BOMB_STR, encoding="utf-8")
@@ -132,7 +132,7 @@ def test_vor_load_request_count_handles_depth_bomb(tmp_path: Path) -> None:
 def test_vor_save_request_count_handles_depth_bomb(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    from src.providers import vor
+    from src.providers import vor_quota as vor
 
     poisoned = tmp_path / "vor_request_count.json"
     poisoned.write_text(DEEP_BOMB_STR, encoding="utf-8")

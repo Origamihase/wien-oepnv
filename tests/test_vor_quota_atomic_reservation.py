@@ -41,6 +41,7 @@ import pytest
 from zoneinfo import ZoneInfo
 
 import src.providers.vor as vor
+import src.providers.vor_quota as vor_quota
 
 VIENNA = ZoneInfo("Europe/Vienna")
 
@@ -72,8 +73,10 @@ def _reserve_in_process(
 
     os.environ["VOR_MAX_REQUESTS_PER_DAY"] = str(cap)
 
-    import src.providers.vor as vor_module
+    import src.providers.vor as vor_facade
+    import src.providers.vor_quota as vor_module
 
+    importlib.reload(vor_facade)
     importlib.reload(vor_module)
     vor_module.REQUEST_COUNT_FILE = _Path(count_file)
     assert vor_module.MAX_REQUESTS_PER_DAY == cap
@@ -142,10 +145,10 @@ def test_reserve_request_slot_refuses_when_budget_spent(
 ) -> None:
     """An exhausted ledger refuses the reservation without incrementing."""
     count_file = tmp_path / "vor_request_count.json"
-    monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", count_file)
-    monkeypatch.setitem(vor._QUOTA_CACHE, "date", None)
-    monkeypatch.setitem(vor._QUOTA_CACHE, "count", 0)
-    monkeypatch.setitem(vor._QUOTA_CACHE, "unsaved_delta", 0)
+    monkeypatch.setattr(vor_quota, "REQUEST_COUNT_FILE", count_file)
+    monkeypatch.setitem(vor_quota._QUOTA_CACHE, "date", None)
+    monkeypatch.setitem(vor_quota._QUOTA_CACHE, "count", 0)
+    monkeypatch.setitem(vor_quota._QUOTA_CACHE, "unsaved_delta", 0)
 
     count_file.write_text(
         json.dumps({"date": _today_iso(), "requests": vor.MAX_REQUESTS_PER_DAY}),
@@ -165,10 +168,10 @@ def test_reserve_request_slot_grants_the_last_free_slot(
 ) -> None:
     """The boundary slot (``MAX - 1`` -> ``MAX``) is still handed out."""
     count_file = tmp_path / "vor_request_count.json"
-    monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", count_file)
-    monkeypatch.setitem(vor._QUOTA_CACHE, "date", None)
-    monkeypatch.setitem(vor._QUOTA_CACHE, "count", 0)
-    monkeypatch.setitem(vor._QUOTA_CACHE, "unsaved_delta", 0)
+    monkeypatch.setattr(vor_quota, "REQUEST_COUNT_FILE", count_file)
+    monkeypatch.setitem(vor_quota._QUOTA_CACHE, "date", None)
+    monkeypatch.setitem(vor_quota._QUOTA_CACHE, "count", 0)
+    monkeypatch.setitem(vor_quota._QUOTA_CACHE, "unsaved_delta", 0)
 
     count_file.write_text(
         json.dumps({"date": _today_iso(), "requests": vor.MAX_REQUESTS_PER_DAY - 1}),
@@ -191,10 +194,10 @@ def test_reserve_request_slot_negative_ledger_cannot_widen_budget(
 ) -> None:
     """A tampered negative count is clamped at 0, not treated as headroom."""
     count_file = tmp_path / "vor_request_count.json"
-    monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", count_file)
-    monkeypatch.setitem(vor._QUOTA_CACHE, "date", None)
-    monkeypatch.setitem(vor._QUOTA_CACHE, "count", 0)
-    monkeypatch.setitem(vor._QUOTA_CACHE, "unsaved_delta", 0)
+    monkeypatch.setattr(vor_quota, "REQUEST_COUNT_FILE", count_file)
+    monkeypatch.setitem(vor_quota._QUOTA_CACHE, "date", None)
+    monkeypatch.setitem(vor_quota._QUOTA_CACHE, "count", 0)
+    monkeypatch.setitem(vor_quota._QUOTA_CACHE, "unsaved_delta", 0)
 
     count_file.write_text(
         json.dumps({"date": _today_iso(), "requests": -5_000}), encoding="utf-8"
@@ -211,16 +214,16 @@ def test_reserve_request_slot_boolean_ledger_is_not_credited(
 ) -> None:
     """``true`` in the ledger must not be read as ``int(True) == 1``."""
     count_file = tmp_path / "vor_request_count.json"
-    monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", count_file)
-    monkeypatch.setitem(vor._QUOTA_CACHE, "date", None)
-    monkeypatch.setitem(vor._QUOTA_CACHE, "count", 0)
-    monkeypatch.setitem(vor._QUOTA_CACHE, "unsaved_delta", 0)
+    monkeypatch.setattr(vor_quota, "REQUEST_COUNT_FILE", count_file)
+    monkeypatch.setitem(vor_quota._QUOTA_CACHE, "date", None)
+    monkeypatch.setitem(vor_quota._QUOTA_CACHE, "count", 0)
+    monkeypatch.setitem(vor_quota._QUOTA_CACHE, "unsaved_delta", 0)
 
     count_file.write_text(
         json.dumps({"date": _today_iso(), "requests": True}), encoding="utf-8"
     )
 
-    assert vor._read_quota_file_unlocked() == (_today_iso(), 0)
+    assert vor_quota._read_quota_file_unlocked() == (_today_iso(), 0)
 
 
 def test_lock_failure_refuses_and_poisons_cache(
@@ -232,10 +235,10 @@ def test_lock_failure_refuses_and_poisons_cache(
     old, low value so the next cache-reading gate waved the call through.
     """
     count_file = tmp_path / "vor_request_count.json"
-    monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", count_file)
-    monkeypatch.setitem(vor._QUOTA_CACHE, "date", None)
-    monkeypatch.setitem(vor._QUOTA_CACHE, "count", 0)
-    monkeypatch.setitem(vor._QUOTA_CACHE, "unsaved_delta", 0)
+    monkeypatch.setattr(vor_quota, "REQUEST_COUNT_FILE", count_file)
+    monkeypatch.setitem(vor_quota._QUOTA_CACHE, "date", None)
+    monkeypatch.setitem(vor_quota._QUOTA_CACHE, "count", 0)
+    monkeypatch.setitem(vor_quota._QUOTA_CACHE, "unsaved_delta", 0)
 
     count_file.write_text(
         json.dumps({"date": _today_iso(), "requests": 7}), encoding="utf-8"
@@ -246,15 +249,15 @@ def test_lock_failure_refuses_and_poisons_cache(
         raise OSError("boom")
         yield  # type: ignore[unreachable]
 
-    monkeypatch.setattr(vor, "file_lock", failing_lock)
+    monkeypatch.setattr(vor_quota, "file_lock", failing_lock)
 
     granted, total = vor.reserve_request_slot()
 
     assert granted is False
     assert total == vor.MAX_REQUESTS_PER_DAY + 1
     # The cache is poisoned, so a cache-reading gate also refuses.
-    assert vor._QUOTA_CACHE["count"] == vor.MAX_REQUESTS_PER_DAY + 1
-    assert vor._QUOTA_CACHE["unsaved_delta"] == 0
+    assert vor_quota._QUOTA_CACHE["count"] == vor.MAX_REQUESTS_PER_DAY + 1
+    assert vor_quota._QUOTA_CACHE["unsaved_delta"] == 0
     _date, usage = vor.load_request_count()
     assert usage > vor.MAX_REQUESTS_PER_DAY
     # The ledger itself is untouched.
@@ -267,10 +270,10 @@ def test_write_failure_refuses_and_leaves_ledger_untouched(
 ) -> None:
     """A failed persist must not hand out the slot it could not record."""
     count_file = tmp_path / "vor_request_count.json"
-    monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", count_file)
-    monkeypatch.setitem(vor._QUOTA_CACHE, "date", None)
-    monkeypatch.setitem(vor._QUOTA_CACHE, "count", 0)
-    monkeypatch.setitem(vor._QUOTA_CACHE, "unsaved_delta", 0)
+    monkeypatch.setattr(vor_quota, "REQUEST_COUNT_FILE", count_file)
+    monkeypatch.setitem(vor_quota._QUOTA_CACHE, "date", None)
+    monkeypatch.setitem(vor_quota._QUOTA_CACHE, "count", 0)
+    monkeypatch.setitem(vor_quota._QUOTA_CACHE, "unsaved_delta", 0)
 
     count_file.write_text(
         json.dumps({"date": _today_iso(), "requests": 3}), encoding="utf-8"
@@ -285,7 +288,7 @@ def test_write_failure_refuses_and_leaves_ledger_untouched(
 
     assert granted is False
     assert total == vor.MAX_REQUESTS_PER_DAY + 1
-    assert vor._QUOTA_CACHE["count"] == vor.MAX_REQUESTS_PER_DAY + 1
+    assert vor_quota._QUOTA_CACHE["count"] == vor.MAX_REQUESTS_PER_DAY + 1
     stored = json.loads(count_file.read_text(encoding="utf-8"))
     assert stored["requests"] == 3
 
@@ -334,10 +337,10 @@ def test_save_request_count_still_persists_every_call(
     now lands on disk immediately.
     """
     count_file = tmp_path / "vor_request_count.json"
-    monkeypatch.setattr(vor, "REQUEST_COUNT_FILE", count_file)
-    monkeypatch.setitem(vor._QUOTA_CACHE, "date", None)
-    monkeypatch.setitem(vor._QUOTA_CACHE, "count", 0)
-    monkeypatch.setitem(vor._QUOTA_CACHE, "unsaved_delta", 0)
+    monkeypatch.setattr(vor_quota, "REQUEST_COUNT_FILE", count_file)
+    monkeypatch.setitem(vor_quota._QUOTA_CACHE, "date", None)
+    monkeypatch.setitem(vor_quota._QUOTA_CACHE, "count", 0)
+    monkeypatch.setitem(vor_quota._QUOTA_CACHE, "unsaved_delta", 0)
 
     for expected in (1, 2, 3):
         assert vor.save_request_count() == expected
