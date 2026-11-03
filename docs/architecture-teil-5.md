@@ -406,7 +406,7 @@ im Repository. Was er für dieses Projekt bedeutet:
   führen: im `<copyright>` beider Feeds (`_VAO_BASIS_DE`/`_VAO_BASIS_EN` in
   `src/feed_build/rss.py`), in der Fußzeile der Webseite (DE in
   `docs/site.html`, EN in `docs/assets/site-js/`), auf `docs/statistik.md`
-  (`VAO_BASIS_NOTE` in `scripts/generate_markdown_stats.py`), im README und in
+  (`VAO_BASIS_NOTE` in `src/markdown_stats/markdown_report.py`), im README und in
   `NOTICE.md`. VAO ist dort Grundlage, kein Lizenzgeber: Die
   Stammstrecken-Meldung ist ein eigener Text. Der Quellen-Tag `<source>`
   VOR/VAO am Item bleibt. Endet der Vertrag, müssen diese Hinweise wieder
@@ -556,7 +556,8 @@ schickte keine Mail. Gemessen ist keiner gescheitert (Update-Läufe seit
   gleichzeitige Veröffentlichungen nie dieselbe Datei schreiben) und fährt
   im Commit des Laufs mit. Ein übersprungener oder abgebrochener Schritt
   ändert seinen Eintrag nicht.
-* Die Prüfung `Nebenschritte` in `scripts/health_check.py` ist rot, solange
+* Die Prüfung „Nebenschritte“ des Health checks (`scripts/health_check.py`,
+  Code in `src/health_check/outputs.py`) ist rot, solange
   der letzte Lauf eines Nebenschritts scheiterte, und nennt Schritt,
   Zeitpunkt, letzten sauberen Lauf und den Link zum Lauf. Rot ist sie auch,
   wenn eine Aufzeichnung älter ist als die Grenze ihres Workflows (4 h für

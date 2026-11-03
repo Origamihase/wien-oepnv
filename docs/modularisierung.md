@@ -336,3 +336,10 @@ Damit ist Etappe 8 abgeschlossen, und die Altfall-Liste der 700-Zeilen-Regel
 2026-11-02 länger waren, sind aufgeteilt. `tests/test_file_line_limit.py`
 hält die Grenze jetzt für jede gezählte Datei ohne Ausnahme fest
 (`_ALTFAELLE_COUNT` ist 0).
+
+Nachtrag (2026-11-03, unabhängige Prüfung): Eine Ortsangabe in der Doku
+(„`Name` in `Datei.py`“ oder „`Datei.py:Name`“) nennt die Datei, die den
+Namen definiert, nicht die Fassade oder das Skript, das ihn nur weiterreicht.
+`tests/test_doc_code_pointers.py` prüft das für `AGENTS.md`, `README.md`,
+`CONTRIBUTING.md` und `docs/` außer `docs/archive/`; das CHANGELOG beschreibt
+den Stand seines Tages und bleibt außen vor.

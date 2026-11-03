@@ -132,6 +132,33 @@ def test_a_measure_switched_on_at_the_full_hour_keeps_today() -> None:
     assert _line(item) == "Heute"
 
 
+def test_an_incident_cause_shows_a_begin_on_the_full_hour() -> None:
+    # Operator decision 2026-11-03 ("[Seit hh:00] bringt mehr Infos"): an
+    # incident can be reported on a full hour. "N71: Polizeieinsatz" began
+    # 08.08. 02:00:25, "U2: Verspätungen" named its reason only in the text.
+    assert _line(_wl("N71: Polizeieinsatz", _at(3, 10, 0, 0), _at(3, 10, 0, 25))) == "Seit 10:00"
+    late = _wl(
+        "U2: Verspätungen", _at(3, 9, 0, 12), _at(3, 9, 0, 12),
+        description="Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    )
+    assert _line(late) == "Seit 09:00"
+
+
+@pytest.mark.parametrize(
+    "title",
+    [
+        "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
+        "26E: Busse halten Satzingerweg 41",
+        "27: Linie 25 in Tokiostraße benützen",
+        "40/41/42: Derzeit kein Linienbetrieb",
+        "25/26/27: Ersatzbus ab Josef-Baumann-Gasse",
+    ],
+)
+def test_a_measure_word_keeps_today_on_the_full_hour(title: str) -> None:
+    # Measures WL switched on at a full hour since July 2026: no incident cause.
+    assert _line(_wl(title, _at(3, 4, 0, 16), _at(3, 4, 0, 16))) == "Heute"
+
+
 def test_a_stale_full_hour_message_does_not_date_the_incident_back() -> None:
     # A reused ticker brought 00:00:25 into the item; the incident began 10:27.
     item = _wl("10A: Fahrtbehinderung Fremder Verkehrsunfall", _at(3, 0, 0, 25), _at(3, 10, 27, 20))
