@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-03T14:01:14.844479+00:00",
- "built": "2026-11-03T15:00:57+01:00",
+ "updated": "2026-11-03T14:31:08.059277+00:00",
+ "built": "2026-11-03T15:30:46+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-03T15:00:57+01:00",
+  "built": "2026-11-03T15:30:46+01:00",
   "items": [
+   {
+    "title": "U4: Verspätungen",
+    "time_line": "Seit 15:26"
+   },
    {
     "title": "42: Witterung",
     "time_line": "Seit 14:46"
@@ -17,20 +21,12 @@
     "time_line": "Seit 14:51"
    },
    {
-    "title": "9: Falschparker",
-    "time_line": "Seit 14:17"
-   },
-   {
-    "title": "U1: Betriebsstörung",
-    "time_line": "Seit 14:16"
-   },
-   {
-    "title": "13A: Rettungseinsatz",
-    "time_line": "Seit 13:56"
-   },
-   {
     "title": "O: Polizeieinsatz",
     "time_line": "Seit 13:26"
+   },
+   {
+    "title": "12A: Verkehrsunfall, Gleisbauarbeiten",
+    "time_line": "Seit heute"
    },
    {
     "title": "64A: Liesinger-Flur-Gasse",
@@ -47,31 +43,15 @@
    {
     "title": "R40/REX41/REX4/S40: Wien Franz-Josefs-Bahnhof ↔ Tulln an der Donau",
     "time_line": "Bis Mi 04.11."
+   },
+   {
+    "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
+    "time_line": "Bis 30.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-27T14:31:05.356009+00:00",
-   "raw": {
-    "wl-stoerungen": 87,
-    "wl-hinweise": 91,
-    "oebb": 164,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 22
-   },
-   "discarded": {
-    "wl": 14,
-    "oebb": 139,
-    "baustellen": 67
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 9,
-    "wl": 113
-   }
-  },
   {
    "t": "2026-10-27T15:01:13.941373+00:00",
    "raw": {
@@ -6751,17 +6731,37 @@
     "oebb": 7,
     "wl": 92
    }
+  },
+  {
+   "t": "2026-11-03T14:31:08.059277+00:00",
+   "raw": {
+    "wl-stoerungen": 66,
+    "wl-hinweise": 72,
+    "oebb": 179,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 14,
+    "oebb": 154,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 7,
+    "wl": 90
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-03T14:01:14.844479+00:00"
+   "last_ok": "2026-11-03T14:31:08.059277+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-03T14:01:14.844479+00:00"
+   "last_ok": "2026-11-03T14:31:08.059277+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-03T14:01:14.844479+00:00"
+   "last_ok": "2026-11-03T14:31:08.059277+00:00"
   }
  }
 }
