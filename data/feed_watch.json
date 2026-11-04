@@ -1,40 +1,36 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-04T18:02:07.463845+00:00",
- "built": "2026-11-04T19:01:46+01:00",
+ "updated": "2026-11-04T18:31:50.629763+00:00",
+ "built": "2026-11-04T19:31:31+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-04T19:01:46+01:00",
+  "built": "2026-11-04T19:31:31+01:00",
   "items": [
+   {
+    "title": "25/26: Verkehrsunfall",
+    "time_line": "Seit 19:23"
+   },
+   {
+    "title": "Wien Meidling ↔ Wien Liesing",
+    "time_line": "Seit 19:17"
+   },
+   {
+    "title": "U6: Polizeieinsatz",
+    "time_line": "Seit 19:28"
+   },
    {
     "title": "37: Falschparker",
     "time_line": "Seit 18:39"
    },
    {
-    "title": "74A: Signalstörung",
-    "time_line": "Seit 18:24"
-   },
-   {
-    "title": "40/41: Rettungseinsatz",
-    "time_line": "Seit 18:13"
-   },
-   {
-    "title": "10: Fremder Verkehrsunfall",
+    "title": "10: Fremdunfall",
     "time_line": "Seit 18:10"
    },
    {
-    "title": "38/40/41/42: Polizeieinsatz",
+    "title": "40/41/52/60: Polizeieinsatz",
     "time_line": "Seit 17:57"
-   },
-   {
-    "title": "52/60: Polizeieinsatz",
-    "time_line": "Seit 18:01"
-   },
-   {
-    "title": "10A: Verkehrsüberlastung",
-    "time_line": "Seit 17:01"
    },
    {
     "title": "29B: Bauarbeiten – Adolf-Loos-Gasse",
@@ -47,31 +43,15 @@
    {
     "title": "12A: Henriettenplatz",
     "time_line": "Seit heute"
+   },
+   {
+    "title": "64A: Liesinger-Flur-Gasse",
+    "time_line": "Bis Fr 06.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-28T18:30:59.516283+00:00",
-   "raw": {
-    "wl-stoerungen": 85,
-    "wl-hinweise": 82,
-    "oebb": 157,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 19
-   },
-   "discarded": {
-    "wl": 12,
-    "oebb": 132,
-    "baustellen": 65
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 111
-   }
-  },
   {
    "t": "2026-10-28T19:01:12.927246+00:00",
    "raw": {
@@ -6751,17 +6731,37 @@
     "oebb": 6,
     "wl": 101
    }
+  },
+  {
+   "t": "2026-11-04T18:31:50.629763+00:00",
+   "raw": {
+    "wl-stoerungen": 79,
+    "wl-hinweise": 72,
+    "oebb": 192,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 12,
+    "oebb": 167,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 7,
+    "wl": 97
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-04T18:02:07.463845+00:00"
+   "last_ok": "2026-11-04T18:31:50.629763+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-04T18:02:07.463845+00:00"
+   "last_ok": "2026-11-04T18:31:50.629763+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-04T18:02:07.463845+00:00"
+   "last_ok": "2026-11-04T18:31:50.629763+00:00"
   }
  }
 }
