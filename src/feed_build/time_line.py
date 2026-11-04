@@ -253,6 +253,9 @@ def _incident_since(
     # 2026-11-03, "[Seit hh:00] bringt mehr Infos"): "N71: Polizeieinsatz"
     # from 02:00:25. An earlier ``pubDate`` on a full hour still does not
     # date the item back: that is the mark of a reused stale ticker.
+    # Midnight is no exception (operator decision 2026-11-04): a disruption
+    # WL enters anew at 00:00 reads "[Seit 00:00]" even when it began the day
+    # before ("31: Wasserrohrbruch" on 03.09.2026, first published 02.09.).
     return since if not _scheduled_clock(since) or _incident_cause(it) else None
 
 

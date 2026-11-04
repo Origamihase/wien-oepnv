@@ -523,7 +523,12 @@
     Störung. Ein früheres `pubDate` auf einer vollen Stunde zieht den Beginn
     weiter nicht vor, es ist das Zeichen einer alten Kurzmeldung. Über jeden
     dritten Stand seit Juli (2 056) zeigen 65 Störungen jetzt „[Seit hh:00]“
-    statt „[Heute]“, alle 26 Maßnahmen bleiben bei „[Heute]“. Die Beginne passen zur
+    statt „[Heute]“, alle 26 Maßnahmen bleiben bei „[Heute]“. Das gilt
+    auch um 00:00: Eine Störung, die über Mitternacht läuft, trägt WL um
+    00:00 neu ein und zeigt dann „[Seit 00:00]“, auch wenn sie am Vortag
+    begann („31: Wasserrohrbruch“, erstmals 02.09.2026 06:43, am 03.09. ab
+    00:00:15). Michaels Entscheidung vom 04.11.2026: das bleibt so, keine
+    Ausnahme für Mitternacht. Die Beginne passen zur
     Beobachtung: 2 038 der 2 324 WL-Störungen seit Juli tauchten binnen 35
     Minuten nach ihrem `starts_at` im Feed auf (Takt 30 Minuten).
     Eine Kurzmeldung darf den Beginn der Störungsmeldung (WL-Nummer

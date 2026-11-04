@@ -383,3 +383,11 @@ def test_the_rendered_item_carries_the_line(monkeypatch: pytest.MonkeyPatch) -> 
     item = _wl("87A: Fahrtbehinderung wegen Rettungseinsatz", _at(3, 10, 37), _at(3, 10, 54, 13))
     content = bf._format_item_content(cast(FeedItem, item), "ident", item["starts_at"], item["ends_at"])
     assert f"[Seit{NBSP}10:37]" in content.desc_html
+
+
+def test_an_incident_cause_keeps_a_midnight_begin() -> None:
+    # Operator decision 2026-11-04: no exception for midnight. WL entered the
+    # running "31: Wasserrohrbruch" (first published 02.09.) anew at 00:00:15
+    # on 03.09.2026; the line reads "Seit 00:00".
+    item = _wl("31: Wasserrohrbruch Betrieb ab Wexstraße", _at(3, 0, 0, 15), _at(3, 0, 0, 15))
+    assert _line(item) == "Seit 00:00"
