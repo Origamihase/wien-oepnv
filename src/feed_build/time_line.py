@@ -20,7 +20,7 @@ from .base import _OEBB_SOURCE, _PLANNED_DISRUPTION_RE, _VIENNA_TZ, _parse_datet
 
 __all__ = [
     "_time_line_day", "_plausible_end", "format_local_times", "_MEASURED_SOURCES", "_first_published",
-    "_incident_since", "_is_all_clear", "_wl_incident_start",
+    "_incident_since", "_is_all_clear", "_wl_incident_start", "_shown_since",
 ]
 
 
@@ -254,6 +254,25 @@ def _incident_since(
     # from 02:00:25. An earlier ``pubDate`` on a full hour still does not
     # date the item back: that is the mark of a reused stale ticker.
     return since if not _scheduled_clock(since) or _incident_cause(it) else None
+
+
+def _shown_since(it: FeedItem, since: datetime | None) -> datetime | None:
+    """The begin the time line shows for ``since`` (:func:`_incident_since`).
+
+    WL enters a disruption that runs over midnight anew at 00:00 Vienna time,
+    a few seconds after the full hour: "31: Wasserrohrbruch Betrieb ab
+    Wexstraße", first published 02.09.2026 06:43, came back with 03.09.
+    00:00:15 and read "[Seit 00:00]" all day on 03.09.; the 2, 18, 62 and O
+    did the same on 03.09. and 05.09., "25: Hitzeschäden" on 03.07. Since the
+    incident cause beats the full hour (2026-11-03), such a start keeps the
+    line without a clock time ("[Heute]", "[Seit heute]"), as before; the item
+    still ranks as a running disruption. ÖBB (published by hand) and the
+    Stammstrecke monitor (measured) keep their begin.
+    """
+    if since is None or it.get("source") == _OEBB_SOURCE or it.get("source") in _MEASURED_SOURCES:
+        return since
+    local = _to_utc(since).astimezone(_VIENNA_TZ)
+    return None if (local.hour, local.minute) == (0, 0) else since
 
 
 # ÖBB reports a disruption that is already over in the past tense: "Wegen

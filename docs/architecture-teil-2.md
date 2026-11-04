@@ -523,7 +523,13 @@
     Störung. Ein früheres `pubDate` auf einer vollen Stunde zieht den Beginn
     weiter nicht vor, es ist das Zeichen einer alten Kurzmeldung. Über jeden
     dritten Stand seit Juli (2 056) zeigen 65 Störungen jetzt „[Seit hh:00]“
-    statt „[Heute]“, alle 26 Maßnahmen bleiben bei „[Heute]“. Die Beginne passen zur
+    statt „[Heute]“, alle 26 Maßnahmen bleiben bei „[Heute]“. Ausgenommen
+    ist ein Beginn um 00:00 Wiener Zeit: Eine Störung, die über Mitternacht
+    läuft, trägt WL um 00:00 neu ein („31: Wasserrohrbruch“, erstmals
+    02.09.2026 06:43, am 03.09. ab 00:00:15); sie zeigt die Zeile ohne
+    Uhrzeit („[Heute]“) und zählt in der Reihung weiter als laufende
+    Störung (`_shown_since` in `src/feed_build/time_line.py`, seit
+    2026-11-04; ÖBB und Stammstrecken-Monitor ausgenommen). Die Beginne passen zur
     Beobachtung: 2 038 der 2 324 WL-Störungen seit Juli tauchten binnen 35
     Minuten nach ihrem `starts_at` im Feed auf (Takt 30 Minuten).
     Eine Kurzmeldung darf den Beginn der Störungsmeldung (WL-Nummer

@@ -27,7 +27,7 @@ from .oebb_summary import (
     _oebb_what_does_not_run_first,
 )
 from .wl_measures import _every_line_in_short, _prefer_measures, _wl_measure_labels_with_colon
-from .time_line import _first_published, _incident_since, format_local_times
+from .time_line import _first_published, _incident_since, _shown_since, format_local_times
 from .summary_text import (
     _DOUBLED_FULL_STOP_RE, _EMPTY_PLACE_RE, _SPACE_BEFORE_COMMA_RE, _SPACE_BEFORE_PUNCT_RE,
     _WL_REFERRAL_BOILERPLATE_RE, _close_blocks, _compose_description, _drop_passed_expected_end,
@@ -416,9 +416,9 @@ def _format_item_content(
     time_line = format_local_times(
         starts_at if isinstance(starts_at, datetime) else None,
         shown_end,
-        since=_incident_since(
+        since=_shown_since(it, _incident_since(
             it, starts_at, _first_published(it, state.get(ident) if state is not None else None)
-        ),
+        )),
     )
     time_line = _sanitize_text(time_line)
     time_line = _WHITESPACE_CLEANUP_RE.sub(" ", time_line).strip()

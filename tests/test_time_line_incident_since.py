@@ -383,3 +383,37 @@ def test_the_rendered_item_carries_the_line(monkeypatch: pytest.MonkeyPatch) -> 
     item = _wl("87A: Fahrtbehinderung wegen Rettungseinsatz", _at(3, 10, 37), _at(3, 10, 54, 13))
     content = bf._format_item_content(cast(FeedItem, item), "ident", item["starts_at"], item["ends_at"])
     assert f"[Seit{NBSP}10:37]" in content.desc_html
+
+
+@pytest.mark.parametrize(
+    ("title", "start", "expected"),
+    [
+        # 03.09.2026: WL entered the running "31: Wasserrohrbruch" (first
+        # published 02.09. 06:43) anew at 00:00:15; the line read "[Seit 00:00]"
+        # all day. A start at midnight keeps the line without a clock time.
+        ("31: Wasserrohrbruch Betrieb ab Wexstraße", _at(3, 0, 0, 15), "[Heute]"),
+        # Any other full hour with an incident cause keeps its clock time.
+        ("N71: Polizeieinsatz", _at(3, 2, 0, 25), f"[Seit{NBSP}02:00]"),
+    ],
+)
+def test_a_midnight_start_shows_no_clock_time(
+    monkeypatch: pytest.MonkeyPatch, title: str, start: datetime, expected: str
+) -> None:
+    from functools import partial
+
+    monkeypatch.setattr(part(bf, "item_format"), "format_local_times", partial(part(bf, "time_line").format_local_times, now=NOW))
+    item = _wl(title, start, start)
+    # Still a running disruption for the order of the feed.
+    assert bf._incident_since(cast(FeedItem, item), start) is not None
+    content = bf._format_item_content(cast(FeedItem, item), "ident", item["starts_at"], item["ends_at"])
+    assert expected in content.desc_html
+
+
+def test_the_oebb_and_the_monitor_keep_a_midnight_begin() -> None:
+    from src.feed_build.time_line import _shown_since
+
+    midnight = _at(3, 0, 0, 40)
+    for source in ("ÖBB", "VOR/VAO"):
+        assert _shown_since(cast(FeedItem, {"source": source}), midnight) == midnight
+    assert _shown_since(cast(FeedItem, {"source": "Wiener Linien"}), midnight) is None
+    assert _shown_since(cast(FeedItem, {"source": "Wiener Linien"}), _at(3, 0, 1, 2)) == _at(3, 0, 1, 2)
