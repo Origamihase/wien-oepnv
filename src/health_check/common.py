@@ -80,6 +80,12 @@ KI_WAECHTER_OVERLOAD_MAX_H = _env_float("HEALTH_KI_WAECHTER_OVERLOAD_HOURS", 30.
 # docs/development.md, "Geplante Läufe"), plus every push touching docs/.
 # 48 h = two days without any run before its side-step record counts as stale.
 SEO_MAX_AGE_H = _env_float("HEALTH_SEO_MAX_AGE_HOURS", 48.0)
+# The SEO run's metadata step got only GitHub errors (5xx, no connection,
+# outcome "overloaded"): a note until its last success is this old (Michael
+# 2026-11-04, card "Beides"; a 502 at 11:03 Vienna during a GitHub outage
+# turned the Health check red until the next day's run). 48 h = the record's
+# own limit: two days without any clean run. 401/403 stays red at once.
+SEO_OVERLOAD_MAX_H = _env_float("HEALTH_SEO_OVERLOAD_HOURS", 48.0)
 # Station sources: the weekly run downloads them and falls back to the copy
 # under data/ when a download fails, so a dead source would only show in the
 # log. 15 days = two weekly runs in a row without a good answer (one failed

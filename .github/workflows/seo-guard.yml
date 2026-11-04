@@ -180,13 +180,33 @@ jobs:
             --arg description "${DESC}" \
             --arg homepage "${SITE_BASE}/" \
             '{description: $description, homepage: $homepage}')"
-          # ``-f``: eine abgelehnte Anfrage (401 bei abgelaufenem Token, 403
-          # ohne Recht) lässt den Schritt scheitern statt still zu enden.
-          if ! curl -fsS -H "Authorization: Bearer ${ADMIN_TOKEN}" \
-               -H "Accept: application/vnd.github+json" \
-               -X PATCH "https://api.github.com/repos/${OWNER_REPO}" \
-               -d "$body" >/dev/null; then
-            echo "::error title=Repository-Metadaten::GitHub hat die Anfrage mit REPO_ADMIN_TOKEN abgelehnt (Token abgelaufen oder ohne Recht)."
+          # Eine abgelehnte Anfrage (401 bei abgelaufenem Token, 403 ohne
+          # Recht, 404, 422) lässt den Schritt sofort scheitern. Eine Störung
+          # bei GitHub (5xx, keine Verbindung) wird zweimal wiederholt; hält
+          # sie an, zählt der Schritt als ``overloaded``: Der Health check
+          # zeigt das als Hinweis und wird erst rot, wenn 48 Stunden kein
+          # Lauf gelang (Betreiberentscheidung Michael 2026-11-04, Karte
+          # „Beides“; Anlass: ein 502 um 11:03 Wien während eines
+          # GitHub-Ausfalls, gemeldet als „Token abgelaufen“).
+          code=000
+          for wait in 0 30 90; do
+            sleep "${wait}"
+            code="$(curl -sS -o /dev/null -w '%{http_code}' \
+                     -H "Authorization: Bearer ${ADMIN_TOKEN}" \
+                     -H "Accept: application/vnd.github+json" \
+                     -X PATCH "https://api.github.com/repos/${OWNER_REPO}" \
+                     -d "$body" || true)"
+            if [[ "${code}" =~ ^2[0-9][0-9]$ ]]; then break; fi
+            if [[ ! "${code}" =~ ^(000|5[0-9][0-9])$ ]]; then break; fi
+            echo "GitHub antwortete mit HTTP ${code}, neuer Versuch."
+          done
+          if [[ "${code}" =~ ^(000|5[0-9][0-9])$ ]]; then
+            : > "${RUNNER_TEMP}/metadata-overloaded"
+            echo "::warning title=Repository-Metadaten::GitHub gestört (HTTP ${code}, dreimal); Beschreibung und Homepage bleiben bis zum nächsten Lauf unverändert."
+            exit 1
+          fi
+          if [[ ! "${code}" =~ ^2[0-9][0-9]$ ]]; then
+            echo "::error title=Repository-Metadaten::GitHub hat die Anfrage mit REPO_ADMIN_TOKEN abgelehnt (HTTP ${code}: Token abgelaufen oder ohne Recht)."
             exit 1
           fi
           echo "Repository-Metadaten gesetzt."
@@ -202,10 +222,11 @@ jobs:
         timeout-minutes: 1
         env:
           METADATA_OUTCOME: ${{ steps.metadata.outcome }}
-        run: >-
-          python scripts/record_side_steps.py
-          --state data/side_steps/seo-guard.json
-          "Repository-Metadaten=$METADATA_OUTCOME"
+        # GitHub nur gestört (Marke aus dem Schritt oben): ``overloaded``.
+        run: |
+          outcome="${METADATA_OUTCOME}"
+          if [[ "${outcome}" == "failure" && -e "${RUNNER_TEMP}/metadata-overloaded" ]]; then outcome=overloaded; fi
+          python scripts/record_side_steps.py --state data/side_steps/seo-guard.json "Repository-Metadaten=${outcome}"
 
 
       # Publish through ``scripts/publish_to_main.sh``, the publish path
