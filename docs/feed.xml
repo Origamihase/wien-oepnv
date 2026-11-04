@@ -8,8 +8,36 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 04 Nov 2026 23:57:35 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 00:01:02 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[Wien Meidling ↔ Wien Liesing]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;924407</guid>
+      <pubDate>Wed, 04 Nov 2026 23:31:57 +0100</pubDate>
+      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 04 Nov 2026 19:31:31 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 04 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Sun, 08 Nov 2026 23:59:59 +0100</ext:ends_at>
+      <georss:line>48.174500 16.333796 48.135046 16.283967</georss:line>
+      <description>Wegen eines Schadens am Gleis sind Zugfahrten bis voraussichtlich 08.11.2026 23:59 Uhr nur eingeschränkt möglich. Planen Sie bis zu 10 Minuten mehr Reisezeit ein. [Bis So 08.11.]</description>
+      <content:encoded><![CDATA[Wegen eines Schadens am Gleis sind Zugfahrten bis voraussichtlich 08.11.2026 23:59 Uhr nur eingeschränkt möglich. Planen Sie bis zu 10 Minuten mehr Reisezeit ein.<br/>[Bis So 08.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52A: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">882b31fbc0f7931f30d7f8633f06be5cdcfec9e422fb92b0b8931432f57288f4</guid>
+      <pubDate>Mon, 02 Nov 2026 15:36:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 04 Nov 2026 00:00:53 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 05 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <description>Wegen Straßenbauarbeiten in der Knödelhüttenstraße wird die Linie 52A umgeleitet. [Seit heute]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Knödelhüttenstraße wird die Linie 52A umgeleitet.<br/>[Seit heute]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[29B: Bauarbeiten – Adolf-Loos-Gasse]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -24,19 +52,6 @@
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet.<br/>[Seit 03.11.]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[52A: Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">882b31fbc0f7931f30d7f8633f06be5cdcfec9e422fb92b0b8931432f57288f4</guid>
-      <pubDate>Mon, 02 Nov 2026 15:36:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 04 Nov 2026 00:00:53 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 05 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <description>Wegen Straßenbauarbeiten in der Knödelhüttenstraße wird die Linie 52A umgeleitet. [Ab Do 05.11.]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Knödelhüttenstraße wird die Linie 52A umgeleitet.<br/>[Ab Do 05.11.]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[12A: Henriettenplatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">a6cf4b6dfdd6a30caa130293fcef872955167da368915b5ee81ce366e6071172</guid>
@@ -47,8 +62,8 @@
       <ext:first_seen>Wed, 28 Oct 2026 16:52:00 +0100</ext:first_seen>
       <ext:starts_at>Wed, 04 Nov 2026 00:00:00 +0100</ext:starts_at>
       <georss:point>48.190171 16.331974</georss:point>
-      <description>Haltestellenauflassung der Linie 12A in Richtung Eichenstraße. Haltestelle: Henriettenplatz. Grund: Grabungsarbeiten. [Seit heute]</description>
-      <content:encoded><![CDATA[Haltestellenauflassung der Linie 12A in Richtung Eichenstraße. Haltestelle: Henriettenplatz. Grund: Grabungsarbeiten.<br/>[Seit heute]]]></content:encoded>
+      <description>Haltestellenauflassung der Linie 12A in Richtung Eichenstraße. Haltestelle: Henriettenplatz. Grund: Grabungsarbeiten. [Seit 04.11.]</description>
+      <content:encoded><![CDATA[Haltestellenauflassung der Linie 12A in Richtung Eichenstraße. Haltestelle: Henriettenplatz. Grund: Grabungsarbeiten.<br/>[Seit 04.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[64A: Liesinger-Flur-Gasse]]></title>
@@ -77,8 +92,8 @@
       <ext:starts_at>Mon, 02 Nov 2026 00:00:00 +0100</ext:starts_at>
       <ext:ends_at>Wed, 11 Nov 2026 23:59:59 +0100</ext:ends_at>
       <georss:line>48.196804 16.337680 48.207980 15.624408</georss:line>
-      <description>Wegen Bauarbeiten können zwischen St. Pölten Hbf und Wien Westbahnhof von 03.11.2026 bis 10.11.2026 keine REX50-Züge fahren. [Bis 11.11.]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen St. Pölten Hbf und Wien Westbahnhof von 03.11.2026 bis 10.11.2026 keine REX50-Züge fahren.<br/>[Bis 11.11.]]]></content:encoded>
+      <description>Wegen Bauarbeiten können zwischen St. Pölten Hbf und Wien Westbahnhof von 03.11.2026 bis 10.11.2026 keine REX50-Züge fahren. [Bis Mi 11.11.]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen St. Pölten Hbf und Wien Westbahnhof von 03.11.2026 bis 10.11.2026 keine REX50-Züge fahren.<br/>[Bis Mi 11.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N71: Rennweg]]></title>
@@ -138,20 +153,6 @@
       <georss:point>48.158259 16.360289</georss:point>
       <description>Neilreichgasse 139C - 141 → Neilreichgasse 139A- 139B. Haltestellenverlegung der Linie 11 in Richtung Kaiserebersdorf, Zinnergasse. Grund: Gleisbauarbeiten. [Bis 19.11.]</description>
       <content:encoded><![CDATA[Neilreichgasse 139C - 141 → Neilreichgasse 139A- 139B. Haltestellenverlegung der Linie 11 in Richtung Kaiserebersdorf, Zinnergasse. Grund: Gleisbauarbeiten.<br/>[Bis 19.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40A: Bauernfeldplatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">1a8701132295c2998ee1771e7a46245b02b0b8abc95ee80038dbe79595a5ecf1</guid>
-      <pubDate>Thu, 22 Oct 2026 13:48:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 13:48:00 +0200</ext:first_seen>
-      <ext:starts_at>Tue, 27 Oct 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.220878 16.360720</georss:point>
-      <description>Richtung Döblinger Friedhof, Felix-Dahn-Straße: → Liechtensteinstraße 38. Richtung Schottentor: → Liechtensteinstraße 39. Haltestellenverlegung der Linie 40A in beiden … [Seit 27.10.]</description>
-      <content:encoded><![CDATA[Richtung Döblinger Friedhof, Felix-Dahn-Straße: → Liechtensteinstraße 38. Richtung Schottentor: → Liechtensteinstraße 39. Haltestellenverlegung der Linie 40A in beiden …<br/>[Seit 27.10.]]]></content:encoded>
     </item>
   </channel>
 </rss>
