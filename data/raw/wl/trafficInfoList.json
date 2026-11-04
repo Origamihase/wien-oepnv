@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20260922-0032, I20261020-0029, I20261104-0042-F02"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20260922-0032, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R1882-101, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1883-101, R100-136, R101-136, R119-136, R45-136, R19-136, R130-136, R118-136, R117-136, R116-136, R115-136, R103-136, R102-136, R3886-480, R1474-412, R1448-412, R401-101, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2558-125, R1974-466, R1272-440, R1301-440, R3602-118, R3604-118, R3603-118, R2420-118, R2632-118, R2422-118, R3605-118, R3606-118, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R1880-101, R1881-101, R1875-101, R1883-101, R1884-101, R1882-101, R1876-101, R103-136, R101-136, R100-136, R130-136, R45-136, R119-136, R102-136, R19-136, R118-136, R117-136, R116-136, R115-136, R3886-480, R1448-412, R1474-412, R401-101, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R2558-125, R1974-466, R1272-440, R1301-440, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -215,54 +215,6 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "60": "ptTram"
-     }
-    },
-    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "60: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261104-0042-F02",
-    "owner": "WL",
-    "parentName": "I20261104-0042",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 160,
-      "lineName": "60",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     1548
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-04T22:01:00.000+0100",
-     "end": "2026-11-04T23:15:00.000+0100",
-     "lastUpdate": "2026-11-04T22:55:00.000+0100",
-     "start": "2026-11-04T21:45:00.000+0100"
-    },
-    "title": "60: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1095,52 +1047,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Pkw",
-    "name": "R2420-118",
-    "owner": "WL",
-    "parentName": "R2420-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     2420
-    ],
-    "time": {
-     "end": "2026-11-04T23:09:00.000+0100",
-     "start": "2026-11-04T22:09:17.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Pkw"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Pkw",
-    "name": "R2422-118",
-    "owner": "WL",
-    "parentName": "R2422-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     2422
-    ],
-    "time": {
-     "end": "2026-11-04T23:15:00.000+0100",
-     "start": "2026-11-04T22:16:17.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Pkw"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
     "name": "R2558-125",
     "owner": "WL",
@@ -1160,29 +1066,6 @@
      "start": "2026-11-04T00:00:20.000+0100"
     },
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Pkw",
-    "name": "R2632-118",
-    "owner": "WL",
-    "parentName": "R2632-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     2632
-    ],
-    "time": {
-     "end": "2026-11-04T23:09:00.000+0100",
-     "start": "2026-11-04T22:09:19.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Pkw"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1229,121 +1112,6 @@
      "start": "2026-11-03T00:00:12.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Pkw",
-    "name": "R3602-118",
-    "owner": "WL",
-    "parentName": "R3602-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     3602
-    ],
-    "time": {
-     "end": "2026-11-04T23:09:00.000+0100",
-     "start": "2026-11-04T22:09:17.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Pkw"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Pkw",
-    "name": "R3603-118",
-    "owner": "WL",
-    "parentName": "R3603-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     3603
-    ],
-    "time": {
-     "end": "2026-11-04T23:09:00.000+0100",
-     "start": "2026-11-04T22:09:17.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Pkw"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Pkw",
-    "name": "R3604-118",
-    "owner": "WL",
-    "parentName": "R3604-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     3604
-    ],
-    "time": {
-     "end": "2026-11-04T23:09:00.000+0100",
-     "start": "2026-11-04T22:09:17.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Pkw"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Pkw",
-    "name": "R3605-118",
-    "owner": "WL",
-    "parentName": "R3605-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     3605
-    ],
-    "time": {
-     "end": "2026-11-04T23:15:00.000+0100",
-     "start": "2026-11-04T22:16:18.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Pkw"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Pkw",
-    "name": "R3606-118",
-    "owner": "WL",
-    "parentName": "R3606-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     3606
-    ],
-    "time": {
-     "end": "2026-11-04T23:15:00.000+0100",
-     "start": "2026-11-04T22:16:18.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Pkw"
    },
    {
     "alertCause": "undefined alert cause",
