@@ -65,41 +65,35 @@ def test_a_creation_time_in_the_future_reads_as_now() -> None:
 
 
 class FakeClient:
-    """Update cycle runs that change with the fake clock."""
+    """The REST calls of one check, with a fixed list of Update cycle runs."""
 
-    def __init__(self, timeline: list[tuple[datetime, dict[str, Any]]], issues: list[int] | None = None) -> None:
-        self.timeline = timeline
-        self.now = T0
-        self.dispatched: list[tuple[datetime, str]] = []
+    def __init__(self, runs: list[dict[str, Any]], issues: list[int] | None = None,
+                 created: datetime | None = None, other_waiting: bool = False) -> None:
+        self.runs = runs
+        self.dispatched: list[str] = []
         self.issues = list(issues or [])
-        self.created: list[str] = []
+        self.opened: list[str] = []
         self.closed: list[int] = []
-
-    def clock(self) -> datetime:
-        return self.now
-
-    def sleep(self, seconds: float) -> None:
-        self.now += timedelta(seconds=seconds)
+        self.created = created
+        self.other_waiting = other_waiting
 
     def update_runs(self) -> list[tf.Run]:
-        visible = [raw for moment, raw in self.timeline if moment <= self.now]
-        for moment, workflow in self.dispatched:
-            if workflow == tf.UPDATE_WORKFLOW and moment + timedelta(seconds=30) <= self.now:
-                number = 100 + len([d for d in self.dispatched if d[0] <= moment])
-                visible.append(_raw(number, moment, "workflow_dispatch", tf.BOT_LOGIN,
-                                    conclusion=self.fallback_conclusion))
-        return tf.parse_runs({"workflow_runs": visible})
+        return tf.parse_runs({"workflow_runs": list(self.runs)})
 
-    fallback_conclusion = "success"
+    def run_created(self, run_id: int) -> datetime | None:
+        return self.created
+
+    def other_check_waiting(self, run_id: int) -> bool:
+        return self.other_waiting
 
     def dispatch(self, workflow: str) -> None:
-        self.dispatched.append((self.now, workflow))
+        self.dispatched.append(workflow)
 
     def open_issues(self) -> list[int]:
         return list(self.issues)
 
     def create_issue(self, title: str, body: str) -> None:
-        self.created.append(body)
+        self.opened.append(body)
         self.issues.append(7)
 
     def close_issue(self, number: int, comment: str) -> None:
@@ -107,45 +101,74 @@ class FakeClient:
         self.issues.remove(number)
 
 
-def _watch(client: FakeClient) -> int:
-    return tf.watch(client, clock=client.clock, sleep=client.sleep)  # type: ignore[arg-type]
+def _run(client: FakeClient, now: datetime, scheduled: bool = False) -> int:
+    return tf.run_check(client, run_id=1, now=now, scheduled=scheduled)  # type: ignore[arg-type]
 
 
-def test_waiter_ends_without_a_start_when_ifttt_ticks() -> None:
-    client = FakeClient([(T0, _raw(1, T0)), (T0 + timedelta(minutes=30), _raw(2, T0 + timedelta(minutes=30)))])
-    assert _watch(client) == 0
-    assert client.dispatched == [] and client.created == []
-    assert client.now < T0 + timedelta(minutes=32)
+def test_check_after_40_minutes_of_silence_starts_the_update_cycle_and_opens_one_issue() -> None:
+    client = FakeClient([_raw(1, T0)], created=T0)
+    assert _run(client, T0 + timedelta(minutes=40)) == 0
+    assert client.dispatched == [tf.UPDATE_WORKFLOW, tf.SELF_WORKFLOW]
+    assert len(client.opened) == 1 and "IFTTT" in client.opened[0]
 
 
-def test_silence_starts_the_update_cycle_every_40_minutes_and_opens_one_issue() -> None:
-    late_ifttt = T0 + timedelta(minutes=125)
-    client = FakeClient([(T0, _raw(1, T0)), (late_ifttt, _raw(2, late_ifttt))])
-    assert _watch(client) == 0
-    starts = [moment - T0 for moment, workflow in client.dispatched if workflow == tf.UPDATE_WORKFLOW]
-    assert starts == [timedelta(minutes=40), timedelta(minutes=80), timedelta(minutes=120)]
-    assert len(client.created) == 1 and "IFTTT" in client.created[0]
+def test_a_second_check_in_the_outage_opens_no_second_issue() -> None:
+    client = FakeClient([_raw(2, T0 + timedelta(minutes=40), "workflow_dispatch", tf.BOT_LOGIN), _raw(1, T0)],
+                        issues=[7], created=T0 + timedelta(minutes=40))
+    _run(client, T0 + timedelta(minutes=80))
+    assert client.dispatched == [tf.UPDATE_WORKFLOW, tf.SELF_WORKFLOW] and client.opened == []
 
 
-def test_issue_closes_when_the_waiter_of_an_ifttt_run_starts() -> None:
-    client = FakeClient([(T0, _raw(1, T0)), (T0 + timedelta(minutes=30), _raw(2, T0 + timedelta(minutes=30)))],
-                        issues=[7])
-    _watch(client)
-    assert client.closed == [7]
+def test_check_without_silence_starts_no_update_only_its_successor() -> None:
+    # A gated backup-cron run 20 minutes ago counts as a tick.
+    client = FakeClient([_raw(2, T0 + timedelta(minutes=20), "schedule", tf.BOT_LOGIN), _raw(1, T0)], created=T0)
+    _run(client, T0 + timedelta(minutes=40))
+    assert client.dispatched == [tf.SELF_WORKFLOW] and client.opened == []
+
+
+def test_check_that_did_not_wait_fails_loudly_and_starts_nothing() -> None:
+    client = FakeClient([], created=T0)
+    assert _run(client, T0 + timedelta(minutes=1)) == 1
+    assert client.dispatched == []
+
+
+def test_schedule_does_nothing_while_a_check_waits() -> None:
+    client = FakeClient([], other_waiting=True)
+    assert _run(client, T0 + timedelta(hours=5), scheduled=True) == 0
+    assert client.dispatched == []
+
+
+def test_schedule_restarts_the_watch_when_none_waits() -> None:
+    client = FakeClient([_raw(1, T0)], other_waiting=False)
+    _run(client, T0 + timedelta(minutes=10), scheduled=True)
+    assert client.dispatched == [tf.SELF_WORKFLOW]
 
 
 def test_a_failed_fallback_run_starts_the_health_check() -> None:
-    client = FakeClient([(T0, _raw(1, T0)), (T0 + timedelta(minutes=70), _raw(2, T0 + timedelta(minutes=70)))])
-    client.fallback_conclusion = "failure"
-    _watch(client)
-    assert [w for _, w in client.dispatched] == [tf.UPDATE_WORKFLOW, tf.HEALTH_WORKFLOW]
+    client = FakeClient([_raw(2, T0 + timedelta(minutes=40), "workflow_dispatch", tf.BOT_LOGIN,
+                              conclusion="failure"), _raw(1, T0)], issues=[7], created=T0 + timedelta(minutes=40))
+    _run(client, T0 + timedelta(minutes=80))
+    assert client.dispatched == [tf.HEALTH_WORKFLOW, tf.UPDATE_WORKFLOW, tf.SELF_WORKFLOW]
 
 
-def test_waiter_starts_its_successor_at_the_end_of_its_life(monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.setattr(tf, "WAITER_LIFETIME", timedelta(minutes=10))
-    client = FakeClient([(T0, _raw(1, T0))])
-    _watch(client)
-    assert client.dispatched[-1][1] == tf.SELF_WORKFLOW
+def test_a_start_that_never_appeared_starts_the_health_check() -> None:
+    client = FakeClient([_raw(1, T0)], issues=[7], created=T0 + timedelta(minutes=40))
+    _run(client, T0 + timedelta(minutes=80))
+    assert client.dispatched == [tf.HEALTH_WORKFLOW, tf.UPDATE_WORKFLOW, tf.SELF_WORKFLOW]
+
+
+def test_ifttt_run_closes_the_issue() -> None:
+    client = FakeClient([_raw(3, T0 + timedelta(minutes=90)),
+                         _raw(2, T0 + timedelta(minutes=40), "workflow_dispatch", tf.BOT_LOGIN), _raw(1, T0)],
+                        issues=[7])
+    assert tf.close_issue_when_ticking(client, T0 + timedelta(minutes=90)) == 0  # type: ignore[arg-type]
+    assert client.closed == [7]
+
+
+def test_ifttt_run_without_open_issue_reads_nothing_else() -> None:
+    client = FakeClient([], issues=[])
+    client.update_runs = None  # type: ignore[assignment,method-assign]
+    assert tf.close_issue_when_ticking(client, T0) == 0  # type: ignore[arg-type]
 
 
 # --- Health check "Takt" ----------------------------------------------------------

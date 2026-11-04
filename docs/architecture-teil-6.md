@@ -158,7 +158,8 @@ sie rot werden: `quelle-ohne-antwort` nach 2 h (rot nach 3 h),
 `feed-alter` nach 90 min (rot nach 4 h) und seit 2026-11-04 `ifttt-ausfall`:
 Kam 40 Minuten lang kein Update-Lauf, startet der Takt-Fallback
 (`.github/workflows/takt-fallback.yml`) ihn selbst, alle 40 Minuten, und
-öffnet das Issue; der Wächter des nächsten IFTTT-Laufs schließt es. Rot wird
+öffnet das Issue; der nächste IFTTT-Lauf schließt es. Gewartet wird ohne
+Rechner (Wartezeit der Umgebung `takt-wartezeit`). Rot wird
 erst, wenn auch der Fallback seit 80 Minuten keinen neuen Build brachte.
 Betreiberentscheidung (Michael, 2026-11-04): „Sorge aber bitte dafür, dass
 der Fallback wirklich nur läuft, wenn IFTTT nicht funktioniert hat. Wenn

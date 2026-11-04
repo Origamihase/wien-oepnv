@@ -10,29 +10,36 @@ Operator decision Michael 2026-11-04 ("Alle 40 Minuten klingt nicht
 schlecht. Sorge aber bitte dafür, dass der Fallback wirklich nur läuft, wenn
 IFTTT nicht funktioniert hat. Wenn IFTTT nicht funktioniert erstelle einen
 Issue. Wenn der Fallback auch nicht funktioniert, und der Feed nicht mehr
-aktualisiert werden kann, mach den Health Check rot"):
+aktualisiert werden kann, mach den Health Check rot"), and the same day:
+"Effizienz ist mir wichtig. Das Projekt soll ressourcenschonend arbeiten."
+So no runner waits:
 
-* Every Update cycle run starts one waiter (``takt-fallback.yml``,
-  ``workflow_run`` ``requested``). The waiter polls the Actions API once a
-  minute. A newer Update cycle run that the fallback did not start (IFTTT,
-  backup cron, a manual run) ends it at once: that run's own waiter takes
-  over, so the fallback never acts while IFTTT ticks.
-* Only when no Update cycle run at all was created for
-  :data:`FALLBACK_AFTER` (40 minutes: IFTTT's 30 minutes plus 10 minutes
-  drift) does it start one (``workflow_dispatch`` of ``update-cycle.yml``),
-  and again every 40 minutes while the silence lasts.
-* With its first start it opens one issue (label :data:`ISSUE_LABEL`); the
-  waiter of the next IFTTT run closes it.
-* A fallback run that fails or never appears starts the Health check, whose
+* Every Update cycle run starts one check (``takt-fallback.yml``,
+  ``workflow_run`` ``requested``). GitHub holds the check back for 40 minutes
+  with the wait timer of the environment ``takt-wartezeit``; no runner runs
+  and the wait is not billed. The check of the next run replaces the waiting
+  one (``concurrency``, ``cancel-in-progress``), so while IFTTT ticks no check
+  ever reaches a runner.
+* A check that runs (:func:`run_check`) found no Update cycle run for 40
+  minutes (:data:`FALLBACK_AFTER`: IFTTT's 30 minutes plus 10 minutes drift).
+  It starts one (``workflow_dispatch`` of ``update-cycle.yml``), opens one
+  issue (label :data:`ISSUE_LABEL`) and starts its successor, so the next
+  check follows 40 minutes later while the silence lasts.
+* The next IFTTT run closes the issue (:func:`close_issue_when_ticking`, a
+  step of ``update-cycle.yml``).
+* A fallback run that failed or never appeared starts the Health check, whose
   check ``Takt`` (``src/health_check/takt.py``) turns red when IFTTT is
   silent and the feed has had no new build for 80 minutes.
+* A check that runs much earlier than 40 minutes means the wait timer is
+  missing: it fails loudly (:data:`MIN_WAIT`).
+* The backup schedule (own lane, so it never replaces a waiting check)
+  restarts the watch when no check is waiting.
 """
 
 from __future__ import annotations
 
 import logging
 import os
-import time
 from collections.abc import Callable, Iterable, Mapping
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
@@ -51,13 +58,13 @@ BOT_LOGIN = "github-actions[bot]"
 IFTTT_EVENT = "repository_dispatch"
 
 FALLBACK_AFTER = timedelta(minutes=40)
-# A started fallback run that has not shown up in the API after this long
-# counts as failed (the next try comes 40 minutes after the start).
-DISPATCH_GRACE = timedelta(minutes=10)
-POLL_SECONDS = 60
-# A waiter ends well before GitHub's 6-hour job limit and starts its
-# successor, so the watch never lapses during a long outage.
-WAITER_LIFETIME = timedelta(minutes=330)
+# A check that runs this soon after its run was created has not waited: the
+# environment ``takt-wartezeit`` lacks its 40-minute wait timer.
+MIN_WAIT = timedelta(minutes=35)
+# Two checks 40 minutes apart without a new run in between: the started
+# fallback run never appeared.
+LOST_START = timedelta(minutes=75)
+WAITING_STATES = frozenset({"queued", "waiting", "pending", "requested", "in_progress"})
 # GitHub listed runs created on 2026-11-01 between 08:00 and 08:59 UTC with
 # times one hour late; a creation time after "now" is read as "now".
 FUTURE_SLACK = timedelta(minutes=5)
@@ -79,7 +86,7 @@ def _vienna(moment: datetime) -> str:
 
 @dataclass(frozen=True)
 class Run:
-    """The parts of an Update cycle run the waiter decides on."""
+    """The parts of an Update cycle run the check decides on."""
 
     number: int
     run_id: int
@@ -153,9 +160,8 @@ def decide(runs: list[Run], now: datetime, last_dispatch: datetime | None) -> De
     """Whether the fallback starts an Update cycle now.
 
     Only when no Update cycle run of any kind was created within
-    :data:`FALLBACK_AFTER` and the waiter has not itself started one within
-    that time. A run the API does not list yet cannot hide a start: the
-    waiter remembers its own last start (*last_dispatch*).
+    :data:`FALLBACK_AFTER` and no start of its own (*last_dispatch*, for a
+    caller that remembers one the API does not list yet) lies within that time.
     """
     ifttt = newest_ifttt(runs)
     ifttt_silent = ifttt is None or now - tick_time(ifttt, now) >= FALLBACK_AFTER
@@ -191,7 +197,7 @@ def issue_body(ifttt: Run | None, now: datetime) -> str:
 
 
 class ActionsClient:
-    """The few GitHub REST calls of the waiter, through the project's safe HTTP stack."""
+    """The few GitHub REST calls of the check, through the project's safe HTTP stack."""
 
     def __init__(self, repository: str, token: str, api_url: str, ref: str = "main") -> None:
         self.repository = repository
@@ -232,6 +238,18 @@ class ActionsClient:
     def update_runs(self) -> list[Run]:
         return parse_runs(self._request(
             "GET", f"/actions/workflows/{UPDATE_WORKFLOW}/runs?branch={self.ref}&per_page={RUNS_PER_PAGE}"))
+
+    def run_created(self, run_id: int) -> datetime | None:
+        data = self._request("GET", f"/actions/runs/{run_id}")
+        return _parse_time(data.get("created_at")) if isinstance(data, Mapping) else None
+
+    def other_check_waiting(self, run_id: int) -> bool:
+        """Whether another run of the Takt-Fallback is queued, waiting or running."""
+        data = self._request("GET", f"/actions/workflows/{SELF_WORKFLOW}/runs?per_page=10")
+        raw = data.get("workflow_runs") if isinstance(data, Mapping) else None
+        return any(isinstance(entry, Mapping) and entry.get("id") != run_id
+                   and entry.get("status") in WAITING_STATES
+                   for entry in (raw if isinstance(raw, list) else []))
 
     def dispatch(self, workflow: str) -> None:
         self._request("POST", f"/actions/workflows/{workflow}/dispatches", {"ref": self.ref})
@@ -289,68 +307,72 @@ def _safe(label: str, action: Callable[[], object]) -> object:
         return None
 
 
-@dataclass
-class _Waiter:
-    """State of one waiter between two polls."""
-
-    client: ActionsClient
-    baseline: int
-    last_dispatch: datetime | None = None
-    watched: int | None = None  # number of the fallback run already judged, -1: none appeared
-
-    def _follow_own_run(self, runs: list[Run], now: datetime) -> None:
-        """Start the Health check when the started fallback run failed or never appeared."""
-        if self.last_dispatch is None:
-            return
-        since = self.last_dispatch - timedelta(minutes=1)
-        own = next((run for run in runs if run.is_fallback and run.created >= since), None)
-        if own is not None and own.number != self.watched and own.status == "completed":
-            self.watched = own.number
-            if own.conclusion != "success":
-                print(f"::warning title=Takt-Fallback::Fallback-Lauf #{own.number}: {own.conclusion}")
-                _safe("Health check starten", lambda: self.client.dispatch(HEALTH_WORKFLOW))
-        elif own is None and self.watched != -1 and now - self.last_dispatch >= DISPATCH_GRACE:
-            self.watched = -1
-            print("::warning title=Takt-Fallback::Der gestartete Update-Lauf erscheint nicht.")
-            _safe("Health check starten", lambda: self.client.dispatch(HEALTH_WORKFLOW))
-
-    def step(self, now: datetime) -> bool:
-        """One poll; ``True`` when a newer run that the fallback did not start ends the waiter."""
-        fresh = _safe("Läufe lesen", self.client.update_runs)
-        if not isinstance(fresh, list):
-            return False
-        runs: list[Run] = fresh
-        if newest_foreign_number(runs) > self.baseline:
-            print("Neuer Update-Lauf ohne Fallback: sein Wächter übernimmt.")
-            return True
-        self._follow_own_run(runs, now)
-        decision = decide(runs, now, self.last_dispatch)
-        if decision.fire:
-            print(f"Fallback: {decision.reason}; starte den Update-Lauf.")
-            _safe("Update-Lauf starten", lambda: self.client.dispatch(UPDATE_WORKFLOW))
-            self.last_dispatch, self.watched = now, None
-            silent = decision.ifttt_silent
-            _safe("Issue abgleichen", lambda: sync_issue(self.client, runs, now, open_new=silent))
-        return False
+def _start_health_check_if_fallback_failed(client: ActionsClient, runs: list[Run], now: datetime,
+                                           decision: Decision) -> None:
+    newest = runs[0] if runs else None
+    if newest is not None and newest.is_fallback and newest.status == "completed" \
+            and newest.conclusion != "success":
+        print(f"::warning title=Takt-Fallback::Fallback-Lauf #{newest.number}: {newest.conclusion}")
+        _safe("Health check starten", lambda: client.dispatch(HEALTH_WORKFLOW))
+    elif decision.fire and newest is not None and now - tick_time(newest, now) >= LOST_START:
+        print("::warning title=Takt-Fallback::Seit zwei Prüfungen kein Update-Lauf; "
+              "der gestartete Lauf erscheint nicht.")
+        _safe("Health check starten", lambda: client.dispatch(HEALTH_WORKFLOW))
 
 
-def watch(client: ActionsClient, *, clock: Callable[[], datetime] = lambda: datetime.now(UTC),
-          sleep: Callable[[float], None] = time.sleep) -> int:
-    """Wait for the next Update cycle tick; start one when IFTTT stays silent."""
-    started = clock()
-    runs = client.update_runs()
-    waiter = _Waiter(client, newest_foreign_number(runs))
-    _safe("Issue abgleichen", lambda: sync_issue(client, runs, started, open_new=False))
-    print(f"Wartet auf den nächsten Tick nach Lauf #{waiter.baseline} (Fallback nach {FALLBACK_AFTER}).")
-    while clock() - started < WAITER_LIFETIME:
-        if waiter.step(clock()):
+def run_check(client: ActionsClient, *, run_id: int, now: datetime, scheduled: bool = False) -> int:
+    """One check after the 40-minute wait; start the Update cycle when IFTTT is silent.
+
+    *scheduled*: the backup schedule, which only acts when no other check is
+    waiting (the watch has lapsed).
+    """
+    if scheduled:
+        if client.other_check_waiting(run_id):
+            print("Eine Prüfung wartet bereits: nichts zu tun.")
             return 0
-        sleep(POLL_SECONDS)
-    print("Lebensdauer erreicht: startet den nächsten Takt-Fallback.")
-    _safe("Nachfolger starten", lambda: client.dispatch(SELF_WORKFLOW))
+    else:
+        created = client.run_created(run_id)
+        if created is not None and now - created < MIN_WAIT:
+            print("::error title=Takt-Fallback::Die Prüfung hat nicht gewartet. Die Umgebung "
+                  "takt-wartezeit braucht einen Wait timer von 40 Minuten "
+                  "(Settings → Environments → takt-wartezeit).")
+            return 1
+    runs = client.update_runs()
+    decision = decide(runs, now, None)
+    _start_health_check_if_fallback_failed(client, runs, now, decision)
+    if decision.fire:
+        print(f"Fallback: {decision.reason}; starte den Update-Lauf.")
+        silent = decision.ifttt_silent
+        # Issue first: the check of the started run may cancel this one at once.
+        _safe("Issue abgleichen", lambda: sync_issue(client, runs, now, open_new=silent))
+        _safe("Update-Lauf starten", lambda: client.dispatch(UPDATE_WORKFLOW))
+    else:
+        print(f"Kein Fallback: {decision.reason}.")
+    # The next check 40 minutes from now, should no new Update cycle run start
+    # one (its check replaces this one).
+    _safe("Nächste Prüfung starten", lambda: client.dispatch(SELF_WORKFLOW))
     return 0
 
 
-def main() -> int:
+def close_issue_when_ticking(client: ActionsClient, now: datetime) -> int:
+    """Called by an IFTTT run of the Update cycle: close the issue once IFTTT ticks again."""
+    if client.open_issues():
+        sync_issue(client, client.update_runs(), now, open_new=False)
+    return 0
+
+
+def main(argv: list[str] | None = None) -> int:
+    import argparse
+
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--schedule", action="store_true", help="Backup-Zeitplan: nur ohne wartende Prüfung")
+    parser.add_argument("--close-issue", action="store_true", help="Issue schließen, wenn IFTTT tickt")
+    args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO)
-    return watch(client_from_env())
+    client = client_from_env()
+    now = datetime.now(UTC)
+    if args.close_issue:
+        _safe("Issue abgleichen", lambda: close_issue_when_ticking(client, now))
+        return 0
+    run_id = int(os.getenv("GITHUB_RUN_ID") or "0")
+    return run_check(client, run_id=run_id, now=now, scheduled=args.schedule)
