@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261104-0011-F01, I20260922-0032, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20260922-0032, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R1883-101, R1882-101, R1875-101, R1880-101, R1876-101, R1881-101, R1884-101, R102-136, R101-136, R100-136, R119-136, R45-136, R19-136, R130-136, R118-136, R117-136, R116-136, R115-136, R103-136, R3886-480, R1474-412, R1448-412, R401-101, R2373-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-126, R2379-627, R2380-627, R2345-127, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, R2236-416, R3190-416, R2931-416, R2930-416, R5587-416, R3190-417, R2900-417, R2236-417, R2930-417, R2931-417, R2882-417, R2931-467, R2930-467, R2236-467, R2939-467, R3190-467, R2930-267, R2939-267, R2931-267, R2236-267, R3190-267, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R1883-101, R1882-101, R1875-101, R1880-101, R1876-101, R1881-101, R1884-101, R102-136, R101-136, R100-136, R119-136, R45-136, R19-136, R130-136, R118-136, R117-136, R116-136, R115-136, R103-136, R3886-480, R1474-412, R1448-412, R401-101, R2343-125, R2378-627, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, R2236-416, R3190-416, R2930-416, R2931-416, R5587-416, R2930-417, R2900-417, R2882-417, R3190-417, R2236-417, R2931-417, R2939-467, R2930-467, R2236-467, R2931-467, R3190-467, R2930-267, R2939-267, R2931-267, R2236-267, R3190-267, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -215,54 +215,6 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "15A": "ptBusCity"
-     }
-    },
-    "description": "Linie 15A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 15A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 15A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 15A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "15A: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261104-0011-F01",
-    "owner": "WL",
-    "parentName": "I20261104-0011",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "15A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 415,
-      "lineName": "15A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "relatedStops": [
-     781
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-04T10:21:00.000+0100",
-     "lastUpdate": "2026-11-04T10:21:00.000+0100",
-     "resume": "2026-11-04T10:21:00.000+0100",
-     "start": "2026-11-04T10:13:00.000+0100"
-    },
-    "title": "15A: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",

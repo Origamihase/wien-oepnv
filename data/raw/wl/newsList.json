@@ -6,7 +6,7 @@
     "name": "aktuelles",
     "refPoiCategoryGroupId": 61,
     "title": "Aktuelles",
-    "trafficInfoNameList": "N20260209-0049, N20260209-3501, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260702-5991, N20260813-6092, N20260808-6083, N20260808-6084, N20260817-6129, N20260818-6134, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260901-6167, N20260903-6175, N20260908-6177, N20260915-6185, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261005-6222, N20261006-6258, N20261007-6260, N20261007-6262, N20261009-6270, N20261021-0001, N20261021-0003, N20261022-0002, N20261022-0003, N20261023-0001, N20261023-0002, N20261028-0003, N20261029-0002, N20261029-0004, N20261030-0001, N20261028-0002, N20261029-0003, N20261102-0001, N20261103-0001, N20261103-0002, N20261103-0003"
+    "trafficInfoNameList": "N20260209-0049, N20260209-3501, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260702-5991, N20260813-6092, N20260808-6083, N20260808-6084, N20260817-6129, N20260818-6134, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260901-6167, N20260903-6175, N20260908-6177, N20260915-6185, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261005-6222, N20261006-6258, N20261007-6260, N20261007-6262, N20261009-6270, N20261021-0001, N20261021-0003, N20261022-0002, N20261022-0003, N20261023-0001, N20261023-0002, N20261028-0003, N20261029-0002, N20261029-0004, N20261030-0001, N20261028-0002, N20261029-0003, N20261102-0001, N20261103-0001, N20261103-0003, N20261104-0001"
    },
    {
     "id": -1,
@@ -2771,41 +2771,6 @@
     "title": "79A, 79B: Alberner Hafenzufahrtsstraße"
    },
    {
-    "alertCause": "unknown",
-    "alertCauseId": 0,
-    "description": "<p><strong><u>Haltestellenverlegung der Linie 16A in Richtung Hetzendorf S</u></strong></p><p><strong><u>Haltestelle:</u></strong> Franzosenweg</p><p><strong><u>Von:</u></strong> Himberger Straße 34</p><p><strong><u>Nach:</u></strong> ca. 50 Meter in Fahrtrichtung</p><p><strong><u>Dauer:</u></strong> 05. November 2026, ca. 21:00 Uhr bis 06. November 2026, etwa 07:00 Uhr</p><p><strong><u>Grund:</u></strong> Straßenarbeiten</p>",
-    "id": "N20261103-0002",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p><strong><u>Haltestellenverlegung der Linie 16A in Richtung Hetzendorf S</u></strong></p><p><strong><u>Haltestelle:</u></strong> Franzosenweg</p><p><strong><u>Von:</u></strong> Himberger Straße 34</p><p><strong><u>Nach:</u></strong> ca. 50 Meter in Fahrtrichtung</p><p><strong><u>Dauer:</u></strong> 05. November 2026, ca. 21:00 Uhr bis 06. November 2026, etwa 07:00 Uhr</p><p><strong><u>Grund:</u></strong> Straßenarbeiten</p>",
-       "descriptionPlain": "Haltestellenverlegung der Linie 16A in Richtung Hetzendorf S Haltestelle: Franzosenweg Von: Himberger Straße 34 Nach: ca. 50 Meter in Fahrtrichtung Dauer: 05. November 2026, ca. 21:00 Uhr bis 06. November 2026, etwa 07:00 Uhr Grund: Straßenarbeiten",
-       "title": "16A: Franzosenweg"
-      }
-     }
-    ],
-    "location": {
-     "properties": {
-      "attributes": {},
-      "coordName": "WGS84",
-      "type": "news"
-     },
-     "type": "Feature"
-    },
-    "name": "N20261103-0002",
-    "reasonId": 223,
-    "reasonName": "Haltestellenverlegung",
-    "refPoiCategoryId": 13296,
-    "relatedLines": [
-     ""
-    ],
-    "time": {
-     "start": "2026-11-03T13:21:00.000+0100",
-     "validFrom": "2026-11-05T21:00:00.000+0100"
-    },
-    "title": "16A: Franzosenweg"
-   },
-   {
     "alertCause": "construction work",
     "alertCauseId": 45,
     "description": "<h2>Bauarbeiten</h2><p>Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet.</p><p><strong><u>Zeitraum:</u></strong><br>Ab Montag, 05. Oktober 2026, etwa 06:30 Uhr auf Dauer von etwa sechs Wochen.</p><p><strong><u>Maßnahmen:</u><br>Linie 29B in Richtung Floridsdorf S U:</strong><br>Umleitung ab Wassermanngasse # Herzmanovsky-Orlando-Gasse über Herzmanovsky-Orlando-Gasse – Haberditzlgasse – Adolf-Loos-Gasse zur Stammstrecke.</p><p><u>Aufgelassene Haltestelle:<br></u>- Wassermanngasse (Adolf-Loos-Gasse gegenüber 3b)<br><u>Ersatzhaltestelle:<br></u>- Wassermanngasse (Haberditzlgasse nach Herzmanovsky-Orlando-Gasse)</p>",
@@ -2846,6 +2811,49 @@
      "validFrom": "2026-11-03T15:29:00.000+0100"
     },
     "title": "29B: Bauarbeiten Adolf-Loos-Gasse"
+   },
+   {
+    "alertCause": "special event",
+    "alertCauseId": 120,
+    "description": "<h2>Veranstaltung</h2><p>Wegen einer Veranstaltung in der Endresstraße wird die Linie 60A umgeleitet.</p><p><strong><u>Zeitraum:</u></strong><br>Freitag, 27. November 2026, 13:00 Uhr bis Samstag, 28. November 2026, etwa 22:00 Uhr.</p><p><strong><u>Maßnahmen:</u></strong><br><strong>Linie 60A:</strong><br>Umleitung in beiden Richtungen über Speisinger Straße - Franz-Graßler-Gasse - Karl-Schwed-Gasse.</p><p><u>Aufgelassene Haltestellen:</u><br>- Karl-Schwed-Gasse in Richtung Alterlaa U (Karl-Schwed-Gasse 143-145)<br>- Speisinger Straße in Richtung Liesing S (Endresstraße 98)</p><p><u>Ersatzhaltestelle:</u><br>- Karl-Schwed-Gasse in Richtung Alterlaa U (Franz-Graßler-Gasse 62-64, provisorische Haltestelle)</p>",
+    "id": "N20261104-0001",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<h2>Veranstaltung</h2><p>Wegen einer Veranstaltung in der Endresstraße wird die Linie 60A umgeleitet.</p><p><strong><u>Zeitraum:</u></strong><br>Freitag, 27. November 2026, 13:00 Uhr bis Samstag, 28. November 2026, etwa 22:00 Uhr.</p><p><strong><u>Maßnahmen:</u></strong><br><strong>Linie 60A:</strong><br>Umleitung in beiden Richtungen über Speisinger Straße - Franz-Graßler-Gasse - Karl-Schwed-Gasse.</p><p><u>Aufgelassene Haltestellen:</u><br>- Karl-Schwed-Gasse in Richtung Alterlaa U (Karl-Schwed-Gasse 143-145)<br>- Speisinger Straße in Richtung Liesing S (Endresstraße 98)</p><p><u>Ersatzhaltestelle:</u><br>- Karl-Schwed-Gasse in Richtung Alterlaa U (Franz-Graßler-Gasse 62-64, provisorische Haltestelle)</p>",
+       "descriptionPlain": "VeranstaltungWegen einer Veranstaltung in der Endresstraße wird die Linie 60A umgeleitet. Zeitraum: Freitag, 27. November 2026, 13:00 Uhr bis Samstag, 28. November 2026, etwa 22:00 Uhr. Maßnahmen: Linie 60A: Umleitung in beiden Richtungen über Speisinger Straße - Franz-Graßler-Gasse - Karl-Schwed-Gasse. Aufgelassene Haltestellen: - Karl-Schwed-Gasse in Richtung Alterlaa U (Karl-Schwed-Gasse 143-145) - Speisinger Straße in Richtung Liesing S (Endresstraße 98) Ersatzhaltestelle: - Karl-Schwed-Gasse in Richtung Alterlaa U (Franz-Graßler-Gasse 62-64, provisorische Haltestelle)",
+       "title": "60A: Veranstaltung am 27. und 28.11.2026"
+      }
+     }
+    ],
+    "location": {
+     "properties": {
+      "attributes": {},
+      "coordName": "WGS84",
+      "type": "news"
+     },
+     "type": "Feature"
+    },
+    "name": "N20261104-0001",
+    "reasonId": 35,
+    "reasonName": "Veranstaltung",
+    "refPoiCategoryId": 13296,
+    "relatedLines": [
+     "60A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 460,
+      "lineName": "60A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "time": {
+     "end": "2026-11-28T22:00:00.000+0100",
+     "start": "2026-11-04T10:53:00.000+0100",
+     "validFrom": "2026-11-27T13:00:00.000+0100"
+    },
+    "title": "60A: Veranstaltung am 27. und 28.11.2026"
    },
    {
     "alertCause": "undefined alert cause",
