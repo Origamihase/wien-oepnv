@@ -738,6 +738,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
+    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db",
+    "pubDate": "2026-11-05T00:30:00+01:00",
+    "starts_at": "2026-11-05T00:30:00+01:00",
+    "ends_at": "2026-11-05T04:59:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-11-05|TK=bhf hütteldorf öbb ersatzbus für 80"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "1: Umleitung zum Reumannplatz",
     "description": "Gleisbauarbeiten\nUmleitung zum Reumannplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -998,6 +1010,18 @@
     "starts_at": "2026-11-03T00:00:14+01:00",
     "ends_at": "2026-11-05T23:59:59+01:00",
     "_identity": "wl|störung|L=D|D=2026-11-03|TK=züge halten wipplingerstr 39"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N71: Busse halten auf der Hauptfahrbahn",
+    "description": "Gleisbauarbeiten\nBusse halten auf der Hauptfahrbahn",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "9a72ac18fe94358f1623c899652a559b28776e9c499166309e4591779708cc95",
+    "pubDate": "2026-11-05T00:15:01+01:00",
+    "starts_at": "2026-11-05T00:15:01+01:00",
+    "ends_at": "2026-11-05T05:30:00+01:00",
+    "_identity": "wl|störung|L=N71|D=2026-11-05|TK=busse halten auf der hauptfahrbahn"
   },
   {
     "source": "Wiener Linien",
