@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_262, ftazW_1018067, ftazW_263, ftazW_264, ftazW_1016957, ftazW_1018068"
+    "trafficInfoNameList": "ftazW_262, ftazW_1018067, ftazW_263, ftazW_264, ftazW_1016957"
    }
   ],
   "poiCategoryGroups": [
@@ -3066,43 +3066,6 @@
     "time": {
      "end": "2026-11-06T00:45:00.000+0100",
      "start": "2026-11-05T20:45:00.000+0100"
-    },
-    "title": "Stadion"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "06.11.2026 05:15",
-     "ausVon": "06.11.2026 01:15",
-     "location": "U2 Bahnsteig Richtung Seestadt - Ausgang Stadion",
-     "rbls": [
-      4266
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U2"
-     ],
-     "station": "Stadion",
-     "status": "geplante Wartung",
-     "towards": "U2 Seestadt"
-    },
-    "description": "U2 Bahnsteig Richtung Seestadt - Ausgang Stadion",
-    "elevatorId": "SW 04",
-    "name": "ftazW_1018068",
-    "parentName": "ftazW_1018068",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedStops": [
-     4266
-    ],
-    "time": {
-     "end": "2026-11-06T05:15:00.000+0100",
-     "start": "2026-11-06T01:15:00.000+0100"
     },
     "title": "Stadion"
    },

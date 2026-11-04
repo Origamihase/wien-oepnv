@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261104-0041-F03, I20260925-0011, I20261104-0041-F02, I20261104-0041-F01, I20260909-0007, I20260922-0032, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20261104-0042, I20260909-0007, I20260922-0032, I20261020-0029, I20261104-0041-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R1884-101, R102-136, R101-136, R100-136, R119-136, R45-136, R19-136, R130-136, R118-136, R117-136, R116-136, R115-136, R103-136, R3886-480, R1448-412, R1474-412, R401-101, R2373-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-126, R2379-627, R2380-627, R2345-127, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, R1375-448, R1401-448, R1408-448, R1406-448, R1375-149, R1486-149, R1441-149, R1442-149, R1443-149, R1444-149, R1375-146, R1379-146, R1378-146, R1377-146, R1376-146, R1527-448, R1411-448, R1380-146, R1382-146, R1381-146, R1445-149, R1447-149, R1446-149, R1448-149, R1449-149, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R102-136, R101-136, R100-136, R119-136, R45-136, R130-136, R118-136, R117-136, R116-136, R115-136, R103-136, R19-136, R3886-480, R1474-412, R1448-412, R401-101, R2343-626, R2378-627, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, R1375-448, R1406-448, R1401-448, R1408-448, R1375-149, R1441-149, R1442-149, R1443-149, R1444-149, R1486-149, R1376-146, R1379-146, R1377-146, R1378-146, R1375-146, R1527-448, R1411-448, R1380-146, R1382-146, R1381-146, R1447-149, R1445-149, R1446-149, R1448-149, R1449-149, R1548-160, R1537-160, R1532-160, R1535-160, R1531-160, R1610-160, R36-152, R1535-152, R579-152, R1548-152, R1537-152, R578-152, R1532-152, R1539-152, R1613-160, R1611-160, R1542-152, R5611-160, R1616-160, R1615-160, R1617-160, R1619-160, R1618-160, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -255,110 +255,69 @@
     "relatedStops": [
      1375
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-04T21:19:00.000+0100",
      "end": "2026-11-04T22:00:00.000+0100",
-     "lastUpdate": "2026-11-04T21:23:00.000+0100",
+     "lastUpdate": "2026-11-04T22:00:00.000+0100",
+     "resume": "2026-11-04T22:00:00.000+0100",
      "start": "2026-11-04T21:06:00.000+0100"
     },
     "title": "49: Rettungseinsatz"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "46": "ptTram"
+      "52": "ptTram",
+      "60": "ptTram"
      }
     },
-    "description": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 46: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie 52: Fahrtbehinderung in Richtung Baumgarten. Linie 60: Fahrtbehinderung in Richtung Rodaun. Voraussichtliche Dauer: 22:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Westbahnhof S U, Gerstnerstraße.",
+    "descriptionHTML": "<p>Linie 52:<br>Fahrtbehinderung in Richtung Baumgarten.<br>Linie 60:<br>Fahrtbehinderung in Richtung Rodaun.</p><p>Voraussichtliche Dauer: 22:00 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Westbahnhof S U, Gerstnerstraße.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 46: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "46: Rettungseinsatz"
+       "descriptionHtml": "<p>Linie 52:<br>Fahrtbehinderung in Richtung Baumgarten.<br>Linie 60:<br>Fahrtbehinderung in Richtung Rodaun.</p><p>Voraussichtliche Dauer: 22:00 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Westbahnhof S U, Gerstnerstraße.</p>",
+       "descriptionPlain": "Linie 52: Fahrtbehinderung in Richtung Baumgarten. Linie 60: Fahrtbehinderung in Richtung Rodaun. Voraussichtliche Dauer: 22:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Westbahnhof S U, Gerstnerstraße.",
+       "title": "52, 60: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261104-0041-F02",
+    "name": "I20261104-0042",
     "owner": "WL",
-    "parentName": "I20261104-0041",
+    "parentName": "I20261104-0042",
     "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "46"
+     "52",
+     "60"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 146,
-      "lineName": "46",
+      "lineId": 152,
+      "lineName": "52",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 160,
+      "lineName": "60",
       "vehicleType": "ptTram"
      }
     ],
     "relatedStops": [
-     1375
+     1548
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-04T21:19:00.000+0100",
-     "end": "2026-11-04T21:45:00.000+0100",
-     "lastUpdate": "2026-11-04T21:23:00.000+0100",
-     "start": "2026-11-04T21:06:00.000+0100"
+     "created": "2026-11-04T21:46:00.000+0100",
+     "lastUpdate": "2026-11-04T21:46:00.000+0100",
+     "start": "2026-11-04T21:45:00.000+0100"
     },
-    "title": "46: Rettungseinsatz"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "48A": "ptBusCity"
-     }
-    },
-    "description": "Linie 48A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 48A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 48A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 48A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "48A: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261104-0041-F03",
-    "owner": "WL",
-    "parentName": "I20261104-0041",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 448,
-      "lineName": "48A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "relatedStops": [
-     1375
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-04T21:19:00.000+0100",
-     "end": "2026-11-04T21:42:00.000+0100",
-     "lastUpdate": "2026-11-04T21:22:00.000+0100",
-     "start": "2026-11-04T21:06:00.000+0100"
-    },
-    "title": "48A: Rettungseinsatz"
+    "title": "52, 60: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1260,6 +1219,443 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1531-160",
+    "owner": "WL",
+    "parentName": "R1531-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1531
+    ],
+    "time": {
+     "end": "2026-11-04T22:44:00.000+0100",
+     "start": "2026-11-04T21:44:45.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1532-152",
+    "owner": "WL",
+    "parentName": "R1532-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1532
+    ],
+    "time": {
+     "end": "2026-11-04T22:44:00.000+0100",
+     "start": "2026-11-04T21:45:15.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1532-160",
+    "owner": "WL",
+    "parentName": "R1532-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1532
+    ],
+    "time": {
+     "end": "2026-11-04T22:44:00.000+0100",
+     "start": "2026-11-04T21:44:45.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1535-152",
+    "owner": "WL",
+    "parentName": "R1535-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1535
+    ],
+    "time": {
+     "end": "2026-11-04T22:44:00.000+0100",
+     "start": "2026-11-04T21:45:15.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1535-160",
+    "owner": "WL",
+    "parentName": "R1535-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1535
+    ],
+    "time": {
+     "end": "2026-11-04T22:44:00.000+0100",
+     "start": "2026-11-04T21:44:45.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1537-152",
+    "owner": "WL",
+    "parentName": "R1537-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1537
+    ],
+    "time": {
+     "end": "2026-11-04T22:44:00.000+0100",
+     "start": "2026-11-04T21:45:15.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1537-160",
+    "owner": "WL",
+    "parentName": "R1537-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1537
+    ],
+    "time": {
+     "end": "2026-11-04T22:44:00.000+0100",
+     "start": "2026-11-04T21:44:45.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1539-152",
+    "owner": "WL",
+    "parentName": "R1539-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1539
+    ],
+    "time": {
+     "end": "2026-11-04T22:50:00.000+0100",
+     "start": "2026-11-04T21:51:15.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1542-152",
+    "owner": "WL",
+    "parentName": "R1542-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1542
+    ],
+    "time": {
+     "end": "2026-11-04T22:50:00.000+0100",
+     "start": "2026-11-04T21:51:15.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1548-152",
+    "owner": "WL",
+    "parentName": "R1548-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1548
+    ],
+    "time": {
+     "end": "2026-11-04T22:44:00.000+0100",
+     "start": "2026-11-04T21:45:15.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1548-160",
+    "owner": "WL",
+    "parentName": "R1548-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1548
+    ],
+    "time": {
+     "end": "2026-11-04T22:44:00.000+0100",
+     "start": "2026-11-04T21:44:45.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1610-160",
+    "owner": "WL",
+    "parentName": "R1610-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1610
+    ],
+    "time": {
+     "end": "2026-11-04T22:44:00.000+0100",
+     "start": "2026-11-04T21:44:45.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1611-160",
+    "owner": "WL",
+    "parentName": "R1611-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1611
+    ],
+    "time": {
+     "end": "2026-11-04T22:50:00.000+0100",
+     "start": "2026-11-04T21:51:15.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1613-160",
+    "owner": "WL",
+    "parentName": "R1613-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1613
+    ],
+    "time": {
+     "end": "2026-11-04T22:50:00.000+0100",
+     "start": "2026-11-04T21:51:15.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1615-160",
+    "owner": "WL",
+    "parentName": "R1615-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1615
+    ],
+    "time": {
+     "end": "2026-11-04T22:54:00.000+0100",
+     "start": "2026-11-04T21:54:45.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1616-160",
+    "owner": "WL",
+    "parentName": "R1616-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1616
+    ],
+    "time": {
+     "end": "2026-11-04T22:54:00.000+0100",
+     "start": "2026-11-04T21:54:45.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1617-160",
+    "owner": "WL",
+    "parentName": "R1617-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1617
+    ],
+    "time": {
+     "end": "2026-11-04T22:58:00.000+0100",
+     "start": "2026-11-04T21:58:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1618-160",
+    "owner": "WL",
+    "parentName": "R1618-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1618
+    ],
+    "time": {
+     "end": "2026-11-04T22:58:00.000+0100",
+     "start": "2026-11-04T21:58:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1619-160",
+    "owner": "WL",
+    "parentName": "R1619-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1619
+    ],
+    "time": {
+     "end": "2026-11-04T22:58:00.000+0100",
+     "start": "2026-11-04T21:58:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nKein Betrieb",
     "name": "R1875-101",
     "owner": "WL",
@@ -1835,6 +2231,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R36-152",
+    "owner": "WL",
+    "parentName": "R36-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     36
+    ],
+    "time": {
+     "end": "2026-11-04T22:44:00.000+0100",
+     "start": "2026-11-04T21:45:13.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
     "name": "R3886-480",
     "owner": "WL",
@@ -1923,6 +2342,75 @@
      "start": "2026-11-04T05:00:04.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R5611-160",
+    "owner": "WL",
+    "parentName": "R5611-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     5611
+    ],
+    "time": {
+     "end": "2026-11-04T22:50:00.000+0100",
+     "start": "2026-11-04T21:51:17.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R578-152",
+    "owner": "WL",
+    "parentName": "R578-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     578
+    ],
+    "time": {
+     "end": "2026-11-04T22:44:00.000+0100",
+     "start": "2026-11-04T21:45:15.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R579-152",
+    "owner": "WL",
+    "parentName": "R579-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     579
+    ],
+    "time": {
+     "end": "2026-11-04T22:44:00.000+0100",
+     "start": "2026-11-04T21:45:15.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
