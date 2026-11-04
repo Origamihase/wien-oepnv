@@ -299,10 +299,13 @@ Bedarf), und das API-Limit darf nicht überschritten werden.
 * Der Bericht `docs/archive/audits/ki-waechter-YYYY-MM-DD.md` geht über
   `publish_to_main.sh` nach `main`; belegte Funde öffnen ein Issue (Label
   `ki-waechter`). Der Feed bleibt unverändert.
-* Ein Lauf, der nicht prüfen konnte (Schlüssel leer oder abgelehnt,
-  Kontingent erschöpft, Abbruch des Modells), ist rot und macht die Prüfung
+* Ein Lauf, der nicht prüfen konnte (Schlüssel leer oder abgelehnt, Modell
+  nicht gefunden, Antwort ohne JSON), ist rot und macht die Prüfung
   `Nebenschritte` im Health check rot (`data/side_steps/ki-waechter.json`,
-  Grenze 36 h).
+  Grenze 36 h). War Gemini nur überlastet (503, abgebrochene Verbindung,
+  Zeitüberschreitung, Kontingent), endet der Lauf mit einer Warnung, und die
+  Prüfung bleibt ein Hinweis, bis 30 Stunden ohne gelungene Prüfung vergangen
+  sind (Betreiberentscheidung 2026-11-04, [`reference/ki_waechter.md`](reference/ki_waechter.md), „Ausfall“).
 * Ein Pull Request, der Skript, Prompt oder Workflow ändert, spielt den
   Wächter über die 24 Stunden vor drei Feed-Ständen ab, ohne zu
   veröffentlichen: 27.10.2026 („algae path“ für Algenweg, 40A doppelt),

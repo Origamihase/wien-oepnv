@@ -564,6 +564,19 @@ schickte keine Mail. Gemessen ist keiner gescheitert (Update-Läufe seit
   den Update-Lauf, 192 h für den Stationslauf): Dann konnte die
   Aufzeichnung selbst nicht laufen. Fehlt eine Datei noch (vor dem ersten
   Lauf mit der Aufzeichnung), ist das ein Hinweis.
+* Ausnahme seit 2026-11-04 (Michael, Karte „Ja, so bauen“): Bekam der
+  KI-Wächter nur deshalb keine Antwort, weil Gemini überlastet war
+  (Ergebnis `overloaded`: 500/502/503/504, abgebrochene Verbindung,
+  Zeitüberschreitung, 429), ist das ein Hinweis mit der Uhrzeit, ab der es
+  rot wird: 30 Stunden nach der letzten gelungenen Prüfung
+  (`KI_WAECHTER_OVERLOAD_MAX_H`, `HEALTH_KI_WAECHTER_OVERLOAD_HOURS`), ohne
+  gelungene Prüfung 30 Stunden nach dem ersten Fehlschlag (`failing_since`,
+  das `record_side_steps.py` beim ersten Fehlschlag nach einem sauberen Lauf
+  setzt). Anlass: Vom 01. bis 04.11.2026 antwortete Gemini um 9:00 jeden Tag
+  mit 503, 34 Health-check-Läufe waren rot, obwohl der Feed lief und der
+  zweite Versuch um 11:31 zweimal durchkam; nachgespielt wäre keiner davon
+  rot gewesen. Ein abgelehnter Schlüssel oder ein Fehler im Code bleibt
+  sofort rot, so fällt eine Stufe, die wirklich nicht läuft, weiter auf.
 * Die Prüfung `Feed-Wächter` ist rot, wenn der Wächter nicht prüfen konnte
   (Feld `error` in `data/feed_watch.json`); er endet in diesem Fall mit
   Exit-Code 0, damit die Veröffentlichung weiterläuft, und sein Schritt

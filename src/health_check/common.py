@@ -69,6 +69,13 @@ STATIONS_MAX_AGE_H = _env_float("HEALTH_STATIONS_MAX_AGE_HOURS", 192.0)
 # after a failure); 36 h leaves room for a late first Update cycle of the
 # next day.
 KI_WAECHTER_MAX_AGE_H = _env_float("HEALTH_KI_WAECHTER_MAX_AGE_HOURS", 36.0)
+# A KI-Wächter run that got no answer only because Gemini was overloaded
+# (outcome "overloaded") is a note until the last clean audit is this old
+# (Michael 2026-11-04, card "Ja, so bauen": 503 at 9:00 on every day from
+# 01.11. to 04.11. turned the Health check red although the feed was fine;
+# the retry at 11:31 got through on 02.11. and 03.11.). 30 h = a whole day
+# with all its tries lost. A rejected key or a broken step stays red at once.
+KI_WAECHTER_OVERLOAD_MAX_H = _env_float("HEALTH_KI_WAECHTER_OVERLOAD_HOURS", 30.0)
 # SEO run (seo-guard.yml): daily cron, which GitHub delivers hours late (see
 # docs/development.md, "Geplante Läufe"), plus every push touching docs/.
 # 48 h = two days without any run before its side-step record counts as stale.
