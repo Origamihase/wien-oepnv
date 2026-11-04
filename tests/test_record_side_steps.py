@@ -31,6 +31,7 @@ def test_success_and_failure_are_recorded() -> None:
     }
     assert state["steps"]["Linienprüfung"] == {
         "outcome": "failure", "at": "2026-10-28T11:00:00+00:00", "run": "u",
+        "failing_since": "2026-10-28T11:00:00+00:00",
     }
 
 
@@ -76,7 +77,7 @@ def test_the_written_record_turns_the_health_check_red_and_green_again(
         assert rec.main(["--state", str(state), *pairs]) == 0
 
     monkeypatch.setattr(hc_outputs, "SIDE_STEP_DIR", tmp_path / "data" / "side_steps")
-    monkeypatch.setattr(hc_outputs, "SIDE_STEP_RECORDS", [("update-cycle.json", "Update-Lauf", 4.0)])
+    monkeypatch.setattr(hc_outputs, "SIDE_STEP_RECORDS", [("update-cycle.json", "Update-Lauf", 4.0, None)])
     run("Statistik=success", "Linienprüfung=failure", "Feed-Wächter=success")
     now = datetime.now(UTC)
     check = hc.check_side_steps(now)
@@ -121,9 +122,67 @@ def test_the_workflows_record_every_side_step() -> None:
     main_only = "if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'"
     assert main_only in metadata_step
     assert main_only in seo.split("- name: Publish sitemap.xml and llms.txt", 1)[1].split("- name:", 1)[0]
-    files = {name for name, _workflow, _age in hc.SIDE_STEP_RECORDS}
+    files = {name for name, _workflow, _age, _overload in hc.SIDE_STEP_RECORDS}
     assert files == {"update-cycle.json", "update-stations.json", "seo-guard.json", "ki-waechter.json"}
     watcher = (REPO / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8")
     assert "--state data/side_steps/ki-waechter.json" in watcher
     assert '"KI-Wächter=${outcome}"' in watcher
     assert watcher.index("Record side-step outcome") < watcher.index("Publish the audit file")
+
+
+def test_failing_since_marks_the_first_failure_until_a_success() -> None:
+    first = rec.update({}, {"KI-Wächter": "overloaded"}, now=_T0, url="")
+    later = rec.update(first, {"KI-Wächter": "failure"}, now=_T0 + timedelta(hours=2), url="")
+    assert later["steps"]["KI-Wächter"]["failing_since"] == "2026-10-28T11:00:00+00:00"
+    good = rec.update(later, {"KI-Wächter": "success"}, now=_T0 + timedelta(hours=4), url="")
+    assert "failing_since" not in good["steps"]["KI-Wächter"]
+    # A record written before 2026-11-04 has no failing_since: its last failure is the start.
+    legacy = {"steps": {"KI-Wächter": {"outcome": "failure", "at": "2026-11-04T08:03:46+00:00"}}}
+    again = rec.update(legacy, {"KI-Wächter": "overloaded"}, now=_T0 + timedelta(days=8), url="")
+    assert again["steps"]["KI-Wächter"]["failing_since"] == "2026-11-04T08:03:46+00:00"
+
+
+def _overload_check(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, entry: dict[str, str], now: datetime
+) -> hc.Check:
+    side = tmp_path / "side_steps"
+    side.mkdir(exist_ok=True)
+    record = {"updated": entry["at"], "steps": {"KI-Wächter": entry}}
+    (side / "ki-waechter.json").write_text(json.dumps(record), encoding="utf-8")
+    monkeypatch.setattr(hc_outputs, "SIDE_STEP_DIR", side)
+    monkeypatch.setattr(hc_outputs, "SIDE_STEP_RECORDS", [("ki-waechter.json", "KI-Wächter", 36.0, 30.0)])
+    return hc.check_side_steps(now)
+
+
+def test_an_overloaded_gemini_is_a_note_until_30_hours_after_the_last_success(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Michael 2026-11-04 ("Ja, so bauen"): 503 at 9:00 on 01.-04.11. turned the
+    Health check red although the retry at 11:31 got through."""
+    entry = {"outcome": "overloaded", "at": "2026-11-04T08:03:46+00:00",
+             "last_success": "2026-11-03T10:32:42+00:00", "run": "u"}
+    t = datetime(2026, 11, 4, 9, 1, tzinfo=UTC)
+    check = _overload_check(tmp_path, monkeypatch, entry, t)
+    assert check.ok and check.note
+    assert "ohne Antwort, Dienst überlastet am 04.11. 09:03" in check.summary
+    assert "rot ab 04.11. 17:32" in check.summary
+    red = _overload_check(tmp_path, monkeypatch, entry, datetime(2026, 11, 4, 16, 33, tzinfo=UTC))
+    assert not red.ok and "keine gelungene Prüfung" in red.summary
+    # The same day as a real failure (rejected key, broken step): red at once.
+    failed = _overload_check(tmp_path, monkeypatch, {**entry, "outcome": "failure"}, t)
+    assert not failed.ok and "gescheitert am 04.11. 09:03" in failed.summary
+    # Never clean: the limit counts from the first failure.
+    never = {"outcome": "overloaded", "at": "2026-11-02T08:03:00+00:00",
+             "failing_since": "2026-11-01T08:03:00+00:00", "run": "u"}
+    assert not _overload_check(tmp_path, monkeypatch, never, datetime(2026, 11, 2, 14, 4, tzinfo=UTC)).ok
+    assert _overload_check(tmp_path, monkeypatch, never, datetime(2026, 11, 2, 9, 0, tzinfo=UTC)).ok
+
+
+def test_overloaded_is_red_at_once_where_no_overload_limit_is_set(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    entry = {"outcome": "overloaded", "at": "2026-11-04T08:03:46+00:00",
+             "last_success": "2026-11-04T07:00:00+00:00", "run": "u"}
+    _overload_check(tmp_path, monkeypatch, entry, datetime(2026, 11, 4, 9, 0, tzinfo=UTC))
+    monkeypatch.setattr(hc_outputs, "SIDE_STEP_RECORDS", [("ki-waechter.json", "Update-Lauf", 36.0, None)])
+    assert not hc.check_side_steps(datetime(2026, 11, 4, 9, 0, tzinfo=UTC)).ok

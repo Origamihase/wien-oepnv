@@ -157,6 +157,13 @@ class Answer:
     requests: int = 0
     # One line per request that got no answer: model, seconds, what happened.
     attempts: list[str] = field(default_factory=list)
+    # No answer only because Google was busy: the last request ended in an
+    # overload (500/502/503/504), a dropped connection or the quota (429).
+    # The Health check shows such a day as a note and turns red only after
+    # 30 hours without a clean audit (Michael 2026-11-04, card "Ja, so
+    # bauen"); a rejected key, a missing model or a broken answer stay red at
+    # once.
+    overloaded: bool = False
 
 
 def build_prompt(input_text: str, prompt_template: str) -> str:
@@ -235,6 +242,7 @@ def ask_gemini(
     limit = max(0, min(max_requests, MAX_REQUESTS_PER_AUDIT))
     sent = 0
     attempts: list[str] = []
+    busy = False
     answer = Answer(False, models[0], error="kein Anfragebudget")
     # total=0: the session itself never repeats a request; this loop counts every one.
     # keepalive: the answer can take minutes without a byte on the wire.
@@ -267,17 +275,22 @@ def ask_gemini(
                 # within the share; the request counts, it may have reached Google.
                 answer = Answer(False, current, error=f"Gemini nicht erreichbar ({type(exc).__name__})")
                 attempts.append(_attempt(current, sent_at, answer.error))
+                busy = True
                 continue
             except (requests.RequestException, ValueError) as exc:
                 answer = Answer(False, current, error=f"Gemini nicht erreichbar ({type(exc).__name__})")
                 attempts.append(_attempt(current, sent_at, answer.error))
+                # Ten minutes without an answer is Google being slow, too.
+                busy = isinstance(exc, requests.Timeout)
                 break
             answer = _answer_from(response, current)
+            busy = response.status_code in OVERLOAD_STATUS or response.status_code == 429
             if not answer.ok:
                 attempts.append(_attempt(current, sent_at, answer.error))
             if response.status_code not in OVERLOAD_STATUS:
                 break
     answer.attempts = attempts
+    answer.overloaded = busy and not answer.ok
     answer.requests = sent
     answer.seconds = round(time.monotonic() - started, 1)
     return answer
@@ -360,7 +373,13 @@ def _cmd_ask(args: argparse.Namespace) -> int:
     # The gate of the next runs reads this annotation to count the day's requests.
     print(f"::notice title=Gemini-Anfragen::{answer.requests}")
     if not answer.ok:
-        print(f"::error title=KI-Wächter::{answer.error}")
+        if answer.overloaded:
+            # Exit 1 all the same: no answer, nothing to verify. The workflow
+            # reads ``overloaded`` from antwort.json and records the day as
+            # "overloaded" instead of "failure".
+            print(f"::warning title=KI-Wächter::Gemini überlastet, keine Antwort: {answer.error}")
+        else:
+            print(f"::error title=KI-Wächter::{answer.error}")
         return 1
     print(f"Gemini {answer.model}: {answer.requests} Anfrage(n), {answer.seconds} s, Tokens {answer.tokens}")
     return 0

@@ -74,7 +74,9 @@ only when the fetch is broken, never because no train runs).
    and HAFAS station lines run with ``continue-on-error``; the daily
    KI-Wächter (``ki-waechter.yml``) records its run the same way. Red while
    the last run of one of them failed (operator decision 2026-10-28: "ein
-   Fehler sollte auffallen"; see :func:`check_side_steps`).
+   Fehler sollte auffallen"; see :func:`check_side_steps`). A KI-Wächter
+   that got no answer only because Gemini was overloaded is a note until
+   30 h after its last clean audit (operator decision 2026-11-04).
 
 4. **Zugangsdaten (Secrets).** Every repository secret a workflow passes on is
    listed in :data:`WORKFLOW_SECRETS`. A secret the feed pipeline needs that

@@ -563,3 +563,43 @@ def test_the_daily_audit_starts_with_the_quota_day_and_tries_again_after_a_failu
     # Before the start hour nothing runs.
     late = {**cycle, "KI_WAECHTER_START_HOUR": "24"}
     assert _run_gate(tmp_path / "e", "workflow_run", [], late, _record("success", 30, 30))["run"] == "false"
+
+
+def test_only_a_busy_gemini_counts_as_overloaded(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Michael 2026-11-04 ("Ja, so bauen"): 503, a dropped connection, a timeout
+    and the quota are a note in the Health check; a rejected key or a missing
+    model stay red at once."""
+    busy = {"error": {"message": "This model is currently experiencing high demand."}}
+    _overloaded_then(monkeypatch, [_Response(503, busy)] * 3)
+    answer = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", max_requests=3, sleep=lambda s: None)
+    assert not answer.ok and answer.overloaded
+    _overloaded_then(monkeypatch, [_Response(429, {"error": {"message": "Quota exceeded"}})])
+    assert kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=3, sleep=lambda s: None).overloaded
+    for status in (400, 401, 403, 404):
+        _overloaded_then(monkeypatch, [_Response(status, {"error": {"message": "API key not valid"}})])
+        refused = kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=3, sleep=lambda s: None)
+        assert not refused.ok and not refused.overloaded, status
+    # The last request decides: overloaded first, then a rejected key.
+    _overloaded_then(monkeypatch, [_Response(503, busy), _Response(403, {"error": {"message": "denied"}})])
+    mixed = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", max_requests=3, sleep=lambda s: None)
+    assert not mixed.ok and not mixed.overloaded
+    _overloaded_then(monkeypatch, [_Response(200, _ok_payload("{}"))])
+    assert not kw.ask_gemini("Prompt", "gemini-3.8-flash", "k").overloaded
+    for exc in (requests.ConnectionError("x"), requests.ReadTimeout("x")):
+        def fake_request(session: object, url: str, _exc: Exception = exc, **kwargs: Any) -> _Response:
+            raise _exc
+
+        monkeypatch.setattr(kw, "request_safe", fake_request)
+        assert kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=1).overloaded
+    # Nothing sent (too large, no share) is no overload.
+    assert not kw.ask_gemini("x" * (kw.MAX_PROMPT_CHARS + 1), "gemini-3.8-flash", "k").overloaded
+    assert not kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=0).overloaded
+
+
+def test_the_workflow_records_an_overloaded_day_and_stays_green() -> None:
+    workflow = (Path(__file__).resolve().parents[2] / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8")
+    record = workflow.split("- name: Record side-step outcome", 1)[1].split("- name:", 1)[0]
+    assert "outcome=overloaded" in record and ".overloaded == true" in record
+    fail = workflow.split("- name: Fail the run when the audit could not run", 1)[1]
+    assert '"${PUBLISH}" == "true"' in fail and ".overloaded == true" in fail
+    assert fail.index("exit 0") < fail.index("exit 1")

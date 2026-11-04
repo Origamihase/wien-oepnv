@@ -48,7 +48,11 @@ from src.utils.serialize import scrub_trojan_source_primitives
 
 LOGGER = getLogger("record_side_steps")
 
-RECORDED_OUTCOMES = ("success", "failure")
+# ``overloaded``: the step could not run only because an outside service was
+# busy (the KI-Wächter when Gemini answers 503; Michael 2026-11-04). The
+# Health check shows it as a note until the step's last success is older
+# than its overload limit.
+RECORDED_OUTCOMES = ("success", "failure", "overloaded")
 MAX_STATE_BYTES = 64 * 1024
 
 
@@ -86,9 +90,19 @@ def update(
         if outcome not in RECORDED_OUTCOMES:
             continue
         entry = steps.setdefault(label, {})
+        was_failing = entry.get("outcome") in ("failure", "overloaded")
+        previous_at = entry.get("at")
         entry.update(outcome=outcome, at=stamp, run=url)
         if outcome == "success":
             entry["last_success"] = stamp
+            entry.pop("failing_since", None)
+        elif not was_failing:
+            # First failed run after a clean one (or before any): the
+            # overload limit counts from here while there is no success.
+            entry["failing_since"] = stamp
+        elif "failing_since" not in entry:
+            # A record from before 2026-11-04: its last failure is the start.
+            entry["failing_since"] = previous_at if isinstance(previous_at, str) else stamp
     return {"updated": stamp, "steps": steps}
 
 
@@ -119,6 +133,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     for label, outcome in outcomes.items():
         if outcome == "failure":
             LOGGER.warning("Nebenschritt gescheitert: %s", sanitize_log_arg(label))
+        elif outcome == "overloaded":
+            LOGGER.warning("Nebenschritt ohne Antwort (Dienst überlastet): %s", sanitize_log_arg(label))
     LOGGER.info(
         "Nebenschritte: %s",
         sanitize_log_arg(", ".join(f"{label} {outcome or 'ohne Ergebnis'}" for label, outcome in outcomes.items())),

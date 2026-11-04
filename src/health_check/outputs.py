@@ -6,13 +6,14 @@ Moved verbatim from ``scripts/health_check.py`` (700-line rule, 2026-11-02).
 from __future__ import annotations
 
 import re
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from email.utils import parsedate_to_datetime
 
 from src.health_check.common import (
     _VIENNA,
     FEED_MAX_AGE_H,
     KI_WAECHTER_MAX_AGE_H,
+    KI_WAECHTER_OVERLOAD_MAX_H,
     LIVE_FEED_CONTENT_TYPES,
     LIVE_FEED_MAX_BYTES,
     LIVE_FETCH_TIMEOUT_S,
@@ -299,15 +300,52 @@ def check_translation(now: datetime) -> Check:
 
 # One record per workflow, written by ``scripts/record_side_steps.py`` at the
 # end of the run (file name, workflow, oldest age before the record itself
-# counts as missing: the workflow's own freshness limit).
-SIDE_STEP_RECORDS: list[tuple[str, str, float]] = [
-    ("update-cycle.json", "Update-Lauf", FEED_MAX_AGE_H),
-    ("update-stations.json", "Stationslauf", STATIONS_MAX_AGE_H),
-    ("ki-waechter.json", "KI-Wächter", KI_WAECHTER_MAX_AGE_H),
+# counts as missing: the workflow's own freshness limit, and how long an
+# "overloaded" step stays a note; None: such a step is red at once).
+SIDE_STEP_RECORDS: list[tuple[str, str, float, float | None]] = [
+    ("update-cycle.json", "Update-Lauf", FEED_MAX_AGE_H, None),
+    ("update-stations.json", "Stationslauf", STATIONS_MAX_AGE_H, None),
+    # Gemini overloaded: a note for 30 h after the last clean audit
+    # (Michael 2026-11-04, see KI_WAECHTER_OVERLOAD_MAX_H).
+    ("ki-waechter.json", "KI-Wächter", KI_WAECHTER_MAX_AGE_H, KI_WAECHTER_OVERLOAD_MAX_H),
     # Repository-Metadaten via REPO_ADMIN_TOKEN (Architektur-Review 2026-10-31, Fund B).
-    ("seo-guard.json", "SEO-Lauf", SEO_MAX_AGE_H),
+    ("seo-guard.json", "SEO-Lauf", SEO_MAX_AGE_H, None),
 ]
 SIDE_STEP_DIR = REPO_ROOT / "data" / "side_steps"
+
+
+def _side_step_finding(
+    label: str, workflow: str, entry: dict[str, object], now: datetime, overload_max_h: float | None
+) -> tuple[str, bool] | None:
+    """What one failed side step says, and whether it is red (None: it ran cleanly).
+
+    ``overloaded`` (an outside service was busy, 2026-11-04) is a note while
+    the last success, or the first failure when there never was one, is
+    younger than ``overload_max_h``; every other failure is red.
+    """
+    outcome = entry.get("outcome")
+    if outcome not in ("failure", "overloaded"):
+        return None
+    at = _parse_utc(entry.get("at"))
+    last_ok = _parse_utc(entry.get("last_success"))
+    busy = outcome == "overloaded"
+    text = f"{label} ({workflow}) " + ("ohne Antwort, Dienst überlastet" if busy else "gescheitert")
+    if at is not None:
+        text += f" am {_vienna_hhmm(at)}"
+    text += f", zuletzt sauber am {_vienna_hhmm(last_ok)}" if last_ok else ", noch nie sauber"
+    red = True
+    if busy and overload_max_h is not None:
+        since = last_ok or _parse_utc(entry.get("failing_since")) or at
+        if since is not None:
+            red_at = since + timedelta(hours=overload_max_h)
+            red = now >= red_at
+            if not red:
+                text += f"; rot ab {_vienna_hhmm(red_at)}, falls bis dahin keine Prüfung gelingt"
+            else:
+                text += f"; seit {_fmt_age((now - since).total_seconds())} keine gelungene Prüfung"
+    if entry.get("run"):
+        text += f" — {entry['run']}"
+    return text, red
 
 
 def check_side_steps(now: datetime) -> Check:
@@ -321,13 +359,16 @@ def check_side_steps(now: datetime) -> Check:
     (2026-10-10); a source outage keeps its own thresholds. A record older
     than its workflow's limit is red too: the recorder could not run, so a
     failure would go unseen again. A record that does not exist yet (before
-    the first run with the recorder) is a note.
+    the first run with the recorder) is a note. A KI-Wächter day without an
+    answer only because Gemini was overloaded is a note until 30 h after the
+    last clean audit (Michael 2026-11-04, card "Ja, so bauen").
     """
     name = "Nebenschritte"
     problems: list[str] = []
+    waits: list[str] = []
     notes: list[str] = []
     counted = 0
-    for file_name, workflow, max_age_h in SIDE_STEP_RECORDS:
+    for file_name, workflow, max_age_h, overload_max_h in SIDE_STEP_RECORDS:
         path = SIDE_STEP_DIR / file_name
         if not path.exists():
             notes.append(f"{workflow}: noch kein Stand ({path.name})")
@@ -345,22 +386,15 @@ def check_side_steps(now: datetime) -> Check:
             if not isinstance(entry, dict):
                 continue
             counted += 1
-            if entry.get("outcome") != "failure":
-                continue
-            at = _parse_utc(entry.get("at"))
-            last_ok = _parse_utc(entry.get("last_success"))
-            text = f"{label} ({workflow}) gescheitert"
-            if at is not None:
-                text += f" am {_vienna_hhmm(at)}"
-            text += (
-                f", zuletzt sauber am {_vienna_hhmm(last_ok)}" if last_ok else ", noch nie sauber"
-            )
-            if entry.get("run"):
-                text += f" — {entry['run']}"
-            problems.append(text)
+            finding = _side_step_finding(label, workflow, entry, now, overload_max_h)
+            if finding is not None:
+                (problems if finding[1] else waits).append(finding[0])
     if problems:
         return Check(name, ok=False, summary=f"FEHLER — {problems[0]}",
-                     detail="; ".join(problems[1:] + notes))
+                     detail="; ".join(problems[1:] + waits + notes))
+    if waits:
+        return Check(name, ok=True, note=True, summary=f"HINWEIS — {waits[0]}",
+                     detail="; ".join(waits[1:] + notes))
     if notes and not counted:
         return Check(name, ok=True, note=True,
                      summary="HINWEIS — noch kein Stand der Nebenschritte",

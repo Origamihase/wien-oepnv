@@ -182,13 +182,30 @@ den öffentlichen Texten des Feeds und der Betreiber.
 
 ## Ausfall
 
-Kann der Wächter nicht prüfen (Schlüssel leer oder abgelehnt, Kontingent
-erschöpft, Modell bricht ab, Antwort ohne JSON), ist der Lauf rot, und die
-Prüfung `Nebenschritte` im Health check wird rot. Rot wird sie auch, wenn
-36 Stunden kein Lauf aufgezeichnet wurde. Zwei Stunden später versucht er es
-von selbst noch einmal, solange das Tagesbudget reicht; ein erfolgreicher
-Lauf macht die Prüfung wieder grün. Von Hand geht es ebenso innerhalb des
-Budgets.
+Der Wächter unterscheidet zwei Arten, nicht prüfen zu können
+(Betreiberentscheidung Michael, 2026-11-04, Karte „Ja, so bauen“; Anlass:
+Gemini antwortete vom 01. bis 04.11.2026 jeden Tag um 9:00 mit 503, und der
+Health check war jedes Mal rot, obwohl der Feed lief):
+
+- **Gemini überlastet.** Die letzte Anfrage endete mit 500, 502, 503 oder 504,
+  mit einer abgebrochenen Verbindung, nach zehn Minuten ohne Antwort oder
+  mit 429 (Kontingent erschöpft). `ask` schreibt `"overloaded": true` in
+  `antwort.json`, der Lauf endet mit einer Warnung grün, und
+  `data/side_steps/ki-waechter.json` hält das Ergebnis `overloaded` fest. Die
+  Prüfung `Nebenschritte` im Health check zeigt das als Hinweis mit der
+  Uhrzeit, ab der sie rot wird: 30 Stunden nach der letzten gelungenen
+  Prüfung (`HEALTH_KI_WAECHTER_OVERLOAD_HOURS`), gab es noch keine, 30 Stunden
+  nach dem ersten Fehlschlag (`failing_since`). Rot wird es also erst, wenn
+  ein ganzer Tag mit allen Versuchen verloren ist.
+- **Alles andere.** Schlüssel leer oder abgelehnt (400, 401, 403), Modell
+  nicht gefunden (404), Eingabe zu groß, Antwort ohne JSON, ein Fehler im
+  Skript: Der Lauf ist rot, und die Prüfung `Nebenschritte` wird sofort rot.
+  Rot wird sie auch, wenn 36 Stunden kein Lauf aufgezeichnet wurde.
+
+In beiden Fällen versucht er es zwei Stunden später von selbst noch einmal,
+solange das Tagesbudget reicht; ein erfolgreicher Lauf macht die Prüfung
+wieder grün. Von Hand geht es ebenso innerhalb des Budgets. Ein Probelauf im
+Pull Request bleibt auch bei Überlastung rot, weil er kein Ergebnis hat.
 
 ## Probelauf im Pull Request
 

@@ -19,7 +19,8 @@ name: KI-Wächter
 # The ``gate`` job ends in seconds on every other tick: before 9:00, after
 # a failed cycle, when today's audit succeeded (``last_success`` in
 # ``data/side_steps/ki-waechter.json``), or within two hours of a failed one
-# (the Health check is red until an audit succeeds).
+# (the Health check is red until an audit succeeds; after a mere overload of
+# Gemini only 30 hours after the last clean audit).
 #
 # How: ``scripts/ki_waechter.py prepare`` writes the input (every feed
 # version of 24 hours from the git history, the English feed, the source
@@ -32,6 +33,11 @@ name: KI-Wächter
 # A failed run is red here and turns the Health check red ("Nebenschritte",
 # record ``data/side_steps/ki-waechter.json``): a stage that cannot run, a
 # missing or rejected key for instance, must be noticed (Michael 2026-10-28).
+# A run without an answer only because Gemini was overloaded (503, a dropped
+# connection, the quota) ends with a warning instead, is recorded as
+# "overloaded" and stays a note in the Health check until 30 hours after the
+# last clean audit (Michael 2026-11-04: Gemini answered 503 at 9:00 on every
+# day from 01.11. to 04.11., and the Health check was red each time).
 #
 # Pull requests that touch the watcher run it on two days with known
 # findings (27.10.2026: "algae path" for Algenweg, 40A twice, a stop
@@ -338,7 +344,10 @@ jobs:
         shell: bash
         run: |
           outcome=failure
-          if [[ "${AI_OUTCOME}" == "success" && "${VERIFY_OUTCOME}" == "success" ]]; then outcome=success; fi
+          if [[ "${AI_OUTCOME}" == "success" && "${VERIFY_OUTCOME}" == "success" ]]; then outcome=success
+          elif [[ "${AI_OUTCOME}" == "failure" && "$(jq -r '.overloaded == true' "${WORK}/antwort.json" 2>/dev/null)" == "true" ]]; then
+            outcome=overloaded
+          fi
           python scripts/record_side_steps.py --state data/side_steps/ki-waechter.json "KI-Wächter=${outcome}"
 
       # Publish through ``scripts/publish_to_main.sh``, the one publish path
@@ -386,5 +395,12 @@ jobs:
           VERIFY_OUTCOME: ${{ steps.verify.outcome }}
         shell: bash
         run: |
+          # Gemini only overloaded on the daily audit: a warning, the run
+          # stays green; the Health check turns red after 30 h without a
+          # clean audit. A pull request replay stays red (no result).
+          if [[ "${PUBLISH}" == "true" && "${AI_OUTCOME}" == "failure" && "$(jq -r '.overloaded == true' "${WORK}/antwort.json" 2>/dev/null)" == "true" ]]; then
+            echo "::warning title=KI-Wächter::Gemini überlastet, Prüfung nicht gelaufen; nächster Versuch in ${KI_WAECHTER_RETRY_HOURS} h"
+            exit 0
+          fi
           echo "::error title=KI-Wächter::Prüfung nicht gelaufen (Gemini: ${AI_OUTCOME}, Prüfung: ${VERIFY_OUTCOME:-nicht gestartet})"
           exit 1
