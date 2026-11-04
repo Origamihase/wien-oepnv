@@ -8,10 +8,12 @@ from __future__ import annotations
 
 import csv
 import re
+from typing import cast
 
 import pytest
 
 from src.feed_build.item_format import _format_item_content
+from src.feed_types import FeedItem
 from src.utils import wl_stop_markers
 from src.utils.wl_stop_markers import without_stop_markers
 
@@ -81,7 +83,7 @@ def test_the_feed_item_reads_rennweg() -> None:
         ),
         "guid": "rennweg-n71",
     }
-    formatted = _format_item_content(item, "rennweg-n71", None, None)
+    formatted = _format_item_content(cast(FeedItem, item), "rennweg-n71", None, None)
     assert formatted.title_out == "N71: Rennweg"
     assert " S." not in formatted.desc_text_truncated
     assert "Rennweg S" not in formatted.desc_cdata
@@ -103,7 +105,7 @@ def test_a_marker_behind_an_html_entity_goes_too() -> None:
         ),
         "guid": "haidestrasse-72a",
     }
-    formatted = _format_item_content(item, "haidestrasse-72a", None, None)
+    formatted = _format_item_content(cast(FeedItem, item), "haidestrasse-72a", None, None)
     assert formatted.title_out == "72A: Haidestraße"
     assert "Haltestelle:" not in formatted.desc_text_truncated
     assert "Grund: Arbeiten an einer Gasleitung." in formatted.desc_text_truncated
