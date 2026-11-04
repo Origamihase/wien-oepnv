@@ -8,8 +8,35 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 04 Nov 2026 17:31:14 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 18:01:16 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[37/38/40/41/42: Police operation]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">63eaa763fcf61492287f36dd135515ddca0aec120210f3e2450dde0cd7280506</guid>
+      <pubDate>Wed, 04 Nov 2026 17:57:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 04 Nov 2026 18:01:16 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 04 Nov 2026 17:57:00 +0100</ext:starts_at>
+      <description>Service obstruction: 37, 38, 40, 41, 42. Expected until 18:15. [Since 17:57]</description>
+      <content:encoded><![CDATA[Service obstruction: 37, 38, 40, 41, 42. Expected until 18:15.<br/>[Since 17:57]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[14A: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">45135f0f9023593102b885c7d89c0c028d3a4d83421c93a8a39180b147612974</guid>
+      <pubDate>Wed, 04 Nov 2026 17:58:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 04 Nov 2026 17:58:00 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 04 Nov 2026 17:58:00 +0100</ext:starts_at>
+      <ext:ends_at>Wed, 04 Nov 2026 19:12:00 +0100</ext:ends_at>
+      <description>Irregular intervals in both directions. Reason: traffic accident. [Since 17:58]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 17:58]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[10: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -21,8 +48,8 @@
       <ext:first_seen>Wed, 04 Nov 2026 17:03:00 +0100</ext:first_seen>
       <ext:starts_at>Wed, 04 Nov 2026 17:09:18 +0100</ext:starts_at>
       <ext:ends_at>Wed, 04 Nov 2026 18:09:00 +0100</ext:ends_at>
-      <description>Trains stop at the stop of line 44. After a service obstruction, there are irregular intervals. [Since 17:03]</description>
-      <content:encoded><![CDATA[Trains stop at the stop of line 44. After a service obstruction, there are irregular intervals.<br/>[Since 17:03]]]></content:encoded>
+      <description>Trains stop at the stop of line 44. [Since 17:03]</description>
+      <content:encoded><![CDATA[Trains stop at the stop of line 44.<br/>[Since 17:03]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[2: Illegally parked vehicle]]></title>
@@ -119,36 +146,6 @@
       <georss:line>48.196804 16.337680 48.207980 15.624408</georss:line>
       <description>Due to construction works, no REX50 trains can run between St. Pölten Hbf and Wien Westbahnhof (U) from 03.11.2026 to 10.11.2026. [Until 11.11.]</description>
       <content:encoded><![CDATA[Due to construction works, no REX50 trains can run between St. Pölten Hbf and Wien Westbahnhof (U) from 03.11.2026 to 10.11.2026.<br/>[Until 11.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Rennweg S]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">545b26fc6225f467a79f5c211576287dcd43e912b8e94f87c126a93decfcd269</guid>
-      <pubDate>Thu, 22 Oct 2026 13:54:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 13:54:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 02 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 06 Nov 2026 17:00:00 +0100</ext:ends_at>
-      <georss:point>48.194764 16.386277</georss:point>
-      <description>Rennweg 20-24 → Rennweg 20-24, main carriageway. Stop relocation of line N71 towards Kaiserebersdorf, Zinnergasse. Reason: track construction works. [Until Fri 06.11.]</description>
-      <content:encoded><![CDATA[Rennweg 20-24 → Rennweg 20-24, main carriageway. Stop relocation of line N71 towards Kaiserebersdorf, Zinnergasse. Reason: track construction works.<br/>[Until Fri 06.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;906928</guid>
-      <pubDate>Wed, 16 Sep 2026 08:51:40 +0200</pubDate>
-      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 24 Aug 2026 13:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 31 Oct 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 30 Nov 2026 23:59:59 +0100</ext:ends_at>
-      <georss:line>48.185201 16.376296 48.034917 16.491315</georss:line>
-      <description>Due to construction works, no local trains can run: from Saturday 23:15 to Sunday 04:40 and from Sunday 23:15 to Monday 04:40. [Until 30.11.]</description>
-      <content:encoded><![CDATA[Due to construction works, no local trains can run: from Saturday 23:15 to Sunday 04:40 and from Sunday 23:15 to Monday 04:40.<br/>[Until 30.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

@@ -667,17 +667,13 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "10: Falschparker Züge halten bei der Linie 44",
-    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Falschparker\nZüge halten bei der Linie 44",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "0d70c69478856b9a3b8e5e9a4e597963f8077e418dad78a7ecf0b5dea4f9fa04",
-    "pubDate": "2026-11-04T17:03:00+01:00",
+    "pubDate": "2026-11-04T17:03:47+01:00",
     "starts_at": "2026-11-04T17:09:18+01:00",
     "ends_at": "2026-11-04T18:09:00+01:00",
-    "_identity": "wl|störung|L=10|D=2026-11-04|TK=falschparker",
-    "_wl_ids": [
-      "I20261104-0028"
-    ],
-    "_incident_start": "2026-11-04T17:03:00+01:00"
+    "_identity": "wl|störung|L=10|D=2026-11-04|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
@@ -702,6 +698,22 @@
     "starts_at": "2026-11-04T00:00:16+01:00",
     "ends_at": "2026-11-04T23:59:59+01:00",
     "_identity": "wl|störung|L=12A|D=2026-11-04|TK=betrieb ab schweglerstrasse 19 21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "14A: Verkehrsunfall",
+    "description": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "45135f0f9023593102b885c7d89c0c028d3a4d83421c93a8a39180b147612974",
+    "pubDate": "2026-11-04T17:58:00+01:00",
+    "starts_at": "2026-11-04T17:58:00+01:00",
+    "ends_at": "2026-11-04T19:12:00+01:00",
+    "_identity": "wl|störung|L=14A|D=2026-11-04|TK=14a verkehrsunfall",
+    "_wl_ids": [
+      "I20261104-0029"
+    ],
+    "_incident_start": "2026-11-04T17:58:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -946,6 +958,22 @@
       "I20261104-0028"
     ],
     "_incident_start": "2026-11-04T17:03:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37/38/40/41/42: Polizeieinsatz",
+    "description": "Linie 37: Fahrtbehinderung in Richtung Hohe Warte. Linie 38: Fahrtbehinderung in Richtung Grinzing. Linie 40: Fahrtbehinderung in Richtung Gersthof, Herbeckstraße. Linie 41: Fahrtbehinderung in Richtung Pötzleinsdorf. Linie 42: Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 18:15 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Schwarzspanierstraße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "63eaa763fcf61492287f36dd135515ddca0aec120210f3e2450dde0cd7280506",
+    "pubDate": "2026-11-04T17:57:00+01:00",
+    "starts_at": "2026-11-04T17:57:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=37,38,40,41,42|D=2026-11-04|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261104-0030"
+    ],
+    "_incident_start": "2026-11-04T17:57:00+01:00"
   },
   {
     "source": "Wiener Linien",

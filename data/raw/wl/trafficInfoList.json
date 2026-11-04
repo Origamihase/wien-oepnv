@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261104-0028-F02, I20260925-0011, I20260909-0007, I20260922-0032, I20261104-0026, I20261020-0029, I20261104-0027, I20261104-0028-F01"
+    "trafficInfoNameList": "I20261104-0029, I20260925-0011, I20260909-0007, I20260922-0032, I20261104-0026, I20261104-0030, I20261020-0029, I20261104-0027, I20261104-0028-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R1876-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1875-101, R102-136, R101-136, R117-136, R116-136, R115-136, R103-136, R19-136, R45-136, R100-136, R119-136, R130-136, R118-136, R3886-480, R1448-412, R1474-412, R401-101, R2359-125, R2378-627, R2343-125, R2343-626, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, R561-102, R588-102, R561-110, R3468-110, R560-102, R588-110, R1366-102, R562-102, R562-110, R563-110, R1365-102, R1363-102, R1362-102, R1364-102, R587-110, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R1875-101, R1881-101, R1884-101, R1883-101, R1876-101, R1882-101, R1880-101, R102-136, R101-136, R100-136, R119-136, R45-136, R19-136, R130-136, R118-136, R117-136, R116-136, R115-136, R103-136, R3886-480, R401-101, R1474-412, R1448-412, R2359-125, R2378-627, R2343-125, R2343-626, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, R561-102, R588-102, R561-110, R3468-110, R560-102, R588-110, R1366-102, R562-102, R562-110, R563-110, R1365-102, R1363-102, R1362-102, R1364-102, R587-110, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -355,52 +355,125 @@
     "title": "2: Falschparker"
    },
    {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
+    "alertCause": "accident",
+    "alertCauseId": 77,
     "attributes": {
      "relatedLineTypes": {
-      "10": "ptTram"
+      "14A": "ptBusCity"
      }
     },
-    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "<p>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "10: Falschparker"
+       "descriptionHtml": "<p>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+       "descriptionPlain": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+       "title": "14A: Verkehrsunfall"
       }
      }
     ],
-    "name": "I20261104-0028-F02",
+    "name": "I20261104-0029",
     "owner": "WL",
-    "parentName": "I20261104-0028",
+    "parentName": "I20261104-0029",
     "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "10"
+     "14A"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 110,
-      "lineName": "10",
+      "lineId": 414,
+      "lineName": "14A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-04T17:59:00.000+0100",
+     "end": "2026-11-04T19:12:00.000+0100",
+     "lastUpdate": "2026-11-04T17:59:00.000+0100",
+     "resume": "2026-11-04T17:58:00.000+0100",
+     "start": "2026-11-04T17:58:00.000+0100"
+    },
+    "title": "14A: Verkehrsunfall"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "37": "ptTram",
+      "38": "ptTram",
+      "40": "ptTram",
+      "41": "ptTram",
+      "42": "ptTram"
+     }
+    },
+    "description": "Linie 37: Fahrtbehinderung in Richtung Hohe Warte. Linie 38: Fahrtbehinderung in Richtung Grinzing. Linie 40: Fahrtbehinderung in Richtung Gersthof, Herbeckstraße. Linie 41: Fahrtbehinderung in Richtung Pötzleinsdorf. Linie 42: Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 18:15 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Schwarzspanierstraße.",
+    "descriptionHTML": "<p>Linie 37:<br>Fahrtbehinderung in Richtung Hohe Warte.<br>Linie 38:<br>Fahrtbehinderung in Richtung Grinzing.<br>Linie 40:<br>Fahrtbehinderung in Richtung Gersthof, Herbeckstraße.<br>Linie 41:<br>Fahrtbehinderung in Richtung Pötzleinsdorf.<br>Linie 42:<br>Fahrtbehinderung in Richtung Antonigasse.</p><p>Voraussichtliche Dauer: 18:15 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Schwarzspanierstraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 37:<br>Fahrtbehinderung in Richtung Hohe Warte.<br>Linie 38:<br>Fahrtbehinderung in Richtung Grinzing.<br>Linie 40:<br>Fahrtbehinderung in Richtung Gersthof, Herbeckstraße.<br>Linie 41:<br>Fahrtbehinderung in Richtung Pötzleinsdorf.<br>Linie 42:<br>Fahrtbehinderung in Richtung Antonigasse.</p><p>Voraussichtliche Dauer: 18:15 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Schwarzspanierstraße.</p>",
+       "descriptionPlain": "Linie 37: Fahrtbehinderung in Richtung Hohe Warte. Linie 38: Fahrtbehinderung in Richtung Grinzing. Linie 40: Fahrtbehinderung in Richtung Gersthof, Herbeckstraße. Linie 41: Fahrtbehinderung in Richtung Pötzleinsdorf. Linie 42: Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 18:15 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Schwarzspanierstraße.",
+       "title": "37, 38, 40, 41, 42: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261104-0030",
+    "owner": "WL",
+    "parentName": "I20261104-0030",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "37",
+     "38",
+     "40",
+     "41",
+     "42"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 137,
+      "lineName": "37",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 138,
+      "lineName": "38",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 140,
+      "lineName": "40",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 141,
+      "lineName": "41",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 142,
+      "lineName": "42",
       "vehicleType": "ptTram"
      }
     ],
     "relatedStops": [
-     562
+     1213
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-04T17:17:00.000+0100",
-     "end": "2026-11-04T17:55:00.000+0100",
-     "lastUpdate": "2026-11-04T17:20:00.000+0100",
-     "start": "2026-11-04T17:03:00.000+0100"
+     "created": "2026-11-04T18:00:00.000+0100",
+     "lastUpdate": "2026-11-04T18:00:00.000+0100",
+     "start": "2026-11-04T17:57:00.000+0100"
     },
-    "title": "10: Falschparker"
+    "title": "37, 38, 40, 41, 42: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
