@@ -74,6 +74,7 @@ FUTURE_SLACK = timedelta(minutes=5)
 ISSUE_LABEL = "ifttt-ausfall"
 ISSUE_TITLE = "IFTTT-Takt ausgefallen: Fallback hält den Feed aktuell"
 RUNS_PER_PAGE = 30
+COMMENTS_PER_PAGE = 100
 # Hidden marks of the two comments on the issue when the fallback fails and
 # when it runs again: the newest mark tells the next check which state was
 # last reported, so each change mails once (Michael 2026-11-04, card "Ja,
@@ -269,10 +270,22 @@ class ActionsClient:
             if isinstance(data, list) else []
 
     def issue_comments(self, number: int) -> list[str]:
-        """The bodies of the newest comments on issue *number*, oldest first."""
-        data = self._request("GET", f"/issues/{number}/comments?per_page=100")
-        return [str(entry.get("body") or "") for entry in data if isinstance(entry, Mapping)] \
-            if isinstance(data, list) else []
+        """The bodies of the newest comments on issue *number* (up to 200), oldest first.
+
+        The API lists comments oldest first and has no newest-first order, so
+        the first page would hold the oldest ones: the check reads the last
+        two pages, found from the issue's comment count (independent check
+        2026-11-04).
+        """
+        issue = self._request("GET", f"/issues/{number}")
+        count = issue.get("comments") if isinstance(issue, Mapping) else None
+        last = max(1, -(-count // COMMENTS_PER_PAGE)) if isinstance(count, int) and count > 0 else 1
+        bodies: list[str] = []
+        for page in range(max(1, last - 1), last + 1):
+            data = self._request("GET", f"/issues/{number}/comments?per_page={COMMENTS_PER_PAGE}&page={page}")
+            if isinstance(data, list):
+                bodies.extend(str(entry.get("body") or "") for entry in data if isinstance(entry, Mapping))
+        return bodies
 
     def comment(self, number: int, body: str) -> None:
         self._request("POST", f"/issues/{number}/comments", {"body": body})

@@ -266,3 +266,28 @@ def test_a_running_fallback_writes_no_comment() -> None:
                         created=T0 + timedelta(minutes=40))
     _run(client, T0 + timedelta(minutes=80))
     assert client.comments == []
+
+
+def test_the_issue_comments_are_read_from_the_newest_page() -> None:
+    """Independent check 2026-11-04: the API lists comments oldest first, so the
+    first page of a long issue holds the oldest marks. With the newest mark on
+    page 2, a check that read page 1 saw "running again" and commented anew."""
+    bodies = ["x"] * 40 + [tf.FAIL_MARK, tf.OK_MARK] * 30 + ["x"] * 48 + [tf.FAIL_MARK, "x"]
+    calls: list[str] = []
+
+    class Transport(tf.ActionsClient):
+        def _request(self, method: str, path: str, payload: Any = None) -> Any:
+            calls.append(path)
+            if path == "/issues/7":
+                return {"number": 7, "comments": len(bodies)}
+            page = int(path.rsplit("page=", 1)[1])
+            return [{"body": body} for body in bodies[(page - 1) * 100: page * 100]]
+
+    client = Transport("o/r", "t", "https://api.github.com")
+    read = client.issue_comments(7)
+    assert read == bodies[:200] and len(bodies) == 150
+    assert [body for body in read if tf.FAIL_MARK in body or tf.OK_MARK in body][-1] == tf.FAIL_MARK
+    bodies[:] = bodies + ["y"] * 100  # 250 comments: pages 2 and 3
+    calls.clear()
+    assert client.issue_comments(7) == bodies[100:]
+    assert calls[1:] == ["/issues/7/comments?per_page=100&page=2", "/issues/7/comments?per_page=100&page=3"]
