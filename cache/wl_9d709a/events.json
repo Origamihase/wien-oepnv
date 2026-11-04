@@ -650,6 +650,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "15A: Rettungseinsatz",
+    "description": "Linie 15A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "bc65efc0eaddbdf7e05327a802d1b0275625e76f2f1601244d8cb88fec910412",
+    "pubDate": "2026-11-04T10:13:00+01:00",
+    "starts_at": "2026-11-04T10:13:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=15A|D=2026-11-04|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261104-0011"
+    ],
+    "_incident_start": "2026-11-04T10:13:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -914,22 +930,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Polizeieinsatz",
-    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "988c80ab109007f5051aff806aa861e0141853ffcc393ab7f2657dc9a31b4cd0",
-    "pubDate": "2026-11-04T08:22:00+01:00",
-    "starts_at": "2026-11-04T08:22:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=43|D=2026-11-04|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261104-0007"
-    ],
-    "_incident_start": "2026-11-04T08:22:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1042,22 +1042,6 @@
     "starts_at": "2026-11-03T00:00:14+01:00",
     "ends_at": "2026-11-04T23:59:59+01:00",
     "_identity": "wl|störung|L=D|D=2026-11-03|TK=züge halten wipplingerstr 39"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Verunreinigung",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6",
-    "pubDate": "2026-11-04T08:24:00+01:00",
-    "starts_at": "2026-11-04T08:24:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U3|D=2026-11-04|TK=u3 verunreinigung",
-    "_wl_ids": [
-      "I20261104-0008"
-    ],
-    "_incident_start": "2026-11-04T08:24:00+01:00"
   },
   {
     "source": "Wiener Linien",

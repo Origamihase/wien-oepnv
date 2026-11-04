@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260922-0032, I20260925-0011, I20261020-0029, I20261104-0007-F01, I20261104-0008, I20261104-0010"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261104-0011-F01, I20260922-0032, I20261020-0029, I20261104-0010"
    },
    {
     "id": 3,
@@ -217,96 +217,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "43": "ptTram"
-     }
-    },
-    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "43: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261104-0007-F01",
-    "owner": "WL",
-    "parentName": "I20261104-0007",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 143,
-      "lineName": "43",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-04T08:42:00.000+0100",
-     "lastUpdate": "2026-11-04T08:42:00.000+0100",
-     "resume": "2026-11-04T08:42:00.000+0100",
-     "start": "2026-11-04T08:22:00.000+0100"
-    },
-    "title": "43: Polizeieinsatz"
-   },
-   {
-    "alertCause": "vandalism",
-    "alertCauseId": 16,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
-       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-       "title": "U3: Verunreinigung"
-      }
-     }
-    ],
-    "name": "I20261104-0008",
-    "owner": "WL",
-    "parentName": "I20261104-0008",
-    "priority": "1",
-    "reasonId": 36,
-    "reasonName": "Verunreinigung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-04T08:24:00.000+0100",
-     "lastUpdate": "2026-11-04T08:24:00.000+0100",
-     "resume": "2026-11-04T08:24:00.000+0100",
-     "start": "2026-11-04T08:24:00.000+0100"
-    },
-    "title": "U3: Verunreinigung"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -350,6 +260,54 @@
      "start": "2026-11-04T09:20:00.000+0100"
     },
     "title": "7A: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "15A": "ptBusCity"
+     }
+    },
+    "description": "Linie 15A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 15A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 15A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 15A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "15A: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261104-0011-F01",
+    "owner": "WL",
+    "parentName": "I20261104-0011",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "15A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 415,
+      "lineName": "15A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "relatedStops": [
+     781
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-04T10:21:00.000+0100",
+     "lastUpdate": "2026-11-04T10:21:00.000+0100",
+     "resume": "2026-11-04T10:21:00.000+0100",
+     "start": "2026-11-04T10:13:00.000+0100"
+    },
+    "title": "15A: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
