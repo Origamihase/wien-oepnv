@@ -6,7 +6,7 @@
     "name": "aktuelles",
     "refPoiCategoryGroupId": 61,
     "title": "Aktuelles",
-    "trafficInfoNameList": "N20260209-0049, N20260209-3501, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260702-5991, N20260813-6092, N20260808-6083, N20260808-6084, N20260817-6129, N20260818-6134, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260901-6167, N20260903-6175, N20260908-6177, N20260915-6185, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261005-6222, N20261006-6258, N20261007-6260, N20261007-6262, N20261009-6270, N20261021-0001, N20261021-0003, N20261022-0002, N20261022-0003, N20261023-0001, N20261023-0002, N20261028-0003, N20261029-0002, N20261029-0004, N20261030-0001, N20261028-0002, N20261029-0003, N20261102-0001, N20261103-0001, N20261103-0003, N20261104-0001"
+    "trafficInfoNameList": "N20260209-0049, N20260209-3501, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260702-5991, N20260813-6092, N20260808-6084, N20260808-6083, N20260817-6129, N20260818-6134, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260901-6167, N20260903-6175, N20260908-6177, N20260915-6185, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261005-6222, N20261006-6258, N20261007-6260, N20261007-6262, N20261009-6270, N20261021-0001, N20261021-0003, N20261022-0002, N20261022-0003, N20261023-0001, N20261023-0002, N20261028-0003, N20261029-0002, N20261029-0004, N20261030-0001, N20261028-0002, N20261029-0003, N20261102-0001, N20261103-0001, N20261103-0003, N20261104-0001, N20261104-0002"
    },
    {
     "id": -1,
@@ -2854,6 +2854,42 @@
      "validFrom": "2026-11-27T13:00:00.000+0100"
     },
     "title": "60A: Veranstaltung am 27. und 28.11.2026"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "<h2>Netzänderung</h2><p>Die Linienführung der Linie N67 wird im Bereich Jochen-Rindt-Straße angepasst.</p><p><strong><u>Zeitpunkt:</u></strong><br>Ab Samstag, 05. Dezember 2026, 00:00 Uhr.</p><p><strong><u>Neue Fahrstrecke:</u></strong><br>Die Busse fahren in beiden Richtungen direkt von der Jochen-Rindt-Straße über die Tenschertstraße. Die Fahrt über Inzersdorf, Biróstraße entfällt.</p><p><u>Neu bediente Haltestellen in Richtung Quellenplatz / Altes Landgut U:</u><br>- Tenschertstraße (Jochen-Rindt-Straße 17)<br>- Ernanigasse (Jochen-Rindt-Straße 7)<br>- Jochen-Rindt-Straße (Kolbegasse 48, gemeinsam mit Linie N66)<br>- Kolbegasse (Kolbegasse 70b, gemeinsam mit Linie N66)</p><p><u>Nicht mehr bediente Haltestellen in Richtung Inzersdorf, Großmarkt:</u><br>- Inzersdorf, Biróstraße (Biróstraße 31)<br>- Biróstraße Mitte (Biróstraße 11)</p>",
+    "id": "N20261104-0002",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<h2>Netzänderung</h2><p>Die Linienführung der Linie N67 wird im Bereich Jochen-Rindt-Straße angepasst.</p><p><strong><u>Zeitpunkt:</u></strong><br>Ab Samstag, 05. Dezember 2026, 00:00 Uhr.</p><p><strong><u>Neue Fahrstrecke:</u></strong><br>Die Busse fahren in beiden Richtungen direkt von der Jochen-Rindt-Straße über die Tenschertstraße. Die Fahrt über Inzersdorf, Biróstraße entfällt.</p><p><u>Neu bediente Haltestellen in Richtung Quellenplatz / Altes Landgut U:</u><br>- Tenschertstraße (Jochen-Rindt-Straße 17)<br>- Ernanigasse (Jochen-Rindt-Straße 7)<br>- Jochen-Rindt-Straße (Kolbegasse 48, gemeinsam mit Linie N66)<br>- Kolbegasse (Kolbegasse 70b, gemeinsam mit Linie N66)</p><p><u>Nicht mehr bediente Haltestellen in Richtung Inzersdorf, Großmarkt:</u><br>- Inzersdorf, Biróstraße (Biróstraße 31)<br>- Biróstraße Mitte (Biróstraße 11)</p>",
+       "descriptionPlain": "NetzänderungDie Linienführung der Linie N67 wird im Bereich Jochen-Rindt-Straße angepasst. Zeitpunkt: Ab Samstag, 05. Dezember 2026, 00:00 Uhr. Neue Fahrstrecke: Die Busse fahren in beiden Richtungen direkt von der Jochen-Rindt-Straße über die Tenschertstraße. Die Fahrt über Inzersdorf, Biróstraße entfällt. Neu bediente Haltestellen in Richtung Quellenplatz / Altes Landgut U: - Tenschertstraße (Jochen-Rindt-Straße 17) - Ernanigasse (Jochen-Rindt-Straße 7) - Jochen-Rindt-Straße (Kolbegasse 48, gemeinsam mit Linie N66) - Kolbegasse (Kolbegasse 70b, gemeinsam mit Linie N66) Nicht mehr bediente Haltestellen in Richtung Inzersdorf, Großmarkt: - Inzersdorf, Biróstraße (Biróstraße 31) - Biróstraße Mitte (Biróstraße 11)",
+       "title": "N67: Geänderte Linienführung ab 05.12.2026"
+      }
+     }
+    ],
+    "location": {
+     "properties": {
+      "attributes": {},
+      "coordName": "WGS84",
+      "type": "news"
+     },
+     "type": "Feature"
+    },
+    "name": "N20261104-0002",
+    "reasonId": 258,
+    "reasonName": "Netzänderung",
+    "refPoiCategoryId": 13296,
+    "relatedLines": [
+     ""
+    ],
+    "time": {
+     "end": "2026-12-15T23:59:00.000+0100",
+     "start": "2026-11-04T12:39:00.000+0100",
+     "validFrom": "2026-12-05T00:30:00.000+0100"
+    },
+    "title": "N67: Geänderte Linienführung ab 05.12.2026"
    },
    {
     "alertCause": "undefined alert cause",

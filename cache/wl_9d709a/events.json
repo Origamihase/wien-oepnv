@@ -554,6 +554,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "N67: Geänderte Linienführung",
+    "description": "<h2>Netzänderung</h2><p>Die Linienführung der Linie N67 wird im Bereich Jochen-Rindt-Straße angepasst.</p><p><strong><u>Zeitpunkt:</u></strong><br>Ab Samstag, 05. Dezember 2026, 00:00 Uhr.</p><p><strong><u>Neue Fahrstrecke:</u></strong><br>Die Busse fahren in beiden Richtungen direkt von der Jochen-Rindt-Straße über die Tenschertstraße. Die Fahrt über Inzersdorf, Biróstraße entfällt.</p><p><u>Neu bediente Haltestellen in Richtung Quellenplatz / Altes Landgut U:</u><br>- Tenschertstraße (Jochen-Rindt-Straße 17)<br>- Ernanigasse (Jochen-Rindt-Straße 7)<br>- Jochen-Rindt-Straße (Kolbegasse 48, gemeinsam mit Linie N66)<br>- Kolbegasse (Kolbegasse 70b, gemeinsam mit Linie N66)</p><p><u>Nicht mehr bediente Haltestellen in Richtung Inzersdorf, Großmarkt:</u><br>- Inzersdorf, Biróstraße (Biróstraße 31)<br>- Biróstraße Mitte (Biróstraße 11)</p>",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "fa6c829a6f2c553546d167e72a5fae670230d5caa1fb22d84e1f715e5b4d0bfe",
+    "pubDate": "2026-11-04T12:39:00+01:00",
+    "starts_at": "2026-12-05T00:00:00+01:00",
+    "ends_at": "2026-12-15T23:59:00+01:00",
+    "_identity": "wl|hinweis|L=N67|D=2026-12-05|TK=n67 geänderte linienführung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "N71: Rennweg S",
     "description": "<p><strong><u>Haltestellenverlegung der Linie N71 in Richtung Kaiserebersdorf, Zinnergasse</u></strong></p><p><strong><u>Haltestelle:</u></strong> Rennweg S</p><p><strong><u>Von:</u></strong> Rennweg 20-24</p><p><strong><u>Nach:</u></strong> Rennweg 20-24, Hauptfahrbahn</p><p><strong><u>Dauer:</u></strong> 02. November 2026, etwa 17:00 Uhr, bis 06. November 2026, etwa 17:00 Uhr</p><p><strong><u>Grund:</u></strong> Gleisbau</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -622,6 +634,22 @@
     "starts_at": "2026-09-14T00:00:00+02:00",
     "ends_at": "2026-12-31T23:59:00+01:00",
     "_identity": "wl|hinweis|L=U6|D=2026-09-14|TK=u6 neue donau kein halt richtung floridsdorf"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6/11: Falschparker",
+    "description": "Linie 6: Unregelmäßige Intervalle in beiden Richtungen. Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "dc75193e7e8e929ef0fa5ad0f64c24474b79773c6f921ee44dca028b0c5760e7",
+    "pubDate": "2026-11-04T12:42:00+01:00",
+    "starts_at": "2026-11-04T12:42:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=11,6|D=2026-11-04|TK=falschparker",
+    "_wl_ids": [
+      "I20261104-0014"
+    ],
+    "_incident_start": "2026-11-04T12:42:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -926,6 +954,22 @@
     "starts_at": "2026-11-04T04:45:03+01:00",
     "ends_at": "2026-11-04T23:59:59+01:00",
     "_identity": "wl|störung|L=40A|D=2026-11-04|TK=busse halten liechtensteinstrasse 39"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Feuerwehreinsatz",
+    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "dc09402e317ed165e2af41fc0b35a65fcb1e12403d5cf26ffce248afe14ab350",
+    "pubDate": "2026-11-04T12:33:00+01:00",
+    "starts_at": "2026-11-04T12:33:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=43|D=2026-11-04|TK=feuerwehreinsatz",
+    "_wl_ids": [
+      "I20261104-0013"
+    ],
+    "_incident_start": "2026-11-04T12:33:00+01:00"
   },
   {
     "source": "Wiener Linien",

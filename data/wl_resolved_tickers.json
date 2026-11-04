@@ -1,5 +1,76 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R1348-143|2026-11-04T12:37:19.000+0100|Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "name": "R1348-143",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "end": "2026-11-04T13:36:00.000+0100",
+   "incident": "I20261104-0013"
+  },
+  {
+   "key": "R1349-143|2026-11-04T12:37:19.000+0100|Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "name": "R1349-143",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "end": "2026-11-04T13:36:00.000+0100",
+   "incident": "I20261104-0013"
+  },
+  {
+   "key": "R1350-143|2026-11-04T12:37:19.000+0100|Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "name": "R1350-143",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "end": "2026-11-04T13:36:00.000+0100",
+   "incident": "I20261104-0013"
+  },
+  {
+   "key": "R1351-143|2026-11-04T12:37:19.000+0100|Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "name": "R1351-143",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "end": "2026-11-04T13:36:00.000+0100",
+   "incident": "I20261104-0013"
+  },
+  {
+   "key": "R1353-143|2026-11-04T12:55:52.000+0100|Feuerwehreinsatz\nBetrieb ab Hernals, Wattgasse",
+   "name": "R1353-143",
+   "title": "Feuerwehreinsatz\nBetrieb ab Hernals, Wattgasse",
+   "end": "2026-11-04T13:55:00.000+0100",
+   "incident": "I20261104-0013"
+  },
+  {
+   "key": "R1354-143|2026-11-04T12:55:52.000+0100|Feuerwehreinsatz\nBetrieb ab Hernals, Wattgasse",
+   "name": "R1354-143",
+   "title": "Feuerwehreinsatz\nBetrieb ab Hernals, Wattgasse",
+   "end": "2026-11-04T13:55:00.000+0100",
+   "incident": "I20261104-0013"
+  },
+  {
+   "key": "R1355-143|2026-11-04T12:55:52.000+0100|Feuerwehreinsatz\nBetrieb ab Hernals, Wattgasse",
+   "name": "R1355-143",
+   "title": "Feuerwehreinsatz\nBetrieb ab Hernals, Wattgasse",
+   "end": "2026-11-04T13:55:00.000+0100",
+   "incident": "I20261104-0013"
+  },
+  {
+   "key": "R1356-143|2026-11-04T12:55:52.000+0100|Feuerwehreinsatz\nBetrieb ab Hernals, Wattgasse",
+   "name": "R1356-143",
+   "title": "Feuerwehreinsatz\nBetrieb ab Hernals, Wattgasse",
+   "end": "2026-11-04T13:55:00.000+0100",
+   "incident": "I20261104-0013"
+  },
+  {
+   "key": "R1357-143|2026-11-04T12:55:52.000+0100|Feuerwehreinsatz\nBetrieb ab Hernals, Wattgasse",
+   "name": "R1357-143",
+   "title": "Feuerwehreinsatz\nBetrieb ab Hernals, Wattgasse",
+   "end": "2026-11-04T13:55:00.000+0100",
+   "incident": "I20261104-0013"
+  },
+  {
+   "key": "R224-143|2026-11-04T12:37:19.000+0100|Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "name": "R224-143",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "end": "2026-11-04T13:36:00.000+0100",
+   "incident": "I20261104-0013"
+  }
+ ]
 }
