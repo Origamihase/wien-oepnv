@@ -22,6 +22,7 @@ Ein falscher Fund ist schlimmer als ein übersehener. Im Zweifel ist es kein Fun
 - Zusammengeklebte Wörter im Quelltext werden auf dem Weg in den Feed repariert; nur der Feed zählt.
 - Tippfehler der Betreiber („Wort- Wort“, „Richtung Wien Ab“) bleiben, wie sie sind.
 - ÖBB: der zweite Satz (was noch gilt) bleibt, Höflichkeitssätze („Wir bitten um Entschuldigung.“) fallen weg; passt der zweite Satz nicht in 180 Zeichen, lässt der erste Satz die Stationen des Titels weg.
+- Haltestellen und Bahnhöfe stehen ohne den Umstiegszusatz der Quelle („Rennweg S“ → „Rennweg“, „Wien Hbf (U)“ → „Wien Hbf“); das ist kein abweichender Fakt.
 - Titel von Stadt-Wien-Baustellen, die die Quelle bei 100 Zeichen abschneidet, enden auf „…“.
 - Eine EN-Meldung, die gleich der deutschen ist: dokumentierter Rückfall, wenn die Übersetzung unvollständig war.
 - EN: „Wien <Station>“ bleibt im Stationsnamen; „Fahrtrichtung Wien“ = „direction of Vienna“; „nicht einhalten“ = „does not stop at“; „Verkehrsmaßnahmen“ = „service changes“; Ursachen beginnen mit „Due to“; die Badner Bahn heißt „LB“.

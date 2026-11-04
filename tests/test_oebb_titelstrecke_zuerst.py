@@ -71,7 +71,7 @@ def test_the_title_route_section_comes_first() -> None:
     summary = _summary(HUETTELDORF)
     assert summary.startswith(
         "Teilausfall: Von 18.10.2026 bis 19.10.2026 kann der Zug RJ 263 zwischen "
-        "Wien Hütteldorf Bahnhof (U) und Wien Hbf (U) nicht fahren."
+        "Wien Hütteldorf Bahnhof und Wien Hbf nicht fahren."  # "(U)" off since 2026-11-04
     )
     assert "Salzburg" not in summary
 

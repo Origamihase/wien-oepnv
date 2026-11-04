@@ -97,13 +97,14 @@ class TestTruncationDropsUnbalancedParen:
         # is dropped.
         raw = (
             "Wegen Bauarbeiten von 03.10.2026 bis 05.10.2026 fahren "
-            "zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof einige "
+            "zwischen Wien Hbf (Ostbahn) und Gramatneusiedl Bahnhof einige "
             "Nahverkehrszüge nicht. Reisende werden gebeten Alternativen "
             "zu nutzen die im Bereich der Innenstadt verfügbar sind."
         )
         out = _format(raw)
-        # The balanced "(U)" stays.
-        assert "(U)" in out
+        # The balanced "(Ostbahn)" stays. (ÖBB's "(U)" is no example since
+        # 2026-11-04: the stop marker goes, ``without_stop_markers``.)
+        assert "(Ostbahn)" in out
 
     def test_no_truncation_for_short_summary(self) -> None:
         # Short descriptions don't hit the truncation path at all.
