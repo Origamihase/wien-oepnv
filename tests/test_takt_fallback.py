@@ -209,3 +209,17 @@ def test_health_note_when_the_api_cannot_be_read(monkeypatch: pytest.MonkeyPatch
     monkeypatch.setattr(takt_check, "_github_api_json", boom)
     check = takt_check.check_takt(T0)
     assert check.ok and check.note
+
+
+def test_the_ifttt_run_may_close_the_issue_and_read_the_runs() -> None:
+    """Independent check 2026-11-04: the closing step needs ``issues: write``
+    and ``actions: read`` in the Update cycle job (``actions: read`` so the
+    list of runs does not depend on the repository being public)."""
+    from pathlib import Path
+
+    text = (Path(__file__).resolve().parents[1] / ".github/workflows/update-cycle.yml").read_text(encoding="utf-8")
+    job_permissions = text.split("    permissions:\n", 1)[1].split("    env:\n", 1)[0]
+    assert "issues: write" in job_permissions and "actions: read" in job_permissions
+    step = text.split("- name: Close IFTTT outage issue", 1)[1].split("- name:", 1)[0]
+    assert "github.event_name == 'repository_dispatch'" in step
+    assert "scripts/takt_fallback.py --close-issue" in step

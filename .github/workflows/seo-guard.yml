@@ -150,7 +150,8 @@ jobs:
         # endete der Schritt bei leerem Token mit Exit 0 und einer Zeile auf
         # stderr, ein abgelaufener oder gelöschter REPO_ADMIN_TOKEN blieb
         # unsichtbar. Jetzt scheitert er bei leerem Token und bei einer
-        # abgelehnten Anfrage (``curl -f``); ``continue-on-error`` hält die
+        # abgelehnten Anfrage (HTTP-Code außer 2xx; seit 2026-11-04 nach
+        # Wiederholung bei 5xx als ``overloaded``); ``continue-on-error`` hält die
         # Veröffentlichung von sitemap.xml und llms.txt nicht auf, das
         # Ergebnis fährt über ``record_side_steps.py`` in
         # ``data/side_steps/seo-guard.json`` mit und der Health check wird

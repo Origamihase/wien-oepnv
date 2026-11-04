@@ -108,8 +108,8 @@ nicht an den Health check gehen ([„Nebenschritte“](architecture-teil-5.md#ü
 gilt seither auch für sie, Regel vom 2026-10-28: „ein Fehler sollte auffallen“).
 
 * **Repository-Metadaten (`seo-guard.yml`).** Der Schritt scheitert bei
-  leerem Token und bei einer abgelehnten Anfrage (`curl -f`, 401 bei
-  abgelaufenem Token), läuft mit `continue-on-error` vor der
+  leerem Token und bei einer abgelehnten Anfrage (jeder HTTP-Code außer
+  2xx, etwa 401 bei abgelaufenem Token), läuft mit `continue-on-error` vor der
   Veröffentlichung, und `record_side_steps.py` schreibt sein Ergebnis nach
   `data/side_steps/seo-guard.json`, das mit `sitemap.xml` und `llms.txt` im
   selben Commit mitfährt. Die Prüfung `Nebenschritte` ist rot, solange der

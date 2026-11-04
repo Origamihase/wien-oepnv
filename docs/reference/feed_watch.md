@@ -68,8 +68,10 @@ mit demselben Titel, nutzt er es; wurde eines vor weniger als 24 Stunden
 geschlossen, öffnet er es wieder, statt ein neues anzulegen. Hält die Regel in
 zwei Läufen in Folge, schließt er es mit einem Kommentar. Dafür hat der Job in
 `update-cycle.yml` das Recht `issues: write` (`FEED_WATCH_ISSUES=1`
-schaltet die Issues ein). Das Recht gilt für den ganzen Job; dass nur dieser
-Schritt es nutzt, ist Absprache, keine technische Grenze: `actions/checkout`
+schaltet die Issues ein). Das Recht gilt für den ganzen Job; seit 2026-11-04
+nutzt es außerdem der Schritt, der das Issue `ifttt-ausfall` des
+Takt-Fallbacks schließt. Dass nur diese beiden Schritte es nutzen, ist
+Absprache, keine technische Grenze: `actions/checkout`
 legt das Token für den späteren Push im Checkout ab, jeder Schritt könnte es
 lesen. Fehlt das Recht oder antwortet GitHub nicht, steht eine Warnung im
 Protokoll, und der nächste Lauf versucht es wieder. Lesen und Ändern
@@ -84,8 +86,10 @@ niemand sieht, wiederholt den Fall vom 09.10., als der Ticker der Linie 25
 acht Stunden auf Platz 2 stand. Ein Issue löst die Mail von GitHub am selben
 Tag aus; Protokoll und Health check allein sieht nur, wer nachschaut. Das
 Recht erlaubt nur Issues, keinen Code. Die Gegenoption „Nur Hinweis“ (kein
-neues Recht) ist damit verworfen; wer die Issues abschalten will, entfernt
-`FEED_WATCH_ISSUES` und `issues: write` aus `update-cycle.yml`.
+neues Recht) ist damit verworfen; wer die Issues des Wächters abschalten
+will, entfernt `FEED_WATCH_ISSUES` aus `update-cycle.yml`. `issues: write`
+bleibt, solange der Takt-Fallback sein Issue `ifttt-ausfall` dort schließen
+lässt (seit 2026-11-04).
 
 ## Die Regeln
 

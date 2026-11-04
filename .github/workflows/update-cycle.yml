@@ -114,10 +114,10 @@ jobs:
     timeout-minutes: 10
     permissions:
       contents: write
-      # Only for the Feed-Wächter step: one issue per broken feed rule
-      # (docs/reference/feed_watch.md; operator decision 2026-10-11: a finding
-      # should reach him by mail the same day). No other step uses it.
+      # Feed-Wächter issues (docs/reference/feed_watch.md, decision 2026-10-11)
+      # and closing ``ifttt-ausfall``, which reads the runs (since 2026-11-04).
       issues: write
+      actions: read
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       # VOR/VAO API credentials — required by ``scripts/update_stammstrecke_hbf.py``
