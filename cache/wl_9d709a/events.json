@@ -890,6 +890,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "3A: Schadhaftes Fahrzeug",
+    "description": "Linie 3A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "c34f5e5dd3ff7a1d65b4e242f1c7a2485ba1574fc241002cd83197071facd200",
+    "pubDate": "2026-11-04T12:23:00+01:00",
+    "starts_at": "2026-11-04T12:23:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=3A|D=2026-11-04|TK=3a schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261104-0012"
+    ],
+    "_incident_start": "2026-11-04T12:23:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "40A: Busse halten Liechtensteinstraße 38",
     "description": "Bauarbeiten\nBusse halten Liechtensteinstraße 38",
     "link": "https://www.wienerlinien.at/betriebsinfo",
