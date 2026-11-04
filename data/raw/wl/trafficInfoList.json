@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20260922-0032, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20260922-0032, I20261104-0003, I20261020-0029"
    },
    {
     "id": 3,
@@ -215,6 +215,53 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "97A": "ptBusCity"
+     }
+    },
+    "description": "Linie 97A: Unregelmäßige Intervalle in beiden Richtungen. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Verkehrsüberlastung im Haltestellenbereich Löschniggasse.",
+    "descriptionHTML": "<p>Linie 97A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Voraussichtliche Dauer: Bis Betriebsschluss.</p><p>Grund: Verkehrsüberlastung im Haltestellenbereich Löschniggasse.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 97A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Voraussichtliche Dauer: Bis Betriebsschluss.</p><p>Grund: Verkehrsüberlastung im Haltestellenbereich Löschniggasse.</p>",
+       "descriptionPlain": "Linie 97A: Unregelmäßige Intervalle in beiden Richtungen. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Verkehrsüberlastung im Haltestellenbereich Löschniggasse.",
+       "title": "97A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261104-0003",
+    "owner": "WL",
+    "parentName": "I20261104-0003",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "97A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 497,
+      "lineName": "97A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "relatedStops": [
+     2738
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-04T06:58:00.000+0100",
+     "lastUpdate": "2026-11-04T07:00:00.000+0100",
+     "start": "2026-11-04T06:57:00.000+0100"
+    },
+    "title": "97A: Verkehrsüberlastung"
    },
    {
     "alertCause": "undefined alert cause",
