@@ -666,14 +666,42 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Falschparker Züge halten bei der Linie 44",
-    "description": "Falschparker\nZüge halten bei der Linie 44",
+    "title": "10: Fremder Verkehrsunfall",
+    "description": "Linie 10: Kein Betrieb zwischen Joachimsthalerplatz und Penzinger Straße. Ersatz: Linien 10A, 48A. Voraussichtliche Dauer: 19:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Reinlgasse # Fenzlgasse.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "0d70c69478856b9a3b8e5e9a4e597963f8077e418dad78a7ecf0b5dea4f9fa04",
-    "pubDate": "2026-11-04T17:03:47+01:00",
-    "starts_at": "2026-11-04T17:09:18+01:00",
-    "ends_at": "2026-11-04T18:09:00+01:00",
-    "_identity": "wl|störung|L=10|D=2026-11-04|TK=falschparker"
+    "guid": "a353875670c81bfb8e057d43db548115ca6c84c08a4b6f4e5ddfed91706f0a44",
+    "pubDate": "2026-11-04T18:10:00+01:00",
+    "starts_at": "2026-11-04T18:10:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=10|D=2026-11-04|TK=10 fremder verkehrsunfall",
+    "_wl_ids": [
+      "I20261104-0032"
+    ],
+    "_incident_start": "2026-11-04T18:10:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Fremdunfall Betrieb ab Joachimsthalerplatz",
+    "description": "Fremdunfall\nBetrieb ab Joachimsthalerplatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "913a28ccae617036ff2b170673fe1d372358b09ec0e813dfd6cd047c8e18ed3b",
+    "pubDate": "2026-11-04T18:11:24+01:00",
+    "starts_at": "2026-11-04T18:11:24+01:00",
+    "ends_at": "2026-11-04T20:30:00+01:00",
+    "_identity": "wl|störung|L=10|D=2026-11-04|TK=fremdunfall betrieb ab joachimsthalerplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Fremdunfall Betrieb ab Penzinger Straße",
+    "description": "Fremdunfall\nBetrieb ab Penzinger Straße",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b6fc97f49dbe1a2c225c6325ac35458ced96cc57dbd204ede166630b4f0bed56",
+    "pubDate": "2026-11-04T18:11:54+01:00",
+    "starts_at": "2026-11-04T18:11:54+01:00",
+    "ends_at": "2026-11-04T19:11:00+01:00",
+    "_identity": "wl|störung|L=10|D=2026-11-04|TK=fremdunfall betrieb ab penzinger strasse"
   },
   {
     "source": "Wiener Linien",
@@ -698,22 +726,6 @@
     "starts_at": "2026-11-04T00:00:16+01:00",
     "ends_at": "2026-11-04T23:59:59+01:00",
     "_identity": "wl|störung|L=12A|D=2026-11-04|TK=betrieb ab schweglerstrasse 19 21"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "14A: Verkehrsunfall",
-    "description": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "45135f0f9023593102b885c7d89c0c028d3a4d83421c93a8a39180b147612974",
-    "pubDate": "2026-11-04T17:58:00+01:00",
-    "starts_at": "2026-11-04T17:58:00+01:00",
-    "ends_at": "2026-11-04T19:12:00+01:00",
-    "_identity": "wl|störung|L=14A|D=2026-11-04|TK=14a verkehrsunfall",
-    "_wl_ids": [
-      "I20261104-0029"
-    ],
-    "_incident_start": "2026-11-04T17:58:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -946,34 +958,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Falschparker Züge halten bei der Linie 43",
+    "title": "2: Falschparker",
     "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "9ddf5d1b468f97566b0d71492d70a5743faa129c9553b8165867b8249c7b99da",
     "pubDate": "2026-11-04T17:03:00+01:00",
-    "starts_at": "2026-11-04T17:08:17+01:00",
+    "starts_at": "2026-11-04T17:03:00+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=2|D=2026-11-04|TK=falschparker",
     "_wl_ids": [
       "I20261104-0028"
     ],
     "_incident_start": "2026-11-04T17:03:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "37/38/40/41/42: Polizeieinsatz",
-    "description": "Linie 37: Fahrtbehinderung in Richtung Hohe Warte. Linie 38: Fahrtbehinderung in Richtung Grinzing. Linie 40: Fahrtbehinderung in Richtung Gersthof, Herbeckstraße. Linie 41: Fahrtbehinderung in Richtung Pötzleinsdorf. Linie 42: Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 18:15 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Schwarzspanierstraße.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "63eaa763fcf61492287f36dd135515ddca0aec120210f3e2450dde0cd7280506",
-    "pubDate": "2026-11-04T17:57:00+01:00",
-    "starts_at": "2026-11-04T17:57:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=37,38,40,41,42|D=2026-11-04|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261104-0030"
-    ],
-    "_incident_start": "2026-11-04T17:57:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -986,6 +982,38 @@
     "starts_at": "2026-11-03T00:00:12+01:00",
     "ends_at": "2026-11-04T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-11-03|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Polizeieinsatz",
+    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "81435586c2728ac85f64e190f4ce6ba0cbb5e28eca6bb2623414210333c443f5",
+    "pubDate": "2026-11-04T17:57:00+01:00",
+    "starts_at": "2026-11-04T17:57:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=37|D=2026-11-04|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261104-0030"
+    ],
+    "_incident_start": "2026-11-04T17:57:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Polizeieinsatz",
+    "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "14b787061b8e077e79d48423bff586516bd1c55ab89e303fd510de9c03ccc6d9",
+    "pubDate": "2026-11-04T17:57:00+01:00",
+    "starts_at": "2026-11-04T17:57:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=38|D=2026-11-04|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261104-0030"
+    ],
+    "_incident_start": "2026-11-04T17:57:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1014,18 +1042,106 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "4A: Verkehrsüberlastung",
-    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "title": "40: Polizeieinsatz",
+    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "c56de491edf41d83da857f489a91726653fbe3100222ed7e7ce91bebf0b5453c",
-    "pubDate": "2026-11-04T17:01:00+01:00",
-    "starts_at": "2026-11-04T17:01:00+01:00",
+    "guid": "a29e671a85c2a6d60f93348738aed861f0787ecaeb052980186da61232ad65c7",
+    "pubDate": "2026-11-04T17:57:00+01:00",
+    "starts_at": "2026-11-04T17:57:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=4A|D=2026-11-04|TK=4a verkehrsüberlastung",
+    "_identity": "wl|störung|L=40|D=2026-11-04|TK=polizeieinsatz",
     "_wl_ids": [
-      "I20261104-0026"
+      "I20261104-0030"
     ],
-    "_incident_start": "2026-11-04T17:01:00+01:00"
+    "_incident_start": "2026-11-04T17:57:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "5092aa3e16264a54729d619c0073938e9a20bc79adf99a5a51f89ef26c9055eb",
+    "pubDate": "2026-11-04T18:14:51+01:00",
+    "starts_at": "2026-11-04T18:14:52+01:00",
+    "ends_at": "2026-11-04T19:14:00+01:00",
+    "_identity": "wl|störung|L=40|D=2026-11-04|TK=rettungseinsatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Polizeieinsatz",
+    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "c00c177609807206f4916d92d93f2b3dcefd7c4893f63c45f581cfba2bdad937",
+    "pubDate": "2026-11-04T17:57:00+01:00",
+    "starts_at": "2026-11-04T17:57:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=41|D=2026-11-04|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261104-0030"
+    ],
+    "_incident_start": "2026-11-04T17:57:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1b9880e738badf2ab93ca803b6161595a319b82ea03cebf2c5ff834226e92cd8",
+    "pubDate": "2026-11-04T18:13:21+01:00",
+    "starts_at": "2026-11-04T18:13:21+01:00",
+    "ends_at": "2026-11-04T19:13:00+01:00",
+    "_identity": "wl|störung|L=41|D=2026-11-04|TK=rettungseinsatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Polizeieinsatz",
+    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "5d0479fbee24a6170595345617adac2832b089a4749522b366de941b72d82321",
+    "pubDate": "2026-11-04T17:57:00+01:00",
+    "starts_at": "2026-11-04T17:57:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=42|D=2026-11-04|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261104-0030"
+    ],
+    "_incident_start": "2026-11-04T17:57:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e434fd6d0742cbac394675e6b2cc5f55ef6198710b99799268ba19266e8f7734",
+    "pubDate": "2026-11-04T18:01:00+01:00",
+    "starts_at": "2026-11-04T18:14:24+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=52|D=2026-11-04|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261104-0031"
+    ],
+    "_incident_start": "2026-11-04T18:01:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "adbc205fada2fc64ad22e011c50abe7d99265772e9404e3b8c41ed5b0dfc70d9",
+    "pubDate": "2026-11-04T18:01:00+01:00",
+    "starts_at": "2026-11-04T18:15:55+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=60|D=2026-11-04|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261104-0031"
+    ],
+    "_incident_start": "2026-11-04T18:01:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1050,6 +1166,22 @@
     "starts_at": "2026-11-03T00:00:12+01:00",
     "ends_at": "2026-11-04T23:59:59+01:00",
     "_identity": "wl|störung|L=74A|D=2026-11-03|TK=einstieg leberstrasse vor s bahn gebäude"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "74A: Fahrtbehinderung Signalstörung",
+    "description": "Linie 74A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e42a781836ec2814f0a4c06b6398c6abf7ac48b3b5c47aa27b1fc2a90ec45037",
+    "pubDate": "2026-11-04T18:24:52+01:00",
+    "starts_at": "2026-11-04T18:25:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=74A|D=2026-11-04|TK=signalstörung",
+    "_wl_ids": [
+      "I20261104-0033"
+    ],
+    "_incident_start": "2026-11-04T18:25:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1150,5 +1282,17 @@
     "starts_at": "2026-09-14T04:00:00+02:00",
     "ends_at": "2026-12-31T23:59:00+01:00",
     "_identity": "wl|störung|L=|D=2026-09-14|TK=sperre"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "cd5d56c06243b3c30195b876976da1ea43f2a200816330c453a40b5fc37dc6bc",
+    "pubDate": "2026-11-04T18:02:20+01:00",
+    "starts_at": "2026-11-04T18:02:21+01:00",
+    "ends_at": "2026-11-04T19:01:00+01:00",
+    "_identity": "wl|störung|L=|D=2026-11-04|TK=rettungseinsatz"
   }
 ]
