@@ -115,7 +115,15 @@ gilt seither auch für sie, Regel vom 2026-10-28: „ein Fehler sollte auffallen
   selben Commit mitfährt. Die Prüfung `Nebenschritte` ist rot, solange der
   letzte Lauf scheiterte oder die Aufzeichnung älter als 48 Stunden ist
   (`HEALTH_SEO_MAX_AGE_HOURS`; der tägliche Cron kommt Stunden verspätet,
-  zwei Tage ohne Lauf sind ein Ausfall).
+  zwei Tage ohne Lauf sind ein Ausfall). Seit 2026-11-04 (Michael, Karte
+  „Beides“; Anlass: ein 502 von GitHub um 11:03 Wien während eines
+  GitHub-Ausfalls, im Log als „Token abgelaufen“ gemeldet) unterscheidet der
+  Schritt: Eine Störung bei GitHub (5xx oder keine Verbindung) wiederholt er
+  nach 30 und 90 Sekunden; hält sie an, zählt er als `overloaded`, und die
+  Prüfung bleibt ein Hinweis, bis 48 Stunden kein Lauf gelang
+  (`HEALTH_SEO_OVERLOAD_HOURS`); den nächsten Lauf (Merge mit Änderung unter
+  `docs/` oder täglicher Cron) heilt es von selbst. 401, 403, 404 und 422
+  bleiben sofort rot und nennen den HTTP-Code.
 * **Code-Review (`claude-code-review.yml`).** Der Workflow läuft auf Pull
   Requests und kann nichts nach `main` schreiben, deshalb gibt es keine
   Aufzeichnung. Stattdessen darf der Review-Schritt seit 2026-10-31

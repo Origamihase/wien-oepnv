@@ -21,6 +21,7 @@ from src.health_check.common import (
     PAGES_BASE_URL,
     REPO_ROOT,
     SEO_MAX_AGE_H,
+    SEO_OVERLOAD_MAX_H,
     STATION_SOURCE_MAX_AGE_H,
     STATIONS_MAX_AGE_H,
     Check,
@@ -308,8 +309,9 @@ SIDE_STEP_RECORDS: list[tuple[str, str, float, float | None]] = [
     # Gemini overloaded: a note for 30 h after the last clean audit
     # (Michael 2026-11-04, see KI_WAECHTER_OVERLOAD_MAX_H).
     ("ki-waechter.json", "KI-Wächter", KI_WAECHTER_MAX_AGE_H, KI_WAECHTER_OVERLOAD_MAX_H),
-    # Repository-Metadaten via REPO_ADMIN_TOKEN (Architektur-Review 2026-10-31, Fund B).
-    ("seo-guard.json", "SEO-Lauf", SEO_MAX_AGE_H, None),
+    # Repository-Metadaten via REPO_ADMIN_TOKEN (Architektur-Review 2026-10-31, Fund B);
+    # GitHub only disturbed (5xx): a note for 48 h (Michael 2026-11-04).
+    ("seo-guard.json", "SEO-Lauf", SEO_MAX_AGE_H, SEO_OVERLOAD_MAX_H),
 ]
 SIDE_STEP_DIR = REPO_ROOT / "data" / "side_steps"
 

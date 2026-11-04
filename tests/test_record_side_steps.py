@@ -113,7 +113,10 @@ def test_the_workflows_record_every_side_step() -> None:
     assert "data/side_steps/seo-guard.json" in seo.split("Publish sitemap.xml and llms.txt", 1)[1].split("- name:", 1)[0]
     metadata_step = seo.split("id: metadata", 1)[1].split("- name:", 1)[0]
     assert 'if [[ -z "${ADMIN_TOKEN:-}" ]]' in metadata_step and "exit 1" in metadata_step
-    assert "curl -fsS" in metadata_step
+    # Since 2026-11-04 the step reads the HTTP code itself: every answer but
+    # 2xx fails, a GitHub outage (5xx, no connection) as "overloaded".
+    assert "curl -sS -o /dev/null -w '%{http_code}'" in metadata_step
+    assert 'if [[ ! "${code}" =~ ^2[0-9][0-9]$ ]]; then' in metadata_step
     # W3 (Technical Debt Assessment 2026-11-01): the PATCH with
     # REPO_ADMIN_TOKEN runs on ``main`` only, under the same condition as the
     # publish step; before, a branch push that matched the workflow's path
@@ -186,3 +189,31 @@ def test_overloaded_is_red_at_once_where_no_overload_limit_is_set(
     _overload_check(tmp_path, monkeypatch, entry, datetime(2026, 11, 4, 9, 0, tzinfo=UTC))
     monkeypatch.setattr(hc_outputs, "SIDE_STEP_RECORDS", [("ki-waechter.json", "Update-Lauf", 36.0, None)])
     assert not hc.check_side_steps(datetime(2026, 11, 4, 9, 0, tzinfo=UTC)).ok
+
+
+def test_the_seo_metadata_step_retries_and_records_a_github_outage_as_overloaded(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Michael 2026-11-04 (card "Beides"): a 502 from GitHub at 11:03 Vienna
+    turned the Health check red as "Token abgelaufen"."""
+    seo = (REPO / ".github/workflows/seo-guard.yml").read_text(encoding="utf-8")
+    step = seo.split("id: metadata", 1)[1].split("- name:", 1)[0]
+    assert "for wait in 0 30 90; do" in step
+    assert "^(000|5[0-9][0-9])$" in step and 'metadata-overloaded"' in step
+    assert step.index("metadata-overloaded") < step.index("abgelehnt (HTTP ${code}")
+    record = seo.split("- name: Record side-step outcomes", 1)[1].split("- name:", 1)[0]
+    assert 'metadata-overloaded" ]]; then outcome=overloaded' in record
+    files = {name: overload for name, _workflow, _age, overload in hc.SIDE_STEP_RECORDS}
+    assert files["seo-guard.json"] == 48.0 and files["update-cycle.json"] is None
+    side = tmp_path / "side_steps"
+    side.mkdir()
+    entry = {"outcome": "overloaded", "at": "2026-11-04T10:03:46+00:00",
+             "last_success": "2026-11-04T09:14:59+00:00", "run": "u"}
+    (side / "seo-guard.json").write_text(
+        json.dumps({"updated": entry["at"], "steps": {"Repository-Metadaten": entry}}), encoding="utf-8")
+    monkeypatch.setattr(hc_outputs, "SIDE_STEP_DIR", side)
+    monkeypatch.setattr(hc_outputs, "SIDE_STEP_RECORDS",
+                        [r for r in hc.SIDE_STEP_RECORDS if r[0] == "seo-guard.json"])
+    note = hc.check_side_steps(datetime(2026, 11, 4, 11, 1, tzinfo=UTC))
+    assert note.ok and note.note and "rot ab 06.11. 10:14" in note.summary
+    assert not hc.check_side_steps(datetime(2026, 11, 6, 9, 15, tzinfo=UTC)).ok

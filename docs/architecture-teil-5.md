@@ -577,6 +577,11 @@ schickte keine Mail. Gemessen ist keiner gescheitert (Update-Läufe seit
   zweite Versuch um 11:31 zweimal durchkam; nachgespielt wäre keiner davon
   rot gewesen. Ein abgelehnter Schlüssel oder ein Fehler im Code bleibt
   sofort rot, so fällt eine Stufe, die wirklich nicht läuft, weiter auf.
+  Dieselbe Regel gilt seit 2026-11-04 für die Repository-Metadaten des
+  SEO-Laufs (Karte „Beides“): 5xx oder keine Verbindung zu GitHub nach zwei
+  Wiederholungen ist `overloaded`, Hinweis bis 48 Stunden ohne gelungenen Lauf
+  (`SEO_OVERLOAD_MAX_H`, `HEALTH_SEO_OVERLOAD_HOURS`); siehe
+  [„Werkzeuge“](architecture-teil-6.md).
 * Die Prüfung `Feed-Wächter` ist rot, wenn der Wächter nicht prüfen konnte
   (Feld `error` in `data/feed_watch.json`); er endet in diesem Fall mit
   Exit-Code 0, damit die Veröffentlichung weiterläuft, und sein Schritt
