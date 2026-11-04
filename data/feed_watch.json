@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-04T04:00:54.362450+00:00",
- "built": "2026-11-04T05:00:47+01:00",
+ "updated": "2026-11-04T04:31:10.301136+00:00",
+ "built": "2026-11-04T05:30:52+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-04T05:00:47+01:00",
+  "built": "2026-11-04T05:30:52+01:00",
   "items": [
+   {
+    "title": "U4: Betriebsstörung",
+    "time_line": "Seit 05:06"
+   },
    {
     "title": "52A: Bauarbeiten",
     "time_line": "Ab Do 05.11."
@@ -19,10 +23,6 @@
    {
     "title": "16A: Franzosenweg",
     "time_line": "Ab Do 05.11."
-   },
-   {
-    "title": "N71: Busse halten auf der Hauptfahrbahn",
-    "time_line": "Heute"
    },
    {
     "title": "64A: Liesinger-Flur-Gasse",
@@ -52,46 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-28T04:01:03.056655+00:00",
-   "raw": {
-    "wl-stoerungen": 69,
-    "wl-hinweise": 84,
-    "oebb": 161,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 20
-   },
-   "discarded": {
-    "wl": 11,
-    "oebb": 136,
-    "baustellen": 66
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 107
-   }
-  },
-  {
-   "t": "2026-10-28T04:31:05.508288+00:00",
-   "raw": {
-    "wl-stoerungen": 67,
-    "wl-hinweise": 84,
-    "oebb": 161,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 20
-   },
-   "discarded": {
-    "wl": 11,
-    "oebb": 136,
-    "baustellen": 66
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 105
-   }
-  },
   {
    "t": "2026-10-28T05:00:49.455118+00:00",
    "raw": {
@@ -6771,17 +6731,37 @@
     "oebb": 6,
     "wl": 89
    }
+  },
+  {
+   "t": "2026-11-04T04:31:10.301136+00:00",
+   "raw": {
+    "wl-stoerungen": 53,
+    "wl-hinweise": 69,
+    "oebb": 177,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 11,
+    "oebb": 155,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 6,
+    "wl": 86
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-04T04:00:54.362450+00:00"
+   "last_ok": "2026-11-04T04:31:10.301136+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-04T04:00:54.362450+00:00"
+   "last_ok": "2026-11-04T04:31:10.301136+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-04T04:00:54.362450+00:00"
+   "last_ok": "2026-11-04T04:31:10.301136+00:00"
   }
  }
 }
