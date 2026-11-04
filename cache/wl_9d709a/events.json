@@ -650,6 +650,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11A: Verkehrsunfall",
+    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "49173de64aa2215d87e8e544f1df8b7687c6e8172327e8cd9174b3c727005709",
+    "pubDate": "2026-11-04T15:56:00+01:00",
+    "starts_at": "2026-11-04T15:56:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=11A|D=2026-11-04|TK=11a verkehrsunfall",
+    "_wl_ids": [
+      "I20261104-0024"
+    ],
+    "_incident_start": "2026-11-04T15:56:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -998,22 +1014,6 @@
       "I20261104-0022"
     ],
     "_incident_start": "2026-11-04T15:01:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "59A: Verkehrsüberlastung",
-    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5",
-    "pubDate": "2026-11-04T14:39:00+01:00",
-    "starts_at": "2026-11-04T14:39:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=59A|D=2026-11-04|TK=59a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261104-0020"
-    ],
-    "_incident_start": "2026-11-04T14:39:00+01:00"
   },
   {
     "source": "Wiener Linien",
