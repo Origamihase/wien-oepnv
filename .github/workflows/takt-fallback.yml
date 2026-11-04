@@ -1,0 +1,92 @@
+name: Takt-Fallback
+
+# Fallback for the 30-minute cadence of the feed. IFTTT starts the Update
+# cycle (``repository_dispatch``) because GitHub's own cron starts late and
+# skips most slots here; this workflow steps in only when IFTTT has not
+# ticked for 40 minutes, with the run's own GITHUB_TOKEN (no personal token
+# that could expire).
+#
+# Operator decision Michael 2026-11-04: "Alle 40 Minuten klingt nicht
+# schlecht. Sorge aber bitte dafür, dass der Fallback wirklich nur läuft,
+# wenn IFTTT nicht funktioniert hat. Wenn IFTTT nicht funktioniert erstelle
+# einen Issue. Wenn der Fallback auch nicht funktioniert, und der Feed nicht
+# mehr aktualisiert werden kann, mach den Health Check rot".
+#
+# How: every Update cycle run on main starts one waiter (``requested``). The
+# waiter polls the Actions API once a minute and ends as soon as a newer
+# Update cycle run appears that it did not start itself (IFTTT, backup cron,
+# a manual run); that run's waiter takes over. Only when no Update cycle run
+# was created for 40 minutes does it start one, opens the issue
+# ``ifttt-ausfall`` and keeps watching (again after 40 minutes). The waiter
+# of the next IFTTT run closes the issue. A fallback run that fails starts
+# the Health check, whose check "Takt" turns red when IFTTT is silent and the
+# feed has had no new build for 80 minutes. Details: src/takt_fallback.py,
+# docs/development-teil-2.md ("Geplante Läufe").
+#
+# A waiter lives at most 5.5 hours and then starts its successor; the
+# schedule below restarts the watch should the chain ever break (GitHub
+# delivers it late, which is fine for a restart).
+
+on:
+  workflow_run:
+    workflows: ["Update cycle"]
+    types: [requested]
+    branches: [main]
+  schedule:
+    - cron: '45 */3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# One waiter at a time: a new one waits until the running one has ended
+# (which it does within a minute of the new Update cycle run).
+concurrency:
+  group: takt-fallback
+  cancel-in-progress: false
+
+jobs:
+  wait:
+    name: Auf den nächsten Tick warten
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 345
+    permissions:
+      contents: read
+      # Start update-cycle.yml, health-check.yml and its own successor
+      # (workflow_dispatch) and read the Update cycle runs.
+      actions: write
+      # Open and close the issue "ifttt-ausfall".
+      issues: write
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      # Workaround for actions/checkout#2351 (sporadic includeIf credential
+      # race on v6). Two attempts; remove once v6.0.3+ is pinned. Mirrors the
+      # other workflows.
+      - name: Check out repository (attempt 1/2)
+        id: checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        continue-on-error: true
+        with:
+          persist-credentials: false
+
+      - name: Check out repository (attempt 2/2 — runs only if attempt 1 hit checkout#2351)
+        if: steps.checkout.outcome == 'failure'
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-deps
+
+      - name: Wait for the next tick, step in when IFTTT is silent
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/takt_fallback.py

@@ -149,14 +149,22 @@ drei Fragen und hat damit genau einen Weg:
 
 | Weg | Frage | Wer meldet | Fälle |
 | --- | --- | --- | --- |
-| **Rot** (GitHub-Mail) | Arbeitet die Technik nicht, und zwar anhaltend? | Health check (`scripts/health_check.py`), stündlich | Eine Quelle (WL, ÖBB, Baustellen, Stammstrecke) gab den Update-Läufen seit **3 h** keine brauchbare Antwort; der Feed ist seit **4 h** nicht neu gebaut; die veröffentlichten Feeds auf GitHub Pages liegen seit **4 h** hinter dem Repo; der letzte Pages-Lauf scheiterte im Jekyll-Build (sofort) oder zwei Pages-Läufe in Folge scheiterten bei GitHub; der Stationslauf ist älter als 8 Tage, ein Teilschritt scheiterte oder die Validierung fand Sicherheitsprobleme; eine Quelle des Stationslaufs antwortete seit 15 Tagen nicht; ein Nebenschritt scheiterte im letzten Lauf oder seine Aufzeichnung ist veraltet; der SEO-Lauf konnte die Repository-Metadaten nicht setzen (`REPO_ADMIN_TOKEN`); der letzte Lauf des Code-Reviews scheiterte (`CLAUDE_CODE_OAUTH_TOKEN`); der Feed-Wächter konnte nicht prüfen; das Übersetzungsmodell lud in zwei Builds in Folge nicht (seit 2026-11-01); ein Pflicht-Secret ist leer. |
+| **Rot** (GitHub-Mail) | Arbeitet die Technik nicht, und zwar anhaltend? | Health check (`scripts/health_check.py`), stündlich | Eine Quelle (WL, ÖBB, Baustellen, Stammstrecke) gab den Update-Läufen seit **3 h** keine brauchbare Antwort; der Feed ist seit **4 h** nicht neu gebaut; die veröffentlichten Feeds auf GitHub Pages liegen seit **4 h** hinter dem Repo; der letzte Pages-Lauf scheiterte im Jekyll-Build (sofort) oder zwei Pages-Läufe in Folge scheiterten bei GitHub; der Stationslauf ist älter als 8 Tage, ein Teilschritt scheiterte oder die Validierung fand Sicherheitsprobleme; eine Quelle des Stationslaufs antwortete seit 15 Tagen nicht; ein Nebenschritt scheiterte im letzten Lauf oder seine Aufzeichnung ist veraltet; der SEO-Lauf konnte die Repository-Metadaten nicht setzen (`REPO_ADMIN_TOKEN`); der letzte Lauf des Code-Reviews scheiterte (`CLAUDE_CODE_OAUTH_TOKEN`); der Feed-Wächter konnte nicht prüfen; das Übersetzungsmodell lud in zwei Builds in Folge nicht (seit 2026-11-01); IFTTT schweigt, und auch der Takt-Fallback brachte seit **80 min** keinen neuen Build (Prüfung `Takt`, seit 2026-11-04); ein Pflicht-Secret ist leer. |
 | **Issue** (Lauf bleibt grün) | Arbeitet die Technik, aber Feed-Inhalt oder Quelle sehen falsch aus? | Feed-Wächter (`scripts/feed_watch.py`), jeder Update-Lauf; je Regel ein Issue, das sich nach zwei sauberen Läufen selbst schließt | Die Inhaltsregeln (doppelter Eintrag, Anzahl, alte Meldung als neu, „Seit“ zu früh, ÖBB-Zweitsatz, Zeitzeile, Zeit vorbei, Länge, Höflichkeitssatz) und die Quellenregeln (`quelle-leer`, `quelle-einbruch`, `verwurf-sprung`, seit 2026-10-29 `vao-version`: die automatisch gewählte VAO-Version hat gewechselt). |
-| **Hinweis** (ℹ️, `::warning`) | Ist die Lage bekannt und verlangt nichts? | Health check | Eine stille Stammstrecken-Richtung, ein Korridor ohne Züge (die Website meldet ihn), eine gescheiterte Stichprobe, während die Update-Läufe noch Antworten bekommen, ein Live-Abruf der veröffentlichten Feeds, der gerade nicht gelang, ein einzelner Pages-Lauf, dessen Auslieferung bei GitHub oder dessen Jekyll-Build an GitHubs API scheiterte, eine Aufzeichnung, die vor dem ersten Lauf noch fehlt. |
+| **Hinweis** (ℹ️, `::warning`) | Ist die Lage bekannt und verlangt nichts? | Health check | Eine stille Stammstrecken-Richtung, ein Korridor ohne Züge (die Website meldet ihn), eine gescheiterte Stichprobe, während die Update-Läufe noch Antworten bekommen, ein Live-Abruf der veröffentlichten Feeds, der gerade nicht gelang, ein einzelner Pages-Lauf, dessen Auslieferung bei GitHub oder dessen Jekyll-Build an GitHubs API scheiterte, eine Aufzeichnung, die vor dem ersten Lauf noch fehlt, IFTTT schweigt, während der Takt-Fallback den Feed aktuell hält (seit 2026-11-04). |
 
-**Frühwarnung:** Zwei Technikfälle melden zusätzlich früher ein Issue, bevor
-sie rot werden: `quelle-ohne-antwort` nach 2 h (rot nach 3 h) und
-`feed-alter` nach 90 min (rot nach 4 h). Andere Technikfälle bekommen kein
-Issue. Ein Inhaltsfund wird nie rot.
+**Frühwarnung:** Drei Technikfälle melden zusätzlich früher ein Issue, bevor
+sie rot werden: `quelle-ohne-antwort` nach 2 h (rot nach 3 h),
+`feed-alter` nach 90 min (rot nach 4 h) und seit 2026-11-04 `ifttt-ausfall`:
+Kam 40 Minuten lang kein Update-Lauf, startet der Takt-Fallback
+(`.github/workflows/takt-fallback.yml`) ihn selbst, alle 40 Minuten, und
+öffnet das Issue; der Wächter des nächsten IFTTT-Laufs schließt es. Rot wird
+erst, wenn auch der Fallback seit 80 Minuten keinen neuen Build brachte.
+Betreiberentscheidung (Michael, 2026-11-04): „Sorge aber bitte dafür, dass
+der Fallback wirklich nur läuft, wenn IFTTT nicht funktioniert hat. Wenn
+IFTTT nicht funktioniert erstelle einen Issue. Wenn der Fallback auch nicht
+funktioniert, und der Feed nicht mehr aktualisiert werden kann, mach den
+Health Check rot.“ Andere Technikfälle bekommen kein Issue. Ein Inhaltsfund wird nie rot.
 
 **Für eine neue Prüfung:** Fragt sie, ob die Technik läuft, wird sie rot,
 mit einer Dauerschwelle, damit ein einzelner Aussetzer keine Mail

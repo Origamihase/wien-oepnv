@@ -44,6 +44,10 @@ It runs two complementary kinds of checks and shows a third:
 
      * ``docs/feed.xml`` ``<lastBuildDate>`` — proves the ~30-min update cycle
        still produces a feed.
+     * **Takt** — IFTTT still starts the Update cycle (``repository_dispatch``
+       within 40 min); while it is silent the Takt-Fallback carries the feed
+       (note), and a feed without a new build for 80 min then is red
+       (operator decision 2026-11-04; see :func:`check_takt`).
      * ``data/stations_last_run.json`` — proves the weekly station-directory
        refresh still runs, every sub-script exited 0, and validation found no
        security issues.
@@ -143,6 +147,7 @@ from src.health_check.sources import check_feed_watch as check_feed_watch  # noq
 from src.health_check.sources import check_source as check_source  # noqa: E402
 from src.health_check.workflow_secrets import WORKFLOW_SECRETS as WORKFLOW_SECRETS  # noqa: E402
 from src.health_check.workflow_secrets import WorkflowSecret as WorkflowSecret  # noqa: E402
+from src.health_check.takt import check_takt as check_takt  # noqa: E402
 from src.health_check.workflow_secrets import check_secrets as check_secrets  # noqa: E402
 
 
@@ -334,6 +339,7 @@ def main() -> int:
     sources = [assess_source(check_source(name, script), script, now) for name, script in UPDATERS]
     outputs = [
         check_feed_freshness(now),
+        check_takt(now),
         check_published_feeds(now),
         check_pages_build(now),
         check_stations(now),
@@ -391,6 +397,7 @@ __all__ = [
     "_mark",
     "check_pages_build",
     "check_tooling_runs",
+    "check_takt",
     "check_feed_freshness",
     "check_published_feeds",
     "check_side_steps",
