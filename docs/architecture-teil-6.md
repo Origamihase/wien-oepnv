@@ -108,8 +108,8 @@ nicht an den Health check gehen ([„Nebenschritte“](architecture-teil-5.md#ü
 gilt seither auch für sie, Regel vom 2026-10-28: „ein Fehler sollte auffallen“).
 
 * **Repository-Metadaten (`seo-guard.yml`).** Der Schritt scheitert bei
-  leerem Token und bei einer abgelehnten Anfrage (`curl -f`, 401 bei
-  abgelaufenem Token), läuft mit `continue-on-error` vor der
+  leerem Token und bei einer abgelehnten Anfrage (jeder HTTP-Code außer
+  2xx, etwa 401 bei abgelaufenem Token), läuft mit `continue-on-error` vor der
   Veröffentlichung, und `record_side_steps.py` schreibt sein Ergebnis nach
   `data/side_steps/seo-guard.json`, das mit `sitemap.xml` und `llms.txt` im
   selben Commit mitfährt. Die Prüfung `Nebenschritte` ist rot, solange der
@@ -161,6 +161,10 @@ Kam 40 Minuten lang kein Update-Lauf, startet der Takt-Fallback
 öffnet das Issue; der nächste IFTTT-Lauf schließt es. Gewartet wird ohne
 Rechner (Wartezeit der Umgebung `takt-wartezeit`). Rot wird
 erst, wenn auch der Fallback seit 80 Minuten keinen neuen Build brachte.
+Diese roten Läufe startet der Bot, und GitHub mailt einen roten Lauf nur
+dem, der ihn startete; deshalb kommentiert der Fallback das Issue, sobald er
+scheitert, und noch einmal, wenn er wieder läuft (Michael, 2026-11-04,
+Karte „Ja, Kommentar im Issue“).
 Betreiberentscheidung (Michael, 2026-11-04): „Sorge aber bitte dafür, dass
 der Fallback wirklich nur läuft, wenn IFTTT nicht funktioniert hat. Wenn
 IFTTT nicht funktioniert erstelle einen Issue. Wenn der Fallback auch nicht

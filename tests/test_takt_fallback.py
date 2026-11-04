@@ -76,6 +76,7 @@ class FakeClient:
         self.closed: list[int] = []
         self.created = created
         self.other_waiting = other_waiting
+        self.comments: list[str] = []
 
     def update_runs(self) -> list[tf.Run]:
         return tf.parse_runs({"workflow_runs": list(self.runs)})
@@ -91,6 +92,12 @@ class FakeClient:
 
     def open_issues(self) -> list[int]:
         return list(self.issues)
+
+    def issue_comments(self, number: int) -> list[str]:
+        return list(self.comments)
+
+    def comment(self, number: int, body: str) -> None:
+        self.comments.append(body)
 
     def create_issue(self, title: str, body: str) -> None:
         self.opened.append(body)
@@ -209,3 +216,53 @@ def test_health_note_when_the_api_cannot_be_read(monkeypatch: pytest.MonkeyPatch
     monkeypatch.setattr(takt_check, "_github_api_json", boom)
     check = takt_check.check_takt(T0)
     assert check.ok and check.note
+
+
+def test_the_ifttt_run_may_close_the_issue_and_read_the_runs() -> None:
+    """Independent check 2026-11-04: the closing step needs ``issues: write``
+    and ``actions: read`` in the Update cycle job (``actions: read`` so the
+    list of runs does not depend on the repository being public)."""
+    from pathlib import Path
+
+    text = (Path(__file__).resolve().parents[1] / ".github/workflows/update-cycle.yml").read_text(encoding="utf-8")
+    job_permissions = text.split("    permissions:\n", 1)[1].split("    env:\n", 1)[0]
+    assert "issues: write" in job_permissions and "actions: read" in job_permissions
+    step = text.split("- name: Close IFTTT outage issue", 1)[1].split("- name:", 1)[0]
+    assert "github.event_name == 'repository_dispatch'" in step
+    assert "scripts/takt_fallback.py --close-issue" in step
+
+
+def _failed_fallback(minutes: int, number: int = 2, conclusion: str = "failure") -> dict[str, Any]:
+    return _raw(number, T0 + timedelta(minutes=minutes), "workflow_dispatch", tf.BOT_LOGIN, conclusion=conclusion)
+
+
+def test_a_failing_fallback_comments_once_and_again_when_it_runs() -> None:
+    """Michael 2026-11-04 (card "Ja, Kommentar im Issue"): a red Health check
+    started by the bot mails nobody; the issue comment mails once per change."""
+    client = FakeClient([_failed_fallback(40), _raw(1, T0)], issues=[7], created=T0 + timedelta(minutes=40))
+    _run(client, T0 + timedelta(minutes=80))
+    assert len(client.comments) == 1 and tf.FAIL_MARK in client.comments[0]
+    assert "Fallback-Lauf #2 endete mit failure" in client.comments[0]
+    client.runs = [_failed_fallback(80, 3), _failed_fallback(40), _raw(1, T0)]
+    _run(client, T0 + timedelta(minutes=120))
+    assert len(client.comments) == 1
+    client.runs = [_failed_fallback(120, 4, "success"), _failed_fallback(80, 3), _raw(1, T0)]
+    _run(client, T0 + timedelta(minutes=160))
+    assert len(client.comments) == 2 and tf.OK_MARK in client.comments[1]
+    client.runs = [_failed_fallback(160, 5, "success"), *client.runs]
+    _run(client, T0 + timedelta(minutes=200))
+    assert len(client.comments) == 2
+
+
+def test_a_start_that_never_appeared_comments_and_opens_the_issue_when_none_is_open() -> None:
+    client = FakeClient([_raw(1, T0)], issues=[], created=T0 + timedelta(minutes=40))
+    _run(client, T0 + timedelta(minutes=80))
+    assert len(client.opened) == 1 and len(client.comments) == 1
+    assert "der gestartete Lauf erscheint nicht" in client.comments[0]
+
+
+def test_a_running_fallback_writes_no_comment() -> None:
+    client = FakeClient([_failed_fallback(40, conclusion="success"), _raw(1, T0)], issues=[7],
+                        created=T0 + timedelta(minutes=40))
+    _run(client, T0 + timedelta(minutes=80))
+    assert client.comments == []

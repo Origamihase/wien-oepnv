@@ -29,7 +29,9 @@ So no runner waits:
   step of ``update-cycle.yml``).
 * A fallback run that failed or never appeared starts the Health check, whose
   check ``Takt`` (``src/health_check/takt.py``) turns red when IFTTT is
-  silent and the feed has had no new build for 80 minutes.
+  silent and the feed has had no new build for 80 minutes. Runs started by
+  the bot mail nobody, so the check also comments on the issue, once when the
+  fallback fails and once when it runs again (:func:`report_fallback_state`).
 * A check that runs much earlier than 40 minutes means the wait timer is
   missing: it fails loudly (:data:`MIN_WAIT`).
 * The backup schedule (own lane, so it never replaces a waiting check)
@@ -72,6 +74,12 @@ FUTURE_SLACK = timedelta(minutes=5)
 ISSUE_LABEL = "ifttt-ausfall"
 ISSUE_TITLE = "IFTTT-Takt ausgefallen: Fallback hält den Feed aktuell"
 RUNS_PER_PAGE = 30
+# Hidden marks of the two comments on the issue when the fallback fails and
+# when it runs again: the newest mark tells the next check which state was
+# last reported, so each change mails once (Michael 2026-11-04, card "Ja,
+# Kommentar im Issue": runs started by the bot mail nobody when they fail).
+FAIL_MARK = "<!-- takt-fallback: gescheitert -->"
+OK_MARK = "<!-- takt-fallback: laeuft wieder -->"
 
 try:
     _VIENNA: ZoneInfo | None = ZoneInfo("Europe/Vienna")
@@ -260,6 +268,15 @@ class ActionsClient:
                 and isinstance(entry.get("number"), int) and "pull_request" not in entry] \
             if isinstance(data, list) else []
 
+    def issue_comments(self, number: int) -> list[str]:
+        """The bodies of the newest comments on issue *number*, oldest first."""
+        data = self._request("GET", f"/issues/{number}/comments?per_page=100")
+        return [str(entry.get("body") or "") for entry in data if isinstance(entry, Mapping)] \
+            if isinstance(data, list) else []
+
+    def comment(self, number: int, body: str) -> None:
+        self._request("POST", f"/issues/{number}/comments", {"body": body})
+
     def create_issue(self, title: str, body: str) -> None:
         self._request("POST", "/issues", {"title": title, "body": body, "labels": [ISSUE_LABEL]})
 
@@ -307,17 +324,60 @@ def _safe(label: str, action: Callable[[], object]) -> object:
         return None
 
 
-def _start_health_check_if_fallback_failed(client: ActionsClient, runs: list[Run], now: datetime,
-                                           decision: Decision) -> None:
+def _fallback_failure(runs: list[Run], now: datetime, decision: Decision) -> str | None:
+    """Why the fallback failed (its last run failed, or its start never appeared), or None."""
     newest = runs[0] if runs else None
     if newest is not None and newest.is_fallback and newest.status == "completed" \
             and newest.conclusion != "success":
-        print(f"::warning title=Takt-Fallback::Fallback-Lauf #{newest.number}: {newest.conclusion}")
+        return f"Fallback-Lauf #{newest.number} endete mit {newest.conclusion or 'ohne Ergebnis'}"
+    if decision.fire and newest is not None and now - tick_time(newest, now) >= LOST_START:
+        return "seit zwei Prüfungen kein Update-Lauf, der gestartete Lauf erscheint nicht"
+    return None
+
+
+def _start_health_check_if_fallback_failed(client: ActionsClient, runs: list[Run], now: datetime,
+                                           decision: Decision) -> str | None:
+    failure = _fallback_failure(runs, now, decision)
+    if failure is not None:
+        print(f"::warning title=Takt-Fallback::{failure}")
         _safe("Health check starten", lambda: client.dispatch(HEALTH_WORKFLOW))
-    elif decision.fire and newest is not None and now - tick_time(newest, now) >= LOST_START:
-        print("::warning title=Takt-Fallback::Seit zwei Prüfungen kein Update-Lauf; "
-              "der gestartete Lauf erscheint nicht.")
-        _safe("Health check starten", lambda: client.dispatch(HEALTH_WORKFLOW))
+    return failure
+
+
+def report_fallback_state(client: ActionsClient, runs: list[Run], now: datetime, failure: str | None) -> None:
+    """Comment on the issue when the fallback fails and again when it runs, once per change.
+
+    A Health check started by a run of the bot mails nobody when it turns red
+    (GitHub mails the person who started a run), so the comment carries the
+    news by the issue's mail (Michael 2026-11-04, card "Ja, Kommentar im Issue").
+    """
+    newest = runs[0] if runs else None
+    recovered = newest is not None and newest.is_fallback and newest.status == "completed" \
+        and newest.conclusion == "success"
+    if failure is None and not recovered:
+        return
+    numbers = client.open_issues()
+    if not numbers:
+        if failure is None:
+            return
+        sync_issue(client, runs, now, open_new=True)
+        numbers = client.open_issues()
+        if not numbers:
+            return
+    number = numbers[0]
+    marks = [body for body in client.issue_comments(number) if FAIL_MARK in body or OK_MARK in body]
+    failing_reported = bool(marks) and FAIL_MARK in marks[-1]
+    if failure is not None and not failing_reported:
+        client.comment(number, f"{FAIL_MARK}\nAuch der Takt-Fallback scheitert ({failure}; "
+                               f"festgestellt {_vienna(now)} Wien). Der Feed wird nicht mehr "
+                               "aktualisiert, der Health check wird rot (Prüfung „Takt“).\n\n"
+                               "Zu prüfen: die Läufe von `takt-fallback.yml` und `update-cycle.yml`.")
+        print(f"Issue #{number}: Kommentar, der Fallback scheitert.")
+    elif failure is None and failing_reported:
+        client.comment(number, f"{OK_MARK}\nDer Takt-Fallback läuft wieder (Lauf #{newest.number if newest else '?'} "
+                               f"sauber, festgestellt {_vienna(now)} Wien). Das Issue bleibt offen, "
+                               "bis IFTTT wieder tickt.")
+        print(f"Issue #{number}: Kommentar, der Fallback läuft wieder.")
 
 
 def run_check(client: ActionsClient, *, run_id: int, now: datetime, scheduled: bool = False) -> int:
@@ -339,7 +399,8 @@ def run_check(client: ActionsClient, *, run_id: int, now: datetime, scheduled: b
             return 1
     runs = client.update_runs()
     decision = decide(runs, now, None)
-    _start_health_check_if_fallback_failed(client, runs, now, decision)
+    failure = _start_health_check_if_fallback_failed(client, runs, now, decision)
+    _safe("Issue-Kommentar", lambda: report_fallback_state(client, runs, now, failure))
     if decision.fire:
         print(f"Fallback: {decision.reason}; starte den Update-Lauf.")
         silent = decision.ifttt_silent
