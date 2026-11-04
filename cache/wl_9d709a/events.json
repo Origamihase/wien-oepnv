@@ -170,14 +170,14 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "29B/N25: Adolf-Loos-Gasse",
-    "description": "<h2>Bauarbeiten</h2><p>Wegen <span>Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet.</span></p><p><span><strong><u>Zeitraum:</u></strong></span><br>Ab Montag, 05. Oktober 2026, etwa 06:30 Uhr auf Dauer von etwa sechs Wochen.</p><p><span><strong><u>Maßnahmen:</u></strong></span><strong><br>Linie 29B in Richtung Floridsdorf S U:</strong><br>Umleitung ab Wassermanngasse # Herzmanovsky-Orlando-Gasse über Herzmanovsky-Orlando-Gasse – Haberditzlgasse – Adolf-Loos-Gasse zur Stammstrecke.</p><p><span><u>Aufgelassene Haltestelle:<br></u></span>- Wassermanngasse (Adolf-Loos-Gasse gegenüber 3b)<br><span><u>Ersatzhaltestelle:<br></u></span>- Wassermanngasse (Haberditzlgasse nach Herzmanovsky-Orlando-Gasse)</p><p><strong>Linien 29B und N25 in Richtung Großfeldsiedlung U:</strong><br>Umleitung ab Adolf-Loos-Gasse # Haberditzlgasse über Haberditzlgasse – Herzmanovsky-Orlando-Gasse – Wassermanngasse zur Stammstrecke.</p><p><span><u>Aufgelassene Haltestelle:<br></u></span>- Wassermanngasse (Adolf-Loos-Gasse 3b)<br><span><u>Ersatzhaltestelle:<br></u></span>- Wassermanngasse (Herzmanovsky-Orlando-Gasse nach Bubergasse)</p>",
+    "title": "29B: Bauarbeiten Adolf-Loos-Gasse",
+    "description": "<h2>Bauarbeiten</h2><p>Wegen Straßenbauarbeiten im Bereich Adolf-Loos-Gasse werden die Linien 29B und N25 umgeleitet.</p><p><strong><u>Zeitraum:</u></strong><br>Ab Montag, 05. Oktober 2026, etwa 06:30 Uhr auf Dauer von etwa sechs Wochen.</p><p><strong><u>Maßnahmen:</u><br>Linie 29B in Richtung Floridsdorf S U:</strong><br>Umleitung ab Wassermanngasse # Herzmanovsky-Orlando-Gasse über Herzmanovsky-Orlando-Gasse – Haberditzlgasse – Adolf-Loos-Gasse zur Stammstrecke.</p><p><u>Aufgelassene Haltestelle:<br></u>- Wassermanngasse (Adolf-Loos-Gasse gegenüber 3b)<br><u>Ersatzhaltestelle:<br></u>- Wassermanngasse (Haberditzlgasse nach Herzmanovsky-Orlando-Gasse)</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2e0949e212b98b31a226dddab6b40d0f6c06edb1c250ee7ddaac3c840bc8e962",
+    "guid": "65469e2fa870302339467e8d3274eb88e789af59acd17cb601d5ddb4f3b62231",
     "pubDate": "2026-11-03T15:29:00+01:00",
     "starts_at": "2026-11-03T15:29:00+01:00",
     "ends_at": null,
-    "_identity": "wl|hinweis|L=29B,N25|D=2026-11-03|TK=29b n25 adolf loos gasse"
+    "_identity": "wl|hinweis|L=29B|D=2026-11-03|TK=29b bauarbeiten adolf loos gasse"
   },
   {
     "source": "Wiener Linien",
@@ -914,6 +914,34 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "43: Polizeieinsatz Betrieb ab Rosensteingasse",
+    "description": "Linie 43: Umleitung in Richtung Neuwaldegg zwischen Brünnlbadgasse und Rosensteingasse über die Strecke der Linien 44 und 9. Voraussichtliche Dauer: 08:50 Uhr. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "988c80ab109007f5051aff806aa861e0141853ffcc393ab7f2657dc9a31b4cd0",
+    "pubDate": "2026-11-04T08:22:00+01:00",
+    "starts_at": "2026-11-04T08:23:53+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=43|D=2026-11-04|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261104-0007"
+    ],
+    "_incident_start": "2026-11-04T08:22:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "17e9a7fed1e0eaa8f6fe38b93eacaf76eb3ca142bc9e11cc7a41ff2d3a0a9991",
+    "pubDate": "2026-11-04T08:23:53+01:00",
+    "starts_at": "2026-11-04T08:23:53+01:00",
+    "ends_at": "2026-11-04T09:23:00+01:00",
+    "_identity": "wl|störung|L=43|D=2026-11-04|TK=rettungseinsatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "60A: Verkehrsüberlastung",
     "description": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -936,7 +964,7 @@
     "guid": "eed493b84b991f4fbb293a881224825ca49d2be64d70010ef16dbd19919e838a",
     "pubDate": "2026-11-04T07:38:00+01:00",
     "starts_at": "2026-11-04T07:38:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-04T09:04:00+01:00",
     "_identity": "wl|störung|L=62|D=2026-11-04|TK=62 verkehrsunfall",
     "_wl_ids": [
       "I20261104-0004"
@@ -1070,6 +1098,38 @@
     "starts_at": "2026-11-03T00:00:14+01:00",
     "ends_at": "2026-11-04T23:59:59+01:00",
     "_identity": "wl|störung|L=D|D=2026-11-03|TK=züge halten wipplingerstr 39"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verunreinigung",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6",
+    "pubDate": "2026-11-04T08:24:00+01:00",
+    "starts_at": "2026-11-04T08:24:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U3|D=2026-11-04|TK=u3 verunreinigung",
+    "_wl_ids": [
+      "I20261104-0008"
+    ],
+    "_incident_start": "2026-11-04T08:24:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Verspätungen",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
+    "pubDate": "2026-11-04T08:11:00+01:00",
+    "starts_at": "2026-11-04T08:11:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U4|D=2026-11-04|TK=u4 verspätungen",
+    "_wl_ids": [
+      "I20261104-0006"
+    ],
+    "_incident_start": "2026-11-04T08:11:00+01:00"
   },
   {
     "source": "Wiener Linien",

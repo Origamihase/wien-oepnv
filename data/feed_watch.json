@@ -1,13 +1,25 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-04T07:01:40.587739+00:00",
- "built": "2026-11-04T08:01:20+01:00",
+ "updated": "2026-11-04T07:31:11.619835+00:00",
+ "built": "2026-11-04T08:30:52+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-04T08:01:20+01:00",
+  "built": "2026-11-04T08:30:52+01:00",
   "items": [
+   {
+    "title": "U3: Verunreinigung",
+    "time_line": "Seit 08:24"
+   },
+   {
+    "title": "43: Polizeieinsatz",
+    "time_line": "Seit 08:22"
+   },
+   {
+    "title": "U4: Verspätungen",
+    "time_line": "Seit 08:11"
+   },
    {
     "title": "60A: Verkehrsüberlastung",
     "time_line": "Seit 07:59"
@@ -21,6 +33,10 @@
     "time_line": "Seit 06:57"
    },
    {
+    "title": "29B: Bauarbeiten – Adolf-Loos-Gasse",
+    "time_line": "Seit 03.11."
+   },
+   {
     "title": "52A: Bauarbeiten",
     "time_line": "Ab Do 05.11."
    },
@@ -31,22 +47,6 @@
    {
     "title": "16A: Franzosenweg",
     "time_line": "Ab Do 05.11."
-   },
-   {
-    "title": "64A: Liesinger-Flur-Gasse",
-    "time_line": "Bis Fr 06.11."
-   },
-   {
-    "title": "REX50/REX51/S50: Wien Westbahnhof ↔ St. Pölten Hbf",
-    "time_line": "Bis 11.11."
-   },
-   {
-    "title": "N71: Rennweg S",
-    "time_line": "Bis Fr 06.11."
-   },
-   {
-    "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
-    "time_line": "Bis 30.11."
    }
   ]
  },
@@ -6751,17 +6751,37 @@
     "oebb": 6,
     "wl": 89
    }
+  },
+  {
+   "t": "2026-11-04T07:31:11.619835+00:00",
+   "raw": {
+    "wl-stoerungen": 66,
+    "wl-hinweise": 68,
+    "oebb": 180,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 11,
+    "oebb": 158,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 6,
+    "wl": 93
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-04T07:01:40.587739+00:00"
+   "last_ok": "2026-11-04T07:31:11.619835+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-04T07:01:40.587739+00:00"
+   "last_ok": "2026-11-04T07:31:11.619835+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-04T07:01:40.587739+00:00"
+   "last_ok": "2026-11-04T07:31:11.619835+00:00"
   }
  }
 }
