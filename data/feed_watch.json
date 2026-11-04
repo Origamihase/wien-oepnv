@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-04T15:01:24.284386+00:00",
- "built": "2026-11-04T16:01:11+01:00",
+ "updated": "2026-11-04T15:30:57.772443+00:00",
+ "built": "2026-11-04T16:30:48+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-04T16:01:11+01:00",
+  "built": "2026-11-04T16:30:48+01:00",
   "items": [
+   {
+    "title": "9: Falschparker",
+    "time_line": "Seit 16:06"
+   },
    {
     "title": "11A: Verkehrsunfall",
     "time_line": "Seit 15:56"
@@ -15,18 +19,6 @@
    {
     "title": "U6: Rettungseinsatz",
     "time_line": "Seit 15:19"
-   },
-   {
-    "title": "43: Verspätungen",
-    "time_line": "Seit 15:01"
-   },
-   {
-    "title": "40/41: Falschparker",
-    "time_line": "Seit 15:06"
-   },
-   {
-    "title": "35A: Betriebsstörung",
-    "time_line": "Seit 13:54"
    },
    {
     "title": "29B: Bauarbeiten – Adolf-Loos-Gasse",
@@ -47,31 +39,19 @@
    {
     "title": "REX50/REX51/S50: Wien Westbahnhof ↔ St. Pölten Hbf",
     "time_line": "Bis 11.11."
+   },
+   {
+    "title": "N71: Rennweg S",
+    "time_line": "Bis Fr 06.11."
+   },
+   {
+    "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
+    "time_line": "Bis 30.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-28T15:01:26.598734+00:00",
-   "raw": {
-    "wl-stoerungen": 90,
-    "wl-hinweise": 82,
-    "oebb": 156,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 19
-   },
-   "discarded": {
-    "wl": 11,
-    "oebb": 131,
-    "baustellen": 65
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 110
-   }
-  },
   {
    "t": "2026-10-28T15:31:00.854907+00:00",
    "raw": {
@@ -6771,17 +6751,39 @@
     "oebb": 6,
     "wl": 93
    }
+  },
+  {
+   "t": "2026-11-04T15:30:57.772443+00:00",
+   "raw": {
+    "wl-stoerungen": 65,
+    "wl-hinweise": 72,
+    "oebb": 190,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 12,
+    "oebb": 166,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 6,
+    "wl": 90
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-04T15:01:24.284386+00:00"
+   "last_ok": "2026-11-04T15:30:57.772443+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-04T15:01:24.284386+00:00"
+   "last_ok": "2026-11-04T15:01:24.284386+00:00",
+   "last_exit": 1,
+   "failing_since": "2026-11-04T15:30:57.772443+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-04T15:01:24.284386+00:00"
+   "last_ok": "2026-11-04T15:30:57.772443+00:00"
   }
  }
 }

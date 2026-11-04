@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260922-0032, I20260925-0011, I20261020-0029, I20261104-0018, I20261104-0021-F01, I20261104-0021-F02, I20261104-0022, I20261104-0023-F01, I20261104-0024"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261104-0024, I20261104-0025-F01, I20260922-0032, I20261020-0029, I20261104-0023-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R1881-101, R1884-101, R1883-101, R1882-101, R1875-101, R1876-101, R1880-101, R102-136, R101-136, R100-136, R19-136, R45-136, R119-136, R130-136, R118-136, R117-136, R116-136, R115-136, R103-136, R3886-480, R1474-412, R1448-412, R401-101, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, R192-141, R192-140, R191-140, R190-140, R177-140, R190-141, R177-141, R191-141, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R1881-101, R1884-101, R1875-101, R1876-101, R1883-101, R1880-101, R1882-101, R102-136, R101-136, R119-136, R100-136, R45-136, R19-136, R130-136, R118-136, R117-136, R116-136, R115-136, R103-136, R3886-480, R1474-412, R1448-412, R401-101, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, R223-109, R526-109, R524-109, R556-109, R531-109, R530-109, R532-109, R533-109, R1475-109, R1476-109, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -217,188 +217,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
-    "attributes": {
-     "relatedLineTypes": {
-      "35A": "ptBusCity"
-     }
-    },
-    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "descriptionHTML": "<p>Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-       "descriptionPlain": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-       "title": "35A: Betriebsstörung"
-      }
-     }
-    ],
-    "name": "I20261104-0018",
-    "owner": "WL",
-    "parentName": "I20261104-0018",
-    "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "35A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 435,
-      "lineName": "35A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-04T13:54:00.000+0100",
-     "lastUpdate": "2026-11-04T13:54:00.000+0100",
-     "resume": "2026-11-04T13:54:00.000+0100",
-     "start": "2026-11-04T13:54:00.000+0100"
-    },
-    "title": "35A: Betriebsstörung"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "40": "ptTram"
-     }
-    },
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "40: Falschparker"
-      }
-     }
-    ],
-    "location": "Gentzgasse 117",
-    "name": "I20261104-0021-F01",
-    "owner": "WL",
-    "parentName": "I20261104-0021",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "40"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 140,
-      "lineName": "40",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-04T15:06:00.000+0100",
-     "lastUpdate": "2026-11-04T15:06:00.000+0100",
-     "resume": "2026-11-04T15:06:00.000+0100",
-     "start": "2026-11-04T15:00:00.000+0100"
-    },
-    "title": "40: Falschparker"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "41": "ptTram"
-     }
-    },
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "41: Falschparker"
-      }
-     }
-    ],
-    "location": "Gentzgasse 117",
-    "name": "I20261104-0021-F02",
-    "owner": "WL",
-    "parentName": "I20261104-0021",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 141,
-      "lineName": "41",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-04T15:06:00.000+0100",
-     "lastUpdate": "2026-11-04T15:06:00.000+0100",
-     "resume": "2026-11-04T15:06:00.000+0100",
-     "start": "2026-11-04T15:00:00.000+0100"
-    },
-    "title": "41: Falschparker"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "43": "ptTram"
-     }
-    },
-    "description": "Linie 43: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie 43:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 43:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 43: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "43: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261104-0022",
-    "owner": "WL",
-    "parentName": "I20261104-0022",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 143,
-      "lineName": "43",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-04T15:02:00.000+0100",
-     "lastUpdate": "2026-11-04T15:02:00.000+0100",
-     "resume": "2026-11-04T15:01:00.000+0100",
-     "start": "2026-11-04T15:01:00.000+0100"
-    },
-    "title": "43: Verspätungen"
-   },
-   {
     "alertCause": "emergency medical services",
     "alertCauseId": 14,
     "attributes": {
@@ -490,6 +308,52 @@
      "start": "2026-11-04T15:56:00.000+0100"
     },
     "title": "11A: Verkehrsunfall"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "9": "ptTram"
+     }
+    },
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "9: Falschparker"
+      }
+     }
+    ],
+    "location": "Hormayrgasse",
+    "name": "I20261104-0025-F01",
+    "owner": "WL",
+    "parentName": "I20261104-0025",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 109,
+      "lineName": "9",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-04T16:18:00.000+0100",
+     "lastUpdate": "2026-11-04T16:18:00.000+0100",
+     "resume": "2026-11-04T16:18:00.000+0100",
+     "start": "2026-11-04T16:06:00.000+0100"
+    },
+    "title": "9: Falschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -816,48 +680,48 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Falschparker\nBetrieb ab Gersthof",
-    "name": "R177-140",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1475-109",
     "owner": "WL",
-    "parentName": "R177-140",
+    "parentName": "R1475-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "40"
+     "9"
     ],
     "relatedStops": [
-     177
+     1475
     ],
     "time": {
-     "end": "2026-11-04T16:05:00.000+0100",
-     "start": "2026-11-04T15:06:03.000+0100"
+     "end": "2026-11-04T17:16:00.000+0100",
+     "start": "2026-11-04T16:17:13.000+0100"
     },
-    "title": "Falschparker\nBetrieb ab Gersthof"
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Falschparker\nBetrieb ab Gersthof",
-    "name": "R177-141",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1476-109",
     "owner": "WL",
-    "parentName": "R177-141",
+    "parentName": "R1476-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "41"
+     "9"
     ],
     "relatedStops": [
-     177
+     1476
     ],
     "time": {
-     "end": "2026-11-04T16:05:00.000+0100",
-     "start": "2026-11-04T15:06:33.000+0100"
+     "end": "2026-11-04T17:16:00.000+0100",
+     "start": "2026-11-04T16:17:13.000+0100"
     },
-    "title": "Falschparker\nBetrieb ab Gersthof"
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1046,144 +910,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Falschparker\nBetrieb ab Gersthof",
-    "name": "R190-140",
-    "owner": "WL",
-    "parentName": "R190-140",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "40"
-    ],
-    "relatedStops": [
-     190
-    ],
-    "time": {
-     "end": "2026-11-04T16:05:00.000+0100",
-     "start": "2026-11-04T15:06:03.000+0100"
-    },
-    "title": "Falschparker\nBetrieb ab Gersthof"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Falschparker\nBetrieb ab Gersthof",
-    "name": "R190-141",
-    "owner": "WL",
-    "parentName": "R190-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     190
-    ],
-    "time": {
-     "end": "2026-11-04T16:05:00.000+0100",
-     "start": "2026-11-04T15:06:33.000+0100"
-    },
-    "title": "Falschparker\nBetrieb ab Gersthof"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Falschparker\nBetrieb ab Gersthof",
-    "name": "R191-140",
-    "owner": "WL",
-    "parentName": "R191-140",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "40"
-    ],
-    "relatedStops": [
-     191
-    ],
-    "time": {
-     "end": "2026-11-04T16:05:00.000+0100",
-     "start": "2026-11-04T15:06:03.000+0100"
-    },
-    "title": "Falschparker\nBetrieb ab Gersthof"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Falschparker\nBetrieb ab Gersthof",
-    "name": "R191-141",
-    "owner": "WL",
-    "parentName": "R191-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     191
-    ],
-    "time": {
-     "end": "2026-11-04T16:05:00.000+0100",
-     "start": "2026-11-04T15:06:33.000+0100"
-    },
-    "title": "Falschparker\nBetrieb ab Gersthof"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Falschparker\nBetrieb ab Gersthof",
-    "name": "R192-140",
-    "owner": "WL",
-    "parentName": "R192-140",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "40"
-    ],
-    "relatedStops": [
-     192
-    ],
-    "time": {
-     "end": "2026-11-04T16:05:00.000+0100",
-     "start": "2026-11-04T15:02:02.000+0100"
-    },
-    "title": "Falschparker\nBetrieb ab Gersthof"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Falschparker\nBetrieb ab Gersthof",
-    "name": "R192-141",
-    "owner": "WL",
-    "parentName": "R192-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     192
-    ],
-    "time": {
-     "end": "2026-11-04T16:05:00.000+0100",
-     "start": "2026-11-04T15:02:02.000+0100"
-    },
-    "title": "Falschparker\nBetrieb ab Gersthof"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "name": "R1974-466",
     "owner": "WL",
@@ -1203,6 +929,29 @@
      "start": "2026-11-04T04:40:04.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R223-109",
+    "owner": "WL",
+    "parentName": "R223-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     223
+    ],
+    "time": {
+     "end": "2026-11-04T17:06:00.000+0100",
+     "start": "2026-11-04T16:07:09.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1663,6 +1412,167 @@
      "start": "2026-11-04T05:00:04.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R524-109",
+    "owner": "WL",
+    "parentName": "R524-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     524
+    ],
+    "time": {
+     "end": "2026-11-04T17:06:00.000+0100",
+     "start": "2026-11-04T16:07:10.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R526-109",
+    "owner": "WL",
+    "parentName": "R526-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     526
+    ],
+    "time": {
+     "end": "2026-11-04T17:06:00.000+0100",
+     "start": "2026-11-04T16:07:10.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R530-109",
+    "owner": "WL",
+    "parentName": "R530-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     530
+    ],
+    "time": {
+     "end": "2026-11-04T17:08:00.000+0100",
+     "start": "2026-11-04T16:09:10.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R531-109",
+    "owner": "WL",
+    "parentName": "R531-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     531
+    ],
+    "time": {
+     "end": "2026-11-04T17:08:00.000+0100",
+     "start": "2026-11-04T16:09:10.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R532-109",
+    "owner": "WL",
+    "parentName": "R532-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     532
+    ],
+    "time": {
+     "end": "2026-11-04T17:13:00.000+0100",
+     "start": "2026-11-04T16:14:11.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R533-109",
+    "owner": "WL",
+    "parentName": "R533-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     533
+    ],
+    "time": {
+     "end": "2026-11-04T17:13:00.000+0100",
+     "start": "2026-11-04T16:14:11.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R556-109",
+    "owner": "WL",
+    "parentName": "R556-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     556
+    ],
+    "time": {
+     "end": "2026-11-04T17:06:00.000+0100",
+     "start": "2026-11-04T16:07:12.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
