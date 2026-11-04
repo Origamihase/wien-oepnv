@@ -161,6 +161,10 @@ Kam 40 Minuten lang kein Update-Lauf, startet der Takt-Fallback
 öffnet das Issue; der nächste IFTTT-Lauf schließt es. Gewartet wird ohne
 Rechner (Wartezeit der Umgebung `takt-wartezeit`). Rot wird
 erst, wenn auch der Fallback seit 80 Minuten keinen neuen Build brachte.
+Diese roten Läufe startet der Bot, und GitHub mailt einen roten Lauf nur
+dem, der ihn startete; deshalb kommentiert der Fallback das Issue, sobald er
+scheitert, und noch einmal, wenn er wieder läuft (Michael, 2026-11-04,
+Karte „Ja, Kommentar im Issue“).
 Betreiberentscheidung (Michael, 2026-11-04): „Sorge aber bitte dafür, dass
 der Fallback wirklich nur läuft, wenn IFTTT nicht funktioniert hat. Wenn
 IFTTT nicht funktioniert erstelle einen Issue. Wenn der Fallback auch nicht

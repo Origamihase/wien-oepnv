@@ -24,6 +24,9 @@ name: Takt-Fallback
 # minutes). The next IFTTT run closes the issue (step in update-cycle.yml).
 # A fallback run that fails starts the Health check, whose check "Takt" turns
 # red when IFTTT is silent and the feed has had no new build for 80 minutes.
+# Runs started by the bot mail nobody, so the check also comments on the
+# issue once when the fallback fails and once when it runs again (Michael
+# 2026-11-04, card "Ja, Kommentar im Issue").
 # Details: src/takt_fallback.py, docs/development-teil-2.md ("Geplante
 # Läufe").
 #
