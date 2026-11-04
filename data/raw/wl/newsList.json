@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1032037, ftazW_262, ftazW_1018067, ftazW_263, ftazW_264, ftazW_1016957, ftazW_1018068"
+    "trafficInfoNameList": "ftazW_262, ftazW_1018067, ftazW_263, ftazW_264, ftazW_1016957, ftazW_1018068"
    }
   ],
   "poiCategoryGroups": [
@@ -2965,45 +2965,6 @@
      "start": "2026-11-06T01:15:00.000+0100"
     },
     "title": "Stadion"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "05.11.2026 00:45",
-     "ausVon": "04.11.2026 20:45",
-     "location": "U4 Mittelbahnsteig - Ausgang Gigergasse",
-     "rbls": [
-      4425,
-      4412
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4"
-     ],
-     "station": "Landstraße",
-     "status": "geplante Wartung",
-     "towards": "U4 beide Richtungen"
-    },
-    "description": "U4 Mittelbahnsteig - Ausgang Gigergasse",
-    "elevatorId": "LA 06",
-    "name": "ftazW_1032037",
-    "parentName": "ftazW_1032037",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedStops": [
-     4425,
-     4412
-    ],
-    "time": {
-     "end": "2026-11-05T00:45:00.000+0100",
-     "start": "2026-11-04T20:45:00.000+0100"
-    },
-    "title": "Landstraße"
    },
    {
     "alertCause": "undefined alert cause",

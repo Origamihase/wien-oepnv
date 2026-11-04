@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20260922-0032, I20261104-0003, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20261104-0003, I20260909-0007, I20260922-0032, I20261020-0029"
    },
    {
     "id": 3,
@@ -224,17 +224,18 @@
       "97A": "ptBusCity"
      }
     },
-    "description": "Linie 97A: Unregelmäßige Intervalle in beiden Richtungen. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Verkehrsüberlastung im Haltestellenbereich Löschniggasse.",
-    "descriptionHTML": "<p>Linie 97A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Voraussichtliche Dauer: Bis Betriebsschluss.</p><p>Grund: Verkehrsüberlastung im Haltestellenbereich Löschniggasse.</p>",
+    "description": "Linie 97A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 97A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 97A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Voraussichtliche Dauer: Bis Betriebsschluss.</p><p>Grund: Verkehrsüberlastung im Haltestellenbereich Löschniggasse.</p>",
-       "descriptionPlain": "Linie 97A: Unregelmäßige Intervalle in beiden Richtungen. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Verkehrsüberlastung im Haltestellenbereich Löschniggasse.",
+       "descriptionHtml": "<p>Linie 97A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 97A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
        "title": "97A: Verkehrsüberlastung"
       }
      }
     ],
+    "location": "Klagbaumgasse",
     "name": "I20261104-0003",
     "owner": "WL",
     "parentName": "I20261104-0003",
@@ -252,13 +253,11 @@
       "vehicleType": "ptBusCity"
      }
     ],
-    "relatedStops": [
-     2738
-    ],
     "status": "active",
     "time": {
      "created": "2026-11-04T06:58:00.000+0100",
-     "lastUpdate": "2026-11-04T07:00:00.000+0100",
+     "lastUpdate": "2026-11-04T07:01:00.000+0100",
+     "resume": "2026-11-04T06:57:00.000+0100",
      "start": "2026-11-04T06:57:00.000+0100"
     },
     "title": "97A: Verkehrsüberlastung"
