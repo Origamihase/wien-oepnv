@@ -8,35 +8,20 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 04 Nov 2026 20:01:00 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 20:30:43 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[64A: Polizeieinsatz]]></title>
+      <title><![CDATA[U3: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">b4b01fbdb56e905c072762a3059ca35e47e30d93c6bd03e6abd4f6e60567ecf9</guid>
-      <pubDate>Wed, 04 Nov 2026 19:42:00 +0100</pubDate>
+      <guid isPermaLink="false">d9f09bd2a626f0dff4211f9bfe402f5b3537fd4fe8f424b4ebf56281b91f2182</guid>
+      <pubDate>Wed, 04 Nov 2026 20:16:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 04 Nov 2026 19:42:00 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 04 Nov 2026 19:42:00 +0100</ext:starts_at>
-      <ext:ends_at>Wed, 04 Nov 2026 20:42:00 +0100</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Seit 19:42]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Seit 19:42]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[22A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">24f3e8ed4b406112c71c820943058faeb5e6f2942ac26ea1686d40f72cd4f36c</guid>
-      <pubDate>Wed, 04 Nov 2026 19:38:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 04 Nov 2026 19:38:00 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 04 Nov 2026 19:38:00 +0100</ext:starts_at>
-      <ext:ends_at>Wed, 04 Nov 2026 20:55:00 +0100</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 19:38]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 19:38]]]></content:encoded>
+      <ext:first_seen>Wed, 04 Nov 2026 20:16:00 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 04 Nov 2026 20:16:00 +0100</ext:starts_at>
+      <description>Fahrtbehinderung in beiden Richtungen. Grund: Polizeieinsatz. [Seit 20:16]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Seit 20:16]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[26: Verkehrsunfall]]></title>
@@ -96,7 +81,7 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 19:28]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[10: Fremdunfall]]></title>
+      <title><![CDATA[10: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">a353875670c81bfb8e057d43db548115ca6c84c08a4b6f4e5ddfed91706f0a44</guid>
       <pubDate>Wed, 04 Nov 2026 18:10:00 +0100</pubDate>
@@ -106,8 +91,8 @@
       <ext:first_seen>Wed, 04 Nov 2026 18:10:00 +0100</ext:first_seen>
       <ext:starts_at>Wed, 04 Nov 2026 18:10:00 +0100</ext:starts_at>
       <ext:ends_at>Wed, 04 Nov 2026 21:00:00 +0100</ext:ends_at>
-      <description>Betrieb ab Joachimsthalerplatz, Penzinger Straße. [Seit 18:10]</description>
-      <content:encoded><![CDATA[Betrieb ab Joachimsthalerplatz, Penzinger Straße.<br/>[Seit 18:10]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 18:10]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 18:10]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[29B: Bauarbeiten – Adolf-Loos-Gasse]]></title>
@@ -148,6 +133,21 @@
       <georss:point>48.190171 16.331974</georss:point>
       <description>Haltestellenauflassung der Linie 12A in Richtung Eichenstraße. Haltestelle: Henriettenplatz. Grund: Grabungsarbeiten. [Seit heute]</description>
       <content:encoded><![CDATA[Haltestellenauflassung der Linie 12A in Richtung Eichenstraße. Haltestelle: Henriettenplatz. Grund: Grabungsarbeiten.<br/>[Seit heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[64A: Liesinger-Flur-Gasse]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">3b627a5088a524636d432acaf864f64e64fcb65b79a9c56b6e1f2f1064c0e1ab</guid>
+      <pubDate>Fri, 30 Oct 2026 13:51:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 30 Oct 2026 13:51:00 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 03 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 06 Nov 2026 09:00:00 +0100</ext:ends_at>
+      <georss:point>48.136622 16.306345</georss:point>
+      <description>Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbau. [Bis Fr 06.11.]</description>
+      <content:encoded><![CDATA[Perfektastraße nach Liesinger-Flur-Gasse → Perfektastraße 77. Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse. Grund: Straßenbau.<br/>[Bis Fr 06.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

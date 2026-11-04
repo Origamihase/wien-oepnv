@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261104-0038, I20260925-0011, I20260909-0007, I20260922-0032, I20261104-0035-F01, I20261104-0032-F01, I20261020-0029, I20261104-0036-F01, I20261104-0037"
+    "trafficInfoNameList": "I20261104-0039, I20260925-0011, I20260909-0007, I20260922-0032, I20261104-0035-F01, I20261104-0032-F01, I20261104-0037, I20261020-0029, I20261104-0036-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R102-136, R101-136, R100-136, R117-136, R116-136, R115-136, R103-136, R119-136, R19-136, R45-136, R130-136, R118-136, R3886-480, R401-101, R1448-412, R1474-412, R2343-626, R2378-627, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, R579-110, R578-110, R577-110, R581-110, R583-110, R565-110, R566-110, R571-110, R570-110, R568-110, R885-125, R2566-125, R880-125, R2376-125, R2377-125, R2377-126, R2634-126, R2376-126, R881-126, R2566-126, R885-126, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R1883-101, R1875-101, R1876-101, R1880-101, R1882-101, R1881-101, R1884-101, R45-136, R130-136, R118-136, R117-136, R116-136, R115-136, R101-136, R100-136, R119-136, R103-136, R102-136, R19-136, R3886-480, R401-101, R1474-412, R1448-412, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, R2376-126, R2377-126, R2634-126, R2566-126, R881-126, R885-126, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -391,11 +391,11 @@
       "vehicleType": "ptBusCity"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-04T19:39:00.000+0100",
-     "end": "2026-11-04T20:55:00.000+0100",
-     "lastUpdate": "2026-11-04T19:40:00.000+0100",
+     "end": "2026-11-04T20:28:00.000+0100",
+     "lastUpdate": "2026-11-04T20:28:00.000+0100",
      "resume": "2026-11-04T19:38:00.000+0100",
      "start": "2026-11-04T19:38:00.000+0100"
     },
@@ -406,46 +406,48 @@
     "alertCauseId": 3,
     "attributes": {
      "relatedLineTypes": {
-      "64A": "ptBusCity"
+      "U3": "ptMetro"
      }
     },
-    "description": "Linie 64A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "descriptionHTML": "<p>Linie 64A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+    "description": "Linie U3: Fahrtbehinderung in beiden Richtungen. Grund: Polizeieinsatz.",
+    "descriptionHTML": "<p>Linie U3:<br>Fahrtbehinderung in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 64A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
-       "descriptionPlain": "Linie 64A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-       "title": "64A: Polizeieinsatz"
+       "descriptionHtml": "<p>Linie U3:<br>Fahrtbehinderung in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+       "descriptionPlain": "Linie U3: Fahrtbehinderung in beiden Richtungen. Grund: Polizeieinsatz.",
+       "title": "U3: Polizeieinsatz"
       }
      }
     ],
-    "name": "I20261104-0038",
+    "name": "I20261104-0039",
     "owner": "WL",
-    "parentName": "I20261104-0038",
+    "parentName": "I20261104-0039",
     "priority": "1",
     "reasonId": 47,
     "reasonName": "Polizeieinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "64A"
+     "U3"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 464,
-      "lineName": "64A",
-      "vehicleType": "ptBusCity"
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
      }
+    ],
+    "relatedStops": [
+     4926
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-04T19:42:00.000+0100",
-     "end": "2026-11-04T20:42:00.000+0100",
-     "lastUpdate": "2026-11-04T19:42:00.000+0100",
-     "resume": "2026-11-04T19:42:00.000+0100",
-     "start": "2026-11-04T19:42:00.000+0100"
+     "created": "2026-11-04T20:18:00.000+0100",
+     "lastUpdate": "2026-11-04T20:18:00.000+0100",
+     "resume": "2026-11-04T20:16:00.000+0100",
+     "start": "2026-11-04T20:16:00.000+0100"
     },
-    "title": "64A: Polizeieinsatz"
+    "title": "U3: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1210,29 +1212,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2376-125",
-    "owner": "WL",
-    "parentName": "R2376-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     2376
-    ],
-    "time": {
-     "end": "2026-11-04T20:27:00.000+0100",
-     "start": "2026-11-04T19:28:33.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
     "name": "R2376-126",
     "owner": "WL",
     "parentName": "R2376-126",
@@ -1249,29 +1228,6 @@
     "time": {
      "end": "2026-11-04T20:31:00.000+0100",
      "start": "2026-11-04T19:32:03.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2377-125",
-    "owner": "WL",
-    "parentName": "R2377-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     2377
-    ],
-    "time": {
-     "end": "2026-11-04T20:27:00.000+0100",
-     "start": "2026-11-04T19:28:33.000+0100"
     },
     "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
@@ -1389,29 +1345,6 @@
      "start": "2026-11-04T00:00:20.000+0100"
     },
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R2566-125",
-    "owner": "WL",
-    "parentName": "R2566-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     2566
-    ],
-    "time": {
-     "end": "2026-11-04T20:27:00.000+0100",
-     "start": "2026-11-04T19:28:31.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1600,259 +1533,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Penzinger Straße",
-    "name": "R565-110",
-    "owner": "WL",
-    "parentName": "R565-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     565
-    ],
-    "time": {
-     "end": "2026-11-04T20:30:00.000+0100",
-     "start": "2026-11-04T18:11:54.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Penzinger Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Penzinger Straße",
-    "name": "R566-110",
-    "owner": "WL",
-    "parentName": "R566-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     566
-    ],
-    "time": {
-     "end": "2026-11-04T20:30:00.000+0100",
-     "start": "2026-11-04T18:11:54.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Penzinger Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Penzinger Straße",
-    "name": "R568-110",
-    "owner": "WL",
-    "parentName": "R568-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     568
-    ],
-    "time": {
-     "end": "2026-11-04T20:30:00.000+0100",
-     "start": "2026-11-04T18:11:54.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Penzinger Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Penzinger Straße",
-    "name": "R570-110",
-    "owner": "WL",
-    "parentName": "R570-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     570
-    ],
-    "time": {
-     "end": "2026-11-04T20:30:00.000+0100",
-     "start": "2026-11-04T18:11:54.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Penzinger Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Penzinger Straße",
-    "name": "R571-110",
-    "owner": "WL",
-    "parentName": "R571-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     571
-    ],
-    "time": {
-     "end": "2026-11-04T20:30:00.000+0100",
-     "start": "2026-11-04T18:11:54.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Penzinger Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Joachimsthalerplatz",
-    "name": "R577-110",
-    "owner": "WL",
-    "parentName": "R577-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     577
-    ],
-    "time": {
-     "end": "2026-11-04T20:30:00.000+0100",
-     "start": "2026-11-04T18:11:24.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Joachimsthalerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Joachimsthalerplatz",
-    "name": "R578-110",
-    "owner": "WL",
-    "parentName": "R578-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     578
-    ],
-    "time": {
-     "end": "2026-11-04T20:30:00.000+0100",
-     "start": "2026-11-04T18:11:24.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Joachimsthalerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Joachimsthalerplatz",
-    "name": "R579-110",
-    "owner": "WL",
-    "parentName": "R579-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     579
-    ],
-    "time": {
-     "end": "2026-11-04T20:30:00.000+0100",
-     "start": "2026-11-04T18:11:24.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Joachimsthalerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Joachimsthalerplatz",
-    "name": "R581-110",
-    "owner": "WL",
-    "parentName": "R581-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     581
-    ],
-    "time": {
-     "end": "2026-11-04T20:30:00.000+0100",
-     "start": "2026-11-04T18:11:24.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Joachimsthalerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Joachimsthalerplatz",
-    "name": "R583-110",
-    "owner": "WL",
-    "parentName": "R583-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     583
-    ],
-    "time": {
-     "end": "2026-11-04T20:30:00.000+0100",
-     "start": "2026-11-04T18:11:24.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Joachimsthalerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R880-125",
-    "owner": "WL",
-    "parentName": "R880-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     880
-    ],
-    "time": {
-     "end": "2026-11-04T20:27:00.000+0100",
-     "start": "2026-11-04T19:28:31.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Fahrtbehinderung\nVerkehrsunfall",
     "name": "R881-126",
     "owner": "WL",
@@ -1870,29 +1550,6 @@
     "time": {
      "end": "2026-11-04T20:31:00.000+0100",
      "start": "2026-11-04T19:32:31.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R885-125",
-    "owner": "WL",
-    "parentName": "R885-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     885
-    ],
-    "time": {
-     "end": "2026-11-04T20:27:00.000+0100",
-     "start": "2026-11-04T19:28:31.000+0100"
     },
     "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
