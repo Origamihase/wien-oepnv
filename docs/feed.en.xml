@@ -8,8 +8,22 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 04 Nov 2026 10:30:56 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 11:00:59 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[16A/17A/67A/67B: Signal disruption]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">32c92ab83f0de4027d69c995f2641822ec1a450fec2f45c5d0d5e4e3a1ace708</guid>
+      <pubDate>Wed, 04 Nov 2026 10:52:10 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 04 Nov 2026 10:52:10 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 04 Nov 2026 10:52:11 +0100</ext:starts_at>
+      <ext:ends_at>Wed, 04 Nov 2026 11:53:00 +0100</ext:ends_at>
+      <description>Service obstruction. [Since 10:52]</description>
+      <content:encoded><![CDATA[Service obstruction.<br/>[Since 10:52]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[15A: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -22,19 +36,6 @@
       <ext:starts_at>Wed, 04 Nov 2026 10:13:00 +0100</ext:starts_at>
       <description>After a service obstruction, there are irregular intervals. [Since 10:13]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 10:13]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Defective vehicle]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">957cb1b08225ad1e4245b00d3a903a998ca51304cfc0cf8066722db5bf4f5ca2</guid>
-      <pubDate>Wed, 04 Nov 2026 09:20:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 04 Nov 2026 09:31:01 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 04 Nov 2026 09:20:00 +0100</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 09:20]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 09:20]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[29B: Construction works – Adolf-Loos-Gasse]]></title>
