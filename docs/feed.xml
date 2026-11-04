@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 04 Nov 2026 18:30:37 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 19:01:46 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[37: Falschparker]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f</guid>
+      <pubDate>Wed, 04 Nov 2026 18:39:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 04 Nov 2026 18:39:00 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 04 Nov 2026 18:39:54 +0100</ext:starts_at>
+      <description>Betrieb ab Glatzgasse. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 18:39]</description>
+      <content:encoded><![CDATA[Betrieb ab Glatzgasse. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 18:39]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[74A: Signalstörung]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -19,9 +32,10 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 04 Nov 2026 18:24:52 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 04 Nov 2026 18:25:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung. [Seit 18:24]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Signalstörung.<br/>[Seit 18:24]]]></content:encoded>
+      <ext:starts_at>Wed, 04 Nov 2026 18:24:55 +0100</ext:starts_at>
+      <ext:ends_at>Wed, 04 Nov 2026 19:24:00 +0100</ext:ends_at>
+      <description>Fahrtbehinderung. [Seit 18:24]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 18:24]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[40/41: Rettungseinsatz]]></title>
@@ -47,11 +61,11 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 04 Nov 2026 18:10:00 +0100</ext:first_seen>
       <ext:starts_at>Wed, 04 Nov 2026 18:10:00 +0100</ext:starts_at>
-      <description>Kein Betrieb zwischen Joachimsthalerplatz und Penzinger Straße. [Seit 18:10]</description>
-      <content:encoded><![CDATA[Kein Betrieb zwischen Joachimsthalerplatz und Penzinger Straße.<br/>[Seit 18:10]]]></content:encoded>
+      <description>Kein Betrieb zwischen Joachimsthalerplatz und Penzinger Straße. Ersatz: Linien 10A, 48A. Grund: Fremder Verkehrsunfall im Bereich Reinlgasse / Fenzlgasse. [Seit 18:10]</description>
+      <content:encoded><![CDATA[Kein Betrieb zwischen Joachimsthalerplatz und Penzinger Straße. Ersatz: Linien 10A, 48A. Grund: Fremder Verkehrsunfall im Bereich Reinlgasse / Fenzlgasse.<br/>[Seit 18:10]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[37/38/40/41/42: Polizeieinsatz]]></title>
+      <title><![CDATA[38/40/41/42: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">63eaa763fcf61492287f36dd135515ddca0aec120210f3e2450dde0cd7280506</guid>
       <pubDate>Wed, 04 Nov 2026 17:57:00 +0100</pubDate>
@@ -60,6 +74,7 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 04 Nov 2026 18:01:16 +0100</ext:first_seen>
       <ext:starts_at>Wed, 04 Nov 2026 17:57:00 +0100</ext:starts_at>
+      <ext:ends_at>Wed, 04 Nov 2026 19:52:00 +0100</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 17:57]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 17:57]]]></content:encoded>
     </item>
@@ -73,21 +88,9 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 04 Nov 2026 18:01:00 +0100</ext:first_seen>
       <ext:starts_at>Wed, 04 Nov 2026 18:15:55 +0100</ext:starts_at>
+      <ext:ends_at>Wed, 04 Nov 2026 20:33:00 +0100</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 18:01]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 18:01]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">9ddf5d1b468f97566b0d71492d70a5743faa129c9553b8165867b8249c7b99da</guid>
-      <pubDate>Wed, 04 Nov 2026 17:03:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 04 Nov 2026 17:03:00 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 04 Nov 2026 17:03:00 +0100</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 17:03]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 17:03]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10A: Verkehrsüberlastung]]></title>
@@ -99,6 +102,7 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 04 Nov 2026 17:01:00 +0100</ext:first_seen>
       <ext:starts_at>Wed, 04 Nov 2026 17:01:00 +0100</ext:starts_at>
+      <ext:ends_at>Wed, 04 Nov 2026 19:44:00 +0100</ext:ends_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 17:01]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 17:01]]]></content:encoded>
     </item>
