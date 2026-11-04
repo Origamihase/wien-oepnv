@@ -36,6 +36,17 @@ from src.utils.wl_stop_markers import without_stop_markers
         ("Michelbeuern U AKH", "Michelbeuern AKH"),
         # A text cut inside the name keeps the place.
         ("in Richtung Floridsdorf S…", "in Richtung Floridsdorf…"),
+        # Independent check 2026-11-04: a marker in brackets goes whole (ÖBB
+        # writes every interchange so, WL once), a name before a period loses
+        # a front marker too, and a list dash glued to a name keeps no marker.
+        ("zwischen Wien Leopoldau Bahnhst (U) und Wien Hbf (U) nicht fahren.",
+         "zwischen Wien Leopoldau Bahnhst und Wien Hbf nicht fahren."),
+        ("Zugfahrten in Wien Hbf (U). Grund: Bauarbeiten.", "Zugfahrten in Wien Hbf. Grund: Bauarbeiten."),
+        ("Haltestelle: Simmering (S U)", "Haltestelle: Simmering"),
+        ("in Richtung Oper, Karlsplatz (U)", "in Richtung Oper, Karlsplatz"),
+        ("Fahrtbehinderung in Richtung Parlament, U Volkstheater. Grund: Unfall.",
+         "Fahrtbehinderung in Richtung Parlament, Volkstheater. Grund: Unfall."),
+        ("Ersatzhaltestellen: -Johnstraße U -Simmering S U", "Ersatzhaltestellen: -Johnstraße -Simmering"),
     ],
 )
 def test_a_stop_shows_without_its_marker(text: str, shown: str) -> None:
@@ -53,6 +64,8 @@ def test_a_stop_shows_without_its_marker(text: str, shown: str) -> None:
         "Kagran U 26A",  # a stop area of bus 26A, not a marker
         "Linien S 45 und S 50",
         "Matzleinsdorfer Plaz S",  # WL's typo stays (decision 2026-10-29, #2023)
+        "Plan (A) und Test (S1)",  # a bracket with more than marker letters
+        "S S",
     ],
 )
 def test_no_stop_no_change(text: str) -> None:

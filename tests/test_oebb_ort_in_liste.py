@@ -105,5 +105,5 @@ def test_the_display_never_reads_a_broken_list() -> None:
     assert "sind bzw." not in summary
     assert summary.startswith(
         "Wegen Verlängerung der Bauarbeiten sind zwischen Wien Geiselbergstraße Bahnhst und "
-        "Flughafen Wien Bahnhof bzw. Wien Hbf (U)"
+        "Flughafen Wien Bahnhof bzw. Wien Hbf"  # "(U)" off since 2026-11-04
     )

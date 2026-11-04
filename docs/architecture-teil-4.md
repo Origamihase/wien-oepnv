@@ -645,11 +645,20 @@ Text mit Zusatz schreibt, im Verzeichnis aber ohne („Tscherttegasse U“,
 „Michelbeuern-AKH U“), und eine neue Haltestelle kommt mit dem nächsten
 Stationslauf ohne Codeänderung dazu. Vor einem Namen fällt ein „U“ nur
 vor einem Wort weg, vor dem es im Verzeichnis steht („U Volkstheater“).
+Ein Zusatz in Klammern, der nur aus „S“ und „U“ besteht, fällt ganz weg,
+auch ohne Verzeichnis: ÖBB schreibt jeden Umstieg so in den Text („Wien Hbf
+(U)“, „Wien Leopoldau Bahnhst (U)“; im Titel fiel er schon vorher weg,
+`_without_transfer_markers` in `src/providers/oebb_routes.py`), WL selten
+(„Simmering (S U)“). Ebenso geht der Zusatz vor einem Namen am Satzende
+(„Parlament, U Volkstheater.“) und hinter einem Namen mit angeklebtem
+Listenstrich („-Johnstraße U“) (unabhängige Prüfung 2026-11-04).
 Kein Haltestellenzusatz und daher unverändert: ein „U“ oder „S“ hinter
 einem Wort, das keinen Haltestellennamen beendet („in beiden Richtungen
 U.“, ein von WL abgeschnittenes „U6“), ein Buchstabe mit Bindestrich oder
-Ziffer („S-Bahn“, „U6“, „S 45“, „Kagran U 26A“) und Tippfehler der Quelle
-(„Matzleinsdorfer Plaz S“, Entscheidung zu #2023).
+Ziffer („S-Bahn“, „U6“, „S 45“, „Kagran U 26A“), eine Klammer mit mehr als
+diesen Buchstaben („(S1)“) und Tippfehler der Quelle, deren Wort kein
+Name des Verzeichnisses beendet („Matzleinsdorfer Plaz S“, „Floridsorf S
+U“, Entscheidung zu #2023).
 
 Die Regel wirkt nur auf das, was der Leser sieht, ganz am Ende von
 `_format_item_content` (`src/feed_build/item_format.py`): Satzgrenzen, die

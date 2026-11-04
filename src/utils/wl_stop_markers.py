@@ -59,13 +59,26 @@ _MARKER_TOKEN_RE = re.compile(r"^(?:S|U)$")
 # ("Liechtensteinstraße - Schottentor U", "Quartier Belvedere S (Expedit)").
 _NAME_SEGMENT_SPLIT_RE = re.compile(r",|\(|\)|\s[-–]\s")
 _DIRECTORY_PREFIX_RE = re.compile(rf"(?:^|,\s*){_MARKER_RUN}\s+({_WORD})")
+# Where a name may start: not inside a word, but behind a list dash glued
+# to it ("-Johnstraße U", "-Simmering S U", WL lists of 2026).
+_NAME_START = r"(?:(?<![\w.\-])|(?<=^-)|(?<=\s-))"
 # In a text: the word, the marker run, and then no word character, no
 # hyphen and no number ("U-Bahn", "U6", "Kagran U 26A" stay).
 _TEXT_SUFFIX_RE = re.compile(
-    rf"(?P<word>(?<![\w.\-]){_WORD})(?P<marker>\s+{_MARKER_RUN})(?![\w\-]|\s*\d)"
+    rf"(?P<word>{_NAME_START}{_WORD})(?P<marker>\s+{_MARKER_RUN})(?![\w\-]|\s*\d)"
 )
 _TEXT_PREFIX_RE = re.compile(
     rf"(?<![\w.\-])(?P<marker>{_MARKER_RUN}\s+)(?P<word>{_WORD})(?![\w\-])"
+)
+# A bracket that holds only marker letters, behind a name: "Wien Hbf (U)",
+# "Wien Leopoldau Bahnhst (U)" (ÖBB texts), "Simmering (S U)" (WL). Such a
+# bracket says nothing but the interchange, so it goes whole, with the
+# space before it; the ÖBB title already drops it
+# (``providers.oebb_routes._without_transfer_markers``). Each separator is
+# either one sign with spaces or spaces alone, so a long "(S S S …" has one
+# reading only (no backtracking blow-up, CodeQL 2026-11-04).
+_BRACKET_MARKER_RE = re.compile(
+    r"(?<=[^\W_])\.?\s*\(\s*[SU](?:(?:\s*[+/,&]\s*|\s+)[SU])*\s*\)(?![\w\-])"
 )
 
 
@@ -94,7 +107,10 @@ def _marker_words() -> tuple[frozenset[str], frozenset[str]]:
                 ends.update(
                     tokens[i - 1].casefold()
                     for i, token in enumerate(tokens)
-                    if i and _MARKER_TOKEN_RE.match(token) and re.fullmatch(_WORD, tokens[i - 1])
+                    if i
+                    and _MARKER_TOKEN_RE.match(token)
+                    and not _MARKER_TOKEN_RE.match(tokens[i - 1])
+                    and re.fullmatch(_WORD, tokens[i - 1])
                 )
                 # ... and the last word of every place ("Tscherttegasse").
                 words = [w for w in tokens if not _MARKER_TOKEN_RE.match(w)]
@@ -113,17 +129,23 @@ def without_stop_markers(text: str) -> str:
 
     if not text or ("S" not in text and "U" not in text):
         return text
+    text = _BRACKET_MARKER_RE.sub(lambda m: "." if m[0].startswith(".") else "", text)
     ends, after = _marker_words()
     if not ends and not after:
         return text
 
+    def known(word: str, words: frozenset[str]) -> bool:
+        # A name at the end of a sentence carries its period: "U Volkstheater."
+        key = word.casefold()
+        return key in words or key.rstrip(".") in words
+
     def suffix(match: re.Match[str]) -> str:
-        if match["word"].casefold() in ends:
+        if known(match["word"], ends):
             return match["word"]
         return match[0]
 
     def prefix(match: re.Match[str]) -> str:
-        if match["word"].casefold() in after:
+        if known(match["word"], after):
             return match["word"]
         return match[0]
 
