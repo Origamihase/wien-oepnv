@@ -604,7 +604,7 @@ jobs:
       # ``data/feed_watch.json`` (rides this run's commit, the Health check
       # reads it as a note) and as one GitHub issue per broken rule, which
       # closes itself once the rule holds again. ``issues: write`` above
-      # exists for this step only.
+      # exists for this step and the next one.
       - name: Feed-Wächter (report only)
         id: watch
         if: steps.freshness.outputs.should_run == 'true'
@@ -615,6 +615,15 @@ jobs:
           FEED_WATCH_FETCH_EXIT: ${{ steps.fetch.outputs.exit_codes }}
           GITHUB_TOKEN: ${{ github.token }}
         run: python scripts/feed_watch.py
+
+      # IFTTT ticks again: close the issue ``ifttt-ausfall`` (src/takt_fallback.py).
+      - name: Close IFTTT outage issue
+        if: github.event_name == 'repository_dispatch'
+        continue-on-error: true
+        timeout-minutes: 1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/takt_fallback.py --close-issue
 
       # The three side steps above never block the publish, so a failure left
       # only an orange annotation in a green run. Operator decision 2026-10-28

@@ -4,7 +4,8 @@
 Called by ``.github/workflows/takt-fallback.yml``; the logic and the
 operator decision (Michael 2026-11-04) are in ``src/takt_fallback.py``.
 Never starts a run while IFTTT ticks; exit code 0 in every case it can
-handle, so a waiter that ends is never a red run.
+handle, 1 only when the check did not wait (the environment
+``takt-wartezeit`` lacks its 40-minute wait timer).
 """
 
 from __future__ import annotations

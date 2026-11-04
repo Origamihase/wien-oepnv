@@ -10,22 +10,27 @@ name: Takt-Fallback
 # schlecht. Sorge aber bitte dafür, dass der Fallback wirklich nur läuft,
 # wenn IFTTT nicht funktioniert hat. Wenn IFTTT nicht funktioniert erstelle
 # einen Issue. Wenn der Fallback auch nicht funktioniert, und der Feed nicht
-# mehr aktualisiert werden kann, mach den Health Check rot".
+# mehr aktualisiert werden kann, mach den Health Check rot." Same day:
+# "Effizienz ist mir wichtig. Das Projekt soll ressourcenschonend arbeiten."
 #
-# How: every Update cycle run on main starts one waiter (``requested``). The
-# waiter polls the Actions API once a minute and ends as soon as a newer
-# Update cycle run appears that it did not start itself (IFTTT, backup cron,
-# a manual run); that run's waiter takes over. Only when no Update cycle run
-# was created for 40 minutes does it start one, opens the issue
-# ``ifttt-ausfall`` and keeps watching (again after 40 minutes). The waiter
-# of the next IFTTT run closes the issue. A fallback run that fails starts
-# the Health check, whose check "Takt" turns red when IFTTT is silent and the
-# feed has had no new build for 80 minutes. Details: src/takt_fallback.py,
-# docs/development-teil-2.md ("Geplante Läufe").
+# How: every Update cycle run on main starts one check (``requested``).
+# GitHub holds it back for 40 minutes with the wait timer of the environment
+# ``takt-wartezeit`` (Settings → Environments; Wait timer 40 minutes): no
+# runner runs during the wait and the wait is not billed. The check of the
+# next Update cycle run cancels the waiting one (``cancel-in-progress``), so
+# while IFTTT ticks every 30 minutes no check reaches a runner. A check that
+# does run found no Update cycle run for 40 minutes: it starts one, opens the
+# issue ``ifttt-ausfall`` and starts its successor (the next check in 40
+# minutes). The next IFTTT run closes the issue (step in update-cycle.yml).
+# A fallback run that fails starts the Health check, whose check "Takt" turns
+# red when IFTTT is silent and the feed has had no new build for 80 minutes.
+# Details: src/takt_fallback.py, docs/development-teil-2.md ("Geplante
+# Läufe").
 #
-# A waiter lives at most 5.5 hours and then starts its successor; the
-# schedule below restarts the watch should the chain ever break (GitHub
-# delivers it late, which is fine for a restart).
+# The schedule below restarts the watch should the chain ever break (GitHub
+# delivers it late, which is fine for a restart). It runs in a lane of its
+# own so that it never cancels a waiting check, and acts only when no check
+# is waiting.
 
 on:
   workflow_run:
@@ -39,18 +44,24 @@ on:
 permissions:
   contents: read
 
-# One waiter at a time: a new one waits until the running one has ended
-# (which it does within a minute of the new Update cycle run).
+# One waiting check at a time: the check of a newer Update cycle run
+# replaces it. The schedule has its own lane (see above).
 concurrency:
-  group: takt-fallback
-  cancel-in-progress: false
+  group: ${{ github.event_name == 'schedule' && 'takt-fallback-zeitplan' || 'takt-fallback' }}
+  cancel-in-progress: true
 
 jobs:
-  wait:
-    name: Auf den nächsten Tick warten
+  check:
+    name: Nach 40 Minuten prüfen
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 345
+    # The 40-minute wait happens before the job starts (wait timer of the
+    # environment), without a runner. ``deployment: false``: no deployment
+    # record per tick.
+    environment:
+      name: takt-wartezeit
+      deployment: false
+    timeout-minutes: 5
     permissions:
       contents: read
       # Start update-cycle.yml, health-check.yml and its own successor
@@ -86,7 +97,13 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/install-deps
 
-      - name: Wait for the next tick, step in when IFTTT is silent
+      - name: Step in when IFTTT has been silent for 40 minutes
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: python scripts/takt_fallback.py
+          SCHEDULED: ${{ github.event_name == 'schedule' }}
+        run: |
+          if [ "$SCHEDULED" = "true" ]; then
+            python scripts/takt_fallback.py --schedule
+          else
+            python scripts/takt_fallback.py
+          fi
