@@ -70,7 +70,7 @@ def test_both_directions_of_40a_show_their_new_stop() -> None:
     text = _short_text("40A: Bauernfeldplatz", NOTICE_40A)
     assert text.startswith(
         "Richtung Döblinger Friedhof, Felix-Dahn-Straße: → Liechtensteinstraße 38. "
-        "Richtung Schottentor U: → Liechtensteinstraße 39."
+        "Richtung Schottentor: → Liechtensteinstraße 39."
     )
 
 

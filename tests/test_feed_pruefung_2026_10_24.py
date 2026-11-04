@@ -99,7 +99,7 @@ def test_line_set_as_heading_leads_with_its_measure() -> None:
     assert "folgenden" not in body
     assert body.startswith(
         "Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und "
-        "Börse über Schwedenplatz U; Linie 1: Umleitung"
+        "Börse über Schwedenplatz; Linie 1: Umleitung"
     )
 
 
@@ -108,7 +108,7 @@ def test_label_with_days_and_direction_leads_and_request_goes() -> None:
     assert "Maßnahmen in Kraft" not in body
     assert "Beachten Sie" not in body
     assert body.startswith(
-        "Montag-Freitag, Linie 80A in Richtung Schlachthausgasse U: Umleitung ab "
+        "Montag-Freitag, Linie 80A in Richtung Schlachthausgasse: Umleitung ab "
         "Praterstern / Franzensbrückenstraße"
     )
 
@@ -121,7 +121,8 @@ def test_direction_with_abbreviation_is_part_of_the_label() -> None:
         "Am Stadtpark.</p>"
     )
     body = _render("74A: Veranstaltung", html)
-    assert body.startswith("Linie 74A in Richtung St. Marx S: Umleitung ab Weiskirchnerstraße")
+    # The stop shows without its S-Bahn marker since 2026-11-04.
+    assert body.startswith("Linie 74A in Richtung St. Marx: Umleitung ab Weiskirchnerstraße")
 
 
 def test_a_ticker_that_opens_with_its_line_keeps_its_shape() -> None:
@@ -148,8 +149,8 @@ def test_cut_does_not_leave_a_bare_line_label() -> None:
 def test_stop_moved_one_way_and_closed_the_other_names_both_directions() -> None:
     body = _render("56B/56A/N62: Strampfergasse", _STRAMPFERGASSE_HTML)
     assert body.startswith(
-        "Richtung Bhf. Atzgersdorf S: Hermesstraße nach Strampfergasse → etwa 100 "
-        "Meter in Richtung Dr.-Schober-Straße. Richtung Hietzing U: aufgelassen."
+        "Richtung Bhf. Atzgersdorf: Hermesstraße nach Strampfergasse → etwa 100 "
+        "Meter in Richtung Dr.-Schober-Straße. Richtung Hietzing: aufgelassen."
     )
 
 

@@ -88,7 +88,9 @@ class TestSentenceSplitGermanAbbreviation:
         out = _format(raw)
         # The full text fits in 180 chars so both phrases survive — and
         # the "U." between "Karlsplatz" and "Grund" must not split.
-        assert "Karlsplatz U." in out
+        # Since 2026-11-04 the stop shows without its U-Bahn marker
+        # (``without_stop_markers``): "Karlsplatz U." reads "Karlsplatz.".
+        assert "Karlsplatz. Grund: Rettungseinsatz" in out
         assert "Grund: Rettungseinsatz" in out
 
     def test_real_sentence_boundary_still_splits(self) -> None:

@@ -13,6 +13,7 @@ from typing import Any
 from ..feed_types import FeedItem
 from ..feed import config as feed_config
 from ..utils.text import html_to_text, repair_glued_words, repair_saint_abbreviation
+from ..utils.wl_stop_markers import without_stop_markers
 
 from .base import (
     _OEBB_SOURCE, _SENTENCE_SPLIT_RE, _VIENNA_TZ, _WHITESPACE_CLEANUP_RE, _WHITESPACE_RE, _sanitize_text,
@@ -471,6 +472,13 @@ def _format_item_content(
     title_out, summary = _finish_reason_title(
         title_out, summary, uncut_summary, split=split_reason and _is_wl_ticker(it)
     )
+    # A stop shows without WL's S-/U-Bahn marker: "N71: Rennweg S" reads
+    # "N71: Rennweg" (operator decision 2026-11-04, ``without_stop_markers``).
+    # Only here, on what the reader sees: every rule above (sentence split,
+    # the 180-character cut, the title comparisons) still reads WL's names,
+    # so the marker changes no sentence choice and no cut, only the name.
+    title_out = without_stop_markers(title_out)
+    summary = without_stop_markers(summary)
     title_cdata = _cdata_content(title_out)
 
     desc_text_truncated, desc_html = _compose_description(summary, time_line)

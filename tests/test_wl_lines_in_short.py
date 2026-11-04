@@ -66,7 +66,7 @@ GAS = _wl(
 
 def test_the_gas_leak_shows_all_three_detours() -> None:
     assert _summary(GAS, "2026-10-11T11:00:00+02:00").startswith(
-        "Umleitungen: 36B Berzeliusgasse – Brünner Straße S; 30A Berzeliusgasse – "
+        "Umleitungen: 36B Berzeliusgasse – Brünner Straße; 30A Berzeliusgasse – "
         "Gschweidlgasse; 31A Berzeliusgasse – Großjedlersdorf, Jochbergengasse."
     )
 
@@ -109,8 +109,8 @@ def test_an_abbreviation_belongs_to_the_place() -> None:
         "Voraussichtliche Dauer: Nicht absehbar. Grund: Feuerwehreinsatz im Bereich Muthgasse 26.",
     )
     assert _summary(item, "2026-08-04T17:21:00+02:00").startswith(
-        "Umleitungen: 5B Bhf. Heiligenstadt S U – Heiligenstädter Brücke; 11A Bahnhof "
-        "Heiligenstadt S U – Dr.-Adolf-Schärf-Heim."
+        "Umleitungen: 5B Bhf. Heiligenstadt – Heiligenstädter Brücke; 11A Bahnhof "
+        "Heiligenstadt – Dr.-Adolf-Schärf-Heim."
     )
 
 
@@ -125,8 +125,8 @@ def test_lines_of_different_measures_name_theirs() -> None:
         "Bereich Brünner Straße 51.",
     )
     assert _summary(item, "2026-07-21T07:57:00+02:00").startswith(
-        "25: Betrieb nur Aspern, Oberdorfstraße – Kagran U; 26: Betrieb nur Hausfeldstraße U – "
-        "Josef-Baumann-Gasse; 27: Betrieb nur Aspern Nord S U – Josef-Baumann-Gasse; 30: Kein "
+        "25: Betrieb nur Aspern, Oberdorfstraße – Kagran; 26: Betrieb nur Hausfeldstraße – "
+        "Josef-Baumann-Gasse; 27: Betrieb nur Aspern Nord – Josef-Baumann-Gasse; 30: Kein "
         "Betrieb."
     )
 
@@ -142,9 +142,11 @@ def test_lines_that_do_not_fit_give_way_whole() -> None:
         "und 44 aus. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Schwarzspanierstraße.",
     )
     summary = _summary(item, "2026-10-11T18:22:00+02:00")
+    # The stops show without their U-Bahn marker (2026-11-04); the cut
+    # still measures WL's names.
     assert summary.startswith(
-        "Betrieb nur: 37 Hohe Warte – Nußdorfer Straße U; 38 Grinzing – Spitalgasse; 40 Gersthof, "
-        "Herbeckstraße – Währinger Straße, Volksoper U …"
+        "Betrieb nur: 37 Hohe Warte – Nußdorfer Straße; 38 Grinzing – Spitalgasse; 40 Gersthof, "
+        "Herbeckstraße – Währinger Straße, Volksoper …"
     )
 
 
