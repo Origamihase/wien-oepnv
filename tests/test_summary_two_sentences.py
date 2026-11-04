@@ -70,7 +70,9 @@ class TestSummaryKeepsSecondSentence:
             "Karlsplatz U. Grund: Rettungseinsatz."
         )
         out = self._format(raw)
-        assert "Karlsplatz U." in out
+        # Since 2026-11-04 the stop shows without its U-Bahn marker
+        # (``without_stop_markers``): "Karlsplatz U." reads "Karlsplatz.".
+        assert "Karlsplatz. Grund: Rettungseinsatz" in out
         assert "Grund: Rettungseinsatz." in out
 
     def test_short_first_sentence_includes_second(self) -> None:

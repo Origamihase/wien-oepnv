@@ -258,7 +258,7 @@ def test_the_budget_is_wired_into_the_build(monkeypatch: pytest.MonkeyPatch, tmp
     # tickers in their original order.
     assert titles[:3] == [
         "25: Ersatzbus ab Josef-Baumann-Gasse",
-        "12A: Betrieb ab Johnstraße U",
+        "12A: Betrieb ab Johnstraße",  # stop marker off (2026-11-04)
         "N49: Betrieb ab Schweglerstraße",
     ], titles
     assert all("Demonstration" in t for t in titles[3:6]), titles

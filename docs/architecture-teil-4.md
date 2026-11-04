@@ -621,4 +621,46 @@ in `src/utils/stats.py`), damit ein Ort bei einer Auswertung nach Orten
 nicht zweimal zählt. Das Dashboard zeigt heute keine Orte (siehe §6), seine
 Ausgabe bleibt daher gleich.
 
+### Haltestellen ohne „S“ und „U“ (seit 2026-11-04)
+
+> **Entscheidung 2026-11-04 (Michael):** „Der Name „Rennweg S“ gefällt mir
+> nicht. „Rennweg“ ohne S würde mir besser gefallen. … Gibt es weitere
+> Bahnhöfe mit einem S oder einem U? Dies würde mich auch in den Meldungen
+> stören.“
+
+Die Wiener Linien hängen einer Haltestelle mit Umstieg zur S-Bahn oder
+U-Bahn ein einzelnes „S“, „U“ oder „S U“ an („Rennweg S“, „Schottentor U“,
+„Praterstern S U“, einmal davor: „Parlament, U Volkstheater“), und so
+stehen die Namen in ihren Meldungen. Der Feed zeigt den Ort ohne diesen
+Zusatz, im Titel und im Text, deutsch und englisch: „N71: Rennweg“,
+„Fahrtbehinderung in Richtung Floridsdorf“, „zwischen Kagran und
+Praterstern“ (`without_stop_markers` in `src/utils/wl_stop_markers.py`).
+
+Die Regel ist strukturell, keine Wortliste: Ein „S“ oder „U“ fällt nur
+hinter einem Wort weg, mit dem im WL-Haltestellenverzeichnis ein Name
+endet (`data/wienerlinien-ogd-haltepunkte.csv`, Spalte `StopText`, und
+`data/wienerlinien-ogd-haltestellen.csv`, Spalte `PlatformText`; beide
+aktualisiert der wöchentliche Stationslauf). So gehen auch Namen, die WL im
+Text mit Zusatz schreibt, im Verzeichnis aber ohne („Tscherttegasse U“,
+„Michelbeuern-AKH U“), und eine neue Haltestelle kommt mit dem nächsten
+Stationslauf ohne Codeänderung dazu. Vor einem Namen fällt ein „U“ nur
+vor einem Wort weg, vor dem es im Verzeichnis steht („U Volkstheater“).
+Kein Haltestellenzusatz und daher unverändert: ein „U“ oder „S“ hinter
+einem Wort, das keinen Haltestellennamen beendet („in beiden Richtungen
+U.“, ein von WL abgeschnittenes „U6“), ein Buchstabe mit Bindestrich oder
+Ziffer („S-Bahn“, „U6“, „S 45“, „Kagran U 26A“) und Tippfehler der Quelle
+(„Matzleinsdorfer Plaz S“, Entscheidung zu #2023).
+
+Die Regel wirkt nur auf das, was der Leser sieht, ganz am Ende von
+`_format_item_content` (`src/feed_build/item_format.py`): Satzgrenzen, die
+180-Zeichen-Grenze, der Vergleich von Titel und Text („Haltestelle:“, das
+nur den Titel wiederholt), das Zusammenführen von Meldungen, die
+Baustellen-Zwillinge und der GeoRSS-Punkt lesen weiter die Namen, wie WL
+sie schickt. Ohne Zusatz käme sonst hinter „Donauspital“ eine Satzgrenze,
+wo „Donauspital U.“ keine war, und eine Meldung verlöre ihren Grund und
+ihr voraussichtliches Ende (im Nachbau 12 Texte). Der Zusatz ändert so
+keine Satzwahl und keinen Schnitt, nur den Namen.
+`tests/test_wl_stop_markers.py` prüft jede Haltestelle des Verzeichnisses
+mit Zusatz, also auch nach jeder Aktualisierung in CI.
+
 Weiter in [Teil 5](architecture-teil-5.md).

@@ -170,7 +170,7 @@ def test_block_ends_are_marked_only_on_request() -> None:
 def test_stop_closure_reads_as_sentences() -> None:
     _, desc = _format("N31: Stammersdorf ersatzlos aufgelassen", _N31)
     assert desc.startswith(
-        "Haltestellenauflassung der Linie N31 in Richtung Schwedenplatz U. "
+        "Haltestellenauflassung der Linie N31 in Richtung Schwedenplatz. "
         "Haltestelle: Stammersdorf. Von: Brünner Straße gegenüber 262. Ersatzlos aufgelassen."
     )
     # The dates are the time line's job.
@@ -228,8 +228,8 @@ def test_single_word_heading_outside_the_category_list_is_dropped() -> None:
         "Montag, 14. September 2026 bis Ende 2026.</p>",
     )
     assert desc.startswith(
-        "Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau U nur in "
-        "Richtung Siebenhirten U ein. Sie erreichen die Station Neue Donau mit der U6 von "
+        "Wegen Sanierung des Bahnsteigs hält die Linie U6 die Station Neue Donau nur in "
+        "Richtung Siebenhirten ein. Sie erreichen die Station Neue Donau mit der U6 von "
         "Floridsdorf."
     )
 
@@ -297,7 +297,7 @@ def test_a_label_is_never_left_dangling() -> None:
     )
     assert desc.startswith(
         "Wegen einer Demonstration kommt es zu Verkehrsmaßnahmen. Linie 43: Betrieb nur "
-        "zwischen Dornbach und Alser Straße U. ["
+        "zwischen Dornbach und Alser Straße. ["
     )
 
 
@@ -388,7 +388,7 @@ def test_relocation_in_both_directions_puts_each_place_before_its_direction() ->
     )
     assert desc.startswith(
         "Am Spitz 1 → Am Spitz, Gleiskörper. Haltestellenverlegung der Linie 34A in Richtung "
-        "Floridsdorf S U. Grund: Gleisbau. Am Spitz 16 → Am Spitz, Gleiskörper."
+        "Floridsdorf. Grund: Gleisbau. Am Spitz 16 → Am Spitz, Gleiskörper."
     )
     assert "Haltestelle:" not in desc
 
