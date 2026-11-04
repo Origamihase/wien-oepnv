@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261104-0019-F01, I20260925-0011, I20261104-0018, I20260909-0007, I20260922-0032, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20261104-0018, I20261104-0020, I20260909-0007, I20260922-0032, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R1876-101, R1880-101, R1884-101, R1882-101, R1883-101, R1881-101, R1875-101, R103-136, R101-136, R100-136, R130-136, R118-136, R45-136, R119-136, R102-136, R19-136, R117-136, R116-136, R115-136, R3886-480, R1448-412, R1474-412, R401-101, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R1876-101, R1880-101, R1884-101, R1882-101, R1883-101, R1881-101, R1875-101, R102-136, R100-136, R19-136, R130-136, R118-136, R45-136, R119-136, R101-136, R117-136, R116-136, R115-136, R103-136, R3886-480, R1448-412, R1474-412, R401-101, R2373-125, R2373-126, R2379-627, R2380-627, R2345-127, R2359-125, R2343-626, R2343-125, R2378-627, R2373-127, R2372-125, R2371-125, R2370-125, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -262,51 +262,49 @@
     "title": "35A: Betriebsstörung"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
     "attributes": {
      "relatedLineTypes": {
-      "44": "ptTram"
+      "59A": "ptBusCity"
      }
     },
-    "description": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 44: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 44: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "44: Schadhafter PKW"
+       "descriptionHtml": "<p>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "59A: Verkehrsüberlastung"
       }
      }
     ],
-    "location": "Ottakringer Straße 167",
-    "name": "I20261104-0019-F01",
+    "name": "I20261104-0020",
     "owner": "WL",
-    "parentName": "I20261104-0019",
+    "parentName": "I20261104-0020",
     "priority": "1",
-    "reasonId": 18,
-    "reasonName": "Schadhafter PKW",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "44"
+     "59A"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 144,
-      "lineName": "44",
-      "vehicleType": "ptTram"
+      "lineId": 459,
+      "lineName": "59A",
+      "vehicleType": "ptBusCity"
      }
     ],
-    "status": "resolved",
+    "status": "active",
     "time": {
-     "created": "2026-11-04T14:22:00.000+0100",
-     "end": "2026-11-04T14:30:00.000+0100",
-     "lastUpdate": "2026-11-04T14:30:00.000+0100",
-     "resume": "2026-11-04T14:30:00.000+0100",
-     "start": "2026-11-04T14:18:00.000+0100"
+     "created": "2026-11-04T14:39:00.000+0100",
+     "lastUpdate": "2026-11-04T14:39:00.000+0100",
+     "resume": "2026-11-04T14:39:00.000+0100",
+     "start": "2026-11-04T14:39:00.000+0100"
     },
-    "title": "44: Schadhafter PKW"
+    "title": "59A: Verkehrsüberlastung"
    },
    {
     "alertCause": "undefined alert cause",
