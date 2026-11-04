@@ -74,9 +74,11 @@ _TEXT_PREFIX_RE = re.compile(
 # "Wien Leopoldau Bahnhst (U)" (ÖBB texts), "Simmering (S U)" (WL). Such a
 # bracket says nothing but the interchange, so it goes whole, with the
 # space before it; the ÖBB title already drops it
-# (``providers.oebb_routes._without_transfer_markers``).
+# (``providers.oebb_routes._without_transfer_markers``). Each separator is
+# either one sign with spaces or spaces alone, so a long "(S S S …" has one
+# reading only (no backtracking blow-up, CodeQL 2026-11-04).
 _BRACKET_MARKER_RE = re.compile(
-    r"(?<=[^\W_])\.?\s*\(\s*[SU](?:\s*[+/,&]?\s*[SU])*\s*\)(?![\w\-])"
+    r"(?<=[^\W_])\.?\s*\(\s*[SU](?:(?:\s*[+/,&]\s*|\s+)[SU])*\s*\)(?![\w\-])"
 )
 
 
