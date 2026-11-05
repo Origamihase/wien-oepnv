@@ -22,6 +22,7 @@ from src.ki_waechter.inputs import (
     _n,
     _vienna,
     free_text,
+    line_keys,
     normalize,
     visible,
 )
@@ -174,6 +175,9 @@ def _check_one(raw: Mapping[str, Any], prep: Prepared, items: Mapping[int, FeedI
         if not isinstance(nr2, int) or nr2 not in items or nr2 == nr:
             return "F1 braucht eine zweite, andere Meldung"
         finding.nr2 = nr2
+        if line_keys(item.title) != line_keys(items[nr2].title):
+            # Two lines one incident hits are two items by the feed's rules (run 306, 05.11.2026).
+            return f"Meldung {nr} und {nr2} nennen verschiedene Linien; ein F1 braucht dieselben"
         finding.feed_zitat2 = normalize(str(raw.get("feed_zitat2") or ""))
         if not _contains(_item_text(items[nr2], "DE"), finding.feed_zitat2):
             return f"Zitat der zweiten Meldung steht nicht wörtlich in Meldung {nr2}"

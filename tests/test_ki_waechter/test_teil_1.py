@@ -69,6 +69,8 @@ def test_a_verbatim_quote_counts(prep: kw.Prepared) -> None:
         ({"nr": 1, "klasse": "F5", "feed": "DE", "feed_zitat": "Bu"}, "nicht wörtlich"),
         ({"nr": 1, "klasse": "F4", "feed": "EN", "feed_zitat": "Construction works"}, "nur für den deutschen"),
         ({"nr": 1, "klasse": "F5", "feed": "DE", "feed_zitat": "Busse halten …"}, "Kürzung"),
+        ({"nr": 1, "klasse": "F1", "feed": "DE", "feed_zitat": "Busse halten", "nr2": 2, "feed_zitat2": "Streckensperre"},
+         "verschiedene Linien"),
     ],
 )
 def test_an_unproven_finding_is_rejected(prep: kw.Prepared, finding: dict[str, object], reason: str) -> None:
@@ -219,7 +221,7 @@ def test_every_item_text_of_24_hours_is_one_item(tmp_path: Path) -> None:
     assert [(i.title, i.versions, i.variant, i.variants) for i in prep.items] == [
         ("40A: Bauarbeiten", [1], 1, 2),
         ("40A: Bauarbeiten", [2, 3], 2, 2),
-        ("13A: Falschparker", [2], 1, 1),
+        ("40A: Falschparker", [2], 1, 1),
     ]
     assert kw.together(prep, prep.items[0]) == []
     assert kw.together(prep, prep.items[2]) == [2]
@@ -228,7 +230,7 @@ def test_every_item_text_of_24_hours_is_one_item(tmp_path: Path) -> None:
     assert "3 Fassungen des Feeds, gebaut 27.10.2026 08:00 bis 27.10.2026 16:00 Wiener Zeit" in text
     assert "Textstand 2 von 2 dieser Meldung" in text
     # Each simultaneous item with the line of its title (05.11.2026), none as „keine andere“.
-    assert "Gleichzeitig im Feed: keine andere." in text and "Gleichzeitig im Feed: 3 (13A)." in text
+    assert "Gleichzeitig im Feed: keine andere." in text and "Gleichzeitig im Feed: 3 (40A)." in text
     assert "Gleichzeitig im Feed: 2 (40A)." in text
 
 

@@ -93,7 +93,7 @@ def _history(root: Path) -> None:
     _write_repo(root)
     a40 = ("40A: Bauarbeiten", "Busse halten Liechtensteinstraße 39. [Heute]", "g1")
     a40b = ("40A: Bauarbeiten", "Busse halten Liechtensteinstraße 39. [Seit 14:00]", "g1")
-    b13 = ("13A: Falschparker", "Busse halten Liechtensteinstraße 39 nicht.", "g9")
+    b13 = ("40A: Falschparker", "Busse halten Liechtensteinstraße 39 nicht.", "g9")
     old = ("U6: Alt", "Text von vorgestern.", "g0")
     steps = [
         ("2026-10-26T10:00:00+01:00", [old], "Mon, 26 Oct 2026 10:00:00 +0100"),
