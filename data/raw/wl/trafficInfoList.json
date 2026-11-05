@@ -13,7 +13,7 @@
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R1884-101, R101-136, R119-136, R100-136, R45-136, R115-136, R103-136, R102-136, R19-136, R130-136, R118-136, R117-136, R116-136, R293-474, R401-101, R318-437, R2379-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2380-627, R2345-127, R3886-480, R1448-412, R1474-412, R2558-125, R1974-466, R1272-440, R1301-440, R663-413, R662-413, R548-102, R588-102, R1363-102, R1362-102, R458-112, R382-112, R383-112, R381-112, R380-112, R379-112, R274-102, R275-102, R1365-102, R1364-102, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1881-101, R1880-101, R1876-101, R1875-101, R1883-101, R1884-101, R1882-101, R115-136, R103-136, R102-136, R119-136, R100-136, R101-136, R45-136, R19-136, R130-136, R118-136, R117-136, R116-136, R318-437, R401-101, R293-474, R2378-627, R1448-412, R1474-412, R3886-480, R2343-626, R2343-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2558-125, R1974-466, R663-413, R662-413, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -423,7 +423,7 @@
      100
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-03T00:00:14.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
@@ -446,7 +446,7 @@
      101
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-03T00:00:14.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
@@ -469,7 +469,7 @@
      102
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-03T00:00:14.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
@@ -492,7 +492,7 @@
      103
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-03T00:00:14.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
@@ -515,7 +515,7 @@
      115
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-03T00:00:14.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
@@ -538,7 +538,7 @@
      116
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-03T00:00:14.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
@@ -561,7 +561,7 @@
      117
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-03T00:00:14.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
@@ -584,7 +584,7 @@
      118
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-03T00:00:14.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
@@ -607,33 +607,10 @@
      119
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-03T00:00:14.000+0100"
     },
     "title": "Züge halten in\nSchleife"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bauarbeiten\nBusse halten Liechtensteinstraße 38",
-    "name": "R1272-440",
-    "owner": "WL",
-    "parentName": "R1272-440",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "40A"
-    ],
-    "relatedStops": [
-     1272
-    ],
-    "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
-     "start": "2026-11-05T04:45:17.000+0100"
-    },
-    "title": "Bauarbeiten\nBusse halten Liechtensteinstraße 38"
    },
    {
     "alertCause": "undefined alert cause",
@@ -653,125 +630,10 @@
      130
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-03T00:00:14.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bauarbeiten\nBusse halten Liechtensteinstraße 39",
-    "name": "R1301-440",
-    "owner": "WL",
-    "parentName": "R1301-440",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "40A"
-    ],
-    "relatedStops": [
-     1301
-    ],
-    "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
-     "start": "2026-11-05T04:45:17.000+0100"
-    },
-    "title": "Bauarbeiten\nBusse halten Liechtensteinstraße 39"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1362-102",
-    "owner": "WL",
-    "parentName": "R1362-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     1362
-    ],
-    "time": {
-     "end": "2026-11-05T23:59:00.000+0100",
-     "start": "2026-11-05T23:00:05.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1363-102",
-    "owner": "WL",
-    "parentName": "R1363-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     1363
-    ],
-    "time": {
-     "end": "2026-11-05T23:59:00.000+0100",
-     "start": "2026-11-05T23:00:05.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1364-102",
-    "owner": "WL",
-    "parentName": "R1364-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     1364
-    ],
-    "time": {
-     "end": "2026-11-05T23:59:00.000+0100",
-     "start": "2026-11-05T23:00:05.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1365-102",
-    "owner": "WL",
-    "parentName": "R1365-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     1365
-    ],
-    "time": {
-     "end": "2026-11-05T23:59:00.000+0100",
-     "start": "2026-11-05T23:00:05.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -791,7 +653,7 @@
      1448
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-05T00:00:28.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Johnstraße U "
@@ -814,7 +676,7 @@
      1474
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-05T00:00:28.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße 19-21"
@@ -837,7 +699,7 @@
      1875
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-03T00:00:13.000+0100"
     },
     "title": "Gleisbauarbeiten\nKein Betrieb"
@@ -860,7 +722,7 @@
      1876
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-03T00:00:13.000+0100"
     },
     "title": "Gleisbauarbeiten\nKein Betrieb"
@@ -883,7 +745,7 @@
      1880
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-03T00:00:13.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Knöllgasse"
@@ -906,7 +768,7 @@
      1881
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-03T00:00:13.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Knöllgasse"
@@ -929,7 +791,7 @@
      1882
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-03T00:00:13.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Knöllgasse"
@@ -952,7 +814,7 @@
      1883
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-03T00:00:13.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Knöllgasse"
@@ -975,7 +837,7 @@
      1884
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-03T00:00:13.000+0100"
     },
     "title": "Gleisbauarbeiten\nZüge halten Quellenstraße 156 (Linie 6)"
@@ -998,7 +860,7 @@
      19
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-03T00:00:14.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
@@ -1044,7 +906,7 @@
      2343
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-05T00:00:28.000+0100"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
@@ -1067,7 +929,7 @@
      2343
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-05T00:00:28.000+0100"
     },
     "title": "Ersatzbus\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße"
@@ -1090,7 +952,7 @@
      2345
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-05T00:00:28.000+0100"
     },
     "title": "Züge halten bei\nLinie 31"
@@ -1113,7 +975,7 @@
      2359
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-05T00:00:28.000+0100"
     },
     "title": "Ersatzbus 26E\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße"
@@ -1136,7 +998,7 @@
      2370
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-05T00:00:28.000+0100"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
@@ -1159,7 +1021,7 @@
      2371
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-05T00:00:28.000+0100"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
@@ -1182,7 +1044,7 @@
      2372
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-05T00:00:28.000+0100"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
@@ -1205,7 +1067,7 @@
      2373
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-05T00:00:28.000+0100"
     },
     "title": "Züge halten\nDonaufelder Straße 175-177"
@@ -1228,7 +1090,7 @@
      2373
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-05T00:00:28.000+0100"
     },
     "title": "Züge halten in\nTokiostraße"
@@ -1251,7 +1113,7 @@
      2373
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-05T00:00:28.000+0100"
     },
     "title": "Linie 25 in\nTokiostraße benützen"
@@ -1274,7 +1136,7 @@
      2378
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-05T00:00:28.000+0100"
     },
     "title": "Busse halten\nSatzingerweg 41"
@@ -1297,7 +1159,7 @@
      2379
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-05T00:00:28.000+0100"
     },
     "title": "Busse halten\nBessemerstraße 1-3"
@@ -1320,7 +1182,7 @@
      2380
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-05T00:00:28.000+0100"
     },
     "title": "Busse halten\nHoßplatz 11"
@@ -1343,56 +1205,10 @@
      2558
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-05T00:00:29.000+0100"
     },
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R274-102",
-    "owner": "WL",
-    "parentName": "R274-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     274
-    ],
-    "time": {
-     "end": "2026-11-05T23:59:00.000+0100",
-     "start": "2026-11-05T23:00:05.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R275-102",
-    "owner": "WL",
-    "parentName": "R275-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     275
-    ],
-    "time": {
-     "end": "2026-11-05T23:59:00.000+0100",
-     "start": "2026-11-05T23:00:05.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1412,7 +1228,7 @@
      293
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-05T00:00:27.000+0100"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
@@ -1435,125 +1251,10 @@
      318
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-05T00:00:27.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R379-112",
-    "owner": "WL",
-    "parentName": "R379-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     379
-    ],
-    "time": {
-     "end": "2026-11-05T23:59:00.000+0100",
-     "start": "2026-11-05T23:00:05.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R380-112",
-    "owner": "WL",
-    "parentName": "R380-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     380
-    ],
-    "time": {
-     "end": "2026-11-05T23:59:00.000+0100",
-     "start": "2026-11-05T23:00:05.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R381-112",
-    "owner": "WL",
-    "parentName": "R381-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     381
-    ],
-    "time": {
-     "end": "2026-11-05T23:59:00.000+0100",
-     "start": "2026-11-05T23:00:05.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R382-112",
-    "owner": "WL",
-    "parentName": "R382-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     382
-    ],
-    "time": {
-     "end": "2026-11-05T23:59:00.000+0100",
-     "start": "2026-11-05T23:00:05.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R383-112",
-    "owner": "WL",
-    "parentName": "R383-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     383
-    ],
-    "time": {
-     "end": "2026-11-05T23:59:00.000+0100",
-     "start": "2026-11-05T23:00:05.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1573,7 +1274,7 @@
      3886
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-05T00:00:28.000+0100"
     },
     "title": "Bauarbeiten\nBetrieb ab Vivariumstraße 2"
@@ -1596,7 +1297,7 @@
      401
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-05T00:00:27.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
@@ -1619,79 +1320,10 @@
      45
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T23:59:59.000+0100",
      "start": "2026-11-03T00:00:14.000+0100"
     },
     "title": "Züge halten\nWipplingerstr 39"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R458-112",
-    "owner": "WL",
-    "parentName": "R458-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     458
-    ],
-    "time": {
-     "end": "2026-11-05T23:59:00.000+0100",
-     "start": "2026-11-05T23:00:05.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R548-102",
-    "owner": "WL",
-    "parentName": "R548-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     548
-    ],
-    "time": {
-     "end": "2026-11-05T23:59:00.000+0100",
-     "start": "2026-11-05T23:00:03.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R588-102",
-    "owner": "WL",
-    "parentName": "R588-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     588
-    ],
-    "time": {
-     "end": "2026-11-05T23:59:00.000+0100",
-     "start": "2026-11-05T23:00:03.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1711,7 +1343,7 @@
      662
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T01:30:00.000+0100",
      "start": "2026-11-05T20:10:19.000+0100"
     },
     "title": "Wasserrohrbruch\nUmleitung über Josefstädter Straße"
@@ -1734,7 +1366,7 @@
      663
     ],
     "time": {
-     "end": "2026-11-05T23:59:59.000+0100",
+     "end": "2026-11-06T01:30:00.000+0100",
      "start": "2026-11-05T19:34:15.000+0100"
     },
     "title": "Wasserrohrbruch\nBetrieb ab Neubaugasse, Burggasse"

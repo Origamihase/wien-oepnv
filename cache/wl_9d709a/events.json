@@ -668,7 +668,7 @@
     "guid": "841dbfcb84e5d0e577c206ee51d7dc0f582e9a3a807869fcbdb3e7654ad99643",
     "pubDate": "2026-11-05T00:00:28+01:00",
     "starts_at": "2026-11-05T00:00:28+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=12A|D=2026-11-05|TK=betrieb ab johnstrasse u"
   },
   {
@@ -680,7 +680,7 @@
     "guid": "ca51ff9a0bc16a53883dfb140775b92521f7650658e94d4729934cdb43721549",
     "pubDate": "2026-11-05T00:00:28+01:00",
     "starts_at": "2026-11-05T00:00:28+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=12A|D=2026-11-05|TK=betrieb ab schweglerstrasse 19 21"
   },
   {
@@ -698,18 +698,6 @@
       "I20261105-0053"
     ],
     "_incident_start": "2026-11-05T22:57:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "97adf6c22e3757c40295c7b33026892a5b076c7957ec8e36dd1f384fc092607a",
-    "pubDate": "2026-11-05T23:00:05+01:00",
-    "starts_at": "2026-11-05T23:00:05+01:00",
-    "ends_at": "2026-11-05T23:59:00+01:00",
-    "_identity": "wl|störung|L=12|D=2026-11-05|TK=fahrtbehinderung verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
@@ -736,7 +724,7 @@
     "guid": "a20b46492619e91d60711b031fb05376558d5092611f63954256f79d6134986b",
     "pubDate": "2026-11-05T20:10:19+01:00",
     "starts_at": "2026-11-05T20:10:19+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T01:30:00+01:00",
     "_identity": "wl|störung|L=13A|D=2026-11-05|TK=umleitung"
   },
   {
@@ -748,7 +736,7 @@
     "guid": "425523dae3972731251dc4671a481146caf233534f86b85323eb52dc0ef029f4",
     "pubDate": "2026-11-05T19:34:15+01:00",
     "starts_at": "2026-11-05T19:34:15+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T01:30:00+01:00",
     "_identity": "wl|störung|L=13A|D=2026-11-05|TK=wasserrohrbruch betrieb ab neubaugasse burggasse"
   },
   {
@@ -788,7 +776,7 @@
     "guid": "722cc49eaf4e8ccbbfe11eab494c610693f50dbe6938f2a0c361d11a120d69cf",
     "pubDate": "2026-11-03T00:00:13+01:00",
     "starts_at": "2026-11-03T00:00:13+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-03|TK=betrieb ab knöllgasse"
   },
   {
@@ -800,7 +788,7 @@
     "guid": "ec874d834c0a5c0aa688bd397a5e8471438bf598da32edc1550ce6a027f19df7",
     "pubDate": "2026-11-03T00:00:13+01:00",
     "starts_at": "2026-11-03T00:00:13+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-03|TK=kein betrieb"
   },
   {
@@ -812,7 +800,7 @@
     "guid": "490d571258786cc2850533d4ea421322d4bc7f58d105e4c1b0bf76a1cefc02ca",
     "pubDate": "2026-11-03T00:00:13+01:00",
     "starts_at": "2026-11-03T00:00:13+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-03|TK=züge halten quellenstrasse 156 linie 6"
   },
   {
@@ -824,7 +812,7 @@
     "guid": "a8ba70cda76bd25ad99c44435ef8692615c7aebef6b5a98d838a46d6688684c5",
     "pubDate": "2026-11-05T00:00:27+01:00",
     "starts_at": "2026-11-05T00:00:27+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-05|TK=umleitung"
   },
   {
@@ -852,7 +840,7 @@
     "guid": "92b3e1526626662f64af03a055d226fd12ea9f9ee7f18ad3adc6d69e6127aa8f",
     "pubDate": "2026-11-05T00:00:28+01:00",
     "starts_at": "2026-11-05T00:00:28+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=25|D=2026-11-05|TK=ersatzbus 26e hält karl waldbrunner platz vor schlosshofer strasse"
   },
   {
@@ -864,7 +852,7 @@
     "guid": "b1de336024668692cfc392366c00463863c75ca201ea3e3f1095df9b15711853",
     "pubDate": "2026-11-05T00:00:28+01:00",
     "starts_at": "2026-11-05T00:00:28+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=25|D=2026-11-05|TK=züge halten donaufelder strasse 175 177"
   },
   {
@@ -892,7 +880,7 @@
     "guid": "74ed68a20871c9df99a595b2acb24eda6475c9b75f4c5324e420a36b068f03d7",
     "pubDate": "2026-11-05T00:00:28+01:00",
     "starts_at": "2026-11-05T00:00:28+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=26E|D=2026-11-05|TK=busse halten bessemerstrasse 1 3"
   },
   {
@@ -904,7 +892,7 @@
     "guid": "d69ee1efc28bc606f7aa2a731eedcb97ba6b6353c22eca615aa68fa75d27c771",
     "pubDate": "2026-11-05T00:00:28+01:00",
     "starts_at": "2026-11-05T00:00:28+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=26E|D=2026-11-05|TK=busse halten hossplatz 11"
   },
   {
@@ -916,7 +904,7 @@
     "guid": "2008cbaf36893e0d453fc689a916eff611bcdc08a4fc946ad2a11efd0db1eb3c",
     "pubDate": "2026-11-05T00:00:28+01:00",
     "starts_at": "2026-11-05T00:00:28+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=26E|D=2026-11-05|TK=busse halten satzingerweg 41"
   },
   {
@@ -928,7 +916,7 @@
     "guid": "cf73c65995ea0c4918cc88d67855f7a7749c1551a4fef3f02ba7c54c8550d609",
     "pubDate": "2026-11-05T00:00:28+01:00",
     "starts_at": "2026-11-05T00:00:28+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=26E|D=2026-11-05|TK=ersatzbus hält karl waldbrunner platz vor schlosshofer strasse"
   },
   {
@@ -940,7 +928,7 @@
     "guid": "544df376802b1177e5b0248149f682aaa8e4c43cffba470c30fbb130a531b8d8",
     "pubDate": "2026-11-05T00:00:28+01:00",
     "starts_at": "2026-11-05T00:00:28+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=26|D=2026-11-05|TK=züge halten in tokiostrasse"
   },
   {
@@ -952,7 +940,7 @@
     "guid": "850d1ea5a2f242340850bbce64f4516a1e196325253cc145d45d09c3a0832c88",
     "pubDate": "2026-11-05T00:00:28+01:00",
     "starts_at": "2026-11-05T00:00:28+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=27|D=2026-11-05|TK=linie 25 in tokiostrasse benützen"
   },
   {
@@ -964,7 +952,7 @@
     "guid": "a31338a0ecb32781b4cf40a6af8ec75d291bf050aaaa43964e8ab0ac144747a7",
     "pubDate": "2026-11-05T00:00:28+01:00",
     "starts_at": "2026-11-05T00:00:28+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=27|D=2026-11-05|TK=züge halten bei linie 31"
   },
   {
@@ -986,50 +974,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "5350dbcdf4a6c02ceca95e97660eae6f09e9befc64d1bc90e3b2181f28e061ed",
-    "pubDate": "2026-11-05T23:00:03+01:00",
-    "starts_at": "2026-11-05T23:00:05+01:00",
-    "ends_at": "2026-11-05T23:59:00+01:00",
-    "_identity": "wl|störung|L=2|D=2026-11-05|TK=fahrtbehinderung verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
     "pubDate": "2026-11-05T00:00:27+01:00",
     "starts_at": "2026-11-05T00:00:27+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-11-05|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40A: Busse halten Liechtensteinstraße 38",
-    "description": "Bauarbeiten\nBusse halten Liechtensteinstraße 38",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "f1ac80cbb7d240b9398e7117256c98a4fedb57f3d3c2fb1b45ab08dab1d1a5c0",
-    "pubDate": "2026-11-05T04:45:17+01:00",
-    "starts_at": "2026-11-05T04:45:17+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
-    "_identity": "wl|störung|L=40A|D=2026-11-05|TK=busse halten liechtensteinstrasse 38"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40A: Busse halten Liechtensteinstraße 39",
-    "description": "Bauarbeiten\nBusse halten Liechtensteinstraße 39",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "93371941ed2a77831506b5ca1da3430a69522eb8164a20b23e0a844d0de929c4",
-    "pubDate": "2026-11-05T04:45:17+01:00",
-    "starts_at": "2026-11-05T04:45:17+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
-    "_identity": "wl|störung|L=40A|D=2026-11-05|TK=busse halten liechtensteinstrasse 39"
   },
   {
     "source": "Wiener Linien",
@@ -1052,7 +1004,7 @@
     "guid": "2797d59462910f71456b76916229f0a7dc623a8edebf6f4ac24269030a87606e",
     "pubDate": "2026-11-05T00:00:27+01:00",
     "starts_at": "2026-11-05T00:00:27+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=74A|D=2026-11-05|TK=einstieg leberstrasse vor s bahn gebäude"
   },
   {
@@ -1064,7 +1016,7 @@
     "guid": "ea6dc6157351e6aa6eb8ae0f07011aa7c794ec979aee036f3e93c7c998c73346",
     "pubDate": "2026-11-05T00:00:28+01:00",
     "starts_at": "2026-11-05T00:00:28+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-05|TK=betrieb ab vivariumstrasse 2"
   },
   {
@@ -1092,7 +1044,7 @@
     "guid": "77d3c63ce0f1f2c507149515aa2901d74710c270c362965e24a1c4109467dbfe",
     "pubDate": "2026-11-03T00:00:14+01:00",
     "starts_at": "2026-11-03T00:00:14+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=D|D=2026-11-03|TK=betrieb ab augasse"
   },
   {
@@ -1104,7 +1056,7 @@
     "guid": "90216ce9a3141ea415e982acdbf2ac35ab5921c926996bf52a7ad7a52f539c0e",
     "pubDate": "2026-11-03T00:00:14+01:00",
     "starts_at": "2026-11-03T00:00:14+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=D|D=2026-11-03|TK=betrieb ab börse"
   },
   {
@@ -1116,7 +1068,7 @@
     "guid": "67078944a93bdf102ba6646e545b32c2ab8c76bf5f5efe8750a1c24d9ac26e08",
     "pubDate": "2026-11-03T00:00:14+01:00",
     "starts_at": "2026-11-03T00:00:14+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=D|D=2026-11-03|TK=züge halten in schleife"
   },
   {
@@ -1128,7 +1080,7 @@
     "guid": "c56c71bc29a5779ba2ce8098d4446a39181d58698141c72f9ba0190ba474ca24",
     "pubDate": "2026-11-03T00:00:14+01:00",
     "starts_at": "2026-11-03T00:00:14+01:00",
-    "ends_at": "2026-11-05T23:59:59+01:00",
+    "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=D|D=2026-11-03|TK=züge halten wipplingerstr 39"
   },
   {
