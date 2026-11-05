@@ -125,14 +125,8 @@ def _contains(haystack: str, quote: str) -> bool:
     return len(needle) >= MIN_QUOTE_CHARS and needle in normalize(haystack)
 
 
-def _check_one(raw: Mapping[str, Any], prep: Prepared, items: Mapping[int, FeedItem]) -> Finding | str:
-    klasse = str(raw.get("klasse") or "").upper()
-    feed = str(raw.get("feed") or "").upper()
-    nr = raw.get("nr")
-    if klasse not in CLASSES:
-        return f"Klasse „{klasse}“ gibt es nicht"
-    if not isinstance(nr, int) or nr not in items:
-        return "keine gültige Meldungsnummer"
+def _header_error(klasse: str, feed: str, item: FeedItem) -> str:
+    """Why the class and the feed of a finding cannot go together with its item; empty when they can."""
     if feed not in ("DE", "EN"):
         return "Feed muss DE oder EN sein"
     if klasse == "F6" and feed != "EN":
@@ -140,24 +134,20 @@ def _check_one(raw: Mapping[str, Any], prep: Prepared, items: Mapping[int, FeedI
     if klasse in ("F1", "F3", "F4") and feed != "DE":
         # A title against its text stands in both languages alike and counts once (run 290, 05.11.2026).
         return f"{klasse} gilt nur für den deutschen Feed"
-    item = items[nr]
     if feed == "EN" and item.en_title is None:
         return "die Meldung fehlt im englischen Feed"
-    finding = Finding(
-        nr=nr,
-        klasse=klasse,
-        feed=feed,
-        feed_zitat=normalize(str(raw.get("feed_zitat") or "")),
-        erwartet=free_text(raw.get("erwartet")),
-        begruendung=free_text(raw.get("begruendung")),
-        quelle_zitat=normalize(str(raw.get("quelle_zitat") or "")),
-    )
+    return ""
+
+
+def _quote_error(finding: Finding, item: FeedItem) -> str:
+    """Why the feed quote of a finding does not prove it; empty when it does."""
+    klasse, feed = finding.klasse, finding.feed
     if klasse != "F2" and finding.feed_zitat.endswith("…"):
         # What the cut to 180 characters takes away is at most a lost core statement (runs 290, 291, 05.11.2026).
         return "Zitat endet an der Kürzung; eine Kürzung ist höchstens F2"
     text = _item_text(item, feed)
     if not _contains(text, finding.feed_zitat):
-        return f"Zitat steht nicht wörtlich in Meldung {nr} ({feed})"
+        return f"Zitat steht nicht wörtlich in Meldung {finding.nr} ({feed})"
     body, time_line = _body_and_time_line(text)
     if klasse != "F2" and _contains(time_line, finding.feed_zitat) and not _contains(body, finding.feed_zitat):
         # The time line is the code's, not the operator's; only a text that is nothing else is a finding (run 302).
@@ -167,22 +157,58 @@ def _check_one(raw: Mapping[str, Any], prep: Prepared, items: Mapping[int, FeedI
         word = _measure_before_cut(finding.feed_zitat, description, feed)
         if word:
             return f"Kernaussage „{word}“ steht vor der Kürzung; eine Kürzung dahinter ist entschieden"
-    if klasse == "F3":
-        if not _contains(prep.source_text(item), finding.quelle_zitat):
-            return f"Quellzitat steht nicht wörtlich in den Quellen von Meldung {nr}"
+    return ""
+
+
+def _duplicate_error(finding: Finding, raw: Mapping[str, Any], items: Mapping[int, FeedItem]) -> str:
+    """Why an F1 names no proven second item; empty when it does (then nr2 and feed_zitat2 are set)."""
+    nr = finding.nr
+    item = items[nr]
+    nr2 = raw.get("nr2")
+    if not isinstance(nr2, int) or nr2 not in items or nr2 == nr:
+        return "F1 braucht eine zweite, andere Meldung"
+    finding.nr2 = nr2
+    if line_keys(item.title) != line_keys(items[nr2].title):
+        # Two lines one incident hits are two items by the feed's rules (run 306, 05.11.2026).
+        return f"Meldung {nr} und {nr2} nennen verschiedene Linien; ein F1 braucht dieselben"
+    finding.feed_zitat2 = normalize(str(raw.get("feed_zitat2") or ""))
+    if not _contains(_item_text(items[nr2], "DE"), finding.feed_zitat2):
+        return f"Zitat der zweiten Meldung steht nicht wörtlich in Meldung {nr2}"
+    if items[nr2].guid == item.guid or not set(item.versions) & set(items[nr2].versions):
+        return f"Meldung {nr} und {nr2} standen nie gleichzeitig im Feed"
+    return ""
+
+
+def _check_one(raw: Mapping[str, Any], prep: Prepared, items: Mapping[int, FeedItem]) -> Finding | str:
+    klasse = str(raw.get("klasse") or "").upper()
+    feed = str(raw.get("feed") or "").upper()
+    nr = raw.get("nr")
+    if klasse not in CLASSES:
+        return f"Klasse „{klasse}“ gibt es nicht"
+    if not isinstance(nr, int) or nr not in items:
+        return "keine gültige Meldungsnummer"
+    item = items[nr]
+    error = _header_error(klasse, feed, item)
+    if error:
+        return error
+    finding = Finding(
+        nr=nr,
+        klasse=klasse,
+        feed=feed,
+        feed_zitat=normalize(str(raw.get("feed_zitat") or "")),
+        erwartet=free_text(raw.get("erwartet")),
+        begruendung=free_text(raw.get("begruendung")),
+        quelle_zitat=normalize(str(raw.get("quelle_zitat") or "")),
+    )
+    error = _quote_error(finding, item)
+    if error:
+        return error
+    if klasse == "F3" and not _contains(prep.source_text(item), finding.quelle_zitat):
+        return f"Quellzitat steht nicht wörtlich in den Quellen von Meldung {nr}"
     if klasse == "F1":
-        nr2 = raw.get("nr2")
-        if not isinstance(nr2, int) or nr2 not in items or nr2 == nr:
-            return "F1 braucht eine zweite, andere Meldung"
-        finding.nr2 = nr2
-        if line_keys(item.title) != line_keys(items[nr2].title):
-            # Two lines one incident hits are two items by the feed's rules (run 306, 05.11.2026).
-            return f"Meldung {nr} und {nr2} nennen verschiedene Linien; ein F1 braucht dieselben"
-        finding.feed_zitat2 = normalize(str(raw.get("feed_zitat2") or ""))
-        if not _contains(_item_text(items[nr2], "DE"), finding.feed_zitat2):
-            return f"Zitat der zweiten Meldung steht nicht wörtlich in Meldung {nr2}"
-        if items[nr2].guid == item.guid or not set(item.versions) & set(items[nr2].versions):
-            return f"Meldung {nr} und {nr2} standen nie gleichzeitig im Feed"
+        error = _duplicate_error(finding, raw, items)
+        if error:
+            return error
     if not finding.erwartet.strip():
         if klasse != "F1":
             return "kein erwarteter Text"
