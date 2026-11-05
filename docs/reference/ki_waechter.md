@@ -296,5 +296,19 @@ Dritter Probelauf, nur die Lite-Modelle (Eingabe `model` =
 | `9e60b8d` (30.10.) | – | 3.5 Flash-Lite nach 3 s mit 503, keine weitere Anfrage (der Lauf hatte nur eine), [Lauf](https://github.com/Origamihase/wien-oepnv/actions/runs/42003028369). Nicht geprüft. |
 
 Deshalb fragt der Wächter die Lite-Modelle seit 2026-11-05 mit Denkstufe
-„high“ (`LITE_THINKING_LEVEL` in `scripts/ki_waechter.py`); der Probelauf
-damit folgt.
+„high“ (`LITE_THINKING_LEVEL` in `scripts/ki_waechter.py`).
+
+Vierter Probelauf, nur die Lite-Modelle mit Denkstufe „high“ (Eingabe `model`
+= `gemini-3.5-flash-lite,gemini-3.1-flash-lite`, Code von PR #2164;
+05.11.2026 ab 11:42 Uhr Wiener Zeit):
+
+| Stand | Modell | Ergebnis |
+| --- | --- | --- |
+| `001e47c` (27.10.) | Gemini 3.1 Flash-Lite (3.5 Flash-Lite antwortete nach 2 s mit 503), 2 Anfragen, 32,5 s, 35.249 Eingabetokens, 12.838 Denktokens, [Lauf](https://github.com/Origamihase/wien-oepnv/actions/runs/42012888405) | Zwei Funde, beide zutreffend: F1 „1/2/71/D: Veranstaltung“ neben „1/2/71/D: Nationalfeiertag“ und F6 „algae path“. Nicht erkannt: F1 40A (Verlegung Bauernfeldplatz neben „Busse halten Liechtensteinstraße 39“) und F2 „Liechtensteinstraße 37a gegenüber Bauernfeldplatz → …“. |
+| `9e60b8d` (30.10.) | Gemini 3.1 Flash-Lite (3.5 Flash-Lite nach 3 s mit 503), 2 Anfragen, 30,9 s, 51.852 Eingabetokens, 12.251 Denktokens, [Lauf](https://github.com/Origamihase/wien-oepnv/actions/runs/42012893055) | Vier Funde, alle im Feed belegt: F5 „over the line line 9“ (43, bis dahin unbekannt), F6 „Under-Meidlinger Straße“ (7B), F6 „All Saints' Worship“ (38B/39B) und F6 „Folktheter“ (2; am 02.11. nur eine Vermutung). Nicht erkannt: F2 „Liechtensteinstraße 37a …“ (40A). |
+
+Bilanz der Lite-Modelle am 05.11.: 3.5 Flash-Lite antwortete viermal mit 503
+(10:28, 10:31, 11:42 und 11:43 Uhr); 3.1 Flash-Lite ohne Denken fand keinen
+der bekannten Fehler, mit Denkstufe „high“ sechs Funde, alle zutreffend, in
+rund 30 Sekunden je Stand. Die Kette bleibt Flash zuerst, die Lite-Modelle
+als Ausweichweg.
