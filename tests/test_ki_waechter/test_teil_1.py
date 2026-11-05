@@ -86,6 +86,12 @@ def test_a_duplicate_needs_both_quotes(prep: kw.Prepared) -> None:
     assert [(f.nr, f.nr2) for f in both.findings] == [(1, 3)] and not both.rejected
     bad = kw.verify(_answer({**base, "feed_zitat2": "Liechtensteinstraße 99"}), prep)
     assert not bad.findings and "zweiten Meldung" in bad.rejected[0].grund
+    # A pair has no text to expect; the script fills the field (run 288, 05.11.2026). Other classes still need it.
+    empty = kw.verify(_answer({**base, "erwartet": "", "feed_zitat2": "Liechtensteinstraße 42 → Liechtensteinstraße 38"}), prep)
+    assert [f.erwartet for f in empty.findings] == ["nur eine Meldung"] and not empty.rejected
+    other = kw.verify(_answer({"nr": 1, "klasse": "F5", "feed": "DE", "feed_zitat": "Busse halten",
+                               "erwartet": " ", "begruendung": "b"}), prep)
+    assert not other.findings and "erwarteter Text" in other.rejected[0].grund
 
 
 def test_a_wrong_fact_needs_a_verbatim_source_quote(prep: kw.Prepared) -> None:

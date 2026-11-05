@@ -151,7 +151,7 @@ Antworte mit genau einem JSON-Objekt, zum Beispiel:
 - `feed_zitat`: wörtlich aus dieser Meldung im genannten Feed. Ein Skript prüft danach jedes Zitat Zeichen für Zeichen gegen den Feed und die Quellen; ein Zitat, das dort nicht steht, wird verworfen. Kopiere deshalb das kürzeste eindeutige Stück, das die fehlerhafte Stelle enthält, 10 bis 60 Zeichen, beginnend und endend an einer Wortgrenze, genau so, wie es in der Eingabe steht: ohne „…“ am Rand, ohne eigene Anführungszeichen, nicht aus einer Quelle, nicht aus einer anderen Meldung.
 - `quelle_zitat`: bei F3 Pflicht, wörtlich aus einer Quelle dieser Meldung, nach denselben Regeln; sonst leer.
 - `nr2` und `feed_zitat2`: nur bei F1, die zweite Meldung (gleichzeitig im Feed, andere GUID) und ein wörtliches Zitat aus ihr; sonst `nr2` weglassen.
-- `erwartet`: die Stelle, wie der Zuschauer sie stattdessen lesen sollte. `begruendung`: ein Satz, deutsch.
+- `erwartet`: die Stelle, wie der Zuschauer sie stattdessen lesen sollte; bei F1 „nur eine Meldung“. `begruendung`: ein Satz, deutsch.
 - `vermutungen`: höchstens drei kurze Sätze mit einem wörtlichen Zitat, nur für Kandidaten, die an einer fehlenden Quelle oder an einem Zweifel scheitern; sonst leer.
 - `geprueft`: die Nummern aller Meldungen, die du vollständig geprüft hast, also alle von 1 bis zur letzten.
 - Keine Funde: `"funde": []`.

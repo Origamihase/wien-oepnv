@@ -133,7 +133,10 @@ def _check_one(raw: Mapping[str, Any], prep: Prepared, items: Mapping[int, FeedI
         if items[nr2].guid == item.guid or not set(item.versions) & set(items[nr2].versions):
             return f"Meldung {nr} und {nr2} standen nie gleichzeitig im Feed"
     if not finding.erwartet.strip():
-        return "kein erwarteter Text"
+        if klasse != "F1":
+            return "kein erwarteter Text"
+        # A duplicate has no text to expect: its proof is the two quotes (run 288, 05.11.2026).
+        finding.erwartet = "nur eine Meldung"
     return finding
 
 
