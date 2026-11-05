@@ -1440,10 +1440,19 @@
     "title": "78A: Marathonweg"
    },
    {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 74A in Richtung St. Marx S</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Rabengasse</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Landstra&szlig;er Hauptstra&szlig;e&nbsp;</span></span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">146</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Landstra&szlig;er Hauptstra&szlig;e 140-142</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 01. September 2026, etwa 18:00 Uhr</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Spontangebrechen</span></p>",
+    "alertCause": "unknown",
+    "alertCauseId": 0,
+    "description": "<p><span><strong><u>Haltestellenverlegung der Linie 74A in Richtung St. Marx S</u></strong></span></p><p><span><strong><u>Haltestelle:</u></strong> Rabengasse</span></p><p><span><strong><u>Von:</u></strong> Landstraßer Hauptstraße&nbsp;140-144</span></p><p><span><strong><u>Nach:</u></strong> Landstraßer Hauptstraße 146</span></p><p><span><strong><u>Dauer:</u></strong> Ab 01. September 2026, etwa 18:00 Uhr</span></p><p><span><strong><u>Grund:</u></strong> Spontangebrechen</span></p>",
     "id": "N20260901-6167",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><span><strong><u>Haltestellenverlegung der Linie 74A in Richtung St. Marx S</u></strong></span></p><p><span><strong><u>Haltestelle:</u></strong> Rabengasse</span></p><p><span><strong><u>Von:</u></strong> Landstraßer Hauptstraße&nbsp;140-144</span></p><p><span><strong><u>Nach:</u></strong> Landstraßer Hauptstraße 146</span></p><p><span><strong><u>Dauer:</u></strong> Ab 01. September 2026, etwa 18:00 Uhr</span></p><p><span><strong><u>Grund:</u></strong> Spontangebrechen</span></p>",
+       "descriptionPlain": "Haltestellenverlegung der Linie 74A in Richtung St. Marx S Haltestelle: Rabengasse Von: Landstraßer Hauptstraße 140-144 Nach: Landstraßer Hauptstraße 146 Dauer: Ab 01. September 2026, etwa 18:00 Uhr Grund: Spontangebrechen",
+       "title": "74A: Rabengasse"
+      }
+     }
+    ],
     "location": {
      "properties": {
       "attributes": {},
@@ -1453,8 +1462,8 @@
      "type": "Feature"
     },
     "name": "N20260901-6167",
-    "reasonId": 0,
-    "reasonName": "undefined",
+    "reasonId": 223,
+    "reasonName": "Haltestellenverlegung",
     "refPoiCategoryId": 13296,
     "relatedLines": [
      "74A"
