@@ -294,14 +294,84 @@ def test_an_overloaded_model_hands_over_and_is_asked_again_within_the_share(
     waits = []
     answer = kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=2, sleep=waits.append)
     assert not answer.ok and "HTTP 503" in answer.error and answer.requests == 2 and waits == [60]
-    # Never more than three, whatever the share; no share, no request.
+    # Never more than four (one per model of the chain), whatever the share;
+    # no share, no request.
     _overloaded_then(monkeypatch, [_Response(503, busy)] * 5)
-    assert kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=9, sleep=lambda s: None).requests == 3
+    assert kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=9, sleep=lambda s: None).requests == 4
     calls = _overloaded_then(monkeypatch, [])
     none = kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=0)
     assert not none.ok and none.requests == 0 and calls == []
     with pytest.raises(ValueError):
         kw.ask_gemini("Prompt", "gemini-3.8-flash,../x", "k")
+
+
+CHAIN = "gemini-3.8-flash,gemini-3.6-flash,gemini-3.5-flash-lite,gemini-3.1-flash-lite"
+
+
+def test_the_lite_models_are_asked_when_both_flash_models_are_overloaded(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Michael 2026-11-05, after five mornings of 503 on 3.8 and 3.6 Flash:
+    "Baue bitte auch einen Modellwechsel mit den Lite-Modellen als Ergänzung."
+    One request per model, no wait in between, the Lite models last."""
+    busy = {"error": {"message": "This model is currently experiencing high demand."}}
+    waits: list[float] = []
+    calls = _overloaded_then(monkeypatch, [_Response(503, busy), _Response(503, busy), _Response(200, _ok_payload("{}"))])
+    answer = kw.ask_gemini("Prompt", CHAIN, "k", max_requests=4, sleep=waits.append)
+    assert [c.split("/models/")[1].split(":")[0] for c in calls] == [
+        "gemini-3.8-flash", "gemini-3.6-flash", "gemini-3.5-flash-lite",
+    ]
+    assert answer.ok and answer.model == "gemini-3.5-flash-lite" and answer.requests == 3 and waits == []
+    assert [a.split(" ")[0] for a in answer.attempts] == ["gemini-3.8-flash", "gemini-3.6-flash"]
+    # All four overloaded: four requests, once through the chain, still no
+    # wait, and the day counts as overloaded (a note in the Health check).
+    calls = _overloaded_then(monkeypatch, [_Response(503, busy)] * 5)
+    answer = kw.ask_gemini("Prompt", CHAIN, "k", max_requests=4, sleep=waits.append)
+    assert len(calls) == 4 and calls[-1].split("/models/")[1].startswith("gemini-3.1-flash-lite:")
+    assert not answer.ok and answer.overloaded and answer.requests == 4 and waits == []
+    # A smaller share stops inside the chain: the last Lite model is not asked.
+    calls = _overloaded_then(monkeypatch, [_Response(503, busy)] * 5)
+    answer = kw.ask_gemini("Prompt", CHAIN, "k", max_requests=3, sleep=waits.append)
+    assert len(calls) == 3 and answer.requests == 3 and waits == []
+    # A chain shorter than the share goes round again after a wait, as before.
+    calls = _overloaded_then(monkeypatch, [_Response(503, busy)] * 5)
+    answer = kw.ask_gemini("Prompt", "gemini-3.5-flash-lite,gemini-3.1-flash-lite", "k", max_requests=4, sleep=waits.append)
+    assert len(calls) == 4 and waits == [60]
+
+
+def test_the_workflow_chain_is_asked_once_through() -> None:
+    """One request per model of KI_WAECHTER_MODEL: a longer chain would never
+    reach its tail, a shorter one would ask a model twice."""
+    doc = yaml.safe_load((REPO / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8"))
+    models = doc["env"]["KI_WAECHTER_MODEL"].split(",")
+    assert models == CHAIN.split(",")
+    assert len(models) == kw.MAX_REQUESTS_PER_AUDIT
+    assert models[:2] == ["gemini-3.8-flash", "gemini-3.6-flash"]
+    assert all(m.endswith("-lite") for m in models[2:])
+
+
+def test_a_manual_trial_may_name_other_models_and_never_publishes(tmp_path: Path) -> None:
+    """Input ``model`` of a manual run: checked by the gate, used by the ask step, no publish."""
+    text = (REPO / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8")
+    doc = yaml.safe_load(text)
+    assert "model" in doc[True]["workflow_dispatch"]["inputs"]
+    ask = next(s for s in doc["jobs"]["audit"]["steps"] if s.get("name") == "Gemini reads and compares")
+    assert ask["env"]["MODEL_OVERRIDE"] == "${{ needs.gate.outputs.model }}"
+    assert '--model "${MODEL_OVERRIDE:-${KI_WAECHTER_MODEL}}"' in ask["run"]
+    assert doc["jobs"]["gate"]["outputs"]["model"] == "${{ steps.decide.outputs.model }}"
+    lite = "gemini-3.5-flash-lite,gemini-3.1-flash-lite"
+    out = _run_gate(tmp_path / "lite", "workflow_dispatch", [], {"MODEL_INPUT": lite})
+    assert out["run"] == "true" and out["model"] == lite and out["publish"] == "false" and out["revs"] == '["HEAD"]'
+    assert "Probelauf" in (tmp_path / "lite" / "summary").read_text(encoding="utf-8")
+    out = _run_gate(tmp_path / "rev", "workflow_dispatch", [], {"MODEL_INPUT": lite, "REV_INPUT": "001e47c665ce"})
+    assert out["publish"] == "false" and out["revs"] == '["001e47c665ce"]'
+    # The plain manual run publishes, as before, and names no model.
+    out = _run_gate(tmp_path / "plain", "workflow_dispatch", [])
+    assert out["publish"] == "true" and "model" not in out
+    # Anything but model names is refused before a request is counted.
+    import subprocess
+
+    for n, bad in enumerate(("gemini-3.8-flash;id", "a b", "Gemini", ",gemini-3.8-flash", "x,")):
+        with pytest.raises(subprocess.CalledProcessError):
+            _run_gate(tmp_path / f"bad{n}", "workflow_dispatch", [], {"MODEL_INPUT": bad})
 
 
 def test_a_dropped_connection_hands_over_like_an_overloaded_model(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -508,30 +578,33 @@ def test_the_last_request_ends_inside_the_step_limit() -> None:
 @pytest.mark.parametrize(
     ("event", "jobs", "per_job"),
     [
-        # Pull requests and manual runs count up to 10 - 3 = 7: the last three
-        # requests of the day stay with the daily audit (2026-11-01).
-        # Nothing used yet: a replay gets 7 // 3 = 2 per audit.
+        # Pull requests and manual runs count up to 10 - 4 = 6: the last four
+        # requests of the day stay with the daily audit (2026-11-01; four
+        # since 2026-11-05, one per model of the chain).
+        # Nothing used yet: a replay gets 6 // 3 = 2 per audit.
         ("pull_request", [], "2"),
-        # Annotations 1 + 2 + 1 = 4 used; a replay gets (7 - 4) // 3 = 1 per audit.
-        ("pull_request", ["1 completed success 1", "2 completed failure 2", "3 completed success 1"], "1"),
-        # 4 + one still running (3) = 7; (7 - 7) // 3 = 0: no replay.
-        ("pull_request", ["1 completed success 1", "2 completed failure 2", "3 completed success 1",
+        # Annotations 1 + 1 + 1 = 3 used; a replay gets (6 - 3) // 3 = 1 per audit.
+        ("pull_request", ["1 completed success 1", "2 completed failure 1", "3 completed success 1"], "1"),
+        # 3 + one still running (4) = 7; nothing left: no replay.
+        ("pull_request", ["1 completed success 1", "2 completed failure 1", "3 completed success 1",
                           "4 in_progress null -"], None),
         # A finished audit without annotation (killed or crashed midway) and a
-        # cancelled one count three each: 6 used, a manual run gets one.
-        ("workflow_dispatch", ["1 completed success -", "2 cancelled cancelled -"], "1"),
-        ("workflow_dispatch", ["1 completed failure -"], "3"),
-        # 6 used: a manual run still gets one; 7 used: none, the daily audit keeps three.
-        ("workflow_dispatch", ["1 completed success 3", "2 completed success 3"], "1"),
-        ("workflow_dispatch", ["1 completed success 3", "2 completed success 3", "3 completed success 1"], None),
+        # cancelled one count four each: 8 used, no manual run; one of them
+        # alone leaves a manual run two.
+        ("workflow_dispatch", ["1 completed success -", "2 cancelled cancelled -"], None),
+        ("workflow_dispatch", ["1 completed failure -"], "2"),
+        # 5 used: a manual run still gets one; 6 used: none, the daily audit keeps four.
+        ("workflow_dispatch", ["1 completed success 3", "2 completed success 2"], "1"),
+        ("workflow_dispatch", ["1 completed success 3", "2 completed success 3"], None),
         # 01.11.2026: the trial runs used 9 and the daily audit got one request.
-        # Now they stop at 7 and the daily audit keeps all three: first model,
-        # fallback model, one more try. The daily audit arrives as the
+        # Now they stop at 6 and the daily audit keeps all four: the two Flash
+        # models and the two Lite models. The daily audit arrives as the
         # dispatch of the Update cycle (since 2026-11-05; ``workflow_run`` before).
-        ("repository_dispatch", ["1 completed success 3", "2 completed success 3", "3 completed success 1"], "3"),
-        ("repository_dispatch", ["1 completed success 3", "2 completed success 3", "3 completed success 3"], "1"),
-        ("repository_dispatch", ["1 completed success 3", "2 completed success 3", "3 completed success 3",
-                                 "4 completed success 1"], None),
+        ("repository_dispatch", [], "4"),
+        ("repository_dispatch", ["1 completed success 3", "2 completed success 3"], "4"),
+        ("repository_dispatch", ["1 completed success 4", "2 completed success 3"], "3"),
+        ("repository_dispatch", ["1 completed success 4", "2 completed success 4", "3 completed success 1"], "1"),
+        ("repository_dispatch", ["1 completed success 4", "2 completed success 4", "3 completed success 2"], None),
     ],
 )
 def test_each_audit_gets_its_share_of_the_daily_budget(

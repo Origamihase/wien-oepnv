@@ -102,8 +102,8 @@ GEMINI_TIMEOUT = (10.0, 600.0)
 # API-Limit nicht überschritten wird"). A quota answer (429) is never
 # repeated. Only an overloaded model (500, 502, 503, 504; on 2026-10-31 all
 # ten requests to Gemini 3.8 Flash got "503 ... high demand" within an hour)
-# hands over to the fallback model at once and is asked again after a minute,
-# and only as often as ``--max-requests`` allows: the gate of
+# hands over to the next model of the chain at once and is asked again after
+# a minute, and only as often as ``--max-requests`` allows: the gate of
 # ``ki-waechter.yml`` hands each audit its share of the daily budget
 # ``KI_WAECHTER_MAX_REQUESTS`` and counts the requests of the day from the
 # annotation ``Gemini-Anfragen`` every audit leaves. The input is capped below
@@ -112,7 +112,16 @@ GEMINI_TIMEOUT = (10.0, 600.0)
 # German feed text runs at about 3.5 characters per token; 24 hours of
 # 2026-10-31 were 94,000 characters (about 30,000 tokens).
 MAX_PROMPT_CHARS = 450_000
-MAX_REQUESTS_PER_AUDIT = 3
+# One request per model of the chain ``KI_WAECHTER_MODEL`` in
+# ``ki-waechter.yml`` (Gemini 3.8 Flash, 3.6 Flash, 3.5 Flash-Lite, 3.1
+# Flash-Lite), no second round. Until 2026-11-05 three: the first model, the
+# fallback, the first again after a minute; from 01.11. to 05.11.2026 both
+# Flash models answered 503 every morning, and the Lite models (their own
+# quota of 500 requests a day) joined the chain as its tail (Michael
+# 2026-11-05: "Baue bitte auch einen Modellwechsel mit den Lite-Modellen als
+# Ergänzung."). The gate names the same number (MAX_PER_AUDIT, a test keeps
+# them equal).
+MAX_REQUESTS_PER_AUDIT = 4
 OVERLOAD_WAIT_S = (60, 180)
 # No new request (wait included) after this many seconds: the last one (read
 # timeout 600 s) still ends inside the step limit of 25 minutes in
@@ -231,10 +240,12 @@ def ask_gemini(
 ) -> Answer:
     """Send the prompt; again only while the model is overloaded and ``max_requests`` allows.
 
-    ``model`` may name fallbacks, comma-separated (``gemini-3.8-flash,gemini-3.6-flash``):
+    ``model`` may name a chain, comma-separated
+    (``gemini-3.8-flash,gemini-3.6-flash,gemini-3.5-flash-lite,gemini-3.1-flash-lite``):
     an overloaded model hands over to the next one at once (each model has its
     own free-tier quota), a model already asked gets the next request only
-    after a wait. The key travels in a header, never in the URL or a log line.
+    after a wait, so a chain as long as the share is asked once through. The
+    key travels in a header, never in the URL or a log line.
     """
     models = [m.strip() for m in model.split(",") if m.strip()]
     if not models or not all(re.fullmatch(r"[a-z0-9.-]{3,60}", m) for m in models):

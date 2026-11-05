@@ -179,6 +179,7 @@ def _run_gate(
         "PR_HEAD_REPO": "o/r",
         "RUN_ID": "99",
         "REV_INPUT": "",
+        "MODEL_INPUT": "",
         "KI_WAECHTER_MAX_REQUESTS": str(doc["env"]["KI_WAECHTER_MAX_REQUESTS"]),
         "MAX_PER_AUDIT": doc["jobs"]["gate"]["steps"][0]["env"]["MAX_PER_AUDIT"],
         "KI_WAECHTER_RETRY_HOURS": doc["env"]["KI_WAECHTER_RETRY_HOURS"],
