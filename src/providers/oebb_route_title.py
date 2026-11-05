@@ -355,6 +355,32 @@ def _normalize_line_token(token: str) -> str:
     return re.sub(r"^([A-Za-z][A-Za-z-]*)(\d)", r"\1 \2", cleaned)
 
 
+# Trains ÖBB offers instead are not disrupted: "Als Ersatzbeförderung haben
+# Sie die Möglichkeit die REX6-Züge von Wien Hbf über Bruck/Leitha und
+# Kittsee zu nehmen." under "keine REX8-Züge" (Marchegg ↔ Bratislava,
+# March to July 2026) made the title "REX 8/REX 6", as if the REX 6 did not
+# run (found 2026-11-05 with the short form of several lines, see
+# ``src/feed_build/oebb_lines_short.py``).
+_OFFERED_TRAINS_RE = re.compile(r"\bzu nehmen\b|haben Sie (?:die|außerdem die) Möglichkeit|\bAlternativverbindung")
+
+
+def _sentence_around(text: str, index: int) -> str:
+    """The sentence of *text* around *index* (see ``_SENTENCE_END_RE``)."""
+    ends = [m.end() for m in _SENTENCE_END_RE.finditer(text)]
+    start = max((e for e in ends if e <= index), default=0)
+    end = min((e for e in ends if e > index), default=len(text))
+    return text[start:end]
+
+
+# A sentence ends with "." before a space or a tag, or at a line break before
+# a capital ("… zu nutzen:<br>U3: …<br>Zwischen …"); a break inside a
+# sentence comes before a small word ("können<br>von …", "Möglichkeit<br>die …").
+_SENTENCE_END_RE = re.compile(
+    r"(?<![A-Z])(?<!\bSt)(?<!\bbzw)(?<!\bca)\.(?=\s|<|$)"
+    r"|(?:<br\s*/?>|\n)(?=(?:\s|<[^>]+>)*[A-ZÄÖÜ])"
+)
+
+
 def _affected_lines(desc: str) -> str:
     """Every line *desc* says is disrupted, in the order it names them.
 
@@ -365,6 +391,8 @@ def _affected_lines(desc: str) -> str:
     """
     lines: list[str] = []
     for match in _LINE_TOKEN_RE.finditer(desc):
+        if _OFFERED_TRAINS_RE.search(_sentence_around(desc, match.start())):
+            continue
         line = _normalize_line_token(match.group(1))
         if line.casefold() not in {known.casefold() for known in lines}:
             lines.append(line)

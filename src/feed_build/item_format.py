@@ -27,6 +27,7 @@ from .oebb_summary import (
     _oebb_long_date_lists_in_words, _oebb_section_labels_cased, _oebb_upcoming_dates,
     _oebb_what_does_not_run_first,
 )
+from .oebb_lines_short import _oebb_every_line_in_short
 from .wl_measures import _every_line_in_short, _prefer_measures, _wl_measure_labels_with_colon
 from .time_line import _first_published, _incident_since, format_local_times
 from .summary_text import (
@@ -400,6 +401,8 @@ def _format_item_content(
     uncut_summary = summary
     summary = _truncate_summary_180(summary)
     short_lines = _every_line_in_short(it, whole_summary, summary, raw_title)
+    if short_lines is None:
+        short_lines = _oebb_every_line_in_short(it, whole_summary, summary, raw_title)
     if short_lines is not None:
         summary = uncut_summary = short_lines
 
