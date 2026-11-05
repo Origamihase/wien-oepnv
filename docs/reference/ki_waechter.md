@@ -312,3 +312,42 @@ Bilanz der Lite-Modelle am 05.11.: 3.5 Flash-Lite antwortete viermal mit 503
 der bekannten Fehler, mit Denkstufe „high“ sechs Funde, alle zutreffend, in
 rund 30 Sekunden je Stand. Die Kette bleibt Flash zuerst, die Lite-Modelle
 als Ausweichweg.
+
+Fünfter Probelauf, die ganze Kette im Pull Request (Code von PR #2164,
+05.11.2026 ab 11:42 Uhr Wiener Zeit, [Lauf 247](https://github.com/Origamihase/wien-oepnv/actions/runs/42012890223),
+und ab 11:50 Uhr, [Lauf 254](https://github.com/Origamihase/wien-oepnv/actions/runs/42013994909)):
+in allen sechs Prüfungen antworteten 3.8 Flash, 3.6 Flash und 3.5 Flash-Lite
+mit 503, und 3.1 Flash-Lite antwortete; vier Anfragen je Stand, zusammen 26
+bis 413 Sekunden (3.8 Flash hielt eine Anfrage 359 Sekunden offen, bevor es
+503 antwortete).
+
+| Stand | Lauf 247 | Lauf 254 |
+| --- | --- | --- |
+| `001e47c` (27.10.) | 413 s, 35.249 Eingabetokens, 6.267 Denktokens, 67 von 67 Texten. Drei Funde, alle im Feed belegt: F2 „Liechtensteinstraße 37a gegenüber Bauernfeldplatz → …“ (40A, behoben in #2087); F2 „Kurzführung in Richtung Stadion U bis Schlachthausgasse U, und wieder …“ (18, Veranstaltung am 08.11., 26.10. 17:31 Uhr; Grenzfall: die erste Richtung ist vollständig, die Kurzführung der Gegenrichtung fiel hinter die 180 Zeichen); F5 „Linie 46:Umleitung“ (46, 26.10. 21:01 Uhr: Ziffer, Doppelpunkt und Wort ohne Leerzeichen aus dem WL-Text; `repair_glued_words` in `src/utils/text_repair.py` kennt diese Form nicht). Nicht erkannt: F6 „algae path“, F1 40A, F1 1/2/71/D. | 51 s, 11.272 Denktokens, 45 von 67 Texten (der Bericht warnt). Zwei Funde, beide belegt: F6 „of the algae path“ und F5 (EN) „over the line line 2“ (46, dieselbe Meldung wie links: „über die Strecke der Linien 2“ wird Wort für Wort übersetzt, das Glossar kennt nur „auf der Strecke“). Vermutung: „Schadhafter Zug“ neben „Schadhaftes Fahrzeug“. Nicht erkannt: F2 „Liechtensteinstraße 37a …“, F1 40A, F1 1/2/71/D. |
+| `9e60b8d` (30.10.) | 68 s, 51.852 Eingabetokens, 6.478 Denktokens, 101 von 101. Vier Funde, alle belegt: zweimal F4 Titel gegen Text („71: Rettungseinsatz“ mit „Fahrtbehinderung wegen Polizeieinsatz.“, 29.10. 19:01 Uhr; „42: Falschparker“ mit „Fahrtbehinderung wegen Rettungseinsatz.“, 29.10. 20:31 Uhr: zwei WL-Ticker einer Linie mit verschiedenen Ursachen, zusammengeführt in `_merge_wl_ticker_clusters`, bekannt seit dem Wächter-Lauf vom 02.11.); F5 (EN) „over the line line 9 and 44“ (43, 29.10. 20:00 Uhr); F2 „12: Umleitung zum Westbahnhof“ mit dem Text „[Seit 10:42]“ (30.10. 11:31 Uhr: der WL-Text war gleich dem Titel und fiel als Wiederholung weg). Nicht erkannt: F6 „All Saints' Worship“, F6 „Under-Meidlinger Straße“, F6 „Folktheter“, F2 „Liechtensteinstraße 37a …“. | 26 s, 5.760 Denktokens, 101 von 101. Ein Fund, belegt: F5 (EN) „over the line line 9 and 44“. Nicht erkannt: dieselben vier und die drei weiteren Funde von Lauf 247. |
+| `HEAD` (24 h bis 05.11.) | 82 s, 45.355 Eingabetokens, 5.988 Denktokens, 90 von 90, keine Funde. | 38 s, 6.181 Denktokens, 90 von 90, keine Funde. |
+
+Messung nur mit den Lite-Modellen über die fünf Tage der letzten Jules-Audits
+(Eingabe `model` = `gemini-3.5-flash-lite,gemini-3.1-flash-lite`, Code von
+PR #2164, 05.11.2026 zwischen 11:49 und 12:10 Uhr Wiener Zeit): 3.5 Flash-Lite
+antwortete jedes Mal binnen Sekunden mit 503, 3.1 Flash-Lite antwortete, zwei
+Anfragen je Stand.
+
+| Stand | Lauf | Ergebnis |
+| --- | --- | --- |
+| `fc604a2` (31.10. 16:00) | [249](https://github.com/Origamihase/wien-oepnv/actions/runs/42013835569): 31 s, 41.557 Eingabetokens, 5.443 Denktokens, 71 von 71 | Ein Fund, belegt: F2 „5A: Verunreinigung Es kommt zu Verspätungen“ mit dem Text „[Seit 07:13]“ (31.10. 08:01 Uhr: WL schrieb Titel und Text gleich, der Text fiel als Wiederholung weg; um 07:31 Uhr stand noch „Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.“). |
+| `87bad6b` (01.11. 16:29) | [255](https://github.com/Origamihase/wien-oepnv/actions/runs/42015241564): 32 s, 44.648 Eingabetokens, 13.605 Denktokens, 90 von 90 | Ein Fund, belegt: F6 „Continue via line 37 to High Wait.“ (behoben in #2106). Die Kranarbeiten-Ticker neben „29A/33A/29B/N31: Bauarbeiten“ wurden nicht gemeldet (Entscheidung vom 01.11.). |
+| `07f9859` (02.11. 16:00) | [256](https://github.com/Origamihase/wien-oepnv/actions/runs/42015847430): 43 s, 35.850 Eingabetokens, 14.900 Denktokens, 66 von 66 | 18 Funde, alle F6 „Reason: …“ mit der Erwartung „Due to …“, dazu ein verworfenes Zitat. Keiner trifft zu: die Zeile „Grund: …“ der WL-Texte heißt im EN-Feed „Reason: …“ (`_render_label_record` in `src/feed_build/pretranslate.py`), „Due to“ gilt für Ursachen im Satz („Wegen …“). Der Prompt sagt nur „Ursachen beginnen mit ‚Due to‘“. |
+| `8bf589d` (03.11. 16:01) | [257](https://github.com/Origamihase/wien-oepnv/actions/runs/42016554495): 48 s, 43.040 Eingabetokens, 14.270 Denktokens, 82 von 82 | Zwei Funde, keiner trifft zu: F2 „zwischen Wien Leopoldau Bahnhst …“ (S1, 03.11. 11:01 Uhr: der Satz sagt „nicht fahren“ vor dem Doppelpunkt, die Kürzung nimmt nur den Rest der Strecken, wie `src/feed_build/oebb_summary.py` es vorsieht); F6 „Service obstruction: 1, Badner Bahn.“ mit der Erwartung „LB“ (1/LB, 03.11. 08:00 Uhr: die Kurzform nennt die Linie mit WLs eigenem Namen, `_SHORT_LINE_NAME` in `src/feed_build/wl_measures.py`; der Prompt sagt nur „die Badner Bahn heißt ‚LB‘“). |
+| `b8729b6` (04.11. 16:00) | [253](https://github.com/Origamihase/wien-oepnv/actions/runs/42013863748): 26 s, 32.896 Eingabetokens, 8.406 Denktokens, 64 von 64 | Keine Funde. |
+
+Bilanz: Mit 3.1 Flash-Lite (Denkstufe „high“) kommt jede Prüfung in unter
+einer Minute zurück. Die zutreffenden Funde deckten sich mit den bekannten
+Fehlern und zeigten drei bis dahin unbekannte Klassen: „line line“ für „über
+die Strecke der Linie(n) …“, ein WL-Text gleich dem Titel (nur die Zeitzeile
+bleibt), „46:Umleitung“ ohne Leerzeichen. Zwanzig falsche Funde an zwei Tagen
+gehen auf zwei knappe Sätze unter „Entschieden“ im Prompt zurück („Due to“,
+„LB“); zwei weitere Funde wiederholten Bekanntes (71/42, 12). Derselbe Stand
+bringt nicht in jedem Lauf dieselben Funde (27.10.: drei Läufe mit zwei bis
+drei Funden, zusammen sechs verschiedene), und ein Lauf prüfte nur 45 von 67
+Texten.
