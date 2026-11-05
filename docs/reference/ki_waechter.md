@@ -470,3 +470,16 @@ Wortgrenze und hängt „…“ an, der gekürzte Text ist deshalb kürzer als 1
 Zeichen, und die Zeitzeile kommt danach dazu. Beide Lücken schließt die Liste
 seit demselben Tag: der Zusammenzug der WL-Ticker ist kein F3, die Kürzung
 vor 180 Zeichen an der Wortgrenze hinter der Kernaussage weder F2 noch F5.
+
+Der Lauf mit den vier Zeilen (Code von dd0db0a1, ab 14:32 Uhr,
+[Lauf 266](https://github.com/Origamihase/wien-oepnv/actions/runs/42036705032)):
+27.10. drei Funde, alle zutreffend (F6 „algae path“ zweimal mit verschieden
+langem Zitat, F5 „Linie 46:Umleitung“); 30.10. drei Funde, alle zutreffend
+(F5 „over the line line 9“, F6 „Reason: Harmful“, F6 „Folktheter“), der F3 zu
+„1/2/71“ kam nicht wieder; HEAD zwei Funde, beide die Kürzung der Linie 40A,
+nun wieder als F2 („die Kernaussage ‚in beiden Richtungen‘ fehlt“, deutsch und
+englisch). Dieser Fall bleibt offen: Nach den Regeln ist er kein Fund, das
+Modell meldet ihn in jedem Lauf, und für den TV-Leser bricht der Satz hinter
+den beiden neuen Haltestellen ab. Eine Kürzung satzweise (der letzte Satz
+fällt ganz weg, wenn er nicht in die 180 Zeichen passt) würde ihn vermeiden;
+das ist eine Entscheidung über Feed-Texte und nicht Teil dieses Pull Requests.
