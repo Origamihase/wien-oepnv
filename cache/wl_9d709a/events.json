@@ -458,6 +458,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "74A: Viehmarktgasse",
+    "description": "<p><strong><u>Haltestellenverlegung der Linie 74A in Richtung St. Marx S</u></strong></p><p><strong><u>Haltestelle:</u></strong> Viehmarktgasse</p><p><strong><u>Von:</u></strong> Landstraßer Hauptstraße 148 vor Schlachthausgasse</p><p><strong><u>Nach:</u></strong> Landstraßer Hauptstraße gegenüber 173-175</p><p><strong><u>Dauer:</u></strong> Ab 12. November 2026, etwa 07:00 Uhr, Dauer unbekannt</p><p><strong><u>Grund:</u></strong> Straßenbau</p>",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "209cb31a62c904eb68902d303a11723d91ea5136757eeb08ef5b96f69caa1c73",
+    "pubDate": "2026-11-05T15:47:00+01:00",
+    "starts_at": "2026-11-12T00:00:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|hinweis|L=74A|D=2026-11-12|TK=74a viehmarktgasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "78A: Marathonweg",
     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenauflassung der Linie 78A in Richtung Lusthaus</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Marathonweg</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 05. September 2026 Betriebsbeginn, bis auf weiteres.</span></p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -674,6 +686,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12A: Polizeieinsatz",
+    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "374069ccf0ff3be5104dd31d6813256c9eea30537579d930288c2ea1f81eccd9",
+    "pubDate": "2026-11-05T15:52:00+01:00",
+    "starts_at": "2026-11-05T15:52:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=12A|D=2026-11-05|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261105-0030"
+    ],
+    "_incident_start": "2026-11-05T15:52:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "14A: Polizeieinsatz",
+    "description": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "179a7c148b25707367c2e6e69b6d5b9759f57f1e4e64a3e9f11e542c069016fc",
+    "pubDate": "2026-11-05T15:52:00+01:00",
+    "starts_at": "2026-11-05T15:52:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=14A|D=2026-11-05|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261105-0030"
+    ],
+    "_incident_start": "2026-11-05T15:52:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -790,6 +834,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "25: Rettungseinsatz Betrieb ab Berresgasse",
+    "description": "Die Linie 25 fährt derzeit nicht zwischen Berresgasse und Kagran U. Voraussichtliche Dauer: 16:25 Uhr. Grund: Rettungseinsatz im Bereich Spargelfeldstraße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "7432174b0dd142a4728e8ba0144127ca655d49ae49e269a9660834d572eca3ab",
+    "pubDate": "2026-11-05T15:46:00+01:00",
+    "starts_at": "2026-11-05T15:51:24+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=25|D=2026-11-05|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261105-0029"
+    ],
+    "_incident_start": "2026-11-05T15:46:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "25: Züge halten Donaufelder Straße 175-177",
     "description": "Züge halten\nDonaufelder Straße 175-177",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -866,6 +926,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "26: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "5ad871156e427d523784cb28867242cf1070538a7d455f2b56d31b9e1028dfac",
+    "pubDate": "2026-11-05T15:56:23+01:00",
+    "starts_at": "2026-11-05T15:56:24+01:00",
+    "ends_at": "2026-11-05T16:55:00+01:00",
+    "_identity": "wl|störung|L=26|D=2026-11-05|TK=rettungseinsatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26: Züge halten in Tokiostraße",
     "description": "Züge halten in\nTokiostraße",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -930,6 +1002,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "38: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1d5e4d6a196f57fd8f612729b0430cc34e4e06c6c38cb090911b45122aec3ea2",
+    "pubDate": "2026-11-05T15:46:50+01:00",
+    "starts_at": "2026-11-05T15:46:53+01:00",
+    "ends_at": "2026-11-05T17:00:00+01:00",
+    "_identity": "wl|störung|L=38|D=2026-11-05|TK=fahrtbehinderung verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Verkehrsunfall Betrieb ab Canisiusgasse",
+    "description": "Verkehrsunfall\nBetrieb ab Canisiusgasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "97dbaa7d0f4d31098f16ebdc375d4ad4c2058ff4f544fade60b2812ec7c04f50",
+    "pubDate": "2026-11-05T15:46:50+01:00",
+    "starts_at": "2026-11-05T15:46:53+01:00",
+    "ends_at": "2026-11-05T17:00:00+01:00",
+    "_identity": "wl|störung|L=38|D=2026-11-05|TK=verkehrsunfall betrieb ab canisiusgasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "40A: Busse halten Liechtensteinstraße 38",
     "description": "Bauarbeiten\nBusse halten Liechtensteinstraße 38",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -962,22 +1058,6 @@
     "starts_at": "2026-11-05T04:40:16+01:00",
     "ends_at": "2026-11-06T01:00:00+01:00",
     "_identity": "wl|störung|L=66A|D=2026-11-05|TK=busse halten salvatorianerplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "69A: Verkehrsunfall",
-    "description": "Linie 69A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "0fc85d27689d90831656e0a962f5ee55294a7b1a7fac9f6b82c5a3b2f65b4ae1",
-    "pubDate": "2026-11-05T14:26:00+01:00",
-    "starts_at": "2026-11-05T14:26:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=69A|D=2026-11-05|TK=69a verkehrsunfall",
-    "_wl_ids": [
-      "I20261105-0026"
-    ],
-    "_incident_start": "2026-11-05T14:26:00+01:00"
   },
   {
     "source": "Wiener Linien",
