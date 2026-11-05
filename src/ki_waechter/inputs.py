@@ -204,11 +204,16 @@ def _built(xml_text: str) -> str:
     return match.group(1).strip() if match else "?"
 
 
+def _cut(text: str) -> str:
+    """A source text up to MAX_SOURCE_CHARS; a cut one ends with the marker the prompt explains."""
+    return text if len(text) <= MAX_SOURCE_CHARS else text[:MAX_SOURCE_CHARS] + " […]"
+
+
 def _source_entry(path: str, event: Mapping[str, Any]) -> dict[str, str]:
     return {
         "datei": path,
         "titel": normalize(str(event.get("title") or "")),
-        "text": normalize(str(event.get("description") or ""))[:MAX_SOURCE_CHARS],
+        "text": _cut(normalize(str(event.get("description") or ""))),
         "beginn": str(event.get("starts_at") or ""),
         "ende": str(event.get("ends_at") or ""),
     }
@@ -337,6 +342,15 @@ def together(prep: Prepared, item: FeedItem) -> list[int]:
     return [other.nr for other in prep.items if other.nr != item.nr and mine & set(other.versions)]
 
 
+def _with_lines(titles: Mapping[int, str], numbers: list[int]) -> str:
+    """The numbers with the line their title starts with (``25 (40A), 26 (U4), 27``)."""
+    parts = []
+    for nr in numbers:
+        match = _LINE_PREFIX_RE.match(titles.get(nr, ""))
+        parts.append(f"{nr} ({match.group(1)})" if match else str(nr))
+    return ", ".join(parts)
+
+
 def _n(count: int, one: str, many: str) -> str:
     return f"{count} {one if count == 1 else many}"
 
@@ -360,12 +374,13 @@ def render_input(prep: Prepared) -> str:
         "",
     ]
     shown: set[str] = set()
+    titles = {item.nr: item.title for item in prep.items}
     for item in prep.items:
         out.append(f"## Meldung {item.nr}")
         meta = f"GUID …{item.guid[-12:]}, Textstand {item.variant} von {item.variants} dieser Meldung"
         out.append(f"{meta}. Im Feed: {visible(prep, item)}.")
         others = together(prep, item)
-        out.append(f"Gleichzeitig im Feed: {', '.join(map(str, others)) if others else 'keine andere'}.")
+        out.append(f"Gleichzeitig im Feed: {_with_lines(titles, others) if others else 'keine andere'}.")
         out.append("<<<DATEN")
         out.append(f"DE Titel: {item.title}")
         out.append(f"DE Text: {item.description}")

@@ -103,7 +103,8 @@ def _check_one(raw: Mapping[str, Any], prep: Prepared, items: Mapping[int, FeedI
         return "Feed muss DE oder EN sein"
     if klasse == "F6" and feed != "EN":
         return "F6 gilt nur für den englischen Feed"
-    if klasse in ("F1", "F3") and feed != "DE":
+    if klasse in ("F1", "F3", "F4") and feed != "DE":
+        # A title against its text stands in both languages alike and counts once (run 290, 05.11.2026).
         return f"{klasse} gilt nur für den deutschen Feed"
     item = items[nr]
     if feed == "EN" and item.en_title is None:
@@ -117,6 +118,9 @@ def _check_one(raw: Mapping[str, Any], prep: Prepared, items: Mapping[int, FeedI
         begruendung=free_text(raw.get("begruendung")),
         quelle_zitat=normalize(str(raw.get("quelle_zitat") or "")),
     )
+    if klasse != "F2" and finding.feed_zitat.endswith("…"):
+        # What the cut to 180 characters takes away is at most a lost core statement (runs 290, 291, 05.11.2026).
+        return "Zitat endet an der Kürzung; eine Kürzung ist höchstens F2"
     if not _contains(_item_text(item, feed), finding.feed_zitat):
         return f"Zitat steht nicht wörtlich in Meldung {nr} ({feed})"
     if klasse == "F3":

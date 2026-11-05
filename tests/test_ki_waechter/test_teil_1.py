@@ -17,6 +17,7 @@ import requests
 import yaml
 
 from scripts import ki_waechter as kw
+from src.ki_waechter.inputs import MAX_SOURCE_CHARS
 from src.utils.liquid import liquid_findings, liquid_safe
 
 from ._support import (
@@ -26,6 +27,8 @@ from ._support import (
     _history,
     _ok_payload,
     _overloaded_then,
+    _write_feeds,
+    _write_repo,
 )
 
 
@@ -64,6 +67,8 @@ def test_a_verbatim_quote_counts(prep: kw.Prepared) -> None:
         ({"nr": 7, "klasse": "F2", "feed": "DE", "feed_zitat": "Busse"}, "Meldungsnummer"),
         ({"nr": 1, "klasse": "F9", "feed": "DE", "feed_zitat": "Busse halten"}, "gibt es nicht"),
         ({"nr": 1, "klasse": "F5", "feed": "DE", "feed_zitat": "Bu"}, "nicht wörtlich"),
+        ({"nr": 1, "klasse": "F4", "feed": "EN", "feed_zitat": "Construction works"}, "nur für den deutschen"),
+        ({"nr": 1, "klasse": "F5", "feed": "DE", "feed_zitat": "Busse halten …"}, "Kürzung"),
     ],
 )
 def test_an_unproven_finding_is_rejected(prep: kw.Prepared, finding: dict[str, object], reason: str) -> None:
@@ -222,6 +227,27 @@ def test_every_item_text_of_24_hours_is_one_item(tmp_path: Path) -> None:
     text = kw.render_input(prep)
     assert "3 Fassungen des Feeds, gebaut 27.10.2026 08:00 bis 27.10.2026 16:00 Wiener Zeit" in text
     assert "Textstand 2 von 2 dieser Meldung" in text
+    # Each simultaneous item with the line of its title (05.11.2026), none as „keine andere“.
+    assert "Gleichzeitig im Feed: keine andere." in text and "Gleichzeitig im Feed: 3 (13A)." in text
+    assert "Gleichzeitig im Feed: 2 (40A)." in text
+
+
+def test_a_cut_source_is_marked_and_a_quote_at_the_cut_is_at_most_f2(tmp_path: Path) -> None:
+    """A source text ends with „[…]“ after MAX_SOURCE_CHARS; a feed quote ending at the „…“ is only F2 (05.11.2026)."""
+    _write_repo(tmp_path)
+    rows = [("U4: Schadhaftes Fahrzeug", "Nach einer Fahrtbehinderung kommt es zu …", "g1")]
+    _write_feeds(tmp_path, rows, rows)
+    long_text = " ".join(f"Wort{i}" for i in range(600))
+    (tmp_path / "cache" / "wl_x" / "events.json").write_text(
+        json.dumps([{"guid": "g1", "title": "U4: Schadhaftes Fahrzeug", "description": long_text}]), encoding="utf-8")
+    read, listing = kw.working_tree_reader(tmp_path)
+    prep = kw.prepare([kw.Snapshot("abc1234", "", read, listing)], "abc1234")
+    source = prep.sources[prep.items[0].own_sources[0]]["text"]
+    assert source.endswith(" […]") and len(source) == MAX_SOURCE_CHARS + 4 and "[…]" in kw.render_input(prep)
+    cut = {"nr": 1, "feed": "DE", "feed_zitat": "kommt es zu …", "erwartet": "x", "begruendung": "y"}
+    assert [f.klasse for f in kw.verify(_answer({**cut, "klasse": "F2"}, geprueft=(1,)), prep).findings] == ["F2"]
+    rejected = kw.verify(_answer({**cut, "klasse": "F5"}, geprueft=(1,)), prep).rejected
+    assert "Kürzung" in rejected[0].grund
 
 
 def test_a_duplicate_must_have_stood_in_the_feed_at_the_same_time(tmp_path: Path) -> None:
