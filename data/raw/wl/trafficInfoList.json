@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261105-0010, I20260925-0011, I20261105-0006, I20260909-0007, I20260922-0032, I20261020-0029, I20261105-0008-F01, I20261105-0009-F01"
+    "trafficInfoNameList": "I20261105-0010, I20261105-0012, I20261105-0016, I20260925-0011, I20261105-0011, I20261105-0013, I20261105-0015, I20260909-0007, I20260922-0032, I20261020-0029, I20261105-0009-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1884-101, R1883-101, R1875-101, R1882-101, R1881-101, R1880-101, R1876-101, R19-136, R118-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R130-136, R45-136, R119-136, R318-437, R293-474, R401-101, R1474-412, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R3886-480, R1448-412, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, R766-414, R765-414, R768-414, R767-414, R771-414, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1875-101, R1881-101, R1880-101, R1883-101, R1882-101, R1876-101, R1884-101, R101-136, R117-136, R119-136, R100-136, R118-136, R19-136, R130-136, R102-136, R103-136, R115-136, R116-136, R45-136, R293-474, R318-437, R401-101, R2373-125, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R3886-480, R1448-412, R1474-412, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, R765-414, R768-414, R767-414, R766-414, R771-414, R22-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -221,97 +221,6 @@
     "alertCauseId": 77,
     "attributes": {
      "relatedLineTypes": {
-      "34A": "ptBusCity"
-     }
-    },
-    "description": "Linie 34A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 34A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 34A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 34A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-       "title": "34A: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261105-0006",
-    "owner": "WL",
-    "parentName": "I20261105-0006",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "34A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 434,
-      "lineName": "34A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-05T07:02:00.000+0100",
-     "lastUpdate": "2026-11-05T07:02:00.000+0100",
-     "resume": "2026-11-05T07:01:00.000+0100",
-     "start": "2026-11-05T07:01:00.000+0100"
-    },
-    "title": "34A: Verkehrsunfall"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U1: Rettungseinsatz"
-      }
-     }
-    ],
-    "location": "Donauinsel",
-    "name": "I20261105-0008-F01",
-    "owner": "WL",
-    "parentName": "I20261105-0008",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 301,
-      "lineName": "U1",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-05T07:54:00.000+0100",
-     "lastUpdate": "2026-11-05T07:54:00.000+0100",
-     "resume": "2026-11-05T07:54:00.000+0100",
-     "start": "2026-11-05T07:52:00.000+0100"
-    },
-    "title": "U1: Rettungseinsatz"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
       "14A": "ptBusCity"
      }
     },
@@ -397,6 +306,231 @@
      "start": "2026-11-05T08:30:00.000+0100"
     },
     "title": "35A: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "63A": "ptBusCity"
+     }
+    },
+    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "63A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261105-0011",
+    "owner": "WL",
+    "parentName": "I20261105-0011",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "63A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 463,
+      "lineName": "63A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-05T08:30:00.000+0100",
+     "lastUpdate": "2026-11-05T08:30:00.000+0100",
+     "resume": "2026-11-05T08:30:00.000+0100",
+     "start": "2026-11-05T08:30:00.000+0100"
+    },
+    "title": "63A: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "vandalism",
+    "alertCauseId": 16,
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "descriptionHTML": "<p>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
+       "descriptionPlain": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+       "title": "O: Verunreinigung"
+      }
+     }
+    ],
+    "name": "I20261105-0012",
+    "owner": "WL",
+    "parentName": "I20261105-0012",
+    "priority": "1",
+    "reasonId": 36,
+    "reasonName": "Verunreinigung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 170,
+      "lineName": "O",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-05T08:40:00.000+0100",
+     "lastUpdate": "2026-11-05T08:40:00.000+0100",
+     "resume": "2026-11-05T08:40:00.000+0100",
+     "start": "2026-11-05T08:40:00.000+0100"
+    },
+    "title": "O: Verunreinigung"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "50A": "ptBusCity"
+     }
+    },
+    "description": "Linie 50A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "<p>Linie 50A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 50A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+       "descriptionPlain": "Linie 50A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+       "title": "50A: Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261105-0013",
+    "owner": "WL",
+    "parentName": "I20261105-0013",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "50A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 450,
+      "lineName": "50A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-05T08:47:00.000+0100",
+     "lastUpdate": "2026-11-05T08:47:00.000+0100",
+     "resume": "2026-11-05T08:46:00.000+0100",
+     "start": "2026-11-05T08:46:00.000+0100"
+    },
+    "title": "50A: Verkehrsunfall"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "2": "ptTram"
+     }
+    },
+    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "descriptionHTML": "<p>Linie 2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+       "descriptionPlain": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+       "title": "2: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261105-0015",
+    "owner": "WL",
+    "parentName": "I20261105-0015",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 102,
+      "lineName": "2",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-05T08:52:00.000+0100",
+     "lastUpdate": "2026-11-05T08:52:00.000+0100",
+     "resume": "2026-11-05T08:51:00.000+0100",
+     "start": "2026-11-05T08:51:00.000+0100"
+    },
+    "title": "2: Polizeieinsatz"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "60": "ptTram"
+     }
+    },
+    "description": "Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie 60:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 60:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "60: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261105-0016",
+    "owner": "WL",
+    "parentName": "I20261105-0016",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 160,
+      "lineName": "60",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-05T08:57:00.000+0100",
+     "lastUpdate": "2026-11-05T08:57:00.000+0100",
+     "resume": "2026-11-05T08:57:00.000+0100",
+     "start": "2026-11-05T08:57:00.000+0100"
+    },
+    "title": "60: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",
@@ -926,6 +1060,26 @@
      "start": "2026-11-05T04:40:16.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nZüge halten im\ninneren Gleis\n",
+    "name": "R22-0",
+    "owner": "WL",
+    "parentName": "R22-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     22
+    ],
+    "time": {
+     "end": "2026-11-05T09:46:00.000+0100",
+     "start": "2026-11-05T08:47:40.000+0100"
+    },
+    "title": "Polizeieinsatz\nZüge halten im\ninneren Gleis\n"
    },
    {
     "alertCause": "undefined alert cause",
