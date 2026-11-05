@@ -127,9 +127,12 @@ die EN-Formen „Reason: …“ und „Due to …“ und die Badner Bahn („LB�
 die ÖBB-Bahnhofsnamen im EN-Feed („Bahnhof“/„Bahnhst“ → „station“,
 `_oebb_station_en` in `src/feed_build/en_templates.py`), die Lage einer
 Haltestelle an einer Querstraße („nach“ → „after“, „vor“ → „before“,
-`_PLACE_AFTER_CROSS_STREET_RE` in `src/feed_build/pretranslate.py`) und die
-Kürzung hinter der Kernaussage (kein F2). Ein falscher Fund ist seither ein
-Mangel dieser Liste und wird als Klasse behoben, nicht einzeln.
+`_PLACE_AFTER_CROSS_STREET_RE` in `src/feed_build/pretranslate.py`), die
+Kürzung vor 180 Zeichen an einer Wortgrenze und hinter der Kernaussage (weder
+F2 noch F5, `_truncate_summary_180` in `src/feed_build/summary_text.py`) und
+der Zusammenzug gleichzeitiger WL-Ticker zu einer Meldung (kein F3). Ein
+falscher Fund ist seither ein Mangel dieser Liste und wird als Klasse
+behoben, nicht einzeln.
 
 **Die Regel.** Jede Entscheidung zu Feed-Texten, die in
 `changelog/<JJJJ-MM-TT>.md` steht (Wortwahl, Zeitzeile, Titel, Kürzung,
@@ -445,3 +448,25 @@ noch nicht gebaut: der Dezimalpunkt in der Stammstrecken-Meldung, ein
 übersetzter Straßenname mit „ó“, die Übersetzung eines bei 180 Zeichen
 getrennten Glossarworts („Schadhaftes …“ → „Harmful …“). Die Dauer je Stand
 lag ohne die Wartezeit auf 503 bei 48 bis 116 Sekunden.
+
+Mit den drei neuen Zeilen lief der Pull Request noch einmal (Code von
+fd5fe389, 05.11.2026 ab 14:18 Uhr Wiener Zeit,
+[Lauf 265](https://github.com/Origamihase/wien-oepnv/actions/runs/42034545510));
+wieder antwortete nur 3.1 Flash-Lite, zweimal je Stand. Keiner der sechs
+falschen Funde aus Lauf 261 kam wieder. 27.10.: zwei Funde, beide zutreffend
+(F5 „line line 2“, F6 „algae path“). 30.10.: fünf Funde, vier zutreffend (F5
+„[Seit 10:42]“ für den Text gleich dem Titel, F5 „over the line line 9 and
+44“, F4 „42: Falschparker“ neben Rettungseinsatz im Text, F6 „Folktheter“)
+und ein falscher: F3 „1/2/71“ mit der Erwartung „1/2“; die Quelle hat drei
+Ticker „1: Polizeieinsatz“, „2: Polizeieinsatz“ und „71: Polizeieinsatz“ von
+18:19 Uhr mit demselben Text, und der Titel nennt sie zusammen. HEAD: vier
+Funde, zwei zutreffend (F4 deutsch und englisch zur Meldung REX50/REX51/S50,
+deren Text bis 13:16 Uhr nur die REX50-Züge nannte; die Fassung danach, mit
+#2165, brachte keinen Fund) und zwei falsche: die Kürzung „in beiden …“ der
+Linie 40A, diesmal als F5 mit der Begründung, der Text liege unter der
+Längenbegrenzung. Der volle Satz hätte 201 Zeichen; `_truncate_summary_180`
+in `src/feed_build/summary_text.py` schneidet vor 180 Zeichen an einer
+Wortgrenze und hängt „…“ an, der gekürzte Text ist deshalb kürzer als 180
+Zeichen, und die Zeitzeile kommt danach dazu. Beide Lücken schließt die Liste
+seit demselben Tag: der Zusammenzug der WL-Ticker ist kein F3, die Kürzung
+vor 180 Zeichen an der Wortgrenze hinter der Kernaussage weder F2 noch F5.
