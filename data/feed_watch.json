@@ -1,28 +1,40 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-05T15:01:07.930072+00:00",
- "built": "2026-11-05T16:00:53+01:00",
+ "updated": "2026-11-05T15:31:32.728936+00:00",
+ "built": "2026-11-05T16:31:19+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-05T16:00:53+01:00",
+  "built": "2026-11-05T16:31:19+01:00",
   "items": [
    {
-    "title": "26: Rettungseinsatz",
-    "time_line": "Seit 15:56"
+    "title": "U1: Betriebsstörung",
+    "time_line": "Seit 16:26"
    },
    {
-    "title": "12A/14A: Polizeieinsatz",
+    "title": "1: Falschparker",
+    "time_line": "Seit 16:12"
+   },
+   {
+    "title": "7A: Verkehrsüberlastung",
+    "time_line": "Seit 16:05"
+   },
+   {
+    "title": "9: Falschparker",
+    "time_line": "Seit 16:01"
+   },
+   {
+    "title": "26: Rettungseinsatz",
+    "time_line": "Seit 15:46"
+   },
+   {
+    "title": "14A: Polizeieinsatz",
     "time_line": "Seit 15:52"
    },
    {
     "title": "25: Rettungseinsatz",
     "time_line": "Seit 15:46"
-   },
-   {
-    "title": "U2: Schadhaftes Fahrzeug",
-    "time_line": "Seit 14:44"
    },
    {
     "title": "38: Verkehrsunfall",
@@ -35,63 +47,11 @@
    {
     "title": "52A: Bauarbeiten",
     "time_line": "Seit heute"
-   },
-   {
-    "title": "12A: Henriettenplatz",
-    "time_line": "Seit 04.11."
-   },
-   {
-    "title": "64A: Liesinger-Flur-Gasse",
-    "time_line": "Bis Fr 06.11."
-   },
-   {
-    "title": "REX50/REX51/S50: Wien Westbahnhof ↔ St. Pölten Hbf",
-    "time_line": "Bis Mi 11.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-29T15:01:17.200092+00:00",
-   "raw": {
-    "wl-stoerungen": 72,
-    "wl-hinweise": 78,
-    "oebb": 162,
-    "baustellen-linien": 52,
-    "baustellen-punkte": 19
-   },
-   "discarded": {
-    "wl": 10,
-    "oebb": 137,
-    "baustellen": 64
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 107
-   }
-  },
-  {
-   "t": "2026-10-29T15:31:09.036917+00:00",
-   "raw": {
-    "wl-stoerungen": 77,
-    "wl-hinweise": 79,
-    "oebb": 161,
-    "baustellen-linien": 52,
-    "baustellen-punkte": 19
-   },
-   "discarded": {
-    "wl": 9,
-    "oebb": 136,
-    "baustellen": 64
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 107
-   }
-  },
   {
    "t": "2026-10-29T16:01:07.444069+00:00",
    "raw": {
@@ -6771,17 +6731,37 @@
     "oebb": 7,
     "wl": 96
    }
+  },
+  {
+   "t": "2026-11-05T15:31:32.728936+00:00",
+   "raw": {
+    "wl-stoerungen": 123,
+    "wl-hinweise": 71,
+    "oebb": 192,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 13,
+    "oebb": 166,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 7,
+    "wl": 98
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-05T15:01:07.930072+00:00"
+   "last_ok": "2026-11-05T15:31:32.728936+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-05T15:01:07.930072+00:00"
+   "last_ok": "2026-11-05T15:31:32.728936+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-05T15:01:07.930072+00:00"
+   "last_ok": "2026-11-05T15:31:32.728936+00:00"
   }
  }
 }
