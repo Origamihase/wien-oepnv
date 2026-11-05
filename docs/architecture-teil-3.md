@@ -263,18 +263,19 @@ Review der Meldungen der letzten 24h wäre besser“), das Modell ist Gemini
 Bedarf), und das API-Limit darf nicht überschritten werden.
 
 * `ki-waechter.yml` läuft einmal am Tag nach dem ersten erfolgreichen
-  Update-Lauf ab 9:00 Wiener Zeit, gleich nach dem Beginn des
-  Kontingent-Tags der Gemini API (GitHubs eigener Cron feuert hier nur
-  wenige seiner Termine). Ein erfolgreicher Lauf beendet den Tag; nach einem
-  gescheiterten versucht er es frühestens zwei Stunden später noch einmal,
-  solange das Tagesbudget reicht. Seit 2026-11-05 entscheidet das der letzte
+  Update-Lauf ab 15:00 Wiener Zeit (seit 2026-11-05; vom 31.10. bis 05.11.
+  ab 9:00, gleich nach dem Beginn des Kontingent-Tags der Gemini API, doch
+  um diese Stunde darf jeder wieder, und beide Flash-Modelle antworteten an
+  fünf Morgen in Folge überlastet, Betreiberentscheidung: „wir sollten
+  später abfragen. Wie wärs mit 15:00 Uhr?“; GitHubs eigener Cron feuert
+  hier nur wenige seiner Termine). Ein erfolgreicher Lauf beendet den Tag;
+  nach einem gescheiterten versucht er es frühestens zwei Stunden später
+  noch einmal. Seit 2026-11-05 entscheidet das der letzte
   Schritt des Update-Laufs (`scripts/ki_waechter.py dispatch`,
   `src/ki_waechter/dispatch.py`): Er liest die Aufzeichnung
   `data/side_steps/ki-waechter.json` und die Uhr und sendet
   `repository_dispatch: ki-waechter` nur, wenn eine Prüfung fällig ist und
-  kein Lauf des Wächters läuft oder wartet; hat das Gate an diesem Tag schon
-  einen Lauf wegen des Budgets ohne Prüfung beendet, sendet er bis zum
-  nächsten Tag nichts mehr. Ein Takt vor 9:00 oder nach der gelungenen
+  kein Lauf des Wächters läuft oder wartet. Ein Takt vor 15:00 oder nach der gelungenen
   Prüfung des Tages liest nur die Aufzeichnung im Checkout und fragt GitHub
   nichts. Bis dahin hing der Workflow an `workflow_run` des Update-Laufs,
   und sein Job `gate` startete 48-mal am Tag einen Rechner, um auf allen bis
@@ -303,16 +304,28 @@ Bedarf), und das API-Limit darf nicht überschritten werden.
   Englisch, F1 und F3 nur Deutsch, F1 mit zwei Meldungen, die gleichzeitig
   im Feed standen). Alles andere steht als „Nicht belegt“ im Bericht, zählt
   aber nicht (Michael, 2026-10-30: „Falsche Funde stören mich am meisten“).
-* Gratis-Kontingent: ein Prüflauf sendet eine Anfrage; erschöpftes
-  Kontingent (429) wird nie wiederholt; antwortet das Modell überlastet
-  (5xx), fragt er sofort Gemini 3.6 Flash und nach einer Minute wieder
-  3.8 Flash, höchstens dreimal. Höchstens 10 Anfragen am
-  Tag (Tag ab 0:00 Uhr Pazifikzeit): der Job `gate` zählt sie bei jedem Start aus der
-  Anmerkung „Gemini-Anfragen“ jedes Prüflaufs und gibt jedem neuen Prüflauf
-  nur seinen Anteil am Rest; die letzten drei bleiben dem täglichen Lauf
-  (seit 2026-11-01, vorher eine). Die
-  Eingabe ist auf 450.000 Zeichen begrenzt. Der Schlüssel
-  `GEMINI_API_KEY` gehört zu einem Projekt ohne Abrechnung.
+* Gratis-Kontingent: Google zählt je Projekt und Modell und antwortet 429,
+  sobald ein Kontingent erreicht ist; der Wächter zählt nicht selbst
+  (Betreiberentscheidung 2026-11-05: „Zähle es bitte so wie Google. Wir
+  brauchen keine eigene Zähltechnik.“; eine Abfrage des Verbrauchs über die
+  API gibt es laut Googles Doku nicht). Ein Prüflauf sendet eine Anfrage;
+  ein Modell mit 429 bleibt im Lauf außen vor, Googles Angaben aus der
+  Antwort stehen im Log; antwortet das Modell überlastet (5xx), fragt er
+  sofort das nächste Modell der Kette Gemini 3.8 Flash, 3.6 Flash,
+  3.5 Flash-Lite, 3.1 Flash-Lite, nach einem Durchgang ohne Antwort eine
+  Minute später ein zweites Mal, höchstens acht Anfragen
+  (Betreiberentscheidung 2026-11-05, nachdem beide Flash-Modelle vom 01. bis
+  05.11. jeden Morgen um 9:00 mit 503 antworteten und der Health check rot
+  war: „Baue bitte auch einen Modellwechsel mit den Lite-Modellen als
+  Ergänzung.“ Die Lite-Modelle haben im Gratis-Kontingent 500 Anfragen am
+  Tag statt 20 und werden mit Denkstufe „high“ gefragt; die im Kontingent
+  „unbegrenzten“ Live-API-Modelle antworten nur als Audio über eine
+  WebSocket-Sitzung, und Gemma 4 erlaubt 16.000 Tokens pro Minute, ein
+  Drittel der Eingabe, beide blieben deshalb draußen. Bis dahin: 3.8 Flash,
+  3.6 Flash, nach einer Minute wieder 3.8 Flash, und der Job `gate` zählte
+  die Anfragen des Tages aus einer Anmerkung jedes Prüflaufs gegen ein
+  Budget von zehn). Die Eingabe ist auf 450.000 Zeichen begrenzt. Der
+  Schlüssel `GEMINI_API_KEY` gehört zu einem Projekt ohne Abrechnung.
 * Der Bericht `docs/archive/audits/ki-waechter-YYYY-MM-DD.md` geht über
   `publish_to_main.sh` nach `main`; belegte Funde öffnen ein Issue (Label
   `ki-waechter`). Der Feed bleibt unverändert.

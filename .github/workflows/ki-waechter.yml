@@ -11,20 +11,25 @@ name: KI-Wächter
 # of the Gemini API (secret GEMINI_API_KEY; a key without billing cannot
 # cost anything). Details: docs/reference/ki_waechter.md.
 #
-# When: once a day, on the first successful Update cycle from 9:00 Vienna
-# time; after a failure again two hours later, while the daily budget of
-# Gemini requests lasts. GitHub's own cron fires only a few of its slots a day here
-# (docs/architecture.md, Workflows), the IFTTT-driven Update cycle every
-# 30 minutes, so the last step of a successful Update cycle on ``main``
-# decides (``scripts/ki_waechter.py dispatch``, src/ki_waechter/dispatch.py)
-# and sends ``repository_dispatch: ki-waechter`` only when the audit is due:
-# not before 9:00, not when today's audit succeeded (``last_success`` in
+# When: once a day, on the first successful Update cycle from 15:00 Vienna
+# time; after a failure again two hours later. Until 2026-11-05 the day
+# began at 9:00, right after the free-tier day of the Gemini API (0:00
+# Pacific time); on five mornings in a row both Flash models answered 503
+# at that hour (Michael 2026-11-05: "Wenn jeder wieder darf, ist es klar,
+# dass die API eine höhere Last hat ... wir sollten später abfragen. Wie
+# wärs mit 15:00 Uhr?"). GitHub's own cron fires only a few of its slots a
+# day here (docs/architecture.md, Workflows), the IFTTT-driven Update cycle
+# every 30 minutes, so the last step of a successful Update cycle on
+# ``main`` decides (``scripts/ki_waechter.py dispatch``,
+# src/ki_waechter/dispatch.py) and sends ``repository_dispatch: ki-waechter``
+# only when the audit is due: not before 15:00, not when today's audit
+# succeeded (``last_success`` in
 # ``data/side_steps/ki-waechter.json``), not within two hours of a failed
 # one, not while a run of this workflow is queued or running. Until
 # 2026-11-05 this workflow hung off ``workflow_run`` of the cycle, and its
 # ``gate`` job started a runner on all 48 ticks a day to say "not now" on
-# all but one to four. The gate now runs only on a dispatch and keeps the
-# day's budget of requests. The Health check is red until an audit
+# all but one to four. The gate now runs only on a dispatch and names the
+# commits to audit. The Health check is red until an audit
 # succeeds; after a mere overload of Gemini only 30 hours after the last
 # clean audit.
 #
@@ -83,61 +88,49 @@ env:
   # stable model in the free tier of the Gemini API
   # (https://aistudio.google.com/docs/pricing), its predecessor, then the two
   # Lite models. An overloaded model (5xx, dropped connection) hands over to
-  # the next one at once, each model has its own free-tier quota (Flash 20
-  # requests a day, Lite 500; AI Studio, 2026-11-05), one request per model
-  # and audit (MAX_PER_AUDIT below). On 2026-10-31 Gemini 3.8 Flash answered
-  # 503 for hours; from 01.11. to 05.11.2026 both Flash models did so every
-  # morning at 9:00, and the audit of the day hung on the retry two hours
-  # later (Michael 2026-11-05: "Baue bitte auch einen Modellwechsel mit den
-  # Lite-Modellen als Ergänzung."). The Flash models stay first; the Lite
-  # models keep the day from being lost. Which model answered stands in the
-  # audit file. Trial of the Lite models: docs/reference/ki_waechter.md,
-  # "Probelauf".
+  # the next one at once; a chain without an answer is asked a second time
+  # after a minute (scripts/ki_waechter.py, MAX_ROUNDS). On 2026-10-31
+  # Gemini 3.8 Flash answered 503 for hours; from 01.11. to 05.11.2026 both
+  # Flash models did so every morning at 9:00, and the audit of the day hung
+  # on the retry two hours later (Michael 2026-11-05: "Baue bitte auch einen
+  # Modellwechsel mit den Lite-Modellen als Ergänzung."). The Flash models
+  # stay first; the Lite models keep the day from being lost. Which model
+  # answered stands in the audit file. Trial of the Lite models:
+  # docs/reference/ki_waechter.md, "Probelauf".
   KI_WAECHTER_MODEL: gemini-3.8-flash,gemini-3.6-flash,gemini-3.5-flash-lite,gemini-3.1-flash-lite
   # Hours between a failed audit and the next try on the same day, for the
   # warning below. The Update cycle decides with the same number
   # (update-cycle.yml, step "Start the KI-Wächter when due"; a test keeps
-  # the two equal). The first hour of the day, 9:00 Vienna time, stands there
-  # as well.
+  # the two equal). The first hour of the day stands there as well.
   KI_WAECHTER_RETRY_HOURS: "2"
-  # Gemini requests per day at most (free tier, day from 0:00 Pacific
-  # time), over all models together. The gate counts the requests of the day
-  # (annotation "Gemini-Anfragen" of every audit) and gives each audit of
-  # this run its share, at most 4; an audit sends one and repeats only while
-  # the model is overloaded. Pull requests and manual runs leave the share of
-  # one daily audit free (MAX_PER_AUDIT, 4 requests): on 2026-11-01 the trial
-  # runs of #2092 used 9 of 10, the daily audit got one request, Gemini 3.8
-  # Flash answered 503, and the fallback model was never asked (Michael
-  # 2026-11-01: "Ich möchte das Kontingent effizient nutzen und nicht
-  # überschreiten", yes to a full share for the daily audit).
-  # The free tier of Gemini 3.8 Flash and 3.6 Flash allows 20 requests a day
-  # each, 5 a minute and 250,000 input tokens a minute; the Lite models 500 a
-  # day, 15 a minute, 250,000 tokens a minute (AI Studio, 2026-11-05);
-  # rejected requests (503) count too. The budget counts a Lite request like
-  # a Flash request: simple, and ten a day is plenty for one audit.
-  # Michael 2026-10-31: "sorge auch hier dafür, dass das API-Limit nicht
-  # überschritten wird".
-  KI_WAECHTER_MAX_REQUESTS: "10"
+  # The free tier of the Gemini API counts per project and model: Gemini
+  # 3.8 Flash and 3.6 Flash 20 requests a day each, 5 a minute; the Lite
+  # models 500 a day, 15 a minute; 250,000 input tokens a minute each (AI
+  # Studio, 2026-11-05; the day begins at 0:00 Pacific time, rejected
+  # requests count too). Google counts and answers 429 when a quota is
+  # reached; the audit keeps no count of its own (Michael 2026-11-05: "Zähle
+  # es bitte so wie Google. Wir brauchen keine eigene Zähltechnik.") and
+  # passes such a model over for the rest of the run. Until 2026-11-05 the
+  # gate counted the day's requests from an annotation of every audit
+  # against a budget of ten and refused runs; with Lite models of 500 a day
+  # in the chain no run can take the daily audit's answer away.
 
 jobs:
   gate:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     permissions:
-      actions: read
       contents: read
     outputs:
       run: ${{ steps.decide.outputs.run }}
       revs: ${{ steps.decide.outputs.revs }}
       publish: ${{ steps.decide.outputs.publish }}
-      per_job: ${{ steps.decide.outputs.per_job }}
       # Models of a manual trial (input ``model``, checked below); empty: KI_WAECHTER_MODEL.
       model: ${{ steps.decide.outputs.model }}
     steps:
       - name: Decide whether to audit
         id: decide
         env:
-          GH_TOKEN: ${{ github.token }}
           EVENT: ${{ github.event_name }}
           # The Update cycle run that sent the dispatch (its address).
           CYCLE_RUN: ${{ github.event.client_payload.update_run }}
@@ -145,63 +138,22 @@ jobs:
           MODEL_INPUT: ${{ inputs.model }}
           OWNER_REPO: ${{ github.repository }}
           PR_HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
-          # Most requests one audit may send (scripts/ki_waechter.py,
-          # MAX_REQUESTS_PER_AUDIT): one per model of KI_WAECHTER_MODEL.
-          MAX_PER_AUDIT: "4"
         shell: bash
         run: |
           set -euo pipefail
           out() { echo "$1" >> "$GITHUB_OUTPUT"; }
           note() { echo "$1"; echo "$1" >> "$GITHUB_STEP_SUMMARY"; }
-          # Gemini requests already sent today, since midnight Pacific time
-          # (when the free-tier day of the Gemini API resets). Every audit
-          # job leaves the annotation "Gemini-Anfragen" with its count; a
-          # job still running, or one that ended without the annotation
-          # (killed or crashed midway), counts with the most it may send.
-          # Jobs count by the time they started, not by the time their run
-          # was created: a re-run keeps the run's creation time (01.11.2026:
-          # a run from the evening before, re-run after midnight, had sent
-          # six requests that a filter on the creation time did not see).
-          # GitHub allows a re-run for 30 days, so the listing goes back a
-          # month and keeps the runs touched since midnight; the jobs of
-          # every attempt are read ("filter=all") and filtered by start.
-          # This run counts too: a re-run of it is a new attempt of the
-          # same run, and the audits of its earlier attempts sent requests
-          # today (until 2026-11-02 the gate skipped its own run, so a
-          # re-run of the daily audit saw its first three requests as
-          # unused). The audits of this attempt have not started yet.
-          used_today() {
-            local midnight since month ids id job status conclusion n used=0
-            midnight="$(TZ=America/Los_Angeles date -d 'today 00:00' +%s)"
-            since="$(date -u -d "@${midnight}" +%Y-%m-%dT%H:%M:%SZ)"
-            month="$(date -u -d "@$(( midnight - 31 * 86400 ))" +%Y-%m-%dT%H:%M:%SZ)"
-            ids="$(gh api "repos/${OWNER_REPO}/actions/workflows/ki-waechter.yml/runs?created=%3E%3D${month}&per_page=100" \
-                     --paginate --jq ".workflow_runs[] | select(.updated_at >= \"${since}\") | .id")"
-            for id in ${ids}; do
-              while read -r job status conclusion; do
-                [[ -n "${job}" ]] || continue
-                if [[ "${status}" != "completed" || "${conclusion}" == "cancelled" ]]; then
-                  n="${MAX_PER_AUDIT}"
-                else
-                  n="$(gh api "repos/${OWNER_REPO}/check-runs/${job}/annotations?per_page=100" \
-                         --jq '[.[] | select(.title == "Gemini-Anfragen") | .message | tonumber] | add // empty')"
-                  n="${n:-${MAX_PER_AUDIT}}"
-                fi
-                used=$(( used + n ))
-              done < <(gh api "repos/${OWNER_REPO}/actions/runs/${id}/jobs?filter=all&per_page=100" \
-                         --jq ".jobs[] | select((.name | startswith(\"audit\")) and .started_at >= \"${since}\") | .id as \$id
-                               | .steps[]? | select(.name == \"Gemini reads and compares\" and .conclusion != \"skipped\")
-                               | \"\(\$id) \(.status) \(.conclusion)\"")
-            done
-            echo "${used}"
-          }
+          # Which commits the audit reads and whether it publishes. Until
+          # 2026-11-05 the gate also counted the day's Gemini requests from
+          # the annotations of every audit job (read through the API with a
+          # token) and refused a run when the budget of ten was spent;
+          # Google counts now (env KI_WAECHTER_MODEL above).
           case "$EVENT" in
             pull_request)
               # A fork gets no secrets; its pull request skips the replay.
               if [[ "${PR_HEAD_REPO}" != "${OWNER_REPO}" ]]; then out "run=false"; exit 0; fi
               out "publish=false"
-              out 'revs=["001e47c665cec9f2d1d0c0c0d912230bb7f3795d","9e60b8de9dce438906b257e42a8b524e4f191f67","HEAD"]'
-              jobs=3; limit=$(( KI_WAECHTER_MAX_REQUESTS - MAX_PER_AUDIT )) ;;
+              out 'revs=["001e47c665cec9f2d1d0c0c0d912230bb7f3795d","9e60b8de9dce438906b257e42a8b524e4f191f67","HEAD"]' ;;
             workflow_dispatch)
               # Model names only (letters, digits, dot, dash; comma-separated):
               # the value reaches the ``ask`` step as an environment variable.
@@ -223,34 +175,17 @@ jobs:
               if [[ -n "${MODEL_INPUT}" ]]; then
                 out "model=${MODEL_INPUT}"
                 note "KI-Wächter: Probelauf mit ${MODEL_INPUT} statt der üblichen Modelle, veröffentlicht nichts."
-              fi
-              jobs=1; limit=$(( KI_WAECHTER_MAX_REQUESTS - MAX_PER_AUDIT )) ;;
+              fi ;;
             repository_dispatch)
               # The daily audit, sent by the Update cycle because it is due
-              # (src/ki_waechter/dispatch.py decided: 9:00 Vienna time or
+              # (src/ki_waechter/dispatch.py decided: 15:00 Vienna time or
               # later, no success today, a failed try two hours back, no run
-              # of this workflow active). The daily audit may use the whole
-              # budget; pull requests and manual runs leave it one full
-              # audit (MAX_PER_AUDIT): one request per model of the chain,
-              # the two Flash models and the two Lite models.
+              # of this workflow active).
               echo "Täglicher Prüflauf, gestartet vom Update-Lauf ${CYCLE_RUN:-?}."
-              out "publish=true"; out 'revs=["HEAD"]'
-              jobs=1; limit="${KI_WAECHTER_MAX_REQUESTS}" ;;
+              out "publish=true"; out 'revs=["HEAD"]' ;;
             *)
               echo "::error title=KI-Wächter::unerwartetes Ereignis ${EVENT}"; exit 1 ;;
           esac
-          used="$(used_today)"
-          per_job=$(( (limit - used) / jobs ))
-          if (( per_job > MAX_PER_AUDIT )); then per_job="${MAX_PER_AUDIT}"; fi
-          if (( per_job < 1 )); then
-            note "KI-Wächter: ${used} von ${KI_WAECHTER_MAX_REQUESTS} Gemini-Anfragen des Tages verbraucht. Kein Aufruf, damit das Gratis-Kontingent nicht überschritten wird (der Tag des Kontingents beginnt um 0:00 Uhr Pazifikzeit, in Wien meist 9:00 Uhr)."
-            if [[ "$EVENT" != "pull_request" ]]; then
-              echo "::warning title=KI-Wächter::Tagesbudget der Gemini-Anfragen erreicht (${used}/${KI_WAECHTER_MAX_REQUESTS})"
-            fi
-            out "run=false"; exit 0
-          fi
-          note "KI-Wächter: ${used} von ${KI_WAECHTER_MAX_REQUESTS} Gemini-Anfragen des Tages verbraucht; dieser Lauf darf je Prüfung ${per_job} senden (eine, weitere nur bei Überlastung des Modells)."
-          out "per_job=${per_job}"
           out "run=true"
 
   audit:
@@ -320,17 +255,17 @@ jobs:
       - name: Gemini reads and compares
         id: ai
         continue-on-error: true
-        # Up to four requests of up to ten minutes each; the script starts
-        # none after twelve minutes (NO_NEW_REQUEST_AFTER_S).
+        # Requests of up to ten minutes each, at most two passes over the
+        # chain (MAX_ROUNDS); the script starts none after twelve minutes
+        # (NO_NEW_REQUEST_AFTER_S).
         timeout-minutes: 25
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          MAX_REQUESTS: ${{ needs.gate.outputs.per_job }}
           # A manual trial may name other models (input ``model``, names
           # checked by the gate); empty on every other run.
           MODEL_OVERRIDE: ${{ needs.gate.outputs.model }}
         shell: bash
-        run: python scripts/ki_waechter.py ask --dir "${WORK}" --model "${MODEL_OVERRIDE:-${KI_WAECHTER_MODEL}}" --max-requests "${MAX_REQUESTS}"
+        run: python scripts/ki_waechter.py ask --dir "${WORK}" --model "${MODEL_OVERRIDE:-${KI_WAECHTER_MODEL}}"
 
       - name: Check every finding and write the audit file
         id: verify

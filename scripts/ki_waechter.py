@@ -98,36 +98,51 @@ GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:ge
 GEMINI_KEY_ENV = "GEMINI_API_KEY"
 # One answer of a thinking model can take minutes.
 GEMINI_TIMEOUT = (10.0, 600.0)
-# Free-tier limits (Michael 2026-10-31: "sorge auch hier dafür, dass das
-# API-Limit nicht überschritten wird"). A quota answer (429) is never
-# repeated. Only an overloaded model (500, 502, 503, 504; on 2026-10-31 all
-# ten requests to Gemini 3.8 Flash got "503 ... high demand" within an hour)
-# hands over to the next model of the chain at once and is asked again after
-# a minute, and only as often as ``--max-requests`` allows: the gate of
-# ``ki-waechter.yml`` hands each audit its share of the daily budget
-# ``KI_WAECHTER_MAX_REQUESTS`` and counts the requests of the day from the
-# annotation ``Gemini-Anfragen`` every audit leaves. The input is capped below
-# the token-per-minute limit; a larger input is not sent (red run) instead of
-# being cut silently.
-# German feed text runs at about 3.5 characters per token; 24 hours of
-# 2026-10-31 were 94,000 characters (about 30,000 tokens).
+# Google counts, the audit does not (Michael 2026-11-05: "Zähle es bitte so
+# wie Google. Wir brauchen keine eigene Zähltechnik."). The Gemini API
+# enforces its free-tier limits per project and model (requests a minute,
+# input tokens a minute, requests a day from 0:00 Pacific time; in this
+# project on 2026-11-05: Flash 20 a day and 5 a minute, Lite 500 a day and
+# 15 a minute, 250,000 input tokens a minute each) and answers 429
+# RESOURCE_EXHAUSTED when one is reached; the error names the quota and its
+# value (google.rpc.QuotaFailure) and a wait (google.rpc.RetryInfo). No call
+# of the API reports the usage or the limits (aistudio.google.com/docs/
+# rate-limits, 2026-11-05: they "can be viewed in Google AI Studio"). So a
+# model that answers 429 is passed over for the rest of the run, Google's
+# figures stand in the log, and the chain goes on. Until 2026-11-05 the gate
+# of ``ki-waechter.yml`` counted the requests of the day from an annotation
+# of every audit against a budget of ten. Michael 2026-10-31: "sorge auch
+# hier dafür, dass das API-Limit nicht überschritten wird": Google refuses a
+# request at the limit, and a key without billing cannot cost anything.
+# An overloaded model (500, 502, 503, 504; on 2026-10-31 all ten requests to
+# Gemini 3.8 Flash got "503 ... high demand" within an hour) or a dropped
+# connection hands over to the next model of the chain at once; the chain is
+# asked at most MAX_ROUNDS times, with OVERLOAD_WAIT_S in between.
+# The input is capped below the token-per-minute limit; a larger input is not
+# sent (red run) instead of being cut silently. German feed text runs at
+# about 3.5 characters per token; 24 hours of 2026-10-31 were 94,000
+# characters (about 30,000 tokens).
 MAX_PROMPT_CHARS = 450_000
-# One request per model of the chain ``KI_WAECHTER_MODEL`` in
-# ``ki-waechter.yml`` (Gemini 3.8 Flash, 3.6 Flash, 3.5 Flash-Lite, 3.1
-# Flash-Lite), no second round. Until 2026-11-05 three: the first model, the
-# fallback, the first again after a minute; from 01.11. to 05.11.2026 both
-# Flash models answered 503 every morning, and the Lite models (their own
-# quota of 500 requests a day) joined the chain as its tail (Michael
-# 2026-11-05: "Baue bitte auch einen Modellwechsel mit den Lite-Modellen als
-# Ergänzung."). The gate names the same number (MAX_PER_AUDIT, a test keeps
-# them equal).
-MAX_REQUESTS_PER_AUDIT = 4
-OVERLOAD_WAIT_S = (60, 180)
+# Passes over the chain in one audit: every model once per pass, an
+# overloaded one again in the next pass. Two passes over the chain of four
+# are eight requests at most; from 01.11. to 05.11.2026 an audit sent three
+# (3.8 Flash, 3.6 Flash, 3.8 Flash again after a minute).
+MAX_ROUNDS = 2
+OVERLOAD_WAIT_S = 60
+# A Lite model is one whose name carries ``-lite`` (``gemini-3.5-flash-lite``).
+LITE_MARK = "-lite"
+# The Lite models think "minimal" by default, the Flash models "medium"
+# (https://aistudio.google.com/docs/thinking, 2026-11-05); a Lite model that
+# read the feed of 27.10.2026 without thinking found none of its four known
+# errors in two seconds. The audit asks the Lite models for the top level and
+# leaves the Flash models at their default.
+LITE_THINKING_LEVEL = "high"
 # No new request (wait included) after this many seconds: the last one (read
 # timeout 600 s) still ends inside the step limit of 25 minutes in
-# ``ki-waechter.yml``, so the annotation ``Gemini-Anfragen`` is always written.
+# ``ki-waechter.yml``.
 NO_NEW_REQUEST_AFTER_S = 720
 OVERLOAD_STATUS = frozenset({500, 502, 503, 504})
+QUOTA_STATUS = 429
 MAX_ANSWER_BYTES = 2_000_000
 # The answer's shape, enforced by the API (structured output). The script
 # still checks every field: the schema shapes the answer, it proves nothing.
@@ -170,7 +185,10 @@ class Answer:
     error: str = ""
     tokens: dict[str, int] = field(default_factory=dict)
     seconds: float = 0.0
+    # Requests sent, in all and per model (for the reader of the run; nothing
+    # counts them against a budget since 2026-11-05, Google counts).
     requests: int = 0
+    per_model: dict[str, int] = field(default_factory=dict)
     # One line per request that got no answer: model, seconds, what happened.
     attempts: list[str] = field(default_factory=list)
     # No answer only because Google was busy: the last request ended in an
@@ -189,14 +207,26 @@ def build_prompt(input_text: str, prompt_template: str) -> str:
     return prompt_template.replace("{EINGABE}", input_text)
 
 
-def gemini_request(prompt: str) -> dict[str, Any]:
-    """One generateContent call: the prompt, JSON out in the answer schema, no tools."""
+def is_lite(model: str) -> bool:
+    """Whether *model* belongs to the Lite family (asked to think, :data:`LITE_THINKING_LEVEL`)."""
+    return LITE_MARK in model
+
+
+def gemini_request(prompt: str, model: str = "") -> dict[str, Any]:
+    """One generateContent call: the prompt, JSON out in the answer schema, no tools.
+
+    A Lite model is asked for :data:`LITE_THINKING_LEVEL`; a Flash model keeps
+    its default (the API refuses a thinking config a model does not know).
+    """
+    generation: dict[str, Any] = {
+        "responseMimeType": "application/json",
+        "responseJsonSchema": ANSWER_SCHEMA,
+    }
+    if is_lite(model):
+        generation["thinkingConfig"] = {"thinkingLevel": LITE_THINKING_LEVEL}
     return {
         "contents": [{"role": "user", "parts": [{"text": prompt}]}],
-        "generationConfig": {
-            "responseMimeType": "application/json",
-            "responseJsonSchema": ANSWER_SCHEMA,
-        },
+        "generationConfig": generation,
         # Operator texts name accidents, police and rescue operations; a
         # safety block would end the audit without an answer.
         "safetySettings": [
@@ -235,17 +265,20 @@ def ask_gemini(
     prompt: str,
     model: str,
     key: str,
-    max_requests: int = 1,
     sleep: Callable[[float], None] = time.sleep,
+    max_rounds: int = MAX_ROUNDS,
 ) -> Answer:
-    """Send the prompt; again only while the model is overloaded and ``max_requests`` allows.
+    """Send the prompt along the chain until a model answers.
 
     ``model`` may name a chain, comma-separated
-    (``gemini-3.8-flash,gemini-3.6-flash,gemini-3.5-flash-lite,gemini-3.1-flash-lite``):
-    an overloaded model hands over to the next one at once (each model has its
-    own free-tier quota), a model already asked gets the next request only
-    after a wait, so a chain as long as the share is asked once through. The
-    key travels in a header, never in the URL or a log line.
+    (``gemini-3.8-flash,gemini-3.6-flash,gemini-3.5-flash-lite,gemini-3.1-flash-lite``).
+    An overloaded model (5xx, a dropped connection) hands over to the next one
+    at once and is asked again in the next pass over the chain, after
+    :data:`OVERLOAD_WAIT_S`; ``max_rounds`` passes at most. A model whose
+    quota Google reports as reached (429) is passed over for the rest of the
+    run: Google counts, the audit does not. Any other refusal (a rejected
+    key, an unknown model, a timeout) ends the run. The key travels in a
+    header, never in the URL or a log line.
     """
     models = [m.strip() for m in model.split(",") if m.strip()]
     if not models or not all(re.fullmatch(r"[a-z0-9.-]{3,60}", m) for m in models):
@@ -254,43 +287,52 @@ def ask_gemini(
         return Answer(False, models[0], error=(
             f"Eingabe zu groß ({len(prompt)} Zeichen, Grenze {MAX_PROMPT_CHARS}); nicht gesendet"
         ))
-    body = json.dumps(gemini_request(prompt), ensure_ascii=True, allow_nan=False)
+    bodies = {
+        lite: json.dumps(gemini_request(prompt, LITE_MARK if lite else ""), ensure_ascii=True, allow_nan=False)
+        for lite in (False, True)
+    }
     headers = {"Content-Type": "application/json", "x-goog-api-key": key}
     started = time.monotonic()
-    limit = max(0, min(max_requests, MAX_REQUESTS_PER_AUDIT))
-    sent = 0
+    sent: dict[str, int] = {}
+    # Models whose quota Google reported as reached (429): not asked again in this run.
+    spent: set[str] = set()
     attempts: list[str] = []
     busy = False
-    answer = Answer(False, models[0], error="kein Anfragebudget")
-    # total=0: the session itself never repeats a request; this loop counts every one.
+    answer = Answer(False, models[0], error="keine Anfrage gesendet")
+    # total=0: the session itself never repeats a request; this loop sends every one.
     # keepalive: the answer can take minutes without a byte on the wire.
     with session_with_retries(
         "wien-oepnv-ki-waechter", timeout=GEMINI_TIMEOUT, keepalive=True, total=0,
     ) as session:
-        while sent < limit:
-            current = models[sent % len(models)]
-            if sent:
-                rounds = sent // len(models)
-                wait = OVERLOAD_WAIT_S[min(rounds, len(OVERLOAD_WAIT_S)) - 1] if sent % len(models) == 0 else 0
+        waited_round = 0
+        for round_no, current in ((r, m) for r in range(max(0, max_rounds)) for m in models):
+            if current in spent:
+                continue
+            total = sum(sent.values())
+            if total:
+                # A new pass over the chain begins with a wait; inside a pass
+                # the next model is asked at once.
+                wait = OVERLOAD_WAIT_S if round_no > waited_round else 0
                 if time.monotonic() - started + wait > NO_NEW_REQUEST_AFTER_S:
                     print(f"Gemini: nach {time.monotonic() - started:.0f} s keine weitere Anfrage")
                     break
-                print(f"Gemini überlastet oder Verbindung abgebrochen, {sent + 1}. von höchstens {limit} "
-                      f"Anfragen an {current}" + (f" in {wait} s" if wait else ""))
+                print(f"Gemini überlastet oder Verbindung abgebrochen, {total + 1}. Anfrage, an {current}"
+                      + (f" in {wait} s" if wait else ""))
                 if wait:
                     sleep(wait)
-            sent += 1
+                    waited_round = round_no
+            sent[current] = sent.get(current, 0) + 1
             sent_at = time.monotonic()
             try:
                 response = request_safe(
-                    session, GEMINI_URL.format(model=current), method="POST", data=body, headers=headers,
-                    timeout=GEMINI_TIMEOUT, max_bytes=MAX_ANSWER_BYTES,
+                    session, GEMINI_URL.format(model=current), method="POST", data=bodies[is_lite(current)],
+                    headers=headers, timeout=GEMINI_TIMEOUT, max_bytes=MAX_ANSWER_BYTES,
                     allowed_content_types=("application/json",), raise_for_status=False,
                 )
             except requests.ConnectionError as exc:
                 # A dropped connection (2026-11-02: after 261 s, the model still
-                # thinking) is handled like an overloaded model: next model,
-                # within the share; the request counts, it may have reached Google.
+                # thinking) is handled like an overloaded model: next model; the
+                # request may have reached Google.
                 answer = Answer(False, current, error=f"Gemini nicht erreichbar ({type(exc).__name__})")
                 attempts.append(_attempt(current, sent_at, answer.error))
                 busy = True
@@ -302,14 +344,18 @@ def ask_gemini(
                 busy = isinstance(exc, requests.Timeout)
                 break
             answer = _answer_from(response, current)
-            busy = response.status_code in OVERLOAD_STATUS or response.status_code == 429
+            status = response.status_code
+            busy = status in OVERLOAD_STATUS or status == QUOTA_STATUS
             if not answer.ok:
                 attempts.append(_attempt(current, sent_at, answer.error))
-            if response.status_code not in OVERLOAD_STATUS:
+            if status == QUOTA_STATUS:
+                spent.add(current)
+            elif status not in OVERLOAD_STATUS:
                 break
     answer.attempts = attempts
     answer.overloaded = busy and not answer.ok
-    answer.requests = sent
+    answer.per_model = sent
+    answer.requests = sum(sent.values())
     answer.seconds = round(time.monotonic() - started, 1)
     return answer
 
@@ -330,9 +376,32 @@ def _answer_from(response: requests.Response, model: str) -> Answer:
         message = ""
         if isinstance(payload, dict):
             message = free_text((payload.get("error") or {}).get("message"))[:200]
-        hint = " (Kontingent erschöpft, kein neuer Versuch)" if response.status_code == 429 else ""
+        hint = f" ({quota_details(payload)})" if response.status_code == QUOTA_STATUS else ""
         return Answer(False, model, error=f"Gemini HTTP {response.status_code}{hint}: {message or 'ohne Text'}")
     return gemini_answer(payload, model)
+
+
+def quota_details(payload: object) -> str:
+    """Google's own figures from a 429: the quota reached, its value, the wait.
+
+    The error details carry ``google.rpc.QuotaFailure`` (``violations`` with
+    ``quotaId``, ``quotaMetric``, ``quotaValue``) and ``google.rpc.RetryInfo``
+    (``retryDelay``); whatever is missing is left out.
+    """
+    parts: list[str] = []
+    details = (payload.get("error") or {}).get("details") if isinstance(payload, dict) else None
+    for detail in details if isinstance(details, list) else []:
+        if not isinstance(detail, dict):
+            continue
+        kind = str(detail.get("@type") or "").rsplit(".", 1)[-1]
+        if kind == "QuotaFailure":
+            for violation in detail.get("violations") or []:
+                if isinstance(violation, dict):
+                    quota = free_text(violation.get("quotaId") or violation.get("quotaMetric") or "Kontingent")[:80]
+                    parts.append(f"{quota} = {free_text(violation.get('quotaValue') or '?')[:20]}")
+        elif kind == "RetryInfo" and detail.get("retryDelay"):
+            parts.append(f"Wartezeit {free_text(detail.get('retryDelay'))[:20]}")
+    return "Kontingent laut Google erreicht" + (": " + ", ".join(parts) if parts else "")
 
 
 
@@ -386,10 +455,13 @@ def _cmd_ask(args: argparse.Namespace) -> int:
         template = read_capped_text(Path(args.prompt), label="ki_waechter")
         if input_text is None or template is None:
             raise ValueError("Eingabe oder Prompt fehlt")
-        answer = ask_gemini(build_prompt(input_text, template), args.model, key, args.max_requests)
+        answer = ask_gemini(build_prompt(input_text, template), args.model, key)
     _write_json(work / "antwort.json", asdict(answer))
-    # The gate of the next runs reads this annotation to count the day's requests.
+    # For the reader of the run: how many requests, to which models. Nothing
+    # counts them (until 2026-11-05 the gate read the first annotation).
     print(f"::notice title=Gemini-Anfragen::{answer.requests}")
+    if answer.per_model:
+        print("::notice title=Gemini-Modelle::" + ", ".join(f"{m} {n}" for m, n in answer.per_model.items()))
     if not answer.ok:
         if answer.overloaded:
             # Exit 1 all the same: no answer, nothing to verify. The workflow
@@ -447,8 +519,6 @@ def main(argv: Sequence[str] | None = None) -> int:
     a.add_argument("--dir", required=True)
     a.add_argument("--model", required=True)
     a.add_argument("--prompt", default=str(PROMPT_FILE))
-    a.add_argument("--max-requests", type=int, default=1,
-                   help=f"Anteil dieses Laufs am Tagesbudget (höchstens {MAX_REQUESTS_PER_AUDIT})")
     v = sub.add_parser("verify", help="Antwort der KI prüfen und Bericht schreiben")
     v.add_argument("--dir", required=True)
     v.add_argument("--report", default="")

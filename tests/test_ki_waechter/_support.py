@@ -135,57 +135,37 @@ def _overloaded_then(monkeypatch: pytest.MonkeyPatch, replies: list[_Response]) 
     return calls
 
 
-# --- the daily request budget of the gate ------------------------------------------
+# --- the gate of the workflow ----------------------------------------------------
 
 
-def _run_gate(
-    tmp_path: Path, event: str, jobs: list[str], extra: dict[str, str] | None = None
-) -> dict[str, str]:
-    """Run the gate script with a fake ``gh``: one earlier run today with these audit jobs.
+def _run_gate(tmp_path: Path, event: str, extra: dict[str, str] | None = None) -> dict[str, str]:
+    """Run the gate script of ``ki-waechter.yml`` for *event* and return its outputs.
 
-    Each job is "<id> <status> <conclusion> <annotation>"; the annotation
-    "-" means the job left none. Since 2026-11-05 the gate runs only on a
-    dispatch of the Update cycle (``repository_dispatch``), a pull request or
-    a manual start; the record and the clock are read by the cycle
+    Since 2026-11-05 the gate runs only on a dispatch of the Update cycle
+    (``repository_dispatch``), a pull request or a manual start, and names the
+    commits to audit; the record and the clock are read by the cycle
     (``src/ki_waechter/dispatch.py``, ``tests/test_ki_waechter/test_dispatch.py``).
+    Nothing counts the Gemini requests any more (Google does), so the gate
+    calls no API and the harness needs no fake ``gh``.
     """
     doc = yaml.safe_load((REPO / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8"))
     script = doc["jobs"]["gate"]["steps"][0]["run"]
-    fake = tmp_path / "bin"
-    fake.mkdir(parents=True)
-    lines = "\n".join(" ".join(j.split()[:3]) for j in jobs)
-    notes = "".join(
-        f'  *"/check-runs/{j.split()[0]}/annotations"*) echo "{"" if j.split()[3] == "-" else j.split()[3]}" ;;\n'
-        for j in jobs
-    )
-    (fake / "gh").write_text(
-        "#!/bin/bash\n"
-        'case "$2" in\n'
-        '  *"/runs?created="*) echo 11 ;;\n'
-        f'  *"/runs/11/jobs?"*) printf "{lines}\\n" ;;\n'
-        + notes
-        + "  *) exit 1 ;;\n"
-        "esac\n",
-        encoding="utf-8",
-    )
-    (fake / "gh").chmod(0o755)
+    tmp_path.mkdir(parents=True, exist_ok=True)
     output, summary = tmp_path / "out", tmp_path / "summary"
     env = {
-        "PATH": f"{fake}:/usr/bin:/bin:/usr/local/bin",
+        "PATH": "/usr/bin:/bin:/usr/local/bin",
         "GITHUB_OUTPUT": str(output),
         "GITHUB_STEP_SUMMARY": str(summary),
         "EVENT": event,
         "OWNER_REPO": "o/r",
         "PR_HEAD_REPO": "o/r",
-        "RUN_ID": "99",
         "REV_INPUT": "",
         "MODEL_INPUT": "",
-        "KI_WAECHTER_MAX_REQUESTS": str(doc["env"]["KI_WAECHTER_MAX_REQUESTS"]),
-        "MAX_PER_AUDIT": doc["jobs"]["gate"]["steps"][0]["env"]["MAX_PER_AUDIT"],
-        "KI_WAECHTER_RETRY_HOURS": doc["env"]["KI_WAECHTER_RETRY_HOURS"],
+        "CYCLE_RUN": "",
         **(extra or {}),
     }
     subprocess.run(["bash", "-c", script], env=env, check=True, capture_output=True)
+    output.touch()
     return dict(line.split("=", 1) for line in output.read_text(encoding="utf-8").splitlines())
 
 

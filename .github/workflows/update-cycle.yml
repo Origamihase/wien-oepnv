@@ -683,11 +683,11 @@ jobs:
 
       # ----- The daily KI-Wächter -----------------------------------------
       # Sends ``repository_dispatch: ki-waechter`` when the audit is due (from
-      # 9:00 Vienna time, once a day, two hours after a failed try, no run of
-      # the watcher active; src/ki_waechter/dispatch.py). After the publish,
-      # so the audit sees this tick's feed; ``main`` only; not after a failed
-      # tick (no ``always()``); a failed dispatch only warns. Until 2026-11-05
-      # the watcher's own gate job ran on all 48 ticks a day for this.
+      # 15:00 Vienna time, once a day, two hours after a failed try, no run of
+      # the watcher active; src/ki_waechter/dispatch.py has the reasons, 9:00
+      # until 2026-11-05). After the publish, so the audit sees this tick's
+      # feed; ``main`` only; not after a failed tick (no ``always()``); a failed
+      # dispatch only warns. Until 2026-11-05 the gate ran on all 48 ticks.
       - name: Start the KI-Wächter when due
         if: github.ref == 'refs/heads/main'
         continue-on-error: true
@@ -695,6 +695,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           # Same numbers as ki-waechter.yml names (a test keeps them equal).
-          KI_WAECHTER_START_HOUR: "9"
+          KI_WAECHTER_START_HOUR: "15"
           KI_WAECHTER_RETRY_HOURS: "2"
         run: python scripts/ki_waechter.py dispatch

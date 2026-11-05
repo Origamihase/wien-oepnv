@@ -17,10 +17,10 @@ Messung dazu stehen in [`architecture.md`](../architecture.md), Abschnitt
 
 | Schritt | Wer | Was |
 | --- | --- | --- |
-| Auslöser | letzter Schritt von `update-cycle.yml` (`scripts/ki_waechter.py dispatch`, `src/ki_waechter/dispatch.py`; seit 2026-11-05) | nach jedem erfolgreichen Update-Lauf auf `main`; sendet `repository_dispatch` `ki-waechter` nur, wenn es 9:00 Wiener Zeit oder später ist, heute noch kein erfolgreicher Prüflauf in `data/side_steps/ki-waechter.json` steht, ein gescheiterter von heute mindestens zwei Stunden zurückliegt, kein Lauf des Wächters läuft oder wartet und das Gate heute keinen Lauf wegen des Budgets ohne Prüfung beendet hat (Aufzeichnung zuerst aus dem Checkout, bei Fälligkeit frisch von `main`). Bis dahin lief der Job `gate` nach jedem Update-Lauf (`workflow_run`), um das zu prüfen |
-| Kontingent | `.github/workflows/ki-waechter.yml`, Job `gate` | zählt die Gemini-Anfragen des Tages und gibt dem Lauf seinen Anteil; startet nichts, wenn keine Anfrage mehr bleibt |
+| Auslöser | letzter Schritt von `update-cycle.yml` (`scripts/ki_waechter.py dispatch`, `src/ki_waechter/dispatch.py`; seit 2026-11-05) | nach jedem erfolgreichen Update-Lauf auf `main`; sendet `repository_dispatch` `ki-waechter` nur, wenn es 15:00 Wiener Zeit oder später ist (bis 05.11.2026 9:00), heute noch kein erfolgreicher Prüflauf in `data/side_steps/ki-waechter.json` steht, ein gescheiterter von heute mindestens zwei Stunden zurückliegt, kein Lauf des Wächters läuft oder wartet (Aufzeichnung zuerst aus dem Checkout, bei Fälligkeit frisch von `main`). Bis dahin lief der Job `gate` nach jedem Update-Lauf (`workflow_run`), um das zu prüfen |
+| Kontingent | Google (Gemini API, je Projekt und Modell) | zählt selbst und antwortet 429, sobald ein Kontingent erreicht ist; der Wächter zählt nicht: ein Modell mit 429 bleibt im Lauf außen vor, die Kette läuft weiter (Abschnitt „Gratis-Kontingent“) |
 | Eingabe | `scripts/ki_waechter.py prepare` | jede Fassung von `docs/feed.xml` und `docs/feed.en.xml` der 24 Stunden vor dem Commit (jeder Update-Lauf schreibt eine) und die `cache/*/events.json` derselben Commits; jeder verschiedene Meldungstext wird eine Nummer, mit der Zeit im Feed, den gleichzeitig sichtbaren Meldungen, dem eigenen Cache-Ereignis (beim ersten und letzten Auftreten) und bis zu sechs Ereignissen derselben Linien; jede Quelle steht einmal ganz da, danach mit ihrer Kennung (Q…); schreibt `.ki-waechter/eingabe.md` und `eingabe.json` |
-| Lesen | `scripts/ki_waechter.py ask` | ein Aufruf der Gemini API (Modell `KI_WAECHTER_MODEL`, derzeit `gemini-3.8-flash`) mit Prompt `scripts/ki_waechter_prompt.md` und Eingabe; keine Werkzeuge; Antwort im festen JSON-Schema; schreibt `antwort.json` |
+| Lesen | `scripts/ki_waechter.py ask` | ein Aufruf der Gemini API (Modellkette `KI_WAECHTER_MODEL`: `gemini-3.8-flash`, bei Überlastung sofort `gemini-3.6-flash`, dann `gemini-3.5-flash-lite` und `gemini-3.1-flash-lite`; jedes einmal je Durchgang, höchstens zwei Durchgänge mit einer Minute Pause; ein Modell, dessen Kontingent laut Google erreicht ist (429), bleibt im Lauf außen vor) mit Prompt `scripts/ki_waechter_prompt.md` und Eingabe; keine Werkzeuge; Antwort im festen JSON-Schema; schreibt `antwort.json` |
 | Prüfen | `scripts/ki_waechter.py verify` | jedes Zitat wörtlich gegen Feed und Quellen; schreibt den Bericht und `ergebnis.json` |
 | Ablage | `scripts/publish_to_main.sh` | `docs/archive/audits/ki-waechter-YYYY-MM-DD.md` und `data/side_steps/ki-waechter.json` nach `main` |
 | Meldung | `gh issue create` | nur bei belegten Funden ein Issue, Label `ki-waechter` |
@@ -30,8 +30,11 @@ verschiedenen Meldungstexten von 51 Meldungen, rund 94.000 Zeichen Eingabe.
 
 Von Hand: Actions → „KI-Wächter“ → „Run workflow“. Ohne Eingabe prüft er die
 24 Stunden bis zum aktuellen Stand und veröffentlicht; mit einem Commit-Hash
-prüft er die 24 Stunden bis zu diesem Commit und veröffentlicht nichts
-(Bericht in der Zusammenfassung des Laufs und als Artefakt).
+(`rev`) prüft er die 24 Stunden bis zu diesem Commit und veröffentlicht nichts
+(Bericht in der Zusammenfassung des Laufs und als Artefakt). Die Eingabe
+`model` (Modellnamen, kommagetrennt, seit 05.11.2026) fragt diese Modelle
+statt der üblichen Kette; auch ein solcher Probelauf veröffentlicht nichts
+und rührt weder die Aufzeichnung noch die Issues an.
 
 ## Fundklassen
 
@@ -100,26 +103,58 @@ Workflow zum Commit vormerkt, verbliebene Paare unwirksam (Regel in
 
 Michael, 2026-10-31: „Bitte sorge auch hier dafür, dass das API-Limit nicht
 überschritten wird.“ Der Schlüssel `GEMINI_API_KEY` gehört zu einem Projekt
-ohne Abrechnung, Kosten können also nicht entstehen. Die Grenzen für
-Gemini 3.8 Flash in diesem Projekt (AI Studio, 31.10.2026): 20 Anfragen am
-Tag, 5 pro Minute, 250.000 Eingabetokens pro Minute. Auch abgelehnte
-Anfragen (503) zählen. Der Wächter nutzt höchstens die Hälfte, über beide
-Modelle zusammen gezählt:
+ohne Abrechnung, Kosten können also nicht entstehen. Google zählt je Projekt
+und Modell (Anfragen pro Minute, Eingabetokens pro Minute, Anfragen pro Tag;
+der Tag beginnt um 0:00 Uhr Pazifikzeit, in Wien 9:00 Uhr, 8:00 Uhr in den
+Wochen zwischen den Zeitumstellungen) und antwortet `429 RESOURCE_EXHAUSTED`,
+sobald eine Grenze erreicht ist. Die Grenzen in diesem Projekt (AI Studio,
+05.11.2026): Gemini 3.8 Flash und 3.6 Flash je 20 Anfragen am Tag, 5 pro
+Minute, 250.000 Eingabetokens pro Minute; Gemini 3.5 Flash-Lite und 3.1
+Flash-Lite je 500 Anfragen am Tag, 15 pro Minute, 250.000 Eingabetokens pro
+Minute. Auch abgelehnte Anfragen (503) zählen. Der Wächter zählt nicht selbst
+(Michael, 05.11.2026: „Zähle es bitte so wie Google. Wir brauchen keine eigene
+Zähltechnik.“):
 
-- Ein Prüflauf sendet eine Anfrage. Eine Antwort 429 (Kontingent erschöpft)
-  wird nie wiederholt und macht den Lauf rot. Nur wenn das Modell überlastet
-  ist (500, 502, 503, 504; am 31.10.2026 bekamen alle zehn Anfragen an
-  Gemini 3.8 Flash binnen einer Stunde „503 … high demand“), fragt er sofort
-  das Ausweichmodell Gemini 3.6 Flash (eigenes Kontingent, gleiche Grenzen)
-  und nach einer Minute wieder 3.8 Flash; höchstens drei Anfragen je
-  Prüflauf und nie mehr als sein Anteil am Tagesbudget. Welches Modell
-  geantwortet hat, steht im Bericht. Die HTTP-Sitzung selbst wiederholt
-  nichts. Eine abgebrochene Verbindung zählt wie ein überlastetes Modell
-  (seit 02.11.2026: an diesem Tag brach die Verbindung nach 261 Sekunden ab,
-  während das Modell noch rechnete, und der Lauf endete ohne Bericht, obwohl
-  er drei Anfragen hatte). Die Anfrage zählt, sie kann Google erreicht
-  haben. Eine Antwort, die nach zehn Minuten noch fehlt (Lesezeitgrenze),
-  wird nicht wiederholt.
+- Ein Prüflauf sendet eine Anfrage. Antwortet das Modell 429, ist sein
+  Kontingent laut Google erreicht: Es wird in diesem Lauf nicht mehr gefragt,
+  die Kette geht sofort zum nächsten Modell. Die Antwort nennt das verletzte
+  Kontingent und seinen Wert (`google.rpc.QuotaFailure`: `quotaId`,
+  `quotaValue`) und eine Wartezeit (`google.rpc.RetryInfo`); das steht im Log
+  und in `antwort.json`, so sieht man Googles Zahlen, nicht unsere. Ändert
+  Google das Kontingent, ändert sich hier nichts. Den Verbrauch zeigt nur das
+  Dashboard „Rate limits“ in AI Studio; eine Abfrage über die API gibt es laut
+  Googles Doku nicht (die Antwort einer Anfrage enthält nur deren Tokens,
+  `usageMetadata`), die Cloud Quotas API liefert Limits, nicht den Verbrauch,
+  und der Verbrauch über die Cloud Monitoring API bräuchte IAM-Rollen und ein
+  Dienstkonto statt des API-Schlüssels (geprüft 05.11.2026:
+  aistudio.google.com/docs/rate-limits, docs.cloud.google.com/docs/quotas).
+- Ist das Modell überlastet (500, 502, 503, 504; am 31.10.2026 bekamen alle
+  zehn Anfragen an Gemini 3.8 Flash binnen einer Stunde „503 … high
+  demand“), fragt er sofort das nächste Modell der Kette: Gemini 3.6 Flash
+  (eigenes Kontingent, gleiche Grenzen), dann Gemini 3.5 Flash-Lite und
+  Gemini 3.1 Flash-Lite (seit 05.11.2026, Betreiberentscheidung: „Baue bitte
+  auch einen Modellwechsel mit den Lite-Modellen als Ergänzung.“ Anlass: Vom
+  01. bis 05.11.2026 antworteten beide Flash-Modelle jeden Morgen um 9:00 Uhr
+  mit 503, die Prüfung des Tages hing am Versuch zwei Stunden später, am
+  04.11. fiel sie ganz aus, und der Health check war rot). Hat kein Modell
+  geantwortet, wartet er eine Minute und geht die Kette ein zweites Mal
+  durch (`MAX_ROUNDS` = 2, `OVERLOAD_WAIT_S` = 60), ohne die Modelle mit
+  erreichtem Kontingent: höchstens acht Anfragen je Prüflauf. Bis zum 05.11.
+  waren es drei (3.8 Flash, 3.6 Flash, nach einer Minute wieder 3.8 Flash).
+  Die Flash-Modelle bleiben vorn, die Lite-Modelle verhindern den verlorenen
+  Tag; sie werden mit Denkstufe „high“ gefragt (ihr Standard ist „minimal“,
+  die Flash-Modelle behalten „medium“; ein Lite-Modell ohne Denken fand am
+  27.10.2026 keinen der vier bekannten Fehler, Abschnitt „Probelauf“).
+  Welches Modell geantwortet hat, steht im Bericht. Die Live-API-Modelle (im
+  Kontingent „unbegrenzt“) und Gemma 4 kamen nicht in Frage: Die Live API
+  antwortet laut Modellseite nur als Audio und über eine WebSocket-Sitzung,
+  Gemma 4 erlaubt 16.000 Tokens pro Minute, die Eingabe hat das Drei- bis
+  Vierfache. Die HTTP-Sitzung selbst wiederholt nichts. Eine abgebrochene
+  Verbindung zählt wie ein überlastetes Modell (seit 02.11.2026: an diesem
+  Tag brach die Verbindung nach 261 Sekunden ab, während das Modell noch
+  rechnete, und der Lauf endete ohne Bericht, obwohl er drei Anfragen
+  hatte). Die Anfrage zählt, sie kann Google erreicht haben. Eine Antwort,
+  die nach zehn Minuten noch fehlt (Lesezeitgrenze), wird nicht wiederholt.
 - Die Verbindung zu Gemini sendet TCP-Keepalive (erste Probe nach
   60 Sekunden Stille, dann alle 30 Sekunden), damit kein NAT und keine
   Firewall auf dem Weg eine Verbindung vergisst, auf deren Antwort der
@@ -132,39 +167,35 @@ Modelle zusammen gezählt:
   sie nur den Adapter der Sitzung, den diese Anfragen nie benutzen, und die
   Verbindung des Wächters lief ohne Keepalive.
 - Nach zwölf Minuten (Wartezeit eingerechnet) beginnt keine neue Anfrage
-  mehr (`NO_NEW_REQUEST_AFTER_S`). So endet auch die letzte vor der
-  Grenze des Schritts von 25 Minuten, und die Anmerkung „Gemini-Anfragen“
-  wird immer geschrieben.
-- Höchstens `KI_WAECHTER_MAX_REQUESTS` (10) Anfragen am Tag. Der Tag des
-  Kontingents beginnt um 0:00 Uhr Pazifikzeit, in Wien meist 9:00 Uhr. Jeder
-  Prüflauf hinterlässt die Anmerkung „Gemini-Anfragen“ mit seiner Zahl. Der
-  Job `gate` zählt sie für alle Prüfläufe dieses Workflows, die seit diesem
-  Zeitpunkt gestartet sind (ein noch laufender und ein beendeter ohne
-  Anmerkung, also abgebrochen oder abgestürzt, zählen mit drei) und gibt jedem Prüflauf des neuen Laufs den Rest
-  geteilt durch ihre Zahl, höchstens drei; bleibt keiner, startet er nichts.
-  Pull Requests und Läufe von Hand rechnen nur bis 7; die letzten drei
-  Anfragen bleiben dem täglichen Lauf, damit er auch nach vielen
-  Probeläufen das Ausweichmodell und einen weiteren Versuch hat (seit
-  01.11.2026; bis dahin blieb ihm eine, und an diesem Tag bekam er nach
-  9 Anfragen der Probeläufe eine einzige, die mit 503 scheiterte). Gezählt wird nach dem Start des Jobs, nicht nach
-  dem Anlegen des Laufs: Ein erneut gestarteter Lauf behält seine
-  Anlegezeit, und am 01.11.2026 übersah das Gate so sechs Anfragen eines am
-  Vorabend angelegten Laufs; seither liest es die Läufe eines Monats, behält
-  die seit Mitternacht veränderten und zählt deren Jobs aller Versuche nach
-  ihrer Startzeit. Der eigene Lauf zählt mit (seit 02.11.2026): Ein erneut
-  gestarteter Lauf ist ein weiterer Versuch desselben Laufs, und bis dahin
-  übersah das Gate die Anfragen seiner früheren Versuche. „Re-run failed
-  jobs“ startet das Gate nicht neu und nimmt dessen alten Anteil; dafür
-  lieber den ganzen Lauf neu starten.
-- Der tägliche Lauf beginnt um 9:00 Uhr Wiener Zeit, gleich nach dem Beginn
-  des Kontingent-Tags (Michael, 31.10.2026, nachdem Gemini 3.8 Flash den
-  ganzen Nachmittag mit 503 antwortete). Scheitert er, versucht er es
-  frühestens zwei Stunden später noch einmal, solange das Tagesbudget
-  reicht; nach einem erfolgreichen Lauf ruht er bis zum nächsten Tag. Das
-  entscheidet seit 2026-11-05 der Update-Lauf (Tabelle „Ablauf“, Zeile
-  „Auslöser“; die Stunde und der Abstand stehen als `KI_WAECHTER_START_HOUR`
-  und `KI_WAECHTER_RETRY_HOURS` in `update-cycle.yml`); bis dahin lief das
-  Gate dafür nach jedem Update-Lauf, 48-mal am Tag.
+  mehr (`NO_NEW_REQUEST_AFTER_S`). So endet auch die letzte vor der Grenze
+  des Schritts von 25 Minuten. Die Anmerkungen „Gemini-Anfragen“ (Zahl) und
+  „Gemini-Modelle“ (je Modell) jedes Prüflaufs sind Information für den
+  Leser des Laufs, nichts rechnet mit ihnen.
+- Bis zum 05.11.2026 zählte der Job `gate` selbst: höchstens zehn Anfragen
+  am Tag über alle Modelle, gelesen aus der Anmerkung „Gemini-Anfragen“ jedes
+  Prüflaufs seit 0:00 Uhr Pazifikzeit über die GitHub-API; jeder Prüflauf
+  bekam seinen Anteil am Rest, Pull Requests und Läufe von Hand rechneten
+  nur bis 6, blieb nichts, startete er nichts, und der Update-Lauf startete
+  an so einem Tag keinen weiteren Versuch. Das schützte vor dem Kontingent
+  eines einzelnen Modells, als die Kette nur die beiden Flash-Modelle hatte,
+  kostete aber Probeläufe, Lesezugriffe auf die API und am 01.11.2026 fast
+  die Prüfung des Tages (nach 9 Anfragen der Probeläufe blieb ihr eine, die
+  mit 503 scheiterte). Mit den Lite-Modellen (500 am Tag) in der Kette kann
+  kein Lauf dem täglichen Lauf die Antwort nehmen.
+- Der tägliche Lauf beginnt um 15:00 Uhr Wiener Zeit (seit 05.11.2026). Vom
+  31.10. bis 05.11.2026 begann er um 9:00 Uhr, gleich nach dem Beginn des
+  Kontingent-Tags (Michael, 31.10.2026, nachdem Gemini 3.8 Flash den ganzen
+  Nachmittag mit 503 antwortete); um diese Stunde darf aber jeder wieder, und
+  an fünf Morgen in Folge antworteten beide Flash-Modelle 503, während der
+  Versuch um 11:00 Uhr an drei von vier Tagen gelang (Michael, 05.11.2026:
+  „Wenn jeder wieder darf, ist es klar, dass die API eine höhere Last hat …
+  wir sollten später abfragen. Wie wärs mit 15:00 Uhr?“). Scheitert er,
+  versucht er es frühestens zwei Stunden später noch einmal; nach einem
+  erfolgreichen Lauf ruht er bis zum nächsten Tag. Das entscheidet seit
+  2026-11-05 der Update-Lauf (Tabelle „Ablauf“, Zeile „Auslöser“; die Stunde
+  und der Abstand stehen als `KI_WAECHTER_START_HOUR` und
+  `KI_WAECHTER_RETRY_HOURS` in `update-cycle.yml`); bis dahin lief das Gate
+  dafür nach jedem Update-Lauf, 48-mal am Tag.
 - Die Eingabe ist auf 450.000 Zeichen begrenzt (etwa 130.000 Tokens). Eine
   größere Eingabe wird nicht gesendet, der Lauf ist rot.
 - Die Läufe eines Pull Requests laufen nacheinander (`max-parallel: 1`).
@@ -194,7 +225,8 @@ Health check war jedes Mal rot, obwohl der Feed lief):
 
 - **Gemini überlastet.** Die letzte Anfrage endete mit 500, 502, 503 oder 504,
   mit einer abgebrochenen Verbindung, nach zehn Minuten ohne Antwort oder
-  mit 429 (Kontingent erschöpft). `ask` schreibt `"overloaded": true` in
+  mit 429 (Kontingent laut Google erreicht); seit 05.11.2026 heißt das,
+  dass kein Modell der Kette geantwortet hat. `ask` schreibt `"overloaded": true` in
   `antwort.json`, der Lauf endet mit einer Warnung grün, und
   `data/side_steps/ki-waechter.json` hält das Ergebnis `overloaded` fest. Die
   Prüfung `Nebenschritte` im Health check zeigt das als Hinweis mit der
@@ -207,10 +239,10 @@ Health check war jedes Mal rot, obwohl der Feed lief):
   Skript: Der Lauf ist rot, und die Prüfung `Nebenschritte` wird sofort rot.
   Rot wird sie auch, wenn 36 Stunden kein Lauf aufgezeichnet wurde.
 
-In beiden Fällen versucht er es zwei Stunden später von selbst noch einmal,
-solange das Tagesbudget reicht; ein erfolgreicher Lauf macht die Prüfung
-wieder grün. Von Hand geht es ebenso innerhalb des Budgets. Ein Probelauf im
-Pull Request bleibt auch bei Überlastung rot, weil er kein Ergebnis hat.
+In beiden Fällen versucht er es zwei Stunden später von selbst noch einmal;
+ein erfolgreicher Lauf macht die Prüfung wieder grün. Von Hand geht es
+ebenso. Ein Probelauf im Pull Request bleibt auch bei Überlastung rot, weil
+er kein Ergebnis hat.
 
 ## Probelauf im Pull Request
 

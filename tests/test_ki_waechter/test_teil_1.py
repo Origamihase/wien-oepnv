@@ -7,6 +7,7 @@ Beschreibung in __init__.py.
 from __future__ import annotations
 
 import json
+import subprocess
 from types import SimpleNamespace
 from datetime import UTC, datetime
 from pathlib import Path
@@ -258,28 +259,64 @@ def test_gemini_gets_one_request_with_the_key_in_a_header(monkeypatch: pytest.Mo
     assert "tools" not in body
 
 
-def test_the_limit_is_never_retried_and_a_too_large_input_never_sent(monkeypatch: pytest.MonkeyPatch) -> None:
-    calls: list[str] = []
+CHAIN = "gemini-3.8-flash,gemini-3.6-flash,gemini-3.5-flash-lite,gemini-3.1-flash-lite"
+# A 429 of the Gemini API with Google's error details (google.rpc.QuotaFailure, RetryInfo).
+QUOTA_REPLY = {"error": {
+    "code": 429, "status": "RESOURCE_EXHAUSTED",
+    "message": "You exceeded your current quota, please check your plan and billing details.",
+    "details": [
+        {"@type": "type.googleapis.com/google.rpc.QuotaFailure", "violations": [{
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {"model": "gemini-3.8-flash", "location": "global"}, "quotaValue": "20"}]},
+        {"@type": "type.googleapis.com/google.rpc.Help", "links": [{"description": "Learn more", "url": "https://x"}]},
+        {"@type": "type.googleapis.com/google.rpc.RetryInfo", "retryDelay": "39s"},
+    ],
+}}
 
-    def fake_request(session: object, url: str, **kwargs: Any) -> _Response:
-        calls.append(url)
-        return _Response(429, {"error": {"message": "Quota exceeded"}})
 
-    monkeypatch.setattr(kw, "request_safe", fake_request)
-    answer = kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=3, sleep=lambda s: None)
-    assert not answer.ok and "Kontingent erschöpft, kein neuer Versuch" in answer.error
-    assert len(calls) == 1 and answer.requests == 1
-    big = kw.ask_gemini("x" * (kw.MAX_PROMPT_CHARS + 1), "gemini-3.8-flash", "k", max_requests=3)
-    assert not big.ok and "nicht gesendet" in big.error and len(calls) == 1 and big.requests == 0
+def test_a_quota_google_reports_as_reached_passes_the_model_over_for_the_run(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Michael 2026-11-05: "Zähle es bitte so wie Google. Wir brauchen keine eigene
+    Zähltechnik." A 429 is Google's count: the model is out for this run, its
+    figures (google.rpc.QuotaFailure, RetryInfo) stand in the error, the chain
+    goes on, and nothing is sent twice to a spent model."""
+    busy = {"error": {"message": "This model is currently experiencing high demand."}}
+    waits: list[float] = []
+    calls = _overloaded_then(monkeypatch, [_Response(429, QUOTA_REPLY)])
+    answer = kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", sleep=waits.append)
+    assert not answer.ok and answer.overloaded and len(calls) == 1 and answer.requests == 1 and waits == []
+    assert ("Kontingent laut Google erreicht: GenerateRequestsPerDayPerProjectPerModel-FreeTier = 20, "
+            "Wartezeit 39s" in answer.error)
+    # Without details the error still says whose count it is.
+    assert kw.quota_details({"error": {"message": "Quota exceeded"}}) == "Kontingent laut Google erreicht"
+    assert kw.quota_details("kein Objekt") == "Kontingent laut Google erreicht"
+    # 3.8 Flash spent, 3.6 Flash overloaded: the second pass asks 3.6 alone, after a minute.
+    calls = _overloaded_then(monkeypatch, [_Response(429, QUOTA_REPLY), _Response(503, busy),
+                                           _Response(200, _ok_payload("{}"))])
+    answer = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", sleep=waits.append)
+    assert [c.split("/models/")[1].split(":")[0] for c in calls] == [
+        "gemini-3.8-flash", "gemini-3.6-flash", "gemini-3.6-flash",
+    ]
+    assert answer.ok and answer.model == "gemini-3.6-flash" and waits == [60]
+    assert answer.per_model == {"gemini-3.8-flash": 1, "gemini-3.6-flash": 2} and answer.requests == 3
+    # Every model spent: one request each, no wait, and the day counts as overloaded (a note).
+    calls = _overloaded_then(monkeypatch, [_Response(429, QUOTA_REPLY)] * 4)
+    waits.clear()
+    answer = kw.ask_gemini("Prompt", CHAIN, "k", sleep=waits.append)
+    assert len(calls) == 4 and not answer.ok and answer.overloaded and waits == []
+    # A too large input is never sent.
+    calls = _overloaded_then(monkeypatch, [])
+    big = kw.ask_gemini("x" * (kw.MAX_PROMPT_CHARS + 1), "gemini-3.8-flash", "k")
+    assert not big.ok and "nicht gesendet" in big.error and calls == [] and big.requests == 0
 
 
-def test_an_overloaded_model_hands_over_and_is_asked_again_within_the_share(
+def test_an_overloaded_model_hands_over_and_is_asked_again_in_the_next_pass(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     busy = {"error": {"message": "This model is currently experiencing high demand."}}
     calls = _overloaded_then(monkeypatch, [_Response(503, busy), _Response(503, busy), _Response(200, _ok_payload("{}"))])
     waits: list[float] = []
-    answer = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", max_requests=3, sleep=waits.append)
+    answer = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", sleep=waits.append)
     # 3.8 overloaded, 3.6 at once, then 3.8 again after a minute.
     assert [c.split("/models/")[1] for c in calls] == [
         "gemini-3.8-flash:generateContent", "gemini-3.6-flash:generateContent", "gemini-3.8-flash:generateContent",
@@ -287,65 +324,62 @@ def test_an_overloaded_model_hands_over_and_is_asked_again_within_the_share(
     assert answer.ok and answer.model == "gemini-3.8-flash" and answer.requests == 3 and waits == [60]
     # The fallback that answers is named in the answer.
     _overloaded_then(monkeypatch, [_Response(503, busy), _Response(200, _ok_payload("{}"))])
-    answer = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", max_requests=3, sleep=lambda s: None)
+    answer = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", sleep=lambda s: None)
     assert answer.ok and answer.model == "gemini-3.6-flash" and answer.requests == 2
-    # One model: a share of two ends after the second overloaded answer.
+    # One model: two passes, one wait, then the run ends overloaded.
     _overloaded_then(monkeypatch, [_Response(503, busy), _Response(503, busy), _Response(200, _ok_payload("{}"))])
     waits = []
-    answer = kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=2, sleep=waits.append)
-    assert not answer.ok and "HTTP 503" in answer.error and answer.requests == 2 and waits == [60]
-    # Never more than four (one per model of the chain), whatever the share;
-    # no share, no request.
-    _overloaded_then(monkeypatch, [_Response(503, busy)] * 5)
-    assert kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=9, sleep=lambda s: None).requests == 4
+    answer = kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", sleep=waits.append)
+    assert not answer.ok and answer.overloaded and "HTTP 503" in answer.error
+    assert answer.requests == 2 and waits == [60]
+    # Never more than MAX_ROUNDS passes over the chain; no pass, no request.
+    _overloaded_then(monkeypatch, [_Response(503, busy)] * 9)
+    assert kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", sleep=lambda s: None).requests == kw.MAX_ROUNDS == 2
     calls = _overloaded_then(monkeypatch, [])
-    none = kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=0)
-    assert not none.ok and none.requests == 0 and calls == []
+    none = kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_rounds=0)
+    assert not none.ok and not none.overloaded and none.requests == 0 and calls == []
     with pytest.raises(ValueError):
         kw.ask_gemini("Prompt", "gemini-3.8-flash,../x", "k")
-
-
-CHAIN = "gemini-3.8-flash,gemini-3.6-flash,gemini-3.5-flash-lite,gemini-3.1-flash-lite"
 
 
 def test_the_lite_models_are_asked_when_both_flash_models_are_overloaded(monkeypatch: pytest.MonkeyPatch) -> None:
     """Michael 2026-11-05, after five mornings of 503 on 3.8 and 3.6 Flash:
     "Baue bitte auch einen Modellwechsel mit den Lite-Modellen als Ergänzung."
-    One request per model, no wait in between, the Lite models last."""
+    One request per model and pass, no wait inside a pass, the Lite models last."""
     busy = {"error": {"message": "This model is currently experiencing high demand."}}
     waits: list[float] = []
-    calls = _overloaded_then(monkeypatch, [_Response(503, busy), _Response(503, busy), _Response(200, _ok_payload("{}"))])
-    answer = kw.ask_gemini("Prompt", CHAIN, "k", max_requests=4, sleep=waits.append)
-    assert [c.split("/models/")[1].split(":")[0] for c in calls] == [
-        "gemini-3.8-flash", "gemini-3.6-flash", "gemini-3.5-flash-lite",
-    ]
+    bodies: dict[str, dict[str, Any]] = {}
+    replies = [_Response(503, busy), _Response(503, busy), _Response(200, _ok_payload("{}"))]
+
+    def fake_request(session: object, url: str, **kwargs: Any) -> _Response:
+        bodies[url.split("/models/")[1].split(":")[0]] = json.loads(kwargs["data"])
+        return replies.pop(0)
+
+    monkeypatch.setattr(kw, "request_safe", fake_request)
+    answer = kw.ask_gemini("Prompt", CHAIN, "k", sleep=waits.append)
+    assert list(bodies) == ["gemini-3.8-flash", "gemini-3.6-flash", "gemini-3.5-flash-lite"]
     assert answer.ok and answer.model == "gemini-3.5-flash-lite" and answer.requests == 3 and waits == []
     assert [a.split(" ")[0] for a in answer.attempts] == ["gemini-3.8-flash", "gemini-3.6-flash"]
-    # All four overloaded: four requests, once through the chain, still no
-    # wait, and the day counts as overloaded (a note in the Health check).
-    calls = _overloaded_then(monkeypatch, [_Response(503, busy)] * 5)
-    answer = kw.ask_gemini("Prompt", CHAIN, "k", max_requests=4, sleep=waits.append)
-    assert len(calls) == 4 and calls[-1].split("/models/")[1].startswith("gemini-3.1-flash-lite:")
-    assert not answer.ok and answer.overloaded and answer.requests == 4 and waits == []
-    # A smaller share stops inside the chain: the last Lite model is not asked.
-    calls = _overloaded_then(monkeypatch, [_Response(503, busy)] * 5)
-    answer = kw.ask_gemini("Prompt", CHAIN, "k", max_requests=3, sleep=waits.append)
-    assert len(calls) == 3 and answer.requests == 3 and waits == []
-    # A chain shorter than the share goes round again after a wait, as before.
-    calls = _overloaded_then(monkeypatch, [_Response(503, busy)] * 5)
-    answer = kw.ask_gemini("Prompt", "gemini-3.5-flash-lite,gemini-3.1-flash-lite", "k", max_requests=4, sleep=waits.append)
-    assert len(calls) == 4 and waits == [60]
+    # A Lite model is asked to think at the top level (its default is
+    # "minimal"; without thinking it found none of four known errors); a
+    # Flash model keeps its default, the API refuses a config it does not know.
+    assert bodies["gemini-3.5-flash-lite"]["generationConfig"]["thinkingConfig"] == {"thinkingLevel": "high"}
+    assert "thinkingConfig" not in bodies["gemini-3.8-flash"]["generationConfig"]
+    assert kw.is_lite("gemini-3.1-flash-lite") and not kw.is_lite("gemini-3.6-flash")
+    # All four overloaded: once through the chain, a minute, once again, and
+    # the day counts as overloaded (a note in the Health check).
+    calls = _overloaded_then(monkeypatch, [_Response(503, busy)] * 9)
+    answer = kw.ask_gemini("Prompt", CHAIN, "k", sleep=waits.append)
+    assert len(calls) == 8 and waits == [60] and calls[3].split("/models/")[1].startswith("gemini-3.1-flash-lite:")
+    assert not answer.ok and answer.overloaded and answer.requests == 8
+    assert answer.per_model == dict.fromkeys(CHAIN.split(","), 2)
 
 
-def test_the_workflow_chain_is_asked_once_through() -> None:
-    """One request per model of KI_WAECHTER_MODEL: a longer chain would never
-    reach its tail, a shorter one would ask a model twice."""
+def test_the_workflow_chain_names_the_four_models() -> None:
+    """Flash first, the Lite models last; no budget hands the ask step a share."""
     doc = yaml.safe_load((REPO / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8"))
-    models = doc["env"]["KI_WAECHTER_MODEL"].split(",")
-    assert models == CHAIN.split(",")
-    assert len(models) == kw.MAX_REQUESTS_PER_AUDIT
-    assert models[:2] == ["gemini-3.8-flash", "gemini-3.6-flash"]
-    assert all(m.endswith("-lite") for m in models[2:])
+    assert doc["env"]["KI_WAECHTER_MODEL"].split(",") == CHAIN.split(",")
+    assert "KI_WAECHTER_MAX_REQUESTS" not in doc["env"]
 
 
 def test_a_manual_trial_may_name_other_models_and_never_publishes(tmp_path: Path) -> None:
@@ -358,20 +392,20 @@ def test_a_manual_trial_may_name_other_models_and_never_publishes(tmp_path: Path
     assert '--model "${MODEL_OVERRIDE:-${KI_WAECHTER_MODEL}}"' in ask["run"]
     assert doc["jobs"]["gate"]["outputs"]["model"] == "${{ steps.decide.outputs.model }}"
     lite = "gemini-3.5-flash-lite,gemini-3.1-flash-lite"
-    out = _run_gate(tmp_path / "lite", "workflow_dispatch", [], {"MODEL_INPUT": lite})
+    out = _run_gate(tmp_path / "lite", "workflow_dispatch", {"MODEL_INPUT": lite})
     assert out["run"] == "true" and out["model"] == lite and out["publish"] == "false" and out["revs"] == '["HEAD"]'
     assert "Probelauf" in (tmp_path / "lite" / "summary").read_text(encoding="utf-8")
-    out = _run_gate(tmp_path / "rev", "workflow_dispatch", [], {"MODEL_INPUT": lite, "REV_INPUT": "001e47c665ce"})
+    out = _run_gate(tmp_path / "rev", "workflow_dispatch", {"MODEL_INPUT": lite, "REV_INPUT": "001e47c665ce"})
     assert out["publish"] == "false" and out["revs"] == '["001e47c665ce"]'
     # The plain manual run publishes, as before, and names no model.
-    out = _run_gate(tmp_path / "plain", "workflow_dispatch", [])
+    out = _run_gate(tmp_path / "plain", "workflow_dispatch")
     assert out["publish"] == "true" and "model" not in out
     # Anything but model names is refused before a request is counted.
     import subprocess
 
     for n, bad in enumerate(("gemini-3.8-flash;id", "a b", "Gemini", ",gemini-3.8-flash", "x,")):
         with pytest.raises(subprocess.CalledProcessError):
-            _run_gate(tmp_path / f"bad{n}", "workflow_dispatch", [], {"MODEL_INPUT": bad})
+            _run_gate(tmp_path / f"bad{n}", "workflow_dispatch", {"MODEL_INPUT": bad})
 
 
 def test_a_dropped_connection_hands_over_like_an_overloaded_model(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -388,23 +422,23 @@ def test_a_dropped_connection_hands_over_like_an_overloaded_model(monkeypatch: p
         return reply
 
     monkeypatch.setattr(kw, "request_safe", fake_request)
-    answer = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", max_requests=3, sleep=lambda s: None)
+    answer = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", sleep=lambda s: None)
     assert calls == ["gemini-3.8-flash:generateContent", "gemini-3.6-flash:generateContent"]
     assert answer.ok and answer.model == "gemini-3.6-flash" and answer.requests == 2
     # Every request without an answer is logged with its model (02.11.2026:
     # the error of the first of two requests was not visible).
     assert len(answer.attempts) == 1 and answer.attempts[0].startswith("gemini-3.8-flash nach ")
     assert "ConnectionError" in answer.attempts[0]
-    # Within the share only; the last error is the answer.
+    # One pass only (max_rounds=1); the last error is the answer.
     replies[:] = [requests.ConnectionError("x")] * 3
     calls.clear()
-    lost = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", max_requests=2, sleep=lambda s: None)
+    lost = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", sleep=lambda s: None, max_rounds=1)
     assert not lost.ok and "nicht erreichbar (ConnectionError)" in lost.error and lost.requests == 2
     assert [a.split(" ")[0] for a in lost.attempts] == ["gemini-3.8-flash", "gemini-3.6-flash"]
     # A timeout of the answer is not repeated: it already took ten minutes.
     replies[:] = [requests.ReadTimeout("x"), _Response(200, _ok_payload("{}"))]
     calls.clear()
-    slow = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", max_requests=3, sleep=lambda s: None)
+    slow = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", sleep=lambda s: None)
     assert not slow.ok and "ReadTimeout" in slow.error and slow.requests == 1
 
 
@@ -416,7 +450,7 @@ def test_no_new_request_late_in_the_step(monkeypatch: pytest.MonkeyPatch) -> Non
         times = [0.0, after_first]
         monkeypatch.setattr(kw, "time", SimpleNamespace(monotonic=lambda: times.pop(0) if len(times) > 1 else times[0]))
         calls = _overloaded_then(monkeypatch, [_Response(503, busy), _Response(200, _ok_payload("{}"))])
-        return calls, kw.ask_gemini("Prompt", model, "k", max_requests=3, sleep=lambda s: None)
+        return calls, kw.ask_gemini("Prompt", model, "k", sleep=lambda s: None)
 
     # One model: the second request would wait 60 s, 690 + 60 > 720.
     calls, answer = run(kw.NO_NEW_REQUEST_AFTER_S - 30.0, "gemini-3.8-flash")
@@ -530,7 +564,7 @@ def test_workflow_gives_the_model_no_tools_and_the_key_to_one_step() -> None:
     ask = steps["Gemini reads and compares"]
     assert "ki_waechter.py ask" in ask["run"]
     assert text.count("secrets.GEMINI_API_KEY") == 1 and "GEMINI_API_KEY" in ask["env"]
-    assert "--max-requests" in ask["run"] and ask["env"]["MAX_REQUESTS"] == "${{ needs.gate.outputs.per_job }}"
+    assert "--max-requests" not in ask["run"] and set(ask["env"]) == {"GEMINI_API_KEY", "MODEL_OVERRIDE"}
     assert "CLAUDE_CODE_OAUTH_TOKEN" not in text and "claude" not in text.lower()
     assert doc["permissions"] == {"contents": "read"}
     prepare = steps["Prepare the input"]["run"]
@@ -548,21 +582,18 @@ def test_prompt_names_its_input_and_not_the_backtest_cases() -> None:
         assert case not in prompt
 
 
-def test_the_gate_counts_the_requests_of_the_day() -> None:
+def test_the_gate_keeps_no_count_of_requests() -> None:
+    """Michael 2026-11-05: "Zähle es bitte so wie Google. Wir brauchen keine
+    eigene Zähltechnik." Until then the gate read the annotation
+    "Gemini-Anfragen" of every audit job of the day through the API and
+    refused runs against a budget of ten."""
     doc = yaml.safe_load((REPO / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8"))
-    assert doc["env"]["KI_WAECHTER_MAX_REQUESTS"] == "10"
-    assert doc["jobs"]["gate"]["steps"][0]["env"]["MAX_PER_AUDIT"] == str(kw.MAX_REQUESTS_PER_AUDIT)
-    assert doc["jobs"]["gate"]["permissions"] == {"actions": "read", "contents": "read"}
-    # A re-run keeps its run's creation time: jobs count by their own start,
-    # runs are listed a month back and kept when touched since midnight.
-    script = doc["jobs"]["gate"]["steps"][0]["run"]
-    # Its own run counts as well: a re-run is a new attempt of it (2026-11-02).
-    assert 'select(.updated_at >= \\"${since}\\")' in script
-    assert "RUN_ID" not in script
-    assert "jobs?filter=all&per_page=100" in script
-    assert '.started_at >= \\"${since}\\"' in script
-    assert "midnight - 31 * 86400" in script and "--paginate" in script
-    assert 'n="${n:-${MAX_PER_AUDIT}}"' in script
+    assert "KI_WAECHTER_MAX_REQUESTS" not in doc["env"]
+    gate = doc["jobs"]["gate"]
+    assert gate["permissions"] == {"contents": "read"} and set(gate["outputs"]) == {"run", "revs", "publish", "model"}
+    step = gate["steps"][0]
+    assert "gh api" not in step["run"] and "Gemini-Anfragen" not in step["run"] and "GH_TOKEN" not in step["env"]
+    assert not hasattr(kw, "MAX_REQUESTS_PER_AUDIT")
 
 
 def test_the_last_request_ends_inside_the_step_limit() -> None:
@@ -576,46 +607,32 @@ def test_the_last_request_ends_inside_the_step_limit() -> None:
 
 
 @pytest.mark.parametrize(
-    ("event", "jobs", "per_job"),
+    ("event", "publish", "revs"),
     [
-        # Pull requests and manual runs count up to 10 - 4 = 6: the last four
-        # requests of the day stay with the daily audit (2026-11-01; four
-        # since 2026-11-05, one per model of the chain).
-        # Nothing used yet: a replay gets 6 // 3 = 2 per audit.
-        ("pull_request", [], "2"),
-        # Annotations 1 + 1 + 1 = 3 used; a replay gets (6 - 3) // 3 = 1 per audit.
-        ("pull_request", ["1 completed success 1", "2 completed failure 1", "3 completed success 1"], "1"),
-        # 3 + one still running (4) = 7; nothing left: no replay.
-        ("pull_request", ["1 completed success 1", "2 completed failure 1", "3 completed success 1",
-                          "4 in_progress null -"], None),
-        # A finished audit without annotation (killed or crashed midway) and a
-        # cancelled one count four each: 8 used, no manual run; one of them
-        # alone leaves a manual run two.
-        ("workflow_dispatch", ["1 completed success -", "2 cancelled cancelled -"], None),
-        ("workflow_dispatch", ["1 completed failure -"], "2"),
-        # 5 used: a manual run still gets one; 6 used: none, the daily audit keeps four.
-        ("workflow_dispatch", ["1 completed success 3", "2 completed success 2"], "1"),
-        ("workflow_dispatch", ["1 completed success 3", "2 completed success 3"], None),
-        # 01.11.2026: the trial runs used 9 and the daily audit got one request.
-        # Now they stop at 6 and the daily audit keeps all four: the two Flash
-        # models and the two Lite models. The daily audit arrives as the
-        # dispatch of the Update cycle (since 2026-11-05; ``workflow_run`` before).
-        ("repository_dispatch", [], "4"),
-        ("repository_dispatch", ["1 completed success 3", "2 completed success 3"], "4"),
-        ("repository_dispatch", ["1 completed success 4", "2 completed success 3"], "3"),
-        ("repository_dispatch", ["1 completed success 4", "2 completed success 4", "3 completed success 1"], "1"),
-        ("repository_dispatch", ["1 completed success 4", "2 completed success 4", "3 completed success 2"], None),
+        # A pull request replays two days with known findings and the current
+        # feed, without publishing.
+        ("pull_request", "false", ["001e47c665cec9f2d1d0c0c0d912230bb7f3795d",
+                                   "9e60b8de9dce438906b257e42a8b524e4f191f67", "HEAD"]),
+        # The daily audit arrives as the dispatch of the Update cycle (since
+        # 2026-11-05; ``workflow_run`` before) and publishes.
+        ("repository_dispatch", "true", ["HEAD"]),
+        # A plain manual run is the daily audit by hand.
+        ("workflow_dispatch", "true", ["HEAD"]),
     ],
 )
-def test_each_audit_gets_its_share_of_the_daily_budget(
-    tmp_path: Path, event: str, jobs: list[str], per_job: str | None
+def test_the_gate_names_the_commits_and_whether_the_run_publishes(
+    tmp_path: Path, event: str, publish: str, revs: list[str]
 ) -> None:
-    out = _run_gate(tmp_path, event, jobs)
-    if per_job is None:
-        assert out["run"] == "false"
-        assert "Kein Aufruf" in (tmp_path / "summary").read_text(encoding="utf-8")
-    else:
-        assert out["run"] == "true" and out["per_job"] == per_job
+    out = _run_gate(tmp_path, event)
+    assert out["run"] == "true" and out["publish"] == publish and json.loads(out["revs"]) == revs
+    assert "model" not in out
+
+
+def test_a_fork_gets_no_replay_and_an_unknown_event_fails(tmp_path: Path) -> None:
+    out = _run_gate(tmp_path / "fork", "pull_request", {"PR_HEAD_REPO": "someone/wien-oepnv"})
+    assert out == {"run": "false"}
+    with pytest.raises(subprocess.CalledProcessError):
+        _run_gate(tmp_path / "odd", "schedule")
 
 
 def test_only_a_busy_gemini_counts_as_overloaded(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -623,18 +640,18 @@ def test_only_a_busy_gemini_counts_as_overloaded(monkeypatch: pytest.MonkeyPatch
     and the quota are a note in the Health check; a rejected key or a missing
     model stay red at once."""
     busy = {"error": {"message": "This model is currently experiencing high demand."}}
-    _overloaded_then(monkeypatch, [_Response(503, busy)] * 3)
-    answer = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", max_requests=3, sleep=lambda s: None)
+    _overloaded_then(monkeypatch, [_Response(503, busy)] * 4)
+    answer = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", sleep=lambda s: None)
     assert not answer.ok and answer.overloaded
     _overloaded_then(monkeypatch, [_Response(429, {"error": {"message": "Quota exceeded"}})])
-    assert kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=3, sleep=lambda s: None).overloaded
+    assert kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", sleep=lambda s: None).overloaded
     for status in (400, 401, 403, 404):
         _overloaded_then(monkeypatch, [_Response(status, {"error": {"message": "API key not valid"}})])
-        refused = kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=3, sleep=lambda s: None)
+        refused = kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", sleep=lambda s: None)
         assert not refused.ok and not refused.overloaded, status
     # The last request decides: overloaded first, then a rejected key.
     _overloaded_then(monkeypatch, [_Response(503, busy), _Response(403, {"error": {"message": "denied"}})])
-    mixed = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", max_requests=3, sleep=lambda s: None)
+    mixed = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", sleep=lambda s: None)
     assert not mixed.ok and not mixed.overloaded
     _overloaded_then(monkeypatch, [_Response(200, _ok_payload("{}"))])
     assert not kw.ask_gemini("Prompt", "gemini-3.8-flash", "k").overloaded
@@ -643,10 +660,10 @@ def test_only_a_busy_gemini_counts_as_overloaded(monkeypatch: pytest.MonkeyPatch
             raise _exc
 
         monkeypatch.setattr(kw, "request_safe", fake_request)
-        assert kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=1).overloaded
-    # Nothing sent (too large, no share) is no overload.
+        assert kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_rounds=1).overloaded
+    # Nothing sent (too large, no pass) is no overload.
     assert not kw.ask_gemini("x" * (kw.MAX_PROMPT_CHARS + 1), "gemini-3.8-flash", "k").overloaded
-    assert not kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_requests=0).overloaded
+    assert not kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_rounds=0).overloaded
 
 
 def test_the_workflow_records_an_overloaded_day_and_stays_green() -> None:

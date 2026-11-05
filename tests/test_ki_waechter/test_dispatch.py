@@ -40,14 +40,12 @@ def _run(number: int, started: datetime, status: str = "completed", event: str =
 
 
 class FakeClient(d.WatcherClient):
-    """The REST calls of one decision: the record on main, the watcher's runs, their jobs."""
+    """The REST calls of one decision: the record on main, the watcher's runs, the dispatch."""
 
-    def __init__(self, record: dict[str, Any], runs: list[dict[str, Any]],
-                 jobs: dict[int, list[dict[str, Any]]] | None = None) -> None:
+    def __init__(self, record: dict[str, Any], runs: list[dict[str, Any]]) -> None:
         super().__init__("o/r", "t", "https://api.github.com")
         self.record_payload = record
         self.runs = runs
-        self.jobs = jobs or {}
         self.calls: list[tuple[str, str]] = []
         self.dispatched: list[dict[str, Any]] = []
 
@@ -61,8 +59,6 @@ class FakeClient(d.WatcherClient):
             return {"content": base64.b64encode(raw).decode("ascii"), "encoding": "base64"}
         if path.startswith(f"/actions/workflows/{d.WORKFLOW}/runs"):
             return {"workflow_runs": list(self.runs)}
-        if path.startswith("/actions/runs/"):
-            return {"jobs": list(self.jobs[int(path.split("/")[3])])}
         raise AssertionError(path)
 
 
@@ -85,25 +81,25 @@ def _record(at: datetime | None, success: datetime | None) -> d.Record:
 @pytest.mark.parametrize(
     ("record", "now", "due"),
     [
-        # Before 9:00 Vienna time nothing runs, however old the record.
-        (_record(None, None), _at("2026-11-05 08:59"), False),
-        (_record(_at("2026-11-04 14:02"), _at("2026-11-03 11:32")), _at("2026-11-05 08:59"), False),
-        # From 9:00 the first tick of the day runs; yesterday's failure does not hold it back.
-        (_record(_at("2026-11-04 14:02"), _at("2026-11-03 11:32")), _at("2026-11-05 09:00"), True),
-        (_record(None, None), _at("2026-11-05 09:00"), True),
+        # Before 15:00 Vienna time nothing runs, however old the record (9:00 until 2026-11-05).
+        (_record(None, None), _at("2026-11-05 14:59"), False),
+        (_record(_at("2026-11-04 14:02"), _at("2026-11-03 11:32")), _at("2026-11-05 14:59"), False),
+        # From 15:00 the first tick of the day runs; yesterday's failure does not hold it back.
+        (_record(_at("2026-11-04 14:02"), _at("2026-11-03 11:32")), _at("2026-11-05 15:00"), True),
+        (_record(None, None), _at("2026-11-05 15:00"), True),
         # Succeeded today: done for the day.
-        (_record(_at("2026-11-05 09:03"), _at("2026-11-05 09:03")), _at("2026-11-05 09:30"), False),
-        (_record(_at("2026-11-05 09:03"), _at("2026-11-05 09:03")), _at("2026-11-05 23:59"), False),
+        (_record(_at("2026-11-05 15:03"), _at("2026-11-05 15:03")), _at("2026-11-05 15:30"), False),
+        (_record(_at("2026-11-05 15:03"), _at("2026-11-05 15:03")), _at("2026-11-05 23:59"), False),
         # Failed today: waits two hours, then tries again.
-        (_record(_at("2026-11-05 09:03"), _at("2026-11-04 11:32")), _at("2026-11-05 10:30"), False),
-        (_record(_at("2026-11-05 09:03"), _at("2026-11-04 11:32")), _at("2026-11-05 11:02"), False),
-        (_record(_at("2026-11-05 09:03"), _at("2026-11-04 11:32")), _at("2026-11-05 11:04"), True),
+        (_record(_at("2026-11-05 15:03"), _at("2026-11-04 11:32")), _at("2026-11-05 16:30"), False),
+        (_record(_at("2026-11-05 15:03"), _at("2026-11-04 11:32")), _at("2026-11-05 17:02"), False),
+        (_record(_at("2026-11-05 15:03"), _at("2026-11-04 11:32")), _at("2026-11-05 17:04"), True),
         # A failure late yesterday is yesterday's, a success yesterday too.
-        (_record(_at("2026-11-04 23:30"), None), _at("2026-11-05 09:01"), True),
-        (_record(_at("2026-11-04 23:30"), _at("2026-11-04 23:30")), _at("2026-11-05 09:01"), True),
-        # Summer: 9:00 Vienna is 7:00 UTC; the Vienna clock decides.
-        (_record(None, None), datetime(2026, 7, 1, 6, 59, tzinfo=UTC), False),
-        (_record(None, None), datetime(2026, 7, 1, 7, 0, tzinfo=UTC), True),
+        (_record(_at("2026-11-04 23:30"), None), _at("2026-11-05 15:01"), True),
+        (_record(_at("2026-11-04 23:30"), _at("2026-11-04 23:30")), _at("2026-11-05 15:01"), True),
+        # Summer: 15:00 Vienna is 13:00 UTC; the Vienna clock decides.
+        (_record(None, None), datetime(2026, 7, 1, 12, 59, tzinfo=UTC), False),
+        (_record(None, None), datetime(2026, 7, 1, 13, 0, tzinfo=UTC), True),
     ],
 )
 def test_not_due_follows_the_former_gate(record: d.Record, now: datetime, due: bool) -> None:
@@ -111,10 +107,10 @@ def test_not_due_follows_the_former_gate(record: d.Record, now: datetime, due: b
 
 
 def test_the_start_hour_and_the_retry_spacing_are_parameters() -> None:
-    record = _record(_at("2026-11-05 09:03"), None)
+    record = _record(_at("2026-11-05 15:03"), None)
     assert d.not_due(d.Record(), _at("2026-11-05 08:30"), start_hour=8) == ""
-    assert d.not_due(record, _at("2026-11-05 10:10"), retry_hours=1) == ""
-    assert d.not_due(record, _at("2026-11-05 10:00"), retry_hours=1) != ""
+    assert d.not_due(record, _at("2026-11-05 16:10"), retry_hours=1) == ""
+    assert d.not_due(record, _at("2026-11-05 16:00"), retry_hours=1) != ""
     assert "24:00" in d.not_due(d.Record(), _at("2026-11-05 23:59"), start_hour=24)
 
 
@@ -131,15 +127,15 @@ def test_parse_record_reads_both_times_and_tolerates_a_missing_file(tmp_path: Pa
     assert d.read_record(tmp_path / "fehlt.json") == d.Record()
     (tmp_path / "kaputt.json").write_text("{", encoding="utf-8")
     assert d.read_record(tmp_path / "kaputt.json") == d.Record()
-    (tmp_path / "ok.json").write_text(json.dumps(_payload(_at("2026-11-05 09:03"), None)), encoding="utf-8")
-    assert d.read_record(tmp_path / "ok.json").at == _at("2026-11-05 09:03")
+    (tmp_path / "ok.json").write_text(json.dumps(_payload(_at("2026-11-05 15:03"), None)), encoding="utf-8")
+    assert d.read_record(tmp_path / "ok.json").at == _at("2026-11-05 15:03")
     # The real record of the repository parses.
     assert d.read_record(REPO / d.RECORD).at is not None
 
 
 # --- the three requests of a due tick -------------------------------------------------
 
-_NOW = _at("2026-11-05 09:01")
+_NOW = _at("2026-11-05 15:01")
 _YESTERDAY = _payload(_at("2026-11-04 14:02"), _at("2026-11-03 11:32"), "overloaded")
 _RUN_URL = "https://github.com/o/r/actions/runs/5"
 
@@ -147,7 +143,7 @@ _RUN_URL = "https://github.com/o/r/actions/runs/5"
 def test_a_due_tick_reads_main_and_the_runs_and_dispatches() -> None:
     client = FakeClient(_YESTERDAY, [_run(190, _at("2026-11-04 14:00"))])
     line = d.decide_and_dispatch(client, d.parse_record(_YESTERDAY), _NOW, _RUN_URL)
-    assert line.startswith("KI-Wächter gestartet") and "05.11.2026 09:01 Wien" in line
+    assert line.startswith("KI-Wächter gestartet") and "05.11.2026 15:01 Wien" in line
     assert client.dispatched == [{"event_type": "ki-waechter", "client_payload": {"update_run": _RUN_URL}}]
     assert client.calls == [("GET", f"/contents/{d.RECORD.as_posix()}"),
                             ("GET", f"/actions/workflows/{d.WORKFLOW}/runs"), ("POST", "/dispatches")]
@@ -155,78 +151,41 @@ def test_a_due_tick_reads_main_and_the_runs_and_dispatches() -> None:
 
 def test_the_checkout_decides_first_without_a_request() -> None:
     client = FakeClient(_YESTERDAY, [])
-    today = d.parse_record(_payload(_at("2026-11-05 09:03"), _at("2026-11-05 09:03"), "success"))
-    line = d.decide_and_dispatch(client, today, _at("2026-11-05 09:31"), _RUN_URL)
+    today = d.parse_record(_payload(_at("2026-11-05 15:03"), _at("2026-11-05 15:03"), "success"))
+    line = d.decide_and_dispatch(client, today, _at("2026-11-05 15:31"), _RUN_URL)
     assert line.startswith("Kein KI-Wächter: die heutige Prüfung ist gelungen") and client.calls == []
 
 
 def test_the_fresh_record_on_main_wins_over_the_checkout() -> None:
     """The audit of the previous tick published its record after this tick's checkout."""
-    fresh = _payload(_at("2026-11-05 09:03"), _at("2026-11-05 09:03"), "success")
-    client = FakeClient(fresh, [_run(200, _at("2026-11-05 09:01"))])
-    line = d.decide_and_dispatch(client, d.parse_record(_YESTERDAY), _at("2026-11-05 09:31"), _RUN_URL)
+    fresh = _payload(_at("2026-11-05 15:03"), _at("2026-11-05 15:03"), "success")
+    client = FakeClient(fresh, [_run(200, _at("2026-11-05 15:01"))])
+    line = d.decide_and_dispatch(client, d.parse_record(_YESTERDAY), _at("2026-11-05 15:31"), _RUN_URL)
     assert "gelungen" in line and "neuer als der Checkout" in line
     assert client.dispatched == [] and client.calls == [("GET", f"/contents/{d.RECORD.as_posix()}")]
 
 
 @pytest.mark.parametrize("status", sorted(d.ACTIVE_STATES))
 def test_no_dispatch_while_a_run_of_the_watcher_is_active(status: str) -> None:
-    client = FakeClient(_YESTERDAY, [_run(200, _at("2026-11-05 09:01"), status=status, conclusion="")])
-    line = d.decide_and_dispatch(client, d.parse_record(_YESTERDAY), _at("2026-11-05 09:31"), _RUN_URL)
+    client = FakeClient(_YESTERDAY, [_run(200, _at("2026-11-05 15:01"), status=status, conclusion="")])
+    line = d.decide_and_dispatch(client, d.parse_record(_YESTERDAY), _at("2026-11-05 15:31"), _RUN_URL)
     assert line == "Kein KI-Wächter: Lauf #200 des Wächters läuft oder wartet noch."
     assert client.dispatched == []
 
 
-def _gate_jobs(gate: str = "success", audit: str = "skipped") -> list[dict[str, Any]]:
-    return [{"name": "gate", "conclusion": gate}, {"name": "audit (HEAD)", "conclusion": audit}]
-
-
-def test_no_dispatch_after_the_gate_refused_a_run_today() -> None:
-    """01.11.2026: the trial runs had used the budget; the gate said so 28 more times that day."""
-    failed_today = _payload(_at("2026-11-05 09:03"), _at("2026-11-04 11:32"))
-    refused = _run(201, _at("2026-11-05 11:02"))
-    client = FakeClient(failed_today, [refused, _run(200, _at("2026-11-05 09:01"))], {refused["id"]: _gate_jobs()})
-    line = d.decide_and_dispatch(client, d.parse_record(failed_today), _at("2026-11-05 11:31"), _RUN_URL)
-    assert line == "Kein KI-Wächter: Lauf #201 von heute prüfte nicht, das Tagesbudget der Gemini-Anfragen ist verbraucht."
-    assert client.dispatched == [] and client.calls[-1] == ("GET", f"/actions/runs/{refused['id']}/jobs")
-    # The same run the next day is yesterday's: the new day starts an audit.
-    client = FakeClient(failed_today, [refused], {refused["id"]: _gate_jobs()})
-    assert d.decide_and_dispatch(client, d.parse_record(failed_today), _at("2026-11-06 09:01"), _RUN_URL).startswith(
-        "KI-Wächter gestartet")
-    assert ("GET", f"/actions/runs/{refused['id']}/jobs") not in client.calls
-
-
-def test_a_run_that_recorded_its_audit_is_not_asked_for_its_jobs() -> None:
-    """The record's ``at`` after the run's start: that run audited (and failed); two hours later again."""
-    recorded = _payload(_at("2026-11-05 09:03"), _at("2026-11-04 11:32"))
-    audited = _run(200, _at("2026-11-05 09:01"))
-    client = FakeClient(recorded, [audited])
-    assert d.decide_and_dispatch(client, d.parse_record(recorded), _at("2026-11-05 11:04"), _RUN_URL).startswith(
-        "KI-Wächter gestartet")
-    assert all(path != f"/actions/runs/{audited['id']}/jobs" for _method, path in client.calls)
-
-
-@pytest.mark.parametrize(
-    ("jobs", "why"),
-    [
-        (_gate_jobs(gate="failure"), "a gate that failed (GitHub hiccup) is tried again"),
-        (_gate_jobs(audit="failure"), "an audit that crashed before its record is tried again, as before"),
-        ([{"name": "gate", "conclusion": "success"}], "no audit job listed: nothing known, try again"),
-    ],
-)
-def test_only_a_green_gate_without_an_audit_counts_as_refused(jobs: list[dict[str, Any]], why: str) -> None:
-    failed_today = _payload(_at("2026-11-05 09:03"), _at("2026-11-04 11:32"))
-    run = _run(201, _at("2026-11-05 11:02"))
-    client = FakeClient(failed_today, [run], {run["id"]: jobs})
-    line = d.decide_and_dispatch(client, d.parse_record(failed_today), _at("2026-11-05 13:31"), _RUN_URL)
-    assert line.startswith("KI-Wächter gestartet"), why
-
-
-def test_manual_and_pull_request_runs_do_not_count_as_refusals() -> None:
-    manual = _run(201, _at("2026-11-05 10:00"), event="workflow_dispatch")
-    client = FakeClient(_YESTERDAY, [manual], {manual["id"]: _gate_jobs()})
-    assert d.decide_and_dispatch(client, d.parse_record(_YESTERDAY), _at("2026-11-05 10:31"), _RUN_URL).startswith(
-        "KI-Wächter gestartet")
+def test_a_failed_try_two_hours_back_is_tried_again_without_reading_jobs() -> None:
+    """Until later on 2026-11-05 the cycle read the jobs of today's newest run to see
+    whether the gate had refused it for the day's budget of Gemini requests
+    (01.11.2026: the trial runs had used it, the gate said so 28 more times).
+    Nothing counts a budget since, Google does (scripts/ki_waechter.py)."""
+    failed_today = _payload(_at("2026-11-05 15:03"), _at("2026-11-04 17:32"))
+    runs = [_run(201, _at("2026-11-05 17:02")), _run(200, _at("2026-11-05 15:01"))]
+    client = FakeClient(failed_today, runs)
+    line = d.decide_and_dispatch(client, d.parse_record(failed_today), _at("2026-11-05 19:31"), _RUN_URL)
+    assert line.startswith("KI-Wächter gestartet")
+    assert [path for _method, path in client.calls] == [
+        f"/contents/{d.RECORD.as_posix()}", f"/actions/workflows/{d.WORKFLOW}/runs", "/dispatches",
+    ]
 
 
 def test_the_record_on_main_is_decoded_from_base64_and_capped() -> None:
@@ -325,11 +284,11 @@ def test_the_workflows_hand_the_decision_to_the_update_cycle() -> None:
 def test_the_gate_takes_no_other_event(tmp_path: Path) -> None:
     """``workflow_run`` of the Update cycle no longer reaches the gate; an unexpected event fails loudly."""
     with pytest.raises(subprocess.CalledProcessError):
-        _run_gate(tmp_path, "workflow_run", [])
+        _run_gate(tmp_path, "workflow_run")
 
 
 def test_the_gate_names_the_update_run_that_sent_the_dispatch(tmp_path: Path) -> None:
-    out = _run_gate(tmp_path, "repository_dispatch", [], {"CYCLE_RUN": _RUN_URL})
+    out = _run_gate(tmp_path, "repository_dispatch", {"CYCLE_RUN": _RUN_URL})
     assert out["run"] == "true" and out["publish"] == "true" and out["revs"] == '["HEAD"]'
 
 
