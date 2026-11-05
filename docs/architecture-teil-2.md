@@ -70,6 +70,34 @@
   stehen ohne „-Züge“ und zählen nicht. `_extract_line_prefix` erkennt ein
   solches Präfix wieder, sonst setzte `_post_filter_oebb` es beim Lesen des
   Caches ein zweites Mal davor.
+  Züge, die ÖBB als Ersatz anbietet, zählen nicht (seit 2026-11-05,
+  `_OFFERED_TRAINS_RE`): „Als Ersatzbeförderung haben Sie die Möglichkeit
+  die REX6-Züge … zu nehmen“ unter „keine REX8-Züge“ machte den Titel
+  „REX 8/REX 6“, als fiele die REX 6 aus (Marchegg ↔ Bratislava, vier
+  Meldungen März bis Juli), ebenso „REX 51/S 50“ für Neulengbach ↔
+  Tullnerbach-Pressbaum (Februar/März). Ein Satz endet dazu an „.“ oder an
+  einem Zeilenumbruch vor einem Großbuchstaben (`_sentence_around`).
+* **ÖBB: jede Linie in Kurzform (seit 2026-11-05, Betreiberentscheidung
+  „Ja, so bauen“).** Nennt der Titel mehrere Linien und verschweigt der
+  gezeigte Text eine davon, zeigt er wie bei WL (unten, `_lines_in_short`)
+  jede Linie mit ihrem Abschnitt und ihren Tagen
+  (`src/feed_build/oebb_lines_short.py`): „Wegen Bauarbeiten fallen Züge
+  aus: REX50 St. Pölten Hbf ↔ Wien Westbahnhof 03.–10.11.; REX51, S50 Wien
+  Westbahnhof ↔ Wien Hütteldorf 02.–11.11.“ Vorher stand dort nur der erste
+  Satz („… keine REX50-Züge fahren.“): ÖBB schreibt je Linie einen Satz,
+  der zweite war eine Liste von rund 60 Zugnummern und passte nie in die
+  180 Zeichen (Jules-Audits vom 31.10. und 02.11.2026). Linien eines
+  Abschnitts stehen zusammen, die Tage reichen vom frühesten bis zum
+  spätesten Datum ihrer Sätze, das Jahr steht in der Zeitzeile. Was nicht
+  in 180 Zeichen passt, fällt von hinten weg, und „…“ schließt (die
+  Franz-Josefs-Bahn im November 2026 hatte fünf Abschnitte). Die Kurzform
+  steht nur, wenn jede Titellinie in einem Satz „zwischen … und …“ mit
+  „nicht fahren“ oder „keine … fahren“ steht und sie mehr Linien nennt als
+  der alte Text; sonst bleibt der Text. Seit Februar betraf das 2 von 1.141
+  ÖBB-Texten im Cache (REX50/REX51/S50 und R40/REX41/REX4/S40). Englisch:
+  „Due to construction works, trains are cancelled: …“, Linien, Stationen
+  und Tage bleiben, wie sie stehen. Die Feed-Wache (`oebb-zweiter-satz`)
+  prüft einen solchen Text nicht auf ÖBBs zweiten Satz.
 * **WL: eine geschriebene Linienliste steht nur einmal (seit 2026-10-04).**
   Schreibt WL die Linien ohne Doppelpunkt oder mit einem Namen aus zwei
   Wörtern, erkannte der Präfix-Leser sie nicht, und der Titel nannte sie
