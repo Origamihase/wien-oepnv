@@ -1,16 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-05T16:01:22.880408+00:00",
- "built": "2026-11-05T17:01:04+01:00",
+ "updated": "2026-11-05T16:31:07.666678+00:00",
+ "built": "2026-11-05T17:30:50+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-05T17:01:04+01:00",
+  "built": "2026-11-05T17:30:50+01:00",
   "items": [
    {
-    "title": "36B: Verkehrsunfall",
-    "time_line": "Seit 16:58"
+    "title": "U3: Betriebsstörung",
+    "time_line": "Seit 17:04"
    },
    {
     "title": "59A: Verkehrsüberlastung",
@@ -18,7 +18,7 @@
    },
    {
     "title": "U1: Schadhaftes Fahrzeug",
-    "time_line": "Seit 16:50"
+    "time_line": "Seit 17:16"
    },
    {
     "title": "4A/62A: Verkehrsüberlastung",
@@ -37,41 +37,21 @@
     "time_line": "Seit 16:00"
    },
    {
-    "title": "26: Rettungseinsatz",
-    "time_line": "Seit 15:46"
-   },
-   {
-    "title": "25: Rettungseinsatz",
+    "title": "25/26: Rettungseinsatz",
     "time_line": "Seit 15:46"
    },
    {
     "title": "38: Verkehrsunfall",
     "time_line": "Seit 14:27"
+   },
+   {
+    "title": "Wien Meidling ↔ Wien Liesing",
+    "time_line": "Bis So 08.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-29T16:31:03.047103+00:00",
-   "raw": {
-    "wl-stoerungen": 68,
-    "wl-hinweise": 79,
-    "oebb": 160,
-    "baustellen-linien": 52,
-    "baustellen-punkte": 19
-   },
-   "discarded": {
-    "wl": 10,
-    "oebb": 135,
-    "baustellen": 64
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 103
-   }
-  },
   {
    "t": "2026-10-29T17:01:14.848713+00:00",
    "raw": {
@@ -6751,17 +6731,37 @@
     "oebb": 7,
     "wl": 99
    }
+  },
+  {
+   "t": "2026-11-05T16:31:07.666678+00:00",
+   "raw": {
+    "wl-stoerungen": 63,
+    "wl-hinweise": 71,
+    "oebb": 192,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 12,
+    "oebb": 166,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 7,
+    "wl": 99
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-05T16:01:22.880408+00:00"
+   "last_ok": "2026-11-05T16:31:07.666678+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-05T16:01:22.880408+00:00"
+   "last_ok": "2026-11-05T16:31:07.666678+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-05T16:01:22.880408+00:00"
+   "last_ok": "2026-11-05T16:31:07.666678+00:00"
   }
  }
 }
