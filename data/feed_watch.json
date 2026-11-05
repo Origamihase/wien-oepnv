@@ -1,13 +1,21 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-05T07:01:08.493605+00:00",
- "built": "2026-11-05T08:00:50+01:00",
+ "updated": "2026-11-05T07:31:19.393151+00:00",
+ "built": "2026-11-05T08:31:00+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-05T08:00:50+01:00",
+  "built": "2026-11-05T08:31:00+01:00",
   "items": [
+   {
+    "title": "35A: Verkehrsüberlastung",
+    "time_line": "Seit 08:30"
+   },
+   {
+    "title": "14A: Fremder Verkehrsunfall",
+    "time_line": "Seit 08:04"
+   },
    {
     "title": "U1: Rettungseinsatz",
     "time_line": "Seit 07:52"
@@ -15,10 +23,6 @@
    {
     "title": "34A: Verkehrsunfall",
     "time_line": "Seit 07:01"
-   },
-   {
-    "title": "2A: Verspätungen",
-    "time_line": "Seit 06:51"
    },
    {
     "title": "Wien Meidling ↔ Wien Liesing",
@@ -43,55 +47,11 @@
    {
     "title": "REX50/REX51/S50: Wien Westbahnhof ↔ St. Pölten Hbf",
     "time_line": "Bis Mi 11.11."
-   },
-   {
-    "title": "N71: Rennweg",
-    "time_line": "Bis Fr 06.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-29T07:01:14.292696+00:00",
-   "raw": {
-    "wl-stoerungen": 72,
-    "wl-hinweise": 78,
-    "oebb": 154,
-    "baustellen-linien": 52,
-    "baustellen-punkte": 19
-   },
-   "discarded": {
-    "wl": 9,
-    "oebb": 129,
-    "baustellen": 64
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 104
-   }
-  },
-  {
-   "t": "2026-10-29T07:31:07.207209+00:00",
-   "raw": {
-    "wl-stoerungen": 67,
-    "wl-hinweise": 78,
-    "oebb": 154,
-    "baustellen-linien": 52,
-    "baustellen-punkte": 19
-   },
-   "discarded": {
-    "wl": 9,
-    "oebb": 129,
-    "baustellen": 64
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 103
-   }
-  },
   {
    "t": "2026-10-29T08:01:25.769204+00:00",
    "raw": {
@@ -6771,17 +6731,37 @@
     "oebb": 7,
     "wl": 90
    }
+  },
+  {
+   "t": "2026-11-05T07:31:19.393151+00:00",
+   "raw": {
+    "wl-stoerungen": 61,
+    "wl-hinweise": 70,
+    "oebb": 189,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 12,
+    "oebb": 164,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 7,
+    "wl": 92
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-05T07:01:08.493605+00:00"
+   "last_ok": "2026-11-05T07:31:19.393151+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-05T07:01:08.493605+00:00"
+   "last_ok": "2026-11-05T07:31:19.393151+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-05T07:01:08.493605+00:00"
+   "last_ok": "2026-11-05T07:31:19.393151+00:00"
   }
  }
 }

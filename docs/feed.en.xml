@@ -8,8 +8,34 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 05 Nov 2026 08:00:50 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 08:31:00 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[35A: Traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">311a3d1d21d0e028a008e02b40ec15cfb9a9f4383510c50597e114937b639358</guid>
+      <pubDate>Thu, 05 Nov 2026 08:30:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 05 Nov 2026 08:30:00 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 05 Nov 2026 08:30:00 +0100</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: traffic congestion. [Since 08:30]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic congestion.<br/>[Since 08:30]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[14A: Third-party traffic accident]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">42270d028cd443977f582a2b48222c38c0603b64b1f2d3ae98143b310e12046e</guid>
+      <pubDate>Thu, 05 Nov 2026 08:04:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 05 Nov 2026 08:04:00 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 05 Nov 2026 08:04:00 +0100</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 08:04]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 08:04]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U1: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -35,19 +61,6 @@
       <ext:starts_at>Thu, 05 Nov 2026 07:01:00 +0100</ext:starts_at>
       <description>Irregular intervals in both directions. Reason: traffic accident. [Since 07:01]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 07:01]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2A: Delays]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">57d004da43aa922d23ef17d2febd4d27e41c86903650f7772a81a3838692e289</guid>
-      <pubDate>Thu, 05 Nov 2026 06:51:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 05 Nov 2026 06:51:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 05 Nov 2026 06:51:00 +0100</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 06:51]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 06:51]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Meidling ↔ Wien Liesing]]></title>
@@ -133,21 +146,6 @@
       <georss:line>48.196804 16.337680 48.207980 15.624408</georss:line>
       <description>Due to construction works, no REX50 trains can run between St. Pölten Hbf and Wien Westbahnhof from 03.11.2026 to 10.11.2026. [Until Wed 11.11.]</description>
       <content:encoded><![CDATA[Due to construction works, no REX50 trains can run between St. Pölten Hbf and Wien Westbahnhof from 03.11.2026 to 10.11.2026.<br/>[Until Wed 11.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Rennweg]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">545b26fc6225f467a79f5c211576287dcd43e912b8e94f87c126a93decfcd269</guid>
-      <pubDate>Thu, 22 Oct 2026 13:54:00 +0200</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 22 Oct 2026 13:54:00 +0200</ext:first_seen>
-      <ext:starts_at>Mon, 02 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 06 Nov 2026 17:00:00 +0100</ext:ends_at>
-      <georss:point>48.194764 16.386277</georss:point>
-      <description>Rennweg 20-24 → Rennweg 20-24, main carriageway. Stop relocation of line N71 towards Kaiserebersdorf, Zinnergasse. Reason: track construction works. [Until Fri 06.11.]</description>
-      <content:encoded><![CDATA[Rennweg 20-24 → Rennweg 20-24, main carriageway. Stop relocation of line N71 towards Kaiserebersdorf, Zinnergasse. Reason: track construction works.<br/>[Until Fri 06.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
