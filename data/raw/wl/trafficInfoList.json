@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261105-0003-F01, I20260925-0011, I20261105-0004, I20260909-0007, I20260922-0032, I20261105-0005, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20261105-0006, I20260909-0007, I20260922-0032, I20261105-0005, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1880-101, R1876-101, R1883-101, R1882-101, R1884-101, R1881-101, R1875-101, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R119-136, R45-136, R19-136, R130-136, R118-136, R117-136, R318-437, R401-101, R293-474, R2378-627, R2343-626, R2343-125, R3886-480, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R1448-412, R1474-412, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1880-101, R1876-101, R1883-101, R1882-101, R1884-101, R1881-101, R1875-101, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R119-136, R45-136, R19-136, R130-136, R118-136, R117-136, R318-437, R401-101, R293-474, R2378-627, R3886-480, R2343-626, R2343-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R1448-412, R1474-412, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -221,99 +221,6 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "11": "ptTram"
-     }
-    },
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "11: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261105-0003-F01",
-    "owner": "WL",
-    "parentName": "I20261105-0003",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 111,
-      "lineName": "11",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     4732
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-05T05:10:00.000+0100",
-     "lastUpdate": "2026-11-05T05:10:00.000+0100",
-     "resume": "2026-11-05T05:10:00.000+0100",
-     "start": "2026-11-05T05:08:00.000+0100"
-    },
-    "title": "11: Schadhaftes Fahrzeug"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U3: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261105-0004",
-    "owner": "WL",
-    "parentName": "I20261105-0004",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-05T06:13:00.000+0100",
-     "lastUpdate": "2026-11-05T06:13:00.000+0100",
-     "resume": "2026-11-05T06:13:00.000+0100",
-     "start": "2026-11-05T06:13:00.000+0100"
-    },
-    "title": "U3: Schadhaftes Fahrzeug"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
       "2A": "ptBusCity"
      }
     },
@@ -353,6 +260,51 @@
      "start": "2026-11-05T06:51:00.000+0100"
     },
     "title": "2A: Verspätungen"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "34A": "ptBusCity"
+     }
+    },
+    "description": "Linie 34A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "<p>Linie 34A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 34A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+       "descriptionPlain": "Linie 34A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+       "title": "34A: Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261105-0006",
+    "owner": "WL",
+    "parentName": "I20261105-0006",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "34A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 434,
+      "lineName": "34A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-05T07:02:00.000+0100",
+     "lastUpdate": "2026-11-05T07:02:00.000+0100",
+     "resume": "2026-11-05T07:01:00.000+0100",
+     "start": "2026-11-05T07:01:00.000+0100"
+    },
+    "title": "34A: Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
