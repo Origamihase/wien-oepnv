@@ -132,9 +132,9 @@ OVERLOAD_WAIT_S = 60
 # A Lite model is one whose name carries ``-lite`` (``gemini-3.5-flash-lite``).
 LITE_MARK = "-lite"
 # The Lite models think "minimal" by default, the Flash models "medium"
-# (https://aistudio.google.com/docs/thinking, 2026-11-05); a Lite model that
-# read the feed of 27.10.2026 without thinking found none of its four known
-# errors in two seconds. The audit asks the Lite models for the top level and
+# (https://aistudio.google.com/docs/thinking, 2026-11-05); Gemini 3.1
+# Flash-Lite without thinking read the feed of 27.10.2026 in three seconds
+# (trial of 2026-11-05) and found none of its four known errors. The audit asks the Lite models for the top level and
 # leaves the Flash models at their default.
 LITE_THINKING_LEVEL = "high"
 # No new request (wait included) after this many seconds: the last one (read
@@ -316,7 +316,8 @@ def ask_gemini(
                 if time.monotonic() - started + wait > NO_NEW_REQUEST_AFTER_S:
                     print(f"Gemini: nach {time.monotonic() - started:.0f} s keine weitere Anfrage")
                     break
-                print(f"Gemini überlastet oder Verbindung abgebrochen, {total + 1}. Anfrage, an {current}"
+                print(f"Gemini ohne Antwort (überlastet, Kontingent erreicht oder Verbindung abgebrochen), "
+                      f"{total + 1}. Anfrage, an {current}"
                       + (f" in {wait} s" if wait else ""))
                 if wait:
                     sleep(wait)

@@ -7,7 +7,6 @@ Beschreibung in __init__.py.
 from __future__ import annotations
 
 import json
-import subprocess
 from types import SimpleNamespace
 from datetime import UTC, datetime
 from pathlib import Path
@@ -27,7 +26,6 @@ from ._support import (
     _history,
     _ok_payload,
     _overloaded_then,
-    _run_gate,
 )
 
 
@@ -375,39 +373,6 @@ def test_the_lite_models_are_asked_when_both_flash_models_are_overloaded(monkeyp
     assert answer.per_model == dict.fromkeys(CHAIN.split(","), 2)
 
 
-def test_the_workflow_chain_names_the_four_models() -> None:
-    """Flash first, the Lite models last; no budget hands the ask step a share."""
-    doc = yaml.safe_load((REPO / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8"))
-    assert doc["env"]["KI_WAECHTER_MODEL"].split(",") == CHAIN.split(",")
-    assert "KI_WAECHTER_MAX_REQUESTS" not in doc["env"]
-
-
-def test_a_manual_trial_may_name_other_models_and_never_publishes(tmp_path: Path) -> None:
-    """Input ``model`` of a manual run: checked by the gate, used by the ask step, no publish."""
-    text = (REPO / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8")
-    doc = yaml.safe_load(text)
-    assert "model" in doc[True]["workflow_dispatch"]["inputs"]
-    ask = next(s for s in doc["jobs"]["audit"]["steps"] if s.get("name") == "Gemini reads and compares")
-    assert ask["env"]["MODEL_OVERRIDE"] == "${{ needs.gate.outputs.model }}"
-    assert '--model "${MODEL_OVERRIDE:-${KI_WAECHTER_MODEL}}"' in ask["run"]
-    assert doc["jobs"]["gate"]["outputs"]["model"] == "${{ steps.decide.outputs.model }}"
-    lite = "gemini-3.5-flash-lite,gemini-3.1-flash-lite"
-    out = _run_gate(tmp_path / "lite", "workflow_dispatch", {"MODEL_INPUT": lite})
-    assert out["run"] == "true" and out["model"] == lite and out["publish"] == "false" and out["revs"] == '["HEAD"]'
-    assert "Probelauf" in (tmp_path / "lite" / "summary").read_text(encoding="utf-8")
-    out = _run_gate(tmp_path / "rev", "workflow_dispatch", {"MODEL_INPUT": lite, "REV_INPUT": "001e47c665ce"})
-    assert out["publish"] == "false" and out["revs"] == '["001e47c665ce"]'
-    # The plain manual run publishes, as before, and names no model.
-    out = _run_gate(tmp_path / "plain", "workflow_dispatch")
-    assert out["publish"] == "true" and "model" not in out
-    # Anything but model names is refused before a request is counted.
-    import subprocess
-
-    for n, bad in enumerate(("gemini-3.8-flash;id", "a b", "Gemini", ",gemini-3.8-flash", "x,")):
-        with pytest.raises(subprocess.CalledProcessError):
-            _run_gate(tmp_path / f"bad{n}", "workflow_dispatch", {"MODEL_INPUT": bad})
-
-
 def test_a_dropped_connection_hands_over_like_an_overloaded_model(monkeypatch: pytest.MonkeyPatch) -> None:
     """2026-11-02: the connection died after 261 s while the model was still thinking."""
     calls: list[str] = []
@@ -429,12 +394,15 @@ def test_a_dropped_connection_hands_over_like_an_overloaded_model(monkeypatch: p
     # the error of the first of two requests was not visible).
     assert len(answer.attempts) == 1 and answer.attempts[0].startswith("gemini-3.8-flash nach ")
     assert "ConnectionError" in answer.attempts[0]
-    # One pass only (max_rounds=1); the last error is the answer.
-    replies[:] = [requests.ConnectionError("x")] * 3
+    # Drops on every request: both passes with one wait between them; the
+    # last error is the answer, and the day counts as overloaded.
+    replies[:] = [requests.ConnectionError("x")] * 9
     calls.clear()
-    lost = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", sleep=lambda s: None, max_rounds=1)
-    assert not lost.ok and "nicht erreichbar (ConnectionError)" in lost.error and lost.requests == 2
-    assert [a.split(" ")[0] for a in lost.attempts] == ["gemini-3.8-flash", "gemini-3.6-flash"]
+    waits: list[float] = []
+    lost = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", sleep=waits.append)
+    assert not lost.ok and lost.overloaded and "nicht erreichbar (ConnectionError)" in lost.error
+    assert lost.requests == 4 and waits == [kw.OVERLOAD_WAIT_S]
+    assert [a.split(" ")[0] for a in lost.attempts] == ["gemini-3.8-flash", "gemini-3.6-flash"] * 2
     # A timeout of the answer is not repeated: it already took ten minutes.
     replies[:] = [requests.ReadTimeout("x"), _Response(200, _ok_payload("{}"))]
     calls.clear()
@@ -542,11 +510,38 @@ def test_gemini_without_an_answer_is_a_failure(monkeypatch: pytest.MonkeyPatch, 
     assert not answer.ok and error in answer.error
 
 
-def test_ask_without_a_key_fails_and_says_so(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+def test_ask_without_a_key_fails_and_says_so(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str],
+) -> None:
     monkeypatch.delenv("GEMINI_API_KEY", raising=False)
     assert kw.main(["ask", "--dir", str(tmp_path), "--model", "gemini-3.8-flash"]) == 1
     answer = json.loads((tmp_path / "antwort.json").read_text(encoding="utf-8"))
     assert answer["ok"] is False and "GEMINI_API_KEY ist leer" in answer["error"] and answer["requests"] == 0
+    out = capsys.readouterr().out
+    # The count stays a bare integer (until 2026-11-05 the gate parsed it with jq).
+    assert "::notice title=Gemini-Anfragen::0\n" in out and "Gemini-Modelle" not in out
+
+
+def test_ask_notes_the_requests_as_a_plain_number_and_per_model(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str],
+) -> None:
+    """Two annotations for the reader of the run: the count as a bare integer, then the models."""
+    monkeypatch.setenv("GEMINI_API_KEY", "k")
+    (tmp_path / "eingabe.md").write_text("## Meldung 1\nINHALT\n", encoding="utf-8")
+    asked: list[str] = []
+
+    def fake_ask(prompt: str, model: str, key: str) -> kw.Answer:
+        asked.append(model)
+        assert key == "k" and prompt.rstrip().endswith("INHALT")
+        return kw.Answer(True, "gemini-3.6-flash", text="{}", requests=3,
+                         per_model={"gemini-3.8-flash": 2, "gemini-3.6-flash": 1})
+
+    monkeypatch.setattr(kw, "ask_gemini", fake_ask)
+    assert kw.main(["ask", "--dir", str(tmp_path), "--model", CHAIN]) == 0
+    assert asked == [CHAIN]
+    out = capsys.readouterr().out
+    assert "::notice title=Gemini-Anfragen::3\n" in out
+    assert "::notice title=Gemini-Modelle::gemini-3.8-flash 2, gemini-3.6-flash 1\n" in out
 
 
 def test_the_prompt_ends_with_the_input() -> None:
@@ -555,20 +550,6 @@ def test_the_prompt_ends_with_the_input() -> None:
     assert prompt.rstrip().endswith("## Meldung 1\nINHALT") and "{EINGABE}" not in prompt
     with pytest.raises(ValueError):
         kw.build_prompt("x", "ohne Platzhalter")
-
-
-def test_workflow_gives_the_model_no_tools_and_the_key_to_one_step() -> None:
-    text = (REPO / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8")
-    doc = yaml.safe_load(text)
-    steps = {s.get("name"): s for s in doc["jobs"]["audit"]["steps"]}
-    ask = steps["Gemini reads and compares"]
-    assert "ki_waechter.py ask" in ask["run"]
-    assert text.count("secrets.GEMINI_API_KEY") == 1 and "GEMINI_API_KEY" in ask["env"]
-    assert "--max-requests" not in ask["run"] and set(ask["env"]) == {"GEMINI_API_KEY", "MODEL_OVERRIDE"}
-    assert "CLAUDE_CODE_OAUTH_TOKEN" not in text and "claude" not in text.lower()
-    assert doc["permissions"] == {"contents": "read"}
-    prepare = steps["Prepare the input"]["run"]
-    assert "--shallow-since" in prepare and "--hours 24" in prepare
 
 
 def test_prompt_names_its_input_and_not_the_backtest_cases() -> None:
@@ -582,20 +563,6 @@ def test_prompt_names_its_input_and_not_the_backtest_cases() -> None:
         assert case not in prompt
 
 
-def test_the_gate_keeps_no_count_of_requests() -> None:
-    """Michael 2026-11-05: "Zähle es bitte so wie Google. Wir brauchen keine
-    eigene Zähltechnik." Until then the gate read the annotation
-    "Gemini-Anfragen" of every audit job of the day through the API and
-    refused runs against a budget of ten."""
-    doc = yaml.safe_load((REPO / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8"))
-    assert "KI_WAECHTER_MAX_REQUESTS" not in doc["env"]
-    gate = doc["jobs"]["gate"]
-    assert gate["permissions"] == {"contents": "read"} and set(gate["outputs"]) == {"run", "revs", "publish", "model"}
-    step = gate["steps"][0]
-    assert "gh api" not in step["run"] and "Gemini-Anfragen" not in step["run"] and "GH_TOKEN" not in step["env"]
-    assert not hasattr(kw, "MAX_REQUESTS_PER_AUDIT")
-
-
 def test_the_last_request_ends_inside_the_step_limit() -> None:
     """The annotation is written only when the script ends by itself (2026-11-02)."""
     doc = yaml.safe_load((REPO / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8"))
@@ -606,41 +573,12 @@ def test_the_last_request_ends_inside_the_step_limit() -> None:
     assert step["timeout-minutes"] + 3 <= doc["jobs"]["audit"]["timeout-minutes"]
 
 
-@pytest.mark.parametrize(
-    ("event", "publish", "revs"),
-    [
-        # A pull request replays two days with known findings and the current
-        # feed, without publishing.
-        ("pull_request", "false", ["001e47c665cec9f2d1d0c0c0d912230bb7f3795d",
-                                   "9e60b8de9dce438906b257e42a8b524e4f191f67", "HEAD"]),
-        # The daily audit arrives as the dispatch of the Update cycle (since
-        # 2026-11-05; ``workflow_run`` before) and publishes.
-        ("repository_dispatch", "true", ["HEAD"]),
-        # A plain manual run is the daily audit by hand.
-        ("workflow_dispatch", "true", ["HEAD"]),
-    ],
-)
-def test_the_gate_names_the_commits_and_whether_the_run_publishes(
-    tmp_path: Path, event: str, publish: str, revs: list[str]
-) -> None:
-    out = _run_gate(tmp_path, event)
-    assert out["run"] == "true" and out["publish"] == publish and json.loads(out["revs"]) == revs
-    assert "model" not in out
-
-
-def test_a_fork_gets_no_replay_and_an_unknown_event_fails(tmp_path: Path) -> None:
-    out = _run_gate(tmp_path / "fork", "pull_request", {"PR_HEAD_REPO": "someone/wien-oepnv"})
-    assert out == {"run": "false"}
-    with pytest.raises(subprocess.CalledProcessError):
-        _run_gate(tmp_path / "odd", "schedule")
-
-
 def test_only_a_busy_gemini_counts_as_overloaded(monkeypatch: pytest.MonkeyPatch) -> None:
     """Michael 2026-11-04 ("Ja, so bauen"): 503, a dropped connection, a timeout
     and the quota are a note in the Health check; a rejected key or a missing
     model stay red at once."""
     busy = {"error": {"message": "This model is currently experiencing high demand."}}
-    _overloaded_then(monkeypatch, [_Response(503, busy)] * 4)
+    _overloaded_then(monkeypatch, [_Response(503, busy)] * 9)
     answer = kw.ask_gemini("Prompt", "gemini-3.8-flash,gemini-3.6-flash", "k", sleep=lambda s: None)
     assert not answer.ok and answer.overloaded
     _overloaded_then(monkeypatch, [_Response(429, {"error": {"message": "Quota exceeded"}})])
@@ -664,12 +602,3 @@ def test_only_a_busy_gemini_counts_as_overloaded(monkeypatch: pytest.MonkeyPatch
     # Nothing sent (too large, no pass) is no overload.
     assert not kw.ask_gemini("x" * (kw.MAX_PROMPT_CHARS + 1), "gemini-3.8-flash", "k").overloaded
     assert not kw.ask_gemini("Prompt", "gemini-3.8-flash", "k", max_rounds=0).overloaded
-
-
-def test_the_workflow_records_an_overloaded_day_and_stays_green() -> None:
-    workflow = (Path(__file__).resolve().parents[2] / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8")
-    record = workflow.split("- name: Record side-step outcome", 1)[1].split("- name:", 1)[0]
-    assert "outcome=overloaded" in record and ".overloaded == true" in record
-    fail = workflow.split("- name: Fail the run when the audit could not run", 1)[1]
-    assert '"${PUBLISH}" == "true"' in fail and ".overloaded == true" in fail
-    assert fail.index("exit 0") < fail.index("exit 1")

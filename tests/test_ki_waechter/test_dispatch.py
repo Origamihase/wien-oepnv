@@ -199,7 +199,7 @@ def test_the_record_on_main_is_decoded_from_base64_and_capped() -> None:
 # --- the command line and the workflows -------------------------------------------------
 
 
-def test_the_step_sends_nothing_before_nine_and_asks_github_nothing(
+def test_the_step_sends_nothing_before_the_start_hour_and_asks_github_nothing(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
 ) -> None:
     monkeypatch.setenv("KI_WAECHTER_START_HOUR", "24")

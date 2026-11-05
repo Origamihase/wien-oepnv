@@ -157,7 +157,7 @@ jobs:
             workflow_dispatch)
               # Model names only (letters, digits, dot, dash; comma-separated):
               # the value reaches the ``ask`` step as an environment variable.
-              if [[ -n "${MODEL_INPUT}" && ! "${MODEL_INPUT}" =~ ^[a-z0-9.-]+(,[a-z0-9.-]+)*$ ]]; then
+              if [[ -n "${MODEL_INPUT}" && ! "${MODEL_INPUT}" =~ ^[a-z0-9.-]{3,60}(,[a-z0-9.-]{3,60})*$ ]]; then
                 echo "::error title=KI-Wächter::model muss Modellnamen nennen, kommagetrennt"; exit 1
               fi
               if [[ -z "${REV_INPUT}" ]]; then

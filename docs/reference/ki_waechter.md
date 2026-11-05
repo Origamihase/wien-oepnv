@@ -143,8 +143,9 @@ Zähltechnik.“):
   waren es drei (3.8 Flash, 3.6 Flash, nach einer Minute wieder 3.8 Flash).
   Die Flash-Modelle bleiben vorn, die Lite-Modelle verhindern den verlorenen
   Tag; sie werden mit Denkstufe „high“ gefragt (ihr Standard ist „minimal“,
-  die Flash-Modelle behalten „medium“; ein Lite-Modell ohne Denken fand am
-  27.10.2026 keinen der vier bekannten Fehler, Abschnitt „Probelauf“).
+  die Flash-Modelle behalten „medium“; ein Lite-Modell ohne Denken fand im
+  Feed vom 27.10.2026 keinen der vier bekannten Fehler, Probelauf vom
+  05.11., Abschnitt „Probelauf“).
   Welches Modell geantwortet hat, steht im Bericht. Die Live-API-Modelle (im
   Kontingent „unbegrenzt“) und Gemma 4 kamen nicht in Frage: Die Live API
   antwortet laut Modellseite nur als Audio und über eine WebSocket-Sitzung,
@@ -175,7 +176,7 @@ Zähltechnik.“):
   am Tag über alle Modelle, gelesen aus der Anmerkung „Gemini-Anfragen“ jedes
   Prüflaufs seit 0:00 Uhr Pazifikzeit über die GitHub-API; jeder Prüflauf
   bekam seinen Anteil am Rest, Pull Requests und Läufe von Hand rechneten
-  nur bis 6, blieb nichts, startete er nichts, und der Update-Lauf startete
+  nur bis 7, blieb nichts, startete er nichts, und der Update-Lauf startete
   an so einem Tag keinen weiteren Versuch. Das schützte vor dem Kontingent
   eines einzelnen Modells, als die Kette nur die beiden Flash-Modelle hatte,
   kostete aber Probeläufe, Lesezugriffe auf die API und am 01.11.2026 fast
@@ -284,3 +285,16 @@ Wiener Zeit, [Lauf](https://github.com/Origamihase/wien-oepnv/actions/runs/41417
 | `001e47c` (27.10.) | Gemini 3.8 Flash, 1 Anfrage, 242 s | Ein Fund, zutreffend: F6 „algae path“. Die Doppelung 1/2/71/D steht diesmal nur unter den Vermutungen, F2 40A fehlt; dieselbe Eingabe ergibt nicht jedes Mal dieselben Funde. Die Antwort kam nach mehr als vier Minuten, und zwar noch ohne Keepalive (es erreichte die Verbindung erst nach der Prüfung vom 02.11.). |
 | `9e60b8d` (30.10.) | Gemini 3.8 Flash, 1 Anfrage, 140 s | Erstmals geprüft. Zwei Funde, beide im Feed belegt: F2 „Liechtensteinstraße 37a gegenüber Bauernfeldplatz → …“ (40A, die neue Haltestelle Liechtensteinstraße 39 fehlt) und F6 „Under-Meidlinger Straße“ (7B, Straßenname „Unter-Meidlinger Straße“ übersetzt). Unter den Vermutungen außerdem „Parlament/ Folktheter“ statt Volkstheater im EN-Feed. F2 und F6 waren mit #2087 schon behoben (30.10., 10:44 Uhr); „Folktheter“ behebt der Schrägstrich-Schutz für Haltestellennamen (CHANGELOG, 02.11.). |
 | `HEAD` (24 h bis 02.11.) | – | 3.8 Flash, dann 3.6 Flash mit 503, zusammen 393 s; der Anteil des Probelaufs (2 Anfragen) war damit verbraucht. Welcher Fehler die erste Anfrage beendete, zeigte das Protokoll noch nicht; seither steht jeder Versuch ohne Antwort mit Modell und Dauer im Protokoll und in `antwort.json` (`attempts`). |
+
+Dritter Probelauf, nur die Lite-Modelle (Eingabe `model` =
+`gemini-3.5-flash-lite,gemini-3.1-flash-lite`, noch ohne Denkstufe, Code von
+11fbb52; 05.11.2026 ab 10:28 Uhr Wiener Zeit):
+
+| Stand | Modell | Ergebnis |
+| --- | --- | --- |
+| `001e47c` (27.10.) | Gemini 3.1 Flash-Lite (3.5 Flash-Lite antwortete nach 3 s mit 503), 2 Anfragen, 5,5 s, 35.249 Eingabetokens, [Lauf](https://github.com/Origamihase/wien-oepnv/actions/runs/42002676065) | 67 Meldungstexte aus 48 Fassungen. Keine Funde: weder F6 „algae path“ noch F2 „Liechtensteinstraße 37a gegenüber Bauernfeldplatz → …“ noch die Doppelungen 40A und 1/2/71/D. Drei Vermutungen ohne Bezug zu den bekannten Fehlern (Startdaten zweier ÖBB-Meldungen, „N35R“ neben „N35“ im Titel). |
+| `9e60b8d` (30.10.) | – | 3.5 Flash-Lite nach 3 s mit 503, keine weitere Anfrage (der Lauf hatte nur eine), [Lauf](https://github.com/Origamihase/wien-oepnv/actions/runs/42003028369). Nicht geprüft. |
+
+Deshalb fragt der Wächter die Lite-Modelle seit 2026-11-05 mit Denkstufe
+„high“ (`LITE_THINKING_LEVEL` in `scripts/ki_waechter.py`); der Probelauf
+damit folgt.

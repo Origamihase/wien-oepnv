@@ -294,7 +294,7 @@ Bedarf), und das API-Limit darf nicht überschritten werden.
   Zahlen, Zeiten und Tabelle des Berichts kommen aus dem Skript, nie vom
   Modell.
 * `scripts/ki_waechter.py ask` schickt Prompt (`scripts/ki_waechter_prompt.md`)
-  und Eingabe in genau einer Anfrage an die Gemini API, ohne Werkzeuge, mit
+  und Eingabe in einer Anfrage je Modell an die Gemini API, ohne Werkzeuge, mit
   festem JSON-Schema der Antwort. Die Fundklassen F1 bis F6 sind geschlossen,
   entschiedene Formate stehen als Nicht-Funde im Prompt; Stil und
   Verbesserungsideen sind nie Funde.

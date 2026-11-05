@@ -10,10 +10,11 @@ the type :data:`EVENT_TYPE` only when an audit is due; the watcher's gate
 runs only then. Michael 2026-11-04: "Effizienz ist mir wichtig. Das Projekt
 soll ressourcenschonend arbeiten."
 
-The decision is the former gate's, unchanged (:func:`not_due`):
+The decision (:func:`not_due`; the former gate's, with the later hour):
 
-* from :data:`START_HOUR` Vienna time, when the free-tier day of the Gemini
-  API has begun (0:00 Pacific time; Michael 2026-10-31);
+* from :data:`START_HOUR` Vienna time (15:00 since 2026-11-05, the reasons
+  at the constant; until then 9:00, right after the free-tier day of the
+  Gemini API begins at 0:00 Pacific time);
 * not when today's audit succeeded (``last_success`` of the record);
 * not within :data:`RETRY_HOURS` of a failed try of today (``at``);
 * not while a run of the watcher on ``main`` is queued, waiting or running:
