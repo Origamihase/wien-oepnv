@@ -990,6 +990,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 5: Betrieb nur zwischen Praterstern S U und Blindengasse. Weiterfahrt bis Josefstädter Straße U. Ersatz: Linie U6. Voraussichtliche Dauer: 22:20 Uhr. Grund: Polizeieinsatz im Bereich Stollgasse 8.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "8f92fb936b7c740f0f8bc713737d2ddddc0101ed1972011221685e252f6f06f4",
+    "pubDate": "2026-11-05T21:35:00+01:00",
+    "starts_at": "2026-11-05T21:37:58+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=5|D=2026-11-05|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261105-0052"
+    ],
+    "_incident_start": "2026-11-05T21:35:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "62: Fremder Verkehrsunfall",
     "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1118,22 +1134,6 @@
       "I20261105-0048"
     ],
     "_incident_start": "2026-11-05T19:19:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Verspätungen",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
-    "pubDate": "2026-11-05T20:33:00+01:00",
-    "starts_at": "2026-11-05T20:33:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U6|D=2026-11-05|TK=u6 verspätungen",
-    "_wl_ids": [
-      "I20261105-0051"
-    ],
-    "_incident_start": "2026-11-05T20:33:00+01:00"
   },
   {
     "source": "Wiener Linien",
