@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261105-0042-F01, I20261105-0044, I20261105-0032, I20261105-0033-F01, I20260925-0011, I20261105-0038, I20260909-0007, I20260922-0032, I20261105-0045, I20261105-0036, I20261020-0029, I20261105-0043-F01, I20261105-0029-F02"
+    "trafficInfoNameList": "I20261105-0042-F01, I20261105-0032, I20261105-0046, I20260925-0011, I20261105-0038, I20260909-0007, I20260922-0032, I20261105-0045, I20261105-0033-F01, I20261105-0044, I20261105-0029-F02, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1880-101, R1875-101, R1881-101, R1876-101, R1884-101, R1883-101, R1882-101, R100-136, R119-136, R118-136, R117-136, R115-136, R116-136, R103-136, R102-136, R101-136, R45-136, R19-136, R130-136, R401-101, R318-437, R293-474, R2380-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2345-127, R3886-480, R1448-412, R1474-412, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, R211-112, R356-112, R355-112, R357-112, R211-105, R357-105, R355-105, R356-105, R272-112, R381-112, R380-112, R458-112, R379-112, R382-112, R272-105, R381-105, R380-105, R379-105, R377-105, R382-105, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R116-136, R117-136, R119-136, R19-136, R100-136, R101-136, R102-136, R103-136, R115-136, R130-136, R45-136, R118-136, R401-101, R318-437, R293-474, R2379-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2380-627, R2345-127, R3886-480, R1448-412, R1474-412, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, R379-112, R458-112, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -253,11 +253,12 @@
       "vehicleType": "ptTram"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-05T16:09:00.000+0100",
-     "lastUpdate": "2026-11-05T16:09:00.000+0100",
-     "resume": "2026-11-05T16:09:00.000+0100",
+     "end": "2026-11-05T19:00:00.000+0100",
+     "lastUpdate": "2026-11-05T19:00:00.000+0100",
+     "resume": "2026-11-05T19:00:00.000+0100",
      "start": "2026-11-05T15:46:00.000+0100"
     },
     "title": "26: Rettungseinsatz"
@@ -344,59 +345,15 @@
       "vehicleType": "ptTram"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-05T16:18:00.000+0100",
-     "lastUpdate": "2026-11-05T16:18:00.000+0100",
-     "resume": "2026-11-05T16:18:00.000+0100",
+     "end": "2026-11-05T19:00:00.000+0100",
+     "lastUpdate": "2026-11-05T19:00:00.000+0100",
+     "resume": "2026-11-05T19:00:00.000+0100",
      "start": "2026-11-05T16:12:00.000+0100"
     },
     "title": "1: Falschparker"
-   },
-   {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
-      "62A": "ptBusCity"
-     }
-    },
-    "description": "Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie 62A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 62A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "62A: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261105-0036",
-    "owner": "WL",
-    "parentName": "I20261105-0036",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "62A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 462,
-      "lineName": "62A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-05T16:40:00.000+0100",
-     "lastUpdate": "2026-11-05T16:40:00.000+0100",
-     "resume": "2026-11-05T16:40:00.000+0100",
-     "start": "2026-11-05T16:40:00.000+0100"
-    },
-    "title": "62A: Verkehrsüberlastung"
    },
    {
     "alertCause": "heavy traffic",
@@ -492,52 +449,6 @@
     "title": "U1: Polizeieinsatz"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "5": "ptTram"
-     }
-    },
-    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "5: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Spitalgasse",
-    "name": "I20261105-0043-F01",
-    "owner": "WL",
-    "parentName": "I20261105-0043",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 105,
-      "lineName": "5",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-05T18:17:00.000+0100",
-     "lastUpdate": "2026-11-05T18:17:00.000+0100",
-     "resume": "2026-11-05T18:17:00.000+0100",
-     "start": "2026-11-05T17:50:00.000+0100"
-    },
-    "title": "5: Verkehrsunfall"
-   },
-   {
     "alertCause": "police activity",
     "alertCauseId": 3,
     "attributes": {
@@ -573,10 +484,11 @@
       "vehicleType": "ptTram"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-05T18:26:00.000+0100",
-     "lastUpdate": "2026-11-05T18:26:00.000+0100",
+     "end": "2026-11-05T19:00:00.000+0100",
+     "lastUpdate": "2026-11-05T19:00:00.000+0100",
      "resume": "2026-11-05T18:26:00.000+0100",
      "start": "2026-11-05T18:26:00.000+0100"
     },
@@ -626,6 +538,50 @@
      "start": "2026-11-05T18:29:00.000+0100"
     },
     "title": "98A: Polizeieinsatz"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "14A": "ptBusCity"
+     }
+    },
+    "description": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "14A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261105-0046",
+    "owner": "WL",
+    "parentName": "I20261105-0046",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "14A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 414,
+      "lineName": "14A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-05T18:54:00.000+0100",
+     "lastUpdate": "2026-11-05T18:54:00.000+0100",
+     "start": "2026-11-05T18:53:00.000+0100"
+    },
+    "title": "14A: Verkehrsüberlastung"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1159,52 +1115,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Lerchenfelder Straße",
-    "name": "R211-105",
-    "owner": "WL",
-    "parentName": "R211-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     211
-    ],
-    "time": {
-     "end": "2026-11-05T18:57:00.000+0100",
-     "start": "2026-11-05T17:53:03.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Lerchenfelder Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R211-112",
-    "owner": "WL",
-    "parentName": "R211-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     211
-    ],
-    "time": {
-     "end": "2026-11-05T18:56:00.000+0100",
-     "start": "2026-11-05T17:51:33.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2343-125",
     "owner": "WL",
@@ -1527,52 +1437,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Lerchenfelder Straße",
-    "name": "R272-105",
-    "owner": "WL",
-    "parentName": "R272-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     272
-    ],
-    "time": {
-     "end": "2026-11-05T18:57:00.000+0100",
-     "start": "2026-11-05T17:58:05.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Lerchenfelder Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R272-112",
-    "owner": "WL",
-    "parentName": "R272-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     272
-    ],
-    "time": {
-     "end": "2026-11-05T18:56:00.000+0100",
-     "start": "2026-11-05T17:56:35.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -1619,190 +1483,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Lerchenfelder Straße",
-    "name": "R355-105",
-    "owner": "WL",
-    "parentName": "R355-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     355
-    ],
-    "time": {
-     "end": "2026-11-05T18:57:00.000+0100",
-     "start": "2026-11-05T17:53:05.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Lerchenfelder Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R355-112",
-    "owner": "WL",
-    "parentName": "R355-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     355
-    ],
-    "time": {
-     "end": "2026-11-05T18:56:00.000+0100",
-     "start": "2026-11-05T17:51:35.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Lerchenfelder Straße",
-    "name": "R356-105",
-    "owner": "WL",
-    "parentName": "R356-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     356
-    ],
-    "time": {
-     "end": "2026-11-05T18:57:00.000+0100",
-     "start": "2026-11-05T17:53:05.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Lerchenfelder Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R356-112",
-    "owner": "WL",
-    "parentName": "R356-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     356
-    ],
-    "time": {
-     "end": "2026-11-05T18:56:00.000+0100",
-     "start": "2026-11-05T17:51:35.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Lerchenfelder Straße",
-    "name": "R357-105",
-    "owner": "WL",
-    "parentName": "R357-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     357
-    ],
-    "time": {
-     "end": "2026-11-05T18:57:00.000+0100",
-     "start": "2026-11-05T17:53:05.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Lerchenfelder Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R357-112",
-    "owner": "WL",
-    "parentName": "R357-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     357
-    ],
-    "time": {
-     "end": "2026-11-05T18:56:00.000+0100",
-     "start": "2026-11-05T17:51:35.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Spitalgasse",
-    "name": "R377-105",
-    "owner": "WL",
-    "parentName": "R377-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     377
-    ],
-    "time": {
-     "end": "2026-11-05T18:58:00.000+0100",
-     "start": "2026-11-05T17:58:35.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Spitalgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Spitalgasse",
-    "name": "R379-105",
-    "owner": "WL",
-    "parentName": "R379-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     379
-    ],
-    "time": {
-     "end": "2026-11-05T18:58:00.000+0100",
-     "start": "2026-11-05T17:58:35.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Spitalgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
     "name": "R379-112",
     "owner": "WL",
@@ -1822,144 +1502,6 @@
      "start": "2026-11-05T17:57:05.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Spitalgasse",
-    "name": "R380-105",
-    "owner": "WL",
-    "parentName": "R380-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     380
-    ],
-    "time": {
-     "end": "2026-11-05T18:58:00.000+0100",
-     "start": "2026-11-05T17:58:35.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Spitalgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Spitalgasse",
-    "name": "R380-112",
-    "owner": "WL",
-    "parentName": "R380-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     380
-    ],
-    "time": {
-     "end": "2026-11-05T18:56:00.000+0100",
-     "start": "2026-11-05T17:57:05.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Spitalgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Spitalgasse",
-    "name": "R381-105",
-    "owner": "WL",
-    "parentName": "R381-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     381
-    ],
-    "time": {
-     "end": "2026-11-05T18:58:00.000+0100",
-     "start": "2026-11-05T17:58:35.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Spitalgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Spitalgasse",
-    "name": "R381-112",
-    "owner": "WL",
-    "parentName": "R381-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     381
-    ],
-    "time": {
-     "end": "2026-11-05T18:56:00.000+0100",
-     "start": "2026-11-05T17:57:05.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Spitalgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nZüge halten bei Linie 37-42",
-    "name": "R382-105",
-    "owner": "WL",
-    "parentName": "R382-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     382
-    ],
-    "time": {
-     "end": "2026-11-05T18:58:00.000+0100",
-     "start": "2026-11-05T17:59:05.000+0100"
-    },
-    "title": "Verkehrsunfall\nZüge halten bei Linie 37-42"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nZüge halten Züge halten bei LInie 37-42",
-    "name": "R382-112",
-    "owner": "WL",
-    "parentName": "R382-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     382
-    ],
-    "time": {
-     "end": "2026-11-05T18:56:00.000+0100",
-     "start": "2026-11-05T17:57:35.000+0100"
-    },
-    "title": "Verkehrsunfall\nZüge halten Züge halten bei LInie 37-42"
    },
    {
     "alertCause": "undefined alert cause",
