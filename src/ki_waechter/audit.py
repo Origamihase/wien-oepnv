@@ -141,9 +141,10 @@ def verify(answer: Mapping[str, Any], prep: Prepared) -> Verdict:
     items = {item.nr: item for item in prep.items}
     findings: list[Finding] = []
     rejected: list[Rejected] = []
-    # One error in several texts of the same item (a time line changed in
-    # between) is one finding.
-    seen: set[tuple[str, str, str, str]] = set()
+    # One finding per item (GUID), class and feed: one error in several texts
+    # of the item (a time line changed in between), several places of one class
+    # in one text and one error quoted at two lengths by the two answers.
+    seen: set[tuple[str, str, str]] = set()
     for raw in answer.get("funde") or []:
         if not isinstance(raw, dict):
             continue
@@ -151,7 +152,7 @@ def verify(answer: Mapping[str, Any], prep: Prepared) -> Verdict:
         if isinstance(result, str):
             rejected.append(Rejected(dict(raw), result))
             continue
-        key = (items[result.nr].guid, result.klasse, result.feed, normalize(result.feed_zitat))
+        key = (items[result.nr].guid, result.klasse, result.feed)
         if key not in seen:
             seen.add(key)
             findings.append(result)

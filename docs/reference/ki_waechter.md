@@ -70,7 +70,10 @@ bevor er zählt:
   enthält ihr Zitat.
 - Die Klasse passt zum Feed (F6 nur EN, F1 und F3 nur DE), ein erwarteter Text
   ist angegeben.
-- Derselbe Fehler in mehreren Textständen einer Meldung zählt einmal.
+- Ein Fund je Meldung (GUID), Klasse und Feed: derselbe Fehler in mehreren
+  Textständen einer Meldung, mehrere Stellen einer Klasse in einem Text und
+  ein Fehler, den die beiden Antworten verschieden lang zitieren, zählen
+  einmal (das erste Zitat bleibt).
 
 Ein Fund, der eine Prüfung nicht besteht, steht unter „Nicht belegt“ im
 Bericht und öffnet kein Issue. Kopf, Zahlen, GUIDs, Zeiten und die Tabelle der
@@ -144,8 +147,9 @@ Entscheidung, bevor sie im Feed steht.
 **Die zweite Antwort.** `ask` fragt die Kette, bis ein Modell antwortet, und
 dieses Modell dann noch einmal mit derselben Eingabe (`ask_twice` in
 `scripts/ki_waechter.py`, `ANSWERS_PER_AUDIT` = 2); `unite_answers` vereinigt
-beide Antworten: jeder Fund einer der beiden (gleich, wenn Meldung, Klasse,
-Feed und Zitat bis auf Leerraum gleich sind, wie in `verify`), jede geprüfte
+beide Antworten: jeder Fund einer der beiden (gleich, wenn Meldung, Klasse
+und Feed gleich sind, wie in `verify`; das Zitat zählt nicht mit, weil die
+beiden Antworten denselben Fehler verschieden lang zitieren), jede geprüfte
 Nummer, beide Listen der Vermutungen, Tokens und Anfragen summiert. Die
 zweite Anfrage geht nur an das Modell, das geantwortet hat, genau einmal; bei
 503, 429, einer abgebrochenen Verbindung oder einer Antwort ohne JSON gilt

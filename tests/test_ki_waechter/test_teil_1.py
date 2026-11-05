@@ -90,8 +90,14 @@ def test_a_wrong_fact_needs_a_verbatim_source_quote(prep: kw.Prepared) -> None:
 
 
 def test_the_same_finding_counts_once(prep: kw.Prepared) -> None:
+    """One finding per item, class and feed: the same quote twice, or the same error quoted at another length."""
     one = {"nr": 2, "klasse": "F6", "feed": "EN", "feed_zitat": "algae path", "erwartet": "Algenweg", "begruendung": "b"}
     assert len(kw.verify(_answer(one, dict(one)), prep).findings) == 1
+    longer = {**one, "feed_zitat": "closure of the algae path, line 89A", "erwartet": "closure of the Algenweg, line 89A"}
+    verdict = kw.verify(_answer(one, longer), prep)
+    assert [f.feed_zitat for f in verdict.findings] == ["algae path"] and not verdict.rejected
+    # Another class of the same item is another finding.
+    assert len(kw.verify(_answer(one, {**one, "klasse": "F5"}), prep).findings) == 2
 
 
 def test_model_text_is_scrubbed(prep: kw.Prepared) -> None:
