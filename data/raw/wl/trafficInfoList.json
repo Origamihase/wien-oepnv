@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261105-0019, I20260925-0011, I20260909-0007, I20260922-0032, I20261105-0020, I20261020-0029"
+    "trafficInfoNameList": "I20261105-0021, I20260925-0011, I20260909-0007, I20260922-0032, I20261105-0020-F01, I20261105-0020, I20261020-0029"
    },
    {
     "id": 3,
@@ -217,51 +217,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
-      "13A": "ptBusCity"
-     }
-    },
-    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie 13A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 13A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "13A: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261105-0019",
-    "owner": "WL",
-    "parentName": "I20261105-0019",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 413,
-      "lineName": "13A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-05T11:27:00.000+0100",
-     "lastUpdate": "2026-11-05T11:27:00.000+0100",
-     "resume": "2026-11-05T11:27:00.000+0100",
-     "start": "2026-11-05T11:27:00.000+0100"
-    },
-    "title": "13A: Verkehrsüberlastung"
-   },
-   {
     "alertCause": "overhead wire failure",
     "alertCauseId": 39,
     "attributes": {
@@ -297,13 +252,108 @@
       "vehicleType": "ptTram"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-05T11:58:00.000+0100",
-     "lastUpdate": "2026-11-05T11:58:00.000+0100",
+     "end": "2026-11-05T12:29:00.000+0100",
+     "lastUpdate": "2026-11-05T12:29:00.000+0100",
+     "resume": "2026-11-05T12:29:00.000+0100",
      "start": "2026-11-05T11:46:00.000+0100"
     },
     "title": "2: Beschädigte Oberleitung"
+   },
+   {
+    "alertCause": "overhead wire failure",
+    "alertCauseId": 39,
+    "attributes": {
+     "relatedLineTypes": {
+      "2": "ptTram"
+     }
+    },
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "2: Beschädigte Oberleitung"
+      }
+     }
+    ],
+    "name": "I20261105-0020-F01",
+    "owner": "WL",
+    "parentName": "I20261105-0020",
+    "priority": "1",
+    "reasonId": 23,
+    "reasonName": "Fahrleitungsgebrechen",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 102,
+      "lineName": "2",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-05T12:29:00.000+0100",
+     "lastUpdate": "2026-11-05T12:29:00.000+0100",
+     "resume": "2026-11-05T12:29:00.000+0100",
+     "start": "2026-11-05T11:46:00.000+0100"
+    },
+    "title": "2: Beschädigte Oberleitung"
+   },
+   {
+    "alertCause": "miscellaneous",
+    "alertCauseId": 137,
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "descriptionHTML": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+       "descriptionPlain": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+       "title": "U1: Betriebsstörung"
+      }
+     }
+    ],
+    "name": "I20261105-0021",
+    "owner": "WL",
+    "parentName": "I20261105-0021",
+    "priority": "1",
+    "reasonId": 14,
+    "reasonName": "Betriebsstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 301,
+      "lineName": "U1",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4111
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-05T12:27:00.000+0100",
+     "lastUpdate": "2026-11-05T12:27:00.000+0100",
+     "resume": "2026-11-05T12:26:00.000+0100",
+     "start": "2026-11-05T12:26:00.000+0100"
+    },
+    "title": "U1: Betriebsstörung"
    },
    {
     "alertCause": "undefined alert cause",
