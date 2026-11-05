@@ -65,9 +65,9 @@ LIVE_FEED_CONTENT_TYPES = ("application/xml", "application/rss+xml", "text/xml")
 # Stations: update-stations runs weekly (Sun 01:00 UTC). 8 days = one full
 # cycle + jitter; older means a weekly run was missed.
 STATIONS_MAX_AGE_H = _env_float("HEALTH_STATIONS_MAX_AGE_HOURS", 192.0)
-# The KI-Wächter runs once a day from 9:00 Vienna time (again two hours
-# after a failure); 36 h leaves room for a late first Update cycle of the
-# next day.
+# The KI-Wächter runs once a day from 15:00 Vienna time (9:00 until
+# 2026-11-05; again two hours after a failure); 36 h leaves room for a late
+# first try of the next day.
 KI_WAECHTER_MAX_AGE_H = _env_float("HEALTH_KI_WAECHTER_MAX_AGE_HOURS", 36.0)
 # A KI-Wächter run that got no answer only because Gemini was overloaded
 # (outcome "overloaded") is a note until the last clean audit is this old

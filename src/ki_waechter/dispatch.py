@@ -7,24 +7,26 @@ the API and ended with "no audit" on all but one to four ticks (6 to 30 s
 each). Now the last step of a successful Update cycle on ``main`` decides
 (``scripts/ki_waechter.py dispatch``) and sends ``repository_dispatch`` with
 the type :data:`EVENT_TYPE` only when an audit is due; the watcher's gate
-runs only then and keeps the day's budget of Gemini requests. Michael
-2026-11-04: "Effizienz ist mir wichtig. Das Projekt soll ressourcenschonend
-arbeiten."
+runs only then. Michael 2026-11-04: "Effizienz ist mir wichtig. Das Projekt
+soll ressourcenschonend arbeiten."
 
-The decision is the former gate's, unchanged (:func:`not_due`):
+The decision (:func:`not_due`; the former gate's, with the later hour):
 
-* from :data:`START_HOUR` Vienna time, when the free-tier day of the Gemini
-  API has begun (0:00 Pacific time; Michael 2026-10-31);
+* from :data:`START_HOUR` Vienna time (15:00 since 2026-11-05, the reasons
+  at the constant; until then 9:00, right after the free-tier day of the
+  Gemini API begins at 0:00 Pacific time);
 * not when today's audit succeeded (``last_success`` of the record);
 * not within :data:`RETRY_HOURS` of a failed try of today (``at``);
 * not while a run of the watcher on ``main`` is queued, waiting or running:
   the run of the previous tick may still be publishing its record. Before,
-  the second run waited in the concurrency group and read the record again;
-* not after a run of today that the watcher's gate ended without an audit
-  (gate green, audit jobs skipped): the day's budget of Gemini requests is
-  spent, and the budget only grows until the next day. Before, the gate
-  said so on every further tick of the day (01.11.2026: 28 times, after the
-  trial runs of #2092 had used the budget).
+  the second run waited in the concurrency group and read the record again.
+
+Until later on 2026-11-05 a fifth rule held the rest of the day after a run
+that the watcher's gate had ended without an audit because the day's budget
+of Gemini requests was spent. Nothing counts a budget any more: Google does
+(``scripts/ki_waechter.py``, Michael 2026-11-05: "Zähle es bitte so wie
+Google. Wir brauchen keine eigene Zähltechnik."), and the jobs of a run are
+not read.
 
 The record is read from the checkout first; only when that says "due" the
 copy on ``main`` is read through the API, because the audit of the previous
@@ -53,12 +55,17 @@ EVENT_TYPE = "ki-waechter"
 STEP = "KI-Wächter"
 RECORD = Path("data/side_steps/ki-waechter.json")
 # First Vienna hour of the day in which the audit runs (env
-# ``KI_WAECHTER_START_HOUR`` in update-cycle.yml): the free-tier day of the
-# Gemini API begins at 0:00 Pacific time, 9:00 Vienna (8:00 in the weeks
-# between the European and the US clock change), so the audit runs first
-# thing in a fresh quota day and has the day left for another try (Michael
-# 2026-10-31, after Gemini 3.8 Flash answered 503 all afternoon).
-START_HOUR = 9
+# ``KI_WAECHTER_START_HOUR`` in update-cycle.yml). From 31.10. to 05.11.2026
+# it was 9, right after the free-tier day of the Gemini API begins (0:00
+# Pacific time, 9:00 Vienna; 8:00 in the weeks between the European and the
+# US clock change), so that the audit ran first thing in a fresh quota day
+# (Michael 2026-10-31, after Gemini 3.8 Flash answered 503 all afternoon).
+# At that hour everyone's quota returns, and on five mornings in a row both
+# Flash models answered 503 while the try at 11:00 succeeded on three of
+# four days (Michael 2026-11-05: "Wenn jeder wieder darf, ist es klar, dass
+# die API eine höhere Last hat ... wir sollten später abfragen. Wie wärs mit
+# 15:00 Uhr?"). Vienna time: 15:00 is 6:00 on the US west coast.
+START_HOUR = 15
 # Hours between a failed audit and the next try on the same day
 # (``KI_WAECHTER_RETRY_HOURS``; ki-waechter.yml names the same number in its
 # warning).
@@ -177,19 +184,6 @@ class WatcherClient:
         raw = data.get("workflow_runs") if isinstance(data, Mapping) else None
         return [entry for entry in (raw if isinstance(raw, list) else []) if isinstance(entry, Mapping)]
 
-    def gate_refused(self, run_id: int) -> bool:
-        """Whether the gate of run *run_id* ended green and let no audit job run (budget spent).
-
-        A gate that failed (a GitHub hiccup) does not count: the next tick
-        dispatches again, as the gate itself ran again on every tick before.
-        """
-        data = self._request("GET", f"/actions/runs/{run_id}/jobs?per_page=30")
-        raw = data.get("jobs") if isinstance(data, Mapping) else None
-        jobs = [job for job in (raw if isinstance(raw, list) else []) if isinstance(job, Mapping)]
-        gate_ok = any(job.get("name") == "gate" and job.get("conclusion") == "success" for job in jobs)
-        audits = [job for job in jobs if str(job.get("name") or "").startswith("audit")]
-        return gate_ok and bool(audits) and all(job.get("conclusion") == "skipped" for job in audits)
-
     def dispatch(self, update_run: str) -> None:
         self._request("POST", "/dispatches", {"event_type": EVENT_TYPE, "client_payload": {"update_run": update_run}})
 
@@ -222,33 +216,6 @@ def _number(entry: Mapping[str, Any]) -> int:
     return number if isinstance(number, int) else 0
 
 
-def _refused_today(client: WatcherClient, runs: list[Mapping[str, Any]], record: Record,
-                   now: datetime) -> Mapping[str, Any] | None:
-    """Today's newest completed dispatch run that the gate ended without an audit, or None.
-
-    A run that recorded an audit (``at`` of the record after its start) is
-    not asked; only a run without a record needs its jobs read.
-    """
-    today = now.astimezone(VIENNA).date()
-    newest: Mapping[str, Any] | None = None
-    for entry in runs:
-        started = _parse_time(entry.get("run_started_at"))
-        if (entry.get("event") != "repository_dispatch" or entry.get("status") != "completed"
-                or started is None or started.astimezone(VIENNA).date() != today):
-            continue
-        if newest is None or _number(entry) > _number(newest):
-            newest = entry
-    if newest is None:
-        return None
-    started = _parse_time(newest.get("run_started_at"))
-    if started is not None and record.at is not None and record.at >= started:
-        return None
-    run_id = newest.get("id")
-    if not isinstance(run_id, int) or not client.gate_refused(run_id):
-        return None
-    return newest
-
-
 def decide_and_dispatch(client: WatcherClient, local: Record, now: datetime, update_run: str, *,
                         start_hour: int = START_HOUR, retry_hours: float = RETRY_HOURS) -> str:
     """Dispatch the audit when it is due; returns the one line that says what happened."""
@@ -263,10 +230,6 @@ def decide_and_dispatch(client: WatcherClient, local: Record, now: datetime, upd
     active = next((entry for entry in runs if entry.get("status") in ACTIVE_STATES), None)
     if active is not None:
         return f"Kein KI-Wächter: Lauf #{_number(active)} des Wächters läuft oder wartet noch."
-    refused = _refused_today(client, runs, fresh, now)
-    if refused is not None:
-        return (f"Kein KI-Wächter: Lauf #{_number(refused)} von heute prüfte nicht, "
-                "das Tagesbudget der Gemini-Anfragen ist verbraucht.")
     client.dispatch(update_run)
     return f"KI-Wächter gestartet (repository_dispatch {EVENT_TYPE}, {_vienna(now)} Wien)."
 
