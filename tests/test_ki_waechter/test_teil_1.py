@@ -249,10 +249,32 @@ def test_the_sources_a_merged_text_repeats_come_first(tmp_path: Path) -> None:
     assert len(titles) == 6 and titles[:2] == ["1: Züge halten Rosengasse 7", "1: Kein Betrieb"]
 
 
+def test_a_quote_from_the_time_line_and_a_cut_behind_the_measure_are_rejected(tmp_path: Path) -> None:
+    """The time line is the code's, not a finding (run 302); a cut behind the measure is decided (runs 296, 302)."""
+    _write_repo(tmp_path)
+    rows = [("7: Bauarbeiten", "Wegen Bauarbeiten kommt es zu Umleitungen bei der Linie 7. Maßnahmen: Linie 7 … [Ab Di 27.10.]", "g1"),
+            ("S1: Bauarbeiten", "Wegen Bauarbeiten können am 27.10. der S1-Zug … [Am Di 27.10.]", "g2")]
+    _write_feeds(tmp_path, rows, rows)
+    read, listing = kw.working_tree_reader(tmp_path)
+    prep = kw.prepare([kw.Snapshot("abc1234", "", read, listing)], "abc1234")
+    base = {"feed": "DE", "erwartet": "x", "begruendung": "y"}
+    cut = kw.verify(_answer({**base, "nr": 1, "klasse": "F2", "feed_zitat": "Linie 7 …"}, geprueft=(1, 2)), prep)
+    assert not cut.findings and "Kernaussage „Umleitungen“" in cut.rejected[0].grund
+    day = kw.verify(_answer({**base, "nr": 1, "klasse": "F3", "feed_zitat": "Di 27.10.", "quelle_zitat": "Bauarbeiten"},
+                            geprueft=(1, 2)), prep)
+    assert not day.findings and "Zeitzeile" in day.rejected[0].grund
+    # A text cut before its measure stays F2; a day that also stands in the body is no time-line quote.
+    core = kw.verify(_answer({**base, "nr": 2, "klasse": "F2", "feed_zitat": "der S1-Zug …"}, geprueft=(1, 2)), prep)
+    assert [f.klasse for f in core.findings] == ["F2"]
+    body = kw.verify(_answer({**base, "nr": 2, "klasse": "F3", "feed_zitat": "am 27.10.", "quelle_zitat": "Streckensperre"},
+                             geprueft=(1, 2)), prep)
+    assert [f.klasse for f in body.findings] == ["F3"]
+
+
 def test_a_cut_source_is_marked_and_a_quote_at_the_cut_is_at_most_f2(tmp_path: Path) -> None:
     """A source text ends with „[…]“ after MAX_SOURCE_CHARS; a feed quote ending at the „…“ is only F2 (05.11.2026)."""
     _write_repo(tmp_path)
-    rows = [("U4: Schadhaftes Fahrzeug", "Nach einer Fahrtbehinderung kommt es zu …", "g1")]
+    rows = [("U4: Schadhaftes Fahrzeug", "Wegen eines Polizeieinsatzes kommt es zu …", "g1")]
     _write_feeds(tmp_path, rows, rows)
     long_text = " ".join(f"Wort{i}" for i in range(600))
     (tmp_path / "cache" / "wl_x" / "events.json").write_text(

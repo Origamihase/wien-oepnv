@@ -86,6 +86,39 @@ def _item_text(item: FeedItem, feed: str) -> str:
     return f"{item.title} {item.description}"
 
 
+_TIME_LINE_RE = re.compile(r"\[[^\[\]]*\]\s*$")
+
+# The measure of a text, as the words it can stand in: a cut behind one of them is decided, not F2
+# (Michael, 05.11.2026, „Wortweise bleibt“; runs 296 and 302 reported such cuts all the same).
+CORE_WORDS = {
+    "DE": ("umleit", "kurzführung", "kein betrieb", "fahrtbehinderung", "nicht fahren", "fährt nicht", "fahren nicht",
+           "entfällt", "entfallen", "fällt aus", "fallen aus", "ausfall", "hält nicht", "halten nicht",
+           "nicht einhalten", "betrieb ab", "ersatzverkehr", "verspätung", "intervalle", "busse halten", "züge halten"),
+    "EN": ("diver", "short-running", "short service", "no service", "service obstruction", "cannot run", "not run",
+           "cancel", "does not stop", "do not stop", "service from", "replacement service", "delay", "interval",
+           "buses stop", "trains stop"),
+}
+
+
+def _body_and_time_line(text: str) -> tuple[str, str]:
+    """A feed text without its time line, and the time line (the bracket at its end)."""
+    match = _TIME_LINE_RE.search(text)
+    return (text[: match.start()], match.group(0)) if match else (text, "")
+
+
+def _measure_before_cut(quote: str, description: str, feed: str) -> str:
+    """The measure word that stands before the cut an F2 quote ends at; empty when none does."""
+    if not quote.endswith("…") or quote.endswith("→ …"):
+        return ""
+    body, _ = _body_and_time_line(description)
+    before = body[: body.rfind("…")] if "…" in body else ""
+    for stem in CORE_WORDS[feed]:
+        match = re.search(rf"\S*{re.escape(stem)}\S*", before, re.IGNORECASE)
+        if match:
+            return match.group(0).strip(".,;:")
+    return ""
+
+
 def _contains(haystack: str, quote: str) -> bool:
     needle = normalize(quote).strip("„“\"' ")
     return len(needle) >= MIN_QUOTE_CHARS and needle in normalize(haystack)
@@ -121,8 +154,18 @@ def _check_one(raw: Mapping[str, Any], prep: Prepared, items: Mapping[int, FeedI
     if klasse != "F2" and finding.feed_zitat.endswith("…"):
         # What the cut to 180 characters takes away is at most a lost core statement (runs 290, 291, 05.11.2026).
         return "Zitat endet an der Kürzung; eine Kürzung ist höchstens F2"
-    if not _contains(_item_text(item, feed), finding.feed_zitat):
+    text = _item_text(item, feed)
+    if not _contains(text, finding.feed_zitat):
         return f"Zitat steht nicht wörtlich in Meldung {nr} ({feed})"
+    body, time_line = _body_and_time_line(text)
+    if klasse != "F2" and _contains(time_line, finding.feed_zitat) and not _contains(body, finding.feed_zitat):
+        # The time line is the code's, not the operator's; only a text that is nothing else is a finding (run 302).
+        return "Zitat aus der Zeitzeile; sie schreibt der Code und ist kein Fund"
+    if klasse == "F2":
+        description = item.description if feed == "DE" else item.en_description or ""
+        word = _measure_before_cut(finding.feed_zitat, description, feed)
+        if word:
+            return f"Kernaussage „{word}“ steht vor der Kürzung; eine Kürzung dahinter ist entschieden"
     if klasse == "F3":
         if not _contains(prep.source_text(item), finding.quelle_zitat):
             return f"Quellzitat steht nicht wörtlich in den Quellen von Meldung {nr}"
