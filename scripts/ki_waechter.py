@@ -37,6 +37,12 @@ Three steps, only the middle one is the model:
     ``docs/archive/audits/ki-waechter-YYYY-MM-DD.md`` and a small result JSON
     for the workflow (issue, side-step record).
 
+``dispatch``
+    The last step of a successful Update cycle on ``main``: starts the
+    daily audit (``repository_dispatch``) when it is due, see
+    ``src/ki_waechter/dispatch.py``. Until 2026-11-05 the watcher's own gate
+    job started on every tick to find out.
+
 Never changes the feed. See ``docs/reference/ki_waechter.md``.
 """
 
@@ -61,6 +67,7 @@ import requests
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from src.ki_waechter import dispatch as ki_dispatch
 from src.ki_waechter.audit import Verdict, extract_answer, render_report, verify
 from src.ki_waechter.inputs import (
     CLASSES,
@@ -435,8 +442,15 @@ def main(argv: Sequence[str] | None = None) -> int:
     v.add_argument("--dir", required=True)
     v.add_argument("--report", default="")
     v.add_argument("--run-url", default="")
+    d = sub.add_parser("dispatch", help="den täglichen Prüflauf starten, wenn er fällig ist (letzter Schritt des Update-Laufs)")
+    d.add_argument("--record", default=str(ki_dispatch.RECORD), help="Aufzeichnung im Checkout")
     args = parser.parse_args(argv)
-    commands = {"prepare": _cmd_prepare, "ask": _cmd_ask, "verify": _cmd_verify}
+    commands: dict[str, Callable[[argparse.Namespace], int]] = {
+        "prepare": _cmd_prepare,
+        "ask": _cmd_ask,
+        "verify": _cmd_verify,
+        "dispatch": lambda a: ki_dispatch.main(["--record", a.record]),
+    }
     return commands[args.cmd](args)
 
 

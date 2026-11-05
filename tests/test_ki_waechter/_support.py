@@ -8,7 +8,6 @@ from __future__ import annotations
 
 import json
 import subprocess
-from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -140,12 +139,15 @@ def _overloaded_then(monkeypatch: pytest.MonkeyPatch, replies: list[_Response]) 
 
 
 def _run_gate(
-    tmp_path: Path, event: str, jobs: list[str], extra: dict[str, str] | None = None, record: str = ""
+    tmp_path: Path, event: str, jobs: list[str], extra: dict[str, str] | None = None
 ) -> dict[str, str]:
     """Run the gate script with a fake ``gh``: one earlier run today with these audit jobs.
 
     Each job is "<id> <status> <conclusion> <annotation>"; the annotation
-    "-" means the job left none.
+    "-" means the job left none. Since 2026-11-05 the gate runs only on a
+    dispatch of the Update cycle (``repository_dispatch``), a pull request or
+    a manual start; the record and the clock are read by the cycle
+    (``src/ki_waechter/dispatch.py``, ``tests/test_ki_waechter/test_dispatch.py``).
     """
     doc = yaml.safe_load((REPO / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8"))
     script = doc["jobs"]["gate"]["steps"][0]["run"]
@@ -156,11 +158,9 @@ def _run_gate(
         f'  *"/check-runs/{j.split()[0]}/annotations"*) echo "{"" if j.split()[3] == "-" else j.split()[3]}" ;;\n'
         for j in jobs
     )
-    (tmp_path / "record.json").write_text(record, encoding="utf-8")
     (fake / "gh").write_text(
         "#!/bin/bash\n"
         'case "$2" in\n'
-        f'  *"/contents/data/side_steps/ki-waechter.json"*) cat "{tmp_path / "record.json"}" ;;\n'
         '  *"/runs?created="*) echo 11 ;;\n'
         f'  *"/runs/11/jobs?"*) printf "{lines}\\n" ;;\n'
         + notes
@@ -181,20 +181,11 @@ def _run_gate(
         "REV_INPUT": "",
         "KI_WAECHTER_MAX_REQUESTS": str(doc["env"]["KI_WAECHTER_MAX_REQUESTS"]),
         "MAX_PER_AUDIT": doc["jobs"]["gate"]["steps"][0]["env"]["MAX_PER_AUDIT"],
-        "KI_WAECHTER_START_HOUR": "0",
         "KI_WAECHTER_RETRY_HOURS": doc["env"]["KI_WAECHTER_RETRY_HOURS"],
         **(extra or {}),
     }
     subprocess.run(["bash", "-c", script], env=env, check=True, capture_output=True)
     return dict(line.split("=", 1) for line in output.read_text(encoding="utf-8").splitlines())
-
-
-def _record(outcome: str, hours_ago: float, success_hours_ago: float | None = None) -> str:
-    now = datetime.now(UTC)
-    entry: dict[str, str] = {"outcome": outcome, "at": (now - timedelta(hours=hours_ago)).isoformat()}
-    if success_hours_ago is not None:
-        entry["last_success"] = (now - timedelta(hours=success_hours_ago)).isoformat()
-    return json.dumps({"steps": {"KI-Wächter": entry}})
 
 
 __all__ = [
@@ -209,7 +200,6 @@ __all__ = [
     "_history",
     "_ok_payload",
     "_overloaded_then",
-    "_record",
     "_run_gate",
     "_write_feeds",
     "_write_repo",

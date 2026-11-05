@@ -83,7 +83,7 @@ _CONTROL_CHARS_RE = re.compile(
     r"\u200b-\u200f\u2028-\u202e\u2060-\u206f"
     r"\ufe00-\ufe0f\ufeff\ufff9-\ufffb"
     r"\U000110bd\U000110cd"
-    r"\U00013430-\U00013438"
+    r"\U00013430-\U0001343F"
     r"\U0001bca0-\U0001bca3"
     r"\U0001d173-\U0001d17a"
     r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"
@@ -221,8 +221,9 @@ _CONTROL_CHARS_RE = re.compile(
 #     zero-width except in dedicated CJK ruby renderers, none of
 #     which is in the Vienna OePNV pipeline).
 #   * U+110BD, U+110CD - KAITHI NUMBER SIGN / NUMBER SIGN ABOVE.
-#   * U+13430..U+13438 - EGYPTIAN HIEROGLYPH JOINERS / SEGMENT
-#     formatting controls (vertical / horizontal / overlay etc.).
+#   * U+13430..U+1343F - EGYPTIAN HIEROGLYPH JOINERS / SEGMENT / INSERT
+#     formatting controls (vertical / horizontal / overlay etc.; U+13439
+#     to U+1343F came with Unicode 15.0, 2022).
 #   * U+1BCA0..U+1BCA3 - SHORTHAND FORMAT LETTER OVERLAP /
 #     CONTINUING OVERLAP / DOWN STEP / UP STEP.
 #   * U+1D173..U+1D17A - MUSICAL SYMBOL BEGIN / END BEAM / TIE /
@@ -247,7 +248,7 @@ _INVISIBLE_DANGEROUS_RE = re.compile(
     r"\u200b-\u200f\u2028-\u202e\u2060-\u206f"
     r"\ufe00-\ufe0f\ufeff\ufff9-\ufffb"
     r"\U000110bd\U000110cd"
-    r"\U00013430-\U00013438"
+    r"\U00013430-\U0001343F"
     r"\U0001bca0-\U0001bca3"
     r"\U0001d173-\U0001d17a"
     r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"

@@ -15,12 +15,18 @@ name: KI-Wächter
 # time; after a failure again two hours later, while the daily budget of
 # Gemini requests lasts. GitHub's own cron fires only a few of its slots a day here
 # (docs/architecture.md, Workflows), the IFTTT-driven Update cycle every
-# 30 minutes, so this workflow hangs off ``workflow_run`` of that cycle.
-# The ``gate`` job ends in seconds on every other tick: before 9:00, after
-# a failed cycle, when today's audit succeeded (``last_success`` in
-# ``data/side_steps/ki-waechter.json``), or within two hours of a failed one
-# (the Health check is red until an audit succeeds; after a mere overload of
-# Gemini only 30 hours after the last clean audit).
+# 30 minutes, so the last step of a successful Update cycle on ``main``
+# decides (``scripts/ki_waechter.py dispatch``, src/ki_waechter/dispatch.py)
+# and sends ``repository_dispatch: ki-waechter`` only when the audit is due:
+# not before 9:00, not when today's audit succeeded (``last_success`` in
+# ``data/side_steps/ki-waechter.json``), not within two hours of a failed
+# one, not while a run of this workflow is queued or running. Until
+# 2026-11-05 this workflow hung off ``workflow_run`` of the cycle, and its
+# ``gate`` job started a runner on all 48 ticks a day to say "not now" on
+# all but one to four. The gate now runs only on a dispatch and keeps the
+# day's budget of requests. The Health check is red until an audit
+# succeeds; after a mere overload of Gemini only 30 hours after the last
+# clean audit.
 #
 # How: ``scripts/ki_waechter.py prepare`` writes the input (every feed
 # version of 24 hours from the git history, the English feed, the source
@@ -45,9 +51,9 @@ name: KI-Wächter
 # current feed, without publishing.
 
 on:
-  workflow_run:
-    workflows: ["Update cycle"]
-    types: [completed]
+  # Sent by the Update cycle when the daily audit is due (see above).
+  repository_dispatch:
+    types: [ki-waechter]
   workflow_dispatch:
     inputs:
       rev:
@@ -74,13 +80,11 @@ env:
   # fallback the audit asks at once when the first is overloaded (each has
   # its own quota; on 2026-10-31 Gemini 3.8 Flash answered 503 for hours).
   KI_WAECHTER_MODEL: gemini-3.8-flash,gemini-3.6-flash
-  # First Vienna hour of the day in which the audit runs: the free-tier day
-  # of the Gemini API begins at 0:00 Pacific time (9:00 Vienna, 8:00 in the
-  # weeks between the European and the US clock change), so the audit runs
-  # first thing in a fresh quota day and has the day left for another try
-  # (Michael 2026-10-31, after Gemini 3.8 Flash answered 503 all afternoon).
-  KI_WAECHTER_START_HOUR: "9"
-  # Hours between a failed audit and the next try on the same day.
+  # Hours between a failed audit and the next try on the same day, for the
+  # warning below. The Update cycle decides with the same number
+  # (update-cycle.yml, step "Start the KI-Wächter when due"; a test keeps
+  # the two equal). The first hour of the day, 9:00 Vienna time, stands there
+  # as well.
   KI_WAECHTER_RETRY_HOURS: "2"
   # Gemini requests per day at most (free tier, day from 0:00 Pacific
   # time). The gate counts the requests of the day (annotation
@@ -117,8 +121,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           EVENT: ${{ github.event_name }}
-          CYCLE_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
-          CYCLE_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          # The Update cycle run that sent the dispatch (its address).
+          CYCLE_RUN: ${{ github.event.client_payload.update_run }}
           REV_INPUT: ${{ inputs.rev }}
           OWNER_REPO: ${{ github.repository }}
           PR_HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
@@ -187,33 +191,19 @@ jobs:
                 echo "::error title=KI-Wächter::rev muss ein Commit-Hash sein"; exit 1
               fi
               jobs=1; limit=$(( KI_WAECHTER_MAX_REQUESTS - MAX_PER_AUDIT )) ;;
-            *)
+            repository_dispatch)
+              # The daily audit, sent by the Update cycle because it is due
+              # (src/ki_waechter/dispatch.py decided: 9:00 Vienna time or
+              # later, no success today, a failed try two hours back, no run
+              # of this workflow active). The daily audit may use the whole
+              # budget; pull requests and manual runs leave it one full
+              # audit (MAX_PER_AUDIT): the first model, the fallback and one
+              # more try.
+              echo "Täglicher Prüflauf, gestartet vom Update-Lauf ${CYCLE_RUN:-?}."
               out "publish=true"; out 'revs=["HEAD"]'
-              if [[ "${CYCLE_CONCLUSION}" != "success" || "${CYCLE_BRANCH}" != "main" ]]; then
-                echo "Update cycle ${CYCLE_CONCLUSION} on ${CYCLE_BRANCH}: no audit."; out "run=false"; exit 0
-              fi
-              hour="$(TZ=Europe/Vienna date +%-H)"
-              today="$(TZ=Europe/Vienna date +%F)"
-              if (( hour < KI_WAECHTER_START_HOUR )); then
-                echo "${hour}:xx Vienna time, audit starts at ${KI_WAECHTER_START_HOUR}:00."; out "run=false"; exit 0
-              fi
-              record="$(gh api "repos/${OWNER_REPO}/contents/data/side_steps/ki-waechter.json?ref=main" \
-                          -H "Accept: application/vnd.github.raw" 2>/dev/null || true)"
-              last="$(jq -r '.steps["KI-Wächter"].at // empty' <<<"${record}" 2>/dev/null || true)"
-              good="$(jq -r '.steps["KI-Wächter"].last_success // empty' <<<"${record}" 2>/dev/null || true)"
-              if [[ -n "${good}" && "$(TZ=Europe/Vienna date -d "${good}" +%F)" == "${today}" ]]; then
-                echo "Today's audit already ran (${good})."; out "run=false"; exit 0
-              fi
-              # A failed audit (an overloaded model, mostly) gets another
-              # try on a later tick the same day, while the budget lasts.
-              if [[ -n "${last}" && "$(TZ=Europe/Vienna date -d "${last}" +%F)" == "${today}" ]] \
-                 && (( $(date +%s) - $(date -d "${last}" +%s) < KI_WAECHTER_RETRY_HOURS * 3600 )); then
-                echo "Today's audit failed at ${last}; next try ${KI_WAECHTER_RETRY_HOURS} h later."; out "run=false"; exit 0
-              fi
-              # The daily audit may use the whole budget; pull requests
-              # and manual runs leave it one full audit (MAX_PER_AUDIT):
-              # the first model, the fallback and one more try.
               jobs=1; limit="${KI_WAECHTER_MAX_REQUESTS}" ;;
+            *)
+              echo "::error title=KI-Wächter::unerwartetes Ereignis ${EVENT}"; exit 1 ;;
           esac
           used="$(used_today)"
           per_job=$(( (limit - used) / jobs ))

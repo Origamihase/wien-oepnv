@@ -25,11 +25,14 @@ on:
   # card "Linie, Issue als Frühwarnung"): on 28.10.2026 GitHub started no
   # scheduled run between 13:19 and 23:19 Vienna time, so the Stammstrecke
   # outage from 15:00 never turned red. The Update run itself is carried by
-  # IFTTT every 30 minutes; the ``gate`` job below lets the first one of each
-  # hour through. A failed run started this way mails the actor of the Update
-  # run (the repository owner, who owns the IFTTT dispatch token). The cron
-  # above stays as the fallback when the Update run stops. While an outage
-  # lasts, a red run mails once an hour.
+  # IFTTT every 30 minutes; the condition of the ``health`` job below lets
+  # every second one through (even run number). Until 2026-11-05 a job
+  # ``gate`` read the clock for that (UTC minute under 30) and started a
+  # runner on all 48 ticks a day; the condition costs none. A failed run
+  # started this way mails the actor of the Update run (the repository
+  # owner, who owns the IFTTT dispatch token). The cron above stays as the
+  # fallback when the Update run stops. While an outage lasts, a red run
+  # mails once an hour.
   workflow_run:
     workflows: ["Update cycle"]
     types: [completed]
@@ -52,34 +55,24 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Two Update runs an hour, one Health check: an Update run that completes in
-  # the second half of the hour (UTC minute 30-59) is skipped. Schedule and
-  # manual runs always pass.
-  gate:
-    name: Once an hour
-    runs-on: ubuntu-latest
-    timeout-minutes: 1
-    outputs:
-      run: ${{ steps.gate.outputs.run }}
-    steps:
-      - name: Decide
-        id: gate
-        env:
-          EVENT: ${{ github.event_name }}
-        run: |
-          minute=$(date -u +%M)
-          minute=${minute#0}
-          if [ "$EVENT" = "workflow_run" ] && [ "$minute" -ge 30 ]; then
-            echo "run=false" >> "$GITHUB_OUTPUT"
-            echo "Second Update run of this hour (UTC minute $minute): no Health check."
-          else
-            echo "run=true" >> "$GITHUB_OUTPUT"
-          fi
-
   health:
     name: Probe sources & output freshness
-    needs: gate
-    if: needs.gate.outputs.run == 'true'
+    # Two Update runs an hour, one Health check: of the completed Update runs
+    # only every second one, by the parity of its run number, starts the
+    # check (the number counts every run and depends on no clock; the
+    # expression language has no arithmetic, hence the five digits). Schedule
+    # and manual runs always pass. Replayed over the 1,607 Update runs from
+    # 05.10. to 04.11.2026 (change of 2026-11-05): 26 instead of 27 checks a
+    # day in the median, the same longest gap (120 min, once), and no two
+    # checks within 20 minutes any more (the clock rule gave 67 such pairs,
+    # after a backup-cron run at :17).
+    if: >-
+      github.event_name != 'workflow_run'
+      || endsWith(github.event.workflow_run.run_number, '0')
+      || endsWith(github.event.workflow_run.run_number, '2')
+      || endsWith(github.event.workflow_run.run_number, '4')
+      || endsWith(github.event.workflow_run.run_number, '6')
+      || endsWith(github.event.workflow_run.run_number, '8')
     runs-on: ubuntu-latest
     # Generous ceiling: three live source fetches (each retried internally,
     # hard-capped at HEALTH_FETCH_TIMEOUT_SECONDS=120s) plus two file reads

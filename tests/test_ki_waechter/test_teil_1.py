@@ -26,7 +26,6 @@ from ._support import (
     _history,
     _ok_payload,
     _overloaded_then,
-    _record,
     _run_gate,
 )
 
@@ -527,42 +526,23 @@ def test_the_last_request_ends_inside_the_step_limit() -> None:
         ("workflow_dispatch", ["1 completed success 3", "2 completed success 3", "3 completed success 1"], None),
         # 01.11.2026: the trial runs used 9 and the daily audit got one request.
         # Now they stop at 7 and the daily audit keeps all three: first model,
-        # fallback model, one more try.
-        ("workflow_run", ["1 completed success 3", "2 completed success 3", "3 completed success 1"], "3"),
-        ("workflow_run", ["1 completed success 3", "2 completed success 3", "3 completed success 3"], "1"),
-        ("workflow_run", ["1 completed success 3", "2 completed success 3", "3 completed success 3",
-                          "4 completed success 1"], None),
+        # fallback model, one more try. The daily audit arrives as the
+        # dispatch of the Update cycle (since 2026-11-05; ``workflow_run`` before).
+        ("repository_dispatch", ["1 completed success 3", "2 completed success 3", "3 completed success 1"], "3"),
+        ("repository_dispatch", ["1 completed success 3", "2 completed success 3", "3 completed success 3"], "1"),
+        ("repository_dispatch", ["1 completed success 3", "2 completed success 3", "3 completed success 3",
+                                 "4 completed success 1"], None),
     ],
 )
 def test_each_audit_gets_its_share_of_the_daily_budget(
     tmp_path: Path, event: str, jobs: list[str], per_job: str | None
 ) -> None:
-    cycle = {"CYCLE_CONCLUSION": "success", "CYCLE_BRANCH": "main"}
-    out = _run_gate(tmp_path, event, jobs, cycle)
+    out = _run_gate(tmp_path, event, jobs)
     if per_job is None:
         assert out["run"] == "false"
         assert "Kein Aufruf" in (tmp_path / "summary").read_text(encoding="utf-8")
     else:
         assert out["run"] == "true" and out["per_job"] == per_job
-
-
-def test_the_daily_audit_starts_with_the_quota_day_and_tries_again_after_a_failure(tmp_path: Path) -> None:
-    doc = yaml.safe_load((REPO / ".github/workflows/ki-waechter.yml").read_text(encoding="utf-8"))
-    assert doc["env"]["KI_WAECHTER_START_HOUR"] == "9" and doc["env"]["KI_WAECHTER_RETRY_HOURS"] == "2"
-    cycle = {"CYCLE_CONCLUSION": "success", "CYCLE_BRANCH": "main"}
-    hour = datetime.now(UTC).astimezone(kw.VIENNA).hour
-    if hour < 3:  # "today" in Vienna must still hold three hours back
-        pytest.skip("too close to midnight in Vienna")
-    # Not yet today: runs.
-    assert _run_gate(tmp_path / "a", "workflow_run", [], cycle, _record("success", 30, 30))["run"] == "true"
-    # Succeeded today: done for the day.
-    assert _run_gate(tmp_path / "b", "workflow_run", [], cycle, _record("success", 0.5, 0.5))["run"] == "false"
-    # Failed an hour ago: waits; failed three hours ago: tries again.
-    assert _run_gate(tmp_path / "c", "workflow_run", [], cycle, _record("failure", 1, 30))["run"] == "false"
-    assert _run_gate(tmp_path / "d", "workflow_run", [], cycle, _record("failure", 2.5, 30))["run"] == "true"
-    # Before the start hour nothing runs.
-    late = {**cycle, "KI_WAECHTER_START_HOUR": "24"}
-    assert _run_gate(tmp_path / "e", "workflow_run", [], late, _record("success", 30, 30))["run"] == "false"
 
 
 def test_only_a_busy_gemini_counts_as_overloaded(monkeypatch: pytest.MonkeyPatch) -> None:
