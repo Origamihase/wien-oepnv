@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261105-0012, I20261105-0016, I20260925-0011, I20261105-0013, I20260909-0007, I20261105-0017, I20260922-0032, I20261020-0029, I20261105-0018"
+    "trafficInfoNameList": "I20261105-0012, I20261105-0018-F01, I20261105-0018-F02, I20261105-0018-F03, I20260925-0011, I20260909-0007, I20260922-0032, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1884-101, R1875-101, R1881-101, R1880-101, R1876-101, R1882-101, R1883-101, R19-136, R130-136, R100-136, R118-136, R117-136, R116-136, R115-136, R119-136, R103-136, R102-136, R101-136, R45-136, R293-474, R401-101, R318-437, R2343-626, R1474-412, R1448-412, R3886-480, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2378-627, R2343-125, R2359-125, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, R318-102, R319-102, R315-102, R316-102, R317-102, R323-102, R324-102, R325-102, R321-102, R322-102, R326-102, R316-112, R319-112, R318-112, R317-112, R2157-112, R2223-112, R2224-112, R324-112, R325-112, R323-112, R2203-112, R2168-112, R2204-112, R326-112, R2158-131, R2170-131, R2167-131, R2168-131, R2171-131, R2169-131, R322-131, R321-131, R2193-131, R2159-131, R2189-131, R2190-131, R2191-131, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1883-101, R1875-101, R1876-101, R1881-101, R1880-101, R1884-101, R1882-101, R117-136, R116-136, R100-136, R115-136, R103-136, R102-136, R101-136, R119-136, R45-136, R19-136, R130-136, R118-136, R293-474, R401-101, R318-437, R2370-125, R1474-412, R1448-412, R3886-480, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2378-627, R2343-125, R2343-626, R2359-125, R2372-125, R2371-125, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, R317-102, R315-102, R319-102, R318-102, R316-102, R324-102, R322-102, R326-102, R321-102, R325-102, R323-102, R319-112, R317-112, R316-112, R318-112, R2223-112, R2157-112, R2224-112, R324-112, R325-112, R323-112, R2203-112, R2168-112, R2204-112, R326-112, R2171-131, R2158-131, R2167-131, R2168-131, R2169-131, R2170-131, R321-131, R322-131, R2190-131, R2191-131, R2159-131, R2189-131, R2193-131, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -266,159 +266,22 @@
     "alertCauseId": 77,
     "attributes": {
      "relatedLineTypes": {
-      "50A": "ptBusCity"
+      "2": "ptTram"
      }
     },
-    "description": "Linie 50A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 50A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 50A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 50A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-       "title": "50A: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261105-0013",
-    "owner": "WL",
-    "parentName": "I20261105-0013",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "50A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 450,
-      "lineName": "50A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-05T08:47:00.000+0100",
-     "lastUpdate": "2026-11-05T08:47:00.000+0100",
-     "resume": "2026-11-05T08:46:00.000+0100",
-     "start": "2026-11-05T08:46:00.000+0100"
-    },
-    "title": "50A: Verkehrsunfall"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "60": "ptTram"
-     }
-    },
-    "description": "Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie 60:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 60:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "60: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261105-0016",
-    "owner": "WL",
-    "parentName": "I20261105-0016",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 160,
-      "lineName": "60",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-05T08:57:00.000+0100",
-     "lastUpdate": "2026-11-05T08:57:00.000+0100",
-     "resume": "2026-11-05T08:57:00.000+0100",
-     "start": "2026-11-05T08:57:00.000+0100"
-    },
-    "title": "60: Verspätungen"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "1": "ptTram"
-     }
-    },
-    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie 1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "1: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261105-0017",
-    "owner": "WL",
-    "parentName": "I20261105-0017",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 101,
-      "lineName": "1",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-05T09:03:00.000+0100",
-     "lastUpdate": "2026-11-05T09:03:00.000+0100",
-     "resume": "2026-11-05T09:02:00.000+0100",
-     "start": "2026-11-05T09:02:00.000+0100"
-    },
-    "title": "1: Verspätungen"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "12": "ptTram",
-      "2": "ptTram",
-      "31": "ptTram"
-     }
-    },
-    "description": "Die Linie 2 fährt derzeit nur zwischen Dornbach und Am Tabor. Linie 12: Umleitung in beiden Richtungen zwischen Bruno-Marek-Allee und Wallensteinplatz über die Strecke der Linien O und 5. Linie 31: Kein Betrieb zwischen Floridsdorf S U und Wexstraße. Voraussichtliche Dauer: 10:40 Uhr. Grund: Fremder Verkehrsunfall im Bereich Höchstädtplatz.",
-    "descriptionHTML": "<p>Die Linie 2 fährt derzeit nur zwischen Dornbach und Am Tabor.<br>Linie 12:<br>Umleitung in beiden Richtungen<br>zwischen Bruno-Marek-Allee und Wallensteinplatz <br>über die Strecke der Linien O und 5.<br>Linie 31:<br>Kein Betrieb zwischen Floridsdorf S U und Wexstraße.</p><p>Voraussichtliche Dauer: 10:40 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Höchstädtplatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Die Linie 2 fährt derzeit nur zwischen Dornbach und Am Tabor.<br>Linie 12:<br>Umleitung in beiden Richtungen<br>zwischen Bruno-Marek-Allee und Wallensteinplatz <br>über die Strecke der Linien O und 5.<br>Linie 31:<br>Kein Betrieb zwischen Floridsdorf S U und Wexstraße.</p><p>Voraussichtliche Dauer: 10:40 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Höchstädtplatz.</p>",
-       "descriptionPlain": "Die Linie 2 fährt derzeit nur zwischen Dornbach und Am Tabor. Linie 12: Umleitung in beiden Richtungen zwischen Bruno-Marek-Allee und Wallensteinplatz über die Strecke der Linien O und 5. Linie 31: Kein Betrieb zwischen Floridsdorf S U und Wexstraße. Voraussichtliche Dauer: 10:40 Uhr. Grund: Fremder Verkehrsunfall im Bereich Höchstädtplatz.",
-       "title": "2, 12, 31: Fremder Verkehrsunfall"
+       "descriptionHtml": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "2: Fremder Verkehrsunfall"
       }
      }
     ],
     "location": "Höchstädtplatz",
-    "name": "I20261105-0018",
+    "name": "I20261105-0018-F01",
     "owner": "WL",
     "parentName": "I20261105-0018",
     "priority": "1",
@@ -426,21 +289,101 @@
     "reasonName": "Fremder Verkehrsunfall",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "2",
-     "12",
-     "31"
+     "2"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 102,
       "lineName": "2",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-05T10:07:00.000+0100",
+     "lastUpdate": "2026-11-05T10:07:00.000+0100",
+     "resume": "2026-11-05T10:07:00.000+0100",
+     "start": "2026-11-05T09:43:00.000+0100"
+    },
+    "title": "2: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "12": "ptTram"
+     }
+    },
+    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "12: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Höchstädtplatz",
+    "name": "I20261105-0018-F02",
+    "owner": "WL",
+    "parentName": "I20261105-0018",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 112,
       "lineName": "12",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-05T10:07:00.000+0100",
+     "lastUpdate": "2026-11-05T10:07:00.000+0100",
+     "resume": "2026-11-05T10:07:00.000+0100",
+     "start": "2026-11-05T09:43:00.000+0100"
+    },
+    "title": "12: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "31": "ptTram"
+     }
+    },
+    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "31: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Höchstädtplatz",
+    "name": "I20261105-0018-F03",
+    "owner": "WL",
+    "parentName": "I20261105-0018",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 131,
       "lineName": "31",
@@ -449,11 +392,12 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-05T09:44:00.000+0100",
-     "lastUpdate": "2026-11-05T09:57:00.000+0100",
+     "created": "2026-11-05T10:07:00.000+0100",
+     "lastUpdate": "2026-11-05T10:07:00.000+0100",
+     "resume": "2026-11-05T10:07:00.000+0100",
      "start": "2026-11-05T09:43:00.000+0100"
     },
-    "title": "2, 12, 31: Fremder Verkehrsunfall"
+    "title": "31: Fremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",

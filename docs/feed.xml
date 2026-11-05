@@ -8,10 +8,10 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 05 Nov 2026 10:01:51 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 10:31:10 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[2/12/31: Fremder Verkehrsunfall]]></title>
+      <title><![CDATA[12: Fremdunfall]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">e2a1b0c6a9be45cf20414f6843042cc3e5b82d7a10c43df3d62b35f682551579</guid>
       <pubDate>Thu, 05 Nov 2026 09:43:00 +0100</pubDate>
@@ -20,34 +20,34 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 05 Nov 2026 10:01:51 +0100</ext:first_seen>
       <ext:starts_at>Thu, 05 Nov 2026 09:43:00 +0100</ext:starts_at>
-      <description>2: Betrieb nur Dornbach – Am Tabor; 12: Umleitung Bruno-Marek-Allee – Wallensteinplatz; 31: Kein Betrieb Floridsdorf – Wexstraße. Voraussichtlich bis 10:40 Uhr. [Seit 09:43]</description>
-      <content:encoded><![CDATA[2: Betrieb nur Dornbach – Am Tabor; 12: Umleitung Bruno-Marek-Allee – Wallensteinplatz; 31: Kein Betrieb Floridsdorf – Wexstraße. Voraussichtlich bis 10:40 Uhr.<br/>[Seit 09:43]]]></content:encoded>
+      <description>Betrieb ab Wallensteinplatz, Rebhanngasse; Züge halten bei Linie 5, bei Linie 2. [Seit 09:43]</description>
+      <content:encoded><![CDATA[Betrieb ab Wallensteinplatz, Rebhanngasse; Züge halten bei Linie 5, bei Linie 2.<br/>[Seit 09:43]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[50A: Verkehrsunfall]]></title>
+      <title><![CDATA[2: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">7eedb6b67ec70da5ecaed5a288c10adfe92c04840273d76d4a415e35de22ae07</guid>
-      <pubDate>Thu, 05 Nov 2026 08:46:00 +0100</pubDate>
+      <guid isPermaLink="false">0749610181f65ab0658c177429fbd2fa37ffe19a156e13edf490d50626a4aa1b</guid>
+      <pubDate>Thu, 05 Nov 2026 09:43:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 05 Nov 2026 09:01:17 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 05 Nov 2026 08:46:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 08:46]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 08:46]]]></content:encoded>
+      <ext:first_seen>Thu, 05 Nov 2026 09:43:00 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 05 Nov 2026 09:43:00 +0100</ext:starts_at>
+      <description>Betrieb ab Am Tabor. [Seit 09:43]</description>
+      <content:encoded><![CDATA[Betrieb ab Am Tabor.<br/>[Seit 09:43]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[1/60: Verspätungen]]></title>
+      <title><![CDATA[31: Fremdunfall]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">ed273bb9b3ad9ca9955a318015cde52f70c2fd133a1b085c49a27877e35affcb</guid>
-      <pubDate>Thu, 05 Nov 2026 08:57:00 +0100</pubDate>
+      <guid isPermaLink="false">40f6f4cd05dd63a538173c07f6c2034f17bccfef1e67962b19f17e6e77e0ccfe</guid>
+      <pubDate>Thu, 05 Nov 2026 09:43:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 05 Nov 2026 08:57:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 05 Nov 2026 08:57:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 08:57]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 08:57]]]></content:encoded>
+      <ext:first_seen>Thu, 05 Nov 2026 09:43:00 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 05 Nov 2026 09:43:00 +0100</ext:starts_at>
+      <description>Betrieb ab Floridsdorf, Wexstraße. [Seit 09:43]</description>
+      <content:encoded><![CDATA[Betrieb ab Floridsdorf, Wexstraße.<br/>[Seit 09:43]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[O: Verunreinigung]]></title>
