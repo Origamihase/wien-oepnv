@@ -478,8 +478,28 @@ langem Zitat, F5 „Linie 46:Umleitung“); 30.10. drei Funde, alle zutreffend
 (F5 „over the line line 9“, F6 „Reason: Harmful“, F6 „Folktheter“), der F3 zu
 „1/2/71“ kam nicht wieder; HEAD zwei Funde, beide die Kürzung der Linie 40A,
 nun wieder als F2 („die Kernaussage ‚in beiden Richtungen‘ fehlt“, deutsch und
-englisch). Dieser Fall bleibt offen: Nach den Regeln ist er kein Fund, das
-Modell meldet ihn in jedem Lauf, und für den TV-Leser bricht der Satz hinter
-den beiden neuen Haltestellen ab. Eine Kürzung satzweise (der letzte Satz
-fällt ganz weg, wenn er nicht in die 180 Zeichen passt) würde ihn vermeiden;
-das ist eine Entscheidung über Feed-Texte und nicht Teil dieses Pull Requests.
+englisch). Nach den Regeln ist das kein Fund, das Modell meldete ihn in drei
+von vier Läufen, und für den TV-Leser bricht der Satz hinter den beiden neuen
+Haltestellen ab. Entschieden am 05.11.2026 nach dem Merge (Karte „Soll der
+Feed satzweise kürzen, wenn der letzte Satz nicht mehr passt?“: „Wortweise
+bleibt“): die Kürzung bleibt an der Wortgrenze, weil eine satzweise Kürzung im
+Replay der 56 Fassungen vom 04.11. 16:00 bis 05.11. 15:31 Uhr (drei gekürzte
+Meldungen von 65) zweimal Information genommen hätte: bei „38: Verkehrsunfall“
+den Ort „Grinzinger Allee“, beim EN-Text von „25: Verkehrsunfall“ beide
+Haltestellen (`changelog/2026-11-05.md`). Ein angefangener Satz hinter „…“
+steht seither in der Entschieden-Liste; ein F2 bleibt, wenn die Kernaussage
+selbst fehlt.
+
+Erster planmäßiger Lauf mit der Kette (05.11., Takt 15:31 Uhr,
+[Lauf 268](https://github.com/Origamihase/wien-oepnv/actions/runs/42045875295)):
+3.8 Flash 503 nach 4 s, 3.6 Flash 429 (das Tageskontingent von 20 hatten die
+Probeläufe verbraucht), 3.5 Flash-Lite 503 nach 2 s, 3.1 Flash-Lite
+antwortete zweimal; fünf Anfragen, 61 s, 97.608 Eingabetokens, 96 von 96
+Texten. Ein Fund, als Beobachtung zutreffend: der EN-Text von
+„25: Verkehrsunfall“ (04.11., 20:01 bis 20:49 Uhr) endet „trains stop at
+Donaufelder Straße …“, der deutsche nennt „175-177“; der englische Text hat
+181 Zeichen, der deutsche 176. Das Modell nannte ihn F6, die Klasse ist die
+Kürzung, nicht die Übersetzung; Issue #2166, geschlossen mit der Entscheidung
+oben. Zwei Vermutungen (F1 zu den Meldungen 77 und 78) verwarf das Skript,
+weil die Meldungen nie gleichzeitig im Feed standen. Der Health check wurde um
+16:01 Uhr grün (Lauf 998), der erste grüne seit 04.11. 18:01 Uhr.
