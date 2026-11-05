@@ -49,6 +49,29 @@
   {
    "geometry": {
     "first_position": [
+     16.40791105,
+     48.2752045
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Brünner Straße 114",
+    "BEZIRK": 21,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-11-09Z",
+    "OBJEKT_ENDE": "2026-11-27Z",
+    "PRESSETEXT": "Derrechte Fahrstreifen in Fahrtrichtung stadtauswärts wird gesperrt. Die restlichenFahrstreifen werden aufrechtgehalten. DerFußgängerverkehr kann aufrecht gehalten werden.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
      16.28541147,
      48.14733017
     ],

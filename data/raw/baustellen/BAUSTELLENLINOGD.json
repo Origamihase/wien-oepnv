@@ -302,6 +302,29 @@
   {
    "geometry": {
     "first_position": [
+     16.29085568,
+     48.23409863
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Ma 31 Kundencenter",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-59959/31600",
+    "ANTRAGSTELLER": null,
+    "BEHINDERUNGSART": "Zuleitungs- Schieber- Hydrantenarbeiten",
+    "BEZEICHNUNG": "Dornbacher Straße von 118 bis 120",
+    "BEZIRK": 17,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-11-09Z",
+    "OBJEKT_ENDE": "2026-11-20Z",
+    "PRESSETEXT": "DieArbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. ImBaustellenbereich wird eine Restfahrbahn mit 3,50 mfreigehalten und der Verkehr wechselweise mittels Personal durchgeschleust. Außerhalb der Arbeitszeit bleibt der Verkehr unbehindert. DerFußgängerverkehr kann aufrecht gehalten werden.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
      16.26471652,
      48.14157033
     ],
@@ -480,6 +503,29 @@
     "OBJEKT_BEGINN": "2026-11-02Z",
     "OBJEKT_ENDE": "2026-11-13Z",
     "PRESSETEXT": "Die Arbeiten erfolgen bei Nacht. Außerhalb der Arbeitszeit bleibt der Verkehr unbehindert. Die Arbeiten erfolgen abschnittsweise im Fahrbahnbereich und der Verkehr wird über das richtungsführende Gleis umgeleitet.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.31447731,
+     48.22388744
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Ma 31 Kundencenter",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-59959/31600",
+    "ANTRAGSTELLER": null,
+    "BEHINDERUNGSART": "Rohrlegung",
+    "BEZEICHNUNG": "Hernalser Hauptstraße von Julius-Meinl-Gasse bis Urbangasse",
+    "BEZIRK": 17,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-11-10Z",
+    "OBJEKT_ENDE": "2027-04-30Z",
+    "PRESSETEXT": "Die Arbeiten erfolgen bei Tag und Nacht bei Freihaltung einer 3,0 m breiten Restfahrbahn pro Fahrtrichtung. Hierfür wird der Verkehr über das richtungsführende Gleis geführt. Außerhalb der Arbeitszeit werden die Kreuzungsbereiche verkehrssicher überbrückt. Der Fußgängerverkehr wird nicht behindert.",
     "SE_ANNO_CAD_DATA": null
    }
   },
@@ -992,6 +1038,29 @@
   {
    "geometry": {
     "first_position": [
+     16.32316164,
+     48.21348263
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundentelefon Wiener Linien",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-7909/100",
+    "ANTRAGSTELLER": "Wiener Linien GmbH & Co KG",
+    "BEHINDERUNGSART": "Gleisbau",
+    "BEZEICHNUNG": "Ottakringer Straße 114-116 bis Wattgasse",
+    "BEZIRK": 16,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-11-08Z",
+    "OBJEKT_ENDE": "2027-01-31Z",
+    "PRESSETEXT": "DieArbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. ImBaustellenbereich wird ein Fahrstreifen freigehalten und der Verkehr wechselweise mittels Personal durchgeschleust. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
      16.39128196,
      48.21720942
     ],
@@ -1078,6 +1147,29 @@
     "OBJEKT_BEGINN": "2026-09-14Z",
     "OBJEKT_ENDE": "2027-01-31Z",
     "PRESSETEXT": "Die Arbeiten erfolgen bei Tag und bei Nacht. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert. Die Arbeiten erfolgen abschnittsweise im Fahrbahnbereich und der Verkehr wird über das richtungsführende Gleis umgeleitet. Die Gehsteige werden wechselweise gesperrt und der Fußgänger- sowie Radverkehr wird über den jeweils freien Gehsteigbereich aufrecht gehalten.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.37416136,
+     48.21405083
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Poststelle",
+    "ANSPRECHPERSON_TEL": "Tel.: 01/4000-96915",
+    "ANTRAGSTELLER": null,
+    "BEHINDERUNGSART": "Begleitende Verkehrsmaßnahmen",
+    "BEZEICHNUNG": "Salztorbrücke von Franz-Josefs-Kai und Salztorgasse bis Friedrich-Wilhelm-Raiffeisen-Platz und Obere",
+    "BEZIRK": 1,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-11-09Z",
+    "OBJEKT_ENDE": "2028-01-10Z",
+    "PRESSETEXT": "Die Salztorbrücke wird für den motorisierten Individualverkehr in beide Fahrtrichtungen gesperrt. Die Umleitung in Fahrtrichtung 1. Bezirk erfolgt über die Roßauer Brücke. Die Umleitung in Fahrtrichtung 2. Bezirk erfolgt über die Augartenbrücke und die Marienbrücke. DerFußgänger- und Radverkehrsowiedie Buslinie 2Akann aufrecht gehalten werden.",
     "SE_ANNO_CAD_DATA": null
    }
   },
