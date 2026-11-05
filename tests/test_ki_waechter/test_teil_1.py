@@ -232,6 +232,23 @@ def test_every_item_text_of_24_hours_is_one_item(tmp_path: Path) -> None:
     assert "Gleichzeitig im Feed: 2 (40A)." in text
 
 
+def test_the_sources_a_merged_text_repeats_come_first(tmp_path: Path) -> None:
+    """Line 1 has eight tickers; the two the text repeats stay inside the cap of six (run 298, 05.11.2026)."""
+    _write_repo(tmp_path)
+    rows = [("1: Rettungseinsatz, Gleisbauarbeiten",
+             "Rettungseinsatz: Fahrtbehinderung. Gleisbauarbeiten: Züge halten Rosengasse 7; Kein Betrieb.", "g1")]
+    _write_feeds(tmp_path, rows, rows)
+    events = [{"guid": "g1", "title": "1: Fahrtbehinderung wegen Rettungseinsatz", "description": "Fahrtbehinderung"}]
+    events += [{"guid": f"o{i}", "title": f"1: Anderer Ticker {i}", "description": "x"} for i in range(6)]
+    events += [{"guid": "k", "title": "1: Kein Betrieb", "description": "Gleisbauarbeiten Kein Betrieb"},
+               {"guid": "z", "title": "1: Züge halten Rosengasse 7", "description": "Gleisbauarbeiten Züge halten Rosengasse 7"}]
+    (tmp_path / "cache" / "wl_x" / "events.json").write_text(json.dumps(events), encoding="utf-8")
+    read, listing = kw.working_tree_reader(tmp_path)
+    prep = kw.prepare([kw.Snapshot("abc1234", "", read, listing)], "abc1234")
+    titles = [prep.sources[q]["titel"] for q in prep.items[0].related_sources]
+    assert len(titles) == 6 and titles[:2] == ["1: Züge halten Rosengasse 7", "1: Kein Betrieb"]
+
+
 def test_a_cut_source_is_marked_and_a_quote_at_the_cut_is_at_most_f2(tmp_path: Path) -> None:
     """A source text ends with „[…]“ after MAX_SOURCE_CHARS; a feed quote ending at the „…“ is only F2 (05.11.2026)."""
     _write_repo(tmp_path)

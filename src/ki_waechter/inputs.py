@@ -301,6 +301,8 @@ def prepare(snapshots: Sequence[Snapshot], commit: str, hours: float = 0.0) -> P
                 (p, e) for p, e in events_at(first)
                 if str(e.get("guid")) != item.guid and keys & line_keys(str(e.get("title") or ""))
             ]
+            # A merged WL text repeats the titles of its tickers: those first, then the cap (run 298, 05.11.2026).
+            related.sort(key=lambda pair: -_repeated(pair[1], item))
             item.related_sources = list(dict.fromkeys(source_id(p, e) for p, e in related[:MAX_RELATED]))
     events_at(len(snapshots) - 1)
     return Prepared(
@@ -349,6 +351,13 @@ def _with_lines(titles: Mapping[int, str], numbers: list[int]) -> str:
         match = _LINE_PREFIX_RE.match(titles.get(nr, ""))
         parts.append(f"{nr} ({match.group(1)})" if match else str(nr))
     return ", ".join(parts)
+
+
+def _repeated(event: Mapping[str, Any], item: FeedItem) -> int:
+    """How many words of an event's title (without its line prefix) the item's text repeats."""
+    title = _LINE_PREFIX_RE.sub("", normalize(str(event.get("title") or "")))
+    text = f"{item.title} {item.description}"
+    return sum(word in text for word in title.split() if len(word) >= 4)
 
 
 def _n(count: int, one: str, many: str) -> str:
