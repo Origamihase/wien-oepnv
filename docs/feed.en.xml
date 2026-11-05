@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 05 Nov 2026 13:00:39 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 13:16:48 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[12: Overhead-line fault, damaged overhead line]]></title>
@@ -105,8 +105,8 @@
       <ext:starts_at>Mon, 02 Nov 2026 00:00:00 +0100</ext:starts_at>
       <ext:ends_at>Wed, 11 Nov 2026 23:59:59 +0100</ext:ends_at>
       <georss:line>48.196804 16.337680 48.207980 15.624408</georss:line>
-      <description>Due to construction works, no REX50 trains can run between St. Pölten Hbf and Wien Westbahnhof from 03.11.2026 to 10.11.2026. [Until Wed 11.11.]</description>
-      <content:encoded><![CDATA[Due to construction works, no REX50 trains can run between St. Pölten Hbf and Wien Westbahnhof from 03.11.2026 to 10.11.2026.<br/>[Until Wed 11.11.]]]></content:encoded>
+      <description>Due to construction works, trains are cancelled: REX50 St. Pölten Hbf ↔ Wien Westbahnhof 03.–10.11.; REX51, S50 Wien Westbahnhof ↔ Wien Hütteldorf 02.–11.11. [Until Wed 11.11.]</description>
+      <content:encoded><![CDATA[Due to construction works, trains are cancelled: REX50 St. Pölten Hbf ↔ Wien Westbahnhof 03.–10.11.; REX51, S50 Wien Westbahnhof ↔ Wien Hütteldorf 02.–11.11.<br/>[Until Wed 11.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N71: Rennweg]]></title>
