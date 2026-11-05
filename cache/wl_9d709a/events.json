@@ -686,6 +686,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "13A: Feuerwehreinsatz Betrieb ab Neubaugasse, Burggasse",
+    "description": "Die Linie 13A wird in Richtung Hauptbahnhof S U zwischen Lederergasse und Neubaugasse, Burggasse über Josefstädter Straße - Lerchenfelder Gürtel und Burggasse umgeleitet. Voraussichtliche Dauer: 20:15 Uhr. Grund: Feuerwehreinsatz im Bereich Neubaugasse 81.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "11c860f3f02e4dd83a6557e082cdea5c1a1bc33e5b21562974041148aead9260",
+    "pubDate": "2026-11-05T19:34:00+01:00",
+    "starts_at": "2026-11-05T19:34:15+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=13A|D=2026-11-05|TK=feuerwehreinsatz",
+    "_wl_ids": [
+      "I20261105-0049"
+    ],
+    "_incident_start": "2026-11-05T19:34:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -950,22 +966,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "59A: Verkehrsüberlastung",
-    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5",
-    "pubDate": "2026-11-05T16:56:00+01:00",
-    "starts_at": "2026-11-05T16:56:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=59A|D=2026-11-05|TK=59a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261105-0038"
-    ],
-    "_incident_start": "2026-11-05T16:56:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62/LB: Fremder Verkehrsunfall",
     "description": "Linie 62: Kein Betrieb zwischen Bahnhof Meidling S U, Dörfelstraße und Eichenstraße. Weiterfahrt ab Eichenstraße über Margaretengürtel U bis Westbahnhof S U. Badner Bahn: Betrieb nur zwischen Baden, Josefsplatz und Bahnhof Meidling S U, Schedifkaplatz. Ersatz: Linien U4, U6 und 59A. Voraussichtliche Dauer: 20:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Eichenstraße # Aßmayergasse.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -988,7 +988,7 @@
     "guid": "61bb4f0d5717253d745fde48ce96d26ece9803152afe0ec0b6200d438f5ae912",
     "pubDate": "2026-11-05T19:01:39+01:00",
     "starts_at": "2026-11-05T19:01:41+01:00",
-    "ends_at": "2026-11-05T20:00:00+01:00",
+    "ends_at": "2026-11-05T21:00:00+01:00",
     "_identity": "wl|störung|L=62|D=2026-11-05|TK=fremdunfall betrieb ab dörfelstrasse"
   },
   {
@@ -1000,7 +1000,7 @@
     "guid": "942a4449dfa5fcadeb53e7b56a2816c3baaa2c75ecfe8f8332e7b684f5f7c824",
     "pubDate": "2026-11-05T19:03:10+01:00",
     "starts_at": "2026-11-05T19:03:10+01:00",
-    "ends_at": "2026-11-05T20:02:00+01:00",
+    "ends_at": "2026-11-05T21:00:00+01:00",
     "_identity": "wl|störung|L=62|D=2026-11-05|TK=fremdunfall betrieb ab eichenstrasse"
   },
   {
@@ -1112,7 +1112,7 @@
     "guid": "ec5699701fc8c722de453ddcb92e1f51a4e73c29e7b930b6d33f78b13e6e6dc7",
     "pubDate": "2026-11-05T19:06:09+01:00",
     "starts_at": "2026-11-05T19:06:15+01:00",
-    "ends_at": "2026-11-05T20:05:00+01:00",
+    "ends_at": "2026-11-05T21:00:00+01:00",
     "_identity": "wl|störung|L=LB|D=2026-11-05|TK=fremdunfall betrieb ab schedifkaplatz"
   },
   {
