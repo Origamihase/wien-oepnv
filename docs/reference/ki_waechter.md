@@ -123,8 +123,13 @@ hinter einem Schrägstrich (02.11.), der umgestellte ÖBB-Satz (Züge und „nic
 fahren“ vor dem Doppelpunkt, Datumslisten als „an einzelnen Tagen“, Züge als
 Zahl mit Linien), die ÖBB-Kurzform je Linie (05.11., #2165), Umstiegszusatz und „Hauptbahnhof“/„Hbf“ (02. und 04.11.),
 die EN-Formen „Reason: …“ und „Due to …“ und die Badner Bahn („LB“ im Titel,
-„Badner Bahn“ in der Kurzform). Ein falscher Fund ist seither ein Mangel
-dieser Liste und wird als Klasse behoben, nicht einzeln.
+„Badner Bahn“ in der Kurzform); nach dem sechsten Probelauf (05.11.) auch
+die ÖBB-Bahnhofsnamen im EN-Feed („Bahnhof“/„Bahnhst“ → „station“,
+`_oebb_station_en` in `src/feed_build/en_templates.py`), die Lage einer
+Haltestelle an einer Querstraße („nach“ → „after“, „vor“ → „before“,
+`_PLACE_AFTER_CROSS_STREET_RE` in `src/feed_build/pretranslate.py`) und die
+Kürzung hinter der Kernaussage (kein F2). Ein falscher Fund ist seither ein
+Mangel dieser Liste und wird als Klasse behoben, nicht einzeln.
 
 **Die Regel.** Jede Entscheidung zu Feed-Texten, die in
 `changelog/<JJJJ-MM-TT>.md` steht (Wortwahl, Zeitzeile, Titel, Kürzung,
@@ -146,7 +151,9 @@ die erste Antwort allein. Nach einer ersten Antwort, die länger als
 die längste Anfrage im Schrittlimit von 25 Minuten. Der Bericht nennt
 „Modell …, zwei Antworten vereinigt“, `ergebnis.json` trägt `antworten`,
 `antwort.json` `answers`. Kosten: eine Anfrage mehr je Prüflauf (eine je
-Antwort), also zwei am Tag, bei Überlastung bis zu neun. Tests in
+Antwort), also zwei am Tag, bei Überlastung bis zu neun. Ein Fund, den die
+Antworten mit verschieden langem Zitat nennen, steht zweimal im Bericht
+(30.10.: „Reason: Harmful“ und „Reason: Harmful …“). Tests in
 `tests/test_ki_waechter/test_zweite_antwort.py`.
 
 ## Gratis-Kontingent
@@ -404,3 +411,37 @@ gehen auf zwei knappe Sätze unter „Entschieden“ im Prompt zurück („Due t
 bringt nicht in jedem Lauf dieselben Funde (27.10.: drei Läufe mit zwei bis
 drei Funden, zusammen sechs verschiedene), und ein Lauf prüfte nur 45 von 67
 Texten.
+
+Sechster Probelauf, die ganze Kette im Pull Request mit der präzisen
+Entschieden-Liste und zwei Antworten je Stand (Code von 6f9ca3ee, PR #2164,
+05.11.2026 ab 13:51 Uhr Wiener Zeit,
+[Lauf 261](https://github.com/Origamihase/wien-oepnv/actions/runs/42030586271)),
+dazu die Lite-Modelle allein über die beiden Tage der falschen Funde
+([Lauf 262](https://github.com/Origamihase/wien-oepnv/actions/runs/42030777475)
+für den 02.11.,
+[Lauf 263](https://github.com/Origamihase/wien-oepnv/actions/runs/42030905423)
+für den 03.11.). In allen fünf Prüfungen antwortete 3.1 Flash-Lite, und zwar
+zweimal; im Pull Request antworteten 3.8 Flash, 3.6 Flash und 3.5 Flash-Lite
+davor mit 503 (3.8 Flash hielt eine Anfrage 162 Sekunden offen), in den
+Lite-Läufen 3.5 Flash-Lite. Anfragen, Dauer und Tokens je Stand zählen beide
+Antworten.
+
+| Stand | Anfragen, Dauer, Tokens | Ergebnis |
+| --- | --- | --- |
+| `001e47c` (27.10.) | 5 Anfragen, 232 s, 72.182 Eingabetokens, 22.628 Denktokens, 67 von 67 | Drei Funde, keiner trifft zu: F3 „Züge halten in Schleife, Wipplingerstr 39“ (D, 26.10.; der WL-Ticker „D: Züge halten Wipplingerstr 39“ steht in der Quelle, der Text zieht zwei Ticker zusammen); zweimal F6 „… station“ für ÖBBs „Bahnhof“ und „Bahnhst“ (S2, S1; so übersetzt das Glossar seit 2026-09-07, `_oebb_station_en` in `src/feed_build/en_templates.py`). Nicht erkannt: F6 „algae path“, F2 „Liechtensteinstraße 37a …“, F1 40A, F1 1/2/71/D. Verworfen: ein Zitat zu Meldung 33. |
+| `9e60b8d` (30.10.) | 5 Anfragen, 116 s, 105.388 Eingabetokens, 25.019 Denktokens, 101 von 101 | Fünf Funde. Zutreffend: F6 „Reason: Harmful“ (U4, 30.10. 07:31 Uhr: die Kürzung auf 180 Zeichen trennte „Schadhaftes“ von „Fahrzeug“, die Übersetzung ging vom gekürzten Text aus und schrieb „Harmful …“; derselbe Fund steht ein zweites Mal mit dem Zitat „Reason: Harmful …“), F6 „Parlament/ Folktheter“ (2) und F4 „71: Rettungseinsatz“ neben Polizeieinsatz im Text (beide am 02.11. behoben). Nicht zutreffend: F2 „Grund: Schadhaftes“ (der Text sagt, was passiert, und der Titel nennt die Ursache ganz). Nicht erkannt: F6 „All Saints' Worship“, F6 „Under-Meidlinger Straße“, F5 „over the line line“, F2 „12: Umleitung zum Westbahnhof“ (steht als Vermutung). Verworfen: ein Quellzitat „[Seit heute]“. |
+| `HEAD` (24 h bis 05.11. 13:30) | 5 Anfragen, 65 s, 96.224 Eingabetokens, 12.379 Denktokens, 96 von 96 | Zwei Funde, keiner trifft zu: F6 „Perfektastraße after Liesinger-Flur-Gasse“ (64A; WLs „nach“ nennt die Lage der Haltestelle hinter der Querstraße, `_PLACE_AFTER_CROSS_STREET_RE` in `src/feed_build/pretranslate.py` übersetzt es mit „after“ und „vor“ mit „before“); F2 „in beiden“ (40A, 04.11. 23:30 Uhr: beide neuen Haltestellen stehen, gekürzt ist der Satzrest „in beiden Richtungen. Grund: Bauarbeiten.“). |
+| `07f9859` (02.11.), nur Lite, Lauf 262 | 3 Anfragen, 48 s, 73.384 Eingabetokens, 17.745 Denktokens, 66 von 66 | Zwei Funde, beide zutreffend und bis dahin unbekannt: F5 „23.2 min“ (Stammstrecken-Meldung „Durchschnittliche Verspätung von 23.2 min in Richtung Meidling“, 01.11.: `_format_minutes` in `src/feed/stammstrecke.py` schreibt den Dezimalpunkt, deutsch wäre „23,2 min“); F6 „Biró Street 17“ (17A, 02.11. 14:20 Uhr: „im Bereich Biróstraße 17“ wurde übersetzt, Straßennamen bleiben sonst deutsch). Keiner der 18 Funde „Reason: …“ aus Lauf 256. |
+| `8bf589d` (03.11.), nur Lite, Lauf 263 | 3 Anfragen, 58 s, 87.764 Eingabetokens, 11.395 Denktokens, 82 von 82 | Keine Funde; die zwei falschen Funde aus Lauf 257 („Bahnhst …“, „Badner Bahn“) fehlen. |
+
+Bilanz: Die zwanzig falschen Funde vom 02. und 03.11. kamen nicht wieder, und
+die zwei Antworten brachten für den 02.11. zwei zutreffende, bis dahin
+unbekannte Funde. Von den zwölf Funden treffen sechs zu (einer davon
+doppelt), sechs nicht: fünf aus drei Lücken der Liste, die seither
+geschlossen sind (ÖBBs „Bahnhof“/„Bahnhst“ als „station“, WLs „nach“ als
+Lage der Haltestelle, die Kürzung hinter der Kernaussage), einer übersah
+eine Quelle, die in der Eingabe stand (Wipplingerstr 39). Neue Feed-Klassen,
+noch nicht gebaut: der Dezimalpunkt in der Stammstrecken-Meldung, ein
+übersetzter Straßenname mit „ó“, die Übersetzung eines bei 180 Zeichen
+getrennten Glossarworts („Schadhaftes …“ → „Harmful …“). Die Dauer je Stand
+lag ohne die Wartezeit auf 503 bei 48 bis 116 Sekunden.
