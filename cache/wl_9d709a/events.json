@@ -918,6 +918,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2A: Verspätungen",
+    "description": "Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "57d004da43aa922d23ef17d2febd4d27e41c86903650f7772a81a3838692e289",
+    "pubDate": "2026-11-05T06:51:00+01:00",
+    "starts_at": "2026-11-05T06:51:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=2A|D=2026-11-05|TK=2a verspätungen",
+    "_wl_ids": [
+      "I20261105-0005"
+    ],
+    "_incident_start": "2026-11-05T06:51:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
