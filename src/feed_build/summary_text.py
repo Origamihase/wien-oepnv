@@ -410,6 +410,20 @@ def _trim_truncation_tail(truncated: str) -> str:
 _WL_REFERRAL_BOILERPLATE_RE: re.Pattern[str] = REFERRAL_BOILERPLATE_RE
 
 
+# The cut stays at a word boundary, not at the end of the last complete
+# sentence (operator decision 2026-11-05, card "Soll der Feed satzweise
+# kürzen, wenn der letzte Satz nicht mehr passt?": "Wortweise bleibt").
+# Measured over the 56 feed versions from 04.11. 16:00 to 05.11. 15:31
+# Vienna time, three of 65 items were cut. A sentence-level cut (the started
+# sentence dropped whole) would have read cleaner for one of them ("… →
+# Liechtensteinstraße 39. Haltestellenverlegung der Linie 40A in beiden …"
+# loses only a repetition of the title) and would have dropped information
+# for the other two: "… Grund: Verkehrsunfall im Bereich Grinzinger Allee …"
+# (38) keeps the place, and the EN text of "25: Verkehrsunfall" (181
+# characters where the German has 176) keeps "trains stop at Donaufelder
+# Straße …" where only "After a service obstruction, there are irregular
+# intervals. …" would have remained. A started sentence behind "…" is the
+# accepted reading on the TV (changelog/2026-11-05.md).
 def _truncate_summary_180(summary: str) -> str:
     """Hard-limit ``summary`` to 180 characters with TV-friendly tail cleanup."""
     if len(summary) <= 180:

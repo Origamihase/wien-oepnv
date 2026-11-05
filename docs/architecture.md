@@ -435,8 +435,10 @@ verdrängt eine andere Störung.
   - `62: ÖBB Bauarbeiten` über „Betrieb ab Kliebergasse; Züge halte bei
     Linie 18, Richtung Burggasse; Kein Betrieb.“
   - Grenzen: Andere Linienmengen („62/18“, Ausnahmen unten), Hinweise und andere Quellen
-    bleiben getrennt. Die Beschreibung ist auf 180 Zeichen begrenzt. Die
-    Störungsstatistik zählt einen zusammengelegten Vorfall einmal.
+    bleiben getrennt. Die Beschreibung ist auf 180 Zeichen begrenzt und wird
+    an der Wortgrenze gekürzt, nicht am Satzende (Betreiberentscheidung
+    2026-11-05, `changelog/2026-11-05.md`). Die Störungsstatistik zählt
+    einen zusammengelegten Vorfall einmal.
   - Eine Ausnahme bei den Linienmengen (seit 2026-10-02): Zwei
     Kurzmeldungen verschiedener Linien mit gleichem Titeltext und gleichem
     Text im selben Fenster verbinden ihre Gruppen (`_join_twin_groups`).
