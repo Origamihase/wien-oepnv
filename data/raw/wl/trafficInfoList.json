@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261105-0049, I20261105-0048-F01, I20260925-0011, I20260909-0007, I20260922-0032, I20261020-0029, I20261105-0047"
+    "trafficInfoNameList": "I20261105-0047-F01, I20261105-0047-F02, I20261105-0048-F01, I20260925-0011, I20261105-0050, I20261105-0049, I20260909-0007, I20260922-0032, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1884-101, R1882-101, R1883-101, R1875-101, R1881-101, R1880-101, R1876-101, R130-136, R118-136, R117-136, R116-136, R103-136, R115-136, R119-136, R100-136, R101-136, R102-136, R45-136, R19-136, R318-437, R293-474, R401-101, R2380-627, R3886-480, R1448-412, R1474-412, R2379-627, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, R1717-162, R1718-162, R427-162, R1748-162, R1749-162, R831-399, R1756-399, R1751-399, R1749-399, R1748-399, R1754-399, R1753-399, R1752-399, R400-399, R399-399, R470-399, R4843-399, R851-399, R1713-399, R1712-399, R1711-399, R1709-399, R1715-399, R1714-399, R1717-399, R1718-399, R427-399, R477-399, R5943-399, R663-413, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1881-101, R1884-101, R1875-101, R1876-101, R1883-101, R1882-101, R1880-101, R117-136, R45-136, R19-136, R130-136, R118-136, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R119-136, R318-437, R293-474, R401-101, R3886-480, R1474-412, R1448-412, R2373-126, R2380-627, R2345-127, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2379-627, R2378-627, R2343-125, R2343-626, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, R1717-162, R1718-162, R427-162, R1749-162, R1748-162, R831-399, R1753-399, R1756-399, R1752-399, R1751-399, R1749-399, R1748-399, R1754-399, R399-399, R400-399, R470-399, R4843-399, R851-399, R1715-399, R1713-399, R1712-399, R1711-399, R1709-399, R1714-399, R1718-399, R1717-399, R477-399, R427-399, R5943-399, R663-413, R662-413, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -221,23 +221,22 @@
     "alertCauseId": 77,
     "attributes": {
      "relatedLineTypes": {
-      "62": "ptTram",
       "LB": "ptTramWLB"
      }
     },
-    "description": "Linie 62: Kein Betrieb zwischen Bahnhof Meidling S U, Dörfelstraße und Eichenstraße. Weiterfahrt ab Eichenstraße über Margaretengürtel U bis Westbahnhof S U. Badner Bahn: Betrieb nur zwischen Baden, Josefsplatz und Bahnhof Meidling S U, Schedifkaplatz. Ersatz: Linien U4, U6 und 59A. Voraussichtliche Dauer: 20:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Eichenstraße # Aßmayergasse.",
-    "descriptionHTML": "<p>Linie 62:<br>Kein Betrieb zwischen Bahnhof Meidling S U, Dörfelstraße und Eichenstraße.<br>Weiterfahrt ab Eichenstraße über Margaretengürtel U bis Westbahnhof S U.<br>Badner Bahn:<br>Betrieb nur zwischen Baden, Josefsplatz und Bahnhof Meidling S U, Schedifkaplatz.</p><p>Ersatz: Linien U4, U6 und 59A.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Eichenstraße # Aßmayergasse.</p>",
+    "description": "Linie Badner Bahn: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie Badner Bahn: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 62:<br>Kein Betrieb zwischen Bahnhof Meidling S U, Dörfelstraße und Eichenstraße.<br>Weiterfahrt ab Eichenstraße über Margaretengürtel U bis Westbahnhof S U.<br>Badner Bahn:<br>Betrieb nur zwischen Baden, Josefsplatz und Bahnhof Meidling S U, Schedifkaplatz.</p><p>Ersatz: Linien U4, U6 und 59A.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Eichenstraße # Aßmayergasse.</p>",
-       "descriptionPlain": "Linie 62: Kein Betrieb zwischen Bahnhof Meidling S U, Dörfelstraße und Eichenstraße. Weiterfahrt ab Eichenstraße über Margaretengürtel U bis Westbahnhof S U. Badner Bahn: Betrieb nur zwischen Baden, Josefsplatz und Bahnhof Meidling S U, Schedifkaplatz. Ersatz: Linien U4, U6 und 59A. Voraussichtliche Dauer: 20:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Eichenstraße # Aßmayergasse.",
-       "title": "Badner Bahn, 62: Fremder Verkehrsunfall"
+       "descriptionHtml": "<p>Linie Badner Bahn: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie Badner Bahn: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "Badner Bahn: Fremder Verkehrsunfall"
       }
      }
     ],
     "location": "Eichenstraße / Aßmayergasse",
-    "name": "I20261105-0047",
+    "name": "I20261105-0047-F01",
     "owner": "WL",
     "parentName": "I20261105-0047",
     "priority": "1",
@@ -245,15 +244,9 @@
     "reasonName": "Fremder Verkehrsunfall",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "62",
      "LB"
     ],
     "relatedLinesDetails": [
-     {
-      "lineId": 162,
-      "lineName": "62",
-      "vehicleType": "ptTram"
-     },
      {
       "lineId": 399,
       "lineName": "LB",
@@ -262,11 +255,58 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-05T19:05:00.000+0100",
-     "lastUpdate": "2026-11-05T19:05:00.000+0100",
+     "created": "2026-11-05T20:10:00.000+0100",
+     "lastUpdate": "2026-11-05T20:10:00.000+0100",
+     "resume": "2026-11-05T20:10:00.000+0100",
      "start": "2026-11-05T19:01:00.000+0100"
     },
-    "title": "Badner Bahn, 62: Fremder Verkehrsunfall"
+    "title": "Badner Bahn: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "62": "ptTram"
+     }
+    },
+    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "62: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Eichenstraße / Aßmayergasse",
+    "name": "I20261105-0047-F02",
+    "owner": "WL",
+    "parentName": "I20261105-0047",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 162,
+      "lineName": "62",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-05T20:10:00.000+0100",
+     "lastUpdate": "2026-11-05T20:10:00.000+0100",
+     "resume": "2026-11-05T20:10:00.000+0100",
+     "start": "2026-11-05T19:01:00.000+0100"
+    },
+    "title": "62: Fremder Verkehrsunfall"
    },
    {
     "alertCause": "police activity",
@@ -317,21 +357,21 @@
     "title": "U1: Polizeieinsatz"
    },
    {
-    "alertCause": "fire",
-    "alertCauseId": 5,
+    "alertCause": "flooding",
+    "alertCauseId": 93,
     "attributes": {
      "relatedLineTypes": {
       "13A": "ptBusCity"
      }
     },
-    "description": "Die Linie 13A wird in Richtung Hauptbahnhof S U zwischen Lederergasse und Neubaugasse, Burggasse über Josefstädter Straße - Lerchenfelder Gürtel und Burggasse umgeleitet. Voraussichtliche Dauer: 20:15 Uhr. Grund: Feuerwehreinsatz im Bereich Neubaugasse 81.",
-    "descriptionHTML": "<p>Die Linie 13A wird in Richtung Hauptbahnhof S U zwischen Lederergasse und Neubaugasse, Burggasse über Josefstädter Straße - Lerchenfelder Gürtel und Burggasse umgeleitet.</p><p>Voraussichtliche Dauer: 20:15 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Neubaugasse 81.</p>",
+    "description": "Die Linie 13A wird in Richtung Hauptbahnhof S U zwischen Lederergasse und Neubaugasse, Burggasse über Josefstädter Straße - Lerchenfelder Gürtel und Burggasse umgeleitet. Die Haltestelle Strozzigasse kann dadurch nicht eingehalten werden. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Wasserrohrgebrechen im Bereich Neubaugasse 81.",
+    "descriptionHTML": "<p>Die Linie 13A wird in Richtung Hauptbahnhof S U zwischen Lederergasse und Neubaugasse, Burggasse über Josefstädter Straße - Lerchenfelder Gürtel und Burggasse umgeleitet.</p><p>Die Haltestelle Strozzigasse kann dadurch nicht eingehalten werden.</p><p>Voraussichtliche Dauer: Bis Betriebsschluss.</p><p>Grund: Wasserrohrgebrechen im Bereich Neubaugasse 81.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Die Linie 13A wird in Richtung Hauptbahnhof S U zwischen Lederergasse und Neubaugasse, Burggasse über Josefstädter Straße - Lerchenfelder Gürtel und Burggasse umgeleitet.</p><p>Voraussichtliche Dauer: 20:15 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Neubaugasse 81.</p>",
-       "descriptionPlain": "Die Linie 13A wird in Richtung Hauptbahnhof S U zwischen Lederergasse und Neubaugasse, Burggasse über Josefstädter Straße - Lerchenfelder Gürtel und Burggasse umgeleitet. Voraussichtliche Dauer: 20:15 Uhr. Grund: Feuerwehreinsatz im Bereich Neubaugasse 81.",
-       "title": "13A: Feuerwehreinsatz"
+       "descriptionHtml": "<p>Die Linie 13A wird in Richtung Hauptbahnhof S U zwischen Lederergasse und Neubaugasse, Burggasse über Josefstädter Straße - Lerchenfelder Gürtel und Burggasse umgeleitet.</p><p>Die Haltestelle Strozzigasse kann dadurch nicht eingehalten werden.</p><p>Voraussichtliche Dauer: Bis Betriebsschluss.</p><p>Grund: Wasserrohrgebrechen im Bereich Neubaugasse 81.</p>",
+       "descriptionPlain": "Die Linie 13A wird in Richtung Hauptbahnhof S U zwischen Lederergasse und Neubaugasse, Burggasse über Josefstädter Straße - Lerchenfelder Gürtel und Burggasse umgeleitet. Die Haltestelle Strozzigasse kann dadurch nicht eingehalten werden. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Wasserrohrgebrechen im Bereich Neubaugasse 81.",
+       "title": "13A: Wasserrohrgebrechen"
       }
      }
     ],
@@ -340,8 +380,8 @@
     "owner": "WL",
     "parentName": "I20261105-0049",
     "priority": "1",
-    "reasonId": 11,
-    "reasonName": "Feuerwehreinsatz",
+    "reasonId": 37,
+    "reasonName": "Wasserrohrgebrechen",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
      "13A"
@@ -356,10 +396,56 @@
     "status": "active",
     "time": {
      "created": "2026-11-05T19:36:00.000+0100",
-     "lastUpdate": "2026-11-05T19:36:00.000+0100",
+     "lastUpdate": "2026-11-05T20:21:00.000+0100",
      "start": "2026-11-05T19:34:00.000+0100"
     },
-    "title": "13A: Feuerwehreinsatz"
+    "title": "13A: Wasserrohrgebrechen"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "95A": "ptBusCity"
+     }
+    },
+    "description": "Linie 95A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 95A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 95A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 95A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "95A: Rettungseinsatz"
+      }
+     }
+    ],
+    "location": "Am Krautgarten",
+    "name": "I20261105-0050",
+    "owner": "WL",
+    "parentName": "I20261105-0050",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "95A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 495,
+      "lineName": "95A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-05T20:04:00.000+0100",
+     "lastUpdate": "2026-11-05T20:04:00.000+0100",
+     "resume": "2026-11-05T20:03:00.000+0100",
+     "start": "2026-11-05T20:03:00.000+0100"
+    },
+    "title": "95A: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1974,7 +2060,30 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nBetrieb ab Neubaugasse, Burggasse",
+    "description": "Wasserrohrbruch\nUmleitung über Josefstädter Straße",
+    "name": "R662-413",
+    "owner": "WL",
+    "parentName": "R662-413",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     662
+    ],
+    "time": {
+     "end": "2026-11-05T23:59:59.000+0100",
+     "start": "2026-11-05T20:10:19.000+0100"
+    },
+    "title": "Wasserrohrbruch\nUmleitung über Josefstädter Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Wasserrohrbruch\nBetrieb ab Neubaugasse, Burggasse",
     "name": "R663-413",
     "owner": "WL",
     "parentName": "R663-413",
@@ -1989,10 +2098,10 @@
      663
     ],
     "time": {
-     "end": "2026-11-05T20:33:00.000+0100",
+     "end": "2026-11-05T23:59:59.000+0100",
      "start": "2026-11-05T19:34:15.000+0100"
     },
-    "title": "Feuerwehreinsatz\nBetrieb ab Neubaugasse, Burggasse"
+    "title": "Wasserrohrbruch\nBetrieb ab Neubaugasse, Burggasse"
    },
    {
     "alertCause": "undefined alert cause",
