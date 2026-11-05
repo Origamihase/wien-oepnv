@@ -69,6 +69,7 @@ def test_a_verbatim_quote_counts(prep: kw.Prepared) -> None:
         ({"nr": 1, "klasse": "F5", "feed": "DE", "feed_zitat": "Bu"}, "nicht wörtlich"),
         ({"nr": 1, "klasse": "F4", "feed": "EN", "feed_zitat": "Construction works"}, "nur für den deutschen"),
         ({"nr": 1, "klasse": "F5", "feed": "DE", "feed_zitat": "Busse halten …"}, "Kürzung"),
+        ({"nr": 1, "klasse": "F2", "feed": "DE", "feed_zitat": "Busse halten"}, "vollständigen Satz"),
         ({"nr": 1, "klasse": "F1", "feed": "DE", "feed_zitat": "Busse halten", "nr2": 2, "feed_zitat2": "Streckensperre"},
          "verschiedene Linien"),
     ],

@@ -122,6 +122,10 @@ bevor er zählt:
 - Ein F3, dessen Feedzitat so in Titel oder Text einer Quelle der Meldung steht,
   ist verworfen: der Fakt steht dort, wie der Feed ihn schreibt; ein F3 braucht
   eine Quelle, die anders lautet (Lauf 315, 05.11.2026).
+- Ein F2 zu einem Text, der vor der Zeitzeile mit einem vollständigen Satz endet, ist
+  verworfen: F2 braucht eine Kürzung („…“), einen abgebrochenen Satz oder einen Text
+  nur aus der Zeitzeile („Fahrtbehinderung.“ unter „12: Polizeieinsatz“ ist die
+  WL-Kurzform, Lauf 318, 05.11.2026).
 - Ein F2 an einer Kürzung gilt nur, wenn vor dem „…“ kein Maßnahmenwort steht
   (`CORE_WORDS` in `src/ki_waechter/audit.py`: Umleitung, Kurzführung, Kein
   Betrieb, Fahrtbehinderung, nicht fahren, entfällt, fällt aus, hält nicht,
@@ -623,3 +627,4 @@ nichts vorgesagt bekommt. Läufe unter
 | v11 | 312 (02.11.), 313 (27.10.), 314 (30.10.) | 11 / 1 | 27.10.: „after“ für „nach“ vor dem Pfeil einer Verlegung als F6 (die Lage der Haltestelle; die Regel stand in der Entschieden-Liste). Prompt: die F6-Klasse und Schritt 5 nennen sie; die Kürzung hinter mehreren Maßnahmen kam noch einmal, als F6, und das Skript verwarf sie. 30.10. brachte sechs zutreffende Funde, mehr als jede Fassung davor |
 | v12 | 315 (27.10.), 316 (31.10.) | 6 / 1 | 27.10.: „Betrieb ab …“ als F3, obwohl der Quelltitel es so nennt (wie in v3; eine von acht Antworten zu diesem Stand). Skript: ein F3, dessen Feedzitat so in einer Quelle steht, ist verworfen; mit den 36 gespeicherten Antworten der Läufe 281 bis 316 neu verifiziert verliert die Prüfung keinen zutreffenden Fund und verwirft drei weitere falsche F3. 31.10. brachte neben der Zeitzeile erstmals den übersetzten Haltestellennamen „vocational school“ |
 | PR-Lauf 317 (Endstand) | 27.10., 30.10., aktueller Feed (05.11. 19:00) | 15 / 0 | keine falschen; am 30.10. antwortete 3.8 Flash (203 Sekunden, eine Antwort) mit zehn zutreffenden Funden, Lite fand im selben Stand höchstens sechs. Neu in zwei Ständen: die WL-Haltestelle „Bahnhof Meidling“ heißt im englischen Text „Station Meidling“ (62A am 30.10., 62/LB am 05.11.), weil `src/feed_build/masking.py` Aliasse mit dem Präfix „Bahnhof“ als Schreibvariante überspringt und der Übersetzer das Wort übersetzt. Eine Klasse des Feeds, nicht des Prompts; offen für eine Entscheidung |
+| PR-Lauf 318 (nach dem Doku-Commit; der Pfadfilter gilt für alle Dateien des Pull Requests, jeder Push wiederholt die drei Prüfungen) | 27.10., 30.10., aktueller Feed (05.11. 19:15) | 7 / 2 | aktueller Feed: zwei WL-Kurzformen als F2 („Grund: Gleisbauarbeiten.“ unter „N71: Busse halten auf der Hauptfahrbahn“, „Fahrtbehinderung.“ unter „12: Polizeieinsatz“), obwohl der Prompt sagt, dass ein vollständiger Satz nie F2 ist. Skript: ein F2 zu einem Text, der mit einem vollständigen Satz endet, ist verworfen; mit den 42 gespeicherten Antworten neu verifiziert verliert die Prüfung keinen zutreffenden Fund (jeder zutreffende F2 stand an einer Kürzung, einem „→ …“ oder einer Zeitzeile allein). Drei Zitate, die nicht im Text standen, verwarf das Skript ohnehin |

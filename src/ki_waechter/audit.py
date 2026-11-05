@@ -107,6 +107,12 @@ def _body_and_time_line(text: str) -> tuple[str, str]:
     return (text[: match.start()], match.group(0)) if match else (text, "")
 
 
+def _ends_its_sentence(description: str) -> bool:
+    """Whether the text before its time line ends with a finished sentence (no cut „…“, not only the time line)."""
+    body = _body_and_time_line(description)[0].strip()
+    return bool(body) and not body.endswith("…") and body[-1] in ".!?"
+
+
 def _measure_before_cut(quote: str, description: str, feed: str) -> str:
     """The measure word that stands before the cut an F2 quote ends at; empty when none does."""
     if not quote.endswith("…") or quote.endswith("→ …"):
@@ -154,6 +160,10 @@ def _quote_error(finding: Finding, item: FeedItem) -> str:
         return "Zitat aus der Zeitzeile; sie schreibt der Code und ist kein Fund"
     if klasse == "F2":
         description = item.description if feed == "DE" else item.en_description or ""
+        if _ends_its_sentence(description):
+            # A text that ends its sentence is complete; F2 needs a cut, a broken sentence or a time line alone (run 318).
+            return ("Der Text endet mit einem vollständigen Satz; ein F2 braucht eine Kürzung, einen abgebrochenen Satz "
+                    "oder nur die Zeitzeile")
         word = _measure_before_cut(finding.feed_zitat, description, feed)
         if word:
             return f"Kernaussage „{word}“ steht vor der Kürzung; eine Kürzung dahinter ist entschieden"
