@@ -101,12 +101,13 @@ def test_a_duplicate_needs_both_quotes(prep: kw.Prepared) -> None:
     assert not other.findings and "erwarteter Text" in other.rejected[0].grund
 
 
-def test_a_wrong_fact_needs_a_verbatim_source_quote(prep: kw.Prepared) -> None:
-    verdict = kw.verify(_answer({
-        "nr": 2, "klasse": "F3", "feed": "DE", "feed_zitat": "Streckensperre des Algenwegs",
-        "quelle_zitat": "angeordneten Streckensperre", "erwartet": "x", "begruendung": "y",
-    }), prep)
-    assert len(verdict.findings) == 1
+def test_a_wrong_fact_needs_a_verbatim_source_quote_and_feed_words_no_source_has(prep: kw.Prepared) -> None:
+    fact = {"nr": 2, "klasse": "F3", "feed": "DE", "feed_zitat": "einer Streckensperre",
+            "quelle_zitat": "angeordneten Streckensperre", "erwartet": "x", "begruendung": "y"}
+    assert len(kw.verify(_answer(fact), prep).findings) == 1
+    # The feed's words standing in a source are the source's fact: an F3 needs a source that reads differently.
+    same = kw.verify(_answer({**fact, "feed_zitat": "Streckensperre des Algenwegs"}), prep)
+    assert not same.findings and "steht so in einer Quelle" in same.rejected[0].grund
 
 
 def test_the_same_finding_counts_once(prep: kw.Prepared) -> None:

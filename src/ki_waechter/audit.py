@@ -160,6 +160,17 @@ def _quote_error(finding: Finding, item: FeedItem) -> str:
     return ""
 
 
+def _source_error(finding: Finding, prep: Prepared, item: FeedItem) -> str:
+    """Why the sources of the item do not prove an F3; empty when they do."""
+    sources = prep.source_text(item)
+    if not _contains(sources, finding.quelle_zitat):
+        return f"Quellzitat steht nicht wörtlich in den Quellen von Meldung {finding.nr}"
+    if _contains(sources, finding.feed_zitat):
+        # A fact a source names as the feed does is the source's; an F3 needs one that names it differently (run 315).
+        return f"Feedzitat steht so in einer Quelle von Meldung {finding.nr}; ein F3 braucht eine Quelle, die anders lautet"
+    return ""
+
+
 def _duplicate_error(finding: Finding, raw: Mapping[str, Any], items: Mapping[int, FeedItem]) -> str:
     """Why an F1 names no proven second item; empty when it does (then nr2 and feed_zitat2 are set)."""
     nr = finding.nr
@@ -203,8 +214,10 @@ def _check_one(raw: Mapping[str, Any], prep: Prepared, items: Mapping[int, FeedI
     error = _quote_error(finding, item)
     if error:
         return error
-    if klasse == "F3" and not _contains(prep.source_text(item), finding.quelle_zitat):
-        return f"Quellzitat steht nicht wörtlich in den Quellen von Meldung {nr}"
+    if klasse == "F3":
+        error = _source_error(finding, prep, item)
+        if error:
+            return error
     if klasse == "F1":
         error = _duplicate_error(finding, raw, items)
         if error:
