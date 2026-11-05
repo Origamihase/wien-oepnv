@@ -20,7 +20,7 @@ Messung dazu stehen in [`architecture.md`](../architecture.md), Abschnitt
 | Auslöser | letzter Schritt von `update-cycle.yml` (`scripts/ki_waechter.py dispatch`, `src/ki_waechter/dispatch.py`; seit 2026-11-05) | nach jedem erfolgreichen Update-Lauf auf `main`; sendet `repository_dispatch` `ki-waechter` nur, wenn es 15:00 Wiener Zeit oder später ist (bis 05.11.2026 9:00), heute noch kein erfolgreicher Prüflauf in `data/side_steps/ki-waechter.json` steht, ein gescheiterter von heute mindestens zwei Stunden zurückliegt, kein Lauf des Wächters läuft oder wartet (Aufzeichnung zuerst aus dem Checkout, bei Fälligkeit frisch von `main`). Bis dahin lief der Job `gate` nach jedem Update-Lauf (`workflow_run`), um das zu prüfen |
 | Kontingent | Google (Gemini API, je Projekt und Modell) | zählt selbst und antwortet 429, sobald ein Kontingent erreicht ist; der Wächter zählt nicht: ein Modell mit 429 bleibt im Lauf außen vor, die Kette läuft weiter (Abschnitt „Gratis-Kontingent“) |
 | Eingabe | `scripts/ki_waechter.py prepare` | jede Fassung von `docs/feed.xml` und `docs/feed.en.xml` der 24 Stunden vor dem Commit (jeder Update-Lauf schreibt eine) und die `cache/*/events.json` derselben Commits; jeder verschiedene Meldungstext wird eine Nummer, mit der Zeit im Feed, den gleichzeitig sichtbaren Meldungen, dem eigenen Cache-Ereignis (beim ersten und letzten Auftreten) und bis zu sechs Ereignissen derselben Linien; jede Quelle steht einmal ganz da, danach mit ihrer Kennung (Q…); schreibt `.ki-waechter/eingabe.md` und `eingabe.json` |
-| Lesen | `scripts/ki_waechter.py ask` | ein Aufruf der Gemini API (Modellkette `KI_WAECHTER_MODEL`: `gemini-3.8-flash`, bei Überlastung sofort `gemini-3.6-flash`, dann `gemini-3.5-flash-lite` und `gemini-3.1-flash-lite`; jedes einmal je Durchgang, höchstens zwei Durchgänge mit einer Minute Pause; ein Modell, dessen Kontingent laut Google erreicht ist (429), bleibt im Lauf außen vor) mit Prompt `scripts/ki_waechter_prompt.md` und Eingabe; keine Werkzeuge; Antwort im festen JSON-Schema; schreibt `antwort.json` |
+| Lesen | `scripts/ki_waechter.py ask` | die Modellkette `KI_WAECHTER_MODEL` (`gemini-3.8-flash`, bei Überlastung sofort `gemini-3.6-flash`, dann `gemini-3.5-flash-lite` und `gemini-3.1-flash-lite`; jedes einmal je Durchgang, höchstens zwei Durchgänge mit einer Minute Pause; ein Modell, dessen Kontingent laut Google erreicht ist (429), bleibt im Lauf außen vor), bis ein Modell antwortet, dann dasselbe Modell noch einmal; die Funde beider Antworten werden vereinigt (seit 05.11.2026, Abschnitt „Entschieden-Liste und zweite Antwort“); Prompt `scripts/ki_waechter_prompt.md` und Eingabe, keine Werkzeuge, Antwort im festen JSON-Schema; schreibt `antwort.json` |
 | Prüfen | `scripts/ki_waechter.py verify` | jedes Zitat wörtlich gegen Feed und Quellen; schreibt den Bericht und `ergebnis.json` |
 | Ablage | `scripts/publish_to_main.sh` | `docs/archive/audits/ki-waechter-YYYY-MM-DD.md` und `data/side_steps/ki-waechter.json` nach `main` |
 | Meldung | `gh issue create` | nur bei belegten Funden ein Issue, Label `ki-waechter` |
@@ -49,8 +49,10 @@ Geschlossene Liste, gleich wie im letzten Jules-Prompt vom 2026-10-30:
 | F5 | kaputter Text (geklebte Wörter, HTML-, Platzhalterreste, Doppelungen) | DE oder EN |
 | F6 | Englisch unübersetzt, Eigenname übersetzt, Sinn verändert | EN |
 
-Was entschieden ist (Kürzung auf 180 Zeichen, Zeitzeile, Tippfehler der
-Betreiber, feste EN-Formen), steht im Prompt als Nicht-Fund. Stil und
+Was entschieden ist (Kürzung auf 180 Zeichen, Zeitzeile, Titel mit zwei
+Ursachen, Tippfehler der Betreiber, feste EN-Formen), steht im Prompt unter
+„Entschieden, also kein Fund“, seit 05.11.2026 je Code-Entscheidung ein Satz
+(Abschnitt „Entschieden-Liste und zweite Antwort“). Stil und
 Verbesserungsideen meldet der Wächter nie.
 
 ## Warum ein Fund belegt sein muss
@@ -99,6 +101,54 @@ Jekyll rendert; `scripts/publish_to_main.sh` macht in jeder Seite, die ein
 Workflow zum Commit vormerkt, verbliebene Paare unwirksam (Regel in
 `docs/development.md`).
 
+## Entschieden-Liste und zweite Antwort
+
+Michael, 2026-11-05, Karte „Wie soll der KI-Wächter weniger falsche Funde
+liefern?“: „Beides“, also die präzise Liste und die zweite Antwort. Anlass war
+die Messung mit den Lite-Modellen (Abschnitt „Probelauf“): zwanzig falsche
+Funde an zwei Tagen gingen auf zwei knappe Sätze unter „Entschieden“ zurück
+(„Ursachen beginnen mit ‚Due to‘“ ließ das Modell jede Zeile „Reason: …“
+melden, die der Code aus WLs „Grund: …“ macht; „die Badner Bahn heißt ‚LB‘“
+ließ es den Text der Kurzform melden, in dem WLs eigener Name steht), und
+derselbe Stand brachte nicht in jedem Lauf dieselben Funde.
+
+**Die Liste.** Der Abschnitt „Entschieden, also kein Fund“ in
+`scripts/ki_waechter_prompt.md` nennt jede Entscheidung zu Feed-Texten so,
+wie der Code sie umsetzt, mit einem Beispiel und der Klasse, die sie nicht
+auslöst: Kürzung und Kurzform, die Zeitzeile mit „[Seit hh:00]“ und
+„[Seit 00:00]“ bei einem Störungswort (03. und 04.11.), zwei Ursachen im
+WL-Titel (02.11.), die Nicht-Dubletten vom 01.11. (Anzeigetafel neben
+„Bauarbeiten“, Hinweis über Wochen neben kurzer Störung), Tippfehler auch
+hinter einem Schrägstrich (02.11.), der umgestellte ÖBB-Satz (Züge und „nicht
+fahren“ vor dem Doppelpunkt, Datumslisten als „an einzelnen Tagen“, Züge als
+Zahl mit Linien), die ÖBB-Kurzform je Linie (05.11., #2165), Umstiegszusatz und „Hauptbahnhof“/„Hbf“ (02. und 04.11.),
+die EN-Formen „Reason: …“ und „Due to …“ und die Badner Bahn („LB“ im Titel,
+„Badner Bahn“ in der Kurzform). Ein falscher Fund ist seither ein Mangel
+dieser Liste und wird als Klasse behoben, nicht einzeln.
+
+**Die Regel.** Jede Entscheidung zu Feed-Texten, die in
+`changelog/<JJJJ-MM-TT>.md` steht (Wortwahl, Zeitzeile, Titel, Kürzung,
+Übersetzung, Reihung, was bleibt und was wegfällt), bekommt im selben Pull
+Request ihre Zeile in dieser Liste; der Kopf von `CHANGELOG.md` und
+`docs/development-teil-2.md` sagen das. So kennt der Wächter die
+Entscheidung, bevor sie im Feed steht.
+
+**Die zweite Antwort.** `ask` fragt die Kette, bis ein Modell antwortet, und
+dieses Modell dann noch einmal mit derselben Eingabe (`ask_twice` in
+`scripts/ki_waechter.py`, `ANSWERS_PER_AUDIT` = 2); `unite_answers` vereinigt
+beide Antworten: jeder Fund einer der beiden (gleich, wenn Meldung, Klasse,
+Feed und Zitat bis auf Leerraum gleich sind, wie in `verify`), jede geprüfte
+Nummer, beide Listen der Vermutungen, Tokens und Anfragen summiert. Die
+zweite Anfrage geht nur an das Modell, das geantwortet hat, genau einmal; bei
+503, 429, einer abgebrochenen Verbindung oder einer Antwort ohne JSON gilt
+die erste Antwort allein. Nach einer ersten Antwort, die länger als
+`NO_NEW_REQUEST_AFTER_S` (720 s) brauchte, folgt keine zweite, so bleibt
+die längste Anfrage im Schrittlimit von 25 Minuten. Der Bericht nennt
+„Modell …, zwei Antworten vereinigt“, `ergebnis.json` trägt `antworten`,
+`antwort.json` `answers`. Kosten: eine Anfrage mehr je Prüflauf (eine je
+Antwort), also zwei am Tag, bei Überlastung bis zu neun. Tests in
+`tests/test_ki_waechter/test_zweite_antwort.py`.
+
 ## Gratis-Kontingent
 
 Michael, 2026-10-31: „Bitte sorge auch hier dafür, dass das API-Limit nicht
@@ -115,7 +165,9 @@ Minute. Auch abgelehnte Anfragen (503) zählen. Der Wächter zählt nicht selbst
 (Michael, 05.11.2026: „Zähle es bitte so wie Google. Wir brauchen keine eigene
 Zähltechnik.“):
 
-- Ein Prüflauf sendet eine Anfrage. Antwortet das Modell 429, ist sein
+- Ein Prüflauf sendet zwei Anfragen an das Modell, das antwortet, eine je
+  Antwort (Abschnitt „Entschieden-Liste und zweite Antwort“; bis zum
+  05.11.2026 eine). Antwortet ein Modell 429, ist sein
   Kontingent laut Google erreicht: Es wird in diesem Lauf nicht mehr gefragt,
   die Kette geht sofort zum nächsten Modell. Die Antwort nennt das verletzte
   Kontingent und seinen Wert (`google.rpc.QuotaFailure`: `quotaId`,
@@ -139,7 +191,8 @@ Zähltechnik.“):
   04.11. fiel sie ganz aus, und der Health check war rot). Hat kein Modell
   geantwortet, wartet er eine Minute und geht die Kette ein zweites Mal
   durch (`MAX_ROUNDS` = 2, `OVERLOAD_WAIT_S` = 60), ohne die Modelle mit
-  erreichtem Kontingent: höchstens acht Anfragen je Prüflauf. Bis zum 05.11.
+  erreichtem Kontingent: höchstens acht Anfragen bis zur ersten Antwort, dazu
+  eine für die zweite. Bis zum 05.11.
   waren es drei (3.8 Flash, 3.6 Flash, nach einer Minute wieder 3.8 Flash).
   Die Flash-Modelle bleiben vorn, die Lite-Modelle verhindern den verlorenen
   Tag; sie werden mit Denkstufe „high“ gefragt (ihr Standard ist „minimal“,
@@ -324,7 +377,7 @@ bis 413 Sekunden (3.8 Flash hielt eine Anfrage 359 Sekunden offen, bevor es
 | Stand | Lauf 247 | Lauf 254 |
 | --- | --- | --- |
 | `001e47c` (27.10.) | 413 s, 35.249 Eingabetokens, 6.267 Denktokens, 67 von 67 Texten. Drei Funde, alle im Feed belegt: F2 „Liechtensteinstraße 37a gegenüber Bauernfeldplatz → …“ (40A, behoben in #2087); F2 „Kurzführung in Richtung Stadion U bis Schlachthausgasse U, und wieder …“ (18, Veranstaltung am 08.11., 26.10. 17:31 Uhr; Grenzfall: die erste Richtung ist vollständig, die Kurzführung der Gegenrichtung fiel hinter die 180 Zeichen); F5 „Linie 46:Umleitung“ (46, 26.10. 21:01 Uhr: Ziffer, Doppelpunkt und Wort ohne Leerzeichen aus dem WL-Text; `repair_glued_words` in `src/utils/text_repair.py` kennt diese Form nicht). Nicht erkannt: F6 „algae path“, F1 40A, F1 1/2/71/D. | 51 s, 11.272 Denktokens, 45 von 67 Texten (der Bericht warnt). Zwei Funde, beide belegt: F6 „of the algae path“ und F5 (EN) „over the line line 2“ (46, dieselbe Meldung wie links: „über die Strecke der Linien 2“ wird Wort für Wort übersetzt, das Glossar kennt nur „auf der Strecke“). Vermutung: „Schadhafter Zug“ neben „Schadhaftes Fahrzeug“. Nicht erkannt: F2 „Liechtensteinstraße 37a …“, F1 40A, F1 1/2/71/D. |
-| `9e60b8d` (30.10.) | 68 s, 51.852 Eingabetokens, 6.478 Denktokens, 101 von 101. Vier Funde, alle belegt: zweimal F4 Titel gegen Text („71: Rettungseinsatz“ mit „Fahrtbehinderung wegen Polizeieinsatz.“, 29.10. 19:01 Uhr; „42: Falschparker“ mit „Fahrtbehinderung wegen Rettungseinsatz.“, 29.10. 20:31 Uhr: zwei WL-Ticker einer Linie mit verschiedenen Ursachen, zusammengeführt in `_merge_wl_ticker_clusters`, bekannt seit dem Wächter-Lauf vom 02.11.); F5 (EN) „over the line line 9 and 44“ (43, 29.10. 20:00 Uhr); F2 „12: Umleitung zum Westbahnhof“ mit dem Text „[Seit 10:42]“ (30.10. 11:31 Uhr: der WL-Text war gleich dem Titel und fiel als Wiederholung weg). Nicht erkannt: F6 „All Saints' Worship“, F6 „Under-Meidlinger Straße“, F6 „Folktheter“, F2 „Liechtensteinstraße 37a …“. | 26 s, 5.760 Denktokens, 101 von 101. Ein Fund, belegt: F5 (EN) „over the line line 9 and 44“. Nicht erkannt: dieselben vier und die drei weiteren Funde von Lauf 247. |
+| `9e60b8d` (30.10.) | 68 s, 51.852 Eingabetokens, 6.478 Denktokens, 101 von 101. Vier Funde, alle belegt: zweimal F4 Titel gegen Text („71: Rettungseinsatz“ mit „Fahrtbehinderung wegen Polizeieinsatz.“, 29.10. 19:01 Uhr; „42: Falschparker“ mit „Fahrtbehinderung wegen Rettungseinsatz.“, 29.10. 20:31 Uhr: zwei WL-Ticker einer Linie mit verschiedenen Ursachen in einem Zeitfenster; am 02.11. behoben, seither teilt `_split_by_cause` in `src/feed_build/wl_joins.py` das Fenster nach Ursache, und der Titel nennt beide; der Stand vom 30.10. ist älter); F5 (EN) „over the line line 9 and 44“ (43, 29.10. 20:00 Uhr); F2 „12: Umleitung zum Westbahnhof“ mit dem Text „[Seit 10:42]“ (30.10. 11:31 Uhr: der WL-Text war gleich dem Titel und fiel als Wiederholung weg). Nicht erkannt: F6 „All Saints' Worship“, F6 „Under-Meidlinger Straße“, F6 „Folktheter“, F2 „Liechtensteinstraße 37a …“. | 26 s, 5.760 Denktokens, 101 von 101. Ein Fund, belegt: F5 (EN) „over the line line 9 and 44“. Nicht erkannt: dieselben vier und die drei weiteren Funde von Lauf 247. |
 | `HEAD` (24 h bis 05.11.) | 82 s, 45.355 Eingabetokens, 5.988 Denktokens, 90 von 90, keine Funde. | 38 s, 6.181 Denktokens, 90 von 90, keine Funde. |
 
 Messung nur mit den Lite-Modellen über die fünf Tage der letzten Jules-Audits
@@ -347,7 +400,7 @@ Fehlern und zeigten drei bis dahin unbekannte Klassen: „line line“ für „�
 die Strecke der Linie(n) …“, ein WL-Text gleich dem Titel (nur die Zeitzeile
 bleibt), „46:Umleitung“ ohne Leerzeichen. Zwanzig falsche Funde an zwei Tagen
 gehen auf zwei knappe Sätze unter „Entschieden“ im Prompt zurück („Due to“,
-„LB“); zwei weitere Funde wiederholten Bekanntes (71/42, 12). Derselbe Stand
+„LB“); zwei weitere Funde zeigten Behobenes oder Bekanntes (71/42, am 02.11. behoben; 12). Derselbe Stand
 bringt nicht in jedem Lauf dieselben Funde (27.10.: drei Läufe mit zwei bis
 drei Funden, zusammen sechs verschiedene), und ein Lauf prüfte nur 45 von 67
 Texten.

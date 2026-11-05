@@ -13,6 +13,12 @@ gleichen Kopf wie die anderen angelegt und hier oben in ihrem Monat verlinkt. H�
 mehr als 700 Zeilen, geht es in `<JJJJ-MM-TT>-2.md` weiter. In diese Datei selbst kommen keine
 Einträge (`tests/test_changelog_parts.py`).
 
+**Entscheidung zu Feed-Texten:** Ein Eintrag, der festlegt, wie ein Text im Feed lautet (Wortwahl,
+Zeitzeile, Titel, Kürzung, Übersetzung, Reihung, was bleibt und was wegfällt), bekommt im selben Pull
+Request seine Zeile unter „Entschieden, also kein Fund“ in `scripts/ki_waechter_prompt.md`, damit der
+KI-Wächter die Entscheidung kennt und nicht als Fehler meldet (Betreiberentscheidung 2026-11-05,
+`docs/reference/ki_waechter.md`).
+
 ## [Unreleased]
 
 ### November 2026

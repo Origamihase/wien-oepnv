@@ -294,9 +294,15 @@ Bedarf), und das API-Limit darf nicht überschritten werden.
   Zahlen, Zeiten und Tabelle des Berichts kommen aus dem Skript, nie vom
   Modell.
 * `scripts/ki_waechter.py ask` schickt Prompt (`scripts/ki_waechter_prompt.md`)
-  und Eingabe in einer Anfrage je Modell an die Gemini API, ohne Werkzeuge, mit
-  festem JSON-Schema der Antwort. Die Fundklassen F1 bis F6 sind geschlossen,
-  entschiedene Formate stehen als Nicht-Funde im Prompt; Stil und
+  und Eingabe an die Gemini API, ohne Werkzeuge, mit festem JSON-Schema der
+  Antwort: die Modellkette, bis ein Modell antwortet, und dieses Modell dann
+  noch einmal; die Funde beider Antworten werden vereinigt (seit 2026-11-05,
+  weil eine Anfrage nicht jeden Fund bringt). Die Fundklassen F1 bis F6 sind
+  geschlossen, entschiedene Formate stehen als Nicht-Funde im Prompt, je
+  Code-Entscheidung ein Satz; jede Entscheidung zu Feed-Texten in
+  `changelog/<JJJJ-MM-TT>.md` bekommt im selben Pull Request ihre Zeile dort
+  (Betreiberentscheidung 2026-11-05, „Beides“: präzise Liste und zweite
+  Antwort, nach zwanzig falschen Funden aus zwei knappen Sätzen). Stil und
   Verbesserungsideen sind nie Funde.
 * `scripts/ki_waechter.py verify` lässt einen Fund nur gelten, wenn sein
   Zitat wörtlich in der Meldung steht, bei einem falschen Fakt (F3) auch das
@@ -308,12 +314,14 @@ Bedarf), und das API-Limit darf nicht überschritten werden.
   sobald ein Kontingent erreicht ist; der Wächter zählt nicht selbst
   (Betreiberentscheidung 2026-11-05: „Zähle es bitte so wie Google. Wir
   brauchen keine eigene Zähltechnik.“; eine Abfrage des Verbrauchs über die
-  API gibt es laut Googles Doku nicht). Ein Prüflauf sendet eine Anfrage;
+  API gibt es laut Googles Doku nicht). Ein Prüflauf sendet zwei Anfragen,
+  eine je Antwort (bis 2026-11-05 eine);
   ein Modell mit 429 bleibt im Lauf außen vor, Googles Angaben aus der
   Antwort stehen im Log; antwortet das Modell überlastet (5xx), fragt er
   sofort das nächste Modell der Kette Gemini 3.8 Flash, 3.6 Flash,
   3.5 Flash-Lite, 3.1 Flash-Lite, nach einem Durchgang ohne Antwort eine
-  Minute später ein zweites Mal, höchstens acht Anfragen
+  Minute später ein zweites Mal, höchstens acht Anfragen bis zur ersten
+  Antwort und eine mehr für die zweite
   (Betreiberentscheidung 2026-11-05, nachdem beide Flash-Modelle vom 01. bis
   05.11. jeden Morgen um 9:00 mit 503 antworteten und der Health check rot
   war: „Baue bitte auch einen Modellwechsel mit den Lite-Modellen als

@@ -250,14 +250,15 @@ jobs:
           git fetch --quiet --shallow-since="$(date -u -d "@${since}" +%Y-%m-%dT%H:%M:%SZ)" origin "${target}"
           python scripts/ki_waechter.py prepare --rev "${REV}" --hours 24 --out "${WORK}"
 
-      # One request, no tools: the model sees only the prompt and the
-      # input, and only this step sees the key.
+      # The chain until a model answers, then that model once more (the
+      # findings of both answers are united, 2026-11-05), no tools: the model
+      # sees only the prompt and the input, and only this step sees the key.
       - name: Gemini reads and compares
         id: ai
         continue-on-error: true
         # Requests of up to ten minutes each, at most two passes over the
-        # chain (MAX_ROUNDS); the script starts none after twelve minutes
-        # (NO_NEW_REQUEST_AFTER_S).
+        # chain (MAX_ROUNDS) and one more for the second answer; the script
+        # starts none after twelve minutes (NO_NEW_REQUEST_AFTER_S).
         timeout-minutes: 25
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}

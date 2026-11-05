@@ -525,23 +525,29 @@ def test_ask_without_a_key_fails_and_says_so(
 def test_ask_notes_the_requests_as_a_plain_number_and_per_model(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str],
 ) -> None:
-    """Two annotations for the reader of the run: the count as a bare integer, then the models."""
+    """Two annotations for the reader of the run: the count as a bare integer, then the models.
+
+    Both count the requests of both answers (``ask_twice``, 2026-11-05): the
+    chain until 3.6 Flash answered, then 3.6 Flash once more.
+    """
     monkeypatch.setenv("GEMINI_API_KEY", "k")
     (tmp_path / "eingabe.md").write_text("## Meldung 1\nINHALT\n", encoding="utf-8")
     asked: list[str] = []
 
-    def fake_ask(prompt: str, model: str, key: str) -> kw.Answer:
+    def fake_ask(prompt: str, model: str, key: str, *args: object, **kwargs: object) -> kw.Answer:
         asked.append(model)
         assert key == "k" and prompt.rstrip().endswith("INHALT")
-        return kw.Answer(True, "gemini-3.6-flash", text="{}", requests=3,
-                         per_model={"gemini-3.8-flash": 2, "gemini-3.6-flash": 1})
+        if len(asked) == 1:
+            return kw.Answer(True, "gemini-3.6-flash", text="{}", requests=3,
+                             per_model={"gemini-3.8-flash": 2, "gemini-3.6-flash": 1})
+        return kw.Answer(True, "gemini-3.6-flash", text="{}", requests=1, per_model={"gemini-3.6-flash": 1})
 
     monkeypatch.setattr(kw, "ask_gemini", fake_ask)
     assert kw.main(["ask", "--dir", str(tmp_path), "--model", CHAIN]) == 0
-    assert asked == [CHAIN]
+    assert asked == [CHAIN, "gemini-3.6-flash"]
     out = capsys.readouterr().out
-    assert "::notice title=Gemini-Anfragen::3\n" in out
-    assert "::notice title=Gemini-Modelle::gemini-3.8-flash 2, gemini-3.6-flash 1\n" in out
+    assert "::notice title=Gemini-Anfragen::4\n" in out
+    assert "::notice title=Gemini-Modelle::gemini-3.8-flash 2, gemini-3.6-flash 2\n" in out
 
 
 def test_the_prompt_ends_with_the_input() -> None:
