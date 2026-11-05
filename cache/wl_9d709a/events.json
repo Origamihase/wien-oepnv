@@ -650,6 +650,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2/12/31: Fremder Verkehrsunfall",
+    "description": "Die Linie 2 fährt derzeit nur zwischen Dornbach und Am Tabor. Linie 12: Umleitung in beiden Richtungen zwischen Bruno-Marek-Allee und Wallensteinplatz über die Strecke der Linien O und 5. Linie 31: Kein Betrieb zwischen Floridsdorf S U und Wexstraße. Voraussichtliche Dauer: 10:40 Uhr. Grund: Fremder Verkehrsunfall im Bereich Höchstädtplatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e2a1b0c6a9be45cf20414f6843042cc3e5b82d7a10c43df3d62b35f682551579",
+    "pubDate": "2026-11-05T09:43:00+01:00",
+    "starts_at": "2026-11-05T09:43:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=12,2,31|D=2026-11-05|TK=2 12 31 fremder verkehrsunfall",
+    "_wl_ids": [
+      "I20261105-0018"
+    ],
+    "_incident_start": "2026-11-05T09:43:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -674,18 +690,50 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "14A: Fremder Verkehrsunfall",
-    "description": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "12: Fremdunfall Betrieb ab Rebhanngasse",
+    "description": "Fremdunfall\nBetrieb ab Rebhanngasse",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "42270d028cd443977f582a2b48222c38c0603b64b1f2d3ae98143b310e12046e",
-    "pubDate": "2026-11-05T08:04:00+01:00",
-    "starts_at": "2026-11-05T08:04:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=14A|D=2026-11-05|TK=14a fremder verkehrsunfall",
-    "_wl_ids": [
-      "I20261105-0009"
-    ],
-    "_incident_start": "2026-11-05T08:04:00+01:00"
+    "guid": "81f9d152737e59e5614619a64e8753c8caea69f9ab25dd9eafc49c4ada6ca208",
+    "pubDate": "2026-11-05T09:52:16+01:00",
+    "starts_at": "2026-11-05T09:52:18+01:00",
+    "ends_at": "2026-11-05T10:51:00+01:00",
+    "_identity": "wl|störung|L=12|D=2026-11-05|TK=fremdunfall betrieb ab rebhanngasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fremdunfall Betrieb ab Wallensteinplatz",
+    "description": "Fremdunfall\nBetrieb ab Wallensteinplatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "dcd77d5a26c93e43b589aafe0364a1b1e04bfb96354db322a7c37edb16019f8b",
+    "pubDate": "2026-11-05T09:51:16+01:00",
+    "starts_at": "2026-11-05T09:51:18+01:00",
+    "ends_at": "2026-11-05T10:50:00+01:00",
+    "_identity": "wl|störung|L=12|D=2026-11-05|TK=fremdunfall betrieb ab wallensteinplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fremdunfall Züge halten bei Linie 2",
+    "description": "Fremdunfall\nZüge halten bei Linie 2",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "fe5e34bd7e6c34faa53768fa66833b5c5def6cbd691697c14c89dca69bf01a2b",
+    "pubDate": "2026-11-05T09:53:16+01:00",
+    "starts_at": "2026-11-05T09:53:16+01:00",
+    "ends_at": "2026-11-05T10:52:00+01:00",
+    "_identity": "wl|störung|L=12|D=2026-11-05|TK=fremdunfall züge halten bei linie 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fremdunfall Züge halten bei Linie 5",
+    "description": "Fremdunfall\nZüge halten bei Linie 5",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e7229a302e4d806a68241b74bdc484e5f6410ed19c5238f8f923b09b548526a9",
+    "pubDate": "2026-11-05T09:51:48+01:00",
+    "starts_at": "2026-11-05T09:51:48+01:00",
+    "ends_at": "2026-11-05T10:51:00+01:00",
+    "_identity": "wl|störung|L=12|D=2026-11-05|TK=fremdunfall züge halten bei linie 5"
   },
   {
     "source": "Wiener Linien",
@@ -934,34 +982,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Polizeieinsatz",
-    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "title": "2: Fremdunfall Betrieb ab Am Tabor",
+    "description": "Fremdunfall\nBetrieb ab Am Tabor",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "0a8aa8f7231d98faa38de820cfb27484955a1529c285e8a8472318b330368561",
-    "pubDate": "2026-11-05T08:51:00+01:00",
-    "starts_at": "2026-11-05T08:51:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=2|D=2026-11-05|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261105-0015"
-    ],
-    "_incident_start": "2026-11-05T08:51:00+01:00"
+    "guid": "a1ef78a3c8705c1c3e990e658a6de61712c28299c31ea2fc6663354aa8ff9ae9",
+    "pubDate": "2026-11-05T09:50:16+01:00",
+    "starts_at": "2026-11-05T09:50:16+01:00",
+    "ends_at": "2026-11-05T10:49:00+01:00",
+    "_identity": "wl|störung|L=2|D=2026-11-05|TK=fremdunfall betrieb ab am tabor"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "35A: Verkehrsüberlastung",
-    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "title": "31: Fremdunfall Betrieb ab Floridsdorf",
+    "description": "Fremdunfall\nBetrieb ab Floridsdorf",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "311a3d1d21d0e028a008e02b40ec15cfb9a9f4383510c50597e114937b639358",
-    "pubDate": "2026-11-05T08:30:00+01:00",
-    "starts_at": "2026-11-05T08:30:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=35A|D=2026-11-05|TK=35a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261105-0010"
-    ],
-    "_incident_start": "2026-11-05T08:30:00+01:00"
+    "guid": "33d8ecede983f3d00f33eb919f9df9473def53c4148c18b6542fc7873c6f83db",
+    "pubDate": "2026-11-05T09:56:48+01:00",
+    "starts_at": "2026-11-05T09:56:48+01:00",
+    "ends_at": "2026-11-05T10:56:00+01:00",
+    "_identity": "wl|störung|L=31|D=2026-11-05|TK=fremdunfall betrieb ab floridsdorf"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Fremdunfall Betrieb ab Wexstraße",
+    "description": "Fremdunfall\nBetrieb ab Wexstraße",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "d02b641890feac544580700cba3a0a1bea9912b97b94147ad8779f353b8d8900",
+    "pubDate": "2026-11-05T09:57:17+01:00",
+    "starts_at": "2026-11-05T09:57:18+01:00",
+    "ends_at": "2026-11-05T10:56:00+01:00",
+    "_identity": "wl|störung|L=31|D=2026-11-05|TK=fremdunfall betrieb ab wexstrasse"
   },
   {
     "source": "Wiener Linien",
@@ -1030,22 +1082,6 @@
       "I20261105-0016"
     ],
     "_incident_start": "2026-11-05T08:57:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "63A: Verkehrsüberlastung",
-    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "e7e896d63b9b23989d8440713ce15b7c04d68a1b0098210082b12613484ee8b8",
-    "pubDate": "2026-11-05T08:30:00+01:00",
-    "starts_at": "2026-11-05T08:30:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=63A|D=2026-11-05|TK=63a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261105-0011"
-    ],
-    "_incident_start": "2026-11-05T08:30:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1186,17 +1222,5 @@
     "starts_at": "2026-09-14T04:00:00+02:00",
     "ends_at": "2026-12-31T23:59:00+01:00",
     "_identity": "wl|störung|L=|D=2026-09-14|TK=sperre"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Polizeieinsatz Züge halten im inneren Gleis",
-    "description": "Polizeieinsatz\nZüge halten im\ninneren Gleis",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "68bc6af54c6e7221254acf728b57d945990511addcc9f1a0366dc0c96112b806",
-    "pubDate": "2026-11-05T08:47:40+01:00",
-    "starts_at": "2026-11-05T08:47:40+01:00",
-    "ends_at": "2026-11-05T09:46:00+01:00",
-    "_identity": "wl|störung|L=|D=2026-11-05|TK=polizeieinsatz"
   }
 ]
