@@ -16,6 +16,7 @@ from .placeholders import (
     _PLACEHOLDER_NONCE, _apply_domain_glossary, _has_short_placeholder_shape, _placeholder_nonce,
 )
 from .relocation import _RELOCATION_ARROW
+from .oebb_lines_short import _OEBB_SHORT_LEAD_RE
 from .oebb_summary import _OEBB_LABELLED_SENTENCE_RE, _oebb_section_label_en
 from .translator import _get_translation_pipeline, _mask_service_compounds
 from .masking import _mask_entities, _unmask_entities
@@ -238,6 +239,14 @@ def _render_oebb_sentence(
     parts = _oebb_cannot_run_parts(sentence)
     if parts is not None:
         return _render_oebb_cannot_run(parts, ident, source, category)
+    short = _OEBB_SHORT_LEAD_RE.fullmatch(sentence)
+    if short is not None:
+        # Every line in short (``oebb_lines_short``): behind the colon only
+        # lines, station names and days, which stay as written.
+        if short["cause"] is None:
+            return f"Trains are cancelled: {short['rest']}"
+        cause = _oebb_cause_en(short["cause"].removeprefix("Wegen "), ident, source, category)
+        return None if cause is None else f"{cause}, trains are cancelled: {short['rest']}"
     return _render_oebb_follow_up(sentence)
 
 

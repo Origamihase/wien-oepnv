@@ -222,6 +222,10 @@ def check_oebb_second_sentence(items: Sequence[Item], oebb_cache: Mapping[str, s
         first, second = sentences[0], sentences[1]
         if second in _normalize(item.body):
             continue
+        # Every line in short (src/feed_build/oebb_lines_short.py, 2026-11-05)
+        # replaces ÖBB's sentences on purpose.
+        if " fallen Züge aus: " in item.body or item.body.startswith("Es fallen Züge aus: "):
+            continue
         place = _OEBB_PLACE_RE.search(first)
         if place is None or not _oebb_title_names(place.group(0), item.title):
             continue
