@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261105-0040, I20261105-0042-F01, I20261105-0043, I20261105-0032, I20261105-0033-F01, I20260925-0011, I20261105-0038, I20260909-0007, I20260922-0032, I20261105-0036, I20261020-0029, I20261105-0029-F02"
+    "trafficInfoNameList": "I20261105-0042-F01, I20261105-0044, I20261105-0032, I20261105-0033-F01, I20260925-0011, I20261105-0038, I20260909-0007, I20260922-0032, I20261105-0045, I20261105-0036, I20261020-0029, I20261105-0043-F01, I20261105-0029-F02"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1882-101, R1875-101, R1876-101, R1880-101, R1881-101, R1884-101, R1883-101, R115-136, R103-136, R101-136, R102-136, R100-136, R119-136, R118-136, R117-136, R116-136, R45-136, R19-136, R130-136, R401-101, R318-437, R293-474, R2380-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2345-127, R3886-480, R1448-412, R1474-412, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, R211-112, R355-112, R356-112, R357-112, R211-105, R357-105, R355-105, R356-105, R272-112, R458-112, R381-112, R380-112, R379-112, R382-112, R272-105, R377-105, R379-105, R380-105, R381-105, R382-105, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1880-101, R1875-101, R1881-101, R1876-101, R1884-101, R1883-101, R1882-101, R100-136, R119-136, R118-136, R117-136, R115-136, R116-136, R103-136, R102-136, R101-136, R45-136, R19-136, R130-136, R401-101, R318-437, R293-474, R2380-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2345-127, R3886-480, R1448-412, R1474-412, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, R211-112, R356-112, R355-112, R357-112, R211-105, R357-105, R355-105, R356-105, R272-112, R381-112, R380-112, R458-112, R379-112, R382-112, R272-105, R381-105, R380-105, R379-105, R377-105, R382-105, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -444,52 +444,6 @@
     "title": "59A: Verkehrsüberlastung"
    },
    {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-       "title": "U3: Betriebsstörung"
-      }
-     }
-    ],
-    "location": "Volkstheater",
-    "name": "I20261105-0040",
-    "owner": "WL",
-    "parentName": "I20261105-0040",
-    "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-05T17:05:00.000+0100",
-     "lastUpdate": "2026-11-05T17:05:00.000+0100",
-     "resume": "2026-11-05T17:04:00.000+0100",
-     "start": "2026-11-05T17:04:00.000+0100"
-    },
-    "title": "U3: Betriebsstörung"
-   },
-   {
     "alertCause": "police activity",
     "alertCauseId": 3,
     "attributes": {
@@ -542,23 +496,22 @@
     "alertCauseId": 77,
     "attributes": {
      "relatedLineTypes": {
-      "12": "ptTram",
       "5": "ptTram"
      }
     },
-    "description": "Linie 5: Kein Betrieb zwischen Spitalgasse und Lerchenfelder Straße. Weiterfahrt ab Spitalgasse bis Schottentor U. Weiterfahrt ab Lerchenfelderstraße bis Josefstädter Straße U. Linie 12: Betrieb nur zwischen Hillerstraße und Spitalgasse. Weiterfahrt bis Schottentor U. Voraussichtliche Dauer: 18:15 Uhr. Grund: Verkehrsunfall im Bereich Spitalgasse.",
-    "descriptionHTML": "<p>Linie 5: <br>Kein Betrieb zwischen Spitalgasse und Lerchenfelder Straße. <br>Weiterfahrt ab Spitalgasse bis Schottentor U.<br>Weiterfahrt ab Lerchenfelderstraße bis Josefstädter Straße U.<br>Linie 12:<br>Betrieb nur zwischen Hillerstraße und Spitalgasse.<br>Weiterfahrt bis Schottentor U.</p><p>Voraussichtliche Dauer: 18:15 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Spitalgasse.</p>",
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 5: <br>Kein Betrieb zwischen Spitalgasse und Lerchenfelder Straße. <br>Weiterfahrt ab Spitalgasse bis Schottentor U.<br>Weiterfahrt ab Lerchenfelderstraße bis Josefstädter Straße U.<br>Linie 12:<br>Betrieb nur zwischen Hillerstraße und Spitalgasse.<br>Weiterfahrt bis Schottentor U.</p><p>Voraussichtliche Dauer: 18:15 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Spitalgasse.</p>",
-       "descriptionPlain": "Linie 5: Kein Betrieb zwischen Spitalgasse und Lerchenfelder Straße. Weiterfahrt ab Spitalgasse bis Schottentor U. Weiterfahrt ab Lerchenfelderstraße bis Josefstädter Straße U. Linie 12: Betrieb nur zwischen Hillerstraße und Spitalgasse. Weiterfahrt bis Schottentor U. Voraussichtliche Dauer: 18:15 Uhr. Grund: Verkehrsunfall im Bereich Spitalgasse.",
-       "title": "5, 12: Verkehrsunfall"
+       "descriptionHtml": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "5: Verkehrsunfall"
       }
      }
     ],
     "location": "Spitalgasse",
-    "name": "I20261105-0043",
+    "name": "I20261105-0043-F01",
     "owner": "WL",
     "parentName": "I20261105-0043",
     "priority": "1",
@@ -566,15 +519,54 @@
     "reasonName": "Verkehrsunfall",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "5",
-     "12"
+     "5"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 105,
       "lineName": "5",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-05T18:17:00.000+0100",
+     "lastUpdate": "2026-11-05T18:17:00.000+0100",
+     "resume": "2026-11-05T18:17:00.000+0100",
+     "start": "2026-11-05T17:50:00.000+0100"
+    },
+    "title": "5: Verkehrsunfall"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "12": "ptTram"
+     }
+    },
+    "description": "Linie 12: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "descriptionHTML": "<p>Linie 12:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 12:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+       "descriptionPlain": "Linie 12: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+       "title": "12: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261105-0044",
+    "owner": "WL",
+    "parentName": "I20261105-0044",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 112,
       "lineName": "12",
@@ -583,11 +575,57 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-05T17:51:00.000+0100",
-     "lastUpdate": "2026-11-05T17:57:00.000+0100",
-     "start": "2026-11-05T17:50:00.000+0100"
+     "created": "2026-11-05T18:26:00.000+0100",
+     "lastUpdate": "2026-11-05T18:26:00.000+0100",
+     "resume": "2026-11-05T18:26:00.000+0100",
+     "start": "2026-11-05T18:26:00.000+0100"
     },
-    "title": "5, 12: Verkehrsunfall"
+    "title": "12: Polizeieinsatz"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "98A": "ptBusCity"
+     }
+    },
+    "description": "Linie 98A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "descriptionHTML": "<p>Linie 98A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 98A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+       "descriptionPlain": "Linie 98A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+       "title": "98A: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261105-0045",
+    "owner": "WL",
+    "parentName": "I20261105-0045",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "98A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 498,
+      "lineName": "98A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-05T18:29:00.000+0100",
+     "lastUpdate": "2026-11-05T18:29:00.000+0100",
+     "resume": "2026-11-05T18:29:00.000+0100",
+     "start": "2026-11-05T18:29:00.000+0100"
+    },
+    "title": "98A: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1765,7 +1803,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Spitalgasse",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
     "name": "R379-112",
     "owner": "WL",
     "parentName": "R379-112",
@@ -1780,10 +1818,10 @@
      379
     ],
     "time": {
-     "end": "2026-11-05T18:56:00.000+0100",
+     "end": "2026-11-05T19:21:00.000+0100",
      "start": "2026-11-05T17:57:05.000+0100"
     },
-    "title": "Verkehrsunfall\nBetrieb ab Spitalgasse"
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1995,7 +2033,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Spitalgasse",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
     "name": "R458-112",
     "owner": "WL",
     "parentName": "R458-112",
@@ -2010,10 +2048,10 @@
      458
     ],
     "time": {
-     "end": "2026-11-05T18:56:00.000+0100",
+     "end": "2026-11-05T19:21:00.000+0100",
      "start": "2026-11-05T17:57:05.000+0100"
     },
-    "title": "Verkehrsunfall\nBetrieb ab Spitalgasse"
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
