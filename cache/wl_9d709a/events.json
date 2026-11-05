@@ -674,18 +674,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Fremder Verkehrsunfall",
-    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "13A: Verkehrsüberlastung",
+    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "9f6f169116b156fd9fd7cecfd8e7169154e32a11b295fe50167321f9a6d12f7b",
-    "pubDate": "2026-11-05T09:43:00+01:00",
-    "starts_at": "2026-11-05T09:43:00+01:00",
+    "guid": "0b00fe24c2dd37aaf07ae252d80374592513223744f2d6ecc3fa197c58c6de52",
+    "pubDate": "2026-11-05T11:27:00+01:00",
+    "starts_at": "2026-11-05T11:27:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=12|D=2026-11-05|TK=12 fremder verkehrsunfall",
+    "_identity": "wl|störung|L=13A|D=2026-11-05|TK=13a verkehrsüberlastung",
     "_wl_ids": [
-      "I20261105-0018"
+      "I20261105-0019"
     ],
-    "_incident_start": "2026-11-05T09:43:00+01:00"
+    "_incident_start": "2026-11-05T11:27:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -926,22 +926,6 @@
     "starts_at": "2026-11-05T09:43:00+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=2|D=2026-11-05|TK=2 fremder verkehrsunfall",
-    "_wl_ids": [
-      "I20261105-0018"
-    ],
-    "_incident_start": "2026-11-05T09:43:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "31: Fremder Verkehrsunfall",
-    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "40f6f4cd05dd63a538173c07f6c2034f17bccfef1e67962b19f17e6e77e0ccfe",
-    "pubDate": "2026-11-05T09:43:00+01:00",
-    "starts_at": "2026-11-05T09:43:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=31|D=2026-11-05|TK=31 fremder verkehrsunfall",
     "_wl_ids": [
       "I20261105-0018"
     ],
