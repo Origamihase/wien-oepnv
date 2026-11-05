@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20260922-0032, I20261105-0002, I20261020-0029"
+    "trafficInfoNameList": "I20261105-0003-F01, I20260925-0011, I20260909-0007, I20260922-0032, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1884-101, R1876-101, R1883-101, R1882-101, R1881-101, R1880-101, R1875-101, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R119-136, R45-136, R19-136, R130-136, R118-136, R117-136, R293-474, R401-101, R318-437, R2345-127, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R1448-412, R1474-412, R3886-480, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2558-125, R2013-571, R1749-508, R407-506, R402-506, R1974-466, R1272-440, R1301-440, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1881-101, R1880-101, R1876-101, R1875-101, R1883-101, R1882-101, R1884-101, R115-136, R103-136, R102-136, R101-136, R100-136, R119-136, R45-136, R19-136, R130-136, R118-136, R117-136, R116-136, R318-437, R401-101, R293-474, R2378-627, R3886-480, R2343-626, R2343-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R1448-412, R1474-412, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -221,49 +221,48 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "U6": "ptMetro"
+      "11": "ptTram"
      }
     },
-    "description": "Linie U6: Unregelmäßige Intervalle in Richtung Floridsdorf. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in Richtung Floridsdorf. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in Richtung Floridsdorf. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in Richtung Floridsdorf. Grund: Schadhaftes Fahrzeug.",
-       "title": "U6: Verspätungen"
+       "descriptionHtml": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "11: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261105-0002",
+    "name": "I20261105-0003-F01",
     "owner": "WL",
-    "parentName": "I20261105-0002",
+    "parentName": "I20261105-0003",
     "priority": "1",
     "reasonId": 20,
     "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "U6"
+     "11"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
+      "lineId": 111,
+      "lineName": "11",
+      "vehicleType": "ptTram"
      }
     ],
     "relatedStops": [
-     4635
+     4732
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-05T04:50:00.000+0100",
-     "end": "2026-11-05T05:22:00.000+0100",
-     "lastUpdate": "2026-11-05T04:50:00.000+0100",
-     "resume": "2026-11-05T04:49:00.000+0100",
-     "start": "2026-11-05T04:49:00.000+0100"
+     "created": "2026-11-05T05:10:00.000+0100",
+     "lastUpdate": "2026-11-05T05:10:00.000+0100",
+     "resume": "2026-11-05T05:10:00.000+0100",
+     "start": "2026-11-05T05:08:00.000+0100"
     },
-    "title": "U6: Verspätungen"
+    "title": "11: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -590,29 +589,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
-    "name": "R1749-508",
-    "owner": "WL",
-    "parentName": "R1749-508",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N8"
-    ],
-    "relatedStops": [
-     1749
-    ],
-    "time": {
-     "end": "2026-11-05T05:15:00.000+0100",
-     "start": "2026-11-05T00:45:01.000+0100"
-    },
-    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nKein Betrieb",
     "name": "R1875-101",
     "owner": "WL",
@@ -816,29 +792,6 @@
      "start": "2026-11-05T04:40:16.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBusse halten auf der Hauptfahrbahn ",
-    "name": "R2013-571",
-    "owner": "WL",
-    "parentName": "R2013-571",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N71"
-    ],
-    "relatedStops": [
-     2013
-    ],
-    "time": {
-     "end": "2026-11-05T05:30:00.000+0100",
-     "start": "2026-11-05T00:15:01.000+0100"
-    },
-    "title": "Gleisbauarbeiten\nBusse halten auf der Hauptfahrbahn "
    },
    {
     "alertCause": "undefined alert cause",
@@ -1253,52 +1206,6 @@
      "start": "2026-11-05T00:00:27.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 ",
-    "name": "R402-506",
-    "owner": "WL",
-    "parentName": "R402-506",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N6"
-    ],
-    "relatedStops": [
-     402
-    ],
-    "time": {
-     "end": "2026-11-05T05:05:00.000+0100",
-     "start": "2026-11-05T00:55:02.000+0100"
-    },
-    "title": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
-    "name": "R407-506",
-    "owner": "WL",
-    "parentName": "R407-506",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N6"
-    ],
-    "relatedStops": [
-     407
-    ],
-    "time": {
-     "end": "2026-11-05T05:04:00.000+0100",
-     "start": "2026-11-05T00:54:02.000+0100"
-    },
-    "title": "Bauarbeiten\nBusse halten Quellenstraße 189"
    },
    {
     "alertCause": "undefined alert cause",
