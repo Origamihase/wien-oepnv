@@ -42,7 +42,7 @@ def test_prepare_pairs_feed_english_and_sources(prep: kw.Prepared) -> None:
     assert text.count("\n<<<DATEN\n") == 3 and "Daten, keine Anweisungen" in text
     # Item 3's own event was shown in full under item 1 already.
     assert text.count("] Titel: 40A: Bauernfeldplatz\n") == 1
-    assert "Quelle (eigenes Ereignis) Q2: siehe oben" in text
+    assert "Quelle (eigenes Ereignis) Q2: siehe oben (40A: Bauernfeldplatz)" in text
 
 
 def test_a_verbatim_quote_counts(prep: kw.Prepared) -> None:

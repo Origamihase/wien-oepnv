@@ -379,7 +379,9 @@ def render_input(prep: Prepared) -> str:
         for label, ids in (("eigenes Ereignis", item.own_sources), ("gleiche Linie", item.related_sources)):
             for qid in ids:
                 if qid in shown:
-                    out.append(f"Quelle ({label}) {qid}: siehe oben")
+                    # The title again: for a WL ticker it carries the measure ("18: Rettungseinsatz
+                    # Betrieb ab Eichenstraße"), so the model need not look the source up.
+                    out.append(f"Quelle ({label}) {qid}: siehe oben ({prep.sources[qid]['titel']})")
                     continue
                 shown.add(qid)
                 src = prep.sources[qid]
