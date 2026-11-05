@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 05 Nov 2026 12:31:06 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 13:00:39 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[12: Overhead-line fault, damaged overhead line]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">ad26ad58ec6066cb9505515bf099ce6fb9f4622edea74635ad2929cfa8030f41</guid>
+      <pubDate>Thu, 05 Nov 2026 12:32:02 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 05 Nov 2026 13:00:39 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 05 Nov 2026 12:32:02 +0100</ext:starts_at>
+      <description>Overhead-line fault: service from Albertgasse. [Since 12:32]</description>
+      <content:encoded><![CDATA[Overhead-line fault: service from Albertgasse.<br/>[Since 12:32]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U1: Service disruption]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -22,19 +35,6 @@
       <ext:starts_at>Thu, 05 Nov 2026 12:26:00 +0100</ext:starts_at>
       <description>Irregular intervals in both directions. Reason: service disruption. [Since 12:26]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption.<br/>[Since 12:26]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2: Damaged overhead line]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">0b0284d78a316ebef8be6e0e8d32399cae271f8fd9ee0b606886b77c893467b0</guid>
-      <pubDate>Thu, 05 Nov 2026 11:46:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 05 Nov 2026 12:01:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 05 Nov 2026 11:46:00 +0100</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 11:46]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 11:46]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Meidling ↔ Wien Liesing]]></title>
