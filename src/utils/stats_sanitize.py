@@ -102,7 +102,7 @@ _CSV_FORMULA_PREFIXES: Final = ("=", "+", "-", "@", "\t", "\r")
 # Arabic prefix marks, U+06DD, U+070F, U+0890..U+0891, U+08E2,
 # U+206A..U+206F deprecated BiDi controls (folds the existing
 # U+2060..U+2069 band into U+2060..U+206F), U+FFF9..U+FFFB INTERLINEAR
-# ANNOTATION, U+110BD/U+110CD KAITHI, U+13430..U+13438 EGYPTIAN
+# ANNOTATION, U+110BD/U+110CD KAITHI, U+13430..U+1343F EGYPTIAN
 # HIEROGLYPH, U+1BCA0..U+1BCA3 SHORTHAND FORMAT, and U+1D173..U+1D17A
 # MUSICAL SYMBOL formatting. Pre-fix Cf-class invisible variants of
 # a provider/location name silently fractured pivot-table aggregation
@@ -115,7 +115,7 @@ _CSV_CONTROL_CHARS_RE: Final = re.compile(
     r"\u200b-\u200f\u2028-\u202e\u2060-\u206f"
     r"\ufe00-\ufe0f\ufeff\ufff9-\ufffb"
     r"\U000110bd\U000110cd"
-    r"\U00013430-\U00013438"
+    r"\U00013430-\U0001343F"
     r"\U0001bca0-\U0001bca3"
     r"\U0001d173-\U0001d17a"
     r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"

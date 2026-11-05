@@ -264,10 +264,27 @@ Bedarf), und das API-Limit darf nicht überschritten werden.
 
 * `ki-waechter.yml` läuft einmal am Tag nach dem ersten erfolgreichen
   Update-Lauf ab 9:00 Wiener Zeit, gleich nach dem Beginn des
-  Kontingent-Tags der Gemini API (`workflow_run`; GitHubs eigener Cron
-  feuert hier nur wenige seiner Termine). Ein erfolgreicher Lauf beendet den
-  Tag; nach einem gescheiterten versucht er es frühestens zwei Stunden
-  später noch einmal, solange das Tagesbudget reicht.
+  Kontingent-Tags der Gemini API (GitHubs eigener Cron feuert hier nur
+  wenige seiner Termine). Ein erfolgreicher Lauf beendet den Tag; nach einem
+  gescheiterten versucht er es frühestens zwei Stunden später noch einmal,
+  solange das Tagesbudget reicht. Seit 2026-11-05 entscheidet das der letzte
+  Schritt des Update-Laufs (`scripts/ki_waechter.py dispatch`,
+  `src/ki_waechter/dispatch.py`): Er liest die Aufzeichnung
+  `data/side_steps/ki-waechter.json` und die Uhr und sendet
+  `repository_dispatch: ki-waechter` nur, wenn eine Prüfung fällig ist und
+  kein Lauf des Wächters läuft oder wartet; hat das Gate an diesem Tag schon
+  einen Lauf wegen des Budgets ohne Prüfung beendet, sendet er bis zum
+  nächsten Tag nichts mehr. Ein Takt vor 9:00 oder nach der gelungenen
+  Prüfung des Tages liest nur die Aufzeichnung im Checkout und fragt GitHub
+  nichts. Bis dahin hing der Workflow an `workflow_run` des Update-Laufs,
+  und sein Job `gate` startete 48-mal am Tag einen Rechner, um auf allen bis
+  auf ein bis vier Takten „nicht jetzt“ zu sagen (Michael, 2026-11-04:
+  „Effizienz ist mir wichtig. Das Projekt soll ressourcenschonend
+  arbeiten.“). Nachgespielt über die Update-Läufe vom 01.11. bis 04.11.2026:
+  dieselben sechs Prüfläufe, 7 statt 165 Starts des Gates. Ein roter Lauf
+  des Wächters mailt seither niemanden mehr (ein Lauf, den der Bot startet,
+  gehört keinem); gemeldet wird ein ausgefallener Wächter wie zuvor durch
+  den Health check (Prüfung `Nebenschritte`, Mail an Michael).
 * `scripts/ki_waechter.py prepare` liest jede Fassung des Feeds aus den
   24 Stunden davor aus der Git-Historie (jeder Update-Lauf committet Feed und
   Caches zusammen) und macht jeden verschiedenen Meldungstext zu einer
@@ -290,7 +307,7 @@ Bedarf), und das API-Limit darf nicht überschritten werden.
   Kontingent (429) wird nie wiederholt; antwortet das Modell überlastet
   (5xx), fragt er sofort Gemini 3.6 Flash und nach einer Minute wieder
   3.8 Flash, höchstens dreimal. Höchstens 10 Anfragen am
-  Tag (Tag ab 0:00 Uhr Pazifikzeit): der Job `gate` zählt sie aus der
+  Tag (Tag ab 0:00 Uhr Pazifikzeit): der Job `gate` zählt sie bei jedem Start aus der
   Anmerkung „Gemini-Anfragen“ jedes Prüflaufs und gibt jedem neuen Prüflauf
   nur seinen Anteil am Rest; die letzten drei bleiben dem täglichen Lauf
   (seit 2026-11-01, vorher eine). Die

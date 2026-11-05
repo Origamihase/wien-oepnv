@@ -492,14 +492,25 @@ def test_main_judges_every_source_by_its_record(
 
 
 def test_the_update_run_starts_the_health_check_once_an_hour() -> None:
-    """28.10.2026: no scheduled run from 13:19 to 23:19 Vienna, the outage never turned red."""
-    workflow = (Path(__file__).resolve().parents[2] / ".github/workflows/health-check.yml").read_text(
-        encoding="utf-8"
-    )
-    assert 'workflow_run:\n    workflows: ["Update cycle"]\n    types: [completed]' in workflow
-    assert "- cron: '0 */6 * * *'" in workflow  # fallback when the Update run stops
-    assert 'if [ "$EVENT" = "workflow_run" ] && [ "$minute" -ge 30 ]; then' in workflow
-    assert "needs: gate\n    if: needs.gate.outputs.run == 'true'" in workflow
+    """28.10.2026: no scheduled run from 13:19 to 23:19 Vienna, the outage never turned red.
+
+    Since 2026-11-05 the condition of the one job decides by the parity of
+    the Update run's number (every second run), so no runner starts for the
+    other half; before, a job ``gate`` read the clock on all 48 ticks a day.
+    """
+    import yaml
+
+    text = (Path(__file__).resolve().parents[2] / ".github/workflows/health-check.yml").read_text(encoding="utf-8")
+    assert 'workflow_run:\n    workflows: ["Update cycle"]\n    types: [completed]' in text
+    assert "- cron: '0 */6 * * *'" in text  # fallback when the Update run stops
+    workflow = yaml.safe_load(text)
+    assert list(workflow["jobs"]) == ["health"]
+    condition = " ".join(workflow["jobs"]["health"]["if"].split())
+    assert condition.startswith("github.event_name != 'workflow_run' ||")
+    for digit in "02468":
+        assert f"endsWith(github.event.workflow_run.run_number, '{digit}')" in condition
+    for digit in "13579":
+        assert f"'{digit}')" not in condition
     cycle = (Path(__file__).resolve().parents[2] / ".github/workflows/update-cycle.yml").read_text(
         encoding="utf-8"
     )

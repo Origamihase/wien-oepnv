@@ -20,11 +20,10 @@ name: Update cycle
 #     drive the primary cadence (IFTTT still owns :00/:30) and cannot
 #     breach the VAO 100/day budget: the ``preflight_quota_check`` gate
 #     skips the quota-bound poll once the daily counter is near the cap.
-#     A second guard — the ``Backup-cron freshness gate`` step — makes a
-#     backup tick SKIP all fetch/build/publish work when a cycle tick
-#     already committed within ~35 min, so on healthy days the backup
-#     costs ~zero API calls and only does real work during a genuine
-#     outage. Without this net, an IFTTT outage would silently freeze
+#     A second guard, the ``Backup-cron freshness gate`` step (see there),
+#     makes a backup tick skip all work when a cycle tick already committed
+#     within ~35 min, so on healthy days the backup costs ~zero API calls.
+#     Without this net, an IFTTT outage would silently freeze
 #     the live feed. GitHub delivers this schedule poorly: 157 of ~730
 #     hourly ticks between 2026-09-10 and 2026-10-10 arrived, four to seven
 #     a day, so during an IFTTT outage the feed would refresh only every
@@ -32,17 +31,14 @@ name: Update cycle
 # The weekly station-directory refresh is a separate GitHub-native cron
 # in ``update-stations.yml`` (Sundays 01:00 UTC).
 #
-# Why single-job (replaces the DAG-with-artifacts architecture from
-# 2026-05-09 which broke the README cadence): the artifact-based
-# approach added two failure modes — invalid action SHAs and the
-# ``actions/download-artifact`` glob/pattern semantics — that
-# silently kept ``build_feed`` from ever committing. The single-job
-# rewrite has zero artifact plumbing, no inter-job push race, and a
-# single commit + resilient push at the end (see the "Validate
-# and publish cycle outputs" step) so the operator-visible state moves
-# atomically (or not at all). The trade-off is sequential runtime
-# (~3-5 min vs the DAG's ~2-3 min) and slightly less granular UI
-# observability — both acceptable for the 30-min cadence.
+# Why single-job (replaces the DAG-with-artifacts architecture of
+# 2026-05-09, which broke the README cadence): artifacts added two failure
+# modes, invalid action SHAs and the ``actions/download-artifact`` glob
+# semantics, that silently kept ``build_feed`` from committing. One job has
+# no artifact plumbing, no inter-job push race and one commit + resilient
+# push at the end (the publish step, last but one), so the visible
+# state moves atomically (or not at all); the trade-off is the
+# sequential runtime (~3-5 min vs ~2-3 min), fine for the 30-min cadence.
 #
 # Step order:
 #   1. ``actions/checkout`` (depth 1, see the checkout step) +
@@ -70,6 +66,8 @@ name: Update cycle
 #      a single ``git commit`` + retrying, never-fail plain ``git push``
 #      (reconcile onto concurrent pushes is folded into the push loop; no
 #      external commit action — see that step's header for the rationale)
+#  10. ``scripts/ki_waechter.py dispatch`` (on ``main``): start the daily
+#      KI-Wächter when due (since 2026-11-05; before, its gate ran every tick)
 #
 # Concurrency: the workflow holds the ``external-api-fetch`` lock
 # (shared with ``manual-full-refresh.yml`` and ``build-feed.yml`` runs on
@@ -666,35 +664,37 @@ jobs:
       # from codeload "after 1 attempts" and the entire tick was lost.)
       # ``git`` is pre-installed and the script is part of the checkout.
       #
-      # Robustness contract (details in ``scripts/publish_to_main.sh``,
-      # shared by every workflow that writes to ``main``):
-      #   * VALIDATE first — if the built feed XML is malformed or empty,
-      #     skip the publish entirely (warning + exit 0) so a builder
-      #     hiccup can never push corruption over the last-good feed.
-      #   * ``git add -A`` — stage every workspace output (caches, CSV
-      #     ledgers, quota counter, feed XMLs, first_seen state,
-      #     statistik.md, README, any future output). The feed-health
-      #     reports stay out: ``.gitignore`` excludes them.
-      #   * no changes -> clean no-op (exit 0).
-      #   * PLAIN push (never ``--force``/``--force-with-lease``, since
-      #     2026-10-10) with up to 4 attempts and backoff 2/4/8 s; on a
-      #     rejection ``git pull --rebase`` replays our commit onto the
-      #     concurrent push (update-stations.yml / seo-guard.yml / a merged
-      #     PR); in a conflict the conflicting lines take the locally-built
-      #     regeneration, the concurrent commit's other lines stay (a README
-      #     edit next to the stats block, ``keep_local_lines``).
-      #     Before, the re-fetch of that pull re-armed the lease, so a
-      #     rebase that had to be aborted let the next attempt force-push
-      #     over the concurrent commit (``main`` had no branch protection
-      #     then; since 2026-10-16 the ruleset "main schützen" blocks force
-      #     pushes and deletions).
-      #   * if every attempt fails -> warning + exit 0. The just-built
-      #     outputs are NOT published this tick, but the repo keeps the
-      #     last good commit and the next tick rebuilds from fresh caches.
-      #     A skipped publish is ~30 min of staleness; a red workflow would
-      #     be worse and would page the operator for a non-actionable blip.
+      # Robustness contract, documented in the header of
+      # ``scripts/publish_to_main.sh`` (shared by every workflow that writes
+      # to ``main``): validate the feeds first (``--validate-feeds``: a
+      # malformed or empty feed skips the publish, warning + exit 0),
+      # ``--all`` stages every workspace output (the feed-health reports stay
+      # out via ``.gitignore``), no changes is a clean no-op, a PLAIN push
+      # with 4 attempts and ``git pull --rebase`` in between, never a force,
+      # and when every attempt fails a warning + exit 0: the outputs of this
+      # tick stay unpublished (~30 min of staleness), the repo keeps the last
+      # good commit and the next tick rebuilds from fresh caches; a red
+      # workflow would page the operator for a non-actionable blip.
       - name: Validate and publish cycle outputs
         shell: bash
         run: >-
           bash scripts/publish_to_main.sh --validate-feeds --all
           --label cycle-publish --message "chore: update cycle"
+
+      # ----- The daily KI-Wächter -----------------------------------------
+      # Sends ``repository_dispatch: ki-waechter`` when the audit is due (from
+      # 9:00 Vienna time, once a day, two hours after a failed try, no run of
+      # the watcher active; src/ki_waechter/dispatch.py). After the publish,
+      # so the audit sees this tick's feed; ``main`` only; not after a failed
+      # tick (no ``always()``); a failed dispatch only warns. Until 2026-11-05
+      # the watcher's own gate job ran on all 48 ticks a day for this.
+      - name: Start the KI-Wächter when due
+        if: github.ref == 'refs/heads/main'
+        continue-on-error: true
+        timeout-minutes: 1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          # Same numbers as ki-waechter.yml names (a test keeps them equal).
+          KI_WAECHTER_START_HOUR: "9"
+          KI_WAECHTER_RETRY_HOURS: "2"
+        run: python scripts/ki_waechter.py dispatch

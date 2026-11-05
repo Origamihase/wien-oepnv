@@ -445,7 +445,7 @@ def test_canonical_invisible_dangerous_re_covers_full_cf_format_set() -> None:
         (0xFFF9, 0xFFFB),
         (0x110BD, 0x110BD),
         (0x110CD, 0x110CD),
-        (0x13430, 0x13438),
+        (0x13430, 0x1343F),  # U+13439..U+1343F: Unicode 15.0 (2022)
         (0x1BCA0, 0x1BCA3),
         (0x1D173, 0x1D17A),
     )

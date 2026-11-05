@@ -59,7 +59,7 @@ import re
 # ABBREVIATION MARK, U+0890..U+0891, U+08E2, U+206A..U+206F deprecated
 # BiDi controls (folds the existing U+2060..U+2069 band into
 # U+2060..U+206F), U+FFF9..U+FFFB INTERLINEAR ANNOTATION,
-# U+110BD/U+110CD KAITHI, U+13430..U+13438 EGYPTIAN HIEROGLYPH,
+# U+110BD/U+110CD KAITHI, U+13430..U+1343F EGYPTIAN HIEROGLYPH,
 # U+1BCA0..U+1BCA3 SHORTHAND FORMAT, and U+1D173..U+1D17A MUSICAL
 # SYMBOL formatting. Pre-fix Cf bytes survived into every Markdown
 # sink (data/feed_health.md, docs/statistik.md, GitHub Issue body) -
@@ -72,7 +72,7 @@ _MARKDOWN_NORMALISE_UNSAFE_RE = re.compile(
     r"\u200b-\u200f\u2028-\u202e\u2060-\u206f"
     r"\ufe00-\ufe0f\ufeff\ufff9-\ufffb"
     r"\U000110bd\U000110cd"
-    r"\U00013430-\U00013438"
+    r"\U00013430-\U0001343F"
     r"\U0001bca0-\U0001bca3"
     r"\U0001d173-\U0001d17a"
     r"\U000e0000-\U000e007f\U000e0100-\U000e01ef]"

@@ -193,9 +193,15 @@ Umgesetzt mit dieser Entscheidung:
   unzuverlässig zu: Am 28.10.2026 lief er zwischen 13:19 und 23:19 nicht,
   der Stammstrecken-Ausfall von 15:00 bis 23:00 wurde deshalb nie rot.
   `health-check.yml` startet jetzt zusätzlich nach jedem Update-Lauf
-  (`workflow_run`); der Job `gate` lässt den ersten jeder Stunde durch
-  (UTC-Minute unter 30). Der Cron bleibt als Rückfall, falls der Update-Lauf
-  ausfällt. Während eines anhaltenden Ausfalls kommt jede Stunde eine Mail.
+  (`workflow_run`); die Bedingung des Jobs `health` lässt jeden zweiten
+  durch (gerade Laufnummer des Update-Laufs). Bis 2026-11-05 tat das ein
+  Job `gate` nach der Uhr (UTC-Minute unter 30) und startete dafür 48-mal
+  am Tag einen Rechner; nachgespielt über die 1.607 Update-Läufe vom 05.10.
+  bis 04.11.2026 gibt die Laufnummer im Median 26 statt 27 Prüfungen am Tag,
+  denselben größten Abstand (120 Minuten, einmal) und keine zwei Prüfungen
+  binnen 20 Minuten mehr (die Uhr gab 67, nach einem Backup-Cron um :17).
+  Der Cron bleibt als Rückfall, falls der Update-Lauf ausfällt. Während
+  eines anhaltenden Ausfalls kommt jede Stunde eine Mail.
 
 Rückprüfung 01.09.–28.10.2026 (2 776 Update-Läufe mit Abruf, 1 388
 simulierte stündliche Prüfungen): Nach der neuen Regel wären es zehn rote

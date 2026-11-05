@@ -533,6 +533,12 @@ def _resolve_within_base(candidate: Path, base_dir: Path) -> Path | None:
         resolved = candidate.resolve(strict=False)
     except (OSError, RuntimeError):
         return None
+    # A fully resolved path is never a symlink. Python 3.13 stopped raising
+    # on a symlink loop with ``strict=False`` (``os.path.realpath`` keeps the
+    # unresolved link instead), so the loop would pass the lexical check
+    # below and fail only later, at ``open``. Fail closed here as before.
+    if resolved.is_symlink():
+        return None
     try:
         resolved.relative_to(base_dir)
     except ValueError:
