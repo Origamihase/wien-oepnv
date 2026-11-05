@@ -22,7 +22,7 @@ Ein falscher Fund ist schlimmer als ein übersehener. Im Zweifel ist es kein Fun
 - F2 Kernaussage verloren: der Text endet, bevor gesagt ist, was passiert („… der S1-Zug …“ ohne „nicht fahren“); eine Haltestellenverlegung endet auf „→ …“, sodass die neue Haltestelle fehlt; oder der Text besteht nur aus der Zeitzeile („[Seit 10:42]“), weil der eigentliche Text fehlt. Eine Kürzung, hinter der die Maßnahme und der Ort schon stehen, ist kein F2 (siehe „Entschieden“).
 - F3 Ein Fakt weicht von den Quellereignissen ab: Linie, Haltestelle oder Bahnhof, Richtung, Datum, Ursache, was fährt oder nicht fährt. Eine Meldung kann mehrere Ereignisse derselben Linie zusammenfassen (Kurzmeldungen eines Vorfalls, „Busse halten …“ in ihrer Haltestellenverlegung, Bauarbeiten mit ihren Anzeigetexten). Bevor du einen Fakt falsch nennst, lies alle Quellen dieser Meldung, auch die unter „gleiche Linie“. Ohne Quelle kein F3.
 - F4 Titel widerspricht dem Text: der Titel nennt eine Ursache, der Text eine andere („7A: Falschparker“ über „Fahrtbehinderung wegen Rettungseinsatz.“); der Titel nennt eine Maßnahme oder Linie, die der Text ausschließt. Zwei Ursachen im Titel mit einer gemeinsamen Folge im Text sind kein F4 (siehe „Entschieden“).
-- F5 Kaputter Text, den der Leser sieht, deutsch oder englisch: zusammengeklebte Wörter („DieHaltestelle“, „Linie 7:Umleitung“ ohne Leerzeichen nach dem Doppelpunkt), ein mitten im Satz abgebrochener Satz ohne „…“ (nicht die Kürzung auf 180 Zeichen), HTML-Reste, Entity-Text, Platzhalterreste („X3X“, „0X“), ein verdoppeltes Wort („the the“) oder ein verdoppelter Satz, eine deutsche Zahl mit Dezimalpunkt („23.2 min“ statt „23,2 min“).
+- F5 Kaputter Text, den der Leser sieht, deutsch oder englisch: zusammengeklebte Wörter („DieHaltestelle“, „Linie 7:Umleitung“ ohne Leerzeichen nach dem Doppelpunkt), ein mitten im Satz abgebrochener Satz ohne „…“ (nicht die Kürzung auf 180 Zeichen), HTML-Reste, Entity-Text, Platzhalterreste („X3X“, „0X“), ein verdoppeltes Wort („the the“) oder ein verdoppelter Satz, eine deutsche Zahl mit Dezimalpunkt („23.2 min“ statt „23,2 min“). Ein Wort, das genauso in der Quelle steht, ist ein Tippfehler des Betreibers, kein F5.
 - F6 Nur Englisch: ein deutsches Wort blieb unübersetzt (Namen ausgenommen); ein Eigenname wurde übersetzt (Straßen-, Haltestellen-, Bahnhofs- und Ortsnamen bleiben deutsch: „An den Eisteichen“, nicht „At the ice ponds“); eine Zahl, Uhrzeit, Hausnummer oder Linie weicht vom deutschen Text ab; der Sinn hat sich verändert („Parked original stop“ für „Verparkte Originalhaltestelle“, „Construction works allows …“ für „Wegen Bauarbeiten kann … nicht fahren“, eine Ursache, die im Englischen fehlt oder eine andere ist).
 
 Welche Klasse, wenn mehrere passen:
@@ -33,9 +33,17 @@ Welche Klasse, wenn mehrere passen:
 - Ursache im Titel gegen Ursache im Text ist F4; ein Fakt gegen die Quelle ist F3; derselbe Vorfall unter zwei GUIDs ist F1.
 - Ein verdoppeltes oder geklebtes Wort ist F5, im Deutschen wie im Englischen.
 
+So sehen echte Funde aus (Beispiele aus den letzten Wochen, jeder mit einem Zitat aus dem Feedtext):
+
+- F6: „Folktheter“ für „Volkstheter“ (ein Name übersetzt; der Tippfehler der Quelle bleibt, die Übersetzung ist der Fund); „Biró Street 17“ für „Biróstraße 17“; „High Wait“ für „Hohe Warte“.
+- F6: „Reason: Harmful“ für „Grund: Schadhaftes …“ (ein Glossarwort halb übersetzt, weil die Kürzung es zerschnitten hat).
+- F5: „over the line line 9“ (verdoppeltes Wort im Englischen); „Linie 46:Umleitung“ (kein Leerzeichen nach dem Doppelpunkt); „23.2 min“ im deutschen Text.
+- F2: ein Text, der nur „[Seit 10:42]“ zeigt; „… der S1-Zug …“ ohne „nicht fahren“.
+- F4: „42: Falschparker“ über einem Text, der nur von einem Rettungseinsatz spricht.
+
 ## Entschieden, also kein Fund
 
-Diese Formate hat der Betreiber entschieden; sie stehen auch im Code und im Changelog des Projekts. Was hier steht, ist kein Fund, auch wenn es von der Quelle abweicht.
+Diese Formate hat der Betreiber entschieden; sie stehen auch im Code und im Changelog des Projekts. Was hier steht, ist kein Fund, auch wenn es von der Quelle abweicht. Die Liste ist keine Vorschrift, deren Verletzung du meldest: Zeigt ein Text eine andere Form als hier beschrieben (etwa noch einen Umstiegszusatz „(U)“), ist das kein F3 und kein F6, höchstens eine Vermutung; F3 braucht eine Abweichung von der Quelle.
 
 Kürzung und Kurzform
 
@@ -44,7 +52,7 @@ Kürzung und Kurzform
 - Gekürzt wird an der Wortgrenze, nicht am Satzende (entschieden 05.11.2026): dass der letzte Satz angefangen bleibt, ist kein Fund und kein Vorschlag; F2 bleibt, wenn die Kernaussage selbst fehlt.
 - Deutsch und Englisch werden getrennt auf 180 Zeichen gekürzt; der englische Text kann deshalb früher enden als der deutsche oder ein Detail weniger zeigen. Das ist kein F6; F2 nur, wenn seine Kernaussage fehlt.
 - Mehrlinien-Meldungen zeigen jede Linie in Kurzform (Maßnahme und Ort je Linie, ohne Richtungen und Umleitungswege). Kein F3.
-- Eine Verlegung mit zwei Richtungen lässt die „Von“-Orte weg, wenn sonst eine neue Haltestelle hinter 180 Zeichen fiele. Kein F3, kein F2.
+- Eine Verlegung mit zwei Richtungen lässt die „Von“-Orte weg, wenn sonst eine neue Haltestelle hinter 180 Zeichen fiele; jedes Ziel behält dann seinen Pfeil hinter dem Doppelpunkt seiner Richtung („Richtung Schottentor U: → Hauptstraße 39.“, englisch „Towards Schottentor U: → Hauptstraße 39.“). Kein F3, kein F2, kein F5.
 
 Zeitzeile
 
@@ -56,13 +64,15 @@ WL-Titel und WL-Ticker
 
 - Zwei Vorfälle einer Linie aus demselben Zeitraum stehen beide im Titel, der neueste zuerst („U3: Polizeieinsatz, Rettungseinsatz“); der Text nennt die gemeinsame Folge einmal („Fahrtbehinderung.“) und muss nicht jede Ursache wiederholen; hat jede Ursache ihre eigene Folge, steht sie mit Doppelpunkt davor („Rettungseinsatz: Fahrtbehinderung. Gleisbauarbeiten: Züge halten in Schleife, Wipplingerstr 39.“), und damit ist jede Ursache des Titels erklärt. Kein F4.
 - Wer eine Ursache verursacht hat, steht im Text statt im Titel („Beschädigte Oberleitung durch einen LKW: Fahrtbehinderung.“). Kein F4.
-- WL-Ticker werden zusammengezogen: Linien mit derselben Ursache und demselben Text im selben Zeitfenster stehen als eine Meldung mit allen Linien im Titel („1/2/D: Polizeieinsatz“), zwei Ticker einer Linie als ein Text, durch Komma oder Satz getrennt; jeder Teil hat seine Quelle unter ihrer Kennung (Q…). Kein F3.
+- WL-Ticker werden zusammengezogen: Linien mit derselben Ursache und demselben Text im selben Zeitfenster stehen als eine Meldung mit allen Linien im Titel („1/2/D: Polizeieinsatz“), zwei Ticker einer Linie als ein Text, durch Komma oder Satz getrennt; jeder Teil hat seine Quelle unter ihrer Kennung (Q…). Ein Satz ohne Linienkennung in der Kurzform („2: Umleitung …; Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.“) gilt für alle Linien des Titels. Kein F3, kein F4.
 
 Keine Dubletten (kein F1)
 
 - Eine Anzeigetafel einer Linie („Busse halten …“, Kranarbeiten) neben dem Hinweis „Bauarbeiten“ derselben Linien, wenn die Tafel Haltestellen nennt, die der Hinweis nicht zeigt.
 - Ein Hinweis über Wochen („Gleisbauarbeiten“ mit Zeitraum) neben einer kurzen Störung derselben Ursache.
 - Eine Störung neben einem Hinweis eines Tages, wenn sie nur einen Teil seiner Linien meldet.
+- Ein WL-Hinweis eines Betriebstags fehlt im Feed, solange eine laufende WL-Störung derselben Ursache alle seine Linien meldet; sein Text steht dann nur als Quelle „gleiche Linie“ bei der Störung, und er kehrt nach ihrem Ende zurück. Keine fehlende Meldung, kein F1, kein F3.
+- Eine Tafel „Busse halten <Adresse>“ geht in der Haltestellenverlegung derselben Linie auf, wenn deren Text jede Adresse als Ziel zeigt; sie steht dann nur als Quelle. Kein F3.
 
 Quelltext der Betreiber
 
@@ -73,8 +83,8 @@ Quelltext der Betreiber
 ÖBB
 
 - Der zweite Satz (was noch gilt) bleibt, Höflichkeitssätze („Wir bitten um Entschuldigung.“) fallen weg; passt der zweite Satz nicht in 180 Zeichen, lässt der erste Satz die Stationen des Titels weg. Kein F2, kein F3.
-- Ein erster Satz über 180 Zeichen nennt zuerst die Züge und „nicht fahren“, dahinter mit Doppelpunkt die Strecken und Zeiten („Wegen Bauarbeiten können die Züge … nicht fahren: zwischen A und B an einzelnen Tagen.“); die Kürzung nimmt dann nur das Ende der Strecken, die der Titel und die Zeitzeile auch nennen. Kein F2.
-- Datumslisten werden zu „an einzelnen Tagen“, die Zeitzeile nennt den Zeitraum; drei oder mehr Züge stehen als Zahl mit ihren Linien („11 Züge der Linien S1, S2 und S3“). Kein F3.
+- Ein erster Satz über 180 Zeichen nennt zuerst die Züge und „nicht fahren“, dahinter mit Doppelpunkt die Strecken und Zeiten („Wegen Bauarbeiten können die Züge … nicht fahren: zwischen A und B an einzelnen Tagen.“); die Kürzung nimmt dann nur das Ende der Strecken, die der Titel und die Zeitzeile auch nennen. Passt ein Satz mit seinem Zeitfenster nicht in 180 Zeichen, fehlen Strecke (steht im Titel) und Zeitraum (steht in der Zeitzeile), das Fenster bleibt („… können keine Nahverkehrszüge fahren: jeweils von Samstag 23:15 Uhr bis Sonntag 04:40 Uhr …“); „an einigen Tagen“ steht vor den Zügen, englisch „cannot run on certain days“. Kein F2, kein F3.
+- Datumslisten werden zu „an einzelnen Tagen“ (auch ein einzelner Zeitraum, wenn ÖBB selbst „an einzelnen Tagen“ schreibt), die Zeitzeile nennt den Zeitraum; vergangene Tage fallen aus dem Text („am 01.11.2026 der S2-Zug 23360“ für „am 25.10.2026 und 01.11.2026“), der nächste Tag übernimmt das „am“ oder „von“; drei oder mehr Züge stehen als Zahl mit ihren Linien („11 Züge der Linien S1, S2 und S3“), Fernzüge mit ihren Gattungen in Klammern („13 Züge (EC, RJ, RJX, IC und D)“), sonst mit ÖBBs Wort („34 Nahverkehrszüge“). Kein F3.
 - Nennt der Titel mehrere Linien und verschweigt ÖBBs erster Satz eine davon, zeigt der Text jede Linie mit Abschnitt und Tagen („Wegen Bauarbeiten fallen Züge aus: REX1 A ↔ B 03.–10.11.; REX2, S1 B ↔ C 02.–11.11.“; englisch „Due to construction works, trains are cancelled: …“); was nicht in 180 Zeichen passt, fällt von hinten weg. Kein F3, kein F2, kein F4.
 - Züge, die ÖBB als Ersatz anbietet, stehen nicht im Titel. Kein F4.
 
@@ -83,16 +93,23 @@ Namen von Haltestellen, Bahnhöfen und Linien
 - Haltestellen und Bahnhöfe stehen ohne den Umstiegszusatz der Quelle („Rennweg S“ → „Rennweg“, „Wien Hbf (U)“ → „Wien Hbf“); ein Hauptbahnhof heißt „Hauptbahnhof“, wenn der Ort höchstens sieben Zeichen hat („Wien Hauptbahnhof“), sonst „Hbf“ („St. Pölten Hbf“), gleich, wie die Quelle schreibt. Kein F3.
 - Im EN-Feed stehen ÖBB-Bahnhofsnamen, wie ÖBB sie schreibt; nur ein abschließendes „Bahnhof“ oder „Bahnhst“ heißt „station“ („Mistelbach/Zaya station“, „Deutsch Wagram station“). Kein F6.
 - Der Titel nennt die Badner Bahn mit ihrer Kennung „LB“; in der Kurzform mehrerer Linien steht im Text „Badner Bahn“, wie WL schreibt, deutsch und englisch gleich. Kein F4, kein F6.
+- Ein Name steht englisch in seiner Grundform, wie am Straßenschild oder im Stationsverzeichnis, auch wenn der deutsche Text ihn beugt („Sperre des Margaretengürtels“ → „closure of Margaretengürtel“, „bis Hohen Warte“ → „to Hohe Warte“). Die andere Endung ist kein F6; ein übersetzter Name („High Wait“) bleibt F6.
+- Ein Gattungswort als Teil eines Haltestellennamens bleibt englisch deutsch („Cobenzl, Parkplatz“); im Genitiv ist es übersetzt („Sperre des Einstiegs“ → „closure of entry“). Kein F6.
+- Die Linien eines Titels stehen in der Reihenfolge der Wiener Linien, nicht nach Nummer („1/2/71/D“, „71/39A“). Kein Fund.
 
 Englische Formen
 
 - Eine EN-Meldung, die gleich der deutschen ist, ist der dokumentierte Rückfall, wenn die Übersetzung unvollständig war. Kein F6.
 - „Wien <Station>“ bleibt im Stationsnamen; „Fahrtrichtung Wien“ = „direction of Vienna“; „nicht einhalten“ = „does not stop at“; „Verkehrsmaßnahmen“ = „service changes“; die Lage einer Haltestelle an einer Querstraße heißt „after“/„before“ („Gumpendorfer Straße nach Kopernikusgasse“ = „Gumpendorfer Straße after Kopernikusgasse“, „vor“ = „before“) und „gegenüber“ = „opposite“. Kein F6.
-- Die Zeile „Grund: …“ eines WL-Textes heißt „Reason: …“ („Grund: Schadhaftes Fahrzeug.“ → „Reason: …“). Ein Satz mit „Wegen …“ heißt „Due to …“; „because of“, „owing to“ und „as a result of“ werden zu „due to“. Keine dieser Formen ist ein Fund; ein Fund ist nur eine Ursache, die im englischen Text fehlt oder eine andere ist.
+- Die Zeile „Grund: …“ eines WL-Textes heißt „Reason: …“ („Grund: Schadhaftes Fahrzeug.“ → „Reason: …“). Ein Satz mit „Wegen …“ heißt „Due to …“; „because of“, „owing to“ und „as a result of“ werden zu „due to“. Die Gründe einer Verlegung kommen aus dem Glossar, klein geschrieben und frei im Sinn („Grund: Verparkte Originalhaltestelle.“ → „Reason: stop blocked by parked cars.“, „Spontangebrechen“ → „sudden pipe burst“, „Fernkältearbeiten“ → „district cooling works“). Keine dieser Formen ist ein Fund; ein Fund ist nur eine Ursache, die im englischen Text fehlt oder eine andere ist.
+- Ein „<Anlass>verkehr“ von WL oder ÖBB heißt „<Anlass> service“, auch gebeugt („Feiertagsverkehr“ → „Public holiday service“, „Silvesterverkehr“ → „New Year's Eve service“); „Kreisverkehr“, „Pendelbusverkehr“ und „Regionalverkehr“ übersetzt das Modell frei. Kein F6.
+- In Verlegungen heißt „Richtung X:“ „Towards X:“, „aufgelassen“ „Discontinued“, „ersatzlos aufgelassen“ „closed without replacement“ und WLs Überschrift „Haltestellenverlegung bzw. -auflassung“ „stop relocation or closure“. Kein F6.
 
 Außerhalb der Prüfung
 
 - Reihenfolge der Meldungen, Anzahl, Bilder, Links, die Website und die Statistik gehören nicht zu dieser Prüfung. Eine vermutlich fehlende Meldung ist höchstens eine Vermutung.
+
+Diese Liste nimmt nur die genannten Formen aus der Prüfung. Alles andere, was zwischen Deutsch und Englisch abweicht oder im Text kaputt ist, bleibt ein Kandidat.
 
 ## Vorgehen je Meldung
 
@@ -101,8 +118,8 @@ Gehe die Meldungen in der Reihenfolge ihrer Nummern durch, keine auslassen. Für
 1. DE Text lesen: Besteht er nur aus der Zeitzeile, oder endet er, bevor Maßnahme und Ort gesagt sind? Dann Kandidat F2; steht beides schon, ist die Kürzung entschieden.
 2. DE Titel gegen DE Text: Ursache gegen Ursache, Linie gegen Linie, Maßnahme gegen Maßnahme. Widerspruch: Kandidat F4 (Regel „WL-Titel“ beachten).
 3. DE Titel und DE Text gegen die Quellen, erst „eigenes Ereignis“, dann „gleiche Linie“: Linie, Haltestelle oder Bahnhof, Richtung, Datum, Ursache, was fährt oder nicht fährt. Abweichung, die keine Quelle erklärt: Kandidat F3 mit wörtlichem Quellzitat.
-4. DE Text auf Kaputtes lesen: geklebte Wörter, Ziffer-Doppelpunkt-Wort ohne Leerzeichen, verdoppeltes Wort oder Satz, HTML, Platzhalter, Abbruch mitten im Satz ohne „…“. Kandidat F5.
-5. EN Titel und EN Text gegen DE, Stück für Stück: jeder Eigenname gleich geschrieben; jede Zahl, Uhrzeit, Hausnummer und Linie gleich; dieselbe Ursache; derselbe Sinn (fährt, fährt nicht, hält, hält nicht); kein deutsches Wort stehen geblieben. Abweichung: Kandidat F6. Verdoppeltes oder geklebtes Wort im Englischen: Kandidat F5.
+4. DE Text auf Kaputtes lesen: geklebte Wörter, Ziffer-Doppelpunkt-Wort ohne Leerzeichen, verdoppeltes Wort oder Satz, HTML, Platzhalter, Abbruch mitten im Satz ohne „…“. Kandidat F5; steht das Wort genauso in der Quelle, ist es ein Tippfehler des Betreibers und kein Fund.
+5. EN Titel und EN Text gegen DE, Stück für Stück: jeder Eigenname gleich geschrieben; jede Zahl, Uhrzeit, Hausnummer und Linie gleich; dieselbe Ursache; derselbe Sinn (fährt, fährt nicht, hält, hält nicht); kein deutsches Wort stehen geblieben. Ein deutsches Wort auf -gasse, -straße, -weg, -platz, -gürtel, -allee oder -brücke ist ein Straßenname; steht dafür im Englischen ein englisches Wort („path“, „street“, „square“), ist das F6. Abweichung: Kandidat F6. Verdoppeltes oder geklebtes Wort im Englischen: Kandidat F5.
 6. Die Nummern unter „Gleichzeitig im Feed“ durchgehen: gleiche Linie? Dann dieselbe Haltestelle oder Adresse, oder derselbe Vorfall zur selben Zeit? Kandidat F1 mit Zitat aus beiden Meldungen (Regeln „Keine Dubletten“ beachten).
 7. Jeden Kandidaten widerlegen, bevor du ihn behältst: Steht er unter „Entschieden“? Erklärt eine andere Quelle derselben Meldung den Text? Dann ist es kein Fund. Bleibt Zweifel, wird es eine Vermutung.
 8. Ein Fund je Meldung und Klasse: mehrere Stellen derselben Klasse in einer Meldung sind ein Fund mit dem Zitat der ersten Stelle; die Begründung nennt die anderen. Derselbe Fehler in mehreren Textständen einer Meldung (gleiche GUID) steht einmal, beim ersten Textstand.

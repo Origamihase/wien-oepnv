@@ -143,8 +143,9 @@ def verify(answer: Mapping[str, Any], prep: Prepared) -> Verdict:
     rejected: list[Rejected] = []
     # One finding per item (GUID), class and feed: one error in several texts
     # of the item (a time line changed in between), several places of one class
-    # in one text and one error quoted at two lengths by the two answers.
-    seen: set[tuple[str, str, str]] = set()
+    # in one text and one error quoted at two lengths by the two answers. A
+    # duplicate (F1) is one finding for its pair of items, whichever comes first.
+    seen: set[tuple[object, ...]] = set()
     for raw in answer.get("funde") or []:
         if not isinstance(raw, dict):
             continue
@@ -152,7 +153,9 @@ def verify(answer: Mapping[str, Any], prep: Prepared) -> Verdict:
         if isinstance(result, str):
             rejected.append(Rejected(dict(raw), result))
             continue
-        key = (items[result.nr].guid, result.klasse, result.feed)
+        key: tuple[object, ...] = (items[result.nr].guid, result.klasse, result.feed)
+        if result.klasse == "F1" and result.nr2 is not None:
+            key = ("F1", frozenset({items[result.nr].guid, items[result.nr2].guid}))
         if key not in seen:
             seen.add(key)
             findings.append(result)

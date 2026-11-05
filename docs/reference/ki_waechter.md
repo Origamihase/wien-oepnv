@@ -43,17 +43,33 @@ Geschlossene Liste, gleich wie im letzten Jules-Prompt vom 2026-10-30:
 | Klasse | Inhalt | Feed |
 | --- | --- | --- |
 | F1 | dieselbe Sache zweimal | DE, zwei Meldungen mit je einem Zitat, gleichzeitig im Feed |
-| F2 | Kernaussage abgeschnitten | DE oder EN |
+| F2 | Kernaussage abgeschnitten, oder der Text besteht nur aus der Zeitzeile | DE oder EN |
 | F3 | Fakt weicht von der Quelle ab | DE, mit wörtlichem Quellzitat |
 | F4 | Titel widerspricht dem Text | DE oder EN |
-| F5 | kaputter Text (geklebte Wörter, HTML-, Platzhalterreste, Doppelungen) | DE oder EN |
-| F6 | Englisch unübersetzt, Eigenname übersetzt, Sinn verändert | EN |
+| F5 | kaputter Text (geklebte Wörter, auch „46:Umleitung“, HTML-, Platzhalterreste, Doppelungen, deutsche Zahl mit Dezimalpunkt) | DE oder EN |
+| F6 | Englisch unübersetzt, Eigenname übersetzt, Zahl oder Linie anders, Sinn verändert | EN |
 
 Was entschieden ist (Kürzung auf 180 Zeichen, Zeitzeile, Titel mit zwei
 Ursachen, Tippfehler der Betreiber, feste EN-Formen), steht im Prompt unter
 „Entschieden, also kein Fund“, seit 05.11.2026 je Code-Entscheidung ein Satz
 (Abschnitt „Entschieden-Liste und zweite Antwort“). Stil und
 Verbesserungsideen meldet der Wächter nie.
+
+Der Prompt (`scripts/ki_waechter_prompt.md`, seit 05.11.2026 in dieser
+Gliederung) erklärt zuerst den Aufbau der Eingabe (Kopfzeile mit GUID und
+Textstand, „Gleichzeitig im Feed“, die Daten zwischen `<<<DATEN` und
+`DATEN>>>`, eigenes Ereignis und gleiche Linie als Quellen), dann die
+Fundklassen mit Beispielen und die Zuordnung, wenn mehrere passen (eine
+Kürzung ist höchstens F2, nie F5 oder F6; ein Text nur aus der Zeitzeile ist
+F2; ein falsch wiedergegebenes Glossarwort ist F6), die Entschieden-Liste
+nach Themen (Kürzung und Kurzform, Zeitzeile, WL-Titel und WL-Ticker, keine
+Dubletten, Quelltext der Betreiber, ÖBB, Namen, englische Formen) und ein
+Vorgehen in acht Schritten je Meldung: DE Text (F2), Titel gegen Text (F4),
+Titel und Text gegen die Quellen (F3), Kaputtes (F5), EN gegen DE Stück für
+Stück (F6), die Nummern unter „Gleichzeitig im Feed“ (F1), jeden Kandidaten
+gegen die Liste widerlegen, ein Fund je Meldung und Klasse mit dem Zitat der
+ersten Stelle. Das Zitat soll 10 bis 60 Zeichen lang sein und an Wortgrenzen
+beginnen und enden, damit die Prüfung des Skripts es findet.
 
 ## Warum ein Fund belegt sein muss
 

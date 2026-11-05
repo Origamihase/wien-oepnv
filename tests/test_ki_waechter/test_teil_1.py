@@ -77,6 +77,13 @@ def test_a_duplicate_needs_both_quotes(prep: kw.Prepared) -> None:
             "nr2": 3, "erwartet": "eine Meldung", "begruendung": "dieselbe Haltestelle"}
     ok = kw.verify(_answer({**base, "feed_zitat2": "Liechtensteinstraße 42 → Liechtensteinstraße 38"}), prep)
     assert [(f.nr, f.nr2) for f in ok.findings] == [(1, 3)]
+    # The same pair named from the other item (the second answer, or both items of one answer) is one finding.
+    both = kw.verify(_answer(
+        {**base, "feed_zitat2": "Liechtensteinstraße 42 → Liechtensteinstraße 38"},
+        {**base, "nr": 3, "nr2": 1, "feed_zitat": "Liechtensteinstraße 42 → Liechtensteinstraße 38",
+         "feed_zitat2": "Busse halten Liechtensteinstraße 39"},
+    ), prep)
+    assert [(f.nr, f.nr2) for f in both.findings] == [(1, 3)] and not both.rejected
     bad = kw.verify(_answer({**base, "feed_zitat2": "Liechtensteinstraße 99"}), prep)
     assert not bad.findings and "zweiten Meldung" in bad.rejected[0].grund
 
