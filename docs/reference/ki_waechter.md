@@ -19,7 +19,7 @@ Messung dazu stehen in [`architecture.md`](../architecture.md), Abschnitt
 | --- | --- | --- |
 | Auslöser | letzter Schritt von `update-cycle.yml` (`scripts/ki_waechter.py dispatch`, `src/ki_waechter/dispatch.py`; seit 2026-11-05) | nach jedem erfolgreichen Update-Lauf auf `main`; sendet `repository_dispatch` `ki-waechter` nur, wenn es 15:00 Wiener Zeit oder später ist (bis 05.11.2026 9:00), heute noch kein erfolgreicher Prüflauf in `data/side_steps/ki-waechter.json` steht, ein gescheiterter von heute mindestens zwei Stunden zurückliegt, kein Lauf des Wächters läuft oder wartet (Aufzeichnung zuerst aus dem Checkout, bei Fälligkeit frisch von `main`). Bis dahin lief der Job `gate` nach jedem Update-Lauf (`workflow_run`), um das zu prüfen |
 | Kontingent | Google (Gemini API, je Projekt und Modell) | zählt selbst und antwortet 429, sobald ein Kontingent erreicht ist; der Wächter zählt nicht: ein Modell mit 429 bleibt im Lauf außen vor, die Kette läuft weiter (Abschnitt „Gratis-Kontingent“) |
-| Eingabe | `scripts/ki_waechter.py prepare` | jede Fassung von `docs/feed.xml` und `docs/feed.en.xml` der 24 Stunden vor dem Commit (jeder Update-Lauf schreibt eine) und die `cache/*/events.json` derselben Commits; jeder verschiedene Meldungstext wird eine Nummer, mit der Zeit im Feed, den gleichzeitig sichtbaren Meldungen, dem eigenen Cache-Ereignis (beim ersten und letzten Auftreten) und bis zu sechs Ereignissen derselben Linien; jede Quelle steht einmal ganz da, danach mit ihrer Kennung (Q…); schreibt `.ki-waechter/eingabe.md` und `eingabe.json` |
+| Eingabe | `scripts/ki_waechter.py prepare` | jede Fassung von `docs/feed.xml` und `docs/feed.en.xml` der 24 Stunden vor dem Commit (jeder Update-Lauf schreibt eine) und die `cache/*/events.json` derselben Commits; jeder verschiedene Meldungstext wird eine Nummer, mit der Zeit im Feed, den gleichzeitig sichtbaren Meldungen (seit 05.11.2026 mit der Linie ihres Titels), dem eigenen Cache-Ereignis (beim ersten und letzten Auftreten; sein Text bei 2500 Zeichen abgeschnitten, seit 05.11.2026 mit „[…]“ am Ende) und bis zu sechs Ereignissen derselben Linien (seit 05.11.2026 zuerst die, deren Titel der Text wiederholt: ein zusammengezogener WL-Text besteht aus ihnen); jede Quelle steht einmal ganz da, danach mit ihrer Kennung und ihrem Titel („Q…: siehe oben (Titel)“, seit 05.11.2026); schreibt `.ki-waechter/eingabe.md` und `eingabe.json` |
 | Lesen | `scripts/ki_waechter.py ask` | die Modellkette `KI_WAECHTER_MODEL` (`gemini-3.8-flash`, bei Überlastung sofort `gemini-3.6-flash`, dann `gemini-3.5-flash-lite` und `gemini-3.1-flash-lite`; jedes einmal je Durchgang, höchstens zwei Durchgänge mit einer Minute Pause; ein Modell, dessen Kontingent laut Google erreicht ist (429), bleibt im Lauf außen vor), bis ein Modell antwortet, dann dasselbe Modell noch einmal; die Funde beider Antworten werden vereinigt (seit 05.11.2026, Abschnitt „Entschieden-Liste und zweite Antwort“); Prompt `scripts/ki_waechter_prompt.md` und Eingabe, keine Werkzeuge, Antwort im festen JSON-Schema; schreibt `antwort.json` |
 | Prüfen | `scripts/ki_waechter.py verify` | jedes Zitat wörtlich gegen Feed und Quellen; schreibt den Bericht und `ergebnis.json` |
 | Ablage | `scripts/publish_to_main.sh` | `docs/archive/audits/ki-waechter-YYYY-MM-DD.md` und `data/side_steps/ki-waechter.json` nach `main` |
@@ -42,11 +42,11 @@ Geschlossene Liste, gleich wie im letzten Jules-Prompt vom 2026-10-30:
 
 | Klasse | Inhalt | Feed |
 | --- | --- | --- |
-| F1 | dieselbe Sache zweimal | DE, zwei Meldungen mit je einem Zitat, gleichzeitig im Feed |
-| F2 | Kernaussage abgeschnitten, oder der Text besteht nur aus der Zeitzeile | DE oder EN |
-| F3 | Fakt weicht von der Quelle ab | DE, mit wörtlichem Quellzitat |
-| F4 | Titel widerspricht dem Text | DE oder EN |
-| F5 | kaputter Text (geklebte Wörter, auch „46:Umleitung“, HTML-, Platzhalterreste, Doppelungen, deutsche Zahl mit Dezimalpunkt) | DE oder EN |
+| F1 | dieselbe Sache zweimal (dieselben Linien vor dem Doppelpunkt; zwei Linien, die ein Vorfall trifft, sind zwei Meldungen) | DE, zwei Meldungen mit je einem Zitat, gleichzeitig im Feed |
+| F2 | Kernaussage abgeschnitten (nur bei einem gekürzten oder abgebrochenen Text; die Kernaussage ist die Maßnahme, bei einer Verlegung die neue Haltestelle jeder angefangenen Richtung), oder der Text besteht nur aus der Zeitzeile | DE oder EN |
+| F3 | eine Quelle nennt einen Fakt anders als der Feed (Titel und Text der Quelle zählen; ohne eigenes Ereignis kein F3; was der Feed weglässt oder was keine Quelle nennt, ist kein F3) | DE, mit wörtlichem Quellzitat |
+| F4 | Titel widerspricht dem Text (Folgen wie „Fahrtbehinderung“ sind keine Ursachen) | DE, zählt einmal für beide Sprachen (seit 05.11.2026) |
+| F5 | kaputter Text (geklebte Wörter und fehlende Leerzeichen, auch „46:Umleitung“ und auch, wenn die Quelle so schreibt; HTML-, Platzhalterreste, Doppelungen, deutsche Zahl mit Dezimalpunkt; ein anders geschriebenes Wort, das genauso in der Quelle steht, ist ein Tippfehler des Betreibers) | DE oder EN |
 | F6 | Englisch unübersetzt, Eigenname übersetzt, Zahl oder Linie anders, Sinn verändert | EN |
 
 Was entschieden ist (Kürzung auf 180 Zeichen, Zeitzeile, Titel mit zwei
@@ -56,20 +56,53 @@ Ursachen, Tippfehler der Betreiber, feste EN-Formen), steht im Prompt unter
 Verbesserungsideen meldet der Wächter nie.
 
 Der Prompt (`scripts/ki_waechter_prompt.md`, seit 05.11.2026 in dieser
-Gliederung) erklärt zuerst den Aufbau der Eingabe (Kopfzeile mit GUID und
-Textstand, „Gleichzeitig im Feed“, die Daten zwischen `<<<DATEN` und
-`DATEN>>>`, eigenes Ereignis und gleiche Linie als Quellen), dann die
-Fundklassen mit Beispielen und die Zuordnung, wenn mehrere passen (eine
-Kürzung ist höchstens F2, nie F5 oder F6; ein Text nur aus der Zeitzeile ist
-F2; ein falsch wiedergegebenes Glossarwort ist F6), die Entschieden-Liste
-nach Themen (Kürzung und Kurzform, Zeitzeile, WL-Titel und WL-Ticker, keine
-Dubletten, Quelltext der Betreiber, ÖBB, Namen, englische Formen) und ein
-Vorgehen in acht Schritten je Meldung: DE Text (F2), Titel gegen Text (F4),
-Titel und Text gegen die Quellen (F3), Kaputtes (F5), EN gegen DE Stück für
-Stück (F6), die Nummern unter „Gleichzeitig im Feed“ (F1), jeden Kandidaten
-gegen die Liste widerlegen, ein Fund je Meldung und Klasse mit dem Zitat der
-ersten Stelle. Das Zitat soll 10 bis 60 Zeichen lang sein und an Wortgrenzen
-beginnen und enden, damit die Prüfung des Skripts es findet.
+Gliederung) erklärt zuerst den Aufbau der Eingabe (Kopf mit der Zahl der
+Meldungstexte, Kopfzeile mit GUID und Textstand, „Gleichzeitig im Feed“ mit
+der Linie jeder Nummer, die Daten zwischen `<<<DATEN` und `DATEN>>>`, eigenes
+Ereignis und gleiche Linie als Quellen, deren Titel und Text beide zählen,
+weil bei einem WL-Ticker der Titel die Maßnahme trägt; eine Quelle, die
+schon bei einer früheren Meldung steht, als „siehe oben (Titel)“; ein bei
+2500 Zeichen abgeschnittener Quelltext endet auf „[…]“; die
+Stammstrecken-Meldung hat keine Quelle; woran WL-Störung, Ticker, Hinweis
+und Tafel zu erkennen sind), dann den Grundsatz (Zweifel ist eine fehlende
+Quelle oder ein mehrdeutiger Sinn, nicht ein bestandener Ja/Nein-Test), die
+Fundklassen mit Beispielen und die Zuordnung in fester Reihenfolge, wenn
+mehrere passen (ein Text nur aus der Zeitzeile ist F2; an der Kürzung gibt
+es nur F2 oder nichts, einzige Ausnahme ein vor dem „…“ falsch übersetztes
+Wort als F6; ein Abbruch ist F2 oder F5; eine Stelle, die nur im Englischen
+falsch ist, F5 oder F6; kaputtes Deutsch F5; Titel gegen Text F4 vor einem
+F3 gegen die Quelle; zuletzt F1), erfundene Beispiele echter Fundklassen
+(übersetzter Straßen- oder Haltestellenname, ein von der Kürzung
+zerschnittener Begriff, verdoppeltes Wort, Doppelpunkt ohne Leerzeichen,
+Dezimalpunkt, Text nur aus der Zeitzeile, „→ …“ ohne neue Haltestelle, Titel
+gegen Text), die Entschieden-Liste nach Themen (Kürzung und Kurzform,
+Zeitzeile mit ihren Formen, WL-Titel und WL-Ticker, keine Dubletten,
+Quelltext der Betreiber, ÖBB, Namen, englische Formen) mit dem Satz, dass sie
+keine Vorschrift ist, deren Verletzung ein Fund wäre, während die englischen
+Formen die richtige Übersetzung nennen und ein anderes Wort an ihrer Stelle
+F6 ist, und ein Vorgehen in neun Schritten je Meldung: DE Text (F2; die Maßnahme zählt als Hauptwort wie als
+Verb, „Maßnahmen:“ leitet Einzelheiten ein), Titel
+gegen Text (F4; Folgen sind keine Ursachen), Titel und Text gegen die
+Quellen, Titel wie Text (F3; Weggelassenes, andere Wörter für dieselbe
+Sache und ein Fakt, den keine Quelle nennt, sind kein F3), Kaputtes (F5; geklebte Wörter auch, wenn die Quelle so
+schreibt; ein anders geschriebenes Wort, das genauso in der Quelle steht, ist
+ein Tippfehler des Betreibers), EN gegen DE Stück für Stück (F6; jeder Name
+Wort für Wort, ein deutsches Wort auf -gasse, -straße, -weg, -platz, -gürtel,
+-allee oder -brücke ist ein Straßenname und bleibt deutsch), die Nummern
+unter „Gleichzeitig im Feed“ (F1), jeden Kandidaten gegen die Liste
+widerlegen, ein Fund je Meldung und Klasse mit dem Zitat der ersten Stelle
+(dieselbe Form in vielen Meldungen ist fast sicher eine Regel des Feeds),
+zuletzt `geprueft` lückenlos bis zur Zahl im Kopf der Eingabe. Das Zitat
+legt die Klasse fest: F5 und F6 die fehlerhaften Wörter selbst, F2 die
+letzten drei Wörter vor dem „…“ samt dem „…“, F3 der Fakt mit dem Wort
+davor, F4 der Titel, F1 die beiden Titel; mindestens drei Zeichen, nichts
+dazu, damit es „eindeutig“ wird, denn das Skript sucht wörtlich, nicht
+eindeutig. Vermutungen gibt es nur in zwei Fällen (ein F3 ohne eigene Quelle
+oder mit abgeschnittenem Quelltext, ein unklares F1), in der Form „Meldung
+N, F3: „Zitat“ – fehlt: Quelle.“ Die Beispiele sind erfunden, weil der
+Prompt dem Modell keine Antwort der Replay-Stände vorsagen darf
+(`tests/test_ki_waechter/test_teil_1.py` hält die bekannten Fälle des 27.10.
+und 30.10. heraus); die echten Fälle stehen im Abschnitt „Probelauf“.
 
 ## Warum ein Fund belegt sein muss
 
@@ -80,16 +113,39 @@ Modell. Wörtlich muss sein Beleg sein. Deshalb prüft das Skript jeden Fund,
 bevor er zählt:
 
 - Das Feed-Zitat steht wörtlich (nach Leerraum-Angleich) in genau dieser
-  Meldung im genannten Feed, mindestens drei Zeichen.
+  Meldung im genannten Feed, mindestens drei Zeichen. Ein Zitat, das auf „…“
+  endet, gilt nur bei F2: was die Kürzung nimmt, ist höchstens eine verlorene
+  Kernaussage (05.11.2026).
+- Ein Zitat aus der Zeitzeile (der eckigen Klammer am Textende) gilt nur bei
+  F2, denn die Zeitzeile schreibt der Code (05.11.2026; Lauf 302 meldete
+  „Di 27.10.“ als F3 gegen einen Wochentag der Quelle).
+- Ein F3, dessen Feedzitat so in Titel oder Text einer Quelle der Meldung steht,
+  ist verworfen: der Fakt steht dort, wie der Feed ihn schreibt; ein F3 braucht
+  eine Quelle, die anders lautet (Lauf 315, 05.11.2026).
+- Ein F2 an einer Kürzung gilt nur, wenn vor dem „…“ kein Maßnahmenwort steht
+  (`CORE_WORDS` in `src/ki_waechter/audit.py`: Umleitung, Kurzführung, Kein
+  Betrieb, Fahrtbehinderung, nicht fahren, entfällt, fällt aus, hält nicht,
+  Betrieb ab, Ersatzverkehr, Verspätungen, Intervalle, Busse oder Züge halten,
+  und ihre englischen Formen). Eine Kürzung hinter der Maßnahme ist
+  entschieden („Wortweise bleibt“, 05.11.2026); das Modell meldete sie in vier
+  von acht Fassungen des Prompts trotzdem. Ein Zitat auf „→ …“ bleibt F2, weil
+  die neue Haltestelle einer angefangenen Richtung die Kernaussage ist.
 - F3: Das Quellzitat steht wörtlich in den Quellen dieser Meldung.
-- F1: Die zweite Meldung hat eine andere GUID, stand gleichzeitig im Feed und
-  enthält ihr Zitat.
-- Die Klasse passt zum Feed (F6 nur EN, F1 und F3 nur DE), ein erwarteter Text
-  ist angegeben.
+- F1: Die zweite Meldung hat eine andere GUID, stand gleichzeitig im Feed,
+  enthält ihr Zitat, und ihr Titel nennt dieselben Linien vor dem Doppelpunkt
+  (05.11.2026, Lauf 306: zwei Linien, die ein Feuerwehreinsatz traf, sind
+  zwei Meldungen, keine Dublette).
+- Die Klasse passt zum Feed (F6 nur EN; F1, F3 und F4 nur DE, F4 seit
+  05.11.2026, weil ein Widerspruch zwischen Titel und Text in beiden Sprachen
+  gleich steht und einmal zählt), ein erwarteter Text ist angegeben (bei F1 setzt das Skript „nur eine Meldung“ ein, wenn er
+  fehlt: ein Paar hat keinen, sein Beleg sind die zwei Zitate; 05.11.2026).
 - Ein Fund je Meldung (GUID), Klasse und Feed: derselbe Fehler in mehreren
   Textständen einer Meldung, mehrere Stellen einer Klasse in einem Text und
   ein Fehler, den die beiden Antworten verschieden lang zitieren, zählen
   einmal (das erste Zitat bleibt).
+- Ein F1 ist ein Paar: nennen beide Antworten oder beide Meldungen dasselbe
+  Paar von der jeweils anderen Seite, zählt es einmal (`verify` und `_union`
+  schlüsseln die beiden GUIDs ungeordnet).
 
 Ein Fund, der eine Prüfung nicht besteht, steht unter „Nicht belegt“ im
 Bericht und öffnet kein Issue. Kopf, Zahlen, GUIDs, Zeiten und die Tabelle der
@@ -151,7 +207,22 @@ Kürzung vor 180 Zeichen an einer Wortgrenze und hinter der Kernaussage (weder
 F2 noch F5, `_truncate_summary_180` in `src/feed_build/summary_text.py`) und
 der Zusammenzug gleichzeitiger WL-Ticker zu einer Meldung (kein F3). Ein
 falscher Fund ist seither ein Mangel dieser Liste und wird als Klasse
-behoben, nicht einzeln.
+behoben, nicht einzeln. Am Abend des 05.11. (siebter Probelauf, Abschnitt
+„Probelauf“) wurde die Liste nach Themen geordnet und um die Entscheidungen
+aus `changelog/` seit dem 25.10. ergänzt, die noch fehlten: ein Hinweis eines
+Betriebstags tritt hinter einer laufenden Störung zurück, eine Tafel „Busse
+halten …“ geht in der Verlegung auf, der Pfeil steht hinter dem Doppelpunkt
+der Richtung, DE und EN werden getrennt gekürzt, und was hinter dem „…“
+fehlt, ist kein F2, ÖBBs Zeitfenster bleibt und vergangene Tage fallen aus
+dem Text, Zugzahlen mit Gattungen, Namen in der Grundform („Hohe Warte“) und
+mit Gattungswort („Cobenzl, Parkplatz“), die Reihenfolge der Linien im Titel,
+„…verkehr“ als „… service“, „Towards“ und „Discontinued“, die
+Verlegungsgründe aus dem Glossar, ein Satz ohne Linienkennung in der Kurzform
+gilt für alle Linien des Titels. Aus den Probeläufen des Abends dazu: Titel
+und Text einer Quelle zählen beide (die Maßnahme eines WL-Tickers steht im
+Titel), ein Wort, das genauso in der Quelle steht, ist ein Tippfehler des
+Betreibers, und die Liste ist keine Vorschrift, deren Verletzung ein Fund
+wäre.
 
 **Die Regel.** Jede Entscheidung zu Feed-Texten, die in
 `changelog/<JJJJ-MM-TT>.md` steht (Wortwahl, Zeitzeile, Titel, Kürzung,
@@ -175,8 +246,10 @@ die längste Anfrage im Schrittlimit von 25 Minuten. Der Bericht nennt
 „Modell …, zwei Antworten vereinigt“, `ergebnis.json` trägt `antworten`,
 `antwort.json` `answers`. Kosten: eine Anfrage mehr je Prüflauf (eine je
 Antwort), also zwei am Tag, bei Überlastung bis zu neun. Ein Fund, den die
-Antworten mit verschieden langem Zitat nennen, steht zweimal im Bericht
-(30.10.: „Reason: Harmful“ und „Reason: Harmful …“). Tests in
+Antworten mit verschieden langem Zitat nennen, stand bis zum Abend des 05.11.
+zweimal im Bericht (30.10.: „Reason: Harmful“ und „Reason: Harmful …“);
+seither zählt er einmal mit dem Zitat der ersten Antwort, und Vermutungen
+beider Antworten zur selben Meldung stehen einmal. Tests in
 `tests/test_ki_waechter/test_zweite_antwort.py`.
 
 ## Gratis-Kontingent
@@ -523,3 +596,29 @@ Kürzung, nicht die Übersetzung; Issue #2166, geschlossen mit der Entscheidung
 oben. Zwei Vermutungen (F1 zu den Meldungen 77 und 78) verwarf das Skript,
 weil die Meldungen nie gleichzeitig im Feed standen. Der Health check wurde um
 16:01 Uhr grün (Lauf 998), der erste grüne seit 04.11. 18:01 Uhr.
+
+Siebter Probelauf, der Prompt Fassung für Fassung gegen sechs Stände
+(05.11.2026 ab 16:40 Uhr Wiener Zeit, Eingabe `model` =
+`gemini-3.1-flash-lite`, Denkstufe „high“, zwei Antworten je Stand; Stände
+`001e47c` 27.10., `9e60b8d` 30.10., `fc604a2` 31.10., `07f9859` 02.11.,
+`8bf589d` 03.11. und `56fa747`, die 24 Stunden bis 05.11. 17:01 Uhr). Jede
+Fassung lief über die Stände, deren Funde sie betraf; jeder falsche Fund
+wurde als Klasse im Prompt oder im Skript behoben, nie als Ausnahme für den
+Fall, und die Beispiele im Prompt sind erfunden, damit der Pull-Request-Lauf
+nichts vorgesagt bekommt. Läufe unter
+`https://github.com/Origamihase/wien-oepnv/actions/runs/<Lauf-ID>`.
+
+| Fassung | Läufe | Funde zutreffend / falsch | Falsche Funde und ihre Behebung |
+| --- | --- | --- | --- |
+| alt (Stand von #2167) | 269 (27.10., 30.10., HEAD), 270 bis 272 (31.10. bis 03.11.) | 10 / 2 | 31.10.: Kürzung hinter der Maßnahme als F2, Titel mit zwei Ursachen und erklärtem Text als F4. Neue Gliederung: Eingabe erklären, Klassen mit Grenzen und Beispielen, Vorgehen in Schritten, Zitatregeln |
+| v2 | 273, 274, 276 bis 278 | 13 / 4 | Tippfehler des Betreibers als F5; Satz ohne Linienkennung als F4; Umstiegszusatz „(U)“ aus der Quelle als F3 und F6 (die Liste als Vorschrift gelesen). Prompt: ein Wort, das genauso in der Quelle steht, ist kein Fund; die Liste ist keine Vorschrift |
+| v3 | 279 bis 282 | 12 / 3 | drei F3 „Betrieb ab …“ gegen WL-Ticker, deren Maßnahme im Quelltitel stand und die nur als „siehe oben“ verwiesen waren. Skript: „Q…: siehe oben (Titel)“; Prompt: Titel und Text einer Quelle zählen |
+| v4 | 283 bis 287 | 12 / 0 | keine; die Beispiele im Prompt waren aber echte Fälle der Stände, deshalb v5 mit erfundenen Beispielen |
+| v5 | 288 bis 293 | 9 / 4 | Satz ohne Linienkennung als F4 (noch einmal), vollständiger Satz als F2, Kürzung hinter „Kurzführung“ als F2, englische Kürzung hinter drei Maßnahmen als F2, Zeitzeile „[Seit heute]“ als F3 (verworfen); ein wahrer F1 verworfen, weil `erwartet` leer war. Prompt: F2 nur bei Kürzung und Kernaussage ist die Maßnahme, Linie des Titels ohne eigenen Satz kein F4, Zeitzeile kein Fund; Skript: F1 ohne `erwartet` gilt mit „nur eine Meldung“ |
+| v6 | 294 (02.11.), 295 (31.10.) | 3 / 3 | drei F3 „fehlt im Text“ (Weglassen als Abweichung), eine Vermutung zu einer F6-Frage. Prompt: Weggelassenes ist kein F3, Klassen in fester Reihenfolge (F4 vor F3), Vermutungen nur ohne Quelle oder bei unklarem F1, Zitat je Klasse; Skript: F4 nur DE, Zitat an der Kürzung nur bei F2, Linie bei „Gleichzeitig im Feed“, „[…]“ am abgeschnittenen Quelltext |
+| v7 | 296 bis 301 (alle sechs Stände) | 12 / 3 | Kürzung hinter „kommt es zu Umleitungen“ als F2 (Maßnahme erst hinter „Maßnahmen:“ erwartet), Tippfehler aus der Quelle als F5, Fakt eines zusammengezogenen WL-Texts als F3, dessen Ticker nicht unter den sechs Quellen der Linie stand. Prompt: Maßnahme als Hauptwort oder Verb, Buchstaben nur gegen die Quelle, F3 braucht eine Quelle, die den Fakt anders nennt; Skript: Quellen, deren Titel der Text wiederholt, zuerst |
+| v8 | 302 bis 304 (27.10., 31.10., 30.10.) | 9 / 3 | 27.10.: zwei Kürzungen hinter der Maßnahme als F2 (hinter „kommt es zu Umleitungen“ und hinter dem Umleitungsweg), der Wochentag der Zeitzeile gegen die Quelle als F3. Skript: ein Zitat aus der Zeitzeile ist außer bei F2 kein Fund, ein F2 an der Kürzung gilt nur ohne Maßnahmenwort davor; Prompt: Schritt 1 nennt die Maßnahmenwörter |
+| v9 | 305 bis 308 (27.10., 02.11., 30.10., 31.10.) | 9 / 1 | 02.11.: zwei Linien mit demselben Vorfall und eigenem Text als F1. Skript und Prompt: ein F1 braucht dieselben Linien vor dem Doppelpunkt; die englische Kürzung hinter mehreren Maßnahmen meldete das Modell noch einmal, das Skript verwarf sie |
+| v10 | 309 (02.11.), 310 (03.11.), 311 (aktueller Feed) | 2 / 0 | keine; die englische Kürzung hinter mehreren Maßnahmen kam noch einmal als F2, das Skript verwarf sie. Prompt: Schritt 5 nennt die englischen Maßnahmenwörter, die F2-Klasse die Kernaussage bei mehreren Maßnahmen in einem Text |
+| v11 | 312 (02.11.), 313 (27.10.), 314 (30.10.) | 11 / 1 | 27.10.: „after“ für „nach“ vor dem Pfeil einer Verlegung als F6 (die Lage der Haltestelle; die Regel stand in der Entschieden-Liste). Prompt: die F6-Klasse und Schritt 5 nennen sie; die Kürzung hinter mehreren Maßnahmen kam noch einmal, als F6, und das Skript verwarf sie. 30.10. brachte sechs zutreffende Funde, mehr als jede Fassung davor |
+| v12 | 315 (27.10.), 316 (31.10.) | 6 / 1 | 27.10.: „Betrieb ab …“ als F3, obwohl der Quelltitel es so nennt (wie in v3; eine von acht Antworten zu diesem Stand). Skript: ein F3, dessen Feedzitat so in einer Quelle steht, ist verworfen; mit den 36 gespeicherten Antworten der Läufe 281 bis 316 neu verifiziert verliert die Prüfung keinen zutreffenden Fund und verwirft drei weitere falsche F3. 31.10. brachte neben der Zeitzeile erstmals den übersetzten Haltestellennamen „vocational school“ |
