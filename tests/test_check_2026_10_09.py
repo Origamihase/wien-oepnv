@@ -369,3 +369,43 @@ def test_haelt_an_at_the_end_of_a_clause_is_no_stop() -> None:
 
 def test_translation_cache_epoch_was_bumped() -> None:
     assert bf._TRANSLATION_CACHE_EPOCH >= 25
+
+
+# ---- WL: a display text behind a short ticker closes its sentence first ----
+
+# Line 26 on 2026-11-05 (cache of 135422a4): a display ticker without a full
+# stop, and the day's stop text WL switched on at 00:00:28.
+RESCUE = _wl(
+    "26: Fahrtbehinderung wegen Rettungseinsatz",
+    "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "5ad87115", "2026-11-05T15:56:24+01:00", "2026-11-05T16:55:00+01:00",
+)
+TOKIO_STOP = _wl(
+    "26: Züge halten in Tokiostraße",
+    "Züge halten in\nTokiostraße",
+    "544df376", "2026-11-05T00:00:28+01:00", "2026-11-05T23:59:59+01:00",
+)
+
+
+def test_a_stop_behind_a_short_ticker_is_a_sentence_of_its_own() -> None:
+    (item,) = _built([TOKIO_STOP, RESCUE])
+    # Was: "Fahrtbehinderung wegen Rettungseinsatz Züge halten in Tokiostraße."
+    assert item["description"] == "Fahrtbehinderung wegen Rettungseinsatz. Züge halten in Tokiostraße."
+    assert item["guid"] == "5ad87115"
+    assert item.get("_members") == ["5ad87115"]
+
+
+@pytest.mark.parametrize(
+    ("text", "joined"),
+    [
+        ("Fahrtbehinderung wegen Rettungseinsatz", "Fahrtbehinderung wegen Rettungseinsatz. Züge halten."),
+        ("Grund: Schadhaftes Fahrzeug.", "Grund: Schadhaftes Fahrzeug. Züge halten."),
+        ("Bitte Linie 46 benutzen!", "Bitte Linie 46 benutzen! Züge halten."),
+        ("Betrieb ab Schwedenplatz U …", "Betrieb ab Schwedenplatz U … Züge halten."),
+        ("Fahrtbehinderung ", "Fahrtbehinderung. Züge halten."),
+    ],
+)
+def test_then_sentence_closes_the_text_once(text: str, joined: str) -> None:
+    from src.feed_build.title_words import _then_sentence
+
+    assert _then_sentence(text, "Züge halten.") == joined

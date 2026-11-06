@@ -19,7 +19,7 @@ from .summary_text import _strip_trailing_directional_marker, _title_body, _trun
 __all__ = [
     "_drop_category_word", "_leading_category_word", "_separate_reason_word", "_HINDRANCE", "_reason_and_fragment",
     "_finish_reason_title", "_last_sentence_end", "_rendered_title", "_short_title_collisions", "_is_wl_ticker",
-    "_as_sentence", "_is_wl_notice", "_is_baustelle",
+    "_as_sentence", "_then_sentence", "_is_wl_notice", "_is_baustelle",
 ]
 
 
@@ -309,6 +309,21 @@ def _as_sentence(text: str) -> str:
     ticker and "Busse halten bei Haltestelle N71" under the next.
     """
     return text if text.endswith((".", "!", "?", "…")) else f"{text}."
+
+
+def _then_sentence(text: str, sentence: str) -> str:
+    """*text*, closed as a sentence, then *sentence*: every WL join behind a text.
+
+    A WL long message ends with a full stop, a display ticker does not:
+    "Fahrtbehinderung wegen Rettungseinsatz" (26 on 2026-11-05 at 15:56
+    Vienna time) took the day's display text "Züge halten in Tokiostraße"
+    behind it with a space only, and the feed read "Fahrtbehinderung wegen
+    Rettungseinsatz Züge halten in Tokiostraße." as one sentence. Every
+    place that adds a message behind a WL text (``_with_unowned``,
+    ``_with_consequences``, ``_with_line_tickers``) closes the text first,
+    whatever its source wrote (operator decision 2026-11-06).
+    """
+    return f"{_as_sentence(text.rstrip())} {sentence}"
 
 
 def _is_wl_notice(item: FeedItem) -> bool:

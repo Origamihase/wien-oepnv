@@ -627,6 +627,18 @@ verdrängt eine andere Störung.
     Feed, bis auf Platz 2. Jetzt liest der Eintrag „Unregelmäßige
     Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.“, und
     danach fällt er auf GUID und Beginn der Haltestellen zurück.
+  - Satzende vor jeder angehängten Meldung (seit 2026-11-06,
+    `_then_sentence` in `src/feed_build/title_words.py`): Eine lange
+    WL-Meldung endet mit einem Punkt, eine Kurzmeldung der Anzeige nicht.
+    Jede Stelle, die eine Meldung hinter einen WL-Text hängt
+    (`_with_unowned`, `_with_consequences`, `_with_line_tickers`), schließt
+    den Text vorher als Satz. Anlass: „26: Fahrtbehinderung wegen
+    Rettungseinsatz“ (05.11., 15:56) nahm den Anzeigetext des Tages „Züge
+    halten in Tokiostraße“ nur mit einem Leerzeichen auf, und der Feed las
+    „Fahrtbehinderung wegen Rettungseinsatz Züge halten in Tokiostraße.“ als
+    einen Satz (ebenso „26: Verkehrsunfall“ am 04.11.). Jetzt: „Fahrtbehinderung
+    wegen Rettungseinsatz. Züge halten in Tokiostraße.“ Den Wortlaut der
+    Quelle ändert die Regel nicht, sie setzt nur das Satzende.
   - Ausnahmen: Eine Ursache von mehr als `_MAX_LISTED_WORDS` (6) Wörtern
     ist ein Satz. Die Meldung „18: Haltestelle Stadionbrücke … aufgelassen.
     Bitte …“, seit Juli im Cache, behält ihren Eintrag und schließt sich
