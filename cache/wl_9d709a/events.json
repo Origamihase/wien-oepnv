@@ -986,6 +986,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "89A: Verkehrsunfall",
+    "description": "Linie 89A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "362c6b8fe3e1a11653fbb56853d09845535e6799ebd80a41779397119fd169e1",
+    "pubDate": "2026-11-06T07:52:00+01:00",
+    "starts_at": "2026-11-06T07:52:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=89A|D=2026-11-06|TK=89a verkehrsunfall",
+    "_wl_ids": [
+      "I20261106-0005"
+    ],
+    "_incident_start": "2026-11-06T07:52:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "D: Gleisbauarbeiten",
     "description": "Linie D: Kein Betrieb zwischen Börse und Augasse. Ersatz: Linien S40, U2, U4, U6, 1, 5, 12, 37, 38, 71 und 40A. Voraussichtliche Dauer: 07. November 2026, 04:00 Uhr. Grund: Gleisbauarbeiten im Bereich Althanstraße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1062,6 +1078,22 @@
       "I20261106-0004"
     ],
     "_incident_start": "2026-11-06T07:05:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Verspätungen",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
+    "pubDate": "2026-11-06T07:56:00+01:00",
+    "starts_at": "2026-11-06T07:56:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U6|D=2026-11-06|TK=u6 verspätungen",
+    "_wl_ids": [
+      "I20261106-0006"
+    ],
+    "_incident_start": "2026-11-06T07:56:00+01:00"
   },
   {
     "source": "Wiener Linien",

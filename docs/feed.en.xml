@@ -8,8 +8,34 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 06 Nov 2026 07:30:53 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2026 08:00:55 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[89A: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">362c6b8fe3e1a11653fbb56853d09845535e6799ebd80a41779397119fd169e1</guid>
+      <pubDate>Fri, 06 Nov 2026 07:52:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 06 Nov 2026 08:00:55 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 06 Nov 2026 07:52:00 +0100</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: traffic accident. [Since 07:52]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 07:52]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Delays]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e</guid>
+      <pubDate>Fri, 06 Nov 2026 07:56:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 06 Nov 2026 07:56:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 06 Nov 2026 07:56:00 +0100</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: switch fault. [Since 07:56]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: switch fault.<br/>[Since 07:56]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U1: Delays]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -122,36 +148,6 @@
       <georss:point>48.194764 16.386277</georss:point>
       <description>Rennweg 20-24 → Rennweg 20-24, main carriageway. Stop relocation of line N71 towards Kaiserebersdorf, Zinnergasse. Reason: track construction works. [Today]</description>
       <content:encoded><![CDATA[Rennweg 20-24 → Rennweg 20-24, main carriageway. Stop relocation of line N71 towards Kaiserebersdorf, Zinnergasse. Reason: track construction works.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;906928</guid>
-      <pubDate>Wed, 16 Sep 2026 08:51:40 +0200</pubDate>
-      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 24 Aug 2026 13:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 31 Oct 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 30 Nov 2026 23:59:59 +0100</ext:ends_at>
-      <georss:line>48.185201 16.376296 48.034917 16.491315</georss:line>
-      <description>Due to construction works, no local trains can run: from Saturday 23:15 to Sunday 04:40 and from Sunday 23:15 to Monday 04:40. [Until 30.11.]</description>
-      <content:encoded><![CDATA[Due to construction works, no local trains can run: from Saturday 23:15 to Sunday 04:40 and from Sunday 23:15 to Monday 04:40.<br/>[Until 30.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5A/N31: Obere Augartenstraße]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5cd26b46e3d83d83054e14525825191f05326ae3f22d63f0dcf5a305c21f2157</guid>
-      <pubDate>Thu, 29 Oct 2026 14:00:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 29 Oct 2026 14:00:00 +0100</ext:first_seen>
-      <ext:starts_at>Sat, 07 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 09 Nov 2026 07:00:00 +0100</ext:ends_at>
-      <georss:point>48.222757 16.375308</georss:point>
-      <description>Untere Augartenstraße 40 → Untere Augartenstraße 42. Stop relocation of lines 5A and N31 towards Griegstraße or Stammersdorf. Reason: dismantling of a tower crane. [From Sat 07.11. until Mon 09.11.]</description>
-      <content:encoded><![CDATA[Untere Augartenstraße 40 → Untere Augartenstraße 42. Stop relocation of lines 5A and N31 towards Griegstraße or Stammersdorf. Reason: dismantling of a tower crane.<br/>[From Sat 07.11. until Mon 09.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
