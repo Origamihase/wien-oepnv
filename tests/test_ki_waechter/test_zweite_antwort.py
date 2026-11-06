@@ -51,7 +51,7 @@ def test_the_model_that_answered_is_asked_once_more_and_the_findings_are_united(
     assert answer.requests == 3 and answer.per_model == {"gemini-3.8-flash": 1, "gemini-3.6-flash": 2}
     assert len(answer.attempts) == 1 and "gemini-3.8-flash" in answer.attempts[0] and not answer.overloaded
     united = kw.extract_answer(answer.text)
-    # Every finding of either answer once (item, class, feed, quote up to spacing and case), the first answer's first.
+    # Every finding of either answer once (item, class and feed, up to case), the first answer's first.
     assert [(f["nr"], f["klasse"]) for f in united["funde"]] == [(2, "F6"), (3, "F5"), (5, "F6")]
     assert united["geprueft"] == [1, 2, 3, 4, 5]
     assert united["vermutungen"] == ["Meldung 4: x", "Meldung 6: y"]
@@ -117,10 +117,20 @@ def test_union_keys_findings_like_verify_and_drops_junk() -> None:
     second = {"funde": [_finding(1, "f6", "en", "a b"), _finding(1, "F3", "DE", "q2")],
               "geprueft": [1, 4], "vermutungen": [" x", "y"]}
     united = kw._union(first, second)
-    # Spacing of the quote and case of class and feed do not make a second finding; another quote does.
-    assert [(f["klasse"], f["feed_zitat"]) for f in united["funde"]] == [("F6", "a  b"), ("F3", "q"), ("F3", "q2")]
+    # The quote is no part of the key: the second answer's other quote of the item's F3 is the same finding
+    # (the two answers quote one error at different lengths); the first answer's quote stays.
+    assert [(f["klasse"], f["feed_zitat"]) for f in united["funde"]] == [("F6", "a  b"), ("F3", "q")]
     assert united["geprueft"] == [1, 2, 4] and united["vermutungen"] == ["x", "y"]
     assert kw._union({}, {}) == {"geprueft": [], "funde": [], "vermutungen": []}
+    # A duplicate named from either item is one finding; the same pair with another item is another.
+    pair = {"klasse": "F1", "feed": "DE", "feed_zitat": "a", "feed_zitat2": "b"}
+    funde = kw._union({"funde": [{**pair, "nr": 2, "nr2": 5}]},
+                      {"funde": [{**pair, "nr": 5, "nr2": 2}, {**pair, "nr": 5, "nr2": 7}]})["funde"]
+    assert [(f["nr"], f["nr2"]) for f in funde] == [(2, 5), (5, 7)]
+    # Both answers wonder about the same item in other words: one hypothesis, the first answer's wording.
+    both = kw._union({"vermutungen": ["Meldung 34: Keine Quelle im Cache."]},
+                     {"vermutungen": ["Meldung 34: Keine Quelle für diese Störung.", "Meldung 7: x"]})
+    assert both["vermutungen"] == ["Meldung 34: Keine Quelle im Cache.", "Meldung 7: x"]
 
 
 def test_ask_writes_both_answers_and_verify_names_them(

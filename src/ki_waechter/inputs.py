@@ -204,11 +204,16 @@ def _built(xml_text: str) -> str:
     return match.group(1).strip() if match else "?"
 
 
+def _cut(text: str) -> str:
+    """A source text up to MAX_SOURCE_CHARS; a cut one ends with the marker the prompt explains."""
+    return text if len(text) <= MAX_SOURCE_CHARS else text[:MAX_SOURCE_CHARS] + " […]"
+
+
 def _source_entry(path: str, event: Mapping[str, Any]) -> dict[str, str]:
     return {
         "datei": path,
         "titel": normalize(str(event.get("title") or "")),
-        "text": normalize(str(event.get("description") or ""))[:MAX_SOURCE_CHARS],
+        "text": _cut(normalize(str(event.get("description") or ""))),
         "beginn": str(event.get("starts_at") or ""),
         "ende": str(event.get("ends_at") or ""),
     }
@@ -296,6 +301,8 @@ def prepare(snapshots: Sequence[Snapshot], commit: str, hours: float = 0.0) -> P
                 (p, e) for p, e in events_at(first)
                 if str(e.get("guid")) != item.guid and keys & line_keys(str(e.get("title") or ""))
             ]
+            # A merged WL text repeats the titles of its tickers: those first, then the cap (run 298, 05.11.2026).
+            related.sort(key=lambda pair: -_repeated(pair[1], item))
             item.related_sources = list(dict.fromkeys(source_id(p, e) for p, e in related[:MAX_RELATED]))
     events_at(len(snapshots) - 1)
     return Prepared(
@@ -337,6 +344,22 @@ def together(prep: Prepared, item: FeedItem) -> list[int]:
     return [other.nr for other in prep.items if other.nr != item.nr and mine & set(other.versions)]
 
 
+def _with_lines(titles: Mapping[int, str], numbers: list[int]) -> str:
+    """The numbers with the line their title starts with (``25 (40A), 26 (U4), 27``)."""
+    parts = []
+    for nr in numbers:
+        match = _LINE_PREFIX_RE.match(titles.get(nr, ""))
+        parts.append(f"{nr} ({match.group(1)})" if match else str(nr))
+    return ", ".join(parts)
+
+
+def _repeated(event: Mapping[str, Any], item: FeedItem) -> int:
+    """How many words of an event's title (without its line prefix) the item's text repeats."""
+    title = _LINE_PREFIX_RE.sub("", normalize(str(event.get("title") or "")))
+    text = f"{item.title} {item.description}"
+    return sum(word in text for word in title.split() if len(word) >= 4)
+
+
 def _n(count: int, one: str, many: str) -> str:
     return f"{count} {one if count == 1 else many}"
 
@@ -360,12 +383,13 @@ def render_input(prep: Prepared) -> str:
         "",
     ]
     shown: set[str] = set()
+    titles = {item.nr: item.title for item in prep.items}
     for item in prep.items:
         out.append(f"## Meldung {item.nr}")
         meta = f"GUID …{item.guid[-12:]}, Textstand {item.variant} von {item.variants} dieser Meldung"
         out.append(f"{meta}. Im Feed: {visible(prep, item)}.")
         others = together(prep, item)
-        out.append(f"Gleichzeitig im Feed: {', '.join(map(str, others)) if others else 'keine andere'}.")
+        out.append(f"Gleichzeitig im Feed: {_with_lines(titles, others) if others else 'keine andere'}.")
         out.append("<<<DATEN")
         out.append(f"DE Titel: {item.title}")
         out.append(f"DE Text: {item.description}")
@@ -379,7 +403,9 @@ def render_input(prep: Prepared) -> str:
         for label, ids in (("eigenes Ereignis", item.own_sources), ("gleiche Linie", item.related_sources)):
             for qid in ids:
                 if qid in shown:
-                    out.append(f"Quelle ({label}) {qid}: siehe oben")
+                    # The title again: for a WL ticker it carries the measure ("18: Rettungseinsatz
+                    # Betrieb ab Eichenstraße"), so the model need not look the source up.
+                    out.append(f"Quelle ({label}) {qid}: siehe oben ({prep.sources[qid]['titel']})")
                     continue
                 shown.add(qid)
                 src = prep.sources[qid]

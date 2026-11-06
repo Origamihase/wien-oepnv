@@ -81,7 +81,6 @@ from src.ki_waechter.inputs import (
     Version,
     free_text,
     git_snapshots,
-    normalize,
     prepare,
     render_input,
     together,
@@ -429,33 +428,46 @@ def unite_answers(first: Answer, second: Answer) -> Answer:
     return united
 
 
-def _finding_key(raw: Mapping[str, Any]) -> tuple[int | None, str, str, str]:
-    """What makes two findings the same: item, class, feed and the quote (``verify`` keys the same way)."""
+def _finding_key(raw: Mapping[str, Any]) -> tuple[object, ...]:
+    """What makes two findings the same: item, class and feed (``verify`` keys the same way, by GUID).
+
+    The quote is no part of it: the two answers quote one error at different
+    lengths, and the prompt asks for one finding per item and class (several
+    places of one class in one text are one finding with the first quote). A
+    duplicate (F1) named from either of its two items is one finding.
+    """
     nr = raw.get("nr")
-    return (
-        nr if isinstance(nr, int) else None,
-        str(raw.get("klasse") or "").upper(),
-        str(raw.get("feed") or "").upper(),
-        normalize(str(raw.get("feed_zitat") or "")),
-    )
+    klasse = str(raw.get("klasse") or "").upper()
+    if klasse == "F1":
+        nr2 = raw.get("nr2")
+        return ("F1", frozenset(n if isinstance(n, int) else None for n in (nr, nr2)))
+    return (nr if isinstance(nr, int) else None, klasse, str(raw.get("feed") or "").upper())
 
 
 def _union(first: Mapping[str, Any], second: Mapping[str, Any]) -> dict[str, Any]:
     """The two answers as one, in the answer's own shape; the first answer's entries come first."""
     findings: list[dict[str, Any]] = []
-    seen: set[tuple[int | None, str, str, str]] = set()
+    seen: set[tuple[object, ...]] = set()
     for raw in [*(first.get("funde") or []), *(second.get("funde") or [])]:
         if isinstance(raw, dict) and _finding_key(raw) not in seen:
             seen.add(_finding_key(raw))
             findings.append(dict(raw))
     checked = sorted({n for part in (first, second) for n in (part.get("geprueft") or []) if isinstance(n, int)})
     hypotheses: list[str] = []
+    named: set[str] = set()
     for part in (first, second):
         for hypothesis in part.get("vermutungen") or []:
             text = str(hypothesis).strip()
-            if text and text not in hypotheses:
+            # Both answers wonder about the same item ("Meldung 34: …"): one hypothesis, the first wording.
+            match = _HYPOTHESIS_ITEM_RE.match(text)
+            key = f"Meldung {match.group(1)}" if match else text
+            if text and key not in named:
+                named.add(key)
                 hypotheses.append(text)
     return {"geprueft": checked, "funde": findings, "vermutungen": hypotheses}
+
+
+_HYPOTHESIS_ITEM_RE = re.compile(r"Meldung\s+(\d+)\b")
 
 
 def _attempt(model: str, sent_at: float, error: str) -> str:
