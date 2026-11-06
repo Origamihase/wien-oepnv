@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261105-0049, I20260925-0011, I20260909-0007, I20260922-0032, I20261020-0029, I20261106-0001-F01"
+    "trafficInfoNameList": "I20261105-0049, I20260925-0011, I20260909-0007, I20260922-0032, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1876-101, R1881-101, R1880-101, R1884-101, R1883-101, R1882-101, R1875-101, R115-136, R103-136, R102-136, R101-136, R100-136, R119-136, R45-136, R19-136, R130-136, R118-136, R117-136, R116-136, R293-474, R318-437, R401-101, R2372-125, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R3886-480, R1448-412, R1474-412, R2558-125, R2013-571, R500-101, R147-141, R150-141, R148-141, R187-141, R143-141, R144-141, R146-141, R188-141, R189-141, R190-141, R177-141, R1213-141, R1212-141, R1718-508, R1749-508, R407-506, R402-506, R1448-549, R1474-549, R1974-566, R2371-520, R2372-520, R2379-520, R2378-520, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1881-101, R1884-101, R1883-101, R1875-101, R1882-101, R1876-101, R1880-101, R116-136, R103-136, R101-136, R119-136, R100-136, R117-136, R102-136, R115-136, R45-136, R19-136, R130-136, R118-136, R293-474, R318-437, R401-101, R2373-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-126, R2379-627, R2380-627, R2345-127, R3886-480, R1448-412, R1474-412, R2558-125, R2013-571, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1448-549, R1474-549, R1974-566, R2371-520, R2372-520, R2379-520, R2378-520, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -262,53 +262,6 @@
     "title": "13A: Wasserrohrgebrechen"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "41": "ptTram"
-     }
-    },
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "41: Rettungseinsatz"
-      }
-     }
-    ],
-    "location": "Gersthofer Straße",
-    "name": "I20261106-0001-F01",
-    "owner": "WL",
-    "parentName": "I20261106-0001",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 141,
-      "lineName": "41",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-06T00:52:00.000+0100",
-     "end": "2026-11-06T01:30:00.000+0100",
-     "lastUpdate": "2026-11-06T01:30:00.000+0100",
-     "resume": "2026-11-06T01:30:00.000+0100",
-     "start": "2026-11-06T00:28:00.000+0100"
-    },
-    "title": "41: Rettungseinsatz"
-   },
-   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
@@ -518,52 +471,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1212-141",
-    "owner": "WL",
-    "parentName": "R1212-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     1212
-    ],
-    "time": {
-     "end": "2026-11-06T01:48:00.000+0100",
-     "start": "2026-11-06T00:44:16.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1213-141",
-    "owner": "WL",
-    "parentName": "R1213-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     1213
-    ],
-    "time": {
-     "end": "2026-11-06T01:43:00.000+0100",
-     "start": "2026-11-06T00:44:16.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Börse",
     "name": "R130-136",
     "owner": "WL",
@@ -583,52 +490,6 @@
      "start": "2026-11-03T00:00:14.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R143-141",
-    "owner": "WL",
-    "parentName": "R143-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     143
-    ],
-    "time": {
-     "end": "2026-11-06T01:51:00.000+0100",
-     "start": "2026-11-06T00:38:13.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R144-141",
-    "owner": "WL",
-    "parentName": "R144-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     144
-    ],
-    "time": {
-     "end": "2026-11-06T01:51:00.000+0100",
-     "start": "2026-11-06T00:38:13.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -679,52 +540,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R146-141",
-    "owner": "WL",
-    "parentName": "R146-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     146
-    ],
-    "time": {
-     "end": "2026-11-06T01:51:00.000+0100",
-     "start": "2026-11-06T00:38:13.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R147-141",
-    "owner": "WL",
-    "parentName": "R147-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     147
-    ],
-    "time": {
-     "end": "2026-11-06T01:47:00.000+0100",
-     "start": "2026-11-06T00:38:13.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße 19-21",
     "name": "R1474-412",
     "owner": "WL",
@@ -767,52 +582,6 @@
      "start": "2026-11-06T01:00:14.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R148-141",
-    "owner": "WL",
-    "parentName": "R148-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     148
-    ],
-    "time": {
-     "end": "2026-11-06T01:47:00.000+0100",
-     "start": "2026-11-06T00:38:13.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R150-141",
-    "owner": "WL",
-    "parentName": "R150-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     150
-    ],
-    "time": {
-     "end": "2026-11-06T01:47:00.000+0100",
-     "start": "2026-11-06T00:38:13.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -863,52 +632,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R177-141",
-    "owner": "WL",
-    "parentName": "R177-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     177
-    ],
-    "time": {
-     "end": "2026-11-06T01:43:00.000+0100",
-     "start": "2026-11-06T00:44:14.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R187-141",
-    "owner": "WL",
-    "parentName": "R187-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     187
-    ],
-    "time": {
-     "end": "2026-11-06T01:51:00.000+0100",
-     "start": "2026-11-06T00:38:13.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nKein Betrieb",
     "name": "R1875-101",
     "owner": "WL",
@@ -951,29 +674,6 @@
      "start": "2026-11-03T00:00:13.000+0100"
     },
     "title": "Gleisbauarbeiten\nKein Betrieb"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R188-141",
-    "owner": "WL",
-    "parentName": "R188-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     188
-    ],
-    "time": {
-     "end": "2026-11-06T01:43:00.000+0100",
-     "start": "2026-11-06T00:44:14.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1093,29 +793,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R189-141",
-    "owner": "WL",
-    "parentName": "R189-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     189
-    ],
-    "time": {
-     "end": "2026-11-06T01:43:00.000+0100",
-     "start": "2026-11-06T00:44:14.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBetrieb ab Augasse",
     "name": "R19-136",
     "owner": "WL",
@@ -1135,29 +812,6 @@
      "start": "2026-11-03T00:00:14.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Augasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R190-141",
-    "owner": "WL",
-    "parentName": "R190-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     190
-    ],
-    "time": {
-     "end": "2026-11-06T01:43:00.000+0100",
-     "start": "2026-11-06T00:44:14.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
