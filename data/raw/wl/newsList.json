@@ -6,7 +6,7 @@
     "name": "aktuelles",
     "refPoiCategoryGroupId": 61,
     "title": "Aktuelles",
-    "trafficInfoNameList": "N20260209-0049, N20260209-3501, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260702-5991, N20260813-6092, N20260808-6084, N20260808-6083, N20260817-6129, N20260818-6134, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260901-6167, N20260903-6175, N20260908-6177, N20260915-6185, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261005-6222, N20261006-6258, N20261007-6260, N20261007-6262, N20261009-6270, N20261021-0001, N20261021-0003, N20261022-0002, N20261022-0003, N20261023-0001, N20261023-0002, N20261028-0003, N20261029-0002, N20261029-0004, N20261030-0001, N20261028-0002, N20261029-0003, N20261102-0001, N20261103-0001, N20261104-0001, N20261104-0002, N20261104-0003, N20261104-0004, N20261105-0001, N20261105-0002"
+    "trafficInfoNameList": "N20260209-0049, N20260209-3501, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260702-5991, N20260813-6092, N20260808-6084, N20260808-6083, N20260817-6129, N20260818-6134, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260901-6167, N20260903-6175, N20260908-6177, N20260915-6185, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261005-6222, N20261006-6258, N20261007-6260, N20261007-6262, N20261009-6270, N20261021-0001, N20261021-0003, N20261022-0002, N20261022-0003, N20261023-0001, N20261023-0002, N20261028-0003, N20261029-0002, N20261029-0004, N20261030-0001, N20261028-0002, N20261029-0003, N20261102-0001, N20261103-0001, N20261104-0001, N20261104-0002, N20261104-0003, N20261104-0004, N20261105-0001, N20261105-0002, N20261022-0005"
    },
    {
     "id": -1,
@@ -2316,6 +2316,61 @@
    {
     "alertCause": "unknown",
     "alertCauseId": 0,
+    "description": "<p><strong><u>Haltestellenauflassung der Linien D, 1 und 71 in beiden Richtungen</u></strong></p><p><strong><u>Haltestelle:</u></strong> Rathausplatz, Burgtheater</p><p><strong><u>Dauer:</u></strong> <br>13. November 2026 bis 20. Dezember 2026<br>an Freitagen, Samstagen, Sonntagen sowie am 08. Dezember<br>jeweils von etwa 15:00 Uhr bis 22:30 Uhr</p><p><strong><u>Grund:</u></strong> Christkindlmarkt</p><p><strong><u>Ersatz:</u></strong> </p><ul><li><p>Schottentor U</p></li><li><p>Parlament, U Volkstheater</p></li></ul><p></p>",
+    "id": "N20261022-0005",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><strong><u>Haltestellenauflassung der Linien D, 1 und 71 in beiden Richtungen</u></strong></p><p><strong><u>Haltestelle:</u></strong> Rathausplatz, Burgtheater</p><p><strong><u>Dauer:</u></strong> <br>13. November 2026 bis 20. Dezember 2026<br>an Freitagen, Samstagen, Sonntagen sowie am 08. Dezember<br>jeweils von etwa 15:00 Uhr bis 22:30 Uhr</p><p><strong><u>Grund:</u></strong> Christkindlmarkt</p><p><strong><u>Ersatz:</u></strong> </p><ul><li><p>Schottentor U</p></li><li><p>Parlament, U Volkstheater</p></li></ul><p></p>",
+       "descriptionPlain": "Haltestellenauflassung der Linien D, 1 und 71 in beiden Richtungen Haltestelle: Rathausplatz, Burgtheater Dauer: 13. November 2026 bis 20. Dezember 2026 an Freitagen, Samstagen, Sonntagen sowie am 08. Dezember jeweils von etwa 15:00 Uhr bis 22:30 Uhr Grund: Christkindlmarkt Ersatz: Schottentor U Parlament, U Volkstheater",
+       "title": "D, 1, 71: Rathausplatz, Burgtheater"
+      }
+     }
+    ],
+    "location": {
+     "properties": {
+      "attributes": {},
+      "coordName": "WGS84",
+      "type": "news"
+     },
+     "type": "Feature"
+    },
+    "name": "N20261022-0005",
+    "reasonId": 223,
+    "reasonName": "Haltestellenverlegung",
+    "refPoiCategoryId": 13296,
+    "relatedLines": [
+     "1",
+     "D",
+     "71"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 101,
+      "lineName": "1",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 171,
+      "lineName": "71",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 136,
+      "lineName": "D",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "time": {
+     "end": "2026-12-20T22:30:00.000+0100",
+     "start": "2026-11-06T06:00:00.000+0100",
+     "validFrom": "2026-11-13T15:00:00.000+0100"
+    },
+    "title": "D, 1, 71: Rathausplatz, Burgtheater"
+   },
+   {
+    "alertCause": "unknown",
+    "alertCauseId": 0,
     "description": "<p><strong><u>Haltestellenverlegung der Linie 11 in Richtung Kaiserebersdorf, Zinnergasse</u></strong></p><p><strong><u>Haltestelle:</u></strong> Wienerfeldgasse</p><p><strong><u>Von:</u></strong> Neilreichgasse 139C - 141</p><p><strong><u>Nach:</u></strong> Neilreichgasse 139A- 139B</p><p><strong><u>Dauer:</u></strong> von 27. Oktober 2026 etwa 07:00 Uhr, bis 19. November 2026 etwa 07:00 Uhr</p><p><strong><u>Grund:</u></strong> Gleisbauarbeiten</p>",
     "id": "N20261023-0001",
     "languages": [
@@ -3095,8 +3150,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U2",
-      "U1"
+      "U1",
+      "U2"
      ],
      "station": "Praterstern",
      "status": "geplante Wartung",
@@ -3110,8 +3165,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U2",
-     "U1"
+     "U1",
+     "U2"
     ],
     "relatedStops": [
      4117
@@ -3134,8 +3189,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U2",
-      "U1"
+      "U1",
+      "U2"
      ],
      "station": "Praterstern",
      "status": "geplante Wartung",
@@ -3149,8 +3204,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U2",
-     "U1"
+     "U1",
+     "U2"
     ],
     "relatedStops": [
      4112

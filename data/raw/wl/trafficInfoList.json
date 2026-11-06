@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261106-0002, I20260925-0011, I20260909-0007, I20260922-0032, I20261105-0049-F01, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20260922-0032, I20261106-0002-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1876-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1875-101, R115-136, R103-136, R102-136, R101-136, R100-136, R130-136, R45-136, R19-136, R119-136, R118-136, R117-136, R116-136, R318-437, R401-101, R293-474, R2345-127, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R1448-412, R1474-412, R2380-627, R3886-480, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2558-125, R662-413, R663-413, R1974-466, R1272-440, R1301-440, R500-101, R2005-466, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R45-136, R19-136, R130-136, R118-136, R117-136, R116-136, R119-136, R115-136, R103-136, R102-136, R101-136, R100-136, R318-437, R401-101, R293-474, R1448-412, R1474-412, R2345-127, R3886-480, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, R2005-466, R1590-457, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -217,52 +217,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "flooding",
-    "alertCauseId": 93,
-    "attributes": {
-     "relatedLineTypes": {
-      "13A": "ptBusCity"
-     }
-    },
-    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 13A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 13A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "13A: Wasserrohrgebrechen"
-      }
-     }
-    ],
-    "location": "Neubaugasse 81",
-    "name": "I20261105-0049-F01",
-    "owner": "WL",
-    "parentName": "I20261105-0049",
-    "priority": "1",
-    "reasonId": 37,
-    "reasonName": "Wasserrohrgebrechen",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 413,
-      "lineName": "13A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-06T05:24:00.000+0100",
-     "lastUpdate": "2026-11-06T05:24:00.000+0100",
-     "resume": "2026-11-06T05:24:00.000+0100",
-     "start": "2026-11-05T19:34:00.000+0100"
-    },
-    "title": "13A: Wasserrohrgebrechen"
-   },
-   {
     "alertCause": "fire",
     "alertCauseId": 5,
     "attributes": {
@@ -270,19 +224,19 @@
       "66A": "ptBusCity"
      }
     },
-    "description": "Die Linie 66A wird in Richtung Reumannplatz U zwischen Laxenburger Straße / Troststraße und Reumannplatz U über Inzersdorfer Straße umgeleitet. Voraussichtliche Dauer: 06:00 Uhr. Grund: Feuerwehreinsatz im Bereich Troststraße # Ettenreichgasse.",
-    "descriptionHTML": "<p>Die Linie 66A wird in Richtung Reumannplatz U zwischen Laxenburger Straße / Troststraße und Reumannplatz U über Inzersdorfer Straße umgeleitet.</p><p>Voraussichtliche Dauer: 06:00 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Troststraße # Ettenreichgasse.</p>",
+    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 66A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Die Linie 66A wird in Richtung Reumannplatz U zwischen Laxenburger Straße / Troststraße und Reumannplatz U über Inzersdorfer Straße umgeleitet.</p><p>Voraussichtliche Dauer: 06:00 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Troststraße # Ettenreichgasse.</p>",
-       "descriptionPlain": "Die Linie 66A wird in Richtung Reumannplatz U zwischen Laxenburger Straße / Troststraße und Reumannplatz U über Inzersdorfer Straße umgeleitet. Voraussichtliche Dauer: 06:00 Uhr. Grund: Feuerwehreinsatz im Bereich Troststraße # Ettenreichgasse.",
+       "descriptionHtml": "<p>Linie 66A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "66A: Feuerwehreinsatz"
       }
      }
     ],
     "location": "Troststraße / Ettenreichgasse",
-    "name": "I20261106-0002",
+    "name": "I20261106-0002-F01",
     "owner": "WL",
     "parentName": "I20261106-0002",
     "priority": "1",
@@ -301,8 +255,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-06T05:08:00.000+0100",
-     "lastUpdate": "2026-11-06T05:08:00.000+0100",
+     "created": "2026-11-06T05:48:00.000+0100",
+     "lastUpdate": "2026-11-06T05:48:00.000+0100",
+     "resume": "2026-11-06T05:48:00.000+0100",
      "start": "2026-11-06T05:05:00.000+0100"
     },
     "title": "66A: Feuerwehreinsatz"
@@ -628,6 +583,29 @@
      "start": "2026-11-05T00:00:28.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße 19-21"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1590-457",
+    "owner": "WL",
+    "parentName": "R1590-457",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "57A"
+    ],
+    "relatedStops": [
+     1590
+    ],
+    "time": {
+     "end": "2026-11-06T06:33:00.000+0100",
+     "start": "2026-11-06T05:34:03.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1318,52 +1296,6 @@
      "start": "2026-11-06T05:00:29.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Wasserrohrbruch\nUmleitung über Josefstädter Straße",
-    "name": "R662-413",
-    "owner": "WL",
-    "parentName": "R662-413",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedStops": [
-     662
-    ],
-    "time": {
-     "end": "2026-11-06T06:00:00.000+0100",
-     "start": "2026-11-06T04:30:26.000+0100"
-    },
-    "title": "Wasserrohrbruch\nUmleitung über Josefstädter Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Wasserrohrbruch\nBetrieb ab Neubaugasse, Burggasse",
-    "name": "R663-413",
-    "owner": "WL",
-    "parentName": "R663-413",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedStops": [
-     663
-    ],
-    "time": {
-     "end": "2026-11-06T06:00:00.000+0100",
-     "start": "2026-11-06T04:30:26.000+0100"
-    },
-    "title": "Wasserrohrbruch\nBetrieb ab Neubaugasse, Burggasse"
    },
    {
     "alertCause": "undefined alert cause",
