@@ -338,15 +338,16 @@ def _add_item_image(item: ET.Element) -> None:
 def _shown_end(it: FeedItem, ends_at: object) -> datetime | None:
     """The end the item's time line names, or ``None``.
 
-    WL's 11:11 expiry date is no end when the text names none of its own
-    (:func:`wl_plausibility.end_unknown`, operator decision 2026-10-08). The
-    time line leaves it out, and so does ``ext:ends_at``, which the website
-    shows as "Bis": "48A: Neubaugasse, Neustiftgasse" read "[Seit 19.10.]" on
-    the TV and "Bis: 08.10.2027, 11:11" on the website. The item keeps the
-    date as its expiry inside the pipeline.
+    WL's expiry date set by hand (11:11, or 23:59 a year after the
+    publication) is no end when the text names none of its own
+    (:func:`wl_plausibility.end_unknown`, operator decisions 2026-10-08 and
+    2026-11-06). The time line leaves it out, and so does ``ext:ends_at``,
+    which the website shows as "Bis": "48A: Neubaugasse, Neustiftgasse" read
+    "[Seit 19.10.]" on the TV and "Bis: 08.10.2027, 11:11" on the website.
+    The item keeps the date as its expiry inside the pipeline.
     """
     end = ends_at if isinstance(ends_at, datetime) else None
-    if _is_wl_notice(it) and end_unknown(str(it.get("description") or ""), end):
+    if _is_wl_notice(it) and end_unknown(str(it.get("description") or ""), end, _parse_datetime(it.get("pubDate"))):
         return None
     return end
 
