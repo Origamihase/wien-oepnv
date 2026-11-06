@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20260922-0032, I20261106-0008-F01, I20261106-0010-F01, I20261020-0029"
+    "trafficInfoNameList": "I20261106-0011, I20261106-0008-F01, I20260925-0011, I20261106-0012, I20260909-0007, I20260922-0032, I20261106-0010-F01, I20261020-0029, I20261106-0013"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1882-101, R1881-101, R1880-101, R1876-101, R1884-101, R1883-101, R1875-101, R116-136, R115-136, R103-136, R102-136, R101-136, R100-136, R119-136, R45-136, R19-136, R130-136, R118-136, R117-136, R293-474, R401-101, R318-437, R2345-127, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R1448-412, R1474-412, R2380-627, R3886-480, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, R58-136, R109-136, R105-136, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1875-101, R1880-101, R1876-101, R1881-101, R1884-101, R1883-101, R1882-101, R100-136, R118-136, R117-136, R116-136, R115-136, R103-136, R119-136, R102-136, R101-136, R45-136, R19-136, R130-136, R293-474, R401-101, R318-437, R2345-127, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R1448-412, R1474-412, R2380-627, R3886-480, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, R58-136, R109-136, R105-136, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -255,11 +255,12 @@
     "relatedStops": [
      4619
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-06T10:12:00.000+0100",
-     "lastUpdate": "2026-11-06T10:12:00.000+0100",
-     "resume": "2026-11-06T10:12:00.000+0100",
+     "end": "2026-11-06T11:28:00.000+0100",
+     "lastUpdate": "2026-11-06T11:28:00.000+0100",
+     "resume": "2026-11-06T11:28:00.000+0100",
      "start": "2026-11-06T10:03:00.000+0100"
     },
     "title": "U6: Polizeieinsatz"
@@ -309,6 +310,141 @@
      "start": "2026-11-06T10:40:00.000+0100"
     },
     "title": "D: Rettungseinsatz"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "3A": "ptBusCity"
+     }
+    },
+    "description": "Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+    "descriptionHTML": "<p>Linie 3A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Falschparker.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 3A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Falschparker.</p>",
+       "descriptionPlain": "Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+       "title": "3A: Falschparker"
+      }
+     }
+    ],
+    "name": "I20261106-0011",
+    "owner": "WL",
+    "parentName": "I20261106-0011",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "3A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 403,
+      "lineName": "3A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-06T11:15:00.000+0100",
+     "lastUpdate": "2026-11-06T11:15:00.000+0100",
+     "resume": "2026-11-06T11:15:00.000+0100",
+     "start": "2026-11-06T11:15:00.000+0100"
+    },
+    "title": "3A: Falschparker"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "97A": "ptBusCity"
+     }
+    },
+    "description": "Linie 97A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "<p>Linie 97A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 97A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+       "descriptionPlain": "Linie 97A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+       "title": "97A: Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261106-0012",
+    "owner": "WL",
+    "parentName": "I20261106-0012",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "97A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 497,
+      "lineName": "97A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-06T11:17:00.000+0100",
+     "lastUpdate": "2026-11-06T11:17:00.000+0100",
+     "resume": "2026-11-06T11:16:00.000+0100",
+     "start": "2026-11-06T11:16:00.000+0100"
+    },
+    "title": "97A: Verkehrsunfall"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "31": "ptTram"
+     }
+    },
+    "description": "Linie 31: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie 31:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 31:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie 31: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "31: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261106-0013",
+    "owner": "WL",
+    "parentName": "I20261106-0013",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 131,
+      "lineName": "31",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-06T11:26:00.000+0100",
+     "lastUpdate": "2026-11-06T11:26:00.000+0100",
+     "resume": "2026-11-06T11:24:00.000+0100",
+     "start": "2026-11-06T11:24:00.000+0100"
+    },
+    "title": "31: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",
