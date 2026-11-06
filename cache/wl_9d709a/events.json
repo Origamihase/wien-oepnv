@@ -662,6 +662,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11/71: Rettungseinsatz",
+    "description": "Linie 11: Betrieb nur zwischen Otto-Probst-Platz und Zentralfriedhof, 3. Tor. Linie 71: Betrieb nur zwischen Schottenring U und Zentralfriedhof, 3. Tor. Ersatz: Linien 69A, 73A. Voraussichtliche Dauer: 17:45 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Leberberg.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "a5619d9772cc883cb1b953f9355ba9588b9aa33f5715349337cf66be3aa61fd2",
+    "pubDate": "2026-11-06T17:14:00+01:00",
+    "starts_at": "2026-11-06T17:14:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=11,71|D=2026-11-06|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261106-0030"
+    ],
+    "_incident_start": "2026-11-06T17:14:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -914,22 +930,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "31A: Polizeieinsatz",
-    "description": "Linie 31A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "b1b59ef91c7e5513a7a2362ffbc5f6ec21eb687935ff3e74c62591a531321745",
-    "pubDate": "2026-11-06T16:02:00+01:00",
-    "starts_at": "2026-11-06T16:02:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=31A|D=2026-11-06|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261106-0025"
-    ],
-    "_incident_start": "2026-11-06T16:02:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -938,6 +938,18 @@
     "starts_at": "2026-11-05T00:00:27+01:00",
     "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-11-05|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "3: Fahrtbehinderung wegen Rettungseinsatz Betrieb ab Zentralfriedhof Tor 3",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\nBetrieb ab Zentralfriedhof Tor 3",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "f31eb7908922229f7ef5a3da18a1c5682d71ecf0913c4ff4e56994507be49822",
+    "pubDate": "2026-11-06T17:19:42+01:00",
+    "starts_at": "2026-11-06T17:19:45+01:00",
+    "ends_at": "2026-11-06T18:18:00+01:00",
+    "_identity": "wl|störung|L=3|D=2026-11-06|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -998,6 +1010,22 @@
     "starts_at": "2026-11-05T00:00:28+01:00",
     "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-05|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Falschparker",
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
+    "pubDate": "2026-11-06T17:15:00+01:00",
+    "starts_at": "2026-11-06T17:15:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=9|D=2026-11-06|TK=falschparker",
+    "_wl_ids": [
+      "I20261106-0031"
+    ],
+    "_incident_start": "2026-11-06T17:15:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1066,18 +1094,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "ecd5f95a17857dc93a63349472e98b39e10391574ac70ec7b83eaf44b2f51e5a",
-    "pubDate": "2026-11-06T16:11:04+01:00",
-    "starts_at": "2026-11-06T16:21:36+01:00",
-    "ends_at": "2026-11-06T17:21:00+01:00",
-    "_identity": "wl|störung|L=O|D=2026-11-06|TK=fahrtbehinderung verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "O: Verkehrsunfall",
     "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1111,17 +1127,17 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U4: Betriebsstörung",
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "description": "Die Linie U4 fährt derzeit nur zwischen Heiligenstadt und Hietzing. Ersatz: Linien 10, 49,, 52, 53A und 47B. Voraussichtliche Dauer: 17:50 Uhr. Grund: Betriebsstörung im Haltestellenbereich Braunschweiggasse.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
-    "pubDate": "2026-11-06T16:13:00+01:00",
-    "starts_at": "2026-11-06T16:13:00+01:00",
+    "pubDate": "2026-11-06T17:20:00+01:00",
+    "starts_at": "2026-11-06T17:20:00+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=U4|D=2026-11-06|TK=u4 betriebsstörung",
     "_wl_ids": [
-      "I20261106-0028"
+      "I20261106-0032"
     ],
-    "_incident_start": "2026-11-06T16:13:00+01:00"
+    "_incident_start": "2026-11-06T17:20:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1162,5 +1178,17 @@
     "starts_at": "2026-09-14T04:00:00+02:00",
     "ends_at": "2026-12-31T23:59:00+01:00",
     "_identity": "wl|störung|L=|D=2026-09-14|TK=sperre"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "cd5d56c06243b3c30195b876976da1ea43f2a200816330c453a40b5fc37dc6bc",
+    "pubDate": "2026-11-06T17:16:41+01:00",
+    "starts_at": "2026-11-06T17:20:14+01:00",
+    "ends_at": "2026-11-06T18:19:00+01:00",
+    "_identity": "wl|störung|L=|D=2026-11-06|TK=rettungseinsatz"
   }
 ]

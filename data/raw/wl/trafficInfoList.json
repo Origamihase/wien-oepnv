@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260922-0032, I20260925-0011, I20261020-0029, I20261106-0022, I20261106-0025, I20261106-0026-F01, I20261106-0027, I20261106-0028, I20261106-0029, I20261106-0029-F01"
+    "trafficInfoNameList": "I20261106-0022, I20261106-0026-F01, I20261106-0029-F01, I20260925-0011, I20261106-0031-F01, I20260909-0007, I20261106-0032, I20260922-0032, I20261020-0029, I20261106-0030, I20261106-0028"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1875-101, R1882-101, R1876-101, R1880-101, R1884-101, R1883-101, R1881-101, R103-136, R118-136, R116-136, R119-136, R115-136, R100-136, R101-136, R102-136, R19-136, R117-136, R130-136, R45-136, R293-474, R318-437, R401-101, R2373-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-126, R2379-627, R2380-627, R2345-127, R3886-480, R1448-412, R1474-412, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, R346-170, R311-170, R3445-170, R3446-170, R3447-170, R3448-170, R3449-170, R392-170, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1882-101, R1876-101, R1881-101, R1875-101, R1880-101, R1884-101, R1883-101, R118-136, R130-136, R102-136, R101-136, R100-136, R117-136, R115-136, R103-136, R119-136, R45-136, R19-136, R116-136, R293-474, R318-437, R401-101, R2373-126, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2379-627, R2380-627, R2345-127, R3886-480, R1448-412, R1474-412, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, R4733-0, R2031-0, R2032-0, R2312-0, R2455-0, R2974-0, R2680-0, R2299-0, R2454-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -262,50 +262,6 @@
     "title": "U6: Verspätungen"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "31A": "ptBusCity"
-     }
-    },
-    "description": "Linie 31A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "descriptionHTML": "<p>Linie 31A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Polizeieinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 31A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Polizeieinsatz.</p>",
-       "descriptionPlain": "Linie 31A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-       "title": "31A: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261106-0025",
-    "owner": "WL",
-    "parentName": "I20261106-0025",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "31A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 431,
-      "lineName": "31A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-06T16:05:00.000+0100",
-     "lastUpdate": "2026-11-06T16:05:00.000+0100",
-     "start": "2026-11-06T16:02:00.000+0100"
-    },
-    "title": "31A: Polizeieinsatz"
-   },
-   {
     "alertCause": "accident",
     "alertCauseId": 77,
     "attributes": {
@@ -355,52 +311,6 @@
     "title": "O: Verkehrsunfall"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Die Linie U3 fährt derzeit zwischen den Stationen Westbahnhof und Schweglerstraße in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 16;50 Uhr. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Die Linie U3 fährt derzeit zwischen den Stationen Westbahnhof und Schweglerstraße in beiden Richtungen über Gleis 1.</p><p>Voraussichtliche Dauer: 16;50 Uhr.</p><p>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Die Linie U3 fährt derzeit zwischen den Stationen Westbahnhof und Schweglerstraße in beiden Richtungen über Gleis 1.</p><p>Voraussichtliche Dauer: 16;50 Uhr.</p><p>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Die Linie U3 fährt derzeit zwischen den Stationen Westbahnhof und Schweglerstraße in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 16;50 Uhr. Grund: Schadhaftes Fahrzeug.",
-       "title": "U3: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261106-0027",
-    "owner": "WL",
-    "parentName": "I20261106-0027",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-06T16:12:00.000+0100",
-     "end": "2026-11-06T17:00:00.000+0100",
-     "lastUpdate": "2026-11-06T17:00:00.000+0100",
-     "resume": "2026-11-06T17:00:00.000+0100",
-     "start": "2026-11-06T16:12:00.000+0100"
-    },
-    "title": "U3: Schadhaftes Fahrzeug"
-   },
-   {
     "alertCause": "miscellaneous",
     "alertCauseId": 137,
     "attributes": {
@@ -436,63 +346,15 @@
       "vehicleType": "ptMetro"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-06T16:14:00.000+0100",
-     "lastUpdate": "2026-11-06T16:14:00.000+0100",
+     "end": "2026-11-06T17:28:00.000+0100",
+     "lastUpdate": "2026-11-06T17:28:00.000+0100",
      "resume": "2026-11-06T16:13:00.000+0100",
      "start": "2026-11-06T16:13:00.000+0100"
     },
     "title": "U4: Betriebsstörung"
-   },
-   {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 17:00 Uhr. Grund: Betriebsstörung im Haltestellenbereich Erdberg.",
-    "descriptionHTML": "<p>Linie U3:<br>Fahrtbehinderung in beiden Richtungen.</p><p>Voraussichtliche Dauer: 17:00 Uhr.</p><p>Grund: Betriebsstörung im Haltestellenbereich Erdberg.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3:<br>Fahrtbehinderung in beiden Richtungen.</p><p>Voraussichtliche Dauer: 17:00 Uhr.</p><p>Grund: Betriebsstörung im Haltestellenbereich Erdberg.</p>",
-       "descriptionPlain": "Linie U3: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 17:00 Uhr. Grund: Betriebsstörung im Haltestellenbereich Erdberg.",
-       "title": "U3: Betriebsstörung"
-      }
-     }
-    ],
-    "name": "I20261106-0029",
-    "owner": "WL",
-    "parentName": "I20261106-0029",
-    "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4917
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-06T16:39:00.000+0100",
-     "end": "2026-11-06T17:00:00.000+0100",
-     "lastUpdate": "2026-11-06T17:00:00.000+0100",
-     "resume": "2026-11-06T17:00:00.000+0100",
-     "start": "2026-11-06T16:34:00.000+0100"
-    },
-    "title": "U3: Betriebsstörung"
    },
    {
     "alertCause": "miscellaneous",
@@ -541,6 +403,153 @@
      "start": "2026-11-06T16:34:00.000+0100"
     },
     "title": "U3: Betriebsstörung"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "11": "ptTram",
+      "71": "ptTram"
+     }
+    },
+    "description": "Linie 11: Betrieb nur zwischen Otto-Probst-Platz und Zentralfriedhof, 3. Tor. Linie 71: Betrieb nur zwischen Schottenring U und Zentralfriedhof, 3. Tor. Ersatz: Linien 69A, 73A. Voraussichtliche Dauer: 17:45 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Leberberg.",
+    "descriptionHTML": "<p>Linie 11:<br>Betrieb nur zwischen Otto-Probst-Platz und Zentralfriedhof, 3. Tor.<br>Linie 71:<br>Betrieb nur zwischen Schottenring U und Zentralfriedhof, 3. Tor.</p><p>Ersatz: Linien 69A, 73A.</p><p>Voraussichtliche Dauer: 17:45 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Leberberg.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 11:<br>Betrieb nur zwischen Otto-Probst-Platz und Zentralfriedhof, 3. Tor.<br>Linie 71:<br>Betrieb nur zwischen Schottenring U und Zentralfriedhof, 3. Tor.</p><p>Ersatz: Linien 69A, 73A.</p><p>Voraussichtliche Dauer: 17:45 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Leberberg.</p>",
+       "descriptionPlain": "Linie 11: Betrieb nur zwischen Otto-Probst-Platz und Zentralfriedhof, 3. Tor. Linie 71: Betrieb nur zwischen Schottenring U und Zentralfriedhof, 3. Tor. Ersatz: Linien 69A, 73A. Voraussichtliche Dauer: 17:45 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Leberberg.",
+       "title": "11, 71: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261106-0030",
+    "owner": "WL",
+    "parentName": "I20261106-0030",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11",
+     "71"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 111,
+      "lineName": "11",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 171,
+      "lineName": "71",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     2298
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-06T17:15:00.000+0100",
+     "lastUpdate": "2026-11-06T17:19:00.000+0100",
+     "start": "2026-11-06T17:14:00.000+0100"
+    },
+    "title": "11, 71: Rettungseinsatz"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "9": "ptTram"
+     }
+    },
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "9: Falschparker"
+      }
+     }
+    ],
+    "location": "Hormayrgasse",
+    "name": "I20261106-0031-F01",
+    "owner": "WL",
+    "parentName": "I20261106-0031",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 109,
+      "lineName": "9",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-06T17:17:00.000+0100",
+     "lastUpdate": "2026-11-06T17:17:00.000+0100",
+     "resume": "2026-11-06T17:17:00.000+0100",
+     "start": "2026-11-06T17:15:00.000+0100"
+    },
+    "title": "9: Falschparker"
+   },
+   {
+    "alertCause": "miscellaneous",
+    "alertCauseId": 137,
+    "attributes": {
+     "relatedLineTypes": {
+      "U4": "ptMetro"
+     }
+    },
+    "description": "Die Linie U4 fährt derzeit nur zwischen Heiligenstadt und Hietzing. Ersatz: Linien 10, 49,, 52, 53A und 47B. Voraussichtliche Dauer: 17:50 Uhr. Grund: Betriebsstörung im Haltestellenbereich Braunschweiggasse.",
+    "descriptionHTML": "<p>Die Linie U4 fährt derzeit nur zwischen Heiligenstadt und Hietzing.</p><p>Ersatz: Linien 10, 49,, 52, 53A und 47B.</p><p>Voraussichtliche Dauer: 17:50 Uhr.</p><p>Grund: Betriebsstörung im Haltestellenbereich Braunschweiggasse.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Die Linie U4 fährt derzeit nur zwischen Heiligenstadt und Hietzing.</p><p>Ersatz: Linien 10, 49,, 52, 53A und 47B.</p><p>Voraussichtliche Dauer: 17:50 Uhr.</p><p>Grund: Betriebsstörung im Haltestellenbereich Braunschweiggasse.</p>",
+       "descriptionPlain": "Die Linie U4 fährt derzeit nur zwischen Heiligenstadt und Hietzing. Ersatz: Linien 10, 49,, 52, 53A und 47B. Voraussichtliche Dauer: 17:50 Uhr. Grund: Betriebsstörung im Haltestellenbereich Braunschweiggasse.",
+       "title": "U4: Betriebsstörung"
+      }
+     }
+    ],
+    "name": "I20261106-0032",
+    "owner": "WL",
+    "parentName": "I20261106-0032",
+    "priority": "1",
+    "reasonId": 14,
+    "reasonName": "Betriebsstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 304,
+      "lineName": "U4",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4407
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-06T17:26:00.000+0100",
+     "lastUpdate": "2026-11-06T17:27:00.000+0100",
+     "start": "2026-11-06T17:20:00.000+0100"
+    },
+    "title": "U4: Betriebsstörung"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1074,6 +1083,86 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrbehinderung \nRettungseinsatz \n\n",
+    "name": "R2031-0",
+    "owner": "WL",
+    "parentName": "R2031-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2031
+    ],
+    "time": {
+     "end": "2026-11-06T18:16:00.000+0100",
+     "start": "2026-11-06T17:16:45.000+0100"
+    },
+    "title": "Fahrbehinderung \nRettungseinsatz \n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrbehinderung \nRettungseinsatz \n\n",
+    "name": "R2032-0",
+    "owner": "WL",
+    "parentName": "R2032-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2032
+    ],
+    "time": {
+     "end": "2026-11-06T18:16:00.000+0100",
+     "start": "2026-11-06T17:16:45.000+0100"
+    },
+    "title": "Fahrbehinderung \nRettungseinsatz \n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
+    "name": "R2299-0",
+    "owner": "WL",
+    "parentName": "R2299-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2299
+    ],
+    "time": {
+     "end": "2026-11-06T18:19:00.000+0100",
+     "start": "2026-11-06T17:20:12.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\nBetrieb ab \nZentralfriedhof Tor 3",
+    "name": "R2312-0",
+    "owner": "WL",
+    "parentName": "R2312-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2312
+    ],
+    "time": {
+     "end": "2026-11-06T18:18:00.000+0100",
+     "start": "2026-11-06T17:19:42.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\nBetrieb ab \nZentralfriedhof Tor 3"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2343-125",
     "owner": "WL",
@@ -1373,6 +1462,46 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
+    "name": "R2454-0",
+    "owner": "WL",
+    "parentName": "R2454-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2454
+    ],
+    "time": {
+     "end": "2026-11-06T18:19:00.000+0100",
+     "start": "2026-11-06T17:20:14.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\nBetrieb ab \nZentralfriedhof Tor 3",
+    "name": "R2455-0",
+    "owner": "WL",
+    "parentName": "R2455-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2455
+    ],
+    "time": {
+     "end": "2026-11-06T18:18:00.000+0100",
+     "start": "2026-11-06T17:19:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\nBetrieb ab \nZentralfriedhof Tor 3"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
     "name": "R2558-125",
     "owner": "WL",
@@ -1392,6 +1521,26 @@
      "start": "2026-11-05T00:00:29.000+0100"
     },
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\nBetrieb ab \nZentralfriedhof Tor 3",
+    "name": "R2680-0",
+    "owner": "WL",
+    "parentName": "R2680-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2680
+    ],
+    "time": {
+     "end": "2026-11-06T18:18:00.000+0100",
+     "start": "2026-11-06T17:19:45.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\nBetrieb ab \nZentralfriedhof Tor 3"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1419,25 +1568,22 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R311-170",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\nBetrieb ab \nZentralfriedhof Tor 3",
+    "name": "R2974-0",
     "owner": "WL",
-    "parentName": "R311-170",
+    "parentName": "R2974-0",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
     "relatedStops": [
-     311
+     2974
     ],
     "time": {
-     "end": "2026-11-06T17:10:00.000+0100",
-     "start": "2026-11-06T16:11:04.000+0100"
+     "end": "2026-11-06T18:18:00.000+0100",
+     "start": "2026-11-06T17:19:45.000+0100"
     },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\nBetrieb ab \nZentralfriedhof Tor 3"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1465,144 +1611,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R3445-170",
-    "owner": "WL",
-    "parentName": "R3445-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     3445
-    ],
-    "time": {
-     "end": "2026-11-06T17:10:00.000+0100",
-     "start": "2026-11-06T16:11:07.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R3446-170",
-    "owner": "WL",
-    "parentName": "R3446-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     3446
-    ],
-    "time": {
-     "end": "2026-11-06T17:17:00.000+0100",
-     "start": "2026-11-06T16:18:38.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R3447-170",
-    "owner": "WL",
-    "parentName": "R3447-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     3447
-    ],
-    "time": {
-     "end": "2026-11-06T17:17:00.000+0100",
-     "start": "2026-11-06T16:18:38.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R3448-170",
-    "owner": "WL",
-    "parentName": "R3448-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     3448
-    ],
-    "time": {
-     "end": "2026-11-06T17:21:00.000+0100",
-     "start": "2026-11-06T16:19:08.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R3449-170",
-    "owner": "WL",
-    "parentName": "R3449-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     3449
-    ],
-    "time": {
-     "end": "2026-11-06T17:21:00.000+0100",
-     "start": "2026-11-06T16:19:08.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R346-170",
-    "owner": "WL",
-    "parentName": "R346-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     346
-    ],
-    "time": {
-     "end": "2026-11-06T17:10:00.000+0100",
-     "start": "2026-11-06T16:11:04.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
     "name": "R3886-480",
     "owner": "WL",
@@ -1622,29 +1630,6 @@
      "start": "2026-11-05T00:00:28.000+0100"
     },
     "title": "Bauarbeiten\nBetrieb ab Vivariumstraße 2"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R392-170",
-    "owner": "WL",
-    "parentName": "R392-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     392
-    ],
-    "time": {
-     "end": "2026-11-06T17:21:00.000+0100",
-     "start": "2026-11-06T16:21:36.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1691,6 +1676,26 @@
      "start": "2026-11-03T00:00:14.000+0100"
     },
     "title": "Züge halten\nWipplingerstr 39"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrbehinderung \nRettungseinsatz \n\n",
+    "name": "R4733-0",
+    "owner": "WL",
+    "parentName": "R4733-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     4733
+    ],
+    "time": {
+     "end": "2026-11-06T18:16:00.000+0100",
+     "start": "2026-11-06T17:16:41.000+0100"
+    },
+    "title": "Fahrbehinderung \nRettungseinsatz \n\n"
    },
    {
     "alertCause": "undefined alert cause",
