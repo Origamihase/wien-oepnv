@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1016568, ftazW_212, ftazW_1016948, ftazW_1031285, ftazW_1351713"
+    "trafficInfoNameList": "ftazW_1016568, ftazW_212, ftazW_1016948, ftazW_1031285, ftazW_1351713, ftazW_97, ftazW_1016949, ftazW_1353814, ftazW_1031271, ftazW_1351712"
    }
   ],
   "poiCategoryGroups": [
@@ -3126,6 +3126,82 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "09.11.2026 05:15",
+     "ausVon": "09.11.2026 01:15",
+     "location": "U1 Bahnsteig Richtung Oberlaa - Zwischengeschoss Zugang U2 - Ausgang Lassallestraße",
+     "rbls": [
+      4112
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2",
+      "U1"
+     ],
+     "station": "Praterstern",
+     "status": "geplante Wartung",
+     "towards": "U1 Oberlaa"
+    },
+    "description": "U1 Bahnsteig Richtung Oberlaa - Zwischengeschoss Zugang U2 - Ausgang Lassallestraße",
+    "elevatorId": "PR 02",
+    "name": "ftazW_1016949",
+    "parentName": "ftazW_1016949",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2",
+     "U1"
+    ],
+    "relatedStops": [
+     4112
+    ],
+    "time": {
+     "end": "2026-11-09T05:15:00.000+0100",
+     "start": "2026-11-09T01:15:00.000+0100"
+    },
+    "title": "Praterstern"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "09.11.2026 05:15",
+     "ausVon": "09.11.2026 01:15",
+     "location": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Kaisermühlendamm",
+     "rbls": [
+      4256
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Donaustadtbrücke",
+     "status": "geplante Wartung",
+     "towards": "U2 Karlsplatz"
+    },
+    "description": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Kaisermühlendamm",
+    "elevatorId": "DT 03",
+    "name": "ftazW_1031271",
+    "parentName": "ftazW_1031271",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4256
+    ],
+    "time": {
+     "end": "2026-11-09T05:15:00.000+0100",
+     "start": "2026-11-09T01:15:00.000+0100"
+    },
+    "title": "Donaustadtbrücke"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "09.11.2026 00:45",
      "ausVon": "08.11.2026 20:45",
      "location": "U2 Mittelbahnsteig - Ausgang Kapellenweg",
@@ -3160,6 +3236,45 @@
      "start": "2026-11-08T20:45:00.000+0100"
     },
     "title": "Donauspital"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "09.11.2026 05:15",
+     "ausVon": "09.11.2026 01:15",
+     "location": "beide Fahrtrichtungen - Ausgang Ada Christengasse bzw. Bahnlände",
+     "rbls": [
+      4135,
+      4132
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Neulaa",
+     "status": "geplante Wartung",
+     "towards": "U1 beide Richtungen"
+    },
+    "description": "beide Fahrtrichtungen - Ausgang Ada Christengasse bzw. Bahnlände",
+    "elevatorId": "LN 01",
+    "name": "ftazW_1351712",
+    "parentName": "ftazW_1351712",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4135,
+     4132
+    ],
+    "time": {
+     "end": "2026-11-09T05:15:00.000+0100",
+     "start": "2026-11-09T01:15:00.000+0100"
+    },
+    "title": "Neulaa"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3204,6 +3319,38 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "09.11.2026 05:15",
+     "ausVon": "09.11.2026 01:15",
+     "location": "Ausgang Schedifkaplatz - Zwischengeschoß Zugang ÖBB",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Bahnhof Meidling",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Ausgang Schedifkaplatz - Zwischengeschoß Zugang ÖBB",
+    "elevatorId": "PH 03",
+    "name": "ftazW_1353814",
+    "parentName": "ftazW_1353814",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "time": {
+     "end": "2026-11-09T05:15:00.000+0100",
+     "start": "2026-11-09T01:15:00.000+0100"
+    },
+    "title": "Bahnhof Meidling"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "09.11.2026 00:45",
      "ausVon": "08.11.2026 20:45",
      "location": "U6 Mittelbahnsteig - Zwischengeschoss Zugang ÖBB Bahnsteig",
@@ -3231,6 +3378,40 @@
      "start": "2026-11-08T20:45:00.000+0100"
     },
     "title": "Bahnhof Meidling"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "09.11.2026 05:15",
+     "ausVon": "09.11.2026 01:15",
+     "location": "Zwischengeschoß - Ausgang Stephansplatz",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U1",
+      "U3"
+     ],
+     "station": "Stephansplatz",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Zwischengeschoß - Ausgang Stephansplatz",
+    "elevatorId": "SZ 04",
+    "name": "ftazW_97",
+    "parentName": "ftazW_97",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1",
+     "U3"
+    ],
+    "time": {
+     "end": "2026-11-09T05:15:00.000+0100",
+     "start": "2026-11-09T01:15:00.000+0100"
+    },
+    "title": "Stephansplatz"
    }
   ]
  },
