@@ -638,7 +638,9 @@ verdrängt eine andere Störung.
     „Fahrtbehinderung wegen Rettungseinsatz Züge halten in Tokiostraße.“ als
     einen Satz (ebenso „26: Verkehrsunfall“ am 04.11.). Jetzt: „Fahrtbehinderung
     wegen Rettungseinsatz. Züge halten in Tokiostraße.“ Den Wortlaut der
-    Quelle ändert die Regel nicht, sie setzt nur das Satzende.
+    Quelle ändert die Regel nicht, sie setzt nur das Satzende; dass die
+    Kurzmeldung die Ursache des Titels wiederholt, bleibt
+    (Betreiberentscheidung 2026-11-06, „WL-Wortlaut behalten“).
   - Ausnahmen: Eine Ursache von mehr als `_MAX_LISTED_WORDS` (6) Wörtern
     ist ein Satz. Die Meldung „18: Haltestelle Stadionbrücke … aufgelassen.
     Bitte …“, seit Juli im Cache, behält ihren Eintrag und schließt sich
