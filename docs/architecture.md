@@ -336,7 +336,9 @@ verdrängt eine andere Störung.
     (`_is_long_message`: Der Text endet mit einem Punkt; im WL-Cache vom
     September gilt das für alle 504 Texte in Sätzen und für keine der 247
     Kurzmeldungen). Das Präfix „Linie 48A:“ taugt dafür nicht, weil
-    `_post_filter_wl` es beim Lesen des Caches entfernt und manche
+    `_post_filter_wl` es beim Lesen des Caches entfernt (seit 2026-11-06
+    auch „Linie Badner Bahn:“, WLs Name der Linie LB, mit dem der Satz am
+    05.11. seine englische Vorlage verfehlte; `tests/test_wl_badner_bahn_prefix.py`) und manche
     Meldungen es nie hatten. Anlass: Am 27.09. stand „48A: Falschparker“
     über „Grund: Fremder Verkehrsunfall“, und angehängte Kurzmeldungen
     schoben den zweiten Satz einer ausführlichen Meldung über die
@@ -547,7 +549,12 @@ verdrängt eine andere Störung.
     „Bauarbeiten“ und „Gleisbauarbeiten“ können zwei Baustellen sein
     („12A: Bauarbeiten, Gleisbauarbeiten“ über „Bauarbeiten: Busse halten
     Linke Wienzeile 110. Gleisbauarbeiten: Betrieb ab Johnstraße U,
-    Schweglerstraße 19-21.“).
+    Schweglerstraße 19-21.“). Seit 2026-11-06 ist auch jedes Paar eine
+    Ursache, das das Glossar (`src/feed/glossary.py`) gleich übersetzt
+    (`_same_translation` in `_cause_key`): „13A: Wasserrohrbruch,
+    Wasserrohrgebrechen“ (05.11. 20:31 bis 06.11. 05:30) las englisch „Burst
+    water pipe, burst water pipe“; jetzt „13A: Wasserrohrgebrechen“ mit dem
+    Text der ausführlichen Meldung (`tests/test_wl_cause_same_translation.py`).
   - Mehrere Ursachen: ein Eintrag, der jede nennt, der neueste Vorfall
     zuerst und mit dessen GUID, damit ein neuer Vorfall den Feed weiter
     anführt (`_combined_incidents`). Je Vorfall ein Satz „Ursache: Folge.“
