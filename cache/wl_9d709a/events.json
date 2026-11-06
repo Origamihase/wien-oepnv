@@ -678,6 +678,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12/31: Verkehrsunfall",
+    "description": "Linie 12: Fahrtbehinderung in Richtung Hillerstraße. Linie 31: Fahrtbehinderung in Richtung Stammersdorf. Voraussichtliche Dauer: 19:00 Uhr. Grund: Verkehrsunfall im Bereich Stromstraße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "914c6b5e04d595e82e39e604ade71f20738c271030c02a13413131d9e4e410b7",
+    "pubDate": "2026-11-06T18:28:00+01:00",
+    "starts_at": "2026-11-06T18:28:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=12,31|D=2026-11-06|TK=12 31 verkehrsunfall",
+    "_wl_ids": [
+      "I20261106-0037"
+    ],
+    "_incident_start": "2026-11-06T18:28:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12A: Betrieb ab Johnstraße U",
     "description": "Gleisbauarbeiten\nBetrieb ab Johnstraße U",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -698,6 +714,22 @@
     "starts_at": "2026-11-05T00:00:28+01:00",
     "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=12A|D=2026-11-05|TK=betrieb ab schweglerstrasse 19 21"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Polizeieinsatz",
+    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71",
+    "pubDate": "2026-11-06T18:22:00+01:00",
+    "starts_at": "2026-11-06T18:22:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=13A|D=2026-11-06|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261106-0036"
+    ],
+    "_incident_start": "2026-11-06T18:22:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -958,18 +990,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "3: Fahrtbehinderung wegen Rettungseinsatz Betrieb ab Zentralfriedhof Tor 3",
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\nBetrieb ab Zentralfriedhof Tor 3",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "f31eb7908922229f7ef5a3da18a1c5682d71ecf0913c4ff4e56994507be49822",
-    "pubDate": "2026-11-06T17:19:42+01:00",
-    "starts_at": "2026-11-06T17:19:45+01:00",
-    "ends_at": "2026-11-06T18:18:00+01:00",
-    "_identity": "wl|störung|L=3|D=2026-11-06|TK=rettungseinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "40A: Busse halten Liechtensteinstraße 38",
     "description": "Bauarbeiten\nBusse halten Liechtensteinstraße 38",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -995,7 +1015,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "49: Verkehrsunfall",
-    "description": "Linie 49: Betrieb nur zwischen Hütteldorf, Bujattigasse und Urban-Loritz-Platz. Ersatz: Linien U3, U6, 48A. Voraussichtliche Dauer: 18:15 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Stiftgasse.",
+    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "404f3551d0efb1f503b6da3f9dea1315ba797797becc9ded87406bb28d1acc34",
     "pubDate": "2026-11-06T17:49:00+01:00",
@@ -1030,6 +1050,22 @@
     "starts_at": "2026-11-06T17:56:18+01:00",
     "ends_at": "2026-11-06T18:55:00+01:00",
     "_identity": "wl|störung|L=49|D=2026-11-06|TK=fahrtbehinderung verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "59A: Falschparker",
+    "description": "Linie 59A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "0edcef46ecbbea41f4d6233af3678b71095a5f24cac6ce1f322d629f59e9c5bb",
+    "pubDate": "2026-11-06T18:02:00+01:00",
+    "starts_at": "2026-11-06T18:02:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=59A|D=2026-11-06|TK=falschparker",
+    "_wl_ids": [
+      "I20261106-0035"
+    ],
+    "_incident_start": "2026-11-06T18:02:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1082,22 +1118,6 @@
     "starts_at": "2026-11-05T00:00:28+01:00",
     "ends_at": "2026-11-06T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-05|TK=betrieb ab vivariumstrasse 2"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Falschparker",
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2026-11-06T17:15:00+01:00",
-    "starts_at": "2026-11-06T17:15:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=9|D=2026-11-06|TK=falschparker",
-    "_wl_ids": [
-      "I20261106-0031"
-    ],
-    "_incident_start": "2026-11-06T17:15:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1198,34 +1218,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Betriebsstörung",
-    "description": "Die Linie U4 fährt derzeit nur zwischen Heiligenstadt und Hietzing. Ersatz: Linien 10, 49,, 52, 53A und 47B. Voraussichtliche Dauer: 18:10 Uhr. Grund: Betriebsstörung im Haltestellenbereich Braunschweiggasse.",
+    "title": "U4: Polizeieinsatz",
+    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
+    "guid": "630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a",
     "pubDate": "2026-11-06T17:20:00+01:00",
     "starts_at": "2026-11-06T17:20:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=U4|D=2026-11-06|TK=u4 betriebsstörung",
+    "_identity": "wl|störung|L=U4|D=2026-11-06|TK=polizeieinsatz",
     "_wl_ids": [
       "I20261106-0032"
     ],
     "_incident_start": "2026-11-06T17:20:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Verspätungen",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
-    "pubDate": "2026-11-06T14:31:00+01:00",
-    "starts_at": "2026-11-06T14:31:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U6|D=2026-11-06|TK=u6 verspätungen",
-    "_wl_ids": [
-      "I20261106-0022"
-    ],
-    "_incident_start": "2026-11-06T14:31:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1250,17 +1254,5 @@
     "starts_at": "2026-09-14T04:00:00+02:00",
     "ends_at": "2026-12-31T23:59:00+01:00",
     "_identity": "wl|störung|L=|D=2026-09-14|TK=sperre"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "cd5d56c06243b3c30195b876976da1ea43f2a200816330c453a40b5fc37dc6bc",
-    "pubDate": "2026-11-06T17:16:41+01:00",
-    "starts_at": "2026-11-06T17:20:14+01:00",
-    "ends_at": "2026-11-06T18:19:00+01:00",
-    "_identity": "wl|störung|L=|D=2026-11-06|TK=rettungseinsatz"
   }
 ]
