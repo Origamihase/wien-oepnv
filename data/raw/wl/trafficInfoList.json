@@ -13,7 +13,7 @@
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1876-101, R1882-101, R1884-101, R1881-101, R1880-101, R1883-101, R1875-101, R101-136, R102-136, R103-136, R115-136, R116-136, R117-136, R119-136, R118-136, R130-136, R19-136, R45-136, R100-136, R318-437, R401-101, R293-474, R1474-412, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R3886-480, R1448-412, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, R1590-457, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1876-101, R1875-101, R1883-101, R1882-101, R1881-101, R1884-101, R1880-101, R115-136, R103-136, R102-136, R101-136, R119-136, R100-136, R45-136, R19-136, R130-136, R118-136, R117-136, R116-136, R318-437, R401-101, R293-474, R1474-412, R3886-480, R2359-125, R2343-626, R2343-125, R2378-627, R1448-412, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -583,29 +583,6 @@
      "start": "2026-11-05T00:00:28.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Schweglerstraße 19-21"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R1590-457",
-    "owner": "WL",
-    "parentName": "R1590-457",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "57A"
-    ],
-    "relatedStops": [
-     1590
-    ],
-    "time": {
-     "end": "2026-11-06T06:33:00.000+0100",
-     "start": "2026-11-06T05:34:03.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
