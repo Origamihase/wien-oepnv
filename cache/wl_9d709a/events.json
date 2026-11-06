@@ -702,6 +702,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "13A: Wasserrohrbruch Umleitung über Josefstädter Straße",
+    "description": "Wasserrohrbruch\nUmleitung über Josefstädter Straße",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "a20b46492619e91d60711b031fb05376558d5092611f63954256f79d6134986b",
+    "pubDate": "2026-11-06T04:30:26+01:00",
+    "starts_at": "2026-11-06T04:30:26+01:00",
+    "ends_at": "2026-11-06T06:00:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2026-11-06|TK=umleitung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Wasserrohrbruch Betrieb ab Neubaugasse, Burggasse",
+    "description": "Wasserrohrbruch\nBetrieb ab Neubaugasse, Burggasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "425523dae3972731251dc4671a481146caf233534f86b85323eb52dc0ef029f4",
+    "pubDate": "2026-11-06T04:30:26+01:00",
+    "starts_at": "2026-11-06T04:30:26+01:00",
+    "ends_at": "2026-11-06T06:00:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2026-11-06|TK=wasserrohrbruch betrieb ab neubaugasse burggasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1086,18 +1110,6 @@
     "starts_at": "2026-11-06T01:00:14+01:00",
     "ends_at": "2026-11-06T05:00:00+01:00",
     "_identity": "wl|störung|L=N49|D=2026-11-06|TK=betrieb ab schweglerstrasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N66: Busse halten Salvatorianerplatz",
-    "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "24aa68a100b6cf9da31697ad90c76566903c00e84cace4ff88a183b77a6b231c",
-    "pubDate": "2026-11-06T01:00:18+01:00",
-    "starts_at": "2026-11-06T01:00:18+01:00",
-    "ends_at": "2026-11-06T04:20:00+01:00",
-    "_identity": "wl|störung|L=N66|D=2026-11-06|TK=busse halten salvatorianerplatz"
   },
   {
     "source": "Wiener Linien",
