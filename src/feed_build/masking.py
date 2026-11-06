@@ -113,6 +113,31 @@ def _station_comma_forms(variants: set[str]) -> set[str]:
     return forms
 
 
+# WL's stop directory abbreviates "Bahnhof" ("Bhf. Meidling", "Bhf. Hütteldorf",
+# "Bhf. Atzgersdorf S, Knotzenbachgasse": ten names in data/stations.json),
+# its notices write the name out: "Haltestellenverlegung der Linie 15A in
+# Richtung Bahnhof Meidling S U, Schedifkaplatz" (2026-11-05). Only
+# "Meidling" was shielded, and the model made "Station Meidling" of the
+# stop's name (finding of the KI watcher, 2026-11-06). The written-out and
+# the dotless form stand for the same name. A "Bahnhof" in front of a stop
+# the directory names without it ("Bahnhof Heiligenstadt") stays running
+# text, as every other word does.
+_STATION_ABBREVIATION_RE: re.Pattern[str] = re.compile(r"^(?P<wien>(?:Wien )?)Bhf\.? (?=\S)")
+
+
+def _station_written_out_forms(variants: set[str]) -> set[str]:
+    """``Bahnhof Meidling`` and ``Bhf Meidling`` for WL's ``Bhf. Meidling`` (see above)."""
+    forms: set[str] = set()
+    for variant in variants:
+        match = _STATION_ABBREVIATION_RE.match(variant)
+        if match is None:
+            continue
+        rest = variant[match.end():]
+        forms.add(f"{match['wien']}Bahnhof {rest}")
+        forms.add(f"{match['wien']}Bhf {rest}")
+    return forms
+
+
 @lru_cache(maxsize=1)
 def _station_entity_pattern() -> re.Pattern[str] | None:
     """A regex that matches every name of :func:`_station_entity_names`.
@@ -201,6 +226,9 @@ def _station_entity_names() -> tuple[str, ...]:
       * The bare form with the leading ``Wien `` prefix dropped
         (e.g. ``Stephansplatz``) so disruption text that omits the
         city prefix still matches.
+      * The written-out and the dotless form of a name WL abbreviates
+        (``Bahnhof Meidling`` and ``Bhf Meidling`` for ``Bhf. Meidling``,
+        :func:`_station_written_out_forms`).
       * Curated ``Wien X`` aliases from the entry's alias list — only
         for ``in_vienna`` entries, only when the alias looks like a
         user-facing short form (passes ``_ALIAS_CLEAN_RE`` and does
@@ -277,6 +305,7 @@ def _station_entity_names() -> tuple[str, ...]:
             variants.add(stripped[5:].strip())
             variants.add(clean[5:].strip())
         variants |= _station_comma_forms(variants)
+        variants |= _station_written_out_forms(variants)
         for variant in variants:
             if (
                 len(variant) >= 4

@@ -14,7 +14,8 @@ Mutations checked against this file (each one caught, by the test named):
 * "Fahrtbehinderung" is added → ``test_64a_keeps_betrieb_ab_muehlbreiten``.
 * WL's display markup stays → ``test_wl_markup_does_not_reach_the_feed``.
 * a longer form does not count as said → ``test_a_ticker_that_only_restates_adds_nothing``.
-* a ticker of another cause is added → ``test_a_ticker_of_another_cause_stays_out``.
+* a ticker of another cause brings its word in, or loses its measure
+  → ``test_a_display_cause_beside_the_long_message_keeps_its_measure_only``.
 * what tells a rider nothing to do comes first → ``test_what_tells_a_rider_nothing_comes_last``.
 * advice to take another line counts as nothing to do → ``test_advice_to_take_another_line_stays_in_front``.
 * a negation counts as news → ``test_a_negation_in_other_words_adds_nothing``.
@@ -100,9 +101,11 @@ def test_wl_markup_does_not_reach_the_feed() -> None:
     ]
 
 
-def test_a_ticker_of_another_cause_stays_out() -> None:
+def test_a_display_cause_beside_the_long_message_keeps_its_measure_only() -> None:
     # 48A on 2026-09-27: beside "Grund: Fremder Verkehrsunfall" a ticker of
-    # another cause read as a second cause of the same incident.
+    # another cause read as a second cause of the same incident. Its word
+    # stays out, its measure stays (2026-11-06: "Betrieb ab Spitalgasse" of
+    # the display's "Verkehrsunfall" under "12: Polizeieinsatz").
     items = [
         _wl("48A: Fremder Verkehrsunfall",
             "Linie 48A: Fahrtbehinderung in Richtung Klinik Penzing. Voraussichtliche Dauer: 06:00 Uhr. "
@@ -113,7 +116,8 @@ def test_a_ticker_of_another_cause_stays_out() -> None:
     ]
     ((title, description),) = _shown(items)
     assert title == "48A: Fremder Verkehrsunfall"
-    assert "Burggasse" not in description
+    assert "Falschparker" not in description
+    assert description.startswith("Betrieb ab Burggasse. Fahrtbehinderung in Richtung Klinik Penzing.")
 
 
 def test_what_tells_a_rider_nothing_comes_last() -> None:
