@@ -9,7 +9,8 @@ start 00:04) stood alone, and the feed showed it under its GUID as "[Seit
 "41/42: Verkehrsunfall" (05.10. 01:30, WL replaced the incident by one
 follow-up per line) and "9: Falschparker" (05.10. 19:01) changed their GUID
 the same way. The shapes below are the cache entries of those builds
-(``cache/wl_9d709a/events.json``), on today's clock.
+(``cache/wl_9d709a/events.json``), on today's clock, but not before 00:28
+Vienna time (:func:`_todays_frame`), so that they lie on one day.
 
 Mutations checked against this file (each one caught, by the test named):
 
@@ -37,6 +38,7 @@ from __future__ import annotations
 
 from datetime import UTC, datetime, timedelta, tzinfo
 from typing import Any, cast
+from zoneinfo import ZoneInfo
 
 import pytest
 
@@ -49,6 +51,23 @@ from tests._conftest.build_feed_bindings import part, setattr_all
 G_TICKER = "cc281c6508ba062820ee6ec97a11514a795c1ba829397c43d3f8f6719026c771"
 G_LONG = "de57d7fc844121db03d0e532febfd7d62faf7f8cc5ced1951f3e1470fcd4d6c8"
 STOCK = "Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen."
+_VIENNA = ZoneInfo("Europe/Vienna")
+
+
+def _todays_frame() -> datetime:
+    """Now, or 00:28 Vienna time today when that is later: the shapes stay on one day.
+
+    The build reads the real clock, so the shapes move, not the clock.
+    Between 00:00 and 00:27 the ticker of :func:`_line_43`, 27 minutes
+    before the build, fell on the day before; the merged item then read
+    "[Seit 00:00]" (WL's midnight re-entry, operator decision 2026-11-04),
+    the carried long message "[Heute]" (a begin on an earlier day), and
+    ``test_43_keeps_its_guid_and_begin_when_its_tickers_run_out`` failed in
+    the CI run of 2026-11-07, 00:23.
+    """
+    now = datetime.now(UTC)
+    frame = now.astimezone(_VIENNA).replace(hour=0, minute=28, second=0, microsecond=0)
+    return max(now, frame.astimezone(UTC))
 
 
 def _wl(
@@ -135,7 +154,7 @@ def _build(
 def test_43_keeps_its_guid_and_begin_when_its_tickers_run_out(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Any
 ) -> None:
-    now = datetime.now(UTC)
+    now = _todays_frame()
     state: dict[str, Any] = {}
     running = _build(monkeypatch, tmp_path, state, _line_43(now, tickers_end=now + timedelta(minutes=30)))
     assert [(guid, title) for guid, title, _ in running] == [(G_TICKER, "43: Verkehrsunfall")]
