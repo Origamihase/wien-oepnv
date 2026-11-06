@@ -16,7 +16,7 @@ from ..providers.wl_plausibility import incident_begin
 
 from .base import _SENTENCE_SPLIT_RE, _to_utc
 from .time_line import _wl_incident_start
-from .title_words import _HINDRANCE, _as_sentence, _rendered_title
+from .title_words import _HINDRANCE, _as_sentence, _rendered_title, _then_sentence
 from .wl_tickers import (
     _WL_STOCK_SENTENCE_RE, _cause_key, _chosen_cause, _distinct_messages, _message_tokens, _publication_key,
     _shared_openings, _telling_long_message, _ticker_part, _ticker_prefix, _ticker_text, _twin_labels,
@@ -176,7 +176,7 @@ def _with_consequences(entry: FeedItem, members: Sequence[FeedItem]) -> FeedItem
     if rest:
         # What tells a rider nothing to do ("Derzeit längere Wartezeiten!")
         # must not push the text's own cause or end out of the summary.
-        text = f"{text} {_as_sentence('; '.join(rest))}"
+        text = _then_sentence(text, _as_sentence("; ".join(rest)))
     merged = cast(FeedItem, dict(entry))
     merged["description"] = text
     return merged

@@ -21,7 +21,7 @@ from ..utils.text import names_planned_measure
 from .base import _to_utc, log
 from .time_line import _scheduled_clock
 from .wl_measures import _SHORT_LINE_MARKER_RE, _short_measure, _text_names_line
-from .title_words import _HINDRANCE, _as_sentence, _is_wl_ticker, _rendered_title
+from .title_words import _HINDRANCE, _as_sentence, _is_wl_ticker, _rendered_title, _then_sentence
 from .wl_tickers import (
     _MAX_LISTED_WORDS, _group_cause, _cause_key, _chosen_cause, _distinct_messages, _group_span, _line_runs, _message_tokens,
     _run_incidents, _spans_meet, _telling_long_message, _ticker_groups, _ticker_line_tokens, _ticker_part,
@@ -185,7 +185,10 @@ def _with_unowned(entry: FeedItem, members: Sequence[FeedItem]) -> FeedItem:
     if not messages:
         return entry
     merged = cast(FeedItem, dict(entry))
-    merged["description"] = f"{text} {_as_sentence('; '.join(messages))}" if text else _as_sentence("; ".join(messages))
+    # The incident's text closes first: a display ticker ends without a full
+    # stop (``_then_sentence``, 26 on 2026-11-05).
+    joined = _as_sentence("; ".join(messages))
+    merged["description"] = _then_sentence(text, joined) if text else joined
     return merged
 
 
@@ -388,11 +391,11 @@ def _with_line_tickers(entry: FeedItem, tickers: Sequence[FeedItem]) -> FeedItem
     cut = tail.start() if tail else len(text)
     measure = text[:cut].rstrip()
     if rider and _RIDER_CONSEQUENCE_RE.search(measure):
-        text = f"{measure} {_as_sentence('; '.join(rider))}{text[cut:]}"
+        text = f"{_then_sentence(measure, _as_sentence('; '.join(rider)))}{text[cut:]}"
     elif rider:
         text = f"{_as_sentence('; '.join(rider))} {text}"
     if rest:
-        text = f"{text} {_as_sentence('; '.join(rest))}"
+        text = _then_sentence(text, _as_sentence("; ".join(rest)))
     merged["description"] = text
     return merged
 
