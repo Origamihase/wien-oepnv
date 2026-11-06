@@ -1,97 +1,57 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-06T19:01:10.123357+00:00",
- "built": "2026-11-06T20:00:54+01:00",
+ "updated": "2026-11-06T19:31:15.598671+00:00",
+ "built": "2026-11-06T20:30:57+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-06T20:00:54+01:00",
+  "built": "2026-11-06T20:30:57+01:00",
   "items": [
    {
     "title": "U1: Schadhaftes Fahrzeug",
     "time_line": "Seit 19:48"
    },
    {
-    "title": "6: Rettungseinsatz",
+    "title": "1/6: Rettungseinsatz",
     "time_line": "Seit 19:06"
-   },
-   {
-    "title": "1: Rettungseinsatz, Weiterfahrt bis Dörfelstraße",
-    "time_line": "Seit 19:06"
-   },
-   {
-    "title": "12: Verkehrsunfall",
-    "time_line": "Seit 18:28"
-   },
-   {
-    "title": "13A/29A: Polizeieinsatz",
-    "time_line": "Seit 18:22"
-   },
-   {
-    "title": "49: Verkehrsunfall",
-    "time_line": "Seit 17:49"
-   },
-   {
-    "title": "2: Falschparker",
-    "time_line": "Seit 17:30"
-   },
-   {
-    "title": "U3: Betriebsstörung",
-    "time_line": "Seit 16:34"
-   },
-   {
-    "title": "U4: Polizeieinsatz",
-    "time_line": "Seit 17:20"
    },
    {
     "title": "71A: Haltestellenverlegung",
     "time_line": "Ab Mo 09.11. bis Mi 11.11."
+   },
+   {
+    "title": "5B: Bauarbeiten",
+    "time_line": "Ab Mo 09.11. bis 06.11.2027"
+   },
+   {
+    "title": "31: Wexstraße",
+    "time_line": "Ab Mo 09.11."
+   },
+   {
+    "title": "52A: Bauarbeiten",
+    "time_line": "Seit 05.11."
+   },
+   {
+    "title": "64A/N64R: Zouvalgasse",
+    "time_line": "Ab Mo 09.11."
+   },
+   {
+    "title": "12A: Henriettenplatz",
+    "time_line": "Seit 04.11."
+   },
+   {
+    "title": "REX50/REX51/S50: Wien Westbahnhof ↔ St. Pölten Hbf",
+    "time_line": "Bis Mi 11.11."
+   },
+   {
+    "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
+    "time_line": "Bis 30.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-30T19:01:19.772765+00:00",
-   "raw": {
-    "wl-stoerungen": 102,
-    "wl-hinweise": 65,
-    "oebb": 157,
-    "baustellen-linien": 58,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 4,
-    "oebb": 133,
-    "baustellen": 69
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 109
-   }
-  },
-  {
-   "t": "2026-10-30T19:31:15.004578+00:00",
-   "raw": {
-    "wl-stoerungen": 94,
-    "wl-hinweise": 65,
-    "oebb": 157,
-    "baustellen-linien": 58,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 4,
-    "oebb": 133,
-    "baustellen": 69
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 102
-   }
-  },
   {
    "t": "2026-10-30T20:01:10.130637+00:00",
    "raw": {
@@ -6771,17 +6731,39 @@
     "oebb": 6,
     "wl": 99
    }
+  },
+  {
+   "t": "2026-11-06T19:31:15.598671+00:00",
+   "raw": {
+    "wl-stoerungen": 57,
+    "wl-hinweise": 76,
+    "oebb": 191,
+    "baustellen-linien": 56,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 18,
+    "oebb": 166,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 3,
+    "oebb": 6,
+    "wl": 91
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-06T19:01:10.123357+00:00"
+   "last_ok": "2026-11-06T19:31:15.598671+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-06T19:01:10.123357+00:00"
+   "last_ok": "2026-11-06T19:01:10.123357+00:00",
+   "last_exit": 1,
+   "failing_since": "2026-11-06T19:31:15.598671+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-06T19:01:10.123357+00:00"
+   "last_ok": "2026-11-06T19:31:15.598671+00:00"
   }
  }
 }
