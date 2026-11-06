@@ -6,7 +6,7 @@
     "name": "aktuelles",
     "refPoiCategoryGroupId": 61,
     "title": "Aktuelles",
-    "trafficInfoNameList": "N20260209-0049, N20260209-3501, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260702-5991, N20260813-6092, N20260808-6083, N20260808-6084, N20260817-6129, N20260818-6134, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260901-6167, N20260903-6175, N20260908-6177, N20260915-6185, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261005-6222, N20261006-6258, N20261007-6260, N20261007-6262, N20261009-6270, N20261021-0001, N20261021-0003, N20261022-0003, N20261023-0001, N20261023-0002, N20261028-0003, N20261029-0002, N20261029-0004, N20261028-0002, N20261029-0003, N20261102-0001, N20261103-0001, N20261104-0001, N20261104-0002, N20261104-0003, N20261104-0004, N20261105-0001, N20261105-0002, N20261022-0005, N20261106-0001"
+    "trafficInfoNameList": "N20260209-0049, N20260209-3501, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260702-5991, N20260813-6092, N20260808-6084, N20260808-6083, N20260817-6129, N20260818-6134, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260901-6167, N20260903-6175, N20260908-6177, N20260915-6185, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261005-6222, N20261006-6258, N20261007-6260, N20261007-6262, N20261009-6270, N20261021-0001, N20261021-0003, N20261022-0003, N20261023-0001, N20261023-0002, N20261028-0003, N20261029-0002, N20261029-0004, N20261028-0002, N20261029-0003, N20261102-0001, N20261103-0001, N20261104-0001, N20261104-0002, N20261104-0003, N20261104-0004, N20261105-0001, N20261105-0002, N20261022-0005, N20261106-0002, N20261106-0004"
    },
    {
     "id": -1,
@@ -3014,13 +3014,13 @@
    {
     "alertCause": "construction work",
     "alertCauseId": 45,
-    "description": "<p></p>",
-    "id": "N20261106-0001",
+    "description": "<h2>Bauarbeiten</h2><p>Wegen Straßenbauarbeiten in der Wexstraße werden die Busse umgeleitet.</p><p><strong><u>Zeitraum:</u></strong><br>Ab Montag, den 9. November 2026, etwa 07:00 Uhr für ca. drei Wochen.</p><p><strong><u>Maßnahmen:</u></strong><br>Linie 5B<br>Umleitung ab Klosterneuburger Straße # Wexstraße über Klosterneuburger Straße, Pappenheimgasse und Jägerstraße.</p><p><u>Aufgelassene Haltestellen:</u><br>- Wexstraße<br>- Jägerstraße</p><p>Als Ersatz dient die provisorisch eingerichtete Haltestelle in  der Pappenheimgasse 24-28, Höhe Stiege 15.</p>",
+    "id": "N20261106-0002",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p></p>",
-       "descriptionPlain": "",
+       "descriptionHtml": "<h2>Bauarbeiten</h2><p>Wegen Straßenbauarbeiten in der Wexstraße werden die Busse umgeleitet.</p><p><strong><u>Zeitraum:</u></strong><br>Ab Montag, den 9. November 2026, etwa 07:00 Uhr für ca. drei Wochen.</p><p><strong><u>Maßnahmen:</u></strong><br>Linie 5B<br>Umleitung ab Klosterneuburger Straße # Wexstraße über Klosterneuburger Straße, Pappenheimgasse und Jägerstraße.</p><p><u>Aufgelassene Haltestellen:</u><br>- Wexstraße<br>- Jägerstraße</p><p>Als Ersatz dient die provisorisch eingerichtete Haltestelle in  der Pappenheimgasse 24-28, Höhe Stiege 15.</p>",
+       "descriptionPlain": "BauarbeitenWegen Straßenbauarbeiten in der Wexstraße werden die Busse umgeleitet. Zeitraum: Ab Montag, den 9. November 2026, etwa 07:00 Uhr für ca. drei Wochen. Maßnahmen: Linie 5B Umleitung ab Klosterneuburger Straße # Wexstraße über Klosterneuburger Straße, Pappenheimgasse und Jägerstraße. Aufgelassene Haltestellen: - Wexstraße - Jägerstraße Als Ersatz dient die provisorisch eingerichtete Haltestelle in der Pappenheimgasse 24-28, Höhe Stiege 15.",
        "title": "5B: Bauarbeiten"
       }
      }
@@ -3033,7 +3033,7 @@
      },
      "type": "Feature"
     },
-    "name": "N20261106-0001",
+    "name": "N20261106-0002",
     "reasonId": 21,
     "reasonName": "Bauarbeiten",
     "refPoiCategoryId": 13296,
@@ -3048,10 +3048,54 @@
      }
     ],
     "time": {
-     "start": "2026-11-06T13:59:00.000+0100",
-     "validFrom": "2026-11-06T13:59:00.000+0100"
+     "end": "2027-11-06T23:59:00.000+0100",
+     "start": "2026-11-06T14:11:00.000+0100",
+     "validFrom": "2026-11-06T14:11:00.000+0100"
     },
     "title": "5B: Bauarbeiten"
+   },
+   {
+    "alertCause": "unknown",
+    "alertCauseId": 0,
+    "description": "<p><strong><u>Haltestellenauflassung der Linie 71A in Richtung Zentralfriedhof 3. Tor</u></strong></p><p><strong><u>Haltestelle:</u></strong> Schwechat, Hauptplatz</p><p><strong><u>Dauer:</u></strong> Ab 09. November 2026, etwa 09:00 Uhr, bis 11. November 2026, etwa 17:00 Uhr</p><p><strong><u>Grund:</u></strong> Straßenbau</p>",
+    "id": "N20261106-0004",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><strong><u>Haltestellenauflassung der Linie 71A in Richtung Zentralfriedhof 3. Tor</u></strong></p><p><strong><u>Haltestelle:</u></strong> Schwechat, Hauptplatz</p><p><strong><u>Dauer:</u></strong> Ab 09. November 2026, etwa 09:00 Uhr, bis 11. November 2026, etwa 17:00 Uhr</p><p><strong><u>Grund:</u></strong> Straßenbau</p>",
+       "descriptionPlain": "Haltestellenauflassung der Linie 71A in Richtung Zentralfriedhof 3. Tor Haltestelle: Schwechat, Hauptplatz Dauer: Ab 09. November 2026, etwa 09:00 Uhr, bis 11. November 2026, etwa 17:00 Uhr Grund: Straßenbau",
+       "title": "Haltestellenverlegung"
+      }
+     }
+    ],
+    "location": {
+     "properties": {
+      "attributes": {},
+      "coordName": "WGS84",
+      "type": "news"
+     },
+     "type": "Feature"
+    },
+    "name": "N20261106-0004",
+    "reasonId": 223,
+    "reasonName": "Haltestellenverlegung",
+    "refPoiCategoryId": 13296,
+    "relatedLines": [
+     "71A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 471,
+      "lineName": "71A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "time": {
+     "end": "2026-11-11T17:00:00.000+0100",
+     "start": "2026-11-06T14:22:00.000+0100",
+     "validFrom": "2026-11-06T14:22:00.000+0100"
+    },
+    "title": "Haltestellenverlegung"
    },
    {
     "alertCause": "undefined alert cause",
