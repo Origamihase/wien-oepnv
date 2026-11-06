@@ -8,21 +8,20 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 06 Nov 2026 12:30:54 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2026 13:00:52 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[U4: Betriebsstörung]]></title>
+      <title><![CDATA[9/42: Falschparker]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682</guid>
-      <pubDate>Fri, 06 Nov 2026 12:25:00 +0100</pubDate>
+      <guid isPermaLink="false">9ded21edd54ec0e3a1f351b48d66193d9727ef9573d767e7aba342b65021d51a</guid>
+      <pubDate>Fri, 06 Nov 2026 12:45:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 06 Nov 2026 12:25:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 06 Nov 2026 12:25:00 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 06 Nov 2026 12:50:00 +0100</ext:ends_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Seit 12:25]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 12:25]]]></content:encoded>
+      <ext:first_seen>Fri, 06 Nov 2026 12:45:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 06 Nov 2026 12:45:00 +0100</ext:starts_at>
+      <description>Fahrtbehinderung: 9, 42. Voraussichtlich bis 13:10 Uhr. [Seit 12:45]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung: 9, 42. Voraussichtlich bis 13:10 Uhr.<br/>[Seit 12:45]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[38A: Verkehrsunfall]]></title>
@@ -36,19 +35,6 @@
       <ext:starts_at>Fri, 06 Nov 2026 12:16:00 +0100</ext:starts_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 12:16]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 12:16]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">6c21c74cc84894b7e65fe8ea51db3f5b61d9d4579ddbc08da82f7d12c6a3810c</guid>
-      <pubDate>Fri, 06 Nov 2026 11:24:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 06 Nov 2026 11:24:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 06 Nov 2026 11:24:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 11:24]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 11:24]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[31: Wexstraße]]></title>
@@ -149,6 +135,21 @@
       <georss:line>48.185201 16.376296 48.034917 16.491315</georss:line>
       <description>Wegen Bauarbeiten können keine Nahverkehrszüge fahren: jeweils von Samstag 23:15 Uhr bis Sonntag 04:40 Uhr und von Sonntag 23:15 Uhr bis Montag 04:40 Uhr. [Bis 30.11.]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten können keine Nahverkehrszüge fahren: jeweils von Samstag 23:15 Uhr bis Sonntag 04:40 Uhr und von Sonntag 23:15 Uhr bis Montag 04:40 Uhr.<br/>[Bis 30.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5A/N31: Obere Augartenstraße]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">5cd26b46e3d83d83054e14525825191f05326ae3f22d63f0dcf5a305c21f2157</guid>
+      <pubDate>Thu, 29 Oct 2026 14:00:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 29 Oct 2026 14:00:00 +0100</ext:first_seen>
+      <ext:starts_at>Sat, 07 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Mon, 09 Nov 2026 07:00:00 +0100</ext:ends_at>
+      <georss:point>48.222757 16.375308</georss:point>
+      <description>Untere Augartenstraße 40 → Untere Augartenstraße 42. Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf. Grund: Demontage eines Turmdrehkrans. [Ab Sa 07.11. bis Mo 09.11.]</description>
+      <content:encoded><![CDATA[Untere Augartenstraße 40 → Untere Augartenstraße 42. Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf. Grund: Demontage eines Turmdrehkrans.<br/>[Ab Sa 07.11. bis Mo 09.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
