@@ -1,5 +1,97 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R1212-141|2026-11-06T00:44:16.000+0100|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R1212-141",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-11-06T01:48:00.000+0100",
+   "incident": "I20261106-0001-F01"
+  },
+  {
+   "key": "R1213-141|2026-11-06T00:44:16.000+0100|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R1213-141",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-11-06T01:43:00.000+0100",
+   "incident": "I20261106-0001-F01"
+  },
+  {
+   "key": "R143-141|2026-11-06T00:38:13.000+0100|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R143-141",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-11-06T01:51:00.000+0100",
+   "incident": "I20261106-0001-F01"
+  },
+  {
+   "key": "R144-141|2026-11-06T00:38:13.000+0100|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R144-141",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-11-06T01:51:00.000+0100",
+   "incident": "I20261106-0001-F01"
+  },
+  {
+   "key": "R146-141|2026-11-06T00:38:13.000+0100|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R146-141",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-11-06T01:51:00.000+0100",
+   "incident": "I20261106-0001-F01"
+  },
+  {
+   "key": "R147-141|2026-11-06T00:38:13.000+0100|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R147-141",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-11-06T01:47:00.000+0100",
+   "incident": "I20261106-0001-F01"
+  },
+  {
+   "key": "R148-141|2026-11-06T00:38:13.000+0100|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R148-141",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-11-06T01:47:00.000+0100",
+   "incident": "I20261106-0001-F01"
+  },
+  {
+   "key": "R150-141|2026-11-06T00:38:13.000+0100|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R150-141",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-11-06T01:47:00.000+0100",
+   "incident": "I20261106-0001-F01"
+  },
+  {
+   "key": "R177-141|2026-11-06T00:44:14.000+0100|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R177-141",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-11-06T01:43:00.000+0100",
+   "incident": "I20261106-0001-F01"
+  },
+  {
+   "key": "R187-141|2026-11-06T00:38:13.000+0100|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R187-141",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-11-06T01:51:00.000+0100",
+   "incident": "I20261106-0001-F01"
+  },
+  {
+   "key": "R188-141|2026-11-06T00:44:14.000+0100|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R188-141",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-11-06T01:43:00.000+0100",
+   "incident": "I20261106-0001-F01"
+  },
+  {
+   "key": "R189-141|2026-11-06T00:44:14.000+0100|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R189-141",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-11-06T01:43:00.000+0100",
+   "incident": "I20261106-0001-F01"
+  },
+  {
+   "key": "R190-141|2026-11-06T00:44:14.000+0100|Fahrtbehinderung\nwegen Rettungseinsatz",
+   "name": "R190-141",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "end": "2026-11-06T01:43:00.000+0100",
+   "incident": "I20261106-0001-F01"
+  }
+ ]
 }
