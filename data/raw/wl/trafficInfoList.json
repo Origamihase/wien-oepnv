@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261106-0011, I20261106-0008-F01, I20260925-0011, I20261106-0012, I20260909-0007, I20260922-0032, I20261106-0010-F01, I20261020-0029, I20261106-0013"
+    "trafficInfoNameList": "I20260909-0007, I20260922-0032, I20260925-0011, I20261020-0029, I20261106-0011, I20261106-0013"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1875-101, R1880-101, R1876-101, R1881-101, R1884-101, R1883-101, R1882-101, R100-136, R118-136, R117-136, R116-136, R115-136, R103-136, R119-136, R102-136, R101-136, R45-136, R19-136, R130-136, R293-474, R401-101, R318-437, R2345-127, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R1448-412, R1474-412, R2380-627, R3886-480, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2558-125, R1974-466, R1301-440, R1272-440, R500-101, R58-136, R109-136, R105-136, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1884-101, R1881-101, R1880-101, R1876-101, R1882-101, R1875-101, R1883-101, R117-136, R118-136, R130-136, R45-136, R119-136, R19-136, R100-136, R101-136, R102-136, R103-136, R115-136, R116-136, R318-437, R293-474, R401-101, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R3886-480, R1448-412, R1474-412, R2558-125, R1974-466, R1272-440, R1301-440, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -217,101 +217,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U6: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261106-0008-F01",
-    "owner": "WL",
-    "parentName": "I20261106-0008",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4619
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-06T10:12:00.000+0100",
-     "end": "2026-11-06T11:28:00.000+0100",
-     "lastUpdate": "2026-11-06T11:28:00.000+0100",
-     "resume": "2026-11-06T11:28:00.000+0100",
-     "start": "2026-11-06T10:03:00.000+0100"
-    },
-    "title": "U6: Polizeieinsatz"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "D": "ptTram"
-     }
-    },
-    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "D: Rettungseinsatz"
-      }
-     }
-    ],
-    "location": "Schwarzenbergplatz",
-    "name": "I20261106-0010-F01",
-    "owner": "WL",
-    "parentName": "I20261106-0010",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 136,
-      "lineName": "D",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-06T10:50:00.000+0100",
-     "lastUpdate": "2026-11-06T10:50:00.000+0100",
-     "resume": "2026-11-06T10:50:00.000+0100",
-     "start": "2026-11-06T10:40:00.000+0100"
-    },
-    "title": "D: Rettungseinsatz"
-   },
-   {
     "alertCause": "vehicle on the line",
     "alertCauseId": 71,
     "attributes": {
@@ -355,51 +260,6 @@
      "start": "2026-11-06T11:15:00.000+0100"
     },
     "title": "3A: Falschparker"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "97A": "ptBusCity"
-     }
-    },
-    "description": "Linie 97A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 97A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 97A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 97A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-       "title": "97A: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261106-0012",
-    "owner": "WL",
-    "parentName": "I20261106-0012",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "97A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 497,
-      "lineName": "97A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-06T11:17:00.000+0100",
-     "lastUpdate": "2026-11-06T11:17:00.000+0100",
-     "resume": "2026-11-06T11:16:00.000+0100",
-     "start": "2026-11-06T11:16:00.000+0100"
-    },
-    "title": "97A: Verkehrsunfall"
    },
    {
     "alertCause": "defective vehicle",
@@ -537,52 +397,6 @@
      "start": "2026-11-03T00:00:14.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Börse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz \nUmleitung über die Linien 71 und 18",
-    "name": "R105-136",
-    "owner": "WL",
-    "parentName": "R105-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     105
-    ],
-    "time": {
-     "end": "2026-11-06T11:44:00.000+0100",
-     "start": "2026-11-06T10:45:02.000+0100"
-    },
-    "title": "Rettungseinsatz \nUmleitung über die Linien 71 und 18"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R109-136",
-    "owner": "WL",
-    "parentName": "R109-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     109
-    ],
-    "time": {
-     "end": "2026-11-06T11:41:00.000+0100",
-     "start": "2026-11-06T10:42:31.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1480,29 +1294,6 @@
      "start": "2026-11-06T05:00:29.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R58-136",
-    "owner": "WL",
-    "parentName": "R58-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     58
-    ],
-    "time": {
-     "end": "2026-11-06T11:41:00.000+0100",
-     "start": "2026-11-06T10:42:31.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
