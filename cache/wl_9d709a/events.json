@@ -974,6 +974,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "9: Rettungseinsatz",
+    "description": "Linie 9: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "2e47c4152d31bb4278e6a03f4a011dce15382eabcec213b716c1d8987745f509",
+    "pubDate": "2026-11-06T23:08:00+01:00",
+    "starts_at": "2026-11-06T23:08:00+01:00",
+    "ends_at": "2026-11-06T23:59:00+01:00",
+    "_identity": "wl|störung|L=9|D=2026-11-06|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261106-0044"
+    ],
+    "_incident_start": "2026-11-06T23:08:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "D: Gleisbauarbeiten",
     "description": "Linie D: Kein Betrieb zwischen Börse und Augasse. Ersatz: Linien S40, U2, U4, U6, 1, 5, 12, 37, 38, 71 und 40A. Voraussichtliche Dauer: 07. November 2026, 04:00 Uhr. Grund: Gleisbauarbeiten im Bereich Althanstraße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
