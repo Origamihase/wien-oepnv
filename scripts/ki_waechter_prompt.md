@@ -73,6 +73,7 @@ WL-Titel und WL-Ticker
 - Wer eine Ursache verursacht hat, steht im Text statt im Titel („Beschädigte Oberleitung durch einen LKW: Fahrtbehinderung.“). Kein F4.
 - WL-Ticker werden zusammengezogen: Linien mit derselben Ursache und demselben Text im selben Zeitfenster stehen als eine Meldung mit allen Linien im Titel („1/2/D: Polizeieinsatz“), zwei Ticker einer Linie als ein Text, durch Komma oder Satz getrennt; jeder Teil hat seine Quelle unter ihrer Kennung (Q…). Ein Satz ohne Linienkennung in der Kurzform („2: Umleitung …; Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.“) gilt für alle Linien des Titels. Kein F3, kein F4.
 - Eine WL-Kurzmeldung behält ihren Wortlaut, auch wenn sie die Ursache des Titels wiederholt („26: Rettungseinsatz“ über „Fahrtbehinderung wegen Rettungseinsatz. Züge halten in Tokiostraße.“); eine angehängte Meldung steht als eigener Satz dahinter (entschieden 06.11.2026). Kein Fund.
+- Ein WL-Hinweis, dessen Text bei WL leer ist, steht erst im Feed, wenn WL den Text nachliefert (entschieden 07.11.2026). Kein Fund, auch wenn die Quelle ihn schon führt.
 
 Keine Dubletten (kein F1)
 

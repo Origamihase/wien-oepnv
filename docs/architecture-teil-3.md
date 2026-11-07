@@ -157,6 +157,22 @@ Text („bis etwa Ende Juli 2026“), dass sie abgelaufen ist, und das
 verwirrt. Ein Versuch, sie bis zum Rückzug durch WL zu behalten (#1989),
 wurde mit #1990 zurückgenommen.
 
+#### WL-Hinweis ohne Text (seit 2026-11-07)
+
+Ein WL-Hinweis, dessen Text leer ist (nur Tags, `&nbsp;` und Leerraum),
+wartet, bis WL ihn füllt; der nächste Abruf mit Text bringt ihn in den Feed
+(`_is_empty_wl_notice` in `_post_filter_wl`,
+`src/feed_build/cache_filters.py`). Anlass: WL stellte „5B: Bauarbeiten“ am
+06.11.2026 um 13:59 mit dem Text „<p></p>“ online und füllte ihn um 14:11;
+der Feed von 14:01 zeigte den Titel nur mit „[Seit heute]“ (KI-Wächter,
+Issue #2170). Ein Hinweis-Titel („Bauarbeiten“) sagt nicht, was sich für
+den Fahrgast ändert, und Hinweise stehen hinter Störungen. Eine Störung
+ohne Text bleibt: Ihr Titel nennt Linie und Ursache („U2:
+Betriebsstörung“). Gemessen über alle WL-Cache-Stände seit 01.06.2026
+(6.328 Stände, 337 Hinweise): Der 5B-Hinweis ist der einzige leere, dazu
+sechs Störungen für je einen bis vier Abrufe. Betreiberentscheidung
+2026-11-07 („Zurückhalten bis Text da ist“).
+
 ### Rohdaten und Verwürfe des Abrufs (seit 2026-10-04)
 
 Die Caches unter `cache/` halten nur, was den Abruf überlebt hat. Ob eine
