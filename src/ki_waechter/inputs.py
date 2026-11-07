@@ -194,6 +194,49 @@ class Prepared:
         )
 
 
+@dataclass
+class Part:
+    """One half of the input: the feed versions ``first_version`` to ``last_version`` and the items that stood in them."""
+
+    nr: int
+    count: int
+    first_version: int
+    last_version: int
+    items: list[int]
+
+
+def halves(prep: Prepared) -> list[Part]:
+    """The input cut in two between two feed versions, each half read by one request (2026-11-07).
+
+    Each half holds every text that stood in the feed in its versions, so a
+    text and the texts beside it ("Gleichzeitig im Feed", the only pairs an
+    F1 can name) are always in one half; a text that stood in both halves is
+    read twice. The cut is the one at which the larger half has the fewest
+    texts, among equals the one nearest the middle: 06.11.2026 (52 versions,
+    102 texts) gives 56 and 49 texts with 3 in both, cut between the versions
+    of 23:30 and 00:01, where the time line of most texts changes (a new text,
+    a new number). Item numbers stay those of the whole day. An input of one
+    version has no halves (empty list).
+    """
+    count = len(prep.versions)
+    if count < 2 or not prep.items:
+        return []
+    firsts = [min(item.versions) for item in prep.items]
+    lasts = [max(item.versions) for item in prep.items]
+
+    def larger_half(cut: int) -> tuple[int, int]:
+        early = sum(1 for first in firsts if first <= cut)
+        late = sum(1 for last in lasts if last > cut)
+        return (max(early, late), abs(2 * cut - count))
+
+    cut = min(range(1, count), key=larger_half)
+    first = [item.nr for item in prep.items if min(item.versions) <= cut]
+    second = [item.nr for item in prep.items if max(item.versions) > cut]
+    if not first or not second:
+        return []
+    return [Part(1, 2, 1, cut, first), Part(2, 2, cut + 1, count, second)]
+
+
 def _items(xml_text: str) -> list[Any]:
     root = ET.fromstring(xml_text)
     return list(root.iter("item"))
@@ -338,10 +381,17 @@ def visible(prep: Prepared, item: FeedItem) -> str:
     return span
 
 
-def together(prep: Prepared, item: FeedItem) -> list[int]:
-    """Other items that stood in the feed at the same time as this one."""
+def together(prep: Prepared, item: FeedItem, part: Part | None = None) -> list[int]:
+    """Other items that stood in the feed at the same time as this one (inside *part*'s versions, if given)."""
     mine = set(item.versions)
-    return [other.nr for other in prep.items if other.nr != item.nr and mine & set(other.versions)]
+    allowed = None
+    if part is not None:
+        mine &= set(range(part.first_version, part.last_version + 1))
+        allowed = set(part.items)
+    return [
+        other.nr for other in prep.items
+        if other.nr != item.nr and (allowed is None or other.nr in allowed) and mine & set(other.versions)
+    ]
 
 
 def _with_lines(titles: Mapping[int, str], numbers: list[int]) -> str:
@@ -364,16 +414,31 @@ def _n(count: int, one: str, many: str) -> str:
     return f"{count} {one if count == 1 else many}"
 
 
-def render_input(prep: Prepared) -> str:
-    """The model's input. Feed and source texts are data, framed as such."""
+def _part_sentence(prep: Prepared, part: Part) -> str:
+    """The header's words for a half: which versions, how many texts, why numbers are missing."""
+    first, last = prep.versions[part.first_version - 1], prep.versions[part.last_version - 1]
+    return (
+        f" Dies ist Teil {part.nr} von {part.count} des Tages: die Fassungen {part.first_version} bis "
+        f"{part.last_version}, gebaut {_vienna(first.built_de, '%d.%m.%Y %H:%M')} bis "
+        f"{_vienna(last.built_de, '%d.%m.%Y %H:%M')} Wiener Zeit. Die Nummern der Meldungen gelten für den "
+        f"ganzen Tag ({_n(prep.count_items, 'Meldungstext', 'Meldungstexte')}); Nummern, die hier fehlen, stehen "
+        "im anderen Teil."
+    )
+
+
+def render_input(prep: Prepared, part: Part | None = None) -> str:
+    """The model's input, whole or one half (*part*). Feed and source texts are data, framed as such."""
     first, last = prep.versions[0], prep.versions[-1]
+    items = prep.items if part is None else [item for item in prep.items if item.nr in set(part.items)]
     out = [
-        f"# Eingabe KI-Wächter (Commit {prep.commit})",
+        f"# Eingabe KI-Wächter (Commit {prep.commit}" + (f", Teil {part.nr} von {part.count})" if part else ")"),
         "",
         (f"{_n(len(prep.versions), 'Fassung', 'Fassungen')} des Feeds, gebaut "
          f"{_vienna(first.built_de, '%d.%m.%Y %H:%M')} bis {_vienna(last.built_de, '%d.%m.%Y %H:%M')} Wiener Zeit. "
-         f"Darin {_n(prep.count_items, 'Meldungstext', 'verschiedene Meldungstexte')} von "
-         f"{_n(len({i.guid for i in prep.items}), 'Meldung', 'Meldungen')}. Jeder Text steht hier einmal, "
+         f"Darin {_n(len(items), 'Meldungstext', 'verschiedene Meldungstexte')} von "
+         f"{_n(len({i.guid for i in items}), 'Meldung', 'Meldungen')}."
+         + (_part_sentence(prep, part) if part else "")
+         + " Jeder Text steht hier einmal, "
          "mit der Zeit, in der er im Feed stand. Ändert sich der Text einer Meldung (gleiche GUID), "
          "ist der neue Textstand eine eigene Nummer."),
         "",
@@ -384,11 +449,11 @@ def render_input(prep: Prepared) -> str:
     ]
     shown: set[str] = set()
     titles = {item.nr: item.title for item in prep.items}
-    for item in prep.items:
+    for item in items:
         out.append(f"## Meldung {item.nr}")
         meta = f"GUID …{item.guid[-12:]}, Textstand {item.variant} von {item.variants} dieser Meldung"
         out.append(f"{meta}. Im Feed: {visible(prep, item)}.")
-        others = together(prep, item)
+        others = together(prep, item, part)
         out.append(f"Gleichzeitig im Feed: {_with_lines(titles, others) if others else 'keine andere'}.")
         out.append("<<<DATEN")
         out.append(f"DE Titel: {item.title}")
