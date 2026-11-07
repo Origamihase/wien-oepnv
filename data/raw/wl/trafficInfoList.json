@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261107-0015-F02, I20261107-0023, I20260925-0011, I20261107-0020, I20261107-0022, I20260909-0007, I20261020-0029, I20261107-0021-F01, I20261107-0025-F01"
+    "trafficInfoNameList": "I20261107-0023, I20260925-0011, I20261107-0020, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1876-101, R1882-101, R1881-101, R1880-101, R1884-101, R1875-101, R1883-101, R401-101, R293-474, R318-437, R2379-627, R2380-627, R2345-127, R2373-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-126, R3886-480, R2558-125, R1974-466, R500-101, R1382-146, R1381-146, R1384-146, R1385-146, R1383-146, R564-146, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1880-101, R1876-101, R1875-101, R1882-101, R1881-101, R1884-101, R1883-101, R401-101, R293-474, R318-437, R2379-627, R2380-627, R2345-127, R2373-125, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-127, R2373-126, R3886-480, R2558-125, R1974-466, R500-101, R1385-146, R1384-146, R1383-146, R1382-146, R1381-146, R564-146, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,54 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "18": "ptTram"
-     }
-    },
-    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 18: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 18: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "18: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261107-0015-F02",
-    "owner": "WL",
-    "parentName": "I20261107-0015",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 118,
-      "lineName": "18",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     464
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-07T14:14:00.000+0100",
-     "end": "2026-11-07T17:20:00.000+0100",
-     "lastUpdate": "2026-11-07T15:57:00.000+0100",
-     "start": "2026-11-07T13:44:00.000+0100"
-    },
-    "title": "18: Polizeieinsatz"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -262,99 +214,6 @@
      "start": "2026-11-07T15:11:00.000+0100"
     },
     "title": "63A: Verspätungen"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "37": "ptTram"
-     }
-    },
-    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 37: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 37: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "37: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261107-0021-F01",
-    "owner": "WL",
-    "parentName": "I20261107-0021",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 137,
-      "lineName": "37",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     214
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-07T15:46:00.000+0100",
-     "lastUpdate": "2026-11-07T15:46:00.000+0100",
-     "resume": "2026-11-07T15:46:00.000+0100",
-     "start": "2026-11-07T15:40:00.000+0100"
-    },
-    "title": "37: Verkehrsunfall"
-   },
-   {
-    "alertCause": "vandalism",
-    "alertCauseId": 16,
-    "attributes": {
-     "relatedLineTypes": {
-      "35A": "ptBusCity"
-     }
-    },
-    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "descriptionHTML": "<p>Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
-       "descriptionPlain": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-       "title": "35A: Verunreinigung"
-      }
-     }
-    ],
-    "name": "I20261107-0022",
-    "owner": "WL",
-    "parentName": "I20261107-0022",
-    "priority": "1",
-    "reasonId": 36,
-    "reasonName": "Verunreinigung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "35A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 435,
-      "lineName": "35A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-07T15:53:00.000+0100",
-     "lastUpdate": "2026-11-07T15:53:00.000+0100",
-     "resume": "2026-11-07T15:52:00.000+0100",
-     "start": "2026-11-07T15:52:00.000+0100"
-    },
-    "title": "35A: Verunreinigung"
    },
    {
     "alertCause": "vandalism",
@@ -403,54 +262,6 @@
      "start": "2026-11-07T16:19:00.000+0100"
     },
     "title": "U6: Verunreinigung"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "57A": "ptBusCity"
-     }
-    },
-    "description": "Linie 57A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 57A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 57A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 57A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "57A: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261107-0025-F01",
-    "owner": "WL",
-    "parentName": "I20261107-0025",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "57A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 457,
-      "lineName": "57A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "relatedStops": [
-     1581
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-07T16:46:00.000+0100",
-     "lastUpdate": "2026-11-07T16:46:00.000+0100",
-     "resume": "2026-11-07T16:46:00.000+0100",
-     "start": "2026-11-07T16:41:00.000+0100"
-    },
-    "title": "57A: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
