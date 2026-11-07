@@ -32,6 +32,7 @@ from .wl_plausibility import (
     reset_corrections,
 )
 from . import wl_resolved
+from .wl_news_kind import is_network_change
 from .wl_text import (
     KW_EXCLUDE,
     KW_RESTRICTION,
@@ -192,6 +193,30 @@ def _fetch_news(
 
 # ---------------- Public API ----------------
 
+def _news_passes_gate(gate_text: str, description: str) -> bool:
+    """Whether a WL news item may enter the feed: a restriction word, or a network change.
+
+    ``KW_RESTRICTION`` keeps WL's news to what restricts the service. A
+    network change ("Netzänderung": a line gets a new stop) restricts
+    nothing and names no such word; it enters as a notice (operator
+    decision 2026-11-07, :func:`wl_news_kind.is_network_change`).
+    """
+    return bool(KW_RESTRICTION.search(gate_text)) or is_network_change(description)
+
+
+def _notice_end(description: str, end: datetime | None) -> datetime | None:
+    """The end a WL notice shows: none for a network change.
+
+    WL lists a network change for weeks after the change ("9A: Errichtung
+    einer Haltestelle", new stop from 07.09.2026, ``time.end`` 07.10.2026
+    23:59; "N67: Geänderte Linienführung" from 05.12., listed until 15.12.);
+    that end is the notice's, not the measure's, and read as "[Bis Mi
+    07.10.]" it would date the new stop. WL's end still decides when the
+    notice leaves (``_is_active``).
+    """
+    return None if is_network_change(description) else end
+
+
 def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
     # Security: clamp ``timeout`` to ``MAX_WL_FETCH_TIMEOUT`` to defeat the
     # Slowloris vector documented at the constant declaration above. Without
@@ -350,7 +375,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                 str(attrs.get("status") or ""),
                 str(attrs.get("state") or ""),
             )
-            if not KW_RESTRICTION.search(text_for_filter):
+            if not _news_passes_gate(text_for_filter, desc_raw):
                 raw_capture.note_drop("wl", "kein Einschränkungs-Stichwort", title_raw)
                 continue
 
@@ -385,7 +410,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
                     "stop_names": set(stop_names),
                     "pubDate": start,
                     "starts_at": real_start,
-                    "ends_at": end,
+                    "ends_at": _notice_end(desc_raw, end),
                     "_identity": identity,
                 }
             )

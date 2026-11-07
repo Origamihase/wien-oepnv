@@ -62,6 +62,7 @@ Kürzung und Kurzform
 
 Zeitzeile
 
+- Ein WL-Hinweis über eine Netzänderung („9A: Errichtung einer Haltestelle“, „N67: Geänderte Linienführung“: eine Linie bekommt eine neue Haltestelle oder Fahrstrecke) steht ohne Ende, mit „Ab <Tag>“ vor und „Seit <Tag>“ nach der Änderung: WLs Ende ist das des Hinweises, Wochen nach der Änderung, nicht der Maßnahme (entschieden 07.11.2026). Kein F3.
 - Die Zeitzeile schreibt der Code des Feeds, nicht der Betreiber. Sie steht deutsch als „[Seit hh:mm]“, „[Seit heute]“, „[Seit <Tag>]“, „[Heute]“, „[Am <Tag>]“, „[Bis <Tag>]“, „[Ab <Tag>]“ oder „[Ab <Tag> bis <Tag>]“, ein Tag der nächsten Woche mit Wochentag („Mi 28.10.“); englisch mit „Since“, „Today“, „Until“, „From“ und englischem Wochentag („Wed 28.10.“). Sie ist nie ein Quellzitat und nie F3, F5 oder F6; nur Uhrzeit und Datum müssen deutsch und englisch gleich sein. Eine andere Form als hier beschrieben ist kein Fund, höchstens eine Vermutung.
 - Die Zeitzeile folgt festen Regeln: Ende von WL, ein Ende aus dem Text oder eine Dauer mit Puffer; sie darf von einem Datum im Quelltext abweichen. Kein F3.
 - Eine WL-Störung, deren Ursache ein Störungswort ist („Polizeieinsatz“, „Schadhaftes Fahrzeug“, im Titel oder als „Grund: …“ im Text), zeigt ihren Beginn, auch zur vollen Stunde („[Seit 14:00]“) und um Mitternacht („[Seit 00:00]“, auch wenn sie am Vortag begann); eine Maßnahme als Ursache („Ersatzverkehr“, „Kein Betrieb“, „Umleitung“, „Busse halten …“) zeigt „[Heute]“. Kein F3.
