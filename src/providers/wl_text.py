@@ -8,6 +8,8 @@ import re
 from datetime import date, datetime, timedelta, UTC
 from zoneinfo import ZoneInfo
 
+from .wl_news_kind import lead_text
+
 _VIENNA_TZ = ZoneInfo("Europe/Vienna")
 
 # ---------------- Relevanz-/Ausschluss-Filter ----------------
@@ -337,14 +339,13 @@ def extract_date_from_title(
 
 
 # The "Zeitraum:" section of a WL notice names the real start; ``time.start``
-# is the publication day. On 2026-10-01, 7 of 34 notices began later than
-# their ``starts_at``, among them "29B/N25: Adolf-Loos-Gasse" (published
-# 30.09., "Ab Montag, 05. Oktober 2026") in the feed as
-# "[30.09.2026 – 31.12.2026]". The first date after the heading is the
-# start: "Ab Samstag, 12. September 2026, Betriebsbeginn (Nacht von 11. auf
-# 12. September) …", "Von 08. September 2026 bis Ende Oktober 2026",
-# "Montag, 3. August 2026, bis Ende September 2026".
-_PERIOD_HEADING_RE = re.compile(r"Zeitraum\s*:", re.IGNORECASE)
+# is the publication day (2026-10-01: 7 of 34 notices began later, "29B/N25:
+# Adolf-Loos-Gasse" published 30.09. read "[30.09.2026 – 31.12.2026]" for
+# "Ab Montag, 05. Oktober 2026"). The first date after the heading is the
+# start ("Ab Samstag, 12. September 2026, Betriebsbeginn …", "Von 08.
+# September 2026 bis Ende Oktober 2026"). A network change heads its date
+# "Zeitpunkt:" ("Ab 07. September 2026", 9A; 2026-11-07, ``wl_news_kind``).
+_PERIOD_HEADING_RE = re.compile(r"Zeit(?:raum|punkt)\s*:", re.IGNORECASE)
 # A stop relocation or closure names its period under "Dauer:" instead
 # ("Haltestelle: Fultonstraße / Von: … / Nach: … / Dauer: Ab 05. Oktober
 # 2026, etwa 07:00 Uhr für etwa zwei Wochen / Grund: Gleisbau"); all 37 such
@@ -366,10 +367,9 @@ def is_stop_notice(description: str) -> bool:
     (``_facility_drop_reason``) and the fuzzy merge (``_may_merge``) must
     not read that title as one.
     """
-    if not description:
-        return False
-    text = " ".join(html.unescape(re.sub(r"<[^>]+>", " ", description[:2000])).split())
-    return STOP_NOTICE_LEAD_RE.match(text) is not None
+    return STOP_NOTICE_LEAD_RE.match(lead_text(description)) is not None
+
+
 _PERIOD_DATE_RE = re.compile(
     r"\b(\d{1,2})\.\s*(?:(\d{1,2})\.(\d{4}|\d{2})?|("
     + "|".join(re.escape(m) for m in _MONTHS_DE)

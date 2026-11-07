@@ -173,6 +173,27 @@ Betriebsstörung“). Gemessen über alle WL-Cache-Stände seit 01.06.2026
 sechs Störungen für je einen bis vier Abrufe. Betreiberentscheidung
 2026-11-07 („Zurückhalten bis Text da ist“).
 
+#### WL-Netzänderung als Hinweis (seit 2026-11-07)
+
+Eine WL-Langmeldung kommt nur in den Feed, wenn ihr Text ein
+Einschränkungs-Stichwort trägt (`KW_RESTRICTION`, `docs/development.md`,
+„Wiener Linien“). Eine Netzänderung schränkt nichts ein – eine Linie
+bekommt eine Haltestelle – und nennt deshalb keines: „9A: Errichtung einer
+Haltestelle“ (ab 07.09.2026) und „57A: Errichtung einer Haltestelle“ (ab
+05.09.) fielen in jedem Abruf vom 04. bis 07.10.2026. WL setzt die Art der
+Meldung als Überschrift an den Textanfang („<h2>Netzänderung</h2>“);
+`is_network_change` (`src/providers/wl_news_kind.py`) liest diese
+Markierung, nicht Wörter im Fließtext, und `_news_passes_gate` in
+`src/providers/wl_fetch.py` lässt die Meldung als Hinweis durch. Sie steht
+ohne Ende im Feed (`_notice_end`): WLs `time.end` ist das Ende des
+Hinweises, Wochen nach der Änderung (9A: ein Monat, N67: zehn Tage), nicht
+der Maßnahme; als „[Bis Mi 07.10.]“ hätte es die neue Haltestelle befristet.
+Ihren Beginn nennt WL unter „Zeitpunkt:“ (`_PERIOD_HEADING_RE`), die
+Zeitzeile zeigt „Seit 07.09.“. Auch eine Netzänderung, die das Tor am
+Stichwort passiert („N67: Geänderte Linienführung ab 05.12.2026“: „Die Fahrt
+über Inzersdorf, Biróstraße entfällt“), steht ohne WLs Ende (15.12.).
+Betreiberentscheidung 2026-11-07 („Als Hinweis aufnehmen“).
+
 ### Rohdaten und Verwürfe des Abrufs (seit 2026-10-04)
 
 Die Caches unter `cache/` halten nur, was den Abruf überlebt hat. Ob eine

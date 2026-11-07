@@ -15,7 +15,10 @@ there, each the only notice with a line for its measure:
   stays out of the feed by the operator decision of 2026-10-03.
 
 Over all 78 news items of the eight raw snapshots, exactly these two change.
-"57A: Errichtung einer Haltestelle" (a new stop) stays out.
+"57A: Errichtung einer Haltestelle" (a new stop) stayed out until the operator
+decision of 2026-11-07: a network change, marked by the lead "<h2>Netzänderung</h2>",
+now enters as a notice without an end (``wl_news_kind.is_network_change``); the
+same text without that lead still falls at the keyword gate.
 
 Mutations checked against this file (each one caught, by the test named):
 
@@ -112,8 +115,13 @@ def test_the_u6_closure_reaches_the_cache(monkeypatch: pytest.MonkeyPatch) -> No
     assert len(events) == 1
 
 
-def test_a_new_stop_stays_out(monkeypatch: pytest.MonkeyPatch) -> None:
-    assert _fetch(monkeypatch, [_poi("57A: Errichtung einer Haltestelle", _NEW_STOP, "57A")]) == []
+def test_a_new_stop_enters_as_a_network_change(monkeypatch: pytest.MonkeyPatch) -> None:
+    events = _fetch(monkeypatch, [_poi("57A: Errichtung einer Haltestelle", _NEW_STOP, "57A")])
+    assert [(e["title"], e["category"], e["ends_at"]) for e in events] == [
+        ("57A: Errichtung einer Haltestelle", "Hinweis", None)
+    ]
+    plain = _NEW_STOP.replace("<h2>Netz&auml;nderung</h2>\r\n", "")
+    assert _fetch(monkeypatch, [_poi("57A: Errichtung einer Haltestelle", plain, "57A")]) == []
 
 
 def test_gate_text_resolves_entities_and_tags() -> None:
