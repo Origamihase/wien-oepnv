@@ -12,6 +12,7 @@ from collections.abc import Sequence
 from datetime import datetime, UTC
 from typing import NamedTuple
 
+from ..feed.glossary import _GLOSSARY_BASE, _GLOSSARY_BY_SOURCE
 from ..feed_types import FeedItem
 from ..providers.wl_lines import line_order_key
 from ..utils.text import html_to_text, names_planned_measure
@@ -406,10 +407,44 @@ _CAUSE_SYNONYMS: dict[str, str] = {
 }
 
 
+def _same_translation() -> dict[str, str]:
+    """The causes the glossary renders with one English term, each mapped to the first term listed.
+
+    "13A: Wasserrohrbruch, Wasserrohrgebrechen" (2026-11-05 20:31 to 06.11.
+    05:30): the display wrote "Wasserrohrbruch", the long message
+    "Wasserrohrgebrechen", and the English title read "Burst water pipe,
+    burst water pipe" — ``src/feed/glossary.py`` renders both as "burst
+    water pipe". Two causes the English feed cannot tell apart are one
+    cause, and the glossary says which ("Reparaturarbeiten" and
+    "Instandsetzungsarbeiten", "Oberleitungsstörung" and
+    "Fahrleitungsgebrechen"). Operator decision 2026-11-06.
+    """
+    first_for: dict[str, str] = {}
+    alike: dict[str, str] = {}
+    for german, english in {**_GLOSSARY_BASE, **_GLOSSARY_BY_SOURCE.get("Wiener Linien", {})}.items():
+        key = " ".join(german.casefold().split())
+        first = first_for.setdefault(" ".join(english.casefold().split()), key)
+        if first != key:
+            alike[key] = first
+    return alike
+
+
+_SAME_TRANSLATION: dict[str, str] = _same_translation()
+
+
 def _cause_key(cause: str) -> str:
-    """*cause* for comparison: casefolded, one space, WL's synonyms resolved."""
+    """*cause* for comparison: casefolded, one space, WL's synonyms and the glossary's resolved.
+
+    Both maps are applied twice: a synonym can lead into a glossary group
+    ("Fahrleitungsschaden" → "Oberleitungsgebrechen" → "Oberleitungsstörung")
+    and a glossary group into a synonym ("Schadhaftem Zug" → "Schadhafter
+    Zug" → "Schadhaftes Fahrzeug").
+    """
     key = " ".join(cause.casefold().split())
-    return _CAUSE_SYNONYMS.get(key, key)
+    for _ in range(2):
+        key = _CAUSE_SYNONYMS.get(key, key)
+        key = _SAME_TRANSLATION.get(key, key)
+    return key
 
 
 def _chosen_cause(parts: Sequence[_TickerPart]) -> str:

@@ -18,7 +18,7 @@ from .base import _SENTENCE_SPLIT_RE, _to_utc
 from .time_line import _wl_incident_start
 from .title_words import _HINDRANCE, _as_sentence, _rendered_title, _then_sentence
 from .wl_tickers import (
-    _WL_STOCK_SENTENCE_RE, _cause_key, _chosen_cause, _distinct_messages, _message_tokens, _publication_key,
+    _WL_STOCK_SENTENCE_RE, _TickerPart, _cause_key, _chosen_cause, _distinct_messages, _message_tokens, _publication_key,
     _shared_openings, _telling_long_message, _ticker_part, _ticker_prefix, _ticker_text, _twin_labels,
     _union_prefix, _without_cause,
 )
@@ -56,14 +56,17 @@ def _merged_ticker(members: Sequence[FeedItem]) -> FeedItem:
     _span_group(merged, members)
     long_message = _telling_long_message(members)
     if long_message is not None:
-        # WL's own text stands. A ticker of another cause stays out: beside
-        # the text it read as a second cause (48A on 2026-09-27: "Falschparker"
-        # over "Grund: Fremder Verkehrsunfall"). Tickers of the same cause, or
-        # of none, keep what the text does not say (``_with_consequences``):
-        # "Betrieb ab Mühlbreiten" of 64A on 2026-10-01 stood nowhere else.
-        cause = _cause_key(_ticker_part(long_message).cause)
-        same = [m for m in members if m is not long_message and _cause_key(_ticker_part(m).cause) in ("", cause)]
-        stands = _with_consequences(long_message, same) if same else long_message
+        # WL's own text stands, and the tickers keep what it does not say
+        # (``_with_consequences``): "Betrieb ab Mühlbreiten" of 64A on
+        # 2026-10-01 stood nowhere else. The cause a display names beside it
+        # stays out of title and text, it read as a second cause (48A on
+        # 2026-09-27: "Falschparker" over "Grund: Fremder Verkehrsunfall").
+        # Until 2026-11-06 such a ticker stayed out whole, with its measure:
+        # "12: Polizeieinsatz" lost "Betrieb ab Spitalgasse" and "Züge halten
+        # bei Linie 37-42" of the display's "Verkehrsunfall" (2026-11-05
+        # 17:57, one incident; ``_announced``).
+        others = [m for m in members if m is not long_message]
+        stands = _with_consequences(long_message, others) if others else long_message
         union = _union_prefix(members)
         title = str(stands.get("title") or "")
         # Twins of several lines (see ``_join_twin_groups``) stand under all of them.
@@ -116,20 +119,82 @@ _RIDER_CONSEQUENCE_RE = re.compile(
 _NEGATIONS: frozenset[str] = frozenset({"kein", "keine", "keinen", "nicht"})
 
 
+# A measure the display names as a noun and the long message as a participle
+# is one measure: "Umleitung über Inzersdorfer Straße" under "Die Linie 66A
+# wird … über Inzersdorfer Straße umgeleitet" read the detour twice
+# (2026-11-06 05:30). The rule is the word formation, not a list: a noun in
+# -ung and a participle share the verb's stem ("Umleit-ung" and
+# "um-ge-leit-et", "Kurzführ-ung" and "kurz-ge-führ-t", "Verleg-ung" and
+# "ver-leg-t"); a separable prefix stands in front of the "ge", an
+# inseparable one has none. WL's tickers since September: Umleitung and
+# umgeleitet, Kurzführung and kurzgeführt, Verlegung and verlegt, Auflassung
+# and aufgelassen, Einstellung and eingestellt.
+_NOUN_STEM_RE = re.compile(r"^(?P<stem>[a-zäöüß]{3,})ung(?:en)?$")
+_PARTICIPLE_STEM_RE = re.compile(
+    r"^(?P<prefix>ab|an|auf|aus|ein|kurz|um|weiter|wieder|zu|zurück)?ge(?P<stem>[a-zäöüß]{3,}?)(?:e?t|en)(?:e|en|er|es)?$"
+)
+_INSEPARABLE_STEM_RE = re.compile(r"^(?P<stem>(?:be|ent|er|ver|zer)[a-zäöüß]{3,}?)(?:e?t|en)(?:e|en|er|es)?$")
+# An inflected form is at most this much longer: "Verspätungen" says
+# "Verspätung", a compound is another word ("Betriebsschluss" does not say
+# "Betrieb", and "Betrieb ab Neubaugasse, Burggasse" was dropped under it).
+_INFLECTION_LETTERS = 3
+
+
+def _word_stem(word: str) -> str | None:
+    """The verb stem of a noun in -ung or of a participle, ``None`` for any other word (see above)."""
+    noun = _NOUN_STEM_RE.match(word)
+    if noun:
+        return noun["stem"]
+    participle = _PARTICIPLE_STEM_RE.match(word)
+    if participle:
+        return f"{participle['prefix'] or ''}{participle['stem']}"
+    inseparable = _INSEPARABLE_STEM_RE.match(word)
+    return inseparable["stem"] if inseparable else None
+
+
+def _same_word(token: str, said: frozenset[str], stems: frozenset[str]) -> bool:
+    """Whether *token* is among *said*: as written, inflected, or as the noun or participle of one verb."""
+    if token in said:
+        return True
+    if len(token) >= 5 and any(
+        len(word) >= 5
+        and abs(len(word) - len(token)) <= _INFLECTION_LETTERS
+        and (word.startswith(token) or token.startswith(word))
+        for word in said
+    ):
+        return True
+    stem = _word_stem(token)
+    return stem is not None and stem in stems
+
+
 def _said_already(message: str, said: frozenset[str]) -> bool:
     """Whether every word of *message* that carries meaning is among *said*.
 
     Words of up to three letters carry none here: "Betrieb ab
     Hofwiesengasse" adds nothing to "Betrieb nur zwischen Westbahnhof S U
-    und Hofwiesengasse" (60 on 2026-09-22). A longer or shorter form counts
-    from five letters on: "Verspätung" is in "Verspätungen".
+    und Hofwiesengasse" (60 on 2026-09-22). An inflected form counts from
+    five letters on ("Verspätung" is in "Verspätungen"), a compound does not
+    (``_INFLECTION_LETTERS``), and a noun in -ung says its participle
+    (``_word_stem``; 2026-11-06).
     """
+    stems = frozenset(stem for stem in map(_word_stem, said) if stem)
     return all(
-        token in said
-        or any(len(token) >= 5 and len(word) >= 5 and (word.startswith(token) or token.startswith(word)) for word in said)
+        _same_word(token, said, stems)
         for token in _message_tokens(message)
         if len(token) > 3 and token not in _NEGATIONS
     )
+
+
+def _announced(part: _TickerPart, cause: str) -> str:
+    """What a ticker says beyond the incident of *cause*: its consequence, or all of it for that cause or none.
+
+    A display that names the incident in another word ("Verkehrsunfall"
+    beside "Grund: Polizeieinsatz", 12 on 2026-11-05) gives its consequence
+    only: its word would read as a second cause (48A on 2026-09-27).
+    """
+    if part.cause and cause and _cause_key(part.cause) != _cause_key(cause):
+        return part.consequence
+    return part.consequence or part.body
 
 
 def _with_consequences(entry: FeedItem, members: Sequence[FeedItem]) -> FeedItem:
@@ -148,11 +213,11 @@ def _with_consequences(entry: FeedItem, members: Sequence[FeedItem]) -> FeedItem
     """
     text = _ticker_text(entry)
     said = _message_tokens(f"{_rendered_title(entry)} {text}")
-    cause = _ticker_part(entry).cause.casefold()
+    cause = _ticker_part(entry).cause
     # The cause glued in front ("Gasrohrgebrechen Shuttlebus eingerichtet, …")
     # and WL's display markup ("**Verspätung**") say nothing.
     candidates = [
-        _without_cause(part.consequence or part.body, cause).replace("*", "").strip()
+        _without_cause(_announced(part, cause), cause.casefold()).replace("*", "").strip()
         for part in map(_ticker_part, members)
     ]
     messages = [

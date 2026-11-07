@@ -92,6 +92,18 @@ Zwei Sorten, bewusst unterscheidbar:
   Regel die Modelleingabe von sechs (Biróstraße, Bertégasse,
   Fertöszentmiklós), jedes Mal nur den Namen; das echte Modell schreibt jetzt „Biróstraße 17“ und
   übersetzt die übrigen wie vorher.
+  Seit dem KI-Wächter vom 06.11. auch WLs „Bahnhof“-Namen ausgeschrieben:
+  Das Verzeichnis kürzt „Wien Bhf. Meidling (WL)“, „Wien Bhf. Hütteldorf
+  (WL)“, „Wien Bhf. Meidling, Schedifkaplatz (WL)“ (zehn Namen), WLs
+  Hinweise schreiben „Haltestellenverlegung der Linie 15A in Richtung
+  Bahnhof Meidling S U, Schedifkaplatz“ (05.11.). Geschützt war nur
+  „Meidling“, und der englische Text las „Station Meidling“. Zu jedem
+  „Bhf. X“ kennt der Namensdurchgang jetzt „Bahnhof X“ und „Bhf X“
+  (`_station_written_out_forms`), längste Form zuerst, sodass „Bahnhof
+  Meidling, Schedifkaplatz“ vor „Meidling“ greift. Ein „Bahnhof“ vor einer
+  Haltestelle, die das Verzeichnis ohne ihn führt („Bahnhof Heiligenstadt“),
+  bleibt Fließtext und wird übersetzt; der deutsche Feed ändert sich nicht
+  (`tests/test_station_written_out_names.py`).
   Werden nach dem Modelllauf **wortgleich** zurückgesetzt. Ein Datum wird
   **vor** den Linienkennungen maskiert: sonst wäre nur sein Tag ein
   Platzhalter, der am Punkt klebt, und das Modell verliert den Punkt

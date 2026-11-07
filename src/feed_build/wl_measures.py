@@ -42,9 +42,18 @@ __all__ = [
 # shape so generic prefixes and time markers like ``17:30 Uhr…``
 # stay untouched.
 _WL_DESC_LINE_TOKEN = r"(?:[A-Z]{0,4}\d{1,3}(?:[A-Z]R?)?|[A-Z]|W?LB)"  # nosec B105  # noqa: S105 — regex fragment, not a secret
+# WL's own name for its line LB stands in such a prefix as well: "Linie
+# Badner Bahn: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen
+# Intervallen." (LB, 2026-11-05 19:01) kept its prefix behind the title
+# "LB: Fremder Verkehrsunfall", so the sentence missed its English template
+# and read "Line Badner Bahn: After a service obstruction it comes to
+# irregular intervals." Only the "Linie …:" form knows the name: "Badner
+# Bahn:" without "Linie" marks the Badner Bahn's part of a multi-line text
+# (``_SHORT_LINE_MARKER_RE``) and stays.
+_WL_DESC_LINE_NAME = rf"(?:{_WL_DESC_LINE_TOKEN}|Badner\s+Bahn)"
 _WL_DESC_LINIE_PREFIX_RE = re.compile(
-    rf"^\s*Linien?\s+(?:{_WL_DESC_LINE_TOKEN})"
-    rf"(?:\s*[/+,]\s*(?:{_WL_DESC_LINE_TOKEN})){{0,20}}\s*:\s+",
+    rf"^\s*Linien?\s+{_WL_DESC_LINE_NAME}"
+    rf"(?:\s*[/+,]\s*{_WL_DESC_LINE_NAME}){{0,20}}\s*:\s+",
     re.IGNORECASE,
 )
 _WL_DESC_COMPACT_PREFIX_RE = re.compile(

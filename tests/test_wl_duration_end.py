@@ -101,6 +101,17 @@ def test_any_other_end_ignores_the_duration() -> None:
     assert plausible_end(text, exact, _PUBLISHED) == exact
 
 
+def test_a_day_end_a_year_after_the_publication_gives_way_too() -> None:
+    # 5B: Bauarbeiten (06.11.2026 14:11): time.end 06.11.2027 23:59 for "für ca. drei Wochen"
+    # from 09.11. — 21 days and the buffer of 10.5 days (operator decision 2026-11-06)
+    text = "Zeitraum: Ab Montag, den 9. November 2026, etwa 07:00 Uhr für ca. drei Wochen. Maßnahmen: Linie 5B Umleitung …"
+    published = datetime(2026, 11, 6, 14, 11, tzinfo=VIENNA)
+    assert plausible_end(text, datetime(2027, 11, 6, 23, 59, tzinfo=VIENNA), published) == _end(2026, 12, 10)
+    # the same end a day earlier is WL's end
+    exact = datetime(2027, 11, 5, 23, 59, tzinfo=VIENNA)
+    assert plausible_end(text, exact, published) == exact
+
+
 # --- end to end through fetch_events ---------------------------------------
 
 

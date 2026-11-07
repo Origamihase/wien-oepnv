@@ -29,7 +29,9 @@ end gives way to the end "Zeitraum:" names, or to the one its duration
 gives (:func:`plausible_end`), a begin date only moves the start later, and
 a text date past the end is not the start but a later phase's date. An
 11:11 end the text backs with neither an end nor a duration is not shown
-(:func:`end_unknown`).
+(:func:`end_unknown`). An end at 23:59 exactly a year after the publication
+is the same date set by hand (:func:`placeholder_end`, operator decision
+2026-11-06).
 
 What this cannot see: a date that is equally wrong in every source.
 """
@@ -65,6 +67,15 @@ _VIENNA_TZ = ZoneInfo("Europe/Vienna")
 # its ``time.end`` on 22.07.2027, so the finished notice stayed a candidate
 # for the ten feed slots.
 PLACEHOLDER_END = (11, 11)
+# The same date set by hand, at the end of the day: "5B: Bauarbeiten",
+# published 06.11.2026 14:11 for works "ab Montag, den 9. November 2026 …
+# für ca. drei Wochen", ended 06.11.2027 23:59, a year to the day after its
+# publication; the feed read "[Ab Mo 09.11. bis 06.11.2027]" for three
+# weeks of works. Of the 11 notices with an end at 23:59 in the cache of
+# 2026-11-06 it was the only one a year after its publication; the others
+# ended within days. Operator decision 2026-11-06 ("Ja, bitte"): such an
+# end counts as the 11:11 one.
+DAY_END = (23, 59)
 
 # How long before WL's incident message (``I20261010-0007``) a display ticker
 # of the same incident may have begun. WL switches the displays on before it
@@ -123,6 +134,31 @@ class Correction:
 MIN_DURATION_BUFFER = timedelta(days=7)
 
 
+def _anniversary(day: date) -> date:
+    """*day* a year on; the 29.02. becomes the 28.02."""
+    try:
+        return day.replace(year=day.year + 1)
+    except ValueError:
+        return day.replace(year=day.year + 1, day=28)
+
+
+def placeholder_end(end: datetime, published: datetime | None) -> bool:
+    """Whether *end* is a date WL set by hand, not one it knew (see :data:`PLACEHOLDER_END`).
+
+    An end at 11:11 Europe/Vienna is one whatever its day; an end at 23:59
+    is one when its day lies exactly a year after the day *published* names
+    (WL's ``time.start`` of a notice is its publication). Without a
+    publication a 23:59 end is an end.
+    """
+    local = end.astimezone(_VIENNA_TZ)
+    when = (local.hour, local.minute)
+    if when == PLACEHOLDER_END:
+        return True
+    if when != DAY_END or published is None:
+        return False
+    return local.date() == _anniversary(published.astimezone(_VIENNA_TZ).date())
+
+
 def _duration_end(desc_raw: str, reference: datetime) -> datetime | None:
     """23:59 Europe/Vienna of the text's start plus its duration and the buffer."""
     duration = extract_duration_from_description(desc_raw)
@@ -136,9 +172,10 @@ def _duration_end(desc_raw: str, reference: datetime) -> datetime | None:
 
 
 def plausible_end(desc_raw: str, end: datetime | None, start: datetime | None) -> datetime | None:
-    """WL's ``time.end``, or the end its "Zeitraum:" gives instead of an 11:11 one.
+    """WL's ``time.end``, or the end its "Zeitraum:" gives instead of a placeholder.
 
-    Only an end at 11:11 Europe/Vienna gives way; every other end, and an
+    Only an end WL set by hand gives way (:func:`placeholder_end`: 11:11, or
+    23:59 a year after the publication *start*); every other end, and an
     open one, stays. A named end takes its place; without one, a duration
     from the text's start plus a buffer (:data:`MIN_DURATION_BUFFER`), but
     only to shorten the end, never to extend it. The text's end counts only
@@ -151,8 +188,7 @@ def plausible_end(desc_raw: str, end: datetime | None, start: datetime | None) -
     """
     if end is None:
         return None
-    local = end.astimezone(_VIENNA_TZ)
-    if (local.hour, local.minute) != PLACEHOLDER_END:
+    if not placeholder_end(end, start):
         return end
     reference = start or end
     named = extract_end_from_description(desc_raw, reference_date=reference)
@@ -164,8 +200,11 @@ def plausible_end(desc_raw: str, end: datetime | None, start: datetime | None) -
     return named
 
 
-def end_unknown(desc_raw: str, end: datetime | None) -> bool:
-    """Whether *end* is WL's 11:11 expiry date and the text names no end of its own.
+def end_unknown(desc_raw: str, end: datetime | None, published: datetime | None = None) -> bool:
+    """Whether *end* is WL's expiry date set by hand and the text names no end of its own.
+
+    The date is the 11:11 one, or the 23:59 one a year after *published*
+    (:func:`placeholder_end`); the time line treats both alike.
 
     Such an end is not shown (operator decision 2026-10-08, "Kein Ende"):
     of the 124 notices with an 11:11 end that WL closed between 21.02. and
@@ -186,10 +225,7 @@ def end_unknown(desc_raw: str, end: datetime | None) -> bool:
     last day it would also have expired notices WL still listed: "85A:
     Straßenbauarbeiten" ("Mitte Mai") was listed until 02.08.2026.
     """
-    if end is None:
-        return False
-    local = end.astimezone(_VIENNA_TZ)
-    if (local.hour, local.minute) != PLACEHOLDER_END:
+    if end is None or not placeholder_end(end, published):
         return False
     return (
         extract_end_from_description(desc_raw, reference_date=end) is None
@@ -408,6 +444,7 @@ __all__ = [
     "BEGIN_AFTER_END",
     "CORRECTION_KINDS",
     "Correction",
+    "DAY_END",
     "MAX_LEAD_DAYS",
     "MIN_DURATION_BUFFER",
     "PLACEHOLDER_END",
@@ -417,6 +454,7 @@ __all__ = [
     "collected_corrections",
     "merge_corrections",
     "note_corrections",
+    "placeholder_end",
     "plausible_end",
     "plausible_start",
     "record_corrections",
