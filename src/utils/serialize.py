@@ -52,7 +52,7 @@ log = logging.getLogger(__name__)
 # additive strip is safe.
 # 2026-05-14 "Cf-Format Drift": widened in lockstep with the canonical
 # _INVISIBLE_DANGEROUS_RE union to cover the remaining 13 Unicode
-# Cf-class bands (44 code points): U+00AD SOFT HYPHEN, U+0600..U+0605
+# Cf-class bands (51 code points): U+00AD SOFT HYPHEN, U+0600..U+0605
 # Arabic prefix marks, U+06DD ARABIC END OF AYAH, U+070F SYRIAC
 # ABBREVIATION MARK, U+0890..U+0891 ARABIC POUND/PIASTRE MARK ABOVE,
 # U+08E2 ARABIC DISPUTED END OF AYAH, U+206A..U+206F deprecated BiDi
