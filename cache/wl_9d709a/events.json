@@ -926,22 +926,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "52/60: Polizeieinsatz",
-    "description": "Linie 52: Unregelmäßige Intervalle in beiden Richtungen. Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "b703b48269cbe9926cdd26f3c4a3deb3f64a21c41e7652db16b6671227480826",
-    "pubDate": "2026-11-07T14:00:00+01:00",
-    "starts_at": "2026-11-07T14:00:00+01:00",
-    "ends_at": "2026-11-07T16:10:00+01:00",
-    "_identity": "wl|störung|L=52,60|D=2026-11-07|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261107-0016"
-    ],
-    "_incident_start": "2026-11-07T14:00:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "63A: Verspätungen",
     "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -990,6 +974,22 @@
     "starts_at": "2026-11-05T00:00:28+01:00",
     "ends_at": "2026-11-07T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-05|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Verunreinigung",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "915e18ead502dc8610d1f4cabb6ce6d6bdc2826f1da93bdee9f3fb85f4d65515",
+    "pubDate": "2026-11-07T16:19:00+01:00",
+    "starts_at": "2026-11-07T16:19:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U6|D=2026-11-07|TK=u6 verunreinigung",
+    "_wl_ids": [
+      "I20261107-0023"
+    ],
+    "_incident_start": "2026-11-07T16:19:00+01:00"
   },
   {
     "source": "Wiener Linien",

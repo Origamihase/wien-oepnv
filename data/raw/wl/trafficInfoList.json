@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261107-0015-F02, I20261107-0015-F01, I20260925-0011, I20261107-0020, I20261107-0022, I20261107-0021-F02, I20260909-0007, I20261020-0029, I20261107-0021-F01, I20261107-0016"
+    "trafficInfoNameList": "I20261107-0015-F02, I20261107-0023, I20260925-0011, I20261107-0020, I20261107-0022, I20260909-0007, I20261020-0029, I20261107-0021-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R318-437, R293-474, R401-101, R2371-125, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R3886-480, R2558-125, R1974-466, R500-101, R216-137, R214-137, R215-137, R199-137, R215-138, R214-138, R216-138, R1215-138, R1217-138, R1216-138, R1214-138, R2964-138, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R293-474, R318-437, R401-101, R2371-125, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R3886-480, R2558-125, R1974-466, R500-101, R216-137, R215-137, R214-137, R199-137, R216-138, R215-138, R214-138, R1216-138, R1214-138, R1215-138, R1217-138, R2964-138, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -175,55 +175,6 @@
     "alertCauseId": 3,
     "attributes": {
      "relatedLineTypes": {
-      "6": "ptTram"
-     }
-    },
-    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "6: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261107-0015-F01",
-    "owner": "WL",
-    "parentName": "I20261107-0015",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 106,
-      "lineName": "6",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     464
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-07T14:14:00.000+0100",
-     "end": "2026-11-07T15:58:00.000+0100",
-     "lastUpdate": "2026-11-07T15:58:00.000+0100",
-     "resume": "2026-11-07T15:58:00.000+0100",
-     "start": "2026-11-07T13:44:00.000+0100"
-    },
-    "title": "6: Polizeieinsatz"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
       "18": "ptTram"
      }
     },
@@ -266,59 +217,6 @@
      "start": "2026-11-07T13:44:00.000+0100"
     },
     "title": "18: Polizeieinsatz"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "52": "ptTram",
-      "60": "ptTram"
-     }
-    },
-    "description": "Linie 52: Unregelmäßige Intervalle in beiden Richtungen. Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "descriptionHTML": "<p>Linie 52:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 60:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 52:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 60:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
-       "descriptionPlain": "Linie 52: Unregelmäßige Intervalle in beiden Richtungen. Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-       "title": "52, 60: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261107-0016",
-    "owner": "WL",
-    "parentName": "I20261107-0016",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "52",
-     "60"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 152,
-      "lineName": "52",
-      "vehicleType": "ptTram"
-     },
-     {
-      "lineId": 160,
-      "lineName": "60",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-07T14:00:00.000+0100",
-     "end": "2026-11-07T16:10:00.000+0100",
-     "lastUpdate": "2026-11-07T15:57:00.000+0100",
-     "resume": "2026-11-07T14:00:00.000+0100",
-     "start": "2026-11-07T14:00:00.000+0100"
-    },
-    "title": "52, 60: Polizeieinsatz"
    },
    {
     "alertCause": "defective vehicle",
@@ -414,55 +312,6 @@
     "title": "37: Verkehrsunfall"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "38": "ptTram"
-     }
-    },
-    "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 38: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 38: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "38: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261107-0021-F02",
-    "owner": "WL",
-    "parentName": "I20261107-0021",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 138,
-      "lineName": "38",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     214
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-07T15:46:00.000+0100",
-     "end": "2026-11-07T15:58:00.000+0100",
-     "lastUpdate": "2026-11-07T15:58:00.000+0100",
-     "resume": "2026-11-07T15:58:00.000+0100",
-     "start": "2026-11-07T15:40:00.000+0100"
-    },
-    "title": "38: Verkehrsunfall"
-   },
-   {
     "alertCause": "vandalism",
     "alertCauseId": 16,
     "attributes": {
@@ -506,6 +355,54 @@
      "start": "2026-11-07T15:52:00.000+0100"
     },
     "title": "35A: Verunreinigung"
+   },
+   {
+    "alertCause": "vandalism",
+    "alertCauseId": 16,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
+       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+       "title": "U6: Verunreinigung"
+      }
+     }
+    ],
+    "name": "I20261107-0023",
+    "owner": "WL",
+    "parentName": "I20261107-0023",
+    "priority": "1",
+    "reasonId": 36,
+    "reasonName": "Verunreinigung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4624
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-07T16:23:00.000+0100",
+     "lastUpdate": "2026-11-07T16:23:00.000+0100",
+     "resume": "2026-11-07T16:19:00.000+0100",
+     "start": "2026-11-07T16:19:00.000+0100"
+    },
+    "title": "U6: Verunreinigung"
    },
    {
     "alertCause": "undefined alert cause",
