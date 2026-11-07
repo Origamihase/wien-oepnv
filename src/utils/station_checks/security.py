@@ -60,7 +60,7 @@ from src.utils.station_checks.issues import SecurityIssue
 # existing BiDi-isolate band; reserved U+2065 has no defined meaning.
 # 2026-05-14 "Cf-Format Drift": widened in lockstep with the canonical
 # _INVISIBLE_DANGEROUS_RE union to cover the remaining 13 Unicode
-# Cf-class bands (44 code points): U+00AD SOFT HYPHEN (the most
+# Cf-class bands (51 code points): U+00AD SOFT HYPHEN (the most
 # impactful omission - rendered zero-width unconditionally in every
 # Markdown / RSS / terminal renderer), U+0600..U+0605 Arabic prefix
 # marks, U+06DD, U+070F, U+0890..U+0891, U+08E2, U+206A..U+206F

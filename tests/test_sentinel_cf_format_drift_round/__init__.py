@@ -30,7 +30,7 @@ code points span the following 13 bands:
                                   SEPARATOR / TERMINATOR.
   *  ``U+110BD``                — KAITHI NUMBER SIGN.
   *  ``U+110CD``                — KAITHI NUMBER SIGN ABOVE.
-  *  ``U+13430``-``U+13438``    — EGYPTIAN HIEROGLYPH JOINERS / SEGMENT
+  *  ``U+13430``-``U+1343F``    — EGYPTIAN HIEROGLYPH JOINERS / SEGMENT
                                   formatting controls.
   *  ``U+1BCA0``-``U+1BCA3``    — SHORTHAND FORMAT LETTER OVERLAP /
                                   CONTINUING OVERLAP / DOWN STEP / UP STEP.
@@ -92,7 +92,7 @@ Selector / WJ family. The most impactful sub-families:
    bytes through the dedup key while rendering identical in the
    feed UI.
 
-5. **U+110BD, U+110CD, U+13430-U+13438, U+1BCA0-U+1BCA3,
+5. **U+110BD, U+110CD, U+13430-U+1343F, U+1BCA0-U+1BCA3,
    U+1D173-U+1D17A** are supplementary-plane Format characters from
    the Kaithi / Egyptian Hieroglyphs / Shorthand / Musical Symbols
    blocks. None has a legitimate consumer in this codebase's
@@ -136,7 +136,7 @@ Severity
 ========
 **HIGH** — visual deception (Trojan-Source-class display confusion via
 SOFT HYPHEN especially) + steganographic data smuggling + LLM prompt-
-injection smuggling (the 44 code points double the alphabet of
+injection smuggling (the 51 code points double the alphabet of
 invisible characters available to a smuggling attack vs. the prior
 WJ-only round) + cache-key / GUID-collision primitive.
 
