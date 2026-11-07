@@ -10,7 +10,7 @@ import html
 import re
 from itertools import pairwise
 
-from ..utils.stations import station_info
+from ..utils.stations import StationInfo, station_info
 
 
 NON_LOCATION_PREFIXES = {
@@ -338,13 +338,98 @@ def _looks_like_station_name(text: str) -> bool:
     return True
 
 
+# One endpoint, two stations. ÖBB lists alternatives inside an endpoint:
+# "Wien Hbf/Wien St. Marx <=> Wien Praterstern" in the title, "zwischen Wien
+# Hbf bzw. Wien St.Marx und Wien Praterstern" in the description (the
+# Stammstrecke closure, published 2026-09-04). The directory knows no such
+# compound name, so the route counted as Wien ↔ unknown, and because a route
+# had been found, the single-station path never ran: a Wien ↔ Wien message
+# was dropped as "nicht Wien-relevant" for two months (found 2026-11-06).
+#
+# Only an endpoint that does NOT resolve as written is split, and only when
+# every part of it is a known railway station: "Krems/Donau", "Bruck/Leitha"
+# and "Mistelbach/Zaya" resolve as a whole (``station_info`` tries "an der"
+# and the bare place) and stay one station; an unknown compound such as
+# "Kammer/Attersee-Schörfling" stays one unknown endpoint as before. The
+# whitespace-bounded " / " between two whole routes ("A ↔ B / C ↔ D") is
+# split off earlier in :func:`_extract_routes`; here the slash separates
+# alternatives of one side.
+#
+# Every part, not one: the description regexes run on to the next station
+# name when a sentence does not follow "zwischen A und B", and such an
+# over-long endpoint may contain a slash — "Wien Nußdorf Bahnhst Linie U4
+# zwischen Wien Heiligenstadt Bahnhof und Wien Spittelau Bahnhst/Wien
+# Friedensbrücke" from the alternatives of the Franz-Josefs-Bahn works
+# (2026-10-28). Split on its one resolvable part it made a route Wien
+# Augasse ↔ Wien Friedensbrücke of two tram stops; whole, it stays the
+# unknown endpoint it always was. A stop known only to the Wiener Linien
+# directory (``source == "wl"``) is no end of an ÖBB stretch either: ÖBB
+# names railway stations in its own route, tram and bus stops only in the
+# alternatives it offers. The directory marks a stop it knows from Wiener
+# Linien or VOR alone "wl" or "vor,wl" (the U-Bahn stations Karlsplatz,
+# Schottentor, Stephansplatz); every railway station carries a railway
+# source. "bzw." and "oder" always separate alternatives; a slash only
+# inside a part that does not resolve as a whole, so "Tulln/Donau bzw.
+# Krems/Donau" names two stations and "Bruck/Leitha" one.
+_ENDPOINT_EITHER_RE = re.compile(r"\s+bzw\.?\s+|\s+oder\s+", re.IGNORECASE)
+_ENDPOINT_SLASH_RE = re.compile(r"\s*/\s*")
+_NON_RAILWAY_SOURCES = frozenset({"wl", "vor"})
+
+
+def _is_railway_station(info: StationInfo | None) -> bool:
+    """``True`` if a railway directory knows the station, not only the Wiener
+    Linien or VOR one (``source`` "wl" or "vor,wl": tram and U-Bahn stops).
+    A station without a recorded source is not split either."""
+    if info is None or not info.source:
+        return False
+    return not set(info.source.split(",")) <= _NON_RAILWAY_SOURCES
+
+
+def _endpoint_alternatives(name: str) -> list[str]:
+    """The stations *name* stands for: ``[name]`` itself, or the parts of an
+    unresolvable "A bzw. B" / "A/B" list when every part is a railway station."""
+    if not name or station_info(name) is not None:
+        return [name]
+    parts: list[str] = []
+    for part in map(_normalize_endpoint_name, _ENDPOINT_EITHER_RE.split(name)):
+        if station_info(part) is not None:
+            parts.append(part)
+        else:
+            parts.extend(map(_normalize_endpoint_name, _ENDPOINT_SLASH_RE.split(part)))
+    if len(parts) < 2 or not all(_looks_like_station_name(part) for part in parts):
+        return [name]
+    if not all(_is_railway_station(station_info(part)) for part in parts):
+        return [name]
+    return parts
+
+
+def _add_routes(
+    routes: list[tuple[str, str]],
+    seen: set[tuple[str, str]],
+    name_a: str,
+    name_b: str,
+) -> None:
+    """Append every (alternative of *name_a*, alternative of *name_b*) pair
+    to *routes*, once per unordered pair."""
+    for alt_a in _endpoint_alternatives(name_a):
+        for alt_b in _endpoint_alternatives(name_b):
+            sorted_pair = sorted([alt_a.casefold(), alt_b.casefold()])
+            key: tuple[str, str] = (sorted_pair[0], sorted_pair[1])
+            if key in seen:
+                continue
+            seen.add(key)
+            routes.append((alt_a, alt_b))
+
+
 def _extract_zwischen_routes(description: str) -> list[tuple[str, str]]:
     """Find all route mentions in *description*.
 
     Recognises both the dominant ``zwischen X und Y`` phrasing and the
     alternative ``Strecke|Verbindung|Linie|Abschnitt X — Y`` form. Returns a
     list of normalised ``(name_a, name_b)`` tuples, deduplicated regardless
-    of A/B order (so ``A ↔ B`` and ``B ↔ A`` count once).
+    of A/B order (so ``A ↔ B`` and ``B ↔ A`` count once). An endpoint that
+    lists two stations ("Wien Hbf bzw. Wien St.Marx") yields one route per
+    station (:func:`_endpoint_alternatives`).
     """
     if not description:
         return []
@@ -365,13 +450,7 @@ def _extract_zwischen_routes(description: str) -> list[tuple[str, str]]:
             b_norm = _normalize_endpoint_name(_with_place_qualifier(plain, match, "b"))
             if not _looks_like_station_name(a_norm) or not _looks_like_station_name(b_norm):
                 continue
-            # Deduplicate regardless of A/B order
-            sorted_pair = sorted([a_norm.casefold(), b_norm.casefold()])
-            key: tuple[str, str] = (sorted_pair[0], sorted_pair[1])
-            if key in seen:
-                continue
-            seen.add(key)
-            routes.append((a_norm, b_norm))
+            _add_routes(routes, seen, a_norm, b_norm)
 
     return routes
 
@@ -418,14 +497,12 @@ def _extract_routes(title: str, description: str) -> list[tuple[str, str]]:
                 b_norm = _normalize_endpoint_name(b_raw)
                 if not _looks_like_station_name(a_norm) or not _looks_like_station_name(b_norm):
                     continue
-                sorted_pair = sorted([a_norm.casefold(), b_norm.casefold()])
-                key: tuple[str, str] = (sorted_pair[0], sorted_pair[1])
-                if key in seen:
-                    continue
-                seen.add(key)
-                candidates.append((a_norm, b_norm))
+                # "Wien Hbf/Wien St. Marx ↔ Wien Praterstern": one route per
+                # station of a two-station side (``_endpoint_alternatives``).
+                _add_routes(candidates, seen, a_norm, b_norm)
 
-    # 2. Parse description — "zwischen X und Y" patterns
+    # 2. Parse description — "zwischen X und Y" patterns (alternatives of
+    #    one side already expanded there)
     for raw_a, raw_b in _extract_zwischen_routes(description):
         sorted_pair = sorted([raw_a.casefold(), raw_b.casefold()])
         desc_key: tuple[str, str] = (sorted_pair[0], sorted_pair[1])

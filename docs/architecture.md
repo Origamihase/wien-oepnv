@@ -687,6 +687,10 @@ verdrängt eine andere Störung.
   Franz-Josefs-Bahnhof ↔ St.Andrä-Wördern / Tulln an der Donau / Wien
   Heiligenstadt / Wien Nußdorf“ statt viermal „Wien Franz-Josefs-Bahnhof ↔
   …“. Strecken, die eine Kette bilden, bleiben eine Kette
-  (`_try_chain_routes`).
+  (`_try_chain_routes`) – seit 2026-11-06 nur, wenn jede Zwischenstation auf
+  dem Weg zwischen ihren Nachbarn liegt; zwei Strecken mit gemeinsamem Ende
+  abseits dieses Wegs stehen seither ebenfalls als Stern („Wien Praterstern
+  ↔ Wien Hauptbahnhof / Wien St. Marx“; Teil 4, „Zwei Bahnhöfe in einem
+  Endpunkt“).
 
 Weiter in [Teil 2](architecture-teil-2.md).

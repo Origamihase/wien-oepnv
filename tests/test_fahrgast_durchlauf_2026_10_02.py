@@ -86,10 +86,23 @@ def test_invisible_primitives_are_still_removed() -> None:
         ("Die Zufahrt zuden Objekten", "Die Zufahrt zu den Objekten"),
         ("Die Haltestelleder betroffenen", "Die Haltestelle der betroffenen"),
         ("Gleisschaden Umleitungab Volksoper", "Gleisschaden Umleitung ab Volksoper"),
+        # A bus-line name glued to the next word (Salztorbrücke 2026-11-06, WL 40A).
+        (
+            "die Buslinie 2Akann aufrecht gehalten werden",
+            "die Buslinie 2A kann aufrecht gehalten werden",
+        ),
+        ("Linie 40Ain Richtung Schottentor", "Linie 40A in Richtung Schottentor"),
     ],
 )
 def test_lower_case_glue_is_repaired(glued: str, repaired: str) -> None:
     assert repair_glued_words(glued) == repaired
+
+
+@pytest.mark.parametrize(
+    "text", ["Hausnummer 7Bauarbeiten", "um 10Uhr", "U5Bahn", "Nr. 12Bis", "S45 fährt"]
+)
+def test_a_line_letter_is_never_cut_from_a_word(text: str) -> None:
+    assert repair_glued_words(text) == text
 
 
 @pytest.mark.parametrize(
