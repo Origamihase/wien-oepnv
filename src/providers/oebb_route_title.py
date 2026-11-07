@@ -153,8 +153,13 @@ def _try_star_routes(canonical_routes: list[tuple[str, str]]) -> tuple[str, list
     With the hub named once it reads ``Wien Franz-Josefs-Bahnhof ↔
     St.Andrä-Wördern / Wien Heiligenstadt / Wien Nußdorf``. The others keep
     the order of the description.
+
+    Two routes with a common end are a star too, but they also chain
+    (``A ↔ Hub ↔ B``); :func:`_format_route_title` prefers the chain and
+    comes here only when the hub is not on the way between the other two
+    ends (:func:`_chain_is_corridor`).
     """
-    if len(canonical_routes) < 3:
+    if len(canonical_routes) < 2:
         return None
     shared = set(canonical_routes[0]).intersection(*(set(pair) for pair in canonical_routes[1:]))
     if len(shared) != 1:
@@ -171,37 +176,74 @@ def _try_star_routes(canonical_routes: list[tuple[str, str]]) -> tuple[str, list
 _CORRIDOR_DETOUR_FACTOR = 1.2
 
 
+def _detour_within_corridor(
+    point: StationInfo | None, start: StationInfo | None, end: StationInfo | None
+) -> bool | None:
+    """Whether the way from *start* to *end* via *point* stays within
+    :data:`_CORRIDOR_DETOUR_FACTOR` of the direct distance.
+
+    ``None`` when a station or one of its coordinates is unknown, or when
+    *start* and *end* share a position, so callers can tell "not on the
+    way" from "cannot tell".
+    """
+    if point is None or start is None or end is None:
+        return None
+    coords: list[tuple[float, float]] = []
+    for info in (point, start, end):
+        if info.latitude is None or info.longitude is None:
+            return None
+        coords.append((info.latitude, info.longitude))
+    (p_lat, p_lon), (s_lat, s_lon), (e_lat, e_lon) = coords
+    direct = calculate_distance_meters(s_lat, s_lon, e_lat, e_lon)
+    if not direct > 0:
+        return None
+    via = calculate_distance_meters(s_lat, s_lon, p_lat, p_lon) + calculate_distance_meters(
+        p_lat, p_lon, e_lat, e_lon
+    )
+    return via <= direct * _CORRIDOR_DETOUR_FACTOR
+
+
 def _lies_on_route(
     point: StationInfo | None, start: StationInfo | None, end: StationInfo | None
 ) -> bool:
     """``True`` if *point* is a station on the way between *start* and *end*.
 
     Two conditions, both required: the detour via *point* stays within
-    :data:`_CORRIDOR_DETOUR_FACTOR` of the direct distance, and one ÖBB line
-    serves all three stations (:func:`station_lines`). The second rules out
-    a station of another line that merely lies in the same direction —
-    Flughafen Wien lies straight between Wien Hauptbahnhof and Bruck an der
-    Leitha, but no line runs through all three. Unknown coordinates or
-    lines count as "not on the way".
+    :data:`_CORRIDOR_DETOUR_FACTOR` of the direct distance
+    (:func:`_detour_within_corridor`), and one ÖBB line serves all three
+    stations (:func:`station_lines`). The second rules out a station of
+    another line that merely lies in the same direction — Flughafen Wien
+    lies straight between Wien Hauptbahnhof and Bruck an der Leitha, but no
+    line runs through all three. Unknown coordinates or lines count as "not
+    on the way".
     """
     if point is None or start is None or end is None:
         return False
-    coords: list[tuple[float, float]] = []
-    for info in (point, start, end):
-        if info.latitude is None or info.longitude is None:
-            return False
-        coords.append((info.latitude, info.longitude))
-    (p_lat, p_lon), (s_lat, s_lon), (e_lat, e_lon) = coords
-    direct = calculate_distance_meters(s_lat, s_lon, e_lat, e_lon)
-    if not direct > 0:
-        return False
-    via = calculate_distance_meters(s_lat, s_lon, p_lat, p_lon) + calculate_distance_meters(
-        p_lat, p_lon, e_lat, e_lon
-    )
-    if via > direct * _CORRIDOR_DETOUR_FACTOR:
+    if not _detour_within_corridor(point, start, end):
         return False
     return bool(
         station_lines(point.name) & station_lines(start.name) & station_lines(end.name)
+    )
+
+
+def _chain_is_corridor(chain: list[str], infos: dict[str, StationInfo | None]) -> bool:
+    """``False`` when a station inside *chain* is known to lie off the way
+    between its two neighbours.
+
+    Routes chain by graph shape alone, so two stretches that END at the same
+    station chain as well: ``Wien Hbf/Wien St. Marx <=> Wien Praterstern``
+    (Stammstrecke works, 2026-09-07 to 2027-10-31) gave ``Wien Hauptbahnhof
+    ↔ Wien Praterstern ↔ Wien St. Marx``, which reads as if trains ran from
+    Wien Hauptbahnhof through Wien Praterstern to Wien St. Marx. Wien
+    Praterstern is the end of both stretches: the way between the other two
+    via Wien Praterstern is almost four times their direct distance. Such a
+    hub is rendered as a star (:func:`_try_star_routes`). Only the distance
+    test is used, not the common line of :func:`_lies_on_route`; unknown
+    coordinates keep the chain, as before.
+    """
+    return all(
+        _detour_within_corridor(infos.get(inner), infos.get(before), infos.get(after)) is not False
+        for before, inner, after in zip(chain, chain[1:], chain[2:], strict=False)
     )
 
 
@@ -305,6 +347,8 @@ def _format_route_title(routes: list[tuple[str, str]], line_prefix: str = "") ->
     title_body: str
     if len(canonical_pairs) >= 2:
         chain = _try_chain_routes(canonical_pairs)
+        if chain is not None and not _chain_is_corridor(chain, infos):
+            chain = None
         star = _try_star_routes(canonical_pairs)
         if chain is not None:
             title_body = " ↔ ".join(chain)

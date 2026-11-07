@@ -6,14 +6,14 @@
     "name": "aktuelles",
     "refPoiCategoryGroupId": 61,
     "title": "Aktuelles",
-    "trafficInfoNameList": "N20260209-0049, N20260209-3501, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260702-5991, N20260813-6092, N20260808-6084, N20260808-6083, N20260817-6129, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260901-6167, N20260903-6175, N20260908-6177, N20260915-6185, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261005-6222, N20261006-6258, N20261007-6260, N20261007-6262, N20261009-6270, N20261021-0001, N20261021-0003, N20261023-0001, N20261023-0002, N20261028-0003, N20261029-0002, N20261029-0004, N20261028-0002, N20261102-0001, N20261103-0001, N20261104-0001, N20261104-0002, N20261104-0003, N20261104-0004, N20261105-0001, N20261105-0002, N20261022-0005, N20261106-0002, N20261106-0004"
+    "trafficInfoNameList": "N20260209-0049, N20260209-3501, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260520-5854, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260702-5991, N20260813-6092, N20260808-6084, N20260808-6083, N20260817-6129, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260901-6167, N20260903-6175, N20260908-6177, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261005-6222, N20261006-6258, N20261007-6260, N20261007-6262, N20261009-6270, N20261021-0001, N20261021-0003, N20261023-0001, N20261023-0002, N20261028-0003, N20261029-0002, N20261029-0004, N20261028-0002, N20261102-0001, N20261103-0001, N20261104-0001, N20261104-0002, N20261104-0003, N20261104-0004, N20261105-0001, N20261105-0002, N20261022-0005, N20261106-0002, N20261106-0004"
    },
    {
     "id": -1,
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1016568, ftazW_212, ftazW_1016948, ftazW_1031285, ftazW_1351713, ftazW_97, ftazW_1016949, ftazW_1353814, ftazW_1031271, ftazW_1351712, ftazW_487, ftazW_444, ftazW_1031284, ftazW_2, ftazW_1353815, ftazW_582, ftazW_1017115, ftazW_1351714"
+    "trafficInfoNameList": "ftazW_1016568, ftazW_212, ftazW_1016948, ftazW_1031285, ftazW_1351713, ftazW_97, ftazW_1016949, ftazW_1353814, ftazW_1031271, ftazW_1351712, ftazW_487, ftazW_444, ftazW_1031284, ftazW_2, ftazW_1353815, ftazW_582, ftazW_1017115, ftazW_1351714, ftazW_445, ftazW_3, ftazW_1017116, ftazW_211, ftazW_1018631, ftazW_488, ftazW_581, ftazW_1351716"
    }
   ],
   "poiCategoryGroups": [
@@ -1637,49 +1637,6 @@
     "title": "N20: Gleisbauarbeiten ab 11.09.2026"
    },
    {
-    "alertCause": "construction work",
-    "alertCauseId": 45,
-    "description": "<h2>Gleisbauarbeiten</h2><p>Wegen Gleisbauarbeiten in der Althanstraße wird die Linie D geteilt geführt.</p><p><strong><u>Zeitraum:</u></strong><br>Ab 28. September 2026, 04:00 Uhr bis 07. November 2026, 04:00 Uhr.</p><p><strong><u>Maßnahmen:<br></u>Linie D:</strong><u><br></u>Betrieb nur zwischen Absberggasse und Börse sowie zwischen Augasse und Nußdorf.</p><p><strong><u>Ersatz:</u></strong><br>Linien S40, U2, U4, U6, 1, 5, 12, 37, 38, 71, 40A.</p><p><strong><u>Skizze:</u></strong></p><p><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/D_Gleisbau_Althanstr.png\" alt=\"\" width=\"1000\" height=\"1000\"></p>",
-    "id": "N20260915-6185",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<h2>Gleisbauarbeiten</h2><p>Wegen Gleisbauarbeiten in der Althanstraße wird die Linie D geteilt geführt.</p><p><strong><u>Zeitraum:</u></strong><br>Ab 28. September 2026, 04:00 Uhr bis 07. November 2026, 04:00 Uhr.</p><p><strong><u>Maßnahmen:<br></u>Linie D:</strong><u><br></u>Betrieb nur zwischen Absberggasse und Börse sowie zwischen Augasse und Nußdorf.</p><p><strong><u>Ersatz:</u></strong><br>Linien S40, U2, U4, U6, 1, 5, 12, 37, 38, 71, 40A.</p><p><strong><u>Skizze:</u></strong></p><p><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/D_Gleisbau_Althanstr.png\" alt=\"\" width=\"1000\" height=\"1000\"></p>",
-       "descriptionPlain": "GleisbauarbeitenWegen Gleisbauarbeiten in der Althanstraße wird die Linie D geteilt geführt. Zeitraum: Ab 28. September 2026, 04:00 Uhr bis 07. November 2026, 04:00 Uhr. Maßnahmen: Linie D: Betrieb nur zwischen Absberggasse und Börse sowie zwischen Augasse und Nußdorf. Ersatz: Linien S40, U2, U4, U6, 1, 5, 12, 37, 38, 71, 40A. Skizze:",
-       "title": "D: Gleisbauarbeiten"
-      }
-     }
-    ],
-    "location": {
-     "properties": {
-      "attributes": {},
-      "coordName": "WGS84",
-      "type": "news"
-     },
-     "type": "Feature"
-    },
-    "name": "N20260915-6185",
-    "reasonId": 27,
-    "reasonName": "Gleisbauarbeiten",
-    "refPoiCategoryId": 13296,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 136,
-      "lineName": "D",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "time": {
-     "end": "2026-11-07T03:00:00.000+0100",
-     "start": "2026-09-15T00:00:00.000+0200",
-     "validFrom": "2026-09-28T04:30:00.000+0200"
-    },
-    "title": "D: Gleisbauarbeiten Althanstraße"
-   },
-   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 4A in Richtung Wittelsbachstra&szlig;e, 80A in Richtung Praterstern S U und N29 in Richtung Wittelsbachstra&szlig;e</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Wittelsbachstra&szlig;e</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Sch&uuml;ttelstra&szlig;e 43-45</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Sch&uuml;ttelstra&szlig;e 41</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 22. September 2026, etwa 10:00 Uhr bis voraussichtlich Ende 2026</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Rohrleitungsarbeiten</span></span></p>",
@@ -3121,6 +3078,79 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "10.11.2026 05:15",
+     "ausVon": "10.11.2026 01:15",
+     "location": "U1 Mittelbahnsteig - Ausgang Wagramerstraße",
+     "rbls": [
+      4182,
+      4187
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Rennbahnweg",
+     "status": "geplante Wartung",
+     "towards": "U1 beide Richtungen"
+    },
+    "description": "U1 Mittelbahnsteig - Ausgang Wagramerstraße",
+    "elevatorId": "RB 02",
+    "name": "ftazW_1017116",
+    "parentName": "ftazW_1017116",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4182,
+     4187
+    ],
+    "time": {
+     "end": "2026-11-10T05:15:00.000+0100",
+     "start": "2026-11-10T01:15:00.000+0100"
+    },
+    "title": "Rennbahnweg"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "10.11.2026 05:15",
+     "ausVon": "10.11.2026 01:15",
+     "location": "Passage - Ausgang Praterstraße",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U2",
+      "U1"
+     ],
+     "station": "Praterstern",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Passage - Ausgang Praterstraße",
+    "elevatorId": "PR 07",
+    "name": "ftazW_1018631",
+    "parentName": "ftazW_1018631",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2",
+     "U1"
+    ],
+    "time": {
+     "end": "2026-11-10T05:15:00.000+0100",
+     "start": "2026-11-10T01:15:00.000+0100"
+    },
+    "title": "Praterstern"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "09.11.2026 05:15",
      "ausVon": "09.11.2026 01:15",
      "location": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Kaisermühlendamm",
@@ -3353,6 +3383,45 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "10.11.2026 05:15",
+     "ausVon": "10.11.2026 01:15",
+     "location": "beide Fahrtrichtungen - Ausgang Per Albin Hansson Siedlung",
+     "rbls": [
+      4136,
+      4131
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Alaudagasse",
+     "status": "geplante Wartung",
+     "towards": "U1 beide Richtungen"
+    },
+    "description": "beide Fahrtrichtungen - Ausgang Per Albin Hansson Siedlung",
+    "elevatorId": "AL 03",
+    "name": "ftazW_1351716",
+    "parentName": "ftazW_1351716",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4136,
+     4131
+    ],
+    "time": {
+     "end": "2026-11-10T05:15:00.000+0100",
+     "start": "2026-11-10T01:15:00.000+0100"
+    },
+    "title": "Alaudagasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "09.11.2026 05:15",
      "ausVon": "09.11.2026 01:15",
      "location": "Ausgang Schedifkaplatz - Zwischengeschoß Zugang ÖBB",
@@ -3454,6 +3523,38 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "10.11.2026 05:15",
+     "ausVon": "10.11.2026 01:15",
+     "location": "Zwischengeschoss - Ausgang Wilhelmstraße",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Bahnhof Meidling",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Zwischengeschoss - Ausgang Wilhelmstraße",
+    "elevatorId": "PH 01",
+    "name": "ftazW_211",
+    "parentName": "ftazW_211",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "time": {
+     "end": "2026-11-10T05:15:00.000+0100",
+     "start": "2026-11-10T01:15:00.000+0100"
+    },
+    "title": "Bahnhof Meidling"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "09.11.2026 00:45",
      "ausVon": "08.11.2026 20:45",
      "location": "U6 Mittelbahnsteig - Zwischengeschoss Zugang ÖBB Bahnsteig",
@@ -3481,6 +3582,43 @@
      "start": "2026-11-08T20:45:00.000+0100"
     },
     "title": "Bahnhof Meidling"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "10.11.2026 05:15",
+     "ausVon": "10.11.2026 01:15",
+     "location": "U1 Bahnsteig Richtung Oberlaa - Ausgang Arbeiterstrandbadstraße",
+     "rbls": [
+      4104
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Alte Donau",
+     "status": "geplante Wartung",
+     "towards": "U1 Oberlaa"
+    },
+    "description": "U1 Bahnsteig Richtung Oberlaa - Ausgang Arbeiterstrandbadstraße",
+    "elevatorId": "AD 02",
+    "name": "ftazW_3",
+    "parentName": "ftazW_3",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4104
+    ],
+    "time": {
+     "end": "2026-11-10T05:15:00.000+0100",
+     "start": "2026-11-10T01:15:00.000+0100"
+    },
+    "title": "Alte Donau"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3525,6 +3663,38 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "10.11.2026 05:15",
+     "ausVon": "10.11.2026 01:15",
+     "location": "Passage - Zwischengeschoss Zugang Meiselmarkt - Ausgang Hütteldorfer Straße",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Johnstraße",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Passage - Zwischengeschoss Zugang Meiselmarkt - Ausgang Hütteldorfer Straße",
+    "elevatorId": "JO 04",
+    "name": "ftazW_445",
+    "parentName": "ftazW_445",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "time": {
+     "end": "2026-11-10T05:15:00.000+0100",
+     "start": "2026-11-10T01:15:00.000+0100"
+    },
+    "title": "Johnstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "10.11.2026 00:45",
      "ausVon": "09.11.2026 20:45",
      "location": "U4 Mittelbahnsteig - Zwischengeschoss - U6 Bahnsteig Richtung Floridsdorf",
@@ -3559,6 +3729,85 @@
      "start": "2026-11-09T20:45:00.000+0100"
     },
     "title": "Spittelau"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "10.11.2026 05:15",
+     "ausVon": "10.11.2026 01:15",
+     "location": "U4 Mittelbahnsteig - Zwischengeschoss - U6 Bahnsteig Richtung Siebenhirten",
+     "rbls": [
+      4439,
+      4440,
+      4651
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4",
+      "U6"
+     ],
+     "station": "Spittelau",
+     "status": "geplante Wartung",
+     "towards": "U4 beide Richtungen, U6 Siebenhirten"
+    },
+    "description": "U4 Mittelbahnsteig - Zwischengeschoss - U6 Bahnsteig Richtung Siebenhirten",
+    "elevatorId": "AU 03",
+    "name": "ftazW_488",
+    "parentName": "ftazW_488",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4",
+     "U6"
+    ],
+    "relatedStops": [
+     4439,
+     4440,
+     4651
+    ],
+    "time": {
+     "end": "2026-11-10T05:15:00.000+0100",
+     "start": "2026-11-10T01:15:00.000+0100"
+    },
+    "title": "Spittelau"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "10.11.2026 05:15",
+     "ausVon": "10.11.2026 01:15",
+     "location": "U4 Mittelbahnsteig - Karlsplatzpassage",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U2",
+      "U1",
+      "U4"
+     ],
+     "station": "Karlsplatz",
+     "status": "geplante Wartung",
+     "towards": "U4 beide Richtungen"
+    },
+    "description": "U4 Mittelbahnsteig - Karlsplatzpassage",
+    "elevatorId": "KP 05",
+    "name": "ftazW_581",
+    "parentName": "ftazW_581",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2",
+     "U1",
+     "U4"
+    ],
+    "time": {
+     "end": "2026-11-10T05:15:00.000+0100",
+     "start": "2026-11-10T01:15:00.000+0100"
+    },
+    "title": "Karlsplatz"
    },
    {
     "alertCause": "undefined alert cause",

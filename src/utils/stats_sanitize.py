@@ -98,7 +98,7 @@ _CSV_FORMULA_PREFIXES: Final = ("=", "+", "-", "@", "\t", "\r")
 # defined meaning so the additive strip is safe.
 # 2026-05-14 "Cf-Format Drift": widened in lockstep with the canonical
 # _INVISIBLE_DANGEROUS_RE union to cover the remaining 13 Unicode
-# Cf-class bands (44 code points): U+00AD SOFT HYPHEN, U+0600..U+0605
+# Cf-class bands (51 code points): U+00AD SOFT HYPHEN, U+0600..U+0605
 # Arabic prefix marks, U+06DD, U+070F, U+0890..U+0891, U+08E2,
 # U+206A..U+206F deprecated BiDi controls (folds the existing
 # U+2060..U+2069 band into U+2060..U+206F), U+FFF9..U+FFFB INTERLINEAR

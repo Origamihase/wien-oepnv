@@ -82,7 +82,7 @@ to a path containing the canonical attack-byte primitives:
   * **SOFT HYPHEN (U+00AD)** + Cf-class Format characters
     (U+0600..U+0605, U+06DD, U+070F, U+0890..U+0891, U+08E2,
     U+206A..U+206F, U+FFF9..U+FFFB, U+110BD/U+110CD,
-    U+13430..U+13438, U+1BCA0..U+1BCA3, U+1D173..U+1D17A) —
+    U+13430..U+1343F, U+1BCA0..U+1BCA3, U+1D173..U+1D17A) —
     invisible characters that pollute byte-equality / hash / GUID
     dedup keys; SOFT HYPHEN is the canonical "invisible-by-default"
     real-world IDN / package-name spoofing primitive (CVE-2018-19165

@@ -20,7 +20,8 @@ What does *not* count:
   disruption on the display.
 * **Transit named as unaffected.** "in der betriebslosen Zeit der
   Straßenbahn", "nicht beeinträchtigt", "einschließlich des öffentlichen
-  Verkehrs … aufrecht gehalten" — see :data:`_NO_IMPACT_RE`.
+  Verkehrs … aufrecht gehalten", "die Buslinie 2A kann aufrecht gehalten
+  werden" — see :data:`_NO_IMPACT_RE` and :func:`_keeps_running`.
 * **The referral to Wiener Linien and the operator's name** — see
   :data:`REFERRAL_BOILERPLATE_RE` and ``_OPERATOR_NAME_RE``.
 
@@ -129,6 +130,36 @@ _NO_IMPACT_RE: Final = re.compile(
     r"|\bnicht\s+(?:beeinträchtigt|betroffen|behindert)"
     r"|in\s+allen\s+(?:bestehenden\s+)?Fahrrelationen"
     r"|\b(?:Verlängerung|Neubau|Ausbau)\w*\s+(?:der|des)\s+Straßenbahn",
+    re.IGNORECASE,
+)
+
+# "aufrecht gehalten / erhalten", "bleibt … aufrecht" (added 2026-11-06): the
+# Salztorbrücke works (10.11.2026 to 10.01.2028) said "Der Fußgänger- und
+# Radverkehr sowie die Buslinie 2A kann aufrecht gehalten werden" — the bus
+# keeps running, only cars are diverted — and were admitted on the word
+# "Buslinie" alone. The Donaufelder sentence above carries the same phrase
+# but was caught by its "Fahrrelationen". Measured over every Baustellen
+# text since May 2026 (cache) and every raw feature since 04.10.2026: no
+# other sentence that names transit contains "aufrecht". A qualifier earlier
+# in the sentence — "nicht", "nicht mehr", "nur", "kein", "eingeschränkt",
+# "teilweise" ("kann derzeit nicht in vollem Umfang aufrecht gehalten
+# werden", "bleibt nur eingeschränkt aufrecht") — states an effect, so the
+# phrase counts only without one. The qualifier may stand anywhere before
+# "aufrecht" within 60 characters, not only next to it; a sentence that
+# denies one thing and keeps transit running ("… nicht befahrbar, die
+# Buslinie bleibt aufrecht") therefore still counts as an effect, the safer
+# error. "aufrechtzuerhalten", the purpose of a measure, is not matched: it
+# says what is done to transit, not that nothing is. The qualifier pattern
+# ends open ("aufrecht", "aufrechterhalten") so "nicht aufrechterhalten
+# werden" is caught as well.
+_KEEPS_RUNNING_RE: Final = re.compile(
+    r"\baufrecht\s*(?:ge|er)halten\b"
+    r"|\bbleib(?:t|en)\b[^.;:]{0,60}?\baufrecht\b"
+    r"|\baufrecht\s+bleib(?:t|en)\b",
+    re.IGNORECASE,
+)
+_KEEPS_RUNNING_QUALIFIED_RE: Final = re.compile(
+    r"\b(?:nicht|nur|kein\w*|eingeschränkt|teilweise)\b[^.;:]{0,60}?\baufrecht",
     re.IGNORECASE,
 )
 
@@ -253,7 +284,16 @@ def mentions_oepnv(text: str) -> bool:
 
 
 def _sentence_names_impact(sentence: str) -> bool:
-    return bool(_OEPNV_RE.search(sentence)) and not _NO_IMPACT_RE.search(sentence)
+    if not _OEPNV_RE.search(sentence) or _NO_IMPACT_RE.search(sentence):
+        return False
+    return not _keeps_running(sentence)
+
+
+def _keeps_running(sentence: str) -> bool:
+    """``True`` if *sentence* says transit keeps running ("kann aufrecht
+    gehalten werden", "bleibt aufrecht") with no qualifier before "aufrecht"
+    ("nicht", "nur", "eingeschränkt") that turns it into an effect."""
+    return bool(_KEEPS_RUNNING_RE.search(sentence)) and not _KEEPS_RUNNING_QUALIFIED_RE.search(sentence)
 
 
 def _split_into_sentences(text: str) -> list[str]:

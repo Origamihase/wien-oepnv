@@ -195,7 +195,7 @@ _CONTROL_CHARS_RE = re.compile(
 #
 # 2026-05-14 "Cf-Format Drift": widened to close every remaining
 # Unicode general category Cf (Format) code point that the prior
-# rounds did not enumerate. The 13 added bands cover 44 code points:
+# rounds did not enumerate. The 13 added bands cover 51 code points:
 #   * U+00AD - SOFT HYPHEN. The single most-impactful omission: it
 #     renders zero-width unconditionally in browsers / RSS readers /
 #     terminals / IDE preview / GitHub web UI when not at a line-

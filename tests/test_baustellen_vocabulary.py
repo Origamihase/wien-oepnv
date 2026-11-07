@@ -36,10 +36,27 @@ _REFERRAL_SINGULAR = (
     "betroffenen öffentlichen Verkehrsmittels ist der Auskunft der Wiener Linien "
     "GmbH & Co KG zu entnehmen."
 )
+# Salztorbrücke (10.11.2026 to 10.01.2028, cached 2026-11-06, with the glue
+# of the source): the bus keeps running, only cars are diverted.
+_BUS_KEEPS_RUNNING = (
+    "DerFußgänger- und Radverkehrsowiedie Buslinie 2Akann aufrecht gehalten werden. "
+    "Die Salztorbrücke wird für den motorisierten Individualverkehr in beide "
+    "Fahrtrichtungen gesperrt."
+)
 
 
 @pytest.mark.parametrize(
-    "text", [_OPERATOR_AS_BUILDER, _OPERATOR_TRACK_WORKS, _ROAD_AREA, _REFERRAL_SINGULAR]
+    "text",
+    [
+        _OPERATOR_AS_BUILDER,
+        _OPERATOR_TRACK_WORKS,
+        _ROAD_AREA,
+        _REFERRAL_SINGULAR,
+        _BUS_KEEPS_RUNNING,
+        "Der Betrieb der Straßenbahnlinie 49 bleibt aufrecht.",
+        "Der Busverkehr wird aufrechterhalten.",
+        "Der Betrieb der Buslinie 2A bleibt in beiden Richtungen aufrecht.",
+    ],
 )
 def test_not_an_oepnv_mention(text: str) -> None:
     assert not mentions_oepnv(text)
@@ -55,6 +72,13 @@ def test_not_an_oepnv_mention(text: str) -> None:
         "Die Linie 19A wird über Favoritenstraße umgeleitet.",
         "Der öffentliche Verkehr wird umgeleitet.",
         "Die Buslinie 7A wird in diesen Zeitraum über die Rothenhofgasse umgeleitet.",
+        # The phrase with a negation states an effect.
+        "Der Betrieb der Straßenbahnlinie 49 kann nicht aufrecht gehalten werden.",
+        "Der Betrieb der Buslinie 2A kann nicht mehr aufrecht gehalten werden.",
+        "Um den Busbetrieb aufrechtzuerhalten, wird die Haltestelle verlegt.",
+        "Der Betrieb der Straßenbahnlinie 49 kann derzeit nicht in vollem Umfang aufrecht gehalten werden.",
+        "Die Buslinie 2A bleibt nur eingeschränkt aufrecht.",
+        "Der Betrieb der Buslinie 2A kann in der Nacht nicht aufrechterhalten werden.",
     ],
 )
 def test_still_an_oepnv_mention(text: str) -> None:

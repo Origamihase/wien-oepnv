@@ -640,13 +640,11 @@ verdrängt eine andere Störung.
     WL-Meldung endet mit einem Punkt, eine Kurzmeldung der Anzeige nicht.
     Jede Stelle, die eine Meldung hinter einen WL-Text hängt
     (`_with_unowned`, `_with_consequences`, `_with_line_tickers`), schließt
-    den Text vorher als Satz. Anlass: „26: Fahrtbehinderung wegen
-    Rettungseinsatz“ (05.11., 15:56) nahm den Anzeigetext des Tages „Züge
-    halten in Tokiostraße“ nur mit einem Leerzeichen auf, und der Feed las
-    „Fahrtbehinderung wegen Rettungseinsatz Züge halten in Tokiostraße.“ als
-    einen Satz (ebenso „26: Verkehrsunfall“ am 04.11.). Jetzt: „Fahrtbehinderung
-    wegen Rettungseinsatz. Züge halten in Tokiostraße.“ Den Wortlaut der
-    Quelle ändert die Regel nicht, sie setzt nur das Satzende.
+    den Text vorher als Satz. Anlass: „26: Rettungseinsatz“ las am 05.11.
+    „Fahrtbehinderung wegen Rettungseinsatz Züge halten in Tokiostraße.“
+    (ebenso „26: Verkehrsunfall“ am 04.11.); jetzt steht ein Punkt vor
+    „Züge“. Der Wortlaut der Quelle bleibt, auch die Ursache des Titels im
+    Text (Betreiberentscheidung 2026-11-06, „WL-Wortlaut behalten“).
   - Ausnahmen: Eine Ursache von mehr als `_MAX_LISTED_WORDS` (6) Wörtern
     ist ein Satz. Die Meldung „18: Haltestelle Stadionbrücke … aufgelassen.
     Bitte …“, seit Juli im Cache, behält ihren Eintrag und schließt sich
@@ -694,7 +692,9 @@ verdrängt eine andere Störung.
   Bahnhof einmal vorn (`_try_star_routes`): „R 40/REX 41/REX 4/S 40: Wien
   Franz-Josefs-Bahnhof ↔ St.Andrä-Wördern / Tulln an der Donau / Wien
   Heiligenstadt / Wien Nußdorf“ statt viermal „Wien Franz-Josefs-Bahnhof ↔
-  …“. Strecken, die eine Kette bilden, bleiben eine Kette
-  (`_try_chain_routes`).
+  …“. Eine Kette (`_try_chain_routes`) gilt seit 2026-11-06 nur, wenn jede
+  Zwischenstation auf dem Weg zwischen ihren Nachbarn liegt; zwei Strecken
+  mit gemeinsamem Ende abseits des Wegs stehen als Stern („Wien Praterstern ↔
+  Wien Hauptbahnhof / Wien St. Marx“; Teil 4, „Zwei Bahnhöfe in einem Endpunkt“).
 
 Weiter in [Teil 2](architecture-teil-2.md).

@@ -262,7 +262,11 @@
   auch im Text: Artikel vor Fahrstreifen-Adjektiv, Präposition vor Artikel,
   Funktionswort hinter „-straße/-gasse/-stelle/-platz/-ung“. Über 16 362
   Texte aus Feed- und Cache-Historie trifft die Regel 23 Stellen, alle
-  verklebt; „zudem“, „indem“, „beiden“, „derzeit“ bleiben ganz.
+  verklebt; „zudem“, „indem“, „beiden“, „derzeit“ bleiben ganz. Seit
+  2026-11-06 auch eine Buslinie am nächsten Wort („2Akann“, Salztorbrücke;
+  „40Ain“, WL): Ziffern und Linienbuchstabe A/B am Wortanfang vor einem
+  Funktionswort oder Verb aus fester Liste, damit „10Uhr“, „U5“ und
+  „7Bauarbeiten“ ganz bleiben; über 9 028 Texte genau diese zwei Stellen.
 * **St.-Abkürzung, Leerzeichen vor Satzzeichen, Ortsangabe ohne Ort (seit
   2026-10-03).** Die Nachprüfung der Änderungen vom 02.10. rendert alle
   2.126 verschiedenen Meldungen der Cache-Historie neu und fand drei

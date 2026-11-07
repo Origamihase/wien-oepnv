@@ -582,6 +582,30 @@ WL-Haltestelle Baumgarten werden. Über alle Namen der ÖBB-Rohdaten und alle
 Aliase des Verzeichnisses ändern sich nur die qualifizierten Namen; die 80
 ÖBB-Meldungen im Cache seit Juli behalten ihre Entscheidung.
 
+**Zwei Bahnhöfe in einem Endpunkt (seit 2026-11-06).** ÖBB nennt die
+Alternativen einer Seite im Endpunkt selbst: „Wien Hbf/Wien St. Marx <=> Wien
+Praterstern“ im Titel, „zwischen Wien Hbf bzw. Wien St.Marx und Wien
+Praterstern“ im Text (Sperre der Stammstrecke 07.09.2026 bis Oktober 2027). Das
+Verzeichnis kennt keinen solchen Doppelnamen; die Strecke galt als Wien ↔
+unbekannt, und weil eine Strecke gefunden war, lief die Einzelbahnhof-Prüfung
+nicht: Die Meldung fiel zwei Monate als „nicht Wien-relevant“ weg.
+`_endpoint_alternatives` (`src/providers/oebb_routes.py`) teilt einen Endpunkt,
+der als Ganzes nicht auflöst, in eine Strecke je Teil – „bzw.“ und „oder“
+trennen immer, der Schrägstrich nur einen Teil, der als Ganzes nicht auflöst
+(„Tulln/Donau bzw. Krems/Donau“ sind zwei Bahnhöfe, „Bruck/Leitha“ bleibt
+einer) – und nur, wenn jeder Teil ein Bahnhof der Eisenbahn ist, nicht nur eine
+Haltestelle der Wiener Linien oder des VOR: ein überlanger Endpunkt aus den
+Alternativ-Texten und zwei Straßenbahnhaltestellen bleiben unbekannt wie
+bisher. Die zwei Strecken der Sperre bildeten zudem nach der Form des Graphen
+die Kette „Wien Hauptbahnhof ↔ Wien Praterstern ↔ Wien St. Marx“, als führen
+Züge über Wien Praterstern. Eine Kette gilt nur noch, wenn jede Zwischenstation
+auf dem Weg zwischen ihren Nachbarn liegt (Umweg-Maßstab aus Teil 2 ohne
+Linienbedingung, `_chain_is_corridor`; unbekannte Koordinaten lassen die Kette
+stehen); sonst steht die Station, an der alle Strecken enden, einmal vorn
+(`_try_star_routes`, jetzt ab zwei Strecken): „Wien Praterstern ↔ Wien
+Hauptbahnhof / Wien St. Marx“; Strecken ohne gemeinsame Station stehen einzeln
+mit „ / “. Das Nachspiel steht im Changelog.
+
 Der Name-Eindeutigkeits-Vertrag aus PR #1452 bleibt davon unberührt —
 duplizierte `PlatformText`-Werte sind weiterhin legitim und werden
 weiterhin nicht erzwungen.

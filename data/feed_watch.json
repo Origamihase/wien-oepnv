@@ -1,13 +1,29 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-07T00:31:03.323153+00:00",
- "built": "2026-11-07T01:30:52+01:00",
+ "updated": "2026-11-07T16:30:54.848701+00:00",
+ "built": "2026-11-07T17:30:44+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-07T01:30:52+01:00",
+  "built": "2026-11-07T17:30:44+01:00",
   "items": [
+   {
+    "title": "46: Polizeieinsatz",
+    "time_line": "Seit 16:33"
+   },
+   {
+    "title": "U6: Verunreinigung",
+    "time_line": "Seit 16:19"
+   },
+   {
+    "title": "63A: Verspätungen",
+    "time_line": "Seit 15:11"
+   },
+   {
+    "title": "Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx",
+    "time_line": "Bis 31.10.2027"
+   },
    {
     "title": "5A/N31: Obere Augartenstraße",
     "time_line": "Bis Mo 09.11."
@@ -31,667 +47,11 @@
    {
     "title": "64A/N64R: Zouvalgasse",
     "time_line": "Ab Mo 09.11."
-   },
-   {
-    "title": "12A: Henriettenplatz",
-    "time_line": "Seit 04.11."
-   },
-   {
-    "title": "REX50/REX51/S50: Wien Westbahnhof ↔ St. Pölten Hbf",
-    "time_line": "Bis Mi 11.11."
-   },
-   {
-    "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
-    "time_line": "Bis 30.11."
-   },
-   {
-    "title": "54A/54B: Bauarbeiten",
-    "time_line": "Bis Di 10.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-31T00:31:07.198401+00:00",
-   "raw": {
-    "wl-stoerungen": 77,
-    "wl-hinweise": 69,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 7,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 106
-   }
-  },
-  {
-   "t": "2026-10-31T01:01:06.961682+00:00",
-   "raw": {
-    "wl-stoerungen": 67,
-    "wl-hinweise": 69,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 7,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 105
-   }
-  },
-  {
-   "t": "2026-10-31T01:30:59.836989+00:00",
-   "raw": {
-    "wl-stoerungen": 67,
-    "wl-hinweise": 69,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 7,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 105
-   }
-  },
-  {
-   "t": "2026-10-31T02:01:04.060082+00:00",
-   "raw": {
-    "wl-stoerungen": 79,
-    "wl-hinweise": 69,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 7,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 107
-   }
-  },
-  {
-   "t": "2026-10-31T02:31:04.557789+00:00",
-   "raw": {
-    "wl-stoerungen": 146,
-    "wl-hinweise": 69,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 7,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 107
-   }
-  },
-  {
-   "t": "2026-10-31T03:01:13.240997+00:00",
-   "raw": {
-    "wl-stoerungen": 68,
-    "wl-hinweise": 69,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 105
-   }
-  },
-  {
-   "t": "2026-10-31T03:30:56.981561+00:00",
-   "raw": {
-    "wl-stoerungen": 66,
-    "wl-hinweise": 67,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 7,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 102
-   }
-  },
-  {
-   "t": "2026-10-31T04:01:09.183546+00:00",
-   "raw": {
-    "wl-stoerungen": 62,
-    "wl-hinweise": 67,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 7,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 99
-   }
-  },
-  {
-   "t": "2026-10-31T04:31:03.005779+00:00",
-   "raw": {
-    "wl-stoerungen": 59,
-    "wl-hinweise": 71,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 96
-   }
-  },
-  {
-   "t": "2026-10-31T05:01:04.782164+00:00",
-   "raw": {
-    "wl-stoerungen": 59,
-    "wl-hinweise": 71,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 96
-   }
-  },
-  {
-   "t": "2026-10-31T05:30:55.952746+00:00",
-   "raw": {
-    "wl-stoerungen": 59,
-    "wl-hinweise": 71,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 96
-   }
-  },
-  {
-   "t": "2026-10-31T06:01:01.931980+00:00",
-   "raw": {
-    "wl-stoerungen": 59,
-    "wl-hinweise": 71,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 96
-   }
-  },
-  {
-   "t": "2026-10-31T06:31:00.897822+00:00",
-   "raw": {
-    "wl-stoerungen": 75,
-    "wl-hinweise": 71,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 98
-   }
-  },
-  {
-   "t": "2026-10-31T07:01:25.902901+00:00",
-   "raw": {
-    "wl-stoerungen": 74,
-    "wl-hinweise": 71,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 97
-   }
-  },
-  {
-   "t": "2026-10-31T07:30:47.020585+00:00",
-   "raw": {
-    "wl-stoerungen": 59,
-    "wl-hinweise": 71,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 96
-   }
-  },
-  {
-   "t": "2026-10-31T08:01:15.911273+00:00",
-   "raw": {
-    "wl-stoerungen": 59,
-    "wl-hinweise": 71,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 96
-   }
-  },
-  {
-   "t": "2026-10-31T08:31:03.447715+00:00",
-   "raw": {
-    "wl-stoerungen": 60,
-    "wl-hinweise": 71,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 97
-   }
-  },
-  {
-   "t": "2026-10-31T09:01:10.787147+00:00",
-   "raw": {
-    "wl-stoerungen": 60,
-    "wl-hinweise": 71,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 97
-   }
-  },
-  {
-   "t": "2026-10-31T09:30:52.584169+00:00",
-   "raw": {
-    "wl-stoerungen": 62,
-    "wl-hinweise": 71,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 97
-   }
-  },
-  {
-   "t": "2026-10-31T10:01:04.061305+00:00",
-   "raw": {
-    "wl-stoerungen": 63,
-    "wl-hinweise": 71,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 98
-   }
-  },
-  {
-   "t": "2026-10-31T10:30:56.121360+00:00",
-   "raw": {
-    "wl-stoerungen": 71,
-    "wl-hinweise": 70,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 97
-   }
-  },
-  {
-   "t": "2026-10-31T11:01:10.428714+00:00",
-   "raw": {
-    "wl-stoerungen": 72,
-    "wl-hinweise": 70,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 96
-   }
-  },
-  {
-   "t": "2026-10-31T11:31:08.394141+00:00",
-   "raw": {
-    "wl-stoerungen": 62,
-    "wl-hinweise": 70,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 96
-   }
-  },
-  {
-   "t": "2026-10-31T12:01:17.862041+00:00",
-   "raw": {
-    "wl-stoerungen": 61,
-    "wl-hinweise": 70,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 97
-   }
-  },
-  {
-   "t": "2026-10-31T12:31:06.424232+00:00",
-   "raw": {
-    "wl-stoerungen": 62,
-    "wl-hinweise": 70,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 98
-   }
-  },
-  {
-   "t": "2026-10-31T13:01:06.980764+00:00",
-   "raw": {
-    "wl-stoerungen": 62,
-    "wl-hinweise": 70,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 98
-   }
-  },
-  {
-   "t": "2026-10-31T13:31:04.645295+00:00",
-   "raw": {
-    "wl-stoerungen": 98,
-    "wl-hinweise": 70,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 98
-   }
-  },
-  {
-   "t": "2026-10-31T14:01:10.495616+00:00",
-   "raw": {
-    "wl-stoerungen": 100,
-    "wl-hinweise": 70,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 107
-   }
-  },
-  {
-   "t": "2026-10-31T14:31:08.500335+00:00",
-   "raw": {
-    "wl-stoerungen": 67,
-    "wl-hinweise": 70,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 99
-   }
-  },
-  {
-   "t": "2026-10-31T15:01:19.817419+00:00",
-   "raw": {
-    "wl-stoerungen": 68,
-    "wl-hinweise": 70,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 9,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 99
-   }
-  },
-  {
-   "t": "2026-10-31T15:31:19.131086+00:00",
-   "raw": {
-    "wl-stoerungen": 69,
-    "wl-hinweise": 70,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 9,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 99
-   }
-  },
-  {
-   "t": "2026-10-31T16:01:23.843413+00:00",
-   "raw": {
-    "wl-stoerungen": 74,
-    "wl-hinweise": 70,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 8,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 100
-   }
-  },
   {
    "t": "2026-10-31T16:30:56.658587+00:00",
    "raw": {
@@ -6771,17 +6131,657 @@
     "oebb": 6,
     "wl": 86
    }
+  },
+  {
+   "t": "2026-11-07T01:01:05.483996+00:00",
+   "raw": {
+    "wl-stoerungen": 45,
+    "wl-hinweise": 82,
+    "oebb": 190,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 166,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 6,
+    "wl": 86
+   }
+  },
+  {
+   "t": "2026-11-07T01:31:06.683659+00:00",
+   "raw": {
+    "wl-stoerungen": 45,
+    "wl-hinweise": 82,
+    "oebb": 191,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 166,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 7,
+    "wl": 86
+   }
+  },
+  {
+   "t": "2026-11-07T02:01:05.319206+00:00",
+   "raw": {
+    "wl-stoerungen": 45,
+    "wl-hinweise": 81,
+    "oebb": 191,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 166,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 7,
+    "wl": 85
+   }
+  },
+  {
+   "t": "2026-11-07T02:30:56.502500+00:00",
+   "raw": {
+    "wl-stoerungen": 82,
+    "wl-hinweise": 81,
+    "oebb": 191,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 166,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 7,
+    "wl": 85
+   }
+  },
+  {
+   "t": "2026-11-07T03:01:07.516257+00:00",
+   "raw": {
+    "wl-stoerungen": 45,
+    "wl-hinweise": 81,
+    "oebb": 190,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 166,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 6,
+    "wl": 85
+   }
+  },
+  {
+   "t": "2026-11-07T03:30:59.477066+00:00",
+   "raw": {
+    "wl-stoerungen": 45,
+    "wl-hinweise": 81,
+    "oebb": 190,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 166,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 6,
+    "wl": 85
+   }
+  },
+  {
+   "t": "2026-11-07T04:01:08.172213+00:00",
+   "raw": {
+    "wl-stoerungen": 39,
+    "wl-hinweise": 81,
+    "oebb": 190,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 166,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 6,
+    "wl": 80
+   }
+  },
+  {
+   "t": "2026-11-07T04:31:06.592770+00:00",
+   "raw": {
+    "wl-stoerungen": 36,
+    "wl-hinweise": 89,
+    "oebb": 191,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 167,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 6,
+    "wl": 77
+   }
+  },
+  {
+   "t": "2026-11-07T05:01:15.761666+00:00",
+   "raw": {
+    "wl-stoerungen": 36,
+    "wl-hinweise": 89,
+    "oebb": 191,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 23,
+    "oebb": 167,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 6,
+    "wl": 76
+   }
+  },
+  {
+   "t": "2026-11-07T05:31:08.574727+00:00",
+   "raw": {
+    "wl-stoerungen": 35,
+    "wl-hinweise": 89,
+    "oebb": 191,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 167,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 6,
+    "wl": 76
+   }
+  },
+  {
+   "t": "2026-11-07T06:01:15.417690+00:00",
+   "raw": {
+    "wl-stoerungen": 41,
+    "wl-hinweise": 89,
+    "oebb": 191,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 167,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 6,
+    "wl": 77
+   }
+  },
+  {
+   "t": "2026-11-07T06:31:03.923062+00:00",
+   "raw": {
+    "wl-stoerungen": 54,
+    "wl-hinweise": 89,
+    "oebb": 191,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 167,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 6,
+    "wl": 81
+   }
+  },
+  {
+   "t": "2026-11-07T07:01:17.370822+00:00",
+   "raw": {
+    "wl-stoerungen": 48,
+    "wl-hinweise": 89,
+    "oebb": 191,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 167,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 6,
+    "wl": 80
+   }
+  },
+  {
+   "t": "2026-11-07T07:31:06.057229+00:00",
+   "raw": {
+    "wl-stoerungen": 38,
+    "wl-hinweise": 89,
+    "oebb": 192,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 168,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 6,
+    "wl": 79
+   }
+  },
+  {
+   "t": "2026-11-07T08:01:19.798961+00:00",
+   "raw": {
+    "wl-stoerungen": 38,
+    "wl-hinweise": 89,
+    "oebb": 192,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 168,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 6,
+    "wl": 79
+   }
+  },
+  {
+   "t": "2026-11-07T08:31:02.983312+00:00",
+   "raw": {
+    "wl-stoerungen": 54,
+    "wl-hinweise": 89,
+    "oebb": 192,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 168,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 6,
+    "wl": 82
+   }
+  },
+  {
+   "t": "2026-11-07T09:00:56.745739+00:00",
+   "raw": {
+    "wl-stoerungen": 59,
+    "wl-hinweise": 89,
+    "oebb": 190,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 166,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 6,
+    "wl": 83
+   }
+  },
+  {
+   "t": "2026-11-07T09:30:44.733893+00:00",
+   "raw": {
+    "wl-stoerungen": 42,
+    "wl-hinweise": 89,
+    "oebb": 190,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 166,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 6,
+    "wl": 80
+   }
+  },
+  {
+   "t": "2026-11-07T10:00:55.703265+00:00",
+   "raw": {
+    "wl-stoerungen": 37,
+    "wl-hinweise": 89,
+    "oebb": 189,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 165,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 6,
+    "wl": 78
+   }
+  },
+  {
+   "t": "2026-11-07T10:31:11.884647+00:00",
+   "raw": {
+    "wl-stoerungen": 40,
+    "wl-hinweise": 89,
+    "oebb": 189,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 165,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 6,
+    "wl": 78
+   }
+  },
+  {
+   "t": "2026-11-07T11:01:18.314836+00:00",
+   "raw": {
+    "wl-stoerungen": 71,
+    "wl-hinweise": 89,
+    "oebb": 189,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 165,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 6,
+    "wl": 81
+   }
+  },
+  {
+   "t": "2026-11-07T11:31:22.689810+00:00",
+   "raw": {
+    "wl-stoerungen": 92,
+    "wl-hinweise": 89,
+    "oebb": 189,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 165,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 6,
+    "wl": 84
+   }
+  },
+  {
+   "t": "2026-11-07T12:01:05.049207+00:00",
+   "raw": {
+    "wl-stoerungen": 68,
+    "wl-hinweise": 89,
+    "oebb": 189,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 165,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 2,
+    "oebb": 6,
+    "wl": 81
+   }
+  },
+  {
+   "t": "2026-11-07T12:31:15.851200+00:00",
+   "raw": {
+    "wl-stoerungen": 47,
+    "wl-hinweise": 89,
+    "oebb": 189,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 164,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 79
+   }
+  },
+  {
+   "t": "2026-11-07T13:00:51.282872+00:00",
+   "raw": {
+    "wl-stoerungen": 71,
+    "wl-hinweise": 89,
+    "oebb": 189,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 164,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 82
+   }
+  },
+  {
+   "t": "2026-11-07T13:30:59.868800+00:00",
+   "raw": {
+    "wl-stoerungen": 78,
+    "wl-hinweise": 89,
+    "oebb": 189,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 164,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 85
+   }
+  },
+  {
+   "t": "2026-11-07T14:01:11.793264+00:00",
+   "raw": {
+    "wl-stoerungen": 46,
+    "wl-hinweise": 89,
+    "oebb": 189,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 164,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 80
+   }
+  },
+  {
+   "t": "2026-11-07T14:31:12.194967+00:00",
+   "raw": {
+    "wl-stoerungen": 40,
+    "wl-hinweise": 89,
+    "oebb": 189,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 164,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 81
+   }
+  },
+  {
+   "t": "2026-11-07T15:01:14.882818+00:00",
+   "raw": {
+    "wl-stoerungen": 54,
+    "wl-hinweise": 89,
+    "oebb": 189,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 25,
+    "oebb": 164,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 82
+   }
+  },
+  {
+   "t": "2026-11-07T15:31:03.158971+00:00",
+   "raw": {
+    "wl-stoerungen": 52,
+    "wl-hinweise": 89,
+    "oebb": 189,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 23,
+    "oebb": 164,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 82
+   }
+  },
+  {
+   "t": "2026-11-07T16:01:07.969053+00:00",
+   "raw": {
+    "wl-stoerungen": 47,
+    "wl-hinweise": 89,
+    "oebb": 189,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 164,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 83
+   }
+  },
+  {
+   "t": "2026-11-07T16:30:54.848701+00:00",
+   "raw": {
+    "wl-stoerungen": 43,
+    "wl-hinweise": 89,
+    "oebb": 190,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 165,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 79
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-07T00:31:03.323153+00:00"
+   "last_ok": "2026-11-07T16:30:54.848701+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-07T00:31:03.323153+00:00"
+   "last_ok": "2026-11-07T16:30:54.848701+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-07T00:31:03.323153+00:00"
+   "last_ok": "2026-11-07T16:30:54.848701+00:00"
   }
  }
 }
