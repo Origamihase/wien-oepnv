@@ -18,6 +18,7 @@ from typing import Any
 import pytest
 
 from scripts import ki_waechter as kw
+from src.ki_waechter.answers import _union
 
 from ._support import _Response, _ok_payload, _overloaded_then
 
@@ -116,19 +117,19 @@ def test_union_keys_findings_like_verify_and_drops_junk() -> None:
              "geprueft": [2, "3", 1], "vermutungen": ["x", ""]}
     second = {"funde": [_finding(1, "f6", "en", "a b"), _finding(1, "F3", "DE", "q2")],
               "geprueft": [1, 4], "vermutungen": [" x", "y"]}
-    united = kw._union(first, second)
+    united = _union(first, second)
     # The quote is no part of the key: the second answer's other quote of the item's F3 is the same finding
     # (the two answers quote one error at different lengths); the first answer's quote stays.
     assert [(f["klasse"], f["feed_zitat"]) for f in united["funde"]] == [("F6", "a  b"), ("F3", "q")]
     assert united["geprueft"] == [1, 2, 4] and united["vermutungen"] == ["x", "y"]
-    assert kw._union({}, {}) == {"geprueft": [], "funde": [], "vermutungen": []}
+    assert _union({}, {}) == {"geprueft": [], "funde": [], "vermutungen": []}
     # A duplicate named from either item is one finding; the same pair with another item is another.
     pair = {"klasse": "F1", "feed": "DE", "feed_zitat": "a", "feed_zitat2": "b"}
-    funde = kw._union({"funde": [{**pair, "nr": 2, "nr2": 5}]},
+    funde = _union({"funde": [{**pair, "nr": 2, "nr2": 5}]},
                       {"funde": [{**pair, "nr": 5, "nr2": 2}, {**pair, "nr": 5, "nr2": 7}]})["funde"]
     assert [(f["nr"], f["nr2"]) for f in funde] == [(2, 5), (5, 7)]
     # Both answers wonder about the same item in other words: one hypothesis, the first answer's wording.
-    both = kw._union({"vermutungen": ["Meldung 34: Keine Quelle im Cache."]},
+    both = _union({"vermutungen": ["Meldung 34: Keine Quelle im Cache."]},
                      {"vermutungen": ["Meldung 34: Keine Quelle für diese Störung.", "Meldung 7: x"]})
     assert both["vermutungen"] == ["Meldung 34: Keine Quelle im Cache.", "Meldung 7: x"]
 
