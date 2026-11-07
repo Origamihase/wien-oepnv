@@ -398,6 +398,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "68A: Laaer Berg, Kurpark Nordeingang",
+    "description": "<p><strong><u>Haltestellenverlegung der Linie 68A in Richtung Laaer Berg, Nordosteingang</u></strong></p><p><strong><u>Haltestelle:</u></strong> Laaer Berg, Kurpark Nordeingang</p><p><strong><u>Von:</u></strong> Filmteichstraße vor Nordeingang des Kurparks</p><p><strong><u>Nach:</u></strong> Etwa 30 Meter Richtung Laaer-Berg-Straße</p><p><strong><u>Dauer:</u></strong> 05. November 2026, 07:30 Uhr für etwa zwei Wochen</p><p><strong><u>Grund:</u></strong> Straßenbau</p>",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "35af25ee2f54a20b0a083907d1c434c54482a85f2cad3a8438b5032218699de3",
+    "pubDate": "2026-11-04T13:28:00+01:00",
+    "starts_at": "2026-11-05T00:00:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|hinweis|L=68A|D=2026-11-05|TK=68a laaer berg kurpark nordeingang"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "71A: Haltestellenverlegung",
     "description": "<p><strong><u>Haltestellenauflassung der Linie 71A in Richtung Zentralfriedhof 3. Tor</u></strong></p><p><strong><u>Haltestelle:</u></strong> Schwechat, Hauptplatz</p><p><strong><u>Dauer:</u></strong> Ab 09. November 2026, etwa 09:00 Uhr, bis 11. November 2026, etwa 17:00 Uhr</p><p><strong><u>Grund:</u></strong> Straßenbau</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -627,17 +639,13 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "10: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "8b481d00f597d403fd733652ccb119b371560c14fdfc76dab913cf850ab4d9f9",
-    "pubDate": "2026-11-07T22:35:00+01:00",
+    "pubDate": "2026-11-07T22:35:24+01:00",
     "starts_at": "2026-11-07T22:35:28+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=10|D=2026-11-07|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261107-0038"
-    ],
-    "_incident_start": "2026-11-07T22:35:00+01:00"
+    "ends_at": "2026-11-07T23:34:00+01:00",
+    "_identity": "wl|störung|L=10|D=2026-11-07|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -871,17 +879,13 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "52: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "135dc138ba98273ad144d64ca134b6893a89c99daba5bd7077ef978a587e1c53",
-    "pubDate": "2026-11-07T22:35:00+01:00",
+    "pubDate": "2026-11-07T22:42:24+01:00",
     "starts_at": "2026-11-07T22:42:28+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=52|D=2026-11-07|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261107-0038"
-    ],
-    "_incident_start": "2026-11-07T22:35:00+01:00"
+    "ends_at": "2026-11-07T23:42:00+01:00",
+    "_identity": "wl|störung|L=52|D=2026-11-07|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
