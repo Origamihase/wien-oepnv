@@ -626,6 +626,34 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10/52: Schadhaftes Fahrzeug",
+    "description": "Linie 10: Fahrtbehinderung in Richtung Dornbach. Linie 52: Fahrtbehinderung in Richtung Baumgarten. Voraussichtliche Dauer: 09:50 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Linzer Straße 30.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4902ffc5f20feda397a0d3d6fb7ca33a9b368a8b31aea7675715a4ea4421b9f7",
+    "pubDate": "2026-11-07T09:21:00+01:00",
+    "starts_at": "2026-11-07T09:21:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=10,52|D=2026-11-07|TK=10 52 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261107-0008"
+    ],
+    "_incident_start": "2026-11-07T09:21:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "8b2268ed2767a36efc584afb53e17a86e0b3ba91e4cecbbda59c4fede640ee4a",
+    "pubDate": "2026-11-07T09:24:09+01:00",
+    "starts_at": "2026-11-07T09:24:09+01:00",
+    "ends_at": "2026-11-07T10:23:00+01:00",
+    "_identity": "wl|störung|L=10|D=2026-11-07|TK=fahrtbehinderung schadhafter zug"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "11: Fremder Verkehrsunfall",
     "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -882,18 +910,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "63A: Verspätungen",
-    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "title": "52: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "499ac622a712bd280a6b728d5cd57eb6ebde96a246de80a08e9a389a60dab6f9",
-    "pubDate": "2026-11-07T07:56:00+01:00",
-    "starts_at": "2026-11-07T07:56:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=63A|D=2026-11-07|TK=63a verspätungen",
-    "_wl_ids": [
-      "I20261107-0006"
-    ],
-    "_incident_start": "2026-11-07T07:56:00+01:00"
+    "guid": "2ee36aef3d89abfa24f8d8f97da1dc68bce51a62bcbd7e5deb004fcb75090bbd",
+    "pubDate": "2026-11-07T09:24:08+01:00",
+    "starts_at": "2026-11-07T09:24:09+01:00",
+    "ends_at": "2026-11-07T10:24:00+01:00",
+    "_identity": "wl|störung|L=52|D=2026-11-07|TK=fahrtbehinderung schadhafter zug"
   },
   {
     "source": "Wiener Linien",
@@ -946,6 +970,22 @@
     "starts_at": "2026-11-05T00:00:28+01:00",
     "ends_at": "2026-11-07T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-05|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Rettungseinsatz",
+    "description": "Linie U3: Betrieb zwischen den Stationen Enkplatz und Zippererstraße in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 09:45 Uhr. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "789819d7ff7eabc6e3d9f853e2ceb777750bd2b2b6514c2643f63d14d5776fc6",
+    "pubDate": "2026-11-07T09:20:00+01:00",
+    "starts_at": "2026-11-07T09:20:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U3|D=2026-11-07|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261107-0009"
+    ],
+    "_incident_start": "2026-11-07T09:20:00+01:00"
   },
   {
     "source": "Wiener Linien",
