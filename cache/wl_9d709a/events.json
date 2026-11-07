@@ -626,18 +626,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Schadhaftes Fahrzeug",
-    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "12A: Fahrtbehinderung Falschparker",
+    "description": "Linie 12A: Fahrtbehinderung in Richtung Schmelz, Gablenzgasse. Voraussichtliche Dauer: 11:45 Uhr. Grund: Falschparker im Bereich Obere Amtshausgasse.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "fdcda7ef6a92179bf10d7bc572ea4566627e0563f24d6ad54899c823e3aca356",
-    "pubDate": "2026-11-07T09:21:00+01:00",
-    "starts_at": "2026-11-07T09:21:00+01:00",
+    "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
+    "pubDate": "2026-11-07T11:13:00+01:00",
+    "starts_at": "2026-11-07T11:14:48+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=10|D=2026-11-07|TK=10 schadhaftes fahrzeug",
+    "_identity": "wl|störung|L=12A|D=2026-11-07|TK=falschparker",
     "_wl_ids": [
-      "I20261107-0008"
+      "I20261107-0010"
     ],
-    "_incident_start": "2026-11-07T09:21:00+01:00"
+    "_incident_start": "2026-11-07T11:13:00+01:00"
   },
   {
     "source": "Wiener Linien",
