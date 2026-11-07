@@ -626,22 +626,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Falschparker",
-    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
-    "pubDate": "2026-11-07T11:13:00+01:00",
-    "starts_at": "2026-11-07T11:13:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=12A|D=2026-11-07|TK=falschparker",
-    "_wl_ids": [
-      "I20261107-0010"
-    ],
-    "_incident_start": "2026-11-07T11:13:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -654,12 +638,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Rettungseinsatz Betrieb ab Quartier Belvedere",
+    "title": "18: Rettungseinsatz",
     "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
     "pubDate": "2026-11-07T12:02:00+01:00",
-    "starts_at": "2026-11-07T12:29:27+01:00",
+    "starts_at": "2026-11-07T12:02:00+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=18|D=2026-11-07|TK=rettungseinsatz",
     "_wl_ids": [
@@ -742,22 +726,6 @@
     "starts_at": "2026-11-07T05:00:12+01:00",
     "ends_at": "2026-11-07T23:00:00+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-07|TK=bhf hütteldorf öbb ersatzbus für 80"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Polizeieinsatz",
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "63da0a693c3cade54082d11235f33ad2c470d9015d5662a310a9f542e55f2972",
-    "pubDate": "2026-11-07T11:42:00+01:00",
-    "starts_at": "2026-11-07T11:42:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=1|D=2026-11-07|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261107-0011"
-    ],
-    "_incident_start": "2026-11-07T11:42:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -903,7 +871,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "2: Verkehrsunfall",
-    "description": "Linie 2: Fahrtbehinderung in Richtung Friedrich-Engels-Platz. Voraussichtliche Dauer: 13:20 Uhr. Grund: Verkehrsunfall im Bereich Wilhelminenstraße 80.",
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc",
     "pubDate": "2026-11-07T12:56:00+01:00",
@@ -914,6 +882,18 @@
       "I20261107-0014"
     ],
     "_incident_start": "2026-11-07T12:56:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "5350dbcdf4a6c02ceca95e97660eae6f09e9befc64d1bc90e3b2181f28e061ed",
+    "pubDate": "2026-11-07T12:57:00+01:00",
+    "starts_at": "2026-11-07T13:05:29+01:00",
+    "ends_at": "2026-11-07T14:05:00+01:00",
+    "_identity": "wl|störung|L=2|D=2026-11-07|TK=fahrtbehinderung verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
@@ -962,22 +942,6 @@
     "starts_at": "2026-11-05T00:00:28+01:00",
     "ends_at": "2026-11-07T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-05|TK=betrieb ab vivariumstrasse 2"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "LB: Polizeieinsatz",
-    "description": "Linie Badner Bahn: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "8cce70428958fa1f7ed67ec3d5fee2958ae30c4ddd9fca134635fa73bb178a90",
-    "pubDate": "2026-11-07T11:42:00+01:00",
-    "starts_at": "2026-11-07T11:42:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=LB|D=2026-11-07|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261107-0011"
-    ],
-    "_incident_start": "2026-11-07T11:42:00+01:00"
   },
   {
     "source": "Wiener Linien",
