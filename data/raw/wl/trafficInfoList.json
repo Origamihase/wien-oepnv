@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261107-0027, I20261107-0026-F01, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261107-0026-F01, I20260925-0011, I20261107-0027-F01, I20261107-0027-F02, I20260909-0007, I20261107-0028, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R318-437, R293-474, R401-101, R2379-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2380-627, R2345-127, R3886-480, R2558-125, R1974-466, R500-101, R1612-160, R1611-160, R1610-160, R1613-160, R1537-160, R5611-160, R1559-160, R1562-160, R578-152, R579-152, R1538-152, R1535-152, R1537-152, R1562-152, R1559-152, R1540-152, R1539-152, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R318-437, R293-474, R401-101, R2379-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2380-627, R2345-127, R3886-480, R2558-125, R1974-466, R500-101, R1610-160, R1537-160, R1612-160, R1613-160, R1611-160, R5611-160, R1562-160, R1559-160, R578-152, R579-152, R1538-152, R1537-152, R1562-152, R1559-152, R1540-152, R1535-152, R1539-152, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -223,22 +223,21 @@
     "alertCauseId": 14,
     "attributes": {
      "relatedLineTypes": {
-      "52": "ptTram",
-      "60": "ptTram"
+      "52": "ptTram"
      }
     },
-    "description": "Linie 52: Fahrtbehinderung in beiden Richtungen. Linie 60: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 20:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Rudolfsheim, Anschützgasse.",
-    "descriptionHTML": "<p>Linie 52:<br>Fahrtbehinderung in beiden Richtungen.<br>Linie 60:<br>Fahrtbehinderung in beiden Richtungen.</p><p>Voraussichtliche Dauer: 20:30 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Rudolfsheim, Anschützgasse.</p>",
+    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 52: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 52:<br>Fahrtbehinderung in beiden Richtungen.<br>Linie 60:<br>Fahrtbehinderung in beiden Richtungen.</p><p>Voraussichtliche Dauer: 20:30 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Rudolfsheim, Anschützgasse.</p>",
-       "descriptionPlain": "Linie 52: Fahrtbehinderung in beiden Richtungen. Linie 60: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 20:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Rudolfsheim, Anschützgasse.",
-       "title": "52, 60: Rettungseinsatz"
+       "descriptionHtml": "<p>Linie 52: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "52: Rettungseinsatz"
       }
      }
     ],
-    "name": "I20261107-0027",
+    "name": "I20261107-0027-F01",
     "owner": "WL",
     "parentName": "I20261107-0027",
     "priority": "1",
@@ -246,15 +245,57 @@
     "reasonName": "Rettungseinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "52",
-     "60"
+     "52"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 152,
       "lineName": "52",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "relatedStops": [
+     1535
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-07T20:02:00.000+0100",
+     "lastUpdate": "2026-11-07T20:02:00.000+0100",
+     "resume": "2026-11-07T20:02:00.000+0100",
+     "start": "2026-11-07T19:58:00.000+0100"
+    },
+    "title": "52: Rettungseinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "60": "ptTram"
+     }
+    },
+    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "60: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261107-0027-F02",
+    "owner": "WL",
+    "parentName": "I20261107-0027",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 160,
       "lineName": "60",
@@ -266,11 +307,58 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-07T19:59:00.000+0100",
-     "lastUpdate": "2026-11-07T19:59:00.000+0100",
+     "created": "2026-11-07T20:02:00.000+0100",
+     "lastUpdate": "2026-11-07T20:02:00.000+0100",
+     "resume": "2026-11-07T20:02:00.000+0100",
      "start": "2026-11-07T19:58:00.000+0100"
     },
-    "title": "52, 60: Rettungseinsatz"
+    "title": "60: Rettungseinsatz"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U4": "ptMetro"
+     }
+    },
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U4: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261107-0028",
+    "owner": "WL",
+    "parentName": "I20261107-0028",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 304,
+      "lineName": "U4",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-07T20:28:00.000+0100",
+     "end": "2026-11-07T20:50:00.000+0100",
+     "lastUpdate": "2026-11-07T20:28:00.000+0100",
+     "resume": "2026-11-07T20:27:00.000+0100",
+     "start": "2026-11-07T20:27:00.000+0100"
+    },
+    "title": "U4: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",
