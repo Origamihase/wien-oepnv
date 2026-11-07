@@ -692,7 +692,9 @@ verdrängt eine andere Störung.
   Bahnhof einmal vorn (`_try_star_routes`): „R 40/REX 41/REX 4/S 40: Wien
   Franz-Josefs-Bahnhof ↔ St.Andrä-Wördern / Tulln an der Donau / Wien
   Heiligenstadt / Wien Nußdorf“ statt viermal „Wien Franz-Josefs-Bahnhof ↔
-  …“. Strecken, die eine Kette bilden, bleiben eine Kette
-  (`_try_chain_routes`).
+  …“. Eine Kette (`_try_chain_routes`) gilt seit 2026-11-06 nur, wenn jede
+  Zwischenstation auf dem Weg zwischen ihren Nachbarn liegt; zwei Strecken
+  mit gemeinsamem Ende abseits des Wegs stehen als Stern („Wien Praterstern ↔
+  Wien Hauptbahnhof / Wien St. Marx“; Teil 4, „Zwei Bahnhöfe in einem Endpunkt“).
 
 Weiter in [Teil 2](architecture-teil-2.md).

@@ -89,6 +89,29 @@ _GLUED_LOWER_RE = re.compile(
 )
 
 
+# A bus-line name glued to the word after it: ``"die Buslinie 2Akann
+# aufrecht gehalten werden"`` (Stadt Wien, Salztorbrücke, 2026-11-06) and
+# ``"Linie 40Ain Richtung Schottentor"`` (Wiener Linien). Digits followed by
+# a capital are a shape none of the rules above sees: the capital is the
+# line letter, not the start of a word. Both halves are named again. Every
+# Wiener Linien bus line ends in ``A`` or ``B``, so the left half is one to
+# three digits plus that letter at a word start — ``U5``, ``S45`` and a
+# house number glued to a noun (``"7Bauarbeiten"``) stay whole — and the
+# right half is a closed list of the function words and verbs that follow a
+# line name in these texts, so ``"10Uhr"`` and a stray ``"12Bis"`` are never
+# cut. Checked on 2026-11-06 over 9 028 distinct texts — every version of
+# the Baustellen and ÖBB caches and raw captures, every tenth version of the
+# WL cache and of the published feed — the rule fires on exactly the two
+# places quoted and on nothing else.
+_GLUED_LINE_RE = re.compile(
+    r"\b(\d{1,3}[AB])"
+    r"(?=(?:kann|können|wird|werden|bleibt|bleiben|ist|sind|verkehrt|verkehren"
+    r"|fährt|fahren|hält|halten|entfällt|entfallen|und|sowie|oder|bis|ab|in|im"
+    r"|nach|von|vom|zur|zum|zu|über|am|an|bei|mit|auf|für|aus|der|die|das|den"
+    r"|dem|des|nicht|nur|auch|wieder)\b)"
+)
+
+
 # ``St.Pölten Hbf``, ``St.Andrä-Wördern``, ``St.Marx``: ÖBB writes the
 # abbreviation of "Sankt" without the space the German form needs (and
 # without which the title of the same notice, "St. Pölten Hauptbahnhof",
@@ -116,4 +139,5 @@ def repair_glued_words(text: str) -> str:
     repaired = _GLUED_BRACKET_RE.sub(" ", repaired)
     repaired = repair_saint_abbreviation(repaired)
     repaired = _GLUED_LOWER_RE.sub(r"\g<0> ", repaired)
+    repaired = _GLUED_LINE_RE.sub(r"\1 ", repaired)
     return _GLUED_WORD_RE.sub(" ", repaired)
