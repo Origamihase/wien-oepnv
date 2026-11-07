@@ -50,6 +50,13 @@ _GRAMATNEUSIEDL = (
     "bis <b>24.05.2026</b> (04:40 Uhr)<br>keine Nahverkehrszüge fahren."
 )
 
+# Over-long endpoint of the description regexes, from the Wiener Linien
+# alternatives of the Franz-Josefs-Bahn works (2026-10-28).
+_FRANZ_JOSEFS_BAHN_ALTERNATIVE = (
+    "Wien Nußdorf Bahnhst Linie U4 zwischen Wien Heiligenstadt Bahnhof und Wien Spittelau "
+    "Bahnhst/Wien Friedensbrücke"
+)
+
 
 def _stations(parts: list[str]) -> list[str]:
     return [info.name for info in map(station_info, parts) if info is not None]
@@ -87,8 +94,7 @@ def test_two_stations_in_one_endpoint_count_for_both(written: str, stations: lis
         # Linien alternatives of the Franz-Josefs-Bahn works (2026-10-28) and
         # the replacement buses of 2026-09-07. Split on their one resolvable
         # part they made routes of their own.
-        "Wien Nußdorf Bahnhst Linie U4 zwischen Wien Heiligenstadt Bahnhof und Wien Spittelau "
-        "Bahnhst/Wien Friedensbrücke",
+        _FRANZ_JOSEFS_BAHN_ALTERNATIVE,
         "Flughafen Wien Bahnhof bzw. Wien Hbf (U) angefordert . Planen Sie in diesem Bereich",
         # Two tram stops, two U-Bahn stations (known to Wiener Linien and VOR
         # only): no end of an ÖBB stretch.
