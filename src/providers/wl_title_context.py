@@ -9,27 +9,64 @@ from __future__ import annotations
 import html
 import re
 from typing import Any
-from collections.abc import Iterable, Sequence
+from collections.abc import Iterable, Mapping, Sequence
 
 from ..utils.stations import canonical_name, display_name
-from ..utils.text import DROP_ACCESS, facility_drop_label, is_station_access_only
+from ..utils.text import DROP_ACCESS, DROP_LIFT, facility_drop_label, is_station_access_only
 
 from .wl_lines import LINE_CODE_RE
 from .wl_text import (
     FACILITY_ONLY,
+    INCOMPLETE_TITLE_TAIL_RE,
     _is_facility_only,
     _tidy_title_wl,
+    is_stop_notice,
 )
 
 
-def _facility_drop_reason(title: str) -> str | None:
-    """Drop reason for a title about station facilities only, else ``None``.
+def _is_lift_record(record: Mapping[str, Any] | None) -> bool:
+    """Whether the WL record is one of WL's lift or escalator entries.
 
-    A lift or escalator (``_is_facility_only``), since 2026-10-09 the
-    folding ramp of a train (own label since 2026-10-10), and a
-    closed station access (``is_station_access_only``: "Aufgangssperre",
-    "Sperre Ausgang") have no place in the feed: the trains still stop.
+    WL's ``newsList`` carries the planned maintenance of every lift as its
+    own record: ``elevatorId`` ("MP 06"), status "geplante Wartung", the
+    station as title ("Praterstern") and the lift's place as text ("U1
+    Bahnsteig … Zwischengeschoss Zugang U2 - Ausgang Lassallestraße"). The
+    title names no facility word, so the title rule below never saw them;
+    they stayed out only because their texts happened to carry no
+    restriction word (115 such titles in the raw data of 04.10.–07.11.2026,
+    none passed the keyword gate). The field is the structural sign.
     """
+    if not isinstance(record, Mapping):
+        return False
+    attrs = record.get("attributes")
+    if record.get("elevatorId"):
+        return True
+    return isinstance(attrs, Mapping) and bool(attrs.get("elevatorId"))
+
+
+def _facility_drop_reason(
+    title: str, description: str = "", record: Mapping[str, Any] | None = None
+) -> str | None:
+    """Drop reason for a message about station facilities only, else ``None``.
+
+    A lift or escalator (``_is_facility_only``, since 2026-11-07 also every
+    record with WL's ``elevatorId``, :func:`_is_lift_record`), since
+    2026-10-09 the folding ramp of a train (own label since 2026-10-10), and
+    a closed station access (``is_station_access_only``: "Aufgangssperre",
+    "Sperre Ausgang") have no place in the feed: the trains still stop.
+
+    The rule reads the title as the subject of the message. The title of a
+    stop relocation or closure is the stop's name (:func:`is_stop_notice`,
+    *description*), and a stop may be named after an entrance: "68A: Laaer
+    Berg, Kurpark Nordeingang" (relocation from 05.11.2026 for about two
+    weeks, cause "Straßenbau") fell as "nur Aufgang/Ausgang" from 04.11.
+    13:01 Vienna time in every fetch. A stop notice is never about a
+    facility, so the title rule does not apply to it.
+    """
+    if _is_lift_record(record):
+        return DROP_LIFT
+    if is_stop_notice(description):
+        return None
     if _is_facility_only(title):
         return facility_drop_label(FACILITY_ONLY.findall(title))
     if is_station_access_only(title):
@@ -167,14 +204,27 @@ def _context_values_from_extras(
     return values, used
 
 
-def _title_quality_key(title: str, title_core: str) -> tuple[int, int, int]:
-    """Score titles so that informative variants win over short generics."""
+def _title_quality_key(title: str, title_core: str) -> tuple[int, int, int, int]:
+    """Score titles so that informative variants win over short generics.
+
+    A title cut by the display board — it ends in a preposition without its
+    object (:data:`INCOMPLETE_TITLE_TAIL_RE`) — ranks below every complete
+    one, however many words it has. On 24.10.2026 18:31 the ticker
+    "Demonstration Züge halten gegenüber" (R45-101) outscored the long
+    message "Demonstration" of the same incident on line 1; the bucket took
+    its title, and ``_post_filter_wl`` dropped the whole item for the
+    dangling "gegenüber" — the demonstration on line 1 left the feed while
+    WL's long message still described it (again "2: Verkehrsunfall Züge
+    halten gegenüber", 31.10. 14:01).
+    """
 
     normalized_title = _normalize_whitespace(title)
     core = _normalize_whitespace(title_core)
     tokens = [tok for tok in core.split() if tok]
     informative_tokens = [tok for tok in tokens if len(tok) >= 4]
+    complete = 0 if INCOMPLETE_TITLE_TAIL_RE.search(normalized_title) else 1
     return (
+        complete,
         len(informative_tokens),
         len(core),
         -len(normalized_title),

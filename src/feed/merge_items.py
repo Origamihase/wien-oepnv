@@ -3,9 +3,11 @@
 Helper-to-helper calls resolve here; patch this module to reach them.
 """
 
-from collections.abc import Mapping
+from collections.abc import Callable, Mapping
 from datetime import datetime
 from typing import Any
+
+from ..providers.wl_text import is_stop_notice
 
 
 def _is_wl_disruption(item: Mapping[str, Any]) -> bool:
@@ -16,7 +18,21 @@ def _is_wl_disruption(item: Mapping[str, Any]) -> bool:
     )
 
 
-def _may_merge(line_overlap: float, existing: dict[str, Any], item: dict[str, Any]) -> bool:
+def _is_wl_stop_notice(item: Mapping[str, Any]) -> bool:
+    """A Wiener-Linien stop relocation or closure ("Haltestellenverlegung …")."""
+    return (
+        str(item.get("source") or "").strip().casefold() == "wiener linien"
+        and str(item.get("category") or "").strip().casefold() == "hinweis"
+        and is_stop_notice(str(item.get("description") or ""))
+    )
+
+
+def _may_merge(
+    line_overlap: float,
+    existing: dict[str, Any],
+    item: dict[str, Any],
+    announced: Callable[[Mapping[str, Any]], bool] | None = None,
+) -> bool:
     """Whether two items with *line_overlap* may merge here at all.
 
     Two Wiener-Linien disruptions of the same lines never do:
@@ -29,10 +45,39 @@ def _may_merge(line_overlap: float, existing: dict[str, Any], item: dict[str, An
     overlapping but different lines still merge here (``40/41: Betrieb ab
     Gersthof`` with ``40: Falschparker Betrieb ab Gersthof``): the WL merge
     only joins equal line sets.
+
+    What is only announced is not the same event as what runs (2026-11-07).
+    *announced* says whether an item begins after the preview day — the day
+    from which ``_defer_upcoming_items`` lets an announcement take its
+    normal place — and an announced item merges only with another announced
+    one. Without the rule the live disruption "7A: Bauarbeiten" (09.10.
+    13:16, "Unregelmäßige Intervalle") went up in the notice "7A:
+    Bauarbeiten" of the diversion from 14.10., and the merged item showed
+    the diversion five days early; "18: Fahrtbehinderung Veranstaltung"
+    (26.10. 17:07) merged with "18: Veranstaltung am 08.11.26" into the
+    title "18: Veranstaltung am 08.11.26 & Fahrtbehinderung Veranstaltung",
+    a notice; and the relocation "5A/5B/N31: Obere Augartenstraße" (until
+    01.11.) took the one of 07.–09.11. and stood from 01.11. to 06.11.,
+    when neither applied. The caller without *announced* (the tests) keeps
+    the old behaviour.
+
+    A stop relocation or closure never merges with a disruption (2026-11-07).
+    Its title is the stop's name, and a disruption names the same stop as
+    the place of its consequence: "12: Feuerwehreinsatz Betrieb ab
+    Albertgasse" (30.10. 10:41) went up in the relocation "5/12: Albertgasse"
+    (13.10.–03.11.), and the fire brigade operation left the ten places.
+    Two stop notices of one stop still merge, as do a stop notice and a works
+    notice of the same street.
     """
     if line_overlap <= 0.3:
         return False
-    return line_overlap < 1.0 or not (_is_wl_disruption(existing) and _is_wl_disruption(item))
+    if line_overlap >= 1.0 and _is_wl_disruption(existing) and _is_wl_disruption(item):
+        return False
+    if announced is not None and announced(existing) != announced(item):
+        return False
+    if _is_wl_stop_notice(existing) and _is_wl_disruption(item):
+        return False
+    return not (_is_wl_stop_notice(item) and _is_wl_disruption(existing))
 
 
 def _calculate_line_overlap(lines1: set[str], lines2: set[str]) -> float:

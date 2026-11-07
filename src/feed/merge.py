@@ -1,3 +1,4 @@
+from collections.abc import Callable, Mapping
 from typing import Any
 
 from ..providers.wl_lines import line_order_key
@@ -67,13 +68,20 @@ __all__ = [
 ]
 
 
-def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def deduplicate_fuzzy(
+    items: list[dict[str, Any]],
+    *,
+    announced: Callable[[Mapping[str, Any]], bool] | None = None,
+) -> list[dict[str, Any]]:
     """
     Merges items that are likely the same event affecting overlapping lines.
 
     Criteria:
     1. Significant name overlap (tokens or substring).
     2. > 30% line overlap.
+    3. Both items announced (begin after the preview day, *announced*) or
+       neither; a WL stop relocation never with a WL disruption
+       (``_may_merge``, 2026-11-07).
 
     Performance:
 
@@ -153,7 +161,7 @@ def deduplicate_fuzzy(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
             line_overlap = _calculate_line_overlap(lines, ex_lines)
 
             # Optimization: Check lines first (cheaper)
-            if _may_merge(line_overlap, existing, item):
+            if _may_merge(line_overlap, existing, item, announced):
                 if _has_significant_overlap_cached(
                     norm_name, ex_norm_name, tokens, ex_tokens,
                     plat, _platform_numbers(ex_name),

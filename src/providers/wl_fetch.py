@@ -233,8 +233,9 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             # facility word in the free-text DESCRIPTION is a side-mention and
             # must NOT drop a genuine line disruption (e.g. "U4: Streckensperre"
             # whose description also notes an out-of-service lift). Only a
-            # facility-only TITLE drops the item.
-            facility = _facility_drop_reason(title_raw)
+            # facility-only TITLE drops the item. The description only says
+            # whether the title is a stop's name (``is_stop_notice``).
+            facility = _facility_drop_reason(title_raw, desc_raw, ti)
             if facility:
                 raw_capture.note_drop("wl", facility, title_raw)
                 continue
@@ -323,8 +324,11 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
             desc = desc_raw
             # Title-driven facility check (see the trafficInfo branch above):
             # a facility word in the description / subtitle is only a
-            # side-mention and must not drop a genuine line disruption.
-            facility = _facility_drop_reason(title_raw)
+            # side-mention and must not drop a genuine line disruption. WL's
+            # lift records (``elevatorId``) drop by that field; the title of
+            # a stop relocation is the stop's name and is not read as a
+            # subject (``_facility_drop_reason``).
+            facility = _facility_drop_reason(title_raw, desc_raw, poi)
             if facility:
                 raw_capture.note_drop("wl", facility, title_raw)
                 continue
