@@ -355,6 +355,21 @@ _PERIOD_HEADING_RE = re.compile(r"Zeitraum\s*:", re.IGNORECASE)
 # start rule would take for a begin.
 STOP_NOTICE_LEAD_RE = re.compile(r"^\s*Haltestellen(?:verlegung|auflassung)\b", re.IGNORECASE)
 _STOP_PERIOD_HEADING_RE = re.compile(r"\bDauer\s*:", re.IGNORECASE)
+
+
+def is_stop_notice(description: str) -> bool:
+    """Whether the WL text *description* is a stop relocation or closure.
+
+    It leads with "Haltestellenverlegung …" or "Haltestellenauflassung …"
+    (:data:`STOP_NOTICE_LEAD_RE`); its title names the stop, not a subject
+    ("68A: Laaer Berg, Kurpark Nordeingang"), so the facility drop
+    (``_facility_drop_reason``) and the fuzzy merge (``_may_merge``) must
+    not read that title as one.
+    """
+    if not description:
+        return False
+    text = " ".join(html.unescape(re.sub(r"<[^>]+>", " ", description[:2000])).split())
+    return STOP_NOTICE_LEAD_RE.match(text) is not None
 _PERIOD_DATE_RE = re.compile(
     r"\b(\d{1,2})\.\s*(?:(\d{1,2})\.(\d{4}|\d{2})?|("
     + "|".join(re.escape(m) for m in _MONTHS_DE)
@@ -672,6 +687,8 @@ def _topic_key_from_title(raw: str) -> str:
 __all__ = [
     "KW_RESTRICTION",
     "KW_EXCLUDE",
+    "STOP_NOTICE_LEAD_RE",
+    "is_stop_notice",
     "_is_facility_only",
     "_tidy_title_wl",
     "_title_core",

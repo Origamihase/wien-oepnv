@@ -120,7 +120,7 @@ from .feed_build.item_meta import (
 from .feed_build.filters import (
     _valid_until, _drop_after, _drop_old_items, _summarize_duplicates, _dedupe_items, _topic_budget_key,
     _apply_topic_budget, _defer_repeated_route_titles, _is_test_message, _drop_test_messages, _preview_last_day,
-    _defer_upcoming_items, _defer_all_clear_items,
+    _starts_after, _defer_upcoming_items, _defer_all_clear_items,
 )
 from .feed_build.oebb_lead import (
     _oebb_lead_section_end, _end_with_oebb_lead_section, _with_second_sentence, _oebb_sentence_without_place,
@@ -415,9 +415,17 @@ def _assemble_feed_items(
     )
 
     fuzzy_start = perf_counter()
+    # An announcement that begins after the preview day stays its own item
+    # until then — see ``_may_merge``; the same day as ``_defer_upcoming_items``.
+    preview_last_day = _preview_last_day(
+        _to_utc(now).astimezone(_VIENNA_TZ).date(), feed_config.UPCOMING_PREVIEW_DAYS
+    )
     fuzzy_deduped = cast(
         list[FeedItem],
-        deduplicate_fuzzy(cast(list[dict[str, Any]], deduped)),
+        deduplicate_fuzzy(
+            cast(list[dict[str, Any]], deduped),
+            announced=lambda it: _starts_after(cast(FeedItem, it), preview_last_day),
+        ),
     )
     fuzzy_duration = perf_counter() - fuzzy_start
     if len(fuzzy_deduped) < len(deduped):
