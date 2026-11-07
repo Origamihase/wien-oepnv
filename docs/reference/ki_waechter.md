@@ -19,8 +19,8 @@ Messung dazu stehen in [`architecture.md`](../architecture.md), Abschnitt
 | --- | --- | --- |
 | Auslöser | letzter Schritt von `update-cycle.yml` (`scripts/ki_waechter.py dispatch`, `src/ki_waechter/dispatch.py`; seit 2026-11-05) | nach jedem erfolgreichen Update-Lauf auf `main`; sendet `repository_dispatch` `ki-waechter` nur, wenn es 15:00 Wiener Zeit oder später ist (bis 05.11.2026 9:00), heute noch kein erfolgreicher Prüflauf in `data/side_steps/ki-waechter.json` steht, ein gescheiterter von heute mindestens zwei Stunden zurückliegt, kein Lauf des Wächters läuft oder wartet (Aufzeichnung zuerst aus dem Checkout, bei Fälligkeit frisch von `main`). Bis dahin lief der Job `gate` nach jedem Update-Lauf (`workflow_run`), um das zu prüfen |
 | Kontingent | Google (Gemini API, je Projekt und Modell) | zählt selbst und antwortet 429, sobald ein Kontingent erreicht ist; der Wächter zählt nicht: ein Modell mit 429 bleibt im Lauf außen vor, die Kette läuft weiter (Abschnitt „Gratis-Kontingent“) |
-| Eingabe | `scripts/ki_waechter.py prepare` | jede Fassung von `docs/feed.xml` und `docs/feed.en.xml` der 24 Stunden vor dem Commit (jeder Update-Lauf schreibt eine) und die `cache/*/events.json` derselben Commits; jeder verschiedene Meldungstext wird eine Nummer, mit der Zeit im Feed, den gleichzeitig sichtbaren Meldungen (seit 05.11.2026 mit der Linie ihres Titels), dem eigenen Cache-Ereignis (beim ersten und letzten Auftreten; sein Text bei 2500 Zeichen abgeschnitten, seit 05.11.2026 mit „[…]“ am Ende) und bis zu sechs Ereignissen derselben Linien (seit 05.11.2026 zuerst die, deren Titel der Text wiederholt: ein zusammengezogener WL-Text besteht aus ihnen); jede Quelle steht einmal ganz da, danach mit ihrer Kennung und ihrem Titel („Q…: siehe oben (Titel)“, seit 05.11.2026); schreibt `.ki-waechter/eingabe.md` und `eingabe.json` |
-| Lesen | `scripts/ki_waechter.py ask` | die Modellkette `KI_WAECHTER_MODEL` (`gemini-3.8-flash`, bei Überlastung sofort `gemini-3.6-flash`, dann `gemini-3.5-flash-lite` und `gemini-3.1-flash-lite`; jedes einmal je Durchgang, höchstens zwei Durchgänge mit einer Minute Pause; ein Modell, dessen Kontingent laut Google erreicht ist (429), bleibt im Lauf außen vor), bis ein Modell antwortet, dann dasselbe Modell noch einmal; die Funde beider Antworten werden vereinigt (seit 05.11.2026, Abschnitt „Entschieden-Liste und zweite Antwort“); Prompt `scripts/ki_waechter_prompt.md` und Eingabe, keine Werkzeuge, Antwort im festen JSON-Schema; schreibt `antwort.json` |
+| Eingabe | `scripts/ki_waechter.py prepare` | jede Fassung von `docs/feed.xml` und `docs/feed.en.xml` der 24 Stunden vor dem Commit (jeder Update-Lauf schreibt eine) und die `cache/*/events.json` derselben Commits; jeder verschiedene Meldungstext wird eine Nummer, mit der Zeit im Feed, den gleichzeitig sichtbaren Meldungen (seit 05.11.2026 mit der Linie ihres Titels), dem eigenen Cache-Ereignis (beim ersten und letzten Auftreten; sein Text bei 2500 Zeichen abgeschnitten, seit 05.11.2026 mit „[…]“ am Ende) und bis zu sechs Ereignissen derselben Linien (seit 05.11.2026 zuerst die, deren Titel der Text wiederholt: ein zusammengezogener WL-Text besteht aus ihnen); jede Quelle steht einmal ganz da, danach mit ihrer Kennung und ihrem Titel („Q…: siehe oben (Titel)“, seit 05.11.2026); schreibt `.ki-waechter/eingabe.md` und `eingabe.json`, seit 07.11.2026 dazu `eingabe-teil1.md` und `eingabe-teil2.md` (die zwei Hälften, wie das Modell sie bekommt) |
+| Lesen | `scripts/ki_waechter.py ask` | die Modellkette `KI_WAECHTER_MODEL` (`gemini-3.8-flash`, bei Überlastung sofort `gemini-3.6-flash`, dann `gemini-3.5-flash-lite` und `gemini-3.1-flash-lite`; jedes einmal je Durchgang, höchstens zwei Durchgänge mit einer Minute Pause; ein Modell, dessen Kontingent laut Google erreicht ist (429), bleibt im Lauf außen vor), bis ein Modell antwortet; zwei Anfragen je Prüflauf, seit 07.11.2026 je eine Hälfte des Tages (Schnitt zwischen zwei Fassungen; die zweite Hälfte zuerst an das Modell, das die erste las, dann an den Rest der Kette; bis dahin zweimal die ganze Eingabe an dasselbe Modell), die Funde beider Antworten werden vereinigt (seit 05.11.2026, Abschnitt „Entschieden-Liste und zweite Antwort“); Prompt `scripts/ki_waechter_prompt.md` und Eingabe, keine Werkzeuge, Antwort im festen JSON-Schema; schreibt `antwort.json` |
 | Prüfen | `scripts/ki_waechter.py verify` | jedes Zitat wörtlich gegen Feed und Quellen; schreibt den Bericht und `ergebnis.json` |
 | Ablage | `scripts/publish_to_main.sh` | `docs/archive/audits/ki-waechter-YYYY-MM-DD.md` und `data/side_steps/ki-waechter.json` nach `main` |
 | Meldung | `gh issue create` | nur bei belegten Funden ein Issue, Label `ki-waechter` |
@@ -235,26 +235,50 @@ Request ihre Zeile in dieser Liste; der Kopf von `CHANGELOG.md` und
 `docs/development-teil-2.md` sagen das. So kennt der Wächter die
 Entscheidung, bevor sie im Feed steht.
 
-**Die zweite Antwort.** `ask` fragt die Kette, bis ein Modell antwortet, und
-dieses Modell dann noch einmal mit derselben Eingabe (`ask_twice` in
-`scripts/ki_waechter.py`, `ANSWERS_PER_AUDIT` = 2); `unite_answers` vereinigt
-beide Antworten: jeder Fund einer der beiden (gleich, wenn Meldung, Klasse
-und Feed gleich sind, wie in `verify`; das Zitat zählt nicht mit, weil die
-beiden Antworten denselben Fehler verschieden lang zitieren), jede geprüfte
-Nummer, beide Listen der Vermutungen, Tokens und Anfragen summiert. Die
-zweite Anfrage geht nur an das Modell, das geantwortet hat, genau einmal; bei
-503, 429, einer abgebrochenen Verbindung oder einer Antwort ohne JSON gilt
-die erste Antwort allein. Nach einer ersten Antwort, die länger als
-`NO_NEW_REQUEST_AFTER_S` (720 s) brauchte, folgt keine zweite, so bleibt
-die längste Anfrage im Schrittlimit von 25 Minuten. Der Bericht nennt
-„Modell …, zwei Antworten vereinigt“, `ergebnis.json` trägt `antworten`,
-`antwort.json` `answers`. Kosten: eine Anfrage mehr je Prüflauf (eine je
-Antwort), also zwei am Tag, bei Überlastung bis zu neun. Ein Fund, den die
-Antworten mit verschieden langem Zitat nennen, stand bis zum Abend des 05.11.
-zweimal im Bericht (30.10.: „Reason: Harmful“ und „Reason: Harmful …“);
-seither zählt er einmal mit dem Zitat der ersten Antwort, und Vermutungen
-beider Antworten zur selben Meldung stehen einmal. Tests in
-`tests/test_ki_waechter/test_zweite_antwort.py`.
+**Die zweite Antwort.** `ask` fragt die Kette, bis ein Modell antwortet,
+und schickt eine zweite Anfrage; `unite_answers` (seit 07.11.2026 in
+`src/ki_waechter/answers.py`) vereinigt beide Antworten: jeder Fund einer
+der beiden (gleich, wenn Meldung, Klasse und Feed gleich sind, wie in
+`verify`; das Zitat zählt nicht mit, weil die beiden Antworten denselben
+Fehler verschieden lang zitieren), jede geprüfte Nummer, beide Listen der
+Vermutungen, Tokens und Anfragen summiert. Bis zum 07.11.2026 trugen beide
+Anfragen die ganze Eingabe, die zweite ging genau einmal an das Modell, das
+geantwortet hatte (`ask_twice` in `scripts/ki_waechter.py`, bleibt für eine
+Eingabe mit nur einer Fassung). Seit 07.11.2026 liest jede Anfrage eine
+Hälfte des Tages (`halves` in `src/ki_waechter/inputs.py`, `ask_parts` in
+`answers.py`): Die Eingabe wird zwischen zwei Fassungen geschnitten, dort,
+wo die größere Hälfte am wenigsten Texte hat, bei Gleichstand nahe der
+Mitte; jede Hälfte hält jeden Text, der in ihren Fassungen im Feed stand
+(ein Text über den Schnitt hinweg steht in beiden), mit allen Quellen
+einmal ganz, den Nummern des ganzen Tages und „Gleichzeitig im Feed“ nur
+aus dieser Hälfte; ihr Kopf sagt „Teil 1 von 2“ oder „Teil 2 von 2“, der
+Prompt erklärt das. Die erste Hälfte geht die Kette entlang, die zweite
+zuerst an das Modell, das die erste las, dann an den Rest der Kette (so
+liest meist ein Modell beide Hälften, und ein überlastetes Modell lässt den
+halben Tag nicht ungelesen); sie bekommt die Sekunden, die die erste von
+`NO_NEW_REQUEST_AFTER_S` (720 s) übrig ließ, nach einer längeren ersten
+Antwort folgt keine zweite Anfrage, so bleibt die längste Anfrage im
+Schrittlimit von 25 Minuten. Bei 503, 429, einer abgebrochenen Verbindung
+oder einer Antwort ohne JSON gilt die eine Antwort allein, die ungelesene
+Hälfte steht im Bericht als nicht geprüft. Der Bericht nennt „Modell …,
+zwei Antworten, je eine Hälfte der Fassungen (1–20: 56 Texte,
+gemini-3.6-flash; 21–52: 49 Texte, …)“, `antwort.json` trägt `answers` und
+`parts` (je Hälfte Modell, Anfragen, Sekunden), `ergebnis.json`
+`antworten`; `prepare` legt die Hälften als `eingabe-teil1.md` und
+`eingabe-teil2.md` zu den Dateien des Laufs. Gemessen am 07.11.2026 auf der
+Eingabe vom 06.11. (Commit 6929f27, 52 Fassungen, 102 Texte, Modell 3.6
+Flash): Der Schnitt fällt zwischen die Fassungen von 23:30 und 00:01, wo
+die meisten Texte ihre Zeitzeile wechseln, 56 und 49 Texte, 3 in beiden;
+die Hälften (Läufe 328 und 329) und die ganze Eingabe zweimal (Lauf 330)
+fanden dieselben zwei Fehler, die Hälften mit 81.287 statt 130.242
+Eingabetokens je Prüflauf (Michael, 07.11.2026: Die Ersparnis gab den
+Ausschlag). Kosten: zwei Anfragen je Prüflauf, bei Überlastung bis zu acht
+je Hälfte (zwei Durchgänge über vier Modelle). Ein Fund, den die Antworten
+mit verschieden langem Zitat nennen, stand bis zum Abend des 05.11. zweimal
+im Bericht (30.10.: „Reason: Harmful“ und „Reason: Harmful …“); seither
+zählt er einmal mit dem Zitat der ersten Antwort, und Vermutungen beider
+Antworten zur selben Meldung stehen einmal. Tests in
+`tests/test_ki_waechter/test_zweite_antwort.py` und `test_haelften.py`.
 
 ## Gratis-Kontingent
 
@@ -272,9 +296,10 @@ Minute. Auch abgelehnte Anfragen (503) zählen. Der Wächter zählt nicht selbst
 (Michael, 05.11.2026: „Zähle es bitte so wie Google. Wir brauchen keine eigene
 Zähltechnik.“):
 
-- Ein Prüflauf sendet zwei Anfragen an das Modell, das antwortet, eine je
-  Antwort (Abschnitt „Entschieden-Liste und zweite Antwort“; bis zum
-  05.11.2026 eine). Antwortet ein Modell 429, ist sein
+- Ein Prüflauf sendet zwei Anfragen, seit 07.11.2026 eine je Hälfte des
+  Tages, die zweite zuerst an das Modell, das die erste las (Abschnitt
+  „Entschieden-Liste und zweite Antwort“; bis zum 05.11.2026 eine, bis zum
+  07.11.2026 zwei an dasselbe Modell). Antwortet ein Modell 429, ist sein
   Kontingent laut Google erreicht: Es wird in diesem Lauf nicht mehr gefragt,
   die Kette geht sofort zum nächsten Modell. Die Antwort nennt das verletzte
   Kontingent und seinen Wert (`google.rpc.QuotaFailure`: `quotaId`,

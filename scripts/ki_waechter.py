@@ -24,11 +24,14 @@ Three steps, only the middle one is the model:
     numbers, GUIDs and the item table come from here, never from the model
     (the Jules audits invented or shifted GUIDs and counts).
 ``ask``
-    One call of the Gemini API with ``scripts/ki_waechter_prompt.md`` and
+    Two calls of the Gemini API with ``scripts/ki_waechter_prompt.md`` and
     the input, no tools, the answer in a fixed JSON schema with findings of
-    the closed classes F1 to F6; since 2026-11-05 the model that answered is
-    asked a second time and the findings of both answers are united
-    (``ask_twice``, Michael's pick "Beides").
+    the closed classes F1 to F6. Since 2026-11-07 each call reads one half of
+    the day (``halves`` in ``src/ki_waechter/inputs.py``, ``ask_parts`` in
+    ``src/ki_waechter/answers.py``) and the findings of both answers are
+    united; from 2026-11-05 to 06.11. both calls read the whole input
+    (``ask_twice``, Michael's pick "Beides"), which an input of one version
+    still gets.
 ``verify``
     Checks every finding mechanically before it counts: the quoted feed text
     must stand verbatim in that item, a source quote verbatim in the item's
@@ -58,7 +61,7 @@ import subprocess  # nosec B404
 import sys
 import time
 from collections.abc import Callable, Mapping, Sequence
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict
 
 from datetime import UTC, datetime
 from pathlib import Path
@@ -70,17 +73,20 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from src.ki_waechter import dispatch as ki_dispatch
+from src.ki_waechter.answers import Answer, ask_parts, describe_parts, unite_answers
 from src.ki_waechter.audit import Verdict, extract_answer, render_report, verify
 from src.ki_waechter.inputs import (
     CLASSES,
     GIT,
     VIENNA,
     FeedItem,
+    Part,
     Prepared,
     Snapshot,
     Version,
     free_text,
     git_snapshots,
+    halves,
     prepare,
     render_input,
     together,
@@ -139,15 +145,17 @@ LITE_MARK = "-lite"
 # (trial of 2026-11-05) and found none of its four known errors. The audit asks the Lite models for the top level and
 # leaves the Flash models at their default.
 LITE_THINKING_LEVEL = "high"
-# Two answers to one input (Michael 2026-11-05, card "Wie soll der KI-Wächter
+# Two answers per audit (Michael 2026-11-05, card "Wie soll der KI-Wächter
 # weniger falsche Funde liefern?", pick "Beides"): one request does not give
 # every finding (27.10.2026: three Lite runs with two to three findings each,
-# six distinct and all proven in all), so the audit asks the model that
-# answered a second time and unites the findings of both answers. The second
-# request goes to that model alone, once; a refusal (5xx, 429, a dropped
-# connection) or an answer without JSON leaves the first answer as it is, and
-# no second request follows a first answer that took longer than
-# NO_NEW_REQUEST_AFTER_S, so the step limit of 25 minutes holds.
+# six distinct and all proven in all). Until 2026-11-07 both requests read the
+# whole input and the second went to the model that answered, once
+# (``ask_twice``, kept for an input of one version); since then each request
+# reads one half of the day (``halves``, ``ask_parts`` in
+# src/ki_waechter/answers.py): measured on the input of 06.11.2026 (102
+# texts, 3.6 Flash), halves and whole input find the same errors, the halves
+# with about 38 % fewer prompt tokens (Michael 07.11.2026). No request starts
+# after NO_NEW_REQUEST_AFTER_S, so the step limit of 25 minutes holds.
 ANSWERS_PER_AUDIT = 2
 # No new request (wait included) after this many seconds: the last one (read
 # timeout 600 s) still ends inside the step limit of 25 minutes in
@@ -187,32 +195,6 @@ ANSWER_SCHEMA: dict[str, Any] = {
 
 
 # --- asking the model ---------------------------------------------------------------
-
-
-@dataclass
-class Answer:
-    ok: bool
-    model: str
-    text: str = ""
-    error: str = ""
-    tokens: dict[str, int] = field(default_factory=dict)
-    seconds: float = 0.0
-    # Requests sent, in all and per model (for the reader of the run; nothing
-    # counts them against a budget since 2026-11-05, Google counts).
-    requests: int = 0
-    per_model: dict[str, int] = field(default_factory=dict)
-    # One line per request that got no answer: model, seconds, what happened.
-    attempts: list[str] = field(default_factory=list)
-    # No answer only because Google was busy: the last request ended in an
-    # overload (500/502/503/504), a dropped connection or the quota (429).
-    # The Health check shows such a day as a note and turns red only after
-    # 30 hours without a clean audit (Michael 2026-11-04, card "Ja, so
-    # bauen"); a rejected key, a missing model or a broken answer stay red at
-    # once.
-    overloaded: bool = False
-    # Answers united in ``text``: 1, or 2 when the second request to the same
-    # model answered as well (ANSWERS_PER_AUDIT); 0 without an answer.
-    answers: int = 0
 
 
 def build_prompt(input_text: str, prompt_template: str) -> str:
@@ -282,6 +264,7 @@ def ask_gemini(
     key: str,
     sleep: Callable[[float], None] = time.sleep,
     max_rounds: int = MAX_ROUNDS,
+    deadline_s: float = NO_NEW_REQUEST_AFTER_S,
 ) -> Answer:
     """Send the prompt along the chain until a model answers.
 
@@ -292,8 +275,11 @@ def ask_gemini(
     :data:`OVERLOAD_WAIT_S`; ``max_rounds`` passes at most. A model whose
     quota Google reports as reached (429) is passed over for the rest of the
     run: Google counts, the audit does not. Any other refusal (a rejected
-    key, an unknown model, a timeout) ends the run. The key travels in a
-    header, never in the URL or a log line.
+    key, an unknown model, a timeout) ends the run. No request after the
+    first starts later than *deadline_s* seconds after the call began (the
+    second half of the input gets what the first left of
+    :data:`NO_NEW_REQUEST_AFTER_S`). The key travels in a header, never in
+    the URL or a log line.
     """
     models = [m.strip() for m in model.split(",") if m.strip()]
     if not models or not all(re.fullmatch(r"[a-z0-9.-]{3,60}", m) for m in models):
@@ -328,7 +314,7 @@ def ask_gemini(
                 # A new pass over the chain begins with a wait; inside a pass
                 # the next model is asked at once.
                 wait = OVERLOAD_WAIT_S if round_no > waited_round else 0
-                if time.monotonic() - started + wait > NO_NEW_REQUEST_AFTER_S:
+                if time.monotonic() - started + wait > deadline_s:
                     print(f"Gemini: nach {time.monotonic() - started:.0f} s keine weitere Anfrage")
                     break
                 print(f"Gemini ohne Antwort (überlastet, Kontingent erreicht oder Verbindung abgebrochen), "
@@ -396,78 +382,6 @@ def ask_twice(
         return first
     print(f"Gemini: zweite Anfrage an {first.model}", flush=True)
     return unite_answers(first, ask_gemini(prompt, first.model, key, sleep, max_rounds=1))
-
-
-def unite_answers(first: Answer, second: Answer) -> Answer:
-    """One answer from two to the same input: every finding of either, every text either checked, both lists of hypotheses.
-
-    The requests, models and failed attempts of both are kept. A second
-    answer that did not come (refusal, overload, quota) or carries no JSON
-    leaves the first answer's text as it is.
-    """
-    united = Answer(
-        True, first.model, text=first.text, tokens=dict(first.tokens),
-        seconds=round(first.seconds + second.seconds, 1), requests=first.requests + second.requests,
-        per_model=dict(first.per_model), attempts=first.attempts + second.attempts, answers=1,
-    )
-    for name, count in second.per_model.items():
-        united.per_model[name] = united.per_model.get(name, 0) + count
-    if not second.ok:
-        print(f"Gemini: zweite Anfrage ohne Antwort ({second.error[:120]}); die erste Antwort gilt")
-        return united
-    try:
-        parsed = (extract_answer(first.text), extract_answer(second.text))
-    except ValueError as exc:
-        print(f"Gemini: eine Antwort ohne JSON ({exc}); die erste Antwort gilt")
-        return united
-    # Model text, scrubbed like every writer of it (zero-width and BiDi characters).
-    united.text = json.dumps(scrub_trojan_source_primitives(_union(*parsed)), ensure_ascii=False, allow_nan=False)
-    for name, count in second.tokens.items():
-        united.tokens[name] = united.tokens.get(name, 0) + count
-    united.answers = 2
-    return united
-
-
-def _finding_key(raw: Mapping[str, Any]) -> tuple[object, ...]:
-    """What makes two findings the same: item, class and feed (``verify`` keys the same way, by GUID).
-
-    The quote is no part of it: the two answers quote one error at different
-    lengths, and the prompt asks for one finding per item and class (several
-    places of one class in one text are one finding with the first quote). A
-    duplicate (F1) named from either of its two items is one finding.
-    """
-    nr = raw.get("nr")
-    klasse = str(raw.get("klasse") or "").upper()
-    if klasse == "F1":
-        nr2 = raw.get("nr2")
-        return ("F1", frozenset(n if isinstance(n, int) else None for n in (nr, nr2)))
-    return (nr if isinstance(nr, int) else None, klasse, str(raw.get("feed") or "").upper())
-
-
-def _union(first: Mapping[str, Any], second: Mapping[str, Any]) -> dict[str, Any]:
-    """The two answers as one, in the answer's own shape; the first answer's entries come first."""
-    findings: list[dict[str, Any]] = []
-    seen: set[tuple[object, ...]] = set()
-    for raw in [*(first.get("funde") or []), *(second.get("funde") or [])]:
-        if isinstance(raw, dict) and _finding_key(raw) not in seen:
-            seen.add(_finding_key(raw))
-            findings.append(dict(raw))
-    checked = sorted({n for part in (first, second) for n in (part.get("geprueft") or []) if isinstance(n, int)})
-    hypotheses: list[str] = []
-    named: set[str] = set()
-    for part in (first, second):
-        for hypothesis in part.get("vermutungen") or []:
-            text = str(hypothesis).strip()
-            # Both answers wonder about the same item ("Meldung 34: …"): one hypothesis, the first wording.
-            match = _HYPOTHESIS_ITEM_RE.match(text)
-            key = f"Meldung {match.group(1)}" if match else text
-            if text and key not in named:
-                named.add(key)
-                hypotheses.append(text)
-    return {"geprueft": checked, "funde": findings, "vermutungen": hypotheses}
-
-
-_HYPOTHESIS_ITEM_RE = re.compile(r"Meldung\s+(\d+)\b")
 
 
 def _attempt(model: str, sent_at: float, error: str) -> str:
@@ -546,6 +460,11 @@ def _cmd_prepare(args: argparse.Namespace) -> int:
     out.mkdir(parents=True, exist_ok=True)
     (out / "eingabe.md").write_text(scrub_trojan_source_primitives(render_input(prep)), encoding="utf-8")
     _write_json(out / "eingabe.json", asdict(prep))
+    # The halves as the model gets them (``ask`` renders them again from eingabe.json), for the reader of the run.
+    for part in halves(prep):
+        (out / f"eingabe-teil{part.nr}.md").write_text(
+            scrub_trojan_source_primitives(render_input(prep, part)), encoding="utf-8"
+        )
     print(f"KI-Wächter: {prep.count_items} Meldungstexte aus {len(prep.versions)} Fassungen vorbereitet (Commit {commit})")
     return 0
 
@@ -565,7 +484,15 @@ def _cmd_ask(args: argparse.Namespace) -> int:
         template = read_capped_text(Path(args.prompt), label="ki_waechter")
         if input_text is None or template is None:
             raise ValueError("Eingabe oder Prompt fehlt")
-        answer = ask_twice(build_prompt(input_text, template), args.model, key)
+        parts = _halves_of(work)
+        if parts:
+            print(f"KI-Wächter: zwei Hälften, {' und '.join(str(len(part.items)) for part, _ in parts)} Texte")
+            answer = ask_parts(
+                [build_prompt(text, template) for _, text in parts], args.model, key, ask_gemini,
+                max_rounds=MAX_ROUNDS, deadline_s=NO_NEW_REQUEST_AFTER_S,
+            )
+        else:
+            answer = ask_twice(build_prompt(input_text, template), args.model, key)
     _write_json(work / "antwort.json", asdict(answer))
     # For the reader of the run: how many requests, to which models. Nothing
     # counts them (until 2026-11-05 the gate read the first annotation).
@@ -581,9 +508,18 @@ def _cmd_ask(args: argparse.Namespace) -> int:
         else:
             print(f"::error title=KI-Wächter::{answer.error}")
         return 1
-    print(f"Gemini {answer.model}: {answer.requests} Anfrage(n), {answer.answers} Antwort(en), "
-          f"{answer.seconds} s, Tokens {answer.tokens}")
+    print(f"Gemini {answer.model}: {answer.requests} Anfrage(n), {answer.answers} Antwort(en)"
+          + (" je eine Hälfte" if answer.parts else "") + f", {answer.seconds} s, Tokens {answer.tokens}")
     return 0
+
+
+def _halves_of(work: Path) -> list[tuple[Part, str]]:
+    """The two halves of the prepared input with their rendered text; empty without ``eingabe.json`` or halves."""
+    try:
+        prep = _prep_from_json(work / "eingabe.json")
+    except (ValueError, TypeError, KeyError):
+        return []
+    return [(part, render_input(prep, part)) for part in halves(prep)]
 
 
 def _cmd_verify(args: argparse.Namespace) -> int:
@@ -597,7 +533,11 @@ def _cmd_verify(args: argparse.Namespace) -> int:
     now = datetime.now(UTC)
     model = str(raw.get("model") or "?")
     answers = raw.get("answers") if isinstance(raw.get("answers"), int) else 0
-    if answers == 2:
+    notes = raw.get("parts") if isinstance(raw.get("parts"), list) else []
+    if notes:
+        # The reader of the report sees which half each answer read, and a half without an answer.
+        model += describe_parts([n for n in notes if isinstance(n, dict)], halves(prep))
+    elif answers == 2:
         # The reader of the report sees why a run lists more than one request's findings.
         model += ", zwei Antworten vereinigt"
     report = render_report(prep, verdict, now, model, args.run_url)
@@ -656,8 +596,10 @@ def main(argv: Sequence[str] | None = None) -> int:
 # files and tests read through it. The code lives in src/ (700-line limit,
 # 2026-11-02); listing the imports marks them as deliberate re-exports.
 __all__ = [
+    "Answer",
     "asdict",
     "ask_gemini",
+    "ask_parts",
     "ask_twice",
     "build_prompt",
     "git_snapshots",
@@ -674,6 +616,7 @@ __all__ = [
     "Verdict",
     "Version",
     "extract_answer",
+    "halves",
     "together",
     "unite_answers",
     "visible",
