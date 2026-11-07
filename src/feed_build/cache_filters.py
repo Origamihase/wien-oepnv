@@ -6,6 +6,7 @@ re-exports every name that src/, scripts/ or the tests read from it.
 
 from __future__ import annotations
 
+import html
 import re
 from typing import Any
 
@@ -69,6 +70,36 @@ def _attribute_obb_replacement_bus(item: dict[str, Any]) -> dict[str, Any]:
     return fixed
 
 
+# A WL notice ("Hinweis") whose description holds no text: WL put "5B:
+# Bauarbeiten" online on 2026-11-06 at 13:59 with the description "<p></p>"
+# and filled it at 14:11; the 14:01 feed showed the title with only the time
+# line ("[Seit heute]", KI-Wächter, issue #2170). Operator decision
+# 2026-11-07 ("Zurückhalten bis Text da ist"): such a notice waits until WL
+# fills it; the next fetch with text brings it in. Notices rank below
+# disruptions, and their title ("Bauarbeiten") does not say what changes for
+# the passenger. A disruption without text stays: its title names line and
+# cause ("U2: Betriebsstörung"); WL sent six of those since 2026-06-01, each
+# for one or a few fetches. Measured over every WL cache version since
+# 2026-06-01 (6 328 versions, 337 notices): the 5B notice is the only empty one.
+_HTML_TAG_RE = re.compile(r"<[^>]*>")
+
+
+def _is_empty_wl_notice(item: dict[str, Any]) -> bool:
+    """``True`` for a WL "Hinweis" whose description has no visible text
+    (empty, or only tags, ``&nbsp;`` and whitespace).
+
+    The WL provider always writes ``description`` as a string; an item
+    without one (test fixtures, a hand-built dictionary) is not judged.
+    """
+    if item.get("category") != "Hinweis":
+        return False
+    desc = item.get("description")
+    if not isinstance(desc, str):
+        return False
+    text = html.unescape(_HTML_TAG_RE.sub(" ", desc))
+    return not text.replace("\xa0", " ").strip()
+
+
 def _post_filter_wl(items: list[Any]) -> list[Any]:
     """Defence-in-depth: normalise / drop bad WL items loaded from cache.
 
@@ -85,6 +116,8 @@ def _post_filter_wl(items: list[Any]) -> list[Any]:
        prefix is the key signal for transit-line attribution; without
        it the user can't tell which line is affected, so we drop
        these too.
+    3a. A WL notice without any text waits until WL fills it
+       (:func:`_is_empty_wl_notice`, operator decision 2026-11-07).
     4. Cached items can carry a stacked / non-canonical line prefix
        (``40: 40+41: Betrieb ab Gersthof``) when an older
        ``_ensure_line_prefix`` prepended ``relatedLines`` on top of the
@@ -102,6 +135,8 @@ def _post_filter_wl(items: list[Any]) -> list[Any]:
     for original in items:
         if not isinstance(original, dict):
             out.append(original)
+            continue
+        if _is_empty_wl_notice(original):
             continue
         item = _attribute_obb_replacement_bus(original)
         prefix_lines: list[str] = []

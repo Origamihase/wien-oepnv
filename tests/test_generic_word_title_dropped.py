@@ -149,7 +149,9 @@ class TestNonStoerungCategoriesUnaffected:
         assert len(out) == 1, "Non-Störung was dropped"
 
     def test_hinweis_without_line_prefix_passes(self) -> None:
-        item = _stoerung("Veranstaltung am Heldenplatz")
+        # With a text: a WL notice without one waits for it
+        # (tests/test_wl_empty_notice.py, decision 2026-11-07).
+        item = _stoerung("Veranstaltung am Heldenplatz", "Die Busse werden umgeleitet.")
         item["category"] = "Hinweis"
         out = _post_filter_wl([item])
         assert len(out) == 1
