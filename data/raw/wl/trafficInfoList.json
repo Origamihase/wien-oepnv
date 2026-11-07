@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261107-0005-F01, I20261107-0005-F02, I20261107-0008, I20260925-0011, I20261107-0009, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261107-0005-F01, I20261107-0005-F02, I20261107-0008-F01, I20261107-0008-F02, I20261107-0009-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1883-101, R1882-101, R1881-101, R1880-101, R1875-101, R1884-101, R1876-101, R401-101, R318-437, R293-474, R2373-126, R2379-627, R2380-627, R3886-480, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2558-125, R1974-466, R500-101, R1542-152, R1539-152, R583-110, R584-110, R585-110, R586-110, R561-110, R588-110, R3468-110, R587-110, R562-110, R563-110, R579-110, R581-110, R579-152, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1880-101, R1884-101, R1876-101, R1883-101, R1882-101, R1875-101, R1881-101, R318-437, R293-474, R401-101, R2373-126, R2380-627, R2345-127, R2379-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R3886-480, R2558-125, R1974-466, R500-101, R1542-152, R1539-152, R581-110, R583-110, R584-110, R585-110, R586-110, R587-110, R588-110, R3468-110, R561-110, R562-110, R563-110, R579-110, R579-152, R565-110, R564-110, R566-110, R568-110, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -212,8 +212,8 @@
     "status": "active",
     "time": {
      "created": "2026-11-07T08:07:00.000+0100",
-     "lastUpdate": "2026-11-07T08:07:00.000+0100",
-     "resume": "2026-11-07T08:07:00.000+0100",
+     "end": "2026-11-07T10:08:00.000+0100",
+     "lastUpdate": "2026-11-07T09:40:00.000+0100",
      "start": "2026-11-07T07:18:00.000+0100"
     },
     "title": "11: Fremder Verkehrsunfall"
@@ -260,8 +260,8 @@
     "status": "active",
     "time": {
      "created": "2026-11-07T08:07:00.000+0100",
-     "lastUpdate": "2026-11-07T08:07:00.000+0100",
-     "resume": "2026-11-07T08:07:00.000+0100",
+     "end": "2026-11-07T10:13:00.000+0100",
+     "lastUpdate": "2026-11-07T09:40:00.000+0100",
      "start": "2026-11-07T07:18:00.000+0100"
     },
     "title": "71: Fremder Verkehrsunfall"
@@ -271,23 +271,22 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "10": "ptTram",
-      "52": "ptTram"
+      "10": "ptTram"
      }
     },
-    "description": "Linie 10: Fahrtbehinderung in Richtung Dornbach. Linie 52: Fahrtbehinderung in Richtung Baumgarten. Voraussichtliche Dauer: 09:50 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Linzer Straße 30.",
-    "descriptionHTML": "<p>Linie 10:<br>Fahrtbehinderung in Richtung Dornbach.<br>Linie 52:<br>Fahrtbehinderung in Richtung Baumgarten.</p><p>Voraussichtliche Dauer: 09:50 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Bereich Linzer Straße 30.</p>",
+    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 10:<br>Fahrtbehinderung in Richtung Dornbach.<br>Linie 52:<br>Fahrtbehinderung in Richtung Baumgarten.</p><p>Voraussichtliche Dauer: 09:50 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Bereich Linzer Straße 30.</p>",
-       "descriptionPlain": "Linie 10: Fahrtbehinderung in Richtung Dornbach. Linie 52: Fahrtbehinderung in Richtung Baumgarten. Voraussichtliche Dauer: 09:50 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Linzer Straße 30.",
-       "title": "10, 52: Schadhaftes Fahrzeug"
+       "descriptionHtml": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "10: Schadhaftes Fahrzeug"
       }
      }
     ],
     "location": "Linzer Straße 30",
-    "name": "I20261107-0008",
+    "name": "I20261107-0008-F01",
     "owner": "WL",
     "parentName": "I20261107-0008",
     "priority": "1",
@@ -295,15 +294,55 @@
     "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "10",
-     "52"
+     "10"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 110,
       "lineName": "10",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-07T09:38:00.000+0100",
+     "lastUpdate": "2026-11-07T09:38:00.000+0100",
+     "resume": "2026-11-07T09:38:00.000+0100",
+     "start": "2026-11-07T09:21:00.000+0100"
+    },
+    "title": "10: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "52": "ptTram"
+     }
+    },
+    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 52: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 52: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "52: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "location": "Linzer Straße 30",
+    "name": "I20261107-0008-F02",
+    "owner": "WL",
+    "parentName": "I20261107-0008",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 152,
       "lineName": "52",
@@ -312,11 +351,12 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-07T09:22:00.000+0100",
-     "lastUpdate": "2026-11-07T09:22:00.000+0100",
+     "created": "2026-11-07T09:38:00.000+0100",
+     "lastUpdate": "2026-11-07T09:38:00.000+0100",
+     "resume": "2026-11-07T09:38:00.000+0100",
      "start": "2026-11-07T09:21:00.000+0100"
     },
-    "title": "10, 52: Schadhaftes Fahrzeug"
+    "title": "52: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "emergency medical services",
@@ -326,18 +366,18 @@
       "U3": "ptMetro"
      }
     },
-    "description": "Linie U3: Betrieb zwischen den Stationen Enkplatz und Zippererstraße in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 09:45 Uhr. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie U3:<br>Betrieb zwischen den Stationen Enkplatz und Zippererstraße in beiden Richtungen über Gleis 1.</p><p>Voraussichtliche Dauer: 09:45 Uhr.</p><p>Grund: Rettungseinsatz.</p>",
+    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie U3:<br>Betrieb zwischen den Stationen Enkplatz und Zippererstraße in beiden Richtungen über Gleis 1.</p><p>Voraussichtliche Dauer: 09:45 Uhr.</p><p>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie U3: Betrieb zwischen den Stationen Enkplatz und Zippererstraße in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 09:45 Uhr. Grund: Rettungseinsatz.",
+       "descriptionHtml": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "U3: Rettungseinsatz"
       }
      }
     ],
-    "name": "I20261107-0009",
+    "name": "I20261107-0009-F01",
     "owner": "WL",
     "parentName": "I20261107-0009",
     "priority": "1",
@@ -356,8 +396,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-07T09:22:00.000+0100",
-     "lastUpdate": "2026-11-07T09:22:00.000+0100",
+     "created": "2026-11-07T09:54:00.000+0100",
+     "lastUpdate": "2026-11-07T09:54:00.000+0100",
+     "resume": "2026-11-07T09:54:00.000+0100",
      "start": "2026-11-07T09:20:00.000+0100"
     },
     "title": "U3: Rettungseinsatz"
@@ -1118,6 +1159,98 @@
     "time": {
      "end": "2026-11-07T10:23:00.000+0100",
      "start": "2026-11-07T09:24:09.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R564-110",
+    "owner": "WL",
+    "parentName": "R564-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     564
+    ],
+    "time": {
+     "end": "2026-11-07T10:34:00.000+0100",
+     "start": "2026-11-07T09:34:40.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R565-110",
+    "owner": "WL",
+    "parentName": "R565-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     565
+    ],
+    "time": {
+     "end": "2026-11-07T10:34:00.000+0100",
+     "start": "2026-11-07T09:34:40.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R566-110",
+    "owner": "WL",
+    "parentName": "R566-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     566
+    ],
+    "time": {
+     "end": "2026-11-07T10:34:00.000+0100",
+     "start": "2026-11-07T09:34:40.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R568-110",
+    "owner": "WL",
+    "parentName": "R568-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     568
+    ],
+    "time": {
+     "end": "2026-11-07T10:34:00.000+0100",
+     "start": "2026-11-07T09:34:40.000+0100"
     },
     "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
