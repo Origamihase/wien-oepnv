@@ -1,17 +1,16 @@
 """The model's answers: one per half of the input, united into one (``scripts/ki_waechter.py``).
 
 Since 2026-11-05 every audit sends two requests. Until 2026-11-07 both carried
-the whole input, and the second answer of the same model repeated most of the
-first: on 06.11.2026 (run 320, 102 texts) both answers of Gemini 3.6 Flash
-reported one finding and left the same five visible errors unreported
-(doubled cause word in a title, three station names translated or glued, a
-"Linie …:" prefix left in the text), four of them classes the prompt
-describes. The misses were not a matter of the rules but of attention: the
-model reads a hundred texts in one pass. Since 2026-11-07 (Michael, "ok" on
-the proposal of 07.11. 00:24 Wiener Zeit) each request reads one half of the
-day (:func:`src.ki_waechter.inputs.halves`): the same two requests, the same
-quota, about half the texts per answer. The findings of both answers are
-united as before (:func:`unite_answers`).
+the whole input and the second went to the model that answered, once
+(``ask_twice`` in the script, kept for an input of one version). Since
+2026-11-07 each request reads one half of the day
+(:func:`src.ki_waechter.inputs.halves`): the same two requests, about half
+the texts per answer. Measured on 07.11.2026 on the input of 06.11. (commit
+6929f27, 52 versions, 102 texts, Gemini 3.6 Flash): the halves (runs 328 and
+329) and the whole input twice (run 330) found the same two errors, the
+halves with 81,287 instead of 130,242 prompt tokens per audit; Michael took
+them for that saving (07.11.2026, 17:50 Wiener Zeit). The findings of both
+answers are united as before (:func:`unite_answers`).
 """
 
 from __future__ import annotations

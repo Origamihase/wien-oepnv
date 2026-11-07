@@ -150,13 +150,12 @@ LITE_THINKING_LEVEL = "high"
 # every finding (27.10.2026: three Lite runs with two to three findings each,
 # six distinct and all proven in all). Until 2026-11-07 both requests read the
 # whole input and the second went to the model that answered, once
-# (``ask_twice``); since then each request reads one half of the day
-# (``halves``, ``ask_parts`` in src/ki_waechter/answers.py): on 06.11.2026 the
-# two answers of 3.6 Flash over 102 texts missed the same five errors, four of
-# them classes the prompt describes, so a second reading added little and the
-# texts per answer were the lever. ``ask_twice`` remains for an input of one
-# version (no halves). No request starts after NO_NEW_REQUEST_AFTER_S, so the
-# step limit of 25 minutes holds.
+# (``ask_twice``, kept for an input of one version); since then each request
+# reads one half of the day (``halves``, ``ask_parts`` in
+# src/ki_waechter/answers.py): measured on the input of 06.11.2026 (102
+# texts, 3.6 Flash), halves and whole input find the same errors, the halves
+# with about 38 % fewer prompt tokens (Michael 07.11.2026). No request starts
+# after NO_NEW_REQUEST_AFTER_S, so the step limit of 25 minutes holds.
 ANSWERS_PER_AUDIT = 2
 # No new request (wait included) after this many seconds: the last one (read
 # timeout 600 s) still ends inside the step limit of 25 minutes in
