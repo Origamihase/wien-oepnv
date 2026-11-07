@@ -30,13 +30,13 @@ from ..utils.logging import sanitize_log_message
 # ``tests/test_sentinel_reporting_control_chars_re_canonical_drift.py``.
 # 2026-05-14 "Cf-Format Drift": widened in lockstep with the canonical
 # ``src/utils/logging.py:_CONTROL_CHARS_RE`` to cover the remaining
-# 13 Unicode Cf-class bands (44 code points): U+00AD SOFT HYPHEN,
+# 13 Unicode Cf-class bands (51 code points): U+00AD SOFT HYPHEN,
 # U+0600..U+0605 Arabic prefix marks, U+06DD, U+070F, U+0890..U+0891,
 # U+08E2, U+206A..U+206F deprecated BiDi controls (folds the
 # existing U+2060..U+2069 band into U+2060..U+206F),
 # U+FFF9..U+FFFB INTERLINEAR ANNOTATION, U+110BD/U+110CD KAITHI,
 # U+13430..U+1343F EGYPTIAN HIEROGLYPH, U+1BCA0..U+1BCA3 SHORTHAND
-# FORMAT, and U+1D173..U+1D17A MUSICAL SYMBOL formatting. All 44
+# FORMAT, and U+1D173..U+1D17A MUSICAL SYMBOL formatting. All 51
 # code points are Unicode general category Cf (Format) - same family
 # as ZWSP/ZWNJ/ZWJ already in the floor, with zero advance width
 # in every conforming renderer and no legitimate consumer in this
