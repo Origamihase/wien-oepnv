@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029"
+    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261107-0039-F01, I20261107-0039-F02"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1881-101, R1880-101, R1876-101, R1875-101, R1884-101, R1883-101, R1882-101, R318-437, R293-474, R401-101, R2379-627, R2380-627, R2345-127, R2373-125, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-127, R2373-126, R3886-480, R2558-125, R1974-466, R1599-110, R1597-110, R1598-110, R1610-110, R571-110, R1559-152, R1562-152, R571-152, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R318-437, R293-474, R1974-466, R1881-101, R1882-101, R1883-101, R1884-101, R2378-627, R2343-125, R2343-626, R2359-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2370-125, R1875-101, R1876-101, R1880-101, R2558-125, R3886-480, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,142 +171,96 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1559-152",
-    "owner": "WL",
-    "parentName": "R1559-152",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1559
-    ],
-    "time": {
-     "end": "2026-11-07T23:42:00.000+0100",
-     "start": "2026-11-07T22:42:24.000+0100"
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "66A": "ptBusCity"
+     }
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 66A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 66A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "66A: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Troststraße",
+    "name": "I20261107-0039-F01",
+    "owner": "WL",
+    "parentName": "I20261107-0039",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "66A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 466,
+      "lineName": "66A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-07T23:56:00.000+0100",
+     "lastUpdate": "2026-11-07T23:56:00.000+0100",
+     "resume": "2026-11-07T23:56:00.000+0100",
+     "start": "2026-11-07T23:32:00.000+0100"
+    },
+    "title": "66A: Fremder Verkehrsunfall"
    },
    {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1562-152",
-    "owner": "WL",
-    "parentName": "R1562-152",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     1562
-    ],
-    "time": {
-     "end": "2026-11-07T23:42:00.000+0100",
-     "start": "2026-11-07T22:42:24.000+0100"
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "65A": "ptBusCity"
+     }
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1597-110",
+    "description": "Linie 65A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 65A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 65A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 65A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "65A: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Troststraße",
+    "name": "I20261107-0039-F02",
     "owner": "WL",
-    "parentName": "R1597-110",
+    "parentName": "I20261107-0039",
     "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "10"
+     "65A"
     ],
-    "relatedStops": [
-     1597
+    "relatedLinesDetails": [
+     {
+      "lineId": 465,
+      "lineName": "65A",
+      "vehicleType": "ptBusCity"
+     }
     ],
+    "status": "active",
     "time": {
-     "end": "2026-11-07T23:34:00.000+0100",
-     "start": "2026-11-07T22:35:24.000+0100"
+     "created": "2026-11-07T23:56:00.000+0100",
+     "lastUpdate": "2026-11-07T23:56:00.000+0100",
+     "resume": "2026-11-07T23:56:00.000+0100",
+     "start": "2026-11-07T23:32:00.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1598-110",
-    "owner": "WL",
-    "parentName": "R1598-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     1598
-    ],
-    "time": {
-     "end": "2026-11-07T23:34:00.000+0100",
-     "start": "2026-11-07T22:35:24.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1599-110",
-    "owner": "WL",
-    "parentName": "R1599-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     1599
-    ],
-    "time": {
-     "end": "2026-11-07T23:34:00.000+0100",
-     "start": "2026-11-07T22:35:24.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1610-110",
-    "owner": "WL",
-    "parentName": "R1610-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     1610
-    ],
-    "time": {
-     "end": "2026-11-07T23:34:00.000+0100",
-     "start": "2026-11-07T22:35:24.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "65A: Fremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -326,8 +280,8 @@
      1875
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-03T00:00:13.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Gleisbauarbeiten\nKein Betrieb"
    },
@@ -349,8 +303,8 @@
      1876
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-03T00:00:13.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Gleisbauarbeiten\nKein Betrieb"
    },
@@ -372,8 +326,8 @@
      1880
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-03T00:00:13.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Knöllgasse"
    },
@@ -395,8 +349,8 @@
      1881
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-03T00:00:13.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Knöllgasse"
    },
@@ -418,8 +372,8 @@
      1882
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-03T00:00:13.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Knöllgasse"
    },
@@ -441,8 +395,8 @@
      1883
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-03T00:00:13.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Knöllgasse"
    },
@@ -464,8 +418,8 @@
      1884
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-03T00:00:13.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Gleisbauarbeiten\nZüge halten Quellenstraße 156 (Linie 6)"
    },
@@ -510,8 +464,8 @@
      2343
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-05T00:00:28.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
    },
@@ -533,8 +487,8 @@
      2343
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-05T00:00:28.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Ersatzbus\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße"
    },
@@ -556,8 +510,8 @@
      2345
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-05T00:00:28.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Züge halten bei\nLinie 31"
    },
@@ -579,8 +533,8 @@
      2359
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-05T00:00:28.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Ersatzbus 26E\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße"
    },
@@ -602,8 +556,8 @@
      2370
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-05T00:00:28.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
    },
@@ -625,8 +579,8 @@
      2371
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-05T00:00:28.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
    },
@@ -648,8 +602,8 @@
      2372
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-05T00:00:28.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
    },
@@ -671,8 +625,8 @@
      2373
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-05T00:00:28.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Züge halten\nDonaufelder Straße 175-177"
    },
@@ -694,8 +648,8 @@
      2373
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-05T00:00:28.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Züge halten in\nTokiostraße"
    },
@@ -717,8 +671,8 @@
      2373
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-05T00:00:28.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Linie 25 in\nTokiostraße benützen"
    },
@@ -740,8 +694,8 @@
      2378
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-05T00:00:28.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Busse halten\nSatzingerweg 41"
    },
@@ -763,8 +717,8 @@
      2379
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-05T00:00:28.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Busse halten\nBessemerstraße 1-3"
    },
@@ -786,8 +740,8 @@
      2380
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-05T00:00:28.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Busse halten\nHoßplatz 11"
    },
@@ -809,8 +763,8 @@
      2558
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-05T00:00:29.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:07.000+0100"
     },
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
    },
@@ -832,7 +786,7 @@
      293
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
+     "end": "2026-11-08T23:59:59.000+0100",
      "start": "2026-11-05T00:00:27.000+0100"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
@@ -855,7 +809,7 @@
      318
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
+     "end": "2026-11-08T23:59:59.000+0100",
      "start": "2026-11-05T00:00:27.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
@@ -878,8 +832,8 @@
      3886
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
-     "start": "2026-11-05T00:00:28.000+0100"
+     "end": "2026-11-08T23:59:59.000+0100",
+     "start": "2026-11-08T00:00:07.000+0100"
     },
     "title": "Bauarbeiten\nBetrieb ab Vivariumstraße 2"
    },
@@ -901,56 +855,10 @@
      401
     ],
     "time": {
-     "end": "2026-11-07T23:59:59.000+0100",
+     "end": "2026-11-08T23:59:59.000+0100",
      "start": "2026-11-05T00:00:27.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R571-110",
-    "owner": "WL",
-    "parentName": "R571-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     571
-    ],
-    "time": {
-     "end": "2026-11-07T23:34:00.000+0100",
-     "start": "2026-11-07T22:35:28.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R571-152",
-    "owner": "WL",
-    "parentName": "R571-152",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedStops": [
-     571
-    ],
-    "time": {
-     "end": "2026-11-07T23:42:00.000+0100",
-     "start": "2026-11-07T22:42:28.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
