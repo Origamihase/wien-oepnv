@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261107-0023, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261107-0026, I20261107-0023, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1881-101, R1876-101, R1880-101, R1884-101, R1875-101, R1882-101, R1883-101, R401-101, R318-437, R293-474, R2373-126, R2380-627, R2345-127, R3886-480, R2379-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2558-125, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1881-101, R1880-101, R1876-101, R1875-101, R1884-101, R1883-101, R1882-101, R318-437, R293-474, R401-101, R2379-627, R2380-627, R2345-127, R2373-125, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-127, R2373-126, R3886-480, R2558-125, R1974-466, R500-101, R1408-448, R1413-448, R1411-448, R1527-448, R565-448, R1406-448, R1429-448, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -217,6 +217,191 @@
      "start": "2026-11-07T16:19:00.000+0100"
     },
     "title": "U6: Verunreinigung"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "48A": "ptBusCity"
+     }
+    },
+    "description": "Linie 48A:Kein Betrieb zwischen Gutraterplatz und Thalistraße U, KoppstraßeVoraussichtliche Dauer: 19:30 Uhr.Grund: Fremder Verkehrsunfall im Haltestellenbereich Panikengasse.",
+    "descriptionHTML": "<p>Linie 48A:<br>Kein Betrieb zwischen Gutraterplatz und Thalistraße U, Koppstraße</p><p>Voraussichtliche Dauer: 19:30 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Haltestellenbereich Panikengasse.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 48A:<br>Kein Betrieb zwischen Gutraterplatz und Thalistraße U, Koppstraße</p><p>Voraussichtliche Dauer: 19:30 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Haltestellenbereich Panikengasse.</p>",
+       "descriptionPlain": "Linie 48A:Kein Betrieb zwischen Gutraterplatz und Thalistraße U, KoppstraßeVoraussichtliche Dauer: 19:30 Uhr.Grund: Fremder Verkehrsunfall im Haltestellenbereich Panikengasse.",
+       "title": "48A: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261107-0026",
+    "owner": "WL",
+    "parentName": "I20261107-0026",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 448,
+      "lineName": "48A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "relatedStops": [
+     1408
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-07T18:50:00.000+0100",
+     "lastUpdate": "2026-11-07T18:56:00.000+0100",
+     "start": "2026-11-07T18:48:00.000+0100"
+    },
+    "title": "48A: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Panikengasse",
+    "name": "R1406-448",
+    "owner": "WL",
+    "parentName": "R1406-448",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedStops": [
+     1406
+    ],
+    "time": {
+     "end": "2026-11-07T19:57:00.000+0100",
+     "start": "2026-11-07T18:58:03.000+0100"
+    },
+    "title": "Fremdunfall\nBetrieb ab Panikengasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1408-448",
+    "owner": "WL",
+    "parentName": "R1408-448",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedStops": [
+     1408
+    ],
+    "time": {
+     "end": "2026-11-07T19:49:00.000+0100",
+     "start": "2026-11-07T18:50:32.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1411-448",
+    "owner": "WL",
+    "parentName": "R1411-448",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedStops": [
+     1411
+    ],
+    "time": {
+     "end": "2026-11-07T19:49:00.000+0100",
+     "start": "2026-11-07T18:50:32.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1413-448",
+    "owner": "WL",
+    "parentName": "R1413-448",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedStops": [
+     1413
+    ],
+    "time": {
+     "end": "2026-11-07T19:49:00.000+0100",
+     "start": "2026-11-07T18:50:32.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Burggasse/Stadthalle U",
+    "name": "R1429-448",
+    "owner": "WL",
+    "parentName": "R1429-448",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedStops": [
+     1429
+    ],
+    "time": {
+     "end": "2026-11-07T19:58:00.000+0100",
+     "start": "2026-11-07T18:59:33.000+0100"
+    },
+    "title": "Fremdunfall\nBetrieb ab Burggasse/Stadthalle U"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1527-448",
+    "owner": "WL",
+    "parentName": "R1527-448",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedStops": [
+     1527
+    ],
+    "time": {
+     "end": "2026-11-07T19:49:00.000+0100",
+     "start": "2026-11-07T18:50:32.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -838,6 +1023,29 @@
      "start": "2026-11-07T05:00:12.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R565-448",
+    "owner": "WL",
+    "parentName": "R565-448",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedStops": [
+     565
+    ],
+    "time": {
+     "end": "2026-11-07T19:49:00.000+0100",
+     "start": "2026-11-07T18:50:36.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
