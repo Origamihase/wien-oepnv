@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261107-0009-F01, I20261107-0010"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261107-0010-F01, I20261107-0011, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1883-101, R1880-101, R1882-101, R1881-101, R1875-101, R1876-101, R1884-101, R401-101, R318-437, R293-474, R2373-126, R2380-627, R2345-127, R3886-480, R2379-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2558-125, R1974-466, R500-101, R699-412, R753-412, R751-412, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1881-101, R1875-101, R1883-101, R1880-101, R1882-101, R1884-101, R1876-101, R318-437, R293-474, R401-101, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R3886-480, R2378-627, R2343-626, R2558-125, R1974-466, R500-101, R753-412, R699-412, R751-412, R1713-101, R851-101, R1715-101, R1714-101, R477-399, R1715-399, R1713-399, R1714-399, R1717-399, R1718-399, R427-399, R851-399, R51-101, R1709-101, R1712-101, R1711-101, R4843-399, R399-399, R400-399, R1749-399, R831-399, R1748-399, R1756-399, R1753-399, R1754-399, R1752-399, R1751-399, R1711-399, R1709-399, R1712-399, R5943-399, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,51 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U3: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261107-0009-F01",
-    "owner": "WL",
-    "parentName": "I20261107-0009",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-07T09:54:00.000+0100",
-     "lastUpdate": "2026-11-07T09:54:00.000+0100",
-     "resume": "2026-11-07T09:54:00.000+0100",
-     "start": "2026-11-07T09:20:00.000+0100"
-    },
-    "title": "U3: Rettungseinsatz"
-   },
-   {
     "alertCause": "vehicle on the line",
     "alertCauseId": 71,
     "attributes": {
@@ -223,19 +178,19 @@
       "12A": "ptBusCity"
      }
     },
-    "description": "Linie 12A: Fahrtbehinderung in Richtung Schmelz, Gablenzgasse. Voraussichtliche Dauer: 11:45 Uhr. Grund: Falschparker im Bereich Obere Amtshausgasse.",
-    "descriptionHTML": "<p>Linie 12A:<br>Fahrtbehinderung in Richtung Schmelz, Gablenzgasse.</p><p>Voraussichtliche Dauer: 11:45 Uhr.</p><p>Grund: Falschparker im Bereich Obere Amtshausgasse.</p>",
+    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 12A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 12A:<br>Fahrtbehinderung in Richtung Schmelz, Gablenzgasse.</p><p>Voraussichtliche Dauer: 11:45 Uhr.</p><p>Grund: Falschparker im Bereich Obere Amtshausgasse.</p>",
-       "descriptionPlain": "Linie 12A: Fahrtbehinderung in Richtung Schmelz, Gablenzgasse. Voraussichtliche Dauer: 11:45 Uhr. Grund: Falschparker im Bereich Obere Amtshausgasse.",
+       "descriptionHtml": "<p>Linie 12A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "12A: Falschparker"
       }
      }
     ],
     "location": "Obere Amtshausgasse",
-    "name": "I20261107-0010",
+    "name": "I20261107-0010-F01",
     "owner": "WL",
     "parentName": "I20261107-0010",
     "priority": "1",
@@ -254,11 +209,547 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-07T11:15:00.000+0100",
-     "lastUpdate": "2026-11-07T11:15:00.000+0100",
+     "created": "2026-11-07T11:31:00.000+0100",
+     "lastUpdate": "2026-11-07T11:31:00.000+0100",
+     "resume": "2026-11-07T11:31:00.000+0100",
      "start": "2026-11-07T11:13:00.000+0100"
     },
     "title": "12A: Falschparker"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "1": "ptTram",
+      "LB": "ptTramWLB"
+     }
+    },
+    "description": "Linie 1: Umleitung in Richtung Reumannplatz U zwischen Oper, Karlsplatz U und Kliebergasse über Schwarzenbergplatz und Hauptbahnhof S U (Strecke der Linien D und 18). Badner Bahn: Betrieb nur zwischen Baden, Josefsplatz und Aßmayergasse. Voraussichtliche Dauer: 12:10 Uhr. Grund: Polizeieinsatz im Bereich Wiedner Hauptstraße 55.",
+    "descriptionHTML": "<p>Linie 1:<br>Umleitung in Richtung Reumannplatz U <br>zwischen Oper, Karlsplatz U und Kliebergasse <br>über Schwarzenbergplatz und Hauptbahnhof S U (Strecke der Linien D und 18).<br>Badner Bahn:<br>Betrieb nur zwischen Baden, Josefsplatz und Aßmayergasse.</p><p>Voraussichtliche Dauer: 12:10 Uhr.</p><p>Grund: Polizeieinsatz im Bereich Wiedner Hauptstraße 55.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 1:<br>Umleitung in Richtung Reumannplatz U <br>zwischen Oper, Karlsplatz U und Kliebergasse <br>über Schwarzenbergplatz und Hauptbahnhof S U (Strecke der Linien D und 18).<br>Badner Bahn:<br>Betrieb nur zwischen Baden, Josefsplatz und Aßmayergasse.</p><p>Voraussichtliche Dauer: 12:10 Uhr.</p><p>Grund: Polizeieinsatz im Bereich Wiedner Hauptstraße 55.</p>",
+       "descriptionPlain": "Linie 1: Umleitung in Richtung Reumannplatz U zwischen Oper, Karlsplatz U und Kliebergasse über Schwarzenbergplatz und Hauptbahnhof S U (Strecke der Linien D und 18). Badner Bahn: Betrieb nur zwischen Baden, Josefsplatz und Aßmayergasse. Voraussichtliche Dauer: 12:10 Uhr. Grund: Polizeieinsatz im Bereich Wiedner Hauptstraße 55.",
+       "title": "1, Badner Bahn: Polizeieinsatz"
+      }
+     }
+    ],
+    "location": "Wiedner Hauptstraße 55",
+    "name": "I20261107-0011",
+    "owner": "WL",
+    "parentName": "I20261107-0011",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1",
+     "LB"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 101,
+      "lineName": "1",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 399,
+      "lineName": "LB",
+      "vehicleType": "ptTramWLB"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-07T11:44:00.000+0100",
+     "lastUpdate": "2026-11-07T11:54:00.000+0100",
+     "start": "2026-11-07T11:42:00.000+0100"
+    },
+    "title": "1, Badner Bahn: Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Knöllgasse",
+    "name": "R1709-101",
+    "owner": "WL",
+    "parentName": "R1709-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1709
+    ],
+    "time": {
+     "end": "2026-11-07T12:52:00.000+0100",
+     "start": "2026-11-07T11:53:53.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Knöllgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Aßmayergasse",
+    "name": "R1709-399",
+    "owner": "WL",
+    "parentName": "R1709-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     1709
+    ],
+    "time": {
+     "end": "2026-11-07T12:54:00.000+0100",
+     "start": "2026-11-07T11:54:23.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Aßmayergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Knöllgasse",
+    "name": "R1711-101",
+    "owner": "WL",
+    "parentName": "R1711-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1711
+    ],
+    "time": {
+     "end": "2026-11-07T12:52:00.000+0100",
+     "start": "2026-11-07T11:53:53.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Knöllgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Aßmayergasse",
+    "name": "R1711-399",
+    "owner": "WL",
+    "parentName": "R1711-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     1711
+    ],
+    "time": {
+     "end": "2026-11-07T12:54:00.000+0100",
+     "start": "2026-11-07T11:54:23.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Aßmayergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Knöllgasse",
+    "name": "R1712-101",
+    "owner": "WL",
+    "parentName": "R1712-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1712
+    ],
+    "time": {
+     "end": "2026-11-07T12:52:00.000+0100",
+     "start": "2026-11-07T11:53:53.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Knöllgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Aßmayergasse",
+    "name": "R1712-399",
+    "owner": "WL",
+    "parentName": "R1712-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     1712
+    ],
+    "time": {
+     "end": "2026-11-07T12:54:00.000+0100",
+     "start": "2026-11-07T11:54:23.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Aßmayergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Knöllgasse",
+    "name": "R1713-101",
+    "owner": "WL",
+    "parentName": "R1713-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1713
+    ],
+    "time": {
+     "end": "2026-11-07T12:52:00.000+0100",
+     "start": "2026-11-07T11:46:22.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Knöllgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Aßmayergasse",
+    "name": "R1713-399",
+    "owner": "WL",
+    "parentName": "R1713-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     1713
+    ],
+    "time": {
+     "end": "2026-11-07T12:54:00.000+0100",
+     "start": "2026-11-07T11:48:52.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Aßmayergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Knöllgasse",
+    "name": "R1714-101",
+    "owner": "WL",
+    "parentName": "R1714-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1714
+    ],
+    "time": {
+     "end": "2026-11-07T12:52:00.000+0100",
+     "start": "2026-11-07T11:46:22.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Knöllgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Aßmayergasse",
+    "name": "R1714-399",
+    "owner": "WL",
+    "parentName": "R1714-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     1714
+    ],
+    "time": {
+     "end": "2026-11-07T12:54:00.000+0100",
+     "start": "2026-11-07T11:48:52.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Aßmayergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Knöllgasse",
+    "name": "R1715-101",
+    "owner": "WL",
+    "parentName": "R1715-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     1715
+    ],
+    "time": {
+     "end": "2026-11-07T12:52:00.000+0100",
+     "start": "2026-11-07T11:46:22.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Knöllgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Aßmayergasse",
+    "name": "R1715-399",
+    "owner": "WL",
+    "parentName": "R1715-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     1715
+    ],
+    "time": {
+     "end": "2026-11-07T12:54:00.000+0100",
+     "start": "2026-11-07T11:48:52.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Aßmayergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Aßmayergasse",
+    "name": "R1717-399",
+    "owner": "WL",
+    "parentName": "R1717-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     1717
+    ],
+    "time": {
+     "end": "2026-11-07T12:54:00.000+0100",
+     "start": "2026-11-07T11:48:52.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Aßmayergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nEinstieg bei Haltestelle Richtung Oper",
+    "name": "R1718-399",
+    "owner": "WL",
+    "parentName": "R1718-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     1718
+    ],
+    "time": {
+     "end": "2026-11-07T12:54:00.000+0100",
+     "start": "2026-11-07T11:48:52.000+0100"
+    },
+    "title": "Rettungseinsatz\nEinstieg bei Haltestelle Richtung Oper"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1748-399",
+    "owner": "WL",
+    "parentName": "R1748-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     1748
+    ],
+    "time": {
+     "end": "2026-11-07T12:53:00.000+0100",
+     "start": "2026-11-07T11:54:23.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1749-399",
+    "owner": "WL",
+    "parentName": "R1749-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     1749
+    ],
+    "time": {
+     "end": "2026-11-07T12:53:00.000+0100",
+     "start": "2026-11-07T11:54:23.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1751-399",
+    "owner": "WL",
+    "parentName": "R1751-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     1751
+    ],
+    "time": {
+     "end": "2026-11-07T12:53:00.000+0100",
+     "start": "2026-11-07T11:54:23.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1752-399",
+    "owner": "WL",
+    "parentName": "R1752-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     1752
+    ],
+    "time": {
+     "end": "2026-11-07T12:53:00.000+0100",
+     "start": "2026-11-07T11:54:23.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1753-399",
+    "owner": "WL",
+    "parentName": "R1753-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     1753
+    ],
+    "time": {
+     "end": "2026-11-07T12:53:00.000+0100",
+     "start": "2026-11-07T11:54:23.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1754-399",
+    "owner": "WL",
+    "parentName": "R1754-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     1754
+    ],
+    "time": {
+     "end": "2026-11-07T12:53:00.000+0100",
+     "start": "2026-11-07T11:54:23.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1756-399",
+    "owner": "WL",
+    "parentName": "R1756-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     1756
+    ],
+    "time": {
+     "end": "2026-11-07T12:53:00.000+0100",
+     "start": "2026-11-07T11:54:23.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -838,6 +1329,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R399-399",
+    "owner": "WL",
+    "parentName": "R399-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     399
+    ],
+    "time": {
+     "end": "2026-11-07T12:53:00.000+0100",
+     "start": "2026-11-07T11:54:22.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R400-399",
+    "owner": "WL",
+    "parentName": "R400-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     400
+    ],
+    "time": {
+     "end": "2026-11-07T12:53:00.000+0100",
+     "start": "2026-11-07T11:54:22.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nUmleitung zum Reumannplatz",
     "name": "R401-101",
     "owner": "WL",
@@ -861,6 +1398,75 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Aßmayergasse",
+    "name": "R427-399",
+    "owner": "WL",
+    "parentName": "R427-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     427
+    ],
+    "time": {
+     "end": "2026-11-07T12:54:00.000+0100",
+     "start": "2026-11-07T11:48:52.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Aßmayergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R477-399",
+    "owner": "WL",
+    "parentName": "R477-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     477
+    ],
+    "time": {
+     "end": "2026-11-07T12:48:00.000+0100",
+     "start": "2026-11-07T11:48:52.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R4843-399",
+    "owner": "WL",
+    "parentName": "R4843-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     4843
+    ],
+    "time": {
+     "end": "2026-11-07T12:53:00.000+0100",
+     "start": "2026-11-07T11:54:22.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -880,6 +1486,52 @@
      "start": "2026-11-07T05:00:12.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nUmleitung über Hauptbahnhof <>",
+    "name": "R51-101",
+    "owner": "WL",
+    "parentName": "R51-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     51
+    ],
+    "time": {
+     "end": "2026-11-07T12:53:00.000+0100",
+     "start": "2026-11-07T11:53:52.000+0100"
+    },
+    "title": "Rettungseinsatz\nUmleitung über Hauptbahnhof <>"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Aßmayergasse",
+    "name": "R5943-399",
+    "owner": "WL",
+    "parentName": "R5943-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     5943
+    ],
+    "time": {
+     "end": "2026-11-07T12:54:00.000+0100",
+     "start": "2026-11-07T11:54:28.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Aßmayergasse"
    },
    {
     "alertCause": "undefined alert cause",
@@ -949,6 +1601,75 @@
      "start": "2026-11-07T11:14:48.000+0100"
     },
     "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R831-399",
+    "owner": "WL",
+    "parentName": "R831-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     831
+    ],
+    "time": {
+     "end": "2026-11-07T12:53:00.000+0100",
+     "start": "2026-11-07T11:54:23.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Knöllgasse",
+    "name": "R851-101",
+    "owner": "WL",
+    "parentName": "R851-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     851
+    ],
+    "time": {
+     "end": "2026-11-07T12:52:00.000+0100",
+     "start": "2026-11-07T11:46:22.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Knöllgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Aßmayergasse",
+    "name": "R851-399",
+    "owner": "WL",
+    "parentName": "R851-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     851
+    ],
+    "time": {
+     "end": "2026-11-07T12:54:00.000+0100",
+     "start": "2026-11-07T11:48:53.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Aßmayergasse"
    },
    {
     "alertCause": "undefined alert cause",
