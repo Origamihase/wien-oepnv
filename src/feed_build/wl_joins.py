@@ -218,6 +218,24 @@ def _with_unowned(entry: FeedItem, members: Sequence[FeedItem]) -> FeedItem:
 # named so far. Where a cause is a sentence (``_MAX_LISTED_WORDS``) the
 # window stays whole: it would take a slot of its own. Operator decision
 # 2026-11-02 ("Titel nennt beide Ursachen").
+#
+# A window with a long message stays whole: the display names the long
+# message's incident in its own word ("Falschparker" beside "Grund: Fremder
+# Verkehrsunfall", 48A on 2026-09-27; "Verkehrsunfall" beside "Grund:
+# Polizeieinsatz", 12 on 2026-11-05; "Betriebsstörung" beside "Grund:
+# Fahrleitungsgebrechen", 2 the same day), and the long message stands for
+# it with what the display adds (``_merged_ticker``). Two things are in the
+# window only where a message of another cause is a long message itself, or
+# where one names a planned measure and the other an incident
+# (``_another_incident``): "1: Rettungseinsatz Betrieb ab Matzleinsdorfer
+# Platz" beside the long message of the works of the 1 (2026-10-20), the
+# works' stop of the N8 beside its "Feuerwehreinsatz" (2026-10-30). Such a
+# window is split like one without a long message, and a ticker without a
+# cause stays with the long message. An incident never joins planned works
+# (operator decision 2026-11-03); until 2026-11-06 the whole window stood
+# under the long message and dropped the other message (WL cache since
+# 2026-10-16: 147 windows with a long message, 17 with another cause, 5 of
+# them with a consequence).
 def _split_by_cause(items: Sequence[FeedItem], groups: Sequence[list[int]]) -> list[list[int]]:
     """*groups* with each window of several causes split into one group per cause (see above)."""
     split: list[list[int]] = []
@@ -226,19 +244,42 @@ def _split_by_cause(items: Sequence[FeedItem], groups: Sequence[list[int]]) -> l
         parts = [_ticker_part(member) for member in members]
         keys = {_cause_key(part.cause) for part in parts if part.cause}
         causes = list(dict.fromkeys(_window_cause(part.cause, keys) for part in parts if part.cause))
+        long_message = _telling_long_message(members)
         if (
             len(causes) < 2
-            or _telling_long_message(members) is not None
+            or (long_message is not None and not _another_incident(members, long_message))
             or any(len(cause.split()) > _MAX_LISTED_WORDS for cause in causes)
         ):
             split.append(group)
             continue
-        chosen = _window_cause(_chosen_cause(parts), keys)
+        own = _ticker_part(long_message).cause if long_message is not None else _chosen_cause(parts)
+        chosen = _window_cause(own, keys)
         by_cause: dict[str, list[int]] = {cause: [] for cause in causes}
         for index, part in zip(group, parts, strict=True):
             by_cause[_window_cause(part.cause, keys) if part.cause else chosen].append(index)
         split.extend(by_cause.values())
     return split
+
+
+def _another_incident(members: Sequence[FeedItem], long_message: FeedItem) -> bool:
+    """Whether a message of another cause than *long_message*'s stands for an incident of its own (see above).
+
+    A long message of another cause does; so does a ticker that announces
+    more than a bare "Fahrtbehinderung" where one of the two names a planned
+    measure (``names_planned_measure``) and the other does not.
+    """
+    own = _ticker_part(long_message)
+    key, planned = _cause_key(own.cause), names_planned_measure(own.cause)
+    for member in members:
+        part = _ticker_part(member)
+        if member is long_message or not part.cause or _cause_key(part.cause) == key:
+            continue
+        if _telling_long_message([member]) is not None:
+            return True
+        consequence = part.consequence.strip()
+        if consequence and consequence.casefold() != _HINDRANCE.casefold() and names_planned_measure(part.cause) != planned:
+            return True
+    return False
 
 
 def _window_cause(cause: str, keys: set[str]) -> str:

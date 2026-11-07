@@ -1,10 +1,18 @@
 {
-  "Meidling|S1|2026-11-06T23:17:00+01:00": {
+  "Meidling|S3|2026-11-07T01:13:00+01:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-11-06T23:01:03.033324+01:00",
+    "last_seen_at": "2026-11-07T01:00:41.818739+01:00",
     "latest_delay_minutes": 0.0,
-    "name": "S1",
-    "scheduled": "2026-11-06T23:17:00+01:00"
+    "name": "S3",
+    "scheduled": "2026-11-07T01:13:00+01:00"
+  },
+  "Meidling|S3|2026-11-07T01:42:00+01:00": {
+    "cancelled": false,
+    "direction": "Meidling",
+    "last_seen_at": "2026-11-07T01:00:41.818739+01:00",
+    "latest_delay_minutes": 0.0,
+    "name": "S3",
+    "scheduled": "2026-11-07T01:42:00+01:00"
   }
 }

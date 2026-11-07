@@ -18,7 +18,7 @@ import pytest
 
 from src import build_feed
 from src.feed_types import FeedItem
-from src.providers.wl_plausibility import end_unknown, plausible_end
+from src.providers.wl_plausibility import end_unknown, placeholder_end, plausible_end
 from src.providers.wl_text import extract_duration_from_description
 
 pytestmark = pytest.mark.usefixtures("time_line_today")  # 2026-10-02 12:00 Vienna
@@ -155,3 +155,74 @@ def test_a_year_shortens_the_expiry_date() -> None:
     # 19.01.2027 plus half a year of buffer
     assert end == datetime(2027, 7, 20, 23, 59, tzinfo=VIENNA)
     assert end_unknown(desc, end) is False
+
+
+# --- an end at 23:59 a year after the publication (operator decision 2026-11-06) ---
+#
+# "5B: Bauarbeiten", published 06.11.2026 14:11: "Ab Montag, den 9. November
+# 2026, etwa 07:00 Uhr für ca. drei Wochen." with ``time.end`` 06.11.2027
+# 23:59. The feed read "[Ab Mo 09.11. bis 06.11.2027]" for three weeks of
+# works; the date was set by hand like the 11:11 one.
+
+_WORKS_5B = (
+    "<h2>Bauarbeiten</h2><p>Wegen Straßenbauarbeiten in der Wexstraße werden die Busse umgeleitet.</p>"
+    "<p><strong><u>Zeitraum:</u></strong><br>Ab Montag, den 9. November 2026, etwa 07:00 Uhr für ca. drei Wochen.</p>"
+    "<p><strong><u>Maßnahmen:</u></strong><br>Linie 5B<br>Umleitung ab Klosterneuburger Straße # Wexstraße über "
+    "Klosterneuburger Straße, Pappenheimgasse zur Jägerstraße.</p>"
+)
+PUBLISHED_5B = datetime(2026, 11, 6, 14, 11, tzinfo=VIENNA)
+YEAR_END_5B = datetime(2027, 11, 6, 23, 59, tzinfo=VIENNA)
+
+
+def test_a_day_end_a_year_after_the_publication_is_an_expiry_date() -> None:
+    assert placeholder_end(YEAR_END_5B, PUBLISHED_5B) is True
+    assert end_unknown(_stop("Ab 08. Oktober 2026, etwa 16:00 Uhr"), YEAR_END_5B, PUBLISHED_5B) is True
+    # the duration in the text keeps an end: 09.11. + 3 weeks + 10.5 days
+    assert end_unknown(_WORKS_5B, YEAR_END_5B, PUBLISHED_5B) is False
+    assert plausible_end(_WORKS_5B, YEAR_END_5B, PUBLISHED_5B) == datetime(2026, 12, 10, 23, 59, tzinfo=VIENNA)
+
+
+@pytest.mark.parametrize(
+    ("end", "published"),
+    [
+        (YEAR_END_5B, None),  # without a publication a 23:59 end is an end
+        (datetime(2027, 11, 5, 23, 59, tzinfo=VIENNA), PUBLISHED_5B),  # a day short of the year
+        (datetime(2027, 11, 7, 23, 59, tzinfo=VIENNA), PUBLISHED_5B),  # a day over
+        (datetime(2027, 11, 6, 23, 58, tzinfo=VIENNA), PUBLISHED_5B),  # not the day's end
+        (datetime(2026, 11, 8, 23, 59, tzinfo=VIENNA), PUBLISHED_5B),  # a real end within days
+    ],
+)
+def test_every_other_day_end_stays(end: datetime, published: datetime | None) -> None:
+    assert placeholder_end(end, published) is False
+    assert end_unknown(_stop("Ab 08. Oktober 2026, etwa 16:00 Uhr"), end, published) is False
+    assert plausible_end(_WORKS_5B, end, published) == end
+
+
+def test_the_anniversary_is_a_vienna_day() -> None:
+    # 06.11.2027 23:59 Vienna is 22:59 UTC, still the day a year after 06.11.2026
+    assert placeholder_end(datetime(2027, 11, 6, 22, 59, tzinfo=ZoneInfo("UTC")), PUBLISHED_5B) is True
+    # a publication on the 29.02. ends on the 28.02. a year on
+    assert placeholder_end(datetime(2029, 2, 28, 23, 59, tzinfo=VIENNA), datetime(2028, 2, 29, 10, 0, tzinfo=VIENNA)) is True
+
+
+def test_the_time_line_leaves_the_year_end_out() -> None:
+    item = cast(
+        FeedItem,
+        {
+            "title": "5B: Bauarbeiten",
+            "description": _stop("Ab 09. November 2026, etwa 07:00 Uhr"),
+            "source": "Wiener Linien",
+            "category": "Hinweis",
+            "guid": "5b",
+            "link": "",
+            "pubDate": PUBLISHED_5B,
+        },
+    )
+    begin = datetime(2026, 11, 9, tzinfo=VIENNA)
+    shown = build_feed._format_item_content(item, ident="5b", starts_at=begin, ends_at=YEAR_END_5B)
+    assert shown.desc_text_truncated.replace("\xa0", " ").endswith("[Ab 09.11.]")
+    # once the cache carries the end the duration gives, the time line names it
+    item["description"] = _WORKS_5B
+    shortened = datetime(2026, 12, 10, 23, 59, tzinfo=VIENNA)
+    shown = build_feed._format_item_content(item, ident="5b", starts_at=begin, ends_at=shortened)
+    assert shown.desc_text_truncated.replace("\xa0", " ").endswith("[Ab 09.11. bis 10.12.]")
