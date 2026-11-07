@@ -1,5 +1,62 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R1214-138|2026-11-07T15:41:15.000+0100|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1214-138",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-11-07T16:40:00.000+0100",
+   "incident": "I20261107-0021-F02"
+  },
+  {
+   "key": "R1215-138|2026-11-07T15:41:15.000+0100|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1215-138",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-11-07T16:40:00.000+0100",
+   "incident": "I20261107-0021-F02"
+  },
+  {
+   "key": "R1216-138|2026-11-07T15:41:15.000+0100|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1216-138",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-11-07T16:40:00.000+0100",
+   "incident": "I20261107-0021-F02"
+  },
+  {
+   "key": "R1217-138|2026-11-07T15:41:15.000+0100|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R1217-138",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-11-07T16:40:00.000+0100",
+   "incident": "I20261107-0021-F02"
+  },
+  {
+   "key": "R214-138|2026-11-07T15:41:14.000+0100|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R214-138",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-11-07T16:40:00.000+0100",
+   "incident": "I20261107-0021-F02"
+  },
+  {
+   "key": "R215-138|2026-11-07T15:41:14.000+0100|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R215-138",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-11-07T16:40:00.000+0100",
+   "incident": "I20261107-0021-F02"
+  },
+  {
+   "key": "R216-138|2026-11-07T15:41:14.000+0100|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R216-138",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-11-07T16:40:00.000+0100",
+   "incident": "I20261107-0021-F02"
+  },
+  {
+   "key": "R2964-138|2026-11-07T15:41:18.000+0100|Fahrtbehinderung\nVerkehrsunfall",
+   "name": "R2964-138",
+   "title": "Fahrtbehinderung\nVerkehrsunfall",
+   "end": "2026-11-07T16:40:00.000+0100",
+   "incident": "I20261107-0021-F02"
+  }
+ ]
 }
