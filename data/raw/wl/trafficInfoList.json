@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261107-0026-F01, I20261107-0032"
+    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261107-0032, I20261107-0033, I20261107-0034"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1882-101, R1875-101, R1880-101, R1876-101, R1881-101, R1883-101, R1884-101, R293-474, R401-101, R318-437, R2379-627, R2380-627, R2345-127, R2373-126, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R3886-480, R2558-125, R1974-466, R500-101, R1764-410, R1608-463, R1685-463, R1766-463, R1762-463, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1880-101, R1884-101, R1883-101, R1881-101, R1876-101, R1882-101, R1875-101, R318-437, R401-101, R293-474, R2373-126, R2379-627, R2345-127, R3886-480, R2380-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2558-125, R1974-466, R500-101, R1764-410, R1608-463, R1685-463, R1766-463, R1762-463, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,55 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "48A": "ptBusCity"
-     }
-    },
-    "description": "Linie 48A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 48A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 48A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 48A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "48A: Fremder Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261107-0026-F01",
-    "owner": "WL",
-    "parentName": "I20261107-0026",
-    "priority": "1",
-    "reasonId": 13,
-    "reasonName": "Fremder Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 448,
-      "lineName": "48A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "relatedStops": [
-     1408
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-07T19:14:00.000+0100",
-     "end": "2026-11-07T21:30:00.000+0100",
-     "lastUpdate": "2026-11-07T21:30:00.000+0100",
-     "resume": "2026-11-07T21:30:00.000+0100",
-     "start": "2026-11-07T18:48:00.000+0100"
-    },
-    "title": "48A: Fremder Verkehrsunfall"
-   },
-   {
     "alertCause": "miscellaneous",
     "alertCauseId": 137,
     "attributes": {
@@ -263,6 +214,96 @@
      "start": "2026-11-07T21:27:00.000+0100"
     },
     "title": "95A: Betriebsstörung"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "10A": "ptBusCity"
+     }
+    },
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "10A: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261107-0033",
+    "owner": "WL",
+    "parentName": "I20261107-0033",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 410,
+      "lineName": "10A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-07T21:47:00.000+0100",
+     "lastUpdate": "2026-11-07T21:47:00.000+0100",
+     "resume": "2026-11-07T21:47:00.000+0100",
+     "start": "2026-11-07T21:47:00.000+0100"
+    },
+    "title": "10A: Rettungseinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "7A": "ptBusCity"
+     }
+    },
+    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "7A: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261107-0034",
+    "owner": "WL",
+    "parentName": "I20261107-0034",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 407,
+      "lineName": "7A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-07T21:49:00.000+0100",
+     "lastUpdate": "2026-11-07T21:49:00.000+0100",
+     "resume": "2026-11-07T21:49:00.000+0100",
+     "start": "2026-11-07T21:49:00.000+0100"
+    },
+    "title": "7A: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
