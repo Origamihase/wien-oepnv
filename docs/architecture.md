@@ -326,21 +326,22 @@ verdrängt eine andere Störung.
   - Ausführliche Meldung (seit 2026-09-27): Sagt eine ausführliche
     WL-Meldung der Gruppe mehr als den Standardsatz, steht sie mit Titel
     und Text für die Gruppe; die Kurzmeldungen belegen keinen eigenen
-    Platz. Was Kurzmeldungen derselben Ursache (oder ohne Ursache)
-    ankündigen und ihr Text nicht nennt, bleibt (`_with_consequences`, seit
-    2026-10-01, Regeln unten bei „Eine Linie, ein Platz“). „Betrieb ab
-    Mühlbreiten“ der 64A vom 01.10. stand sonst nirgends: „64A:
-    Verkehrsunfall“ über „Betrieb ab Mühlbreiten. Unregelmäßige Intervalle
-    in beiden Richtungen. Grund: Verkehrsunfall.“ Eine Kurzmeldung anderer
-    Ursache bleibt draußen. Erkannt wird sie an ihren Sätzen
-    (`_is_long_message`: Der Text endet mit einem Punkt; im WL-Cache vom
-    September gilt das für alle 504 Texte in Sätzen und für keine der 247
-    Kurzmeldungen). Das Präfix „Linie 48A:“ taugt dafür nicht, weil
-    `_post_filter_wl` es beim Lesen des Caches entfernt und manche
-    Meldungen es nie hatten. Anlass: Am 27.09. stand „48A: Falschparker“
-    über „Grund: Fremder Verkehrsunfall“, und angehängte Kurzmeldungen
-    schoben den zweiten Satz einer ausführlichen Meldung über die
-    180 Zeichen.
+    Platz. Was Kurzmeldungen ankündigen und ihr Text nicht nennt, bleibt
+    (`_with_consequences`, seit 2026-10-01, Regeln unten bei „Eine Linie,
+    ein Platz“): „Betrieb ab Mühlbreiten“ der 64A vom 01.10. stand sonst
+    nirgends. Eine Tafel-Meldung anderer Ursache gibt nur ihre Maßnahme
+    dazu, ihr Ursachenwort bleibt draußen (`_announced`, seit 2026-11-06;
+    vorher fiel sie ganz weg: „12: Polizeieinsatz“ verlor am 05.11. „Betrieb
+    ab Spitalgasse“ der Tafel „Verkehrsunfall“). Erkannt wird die
+    ausführliche Meldung an ihren Sätzen (`_is_long_message`: Der Text endet
+    mit einem Punkt; im WL-Cache vom September gilt das für alle 504 Texte in
+    Sätzen und für keine der 247 Kurzmeldungen). Das Präfix „Linie 48A:“
+    taugt dafür nicht, weil `_post_filter_wl` es beim Lesen des Caches
+    entfernt (seit 2026-11-06 auch „Linie Badner Bahn:“, WLs Name der Linie
+    LB, mit dem der Satz am 05.11. seine englische Vorlage verfehlte;
+    `tests/test_wl_badner_bahn_prefix.py`) und manche Meldungen es nie hatten.
+    Anlass: Am 27.09. stand „48A: Falschparker“ über „Grund: Fremder
+    Verkehrsunfall“, und Kurzmeldungen schoben den zweiten Satz über 180 Zeichen.
   - Kurzmeldungen außerhalb des Fensters (seit 2026-10-01): Sie kommen
     über „Eine Linie, ein Platz“ (unten) zu ihrer ausführlichen Meldung
     und behalten, was sie zusätzlich sagen. Anlass: Am 30.09. kamen die
@@ -405,10 +406,9 @@ verdrängt eine andere Störung.
     neun Minuten auseinander (I20261029-0032 Rettungseinsatz, -0034
     Polizeieinsatz), und der Feed las von 18:31 bis 18:59 Uhr „71:
     Rettungseinsatz“ über „Fahrtbehinderung wegen Polizeieinsatz.“, als wäre
-    der Polizeieinsatz eine Folge; am selben Abend „42: Falschparker“ über
-    „Fahrtbehinderung wegen Rettungseinsatz.“. Jetzt: „71: Polizeieinsatz,
-    Rettungseinsatz“ über „Fahrtbehinderung.“ Sagen alle Vorfälle dieselbe
-    Folge, steht sie einmal und ohne Ursache davor (`_incident_sentences`).
+    der Polizeieinsatz eine Folge. Jetzt: „71: Polizeieinsatz, Rettungseinsatz“
+    über „Fahrtbehinderung.“ Sagen alle Vorfälle dieselbe Folge, steht sie
+    einmal und ohne Ursache davor (`_incident_sentences`).
     Wer eine Ursache verursacht hat („durch einen LKW“), steht im Text, nicht
     im Titel (`_title_cause`, Betreiberentscheidung 2026-11-02): „27:
     Stromstörung, Signalstörung, Beschädigte Oberleitung“ über „Beschädigte
@@ -416,8 +416,10 @@ verdrängt eine andere Störung.
     zur Ursache und bleibt („PKW im Gleis“, „Störung an einem
     Bahnübergang“). Ein solcher Titel darf länger als 50 Zeichen sein: Jede
     Ursache bleibt im Titel.
-    Ein Zeitfenster mit eigener ausführlicher Meldung bleibt wie bisher:
-    WLs Text steht, eine Tafel-Meldung anderer Ursache bleibt draußen.
+    Ein Zeitfenster mit eigener ausführlicher Meldung bleibt ganz: WLs Text
+    steht, die Tafel gibt ihre Maßnahme dazu (oben). Nur eine zweite ausführliche
+    Meldung oder eine geplante Maßnahme neben einer Störung teilt es (`_another_incident`,
+    seit 2026-11-06; am 30.10. fiel so die Baustellen-Haltestelle der N8 neben „N8: Feuerwehreinsatz“ weg).
   - Beschreibung: alle Folgen in der Reihenfolge, in der WL sie
     veröffentlicht hat, mit „;“ zu einem Satz verbunden, weil die
     Beschreibung höchstens zwei Sätze übernimmt. Was der Titel
@@ -533,10 +535,12 @@ verdrängt eine andere Störung.
     - Ein bloßes „Fahrtbehinderung“ hängt nie an. Als gesagt gilt eine
       Folge, deren Wörter ab vier Buchstaben der Text schon hat („Betrieb
       ab Hofwiesengasse“ neben „Betrieb nur zwischen Westbahnhof S U und
-      Hofwiesengasse“). Eine längere oder kürzere Form zählt ab fünf
-      Buchstaben mit („Verspätung“ in „Verspätungen“). Verneinungen zählen
-      nicht als Wort: „Kein Betrieb“ ist neben „Derzeit ist ein Betrieb
-      nicht möglich“ gesagt (1A am 22.09.).
+      Hofwiesengasse“). Eine Beugung zählt ab fünf Buchstaben und bis drei
+      Buchstaben länger mit („Verspätung“ in „Verspätungen“, „Betriebsschluss“
+      nicht für „Betrieb“); Nomen auf -ung und Partizip eines Verbs sind ein
+      Wort (`_word_stem`, seit 2026-11-06: 66A las „… umgeleitet; Umleitung
+      über Inzersdorfer Straße“). Verneinungen zählen nicht als Wort: „Kein
+      Betrieb“ ist neben „Derzeit ist ein Betrieb nicht möglich“ gesagt (1A am 22.09.).
     - Eine vorangestellte Ursache („Gasrohrgebrechen Shuttlebus …“) und
       WLs Tafel-Auszeichnung („\*\*Umleitung\*\*“) fallen weg.
   - Gleiche Ursache heißt auch WLs Synonym (`_CAUSE_SYNONYMS`): Im selben
@@ -547,7 +551,11 @@ verdrängt eine andere Störung.
     „Bauarbeiten“ und „Gleisbauarbeiten“ können zwei Baustellen sein
     („12A: Bauarbeiten, Gleisbauarbeiten“ über „Bauarbeiten: Busse halten
     Linke Wienzeile 110. Gleisbauarbeiten: Betrieb ab Johnstraße U,
-    Schweglerstraße 19-21.“).
+    Schweglerstraße 19-21.“). Seit 2026-11-06 ist auch jedes Paar eine
+    Ursache, das das Glossar gleich übersetzt (`_same_translation` in
+    `_cause_key`): „13A: Wasserrohrbruch, Wasserrohrgebrechen“ (05.11.) las
+    englisch „Burst water pipe, burst water pipe“, jetzt „13A:
+    Wasserrohrgebrechen“ (`tests/test_wl_cause_same_translation.py`).
   - Mehrere Ursachen: ein Eintrag, der jede nennt, der neueste Vorfall
     zuerst und mit dessen GUID, damit ein neuer Vorfall den Feed weiter
     anführt (`_combined_incidents`). Je Vorfall ein Satz „Ursache: Folge.“

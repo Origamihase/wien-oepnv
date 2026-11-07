@@ -131,6 +131,21 @@ Dauerangaben waren einfache Zahlen. Das 11:11-Datum bleibt das Ablaufdatum der M
 (`ends_at`, Altersfilter); geändert ist nur die Zeitzeile, im englischen
 Feed ebenso.
 
+**Ein Ende um 23:59 genau ein Jahr nach der Veröffentlichung zählt wie das
+11:11-Ende** (seit 2026-11-06, Betreiberentscheidung „Ja, bitte“,
+`wl_plausibility.placeholder_end`). Anlass: „5B: Bauarbeiten“, am 06.11.2026
+um 14:11 veröffentlicht mit „Ab Montag, den 9. November 2026, etwa 07:00 Uhr
+für ca. drei Wochen“, hatte `time.end` 06.11.2027 23:59 und stand ab 14:31
+mit „[Ab Mo 09.11. bis 06.11.2027]“ im Feed; von den elf WL-Hinweisen mit
+einem 23:59-Ende im Cache dieses Tages war es der einzige mit dem Jahrestag
+der Veröffentlichung, die anderen endeten binnen Tagen. Für so ein Ende
+gelten dieselben Regeln wie für 11:11: das Ende aus dem Text, sonst Start
+plus Dauer plus Puffer (5B: 09.11. + 21 Tage + 10,5 Tage, „bis 10.12.“),
+sonst kein Ende in der Zeitzeile. Die Zeitzeile braucht dazu die
+Veröffentlichung der Meldung (`pubDate`, `_shown_end` in
+`src/feed_build/item_meta.py`); ein 23:59-Ende an jedem anderen Tag ist
+ein Ende („bis 08.11.“). Der 29.02. hat seinen Jahrestag am 28.02.
+
 **Ein Text-Ende beendet die Meldung, auch wenn WL sie noch ausliefert**
 (Betreiberentscheidung 2026-10-09, „Text-Ende beendet“). Ist das Ende aus
 dem Text oder aus Start plus Dauer vorbei, verwirft der Abruf die Meldung
