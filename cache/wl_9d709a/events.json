@@ -882,38 +882,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "48A: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "title": "52/60: Rettungseinsatz",
+    "description": "Linie 52: Fahrtbehinderung in beiden Richtungen. Linie 60: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 20:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Rudolfsheim, Anschützgasse.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "3a290c8967b717bf066ab8b81381927897476efbd1370ad7d9f3c4d7bf64cb22",
-    "pubDate": "2026-11-07T18:50:32+01:00",
-    "starts_at": "2026-11-07T18:50:36+01:00",
-    "ends_at": "2026-11-07T19:49:00+01:00",
-    "_identity": "wl|störung|L=48A|D=2026-11-07|TK=fahrtbehinderung fremder verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "48A: Fremdunfall Betrieb ab Burggasse/Stadthalle U",
-    "description": "Fremdunfall\nBetrieb ab Burggasse/Stadthalle U",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "58f9b0cf86d14e2f2414d1c9bb827ebc45ef79d97f8aa47c2169199a05fe6412",
-    "pubDate": "2026-11-07T18:59:33+01:00",
-    "starts_at": "2026-11-07T18:59:33+01:00",
-    "ends_at": "2026-11-07T19:58:00+01:00",
-    "_identity": "wl|störung|L=48A|D=2026-11-07|TK=fremdunfall betrieb ab burggasse stadthalle u"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "48A: Fremdunfall Betrieb ab Panikengasse",
-    "description": "Fremdunfall\nBetrieb ab Panikengasse",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "70dddebe7617dcac5552aca198e9a625ef41c621959b0c7331921a83a0eb5808",
-    "pubDate": "2026-11-07T18:58:03+01:00",
-    "starts_at": "2026-11-07T18:58:03+01:00",
-    "ends_at": "2026-11-07T19:57:00+01:00",
-    "_identity": "wl|störung|L=48A|D=2026-11-07|TK=fremdunfall betrieb ab panikengasse"
+    "guid": "b46fa2ed8c1819180c24396c158d17a86d5c9cc72cc757721ae9bc91af616e9d",
+    "pubDate": "2026-11-07T19:58:00+01:00",
+    "starts_at": "2026-11-07T19:58:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=52,60|D=2026-11-07|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261107-0027"
+    ],
+    "_incident_start": "2026-11-07T19:58:00+01:00"
   },
   {
     "source": "Wiener Linien",
