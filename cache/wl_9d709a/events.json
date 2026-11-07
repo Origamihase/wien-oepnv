@@ -754,6 +754,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "26A: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 26A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "0245b6164e8aeaf5bf219cd1cff1358fe2406e2c522e5ac88f5e5fc5c5e87abe",
+    "pubDate": "2026-11-07T06:29:00+01:00",
+    "starts_at": "2026-11-07T06:31:21+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=26A|D=2026-11-07|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261107-0003"
+    ],
+    "_incident_start": "2026-11-07T06:29:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26E: Gleisbauarbeiten",
     "description": "Die Kapazitäten der Ersatzlinie 26E sind nicht mit denen einer Straßenbahn vergleichbar. Weichen Sie daher nach Möglichkeit auf die U1 und die S-Bahn über Leopoldau S U oder Praterstern S U aus. Ab Kagraner Platz U können Sie auf die Linie 31A und ab Leopoldauer Straße auf die Linie 29A umsteigen. Alternativ können Sie auch mit der Linie 31A bis Siemensstraße S fahren und dort in die S-Bahn umsteigen. Außerdem können Sie ab Kagran U auf die Linie 27A und ab Leopoldauer Straße auf die Linie 29A umsteigen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
