@@ -17,10 +17,21 @@ from ..utils.text import DROP_ACCESS, DROP_LIFT, facility_drop_label, is_station
 from .wl_lines import LINE_CODE_RE
 from .wl_text import (
     FACILITY_ONLY,
-    INCOMPLETE_TITLE_TAIL_RE,
     _is_facility_only,
     _tidy_title_wl,
     is_stop_notice,
+)
+
+# WL's display boards cut a ticker where its text runs out: "Ersatzbus 41E
+# hält gegenüber" (no place), "Demonstration Züge halten gegenüber"
+# (R45-101, 24.10.2026 18:31). A title that ends in a preposition still
+# waiting for its object says nothing the reader can use. Such a title never
+# names a bucket while a complete one is there (``_title_quality_key``), and
+# an item that has nothing else is dropped (``_post_filter_wl`` in
+# ``src/feed_build/cache_filters.py``, which reads the pattern from here).
+INCOMPLETE_TITLE_TAIL_RE = re.compile(
+    r"\b(?:bei|gegen[üu]ber|an|in|vor|nach|zu|über|ueber|am|im|zur|zum)\s*$",
+    re.IGNORECASE,
 )
 
 

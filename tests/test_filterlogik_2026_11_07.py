@@ -10,8 +10,10 @@ fetch states) and over 1 818 feed builds found four classes:
   carried no restriction word;
 * the fuzzy merge joined a live disruption with an announcement of the same
   line ("7A: Bauarbeiten" 09.10., "18: Veranstaltung am 08.11.26" 26.10.) and
-  a disruption with a stop relocation naming the same stop ("12:
-  Feuerwehreinsatz Betrieb ab Albertgasse" into "5/12: Albertgasse", 30.10.);
+  a running incident with a stop relocation naming the same stop ("12:
+  Feuerwehreinsatz Betrieb ab Albertgasse" into "5/12: Albertgasse", 30.10.;
+  the notice always survives such a merge, so a running incident never
+  merges with a notice, a stop notice with no disruption at all);
 * a ticker cut by the display board named the bucket of a complete long
   message, and the cut title took the whole incident out of the feed ("1:
   Demonstration Züge halten gegenüber", 24.10. 18:31).
@@ -19,14 +21,17 @@ fetch states) and over 1 818 feed builds found four classes:
 
 from __future__ import annotations
 
+from collections.abc import Callable, Mapping
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 import pytest
 
 from src.build_feed import _assemble_feed_items, _post_filter_wl
 from src.feed.merge import deduplicate_fuzzy
+from src.feed.merge_items import _may_merge
+from src.feed_types import FeedItem
 from src.providers import wl_fetch
 from src.providers.wl_text import is_stop_notice
 from src.providers.wl_title_context import _facility_drop_reason, _title_quality_key
@@ -90,7 +95,9 @@ def _traffic_info(name: str, title: str, description: str, now: datetime, lines:
     }
 
 
-def _fetch(monkeypatch: pytest.MonkeyPatch, tmp_path: Path, infos: list[dict[str, Any]], pois: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def _fetch(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path, infos: list[dict[str, Any]], pois: list[dict[str, Any]]
+) -> list[dict[str, Any]]:
     monkeypatch.setattr(raw_capture, "RAW_ROOT", tmp_path / "raw")
     monkeypatch.setenv(raw_capture.RAW_CAPTURE_ENV, "1")
     responses = {
@@ -218,9 +225,9 @@ def _wl(category: str, title: str, description: str, start: str, end: str | None
     }
 
 
-def _announced_after(day: str):  # noqa: ANN202 - a predicate for ``deduplicate_fuzzy``
+def _announced_after(day: str) -> Callable[[Mapping[str, Any]], bool]:
     cutoff = datetime.fromisoformat(day)
-    return lambda it: it["starts_at"] > cutoff
+    return lambda it: bool(it["starts_at"] > cutoff)
 
 
 def test_announced_notice_does_not_merge_with_the_live_disruption() -> None:
@@ -240,7 +247,10 @@ def test_announced_notice_does_not_merge_with_the_live_disruption() -> None:
     # Without the predicate (the tests of the merge itself) the old behaviour stands.
     assert len(deduplicate_fuzzy([live, planned])) == 1
     # Two announcements of the same works still merge.
-    second = dict(planned, title="7A/N62: Bauarbeiten", guid="x", _identity="x", starts_at=datetime.fromisoformat("2026-10-15T00:00:00+02:00"))
+    second = dict(
+        planned, title="7A/N62: Bauarbeiten", guid="x", _identity="x",
+        starts_at=datetime.fromisoformat("2026-10-15T00:00:00+02:00"),
+    )
     assert len(deduplicate_fuzzy([planned, second], announced=_announced_after("2026-10-12T23:59:59+02:00"))) == 1
 
 
@@ -273,15 +283,44 @@ def test_stop_relocation_never_merges_with_a_disruption() -> None:
     assert sorted(it["title"] for it in merged) == ["12: Feuerwehreinsatz Betrieb ab Albertgasse", "5/12: Albertgasse"]
 
 
+def test_running_incident_never_merges_with_a_notice_but_the_works_ticker_does() -> None:
+    works = _wl(
+        "Hinweis", "12: Gleisbauarbeiten Albertgasse",
+        "<h2>Gleisbauarbeiten</h2><p>Wegen Gleisbauarbeiten im Bereich Albertgasse wird die Linie 12 umgeleitet.</p>",
+        "2026-10-13T00:00:00+02:00", "2026-11-03T23:59:00+01:00",
+    )
+    fire = _wl(
+        "Störung", "12: Feuerwehreinsatz Betrieb ab Albertgasse", "Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+        "2026-10-30T10:41:00+01:00", None,
+    )
+    ticker = _wl(
+        "Störung", "12: Gleisbauarbeiten", "Betrieb nur zwischen Albertgasse und Westbahnhof U. Grund: Gleisbauarbeiten.",
+        "2026-10-13T04:30:00+02:00", "2026-11-03T01:00:00+01:00",
+    )
+    # A running incident (no planned measure in title or text) stays apart from the notice, whichever side it is on …
+    assert _may_merge(1.0, works, fire) is False
+    assert _may_merge(1.0, fire, works) is False
+    # … the works' own ticker is a planned measure and still goes up in the works' notice, which survives.
+    assert _may_merge(1.0, works, ticker) is True
+    assert [(it["category"], it["title"]) for it in deduplicate_fuzzy([works, ticker])] == [
+        ("Hinweis", "12: Gleisbauarbeiten Albertgasse")
+    ]
+    # Two notices, or a notice and a disruption of other lines, are not the rule's business.
+    assert _may_merge(1.0, works, dict(works, title="12/N49: Gleisbauarbeiten Albertgasse")) is True
+    assert _may_merge(0.2, works, fire) is False
+
+
 def test_two_relocations_of_one_stop_still_merge() -> None:
     first = _wl(
         "Hinweis", "5A/5B/N31: Obere Augartenstraße",
-        "<p><strong><u>Haltestellenverlegung der Linien 5A in Richtung Griegstraße, 5B in Richtung Heiligenstadt S U</u></strong></p><p>Haltestelle: Obere Augartenstraße</p>",
+        "<p><strong><u>Haltestellenverlegung der Linien 5A in Richtung Griegstraße, 5B in Richtung "
+        "Heiligenstadt S U</u></strong></p><p>Haltestelle: Obere Augartenstraße</p>",
         "2025-09-30T00:00:00+02:00", "2026-11-01T11:11:00+01:00",
     )
     second = _wl(
         "Hinweis", "5A/N31: Obere Augartenstraße",
-        "<p><strong><u>Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße</u></strong></p><p>Haltestelle: Obere Augartenstraße</p>",
+        "<p><strong><u>Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße</u></strong></p>"
+        "<p>Haltestelle: Obere Augartenstraße</p>",
         "2026-11-07T00:00:00+01:00", "2026-11-09T07:00:00+01:00",
     )
     # Both running (or both announced): one item, as before.
@@ -303,9 +342,14 @@ def test_assemble_feed_items_keeps_the_announcement_apart_until_its_preview_day(
     )
     # Friday 09.10. 13:30 Vienna time: the preview reaches Monday 12.10., the notice begins 14.10.
     friday = datetime.fromisoformat("2026-10-09T13:30:00+02:00")
-    items = _assemble_feed_items([dict(live), dict(planned)], {}, friday)
+    items = _assemble_feed_items(cast(list[FeedItem], [dict(live), dict(planned)]), {}, friday)
     assert [(it["category"], it["title"]) for it in items] == [("Störung", "7A: Bauarbeiten"), ("Hinweis", "7A: Bauarbeiten")]
     # Tuesday 13.10. 13:30: the notice is in its preview and the two are one works item again.
     tuesday = datetime.fromisoformat("2026-10-13T13:30:00+02:00")
-    live_tuesday = dict(live, starts_at=datetime.fromisoformat("2026-10-13T13:16:00+02:00"), pubDate=datetime.fromisoformat("2026-10-13T13:16:00+02:00"), ends_at=datetime.fromisoformat("2026-10-13T23:55:00+02:00"))
-    assert len(_assemble_feed_items([live_tuesday, dict(planned)], {}, tuesday)) == 1
+    live_tuesday = dict(
+        live,
+        starts_at=datetime.fromisoformat("2026-10-13T13:16:00+02:00"),
+        pubDate=datetime.fromisoformat("2026-10-13T13:16:00+02:00"),
+        ends_at=datetime.fromisoformat("2026-10-13T23:55:00+02:00"),
+    )
+    assert len(_assemble_feed_items(cast(list[FeedItem], [live_tuesday, dict(planned)]), {}, tuesday)) == 1

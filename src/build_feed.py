@@ -424,7 +424,7 @@ def _assemble_feed_items(
         list[FeedItem],
         deduplicate_fuzzy(
             cast(list[dict[str, Any]], deduped),
-            announced=lambda it: _starts_after(it, preview_last_day),
+            announced=lambda it: _starts_after(cast(FeedItem, it), preview_last_day),
         ),
     )
     fuzzy_duration = perf_counter() - fuzzy_start

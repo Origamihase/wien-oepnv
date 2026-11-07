@@ -8,23 +8,48 @@ from datetime import datetime
 from typing import Any
 
 from ..providers.wl_text import is_stop_notice
+from ..utils.text import html_to_text, names_planned_measure
+
+
+def _is_wl(item: Mapping[str, Any], category: str) -> bool:
+    return (
+        str(item.get("source") or "").strip().casefold() == "wiener linien"
+        and str(item.get("category") or "").strip().casefold() == category
+    )
 
 
 def _is_wl_disruption(item: Mapping[str, Any]) -> bool:
     """A Wiener-Linien disruption (``Störung``), not a notice (``Hinweis``)."""
-    return (
-        str(item.get("source") or "").strip().casefold() == "wiener linien"
-        and str(item.get("category") or "").strip().casefold() == "störung"
-    )
+    return _is_wl(item, "störung")
+
+
+def _is_wl_notice(item: Mapping[str, Any]) -> bool:
+    """A Wiener-Linien notice (``Hinweis``): WL's long message of a planned measure."""
+    return _is_wl(item, "hinweis")
 
 
 def _is_wl_stop_notice(item: Mapping[str, Any]) -> bool:
     """A Wiener-Linien stop relocation or closure ("Haltestellenverlegung …")."""
-    return (
-        str(item.get("source") or "").strip().casefold() == "wiener linien"
-        and str(item.get("category") or "").strip().casefold() == "hinweis"
-        and is_stop_notice(str(item.get("description") or ""))
-    )
+    return _is_wl_notice(item) and is_stop_notice(str(item.get("description") or ""))
+
+
+def _is_running_wl_incident(item: Mapping[str, Any]) -> bool:
+    """A WL disruption whose title and text name no planned measure.
+
+    The test of the time line (``feed_build.time_line._incident_since``):
+    such a disruption reads "[Seit hh:mm]" and stands in the first tier.
+    """
+    if not _is_wl_disruption(item):
+        return False
+    text = f"{item.get('title') or ''} {html_to_text(str(item.get('description') or ''))}"
+    return not names_planned_measure(text)
+
+
+def _keeps_apart(notice: Mapping[str, Any], disruption: Mapping[str, Any]) -> bool:
+    """A WL notice and a WL disruption that never merge (see ``_may_merge``)."""
+    if not (_is_wl_notice(notice) and _is_wl_disruption(disruption)):
+        return False
+    return _is_wl_stop_notice(notice) or _is_running_wl_incident(disruption)
 
 
 def _may_merge(
@@ -61,13 +86,25 @@ def _may_merge(
     when neither applied. The caller without *announced* (the tests) keeps
     the old behaviour.
 
-    A stop relocation or closure never merges with a disruption (2026-11-07).
-    Its title is the stop's name, and a disruption names the same stop as
-    the place of its consequence: "12: Feuerwehreinsatz Betrieb ab
-    Albertgasse" (30.10. 10:41) went up in the relocation "5/12: Albertgasse"
-    (13.10.–03.11.), and the fire brigade operation left the ten places.
-    Two stop notices of one stop still merge, as do a stop notice and a works
-    notice of the same street.
+    A WL notice never takes a running WL incident, and a stop relocation or
+    closure takes no disruption at all (2026-11-07, ``_keeps_apart``). The
+    survivor of a merge is the item whose identity sorts first, and WL's
+    identities begin with the category ("wl|hinweis|…" before
+    "wl|störung|…"), so a notice always survived its disruption: the merged
+    item was a notice with the notice's text in front. For a disruption
+    that is a planned measure itself that is the rule (operator decision
+    2026-11-03: works tickers, demonstrations and events are notices; "1:
+    Gleisbauarbeiten", the works' ticker, goes up in the works' notice "1:
+    Gleisbauarbeiten"). A running incident loses its first tier and its
+    "[Seit hh:mm]" that way: "12: Feuerwehreinsatz Betrieb ab Albertgasse"
+    (30.10. 10:41) went up in the relocation "5/12: Albertgasse"
+    (13.10.–03.11.); the merged notice stood on place 20 with an open end,
+    and place 3 showed the incident's other ticker, "12: Umleitung zum
+    Westbahnhof", without its cause. A stop notice is about a stop,
+    not a cause, so it stays apart from the works' tickers as well. Over the
+    1 818 WL cache states of 04.10.–07.11.2026 this was the only running
+    incident that went up in a notice; two stop notices of one stop still
+    merge, as do a stop notice and a works notice of the same street.
     """
     if line_overlap <= 0.3:
         return False
@@ -75,9 +112,7 @@ def _may_merge(
         return False
     if announced is not None and announced(existing) != announced(item):
         return False
-    if _is_wl_stop_notice(existing) and _is_wl_disruption(item):
-        return False
-    return not (_is_wl_stop_notice(item) and _is_wl_disruption(existing))
+    return not (_keeps_apart(existing, item) or _keeps_apart(item, existing))
 
 
 def _calculate_line_overlap(lines1: set[str], lines2: set[str]) -> float:

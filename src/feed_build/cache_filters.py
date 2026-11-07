@@ -11,7 +11,7 @@ import re
 from typing import Any
 
 from ..providers.wl_lines import line_order_key
-from ..providers.wl_text import INCOMPLETE_TITLE_TAIL_RE
+from ..providers.wl_title_context import INCOMPLETE_TITLE_TAIL_RE
 
 from .display_titles import _repair_baustellen_title
 from .wl_measures import (
@@ -28,9 +28,9 @@ __all__ = [
 # source data was truncated mid-sentence and the meldung is useless.
 # Real cache item ``41E: Ersatzbus 41E hält gegenüber`` is the
 # canonical example — the user reads "stops opposite [nothing]". The
-# pattern lives in ``src/providers/wl_text.py`` since 2026-11-07: the WL
-# fetch uses it too, so that such a title never names a bucket that also
-# holds a complete one (``_title_quality_key``).
+# pattern lives in ``src/providers/wl_title_context.py`` since 2026-11-07:
+# the WL fetch uses it too, so that such a title never names a bucket that
+# also holds a complete one (``_title_quality_key``).
 _INCOMPLETE_TITLE_TAIL_RE = INCOMPLETE_TITLE_TAIL_RE
 
 

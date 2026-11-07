@@ -360,29 +360,16 @@ _STOP_PERIOD_HEADING_RE = re.compile(r"\bDauer\s*:", re.IGNORECASE)
 def is_stop_notice(description: str) -> bool:
     """Whether the WL text *description* is a stop relocation or closure.
 
-    Such a notice leads with "Haltestellenverlegung …" or
-    "Haltestellenauflassung …" (:data:`STOP_NOTICE_LEAD_RE`), and its title
-    names the stop, not a cause or a measure ("68A: Laaer Berg, Kurpark
-    Nordeingang"). The rules that read a title as a subject — the facility
-    drop (``_facility_drop_reason``) and the fuzzy merge with a disruption
-    (``_may_merge``) — must not read a stop name that way.
+    It leads with "Haltestellenverlegung …" or "Haltestellenauflassung …"
+    (:data:`STOP_NOTICE_LEAD_RE`); its title names the stop, not a subject
+    ("68A: Laaer Berg, Kurpark Nordeingang"), so the facility drop
+    (``_facility_drop_reason``) and the fuzzy merge (``_may_merge``) must
+    not read that title as one.
     """
     if not description:
         return False
     text = " ".join(html.unescape(re.sub(r"<[^>]+>", " ", description[:2000])).split())
     return STOP_NOTICE_LEAD_RE.match(text) is not None
-
-
-# WL's display boards cut a ticker where its text runs out: "Ersatzbus 41E
-# hält gegenüber" (no place), "Demonstration Züge halten gegenüber"
-# (R45-101, 24.10.2026 18:31). A title that ends in a preposition still
-# waiting for its object says nothing the reader can use. Such a title never
-# names a bucket while a complete one is there (``_title_quality_key``), and
-# an item that has nothing else is dropped (``_post_filter_wl``).
-INCOMPLETE_TITLE_TAIL_RE = re.compile(
-    r"\b(?:bei|gegen[üu]ber|an|in|vor|nach|zu|über|ueber|am|im|zur|zum)\s*$",
-    re.IGNORECASE,
-)
 _PERIOD_DATE_RE = re.compile(
     r"\b(\d{1,2})\.\s*(?:(\d{1,2})\.(\d{4}|\d{2})?|("
     + "|".join(re.escape(m) for m in _MONTHS_DE)
@@ -700,7 +687,6 @@ def _topic_key_from_title(raw: str) -> str:
 __all__ = [
     "KW_RESTRICTION",
     "KW_EXCLUDE",
-    "INCOMPLETE_TITLE_TAIL_RE",
     "STOP_NOTICE_LEAD_RE",
     "is_stop_notice",
     "_is_facility_only",
