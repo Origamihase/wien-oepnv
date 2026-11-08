@@ -866,22 +866,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Verunreinigung",
-    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "b006aded318189d4a1ad796aeaa86ab95d007972ea3344db4b50a4fe019c54bc",
-    "pubDate": "2026-11-08T09:15:00+01:00",
-    "starts_at": "2026-11-08T09:15:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=2|D=2026-11-08|TK=2 verunreinigung",
-    "_wl_ids": [
-      "I20261108-0007"
-    ],
-    "_incident_start": "2026-11-08T09:15:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -930,22 +914,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Verspätungen",
-    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
-    "pubDate": "2026-11-08T09:52:00+01:00",
-    "starts_at": "2026-11-08T09:52:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U2|D=2026-11-08|TK=u2 verspätungen",
-    "_wl_ids": [
-      "I20261108-0008"
-    ],
-    "_incident_start": "2026-11-08T09:52:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U3: Verspätungen",
     "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -958,22 +926,6 @@
       "I20261108-0009"
     ],
     "_incident_start": "2026-11-08T09:52:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Verspätungen",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
-    "pubDate": "2026-11-08T10:14:00+01:00",
-    "starts_at": "2026-11-08T10:14:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U6|D=2026-11-08|TK=u6 verspätungen",
-    "_wl_ids": [
-      "I20261108-0010"
-    ],
-    "_incident_start": "2026-11-08T10:14:00+01:00"
   },
   {
     "source": "Wiener Linien",
