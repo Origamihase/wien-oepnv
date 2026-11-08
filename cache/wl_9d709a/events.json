@@ -914,6 +914,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U1: Polizeieinsatz",
+    "description": "Die Linie U1 fährt derzeit nicht zwischen Nestroyplatz und Donauinsel. Voraussichtliche Dauer: 06:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Vorgartenstraße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "2fd34130689e264be35e2fe5c2a3b881400e4330803f8a22ce905e991a01ca49",
+    "pubDate": "2026-11-08T05:35:00+01:00",
+    "starts_at": "2026-11-08T05:35:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U1|D=2026-11-08|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261108-0004"
+    ],
+    "_incident_start": "2026-11-08T05:35:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "U6: Schadhaftes Fahrzeug",
     "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/betriebsinfo",

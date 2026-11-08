@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20261108-0003, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20261108-0003, I20260909-0007, I20261108-0004, I20261020-0029"
    },
    {
     "id": 3,
@@ -214,6 +214,53 @@
      "start": "2026-11-08T05:15:00.000+0100"
     },
     "title": "U6: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Die Linie U1 fährt derzeit nicht zwischen Nestroyplatz und Donauinsel. Voraussichtliche Dauer: 06:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Vorgartenstraße.",
+    "descriptionHTML": "<p>Die Linie U1 fährt derzeit nicht zwischen Nestroyplatz und Donauinsel.</p><p>Voraussichtliche Dauer: 06:00 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Vorgartenstraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Die Linie U1 fährt derzeit nicht zwischen Nestroyplatz und Donauinsel.</p><p>Voraussichtliche Dauer: 06:00 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Vorgartenstraße.</p>",
+       "descriptionPlain": "Die Linie U1 fährt derzeit nicht zwischen Nestroyplatz und Donauinsel. Voraussichtliche Dauer: 06:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Vorgartenstraße.",
+       "title": "U1: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261108-0004",
+    "owner": "WL",
+    "parentName": "I20261108-0004",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 301,
+      "lineName": "U1",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4119
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-08T05:38:00.000+0100",
+     "lastUpdate": "2026-11-08T05:38:00.000+0100",
+     "start": "2026-11-08T05:35:00.000+0100"
+    },
+    "title": "U1: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
