@@ -222,7 +222,12 @@ __all__ = [
 #       (``_wl_stop_names``). Cached under 31: "Stop relocation of line 68A
 #       towards Laaer Berg, northeast entrance."; the source digest is
 #       unchanged, so only a bump evicts it.
-_TRANSLATION_CACHE_EPOCH = 32
+#  33 — follow-up check of the KI-Wächter issue 2026-11-08: the entrance in
+#       a relocation's place is English ("vor Nordeingang des Kurparks" →
+#       "before the north entrance of Kurpark", ``_ENTRANCE_OF_RE``). Cached
+#       under 32: "Filmteichstraße before Nordeingang des Kurparks → …"; the
+#       source digest is unchanged, so only a bump evicts it.
+_TRANSLATION_CACHE_EPOCH = 33
 
 
 # Fields whose correct English translation IS the German source, verified by

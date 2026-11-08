@@ -520,6 +520,42 @@ _RECORD_BIS_VORAUSSICHTLICH_RE: re.Pattern[str] = re.compile(
 )
 
 
+# A relocation's place may name the entrance of a park, a cemetery or a
+# building: "Filmteichstraße vor Nordeingang des Kurparks" (68A, 05.11.2026)
+# read "Filmteichstraße before Nordeingang des Kurparks" in English, the only
+# such value among the 247 distinct "Von:"/"Nach:"/"Dauer:" values in WL's
+# cache since February 2026. Bound to the genitive or "zum"/"zur" behind
+# it, so a stop that carries the word ("Kurpark Nordeingang", "Laaer Berg,
+# Nordosteingang") stays its name. The name behind it keeps its German
+# spelling in its base form, as the EN feed writes every name ("closure of
+# Margaretengürtel"): "des Kurparks" → "of Kurpark".
+_ENTRANCE_SIDES_EN: dict[str, str] = {
+    "": "", "Nord": "north ", "Süd": "south ", "Ost": "east ", "West": "west ",
+    "Nordost": "northeast ", "Nordwest": "northwest ", "Südost": "southeast ",
+    "Südwest": "southwest ", "Haupt": "main ", "Seiten": "side ", "Neben": "side ",
+    "Hinter": "rear ",
+}
+_ENTRANCE_OF_RE: re.Pattern[str] = re.compile(
+    r"(?<![\w-])(?P<side>Nordost|Nordwest|Südost|Südwest|Nord|Süd|Ost|West|Haupt|Seiten"
+    r"|Neben|Hinter)?(?(side)eingang|Eingang)"
+    r"\s+(?P<article>des|der|zum|zur)\s+(?P<name>[A-ZÄÖÜ][\wäöüß-]*)"
+)
+
+
+def _entrance_of_en(match: re.Match[str], label_placeholders: frozenset[str]) -> str:
+    """``Nordeingang des Kurparks`` → ``the north entrance of Kurpark``."""
+    name = match["name"]
+    if match["article"] == "des" and len(name) > 4 and name.endswith("s"):
+        stem = name[:-2] if name.endswith("es") and name[-3] not in "aeiouäöüs" else name[:-1]
+        name = stem
+    link = "to" if match["article"] in ("zum", "zur") else "of"
+    english = f"{_ENTRANCE_SIDES_EN[match['side'] or '']}entrance {link} {name}"
+    before = match.string[: match.start()].split()
+    if not before or before[-1] in label_placeholders:
+        return english[0].upper() + english[1:]
+    return f"the {english}"
+
+
 def _gloss_record_values(text: str, label_placeholders: frozenset[str]) -> str:
     """Put the values of a glossed label record into English, without a model.
 
@@ -528,6 +564,7 @@ def _gloss_record_values(text: str, label_placeholders: frozenset[str]) -> str:
     a match knows it stands at the start of a value and takes a capital.
     """
     text = _HOUSE_NUMBER_RANGE_RE.sub(r"\1-\2", text)
+    text = _ENTRANCE_OF_RE.sub(lambda m: _entrance_of_en(m, label_placeholders), text)
 
     def _replace(match: re.Match[str]) -> str:
         _, english, fixed = _RECORD_VALUE_RULES[int(str(match.lastgroup)[1:])]
