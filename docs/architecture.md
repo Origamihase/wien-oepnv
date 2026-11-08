@@ -30,7 +30,7 @@ darunter.
 - [5. Stationsverzeichnis-Anreicherung (GeoNetz → HAFAS)](architecture-teil-4.md#5-stationsverzeichnis-anreicherung-geonetz--hafas)
   - [5a. Wiener-Linien-OGD-Merge (die vierte Quelle)](architecture-teil-4.md#5a-wiener-linien-ogd-merge-die-vierte-quelle)
   - [Anzeige von Hauptbahnhöfen (seit 2026-11-02)](architecture-teil-4.md#anzeige-von-hauptbahnhöfen-seit-2026-11-02)
-  - [Haltestellen ohne „S“ und „U“ (seit 2026-11-04)](architecture-teil-4.md#haltestellen-ohne-s-und-u-seit-2026-11-04)
+  - [Haltestellen ohne „S“ und „U“ (seit 2026-11-04)](architecture-teil-5.md#haltestellen-ohne-s-und-u-seit-2026-11-04)
 - [6. Statistik- und Dashboard-Pipeline](architecture-teil-5.md#6-statistik--und-dashboard-pipeline)
   - [Architektur-Ziele](architecture-teil-5.md#architektur-ziele)
   - [Resilienz-Schichten](architecture-teil-5.md#resilienz-schichten)

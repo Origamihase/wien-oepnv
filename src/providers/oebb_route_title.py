@@ -8,7 +8,13 @@ from __future__ import annotations
 
 import re
 
-from ..utils.stations import StationInfo, display_name, station_info, station_lines
+from ..utils.stations import (
+    StationInfo,
+    display_name,
+    railway_station_of,
+    station_info,
+    station_lines,
+)
 from ..utils.geo import calculate_distance_meters
 from .oebb_title import _LEADING_LINE_PREFIX_RE
 from .oebb_routes import _extract_routes
@@ -247,6 +253,28 @@ def _chain_is_corridor(chain: list[str], infos: dict[str, StationInfo | None]) -
     )
 
 
+def _same_place_names(names: list[str]) -> dict[str, str]:
+    """Map every Wiener Linien stop to the railway station it stands at.
+
+    ÖBB message 877052 (14 May 2026, works between Wien Zentralfriedhof and
+    Wien Kaiserebersdorf) was published as ``Wien Zentralfriedhof ↔ Wien
+    Bhf. Kaiserebersdorf (WL)``, and once the text's ``Kaiserebersdorf
+    (Wien)`` joined the cached title it read ``Wien Zentralfriedhof ↔ Wien
+    Bhf. Kaiserebersdorf (WL) / Wien Kaiserebersdorf``, one place twice. ÖBB
+    reports trains, and the station directory knows which stop stands at
+    which railway station (:func:`railway_station_of`): the title names the
+    railway station. A stretch between a stop and its own station lies
+    inside one place: next to other stretches it is left out, alone the
+    title names the station once (see :func:`_format_route_title`).
+    """
+    chosen: dict[str, str] = {}
+    for name in names:
+        station = railway_station_of(name)
+        if station is not None:
+            chosen[name] = _expand_station_abbreviations(display_name(station))
+    return chosen
+
+
 def _drop_contained_routes(
     pairs: list[tuple[str, str]], infos: dict[str, StationInfo | None]
 ) -> list[tuple[str, str]]:
@@ -305,9 +333,9 @@ def _format_route_title(routes: list[tuple[str, str]], line_prefix: str = "") ->
     if not routes:
         return ""
 
-    # Step 1: canonicalise every endpoint pair and dedup case-insensitively.
-    canonical_pairs: list[tuple[str, str]] = []
-    seen_canon: set[tuple[str, str]] = set()
+    # Step 1: canonicalise every endpoint, then name each place once
+    # (:func:`_same_place_names`) and dedup case-insensitively.
+    named_pairs: list[tuple[str, str, StationInfo | None, StationInfo | None]] = []
     infos: dict[str, StationInfo | None] = {}
     for raw_a, raw_b in routes:
         info_a = station_info(raw_a)
@@ -322,6 +350,24 @@ def _format_route_title(routes: list[tuple[str, str]], line_prefix: str = "") ->
         name_b = _expand_station_abbreviations(name_b)
         infos.setdefault(name_a, info_a)
         infos.setdefault(name_b, info_b)
+        named_pairs.append((name_a, name_b, info_a, info_b))
+
+    one_name = _same_place_names([name for pair in named_pairs for name in pair[:2]])
+    canonical_pairs: list[tuple[str, str]] = []
+    seen_canon: set[tuple[str, str]] = set()
+    # A stretch from a stop to its own station lies inside one place: it is
+    # no route of its own, and alone the title names that place once.
+    within_one_place = ""
+    for name_a, name_b, info_a, info_b in named_pairs:
+        place_a = one_name.get(name_a, name_a)
+        place_b = one_name.get(name_b, name_b)
+        if place_a == place_b and name_a != name_b:
+            within_one_place = within_one_place or place_a
+            continue
+        if (place_a, place_b) != (name_a, name_b):
+            name_a, name_b = place_a, place_b
+            info_a = infos.get(name_a) or station_info(name_a)
+            info_b = infos.get(name_b) or station_info(name_b)
 
         # Vienna endpoint always goes first when only one side is in Vienna.
         a_in_vienna = bool(info_a and info_a.in_vienna)
@@ -337,6 +383,8 @@ def _format_route_title(routes: list[tuple[str, str]], line_prefix: str = "") ->
         seen_canon.add(canon_key)
         canonical_pairs.append((name_a, name_b))
 
+    if not canonical_pairs and within_one_place:
+        return f"{line_prefix}: {within_one_place}" if line_prefix else within_one_place
     if not canonical_pairs:
         return ""
 

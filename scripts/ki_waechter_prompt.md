@@ -101,7 +101,8 @@ Quelltext der Betreiber
 
 Namen von Haltestellen, Bahnhöfen und Linien
 
-- Haltestellen und Bahnhöfe stehen ohne den Umstiegszusatz der Quelle („Rennweg S“ → „Rennweg“, „Wien Hbf (U)“ → „Wien Hbf“); ein Hauptbahnhof heißt „Hauptbahnhof“, wenn der Ort höchstens sieben Zeichen hat („Wien Hauptbahnhof“), sonst „Hbf“ („St. Pölten Hbf“), gleich, wie die Quelle schreibt. Kein F3.
+- Haltestellen und Bahnhöfe stehen ohne den Umstiegszusatz der Quelle („Rennweg S“ → „Rennweg“, „Wien Hbf (U)“ → „Wien Hbf“) und ohne den Zusatz „(WL)“ des Stationsverzeichnisses („Wien Baumgarten (WL)“ → „Wien Baumgarten“); ein Hauptbahnhof heißt „Hauptbahnhof“, wenn der Ort höchstens sieben Zeichen hat („Wien Hauptbahnhof“), sonst „Hbf“ („St. Pölten Hbf“), gleich, wie die Quelle schreibt. Kein F3.
+- Ein ÖBB-Titel nennt statt der Haltestelle der Wiener Linien vor einem Bahnhof („Wien Bhf. Kaiserebersdorf (WL)“) den Bahnhof („Wien Zentralfriedhof ↔ Wien Kaiserebersdorf“), auch wenn die Quelle die Haltestelle schreibt; der Text behält den Wortlaut der Quelle (entschieden 08.11.2026). Kein F3, kein F4.
 - Im EN-Feed stehen ÖBB-Bahnhofsnamen, wie ÖBB sie schreibt; nur ein abschließendes „Bahnhof“ oder „Bahnhst“ heißt „station“ („Mistelbach/Zaya station“, „Deutsch Wagram station“). Kein F6.
 - Ein WL-Haltestellenname, der mit „Bahnhof“ beginnt („Bahnhof Meidling“, „Bahnhof Meidling, Schedifkaplatz“, „Bahnhof Hütteldorf“; WLs Verzeichnis kürzt zu „Bhf.“), steht im englischen Text deutsch, wie jeder Haltestellenname. Kein F6; ein übersetzter Name („Station Meidling“, „Meidling station“) bleibt F6.
 - Der Titel nennt die Badner Bahn mit ihrer Kennung „LB“; in der Kurzform mehrerer Linien steht im Text „Badner Bahn“, wie WL schreibt, deutsch und englisch gleich. Kein F4, kein F6.

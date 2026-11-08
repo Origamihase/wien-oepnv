@@ -12,6 +12,7 @@ import logging
 import re
 from functools import lru_cache
 
+from .geo import calculate_distance_meters
 from .stations_data import (
     MAX_STATION_LINES_FILE_BYTES,
     StationInfo,
@@ -452,6 +453,97 @@ def station_info(name: str) -> StationInfo | None:
             return info
     return None
 
+
+# A Wiener Linien or VOR entry whose name without the provenance marker the
+# directory itself resolves to a railway station names that station's stop
+# (:func:`railway_station_of`).
+_PROVENANCE_SUFFIX_RE = re.compile(r"\s*\((?:WL|VOR)\)\s*$")
+_NON_RAILWAY_SOURCES = frozenset({"wl", "vor"})
+# Two railway stations in Vienna lie at least 500 m apart (Wien Quartier
+# Belvedere and Wien Hauptbahnhof, 526 m; outside Vienna a few entries name
+# one station twice, "Ober Waltersdorf"/"Oberwaltersdorf"); a stop of the
+# station lies at its entrance (Wien Bhf. Kaiserebersdorf (WL) 218 m from Wien
+# Kaiserebersdorf, the farthest). An alias that points farther is no proof.
+_SAME_PLACE_RADIUS_M = 500.0
+
+
+@lru_cache(maxsize=2048)
+def railway_station_of(name: str) -> str | None:
+    """The railway station that the Wiener Linien or VOR stop *name* belongs to.
+
+    The directory keeps a railway station and the Wiener Linien stop in
+    front of it as two entries: "Wien Kaiserebersdorf" (ÖBB) and "Wien Bhf.
+    Kaiserebersdorf (WL)". Its alias table already says they are one place:
+    "Wien Bhf. Kaiserebersdorf", the stop's name without the marker, is an
+    alias of the railway station. That holds for seven stops ("Wien Bhf.
+    Atzgersdorf/Blumental/Hütteldorf/Kaiserebersdorf/Meidling/Süßenbrunn/
+    Zentralfriedhof (WL)"); ``tests/test_oebb_same_place_endpoints.py``
+    checks the list after every directory refresh.
+
+    Returns the railway station's directory name, or ``None`` when *name*
+    is no such stop, the marker-less name resolves to nothing or to another
+    stop, or the two entries lie more than :data:`_SAME_PLACE_RADIUS_M`
+    apart.
+    """
+    stop = station_info(name)
+    if stop is None or not stop.source or not set(stop.source.split(",")) <= _NON_RAILWAY_SOURCES:
+        return None
+    bare = _PROVENANCE_SUFFIX_RE.sub("", stop.name)
+    if bare == stop.name:
+        return None
+    station = station_info(bare)
+    if station is None or station.name == stop.name or not station.source:
+        return None
+    if set(station.source.split(",")) <= _NON_RAILWAY_SOURCES:
+        return None
+    if (
+        stop.latitude is None
+        or stop.longitude is None
+        or station.latitude is None
+        or station.longitude is None
+    ):
+        return None
+    distance = calculate_distance_meters(
+        stop.latitude, stop.longitude, station.latitude, station.longitude
+    )
+    return station.name if distance <= _SAME_PLACE_RADIUS_M else None
+
+
+
+@lru_cache(maxsize=1)
+def _stop_station_pattern() -> tuple[re.Pattern[str] | None, dict[str, str]]:
+    """Every directory stop with a railway station (:func:`railway_station_of`)."""
+    pairs: dict[str, str] = {}
+    for entry in _station_entries():
+        name = entry.get("name")
+        if not isinstance(name, str):
+            continue
+        station = railway_station_of(name)
+        if station is not None:
+            pairs[display_name(name)] = display_name(station)
+    if not pairs:
+        return None, pairs
+    names = sorted(pairs, key=len, reverse=True)
+    pattern = re.compile(
+        r"(?<![\w.])(?:" + "|".join(re.escape(n) for n in names) + r")(?![\w\-])"
+    )
+    return pattern, pairs
+
+
+def railway_station_names(text: str) -> str:
+    """*text* with every Wiener Linien stop that stands at a railway station
+    named as that station: "Wien Bhf. Meidling (WL)" → "Wien Meidling".
+
+    For ÖBB titles: ÖBB reports trains, and a cached title from before
+    2026-11-08 may still name the stop (TRACKINFO 911065, 11.09.2026, a
+    signal box fault at Wien Meidling, stood as "Wien Bhf. Meidling (WL)").
+    """
+    if not text:
+        return text
+    pattern, pairs = _stop_station_pattern()
+    if pattern is None:
+        return text
+    return pattern.sub(lambda m: pairs[m[0]], text)
 
 @lru_cache(maxsize=1)
 def _name_keys() -> frozenset[str]:

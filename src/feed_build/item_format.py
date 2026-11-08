@@ -476,7 +476,8 @@ def _format_item_content(
         title_out, summary, uncut_summary, split=split_reason and _is_wl_ticker(it)
     )
     # A stop shows without WL's S-/U-Bahn marker: "N71: Rennweg S" reads
-    # "N71: Rennweg" (operator decision 2026-11-04, ``without_stop_markers``).
+    # "N71: Rennweg" (operator decision 2026-11-04, ``without_stop_markers``),
+    # and without the directory's "(WL)" (operator decision 2026-11-08).
     # Only here, on what the reader sees: every rule above (sentence split,
     # the 180-character cut, the title comparisons) still reads WL's names,
     # so the marker changes no sentence choice and no cut, only the name.

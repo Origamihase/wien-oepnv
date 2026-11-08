@@ -606,6 +606,32 @@ stehen); sonst steht die Station, an der alle Strecken enden, einmal vorn
 Hauptbahnhof / Wien St. Marx“; Strecken ohne gemeinsame Station stehen einzeln
 mit „ / “. Das Nachspiel steht im Changelog.
 
+**Ein Ort, zwei Namen (seit 2026-11-08).** Das Verzeichnis führt einen
+Bahnhof und die Haltestelle der Wiener Linien davor als zwei Einträge: „Wien
+Kaiserebersdorf“ (ÖBB) und „Wien Bhf. Kaiserebersdorf (WL)“. Die ÖBB-Meldung
+zu Bauarbeiten zwischen Wien Zentralfriedhof und Wien Kaiserebersdorf
+(14.05.2026) stand als „Wien Zentralfriedhof ↔ Wien Bhf. Kaiserebersdorf (WL)“
+im Feed; mit dem Bahnhof aus dem Text las der Titel später „Wien
+Zentralfriedhof ↔ Wien Bhf. Kaiserebersdorf (WL) / Wien Kaiserebersdorf“.
+Dass beide ein Ort sind, steht schon in der Alias-Tabelle des Verzeichnisses:
+der Name der Haltestelle ohne „(WL)“ ist ein Alias des Bahnhofs.
+`railway_station_of` (`src/utils/stations_lookup.py`) gibt für eine Haltestelle
+der Wiener Linien oder des VOR den Bahnhof zurück, auf den ihr Name ohne
+Herkunftszusatz auflöst, wenn beide höchstens 500 m auseinander liegen (zwei
+Bahnhöfe in Wien liegen mindestens 526 m auseinander). Ein
+ÖBB-Titel nennt dann den Bahnhof, denn ÖBB meldet Züge (`_same_place_names` in
+`src/providers/oebb_route_title.py`): „Wien Zentralfriedhof ↔ Wien
+Kaiserebersdorf“. Eine Strecke von der Haltestelle zu ihrem eigenen Bahnhof
+liegt in einem Ort: neben anderen Strecken fällt sie weg, allein nennt der
+Titel den Bahnhof einmal. Ein Titel aus dem Cache, der nur die Haltestelle
+nennt („Wien Bhf. Meidling (WL)“, Stellwerksstörung 11.09.2026), wird beim
+Bauen zum Bahnhof („Wien Meidling“, `railway_station_names`, auch beim
+Abruf). Beschreibungen behalten den Wortlaut der Quelle.
+Heute sind es sieben Paare („Wien Bhf. Atzgersdorf/Blumental/Hütteldorf/
+Kaiserebersdorf/Meidling/Süßenbrunn/Zentralfriedhof (WL)“);
+`tests/test_oebb_same_place_endpoints.py` prüft das ganze Verzeichnis nach
+jeder Aktualisierung.
+
 Der Name-Eindeutigkeits-Vertrag aus PR #1452 bleibt davon unberührt —
 duplizierte `PlatformText`-Werte sind weiterhin legitim und werden
 weiterhin nicht erzwungen.
@@ -644,56 +670,5 @@ den Wortlaut der Quelle. Die Statistik liest ältere Zeilen der Ledger
 in `src/utils/stats.py`), damit ein Ort bei einer Auswertung nach Orten
 nicht zweimal zählt. Das Dashboard zeigt heute keine Orte (siehe §6), seine
 Ausgabe bleibt daher gleich.
-
-### Haltestellen ohne „S“ und „U“ (seit 2026-11-04)
-
-> **Entscheidung 2026-11-04 (Michael):** „Der Name „Rennweg S“ gefällt mir
-> nicht. „Rennweg“ ohne S würde mir besser gefallen. … Gibt es weitere
-> Bahnhöfe mit einem S oder einem U? Dies würde mich auch in den Meldungen
-> stören.“
-
-Die Wiener Linien hängen einer Haltestelle mit Umstieg zur S-Bahn oder
-U-Bahn ein einzelnes „S“, „U“ oder „S U“ an („Rennweg S“, „Schottentor U“,
-„Praterstern S U“, einmal davor: „Parlament, U Volkstheater“), und so
-stehen die Namen in ihren Meldungen. Der Feed zeigt den Ort ohne diesen
-Zusatz, im Titel und im Text, deutsch und englisch: „N71: Rennweg“,
-„Fahrtbehinderung in Richtung Floridsdorf“, „zwischen Kagran und
-Praterstern“ (`without_stop_markers` in `src/utils/wl_stop_markers.py`).
-
-Die Regel ist strukturell, keine Wortliste: Ein „S“ oder „U“ fällt nur
-hinter einem Wort weg, mit dem im WL-Haltestellenverzeichnis ein Name
-endet (`data/wienerlinien-ogd-haltepunkte.csv`, Spalte `StopText`, und
-`data/wienerlinien-ogd-haltestellen.csv`, Spalte `PlatformText`; beide
-aktualisiert der wöchentliche Stationslauf). So gehen auch Namen, die WL im
-Text mit Zusatz schreibt, im Verzeichnis aber ohne („Tscherttegasse U“,
-„Michelbeuern-AKH U“), und eine neue Haltestelle kommt mit dem nächsten
-Stationslauf ohne Codeänderung dazu. Vor einem Namen fällt ein „U“ nur
-vor einem Wort weg, vor dem es im Verzeichnis steht („U Volkstheater“).
-Ein Zusatz in Klammern, der nur aus „S“ und „U“ besteht, fällt ganz weg,
-auch ohne Verzeichnis: ÖBB schreibt jeden Umstieg so in den Text („Wien Hbf
-(U)“, „Wien Leopoldau Bahnhst (U)“; im Titel fiel er schon vorher weg,
-`_without_transfer_markers` in `src/providers/oebb_routes.py`), WL selten
-(„Simmering (S U)“). Ebenso geht der Zusatz vor einem Namen am Satzende
-(„Parlament, U Volkstheater.“) und hinter einem Namen mit angeklebtem
-Listenstrich („-Johnstraße U“) (unabhängige Prüfung 2026-11-04).
-Kein Haltestellenzusatz und daher unverändert: ein „U“ oder „S“ hinter
-einem Wort, das keinen Haltestellennamen beendet („in beiden Richtungen
-U.“, ein von WL abgeschnittenes „U6“), ein Buchstabe mit Bindestrich oder
-Ziffer („S-Bahn“, „U6“, „S 45“, „Kagran U 26A“), eine Klammer mit mehr als
-diesen Buchstaben („(S1)“) und Tippfehler der Quelle, deren Wort kein
-Name des Verzeichnisses beendet („Matzleinsdorfer Plaz S“, „Floridsorf S
-U“, Entscheidung zu #2023).
-
-Die Regel wirkt nur auf das, was der Leser sieht, ganz am Ende von
-`_format_item_content` (`src/feed_build/item_format.py`): Satzgrenzen, die
-180-Zeichen-Grenze, der Vergleich von Titel und Text („Haltestelle:“, das
-nur den Titel wiederholt), das Zusammenführen von Meldungen, die
-Baustellen-Zwillinge und der GeoRSS-Punkt lesen weiter die Namen, wie WL
-sie schickt. Ohne Zusatz käme sonst hinter „Donauspital“ eine Satzgrenze,
-wo „Donauspital U.“ keine war, und eine Meldung verlöre ihren Grund und
-ihr voraussichtliches Ende (im Nachbau 12 Texte). Der Zusatz ändert so
-keine Satzwahl und keinen Schnitt, nur den Namen.
-`tests/test_wl_stop_markers.py` prüft jede Haltestelle des Verzeichnisses
-mit Zusatz, also auch nach jeder Aktualisierung in CI.
 
 Weiter in [Teil 5](architecture-teil-5.md).

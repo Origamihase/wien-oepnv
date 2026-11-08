@@ -122,3 +122,19 @@ def test_a_marker_behind_an_html_entity_goes_too() -> None:
     assert formatted.title_out == "72A: Haidestraße"
     assert "Haltestelle:" not in formatted.desc_text_truncated
     assert "Grund: Arbeiten an einer Gasleitung." in formatted.desc_text_truncated
+
+
+@pytest.mark.parametrize(
+    ("text", "expected"),
+    [
+        # Published 20.05.2026 and 22.-24.09.2026; operator decision 2026-11-08.
+        ("Wien Liechtenwerder Platz (WL) ↔ Mödling ↔ Wien Liesing", "Wien Liechtenwerder Platz ↔ Mödling ↔ Wien Liesing"),
+        ("REX 6: Wien Baumgarten (WL) ↔ Ebenfurth", "REX 6: Wien Baumgarten ↔ Ebenfurth"),
+        ("Wien Bhf. Meidling (WL)", "Wien Bhf. Meidling"),
+        # Only the directory's bracket behind a name.
+        ("(WL)-Netz", "(WL)-Netz"),
+        ("Wien Baumgarten (WLAN)", "Wien Baumgarten (WLAN)"),
+    ],
+)
+def test_directory_wl_marker_goes(text: str, expected: str) -> None:
+    assert without_stop_markers(text) == expected
