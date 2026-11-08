@@ -638,6 +638,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12A: Fahrtbehinderung Falschparker",
+    "description": "Die Linie 12A wird in Richtung zwischen Schweglerstraße U, Gürtel, Sechshauser Straße umgeleitet.Dauer voraussichtlich bis 14:45 Uhr.Grund dafür ist ein Falschparker im Bereich Arnsteingasse 18.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
+    "pubDate": "2026-11-08T14:08:19+01:00",
+    "starts_at": "2026-11-08T14:10:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=12A|D=2026-11-08|TK=falschparker",
+    "_wl_ids": [
+      "I20261108-0014"
+    ],
+    "_incident_start": "2026-11-08T14:10:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
