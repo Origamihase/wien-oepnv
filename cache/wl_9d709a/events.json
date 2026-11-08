@@ -867,7 +867,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "2: Polizeieinsatz Züge halten bei Linie 9",
-    "description": "Linie 2: Umleitung in Richtung Friedrich-Engels-Platz zwischen Dornbach und Mayssengasse über die Strecke der Linien 43 und 9. Haltestelle Mayssengasse: Es wird die Haltestelle der Linie 9 Richtung Westbahnhof eingehalten. Voraussichtliche Dauer: 16:15 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Wilhelminenstraße.",
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "0a8aa8f7231d98faa38de820cfb27484955a1529c285e8a8472318b330368561",
     "pubDate": "2026-11-08T15:14:00+01:00",
@@ -894,38 +894,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "31: Schadhafter Zug Betrieb ab Floridsdorf S U",
-    "description": "Schadhafter Zug\nBetrieb ab Floridsdorf S U",
+    "title": "35A: Rettungseinsatz",
+    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7d0dc8ab0588fe1e90b1d3332c3aeb1f6d75cd1ef0aa52f78bc00c4907349c08",
-    "pubDate": "2026-11-08T14:34:52+01:00",
-    "starts_at": "2026-11-08T14:34:52+01:00",
-    "ends_at": "2026-11-08T15:34:00+01:00",
-    "_identity": "wl|störung|L=31|D=2026-11-08|TK=schadhafter zug betrieb ab floridsdorf s u"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "31: Schadhafter Zug Betrieb ab Wexstraße",
-    "description": "Schadhafter Zug\nBetrieb ab Wexstraße",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "b7cc867bbe4689b8a28b9401b343c92a063d54c0931a701a224cfcee6e4b353f",
-    "pubDate": "2026-11-08T14:35:22+01:00",
-    "starts_at": "2026-11-08T14:35:25+01:00",
-    "ends_at": "2026-11-08T15:34:00+01:00",
-    "_identity": "wl|störung|L=31|D=2026-11-08|TK=schadhafter zug betrieb ab wexstrasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "31: Schadhafter Zug Züge halten bei Linie 31",
-    "description": "Schadhafter Zug\nZüge halten bei Linie 31",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "e13ad8e6e2356447706ff9f284d94658cee1d2f4675fb3746da9e206061b9535",
-    "pubDate": "2026-11-08T14:32:55+01:00",
-    "starts_at": "2026-11-08T14:32:55+01:00",
-    "ends_at": "2026-11-08T15:32:00+01:00",
-    "_identity": "wl|störung|L=31|D=2026-11-08|TK=schadhafter zug züge halten bei linie 31"
+    "guid": "03b7d773a613c65dc47884517046d555d006e6e24abebc2d3c4c6a50e91e901f",
+    "pubDate": "2026-11-08T15:40:00+01:00",
+    "starts_at": "2026-11-08T15:40:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=35A|D=2026-11-08|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261108-0021"
+    ],
+    "_incident_start": "2026-11-08T15:40:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1074,22 +1054,6 @@
       "I20261108-0016"
     ],
     "_incident_start": "2026-11-08T14:46:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Betriebsstörung",
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
-    "pubDate": "2026-11-08T15:03:00+01:00",
-    "starts_at": "2026-11-08T15:03:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U3|D=2026-11-08|TK=u3 betriebsstörung",
-    "_wl_ids": [
-      "I20261108-0018"
-    ],
-    "_incident_start": "2026-11-08T15:03:00+01:00"
   },
   {
     "source": "Wiener Linien",
