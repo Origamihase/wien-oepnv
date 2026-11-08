@@ -1,13 +1,25 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-08T14:01:16.745389+00:00",
- "built": "2026-11-08T15:01:00+01:00",
+ "updated": "2026-11-08T14:31:04.224922+00:00",
+ "built": "2026-11-08T15:30:50+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-08T15:01:00+01:00",
+  "built": "2026-11-08T15:30:50+01:00",
   "items": [
+   {
+    "title": "2: Polizeieinsatz",
+    "time_line": "Seit 15:14"
+   },
+   {
+    "title": "9: Falschparker",
+    "time_line": "Seit 15:07"
+   },
+   {
+    "title": "U3: Betriebsstörung",
+    "time_line": "Seit 15:03"
+   },
    {
     "title": "48A: Verkehrsunfall",
     "time_line": "Seit 14:56"
@@ -17,16 +29,8 @@
     "time_line": "Seit 14:46"
    },
    {
-    "title": "2: Schadhafter Zug",
-    "time_line": "Seit 14:30"
-   },
-   {
     "title": "31: Schadhafter Zug",
     "time_line": "Seit 14:30"
-   },
-   {
-    "title": "12A: Falschparker",
-    "time_line": "Seit 14:08"
    },
    {
     "title": "37: Gasrohrbruch",
@@ -43,35 +47,11 @@
    {
     "title": "71A: Haltestellenverlegung",
     "time_line": "Ab Mo 09.11. bis Mi 11.11."
-   },
-   {
-    "title": "5B: Bauarbeiten",
-    "time_line": "Ab Mo 09.11. bis 10.12."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-01T14:31:00.740634+00:00",
-   "raw": {
-    "wl-stoerungen": 60,
-    "wl-hinweise": 73,
-    "oebb": 154,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 13,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 8,
-    "wl": 92
-   }
-  },
   {
    "t": "2026-11-01T15:00:48.298316+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 7,
     "wl": 91
    }
+  },
+  {
+   "t": "2026-11-08T14:31:04.224922+00:00",
+   "raw": {
+    "wl-stoerungen": 91,
+    "wl-hinweise": 98,
+    "oebb": 187,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 29,
+    "oebb": 162,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 90
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-08T14:01:16.745389+00:00"
+   "last_ok": "2026-11-08T14:31:04.224922+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-08T14:01:16.745389+00:00"
+   "last_ok": "2026-11-08T14:31:04.224922+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-08T14:01:16.745389+00:00"
+   "last_ok": "2026-11-08T14:31:04.224922+00:00"
   }
  }
 }

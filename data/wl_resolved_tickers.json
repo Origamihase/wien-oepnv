@@ -1,5 +1,104 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R143-109|2026-11-08T15:14:25.000+0100|Falschparker\nBetrieb ab Rosensteingasse",
+   "name": "R143-109",
+   "title": "Falschparker\nBetrieb ab Rosensteingasse",
+   "end": "2026-11-08T16:13:00.000+0100",
+   "incident": "I20261108-0019"
+  },
+  {
+   "key": "R223-109|2026-11-08T15:15:25.000+0100|Falschparker\nZüge halten Rosensteingasse 61",
+   "name": "R223-109",
+   "title": "Falschparker\nZüge halten Rosensteingasse 61",
+   "end": "2026-11-08T16:14:00.000+0100",
+   "incident": "I20261108-0019"
+  },
+  {
+   "key": "R521-109|2026-11-08T15:13:24.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R521-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-08T16:12:00.000+0100",
+   "incident": "I20261108-0019"
+  },
+  {
+   "key": "R522-109|2026-11-08T15:14:24.000+0100|Falschparker\nBetrieb ab Rosensteingasse",
+   "name": "R522-109",
+   "title": "Falschparker\nBetrieb ab Rosensteingasse",
+   "end": "2026-11-08T16:13:00.000+0100",
+   "incident": "I20261108-0019"
+  },
+  {
+   "key": "R523-109|2026-11-08T15:14:24.000+0100|Falschparker\nBetrieb ab Rosensteingasse",
+   "name": "R523-109",
+   "title": "Falschparker\nBetrieb ab Rosensteingasse",
+   "end": "2026-11-08T16:13:00.000+0100",
+   "incident": "I20261108-0019"
+  },
+  {
+   "key": "R524-109|2026-11-08T15:14:24.000+0100|Falschparker\nBetrieb ab Rosensteingasse",
+   "name": "R524-109",
+   "title": "Falschparker\nBetrieb ab Rosensteingasse",
+   "end": "2026-11-08T16:13:00.000+0100",
+   "incident": "I20261108-0019"
+  },
+  {
+   "key": "R525-109|2026-11-08T15:14:24.000+0100|Falschparker\nBetrieb ab Rosensteingasse",
+   "name": "R525-109",
+   "title": "Falschparker\nBetrieb ab Rosensteingasse",
+   "end": "2026-11-08T16:13:00.000+0100",
+   "incident": "I20261108-0019"
+  },
+  {
+   "key": "R526-109|2026-11-08T15:14:24.000+0100|Falschparker\nBetrieb ab Rosensteingasse",
+   "name": "R526-109",
+   "title": "Falschparker\nBetrieb ab Rosensteingasse",
+   "end": "2026-11-08T16:13:00.000+0100",
+   "incident": "I20261108-0019"
+  },
+  {
+   "key": "R549-109|2026-11-08T15:13:27.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R549-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-08T16:12:00.000+0100",
+   "incident": "I20261108-0019"
+  },
+  {
+   "key": "R550-109|2026-11-08T15:13:27.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R550-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-08T16:12:00.000+0100",
+   "incident": "I20261108-0019"
+  },
+  {
+   "key": "R551-109|2026-11-08T15:13:27.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R551-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-08T16:12:00.000+0100",
+   "incident": "I20261108-0019"
+  },
+  {
+   "key": "R552-109|2026-11-08T15:13:27.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R552-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-08T16:12:00.000+0100",
+   "incident": "I20261108-0019"
+  },
+  {
+   "key": "R553-109|2026-11-08T15:13:27.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R553-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-08T16:12:00.000+0100",
+   "incident": "I20261108-0019"
+  },
+  {
+   "key": "R554-109|2026-11-08T15:13:27.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R554-109",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-08T16:12:00.000+0100",
+   "incident": "I20261108-0019"
+  }
+ ]
 }
