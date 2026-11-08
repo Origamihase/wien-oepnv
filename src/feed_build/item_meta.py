@@ -24,6 +24,7 @@ from .state import _identity_for_item, _lookup_state
 from .time_line import _first_published, _incident_since
 from .title_words import _is_baustelle, _is_wl_notice
 from .item_history import _NEW_OCCURRENCE_KEY, _initial_first_seen, _note_announced_starts
+from .oebb_days import _is_oebb_closure_day
 
 __all__ = [
     "_sort_moment", "_CURRENT_INCIDENT_WINDOW", "_is_current_incident", "_recency_sort_key",
@@ -135,7 +136,9 @@ def _recency_sort_key(
     """FIFO-by-``first_seen`` ordering for the feed: newest-appeared first.
 
     Current incidents (:func:`_is_current_incident`) come before everything
-    else; within each of the two groups the rules below apply.
+    else, then ÖBB closures on a day they close the line
+    (:func:`~.oebb_days._is_oebb_closure_day`), then the rest; within each of
+    the three groups the rules below apply.
 
     Sorts by the persisted (guid-stable) ``first_seen`` descending. An item
     not yet in the state counts as just-appeared (``now``) so genuinely new
@@ -170,7 +173,15 @@ def _recency_sort_key(
     pub_ts = min(pub_ts, now_utc.timestamp())
     guid_val = item.get("guid")
     guid_str = str(guid_val) if guid_val else _identity_for_item(item)
-    tier = 0 if _is_current_incident(item, entry, first_seen, now_utc) else 1
+    # Tier 0: current incidents. Tier 1: an ÖBB closure on a day it closes
+    # the line, a notice with higher priority (operator decision 2026-11-08,
+    # :mod:`.oebb_days`). Tier 2: everything else.
+    if _is_current_incident(item, entry, first_seen, now_utc):
+        tier = 0
+    elif _is_oebb_closure_day(item, now_utc):
+        tier = 1
+    else:
+        tier = 2
     return (tier, -first_seen.timestamp(), _category_feed_rank(item), -pub_ts, guid_str)
 
 
