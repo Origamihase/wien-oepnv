@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 08 Nov 2026 00:49:36 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 08 Nov 2026 01:00:51 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[N62: Defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">0ee33ee4efdef199ceb1bb4c62cc2997e5058090f195144329e82d914db2bf68</guid>
+      <pubDate>Sun, 08 Nov 2026 00:41:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Sun, 08 Nov 2026 00:41:00 +0100</ext:first_seen>
+      <ext:starts_at>Sun, 08 Nov 2026 00:41:00 +0100</ext:starts_at>
+      <description>Currently, there are irregular intervals on line N62 in both directions. Reason: defective vehicle. [Since 00:41]</description>
+      <content:encoded><![CDATA[Currently, there are irregular intervals on line N62 in both directions. Reason: defective vehicle.<br/>[Since 00:41]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U2: Service disruption]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -20,21 +33,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sun, 08 Nov 2026 00:20:00 +0100</ext:first_seen>
       <ext:starts_at>Sun, 08 Nov 2026 00:20:00 +0100</ext:starts_at>
-      <description>The U2 line does not currently travel between Schottentor and Rathaus. Expected until 00:50. Reason: service disruption in the stop area of Rathaus. [Since 00:20]</description>
-      <content:encoded><![CDATA[The U2 line does not currently travel between Schottentor and Rathaus. Expected until 00:50. Reason: service disruption in the stop area of Rathaus.<br/>[Since 00:20]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[65A/66A: Third-party traffic accident]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">05a8cb727ca73bb01df781f7ab67a47f7452b75e040b6b9029c8a1839f707cc2</guid>
-      <pubDate>Sat, 07 Nov 2026 23:32:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sat, 07 Nov 2026 23:32:00 +0100</ext:first_seen>
-      <ext:starts_at>Sat, 07 Nov 2026 23:32:00 +0100</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 07.11.]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 07.11.]]]></content:encoded>
+      <description>The U2 line does not currently travel between Schottentor and Rathaus. Expected until 01:15. Reason: service disruption in the stop area of Rathaus. [Since 00:20]</description>
+      <content:encoded><![CDATA[The U2 line does not currently travel between Schottentor and Rathaus. Expected until 01:15. Reason: service disruption in the stop area of Rathaus.<br/>[Since 00:20]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[18: Event on 08.11.26]]></title>

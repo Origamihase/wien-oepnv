@@ -1,20 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-07T23:31:00.797633+00:00",
- "built": "2026-11-08T00:30:42+01:00",
+ "updated": "2026-11-08T00:01:05.015291+00:00",
+ "built": "2026-11-08T01:00:51+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-08T00:30:42+01:00",
+  "built": "2026-11-08T01:00:51+01:00",
   "items": [
+   {
+    "title": "N62: Schadhaftes Fahrzeug",
+    "time_line": "Seit 00:41"
+   },
    {
     "title": "U2: Betriebsstörung",
     "time_line": "Seit 00:20"
-   },
-   {
-    "title": "65A/66A: Fremder Verkehrsunfall",
-    "time_line": "Seit 07.11."
    },
    {
     "title": "18: Veranstaltung am 08.11.26",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-10-31T23:31:09.495712+00:00",
-   "raw": {
-    "wl-stoerungen": 60,
-    "wl-hinweise": 70,
-    "oebb": 155,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 11,
-    "oebb": 131,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 9,
-    "wl": 93
-   }
-  },
   {
    "t": "2026-11-01T00:01:11.788802+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 7,
     "wl": 80
    }
+  },
+  {
+   "t": "2026-11-08T00:01:05.015291+00:00",
+   "raw": {
+    "wl-stoerungen": 41,
+    "wl-hinweise": 94,
+    "oebb": 187,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 24,
+    "oebb": 162,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 83
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-07T23:31:00.797633+00:00"
+   "last_ok": "2026-11-08T00:01:05.015291+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-07T23:31:00.797633+00:00"
+   "last_ok": "2026-11-08T00:01:05.015291+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-07T23:31:00.797633+00:00"
+   "last_ok": "2026-11-08T00:01:05.015291+00:00"
   }
  }
 }

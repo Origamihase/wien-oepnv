@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261107-0039-F01, I20261107-0039-F02, I20261108-0001"
+    "trafficInfoNameList": "I20261108-0002, I20261108-0001, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R401-101, R318-437, R1974-466, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R1876-101, R1875-101, R3886-480, R2558-125, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R401-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2380-627, R2379-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-126, R2373-127, R2345-127, R1875-101, R3886-480, R2558-125, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1974-566, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,98 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "66A": "ptBusCity"
-     }
-    },
-    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 66A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 66A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "66A: Fremder Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Troststraße",
-    "name": "I20261107-0039-F01",
-    "owner": "WL",
-    "parentName": "I20261107-0039",
-    "priority": "1",
-    "reasonId": 13,
-    "reasonName": "Fremder Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 466,
-      "lineName": "66A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-07T23:56:00.000+0100",
-     "lastUpdate": "2026-11-07T23:56:00.000+0100",
-     "resume": "2026-11-07T23:56:00.000+0100",
-     "start": "2026-11-07T23:32:00.000+0100"
-    },
-    "title": "66A: Fremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "65A": "ptBusCity"
-     }
-    },
-    "description": "Linie 65A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 65A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 65A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 65A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "65A: Fremder Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Troststraße",
-    "name": "I20261107-0039-F02",
-    "owner": "WL",
-    "parentName": "I20261107-0039",
-    "priority": "1",
-    "reasonId": 13,
-    "reasonName": "Fremder Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "65A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 465,
-      "lineName": "65A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-07T23:56:00.000+0100",
-     "lastUpdate": "2026-11-07T23:56:00.000+0100",
-     "resume": "2026-11-07T23:56:00.000+0100",
-     "start": "2026-11-07T23:32:00.000+0100"
-    },
-    "title": "65A: Fremder Verkehrsunfall"
-   },
-   {
     "alertCause": "miscellaneous",
     "alertCauseId": 137,
     "attributes": {
@@ -270,13 +178,13 @@
       "U2": "ptMetro"
      }
     },
-    "description": "Die Linie U2 fährt derzeit nicht zwischen Schottentor und Rathaus. Voraussichtliche Dauer: 00:50 Uhr. Grund: Betriebsstörung im Haltestellenbereich Rathaus.",
-    "descriptionHTML": "<p>Die Linie U2 fährt derzeit nicht zwischen Schottentor und Rathaus.</p><p>Voraussichtliche Dauer: 00:50 Uhr.</p><p>Grund: Betriebsstörung im Haltestellenbereich Rathaus.</p>",
+    "description": "Die Linie U2 fährt derzeit nicht zwischen Schottentor und Rathaus. Voraussichtliche Dauer: 01:15 Uhr. Grund: Betriebsstörung im Haltestellenbereich Rathaus.",
+    "descriptionHTML": "<p>Die Linie U2 fährt derzeit nicht zwischen Schottentor und Rathaus.</p><p>Voraussichtliche Dauer: 01:15 Uhr.</p><p>Grund: Betriebsstörung im Haltestellenbereich Rathaus.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Die Linie U2 fährt derzeit nicht zwischen Schottentor und Rathaus.</p><p>Voraussichtliche Dauer: 00:50 Uhr.</p><p>Grund: Betriebsstörung im Haltestellenbereich Rathaus.</p>",
-       "descriptionPlain": "Die Linie U2 fährt derzeit nicht zwischen Schottentor und Rathaus. Voraussichtliche Dauer: 00:50 Uhr. Grund: Betriebsstörung im Haltestellenbereich Rathaus.",
+       "descriptionHtml": "<p>Die Linie U2 fährt derzeit nicht zwischen Schottentor und Rathaus.</p><p>Voraussichtliche Dauer: 01:15 Uhr.</p><p>Grund: Betriebsstörung im Haltestellenbereich Rathaus.</p>",
+       "descriptionPlain": "Die Linie U2 fährt derzeit nicht zwischen Schottentor und Rathaus. Voraussichtliche Dauer: 01:15 Uhr. Grund: Betriebsstörung im Haltestellenbereich Rathaus.",
        "title": "U2: Betriebsstörung"
       }
      }
@@ -304,10 +212,101 @@
     "status": "active",
     "time": {
      "created": "2026-11-08T00:23:00.000+0100",
-     "lastUpdate": "2026-11-08T00:23:00.000+0100",
+     "lastUpdate": "2026-11-08T00:44:00.000+0100",
      "start": "2026-11-08T00:20:00.000+0100"
     },
     "title": "U2: Betriebsstörung"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "N62": "ptBusNight"
+     }
+    },
+    "description": "Derzeit kommt es bei der Linie N62 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Derzeit kommt es bei der Linie N62 in beiden Richtungen zu unterschiedlichen Intervallen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Derzeit kommt es bei der Linie N62 in beiden Richtungen zu unterschiedlichen Intervallen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Derzeit kommt es bei der Linie N62 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug.",
+       "title": "N62: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261108-0002",
+    "owner": "WL",
+    "parentName": "I20261108-0002",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "N62"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 562,
+      "lineName": "N62",
+      "vehicleType": "ptBusNight"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-08T00:42:00.000+0100",
+     "lastUpdate": "2026-11-08T00:42:00.000+0100",
+     "resume": "2026-11-08T00:41:00.000+0100",
+     "start": "2026-11-08T00:41:00.000+0100"
+    },
+    "title": "N62: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A",
+    "name": "R1718-508",
+    "owner": "WL",
+    "parentName": "R1718-508",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N8"
+    ],
+    "relatedStops": [
+     1718
+    ],
+    "time": {
+     "end": "2026-11-08T04:45:00.000+0100",
+     "start": "2026-11-08T00:45:10.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
+    "name": "R1749-508",
+    "owner": "WL",
+    "parentName": "R1749-508",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N8"
+    ],
+    "relatedStops": [
+     1749
+    ],
+    "time": {
+     "end": "2026-11-08T05:15:00.000+0100",
+     "start": "2026-11-08T00:45:10.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A"
    },
    {
     "alertCause": "undefined alert cause",
@@ -474,22 +473,22 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
-    "name": "R1974-466",
+    "name": "R1974-566",
     "owner": "WL",
-    "parentName": "R1974-466",
+    "parentName": "R1974-566",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "66A"
+     "N66"
     ],
     "relatedStops": [
      1974
     ],
     "time": {
-     "end": "2026-11-08T01:00:00.000+0100",
-     "start": "2026-11-07T04:40:10.000+0100"
+     "end": "2026-11-08T04:20:00.000+0100",
+     "start": "2026-11-08T01:00:10.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
    },
@@ -906,6 +905,52 @@
      "start": "2026-11-05T00:00:27.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 ",
+    "name": "R402-506",
+    "owner": "WL",
+    "parentName": "R402-506",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N6"
+    ],
+    "relatedStops": [
+     402
+    ],
+    "time": {
+     "end": "2026-11-08T05:05:00.000+0100",
+     "start": "2026-11-08T00:55:09.000+0100"
+    },
+    "title": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
+    "name": "R407-506",
+    "owner": "WL",
+    "parentName": "R407-506",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N6"
+    ],
+    "relatedStops": [
+     407
+    ],
+    "time": {
+     "end": "2026-11-08T05:04:00.000+0100",
+     "start": "2026-11-08T00:54:09.000+0100"
+    },
+    "title": "Bauarbeiten\nBusse halten Quellenstraße 189"
    },
    {
     "alertCause": "undefined alert cause",
