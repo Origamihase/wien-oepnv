@@ -902,6 +902,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "74A: Verspätungen",
+    "description": "Linie 74A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "6c8834bcfbaf7654bee19dd6b2f57ffc863599541437b7eacefea493f8ec45b4",
+    "pubDate": "2026-11-08T06:19:00+01:00",
+    "starts_at": "2026-11-08T06:19:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=74A|D=2026-11-08|TK=74a verspätungen",
+    "_wl_ids": [
+      "I20261108-0005"
+    ],
+    "_incident_start": "2026-11-08T06:19:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "80A: Betrieb ab Vivariumstraße 2",
     "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -915,7 +931,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U1: Polizeieinsatz",
-    "description": "Die Linie U1 fährt derzeit nicht zwischen Nestroyplatz und Donauinsel. Voraussichtliche Dauer: 06:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Vorgartenstraße.",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "2fd34130689e264be35e2fe5c2a3b881400e4330803f8a22ce905e991a01ca49",
     "pubDate": "2026-11-08T05:35:00+01:00",
@@ -926,22 +942,6 @@
       "I20261108-0004"
     ],
     "_incident_start": "2026-11-08T05:35:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Schadhaftes Fahrzeug",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd",
-    "pubDate": "2026-11-08T05:15:00+01:00",
-    "starts_at": "2026-11-08T05:15:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U6|D=2026-11-08|TK=u6 schadhaftes fahrzeug",
-    "_wl_ids": [
-      "I20261108-0003"
-    ],
-    "_incident_start": "2026-11-08T05:15:00+01:00"
   },
   {
     "source": "Wiener Linien",
