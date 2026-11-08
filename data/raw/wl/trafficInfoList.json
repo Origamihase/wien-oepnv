@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261108-0004-F01, I20260925-0011, I20260909-0007, I20261108-0005, I20261020-0029"
+    "trafficInfoNameList": "I20261108-0004-F01, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
@@ -217,51 +217,6 @@
      "start": "2026-11-08T05:35:00.000+0100"
     },
     "title": "U1: Polizeieinsatz"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "74A": "ptBusCity"
-     }
-    },
-    "description": "Linie 74A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie 74A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 74A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 74A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "74A: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261108-0005",
-    "owner": "WL",
-    "parentName": "I20261108-0005",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "74A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 474,
-      "lineName": "74A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-08T06:20:00.000+0100",
-     "lastUpdate": "2026-11-08T06:20:00.000+0100",
-     "resume": "2026-11-08T06:19:00.000+0100",
-     "start": "2026-11-08T06:19:00.000+0100"
-    },
-    "title": "74A: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",
