@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261108-0012, I20260925-0011, I20260909-0007, I20261020-0029, I20261108-0011, I20261108-0013"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R401-101, R318-437, R1881-101, R1882-101, R1883-101, R1884-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R1875-101, R2345-127, R1876-101, R1880-101, R3886-480, R2558-125, R1974-466, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R401-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R1880-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2558-125, R3886-480, R1974-466, R500-101, R215-137, R216-137, R196-137, R197-137, R198-137, R199-137, R201-137, R202-137, R203-137, R204-137, R205-137, R206-137, R207-137, R208-137, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -169,6 +169,141 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U3: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261108-0011",
+    "owner": "WL",
+    "parentName": "I20261108-0011",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-08T12:34:00.000+0100",
+     "lastUpdate": "2026-11-08T12:34:00.000+0100",
+     "resume": "2026-11-08T12:32:00.000+0100",
+     "start": "2026-11-08T12:32:00.000+0100"
+    },
+    "title": "U3: Verspätungen"
+   },
+   {
+    "alertCause": "vandalism",
+    "alertCauseId": 16,
+    "attributes": {
+     "relatedLineTypes": {
+      "31": "ptTram"
+     }
+    },
+    "description": "Linie 31: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "descriptionHTML": "<p>Linie 31:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 31:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
+       "descriptionPlain": "Linie 31: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+       "title": "31: Verunreinigung"
+      }
+     }
+    ],
+    "name": "I20261108-0012",
+    "owner": "WL",
+    "parentName": "I20261108-0012",
+    "priority": "1",
+    "reasonId": 36,
+    "reasonName": "Verunreinigung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 131,
+      "lineName": "31",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-08T12:40:00.000+0100",
+     "lastUpdate": "2026-11-08T12:40:00.000+0100",
+     "resume": "2026-11-08T12:40:00.000+0100",
+     "start": "2026-11-08T12:40:00.000+0100"
+    },
+    "title": "31: Verunreinigung"
+   },
+   {
+    "alertCause": "fire brigade order",
+    "alertCauseId": 10,
+    "attributes": {
+     "relatedLineTypes": {
+      "37": "ptTram"
+     }
+    },
+    "description": "Linie 37: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Gasrohrgebrechen im Bereich Döblinger Hauptstraße 70.",
+    "descriptionHTML": "<p>Linie 37:<br>Betrieb nur zwischen Schottentor U und Nußdorfer Straße U.</p><p>Voraussichtliche Dauer: Bis Betriebsschluss.</p><p>Grund: Gasrohrgebrechen im Bereich Döblinger Hauptstraße 70.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 37:<br>Betrieb nur zwischen Schottentor U und Nußdorfer Straße U.</p><p>Voraussichtliche Dauer: Bis Betriebsschluss.</p><p>Grund: Gasrohrgebrechen im Bereich Döblinger Hauptstraße 70.</p>",
+       "descriptionPlain": "Linie 37: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Gasrohrgebrechen im Bereich Döblinger Hauptstraße 70.",
+       "title": "37: Gasrohrbruch"
+      }
+     }
+    ],
+    "location": "Döblinger Hauptstraße 70",
+    "name": "I20261108-0013",
+    "owner": "WL",
+    "parentName": "I20261108-0013",
+    "priority": "1",
+    "reasonId": 26,
+    "reasonName": "Gasrohrgebrechen",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "37"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 137,
+      "lineName": "37",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-08T12:49:00.000+0100",
+     "lastUpdate": "2026-11-08T13:00:00.000+0100",
+     "start": "2026-11-08T12:46:00.000+0100"
+    },
+    "title": "37: Gasrohrbruch"
    },
    {
     "alertCause": "undefined alert cause",
@@ -334,6 +469,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Gasrohrgebrechen",
+    "name": "R196-137",
+    "owner": "WL",
+    "parentName": "R196-137",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "37"
+    ],
+    "relatedStops": [
+     196
+    ],
+    "time": {
+     "end": "2026-11-08T23:59:00.000+0100",
+     "start": "2026-11-08T12:49:40.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Gasrohrgebrechen"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Gasrohrgebrechen",
+    "name": "R197-137",
+    "owner": "WL",
+    "parentName": "R197-137",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "37"
+    ],
+    "relatedStops": [
+     197
+    ],
+    "time": {
+     "end": "2026-11-08T23:59:00.000+0100",
+     "start": "2026-11-08T12:49:40.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Gasrohrgebrechen"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "name": "R1974-466",
     "owner": "WL",
@@ -353,6 +534,282 @@
      "start": "2026-11-08T04:40:24.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Gasrohrgebrechen",
+    "name": "R198-137",
+    "owner": "WL",
+    "parentName": "R198-137",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "37"
+    ],
+    "relatedStops": [
+     198
+    ],
+    "time": {
+     "end": "2026-11-08T23:59:00.000+0100",
+     "start": "2026-11-08T12:49:40.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Gasrohrgebrechen"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Gasrohrgebrechen",
+    "name": "R199-137",
+    "owner": "WL",
+    "parentName": "R199-137",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "37"
+    ],
+    "relatedStops": [
+     199
+    ],
+    "time": {
+     "end": "2026-11-08T23:59:00.000+0100",
+     "start": "2026-11-08T12:49:40.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Gasrohrgebrechen"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße",
+    "name": "R201-137",
+    "owner": "WL",
+    "parentName": "R201-137",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "37"
+    ],
+    "relatedStops": [
+     201
+    ],
+    "time": {
+     "end": "2026-11-08T23:59:00.000+0100",
+     "start": "2026-11-08T12:51:10.000+0100"
+    },
+    "title": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße",
+    "name": "R202-137",
+    "owner": "WL",
+    "parentName": "R202-137",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "37"
+    ],
+    "relatedStops": [
+     202
+    ],
+    "time": {
+     "end": "2026-11-08T23:59:00.000+0100",
+     "start": "2026-11-08T12:51:10.000+0100"
+    },
+    "title": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße",
+    "name": "R203-137",
+    "owner": "WL",
+    "parentName": "R203-137",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "37"
+    ],
+    "relatedStops": [
+     203
+    ],
+    "time": {
+     "end": "2026-11-08T23:59:00.000+0100",
+     "start": "2026-11-08T12:51:10.000+0100"
+    },
+    "title": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße",
+    "name": "R204-137",
+    "owner": "WL",
+    "parentName": "R204-137",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "37"
+    ],
+    "relatedStops": [
+     204
+    ],
+    "time": {
+     "end": "2026-11-08T23:59:00.000+0100",
+     "start": "2026-11-08T12:51:10.000+0100"
+    },
+    "title": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße",
+    "name": "R205-137",
+    "owner": "WL",
+    "parentName": "R205-137",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "37"
+    ],
+    "relatedStops": [
+     205
+    ],
+    "time": {
+     "end": "2026-11-08T23:59:00.000+0100",
+     "start": "2026-11-08T12:51:10.000+0100"
+    },
+    "title": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße",
+    "name": "R206-137",
+    "owner": "WL",
+    "parentName": "R206-137",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "37"
+    ],
+    "relatedStops": [
+     206
+    ],
+    "time": {
+     "end": "2026-11-08T23:59:00.000+0100",
+     "start": "2026-11-08T12:51:10.000+0100"
+    },
+    "title": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße",
+    "name": "R207-137",
+    "owner": "WL",
+    "parentName": "R207-137",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "37"
+    ],
+    "relatedStops": [
+     207
+    ],
+    "time": {
+     "end": "2026-11-08T23:59:00.000+0100",
+     "start": "2026-11-08T12:51:10.000+0100"
+    },
+    "title": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gasrohrgebrechen\nZüge halten Währinger Gürtel ggü.164",
+    "name": "R208-137",
+    "owner": "WL",
+    "parentName": "R208-137",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "37"
+    ],
+    "relatedStops": [
+     208
+    ],
+    "time": {
+     "end": "2026-11-08T23:59:00.000+0100",
+     "start": "2026-11-08T12:54:11.000+0100"
+    },
+    "title": "Gasrohrgebrechen\nZüge halten Währinger Gürtel ggü.164"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Gasrohrgebrechen",
+    "name": "R215-137",
+    "owner": "WL",
+    "parentName": "R215-137",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "37"
+    ],
+    "relatedStops": [
+     215
+    ],
+    "time": {
+     "end": "2026-11-08T23:59:00.000+0100",
+     "start": "2026-11-08T12:49:40.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Gasrohrgebrechen"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Gasrohrgebrechen",
+    "name": "R216-137",
+    "owner": "WL",
+    "parentName": "R216-137",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "37"
+    ],
+    "relatedStops": [
+     216
+    ],
+    "time": {
+     "end": "2026-11-08T23:59:00.000+0100",
+     "start": "2026-11-08T12:49:40.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Gasrohrgebrechen"
    },
    {
     "alertCause": "undefined alert cause",

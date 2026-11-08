@@ -866,6 +866,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "31: Verunreinigung",
+    "description": "Linie 31: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "203395aa6ca6175d52db5f66075cf2b04d5399d0c1bc3e563906381a19227d5e",
+    "pubDate": "2026-11-08T12:40:00+01:00",
+    "starts_at": "2026-11-08T12:40:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=31|D=2026-11-08|TK=31 verunreinigung",
+    "_wl_ids": [
+      "I20261108-0012"
+    ],
+    "_incident_start": "2026-11-08T12:40:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -874,6 +890,58 @@
     "starts_at": "2026-11-05T00:00:27+01:00",
     "ends_at": "2026-11-08T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-11-05|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Gasrohrbruch",
+    "description": "Linie 37: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Gasrohrgebrechen im Bereich Döblinger Hauptstraße 70.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "f6976f751d64d931b116ceb74845ccf836db3bb1af88aaec048480ffdd2bb723",
+    "pubDate": "2026-11-08T12:46:00+01:00",
+    "starts_at": "2026-11-08T12:46:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=37|D=2026-11-08|TK=37 gasrohrbruch",
+    "_wl_ids": [
+      "I20261108-0013"
+    ],
+    "_incident_start": "2026-11-08T12:46:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Fahrtbehinderung wegen Gasrohrgebrechen",
+    "description": "Fahrtbehinderung\nwegen Gasrohrgebrechen",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "ba67380c71c583ea3aa4fade16ab9a8b96d5986f3ec730e83435cc90c8c92c4f",
+    "pubDate": "2026-11-08T12:49:40+01:00",
+    "starts_at": "2026-11-08T12:49:40+01:00",
+    "ends_at": "2026-11-08T23:59:00+01:00",
+    "_identity": "wl|störung|L=37|D=2026-11-08|TK=fahrtbehinderung wegen gasrohrgebrechen"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Gasrohrgebrechen Betrieb ab Nußdorfer Straße",
+    "description": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "40fc6bb078cdd64cf55509a681613a3a7dde884deaaef1bb9a90040c81895f45",
+    "pubDate": "2026-11-08T12:51:10+01:00",
+    "starts_at": "2026-11-08T12:51:10+01:00",
+    "ends_at": "2026-11-08T23:59:00+01:00",
+    "_identity": "wl|störung|L=37|D=2026-11-08|TK=gasrohrgebrechen betrieb ab nussdorfer strasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Gasrohrgebrechen Züge halten Währinger Gürtel ggü.164",
+    "description": "Gasrohrgebrechen\nZüge halten Währinger Gürtel ggü.164",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "a6e19b1870e0b577320531ee76e08debf899008ed8814275416118fa60f5f558",
+    "pubDate": "2026-11-08T12:54:11+01:00",
+    "starts_at": "2026-11-08T12:54:11+01:00",
+    "ends_at": "2026-11-08T23:59:00+01:00",
+    "_identity": "wl|störung|L=37|D=2026-11-08|TK=gasrohrgebrechen züge halten währinger gürtel ggü 164"
   },
   {
     "source": "Wiener Linien",
@@ -910,6 +978,22 @@
     "starts_at": "2026-11-08T00:00:07+01:00",
     "ends_at": "2026-11-08T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-08|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-11-08T12:32:00+01:00",
+    "starts_at": "2026-11-08T12:32:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U3|D=2026-11-08|TK=u3 verspätungen",
+    "_wl_ids": [
+      "I20261108-0011"
+    ],
+    "_incident_start": "2026-11-08T12:32:00+01:00"
   },
   {
     "source": "Wiener Linien",
