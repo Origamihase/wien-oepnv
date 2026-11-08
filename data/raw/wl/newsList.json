@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1016568, ftazW_212, ftazW_1016948, ftazW_1031285, ftazW_1351713, ftazW_97, ftazW_1016949, ftazW_1353814, ftazW_1031271, ftazW_1351712, ftazW_487, ftazW_444, ftazW_1031284, ftazW_2, ftazW_1353815, ftazW_582, ftazW_1017115, ftazW_1351714, ftazW_445, ftazW_3, ftazW_1017116, ftazW_211, ftazW_1018631, ftazW_488, ftazW_581, ftazW_1351716, ftazW_146, ftazW_1016567, ftazW_486, ftazW_734, ftazW_769"
+    "trafficInfoNameList": "ftazW_1016568, ftazW_212, ftazW_1016948, ftazW_1031285, ftazW_1351713, ftazW_97, ftazW_1016949, ftazW_1353814, ftazW_1031271, ftazW_1351712, ftazW_487, ftazW_444, ftazW_1031284, ftazW_2, ftazW_1353815, ftazW_582, ftazW_1017115, ftazW_1351714, ftazW_445, ftazW_3, ftazW_1017116, ftazW_211, ftazW_1018631, ftazW_488, ftazW_581, ftazW_1351716, ftazW_146, ftazW_1016567, ftazW_486, ftazW_734, ftazW_769, ftazW_147, ftazW_29, ftazW_489, ftazW_770, ftazW_1351715"
    }
   ],
   "poiCategoryGroups": [
@@ -3016,8 +3016,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U2",
-      "U1"
+      "U1",
+      "U2"
      ],
      "station": "Praterstern",
      "status": "geplante Wartung",
@@ -3031,8 +3031,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U2",
-     "U1"
+     "U1",
+     "U2"
     ],
     "relatedStops": [
      4117
@@ -3055,8 +3055,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U2",
-      "U1"
+      "U1",
+      "U2"
      ],
      "station": "Praterstern",
      "status": "geplante Wartung",
@@ -3070,8 +3070,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U2",
-     "U1"
+     "U1",
+     "U2"
     ],
     "relatedStops": [
      4112
@@ -3170,8 +3170,8 @@
      "rbls": [],
      "reason": "",
      "relatedLines": [
-      "U2",
-      "U1"
+      "U1",
+      "U2"
      ],
      "station": "Praterstern",
      "status": "geplante Wartung",
@@ -3185,8 +3185,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U2",
-     "U1"
+     "U1",
+     "U2"
     ],
     "time": {
      "end": "2026-11-10T05:15:00.000+0100",
@@ -3430,6 +3430,45 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "11.11.2026 05:15",
+     "ausVon": "11.11.2026 01:15",
+     "location": "beide Fahrtrichtungen - Ausgang Alaudagasse",
+     "rbls": [
+      4136,
+      4131
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Alaudagasse",
+     "status": "geplante Wartung",
+     "towards": "U1 beide Richtungen"
+    },
+    "description": "beide Fahrtrichtungen - Ausgang Alaudagasse",
+    "elevatorId": "AL 02",
+    "name": "ftazW_1351715",
+    "parentName": "ftazW_1351715",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4136,
+     4131
+    ],
+    "time": {
+     "end": "2026-11-11T05:15:00.000+0100",
+     "start": "2026-11-11T01:15:00.000+0100"
+    },
+    "title": "Alaudagasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "10.11.2026 05:15",
      "ausVon": "10.11.2026 01:15",
      "location": "beide Fahrtrichtungen - Ausgang Per Albin Hansson Siedlung",
@@ -3572,6 +3611,45 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "11.11.2026 05:15",
+     "ausVon": "11.11.2026 01:15",
+     "location": "U3 Mittelbahnsteig - Ausgang Rochusmarkt",
+     "rbls": [
+      4914,
+      4903
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Rochusgasse",
+     "status": "geplante Wartung",
+     "towards": "U3 beide Richtungen"
+    },
+    "description": "U3 Mittelbahnsteig - Ausgang Rochusmarkt",
+    "elevatorId": "RG 02",
+    "name": "ftazW_147",
+    "parentName": "ftazW_147",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedStops": [
+     4914,
+     4903
+    ],
+    "time": {
+     "end": "2026-11-11T05:15:00.000+0100",
+     "start": "2026-11-11T01:15:00.000+0100"
+    },
+    "title": "Rochusgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "10.11.2026 00:45",
      "ausVon": "09.11.2026 20:45",
      "location": "U1 Bahnsteig Richtung Leopoldau - Ausgang Arbeiterstrandbadstraße",
@@ -3668,6 +3746,38 @@
      "start": "2026-11-08T20:45:00.000+0100"
     },
     "title": "Bahnhof Meidling"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "11.11.2026 05:15",
+     "ausVon": "11.11.2026 01:15",
+     "location": "Zwischengeschoss - Ausgang Minoritenplatz",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Herrengasse",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Zwischengeschoss - Ausgang Minoritenplatz",
+    "elevatorId": "HZ 01",
+    "name": "ftazW_29",
+    "parentName": "ftazW_29",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "time": {
+     "end": "2026-11-11T05:15:00.000+0100",
+     "start": "2026-11-11T01:15:00.000+0100"
+    },
+    "title": "Herrengasse"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3830,8 +3940,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U4",
-      "U6"
+      "U6",
+      "U4"
      ],
      "station": "Spittelau",
      "status": "geplante Wartung",
@@ -3845,8 +3955,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U4",
-     "U6"
+     "U6",
+     "U4"
     ],
     "relatedStops": [
      4627
@@ -3871,8 +3981,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U4",
-      "U6"
+      "U6",
+      "U4"
      ],
      "station": "Spittelau",
      "status": "geplante Wartung",
@@ -3886,8 +3996,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U4",
-     "U6"
+     "U6",
+     "U4"
     ],
     "relatedStops": [
      4439,
@@ -3904,14 +4014,53 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "11.11.2026 05:15",
+     "ausVon": "11.11.2026 01:15",
+     "location": "U6 Bahnsteig Richtung Floridsdorf - Zwischengeschoss - ÖBB Bahnsteig",
+     "rbls": [
+      4627
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6",
+      "U4"
+     ],
+     "station": "Spittelau",
+     "status": "geplante Wartung",
+     "towards": "U6 Floridsdorf"
+    },
+    "description": "U6 Bahnsteig Richtung Floridsdorf - Zwischengeschoss - ÖBB Bahnsteig",
+    "elevatorId": "AU 04",
+    "name": "ftazW_489",
+    "parentName": "ftazW_489",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6",
+     "U4"
+    ],
+    "relatedStops": [
+     4627
+    ],
+    "time": {
+     "end": "2026-11-11T05:15:00.000+0100",
+     "start": "2026-11-11T01:15:00.000+0100"
+    },
+    "title": "Spittelau"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "10.11.2026 05:15",
      "ausVon": "10.11.2026 01:15",
      "location": "U4 Mittelbahnsteig - Karlsplatzpassage",
      "rbls": [],
      "reason": "",
      "relatedLines": [
-      "U2",
       "U1",
+      "U2",
       "U4"
      ],
      "station": "Karlsplatz",
@@ -3926,8 +4075,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U2",
      "U1",
+     "U2",
      "U4"
     ],
     "time": {
@@ -4034,6 +4183,43 @@
     "time": {
      "end": "2026-11-11T00:45:00.000+0100",
      "start": "2026-11-10T20:45:00.000+0100"
+    },
+    "title": "Vorgartenstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "11.11.2026 05:15",
+     "ausVon": "11.11.2026 01:15",
+     "location": "U1 Bahnsteig Richtung Oberlaa - Ausgang Radingerstraße",
+     "rbls": [
+      4110
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Vorgartenstraße",
+     "status": "geplante Wartung",
+     "towards": "U1 Oberlaa"
+    },
+    "description": "U1 Bahnsteig Richtung Oberlaa - Ausgang Radingerstraße",
+    "elevatorId": "VS 02",
+    "name": "ftazW_770",
+    "parentName": "ftazW_770",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4110
+    ],
+    "time": {
+     "end": "2026-11-11T05:15:00.000+0100",
+     "start": "2026-11-11T01:15:00.000+0100"
     },
     "title": "Vorgartenstraße"
    },
