@@ -8,20 +8,20 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 08 Nov 2026 17:01:01 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 08 Nov 2026 17:30:47 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[D: Schadhafter Zug]]></title>
+      <title><![CDATA[5: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">ccf13cb024ff2cfbe470a6e77ca4b710b3b276aa11dcc77bfc01470d95963a55</guid>
-      <pubDate>Sun, 08 Nov 2026 16:19:03 +0100</pubDate>
+      <guid isPermaLink="false">8f92fb936b7c740f0f8bc713737d2ddddc0101ed1972011221685e252f6f06f4</guid>
+      <pubDate>Sun, 08 Nov 2026 17:24:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sun, 08 Nov 2026 17:01:01 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 08 Nov 2026 16:19:03 +0100</ext:starts_at>
-      <description>Züge halten bei Linie 46; Umleitung bis Schwarzenbergplatz über Linie 1 und 2. [Seit 16:19]</description>
-      <content:encoded><![CDATA[Züge halten bei Linie 46; Umleitung bis Schwarzenbergplatz über Linie 1 und 2.<br/>[Seit 16:19]]]></content:encoded>
+      <ext:first_seen>Sun, 08 Nov 2026 17:24:00 +0100</ext:first_seen>
+      <ext:starts_at>Sun, 08 Nov 2026 17:24:00 +0100</ext:starts_at>
+      <description>Fahrtbehinderung in Richtung Praterstern. Voraussichtlich bis 18:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Westbahnhof. [Seit 17:24]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Praterstern. Voraussichtlich bis 18:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Westbahnhof.<br/>[Seit 17:24]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Polizeieinsatz]]></title>
@@ -37,7 +37,7 @@
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Seit 16:57]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U2: Schadhaftes Fahrzeug, Verspätungen]]></title>
+      <title><![CDATA[U2: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104</guid>
       <pubDate>Sun, 08 Nov 2026 16:44:00 +0100</pubDate>
@@ -46,24 +46,11 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sun, 08 Nov 2026 16:44:00 +0100</ext:first_seen>
       <ext:starts_at>Sun, 08 Nov 2026 16:44:00 +0100</ext:starts_at>
-      <description>Schadhaftes Fahrzeug: Die Linie U2 fährt derzeit zwischen den Stationen Donauspital und Hardeggasse in beiden Richtungen über Gleis 2. Verspätungen: Unregelmäßige Intervalle … [Seit 16:44]</description>
-      <content:encoded><![CDATA[Schadhaftes Fahrzeug: Die Linie U2 fährt derzeit zwischen den Stationen Donauspital und Hardeggasse in beiden Richtungen über Gleis 2. Verspätungen: Unregelmäßige Intervalle …<br/>[Seit 16:44]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 16:44]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 16:44]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[71: Schadhafter Zug]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">c62e0f02b50816a93ce5398eee92a598c2a87b09a1ca6f4ec26e9d29d83ea607</guid>
-      <pubDate>Sun, 08 Nov 2026 16:14:32 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sun, 08 Nov 2026 16:30:53 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 08 Nov 2026 16:14:32 +0100</ext:starts_at>
-      <description>Betrieb ab Schwarzenbergplatz. [Seit 16:14]</description>
-      <content:encoded><![CDATA[Betrieb ab Schwarzenbergplatz.<br/>[Seit 16:14]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/2: Schadhaftes Fahrzeug]]></title>
+      <title><![CDATA[1/2/D: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">1599f7368b98b8995e7d2a59ae58dc796cdfebfdae457301df80ae7184776ac3</guid>
       <pubDate>Sun, 08 Nov 2026 16:21:00 +0100</pubDate>
@@ -72,8 +59,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sun, 08 Nov 2026 14:30:00 +0100</ext:first_seen>
       <ext:starts_at>Sun, 08 Nov 2026 16:21:00 +0100</ext:starts_at>
-      <description>Züge halten bei Linie 46. [Seit 16:21]</description>
-      <content:encoded><![CDATA[Züge halten bei Linie 46.<br/>[Seit 16:21]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 16:21]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 16:21]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[37: Gasrohrbruch]]></title>
@@ -87,6 +74,21 @@
       <ext:starts_at>Sun, 08 Nov 2026 12:46:00 +0100</ext:starts_at>
       <description>Betrieb nur zwischen Schottentor und Nußdorfer Straße. Ersatz: Linien U4, U6, 38, 10A, 38A, 39A; Züge halten Währinger Gürtel ggü.164. Voraussichtlich bis Betriebsschluss. [Seit 12:46]</description>
       <content:encoded><![CDATA[Betrieb nur zwischen Schottentor und Nußdorfer Straße. Ersatz: Linien U4, U6, 38, 10A, 38A, 39A; Züge halten Währinger Gürtel ggü.164. Voraussichtlich bis Betriebsschluss.<br/>[Seit 12:46]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Stadlau ↔ Wien Süßenbrunn]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;925198</guid>
+      <pubDate>Sun, 08 Nov 2026 17:04:59 +0100</pubDate>
+      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Sun, 08 Nov 2026 17:30:47 +0100</ext:first_seen>
+      <ext:starts_at>Sun, 08 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Sun, 08 Nov 2026 23:59:59 +0100</ext:ends_at>
+      <georss:line>48.219255 16.448852 48.285524 16.485345</georss:line>
+      <description>Wegen Personen im Gleisbereich waren bis 17:03 Uhr keine Fahrten möglich. Planen Sie derzeit noch bis zu 5 Minuten mehr Reisezeit ein. [Heute]</description>
+      <content:encoded><![CDATA[Wegen Personen im Gleisbereich waren bis 17:03 Uhr keine Fahrten möglich. Planen Sie derzeit noch bis zu 5 Minuten mehr Reisezeit ein.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx]]></title>

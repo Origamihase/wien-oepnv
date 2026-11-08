@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261108-0024, I20261108-0016, I20260925-0011, I20260909-0007, I20261108-0013, I20261020-0029, I20261108-0023-F01, I20261108-0023-F02, I20261108-0023-F03, I20261108-0023-F04, I20261108-0025"
+    "trafficInfoNameList": "I20261108-0024-F01-F01, I20260925-0011, I20260909-0007, I20261108-0026, I20261108-0013, I20261020-0029, I20261108-0023-F01, I20261108-0023-F02, I20261108-0023-F03, I20261108-0025"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R293-474, R318-437, R2343-626, R2343-125, R2378-627, R1884-101, R1876-101, R1875-101, R1880-101, R1881-101, R2372-125, R2370-125, R2359-125, R1883-101, R2373-127, R2373-125, R2371-125, R2345-127, R2380-627, R2379-627, R2373-126, R1882-101, R2558-125, R3886-480, R1974-466, R500-101, R197-137, R196-137, R198-137, R199-137, R215-137, R216-137, R202-137, R204-137, R205-137, R206-137, R207-137, R203-137, R201-137, R208-137, R17-171, R19-171, R15-171, R14-171, R13-171, R81-171, R18-171, R51-171, R79-171, R50-171, R49-171, R47-171, R46-171, R45-171, R44-171, R45-136, R50-136, R47-136, R46-136, R51-136, R49-136, R49-102, R49-101, R15-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R401-101, R293-474, R2343-125, R2359-125, R2343-626, R2378-627, R2379-627, R2373-126, R2373-127, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2380-627, R2345-127, R2373-125, R2372-125, R2371-125, R2370-125, R2558-125, R3886-480, R1974-466, R500-101, R196-137, R216-137, R215-137, R199-137, R198-137, R197-137, R202-137, R201-137, R207-137, R206-137, R205-137, R204-137, R203-137, R208-137, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -220,51 +220,6 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "U2": "ptMetro"
-     }
-    },
-    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U2: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261108-0016",
-    "owner": "WL",
-    "parentName": "I20261108-0016",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 302,
-      "lineName": "U2",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-08T14:47:00.000+0100",
-     "lastUpdate": "2026-11-08T14:47:00.000+0100",
-     "resume": "2026-11-08T14:46:00.000+0100",
-     "start": "2026-11-08T14:46:00.000+0100"
-    },
-    "title": "U2: Verspätungen"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
       "1": "ptTram"
      }
     },
@@ -412,70 +367,21 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "71": "ptTram"
-     }
-    },
-    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 71: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 71: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "71: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "location": "abs",
-    "name": "I20261108-0023-F04",
-    "owner": "WL",
-    "parentName": "I20261108-0023",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 171,
-      "lineName": "71",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     49
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-08T16:34:00.000+0100",
-     "lastUpdate": "2026-11-08T16:34:00.000+0100",
-     "resume": "2026-11-08T16:34:00.000+0100",
-     "start": "2026-11-08T16:21:00.000+0100"
-    },
-    "title": "71: Schadhaftes Fahrzeug"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
       "U2": "ptMetro"
      }
     },
-    "description": "Die Linie U2 fährt derzeit zwischen den Stationen Donauspital und Hardeggasse in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 17:10 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Donauspital.",
-    "descriptionHTML": "<p>Die Linie U2 fährt derzeit zwischen den Stationen Donauspital und Hardeggasse in beiden Richtungen über Gleis 2.</p><p>Voraussichtliche Dauer: 17:10 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Donauspital.</p>",
+    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Die Linie U2 fährt derzeit zwischen den Stationen Donauspital und Hardeggasse in beiden Richtungen über Gleis 2.</p><p>Voraussichtliche Dauer: 17:10 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Donauspital.</p>",
-       "descriptionPlain": "Die Linie U2 fährt derzeit zwischen den Stationen Donauspital und Hardeggasse in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 17:10 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Donauspital.",
+       "descriptionHtml": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "U2: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261108-0024",
+    "name": "I20261108-0024-F01-F01",
     "owner": "WL",
     "parentName": "I20261108-0024",
     "priority": "1",
@@ -497,8 +403,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-08T16:46:00.000+0100",
-     "lastUpdate": "2026-11-08T16:46:00.000+0100",
+     "created": "2026-11-08T17:23:00.000+0100",
+     "lastUpdate": "2026-11-08T17:23:00.000+0100",
+     "resume": "2026-11-08T17:23:00.000+0100",
      "start": "2026-11-08T16:44:00.000+0100"
     },
     "title": "U2: Schadhaftes Fahrzeug"
@@ -552,139 +459,51 @@
     "title": "U3: Polizeieinsatz"
    },
    {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R13-171",
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "5": "ptTram"
+     }
+    },
+    "description": "Linie 5: Fahrtbehinderung in Richtung Praterstern S U. Voraussichtliche Dauer: 18:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Westbahnhof S U.",
+    "descriptionHTML": "<p>Linie 5:<br>Fahrtbehinderung in Richtung Praterstern S U.</p><p>Voraussichtliche Dauer: 18:00 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Westbahnhof S U.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 5:<br>Fahrtbehinderung in Richtung Praterstern S U.</p><p>Voraussichtliche Dauer: 18:00 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Westbahnhof S U.</p>",
+       "descriptionPlain": "Linie 5: Fahrtbehinderung in Richtung Praterstern S U. Voraussichtliche Dauer: 18:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Westbahnhof S U.",
+       "title": "5: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261108-0026",
     "owner": "WL",
-    "parentName": "R13-171",
+    "parentName": "I20261108-0026",
     "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "71"
+     "5"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 105,
+      "lineName": "5",
+      "vehicleType": "ptTram"
+     }
     ],
     "relatedStops": [
-     13
+     370
     ],
+    "status": "active",
     "time": {
-     "end": "2026-11-08T17:14:00.000+0100",
-     "start": "2026-11-08T16:14:32.000+0100"
+     "created": "2026-11-08T17:24:00.000+0100",
+     "lastUpdate": "2026-11-08T17:24:00.000+0100",
+     "start": "2026-11-08T17:24:00.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R14-171",
-    "owner": "WL",
-    "parentName": "R14-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     14
-    ],
-    "time": {
-     "end": "2026-11-08T17:14:00.000+0100",
-     "start": "2026-11-08T16:14:32.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug \nZüge halten nach Bellariastraße ",
-    "name": "R15-0",
-    "owner": "WL",
-    "parentName": "R15-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     15
-    ],
-    "time": {
-     "end": "2026-11-08T17:25:00.000+0100",
-     "start": "2026-11-08T16:26:33.000+0100"
-    },
-    "title": "Schadhafter Zug \nZüge halten nach Bellariastraße "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R15-171",
-    "owner": "WL",
-    "parentName": "R15-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     15
-    ],
-    "time": {
-     "end": "2026-11-08T17:14:00.000+0100",
-     "start": "2026-11-08T16:14:32.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R17-171",
-    "owner": "WL",
-    "parentName": "R17-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     17
-    ],
-    "time": {
-     "end": "2026-11-08T17:14:00.000+0100",
-     "start": "2026-11-08T16:14:32.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R18-171",
-    "owner": "WL",
-    "parentName": "R18-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     18
-    ],
-    "time": {
-     "end": "2026-11-08T17:14:00.000+0100",
-     "start": "2026-11-08T16:14:32.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
+    "title": "5: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -846,29 +665,6 @@
      "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Gleisbauarbeiten\nZüge halten Quellenstraße 156 (Linie 6)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R19-171",
-    "owner": "WL",
-    "parentName": "R19-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     19
-    ],
-    "time": {
-     "end": "2026-11-08T17:14:00.000+0100",
-     "start": "2026-11-08T16:14:32.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1632,305 +1428,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz",
-    "name": "R44-171",
-    "owner": "WL",
-    "parentName": "R44-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     44
-    ],
-    "time": {
-     "end": "2026-11-08T17:15:00.000+0100",
-     "start": "2026-11-08T16:16:32.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nUmleitung bis Schwarzenbergplatz über Linie 1 und 2",
-    "name": "R45-136",
-    "owner": "WL",
-    "parentName": "R45-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     45
-    ],
-    "time": {
-     "end": "2026-11-08T17:18:00.000+0100",
-     "start": "2026-11-08T16:19:03.000+0100"
-    },
-    "title": "Schadhafter Zug\nUmleitung bis Schwarzenbergplatz über Linie 1 und 2"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz",
-    "name": "R45-171",
-    "owner": "WL",
-    "parentName": "R45-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     45
-    ],
-    "time": {
-     "end": "2026-11-08T17:15:00.000+0100",
-     "start": "2026-11-08T16:16:32.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nUmleitung bis Schwarzenbergplatz über Linie 1 und 2",
-    "name": "R46-136",
-    "owner": "WL",
-    "parentName": "R46-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     46
-    ],
-    "time": {
-     "end": "2026-11-08T17:18:00.000+0100",
-     "start": "2026-11-08T16:19:03.000+0100"
-    },
-    "title": "Schadhafter Zug\nUmleitung bis Schwarzenbergplatz über Linie 1 und 2"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz",
-    "name": "R46-171",
-    "owner": "WL",
-    "parentName": "R46-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     46
-    ],
-    "time": {
-     "end": "2026-11-08T17:15:00.000+0100",
-     "start": "2026-11-08T16:16:32.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nUmleitung bis Schwarzenbergplatz über Linie 1 und 2",
-    "name": "R47-136",
-    "owner": "WL",
-    "parentName": "R47-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     47
-    ],
-    "time": {
-     "end": "2026-11-08T17:18:00.000+0100",
-     "start": "2026-11-08T16:19:03.000+0100"
-    },
-    "title": "Schadhafter Zug\nUmleitung bis Schwarzenbergplatz über Linie 1 und 2"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz",
-    "name": "R47-171",
-    "owner": "WL",
-    "parentName": "R47-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     47
-    ],
-    "time": {
-     "end": "2026-11-08T17:15:00.000+0100",
-     "start": "2026-11-08T16:16:32.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nZüge halten bei Linie 46",
-    "name": "R49-101",
-    "owner": "WL",
-    "parentName": "R49-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     49
-    ],
-    "time": {
-     "end": "2026-11-08T17:24:00.000+0100",
-     "start": "2026-11-08T16:25:03.000+0100"
-    },
-    "title": "Schadhafter Zug\nZüge halten bei Linie 46"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nZüge halten bei Linie 46",
-    "name": "R49-102",
-    "owner": "WL",
-    "parentName": "R49-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     49
-    ],
-    "time": {
-     "end": "2026-11-08T17:22:00.000+0100",
-     "start": "2026-11-08T16:23:33.000+0100"
-    },
-    "title": "Schadhafter Zug\nZüge halten bei Linie 46"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nZüge halten bei Linie 46",
-    "name": "R49-136",
-    "owner": "WL",
-    "parentName": "R49-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     49
-    ],
-    "time": {
-     "end": "2026-11-08T17:23:00.000+0100",
-     "start": "2026-11-08T16:19:03.000+0100"
-    },
-    "title": "Schadhafter Zug\nZüge halten bei Linie 46"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz",
-    "name": "R49-171",
-    "owner": "WL",
-    "parentName": "R49-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     49
-    ],
-    "time": {
-     "end": "2026-11-08T17:15:00.000+0100",
-     "start": "2026-11-08T16:16:32.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nUmleitung bis Schwarzenbergplatz über Linie 1 und 2",
-    "name": "R50-136",
-    "owner": "WL",
-    "parentName": "R50-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     50
-    ],
-    "time": {
-     "end": "2026-11-08T17:18:00.000+0100",
-     "start": "2026-11-08T16:19:03.000+0100"
-    },
-    "title": "Schadhafter Zug\nUmleitung bis Schwarzenbergplatz über Linie 1 und 2"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz",
-    "name": "R50-171",
-    "owner": "WL",
-    "parentName": "R50-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     50
-    ],
-    "time": {
-     "end": "2026-11-08T17:15:00.000+0100",
-     "start": "2026-11-08T16:16:32.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -1950,98 +1447,6 @@
      "start": "2026-11-08T05:00:25.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nUmleitung bis Schwarzenbergplatz über Linie 1 und 2",
-    "name": "R51-136",
-    "owner": "WL",
-    "parentName": "R51-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     51
-    ],
-    "time": {
-     "end": "2026-11-08T17:18:00.000+0100",
-     "start": "2026-11-08T16:19:03.000+0100"
-    },
-    "title": "Schadhafter Zug\nUmleitung bis Schwarzenbergplatz über Linie 1 und 2"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz",
-    "name": "R51-171",
-    "owner": "WL",
-    "parentName": "R51-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     51
-    ],
-    "time": {
-     "end": "2026-11-08T17:15:00.000+0100",
-     "start": "2026-11-08T16:16:32.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz",
-    "name": "R79-171",
-    "owner": "WL",
-    "parentName": "R79-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     79
-    ],
-    "time": {
-     "end": "2026-11-08T17:15:00.000+0100",
-     "start": "2026-11-08T16:16:32.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R81-171",
-    "owner": "WL",
-    "parentName": "R81-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     81
-    ],
-    "time": {
-     "end": "2026-11-08T17:14:00.000+0100",
-     "start": "2026-11-08T16:14:32.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
