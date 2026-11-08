@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261108-0012, I20261108-0013, I20261108-0014"
+    "trafficInfoNameList": "I20261108-0015-F01, I20261108-0015-F02, I20261108-0016, I20260925-0011, I20260909-0007, I20261108-0013, I20261108-0014-F01, I20261108-0017, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R401-101, R293-474, R2343-125, R2343-626, R2378-627, R2345-127, R2380-627, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2558-125, R3886-480, R1974-466, R500-101, R197-137, R216-137, R215-137, R199-137, R198-137, R196-137, R201-137, R206-137, R207-137, R205-137, R204-137, R203-137, R202-137, R208-137, R771-412, R753-412, R772-412, R751-412, R699-412, R670-412, R1684-412, R3135-412, R3134-412, R3136-412, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R401-101, R293-474, R1883-101, R2378-627, R1884-101, R2343-626, R1881-101, R1882-101, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R1875-101, R1876-101, R1880-101, R2345-127, R2558-125, R3886-480, R1974-466, R500-101, R216-137, R197-137, R196-137, R198-137, R199-137, R215-137, R204-137, R201-137, R202-137, R203-137, R205-137, R206-137, R207-137, R208-137, R670-412, R772-412, R771-412, R753-412, R751-412, R699-412, R1684-412, R3136-412, R3135-412, R3134-412, R318-102, R319-102, R321-102, R322-102, R320-102, R323-131, R2170-131, R2168-131, R2169-131, R2171-131, R2158-131, R2166-131, R2167-131, R2159-131, R2189-131, R2191-131, R2190-131, R2193-131, R321-131, R322-131, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,51 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "vandalism",
-    "alertCauseId": 16,
-    "attributes": {
-     "relatedLineTypes": {
-      "31": "ptTram"
-     }
-    },
-    "description": "Linie 31: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "descriptionHTML": "<p>Linie 31:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 31:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
-       "descriptionPlain": "Linie 31: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-       "title": "31: Verunreinigung"
-      }
-     }
-    ],
-    "name": "I20261108-0012",
-    "owner": "WL",
-    "parentName": "I20261108-0012",
-    "priority": "1",
-    "reasonId": 36,
-    "reasonName": "Verunreinigung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 131,
-      "lineName": "31",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-08T12:40:00.000+0100",
-     "lastUpdate": "2026-11-08T12:40:00.000+0100",
-     "resume": "2026-11-08T12:40:00.000+0100",
-     "start": "2026-11-08T12:40:00.000+0100"
-    },
-    "title": "31: Verunreinigung"
-   },
-   {
     "alertCause": "fire brigade order",
     "alertCauseId": 10,
     "attributes": {
@@ -268,19 +223,19 @@
       "12A": "ptBusCity"
      }
     },
-    "description": "Die Linie 12A wird in Richtung zwischen Schweglerstraße U, Gürtel, Sechshauser Straße umgeleitet.Dauer voraussichtlich bis 14:45 Uhr.Grund dafür ist ein Falschparker im Bereich Arnsteingasse 18.",
-    "descriptionHTML": "<p><span style=\"color: rgba(0, 0, 0, 0.87);\">Die Linie 12A wird in Richtung zwischen Schweglerstraße U, Gürtel, Sechshauser Straße umgeleitet.<br><br>Dauer voraussichtlich bis 14:45 Uhr.<br><br>Grund dafür ist ein Falschparker im Bereich Arnsteingasse 18.</span></p>",
+    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 12A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p><span style=\"color: rgba(0, 0, 0, 0.87);\">Die Linie 12A wird in Richtung zwischen Schweglerstraße U, Gürtel, Sechshauser Straße umgeleitet.<br><br>Dauer voraussichtlich bis 14:45 Uhr.<br><br>Grund dafür ist ein Falschparker im Bereich Arnsteingasse 18.</span></p>",
-       "descriptionPlain": "Die Linie 12A wird in Richtung zwischen Schweglerstraße U, Gürtel, Sechshauser Straße umgeleitet.Dauer voraussichtlich bis 14:45 Uhr.Grund dafür ist ein Falschparker im Bereich Arnsteingasse 18.",
+       "descriptionHtml": "<p>Linie 12A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "12A: Falschparker"
       }
      }
     ],
     "location": "Arnsteingasse 18",
-    "name": "I20261108-0014",
+    "name": "I20261108-0014-F01",
     "owner": "WL",
     "parentName": "I20261108-0014",
     "priority": "1",
@@ -299,11 +254,198 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-08T14:11:00.000+0100",
-     "lastUpdate": "2026-11-08T14:28:00.000+0100",
+     "created": "2026-11-08T14:38:00.000+0100",
+     "lastUpdate": "2026-11-08T14:38:00.000+0100",
+     "resume": "2026-11-08T14:38:00.000+0100",
      "start": "2026-11-08T14:10:00.000+0100"
     },
     "title": "12A: Falschparker"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "2": "ptTram"
+     }
+    },
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "2: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261108-0015-F01",
+    "owner": "WL",
+    "parentName": "I20261108-0015",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 102,
+      "lineName": "2",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     319
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-08T14:45:00.000+0100",
+     "lastUpdate": "2026-11-08T14:45:00.000+0100",
+     "resume": "2026-11-08T14:45:00.000+0100",
+     "start": "2026-11-08T14:30:00.000+0100"
+    },
+    "title": "2: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "31": "ptTram"
+     }
+    },
+    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "31: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261108-0015-F02",
+    "owner": "WL",
+    "parentName": "I20261108-0015",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 131,
+      "lineName": "31",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     319
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-08T14:45:00.000+0100",
+     "lastUpdate": "2026-11-08T14:45:00.000+0100",
+     "resume": "2026-11-08T14:45:00.000+0100",
+     "start": "2026-11-08T14:30:00.000+0100"
+    },
+    "title": "31: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U2": "ptMetro"
+     }
+    },
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U2: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261108-0016",
+    "owner": "WL",
+    "parentName": "I20261108-0016",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 302,
+      "lineName": "U2",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-08T14:47:00.000+0100",
+     "lastUpdate": "2026-11-08T14:47:00.000+0100",
+     "resume": "2026-11-08T14:46:00.000+0100",
+     "start": "2026-11-08T14:46:00.000+0100"
+    },
+    "title": "U2: Verspätungen"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "48A": "ptBusCity"
+     }
+    },
+    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "<p>Linie 48A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 48A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+       "descriptionPlain": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+       "title": "48A: Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261108-0017",
+    "owner": "WL",
+    "parentName": "I20261108-0017",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 448,
+      "lineName": "48A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-08T14:56:00.000+0100",
+     "lastUpdate": "2026-11-08T14:56:00.000+0100",
+     "resume": "2026-11-08T14:56:00.000+0100",
+     "start": "2026-11-08T14:56:00.000+0100"
+    },
+    "title": "48A: Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -814,6 +956,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Floridsdorf S U",
+    "name": "R2158-131",
+    "owner": "WL",
+    "parentName": "R2158-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2158
+    ],
+    "time": {
+     "end": "2026-11-08T15:34:00.000+0100",
+     "start": "2026-11-08T14:34:52.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Floridsdorf S U"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Wexstraße ",
+    "name": "R2159-131",
+    "owner": "WL",
+    "parentName": "R2159-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2159
+    ],
+    "time": {
+     "end": "2026-11-08T15:34:00.000+0100",
+     "start": "2026-11-08T14:35:22.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Wexstraße "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Fahrtbehinderung\nwegen Gasrohrgebrechen",
     "name": "R216-137",
     "owner": "WL",
@@ -833,6 +1021,236 @@
      "start": "2026-11-08T12:49:40.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Gasrohrgebrechen"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Floridsdorf S U",
+    "name": "R2166-131",
+    "owner": "WL",
+    "parentName": "R2166-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2166
+    ],
+    "time": {
+     "end": "2026-11-08T15:34:00.000+0100",
+     "start": "2026-11-08T14:34:52.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Floridsdorf S U"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Floridsdorf S U",
+    "name": "R2167-131",
+    "owner": "WL",
+    "parentName": "R2167-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2167
+    ],
+    "time": {
+     "end": "2026-11-08T15:34:00.000+0100",
+     "start": "2026-11-08T14:34:52.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Floridsdorf S U"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Floridsdorf S U",
+    "name": "R2168-131",
+    "owner": "WL",
+    "parentName": "R2168-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2168
+    ],
+    "time": {
+     "end": "2026-11-08T15:34:00.000+0100",
+     "start": "2026-11-08T14:34:52.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Floridsdorf S U"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Floridsdorf S U",
+    "name": "R2169-131",
+    "owner": "WL",
+    "parentName": "R2169-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2169
+    ],
+    "time": {
+     "end": "2026-11-08T15:34:00.000+0100",
+     "start": "2026-11-08T14:34:52.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Floridsdorf S U"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Floridsdorf S U",
+    "name": "R2170-131",
+    "owner": "WL",
+    "parentName": "R2170-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2170
+    ],
+    "time": {
+     "end": "2026-11-08T15:34:00.000+0100",
+     "start": "2026-11-08T14:34:52.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Floridsdorf S U"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Floridsdorf S U",
+    "name": "R2171-131",
+    "owner": "WL",
+    "parentName": "R2171-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2171
+    ],
+    "time": {
+     "end": "2026-11-08T15:34:00.000+0100",
+     "start": "2026-11-08T14:34:52.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Floridsdorf S U"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Wexstraße ",
+    "name": "R2189-131",
+    "owner": "WL",
+    "parentName": "R2189-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2189
+    ],
+    "time": {
+     "end": "2026-11-08T15:34:00.000+0100",
+     "start": "2026-11-08T14:35:24.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Wexstraße "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Wexstraße ",
+    "name": "R2190-131",
+    "owner": "WL",
+    "parentName": "R2190-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2190
+    ],
+    "time": {
+     "end": "2026-11-08T15:34:00.000+0100",
+     "start": "2026-11-08T14:35:24.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Wexstraße "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Wexstraße ",
+    "name": "R2191-131",
+    "owner": "WL",
+    "parentName": "R2191-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2191
+    ],
+    "time": {
+     "end": "2026-11-08T15:34:00.000+0100",
+     "start": "2026-11-08T14:35:24.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Wexstraße "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Wexstraße ",
+    "name": "R2193-131",
+    "owner": "WL",
+    "parentName": "R2193-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2193
+    ],
+    "time": {
+     "end": "2026-11-08T15:34:00.000+0100",
+     "start": "2026-11-08T14:35:24.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Wexstraße "
    },
    {
     "alertCause": "undefined alert cause",
@@ -1251,6 +1669,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R318-102",
+    "owner": "WL",
+    "parentName": "R318-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     318
+    ],
+    "time": {
+     "end": "2026-11-08T15:30:00.000+0100",
+     "start": "2026-11-08T14:30:55.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -1270,6 +1711,167 @@
      "start": "2026-11-05T00:00:27.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R319-102",
+    "owner": "WL",
+    "parentName": "R319-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     319
+    ],
+    "time": {
+     "end": "2026-11-08T15:30:00.000+0100",
+     "start": "2026-11-08T14:30:55.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Dresdner Straße",
+    "name": "R320-102",
+    "owner": "WL",
+    "parentName": "R320-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     320
+    ],
+    "time": {
+     "end": "2026-11-08T15:30:00.000+0100",
+     "start": "2026-11-08T14:31:55.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Dresdner Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Dresdner Straße",
+    "name": "R321-102",
+    "owner": "WL",
+    "parentName": "R321-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     321
+    ],
+    "time": {
+     "end": "2026-11-08T15:30:00.000+0100",
+     "start": "2026-11-08T14:31:55.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Dresdner Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Wexstraße ",
+    "name": "R321-131",
+    "owner": "WL",
+    "parentName": "R321-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     321
+    ],
+    "time": {
+     "end": "2026-11-08T15:34:00.000+0100",
+     "start": "2026-11-08T14:35:25.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Wexstraße "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Dresdner Straße",
+    "name": "R322-102",
+    "owner": "WL",
+    "parentName": "R322-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     322
+    ],
+    "time": {
+     "end": "2026-11-08T15:30:00.000+0100",
+     "start": "2026-11-08T14:31:55.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Dresdner Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Wexstraße ",
+    "name": "R322-131",
+    "owner": "WL",
+    "parentName": "R322-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     322
+    ],
+    "time": {
+     "end": "2026-11-08T15:34:00.000+0100",
+     "start": "2026-11-08T14:35:25.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Wexstraße "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nZüge halten bei Linie 31",
+    "name": "R323-131",
+    "owner": "WL",
+    "parentName": "R323-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     323
+    ],
+    "time": {
+     "end": "2026-11-08T15:32:00.000+0100",
+     "start": "2026-11-08T14:32:55.000+0100"
+    },
+    "title": "Schadhafter Zug\nZüge halten bei Linie 31"
    },
    {
     "alertCause": "undefined alert cause",
