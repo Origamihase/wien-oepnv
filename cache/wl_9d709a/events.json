@@ -878,6 +878,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "37: Fahrtbehinderung Falschparker",
+    "description": "Linie 37: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 09:00 Uhr. Grund: Falschparker im Bereich Geweygasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f",
+    "pubDate": "2026-11-08T08:38:00+01:00",
+    "starts_at": "2026-11-08T08:46:17+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=37|D=2026-11-08|TK=falschparker",
+    "_wl_ids": [
+      "I20261108-0006"
+    ],
+    "_incident_start": "2026-11-08T08:38:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
