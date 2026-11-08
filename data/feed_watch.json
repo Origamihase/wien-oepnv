@@ -1,32 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-08T17:31:08.045976+00:00",
- "built": "2026-11-08T18:30:49+01:00",
+ "updated": "2026-11-08T18:01:23.337245+00:00",
+ "built": "2026-11-08T19:01:00+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-08T18:30:49+01:00",
+  "built": "2026-11-08T19:01:00+01:00",
   "items": [
-   {
-    "title": "5: Polizeieinsatz",
-    "time_line": "Seit 17:24"
-   },
    {
     "title": "U2: Schadhaftes Fahrzeug",
     "time_line": "Seit 16:44"
    },
    {
-    "title": "D: Schadhaftes Fahrzeug",
-    "time_line": "Seit 16:21"
-   },
-   {
     "title": "37: Gasrohrbruch",
     "time_line": "Seit 12:46"
-   },
-   {
-    "title": "Wien Stadlau ↔ Wien Süßenbrunn",
-    "time_line": "Heute"
    },
    {
     "title": "Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx",
@@ -47,51 +35,23 @@
    {
     "title": "31: Wexstraße",
     "time_line": "Ab Mo 09.11."
+   },
+   {
+    "title": "52A: Bauarbeiten",
+    "time_line": "Seit 05.11."
+   },
+   {
+    "title": "64A/N64R: Zouvalgasse",
+    "time_line": "Ab Mo 09.11."
+   },
+   {
+    "title": "68A: Laaer Berg, Kurpark Nordeingang",
+    "time_line": "Seit 05.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-01T17:31:53.820949+00:00",
-   "raw": {
-    "wl-stoerungen": 83,
-    "wl-hinweise": 72,
-    "oebb": 152,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 13,
-    "oebb": 130,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 8,
-    "wl": 94
-   }
-  },
-  {
-   "t": "2026-11-01T18:01:14.992580+00:00",
-   "raw": {
-    "wl-stoerungen": 77,
-    "wl-hinweise": 72,
-    "oebb": 152,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 13,
-    "oebb": 130,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 8,
-    "wl": 94
-   }
-  },
   {
    "t": "2026-11-01T18:30:59.708611+00:00",
    "raw": {
@@ -6791,17 +6751,37 @@
     "oebb": 8,
     "wl": 84
    }
+  },
+  {
+   "t": "2026-11-08T18:01:23.337245+00:00",
+   "raw": {
+    "wl-stoerungen": 51,
+    "wl-hinweise": 97,
+    "oebb": 187,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 25,
+    "oebb": 162,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 82
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-08T17:31:08.045976+00:00"
+   "last_ok": "2026-11-08T18:01:23.337245+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-08T17:31:08.045976+00:00"
+   "last_ok": "2026-11-08T18:01:23.337245+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-08T17:31:08.045976+00:00"
+   "last_ok": "2026-11-08T18:01:23.337245+00:00"
   }
  }
 }

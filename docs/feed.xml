@@ -8,22 +8,8 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 08 Nov 2026 18:30:49 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 08 Nov 2026 19:01:00 +0100</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[5: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">8f92fb936b7c740f0f8bc713737d2ddddc0101ed1972011221685e252f6f06f4</guid>
-      <pubDate>Sun, 08 Nov 2026 17:24:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sun, 08 Nov 2026 17:24:00 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 08 Nov 2026 17:32:38 +0100</ext:starts_at>
-      <ext:ends_at>Sun, 08 Nov 2026 18:31:00 +0100</ext:ends_at>
-      <description>Fahrtbehinderung. [Seit 17:24]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 17:24]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[U2: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -38,19 +24,6 @@
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 16:44]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[D: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">1599f7368b98b8995e7d2a59ae58dc796cdfebfdae457301df80ae7184776ac3</guid>
-      <pubDate>Sun, 08 Nov 2026 16:21:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sun, 08 Nov 2026 14:30:00 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 08 Nov 2026 16:21:00 +0100</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 16:21]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 16:21]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[37: Gasrohrbruch]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">f6976f751d64d931b116ceb74845ccf836db3bb1af88aaec048480ffdd2bb723</guid>
@@ -62,21 +35,6 @@
       <ext:starts_at>Sun, 08 Nov 2026 12:46:00 +0100</ext:starts_at>
       <description>Betrieb nur zwischen Schottentor und Nußdorfer Straße. Ersatz: Linien U4, U6, 38, 10A, 38A, 39A; Züge halten Währinger Gürtel ggü.164. Voraussichtlich bis Betriebsschluss. [Seit 12:46]</description>
       <content:encoded><![CDATA[Betrieb nur zwischen Schottentor und Nußdorfer Straße. Ersatz: Linien U4, U6, 38, 10A, 38A, 39A; Züge halten Währinger Gürtel ggü.164. Voraussichtlich bis Betriebsschluss.<br/>[Seit 12:46]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Stadlau ↔ Wien Süßenbrunn]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;925198</guid>
-      <pubDate>Sun, 08 Nov 2026 17:04:59 +0100</pubDate>
-      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sun, 08 Nov 2026 17:30:47 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 08 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Sun, 08 Nov 2026 23:59:59 +0100</ext:ends_at>
-      <georss:line>48.219255 16.448852 48.285524 16.485345</georss:line>
-      <description>Wegen Personen im Gleisbereich waren bis 17:03 Uhr keine Fahrten möglich. Planen Sie derzeit noch bis zu 5 Minuten mehr Reisezeit ein. [Heute]</description>
-      <content:encoded><![CDATA[Wegen Personen im Gleisbereich waren bis 17:03 Uhr keine Fahrten möglich. Planen Sie derzeit noch bis zu 5 Minuten mehr Reisezeit ein.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx]]></title>
@@ -148,6 +106,47 @@
       <georss:point>48.235958 16.365885</georss:point>
       <description>Wexstraße 12 → Klosterneuburger Straße 88-90. Haltestellenverlegung der Linie 31 in Richtung Stammersdorf. Grund: Haltestellenumbau. [Ab Mo 09.11.]</description>
       <content:encoded><![CDATA[Wexstraße 12 → Klosterneuburger Straße 88-90. Haltestellenverlegung der Linie 31 in Richtung Stammersdorf. Grund: Haltestellenumbau.<br/>[Ab Mo 09.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[52A: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">882b31fbc0f7931f30d7f8633f06be5cdcfec9e422fb92b0b8931432f57288f4</guid>
+      <pubDate>Mon, 02 Nov 2026 15:36:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 04 Nov 2026 00:00:53 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 05 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <description>Wegen Straßenbauarbeiten in der Knödelhüttenstraße wird die Linie 52A umgeleitet. [Seit 05.11.]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Knödelhüttenstraße wird die Linie 52A umgeleitet.<br/>[Seit 05.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[64A/N64R: Zouvalgasse]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">cdff8b05c55300908c52c699e1c432a54ef6ee2d3a14ab4139d4744f9e32f9e1</guid>
+      <pubDate>Wed, 04 Nov 2026 14:21:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 04 Nov 2026 14:21:00 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 09 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <georss:point>48.137917 16.321284</georss:point>
+      <description>Perfektastraße 6-8 → Perfektastraße 10-12. Haltestellenverlegung der Linie 64A in Richtung Liesing sowie Rufbus N64 in Richtung Siebenhirten. Grund: Rohrlegungsarbeiten. [Ab Mo 09.11.]</description>
+      <content:encoded><![CDATA[Perfektastraße 6-8 → Perfektastraße 10-12. Haltestellenverlegung der Linie 64A in Richtung Liesing sowie Rufbus N64 in Richtung Siebenhirten. Grund: Rohrlegungsarbeiten.<br/>[Ab Mo 09.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[68A: Laaer Berg, Kurpark Nordeingang]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">35af25ee2f54a20b0a083907d1c434c54482a85f2cad3a8438b5032218699de3</guid>
+      <pubDate>Wed, 04 Nov 2026 13:28:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 04 Nov 2026 13:28:00 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 05 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <georss:point>48.151997 16.401728</georss:point>
+      <description>Filmteichstraße vor Nordeingang des Kurparks → Etwa 30 Meter Richtung Laaer-Berg-Straße. Haltestellenverlegung der Linie 68A in Richtung Laaer Berg, Nordosteingang. … [Seit 05.11.]</description>
+      <content:encoded><![CDATA[Filmteichstraße vor Nordeingang des Kurparks → Etwa 30 Meter Richtung Laaer-Berg-Straße. Haltestellenverlegung der Linie 68A in Richtung Laaer Berg, Nordosteingang. …<br/>[Seit 05.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

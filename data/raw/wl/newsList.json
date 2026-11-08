@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1016568, ftazW_212, ftazW_1016948, ftazW_1031285, ftazW_1351713, ftazW_97, ftazW_1016949, ftazW_1353814, ftazW_1031271, ftazW_1351712, ftazW_487, ftazW_444, ftazW_1031284, ftazW_2, ftazW_1353815, ftazW_582, ftazW_1017115, ftazW_1351714, ftazW_445, ftazW_3, ftazW_1017116, ftazW_211, ftazW_1018631, ftazW_488, ftazW_581, ftazW_1351716, ftazW_146, ftazW_1016567, ftazW_486, ftazW_734, ftazW_769, ftazW_147, ftazW_29, ftazW_489, ftazW_770, ftazW_1351715"
+    "trafficInfoNameList": "ftazW_1016568, ftazW_1016948, ftazW_1031285, ftazW_1351713, ftazW_97, ftazW_1016949, ftazW_1353814, ftazW_1031271, ftazW_1351712, ftazW_487, ftazW_444, ftazW_1031284, ftazW_2, ftazW_1353815, ftazW_582, ftazW_1017115, ftazW_1351714, ftazW_445, ftazW_3, ftazW_1017116, ftazW_211, ftazW_1018631, ftazW_488, ftazW_581, ftazW_1351716, ftazW_146, ftazW_1016567, ftazW_486, ftazW_734, ftazW_769, ftazW_147, ftazW_29, ftazW_489, ftazW_770, ftazW_1351715"
    }
   ],
   "poiCategoryGroups": [
@@ -3669,38 +3669,6 @@
     "time": {
      "end": "2026-11-10T05:15:00.000+0100",
      "start": "2026-11-10T01:15:00.000+0100"
-    },
-    "title": "Bahnhof Meidling"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "09.11.2026 00:45",
-     "ausVon": "08.11.2026 20:45",
-     "location": "U6 Mittelbahnsteig - Zwischengeschoss Zugang ÖBB Bahnsteig",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Bahnhof Meidling",
-     "status": "geplante Wartung",
-     "towards": "U6 beide Richtungen"
-    },
-    "description": "U6 Mittelbahnsteig - Zwischengeschoss Zugang ÖBB Bahnsteig",
-    "elevatorId": "PH 02",
-    "name": "ftazW_212",
-    "parentName": "ftazW_212",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "time": {
-     "end": "2026-11-09T00:45:00.000+0100",
-     "start": "2026-11-08T20:45:00.000+0100"
     },
     "title": "Bahnhof Meidling"
    },
