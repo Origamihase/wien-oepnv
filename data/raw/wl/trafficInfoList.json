@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261108-0020-F01, I20261108-0016, I20260925-0011, I20261108-0021, I20260909-0007, I20261108-0013, I20261108-0017, I20261108-0019-F01, I20261020-0029"
+    "trafficInfoNameList": "I20261108-0020-F01, I20261108-0016, I20260925-0011, I20261108-0023, I20260909-0007, I20261108-0013, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R401-101, R293-474, R2378-627, R1884-101, R2343-626, R2343-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R2558-125, R3886-480, R1974-466, R500-101, R216-137, R197-137, R198-137, R199-137, R215-137, R196-137, R206-137, R207-137, R204-137, R205-137, R201-137, R202-137, R203-137, R208-137, R521-109, R553-109, R549-109, R550-109, R551-109, R552-109, R554-109, R522-109, R526-109, R525-109, R524-109, R523-109, R143-109, R223-109, R1366-102, R1367-102, R1368-102, R562-102, R561-102, R560-102, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R293-474, R318-437, R2378-627, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2558-125, R3886-480, R1974-466, R500-101, R198-137, R196-137, R197-137, R216-137, R215-137, R199-137, R203-137, R207-137, R201-137, R202-137, R205-137, R204-137, R206-137, R208-137, R81-171, R13-171, R14-171, R15-171, R17-171, R18-171, R19-171, R46-171, R47-171, R79-171, R51-171, R45-171, R44-171, R49-171, R50-171, R47-136, R45-136, R51-136, R50-136, R46-136, R49-136, R49-102, R49-101, R15-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -261,97 +261,6 @@
     "title": "U2: Verspätungen"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "48A": "ptBusCity"
-     }
-    },
-    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 48A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 48A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-       "title": "48A: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261108-0017",
-    "owner": "WL",
-    "parentName": "I20261108-0017",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 448,
-      "lineName": "48A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-08T14:56:00.000+0100",
-     "lastUpdate": "2026-11-08T14:56:00.000+0100",
-     "resume": "2026-11-08T14:56:00.000+0100",
-     "start": "2026-11-08T14:56:00.000+0100"
-    },
-    "title": "48A: Verkehrsunfall"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "9": "ptTram"
-     }
-    },
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "9: Falschparker"
-      }
-     }
-    ],
-    "location": "Hormayrgasse 33",
-    "name": "I20261108-0019-F01",
-    "owner": "WL",
-    "parentName": "I20261108-0019",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 109,
-      "lineName": "9",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-08T15:29:00.000+0100",
-     "lastUpdate": "2026-11-08T15:29:00.000+0100",
-     "resume": "2026-11-08T15:29:00.000+0100",
-     "start": "2026-11-08T15:07:00.000+0100"
-    },
-    "title": "9: Falschparker"
-   },
-   {
     "alertCause": "police activity",
     "alertCauseId": 3,
     "attributes": {
@@ -400,144 +309,208 @@
     "title": "2: Polizeieinsatz"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "35A": "ptBusCity"
+      "1": "ptTram",
+      "2": "ptTram",
+      "71": "ptTram",
+      "D": "ptTram"
      }
     },
-    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "description": "Die Züge der Linien D, 1, 2 und 71 umfahren in Richtung Absberggasse, Reumannplatz, Friedrich- Engel- Platz und Kaiserebersdorf die Haltestelle Parlament, Volkstheater und halten nach der Bellariastraße.Grund dafür ist ein schadhaftes Fahrzeug im Haltestellenbereich Parlament, U Volkstheater.",
+    "descriptionHTML": "<p><span style=\"color: rgba(0, 0, 0, 0.87);\"><br>Die Züge der Linien D, 1, 2 und 71 umfahren in Richtung Absberggasse, Reumannplatz, Friedrich- Engel- Platz und Kaiserebersdorf die Haltestelle Parlament, Volkstheater und halten nach der Bellariastraße.<br><br>Grund dafür ist ein schadhaftes Fahrzeug im Haltestellenbereich Parlament, U Volkstheater.</span></p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-       "title": "35A: Rettungseinsatz"
+       "descriptionHtml": "<p><span style=\"color: rgba(0, 0, 0, 0.87);\"><br>Die Züge der Linien D, 1, 2 und 71 umfahren in Richtung Absberggasse, Reumannplatz, Friedrich- Engel- Platz und Kaiserebersdorf die Haltestelle Parlament, Volkstheater und halten nach der Bellariastraße.<br><br>Grund dafür ist ein schadhaftes Fahrzeug im Haltestellenbereich Parlament, U Volkstheater.</span></p>",
+       "descriptionPlain": "Die Züge der Linien D, 1, 2 und 71 umfahren in Richtung Absberggasse, Reumannplatz, Friedrich- Engel- Platz und Kaiserebersdorf die Haltestelle Parlament, Volkstheater und halten nach der Bellariastraße.Grund dafür ist ein schadhaftes Fahrzeug im Haltestellenbereich Parlament, U Volkstheater.",
+       "title": "1, 2, D, 71: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261108-0021",
+    "location": "abs",
+    "name": "I20261108-0023",
     "owner": "WL",
-    "parentName": "I20261108-0021",
+    "parentName": "I20261108-0023",
     "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "35A"
+     "1",
+     "2",
+     "D",
+     "71"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 435,
-      "lineName": "35A",
-      "vehicleType": "ptBusCity"
+      "lineId": 101,
+      "lineName": "1",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 102,
+      "lineName": "2",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 136,
+      "lineName": "D",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 171,
+      "lineName": "71",
+      "vehicleType": "ptTram"
      }
     ],
     "relatedStops": [
-     1230
+     49
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-08T15:41:00.000+0100",
-     "lastUpdate": "2026-11-08T15:41:00.000+0100",
-     "resume": "2026-11-08T15:40:00.000+0100",
-     "start": "2026-11-08T15:40:00.000+0100"
+     "created": "2026-11-08T16:26:00.000+0100",
+     "lastUpdate": "2026-11-08T16:26:00.000+0100",
+     "start": "2026-11-08T16:21:00.000+0100"
     },
-    "title": "35A: Rettungseinsatz"
+    "title": "1, 2, D, 71: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Polizeieinsatz\nUmleitung bis Mayssengasse über Linie 43 und 9",
-    "name": "R1366-102",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R13-171",
     "owner": "WL",
-    "parentName": "R1366-102",
+    "parentName": "R13-171",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "2"
+     "71"
     ],
     "relatedStops": [
-     1366
+     13
     ],
     "time": {
-     "end": "2026-11-08T16:17:00.000+0100",
-     "start": "2026-11-08T15:18:26.000+0100"
+     "end": "2026-11-08T17:14:00.000+0100",
+     "start": "2026-11-08T16:14:32.000+0100"
     },
-    "title": "Polizeieinsatz\nUmleitung bis Mayssengasse über Linie 43 und 9"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Polizeieinsatz\nUmleitung bis Mayssengasse über Linie 43 und 9",
-    "name": "R1367-102",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R14-171",
     "owner": "WL",
-    "parentName": "R1367-102",
+    "parentName": "R14-171",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "2"
+     "71"
     ],
     "relatedStops": [
-     1367
+     14
     ],
     "time": {
-     "end": "2026-11-08T16:17:00.000+0100",
-     "start": "2026-11-08T15:18:26.000+0100"
+     "end": "2026-11-08T17:14:00.000+0100",
+     "start": "2026-11-08T16:14:32.000+0100"
     },
-    "title": "Polizeieinsatz\nUmleitung bis Mayssengasse über Linie 43 und 9"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Polizeieinsatz\nZüge halten bei Linie 9",
-    "name": "R1368-102",
+    "description": "Schadhafter Zug \nZüge halten nach Bellariastraße ",
+    "name": "R15-0",
     "owner": "WL",
-    "parentName": "R1368-102",
+    "parentName": "R15-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-11-08T17:25:00.000+0100",
+     "start": "2026-11-08T16:26:33.000+0100"
+    },
+    "title": "Schadhafter Zug \nZüge halten nach Bellariastraße "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R15-171",
+    "owner": "WL",
+    "parentName": "R15-171",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "2"
+     "71"
     ],
     "relatedStops": [
-     1368
+     15
     ],
     "time": {
-     "end": "2026-11-08T16:18:00.000+0100",
-     "start": "2026-11-08T15:18:26.000+0100"
+     "end": "2026-11-08T17:14:00.000+0100",
+     "start": "2026-11-08T16:14:32.000+0100"
     },
-    "title": "Polizeieinsatz\nZüge halten bei Linie 9"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Falschparker\nBetrieb ab Rosensteingasse",
-    "name": "R143-109",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R17-171",
     "owner": "WL",
-    "parentName": "R143-109",
+    "parentName": "R17-171",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "9"
+     "71"
     ],
     "relatedStops": [
-     143
+     17
     ],
     "time": {
-     "end": "2026-11-08T16:13:00.000+0100",
-     "start": "2026-11-08T15:14:25.000+0100"
+     "end": "2026-11-08T17:14:00.000+0100",
+     "start": "2026-11-08T16:14:32.000+0100"
     },
-    "title": "Falschparker\nBetrieb ab Rosensteingasse"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R18-171",
+    "owner": "WL",
+    "parentName": "R18-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     18
+    ],
+    "time": {
+     "end": "2026-11-08T17:14:00.000+0100",
+     "start": "2026-11-08T16:14:32.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -699,6 +672,29 @@
      "start": "2026-11-08T00:00:06.000+0100"
     },
     "title": "Gleisbauarbeiten\nZüge halten Quellenstraße 156 (Linie 6)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R19-171",
+    "owner": "WL",
+    "parentName": "R19-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     19
+    ],
+    "time": {
+     "end": "2026-11-08T17:14:00.000+0100",
+     "start": "2026-11-08T16:14:32.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1044,29 +1040,6 @@
      "start": "2026-11-08T12:49:40.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Gasrohrgebrechen"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Falschparker\nZüge halten Rosensteingasse 61",
-    "name": "R223-109",
-    "owner": "WL",
-    "parentName": "R223-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     223
-    ],
-    "time": {
-     "end": "2026-11-08T16:14:00.000+0100",
-     "start": "2026-11-08T15:15:25.000+0100"
-    },
-    "title": "Falschparker\nZüge halten Rosensteingasse 61"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1485,6 +1458,305 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz",
+    "name": "R44-171",
+    "owner": "WL",
+    "parentName": "R44-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     44
+    ],
+    "time": {
+     "end": "2026-11-08T17:15:00.000+0100",
+     "start": "2026-11-08T16:16:32.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nUmleitung bis Schwarzenbergplatz über Linie 1 und 2",
+    "name": "R45-136",
+    "owner": "WL",
+    "parentName": "R45-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     45
+    ],
+    "time": {
+     "end": "2026-11-08T17:18:00.000+0100",
+     "start": "2026-11-08T16:19:03.000+0100"
+    },
+    "title": "Schadhafter Zug\nUmleitung bis Schwarzenbergplatz über Linie 1 und 2"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz",
+    "name": "R45-171",
+    "owner": "WL",
+    "parentName": "R45-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     45
+    ],
+    "time": {
+     "end": "2026-11-08T17:15:00.000+0100",
+     "start": "2026-11-08T16:16:32.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nUmleitung bis Schwarzenbergplatz über Linie 1 und 2",
+    "name": "R46-136",
+    "owner": "WL",
+    "parentName": "R46-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     46
+    ],
+    "time": {
+     "end": "2026-11-08T17:18:00.000+0100",
+     "start": "2026-11-08T16:19:03.000+0100"
+    },
+    "title": "Schadhafter Zug\nUmleitung bis Schwarzenbergplatz über Linie 1 und 2"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz",
+    "name": "R46-171",
+    "owner": "WL",
+    "parentName": "R46-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     46
+    ],
+    "time": {
+     "end": "2026-11-08T17:15:00.000+0100",
+     "start": "2026-11-08T16:16:32.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nUmleitung bis Schwarzenbergplatz über Linie 1 und 2",
+    "name": "R47-136",
+    "owner": "WL",
+    "parentName": "R47-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     47
+    ],
+    "time": {
+     "end": "2026-11-08T17:18:00.000+0100",
+     "start": "2026-11-08T16:19:03.000+0100"
+    },
+    "title": "Schadhafter Zug\nUmleitung bis Schwarzenbergplatz über Linie 1 und 2"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz",
+    "name": "R47-171",
+    "owner": "WL",
+    "parentName": "R47-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     47
+    ],
+    "time": {
+     "end": "2026-11-08T17:15:00.000+0100",
+     "start": "2026-11-08T16:16:32.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nZüge halten bei Linie 46",
+    "name": "R49-101",
+    "owner": "WL",
+    "parentName": "R49-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-11-08T17:24:00.000+0100",
+     "start": "2026-11-08T16:25:03.000+0100"
+    },
+    "title": "Schadhafter Zug\nZüge halten bei Linie 46"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nZüge halten bei Linie 46",
+    "name": "R49-102",
+    "owner": "WL",
+    "parentName": "R49-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-11-08T17:22:00.000+0100",
+     "start": "2026-11-08T16:23:33.000+0100"
+    },
+    "title": "Schadhafter Zug\nZüge halten bei Linie 46"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nZüge halten bei Linie 46",
+    "name": "R49-136",
+    "owner": "WL",
+    "parentName": "R49-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-11-08T17:23:00.000+0100",
+     "start": "2026-11-08T16:19:03.000+0100"
+    },
+    "title": "Schadhafter Zug\nZüge halten bei Linie 46"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz",
+    "name": "R49-171",
+    "owner": "WL",
+    "parentName": "R49-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-11-08T17:15:00.000+0100",
+     "start": "2026-11-08T16:16:32.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nUmleitung bis Schwarzenbergplatz über Linie 1 und 2",
+    "name": "R50-136",
+    "owner": "WL",
+    "parentName": "R50-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     50
+    ],
+    "time": {
+     "end": "2026-11-08T17:18:00.000+0100",
+     "start": "2026-11-08T16:19:03.000+0100"
+    },
+    "title": "Schadhafter Zug\nUmleitung bis Schwarzenbergplatz über Linie 1 und 2"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz",
+    "name": "R50-171",
+    "owner": "WL",
+    "parentName": "R50-171",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedStops": [
+     50
+    ],
+    "time": {
+     "end": "2026-11-08T17:15:00.000+0100",
+     "start": "2026-11-08T16:16:32.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -1508,347 +1780,94 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R521-109",
+    "description": "Schadhafter Zug\nUmleitung bis Schwarzenbergplatz über Linie 1 und 2",
+    "name": "R51-136",
     "owner": "WL",
-    "parentName": "R521-109",
+    "parentName": "R51-136",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "9"
+     "D"
     ],
     "relatedStops": [
-     521
+     51
     ],
     "time": {
-     "end": "2026-11-08T16:12:00.000+0100",
-     "start": "2026-11-08T15:13:24.000+0100"
+     "end": "2026-11-08T17:18:00.000+0100",
+     "start": "2026-11-08T16:19:03.000+0100"
     },
-    "title": "Fahrtbehinderung\nFalschparker"
+    "title": "Schadhafter Zug\nUmleitung bis Schwarzenbergplatz über Linie 1 und 2"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Falschparker\nBetrieb ab Rosensteingasse",
-    "name": "R522-109",
+    "description": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz",
+    "name": "R51-171",
     "owner": "WL",
-    "parentName": "R522-109",
+    "parentName": "R51-171",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "9"
+     "71"
     ],
     "relatedStops": [
-     522
+     51
     ],
     "time": {
-     "end": "2026-11-08T16:13:00.000+0100",
-     "start": "2026-11-08T15:14:24.000+0100"
+     "end": "2026-11-08T17:15:00.000+0100",
+     "start": "2026-11-08T16:16:32.000+0100"
     },
-    "title": "Falschparker\nBetrieb ab Rosensteingasse"
+    "title": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Falschparker\nBetrieb ab Rosensteingasse",
-    "name": "R523-109",
+    "description": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz",
+    "name": "R79-171",
     "owner": "WL",
-    "parentName": "R523-109",
+    "parentName": "R79-171",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "9"
+     "71"
     ],
     "relatedStops": [
-     523
+     79
     ],
     "time": {
-     "end": "2026-11-08T16:13:00.000+0100",
-     "start": "2026-11-08T15:14:24.000+0100"
+     "end": "2026-11-08T17:15:00.000+0100",
+     "start": "2026-11-08T16:16:32.000+0100"
     },
-    "title": "Falschparker\nBetrieb ab Rosensteingasse"
+    "title": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Falschparker\nBetrieb ab Rosensteingasse",
-    "name": "R524-109",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R81-171",
     "owner": "WL",
-    "parentName": "R524-109",
+    "parentName": "R81-171",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "9"
+     "71"
     ],
     "relatedStops": [
-     524
+     81
     ],
     "time": {
-     "end": "2026-11-08T16:13:00.000+0100",
-     "start": "2026-11-08T15:14:24.000+0100"
+     "end": "2026-11-08T17:14:00.000+0100",
+     "start": "2026-11-08T16:14:32.000+0100"
     },
-    "title": "Falschparker\nBetrieb ab Rosensteingasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Falschparker\nBetrieb ab Rosensteingasse",
-    "name": "R525-109",
-    "owner": "WL",
-    "parentName": "R525-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     525
-    ],
-    "time": {
-     "end": "2026-11-08T16:13:00.000+0100",
-     "start": "2026-11-08T15:14:24.000+0100"
-    },
-    "title": "Falschparker\nBetrieb ab Rosensteingasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Falschparker\nBetrieb ab Rosensteingasse",
-    "name": "R526-109",
-    "owner": "WL",
-    "parentName": "R526-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     526
-    ],
-    "time": {
-     "end": "2026-11-08T16:13:00.000+0100",
-     "start": "2026-11-08T15:14:24.000+0100"
-    },
-    "title": "Falschparker\nBetrieb ab Rosensteingasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R549-109",
-    "owner": "WL",
-    "parentName": "R549-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     549
-    ],
-    "time": {
-     "end": "2026-11-08T16:12:00.000+0100",
-     "start": "2026-11-08T15:13:27.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R550-109",
-    "owner": "WL",
-    "parentName": "R550-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     550
-    ],
-    "time": {
-     "end": "2026-11-08T16:12:00.000+0100",
-     "start": "2026-11-08T15:13:27.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R551-109",
-    "owner": "WL",
-    "parentName": "R551-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     551
-    ],
-    "time": {
-     "end": "2026-11-08T16:12:00.000+0100",
-     "start": "2026-11-08T15:13:27.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R552-109",
-    "owner": "WL",
-    "parentName": "R552-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     552
-    ],
-    "time": {
-     "end": "2026-11-08T16:12:00.000+0100",
-     "start": "2026-11-08T15:13:27.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R553-109",
-    "owner": "WL",
-    "parentName": "R553-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     553
-    ],
-    "time": {
-     "end": "2026-11-08T16:12:00.000+0100",
-     "start": "2026-11-08T15:13:27.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R554-109",
-    "owner": "WL",
-    "parentName": "R554-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     554
-    ],
-    "time": {
-     "end": "2026-11-08T16:12:00.000+0100",
-     "start": "2026-11-08T15:13:27.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nUmleitung bis Mayssengasse über Linie 43 und 9",
-    "name": "R560-102",
-    "owner": "WL",
-    "parentName": "R560-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     560
-    ],
-    "time": {
-     "end": "2026-11-08T16:17:00.000+0100",
-     "start": "2026-11-08T15:18:27.000+0100"
-    },
-    "title": "Polizeieinsatz\nUmleitung bis Mayssengasse über Linie 43 und 9"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nUmleitung bis Mayssengasse über Linie 43 und 9",
-    "name": "R561-102",
-    "owner": "WL",
-    "parentName": "R561-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     561
-    ],
-    "time": {
-     "end": "2026-11-08T16:17:00.000+0100",
-     "start": "2026-11-08T15:18:27.000+0100"
-    },
-    "title": "Polizeieinsatz\nUmleitung bis Mayssengasse über Linie 43 und 9"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nUmleitung bis Mayssengasse über Linie 43 und 9",
-    "name": "R562-102",
-    "owner": "WL",
-    "parentName": "R562-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     562
-    ],
-    "time": {
-     "end": "2026-11-08T16:17:00.000+0100",
-     "start": "2026-11-08T15:18:27.000+0100"
-    },
-    "title": "Polizeieinsatz\nUmleitung bis Mayssengasse über Linie 43 und 9"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",

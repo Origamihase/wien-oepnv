@@ -638,6 +638,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1/2/71/D: Schadhaftes Fahrzeug",
+    "description": "Die Züge der Linien D, 1, 2 und 71 umfahren in Richtung Absberggasse, Reumannplatz, Friedrich- Engel- Platz und Kaiserebersdorf die Haltestelle Parlament, Volkstheater und halten nach der Bellariastraße.Grund dafür ist ein schadhaftes Fahrzeug im Haltestellenbereich Parlament, U Volkstheater.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "c62e0f02b50816a93ce5398eee92a598c2a87b09a1ca6f4ec26e9d29d83ea607",
+    "pubDate": "2026-11-08T16:21:00+01:00",
+    "starts_at": "2026-11-08T16:21:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=1,2,71,D|D=2026-11-08|TK=1 2 d 71 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261108-0023"
+    ],
+    "_incident_start": "2026-11-08T16:21:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -710,6 +726,18 @@
     "starts_at": "2026-11-08T00:00:06+01:00",
     "ends_at": "2026-11-08T23:59:59+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-08|TK=kein betrieb"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Schadhafter Zug Züge halten bei Linie 46",
+    "description": "Schadhafter Zug\nZüge halten bei Linie 46",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "c4a40ff039476b13775b82467bdbf4405aa972da27482d4bded65f3a1c69b6fd",
+    "pubDate": "2026-11-08T16:25:03+01:00",
+    "starts_at": "2026-11-08T16:25:03+01:00",
+    "ends_at": "2026-11-08T17:24:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-11-08|TK=schadhafter zug züge halten bei linie 46"
   },
   {
     "source": "Wiener Linien",
@@ -866,12 +894,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Polizeieinsatz Züge halten bei Linie 9",
+    "title": "2: Polizeieinsatz",
     "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "0a8aa8f7231d98faa38de820cfb27484955a1529c285e8a8472318b330368561",
     "pubDate": "2026-11-08T15:14:00+01:00",
-    "starts_at": "2026-11-08T15:18:26+01:00",
+    "starts_at": "2026-11-08T15:14:00+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=2|D=2026-11-08|TK=polizeieinsatz",
     "_wl_ids": [
@@ -882,30 +910,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Polizeieinsatz Umleitung bis Mayssengasse über Linie 43 und 9",
-    "description": "Polizeieinsatz\nUmleitung bis Mayssengasse über Linie 43 und 9",
+    "title": "2: Schadhafter Zug Züge halten bei Linie 46",
+    "description": "Schadhafter Zug\nZüge halten bei Linie 46",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "a6df791c1b0dc31f99c125bedb3746f23cb73122eba84c76d16eb357a6665f2a",
-    "pubDate": "2026-11-08T15:18:26+01:00",
-    "starts_at": "2026-11-08T15:18:27+01:00",
-    "ends_at": "2026-11-08T16:17:00+01:00",
-    "_identity": "wl|störung|L=2|D=2026-11-08|TK=polizeieinsatz umleitung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "35A: Rettungseinsatz",
-    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "03b7d773a613c65dc47884517046d555d006e6e24abebc2d3c4c6a50e91e901f",
-    "pubDate": "2026-11-08T15:40:00+01:00",
-    "starts_at": "2026-11-08T15:40:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=35A|D=2026-11-08|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261108-0021"
-    ],
-    "_incident_start": "2026-11-08T15:40:00+01:00"
+    "guid": "cbdf2af53ea40e59493344a9bd7ee2e5c655e6a88a0611b6537ea2e374941de8",
+    "pubDate": "2026-11-08T16:23:33+01:00",
+    "starts_at": "2026-11-08T16:23:33+01:00",
+    "ends_at": "2026-11-08T17:22:00+01:00",
+    "_identity": "wl|störung|L=2|D=2026-11-08|TK=schadhafter zug züge halten bei linie 46"
   },
   {
     "source": "Wiener Linien",
@@ -974,22 +986,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "48A: Verkehrsunfall",
-    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "00b15b6969938db3d2a3979ffcf1966869591a5c68663ff5373d31c8041e5033",
-    "pubDate": "2026-11-08T14:56:00+01:00",
-    "starts_at": "2026-11-08T14:56:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=48A|D=2026-11-08|TK=48a verkehrsunfall",
-    "_wl_ids": [
-      "I20261108-0017"
-    ],
-    "_incident_start": "2026-11-08T14:56:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -998,6 +994,30 @@
     "starts_at": "2026-11-08T04:40:24+01:00",
     "ends_at": "2026-11-09T01:00:00+01:00",
     "_identity": "wl|störung|L=66A|D=2026-11-08|TK=busse halten salvatorianerplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "ec43fe93de3687cd6b41ed3e161ecdbf78722df221d55ecf3d92bd4faf7d3814",
+    "pubDate": "2026-11-08T16:14:32+01:00",
+    "starts_at": "2026-11-08T16:14:32+01:00",
+    "ends_at": "2026-11-08T17:14:00+01:00",
+    "_identity": "wl|störung|L=71|D=2026-11-08|TK=fahrtbehinderung schadhafter zug"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Schadhafter Zug Betrieb ab Schwarzenbergplatz",
+    "description": "Schadhafter Zug\nBetrieb ab Schwarzenbergplatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4f4e89f7afa4e8157fa5506ba742452b7a18f280dc8763f738c104157aacb82e",
+    "pubDate": "2026-11-08T16:16:32+01:00",
+    "starts_at": "2026-11-08T16:16:32+01:00",
+    "ends_at": "2026-11-08T17:15:00+01:00",
+    "_identity": "wl|störung|L=71|D=2026-11-08|TK=schadhafter zug betrieb ab schwarzenbergplatz"
   },
   {
     "source": "Wiener Linien",
@@ -1026,18 +1046,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Falschparker",
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "D: Schadhafter Zug Züge halten bei Linie 46",
+    "description": "Schadhafter Zug\nZüge halten bei Linie 46",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2026-11-08T15:07:00+01:00",
-    "starts_at": "2026-11-08T15:07:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=9|D=2026-11-08|TK=falschparker",
-    "_wl_ids": [
-      "I20261108-0019"
-    ],
-    "_incident_start": "2026-11-08T15:07:00+01:00"
+    "guid": "ccf13cb024ff2cfbe470a6e77ca4b710b3b276aa11dcc77bfc01470d95963a55",
+    "pubDate": "2026-11-08T16:19:03+01:00",
+    "starts_at": "2026-11-08T16:19:03+01:00",
+    "ends_at": "2026-11-08T17:23:00+01:00",
+    "_identity": "wl|störung|L=D|D=2026-11-08|TK=schadhafter zug züge halten bei linie 46"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Schadhafter Zug Umleitung bis Schwarzenbergplatz über Linie 1 und 2",
+    "description": "Schadhafter Zug\nUmleitung bis Schwarzenbergplatz über Linie 1 und 2",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e4ea8aacde43cecdf7f75a6d4fe1f5b28b6d8f81143e1c1769f3a8d6195d98a5",
+    "pubDate": "2026-11-08T16:19:03+01:00",
+    "starts_at": "2026-11-08T16:19:03+01:00",
+    "ends_at": "2026-11-08T17:18:00+01:00",
+    "_identity": "wl|störung|L=D|D=2026-11-08|TK=umleitung"
   },
   {
     "source": "Wiener Linien",
@@ -1078,5 +1106,17 @@
     "starts_at": "2026-09-14T04:00:00+02:00",
     "ends_at": "2026-12-31T23:59:00+01:00",
     "_identity": "wl|störung|L=|D=2026-09-14|TK=sperre"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Schadhafter Zug Züge halten nach Bellariastraße",
+    "description": "Schadhafter Zug Züge halten nach Bellariastraße",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4d6a13744eb99e089b19917dbf85c2d1b9e42a2b6e5e7951fec441b554924a76",
+    "pubDate": "2026-11-08T16:26:33+01:00",
+    "starts_at": "2026-11-08T16:26:33+01:00",
+    "ends_at": "2026-11-08T17:25:00+01:00",
+    "_identity": "wl|störung|L=|D=2026-11-08|TK=schadhafter zug züge halten nach bellariastrasse"
   }
 ]
