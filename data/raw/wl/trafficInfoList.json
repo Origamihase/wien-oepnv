@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261108-0020-F01, I20261108-0016, I20260925-0011, I20261108-0023, I20260909-0007, I20261108-0013, I20261020-0029"
+    "trafficInfoNameList": "I20261108-0024, I20261108-0016, I20260925-0011, I20260909-0007, I20261108-0013, I20261020-0029, I20261108-0023-F01, I20261108-0023-F02, I20261108-0023-F03, I20261108-0023-F04, I20261108-0025"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R293-474, R318-437, R2378-627, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2558-125, R3886-480, R1974-466, R500-101, R198-137, R196-137, R197-137, R216-137, R215-137, R199-137, R203-137, R207-137, R201-137, R202-137, R205-137, R204-137, R206-137, R208-137, R81-171, R13-171, R14-171, R15-171, R17-171, R18-171, R19-171, R46-171, R47-171, R79-171, R51-171, R45-171, R44-171, R49-171, R50-171, R47-136, R45-136, R51-136, R50-136, R46-136, R49-136, R49-102, R49-101, R15-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R293-474, R318-437, R2343-626, R2343-125, R2378-627, R1884-101, R1876-101, R1875-101, R1880-101, R1881-101, R2372-125, R2370-125, R2359-125, R1883-101, R2373-127, R2373-125, R2371-125, R2345-127, R2380-627, R2379-627, R2373-126, R1882-101, R2558-125, R3886-480, R1974-466, R500-101, R197-137, R196-137, R198-137, R199-137, R215-137, R216-137, R202-137, R204-137, R205-137, R206-137, R207-137, R203-137, R201-137, R208-137, R17-171, R19-171, R15-171, R14-171, R13-171, R81-171, R18-171, R51-171, R79-171, R50-171, R49-171, R47-171, R46-171, R45-171, R44-171, R45-136, R50-136, R47-136, R46-136, R51-136, R49-136, R49-102, R49-101, R15-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -261,8 +261,57 @@
     "title": "U2: Verspätungen"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "1": "ptTram"
+     }
+    },
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "1: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "location": "abs",
+    "name": "I20261108-0023-F01",
+    "owner": "WL",
+    "parentName": "I20261108-0023",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 101,
+      "lineName": "1",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     49
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-08T16:34:00.000+0100",
+     "lastUpdate": "2026-11-08T16:34:00.000+0100",
+     "resume": "2026-11-08T16:34:00.000+0100",
+     "start": "2026-11-08T16:21:00.000+0100"
+    },
+    "title": "1: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
       "2": "ptTram"
@@ -275,16 +324,17 @@
       "de": {
        "descriptionHtml": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
        "descriptionPlain": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "2: Polizeieinsatz"
+       "title": "2: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261108-0020-F01",
+    "location": "abs",
+    "name": "I20261108-0023-F02",
     "owner": "WL",
-    "parentName": "I20261108-0020",
+    "parentName": "I20261108-0023",
     "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
      "2"
@@ -297,41 +347,38 @@
      }
     ],
     "relatedStops": [
-     1367
+     49
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-08T15:30:00.000+0100",
-     "lastUpdate": "2026-11-08T15:30:00.000+0100",
-     "resume": "2026-11-08T15:30:00.000+0100",
-     "start": "2026-11-08T15:14:00.000+0100"
+     "created": "2026-11-08T16:34:00.000+0100",
+     "lastUpdate": "2026-11-08T16:34:00.000+0100",
+     "resume": "2026-11-08T16:34:00.000+0100",
+     "start": "2026-11-08T16:21:00.000+0100"
     },
-    "title": "2: Polizeieinsatz"
+    "title": "2: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "1": "ptTram",
-      "2": "ptTram",
-      "71": "ptTram",
       "D": "ptTram"
      }
     },
-    "description": "Die Züge der Linien D, 1, 2 und 71 umfahren in Richtung Absberggasse, Reumannplatz, Friedrich- Engel- Platz und Kaiserebersdorf die Haltestelle Parlament, Volkstheater und halten nach der Bellariastraße.Grund dafür ist ein schadhaftes Fahrzeug im Haltestellenbereich Parlament, U Volkstheater.",
-    "descriptionHTML": "<p><span style=\"color: rgba(0, 0, 0, 0.87);\"><br>Die Züge der Linien D, 1, 2 und 71 umfahren in Richtung Absberggasse, Reumannplatz, Friedrich- Engel- Platz und Kaiserebersdorf die Haltestelle Parlament, Volkstheater und halten nach der Bellariastraße.<br><br>Grund dafür ist ein schadhaftes Fahrzeug im Haltestellenbereich Parlament, U Volkstheater.</span></p>",
+    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p><span style=\"color: rgba(0, 0, 0, 0.87);\"><br>Die Züge der Linien D, 1, 2 und 71 umfahren in Richtung Absberggasse, Reumannplatz, Friedrich- Engel- Platz und Kaiserebersdorf die Haltestelle Parlament, Volkstheater und halten nach der Bellariastraße.<br><br>Grund dafür ist ein schadhaftes Fahrzeug im Haltestellenbereich Parlament, U Volkstheater.</span></p>",
-       "descriptionPlain": "Die Züge der Linien D, 1, 2 und 71 umfahren in Richtung Absberggasse, Reumannplatz, Friedrich- Engel- Platz und Kaiserebersdorf die Haltestelle Parlament, Volkstheater und halten nach der Bellariastraße.Grund dafür ist ein schadhaftes Fahrzeug im Haltestellenbereich Parlament, U Volkstheater.",
-       "title": "1, 2, D, 71: Schadhaftes Fahrzeug"
+       "descriptionHtml": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "D: Schadhaftes Fahrzeug"
       }
      }
     ],
     "location": "abs",
-    "name": "I20261108-0023",
+    "name": "I20261108-0023-F03",
     "owner": "WL",
     "parentName": "I20261108-0023",
     "priority": "1",
@@ -339,27 +386,58 @@
     "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "1",
-     "2",
-     "D",
-     "71"
+     "D"
     ],
     "relatedLinesDetails": [
-     {
-      "lineId": 101,
-      "lineName": "1",
-      "vehicleType": "ptTram"
-     },
-     {
-      "lineId": 102,
-      "lineName": "2",
-      "vehicleType": "ptTram"
-     },
      {
       "lineId": 136,
       "lineName": "D",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "relatedStops": [
+     49
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-08T16:34:00.000+0100",
+     "lastUpdate": "2026-11-08T16:34:00.000+0100",
+     "resume": "2026-11-08T16:34:00.000+0100",
+     "start": "2026-11-08T16:21:00.000+0100"
+    },
+    "title": "D: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "71": "ptTram"
+     }
+    },
+    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 71: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 71: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "71: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "location": "abs",
+    "name": "I20261108-0023-F04",
+    "owner": "WL",
+    "parentName": "I20261108-0023",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 171,
       "lineName": "71",
@@ -371,11 +449,107 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-08T16:26:00.000+0100",
-     "lastUpdate": "2026-11-08T16:26:00.000+0100",
+     "created": "2026-11-08T16:34:00.000+0100",
+     "lastUpdate": "2026-11-08T16:34:00.000+0100",
+     "resume": "2026-11-08T16:34:00.000+0100",
      "start": "2026-11-08T16:21:00.000+0100"
     },
-    "title": "1, 2, D, 71: Schadhaftes Fahrzeug"
+    "title": "71: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U2": "ptMetro"
+     }
+    },
+    "description": "Die Linie U2 fährt derzeit zwischen den Stationen Donauspital und Hardeggasse in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 17:10 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Donauspital.",
+    "descriptionHTML": "<p>Die Linie U2 fährt derzeit zwischen den Stationen Donauspital und Hardeggasse in beiden Richtungen über Gleis 2.</p><p>Voraussichtliche Dauer: 17:10 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Donauspital.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Die Linie U2 fährt derzeit zwischen den Stationen Donauspital und Hardeggasse in beiden Richtungen über Gleis 2.</p><p>Voraussichtliche Dauer: 17:10 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Donauspital.</p>",
+       "descriptionPlain": "Die Linie U2 fährt derzeit zwischen den Stationen Donauspital und Hardeggasse in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 17:10 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Donauspital.",
+       "title": "U2: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261108-0024",
+    "owner": "WL",
+    "parentName": "I20261108-0024",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 302,
+      "lineName": "U2",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4252
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-08T16:46:00.000+0100",
+     "lastUpdate": "2026-11-08T16:46:00.000+0100",
+     "start": "2026-11-08T16:44:00.000+0100"
+    },
+    "title": "U2: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+       "title": "U3: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261108-0025",
+    "owner": "WL",
+    "parentName": "I20261108-0025",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4921
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-08T16:59:00.000+0100",
+     "lastUpdate": "2026-11-08T16:59:00.000+0100",
+     "resume": "2026-11-08T16:57:00.000+0100",
+     "start": "2026-11-08T16:57:00.000+0100"
+    },
+    "title": "U3: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
