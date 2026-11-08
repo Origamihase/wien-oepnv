@@ -24,7 +24,7 @@ from .wl_text import (
 
 # WL's display boards cut a ticker where its text runs out: "Ersatzbus 41E
 # hält gegenüber" (no place), "Demonstration Züge halten gegenüber"
-# (R45-101, 24.10.2026 18:31). A title that ends in a preposition still
+# (R45-101, 24.10.2026 20:31 Vienna time). A title that ends in a preposition still
 # waiting for its object says nothing the reader can use. Such a title never
 # names a bucket while a complete one is there (``_title_quality_key``), and
 # an item that has nothing else is dropped (``_post_filter_wl`` in
@@ -71,7 +71,7 @@ def _facility_drop_reason(
     *description*), and a stop may be named after an entrance: "68A: Laaer
     Berg, Kurpark Nordeingang" (relocation from 05.11.2026 for about two
     weeks, cause "Straßenbau") fell as "nur Aufgang/Ausgang" from 04.11.
-    13:01 Vienna time in every fetch. A stop notice is never about a
+    14:01 Vienna time in every fetch. A stop notice is never about a
     facility, so the title rule does not apply to it.
     """
     if _is_lift_record(record):
@@ -220,13 +220,13 @@ def _title_quality_key(title: str, title_core: str) -> tuple[int, int, int, int]
 
     A title cut by the display board — it ends in a preposition without its
     object (:data:`INCOMPLETE_TITLE_TAIL_RE`) — ranks below every complete
-    one, however many words it has. On 24.10.2026 18:31 the ticker
+    one, however many words it has. On 24.10.2026 20:31 Vienna time the ticker
     "Demonstration Züge halten gegenüber" (R45-101) outscored the long
     message "Demonstration" of the same incident on line 1; the bucket took
     its title, and ``_post_filter_wl`` dropped the whole item for the
     dangling "gegenüber" — the demonstration on line 1 left the feed while
     WL's long message still described it (again "2: Verkehrsunfall Züge
-    halten gegenüber", 31.10. 14:01).
+    halten gegenüber", 31.10. 15:01).
     """
 
     normalized_title = _normalize_whitespace(title)

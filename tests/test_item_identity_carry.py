@@ -55,7 +55,7 @@ _VIENNA = ZoneInfo("Europe/Vienna")
 
 
 def _todays_frame() -> datetime:
-    """Now, or 00:28 Vienna time today when that is later: the shapes stay on one day.
+    """Now, or 28 minutes ahead before 00:28 Vienna time: the shapes stay on one day.
 
     The build reads the real clock, so the shapes move, not the clock.
     Between 00:00 and 00:27 the ticker of :func:`_line_43`, 27 minutes
@@ -64,10 +64,16 @@ def _todays_frame() -> datetime:
     the carried long message "[Heute]" (a begin on an earlier day), and
     ``test_43_keeps_its_guid_and_begin_when_its_tickers_run_out`` failed in
     the CI run of 2026-11-07, 00:23.
+
+    In that window every shape lies ahead of the clock (the ticker one
+    minute), never some ahead and some behind: with the frame fixed at
+    00:28 the ticker began at 00:01:00 and the long message at 00:01:32,
+    and a build between the two read "[Heute]" for "[Seit 00:01]" (clock
+    frozen at 00:00:58 to 00:01:28, independent check 2026-11-08).
     """
     now = datetime.now(UTC)
     frame = now.astimezone(_VIENNA).replace(hour=0, minute=28, second=0, microsecond=0)
-    return max(now, frame.astimezone(UTC))
+    return now if now >= frame else now + timedelta(minutes=28)
 
 
 def _wl(

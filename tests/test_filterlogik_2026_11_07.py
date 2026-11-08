@@ -5,7 +5,7 @@ fetch states) and over 1 818 feed builds found four classes:
 
 * a stop relocation whose stop is named after an entrance fell as a closed
   station access ("68A: Laaer Berg, Kurpark Nordeingang", every fetch since
-  04.11. 13:01 Vienna time);
+  04.11. 14:01 Vienna time);
 * WL's lift records (``elevatorId``) stayed out only because their texts
   carried no restriction word;
 * the fuzzy merge joined a live disruption with an announcement of the same
@@ -16,7 +16,7 @@ fetch states) and over 1 818 feed builds found four classes:
   merges with a notice, a stop notice with no disruption at all);
 * a ticker cut by the display board named the bucket of a complete long
   message, and the cut title took the whole incident out of the feed ("1:
-  Demonstration Züge halten gegenüber", 24.10. 18:31).
+  Demonstration Züge halten gegenüber", 24.10. 20:31 Vienna time).
 """
 
 from __future__ import annotations
