@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261108-0013, I20261108-0024-F01-F01, I20261020-0029"
+    "trafficInfoNameList": "I20261108-0027, I20260925-0011, I20260909-0007, I20261108-0013, I20261108-0029, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R401-101, R293-474, R2343-125, R2359-125, R2343-626, R2378-627, R2379-627, R2373-126, R2373-127, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2380-627, R2345-127, R2373-125, R2372-125, R2371-125, R2370-125, R2558-125, R3886-480, R1974-466, R500-101, R196-137, R216-137, R215-137, R199-137, R198-137, R197-137, R202-137, R201-137, R207-137, R206-137, R205-137, R204-137, R203-137, R208-137, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R318-437, R293-474, R2343-626, R2343-125, R2378-627, R2345-127, R2380-627, R2371-125, R2370-125, R2359-125, R2373-126, R2373-127, R2373-125, R2372-125, R2379-627, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R3886-480, R2558-125, R1974-466, R500-101, R196-137, R197-137, R198-137, R199-137, R215-137, R216-137, R203-137, R206-137, R201-137, R207-137, R204-137, R205-137, R202-137, R208-137, R1019-102, R1022-102, R1020-102, R9-102, R11-102, R10-102, R22-102, R1003-102, R1002-102, R314-102, R315-102, R1001-102, R134-102, R133-102, R55-102, R328-102, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -216,30 +216,30 @@
     "title": "37: Gasrohrbruch"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
+    "alertCause": "miscellaneous",
+    "alertCauseId": 137,
     "attributes": {
      "relatedLineTypes": {
       "U2": "ptMetro"
      }
     },
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "descriptionHTML": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U2: Schadhaftes Fahrzeug"
+       "descriptionHtml": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+       "descriptionPlain": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+       "title": "U2: Betriebsstörung"
       }
      }
     ],
-    "name": "I20261108-0024-F01-F01",
+    "name": "I20261108-0027",
     "owner": "WL",
-    "parentName": "I20261108-0024",
+    "parentName": "I20261108-0027",
     "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
+    "reasonId": 14,
+    "reasonName": "Betriebsstörung",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
      "U2"
@@ -252,17 +252,291 @@
      }
     ],
     "relatedStops": [
-     4252
+     4201
     ],
-    "status": "resolved",
+    "status": "active",
     "time": {
-     "created": "2026-11-08T17:23:00.000+0100",
-     "end": "2026-11-08T20:00:00.000+0100",
-     "lastUpdate": "2026-11-08T20:00:00.000+0100",
-     "resume": "2026-11-08T20:00:00.000+0100",
-     "start": "2026-11-08T16:44:00.000+0100"
+     "created": "2026-11-08T20:01:00.000+0100",
+     "lastUpdate": "2026-11-08T20:01:00.000+0100",
+     "resume": "2026-11-08T20:01:00.000+0100",
+     "start": "2026-11-08T20:01:00.000+0100"
     },
-    "title": "U2: Schadhaftes Fahrzeug"
+    "title": "U2: Betriebsstörung"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "2": "ptTram"
+     }
+    },
+    "description": "Linie 2: Umleitung in beiden Richtungen zwischen Julius-Raab-Platz und Heinestraße über Praterstern S U. Voraussichtliche Dauer: 21:30 Uhr. Grund: Fremder Verkehrsunfall im Bereich Taborstraße 53-55.",
+    "descriptionHTML": "<p>Linie 2:<br>Umleitung in beiden Richtungen<br>zwischen Julius-Raab-Platz und Heinestraße <br>über Praterstern S U.</p><p>Voraussichtliche Dauer: 21:30 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Taborstraße 53-55.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 2:<br>Umleitung in beiden Richtungen<br>zwischen Julius-Raab-Platz und Heinestraße <br>über Praterstern S U.</p><p>Voraussichtliche Dauer: 21:30 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Taborstraße 53-55.</p>",
+       "descriptionPlain": "Linie 2: Umleitung in beiden Richtungen zwischen Julius-Raab-Platz und Heinestraße über Praterstern S U. Voraussichtliche Dauer: 21:30 Uhr. Grund: Fremder Verkehrsunfall im Bereich Taborstraße 53-55.",
+       "title": "2: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Taborstraße 53-55",
+    "name": "I20261108-0029",
+    "owner": "WL",
+    "parentName": "I20261108-0029",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 102,
+      "lineName": "2",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-08T20:19:00.000+0100",
+     "lastUpdate": "2026-11-08T20:19:00.000+0100",
+     "start": "2026-11-08T20:16:00.000+0100"
+    },
+    "title": "2: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R10-102",
+    "owner": "WL",
+    "parentName": "R10-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     10
+    ],
+    "time": {
+     "end": "2026-11-08T21:16:00.000+0100",
+     "start": "2026-11-08T20:16:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Heinestraße",
+    "name": "R1001-102",
+    "owner": "WL",
+    "parentName": "R1001-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1001
+    ],
+    "time": {
+     "end": "2026-11-08T21:21:00.000+0100",
+     "start": "2026-11-08T20:21:56.000+0100"
+    },
+    "title": "Fremdunfall\nBetrieb ab Heinestraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Heinestraße",
+    "name": "R1002-102",
+    "owner": "WL",
+    "parentName": "R1002-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1002
+    ],
+    "time": {
+     "end": "2026-11-08T21:21:00.000+0100",
+     "start": "2026-11-08T20:18:25.000+0100"
+    },
+    "title": "Fremdunfall\nBetrieb ab Heinestraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1003-102",
+    "owner": "WL",
+    "parentName": "R1003-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1003
+    ],
+    "time": {
+     "end": "2026-11-08T21:17:00.000+0100",
+     "start": "2026-11-08T20:18:25.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Julius-Raab-Platz",
+    "name": "R1019-102",
+    "owner": "WL",
+    "parentName": "R1019-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1019
+    ],
+    "time": {
+     "end": "2026-11-08T21:20:00.000+0100",
+     "start": "2026-11-08T20:16:55.000+0100"
+    },
+    "title": "Fremdunfall\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Julius-Raab-Platz",
+    "name": "R1020-102",
+    "owner": "WL",
+    "parentName": "R1020-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1020
+    ],
+    "time": {
+     "end": "2026-11-08T21:20:00.000+0100",
+     "start": "2026-11-08T20:16:55.000+0100"
+    },
+    "title": "Fremdunfall\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Julius-Raab-Platz",
+    "name": "R1022-102",
+    "owner": "WL",
+    "parentName": "R1022-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1022
+    ],
+    "time": {
+     "end": "2026-11-08T21:20:00.000+0100",
+     "start": "2026-11-08T20:16:55.000+0100"
+    },
+    "title": "Fremdunfall\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R11-102",
+    "owner": "WL",
+    "parentName": "R11-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     11
+    ],
+    "time": {
+     "end": "2026-11-08T21:16:00.000+0100",
+     "start": "2026-11-08T20:16:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Heinestraße",
+    "name": "R133-102",
+    "owner": "WL",
+    "parentName": "R133-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     133
+    ],
+    "time": {
+     "end": "2026-11-08T21:21:00.000+0100",
+     "start": "2026-11-08T20:21:56.000+0100"
+    },
+    "title": "Fremdunfall\nBetrieb ab Heinestraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Heinestraße",
+    "name": "R134-102",
+    "owner": "WL",
+    "parentName": "R134-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     134
+    ],
+    "time": {
+     "end": "2026-11-08T21:21:00.000+0100",
+     "start": "2026-11-08T20:21:56.000+0100"
+    },
+    "title": "Fremdunfall\nBetrieb ab Heinestraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -773,6 +1047,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Julius-Raab-Platz",
+    "name": "R22-102",
+    "owner": "WL",
+    "parentName": "R22-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     22
+    ],
+    "time": {
+     "end": "2026-11-08T21:20:00.000+0100",
+     "start": "2026-11-08T20:16:56.000+0100"
+    },
+    "title": "Fremdunfall\nBetrieb ab Julius-Raab-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2343-125",
     "owner": "WL",
@@ -1118,6 +1415,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R314-102",
+    "owner": "WL",
+    "parentName": "R314-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     314
+    ],
+    "time": {
+     "end": "2026-11-08T21:17:00.000+0100",
+     "start": "2026-11-08T20:18:29.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R315-102",
+    "owner": "WL",
+    "parentName": "R315-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     315
+    ],
+    "time": {
+     "end": "2026-11-08T21:17:00.000+0100",
+     "start": "2026-11-08T20:18:29.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -1137,6 +1480,29 @@
      "start": "2026-11-05T00:00:27.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nUmleitung über Praterstern",
+    "name": "R328-102",
+    "owner": "WL",
+    "parentName": "R328-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     328
+    ],
+    "time": {
+     "end": "2026-11-08T21:22:00.000+0100",
+     "start": "2026-11-08T20:22:30.000+0100"
+    },
+    "title": "Fremdunfall\nUmleitung über Praterstern"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1206,6 +1572,52 @@
      "start": "2026-11-08T05:00:25.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nUmleitung über Praterstern",
+    "name": "R55-102",
+    "owner": "WL",
+    "parentName": "R55-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     55
+    ],
+    "time": {
+     "end": "2026-11-08T21:21:00.000+0100",
+     "start": "2026-11-08T20:22:26.000+0100"
+    },
+    "title": "Fremdunfall\nUmleitung über Praterstern"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R9-102",
+    "owner": "WL",
+    "parentName": "R9-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     9
+    ],
+    "time": {
+     "end": "2026-11-08T21:16:00.000+0100",
+     "start": "2026-11-08T20:16:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
