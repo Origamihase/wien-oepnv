@@ -216,7 +216,13 @@ __all__ = [
 #       letter (``latin_names``; "Biróstraße 17" read "Biró Street 17"). No
 #       cached translation held such a name when the rule came, so nothing
 #       needed evicting; new items go through the widened shield anyway.
-_TRANSLATION_CACHE_EPOCH = 31
+#  32 — KI-Wächter of 2026-11-08: WL's own two-part stop names ("Laaer Berg,
+#       Kurpark Nordosteingang", "Atzgersdorf, Friedhof") and their short
+#       form in a direction ("Laaer Berg, Nordosteingang") are shielded
+#       (``_wl_stop_names``). Cached under 31: "Stop relocation of line 68A
+#       towards Laaer Berg, northeast entrance."; the source digest is
+#       unchanged, so only a bump evicts it.
+_TRANSLATION_CACHE_EPOCH = 32
 
 
 # Fields whose correct English translation IS the German source, verified by

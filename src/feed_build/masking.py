@@ -10,6 +10,7 @@ import re
 from collections import Counter
 from collections.abc import Callable
 from functools import lru_cache
+from typing import Any
 
 from ..utils.name_letters import latin_names
 from .entities import (
@@ -135,6 +136,43 @@ def _station_written_out_forms(variants: set[str]) -> set[str]:
         rest = variant[match.end():]
         forms.add(f"{match['wien']}Bahnhof {rest}")
         forms.add(f"{match['wien']}Bhf {rest}")
+    return forms
+
+
+# WL's own name of a stop has two parts, place and stop ("Laaer Berg, Kurpark
+# Nordosteingang", "Atzgersdorf, Friedhof", "Liesing, Feuerwache"), and WL's
+# texts write it so ("Haltestellenverlegung der Linie 68A in Richtung Laaer
+# Berg, Nordosteingang"). The directory's name of the entry is another one
+# ("Wien Kurpark Nordosteingang (WL)"), so only the place was shielded and the
+# model rendered the rest: "towards Laaer Berg, northeast entrance" (finding
+# of the KI watcher, 08.11.2026). 79 such names of Vienna entries were not
+# shielded. A direction may drop the leading words of the second part
+# ("Laaer Berg, Nordosteingang" for "Laaer Berg, Kurpark Nordosteingang");
+# that short form stands for the same stop and keeps its place in front, so
+# it matches only after "Laaer Berg, ".
+_WL_STOP_NOISE_RE: re.Pattern[str] = re.compile(r"\s*(?:\([^)]*\)|[←→]+)\s*")
+
+
+def _wl_stop_names(entry: dict[str, Any]) -> set[str]:
+    """WL's two-part stop names of *entry* and their short forms (see above)."""
+    forms: set[str] = set()
+    stops = entry.get("wl_stops")
+    if not isinstance(stops, list):
+        return forms
+    for stop in stops:
+        raw = stop.get("name") if isinstance(stop, dict) else None
+        if not isinstance(raw, str):
+            continue
+        name = " ".join(_WL_STOP_NOISE_RE.sub(" ", raw).split()).strip(" ,")
+        place, sep, rest = name.partition(", ")
+        if not sep or len(place) < 4 or not rest or "," in rest:
+            continue
+        forms.add(name)
+        words = rest.split(" ")
+        for start in range(1, len(words)):
+            tail = " ".join(words[start:])
+            if len(tail) >= 6 and tail[0].isupper():
+                forms.add(f"{place}, {tail}")
     return forms
 
 
@@ -319,6 +357,7 @@ def _station_entity_names() -> tuple[str, ...]:
         # that happens to start with ``Wien``.
         if not entry.get("in_vienna"):
             continue
+        names |= _wl_stop_names(entry)
         aliases = entry.get("aliases")
         if not isinstance(aliases, list):
             continue
