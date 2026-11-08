@@ -866,6 +866,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Verunreinigung",
+    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b006aded318189d4a1ad796aeaa86ab95d007972ea3344db4b50a4fe019c54bc",
+    "pubDate": "2026-11-08T09:15:00+01:00",
+    "starts_at": "2026-11-08T09:15:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=2|D=2026-11-08|TK=2 verunreinigung",
+    "_wl_ids": [
+      "I20261108-0007"
+    ],
+    "_incident_start": "2026-11-08T09:15:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -879,11 +895,11 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "37: Fahrtbehinderung Falschparker",
-    "description": "Linie 37: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 09:00 Uhr. Grund: Falschparker im Bereich Geweygasse.",
+    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f",
     "pubDate": "2026-11-08T08:38:00+01:00",
-    "starts_at": "2026-11-08T08:46:17+01:00",
+    "starts_at": "2026-11-08T09:04:22+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=37|D=2026-11-08|TK=falschparker",
     "_wl_ids": [
