@@ -946,6 +946,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U2: Verspätungen",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
+    "pubDate": "2026-11-08T09:52:00+01:00",
+    "starts_at": "2026-11-08T09:52:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U2|D=2026-11-08|TK=u2 verspätungen",
+    "_wl_ids": [
+      "I20261108-0008"
+    ],
+    "_incident_start": "2026-11-08T09:52:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-11-08T09:52:00+01:00",
+    "starts_at": "2026-11-08T09:52:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U3|D=2026-11-08|TK=u3 verspätungen",
+    "_wl_ids": [
+      "I20261108-0009"
+    ],
+    "_incident_start": "2026-11-08T09:52:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
