@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261108-0012, I20260925-0011, I20260909-0007, I20261020-0029, I20261108-0011, I20261108-0013"
+    "trafficInfoNameList": "I20261108-0012, I20260925-0011, I20260909-0007, I20261108-0013, I20261020-0029, I20261108-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R401-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R1880-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2558-125, R3886-480, R1974-466, R500-101, R215-137, R216-137, R196-137, R197-137, R198-137, R199-137, R201-137, R202-137, R203-137, R204-137, R205-137, R206-137, R207-137, R208-137, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R293-474, R318-437, R2372-125, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R1875-101, R2558-125, R3886-480, R1974-466, R500-101, R215-137, R216-137, R199-137, R198-137, R196-137, R197-137, R204-137, R203-137, R202-137, R201-137, R205-137, R206-137, R207-137, R208-137, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -268,13 +268,13 @@
       "37": "ptTram"
      }
     },
-    "description": "Linie 37: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Gasrohrgebrechen im Bereich Döblinger Hauptstraße 70.",
-    "descriptionHTML": "<p>Linie 37:<br>Betrieb nur zwischen Schottentor U und Nußdorfer Straße U.</p><p>Voraussichtliche Dauer: Bis Betriebsschluss.</p><p>Grund: Gasrohrgebrechen im Bereich Döblinger Hauptstraße 70.</p>",
+    "description": "Linie 37: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Ersatz: Linien U4, U6, 38, 10A, 38A, 39A. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Gasrohrgebrechen im Bereich Döblinger Hauptstraße 70.",
+    "descriptionHTML": "<p>Linie 37:<br>Betrieb nur zwischen Schottentor U und Nußdorfer Straße U.</p><p>Ersatz: Linien U4, U6, 38, 10A, 38A, 39A.</p><p>Voraussichtliche Dauer: Bis Betriebsschluss.</p><p>Grund: Gasrohrgebrechen im Bereich Döblinger Hauptstraße 70.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 37:<br>Betrieb nur zwischen Schottentor U und Nußdorfer Straße U.</p><p>Voraussichtliche Dauer: Bis Betriebsschluss.</p><p>Grund: Gasrohrgebrechen im Bereich Döblinger Hauptstraße 70.</p>",
-       "descriptionPlain": "Linie 37: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Gasrohrgebrechen im Bereich Döblinger Hauptstraße 70.",
+       "descriptionHtml": "<p>Linie 37:<br>Betrieb nur zwischen Schottentor U und Nußdorfer Straße U.</p><p>Ersatz: Linien U4, U6, 38, 10A, 38A, 39A.</p><p>Voraussichtliche Dauer: Bis Betriebsschluss.</p><p>Grund: Gasrohrgebrechen im Bereich Döblinger Hauptstraße 70.</p>",
+       "descriptionPlain": "Linie 37: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Ersatz: Linien U4, U6, 38, 10A, 38A, 39A. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Gasrohrgebrechen im Bereich Döblinger Hauptstraße 70.",
        "title": "37: Gasrohrbruch"
       }
      }
@@ -300,7 +300,7 @@
     "status": "active",
     "time": {
      "created": "2026-11-08T12:49:00.000+0100",
-     "lastUpdate": "2026-11-08T13:00:00.000+0100",
+     "lastUpdate": "2026-11-08T13:29:00.000+0100",
      "start": "2026-11-08T12:46:00.000+0100"
     },
     "title": "37: Gasrohrbruch"
