@@ -104,6 +104,20 @@ Zwei Sorten, bewusst unterscheidbar:
   Haltestelle, die das Verzeichnis ohne ihn führt („Bahnhof Heiligenstadt“),
   bleibt Fließtext und wird übersetzt; der deutsche Feed ändert sich nicht
   (`tests/test_station_written_out_names.py`).
+  Seit dem KI-Wächter vom 08.11. auch WLs eigene zweiteilige
+  Haltestellennamen (Ort und Haltestelle, `wl_stops` im Verzeichnis):
+  „Laaer Berg, Kurpark Nordosteingang“, „Atzgersdorf, Friedhof“, „Liesing,
+  Feuerwache“. Das Verzeichnis führt den Eintrag unter einem anderen Namen
+  („Wien Kurpark Nordosteingang (WL)“), geschützt war nur der Ort, und der
+  englische Feed las „Stop relocation of line 68A towards Laaer Berg,
+  northeast entrance“. Eine Richtung darf vorn Wörter der Haltestelle
+  weglassen („Laaer Berg, Nordosteingang“); diese Kurzform greift nur hinter
+  „Laaer Berg, “ (`_wl_stop_names`, 79 bisher ungeschützte Namen von
+  Wiener Einträgen). In 6.136 Texten des deutschen Feeds seit Juli ändert
+  sich die Modelleingabe von 68, fast immer nur so, dass zwei schon
+  geschützte Teile ein Platzhalter werden; der echte Build des Stands vom
+  08.11. 14:01 mit dem echten Modell ändert nur den 68A-Namen. Epoche 32
+  (`tests/test_wl_stop_names_masking.py`).
   Werden nach dem Modelllauf **wortgleich** zurückgesetzt. Ein Datum wird
   **vor** den Linienkennungen maskiert: sonst wäre nur sein Tag ein
   Platzhalter, der am Punkt klebt, und das Modell verliert den Punkt
