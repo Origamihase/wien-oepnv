@@ -1,20 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-08T19:31:15.671924+00:00",
- "built": "2026-11-08T20:30:58+01:00",
+ "updated": "2026-11-08T20:01:22.191926+00:00",
+ "built": "2026-11-08T21:01:04+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-08T20:30:58+01:00",
+  "built": "2026-11-08T21:01:04+01:00",
   "items": [
    {
     "title": "2: Fremder Verkehrsunfall",
     "time_line": "Seit 20:16"
-   },
-   {
-    "title": "U2: Betriebsstörung",
-    "time_line": "Seit 20:01"
    },
    {
     "title": "37: Gasrohrbruch",
@@ -47,31 +43,15 @@
    {
     "title": "64A/N64R: Zouvalgasse",
     "time_line": "Ab Mo 09.11."
+   },
+   {
+    "title": "68A: Laaer Berg, Kurpark Nordeingang",
+    "time_line": "Seit 05.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-01T20:01:04.057699+00:00",
-   "raw": {
-    "wl-stoerungen": 60,
-    "wl-hinweise": 71,
-    "oebb": 152,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 18
-   },
-   "discarded": {
-    "wl": 12,
-    "oebb": 130,
-    "baustellen": 68
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 8,
-    "wl": 91
-   }
-  },
   {
    "t": "2026-11-01T20:31:10.970221+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 7,
     "wl": 87
    }
+  },
+  {
+   "t": "2026-11-08T20:01:22.191926+00:00",
+   "raw": {
+    "wl-stoerungen": 68,
+    "wl-hinweise": 93,
+    "oebb": 187,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 30,
+    "oebb": 162,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 82
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-08T19:31:15.671924+00:00"
+   "last_ok": "2026-11-08T20:01:22.191926+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-08T19:31:15.671924+00:00"
+   "last_ok": "2026-11-08T20:01:22.191926+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-08T19:31:15.671924+00:00"
+   "last_ok": "2026-11-08T20:01:22.191926+00:00"
   }
  }
 }

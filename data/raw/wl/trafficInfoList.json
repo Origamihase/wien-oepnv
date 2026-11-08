@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261108-0027, I20260925-0011, I20260909-0007, I20261108-0013, I20261108-0029, I20261020-0029"
+    "trafficInfoNameList": "I20261108-0029-F01, I20261108-0029, I20260925-0011, I20260909-0007, I20261108-0013, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R318-437, R293-474, R2343-626, R2343-125, R2378-627, R2345-127, R2380-627, R2371-125, R2370-125, R2359-125, R2373-126, R2373-127, R2373-125, R2372-125, R2379-627, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R3886-480, R2558-125, R1974-466, R500-101, R196-137, R197-137, R198-137, R199-137, R215-137, R216-137, R203-137, R206-137, R201-137, R207-137, R204-137, R205-137, R202-137, R208-137, R1019-102, R1022-102, R1020-102, R9-102, R11-102, R10-102, R22-102, R1003-102, R1002-102, R314-102, R315-102, R1001-102, R134-102, R133-102, R55-102, R328-102, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R401-101, R1884-101, R2370-125, R1882-101, R1883-101, R1875-101, R1876-101, R1880-101, R1881-101, R2343-626, R2359-125, R2378-627, R2343-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2558-125, R3886-480, R1974-466, R500-101, R215-137, R196-137, R216-137, R197-137, R198-137, R199-137, R205-137, R206-137, R207-137, R201-137, R202-137, R203-137, R204-137, R208-137, R1020-102, R1019-102, R1022-102, R10-102, R11-102, R9-102, R22-102, R1003-102, R1002-102, R314-102, R315-102, R1001-102, R134-102, R133-102, R55-102, R328-102, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -216,54 +216,6 @@
     "title": "37: Gasrohrbruch"
    },
    {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
-    "attributes": {
-     "relatedLineTypes": {
-      "U2": "ptMetro"
-     }
-    },
-    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "descriptionHTML": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-       "descriptionPlain": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-       "title": "U2: Betriebsstörung"
-      }
-     }
-    ],
-    "name": "I20261108-0027",
-    "owner": "WL",
-    "parentName": "I20261108-0027",
-    "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 302,
-      "lineName": "U2",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4201
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-08T20:01:00.000+0100",
-     "lastUpdate": "2026-11-08T20:01:00.000+0100",
-     "resume": "2026-11-08T20:01:00.000+0100",
-     "start": "2026-11-08T20:01:00.000+0100"
-    },
-    "title": "U2: Betriebsstörung"
-   },
-   {
     "alertCause": "accident",
     "alertCauseId": 77,
     "attributes": {
@@ -271,13 +223,13 @@
       "2": "ptTram"
      }
     },
-    "description": "Linie 2: Umleitung in beiden Richtungen zwischen Julius-Raab-Platz und Heinestraße über Praterstern S U. Voraussichtliche Dauer: 21:30 Uhr. Grund: Fremder Verkehrsunfall im Bereich Taborstraße 53-55.",
-    "descriptionHTML": "<p>Linie 2:<br>Umleitung in beiden Richtungen<br>zwischen Julius-Raab-Platz und Heinestraße <br>über Praterstern S U.</p><p>Voraussichtliche Dauer: 21:30 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Taborstraße 53-55.</p>",
+    "description": "Linie 2: Umleitung in Richtung Dornbach zwischen Heinestraße und Julius-Raab-Platz über Praterstern S U. Voraussichtliche Dauer: 21:30 Uhr. Grund: Fremder Verkehrsunfall im Bereich Taborstraße 53-55.",
+    "descriptionHTML": "<p>Linie 2:<br>Umleitung in Richtung Dornbach<br>zwischen Heinestraße und Julius-Raab-Platz<br>über Praterstern S U.</p><p>Voraussichtliche Dauer: 21:30 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Taborstraße 53-55.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 2:<br>Umleitung in beiden Richtungen<br>zwischen Julius-Raab-Platz und Heinestraße <br>über Praterstern S U.</p><p>Voraussichtliche Dauer: 21:30 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Taborstraße 53-55.</p>",
-       "descriptionPlain": "Linie 2: Umleitung in beiden Richtungen zwischen Julius-Raab-Platz und Heinestraße über Praterstern S U. Voraussichtliche Dauer: 21:30 Uhr. Grund: Fremder Verkehrsunfall im Bereich Taborstraße 53-55.",
+       "descriptionHtml": "<p>Linie 2:<br>Umleitung in Richtung Dornbach<br>zwischen Heinestraße und Julius-Raab-Platz<br>über Praterstern S U.</p><p>Voraussichtliche Dauer: 21:30 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Taborstraße 53-55.</p>",
+       "descriptionPlain": "Linie 2: Umleitung in Richtung Dornbach zwischen Heinestraße und Julius-Raab-Platz über Praterstern S U. Voraussichtliche Dauer: 21:30 Uhr. Grund: Fremder Verkehrsunfall im Bereich Taborstraße 53-55.",
        "title": "2: Fremder Verkehrsunfall"
       }
      }
@@ -300,10 +252,58 @@
       "vehicleType": "ptTram"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-08T20:19:00.000+0100",
-     "lastUpdate": "2026-11-08T20:19:00.000+0100",
+     "end": "2026-11-08T21:00:00.000+0100",
+     "lastUpdate": "2026-11-08T21:00:00.000+0100",
+     "resume": "2026-11-08T21:00:00.000+0100",
+     "start": "2026-11-08T20:16:00.000+0100"
+    },
+    "title": "2: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "2": "ptTram"
+     }
+    },
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "2: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Taborstraße 53-55",
+    "name": "I20261108-0029-F01",
+    "owner": "WL",
+    "parentName": "I20261108-0029",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 102,
+      "lineName": "2",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-08T21:00:00.000+0100",
+     "lastUpdate": "2026-11-08T21:00:00.000+0100",
+     "resume": "2026-11-08T21:00:00.000+0100",
      "start": "2026-11-08T20:16:00.000+0100"
     },
     "title": "2: Fremder Verkehrsunfall"

@@ -1,5 +1,118 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R10-102|2026-11-08T20:16:56.000+0100|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R10-102",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-11-08T21:16:00.000+0100",
+   "incident": "I20261108-0029"
+  },
+  {
+   "key": "R1001-102|2026-11-08T20:21:56.000+0100|Fremdunfall\nBetrieb ab Heinestraße",
+   "name": "R1001-102",
+   "title": "Fremdunfall\nBetrieb ab Heinestraße",
+   "end": "2026-11-08T21:21:00.000+0100",
+   "incident": "I20261108-0029"
+  },
+  {
+   "key": "R1002-102|2026-11-08T20:18:25.000+0100|Fremdunfall\nBetrieb ab Heinestraße",
+   "name": "R1002-102",
+   "title": "Fremdunfall\nBetrieb ab Heinestraße",
+   "end": "2026-11-08T21:21:00.000+0100",
+   "incident": "I20261108-0029"
+  },
+  {
+   "key": "R1003-102|2026-11-08T20:18:25.000+0100|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R1003-102",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-11-08T21:17:00.000+0100",
+   "incident": "I20261108-0029"
+  },
+  {
+   "key": "R1019-102|2026-11-08T20:16:55.000+0100|Fremdunfall\nBetrieb ab Julius-Raab-Platz",
+   "name": "R1019-102",
+   "title": "Fremdunfall\nBetrieb ab Julius-Raab-Platz",
+   "end": "2026-11-08T21:20:00.000+0100",
+   "incident": "I20261108-0029"
+  },
+  {
+   "key": "R1020-102|2026-11-08T20:16:55.000+0100|Fremdunfall\nBetrieb ab Julius-Raab-Platz",
+   "name": "R1020-102",
+   "title": "Fremdunfall\nBetrieb ab Julius-Raab-Platz",
+   "end": "2026-11-08T21:20:00.000+0100",
+   "incident": "I20261108-0029"
+  },
+  {
+   "key": "R1022-102|2026-11-08T20:16:55.000+0100|Fremdunfall\nBetrieb ab Julius-Raab-Platz",
+   "name": "R1022-102",
+   "title": "Fremdunfall\nBetrieb ab Julius-Raab-Platz",
+   "end": "2026-11-08T21:20:00.000+0100",
+   "incident": "I20261108-0029"
+  },
+  {
+   "key": "R11-102|2026-11-08T20:16:56.000+0100|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R11-102",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-11-08T21:16:00.000+0100",
+   "incident": "I20261108-0029"
+  },
+  {
+   "key": "R133-102|2026-11-08T20:21:56.000+0100|Fremdunfall\nBetrieb ab Heinestraße",
+   "name": "R133-102",
+   "title": "Fremdunfall\nBetrieb ab Heinestraße",
+   "end": "2026-11-08T21:21:00.000+0100",
+   "incident": "I20261108-0029"
+  },
+  {
+   "key": "R134-102|2026-11-08T20:21:56.000+0100|Fremdunfall\nBetrieb ab Heinestraße",
+   "name": "R134-102",
+   "title": "Fremdunfall\nBetrieb ab Heinestraße",
+   "end": "2026-11-08T21:21:00.000+0100",
+   "incident": "I20261108-0029"
+  },
+  {
+   "key": "R22-102|2026-11-08T20:16:56.000+0100|Fremdunfall\nBetrieb ab Julius-Raab-Platz",
+   "name": "R22-102",
+   "title": "Fremdunfall\nBetrieb ab Julius-Raab-Platz",
+   "end": "2026-11-08T21:20:00.000+0100",
+   "incident": "I20261108-0029"
+  },
+  {
+   "key": "R314-102|2026-11-08T20:18:29.000+0100|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R314-102",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-11-08T21:17:00.000+0100",
+   "incident": "I20261108-0029"
+  },
+  {
+   "key": "R315-102|2026-11-08T20:18:29.000+0100|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R315-102",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-11-08T21:17:00.000+0100",
+   "incident": "I20261108-0029"
+  },
+  {
+   "key": "R328-102|2026-11-08T20:22:30.000+0100|Fremdunfall\nUmleitung über Praterstern",
+   "name": "R328-102",
+   "title": "Fremdunfall\nUmleitung über Praterstern",
+   "end": "2026-11-08T21:22:00.000+0100",
+   "incident": "I20261108-0029"
+  },
+  {
+   "key": "R55-102|2026-11-08T20:22:26.000+0100|Fremdunfall\nUmleitung über Praterstern",
+   "name": "R55-102",
+   "title": "Fremdunfall\nUmleitung über Praterstern",
+   "end": "2026-11-08T21:21:00.000+0100",
+   "incident": "I20261108-0029"
+  },
+  {
+   "key": "R9-102|2026-11-08T20:16:56.000+0100|Fahrtbehinderung\nFremder Verkehrsunfall",
+   "name": "R9-102",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
+   "end": "2026-11-08T21:16:00.000+0100",
+   "incident": "I20261108-0029"
+  }
+ ]
 }
