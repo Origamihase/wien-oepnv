@@ -82,8 +82,9 @@ def _may_merge(
     (26.10. 17:07) merged with "18: Veranstaltung am 08.11.26" into the
     title "18: Veranstaltung am 08.11.26 & Fahrtbehinderung Veranstaltung",
     a notice; and the relocation "5A/5B/N31: Obere Augartenstraße" (until
-    01.11.) took the one of 07.–09.11. and stood from 01.11. to 06.11.,
-    when neither applied. The caller without *announced* (the tests) keeps
+    01.11.) took the one of 07.–09.11. and stood until 01.11. with the end
+    09.11., as if a relocation applied from 01.11. to 06.11., when neither
+    did (29.10. 14:31 to 01.11. 11:01 Vienna time). The caller without *announced* (the tests) keeps
     the old behaviour.
 
     A WL notice never takes a running WL incident, and a stop relocation or
