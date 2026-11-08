@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261108-0002, I20260925-0011, I20261108-0001-F01, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20261108-0001-F01, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R293-474, R318-437, R2379-627, R2373-126, R2373-127, R2373-125, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2372-125, R2378-627, R2343-626, R2343-125, R2359-125, R2371-125, R2370-125, R2345-127, R2380-627, R3886-480, R2558-125, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R2371-520, R2372-520, R2379-520, R2378-520, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R293-474, R318-437, R2379-627, R2373-126, R2373-127, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2373-125, R2372-125, R2378-627, R2343-626, R2343-125, R2359-125, R2371-125, R2370-125, R2345-127, R2380-627, R3886-480, R2558-125, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R2371-520, R2372-520, R2379-520, R2378-520, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -217,51 +217,6 @@
      "start": "2026-11-08T00:20:00.000+0100"
     },
     "title": "U2: Betriebsstörung"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "N62": "ptBusNight"
-     }
-    },
-    "description": "Derzeit kommt es bei der Linie N62 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Derzeit kommt es bei der Linie N62 in beiden Richtungen zu unterschiedlichen Intervallen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Derzeit kommt es bei der Linie N62 in beiden Richtungen zu unterschiedlichen Intervallen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Derzeit kommt es bei der Linie N62 in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Schadhaftes Fahrzeug.",
-       "title": "N62: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261108-0002",
-    "owner": "WL",
-    "parentName": "I20261108-0002",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "N62"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 562,
-      "lineName": "N62",
-      "vehicleType": "ptBusNight"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-08T00:42:00.000+0100",
-     "lastUpdate": "2026-11-08T00:42:00.000+0100",
-     "resume": "2026-11-08T00:41:00.000+0100",
-     "start": "2026-11-08T00:41:00.000+0100"
-    },
-    "title": "N62: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
