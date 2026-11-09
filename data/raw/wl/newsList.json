@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_487, ftazW_444, ftazW_1031284, ftazW_2, ftazW_1353815, ftazW_582, ftazW_1017115, ftazW_1351714, ftazW_445, ftazW_3, ftazW_1017116, ftazW_211, ftazW_1018631, ftazW_488, ftazW_581, ftazW_1351716, ftazW_146, ftazW_1016567, ftazW_486, ftazW_734, ftazW_769, ftazW_147, ftazW_29, ftazW_489, ftazW_770, ftazW_736, ftazW_1351715, ftazW_490, ftazW_1018065, ftazW_239, ftazW_510, ftazW_240, ftazW_491, ftazW_1018066, ftazW_82, ftazW_1351709, ftazW_511"
+    "trafficInfoNameList": "ftazW_444, ftazW_1031284, ftazW_2, ftazW_1353815, ftazW_582, ftazW_1017115, ftazW_1351714, ftazW_487, ftazW_581, ftazW_1351716, ftazW_445, ftazW_3, ftazW_1017116, ftazW_211, ftazW_1018631, ftazW_488, ftazW_486, ftazW_734, ftazW_769, ftazW_146, ftazW_1016567, ftazW_736, ftazW_1351715, ftazW_147, ftazW_29, ftazW_489, ftazW_770, ftazW_510, ftazW_490, ftazW_1018065, ftazW_239, ftazW_1351709, ftazW_511, ftazW_240, ftazW_491, ftazW_1018066, ftazW_82"
    }
   ],
   "poiCategoryGroups": [
@@ -3045,8 +3045,8 @@
      "rbls": [],
      "reason": "",
      "relatedLines": [
-      "U1",
-      "U2"
+      "U2",
+      "U1"
      ],
      "station": "Praterstern",
      "status": "geplante Wartung",
@@ -3060,8 +3060,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U1",
-     "U2"
+     "U2",
+     "U1"
     ],
     "time": {
      "end": "2026-11-10T05:15:00.000+0100",
@@ -3456,8 +3456,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U6",
-      "U4"
+      "U4",
+      "U6"
      ],
      "station": "Längenfeldgasse",
      "status": "geplante Wartung",
@@ -3471,8 +3471,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U6",
-     "U4"
+     "U4",
+     "U6"
     ],
     "relatedStops": [
      4437,
@@ -3497,8 +3497,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U6",
-      "U4"
+      "U4",
+      "U6"
      ],
      "station": "Längenfeldgasse",
      "status": "geplante Wartung",
@@ -3512,8 +3512,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U6",
-     "U4"
+     "U4",
+     "U6"
     ],
     "relatedStops": [
      4438,
@@ -3718,8 +3718,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U6",
-      "U4"
+      "U4",
+      "U6"
      ],
      "station": "Spittelau",
      "status": "geplante Wartung",
@@ -3733,8 +3733,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U6",
-     "U4"
+     "U4",
+     "U6"
     ],
     "relatedStops": [
      4627
@@ -3759,8 +3759,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U6",
-      "U4"
+      "U4",
+      "U6"
      ],
      "station": "Spittelau",
      "status": "geplante Wartung",
@@ -3774,8 +3774,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U6",
-     "U4"
+     "U4",
+     "U6"
     ],
     "relatedStops": [
      4439,
@@ -3800,8 +3800,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U6",
-      "U4"
+      "U4",
+      "U6"
      ],
      "station": "Spittelau",
      "status": "geplante Wartung",
@@ -3815,8 +3815,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U6",
-     "U4"
+     "U4",
+     "U6"
     ],
     "relatedStops": [
      4627
@@ -3839,8 +3839,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U6",
-      "U4"
+      "U4",
+      "U6"
      ],
      "station": "Spittelau",
      "status": "geplante Wartung",
@@ -3854,8 +3854,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U6",
-     "U4"
+     "U4",
+     "U6"
     ],
     "relatedStops": [
      4651
@@ -3988,8 +3988,8 @@
      "rbls": [],
      "reason": "",
      "relatedLines": [
-      "U1",
       "U2",
+      "U1",
       "U4"
      ],
      "station": "Karlsplatz",
@@ -4004,8 +4004,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U1",
      "U2",
+     "U1",
      "U4"
     ],
     "time": {
