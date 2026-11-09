@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261109-0005, I20260925-0011, I20261109-0003, I20261109-0006, I20260909-0007, I20261020-0029, I20261109-0004"
+    "trafficInfoNameList": "I20261109-0005, I20261109-0007, I20260925-0011, I20260909-0007, I20261020-0029, I20261109-0004"
    },
    {
     "id": 3,
@@ -175,51 +175,6 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U1: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261109-0003",
-    "owner": "WL",
-    "parentName": "I20261109-0003",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 301,
-      "lineName": "U1",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-09T04:55:00.000+0100",
-     "lastUpdate": "2026-11-09T04:55:00.000+0100",
-     "resume": "2026-11-09T04:55:00.000+0100",
-     "start": "2026-11-09T04:55:00.000+0100"
-    },
-    "title": "U1: Schadhaftes Fahrzeug"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
       "U3": "ptMetro"
      }
     },
@@ -316,20 +271,20 @@
       "U4": "ptMetro"
      }
     },
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "description": "Die Linie U4 fährt derzeit in der Station Stadtpark in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig. Voraussichtliche Dauer: 06:50 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Stadtpark.",
+    "descriptionHTML": "<p>Die Linie U4 fährt derzeit in der Station Stadtpark in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 06:50 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Stadtpark.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U4: Verspätungen"
+       "descriptionHtml": "<p>Die Linie U4 fährt derzeit in der Station Stadtpark in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 06:50 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Stadtpark.</p>",
+       "descriptionPlain": "Die Linie U4 fährt derzeit in der Station Stadtpark in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig. Voraussichtliche Dauer: 06:50 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Stadtpark.",
+       "title": "U4: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261109-0006",
+    "name": "I20261109-0007",
     "owner": "WL",
-    "parentName": "I20261109-0006",
+    "parentName": "I20261109-0007",
     "priority": "1",
     "reasonId": 20,
     "reasonName": "Schadhaftes Fahrzeug",
@@ -344,14 +299,16 @@
       "vehicleType": "ptMetro"
      }
     ],
+    "relatedStops": [
+     4423
+    ],
     "status": "active",
     "time": {
-     "created": "2026-11-09T05:52:00.000+0100",
-     "lastUpdate": "2026-11-09T05:52:00.000+0100",
-     "resume": "2026-11-09T05:52:00.000+0100",
-     "start": "2026-11-09T05:52:00.000+0100"
+     "created": "2026-11-09T06:19:00.000+0100",
+     "lastUpdate": "2026-11-09T06:24:00.000+0100",
+     "start": "2026-11-09T06:19:00.000+0100"
     },
-    "title": "U4: Verspätungen"
+    "title": "U4: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
