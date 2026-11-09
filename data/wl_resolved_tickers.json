@@ -1,5 +1,55 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R2861-125|2026-11-09T13:15:28.000+0100|Feuerwehreinsatz\nBetrieb ab Prinzgasse",
+   "name": "R2861-125",
+   "title": "Feuerwehreinsatz\nBetrieb ab Prinzgasse",
+   "end": "2026-11-09T14:14:00.000+0100",
+   "incident": "I20261109-0019-F01"
+  },
+  {
+   "key": "R2864-125|2026-11-09T13:15:28.000+0100|Feuerwehreinsatz\nBetrieb ab Prinzgasse",
+   "name": "R2864-125",
+   "title": "Feuerwehreinsatz\nBetrieb ab Prinzgasse",
+   "end": "2026-11-09T14:14:00.000+0100",
+   "incident": "I20261109-0019-F01"
+  },
+  {
+   "key": "R2865-125|2026-11-09T13:15:28.000+0100|Feuerwehreinsatz\nBetrieb ab Prinzgasse",
+   "name": "R2865-125",
+   "title": "Feuerwehreinsatz\nBetrieb ab Prinzgasse",
+   "end": "2026-11-09T14:14:00.000+0100",
+   "incident": "I20261109-0019-F01"
+  },
+  {
+   "key": "R2866-125|2026-11-09T13:14:58.000+0100|Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "name": "R2866-125",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "end": "2026-11-09T14:14:00.000+0100",
+   "incident": "I20261109-0019-F01"
+  },
+  {
+   "key": "R2867-125|2026-11-09T13:14:58.000+0100|Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "name": "R2867-125",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "end": "2026-11-09T14:14:00.000+0100",
+   "incident": "I20261109-0019-F01"
+  },
+  {
+   "key": "R2870-125|2026-11-09T13:14:58.000+0100|Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "name": "R2870-125",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "end": "2026-11-09T14:14:00.000+0100",
+   "incident": "I20261109-0019-F01"
+  },
+  {
+   "key": "R2874-125|2026-11-09T13:15:28.000+0100|Feuerwehreinsatz\nBetrieb ab Prinzgasse",
+   "name": "R2874-125",
+   "title": "Feuerwehreinsatz\nBetrieb ab Prinzgasse",
+   "end": "2026-11-09T14:14:00.000+0100",
+   "incident": "I20261109-0019-F01"
+  }
+ ]
 }

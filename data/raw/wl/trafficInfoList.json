@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261109-0016-F01, I20261109-0019, I20261020-0029, I20261109-0018, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261109-0020-F02, I20260925-0011, I20261109-0018, I20260909-0007, I20261109-0019-F01, I20261109-0016-F01, I20261020-0029, I20261109-0020-F01, I20261109-0021"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1875-101, R1876-101, R1880-101, R3886-480, R1882-101, R1883-101, R1884-101, R1881-101, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R2558-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R293-474, R318-437, R1974-466, R500-101, R1199-205, R322-102, R321-102, R2159-131, R321-131, R322-131, R2193-131, R2190-131, R2168-131, R2171-131, R2169-131, R2167-131, R2870-125, R2866-125, R2867-125, R2861-125, R2864-125, R2865-125, R2874-125, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1880-101, R1881-101, R1882-101, R1876-101, R1884-101, R3886-480, R1875-101, R1883-101, R2370-125, R2558-125, R2343-626, R2343-125, R2378-627, R2359-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R318-437, R293-474, R1974-466, R500-101, R1199-205, R321-102, R2159-131, R321-131, R322-131, R2193-131, R2190-131, R2167-131, R2171-131, R2169-131, R2168-131, R2870-125, R2866-125, R2867-125, R2861-125, R2864-125, R2865-125, R2874-125, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -280,19 +280,19 @@
       "25": "ptTram"
      }
     },
-    "description": "Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Prinzgasse. Die Züge zur Hausfeldstraße umgeleitet.Grund dafür ist ein Feuerwehreinsatz im Bereich Pirquetgasse # Berresgasse.Voraussichtliche Dauer: 14:30 Uhr",
-    "descriptionHTML": "<p><span style=\"color: rgba(0, 0, 0, 0.87);\">Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Prinzgasse. Die Züge zur Hausfeldstraße umgeleitet.<br><br>Grund dafür ist ein Feuerwehreinsatz im Bereich Pirquetgasse # Berresgasse.<br><br>Voraussichtliche Dauer: 14:30 Uhr</span></p>",
+    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p><span style=\"color: rgba(0, 0, 0, 0.87);\">Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Prinzgasse. Die Züge zur Hausfeldstraße umgeleitet.<br><br>Grund dafür ist ein Feuerwehreinsatz im Bereich Pirquetgasse # Berresgasse.<br><br>Voraussichtliche Dauer: 14:30 Uhr</span></p>",
-       "descriptionPlain": "Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Prinzgasse. Die Züge zur Hausfeldstraße umgeleitet.Grund dafür ist ein Feuerwehreinsatz im Bereich Pirquetgasse # Berresgasse.Voraussichtliche Dauer: 14:30 Uhr",
+       "descriptionHtml": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "25: Feuerwehreinsatz"
       }
      }
     ],
     "location": "Pirquetgasse / Berresgasse",
-    "name": "I20261109-0019",
+    "name": "I20261109-0019-F01",
     "owner": "WL",
     "parentName": "I20261109-0019",
     "priority": "1",
@@ -309,13 +309,152 @@
       "vehicleType": "ptTram"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
-     "created": "2026-11-09T13:20:00.000+0100",
-     "lastUpdate": "2026-11-09T13:20:00.000+0100",
+     "created": "2026-11-09T13:30:00.000+0100",
+     "end": "2026-11-09T13:59:00.000+0100",
+     "lastUpdate": "2026-11-09T13:59:00.000+0100",
+     "resume": "2026-11-09T13:59:00.000+0100",
      "start": "2026-11-09T13:12:00.000+0100"
     },
     "title": "25: Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "40": "ptTram"
+     }
+    },
+    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "40: Falschparker"
+      }
+     }
+    ],
+    "location": "Währinger Straße 114",
+    "name": "I20261109-0020-F01",
+    "owner": "WL",
+    "parentName": "I20261109-0020",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 140,
+      "lineName": "40",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-09T13:56:00.000+0100",
+     "end": "2026-11-09T14:20:00.000+0100",
+     "lastUpdate": "2026-11-09T13:58:00.000+0100",
+     "start": "2026-11-09T13:53:00.000+0100"
+    },
+    "title": "40: Falschparker"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "41": "ptTram"
+     }
+    },
+    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "41: Falschparker"
+      }
+     }
+    ],
+    "location": "Währinger Straße 114",
+    "name": "I20261109-0020-F02",
+    "owner": "WL",
+    "parentName": "I20261109-0020",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 141,
+      "lineName": "41",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-09T13:56:00.000+0100",
+     "end": "2026-11-09T14:20:00.000+0100",
+     "lastUpdate": "2026-11-09T13:58:00.000+0100",
+     "start": "2026-11-09T13:53:00.000+0100"
+    },
+    "title": "41: Falschparker"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "50A": "ptBusCity"
+     }
+    },
+    "description": "Linie 50A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 50A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 50A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 50A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "50A: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261109-0021",
+    "owner": "WL",
+    "parentName": "I20261109-0021",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "50A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 450,
+      "lineName": "50A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-09T14:00:00.000+0100",
+     "lastUpdate": "2026-11-09T14:00:00.000+0100",
+     "resume": "2026-11-09T13:59:00.000+0100",
+     "start": "2026-11-09T13:59:00.000+0100"
+    },
+    "title": "50A: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1259,29 +1398,6 @@
      "start": "2026-11-09T13:08:28.000+0100"
     },
     "title": "Fahrleitungsgebr.\nBetrieb ab Wexstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrleitungsgebr.\nZüge halten bei Linie 31",
-    "name": "R322-102",
-    "owner": "WL",
-    "parentName": "R322-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     322
-    ],
-    "time": {
-     "end": "2026-11-09T13:35:00.000+0100",
-     "start": "2026-11-09T12:02:52.000+0100"
-    },
-    "title": "Fahrleitungsgebr.\nZüge halten bei Linie 31"
    },
    {
     "alertCause": "undefined alert cause",
