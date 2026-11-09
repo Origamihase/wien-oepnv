@@ -8,20 +8,47 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Mon, 09 Nov 2026 17:01:07 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 17:30:53 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[40/41: Third-party traffic accident]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5d2b0a63a4f10de86181f41bf91d18f7dde66b17e554c383248043fd66e2674b</guid>
+      <guid isPermaLink="false">6cfc69f31b60ae22694c6115687fe893ca9b03646eb53d922b72081565d2d9ab</guid>
       <pubDate>Mon, 09 Nov 2026 16:56:50 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 09 Nov 2026 17:01:07 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 09 Nov 2026 16:57:00 +0100</ext:starts_at>
-      <description>Service obstruction: 40, 41. Expected until 18:00. [Since 16:56]</description>
-      <content:encoded><![CDATA[Service obstruction: 40, 41. Expected until 18:00.<br/>[Since 16:56]]]></content:encoded>
+      <ext:first_seen>Mon, 09 Nov 2026 17:30:53 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 09 Nov 2026 16:57:19 +0100</ext:starts_at>
+      <ext:ends_at>Mon, 09 Nov 2026 17:56:00 +0100</ext:ends_at>
+      <description>Service obstruction. [Since 16:56]</description>
+      <content:encoded><![CDATA[Service obstruction.<br/>[Since 16:56]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919</guid>
+      <pubDate>Mon, 09 Nov 2026 17:20:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 09 Nov 2026 17:20:00 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 09 Nov 2026 17:30:24 +0100</ext:starts_at>
+      <description>Service obstruction towards Schottentor. Expected until 18:00. Reason: illegally parked vehicle in the area of Herbeckstraße / Schöffelgasse. [Since 17:20]</description>
+      <content:encoded><![CDATA[Service obstruction towards Schottentor. Expected until 18:00. Reason: illegally parked vehicle in the area of Herbeckstraße / Schöffelgasse.<br/>[Since 17:20]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60: Traffic congestion]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">08e61c125855aaa8e72bedc583a0371a48ce4c3e4d16af18872e566ea043e1b3</guid>
+      <pubDate>Mon, 09 Nov 2026 17:11:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 09 Nov 2026 17:11:00 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 09 Nov 2026 17:11:00 +0100</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 17:11]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 17:11]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[9/42: Traffic accident]]></title>
@@ -59,23 +86,9 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Mon, 09 Nov 2026 16:13:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 09 Nov 2026 16:13:46 +0100</ext:starts_at>
+      <ext:starts_at>Mon, 09 Nov 2026 16:13:00 +0100</ext:starts_at>
       <description>Irregular intervals in both directions. Reason: rescue operation. [Since 16:13]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 16:13]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2: Damaged overhead line by a truck]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">be0a39840a659240e8fb9c81e4ad91d9750f83f694e865a73aef39e3c4769f4a</guid>
-      <pubDate>Mon, 09 Nov 2026 11:57:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 09 Nov 2026 12:30:45 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 09 Nov 2026 11:57:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 09 Nov 2026 17:25:00 +0100</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 11:57]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 11:57]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Meidling]]></title>
@@ -132,20 +145,6 @@
       <ext:ends_at>Thu, 10 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Due to roadworks in Wexstraße the buses are redirected. Line 5B: diversion from Klosterneuburger Straße / Wexstraße via Klosterneuburger Straße … [Until 10.12.]</description>
       <content:encoded><![CDATA[Due to roadworks in Wexstraße the buses are redirected. Line 5B: diversion from Klosterneuburger Straße / Wexstraße via Klosterneuburger Straße …<br/>[Until 10.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31: Wexstraße]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">349cce99b21e13e0a504471640a3afdac3838a3618bf31ecfa28d333e3f00a83</guid>
-      <pubDate>Thu, 05 Nov 2026 13:45:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 05 Nov 2026 13:45:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 09 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.235958 16.365885</georss:point>
-      <description>Wexstraße 12 → Klosterneuburger Straße 88-90. Stop relocation of line 31 towards Stammersdorf. Reason: stop conversion. [Since today]</description>
-      <content:encoded><![CDATA[Wexstraße 12 → Klosterneuburger Straße 88-90. Stop relocation of line 31 towards Stammersdorf. Reason: stop conversion.<br/>[Since today]]]></content:encoded>
     </item>
   </channel>
 </rss>
