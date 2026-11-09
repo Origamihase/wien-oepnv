@@ -8,8 +8,34 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Mon, 09 Nov 2026 10:30:42 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 11:00:50 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U6: Defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd</guid>
+      <pubDate>Mon, 09 Nov 2026 10:58:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 09 Nov 2026 10:58:00 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 09 Nov 2026 10:58:00 +0100</ext:starts_at>
+      <description>Service obstruction towards Floridsdorf. Expected until 11:20. Reason: defective vehicle in the stop area of Am Schöpfwerk. [Since 10:58]</description>
+      <content:encoded><![CDATA[Service obstruction towards Floridsdorf. Expected until 11:20. Reason: defective vehicle in the stop area of Am Schöpfwerk.<br/>[Since 10:58]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40/41: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919</guid>
+      <pubDate>Mon, 09 Nov 2026 10:41:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 09 Nov 2026 10:41:00 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 09 Nov 2026 10:43:42 +0100</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 10:41]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 10:41]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Meidling]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -24,21 +50,6 @@
       <georss:point>48.174500 16.333796</georss:point>
       <description>Due to damage on the track, trains can only run to a limited extent at Meidling (Wien) until approx. 08:00. Allow up to 10 minutes of extra travel time. [Since 07:54]</description>
       <content:encoded><![CDATA[Due to damage on the track, trains can only run to a limited extent at Meidling (Wien) until approx. 08:00. Allow up to 10 minutes of extra travel time.<br/>[Since 07:54]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Wien Stadlau]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;925380</guid>
-      <pubDate>Mon, 09 Nov 2026 10:00:37 +0100</pubDate>
-      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 09 Nov 2026 10:30:42 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 09 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 09 Nov 2026 23:59:59 +0100</ext:ends_at>
-      <georss:line>48.185201 16.376296 48.219255 16.448852</georss:line>
-      <description>Due to an interlocking failure at the station, no trains could run until 09:57. For now, allow up to 10 minutes of extra travel time. [Today]</description>
-      <content:encoded><![CDATA[Due to an interlocking failure at the station, no trains could run until 09:57. For now, allow up to 10 minutes of extra travel time.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[5A/N31: Stop relocation]]></title>
@@ -135,20 +146,6 @@
       <ext:starts_at>Thu, 05 Nov 2026 00:00:00 +0100</ext:starts_at>
       <description>Due to roadworks in Knödelhüttenstraße, line 52A is redirected. [Since 05.11.]</description>
       <content:encoded><![CDATA[Due to roadworks in Knödelhüttenstraße, line 52A is redirected.<br/>[Since 05.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[68A: Laaer Berg, Kurpark Nordeingang]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">35af25ee2f54a20b0a083907d1c434c54482a85f2cad3a8438b5032218699de3</guid>
-      <pubDate>Wed, 04 Nov 2026 13:28:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 04 Nov 2026 13:28:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 05 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.151997 16.401728</georss:point>
-      <description>Filmteichstraße before Nordeingang des Kurparks → approx. 30 metres towards Laaer-Berg-Straße. Stop relocation of line 68A towards Laaer Berg, Nordosteingang. … [Since 05.11.]</description>
-      <content:encoded><![CDATA[Filmteichstraße before Nordeingang des Kurparks → approx. 30 metres towards Laaer-Berg-Straße. Stop relocation of line 68A towards Laaer Berg, Nordosteingang. …<br/>[Since 05.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

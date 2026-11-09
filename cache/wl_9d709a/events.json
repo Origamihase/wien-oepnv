@@ -555,7 +555,7 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "N67: Geänderte Linienführung",
-    "description": "<h2>Netzänderung</h2><p>Die Linienführung der Linie N67 wird im Bereich Jochen-Rindt-Straße angepasst.</p><p><strong><u>Zeitpunkt:</u></strong><br>Ab Samstag, 05. Dezember 2026, 00:00 Uhr.</p><p><strong><u>Neue Fahrstrecke:</u></strong><br>Die Busse fahren in beiden Richtungen direkt von der Jochen-Rindt-Straße über die Tenschertstraße. Die Fahrt über Inzersdorf, Biróstraße entfällt.</p><p><u>Neu bediente Haltestellen in Richtung Quellenplatz / Altes Landgut U:</u><br>- Tenschertstraße (Jochen-Rindt-Straße 17)<br>- Ernanigasse (Jochen-Rindt-Straße 7)<br>- Jochen-Rindt-Straße (Kolbegasse 48, gemeinsam mit Linie N66)<br>- Kolbegasse (Kolbegasse 70b, gemeinsam mit Linie N66)</p><p><u>Nicht mehr bediente Haltestellen in Richtung Inzersdorf, Großmarkt:</u><br>- Inzersdorf, Biróstraße (Biróstraße 31)<br>- Biróstraße Mitte (Biróstraße 11)</p>",
+    "description": "<h2>Netzänderung</h2><p>Die Linienführung der Linie N67 wird im Bereich Jochen-Rindt-Straße angepasst.</p><p><strong><u>Zeitpunkt:</u></strong><br>Ab Samstag, 05. Dezember 2026, 00:00 Uhr.</p><p><strong><u>Neue Fahrstrecke:</u></strong><br>Die Busse fahren in beiden Richtungen direkt von der Jochen-Rindt-Straße über die Tenschertstraße. Die Fahrt über Inzersdorf, Biróstraße entfällt.</p><p><u>Neu bediente Haltestellen in Richtung Quellenplatz / Altes Landgut U:</u><br>- Tenschertstraße (Jochen-Rindt-Straße 17)<br>- Ernanigasse (Jochen-Rindt-Straße 7)<br>- Jochen-Rindt-Straße (Kolbegasse 48, gemeinsam mit Linie N66)<br>- Kolbegasse (Kolbegasse 70b, gemeinsam mit Linie N66)</p><p><u>Nicht mehr bediente Haltestellen in Richtung Inzersdorf, Großmarkt:</u><br>- Inzersdorf, Biróstraße (Biróstraße 31)<br>- Biróstraße Mitte (Biróstraße 11)</p><p><strong><u>Skizze:</u></strong><br><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/N67_Grafik.png\" alt=\"Skizze der neuen Linienführung\"></p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "fa6c829a6f2c553546d167e72a5fae670230d5caa1fb22d84e1f715e5b4d0bfe",
     "pubDate": "2026-11-04T12:39:00+01:00",
@@ -866,6 +866,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "40: Fahrtbehinderung Falschparker",
+    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919",
+    "pubDate": "2026-11-09T10:41:00+01:00",
+    "starts_at": "2026-11-09T10:43:42+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=40|D=2026-11-09|TK=falschparker",
+    "_wl_ids": [
+      "I20261109-0015"
+    ],
+    "_incident_start": "2026-11-09T10:41:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Fahrtbehinderung Falschparker",
+    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
+    "pubDate": "2026-11-09T10:41:00+01:00",
+    "starts_at": "2026-11-09T10:44:12+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=41|D=2026-11-09|TK=falschparker",
+    "_wl_ids": [
+      "I20261109-0015"
+    ],
+    "_incident_start": "2026-11-09T10:41:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -910,6 +942,22 @@
     "starts_at": "2026-11-09T00:00:19+01:00",
     "ends_at": "2026-11-09T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-09|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Schadhaftes Fahrzeug",
+    "description": "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Voraussichtliche Dauer: 11:20 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Am Schöpfwerk.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd",
+    "pubDate": "2026-11-09T10:58:00+01:00",
+    "starts_at": "2026-11-09T10:58:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U6|D=2026-11-09|TK=u6 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261109-0016"
+    ],
+    "_incident_start": "2026-11-09T10:58:00+01:00"
   },
   {
     "source": "Wiener Linien",
