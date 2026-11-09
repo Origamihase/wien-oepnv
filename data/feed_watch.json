@@ -1,20 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-09T13:31:04.283747+00:00",
- "built": "2026-11-09T14:30:53+01:00",
+ "updated": "2026-11-09T14:01:16.225383+00:00",
+ "built": "2026-11-09T15:01:03+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-09T14:30:53+01:00",
+  "built": "2026-11-09T15:01:03+01:00",
   "items": [
    {
-    "title": "2: Fahrleitungsgebr.",
-    "time_line": "Seit 12:02"
-   },
-   {
-    "title": "31: Fahrleitungsgebr.",
-    "time_line": "Seit 13:08"
+    "title": "U4: Verspätungen",
+    "time_line": "Seit 14:57"
    },
    {
     "title": "2/31: Beschädigte Oberleitung durch einen LKW",
@@ -47,31 +43,15 @@
    {
     "title": "Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx",
     "time_line": "Bis 31.10.2027"
+   },
+   {
+    "title": "52A: Bauarbeiten",
+    "time_line": "Seit 05.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-02T14:01:09.335668+00:00",
-   "raw": {
-    "wl-stoerungen": 61,
-    "wl-hinweise": 74,
-    "oebb": 172,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 13,
-    "oebb": 151,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 6,
-    "wl": 90
-   }
-  },
   {
    "t": "2026-11-02T14:31:04.018509+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 8,
     "wl": 81
    }
+  },
+  {
+   "t": "2026-11-09T14:01:16.225383+00:00",
+   "raw": {
+    "wl-stoerungen": 39,
+    "wl-hinweise": 98,
+    "oebb": 175,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 27,
+    "oebb": 149,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 8,
+    "wl": 80
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-09T13:31:04.283747+00:00"
+   "last_ok": "2026-11-09T14:01:16.225383+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-09T13:31:04.283747+00:00"
+   "last_ok": "2026-11-09T14:01:16.225383+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-09T13:31:04.283747+00:00"
+   "last_ok": "2026-11-09T14:01:16.225383+00:00"
   }
  }
 }
