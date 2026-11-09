@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261108-0029-F01, I20260925-0011, I20261108-0030, I20260909-0007, I20261108-0013, I20261020-0029"
+    "trafficInfoNameList": "I20261109-0030, I20260925-0011, I20261109-0031, I20261109-0034-F01, I20261109-0035, I20260909-0007, I20261109-0032, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R401-101, R293-474, R2378-627, R2343-626, R2343-125, R2345-127, R2380-627, R2379-627, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2558-125, R3886-480, R1974-466, R500-101, R196-137, R216-137, R215-137, R199-137, R198-137, R197-137, R202-137, R201-137, R207-137, R206-137, R205-137, R204-137, R203-137, R208-137, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R3886-480, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2372-125, R2370-125, R2359-125, R2343-626, R2373-127, R2373-125, R2371-125, R2558-125, R2343-125, R2378-627, R2345-127, R2380-627, R2379-627, R2373-126, R318-437, R293-474, R1974-466, R500-101, R1199-205, R177-140, R177-141, R193-141, R192-141, R192-140, R190-141, R190-140, R189-140, R189-141, R521-140, R190-0, R189-0, R177-0, R192-0, R143-140, R144-140, R149-140, R150-140, R187-140, R146-140, R147-140, R148-140, R1212-140, R188-140, R1213-140, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,140 +171,557 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "fire brigade order",
-    "alertCauseId": 10,
-    "attributes": {
-     "relatedLineTypes": {
-      "37": "ptTram"
-     }
-    },
-    "description": "Linie 37: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Ersatz: Linien U4, U6, 38, 10A, 38A, 39A. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Gasrohrgebrechen im Bereich Döblinger Hauptstraße 70.",
-    "descriptionHTML": "<p>Linie 37:<br>Betrieb nur zwischen Schottentor U und Nußdorfer Straße U.</p><p>Ersatz: Linien U4, U6, 38, 10A, 38A, 39A.</p><p>Voraussichtliche Dauer: Bis Betriebsschluss.</p><p>Grund: Gasrohrgebrechen im Bereich Döblinger Hauptstraße 70.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 37:<br>Betrieb nur zwischen Schottentor U und Nußdorfer Straße U.</p><p>Ersatz: Linien U4, U6, 38, 10A, 38A, 39A.</p><p>Voraussichtliche Dauer: Bis Betriebsschluss.</p><p>Grund: Gasrohrgebrechen im Bereich Döblinger Hauptstraße 70.</p>",
-       "descriptionPlain": "Linie 37: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Ersatz: Linien U4, U6, 38, 10A, 38A, 39A. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Gasrohrgebrechen im Bereich Döblinger Hauptstraße 70.",
-       "title": "37: Gasrohrbruch"
-      }
-     }
-    ],
-    "location": "Döblinger Hauptstraße 70",
-    "name": "I20261108-0013",
-    "owner": "WL",
-    "parentName": "I20261108-0013",
-    "priority": "1",
-    "reasonId": 26,
-    "reasonName": "Gasrohrgebrechen",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 137,
-      "lineName": "37",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-08T12:49:00.000+0100",
-     "lastUpdate": "2026-11-08T13:29:00.000+0100",
-     "start": "2026-11-08T12:46:00.000+0100"
-    },
-    "title": "37: Gasrohrbruch"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "2": "ptTram"
-     }
-    },
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "2: Fremder Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Taborstraße 53-55",
-    "name": "I20261108-0029-F01",
-    "owner": "WL",
-    "parentName": "I20261108-0029",
-    "priority": "1",
-    "reasonId": 13,
-    "reasonName": "Fremder Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 102,
-      "lineName": "2",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-08T21:00:00.000+0100",
-     "lastUpdate": "2026-11-08T21:00:00.000+0100",
-     "resume": "2026-11-08T21:00:00.000+0100",
-     "start": "2026-11-08T20:16:00.000+0100"
-    },
-    "title": "2: Fremder Verkehrsunfall"
-   },
-   {
     "alertCause": "emergency medical services",
     "alertCauseId": 14,
     "attributes": {
      "relatedLineTypes": {
-      "32A": "ptBusCity"
+      "62A": "ptBusCity"
      }
     },
-    "description": "Linie 32A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie 32A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "description": "Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 62A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 32A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie 32A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-       "title": "32A: Rettungseinsatz"
+       "descriptionHtml": "<p>Linie 62A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "62A: Rettungseinsatz"
       }
      }
     ],
-    "name": "I20261108-0030",
+    "name": "I20261109-0030",
     "owner": "WL",
-    "parentName": "I20261108-0030",
+    "parentName": "I20261109-0030",
     "priority": "1",
     "reasonId": 9,
     "reasonName": "Rettungseinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "32A"
+     "62A"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 432,
-      "lineName": "32A",
+      "lineId": 462,
+      "lineName": "62A",
       "vehicleType": "ptBusCity"
+     }
+    ],
+    "relatedStops": [
+     5590
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-09T16:14:00.000+0100",
+     "lastUpdate": "2026-11-09T16:14:00.000+0100",
+     "resume": "2026-11-09T16:13:00.000+0100",
+     "start": "2026-11-09T16:13:00.000+0100"
+    },
+    "title": "62A: Rettungseinsatz"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U3: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261109-0031",
+    "owner": "WL",
+    "parentName": "I20261109-0031",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-08T21:28:00.000+0100",
-     "lastUpdate": "2026-11-08T21:28:00.000+0100",
-     "resume": "2026-11-08T21:28:00.000+0100",
-     "start": "2026-11-08T21:28:00.000+0100"
+     "created": "2026-11-09T16:30:00.000+0100",
+     "lastUpdate": "2026-11-09T16:30:00.000+0100",
+     "resume": "2026-11-09T16:28:00.000+0100",
+     "start": "2026-11-09T16:28:00.000+0100"
     },
-    "title": "32A: Rettungseinsatz"
+    "title": "U3: Verspätungen"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U1: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261109-0032",
+    "owner": "WL",
+    "parentName": "I20261109-0032",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 301,
+      "lineName": "U1",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4123
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-09T16:33:00.000+0100",
+     "lastUpdate": "2026-11-09T16:33:00.000+0100",
+     "resume": "2026-11-09T16:32:00.000+0100",
+     "start": "2026-11-09T16:32:00.000+0100"
+    },
+    "title": "U1: Verspätungen"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "60": "ptTram"
+     }
+    },
+    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "60: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261109-0034-F01",
+    "owner": "WL",
+    "parentName": "I20261109-0034",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 160,
+      "lineName": "60",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     1615
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-09T17:12:00.000+0100",
+     "lastUpdate": "2026-11-09T17:12:00.000+0100",
+     "resume": "2026-11-09T17:12:00.000+0100",
+     "start": "2026-11-09T17:11:00.000+0100"
+    },
+    "title": "60: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "40": "ptTram"
+     }
+    },
+    "description": "Linie 40: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 18:00 Uhr. Grund: Falschparker im Bereich Herbeckstraße # Schöffelgasse.",
+    "descriptionHTML": "<p>Linie 40:<br>Fahrtbehinderung in Richtung Schottentor U.</p><p>Voraussichtliche Dauer: 18:00 Uhr.</p><p>Grund: Falschparker im Bereich Herbeckstraße # Schöffelgasse.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 40:<br>Fahrtbehinderung in Richtung Schottentor U.</p><p>Voraussichtliche Dauer: 18:00 Uhr.</p><p>Grund: Falschparker im Bereich Herbeckstraße # Schöffelgasse.</p>",
+       "descriptionPlain": "Linie 40: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 18:00 Uhr. Grund: Falschparker im Bereich Herbeckstraße # Schöffelgasse.",
+       "title": "40: Falschparker"
+      }
+     }
+    ],
+    "location": "Herbeckstraße / Schöffelgasse",
+    "name": "I20261109-0035",
+    "owner": "WL",
+    "parentName": "I20261109-0035",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 140,
+      "lineName": "40",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-09T17:22:00.000+0100",
+     "lastUpdate": "2026-11-09T17:22:00.000+0100",
+     "start": "2026-11-09T17:20:00.000+0100"
+    },
+    "title": "40: Falschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
+    "name": "R1199-205",
+    "owner": "WL",
+    "parentName": "R1199-205",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5B"
+    ],
+    "relatedStops": [
+     1199
+    ],
+    "time": {
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T08:04:58.000+0100"
+    },
+    "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1212-140",
+    "owner": "WL",
+    "parentName": "R1212-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     1212
+    ],
+    "time": {
+     "end": "2026-11-09T18:29:00.000+0100",
+     "start": "2026-11-09T17:30:24.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1213-140",
+    "owner": "WL",
+    "parentName": "R1213-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     1213
+    ],
+    "time": {
+     "end": "2026-11-09T18:29:00.000+0100",
+     "start": "2026-11-09T17:30:24.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R143-140",
+    "owner": "WL",
+    "parentName": "R143-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     143
+    ],
+    "time": {
+     "end": "2026-11-09T18:26:00.000+0100",
+     "start": "2026-11-09T17:27:23.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R144-140",
+    "owner": "WL",
+    "parentName": "R144-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     144
+    ],
+    "time": {
+     "end": "2026-11-09T18:26:00.000+0100",
+     "start": "2026-11-09T17:27:23.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R146-140",
+    "owner": "WL",
+    "parentName": "R146-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     146
+    ],
+    "time": {
+     "end": "2026-11-09T18:26:00.000+0100",
+     "start": "2026-11-09T17:27:23.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R147-140",
+    "owner": "WL",
+    "parentName": "R147-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     147
+    ],
+    "time": {
+     "end": "2026-11-09T18:26:00.000+0100",
+     "start": "2026-11-09T17:27:23.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R148-140",
+    "owner": "WL",
+    "parentName": "R148-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     148
+    ],
+    "time": {
+     "end": "2026-11-09T18:26:00.000+0100",
+     "start": "2026-11-09T17:27:23.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R149-140",
+    "owner": "WL",
+    "parentName": "R149-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     149
+    ],
+    "time": {
+     "end": "2026-11-09T18:26:00.000+0100",
+     "start": "2026-11-09T17:27:23.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R150-140",
+    "owner": "WL",
+    "parentName": "R150-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     150
+    ],
+    "time": {
+     "end": "2026-11-09T18:26:00.000+0100",
+     "start": "2026-11-09T17:27:23.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nUmleitung über die Linien 42 und 9\n\n",
+    "name": "R177-0",
+    "owner": "WL",
+    "parentName": "R177-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     177
+    ],
+    "time": {
+     "end": "2026-11-09T17:59:00.000+0100",
+     "start": "2026-11-09T16:59:50.000+0100"
+    },
+    "title": "Verkehrsunfall\nUmleitung über die Linien 42 und 9\n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R177-140",
+    "owner": "WL",
+    "parentName": "R177-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     177
+    ],
+    "time": {
+     "end": "2026-11-09T17:56:00.000+0100",
+     "start": "2026-11-09T16:56:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R177-141",
+    "owner": "WL",
+    "parentName": "R177-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     177
+    ],
+    "time": {
+     "end": "2026-11-09T17:56:00.000+0100",
+     "start": "2026-11-09T16:56:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R187-140",
+    "owner": "WL",
+    "parentName": "R187-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     187
+    ],
+    "time": {
+     "end": "2026-11-09T18:26:00.000+0100",
+     "start": "2026-11-09T17:27:23.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -324,8 +741,8 @@
      1875
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:06.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:19.000+0100"
     },
     "title": "Gleisbauarbeiten\nKein Betrieb"
    },
@@ -347,10 +764,33 @@
      1876
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:06.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:19.000+0100"
     },
     "title": "Gleisbauarbeiten\nKein Betrieb"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R188-140",
+    "owner": "WL",
+    "parentName": "R188-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     188
+    ],
+    "time": {
+     "end": "2026-11-09T18:29:00.000+0100",
+     "start": "2026-11-09T17:30:24.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -370,8 +810,8 @@
      1880
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:06.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:19.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Knöllgasse"
    },
@@ -393,8 +833,8 @@
      1881
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:06.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:19.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Knöllgasse"
    },
@@ -416,8 +856,8 @@
      1882
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:06.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:19.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Knöllgasse"
    },
@@ -439,8 +879,8 @@
      1883
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:06.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:19.000+0100"
     },
     "title": "Gleisbauarbeiten\nBetrieb ab Knöllgasse"
    },
@@ -462,56 +902,231 @@
      1884
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:06.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:19.000+0100"
     },
     "title": "Gleisbauarbeiten\nZüge halten Quellenstraße 156 (Linie 6)"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Gasrohrgebrechen",
-    "name": "R196-137",
+    "description": "Verkehrsunfall\nUmleitung über die Linien 42 und 9\n\n",
+    "name": "R189-0",
     "owner": "WL",
-    "parentName": "R196-137",
+    "parentName": "R189-0",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
     "relatedStops": [
-     196
+     189
     ],
     "time": {
-     "end": "2026-11-08T23:59:00.000+0100",
-     "start": "2026-11-08T12:49:40.000+0100"
+     "end": "2026-11-09T17:59:00.000+0100",
+     "start": "2026-11-09T16:59:50.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Gasrohrgebrechen"
+    "title": "Verkehrsunfall\nUmleitung über die Linien 42 und 9\n\n"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Gasrohrgebrechen",
-    "name": "R197-137",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R189-140",
     "owner": "WL",
-    "parentName": "R197-137",
+    "parentName": "R189-140",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "37"
+     "40"
     ],
     "relatedStops": [
-     197
+     189
     ],
     "time": {
-     "end": "2026-11-08T23:59:00.000+0100",
-     "start": "2026-11-08T12:49:40.000+0100"
+     "end": "2026-11-09T17:56:00.000+0100",
+     "start": "2026-11-09T16:56:50.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Gasrohrgebrechen"
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R189-141",
+    "owner": "WL",
+    "parentName": "R189-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     189
+    ],
+    "time": {
+     "end": "2026-11-09T17:56:00.000+0100",
+     "start": "2026-11-09T16:56:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nUmleitung über die Linien 42 und 9\n\n",
+    "name": "R190-0",
+    "owner": "WL",
+    "parentName": "R190-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     190
+    ],
+    "time": {
+     "end": "2026-11-09T17:59:00.000+0100",
+     "start": "2026-11-09T16:59:50.000+0100"
+    },
+    "title": "Verkehrsunfall\nUmleitung über die Linien 42 und 9\n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R190-140",
+    "owner": "WL",
+    "parentName": "R190-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     190
+    ],
+    "time": {
+     "end": "2026-11-09T17:56:00.000+0100",
+     "start": "2026-11-09T16:56:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R190-141",
+    "owner": "WL",
+    "parentName": "R190-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     190
+    ],
+    "time": {
+     "end": "2026-11-09T17:56:00.000+0100",
+     "start": "2026-11-09T16:56:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Verkehrsunfall\nUmleitung über die Linien 42 und 9\n\n",
+    "name": "R192-0",
+    "owner": "WL",
+    "parentName": "R192-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     192
+    ],
+    "time": {
+     "end": "2026-11-09T17:59:00.000+0100",
+     "start": "2026-11-09T16:59:50.000+0100"
+    },
+    "title": "Verkehrsunfall\nUmleitung über die Linien 42 und 9\n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R192-140",
+    "owner": "WL",
+    "parentName": "R192-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     192
+    ],
+    "time": {
+     "end": "2026-11-09T17:56:00.000+0100",
+     "start": "2026-11-09T16:56:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R192-141",
+    "owner": "WL",
+    "parentName": "R192-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     192
+    ],
+    "time": {
+     "end": "2026-11-09T17:56:00.000+0100",
+     "start": "2026-11-09T16:56:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R193-141",
+    "owner": "WL",
+    "parentName": "R193-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     193
+    ],
+    "time": {
+     "end": "2026-11-09T17:56:00.000+0100",
+     "start": "2026-11-09T16:56:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -531,286 +1146,10 @@
      1974
     ],
     "time": {
-     "end": "2026-11-09T01:00:00.000+0100",
-     "start": "2026-11-08T04:40:24.000+0100"
+     "end": "2026-11-10T01:00:00.000+0100",
+     "start": "2026-11-09T04:40:08.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Gasrohrgebrechen",
-    "name": "R198-137",
-    "owner": "WL",
-    "parentName": "R198-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     198
-    ],
-    "time": {
-     "end": "2026-11-08T23:59:00.000+0100",
-     "start": "2026-11-08T12:49:40.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Gasrohrgebrechen"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Gasrohrgebrechen",
-    "name": "R199-137",
-    "owner": "WL",
-    "parentName": "R199-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     199
-    ],
-    "time": {
-     "end": "2026-11-08T23:59:00.000+0100",
-     "start": "2026-11-08T12:49:40.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Gasrohrgebrechen"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße",
-    "name": "R201-137",
-    "owner": "WL",
-    "parentName": "R201-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     201
-    ],
-    "time": {
-     "end": "2026-11-08T23:59:00.000+0100",
-     "start": "2026-11-08T12:51:10.000+0100"
-    },
-    "title": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße",
-    "name": "R202-137",
-    "owner": "WL",
-    "parentName": "R202-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     202
-    ],
-    "time": {
-     "end": "2026-11-08T23:59:00.000+0100",
-     "start": "2026-11-08T12:51:10.000+0100"
-    },
-    "title": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße",
-    "name": "R203-137",
-    "owner": "WL",
-    "parentName": "R203-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     203
-    ],
-    "time": {
-     "end": "2026-11-08T23:59:00.000+0100",
-     "start": "2026-11-08T12:51:10.000+0100"
-    },
-    "title": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße",
-    "name": "R204-137",
-    "owner": "WL",
-    "parentName": "R204-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     204
-    ],
-    "time": {
-     "end": "2026-11-08T23:59:00.000+0100",
-     "start": "2026-11-08T12:51:10.000+0100"
-    },
-    "title": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße",
-    "name": "R205-137",
-    "owner": "WL",
-    "parentName": "R205-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     205
-    ],
-    "time": {
-     "end": "2026-11-08T23:59:00.000+0100",
-     "start": "2026-11-08T12:51:10.000+0100"
-    },
-    "title": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße",
-    "name": "R206-137",
-    "owner": "WL",
-    "parentName": "R206-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     206
-    ],
-    "time": {
-     "end": "2026-11-08T23:59:00.000+0100",
-     "start": "2026-11-08T12:51:10.000+0100"
-    },
-    "title": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße",
-    "name": "R207-137",
-    "owner": "WL",
-    "parentName": "R207-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     207
-    ],
-    "time": {
-     "end": "2026-11-08T23:59:00.000+0100",
-     "start": "2026-11-08T12:51:10.000+0100"
-    },
-    "title": "Gasrohrgebrechen\nBetrieb ab Nußdorfer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gasrohrgebrechen\nZüge halten Währinger Gürtel ggü.164",
-    "name": "R208-137",
-    "owner": "WL",
-    "parentName": "R208-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     208
-    ],
-    "time": {
-     "end": "2026-11-08T23:59:00.000+0100",
-     "start": "2026-11-08T12:54:11.000+0100"
-    },
-    "title": "Gasrohrgebrechen\nZüge halten Währinger Gürtel ggü.164"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Gasrohrgebrechen",
-    "name": "R215-137",
-    "owner": "WL",
-    "parentName": "R215-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     215
-    ],
-    "time": {
-     "end": "2026-11-08T23:59:00.000+0100",
-     "start": "2026-11-08T12:49:40.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Gasrohrgebrechen"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Gasrohrgebrechen",
-    "name": "R216-137",
-    "owner": "WL",
-    "parentName": "R216-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     216
-    ],
-    "time": {
-     "end": "2026-11-08T23:59:00.000+0100",
-     "start": "2026-11-08T12:49:40.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Gasrohrgebrechen"
    },
    {
     "alertCause": "undefined alert cause",
@@ -830,8 +1169,8 @@
      2343
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:06.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:20.000+0100"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
    },
@@ -853,8 +1192,8 @@
      2343
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:06.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:20.000+0100"
     },
     "title": "Ersatzbus\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße"
    },
@@ -876,8 +1215,8 @@
      2345
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:06.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:20.000+0100"
     },
     "title": "Züge halten bei\nLinie 31"
    },
@@ -899,8 +1238,8 @@
      2359
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:06.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:20.000+0100"
     },
     "title": "Ersatzbus 26E\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße"
    },
@@ -922,8 +1261,8 @@
      2370
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:06.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:20.000+0100"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
    },
@@ -945,8 +1284,8 @@
      2371
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:06.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:20.000+0100"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
    },
@@ -968,8 +1307,8 @@
      2372
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:06.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:20.000+0100"
     },
     "title": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse"
    },
@@ -991,8 +1330,8 @@
      2373
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:06.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:20.000+0100"
     },
     "title": "Züge halten\nDonaufelder Straße 175-177"
    },
@@ -1014,8 +1353,8 @@
      2373
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:06.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:20.000+0100"
     },
     "title": "Züge halten in\nTokiostraße"
    },
@@ -1037,8 +1376,8 @@
      2373
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:06.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:20.000+0100"
     },
     "title": "Linie 25 in\nTokiostraße benützen"
    },
@@ -1060,8 +1399,8 @@
      2378
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:06.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:20.000+0100"
     },
     "title": "Busse halten\nSatzingerweg 41"
    },
@@ -1083,8 +1422,8 @@
      2379
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:06.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:20.000+0100"
     },
     "title": "Busse halten\nBessemerstraße 1-3"
    },
@@ -1106,8 +1445,8 @@
      2380
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:06.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:20.000+0100"
     },
     "title": "Busse halten\nHoßplatz 11"
    },
@@ -1129,8 +1468,8 @@
      2558
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:07.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:20.000+0100"
     },
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
    },
@@ -1152,8 +1491,8 @@
      293
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-05T00:00:27.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:21.000+0100"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
    },
@@ -1175,8 +1514,8 @@
      318
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-05T00:00:27.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:21.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
    },
@@ -1198,8 +1537,8 @@
      3886
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
-     "start": "2026-11-08T00:00:07.000+0100"
+     "end": "2026-11-09T23:59:59.000+0100",
+     "start": "2026-11-09T00:00:19.000+0100"
     },
     "title": "Bauarbeiten\nBetrieb ab Vivariumstraße 2"
    },
@@ -1221,7 +1560,7 @@
      401
     ],
     "time": {
-     "end": "2026-11-08T23:59:59.000+0100",
+     "end": "2026-11-09T23:59:59.000+0100",
      "start": "2026-11-05T00:00:27.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
@@ -1244,10 +1583,33 @@
      500
     ],
     "time": {
-     "end": "2026-11-08T23:00:00.000+0100",
-     "start": "2026-11-08T05:00:25.000+0100"
+     "end": "2026-11-09T23:00:00.000+0100",
+     "start": "2026-11-09T05:00:09.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R521-140",
+    "owner": "WL",
+    "parentName": "R521-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     521
+    ],
+    "time": {
+     "end": "2026-11-09T17:56:00.000+0100",
+     "start": "2026-11-09T16:57:19.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",

@@ -256,6 +256,30 @@ ab dem Vortag nach vorn. Im Feed-Nachbau der zehn echten Läufe vom
 2026-10-04 (09:31–14:00 UTC) kamen so zwei Meldungen unter die ersten zehn
 („16A/N65: Grohnergasse“, „26E/N20: Fultonstraße“), keine Welle.
 
+Zwischen den aktuellen Störungen und dem Rest steht seit 2026-11-08 eine
+ÖBB-Sperre an den Tagen, an denen sie die Strecke wirklich sperrt
+(`_is_oebb_closure_day` in `src/feed_build/oebb_days.py`, Betreiberentscheidung
+vom 2026-11-08: „Störungen gehen immer vor.“, „Man könnte es auch als Hinweis
+mit höherer Priorität formulieren“ und „Auf ungeplante Störungen kann man sich
+nicht vorbereiten. Auf geplante Bauarbeiten, Sperren etc schon.“). Die
+ungeplanten Störungen bleiben vorn; die Sperre bleibt eine geplante Maßnahme,
+steht an ihren Sperrtagen aber vor den übrigen Hinweisen. Die Tage stehen im
+Leitsatz der Meldung, dem Satz, den der Feed zeigt: „von … bis …“ (ein Ende
+mit Uhrzeit, „bis 27.10.2026 (04:00 Uhr)“, gilt am letzten Tag nur bis dahin),
+„am … und …“, eingeschränkt durch ein Wochentagsfenster („(jeweils von
+Samstag 23:15 Uhr bis Sonntag 04:40 Uhr und …)“ ergibt Samstag und Sonntag).
+Nennt der Leitsatz kein Datum (eine ungeplante Störung „bis voraussichtlich
+09:00 Uhr“), zählt jeder Tag zwischen Beginn und Ende der Meldung. Die
+Kategorie allein trägt das nicht: WL schickt geplante Tafel-Meldungen
+(„26E: Gleisbauarbeiten“, „S80: ÖBB-Ersatzbus“) als „Störung“, und im Nachbau
+von 312 Feed-Ständen seit 15.10. wären sie in 308 nach vorn gerückt. Anlass:
+„Wien Hauptbahnhof ↔ Gramatneusiedl“ (Wochenendnächte 31.10.–30.11.) fiel am
+07.11. hinter neuere WL-Haltestellenverlegungen auf Platz 11 bis 14 und stand
+in seinen Sperrnächten nicht am Bildschirm. Nachbau derselben 312 Stände: Die
+aktuellen Störungen und die Menge der Meldungen bleiben gleich; sieben
+ÖBB-Meldungen kommen an ihren Sperrtagen unter die ersten zehn (höchstens
+vier zugleich), dafür fallen WL-Hinweise heraus.
+
 Wiederkehrende WL-Meldungen: Die WL-GUID besteht aus Kategorie, Thema und
 Linien, ein Datum enthält sie nicht. „94A: Verkehrsunfall“ hat an jedem Tag
 dieselbe GUID. Ohne Gegenmaßnahme erbt ein neuer Unfall das `first_seen` des
