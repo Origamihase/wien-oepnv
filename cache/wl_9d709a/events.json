@@ -627,17 +627,53 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "11: Polizeieinsatz Betrieb ab Enkplatz U, Grillgasse",
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Polizeieinsatz\nBetrieb ab Enkplatz U, Grillgasse",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "84fb66f823fe0256bdb55c275e537630afbdb20e631f62ff4a78dbb9fd614ed6",
-    "pubDate": "2026-11-09T11:23:00+01:00",
+    "pubDate": "2026-11-09T11:28:17+01:00",
     "starts_at": "2026-11-09T11:35:17+01:00",
+    "ends_at": "2026-11-09T12:33:00+01:00",
+    "_identity": "wl|störung|L=11|D=2026-11-09|TK=polizeieinsatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2/12/31: Beschädigte Oberleitung durch einen LKW",
+    "description": "Linie 2: Betrieb nur zwischen Dornbach und Rebhanngasse. Weiterfahrt bis Bruno-Marek-Allee. Linie 12: Umleitung in beiden Richtungen zwischen Bruno-Marek-Allee und Wallensteinplatz über die Strecke der Linien O und 5. Linie 31: Kein Betrieb zwischen Floridsdorf S U und Wexstraße. Ersatz: Linien U4, U6,. Voraussichtliche Dauer: 14:00 Uhr. Grund: Fahrleitungsgebrechen durch LKW im Haltestellenbereich Friedrich-Engels-Platz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "be0a39840a659240e8fb9c81e4ad91d9750f83f694e865a73aef39e3c4769f4a",
+    "pubDate": "2026-11-09T11:57:00+01:00",
+    "starts_at": "2026-11-09T11:57:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=11|D=2026-11-09|TK=polizeieinsatz",
+    "_identity": "wl|störung|L=12,2,31|D=2026-11-09|TK=2 31 12 beschädigte oberleitung durch einen lkw",
     "_wl_ids": [
-      "I20261109-0017"
+      "I20261109-0018"
     ],
-    "_incident_start": "2026-11-09T11:23:00+01:00"
+    "_incident_start": "2026-11-09T11:57:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fahrleitungsgebr. Betrieb ab Bruno Marek Allee",
+    "description": "Fahrleitungsgebr.\nBetrieb ab Bruno Marek Allee",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "3fb4c35d4c4b91b6ad43416e9f45a2e4cf227b19c46e5484adab72169bdfe627",
+    "pubDate": "2026-11-09T12:10:21+01:00",
+    "starts_at": "2026-11-09T12:10:23+01:00",
+    "ends_at": "2026-11-09T13:09:00+01:00",
+    "_identity": "wl|störung|L=12|D=2026-11-09|TK=fahrleitungsgebr betrieb ab bruno marek allee"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fahrleitungsgebr. Betrieb ab Wallensteinplatz",
+    "description": "Fahrleitungsgebr.\nBetrieb ab Wallensteinplatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "180ecf156cf1ac0ab2690697fff8f97e5927861d19390941e28dad0b896a42ea",
+    "pubDate": "2026-11-09T12:10:51+01:00",
+    "starts_at": "2026-11-09T12:10:54+01:00",
+    "ends_at": "2026-11-09T13:10:00+01:00",
+    "_identity": "wl|störung|L=12|D=2026-11-09|TK=fahrleitungsgebr betrieb ab wallensteinplatz"
   },
   {
     "source": "Wiener Linien",
@@ -870,6 +906,54 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Fahrleitungsgebr. Betrieb ab Am Tabor",
+    "description": "Fahrleitungsgebr.\nBetrieb ab Am Tabor",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "ca3be0ac173eb22f5a5965ca61649238420a10ca2bfc73caa086360122eda79b",
+    "pubDate": "2026-11-09T12:02:52+01:00",
+    "starts_at": "2026-11-09T12:02:52+01:00",
+    "ends_at": "2026-11-09T13:00:00+01:00",
+    "_identity": "wl|störung|L=2|D=2026-11-09|TK=fahrleitungsgebr betrieb ab am tabor"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Fahrtbehinderung wegen Fahrleitungsgebr.",
+    "description": "Fahrtbehinderung\nwegen Fahrleitungsgebr.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e01f996bdbddbf0d08b9002bf50aa203a12f3a2a5d9c3f5a042f4063f5b9b188",
+    "pubDate": "2026-11-09T12:01:22+01:00",
+    "starts_at": "2026-11-09T12:01:22+01:00",
+    "ends_at": "2026-11-09T12:59:00+01:00",
+    "_identity": "wl|störung|L=2|D=2026-11-09|TK=fahrtbehinderung wegen fahrleitungsgebr"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Fahrleitungsgebr. Betrieb ab Floridsdorf S U",
+    "description": "Fahrleitungsgebr.\nBetrieb ab Floridsdorf S U",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "6a768d8151530f2bf768b727d668d673536efc6e686b1c16c5c7e6fbb94393b7",
+    "pubDate": "2026-11-09T12:04:20+01:00",
+    "starts_at": "2026-11-09T12:04:20+01:00",
+    "ends_at": "2026-11-09T13:03:00+01:00",
+    "_identity": "wl|störung|L=31|D=2026-11-09|TK=fahrleitungsgebr betrieb ab floridsdorf s u"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Fahrleitungsgebr. Betrieb ab Wexstraße",
+    "description": "Fahrleitungsgebr.\nBetrieb ab Wexstraße",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "60af69988883ff6b80dd8991bb838081890173633ccde4f5a7de8a64641fd5e3",
+    "pubDate": "2026-11-09T12:05:51+01:00",
+    "starts_at": "2026-11-09T12:05:52+01:00",
+    "ends_at": "2026-11-09T13:04:00+01:00",
+    "_identity": "wl|störung|L=31|D=2026-11-09|TK=fahrleitungsgebr betrieb ab wexstrasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -878,22 +962,6 @@
     "starts_at": "2026-11-09T00:00:21+01:00",
     "ends_at": "2026-11-09T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-11-09|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41: Falschparker",
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
-    "pubDate": "2026-11-09T10:41:00+01:00",
-    "starts_at": "2026-11-09T10:41:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=41|D=2026-11-09|TK=falschparker",
-    "_wl_ids": [
-      "I20261109-0015"
-    ],
-    "_incident_start": "2026-11-09T10:41:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -918,18 +986,6 @@
     "starts_at": "2026-11-09T04:40:08+01:00",
     "ends_at": "2026-11-10T01:00:00+01:00",
     "_identity": "wl|störung|L=66A|D=2026-11-09|TK=busse halten salvatorianerplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
-    "pubDate": "2026-11-09T11:27:16+01:00",
-    "starts_at": "2026-11-09T11:27:16+01:00",
-    "ends_at": "2026-11-09T12:27:00+01:00",
-    "_identity": "wl|störung|L=6|D=2026-11-09|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
