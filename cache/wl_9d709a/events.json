@@ -26,18 +26,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "12A: Henriettenplatz",
-    "description": "<p><strong><u>Haltestellenauflassung der Linie 12A in Richtung Eichenstraße</u></strong></p><p><strong><u>Haltestelle:</u></strong> Henriettenplatz</p><p><strong><u>Dauer:</u></strong> Ab 04. November 2026, etwa 07:00 Uhr, Dauer unbekannt</p><p><strong><u>Grund:</u></strong> Grabungsarbeiten</p>",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "a6cf4b6dfdd6a30caa130293fcef872955167da368915b5ee81ce366e6071172",
-    "pubDate": "2026-10-28T16:52:00+01:00",
-    "starts_at": "2026-11-04T00:00:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|hinweis|L=12A|D=2026-11-04|TK=12a henriettenplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "15A: Max-Mauermann-Gasse",
     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling S U, Schedifkaplatz</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Max-Mauermann-Gasse</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Bitterlichstra&szlig;e gegen&uuml;ber Max-Mauermann-Gasse</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Bitterlichstra&szlig;e gegen&uuml;ber Friedrich-Teller-Gasse</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 13. Oktober 2026, etwa 07:00 Uhr, f&uuml;r etwa sieben Wochen</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Stra&szlig;enbau</span></p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -638,6 +626,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11: Verkehrsunfall",
+    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e8e33c76113077bad68986b313e50b4fb03e2a76a6eda7c74d06c76b1a1f1f46",
+    "pubDate": "2026-11-09T08:23:00+01:00",
+    "starts_at": "2026-11-09T08:23:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=11|D=2026-11-09|TK=11 verkehrsunfall",
+    "_wl_ids": [
+      "I20261109-0011"
+    ],
+    "_incident_start": "2026-11-09T08:23:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -878,6 +882,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5B: Busse halten Pappenheimgasse 24-28",
+    "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "72637a0e7f145666712a9b4de8e489d06ed131402df1b9c8e4f4d78ca88a48da",
+    "pubDate": "2026-11-09T08:04:58+01:00",
+    "starts_at": "2026-11-09T08:04:58+01:00",
+    "ends_at": "2026-11-09T23:59:59+01:00",
+    "_identity": "wl|störung|L=5B|D=2026-11-09|TK=busse halten pappenheimgasse 24 28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -910,6 +926,22 @@
     "starts_at": "2026-11-09T00:00:19+01:00",
     "ends_at": "2026-11-09T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-09|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Verkehrsunfall",
+    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "ee9d3f3d2f7894fa11d971e1ac5f847be3f219359a43a6a87138d443f4bb3996",
+    "pubDate": "2026-11-09T08:23:00+01:00",
+    "starts_at": "2026-11-09T08:23:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=O|D=2026-11-09|TK=o verkehrsunfall",
+    "_wl_ids": [
+      "I20261109-0011"
+    ],
+    "_incident_start": "2026-11-09T08:23:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -958,6 +990,22 @@
       "I20261109-0009"
     ],
     "_incident_start": "2026-11-09T07:49:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Rettungseinsatz",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Voraussichtliche Dauer: 08:40 Uht. Grund: Rettungseinsatz im Haltestellenbereich Siebenhirten.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
+    "pubDate": "2026-11-09T08:11:00+01:00",
+    "starts_at": "2026-11-09T08:11:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U6|D=2026-11-09|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261109-0010"
+    ],
+    "_incident_start": "2026-11-09T08:11:00+01:00"
   },
   {
     "source": "Wiener Linien",
