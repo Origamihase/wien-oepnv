@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_487, ftazW_444, ftazW_1031284, ftazW_2, ftazW_1353815, ftazW_582, ftazW_1017115, ftazW_1351714, ftazW_445, ftazW_3, ftazW_1017116, ftazW_211, ftazW_1018631, ftazW_488, ftazW_581, ftazW_1351716, ftazW_146, ftazW_1016567, ftazW_486, ftazW_734, ftazW_769, ftazW_147, ftazW_489, ftazW_770, ftazW_1351715, ftazW_490, ftazW_1018065, ftazW_239, ftazW_510"
+    "trafficInfoNameList": "ftazW_487, ftazW_444, ftazW_1031284, ftazW_2, ftazW_1353815, ftazW_582, ftazW_1017115, ftazW_1351714, ftazW_445, ftazW_3, ftazW_1017116, ftazW_211, ftazW_1018631, ftazW_488, ftazW_581, ftazW_1351716, ftazW_146, ftazW_1016567, ftazW_486, ftazW_734, ftazW_147, ftazW_29, ftazW_489, ftazW_770, ftazW_1351715, ftazW_490, ftazW_1018065, ftazW_239, ftazW_510"
    }
   ],
   "poiCategoryGroups": [
@@ -3452,6 +3452,38 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "11.11.2026 05:15",
+     "ausVon": "11.11.2026 01:15",
+     "location": "Zwischengeschoss - Ausgang Minoritenplatz",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Herrengasse",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Zwischengeschoss - Ausgang Minoritenplatz",
+    "elevatorId": "HZ 01",
+    "name": "ftazW_29",
+    "parentName": "ftazW_29",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "time": {
+     "end": "2026-11-11T05:15:00.000+0100",
+     "start": "2026-11-11T01:15:00.000+0100"
+    },
+    "title": "Herrengasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "10.11.2026 05:15",
      "ausVon": "10.11.2026 01:15",
      "location": "U1 Bahnsteig Richtung Oberlaa - Ausgang Arbeiterstrandbadstraße",
@@ -3895,43 +3927,6 @@
      "start": "2026-11-10T20:45:00.000+0100"
     },
     "title": "Gasometer"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "11.11.2026 00:45",
-     "ausVon": "10.11.2026 20:45",
-     "location": "U1 Bahnsteig Richtung Leopoldau - Ausgang Radingerstraße",
-     "rbls": [
-      4119
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Vorgartenstraße",
-     "status": "geplante Wartung",
-     "towards": "U1 Leopoldau"
-    },
-    "description": "U1 Bahnsteig Richtung Leopoldau - Ausgang Radingerstraße",
-    "elevatorId": "VS 01",
-    "name": "ftazW_769",
-    "parentName": "ftazW_769",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4119
-    ],
-    "time": {
-     "end": "2026-11-11T00:45:00.000+0100",
-     "start": "2026-11-10T20:45:00.000+0100"
-    },
-    "title": "Vorgartenstraße"
    },
    {
     "alertCause": "undefined alert cause",
