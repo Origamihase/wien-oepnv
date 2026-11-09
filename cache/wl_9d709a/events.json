@@ -866,6 +866,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "43: Verunreinigung",
+    "description": "Linie 43: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "318023342a9559b96085172ef55276409fffbd4da889200a6a26c818a626b008",
+    "pubDate": "2026-11-09T22:22:00+01:00",
+    "starts_at": "2026-11-09T22:22:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=43|D=2026-11-09|TK=43 verunreinigung",
+    "_wl_ids": [
+      "I20261109-0044"
+    ],
+    "_incident_start": "2026-11-09T22:22:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -910,22 +926,6 @@
     "starts_at": "2026-11-09T00:00:19+01:00",
     "ends_at": "2026-11-09T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-09|TK=betrieb ab vivariumstrasse 2"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Fahrtbehinderung Falschparker",
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2026-11-09T21:01:00+01:00",
-    "starts_at": "2026-11-09T21:02:43+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=9|D=2026-11-09|TK=falschparker",
-    "_wl_ids": [
-      "I20261109-0043"
-    ],
-    "_incident_start": "2026-11-09T21:01:00+01:00"
   },
   {
     "source": "Wiener Linien",
