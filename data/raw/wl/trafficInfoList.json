@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261109-0016-F01, I20261109-0017, I20261109-0015-F02, I20261020-0029, I20260909-0007, I20261109-0015-F01, I20260925-0011"
+    "trafficInfoNameList": "I20261109-0016-F01, I20261109-0017-F01, I20261109-0015-F02, I20261020-0029, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1876-101, R1880-101, R1884-101, R3886-480, R1881-101, R1882-101, R1875-101, R1883-101, R2371-125, R2370-125, R2558-125, R2343-125, R2343-626, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2359-125, R2378-627, R293-474, R318-437, R1974-466, R500-101, R1199-205, R192-140, R521-140, R192-141, R193-141, R423-106, R422-106, R421-106, R424-106, R2024-111, R2023-111, R2009-111, R2027-111, R2026-111, R2025-111, R409-111, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R3886-480, R1884-101, R1883-101, R1875-101, R1876-101, R1880-101, R1882-101, R1881-101, R2558-125, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R293-474, R318-437, R1974-466, R500-101, R1199-205, R421-106, R422-106, R424-106, R423-106, R2026-111, R2023-111, R2024-111, R2025-111, R2027-111, R2009-111, R409-111, R416-111, R2584-111, R408-111, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -175,52 +175,6 @@
     "alertCauseId": 71,
     "attributes": {
      "relatedLineTypes": {
-      "40": "ptTram"
-     }
-    },
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "40: Falschparker"
-      }
-     }
-    ],
-    "location": "Gentzgasse 114",
-    "name": "I20261109-0015-F01",
-    "owner": "WL",
-    "parentName": "I20261109-0015",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "40"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 140,
-      "lineName": "40",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-09T10:47:00.000+0100",
-     "lastUpdate": "2026-11-09T10:47:00.000+0100",
-     "resume": "2026-11-09T10:47:00.000+0100",
-     "start": "2026-11-09T10:41:00.000+0100"
-    },
-    "title": "40: Falschparker"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
       "41": "ptTram"
      }
     },
@@ -318,18 +272,18 @@
       "11": "ptTram"
      }
     },
-    "description": "Linie 11: Kein Betrieb zwischen Enkplatz U, Grillgasse und Geiereckstraße. Voraussichtliche Dauer: 12:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Geiereckstraße.",
-    "descriptionHTML": "<p>Linie 11:<br>Kein Betrieb zwischen Enkplatz U, Grillgasse und Geiereckstraße.</p><p>Voraussichtliche Dauer: 12:00 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Geiereckstraße.</p>",
+    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 11:<br>Kein Betrieb zwischen Enkplatz U, Grillgasse und Geiereckstraße.</p><p>Voraussichtliche Dauer: 12:00 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Geiereckstraße.</p>",
-       "descriptionPlain": "Linie 11: Kein Betrieb zwischen Enkplatz U, Grillgasse und Geiereckstraße. Voraussichtliche Dauer: 12:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Geiereckstraße.",
+       "descriptionHtml": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "11: Polizeieinsatz"
       }
      }
     ],
-    "name": "I20261109-0017",
+    "name": "I20261109-0017-F01",
     "owner": "WL",
     "parentName": "I20261109-0017",
     "priority": "1",
@@ -351,8 +305,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-09T11:28:00.000+0100",
-     "lastUpdate": "2026-11-09T11:29:00.000+0100",
+     "created": "2026-11-09T11:35:00.000+0100",
+     "lastUpdate": "2026-11-09T11:35:00.000+0100",
+     "resume": "2026-11-09T11:35:00.000+0100",
      "start": "2026-11-09T11:23:00.000+0100"
     },
     "title": "11: Polizeieinsatz"
@@ -540,75 +495,6 @@
      "start": "2026-11-09T00:00:19.000+0100"
     },
     "title": "Gleisbauarbeiten\nZüge halten Quellenstraße 156 (Linie 6)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R192-140",
-    "owner": "WL",
-    "parentName": "R192-140",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "40"
-    ],
-    "relatedStops": [
-     192
-    ],
-    "time": {
-     "end": "2026-11-09T11:42:00.000+0100",
-     "start": "2026-11-09T10:43:42.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R192-141",
-    "owner": "WL",
-    "parentName": "R192-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     192
-    ],
-    "time": {
-     "end": "2026-11-09T11:43:00.000+0100",
-     "start": "2026-11-09T10:44:12.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R193-141",
-    "owner": "WL",
-    "parentName": "R193-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     193
-    ],
-    "time": {
-     "end": "2026-11-09T11:43:00.000+0100",
-     "start": "2026-11-09T10:44:12.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1096,6 +982,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb ab Geiereckstraße",
+    "name": "R2584-111",
+    "owner": "WL",
+    "parentName": "R2584-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2584
+    ],
+    "time": {
+     "end": "2026-11-09T12:33:00.000+0100",
+     "start": "2026-11-09T11:33:50.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Geiereckstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -1188,7 +1097,30 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "description": "Polizeieinsatz\nBetrieb ab Enkplatz U, Grillgasse",
+    "name": "R408-111",
+    "owner": "WL",
+    "parentName": "R408-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     408
+    ],
+    "time": {
+     "end": "2026-11-09T12:33:00.000+0100",
+     "start": "2026-11-09T11:35:17.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Enkplatz U, Grillgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb ab Enkplatz U, Grillgasse",
     "name": "R409-111",
     "owner": "WL",
     "parentName": "R409-111",
@@ -1203,10 +1135,33 @@
      409
     ],
     "time": {
-     "end": "2026-11-09T12:27:00.000+0100",
+     "end": "2026-11-09T12:33:00.000+0100",
      "start": "2026-11-09T11:28:17.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+    "title": "Polizeieinsatz\nBetrieb ab Enkplatz U, Grillgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb ab Geiereckstraße",
+    "name": "R416-111",
+    "owner": "WL",
+    "parentName": "R416-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     416
+    ],
+    "time": {
+     "end": "2026-11-09T12:33:00.000+0100",
+     "start": "2026-11-09T11:33:47.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Geiereckstraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1322,29 +1277,6 @@
      "start": "2026-11-09T05:00:09.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R521-140",
-    "owner": "WL",
-    "parentName": "R521-140",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "40"
-    ],
-    "relatedStops": [
-     521
-    ],
-    "time": {
-     "end": "2026-11-09T11:42:00.000+0100",
-     "start": "2026-11-09T10:43:42.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
