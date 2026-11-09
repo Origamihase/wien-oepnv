@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-09T20:31:16.194656+00:00",
- "built": "2026-11-09T21:30:59+01:00",
+ "updated": "2026-11-09T21:01:21.148893+00:00",
+ "built": "2026-11-09T22:01:09+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-09T21:30:59+01:00",
+  "built": "2026-11-09T22:01:09+01:00",
   "items": [
    {
     "title": "9: Falschparker",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-02T21:00:57.532540+00:00",
-   "raw": {
-    "wl-stoerungen": 55,
-    "wl-hinweise": 71,
-    "oebb": 175,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 13,
-    "oebb": 153,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 7,
-    "wl": 87
-   }
-  },
   {
    "t": "2026-11-02T21:31:01.311334+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 7,
     "wl": 78
    }
+  },
+  {
+   "t": "2026-11-09T21:01:21.148893+00:00",
+   "raw": {
+    "wl-stoerungen": 44,
+    "wl-hinweise": 89,
+    "oebb": 185,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 26,
+    "oebb": 160,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 78
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-09T20:31:16.194656+00:00"
+   "last_ok": "2026-11-09T21:01:21.148893+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-09T20:31:16.194656+00:00"
+   "last_ok": "2026-11-09T21:01:21.148893+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-09T20:31:16.194656+00:00"
+   "last_ok": "2026-11-09T21:01:21.148893+00:00"
   }
  }
 }
