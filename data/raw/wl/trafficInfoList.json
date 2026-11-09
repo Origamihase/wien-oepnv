@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261109-0016-F01, I20261020-0029, I20261109-0018, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261109-0016-F01, I20261109-0019, I20261020-0029, I20261109-0018, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1884-101, R3886-480, R1875-101, R1876-101, R1880-101, R1881-101, R1883-101, R1882-101, R2371-125, R2370-125, R2359-125, R2343-125, R2558-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2343-626, R2378-627, R293-474, R318-437, R1974-466, R500-101, R1199-205, R321-102, R322-102, R2169-131, R2168-131, R2171-131, R2167-131, R2159-131, R2190-131, R322-131, R321-131, R2193-131, R2168-112, R324-112, R325-112, R326-112, R323-112, R2203-112, R2204-112, R2157-112, R316-112, R319-112, R318-112, R317-112, R2223-112, R3577-112, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1875-101, R1876-101, R1880-101, R3886-480, R1882-101, R1883-101, R1884-101, R1881-101, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R2558-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R293-474, R318-437, R1974-466, R500-101, R1199-205, R322-102, R321-102, R2159-131, R321-131, R322-131, R2193-131, R2190-131, R2168-131, R2171-131, R2169-131, R2167-131, R2870-125, R2866-125, R2867-125, R2861-125, R2864-125, R2865-125, R2874-125, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -273,6 +273,51 @@
     "title": "31, 2: Beschädigte Oberleitung durch einen LKW"
    },
    {
+    "alertCause": "fire",
+    "alertCauseId": 5,
+    "attributes": {
+     "relatedLineTypes": {
+      "25": "ptTram"
+     }
+    },
+    "description": "Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Prinzgasse. Die Züge zur Hausfeldstraße umgeleitet.Grund dafür ist ein Feuerwehreinsatz im Bereich Pirquetgasse # Berresgasse.Voraussichtliche Dauer: 14:30 Uhr",
+    "descriptionHTML": "<p><span style=\"color: rgba(0, 0, 0, 0.87);\">Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Prinzgasse. Die Züge zur Hausfeldstraße umgeleitet.<br><br>Grund dafür ist ein Feuerwehreinsatz im Bereich Pirquetgasse # Berresgasse.<br><br>Voraussichtliche Dauer: 14:30 Uhr</span></p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><span style=\"color: rgba(0, 0, 0, 0.87);\">Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Prinzgasse. Die Züge zur Hausfeldstraße umgeleitet.<br><br>Grund dafür ist ein Feuerwehreinsatz im Bereich Pirquetgasse # Berresgasse.<br><br>Voraussichtliche Dauer: 14:30 Uhr</span></p>",
+       "descriptionPlain": "Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Prinzgasse. Die Züge zur Hausfeldstraße umgeleitet.Grund dafür ist ein Feuerwehreinsatz im Bereich Pirquetgasse # Berresgasse.Voraussichtliche Dauer: 14:30 Uhr",
+       "title": "25: Feuerwehreinsatz"
+      }
+     }
+    ],
+    "location": "Pirquetgasse / Berresgasse",
+    "name": "I20261109-0019",
+    "owner": "WL",
+    "parentName": "I20261109-0019",
+    "priority": "1",
+    "reasonId": 11,
+    "reasonName": "Feuerwehreinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 125,
+      "lineName": "25",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-09T13:20:00.000+0100",
+     "lastUpdate": "2026-11-09T13:20:00.000+0100",
+     "start": "2026-11-09T13:12:00.000+0100"
+    },
+    "title": "25: Feuerwehreinsatz"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -482,29 +527,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrleitungsgebr.\nBetrieb ab Wallensteinplatz",
-    "name": "R2157-112",
-    "owner": "WL",
-    "parentName": "R2157-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     2157
-    ],
-    "time": {
-     "end": "2026-11-09T13:10:00.000+0100",
-     "start": "2026-11-09T12:10:51.000+0100"
-    },
-    "title": "Fahrleitungsgebr.\nBetrieb ab Wallensteinplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Fahrleitungsgebr.\nBetrieb ab Wexstraße",
     "name": "R2159-131",
     "owner": "WL",
@@ -520,8 +542,8 @@
      2159
     ],
     "time": {
-     "end": "2026-11-09T13:04:00.000+0100",
-     "start": "2026-11-09T12:05:51.000+0100"
+     "end": "2026-11-09T15:00:00.000+0100",
+     "start": "2026-11-09T13:08:26.000+0100"
     },
     "title": "Fahrleitungsgebr.\nBetrieb ab Wexstraße"
    },
@@ -543,33 +565,10 @@
      2167
     ],
     "time": {
-     "end": "2026-11-09T13:03:00.000+0100",
-     "start": "2026-11-09T12:04:20.000+0100"
+     "end": "2026-11-09T15:00:00.000+0100",
+     "start": "2026-11-09T13:08:56.000+0100"
     },
     "title": "Fahrleitungsgebr.\nBetrieb ab Floridsdorf S U"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrleitungsgebr.\nBetrieb ab Bruno Marek Allee",
-    "name": "R2168-112",
-    "owner": "WL",
-    "parentName": "R2168-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     2168
-    ],
-    "time": {
-     "end": "2026-11-09T13:09:00.000+0100",
-     "start": "2026-11-09T12:10:21.000+0100"
-    },
-    "title": "Fahrleitungsgebr.\nBetrieb ab Bruno Marek Allee"
    },
    {
     "alertCause": "undefined alert cause",
@@ -589,8 +588,8 @@
      2168
     ],
     "time": {
-     "end": "2026-11-09T13:03:00.000+0100",
-     "start": "2026-11-09T12:04:20.000+0100"
+     "end": "2026-11-09T15:00:00.000+0100",
+     "start": "2026-11-09T13:08:56.000+0100"
     },
     "title": "Fahrleitungsgebr.\nBetrieb ab Floridsdorf S U"
    },
@@ -612,8 +611,8 @@
      2169
     ],
     "time": {
-     "end": "2026-11-09T13:03:00.000+0100",
-     "start": "2026-11-09T12:04:20.000+0100"
+     "end": "2026-11-09T15:00:00.000+0100",
+     "start": "2026-11-09T13:08:56.000+0100"
     },
     "title": "Fahrleitungsgebr.\nBetrieb ab Floridsdorf S U"
    },
@@ -635,8 +634,8 @@
      2171
     ],
     "time": {
-     "end": "2026-11-09T13:03:00.000+0100",
-     "start": "2026-11-09T12:04:20.000+0100"
+     "end": "2026-11-09T15:00:00.000+0100",
+     "start": "2026-11-09T13:08:56.000+0100"
     },
     "title": "Fahrleitungsgebr.\nBetrieb ab Floridsdorf S U"
    },
@@ -658,8 +657,8 @@
      2190
     ],
     "time": {
-     "end": "2026-11-09T13:04:00.000+0100",
-     "start": "2026-11-09T12:05:52.000+0100"
+     "end": "2026-11-09T15:00:00.000+0100",
+     "start": "2026-11-09T13:08:29.000+0100"
     },
     "title": "Fahrleitungsgebr.\nBetrieb ab Wexstraße"
    },
@@ -681,79 +680,10 @@
      2193
     ],
     "time": {
-     "end": "2026-11-09T13:04:00.000+0100",
-     "start": "2026-11-09T12:05:52.000+0100"
+     "end": "2026-11-09T15:00:00.000+0100",
+     "start": "2026-11-09T13:08:29.000+0100"
     },
     "title": "Fahrleitungsgebr.\nBetrieb ab Wexstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrleitungsgebr.\nBetrieb ab Bruno Marek Allee",
-    "name": "R2203-112",
-    "owner": "WL",
-    "parentName": "R2203-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     2203
-    ],
-    "time": {
-     "end": "2026-11-09T13:09:00.000+0100",
-     "start": "2026-11-09T12:10:23.000+0100"
-    },
-    "title": "Fahrleitungsgebr.\nBetrieb ab Bruno Marek Allee"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrleitungsgebr.\nBetrieb ab Bruno Marek Allee",
-    "name": "R2204-112",
-    "owner": "WL",
-    "parentName": "R2204-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     2204
-    ],
-    "time": {
-     "end": "2026-11-09T13:09:00.000+0100",
-     "start": "2026-11-09T12:10:23.000+0100"
-    },
-    "title": "Fahrleitungsgebr.\nBetrieb ab Bruno Marek Allee"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrleitungsgebr.\nBetrieb ab Wallensteinplatz",
-    "name": "R2223-112",
-    "owner": "WL",
-    "parentName": "R2223-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     2223
-    ],
-    "time": {
-     "end": "2026-11-09T13:10:00.000+0100",
-     "start": "2026-11-09T12:10:53.000+0100"
-    },
-    "title": "Fahrleitungsgebr.\nBetrieb ab Wallensteinplatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1080,6 +1010,167 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Prinzgasse",
+    "name": "R2861-125",
+    "owner": "WL",
+    "parentName": "R2861-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2861
+    ],
+    "time": {
+     "end": "2026-11-09T14:14:00.000+0100",
+     "start": "2026-11-09T13:15:28.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Prinzgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Prinzgasse",
+    "name": "R2864-125",
+    "owner": "WL",
+    "parentName": "R2864-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2864
+    ],
+    "time": {
+     "end": "2026-11-09T14:14:00.000+0100",
+     "start": "2026-11-09T13:15:28.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Prinzgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Prinzgasse",
+    "name": "R2865-125",
+    "owner": "WL",
+    "parentName": "R2865-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2865
+    ],
+    "time": {
+     "end": "2026-11-09T14:14:00.000+0100",
+     "start": "2026-11-09T13:15:28.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Prinzgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R2866-125",
+    "owner": "WL",
+    "parentName": "R2866-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2866
+    ],
+    "time": {
+     "end": "2026-11-09T14:14:00.000+0100",
+     "start": "2026-11-09T13:14:58.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R2867-125",
+    "owner": "WL",
+    "parentName": "R2867-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2867
+    ],
+    "time": {
+     "end": "2026-11-09T14:14:00.000+0100",
+     "start": "2026-11-09T13:14:58.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "name": "R2870-125",
+    "owner": "WL",
+    "parentName": "R2870-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2870
+    ],
+    "time": {
+     "end": "2026-11-09T14:14:00.000+0100",
+     "start": "2026-11-09T13:14:58.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Prinzgasse",
+    "name": "R2874-125",
+    "owner": "WL",
+    "parentName": "R2874-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2874
+    ],
+    "time": {
+     "end": "2026-11-09T14:14:00.000+0100",
+     "start": "2026-11-09T13:15:28.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Prinzgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -1099,75 +1190,6 @@
      "start": "2026-11-09T00:00:21.000+0100"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrleitungsgebr.\nBetrieb ab Wallensteinplatz",
-    "name": "R316-112",
-    "owner": "WL",
-    "parentName": "R316-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     316
-    ],
-    "time": {
-     "end": "2026-11-09T13:10:00.000+0100",
-     "start": "2026-11-09T12:10:52.000+0100"
-    },
-    "title": "Fahrleitungsgebr.\nBetrieb ab Wallensteinplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrleitungsgebr.\nBetrieb ab Wallensteinplatz",
-    "name": "R317-112",
-    "owner": "WL",
-    "parentName": "R317-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     317
-    ],
-    "time": {
-     "end": "2026-11-09T13:10:00.000+0100",
-     "start": "2026-11-09T12:10:52.000+0100"
-    },
-    "title": "Fahrleitungsgebr.\nBetrieb ab Wallensteinplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrleitungsgebr.\nBetrieb ab Wallensteinplatz",
-    "name": "R318-112",
-    "owner": "WL",
-    "parentName": "R318-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     318
-    ],
-    "time": {
-     "end": "2026-11-09T13:10:00.000+0100",
-     "start": "2026-11-09T12:10:52.000+0100"
-    },
-    "title": "Fahrleitungsgebr.\nBetrieb ab Wallensteinplatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1195,29 +1217,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrleitungsgebr.\nBetrieb ab Wallensteinplatz",
-    "name": "R319-112",
-    "owner": "WL",
-    "parentName": "R319-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     319
-    ],
-    "time": {
-     "end": "2026-11-09T13:10:00.000+0100",
-     "start": "2026-11-09T12:10:52.000+0100"
-    },
-    "title": "Fahrleitungsgebr.\nBetrieb ab Wallensteinplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Fahrleitungsgebr.\nBetrieb ab Höchstädtplatz",
     "name": "R321-102",
     "owner": "WL",
@@ -1233,7 +1232,7 @@
      321
     ],
     "time": {
-     "end": "2026-11-09T13:32:00.000+0100",
+     "end": "2026-11-09T15:00:00.000+0100",
      "start": "2026-11-09T12:02:52.000+0100"
     },
     "title": "Fahrleitungsgebr.\nBetrieb ab Höchstädtplatz"
@@ -1256,8 +1255,8 @@
      321
     ],
     "time": {
-     "end": "2026-11-09T13:04:00.000+0100",
-     "start": "2026-11-09T12:05:52.000+0100"
+     "end": "2026-11-09T15:00:00.000+0100",
+     "start": "2026-11-09T13:08:28.000+0100"
     },
     "title": "Fahrleitungsgebr.\nBetrieb ab Wexstraße"
    },
@@ -1302,125 +1301,10 @@
      322
     ],
     "time": {
-     "end": "2026-11-09T13:04:00.000+0100",
-     "start": "2026-11-09T12:05:52.000+0100"
+     "end": "2026-11-09T15:00:00.000+0100",
+     "start": "2026-11-09T13:08:28.000+0100"
     },
     "title": "Fahrleitungsgebr.\nBetrieb ab Wexstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrleitungsgebr.\nBetrieb ab Bruno Marek Allee",
-    "name": "R323-112",
-    "owner": "WL",
-    "parentName": "R323-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     323
-    ],
-    "time": {
-     "end": "2026-11-09T13:09:00.000+0100",
-     "start": "2026-11-09T12:10:22.000+0100"
-    },
-    "title": "Fahrleitungsgebr.\nBetrieb ab Bruno Marek Allee"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrleitungsgebr.\nBetrieb ab Bruno Marek Allee",
-    "name": "R324-112",
-    "owner": "WL",
-    "parentName": "R324-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     324
-    ],
-    "time": {
-     "end": "2026-11-09T13:09:00.000+0100",
-     "start": "2026-11-09T12:10:22.000+0100"
-    },
-    "title": "Fahrleitungsgebr.\nBetrieb ab Bruno Marek Allee"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrleitungsgebr.\nBetrieb ab Bruno Marek Allee",
-    "name": "R325-112",
-    "owner": "WL",
-    "parentName": "R325-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     325
-    ],
-    "time": {
-     "end": "2026-11-09T13:09:00.000+0100",
-     "start": "2026-11-09T12:10:22.000+0100"
-    },
-    "title": "Fahrleitungsgebr.\nBetrieb ab Bruno Marek Allee"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrleitungsgebr.\nBetrieb ab Bruno Marek Allee",
-    "name": "R326-112",
-    "owner": "WL",
-    "parentName": "R326-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     326
-    ],
-    "time": {
-     "end": "2026-11-09T13:09:00.000+0100",
-     "start": "2026-11-09T12:10:22.000+0100"
-    },
-    "title": "Fahrleitungsgebr.\nBetrieb ab Bruno Marek Allee"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrleitungsgebr.\nBetrieb ab Wallensteinplatz",
-    "name": "R3577-112",
-    "owner": "WL",
-    "parentName": "R3577-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     3577
-    ],
-    "time": {
-     "end": "2026-11-09T13:10:00.000+0100",
-     "start": "2026-11-09T12:10:54.000+0100"
-    },
-    "title": "Fahrleitungsgebr.\nBetrieb ab Wallensteinplatz"
    },
    {
     "alertCause": "undefined alert cause",

@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Mon, 09 Nov 2026 13:01:01 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 13:30:43 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[25: Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">43e37147b23038744f5576718a0f03135e7705c613deed37a0649a23f5ec3ba6</guid>
+      <pubDate>Mon, 09 Nov 2026 13:12:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 09 Nov 2026 13:30:43 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 09 Nov 2026 13:15:28 +0100</ext:starts_at>
+      <description>Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Prinzgasse. Die Züge zur Hausfeldstraße umgeleitet. [Seit 13:12]</description>
+      <content:encoded><![CDATA[Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Prinzgasse. Die Züge zur Hausfeldstraße umgeleitet.<br/>[Seit 13:12]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[2: Fahrleitungsgebr.]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -20,37 +33,23 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Mon, 09 Nov 2026 13:01:01 +0100</ext:first_seen>
       <ext:starts_at>Mon, 09 Nov 2026 12:02:52 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 09 Nov 2026 13:35:00 +0100</ext:ends_at>
+      <ext:ends_at>Mon, 09 Nov 2026 15:00:00 +0100</ext:ends_at>
       <description>Betrieb ab Höchstädtplatz; Züge halten bei Linie 31. [Seit 12:02]</description>
       <content:encoded><![CDATA[Betrieb ab Höchstädtplatz; Züge halten bei Linie 31.<br/>[Seit 12:02]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[12: Fahrleitungsgebr.]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">3fb4c35d4c4b91b6ad43416e9f45a2e4cf227b19c46e5484adab72169bdfe627</guid>
-      <pubDate>Mon, 09 Nov 2026 12:10:21 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 09 Nov 2026 12:30:45 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 09 Nov 2026 12:10:23 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 09 Nov 2026 13:10:00 +0100</ext:ends_at>
-      <description>Betrieb ab Bruno Marek Allee, Wallensteinplatz. [Seit 12:10]</description>
-      <content:encoded><![CDATA[Betrieb ab Bruno Marek Allee, Wallensteinplatz.<br/>[Seit 12:10]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[31: Fahrleitungsgebr.]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">6a768d8151530f2bf768b727d668d673536efc6e686b1c16c5c7e6fbb94393b7</guid>
-      <pubDate>Mon, 09 Nov 2026 12:04:20 +0100</pubDate>
+      <pubDate>Mon, 09 Nov 2026 13:08:26 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Mon, 09 Nov 2026 12:30:45 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 09 Nov 2026 12:04:20 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 09 Nov 2026 13:04:00 +0100</ext:ends_at>
-      <description>Betrieb ab Floridsdorf, Wexstraße. [Seit 12:04]</description>
-      <content:encoded><![CDATA[Betrieb ab Floridsdorf, Wexstraße.<br/>[Seit 12:04]]]></content:encoded>
+      <ext:starts_at>Mon, 09 Nov 2026 13:08:29 +0100</ext:starts_at>
+      <ext:ends_at>Mon, 09 Nov 2026 15:00:00 +0100</ext:ends_at>
+      <description>Betrieb ab Wexstraße, Floridsdorf. [Seit 13:08]</description>
+      <content:encoded><![CDATA[Betrieb ab Wexstraße, Floridsdorf.<br/>[Seit 13:08]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[2/31: Beschädigte Oberleitung durch einen LKW]]></title>
