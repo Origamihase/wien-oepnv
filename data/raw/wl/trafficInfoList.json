@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261109-0005, I20261109-0007, I20260925-0011, I20260909-0007, I20261020-0029, I20261109-0004"
+    "trafficInfoNameList": "I20261109-0007-F01, I20260925-0011, I20260909-0007, I20261020-0029, I20261109-0004, I20261109-0008"
    },
    {
     "id": 3,
@@ -223,66 +223,21 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U6: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261109-0005",
-    "owner": "WL",
-    "parentName": "I20261109-0005",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-09T05:38:00.000+0100",
-     "lastUpdate": "2026-11-09T05:38:00.000+0100",
-     "resume": "2026-11-09T05:37:00.000+0100",
-     "start": "2026-11-09T05:37:00.000+0100"
-    },
-    "title": "U6: Verspätungen"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
       "U4": "ptMetro"
      }
     },
-    "description": "Die Linie U4 fährt derzeit in der Station Stadtpark in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig. Voraussichtliche Dauer: 06:50 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Stadtpark.",
-    "descriptionHTML": "<p>Die Linie U4 fährt derzeit in der Station Stadtpark in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 06:50 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Stadtpark.</p>",
+    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Die Linie U4 fährt derzeit in der Station Stadtpark in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 06:50 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Stadtpark.</p>",
-       "descriptionPlain": "Die Linie U4 fährt derzeit in der Station Stadtpark in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig. Voraussichtliche Dauer: 06:50 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Stadtpark.",
+       "descriptionHtml": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "U4: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261109-0007",
+    "name": "I20261109-0007-F01",
     "owner": "WL",
     "parentName": "I20261109-0007",
     "priority": "1",
@@ -304,11 +259,57 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-09T06:19:00.000+0100",
-     "lastUpdate": "2026-11-09T06:24:00.000+0100",
+     "created": "2026-11-09T06:46:00.000+0100",
+     "lastUpdate": "2026-11-09T06:46:00.000+0100",
+     "resume": "2026-11-09T06:46:00.000+0100",
      "start": "2026-11-09T06:19:00.000+0100"
     },
     "title": "U4: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U1: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261109-0008",
+    "owner": "WL",
+    "parentName": "I20261109-0008",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 301,
+      "lineName": "U1",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-09T06:34:00.000+0100",
+     "lastUpdate": "2026-11-09T06:34:00.000+0100",
+     "resume": "2026-11-09T06:34:00.000+0100",
+     "start": "2026-11-09T06:34:00.000+0100"
+    },
+    "title": "U1: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",
