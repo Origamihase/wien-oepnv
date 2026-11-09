@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_97, ftazW_1016949, ftazW_1353814, ftazW_1031271, ftazW_1351712, ftazW_487, ftazW_444, ftazW_1031284, ftazW_2, ftazW_1353815, ftazW_582, ftazW_1017115, ftazW_1351714, ftazW_445, ftazW_3, ftazW_1017116, ftazW_211, ftazW_1018631, ftazW_488, ftazW_581, ftazW_1351716, ftazW_146, ftazW_1016567, ftazW_486, ftazW_734, ftazW_769, ftazW_147, ftazW_29, ftazW_489, ftazW_770, ftazW_1351715"
+    "trafficInfoNameList": "ftazW_97, ftazW_1016949, ftazW_1353814, ftazW_1031271, ftazW_1351712, ftazW_487, ftazW_444, ftazW_1031284, ftazW_2, ftazW_1353815, ftazW_582, ftazW_1017115, ftazW_1351714, ftazW_445, ftazW_3, ftazW_1017116, ftazW_211, ftazW_1018631, ftazW_488, ftazW_581, ftazW_1351716, ftazW_146, ftazW_1016567, ftazW_486, ftazW_734, ftazW_769, ftazW_147, ftazW_489, ftazW_770, ftazW_1351715, ftazW_490, ftazW_1018065, ftazW_239, ftazW_510"
    }
   ],
   "poiCategoryGroups": [
@@ -2935,8 +2935,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U1",
-      "U2"
+      "U2",
+      "U1"
      ],
      "station": "Praterstern",
      "status": "geplante Wartung",
@@ -2950,8 +2950,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U1",
-     "U2"
+     "U2",
+     "U1"
     ],
     "relatedStops": [
      4112
@@ -3044,14 +3044,51 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "12.11.2026 00:45",
+     "ausVon": "11.11.2026 20:45",
+     "location": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Stella Klein Löw Weg",
+     "rbls": [
+      4257
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Stadion",
+     "status": "geplante Wartung",
+     "towards": "U2 Karlsplatz"
+    },
+    "description": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Stella Klein Löw Weg",
+    "elevatorId": "SW 01",
+    "name": "ftazW_1018065",
+    "parentName": "ftazW_1018065",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4257
+    ],
+    "time": {
+     "end": "2026-11-12T00:45:00.000+0100",
+     "start": "2026-11-11T20:45:00.000+0100"
+    },
+    "title": "Stadion"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "10.11.2026 05:15",
      "ausVon": "10.11.2026 01:15",
      "location": "Passage - Ausgang Praterstraße",
      "rbls": [],
      "reason": "",
      "relatedLines": [
-      "U1",
-      "U2"
+      "U2",
+      "U1"
      ],
      "station": "Praterstern",
      "status": "geplante Wartung",
@@ -3065,8 +3102,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U1",
-     "U2"
+     "U2",
+     "U1"
     ],
     "time": {
      "end": "2026-11-10T05:15:00.000+0100",
@@ -3521,33 +3558,42 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "11.11.2026 05:15",
-     "ausVon": "11.11.2026 01:15",
-     "location": "Zwischengeschoss - Ausgang Minoritenplatz",
-     "rbls": [],
+     "ausBis": "12.11.2026 00:45",
+     "ausVon": "11.11.2026 20:45",
+     "location": "U4 Bahnsteig Richtung Heiligenstadt, U6 Bahnsteig Richtung Floridsdorf - Ausgang Storchensteg/Gierstergasse",
+     "rbls": [
+      4437,
+      4617
+     ],
      "reason": "",
      "relatedLines": [
-      "U3"
+      "U4",
+      "U6"
      ],
-     "station": "Herrengasse",
+     "station": "Längenfeldgasse",
      "status": "geplante Wartung",
-     "towards": ""
+     "towards": "U4 Heiligenstadt, U6 Floridsdorf"
     },
-    "description": "Zwischengeschoss - Ausgang Minoritenplatz",
-    "elevatorId": "HZ 01",
-    "name": "ftazW_29",
-    "parentName": "ftazW_29",
+    "description": "U4 Bahnsteig Richtung Heiligenstadt, U6 Bahnsteig Richtung Floridsdorf - Ausgang Storchensteg/Gierstergasse",
+    "elevatorId": "LE 01",
+    "name": "ftazW_239",
+    "parentName": "ftazW_239",
     "reasonId": 0,
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U3"
+     "U4",
+     "U6"
+    ],
+    "relatedStops": [
+     4437,
+     4617
     ],
     "time": {
-     "end": "2026-11-11T05:15:00.000+0100",
-     "start": "2026-11-11T01:15:00.000+0100"
+     "end": "2026-11-12T00:45:00.000+0100",
+     "start": "2026-11-11T20:45:00.000+0100"
     },
-    "title": "Herrengasse"
+    "title": "Längenfeldgasse"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3710,8 +3756,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U6",
-      "U4"
+      "U4",
+      "U6"
      ],
      "station": "Spittelau",
      "status": "geplante Wartung",
@@ -3725,8 +3771,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U6",
-     "U4"
+     "U4",
+     "U6"
     ],
     "relatedStops": [
      4627
@@ -3751,8 +3797,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U6",
-      "U4"
+      "U4",
+      "U6"
      ],
      "station": "Spittelau",
      "status": "geplante Wartung",
@@ -3766,8 +3812,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U6",
-     "U4"
+     "U4",
+     "U6"
     ],
     "relatedStops": [
      4439,
@@ -3792,8 +3838,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U6",
-      "U4"
+      "U4",
+      "U6"
      ],
      "station": "Spittelau",
      "status": "geplante Wartung",
@@ -3807,8 +3853,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U6",
-     "U4"
+     "U4",
+     "U6"
     ],
     "relatedStops": [
      4627
@@ -3823,14 +3869,92 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "12.11.2026 00:45",
+     "ausVon": "11.11.2026 20:45",
+     "location": "U6 Bahnsteig Richtung Siebenhirten - Zwischengeschoss - ÖBB Bahnsteig",
+     "rbls": [
+      4651
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4",
+      "U6"
+     ],
+     "station": "Spittelau",
+     "status": "geplante Wartung",
+     "towards": "U6 Siebenhirten"
+    },
+    "description": "U6 Bahnsteig Richtung Siebenhirten - Zwischengeschoss - ÖBB Bahnsteig",
+    "elevatorId": "AU 05",
+    "name": "ftazW_490",
+    "parentName": "ftazW_490",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4",
+     "U6"
+    ],
+    "relatedStops": [
+     4651
+    ],
+    "time": {
+     "end": "2026-11-12T00:45:00.000+0100",
+     "start": "2026-11-11T20:45:00.000+0100"
+    },
+    "title": "Spittelau"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "12.11.2026 00:45",
+     "ausVon": "11.11.2026 20:45",
+     "location": "U6 Mittelbahnsteig - Ausgang Pasettistraße",
+     "rbls": [
+      4642,
+      4649
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Dresdner Straße",
+     "status": "geplante Wartung",
+     "towards": "U6 beide Richtungen"
+    },
+    "description": "U6 Mittelbahnsteig - Ausgang Pasettistraße",
+    "elevatorId": "DS 01",
+    "name": "ftazW_510",
+    "parentName": "ftazW_510",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4642,
+     4649
+    ],
+    "time": {
+     "end": "2026-11-12T00:45:00.000+0100",
+     "start": "2026-11-11T20:45:00.000+0100"
+    },
+    "title": "Dresdner Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "10.11.2026 05:15",
      "ausVon": "10.11.2026 01:15",
      "location": "U4 Mittelbahnsteig - Karlsplatzpassage",
      "rbls": [],
      "reason": "",
      "relatedLines": [
-      "U1",
       "U2",
+      "U1",
       "U4"
      ],
      "station": "Karlsplatz",
@@ -3845,8 +3969,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U1",
      "U2",
+     "U1",
      "U4"
     ],
     "time": {

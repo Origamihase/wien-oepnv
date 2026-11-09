@@ -8,21 +8,8 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Mon, 09 Nov 2026 00:30:39 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 01:00:42 +0100</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[U2: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8</guid>
-      <pubDate>Mon, 09 Nov 2026 00:03:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 09 Nov 2026 00:03:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 09 Nov 2026 00:03:00 +0100</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 00:03]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 00:03]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[37: Gas pipe fracture]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -33,8 +20,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sun, 08 Nov 2026 13:00:59 +0100</ext:first_seen>
       <ext:starts_at>Sun, 08 Nov 2026 12:46:00 +0100</ext:starts_at>
-      <description>Service only between Schottentor and Nußdorfer Straße. Replacement: lines U4, U6, 38, 10A, 38A, 39A; trains stop at Währinger Gürtel opp.164. Expected until end of service. [Since 08.11.]</description>
-      <content:encoded><![CDATA[Service only between Schottentor and Nußdorfer Straße. Replacement: lines U4, U6, 38, 10A, 38A, 39A; trains stop at Währinger Gürtel opp.164. Expected until end of service.<br/>[Since 08.11.]]]></content:encoded>
+      <description>Service only between Schottentor and Nußdorfer Straße. Replacement: lines U4, U6, 38, 10A, 38A, 39A. Expected until end of service. [Since 08.11.]</description>
+      <content:encoded><![CDATA[Service only between Schottentor and Nußdorfer Straße. Replacement: lines U4, U6, 38, 10A, 38A, 39A. Expected until end of service.<br/>[Since 08.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[71A: Stop relocation]]></title>
@@ -147,6 +134,20 @@
       <georss:point>48.151997 16.401728</georss:point>
       <description>Filmteichstraße before Nordeingang des Kurparks → approx. 30 metres towards Laaer-Berg-Straße. Stop relocation of line 68A towards Laaer Berg, Nordosteingang. … [Since 05.11.]</description>
       <content:encoded><![CDATA[Filmteichstraße before Nordeingang des Kurparks → approx. 30 metres towards Laaer-Berg-Straße. Stop relocation of line 68A towards Laaer Berg, Nordosteingang. …<br/>[Since 05.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[12A: Henriettenplatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">a6cf4b6dfdd6a30caa130293fcef872955167da368915b5ee81ce366e6071172</guid>
+      <pubDate>Wed, 28 Oct 2026 16:52:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 28 Oct 2026 16:52:00 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 04 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <georss:point>48.190171 16.331974</georss:point>
+      <description>Stop closure of line 12A towards Eichenstraße. Stop: Henriettenplatz. Reason: excavation works. [Since 04.11.]</description>
+      <content:encoded><![CDATA[Stop closure of line 12A towards Eichenstraße. Stop: Henriettenplatz. Reason: excavation works.<br/>[Since 04.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
