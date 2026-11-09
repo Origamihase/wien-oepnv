@@ -626,22 +626,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "16A: Verkehrsüberlastung",
-    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "08f8f9d0c414c51fe010c32727e4eaf8cc098f2c840c0b9f9cbd2fc85b0426e7",
-    "pubDate": "2026-11-09T15:02:00+01:00",
-    "starts_at": "2026-11-09T15:02:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=16A|D=2026-11-09|TK=16a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261109-0026"
-    ],
-    "_incident_start": "2026-11-09T15:02:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -926,18 +910,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60A: Verkehrsüberlastung",
-    "description": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "title": "62A: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "0c324aeb68aff0a13a99697bafb1720b1552500ec06ceef7ada487c69aa2ddcf",
-    "pubDate": "2026-11-09T15:03:00+01:00",
-    "starts_at": "2026-11-09T15:03:00+01:00",
+    "guid": "6460e1e726125cbd76631a4f606981ffec2a04a8e4742a5bba5493fa66c765df",
+    "pubDate": "2026-11-09T16:13:00+01:00",
+    "starts_at": "2026-11-09T16:13:46+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=60A|D=2026-11-09|TK=60a verkehrsüberlastung",
+    "_identity": "wl|störung|L=62A|D=2026-11-09|TK=rettungseinsatz",
     "_wl_ids": [
-      "I20261109-0027"
+      "I20261109-0030"
     ],
-    "_incident_start": "2026-11-09T15:03:00+01:00"
+    "_incident_start": "2026-11-09T16:13:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -948,7 +932,7 @@
     "guid": "91d669c1fbe32bfc275e4e4defa8ceccd4bb34a47aefba98017f28a1c74921ba",
     "pubDate": "2026-11-09T15:51:00+01:00",
     "starts_at": "2026-11-09T15:51:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-09T16:40:00+01:00",
     "_identity": "wl|störung|L=63A|D=2026-11-09|TK=rettungseinsatz",
     "_wl_ids": [
       "I20261109-0029"
@@ -1010,18 +994,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Verspätungen",
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "title": "U3: Verspätungen",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
-    "pubDate": "2026-11-09T14:57:00+01:00",
-    "starts_at": "2026-11-09T14:57:00+01:00",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-11-09T16:28:00+01:00",
+    "starts_at": "2026-11-09T16:28:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=U4|D=2026-11-09|TK=u4 verspätungen",
+    "_identity": "wl|störung|L=U3|D=2026-11-09|TK=u3 verspätungen",
     "_wl_ids": [
-      "I20261109-0024"
+      "I20261109-0031"
     ],
-    "_incident_start": "2026-11-09T14:57:00+01:00"
+    "_incident_start": "2026-11-09T16:28:00+01:00"
   },
   {
     "source": "Wiener Linien",
