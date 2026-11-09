@@ -1,32 +1,28 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-09T18:01:18.314044+00:00",
- "built": "2026-11-09T19:01:01+01:00",
+ "updated": "2026-11-09T18:30:57.000096+00:00",
+ "built": "2026-11-09T19:30:45+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-09T19:01:01+01:00",
+  "built": "2026-11-09T19:30:45+01:00",
   "items": [
    {
-    "title": "27/31: Verspätungen",
-    "time_line": "Seit 18:49"
+    "title": "62: Rettungseinsatz",
+    "time_line": "Seit 19:01"
    },
    {
-    "title": "U3/9: Schadhaftes Fahrzeug",
+    "title": "60: Rettungseinsatz",
+    "time_line": "Seit 19:01"
+   },
+   {
+    "title": "U3: Schadhaftes Fahrzeug",
     "time_line": "Seit 18:35"
    },
    {
     "title": "U2: Schadhaftes Fahrzeug",
     "time_line": "Seit 18:04"
-   },
-   {
-    "title": "Wien Jedlersdorf ↔ Korneuburg",
-    "time_line": "Seit 17:06"
-   },
-   {
-    "title": "48A: Schadhaftes Fahrzeug",
-    "time_line": "Seit 17:41"
    },
    {
     "title": "U1: Verspätungen",
@@ -35,6 +31,10 @@
    {
     "title": "Wien Meidling",
     "time_line": "Seit 07:54"
+   },
+   {
+    "title": "Wien Jedlersdorf ↔ Korneuburg",
+    "time_line": "Heute"
    },
    {
     "title": "Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx",
@@ -6771,17 +6771,37 @@
     "oebb": 9,
     "wl": 83
    }
+  },
+  {
+   "t": "2026-11-09T18:30:57.000096+00:00",
+   "raw": {
+    "wl-stoerungen": 81,
+    "wl-hinweise": 97,
+    "oebb": 187,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 27,
+    "oebb": 160,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 9,
+    "wl": 82
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-09T18:01:18.314044+00:00"
+   "last_ok": "2026-11-09T18:30:57.000096+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-09T18:01:18.314044+00:00"
+   "last_ok": "2026-11-09T18:30:57.000096+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-09T18:01:18.314044+00:00"
+   "last_ok": "2026-11-09T18:30:57.000096+00:00"
   }
  }
 }
