@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_487, ftazW_444, ftazW_1031284, ftazW_2, ftazW_1353815, ftazW_582, ftazW_1017115, ftazW_1351714, ftazW_445, ftazW_3, ftazW_1017116, ftazW_211, ftazW_1018631, ftazW_488, ftazW_581, ftazW_1351716, ftazW_146, ftazW_1016567, ftazW_486, ftazW_734, ftazW_769, ftazW_147, ftazW_29, ftazW_489, ftazW_770, ftazW_1351715, ftazW_490, ftazW_1018065, ftazW_239, ftazW_510, ftazW_240, ftazW_491, ftazW_1018066, ftazW_82, ftazW_1351709, ftazW_511"
+    "trafficInfoNameList": "ftazW_445, ftazW_3, ftazW_1017116, ftazW_211, ftazW_1018631, ftazW_488, ftazW_581, ftazW_1351716, ftazW_146, ftazW_1016567, ftazW_486, ftazW_734, ftazW_769, ftazW_147, ftazW_29, ftazW_489, ftazW_770, ftazW_1351715, ftazW_490, ftazW_1018065, ftazW_239, ftazW_510, ftazW_240, ftazW_491, ftazW_1018066, ftazW_82, ftazW_1351709, ftazW_511"
    }
   ],
   "poiCategoryGroups": [
@@ -2887,45 +2887,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "10.11.2026 00:45",
-     "ausVon": "09.11.2026 20:45",
-     "location": "U1 Mittelbahnsteig - Ausgang Rennbahnweg",
-     "rbls": [
-      4182,
-      4187
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Rennbahnweg",
-     "status": "geplante Wartung",
-     "towards": "U1 beide Richtungen"
-    },
-    "description": "U1 Mittelbahnsteig - Ausgang Rennbahnweg",
-    "elevatorId": "RB 01",
-    "name": "ftazW_1017115",
-    "parentName": "ftazW_1017115",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4182,
-     4187
-    ],
-    "time": {
-     "end": "2026-11-10T00:45:00.000+0100",
-     "start": "2026-11-09T20:45:00.000+0100"
-    },
-    "title": "Rennbahnweg"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "10.11.2026 05:15",
      "ausVon": "10.11.2026 01:15",
      "location": "U1 Mittelbahnsteig - Ausgang Wagramerstraße",
@@ -3073,45 +3034,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "10.11.2026 00:45",
-     "ausVon": "09.11.2026 20:45",
-     "location": "U2 Mittelbahnsteig - Ausgang Zschokkegasse",
-     "rbls": [
-      4252,
-      4271
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U2"
-     ],
-     "station": "Donauspital",
-     "status": "geplante Wartung",
-     "towards": "U2 beide Richtungen"
-    },
-    "description": "U2 Mittelbahnsteig - Ausgang Zschokkegasse",
-    "elevatorId": "DP 01",
-    "name": "ftazW_1031284",
-    "parentName": "ftazW_1031284",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedStops": [
-     4252,
-     4271
-    ],
-    "time": {
-     "end": "2026-11-10T00:45:00.000+0100",
-     "start": "2026-11-09T20:45:00.000+0100"
-    },
-    "title": "Donauspital"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "12.11.2026 05:15",
      "ausVon": "12.11.2026 01:15",
      "location": "beide Fahrtrichtungen - Ausgang Laaer Berg Straße",
@@ -3146,45 +3068,6 @@
      "start": "2026-11-12T01:15:00.000+0100"
     },
     "title": "Oberlaa"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "10.11.2026 00:45",
-     "ausVon": "09.11.2026 20:45",
-     "location": "beide Fahrtrichtungen - Ausgang Alaudagasse",
-     "rbls": [
-      4136,
-      4131
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Alaudagasse",
-     "status": "geplante Wartung",
-     "towards": "U1 beide Richtungen"
-    },
-    "description": "beide Fahrtrichtungen - Ausgang Alaudagasse",
-    "elevatorId": "AL 01",
-    "name": "ftazW_1351714",
-    "parentName": "ftazW_1351714",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4136,
-     4131
-    ],
-    "time": {
-     "end": "2026-11-10T00:45:00.000+0100",
-     "start": "2026-11-09T20:45:00.000+0100"
-    },
-    "title": "Alaudagasse"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3268,38 +3151,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "10.11.2026 00:45",
-     "ausVon": "09.11.2026 20:45",
-     "location": "U6 Mittelbahnsteig - Zwischengeschoß Zugang ÖBB Bahnsteig",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Bahnhof Meidling",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "U6 Mittelbahnsteig - Zwischengeschoß Zugang ÖBB Bahnsteig",
-    "elevatorId": "PH 04",
-    "name": "ftazW_1353815",
-    "parentName": "ftazW_1353815",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "time": {
-     "end": "2026-11-10T00:45:00.000+0100",
-     "start": "2026-11-09T20:45:00.000+0100"
-    },
-    "title": "Bahnhof Meidling"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "11.11.2026 00:45",
      "ausVon": "10.11.2026 20:45",
      "location": "U3 Mittelbahnsteig - Ausgang Hainburger Straße",
@@ -3373,43 +3224,6 @@
      "start": "2026-11-11T01:15:00.000+0100"
     },
     "title": "Rochusgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "10.11.2026 00:45",
-     "ausVon": "09.11.2026 20:45",
-     "location": "U1 Bahnsteig Richtung Leopoldau - Ausgang Arbeiterstrandbadstraße",
-     "rbls": [
-      4125
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Alte Donau",
-     "status": "geplante Wartung",
-     "towards": "U1 Leopoldau"
-    },
-    "description": "U1 Bahnsteig Richtung Leopoldau - Ausgang Arbeiterstrandbadstraße",
-    "elevatorId": "AD 01",
-    "name": "ftazW_2",
-    "parentName": "ftazW_2",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4125
-    ],
-    "time": {
-     "end": "2026-11-10T00:45:00.000+0100",
-     "start": "2026-11-09T20:45:00.000+0100"
-    },
-    "title": "Alte Donau"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3598,45 +3412,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "10.11.2026 00:45",
-     "ausVon": "09.11.2026 20:45",
-     "location": "U3 Mittelbahnsteig - Passage Aufgang Hütteldorfer Straße",
-     "rbls": [
-      4926,
-      4925
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Johnstraße",
-     "status": "geplante Wartung",
-     "towards": "U3 beide Richtungen"
-    },
-    "description": "U3 Mittelbahnsteig - Passage Aufgang Hütteldorfer Straße",
-    "elevatorId": "JO 03",
-    "name": "ftazW_444",
-    "parentName": "ftazW_444",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4926,
-     4925
-    ],
-    "time": {
-     "end": "2026-11-10T00:45:00.000+0100",
-     "start": "2026-11-09T20:45:00.000+0100"
-    },
-    "title": "Johnstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "10.11.2026 05:15",
      "ausVon": "10.11.2026 01:15",
      "location": "Passage - Zwischengeschoss Zugang Meiselmarkt - Ausgang Hütteldorfer Straße",
@@ -3703,45 +3478,6 @@
     "time": {
      "end": "2026-11-11T00:45:00.000+0100",
      "start": "2026-11-10T20:45:00.000+0100"
-    },
-    "title": "Spittelau"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "10.11.2026 00:45",
-     "ausVon": "09.11.2026 20:45",
-     "location": "U4 Mittelbahnsteig - Zwischengeschoss - U6 Bahnsteig Richtung Floridsdorf",
-     "rbls": [
-      4627
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4",
-      "U6"
-     ],
-     "station": "Spittelau",
-     "status": "geplante Wartung",
-     "towards": "U6 Floridsdorf"
-    },
-    "description": "U4 Mittelbahnsteig - Zwischengeschoss - U6 Bahnsteig Richtung Floridsdorf",
-    "elevatorId": "AU 02",
-    "name": "ftazW_487",
-    "parentName": "ftazW_487",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4",
-     "U6"
-    ],
-    "relatedStops": [
-     4627
-    ],
-    "time": {
-     "end": "2026-11-10T00:45:00.000+0100",
-     "start": "2026-11-09T20:45:00.000+0100"
     },
     "title": "Spittelau"
    },
@@ -4011,33 +3747,6 @@
     "time": {
      "end": "2026-11-10T05:15:00.000+0100",
      "start": "2026-11-10T01:15:00.000+0100"
-    },
-    "title": "Karlsplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "10.11.2026 00:45",
-     "ausVon": "09.11.2026 20:45",
-     "location": "Karlsplatzpassage - U2 Bahnsteig Endstation Karlsplatz",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [],
-     "station": "Karlsplatz",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Karlsplatzpassage - U2 Bahnsteig Endstation Karlsplatz",
-    "elevatorId": "KP 06",
-    "name": "ftazW_582",
-    "parentName": "ftazW_582",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "time": {
-     "end": "2026-11-10T00:45:00.000+0100",
-     "start": "2026-11-09T20:45:00.000+0100"
     },
     "title": "Karlsplatz"
    },
