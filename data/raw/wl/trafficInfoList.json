@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261109-0020-F02, I20260925-0011, I20261109-0018, I20260909-0007, I20261109-0019-F01, I20261109-0016-F01, I20261020-0029, I20261109-0020-F01, I20261109-0021"
+    "trafficInfoNameList": "I20261109-0022-F01, I20260925-0011, I20261109-0018, I20260909-0007, I20261109-0021, I20261020-0029, I20261109-0023"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1880-101, R1881-101, R1882-101, R1876-101, R1884-101, R3886-480, R1875-101, R1883-101, R2370-125, R2558-125, R2343-626, R2343-125, R2378-627, R2359-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R318-437, R293-474, R1974-466, R500-101, R1199-205, R321-102, R2159-131, R321-131, R322-131, R2193-131, R2190-131, R2167-131, R2171-131, R2169-131, R2168-131, R2870-125, R2866-125, R2867-125, R2861-125, R2864-125, R2865-125, R2874-125, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R3886-480, R2372-125, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2373-125, R2373-126, R2379-627, R2380-627, R2345-127, R2558-125, R2373-127, R2378-627, R318-437, R293-474, R1974-466, R500-101, R1199-205, R321-102, R2159-131, R322-131, R321-131, R2193-131, R2190-131, R2167-131, R2168-131, R2169-131, R2171-131, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,54 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U6: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261109-0016-F01",
-    "owner": "WL",
-    "parentName": "I20261109-0016",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4639
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-09T11:01:00.000+0100",
-     "lastUpdate": "2026-11-09T11:01:00.000+0100",
-     "resume": "2026-11-09T11:01:00.000+0100",
-     "start": "2026-11-09T10:58:00.000+0100"
-    },
-    "title": "U6: Schadhaftes Fahrzeug"
-   },
-   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
@@ -273,145 +225,6 @@
     "title": "31, 2: Beschädigte Oberleitung durch einen LKW"
    },
    {
-    "alertCause": "fire",
-    "alertCauseId": 5,
-    "attributes": {
-     "relatedLineTypes": {
-      "25": "ptTram"
-     }
-    },
-    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "25: Feuerwehreinsatz"
-      }
-     }
-    ],
-    "location": "Pirquetgasse / Berresgasse",
-    "name": "I20261109-0019-F01",
-    "owner": "WL",
-    "parentName": "I20261109-0019",
-    "priority": "1",
-    "reasonId": 11,
-    "reasonName": "Feuerwehreinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 125,
-      "lineName": "25",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-09T13:30:00.000+0100",
-     "end": "2026-11-09T13:59:00.000+0100",
-     "lastUpdate": "2026-11-09T13:59:00.000+0100",
-     "resume": "2026-11-09T13:59:00.000+0100",
-     "start": "2026-11-09T13:12:00.000+0100"
-    },
-    "title": "25: Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "40": "ptTram"
-     }
-    },
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "40: Falschparker"
-      }
-     }
-    ],
-    "location": "Währinger Straße 114",
-    "name": "I20261109-0020-F01",
-    "owner": "WL",
-    "parentName": "I20261109-0020",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "40"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 140,
-      "lineName": "40",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-09T13:56:00.000+0100",
-     "end": "2026-11-09T14:20:00.000+0100",
-     "lastUpdate": "2026-11-09T13:58:00.000+0100",
-     "start": "2026-11-09T13:53:00.000+0100"
-    },
-    "title": "40: Falschparker"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "41": "ptTram"
-     }
-    },
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "41: Falschparker"
-      }
-     }
-    ],
-    "location": "Währinger Straße 114",
-    "name": "I20261109-0020-F02",
-    "owner": "WL",
-    "parentName": "I20261109-0020",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 141,
-      "lineName": "41",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-09T13:56:00.000+0100",
-     "end": "2026-11-09T14:20:00.000+0100",
-     "lastUpdate": "2026-11-09T13:58:00.000+0100",
-     "start": "2026-11-09T13:53:00.000+0100"
-    },
-    "title": "41: Falschparker"
-   },
-   {
     "alertCause": "emergency medical services",
     "alertCauseId": 14,
     "attributes": {
@@ -447,14 +260,110 @@
       "vehicleType": "ptBusCity"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-09T14:00:00.000+0100",
-     "lastUpdate": "2026-11-09T14:00:00.000+0100",
+     "end": "2026-11-09T14:28:00.000+0100",
+     "lastUpdate": "2026-11-09T14:28:00.000+0100",
      "resume": "2026-11-09T13:59:00.000+0100",
      "start": "2026-11-09T13:59:00.000+0100"
     },
     "title": "50A: Rettungseinsatz"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "D": "ptTram"
+     }
+    },
+    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "D: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261109-0022-F01",
+    "owner": "WL",
+    "parentName": "I20261109-0022",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 136,
+      "lineName": "D",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     111
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-11-09T14:26:00.000+0100",
+     "end": "2026-11-09T14:29:00.000+0100",
+     "lastUpdate": "2026-11-09T14:29:00.000+0100",
+     "resume": "2026-11-09T14:29:00.000+0100",
+     "start": "2026-11-09T14:22:00.000+0100"
+    },
+    "title": "D: Polizeieinsatz"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "62": "ptTram"
+     }
+    },
+    "description": "Linie 62: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "descriptionHTML": "<p>Linie 62:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 62:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+       "descriptionPlain": "Linie 62: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+       "title": "62: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261109-0023",
+    "owner": "WL",
+    "parentName": "I20261109-0023",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 162,
+      "lineName": "62",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-11-09T14:25:00.000+0100",
+     "end": "2026-11-09T14:29:00.000+0100",
+     "lastUpdate": "2026-11-09T14:29:00.000+0100",
+     "resume": "2026-11-09T14:25:00.000+0100",
+     "start": "2026-11-09T14:25:00.000+0100"
+    },
+    "title": "62: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1145,167 +1054,6 @@
      "start": "2026-11-09T00:00:20.000+0100"
     },
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nBetrieb ab Prinzgasse",
-    "name": "R2861-125",
-    "owner": "WL",
-    "parentName": "R2861-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     2861
-    ],
-    "time": {
-     "end": "2026-11-09T14:14:00.000+0100",
-     "start": "2026-11-09T13:15:28.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Prinzgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nBetrieb ab Prinzgasse",
-    "name": "R2864-125",
-    "owner": "WL",
-    "parentName": "R2864-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     2864
-    ],
-    "time": {
-     "end": "2026-11-09T14:14:00.000+0100",
-     "start": "2026-11-09T13:15:28.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Prinzgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nBetrieb ab Prinzgasse",
-    "name": "R2865-125",
-    "owner": "WL",
-    "parentName": "R2865-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     2865
-    ],
-    "time": {
-     "end": "2026-11-09T14:14:00.000+0100",
-     "start": "2026-11-09T13:15:28.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Prinzgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R2866-125",
-    "owner": "WL",
-    "parentName": "R2866-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     2866
-    ],
-    "time": {
-     "end": "2026-11-09T14:14:00.000+0100",
-     "start": "2026-11-09T13:14:58.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R2867-125",
-    "owner": "WL",
-    "parentName": "R2867-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     2867
-    ],
-    "time": {
-     "end": "2026-11-09T14:14:00.000+0100",
-     "start": "2026-11-09T13:14:58.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R2870-125",
-    "owner": "WL",
-    "parentName": "R2870-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     2870
-    ],
-    "time": {
-     "end": "2026-11-09T14:14:00.000+0100",
-     "start": "2026-11-09T13:14:58.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nBetrieb ab Prinzgasse",
-    "name": "R2874-125",
-    "owner": "WL",
-    "parentName": "R2874-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     2874
-    ],
-    "time": {
-     "end": "2026-11-09T14:14:00.000+0100",
-     "start": "2026-11-09T13:15:28.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Prinzgasse"
    },
    {
     "alertCause": "undefined alert cause",
