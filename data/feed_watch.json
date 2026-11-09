@@ -1,31 +1,31 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-09T16:31:07.660705+00:00",
- "built": "2026-11-09T17:30:53+01:00",
+ "updated": "2026-11-09T17:01:04.471237+00:00",
+ "built": "2026-11-09T18:00:47+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-09T17:30:53+01:00",
+  "built": "2026-11-09T18:00:47+01:00",
   "items": [
    {
-    "title": "40/41: Fremder Verkehrsunfall",
-    "time_line": "Seit 16:56"
+    "title": "Wien Jedlersdorf ↔ Korneuburg",
+    "time_line": "Seit 17:06"
+   },
+   {
+    "title": "48A: Schadhaftes Fahrzeug",
+    "time_line": "Seit 17:41"
    },
    {
     "title": "40: Falschparker",
-    "time_line": "Seit 17:20"
+    "time_line": "Seit 16:57"
    },
    {
     "title": "60: Verkehrsüberlastung",
     "time_line": "Seit 17:11"
    },
    {
-    "title": "9/42: Verkehrsunfall",
-    "time_line": "Seit 16:59"
-   },
-   {
-    "title": "U1/U3: Verspätungen",
+    "title": "U1: Verspätungen",
     "time_line": "Seit 16:28"
    },
    {
@@ -37,41 +37,21 @@
     "time_line": "Seit 07:54"
    },
    {
-    "title": "5A/N31: Haltestellenverlegung",
-    "time_line": "Seit heute"
+    "title": "Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx",
+    "time_line": "Bis 31.10.2027"
    },
    {
-    "title": "71A: Haltestellenverlegung",
+    "title": "REX50/REX51/S50: Wien Westbahnhof ↔ St. Pölten Hbf",
     "time_line": "Bis Mi 11.11."
    },
    {
-    "title": "5B: Bauarbeiten",
-    "time_line": "Bis 10.12."
+    "title": "5A/N31: Haltestellenverlegung",
+    "time_line": "Seit heute"
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-02T17:01:03.539072+00:00",
-   "raw": {
-    "wl-stoerungen": 56,
-    "wl-hinweise": 75,
-    "oebb": 174,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 14,
-    "oebb": 153,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 6,
-    "wl": 87
-   }
-  },
   {
    "t": "2026-11-02T17:31:06.021005+00:00",
    "raw": {
@@ -6771,19 +6751,37 @@
     "oebb": 8,
     "wl": 85
    }
+  },
+  {
+   "t": "2026-11-09T17:01:04.471237+00:00",
+   "raw": {
+    "wl-stoerungen": 54,
+    "wl-hinweise": 97,
+    "oebb": 184,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 27,
+    "oebb": 157,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 9,
+    "wl": 82
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-09T16:31:07.660705+00:00"
+   "last_ok": "2026-11-09T17:01:04.471237+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-09T16:01:27.010829+00:00",
-   "last_exit": 1,
-   "failing_since": "2026-11-09T16:31:07.660705+00:00"
+   "last_ok": "2026-11-09T17:01:04.471237+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-09T16:31:07.660705+00:00"
+   "last_ok": "2026-11-09T17:01:04.471237+00:00"
   }
  }
 }
