@@ -626,34 +626,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Polizeieinsatz Betrieb ab Enkplatz U, Grillgasse",
-    "description": "Polizeieinsatz\nBetrieb ab Enkplatz U, Grillgasse",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "84fb66f823fe0256bdb55c275e537630afbdb20e631f62ff4a78dbb9fd614ed6",
-    "pubDate": "2026-11-09T11:28:17+01:00",
-    "starts_at": "2026-11-09T11:35:17+01:00",
-    "ends_at": "2026-11-09T12:33:00+01:00",
-    "_identity": "wl|störung|L=11|D=2026-11-09|TK=polizeieinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2/12/31: Beschädigte Oberleitung durch einen LKW",
-    "description": "Linie 2: Betrieb nur zwischen Dornbach und Rebhanngasse. Weiterfahrt bis Bruno-Marek-Allee. Linie 12: Umleitung in beiden Richtungen zwischen Bruno-Marek-Allee und Wallensteinplatz über die Strecke der Linien O und 5. Linie 31: Kein Betrieb zwischen Floridsdorf S U und Wexstraße. Ersatz: Linien U4, U6,. Voraussichtliche Dauer: 14:00 Uhr. Grund: Fahrleitungsgebrechen durch LKW im Haltestellenbereich Friedrich-Engels-Platz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "be0a39840a659240e8fb9c81e4ad91d9750f83f694e865a73aef39e3c4769f4a",
-    "pubDate": "2026-11-09T11:57:00+01:00",
-    "starts_at": "2026-11-09T11:57:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=12,2,31|D=2026-11-09|TK=2 31 12 beschädigte oberleitung durch einen lkw",
-    "_wl_ids": [
-      "I20261109-0018"
-    ],
-    "_incident_start": "2026-11-09T11:57:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "12: Fahrleitungsgebr. Betrieb ab Bruno Marek Allee",
     "description": "Fahrleitungsgebr.\nBetrieb ab Bruno Marek Allee",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -762,6 +734,22 @@
     "starts_at": "2026-11-09T00:00:19+01:00",
     "ends_at": "2026-11-09T23:59:59+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-09|TK=züge halten quellenstrasse 156 linie 6"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2/31: Beschädigte Oberleitung durch einen LKW",
+    "description": "Linie 2: Betrieb nur zwischen Dornbach und Höchstädtplatz. Weiterfahrt bis Wexstraße, Bhf. Brigittenau. Linie 31: Kein Betrieb zwischen Floridsdorf S U und Wexstraße. Ersatz: Linien U4, U6,. Voraussichtliche Dauer: 15:00 Uhr. Grund: Fahrleitungsgebrechen durch LKW im Haltestellenbereich Friedrich-Engels-Platz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "333d0a79d61832fb10398d95a4448a87f08167c3a051bbef0cda0212ca9509f7",
+    "pubDate": "2026-11-09T11:57:00+01:00",
+    "starts_at": "2026-11-09T11:57:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=2,31|D=2026-11-09|TK=31 2 beschädigte oberleitung durch einen lkw",
+    "_wl_ids": [
+      "I20261109-0018"
+    ],
+    "_incident_start": "2026-11-09T11:57:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -906,26 +894,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Fahrleitungsgebr. Betrieb ab Am Tabor",
-    "description": "Fahrleitungsgebr.\nBetrieb ab Am Tabor",
+    "title": "2: Fahrleitungsgebr. Betrieb ab Höchstädtplatz",
+    "description": "Fahrleitungsgebr.\nBetrieb ab Höchstädtplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "ca3be0ac173eb22f5a5965ca61649238420a10ca2bfc73caa086360122eda79b",
+    "guid": "568c466b63bc99ac89bce35c220db78088d51d6ff304e9737937177c412a19e8",
     "pubDate": "2026-11-09T12:02:52+01:00",
     "starts_at": "2026-11-09T12:02:52+01:00",
-    "ends_at": "2026-11-09T13:00:00+01:00",
-    "_identity": "wl|störung|L=2|D=2026-11-09|TK=fahrleitungsgebr betrieb ab am tabor"
+    "ends_at": "2026-11-09T13:32:00+01:00",
+    "_identity": "wl|störung|L=2|D=2026-11-09|TK=fahrleitungsgebr betrieb ab höchstädtplatz"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Fahrtbehinderung wegen Fahrleitungsgebr.",
-    "description": "Fahrtbehinderung\nwegen Fahrleitungsgebr.",
+    "title": "2: Fahrleitungsgebr. Züge halten bei Linie 31",
+    "description": "Fahrleitungsgebr.\nZüge halten bei Linie 31",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "e01f996bdbddbf0d08b9002bf50aa203a12f3a2a5d9c3f5a042f4063f5b9b188",
-    "pubDate": "2026-11-09T12:01:22+01:00",
-    "starts_at": "2026-11-09T12:01:22+01:00",
-    "ends_at": "2026-11-09T12:59:00+01:00",
-    "_identity": "wl|störung|L=2|D=2026-11-09|TK=fahrtbehinderung wegen fahrleitungsgebr"
+    "guid": "f3040bfecbc5b220745e7e0204be36e6788b0127230f770d0c3b848629801e29",
+    "pubDate": "2026-11-09T12:02:52+01:00",
+    "starts_at": "2026-11-09T12:02:52+01:00",
+    "ends_at": "2026-11-09T13:35:00+01:00",
+    "_identity": "wl|störung|L=2|D=2026-11-09|TK=fahrleitungsgebr züge halten bei linie 31"
   },
   {
     "source": "Wiener Linien",

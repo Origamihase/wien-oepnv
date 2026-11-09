@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-09T11:30:59.383181+00:00",
- "built": "2026-11-09T12:30:45+01:00",
+ "updated": "2026-11-09T12:01:20.245622+00:00",
+ "built": "2026-11-09T13:01:01+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-09T12:30:45+01:00",
+  "built": "2026-11-09T13:01:01+01:00",
   "items": [
+   {
+    "title": "2: Fahrleitungsgebr.",
+    "time_line": "Seit 12:02"
+   },
    {
     "title": "12: Fahrleitungsgebr.",
     "time_line": "Seit 12:10"
@@ -17,16 +21,8 @@
     "time_line": "Seit 12:04"
    },
    {
-    "title": "2: Fahrleitungsgebr",
-    "time_line": "Seit 12:01"
-   },
-   {
-    "title": "2/12/31: Beschädigte Oberleitung durch einen LKW",
+    "title": "2/31: Beschädigte Oberleitung durch einen LKW",
     "time_line": "Seit 11:57"
-   },
-   {
-    "title": "11: Polizeieinsatz",
-    "time_line": "Seit 11:23"
    },
    {
     "title": "U6: Schadhaftes Fahrzeug",
@@ -47,51 +43,15 @@
    {
     "title": "5B: Bauarbeiten",
     "time_line": "Bis 10.12."
+   },
+   {
+    "title": "31: Wexstraße",
+    "time_line": "Seit heute"
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-02T11:31:01.915390+00:00",
-   "raw": {
-    "wl-stoerungen": 54,
-    "wl-hinweise": 74,
-    "oebb": 165,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 16
-   },
-   "discarded": {
-    "wl": 13,
-    "oebb": 144,
-    "baustellen": 64
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 6,
-    "wl": 85
-   }
-  },
-  {
-   "t": "2026-11-02T12:01:14.929327+00:00",
-   "raw": {
-    "wl-stoerungen": 60,
-    "wl-hinweise": 74,
-    "oebb": 165,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 16
-   },
-   "discarded": {
-    "wl": 13,
-    "oebb": 144,
-    "baustellen": 64
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 6,
-    "wl": 89
-   }
-  },
   {
    "t": "2026-11-02T12:31:11.705943+00:00",
    "raw": {
@@ -6791,17 +6751,37 @@
     "oebb": 8,
     "wl": 86
    }
+  },
+  {
+   "t": "2026-11-09T12:01:20.245622+00:00",
+   "raw": {
+    "wl-stoerungen": 63,
+    "wl-hinweise": 97,
+    "oebb": 174,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 27,
+    "oebb": 148,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 8,
+    "wl": 85
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-09T11:30:59.383181+00:00"
+   "last_ok": "2026-11-09T12:01:20.245622+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-09T11:30:59.383181+00:00"
+   "last_ok": "2026-11-09T12:01:20.245622+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-09T11:30:59.383181+00:00"
+   "last_ok": "2026-11-09T12:01:20.245622+00:00"
   }
  }
 }

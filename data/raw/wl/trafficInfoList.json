@@ -13,7 +13,7 @@
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R3886-480, R1883-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1884-101, R2343-626, R2343-125, R2345-127, R2378-627, R2373-127, R2373-125, R2558-125, R2372-125, R2380-627, R2379-627, R2373-126, R2371-125, R2370-125, R2359-125, R293-474, R318-437, R1974-466, R500-101, R1199-205, R409-111, R416-111, R2584-111, R408-111, R319-102, R315-102, R316-102, R317-102, R318-102, R322-102, R321-102, R326-102, R325-102, R324-102, R323-102, R2167-131, R2171-131, R2169-131, R2168-131, R2159-131, R322-131, R321-131, R2190-131, R2193-131, R2168-112, R325-112, R324-112, R323-112, R326-112, R2203-112, R2204-112, R2157-112, R317-112, R316-112, R318-112, R319-112, R2223-112, R3577-112, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1884-101, R3886-480, R1875-101, R1876-101, R1880-101, R1881-101, R1883-101, R1882-101, R2371-125, R2370-125, R2359-125, R2343-125, R2558-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2343-626, R2378-627, R293-474, R318-437, R1974-466, R500-101, R1199-205, R321-102, R322-102, R2169-131, R2168-131, R2171-131, R2167-131, R2159-131, R2190-131, R322-131, R321-131, R2193-131, R2168-112, R324-112, R325-112, R326-112, R323-112, R2203-112, R2204-112, R2157-112, R316-112, R319-112, R318-112, R317-112, R2223-112, R3577-112, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -223,19 +223,18 @@
     "alertCauseId": 255,
     "attributes": {
      "relatedLineTypes": {
-      "12": "ptTram",
       "2": "ptTram",
       "31": "ptTram"
      }
     },
-    "description": "Linie 2: Betrieb nur zwischen Dornbach und Rebhanngasse. Weiterfahrt bis Bruno-Marek-Allee. Linie 12: Umleitung in beiden Richtungen zwischen Bruno-Marek-Allee und Wallensteinplatz über die Strecke der Linien O und 5. Linie 31: Kein Betrieb zwischen Floridsdorf S U und Wexstraße. Ersatz: Linien U4, U6,. Voraussichtliche Dauer: 14:00 Uhr. Grund: Fahrleitungsgebrechen durch LKW im Haltestellenbereich Friedrich-Engels-Platz.",
-    "descriptionHTML": "<p>Linie 2:<br>Betrieb nur zwischen Dornbach und Rebhanngasse.<br>Weiterfahrt bis Bruno-Marek-Allee.<br>Linie 12:<br>Umleitung in beiden Richtungen<br>zwischen Bruno-Marek-Allee und Wallensteinplatz <br>über die Strecke der Linien O und 5.<br>Linie 31:<br>Kein Betrieb zwischen Floridsdorf S U und Wexstraße.</p><p>Ersatz: Linien U4, U6,.</p><p>Voraussichtliche Dauer: 14:00 Uhr.</p><p>Grund: Fahrleitungsgebrechen durch LKW im Haltestellenbereich Friedrich-Engels-Platz.</p>",
+    "description": "Linie 2: Betrieb nur zwischen Dornbach und Höchstädtplatz. Weiterfahrt bis Wexstraße, Bhf. Brigittenau. Linie 31: Kein Betrieb zwischen Floridsdorf S U und Wexstraße. Ersatz: Linien U4, U6,. Voraussichtliche Dauer: 15:00 Uhr. Grund: Fahrleitungsgebrechen durch LKW im Haltestellenbereich Friedrich-Engels-Platz.",
+    "descriptionHTML": "<p>Linie 2: <br>Betrieb nur zwischen Dornbach und Höchstädtplatz.<br>Weiterfahrt bis Wexstraße, Bhf. Brigittenau.<br>Linie 31:<br>Kein Betrieb zwischen Floridsdorf S U und Wexstraße.</p><p>Ersatz: Linien U4, U6,.</p><p>Voraussichtliche Dauer: 15:00 Uhr.</p><p>Grund: Fahrleitungsgebrechen durch LKW im Haltestellenbereich Friedrich-Engels-Platz.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 2:<br>Betrieb nur zwischen Dornbach und Rebhanngasse.<br>Weiterfahrt bis Bruno-Marek-Allee.<br>Linie 12:<br>Umleitung in beiden Richtungen<br>zwischen Bruno-Marek-Allee und Wallensteinplatz <br>über die Strecke der Linien O und 5.<br>Linie 31:<br>Kein Betrieb zwischen Floridsdorf S U und Wexstraße.</p><p>Ersatz: Linien U4, U6,.</p><p>Voraussichtliche Dauer: 14:00 Uhr.</p><p>Grund: Fahrleitungsgebrechen durch LKW im Haltestellenbereich Friedrich-Engels-Platz.</p>",
-       "descriptionPlain": "Linie 2: Betrieb nur zwischen Dornbach und Rebhanngasse. Weiterfahrt bis Bruno-Marek-Allee. Linie 12: Umleitung in beiden Richtungen zwischen Bruno-Marek-Allee und Wallensteinplatz über die Strecke der Linien O und 5. Linie 31: Kein Betrieb zwischen Floridsdorf S U und Wexstraße. Ersatz: Linien U4, U6,. Voraussichtliche Dauer: 14:00 Uhr. Grund: Fahrleitungsgebrechen durch LKW im Haltestellenbereich Friedrich-Engels-Platz.",
-       "title": "2, 31, 12: Beschädigte Oberleitung durch einen LKW"
+       "descriptionHtml": "<p>Linie 2: <br>Betrieb nur zwischen Dornbach und Höchstädtplatz.<br>Weiterfahrt bis Wexstraße, Bhf. Brigittenau.<br>Linie 31:<br>Kein Betrieb zwischen Floridsdorf S U und Wexstraße.</p><p>Ersatz: Linien U4, U6,.</p><p>Voraussichtliche Dauer: 15:00 Uhr.</p><p>Grund: Fahrleitungsgebrechen durch LKW im Haltestellenbereich Friedrich-Engels-Platz.</p>",
+       "descriptionPlain": "Linie 2: Betrieb nur zwischen Dornbach und Höchstädtplatz. Weiterfahrt bis Wexstraße, Bhf. Brigittenau. Linie 31: Kein Betrieb zwischen Floridsdorf S U und Wexstraße. Ersatz: Linien U4, U6,. Voraussichtliche Dauer: 15:00 Uhr. Grund: Fahrleitungsgebrechen durch LKW im Haltestellenbereich Friedrich-Engels-Platz.",
+       "title": "31, 2: Beschädigte Oberleitung durch einen LKW"
       }
      }
     ],
@@ -248,18 +247,12 @@
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
      "2",
-     "12",
      "31"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 102,
       "lineName": "2",
-      "vehicleType": "ptTram"
-     },
-     {
-      "lineId": 112,
-      "lineName": "12",
       "vehicleType": "ptTram"
      },
      {
@@ -274,10 +267,10 @@
     "status": "active",
     "time": {
      "created": "2026-11-09T12:03:00.000+0100",
-     "lastUpdate": "2026-11-09T12:08:00.000+0100",
+     "lastUpdate": "2026-11-09T12:31:00.000+0100",
      "start": "2026-11-09T11:57:00.000+0100"
     },
-    "title": "2, 31, 12: Beschädigte Oberleitung durch einen LKW"
+    "title": "31, 2: Beschädigte Oberleitung durch einen LKW"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1087,29 +1080,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Polizeieinsatz\nBetrieb ab Geiereckstraße",
-    "name": "R2584-111",
-    "owner": "WL",
-    "parentName": "R2584-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2584
-    ],
-    "time": {
-     "end": "2026-11-09T12:33:00.000+0100",
-     "start": "2026-11-09T11:33:50.000+0100"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Geiereckstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -1129,52 +1099,6 @@
      "start": "2026-11-09T00:00:21.000+0100"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Fahrleitungsgebr.",
-    "name": "R315-102",
-    "owner": "WL",
-    "parentName": "R315-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     315
-    ],
-    "time": {
-     "end": "2026-11-09T12:59:00.000+0100",
-     "start": "2026-11-09T12:01:22.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Fahrleitungsgebr."
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Fahrleitungsgebr.",
-    "name": "R316-102",
-    "owner": "WL",
-    "parentName": "R316-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     316
-    ],
-    "time": {
-     "end": "2026-11-09T12:59:00.000+0100",
-     "start": "2026-11-09T12:01:22.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Fahrleitungsgebr."
    },
    {
     "alertCause": "undefined alert cause",
@@ -1202,29 +1126,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Fahrleitungsgebr.",
-    "name": "R317-102",
-    "owner": "WL",
-    "parentName": "R317-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     317
-    ],
-    "time": {
-     "end": "2026-11-09T12:59:00.000+0100",
-     "start": "2026-11-09T12:01:22.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Fahrleitungsgebr."
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Fahrleitungsgebr.\nBetrieb ab Wallensteinplatz",
     "name": "R317-112",
     "owner": "WL",
@@ -1244,29 +1145,6 @@
      "start": "2026-11-09T12:10:52.000+0100"
     },
     "title": "Fahrleitungsgebr.\nBetrieb ab Wallensteinplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Fahrleitungsgebr.",
-    "name": "R318-102",
-    "owner": "WL",
-    "parentName": "R318-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     318
-    ],
-    "time": {
-     "end": "2026-11-09T12:59:00.000+0100",
-     "start": "2026-11-09T12:01:22.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Fahrleitungsgebr."
    },
    {
     "alertCause": "undefined alert cause",
@@ -1317,29 +1195,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Fahrleitungsgebr.",
-    "name": "R319-102",
-    "owner": "WL",
-    "parentName": "R319-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     319
-    ],
-    "time": {
-     "end": "2026-11-09T12:59:00.000+0100",
-     "start": "2026-11-09T12:01:22.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Fahrleitungsgebr."
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Fahrleitungsgebr.\nBetrieb ab Wallensteinplatz",
     "name": "R319-112",
     "owner": "WL",
@@ -1363,7 +1218,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrleitungsgebr.\nBetrieb ab Am Tabor",
+    "description": "Fahrleitungsgebr.\nBetrieb ab Höchstädtplatz",
     "name": "R321-102",
     "owner": "WL",
     "parentName": "R321-102",
@@ -1378,10 +1233,10 @@
      321
     ],
     "time": {
-     "end": "2026-11-09T13:00:00.000+0100",
+     "end": "2026-11-09T13:32:00.000+0100",
      "start": "2026-11-09T12:02:52.000+0100"
     },
-    "title": "Fahrleitungsgebr.\nBetrieb ab Am Tabor"
+    "title": "Fahrleitungsgebr.\nBetrieb ab Höchstädtplatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1409,7 +1264,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrleitungsgebr.\nBetrieb ab Am Tabor",
+    "description": "Fahrleitungsgebr.\nZüge halten bei Linie 31",
     "name": "R322-102",
     "owner": "WL",
     "parentName": "R322-102",
@@ -1424,10 +1279,10 @@
      322
     ],
     "time": {
-     "end": "2026-11-09T13:00:00.000+0100",
+     "end": "2026-11-09T13:35:00.000+0100",
      "start": "2026-11-09T12:02:52.000+0100"
     },
-    "title": "Fahrleitungsgebr.\nBetrieb ab Am Tabor"
+    "title": "Fahrleitungsgebr.\nZüge halten bei Linie 31"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1455,29 +1310,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrleitungsgebr.\nBetrieb ab Am Tabor",
-    "name": "R323-102",
-    "owner": "WL",
-    "parentName": "R323-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     323
-    ],
-    "time": {
-     "end": "2026-11-09T13:00:00.000+0100",
-     "start": "2026-11-09T12:02:52.000+0100"
-    },
-    "title": "Fahrleitungsgebr.\nBetrieb ab Am Tabor"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Fahrleitungsgebr.\nBetrieb ab Bruno Marek Allee",
     "name": "R323-112",
     "owner": "WL",
@@ -1497,29 +1329,6 @@
      "start": "2026-11-09T12:10:22.000+0100"
     },
     "title": "Fahrleitungsgebr.\nBetrieb ab Bruno Marek Allee"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrleitungsgebr.\nBetrieb ab Am Tabor",
-    "name": "R324-102",
-    "owner": "WL",
-    "parentName": "R324-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     324
-    ],
-    "time": {
-     "end": "2026-11-09T13:00:00.000+0100",
-     "start": "2026-11-09T12:02:52.000+0100"
-    },
-    "title": "Fahrleitungsgebr.\nBetrieb ab Am Tabor"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1547,29 +1356,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrleitungsgebr.\nBetrieb ab Am Tabor",
-    "name": "R325-102",
-    "owner": "WL",
-    "parentName": "R325-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     325
-    ],
-    "time": {
-     "end": "2026-11-09T13:00:00.000+0100",
-     "start": "2026-11-09T12:02:52.000+0100"
-    },
-    "title": "Fahrleitungsgebr.\nBetrieb ab Am Tabor"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Fahrleitungsgebr.\nBetrieb ab Bruno Marek Allee",
     "name": "R325-112",
     "owner": "WL",
@@ -1589,29 +1375,6 @@
      "start": "2026-11-09T12:10:22.000+0100"
     },
     "title": "Fahrleitungsgebr.\nBetrieb ab Bruno Marek Allee"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrleitungsgebr.\nBetrieb ab Am Tabor",
-    "name": "R326-102",
-    "owner": "WL",
-    "parentName": "R326-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     326
-    ],
-    "time": {
-     "end": "2026-11-09T13:00:00.000+0100",
-     "start": "2026-11-09T12:02:52.000+0100"
-    },
-    "title": "Fahrleitungsgebr.\nBetrieb ab Am Tabor"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1704,75 +1467,6 @@
      "start": "2026-11-05T00:00:27.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nBetrieb ab Enkplatz U, Grillgasse",
-    "name": "R408-111",
-    "owner": "WL",
-    "parentName": "R408-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     408
-    ],
-    "time": {
-     "end": "2026-11-09T12:33:00.000+0100",
-     "start": "2026-11-09T11:35:17.000+0100"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Enkplatz U, Grillgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nBetrieb ab Enkplatz U, Grillgasse",
-    "name": "R409-111",
-    "owner": "WL",
-    "parentName": "R409-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     409
-    ],
-    "time": {
-     "end": "2026-11-09T12:33:00.000+0100",
-     "start": "2026-11-09T11:28:17.000+0100"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Enkplatz U, Grillgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nBetrieb ab Geiereckstraße",
-    "name": "R416-111",
-    "owner": "WL",
-    "parentName": "R416-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     416
-    ],
-    "time": {
-     "end": "2026-11-09T12:33:00.000+0100",
-     "start": "2026-11-09T11:33:47.000+0100"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Geiereckstraße"
    },
    {
     "alertCause": "undefined alert cause",
