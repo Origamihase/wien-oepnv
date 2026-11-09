@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Mon, 09 Nov 2026 09:30:58 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 10:00:54 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[9A: Fremder Verkehrsunfall]]></title>
@@ -22,32 +22,6 @@
       <ext:starts_at>Mon, 09 Nov 2026 08:55:00 +0100</ext:starts_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 08:55]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 08:55]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[62A: Verkehrsüberlastung]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">0e50534c2dc186411bb463df57ba54fcd37a1c8fe596bee601eb49b894bd1a9a</guid>
-      <pubDate>Mon, 09 Nov 2026 08:30:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 09 Nov 2026 08:30:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 09 Nov 2026 08:30:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 08:30]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 08:30]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11/O: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">e8e33c76113077bad68986b313e50b4fb03e2a76a6eda7c74d06c76b1a1f1f46</guid>
-      <pubDate>Mon, 09 Nov 2026 08:23:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 09 Nov 2026 08:23:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 09 Nov 2026 08:23:00 +0100</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 08:23]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 08:23]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Rettungseinsatz]]></title>
@@ -142,6 +116,34 @@
       <ext:ends_at>Wed, 11 Nov 2026 17:00:00 +0100</ext:ends_at>
       <description>Haltestellenauflassung der Linie 71A in Richtung Zentralfriedhof 3. Tor. Haltestelle: Schwechat, Hauptplatz. Grund: Straßenbau. [Bis Mi 11.11.]</description>
       <content:encoded><![CDATA[Haltestellenauflassung der Linie 71A in Richtung Zentralfriedhof 3. Tor. Haltestelle: Schwechat, Hauptplatz. Grund: Straßenbau.<br/>[Bis Mi 11.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5B: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">7f3e5db8abfea3bc72c1f2338313c17a67bc98bbf89a5bdb2e547704618ff7f5</guid>
+      <pubDate>Fri, 06 Nov 2026 14:11:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 06 Nov 2026 14:11:00 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 09 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 10 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>Wegen Straßenbauarbeiten in der Wexstraße werden die Busse umgeleitet. Linie 5B: Umleitung ab Klosterneuburger Straße / Wexstraße über Klosterneuburger Straße … [Bis 10.12.]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Wexstraße werden die Busse umgeleitet. Linie 5B: Umleitung ab Klosterneuburger Straße / Wexstraße über Klosterneuburger Straße …<br/>[Bis 10.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[31: Wexstraße]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">349cce99b21e13e0a504471640a3afdac3838a3618bf31ecfa28d333e3f00a83</guid>
+      <pubDate>Thu, 05 Nov 2026 13:45:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 05 Nov 2026 13:45:00 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 09 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <georss:point>48.235958 16.365885</georss:point>
+      <description>Wexstraße 12 → Klosterneuburger Straße 88-90. Haltestellenverlegung der Linie 31 in Richtung Stammersdorf. Grund: Haltestellenumbau. [Seit heute]</description>
+      <content:encoded><![CDATA[Wexstraße 12 → Klosterneuburger Straße 88-90. Haltestellenverlegung der Linie 31 in Richtung Stammersdorf. Grund: Haltestellenumbau.<br/>[Seit heute]]]></content:encoded>
     </item>
   </channel>
 </rss>

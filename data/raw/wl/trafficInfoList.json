@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261109-0012, I20261109-0014, I20260925-0011, I20260909-0007, I20261109-0010, I20261109-0013-F01, I20261020-0029, I20261109-0008, I20261109-0009, I20261109-0011-F01, I20261109-0011-F02"
+    "trafficInfoNameList": "I20261109-0014, I20260925-0011, I20260909-0007, I20261109-0010, I20261109-0013-F01, I20261020-0029, I20261109-0008, I20261109-0009"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R3886-480, R1884-101, R1883-101, R1882-101, R1875-101, R1876-101, R1881-101, R1880-101, R2558-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R318-437, R293-474, R1974-466, R500-101, R1199-205, R3207-409, R1837-409, R3213-409, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R3886-480, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1883-101, R1882-101, R2558-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R293-474, R318-437, R1974-466, R500-101, R1199-205, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -314,147 +314,6 @@
     "alertCauseId": 77,
     "attributes": {
      "relatedLineTypes": {
-      "11": "ptTram"
-     }
-    },
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "11: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261109-0011-F01",
-    "owner": "WL",
-    "parentName": "I20261109-0011",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 111,
-      "lineName": "11",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     1931
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-09T08:29:00.000+0100",
-     "lastUpdate": "2026-11-09T08:29:00.000+0100",
-     "resume": "2026-11-09T08:29:00.000+0100",
-     "start": "2026-11-09T08:23:00.000+0100"
-    },
-    "title": "11: Verkehrsunfall"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "O": "ptTram"
-     }
-    },
-    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "O: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261109-0011-F02",
-    "owner": "WL",
-    "parentName": "I20261109-0011",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 170,
-      "lineName": "O",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     1931
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-09T08:29:00.000+0100",
-     "lastUpdate": "2026-11-09T08:29:00.000+0100",
-     "resume": "2026-11-09T08:29:00.000+0100",
-     "start": "2026-11-09T08:23:00.000+0100"
-    },
-    "title": "O: Verkehrsunfall"
-   },
-   {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
-      "62A": "ptBusCity"
-     }
-    },
-    "description": "Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie 62A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 62A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "62A: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261109-0012",
-    "owner": "WL",
-    "parentName": "I20261109-0012",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "62A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 462,
-      "lineName": "62A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-09T08:31:00.000+0100",
-     "lastUpdate": "2026-11-09T08:31:00.000+0100",
-     "resume": "2026-11-09T08:30:00.000+0100",
-     "start": "2026-11-09T08:30:00.000+0100"
-    },
-    "title": "62A: Verkehrsüberlastung"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
       "9A": "ptBusCity"
      }
     },
@@ -563,29 +422,6 @@
      "start": "2026-11-09T08:04:58.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R1837-409",
-    "owner": "WL",
-    "parentName": "R1837-409",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9A"
-    ],
-    "relatedStops": [
-     1837
-    ],
-    "time": {
-     "end": "2026-11-09T09:59:00.000+0100",
-     "start": "2026-11-09T09:00:04.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1138,52 +974,6 @@
      "start": "2026-11-09T00:00:21.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R3207-409",
-    "owner": "WL",
-    "parentName": "R3207-409",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9A"
-    ],
-    "relatedStops": [
-     3207
-    ],
-    "time": {
-     "end": "2026-11-09T09:59:00.000+0100",
-     "start": "2026-11-09T09:00:04.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R3213-409",
-    "owner": "WL",
-    "parentName": "R3213-409",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9A"
-    ],
-    "relatedStops": [
-     3213
-    ],
-    "time": {
-     "end": "2026-11-09T09:59:00.000+0100",
-     "start": "2026-11-09T09:00:04.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
