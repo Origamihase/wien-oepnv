@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_487, ftazW_444, ftazW_1031284, ftazW_2, ftazW_1353815, ftazW_582, ftazW_1017115, ftazW_1351714, ftazW_3, ftazW_1017116, ftazW_211, ftazW_1018631, ftazW_488, ftazW_581, ftazW_1351716, ftazW_146, ftazW_1016567, ftazW_486, ftazW_734, ftazW_769, ftazW_147, ftazW_489, ftazW_770, ftazW_1351715, ftazW_490, ftazW_1018065, ftazW_239, ftazW_510"
+    "trafficInfoNameList": "ftazW_487, ftazW_444, ftazW_1031284, ftazW_2, ftazW_1353815, ftazW_582, ftazW_1017115, ftazW_1351714, ftazW_445, ftazW_3, ftazW_1017116, ftazW_211, ftazW_1018631, ftazW_488, ftazW_581, ftazW_1351716, ftazW_146, ftazW_1016567, ftazW_486, ftazW_734, ftazW_769, ftazW_147, ftazW_489, ftazW_770, ftazW_1351715, ftazW_490, ftazW_1018065, ftazW_239, ftazW_510"
    }
   ],
   "poiCategoryGroups": [
@@ -3048,8 +3048,8 @@
      "rbls": [],
      "reason": "",
      "relatedLines": [
-      "U2",
-      "U1"
+      "U1",
+      "U2"
      ],
      "station": "Praterstern",
      "status": "geplante Wartung",
@@ -3063,8 +3063,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U2",
-     "U1"
+     "U1",
+     "U2"
     ],
     "time": {
      "end": "2026-11-10T05:15:00.000+0100",
@@ -3420,8 +3420,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U4",
-      "U6"
+      "U6",
+      "U4"
      ],
      "station": "Längenfeldgasse",
      "status": "geplante Wartung",
@@ -3435,8 +3435,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U4",
-     "U6"
+     "U6",
+     "U4"
     ],
     "relatedStops": [
      4437,
@@ -3528,6 +3528,38 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "10.11.2026 05:15",
+     "ausVon": "10.11.2026 01:15",
+     "location": "Passage - Zwischengeschoss Zugang Meiselmarkt - Ausgang Hütteldorfer Straße",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Johnstraße",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Passage - Zwischengeschoss Zugang Meiselmarkt - Ausgang Hütteldorfer Straße",
+    "elevatorId": "JO 04",
+    "name": "ftazW_445",
+    "parentName": "ftazW_445",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "time": {
+     "end": "2026-11-10T05:15:00.000+0100",
+     "start": "2026-11-10T01:15:00.000+0100"
+    },
+    "title": "Johnstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "11.11.2026 00:45",
      "ausVon": "10.11.2026 20:45",
      "location": "U4 Mittelbahnsteig - Ausgang Josef-Holaubek-Platz",
@@ -3577,8 +3609,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U4",
-      "U6"
+      "U6",
+      "U4"
      ],
      "station": "Spittelau",
      "status": "geplante Wartung",
@@ -3592,8 +3624,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U4",
-     "U6"
+     "U6",
+     "U4"
     ],
     "relatedStops": [
      4627
@@ -3618,8 +3650,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U4",
-      "U6"
+      "U6",
+      "U4"
      ],
      "station": "Spittelau",
      "status": "geplante Wartung",
@@ -3633,8 +3665,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U4",
-     "U6"
+     "U6",
+     "U4"
     ],
     "relatedStops": [
      4439,
@@ -3659,8 +3691,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U4",
-      "U6"
+      "U6",
+      "U4"
      ],
      "station": "Spittelau",
      "status": "geplante Wartung",
@@ -3674,8 +3706,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U4",
-     "U6"
+     "U6",
+     "U4"
     ],
     "relatedStops": [
      4627
@@ -3698,8 +3730,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U4",
-      "U6"
+      "U6",
+      "U4"
      ],
      "station": "Spittelau",
      "status": "geplante Wartung",
@@ -3713,8 +3745,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U4",
-     "U6"
+     "U6",
+     "U4"
     ],
     "relatedStops": [
      4651
@@ -3774,8 +3806,8 @@
      "rbls": [],
      "reason": "",
      "relatedLines": [
-      "U2",
       "U1",
+      "U2",
       "U4"
      ],
      "station": "Karlsplatz",
@@ -3790,8 +3822,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U2",
      "U1",
+     "U2",
      "U4"
     ],
     "time": {
