@@ -1,12 +1,27 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-09T22:31:02.603033+00:00",
- "built": "2026-11-09T23:30:51+01:00",
- "findings": [],
- "rules": {},
+ "updated": "2026-11-09T23:01:31.085708+00:00",
+ "built": "2026-11-10T00:01:11+01:00",
+ "findings": [
+  {
+   "rule": "alte-meldung-als-neu",
+   "title": "Alte Meldung als neue Störung",
+   "rank": "Rang 1",
+   "subject": "R95: Wien Hauptbahnhof ↔ Felixdorf",
+   "text": "Meldung vom 19.12. 10:07, im Feed erstmals 24.05. 05:30, Zeitzeile [Heute]"
+  }
+ ],
+ "rules": {
+  "alte-meldung-als-neu": {
+   "since": "2026-11-09T23:01:31.085708+00:00",
+   "last": "2026-11-09T23:01:31.085708+00:00",
+   "held_runs": 0,
+   "issue": 2190
+  }
+ },
  "previous_feed": {
-  "built": "2026-11-09T23:30:51+01:00",
+  "built": "2026-11-10T00:01:11+01:00",
   "items": [
    {
     "title": "Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx",
@@ -17,8 +32,16 @@
     "time_line": "Bis Mi 11.11."
    },
    {
+    "title": "R95: Wien Hauptbahnhof ↔ Felixdorf",
+    "time_line": "Heute"
+   },
+   {
+    "title": "79A/79B: Alberner Hafenzufahrtsstraße",
+    "time_line": "Bis Do 12.11."
+   },
+   {
     "title": "5A/N31: Haltestellenverlegung",
-    "time_line": "Seit heute"
+    "time_line": "Seit 09.11."
    },
    {
     "title": "71A: Haltestellenverlegung",
@@ -30,68 +53,20 @@
    },
    {
     "title": "31: Wexstraße",
-    "time_line": "Seit heute"
+    "time_line": "Seit 09.11."
    },
    {
     "title": "64A/N64R: Zouvalgasse",
-    "time_line": "Seit heute"
+    "time_line": "Seit 09.11."
    },
    {
     "title": "52A: Bauarbeiten",
     "time_line": "Seit 05.11."
-   },
-   {
-    "title": "68A: Laaer Berg, Kurpark Nordeingang",
-    "time_line": "Seit 05.11."
-   },
-   {
-    "title": "79A/79B: Alberner Hafenzufahrtsstraße",
-    "time_line": "Ab Di 10.11. bis Do 12.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-02T22:31:04.816630+00:00",
-   "raw": {
-    "wl-stoerungen": 76,
-    "wl-hinweise": 69,
-    "oebb": 174,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 13,
-    "oebb": 153,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 6,
-    "wl": 84
-   }
-  },
-  {
-   "t": "2026-11-02T23:01:10.978499+00:00",
-   "raw": {
-    "wl-stoerungen": 53,
-    "wl-hinweise": 69,
-    "oebb": 172,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 13,
-    "oebb": 151,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 6,
-    "wl": 83
-   }
-  },
   {
    "t": "2026-11-02T23:31:23.694610+00:00",
    "raw": {
@@ -6791,17 +6766,37 @@
     "oebb": 7,
     "wl": 76
    }
+  },
+  {
+   "t": "2026-11-09T23:01:31.085708+00:00",
+   "raw": {
+    "wl-stoerungen": 34,
+    "wl-hinweise": 90,
+    "oebb": 181,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 26,
+    "oebb": 156,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 75
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-09T22:31:02.603033+00:00"
+   "last_ok": "2026-11-09T23:01:31.085708+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-09T22:31:02.603033+00:00"
+   "last_ok": "2026-11-09T23:01:31.085708+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-09T22:31:02.603033+00:00"
+   "last_ok": "2026-11-09T23:01:31.085708+00:00"
   }
  }
 }
