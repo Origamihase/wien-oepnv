@@ -930,6 +930,54 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Linie U3: Unregelmäßige Intervalle in Richtung Ottakring. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-11-09T05:31:00+01:00",
+    "starts_at": "2026-11-09T05:31:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U3|D=2026-11-09|TK=u3 verspätungen",
+    "_wl_ids": [
+      "I20261109-0004"
+    ],
+    "_incident_start": "2026-11-09T05:31:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Verspätungen",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
+    "pubDate": "2026-11-09T05:52:00+01:00",
+    "starts_at": "2026-11-09T05:52:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U4|D=2026-11-09|TK=u4 verspätungen",
+    "_wl_ids": [
+      "I20261109-0006"
+    ],
+    "_incident_start": "2026-11-09T05:52:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Verspätungen",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
+    "pubDate": "2026-11-09T05:37:00+01:00",
+    "starts_at": "2026-11-09T05:37:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U6|D=2026-11-09|TK=u6 verspätungen",
+    "_wl_ids": [
+      "I20261109-0005"
+    ],
+    "_incident_start": "2026-11-09T05:37:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
