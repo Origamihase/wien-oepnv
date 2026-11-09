@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261109-0037-F01, I20261109-0041-F01, I20261109-0041-F02, I20260925-0011, I20260909-0007, I20261109-0038, I20261109-0032, I20261020-0029"
+    "trafficInfoNameList": "I20261109-0041-F01, I20261109-0041-F02, I20261109-0042, I20260925-0011, I20260909-0007, I20261109-0038, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R3886-480, R1883-101, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R2373-127, R2378-627, R2558-125, R2373-126, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2345-127, R2380-627, R2379-627, R293-474, R318-437, R1974-466, R500-101, R1199-205, R1634-162, R1744-162, R1739-162, R1740-162, R1741-162, R1743-162, R1742-162, R470-162, R1636-160, R1634-160, R1639-160, R1638-160, R1637-160, R1616-162, R1728-162, R1735-162, R1736-162, R1737-162, R1738-162, R1621-160, R1622-160, R1623-160, R1624-160, R1615-160, R1616-160, R1617-160, R1618-160, R1619-160, R1620-160, R1606-160, R1625-160, R1626-160, R1632-160, R1629-160, R1630-160, R1633-160, R1628-160, R1627-160, R1607-160, R1631-160, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1884-101, R1875-101, R1876-101, R3886-480, R1880-101, R1881-101, R1882-101, R1883-101, R2371-125, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R2558-125, R2345-127, R318-437, R293-474, R1974-466, R500-101, R1199-205, R1634-162, R1741-162, R1739-162, R1740-162, R1742-162, R1743-162, R1744-162, R470-162, R1637-160, R1636-160, R1634-160, R1639-160, R1638-160, R1616-162, R1728-162, R1735-162, R1736-162, R1737-162, R1738-162, R1621-160, R1622-160, R1623-160, R1624-160, R1615-160, R1616-160, R1617-160, R1618-160, R1619-160, R1620-160, R1606-160, R1625-160, R1627-160, R1628-160, R1631-160, R1633-160, R1632-160, R1630-160, R1629-160, R1626-160, R1607-160, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -175,102 +175,6 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U1: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261109-0032",
-    "owner": "WL",
-    "parentName": "I20261109-0032",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 301,
-      "lineName": "U1",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4123
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-09T16:33:00.000+0100",
-     "lastUpdate": "2026-11-09T16:33:00.000+0100",
-     "resume": "2026-11-09T16:32:00.000+0100",
-     "start": "2026-11-09T16:32:00.000+0100"
-    },
-    "title": "U1: Verspätungen"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U2": "ptMetro"
-     }
-    },
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U2: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261109-0037-F01",
-    "owner": "WL",
-    "parentName": "I20261109-0037",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 302,
-      "lineName": "U2",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4261
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-09T18:09:00.000+0100",
-     "lastUpdate": "2026-11-09T18:09:00.000+0100",
-     "resume": "2026-11-09T18:09:00.000+0100",
-     "start": "2026-11-09T18:04:00.000+0100"
-    },
-    "title": "U2: Schadhaftes Fahrzeug"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
       "U3": "ptMetro"
      }
     },
@@ -406,6 +310,60 @@
      "start": "2026-11-09T19:01:00.000+0100"
     },
     "title": "62: Rettungseinsatz"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "27": "ptTram",
+      "31": "ptTram"
+     }
+    },
+    "description": "Linie 27: Fahrtbehinderung in Richtung Strebersdorf, Meriangasse. Linie 31: Fahrtbehinderung in Richtung Stammersdorf. Voraussichtliche Dauer: 20:25 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Floridsdorf S U.",
+    "descriptionHTML": "<p>Linie 27:<br>Fahrtbehinderung in Richtung Strebersdorf, Meriangasse.<br>Linie 31:<br>Fahrtbehinderung in Richtung Stammersdorf.</p><p>Voraussichtliche Dauer: 20:25 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Floridsdorf S U.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 27:<br>Fahrtbehinderung in Richtung Strebersdorf, Meriangasse.<br>Linie 31:<br>Fahrtbehinderung in Richtung Stammersdorf.</p><p>Voraussichtliche Dauer: 20:25 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Floridsdorf S U.</p>",
+       "descriptionPlain": "Linie 27: Fahrtbehinderung in Richtung Strebersdorf, Meriangasse. Linie 31: Fahrtbehinderung in Richtung Stammersdorf. Voraussichtliche Dauer: 20:25 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Floridsdorf S U.",
+       "title": "31, 27: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261109-0042",
+    "owner": "WL",
+    "parentName": "I20261109-0042",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "27",
+     "31"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 127,
+      "lineName": "27",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 131,
+      "lineName": "31",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     2172
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-09T19:59:00.000+0100",
+     "lastUpdate": "2026-11-09T19:59:00.000+0100",
+     "start": "2026-11-09T19:55:00.000+0100"
+    },
+    "title": "31, 27: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
