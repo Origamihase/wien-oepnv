@@ -95,12 +95,13 @@ def check_count(items: Sequence[Item], max_items: int) -> list[Finding]:
 
 
 def check_old_as_new(items: Sequence[Item], built: datetime) -> list[Finding]:
-    """A message older than a day that the feed counts as new.
+    """A message older than a day that shows as today's in an item the build has only just met.
 
-    New means first seen within ``NEW_IN_FEED`` before the build, the window
-    in which the builder lets an item lead as a current disruption. Without
-    that limit the rule also met every long-known item on the day its time
-    line turns to "[Heute]": planned works on their last day.
+    Just met means first seen within ``NEW_IN_FEED`` before the build. Without
+    that limit the rule also met a long-known item with such a message on the
+    day its time line turns to "[Heute]": works on the last day of their
+    reported period. The rule holds no state: a finding ends when the item
+    changes or leaves, and at the latest when the window is over.
     """
     findings: list[Finding] = []
     for item in items:

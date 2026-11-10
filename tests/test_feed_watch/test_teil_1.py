@@ -60,7 +60,7 @@ def test_a_good_feed_breaks_no_rule() -> None:
 
 
 def test_line_25_old_ticker_counted_as_new_is_found() -> None:
-    """2026-10-09 12:01-20:30: the 07.10. stop ticker under the GUID and first_seen of a 09:36 delay."""
+    """2026-10-09 12:01-22:02: the 07.10. stop ticker under the GUID and first_seen of a 09:36 delay."""
     ticker = _item(
         "25: Ersatzbus 26E hält Karl-Waldbrunner-Platz vor Schloßhofer Straße",
         "Züge halten Donaufelder Straße 175-177. [Heute]",

@@ -336,7 +336,7 @@ ohne Ursache, die älter ist als jede dieser Störungen, zählt nie mit
 (`_with_unowned`, seit 2026-10-09): Die Haltestellen-Meldungen der
 Gleisbauarbeiten der Linie 25 (seit 23.09.) übernahmen sonst am 09.10.
 nach dem Ende von „25: Verspätungen“ deren GUID und Beginn und standen von
-12:01 bis 20:30 als neue Störung im Feed, bis auf Platz 2. Und ein Item, das
+12:01 bis 22:02 als neue Störung im Feed, bis auf Platz 2. Und ein Item, das
 unter seiner eigenen GUID früher im Feed stand als das Item, mit dem es eine
 Meldung teilt, übernimmt dessen GUID nie: Es war zuerst da, das andere hat
 es aufgenommen. Der Zustand aus der Zeit vor der Regel hielt die

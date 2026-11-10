@@ -7,7 +7,7 @@ of that day):
 * WL: display texts of planned works without a cause joined a newer
   incident of their line and led it. "25: Verspätungen" (Grund: Schadhaftes
   Fahrzeug, 09:36) read the works' stops first, and when the delay ended
-  the stops kept its GUID and stood as a new disruption until 20:30.
+  the stops kept its GUID and stood as a new disruption until 22:02.
 * ÖBB: the second sentence, what is still going on, was cut in 59 of 106
   German texts, because the first one repeated the stations of the title.
 * EN: "Ersatzbus 26E hält …" read "holds"; ÖBB's templated sentence was
