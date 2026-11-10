@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_445, ftazW_3, ftazW_1017116, ftazW_211, ftazW_1018631, ftazW_488, ftazW_581, ftazW_1351716, ftazW_146, ftazW_1016567, ftazW_486, ftazW_734, ftazW_769, ftazW_147, ftazW_29, ftazW_489, ftazW_770, ftazW_736, ftazW_1351715, ftazW_490, ftazW_1018065, ftazW_239, ftazW_510, ftazW_240, ftazW_491, ftazW_1018066, ftazW_82, ftazW_1351709, ftazW_511"
+    "trafficInfoNameList": "ftazW_445, ftazW_3, ftazW_1017116, ftazW_1018631, ftazW_488, ftazW_581, ftazW_1351716, ftazW_146, ftazW_1016567, ftazW_486, ftazW_734, ftazW_769, ftazW_147, ftazW_489, ftazW_770, ftazW_736, ftazW_1351715, ftazW_490, ftazW_1018065, ftazW_239, ftazW_510, ftazW_240, ftazW_491, ftazW_1018066, ftazW_82, ftazW_1351709, ftazW_511, ftazW_729, ftazW_83, ftazW_574, ftazW_508, ftazW_721"
    }
   ],
   "poiCategoryGroups": [
@@ -3229,38 +3229,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "10.11.2026 05:15",
-     "ausVon": "10.11.2026 01:15",
-     "location": "Zwischengeschoss - Ausgang Wilhelmstraße",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Bahnhof Meidling",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Zwischengeschoss - Ausgang Wilhelmstraße",
-    "elevatorId": "PH 01",
-    "name": "ftazW_211",
-    "parentName": "ftazW_211",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "time": {
-     "end": "2026-11-10T05:15:00.000+0100",
-     "start": "2026-11-10T01:15:00.000+0100"
-    },
-    "title": "Bahnhof Meidling"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "12.11.2026 00:45",
      "ausVon": "11.11.2026 20:45",
      "location": "U4 Bahnsteig Richtung Heiligenstadt, U6 Bahnsteig Richtung Floridsdorf - Ausgang Storchensteg/Gierstergasse",
@@ -3338,38 +3306,6 @@
      "start": "2026-11-12T01:15:00.000+0100"
     },
     "title": "Längenfeldgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "11.11.2026 05:15",
-     "ausVon": "11.11.2026 01:15",
-     "location": "Zwischengeschoss - Ausgang Minoritenplatz",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Herrengasse",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Zwischengeschoss - Ausgang Minoritenplatz",
-    "elevatorId": "HZ 01",
-    "name": "ftazW_29",
-    "parentName": "ftazW_29",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "time": {
-     "end": "2026-11-11T05:15:00.000+0100",
-     "start": "2026-11-11T01:15:00.000+0100"
-    },
-    "title": "Herrengasse"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3640,6 +3576,45 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "13.11.2026 00:45",
+     "ausVon": "12.11.2026 20:45",
+     "location": "U6 Mittelbahnsteig - Ausgang Jägerstraße",
+     "rbls": [
+      4641,
+      4650
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Jägerstraße",
+     "status": "geplante Wartung",
+     "towards": "U6 beide Richtungen"
+    },
+    "description": "U6 Mittelbahnsteig - Ausgang Jägerstraße",
+    "elevatorId": "JG 01",
+    "name": "ftazW_508",
+    "parentName": "ftazW_508",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4641,
+     4650
+    ],
+    "time": {
+     "end": "2026-11-13T00:45:00.000+0100",
+     "start": "2026-11-12T20:45:00.000+0100"
+    },
+    "title": "Jägerstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "12.11.2026 00:45",
      "ausVon": "11.11.2026 20:45",
      "location": "U6 Mittelbahnsteig - Ausgang Pasettistraße",
@@ -3718,6 +3693,43 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "13.11.2026 00:45",
+     "ausVon": "12.11.2026 20:45",
+     "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Schloß Schönbrunn",
+     "rbls": [
+      4411
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Schönbrunn",
+     "status": "geplante Wartung",
+     "towards": "U4 Heiligenstadt"
+    },
+    "description": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Schloß Schönbrunn",
+    "elevatorId": "SB 01",
+    "name": "ftazW_574",
+    "parentName": "ftazW_574",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4411
+    ],
+    "time": {
+     "end": "2026-11-13T00:45:00.000+0100",
+     "start": "2026-11-12T20:45:00.000+0100"
+    },
+    "title": "Schönbrunn"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "10.11.2026 05:15",
      "ausVon": "10.11.2026 01:15",
      "location": "U4 Mittelbahnsteig - Karlsplatzpassage",
@@ -3749,6 +3761,80 @@
      "start": "2026-11-10T01:15:00.000+0100"
     },
     "title": "Karlsplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "13.11.2026 00:45",
+     "ausVon": "12.11.2026 20:45",
+     "location": "U4 Mittelbahnsteig Gleis 1 und Gleis 5 - Ausgang 12. Februar Platz",
+     "rbls": [
+      4402
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Heiligenstadt",
+     "status": "geplante Wartung",
+     "towards": "U4 Hütteldorf"
+    },
+    "description": "U4 Mittelbahnsteig Gleis 1 und Gleis 5 - Ausgang 12. Februar Platz",
+    "elevatorId": "HS 01",
+    "name": "ftazW_721",
+    "parentName": "ftazW_721",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4402
+    ],
+    "time": {
+     "end": "2026-11-13T00:45:00.000+0100",
+     "start": "2026-11-12T20:45:00.000+0100"
+    },
+    "title": "Heiligenstadt"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "13.11.2026 00:45",
+     "ausVon": "12.11.2026 20:45",
+     "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Stadtpark",
+     "rbls": [
+      4423
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Stadtpark",
+     "status": "geplante Wartung",
+     "towards": "U4 Heiligenstadt"
+    },
+    "description": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Stadtpark",
+    "elevatorId": "ST 01",
+    "name": "ftazW_729",
+    "parentName": "ftazW_729",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4423
+    ],
+    "time": {
+     "end": "2026-11-13T00:45:00.000+0100",
+     "start": "2026-11-12T20:45:00.000+0100"
+    },
+    "title": "Stadtpark"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3938,6 +4024,47 @@
     "time": {
      "end": "2026-11-12T05:15:00.000+0100",
      "start": "2026-11-12T01:15:00.000+0100"
+    },
+    "title": "Volkstheater"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "13.11.2026 00:45",
+     "ausVon": "12.11.2026 20:45",
+     "location": "U3 Mittelbahnsteig - Zwischengeschoss Aufgang Ring",
+     "rbls": [
+      4909,
+      4908
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2",
+      "U3"
+     ],
+     "station": "Volkstheater",
+     "status": "geplante Wartung",
+     "towards": "U3 beide Richtungen"
+    },
+    "description": "U3 Mittelbahnsteig - Zwischengeschoss Aufgang Ring",
+    "elevatorId": "VT 04",
+    "name": "ftazW_83",
+    "parentName": "ftazW_83",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2",
+     "U3"
+    ],
+    "relatedStops": [
+     4909,
+     4908
+    ],
+    "time": {
+     "end": "2026-11-13T00:45:00.000+0100",
+     "start": "2026-11-12T20:45:00.000+0100"
     },
     "title": "Volkstheater"
    }
