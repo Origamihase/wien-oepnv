@@ -380,7 +380,16 @@ Nicht jeder Text gehört in ein NMT-Modell:
   Verlegungen deutsch blieb (Epoche 26, `_RECORD_VALUE_RULES`: „Gleiskörper“
   → „track area“, „Haltestelle Straßenbahn“ → „tram stop“, „Parkanlage“,
   „Einfahrt“, „Stiege“, „Richtung Ampel“, „unter“, „in Fahrtrichtung
-  Kagran“ → „in the direction of Kagran“). Ein Satz endet dabei nicht hinter einer
+  Kagran“ → „in the direction of Kagran“). Seit Epoche 33 auch der Eingang
+  eines Parks oder Gebäudes, gebunden an den Genitiv oder „zum“/„zur“
+  dahinter (`_ENTRANCE_OF_RE`): „Filmteichstraße vor Nordeingang des
+  Kurparks“ (68A, 05.11.2026) las „Filmteichstraße before Nordeingang des
+  Kurparks“ und liest nun „Filmteichstraße before the north entrance of
+  Kurpark“; der Name dahinter steht in der Grundform wie jeder Name im
+  englischen Feed. Eine Haltestelle mit dem Wort im Namen („Kurpark
+  Nordeingang“, „Laaer Berg, Nordosteingang“) bleibt ihr Name. Unter den
+  188 Verlegungs-Records von WL seit Februar 2026 ändert sich nur dieser.
+  Ein Satz endet dabei nicht hinter einer
   Ordnungszahl am Adressanfang („1. Haidequerstraße“) oder einer Abkürzung
   („ggü. 40“, `_WL_SENTENCE_SPLIT_RE`).
 * **ÖBB-Sätze nach Vorlage.** ÖBB schreibt Störungen fast immer in einem
