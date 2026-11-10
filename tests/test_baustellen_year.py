@@ -359,9 +359,11 @@ def test_the_section_without_a_review() -> None:
     assert lines == [
         "## Baustellen mit Folgen für den öffentlichen Verkehr",
         "",
-        "Hier stehen die Baustellen aus den Daten der Stadt Wien, deren Text eine Folge für den öffentlichen "
-        "Verkehr nennt: eine verlegte oder aufgelassene Haltestelle, eine umgeleitete oder kurzgeführte Linie "
-        "oder Ersatzbusse. Die Aufzeichnung für 2026 beginnt am 24.05.2026.",
+        (
+            "Hier stehen die Baustellen aus den Daten der Stadt Wien, deren Text eine Folge für den öffentlichen "
+            "Verkehr nennt: eine verlegte oder aufgelassene Haltestelle, eine umgeleitete oder kurzgeführte Linie "
+            "oder Ersatzbusse. Die Aufzeichnung für 2026 beginnt am 24.05.2026."
+        ),
         "",
         "Im Jahr 2026 sind **2** solche Baustellen erfasst.",
         "",
@@ -372,8 +374,10 @@ def test_the_section_without_a_review() -> None:
         "| Burggasse 67 | 28.07.2026 – 30.10.2026 | 7., Neubau | Straßenbau |",
         "| Rennweg von 33A bis 37 | 30.09.2026 – offen | 3., Landstraße | Gleisbau |",
         "",
-        "> Datenquelle: Stadt Wien – data.wien.gv.at. Die Texte der Stadt Wien sind hier bearbeitet "
-        "(gekürzt und vereinheitlicht). Lizenz: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).",
+        (
+            "> Datenquelle: Stadt Wien – data.wien.gv.at. Die Texte der Stadt Wien sind hier bearbeitet "
+            "(gekürzt und vereinheitlicht). Lizenz: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)."
+        ),
     ]
 
 
@@ -416,8 +420,10 @@ def test_a_review_stands_with_its_label_before_the_list() -> None:
         "",
         review,
         "",
-        "_Dieser Rückblick wurde automatisch mit Gemini (Google) aus den Texten der Stadt Wien zusammengefasst "
-        "und von einem festen Skript gegen diese Texte geprüft. Anzahl und Liste stammen direkt aus den Daten._",
+        (
+            "_Dieser Rückblick wurde automatisch mit Gemini (Google) aus den Texten der Stadt Wien zusammengefasst "
+            "und von einem festen Skript gegen diese Texte geprüft. Anzahl und Liste stammen direkt aus den Daten._"
+        ),
         "",
     ]
     assert at < lines.index("### Baustellen im Jahr")

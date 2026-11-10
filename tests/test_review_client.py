@@ -95,8 +95,9 @@ def test_the_request_is_the_waechters_with_another_schema() -> None:
     }
     for model in ("gemini-3.8-flash", "gemini-3.5-flash-lite"):
         ours, theirs = rc.review_request("Prompt", model), kw.gemini_request("Prompt", model)
-        assert ours["generationConfig"].pop("responseJsonSchema") == rc.REVIEW_SCHEMA
-        assert theirs["generationConfig"].pop("responseJsonSchema") == kw.ANSWER_SCHEMA
+        our_schema = ours["generationConfig"].pop("responseJsonSchema")
+        their_schema = theirs["generationConfig"].pop("responseJsonSchema")
+        assert (our_schema, their_schema) == (rc.REVIEW_SCHEMA, kw.ANSWER_SCHEMA)
         assert ours == theirs
     assert "tools" not in rc.review_request("Prompt") and "systemInstruction" not in rc.review_request("Prompt")
 
@@ -442,7 +443,7 @@ def test_the_chain_comes_from_the_environment_when_it_names_models(monkeypatch: 
     # An explicit chain wins over the environment.
     calls = _fake(monkeypatch, [_ok()])
     answer = rc.ask_review("Prompt", key=KEY, models=("gemini-3.6-flash",))
-    assert answer is not None and answer.model == "gemini-3.6-flash"
+    assert answer is not None and answer.model == "gemini-3.6-flash" and len(calls) == 1
 
 
 @pytest.mark.parametrize(
