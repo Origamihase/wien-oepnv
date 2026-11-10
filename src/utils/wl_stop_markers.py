@@ -22,6 +22,13 @@ Volkstheater"). A marker in front of a digit ("Kagran U 26A") or glued to a
 hyphen ("U-Bahn") is no stop marker and stays. A new stop reaches the rule
 with the next directory refresh, without a code change.
 
+The same goes for the "(WL)" the station directory puts behind a name of a
+Wiener Linien stop to keep it apart from a railway station ("Wien
+Liechtenwerder Platz (WL)", "Wien Baumgarten (WL)"): it says where the
+entry came from, not where the stop is, and no source writes it (operator
+decision 2026-11-08: "Den Zusatz „WL“ kannst du gerne, so wie „S“ oder „U“
+auch entfernen.").
+
 Only the display changes (``_format_item_content``): matching, merging,
 twins and the map position still read the names as WL sends them.
 """
@@ -82,6 +89,12 @@ _BRACKET_MARKER_RE = re.compile(
 )
 
 
+# The directory's provenance marker behind a name ("Wien Baumgarten (WL)"),
+# with the space before it. Only the exact bracket: no source text writes
+# "(WL)" (ÖBB, WL and Baustellen caches and raw data checked 2026-11-08).
+_PROVENANCE_MARKER_RE = re.compile(r"(?<=[^\W_]|\.)\s*\(WL\)(?![\w\-])")
+
+
 @lru_cache(maxsize=1)
 def _marker_words() -> tuple[frozenset[str], frozenset[str]]:
     """Casefolded words a marker may follow, and words a marker may stand in front of."""
@@ -124,9 +137,12 @@ def without_stop_markers(text: str) -> str:
 
     "N71: Rennweg S" → "N71: Rennweg"; "zwischen Kagran U und Praterstern
     S U." → "zwischen Kagran und Praterstern."; "Parlament, U Volkstheater"
-    → "Parlament, Volkstheater". Text without such a name comes back as is.
+    → "Parlament, Volkstheater"; "Wien Baumgarten (WL)" → "Wien Baumgarten".
+    Text without such a name comes back as is.
     """
 
+    if text and "(WL)" in text:
+        text = _PROVENANCE_MARKER_RE.sub("", text)
     if not text or ("S" not in text and "U" not in text):
         return text
     text = _BRACKET_MARKER_RE.sub(lambda m: "." if m[0].startswith(".") else "", text)

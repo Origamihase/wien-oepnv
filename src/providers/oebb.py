@@ -32,6 +32,7 @@ from ..feed_types import FeedItem
 from ..utils.ids import make_guid
 from ..utils.stations import (
     display_name,
+    railway_station_names,
     station_by_oebb_id,
     station_info,
 )
@@ -407,6 +408,9 @@ def _build_item_from_xml(item: Element) -> FeedItem | str:
     guid = _derive_guid(raw_guid, raw_title, link)
     title = _apply_route_title(title, desc)
     title = _resolve_poor_title(title, link, guid, desc)
+    # The railway station, not the Wiener Linien stop in front of it
+    # ("Wien Bhf. Meidling (WL)" → "Wien Meidling", 2026-11-08).
+    title = railway_station_names(title)
 
     # Region-Filter: Strict — drop messages that don't describe a
     # Wien-relevant connection or station. Run AFTER title fallback so

@@ -231,7 +231,7 @@ def _post_filter_oebb(items: list[Any]) -> list[Any]:
         _clean_title_keep_places,
         _is_relevant,
     )
-    from ..utils.stations import main_station_names
+    from ..utils.stations import main_station_names, railway_station_names
 
     out: list[Any] = []
     for item in items:
@@ -252,8 +252,12 @@ def _post_filter_oebb(items: list[Any]) -> list[Any]:
         if not _is_relevant(title, description):
             continue
         # Main stations as the directory shows them now ("St. Pölten Hbf",
-        # ``main_station_names``), also in titles cached before 2026-11-02.
-        rederived = main_station_names(_apply_route_title(title, description) or title)
+        # ``main_station_names``), also in titles cached before 2026-11-02, and
+        # the railway station instead of the Wiener Linien stop in front of it
+        # (``railway_station_names``, 2026-11-08).
+        rederived = main_station_names(
+            railway_station_names(_apply_route_title(title, description) or title)
+        )
         if rederived != item.get("title"):
             item = dict(item)
             item["title"] = rederived
