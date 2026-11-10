@@ -642,14 +642,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5/12: Falschparker",
-    "description": "Linie 5: Fahrtbehinderung in Richtung Westbahnhof S U. Linie 12: Fahrtbehinderung in Richtung Josefstädter Straße U. Voraussichtliche Dauer: 17:50 Uhr. Grund: Falschparker im Bereich Florianigasse.",
+    "title": "12: Falschparker Betrieb ab Franz-Josefs-Bahnhof",
+    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "452ea077d26d994e779db36fd962bb3ffcf0d4420ef0b80400da3d67c2d5c866",
+    "guid": "d5852610e5230534aa875aec60af4a7a1b528ad8f8dd7b2db5fde27fedc59960",
     "pubDate": "2026-11-10T17:27:00+01:00",
-    "starts_at": "2026-11-10T17:27:00+01:00",
+    "starts_at": "2026-11-10T17:43:07+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=12,5|D=2026-11-10|TK=falschparker",
+    "_identity": "wl|störung|L=12|D=2026-11-10|TK=falschparker",
     "_wl_ids": [
       "I20261110-0034"
     ],
@@ -902,18 +902,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "9ddf5d1b468f97566b0d71492d70a5743faa129c9553b8165867b8249c7b99da",
-    "pubDate": "2026-11-10T16:36:31+01:00",
-    "starts_at": "2026-11-10T16:41:32+01:00",
-    "ends_at": "2026-11-10T17:41:00+01:00",
-    "_identity": "wl|störung|L=2|D=2026-11-10|TK=falschparker"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -954,14 +942,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "title": "5: Falschparker Betrieb ab Lerchenfelder Straße",
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "d4fefbd61cffb826224497ce36210117717220dc478820ab5f401038825d1565",
-    "pubDate": "2026-11-10T16:49:33+01:00",
-    "starts_at": "2026-11-10T16:52:03+01:00",
-    "ends_at": "2026-11-10T17:51:00+01:00",
-    "_identity": "wl|störung|L=60|D=2026-11-10|TK=fahrtbehinderung verkehrsunfall"
+    "guid": "640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5",
+    "pubDate": "2026-11-10T17:27:00+01:00",
+    "starts_at": "2026-11-10T17:36:36+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=5|D=2026-11-10|TK=falschparker",
+    "_wl_ids": [
+      "I20261110-0034"
+    ],
+    "_incident_start": "2026-11-10T17:27:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -998,6 +990,34 @@
     "starts_at": "2026-11-09T00:00:19+01:00",
     "ends_at": "2026-11-10T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-09|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9A: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "91d6dc7b1f80ff68ba071c4ad6428b07de3c98c9fa44dc7addc96704620e4b7f",
+    "pubDate": "2026-11-10T17:32:36+01:00",
+    "starts_at": "2026-11-10T17:32:36+01:00",
+    "ends_at": "2026-11-10T18:32:00+01:00",
+    "_identity": "wl|störung|L=9A|D=2026-11-10|TK=polizeieinsatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Fahrtbehinderung Falschparker",
+    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 18:20 Uhr. Grund: Falschparker im Bereich Hormayrgasse 53.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
+    "pubDate": "2026-11-10T17:59:00+01:00",
+    "starts_at": "2026-11-10T18:00:10+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=9|D=2026-11-10|TK=falschparker",
+    "_wl_ids": [
+      "I20261110-0035"
+    ],
+    "_incident_start": "2026-11-10T17:59:00+01:00"
   },
   {
     "source": "Wiener Linien",

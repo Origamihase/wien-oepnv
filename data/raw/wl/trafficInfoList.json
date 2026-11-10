@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261110-0032, I20260925-0011, I20261110-0031-F01, I20260909-0007, I20261020-0029, I20261110-0030-F01, I20261110-0034"
+    "trafficInfoNameList": "I20261110-0032, I20260925-0011, I20261110-0031-F01, I20260909-0007, I20261110-0034-F01, I20261110-0034-F02, I20261020-0029, I20261110-0030-F01, I20261110-0035"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1881-101, R1882-101, R1883-101, R3886-480, R1876-101, R1880-101, R1884-101, R1875-101, R2371-125, R2370-125, R2359-125, R2343-125, R2558-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2378-627, R2343-626, R293-474, R318-437, R1974-466, R1199-205, R500-101, R50-102, R49-102, R52-102, R51-102, R55-102, R54-102, R53-102, R1636-160, R1639-160, R1638-160, R272-112, R365-112, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1875-101, R1876-101, R1880-101, R1884-101, R1882-101, R1883-101, R3886-480, R1881-101, R2378-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2558-125, R2345-127, R2380-627, R318-437, R293-474, R1974-466, R1199-205, R500-101, R365-112, R272-112, R366-105, R272-105, R458-112, R500-409, R361-105, R362-105, R356-112, R353-112, R354-112, R355-112, R211-112, R380-112, R356-105, R357-105, R377-105, R379-105, R381-112, R382-112, R383-112, R526-109, R556-109, R223-109, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -312,23 +312,22 @@
     "alertCauseId": 71,
     "attributes": {
      "relatedLineTypes": {
-      "12": "ptTram",
       "5": "ptTram"
      }
     },
-    "description": "Linie 5: Fahrtbehinderung in Richtung Westbahnhof S U. Linie 12: Fahrtbehinderung in Richtung Josefstädter Straße U. Voraussichtliche Dauer: 17:50 Uhr. Grund: Falschparker im Bereich Florianigasse.",
-    "descriptionHTML": "<p>Linie 5:<br>Fahrtbehinderung in Richtung Westbahnhof S U.<br>Linie 12:<br>Fahrtbehinderung in Richtung Josefstädter Straße U.</p><p>Voraussichtliche Dauer: 17:50 Uhr.</p><p>Grund: Falschparker im Bereich Florianigasse.</p>",
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 5:<br>Fahrtbehinderung in Richtung Westbahnhof S U.<br>Linie 12:<br>Fahrtbehinderung in Richtung Josefstädter Straße U.</p><p>Voraussichtliche Dauer: 17:50 Uhr.</p><p>Grund: Falschparker im Bereich Florianigasse.</p>",
-       "descriptionPlain": "Linie 5: Fahrtbehinderung in Richtung Westbahnhof S U. Linie 12: Fahrtbehinderung in Richtung Josefstädter Straße U. Voraussichtliche Dauer: 17:50 Uhr. Grund: Falschparker im Bereich Florianigasse.",
-       "title": "5, 12: Falschparker"
+       "descriptionHtml": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "5: Falschparker"
       }
      }
     ],
     "location": "Florianigasse",
-    "name": "I20261110-0034",
+    "name": "I20261110-0034-F01",
     "owner": "WL",
     "parentName": "I20261110-0034",
     "priority": "1",
@@ -336,15 +335,55 @@
     "reasonName": "Falschparker",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "5",
-     "12"
+     "5"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 105,
       "lineName": "5",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T17:47:00.000+0100",
+     "lastUpdate": "2026-11-10T17:47:00.000+0100",
+     "resume": "2026-11-10T17:47:00.000+0100",
+     "start": "2026-11-10T17:27:00.000+0100"
+    },
+    "title": "5: Falschparker"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "12": "ptTram"
+     }
+    },
+    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "12: Falschparker"
+      }
+     }
+    ],
+    "location": "Florianigasse",
+    "name": "I20261110-0034-F02",
+    "owner": "WL",
+    "parentName": "I20261110-0034",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 112,
       "lineName": "12",
@@ -353,11 +392,57 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-10T17:28:00.000+0100",
-     "lastUpdate": "2026-11-10T17:28:00.000+0100",
+     "created": "2026-11-10T17:47:00.000+0100",
+     "lastUpdate": "2026-11-10T17:47:00.000+0100",
+     "resume": "2026-11-10T17:47:00.000+0100",
      "start": "2026-11-10T17:27:00.000+0100"
     },
-    "title": "5, 12: Falschparker"
+    "title": "12: Falschparker"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "9": "ptTram"
+     }
+    },
+    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 18:20 Uhr. Grund: Falschparker im Bereich Hormayrgasse 53.",
+    "descriptionHTML": "<p>Linie 9:<br>Fahrtbehinderung in Richtung Westbahnhof S U.</p><p>Voraussichtliche Dauer: 18:20 Uhr.</p><p>Grund: Falschparker im Bereich Hormayrgasse 53.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 9:<br>Fahrtbehinderung in Richtung Westbahnhof S U.</p><p>Voraussichtliche Dauer: 18:20 Uhr.</p><p>Grund: Falschparker im Bereich Hormayrgasse 53.</p>",
+       "descriptionPlain": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 18:20 Uhr. Grund: Falschparker im Bereich Hormayrgasse 53.",
+       "title": "9: Falschparker"
+      }
+     }
+    ],
+    "location": "Hormayrgasse 53",
+    "name": "I20261110-0035",
+    "owner": "WL",
+    "parentName": "I20261110-0035",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 109,
+      "lineName": "9",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T18:00:00.000+0100",
+     "lastUpdate": "2026-11-10T18:00:00.000+0100",
+     "start": "2026-11-10T17:59:00.000+0100"
+    },
+    "title": "9: Falschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -381,75 +466,6 @@
      "start": "2026-11-10T04:45:22.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1636-160",
-    "owner": "WL",
-    "parentName": "R1636-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1636
-    ],
-    "time": {
-     "end": "2026-11-10T17:49:00.000+0100",
-     "start": "2026-11-10T16:49:33.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1638-160",
-    "owner": "WL",
-    "parentName": "R1638-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1638
-    ],
-    "time": {
-     "end": "2026-11-10T17:51:00.000+0100",
-     "start": "2026-11-10T16:52:03.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1639-160",
-    "owner": "WL",
-    "parentName": "R1639-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1639
-    ],
-    "time": {
-     "end": "2026-11-10T17:51:00.000+0100",
-     "start": "2026-11-10T16:52:03.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -634,6 +650,52 @@
      "start": "2026-11-10T04:40:22.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R211-112",
+    "owner": "WL",
+    "parentName": "R211-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     211
+    ],
+    "time": {
+     "end": "2026-11-10T18:34:00.000+0100",
+     "start": "2026-11-10T17:34:37.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R223-109",
+    "owner": "WL",
+    "parentName": "R223-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     223
+    ],
+    "time": {
+     "end": "2026-11-10T18:59:00.000+0100",
+     "start": "2026-11-10T18:00:10.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -960,6 +1022,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Lerchenfelder Straße",
+    "name": "R272-105",
+    "owner": "WL",
+    "parentName": "R272-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     272
+    ],
+    "time": {
+     "end": "2026-11-10T18:35:00.000+0100",
+     "start": "2026-11-10T17:31:06.000+0100"
+    },
+    "title": "Falschparker\nBetrieb ab Lerchenfelder Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Fahrtbehinderung\nFalschparker",
     "name": "R272-112",
     "owner": "WL",
@@ -975,7 +1060,7 @@
      272
     ],
     "time": {
-     "end": "2026-11-10T18:27:00.000+0100",
+     "end": "2026-11-10T18:34:00.000+0100",
      "start": "2026-11-10T17:28:35.000+0100"
     },
     "title": "Fahrtbehinderung\nFalschparker"
@@ -1030,6 +1115,190 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R353-112",
+    "owner": "WL",
+    "parentName": "R353-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     353
+    ],
+    "time": {
+     "end": "2026-11-10T18:34:00.000+0100",
+     "start": "2026-11-10T17:34:36.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R354-112",
+    "owner": "WL",
+    "parentName": "R354-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     354
+    ],
+    "time": {
+     "end": "2026-11-10T18:34:00.000+0100",
+     "start": "2026-11-10T17:34:36.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R355-112",
+    "owner": "WL",
+    "parentName": "R355-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     355
+    ],
+    "time": {
+     "end": "2026-11-10T18:34:00.000+0100",
+     "start": "2026-11-10T17:34:36.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Lerchenfelder Straße",
+    "name": "R356-105",
+    "owner": "WL",
+    "parentName": "R356-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     356
+    ],
+    "time": {
+     "end": "2026-11-10T18:35:00.000+0100",
+     "start": "2026-11-10T17:36:06.000+0100"
+    },
+    "title": "Falschparker\nBetrieb ab Lerchenfelder Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R356-112",
+    "owner": "WL",
+    "parentName": "R356-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     356
+    ],
+    "time": {
+     "end": "2026-11-10T18:34:00.000+0100",
+     "start": "2026-11-10T17:34:36.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Lerchenfelder Straße",
+    "name": "R357-105",
+    "owner": "WL",
+    "parentName": "R357-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     357
+    ],
+    "time": {
+     "end": "2026-11-10T18:35:00.000+0100",
+     "start": "2026-11-10T17:36:06.000+0100"
+    },
+    "title": "Falschparker\nBetrieb ab Lerchenfelder Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R361-105",
+    "owner": "WL",
+    "parentName": "R361-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     361
+    ],
+    "time": {
+     "end": "2026-11-10T18:33:00.000+0100",
+     "start": "2026-11-10T17:33:36.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R362-105",
+    "owner": "WL",
+    "parentName": "R362-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     362
+    ],
+    "time": {
+     "end": "2026-11-10T18:33:00.000+0100",
+     "start": "2026-11-10T17:33:36.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
     "name": "R365-112",
     "owner": "WL",
     "parentName": "R365-112",
@@ -1048,6 +1317,167 @@
      "start": "2026-11-10T17:28:35.000+0100"
     },
     "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R366-105",
+    "owner": "WL",
+    "parentName": "R366-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     366
+    ],
+    "time": {
+     "end": "2026-11-10T18:30:00.000+0100",
+     "start": "2026-11-10T17:31:06.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Lange Gasse",
+    "name": "R377-105",
+    "owner": "WL",
+    "parentName": "R377-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     377
+    ],
+    "time": {
+     "end": "2026-11-10T18:35:00.000+0100",
+     "start": "2026-11-10T17:36:36.000+0100"
+    },
+    "title": "Falschparker\nBetrieb ab Lange Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Lange Gasse",
+    "name": "R379-105",
+    "owner": "WL",
+    "parentName": "R379-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     379
+    ],
+    "time": {
+     "end": "2026-11-10T18:35:00.000+0100",
+     "start": "2026-11-10T17:36:36.000+0100"
+    },
+    "title": "Falschparker\nBetrieb ab Lange Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Franz-Josefs-Bahnhof",
+    "name": "R380-112",
+    "owner": "WL",
+    "parentName": "R380-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     380
+    ],
+    "time": {
+     "end": "2026-11-10T18:34:00.000+0100",
+     "start": "2026-11-10T17:35:06.000+0100"
+    },
+    "title": "Falschparker\nBetrieb ab Franz-Josefs-Bahnhof"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Franz-Josefs-Bahnhof",
+    "name": "R381-112",
+    "owner": "WL",
+    "parentName": "R381-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     381
+    ],
+    "time": {
+     "end": "2026-11-10T18:36:00.000+0100",
+     "start": "2026-11-10T17:38:07.000+0100"
+    },
+    "title": "Falschparker\nBetrieb ab Franz-Josefs-Bahnhof"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Franz-Josefs-Bahnhof",
+    "name": "R382-112",
+    "owner": "WL",
+    "parentName": "R382-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     382
+    ],
+    "time": {
+     "end": "2026-11-10T18:38:00.000+0100",
+     "start": "2026-11-10T17:38:37.000+0100"
+    },
+    "title": "Falschparker\nBetrieb ab Franz-Josefs-Bahnhof"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Franz-Josefs-Bahnhof",
+    "name": "R383-112",
+    "owner": "WL",
+    "parentName": "R383-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     383
+    ],
+    "time": {
+     "end": "2026-11-10T18:42:00.000+0100",
+     "start": "2026-11-10T17:43:07.000+0100"
+    },
+    "title": "Falschparker\nBetrieb ab Franz-Josefs-Bahnhof"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1098,48 +1528,25 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R49-102",
+    "description": "Falschparker\nBetrieb ab Franz-Josefs-Bahnhof",
+    "name": "R458-112",
     "owner": "WL",
-    "parentName": "R49-102",
+    "parentName": "R458-112",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "2"
+     "12"
     ],
     "relatedStops": [
-     49
+     458
     ],
     "time": {
-     "end": "2026-11-10T17:36:00.000+0100",
-     "start": "2026-11-10T16:36:31.000+0100"
+     "end": "2026-11-10T18:34:00.000+0100",
+     "start": "2026-11-10T17:31:36.000+0100"
     },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R50-102",
-    "owner": "WL",
-    "parentName": "R50-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     50
-    ],
-    "time": {
-     "end": "2026-11-10T17:36:00.000+0100",
-     "start": "2026-11-10T16:36:31.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
+    "title": "Falschparker\nBetrieb ab Franz-Josefs-Bahnhof"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1167,23 +1574,46 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R51-102",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R500-409",
     "owner": "WL",
-    "parentName": "R51-102",
+    "parentName": "R500-409",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "2"
+     "9A"
     ],
     "relatedStops": [
-     51
+     500
     ],
     "time": {
-     "end": "2026-11-10T17:36:00.000+0100",
-     "start": "2026-11-10T16:36:31.000+0100"
+     "end": "2026-11-10T18:32:00.000+0100",
+     "start": "2026-11-10T17:32:36.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R526-109",
+    "owner": "WL",
+    "parentName": "R526-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     526
+    ],
+    "time": {
+     "end": "2026-11-10T18:59:00.000+0100",
+     "start": "2026-11-10T18:00:09.000+0100"
     },
     "title": "Fahrtbehinderung\nFalschparker"
    },
@@ -1191,91 +1621,22 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R52-102",
+    "name": "R556-109",
     "owner": "WL",
-    "parentName": "R52-102",
+    "parentName": "R556-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "2"
+     "9"
     ],
     "relatedStops": [
-     52
+     556
     ],
     "time": {
-     "end": "2026-11-10T17:36:00.000+0100",
-     "start": "2026-11-10T16:36:31.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R53-102",
-    "owner": "WL",
-    "parentName": "R53-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     53
-    ],
-    "time": {
-     "end": "2026-11-10T17:41:00.000+0100",
-     "start": "2026-11-10T16:41:32.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R54-102",
-    "owner": "WL",
-    "parentName": "R54-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     54
-    ],
-    "time": {
-     "end": "2026-11-10T17:41:00.000+0100",
-     "start": "2026-11-10T16:41:32.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R55-102",
-    "owner": "WL",
-    "parentName": "R55-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     55
-    ],
-    "time": {
-     "end": "2026-11-10T17:41:00.000+0100",
-     "start": "2026-11-10T16:41:32.000+0100"
+     "end": "2026-11-10T18:59:00.000+0100",
+     "start": "2026-11-10T18:00:09.000+0100"
     },
     "title": "Fahrtbehinderung\nFalschparker"
    },
