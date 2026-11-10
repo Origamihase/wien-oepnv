@@ -18,7 +18,7 @@ from __future__ import annotations
 import json
 import re
 import time
-from collections.abc import Callable, Mapping, Sequence
+from collections.abc import Callable, Collection, Mapping, Sequence
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -67,6 +67,7 @@ def ask_parts(
     sleep: Callable[[float], None] = time.sleep,
     max_rounds: int = 2,
     deadline_s: float = 720.0,
+    numbers: Sequence[Collection[int]] = (),
 ) -> Answer:
     """One answer per prompt (a half of the input each), united; *ask* is the chain client.
 
@@ -78,10 +79,12 @@ def ask_parts(
     the day unread. No request starts after *deadline_s* seconds from the
     first request (the step limit of the workflow): the second half gets the
     seconds the first left over. An unread half is noted in ``parts`` and
-    shows in the report as texts not checked.
+    shows in the report as texts not checked. *numbers* names the texts of
+    each half: an answer counts as having checked only texts of its own half
+    (:func:`_own_texts`).
     """
     models = [m.strip() for m in model.split(",") if m.strip()]
-    first = ask(prompts[0], model, key, sleep, max_rounds, deadline_s=deadline_s)
+    first = _own_texts(ask(prompts[0], model, key, sleep, max_rounds, deadline_s=deadline_s), numbers[:1])
     first.answers = 1 if first.ok else 0
     first.parts = [_note(1, first)]
     if not first.ok or len(prompts) < 2:
@@ -93,10 +96,33 @@ def ask_parts(
         return first
     chain = ",".join([first.model, *(m for m in models if m != first.model)])
     print(f"Gemini: Anfrage für Teil 2 an {chain}", flush=True)
-    second = ask(prompts[1], chain, key, sleep, max_rounds, deadline_s=round(deadline_s - first.seconds, 1))
+    second = _own_texts(
+        ask(prompts[1], chain, key, sleep, max_rounds, deadline_s=round(deadline_s - first.seconds, 1)), numbers[1:2],
+    )
     united = unite_answers(first, second)
     united.parts = [first.parts[0], _note(2, second)]
     return united
+
+
+def _own_texts(answer: Answer, numbers: Sequence[Collection[int]]) -> Answer:
+    """*answer* with ``geprueft`` held to the texts of its own half (*numbers*, empty: unknown, unchanged).
+
+    A half shows the numbers of the whole day with gaps, and the prompt asks
+    for the list "lückenlos": a model that fills the gaps names texts it
+    never saw. United as it came, such a list let the report say "geprüft"
+    for the texts of a half that got no answer. Findings are untouched: each
+    is checked against its item by ``verify``.
+    """
+    if not answer.ok or not numbers:
+        return answer
+    try:
+        parsed = dict(extract_answer(answer.text))
+    except ValueError:
+        return answer
+    own = numbers[0]
+    parsed["geprueft"] = [n for n in parsed.get("geprueft") or [] if isinstance(n, int) and n in own]
+    answer.text = json.dumps(scrub_trojan_source_primitives(parsed), ensure_ascii=False, allow_nan=False)
+    return answer
 
 
 def _note(nr: int, answer: Answer) -> dict[str, Any]:

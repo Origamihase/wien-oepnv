@@ -64,7 +64,8 @@ def test_workflow_gives_the_model_no_tools_and_the_key_to_one_step() -> None:
     assert "CLAUDE_CODE_OAUTH_TOKEN" not in text and "claude" not in text.lower()
     assert doc["permissions"] == {"contents": "read"}
     prepare = steps["Prepare the input"]["run"]
-    assert "--shallow-since" in prepare and "--hours 24" in prepare
+    # The history by depth, not by date (tests/test_ki_waechter/test_verlauf.py).
+    assert "--depth=" in prepare and "--hours 24" in prepare
 
 
 def test_the_gate_keeps_no_count_of_requests() -> None:
