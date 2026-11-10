@@ -26,6 +26,7 @@ from src.utils.env import _path_fingerprint  # noqa: E402
 from src.utils.files import loads_finite, read_capped_json  # noqa: E402
 from src.utils.http import fetch_content_safe, session_with_retries, validate_http_url  # noqa: E402
 from src.utils.logging import sanitize_log_arg  # noqa: E402
+from src.utils.stats_baustellen import append_baustellen_rows  # noqa: E402
 # ``as`` re-exports explicitly: the feature parsing and the WFS helpers
 # live in ``src/providers/``; tests and callers read them from here.
 from src.providers.baustellen_events import (  # noqa: E402
@@ -444,6 +445,17 @@ def main() -> int:
             len(relevant),
         )
         return 2
+    # Yearly Baustellen ledger (owner's decision of 2026-11-10): every site
+    # the city delivered that passed the transit rule above gets one row per
+    # year in ``data/stats/baustellen_<year>.csv``. Written here and not in
+    # the feed build, because the feed drops a site that a running WL notice
+    # already reports (twins rule, 2026-10-09). Reached for the city's own
+    # data only: the bundled demo sample has returned above, while a layer
+    # taken from its last good answer (exit 3 below) still holds real sites,
+    # each entered once by its guid. The writer never raises and returns
+    # nothing this flow uses; no branch of its own, ``main`` is at the C901
+    # limit.
+    append_baustellen_rows(relevant)
     if _fallback_layers:
         # Exit 3 = cache written, but a layer came from its last good answer.
         LOGGER.warning(
@@ -489,6 +501,7 @@ __all__ = [
     "session_with_retries",
     "validate_http_url",
     "sanitize_log_arg",
+    "append_baustellen_rows",
     "_feature_list",
     "_raw_snapshot",
     "_collect_events",
