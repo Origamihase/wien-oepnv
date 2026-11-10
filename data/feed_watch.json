@@ -1,8 +1,8 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-10T11:31:05.481017+00:00",
- "built": "2026-11-10T12:30:45+01:00",
+ "updated": "2026-11-10T12:01:33.045667+00:00",
+ "built": "2026-11-10T13:01:16+01:00",
  "findings": [
   {
    "rule": "alte-meldung-als-neu",
@@ -15,13 +15,13 @@
  "rules": {
   "alte-meldung-als-neu": {
    "since": "2026-11-09T23:01:31.085708+00:00",
-   "last": "2026-11-10T11:31:05.481017+00:00",
+   "last": "2026-11-10T12:01:33.045667+00:00",
    "held_runs": 0,
    "issue": 2190
   }
  },
  "previous_feed": {
-  "built": "2026-11-10T12:30:45+01:00",
+  "built": "2026-11-10T13:01:16+01:00",
   "items": [
    {
     "title": "7A: Ampelstörung",
@@ -30,14 +30,6 @@
    {
     "title": "31: Verkehrsunfall",
     "time_line": "Seit 12:02"
-   },
-   {
-    "title": "38A: Falschparker",
-    "time_line": "Seit 11:43"
-   },
-   {
-    "title": "60: Polizeieinsatz",
-    "time_line": "Seit 11:07"
    },
    {
     "title": "Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx",
@@ -62,51 +54,19 @@
    {
     "title": "71A: Haltestellenverlegung",
     "time_line": "Bis Mi 11.11."
+   },
+   {
+    "title": "5B: Bauarbeiten",
+    "time_line": "Bis 10.12."
+   },
+   {
+    "title": "31: Wexstraße",
+    "time_line": "Seit 09.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-03T11:31:07.229040+00:00",
-   "raw": {
-    "wl-stoerungen": 56,
-    "wl-hinweise": 72,
-    "oebb": 176,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 12,
-    "oebb": 151,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 7,
-    "wl": 87
-   }
-  },
-  {
-   "t": "2026-11-03T12:01:13.445691+00:00",
-   "raw": {
-    "wl-stoerungen": 55,
-    "wl-hinweise": 72,
-    "oebb": 176,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 12,
-    "oebb": 151,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 7,
-    "wl": 88
-   }
-  },
   {
    "t": "2026-11-03T12:30:56.551731+00:00",
    "raw": {
@@ -6806,17 +6766,37 @@
     "oebb": 7,
     "wl": 84
    }
+  },
+  {
+   "t": "2026-11-10T12:01:33.045667+00:00",
+   "raw": {
+    "wl-stoerungen": 42,
+    "wl-hinweise": 93,
+    "oebb": 193,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 25,
+    "oebb": 168,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 82
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-10T11:31:05.481017+00:00"
+   "last_ok": "2026-11-10T12:01:33.045667+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-10T11:31:05.481017+00:00"
+   "last_ok": "2026-11-10T12:01:33.045667+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-10T11:31:05.481017+00:00"
+   "last_ok": "2026-11-10T12:01:33.045667+00:00"
   }
  }
 }
