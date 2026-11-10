@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_146, ftazW_1016567, ftazW_486, ftazW_734, ftazW_769, ftazW_147, ftazW_489, ftazW_770, ftazW_736, ftazW_1351715, ftazW_490, ftazW_1018065, ftazW_239, ftazW_510, ftazW_240, ftazW_491, ftazW_1018066, ftazW_82, ftazW_1351709, ftazW_511, ftazW_729, ftazW_83, ftazW_574, ftazW_508, ftazW_721"
+    "trafficInfoNameList": "ftazW_146, ftazW_1016567, ftazW_486, ftazW_734, ftazW_769, ftazW_147, ftazW_29, ftazW_489, ftazW_770, ftazW_736, ftazW_1351715, ftazW_490, ftazW_1018065, ftazW_239, ftazW_510, ftazW_240, ftazW_491, ftazW_1018066, ftazW_82, ftazW_1351709, ftazW_511, ftazW_729, ftazW_83, ftazW_574, ftazW_508, ftazW_721"
    }
   ],
   "poiCategoryGroups": [
@@ -3194,6 +3194,38 @@
      "start": "2026-11-12T01:15:00.000+0100"
     },
     "title": "Längenfeldgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "11.11.2026 05:15",
+     "ausVon": "11.11.2026 01:15",
+     "location": "Zwischengeschoss - Ausgang Minoritenplatz",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Herrengasse",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Zwischengeschoss - Ausgang Minoritenplatz",
+    "elevatorId": "HZ 01",
+    "name": "ftazW_29",
+    "parentName": "ftazW_29",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "time": {
+     "end": "2026-11-11T05:15:00.000+0100",
+     "start": "2026-11-11T01:15:00.000+0100"
+    },
+    "title": "Herrengasse"
    },
    {
     "alertCause": "undefined alert cause",
