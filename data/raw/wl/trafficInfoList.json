@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261110-0036-F01, I20261110-0036-F02, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261110-0036-F01, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
@@ -215,52 +215,6 @@
      "start": "2026-11-10T18:16:00.000+0100"
     },
     "title": "2: Fremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "5": "ptTram"
-     }
-    },
-    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "5: Fremder Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Josefstädter Straße / Albertgasse",
-    "name": "I20261110-0036-F02",
-    "owner": "WL",
-    "parentName": "I20261110-0036",
-    "priority": "1",
-    "reasonId": 13,
-    "reasonName": "Fremder Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 105,
-      "lineName": "5",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-10T18:55:00.000+0100",
-     "end": "2026-11-10T21:04:00.000+0100",
-     "lastUpdate": "2026-11-10T20:35:00.000+0100",
-     "start": "2026-11-10T18:16:00.000+0100"
-    },
-    "title": "5: Fremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
