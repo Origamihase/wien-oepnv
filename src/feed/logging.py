@@ -8,19 +8,23 @@ from datetime import datetime, timedelta
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
-from .config import (
-    LOG_BACKUP_COUNT,
-    LOG_DIR_PATH,
-    LOG_LEVEL,
-    LOG_MAX_BYTES,
-    LOG_TIMEZONE,
-    MAX_LOG_BYTES,
-)
+from . import config as feed_config
+from .config import LOG_TIMEZONE, MAX_LOG_BYTES
 
 from ..utils.files import read_capped_text
 from .logging_safe import SafeFormatter, SafeJSONFormatter, _make_formatter
 
-LOG_DIR = LOG_DIR_PATH.as_posix()
+# ``LOG_LEVEL``, ``LOG_MAX_BYTES`` and ``LOG_BACKUP_COUNT`` are read from
+# ``feed_config`` inside ``configure_logging``. ``refresh_from_env()`` rebinds
+# these names in ``src.feed.config``; a ``from .config import NAME`` here
+# would keep the value of the first import. ``LOG_TIMEZONE`` and
+# ``MAX_LOG_BYTES`` are constants and never rebound.
+#
+# The three paths below are computed once, at import: ``reporting.py`` and
+# ``github_issue.py`` import ``error_log_path`` / ``diagnostics_log_path`` by
+# name, and tests replace them there. A ``LOG_DIR`` set after the first import
+# therefore does not move them.
+LOG_DIR = feed_config.LOG_DIR_PATH.as_posix()
 error_log_path = Path(LOG_DIR) / "errors.log"
 diagnostics_log_path = Path(LOG_DIR) / "diagnostics.log"
 
@@ -48,7 +52,7 @@ def configure_logging() -> None:
 
     os.makedirs(LOG_DIR, exist_ok=True)
 
-    level = getattr(logging, LOG_LEVEL, logging.INFO)
+    level = getattr(logging, feed_config.LOG_LEVEL, logging.INFO)
     if not isinstance(level, int):
         level = logging.INFO
 
@@ -71,8 +75,8 @@ def configure_logging() -> None:
     error_log_path.touch(exist_ok=True)
     error_handler = RotatingFileHandler(
         error_log_path,
-        maxBytes=LOG_MAX_BYTES,
-        backupCount=LOG_BACKUP_COUNT,
+        maxBytes=feed_config.LOG_MAX_BYTES,
+        backupCount=feed_config.LOG_BACKUP_COUNT,
         encoding="utf-8",
     )
     error_handler.setLevel(logging.ERROR)
@@ -82,8 +86,8 @@ def configure_logging() -> None:
     diagnostics_log_path.touch(exist_ok=True)
     diagnostics_handler = RotatingFileHandler(
         diagnostics_log_path,
-        maxBytes=LOG_MAX_BYTES,
-        backupCount=LOG_BACKUP_COUNT,
+        maxBytes=feed_config.LOG_MAX_BYTES,
+        backupCount=feed_config.LOG_BACKUP_COUNT,
         encoding="utf-8",
     )
     diagnostics_handler.setLevel(logging.INFO)

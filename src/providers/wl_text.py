@@ -6,11 +6,11 @@ import calendar
 import html
 import re
 from datetime import date, datetime, timedelta, UTC
-from zoneinfo import ZoneInfo
+from ..utils.vienna_clock import VIENNA_TZ as _VIENNA_TZ, plausible_moment
 
 from .wl_news_kind import lead_text
 
-_VIENNA_TZ = ZoneInfo("Europe/Vienna")
+# A date written in a title or text follows the rule of PLAUSIBLE_YEARS too.
 
 # ---------------- Relevanz-/Ausschluss-Filter ----------------
 
@@ -313,7 +313,7 @@ def extract_date_from_title(
     ``Feber``). A missing year is resolved against *reference_date*
     (default: now in UTC) via :func:`_resolve_missing_year`. Returns a
     midnight Europe/Vienna datetime, or ``None`` when no parseable date
-    is present.
+    is present or its year lies outside ``PLAUSIBLE_YEARS``.
     """
     if not title:
         return None
@@ -333,7 +333,7 @@ def extract_date_from_title(
             return None
 
     try:
-        return datetime(year, month, day, tzinfo=_VIENNA_TZ)
+        return plausible_moment(datetime(year, month, day, tzinfo=_VIENNA_TZ))
     except ValueError:
         return None
 
@@ -398,8 +398,8 @@ def extract_start_from_description(
     """The start date in the "Zeitraum:" section of a WL notice, or ``None``.
 
     Midnight Europe/Vienna, like :func:`extract_date_from_title`; a missing
-    year resolves the same way. ``None`` without the heading or without a
-    date right behind it.
+    year resolves the same way. ``None`` without the heading, without a
+    date right behind it, or for a year outside ``PLAUSIBLE_YEARS``.
     """
     period = _period_text(description)
     match = _PERIOD_DATE_RE.search(period[:_PERIOD_WINDOW]) if period else None
@@ -414,7 +414,7 @@ def extract_start_from_description(
         if year is None:
             return None
     try:
-        return datetime(year, month, day, tzinfo=_VIENNA_TZ)
+        return plausible_moment(datetime(year, month, day, tzinfo=_VIENNA_TZ))
     except ValueError:
         return None
 
@@ -524,7 +524,7 @@ def extract_end_from_description(
     day for "Ende <Monat>" / "Ende <Jahr>" / "<Monat> <Jahr>"; WL's own
     exact ends read 23:59 too. A missing year makes it the first such day
     on or after the section's start (see :func:`_end_day`); without a start
-    it resolves against *reference_date* like the start.
+    it resolves like the start. A year outside ``PLAUSIBLE_YEARS``: ``None``.
     """
     section = _period_section(description)
     if section is None:
@@ -539,7 +539,7 @@ def extract_end_from_description(
         return None
     year, month, day = named
     try:
-        return datetime(year, month, day, 23, 59, tzinfo=_VIENNA_TZ)
+        return plausible_moment(datetime(year, month, day, 23, 59, tzinfo=_VIENNA_TZ))
     except ValueError:
         return None
 

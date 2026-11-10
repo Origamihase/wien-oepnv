@@ -64,6 +64,10 @@ def strip_accents(value: str) -> str:
     ``src/places/normalize.py`` and the station scripts); ``ß`` is no accent
     and stays.
     """
+    if value.isascii():
+        # NFKD leaves ASCII as it is and ASCII holds no combining mark; most
+        # of the 250,000 names the station indexes normalise are ASCII.
+        return value
     return "".join(ch for ch in unicodedata.normalize("NFKD", value) if not unicodedata.combining(ch))
 
 

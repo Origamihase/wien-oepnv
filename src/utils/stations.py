@@ -53,6 +53,7 @@ from .stations_lookup import (
     station_named_in_text,
 )
 from .stations_normalize import _coerce_float, _coerce_lat, _coerce_lon, _normalize_token
+from .term_search import WholeTermSearch
 
 __all__ = [
     "canonical_name",
@@ -503,8 +504,13 @@ def _mask_non_vienna_stations(text: str) -> str:
 
 
 @lru_cache(maxsize=1)
-def _vienna_stations_regex() -> re.Pattern[str]:
-    """Kompiliert einen Regex-Ausdruck mit allen bekannten Wiener Stationen."""
+def _vienna_stations_regex() -> WholeTermSearch:
+    """Die Suche nach allen bekannten Wiener Stationen als ganzer Begriff.
+
+    Bis 2026-11-10 ein einziges Muster mit 159.754 Alternativen: 7 s zum
+    Kompilieren und im Mittel rund 1 s je ÖBB-Text. :class:`WholeTermSearch`
+    gibt dieselbe Antwort über einen Index (``src/utils/term_search.py``).
+    """
     vienna: set[str] = set()
     for entry in _station_entries():
         if entry.get("in_vienna"):
@@ -525,12 +531,7 @@ def _vienna_stations_regex() -> re.Pattern[str]:
     vienna = {n for n in vienna if len(n) >= 4 and not n.isdigit()}
     vienna -= {"hbf", "bf", "bahnhof", "hauptbahnhof", "station"}
 
-    if not vienna:
-        return re.compile(r"(?!x)x")
-
-    sorted_terms = sorted(vienna, key=len, reverse=True)
-    pattern = r"(?<!\w)(?:" + "|".join(re.escape(t) for t in sorted_terms) + r")(?!\w)"
-    return re.compile(pattern, re.IGNORECASE)
+    return WholeTermSearch(vienna)
 
 
 def text_has_vienna_connection(text: str) -> bool:
@@ -581,8 +582,4 @@ def text_has_vienna_connection(text: str) -> bool:
         return True
 
     # 4. Abgleich gegen Wiener Stationen und Aliase aus dem Verzeichnis
-    rx = _vienna_stations_regex()
-    if rx.search(cleaned):
-        return True
-
-    return False
+    return _vienna_stations_regex().search(cleaned)

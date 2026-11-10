@@ -142,10 +142,13 @@ KNOWN_TOKENS_VCS_PAYMENT_AI = [
     # specific pattern only the trailing 43-char segment is flagged (as a generic high-entropy
     # string) and the SG. prefix plus the 22-char identifier are silently dropped.
     (re.compile(r"(?<![A-Za-z0-9])SG\.[A-Za-z0-9_\-]{22}\.[A-Za-z0-9_\-]{43}(?![A-Za-z0-9])"), "SendGrid API Key gefunden"),
-    # Anthropic API keys: sk-ant-api{NN}-... and sk-ant-admin{NN}-...
-    # Standard format: sk-ant-api03-<93 chars>AA. Pattern stays loose to also catch
-    # forthcoming version suffixes (api04, admin02, …) without missing real leaks.
-    (re.compile(r"(?<![A-Za-z0-9])sk-ant-(?:api|admin)[0-9]{2}-[A-Za-z0-9_\-]{32,}(?![A-Za-z0-9])"), "Anthropic API Key gefunden"),
+    # Anthropic issues sk-ant-<kind><NN>-<body>, where <kind> is 2 to 8 lowercase
+    # letters (api, admin, oat, ort, sid, …) and <NN> a two-digit version.
+    # A standard key reads sk-ant-api03-<93 chars>AA. The kind is matched as a
+    # class so that the OAuth forms (oat01, ort01) and later kinds and version
+    # suffixes carry the Anthropic label as well. The same expression is used in
+    # src/utils/log_patterns_cloud_ai.py.
+    (re.compile(r"(?<![A-Za-z0-9])sk-ant-[a-z]{2,8}[0-9]{2}-[A-Za-z0-9_\-]{32,}(?![A-Za-z0-9])"), "Anthropic API Key gefunden"),
     # OpenAI Project API keys: sk-proj-...
     (re.compile(r"(?<![A-Za-z0-9])sk-proj-[A-Za-z0-9_\-]{40,}(?![A-Za-z0-9])"), "OpenAI Project API Key gefunden"),
     # OpenAI Service Account keys: sk-svcacct-...

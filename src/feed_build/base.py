@@ -22,12 +22,13 @@ from dateutil import parser
 from ..feed import config as feed_config
 from ..utils.logging import sanitize_log_arg
 from ..utils.text import PLANNED_DISRUPTION_RE
+from ..utils.vienna_clock import plausible_moment
 
 __all__ = [
     "ATOM_NS", "GEORSS_NS", "MEDIA_NS", "log", "validate_path", "_VIENNA_TZ", "_SENTENCE_SPLIT_RE", "_to_utc",
     "_fmt_rfc2822", "_PLANNED_DISRUPTION_RE", "_OEBB_SOURCE", "_CONTROL_RE", "_LINE_TOKEN_RE", "_LINE_PREFIX_RE",
     "_WHITESPACE_RE", "_WHITESPACE_CLEANUP_RE", "_sanitize_text", "_ymd_or_none", "_parse_datetime",
-    "_coerce_datetime_field", "_normalize_item_datetimes", "_parse_state_time", "_parse_first_seen",
+    "_coerce_datetime_field", "_normalize_item_datetimes", "_parse_state_time", "_parse_first_seen", "_state_stamp",
 ]
 
 
@@ -259,10 +260,15 @@ def _ymd_or_none(dt: datetime | None) -> str:
 def _parse_datetime(value: Any) -> datetime | None:
     """Parse ISO8601 timestamps (incl. ``Z`` suffix and compact offsets).
 
-    Treats naive timestamps as Vienna local time.
+    Treats naive timestamps as Vienna local time. A year outside
+    :data:`src.utils.vienna_clock.PLAUSIBLE_YEARS` counts as not set
+    (``None``): the chain adds to these values and moves them between time
+    zones, which a date at the edge of the calendar cannot take.
     """
 
     if isinstance(value, datetime):
+        if plausible_moment(value) is None:
+            return None
         if value.tzinfo:
             return value
         return value.replace(tzinfo=_VIENNA_TZ)
@@ -274,11 +280,13 @@ def _parse_datetime(value: Any) -> datetime | None:
 
         try:
             parsed = parser.isoparse(candidate)
+            if plausible_moment(parsed) is None:
+                return None
             if parsed.tzinfo is None:
                 # Assume Vienna time for naive strings (e.g. from legacy cache)
                 parsed = parsed.replace(tzinfo=_VIENNA_TZ)
             return cast('datetime | None', parsed)
-        except (ValueError, parser.ParserError) as exc:
+        except (ValueError, OverflowError, parser.ParserError) as exc:
             # Security (Clear-Text-Logging Drift): ``parser.ParserError``
             # embeds the original input string in its message —
             # upstream-controlled bytes flow into the log line via
@@ -320,23 +328,35 @@ def _normalize_item_datetimes(
     return items
 
 
+def _state_stamp(raw: object) -> datetime | None:
+    """The time stamp *raw* of the state file, as written.
+
+    ``None`` when it cannot be read or its year, as written, lies outside
+    :data:`src.utils.vienna_clock.PLAUSIBLE_YEARS`. The state is written by
+    the build itself, always in UTC; a value nobody can compute with must
+    not stop the build. (A value written with another offset within hours of
+    a boundary is read here and can leave the range once the loader has
+    stored it in UTC; the next reader then takes it as unreadable.)
+    """
+    try:
+        return plausible_moment(datetime.fromisoformat(str(raw)))
+    except ValueError:
+        return None
+
+
 def _parse_state_time(entry: dict[str, Any] | None, field: str) -> datetime | None:
     """Return the UTC datetime stored under ``field`` of a state ``entry``.
 
-    ``None`` when the entry is absent or the field is missing/unparseable.
+    ``None`` when the entry is absent or the field is missing, unparseable
+    or outside the plausible years (:func:`_state_stamp`).
     """
     if not entry:
         return None
     raw = entry.get(field)
-    if raw is None:
+    parsed = None if raw is None else _state_stamp(raw)
+    if parsed is None:
         return None
-    try:
-        parsed = datetime.fromisoformat(str(raw))
-    except (ValueError, TypeError):
-        return None
-    if parsed.tzinfo is None:
-        parsed = parsed.replace(tzinfo=UTC)
-    return _to_utc(parsed)
+    return _to_utc(parsed if parsed.tzinfo is not None else parsed.replace(tzinfo=UTC))
 
 
 def _parse_first_seen(

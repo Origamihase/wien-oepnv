@@ -16,6 +16,21 @@ VIENNA_TZ = ZoneInfo("Europe/Vienna")
 # Central European Time and Central European Summer Time.
 VIENNA_OFFSETS = frozenset({timedelta(hours=1), timedelta(hours=2)})
 
+# The years a time stamp of a source may name. Source systems write a year
+# at the edge of the calendar (9999, 1) for "no end" or "unknown". Python
+# cannot add a minute to such a date or move it to another time zone
+# (``OverflowError``). In the audit of 2026-11-10 one such value, put into
+# a copy of the data, stopped the whole feed build (one WL disruption with
+# ``time.end = 9999-12-31T23:59:59+01:00``) or a whole fetch (a start in
+# the year 1); the recorded data hold no such value. Operator decision Michael
+# 2026-11-10 (card "Ja, alle vier Teile"): a time stamp outside these years
+# counts as not set. An end then means "no end known", a start "unreadable";
+# the item stays, only without that date. That holds for every year outside
+# the range, not only for those Python cannot compute with: an end in 1970
+# no longer retires an item, a start in 2101 no longer holds it back
+# (docs/architecture-teil-7.md, §10, "Datum am Rand des Kalenders").
+PLAUSIBLE_YEARS = (2000, 2100)
+
 
 def vienna_wall_clock(dt: datetime) -> datetime:
     """``dt`` with the Vienna offset its wall clock had, when the source sent the other one.
@@ -54,6 +69,19 @@ def vienna_wall_clock(dt: datetime) -> datetime:
         return dt
     corrected = wall.replace(tzinfo=VIENNA_TZ).utcoffset()
     return dt if corrected is None else wall.replace(tzinfo=timezone(corrected))
+
+
+def plausible_moment(dt: datetime | None) -> datetime | None:
+    """*dt*, or ``None`` when its year lies outside :data:`PLAUSIBLE_YEARS`.
+
+    Reads the year as written, without converting the time zone, so the
+    check itself cannot overflow. The parsers of source time stamps call it
+    before anything computes with the value; ``READERS`` in
+    ``tests/test_plausible_years.py`` lists them.
+    """
+    if dt is None or not PLAUSIBLE_YEARS[0] <= dt.year <= PLAUSIBLE_YEARS[1]:
+        return None
+    return dt
 
 
 def vienna_aware(dt: datetime) -> datetime:

@@ -14,8 +14,8 @@ from typing import Any, cast
 from dateutil import parser as dtparser
 
 from ..utils.logging import sanitize_log_arg
-from ..utils.vienna_clock import vienna_wall_clock
-from ..feed.config import ENDS_AT_GRACE_MINUTES
+from ..utils.vienna_clock import plausible_moment, vienna_wall_clock
+from ..feed import config as feed_config
 
 from .wl_plausibility import (
     note_corrections,
@@ -69,6 +69,11 @@ def _iso(s: object) -> datetime | None:
             "WL-Zeitstempel nicht parsebar (%s) – ignoriere Feld.",
             sanitize_log_arg(str(exc)),
         )
+        return None
+    # A year at the edge of the calendar is a placeholder, not a date
+    # (:data:`src.utils.vienna_clock.PLAUSIBLE_YEARS`): not set.
+    if plausible_moment(dt) is None:
+        log.debug("WL-Zeitstempel außerhalb der plausiblen Jahre (%d) – ignoriere Feld.", dt.year)
         return None
     if not dt.tzinfo:
         dt = dt.replace(tzinfo=UTC)
@@ -167,7 +172,7 @@ def _status_drop_reason(info: Any, stale: set[str]) -> str | None:
 def _is_active(start: datetime | None, end: datetime | None, now: datetime) -> bool:
     if start and start > now:
         return False
-    if end and end < (now - timedelta(minutes=ENDS_AT_GRACE_MINUTES)):
+    if end and end < (now - timedelta(minutes=feed_config.ENDS_AT_GRACE_MINUTES)):
         return False
     return True
 

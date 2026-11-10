@@ -143,6 +143,7 @@ from .feed_build.wl_ticker_text import _title_cause
 from .feed_build.wl_joins import _split_by_cause, _merge_wl_ticker_clusters
 from .feed_build.wl_notices import _drop_baustellen_twins, _absorb_works_tickers, _yield_notices_to_incidents
 from .feed_build.rss import _item_geometry, _emit_item, _channel_metadata, _make_rss
+from .feed_build.isolation import build_isolating
 
 
 __all__ = [
@@ -235,8 +236,9 @@ def lint() -> int:
     try:
         items = _invoke_collect_items(report)
         raw_count = len(items)
-        # The same chain as ``main`` (``_assemble_feed_items``), so lint
-        # counts what the health report of a build would count. ``state`` is
+        # The same chain as ``main`` (``_assemble_feed_items``), so lint counts
+        # like a build. No single-item trials and no rendering: a chain that
+        # fails on an item ends lint with exit code 2. ``state`` is
         # only read back by ``_count_new_items`` and never saved here.
         stats = FeedAssemblyStats()
         deduped_items = _assemble_feed_items(items, state, now, stats=stats)
@@ -540,10 +542,28 @@ def main() -> int:
             raw_count,
             collect_duration,
         )
-        items = _assemble_feed_items(items, state, now, stats=stats)
 
-        new_items_count = _count_new_items(items, state)
+        def _chain(its: list[FeedItem], st: dict[str, Any], counted: bool = True) -> list[FeedItem]:
+            nonlocal new_items_count
+            ordered = _assemble_feed_items(its, st, now, stats=stats if counted else FeedAssemblyStats())
+            # Before the rendering: it enters new items into the state.
+            fresh = _count_new_items(ordered, st)
+            new_items_count = fresh if counted else new_items_count
+            return ordered
 
+        def _fresh_stats() -> None:
+            nonlocal stats, new_items_count
+            stats, new_items_count = FeedAssemblyStats(), 0
+
+        # German feed (primary) is built first so the public ``feed.xml``
+        # is always refreshed regardless of any translation-pipeline
+        # issues encountered for the EN variant. An item on which the chain
+        # or the rendering fails leaves this run (``build_isolating``).
+        items, rss_de, rss_duration = build_isolating(
+            items, state, assemble=_chain, render=lambda its, st: _make_rss(its, now, st, lang="de"),
+            reload_state=_load_state, reset=_fresh_stats, report=report,
+            trial_assemble=lambda its, st: _chain(its, st, counted=False),
+        )
         health_metrics = FeedHealthMetrics(
             raw_items=raw_count,
             filtered_items=stats.filtered_count,
@@ -552,13 +572,6 @@ def main() -> int:
             duplicate_count=stats.duplicates_removed,
             duplicates=tuple(stats.duplicate_summaries),
         )
-
-        # German feed (primary) is built first so the public ``feed.xml``
-        # is always refreshed regardless of any translation-pipeline
-        # issues encountered for the EN variant.
-        rss_start = perf_counter()
-        rss_de = _make_rss(items, now, state, lang="de")
-        rss_duration = perf_counter() - rss_start
 
         out_path = validate_path(Path(feed_config.OUT_PATH), "OUT_PATH")
         with atomic_write(

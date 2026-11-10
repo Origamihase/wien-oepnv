@@ -5,10 +5,9 @@ Entwickler:innen geschrieben, die in einem halben Jahr zum Projekt
 stoßen: jene Person, die verstehen muss, **wie das System
 zusammenhängt**, bevor sie sich in irgendeine einzelne Datei stürzt.
 
-Die Diagramme weiter unten werden von GitHub automatisch gerendert.
-Wer das hier in einem Viewer ohne Mermaid-Unterstützung liest, findet
-zu jedem Diagramm dieselbe Information zusätzlich als Fließtext
-darunter.
+Die Diagramme weiter unten werden von GitHub automatisch gerendert. Wer das
+hier in einem Viewer ohne Mermaid-Unterstützung liest, findet zu jedem
+Diagramm dieselbe Information zusätzlich als Fließtext darunter.
 
 **Inhalt**
 
@@ -55,6 +54,7 @@ darunter.
   - [Nachkontrollen](architecture-teil-7.md#nachkontrollen)
   - [Betrieb](architecture-teil-7.md#betrieb)
 - [9. Querverweise](architecture-teil-7.md#9-querverweise)
+- [10. Robustheit und Laufzeit des Feed-Baus (seit 2026-11-10)](architecture-teil-7.md#10-robustheit-und-laufzeit-des-feed-baus-seit-2026-11-10)
 
 ---
 

@@ -34,7 +34,6 @@ def test_fallback_run_is_recognised_by_event_and_bot() -> None:
     runs = _runs(_raw(3, T0, "workflow_dispatch", tf.BOT_LOGIN), _raw(2, T0, "workflow_dispatch"),
                  _raw(1, T0))
     assert [run.is_fallback for run in runs] == [True, False, False]
-    assert tf.newest_foreign_number(runs) == 2
 
 
 @pytest.mark.parametrize("minutes", [0, 30, 31, 39])

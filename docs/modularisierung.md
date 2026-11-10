@@ -109,7 +109,7 @@ Weiterreichung, `from src.x import name as name`):
 | Skript | Neue Module |
 |---|---|
 | `enrich_station_aliases.py` | `src/places/station_aliases.py` |
-| `feed_watch.py` | `src/feed_watch/` (model, feed_rules, sources, evaluate, issues, state_io) |
+| `feed_watch.py` | `src/feed_watch/` (model, feed_rules, sources, evaluate, issues, state_io; seit 2026-11-10 skipped_items) |
 | `generate_markdown_stats.py` | `src/markdown_stats/` (rows, direction_coverage, markdown_report, readme, summary) |
 | `health_check.py` | `src/health_check/` (common, sources, outputs, workflow_secrets, github_runs) |
 | `ki_waechter.py` | `src/ki_waechter/` (inputs, audit) |
@@ -148,7 +148,7 @@ oder einem Unterpaket:
 | `src/utils/logging.py` | `log_patterns_generic.py`, `log_patterns_cloud_ai.py`, `log_patterns_devops_saas.py`, `log_patterns_platforms.py` |
 | `src/utils/secret_scanner.py` | `src/utils/secret_patterns/` (detectors, tokens_vcs_payment_ai, tokens_devtools_saas, tokens_gitlab_commerce, tokens_cloud_platform) |
 | `src/utils/http.py` | `src/utils/http_safety/` (limits, redaction, ip_guard, url_guard, peer, adapters, sessions, request_steps) |
-| `src/utils/stations.py` | `stations_normalize.py`, `stations_geometry.py`, `stations_data.py`, `stations_lookup.py` |
+| `src/utils/stations.py` | `stations_normalize.py`, `stations_geometry.py`, `stations_data.py`, `stations_lookup.py`; seit 2026-11-10 `term_search.py` (Suche nach sehr vielen Begriffen über einen Index) |
 | `src/utils/stations_validation.py` | `src/utils/station_checks/` (issues, report, basic, identity, security, names) |
 | `src/utils/stats.py` | `stats_sanitize.py`, `stats_location.py` |
 | `src/utils/text.py` | `text_html.py`, `text_markdown.py`, `text_repair.py` |
@@ -326,6 +326,7 @@ Tests):
 | `translation_cache` | Prüfung eines gecachten EN-Textes, Sprach-Overlay (`_apply_lang_overlay`) |
 | `item_format` | Titel und Beschreibung eines Eintrags (`_format_item_content`) mit Helfern |
 | `rss` | RSS-Dokument: GeoRSS, ein `<item>` (`_emit_item`), Kanal-Metadaten und Lizenzzeilen, `_make_rss` |
+| `isolation` | Seit 2026-11-10: eine Meldung, an der Kette oder Ausgabe scheitert, fällt aus dem Lauf (`build_isolating`) |
 
 Wer eine Funktion des Feed-Baus ändert, ändert sie in ihrem Teil; ein neuer
 Name kommt in den Teil seines Themas, und liest ihn `src/`, `scripts/` oder ein

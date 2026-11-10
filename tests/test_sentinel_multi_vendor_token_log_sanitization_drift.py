@@ -37,7 +37,7 @@ Families covered (each is a sibling-drift closure for one or more
   account API access for the live secret; webhook forgery for
   ``whsec_``).
 
-* **Anthropic API Key** — ``sk-ant-(api|admin)NN-`` prefix plus a
+* **Anthropic API Key** — ``sk-ant-<kind>NN-`` prefix plus a
   32+ char body. LLM billing fraud + prompt exfiltration. Admin-
   tier additionally grants console access to the org's billing /
   organisation members.

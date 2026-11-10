@@ -33,6 +33,7 @@ from src.feed_watch.model import (
     SourceSample,
     _parse_iso,
 )
+from src.feed_watch.skipped_items import SkippedItem, check_skipped_items
 from src.feed_watch.sources import PollSample, check_fresh_answers, check_sources, check_vao_version
 from src.utils.vao_version import VersionState
 
@@ -56,6 +57,7 @@ def evaluate(
     fetch_exit: Mapping[str, int] | None = None,
     poll: PollSample | None = None,
     vao: VersionState | None = None,
+    skipped: Sequence[SkippedItem] | None = None,
 ) -> Result:
     """Every finding of this run and the state for the next one. Pure: no I/O."""
     built = feed.built or now
@@ -63,6 +65,7 @@ def evaluate(
     findings: list[Finding] = []
     findings += check_duplicates(items)
     findings += check_count(items, max_items)
+    findings += check_skipped_items(skipped)
     findings += check_old_as_new(items)
     previous = state.get("previous_feed")
     flagged = state.get("seit_zu_frueh")

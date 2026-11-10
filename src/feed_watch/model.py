@@ -123,6 +123,15 @@ RULES: dict[str, Rule] = {
             "oder fälschlich verworfen worden.",
         ),
         Rule(
+            "meldung-uebersprungen",
+            "Meldung beim Bau übersprungen",
+            "Rang 1",
+            "Ein Schritt der Feed-Kette ist an einer Meldung gescheitert. Der Bau hat diese "
+            "Meldung übersprungen und den Feed mit den übrigen gebaut. Der Fund nennt Quelle, "
+            "Titel, Fehlerklasse und Stelle im Code; mehr steht im Protokoll des Laufs. Die "
+            "Meldung fehlt im Feed, bis die Ursache behoben ist.",
+        ),
+        Rule(
             "alte-meldung-als-neu",
             "Alte Meldung als neue Störung",
             "Rang 1",

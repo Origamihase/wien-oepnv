@@ -138,6 +138,7 @@ class RunReport:
     build_successful: bool = False
     exception_message: str | None = None
     warnings: list[str] = field(default_factory=list)
+    skipped_items: list[dict[str, str]] = field(default_factory=list)
     _error_messages: list[str] = field(default_factory=list)
     _seen_errors: set[str] = field(default_factory=set)
     _seen_warnings: set[str] = field(default_factory=set)
@@ -243,6 +244,21 @@ class RunReport:
                 return
             self._seen_warnings.add(cleaned)
             self.warnings.append(cleaned)
+
+    def add_skipped_item(self, source: str, title: str, error: str) -> None:
+        """Record an item the build left out because a step failed on it.
+
+        ``src.feed_build.isolation``; the health report lists these under
+        ``skipped_items``, where the Feed-Wächter reads them.
+        """
+        entry = {
+            "source": _bounded_message(clean_message(source)) or "unbekannt",
+            "title": _bounded_message(clean_message(title)) or "(ohne Titel)",
+            "error": _bounded_message(clean_message(error)) or "unbekannt",
+        }
+        with self._lock:
+            if entry not in self.skipped_items and len(self.skipped_items) < _MAX_REPORT_MESSAGE_COUNT:
+                self.skipped_items.append(entry)
 
     def add_error_message(self, message: str) -> None:
         """Add a global error message to the report."""

@@ -153,11 +153,6 @@ def newest_ifttt(runs: Iterable[Run]) -> Run | None:
     return next((run for run in runs if run.is_ifttt), None)
 
 
-def newest_foreign_number(runs: Iterable[Run]) -> int:
-    """The highest run number of a run the fallback did not start (0 if none)."""
-    return max((run.number for run in runs if not run.is_fallback), default=0)
-
-
 @dataclass(frozen=True)
 class Decision:
     fire: bool

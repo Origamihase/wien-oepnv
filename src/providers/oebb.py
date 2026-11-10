@@ -44,7 +44,7 @@ from ..utils.http import (
 )
 from ..utils.logging import sanitize_log_arg
 from ..utils import raw_capture, source_shape
-from ..utils.vienna_clock import vienna_wall_clock
+from ..utils.vienna_clock import plausible_moment, vienna_wall_clock
 from .oebb_title import (
     _UPDATE_PREFIX_RE,
     _clean_description,
@@ -254,6 +254,8 @@ def _get_text(elem: Element | None, tag: str) -> str:
 def _parse_dt_rfc2822(s: str) -> datetime | None:
     try:
         dt = parsedate_to_datetime(s)
+        if plausible_moment(dt) is None:
+            return None
         return vienna_wall_clock(dt) if dt.tzinfo else dt.replace(tzinfo=UTC)
     except Exception:
         return None
@@ -353,7 +355,8 @@ def _parse_period(desc: str) -> tuple[datetime | None, datetime | None]:
     23:59:59 so an item stays visible for the whole final day rather than
     vanishing at midnight. Returns ``(None, None)`` when the description
     carries no such prefix; the caller then keeps the previous behaviour
-    (publication date as start, no end).
+    (publication date as start, no end). A side whose year lies outside
+    ``PLAUSIBLE_YEARS`` is ``None`` on its own; the other side stays.
 
     A single date means a one-day disruption: start and end fall on the
     same day, which :func:`feed_build.time_line.format_local_times` renders as
@@ -376,8 +379,11 @@ def _parse_period(desc: str) -> tuple[datetime | None, datetime | None]:
         return None, None
     if end_day < start:
         return None, None
+    # A year at the edge of the calendar counts as not set (PLAUSIBLE_YEARS);
+    # the other side of the period stays ("05.12.2026 - 31.12.9999" begins on
+    # 05.12. and names no end).
     end = end_day.replace(hour=23, minute=59, second=59)
-    return start, end
+    return plausible_moment(start), plausible_moment(end)
 
 
 def _build_item_from_xml(item: Element) -> FeedItem | str:

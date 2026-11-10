@@ -7,7 +7,7 @@ deadline. Without an upper bound an env override such as
 ``PROVIDER_TIMEOUT=99999`` (intentional misconfig, leaked CI env, compromised
 secret store) would let a sluggish or attacker-controlled upstream peer
 hold a worker for ~28 hours per fetch — same Slowloris primitive as the
-previously-capped ``VOR_HTTP_TIMEOUT`` and ``REQUEST_TIMEOUT_S``.
+previously-capped ``REQUEST_TIMEOUT_S``.
 """
 
 from __future__ import annotations
@@ -44,9 +44,7 @@ def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
 
 def test_max_provider_timeout_matches_default() -> None:
     # The cap must equal the default so env overrides can only TIGHTEN the
-    # value (never raise it above the documented Slowloris ceiling). Mirrors
-    # ``HTTP_TIMEOUT = min(VOR_HTTP_TIMEOUT, DEFAULT_HTTP_TIMEOUT)`` in
-    # ``src/providers/vor.py``.
+    # value (never raise it above the documented Slowloris ceiling).
     from src.config.defaults import DEFAULT_PROVIDER_TIMEOUT
 
     assert feed_config.MAX_PROVIDER_TIMEOUT == DEFAULT_PROVIDER_TIMEOUT

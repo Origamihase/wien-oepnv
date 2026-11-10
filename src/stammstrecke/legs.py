@@ -18,6 +18,7 @@ from src.stammstrecke.core import (
 )
 from src.stammstrecke.ledger import _canonical_line_name, _identity_key
 from src.utils.logging import sanitize_log_arg
+from src.utils.vienna_clock import plausible_moment
 
 def _is_sbahn_leg(leg: object) -> bool:
     """Return ``True`` when *leg* represents a Vienna S-Bahn or regional rail product.
@@ -115,7 +116,9 @@ def _parse_vao_dt(date_str: Any, time_str: Any) -> datetime | None:
         naive = datetime.strptime(f"{date_txt} {time_txt}", "%Y-%m-%d %H:%M")
     except ValueError:
         return None
-    return naive.replace(tzinfo=VIENNA_TZ, fold=0)
+    # A year outside PLAUSIBLE_YEARS counts as unreadable: the callers add
+    # and subtract days and move the value to UTC.
+    return plausible_moment(naive.replace(tzinfo=VIENNA_TZ, fold=0))
 
 
 def _leg_departure_delay_minutes(leg: Mapping[str, Any]) -> float | None:
