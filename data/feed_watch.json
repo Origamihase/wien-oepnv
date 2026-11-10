@@ -1,8 +1,8 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-10T10:31:00.359340+00:00",
- "built": "2026-11-10T11:30:48+01:00",
+ "updated": "2026-11-10T11:00:59.037367+00:00",
+ "built": "2026-11-10T12:00:45+01:00",
  "findings": [
   {
    "rule": "alte-meldung-als-neu",
@@ -15,24 +15,24 @@
  "rules": {
   "alte-meldung-als-neu": {
    "since": "2026-11-09T23:01:31.085708+00:00",
-   "last": "2026-11-10T10:31:00.359340+00:00",
+   "last": "2026-11-10T11:00:59.037367+00:00",
    "held_runs": 0,
    "issue": 2190
   }
  },
  "previous_feed": {
-  "built": "2026-11-10T11:30:48+01:00",
+  "built": "2026-11-10T12:00:45+01:00",
   "items": [
    {
-    "title": "D: Polizeieinsatz",
-    "time_line": "Seit 11:24"
+    "title": "38A: Falschparker",
+    "time_line": "Seit 11:43"
    },
    {
-    "title": "10/60: Polizeieinsatz",
+    "title": "10/D: Polizeieinsatz",
     "time_line": "Seit 11:17"
    },
    {
-    "title": "60: Falschparker",
+    "title": "60: Polizeieinsatz, Falschparker",
     "time_line": "Seit 11:07"
    },
    {
@@ -6786,17 +6786,37 @@
     "oebb": 7,
     "wl": 80
    }
+  },
+  {
+   "t": "2026-11-10T11:00:59.037367+00:00",
+   "raw": {
+    "wl-stoerungen": 65,
+    "wl-hinweise": 93,
+    "oebb": 191,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 25,
+    "oebb": 166,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 82
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-10T10:31:00.359340+00:00"
+   "last_ok": "2026-11-10T11:00:59.037367+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-10T10:31:00.359340+00:00"
+   "last_ok": "2026-11-10T11:00:59.037367+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-10T10:31:00.359340+00:00"
+   "last_ok": "2026-11-10T11:00:59.037367+00:00"
   }
  }
 }
