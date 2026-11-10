@@ -33,7 +33,7 @@
     „Jahresarchiv“, 2026-10-03); fällt der Lauf am 01.01. aus, schreibt sie
     der nächste. Bis 2026-11-10 wurde die Seite danach nie mehr angefasst;
     seither folgt sie ihrem Ledger, ist vom Dashboard aus verlinkt und trägt
-    den Abdeckungshinweis ihres Jahres (Teil 7, §11).
+    den Abdeckungshinweis ihres Jahres (Teil 7, §12).
   Tests: `tests/test_calendar_years.py`.
 
 ### Zeitraum einer WL-Meldung: Plausibilitätsprüfung (seit 2026-10-02)

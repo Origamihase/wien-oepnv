@@ -156,6 +156,47 @@ def test_ask_parts_without_the_second_answer_keeps_the_first_and_notes_the_half(
     assert alone.ok and alone.answers == 1 and len(chain.calls) == 1 and len(alone.parts) == 1
 
 
+def test_an_answer_counts_only_the_texts_of_its_own_half() -> None:
+    """A half shows the day's numbers with gaps; a model that lists them "lückenlos" names texts it never saw."""
+    numbers = [[1, 2, 3], [3, 4, 5, 6]]
+    both = _Chain(
+        _ok("gemini-3.6-flash", _text(_finding(2), geprueft=[1, 2, 3, 4, 5, 6]), 10.0),
+        _ok("gemini-3.6-flash", _text(_finding(5), geprueft=[1, 2, 3, 4, 6]), 10.0),
+    )
+    united = ask_parts(["EINS", "ZWEI"], CHAIN, "k", both, sleep=lambda _s: None, numbers=numbers)
+    parsed = json.loads(united.text)
+    # Text 5 stood only in the second half, and its answer left it out: not checked, whatever the first answer listed.
+    assert parsed["geprueft"] == [1, 2, 3, 4, 6] and [f["nr"] for f in parsed["funde"]] == [2, 5]
+    # The second half without an answer: its texts are not checked, although the first answer listed them.
+    busy = Answer(False, "gemini-3.1-flash-lite", error="Gemini 503", requests=2, overloaded=True)
+    alone = _Chain(_ok("gemini-3.6-flash", _text(_finding(2), geprueft=[1, 2, 3, 4, 5, 6]), 10.0), busy)
+    kept = ask_parts(["EINS", "ZWEI"], CHAIN, "k", alone, sleep=lambda _s: None, numbers=numbers)
+    parsed = json.loads(kept.text)
+    assert kept.ok and kept.answers == 1 and parsed["geprueft"] == [1, 2, 3] and [f["nr"] for f in parsed["funde"]] == [2]
+    # An answer without JSON stays as it came; ``verify`` reports it.
+    odd = _Chain(_ok("gemini-3.6-flash", "kein JSON", 10.0), busy)
+    assert ask_parts(["EINS", "ZWEI"], CHAIN, "k", odd, sleep=lambda _s: None, numbers=numbers).text == "kein JSON"
+
+
+def test_cmd_ask_names_the_texts_of_each_half(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    _history(tmp_path)
+    prep = kw.prepare(kw.git_snapshots(tmp_path, "HEAD", 24), "head", 24)
+    work = tmp_path / "w"
+    work.mkdir()
+    (work / "eingabe.json").write_text(json.dumps(kw.asdict(prep)), encoding="utf-8")
+    (work / "eingabe.md").write_text(render_input(prep), encoding="utf-8")
+    seen: dict[str, Any] = {}
+
+    def fake(prompts: list[str], model: str, key: str, ask: Any, **kwargs: Any) -> Answer:
+        seen.update(kwargs, prompts=len(prompts))
+        return Answer(True, "gemini-3.6-flash", text=_text(geprueft=[1]))
+
+    monkeypatch.setattr(kw, "ask_parts", fake)
+    monkeypatch.setenv(kw.GEMINI_KEY_ENV, "k")
+    assert kw.main(["ask", "--dir", str(work), "--model", CHAIN]) == 0
+    assert seen["prompts"] == 2 and seen["numbers"] == [part.items for part in halves(prep)]
+
+
 def test_ask_parts_sends_no_second_request_after_the_deadline(capsys: pytest.CaptureFixture[str]) -> None:
     chain = _Chain(_ok("gemini-3.6-flash", _text(geprueft=[1]), 721.0))
     late = ask_parts(["EINS", "ZWEI"], CHAIN, "k", chain, sleep=lambda _s: None, deadline_s=720.0)

@@ -26,11 +26,11 @@ from .wl_tickers import (
     _MAX_LISTED_WORDS, _group_cause, _cause_key, _chosen_cause, _distinct_messages, _group_span, _line_runs, _message_tokens,
     _run_incidents, _spans_meet, _telling_long_message, _ticker_groups, _ticker_line_tokens, _ticker_part,
     _names_incident,
-    _ticker_text, _ticker_time, _without_cause,
+    _ticker_text, _ticker_time, _without_cause, _WL_STOCK_SENTENCE_RE,
 )
 from .wl_ticker_text import (
     _LONG_MESSAGE_TAIL_RE, _RIDER_CONSEQUENCE_RE, _combined_incidents, _incident_entry, _incident_start,
-    _said_already,
+    _said_already, _title_cause,
 )
 
 __all__ = [
@@ -354,6 +354,27 @@ def _merge_wl_ticker_clusters(items: list[FeedItem]) -> list[FeedItem]:
 # the 31A runs a detour) adds nothing to it and would contradict it on the
 # screen. What a ticker of a line the text does
 # not name announces is kept under its line ("37: Betrieb ab …").
+#
+# Two gaps closed on 2026-11-10 (operator decision, card "Zusammenfassen
+# prüfen"). On 2026-11-09 from 12:30 to 14:30 Vienna time "2/12/31:
+# Beschädigte Oberleitung durch einen LKW" stood beside "12:
+# Fahrleitungsgebr.", "31: Fahrleitungsgebr." and "2: Fahrleitungsgebr",
+# four of the ten slots: the agent behind "durch" stayed in the compared
+# cause, and the display's cut "Fahrleitungsgebr." was no known cause.
+# The cause is now compared as the combined title names it
+# (``_title_cause``) and a cut cause is written out (``_cause_key``). On
+# 2026-10-23 ("40/41/42: Polizeieinsatz" beside "40/41: Polizeieinsatz")
+# and 2026-11-10 ("37/40/41/42: Verkehrsunfall" beside "41: Verkehrsunfall")
+# the roles were the other way round: the display tickers named every
+# line, WL's numbered message only some, with nothing but its stock
+# sentence. The entry of more lines now takes the one of fewer whenever
+# exactly one of the two carries a WL number; two numbered messages, or
+# two tickers only, keep their slots. WL's stock sentence adds nothing to
+# an entry with a text of its own. Another cause, or none, still keeps its
+# slot ("60: Falschparker" beside "10/60: Polizeieinsatz", 2026-11-10).
+# Replay of all 2,207 feed states from 2026-09-29 to 2026-11-10: 11 change,
+# all at these incidents and "12: Fahrleitungsgebr, Beschädigte Oberleitung"
+# (2026-11-05), now "12: Beschädigte Oberleitung".
 _TICKER_LEAD = timedelta(minutes=10)  # ``wl_resolved.TICKER_LEAD``
 
 
@@ -381,9 +402,14 @@ def _stripped_label_line(text: str, lines: Sequence[str]) -> str | None:
 
 
 def _ticker_owner(ticker: FeedItem, incidents: Sequence[tuple[int, FeedItem]]) -> int | None:
-    """The index of the incident entry whose ticker *ticker* is, if any (see above)."""
+    """The index of the entry of more lines that takes *ticker*, if any (see above).
+
+    Exactly one of the two carries a WL number: the ticker joins WL's
+    message, or WL's message of some lines joins the display tickers of all.
+    """
     lines = {token.casefold() for token in _ticker_line_tokens(ticker)}
-    cause = _cause_key(_ticker_part(ticker).cause)
+    cause = _cause_key(_title_cause(_ticker_part(ticker).cause))
+    numbered = _has_wl_number(ticker)
     began, span = _ticker_time(ticker), _group_span([ticker])
     if not lines or not cause or began is None or span is None:
         return None
@@ -394,7 +420,9 @@ def _ticker_owner(ticker: FeedItem, incidents: Sequence[tuple[int, FeedItem]]) -
             continue
         if not lines < {token.casefold() for token in _ticker_line_tokens(entry)}:
             continue
-        if _cause_key(_ticker_part(entry).cause) != cause or not _spans_meet(span, entry_span):
+        if _has_wl_number(entry) == numbered:
+            continue
+        if _cause_key(_title_cause(_ticker_part(entry).cause)) != cause or not _spans_meet(span, entry_span):
             continue
         fitting.append((start, index))
     return max(fitting)[1] if fitting else None
@@ -414,6 +442,8 @@ def _with_line_tickers(entry: FeedItem, tickers: Sequence[FeedItem]) -> FeedItem
         part = _ticker_part(ticker)
         message = _without_cause(part.consequence or part.extra or part.body, cause).replace("*", "").strip(" .")
         if not message or message.casefold() == _HINDRANCE.casefold() or _said_already(message, said):
+            continue
+        if text and _WL_STOCK_SENTENCE_RE.match(f"{message}."):
             continue
         added.append(f"{'/'.join(lines)}: {message}")
     merged = cast(FeedItem, dict(entry))
@@ -443,16 +473,19 @@ def _with_line_tickers(entry: FeedItem, tickers: Sequence[FeedItem]) -> FeedItem
 
 def _join_part_line_tickers(items: list[FeedItem]) -> list[FeedItem]:
     """Join display tickers of some lines into their incident of more lines (see above)."""
-    incidents = [(index, item) for index, item in enumerate(items) if _is_wl_ticker(item) and _has_wl_number(item)]
-    if not incidents:
+    owners = [
+        (index, item) for index, item in enumerate(items) if _is_wl_ticker(item) and len(_ticker_line_tokens(item)) > 1
+    ]
+    if not owners:
         return items
     owned: dict[int, list[FeedItem]] = defaultdict(list)
     dropped: set[int] = set()
     for index, item in enumerate(items):
-        if not _is_wl_ticker(item) or _has_wl_number(item):
+        if not _is_wl_ticker(item):
             continue
-        owner = _ticker_owner(item, incidents)
-        if owner is None:
+        # An entry that took others keeps its slot; one already taken takes none.
+        owner = _ticker_owner(item, [(at, entry) for at, entry in owners if at != index and at not in dropped])
+        if owner is None or index in owned:
             continue
         owned[owner].append(item)
         dropped.add(index)

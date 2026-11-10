@@ -1,47 +1,32 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-10T16:01:38.431919+00:00",
- "built": "2026-11-10T17:01:27+01:00",
- "findings": [
-  {
-   "rule": "alte-meldung-als-neu",
-   "title": "Alte Meldung als neue Störung",
-   "rank": "Rang 1",
-   "subject": "R95: Wien Hauptbahnhof ↔ Felixdorf",
-   "text": "Meldung vom 19.12. 10:07, im Feed erstmals 24.05. 05:30, Zeitzeile [Heute]"
-  }
- ],
- "rules": {
-  "alte-meldung-als-neu": {
-   "since": "2026-11-09T23:01:31.085708+00:00",
-   "last": "2026-11-10T16:01:38.431919+00:00",
-   "held_runs": 0,
-   "issue": 2190
-  }
- },
+ "updated": "2026-11-10T19:00:54.440745+00:00",
+ "built": "2026-11-10T20:00:50+01:00",
+ "findings": [],
+ "rules": {},
  "previous_feed": {
-  "built": "2026-11-10T17:01:27+01:00",
+  "built": "2026-11-10T20:00:50+01:00",
   "items": [
    {
-    "title": "60: Verkehrsunfall",
-    "time_line": "Seit 16:49"
+    "title": "25: Schadhafter Zug",
+    "time_line": "Seit 19:10"
+   },
+   {
+    "title": "26: Schadhaftes Fahrzeug",
+    "time_line": "Seit 19:11"
+   },
+   {
+    "title": "2/5/12: Fremder Verkehrsunfall",
+    "time_line": "Seit 18:16"
+   },
+   {
+    "title": "U6: Rettungseinsatz",
+    "time_line": "Seit 18:29"
    },
    {
     "title": "10A: Schadhaftes Fahrzeug",
     "time_line": "Seit 16:35"
-   },
-   {
-    "title": "Tullnerfeld",
-    "time_line": "Seit 16:25"
-   },
-   {
-    "title": "2: Falschparker, Verkehrsunfall",
-    "time_line": "Seit 16:26"
-   },
-   {
-    "title": "41: Verkehrsunfall",
-    "time_line": "Seit 16:24"
    },
    {
     "title": "Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx",
@@ -67,126 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-03T16:01:59.768310+00:00",
-   "raw": {
-    "wl-stoerungen": 52,
-    "wl-hinweise": 73,
-    "oebb": 181,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 12,
-    "oebb": 156,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 7,
-    "wl": 86
-   }
-  },
-  {
-   "t": "2026-11-03T16:31:01.310416+00:00",
-   "raw": {
-    "wl-stoerungen": 56,
-    "wl-hinweise": 73,
-    "oebb": 181,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 12,
-    "oebb": 156,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 7,
-    "wl": 88
-   }
-  },
-  {
-   "t": "2026-11-03T17:01:09.913919+00:00",
-   "raw": {
-    "wl-stoerungen": 71,
-    "wl-hinweise": 73,
-    "oebb": 181,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 12,
-    "oebb": 156,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 7,
-    "wl": 91
-   }
-  },
-  {
-   "t": "2026-11-03T17:31:11.755932+00:00",
-   "raw": {
-    "wl-stoerungen": 70,
-    "wl-hinweise": 73,
-    "oebb": 181,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 12,
-    "oebb": 156,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 7,
-    "wl": 92
-   }
-  },
-  {
-   "t": "2026-11-03T18:01:11.561310+00:00",
-   "raw": {
-    "wl-stoerungen": 53,
-    "wl-hinweise": 73,
-    "oebb": 181,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 12,
-    "oebb": 156,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 7,
-    "wl": 87
-   }
-  },
-  {
-   "t": "2026-11-03T18:31:17.277153+00:00",
-   "raw": {
-    "wl-stoerungen": 60,
-    "wl-hinweise": 73,
-    "oebb": 181,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 12,
-    "oebb": 156,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 7,
-    "wl": 87
-   }
-  },
   {
    "t": "2026-11-03T19:03:34.637516+00:00",
    "raw": {
@@ -6806,17 +6671,137 @@
     "oebb": 8,
     "wl": 84
    }
+  },
+  {
+   "t": "2026-11-10T16:31:01.779957+00:00",
+   "raw": {
+    "wl-stoerungen": 52,
+    "wl-hinweise": 92,
+    "oebb": 196,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 25,
+    "oebb": 170,
+    "baustellen": 62
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 8,
+    "wl": 83
+   }
+  },
+  {
+   "t": "2026-11-10T17:00:47.669426+00:00",
+   "raw": {
+    "wl-stoerungen": 66,
+    "wl-hinweise": 92,
+    "oebb": 196,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 25,
+    "oebb": 170,
+    "baustellen": 62
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 8,
+    "wl": 84
+   }
+  },
+  {
+   "t": "2026-11-10T17:31:03.446709+00:00",
+   "raw": {
+    "wl-stoerungen": 76,
+    "wl-hinweise": 92,
+    "oebb": 196,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 25,
+    "oebb": 170,
+    "baustellen": 62
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 8,
+    "wl": 89
+   }
+  },
+  {
+   "t": "2026-11-10T18:01:05.503657+00:00",
+   "raw": {
+    "wl-stoerungen": 75,
+    "wl-hinweise": 93,
+    "oebb": 197,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 26,
+    "oebb": 171,
+    "baustellen": 62
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 8,
+    "wl": 91
+   }
+  },
+  {
+   "t": "2026-11-10T18:31:04.757013+00:00",
+   "raw": {
+    "wl-stoerungen": 106,
+    "wl-hinweise": 93,
+    "oebb": 197,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 25,
+    "oebb": 171,
+    "baustellen": 62
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 8,
+    "wl": 88
+   }
+  },
+  {
+   "t": "2026-11-10T19:00:54.440745+00:00",
+   "raw": {
+    "wl-stoerungen": 106,
+    "wl-hinweise": 93,
+    "oebb": 196,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 25,
+    "oebb": 170,
+    "baustellen": 62
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 8,
+    "wl": 88
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-10T16:01:38.431919+00:00"
+   "last_ok": "2026-11-10T19:00:54.440745+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-10T16:01:38.431919+00:00"
+   "last_ok": "2026-11-10T19:00:54.440745+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-10T16:01:38.431919+00:00"
+   "last_ok": "2026-11-10T19:00:54.440745+00:00"
   }
  }
 }

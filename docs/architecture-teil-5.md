@@ -72,7 +72,7 @@ mit unterschiedlichen Fenstern: das tägliche Markdown-Dashboard
 (`docs/statistik.md`, Kalenderjahr; jedes abgeschlossene Jahr steht in
 `docs/statistik-<Jahr>.md`, vom Dashboard aus verlinkt und bei jedem
 Dashboard-Lauf mit seinem Ledger abgeglichen, Teil 7,
-§11) plus die vier README-STATS-
+§12) plus die vier README-STATS-
 Marker (`STATS:STAMMSTRECKE[_LIVE]` und `STATS:AUSFAELLE[_LIVE]`,
 60-Min- und 30-Tage-Snapshots), sowie den RSS-Feed selbst
 (Stammstrecken-Sektion, 1-Stunden-Fenster — siehe

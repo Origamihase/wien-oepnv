@@ -8,21 +8,59 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 10 Nov 2026 17:29:19 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 20:00:50 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[60: Verkehrsunfall]]></title>
+      <title><![CDATA[25: Schadhafter Zug]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">f1fe5d52a5a574694cd18960683874af6f978ac62924632bfae77052d94b803d</guid>
-      <pubDate>Tue, 10 Nov 2026 16:49:00 +0100</pubDate>
+      <guid isPermaLink="false">7c5ca1cde42eb7177fa98bdeccfc34d94bc5f2e63c05e008a3e5268b80203cdf</guid>
+      <pubDate>Tue, 10 Nov 2026 19:10:16 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 10 Nov 2026 16:49:00 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 10 Nov 2026 16:52:03 +0100</ext:starts_at>
-      <ext:ends_at>Tue, 10 Nov 2026 17:51:00 +0100</ext:ends_at>
-      <description>Fahrtbehinderung. [Seit 16:49]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 16:49]]]></content:encoded>
+      <ext:first_seen>Tue, 10 Nov 2026 19:30:47 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 10 Nov 2026 19:16:50 +0100</ext:starts_at>
+      <description>Betrieb ab Donauspital, Berresgasse. Ersatzbus 26E hält Karl-Waldbrunner-Platz vor Schloßhofer Straße; Züge halten Donaufelder Straße 175-177. [Seit 19:10]</description>
+      <content:encoded><![CDATA[Betrieb ab Donauspital, Berresgasse. Ersatzbus 26E hält Karl-Waldbrunner-Platz vor Schloßhofer Straße; Züge halten Donaufelder Straße 175-177.<br/>[Seit 19:10]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">59e208367d2d4abd51c67734b05d4470604d748bf4d8210aec89186b2434cefa</guid>
+      <pubDate>Tue, 10 Nov 2026 19:11:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 10 Nov 2026 19:11:00 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 10 Nov 2026 19:11:00 +0100</ext:starts_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. Züge halten in Tokiostraße. [Seit 19:11]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. Züge halten in Tokiostraße.<br/>[Seit 19:11]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2/5/12: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">5fb474453e370951899de39e445fa9d8821b2b2148267010c4588122c93895dd</guid>
+      <pubDate>Tue, 10 Nov 2026 18:16:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 10 Nov 2026 18:30:49 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 10 Nov 2026 18:16:00 +0100</ext:starts_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 18:16]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 18:16]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306</guid>
+      <pubDate>Tue, 10 Nov 2026 18:29:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 10 Nov 2026 18:29:00 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 10 Nov 2026 18:29:00 +0100</ext:starts_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 18:29]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 18:29]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[10A: Schadhaftes Fahrzeug]]></title>
@@ -36,47 +74,6 @@
       <ext:starts_at>Tue, 10 Nov 2026 16:35:00 +0100</ext:starts_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 16:35]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 16:35]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Tullnerfeld]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;925854</guid>
-      <pubDate>Tue, 10 Nov 2026 16:56:26 +0100</pubDate>
-      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 10 Nov 2026 16:30:47 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 10 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Tue, 10 Nov 2026 23:59:59 +0100</ext:ends_at>
-      <georss:point>48.295143 15.996440</georss:point>
-      <description>Wegen einer Weichenstörung sind in Tullnerfeld Bahnhof Zugfahrten bis voraussichtlich 17:00 Uhr nur eingeschränkt möglich. Es kommt zu Verzögerungen und Umleitungen. [Seit 16:25]</description>
-      <content:encoded><![CDATA[Wegen einer Weichenstörung sind in Tullnerfeld Bahnhof Zugfahrten bis voraussichtlich 17:00 Uhr nur eingeschränkt möglich. Es kommt zu Verzögerungen und Umleitungen.<br/>[Seit 16:25]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2: Falschparker, Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc</guid>
-      <pubDate>Tue, 10 Nov 2026 16:26:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 10 Nov 2026 16:26:00 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 10 Nov 2026 16:41:32 +0100</ext:starts_at>
-      <description>Falschparker: Fahrtbehinderung. [Seit 16:26]</description>
-      <content:encoded><![CDATA[Falschparker: Fahrtbehinderung.<br/>[Seit 16:26]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[41: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">b8938e94c70221081d94c1f9627e29d1273108203a2ba78ea9d9eaa80416cb92</guid>
-      <pubDate>Tue, 10 Nov 2026 16:24:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 10 Nov 2026 16:24:00 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 10 Nov 2026 16:24:00 +0100</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 16:24]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 16:24]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx]]></title>

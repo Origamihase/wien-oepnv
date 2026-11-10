@@ -450,7 +450,35 @@ zweite Index braucht 0,5 statt 1,8 s. Zusammen, gemessen am 10.11.2026 mit
 den Daten des Tages, erster Aufruf im Prozess: ÖBB-Abruf 13 bis 17 s →
 2,7 s, Feed-Bau 4,2 bis 4,9 s → 2,7 bis 2,9 s.
 
-## 11. Jahresarchiv der Statistik (geprüft 2026-11-10)
+## 11. Ein Vorfall, ein Platz: gekürzte Ursache und vertauschte Rollen (seit 2026-11-10)
+
+Betreiberentscheidung vom 2026-11-10 (Karte „Zusammenfassen prüfen“), Ergänzung zu
+`_join_part_line_tickers` (Teil 1, „Eine zweite Ausnahme“). Am 09.11. von 12:30 bis 14:30 Uhr belegte ein
+Oberleitungsschaden vier der zehn Plätze, „2/12/31: Beschädigte
+Oberleitung durch einen LKW“ neben „12: Fahrleitungsgebr.“, „31:
+Fahrleitungsgebr.“ und „2: Fahrleitungsgebr“. Der Vergleich nahm den
+Urheber „durch einen LKW“ mit, und die von der Tafel gekürzte Ursache
+kannte er nicht. Jetzt zählt die Ursache so, wie der zusammengefasste
+Titel sie nennt (`_title_cause`), und eine gekürzte Ursache wird
+ausgeschrieben, wenn sie ohne Schlusspunkt und mit mindestens sechs
+Buchstaben genau eine bekannte Ursachengruppe beginnt
+(`_cause_key`, „Fahrleitungsgebr.“ → Oberleitungsstörung); beginnt sie
+mehrere, bleibt sie, wie WL sie schrieb. Am 23.10. („40/41/42:
+Polizeieinsatz“ neben „40/41: Polizeieinsatz“) und 10.11.
+(„37/40/41/42: Verkehrsunfall“ neben „41: Verkehrsunfall“) waren die
+Rollen vertauscht: Die Tafeln nannten alle Linien, WLs Meldung mit
+Nummer nur einen Teil, mit nichts als dem Standardsatz. Jetzt nimmt der
+Eintrag mit mehr Linien den mit weniger auf, wenn genau einer der beiden
+eine WL-Nummer trägt; zwei Meldungen mit Nummer und zwei reine
+Tafel-Kurzmeldungen bleiben getrennt. WLs Standardsatz „Nach einer
+Fahrtbehinderung …“ fügt einem Eintrag mit eigenem Text nichts hinzu.
+Andere oder keine Ursache behält weiter ihren Platz („60: Falschparker“
+neben „10/60: Polizeieinsatz“, 10.11.). Nachgerechnet über alle 2.207
+Feed-Stände vom 29.09. bis 10.11.: 11 ändern sich, alle an diesen
+Vorfällen und am 05.11. („12: Fahrleitungsgebr, Beschädigte Oberleitung“
+wird „12: Beschädigte Oberleitung“); 0 Fehler.
+
+## 12. Jahresarchiv der Statistik (geprüft 2026-11-10)
 
 Der Statistik-Schritt lief noch nie über einen Jahreswechsel. Nachgestellt mit
 dem echten Ledger: die 100 Ticks von Mittwoch, 04.11.2026, 23:01 bis Samstag,

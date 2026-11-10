@@ -55,7 +55,8 @@ Diagramm dieselbe Information zusätzlich als Fließtext darunter.
   - [Betrieb](architecture-teil-7.md#betrieb)
 - [9. Querverweise](architecture-teil-7.md#9-querverweise)
 - [10. Robustheit und Laufzeit des Feed-Baus (seit 2026-11-10)](architecture-teil-7.md#10-robustheit-und-laufzeit-des-feed-baus-seit-2026-11-10)
-- [11. Jahresarchiv der Statistik (geprüft 2026-11-10)](architecture-teil-7.md#11-jahresarchiv-der-statistik-geprüft-2026-11-10)
+- [11. Ein Vorfall, ein Platz: gekürzte Ursache und vertauschte Rollen (seit 2026-11-10)](architecture-teil-7.md#11-ein-vorfall-ein-platz-gekürzte-ursache-und-vertauschte-rollen-seit-2026-11-10)
+- [12. Jahresarchiv der Statistik (geprüft 2026-11-10)](architecture-teil-7.md#12-jahresarchiv-der-statistik-geprüft-2026-11-10)
 
 ---
 
@@ -488,13 +489,12 @@ verdrängt eine andere Störung.
     (`_stripped_label_line`, seit 2026-10-25, Nachprüfung: am 19.10. hängte
     „2/10: Fremder Verkehrsunfall“ hinter die Umleitung der 2 noch „2:
     Betrieb ab Mayssengasse; Züge halten bei Linie 9.“). Was die
-    Kurzmeldung einer Linie ankündigt, die der Text nicht nennt, bleibt mit dem Linienkürzel
-    stehen, platziert wie bei `_with_consequences` („14A: Umleitung über
+    Kurzmeldung einer Linie ankündigt, die der Text nicht nennt, bleibt mit dem Linienkürzel stehen, platziert wie bei `_with_consequences` („14A: Umleitung über
     Gumpendorfer Str., Linke Wienzeile.“ vor WLs Standardsatz zu
     „13A/14A: Falschparker“, 06.10.). Die Kurzmeldungen werden Mitglieder
     des Eintrags (`_members`), damit GUID und Beginn bleiben, wenn die
     ausführliche Meldung zuerst endet. Nachgerechnet über alle Feed-Stände
-    seit 15.07. (4.510 Stände): In 26 ändert sich etwas, alle am 06.10. und 11.10.; 24 davon sind der Gasrohrbruch (drei Plätze frei), je einer „37/38/40/41/42: Schadhaftes Fahrzeug“ (zwei Plätze frei) und „13A/14A: Falschparker“ (einer). Sonst bleibt jeder Stand gleich.
+    seit 15.07. (4.510 Stände): In 26 ändert sich etwas, alle am 06.10. und 11.10.; 24 davon sind der Gasrohrbruch (drei Plätze frei), je einer „37/38/40/41/42: Schadhaftes Fahrzeug“ (zwei Plätze frei) und „13A/14A: Falschparker“ (einer). Sonst bleibt jeder Stand gleich. Zwei Lücken geschlossen am 2026-11-10: Teil 7, §11.
 * **Eine Linie, ein Platz (seit 2026-10-01, Betreiberentscheidung).**
   „Wenn mehrere unterschiedliche Linien betroffen sind, soll die Störung
   auch angezeigt werden. Mehrere Störungsmeldungen zur selben Linie sollte
