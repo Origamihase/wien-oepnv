@@ -626,6 +626,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "16A: Verkehrsüberlastung",
+    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "08f8f9d0c414c51fe010c32727e4eaf8cc098f2c840c0b9f9cbd2fc85b0426e7",
+    "pubDate": "2026-11-10T08:29:00+01:00",
+    "starts_at": "2026-11-10T08:29:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=16A|D=2026-11-10|TK=16a verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261110-0013"
+    ],
+    "_incident_start": "2026-11-10T08:29:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -854,6 +870,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2A: Verkehrsüberlastung",
+    "description": "Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "06817ade86d1a1933bbe0d61cb95b6a6235420db1b9474f70939e73f51c11a2f",
+    "pubDate": "2026-11-10T08:01:00+01:00",
+    "starts_at": "2026-11-10T08:01:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=2A|D=2026-11-10|TK=2a verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261110-0009"
+    ],
+    "_incident_start": "2026-11-10T08:01:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -862,42 +894,6 @@
     "starts_at": "2026-11-09T00:00:21+01:00",
     "ends_at": "2026-11-10T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-11-09|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "37: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "9a256ddc9071e1be270714d5f6be746d8db040a3968d1eb9ae42aab06ab94ad4",
-    "pubDate": "2026-11-10T06:13:59+01:00",
-    "starts_at": "2026-11-10T06:13:59+01:00",
-    "ends_at": "2026-11-10T08:13:00+01:00",
-    "_identity": "wl|störung|L=37|D=2026-11-10|TK=fahrtbehinderung verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "37: Verkehrsunfall Betrieb ab Nußdorfer Straße",
-    "description": "Verkehrsunfall\nBetrieb ab Nußdorfer Straße",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "14043cd0b8d59e5b94904b7187111440eeea20ab95e68c8fc3e2fa20884955d9",
-    "pubDate": "2026-11-10T06:12:59+01:00",
-    "starts_at": "2026-11-10T06:13:01+01:00",
-    "ends_at": "2026-11-10T08:11:00+01:00",
-    "_identity": "wl|störung|L=37|D=2026-11-10|TK=verkehrsunfall betrieb ab nussdorfer strasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "37: Verkehrsunfall Einstieg am Währinger Gürtel",
-    "description": "Verkehrsunfall\nEinstieg am Währinger Gürtel",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "13d3426d6134c0aca2c1022ae36d7f636c338bba898c285349ae158260832d92",
-    "pubDate": "2026-11-10T06:13:29+01:00",
-    "starts_at": "2026-11-10T06:13:29+01:00",
-    "ends_at": "2026-11-10T08:12:00+01:00",
-    "_identity": "wl|störung|L=37|D=2026-11-10|TK=verkehrsunfall einstieg am währinger gürtel"
   },
   {
     "source": "Wiener Linien",
@@ -918,182 +914,46 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "title": "40: Schadhaftes Fahrzeug",
+    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "1d5e4d6a196f57fd8f612729b0430cc34e4e06c6c38cb090911b45122aec3ea2",
-    "pubDate": "2026-11-10T06:14:29+01:00",
-    "starts_at": "2026-11-10T06:14:29+01:00",
-    "ends_at": "2026-11-10T08:16:00+01:00",
-    "_identity": "wl|störung|L=38|D=2026-11-10|TK=fahrtbehinderung verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38: Verkehrsunfall Umleitung zum Zimmermannplatz",
-    "description": "Verkehrsunfall\nUmleitung zum Zimmermannplatz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "a9a97a4c265b4aab0a1a745216bc44c81ca10ed0e9e75f802aa0251522190a18",
-    "pubDate": "2026-11-10T06:14:29+01:00",
-    "starts_at": "2026-11-10T06:14:29+01:00",
-    "ends_at": "2026-11-10T08:16:00+01:00",
-    "_identity": "wl|störung|L=38|D=2026-11-10|TK=umleitung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38: Verkehrsunfall Einstieg bei Linie 5 Richtung Praterstern",
-    "description": "Verkehrsunfall\nEinstieg bei Linie 5 Richtung Praterstern",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "f799b4f921b795c52ab2c68cda8409e6de878151c737d3ffc6a2976b7176bb1b",
-    "pubDate": "2026-11-10T06:15:59+01:00",
-    "starts_at": "2026-11-10T06:15:59+01:00",
-    "ends_at": "2026-11-10T08:15:00+01:00",
-    "_identity": "wl|störung|L=38|D=2026-11-10|TK=verkehrsunfall einstieg bei linie 5 richtung praterstern"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "3A: Verspätungen",
-    "description": "Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "9d358731bdd90c07601bb9665d1fe894e602b065f0c6bead2062210847affb87",
-    "pubDate": "2026-11-10T07:04:00+01:00",
-    "starts_at": "2026-11-10T07:04:00+01:00",
-    "ends_at": "2026-11-10T08:05:00+01:00",
-    "_identity": "wl|störung|L=3A|D=2026-11-10|TK=3a verspätungen",
-    "_wl_ids": [
-      "I20261110-0004"
-    ],
-    "_incident_start": "2026-11-10T07:04:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "171280fe175191f4b2c1a62b7dc57c3520423e50d712bbc87c62209842a74580",
-    "pubDate": "2026-11-10T06:17:59+01:00",
-    "starts_at": "2026-11-10T06:17:59+01:00",
-    "ends_at": "2026-11-10T08:17:00+01:00",
-    "_identity": "wl|störung|L=40|D=2026-11-10|TK=fahrtbehinderung verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40: Verkehrsunfall Betrieb ab Währinger Straße, Volksoper",
-    "description": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "99ff4fc3b30aa434b6d09f37255e1065caff7361b811a4358f59949f92b48c5f",
-    "pubDate": "2026-11-10T06:18:29+01:00",
-    "starts_at": "2026-11-10T06:18:31+01:00",
-    "ends_at": "2026-11-10T08:17:00+01:00",
-    "_identity": "wl|störung|L=40|D=2026-11-10|TK=verkehrsunfall betrieb ab währinger strasse volksoper"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40: Verkehrsunfall Einstieg am Währinger Gürtel",
-    "description": "Verkehrsunfall\nEinstieg am Währinger Gürtel",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "bdd41d3ae05c8d86a7c46558595dacd6c11328fa21a8791b01ccf5c8c2905ef0",
-    "pubDate": "2026-11-10T06:19:30+01:00",
-    "starts_at": "2026-11-10T06:19:30+01:00",
-    "ends_at": "2026-11-10T08:18:00+01:00",
-    "_identity": "wl|störung|L=40|D=2026-11-10|TK=verkehrsunfall einstieg am währinger gürtel"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41: Verkehrsunfall",
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "b8938e94c70221081d94c1f9627e29d1273108203a2ba78ea9d9eaa80416cb92",
-    "pubDate": "2026-11-10T06:07:00+01:00",
-    "starts_at": "2026-11-10T06:07:00+01:00",
+    "guid": "f563448e7fb71558e6eef46dca2bf47130d05fc4cbb4ec67d362ce9b66884713",
+    "pubDate": "2026-11-10T08:04:00+01:00",
+    "starts_at": "2026-11-10T08:04:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=41|D=2026-11-10|TK=41 verkehrsunfall",
+    "_identity": "wl|störung|L=40|D=2026-11-10|TK=40 schadhaftes fahrzeug",
     "_wl_ids": [
-      "I20261110-0002"
+      "I20261110-0010"
     ],
-    "_incident_start": "2026-11-10T06:07:00+01:00"
+    "_incident_start": "2026-11-10T08:04:00+01:00"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "41: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "title": "40: Schadhafter Zug Betrieb ab Gersthof",
+    "description": "Schadhafter Zug\nBetrieb ab Gersthof",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "1e687669355f2ef165e274ee1dc721668120a3f488ae695b99053b29ea59dc02",
-    "pubDate": "2026-11-10T06:20:30+01:00",
-    "starts_at": "2026-11-10T06:20:30+01:00",
-    "ends_at": "2026-11-10T08:19:00+01:00",
-    "_identity": "wl|störung|L=41|D=2026-11-10|TK=fahrtbehinderung verkehrsunfall"
+    "guid": "1e7291a99af4a0d9c67c9ef81c4e33e0c9bdbda9b6e0e2aba37d902c7169eb31",
+    "pubDate": "2026-11-10T08:06:10+01:00",
+    "starts_at": "2026-11-10T08:06:10+01:00",
+    "ends_at": "2026-11-10T10:03:00+01:00",
+    "_identity": "wl|störung|L=40|D=2026-11-10|TK=schadhafter zug betrieb ab gersthof"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "41: Verkehrsunfall Betrieb ab Währinger Straße, Volksoper",
-    "description": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper",
+    "title": "41: Verunreinigung",
+    "description": "Linie 41: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "4eae3c7c8e8af36a506dba5874e3b5a31bb1463beec87c5650875cc011d68652",
-    "pubDate": "2026-11-10T06:20:30+01:00",
-    "starts_at": "2026-11-10T06:20:32+01:00",
-    "ends_at": "2026-11-10T08:20:00+01:00",
-    "_identity": "wl|störung|L=41|D=2026-11-10|TK=verkehrsunfall betrieb ab währinger strasse volksoper"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41: Verkehrsunfall Einstieg am Währinger Gürtel",
-    "description": "Verkehrsunfall\nEinstieg am Währinger Gürtel",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "6365b0d40a3fefe748ef978355b8887a30f30a7cd0a43a71c638fc8135dfd50e",
-    "pubDate": "2026-11-10T06:21:00+01:00",
-    "starts_at": "2026-11-10T06:21:00+01:00",
-    "ends_at": "2026-11-10T08:20:00+01:00",
-    "_identity": "wl|störung|L=41|D=2026-11-10|TK=verkehrsunfall einstieg am währinger gürtel"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "42: Verkehrsunfall Betrieb ab Währinger Straße, Volksoper",
-    "description": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "d3e45c39e667bbbac313bbc60e0461a6953c7930cf517f68ed345f308f224be5",
-    "pubDate": "2026-11-10T06:22:00+01:00",
-    "starts_at": "2026-11-10T06:22:02+01:00",
-    "ends_at": "2026-11-10T08:21:00+01:00",
-    "_identity": "wl|störung|L=42|D=2026-11-10|TK=verkehrsunfall betrieb ab währinger strasse volksoper"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "42: Verkehrsunfall Einstieg am Währinger Gürtel",
-    "description": "Verkehrsunfall\nEinstieg am Währinger Gürtel",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "b2bf740dbbf172a34ae1d8ae42d03be20dc046aaa76188c636f7f3b7e65464b9",
-    "pubDate": "2026-11-10T06:23:01+01:00",
-    "starts_at": "2026-11-10T06:23:01+01:00",
-    "ends_at": "2026-11-10T08:22:00+01:00",
-    "_identity": "wl|störung|L=42|D=2026-11-10|TK=verkehrsunfall einstieg am währinger gürtel"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "58B: Verkehrsunfall",
-    "description": "Linie 58B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "031c5d12dca2394457c20c2af2c93388c0958fc1e1482ef1a3325c9cefbd5425",
-    "pubDate": "2026-11-10T07:11:00+01:00",
-    "starts_at": "2026-11-10T07:11:00+01:00",
+    "guid": "0ad289dfc00c97d38e4caf03f5a260b1325b231ba111b03c86094cbfb074097f",
+    "pubDate": "2026-11-10T08:19:00+01:00",
+    "starts_at": "2026-11-10T08:19:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=58B|D=2026-11-10|TK=58b verkehrsunfall",
+    "_identity": "wl|störung|L=41|D=2026-11-10|TK=41 verunreinigung",
     "_wl_ids": [
-      "I20261110-0005"
+      "I20261110-0011"
     ],
-    "_incident_start": "2026-11-10T07:11:00+01:00"
+    "_incident_start": "2026-11-10T08:19:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1142,6 +1002,38 @@
     "starts_at": "2026-11-09T00:00:19+01:00",
     "ends_at": "2026-11-10T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-09|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "86A: Verkehrsüberlastung",
+    "description": "Linie 86A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "96aff9308711da2346e8368062fce9c9724433cd7c0f178047968f6732a38723",
+    "pubDate": "2026-11-10T08:27:00+01:00",
+    "starts_at": "2026-11-10T08:27:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=86A|D=2026-11-10|TK=86a verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261110-0012"
+    ],
+    "_incident_start": "2026-11-10T08:27:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Verkehrsüberlastung",
+    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d",
+    "pubDate": "2026-11-10T08:00:00+01:00",
+    "starts_at": "2026-11-10T08:00:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=O|D=2026-11-10|TK=o verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261110-0008"
+    ],
+    "_incident_start": "2026-11-10T08:00:00+01:00"
   },
   {
     "source": "Wiener Linien",

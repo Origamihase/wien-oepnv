@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20261110-0002-F02, I20260909-0007, I20261110-0002-F04, I20261110-0005, I20261110-0007-F01, I20261020-0029, I20261110-0004"
+    "trafficInfoNameList": "I20261110-0011, I20261110-0013, I20261110-0010-F01, I20260925-0011, I20261110-0002-F02, I20260909-0007, I20261110-0007-F01, I20261110-0008, I20261110-0009, I20261110-0012, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1884-101, R1881-101, R1882-101, R1883-101, R1875-101, R1876-101, R1880-101, R3886-480, R2558-125, R2345-127, R2380-627, R2378-627, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R318-437, R293-474, R1974-466, R1199-205, R500-101, R214-137, R188-137, R213-137, R1213-137, R1212-137, R215-137, R208-137, R211-137, R149-137, R150-137, R209-137, R210-137, R210-138, R208-138, R209-138, R211-138, R150-138, R188-138, R148-140, R150-140, R188-140, R1213-140, R1212-140, R189-140, R148-141, R150-141, R188-141, R1212-141, R1213-141, R189-141, R188-142, R1212-142, R1213-142, R1336-142, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1875-101, R3886-480, R1884-101, R2343-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2558-125, R2378-627, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R293-474, R318-437, R1974-466, R1199-205, R500-101, R141-140, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -217,142 +217,6 @@
     "title": "38: Verkehrsunfall"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "41": "ptTram"
-     }
-    },
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "41: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Währinger Straße 17",
-    "name": "I20261110-0002-F04",
-    "owner": "WL",
-    "parentName": "I20261110-0002",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 141,
-      "lineName": "41",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-10T06:38:00.000+0100",
-     "lastUpdate": "2026-11-10T06:38:00.000+0100",
-     "resume": "2026-11-10T06:38:00.000+0100",
-     "start": "2026-11-10T06:07:00.000+0100"
-    },
-    "title": "41: Verkehrsunfall"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "3A": "ptBusCity"
-     }
-    },
-    "description": "Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie 3A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 3A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "3A: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261110-0004",
-    "owner": "WL",
-    "parentName": "I20261110-0004",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "3A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 403,
-      "lineName": "3A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-10T07:04:00.000+0100",
-     "end": "2026-11-10T08:05:00.000+0100",
-     "lastUpdate": "2026-11-10T07:51:00.000+0100",
-     "resume": "2026-11-10T07:04:00.000+0100",
-     "start": "2026-11-10T07:04:00.000+0100"
-    },
-    "title": "3A: Verspätungen"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "58B": "ptBusCity"
-     }
-    },
-    "description": "Linie 58B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 58B:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Verkehrsunfall.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 58B:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 58B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-       "title": "58B: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261110-0005",
-    "owner": "WL",
-    "parentName": "I20261110-0005",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "58B"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 258,
-      "lineName": "58B",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-10T07:12:00.000+0100",
-     "lastUpdate": "2026-11-10T07:12:00.000+0100",
-     "start": "2026-11-10T07:11:00.000+0100"
-    },
-    "title": "58B: Verkehrsunfall"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -401,6 +265,278 @@
     "title": "U4: Schadhaftes Fahrzeug"
    },
    {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "O: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261110-0008",
+    "owner": "WL",
+    "parentName": "I20261110-0008",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 170,
+      "lineName": "O",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T08:01:00.000+0100",
+     "lastUpdate": "2026-11-10T08:01:00.000+0100",
+     "resume": "2026-11-10T08:00:00.000+0100",
+     "start": "2026-11-10T08:00:00.000+0100"
+    },
+    "title": "O: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "2A": "ptBusCity"
+     }
+    },
+    "description": "Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 2A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 2A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "2A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261110-0009",
+    "owner": "WL",
+    "parentName": "I20261110-0009",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 402,
+      "lineName": "2A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T08:02:00.000+0100",
+     "lastUpdate": "2026-11-10T08:02:00.000+0100",
+     "resume": "2026-11-10T08:01:00.000+0100",
+     "start": "2026-11-10T08:01:00.000+0100"
+    },
+    "title": "2A: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "40": "ptTram"
+     }
+    },
+    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "40: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261110-0010-F01",
+    "owner": "WL",
+    "parentName": "I20261110-0010",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 140,
+      "lineName": "40",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     194
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T08:20:00.000+0100",
+     "lastUpdate": "2026-11-10T08:20:00.000+0100",
+     "resume": "2026-11-10T08:20:00.000+0100",
+     "start": "2026-11-10T08:04:00.000+0100"
+    },
+    "title": "40: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "vandalism",
+    "alertCauseId": 16,
+    "attributes": {
+     "relatedLineTypes": {
+      "41": "ptTram"
+     }
+    },
+    "description": "Linie 41: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "descriptionHTML": "<p>Linie 41:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Verunreinigung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 41:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Verunreinigung.</p>",
+       "descriptionPlain": "Linie 41: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+       "title": "41: Verunreinigung"
+      }
+     }
+    ],
+    "name": "I20261110-0011",
+    "owner": "WL",
+    "parentName": "I20261110-0011",
+    "priority": "1",
+    "reasonId": 36,
+    "reasonName": "Verunreinigung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 141,
+      "lineName": "41",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T08:19:00.000+0100",
+     "lastUpdate": "2026-11-10T08:19:00.000+0100",
+     "start": "2026-11-10T08:19:00.000+0100"
+    },
+    "title": "41: Verunreinigung"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "86A": "ptBusCity"
+     }
+    },
+    "description": "Linie 86A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 86A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 86A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 86A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "86A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261110-0012",
+    "owner": "WL",
+    "parentName": "I20261110-0012",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "86A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 486,
+      "lineName": "86A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T08:28:00.000+0100",
+     "lastUpdate": "2026-11-10T08:28:00.000+0100",
+     "resume": "2026-11-10T08:27:00.000+0100",
+     "start": "2026-11-10T08:27:00.000+0100"
+    },
+    "title": "86A: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "16A": "ptBusCity"
+     }
+    },
+    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 16A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 16A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "16A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261110-0013",
+    "owner": "WL",
+    "parentName": "I20261110-0013",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "16A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 416,
+      "lineName": "16A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T08:29:00.000+0100",
+     "lastUpdate": "2026-11-10T08:29:00.000+0100",
+     "resume": "2026-11-10T08:29:00.000+0100",
+     "start": "2026-11-10T08:29:00.000+0100"
+    },
+    "title": "16A: Verkehrsüberlastung"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -426,33 +562,10 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Nußdorfer Straße",
-    "name": "R1212-137",
+    "description": "Schadhafter Zug\nBetrieb ab Gersthof",
+    "name": "R141-140",
     "owner": "WL",
-    "parentName": "R1212-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     1212
-    ],
-    "time": {
-     "end": "2026-11-10T08:11:00.000+0100",
-     "start": "2026-11-10T06:13:01.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Nußdorfer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper",
-    "name": "R1212-140",
-    "owner": "WL",
-    "parentName": "R1212-140",
+    "parentName": "R141-140",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
@@ -461,335 +574,13 @@
      "40"
     ],
     "relatedStops": [
-     1212
+     141
     ],
     "time": {
-     "end": "2026-11-10T08:17:00.000+0100",
-     "start": "2026-11-10T06:18:31.000+0100"
+     "end": "2026-11-10T10:03:00.000+0100",
+     "start": "2026-11-10T08:06:10.000+0100"
     },
-    "title": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper",
-    "name": "R1212-141",
-    "owner": "WL",
-    "parentName": "R1212-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     1212
-    ],
-    "time": {
-     "end": "2026-11-10T08:20:00.000+0100",
-     "start": "2026-11-10T06:20:32.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper",
-    "name": "R1212-142",
-    "owner": "WL",
-    "parentName": "R1212-142",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedStops": [
-     1212
-    ],
-    "time": {
-     "end": "2026-11-10T08:21:00.000+0100",
-     "start": "2026-11-10T06:22:02.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Nußdorfer Straße",
-    "name": "R1213-137",
-    "owner": "WL",
-    "parentName": "R1213-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     1213
-    ],
-    "time": {
-     "end": "2026-11-10T08:11:00.000+0100",
-     "start": "2026-11-10T06:13:01.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Nußdorfer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper",
-    "name": "R1213-140",
-    "owner": "WL",
-    "parentName": "R1213-140",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "40"
-    ],
-    "relatedStops": [
-     1213
-    ],
-    "time": {
-     "end": "2026-11-10T08:17:00.000+0100",
-     "start": "2026-11-10T06:18:31.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper",
-    "name": "R1213-141",
-    "owner": "WL",
-    "parentName": "R1213-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     1213
-    ],
-    "time": {
-     "end": "2026-11-10T08:20:00.000+0100",
-     "start": "2026-11-10T06:20:32.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper",
-    "name": "R1213-142",
-    "owner": "WL",
-    "parentName": "R1213-142",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedStops": [
-     1213
-    ],
-    "time": {
-     "end": "2026-11-10T08:21:00.000+0100",
-     "start": "2026-11-10T06:22:02.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nEinstieg am Währinger Gürtel",
-    "name": "R1336-142",
-    "owner": "WL",
-    "parentName": "R1336-142",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedStops": [
-     1336
-    ],
-    "time": {
-     "end": "2026-11-10T08:22:00.000+0100",
-     "start": "2026-11-10T06:23:01.000+0100"
-    },
-    "title": "Verkehrsunfall\nEinstieg am Währinger Gürtel"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R148-140",
-    "owner": "WL",
-    "parentName": "R148-140",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "40"
-    ],
-    "relatedStops": [
-     148
-    ],
-    "time": {
-     "end": "2026-11-10T08:17:00.000+0100",
-     "start": "2026-11-10T06:17:59.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R148-141",
-    "owner": "WL",
-    "parentName": "R148-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     148
-    ],
-    "time": {
-     "end": "2026-11-10T08:19:00.000+0100",
-     "start": "2026-11-10T06:20:30.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R149-137",
-    "owner": "WL",
-    "parentName": "R149-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     149
-    ],
-    "time": {
-     "end": "2026-11-10T08:13:00.000+0100",
-     "start": "2026-11-10T06:13:59.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R150-137",
-    "owner": "WL",
-    "parentName": "R150-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     150
-    ],
-    "time": {
-     "end": "2026-11-10T08:13:00.000+0100",
-     "start": "2026-11-10T06:13:59.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R150-138",
-    "owner": "WL",
-    "parentName": "R150-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     150
-    ],
-    "time": {
-     "end": "2026-11-10T08:16:00.000+0100",
-     "start": "2026-11-10T06:14:29.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R150-140",
-    "owner": "WL",
-    "parentName": "R150-140",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "40"
-    ],
-    "relatedStops": [
-     150
-    ],
-    "time": {
-     "end": "2026-11-10T08:17:00.000+0100",
-     "start": "2026-11-10T06:17:59.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R150-141",
-    "owner": "WL",
-    "parentName": "R150-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     150
-    ],
-    "time": {
-     "end": "2026-11-10T08:19:00.000+0100",
-     "start": "2026-11-10T06:20:30.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
+    "title": "Schadhafter Zug\nBetrieb ab Gersthof"
    },
    {
     "alertCause": "undefined alert cause",
@@ -836,121 +627,6 @@
      "start": "2026-11-09T00:00:19.000+0100"
     },
     "title": "Gleisbauarbeiten\nKein Betrieb"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Nußdorfer Straße",
-    "name": "R188-137",
-    "owner": "WL",
-    "parentName": "R188-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     188
-    ],
-    "time": {
-     "end": "2026-11-10T08:11:00.000+0100",
-     "start": "2026-11-10T06:12:59.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Nußdorfer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nEinstieg bei Linie 5 Richtung Praterstern",
-    "name": "R188-138",
-    "owner": "WL",
-    "parentName": "R188-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     188
-    ],
-    "time": {
-     "end": "2026-11-10T08:15:00.000+0100",
-     "start": "2026-11-10T06:15:59.000+0100"
-    },
-    "title": "Verkehrsunfall\nEinstieg bei Linie 5 Richtung Praterstern"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper",
-    "name": "R188-140",
-    "owner": "WL",
-    "parentName": "R188-140",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "40"
-    ],
-    "relatedStops": [
-     188
-    ],
-    "time": {
-     "end": "2026-11-10T08:17:00.000+0100",
-     "start": "2026-11-10T06:18:29.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper",
-    "name": "R188-141",
-    "owner": "WL",
-    "parentName": "R188-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     188
-    ],
-    "time": {
-     "end": "2026-11-10T08:20:00.000+0100",
-     "start": "2026-11-10T06:20:30.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper",
-    "name": "R188-142",
-    "owner": "WL",
-    "parentName": "R188-142",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedStops": [
-     188
-    ],
-    "time": {
-     "end": "2026-11-10T08:21:00.000+0100",
-     "start": "2026-11-10T06:22:00.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1070,52 +746,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Verkehrsunfall\nEinstieg am Währinger Gürtel",
-    "name": "R189-140",
-    "owner": "WL",
-    "parentName": "R189-140",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "40"
-    ],
-    "relatedStops": [
-     189
-    ],
-    "time": {
-     "end": "2026-11-10T08:18:00.000+0100",
-     "start": "2026-11-10T06:19:30.000+0100"
-    },
-    "title": "Verkehrsunfall\nEinstieg am Währinger Gürtel"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nEinstieg am Währinger Gürtel",
-    "name": "R189-141",
-    "owner": "WL",
-    "parentName": "R189-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     189
-    ],
-    "time": {
-     "end": "2026-11-10T08:20:00.000+0100",
-     "start": "2026-11-10T06:21:00.000+0100"
-    },
-    "title": "Verkehrsunfall\nEinstieg am Währinger Gürtel"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "name": "R1974-466",
     "owner": "WL",
@@ -1135,259 +765,6 @@
      "start": "2026-11-10T04:40:22.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R208-137",
-    "owner": "WL",
-    "parentName": "R208-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     208
-    ],
-    "time": {
-     "end": "2026-11-10T08:13:00.000+0100",
-     "start": "2026-11-10T06:13:59.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R208-138",
-    "owner": "WL",
-    "parentName": "R208-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     208
-    ],
-    "time": {
-     "end": "2026-11-10T08:13:00.000+0100",
-     "start": "2026-11-10T06:14:29.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R209-137",
-    "owner": "WL",
-    "parentName": "R209-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     209
-    ],
-    "time": {
-     "end": "2026-11-10T08:13:00.000+0100",
-     "start": "2026-11-10T06:13:59.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R209-138",
-    "owner": "WL",
-    "parentName": "R209-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     209
-    ],
-    "time": {
-     "end": "2026-11-10T08:13:00.000+0100",
-     "start": "2026-11-10T06:14:29.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R210-137",
-    "owner": "WL",
-    "parentName": "R210-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     210
-    ],
-    "time": {
-     "end": "2026-11-10T08:13:00.000+0100",
-     "start": "2026-11-10T06:13:59.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R210-138",
-    "owner": "WL",
-    "parentName": "R210-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     210
-    ],
-    "time": {
-     "end": "2026-11-10T08:13:00.000+0100",
-     "start": "2026-11-10T06:14:29.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R211-137",
-    "owner": "WL",
-    "parentName": "R211-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     211
-    ],
-    "time": {
-     "end": "2026-11-10T08:13:00.000+0100",
-     "start": "2026-11-10T06:13:59.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nUmleitung zum Zimmermannplatz",
-    "name": "R211-138",
-    "owner": "WL",
-    "parentName": "R211-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     211
-    ],
-    "time": {
-     "end": "2026-11-10T08:16:00.000+0100",
-     "start": "2026-11-10T06:14:29.000+0100"
-    },
-    "title": "Verkehrsunfall\nUmleitung zum Zimmermannplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Nußdorfer Straße",
-    "name": "R213-137",
-    "owner": "WL",
-    "parentName": "R213-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     213
-    ],
-    "time": {
-     "end": "2026-11-10T08:11:00.000+0100",
-     "start": "2026-11-10T06:12:59.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Nußdorfer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Nußdorfer Straße",
-    "name": "R214-137",
-    "owner": "WL",
-    "parentName": "R214-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     214
-    ],
-    "time": {
-     "end": "2026-11-10T08:11:00.000+0100",
-     "start": "2026-11-10T06:12:59.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Nußdorfer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nEinstieg am Währinger Gürtel",
-    "name": "R215-137",
-    "owner": "WL",
-    "parentName": "R215-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     215
-    ],
-    "time": {
-     "end": "2026-11-10T08:12:00.000+0100",
-     "start": "2026-11-10T06:13:29.000+0100"
-    },
-    "title": "Verkehrsunfall\nEinstieg am Währinger Gürtel"
    },
    {
     "alertCause": "undefined alert cause",
