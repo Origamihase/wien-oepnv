@@ -168,7 +168,7 @@ def _with_unowned(entry: FeedItem, members: Sequence[FeedItem]) -> FeedItem:
     Verspätungen" (Grund: Schadhaftes Fahrzeug) as its consequences: the
     feed read the works' stops in front of the delay and lost its cause,
     and when the delay ended, the stops kept its GUID and begin and stood
-    as a new disruption from 12:01 to 20:30, on up to place 2. The line
+    as a new disruption from 12:01 to 22:02, on up to place 2. The line
     still takes one slot (operator decision 2026-10-01), but the stops
     follow the incident's own text, after its cause, and stay out of
     ``_members``: when the incident ends, the item falls back to their own

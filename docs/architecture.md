@@ -631,7 +631,7 @@ verdrängt eine andere Störung.
     Verspätungen“ (Grund: Schadhaftes Fahrzeug) an. Der Feed las die
     Haltestellen vor der Verspätung, ihr Grund fiel aus den 180 Zeichen,
     und als die Verspätung endete, behielten die Haltestellen ihre GUID
-    und ihren Beginn: Sie standen von 12:01 bis 20:30 als neue Störung im
+    und ihren Beginn: Sie standen von 12:01 bis 22:02 als neue Störung im
     Feed, bis auf Platz 2. Jetzt liest der Eintrag „Unregelmäßige
     Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.“, und
     danach fällt er auf GUID und Beginn der Haltestellen zurück.

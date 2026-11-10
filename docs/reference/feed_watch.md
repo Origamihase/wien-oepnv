@@ -12,9 +12,9 @@ Die meisten Fehler des Feeds hat bisher erst ein Audit gefunden, Stunden bis
 Wochen nachdem sie auf dem TV standen:
 
 * Am 09.10.2026 übernahm eine Haltestellen-Anzeige der Linie 25 vom 07.10.
-  („25: Ersatzbus 26E hält Karl-Waldbrunner-Platz …“) GUID und Beginn einer
-  Verspätung von 09:36 und stand von 12:01 bis 20:30 als neue Störung im Feed,
-  bis auf Platz 2 (behoben in #1993).
+  („25: Ersatzbus 26E hält Karl-Waldbrunner-Platz …“) GUID und erste Sichtung
+  einer Verspätung von 09:36 und stand von 12:01 bis 22:02 als neue Störung im
+  Feed, bis auf Platz 2 (behoben in #1993).
 * Bei ÖBB fehlte seit September in 59 von 106 Texten der zweite Satz, der sagt,
   was noch gilt („Planen Sie derzeit noch bis zu 10 Minuten mehr Reisezeit
   ein.“), weil der erste Satz mit beiden Stationen in Langform den Platz nahm
@@ -83,7 +83,7 @@ Entscheidung des Betreibers (Michael, 2026-10-11, 01:13 Wiener Zeit, Karte „Da
 Update-Lauf für Wächter-Funde GitHub-Issues anlegen?“, Antwort „Issues
 anlegen“): Der Update-Lauf bekommt `issues: write`. Grund: Ein Fund, den
 niemand sieht, wiederholt den Fall vom 09.10., als der Ticker der Linie 25
-acht Stunden auf Platz 2 stand. Ein Issue löst die Mail von GitHub am selben
+zehn Stunden im Feed stand, bis auf Platz 2. Ein Issue löst die Mail von GitHub am selben
 Tag aus; Protokoll und Health check allein sieht nur, wer nachschaut. Das
 Recht erlaubt nur Issues, keinen Code. Die Gegenoption „Nur Hinweis“ (kein
 neues Recht) ist damit verworfen; wer die Issues des Wächters abschalten
@@ -101,7 +101,7 @@ am TV steht.
 | `doppelter-eintrag` | 1 | zwei Einträge dieselbe GUID oder denselben Titel haben | zehn Plätze am TV |
 | `anzahl` | 1 | der Feed nicht genau `MAX_ITEMS` (10) Einträge hat | zehn Folien in EasySignage |
 | `meldung-uebersprungen` | 1 | der Gesundheitsbericht des Baus (`docs/feed-health.json`, Schlüssel `skipped_items`; Pfad aus `FEED_HEALTH_JSON_PATH`, Option `--health-json`; im Update-Lauf besteht die Datei nur während des Laufs, lokal bleibt sie bis zum nächsten Bau liegen) eine Meldung nennt, an der die Feed-Kette scheiterte und die der Bau deshalb übersprang; je Meldung ein Fund mit Quelle, Titel, Fehlerklasse und Stelle im Code. Fehlt der Bericht oder der Schlüssel, gibt es keinen Fund | Code-Audit 10.11.2026, [`architecture.md`](../architecture.md), §10 |
-| `alte-meldung-als-neu` | 1 | ein Eintrag als heutige Störung erscheint („[Heute]“ oder „[Seit hh:mm]“), dessen Meldung (`pubDate`) mehr als 24 Stunden vor seiner ersten Sichtung (`first_seen`) liegt, ebenso sein Beginn (`starts_at`), sofern der Feed einen nennt, und den der Feed noch als neu zählt: Die erste Sichtung liegt höchstens 24 Stunden vor dem Bau (`NEW_IN_FEED`, dasselbe Fenster wie `_CURRENT_INCIDENT_WINDOW` im Builder; seit 10.11.2026). Ein länger bekannter Eintrag, der an seinem letzten Tag „[Heute]“ zeigt, ist kein Fund | Linie 25, 09.10. (#1993); R95, 10.11. |
+| `alte-meldung-als-neu` | 1 | ein Eintrag als heutige Störung erscheint („[Heute]“ oder „[Seit hh:mm]“), dessen Meldung (`pubDate`) mehr als 24 Stunden vor seiner ersten Sichtung (`first_seen`) liegt, ebenso sein Beginn (`starts_at`), sofern der Feed einen nennt, und den der Bau erst kurz kennt: Die erste Sichtung liegt höchstens 24 Stunden vor dem Bau (`NEW_IN_FEED`, so lang wie das Fenster des Builders für aktuelle Störungen, `_CURRENT_INCIDENT_WINDOW`; seit 10.11.2026). Ein länger bekannter Eintrag, der am letzten Tag seines Zeitraums „[Heute]“ zeigt, ist kein Fund | Linie 25, 09.10. (#1993); R95, 10.11. |
 | `seit-zu-frueh` | 2 | eine Störung „[Seit hh:mm]“ zum ersten Mal erscheint, die Zeit mehr als drei Stunden vor dem Bau liegt, keine ihrer Linien im vorigen Bau (höchstens zwei Stunden alt) als Störung stand und der vorige Bau Platz hatte (einen Eintrag, der keine Störung „Seit hh:mm“ war); einmal gefunden, bleiben dieselben Linien an diesem Tag gemeldet, solange ihre „Seit“-Zeit höchstens eine Stunde nach der gefundenen liegt | „2/71 [Seit 13:08]“, 09.10. (PR #2001) |
 | `oebb-zweiter-satz` | 2 | der zweite Satz des ÖBB-Texts (aus dem Cache, ohne Höflichkeitssätze) fehlt, obwohl er neben den ersten Satz passen würde, wenn dieser die Stationen weglässt, die der Titel nennt | #1993 |
 | `zeitzeile` | 2 | die Beschreibung nicht mit einer Zeitzeile in einer der Formen von `format_local_times` endet (Heute, Seit heute, Seit hh:mm, Seit/Bis/Am/Ab <Tag>, Ab <Tag> bis <Tag>), Wörter mit U+00A0 verbunden | Entscheidungen 02./03.10., #1971 |
@@ -194,7 +194,7 @@ Zeit.
 | Regel | Laut | Danach still |
 | --- | --- | --- |
 | `doppelter-eintrag` | 14 Läufe: 03.09. („Wien Hauptbahnhof ↔ Wien Stadlau“ zweimal), 30.09. und 01.10. („D: Gleisbauarbeiten“ zweimal) | ja |
-| `alte-meldung-als-neu` | 28 Läufe am 09.10. ab 12:01: „25: Ersatzbus 26E hält …“ | ja |
+| `alte-meldung-als-neu` | 28 Stände am 09.10. von 12:01 bis 22:02: „25: Ersatzbus 26E hält …“ | ja |
 | `seit-zu-frueh` | 3 Läufe am 09.10. ab 20:30: „2/71: Polizeieinsatz [Seit 13:08]“, dann „2“ und „71“ | ja |
 | `oebb-zweiter-satz` | 169 Läufe an 28 Tagen vom 02.09. bis 09.10. | seit #1993 (09.10. 22:00) |
 | `zeitzeile` | jeder Lauf bis 06.10. (frühere Formen „01.09.2026 – 02.09.2026“, Abstand U+202F) | seit #1971 (06.10. 17:21) |
@@ -229,37 +229,80 @@ vor einem Datum.
 
 ### Rückprüfung `alte-meldung-als-neu` (2026-11-10)
 
-Die Regel meldete zweimal einen Eintrag, an dem nichts falsch war: geplante
-Arbeiten an ihrem letzten Tag. Am 30.10.2026 in 30 Läufen von 00:00 bis
-14:00 „54A/54B: Bauarbeiten“ (Meldung vom 21.10., im Feed seit 28.10. 17:01,
-Umleitung bis 30.10. 15:00; Issue #2086) und am 10.11.2026 in 38 Läufen ab
-00:01 „R95: Wien Hauptbahnhof ↔ Felixdorf“ (Meldung vom 19.12.2025, im Feed
-seit 24.05.2026, Bauarbeiten an einzelnen Tagen vom 10.02. bis 10.11.; Issue
-#2190). Die Zeitzeile „[Heute]“ stimmt in beiden Fällen: Der Zeitraum endet
-an diesem Tag. Die Regel las „[Heute]“ als „heute neu“, ohne zu prüfen, ob
-der Feed den Eintrag überhaupt als neu zählt. Bei Linie 25 war das so (erste
-Sichtung 09.10. 09:36, Bau ab 12:01), bei den beiden anderen nicht (erste
-Sichtung 31 Stunden und 170 Tage vor dem Bau).
+Die Regel meldete zweimal einen Eintrag, an dem nichts falsch war: Arbeiten
+am letzten Tag ihres gemeldeten Zeitraums.
 
-Seither zählt nur ein Eintrag, dessen erste Sichtung höchstens 24 Stunden
-vor dem Bau liegt. So lange lässt der Builder einen Eintrag als aktuelle
-Störung vorne stehen (`_CURRENT_INCIDENT_WINDOW`); ein Test hält beide
-Fenster gleich. Die alte und die neue Regel liefen über alle 2 204 Stände
-von `docs/feed.xml` vom 29.09. 18:00 bis 10.11.2026 17:01 (Wiener Zeit):
+* 30.10.2026, „54A/54B: Bauarbeiten“ (Issue #2086): Meldung vom 21.10.,
+  Zeitraum damals bis 30.10. 15:00. Der Eintrag stand seit 28.10. 17:01
+  unter einer neuen GUID im Feed (davor seit 26.10. unter einer anderen),
+  seine erste Sichtung war deshalb der 28.10. Ab dem Bau um 15:00 stand
+  unter derselben GUID eine neue Meldung mit Ende 10.11. 09:00.
+* 10.11.2026, „R95: Wien Hauptbahnhof ↔ Felixdorf“ (Issue #2190): Meldung
+  vom 19.12.2025, erste Sichtung durch den Bau am 24.05.2026, Bauarbeiten an
+  einzelnen Tagen vom 10.02. bis 10.11. Unter den zehn Einträgen stand er in
+  den geprüften Ständen nur am 10.11.
 
-| Regel | Läufe mit Fund | Funde |
+Die Zeitzeile „[Heute]“ stimmte in beiden Fällen: Der gemeldete Zeitraum
+endete an diesem Tag. Die Regel las „[Heute]“ als „heute neu“, ohne zu
+prüfen, wie lange der Bau den Eintrag schon kennt. Bei Linie 25 waren es
+Stunden (erste Sichtung 09.10. 09:36, im Feed ab 12:01), bei den beiden
+anderen 31 Stunden und 170 Tage.
+
+Seither meldet die Regel einen Eintrag nur, wenn seine erste Sichtung
+höchstens 24 Stunden vor dem Bau liegt (`NEW_IN_FEED`). Das Fenster ist so
+lang wie jenes, in dem der Builder eine Störung als aktuell führt
+(`_CURRENT_INCIDENT_WINDOW`); ein Test hält beide gleich lang. Die Regel
+bleibt ohne Zustand.
+
+Die Regel vor und nach der Änderung lief über die 2 206 Stände von
+`docs/feed.xml` vom 29.09. 18:00 bis 10.11.2026 17:30 (Wiener Zeit). Ein
+Stand ist ein Commit, der den Feed ändert, fast immer ein Update-Lauf oder
+ein Neubau:
+
+| Fassung | Stände mit Fund | Funde |
 | --- | --- | --- |
-| alt | 96 | Linie 25 (28 Läufe am 09.10. von 12:01 bis 22:02), 54A/54B (30), R95 (38) |
-| neu | 28 | Linie 25 (dieselben 28 Läufe, derselbe Text) |
+| bis 10.11. | 98 | Linie 25 (28 Stände am 09.10. von 12:01 bis 22:02), 54A/54B (30 Stände am 30.10. von 00:00 bis 14:00), R95 (40 Stände am 10.11. ab 00:01) |
+| mit Fenster (#2193) | 28 | Linie 25, dieselben 28 Stände mit demselben Text |
 
-Die neue Regel meldet in keinem Lauf etwas, das die alte nicht meldete. Was
-bleibt: Ein Eintrag mit alter Meldung, den der Bau erst am Vortag oder am
-selben Tag zum ersten Mal sieht und dessen Zeitraum heute endet, ist
-weiterhin ein Fund. Der Feed zählt ihn als neu; ob zu Recht, zeigt nur der
-Blick auf die Quelle. In den 2 204 Ständen kam das außer bei Linie 25 nicht
-vor. Übernimmt eine alte Meldung die Identität eines Eintrags, der selbst
-schon länger als 24 Stunden im Feed steht, meldet die Regel nichts: Der Feed
-stellt ihn dann nicht als neu nach vorne.
+Der Wächter selbst läuft nur in Update-Läufen. Er meldete 54A/54B in 29
+Läufen und R95 in 35 Läufen, zuletzt um 17:01; am 09.10. gab es ihn noch
+nicht.
+
+Was die Regel am Feed nicht erkennen kann:
+
+* Ein Eintrag mit alter Meldung, den der Bau höchstens 24 Stunden vorher zum
+  ersten Mal sah und der als heutige Störung erscheint, ist ein Fund, auch
+  wenn keine Verwechslung dahintersteht; das zeigt nur der Blick auf die
+  Quelle. In den geprüften Ständen gab es keinen solchen Fund: Der einzige
+  Fund im Fenster war Linie 25, und dort war es eine Verwechslung. 54A/54B
+  lag mit 31 Stunden knapp außerhalb.
+* Ein Fund endet spätestens 24 Stunden nach der ersten Sichtung, auch wenn
+  der Eintrag dann noch als heutige Störung im Feed steht; zwei Läufe später
+  schließt sich das Issue. Linie 25 verließ den Feed zwölfeinhalb Stunden
+  nach der ersten Sichtung. Geprüft und verworfen: den gefundenen Eintrag
+  über das Fenster hinaus zu merken. Das verlängert auch einen Fund ohne
+  Verwechslung auf den ganzen Tag, hält bei einem täglich wiederkehrenden
+  „[Heute]“ ohne Grenze an und reißt ab, sobald der Eintrag für einen Lauf
+  aus den zehn Plätzen fällt.
+* Erscheint die alte Meldung erst mehr als 24 Stunden nach der ersten
+  Sichtung des übernommenen Eintrags als heutige Störung, etwa weil ihr
+  Zeitraum erst Tage später endet, meldet die Regel nichts. Im Feed sieht
+  dieser Fall aus wie R95 und 54A/54B.
+* Der Builder ordnet eine angekündigte Maßnahme ab ihrem Beginn als neu ein
+  (`announced_start`, `_sort_moment`). Der Feed nennt diesen Zeitpunkt
+  nicht, nur die erste Sichtung und den Beginn der gezeigten Meldung.
+  Übernimmt eine alte Meldung die Identität eines solchen Eintrags, kann sie
+  vorne stehen, ohne dass der Wächter es erkennt. Die Regel ohne Fenster
+  fand in den geprüften Ständen nur Linie 25, 54A/54B und R95, und keiner
+  davon war dieser Fall.
+
+Geprüft und verworfen: eine Regel „dieselbe GUID zeigt plötzlich eine ältere
+Meldung“. In den 2 206 Ständen geht das Veröffentlichungsdatum unter
+derselben GUID siebenmal um mehr als einen Tag zurück. Einmal ist es
+Linie 25. In den sechs anderen Fällen behält eine angekündigte Maßnahme
+ihren Titel (Demonstration am 10.10. und 22.10., „1/2/71/D: Veranstaltung“
+am 25.10., „1/2/71/D: Nationalfeiertag“ zweimal am 26.10.) oder verliert nur
+den Zusatz „& Fahrtbehinderung Veranstaltung“ (Linie 18, 08.11.).
 
 ## Eine Regel ergänzen
 

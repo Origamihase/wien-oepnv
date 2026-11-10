@@ -43,16 +43,17 @@ SINCE_LATE = timedelta(hours=3)
 EXPECTED_END_BEFORE_MESSAGE = timedelta(hours=3)
 # The previous build counts as "the screen before" only when it is this recent.
 PREVIOUS_MAX_GAP = timedelta(hours=2)
-# A message older than a day that the feed counts as first seen today has
+# A message this much older than the first sighting of its item may have
 # taken over the identity of another one (line 25 on 2026-10-09: a stop
 # ticker from 07.10. with the GUID and first_seen of a delay from 09:36).
 OLD_AS_NEW = timedelta(hours=24)
-# How long after its first sighting the feed counts an item as new: the
-# builder's ``_CURRENT_INCIDENT_WINDOW`` (tests/test_feed_watch pins the two
-# together). An item first seen longer ago does not lead the feed as a new
-# disruption, however old its message is: "R95: Wien Hauptbahnhof ↔
-# Felixdorf" (works on single days from 10.02. to 10.11.2026, in the feed
-# since 24.05.) read "[Heute]" on its last day, and that is what it was.
+# How long after its first sighting (``first_seen``) an item counts as new
+# for this rule. The same length as the builder's window for current
+# incidents (``_CURRENT_INCIDENT_WINDOW``; a test keeps the two equal). An
+# item the build has known for longer is not new today, however old its
+# message is: "R95: Wien Hauptbahnhof ↔ Felixdorf" (works on single days
+# from 10.02. to 10.11.2026, first seen on 24.05.) read "[Heute]" on the
+# last of those days, and that is what it was.
 NEW_IN_FEED = timedelta(hours=24)
 # A feed older than this when the watcher runs was not rebuilt by this run.
 FEED_MAX_AGE = timedelta(minutes=90)
@@ -142,11 +143,11 @@ RULES: dict[str, Rule] = {
             "alte-meldung-als-neu",
             "Alte Meldung als neue Störung",
             "Rang 1",
-            "Eine Meldung, die älter als einen Tag ist, gilt als heute neu und steht als "
-            "aktuelle Störung vorne (Linie 25 am 09.10.2026: eine Haltestellen-Anzeige vom "
-            "07.10. übernahm GUID und Beginn einer Verspätung und stand bis auf Platz 2). "
-            "Neu ist ein Eintrag in den ersten 24 Stunden nach seiner ersten Sichtung; ein "
-            "länger bekannter Eintrag, der an seinem letzten Tag „[Heute]“ zeigt, ist kein Fund.",
+            "Eine Meldung, die älter als einen Tag ist, erscheint als heutige Störung, obwohl "
+            "der Bau den Eintrag erst seit höchstens 24 Stunden kennt (Linie 25 am 09.10.2026: "
+            "eine Haltestellen-Anzeige vom 07.10. übernahm GUID und erste Sichtung einer "
+            "Verspätung und stand bis auf Platz 2). Ein länger bekannter Eintrag, der am letzten "
+            "Tag seines Zeitraums „[Heute]“ zeigt, ist kein Fund.",
         ),
         Rule(
             "seit-zu-frueh",
