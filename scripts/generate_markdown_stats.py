@@ -124,7 +124,7 @@ from src.markdown_stats.markdown_report import (  # noqa: E402
 )
 from src.markdown_stats.year_archive import (  # noqa: E402
     dashboard_nav as dashboard_nav,
-    write_year_archive as write_year_archive,
+    write_year_archives as write_year_archives,
 )
 from src.markdown_stats.readme import (  # noqa: E402
     README_MAX_BYTES as README_MAX_BYTES,
@@ -413,9 +413,9 @@ def main(argv: list[str] | None = None) -> int:
             "README wird weiterhin gepatcht."
         )
     else:
-        # The archive page first: the dashboard written below names it.
+        # The archive pages first: the dashboard written below names them.
         try:
-            write_year_archive(
+            write_year_archives(
                 now=now, year=args.year, stats_dir=args.stats_dir, output_path=args.output
             )
         except OSError as exc:
@@ -568,7 +568,7 @@ __all__ = [
     "render_readme_stammstrecke_block",
     "render_weekday_bars",
     "write_dashboard",
-    "write_year_archive",
+    "write_year_archives",
     "_iter_csv_rows",
     "_aware_fromisoformat",
     "_parse_stammstrecke_rows",

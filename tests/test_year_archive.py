@@ -308,3 +308,72 @@ def test_a_year_without_stammstrecke_rows_still_archives(tmp_path: Path) -> None
     archive = (tmp_path / "statistik-2026.md").read_text(encoding="utf-8")
     assert "| Erfasste Störungen (2026) | 1 |" in archive
     assert "Eingeschränkte Abdeckung" not in archive
+
+
+# ---- The archive page follows its ledger ------------------------------------------
+
+
+def test_archive_takes_in_rows_that_arrive_after_new_year(tmp_path: Path) -> None:
+    # The 00:01 tick of 01.01. could not poll; the trains of the last half
+    # hour of 2026 are entered by the next tick, after the page was written.
+    rows = _half_hourly(
+        datetime(2026, 12, 31, 5, 0, tzinfo=VIENNA), datetime(2026, 12, 31, 23, 0, tzinfo=VIENNA), "Meidling"
+    )
+    _write_sm(tmp_path / "stats", rows)
+    assert _run(tmp_path, "2027-01-01T00:01:00+01:00") == 0
+    first = (tmp_path / "statistik-2026.md").read_text(encoding="utf-8")
+    assert "| Stammstrecke-Beobachtungen (2026) | 37 |" in first
+
+    _write_sm(tmp_path / "stats", rows + [(datetime(2026, 12, 31, 23, 30, tzinfo=VIENNA), "Meidling")])
+    # A README tick renders no page.
+    assert _run(tmp_path, "2027-01-01T00:31:00+01:00", "--skip-dashboard") == 0
+    assert (tmp_path / "statistik-2026.md").read_text(encoding="utf-8") == first
+    assert _run(tmp_path, "2027-01-02T00:01:00+01:00") == 0
+    second = (tmp_path / "statistik-2026.md").read_text(encoding="utf-8")
+    assert "| Stammstrecke-Beobachtungen (2026) | 38 |" in second
+    assert "erzeugt am 2027-01-02T00:01+01:00" in second
+
+    # Unchanged ledger: the page is not written again, on no later day.
+    stamp = (tmp_path / "statistik-2026.md").stat().st_mtime_ns
+    for now_iso in ("2027-01-03T00:01:00+01:00", "2027-07-01T00:01:00+02:00"):
+        assert _run(tmp_path, now_iso) == 0
+        assert (tmp_path / "statistik-2026.md").read_text(encoding="utf-8") == second
+        assert (tmp_path / "statistik-2026.md").stat().st_mtime_ns == stamp
+
+
+def test_every_finished_year_with_a_ledger_has_its_page(tmp_path: Path) -> None:
+    _write_sm(
+        tmp_path / "stats",
+        [
+            (datetime(2026, 6, 1, 8, 0, tzinfo=VIENNA), "Meidling"),
+            (datetime(2027, 6, 1, 8, 0, tzinfo=VIENNA), "Meidling"),
+            (datetime(2028, 1, 1, 0, 0, tzinfo=VIENNA), "Meidling"),
+        ],
+    )
+    # Header only: a year without rows gets no page.
+    (tmp_path / "stats" / "ausfaelle_2025.csv").write_text("timestamp,weekday,hour,direction,line\n", encoding="utf-8")
+    assert _run(tmp_path, "2028-01-01T00:01:00+01:00") == 0
+    assert sorted(p.name for p in tmp_path.glob("statistik-*.md")) == ["statistik-2026.md", "statistik-2027.md"]
+    assert "Frühere Jahre: [2027](statistik-2027.md) · [2026](statistik-2026.md)" in (
+        tmp_path / "statistik.md"
+    ).read_text(encoding="utf-8")
+    # An explicit other year writes and changes none.
+    (tmp_path / "statistik-2026.md").unlink()
+    assert _run(tmp_path, "2028-01-02T00:01:00+01:00", "--year", "2027") == 0
+    assert not (tmp_path / "statistik-2026.md").exists()
+
+
+def test_archive_write_only_counts_what_the_page_says(tmp_path: Path) -> None:
+    _write_sm(tmp_path / "stats", [(datetime(2026, 6, 1, 8, 0, tzinfo=VIENNA), "Meidling")])
+    assert _run(tmp_path, "2027-01-01T00:01:00+01:00") == 0
+    page = tmp_path / "statistik-2026.md"
+    first = page.read_text(encoding="utf-8")
+    # A blank line at the end of the ledger is the same year.
+    ledger = tmp_path / "stats" / "stammstrecke_2026.csv"
+    ledger.write_text(ledger.read_text(encoding="utf-8") + "\n", encoding="utf-8")
+    assert _run(tmp_path, "2027-01-02T00:01:00+01:00") == 0
+    assert page.read_text(encoding="utf-8") == first
+    # A page edited by hand is brought back to its ledger.
+    page.write_text(first.replace("| 1 |", "| 99 |", 1), encoding="utf-8")
+    assert _run(tmp_path, "2027-01-03T00:01:00+01:00") == 0
+    assert _body(page.read_text(encoding="utf-8")) == _body(first)

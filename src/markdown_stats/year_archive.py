@@ -9,8 +9,9 @@ writes the whole previous year, 31.12. included, to a page of its own
 
 Review of 2026-11-10, before the first such run: the dashboard leads to the
 archive pages and each archive page leads back (nobody found a page no
-other page named), and an archive page carries the coverage note of its
-year (:func:`render_finished_year_coverage_note`).
+other page named), an archive page carries the coverage note of its year
+(:func:`render_finished_year_coverage_note`), and it follows its ledger
+instead of being written once (:func:`write_year_archives`).
 """
 from __future__ import annotations
 
@@ -29,7 +30,10 @@ from src.markdown_stats.rows import (
     aggregate_stoerungen,
     collect_year_data,
 )
+from src.utils.files import read_capped_text
+from src.utils.liquid import liquid_safe
 from src.utils.logging import sanitize_log_arg
+from src.utils.stats import DEFAULT_STATS_DIR
 
 
 def archive_path(output_path: Path, year: int) -> Path:
@@ -86,31 +90,73 @@ def render_year_archive(
     )
 
 
-def write_year_archive(
+_LEDGER_NAME = re.compile(r"(?:stammstrecke|stoerungen|ausfaelle)_(\d{4})\.csv")
+_STAMP_PREFIX = "_Automatisch erzeugt am "
+
+
+def finished_years(stats_dir: Path | None, *, before: int) -> list[int]:
+    """Years before *before* that have a ledger file, oldest first."""
+    base = stats_dir if stats_dir is not None else DEFAULT_STATS_DIR
+    try:
+        entries = [entry.name for entry in base.iterdir()]
+    except OSError:
+        return []
+    years = {int(m.group(1)) for m in map(_LEDGER_NAME.fullmatch, entries) if m}
+    return sorted(y for y in years if y < before)
+
+
+def _without_stamp(page: str) -> list[str]:
+    """The lines of *page* without the one that says when it was written."""
+    return [line for line in page.splitlines() if not line.startswith(_STAMP_PREFIX)]
+
+
+def write_year_archives(
     *,
     now: datetime,
     year: int,
     stats_dir: Path | None,
     output_path: Path,
-) -> Path | None:
-    """Keep the finished previous year as ``statistik-<Vorjahr>.md`` next to *output_path*.
+) -> list[Path]:
+    """Keep the page of every finished year in step with its ledger.
 
-    Written by whichever dashboard run first finds the page missing, so a
-    missed or late 01.01. tick does not matter. Nothing is written for an
-    explicit ``--year`` other than the current one, or when the previous
-    year has no rows at all. Returns the path written, if any.
+    Each dashboard run renders every year before *year* that has a ledger
+    file and writes ``statistik-<Jahr>.md`` next to *output_path* when the
+    page is missing or would read differently; the line with the time of
+    writing does not count, so a page whose year did not change is not
+    touched. A missed or late 01.01. tick does not matter: the next
+    dashboard run writes the page.
+
+    Until 2026-11-10 the page was written once and never again. The ledger
+    of a year can still change after its first dashboard run: a train of
+    31.12. is entered by the tick after its departure, and a tick that
+    could not poll enters it later; rows are corrected and added by hand
+    (26.10.2026: nine twin rows removed, 28.10.2026: 1,064 rows added to 33
+    days long past). The page then showed figures its own ledger no longer
+    had, for good (Michael's decision of 2026-11-10: the archive follows
+    the ledger).
+
+    Nothing is written for an explicit ``--year`` other than the current
+    one, or for a year without rows. Returns the paths written.
     """
     if year != now.year:
-        return None
-    previous = year - 1
-    archive = archive_path(output_path, previous)
-    if archive.exists():
-        return None
-    markdown = render_year_archive(
-        now=now, year=previous, stats_dir=stats_dir, output_path=output_path
-    )
-    if markdown is None:
-        return None
-    write_dashboard(markdown, output_path=archive)
-    LOGGER.info("Jahresarchiv geschrieben: %s.", sanitize_log_arg(str(archive)))
-    return archive
+        return []
+    written: list[Path] = []
+    for finished in finished_years(stats_dir, before=year):
+        markdown = render_year_archive(
+            now=now, year=finished, stats_dir=stats_dir, output_path=output_path
+        )
+        if markdown is None:
+            continue
+        archive = archive_path(output_path, finished)
+        if archive.is_file():
+            current = read_capped_text(
+                archive, label="Jahresarchiv", logger=LOGGER
+            )
+            if current is not None and _without_stamp(current) == _without_stamp(
+                liquid_safe(markdown)
+            ):
+                continue
+        write_dashboard(markdown, output_path=archive)
+        LOGGER.info("Jahresarchiv geschrieben: %s.", sanitize_log_arg(str(archive)))
+        written.append(archive)
+    return written
