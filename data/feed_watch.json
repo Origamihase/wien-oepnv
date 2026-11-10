@@ -1,32 +1,28 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-10T18:01:05.503657+00:00",
- "built": "2026-11-10T19:00:53+01:00",
+ "updated": "2026-11-10T18:31:04.757013+00:00",
+ "built": "2026-11-10T19:30:47+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-10T19:00:53+01:00",
+  "built": "2026-11-10T19:30:47+01:00",
   "items": [
    {
-    "title": "2: Fremdunfall",
+    "title": "25: Schadhafter Zug",
+    "time_line": "Seit 19:10"
+   },
+   {
+    "title": "26: Schadhaftes Fahrzeug",
+    "time_line": "Seit 19:11"
+   },
+   {
+    "title": "2/5/12: Fremder Verkehrsunfall",
     "time_line": "Seit 18:16"
-   },
-   {
-    "title": "5: Fremdunfall",
-    "time_line": "Seit 17:31"
-   },
-   {
-    "title": "12: Fremder Verkehrsunfall",
-    "time_line": "Seit 17:28"
    },
    {
     "title": "U6: Rettungseinsatz",
     "time_line": "Seit 18:29"
-   },
-   {
-    "title": "9: Falschparker",
-    "time_line": "Seit 17:59"
    },
    {
     "title": "10A: Schadhaftes Fahrzeug",
@@ -47,31 +43,15 @@
    {
     "title": "R95: Wien Hauptbahnhof ↔ Felixdorf",
     "time_line": "Heute"
+   },
+   {
+    "title": "79A/79B: Alberner Hafenzufahrtsstraße",
+    "time_line": "Bis Do 12.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-03T18:01:11.561310+00:00",
-   "raw": {
-    "wl-stoerungen": 53,
-    "wl-hinweise": 73,
-    "oebb": 181,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 12,
-    "oebb": 156,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 7,
-    "wl": 87
-   }
-  },
   {
    "t": "2026-11-03T18:31:17.277153+00:00",
    "raw": {
@@ -6791,17 +6771,37 @@
     "oebb": 8,
     "wl": 91
    }
+  },
+  {
+   "t": "2026-11-10T18:31:04.757013+00:00",
+   "raw": {
+    "wl-stoerungen": 106,
+    "wl-hinweise": 93,
+    "oebb": 197,
+    "baustellen-linien": 52,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 25,
+    "oebb": 171,
+    "baustellen": 62
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 8,
+    "wl": 88
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-10T18:01:05.503657+00:00"
+   "last_ok": "2026-11-10T18:31:04.757013+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-10T18:01:05.503657+00:00"
+   "last_ok": "2026-11-10T18:31:04.757013+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-10T18:01:05.503657+00:00"
+   "last_ok": "2026-11-10T18:31:04.757013+00:00"
   }
  }
 }
