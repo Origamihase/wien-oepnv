@@ -22,10 +22,6 @@
   },
   {
    "grund": "nicht Wien-relevant",
-   "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten/Haltausfall: Villach Hbf &#60;=&#62; Pusarnitz Bahnhof"
-  },
-  {
-   "grund": "nicht Wien-relevant",
    "titel": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Attnang-Puchheim Bahnhof &#60;=&#62; Ried im Innkreis Bahnhof"
   },
   {
@@ -271,6 +267,10 @@
   {
    "grund": "nicht Wien-relevant",
    "titel": "Bauarbeiten - Schienenersatzverkehr: Leoben Hbf &#60;=&#62; Kapfenberg Bahnhof"
+  },
+  {
+   "grund": "nicht Wien-relevant",
+   "titel": "Bauarbeiten - Schienenersatzverkehr: Leobersdorf Bahnhof &#60;=&#62; Weissenbach/Triesting-Neuhaus Bahnhof"
   },
   {
    "grund": "nicht Wien-relevant",
@@ -581,6 +581,10 @@
    "titel": "Update 1 (28.10.2026 13:49) Bauarbeiten - geänderte Fahrzeiten: Brennero/Brenner stazione/Bahnhof &#60;=&#62; Innsbruck Hbf"
   },
   {
+   "grund": "nicht Wien-relevant",
+   "titel": "Verkehrseinschränkung: Ybbs/Donau Bahnhof - Amstetten NÖ Bahnhof"
+  },
+  {
    "grund": "nur Aufzug/Fahrtreppe",
    "titel": "Bauarbeiten - kein Halt in Kitzbühel Hahnenkamm Bahnhof, Brixen im Thale Bahnhof, Westendorf in Tirol Bahnhof und Hopfgarten im Brixental Berglift Bahnhst/geänderte Fahrzeiten: St.Johann in Tirol Bahn"
   },
@@ -610,6 +614,14 @@
   },
   {
    "grund": "nur Aufzug/Fahrtreppe",
+   "titel": "Technische Störung des Personenlift in Gmünd NÖ Bahnhof - Bahnsteig Hausbahnsteig: Gmünd NÖ Bahnhof"
+  },
+  {
+   "grund": "nur Aufzug/Fahrtreppe",
+   "titel": "Technische Störung des Personenlift in Gmünd NÖ Bahnhof - Bahnsteig Inselbahnsteig: Gmünd NÖ Bahnhof"
+  },
+  {
+   "grund": "nur Aufzug/Fahrtreppe",
    "titel": "Technische Störung des Personenlift in Klagenfurt Hbf - Bahnsteig 2/3: Klagenfurt Hbf"
   },
   {
@@ -627,6 +639,30 @@
   {
    "grund": "nur Aufzug/Fahrtreppe",
    "titel": "Technische Störung des Personenlift in Schwarzach im Pongau-St.Veit Bahnhof - Bahnsteig 4/5: Schwarzach im Pongau-St.Veit Bahnhof"
+  },
+  {
+   "grund": "nur Aufzug/Fahrtreppe",
+   "titel": "Technische Störung des Personenlift in St.Anton am Arlberg Bahnhof - Bahnsteig 2: St.Anton am Arlberg Bahnhof"
+  },
+  {
+   "grund": "nur Aufzug/Fahrtreppe",
+   "titel": "Technische Störung des Personenlift in St.Valentin Bahnhof - Bahnsteig 4/5: St.Valentin Bahnhof"
+  },
+  {
+   "grund": "nur Aufzug/Fahrtreppe",
+   "titel": "Technische Störung des Personenlift in Wien Floridsdorf Bahnhof (U) - Bahnsteig 1/2: Wien Floridsdorf Bahnhof (U)"
+  },
+  {
+   "grund": "nur Aufzug/Fahrtreppe",
+   "titel": "Technische Störung des Personenlift in Wien Heiligenstadt Bahnhof (U) Bahnsteig 1: Wien Heiligenstadt Bahnhof (U)"
+  },
+  {
+   "grund": "nur Aufzug/Fahrtreppe",
+   "titel": "Technische Störung des Personenlift in Wien Hernals Bahnhst - Bahnsteig 2: Wien Hernals Bahnhst"
+  },
+  {
+   "grund": "nur Aufzug/Fahrtreppe",
+   "titel": "Technische Störung des Personenlift in Wien Hütteldorf Bahnhof (U) - Bahnsteig 3/4: Wien Hütteldorf Bahnhof (U)"
   }
  ]
 }
