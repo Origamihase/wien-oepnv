@@ -66,7 +66,7 @@ def evaluate(
     findings += check_duplicates(items)
     findings += check_count(items, max_items)
     findings += check_skipped_items(skipped)
-    findings += check_old_as_new(items)
+    findings += check_old_as_new(items, built)
     previous = state.get("previous_feed")
     flagged = state.get("seit_zu_frueh")
     since_findings, keep = check_since_too_early(

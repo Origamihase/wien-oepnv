@@ -47,6 +47,13 @@ PREVIOUS_MAX_GAP = timedelta(hours=2)
 # taken over the identity of another one (line 25 on 2026-10-09: a stop
 # ticker from 07.10. with the GUID and first_seen of a delay from 09:36).
 OLD_AS_NEW = timedelta(hours=24)
+# How long after its first sighting the feed counts an item as new: the
+# builder's ``_CURRENT_INCIDENT_WINDOW`` (tests/test_feed_watch pins the two
+# together). An item first seen longer ago does not lead the feed as a new
+# disruption, however old its message is: "R95: Wien Hauptbahnhof ↔
+# Felixdorf" (works on single days from 10.02. to 10.11.2026, in the feed
+# since 24.05.) read "[Heute]" on its last day, and that is what it was.
+NEW_IN_FEED = timedelta(hours=24)
 # A feed older than this when the watcher runs was not rebuilt by this run.
 FEED_MAX_AGE = timedelta(minutes=90)
 # An issue closes after the rule held in this many runs in a row.
@@ -137,7 +144,9 @@ RULES: dict[str, Rule] = {
             "Rang 1",
             "Eine Meldung, die älter als einen Tag ist, gilt als heute neu und steht als "
             "aktuelle Störung vorne (Linie 25 am 09.10.2026: eine Haltestellen-Anzeige vom "
-            "07.10. übernahm GUID und Beginn einer Verspätung und stand bis auf Platz 2).",
+            "07.10. übernahm GUID und Beginn einer Verspätung und stand bis auf Platz 2). "
+            "Neu ist ein Eintrag in den ersten 24 Stunden nach seiner ersten Sichtung; ein "
+            "länger bekannter Eintrag, der an seinem letzten Tag „[Heute]“ zeigt, ist kein Fund.",
         ),
         Rule(
             "seit-zu-frueh",
