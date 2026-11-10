@@ -17,6 +17,7 @@ from src.feed_watch.model import (
     BODY_CHAR_LIMIT,
     EXPECTED_END_BEFORE_MESSAGE,
     FEED_MAX_AGE,
+    NEW_IN_FEED,
     OLD_AS_NEW,
     PREVIOUS_MAX_GAP,
     SINCE_LATE,
@@ -93,11 +94,19 @@ def check_count(items: Sequence[Item], max_items: int) -> list[Finding]:
     return [Finding("anzahl", "Feed", f"{len(items)} statt {max_items} Einträge")]
 
 
-def check_old_as_new(items: Sequence[Item]) -> list[Finding]:
-    """A message older than a day that the feed counts as first seen today."""
+def check_old_as_new(items: Sequence[Item], built: datetime) -> list[Finding]:
+    """A message older than a day that the feed counts as new.
+
+    New means first seen within ``NEW_IN_FEED`` before the build, the window
+    in which the builder lets an item lead as a current disruption. Without
+    that limit the rule also met every long-known item on the day its time
+    line turns to "[Heute]": planned works on their last day.
+    """
     findings: list[Finding] = []
     for item in items:
         if not _is_current(item.time_line) or item.first_seen is None or item.pub_date is None:
+            continue
+        if built - item.first_seen > NEW_IN_FEED:
             continue
         older = item.first_seen - item.pub_date > OLD_AS_NEW
         started = item.starts_at is None or item.first_seen - item.starts_at > OLD_AS_NEW
