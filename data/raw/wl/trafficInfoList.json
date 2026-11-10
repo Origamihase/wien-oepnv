@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261110-0002, I20260925-0011, I20260909-0007, I20261020-0029, I20261110-0003"
+    "trafficInfoNameList": "I20260925-0011, I20261110-0002-F01, I20261110-0002-F02, I20260909-0007, I20261110-0002-F03, I20261110-0002-F04, I20261110-0002-F05, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1880-101, R1881-101, R1882-101, R3886-480, R1883-101, R1884-101, R1876-101, R1875-101, R2371-125, R2370-125, R2359-125, R2343-626, R2378-627, R2343-125, R2558-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R293-474, R318-437, R1974-466, R1199-205, R500-101, R305-170, R304-170, R301-170, R302-170, R303-170, R214-137, R188-137, R213-137, R1213-137, R1212-137, R215-137, R150-137, R149-137, R210-137, R209-137, R208-137, R211-137, R209-138, R208-138, R210-138, R150-138, R211-138, R1213-138, R1212-138, R188-138, R150-140, R148-140, R188-140, R1213-140, R1212-140, R189-140, R148-141, R150-141, R188-141, R1213-141, R1212-141, R189-141, R148-142, R150-142, R188-142, R1212-142, R1213-142, R1336-142, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R3886-480, R1876-101, R1875-101, R2373-125, R2379-627, R2558-125, R2373-126, R2373-127, R2345-127, R2343-125, R2378-627, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2380-627, R293-474, R318-437, R1974-466, R1199-205, R500-101, R213-137, R188-137, R214-137, R1213-137, R1212-137, R215-137, R149-137, R150-137, R208-137, R209-137, R210-137, R211-137, R210-138, R208-138, R209-138, R150-138, R211-138, R1213-138, R1212-138, R188-138, R148-140, R150-140, R188-140, R1213-140, R1212-140, R189-140, R148-141, R150-141, R188-141, R1212-141, R1213-141, R189-141, R150-142, R148-142, R188-142, R1212-142, R1213-142, R1336-142, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -175,26 +175,22 @@
     "alertCauseId": 77,
     "attributes": {
      "relatedLineTypes": {
-      "37": "ptTram",
-      "38": "ptTram",
-      "40": "ptTram",
-      "41": "ptTram",
-      "42": "ptTram"
+      "37": "ptTram"
      }
     },
-    "description": "Linie 37: Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U. Linie 38: Betrieb nur zwischen Grinzing und Spitalgasse. Weiterfahrt bis Alser Straße U. Linie 40: Betrieb nur zwischen Gersthof, Herbeckstraße und Währinger Straße, Volksoper U. Linie 41: Betrieb nur zwischen Pötzleinsdorf und Währinger Straße, Volksoper U. Linie 42: Betrieb nur zwischen Antonigasse und Währinger Straße, Volksoper U. Ersatz: Linien U6, 43, 44 und 40A. Voraussichtliche Dauer: 07:00 Uhr. Grund: Verkehrsunfall im Bereich Währinger Straße 17.",
-    "descriptionHTML": "<p>Linie 37:<br>Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U.<br>Linie 38:<br>Betrieb nur zwischen Grinzing und Spitalgasse.<br>Weiterfahrt bis Alser Straße U.<br>Linie 40:<br>Betrieb nur zwischen Gersthof, Herbeckstraße und Währinger Straße, Volksoper U.<br>Linie 41:<br>Betrieb nur zwischen Pötzleinsdorf und Währinger Straße, Volksoper U.<br>Linie 42:<br>Betrieb nur zwischen Antonigasse und Währinger Straße, Volksoper U.</p><p>Ersatz: Linien U6, 43, 44 und 40A.</p><p>Voraussichtliche Dauer: 07:00 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Währinger Straße 17.</p>",
+    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 37: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 37:<br>Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U.<br>Linie 38:<br>Betrieb nur zwischen Grinzing und Spitalgasse.<br>Weiterfahrt bis Alser Straße U.<br>Linie 40:<br>Betrieb nur zwischen Gersthof, Herbeckstraße und Währinger Straße, Volksoper U.<br>Linie 41:<br>Betrieb nur zwischen Pötzleinsdorf und Währinger Straße, Volksoper U.<br>Linie 42:<br>Betrieb nur zwischen Antonigasse und Währinger Straße, Volksoper U.</p><p>Ersatz: Linien U6, 43, 44 und 40A.</p><p>Voraussichtliche Dauer: 07:00 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Währinger Straße 17.</p>",
-       "descriptionPlain": "Linie 37: Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U. Linie 38: Betrieb nur zwischen Grinzing und Spitalgasse. Weiterfahrt bis Alser Straße U. Linie 40: Betrieb nur zwischen Gersthof, Herbeckstraße und Währinger Straße, Volksoper U. Linie 41: Betrieb nur zwischen Pötzleinsdorf und Währinger Straße, Volksoper U. Linie 42: Betrieb nur zwischen Antonigasse und Währinger Straße, Volksoper U. Ersatz: Linien U6, 43, 44 und 40A. Voraussichtliche Dauer: 07:00 Uhr. Grund: Verkehrsunfall im Bereich Währinger Straße 17.",
-       "title": "37, 38, 40, 41, 42: Verkehrsunfall"
+       "descriptionHtml": "<p>Linie 37: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "37: Verkehrsunfall"
       }
      }
     ],
     "location": "Währinger Straße 17",
-    "name": "I20261110-0002",
+    "name": "I20261110-0002-F01",
     "owner": "WL",
     "parentName": "I20261110-0002",
     "priority": "1",
@@ -202,33 +198,193 @@
     "reasonName": "Verkehrsunfall",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "37",
-     "38",
-     "40",
-     "41",
-     "42"
+     "37"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 137,
       "lineName": "37",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T06:38:00.000+0100",
+     "lastUpdate": "2026-11-10T06:38:00.000+0100",
+     "resume": "2026-11-10T06:38:00.000+0100",
+     "start": "2026-11-10T06:07:00.000+0100"
+    },
+    "title": "37: Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "38": "ptTram"
+     }
+    },
+    "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 38: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 38: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "38: Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Währinger Straße 17",
+    "name": "I20261110-0002-F02",
+    "owner": "WL",
+    "parentName": "I20261110-0002",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 138,
       "lineName": "38",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T06:38:00.000+0100",
+     "lastUpdate": "2026-11-10T06:38:00.000+0100",
+     "resume": "2026-11-10T06:38:00.000+0100",
+     "start": "2026-11-10T06:07:00.000+0100"
+    },
+    "title": "38: Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "40": "ptTram"
+     }
+    },
+    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "40: Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Währinger Straße 17",
+    "name": "I20261110-0002-F03",
+    "owner": "WL",
+    "parentName": "I20261110-0002",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 140,
       "lineName": "40",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T06:38:00.000+0100",
+     "lastUpdate": "2026-11-10T06:38:00.000+0100",
+     "resume": "2026-11-10T06:38:00.000+0100",
+     "start": "2026-11-10T06:07:00.000+0100"
+    },
+    "title": "40: Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "41": "ptTram"
+     }
+    },
+    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "41: Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Währinger Straße 17",
+    "name": "I20261110-0002-F04",
+    "owner": "WL",
+    "parentName": "I20261110-0002",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 141,
       "lineName": "41",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T06:38:00.000+0100",
+     "lastUpdate": "2026-11-10T06:38:00.000+0100",
+     "resume": "2026-11-10T06:38:00.000+0100",
+     "start": "2026-11-10T06:07:00.000+0100"
+    },
+    "title": "41: Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "42": "ptTram"
+     }
+    },
+    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 42: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 42: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "42: Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Währinger Straße 17",
+    "name": "I20261110-0002-F05",
+    "owner": "WL",
+    "parentName": "I20261110-0002",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 142,
       "lineName": "42",
@@ -237,59 +393,12 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-10T06:11:00.000+0100",
-     "lastUpdate": "2026-11-10T06:15:00.000+0100",
+     "created": "2026-11-10T06:38:00.000+0100",
+     "lastUpdate": "2026-11-10T06:38:00.000+0100",
+     "resume": "2026-11-10T06:38:00.000+0100",
      "start": "2026-11-10T06:07:00.000+0100"
     },
-    "title": "37, 38, 40, 41, 42: Verkehrsunfall"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U3: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261110-0003",
-    "owner": "WL",
-    "parentName": "I20261110-0003",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4914
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-10T06:12:00.000+0100",
-     "lastUpdate": "2026-11-10T06:12:00.000+0100",
-     "resume": "2026-11-10T06:11:00.000+0100",
-     "start": "2026-11-10T06:11:00.000+0100"
-    },
-    "title": "U3: Verspätungen"
+    "title": "42: Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1716,121 +1825,6 @@
      "start": "2026-11-09T00:00:21.000+0100"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nUmleitung ab Fasangasse bis Rennweg über St. Marx",
-    "name": "R301-170",
-    "owner": "WL",
-    "parentName": "R301-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     301
-    ],
-    "time": {
-     "end": "2026-11-10T06:33:00.000+0100",
-     "start": "2026-11-10T05:33:55.000+0100"
-    },
-    "title": "Schadhafter Zug\nUmleitung ab Fasangasse bis Rennweg über St. Marx"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nUmleitung ab Fasangasse bis Rennweg über St. Marx",
-    "name": "R302-170",
-    "owner": "WL",
-    "parentName": "R302-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     302
-    ],
-    "time": {
-     "end": "2026-11-10T06:33:00.000+0100",
-     "start": "2026-11-10T05:33:55.000+0100"
-    },
-    "title": "Schadhafter Zug\nUmleitung ab Fasangasse bis Rennweg über St. Marx"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nUmleitung ab Fasangasse bis Rennweg über St. Marx",
-    "name": "R303-170",
-    "owner": "WL",
-    "parentName": "R303-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     303
-    ],
-    "time": {
-     "end": "2026-11-10T06:33:00.000+0100",
-     "start": "2026-11-10T05:33:55.000+0100"
-    },
-    "title": "Schadhafter Zug\nUmleitung ab Fasangasse bis Rennweg über St. Marx"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nUmleitung ab Fasangasse bis Rennweg über St. Marx",
-    "name": "R304-170",
-    "owner": "WL",
-    "parentName": "R304-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     304
-    ],
-    "time": {
-     "end": "2026-11-10T06:33:00.000+0100",
-     "start": "2026-11-10T05:30:25.000+0100"
-    },
-    "title": "Schadhafter Zug\nUmleitung ab Fasangasse bis Rennweg über St. Marx"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Rennweg",
-    "name": "R305-170",
-    "owner": "WL",
-    "parentName": "R305-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     305
-    ],
-    "time": {
-     "end": "2026-11-10T06:31:00.000+0100",
-     "start": "2026-11-10T05:30:25.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Rennweg"
    },
    {
     "alertCause": "undefined alert cause",
