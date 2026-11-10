@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_445, ftazW_3, ftazW_1017116, ftazW_1018631, ftazW_488, ftazW_581, ftazW_1351716, ftazW_146, ftazW_1016567, ftazW_486, ftazW_734, ftazW_769, ftazW_147, ftazW_489, ftazW_770, ftazW_736, ftazW_1351715, ftazW_490, ftazW_1018065, ftazW_239, ftazW_510, ftazW_240, ftazW_491, ftazW_1018066, ftazW_82, ftazW_1351709, ftazW_511, ftazW_729, ftazW_83, ftazW_574, ftazW_508, ftazW_721"
+    "trafficInfoNameList": "ftazW_146, ftazW_1016567, ftazW_486, ftazW_734, ftazW_769, ftazW_147, ftazW_489, ftazW_770, ftazW_736, ftazW_1351715, ftazW_490, ftazW_1018065, ftazW_239, ftazW_510, ftazW_240, ftazW_491, ftazW_1018066, ftazW_82, ftazW_1351709, ftazW_511, ftazW_729, ftazW_83, ftazW_574, ftazW_508, ftazW_721"
    }
   ],
   "poiCategoryGroups": [
@@ -2887,45 +2887,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "10.11.2026 05:15",
-     "ausVon": "10.11.2026 01:15",
-     "location": "U1 Mittelbahnsteig - Ausgang Wagramerstraße",
-     "rbls": [
-      4182,
-      4187
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Rennbahnweg",
-     "status": "geplante Wartung",
-     "towards": "U1 beide Richtungen"
-    },
-    "description": "U1 Mittelbahnsteig - Ausgang Wagramerstraße",
-    "elevatorId": "RB 02",
-    "name": "ftazW_1017116",
-    "parentName": "ftazW_1017116",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4182,
-     4187
-    ],
-    "time": {
-     "end": "2026-11-10T05:15:00.000+0100",
-     "start": "2026-11-10T01:15:00.000+0100"
-    },
-    "title": "Rennbahnweg"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "12.11.2026 00:45",
      "ausVon": "11.11.2026 20:45",
      "location": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Stella Klein Löw Weg",
@@ -2995,40 +2956,6 @@
      "start": "2026-11-12T01:15:00.000+0100"
     },
     "title": "Stadion"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "10.11.2026 05:15",
-     "ausVon": "10.11.2026 01:15",
-     "location": "Passage - Ausgang Praterstraße",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U2",
-      "U1"
-     ],
-     "station": "Praterstern",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Passage - Ausgang Praterstraße",
-    "elevatorId": "PR 07",
-    "name": "ftazW_1018631",
-    "parentName": "ftazW_1018631",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2",
-     "U1"
-    ],
-    "time": {
-     "end": "2026-11-10T05:15:00.000+0100",
-     "start": "2026-11-10T01:15:00.000+0100"
-    },
-    "title": "Praterstern"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3105,45 +3032,6 @@
     "time": {
      "end": "2026-11-11T05:15:00.000+0100",
      "start": "2026-11-11T01:15:00.000+0100"
-    },
-    "title": "Alaudagasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "10.11.2026 05:15",
-     "ausVon": "10.11.2026 01:15",
-     "location": "beide Fahrtrichtungen - Ausgang Per Albin Hansson Siedlung",
-     "rbls": [
-      4136,
-      4131
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Alaudagasse",
-     "status": "geplante Wartung",
-     "towards": "U1 beide Richtungen"
-    },
-    "description": "beide Fahrtrichtungen - Ausgang Per Albin Hansson Siedlung",
-    "elevatorId": "AL 03",
-    "name": "ftazW_1351716",
-    "parentName": "ftazW_1351716",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4136,
-     4131
-    ],
-    "time": {
-     "end": "2026-11-10T05:15:00.000+0100",
-     "start": "2026-11-10T01:15:00.000+0100"
     },
     "title": "Alaudagasse"
    },
@@ -3238,8 +3126,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U4",
-      "U6"
+      "U6",
+      "U4"
      ],
      "station": "Längenfeldgasse",
      "status": "geplante Wartung",
@@ -3253,8 +3141,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U4",
-     "U6"
+     "U6",
+     "U4"
     ],
     "relatedStops": [
      4437,
@@ -3279,8 +3167,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U4",
-      "U6"
+      "U6",
+      "U4"
      ],
      "station": "Längenfeldgasse",
      "status": "geplante Wartung",
@@ -3294,8 +3182,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U4",
-     "U6"
+     "U6",
+     "U4"
     ],
     "relatedStops": [
      4438,
@@ -3306,75 +3194,6 @@
      "start": "2026-11-12T01:15:00.000+0100"
     },
     "title": "Längenfeldgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "10.11.2026 05:15",
-     "ausVon": "10.11.2026 01:15",
-     "location": "U1 Bahnsteig Richtung Oberlaa - Ausgang Arbeiterstrandbadstraße",
-     "rbls": [
-      4104
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Alte Donau",
-     "status": "geplante Wartung",
-     "towards": "U1 Oberlaa"
-    },
-    "description": "U1 Bahnsteig Richtung Oberlaa - Ausgang Arbeiterstrandbadstraße",
-    "elevatorId": "AD 02",
-    "name": "ftazW_3",
-    "parentName": "ftazW_3",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4104
-    ],
-    "time": {
-     "end": "2026-11-10T05:15:00.000+0100",
-     "start": "2026-11-10T01:15:00.000+0100"
-    },
-    "title": "Alte Donau"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "10.11.2026 05:15",
-     "ausVon": "10.11.2026 01:15",
-     "location": "Passage - Zwischengeschoss Zugang Meiselmarkt - Ausgang Hütteldorfer Straße",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Johnstraße",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Passage - Zwischengeschoss Zugang Meiselmarkt - Ausgang Hütteldorfer Straße",
-    "elevatorId": "JO 04",
-    "name": "ftazW_445",
-    "parentName": "ftazW_445",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "time": {
-     "end": "2026-11-10T05:15:00.000+0100",
-     "start": "2026-11-10T01:15:00.000+0100"
-    },
-    "title": "Johnstraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3421,49 +3240,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "10.11.2026 05:15",
-     "ausVon": "10.11.2026 01:15",
-     "location": "U4 Mittelbahnsteig - Zwischengeschoss - U6 Bahnsteig Richtung Siebenhirten",
-     "rbls": [
-      4439,
-      4440,
-      4651
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4",
-      "U6"
-     ],
-     "station": "Spittelau",
-     "status": "geplante Wartung",
-     "towards": "U4 beide Richtungen, U6 Siebenhirten"
-    },
-    "description": "U4 Mittelbahnsteig - Zwischengeschoss - U6 Bahnsteig Richtung Siebenhirten",
-    "elevatorId": "AU 03",
-    "name": "ftazW_488",
-    "parentName": "ftazW_488",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4",
-     "U6"
-    ],
-    "relatedStops": [
-     4439,
-     4440,
-     4651
-    ],
-    "time": {
-     "end": "2026-11-10T05:15:00.000+0100",
-     "start": "2026-11-10T01:15:00.000+0100"
-    },
-    "title": "Spittelau"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "11.11.2026 05:15",
      "ausVon": "11.11.2026 01:15",
      "location": "U6 Bahnsteig Richtung Floridsdorf - Zwischengeschoss - ÖBB Bahnsteig",
@@ -3472,8 +3248,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U4",
-      "U6"
+      "U6",
+      "U4"
      ],
      "station": "Spittelau",
      "status": "geplante Wartung",
@@ -3487,8 +3263,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U4",
-     "U6"
+     "U6",
+     "U4"
     ],
     "relatedStops": [
      4627
@@ -3511,8 +3287,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U4",
-      "U6"
+      "U6",
+      "U4"
      ],
      "station": "Spittelau",
      "status": "geplante Wartung",
@@ -3526,8 +3302,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U4",
-     "U6"
+     "U6",
+     "U4"
     ],
     "relatedStops": [
      4651
@@ -3725,42 +3501,6 @@
      "start": "2026-11-12T20:45:00.000+0100"
     },
     "title": "Schönbrunn"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "10.11.2026 05:15",
-     "ausVon": "10.11.2026 01:15",
-     "location": "U4 Mittelbahnsteig - Karlsplatzpassage",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U2",
-      "U1",
-      "U4"
-     ],
-     "station": "Karlsplatz",
-     "status": "geplante Wartung",
-     "towards": "U4 beide Richtungen"
-    },
-    "description": "U4 Mittelbahnsteig - Karlsplatzpassage",
-    "elevatorId": "KP 05",
-    "name": "ftazW_581",
-    "parentName": "ftazW_581",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2",
-     "U1",
-     "U4"
-    ],
-    "time": {
-     "end": "2026-11-10T05:15:00.000+0100",
-     "start": "2026-11-10T01:15:00.000+0100"
-    },
-    "title": "Karlsplatz"
    },
    {
     "alertCause": "undefined alert cause",
