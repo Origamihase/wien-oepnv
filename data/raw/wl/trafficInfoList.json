@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261110-0032, I20260925-0011, I20260909-0007, I20261110-0036, I20261020-0029, I20261110-0030-F01, I20261110-0035-F01"
+    "trafficInfoNameList": "I20261110-0036-F01, I20261110-0036-F02, I20261110-0036-F03, I20261110-0032, I20261110-0037-F01, I20261110-0035-F01, I20260925-0011, I20260909-0007, I20261110-0030-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R3886-480, R1876-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1875-101, R2380-627, R2379-627, R2373-126, R2373-127, R2370-125, R2371-125, R2372-125, R2373-125, R2343-125, R2343-626, R2558-125, R2359-125, R2378-627, R2345-127, R293-474, R318-437, R1974-466, R1199-205, R500-101, R272-112, R272-105, R458-112, R500-409, R362-105, R361-105, R355-112, R353-112, R354-112, R356-112, R211-112, R380-112, R357-105, R356-105, R377-105, R379-105, R381-112, R382-112, R383-112, R556-109, R526-109, R223-109, R524-109, R525-109, R550-109, R551-109, R249-102, R251-102, R49-102, R272-102, R270-102, R269-102, R15-102, R380-105, R379-112, R357-112, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1880-101, R3886-480, R1884-101, R1883-101, R1882-101, R1881-101, R1875-101, R1876-101, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R2558-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R293-474, R318-437, R1974-466, R1199-205, R500-101, R272-112, R272-105, R458-112, R355-112, R354-112, R353-112, R356-112, R211-112, R380-112, R356-105, R357-105, R379-105, R377-105, R381-112, R382-112, R383-112, R526-109, R223-109, R525-109, R524-109, R550-109, R551-109, R249-102, R251-102, R49-102, R270-102, R272-102, R269-102, R15-102, R380-105, R379-112, R357-112, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -207,11 +207,12 @@
       "vehicleType": "ptTram"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-10T16:33:00.000+0100",
-     "lastUpdate": "2026-11-10T16:33:00.000+0100",
-     "resume": "2026-11-10T16:33:00.000+0100",
+     "end": "2026-11-10T19:00:00.000+0100",
+     "lastUpdate": "2026-11-10T19:00:00.000+0100",
+     "resume": "2026-11-10T19:00:00.000+0100",
      "start": "2026-11-10T16:24:00.000+0100"
     },
     "title": "41: Verkehrsunfall"
@@ -301,8 +302,8 @@
     "status": "active",
     "time": {
      "created": "2026-11-10T18:08:00.000+0100",
-     "lastUpdate": "2026-11-10T18:08:00.000+0100",
-     "resume": "2026-11-10T18:08:00.000+0100",
+     "end": "2026-11-10T19:15:00.000+0100",
+     "lastUpdate": "2026-11-10T18:59:00.000+0100",
      "start": "2026-11-10T17:59:00.000+0100"
     },
     "title": "9: Falschparker"
@@ -312,24 +313,22 @@
     "alertCauseId": 77,
     "attributes": {
      "relatedLineTypes": {
-      "12": "ptTram",
-      "2": "ptTram",
-      "5": "ptTram"
+      "2": "ptTram"
      }
     },
-    "description": "Linie 2: Kein Betrieb zwischen Josefstädter Straße U und Parlament, U Volkstheater. Linie 5: Kein Betrieb zwischen Lange Gasse und Lerchenfelder Straße. Weiterfahrt ab Lange Gasse bis Alser Straße U, Zimmermannplatz. Weiterfahrt ab Lerchenfelderstraße bis Josefstädter Straße U. Linie 12: Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Ersatz: Linien U6, 44 und 46. Voraussichtliche Dauer: 19:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Josefstädter Straße # Albertgasse.",
-    "descriptionHTML": "<p><strong>Linie 2: </strong><br>Kein Betrieb zwischen Josefstädter Straße U und Parlament, U Volkstheater.<br>Linie 5: <br>Kein Betrieb zwischen Lange Gasse und Lerchenfelder Straße. <br>Weiterfahrt ab Lange Gasse bis Alser Straße U, Zimmermannplatz.<br>Weiterfahrt ab Lerchenfelderstraße bis Josefstädter Straße U.<br>Linie 12:<br>Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S.<br>Weiterfahrt bis Augasse.</p><p>Ersatz: Linien U6, 44 und 46.</p><p>Voraussichtliche Dauer: 19:00 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Josefstädter Straße # Albertgasse.</p>",
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p><strong>Linie 2: </strong><br>Kein Betrieb zwischen Josefstädter Straße U und Parlament, U Volkstheater.<br>Linie 5: <br>Kein Betrieb zwischen Lange Gasse und Lerchenfelder Straße. <br>Weiterfahrt ab Lange Gasse bis Alser Straße U, Zimmermannplatz.<br>Weiterfahrt ab Lerchenfelderstraße bis Josefstädter Straße U.<br>Linie 12:<br>Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S.<br>Weiterfahrt bis Augasse.</p><p>Ersatz: Linien U6, 44 und 46.</p><p>Voraussichtliche Dauer: 19:00 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Josefstädter Straße # Albertgasse.</p>",
-       "descriptionPlain": "Linie 2: Kein Betrieb zwischen Josefstädter Straße U und Parlament, U Volkstheater. Linie 5: Kein Betrieb zwischen Lange Gasse und Lerchenfelder Straße. Weiterfahrt ab Lange Gasse bis Alser Straße U, Zimmermannplatz. Weiterfahrt ab Lerchenfelderstraße bis Josefstädter Straße U. Linie 12: Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Ersatz: Linien U6, 44 und 46. Voraussichtliche Dauer: 19:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Josefstädter Straße # Albertgasse.",
-       "title": "2, 5, 12: Fremder Verkehrsunfall"
+       "descriptionHtml": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "2: Fremder Verkehrsunfall"
       }
      }
     ],
     "location": "Josefstädter Straße / Albertgasse",
-    "name": "I20261110-0036",
+    "name": "I20261110-0036-F01",
     "owner": "WL",
     "parentName": "I20261110-0036",
     "priority": "1",
@@ -337,21 +336,101 @@
     "reasonName": "Fremder Verkehrsunfall",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "2",
-     "5",
-     "12"
+     "2"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 102,
       "lineName": "2",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T18:55:00.000+0100",
+     "lastUpdate": "2026-11-10T18:55:00.000+0100",
+     "resume": "2026-11-10T18:55:00.000+0100",
+     "start": "2026-11-10T18:16:00.000+0100"
+    },
+    "title": "2: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "5": "ptTram"
+     }
+    },
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "5: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Josefstädter Straße / Albertgasse",
+    "name": "I20261110-0036-F02",
+    "owner": "WL",
+    "parentName": "I20261110-0036",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 105,
       "lineName": "5",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T18:55:00.000+0100",
+     "lastUpdate": "2026-11-10T18:55:00.000+0100",
+     "resume": "2026-11-10T18:55:00.000+0100",
+     "start": "2026-11-10T18:16:00.000+0100"
+    },
+    "title": "5: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "12": "ptTram"
+     }
+    },
+    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "12: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Josefstädter Straße / Albertgasse",
+    "name": "I20261110-0036-F03",
+    "owner": "WL",
+    "parentName": "I20261110-0036",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 112,
       "lineName": "12",
@@ -360,11 +439,58 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-10T18:17:00.000+0100",
-     "lastUpdate": "2026-11-10T18:17:00.000+0100",
+     "created": "2026-11-10T18:55:00.000+0100",
+     "lastUpdate": "2026-11-10T18:55:00.000+0100",
+     "resume": "2026-11-10T18:55:00.000+0100",
      "start": "2026-11-10T18:16:00.000+0100"
     },
-    "title": "2, 5, 12: Fremder Verkehrsunfall"
+    "title": "12: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U6: Rettungseinsatz"
+      }
+     }
+    ],
+    "location": "Siebenhirten bis Tscherttegasse",
+    "name": "I20261110-0037-F01",
+    "owner": "WL",
+    "parentName": "I20261110-0037",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T18:37:00.000+0100",
+     "lastUpdate": "2026-11-10T18:37:00.000+0100",
+     "resume": "2026-11-10T18:37:00.000+0100",
+     "start": "2026-11-10T18:29:00.000+0100"
+    },
+    "title": "U6: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1335,52 +1461,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R361-105",
-    "owner": "WL",
-    "parentName": "R361-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     361
-    ],
-    "time": {
-     "end": "2026-11-10T18:33:00.000+0100",
-     "start": "2026-11-10T17:33:36.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R362-105",
-    "owner": "WL",
-    "parentName": "R362-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     362
-    ],
-    "time": {
-     "end": "2026-11-10T18:33:00.000+0100",
-     "start": "2026-11-10T17:33:36.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Fremdunfall\nBetrieb ab Lange Gasse",
     "name": "R377-105",
     "owner": "WL",
@@ -1680,29 +1760,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R500-409",
-    "owner": "WL",
-    "parentName": "R500-409",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9A"
-    ],
-    "relatedStops": [
-     500
-    ],
-    "time": {
-     "end": "2026-11-10T18:32:00.000+0100",
-     "start": "2026-11-10T17:32:36.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Fahrtbehinderung\nFalschparker",
     "name": "R524-109",
     "owner": "WL",
@@ -1812,29 +1869,6 @@
     "time": {
      "end": "2026-11-10T19:04:00.000+0100",
      "start": "2026-11-10T18:05:10.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R556-109",
-    "owner": "WL",
-    "parentName": "R556-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     556
-    ],
-    "time": {
-     "end": "2026-11-10T18:59:00.000+0100",
-     "start": "2026-11-10T18:00:09.000+0100"
     },
     "title": "Fahrtbehinderung\nFalschparker"
    },
