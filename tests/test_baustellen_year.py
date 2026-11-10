@@ -140,6 +140,18 @@ def test_rows_of_one_title_are_one_site(tmp_path: Path) -> None:
     assert site.first_seen == datetime(2026, 2, 15, 8, 0, tzinfo=VIENNA_TZ)
 
 
+def test_a_cut_mark_at_the_end_of_the_title_does_not_split_a_site(tmp_path: Path) -> None:
+    rows = [
+        _row("g1", "Hauptstraße bis Schlachthausgas", seen="2026-05-24T08:00:00+02:00"),
+        _row("g2", "Hauptstraße bis Schlachthausgas…", seen="2026-10-07T08:00:00+02:00", ends="2026-11-30"),
+        _row("g3", "Hauptstraße bis Schlachthausgasse", seen="2026-10-08T08:00:00+02:00"),
+    ]
+    _write(tmp_path, rows)
+    whole, cut = by.load_sites(YEAR, stats_dir=tmp_path)
+    assert (cut.title, cut.ends) == ("Hauptstraße bis Schlachthausgas…", date(2026, 11, 30))
+    assert whole.title == "Hauptstraße bis Schlachthausgasse"
+
+
 def test_sites_are_ordered_by_start_then_title_and_those_without_start_come_last(tmp_path: Path) -> None:
     rows = [
         _row("g1", "Zieglergasse", starts="2026-03-01"),

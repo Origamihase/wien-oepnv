@@ -101,10 +101,11 @@ def test_header_and_caps_are_the_agreed_ones() -> None:
 def test_row_of_a_cache_event() -> None:
     assert baustelle_row(_event(), seen_at=NOW) == (
         "2026-11-10T17:44:05+01:00", "Di", "17", GUID, "Burggasse 67", "2026-07-28", "2026-10-30", "7", "Straßenbau",
-        "Die Haltestelle wird von Burggasse ONr. 67 nach Burggasse ONr. 69 verlegt. "
-        "Beginn: 28.07.2026 00:00 Uhr Geplant bis: 30.10.2026 00:00 Uhr "
-        "Maßnahme: Straßenbau Bezirk: 7",
+        # Without the provider's last lines ("Beginn: …", "Bezirk: 7"): columns hold them.
+        "Die Haltestelle wird von Burggasse ONr. 67 nach Burggasse ONr. 69 verlegt.",
     )
+    kept = _event(description="Beginn: der Arbeiten ist im Mai. \nBezirk: 7 betroffen.\nBezirk: 7")
+    assert baustelle_row(kept, seen_at=NOW)[-1] == "Beginn: der Arbeiten ist im Mai. Bezirk: 7 betroffen."  # type: ignore[index]
     # Vienna time: 23:30 UTC on Saturday is 00:30 on Sunday.
     row = _row(_event(), datetime(2026, 11, 14, 23, 30, 9, 999, tzinfo=UTC))
     assert (row["timestamp"], row["weekday"], row["hour"]) == ("2026-11-15T00:30:09+01:00", "So", "00")
@@ -604,7 +605,7 @@ def test_live_answer_ends_in_the_ledger_and_changes_nothing_else(
     assert sorted(by_title) == ["Gasse 1", "Hauptstraße"] and len(records) == 2
     # ``_site``: OBJEKT_BEGINN "2026-09-30Z" is Vienna midnight of 1 October.
     assert (by_title["Gasse 1"]["starts_at"], by_title["Gasse 1"]["ends_at"]) == ("2026-10-01", "2026-11-15")
-    assert by_title["Gasse 1"]["description"].startswith("Die Haltestelle der Linie 13A wird verlegt. Beginn: ")
+    assert by_title["Gasse 1"]["description"] == "Die Haltestelle der Linie 13A wird verlegt."
     cached = json.loads(target.read_text(encoding="utf-8"))
     assert sorted(item["guid"] for item in cached) == sorted(r["guid"] for r in records)
     assert _real_ledgers() == before

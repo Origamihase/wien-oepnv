@@ -41,6 +41,7 @@ from __future__ import annotations
 import csv
 import io
 import logging
+import re
 from collections.abc import Iterable, Mapping
 from datetime import date, datetime
 from pathlib import Path
@@ -121,6 +122,45 @@ def _field(value: object) -> str:
 def _shorten(text: str, keep: int) -> str:
     """The first *keep* characters of *text*, marked as shortened."""
     return text[: max(keep, 0)].rstrip() + _ELLIPSIS
+
+
+# The lines the provider appends to a site's text from its own fields
+# (``_format_description`` in ``src/providers/baustellen_events.py``).
+_GENERATED_DATE_LINE: Final = re.compile(
+    r"(?:Beginn|Geplant bis): \d{2}\.\d{2}\.\d{4} \d{2}:\d{2} Uhr"
+)
+
+
+def _own_text(event: Mapping[str, Any]) -> object:
+    """The event's description without the provider's generated last lines.
+
+    The cache description ends with "Beginn: … / Geplant bis: … /
+    Maßnahme: … / Bezirk: …". The ledger holds those values in columns of
+    their own; repeated in the text they would take room from the city's
+    sentences and would be read as part of them by the yearly review.
+    Only whole lines at the end are cut, and only the ones the provider
+    writes: the two date lines in its format, and the measure and district
+    lines when they say what the event's ``context`` says. A sentence of
+    the city that begins with one of these words stays.
+    """
+    value = event.get("description")
+    if not isinstance(value, str):
+        return value
+    context = event.get("context")
+    generated = set()
+    if isinstance(context, Mapping):
+        generated = {
+            f"{label}: {context[key]}"
+            for label, key in (("Maßnahme", "measure"), ("Bezirk", "district"))
+            if context.get(key)
+        }
+    lines = value.split("\n")
+    while len(lines) > 1:
+        last = lines[-1].strip()
+        if last not in generated and not _GENERATED_DATE_LINE.fullmatch(last):
+            break
+        lines.pop()
+    return "\n".join(lines)
 
 
 def _description(value: object) -> str:
@@ -220,7 +260,7 @@ def baustelle_row(event: Mapping[str, Any], *, seen_at: datetime) -> tuple[str, 
         _field(context.get("district")),
         _field(context.get("measure")),
     )
-    return _fit_row(head, _description(event.get("description")))
+    return _fit_row(head, _description(_own_text(event)))
 
 
 def _parse_line(line: str) -> list[str] | None:

@@ -256,8 +256,13 @@ def _first_per_guid(rows: Iterator[_LedgerRow]) -> list[_LedgerRow]:
 
 
 def _title_key(title: str) -> str:
-    """What makes two rows the same site: the title, case and spacing aside."""
-    return _one_line(title).casefold()
+    """What makes two rows the same site: the title, case and spacing aside.
+
+    The cut mark at the end does not count either: the feed marks a title
+    the city delivers cut off with "…" (``_mark_upstream_truncation``), and
+    a row written before that rule carries the same title without it.
+    """
+    return _one_line(title).rstrip(" .…").casefold()
 
 
 def _merge(rows: Sequence[_LedgerRow]) -> BaustelleSite:
