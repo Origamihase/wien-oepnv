@@ -1,8 +1,8 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-10T08:01:13.866314+00:00",
- "built": "2026-11-10T09:01:02+01:00",
+ "updated": "2026-11-10T08:31:05.958040+00:00",
+ "built": "2026-11-10T09:30:46+01:00",
  "findings": [
   {
    "rule": "alte-meldung-als-neu",
@@ -15,41 +15,29 @@
  "rules": {
   "alte-meldung-als-neu": {
    "since": "2026-11-09T23:01:31.085708+00:00",
-   "last": "2026-11-10T08:01:13.866314+00:00",
+   "last": "2026-11-10T08:31:05.958040+00:00",
    "held_runs": 0,
    "issue": 2190
   }
  },
  "previous_feed": {
-  "built": "2026-11-10T09:01:02+01:00",
+  "built": "2026-11-10T09:30:46+01:00",
   "items": [
+   {
+    "title": "15A: Verkehrsunfall",
+    "time_line": "Seit 09:07"
+   },
    {
     "title": "2: Falschparker",
     "time_line": "Seit 08:55"
    },
    {
-    "title": "41: Verunreinigung",
-    "time_line": "Seit 08:19"
-   },
-   {
-    "title": "16A/86A: Verkehrsüberlastung",
-    "time_line": "Seit 08:27"
-   },
-   {
-    "title": "40: Schadhaftes Fahrzeug",
+    "title": "40: Schadhafter Zug",
     "time_line": "Seit 08:04"
    },
    {
     "title": "O: Verkehrsüberlastung",
     "time_line": "Seit 08:00"
-   },
-   {
-    "title": "U4: Schadhaftes Fahrzeug",
-    "time_line": "Seit 07:38"
-   },
-   {
-    "title": "38: Verkehrsunfall",
-    "time_line": "Seit 06:07"
    },
    {
     "title": "Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx",
@@ -62,6 +50,18 @@
    {
     "title": "R95: Wien Hauptbahnhof ↔ Felixdorf",
     "time_line": "Heute"
+   },
+   {
+    "title": "79A/79B: Alberner Hafenzufahrtsstraße",
+    "time_line": "Bis Do 12.11."
+   },
+   {
+    "title": "5A/N31: Haltestellenverlegung",
+    "time_line": "Seit 09.11."
+   },
+   {
+    "title": "71A: Haltestellenverlegung",
+    "time_line": "Bis Mi 11.11."
    }
   ]
  },
@@ -6786,17 +6786,37 @@
     "oebb": 7,
     "wl": 86
    }
+  },
+  {
+   "t": "2026-11-10T08:31:05.958040+00:00",
+   "raw": {
+    "wl-stoerungen": 44,
+    "wl-hinweise": 93,
+    "oebb": 187,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 26,
+    "oebb": 162,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 81
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-10T08:01:13.866314+00:00"
+   "last_ok": "2026-11-10T08:31:05.958040+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-10T08:01:13.866314+00:00"
+   "last_ok": "2026-11-10T08:31:05.958040+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-10T08:01:13.866314+00:00"
+   "last_ok": "2026-11-10T08:31:05.958040+00:00"
   }
  }
 }
