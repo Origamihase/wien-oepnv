@@ -189,8 +189,8 @@ def test_month_table_every_cell(page: list[str]) -> None:
         ["März", "22", "2.0 min", "1", "11.0 min", "0", "0"],
         ["April", *empty, "0", "0"],
         ["Mai", *empty, "7", "0"],
-        ["Juni", "19", "29.5 min", "10", "50.0 min", "–", "0"],
-        ["Juli", "12", "8.3 min", "2", "50.0 min", "–", "0"],
+        ["Juni", "19", "29.5 min", "10", "50.0 min", "0", "0"],
+        ["Juli", "12", "8.3 min", "2", "50.0 min", "0", "0"],
         ["August", *none, "–", "0"],
         ["September", *none, "–", "0"],
         ["Oktober", *none, "–", "0"],
@@ -211,18 +211,19 @@ def test_not_recorded_and_nothing_happened_stay_apart(page: list[str]) -> None:
     assert rows["April"][2] == "–"
     assert rows["April"][4] == "–"
     assert rows["August"][1] == "–"
-    # Cancellations run from February to May, judged by their own rows only:
-    # June has delay rows and is still outside the cancellations' period.
+    # Cancellations run from February to May; the monitor that writes them
+    # also wrote delay rows until July, so June and July are a 0, August not.
     assert rows["Jänner"][5] == "–"
     assert rows["März"][5] == "0"
-    assert rows["Juni"][5] == "–"
+    assert (rows["Juni"][5], rows["Juli"][5], rows["August"][5]) == ("0", "0", "–")
     # The legend under the table says what the sign means.
     legend = [line for line in _section(page, MONTHS) if line.startswith("„–“")]
     assert len(legend) == 1
     assert legend[0] == (
         "„–“: Der Monat liegt vor der ersten oder nach der letzten Zeile der Datenreihe, "
-        "oder die Datenreihe hat keine Zeile (siehe „Erfasster Zeitraum“). Für einen "
-        "Monat dazwischen ohne Zeile steht 0; Mittel- und Höchstwert gibt es dort nicht."
+        "oder die Datenreihe hat keine Zeile (siehe „Erfasster Zeitraum“). Ausfälle gelten "
+        "auch in jedem Monat mit Stammstrecke-Beobachtungen als erfasst. Für einen "
+        "erfassten Monat ohne Zeile steht 0; Mittel- und Höchstwert gibt es dort nicht."
     )
     # The legend does not claim that every 0 is a month without a row:
     # here July has ten rows, none of them above the threshold.
@@ -464,7 +465,8 @@ def test_year_with_only_disruptions() -> None:
 def test_year_without_cancellations() -> None:
     page = render_year_overview(_day_of_delays(3, 10, [1.0] * 10), [_st(_at(3, 10))], [], year=2026)
     assert _section(page, AUSFALL_DAYS) == ["", "_Keine Ausfälle erfasst._", ""]
-    assert [row[5] for row in _table(page, MONTHS)] == ["–"] * 12
+    # March has delay rows: the monitor ran and no train was cancelled.
+    assert [row[5] for row in _table(page, MONTHS)] == ["–", "–", "0"] + ["–"] * 9
     assert [row[6] for row in _table(page, MONTHS)] == ["–", "–", "1"] + ["–"] * 9
 
 
@@ -659,8 +661,7 @@ def _cell_count(cell: str) -> int:
 def test_real_ledger_renders_and_its_months_add_up() -> None:
     """Smoke test on ``data/stats`` as committed; it reads and writes nothing.
 
-    The 2026 ledgers leave the repository on 8 January 2027 (Michael's
-    decision of 2026-11-10, point 5); from then on there is nothing to read.
+    Skipped in a checkout without the 2026 ledgers.
     """
     year = 2026
     stats_dir = ROOT / "data" / "stats"

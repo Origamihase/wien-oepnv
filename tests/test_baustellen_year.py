@@ -318,7 +318,7 @@ def test_months_touched_by_the_periods() -> None:
     # A period that began before the year or ends after it counts with its months of the year.
     assert by.months_touched([_site("x", starts=date(2021, 2, 28), ends=date(2026, 3, 1))], YEAR) == {1, 2, 3}
     assert by.months_touched([_site("x", starts=date(2026, 11, 2), ends=date(2028, 12, 31))], YEAR) == {11, 12}
-    # An end in the first days of the next year (the repair window ends on 08.01.) is no end in January of this one.
+    # An end in the first days of the next year is no end in January of this one.
     assert by.months_touched([_site("x", starts=date(2026, 11, 2), ends=date(2027, 1, 8))], YEAR) == {11, 12}
     # Without a start the site counts from the day it was first recorded, read as Vienna time.
     no_start = [_site("x", starts=None, ends=date(2026, 8, 3), seen=datetime(2026, 6, 30, 23, 0, tzinfo=UTC))]
@@ -389,7 +389,7 @@ def test_one_site_is_counted_in_the_singular() -> None:
 
 def test_a_pending_review_is_announced_in_one_line() -> None:
     lines = by.render_baustellen_section([_site("Burggasse 67")], year=YEAR, pending=True)
-    assert "_Ein kurzer Rückblick in Worten folgt in der ersten Jännerwoche._" in lines
+    assert "_Ein kurzer Rückblick in Worten wird hier ergänzt._" in lines
     assert "### Rückblick" not in lines
     # Not announced unless asked for.
     assert not any("folgt" in line for line in by.render_baustellen_section([_site("Burggasse 67")], year=YEAR))
@@ -410,7 +410,7 @@ def test_a_review_stands_with_its_label_before_the_list() -> None:
     ]
     assert at < lines.index("### Baustellen im Jahr")
     # With a review nothing is announced, and the attribution names the summary.
-    assert not any("folgt in der ersten" in line for line in lines)
+    assert not any("wird hier ergänzt" in line for line in lines)
     assert lines[-1] == (
         "> Datenquelle: Stadt Wien – data.wien.gv.at. Die Texte der Stadt Wien sind hier bearbeitet "
         "(gekürzt, vereinheitlicht und im Rückblick maschinell zusammengefasst). "
@@ -420,7 +420,7 @@ def test_a_review_stands_with_its_label_before_the_list() -> None:
 
 def test_a_blank_review_counts_as_none() -> None:
     lines = by.render_baustellen_section([_site("Burggasse 67")], year=YEAR, review="  \n ", pending=True)
-    assert "### Rückblick" not in lines and any("folgt in der ersten" in line for line in lines)
+    assert "### Rückblick" not in lines and any("wird hier ergänzt" in line for line in lines)
 
 
 def test_a_review_cannot_bring_markup_onto_the_page() -> None:

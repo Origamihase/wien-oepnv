@@ -235,7 +235,7 @@ def test_the_default_year_is_the_running_vienna_year(capsys: pytest.CaptureFixtu
     [
         (datetime(2026, 12, 31, 22, 59, 59, tzinfo=UTC), 2026),   # 23:59:59 in Vienna
         (datetime(2026, 12, 31, 23, 0, 0, tzinfo=UTC), 2027),     # midnight in Vienna, still 2026 in UTC
-        (datetime(2027, 1, 7, 23, 30, 0, tzinfo=UTC), 2027),      # 08.01. in Vienna, the day the window closes
+        (datetime(2027, 1, 7, 23, 30, 0, tzinfo=UTC), 2027),      # 08.01. in Vienna, still 07.01. in UTC
     ],
 )
 def test_the_default_year_changes_at_vienna_midnight(

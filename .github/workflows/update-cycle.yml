@@ -552,17 +552,17 @@ jobs:
       - name: Refresh statistics dashboard and README snapshot
         id: stats
         if: steps.freshness.outputs.should_run == 'true'
-        # Cosmetic and non-critical: the README markers + yearly dashboard
-        # are nice-to-have, NOT the deliverable (``docs/feed.xml`` is).
-        # The step runs BEFORE the commit so its output rides the same
-        # atomic commit, but a crash here must NEVER abort the job and
-        # block the feed publish (which is exactly what happened without
-        # this guard: the sequential job aborted before the commit step).
-        # ``continue-on-error`` surfaces a failure as an orange annotation
-        # while letting the feed publish proceed; the README simply stays
-        # one tick stale until the stats script is healthy again.
+        # Not the deliverable (``docs/feed.xml`` is): the step runs BEFORE
+        # the commit so its output rides the same atomic commit, but a crash
+        # here must NEVER abort the job and block the feed publish
+        # (``continue-on-error``: an orange annotation, the README stays one
+        # tick stale). The key is for one request a year: the run after
+        # midnight asks Gemini for the review of a finished year's roadworks
+        # while none is stored (src/markdown_stats/year_review.py, max 110 s).
         continue-on-error: true
-        timeout-minutes: 2
+        timeout-minutes: 4
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           vienna_hhmm=$(TZ=Europe/Vienna date +%H%M)
           if [ "$vienna_hhmm" -lt 30 ]; then

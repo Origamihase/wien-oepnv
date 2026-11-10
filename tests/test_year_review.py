@@ -649,7 +649,7 @@ def test_an_unusable_file_is_no_review_and_gemini_is_asked_again(tmp_path: Path,
 
 
 def test_a_stored_review_that_no_longer_fits_the_ledger_is_asked_again(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
-    """The ledger of a finished year can change in its repair window; the review must follow."""
+    """The ledger of a finished year can still change; the review must follow."""
     _ensure(tmp_path, _answer())
     # The Rennweg site left the ledger: "33A"-free GOOD still names the Rennweg, 30.09.2026 and the line 71.
     changed = SITES[:3]

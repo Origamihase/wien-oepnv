@@ -505,7 +505,7 @@ def render_baustellen_section(
     if review_text:
         lines += _review_lines(review_text)
     elif pending:
-        lines += ["_Ein kurzer Rückblick in Worten folgt in der ersten Jännerwoche._", ""]
+        lines += ["_Ein kurzer Rückblick in Worten wird hier ergänzt._", ""]
     lines += _list_lines(sites)
     edited = (
         "gekürzt, vereinheitlicht und im Rückblick maschinell zusammengefasst"

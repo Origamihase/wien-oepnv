@@ -1,12 +1,10 @@
 """The section "Das Jahr im Überblick" of a year page, ``docs/statistik-<Jahr>.md``.
 
-Michael's decision of 2026-11-10 17:44 (Europe/Vienna), point 3: the page of
-a finished year summarises all cancellations (Ausfälle) and delays
-(Verspätungen) in a statistic. One week after New Year the raw ledgers of
-that year are removed (point 5), so whatever a reader may later want to
-know about the year has to stand on the page itself. Until now the page
-held the year totals and the distributions per weekday and hour, but no
-month, no single day and no highest delay (review of 2026-11-10).
+Michael's decision of 2026-11-10 17:44 (Europe/Vienna): the page of a
+finished year summarises all cancellations (Ausfälle) and delays
+(Verspätungen) in a statistic. Until then the page held the year totals
+and the distributions per weekday and hour, but no month, no single day
+and no highest delay (review of 2026-11-10).
 
 :func:`render_year_overview` adds that: the recorded period of each ledger,
 all twelve months, the delays per direction, and the days with the highest
@@ -195,11 +193,20 @@ def _recorded(month: int, span: _Span | None) -> bool:
     nothing was written (2026 began in May), and says so with
     :data:`NOT_RECORDED` instead of a 0.
 
-    Each series is judged by its own rows only. A month after a series'
-    last row is therefore "not recorded" even when another series has rows
-    in it.
+    Delays and disruptions are judged by their own rows only. Cancellations
+    are written by the monitor that writes the delay rows, and only when a
+    train is cancelled: a month with delay rows and no cancellation is a 0,
+    so their period also covers the months of the delay rows
+    (:func:`_joined`).
     """
     return span is not None and span[0].month <= month <= span[1].month
+
+
+def _joined(first: _Span | None, second: _Span | None) -> _Span | None:
+    """The period from the earlier start to the later end of two series."""
+    if first is None or second is None:
+        return first or second
+    return (min(first[0], second[0]), max(first[1], second[1]))
 
 
 def _count_cell(count: int, month: int, span: _Span | None) -> str:
@@ -236,9 +243,10 @@ def _months_section(
 ) -> list[str]:
     """All twelve months in one table, each series within its recorded period.
 
-    The legend names both reasons for :data:`NOT_RECORDED` in a count: the
+    The legend names the reasons for :data:`NOT_RECORDED` in a count: the
     month lies outside the series' period, or the series has no row at all
-    (a year with cancellations only). It does not say "a 0 means a month
+    (a year with cancellations only), and that cancellations follow the
+    delay rows (:func:`_recorded`). It does not say "a 0 means a month
     without a row": the column of delays above the threshold is 0 in every
     month whose rows all stay at or below it.
     """
@@ -248,7 +256,7 @@ def _months_section(
     ausfaelle_of = Counter(day.month for day in ausfall_days)
     stoerungen_of = Counter(day.month for day in stoerung_days)
     delay_span = _span(day for day, _ in delays)
-    ausfall_span = _span(ausfall_days)
+    ausfall_span = _joined(_span(ausfall_days), delay_span)
     stoerung_span = _span(stoerung_days)
 
     lines = [
@@ -272,8 +280,9 @@ def _months_section(
             "",
             f"„{NOT_RECORDED}“: Der Monat liegt vor der ersten oder nach der letzten "
             "Zeile der Datenreihe, oder die Datenreihe hat keine Zeile (siehe "
-            "„Erfasster Zeitraum“). Für einen Monat dazwischen ohne Zeile steht 0; "
-            "Mittel- und Höchstwert gibt es dort nicht.",
+            "„Erfasster Zeitraum“). Ausfälle gelten auch in jedem Monat mit "
+            "Stammstrecke-Beobachtungen als erfasst. Für einen erfassten Monat "
+            "ohne Zeile steht 0; Mittel- und Höchstwert gibt es dort nicht.",
             "",
         ]
     )

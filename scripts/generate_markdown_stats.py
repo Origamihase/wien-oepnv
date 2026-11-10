@@ -123,8 +123,10 @@ from src.markdown_stats.markdown_report import (  # noqa: E402
     write_dashboard as write_dashboard,
 )
 from src.markdown_stats.year_archive import (  # noqa: E402
+    archived_years as archived_years,
     dashboard_nav as dashboard_nav,
     write_year_archives as write_year_archives,
+    years_without_review as years_without_review,
 )
 from src.markdown_stats.readme import (  # noqa: E402
     README_MAX_BYTES as README_MAX_BYTES,
@@ -368,6 +370,11 @@ def main(argv: list[str] | None = None) -> int:
     st_agg = aggregate_stoerungen(st_rows)
     au_agg = aggregate_ausfaelle(au_rows)
 
+    # The pages of finished years first: the summary below and the
+    # dashboard further down name them.
+    if not args.skip_dashboard and not _year_pages_written(args, now):
+        return 1
+
     summary_path = resolve_summary_path(
         args.summary_path, markdown_output=args.output
     )
@@ -384,6 +391,9 @@ def main(argv: list[str] | None = None) -> int:
                 all_window_rows=window_sm,
                 window_days=args.readme_window_days,
                 poll=_poll_evidence(poll_status),
+                # The website's year switch (docs/site.html, "Aktuelle
+                # Meldungen") offers the years that have a page.
+                archive_years=archived_years(args.output, before=args.year),
             ),
             output_path=summary_path,
         )
@@ -413,17 +423,6 @@ def main(argv: list[str] | None = None) -> int:
             "README wird weiterhin gepatcht."
         )
     else:
-        # The archive pages first: the dashboard written below names them.
-        try:
-            write_year_archives(
-                now=now, year=args.year, stats_dir=args.stats_dir, output_path=args.output
-            )
-        except OSError as exc:
-            LOGGER.error(
-                "Konnte Jahresarchiv nicht schreiben: %s",
-                sanitize_log_arg(str(exc)),
-            )
-            return 1
         markdown = render_markdown(
             year=args.year,
             generated_at=now,
@@ -459,7 +458,7 @@ def main(argv: list[str] | None = None) -> int:
         )
 
     if args.skip_readme:
-        return 0
+        return _exit_code(args, now)
 
     # Defense-in-depth: only patch the Stammstrecke marker when the
     # window actually carries rows. Without this gate, an unrelated
@@ -517,7 +516,7 @@ def main(argv: list[str] | None = None) -> int:
             "the %d-day window — existing README content preserved.",
             args.readme_window_days,
         )
-        return 0
+        return _exit_code(args, now)
     try:
         patch_readme_stats(args.readme_path, sections)
     except OSError as exc:
@@ -528,7 +527,45 @@ def main(argv: list[str] | None = None) -> int:
         )
         return 1
 
-    return 0
+    return _exit_code(args, now)
+
+
+def _year_pages_written(args: argparse.Namespace, now: datetime) -> bool:
+    """Write the pages of the finished years; ``False`` when one could not be written."""
+    try:
+        write_year_archives(
+            now=now, year=args.year, stats_dir=args.stats_dir, output_path=args.output
+        )
+    except OSError as exc:
+        LOGGER.error(
+            "Konnte Jahresarchiv nicht schreiben: %s",
+            sanitize_log_arg(str(exc)),
+        )
+        return False
+    return True
+
+
+def _exit_code(args: argparse.Namespace, now: datetime) -> int:
+    """The exit code of a run that wrote everything: 1 while a review is overdue.
+
+    The review of a finished year's roadworks is written by Gemini in the
+    dashboard run and can fail for days (overload, a rejected text, a dead
+    key). Everything else of the run is written either way; from the fourth
+    day of the year the step ends with 1 until the review is there, so the
+    health check shows it (``years_without_review``).
+    """
+    if args.year != now.year:
+        return 0
+    overdue = years_without_review(now=now, stats_dir=args.stats_dir)
+    if not overdue:
+        return 0
+    LOGGER.error(
+        "Rückblick der Baustellen fehlt für %s: Gemini hat bisher keinen Text "
+        "geliefert, der die Prüfung besteht (Einzelheiten im Protokoll des "
+        "Laufs kurz nach Mitternacht).",
+        ", ".join(str(year) for year in overdue),
+    )
+    return 1
 
 
 # Public names of this script: its own entry points and the names other
@@ -569,6 +606,8 @@ __all__ = [
     "render_weekday_bars",
     "write_dashboard",
     "write_year_archives",
+    "years_without_review",
+    "archived_years",
     "_iter_csv_rows",
     "_aware_fromisoformat",
     "_parse_stammstrecke_rows",

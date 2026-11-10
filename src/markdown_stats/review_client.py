@@ -21,7 +21,7 @@ midnight), which must not hold up the feed, and the ``cycle`` job ends
 after ten minutes. So: one pass over the chain, no waiting between models,
 at most 90 seconds per answer and no new request after
 :data:`DEFAULT_DEADLINE_S`. A year's review can wait a day: the dashboard
-run of the next day asks again while the repair window is open.
+run of the next day asks again while the review is missing.
 
 No request counter (owner 2026-11-05: "Zähle es bitte so wie Google. Wir
 brauchen keine eigene Zähltechnik."): a model whose quota Google reports

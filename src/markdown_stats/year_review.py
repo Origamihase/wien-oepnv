@@ -19,12 +19,11 @@ Three parts:
   the ledger either way.
 * :func:`ensure_review` asks once per call when no accepted text is stored
   and keeps an accepted one in ``data/stats/baustellen_rueckblick_<Jahr>.json``
-  (a leftover of the year: the cleanup of 8 January removes it, the page
-  keeps the text).
+  next to the year's ledgers; the page is rendered from both.
 
 No request counter (owner 2026-11-05: "Zähle es bitte so wie Google. Wir
 brauchen keine eigene Zähltechnik."): the caller asks at most once per
-dashboard run while the repair window is open.
+dashboard run while a year has no accepted review.
 """
 from __future__ import annotations
 
@@ -520,7 +519,7 @@ def load_review(year: int, sites: Sequence[BaustelleSite], *, stats_dir: Path | 
     ``None`` when the file is missing, oversized, no JSON object with a
     string ``text``, or when the text no longer passes
     :func:`check_review`: the ledger of a finished year can still change
-    in its repair window, and a review that names a site no longer in it
+    (late rows, corrections), and a review that names a site no longer in it
     must not stay on the page.
     """
     data = read_capped_json(

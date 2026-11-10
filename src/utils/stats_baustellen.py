@@ -22,8 +22,8 @@ Contract, the same as for the writers in :mod:`src.utils.stats`:
 
 * Append-only, one file per Vienna year of the write. A site that is still
   in the cache after New Year gets a row in the new year's file as well:
-  each year's file stands for itself, because the files of a finished year
-  are removed on 8 January (same decision, point 5).
+  each year's file stands for itself, and the page of a year lists the
+  sites that were under way in it.
 * One record is one physical line (every text field is collapsed to a
   single line), so the ``merge=union`` rule for ``data/stats/*.csv`` keeps
   both sides' rows. A union merge or two runs at the same moment can repeat

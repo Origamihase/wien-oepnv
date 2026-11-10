@@ -134,7 +134,9 @@ def test_dashboard_and_archive_name_each_other(tmp_path: Path) -> None:
     assert dashboard[0] == "# Wien ÖPNV — Statistik 2027"
     assert dashboard[4] == "Frühere Jahre: [2026](statistik-2026.md)"
     assert archive[0] == "# Wien ÖPNV — Statistik 2026"
-    assert archive[4] == "Abgeschlossenes Jahr · [Zur laufenden Statistik](statistik.md)"
+    assert archive[4] == (
+        "Abgeschlossenes Jahr · [Zur laufenden Statistik](statistik.md) · [Zur Website](site.html)"
+    )
 
 
 def test_dashboard_lists_every_archive_newest_first(tmp_path: Path) -> None:

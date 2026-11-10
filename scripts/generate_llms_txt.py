@@ -73,8 +73,7 @@ _GUIDE_PAGES: tuple[tuple[str, str], ...] = (
 _STATS_PAGE = "statistik.md"
 
 # A finished year has its own page ``docs/statistik-<year>.md`` (owner
-# decision 2026-11-10: created on 1 January, and after the cleanup on
-# 8 January the only place that year's figures are kept). The pages are
+# decision 2026-11-10: created on 1 January). The pages are
 # found by name instead of being listed here, so each new year appears
 # without a code change.
 _YEAR_PAGE_RE = re.compile(r"statistik-([0-9]{4})\.md")
