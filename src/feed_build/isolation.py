@@ -65,7 +65,8 @@ Render = Callable[[list[FeedItem], State], str]
 class SkipReporter(Protocol):
     """What :func:`build_isolating` needs of the run report."""
 
-    def add_skipped_item(self, source: str, title: str, error: str) -> None: ...
+    def add_skipped_item(self, source: str, title: str, error: str) -> None:
+        """Same as ``RunReport.add_skipped_item``."""
 
 
 def _where(exc: BaseException) -> str:
