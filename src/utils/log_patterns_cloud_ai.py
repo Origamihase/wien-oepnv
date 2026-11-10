@@ -167,7 +167,8 @@ _CLOUD_AI_TOKEN_PATTERNS: list[tuple[str, str]] = [
     #     the live secret; webhook forgery for whsec_). Live
     #     secret is the highest-severity; restricted variants
     #     carry scoped subsets.
-    #   * Anthropic ``sk-ant-(api|admin)NN-<32+>`` — LLM billing
+    #   * Anthropic ``sk-ant-<kind>NN-<32+>``, kind = 2 to 8
+    #     lowercase letters (api, admin, oat, ort, sid, …) — LLM billing
     #     fraud + prompt exfiltration. Admin-tier additionally
     #     grants console access to the org's billing /
     #     organisation members.
@@ -236,7 +237,7 @@ _CLOUD_AI_TOKEN_PATTERNS: list[tuple[str, str]] = [
         r"\1_***",
     ),
     (
-        r"(?<![A-Za-z0-9])(sk-ant-(?:api|admin)[0-9]{2})-[A-Za-z0-9_\-]{32,}(?![A-Za-z0-9])",
+        r"(?<![A-Za-z0-9])(sk-ant-[a-z]{2,8}[0-9]{2})-[A-Za-z0-9_\-]{32,}(?![A-Za-z0-9])",
         r"\1-***",
     ),
     (

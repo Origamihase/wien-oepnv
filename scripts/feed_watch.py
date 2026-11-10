@@ -3,8 +3,9 @@
 
 Runs at the end of every Update cycle, after the feed is built and before it
 is published (``.github/workflows/update-cycle.yml``, step "Feed-Wächter").
-It reads ``docs/feed.xml``, the provider caches and the raw answers in
-``data/raw/`` and reports every rule the run breaks. It never changes the feed
+It reads ``docs/feed.xml``, the provider caches, the raw answers in
+``data/raw/`` and the build's health report (``docs/feed-health.json``: the
+items the build left out) and reports every rule the run breaks. It never changes the feed
 and never stops the publish: a finding is a note, and an error of the
 watcher itself is only logged (exit code 0 in every case).
 
@@ -142,6 +143,13 @@ from src.feed_watch.sources import (
     check_vao_version as check_vao_version,
     load_poll_sample as load_poll_sample,
 )
+from src.feed_watch.skipped_items import (
+    SkippedItem as SkippedItem,
+    check_skipped_items as check_skipped_items,
+    health_report_path as health_report_path,
+    load_skipped_items as load_skipped_items,
+    parse_skipped_items as parse_skipped_items,
+)
 from src.feed_watch.evaluate import (
     Result as Result,
     evaluate as evaluate,
@@ -194,6 +202,7 @@ def run(args: argparse.Namespace, now: datetime) -> int:
         fetch_exit=parse_fetch_exit(os.getenv("FEED_WATCH_FETCH_EXIT")),
         poll=load_poll_sample(args.cache_dir / "stammstrecke" / "poll_status.json"),
         vao=load_vao_version(args.cache_dir / "stammstrecke" / "vao_version.json"),
+        skipped=load_skipped_items(health_report_path(args.health_json)),
     )
     _report(result.findings, now)
     # Written before the issue calls, so a step killed by its time limit still
@@ -212,6 +221,12 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--state", type=Path, default=DEFAULT_STATE)
     parser.add_argument("--cache-dir", type=Path, default=DEFAULT_CACHE_DIR)
     parser.add_argument("--raw-dir", type=Path, default=DEFAULT_RAW_DIR)
+    parser.add_argument(
+        "--health-json",
+        type=Path,
+        default=None,
+        help="health report of the build (default: FEED_HEALTH_JSON_PATH, docs/feed-health.json)",
+    )
     parser.add_argument("--no-issues", action="store_true", help="never touch GitHub issues")
     parser.add_argument("-v", "--verbose", action="store_true")
     args = parser.parse_args(argv)
@@ -338,6 +353,11 @@ __all__ = [
     "PollSample",
     "check_fresh_answers",
     "check_vao_version",
+    "SkippedItem",
+    "check_skipped_items",
+    "health_report_path",
+    "load_skipped_items",
+    "parse_skipped_items",
     "Result",
     "_next_rule_state",
     "ISSUE_LABEL",

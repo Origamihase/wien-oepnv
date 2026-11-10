@@ -19,7 +19,7 @@ from ..utils.files import _reject_non_finite_constant, _reject_non_finite_float,
 from ..utils.locking import file_lock
 from ..utils.logging import sanitize_log_arg
 
-from .base import _LINE_PREFIX_RE, _LINE_TOKEN_RE, _parse_first_seen, _to_utc, _ymd_or_none, log, validate_path
+from .base import _LINE_PREFIX_RE, _LINE_TOKEN_RE, _parse_first_seen, _state_stamp, _to_utc, _ymd_or_none, log, validate_path
 
 __all__ = [
     "_parse_lines_from_title", "MAX_STATE_FILE_BYTES", "_load_state", "_read_state_capped", "_write_merged_state",
@@ -165,18 +165,15 @@ def _load_state() -> dict[str, dict[str, Any]]:
     for ident, entry in data.items():
         if not isinstance(entry, dict):
             continue
-        try:
-            raw_first_seen = entry.get("first_seen", "")
-            fs_dt = datetime.fromisoformat(str(raw_first_seen))
-            if fs_dt.tzinfo is None:
-                fs_dt = fs_dt.replace(tzinfo=UTC)
-            fs_utc = _to_utc(fs_dt)
-        except Exception:
+        found = _state_stamp(entry.get("first_seen", ""))
+        if found is None:
             log.warning(
                 "State-Eintrag %s hat unparsebares first_seen: %r", ident, entry.get("first_seen")
             )
             fs_dt = datetime.now(UTC)
-            fs_utc = _to_utc(fs_dt)
+        else:
+            fs_dt = found if found.tzinfo is not None else found.replace(tzinfo=UTC)
+        fs_utc = _to_utc(fs_dt)
 
         if retention_cutoff and fs_utc < retention_cutoff:
             log.debug(

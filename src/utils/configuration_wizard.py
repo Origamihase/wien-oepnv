@@ -35,7 +35,6 @@ __all__ = [
     "compute_non_interactive_configuration",
     "format_env_document",
     "mask_value",
-    "merge_custom_entries",
     "calculate_changes",
 ]
 
@@ -322,18 +321,6 @@ def compute_non_interactive_configuration(
                 )
 
     return ConfigurationComputation(managed=managed, custom=custom, changes=changes, warnings=warnings)
-
-
-def merge_custom_entries(
-    existing_custom: Mapping[str, str],
-    overrides: Mapping[str, str],
-) -> dict[str, str]:
-    merged = dict(existing_custom)
-    for key, value in overrides.items():
-        if key in _OPTION_BY_KEY:
-            continue
-        merged[key] = value
-    return merged
 
 
 def _escape_env_value(value: str) -> str:

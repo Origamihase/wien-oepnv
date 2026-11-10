@@ -10,11 +10,23 @@ from __future__ import annotations
 import math
 import re
 from enum import IntEnum
+from functools import cache
 from collections.abc import Iterable
 
 from .text import strip_accents
 
+_AN_DER_RE = re.compile(r"\ba\s*(?:[./]\s*)?d(?:[./]\s*)?\b")
+_SANKT_RE = re.compile(r"\bst[. ]?\b")
+_STATION_WORD_RE = re.compile(r"\b(?:bahnhof|bahnhst|bhf|hbf|bf)\b")
+_NOT_ALNUM_RE = re.compile(r"[^a-z0-9]+")
+_SPACES_RE = re.compile(r"\s{2,}")
 
+
+# Remembered without limit: the two station indexes (``_station_lookup`` and
+# ``_name_keys`` in ``stations_lookup``) ask for the same 250,000 names one
+# after the other, 497,159 calls per process (measured 2026-11-10). The
+# function depends on its argument alone.
+@cache
 def _normalize_token(value: str) -> str:
     """Produce a canonical lookup token for a station alias.
 
@@ -31,13 +43,13 @@ def _normalize_token(value: str) -> str:
     text = strip_accents(value)
     text = text.replace("ß", "ss")
     text = text.casefold()
-    text = re.sub(r"\ba\s*(?:[./]\s*)?d(?:[./]\s*)?\b", "an der ", text)
+    text = _AN_DER_RE.sub("an der ", text)
     if len(text) > 3:
         text = text.replace("ae", "a").replace("oe", "o").replace("ue", "u")
-    text = re.sub(r"\bst[. ]?\b", "sankt ", text)
-    text = re.sub(r"\b(?:bahnhof|bahnhst|bhf|hbf|bf)\b", "", text)
-    text = re.sub(r"[^a-z0-9]+", " ", text)
-    text = re.sub(r"\s{2,}", " ", text)
+    text = _SANKT_RE.sub("sankt ", text)
+    text = _STATION_WORD_RE.sub("", text)
+    text = _NOT_ALNUM_RE.sub(" ", text)
+    text = _SPACES_RE.sub(" ", text)
     return text.strip()
 
 
@@ -166,7 +178,7 @@ def _iter_aliases_with_strength(
     as :attr:`_MatchStrength.IDENTITY`. Entries in *text_extras*
     (``aliases`` array, stop names) are emitted as TEXT.
 
-    Order is preserved from the legacy :func:`_iter_aliases`: first the
+    Order: first the
     name and its variations, then identity_extras, then text_extras. The
     first occurrence of a candidate string wins, so identity-class wins
     over text-class on duplicates within a single station entry.
@@ -210,22 +222,3 @@ def _iter_aliases_with_strength(
             add(str(extra), _MatchStrength.TEXT)
 
     return variants
-
-
-def _iter_aliases(
-    name: str, code: str | None, extras: Iterable[str] | None = None
-) -> Iterable[str]:
-    """Yield alias strings for a station entry (canonical name first).
-
-    Backward-compatible wrapper around :func:`_iter_aliases_with_strength`
-    that drops the strength annotation. Treats *extras* as TEXT-class.
-    Existing external callers (diagnostic scripts, validators) keep
-    working unchanged.
-    """
-
-    return [
-        alias
-        for alias, _ in _iter_aliases_with_strength(
-            name, code, identity_extras=None, text_extras=extras
-        )
-    ]

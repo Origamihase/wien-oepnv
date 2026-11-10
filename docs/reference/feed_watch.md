@@ -100,6 +100,7 @@ am TV steht.
 | --- | --- | --- | --- |
 | `doppelter-eintrag` | 1 | zwei Einträge dieselbe GUID oder denselben Titel haben | zehn Plätze am TV |
 | `anzahl` | 1 | der Feed nicht genau `MAX_ITEMS` (10) Einträge hat | zehn Folien in EasySignage |
+| `meldung-uebersprungen` | 1 | der Gesundheitsbericht des Baus (`docs/feed-health.json`, Schlüssel `skipped_items`; Pfad aus `FEED_HEALTH_JSON_PATH`, Option `--health-json`; im Update-Lauf besteht die Datei nur während des Laufs, lokal bleibt sie bis zum nächsten Bau liegen) eine Meldung nennt, an der die Feed-Kette scheiterte und die der Bau deshalb übersprang; je Meldung ein Fund mit Quelle, Titel, Fehlerklasse und Stelle im Code. Fehlt der Bericht oder der Schlüssel, gibt es keinen Fund | Code-Audit 10.11.2026, [`architecture.md`](../architecture.md), §10 |
 | `alte-meldung-als-neu` | 1 | ein Eintrag als heutige Störung erscheint („[Heute]“ oder „[Seit hh:mm]“), dessen Meldung (`pubDate`) mehr als 24 Stunden vor seiner ersten Sichtung (`first_seen`) liegt, ebenso sein Beginn (`starts_at`), sofern der Feed einen nennt | Linie 25, 09.10. (#1993) |
 | `seit-zu-frueh` | 2 | eine Störung „[Seit hh:mm]“ zum ersten Mal erscheint, die Zeit mehr als drei Stunden vor dem Bau liegt, keine ihrer Linien im vorigen Bau (höchstens zwei Stunden alt) als Störung stand und der vorige Bau Platz hatte (einen Eintrag, der keine Störung „Seit hh:mm“ war); einmal gefunden, bleiben dieselben Linien an diesem Tag gemeldet, solange ihre „Seit“-Zeit höchstens eine Stunde nach der gefundenen liegt | „2/71 [Seit 13:08]“, 09.10. (PR #2001) |
 | `oebb-zweiter-satz` | 2 | der zweite Satz des ÖBB-Texts (aus dem Cache, ohne Höflichkeitssätze) fehlt, obwohl er neben den ersten Satz passen würde, wenn dieser die Stationen weglässt, die der Titel nennt | #1993 |
@@ -118,7 +119,7 @@ am TV steht.
 „Linie, Issue als Frühwarnung“): Ihr Issue kommt vor dem Rot des Health checks, der eine Quelle nach
 drei Stunden ohne brauchbare Antwort und einen Feed nach vier Stunden ohne Bau rot färbt. Der Health
 check liest dafür den Abrufstand, den der Wächter in `data/feed_watch.json` unter `fetch` festhält.
-Alle anderen Regeln prüfen Inhalt oder Quelle und werden nie rot. Die ganze Linie (rot, Issue,
+Alle anderen Regeln prüfen Inhalt oder Quelle und werden nie rot, auch `meldung-uebersprungen` nicht (ein Issue für die Regel, nicht je Meldung; weitere übersprungene Meldungen stehen in den Annotationen des Laufs und in `data/feed_watch.json`). Die ganze Linie (rot, Issue,
 Hinweis): [`architecture.md`](../architecture.md), §7, „Alarmwege: rot, Issue, Hinweis“.
 
 Die Quellen-Regeln außer `quelle-ohne-antwort` brauchen mindestens 24 Läufe der letzten sieben Tage als
@@ -230,7 +231,11 @@ vor einem Datum.
 
 1. Regel in `RULES` eintragen (Kennung, Titel, Rang, Begründung) und eine
    Prüffunktion schreiben, die nur den Feed, den ÖBB-Cache oder die
-   Quellen-Zählung liest.
+   Quellen-Zählung liest. Ausnahmen sind `quelle-ohne-antwort` und
+   `vao-version` (Abrufstand und VAO-Version) und `meldung-uebersprungen`:
+   Sie liest den Gesundheitsbericht des Baus, der nur während des Laufs
+   besteht; für sie gibt es deshalb keine Historie zum Zurückprüfen
+   (Schritt 2).
 2. Vor dem Merge über die Feed-Historie zurückprüfen (alle Stände von
    `docs/feed.xml` aus `git log`, der Stand von Lauf zu Lauf weitergegeben):
    An guten Tagen still, an den Tagen des Fehlers laut. Hält eine Regel an

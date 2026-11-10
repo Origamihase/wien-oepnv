@@ -6,7 +6,8 @@ import math
 from datetime import datetime
 from typing import Any
 
-from .config import LOG_FORMAT, LOG_TIMEZONE
+from . import config as feed_config
+from .config import LOG_TIMEZONE
 from ..utils.logging import sanitize_log_message
 
 
@@ -296,7 +297,9 @@ def _vienna_time_converter(timestamp: float | None) -> Any:
 
 
 def _make_formatter() -> logging.Formatter:
-    if LOG_FORMAT == "json":
+    # Read at call time: ``refresh_from_env()`` rebinds ``LOG_FORMAT`` in
+    # ``src.feed.config``, a name imported from there would not follow.
+    if feed_config.LOG_FORMAT == "json":
         return SafeJSONFormatter()
 
     # Standard format string

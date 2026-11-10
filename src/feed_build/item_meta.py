@@ -19,7 +19,7 @@ from ..utils.logging import sanitize_log_arg
 from ..utils.stats import append_disruption_row, extract_location_name
 from ..providers.wl_plausibility import end_unknown
 
-from .base import MEDIA_NS, _parse_datetime, _parse_first_seen, _parse_state_time, _to_utc, log
+from .base import MEDIA_NS, _parse_datetime, _parse_first_seen, _parse_state_time, _state_stamp, _to_utc, log
 from .state import _identity_for_item, _lookup_state
 from .time_line import _first_published, _incident_since
 from .title_words import _is_baustelle, _is_wl_notice
@@ -477,9 +477,9 @@ def _update_item_state(it: FeedItem, now: datetime, state: dict[str, dict[str, A
     if legacy != ident and legacy in state:
         state.pop(legacy, None)
 
-    try:
-        fs_dt = datetime.fromisoformat(st["first_seen"])
-    except Exception:
+    seen = st.get("first_seen")
+    fs_dt = _state_stamp(seen) if isinstance(seen, str) else None
+    if fs_dt is None:
         log.warning("first_seen Parsefehler: %r – fallback to now", st.get("first_seen"))
         fs_dt = _to_utc(now)
         st["first_seen"] = fs_dt.isoformat()

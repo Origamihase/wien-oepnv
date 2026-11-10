@@ -53,8 +53,7 @@ log = logging.getLogger(__name__)
 # controlled upstream peer hold a worker for ~28 hours per fetch, stalling
 # the whole feed-build cron. The cap can only TIGHTEN — env overrides may
 # lower the timeout (tests use 1–5s) but never raise it above the documented
-# ceiling. Mirrors the ``min(VOR_HTTP_TIMEOUT, DEFAULT_HTTP_TIMEOUT)`` cap in
-# ``src/providers/vor.py``.
+# ceiling.
 MAX_PROVIDER_TIMEOUT = DEFAULT_PROVIDER_TIMEOUT
 
 # Security: ``MAX_LOG_BYTES`` is the disk-exhaustion-defence ceiling for the
@@ -309,15 +308,6 @@ def resolve_env_path(env_name: str, default: str | Path, *, allow_fallback: bool
 
 
 @dataclass(frozen=True)
-class FeedPaths:
-    """Resolved file-system paths used by the feed builder."""
-
-    log_dir: Path
-    out_path: Path
-    state_file: Path
-
-
-@dataclass(frozen=True)
 class FeedSettings:
     """Key feed builder settings derived from environment variables."""
 
@@ -521,16 +511,6 @@ def refresh_from_env() -> None:
 RFC = "%a, %d %b %Y %H:%M:%S %z"
 
 
-def build_paths() -> FeedPaths:
-    """Return the resolved filesystem paths for the current environment."""
-
-    return FeedPaths(
-        log_dir=LOG_DIR_PATH,
-        out_path=OUT_PATH,
-        state_file=STATE_FILE,
-    )
-
-
 def build_settings() -> FeedSettings:
     """Assemble the active feed settings based on environment variables."""
 
@@ -564,7 +544,6 @@ __all__ = [
     "FEED_LINK",
     "FEED_TITLE",
     "FEED_TTL",
-    "FeedPaths",
     "FeedSettings",
     "FRESH_PUBDATE_WINDOW_MIN",
     "LOG_BACKUP_COUNT",
@@ -593,7 +572,6 @@ __all__ = [
     "STATE_RETENTION_DAYS",
     "TITLE_CHAR_LIMIT",
     "UPCOMING_PREVIEW_DAYS",
-    "build_paths",
     "build_settings",
     "get_bool_env",
     "get_int_env",

@@ -20,6 +20,7 @@ from .baustellen import oepnv_lead
 from ..utils import raw_capture
 from ..utils.ids import make_guid
 from ..utils.serialize import serialize_for_cache
+from ..utils.vienna_clock import plausible_moment
 
 # Item link: the Stadt Wien page listing the current construction sites. The
 # former data.gv.at catalogue page answers 404 since the portal moved
@@ -179,11 +180,18 @@ def _first_match(properties: dict[str, Any], keys: Sequence[str]) -> str | None:
 
 
 def _parse_datetime(value: str | float | int | None) -> datetime | None:
+    """A WFS date as Vienna time; ``None`` when unreadable or implausible.
+
+    A year outside :data:`src.utils.vienna_clock.PLAUSIBLE_YEARS` counts as
+    not set: the year the source writes (checked before the value is moved
+    to Vienna time, which cannot be done at the edge of the calendar) and
+    the year in Vienna time.
+    """
     if value is None:
         return None
     if isinstance(value, int | float):
         try:
-            return datetime.fromtimestamp(float(value), tz=VIENNA_TZ)
+            return plausible_moment(datetime.fromtimestamp(float(value), tz=VIENNA_TZ))
         except (ValueError, OSError, OverflowError):
             # ``OverflowError`` (NOT a ValueError/OSError subclass) is raised by
             # ``datetime.fromtimestamp`` for an out-of-range epoch — e.g. a
@@ -207,9 +215,9 @@ def _parse_datetime(value: str | float | int | None) -> datetime | None:
     date_only_z = re.fullmatch(r"(\d{4}-\d{2}-\d{2})Z", candidate)
     if date_only_z:
         try:
-            return datetime.strptime(
+            return plausible_moment(datetime.strptime(
                 date_only_z.group(1), "%Y-%m-%d"
-            ).replace(tzinfo=VIENNA_TZ)
+            ).replace(tzinfo=VIENNA_TZ))
         except ValueError:
             return None
     try:
@@ -219,11 +227,13 @@ def _parse_datetime(value: str | float | int | None) -> datetime | None:
         parsed: datetime = dtparser.parse(candidate)
     except (ValueError, OverflowError):
         return None
+    if plausible_moment(parsed) is None:
+        return None
     if not parsed.tzinfo:
         parsed = parsed.replace(tzinfo=VIENNA_TZ)
     else:
         parsed = parsed.astimezone(VIENNA_TZ)
-    return parsed
+    return plausible_moment(parsed)
 
 
 def _parse_range(properties: dict[str, Any]) -> tuple[datetime | None, datetime | None]:

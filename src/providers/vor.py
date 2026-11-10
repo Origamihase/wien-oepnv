@@ -10,7 +10,7 @@ This module implements the logic to fetch transport alerts from the VOR (Verkehr
 - Parsing of complex JSON responses into standardized feed items.
 
 Configuration is primarily driven by environment variables (e.g.,
-``VOR_ACCESS_ID``, ``VOR_HTTP_TIMEOUT``, ``VOR_MAX_REQUESTS_PER_DAY``).
+``VOR_ACCESS_ID``, ``VOR_USER_AGENT``, ``VOR_MAX_REQUESTS_PER_DAY``).
 
 Scope: since the operator policy of 2026-05-11 the VOR/VAO API is used for
 the S-Bahn-Stammstrecke monitor only — ``scripts/update_stammstrecke_status.py``
@@ -180,57 +180,6 @@ def _log_warning(message: str, *args: Any) -> None:
 # ``vor_quota`` does not import this module) warn through this function from
 # here on, as they did when they lived here.
 vor_env._log_warning = _log_warning
-
-
-# Security: ``DEFAULT_HTTP_TIMEOUT`` (15s) is the Slowloris-defence ceiling for
-# every VOR request — both the connect and read budget for VOR's HTTP calls
-# (``fetch_content_safe`` in :mod:`src.utils.http`), plus the cache-update
-# script at ``scripts/update_vor_stations.py``. ``_load_int_env`` only enforces a lower
-# bound (``value > 0``), so a benign-looking env override such as
-# ``VOR_HTTP_TIMEOUT=99999`` (intentional misconfig, leaked CI env, or
-# compromised secret store) would silently let a single sluggish or attacker-
-# controlled upstream peer hold a worker for ~28 hours. Combined with
-# ``VOR_MAX_WORKERS=10`` and the per-run station fan-out, a handful of
-# slow-drip responses would exhaust the thread pool and stall the whole feed
-# build. The env var stays useful for *tightening* the timeout (e.g. 5s in
-# tests with a stub server) but can never raise it above the documented
-# Slowloris ceiling.
-HTTP_TIMEOUT = min(
-    _load_int_env("VOR_HTTP_TIMEOUT", DEFAULT_HTTP_TIMEOUT),
-    DEFAULT_HTTP_TIMEOUT,
-)
-
-# How many in-memory increments to accumulate before flushing the quota
-# counter to disk. The default of 10 keeps file I/O low (~10x per build)
-# while bounding the loss window to 9 requests if the process is killed
-# mid-batch. Tests force a flush per call via WIEN_OEPNV_TEST_QUOTA_BATCH.
-DEFAULT_QUOTA_FLUSH_BATCH_SIZE = 10
-# Security: cap ``VOR_QUOTA_FLUSH_BATCH_SIZE`` at ``MAX_REQUESTS_PER_DAY``
-# (the contractual hard cap of 100/day for the VAO Start tier). The batch
-# size is the *loss window* if the process is killed abnormally — the
-# ``atexit``-registered flush (``_flush_quota_cache``) does NOT run on SIGKILL / OOM
-# kill / kernel panic / container reaper, so any unflushed delta is
-# silently dropped. A benign-looking env override such as
-# ``VOR_QUOTA_FLUSH_BATCH_SIZE=99999`` (intentional misconfig, leaked CI
-# env, or compromised secret store) lets a single run accumulate the
-# entire daily quota in memory; one abnormal kill then loses the whole
-# count and the next run reads a stale (or zero) on-disk total, allowing
-# it to make another 100 requests before the quota gate kicks in — a
-# direct breach of the 100/day VAO contract that mirrors the same
-# threat model as the previously-fixed ``VOR_MAX_REQUESTS_PER_DAY`` and
-# caps. Buffering more than the daily cap
-# in memory is by definition wasteful (the per-call fail-fast at
-# ``save_request_count`` already blocks at ``MAX_REQUESTS_PER_DAY``), so
-# capping at ``MAX_REQUESTS_PER_DAY`` keeps the env useful for tuning
-# (operators can lower it for tighter durability) without ever raising
-# the loss window above the contract limit.
-QUOTA_FLUSH_BATCH_SIZE = max(
-    1,
-    min(
-        _load_int_env("VOR_QUOTA_FLUSH_BATCH_SIZE", DEFAULT_QUOTA_FLUSH_BATCH_SIZE),
-        MAX_REQUESTS_PER_DAY,
-    ),
-)
 
 
 from .vor_quota import (  # noqa: E402
@@ -460,10 +409,7 @@ __all__ = [
     "_get_env",
     "_load_int_env",
     "_resolve_path",
-    "HTTP_TIMEOUT",
     "MAX_REQUESTS_PER_DAY",
-    "DEFAULT_QUOTA_FLUSH_BATCH_SIZE",
-    "QUOTA_FLUSH_BATCH_SIZE",
     "VOR_BASE_URL",
     "VOR_VERSION",
     "version_pinned_by_env",

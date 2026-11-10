@@ -346,3 +346,106 @@ diese Karte beschreibt nur die laufzeit-architektonischen Schichten:
   dokumentiert.
 * Eine konsolidierte Gesamtübersicht steht in [`AGENTS.md`](https://github.com/Origamihase/wien-oepnv/blob/main/AGENTS.md);
   die Meldewege für Schwachstellen in [`SECURITY.md`](https://github.com/Origamihase/wien-oepnv/blob/main/SECURITY.md).
+
+---
+
+## 10. Robustheit und Laufzeit des Feed-Baus (seit 2026-11-10)
+
+Aus dem Code-Audit vom 10.11.2026. Betreiberentscheidung (Michael,
+2026-11-10, Karte „Soll ich den PR Robustheit und Laufzeit aus dem Audit
+bauen?“, Antwort „Ja, alle vier Teile“), zu seinem Ziel vom 04.11.: ein
+Feed, der ohne Handgriffe läuft und Rechenzeit schont.
+
+**Datum am Rand des Kalenders.** Ein Zeitstempel, dessen Jahr außerhalb von
+2000 bis 2100 liegt, gilt als nicht gesetzt (`PLAUSIBLE_YEARS` und
+`plausible_moment` in `src/utils/vienna_clock.py`). Anlass, im Audit
+nachgestellt: Eine einzige WL-Störung mit dem Ende
+`9999-12-31T23:59:59.000+0100` kam in den Cache, und der Feed-Bau brach
+danach in jedem Lauf ab (`OverflowError` beim Rechnen mit dem Datum), solange
+die Quelle die Meldung führte; ein Beginn im Jahr 1 beendete schon den
+WL-Abruf. Solche Werte stehen in Quellen für „offen“ oder „unbekannt“; mit
+ihnen lässt sich weder rechnen noch eine Zeitzeile schreiben. Die Regel
+greift dort, wo ein Zeitstempel gelesen wird: bei WL (`_iso` in
+`src/providers/wl_item_fields.py`, `_moment` in
+`src/providers/wl_resolved.py`, die Daten aus Titel und „Zeitraum:“-Text in
+`src/providers/wl_text.py`), bei den ÖBB (`_parse_dt_rfc2822` und
+`_parse_period` in `src/providers/oebb.py`, jede Seite eines Zeitraums für
+sich), bei den Baustellen (`_parse_datetime` in
+`src/providers/baustellen_events.py`), beim Lesen der Caches
+(`_parse_datetime` in `src/feed_build/base.py`), beim Lesen des Zustands
+(`_state_stamp` in `src/feed_build/base.py`: ein solcher Wert in
+`data/first_seen.json` gilt als unlesbar, wie bisher ein Wert, der kein
+Datum ist: Warnung im Protokoll, als erste Sichtung gilt der Zeitpunkt des
+Baus) und im Stammstrecken-Monitor (`_parse_vao_dt` in
+`src/stammstrecke/legs.py`). Die Liste führt `READERS` in
+`tests/test_plausible_years.py`. Die Meldung bleibt
+im Feed; ihr fehlt nur dieses Feld, wie bei einer Meldung, die kein Ende
+nennt. Das gilt für jedes Jahr außerhalb der Grenzen, nicht nur für die,
+mit denen Python nicht rechnen kann: Ein Ende im Jahr 1970 beendet eine
+Meldung nicht mehr, ein Beginn im Jahr 2101 hält sie nicht mehr zurück; sie
+gilt wie eine Meldung ohne Ende, bis die Quelle sie nicht mehr führt oder
+der Altersfilter greift. Die aufgezeichneten Daten nennen nur die Jahre 2019
+bis 2031, keine Meldung ändert sich (Nachspiel im Changelog vom
+10.11.2026).
+
+**Eine Meldung hält den Bau nicht an.** Scheitert die Feed-Kette oder das
+Erzeugen des deutschen Feeds, sucht `build_isolating`
+(`src/feed_build/isolation.py`) die Ursache: Jede gesammelte Meldung läuft
+einzeln durch Kette und Ausgabe, auch eine, die es nicht unter die zehn
+Plätze geschafft hätte. Scheitert dabei höchstens die Hälfte der Meldungen,
+wird der Zustand neu von der Platte gelesen und der Feed ohne diese
+Meldungen gebaut; Zähler und Zustand stammen aus diesem zweiten Durchgang.
+Der normale Lauf ist unverändert: Die Kette läuft einmal, nur eine Kopie
+der Meldungen wird vorher angelegt, 0,3 ms bei den 88 Meldungen vom
+10.11.2026 (lassen sie sich nicht kopieren, baut
+der Lauf wie vor dem 10.11. ohne Einzelprüfung und schreibt die Warnung
+„Meldungen nicht kopierbar“). Scheitert keine Meldung allein,
+scheitert mehr als die Hälfte (dann liegt der Fehler im Code, nicht an
+einer Meldung, und der Feed käme fast leer heraus) oder scheitert auch der
+zweite Durchgang, endet der Bau wie bisher mit dem ersten Fehler, und der
+veröffentlichte Feed bleibt, wie er ist; das Protokoll nennt dann, wie
+viele Meldungen einzeln scheiterten. Das Schreiben der Feed-Dateien und der
+englische Feed sind wie bisher eigene Schritte. Eine übersprungene Meldung
+wird gemeldet: als Fehlerzeile im Protokoll des Laufs, im Gesundheitsbericht
+des Baus (Abschnitt „Übersprungene Meldungen“ und Fehlerliste; im JSON der
+Schlüssel `skipped_items` mit Quelle, Titel und Fehlerklasse samt Stelle im
+Code, ohne den Wortlaut des Fehlers) und von dort im Update-Lauf über die
+Feed-Wächter-Regel `meldung-uebersprungen` als Issue, also am selben Tag
+per Mail ([`reference/feed_watch.md`](reference/feed_watch.md)). Die Läufe
+„Build feed“ und „Manual full refresh“ haben keinen Wächter-Schritt: Dort
+steht eine übersprungene Meldung nur im Protokoll, das Issue kommt mit dem
+nächsten Update-Lauf. Im Gesundheitsbericht zählt die Meldung bei
+„Rohdaten“ mit und fehlt ab „Nach Altersfilter“. Der Bericht selbst besteht
+im Update-Lauf nur während des Laufs (`.gitignore`; der Wächter-Schritt
+liest ihn nach dem Schritt „Build feed“ desselben Jobs,
+`tests/test_feed_watch/test_skipped_items_workflow.py`); was der Betreiber
+liest, sind das Issue, die Annotation des Laufs und
+`data/feed_watch.json`. Der Lauf bleibt grün („Alarmwege: rot, Issue,
+Hinweis“, §7): Die Technik arbeitet, dem Feed fehlt eine Meldung. Die
+Zeilen der Störungsstatistik (`data/stats/stoerungen_JJJJ.csv`) hält der
+Bau zurück, bis der deutsche Feed erzeugt ist (`rows_held_back` in
+`src/utils/stats.py`), und schreibt sie vor den Feed-Dateien: Ein
+gescheiterter Durchgang und die Einzelproben zählen nichts. Scheitert
+danach das Schreiben der Feed-Datei, stehen die Zeilen wie bisher schon in
+der Statistik. `lint` prüft nur die Feed-Kette, ohne diese Einzelproben und
+ohne die Ausgabe: Scheitert die Kette an einer Meldung, endet `lint` mit
+dem Fehler (Exit-Code 2); eine Meldung, an der erst die Ausgabe scheitert,
+findet nur der Bau.
+
+**Stationssuche über einen Index.** Ob ein ÖBB-Text eine Wiener Station
+nennt, prüfte `text_has_vienna_connection` (`src/utils/stations.py`) mit
+einem einzigen Muster aus 159.754 Namen und Aliasen: 7 s zum Kompilieren und
+im Mittel rund 1 s je ÖBB-Text, der ÖBB-Abruf brauchte damit 13 bis 16 s.
+`WholeTermSearch` (`src/utils/term_search.py`) gibt für die Begriffe des
+Verzeichnisses dieselbe Antwort über einen Index nach den ersten vier
+Zeichen: Aufbau 0,5 s, ein Text 0,1 bis 0,2 ms, Arbeitsspeicher des
+Prozesses 143 statt 583 MB. Welches Zeichen welches trifft und was ein Wortzeichen ist,
+fragt der Index Zeichen für Zeichen das Modul `re` selbst, statt dessen
+Regeln nachzubauen; käme ein Zeichen vor, das sich so nicht einordnen
+lässt, fiele er auf das alte Muster zurück (bei keinem Unicode-Zeichen der
+Fall). Die Normalisierung der Stationsnamen (`_normalize_token` in
+`src/utils/stations_normalize.py`) merkt sich ihre Ergebnisse, weil die zwei
+Indexe des Verzeichnisses dieselben 250.000 Namen nacheinander fragen: der
+zweite Index braucht 0,5 statt 1,8 s. Zusammen, gemessen am 10.11.2026 mit
+den Daten des Tages, erster Aufruf im Prozess: ÖBB-Abruf 13 bis 17 s →
+2,7 s, Feed-Bau 4,2 bis 4,9 s → 2,7 bis 2,9 s.

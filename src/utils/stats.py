@@ -28,6 +28,9 @@ import csv
 import io
 import logging
 import math
+from collections.abc import Iterator
+from contextlib import contextmanager
+from contextvars import ContextVar
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
@@ -127,6 +130,56 @@ def stats_path(kind: str, year: int, *, base_dir: Path | None = None) -> Path:
     return folder / f"{kind}_{year:04d}.csv"
 
 
+class HeldRows:
+    """The rows a :func:`rows_held_back` block kept back, in their order."""
+
+    def __init__(self) -> None:
+        self._rows: list[tuple[Path, tuple[str, ...], tuple[str, ...]]] = []
+
+    def __len__(self) -> int:
+        return len(self._rows)
+
+    def write(self) -> None:
+        """Append the kept rows to their files now; each row is written once.
+
+        Best-effort like every writer of this module: a row that cannot be
+        written is logged and the next one is tried.
+        """
+        rows, self._rows = self._rows, []
+        for path, header, row in rows:
+            try:
+                _append_row(path, header, row)
+            except Exception as exc:  # noqa: BLE001 - statistics never stop the build
+                LOGGER.warning(
+                    "Stats append fehlgeschlagen für %s: %s",
+                    sanitize_log_arg(str(path)),
+                    sanitize_log_arg(str(exc)),
+                )
+
+
+_HELD_ROWS: ContextVar[HeldRows | None] = ContextVar("stats_held_rows", default=None)
+
+
+@contextmanager
+def rows_held_back() -> Iterator[HeldRows]:
+    """Keep the rows appended inside the block back instead of writing them.
+
+    The feed build renders an item and enters its first appearance into the
+    ledger in one step. Since 2026-11-10 a rendering can be a trial or can
+    be repeated without one item (``src/feed_build/isolation.py``); only
+    the rendering whose feed the build goes on with may count. The caller
+    writes the kept rows with :meth:`HeldRows.write` once that rendering has
+    succeeded (before the feed file is written); rows that are not written
+    are dropped.
+    """
+    held = HeldRows()
+    token = _HELD_ROWS.set(held)
+    try:
+        yield held
+    finally:
+        _HELD_ROWS.reset(token)
+
+
 def _append_row(
     path: Path,
     header: tuple[str, ...],
@@ -136,13 +189,19 @@ def _append_row(
 
     Returns ``True`` on success, ``False`` if any I/O error was caught
     (and logged at WARNING). The boolean return makes the writers
-    individually testable without scraping log output.
+    individually testable without scraping log output. Inside a
+    :func:`rows_held_back` block the row is only kept (``True``) and
+    written by :meth:`HeldRows.write`.
 
     Implementation note: ``newline=""`` is the canonical way to disable
     Python's universal-newline translation on writes through
     :mod:`csv`, which would otherwise add a stray ``\\r`` on Windows
     and break round-tripping.
     """
+    held = _HELD_ROWS.get()
+    if held is not None:
+        held._rows.append((path, header, row))
+        return True
     try:
         path.parent.mkdir(parents=True, exist_ok=True)
         write_header = not path.exists() or path.stat().st_size == 0
@@ -557,6 +616,8 @@ __all__ = [
     "STAMMSTRECKE_DIRECTIONS",
     "find_silent_directions",
     "summarise_direction_activity",
+    "HeldRows",
+    "rows_held_back",
     "STAMMSTRECKE_HEADER",
     "STOERUNGEN_HEADER",
     "WEEKDAY_LABELS",

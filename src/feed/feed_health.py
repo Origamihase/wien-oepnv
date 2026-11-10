@@ -59,6 +59,22 @@ def _format_timestamp_iso(dt: datetime | None) -> str | None:
     return localized.isoformat()
 
 
+def _skipped_items(report: RunReportView) -> list[dict[str, str]]:
+    """Items the build left out because a step failed on them.
+
+    ``RunReport.add_skipped_item`` (``src.feed_build.isolation``). Read
+    with ``getattr`` so a report object without the list counts as "none".
+    """
+    entries = getattr(report, "skipped_items", None)
+    if not isinstance(entries, list):
+        return []
+    return [
+        {key: str(entry.get(key) or "") for key in ("source", "title", "error")}
+        for entry in entries
+        if isinstance(entry, dict)
+    ]
+
+
 def render_feed_health_markdown(
     report: RunReportView,
     metrics: FeedHealthMetrics,
@@ -160,6 +176,17 @@ def render_feed_health_markdown(
         lines.append("")
         for warning in report.warnings:
             lines.append(f"- {escape_markdown(warning)}")
+        lines.append("")
+
+    skipped = _skipped_items(report)
+    if skipped:
+        lines.append("## Übersprungene Meldungen")
+        lines.append("")
+        for skip in skipped:
+            lines.append(
+                f"- {escape_markdown(skip['source'])}: {escape_markdown(skip['title'])}"
+                f" ({escape_markdown(skip['error'])})"
+            )
         lines.append("")
 
     errors = list(report.iter_error_messages())
@@ -292,6 +319,8 @@ def build_feed_health_payload(
         "providers": provider_entries,
         "warnings": warnings,
         "errors": errors,
+        # Always present; empty when the build skipped no item.
+        "skipped_items": _skipped_items(report),
     }
 
 
