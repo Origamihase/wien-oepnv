@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261110-0027, I20261110-0028-F01, I20260925-0011, I20260909-0007, I20261110-0022-F01, I20261020-0029"
+    "trafficInfoNameList": "I20261110-0027, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1875-101, R1876-101, R1880-101, R1884-101, R1882-101, R1883-101, R3886-480, R1881-101, R2380-627, R2373-126, R2379-627, R2345-127, R2558-125, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R293-474, R318-437, R1974-466, R1199-205, R500-101, R500-409, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1876-101, R1880-101, R1881-101, R1884-101, R1883-101, R1875-101, R3886-480, R1882-101, R2343-125, R2373-126, R2379-627, R2380-627, R2345-127, R2558-125, R2378-627, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R293-474, R318-437, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,52 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "1": "ptTram"
-     }
-    },
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "1: Fremder Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Radetzkystraße 1",
-    "name": "I20261110-0022-F01",
-    "owner": "WL",
-    "parentName": "I20261110-0022",
-    "priority": "1",
-    "reasonId": 13,
-    "reasonName": "Fremder Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 101,
-      "lineName": "1",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-10T13:42:00.000+0100",
-     "lastUpdate": "2026-11-10T13:42:00.000+0100",
-     "resume": "2026-11-10T13:42:00.000+0100",
-     "start": "2026-11-10T13:23:00.000+0100"
-    },
-    "title": "1: Fremder Verkehrsunfall"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -260,54 +214,6 @@
      "start": "2026-11-10T14:44:00.000+0100"
     },
     "title": "63A: Verspätungen"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U3: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261110-0028-F01",
-    "owner": "WL",
-    "parentName": "I20261110-0028",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4914
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-10T14:52:00.000+0100",
-     "lastUpdate": "2026-11-10T14:52:00.000+0100",
-     "resume": "2026-11-10T14:52:00.000+0100",
-     "start": "2026-11-10T14:18:00.000+0100"
-    },
-    "title": "U3: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -952,29 +858,6 @@
      "start": "2026-11-10T05:00:22.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R500-409",
-    "owner": "WL",
-    "parentName": "R500-409",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9A"
-    ],
-    "relatedStops": [
-     500
-    ],
-    "time": {
-     "end": "2026-11-10T15:02:00.000+0100",
-     "start": "2026-11-10T14:03:15.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
