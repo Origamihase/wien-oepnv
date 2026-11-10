@@ -557,7 +557,8 @@ Anfragen je Stand.
 Bilanz: Mit 3.1 Flash-Lite (Denkstufe „high“) kommt jede Prüfung in unter
 einer Minute zurück. Die zutreffenden Funde deckten sich mit den bekannten
 Fehlern und zeigten drei bis dahin unbekannte Klassen: „line line“ für „über
-die Strecke der Linie(n) …“, ein WL-Text gleich dem Titel (nur die Zeitzeile
+die Strecke der Linie(n) …“ (behoben am 10.11.2026 mit
+`src/feed_build/line_routes.py`, Issue #2188), ein WL-Text gleich dem Titel (nur die Zeitzeile
 bleibt), „46:Umleitung“ ohne Leerzeichen. Zwanzig falsche Funde an zwei Tagen
 gehen auf zwei knappe Sätze unter „Entschieden“ im Prompt zurück („Due to“,
 „LB“); zwei weitere Funde zeigten Behobenes oder Bekanntes (71/42, am 02.11. behoben; 12). Derselbe Stand

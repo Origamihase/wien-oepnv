@@ -17,6 +17,7 @@ from .entities import _DATE_ENTITY_RE
 from .placeholders import _RESIDUAL_PLACEHOLDER_RE
 from .oebb_summary import _OEBB_LABELLED_SENTENCE_RE, _oebb_section_label_en
 from .translator import _service_compound_defect
+from .line_routes import _line_route_defect
 from .en_repairs import (
     _capitalise_glossary_after_stop, _capitalise_sentence_start, _capitalise_title_body, _cause_due_to,
     _drop_unpaired_quote, _english_weekdays_capitalised,
@@ -218,6 +219,8 @@ def _cached_translation(
             defect = _service_compound_defect(
                 text, cached, source=source, category=category
             )
+        if defect is None:
+            defect = _line_route_defect(text, cached)
         if defect is None:
             # Cached before "due to" was the one cause preposition
             # (``_cause_due_to``); the model's words are otherwise kept.

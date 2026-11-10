@@ -19,6 +19,7 @@ from .relocation import _RELOCATION_ARROW
 from .oebb_lines_short import _OEBB_SHORT_LEAD_RE
 from .oebb_summary import _OEBB_LABELLED_SENTENCE_RE, _oebb_section_label_en
 from .translator import _get_translation_pipeline, _mask_service_compounds
+from .line_routes import _mask_line_routes
 from .masking import _mask_entities, _unmask_entities
 from .pretranslate import (
     _HOUR_ONLY_CLOCK_RE, _LABEL_RECORD_RE, _REASON_LABEL_RE, _RECORD_BIS_VORAUSSICHTLICH_RE,
@@ -499,6 +500,7 @@ def _translate_text_attempt(
     glossary_processed = _mask_service_compounds(
         glossary_processed, glossary_mapping, source=source, category=category,
     )
+    glossary_processed = _mask_line_routes(glossary_processed, glossary_mapping)
     masked_text, entity_mapping = _mask_entities(glossary_processed)
     combined_mapping = {**glossary_mapping, **entity_mapping}
     # Entity-only fast path: when masking leaves nothing translatable (a title
