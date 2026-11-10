@@ -6,6 +6,7 @@ location so ``DEFAULT_OUTPUT_PATH`` stays the same path.
 """
 from __future__ import annotations
 
+from collections.abc import Sequence
 from datetime import datetime
 from pathlib import Path
 from typing import Final
@@ -407,8 +408,17 @@ def render_markdown(
     ausfaelle: AusfallAggregate,
     coverage_note: str = "",
     nav: str = "",
+    after_summary: Sequence[str] = (),
+    before_sources: Sequence[str] = (),
 ) -> str:
-    """Compose the full Markdown dashboard string from the aggregates."""
+    """Compose the full Markdown dashboard string from the aggregates.
+
+    *after_summary* and *before_sources* are finished Markdown lines a page
+    of a finished year adds: the overview of the year below the key
+    figures, the roadworks above the source line
+    (:mod:`src.markdown_stats.year_archive`). Empty, the page is the
+    dashboard it always was.
+    """
     sections: list[str] = []
     sections.extend(
         _format_summary_section(
@@ -420,6 +430,7 @@ def render_markdown(
             nav=nav,
         )
     )
+    sections.extend(after_summary)
 
     # VAO "Start" contract, point 5.3: name the VAO "Start" access as the
     # basis of the Stammstrecke data (Michael, 17.10.2026; NOTICE.md). The
@@ -486,6 +497,7 @@ def render_markdown(
         )
     )
 
+    sections.extend(before_sources)
     sections.extend(
         [
             "---",
