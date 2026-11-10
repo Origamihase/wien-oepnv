@@ -440,11 +440,48 @@ def _cause_key(cause: str) -> str:
     and a glossary group into a synonym ("Schadhaftem Zug" → "Schadhafter
     Zug" → "Schadhaftes Fahrzeug").
     """
-    key = " ".join(cause.casefold().split())
+    return _expanded_abbreviation(_resolved(" ".join(cause.casefold().split())))
+
+
+def _resolved(key: str) -> str:
+    """*key* with WL's synonyms and the glossary's groups resolved, twice (see above)."""
     for _ in range(2):
         key = _CAUSE_SYNONYMS.get(key, key)
         key = _SAME_TRANSLATION.get(key, key)
     return key
+
+
+# WL's display cuts a long cause to fit its line: "12: Fahrleitungsgebr."
+# and "2: Fahrleitungsgebr" stood beside the long message "2/12/31:
+# Beschädigte Oberleitung durch einen LKW" on 2026-11-09 from 12:30 to 14:30
+# Vienna time, and "12: Fahrleitungsgebr, Beschädigte Oberleitung" read as
+# two causes on 2026-11-05. A cause the synonyms and the glossary do not
+# know is written out when, without a closing period and with at least six
+# letters, it opens the causes of exactly one group ("fahrleitungsgebr" →
+# "fahrleitungsgebrechen" → "oberleitungsstörung"); one that opens two
+# groups stays as WL wrote it. A rule for every cut cause, not a list of
+# cut words (operator decision 2026-11-10, card "Zusammenfassen prüfen").
+_MIN_ABBREVIATION = 6
+
+
+def _known_causes() -> frozenset[str]:
+    """Every cause the synonyms and the glossary know, casefolded."""
+    glossary = {**_GLOSSARY_BASE, **_GLOSSARY_BY_SOURCE.get("Wiener Linien", {})}
+    return frozenset({*_CAUSE_SYNONYMS, *_CAUSE_SYNONYMS.values(), *(" ".join(g.casefold().split()) for g in glossary)})
+
+
+_KNOWN_CAUSES = _known_causes()
+
+
+def _expanded_abbreviation(key: str) -> str:
+    """*key* written out when WL's display cut it (see above)."""
+    if key in _KNOWN_CAUSES:
+        return key
+    stem = key.rstrip(". ")
+    if len(stem) < _MIN_ABBREVIATION:
+        return key
+    groups = {_resolved(name) for name in _KNOWN_CAUSES if name.startswith(stem)}
+    return groups.pop() if len(groups) == 1 else key
 
 
 def _chosen_cause(parts: Sequence[_TickerPart]) -> str:
