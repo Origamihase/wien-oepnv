@@ -12,7 +12,7 @@ watcher itself is only logged (exit code 0 in every case).
 Why: most defects of the feed so far were found by an audit, hours to weeks
 after they first showed on the TV. On 2026-10-09 a stop ticker without a
 cause took over the GUID and start of a delay on line 25 and stood as a new
-disruption from 12:01 to 20:30, up to place 2; ÖBB's second sentence ("what
+disruption from 12:01 to 22:02, up to place 2; ÖBB's second sentence ("what
 still applies") was missing in 59 of 106 texts since September; "2/71:
 Polizeieinsatz [Seit 13:08]" stood for an incident from 20:08. The watcher
 catches such cases on the day they happen, and new ones when Wiener Linien,

@@ -1000,7 +1000,7 @@
    "properties": {
     "ANSPRECHPERSON": "Ma 31 Kundencenter",
     "ANSPRECHPERSON_TEL": "Tel.: 01-59959/31600",
-    "ANTRAGSTELLER": "MA31",
+    "ANTRAGSTELLER": null,
     "BEHINDERUNGSART": "Rohrlegung",
     "BEZEICHNUNG": "Rotundenbrücke von Kreuzung Schüttelstraße und Wittelsbachstraße bis Kreuzung Erdberger Lände und We",
     "BEZIRK": 2,
@@ -1055,6 +1055,29 @@
     "OBJEKT_BEGINN": "2026-07-05Z",
     "OBJEKT_ENDE": "2027-12-31Z",
     "PRESSETEXT": "Derrechte Fahrstreifen wird in Fahrtrichtung stadteinwärts gesperrt. Die restlichenFahrstreifen werden mittels Fahrbahnverschwenk aufrechtgehalten.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.39806156,
+     48.2056638
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Ma 31 Kundencenter",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-59959/31600",
+    "ANTRAGSTELLER": null,
+    "BEHINDERUNGSART": "Rohrlegung",
+    "BEZEICHNUNG": "Schüttelstraße von 49 bis 43",
+    "BEZIRK": 2,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-09-14Z",
+    "OBJEKT_ENDE": "2026-12-18Z",
+    "PRESSETEXT": "DieArbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Im Baustellenbereich wird eine Restfahrbahn mit 3,00 m freigehalten. Der Fußgängerverkehr kann aufrecht gehalten werden.Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.",
     "SE_ANNO_CAD_DATA": null
    }
   },
@@ -1184,7 +1207,7 @@
    "properties": {
     "ANSPRECHPERSON": "Ma 31 Kundencenter",
     "ANSPRECHPERSON_TEL": "Tel.: 01-59959/31600",
-    "ANTRAGSTELLER": "MA31",
+    "ANTRAGSTELLER": null,
     "BEHINDERUNGSART": "Rohrlegung",
     "BEZEICHNUNG": "Wittelsbachstraße von Kreuzung Schüttelstraße und Rotundenbrücke bis Kreuzung Böcklinstraße",
     "BEZIRK": 2,
