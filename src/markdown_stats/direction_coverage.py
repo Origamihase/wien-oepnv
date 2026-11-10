@@ -8,7 +8,7 @@ from __future__ import annotations
 from datetime import datetime, timedelta
 from typing import Final
 
-from src.markdown_stats.rows import StammstreckeRow
+from src.markdown_stats.rows import VIENNA_TZ, StammstreckeRow
 from src.utils.stats import STAMMSTRECKE_DIRECTIONS
 from src.utils.text import escape_markdown_cell
 
@@ -261,4 +261,64 @@ def render_direction_coverage_note(
         f"{lead} Die Zahlen unten beruhen daher ausschließlich auf "
         "**älteren Daten**.\n"
         "\n"
+    )
+
+
+def render_finished_year_coverage_note(
+    year_rows: list[StammstreckeRow],
+    *,
+    year: int,
+    directions: tuple[str, ...] = STAMMSTRECKE_DIRECTIONS,
+) -> str:
+    """The same caveat for the page of a finished *year*.
+
+    ``docs/statistik-<Jahr>.md`` shows a year that is over, so "Aktuell keine
+    Fahrten" has nothing to say there, and the page must read the same on
+    whatever day it is written: the note is judged at the end of the year
+    and against the year's rows alone. A direction is named when the rule of
+    :func:`find_silent_coverage_directions` holds at that moment (the other
+    direction went on reporting, or the whole corridor was quiet for longer
+    than any normal pause) and its last journey lies before the year's last
+    day; the note gives dates, and a direction that reported on 31.12.
+    reaches the end of the year in them. Until 2026-11-10 the archive page
+    carried no note at all: Praterstern, silent since 14.08.2026, stood
+    under Meidling with half its rows and no word why, while the dashboard
+    of the same year said so until its last day.
+
+    A direction without any row in the year is the fallback of
+    ``_format_directions_section`` ("In diesem Zeitraum keine Fahrten").
+    """
+    year_end = datetime(year + 1, 1, 1, tzinfo=VIENNA_TZ)
+    latest = _last_seen_per_direction(year_rows)
+    last_day = (year_end - timedelta(days=1)).date()
+    missing = [
+        d
+        for d in find_silent_coverage_directions(
+            year_rows, now=year_end, directions=directions
+        )
+        if latest[d].astimezone(VIENNA_TZ).date() < last_day
+    ]
+    if not missing:
+        return ""
+    names = " und ".join(f"**{escape_markdown_cell(d)}**" for d in missing)
+    if len(missing) == 1:
+        return (
+            "> ⚠️ **Eingeschränkte Abdeckung:** Von "
+            f"{COVERAGE_ORIGIN_LABEL} Richtung {names} sind auf der "
+            "Stammstrecke Fahrten nur bis "
+            f"{latest[missing[0]].astimezone(VIENNA_TZ).strftime('%d.%m.%Y')} "
+            f"erfasst. Die Jahreszahlen unten enthalten Richtung {names} "
+            "daher nur bis dahin.\n\n"
+        )
+    until = ", ".join(
+        f"{escape_markdown_cell(d)} bis "
+        f"{latest[d].astimezone(VIENNA_TZ).strftime('%d.%m.%Y')}"
+        for d in missing
+    )
+    return (
+        "> ⚠️ **Eingeschränkte Abdeckung:** Von "
+        f"{COVERAGE_ORIGIN_LABEL} Richtung {names} sind auf der Stammstrecke "
+        f"Fahrten nicht bis zum Jahresende erfasst ({until}). Die "
+        "Jahreszahlen unten enthalten diese Richtungen daher nur bis "
+        "dahin.\n\n"
     )

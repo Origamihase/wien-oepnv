@@ -56,6 +56,7 @@ from src.utils.stammstrecke_poll import (  # noqa: E402
 )
 from src.utils.stats import (  # noqa: E402
     DEFAULT_STATS_DIR,
+    STAMMSTRECKE_DIRECTIONS,
     WEEKDAY_LABELS,
 )
 from src.feed.stammstrecke import FEED_WINDOW  # noqa: E402
@@ -88,6 +89,7 @@ from src.markdown_stats.rows import (  # noqa: E402
     _filter_rows_by_window as _filter_rows_by_window,
     _filter_rows_by_timedelta as _filter_rows_by_timedelta,
     collect_year_data as collect_year_data,
+    earlier_rows_until_every_direction as earlier_rows_until_every_direction,
 )
 from src.markdown_stats.direction_coverage import (  # noqa: E402
     COVERAGE_ORIGIN_LABEL as COVERAGE_ORIGIN_LABEL,
@@ -119,6 +121,9 @@ from src.markdown_stats.markdown_report import (  # noqa: E402
     _format_ausfall_lines_section as _format_ausfall_lines_section,
     render_markdown as render_markdown,
     write_dashboard as write_dashboard,
+)
+from src.markdown_stats.year_archive import (  # noqa: E402
+    dashboard_nav as dashboard_nav,
     write_year_archive as write_year_archive,
 )
 from src.markdown_stats.readme import (  # noqa: E402
@@ -311,6 +316,19 @@ def main(argv: list[str] | None = None) -> int:
         )
         window_sm.extend(extra_sm)
         window_au.extend(extra_au)
+    # From 31.01. the window no longer touches the previous year. A direction
+    # that last reported there would count as never measured, and the caveat
+    # below would end while the direction is still silent
+    # (``earlier_rows_until_every_direction``); ``sm_window`` stays the
+    # 30-day window.
+    window_sm.extend(
+        earlier_rows_until_every_direction(
+            window_sm,
+            before_year=min(cutoff.year, now.year, args.year),
+            directions=STAMMSTRECKE_DIRECTIONS,
+            stats_dir=args.stats_dir,
+        )
+    )
     sm_window = _filter_rows_by_window(
         window_sm, days=args.readme_window_days, now=now
     )
@@ -395,12 +413,24 @@ def main(argv: list[str] | None = None) -> int:
             "README wird weiterhin gepatcht."
         )
     else:
+        # The archive page first: the dashboard written below names it.
+        try:
+            write_year_archive(
+                now=now, year=args.year, stats_dir=args.stats_dir, output_path=args.output
+            )
+        except OSError as exc:
+            LOGGER.error(
+                "Konnte Jahresarchiv nicht schreiben: %s",
+                sanitize_log_arg(str(exc)),
+            )
+            return 1
         markdown = render_markdown(
             year=args.year,
             generated_at=now,
             stammstrecke=sm_agg,
             stoerungen=st_agg,
             ausfaelle=au_agg,
+            nav=dashboard_nav(args.output, year=args.year),
             # The dashboard shows the whole year, so its caveat is judged
             # against the year's rows, not the README's 30-day window.
             coverage_note=render_direction_coverage_note(
@@ -427,16 +457,6 @@ def main(argv: list[str] | None = None) -> int:
             sanitize_log_arg(str(args.output)),
             len(markdown.encode("utf-8")),
         )
-        try:
-            write_year_archive(
-                now=now, year=args.year, stats_dir=args.stats_dir, output_path=args.output
-            )
-        except OSError as exc:
-            LOGGER.error(
-                "Konnte Jahresarchiv nicht schreiben: %s",
-                sanitize_log_arg(str(exc)),
-            )
-            return 1
 
     if args.skip_readme:
         return 0

@@ -12,18 +12,12 @@ from typing import Final
 
 from src.markdown_stats.direction_coverage import COVERAGE_ORIGIN_LABEL
 from src.markdown_stats.rows import (
-    LOGGER,
     AusfallAggregate,
     StammstreckeAggregate,
     StoerungAggregate,
-    aggregate_ausfaelle,
-    aggregate_stammstrecke,
-    aggregate_stoerungen,
-    collect_year_data,
 )
 from src.utils.files import atomic_write
 from src.utils.liquid import liquid_safe
-from src.utils.logging import sanitize_log_arg
 from src.utils.stats import STAMMSTRECKE_DIRECTIONS, WEEKDAY_LABELS
 from src.utils.text import (
     escape_markdown_cell,
@@ -210,13 +204,17 @@ def _format_summary_section(
     stammstrecke: StammstreckeAggregate,
     stoerungen: StoerungAggregate,
     ausfaelle: AusfallAggregate,
+    nav: str = "",
 ) -> list[str]:
     """Render the top-of-report key metrics block.
 
     Every cell in this block is scoped to the calendar *year*. The
     rolling 30-day window only feeds the README snapshot — keeping
     the two views distinct (year vs. 30 days) avoids the same data
-    point being summed into both numbers at once.
+    point being summed into both numbers at once. *nav* is the line that
+    leads to the pages of the other years
+    (:mod:`src.markdown_stats.year_archive`); empty, the block is the one
+    it always was.
     """
     if stammstrecke.total_observations:
         # Observation-weighted (micro) mean over all rows of *year*.
@@ -237,6 +235,7 @@ def _format_summary_section(
         "",
         f"_Automatisch erzeugt am {generated_at.isoformat(timespec='minutes')} (Europe/Vienna)._",
         "",
+        *([nav, ""] if nav else []),
         "## Kennzahlen auf einen Blick",
         "",
         "| Kennzahl | Wert |",
@@ -407,6 +406,7 @@ def render_markdown(
     stoerungen: StoerungAggregate,
     ausfaelle: AusfallAggregate,
     coverage_note: str = "",
+    nav: str = "",
 ) -> str:
     """Compose the full Markdown dashboard string from the aggregates."""
     sections: list[str] = []
@@ -417,6 +417,7 @@ def render_markdown(
             stammstrecke=stammstrecke,
             stoerungen=stoerungen,
             ausfaelle=ausfaelle,
+            nav=nav,
         )
     )
 
@@ -517,44 +518,3 @@ def write_dashboard(
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with atomic_write(output_path, mode="w", encoding="utf-8", permissions=0o644) as fh:
         fh.write(liquid_safe(markdown))
-
-
-def write_year_archive(
-    *,
-    now: datetime,
-    year: int,
-    stats_dir: Path | None,
-    output_path: Path,
-) -> Path | None:
-    """Keep the finished previous year as ``statistik-<Vorjahr>.md`` next to *output_path*.
-
-    The dashboard is re-rendered once a day, shortly after midnight, and
-    shows the calendar year. Its last render of a year therefore ran on
-    31.12. at about 00:15, without New Year's Eve, and on 01.01. an almost
-    empty new year replaced it. The first dashboard run of a new year now
-    also writes the whole previous year, 31.12. included, to an archive
-    page that is never touched again (decision 2026-10-03, "Jahresarchiv").
-    A missed or late 01.01. tick does not matter: the archive is written
-    by whichever dashboard run first finds it missing. Nothing is written
-    for an explicit ``--year`` other than the current one, or when the
-    previous year has no rows at all. Returns the path written, if any.
-    """
-    if year != now.year:
-        return None
-    previous = year - 1
-    archive = output_path.with_name(f"{output_path.stem}-{previous}{output_path.suffix}")
-    if archive.exists():
-        return None
-    sm_rows, st_rows, au_rows = collect_year_data(previous, stats_dir=stats_dir)
-    if not (sm_rows or st_rows or au_rows):
-        return None
-    markdown = render_markdown(
-        year=previous,
-        generated_at=now,
-        stammstrecke=aggregate_stammstrecke(sm_rows),
-        stoerungen=aggregate_stoerungen(st_rows),
-        ausfaelle=aggregate_ausfaelle(au_rows),
-    )
-    write_dashboard(markdown, output_path=archive)
-    LOGGER.info("Jahresarchiv geschrieben: %s.", sanitize_log_arg(str(archive)))
-    return archive

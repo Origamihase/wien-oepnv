@@ -487,3 +487,43 @@ def collect_year_data(
     st_rows = _parse_stoerung_rows(_iter_csv_rows(st_path, STOERUNGEN_HEADER))
     au_rows = _parse_ausfall_rows(_iter_csv_rows(au_path, AUSFAELLE_HEADER))
     return sm_rows, st_rows, au_rows
+
+
+def earlier_rows_until_every_direction(
+    rows: Iterable[StammstreckeRow],
+    *,
+    before_year: int,
+    directions: tuple[str, ...],
+    stats_dir: Path | None = None,
+) -> list[StammstreckeRow]:
+    """Delay rows of the years before *before_year*, back to each direction's last one.
+
+    The coverage note and the website banner say when a silent direction
+    last reported and how many journeys the other one has logged since
+    (``find_silent_coverage_directions``). They read that off the rows they
+    are given, and the run loaded the year files its 30-day window touches:
+    the current year and, until 30.01., the one before. A direction whose
+    last journey lies in a year file that is no longer loaded then counted
+    as "never measured", and README and website dropped the caveat while the
+    direction was as silent as the day before (found 2026-11-10 by replaying
+    the real ledger past New Year: Praterstern, silent since 14.08.2026,
+    lost its note on 31.01.2027).
+
+    So when *rows* lack a direction, the earlier year files are read, newest
+    first, until every direction has a row or a year has no file. With
+    every direction present nothing is read, which is every run of normal
+    operation.
+    """
+    base = stats_dir if stats_dir is not None else DEFAULT_STATS_DIR
+    seen = {row.direction for row in rows}
+    earlier: list[StammstreckeRow] = []
+    year = before_year - 1
+    while any(d not in seen for d in directions):
+        path = stats_path("stammstrecke", year, base_dir=base)
+        if not path.is_file():
+            break
+        year_rows = _parse_stammstrecke_rows(_iter_csv_rows(path, STAMMSTRECKE_HEADER))
+        earlier.extend(year_rows)
+        seen.update(row.direction for row in year_rows)
+        year -= 1
+    return earlier
