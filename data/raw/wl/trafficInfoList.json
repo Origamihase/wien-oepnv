@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261110-0036-F01, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261110-0036-F01, I20261110-0039, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
@@ -215,6 +215,51 @@
      "start": "2026-11-10T18:16:00.000+0100"
     },
     "title": "2: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "miscellaneous",
+    "alertCauseId": 137,
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "descriptionHTML": "<p>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+       "descriptionPlain": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+       "title": "O: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261110-0039",
+    "owner": "WL",
+    "parentName": "I20261110-0039",
+    "priority": "1",
+    "reasonId": 14,
+    "reasonName": "Betriebsstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 170,
+      "lineName": "O",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T21:35:00.000+0100",
+     "lastUpdate": "2026-11-10T21:35:00.000+0100",
+     "resume": "2026-11-10T21:35:00.000+0100",
+     "start": "2026-11-10T21:35:00.000+0100"
+    },
+    "title": "O: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",

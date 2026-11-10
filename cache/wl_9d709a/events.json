@@ -930,6 +930,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "O: Verspätungen",
+    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "178cf2e06d6bf9e3207e789e31504019ebfed19bf91191929c7996b4b8b6d1a7",
+    "pubDate": "2026-11-10T21:35:00+01:00",
+    "starts_at": "2026-11-10T21:35:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=O|D=2026-11-10|TK=o verspätungen",
+    "_wl_ids": [
+      "I20261110-0039"
+    ],
+    "_incident_start": "2026-11-10T21:35:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",

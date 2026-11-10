@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 10 Nov 2026 21:30:45 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 22:00:49 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[O: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">178cf2e06d6bf9e3207e789e31504019ebfed19bf91191929c7996b4b8b6d1a7</guid>
+      <pubDate>Tue, 10 Nov 2026 21:35:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 10 Nov 2026 21:35:00 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 10 Nov 2026 21:35:00 +0100</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung. [Seit 21:35]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.<br/>[Seit 21:35]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[2: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -137,21 +150,6 @@
       <georss:point>48.137917 16.321284</georss:point>
       <description>Perfektastraße 6-8 → Perfektastraße 10-12. Haltestellenverlegung der Linie 64A in Richtung Liesing sowie Rufbus N64 in Richtung Siebenhirten. Grund: Rohrlegungsarbeiten. [Seit 09.11.]</description>
       <content:encoded><![CDATA[Perfektastraße 6-8 → Perfektastraße 10-12. Haltestellenverlegung der Linie 64A in Richtung Liesing sowie Rufbus N64 in Richtung Siebenhirten. Grund: Rohrlegungsarbeiten.<br/>[Seit 09.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71A: Schwechat, Hauptplatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">0410d2df8e57863f51d6bc46cb784a6591aca7a299ba5b9f265895eb35674ab2</guid>
-      <pubDate>Fri, 06 Nov 2026 14:22:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 06 Nov 2026 14:22:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 09 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Wed, 11 Nov 2026 17:00:00 +0100</ext:ends_at>
-      <georss:point>48.140866 16.477681</georss:point>
-      <description>Haltestellenauflassung der Linie 71A in Richtung Zentralfriedhof 3. Tor. Haltestelle: Schwechat, Hauptplatz. Grund: Straßenbau. [Bis Mi 11.11.]</description>
-      <content:encoded><![CDATA[Haltestellenauflassung der Linie 71A in Richtung Zentralfriedhof 3. Tor. Haltestelle: Schwechat, Hauptplatz. Grund: Straßenbau.<br/>[Bis Mi 11.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
