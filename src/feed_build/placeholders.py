@@ -12,6 +12,8 @@ from __future__ import annotations
 import re
 import secrets
 from functools import lru_cache
+from collections import Counter
+from collections.abc import Callable
 from typing import Any
 
 from ..feed.glossary import _GLOSSARY_BASE, _GLOSSARY_BY_CATEGORY, _GLOSSARY_BY_SOURCE
@@ -23,7 +25,7 @@ __all__ = [
     "_SLASH_NAME_GOES_ON_RE", "_SLASH_NAME_CAME_BEFORE_RE", "_SLASH_PARTNER_BEFORE_RE", "_WIEN_NAME_RE",
     "_GLOSSARY_PLACEHOLDER_FORMAT", "_UNMASK_PLACEHOLDER_RE", "_RESIDUAL_PLACEHOLDER_RE", "_MASK_WORD_CHAR_RE",
     "_normalise_placeholder_debris", "_apply_domain_glossary", "_with_nonce", "_has_short_placeholder_shape",
-    "_to_short_placeholders", "_from_short_placeholders",
+    "_to_short_placeholders", "_from_short_placeholders", "_absorb_glued_x",
 ]
 
 
@@ -312,8 +314,9 @@ _RESIDUAL_PLACEHOLDER_RE: re.Pattern[str] = re.compile(
 # returned ``…X0X0X``, the unmask restored ``…X0X`` and left ``0X`` behind,
 # which no guard sees. Only the placeholder's own index is absorbed — the
 # shape both cases show.
+_TRAILING_DEBRIS = r"(?:X+|(?:{index}X)+)(?![A-Za-z0-9])"
 _PLACEHOLDER_DEBRIS_RE: re.Pattern[str] = re.compile(
-    "((?:XENT|XGLO)" + _PLACEHOLDER_NONCE + r"X(\d+)X)(?:X+|(?:\2X)+)(?![A-Za-z0-9])"
+    "((?:XENT|XGLO)" + _PLACEHOLDER_NONCE + r"X(\d+)X)" + _TRAILING_DEBRIS.format(index=r"\2")
 )
 
 # An ``X`` the model put IN FRONT of a placeholder, in place of the space.
@@ -334,9 +337,23 @@ _PLACEHOLDER_DEBRIS_RE: re.Pattern[str] = re.compile(
 # when a word or placeholder precedes it, and vanishes otherwise. The
 # lookbehinds keep the CLOSING ``X`` of a preceding placeholder (``X0X``)
 # out of the match, so only the surplus is touched.
+_LEADING_X_RUN = r"(?<!X\d)(?<!X\d\d)(?<!X\d\d\d)X+"
 _PLACEHOLDER_LEADING_X_RE: re.Pattern[str] = re.compile(
-    r"(?<!X\d)(?<!X\d\d)(?<!X\d\d\d)X+"
-    r"(?=(?:XENT|XGLO)" + _PLACEHOLDER_NONCE + r"X\d+X)"
+    _LEADING_X_RUN + r"(?=(?:XENT|XGLO)" + _PLACEHOLDER_NONCE + r"X\d+X)"
+)
+
+# A literal ``X`` of the SOURCE glued to an entity placeholder: "REX→Wien"
+# masks to ``REX`` + the arrow's placeholder, "→X" to the placeholder + ``X``.
+# Both repairs above cannot tell such an ``X`` from the model's debris and
+# would delete it, so the masker hands it to the placeholder instead
+# (:func:`_absorb_glued_x`). The two halves are the repairs' own patterns, so
+# whatever they would strip is exactly what is absorbed. A glossary
+# placeholder needs no such care: its pattern only matches between non-word
+# characters, so no ``X`` of the source can touch it.
+_GLUED_X_RE: re.Pattern[str] = re.compile(
+    "(?P<lead>" + _LEADING_X_RUN + ")?"
+    "(?P<name>XENT" + _PLACEHOLDER_NONCE + r"X(?P<index>\d+)X)"
+    "(?P<trail>" + _TRAILING_DEBRIS.format(index="(?P=index)") + ")?"
 )
 
 # Any word character. Used to tell a verbatim entity that MUST survive
@@ -361,6 +378,33 @@ def _normalise_placeholder_debris(text: str) -> str:
     """
     text = _PLACEHOLDER_LEADING_X_RE.sub(_leading_x_replacement, text)
     return _PLACEHOLDER_DEBRIS_RE.sub(r"\1", text)
+
+
+def _absorb_glued_x(working: str, mapping: dict[str, str], register: Callable[[str], str]) -> str:
+    """Hand a source ``X`` glued to an entity placeholder to that placeholder (``_GLUED_X_RE``).
+
+    Keeps :func:`_normalise_placeholder_debris` from deleting it on unmask,
+    so ``unmask(mask(x)) == x`` holds for "REX→Wien" too. Like
+    :func:`_absorb_hyphen_prefixes`: a placeholder the text uses only here
+    takes the ``X`` into its own surface, one used elsewhere too stays as it
+    is there, and the whole gets a new one.
+    """
+    counts = Counter(match.group("name") for match in _GLUED_X_RE.finditer(working))
+
+    def _absorb(match: re.Match[str]) -> str:
+        lead, name, trail = match.group("lead") or "", match.group("name"), match.group("trail") or ""
+        if not lead and not trail:
+            return name
+        whole = lead + mapping[name] + trail
+        if counts[name] == 1:
+            mapping[name] = whole
+            return name
+        return register(whole)
+
+    working = _GLUED_X_RE.sub(_absorb, working)
+    for placeholder in [p for p in mapping if p.startswith("XENT") and p not in working]:
+        del mapping[placeholder]
+    return working
 
 
 def _apply_domain_glossary(

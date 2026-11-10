@@ -187,6 +187,17 @@ Nach dem Modelllauf wird nicht blind vertraut:
   setzt (`_PLACEHOLDER_LEADING_X_RE`): Es wird zum Leerzeichen, das es
   ersetzt hat. Es hatte „WipplingerstrX39; service fromXAugasse“ auf Platz 2
   des EN-Feeds gebracht; Epoche 19 räumt den Cache.
+* Beide Reparaturen können ein `X` des Modells nicht von einem `X` der
+  Quelle unterscheiden. Seit 2026-11-11 übergibt die Maskierung deshalb ein
+  großes `X`, das in der Quelle direkt an einem geschützten Zeichen oder
+  Namen klebt, diesem Platzhalter („REX→Wien“: der Platzhalter steht für
+  „X→“, `_absorb_glued_x`, letzter Durchgang, Muster `_GLUED_X_RE` aus den
+  beiden Reparaturmustern gebaut). Vorher wurde daraus „RE →Wien“, und „→X“
+  verlor das `X`. Damit gilt `unmask(mask(x)) == x` wieder für jeden Text,
+  und die Reparaturen finden im maskierten Text nichts. Weil der Platzhalter
+  jetzt ein Wortzeichen trägt, zählt er für
+  `_entities_dropped_by_translation`: Lässt das Modell ihn fallen, bleibt
+  die Meldung deutsch.
 * `_entities_dropped_by_translation` verwirft die Übersetzung, wenn das
   Modell eine wortgleiche Entität **verloren** hat — lieber deutsch als eine
   englische Meldung, in der eine Haltestelle fehlt.
