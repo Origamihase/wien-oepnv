@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261110-0001-F01, I20261110-0001-F02, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1876-101, R1880-101, R1881-101, R1884-101, R1883-101, R1875-101, R3886-480, R1882-101, R2558-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R293-474, R318-437, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R3886-480, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R2558-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R318-437, R293-474, R1974-466, R1199-205, R500-101, R305-170, R304-170, R306-170, R303-170, R302-170, R301-170, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -169,6 +169,102 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "1": "ptTram"
+     }
+    },
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "1: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261110-0001-F01",
+    "owner": "WL",
+    "parentName": "I20261110-0001",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 101,
+      "lineName": "1",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     305
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T05:49:00.000+0100",
+     "lastUpdate": "2026-11-10T05:49:00.000+0100",
+     "resume": "2026-11-10T05:49:00.000+0100",
+     "start": "2026-11-10T05:33:00.000+0100"
+    },
+    "title": "1: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "O: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261110-0001-F02",
+    "owner": "WL",
+    "parentName": "I20261110-0001",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 170,
+      "lineName": "O",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     305
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T05:49:00.000+0100",
+     "lastUpdate": "2026-11-10T05:49:00.000+0100",
+     "resume": "2026-11-10T05:49:00.000+0100",
+     "start": "2026-11-10T05:33:00.000+0100"
+    },
+    "title": "O: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -721,6 +817,144 @@
      "start": "2026-11-09T00:00:21.000+0100"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nUmleitung ab Fasangasse bis Rennweg über St. Marx",
+    "name": "R301-170",
+    "owner": "WL",
+    "parentName": "R301-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     301
+    ],
+    "time": {
+     "end": "2026-11-10T06:33:00.000+0100",
+     "start": "2026-11-10T05:33:55.000+0100"
+    },
+    "title": "Schadhafter Zug\nUmleitung ab Fasangasse bis Rennweg über St. Marx"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nUmleitung ab Fasangasse bis Rennweg über St. Marx",
+    "name": "R302-170",
+    "owner": "WL",
+    "parentName": "R302-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     302
+    ],
+    "time": {
+     "end": "2026-11-10T06:33:00.000+0100",
+     "start": "2026-11-10T05:33:55.000+0100"
+    },
+    "title": "Schadhafter Zug\nUmleitung ab Fasangasse bis Rennweg über St. Marx"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nUmleitung ab Fasangasse bis Rennweg über St. Marx",
+    "name": "R303-170",
+    "owner": "WL",
+    "parentName": "R303-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     303
+    ],
+    "time": {
+     "end": "2026-11-10T06:33:00.000+0100",
+     "start": "2026-11-10T05:33:55.000+0100"
+    },
+    "title": "Schadhafter Zug\nUmleitung ab Fasangasse bis Rennweg über St. Marx"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nUmleitung ab Fasangasse bis Rennweg über St. Marx",
+    "name": "R304-170",
+    "owner": "WL",
+    "parentName": "R304-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     304
+    ],
+    "time": {
+     "end": "2026-11-10T06:33:00.000+0100",
+     "start": "2026-11-10T05:30:25.000+0100"
+    },
+    "title": "Schadhafter Zug\nUmleitung ab Fasangasse bis Rennweg über St. Marx"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Rennweg",
+    "name": "R305-170",
+    "owner": "WL",
+    "parentName": "R305-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     305
+    ],
+    "time": {
+     "end": "2026-11-10T06:31:00.000+0100",
+     "start": "2026-11-10T05:30:25.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Rennweg"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nEinstieg bei Linie 71 Richtung Schottenring",
+    "name": "R306-170",
+    "owner": "WL",
+    "parentName": "R306-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     306
+    ],
+    "time": {
+     "end": "2026-11-10T06:30:00.000+0100",
+     "start": "2026-11-10T05:31:25.000+0100"
+    },
+    "title": "Schadhafter Zug\nEinstieg bei Linie 71 Richtung Schottenring"
    },
    {
     "alertCause": "undefined alert cause",

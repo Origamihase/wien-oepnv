@@ -54,7 +54,7 @@
     },
     "total": 1952
   },
-  "generated_at": "2026-11-10T05:30:46+01:00",
+  "generated_at": "2026-11-10T06:01:13+01:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 0.9,
@@ -113,15 +113,15 @@
       },
       "peer_rows_required": 6,
       "poll": {
-        "last_success": "2026-11-10T05:30:40+01:00",
+        "last_success": "2026-11-10T06:00:56+01:00",
         "stale_hours": 3.0
       },
       "silence_hours": 1.0,
       "window_days": 30
     },
     "live": {
-      "avg_delay_minutes": 0.33,
-      "observations": 1,
+      "avg_delay_minutes": null,
+      "observations": 0,
       "window_minutes": 60
     },
     "max_delay_minutes": 203.0,
@@ -137,7 +137,7 @@
       "03": 26,
       "04": 90,
       "05": 154,
-      "06": 158,
+      "06": 160,
       "07": 176,
       "08": 259,
       "09": 263,
@@ -159,11 +159,11 @@
     "by_provider": {
       "Stadt Wien – Baustellen": 180,
       "VOR/VAO": 12,
-      "Wiener Linien": 4709,
+      "Wiener Linien": 4711,
       "ÖBB": 323
     },
     "by_weekday": {
-      "Di": 761,
+      "Di": 763,
       "Do": 815,
       "Fr": 860,
       "Mi": 764,
@@ -171,7 +171,7 @@
       "Sa": 672,
       "So": 607
     },
-    "total": 5224
+    "total": 5226
   },
   "year": 2026
 }
