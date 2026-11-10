@@ -648,7 +648,7 @@
     "guid": "9f6f169116b156fd9fd7cecfd8e7169154e32a11b295fe50167321f9a6d12f7b",
     "pubDate": "2026-11-10T18:16:00+01:00",
     "starts_at": "2026-11-10T18:16:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-10T20:38:00+01:00",
     "_identity": "wl|störung|L=12|D=2026-11-10|TK=12 fremder verkehrsunfall",
     "_wl_ids": [
       "I20261110-0036"
@@ -802,42 +802,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "25: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "abc260bf756a8d0275a4ce51c5b124812c4c380b787e4c627f39df2747b1c157",
-    "pubDate": "2026-11-10T19:10:16+01:00",
-    "starts_at": "2026-11-10T19:10:16+01:00",
-    "ends_at": "2026-11-10T20:10:00+01:00",
-    "_identity": "wl|störung|L=25|D=2026-11-10|TK=fahrtbehinderung schadhafter zug"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Schadhafter Zug Betrieb ab Berresgasse",
-    "description": "Schadhafter Zug\nBetrieb ab Berresgasse",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "3397b66c54e92cee2313c1db919978a2aedf20138d550b4f13fe29ecaca91e5f",
-    "pubDate": "2026-11-10T19:10:47+01:00",
-    "starts_at": "2026-11-10T19:16:19+01:00",
-    "ends_at": "2026-11-10T20:15:00+01:00",
-    "_identity": "wl|störung|L=25|D=2026-11-10|TK=schadhafter zug betrieb ab berresgasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Schadhafter Zug Betrieb ab Donauspital",
-    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7c5ca1cde42eb7177fa98bdeccfc34d94bc5f2e63c05e008a3e5268b80203cdf",
-    "pubDate": "2026-11-10T19:10:16+01:00",
-    "starts_at": "2026-11-10T19:16:50+01:00",
-    "ends_at": "2026-11-10T20:16:00+01:00",
-    "_identity": "wl|störung|L=25|D=2026-11-10|TK=schadhafter zug betrieb ab donauspital"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26E: Gleisbauarbeiten",
     "description": "Die Kapazitäten der Ersatzlinie 26E sind nicht mit denen einer Straßenbahn vergleichbar. Weichen Sie daher nach Möglichkeit auf die U1 und die S-Bahn über Leopoldau S U oder Praterstern S U aus. Ab Kagraner Platz U können Sie auf die Linie 31A und ab Leopoldauer Straße auf die Linie 29A umsteigen. Alternativ können Sie auch mit der Linie 31A bis Siemensstraße S fahren und dort in die S-Bahn umsteigen. Außerdem können Sie ab Kagran U auf die Linie 27A und ab Leopoldauer Straße auf die Linie 29A umsteigen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -926,18 +890,6 @@
       "I20261110-0038"
     ],
     "_incident_start": "2026-11-10T19:11:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "f36bfd0bb4774d14d71eac6889b393ad5dd3511aecc7a72a6d56cbd25c43546f",
-    "pubDate": "2026-11-10T19:11:47+01:00",
-    "starts_at": "2026-11-10T19:17:49+01:00",
-    "ends_at": "2026-11-10T20:17:00+01:00",
-    "_identity": "wl|störung|L=26|D=2026-11-10|TK=fahrtbehinderung schadhafter zug"
   },
   {
     "source": "Wiener Linien",
