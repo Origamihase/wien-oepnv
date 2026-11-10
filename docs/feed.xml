@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 10 Nov 2026 12:41:57 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 12:55:39 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[7A: Ampelstörung]]></title>
@@ -35,20 +35,6 @@
       <ext:starts_at>Tue, 10 Nov 2026 12:02:00 +0100</ext:starts_at>
       <description>Betrieb nur zwischen Stammersdorf und Klosterneuburger Straße, Wallensteinstraße. Weiterfahrt bis Wallensteinplatz. [Seit 12:02]</description>
       <content:encoded><![CDATA[Betrieb nur zwischen Stammersdorf und Klosterneuburger Straße, Wallensteinstraße. Weiterfahrt bis Wallensteinplatz.<br/>[Seit 12:02]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38A: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">361d72bca0cc84100f7195fc89fc1a03d6a8b18b8fa4cc578267b3f69d263e62</guid>
-      <pubDate>Tue, 10 Nov 2026 11:43:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 10 Nov 2026 11:43:00 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 10 Nov 2026 11:45:33 +0100</ext:starts_at>
-      <ext:ends_at>Tue, 10 Nov 2026 12:45:00 +0100</ext:ends_at>
-      <description>Fahrtbehinderung. [Seit 11:43]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 11:43]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[60: Polizeieinsatz]]></title>
@@ -148,6 +134,20 @@
       <ext:ends_at>Wed, 11 Nov 2026 17:00:00 +0100</ext:ends_at>
       <description>Haltestellenauflassung der Linie 71A in Richtung Zentralfriedhof 3. Tor. Haltestelle: Schwechat, Hauptplatz. Grund: Straßenbau. [Bis Mi 11.11.]</description>
       <content:encoded><![CDATA[Haltestellenauflassung der Linie 71A in Richtung Zentralfriedhof 3. Tor. Haltestelle: Schwechat, Hauptplatz. Grund: Straßenbau.<br/>[Bis Mi 11.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5B: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">7f3e5db8abfea3bc72c1f2338313c17a67bc98bbf89a5bdb2e547704618ff7f5</guid>
+      <pubDate>Fri, 06 Nov 2026 14:11:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 06 Nov 2026 14:11:00 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 09 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 10 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>Wegen Straßenbauarbeiten in der Wexstraße werden die Busse umgeleitet. Linie 5B: Umleitung ab Klosterneuburger Straße / Wexstraße über Klosterneuburger Straße … [Bis 10.12.]</description>
+      <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Wexstraße werden die Busse umgeleitet. Linie 5B: Umleitung ab Klosterneuburger Straße / Wexstraße über Klosterneuburger Straße …<br/>[Bis 10.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
