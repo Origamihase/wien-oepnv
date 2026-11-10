@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261110-0017, I20260925-0011, I20260909-0007, I20261020-0029, I20261110-0018-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1875-101, R3886-480, R1884-101, R2343-125, R2373-126, R2379-627, R2380-627, R2345-127, R2558-125, R2378-627, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R293-474, R318-437, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1884-101, R3886-480, R1883-101, R1875-101, R1876-101, R1880-101, R1882-101, R1881-101, R2558-125, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R293-474, R318-437, R1974-466, R1199-205, R500-101, R1630-160, R1633-160, R1632-160, R1631-160, R1634-160, R1636-160, R1639-160, R1638-160, R5611-160, R1613-160, R1611-160, R101-136, R100-136, R99-136, R130-136, R1603-110, R1605-110, R1597-110, R1599-110, R1602-110, R102-136, R103-136, R1615-160, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,6 +171,196 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "10": "ptTram",
+      "60": "ptTram"
+     }
+    },
+    "description": "Linie 10: Betrieb nur zwischen Dornbach und Hietzing U. Linie 60: Kein Betrieb zwischen Hofwiesengasse und Hietzing U. Ersatz: Linien 56A und 56B. Voraussichtliche Dauer: 11:50 Uhr. Grund: Polizeieinsatz im Bereich Hietzinger Hauptstraße 16.",
+    "descriptionHTML": "<p>Linie 10:<br>Betrieb nur zwischen Dornbach und Hietzing U.<br>Linie 60:<br>Kein Betrieb zwischen Hofwiesengasse und Hietzing U.</p><p>Ersatz: Linien 56A und 56B.</p><p>Voraussichtliche Dauer: 11:50 Uhr.</p><p>Grund: Polizeieinsatz im Bereich Hietzinger Hauptstraße 16.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 10:<br>Betrieb nur zwischen Dornbach und Hietzing U.<br>Linie 60:<br>Kein Betrieb zwischen Hofwiesengasse und Hietzing U.</p><p>Ersatz: Linien 56A und 56B.</p><p>Voraussichtliche Dauer: 11:50 Uhr.</p><p>Grund: Polizeieinsatz im Bereich Hietzinger Hauptstraße 16.</p>",
+       "descriptionPlain": "Linie 10: Betrieb nur zwischen Dornbach und Hietzing U. Linie 60: Kein Betrieb zwischen Hofwiesengasse und Hietzing U. Ersatz: Linien 56A und 56B. Voraussichtliche Dauer: 11:50 Uhr. Grund: Polizeieinsatz im Bereich Hietzinger Hauptstraße 16.",
+       "title": "10, 60: Polizeieinsatz"
+      }
+     }
+    ],
+    "location": "Hietzinger Hauptstraße 16",
+    "name": "I20261110-0017",
+    "owner": "WL",
+    "parentName": "I20261110-0017",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "10",
+     "60"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 110,
+      "lineName": "10",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 160,
+      "lineName": "60",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T11:19:00.000+0100",
+     "lastUpdate": "2026-11-10T11:19:00.000+0100",
+     "start": "2026-11-10T11:17:00.000+0100"
+    },
+    "title": "10, 60: Polizeieinsatz"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "D": "ptTram"
+     }
+    },
+    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "D: Polizeieinsatz"
+      }
+     }
+    ],
+    "location": "Liechtenwerder Platz",
+    "name": "I20261110-0018-F01",
+    "owner": "WL",
+    "parentName": "I20261110-0018",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 136,
+      "lineName": "D",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T11:27:00.000+0100",
+     "lastUpdate": "2026-11-10T11:27:00.000+0100",
+     "resume": "2026-11-10T11:27:00.000+0100",
+     "start": "2026-11-10T11:25:00.000+0100"
+    },
+    "title": "D: Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R100-136",
+    "owner": "WL",
+    "parentName": "R100-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     100
+    ],
+    "time": {
+     "end": "2026-11-10T12:24:00.000+0100",
+     "start": "2026-11-10T11:24:31.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R101-136",
+    "owner": "WL",
+    "parentName": "R101-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     101
+    ],
+    "time": {
+     "end": "2026-11-10T12:24:00.000+0100",
+     "start": "2026-11-10T11:24:31.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R102-136",
+    "owner": "WL",
+    "parentName": "R102-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     102
+    ],
+    "time": {
+     "end": "2026-11-10T12:25:00.000+0100",
+     "start": "2026-11-10T11:26:01.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R103-136",
+    "owner": "WL",
+    "parentName": "R103-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     103
+    ],
+    "time": {
+     "end": "2026-11-10T12:25:00.000+0100",
+     "start": "2026-11-10T11:26:01.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -192,6 +382,397 @@
      "start": "2026-11-10T04:45:22.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R130-136",
+    "owner": "WL",
+    "parentName": "R130-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     130
+    ],
+    "time": {
+     "end": "2026-11-10T12:24:00.000+0100",
+     "start": "2026-11-10T11:24:31.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1597-110",
+    "owner": "WL",
+    "parentName": "R1597-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     1597
+    ],
+    "time": {
+     "end": "2026-11-10T12:24:00.000+0100",
+     "start": "2026-11-10T11:25:00.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1599-110",
+    "owner": "WL",
+    "parentName": "R1599-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     1599
+    ],
+    "time": {
+     "end": "2026-11-10T12:24:00.000+0100",
+     "start": "2026-11-10T11:25:00.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb ab Hietzing",
+    "name": "R1602-110",
+    "owner": "WL",
+    "parentName": "R1602-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     1602
+    ],
+    "time": {
+     "end": "2026-11-10T12:24:00.000+0100",
+     "start": "2026-11-10T11:25:00.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Hietzing"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb ab Hietzing",
+    "name": "R1603-110",
+    "owner": "WL",
+    "parentName": "R1603-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     1603
+    ],
+    "time": {
+     "end": "2026-11-10T12:24:00.000+0100",
+     "start": "2026-11-10T11:25:00.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Hietzing"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb ab Hietzing",
+    "name": "R1605-110",
+    "owner": "WL",
+    "parentName": "R1605-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     1605
+    ],
+    "time": {
+     "end": "2026-11-10T12:24:00.000+0100",
+     "start": "2026-11-10T11:25:00.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Hietzing"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb ab Hofwiesengasse",
+    "name": "R1611-160",
+    "owner": "WL",
+    "parentName": "R1611-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1611
+    ],
+    "time": {
+     "end": "2026-11-10T12:23:00.000+0100",
+     "start": "2026-11-10T11:24:00.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Hofwiesengasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb ab Hofwiesengasse",
+    "name": "R1613-160",
+    "owner": "WL",
+    "parentName": "R1613-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1613
+    ],
+    "time": {
+     "end": "2026-11-10T12:23:00.000+0100",
+     "start": "2026-11-10T11:24:00.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Hofwiesengasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nEinstieg bei Linie 62 Richtung Lainz",
+    "name": "R1615-160",
+    "owner": "WL",
+    "parentName": "R1615-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1615
+    ],
+    "time": {
+     "end": "2026-11-10T12:27:00.000+0100",
+     "start": "2026-11-10T11:28:31.000+0100"
+    },
+    "title": "Polizeieinsatz\nEinstieg bei Linie 62 Richtung Lainz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1630-160",
+    "owner": "WL",
+    "parentName": "R1630-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1630
+    ],
+    "time": {
+     "end": "2026-11-10T12:06:00.000+0100",
+     "start": "2026-11-10T11:07:29.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1631-160",
+    "owner": "WL",
+    "parentName": "R1631-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1631
+    ],
+    "time": {
+     "end": "2026-11-10T12:06:00.000+0100",
+     "start": "2026-11-10T11:07:29.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1632-160",
+    "owner": "WL",
+    "parentName": "R1632-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1632
+    ],
+    "time": {
+     "end": "2026-11-10T12:06:00.000+0100",
+     "start": "2026-11-10T11:07:29.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1633-160",
+    "owner": "WL",
+    "parentName": "R1633-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1633
+    ],
+    "time": {
+     "end": "2026-11-10T12:06:00.000+0100",
+     "start": "2026-11-10T11:07:29.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1634-160",
+    "owner": "WL",
+    "parentName": "R1634-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1634
+    ],
+    "time": {
+     "end": "2026-11-10T12:06:00.000+0100",
+     "start": "2026-11-10T11:07:29.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb ab Hietzing",
+    "name": "R1636-160",
+    "owner": "WL",
+    "parentName": "R1636-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1636
+    ],
+    "time": {
+     "end": "2026-11-10T12:22:00.000+0100",
+     "start": "2026-11-10T11:07:29.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Hietzing"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb ab Hietzing",
+    "name": "R1638-160",
+    "owner": "WL",
+    "parentName": "R1638-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1638
+    ],
+    "time": {
+     "end": "2026-11-10T12:22:00.000+0100",
+     "start": "2026-11-10T11:23:00.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Hietzing"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb ab Hietzing",
+    "name": "R1639-160",
+    "owner": "WL",
+    "parentName": "R1639-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1639
+    ],
+    "time": {
+     "end": "2026-11-10T12:22:00.000+0100",
+     "start": "2026-11-10T11:23:00.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Hietzing"
    },
    {
     "alertCause": "undefined alert cause",
@@ -813,6 +1394,52 @@
      "start": "2026-11-10T05:00:22.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb ab Hofwiesengasse",
+    "name": "R5611-160",
+    "owner": "WL",
+    "parentName": "R5611-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     5611
+    ],
+    "time": {
+     "end": "2026-11-10T12:23:00.000+0100",
+     "start": "2026-11-10T11:23:33.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Hofwiesengasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R99-136",
+    "owner": "WL",
+    "parentName": "R99-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     99
+    ],
+    "time": {
+     "end": "2026-11-10T12:24:00.000+0100",
+     "start": "2026-11-10T11:24:31.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
