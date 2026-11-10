@@ -108,7 +108,7 @@
 
 /* Print */
 @media print {
-  .site-header, .site-nav, .filters, #refresh-btn, .skip-link, .trainline { display: none !important; }
+  .site-header, .site-nav, .filters, .year-switch, #refresh-btn, .skip-link, .trainline { display: none !important; }
   body { background: white; color: black; }
   .card, .kpi, .feed-item, .hero { break-inside: avoid; box-shadow: none; }
   .site-footer { background: white; color: black; }

@@ -10,7 +10,9 @@ cheap fetch instead of rendering the whole site.
 The file is intentionally hand-curated (not a dump of all 60+ doc URLs):
 the top-level guides and feeds carry static descriptions, while the API
 reference and how-to sections are generated from each page's existing
-front matter so new pages appear automatically. URLs are produced via the
+front matter so new pages appear automatically. The pages of finished
+years (``docs/statistik-<year>.md``) are found the same way and listed
+after the running statistics page. URLs are produced via the
 sitemap generator's ``_to_url`` so an ``llms.txt`` link can never drift
 from its ``sitemap.xml`` counterpart, and the base URL passes the same
 GitHub-host pin (:func:`scripts.generate_sitemap._base_url`).
@@ -65,6 +67,20 @@ _GUIDE_PAGES: tuple[tuple[str, str], ...] = (
         "Baustellenmeldungen im Wiener ÖPNV.",
     ),
 )
+
+# The running statistics page in ``_GUIDE_PAGES``; the pages of finished
+# years are listed directly after it.
+_STATS_PAGE = "statistik.md"
+
+# A finished year has its own page ``docs/statistik-<year>.md`` (owner
+# decision 2026-11-10: created on 1 January, and after the cleanup on
+# 8 January the only place that year's figures are kept). The pages are
+# found by name instead of being listed here, so each new year appears
+# without a code change.
+_YEAR_PAGE_RE = re.compile(r"statistik-([0-9]{4})\.md")
+# Four digits, as in the file name: the pattern above also takes a name such
+# as ``statistik-0026.md``, and the line must not read "Statistik 26" then.
+_YEAR_PAGE_DESCRIPTION = "Statistik {year:04d}: abgeschlossenes Jahr"
 
 # (path under docs/, title, description) for non-Markdown artefacts that
 # have neither front matter nor an H1 to derive a title from.
@@ -125,6 +141,21 @@ def _doc_entry(path: Path, base_url: str, description: str | None = None) -> str
     return _link(title, _to_url(path, base_url), description or front_desc)
 
 
+def _year_pages() -> list[tuple[int, Path]]:
+    """Return ``(year, path)`` of every finished year's page, newest first.
+
+    Only files directly under ``docs/`` whose whole name is
+    ``statistik-<four digits>.md`` count, so a draft such as
+    ``statistik-2026-alt.md`` is not published as a year page.
+    """
+    pages: list[tuple[int, Path]] = []
+    for path in DOCS_DIR.glob("statistik-*.md"):
+        match = _YEAR_PAGE_RE.fullmatch(path.name)
+        if match and path.is_file():
+            pages.append((int(match.group(1)), path))
+    return sorted(pages, reverse=True)
+
+
 def build_llms_txt(base_url: str) -> str:
     title, description = _page_meta(DOCS_DIR / "index.md")
     lines: list[str] = [f"# {title}", ""]
@@ -135,6 +166,12 @@ def build_llms_txt(base_url: str) -> str:
     lines += ["## Dokumentation", ""]
     for rel, guide_desc in _GUIDE_PAGES:
         lines.append(_doc_entry(DOCS_DIR / rel, base_url, guide_desc))
+        if rel == _STATS_PAGE:
+            # No year page yet: nothing is added and the file stays as it is.
+            lines += [
+                _doc_entry(page, base_url, _YEAR_PAGE_DESCRIPTION.format(year=year))
+                for year, page in _year_pages()
+            ]
     lines.append(
         _link(
             "Live-Dashboard",

@@ -55,6 +55,8 @@
       "Current S-Bahn observations at Wien Hauptbahnhof " +
       "– <code>data/stats/stammstrecke_<span data-year-label>–</span>.csv</code>. " +
       "Source: VOR/VAO.",
+    "year-switch-aria": "Statistics by year",
+    "year-switch-label": "Statistics by year:",
     "feed-sub-live-html":
       "Live from <a href=\"feed.en.xml\" type=\"application/rss+xml\" " +
       "data-i18n-href=\"feed-href\" data-href-de=\"feed.xml\" " +
