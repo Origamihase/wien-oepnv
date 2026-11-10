@@ -8,10 +8,36 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 10 Nov 2026 07:01:24 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 07:30:50 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[37: Verkehrsunfall]]></title>
+      <title><![CDATA[3A: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">9d358731bdd90c07601bb9665d1fe894e602b065f0c6bead2062210847affb87</guid>
+      <pubDate>Tue, 10 Nov 2026 07:04:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 10 Nov 2026 07:30:50 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 10 Nov 2026 07:04:00 +0100</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 07:04]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 07:04]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[58B: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">031c5d12dca2394457c20c2af2c93388c0958fc1e1482ef1a3325c9cefbd5425</guid>
+      <pubDate>Tue, 10 Nov 2026 07:11:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 10 Nov 2026 07:11:00 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 10 Nov 2026 07:11:00 +0100</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 07:11]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 07:11]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37/40/41/42: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">81ec020063edeba5ef7901301d606a3096c3ee6437c601938523d1cfc6fc2ea4</guid>
       <pubDate>Tue, 10 Nov 2026 06:07:00 +0100</pubDate>
@@ -19,9 +45,23 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Tue, 10 Nov 2026 06:30:52 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 10 Nov 2026 06:07:00 +0100</ext:starts_at>
-      <description>Betrieb ab Nußdorfer Straße; Einstieg am Währinger Gürtel. [Seit 06:07]</description>
-      <content:encoded><![CDATA[Betrieb ab Nußdorfer Straße; Einstieg am Währinger Gürtel.<br/>[Seit 06:07]]]></content:encoded>
+      <ext:starts_at>Tue, 10 Nov 2026 06:13:01 +0100</ext:starts_at>
+      <ext:ends_at>Tue, 10 Nov 2026 08:22:00 +0100</ext:ends_at>
+      <description>37: Betrieb ab Nußdorfer Straße; Einstieg am Währinger Gürtel; 37/40/41: Fahrtbehinderung; 40/41/42: Betrieb ab Währinger Straße, Volksoper. [Seit 06:07]</description>
+      <content:encoded><![CDATA[37: Betrieb ab Nußdorfer Straße; Einstieg am Währinger Gürtel; 37/40/41: Fahrtbehinderung; 40/41/42: Betrieb ab Währinger Straße, Volksoper.<br/>[Seit 06:07]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
+      <pubDate>Tue, 10 Nov 2026 07:16:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 10 Nov 2026 06:11:00 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 10 Nov 2026 07:16:00 +0100</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 07:16]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 07:16]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[38: Verkehrsunfall]]></title>
@@ -33,11 +73,11 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Tue, 10 Nov 2026 06:07:00 +0100</ext:first_seen>
       <ext:starts_at>Tue, 10 Nov 2026 06:07:00 +0100</ext:starts_at>
-      <description>Umleitung zum Zimmermannplatz; Betrieb ab Spitalgasse; Einstieg bei Linie 5 Richtung Praterstern. [Seit 06:07]</description>
-      <content:encoded><![CDATA[Umleitung zum Zimmermannplatz; Betrieb ab Spitalgasse; Einstieg bei Linie 5 Richtung Praterstern.<br/>[Seit 06:07]]]></content:encoded>
+      <description>Umleitung zum Zimmermannplatz; Einstieg bei Linie 5 Richtung Praterstern. [Seit 06:07]</description>
+      <content:encoded><![CDATA[Umleitung zum Zimmermannplatz; Einstieg bei Linie 5 Richtung Praterstern.<br/>[Seit 06:07]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[40/41/42: Verkehrsunfall]]></title>
+      <title><![CDATA[41: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">b8938e94c70221081d94c1f9627e29d1273108203a2ba78ea9d9eaa80416cb92</guid>
       <pubDate>Tue, 10 Nov 2026 06:07:00 +0100</pubDate>
@@ -46,8 +86,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Tue, 10 Nov 2026 06:07:00 +0100</ext:first_seen>
       <ext:starts_at>Tue, 10 Nov 2026 06:07:00 +0100</ext:starts_at>
-      <description>Betrieb ab Währinger Straße, Volksoper; Einstieg am Währinger Gürtel. [Seit 06:07]</description>
-      <content:encoded><![CDATA[Betrieb ab Währinger Straße, Volksoper; Einstieg am Währinger Gürtel.<br/>[Seit 06:07]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 06:07]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 06:07]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx]]></title>
@@ -107,47 +147,6 @@
       <georss:point>48.172094 16.472479</georss:point>
       <description>Landwehrstraße nach Alberner Hafenzufahrtsstraße → ca. 40 Meter in Fahrtrichtung. Haltestellenverlegung der Linien 79A und 79B in Richtung Kaiserebersdorf. … [Bis Do 12.11.]</description>
       <content:encoded><![CDATA[Landwehrstraße nach Alberner Hafenzufahrtsstraße → ca. 40 Meter in Fahrtrichtung. Haltestellenverlegung der Linien 79A und 79B in Richtung Kaiserebersdorf. …<br/>[Bis Do 12.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5A/N31: Haltestellenverlegung]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">419a06946c6de4e552ea62485cdab4dac3355b8828884a905d78878baf3daa01</guid>
-      <pubDate>Mon, 09 Nov 2026 07:13:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 09 Nov 2026 07:13:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 09 Nov 2026 07:13:00 +0100</ext:starts_at>
-      <description>Untere Augartenstraße 40 → Untere Augartenstraße 42. Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf. Haltestelle: Obere Augartenstraße. … [Seit 09.11.]</description>
-      <content:encoded><![CDATA[Untere Augartenstraße 40 → Untere Augartenstraße 42. Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf. Haltestelle: Obere Augartenstraße. …<br/>[Seit 09.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71A: Haltestellenverlegung]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">d1d5fe3af5144b5edf6ee6c52dd06965980ad929db689b27f2d0fc652f199439</guid>
-      <pubDate>Fri, 06 Nov 2026 14:22:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 06 Nov 2026 14:22:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 09 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Wed, 11 Nov 2026 17:00:00 +0100</ext:ends_at>
-      <description>Haltestellenauflassung der Linie 71A in Richtung Zentralfriedhof 3. Tor. Haltestelle: Schwechat, Hauptplatz. Grund: Straßenbau. [Bis Mi 11.11.]</description>
-      <content:encoded><![CDATA[Haltestellenauflassung der Linie 71A in Richtung Zentralfriedhof 3. Tor. Haltestelle: Schwechat, Hauptplatz. Grund: Straßenbau.<br/>[Bis Mi 11.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5B: Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">7f3e5db8abfea3bc72c1f2338313c17a67bc98bbf89a5bdb2e547704618ff7f5</guid>
-      <pubDate>Fri, 06 Nov 2026 14:11:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 06 Nov 2026 14:11:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 09 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 10 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten in der Wexstraße werden die Busse umgeleitet. Linie 5B: Umleitung ab Klosterneuburger Straße / Wexstraße über Klosterneuburger Straße … [Bis 10.12.]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Wexstraße werden die Busse umgeleitet. Linie 5B: Umleitung ab Klosterneuburger Straße / Wexstraße über Klosterneuburger Straße …<br/>[Bis 10.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>

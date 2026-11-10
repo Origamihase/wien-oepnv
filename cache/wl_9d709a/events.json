@@ -866,22 +866,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37: Verkehrsunfall",
-    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "469b9778d4214dbbbd09d8ed008c51981bf9682b6a81d9e95d111392e71be734",
-    "pubDate": "2026-11-10T06:07:00+01:00",
-    "starts_at": "2026-11-10T06:07:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=37|D=2026-11-10|TK=37 verkehrsunfall",
-    "_wl_ids": [
-      "I20261110-0002"
-    ],
-    "_incident_start": "2026-11-10T06:07:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37: Fahrtbehinderung Verkehrsunfall",
     "description": "Fahrtbehinderung\nVerkehrsunfall",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -958,18 +942,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38: Verkehrsunfall Betrieb ab Spitalgasse",
-    "description": "Verkehrsunfall\nBetrieb ab Spitalgasse",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "e191dd94edddb556cac54d6ce300555093353209b7644340b0040246a9ecfdc0",
-    "pubDate": "2026-11-10T06:15:31+01:00",
-    "starts_at": "2026-11-10T06:15:31+01:00",
-    "ends_at": "2026-11-10T07:14:00+01:00",
-    "_identity": "wl|störung|L=38|D=2026-11-10|TK=verkehrsunfall betrieb ab spitalgasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "38: Verkehrsunfall Einstieg bei Linie 5 Richtung Praterstern",
     "description": "Verkehrsunfall\nEinstieg bei Linie 5 Richtung Praterstern",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -982,18 +954,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "40: Verkehrsunfall",
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "3A: Verspätungen",
+    "description": "Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "e3e13c6b90be5e66804691a6a7901f8c83e37548e7fcba2b3b5336dc0f8722db",
-    "pubDate": "2026-11-10T06:07:00+01:00",
-    "starts_at": "2026-11-10T06:07:00+01:00",
+    "guid": "9d358731bdd90c07601bb9665d1fe894e602b065f0c6bead2062210847affb87",
+    "pubDate": "2026-11-10T07:04:00+01:00",
+    "starts_at": "2026-11-10T07:04:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=40|D=2026-11-10|TK=40 verkehrsunfall",
+    "_identity": "wl|störung|L=3A|D=2026-11-10|TK=3a verspätungen",
     "_wl_ids": [
-      "I20261110-0002"
+      "I20261110-0004"
     ],
-    "_incident_start": "2026-11-10T06:07:00+01:00"
+    "_incident_start": "2026-11-10T07:04:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1086,34 +1058,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "42: Verkehrsunfall",
-    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "fb8ee4d5a29493e27f80e3db638fbbff263fc1757a809406ca73ec8b5d665786",
-    "pubDate": "2026-11-10T06:07:00+01:00",
-    "starts_at": "2026-11-10T06:07:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=42|D=2026-11-10|TK=42 verkehrsunfall",
-    "_wl_ids": [
-      "I20261110-0002"
-    ],
-    "_incident_start": "2026-11-10T06:07:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "42: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "930d80e075929cf21fe799fda5426fd5228d64088925dc7f7064542f79ff0bc7",
-    "pubDate": "2026-11-10T06:21:30+01:00",
-    "starts_at": "2026-11-10T06:21:30+01:00",
-    "ends_at": "2026-11-10T07:21:00+01:00",
-    "_identity": "wl|störung|L=42|D=2026-11-10|TK=fahrtbehinderung verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "42: Verkehrsunfall Betrieb ab Währinger Straße, Volksoper",
     "description": "Verkehrsunfall\nBetrieb ab Währinger Straße, Volksoper",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1134,6 +1078,22 @@
     "starts_at": "2026-11-10T06:23:01+01:00",
     "ends_at": "2026-11-10T08:22:00+01:00",
     "_identity": "wl|störung|L=42|D=2026-11-10|TK=verkehrsunfall einstieg am währinger gürtel"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "58B: Verkehrsunfall",
+    "description": "Linie 58B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "031c5d12dca2394457c20c2af2c93388c0958fc1e1482ef1a3325c9cefbd5425",
+    "pubDate": "2026-11-10T07:11:00+01:00",
+    "starts_at": "2026-11-10T07:11:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=58B|D=2026-11-10|TK=58b verkehrsunfall",
+    "_wl_ids": [
+      "I20261110-0005"
+    ],
+    "_incident_start": "2026-11-10T07:11:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1182,6 +1142,22 @@
     "starts_at": "2026-11-09T00:00:19+01:00",
     "ends_at": "2026-11-10T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-09|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-11-10T07:16:00+01:00",
+    "starts_at": "2026-11-10T07:16:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U3|D=2026-11-10|TK=u3 verspätungen",
+    "_wl_ids": [
+      "I20261110-0006"
+    ],
+    "_incident_start": "2026-11-10T07:16:00+01:00"
   },
   {
     "source": "Wiener Linien",
