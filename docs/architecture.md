@@ -55,6 +55,7 @@ Diagramm dieselbe Information zusätzlich als Fließtext darunter.
   - [Betrieb](architecture-teil-7.md#betrieb)
 - [9. Querverweise](architecture-teil-7.md#9-querverweise)
 - [10. Robustheit und Laufzeit des Feed-Baus (seit 2026-11-10)](architecture-teil-7.md#10-robustheit-und-laufzeit-des-feed-baus-seit-2026-11-10)
+- [11. Jahresarchiv der Statistik (geprüft 2026-11-10)](architecture-teil-7.md#11-jahresarchiv-der-statistik-geprüft-2026-11-10)
 
 ---
 
@@ -199,8 +200,7 @@ Modul, ruft der Code dort seine eigene Kopie auf; ein Re-Export in
 `build_feed` hält den Import am Leben, aber die Attrappe läuft ins Leere, und
 ein Test bricht oder ruft still das echte Übersetzungsmodell. Am TV brächte die
 Aufteilung nichts, das Risiko trüge der deutsche Feed. Die Funktionen sind
-einzeln klein genug: Nur `_dedupe_items` steht auf der Liste des
-C901-Gates.
+einzeln klein genug: Nur `_dedupe_items` steht auf der Liste des C901-Gates.
 
 Nachmessung vom 2026-10-24 (Michaels Frage, ob beim Monolithen
 Handlungsbedarf besteht): `build_feed.py` wuchs von 11.275 Zeilen nach

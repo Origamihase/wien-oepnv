@@ -110,7 +110,7 @@ Weiterreichung, `from src.x import name as name`):
 |---|---|
 | `enrich_station_aliases.py` | `src/places/station_aliases.py` |
 | `feed_watch.py` | `src/feed_watch/` (model, feed_rules, sources, evaluate, issues, state_io; seit 2026-11-10 skipped_items) |
-| `generate_markdown_stats.py` | `src/markdown_stats/` (rows, direction_coverage, markdown_report, readme, summary) |
+| `generate_markdown_stats.py` | `src/markdown_stats/` (rows, direction_coverage, markdown_report, year_archive, readme, summary) |
 | `health_check.py` | `src/health_check/` (common, sources, outputs, workflow_secrets, github_runs) |
 | `ki_waechter.py` | `src/ki_waechter/` (inputs, audit) |
 | `update_all_stations.py` | `src/stations_refresh/` (diff, quarantine, heartbeat) |

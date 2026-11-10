@@ -48,3 +48,9 @@ regenerierten Dashboard [`docs/statistik.md`](../../docs/statistik.md)
 committet. Die Dashboard-Regeneration innerhalb des Workflows ist
 auf den ersten Cycle-Tick nach Mitternacht `Europe/Vienna` gekoppelt;
 die zugrundeliegenden CSV-Ledger werden bei jedem Cycle-Tick committet.
+
+Die Dateien abgeschlossener Jahre bleiben liegen: Aus ihnen entsteht die
+Archivseite `docs/statistik-<Jahr>.md`, und jeder Dashboard-Lauf gleicht sie
+mit ihrer Datei ab. Wer eine Zeile eines vergangenen Jahres berichtigt oder
+nachträgt, muss die Archivseite deshalb nicht anfassen; der nächste
+Dashboard-Lauf schreibt sie neu.

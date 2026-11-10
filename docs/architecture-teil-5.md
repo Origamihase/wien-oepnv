@@ -69,8 +69,10 @@ Haltestelle vor einem Bahnhof, nennt ein ÖBB-Titel schon vorher den Bahnhof
 Drei Append-only-CSV-Ledger unter `data/stats/` fangen jede relevante
 Beobachtung ein, sobald sie auftritt. Sie bedienen **zwei Konsumenten**
 mit unterschiedlichen Fenstern: das tägliche Markdown-Dashboard
-(`docs/statistik.md`, Kalenderjahr; das abgeschlossene Vorjahr steht in
-`docs/statistik-<Vorjahr>.md`) plus die vier README-STATS-
+(`docs/statistik.md`, Kalenderjahr; jedes abgeschlossene Jahr steht in
+`docs/statistik-<Jahr>.md`, vom Dashboard aus verlinkt und bei jedem
+Dashboard-Lauf mit seinem Ledger abgeglichen, Teil 7,
+§11) plus die vier README-STATS-
 Marker (`STATS:STAMMSTRECKE[_LIVE]` und `STATS:AUSFAELLE[_LIVE]`,
 60-Min- und 30-Tage-Snapshots), sowie den RSS-Feed selbst
 (Stammstrecken-Sektion, 1-Stunden-Fenster — siehe
@@ -322,7 +324,12 @@ Praterstern bis 14.08.2026 (3.831 Beobachtungen); der Hinweis sagt deshalb
 „Die Jahreszahlen unten enthalten Richtung Praterstern daher nur bis dahin.“
 statt „decken nur Richtung Meidling ab“, was die Tabelle direkt darunter
 widerlegte (`render_direction_coverage_note(..., yearly=True)`,
-`renderCoverageNotice` in `site.js`).
+`renderCoverageNotice` in `site.js`). Die Seite eines abgeschlossenen Jahres
+beurteilt dasselbe am Jahresende und sagt es in der Vergangenheit („Fahrten
+nur bis 14.08.2026 erfasst“, `render_finished_year_coverage_note`). Wann eine
+stille Richtung zuletzt fuhr, liest der Lauf notfalls aus früheren
+Jahresdateien, damit der Hinweis nicht endet, sobald das 30-Tage-Fenster das
+Vorjahr verlässt (`earlier_rows_until_every_direction`, seit 2026-11-10).
 
 Replay vor dem Merge: 109 Feed-Stände seit 04.10. auf der alten und der
 neuen Seite (Chromium, Uhr auf den Stand eingefroren): 37 Kacheln, deren

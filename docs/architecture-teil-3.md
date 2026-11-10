@@ -30,8 +30,10 @@
     Silvester, und am 01.01. ersetzte sie ein fast leeres neues Jahr. Jetzt
     schreibt der erste Dashboard-Lauf eines neuen Jahres zusätzlich das ganze
     Vorjahr samt 31.12. nach `docs/statistik-<Vorjahr>.md` (Michaels Wahl
-    „Jahresarchiv“, 2026-10-03). Die Seite wird danach nie mehr angefasst;
-    fällt der Lauf am 01.01. aus, schreibt sie der nächste.
+    „Jahresarchiv“, 2026-10-03); fällt der Lauf am 01.01. aus, schreibt sie
+    der nächste. Bis 2026-11-10 wurde die Seite danach nie mehr angefasst;
+    seither folgt sie ihrem Ledger, ist vom Dashboard aus verlinkt und trägt
+    den Abdeckungshinweis ihres Jahres (Teil 7, §11).
   Tests: `tests/test_calendar_years.py`.
 
 ### Zeitraum einer WL-Meldung: Plausibilitätsprüfung (seit 2026-10-02)

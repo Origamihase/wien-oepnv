@@ -449,3 +449,63 @@ Indexe des Verzeichnisses dieselben 250.000 Namen nacheinander fragen: der
 zweite Index braucht 0,5 statt 1,8 s. Zusammen, gemessen am 10.11.2026 mit
 den Daten des Tages, erster Aufruf im Prozess: ÖBB-Abruf 13 bis 17 s →
 2,7 s, Feed-Bau 4,2 bis 4,9 s → 2,7 bis 2,9 s.
+
+## 11. Jahresarchiv der Statistik (geprüft 2026-11-10)
+
+Der Statistik-Schritt lief noch nie über einen Jahreswechsel. Nachgestellt mit
+dem echten Ledger: die 100 Ticks von Mittwoch, 04.11.2026, 23:01 bis Samstag,
+07.11.2026, 00:31 um 56 Tage verschoben, sodass Donnerstag, 05.11., auf
+Donnerstag, 31.12.2026, fällt (Wiener Uhrzeit, Zeilen nach Wiener Jahr auf
+die Jahresdateien verteilt), und das ganze Ledger bis zu 13 Wochen voraus. Jahr, Zeitzone und Dateiwahl stimmen: Der Lauf um 00:01
+am 01.01. wertet 2027 aus und schreibt `docs/statistik-2026.md` mit allen
+Zeilen bis 31.12. 23:59; die Testsuite, die Sitemap und die Liquid-Prüfung
+laufen mit der neuen Seite durch. Gefunden und behoben
+(`src/markdown_stats/year_archive.py`):
+
+* **Die Archivseite nannte keine andere Seite.** Das Dashboard zeigte am
+  01.01. ein fast leeres Jahr und keinen Weg zum eben abgeschlossenen. Es
+  führt jetzt unter dem Kopf zu den Archivseiten (`Frühere Jahre:
+  [2026](statistik-2026.md)`, neueste zuerst), jede Archivseite zurück
+  („Abgeschlossenes Jahr · Zur laufenden Statistik“). Ohne Archivseite
+  lautet das Dashboard wie bisher.
+* **Die Archivseite trug keinen Abdeckungshinweis.** Das Dashboard sagte
+  bis 31.12., dass die Jahreszahlen Richtung Praterstern nur bis
+  14.08.2026 enthalten; die Archivseite desselben Jahres, einen Tag später
+  geschrieben, zeigte Praterstern mit halb so vielen Zeilen wie Meidling
+  und kein Wort dazu. Sie sagt es jetzt in der Vergangenheit („Von Wien Hbf
+  Richtung **Praterstern** sind auf der Stammstrecke Fahrten nur bis
+  14.08.2026 erfasst. Die Jahreszahlen unten enthalten Richtung
+  **Praterstern** daher nur bis dahin.“). Beurteilt wird am Jahresende und
+  nur an den Zeilen des Jahres, damit die Seite an jedem Schreibtag gleich
+  lautet: Es gilt die Regel des Dashboards (die andere Richtung fuhr
+  weiter, oder der ganze Korridor war länger still als jede normale
+  Pause), und die letzte Fahrt liegt vor dem 31.12.
+  (`render_finished_year_coverage_note`).
+* **Der Abdeckungshinweis endete am 31.01.** README und Website lesen aus
+  den geladenen Zeilen, wann eine stille Richtung zuletzt fuhr. Geladen
+  waren das laufende Jahr und, solange das 30-Tage-Fenster hineinreicht,
+  das Vorjahr. Ab 31.01. galt eine Richtung, die zuletzt im Vorjahr fuhr,
+  als nie gemessen: Die beiden 30-Tage-Blöcke im README und das Banner der
+  Website verloren den Hinweis, und Meidling allein stand für den
+  Korridor (nachgestellt für 31.01. und 09.02.2027). Fehlt den geladenen
+  Zeilen eine Richtung, liest der Lauf jetzt die früheren Jahresdateien,
+  die neueste zuerst, bis jede Richtung eine Zeile hat oder ein Jahr keine
+  Datei (`earlier_rows_until_every_direction`); im Normalbetrieb wird
+  nichts zusätzlich gelesen.
+* **Die Archivseite folgt ihrem Ledger** (Betreiberentscheidung
+  2026-11-10). Das Ledger eines Jahres ändert sich auch nach dem ersten
+  Dashboard-Lauf des neuen Jahres noch. Einen Zug vom 31.12. trägt der
+  Tick nach seiner Abfahrt ein; in 88 Nächten seit 15.08.2026 stand jede
+  Zeile des Vortags im Lauf um 00:01 schon im Ledger, ein Tick ohne Abruf
+  trägt sie aber erst später ein. Und Zeilen werden von Hand berichtigt
+  (26.10.2026: neun Zwillingszeilen gestrichen; 28.10.2026: 1.060 Zeilen
+  für 33 vergangene Tage nachgetragen). Die einmal geschriebene
+  Seite hätte dann auf Dauer Zahlen gezeigt, die ihr Ledger nicht mehr
+  hat. Jeder Dashboard-Lauf rendert jetzt jedes abgeschlossene Jahr, das
+  eine Ledger-Datei hat, und schreibt `docs/statistik-<Jahr>.md`, wenn die
+  Seite fehlt oder anders lauten würde; die Zeile „Automatisch erzeugt
+  am“ zählt dabei nicht, eine Seite ohne Änderung wird nicht angefasst
+  (`write_year_archives`; je Jahr rund 70 ms am Tag).
+
+Nachspiel alt gegen neu vor dem Merge: `changelog/2026-11-10.md`. Tests:
+`tests/test_year_archive.py`, `tests/test_calendar_years.py`.

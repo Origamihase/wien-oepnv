@@ -130,8 +130,8 @@ def write_year_archives(
     of a year can still change after its first dashboard run: a train of
     31.12. is entered by the tick after its departure, and a tick that
     could not poll enters it later; rows are corrected and added by hand
-    (26.10.2026: nine twin rows removed, 28.10.2026: 1,064 rows added to 33
-    days long past). The page then showed figures its own ledger no longer
+    (26.10.2026: nine twin rows removed, 28.10.2026: 1,060 rows added to 33
+    past days). The page then showed figures its own ledger no longer
     had, for good (Michael's decision of 2026-11-10: the archive follows
     the ledger).
 
