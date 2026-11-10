@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261110-0032, I20260925-0011, I20261110-0031-F01, I20260909-0007, I20261020-0029, I20261110-0030-F01, I20261110-0034"
+    "trafficInfoNameList": "I20261110-0036-F01, I20261110-0036-F02, I20261110-0036-F03, I20261110-0032, I20261110-0037-F01, I20261110-0038-F01, I20260925-0011, I20261110-0038-F02, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1881-101, R1882-101, R1883-101, R3886-480, R1876-101, R1880-101, R1884-101, R1875-101, R2371-125, R2370-125, R2359-125, R2343-125, R2558-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2378-627, R2343-626, R293-474, R318-437, R1974-466, R1199-205, R500-101, R50-102, R49-102, R52-102, R51-102, R55-102, R54-102, R53-102, R1636-160, R1639-160, R1638-160, R272-112, R365-112, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1875-101, R1884-101, R3886-480, R1876-101, R1880-101, R1881-101, R1883-101, R1882-101, R2373-127, R2558-125, R2345-127, R2359-125, R2343-626, R2343-125, R2378-627, R2380-627, R2379-627, R2373-126, R2373-125, R2372-125, R2371-125, R2370-125, R318-437, R293-474, R1974-466, R1199-205, R500-101, R1010-125, R1008-125, R1005-125, R1006-125, R1007-125, R1009-125, R880-125, R893-125, R894-125, R2601-125, R3068-125, R3191-125, R2375-125, R3192-125, R2374-125, R2556-125, R2634-125, R3068-126, R3113-126, R881-126, R3005-126, R3196-126, R3197-126, R3193-126, R3192-126, R3191-126, R2374-126, R2375-126, R2634-126, R2556-126, R2566-126, R2558-126, R966-125, R1021-125, R1015-125, R1013-125, R1012-125, R3005-125, R3196-125, R3197-125, R3193-125, R885-125, R2376-125, R2377-125, R3069-125, R3115-125, R3186-125, R3184-125, R3185-125, R3183-125, R3187-125, R2566-125, R2865-125, R3069-126, R2376-126, R3009-126, R885-126, R3115-126, R3183-126, R3184-126, R3185-126, R3186-126, R3187-126, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,98 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "41": "ptTram"
-     }
-    },
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "41: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Gersthofer Straße",
-    "name": "I20261110-0030-F01",
-    "owner": "WL",
-    "parentName": "I20261110-0030",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 141,
-      "lineName": "41",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-10T16:33:00.000+0100",
-     "lastUpdate": "2026-11-10T16:33:00.000+0100",
-     "resume": "2026-11-10T16:33:00.000+0100",
-     "start": "2026-11-10T16:24:00.000+0100"
-    },
-    "title": "41: Verkehrsunfall"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "2": "ptTram"
-     }
-    },
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "2: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Neulerchenfelder Straße",
-    "name": "I20261110-0031-F01",
-    "owner": "WL",
-    "parentName": "I20261110-0031",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 102,
-      "lineName": "2",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-10T16:42:00.000+0100",
-     "lastUpdate": "2026-11-10T16:42:00.000+0100",
-     "resume": "2026-11-10T16:42:00.000+0100",
-     "start": "2026-11-10T16:26:00.000+0100"
-    },
-    "title": "2: Verkehrsunfall"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -308,43 +216,128 @@
     "title": "10A: Schadhaftes Fahrzeug"
    },
    {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
+    "alertCause": "accident",
+    "alertCauseId": 77,
     "attributes": {
      "relatedLineTypes": {
-      "12": "ptTram",
-      "5": "ptTram"
+      "2": "ptTram"
      }
     },
-    "description": "Linie 5: Fahrtbehinderung in Richtung Westbahnhof S U. Linie 12: Fahrtbehinderung in Richtung Josefstädter Straße U. Voraussichtliche Dauer: 17:50 Uhr. Grund: Falschparker im Bereich Florianigasse.",
-    "descriptionHTML": "<p>Linie 5:<br>Fahrtbehinderung in Richtung Westbahnhof S U.<br>Linie 12:<br>Fahrtbehinderung in Richtung Josefstädter Straße U.</p><p>Voraussichtliche Dauer: 17:50 Uhr.</p><p>Grund: Falschparker im Bereich Florianigasse.</p>",
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 5:<br>Fahrtbehinderung in Richtung Westbahnhof S U.<br>Linie 12:<br>Fahrtbehinderung in Richtung Josefstädter Straße U.</p><p>Voraussichtliche Dauer: 17:50 Uhr.</p><p>Grund: Falschparker im Bereich Florianigasse.</p>",
-       "descriptionPlain": "Linie 5: Fahrtbehinderung in Richtung Westbahnhof S U. Linie 12: Fahrtbehinderung in Richtung Josefstädter Straße U. Voraussichtliche Dauer: 17:50 Uhr. Grund: Falschparker im Bereich Florianigasse.",
-       "title": "5, 12: Falschparker"
+       "descriptionHtml": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "2: Fremder Verkehrsunfall"
       }
      }
     ],
-    "location": "Florianigasse",
-    "name": "I20261110-0034",
+    "location": "Josefstädter Straße / Albertgasse",
+    "name": "I20261110-0036-F01",
     "owner": "WL",
-    "parentName": "I20261110-0034",
+    "parentName": "I20261110-0036",
     "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "5",
-     "12"
+     "2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 102,
+      "lineName": "2",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T18:55:00.000+0100",
+     "lastUpdate": "2026-11-10T18:55:00.000+0100",
+     "resume": "2026-11-10T18:55:00.000+0100",
+     "start": "2026-11-10T18:16:00.000+0100"
+    },
+    "title": "2: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "5": "ptTram"
+     }
+    },
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "5: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Josefstädter Straße / Albertgasse",
+    "name": "I20261110-0036-F02",
+    "owner": "WL",
+    "parentName": "I20261110-0036",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "5"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 105,
       "lineName": "5",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T18:55:00.000+0100",
+     "lastUpdate": "2026-11-10T18:55:00.000+0100",
+     "resume": "2026-11-10T18:55:00.000+0100",
+     "start": "2026-11-10T18:16:00.000+0100"
+    },
+    "title": "5: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "12": "ptTram"
+     }
+    },
+    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "12: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Josefstädter Straße / Albertgasse",
+    "name": "I20261110-0036-F03",
+    "owner": "WL",
+    "parentName": "I20261110-0036",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 112,
       "lineName": "12",
@@ -353,11 +346,378 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-10T17:28:00.000+0100",
-     "lastUpdate": "2026-11-10T17:28:00.000+0100",
-     "start": "2026-11-10T17:27:00.000+0100"
+     "created": "2026-11-10T18:55:00.000+0100",
+     "lastUpdate": "2026-11-10T18:55:00.000+0100",
+     "resume": "2026-11-10T18:55:00.000+0100",
+     "start": "2026-11-10T18:16:00.000+0100"
     },
-    "title": "5, 12: Falschparker"
+    "title": "12: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U6: Rettungseinsatz"
+      }
+     }
+    ],
+    "location": "Siebenhirten bis Tscherttegasse",
+    "name": "I20261110-0037-F01",
+    "owner": "WL",
+    "parentName": "I20261110-0037",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T18:37:00.000+0100",
+     "lastUpdate": "2026-11-10T18:37:00.000+0100",
+     "resume": "2026-11-10T18:37:00.000+0100",
+     "start": "2026-11-10T18:29:00.000+0100"
+    },
+    "title": "U6: Rettungseinsatz"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "25": "ptTram"
+     }
+    },
+    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "25: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261110-0038-F01",
+    "owner": "WL",
+    "parentName": "I20261110-0038",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 125,
+      "lineName": "25",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T19:21:00.000+0100",
+     "lastUpdate": "2026-11-10T19:21:00.000+0100",
+     "resume": "2026-11-10T19:21:00.000+0100",
+     "start": "2026-11-10T19:11:00.000+0100"
+    },
+    "title": "25: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "26": "ptTram"
+     }
+    },
+    "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 26: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 26: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "26: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261110-0038-F02",
+    "owner": "WL",
+    "parentName": "I20261110-0038",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 126,
+      "lineName": "26",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-10T19:21:00.000+0100",
+     "lastUpdate": "2026-11-10T19:21:00.000+0100",
+     "resume": "2026-11-10T19:21:00.000+0100",
+     "start": "2026-11-10T19:11:00.000+0100"
+    },
+    "title": "26: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
+    "name": "R1005-125",
+    "owner": "WL",
+    "parentName": "R1005-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     1005
+    ],
+    "time": {
+     "end": "2026-11-10T20:16:00.000+0100",
+     "start": "2026-11-10T19:10:16.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Donauspital"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
+    "name": "R1006-125",
+    "owner": "WL",
+    "parentName": "R1006-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     1006
+    ],
+    "time": {
+     "end": "2026-11-10T20:16:00.000+0100",
+     "start": "2026-11-10T19:10:16.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Donauspital"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
+    "name": "R1007-125",
+    "owner": "WL",
+    "parentName": "R1007-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     1007
+    ],
+    "time": {
+     "end": "2026-11-10T20:16:00.000+0100",
+     "start": "2026-11-10T19:10:16.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Donauspital"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
+    "name": "R1008-125",
+    "owner": "WL",
+    "parentName": "R1008-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     1008
+    ],
+    "time": {
+     "end": "2026-11-10T20:16:00.000+0100",
+     "start": "2026-11-10T19:10:16.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Donauspital"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
+    "name": "R1009-125",
+    "owner": "WL",
+    "parentName": "R1009-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     1009
+    ],
+    "time": {
+     "end": "2026-11-10T20:16:00.000+0100",
+     "start": "2026-11-10T19:10:16.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Donauspital"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1010-125",
+    "owner": "WL",
+    "parentName": "R1010-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     1010
+    ],
+    "time": {
+     "end": "2026-11-10T20:10:00.000+0100",
+     "start": "2026-11-10T19:10:16.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Berresgasse",
+    "name": "R1012-125",
+    "owner": "WL",
+    "parentName": "R1012-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     1012
+    ],
+    "time": {
+     "end": "2026-11-10T20:15:00.000+0100",
+     "start": "2026-11-10T19:16:17.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Berresgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Berresgasse",
+    "name": "R1013-125",
+    "owner": "WL",
+    "parentName": "R1013-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     1013
+    ],
+    "time": {
+     "end": "2026-11-10T20:15:00.000+0100",
+     "start": "2026-11-10T19:16:17.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Berresgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Berresgasse",
+    "name": "R1015-125",
+    "owner": "WL",
+    "parentName": "R1015-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     1015
+    ],
+    "time": {
+     "end": "2026-11-10T20:15:00.000+0100",
+     "start": "2026-11-10T19:16:17.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Berresgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Berresgasse",
+    "name": "R1021-125",
+    "owner": "WL",
+    "parentName": "R1021-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     1021
+    ],
+    "time": {
+     "end": "2026-11-10T20:15:00.000+0100",
+     "start": "2026-11-10T19:16:17.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Berresgasse"
    },
    {
     "alertCause": "undefined alert cause",
@@ -381,75 +741,6 @@
      "start": "2026-11-10T04:45:22.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1636-160",
-    "owner": "WL",
-    "parentName": "R1636-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1636
-    ],
-    "time": {
-     "end": "2026-11-10T17:49:00.000+0100",
-     "start": "2026-11-10T16:49:33.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1638-160",
-    "owner": "WL",
-    "parentName": "R1638-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1638
-    ],
-    "time": {
-     "end": "2026-11-10T17:51:00.000+0100",
-     "start": "2026-11-10T16:52:03.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1639-160",
-    "owner": "WL",
-    "parentName": "R1639-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1639
-    ],
-    "time": {
-     "end": "2026-11-10T17:51:00.000+0100",
-     "start": "2026-11-10T16:52:03.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -868,6 +1159,167 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Berresgasse",
+    "name": "R2374-125",
+    "owner": "WL",
+    "parentName": "R2374-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2374
+    ],
+    "time": {
+     "end": "2026-11-10T20:15:00.000+0100",
+     "start": "2026-11-10T19:10:48.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Berresgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R2374-126",
+    "owner": "WL",
+    "parentName": "R2374-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     2374
+    ],
+    "time": {
+     "end": "2026-11-10T20:11:00.000+0100",
+     "start": "2026-11-10T19:11:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Berresgasse",
+    "name": "R2375-125",
+    "owner": "WL",
+    "parentName": "R2375-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2375
+    ],
+    "time": {
+     "end": "2026-11-10T20:15:00.000+0100",
+     "start": "2026-11-10T19:10:48.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Berresgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R2375-126",
+    "owner": "WL",
+    "parentName": "R2375-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     2375
+    ],
+    "time": {
+     "end": "2026-11-10T20:11:00.000+0100",
+     "start": "2026-11-10T19:11:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
+    "name": "R2376-125",
+    "owner": "WL",
+    "parentName": "R2376-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2376
+    ],
+    "time": {
+     "end": "2026-11-10T20:16:00.000+0100",
+     "start": "2026-11-10T19:16:48.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Donauspital"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R2376-126",
+    "owner": "WL",
+    "parentName": "R2376-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     2376
+    ],
+    "time": {
+     "end": "2026-11-10T20:17:00.000+0100",
+     "start": "2026-11-10T19:17:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
+    "name": "R2377-125",
+    "owner": "WL",
+    "parentName": "R2377-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2377
+    ],
+    "time": {
+     "end": "2026-11-10T20:16:00.000+0100",
+     "start": "2026-11-10T19:16:48.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Donauspital"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Busse halten\nSatzingerweg 41",
     "name": "R2378-627",
     "owner": "WL",
@@ -937,6 +1389,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Berresgasse",
+    "name": "R2556-125",
+    "owner": "WL",
+    "parentName": "R2556-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2556
+    ],
+    "time": {
+     "end": "2026-11-10T20:15:00.000+0100",
+     "start": "2026-11-10T19:10:49.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Berresgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R2556-126",
+    "owner": "WL",
+    "parentName": "R2556-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     2556
+    ],
+    "time": {
+     "end": "2026-11-10T20:11:00.000+0100",
+     "start": "2026-11-10T19:11:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
     "name": "R2558-125",
     "owner": "WL",
@@ -960,25 +1458,163 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R272-112",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R2558-126",
     "owner": "WL",
-    "parentName": "R272-112",
+    "parentName": "R2558-126",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "12"
+     "26"
     ],
     "relatedStops": [
-     272
+     2558
     ],
     "time": {
-     "end": "2026-11-10T18:27:00.000+0100",
-     "start": "2026-11-10T17:28:35.000+0100"
+     "end": "2026-11-10T20:11:00.000+0100",
+     "start": "2026-11-10T19:11:49.000+0100"
     },
-    "title": "Fahrtbehinderung\nFalschparker"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
+    "name": "R2566-125",
+    "owner": "WL",
+    "parentName": "R2566-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2566
+    ],
+    "time": {
+     "end": "2026-11-10T20:16:00.000+0100",
+     "start": "2026-11-10T19:16:49.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Donauspital"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R2566-126",
+    "owner": "WL",
+    "parentName": "R2566-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     2566
+    ],
+    "time": {
+     "end": "2026-11-10T20:11:00.000+0100",
+     "start": "2026-11-10T19:11:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
+    "name": "R2601-125",
+    "owner": "WL",
+    "parentName": "R2601-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2601
+    ],
+    "time": {
+     "end": "2026-11-10T20:16:00.000+0100",
+     "start": "2026-11-10T19:10:19.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Donauspital"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Berresgasse",
+    "name": "R2634-125",
+    "owner": "WL",
+    "parentName": "R2634-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2634
+    ],
+    "time": {
+     "end": "2026-11-10T20:15:00.000+0100",
+     "start": "2026-11-10T19:10:49.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Berresgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R2634-126",
+    "owner": "WL",
+    "parentName": "R2634-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     2634
+    ],
+    "time": {
+     "end": "2026-11-10T20:11:00.000+0100",
+     "start": "2026-11-10T19:11:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
+    "name": "R2865-125",
+    "owner": "WL",
+    "parentName": "R2865-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2865
+    ],
+    "time": {
+     "end": "2026-11-10T20:16:00.000+0100",
+     "start": "2026-11-10T19:16:50.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Donauspital"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1006,6 +1642,236 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Berresgasse",
+    "name": "R3005-125",
+    "owner": "WL",
+    "parentName": "R3005-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3005
+    ],
+    "time": {
+     "end": "2026-11-10T20:15:00.000+0100",
+     "start": "2026-11-10T19:16:18.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Berresgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3005-126",
+    "owner": "WL",
+    "parentName": "R3005-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3005
+    ],
+    "time": {
+     "end": "2026-11-10T20:11:00.000+0100",
+     "start": "2026-11-10T19:11:47.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3009-126",
+    "owner": "WL",
+    "parentName": "R3009-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3009
+    ],
+    "time": {
+     "end": "2026-11-10T20:17:00.000+0100",
+     "start": "2026-11-10T19:17:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Berresgasse",
+    "name": "R3068-125",
+    "owner": "WL",
+    "parentName": "R3068-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3068
+    ],
+    "time": {
+     "end": "2026-11-10T20:15:00.000+0100",
+     "start": "2026-11-10T19:10:47.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Berresgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3068-126",
+    "owner": "WL",
+    "parentName": "R3068-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3068
+    ],
+    "time": {
+     "end": "2026-11-10T20:11:00.000+0100",
+     "start": "2026-11-10T19:11:47.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
+    "name": "R3069-125",
+    "owner": "WL",
+    "parentName": "R3069-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3069
+    ],
+    "time": {
+     "end": "2026-11-10T20:16:00.000+0100",
+     "start": "2026-11-10T19:16:48.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Donauspital"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3069-126",
+    "owner": "WL",
+    "parentName": "R3069-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3069
+    ],
+    "time": {
+     "end": "2026-11-10T20:17:00.000+0100",
+     "start": "2026-11-10T19:17:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3113-126",
+    "owner": "WL",
+    "parentName": "R3113-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3113
+    ],
+    "time": {
+     "end": "2026-11-10T20:11:00.000+0100",
+     "start": "2026-11-10T19:11:47.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
+    "name": "R3115-125",
+    "owner": "WL",
+    "parentName": "R3115-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3115
+    ],
+    "time": {
+     "end": "2026-11-10T20:16:00.000+0100",
+     "start": "2026-11-10T19:16:48.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Donauspital"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3115-126",
+    "owner": "WL",
+    "parentName": "R3115-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3115
+    ],
+    "time": {
+     "end": "2026-11-10T20:17:00.000+0100",
+     "start": "2026-11-10T19:17:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -1029,25 +1895,462 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R365-112",
+    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
+    "name": "R3183-125",
     "owner": "WL",
-    "parentName": "R365-112",
+    "parentName": "R3183-125",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "12"
+     "25"
     ],
     "relatedStops": [
-     365
+     3183
     ],
     "time": {
-     "end": "2026-11-10T18:27:00.000+0100",
-     "start": "2026-11-10T17:28:35.000+0100"
+     "end": "2026-11-10T20:16:00.000+0100",
+     "start": "2026-11-10T19:16:49.000+0100"
     },
-    "title": "Fahrtbehinderung\nFalschparker"
+    "title": "Schadhafter Zug\nBetrieb ab Donauspital"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3183-126",
+    "owner": "WL",
+    "parentName": "R3183-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3183
+    ],
+    "time": {
+     "end": "2026-11-10T20:17:00.000+0100",
+     "start": "2026-11-10T19:17:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
+    "name": "R3184-125",
+    "owner": "WL",
+    "parentName": "R3184-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3184
+    ],
+    "time": {
+     "end": "2026-11-10T20:16:00.000+0100",
+     "start": "2026-11-10T19:16:49.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Donauspital"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3184-126",
+    "owner": "WL",
+    "parentName": "R3184-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3184
+    ],
+    "time": {
+     "end": "2026-11-10T20:17:00.000+0100",
+     "start": "2026-11-10T19:17:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
+    "name": "R3185-125",
+    "owner": "WL",
+    "parentName": "R3185-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3185
+    ],
+    "time": {
+     "end": "2026-11-10T20:16:00.000+0100",
+     "start": "2026-11-10T19:16:49.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Donauspital"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3185-126",
+    "owner": "WL",
+    "parentName": "R3185-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3185
+    ],
+    "time": {
+     "end": "2026-11-10T20:17:00.000+0100",
+     "start": "2026-11-10T19:17:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
+    "name": "R3186-125",
+    "owner": "WL",
+    "parentName": "R3186-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3186
+    ],
+    "time": {
+     "end": "2026-11-10T20:16:00.000+0100",
+     "start": "2026-11-10T19:16:49.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Donauspital"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3186-126",
+    "owner": "WL",
+    "parentName": "R3186-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3186
+    ],
+    "time": {
+     "end": "2026-11-10T20:17:00.000+0100",
+     "start": "2026-11-10T19:17:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
+    "name": "R3187-125",
+    "owner": "WL",
+    "parentName": "R3187-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3187
+    ],
+    "time": {
+     "end": "2026-11-10T20:16:00.000+0100",
+     "start": "2026-11-10T19:16:49.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Donauspital"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3187-126",
+    "owner": "WL",
+    "parentName": "R3187-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3187
+    ],
+    "time": {
+     "end": "2026-11-10T20:17:00.000+0100",
+     "start": "2026-11-10T19:17:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Berresgasse",
+    "name": "R3191-125",
+    "owner": "WL",
+    "parentName": "R3191-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3191
+    ],
+    "time": {
+     "end": "2026-11-10T20:15:00.000+0100",
+     "start": "2026-11-10T19:10:48.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Berresgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3191-126",
+    "owner": "WL",
+    "parentName": "R3191-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3191
+    ],
+    "time": {
+     "end": "2026-11-10T20:11:00.000+0100",
+     "start": "2026-11-10T19:11:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Berresgasse",
+    "name": "R3192-125",
+    "owner": "WL",
+    "parentName": "R3192-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3192
+    ],
+    "time": {
+     "end": "2026-11-10T20:15:00.000+0100",
+     "start": "2026-11-10T19:10:48.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Berresgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3192-126",
+    "owner": "WL",
+    "parentName": "R3192-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3192
+    ],
+    "time": {
+     "end": "2026-11-10T20:11:00.000+0100",
+     "start": "2026-11-10T19:11:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Berresgasse",
+    "name": "R3193-125",
+    "owner": "WL",
+    "parentName": "R3193-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3193
+    ],
+    "time": {
+     "end": "2026-11-10T20:15:00.000+0100",
+     "start": "2026-11-10T19:16:19.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Berresgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3193-126",
+    "owner": "WL",
+    "parentName": "R3193-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3193
+    ],
+    "time": {
+     "end": "2026-11-10T20:11:00.000+0100",
+     "start": "2026-11-10T19:11:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Berresgasse",
+    "name": "R3196-125",
+    "owner": "WL",
+    "parentName": "R3196-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3196
+    ],
+    "time": {
+     "end": "2026-11-10T20:15:00.000+0100",
+     "start": "2026-11-10T19:16:19.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Berresgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3196-126",
+    "owner": "WL",
+    "parentName": "R3196-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3196
+    ],
+    "time": {
+     "end": "2026-11-10T20:11:00.000+0100",
+     "start": "2026-11-10T19:11:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Berresgasse",
+    "name": "R3197-125",
+    "owner": "WL",
+    "parentName": "R3197-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3197
+    ],
+    "time": {
+     "end": "2026-11-10T20:15:00.000+0100",
+     "start": "2026-11-10T19:16:19.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Berresgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3197-126",
+    "owner": "WL",
+    "parentName": "R3197-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3197
+    ],
+    "time": {
+     "end": "2026-11-10T20:11:00.000+0100",
+     "start": "2026-11-10T19:11:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1098,52 +2401,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R49-102",
-    "owner": "WL",
-    "parentName": "R49-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     49
-    ],
-    "time": {
-     "end": "2026-11-10T17:36:00.000+0100",
-     "start": "2026-11-10T16:36:31.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R50-102",
-    "owner": "WL",
-    "parentName": "R50-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     50
-    ],
-    "time": {
-     "end": "2026-11-10T17:36:00.000+0100",
-     "start": "2026-11-10T16:36:31.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -1167,117 +2424,163 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R51-102",
+    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
+    "name": "R880-125",
     "owner": "WL",
-    "parentName": "R51-102",
+    "parentName": "R880-125",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "2"
+     "25"
     ],
     "relatedStops": [
-     51
+     880
     ],
     "time": {
-     "end": "2026-11-10T17:36:00.000+0100",
-     "start": "2026-11-10T16:36:31.000+0100"
+     "end": "2026-11-10T20:16:00.000+0100",
+     "start": "2026-11-10T19:10:17.000+0100"
     },
-    "title": "Fahrtbehinderung\nFalschparker"
+    "title": "Schadhafter Zug\nBetrieb ab Donauspital"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R52-102",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R881-126",
     "owner": "WL",
-    "parentName": "R52-102",
+    "parentName": "R881-126",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "2"
+     "26"
     ],
     "relatedStops": [
-     52
+     881
     ],
     "time": {
-     "end": "2026-11-10T17:36:00.000+0100",
-     "start": "2026-11-10T16:36:31.000+0100"
+     "end": "2026-11-10T20:11:00.000+0100",
+     "start": "2026-11-10T19:11:47.000+0100"
     },
-    "title": "Fahrtbehinderung\nFalschparker"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R53-102",
+    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
+    "name": "R885-125",
     "owner": "WL",
-    "parentName": "R53-102",
+    "parentName": "R885-125",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "2"
+     "25"
     ],
     "relatedStops": [
-     53
+     885
     ],
     "time": {
-     "end": "2026-11-10T17:41:00.000+0100",
-     "start": "2026-11-10T16:41:32.000+0100"
+     "end": "2026-11-10T20:16:00.000+0100",
+     "start": "2026-11-10T19:16:47.000+0100"
     },
-    "title": "Fahrtbehinderung\nFalschparker"
+    "title": "Schadhafter Zug\nBetrieb ab Donauspital"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R54-102",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R885-126",
     "owner": "WL",
-    "parentName": "R54-102",
+    "parentName": "R885-126",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "2"
+     "26"
     ],
     "relatedStops": [
-     54
+     885
     ],
     "time": {
-     "end": "2026-11-10T17:41:00.000+0100",
-     "start": "2026-11-10T16:41:32.000+0100"
+     "end": "2026-11-10T20:17:00.000+0100",
+     "start": "2026-11-10T19:17:48.000+0100"
     },
-    "title": "Fahrtbehinderung\nFalschparker"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R55-102",
+    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
+    "name": "R893-125",
     "owner": "WL",
-    "parentName": "R55-102",
+    "parentName": "R893-125",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "2"
+     "25"
     ],
     "relatedStops": [
-     55
+     893
     ],
     "time": {
-     "end": "2026-11-10T17:41:00.000+0100",
-     "start": "2026-11-10T16:41:32.000+0100"
+     "end": "2026-11-10T20:16:00.000+0100",
+     "start": "2026-11-10T19:10:17.000+0100"
     },
-    "title": "Fahrtbehinderung\nFalschparker"
+    "title": "Schadhafter Zug\nBetrieb ab Donauspital"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Donauspital",
+    "name": "R894-125",
+    "owner": "WL",
+    "parentName": "R894-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     894
+    ],
+    "time": {
+     "end": "2026-11-10T20:16:00.000+0100",
+     "start": "2026-11-10T19:10:17.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Donauspital"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Berresgasse",
+    "name": "R966-125",
+    "owner": "WL",
+    "parentName": "R966-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     966
+    ],
+    "time": {
+     "end": "2026-11-10T20:15:00.000+0100",
+     "start": "2026-11-10T19:16:17.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Berresgasse"
    },
    {
     "alertCause": "undefined alert cause",

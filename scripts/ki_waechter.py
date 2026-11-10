@@ -87,6 +87,7 @@ from src.ki_waechter.inputs import (
     free_text,
     git_snapshots,
     halves,
+    history_covers,
     prepare,
     render_input,
     together,
@@ -164,6 +165,8 @@ NO_NEW_REQUEST_AFTER_S = 720
 OVERLOAD_STATUS = frozenset({500, 502, 503, 504})
 QUOTA_STATUS = 429
 MAX_ANSWER_BYTES = 2_000_000
+# ``history_covers`` in src/ki_waechter/inputs.py: the shallow history ends inside the window.
+CUT_HISTORY = "Der Verlauf endet innerhalb des Prüfzeitraums (flacher Klon); mit größerem git fetch --depth nachladen"
 # The answer's shape, enforced by the API (structured output). The script
 # still checks every field: the schema shapes the answer, it proves nothing.
 ANSWER_SCHEMA: dict[str, Any] = {
@@ -444,6 +447,10 @@ def _prep_from_json(path: Path) -> Prepared:
 def _cmd_prepare(args: argparse.Namespace) -> int:
     root = Path(args.root).resolve()
     if args.rev:
+        if not args.allow_cut and not history_covers(root, args.rev, args.hours):
+            # A shorter window is an audit of a part of the day; it must not pass as the day's audit.
+            print(f"::error title=KI-Wächter::{CUT_HISTORY}")
+            return 1
         snapshots = git_snapshots(root, args.rev, args.hours)
         commit = subprocess.run(  # nosec B603
             [GIT, "rev-parse", "--short", f"{args.rev}^{{commit}}"],
@@ -469,6 +476,14 @@ def _cmd_prepare(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_covered(args: argparse.Namespace) -> int:
+    """Exit 0 when the clone holds the whole window, 1 when its history is cut inside it."""
+    if history_covers(Path(args.root).resolve(), args.rev, args.hours):
+        return 0
+    print(f"KI-Wächter: {CUT_HISTORY}")
+    return 1
+
+
 def _write_json(path: Path, data: object) -> None:
     clean = scrub_trojan_source_primitives(data)
     path.write_text(json.dumps(clean, ensure_ascii=False, indent=1, allow_nan=False), encoding="utf-8")
@@ -490,6 +505,7 @@ def _cmd_ask(args: argparse.Namespace) -> int:
             answer = ask_parts(
                 [build_prompt(text, template) for _, text in parts], args.model, key, ask_gemini,
                 max_rounds=MAX_ROUNDS, deadline_s=NO_NEW_REQUEST_AFTER_S,
+                numbers=[part.items for part, _ in parts],
             )
         else:
             answer = ask_twice(build_prompt(input_text, template), args.model, key)
@@ -572,6 +588,12 @@ def main(argv: Sequence[str] | None = None) -> int:
     p.add_argument("--rev", default="", help="Commit, dessen Feed geprüft wird (leer: Arbeitsstand)")
     p.add_argument("--hours", type=float, default=24.0, help="mit --rev: alle Fassungen dieser Stunden davor")
     p.add_argument("--out", required=True)
+    p.add_argument("--allow-cut", action="store_true",
+                   help="auch lesen, wenn der Verlauf im Prüfzeitraum endet (flacher Klon, nur zum Nachsehen)")
+    c = sub.add_parser("covered", help="prüfen, ob der Klon alle Fassungen des Zeitraums hält (Exit 1: Verlauf abgeschnitten)")
+    c.add_argument("--rev", required=True)
+    c.add_argument("--hours", type=float, default=24.0)
+    c.add_argument("--root", default=str(REPO_ROOT))
     a = sub.add_parser("ask", help=f"Eingabe an Gemini schicken (Schlüssel in {GEMINI_KEY_ENV})")
     a.add_argument("--dir", required=True)
     a.add_argument("--model", required=True)
@@ -585,6 +607,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = parser.parse_args(argv)
     commands: dict[str, Callable[[argparse.Namespace], int]] = {
         "prepare": _cmd_prepare,
+        "covered": _cmd_covered,
         "ask": _cmd_ask,
         "verify": _cmd_verify,
         "dispatch": lambda a: ki_dispatch.main(["--record", a.record]),
@@ -603,6 +626,7 @@ __all__ = [
     "ask_twice",
     "build_prompt",
     "git_snapshots",
+    "history_covers",
     "main",
     "prepare",
     "render_input",

@@ -125,25 +125,74 @@ def git_snapshots(root: Path, rev: str, hours: float) -> list[Snapshot]:
 
     Each Update cycle commits the feed and the caches together, so a commit
     that changed ``docs/feed.xml`` is one version the viewer saw. A shallow
-    clone yields only the versions it holds; the report names the window it
-    really covered.
+    clone yields only the versions it holds: :func:`history_covers` tells
+    whether those are all of the window.
+    """
+    rows = _feed_log(root, rev)
+    newest = rows[0][1]
+    snapshots = []
+    for sha, ct in rows:
+        if ct < newest - hours * 3600:
+            break
+        read, listing = git_reader(root, sha)
+        snapshots.append(Snapshot(sha[:7], datetime.fromtimestamp(ct, UTC).isoformat(), read, listing))
+    return list(reversed(snapshots))
+
+
+def _feed_log(root: Path, rev: str) -> list[tuple[str, int]]:
+    """The commits of ``main`` up to ``rev`` that changed the German feed, newest first, each with its commit time.
+
+    ``main`` is the first-parent chain of ``rev``: an Update cycle commits
+    onto it and a pull request is merged into it, so its commits are the
+    versions the viewer saw. A commit of a merged branch is none (on the
+    five audited commits of 06.11. to 10.11.2026 both readings give the same
+    list).
     """
     git_reader(root, rev)  # validates rev
     log = subprocess.run(  # nosec B603
-        [GIT, "log", "--format=%H %ct", rev, "--", FEED_DE],
+        [GIT, "log", "--first-parent", "--format=%H %ct", rev, "--", FEED_DE],
         cwd=root, check=True, capture_output=True, text=True,
     ).stdout.split("\n")
-    rows = [line.split() for line in log if line.strip()]
+    rows = [(sha, int(ct)) for sha, ct in (line.split() for line in log if line.strip())]
     if not rows:
         raise ValueError(f"{FEED_DE} hat keine Fassung bis {rev}")
-    newest = int(rows[0][1])
-    snapshots = []
-    for sha, ct in rows:
-        if int(ct) < newest - hours * 3600:
-            break
-        read, listing = git_reader(root, sha)
-        snapshots.append(Snapshot(sha[:7], datetime.fromtimestamp(int(ct), UTC).isoformat(), read, listing))
-    return list(reversed(snapshots))
+    return rows
+
+
+def history_covers(root: Path, rev: str, hours: float) -> bool:
+    """Whether the clone holds every feed version of the ``hours`` before ``rev``.
+
+    The audit job works in a shallow clone. Until 2026-11-10 it loaded the
+    history with ``git fetch --shallow-since`` (26 hours behind ``rev``). The
+    server cuts such a history at every commit with a parent older than the
+    date, and the clone then sees that commit without any parent. A merge
+    commit on ``main`` whose branch is older than the 26 hours (a pull
+    request that was not updated before its merge) is such a commit:
+    ``git log`` ended there, and every feed version before the merge was
+    missing although it lay inside the window. Replayed on 2026-11-10 with
+    the workflow's commands: the audit of 07.11.2026 read 38 of 51 versions
+    (50 of 85 texts, cut at the merge of #2169), the one of 10.11.2026 47 of
+    51 (84 of 92, merge of #2185); the report named the shorter window and
+    nothing else told.
+
+    The window is whole when ``main`` (the first parents of ``rev``) reaches
+    a commit older than its start, or when the clone is complete; otherwise
+    ``main`` ends inside the window at a cut. The workflow loads the history
+    by depth and doubles the depth until this holds (step "Prepare the
+    input", ``covered`` in scripts/ki_waechter.py); ``prepare`` refuses a
+    history that does not.
+    """
+    start = _feed_log(root, rev)[0][1] - hours * 3600
+
+    def git(*args: str) -> str:
+        return subprocess.run(  # nosec B603
+            [GIT, *args], cwd=root, check=True, capture_output=True, text=True
+        ).stdout
+
+    chain = [int(ct) for ct in git("log", "--first-parent", "--format=%ct", rev).split()]
+    if chain and min(chain) < start:
+        return True
+    return git("rev-parse", "--is-shallow-repository").strip() != "true"
 
 
 @dataclass

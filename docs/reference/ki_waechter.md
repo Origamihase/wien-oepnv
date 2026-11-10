@@ -28,6 +28,34 @@ Messung dazu stehen in [`architecture.md`](../architecture.md), Abschnitt
 Am 31.10.2026 waren es in 24 Stunden 50 Fassungen des Feeds mit 76
 verschiedenen Meldungstexten von 51 Meldungen, rund 94.000 Zeichen Eingabe.
 
+**Der ganze Tag (seit 10.11.2026).** Der Prüflauf arbeitet in einem flachen
+Klon und lädt den Verlauf hinter dem geprüften Commit nach Tiefe: 128 Commits
+(`main` hatte vom 05.11. bis 10.11.2026 in 24 Stunden 56 bis 71), und doppelt
+so viele, solange `scripts/ki_waechter.py covered` das Ende von `main` noch
+im Prüfzeitraum findet (`history_covers`, `src/ki_waechter/inputs.py`;
+`main` sind die ersten Eltern des Commits, und nur ihre Commits zählen als
+Fassungen). `prepare` lehnt einen Verlauf ab, der im Zeitraum endet: der Lauf
+ist dann rot, statt einen Teil des Tages als den Tag zu prüfen. Bis dahin lud
+ein `git fetch --shallow-since` 26 Stunden. Der Server schneidet einen
+solchen Verlauf an jedem Commit ab, der einen älteren Elternteil hat, und der
+Klon sieht diesen Commit ohne Eltern; ein Pull Request, der in diesen Stunden
+aus einem älteren Zweig gemergt wurde, verbarg so jede Fassung vor seinem
+Merge. Nachgestellt mit den Befehlen des Workflows: der Lauf vom 07.11.2026
+las 38 von 51 Fassungen und 50 von 85 Texten (Merge von #2169, dessen Zweig
+48 Minuten älter war als die 26 Stunden), der vom 10.11.2026 47 von 51 und 84
+von 92 (Merge von #2185); die Läufe vom 06.11., 08.11. und 09.11. waren
+vollständig. Der Bericht nannte den kürzeren Zeitraum, sonst fiel nichts auf.
+Nachspiel alt gegen neu auf sieben Ständen (27.10., 30.10., 06.11. bis
+10.11.): fünf Eingaben byte-gleich, die zwei abgeschnittenen vollständig,
+jeder Stand mit einem Abruf der Tiefe 128, der Klon rund 3 MiB größer
+(`tests/test_ki_waechter/test_verlauf.py`).
+
+**Geprüft heißt gelesen (seit 10.11.2026).** Eine Hälfte zeigt die Nummern des
+ganzen Tages mit Lücken. Jede Antwort zählt deshalb nur mit den Texten ihrer
+eigenen Hälfte als geprüft (`_own_texts`, `src/ki_waechter/answers.py`): Eine
+Antwort, die die Lücken füllt, macht die Texte einer Hälfte ohne Antwort
+nicht zu geprüften.
+
 Von Hand: Actions → „KI-Wächter“ → „Run workflow“. Ohne Eingabe prüft er die
 24 Stunden bis zum aktuellen Stand und veröffentlicht; mit einem Commit-Hash
 (`rev`) prüft er die 24 Stunden bis zu diesem Commit und veröffentlicht nichts

@@ -238,16 +238,34 @@ jobs:
         run: |
           set -euo pipefail
           # The audit reads every feed version of the 24 hours before REV
-          # (each Update cycle commits one), so the shallow checkout gets
-          # 26 hours of history behind REV. HEAD is the checked-out ref.
+          # (each Update cycle commits one), so the shallow checkout gets the
+          # history behind REV: 128 commits (main had 56 to 71 commits in 24
+          # hours from 05.11. to 10.11.2026), twice as many while ``covered``
+          # still finds the end of main inside the window. HEAD is the
+          # checked-out ref.
+          #
+          # Until 2026-11-10 one ``git fetch --shallow-since`` loaded 26
+          # hours. The server cuts such a history at every commit with a
+          # parent older than the date, and the clone sees that commit
+          # without parents: a pull request merged in those hours from a
+          # branch older than them hid every feed version before its merge
+          # (07.11.2026: 38 of 51 versions and 50 of 85 texts read; 10.11.:
+          # 47 of 51 and 84 of 92). A depth counts commits, not dates: main
+          # (the first parents) is whole for as many commits as the depth.
+          # ``prepare`` refuses a history that still ends inside the window
+          # (red run).
           target="${REV}"
           if [[ "${REV}" == "HEAD" ]]; then
             target="${GITHUB_REF}"
           else
             git fetch --quiet --depth=1 origin "${REV}"
           fi
-          since="$(( $(git show -s --format=%ct "${REV}") - 26 * 3600 ))"
-          git fetch --quiet --shallow-since="$(date -u -d "@${since}" +%Y-%m-%dT%H:%M:%SZ)" origin "${target}"
+          depth=128
+          for _ in 1 2 3 4 5; do
+            git fetch --quiet --depth="${depth}" origin "${target}"
+            if python scripts/ki_waechter.py covered --rev "${REV}" --hours 24; then break; fi
+            depth="$(( depth * 2 ))"
+          done
           python scripts/ki_waechter.py prepare --rev "${REV}" --hours 24 --out "${WORK}"
 
       # Two requests, one per half of the day (2026-11-07; from 2026-11-05 to
