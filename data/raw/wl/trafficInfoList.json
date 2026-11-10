@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261110-0020-F01, I20261020-0029, I20261110-0021, I20261110-0022"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261110-0022-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1884-101, R1881-101, R1882-101, R1883-101, R3886-480, R1875-101, R1880-101, R1876-101, R2371-125, R2558-125, R2345-127, R2359-125, R2370-125, R2372-125, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2378-627, R2343-125, R2343-626, R293-474, R318-437, R1974-466, R1199-205, R500-101, R174-101, R172-101, R165-101, R45-101, R132-101, R44-101, R42-101, R41-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1881-101, R1882-101, R1883-101, R1884-101, R3886-480, R1875-101, R1880-101, R1876-101, R2370-125, R2371-125, R2558-125, R2345-127, R2380-627, R2373-126, R2373-127, R2373-125, R2372-125, R2378-627, R2343-125, R2343-626, R2359-125, R2379-627, R318-437, R293-474, R1974-466, R1199-205, R500-101, R165-101, R174-101, R172-101, R44-101, R45-101, R132-101, R42-101, R41-101, R50-101, R46-101, R47-101, R49-101, R169-101, R22-101, R23-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -175,113 +175,22 @@
     "alertCauseId": 77,
     "attributes": {
      "relatedLineTypes": {
-      "31": "ptTram"
-     }
-    },
-    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "31: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Untere Augartenstraße 18",
-    "name": "I20261110-0020-F01",
-    "owner": "WL",
-    "parentName": "I20261110-0020",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 131,
-      "lineName": "31",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-10T12:43:00.000+0100",
-     "lastUpdate": "2026-11-10T12:43:00.000+0100",
-     "resume": "2026-11-10T12:43:00.000+0100",
-     "start": "2026-11-10T12:02:00.000+0100"
-    },
-    "title": "31: Verkehrsunfall"
-   },
-   {
-    "alertCause": "signal failure",
-    "alertCauseId": 38,
-    "attributes": {
-     "relatedLineTypes": {
-      "7A": "ptBusCity"
-     }
-    },
-    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Ampelstörung.",
-    "descriptionHTML": "<p>Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Ampelstörung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Ampelstörung.</p>",
-       "descriptionPlain": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Ampelstörung.",
-       "title": "7A: Ampelstörung"
-      }
-     }
-    ],
-    "name": "I20261110-0021",
-    "owner": "WL",
-    "parentName": "I20261110-0021",
-    "priority": "1",
-    "reasonId": 30,
-    "reasonName": "Ampelstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "7A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 407,
-      "lineName": "7A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-10T12:25:00.000+0100",
-     "lastUpdate": "2026-11-10T12:25:00.000+0100",
-     "resume": "2026-11-10T12:24:00.000+0100",
-     "start": "2026-11-10T12:24:00.000+0100"
-    },
-    "title": "7A: Ampelstörung"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
       "1": "ptTram"
      }
     },
-    "description": "Linie 1: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 13:40 Uhr. Grund: Fremder Verkehrsunfall im Bereich Radetzkystraße 1.",
-    "descriptionHTML": "<p><strong>Linie 1:</strong><br>Fahrtbehinderung in beiden Richtungen.</p><p>Voraussichtliche Dauer: 13:40 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Radetzkystraße 1.</p>",
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p><strong>Linie 1:</strong><br>Fahrtbehinderung in beiden Richtungen.</p><p>Voraussichtliche Dauer: 13:40 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Radetzkystraße 1.</p>",
-       "descriptionPlain": "Linie 1: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 13:40 Uhr. Grund: Fremder Verkehrsunfall im Bereich Radetzkystraße 1.",
+       "descriptionHtml": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "1: Fremder Verkehrsunfall"
       }
      }
     ],
     "location": "Radetzkystraße 1",
-    "name": "I20261110-0022",
+    "name": "I20261110-0022-F01",
     "owner": "WL",
     "parentName": "I20261110-0022",
     "priority": "1",
@@ -300,8 +209,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-10T13:24:00.000+0100",
-     "lastUpdate": "2026-11-10T13:24:00.000+0100",
+     "created": "2026-11-10T13:42:00.000+0100",
+     "lastUpdate": "2026-11-10T13:42:00.000+0100",
+     "resume": "2026-11-10T13:42:00.000+0100",
      "start": "2026-11-10T13:23:00.000+0100"
     },
     "title": "1: Fremder Verkehrsunfall"
@@ -347,7 +257,7 @@
      132
     ],
     "time": {
-     "end": "2026-11-10T14:24:00.000+0100",
+     "end": "2026-11-10T14:34:00.000+0100",
      "start": "2026-11-10T13:24:43.000+0100"
     },
     "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
@@ -370,7 +280,7 @@
      165
     ],
     "time": {
-     "end": "2026-11-10T14:24:00.000+0100",
+     "end": "2026-11-10T14:34:00.000+0100",
      "start": "2026-11-10T13:24:42.000+0100"
     },
     "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
@@ -378,7 +288,30 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Salztorbrücke",
+    "name": "R169-101",
+    "owner": "WL",
+    "parentName": "R169-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     169
+    ],
+    "time": {
+     "end": "2026-11-10T14:34:00.000+0100",
+     "start": "2026-11-10T13:35:13.000+0100"
+    },
+    "title": "Fremdunfall\nBetrieb ab Salztorbrücke"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Salztorbrücke",
     "name": "R172-101",
     "owner": "WL",
     "parentName": "R172-101",
@@ -393,15 +326,15 @@
      172
     ],
     "time": {
-     "end": "2026-11-10T14:24:00.000+0100",
+     "end": "2026-11-10T14:34:00.000+0100",
      "start": "2026-11-10T13:24:42.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Salztorbrücke"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Salztorbrücke",
     "name": "R174-101",
     "owner": "WL",
     "parentName": "R174-101",
@@ -416,10 +349,10 @@
      174
     ],
     "time": {
-     "end": "2026-11-10T14:24:00.000+0100",
+     "end": "2026-11-10T14:34:00.000+0100",
      "start": "2026-11-10T13:24:42.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Salztorbrücke"
    },
    {
     "alertCause": "undefined alert cause",
@@ -604,6 +537,52 @@
      "start": "2026-11-10T04:40:22.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R22-101",
+    "owner": "WL",
+    "parentName": "R22-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     22
+    ],
+    "time": {
+     "end": "2026-11-10T14:34:00.000+0100",
+     "start": "2026-11-10T13:35:14.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R23-101",
+    "owner": "WL",
+    "parentName": "R23-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     23
+    ],
+    "time": {
+     "end": "2026-11-10T14:34:00.000+0100",
+     "start": "2026-11-10T13:35:14.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1022,7 +1001,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Salztorbrücke",
     "name": "R41-101",
     "owner": "WL",
     "parentName": "R41-101",
@@ -1037,15 +1016,15 @@
      41
     ],
     "time": {
-     "end": "2026-11-10T14:24:00.000+0100",
+     "end": "2026-11-10T14:34:00.000+0100",
      "start": "2026-11-10T13:24:43.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Salztorbrücke"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Salztorbrücke",
     "name": "R42-101",
     "owner": "WL",
     "parentName": "R42-101",
@@ -1060,10 +1039,10 @@
      42
     ],
     "time": {
-     "end": "2026-11-10T14:24:00.000+0100",
+     "end": "2026-11-10T14:34:00.000+0100",
      "start": "2026-11-10T13:24:43.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Salztorbrücke"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1108,6 +1087,98 @@
     "time": {
      "end": "2026-11-10T14:24:00.000+0100",
      "start": "2026-11-10T13:24:43.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R46-101",
+    "owner": "WL",
+    "parentName": "R46-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     46
+    ],
+    "time": {
+     "end": "2026-11-10T14:30:00.000+0100",
+     "start": "2026-11-10T13:30:43.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R47-101",
+    "owner": "WL",
+    "parentName": "R47-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     47
+    ],
+    "time": {
+     "end": "2026-11-10T14:30:00.000+0100",
+     "start": "2026-11-10T13:30:43.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R49-101",
+    "owner": "WL",
+    "parentName": "R49-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     49
+    ],
+    "time": {
+     "end": "2026-11-10T14:30:00.000+0100",
+     "start": "2026-11-10T13:30:43.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R50-101",
+    "owner": "WL",
+    "parentName": "R50-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     50
+    ],
+    "time": {
+     "end": "2026-11-10T14:30:00.000+0100",
+     "start": "2026-11-10T13:30:43.000+0100"
     },
     "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },

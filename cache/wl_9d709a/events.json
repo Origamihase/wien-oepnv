@@ -703,7 +703,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "1: Fremder Verkehrsunfall",
-    "description": "Linie 1: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 13:40 Uhr. Grund: Fremder Verkehrsunfall im Bereich Radetzkystraße 1.",
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "85ef2a0baf69650a1a8085cc90d290ed25d87e7295927f37db4a458c23e43499",
     "pubDate": "2026-11-10T13:23:00+01:00",
@@ -726,6 +726,30 @@
     "starts_at": "2026-11-10T05:00:22+01:00",
     "ends_at": "2026-11-10T23:00:00+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-10|TK=bhf hütteldorf öbb ersatzbus für 80"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "5e6d31296da4cc9967fdfbd537f45ccaab2f5b7e2f686f3f0997d13c25738a97",
+    "pubDate": "2026-11-10T13:24:42+01:00",
+    "starts_at": "2026-11-10T13:35:14+01:00",
+    "ends_at": "2026-11-10T14:34:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-11-10|TK=fahrtbehinderung fremder verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Fremdunfall Betrieb ab Salztorbrücke",
+    "description": "Fremdunfall\nBetrieb ab Salztorbrücke",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "ee7fcc5a58d856b16a706ad82752a8ca81ff7d63b5224f72feaed4ef5deb7562",
+    "pubDate": "2026-11-10T13:24:42+01:00",
+    "starts_at": "2026-11-10T13:35:13+01:00",
+    "ends_at": "2026-11-10T14:34:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-11-10|TK=fremdunfall betrieb ab salztorbrücke"
   },
   {
     "source": "Wiener Linien",
@@ -870,22 +894,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "31: Verkehrsunfall",
-    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "84f9fe1b5c4beaf00a73c1565363074e86a57541f0f409f0ef6b0f7aac539f50",
-    "pubDate": "2026-11-10T12:02:00+01:00",
-    "starts_at": "2026-11-10T12:02:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=31|D=2026-11-10|TK=31 verkehrsunfall",
-    "_wl_ids": [
-      "I20261110-0020"
-    ],
-    "_incident_start": "2026-11-10T12:02:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -930,22 +938,6 @@
     "starts_at": "2026-11-09T00:00:21+01:00",
     "ends_at": "2026-11-10T23:59:59+01:00",
     "_identity": "wl|störung|L=74A|D=2026-11-09|TK=einstieg leberstrasse vor s bahn gebäude"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "7A: Ampelstörung",
-    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Ampelstörung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "52c2599c727f1bccf1645a4c94eb5dda6af2b2b14f6c58a02cc4e8aad9b7654f",
-    "pubDate": "2026-11-10T12:24:00+01:00",
-    "starts_at": "2026-11-10T12:24:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=7A|D=2026-11-10|TK=7a ampelstörung",
-    "_wl_ids": [
-      "I20261110-0021"
-    ],
-    "_incident_start": "2026-11-10T12:24:00+01:00"
   },
   {
     "source": "Wiener Linien",
