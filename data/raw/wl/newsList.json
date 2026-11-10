@@ -2498,7 +2498,14 @@
     "reasonName": "Netzänderung",
     "refPoiCategoryId": 13296,
     "relatedLines": [
-     ""
+     "N67"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 567,
+      "lineName": "N67",
+      "vehicleType": "ptBusNight"
+     }
     ],
     "time": {
      "end": "2026-12-15T23:59:00.000+0100",
@@ -2746,7 +2753,7 @@
       "de": {
        "descriptionHtml": "<p><strong><u>Haltestellenauflassung der Linie 71A in Richtung Zentralfriedhof 3. Tor</u></strong></p><p><strong><u>Haltestelle:</u></strong> Schwechat, Hauptplatz</p><p><strong><u>Dauer:</u></strong> Ab 09. November 2026, etwa 09:00 Uhr, bis 11. November 2026, etwa 17:00 Uhr</p><p><strong><u>Grund:</u></strong> Straßenbau</p>",
        "descriptionPlain": "Haltestellenauflassung der Linie 71A in Richtung Zentralfriedhof 3. Tor Haltestelle: Schwechat, Hauptplatz Dauer: Ab 09. November 2026, etwa 09:00 Uhr, bis 11. November 2026, etwa 17:00 Uhr Grund: Straßenbau",
-       "title": "Haltestellenverlegung"
+       "title": "71A: Schwechat, Hauptplatz"
       }
      }
     ],
@@ -2777,7 +2784,7 @@
      "start": "2026-11-06T14:22:00.000+0100",
      "validFrom": "2026-11-06T14:22:00.000+0100"
     },
-    "title": "Haltestellenverlegung"
+    "title": "71A: Schwechat, Hauptplatz"
    },
    {
     "alertCause": "unknown",
@@ -2789,7 +2796,7 @@
       "de": {
        "descriptionHtml": "<p><strong><u>Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf</u></strong></p><p><strong><u>Haltestelle:</u></strong> Obere Augartenstraße</p><p><strong><u>Von:</u></strong> Untere Augartenstraße 40</p><p><strong><u>Nach:</u></strong> Untere Augartenstraße 42</p><p><strong><u>Dauer:</u></strong> Ab 07.11.2026 ca. 05:00 Uhr </p><p><strong><u>Grund:</u></strong> Demontage eines Turmdrehkrans</p>",
        "descriptionPlain": "Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf Haltestelle: Obere Augartenstraße Von: Untere Augartenstraße 40 Nach: Untere Augartenstraße 42 Dauer: Ab 07.11.2026 ca. 05:00 Uhr Grund: Demontage eines Turmdrehkrans",
-       "title": "Haltestellenverlegung"
+       "title": "5A, N31: Obere Augartenstraße"
       }
      }
     ],
@@ -2834,7 +2841,7 @@
      "start": "2026-11-09T07:13:00.000+0100",
      "validFrom": "2026-11-09T07:13:00.000+0100"
     },
-    "title": "Haltestellenverlegung"
+    "title": "5A, N31: Obere Augartenstraße"
    },
    {
     "alertCause": "undefined alert cause",
