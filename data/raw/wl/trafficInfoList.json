@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20261110-0015, I20260909-0007, I20261110-0008, I20261110-0014-F01, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20261110-0015, I20260909-0007, I20261110-0008, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R3886-480, R1884-101, R2379-627, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2380-627, R2558-125, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R318-437, R293-474, R1974-466, R1199-205, R500-101, R141-140, R1368-102, R248-102, R247-102, R556-102, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1876-101, R1880-101, R1881-101, R1884-101, R1883-101, R1875-101, R3886-480, R1882-101, R2378-627, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2558-125, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R318-437, R293-474, R1974-466, R1199-205, R500-101, R141-140, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -216,52 +216,6 @@
     "title": "O: Verkehrsüberlastung"
    },
    {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "2": "ptTram"
-     }
-    },
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "2: Falschparker"
-      }
-     }
-    ],
-    "location": "Mayssengasse",
-    "name": "I20261110-0014-F01",
-    "owner": "WL",
-    "parentName": "I20261110-0014",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 102,
-      "lineName": "2",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-10T08:59:00.000+0100",
-     "end": "2026-11-10T09:42:00.000+0100",
-     "lastUpdate": "2026-11-10T09:00:00.000+0100",
-     "start": "2026-11-10T08:55:00.000+0100"
-    },
-    "title": "2: Falschparker"
-   },
-   {
     "alertCause": "accident",
     "alertCauseId": 77,
     "attributes": {
@@ -328,29 +282,6 @@
      "start": "2026-11-10T04:45:22.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1368-102",
-    "owner": "WL",
-    "parentName": "R1368-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     1368
-    ],
-    "time": {
-     "end": "2026-11-10T09:57:00.000+0100",
-     "start": "2026-11-10T08:57:47.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -861,52 +792,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R247-102",
-    "owner": "WL",
-    "parentName": "R247-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     247
-    ],
-    "time": {
-     "end": "2026-11-10T09:57:00.000+0100",
-     "start": "2026-11-10T08:58:15.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R248-102",
-    "owner": "WL",
-    "parentName": "R248-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     248
-    ],
-    "time": {
-     "end": "2026-11-10T09:57:00.000+0100",
-     "start": "2026-11-10T08:58:15.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
     "name": "R2558-125",
     "owner": "WL",
@@ -1041,29 +926,6 @@
      "start": "2026-11-10T05:00:22.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R556-102",
-    "owner": "WL",
-    "parentName": "R556-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     556
-    ],
-    "time": {
-     "end": "2026-11-10T09:57:00.000+0100",
-     "start": "2026-11-10T08:58:16.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
