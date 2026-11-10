@@ -854,6 +854,34 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Verkehrsunfall",
+    "description": "Linie 2: Fahrtbehinderung in Richtung Friedrich-Engels-Platz. Voraussichtliche Dauer: 16:45 Uhr. Grund: Verkehrsunfall im Bereich Neulerchenfelder Straße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc",
+    "pubDate": "2026-11-10T16:26:00+01:00",
+    "starts_at": "2026-11-10T16:26:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=2|D=2026-11-10|TK=2 verkehrsunfall",
+    "_wl_ids": [
+      "I20261110-0031"
+    ],
+    "_incident_start": "2026-11-10T16:26:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "9ddf5d1b468f97566b0d71492d70a5743faa129c9553b8165867b8249c7b99da",
+    "pubDate": "2026-11-10T16:27:00+01:00",
+    "starts_at": "2026-11-10T16:27:00+01:00",
+    "ends_at": "2026-11-10T17:24:00+01:00",
+    "_identity": "wl|störung|L=2|D=2026-11-10|TK=falschparker"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -862,6 +890,22 @@
     "starts_at": "2026-11-09T00:00:21+01:00",
     "ends_at": "2026-11-10T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-11-09|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Verkehrsunfall",
+    "description": "Linie 41: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 16:45 Uhr. Grund: Verkehrsunfall im Bereich Gersthofer Straße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b8938e94c70221081d94c1f9627e29d1273108203a2ba78ea9d9eaa80416cb92",
+    "pubDate": "2026-11-10T16:24:00+01:00",
+    "starts_at": "2026-11-10T16:24:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=41|D=2026-11-10|TK=41 verkehrsunfall",
+    "_wl_ids": [
+      "I20261110-0030"
+    ],
+    "_incident_start": "2026-11-10T16:24:00+01:00"
   },
   {
     "source": "Wiener Linien",
