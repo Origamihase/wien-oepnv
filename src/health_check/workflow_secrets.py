@@ -53,9 +53,14 @@ WORKFLOW_SECRETS: tuple[WorkflowSecret, ...] = (
                    "Claude-Workflows (Code-Review, @claude)"),
     # A key of the free tier without billing (operator decision 2026-10-31).
     # A missing or rejected key fails the KI-Wächter run, and that shows in
-    # "Nebenschritte".
+    # "Nebenschritte". Since 2026-11-10 the same key also writes the yearly
+    # Baustellen review (Michael's decision of that day, point 4:
+    # src/markdown_stats/year_review.py; dry run in
+    # jahresrueckblick-probe.yml). Without the key the year page keeps its
+    # count and list and carries no review; the feed never needs it, so the
+    # kind stays ``tooling``.
     WorkflowSecret("GEMINI_API_KEY", "tooling",
-                   "KI-Wächter (Gemini API, Gratis-Kontingent)"),
+                   "KI-Wächter und Jahresrückblick der Baustellen (Gemini API, Gratis-Kontingent)"),
     WorkflowSecret("REPO_ADMIN_TOKEN", "tooling",
                    "SEO-Guard: Beschreibung und Homepage des Repositorys"),
 )
