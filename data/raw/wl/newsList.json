@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_147, ftazW_29, ftazW_489, ftazW_770, ftazW_1351715, ftazW_490, ftazW_1018065, ftazW_239, ftazW_510, ftazW_240, ftazW_491, ftazW_1018066, ftazW_82, ftazW_1351709, ftazW_511, ftazW_729, ftazW_83, ftazW_574, ftazW_508, ftazW_721, ftazW_84, ftazW_722, ftazW_509, ftazW_730, ftazW_575, ftazW_45"
+    "trafficInfoNameList": "ftazW_490, ftazW_1018065, ftazW_239, ftazW_510, ftazW_240, ftazW_491, ftazW_1018066, ftazW_82, ftazW_1351709, ftazW_511, ftazW_729, ftazW_83, ftazW_574, ftazW_508, ftazW_721, ftazW_84, ftazW_722, ftazW_509, ftazW_730, ftazW_575, ftazW_45"
    }
   ],
   "poiCategoryGroups": [
@@ -2960,84 +2960,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "11.11.2026 05:15",
-     "ausVon": "11.11.2026 01:15",
-     "location": "beide Fahrtrichtungen - Ausgang Alaudagasse",
-     "rbls": [
-      4136,
-      4131
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Alaudagasse",
-     "status": "geplante Wartung",
-     "towards": "U1 beide Richtungen"
-    },
-    "description": "beide Fahrtrichtungen - Ausgang Alaudagasse",
-    "elevatorId": "AL 02",
-    "name": "ftazW_1351715",
-    "parentName": "ftazW_1351715",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4136,
-     4131
-    ],
-    "time": {
-     "end": "2026-11-11T05:15:00.000+0100",
-     "start": "2026-11-11T01:15:00.000+0100"
-    },
-    "title": "Alaudagasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "11.11.2026 05:15",
-     "ausVon": "11.11.2026 01:15",
-     "location": "U3 Mittelbahnsteig - Ausgang Rochusmarkt",
-     "rbls": [
-      4914,
-      4903
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Rochusgasse",
-     "status": "geplante Wartung",
-     "towards": "U3 beide Richtungen"
-    },
-    "description": "U3 Mittelbahnsteig - Ausgang Rochusmarkt",
-    "elevatorId": "RG 02",
-    "name": "ftazW_147",
-    "parentName": "ftazW_147",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4914,
-     4903
-    ],
-    "time": {
-     "end": "2026-11-11T05:15:00.000+0100",
-     "start": "2026-11-11T01:15:00.000+0100"
-    },
-    "title": "Rochusgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "12.11.2026 00:45",
      "ausVon": "11.11.2026 20:45",
      "location": "U4 Bahnsteig Richtung Heiligenstadt, U6 Bahnsteig Richtung Floridsdorf - Ausgang Storchensteg/Gierstergasse",
@@ -3120,38 +3042,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "11.11.2026 05:15",
-     "ausVon": "11.11.2026 01:15",
-     "location": "Zwischengeschoss - Ausgang Minoritenplatz",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Herrengasse",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Zwischengeschoss - Ausgang Minoritenplatz",
-    "elevatorId": "HZ 01",
-    "name": "ftazW_29",
-    "parentName": "ftazW_29",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "time": {
-     "end": "2026-11-11T05:15:00.000+0100",
-     "start": "2026-11-11T01:15:00.000+0100"
-    },
-    "title": "Herrengasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "13.11.2026 05:15",
      "ausVon": "13.11.2026 01:15",
      "location": "U3 Mittelbahnsteig - Ausgang Keinergasse",
@@ -3186,45 +3076,6 @@
      "start": "2026-11-13T01:15:00.000+0100"
     },
     "title": "Kardinal-Nagl-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "11.11.2026 05:15",
-     "ausVon": "11.11.2026 01:15",
-     "location": "U6 Bahnsteig Richtung Floridsdorf - Zwischengeschoss - ÖBB Bahnsteig",
-     "rbls": [
-      4627
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4",
-      "U6"
-     ],
-     "station": "Spittelau",
-     "status": "geplante Wartung",
-     "towards": "U6 Floridsdorf"
-    },
-    "description": "U6 Bahnsteig Richtung Floridsdorf - Zwischengeschoss - ÖBB Bahnsteig",
-    "elevatorId": "AU 04",
-    "name": "ftazW_489",
-    "parentName": "ftazW_489",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4",
-     "U6"
-    ],
-    "relatedStops": [
-     4627
-    ],
-    "time": {
-     "end": "2026-11-11T05:15:00.000+0100",
-     "start": "2026-11-11T01:15:00.000+0100"
-    },
-    "title": "Spittelau"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3676,43 +3527,6 @@
      "start": "2026-11-13T01:15:00.000+0100"
     },
     "title": "Stadtpark"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "11.11.2026 05:15",
-     "ausVon": "11.11.2026 01:15",
-     "location": "U1 Bahnsteig Richtung Oberlaa - Ausgang Radingerstraße",
-     "rbls": [
-      4110
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Vorgartenstraße",
-     "status": "geplante Wartung",
-     "towards": "U1 Oberlaa"
-    },
-    "description": "U1 Bahnsteig Richtung Oberlaa - Ausgang Radingerstraße",
-    "elevatorId": "VS 02",
-    "name": "ftazW_770",
-    "parentName": "ftazW_770",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4110
-    ],
-    "time": {
-     "end": "2026-11-11T05:15:00.000+0100",
-     "start": "2026-11-11T01:15:00.000+0100"
-    },
-    "title": "Vorgartenstraße"
    },
    {
     "alertCause": "undefined alert cause",
