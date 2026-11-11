@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261111-0035-F01, I20260925-0011, I20260909-0007, I20261020-0029, I20261111-0029"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261111-0035-F01, I20261020-0029, I20261111-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1875-101, R1876-101, R1880-101, R3886-480, R1884-101, R1883-101, R1882-101, R1881-101, R2558-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R318-437, R293-474, R1974-466, R1199-205, R4732-111, R2027-111, R2025-111, R2026-111, R3434-106, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1875-101, R1876-101, R1880-101, R1884-101, R1883-101, R3886-480, R1882-101, R1881-101, R2558-125, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R293-474, R318-437, R1974-466, R1199-205, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -257,8 +257,8 @@
     "status": "active",
     "time": {
      "created": "2026-11-11T22:33:00.000+0100",
-     "lastUpdate": "2026-11-11T22:33:00.000+0100",
-     "resume": "2026-11-11T22:33:00.000+0100",
+     "end": "2026-11-11T23:45:00.000+0100",
+     "lastUpdate": "2026-11-11T23:21:00.000+0100",
      "start": "2026-11-11T21:32:00.000+0100"
     },
     "title": "32A: Polizeieinsatz"
@@ -469,75 +469,6 @@
      "start": "2026-11-11T04:40:07.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R2025-111",
-    "owner": "WL",
-    "parentName": "R2025-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2025
-    ],
-    "time": {
-     "end": "2026-11-11T23:02:00.000+0100",
-     "start": "2026-11-11T22:02:51.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R2026-111",
-    "owner": "WL",
-    "parentName": "R2026-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2026
-    ],
-    "time": {
-     "end": "2026-11-11T23:02:00.000+0100",
-     "start": "2026-11-11T22:02:51.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R2027-111",
-    "owner": "WL",
-    "parentName": "R2027-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2027
-    ],
-    "time": {
-     "end": "2026-11-11T23:02:00.000+0100",
-     "start": "2026-11-11T22:02:51.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -910,29 +841,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R3434-106",
-    "owner": "WL",
-    "parentName": "R3434-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     3434
-    ],
-    "time": {
-     "end": "2026-11-11T23:02:00.000+0100",
-     "start": "2026-11-11T22:02:52.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
     "name": "R3886-480",
     "owner": "WL",
@@ -975,29 +883,6 @@
      "start": "2026-11-05T00:00:27.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R4732-111",
-    "owner": "WL",
-    "parentName": "R4732-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     4732
-    ],
-    "time": {
-     "end": "2026-11-11T23:02:00.000+0100",
-     "start": "2026-11-11T22:02:23.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
