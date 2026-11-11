@@ -291,9 +291,16 @@ def _save_episode_starts(path: Path, starts: Mapping[str, datetime]) -> bool:
 
 
 def _format_minutes(value: float) -> str:
-    """Render *value* as ``9`` / ``9.5`` (no trailing zeros)."""
+    """Render *value* as ``9`` / ``9,5``: one decimal at most, German comma.
+
+    The text is German, so the decimal sign is a comma. The feed read
+    "Durchschnittliche Verspätung von 24.2 min" on 11.11.2026 (KI-Wächter,
+    issue #2200). The English feed is translated from this text; its
+    translation turns the comma of a number with a unit back into a point
+    (``_DECIMAL_COMMA_RE`` in :mod:`src.feed_build.pretranslate`).
+    """
     rounded = round(value, 1)
-    return f"{rounded:g}"
+    return f"{rounded:g}".replace(".", ",")
 
 
 def _episode_start(

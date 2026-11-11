@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_490, ftazW_29, ftazW_1018065, ftazW_239, ftazW_510, ftazW_240, ftazW_491, ftazW_1018066, ftazW_82, ftazW_1351709, ftazW_511, ftazW_729, ftazW_83, ftazW_574, ftazW_508, ftazW_721, ftazW_725, ftazW_84, ftazW_722, ftazW_509, ftazW_730, ftazW_575, ftazW_45"
+    "trafficInfoNameList": "ftazW_490, ftazW_29, ftazW_1018065, ftazW_239, ftazW_510, ftazW_240, ftazW_491, ftazW_1018066, ftazW_82, ftazW_1351709, ftazW_511, ftazW_729, ftazW_83, ftazW_574, ftazW_508, ftazW_721, ftazW_725, ftazW_84, ftazW_722, ftazW_509, ftazW_575, ftazW_45"
    }
   ],
   "poiCategoryGroups": [
@@ -3147,8 +3147,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U6",
-      "U4"
+      "U4",
+      "U6"
      ],
      "station": "Längenfeldgasse",
      "status": "geplante Wartung",
@@ -3162,8 +3162,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U6",
-     "U4"
+     "U4",
+     "U6"
     ],
     "relatedStops": [
      4437,
@@ -3188,8 +3188,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U6",
-      "U4"
+      "U4",
+      "U6"
      ],
      "station": "Längenfeldgasse",
      "status": "geplante Wartung",
@@ -3203,8 +3203,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U6",
-     "U4"
+     "U4",
+     "U6"
     ],
     "relatedStops": [
      4438,
@@ -3299,8 +3299,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U6",
-      "U4"
+      "U4",
+      "U6"
      ],
      "station": "Spittelau",
      "status": "geplante Wartung",
@@ -3314,8 +3314,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U6",
-     "U4"
+     "U4",
+     "U6"
     ],
     "relatedStops": [
      4651
@@ -3737,43 +3737,6 @@
     "time": {
      "end": "2026-11-13T00:45:00.000+0100",
      "start": "2026-11-12T20:45:00.000+0100"
-    },
-    "title": "Stadtpark"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "13.11.2026 05:15",
-     "ausVon": "13.11.2026 01:15",
-     "location": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Stadtpark",
-     "rbls": [
-      4414
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4"
-     ],
-     "station": "Stadtpark",
-     "status": "geplante Wartung",
-     "towards": "U4 Hütteldorf"
-    },
-    "description": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Stadtpark",
-    "elevatorId": "ST 02",
-    "name": "ftazW_730",
-    "parentName": "ftazW_730",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedStops": [
-     4414
-    ],
-    "time": {
-     "end": "2026-11-13T05:15:00.000+0100",
-     "start": "2026-11-13T01:15:00.000+0100"
     },
     "title": "Stadtpark"
    },

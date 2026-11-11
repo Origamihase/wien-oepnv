@@ -295,7 +295,7 @@ Pro Richtung und pro Build:
   "source": "VOR/VAO",
   "category": "Störung",
   "title": "S-Bahn Stammstrecke Verspätungen",
-  "description": "Durchschnittliche Verspätung von 12.5 Minuten in Richtung Meidling [Seit 09.05.2026]",
+  "description": "Durchschnittliche Verspätung von 12,5 min in Richtung Meidling",
   "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
   "guid": "<sha256(stammstrecke_delay_meidling|<iso-first-seen>)>",
   "pubDate": "2026-05-10T08:30:00+02:00",
@@ -317,7 +317,7 @@ Meldungen als **separate** Notifications anzeigen.
 | `starts_at` | = `first_seen` (stabil pro Episode) |
 | `first_seen` | unverändert solange dieselbe Episode anhält |
 | `guid` | abgeleitet von `(prefix, first_seen)` → stabil pro Episode |
-| `description` | "[Seit DD.MM.YYYY]" zeigt `first_seen`-Datum |
+| `description` | mittlere Verspätung auf eine Nachkommastelle, mit deutschem Komma („24,2 min“, seit 2026-11-11, Issue #2200; der englische Feed schreibt „24.2 min“); seit wann, sagt die Zeitzeile des Feeds („[Seit 08:55]“, `first_seen`) |
 
 Erst wenn das Trigger-Gate auflöst (weniger als 2 Beobachtungen
 > 9 min oder das Episode-Lookback findet nichts) und später erneut

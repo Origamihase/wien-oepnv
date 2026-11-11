@@ -385,7 +385,7 @@ def test_stammstrecke_event_uses_the_min_abbreviation() -> None:
         episode_start=now,
     )
     description = event["description"]
-    assert "1.5 min" in description
+    assert "1,5 min" in description  # German decimal comma (issue #2200)
     assert "Minuten" not in description
 
 
