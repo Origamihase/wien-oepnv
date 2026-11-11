@@ -555,10 +555,10 @@ jobs:
         # Not the deliverable (``docs/feed.xml`` is): the step runs BEFORE
         # the commit so its output rides the same atomic commit, but a crash
         # here must NEVER abort the job and block the feed publish
-        # (``continue-on-error``: an orange annotation, the README stays one
-        # tick stale). The key is for one request a year: the run after
-        # midnight asks Gemini for the review of a finished year's roadworks
-        # while none is stored (src/markdown_stats/year_review.py, max 110 s).
+        # (``continue-on-error``: orange, the README stays one tick stale; from 04.01. the
+        # flag ends every tick with 1 while a year's review is overdue). The key: the run after
+        # midnight, after all its writes, asks Gemini (one pass over the chain) for each finished
+        # year without an accepted review (year_review.py; one budget, all years ~2 min at most).
         continue-on-error: true
         timeout-minutes: 4
         env:
@@ -567,10 +567,10 @@ jobs:
           vienna_hhmm=$(TZ=Europe/Vienna date +%H%M)
           if [ "$vienna_hhmm" -lt 30 ]; then
             echo "Vienna-local $vienna_hhmm — refreshing dashboard + README markers."
-            python scripts/generate_markdown_stats.py
+            python scripts/generate_markdown_stats.py --fail-on-missing-review
           else
             echo "Vienna-local $vienna_hhmm — README-only tick (dashboard skipped)."
-            python scripts/generate_markdown_stats.py --skip-dashboard
+            python scripts/generate_markdown_stats.py --skip-dashboard --fail-on-missing-review
           fi
 
       # Stage 3 of the line check (audit 2026-09-25, A.14): compares the lines

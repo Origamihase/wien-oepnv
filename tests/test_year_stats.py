@@ -1,8 +1,8 @@
 """The section "Das Jahr im Überblick" of a year page (``year_stats``).
 
 Michael's decision of 2026-11-10, point 3: the page of a finished year
-summarises all cancellations and delays in a statistic. One week later the
-raw ledgers are removed, so the figures on the page are the only ones left;
+summarises all cancellations and delays in a statistic. The ledgers stay and
+the page is rebuilt from them (Michael, 2026-11-10 19:13 Europe/Vienna);
 these tests pin every cell against values worked out by hand.
 """
 
@@ -147,7 +147,8 @@ def test_section_opens_with_heading_and_the_meaning_of_an_observation(page: list
     assert page[0] == "## Das Jahr im Überblick"
     assert page[1] == ""
     assert page[2].startswith("Eine Beobachtung ist eine Zeile je Richtung und Abfrage: ")
-    assert "mittlere Verspätung aller dabei am Wien Hauptbahnhof beobachteten S-Bahn-Abfahrten" in page[2]
+    # The monitor takes R, REX and CJX trains as well; the sentence names them.
+    assert "beobachteten Abfahrten auf der Stammstrecke (S-Bahn, R, REX und CJX); " in page[2]
     # The highest delay of a table is the highest row (the mean of one poll),
     # not the delay of one train; the sentence says so.
     assert page[2].endswith("„Höchste Verspätung“ nennt die höchste Beobachtung.")
@@ -267,8 +268,8 @@ def test_days_with_the_highest_mean_delay(page: list[str]) -> None:
     assert MIN_DAY_OBSERVATIONS == 10
     assert note == (
         "Die Tabelle zeigt bis zu 5 der 4 Tage mit mindestens 10 Beobachtungen "
-        "(Tage mit Beobachtungen insgesamt: 6); bei gleichem Mittelwert steht der "
-        "frühere Tag zuerst."
+        "(Tage mit Beobachtungen insgesamt: 6), geordnet nach dem ungerundeten "
+        "Mittelwert; bei gleichem Mittelwert steht der frühere Tag zuerst."
     )
 
 
@@ -612,7 +613,8 @@ def test_delay_format_has_one_decimal_and_no_negative_zero() -> None:
         ["Di 10.03.2026", "0.0 min", "10", "0.0 min"],
         ["Mi 11.03.2026", "-2.3 min", "10", "-2.3 min"],
     ]
-    assert _table(page, MONTHS)[2][:5] == ["März", "20", "-1.1 min", "0", "0.0 min"]
+    # The mean is exactly -1.15: a half is rounded away from zero.
+    assert _table(page, MONTHS)[2][:5] == ["März", "20", "-1.2 min", "0", "0.0 min"]
 
 
 def test_counts_are_plain_integers() -> None:

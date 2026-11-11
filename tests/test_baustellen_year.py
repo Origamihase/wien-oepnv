@@ -4,7 +4,8 @@ Owner's decision of 2026-11-10 (Michael), point 4: the year's Baustellen
 stand on the year page. Count and list come from the ledger
 ``baustellen_<Jahr>.csv`` and are present with or without the review in
 words. These tests pin how the ledger is read (one row per guid, one site
-per title, damaged lines skipped) and what the section says.
+per title, damaged lines skipped) and what the section says. What the
+review of 2026-11-10 changed is pinned in ``test_baustellen_year_more.py``.
 """
 
 from __future__ import annotations
@@ -67,7 +68,7 @@ def _site(
     return BaustelleSite(title, starts, ends, district, measure, ("Text.",), seen)
 
 
-def test_the_header_is_the_one_of_the_brief() -> None:
+def test_the_header_has_the_ten_columns_of_the_ledger() -> None:
     assert BAUSTELLEN_HEADER == (
         "timestamp", "weekday", "hour", "guid", "title", "starts_at", "ends_at", "district", "measure", "description",
     )
@@ -133,8 +134,8 @@ def test_rows_of_one_title_are_one_site(tmp_path: Path) -> None:
     # Title and measure of the newest row; its empty district falls back to the newest row that names one.
     assert site.title == "RENNWEG von 33A bis 37"
     assert (site.measure, site.district) == ("Straßenbau", "3")
-    # Earliest start to latest end of any row.
-    assert (site.starts, site.ends) == (date(2026, 2, 20), date(2026, 6, 15))
+    # The period of the newest row that names one (g3): the city moved the end of g2 earlier.
+    assert (site.starts, site.ends) == (date(2026, 2, 20), date(2026, 5, 31))
     # Distinct texts, newest first, three at most.
     assert site.descriptions == ("Dritter Text.", "Zweiter Text.", "Erster Text.")
     assert site.first_seen == datetime(2026, 2, 15, 8, 0, tzinfo=VIENNA_TZ)
@@ -298,9 +299,11 @@ def test_the_facts_count_starts_per_month_and_sites_per_district() -> None:
     assert by.facts_block(sites, year=YEAR).split("\n") == [
         "- Jahr: 2026",
         "- Baustellen mit Folgen für den öffentlichen Verkehr: 4",
+        "- Erfasst seit: 01.06.2026 (Baustellen, die davor endeten, fehlen in den Zahlen)",
         "- Beginn im Jahr 2026, je Monat: Februar: 1, Juli: 2, September: 1",
         "- Beginn vor 2026: 0",
         "- Baustellen je Bezirk: 3. Bezirk (Landstraße): 2, 7. Bezirk (Neubau): 1, 22. Bezirk (Donaustadt): 1",
+        "- Baustellen je Maßnahme: Gleisbau: 4",
     ]
 
 
@@ -313,13 +316,15 @@ def test_the_facts_count_starts_outside_the_year_and_sites_without_district() ->
     assert by.facts_block(sites, year=YEAR).split("\n") == [
         "- Jahr: 2026",
         "- Baustellen mit Folgen für den öffentlichen Verkehr: 3",
+        "- Erfasst seit: 01.06.2026 (Baustellen, die davor endeten, fehlen in den Zahlen)",
         "- Beginn im Jahr 2026, je Monat: keiner",
         "- Beginn vor 2026: 1",
         "- Beginn nach 2026: 1",
         "- Beginn nicht angegeben: 1",
         "- Baustellen je Bezirk: 5. Bezirk (Margareten): 1",
+        "- Baustellen je Maßnahme: Gleisbau: 3",
     ]
-    assert by.facts_block([sites[2]], year=YEAR).endswith("- Baustellen je Bezirk: keine Angabe")
+    assert "- Baustellen je Bezirk: keine Angabe" in by.facts_block([sites[2]], year=YEAR).split("\n")
 
 
 def test_months_touched_by_the_periods() -> None:
@@ -361,8 +366,10 @@ def test_the_section_without_a_review() -> None:
         "",
         (
             "Hier stehen die Baustellen aus den Daten der Stadt Wien, deren Text eine Folge für den öffentlichen "
-            "Verkehr nennt: eine verlegte oder aufgelassene Haltestelle, eine umgeleitete oder kurzgeführte Linie "
-            "oder Ersatzbusse. Die Aufzeichnung für 2026 beginnt am 24.05.2026."
+            "Verkehr nennt, etwa eine verlegte oder aufgelassene Haltestelle, eine umgeleitete oder kurzgeführte "
+            "Linie, einen eingestellten Straßenbahnbetrieb oder Ersatzbusse. Gezählt wird nach dem Namen, unter dem "
+            "die Stadt Wien eine Baustelle führt; trägt sie eine Baustelle unter einem anderen Namen neu ein, steht "
+            "sie hier zweimal. Die Aufzeichnung für 2026 beginnt am 24.05.2026."
         ),
         "",
         "Im Jahr 2026 sind **2** solche Baustellen erfasst.",
@@ -408,7 +415,7 @@ def test_a_pending_review_is_announced_in_one_line() -> None:
     assert "_Ein kurzer Rückblick in Worten wird hier ergänzt._" in lines
     assert "### Rückblick" not in lines
     # Not announced unless asked for.
-    assert not any("folgt" in line for line in by.render_baustellen_section([_site("Burggasse 67")], year=YEAR))
+    assert not any("wird hier ergänzt" in line for line in by.render_baustellen_section([_site("Burggasse 67")], year=YEAR))
 
 
 def test_a_review_stands_with_its_label_before_the_list() -> None:
@@ -443,11 +450,13 @@ def test_a_blank_review_counts_as_none() -> None:
 
 def test_a_review_cannot_bring_markup_onto_the_page() -> None:
     """The guard rejects markup before a text is stored; the renderer escapes all the same."""
-    review = "Zeile eins\n\n## Überschrift <script>alert(1)</script> [Link](https://example.org) {{ site.x }}"
+    review = "Zeile eins\n\n## Überschrift <script>alert(1)</script> [Link](https://example.org) {{ site.x }} | Zelle"
     lines = by.render_baustellen_section([_site("Burggasse 67")], year=YEAR, review=review)
     paragraph = lines[lines.index("### Rückblick") + 2]
     assert "\n" not in paragraph and "<script>" not in paragraph and "](" not in paragraph
     assert paragraph.startswith("Zeile eins \\#\\# Überschrift &lt;script&gt;")
+    # A bare pipe would make the paragraph a table on the website (kramdown).
+    assert paragraph.endswith(" \\| Zelle") and "|" not in paragraph.replace("\\|", "")
     assert sum(1 for line in lines if line.startswith("## ")) == 1
 
 

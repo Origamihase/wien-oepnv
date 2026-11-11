@@ -6,12 +6,18 @@ Reads the append-only CSV ledgers under ``data/stats/`` (written by
 aggregates them by weekday / hour / provider / line, and writes a single
 Markdown report to ``docs/statistik.md``.
 
-The script is **strictly zero-dependency** — only the Python standard
-library is used (``csv``, ``collections``, ``datetime``, ``statistics``,
-``pathlib``, ``zoneinfo``, ``argparse``). No NumPy / Pandas /
-Matplotlib. ASCII / Emoji bar charts are rendered inline so the report
-is readable as plain text in a terminal as well as in any Markdown
-viewer.
+The dashboard run (without ``--skip-dashboard``) also writes the page of
+every finished year, ``docs/statistik-<Jahr>.md``
+(:mod:`src.markdown_stats.year_archive`). While such a year has roadworks
+and no accepted review stored, that run ends with one pass over Gemini's
+model chain (:mod:`src.markdown_stats.review_client`, through
+``src.utils.http``), after everything else of the run is written.
+
+Aggregation and rendering use only the Python standard library (``csv``,
+``collections``, ``datetime``, ``statistics``, ``pathlib``, ``zoneinfo``,
+``argparse``). No NumPy / Pandas / Matplotlib. ASCII / Emoji bar charts
+are rendered inline so the report is readable as plain text in a
+terminal as well as in any Markdown viewer.
 
 Design contract
 ---------------
@@ -125,7 +131,9 @@ from src.markdown_stats.markdown_report import (  # noqa: E402
 from src.markdown_stats.year_archive import (  # noqa: E402
     archived_years as archived_years,
     dashboard_nav as dashboard_nav,
+    overdue_reviews_reported,
     write_year_archives as write_year_archives,
+    write_year_pages,
     years_without_review as years_without_review,
 )
 from src.markdown_stats.readme import (  # noqa: E402
@@ -166,9 +174,13 @@ def main(argv: list[str] | None = None) -> int:
     """CLI entry point.
 
     Returns ``0`` on success (incl. the empty-data case), ``1`` on a
-    fatal error (write failure). Parsing errors of individual CSV rows
-    are tolerated and never propagate to the exit code — the dashboard
-    is regenerated from whatever can be parsed.
+    fatal error (write failure, an invalid ``--readme-window-days`` or
+    ``--now-iso``), and ``1`` after everything else was written when the
+    page of a finished year could not be rendered or written, or, with
+    ``--fail-on-missing-review``, while a finished year's review of the
+    roadworks is overdue (:func:`_finish`). Parsing errors of
+    individual CSV rows are tolerated and never propagate to the exit
+    code — the dashboard is regenerated from whatever can be parsed.
     """
     setup_script_logging(logging.INFO)
 
@@ -252,6 +264,14 @@ def main(argv: list[str] | None = None) -> int:
             "the 'Letzte Aktualisierung' cell. Accepts an ISO 8601 string; "
             "missing tzinfo is interpreted as Europe/Vienna. Intended for "
             "deterministic reproductions and tests."
+        ),
+    )
+    parser.add_argument(
+        "--fail-on-missing-review",
+        action="store_true",
+        help=(
+            "End with 1 while a finished year's review of the roadworks is "
+            "overdue (from 04.01.); only update-cycle.yml passes it."
         ),
     )
     args = parser.parse_args(argv)
@@ -370,10 +390,14 @@ def main(argv: list[str] | None = None) -> int:
     st_agg = aggregate_stoerungen(st_rows)
     au_agg = aggregate_ausfaelle(au_rows)
 
-    # The pages of finished years first: the summary below and the
-    # dashboard further down name them.
-    if not args.skip_dashboard and not _year_pages_written(args, now):
-        return 1
+    # The pages of finished years first, without a request to Gemini: the
+    # summary and the dashboard name them. A failed page costs the exit code
+    # only; the requests come last (_finish, review of 2026-11-10).
+    pages_ok = True
+    if not args.skip_dashboard:
+        pages_ok = write_year_pages(
+            now=now, year=args.year, stats_dir=args.stats_dir, output_path=args.output, ask=False
+        )
 
     summary_path = resolve_summary_path(
         args.summary_path, markdown_output=args.output
@@ -458,7 +482,7 @@ def main(argv: list[str] | None = None) -> int:
         )
 
     if args.skip_readme:
-        return _exit_code(args, now)
+        return _finish(args, now, pages_ok=pages_ok)
 
     # Defense-in-depth: only patch the Stammstrecke marker when the
     # window actually carries rows. Without this gate, an unrelated
@@ -516,7 +540,7 @@ def main(argv: list[str] | None = None) -> int:
             "the %d-day window — existing README content preserved.",
             args.readme_window_days,
         )
-        return _exit_code(args, now)
+        return _finish(args, now, pages_ok=pages_ok)
     try:
         patch_readme_stats(args.readme_path, sections)
     except OSError as exc:
@@ -527,45 +551,32 @@ def main(argv: list[str] | None = None) -> int:
         )
         return 1
 
-    return _exit_code(args, now)
+    return _finish(args, now, pages_ok=pages_ok)
 
 
-def _year_pages_written(args: argparse.Namespace, now: datetime) -> bool:
-    """Write the pages of the finished years; ``False`` when one could not be written."""
-    try:
-        write_year_archives(
-            now=now, year=args.year, stats_dir=args.stats_dir, output_path=args.output
-        )
-    except OSError as exc:
-        LOGGER.error(
-            "Konnte Jahresarchiv nicht schreiben: %s",
-            sanitize_log_arg(str(exc)),
-        )
-        return False
-    return True
+def _finish(args: argparse.Namespace, now: datetime, *, pages_ok: bool) -> int:
+    """The end of a run that wrote everything else: the requests, then the exit code.
 
-
-def _exit_code(args: argparse.Namespace, now: datetime) -> int:
-    """The exit code of a run that wrote everything: 1 while a review is overdue.
-
-    The review of a finished year's roadworks is written by Gemini in the
-    dashboard run and can fail for days (overload, a rejected text, a dead
-    key). Everything else of the run is written either way; from the fourth
-    day of the year the step ends with 1 until the review is there, so the
-    health check shows it (``years_without_review``).
+    Only the dashboard run of the current year asks Gemini for a missing
+    review (:func:`write_year_pages`). The exit code is 1 when a year page
+    failed (*pages_ok*) and, with ``--fail-on-missing-review``, from the
+    fourth day of the year while a review is overdue, so the health check
+    shows it: the review can fail for days (overload, a rejected text, a
+    dead key). Only update-cycle.yml passes the flag (review of
+    2026-11-10): build-feed.yml and the manual refresh run the script
+    without ``continue-on-error`` before they publish.
     """
-    if args.year != now.year:
-        return 0
-    overdue = years_without_review(now=now, stats_dir=args.stats_dir)
-    if not overdue:
-        return 0
-    LOGGER.error(
-        "Rückblick der Baustellen fehlt für %s: Gemini hat bisher keinen Text "
-        "geliefert, der die Prüfung besteht (Einzelheiten im Protokoll des "
-        "Laufs kurz nach Mitternacht).",
-        ", ".join(str(year) for year in overdue),
+    if not args.skip_dashboard and args.year == now.year:
+        asked = write_year_pages(
+            now=now, year=args.year, stats_dir=args.stats_dir, output_path=args.output, ask=True
+        )
+        pages_ok = asked and pages_ok
+    overdue = (
+        args.fail_on_missing_review
+        and args.year == now.year
+        and overdue_reviews_reported(now=now, stats_dir=args.stats_dir)
     )
-    return 1
+    return 0 if pages_ok and not overdue else 1
 
 
 # Public names of this script: its own entry points and the names other

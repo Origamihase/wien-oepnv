@@ -272,6 +272,7 @@ class Node {
   constructor(tag) {
     this.tag = tag; this.attrs = {}; this.children = [];
     this.className = ""; this.textContent = ""; this.hidden = false;
+    this.dataset = {};
   }
   setAttribute(key, value) { this.attrs[key] = String(value); }
   append(...items) {
@@ -309,13 +310,26 @@ process.stdout.write(JSON.stringify({ hidden: nav.hidden, links }));
 """
 
 
+def _draw(summary: object) -> str:
+    """One call of ``renderYearSwitch`` as a step of ``_run``."""
+    return f"renderYearSwitch({json.dumps(summary)});"
+
+
 def _switch(*summaries: object, lang: str = "de") -> dict[str, object]:
     """Run ``renderYearSwitch`` once per summary, in order, and return the
     state of the row after the last one."""
+    return _run([_draw(summary) for summary in summaries], lang=lang)
+
+
+def _run(steps: Sequence[str], *, lang: str = "de") -> dict[str, object]:
+    """Run the JavaScript ``steps`` in order (``LANG`` is the language
+    ``getLang`` answers, so a step may switch it) and return the state of the
+    row after the last one."""
     js = read_site_js()
     parts = [
         _DOM,
-        f"const getLang = () => {json.dumps(lang)};",
+        f"let LANG = {json.dumps(lang)};",
+        "const getLang = () => LANG;",
         _function(js, "function el(tag, opts = {}, ...children) {"),
         _block(js, "function clear(node) {"),
         _block(js, "const YEAR_TEXT_DE = {"),
@@ -327,8 +341,7 @@ def _switch(*summaries: object, lang: str = "de") -> dict[str, object]:
         _block(js, "function archiveYears(summary) {"),
         _block(js, "function renderYearSwitch(summary) {"),
     ]
-    calls = "\n".join(f"renderYearSwitch({json.dumps(summary)});" for summary in summaries)
-    program = "\n".join(parts) + "\n" + calls + _REPORT
+    program = "\n".join(parts) + "\n" + "\n".join(steps) + _REPORT
     assert NODE is not None
     # The program is assembled from site.js of this checkout, no outside input.
     argv = [NODE, "-e", program]
@@ -386,7 +399,9 @@ def test_running_year_first_then_finished_years_newest_first() -> None:
     current, newer, older = _links(result)
     assert current == {
         "wrapper": "li", "tag": "a", "text": "2027", "cls": "chip is-active",
-        "href": "#stammstrecke", "current": "true",
+        # The first of the three statistics sections of the running year
+        # (review of 2026-11-10; it pointed at the second, #stammstrecke).
+        "href": "#stoerungen", "current": "true",
         "title": None, "label": None, "hreflang": None,
     }
     assert newer == {
@@ -420,10 +435,39 @@ def test_bad_entries_are_ignored_and_good_ones_kept() -> None:
 
 @needs_node
 def test_at_most_thirty_finished_years() -> None:
+    """Beyond thirty finished years the row says that it leaves years out:
+    one more chip leads to ``statistik.html``, which names every year
+    (review of 2026-11-10: no silent caps)."""
     result = _switch({"year": 2100, "archive_years": list(range(2000, 2100))})
-    years = _years(result)
-    assert len(years) == 31
-    assert years[:2] == ["2100", "2099"] and years[-1] == "2070"
+    links = _links(result)
+    assert len(links) == 32
+    assert _years(result)[:2] == ["2100", "2099"] and _years(result)[30] == "2070"
+    assert links[-1] == {
+        "wrapper": "li", "tag": "a", "text": "ältere Jahre", "cls": "chip",
+        "href": "statistik.html", "current": None,
+        "title": "ältere Jahre – Liste aller Jahre auf der Statistikseite",
+        "label": "ältere Jahre – Liste aller Jahre auf der Statistikseite",
+        "hreflang": "de",
+    }
+
+
+@needs_node
+def test_the_first_cut_year_and_the_extra_chip() -> None:
+    """With one page per year from 2026, 2057 is the first year with more
+    finished years (31) than chips; 2056 shows all thirty without the extra
+    chip."""
+    full = _switch({"year": 2056, "archive_years": list(range(2026, 2056))})
+    assert len(_links(full)) == 31 and _years(full)[-1] == "2026"
+    cut = _switch({"year": 2057, "archive_years": list(range(2026, 2057))})
+    links = _links(cut)
+    assert len(links) == 32 and _years(cut)[30] == "2027"
+    assert [link["text"] for link in links[1:31]] == [str(y) for y in range(2056, 2026, -1)]
+    assert links[-1]["href"] == "statistik.html" and links[-1]["text"] == "ältere Jahre"
+    english = _links(_switch({"year": 2057, "archive_years": list(range(2026, 2057))}, lang="en"))[-1]
+    assert english["text"] == "earlier years"
+    assert english["label"] == "earlier years – list of all years on the statistics page (page in German)"
+    # WCAG 2.5.3: the accessible name starts with the visible text.
+    assert str(english["label"]).startswith(str(english["text"]))
 
 
 @needs_node
@@ -455,3 +499,25 @@ def test_hidden_row_is_shown_once_a_finished_year_arrives() -> None:
     result = _switch({"year": 2027}, {"year": 2027, "archive_years": [2026]})
     assert result["hidden"] is False
     assert _years(result) == ["2027", "2026"]
+
+
+@needs_node
+def test_same_years_leave_the_row_untouched() -> None:
+    """Every 5-minute refresh draws the row again. Rebuilding it took the
+    keyboard focus off a chip and dropped it on <body> (review of
+    2026-11-10), so a draw with the same years, running year and language
+    keeps the drawn nodes; a change of any of them still redraws."""
+    shown = {"year": 2027, "archive_years": [2026]}
+    mark = "list.children[1].children[0].textContent = 'kept';"
+    kept = _run([_draw(shown), mark, _draw(shown)])
+    assert _years(kept) == ["2027", "kept"]
+    for change in (
+        [f"LANG = {json.dumps('en')};", _draw(shown)],
+        [_draw({"year": 2027, "archive_years": [2026, 2025]})],
+        [_draw({"year": 2028, "archive_years": [2026]})],
+    ):
+        redrawn = _run([_draw(shown), mark, *change])
+        assert "kept" not in _years(redrawn) and "2026" in _years(redrawn), change
+    # Hidden and shown again with the same years: the row is filled anew.
+    again = _run([_draw(shown), _draw({"year": 2027}), _draw(shown)])
+    assert again == _switch(shown)

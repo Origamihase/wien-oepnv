@@ -399,6 +399,14 @@ def _format_ausfall_lines_section(ausfaelle: AusfallAggregate) -> list[str]:
     return lines
 
 
+# The ledgers every page is made from, in the order of the source line.
+_LEDGER_SOURCES = (
+    "data/stats/stammstrecke_*.csv",
+    "data/stats/ausfaelle_*.csv",
+    "data/stats/stoerungen_*.csv",
+)
+
+
 def render_markdown(
     *,
     year: int,
@@ -410,14 +418,17 @@ def render_markdown(
     nav: str = "",
     after_summary: Sequence[str] = (),
     before_sources: Sequence[str] = (),
+    extra_sources: Sequence[str] = (),
 ) -> str:
     """Compose the full Markdown dashboard string from the aggregates.
 
     *after_summary* and *before_sources* are finished Markdown lines a page
     of a finished year adds: the overview of the year below the key
     figures, the roadworks above the source line
-    (:mod:`src.markdown_stats.year_archive`). Empty, the page is the
-    dashboard it always was.
+    (:mod:`src.markdown_stats.year_archive`). *extra_sources* are the
+    files those lines were made from, named after the three ledgers in the
+    source line (review of 2026-11-10: a page with the roadworks named only
+    the three). Empty, the page is the dashboard it always was.
     """
     sections: list[str] = []
     sections.extend(
@@ -498,15 +509,17 @@ def render_markdown(
     )
 
     sections.extend(before_sources)
+    if before_sources and before_sources[-1].strip():
+        # kramdown (GitHub Pages) reads a "---" directly under a line of text
+        # as a setext heading: the roadworks' attribution became an <h2> and
+        # the rule was gone (review of 2026-11-10).
+        sections.append("")
+    sources = ", ".join(f"`{name}`" for name in (*_LEDGER_SOURCES, *extra_sources))
     sections.extend(
         [
             "---",
             "",
-            (
-                "_Quellen_: `data/stats/stammstrecke_*.csv`, "
-                "`data/stats/ausfaelle_*.csv`, `data/stats/stoerungen_*.csv`. "
-                "Generiert von `scripts/generate_markdown_stats.py`."
-            ),
+            f"_Quellen_: {sources}. Generiert von `scripts/generate_markdown_stats.py`.",
             "",
         ]
     )

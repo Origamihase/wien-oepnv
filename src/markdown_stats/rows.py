@@ -511,8 +511,13 @@ def earlier_rows_until_every_direction(
 
     So when *rows* lack a direction, the earlier year files are read, newest
     first, until every direction has a row or a year has no file. With
-    every direction present nothing is read, which is every run of normal
-    operation.
+    every direction present nothing is read. While a direction has been
+    silent since before the loaded year files, every run reads the earlier
+    delay ledger again: with the real ledger (Praterstern silent since
+    14.08.2026) that is every tick from 31.01.2027, about 65 ms for the
+    2026 file (review of 2026-11-10). A state file with the last row of each
+    direction would save it, but it would be a second record beside the
+    ledger, which the pages follow (Michael, 2026-11-10 19:13).
     """
     base = stats_dir if stats_dir is not None else DEFAULT_STATS_DIR
     seen = {row.direction for row in rows}

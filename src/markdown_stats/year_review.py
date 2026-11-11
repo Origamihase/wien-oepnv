@@ -14,9 +14,10 @@ Three parts:
 * :func:`check_review` is the guard. The Wächter proves a finding by its
   verbatim quote (``src/ki_waechter/audit.py``); prose has no quote, so the
   guard checks what can be checked mechanically: every number, date, line,
-  street, district and month the text names must stand in the data.
-  A text that fails is not published; count and list of the page come from
-  the ledger either way.
+  street, district and month the text names must stand in the data, a
+  count of sites must be one the script counted, and closed lists stand
+  for tone and language. A text that fails is not published; count and
+  list of the page come from the ledger either way.
 * :func:`ensure_review` asks once per call when no accepted text is stored
   and keeps an accepted one in ``data/stats/baustellen_rueckblick_<Jahr>.json``
   next to the year's ledgers; the page is rendered from both.
@@ -39,15 +40,8 @@ from typing import Final
 
 from src.ki_waechter.inputs import _SECRET_RE, free_text, normalize
 from src.markdown_stats.baustellen_year import (
-    DISTRICT_NAMES,
-    LEDGER_KIND,
-    MONTH_NAMES,
-    BaustelleSite,
-    district_label,
-    district_numbers,
-    facts_block,
-    months_touched,
-    period_text,
+    DISTRICT_NAMES, LEDGER_KIND, MONTH_NAMES, BaustelleSite, district_label, district_numbers, fact_counts, facts_block,
+    months_touched, period_text,
 )
 from src.markdown_stats.review_client import GEMINI_KEY_ENV, ReviewAnswer, ask_review
 from src.markdown_stats.rows import LOGGER
@@ -57,10 +51,11 @@ from src.utils.serialize import scrub_trojan_source_primitives
 from src.utils.stats import stats_path, to_vienna
 from src.utils.text import normalise_markdown_text
 
-# The prompt's cap. The year 2026 is about 50,000 characters (66 sites, one
-# text each); 200,000 characters are about 60,000 tokens, far below the free
-# tier's 250,000 input tokens a minute. Above it the descriptions are
-# shortened evenly and the facts block says so.
+# The prompt's cap. On 2026-11-10 the ledger of 2026 (61 rows, 19 sites) gave
+# a prompt of 21,370 characters (21,534 with the lines the facts block got
+# after the review of that day); 200,000 characters are about 60,000 tokens,
+# far below the free tier's 250,000 input tokens a minute. Above it the
+# descriptions are shortened evenly and the facts block says so.
 MAX_PROMPT_CHARS: Final = 200_000
 MIN_REVIEW_CHARS: Final = 200
 MAX_REVIEW_CHARS: Final = 1500
@@ -79,27 +74,36 @@ DATA_CLOSE: Final = "DATEN>>>"
 
 # Other names of a month a German text may use.
 _MONTH_ALIASES: Final = {"Januar": 1, "Feber": 2}
-_MONTH_NUMBER: Final[dict[str, int]] = {
-    **{name: number for number, name in enumerate(MONTH_NAMES, 1)},
-    **_MONTH_ALIASES,
-}
+_MONTH_NUMBER: Final[dict[str, int]] = {**{name: number for number, name in enumerate(MONTH_NAMES, 1)}, **_MONTH_ALIASES}
 
 _NO_CAP: Final = 10_000_000
 # Two or more angle brackets in a row: what the frame's delimiters are made of.
 _DELIMITER_RE: Final = re.compile(r"<{2,}|>{2,}")
-# Characters that would act as Markdown or HTML on the page, or as Liquid.
-_MARKUP_CHARS: Final = "<>[]{}|`*_#\\"
+# Characters that would act as Markdown or HTML on the page, or as Liquid;
+# "$$" opens kramdown's math (review of 2026-11-10).
+_MARKUP_CHARS: Final = "<>[]{}|`*_#\\$"
+# A list marker that opens the text. clean_review makes a list answer one
+# line, and Markdown would read the whole review as one list item.
+_LIST_START_RE: Final = re.compile(r"(?:[-+]|\d+[.)])\s")
 # A token of letters and digits; "." "," ":" join it only between two
 # digits (14.08.2026, 20:00, 3,00), so "U4-Trasse" gives "U4" and "ONr.67"
 # gives "67".
 _TOKEN_RE: Final = re.compile(r"[^\W_]+(?:(?<=\d)[.,:](?=\d)[^\W_]+)*")
-_FULL_DATE_RE: Final = re.compile(r"(\d{1,2}\.\d{1,2})\.\d{4}")
+_FULL_DATE_RE: Final = re.compile(r"(\d{1,2}\.\d{1,2})\.(\d{4})")
 # A word: letters, with hyphens inside ("Ludwig-Koeßler-Platz").
 _WORD_RE: Final = re.compile(r"[^\W\d_]+(?:-[^\W\d_]+)*")
-# The endings of rule d, as the owner's brief of 2026-11-10 lists them.
+# The endings of rule d: the last parts of Vienna's street names.
 STREET_SUFFIXES: Final[tuple[str, ...]] = (
     "straße", "strasse", "gasse", "platz", "ring", "gürtel", "brücke", "kai",
     "weg", "allee", "markt", "steg", "zeile", "lände", "damm", "ufer",
+)
+# Ordinary words with such an ending that a review of roadworks uses; alone
+# they name no street (review of 2026-11-10: "Radweg", "Einbahnstraße" and
+# "Gelände" cost a correct text its day). "Ring", "Gürtel" and "Kai" are left
+# out on purpose: alone they name streets of Vienna and need the data.
+_ORDINARY_WORDS: Final = frozenset(
+    "straße strasse gasse platz weg brücke markt allee steg zeile damm ufer hinweg umweg radweg gehweg schutzweg "
+    "fußweg fahrweg verkehrsweg gelände parkplatz stellplatz einbahnstraße nebenstraße sackgasse".split()
 )
 # Capitalised words ending in "er" that open a sentence and are no part of
 # a street name ("Der Gürtel …"); inside a sentence they are lower case
@@ -108,27 +112,49 @@ _NOT_A_NAME_PART: Final = frozenset(
     {"Der", "Dieser", "Jeder", "Einer", "Aber", "Oder", "Unter", "Über", "Hinter", "Außer", "Immer", "Wieder", "Weiter"}
 )
 # Words before a full stop that do not end a sentence.
-_ABBREVIATIONS: Final = frozenset(
-    {"bzw", "ca", "nr", "onr", "dr", "st", "inkl", "ggf", "evtl", "vgl", "sog", "usw", "etc", "str", "tel"}
-)
+_ABBREVIATIONS: Final = frozenset({"bzw", "ca", "nr", "onr", "dr", "st", "inkl", "ggf", "evtl", "vgl", "sog", "usw", "etc", "str", "tel"})
 _SENTENCE_END_RE: Final = re.compile(r"(\S+?)([.!?]+)(?=\s|$)")
 _SHORT_NUMBER_RE: Final = re.compile(r"\d{1,2}(?:\.\d{1,2})*")
+_NEXT_WORD_RE: Final = re.compile(r"\s+([^\W\d_]+)")
+# Capitalised words after "3." that continue the sentence ("3. Bezirk", "4. Mai").
+_AFTER_ORDINAL: Final = frozenset({"Bezirk", "Bezirks", "Bezirkes", "Bauphase", "Halbjahr", "Quartal", *_MONTH_NUMBER})
+# A number in digits directly before "Baustelle(n)" (rule h); the tail of a
+# date, a time or a decimal number is none, and so is the year in "im Jahr
+# 2026 Baustellen in 13 Bezirken".
+_SITE_COUNT_RE: Final = re.compile(r"(?<![\w.,:])(?<!Jahr )(?<!Jahres )(\d+)\s+Baustellen?(?![\w-])")
 # Items a reason names before it only counts the rest: a reason is one log
 # line and one line of the probe's report.
 _MAX_NAMED: Final = 5
-# First person, address and advice (rule g). The list is closed and tiny on
-# purpose: each entry is a form a review of roadworks has no use for, and a
-# longer list would reject ordinary sentences.
+# First person, address and advice (rule g): the text has no author who
+# speaks ("ich" and its forms), the project does not speak in the city's name
+# or its own ("wir", "uns", "unser"), and the reader is neither addressed
+# ("du", "euch") nor advised ("Sie sollten", "bitte"). The list is closed and
+# small on purpose: each entry is a form a review of roadworks has no use for.
+# "ihr" (also "her", "their"), "sollten" and "empfiehlt" stay out: they stand
+# in neutral sentences, and the city writes "Die empfohlene Route".
 _VOICE_MARKERS: Final[tuple[tuple[str, re.Pattern[str]], ...]] = (
-    # "ich": the text has no author who speaks.
-    ("ich", re.compile(r"(?<!\w)ich(?!\w)", re.IGNORECASE)),
-    # "wir": the project does not speak in the city's name or its own.
-    ("wir", re.compile(r"(?<!\w)wir(?!\w)", re.IGNORECASE)),
-    # "Sie sollten": the form advice to the reader takes.
+    ("ich", re.compile(r"(?<!\w)(?:ich|mich|mir|mein(?:e[mnrs]?)?)(?!\w)", re.IGNORECASE)),
+    ("wir", re.compile(r"(?<!\w)(?:wir|uns|uns(?:er|re)(?:e?[mnrs]?)?)(?!\w)", re.IGNORECASE)),
+    ("du", re.compile(r"(?<!\w)(?:du|dich|dir|dein(?:e[mnrs]?)?|euch|euer|eure[mnrs]?)(?!\w)", re.IGNORECASE)),
     ("Sie sollten", re.compile(r"(?<!\w)Sie\s+sollten(?!\w)", re.IGNORECASE)),
-    # "bitte": a request to the reader, and the usual opening of advice.
     ("bitte", re.compile(r"(?<!\w)bitte(?!\w)", re.IGNORECASE)),
 )
+# Words that judge and describe nothing (rule i). Closed like rule g: none has
+# a use in a neutral sentence about roadworks; a word outside the list passes.
+_JUDGEMENT_RE: Final = re.compile(
+    r"(?<!\w)(?:leider|bedauerlich\w*|erfreulich\w*|glücklicherweise|ärgerlich\w*|vorbildlich\w*"
+    r"|katastrophal\w*|\w*chaos\w*|zumutung\w*|skandal\w*|versag\w*)(?!\w)",
+    re.IGNORECASE,
+)
+# Frequent German function words (rule j). Share of them, measured on
+# 2026-11-11 with the ledger of 2026: 26 correct texts 0.33 to 0.52 (the real
+# answer of 2026-11-10 0.35), the city's descriptions 0.19 or more, an
+# English text 0.06, a text half in English 0.26 (passes, see check_review).
+_GERMAN_WORDS: Final = frozenset(
+    "der die das den dem des und in im mit für von zu zur zum auf an am bei wurde wurden war waren ist sind "
+    "ein eine einer einem einen sowie oder auch nicht sich als aus bis nach über unter vor durch wegen".split()
+)
+MIN_GERMAN_SHARE: Final = 0.15
 
 
 # ---- the text the model reads -------------------------------------------------
@@ -176,27 +202,19 @@ def source_text(sites: Sequence[BaustelleSite]) -> str:
 def _instructions(year: int) -> str:
     return "\n".join(
         [
-            (
-                f"Du schreibst für eine Statistikseite einen Rückblick auf die Baustellen des Jahres {year} in Wien, "
-                "die Folgen für den öffentlichen Verkehr hatten. Du stellst keine Fragen, niemand liest mit."
-            ),
+            f"Du schreibst für eine Statistikseite einen Rückblick auf die Baustellen des Jahres {year} in Wien, "
+            "die Folgen für den öffentlichen Verkehr hatten. Du stellst keine Fragen, niemand liest mit.",
             "",
             "Regeln:",
-            (
-                "- Schreibe 4 bis 6 Sätze in einem einzigen Absatz, als reinen Text: keine Überschrift, "
-                "keine Aufzählung, keine Formatierung, kein Link."
-            ),
-            (
-                "- Inhalt: wie viele Baustellen es waren, welche Maßnahmen und Bezirke häufig vorkamen und "
-                "welche Folgen für Haltestellen und Linien die Texte nennen."
-            ),
+            "- Schreibe 4 bis 6 Sätze in einem einzigen Absatz, als reinen Text: keine Überschrift, "
+            "keine Aufzählung, keine Formatierung, kein Link.",
+            "- Inhalt: wie viele Baustellen es waren, welche Maßnahmen und Bezirke häufig vorkamen und "
+            "welche Folgen für Haltestellen und Linien die Texte nennen.",
             "- Schreibe neutral und sachlich. Verwende nur, was in den Daten oder im Faktenblock steht.",
-            (
-                "- Nenne keine Zahl, kein Datum, keinen Straßennamen, keinen Bezirksnamen und keine Linie, "
-                "die nicht genau so in den Daten oder im Faktenblock steht. Schreibe Zahlen in Ziffern, "
-                "ein Datum in der Schreibweise der Daten (zum Beispiel 25.05.2026) und Namen Buchstabe für "
-                "Buchstabe wie in den Daten."
-            ),
+            "- Nenne keine Zahl, kein Datum, keinen Straßennamen, keinen Bezirksnamen und keine Linie, "
+            "die nicht genau so in den Daten oder im Faktenblock steht. Schreibe Zahlen in Ziffern, "
+            "ein Datum in der Schreibweise der Daten (zum Beispiel 25.05.2026) und Namen Buchstabe für "
+            "Buchstabe wie in den Daten.",
             "- Nenne einen Monat nur, wenn der Zeitraum einer Baustelle ihn im Jahr berührt.",
             "- Keine Wertung, kein Rat, keine Anrede, kein Gruß, kein „ich“ und kein „wir“.",
             '- Antworte nur mit JSON in der Form {"rueckblick": "…"}.',
@@ -213,13 +231,7 @@ def _cut(text: str, limit: int | None) -> str:
     return (text[:limit].rstrip() + "…") if limit > 0 else ""
 
 
-def _assemble(
-    year: int,
-    sites: Sequence[BaustelleSite],
-    entries: Sequence[tuple[str, str]],
-    limit: int | None,
-    shown: int,
-) -> str:
+def _assemble(year: int, sites: Sequence[BaustelleSite], entries: Sequence[tuple[str, str]], limit: int | None, shown: int) -> str:
     """The prompt with the first *shown* entries, their texts cut to *limit* characters."""
     notes: list[str] = []
     if limit is not None and limit > 0:
@@ -279,10 +291,7 @@ def build_prompt(sites: Sequence[BaustelleSite], *, year: int) -> str:
     fits, and when even the entries without texts do not fit, only the
     first sites are shown. The facts block says which of the two happened.
     """
-    entries = [
-        ("\n".join(_entry_head(site)), _plain(site.descriptions[0]) if site.descriptions else "")
-        for site in sites
-    ]
+    entries = [("\n".join(_entry_head(site)), _plain(site.descriptions[0]) if site.descriptions else "") for site in sites]
     count = len(entries)
     prompt = _assemble(year, sites, entries, None, count)
     if len(prompt) <= MAX_PROMPT_CHARS:
@@ -313,19 +322,31 @@ def clean_review(text: object) -> str:
     return _SECRET_RE.sub("[entfernt]", normalise_markdown_text(text, max_len=MAX_CLEAN_CHARS))
 
 
-def count_sentences(text: str) -> int:
-    """How many sentences *text* has, counted by their closing punctuation.
+def _opens_sentence(text: str, position: int) -> bool:
+    """Whether the word after *position* is capitalised and no part of an ordinal (``3. Bezirk``, ``4. Mai``)."""
+    following = _NEXT_WORD_RE.match(text, position)
+    return following is not None and following.group(1)[0].isupper() and following.group(1) not in _AFTER_ORDINAL
 
-    A full stop after a number of one or two digits (``3. Bezirk``,
-    ``14.08.``), after one letter or after a common abbreviation closes no
-    sentence. The count serves a loose bound, not grammar.
+
+def count_sentences(text: str) -> int:
+    """How many sentences *text* has, counted by their closing punctuation: a loose bound, not grammar.
+
+    A full stop after one letter or a common abbreviation closes no
+    sentence; after a number of one or two digits only when a capitalised
+    word follows that does not continue an ordinal (``3. Bezirk``, ``4.
+    Mai``). Until the review of 2026-11-10 "Im Juli begannen 9. In
+    Favoriten lagen 4." counted as one sentence. Left: "im 2. Abschnitt"
+    counts one sentence too many.
     """
     count = 0
     last = 0
     for match in _SENTENCE_END_RE.finditer(text):
         word = match.group(1).lstrip("(„\"'‚»«")
         if "." in match.group(2) and "!" not in match.group(2) and "?" not in match.group(2):
-            if _SHORT_NUMBER_RE.fullmatch(word) or len(word) == 1 or word.lower() in _ABBREVIATIONS:
+            if _SHORT_NUMBER_RE.fullmatch(word):
+                if not _opens_sentence(text, match.end()):
+                    continue
+            elif len(word) == 1 or word.lower() in _ABBREVIATIONS:
                 continue
         count += 1
         last = match.end()
@@ -353,8 +374,10 @@ def _length_reasons(text: str) -> list[str]:
 
 
 def _markup_reasons(text: str) -> list[str]:
-    """Rule b: no markup characters and no link."""
+    """Rule b: no markup characters, no list marker at the start and no link."""
     reasons = _reason("Formatierungszeichen im Text", sorted({char for char in text if char in _MARKUP_CHARS}))
+    if _LIST_START_RE.match(text):
+        reasons.append("Aufzählungszeichen am Anfang")
     lowered = text.lower()
     if "http" in lowered or "www." in lowered:
         reasons.append("Link im Text")
@@ -362,16 +385,17 @@ def _markup_reasons(text: str) -> list[str]:
 
 
 def _digit_tokens(text: str) -> set[str]:
-    """Every token of *text* that contains a digit, and the short form of a full date.
+    """Every token of *text* that contains a digit, and the short form and the year of a full date.
 
-    ``25.05.2026`` also gives ``25.05``, which is what ``25.05.`` in a
-    sentence reads as; a day or a month alone is not derived.
+    ``25.05.2026`` also gives ``25.05`` (what ``25.05.`` in a sentence
+    reads as) and ``2026``: "bis 2027" was rejected for sites that end on
+    31.08.2027 (review of 2026-11-10). A day or a month alone is not derived.
     """
     tokens = {token for token in _TOKEN_RE.findall(text) if any(char.isdigit() for char in token)}
     for token in list(tokens):
         full_date = _FULL_DATE_RE.fullmatch(token)
         if full_date:
-            tokens.add(full_date.group(1))
+            tokens.update(full_date.groups())
     return tokens
 
 
@@ -386,16 +410,22 @@ def _is_name_part(word: str) -> bool:
 
 
 def _street_names(text: str) -> list[str]:
-    """The street-like names in *text*: one word, or two when a word in ``-er`` stands before it."""
+    """The street-like names in *text*: one word, or two when a word in ``-er`` stands before it.
+
+    Only a capitalised word is read as a name: "hinweg" and "gering" were
+    taken for streets until the review of 2026-11-10. A single word of
+    :data:`_ORDINARY_WORDS` is none; behind a word in ``-er`` it is
+    ("Mariahilfer Straße").
+    """
     names: list[str] = []
     previous: re.Match[str] | None = None
     for match in _WORD_RE.finditer(text):
         word = match.group()
-        if word.lower().endswith(STREET_SUFFIXES):
+        if word[0].isupper() and word.lower().endswith(STREET_SUFFIXES):
             joined = previous is not None and text[previous.end():match.start()] == " "
             if previous is not None and joined and _is_name_part(previous.group()):
                 names.append(f"{previous.group()} {word}")
-            else:
+            elif word.lower() not in _ORDINARY_WORDS:
                 names.append(word)
         previous = match
     return names
@@ -404,10 +434,11 @@ def _street_names(text: str) -> list[str]:
 def _street_reasons(text: str, source: str) -> list[str]:
     """Rule d: every street-like name of the text stands in the source text.
 
-    A word counts as street-like when it ends, in any case, in one of
-    :data:`STREET_SUFFIXES`; that includes ordinary words such as
-    ``Radweg``, which then must stand in the data as well. One word is
-    looked up as a word, a two-word name as two neighbouring words.
+    A word counts as street-like when it starts with a capital letter and
+    ends in one of :data:`STREET_SUFFIXES` (see :func:`_street_names` for
+    what is exempt); another noun with such an ending ("Vorplatz") must
+    stand in the data as well. One word is looked up as a word, a
+    two-word name as two neighbouring words.
     """
     found = list(_WORD_RE.finditer(source))
     words = {match.group().lower() for match in found}
@@ -434,22 +465,15 @@ def _named(name: str, text: str) -> bool:
 def _district_reasons(text: str, sites: Sequence[BaustelleSite], source: str) -> list[str]:
     """Rule e: a district the text names is the district of a site or stands in the source text."""
     of_sites = {number for site in sites for number in district_numbers(site.district)}
-    missing = [
-        name
-        for number, name in enumerate(DISTRICT_NAMES, 1)
-        if _named(name, text) and number not in of_sites and not _named(name, source)
-    ]
+    missing = [name for number, name in enumerate(DISTRICT_NAMES, 1)
+               if _named(name, text) and number not in of_sites and not _named(name, source)]
     return _reason("Bezirk nicht in den Daten", missing)
 
 
 def _month_reasons(text: str, sites: Sequence[BaustelleSite], year: int) -> list[str]:
     """Rule f: a month the text names is touched by the period of at least one site."""
     touched = months_touched(sites, year)
-    missing = [
-        name
-        for name, number in _MONTH_NUMBER.items()
-        if number not in touched and re.search(rf"(?<!\w){name}(?!\w)", text)
-    ]
+    missing = [name for name, number in _MONTH_NUMBER.items() if number not in touched and re.search(rf"(?<!\w){name}(?!\w)", text)]
     return _reason("Monat außerhalb aller Zeiträume", missing)
 
 
@@ -458,13 +482,42 @@ def _voice_reasons(text: str) -> list[str]:
     return _reason("Ich-Form, Anrede oder Rat im Text", [label for label, pattern in _VOICE_MARKERS if pattern.search(text)])
 
 
+def _count_reasons(text: str, sites: Sequence[BaustelleSite], year: int) -> list[str]:
+    """Rule h: a number in digits directly before ``Baustelle(n)`` is a count of the facts block.
+
+    Rule c asks only whether a number stands somewhere: "21 Baustellen"
+    passed for 19 sites because the data holds "21., Floridsdorf" (review
+    of 2026-11-10). The counts come from ``fact_counts``, the computation
+    that prints the facts block. A number word is not read: a correct
+    text says "Zwei davon" or "je eine", and "eine" is also the article.
+    """
+    counted = {str(count) for count in fact_counts(sites, year=year)}
+    stated = set(_SITE_COUNT_RE.findall(text)) - counted
+    return _reason("Anzahl der Baustellen nicht aus dem Faktenblock", sorted(stated, key=lambda raw: (len(raw), raw)))
+
+
+def _judgement_reasons(text: str) -> list[str]:
+    """Rule i: no word of the closed list :data:`_JUDGEMENT_RE`."""
+    return _reason("Wertung im Text", sorted({match.group().lower() for match in _JUDGEMENT_RE.finditer(text)}))
+
+
+def _language_reasons(text: str) -> list[str]:
+    """Rule j: at least :data:`MIN_GERMAN_SHARE` of the words are German function words."""
+    words = [word.lower() for word in _WORD_RE.findall(text)]
+    german = sum(word in _GERMAN_WORDS for word in words)
+    if not words or german >= MIN_GERMAN_SHARE * len(words):
+        return []
+    return [f"Text nicht auf Deutsch: {german} von {len(words)} Wörtern sind deutsche Funktionswörter"]
+
+
 def check_review(text: str, sites: Sequence[BaustelleSite], *, year: int) -> list[str]:
     """The guard: why *text* may not be published, one German line per reason; empty when accepted.
 
     The rules, each a helper of its own:
 
     a. 200 to 1,500 characters and 3 to 8 sentences;
-    b. no markup characters (``< > [ ] { } | ` * _ # \\``) and no link;
+    b. no markup characters (``< > [ ] { } | ` * _ # \\ $``), no list
+       marker at the start and no link;
     c. every token with a digit (number, date, year, line such as 13A or
        U4, house number) stands in the same form in the source text or in
        the facts block;
@@ -472,15 +525,23 @@ def check_review(text: str, sites: Sequence[BaustelleSite], *, year: int) -> lis
     e. every district it names is a site's district or stands in the
        source text;
     f. every month it names is touched by the period of a site in *year*;
-    g. no first person, address or advice.
+    g. no first person, address or advice;
+    h. a number directly before "Baustelle(n)" is a count of the facts block;
+    i. no word of a closed list of judging words;
+    j. German: at least 15 % of the words are function words.
 
-    The limit of this guard: it proves presence, not that the facts are
-    put together correctly. "Im Mai begann die Baustelle in der Burggasse"
+    The limits of this guard. It proves presence, not that the facts are
+    put together correctly: "Im Mai begann die Baustelle in der Burggasse"
     passes when May and Burggasse both stand in the data, whichever site
-    they belong to. ``docs/architecture-teil-3.md`` names the same limit
-    for a rewritten feed text ("ließe sich zudem nicht mechanisch belegen
-    wie ein Fund"); it is why the page labels the review as written by a
-    model and takes count and list from the ledger.
+    they belong to. A count is read only directly before "Baustelle(n)"
+    and only against the set of counted values, so a count that equals
+    another one, or a count in words, passes. Tone is read from closed
+    lists only: a judgement, an insult or an instruction in other words
+    passes, and so does a text half in another language. Hence the page
+    labels the review as written by a model and takes count and list from
+    the ledger (``docs/architecture-teil-3.md``: "ließe sich zudem nicht
+    mechanisch belegen wie ein Fund"); deleting the year's review file
+    makes the next dashboard run ask again.
     """
     source = source_text(sites)
     allowed = f"{source}\n{facts_block(sites, year=year)}"
@@ -492,6 +553,9 @@ def check_review(text: str, sites: Sequence[BaustelleSite], *, year: int) -> lis
         *_district_reasons(text, sites, source),
         *_month_reasons(text, sites, year),
         *_voice_reasons(text),
+        *_count_reasons(text, sites, year),
+        *_judgement_reasons(text),
+        *_language_reasons(text),
     ]
 
 
@@ -520,49 +584,35 @@ def load_review(year: int, sites: Sequence[BaustelleSite], *, stats_dir: Path | 
     string ``text``, or when the text no longer passes
     :func:`check_review`: the ledger of a finished year can still change
     (late rows, corrections), and a review that names a site no longer in it
-    must not stay on the page.
+    must not stay on the page. A dropped text gets a WARNING with the
+    reasons; until the review of 2026-11-10 the log held a count or nothing.
     """
-    data = read_capped_json(
-        review_path(year, stats_dir=stats_dir),
-        max_bytes=MAX_REVIEW_FILE_BYTES,
-        label="Baustellen-Rückblick",
-        logger=LOGGER,
-    )
+    path = review_path(year, stats_dir=stats_dir)
+    data = read_capped_json(path, max_bytes=MAX_REVIEW_FILE_BYTES, label="Baustellen-Rückblick", logger=LOGGER)
     text = data.get("text") if isinstance(data, dict) else None
-    if not isinstance(text, str) or not text or clean_review(text) != text:
+    if not isinstance(text, str) or not text:
+        return None
+    if clean_review(text) != text:
+        LOGGER.warning("Baustellen-Rückblick %d: der gespeicherte Text ist nicht in der Form, in der er gespeichert wird "
+                       "(Leerraum oder Steuerzeichen), und wird nicht verwendet.", year)
         return None
     reasons = check_review(text, sites, year=year)
     if reasons:
-        LOGGER.info(
-            "Baustellen-Rückblick %d: der gespeicherte Text passt nicht mehr zu den Daten (Gründe: %d).",
-            year,
-            len(reasons),
-        )
+        LOGGER.warning("Baustellen-Rückblick %d: der gespeicherte Text passt nicht mehr zu den Daten oder zur Prüfung: %s.",
+                       year, sanitize_log_arg("; ".join(reasons)))
         return None
     return text
 
 
 def _store(path: Path, *, year: int, now: datetime, model: str, text: str, sites: int) -> None:
-    payload = scrub_trojan_source_primitives(
-        {
-            "year": year,
-            "created_at": to_vienna(now).replace(microsecond=0).isoformat(),
-            "model": model,
-            "text": text,
-            "sites": sites,
-        }
-    )
+    created = to_vienna(now).replace(microsecond=0).isoformat()
+    payload = scrub_trojan_source_primitives({"year": year, "created_at": created, "model": model, "text": text, "sites": sites})
     with atomic_write(path) as handle:
         handle.write(json.dumps(payload, ensure_ascii=False, indent=2, allow_nan=False) + "\n")
 
 
 def _ask_and_check(
-    year: int,
-    sites: Sequence[BaustelleSite],
-    prompt: str,
-    *,
-    now: datetime,
-    stats_dir: Path | None,
+    year: int, sites: Sequence[BaustelleSite], prompt: str, *, now: datetime, stats_dir: Path | None,
     ask: Callable[[str], ReviewAnswer | None],
 ) -> ReviewOutcome:
     """One request, the guard, and the file on acceptance."""
@@ -580,31 +630,21 @@ def _ask_and_check(
     if reasons:
         LOGGER.warning(
             "Baustellen-Rückblick %d von %s verworfen: %s. Text: %s",
-            year,
-            sanitize_log_arg(model),
-            sanitize_log_arg("; ".join(reasons)),
-            sanitize_log_arg(free_text(text)),
+            year, sanitize_log_arg(model), sanitize_log_arg("; ".join(reasons)), sanitize_log_arg(free_text(text)),
         )
         return ReviewOutcome(None, True, "verworfen: " + "; ".join(reasons))
     try:
         _store(review_path(year, stats_dir=stats_dir), year=year, now=now, model=model, text=text, sites=len(sites))
     except OSError as exc:
-        LOGGER.warning(
-            "Baustellen-Rückblick %d angenommen, aber nicht gespeichert (%s).", year, type(exc).__name__
-        )
+        LOGGER.warning("Baustellen-Rückblick %d angenommen, aber nicht gespeichert (%s).", year, type(exc).__name__)
         return ReviewOutcome(text, True, f"angenommen ({model}), nicht gespeichert ({type(exc).__name__})")
     LOGGER.info("Baustellen-Rückblick %d von %s angenommen und gespeichert.", year, sanitize_log_arg(model))
     return ReviewOutcome(text, True, f"angenommen ({model})")
 
 
 def ensure_review(
-    year: int,
-    sites: Sequence[BaustelleSite],
-    *,
-    now: datetime,
-    stats_dir: Path | None = None,
-    key: str | None = None,
-    ask: Callable[[str], ReviewAnswer | None] | None = None,
+    year: int, sites: Sequence[BaustelleSite], *, now: datetime, stats_dir: Path | None = None, key: str | None = None,
+    ask: Callable[[str], ReviewAnswer | None] | None = None, deadline_s: float | None = None,
 ) -> ReviewOutcome:
     """The review of *year*: the stored one, or one new request to Gemini.
 
@@ -619,6 +659,10 @@ def ensure_review(
       (:func:`check_review`); an accepted text is stored atomically with
       the year, the time (*now*, Vienna), the model and the number of
       sites.
+    * *deadline_s* is what is left of one time budget for all years of a
+      run, handed to ``ask_review`` (nothing is sent with fewer than
+      ``MIN_REQUEST_S`` left): until the review of 2026-11-10 each year
+      had a full deadline, and two years reached the step's limit.
 
     It never raises: the statistics step and the year page do not depend
     on a review. Every failure is an outcome with a reason and one WARNING
@@ -638,7 +682,9 @@ def ensure_review(
             return ReviewOutcome(None, False, f"{GEMINI_KEY_ENV} ist leer, keine Anfrage")
 
         def default_ask(prompt: str) -> ReviewAnswer | None:
-            return ask_review(prompt, key=secret)
+            if deadline_s is None:
+                return ask_review(prompt, key=secret)
+            return ask_review(prompt, key=secret, deadline_s=deadline_s)
 
         prompt = build_prompt(sites, year=year)
         asked = True

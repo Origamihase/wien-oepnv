@@ -26,17 +26,25 @@ rewrites" (2026-10-31), which stays the rule for the feed.
 """
 from __future__ import annotations
 
+import os
 import re
+import time
+from collections.abc import Callable, Sequence
 from datetime import datetime
 from pathlib import Path
+from typing import NamedTuple, Protocol, TypeVar
 
 from src.markdown_stats.baustellen_year import load_sites, render_baustellen_section
 from src.markdown_stats.direction_coverage import (
     render_finished_year_coverage_note,
 )
 from src.markdown_stats.markdown_report import render_markdown, write_dashboard
+from src.markdown_stats.review_client import DEFAULT_DEADLINE_S, GEMINI_KEY_ENV, MIN_REQUEST_S
 from src.markdown_stats.rows import (
     LOGGER,
+    AusfallRow,
+    StammstreckeRow,
+    StoerungRow,
     aggregate_ausfaelle,
     aggregate_stammstrecke,
     aggregate_stoerungen,
@@ -47,15 +55,21 @@ from src.markdown_stats.year_stats import render_year_overview
 from src.utils.files import read_capped_text
 from src.utils.liquid import liquid_safe
 from src.utils.logging import sanitize_log_arg
-from src.utils.stats import DEFAULT_STATS_DIR, VIENNA_TZ
+from src.utils.stats import DEFAULT_STATS_DIR, VIENNA_TZ, to_vienna
 
 # Days of a new year in which a missing review of the roadworks is only a
 # log line. Gemini's free tier is overloaded for hours on some days (503 on
 # 2026-10-31 and every morning from 01.11. to 05.11.2026); from 04.01. a
-# year with roadworks and without a review fails the statistics step, which
-# turns the health check red (Michael, 2026-10-28: "ein Fehler sollte
-# auffallen").
+# year with roadworks and without a review fails the statistics step of the
+# Update cycle, which turns the health check red (Michael, 2026-10-28: "ein
+# Fehler sollte auffallen"). Only that step asks for the failing exit code
+# (``--fail-on-missing-review``, review of 2026-11-10).
 REVIEW_GRACE_DAYS = 3
+
+# The sources a page with the roadworks section names besides the three
+# ledgers of the dashboard (review of 2026-11-10: the footer named only those).
+BAUSTELLEN_SOURCE = "data/stats/baustellen_*.csv"
+REVIEW_SOURCE = "data/stats/baustellen_rueckblick_*.json"
 
 
 def archive_path(output_path: Path, year: int) -> Path:
@@ -97,27 +111,102 @@ def archive_nav(output_path: Path) -> str:
     )
 
 
-def _baustellen_lines(
-    year: int, *, now: datetime, stats_dir: Path | None, ask: bool
-) -> list[str]:
+class ReviewBudget:
+    """One time budget for the review requests of all years of a run.
+
+    Until the review of 2026-11-10 every finished year without a review got
+    the client's whole deadline: two such years (a stored review of an
+    older year stops passing a stricter guard while the new year is due)
+    took about four minutes, the step's limit. Now the clock starts at the
+    first request of the run and each later year gets what is left of
+    :data:`~src.markdown_stats.review_client.DEFAULT_DEADLINE_S`, so all
+    requests of a run end after about two minutes (the last one may start
+    with :data:`~src.markdown_stats.review_client.MIN_REQUEST_S` left, plus
+    its connect timeout). *clock* is for tests.
+    """
+
+    def __init__(self, clock: Callable[[], float] = time.monotonic) -> None:
+        self._clock = clock
+        self._started: float | None = None
+
+    def left(self) -> float:
+        """Seconds left for requests; the first call starts the clock."""
+        now = self._clock()
+        if self._started is None:
+            self._started = now
+        return DEFAULT_DEADLINE_S - (now - self._started)
+
+
+class _Section(NamedTuple):
+    """The roadworks section of a page and the files it was made from."""
+
+    lines: list[str]
+    sources: tuple[str, ...]
+
+
+def _baustellen_section(
+    year: int, *, now: datetime, stats_dir: Path | None, budget: ReviewBudget | None
+) -> _Section:
     """The roadworks section of *year*; empty for a year without a row.
 
-    With *ask* a year that has no accepted review stored is put to Gemini
-    once (:func:`src.markdown_stats.year_review.ensure_review`); without it
-    only a stored review is read. A year whose review is still missing says
-    so in one line, whoever renders the page: a run without the key must
-    not write another page than the run with it.
+    Without *budget* only a stored review is read. With it, a year whose
+    stored review is missing or no longer passes the guard is put to Gemini
+    once (:func:`src.markdown_stats.year_review.ensure_review`) with what is
+    left of the run's budget. A year whose review is still missing says so
+    in one line, whoever renders the page: a run without the key must not
+    write another page than the run with it.
     """
     sites = load_sites(year, stats_dir=stats_dir)
     if not sites:
-        return []
-    if ask:
-        review = ensure_review(year, sites, now=now, stats_dir=stats_dir).text
-    else:
-        review = load_review(year, sites, stats_dir=stats_dir)
-    return render_baustellen_section(
+        return _Section([], ())
+    review = load_review(year, sites, stats_dir=stats_dir)
+    if review is None and budget is not None:
+        left = budget.left()
+        if left < MIN_REQUEST_S:
+            LOGGER.warning(
+                "Baustellen-Rückblick %d: in diesem Lauf keine Anfrage mehr, die Zeit "
+                "für Anfragen ist aufgebraucht; der nächste Dashboard-Lauf fragt.",
+                year,
+            )
+        else:
+            review = ensure_review(
+                year, sites, now=now, stats_dir=stats_dir, deadline_s=left
+            ).text
+    lines = render_baustellen_section(
         sites, year=year, review=review, pending=review is None
     )
+    sources = (BAUSTELLEN_SOURCE,) if review is None else (BAUSTELLEN_SOURCE, REVIEW_SOURCE)
+    return _Section(lines, sources)
+
+
+class _Stamped(Protocol):
+    @property
+    def timestamp(self) -> datetime: ...
+
+
+_RowT = TypeVar("_RowT", bound=_Stamped)
+
+
+def _of_year(rows: Sequence[_RowT], year: int) -> list[_RowT]:
+    return [row for row in rows if to_vienna(row.timestamp).year == year]
+
+
+def _rows_of_year(
+    year: int, *, stats_dir: Path | None
+) -> tuple[list[StammstreckeRow], list[StoerungRow], list[AusfallRow], int]:
+    """The rows of the three dashboard ledgers of *year* that lie in its Vienna year.
+
+    The fourth value counts the rows left out. The writers file every row
+    under its Vienna year, but a row added or corrected by hand can carry
+    another year. Until the review of 2026-11-10 the key figures and the
+    old sections counted such a row under the year while the overview left
+    it out, so one page gave two totals; a file with only such rows got a
+    page without an overview.
+    """
+    sm_all, st_all, au_all = collect_year_data(year, stats_dir=stats_dir)
+    sm_rows, st_rows, au_rows = _of_year(sm_all, year), _of_year(st_all, year), _of_year(au_all, year)
+    left_out = len(sm_all) + len(st_all) + len(au_all) - len(sm_rows) - len(st_rows) - len(au_rows)
+    return sm_rows, st_rows, au_rows, left_out
 
 
 def render_year_archive(
@@ -126,30 +215,47 @@ def render_year_archive(
     year: int,
     stats_dir: Path | None,
     output_path: Path,
-    ask: bool = False,
+    budget: ReviewBudget | None = None,
 ) -> str | None:
     """The archive page of the finished *year*; ``None`` when it has no rows.
 
-    "Rows" are those of the three ledgers the dashboard shows; a year that
-    only has roadworks gets no page. *ask* allows the one request to Gemini
-    for a missing review of the roadworks (:func:`_baustellen_lines`); the
-    dashboard run passes it, a reader of the page does not.
+    "Rows" are those of the three ledgers the dashboard shows whose Vienna
+    year is *year*; a year that only has roadworks gets no page. A row of
+    another year is left out of every figure and named in one log line.
+    *budget* allows the requests to Gemini for a missing review of the
+    roadworks (:func:`_baustellen_section`); without it only a stored
+    review is read.
+
+    The coverage note of the year stands once, at the head of the overview
+    (review of 2026-11-10): its words "Die Jahreszahlen unten" are then true
+    for every figure of the page; under "## Stammstrecke", where it stood
+    before, the overview above it set Meidling (recorded to 10.11.2026)
+    beside Praterstern (to 14.08.2026) with no word why. Only a page without
+    an overview keeps it under "Beobachtungen je Richtung".
     """
-    sm_rows, st_rows, au_rows = collect_year_data(year, stats_dir=stats_dir)
+    sm_rows, st_rows, au_rows, left_out = _rows_of_year(year, stats_dir=stats_dir)
+    if left_out:
+        LOGGER.warning(
+            "Jahresarchiv %d: %d Zeilen mit dem Zeitstempel eines anderen Jahres nicht gezählt.",
+            year,
+            left_out,
+        )
     if not (sm_rows or st_rows or au_rows):
         return None
+    note = render_finished_year_coverage_note(sm_rows, year=year)
+    overview = render_year_overview(sm_rows, st_rows, au_rows, year=year, coverage_note=note)
+    baustellen = _baustellen_section(year, now=now, stats_dir=stats_dir, budget=budget)
     return render_markdown(
         year=year,
         generated_at=now,
         stammstrecke=aggregate_stammstrecke(sm_rows),
         stoerungen=aggregate_stoerungen(st_rows),
         ausfaelle=aggregate_ausfaelle(au_rows),
-        coverage_note=render_finished_year_coverage_note(sm_rows, year=year),
+        coverage_note="" if overview else note,
         nav=archive_nav(output_path),
-        after_summary=render_year_overview(sm_rows, st_rows, au_rows, year=year),
-        before_sources=_baustellen_lines(
-            year, now=now, stats_dir=stats_dir, ask=ask
-        ),
+        after_summary=overview,
+        before_sources=baustellen.lines,
+        extra_sources=baustellen.sources,
     )
 
 
@@ -181,6 +287,8 @@ def write_year_archives(
     year: int,
     stats_dir: Path | None,
     output_path: Path,
+    ask: bool = False,
+    clock: Callable[[], float] = time.monotonic,
 ) -> list[Path]:
     """Keep the page of every finished year in step with its ledger.
 
@@ -200,19 +308,28 @@ def write_year_archives(
     had, for good (Michael's decision of 2026-11-10: the archive follows
     the ledger).
 
+    Without *ask* only stored reviews are read; the statistics script
+    writes the pages so first and everything else of the run before any
+    request (review of 2026-11-10: a wait for Gemini or a failure in the
+    pages had cost the dashboard, the summary and the README of the run).
+    With *ask* the years are taken newest first under one
+    :class:`ReviewBudget` (*clock*), so the year just finished is asked
+    before an older one whose review stopped passing.
+
     Nothing is written for an explicit ``--year`` other than the current
     one, or for a year without rows. Returns the paths written.
     """
     if year != now.year:
         return []
+    budget = ReviewBudget(clock) if ask else None
     written: list[Path] = []
-    for finished in finished_years(stats_dir, before=year):
+    for finished in reversed(finished_years(stats_dir, before=year)):
         markdown = render_year_archive(
             now=now,
             year=finished,
             stats_dir=stats_dir,
             output_path=output_path,
-            ask=True,
+            budget=budget,
         )
         if markdown is None:
             continue
@@ -231,22 +348,100 @@ def write_year_archives(
     return written
 
 
+def _review_missing(year: int, *, stats_dir: Path | None) -> bool:
+    """Whether *year* has a page and roadworks but no accepted review stored.
+
+    The year's rows are read last, only while a review is missing: a year
+    without a row in the three ledgers of the dashboard gets no page
+    (:func:`render_year_archive`), so no run asks for its review and it
+    cannot be overdue. Until the review of 2026-11-10 such a year (only a
+    Baustellen ledger) failed the step on every tick, for good.
+    """
+    sites = load_sites(year, stats_dir=stats_dir)
+    if not sites or load_review(year, sites, stats_dir=stats_dir) is not None:
+        return False
+    sm_rows, st_rows, au_rows, _ = _rows_of_year(year, stats_dir=stats_dir)
+    return bool(sm_rows or st_rows or au_rows)
+
+
+def years_missing_review(*, before: int, stats_dir: Path | None) -> list[int]:
+    """Finished years before *before* that a dashboard run asks Gemini for, oldest first.
+
+    A year with a page and roadworks and no accepted review stored. The
+    statistics script sends requests only while this list is not empty.
+    """
+    return [
+        finished
+        for finished in finished_years(stats_dir, before=before)
+        if _review_missing(finished, stats_dir=stats_dir)
+    ]
+
+
 def years_without_review(*, now: datetime, stats_dir: Path | None) -> list[int]:
     """Finished years with roadworks whose review is overdue, oldest first.
 
-    A review is overdue when the year has roadworks in its ledger, no
-    accepted review is stored and :data:`REVIEW_GRACE_DAYS` of the new year
-    have passed. Every run of the statistics script asks this, not only the
-    dashboard run after midnight: the health check shows the last run of
-    the step, and the next run half an hour later would otherwise turn it
-    green again while the review is still missing.
+    A review is overdue when the year has a page and roadworks, no accepted
+    review is stored and :data:`REVIEW_GRACE_DAYS` of the new year have
+    passed. Every run of the Update cycle's statistics step asks this
+    (``--fail-on-missing-review``), not only the dashboard run after
+    midnight: the health check shows the last run of the step, and the
+    next run half an hour later would otherwise turn it green again while
+    the review is still missing. Within the grace days nothing is read.
     """
-    overdue: list[int] = []
-    for finished in finished_years(stats_dir, before=now.year):
-        opened = datetime(finished + 1, 1, 1 + REVIEW_GRACE_DAYS, tzinfo=VIENNA_TZ)
-        if now < opened:
-            continue
-        sites = load_sites(finished, stats_dir=stats_dir)
-        if sites and load_review(finished, sites, stats_dir=stats_dir) is None:
-            overdue.append(finished)
-    return overdue
+    return [
+        finished
+        for finished in finished_years(stats_dir, before=now.year)
+        if now >= datetime(finished + 1, 1, 1 + REVIEW_GRACE_DAYS, tzinfo=VIENNA_TZ)
+        and _review_missing(finished, stats_dir=stats_dir)
+    ]
+
+
+def write_year_pages(
+    *, now: datetime, year: int, stats_dir: Path | None, output_path: Path, ask: bool
+) -> bool:
+    """The statistics script's call of :func:`write_year_archives`; ``False`` when it failed.
+
+    The dashboard run calls it twice (review of 2026-11-10): first without
+    *ask*, before the summary, the dashboard and the README, which name the
+    pages; last with *ask*, after all of them, and only while
+    :func:`years_missing_review` names a year, so nothing of the run waits
+    for Gemini and a kill by the step's time limit costs only the review.
+    Any exception is one German ERROR line with its class: until that
+    review only an ``OSError`` was caught, a defect in the code of the page
+    left the run as a traceback, and a failed page ended it before the
+    summary, the dashboard and the README.
+    """
+    try:
+        if ask and not years_missing_review(before=year, stats_dir=stats_dir):
+            return True
+        write_year_archives(now=now, year=year, stats_dir=stats_dir, output_path=output_path, ask=ask)
+    except Exception as exc:  # the other outputs of the run must not depend on it
+        LOGGER.error(
+            "Konnte Jahresarchiv nicht schreiben (%s): %s",
+            type(exc).__name__,
+            sanitize_log_arg(str(exc)),
+        )
+        return False
+    return True
+
+
+def overdue_reviews_reported(*, now: datetime, stats_dir: Path | None) -> bool:
+    """Whether a review is overdue (:func:`years_without_review`); if so, one ERROR line.
+
+    The line says what the check knows: no stored text passes the guard.
+    The cause is in the log of the dashboard run (lines
+    "Baustellen-Rückblick …"); until the review of 2026-11-10 the line named
+    Gemini as the cause also when nothing was sent because the key was
+    empty. An empty key of this run is said.
+    """
+    overdue = years_without_review(now=now, stats_dir=stats_dir)
+    if not overdue:
+        return False
+    key_note = "" if os.environ.get(GEMINI_KEY_ENV, "").strip() else f" {GEMINI_KEY_ENV} ist in diesem Lauf leer."
+    LOGGER.error(
+        "Rückblick der Baustellen fehlt für %s: kein Text gespeichert, der die "
+        "Prüfung besteht (Grund im Protokoll des Laufs kurz nach Mitternacht).%s",
+        ", ".join(str(year) for year in overdue),
+        key_note,
+    )
+    return True

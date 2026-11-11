@@ -23,7 +23,18 @@ Contract, the same as for the writers in :mod:`src.utils.stats`:
 * Append-only, one file per Vienna year of the write. A site that is still
   in the cache after New Year gets a row in the new year's file as well:
   each year's file stands for itself, and the page of a year lists the
-  sites that were under way in it.
+  sites that were under way in it. A site whose last day lies before
+  1 January of the year of the write gets no row: the city's answer can
+  still hold a site on the day after its end (seen on 2026-09-05 for a site
+  that ended on 2026-09-04), and at New Year such a site was not under way
+  in the new year (review of 2026-11-10).
+* A row holds the site's text as it stood when its guid was first seen in
+  that year. A text the city changes later under the same guid is not
+  entered again; a moved start or end gives a new guid and so a new row
+  with the text of that day. The 61 rows of 2026 (19 sites) were backfilled
+  on 2026-11-10 from the history of the cache: each carries the last text
+  the cache held for its guid, under the time of the guid's first cache
+  commit.
 * One record is one physical line (every text field is collapsed to a
   single line), so the ``merge=union`` rule for ``data/stats/*.csv`` keeps
   both sides' rows. A union merge or two runs at the same moment can repeat
@@ -42,7 +53,7 @@ import csv
 import io
 import logging
 import re
-from collections.abc import Iterable, Mapping
+from collections.abc import Iterable, Mapping, Sequence
 from datetime import date, datetime
 from pathlib import Path
 from typing import Any, Final
@@ -59,8 +70,10 @@ from src.utils.stats import (
 from src.utils.stats_sanitize import (
     _CSV_CONTROL_CHARS_RE,
     _CSV_FORMULA_PREFIXES,
+    _CSV_TEXT_FIELD_MAX_LEN,
     _sanitize_csv_text_field,
 )
+from src.utils.vienna_clock import PLAUSIBLE_YEARS
 
 LOGGER = logging.getLogger("utils.stats_baustellen")
 
@@ -78,22 +91,30 @@ BAUSTELLEN_HEADER: Final = (
     "measure",
     "description",
 )
+_TIMESTAMP_COLUMN: Final = BAUSTELLEN_HEADER.index("timestamp")
 _GUID_COLUMN: Final = BAUSTELLEN_HEADER.index("guid")
+_TITLE_COLUMN: Final = BAUSTELLEN_HEADER.index("title")
+_ENDS_COLUMN: Final = BAUSTELLEN_HEADER.index("ends_at")
 
 # The longest description measured in the 2026 history has 1,952 characters
 # (median 517), so 2,000 keeps every real text whole. The other text fields
-# keep the 200 characters of ``_sanitize_csv_text_field``.
+# keep the 200 characters of ``_sanitize_csv_text_field``; the longest title
+# of that history has 101 characters.
 MAX_DESCRIPTION_CHARS: Final = 2000
 # Below ``PIPE_BUF`` (4,096 bytes), see the module docstring. 2,000 umlauts
 # alone are 4,000 bytes, so the description is shortened further when the
 # encoded row would reach this size.
 MAX_ROW_BYTES: Final = 4000
 # Read cap, same value and reason as ``MAX_STAMMSTRECKE_CSV_BYTES``: a year
-# of real rows is well below 1 MiB (191 sites in 2026), and a file that was
-# planted or grew by mistake must not be buffered whole.
+# of real rows is well below 1 MiB (61 rows for 19 sites in 2026, 62,523
+# bytes), and a file that was planted or grew by mistake must not be
+# buffered whole.
 MAX_BAUSTELLEN_CSV_BYTES: Final = 16 * 1024 * 1024
 
 _ELLIPSIS: Final = "…"
+# A spreadsheet that saves the file as "UTF-8 with BOM" puts this character
+# before the header.
+_BOM: Final = "\ufeff"
 
 
 def _one_line(value: object) -> str:
@@ -112,23 +133,52 @@ def _one_line(value: object) -> str:
     return " ".join(text.split())
 
 
-def _field(value: object) -> str:
-    """A short text field: one line, 200 characters, CSV formula guard."""
-    if isinstance(value, int) and not isinstance(value, bool):
-        value = str(value)
-    return _sanitize_csv_text_field(_one_line(value))
-
-
 def _shorten(text: str, keep: int) -> str:
     """The first *keep* characters of *text*, marked as shortened."""
     return text[: max(keep, 0)].rstrip() + _ELLIPSIS
 
 
-# The lines the provider appends to a site's text from its own fields
-# (``_format_description`` in ``src/providers/baustellen_events.py``).
-_GENERATED_DATE_LINE: Final = re.compile(
-    r"(?:Beginn|Geplant bis): \d{2}\.\d{2}\.\d{4} \d{2}:\d{2} Uhr"
+def _field(value: object) -> str:
+    """A short text field: one line, 200 characters, CSV formula guard.
+
+    A longer value ends in "…" like a shortened description: the cut is
+    made here, before the shared sanitiser would make it without a mark
+    (review of 2026-11-10; the reader's title key ignores a final "…").
+    """
+    if isinstance(value, int) and not isinstance(value, bool):
+        value = str(value)
+    text = _one_line(value)
+    if len(text) > _CSV_TEXT_FIELD_MAX_LEN:
+        text = _shorten(text, _CSV_TEXT_FIELD_MAX_LEN - 1)
+    return _sanitize_csv_text_field(text)
+
+
+# The date lines the provider appends to a site's text from its own fields
+# (``_format_description`` in ``src/providers/baustellen_events.py``), as
+# the last line of a text: from a line start to the end of the text.
+_GENERATED_DATE_TAIL: Final = re.compile(
+    r"^[ \t]*(?:Beginn|Geplant bis): \d{2}\.\d{2}\.\d{4} \d{2}:\d{2} Uhr\Z",
+    re.MULTILINE,
 )
+
+
+def _generated_tail(text: str, context_lines: Sequence[str]) -> int | None:
+    """Where the provider's last generated line begins in *text*, or ``None``.
+
+    *text* has no whitespace at its end. A generated line is a date line in
+    the provider's format or one of *context_lines* ("Maßnahme: …",
+    "Bezirk: …" with the event's own values), and it counts only when it
+    begins a line: the same words at the end of a sentence of the city stay.
+    """
+    match = _GENERATED_DATE_TAIL.search(text)
+    if match:
+        return match.start()
+    for line in context_lines:
+        start = len(text) - len(line)
+        before = text[:start].rstrip(" \t")
+        if text.endswith(line) and (not before or before.endswith("\n")):
+            return start
+    return None
 
 
 def _own_text(event: Mapping[str, Any]) -> object:
@@ -142,25 +192,30 @@ def _own_text(event: Mapping[str, Any]) -> object:
     writes: the two date lines in its format, and the measure and district
     lines when they say what the event's ``context`` says. A sentence of
     the city that begins with one of these words stays.
+
+    The end of the text is compared, not single lines, so a measure or a
+    district that itself holds a line break is recognised too. A site
+    without any text of the city keeps nothing: an empty description, not
+    the first generated line (review of 2026-11-10).
     """
     value = event.get("description")
     if not isinstance(value, str):
         return value
     context = event.get("context")
-    generated = set()
+    context_lines: list[str] = []
     if isinstance(context, Mapping):
-        generated = {
-            f"{label}: {context[key]}"
+        context_lines = [
+            f"{label}: {context[key]}".rstrip()
             for label, key in (("Maßnahme", "measure"), ("Bezirk", "district"))
             if context.get(key)
-        }
-    lines = value.split("\n")
-    while len(lines) > 1:
-        last = lines[-1].strip()
-        if last not in generated and not _GENERATED_DATE_LINE.fullmatch(last):
+        ]
+    text = value.rstrip()
+    while text:
+        start = _generated_tail(text, context_lines)
+        if start is None:
             break
-        lines.pop()
-    return "\n".join(lines)
+        text = text[:start].rstrip()
+    return text
 
 
 def _description(value: object) -> str:
@@ -264,11 +319,37 @@ def baustelle_row(event: Mapping[str, Any], *, seen_at: datetime) -> tuple[str, 
 
 
 def _parse_line(line: str) -> list[str] | None:
-    """One physical line as CSV fields; ``None`` when it is not a CSV record."""
+    """One physical line as CSV fields; ``None`` when it is not a CSV record.
+
+    ``strict`` like the reader of the year page (``_split_line`` in
+    ``src/markdown_stats/baustellen_year.py``): a quotation mark that is
+    not closed on the line, or text after the closing one, is no record.
+    """
     try:
-        return next(csv.reader(io.StringIO(line)), None)
+        return next(csv.reader(io.StringIO(line), strict=True), None)
     except csv.Error:
         return None
+
+
+def _is_site_row(row: Sequence[str]) -> bool:
+    """``True`` for a full row that the reader of the year page can read.
+
+    The test of ``_parse_row`` in ``src/markdown_stats/baustellen_year.py``
+    (that module imports this one, so it is repeated here): a time stamp
+    that reads and lies in a plausible year, a guid and a title. A line the
+    reader skips as unreadable must not count as known here, or its site
+    would be missing from the year page and never be entered again (review
+    of 2026-11-10).
+    """
+    try:
+        seen = datetime.fromisoformat(row[_TIMESTAMP_COLUMN].strip())
+    except ValueError:
+        return False
+    return (
+        PLAUSIBLE_YEARS[0] <= seen.year <= PLAUSIBLE_YEARS[1]
+        and bool(row[_GUID_COLUMN].strip())
+        and bool(row[_TITLE_COLUMN].strip())
+    )
 
 
 def _ledger_guids(path: Path) -> set[str] | None:
@@ -276,16 +357,19 @@ def _ledger_guids(path: Path) -> set[str] | None:
 
     A missing or empty file is an empty ledger. ``None`` (with a WARNING)
     stands for a file that exists but cannot be read within the size cap,
-    or whose first line is not :data:`BAUSTELLEN_HEADER`: rows appended to
-    it would stand under the wrong columns, and with an unreadable file
-    every run would append every site again. Such a file is left as it is
-    until a person has looked at it.
+    or whose first line with content is not :data:`BAUSTELLEN_HEADER`: rows
+    appended to it would stand under the wrong columns, and with an
+    unreadable file every run would append every site again. Such a file
+    is left as it is until a person has looked at it. A byte order mark
+    and empty lines before the header are passed over, as the reader of
+    the year page does: a file saved once by a spreadsheet is still the
+    ledger (review of 2026-11-10).
 
     Every line is parsed on its own. The writer guarantees one record per
     line, so a torn or hand-edited line with an open quotation mark spoils
-    only itself and not the lines after it. Only a line with the full
-    column count counts: a site whose line is damaged is entered again.
-    Undecodable bytes are replaced for the same reason.
+    only itself and not the lines after it. Only a line the reader can
+    read counts (:func:`_is_site_row`): a site whose line is damaged is
+    entered again. Undecodable bytes are replaced for the same reason.
     """
     text = read_capped_text(
         path,
@@ -312,9 +396,9 @@ def _ledger_guids(path: Path) -> set[str] | None:
         return None
     if not text:
         return set()
-    lines = text.split("\n")
+    lines = [line.rstrip("\r") for line in text.removeprefix(_BOM).split("\n")]
     header = list(BAUSTELLEN_HEADER)
-    if _parse_line(lines[0].rstrip("\r")) != header:
+    if _parse_line(next((line for line in lines if line.strip()), "")) != header:
         LOGGER.warning(
             "Baustellen-Statistik: %s hat eine andere Kopfzeile als erwartet; "
             "die Datei wird nicht gelesen und nicht ergänzt.",
@@ -322,14 +406,14 @@ def _ledger_guids(path: Path) -> set[str] | None:
         )
         return None
     guids: set[str] = set()
-    for line in lines[1:]:
-        row = _parse_line(line.rstrip("\r"))
-        # A union merge of two runs that both created the file repeats the
-        # header line; it is not a site.
+    for line in lines:
+        row = _parse_line(line)
+        # The header line is not a site, wherever it stands: a union merge
+        # of two runs that both created the file repeats it.
         if row is None or len(row) != len(header) or row == header:
             continue
-        if row[_GUID_COLUMN]:
-            guids.add(row[_GUID_COLUMN])
+        if _is_site_row(row):
+            guids.add(row[_GUID_COLUMN].strip())
     return guids
 
 
@@ -344,8 +428,47 @@ def known_guids(year: int, *, stats_dir: Path | None = None) -> set[str]:
     return guids if guids is not None else set()
 
 
+def _ended_before(ends_at: str, year: int) -> bool:
+    """``True`` when the Vienna date *ends_at* lies before 1 January of *year*.
+
+    The column holds ``YYYY-MM-DD`` or nothing, so the texts compare like
+    the dates. No end is an open end. So is a year below
+    :data:`PLAUSIBLE_YEARS`: the reader of the year page shows such an end
+    as open, and the provider does not pass one on in the first place.
+    """
+    return f"{PLAUSIBLE_YEARS[0]:04d}" <= ends_at < f"{year:04d}-01-01"
+
+
+def _end_last_line(path: Path) -> None:
+    """Give the last line of the ledger at *path* its line break if it has none.
+
+    Ledgers are corrected by hand, and an editor can leave the last line
+    open. ``_append_row`` would put the next row onto that line: one line
+    with 19 fields, which neither this module nor the reader of the year
+    page takes for a site, so both sites would be gone. The shared writer
+    of the other ledgers stays as it is (review of 2026-11-10), so the line
+    break is a write of its own, one byte, before the row. A bare ``\\n``:
+    after a lone ``\\r`` it completes the pair, and both readers strip a
+    ``\\r``.
+
+    A missing or empty file has no line to end. Any other failure (folder,
+    permissions) is met by ``_append_row`` right after, which reports it.
+    """
+    try:
+        with path.open("rb") as handle:
+            if handle.seek(0, io.SEEK_END) == 0:
+                return
+            handle.seek(-1, io.SEEK_END)
+            if handle.read(1) == b"\n":
+                return
+        with path.open("ab") as handle:
+            handle.write(b"\n")
+    except OSError:
+        return
+
+
 def _append_new(path: Path, event: object, when: datetime, known: set[str]) -> bool | None:
-    """Append *event* unless its guid is in *known*.
+    """Append *event* unless its guid is in *known* or it ended before the year.
 
     ``True``: a row was written (and its guid added to *known*, which also
     covers a site that both WFS layers list). ``False``: nothing to write.
@@ -357,6 +480,9 @@ def _append_new(path: Path, event: object, when: datetime, known: set[str]) -> b
     row = baustelle_row(event, seen_at=when)
     if row is None or row[_GUID_COLUMN] in known:
         return False
+    if _ended_before(row[_ENDS_COLUMN], when.year):
+        return False
+    _end_last_line(path)
     if not _append_row(path, BAUSTELLEN_HEADER, row):
         return None
     known.add(row[_GUID_COLUMN])
@@ -375,12 +501,17 @@ def append_baustellen_rows(
     moment), and *now* is the ``timestamp`` of every row written: the first
     time the site was seen in that year. Returns the number of rows written.
 
+    A site whose last day lies before 1 January of that year gets no row
+    (module docstring). A last line that a hand edit left without its line
+    break is ended before the first row is written (:func:`_end_last_line`).
+
     Best effort like every statistics writer: it never raises. A file with a
     different header, or one that cannot be read, gets no row; an event whose
     row fails with an error is skipped and the others are still written. Each
     of these cases is logged at WARNING. An event without a usable guid or
-    title (:func:`baustelle_row` gives ``None``) and an entry that is no
-    mapping are passed over without a log line.
+    title (:func:`baustelle_row` gives ``None``), an entry that is no
+    mapping and a site that ended before the year are passed over without a
+    log line.
     """
     written = 0
     skipped = 0

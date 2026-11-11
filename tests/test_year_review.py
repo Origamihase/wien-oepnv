@@ -180,7 +180,7 @@ def test_rule_c_accepts_what_stands_in_the_data_or_the_facts(sentence: str) -> N
 @pytest.mark.parametrize(
     ("sentence", "token"),
     [
-        ("Insgesamt waren es 77 Baustellen.", "77"),            # a number not in the data
+        ("Insgesamt waren es 77 Stellen.", "77"),               # a number not in the data (before "Baustellen" also rule h)
         ("Die Linie 13A fuhr anders.", "13A"),                  # a line not in the data
         ("Betroffen war die U6.", "U6"),
         ("Die Arbeiten begannen am 14.08. im Bezirk.", "14.08"),  # a date not in the data
@@ -228,11 +228,10 @@ def test_rule_d_accepts_streets_of_the_data(sentence: str) -> None:
         ("In der Hernalser Hauptstraße wurde gearbeitet.", "Hernalser Hauptstraße"),
         ("Am Schottenring wurde gearbeitet.", "Schottenring"),
         ("Am Franz-Josefs-Kai wurde gearbeitet.", "Franz-Josefs-Kai"),
-        # The ending counts in any case of the letters.
+        # A capitalised name counts in any case of its other letters.
         ("Die BURGGASSE war gesperrt, die ZIEGLERGASSE auch.", "ZIEGLERGASSE"),
-        ("Der Verkehr wich auf den zieglerweg aus.", "zieglerweg"),
-        # An ordinary word with such an ending must stand in the data as well.
-        ("Der Radweg war gesperrt.", "Radweg"),
+        ("Der Verkehr wich auf den Vorplatz aus.", "Vorplatz"),  # a noun with such an ending outside the ordinary words
+        ("Der Wiener Radweg war gesperrt.", "Wiener Radweg"),    # an ordinary word as part of a name
     ],
 )
 def test_rule_d_rejects_a_street_that_is_not_in_the_data(sentence: str, name: str) -> None:
@@ -326,7 +325,7 @@ def test_rule_g_rejects_first_person_address_and_advice(sentence: str, marker: s
 
 def test_rule_g_reads_its_markers_as_words() -> None:
     assert _check(_with("Die Arbeiten wirkten sich gleich aus, und sie zeigten Wirkung.")) == []
-    assert [label for label, _ in yr._VOICE_MARKERS] == ["ich", "wir", "Sie sollten", "bitte"]
+    assert [label for label, _ in yr._VOICE_MARKERS] == ["ich", "wir", "du", "Sie sollten", "bitte"]
 
 
 def test_the_guard_reports_every_broken_rule() -> None:
@@ -394,12 +393,14 @@ def test_the_prompt_holds_the_rules_the_facts_and_every_site() -> None:
     ]
     # The facts stand before the data, counted by the script.
     facts = lines[lines.index("Faktenblock (vom Skript gezählt):") + 1:opened]
-    assert facts[:5] == [
+    assert facts[:7] == [
         "- Jahr: 2026",
         "- Baustellen mit Folgen für den öffentlichen Verkehr: 4",
+        "- Erfasst seit: 24.05.2026 (Baustellen, die davor endeten, fehlen in den Zahlen)",
         "- Beginn im Jahr 2026, je Monat: Februar: 1, Mai: 1, Juli: 1, September: 1",
         "- Beginn vor 2026: 0",
         "- Baustellen je Bezirk: 3. Bezirk (Landstraße): 2, 7. Bezirk (Neubau): 1, 22. Bezirk (Donaustadt): 1",
+        "- Baustellen je Maßnahme: Gleisbau: 2, Rohrlegung: 1, Straßenbau: 1",
     ]
     assert not any("Hinweis" in line for line in facts)
 
@@ -566,7 +567,7 @@ def test_without_a_key_nothing_is_asked(tmp_path: Path, monkeypatch: pytest.Monk
     assert list(tmp_path.iterdir()) == []
     # An empty key as an argument is no key either, whatever the environment holds.
     monkeypatch.setenv("GEMINI_API_KEY", "aus-der-umgebung")
-    assert _ensure(tmp_path, _never, key=" ").asked is False
+    assert all(_ensure(tmp_path, _never, key=empty).asked is False for empty in ("", " "))
 
 
 def test_the_key_of_the_environment_reaches_the_client(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:

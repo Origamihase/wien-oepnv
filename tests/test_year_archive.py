@@ -176,6 +176,12 @@ def test_archive_says_how_far_a_silent_direction_reaches(tmp_path: Path) -> None
         "Richtung **Praterstern** daher nur bis dahin.\n"
     ) in archive
     assert "Aktuell" not in archive
+    # Once, at the head of the overview: "unten" covers its month and
+    # direction tables too (review of 2026-11-10; it stood under
+    # "## Stammstrecke", below those tables).
+    lines = archive.splitlines()
+    (note,) = [i for i, line in enumerate(lines) if "Eingeschränkte Abdeckung" in line]
+    assert lines.index("## Das Jahr im Überblick") < note < lines.index("### Erfasster Zeitraum")
 
 
 def test_finished_year_note_is_judged_at_the_end_of_the_year() -> None:

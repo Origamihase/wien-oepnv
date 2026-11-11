@@ -23,6 +23,7 @@ from collections import Counter, defaultdict
 from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
 from datetime import date, datetime
+from decimal import ROUND_HALF_UP, Context, Decimal
 from typing import Final, TypeVar
 
 from src.feed.stammstrecke import DELAY_THRESHOLD_MINUTES
@@ -57,6 +58,25 @@ MAX_DIRECTION_ROWS: Final = 6
 # data series, or there is no observation to take a mean or a maximum from.
 # Never used for "nothing happened", which is 0.
 NOT_RECORDED: Final = "–"
+
+# One decimal, rounded half up, for every delay the section prints
+# (:func:`_fmt_delay`). The context is that wide because a float has up to
+# 309 digits before the point: with the 28 digits of the default context a
+# hand-added row of 1e30 would raise ``InvalidOperation`` and take the page
+# with it.
+_TENTH: Final = Decimal("0.1")
+_HALF_UP: Final = Context(prec=400, rounding=ROUND_HALF_UP)
+
+# A mean is a float division and can land a hair beside the value it stands
+# for: (0.01 + 0.09) / 2 is 0.049999999999999996 and would print as 0.0.
+# Rounding to this many decimals first removes that hair and cannot make a
+# tie of its own: the mean of n ledger values (two decimals each) is a
+# multiple of 1/(100·n), so one that is no tie lies at least 1/(100·n) from
+# the next tie, which is more than 5e-10 for up to 20 million rows; a year
+# has at most 2 directions × 48 polls × 366 days = 35,136. Measured on
+# 2026-11-10 over the means of all 80,200 pairs of values from 0.00 to 3.99:
+# 282 printed one tenth low without this step, none with it.
+_FLOAT_NOISE_DECIMALS: Final = 9
 
 # Austrian German: "Jänner", as Wiener Linien titles write it
 # (src/providers/wl_text.py); the other eleven are the same everywhere.
@@ -131,8 +151,24 @@ def _delay_figures(samples: Sequence[_Sample], threshold: float) -> _DelayFigure
 
 
 def _fmt_delay(minutes: float) -> str:
-    """``12.3 min``, the format of the existing page; never ``-0.0 min``."""
-    text = f"{minutes:.1f}"
+    """``12.3 min``, rounded half up as a reader rounds; never ``-0.0 min``.
+
+    ``f"{11.25:.1f}"`` is ``11.2``: the float format rounds an exact half
+    to the even digit. The ledger stores two decimals and "Höchste
+    Verspätung" prints single ledger values, so a reader who compares page
+    and ledger found 11.25 shown as 11.2 (review of 2026-11-10). The
+    shortest decimal form of the float is rounded instead, a half away from
+    zero. The older tables of the page (``markdown_report``) keep the float
+    format: they print means only, where an exact half is rare.
+
+    A value that is not finite keeps the float format ("inf min"): such a
+    row does not reach this module (see :func:`render_year_overview`), and
+    if one ever does, the page is still written.
+    """
+    if not math.isfinite(minutes):
+        return f"{minutes:.1f} min"
+    shortest = Decimal(repr(round(minutes, _FLOAT_NOISE_DECIMALS)))
+    text = format(shortest.quantize(_TENTH, context=_HALF_UP), "f")
     return f"{'0.0' if text == '-0.0' else text} min"
 
 
@@ -196,21 +232,24 @@ def _recorded(month: int, span: _Span | None) -> bool:
     Delays and disruptions are judged by their own rows only. Cancellations
     are written by the monitor that writes the delay rows, and only when a
     train is cancelled: a month with delay rows and no cancellation is a 0,
-    so their period also covers the months of the delay rows
-    (:func:`_joined`).
+    so a month counts as recorded for them when it lies in their own period
+    or in that of the delay rows (:func:`_count_cell` takes both).
     """
     return span is not None and span[0].month <= month <= span[1].month
 
 
-def _joined(first: _Span | None, second: _Span | None) -> _Span | None:
-    """The period from the earlier start to the later end of two series."""
-    if first is None or second is None:
-        return first or second
-    return (min(first[0], second[0]), max(first[1], second[1]))
+def _count_cell(count: int, month: int, *spans: _Span | None) -> str:
+    """The count of a month that lies in one of *spans*, else "not recorded".
 
-
-def _count_cell(count: int, month: int, span: _Span | None) -> str:
-    return str(count) if _recorded(month, span) else NOT_RECORDED
+    Each period is asked on its own. Until the review of 2026-11-10 the two
+    periods of the cancellations were joined into one, from the earlier
+    start to the later end: with cancellations in January and February and
+    delay rows from June on, March to May showed 0, although the legend
+    under the table promises :data:`NOT_RECORDED` for a month after the last
+    cancellation row and without a delay row.
+    """
+    recorded = any(_recorded(month, span) for span in spans)
+    return str(count) if recorded else NOT_RECORDED
 
 
 def _delay_cells(
@@ -256,7 +295,7 @@ def _months_section(
     ausfaelle_of = Counter(day.month for day in ausfall_days)
     stoerungen_of = Counter(day.month for day in stoerung_days)
     delay_span = _span(day for day, _ in delays)
-    ausfall_span = _joined(_span(ausfall_days), delay_span)
+    ausfall_span = _span(ausfall_days)
     stoerung_span = _span(stoerung_days)
 
     lines = [
@@ -271,7 +310,7 @@ def _months_section(
             *_delay_cells(
                 delays_of[month], threshold, recorded=_recorded(month, delay_span)
             ),
-            _count_cell(ausfaelle_of[month], month, ausfall_span),
+            _count_cell(ausfaelle_of[month], month, ausfall_span, delay_span),
             _count_cell(stoerungen_of[month], month, stoerung_span),
         )
         lines.append(f"| {name} | {' | '.join(cells)} |")
@@ -315,18 +354,40 @@ def _directions_section(
     rest = ranked[MAX_DIRECTION_ROWS:]
     if rest:
         observations = sum(len(samples) for _, samples in rest)
+        # One spelling beyond the cap has nothing to add up ("zusammen").
+        spellings = (
+            "1 weitere Richtungsangabe mit"
+            if len(rest) == 1
+            else f"{len(rest)} weitere Richtungsangaben mit zusammen"
+        )
+        noun = "Beobachtung" if observations == 1 else "Beobachtungen"
         lines.extend(
-            [
-                f"Nicht einzeln aufgeführt: {len(rest)} weitere Richtungsangaben mit "
-                f"zusammen {observations} Beobachtungen.",
-                "",
-            ]
+            [f"Nicht einzeln aufgeführt: {spellings} {observations} {noun}.", ""]
         )
     return lines
 
 
+def _chosen_days(count: int) -> str:
+    """How many of *count* days a day table shows; one day in the singular.
+
+    "bis zu 5 der 1 Tage" stood on the page of a year with a single such
+    day (review of 2026-11-10).
+    """
+    if count == 1:
+        return "den einzigen Tag"
+    return f"bis zu {TOP_DAYS} der {count} Tage"
+
+
 def _delay_days_section(delays: Sequence[_Sample], *, threshold: float) -> list[str]:
-    """The days with the highest mean delay; an earlier day wins a tie."""
+    """The days with the highest mean delay; an earlier day wins a tie.
+
+    The order follows the mean as computed, the cell shows one decimal: two
+    days can show the same value with the later one first. The note under
+    the table therefore names the unrounded mean as the order; without
+    that, such a pair contradicts the sentence about the earlier day
+    (review of 2026-11-10). Ordering by the shown value instead would put a
+    day with a lower mean above one with a higher.
+    """
     title = "### Tage mit der höchsten mittleren Verspätung"
     if not delays:
         return [title, "", "_Keine Beobachtungen erfasst._", ""]
@@ -361,9 +422,10 @@ def _delay_days_section(delays: Sequence[_Sample], *, threshold: float) -> list[
     lines.extend(
         [
             "",
-            f"Die Tabelle zeigt bis zu {TOP_DAYS} der {len(eligible)} Tage mit mindestens "
+            f"Die Tabelle zeigt {_chosen_days(len(eligible))} mit mindestens "
             f"{MIN_DAY_OBSERVATIONS} Beobachtungen (Tage mit Beobachtungen insgesamt: "
-            f"{len(samples_of)}); bei gleichem Mittelwert steht der frühere Tag zuerst.",
+            f"{len(samples_of)}), geordnet nach dem ungerundeten Mittelwert; bei "
+            "gleichem Mittelwert steht der frühere Tag zuerst.",
             "",
         ]
     )
@@ -399,7 +461,7 @@ def _ausfall_days_section(ausfaelle: Sequence[tuple[date, str]]) -> list[str]:
     lines.extend(
         [
             "",
-            f"Die Tabelle zeigt bis zu {TOP_DAYS} der {len(ranked)} Tage mit Ausfällen; "
+            f"Die Tabelle zeigt {_chosen_days(len(ranked))} mit Ausfällen; "
             "bei gleicher Zahl steht der frühere Tag zuerst, bei gleich häufigen Linien "
             "die im Alphabet erste. In Klammern: Ausfälle dieser Linie an diesem Tag.",
             "",
@@ -414,6 +476,7 @@ def render_year_overview(
     au_rows: Sequence[AusfallRow],
     *,
     year: int,
+    coverage_note: str = "",
 ) -> list[str]:
     """The Markdown lines of "## Das Jahr im Überblick" for *year*.
 
@@ -423,13 +486,24 @@ def render_year_overview(
     ignored. The lines end with an empty string, like every section of
     ``markdown_report``.
 
-    The opening sentence says what an observation is, in the words of
-    ``data/stats/README.md`` (table row ``stammstrecke_YYYY.csv``: "eine
-    aggregierte Zeile pro Richtung und Cron-Tick (mittlere Verspätung aller
-    in diesem Tick am Wien Hauptbahnhof beobachteten S-Bahn-Abfahrten)") and
-    of the website ("S-Bahn-Beobachtungen am Wien Hauptbahnhof",
-    ``docs/site.html``, section "Stammstrecke – Verspätungen"). Neither
-    ``docs/statistik.md`` nor ``docs/site.html`` defines the word itself.
+    *coverage_note* is the year's note on a direction that is not recorded
+    to the end of the year (``render_finished_year_coverage_note``), or
+    empty. It stands once on the page, directly under the opening
+    paragraph: its sentence "Die Jahreszahlen unten …" is then true for
+    every month and direction figure of this section. Until the review of
+    2026-11-10 the note stood further down, under "## Stammstrecke", and
+    the 2026 tables here set Meidling (recorded to 10.11.) beside
+    Praterstern (to 14.08.) with no word why. The caller computes the
+    note; this function stays pure.
+
+    The opening sentence says what an observation is. ``data/stats/README.md``
+    (table row ``stammstrecke_YYYY.csv``) and the website (``docs/site.html``,
+    "S-Bahn-Beobachtungen am Wien Hauptbahnhof") call the trains "S-Bahn";
+    neither defines the word "Beobachtung". The sentence names the four
+    kinds of train the monitor takes on the Stammstrecke platforms
+    (``_S_BAHN_LINE_RE`` in ``src/stammstrecke/core.py``): 801 of the 1955
+    cancellations recorded up to 2026-11-10 are R, REX or CJX trains, and
+    the last table of this section names such lines (review of that day).
     The sentence also says that "Höchste Verspätung" is the highest such
     row: the mean of one poll, not the delay of a single train, which the
     ledger does not hold.
@@ -456,11 +530,15 @@ def render_year_overview(
         "## Das Jahr im Überblick",
         "",
         "Eine Beobachtung ist eine Zeile je Richtung und Abfrage: die mittlere "
-        "Verspätung aller dabei am Wien Hauptbahnhof beobachteten S-Bahn-Abfahrten; "
+        "Verspätung aller dabei am Wien Hauptbahnhof beobachteten Abfahrten auf der "
+        "Stammstrecke (S-Bahn, R, REX und CJX); "
         f"„Verspätungen > {threshold:g} min“ zählt die Beobachtungen über diesem Wert, "
         "„Höchste Verspätung“ nennt die höchste Beobachtung.",
         "",
     ]
+    if coverage_note.strip():
+        # ``splitlines`` keeps the rule of this list: one entry, one line.
+        lines.extend([*coverage_note.rstrip("\n").splitlines(), ""])
     lines.extend(
         _period_section(
             [

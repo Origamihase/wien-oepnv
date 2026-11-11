@@ -107,12 +107,26 @@ def _seed(tmp_path: Path, *, baustellen: bool) -> None:
 
 
 def _run(tmp_path: Path, now_iso: str, *extra: str) -> int:
+    """One run as the Update cycle starts it: README patched, no ``--skip-readme``.
+
+    Until the review of 2026-11-10 every run here passed ``--skip-readme``,
+    a way to the exit code the workflow never takes.
+    """
+    readme = tmp_path / "README.md"
+    if not readme.exists():
+        readme.write_text(
+            "".join(
+                f"<!-- STATS:{name}:BEGIN -->\n<!-- STATS:{name}:END -->\n"
+                for name in ("STAMMSTRECKE_LIVE", "STAMMSTRECKE", "AUSFAELLE_LIVE", "AUSFAELLE")
+            ),
+            encoding="utf-8",
+        )
     return stats_script.main(
         [
             "--stats-dir", str(tmp_path / "stats"),
             "--output", str(tmp_path / "statistik.md"),
             "--summary-path", str(tmp_path / "stats-summary.json"),
-            "--skip-readme",
+            "--readme-path", str(readme),
             "--now-iso", now_iso,
             *extra,
         ]
@@ -127,7 +141,7 @@ def _answer(monkeypatch: pytest.MonkeyPatch, text: str | None) -> list[str]:
     """Let Gemini answer *text* (``None``: no answer); returns the prompts it was sent."""
     prompts: list[str] = []
 
-    def ask(prompt: str, *, key: str) -> ReviewAnswer | None:
+    def ask(prompt: str, *, key: str, deadline_s: float | None = None) -> ReviewAnswer | None:
         assert key == "k"
         prompts.append(prompt)
         return None if text is None else ReviewAnswer(text, "gemini-test")
@@ -231,30 +245,40 @@ def test_rejected_review_is_not_shown_and_is_asked_again_the_next_day(
 def test_missing_review_fails_the_step_from_the_fourth_day(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
 ) -> None:
-    """Three days are a log line, then every run ends with 1 until the review is there."""
+    """Three days are a log line, then every run ends with 1 until the review is there.
+
+    Only with ``--fail-on-missing-review``, which the Update cycle passes on
+    both calls. Until the review of 2026-11-10 every caller got the 1, also
+    build-feed.yml and the manual refresh, which then skipped their publish.
+    """
     _seed(tmp_path, baustellen=True)
     _answer(monkeypatch, None)
-    assert _run(tmp_path, "2027-01-01T00:01:00+01:00") == 0
-    assert _run(tmp_path, "2027-01-03T23:31:00+01:00", "--skip-dashboard") == 0
-    assert _run(tmp_path, "2027-01-04T00:01:00+01:00") == 1
+    flag = "--fail-on-missing-review"
+    assert _run(tmp_path, "2027-01-01T00:01:00+01:00", flag) == 0
+    assert _run(tmp_path, "2027-01-03T23:31:00+01:00", "--skip-dashboard", flag) == 0
+    assert _run(tmp_path, "2027-01-04T00:01:00+01:00", flag) == 1
     assert "Rückblick der Baustellen fehlt für 2026" in caplog.text
     # The run wrote everything all the same.
     assert "2027-01-04T00:01+01:00" in (tmp_path / "statistik.md").read_text(encoding="utf-8")
     assert PENDING in _page(tmp_path)
     # Not only the run after midnight: the health check reads the last run.
-    assert _run(tmp_path, "2027-01-04T00:31:00+01:00", "--skip-dashboard") == 1
+    assert _run(tmp_path, "2027-01-04T00:31:00+01:00", "--skip-dashboard", flag) == 1
+    # The two other workflows call the script without the flag.
+    assert _run(tmp_path, "2027-01-04T00:31:00+01:00", "--skip-dashboard") == 0
+    assert _run(tmp_path, "2027-01-04T01:01:00+01:00") == 0
     _answer(monkeypatch, GOOD)
-    assert _run(tmp_path, "2027-01-05T00:01:00+01:00") == 0
-    assert _run(tmp_path, "2027-01-05T00:31:00+01:00", "--skip-dashboard") == 0
+    assert _run(tmp_path, "2027-01-05T00:01:00+01:00", flag) == 0
+    assert _run(tmp_path, "2027-01-05T00:31:00+01:00", "--skip-dashboard", flag) == 0
 
 
 def test_year_without_roadworks_never_fails_the_step(tmp_path: Path) -> None:
     _seed(tmp_path, baustellen=False)
-    assert _run(tmp_path, "2027-01-01T00:01:00+01:00") == 0
-    assert _run(tmp_path, "2027-06-01T00:01:00+02:00") == 0
+    assert _run(tmp_path, "2027-01-01T00:01:00+01:00", "--fail-on-missing-review") == 0
+    assert _run(tmp_path, "2027-06-01T00:01:00+02:00", "--fail-on-missing-review") == 0
     assert BAUSTELLEN not in _page(tmp_path)
 
 
 def test_replay_of_another_year_does_not_judge_the_review(tmp_path: Path) -> None:
     _seed(tmp_path, baustellen=True)
-    assert _run(tmp_path, "2027-02-01T00:01:00+01:00", "--year", "2026", "--skip-dashboard") == 0
+    flag = "--fail-on-missing-review"
+    assert _run(tmp_path, "2027-02-01T00:01:00+01:00", "--year", "2026", "--skip-dashboard", flag) == 0

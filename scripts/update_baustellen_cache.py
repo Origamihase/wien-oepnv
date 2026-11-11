@@ -447,7 +447,11 @@ def main() -> int:
         return 2
     # Yearly Baustellen ledger (owner's decision of 2026-11-10): every site
     # the city delivered that passed the transit rule above gets one row per
-    # year in ``data/stats/baustellen_<year>.csv``. Written here and not in
+    # year in ``data/stats/baustellen_<year>.csv``, with its text as it stood
+    # at that first sighting. The writer leaves out a site whose last day
+    # lies before 1 January of the running year (the city can still deliver
+    # a site on the day after its end): the cache above holds what the city
+    # sent, the ledger what was under way in the year. Written here and not in
     # the feed build, because the feed drops a site that a running WL notice
     # already reports (twins rule, 2026-10-09). Reached for the city's own
     # data only: the bundled demo sample has returned above, while a layer

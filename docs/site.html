@@ -179,9 +179,11 @@
              under "Aktuelle Meldungen"). Hidden until ``renderYearSwitch``
              in site.js finds a finished year in ``archive_years`` of
              stats-summary.json; it then fills the list with the running
-             year (a link to the statistics on this page) and one link per
-             finished year to ``statistik-<year>.html``. Without JavaScript
-             or without a finished year the row takes no space. -->
+             year (a link to the first statistics section on this page,
+             #stoerungen) and one link per finished year to
+             ``statistik-<year>.html``; beyond thirty finished years one more
+             chip leads to statistik.html, which lists every year. Without
+             JavaScript or without a finished year the row takes no space. -->
         <nav class="year-switch" id="year-switch" aria-label="Statistik nach Jahr" data-i18n-aria-label="year-switch-aria" hidden>
           <span class="year-switch__label" data-i18n="year-switch-label">Statistik nach Jahr:</span>
           <ul class="year-switch__list" id="year-switch-list"></ul>
@@ -381,6 +383,6 @@
     </div>
   </footer>
 
-  <script src="assets/site.min.js?v=8f98d2a1f068" defer></script>
+  <script src="assets/site.min.js?v=0129b6247798" defer></script>
 </body>
 </html>

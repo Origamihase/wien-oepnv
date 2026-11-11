@@ -86,8 +86,10 @@ MIN_REQUEST_S: Final = 15.0
 OVERLOAD_STATUS: Final = frozenset({500, 502, 503, 504})
 QUOTA_STATUS: Final = 429
 # A model Google has retired answers 404 (or 400 for a name it no longer
-# takes); the next model of the chain may still exist.
+# takes); the next model of the chain may still exist. A rejected key comes
+# as 400 too, with the reason below, and ends the pass (_key_rejected).
 RETIRED_STATUS: Final = frozenset({400, 404})
+KEY_REJECTED_REASON: Final = "API_KEY_INVALID"
 HANDOVER_STATUS: Final = OVERLOAD_STATUS | RETIRED_STATUS | {QUOTA_STATUS}
 MAX_ERROR_CHARS: Final = 200
 # The answer's shape, enforced by the API. It shapes the answer and proves
@@ -244,6 +246,21 @@ def _answer_from(response: requests.Response, model: str) -> ReviewAnswer | None
     return ReviewAnswer(text=review, model=model)
 
 
+def _key_rejected(response: requests.Response) -> bool:
+    """Whether Google refused the key itself: an error whose details carry :data:`KEY_REJECTED_REASON`.
+
+    The Gemini API answers an invalid key with HTTP 400, the status of a
+    retired model name. Until the review of 2026-11-10 such a key went to
+    all four models of the chain, four requests and four log lines a run.
+    """
+    error = (_payload_of(response) or {}).get("error")
+    details = error.get("details") if isinstance(error, dict) else None
+    return any(
+        isinstance(detail, dict) and detail.get("reason") == KEY_REJECTED_REASON
+        for detail in (details if isinstance(details, list) else [])
+    )
+
+
 def _ask_one(
     session: requests.Session,
     model: str,
@@ -262,9 +279,9 @@ def _ask_one(
     (reproduced in the review of 2026-11-10; until then such a 5xx ended
     the pass). An answer above the size cap comes the same way and hands
     over too; the chain and the deadline bound it. A refusal that the next
-    model would repeat (a rejected key, a 200 whose body is no JSON, an
-    answer cut off by the model) and any other transport error end the
-    pass.
+    model would repeat (a rejected key, whether as 401, 403 or as a 400 that
+    :func:`_key_rejected` recognises; a 200 whose body is no JSON; an answer
+    cut off by the model) and any other transport error end the pass.
     """
     try:
         response = request_safe(
@@ -300,7 +317,8 @@ def _ask_one(
         return None, not isinstance(exc, requests.RequestException)
     answer = _answer_from(response, model)
     status = response.status_code
-    return answer, answer is None and (status in HANDOVER_STATUS or 500 <= status <= 599)
+    hand_over = status in HANDOVER_STATUS or 500 <= status <= 599
+    return answer, answer is None and hand_over and not _key_rejected(response)
 
 
 def _ask_chain(
@@ -349,9 +367,9 @@ def ask_review(
     *models* defaults to :func:`models_from_env`. Each model is asked at
     most once, in order, without a wait in between: a server error (every
     5xx, also one that arrives as an error page instead of JSON), a
-    reached quota (429), a retired model (404, 400), a dropped connection
-    or a timeout hands over to the next one, as long as at least
-    :data:`MIN_REQUEST_S` of *deadline_s* are left
+    reached quota (429), a retired model (404, 400 without a rejected
+    key), a dropped connection or a timeout hands over to the next one, as
+    long as at least :data:`MIN_REQUEST_S` of *deadline_s* are left
     (measured with *clock* from the first request). Every request waits at
     most ``min(90, seconds left)`` for its answer. An answer counts only
     with ``finishReason`` ``STOP`` and a non-empty string under

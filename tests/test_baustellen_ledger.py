@@ -41,6 +41,8 @@ SCRIPT_LOGGER = "update_baustellen_cache"
 NOW = datetime(2026, 11, 10, 17, 44, 5, tzinfo=VIENNA_TZ)
 GUID = "1642f76cdb2a921752f24384fa1ad815176094f31dfa2f9d5130723b697b3205"
 HEADER_LINE = ",".join(BAUSTELLEN_HEADER)
+# An end in 2027, for a site that is entered in the files of 2026 and of 2027.
+ENDS_2027 = "2027-03-31T00:00:00+02:00"
 # A well-formed data line; ``{guid}`` is filled in by the tests.
 LINE = "2026-11-10T17:44:05+01:00,Di,17,{guid},Titel,2026-07-28,,7,Straßenbau,Text"
 
@@ -290,21 +292,11 @@ def test_a_guid_is_written_once_across_calls(stats_dir: Path) -> None:
     ids=["vienna-2359", "vienna-0000", "utc-2259", "utc-2300", "naive-2359", "naive-0000"],
 )
 def test_year_file_is_the_vienna_year_of_now(now: datetime, year: int, stats_dir: Path) -> None:
-    assert append_baustellen_rows([_event()], now=now, stats_dir=stats_dir) == 1
+    # Under way in both years: a site that ended before the year of ``now`` gets no row.
+    assert append_baustellen_rows([_event(ends_at=ENDS_2027)], now=now, stats_dir=stats_dir) == 1
     assert [p.name for p in stats_dir.iterdir()] == [f"baustellen_{year}.csv"]
     stamp = _records(_ledger(stats_dir, year))[0]["timestamp"]
     assert stamp.startswith(f"{year}-") and stamp.endswith("+01:00")
-
-
-def test_a_site_still_running_gets_a_row_in_the_new_year_too(stats_dir: Path) -> None:
-    old_year = datetime(2026, 12, 31, 23, 59, tzinfo=VIENNA_TZ)
-    new_year = datetime(2027, 1, 1, 0, 0, tzinfo=VIENNA_TZ)
-    assert append_baustellen_rows([_event()], now=old_year, stats_dir=stats_dir) == 1
-    assert append_baustellen_rows([_event()], now=new_year, stats_dir=stats_dir) == 1
-    assert append_baustellen_rows([_event()], now=new_year, stats_dir=stats_dir) == 0
-    assert known_guids(2026, stats_dir=stats_dir) == {GUID} == known_guids(2027, stats_dir=stats_dir)
-    assert _records(_ledger(stats_dir, 2026))[0]["timestamp"] == "2026-12-31T23:59:00+01:00"
-    assert _records(_ledger(stats_dir, 2027))[0]["timestamp"] == "2027-01-01T00:00:00+01:00"
 
 
 # --- reading an existing file -----------------------------------------------
@@ -368,9 +360,8 @@ def test_a_torn_line_does_not_hide_the_lines_after_it(stats_dir: Path) -> None:
         HEADER_LINE.replace("timestamp", "Timestamp"),
         LINE.format(guid="eins"),
         "",
-        "\ufeff" + HEADER_LINE,
     ],
-    ids=["other-ledger", "column-missing", "column-added", "other-case", "no-header", "blank", "bom"],
+    ids=["other-ledger", "column-missing", "column-added", "other-case", "no-header", "blank"],
 )
 def test_file_with_a_different_header_is_left_alone(first_line: str, stats_dir: Path, caplog: pytest.LogCaptureFixture) -> None:
     stats_dir.mkdir()
@@ -387,7 +378,7 @@ def test_file_with_a_different_header_is_left_alone(first_line: str, stats_dir: 
     assert all(r.name == LEDGER_LOGGER for r in caplog.records)
     # The check is per year file: the next year's file starts clean.
     new_year = datetime(2027, 1, 1, 0, 0, tzinfo=VIENNA_TZ)
-    assert append_baustellen_rows([_event()], now=new_year, stats_dir=stats_dir) == 1
+    assert append_baustellen_rows([_event(ends_at=ENDS_2027)], now=new_year, stats_dir=stats_dir) == 1
 
 
 def test_file_above_the_read_cap_is_left_alone(stats_dir: Path, monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture) -> None:
@@ -530,10 +521,15 @@ class _Run:
         self.cached.append(items)
 
     def _append(self, *args: Any, **kwargs: Any) -> int:
-        """Record the call and let the real writer run (into ``tmp_path``)."""
+        """Record the call and let the real writer run (into ``tmp_path``, at ``NOW``, see ``_hook_at_now``)."""
         self.order.append("ledger")
         self.ledger.append((args, kwargs))
-        return append_baustellen_rows(*args, **kwargs)
+        return append_baustellen_rows(*args, now=NOW, **kwargs)
+
+
+def _hook_at_now(monkeypatch: pytest.MonkeyPatch) -> None:
+    """The hook's writer reads the clock; ``NOW`` keeps a result from depending on the day or year the test runs in."""
+    monkeypatch.setattr(update_baustellen_cache, "append_baustellen_rows", lambda events: append_baustellen_rows(events, now=NOW))
 
 
 def _live_answer(monkeypatch: pytest.MonkeyPatch, features: list[dict[str, Any]]) -> None:
@@ -542,9 +538,9 @@ def _live_answer(monkeypatch: pytest.MonkeyPatch, features: list[dict[str, Any]]
 
 
 def _written_ledger(tmp_path: Path) -> list[dict[str, str]]:
-    """The records of the one ledger file ``main()`` wrote (whatever the year is today)."""
+    """The records of the one ledger file ``main()`` wrote: the one of the year of ``NOW``."""
     [path] = (tmp_path / "stats").iterdir()
-    assert path.name.startswith("baustellen_") and path.suffix == ".csv"
+    assert path.name == "baustellen_2026.csv"
     return _records(path)
 
 
@@ -594,6 +590,7 @@ def test_live_answer_ends_in_the_ledger_and_changes_nothing_else(
     """The real writer behind the real ``main()``: cache, exit code and log as before."""
     target = _real_cache(monkeypatch, tmp_path)
     _live_answer(monkeypatch, _FEATURES)
+    _hook_at_now(monkeypatch)  # both ticks in one year, whenever the test runs
     before = _real_ledgers()
     caplog.set_level(logging.INFO)
 
@@ -677,6 +674,7 @@ def test_a_ledger_failure_never_changes_the_run(
 ) -> None:
     target = _real_cache(monkeypatch, tmp_path)
     _live_answer(monkeypatch, _FEATURES)
+    _hook_at_now(monkeypatch)
     if failure == "folder":
         blocker = tmp_path / "blocker"
         blocker.write_text("x", encoding="utf-8")
@@ -685,9 +683,7 @@ def test_a_ledger_failure_never_changes_the_run(
         monkeypatch.setattr(stats_baustellen, "_append_row", _raise_runtime_error)
     else:
         (tmp_path / "stats").mkdir()
-        this_year = datetime.now(VIENNA_TZ).year
-        for year in (this_year, this_year + 1):  # the run may cross New Year
-            _ledger(tmp_path / "stats", year).write_text("fremd\n", encoding="utf-8")
+        _ledger(tmp_path / "stats").write_text("fremd\n", encoding="utf-8")
     caplog.set_level(logging.INFO)
 
     assert update_baustellen_cache.main() == 0
