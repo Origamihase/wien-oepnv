@@ -268,10 +268,45 @@ ungeplanten Störungen bleiben vorn; die Sperre bleibt eine geplante Maßnahme,
 steht an ihren Sperrtagen aber vor den übrigen Hinweisen. Die Tage stehen im
 Leitsatz der Meldung, dem Satz, den der Feed zeigt: „von … bis …“ (ein Ende
 mit Uhrzeit, „bis 27.10.2026 (04:00 Uhr)“, gilt am letzten Tag nur bis dahin),
-„am … und …“, eingeschränkt durch ein Wochentagsfenster („(jeweils von
-Samstag 23:15 Uhr bis Sonntag 04:40 Uhr und …)“ ergibt Samstag und Sonntag).
-Nennt der Leitsatz kein Datum (eine ungeplante Störung „bis voraussichtlich
-09:00 Uhr“), zählt jeder Tag zwischen Beginn und Ende der Meldung. Die
+„zwischen 29.10.2026 und 01.11.2026“, „am … und …“ und Listen mit Komma („am
+03.02.2027, 03.03.2027 … und 02.06.2027“); ein Tag ohne Jahr nimmt das Jahr
+des nächsten vollen Datums („von 08.03. bis 10.03.2027“, „am 02.07., 06.08.
+… und 05.11.2026“), zwei Ziffern stehen für 20xx („am 03.02.27“). Ein
+Wochentagsfenster schränkt die Tage ein („(jeweils von Samstag 23:15 Uhr bis
+Sonntag 04:40 Uhr und …)“ ergibt Samstag und Sonntag, „(jeweils Sonntags … und
+Montags …)“ Sonntag und Montag). Sperrstunden innerhalb eines Tages enden dort,
+wenn der nächste Tag nicht weiter gesperrt ist: „R95: Wien Hauptbahnhof ↔
+Felixdorf“ „(jeweils 14:00 Uhr - 22:00 Uhr)“ stand am 10.11. bis 23:30 vor
+den WL-Hinweisen, nach dem Ende der Sperre. „bis voraussichtlich am
+07.10.2026“ ist das erwartete Ende einer Störung, kein Sperrtag. Der Leitsatz
+ist der Satz, den der Feed zuerst zeigt, auch wenn dort ein späterer
+Abschnitt steht, weil er die Strecke des Titels nennt
+(`_oebb_shown_sentences` in `src/feed_build/oebb_lead.py`, seit 2026-11-11;
+vorher las die Prüfung ÖBBs ersten Satz: Unter „Wien Hütteldorf ↔ Wien
+Hauptbahnhof“ zeigte der Feed am 17.10. „Teilausfall: Von 18.10.2026 bis
+19.10.2026 …“, die Tage kamen aus den geänderten Fahrzeiten zwischen Salzburg
+und Flughafen Wien, 17. bis 21.10.); nennt dieser Abschnitt kein Datum, kommen
+die Tage aus ÖBBs erstem Satz. Ein Leitsatz zählt seit 2026-11-11 nur, wenn
+er sagt, dass keine Züge fahren oder halten („keine Nahverkehrszüge fahren“,
+„keine Züge halten“, „keine Fahrten möglich“, „Zugfahrten derzeit nicht
+möglich“, auch am Ende einer Zugliste: „… keine S50-Züge … die S50-Züge 20063,
+… nicht fahren“; `_oebb_closes_line`). Ein einzelner Zug, eine Liste von
+Zügen, geänderte Fahrzeiten oder eine Umleitung sperren keine Strecke und
+reihen sich wie die übrigen Hinweise ein (Betreiberentscheidung vom
+2026-11-11, „Nein, nur echte Sperren“). Anlass (unabhängige Prüfung vom
+2026-11-11): „S1: Wien Leopoldau ↔ Deutsch Wagram“ („der S1-Zug 23626 …
+nicht fahren“) stünde am 14., 15., 21., 22. und 28.11. vor allen
+WL-Hinweisen, für einen Zug zwischen Deutsch Wagram und Gänserndorf,
+außerhalb Wiens; vom 01.10. bis 11.11. verdrängten einzelne Züge (S1 23626,
+S2 23360, REX64 2679, RJ 263) in 152 von 1.220 nachgespielten Feed-Ständen
+WL-Hinweise aus den ersten zehn. Seit derselben Entscheidung bleibt eine
+Meldung, deren Leitsatz nur einzelne Züge nennt, ganz aus dem Feed
+(„Einzelzüge sollen nicht in den Feed.“, Abschnitt „ÖBB“ unten).
+Nennt eine Meldung gar keinen Tag (eine ungeplante Störung „derzeit“ oder
+„bis voraussichtlich 09:00 Uhr“), zählt jeder Tag zwischen Beginn und Ende
+der Meldung. Nennt sie Tage in einer Form, die das Lesen nicht kennt („in der
+Nacht von 14.02. auf 15.02.2026“), ist sie geplant und zählt nur, wenn sie
+sperrt (`_names_measure_day`). Die
 Kategorie allein trägt das nicht: WL schickt geplante Tafel-Meldungen
 („26E: Gleisbauarbeiten“, „S80: ÖBB-Ersatzbus“) als „Störung“, und im Nachbau
 von 312 Feed-Ständen seit 15.10. wären sie in 308 nach vorn gerückt. Anlass:
@@ -280,7 +315,9 @@ von 312 Feed-Ständen seit 15.10. wären sie in 308 nach vorn gerückt. Anlass:
 in seinen Sperrnächten nicht am Bildschirm. Nachbau derselben 312 Stände: Die
 aktuellen Störungen und die Menge der Meldungen bleiben gleich; sieben
 ÖBB-Meldungen kommen an ihren Sperrtagen unter die ersten zehn (höchstens
-vier zugleich), dafür fallen WL-Hinweise heraus.
+vier zugleich), dafür fallen WL-Hinweise heraus. Mit der Regel vom 11.11. sind
+es vier echte Sperren (Hbf ↔ Westbahnhof, REX 50, Gramatneusiedl, R40),
+höchstens zwei zugleich (Nachbau aller 872 Stände vom 15.10. bis 08.11.).
 
 Wiederkehrende WL-Meldungen: Die WL-GUID besteht aus Kategorie, Thema und
 Linien, ein Datum enthält sie nicht. „94A: Verkehrsunfall“ hat an jedem Tag
@@ -485,6 +522,7 @@ Der Meldungsfeed sammelt offizielle Störungs- und Hinweisinformationen der Wien
   - Bahnhofsnamen löst `station_info` (`src/utils/stations_lookup.py`) auch in ÖBB-Schreibweise auf: „Bruck/Leitha“ als „Bruck an der Leitha“, und seit 2026-10-04 einen Ortsnamen mit Fluss-, Regions- oder Landeszusatz („Mistelbach/Zaya“, „Wolkersdorf im Weinviertel“, „Traisen NÖ“) als den bloßen Ort, sofern dieser außerhalb Wiens liegt. Vorher galt „Wien Leopoldau ↔ Mistelbach/Zaya“ (S2) als Wien ↔ unbekannt und fiel weg.
   - Meldungen, die *nur* ferne Bahnhöfe erwähnen, werden verworfen, ebenso eine Strecke zwischen zwei Pendlerbahnhöfen („Pfaffstätten ↔ Bad Vöslau“, siehe [data/stations.json](https://github.com/Origamihase/wien-oepnv/blob/main/data/stations.json) für Definitionen von `in_vienna` und `pendler`). Ein einzelner Pendlerbahnhof ohne Strecke genügt dagegen (oben).
   - Vor dem Geo-Filter fallen Meldungen weg, deren Titel nur eine Anlage der Station betrifft (`_is_facility_or_weather_only` in `src/providers/oebb_scope.py`): jeder Titel mit Aufzug-/Lift-/Fahrtreppen-Wort, seit 2026-10-09 auch ein gesperrter Aufgang, Ausgang, Zugang oder Eingang (`is_station_access_only`, wie bei WL), außer der Titel nennt zugleich, was die Züge tun („Zugausfall“, „Verspätungen“, „kein Halt“, „Schienenersatzverkehr“ …). Reine Wetterwarnungen ohne Störungswort im Titel fallen ebenso weg; „Sturmschaden: Strecke Wien-Mödling gesperrt“ bleibt. Den Grund jeder verworfenen ÖBB-Meldung hält `data/raw/oebb/verworfen.json` fest (`_drop_reason`), seit 2026-10-10 mit denselben Etiketten wie bei WL: „nur Aufzug/Fahrtreppe“, „nur Klapprampe“, „nur Aufgang/Ausgang“, dazu „nur Wetterwarnung“ und für den Geo-Filter „nicht Wien-relevant“; vorher stand dort für jede verworfene Meldung „nicht Wien-relevant“, auch für den defekten Personenlift in Wien Leopoldau.
+  - Eine Meldung über einzelne Züge bleibt seit 2026-11-11 aus dem Feed (Betreiberentscheidung vom 2026-11-11: „Einzelzüge sollen nicht in den Feed.“, zur Karte „Sollen auch einzelne ausfallende ÖBB-Züge wie Sperren vor den WL-Hinweisen stehen?“ mit der Antwort „Nein, nur echte Sperren“; `_oebb_single_trains_only` in `src/feed_build/oebb_single_trains.py`, beim Lesen des Caches in `_post_filter_oebb` in `src/feed_build/cache_filters.py`). Ihr Leitsatz, der Satz, den der Feed zuerst zeigt (`_oebb_shown_sentences`), nennt die Züge mit Nummer („der S1-Zug 23626“, „der Zug RJ 263“, „die S80-Züge 2590, 25080, …“, „die Züge REX6(7777), S60(26085) …“, „die Züge REX 1 (2334, 2338 und 2342)“) oder als „einzelne“ Züge, und kein Satz der Meldung sagt, dass keine Züge fahren oder halten (`_oebb_closes_line`): „keine REX50-Züge fahren“ mit einer Liste von REX51- und S50-Zügen dahinter bleibt. „Einige“ Züge ohne Nummer bleiben im Feed („einige Nahverkehrszüge … nicht fahren“ zwischen Wien Hbf und Gramatneusiedl, Götzendorf und Bruck an der Leitha vom 08.03. bis 22.06.2026, „einige REX 1-Züge … können in Wien Mitte-Landstraße, Wien Praterstern … nicht halten“): Sie sagen, dass auf dem Abschnitt weniger Züge fahren, oft wochenlang; eine Zugnummer sagt dem Zuschauer nichts. Eine Linie in der Mehrzahl ist keine Zugnummer („Für die Züge REX 63 und REX 64 haben wir … einen Autobus organisiert“): Regionallinien haben ein- oder zweistellige Nummern, ihre Züge drei- bis fünfstellige; Fernzüge haben hinter ihrer Gattung auch zwei Stellen („RJX 62“). Jeder ÖBB-Leitsatz mit Zugnummern vom 01.05. bis 11.11.2026 nannte Tage, er kündigte Bauarbeiten an; eine ungeplante Störung nennt ihren Abschnitt („Zugfahrten nur eingeschränkt möglich“) und bleibt. Die Meldung bleibt im ÖBB-Cache und in den Rohdaten; `verworfen.json` nennt sie nicht, denn der Abruf verwirft sie nicht. Von den 688 ÖBB-Texten vom 01.05. bis 11.11.2026, die der Wien-Filter heute durchlässt (Cache und heutiger Abruf über die Rohdaten seit 04.10.), trifft die Regel 22, Fassungen von 13 Meldungen: S1 23626, S2 23360, S60 26093 (06.09.), RJ 263 Hütteldorf ↔ Hbf, RJ 820, RJ 12265, D 347, die IC- und D-Züge Westbahnhof ↔ Hütteldorf vom 03. bis 08.06., REX 1 (2334, 2338 und 2342), vier Züge St. Pölten ↔ Hütteldorf (25./26.07.), elf S-Bahn-Züge Liesing ↔ Meidling (02.08.), REX6 7799 mit S60 26093 (02.08.) und die Züge Hbf ↔ Gramatneusiedl vom 03. bis 05.10.; die 24 Texte über „einige“ Züge bleiben, der letzte verließ den Cache am 31.08. Im Nachspielen der echten Kette über 1.220 Feed-Stände vom 01.10. bis 11.11.2026 (Rohdaten ab 04.10., davor die Caches der Stände) ändern sich gegen die Regel „nur echte Sperren“ allein 292: S1 23626 fehlt in 202 Ständen, S2 23360 in 245, RJ 263 in 44, an ihre Stelle rücken WL-Hinweise („64A/N64R: Erlaaer Spitz“, „11A/78A: Straßenbauarbeiten“, „35A/N35R/N35: Obersteinergasse“ …); keine aktuelle Störung und keine echte Sperre verlässt die ersten zehn.
   - Mit `OEBB_ONLY_VIENNA=1` lässt sich der Fallback auf reine Pendler-Bahnhof-Routen abschalten — siehe [`docs/reference/oebb_provider_logic.md`](reference/oebb_provider_logic.md).
 - **Quelle**: Offizielle ÖBB-Störungsinformationen (RSS-Feed; Default-URL via `OEBB_RSS_URL` überschreibbar, validiert gegen die `fahrplan.oebb.at`-Allow-List).
 - **Cache**: `cache/oebb/events.json`.

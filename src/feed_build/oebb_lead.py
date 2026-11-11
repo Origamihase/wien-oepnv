@@ -21,7 +21,8 @@ from .wl_measures import _WL_DESC_LINIE_PREFIX_RE
 from .summary_text import _close_blocks, _truncate_summary_180
 
 __all__ = [
-    "_oebb_title_route_first", "_oebb_lead_section_end", "_end_with_oebb_lead_section", "_with_second_sentence",
+    "_oebb_title_route_first", "_oebb_shown_sentences", "_oebb_lead_section_end", "_end_with_oebb_lead_section",
+    "_with_second_sentence",
     "_OEBB_COURTESY_RE", "_oebb_sentence_without_place", "_oebb_first_two_sentences", "_OEBB_TITLE_LINES_RE",
 ]
 
@@ -132,6 +133,26 @@ def _oebb_section_end_is_open(section: str) -> bool:
     return bool(_OEBB_SECTION_OPEN_END_RE.search(section) or _OEBB_SECTION_OPEN_START_RE.search(section))
 
 
+def _oebb_shown_sentences(it: Any) -> tuple[list[str], list[str]]:
+    """An ÖBB text's sentences as ÖBB wrote them, and in the order the feed shows them.
+
+    The second list leads with the sentence the display shows first
+    (:func:`_oebb_title_route_first`). The end of that section
+    (:func:`_oebb_lead_section_end`) and the closure days of the feed order
+    (``_is_oebb_closure_day`` in :mod:`.oebb_days`) are read from it.
+    """
+    raw_title, _ = _display_title_parts(it)
+    text, _ = _close_blocks(
+        html_to_text(it.get("description") or "", collapse_newlines=True, mark_block_ends=True),
+        raw_title,
+    )
+    text = _sanitize_text(text).strip()
+    text = _DATE_SINGLE_PREFIX_RE.sub("", _DATE_RANGE_PREFIX_RE.sub("", text))
+    text = _WHITESPACE_CLEANUP_RE.sub(" ", text.replace("•", " ")).strip()
+    sentences = [s.strip() for s in _SENTENCE_SPLIT_RE.split(text) if s.strip()]
+    return sentences, _oebb_title_route_first(sentences, raw_title, oebb=True)
+
+
 def _oebb_lead_section_end(it: Any) -> datetime | None:
     """The end of the ÖBB section that leads the shown text, when it ends sooner.
 
@@ -162,16 +183,7 @@ def _oebb_lead_section_end(it: Any) -> datetime | None:
     ends_at = it.get("ends_at")
     if not isinstance(ends_at, datetime):
         return None
-    raw_title, _ = _display_title_parts(it)
-    text, _ = _close_blocks(
-        html_to_text(it.get("description") or "", collapse_newlines=True, mark_block_ends=True),
-        raw_title,
-    )
-    text = _sanitize_text(text).strip()
-    text = _DATE_SINGLE_PREFIX_RE.sub("", _DATE_RANGE_PREFIX_RE.sub("", text))
-    text = _WHITESPACE_CLEANUP_RE.sub(" ", text.replace("•", " ")).strip()
-    sentences = [s.strip() for s in _SENTENCE_SPLIT_RE.split(text) if s.strip()]
-    lead = _oebb_title_route_first(sentences, raw_title, oebb=True)
+    sentences, lead = _oebb_shown_sentences(it)
     if not lead or not sentences or lead[0] == sentences[0]:
         return None
     if _oebb_section_end_is_open(lead[0]):

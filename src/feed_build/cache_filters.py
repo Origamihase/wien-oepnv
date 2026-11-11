@@ -14,6 +14,7 @@ from ..providers.wl_lines import line_order_key
 from ..providers.wl_title_context import INCOMPLETE_TITLE_TAIL_RE
 
 from .display_titles import _repair_baustellen_title
+from .oebb_single_trains import _oebb_single_trains_only
 from .wl_measures import (
     _collapse_repeated_wl_line_segments, _strip_wl_description_line_prefix, _tidy_wl_dangling_location,
 )
@@ -222,6 +223,10 @@ def _post_filter_oebb(items: list[Any]) -> list[Any]:
     cache still holds an older rendering. The original title is left in
     place if the re-derived version is empty or identical.
 
+    A notice about single trains leaves the feed here, after the title is
+    re-derived (``_oebb_single_trains_only``, operator decision 2026-11-11:
+    "Einzelzüge sollen nicht in den Feed."); it stays in the cache.
+
     Items without a title are passed through unchanged so test fixtures
     and other generic dictionaries aren't accidentally dropped.
     """
@@ -261,6 +266,8 @@ def _post_filter_oebb(items: list[Any]) -> list[Any]:
         if rederived != item.get("title"):
             item = dict(item)
             item["title"] = rederived
+        if _oebb_single_trains_only(item):
+            continue
         out.append(item)
     return out
 
