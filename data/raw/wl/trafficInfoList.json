@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261020-0029, I20261111-0029"
+    "trafficInfoNameList": "I20261111-0036, I20260925-0011, I20260909-0007, I20261111-0035, I20261020-0029, I20261111-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R3886-480, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1883-101, R1882-101, R2558-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R318-437, R293-474, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1882-101, R1876-101, R1880-101, R1881-101, R1884-101, R3886-480, R1875-101, R1883-101, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R2558-125, R2345-127, R2380-627, R2379-627, R2373-126, R293-474, R318-437, R1974-466, R1199-205, R500-101, R427-106, R426-106, R425-106, R424-106, R423-106, R411-106, R428-106, R982-432, R3125-432, R3123-432, R2009-111, R2024-111, R2023-111, R408-111, R409-111, R410-111, R418-106, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -216,6 +216,105 @@
      "start": "2026-11-11T18:30:00.000+0100"
     },
     "title": "U6: Stellwerksstörung"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "32A": "ptBusCity"
+     }
+    },
+    "description": "Linie 32A: Betrieb nur zwischen Leopoldau S U und Ödenburger Straße, Schulzentrum. Voraussichtliche Dauer: Nicht absehbar. Grund: Polizeieinsatz im Bereich Strebersdorfer Straße.",
+    "descriptionHTML": "<p>Linie 32A:<br>Betrieb nur zwischen Leopoldau S U und Ödenburger Straße, Schulzentrum.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Polizeieinsatz im Bereich Strebersdorfer Straße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 32A:<br>Betrieb nur zwischen Leopoldau S U und Ödenburger Straße, Schulzentrum.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Polizeieinsatz im Bereich Strebersdorfer Straße.</p>",
+       "descriptionPlain": "Linie 32A: Betrieb nur zwischen Leopoldau S U und Ödenburger Straße, Schulzentrum. Voraussichtliche Dauer: Nicht absehbar. Grund: Polizeieinsatz im Bereich Strebersdorfer Straße.",
+       "title": "32A: Polizeieinsatz"
+      }
+     }
+    ],
+    "location": "Strebersdorfer Straße",
+    "name": "I20261111-0035",
+    "owner": "WL",
+    "parentName": "I20261111-0035",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "32A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 432,
+      "lineName": "32A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-11T21:33:00.000+0100",
+     "lastUpdate": "2026-11-11T21:39:00.000+0100",
+     "start": "2026-11-11T21:32:00.000+0100"
+    },
+    "title": "32A: Polizeieinsatz"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "11": "ptTram",
+      "6": "ptTram"
+     }
+    },
+    "description": "Linie 6: Fahrtbehinderung in Richtung Geiereckstraße. Linie 11: Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse. Voraussichtliche Dauer: 22:20 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Absberggasse.",
+    "descriptionHTML": "<p>Linie 6:<br>Fahrtbehinderung in Richtung Geiereckstraße.<br>Linie 11:<br>Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse.</p><p>Voraussichtliche Dauer: 22:20 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Absberggasse.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 6:<br>Fahrtbehinderung in Richtung Geiereckstraße.<br>Linie 11:<br>Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse.</p><p>Voraussichtliche Dauer: 22:20 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Absberggasse.</p>",
+       "descriptionPlain": "Linie 6: Fahrtbehinderung in Richtung Geiereckstraße. Linie 11: Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse. Voraussichtliche Dauer: 22:20 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Absberggasse.",
+       "title": "6, 11: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261111-0036",
+    "owner": "WL",
+    "parentName": "I20261111-0036",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "6",
+     "11"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 106,
+      "lineName": "6",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 111,
+      "lineName": "11",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     3435
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-11T22:00:00.000+0100",
+     "lastUpdate": "2026-11-11T22:00:00.000+0100",
+     "start": "2026-11-11T21:59:00.000+0100"
+    },
+    "title": "6, 11: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -423,6 +522,75 @@
      "start": "2026-11-11T04:40:07.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2009-111",
+    "owner": "WL",
+    "parentName": "R2009-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2009
+    ],
+    "time": {
+     "end": "2026-11-11T22:58:00.000+0100",
+     "start": "2026-11-11T21:58:51.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2023-111",
+    "owner": "WL",
+    "parentName": "R2023-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2023
+    ],
+    "time": {
+     "end": "2026-11-11T22:58:00.000+0100",
+     "start": "2026-11-11T21:58:51.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2024-111",
+    "owner": "WL",
+    "parentName": "R2024-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2024
+    ],
+    "time": {
+     "end": "2026-11-11T22:58:00.000+0100",
+     "start": "2026-11-11T21:58:51.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -772,6 +940,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R3123-432",
+    "owner": "WL",
+    "parentName": "R3123-432",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "32A"
+    ],
+    "relatedStops": [
+     3123
+    ],
+    "time": {
+     "end": "2026-11-11T22:41:00.000+0100",
+     "start": "2026-11-11T21:30:20.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb ab Ödenburger Straße, Schulzentrum",
+    "name": "R3125-432",
+    "owner": "WL",
+    "parentName": "R3125-432",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "32A"
+    ],
+    "relatedStops": [
+     3125
+    ],
+    "time": {
+     "end": "2026-11-11T22:41:00.000+0100",
+     "start": "2026-11-11T21:30:20.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb ab Ödenburger Straße, Schulzentrum"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -841,6 +1055,259 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R408-111",
+    "owner": "WL",
+    "parentName": "R408-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     408
+    ],
+    "time": {
+     "end": "2026-11-11T22:58:00.000+0100",
+     "start": "2026-11-11T21:58:52.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R409-111",
+    "owner": "WL",
+    "parentName": "R409-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     409
+    ],
+    "time": {
+     "end": "2026-11-11T22:58:00.000+0100",
+     "start": "2026-11-11T21:58:52.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R410-111",
+    "owner": "WL",
+    "parentName": "R410-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     410
+    ],
+    "time": {
+     "end": "2026-11-11T22:58:00.000+0100",
+     "start": "2026-11-11T21:58:52.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R411-106",
+    "owner": "WL",
+    "parentName": "R411-106",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     411
+    ],
+    "time": {
+     "end": "2026-11-11T22:13:00.000+0100",
+     "start": "2026-11-11T21:13:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R418-106",
+    "owner": "WL",
+    "parentName": "R418-106",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     418
+    ],
+    "time": {
+     "end": "2026-11-11T22:59:00.000+0100",
+     "start": "2026-11-11T21:59:52.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R423-106",
+    "owner": "WL",
+    "parentName": "R423-106",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     423
+    ],
+    "time": {
+     "end": "2026-11-11T22:13:00.000+0100",
+     "start": "2026-11-11T21:13:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R424-106",
+    "owner": "WL",
+    "parentName": "R424-106",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     424
+    ],
+    "time": {
+     "end": "2026-11-11T22:13:00.000+0100",
+     "start": "2026-11-11T21:13:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R425-106",
+    "owner": "WL",
+    "parentName": "R425-106",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     425
+    ],
+    "time": {
+     "end": "2026-11-11T22:13:00.000+0100",
+     "start": "2026-11-11T21:13:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R426-106",
+    "owner": "WL",
+    "parentName": "R426-106",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     426
+    ],
+    "time": {
+     "end": "2026-11-11T22:13:00.000+0100",
+     "start": "2026-11-11T21:13:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R427-106",
+    "owner": "WL",
+    "parentName": "R427-106",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     427
+    ],
+    "time": {
+     "end": "2026-11-11T22:13:00.000+0100",
+     "start": "2026-11-11T21:13:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R428-106",
+    "owner": "WL",
+    "parentName": "R428-106",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     428
+    ],
+    "time": {
+     "end": "2026-11-11T22:13:00.000+0100",
+     "start": "2026-11-11T21:13:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -860,6 +1327,29 @@
      "start": "2026-11-11T05:00:07.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R982-432",
+    "owner": "WL",
+    "parentName": "R982-432",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "32A"
+    ],
+    "relatedStops": [
+     982
+    ],
+    "time": {
+     "end": "2026-11-11T22:29:00.000+0100",
+     "start": "2026-11-11T21:30:14.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
