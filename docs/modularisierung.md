@@ -322,6 +322,9 @@ Tests):
 | `wl_joins` | Zusammenlegen von WL-Einträgen, Einstieg `_merge_wl_ticker_clusters` |
 | `wl_notices` | WL-Hinweise: Baustellen-Zwillinge, Tafel-Meldungen zu Bauarbeiten, Hinweise hinter Störungen |
 | `oebb_lead` | ÖBB-Texte: Strecken eines Titels, Leitsatz, zweiter Satz |
+| `oebb_lines_short` | Seit 2026-11-05: ÖBB-Meldung über mehrere Linien, jede Linie kurz mit Abschnitt und Tagen |
+| `oebb_days` | Seit 2026-11-08: Sperrtage einer ÖBB-Meldung aus ihrem Leitsatz, die Sperre an ihren Tagen vor den übrigen Hinweisen |
+| `oebb_single_trains` | Seit 2026-11-11: ÖBB-Meldung über einzelne Züge, sie bleibt aus dem Feed |
 | `translation_epoch` | Epoche des Übersetzungs-Caches, Verbatim- und Digest-Marken |
 | `line_routes` | Seit 2026-11-10: feste englische Form für „über die Strecke der Linien 43 und 9“ („the route of lines 43 and 9“) vor dem Modelllauf |
 | `translation_cache` | Prüfung eines gecachten EN-Textes, Sprach-Overlay (`_apply_lang_overlay`) |

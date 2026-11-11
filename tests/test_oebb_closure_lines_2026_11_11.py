@@ -9,7 +9,7 @@ Independent check 2026-11-11 of the feed order of 2026-11-08
   between Deutsch Wagram and Gänserndorf on 14., 15., 21., 22. and
   28.11.2026, outside Vienna) would have stood ahead of every WL notice
   on those days; from 01.10. to 11.11. single trains pushed WL notices out
-  of the first ten in 159 of 1,220 replayed feed states. A dated lead now
+  of the first ten in 152 of 1,220 replayed feed states. A dated lead now
   counts only when it says that no trains run or stop.
 * The days came from ÖBB's first sentence, not from the sentence the feed
   shows (``_oebb_title_route_first``): under "Wien Hütteldorf ↔ Wien
@@ -19,8 +19,8 @@ Independent check 2026-11-11 of the feed order of 2026-11-08
   a capital letter, which the date reading missed.
 * Markup inside a word ("<span> (22:00 Uhr) b</span>is 06.11.2026 (04:00
   Uhr)") hid the range of "S 40: Wien Franz-Josefs-Bahnhof ↔ Wien
-  Heiligenstadt", so the closure counted on all of 06.11. instead of until
-  04:00.
+  Heiligenstadt" (in the cache from 26.08. to 30.09.2026): the reading found
+  no date and counted every day of the item, 06.11. after 04:00 too.
 
 Mutations checked against this file (each one caught, by the test named):
 
@@ -48,7 +48,7 @@ from src.feed_types import FeedItem
 
 _VIENNA = ZoneInfo("Europe/Vienna")
 
-# ÖBB, cache/oebb_c40d21/events.json, 11.11.2026.
+# ÖBB, cache/oebb_c40d21/events.json of 11.11.2026, simplified ("<b>2</b><b>4.10.2026 </b>" there).
 S1 = (
     "24.10.2026 - 28.11.2026<br/><br/>Wegen Bauarbeiten kann zwischen <b>Deutsch Wagram Bahnhof</b> und "
     "<b>Gänserndorf Bahnhof</b> von <b>2</b> 4.10.2026 bis 26.10.2026 von 31.10.2026 bis 01.11.2026 von "
@@ -80,7 +80,7 @@ HUETTELDORF_CLOSED = HUETTELDORF.replace(
     "können<br>zwischen <b>Wien Hütteldorf Bahnhof (U) </b>und <b>Wien Hbf (U) </b>keine "
     "Fernverkehrszüge fahren.",
 )
-# ÖBB, cache/oebb_c40d21/events.json, 31.10.2026.
+# ÖBB, cache/oebb_c40d21/events.json from 26.08. to 30.09.2026.
 S40 = (
     "31.10.2026 - 06.11.2026<br/><br/>Wegen Bauarbeiten können zwischen <b>Wien Franz-Josefs-Bahnhof</b> "
     "und <b>Wien Heiligenstadt Bahnhof (U)</b> von <b>31.10.2026</b><span> (22:00 Uhr) b</span>is "
