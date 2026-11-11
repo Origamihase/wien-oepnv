@@ -1,13 +1,21 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-11T18:00:55.885654+00:00",
- "built": "2026-11-11T19:00:39+01:00",
+ "updated": "2026-11-11T18:30:48.663720+00:00",
+ "built": "2026-11-11T19:30:39+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-11T19:00:39+01:00",
+  "built": "2026-11-11T19:30:39+01:00",
   "items": [
+   {
+    "title": "11: Rettungseinsatz",
+    "time_line": "Seit 19:27"
+   },
+   {
+    "title": "6/18: Rettungseinsatz",
+    "time_line": "Seit 19:17"
+   },
    {
     "title": "43: Polizeieinsatz",
     "time_line": "Seit 18:40"
@@ -39,39 +47,11 @@
    {
     "title": "54B: Stock im Weg",
     "time_line": "Ab Do 12.11. bis Fr 13.11."
-   },
-   {
-    "title": "65A: Triester Straße, Rossakgasse",
-    "time_line": "Seit heute"
-   },
-   {
-    "title": "66A: Busse halten Salvatorianerplatz",
-    "time_line": "Bis Do 12.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-04T18:02:07.463845+00:00",
-   "raw": {
-    "wl-stoerungen": 106,
-    "wl-hinweise": 72,
-    "oebb": 191,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 12,
-    "oebb": 167,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 6,
-    "wl": 101
-   }
-  },
   {
    "t": "2026-11-04T18:31:50.629763+00:00",
    "raw": {
@@ -6791,17 +6771,37 @@
     "oebb": 6,
     "wl": 86
    }
+  },
+  {
+   "t": "2026-11-11T18:30:48.663720+00:00",
+   "raw": {
+    "wl-stoerungen": 69,
+    "wl-hinweise": 87,
+    "oebb": 194,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 21,
+    "oebb": 168,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 88
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-11T18:00:55.885654+00:00"
+   "last_ok": "2026-11-11T18:30:48.663720+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-11T18:00:55.885654+00:00"
+   "last_ok": "2026-11-11T18:30:48.663720+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-11T18:00:55.885654+00:00"
+   "last_ok": "2026-11-11T18:30:48.663720+00:00"
   }
  }
 }
