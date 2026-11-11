@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261111-0009-F01, I20261111-0010-F01, I20261111-0012-F01, I20261111-0013"
+    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261111-0013-F01, I20261111-0013-F02, I20261111-0014, I20261111-0015"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1876-101, R1881-101, R1880-101, R3886-480, R1875-101, R1884-101, R1883-101, R1882-101, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2558-125, R293-474, R318-437, R1974-466, R1199-205, R500-101, R2900-0, R2882-0, R2930-0, R2931-0, R2236-0, R3190-0, R481-0, R429-0, R430-0, R483-0, R428-0, R427-0, R462-0, R464-0, R398-0, R397-0, R396-0, R482-0, R461-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1875-101, R1876-101, R1880-101, R1881-101, R3886-480, R1884-101, R1883-101, R1882-101, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R2558-125, R2345-127, R2380-627, R2379-627, R2373-126, R293-474, R318-437, R1974-466, R1199-205, R500-101, R429-0, R483-0, R430-0, R481-0, R428-0, R427-0, R462-0, R482-0, R464-0, R398-0, R397-0, R396-0, R461-0, R1925-111, R1926-111, R2254-111, R1925-170, R1926-170, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,173 +171,25 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "O": "ptTram"
-     }
-    },
-    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "O: Fremder Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261111-0009-F01",
-    "owner": "WL",
-    "parentName": "I20261111-0009",
-    "priority": "1",
-    "reasonId": 13,
-    "reasonName": "Fremder Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 170,
-      "lineName": "O",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     301
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-11T10:39:00.000+0100",
-     "end": "2026-11-11T12:29:00.000+0100",
-     "lastUpdate": "2026-11-11T12:29:00.000+0100",
-     "resume": "2026-11-11T12:29:00.000+0100",
-     "start": "2026-11-11T09:41:00.000+0100"
-    },
-    "title": "O: Fremder Verkehrsunfall"
-   },
-   {
     "alertCause": "emergency medical services",
     "alertCauseId": 14,
     "attributes": {
      "relatedLineTypes": {
-      "97A": "ptBusCity"
-     }
-    },
-    "description": "Linie 97A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 97A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 97A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 97A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "97A: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261111-0010-F01",
-    "owner": "WL",
-    "parentName": "I20261111-0010",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "97A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 497,
-      "lineName": "97A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "relatedStops": [
-     2736
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-11T11:36:00.000+0100",
-     "end": "2026-11-11T12:29:00.000+0100",
-     "lastUpdate": "2026-11-11T12:29:00.000+0100",
-     "resume": "2026-11-11T12:29:00.000+0100",
-     "start": "2026-11-11T11:36:00.000+0100"
-    },
-    "title": "97A: Rettungseinsatz"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "35A": "ptBusCity"
-     }
-    },
-    "description": "Linie 35A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 35A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 35A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 35A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "35A: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261111-0012-F01",
-    "owner": "WL",
-    "parentName": "I20261111-0012",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "35A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 435,
-      "lineName": "35A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "relatedStops": [
-     1238
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-11T11:55:00.000+0100",
-     "end": "2026-11-11T12:30:00.000+0100",
-     "lastUpdate": "2026-11-11T12:30:00.000+0100",
-     "resume": "2026-11-11T12:30:00.000+0100",
-     "start": "2026-11-11T11:51:00.000+0100"
-    },
-    "title": "35A: Verkehrsunfall"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "18": "ptTram",
       "6": "ptTram"
      }
     },
-    "description": "Linie 6: Betrieb nur zwischen Geiereckstraße und Eichenstraße. Weiterfahrt bis Bahnhof Meidling S U, Dörfelstraße. Linie 18: Betrieb nur zwischen Stadion U und Eichenstraße. Weiterfahrt bis Bahnhof Meidling S U, Dörfelstraße. Ersatz: Linien U6,12A und 59A. Voraussichtliche Dauer: 12:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Margaretengürtel U.",
-    "descriptionHTML": "<p>Linie 6:<br>Betrieb nur zwischen Geiereckstraße und Eichenstraße.<br>Weiterfahrt bis Bahnhof Meidling S U, Dörfelstraße.<br>Linie 18:<br>Betrieb nur zwischen Stadion U und Eichenstraße.<br>Weiterfahrt bis Bahnhof Meidling S U, Dörfelstraße.</p><p>Ersatz: Linien U6,12A und 59A.</p><p>Voraussichtliche Dauer: 12:50 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Margaretengürtel U.</p>",
+    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 6:<br>Betrieb nur zwischen Geiereckstraße und Eichenstraße.<br>Weiterfahrt bis Bahnhof Meidling S U, Dörfelstraße.<br>Linie 18:<br>Betrieb nur zwischen Stadion U und Eichenstraße.<br>Weiterfahrt bis Bahnhof Meidling S U, Dörfelstraße.</p><p>Ersatz: Linien U6,12A und 59A.</p><p>Voraussichtliche Dauer: 12:50 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Margaretengürtel U.</p>",
-       "descriptionPlain": "Linie 6: Betrieb nur zwischen Geiereckstraße und Eichenstraße. Weiterfahrt bis Bahnhof Meidling S U, Dörfelstraße. Linie 18: Betrieb nur zwischen Stadion U und Eichenstraße. Weiterfahrt bis Bahnhof Meidling S U, Dörfelstraße. Ersatz: Linien U6,12A und 59A. Voraussichtliche Dauer: 12:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Margaretengürtel U.",
-       "title": "6, 18: Rettungseinsatz"
+       "descriptionHtml": "<p>Linie 6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "6: Rettungseinsatz"
       }
      }
     ],
-    "name": "I20261111-0013",
+    "name": "I20261111-0013-F01",
     "owner": "WL",
     "parentName": "I20261111-0013",
     "priority": "1",
@@ -345,15 +197,57 @@
     "reasonName": "Rettungseinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "6",
-     "18"
+     "6"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 106,
       "lineName": "6",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "relatedStops": [
+     397
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-11T12:35:00.000+0100",
+     "lastUpdate": "2026-11-11T12:35:00.000+0100",
+     "resume": "2026-11-11T12:35:00.000+0100",
+     "start": "2026-11-11T12:06:00.000+0100"
+    },
+    "title": "6: Rettungseinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "18": "ptTram"
+     }
+    },
+    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 18: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 18: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "18: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261111-0013-F02",
+    "owner": "WL",
+    "parentName": "I20261111-0013",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 118,
       "lineName": "18",
@@ -365,11 +259,104 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-11T12:07:00.000+0100",
-     "lastUpdate": "2026-11-11T12:11:00.000+0100",
+     "created": "2026-11-11T12:35:00.000+0100",
+     "lastUpdate": "2026-11-11T12:35:00.000+0100",
+     "resume": "2026-11-11T12:35:00.000+0100",
      "start": "2026-11-11T12:06:00.000+0100"
     },
-    "title": "6, 18: Rettungseinsatz"
+    "title": "18: Rettungseinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "59A": "ptBusCity"
+     }
+    },
+    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "59A: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261111-0014",
+    "owner": "WL",
+    "parentName": "I20261111-0014",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 459,
+      "lineName": "59A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-11T12:33:00.000+0100",
+     "lastUpdate": "2026-11-11T12:33:00.000+0100",
+     "resume": "2026-11-11T12:32:00.000+0100",
+     "start": "2026-11-11T12:32:00.000+0100"
+    },
+    "title": "59A: Rettungseinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "11": "ptTram"
+     }
+    },
+    "description": "Linie 11: Fahrtbehinderung in Richtung Otto-Probst-Platz. Voraussichtliche Dauer: 13:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Laxenburger Straße / Troststraße.",
+    "descriptionHTML": "<p>Linie 11:<br>Fahrtbehinderung in Richtung Otto-Probst-Platz.</p><p>Voraussichtliche Dauer: 13:20 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Laxenburger Straße / Troststraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 11:<br>Fahrtbehinderung in Richtung Otto-Probst-Platz.</p><p>Voraussichtliche Dauer: 13:20 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Laxenburger Straße / Troststraße.</p>",
+       "descriptionPlain": "Linie 11: Fahrtbehinderung in Richtung Otto-Probst-Platz. Voraussichtliche Dauer: 13:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Laxenburger Straße / Troststraße.",
+       "title": "11: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261111-0015",
+    "owner": "WL",
+    "parentName": "I20261111-0015",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 111,
+      "lineName": "11",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     1931
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-11T12:57:00.000+0100",
+     "lastUpdate": "2026-11-11T12:57:00.000+0100",
+     "start": "2026-11-11T12:56:00.000+0100"
+    },
+    "title": "11: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -558,6 +545,98 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1925-111",
+    "owner": "WL",
+    "parentName": "R1925-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     1925
+    ],
+    "time": {
+     "end": "2026-11-11T13:56:00.000+0100",
+     "start": "2026-11-11T12:56:57.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1925-170",
+    "owner": "WL",
+    "parentName": "R1925-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     1925
+    ],
+    "time": {
+     "end": "2026-11-11T13:56:00.000+0100",
+     "start": "2026-11-11T12:57:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1926-111",
+    "owner": "WL",
+    "parentName": "R1926-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     1926
+    ],
+    "time": {
+     "end": "2026-11-11T13:56:00.000+0100",
+     "start": "2026-11-11T12:56:57.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1926-170",
+    "owner": "WL",
+    "parentName": "R1926-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     1926
+    ],
+    "time": {
+     "end": "2026-11-11T13:56:00.000+0100",
+     "start": "2026-11-11T12:57:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "name": "R1974-466",
     "owner": "WL",
@@ -581,22 +660,25 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Bahnschranken ",
-    "name": "R2236-0",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2254-111",
     "owner": "WL",
-    "parentName": "R2236-0",
+    "parentName": "R2254-111",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
     "relatedStops": [
-     2236
+     2254
     ],
     "time": {
-     "end": "2026-11-11T12:39:00.000+0100",
-     "start": "2026-11-11T11:39:51.000+0100"
+     "end": "2026-11-11T13:56:00.000+0100",
+     "start": "2026-11-11T12:56:58.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Bahnschranken "
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -923,46 +1005,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Bahnschranken ",
-    "name": "R2882-0",
-    "owner": "WL",
-    "parentName": "R2882-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2882
-    ],
-    "time": {
-     "end": "2026-11-11T12:39:00.000+0100",
-     "start": "2026-11-11T11:39:47.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Bahnschranken "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Bahnschranken ",
-    "name": "R2900-0",
-    "owner": "WL",
-    "parentName": "R2900-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2900
-    ],
-    "time": {
-     "end": "2026-11-11T12:39:00.000+0100",
-     "start": "2026-11-11T11:39:47.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Bahnschranken "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -986,46 +1028,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Bahnschranken ",
-    "name": "R2930-0",
-    "owner": "WL",
-    "parentName": "R2930-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2930
-    ],
-    "time": {
-     "end": "2026-11-11T12:39:00.000+0100",
-     "start": "2026-11-11T11:39:47.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Bahnschranken "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Bahnschranken ",
-    "name": "R2931-0",
-    "owner": "WL",
-    "parentName": "R2931-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2931
-    ],
-    "time": {
-     "end": "2026-11-11T12:39:00.000+0100",
-     "start": "2026-11-11T11:39:47.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Bahnschranken "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -1045,26 +1047,6 @@
      "start": "2026-11-09T00:00:21.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Bahnschranken ",
-    "name": "R3190-0",
-    "owner": "WL",
-    "parentName": "R3190-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     3190
-    ],
-    "time": {
-     "end": "2026-11-11T12:39:00.000+0100",
-     "start": "2026-11-11T11:40:17.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Bahnschranken "
    },
    {
     "alertCause": "undefined alert cause",

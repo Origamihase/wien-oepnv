@@ -8,8 +8,48 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 11 Nov 2026 12:31:39 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 13:00:55 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[O: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">011d5e8498133bc00e1bdf3e9fc71ce953ee78ab3f1b6b1f28b0860bcee4fb84</guid>
+      <pubDate>Wed, 11 Nov 2026 12:57:27 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 11 Nov 2026 12:57:27 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 11 Nov 2026 12:57:27 +0100</ext:starts_at>
+      <ext:ends_at>Wed, 11 Nov 2026 13:56:00 +0100</ext:ends_at>
+      <description>Fahrtbehinderung. [Seit 12:57]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 12:57]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">b934a2c79c942a02a5f0f1159a74eb4ec7222a618ba1619eb08443e58128063e</guid>
+      <pubDate>Wed, 11 Nov 2026 12:56:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 11 Nov 2026 12:56:00 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 11 Nov 2026 12:56:58 +0100</ext:starts_at>
+      <description>Fahrtbehinderung in Richtung Otto-Probst-Platz. Voraussichtlich bis 13:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Laxenburger Straße / Troststraße. [Seit 12:56]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Otto-Probst-Platz. Voraussichtlich bis 13:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Laxenburger Straße / Troststraße.<br/>[Seit 12:56]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[59A: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">8c03b8e895b2d4a0128c618aca988a64bddde574c9066f235d0fcf9f069b5e83</guid>
+      <pubDate>Wed, 11 Nov 2026 12:32:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 11 Nov 2026 12:32:00 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 11 Nov 2026 12:32:00 +0100</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz. [Seit 12:32]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.<br/>[Seit 12:32]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[6/18: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -20,8 +60,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 11 Nov 2026 12:06:00 +0100</ext:first_seen>
       <ext:starts_at>Wed, 11 Nov 2026 12:06:00 +0100</ext:starts_at>
-      <description>Betrieb nur: 6 Geiereckstraße – Eichenstraße; 18 Stadion – Eichenstraße. Voraussichtlich bis 12:50 Uhr. [Seit 12:06]</description>
-      <content:encoded><![CDATA[Betrieb nur: 6 Geiereckstraße – Eichenstraße; 18 Stadion – Eichenstraße. Voraussichtlich bis 12:50 Uhr.<br/>[Seit 12:06]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 12:06]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 12:06]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx]]></title>
@@ -107,48 +147,6 @@
       <georss:point>48.222757 16.375308</georss:point>
       <description>Untere Augartenstraße 40 → Untere Augartenstraße 42. Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf. Grund: Demontage eines Turmdrehkrans. [Seit 09.11.]</description>
       <content:encoded><![CDATA[Untere Augartenstraße 40 → Untere Augartenstraße 42. Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf. Grund: Demontage eines Turmdrehkrans.<br/>[Seit 09.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5B: Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">7f3e5db8abfea3bc72c1f2338313c17a67bc98bbf89a5bdb2e547704618ff7f5</guid>
-      <pubDate>Fri, 06 Nov 2026 14:11:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 06 Nov 2026 14:11:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 09 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 10 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten in der Wexstraße werden die Busse umgeleitet. Linie 5B: Umleitung ab Klosterneuburger Straße / Wexstraße über Klosterneuburger Straße … [Bis 10.12.]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Wexstraße werden die Busse umgeleitet. Linie 5B: Umleitung ab Klosterneuburger Straße / Wexstraße über Klosterneuburger Straße …<br/>[Bis 10.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31: Wexstraße]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">349cce99b21e13e0a504471640a3afdac3838a3618bf31ecfa28d333e3f00a83</guid>
-      <pubDate>Thu, 05 Nov 2026 13:45:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 05 Nov 2026 13:45:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 09 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.235958 16.365885</georss:point>
-      <description>Wexstraße 12 → Klosterneuburger Straße 88-90. Haltestellenverlegung der Linie 31 in Richtung Stammersdorf. Grund: Haltestellenumbau. [Seit 09.11.]</description>
-      <content:encoded><![CDATA[Wexstraße 12 → Klosterneuburger Straße 88-90. Haltestellenverlegung der Linie 31 in Richtung Stammersdorf. Grund: Haltestellenumbau.<br/>[Seit 09.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64A/N64R: Zouvalgasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">cdff8b05c55300908c52c699e1c432a54ef6ee2d3a14ab4139d4744f9e32f9e1</guid>
-      <pubDate>Wed, 04 Nov 2026 14:21:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 04 Nov 2026 14:21:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 09 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.137917 16.321284</georss:point>
-      <description>Perfektastraße 6-8 → Perfektastraße 10-12. Haltestellenverlegung der Linie 64A in Richtung Liesing sowie Rufbus N64 in Richtung Siebenhirten. Grund: Rohrlegungsarbeiten. [Seit 09.11.]</description>
-      <content:encoded><![CDATA[Perfektastraße 6-8 → Perfektastraße 10-12. Haltestellenverlegung der Linie 64A in Richtung Liesing sowie Rufbus N64 in Richtung Siebenhirten. Grund: Rohrlegungsarbeiten.<br/>[Seit 09.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
