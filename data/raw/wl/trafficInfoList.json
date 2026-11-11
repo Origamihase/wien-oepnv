@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261111-0022, I20261111-0024, I20261111-0028-F01, I20260925-0011, I20260909-0007, I20261111-0027, I20261020-0029"
+    "trafficInfoNameList": "I20261111-0022, I20261111-0028-F01, I20260925-0011, I20260909-0007, I20261111-0027, I20261111-0029, I20261020-0029, I20261111-0030-F01"
    },
    {
     "id": 3,
@@ -216,52 +216,6 @@
     "title": "U4: Verspätungen"
    },
    {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
-      "7A": "ptBusCity"
-     }
-    },
-    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "7A: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261111-0024",
-    "owner": "WL",
-    "parentName": "I20261111-0024",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "7A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 407,
-      "lineName": "7A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-11T16:16:00.000+0100",
-     "end": "2026-11-11T19:00:00.000+0100",
-     "lastUpdate": "2026-11-11T17:46:00.000+0100",
-     "resume": "2026-11-11T16:15:00.000+0100",
-     "start": "2026-11-11T16:15:00.000+0100"
-    },
-    "title": "7A: Verkehrsüberlastung"
-   },
-   {
     "alertCause": "accident",
     "alertCauseId": 77,
     "attributes": {
@@ -356,6 +310,101 @@
      "start": "2026-11-11T18:13:00.000+0100"
     },
     "title": "O: Polizeieinsatz"
+   },
+   {
+    "alertCause": "traffic management system failure",
+    "alertCauseId": 41,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Die Linie U6 fährt derzeit zwischen den Stationen Alterlaa und Am Schöpfwerk in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig. Voraussichtliche Dauer: 19:00 Uhr. Grund: Stellwerksstörung im Haltestellenbereich Am Schöpfwerk.",
+    "descriptionHTML": "<p>Die Linie U6 fährt derzeit zwischen den Stationen Alterlaa und Am Schöpfwerk in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 19:00 Uhr.</p><p>Grund: Stellwerksstörung im Haltestellenbereich Am Schöpfwerk.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Die Linie U6 fährt derzeit zwischen den Stationen Alterlaa und Am Schöpfwerk in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 19:00 Uhr.</p><p>Grund: Stellwerksstörung im Haltestellenbereich Am Schöpfwerk.</p>",
+       "descriptionPlain": "Die Linie U6 fährt derzeit zwischen den Stationen Alterlaa und Am Schöpfwerk in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig. Voraussichtliche Dauer: 19:00 Uhr. Grund: Stellwerksstörung im Haltestellenbereich Am Schöpfwerk.",
+       "title": "U6: Stellwerksstörung"
+      }
+     }
+    ],
+    "name": "I20261111-0029",
+    "owner": "WL",
+    "parentName": "I20261111-0029",
+    "priority": "1",
+    "reasonId": 32,
+    "reasonName": "Stellwerksstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4639
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-11T18:33:00.000+0100",
+     "lastUpdate": "2026-11-11T18:33:00.000+0100",
+     "start": "2026-11-11T18:30:00.000+0100"
+    },
+    "title": "U6: Stellwerksstörung"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "43": "ptTram"
+     }
+    },
+    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "43: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261111-0030-F01",
+    "owner": "WL",
+    "parentName": "I20261111-0030",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "43"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 143,
+      "lineName": "43",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     1348
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-11T18:41:00.000+0100",
+     "lastUpdate": "2026-11-11T18:41:00.000+0100",
+     "resume": "2026-11-11T18:41:00.000+0100",
+     "start": "2026-11-11T18:40:00.000+0100"
+    },
+    "title": "43: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",

@@ -914,6 +914,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "43: Polizeieinsatz",
+    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "988c80ab109007f5051aff806aa861e0141853ffcc393ab7f2657dc9a31b4cd0",
+    "pubDate": "2026-11-11T18:40:00+01:00",
+    "starts_at": "2026-11-11T18:40:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=43|D=2026-11-11|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261111-0030"
+    ],
+    "_incident_start": "2026-11-11T18:40:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -966,22 +982,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "7A: Verkehrsüberlastung",
-    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc",
-    "pubDate": "2026-11-11T16:15:00+01:00",
-    "starts_at": "2026-11-11T16:15:00+01:00",
-    "ends_at": "2026-11-11T19:00:00+01:00",
-    "_identity": "wl|störung|L=7A|D=2026-11-11|TK=7a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261111-0024"
-    ],
-    "_incident_start": "2026-11-11T16:15:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "80A: Betrieb ab Vivariumstraße 2",
     "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1022,6 +1022,22 @@
       "I20261111-0022"
     ],
     "_incident_start": "2026-11-11T16:08:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Stellwerksstörung",
+    "description": "Die Linie U6 fährt derzeit zwischen den Stationen Alterlaa und Am Schöpfwerk in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig. Voraussichtliche Dauer: 19:00 Uhr. Grund: Stellwerksstörung im Haltestellenbereich Am Schöpfwerk.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "5eb36c0bee0e695acde6580e57fa99f70cfb4fbfe2db6be7992e23073a052651",
+    "pubDate": "2026-11-11T18:30:00+01:00",
+    "starts_at": "2026-11-11T18:30:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U6|D=2026-11-11|TK=u6 stellwerksstörung",
+    "_wl_ids": [
+      "I20261111-0029"
+    ],
+    "_incident_start": "2026-11-11T18:30:00+01:00"
   },
   {
     "source": "Wiener Linien",
