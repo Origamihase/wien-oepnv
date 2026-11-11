@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_490, ftazW_29, ftazW_1018065, ftazW_239, ftazW_510, ftazW_240, ftazW_491, ftazW_1018066, ftazW_82, ftazW_1351709, ftazW_511, ftazW_729, ftazW_83, ftazW_574, ftazW_508, ftazW_721, ftazW_725, ftazW_84, ftazW_722, ftazW_509, ftazW_575, ftazW_45"
+    "trafficInfoNameList": "ftazW_240, ftazW_491, ftazW_1018066, ftazW_82, ftazW_1351709, ftazW_511, ftazW_729, ftazW_83, ftazW_574, ftazW_508, ftazW_721, ftazW_725, ftazW_84, ftazW_722, ftazW_509, ftazW_575, ftazW_45"
    }
   ],
   "poiCategoryGroups": [
@@ -3025,43 +3025,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "12.11.2026 00:45",
-     "ausVon": "11.11.2026 20:45",
-     "location": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Stella Klein Löw Weg",
-     "rbls": [
-      4257
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U2"
-     ],
-     "station": "Stadion",
-     "status": "geplante Wartung",
-     "towards": "U2 Karlsplatz"
-    },
-    "description": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Stella Klein Löw Weg",
-    "elevatorId": "SW 01",
-    "name": "ftazW_1018065",
-    "parentName": "ftazW_1018065",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedStops": [
-     4257
-    ],
-    "time": {
-     "end": "2026-11-12T00:45:00.000+0100",
-     "start": "2026-11-11T20:45:00.000+0100"
-    },
-    "title": "Stadion"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "12.11.2026 05:15",
      "ausVon": "12.11.2026 01:15",
      "location": "U2 Bahnsteig Richtung Seestadt - Ausgang Stella Klein Löw Weg",
@@ -3138,47 +3101,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "12.11.2026 00:45",
-     "ausVon": "11.11.2026 20:45",
-     "location": "U4 Bahnsteig Richtung Heiligenstadt, U6 Bahnsteig Richtung Floridsdorf - Ausgang Storchensteg/Gierstergasse",
-     "rbls": [
-      4437,
-      4617
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4",
-      "U6"
-     ],
-     "station": "Längenfeldgasse",
-     "status": "geplante Wartung",
-     "towards": "U4 Heiligenstadt, U6 Floridsdorf"
-    },
-    "description": "U4 Bahnsteig Richtung Heiligenstadt, U6 Bahnsteig Richtung Floridsdorf - Ausgang Storchensteg/Gierstergasse",
-    "elevatorId": "LE 01",
-    "name": "ftazW_239",
-    "parentName": "ftazW_239",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4",
-     "U6"
-    ],
-    "relatedStops": [
-     4437,
-     4617
-    ],
-    "time": {
-     "end": "2026-11-12T00:45:00.000+0100",
-     "start": "2026-11-11T20:45:00.000+0100"
-    },
-    "title": "Längenfeldgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "12.11.2026 05:15",
      "ausVon": "12.11.2026 01:15",
      "location": "U4 Bahnsteig Richtung Hütteldorf, U6 Bahnsteig Richtung Siebenhirten - Ausgang Storchensteg/Gierstergasse",
@@ -3220,38 +3142,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "12.11.2026 00:45",
-     "ausVon": "11.11.2026 20:45",
-     "location": "Zwischengeschoss - Ausgang Minoritenplatz",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Herrengasse",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Zwischengeschoss - Ausgang Minoritenplatz",
-    "elevatorId": "HZ 01",
-    "name": "ftazW_29",
-    "parentName": "ftazW_29",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "time": {
-     "end": "2026-11-12T00:45:00.000+0100",
-     "start": "2026-11-11T20:45:00.000+0100"
-    },
-    "title": "Herrengasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "13.11.2026 05:15",
      "ausVon": "13.11.2026 01:15",
      "location": "U3 Mittelbahnsteig - Ausgang Keinergasse",
@@ -3286,45 +3176,6 @@
      "start": "2026-11-13T01:15:00.000+0100"
     },
     "title": "Kardinal-Nagl-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "12.11.2026 00:45",
-     "ausVon": "11.11.2026 20:45",
-     "location": "U6 Bahnsteig Richtung Siebenhirten - Zwischengeschoss - ÖBB Bahnsteig",
-     "rbls": [
-      4651
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4",
-      "U6"
-     ],
-     "station": "Spittelau",
-     "status": "geplante Wartung",
-     "towards": "U6 Siebenhirten"
-    },
-    "description": "U6 Bahnsteig Richtung Siebenhirten - Zwischengeschoss - ÖBB Bahnsteig",
-    "elevatorId": "AU 05",
-    "name": "ftazW_490",
-    "parentName": "ftazW_490",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4",
-     "U6"
-    ],
-    "relatedStops": [
-     4651
-    ],
-    "time": {
-     "end": "2026-11-12T00:45:00.000+0100",
-     "start": "2026-11-11T20:45:00.000+0100"
-    },
-    "title": "Spittelau"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3437,45 +3288,6 @@
      "start": "2026-11-13T01:15:00.000+0100"
     },
     "title": "Jägerstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "12.11.2026 00:45",
-     "ausVon": "11.11.2026 20:45",
-     "location": "U6 Mittelbahnsteig - Ausgang Pasettistraße",
-     "rbls": [
-      4642,
-      4649
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Dresdner Straße",
-     "status": "geplante Wartung",
-     "towards": "U6 beide Richtungen"
-    },
-    "description": "U6 Mittelbahnsteig - Ausgang Pasettistraße",
-    "elevatorId": "DS 01",
-    "name": "ftazW_510",
-    "parentName": "ftazW_510",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4642,
-     4649
-    ],
-    "time": {
-     "end": "2026-11-12T00:45:00.000+0100",
-     "start": "2026-11-11T20:45:00.000+0100"
-    },
-    "title": "Dresdner Straße"
    },
    {
     "alertCause": "undefined alert cause",
