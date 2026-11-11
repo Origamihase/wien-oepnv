@@ -8,10 +8,36 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 11 Nov 2026 11:30:48 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 12:00:46 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[O: Fremdunfall]]></title>
+      <title><![CDATA[35A: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">b0a24007474aab764828e2f63bdadfa9f2fa0506bb84bdfcd25263dd7bbb7dca</guid>
+      <pubDate>Wed, 11 Nov 2026 11:51:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 11 Nov 2026 11:51:00 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 11 Nov 2026 11:51:00 +0100</ext:starts_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 11:51]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 11:51]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[97A: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">9467a246f86f6472938f073378209e9f650cfb30990767d72eec86235aa9019c</guid>
+      <pubDate>Wed, 11 Nov 2026 11:36:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 11 Nov 2026 11:36:00 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 11 Nov 2026 11:36:00 +0100</ext:starts_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 11:36]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 11:36]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[O: Fremder Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">36ad6a7c30b68d7345880b54bf25d283a433758da75c3a0fa4127d22d410a937</guid>
       <pubDate>Wed, 11 Nov 2026 09:41:00 +0100</pubDate>
@@ -20,8 +46,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 11 Nov 2026 09:41:00 +0100</ext:first_seen>
       <ext:starts_at>Wed, 11 Nov 2026 09:41:00 +0100</ext:starts_at>
-      <description>Betrieb über Li. 6+D; Betrieb ab Quartier Belvedere, Quellenplatz; Züge halten bei Li. D Richtung Nußdorf; Züge halten bei Li. 6 Ri. Burggasse, Stadthalle. [Seit 09:41]</description>
-      <content:encoded><![CDATA[Betrieb über Li. 6+D; Betrieb ab Quartier Belvedere, Quellenplatz; Züge halten bei Li. D Richtung Nußdorf; Züge halten bei Li. 6 Ri. Burggasse, Stadthalle.<br/>[Seit 09:41]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 09:41]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 09:41]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx]]></title>
@@ -121,34 +147,6 @@
       <ext:ends_at>Thu, 10 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Wegen Straßenbauarbeiten in der Wexstraße werden die Busse umgeleitet. Linie 5B: Umleitung ab Klosterneuburger Straße / Wexstraße über Klosterneuburger Straße … [Bis 10.12.]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Wexstraße werden die Busse umgeleitet. Linie 5B: Umleitung ab Klosterneuburger Straße / Wexstraße über Klosterneuburger Straße …<br/>[Bis 10.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31: Wexstraße]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">349cce99b21e13e0a504471640a3afdac3838a3618bf31ecfa28d333e3f00a83</guid>
-      <pubDate>Thu, 05 Nov 2026 13:45:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 05 Nov 2026 13:45:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 09 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.235958 16.365885</georss:point>
-      <description>Wexstraße 12 → Klosterneuburger Straße 88-90. Haltestellenverlegung der Linie 31 in Richtung Stammersdorf. Grund: Haltestellenumbau. [Seit 09.11.]</description>
-      <content:encoded><![CDATA[Wexstraße 12 → Klosterneuburger Straße 88-90. Haltestellenverlegung der Linie 31 in Richtung Stammersdorf. Grund: Haltestellenumbau.<br/>[Seit 09.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[64A/N64R: Zouvalgasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">cdff8b05c55300908c52c699e1c432a54ef6ee2d3a14ab4139d4744f9e32f9e1</guid>
-      <pubDate>Wed, 04 Nov 2026 14:21:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 04 Nov 2026 14:21:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 09 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.137917 16.321284</georss:point>
-      <description>Perfektastraße 6-8 → Perfektastraße 10-12. Haltestellenverlegung der Linie 64A in Richtung Liesing sowie Rufbus N64 in Richtung Siebenhirten. Grund: Rohrlegungsarbeiten. [Seit 09.11.]</description>
-      <content:encoded><![CDATA[Perfektastraße 6-8 → Perfektastraße 10-12. Haltestellenverlegung der Linie 64A in Richtung Liesing sowie Rufbus N64 in Richtung Siebenhirten. Grund: Rohrlegungsarbeiten.<br/>[Seit 09.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

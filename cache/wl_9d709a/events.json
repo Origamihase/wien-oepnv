@@ -890,6 +890,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "35A: Verkehrsunfall",
+    "description": "Linie 35A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b0a24007474aab764828e2f63bdadfa9f2fa0506bb84bdfcd25263dd7bbb7dca",
+    "pubDate": "2026-11-11T11:51:00+01:00",
+    "starts_at": "2026-11-11T11:51:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=35A|D=2026-11-11|TK=35a verkehrsunfall",
+    "_wl_ids": [
+      "I20261111-0012"
+    ],
+    "_incident_start": "2026-11-11T11:51:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -950,74 +966,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Fremdunfall Betrieb ab Quartier Belvedere S",
-    "description": "Fremdunfall\nBetrieb ab Quartier Belvedere S",
+    "title": "97A: Rettungseinsatz",
+    "description": "Linie 97A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "6a70a2f288bf621b794e8cf8e362684fef8b91336a0091b9c0cbe9fc7763bf94",
-    "pubDate": "2026-11-11T09:44:05+01:00",
-    "starts_at": "2026-11-11T09:44:05+01:00",
-    "ends_at": "2026-11-11T12:00:00+01:00",
-    "_identity": "wl|störung|L=O|D=2026-11-11|TK=fremdunfall betrieb ab quartier belvedere s"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Fremdunfall Betrieb ab Quellenplatz",
-    "description": "Fremdunfall\nBetrieb ab Quellenplatz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "06076533007ef2930b17429fae4f2c4f7f36dbf3fe61738ccf324bca71f77190",
-    "pubDate": "2026-11-11T09:45:35+01:00",
-    "starts_at": "2026-11-11T09:45:35+01:00",
-    "ends_at": "2026-11-11T12:00:00+01:00",
-    "_identity": "wl|störung|L=O|D=2026-11-11|TK=fremdunfall betrieb ab quellenplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Fremdunfall Betrieb über Li. 6+D",
-    "description": "Fremdunfall\nBetrieb über Li. 6+D",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "5eb5818e360fbd05c32a9dd4e7929789e0af412f8ee0dde48e2229b4962fde56",
-    "pubDate": "2026-11-11T09:43:07+01:00",
-    "starts_at": "2026-11-11T09:43:07+01:00",
-    "ends_at": "2026-11-11T12:00:00+01:00",
-    "_identity": "wl|störung|L=O|D=2026-11-11|TK=fremdunfall betrieb über li 6 d"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Fremdunfall Betrieb über Li. D+6",
-    "description": "Fremdunfall\nBetrieb über Li. D+6",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "349740adf6ce9876aee48b15788500dcd3851f247b91beba115d6b8da2659473",
-    "pubDate": "2026-11-11T09:45:05+01:00",
-    "starts_at": "2026-11-11T09:45:05+01:00",
-    "ends_at": "2026-11-11T12:00:00+01:00",
-    "_identity": "wl|störung|L=O|D=2026-11-11|TK=fremdunfall betrieb über li d 6"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Fremdunfall Züge halten bei Li. 6 Ri. Burggasse, Stadthalle",
-    "description": "Fremdunfall\nZüge halten bei Li. 6 Ri. Burggasse, Stadthalle",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "b61ba3fa9013d8ad031d3b814082c732c75b3a5439579908df69fe8c9671e851",
-    "pubDate": "2026-11-11T09:46:05+01:00",
-    "starts_at": "2026-11-11T09:46:05+01:00",
-    "ends_at": "2026-11-11T12:00:00+01:00",
-    "_identity": "wl|störung|L=O|D=2026-11-11|TK=fremdunfall züge halten bei li 6 ri burggasse stadthalle"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Fremdunfall Züge halten bei Li. D Richtung Nußdorf",
-    "description": "Fremdunfall\nZüge halten bei Li. D Richtung Nußdorf",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "3abd166fbd6d42cf7c1ee169d12cbd885643d56f3545a9144265c8d1615a5815",
-    "pubDate": "2026-11-11T09:44:35+01:00",
-    "starts_at": "2026-11-11T09:44:35+01:00",
-    "ends_at": "2026-11-11T12:00:00+01:00",
-    "_identity": "wl|störung|L=O|D=2026-11-11|TK=fremdunfall züge halten bei li d richtung nussdorf"
+    "guid": "9467a246f86f6472938f073378209e9f650cfb30990767d72eec86235aa9019c",
+    "pubDate": "2026-11-11T11:36:00+01:00",
+    "starts_at": "2026-11-11T11:36:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=97A|D=2026-11-11|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261111-0010"
+    ],
+    "_incident_start": "2026-11-11T11:36:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1058,5 +1018,17 @@
     "starts_at": "2026-09-14T04:00:00+02:00",
     "ends_at": "2026-12-31T23:59:00+01:00",
     "_identity": "wl|störung|L=|D=2026-09-14|TK=sperre"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung wegen Bahnschranken",
+    "description": "Fahrtbehinderung\nwegen Bahnschranken",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "9f5eb517cd5a5fea26ed6c97662ea340d706aae504d4a12dbb6136be1e4abf9f",
+    "pubDate": "2026-11-11T11:39:47+01:00",
+    "starts_at": "2026-11-11T11:40:17+01:00",
+    "ends_at": "2026-11-11T12:39:00+01:00",
+    "_identity": "wl|störung|L=|D=2026-11-11|TK=fahrtbehinderung wegen bahnschranken"
   }
 ]
