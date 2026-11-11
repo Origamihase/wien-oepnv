@@ -72,11 +72,29 @@ _HALF_UP: Final = Context(prec=400, rounding=ROUND_HALF_UP)
 # Rounding to this many decimals first removes that hair and cannot make a
 # tie of its own: the mean of n ledger values (two decimals each) is a
 # multiple of 1/(100·n), so one that is no tie lies at least 1/(100·n) from
-# the next tie, which is more than 5e-10 for up to 20 million rows; a year
-# has at most 2 directions × 48 polls × 366 days = 35,136. Measured on
-# 2026-11-10 over the means of all 80,200 pairs of values from 0.00 to 3.99:
-# 282 printed one tenth low without this step, none with it.
+# the next tie, which is more than 5e-10 for up to 20 million rows. A year
+# holds a few tens of thousands: the 2026 ledger had 11,206 rows on
+# 2026-11-11, at most 98 on one day (the hourly backup tick of the update
+# cycle adds polls to the half-hourly ones). Measured on 2026-11-10 over the
+# means of all 80,200 pairs of values from 0.00 to 3.99: 282 printed one
+# tenth low without this step, none with it. The day ranking sorts by the
+# same rounded mean (:func:`_delay_days_section`).
 _FLOAT_NOISE_DECIMALS: Final = 9
+
+# The last sentence of the opening paragraph, which is the legend of the
+# section. The overview rounds half up (:func:`_fmt_delay`); "Kennzahlen auf
+# einen Blick" above it and the sections of ``markdown_report`` below it
+# keep the float format of the dashboard, which they share with
+# ``docs/statistik.md`` and the README and which must not change on a
+# normal day. A mean on an exact half can therefore show 3.3 here and 3.2
+# there (review of 2026-11-10, second round); the sentence says so. Below
+# the overview only the bar charts per weekday and per hour print a delay
+# (the tables there hold counts), so the sentence names the bars.
+ROUNDING_NOTE: Final = (
+    "Die Verspätungen dieses Abschnitts sind auf eine Nachkommastelle "
+    "kaufmännisch gerundet; „Kennzahlen auf einen Blick“ und die "
+    "Balkendiagramme weiter unten runden wie das Dashboard."
+)
 
 # Austrian German: "Jänner", as Wiener Linien titles write it
 # (src/providers/wl_text.py); the other eleven are the same everywhere.
@@ -159,7 +177,8 @@ def _fmt_delay(minutes: float) -> str:
     and ledger found 11.25 shown as 11.2 (review of 2026-11-10). The
     shortest decimal form of the float is rounded instead, a half away from
     zero. The older tables of the page (``markdown_report``) keep the float
-    format: they print means only, where an exact half is rare.
+    format of the dashboard; the opening paragraph says so
+    (:data:`ROUNDING_NOTE`).
 
     A value that is not finite keeps the float format ("inf min"): such a
     row does not reach this module (see :func:`render_year_overview`), and
@@ -381,12 +400,22 @@ def _chosen_days(count: int) -> str:
 def _delay_days_section(delays: Sequence[_Sample], *, threshold: float) -> list[str]:
     """The days with the highest mean delay; an earlier day wins a tie.
 
-    The order follows the mean as computed, the cell shows one decimal: two
-    days can show the same value with the later one first. The note under
-    the table therefore names the unrounded mean as the order; without
-    that, such a pair contradicts the sentence about the earlier day
+    The order follows the mean of the ledger values, the cell shows one
+    decimal: two days can show the same value with the later one first. The
+    note under the table therefore names the unrounded mean as the order;
+    without that, such a pair contradicts the sentence about the earlier day
     (review of 2026-11-10). Ordering by the shown value instead would put a
     day with a lower mean above one with a higher.
+
+    The key is the float mean rounded to :data:`_FLOAT_NOISE_DECIMALS`, as
+    :func:`_fmt_delay` rounds it. Two days with the same mean of their
+    ledger values can get floats a hair apart (10 rows summing to 20.92
+    give 2.0919999999999996 on one day and 2.092 on another), and the
+    later day stood first (review of 2026-11-10, second round). Rounding
+    joins such a pair into a tie and keeps every other pair in its order:
+    two different means of days with n and m rows lie at least
+    1/(100·n·m) apart, more than 1e-9 for days of up to 3,000 rows; the
+    busiest day of the 2026 ledger had 98 (measured on 2026-11-11).
     """
     title = "### Tage mit der höchsten mittleren Verspätung"
     if not delays:
@@ -407,7 +436,7 @@ def _delay_days_section(delays: Sequence[_Sample], *, threshold: float) -> list[
             f"(Tage mit Beobachtungen: {len(samples_of)})._",
             "",
         ]
-    eligible.sort(key=lambda item: (-item[1].mean, item[0]))
+    eligible.sort(key=lambda item: (-round(item[1].mean, _FLOAT_NOISE_DECIMALS), item[0]))
     lines = [
         title,
         "",
@@ -533,7 +562,8 @@ def render_year_overview(
         "Verspätung aller dabei am Wien Hauptbahnhof beobachteten Abfahrten auf der "
         "Stammstrecke (S-Bahn, R, REX und CJX); "
         f"„Verspätungen > {threshold:g} min“ zählt die Beobachtungen über diesem Wert, "
-        "„Höchste Verspätung“ nennt die höchste Beobachtung.",
+        "„Höchste Verspätung“ nennt die höchste Beobachtung. "
+        f"{ROUNDING_NOTE}",
         "",
     ]
     if coverage_note.strip():

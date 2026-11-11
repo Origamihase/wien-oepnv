@@ -11,15 +11,18 @@ from __future__ import annotations
 
 import math
 from collections import defaultdict
+from datetime import datetime
 from decimal import Decimal
 from fractions import Fraction
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import pytest
 
 from src.markdown_stats import year_stats
 from src.markdown_stats.direction_coverage import render_finished_year_coverage_note
 from src.markdown_stats.rows import collect_year_data
+from src.markdown_stats.year_archive import render_year_archive
 from src.markdown_stats.year_stats import (
     MAX_DIRECTION_ROWS,
     MIN_DAY_OBSERVATIONS,
@@ -340,3 +343,80 @@ def test_directions_beyond_the_cap_in_singular_and_plural(
     page = render_year_overview(sm, [], [], year=2026)
     assert [row[0] for row in _table(page, DIRECTIONS)] == names[:MAX_DIRECTION_ROWS]
     assert _section(page, DIRECTIONS)[-2] == note
+
+
+# ---- Second round of the review of 2026-11-10 -------------------------------
+
+ROUNDING = (
+    "Die Verspätungen dieses Abschnitts sind auf eine Nachkommastelle kaufmännisch "
+    "gerundet; „Kennzahlen auf einen Blick“ und die Balkendiagramme weiter unten runden "
+    "wie das Dashboard."
+)
+# Ten ledger values each, both summing to 20.92: the same mean 2.092, but the
+# floats are 2.0919999999999996 and 2.092.
+LOW_FLOAT = [2.6, 0.55, 3.98, 0.83, 2.66, 2.01, 1.89, 2.5, 3.75, 0.15]
+HIGH_FLOAT = [1.52, 1.63, 1.8, 1.39, 1.66, 3.83, 3.83, 2.66, 2.56, 0.04]
+
+
+@pytest.mark.parametrize(("first", "second"), [(LOW_FLOAT, HIGH_FLOAT), (HIGH_FLOAT, LOW_FLOAT)])
+def test_equal_ledger_means_put_the_earlier_day_first_whatever_their_floats(
+    first: list[float], second: list[float]
+) -> None:
+    """The note promises the earlier day first for an equal mean; the float noise must not decide."""
+    assert sum(_exact(v) for v in first) == sum(_exact(v) for v in second) == Fraction("20.92")
+    assert math.fsum(first) / 10 != math.fsum(second) / 10
+    sm = [*_day_of_delays(6, 20, second), *_day_of_delays(6, 10, first)]
+    page = render_year_overview(sm, [], [], year=2026)
+    assert [row[:2] for row in _table(page, DELAY_DAYS)] == [
+        ["Mi 10.06.2026", "2.1 min"],
+        ["Sa 20.06.2026", "2.1 min"],
+    ]
+
+
+def test_a_mean_a_hair_higher_still_leads() -> None:
+    """The rounding that joins equal means does not join different ones: 2.093 beats 2.092."""
+    sm = [*_day_of_delays(6, 10, LOW_FLOAT), *_day_of_delays(6, 20, [*HIGH_FLOAT[:-1], 0.05])]
+    page = render_year_overview(sm, [], [], year=2026)
+    assert [row[0] for row in _table(page, DELAY_DAYS)] == ["Sa 20.06.2026", "Mi 10.06.2026"]
+
+
+def test_opening_paragraph_ends_with_the_rounding_of_the_page() -> None:
+    page = render_year_overview([_sm(_at(7, 10), 3.25)], [], [], year=2026)
+    assert page[2].endswith("„Höchste Verspätung“ nennt die höchste Beobachtung. " + ROUNDING)
+    assert year_stats.ROUNDING_NOTE == ROUNDING
+    assert sum(ROUNDING in line for line in page) == 1
+
+
+def test_the_page_rounds_two_ways_and_says_so(tmp_path: Path) -> None:
+    """One row of 3.25 min: the overview prints 3.3, the Kennzahlen above and the bars below 3.2.
+
+    Below the overview no table prints a delay (they hold counts); the bar
+    charts do, which is why the legend names them.
+    """
+    stats = tmp_path / "stats"
+    stats.mkdir()
+    (stats / "stammstrecke_2026.csv").write_text(
+        "timestamp,weekday,hour,direction,delay_minutes\n"
+        "2026-07-10T08:00:00+02:00,Fr,08,Meidling,3.25\n",
+        encoding="utf-8",
+    )
+    page = render_year_archive(
+        now=datetime(2027, 1, 1, 0, 5, tzinfo=ZoneInfo("Europe/Vienna")),
+        year=2026,
+        stats_dir=stats,
+        output_path=tmp_path / "statistik-2026.md",
+    )
+    assert page is not None
+    lines = page.splitlines()
+    kennzahlen, overview, stammstrecke = (
+        lines.index(heading)
+        for heading in ("## Kennzahlen auf einen Blick", "## Das Jahr im Überblick", "## Stammstrecke")
+    )
+    assert "| ⌀ Verspätung (2026) | 3.2 min |" in lines[kennzahlen:overview]
+    assert "| Juli | 1 | 3.3 min | 0 | 3.3 min | 0 | – |" in lines[overview:stammstrecke]
+    below = lines[stammstrecke:]
+    assert any("3.2 min" in line for line in below)
+    assert not any("3.3 min" in line for line in below)
+    assert all("│" in line for line in below if " min" in line)
+    assert not any(line.startswith("|") and " min" in line for line in below)
+    assert lines[overview + 2].endswith(ROUNDING)

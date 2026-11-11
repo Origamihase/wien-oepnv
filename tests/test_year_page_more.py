@@ -32,6 +32,7 @@ from src.utils.stats import (
     WEEKDAY_LABELS,
 )
 from src.utils.stats_baustellen import append_baustellen_rows
+from scripts import generate_markdown_stats as stats_script
 from tests.test_year_page import (
     EVENTS,
     GOOD,
@@ -135,6 +136,34 @@ def test_a_row_of_another_year_counts_nowhere_on_the_page(
     assert "Jahresarchiv 2026: 3 Zeilen mit dem Zeitstempel eines anderen Jahres nicht gezählt." in caplog.text
 
 
+def _warnings(caplog: pytest.LogCaptureFixture, *, level: str = "WARNING") -> list[str]:
+    return [record.getMessage() for record in caplog.records if record.levelname == level]
+
+
+def test_each_finding_stands_once_per_run_and_again_in_the_next(
+    tmp_path: Path, caplog: pytest.LogCaptureFixture
+) -> None:
+    # A dashboard run renders the page twice while its review is missing:
+    # "1 Zeilen …" stood twice in one log, and so did the WARNING of a
+    # stored review that no longer passes the guard.
+    _seed(tmp_path, baustellen=True)
+    with (tmp_path / "stats" / "stammstrecke_2026.csv").open("a", encoding="utf-8") as ledger:
+        ledger.write(_sm_line(datetime(2025, 12, 31, 23, 30, tzinfo=VIENNA_TZ), "5.00"))
+    review = tmp_path / "stats" / "baustellen_rueckblick_2026.json"
+    review.write_text(json.dumps({"year": 2026, "text": "Zwei  Leerzeichen."}), encoding="utf-8")
+    runs: list[list[str]] = []
+    for now_iso in ("2027-01-01T00:01:00+01:00", "2027-01-02T00:01:00+01:00"):
+        caplog.clear()
+        with caplog.at_level("WARNING"):
+            assert _run(tmp_path, now_iso) == 0
+        runs.append(_warnings(caplog))
+    first, second = runs
+    assert first.count("Jahresarchiv 2026: 1 Zeile mit dem Zeitstempel eines anderen Jahres nicht gezählt.") == 1
+    assert any(line.startswith("Baustellen-Rückblick 2026: der gespeicherte Text") for line in first)
+    assert len(set(first)) == len(first)
+    assert second == first
+
+
 def test_a_ledger_with_only_rows_of_another_year_gives_no_page(tmp_path: Path) -> None:
     _ledgers(tmp_path / "stats", sm=[_sm_line(datetime(2025, 6, 1, 8, 0, tzinfo=VIENNA_TZ))])
     assert _run(tmp_path, "2027-01-01T00:01:00+01:00") == 0
@@ -224,6 +253,69 @@ def test_a_page_that_cannot_be_written_costs_only_the_exit_code(
     assert _outputs(tmp_path) == (True, True, True)
 
 
+def test_a_page_that_fails_in_both_passes_is_one_error_line(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
+) -> None:
+    # While its review is missing the page is written twice per dashboard
+    # run, and its ERROR stood twice in the log.
+    _seed(tmp_path, baustellen=True)
+    (tmp_path / "statistik-2026.md").mkdir()
+    passes: list[bool] = []
+    real = year_archive.write_year_archives
+
+    def spy(**kwargs: Any) -> list[Path]:
+        passes.append(bool(kwargs.get("ask")))
+        written: list[Path] = real(**kwargs)
+        return written
+
+    monkeypatch.setattr(year_archive, "write_year_archives", spy)
+    for _ in range(2):
+        caplog.clear()
+        with caplog.at_level("ERROR"):
+            assert _run(tmp_path, "2027-01-01T00:01:00+01:00") == 1
+        (line,) = _warnings(caplog, level="ERROR")
+        assert line.startswith("Konnte Jahresarchiv nicht schreiben (IsADirectoryError)")
+    assert passes == [False, True, False, True]
+
+
+@pytest.mark.parametrize("name", ["write_stats_summary", "write_dashboard", "patch_readme_stats"])
+def test_a_failed_write_says_that_the_run_ends_without_a_request(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture, name: str
+) -> None:
+    # The early return stays (the failed write is the bigger alarm); until
+    # 2026-11-11 the log did not say that it skips the request.
+    _seed(tmp_path, baustellen=True)
+    prompts = _answer(monkeypatch, GOOD)
+    real = getattr(stats_script, name)
+    blocked = [True]
+
+    def write(*args: Any, **kwargs: Any) -> Any:
+        if blocked[0]:
+            raise OSError("blockiert")
+        return real(*args, **kwargs)
+
+    def error_line(now_iso: str, *extra: str) -> str:
+        caplog.clear()
+        with caplog.at_level("ERROR"):
+            assert _run(tmp_path, now_iso, *extra) == 1
+        (line,) = _warnings(caplog, level="ERROR")
+        return line
+
+    monkeypatch.setattr(stats_script, name, write)
+    assert error_line("2027-01-01T00:01:00+01:00").endswith(
+        ": blockiert — der Lauf endet hier, ohne Anfrage für den fehlenden Rückblick der Baustellen 2026; "
+        "ein späterer Dashboard-Lauf fragt erneut."
+    )
+    assert prompts == []
+    # A README tick sends no request anyway, and a stored review needs none.
+    if name != "write_dashboard":
+        assert error_line("2027-01-01T00:31:00+01:00", "--skip-dashboard").endswith(": blockiert")
+    blocked[0] = False
+    assert _run(tmp_path, "2027-01-01T00:05:00+01:00") == 0 and len(prompts) == 1
+    blocked[0] = True
+    assert error_line("2027-01-02T00:01:00+01:00").endswith(": blockiert")
+
+
 def test_a_defect_in_the_page_code_costs_only_the_exit_code(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
 ) -> None:
@@ -276,6 +368,27 @@ def _second_year(stats: Path) -> None:
     assert append_baustellen_rows(shifted, now=datetime(2025, 10, 1, 12, 0, tzinfo=VIENNA_TZ), stats_dir=stats) == 4
 
 
+def test_a_failed_write_names_every_missing_review_in_the_plural(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
+) -> None:
+    # With 2025 and 2026 waiting it read "für den fehlenden Rückblick der
+    # Baustellen 2025, 2026" (review of 2026-11-11).
+    _seed(tmp_path, baustellen=True)
+    _second_year(tmp_path / "stats")
+
+    def full(*_args: Any, **_kwargs: Any) -> None:
+        raise OSError("[Errno 28] No space left on device")
+
+    monkeypatch.setattr(stats_script, "patch_readme_stats", full)
+    with caplog.at_level("ERROR"):
+        assert _run(tmp_path, "2027-01-01T00:01:00+01:00") == 1
+    (line,) = _warnings(caplog, level="ERROR")
+    assert line.endswith(
+        ": [Errno 28] No space left on device — der Lauf endet hier, ohne Anfrage für die fehlenden "
+        "Rückblicke der Baustellen 2025, 2026; ein späterer Dashboard-Lauf fragt erneut."
+    )
+
+
 @pytest.mark.parametrize(("first_takes", "second_gets"), [(50.0, 60.0), (100.0, None)])
 def test_all_years_share_one_budget_newest_first(
     tmp_path: Path,
@@ -311,7 +424,12 @@ def test_all_years_share_one_budget_newest_first(
     assert deadlines[0] == review_client.DEFAULT_DEADLINE_S
     if second_gets is None:
         assert len(deadlines) == 1
-        assert "Baustellen-Rückblick 2025: in diesem Lauf keine Anfrage mehr" in caplog.text
+        # It promised "der nächste Dashboard-Lauf fragt" while the newer
+        # year can use up the budget on every run.
+        assert (
+            "Baustellen-Rückblick 2025: in diesem Lauf keine Anfrage mehr, die Zeit für Anfragen ist "
+            "aufgebraucht; ein späterer Dashboard-Lauf fragt erneut."
+        ) in caplog.text
     else:
         assert deadlines[1:] == [second_gets]
     assert sorted(p.name for p in tmp_path.glob("statistik-*.md")) == ["statistik-2025.md", "statistik-2026.md"]

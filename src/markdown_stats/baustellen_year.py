@@ -11,9 +11,10 @@ The ledger holds one row per guid of the Stadt Wien data. That guid is a
 hash of title, start and end (``src/providers/baustellen_events.py``), so
 a site whose end was moved appears under a new guid; the 2026 ledger
 holds 61 rows for 19 sites. :func:`load_sites` therefore merges the rows
-of one title into one site, as long as their periods overlap or touch,
-and shows the period the city named last (review of 2026-11-10: the city
-also moves an end earlier, and the same address can be worked on twice).
+of one title into one site and shows the period the city named last
+(review of 2026-11-10: the city also moves an end earlier, postpones a
+site past its old end, and the same address can be worked on twice);
+:func:`_sites_of_title` says when two rows of one title are two sites.
 
 Licence: the texts are the city's, CC BY 4.0, and appear edited
 (``NOTICE.md``, "Generierte Feeds"): the section ends with the source, the
@@ -21,8 +22,7 @@ note on the editing and the licence link.
 """
 from __future__ import annotations
 
-import csv
-import io
+import logging
 import re
 from collections import Counter
 from collections.abc import Iterator, Sequence
@@ -34,8 +34,8 @@ from typing import Final
 from src.markdown_stats.rows import LOGGER, MAX_CSV_BYTES
 from src.utils.files import read_capped_text
 from src.utils.logging import sanitize_log_arg
-from src.utils.stats import VIENNA_TZ, stats_path, to_vienna
-from src.utils.stats_baustellen import BAUSTELLEN_HEADER
+from src.utils.stats import stats_path, to_vienna
+from src.utils.stats_baustellen import BAUSTELLEN_HEADER, SiteLine, read_ledger_text
 from src.utils.text import escape_markdown_cell, normalise_markdown_text
 from src.utils.vienna_clock import PLAUSIBLE_YEARS
 
@@ -64,10 +64,6 @@ MAX_DESCRIPTIONS: Final = 3
 # cap here cuts nothing the ledger holds and still bounds a hand-edited
 # cell.
 _CELL_MAX_LEN: Final = 200
-# A line with this character held a byte that is no UTF-8 (see _read_rows).
-_REPLACEMENT_CHAR: Final = "\ufffd"
-# A UTF-8 byte order mark, as a spreadsheet program puts before the header.
-_BOM: Final = "\ufeff"
 # The guard accepts at most 1,500 characters (year_review.MAX_REVIEW_CHARS);
 # the bound here only keeps a caller's unchecked text from filling the page.
 _REVIEW_MAX_LEN: Final = 2000
@@ -148,33 +144,13 @@ def _ledger_date(value: str) -> date | None:
     return parsed if PLAUSIBLE_YEARS[0] <= parsed.year <= PLAUSIBLE_YEARS[1] else None
 
 
-def _ledger_moment(value: str) -> datetime | None:
-    """The row's time stamp in Vienna time; a naive one is read as Vienna time."""
-    try:
-        parsed = datetime.fromisoformat(value.strip())
-        if not PLAUSIBLE_YEARS[0] <= parsed.year <= PLAUSIBLE_YEARS[1]:
-            return None
-        if parsed.tzinfo is None:
-            return parsed.replace(tzinfo=VIENNA_TZ)
-        return parsed.astimezone(VIENNA_TZ)
-    except (ValueError, OverflowError):
-        return None
-
-
-def _parse_row(cells: Sequence[str]) -> _LedgerRow | None:
-    """A ledger row, or ``None`` for one without time stamp, guid or title."""
-    if len(cells) != len(BAUSTELLEN_HEADER):
-        return None
-    row = dict(zip(BAUSTELLEN_HEADER, cells, strict=True))
-    seen = _ledger_moment(row["timestamp"])
-    guid = row["guid"].strip()
-    title = _one_line(row["title"])
-    if seen is None or not guid or not title:
-        return None
+def _parse_row(site: SiteLine) -> _LedgerRow:
+    """The fields of a ledger line that :func:`site_line` took for a site."""
+    row = dict(zip(BAUSTELLEN_HEADER, site.cells, strict=True))
     return _LedgerRow(
-        seen=seen,
-        guid=guid,
-        title=title,
+        seen=site.seen,
+        guid=row["guid"].strip(),
+        title=_one_line(row["title"]),
         starts=_ledger_date(row["starts_at"]),
         ends=_ledger_date(row["ends_at"]),
         district=_one_line(row["district"]),
@@ -183,69 +159,60 @@ def _parse_row(cells: Sequence[str]) -> _LedgerRow | None:
     )
 
 
-def _split_line(line: str) -> list[str] | None:
-    """The cells of one physical ledger line; ``None`` when it is no CSV record.
+# Log lines already written in this process, so a statistics run that reads
+# one ledger several times (the page, the request pass, the check for an
+# overdue review) says each finding once.
+_REPORTED: set[tuple[str, ...]] = set()
 
-    ``strict``: a quote that is opened and not closed on the line is an
-    error. Without it the csv module would return the first half of a
-    record that a hand edit broke over two lines as if it were whole.
-    *line* comes out of the size-capped read in :func:`_read_rows`; no file
-    handle reaches the csv module (tests/test_sentinel_csv_size_bomb.py).
+
+def _report_once(level: int, message: str, path: Path, *args: int) -> None:
+    """Log *message* about *path* with *args* once per process.
+
+    The key is the message with its arguments, so the same file with
+    another count, or another year's file, is logged again.
     """
-    try:
-        return next(csv.reader(io.StringIO(line), strict=True), None)
-    except csv.Error:
-        return None
+    key = (message, str(path), *map(str, args))
+    if key in _REPORTED:
+        return
+    _REPORTED.add(key)
+    LOGGER.log(level, message, sanitize_log_arg(str(path)), *args)
+
+
+def forget_reported() -> None:
+    """Let the next statistics run in this process log its findings again."""
+    _REPORTED.clear()
 
 
 def _read_rows(path: Path) -> Iterator[_LedgerRow]:
     """Every readable row of the ledger at *path*.
 
     The file is read through the size cap of the other ledgers and taken
-    apart line by line: a ledger row is one physical line (the writer
+    apart line by line (:func:`src.utils.stats_baustellen.read_ledger_text`,
+    the same function the ledger's writer uses, so a line counts for both
+    or for neither): a ledger row is one physical line (the writer
     collapses line breaks, and ``data/stats/*.csv merge=union`` in
     ``.gitattributes`` merges by line), so one damaged line, an unbalanced
     quote for instance, costs that line and not the rest of the file. A
     line that repeats the header (two branches created the file) is
-    skipped, a file that starts with another header is not read at all.
+    skipped, a file that starts with another header is not read at all; a
+    byte order mark and blank lines before the header are passed over.
 
-    The header check is as tolerant as the writer's (``_ledger_guids`` in
-    ``src/utils/stats_baustellen.py``): a byte order mark and blank lines
-    before the header are passed over, or the writer would extend a file
-    this reader refuses. Bytes that are no UTF-8 are replaced, as the
-    writer does, and a line that held one counts as unreadable: read
-    strictly, one such byte (an append cut inside "ß") took the whole
-    section off the page without a log line (review of 2026-11-10).
+    Bytes that are no UTF-8 are replaced, as the writer does. A line that
+    still reads as a whole record is kept, the replacement character shown
+    like any other: the city's text can hold a real U+FFFD, and a site
+    dropped for it was never entered again by the writer (review of
+    2026-11-10). A line that does not read is skipped and counted.
     """
     raw = read_capped_text(path, max_bytes=MAX_CSV_BYTES, errors="replace", label="stats CSV", logger=LOGGER)
-    if raw is None:
+    if raw is None or not raw.strip():
         return
-    lines = [line.rstrip("\r") for line in raw.removeprefix(_BOM).split("\n")]
-    lines = [line for line in lines if line.strip()]
-    if not lines:
+    ledger = read_ledger_text(raw)
+    if ledger is None:
+        _report_once(logging.WARNING, "Stats-Datei %s hat unerwarteten Header — überspringe.", path)
         return
-    if tuple(_split_line(lines[0]) or ()) != BAUSTELLEN_HEADER:
-        LOGGER.warning(
-            "Stats-Datei %s hat unerwarteten Header — überspringe.",
-            sanitize_log_arg(str(path)),
-        )
-        return
-    skipped = 0
-    for line in lines[1:]:
-        cells = None if _REPLACEMENT_CHAR in line else _split_line(line)
-        if cells is not None and tuple(cells) == BAUSTELLEN_HEADER:
-            continue
-        row = _parse_row(cells) if cells is not None else None
-        if row is None:
-            skipped += 1
-            continue
-        yield row
-    if skipped:
-        LOGGER.warning(
-            "Stats-Datei %s: %d unlesbare Zeile(n) übersprungen.",
-            sanitize_log_arg(str(path)),
-            skipped,
-        )
+    yield from (_parse_row(site) for site in ledger.sites)
+    if ledger.unreadable:
+        _report_once(logging.WARNING, "Stats-Datei %s: %d unlesbare Zeile(n) übersprungen.", path, ledger.unreadable)
 
 
 def _first_per_guid(rows: Iterator[_LedgerRow]) -> list[_LedgerRow]:
@@ -287,25 +254,74 @@ def _outside_year(row: _LedgerRow, year: int) -> bool:
     )
 
 
-def _separate_periods(rows: Sequence[_LedgerRow]) -> list[list[_LedgerRow]]:
-    """The rows of one title, split where their periods neither overlap nor touch.
+def _periods_touch(one: _LedgerRow, other: _LedgerRow) -> bool:
+    """Whether the periods of two rows overlap or touch (no free day between them).
 
-    The same address worked on in March and again in October is two sites;
-    merged, the list showed one site from March to November and every
-    month between counted as touched. Rows of a moved end share their
-    start or overlap and stay together. A missing start or end is open on
-    that side and separates nothing.
+    A missing start or end is open on that side, so it reaches every
+    period on that side.
     """
-    ordered = sorted(rows, key=lambda row: (row.starts or date.min, row.ends or date.max))
+    one_start, one_end = one.starts or date.min, one.ends or date.max
+    other_start, other_end = other.starts or date.min, other.ends or date.max
+    return (other_start - one_end).days <= 1 and (one_start - other_end).days <= 1
+
+
+def _same_site(earlier: _LedgerRow, later: _LedgerRow) -> bool:
+    """Whether *later* (first seen after *earlier*) belongs to the site of *earlier*.
+
+    Yes when their periods overlap or touch, and when *later* was first
+    seen on or before the last day of *earlier*'s period (an open end has
+    no last day: it reaches every later row, also one wholly before its
+    start): the city replaced the period while the site was announced.
+    """
+    if _periods_touch(earlier, later):
+        return True
+    return earlier.ends is None or later.seen.date() <= earlier.ends
+
+
+def _period_row(rows: Sequence[_LedgerRow]) -> _LedgerRow:
+    """The row whose period a site shows: the newest that names a start or an end.
+
+    Without such a row, the newest row. Ties in the first sighting keep
+    the order of *rows*. :func:`_merge` shows this period and
+    :func:`_sites_of_title` compares a new row with it, so a period the
+    city has replaced is neither shown nor matched.
+    """
+    newest_first = sorted(rows, key=lambda row: row.seen, reverse=True)
+    return next(
+        (row for row in newest_first if row.starts is not None or row.ends is not None),
+        newest_first[0],
+    )
+
+
+def _sites_of_title(rows: Sequence[_LedgerRow]) -> list[list[_LedgerRow]]:
+    """The rows of one title, grouped into sites.
+
+    The rows are taken in the order of their first sighting. A row joins
+    every site whose current period it belongs to (:func:`_same_site`
+    against the row :func:`_period_row` picks), and sites it joins become
+    one. Only a row first seen after the current period had ended, with a
+    period that neither overlaps nor touches it, starts a site of its own:
+    the same address worked on in March and again in October is two
+    sites; merged, the list showed one site from March to November and
+    every month between counted as touched.
+
+    A site the city postpones past its old end is one site: the later
+    period was entered before the old one ended, so the old one was
+    withdrawn (split, it was listed and counted as a site of its own). A
+    withdrawn period is not compared either: when the city shortens a
+    site's end (5 of the 19 sites of 2026), a job under the same title
+    after the new end is a site of its own, though it lies inside the
+    withdrawn period (both: review of 2026-11-10). Each site shows its
+    current period (:func:`_merge`). Limits: a current period with an
+    open end, or without any date, reaches every later row of its title;
+    a second job the city announces under the same title while the first
+    is still under way counts as a new period of the first.
+    """
     groups: list[list[_LedgerRow]] = []
-    reach = date.min
-    for row in ordered:
-        start = row.starts or date.min
-        if groups and (start - reach).days <= 1:
-            groups[-1].append(row)
-        else:
-            groups.append([row])
-        reach = max(reach, start, row.ends or date.max)
+    for row in sorted(rows, key=lambda row: (row.seen, row.guid)):
+        joined = [group for group in groups if _same_site(_period_row(group), row)]
+        groups = [group for group in groups if not any(group is other for other in joined)]
+        groups.append([*(earlier for group in joined for earlier in group), row])
     return groups
 
 
@@ -322,10 +338,7 @@ def _merge(rows: Sequence[_LedgerRow]) -> BaustelleSite:
     newest first, at most :data:`MAX_DESCRIPTIONS`.
     """
     newest_first = sorted(rows, key=lambda row: row.seen, reverse=True)
-    dated = next(
-        (row for row in newest_first if row.starts is not None or row.ends is not None),
-        newest_first[0],
-    )
+    dated = _period_row(rows)
     descriptions: list[str] = []
     for row in newest_first:
         if row.description and row.description not in descriptions:
@@ -353,8 +366,8 @@ def load_sites(year: int, *, stats_dir: Path | None = None) -> list[BaustelleSit
     looked up at call time through :func:`src.utils.stats.stats_path`),
     keeps one row per guid, leaves out every row whose period lies wholly
     outside *year* (:func:`_outside_year`; counted in one log line) and
-    merges the rows of one title into one site per stretch of time
-    (:func:`_separate_periods`). The row filter comes first, so a row of
+    merges the rows of one title into sites (:func:`_sites_of_title`).
+    The row filter comes first, so a row of
     another year cannot lend its period to a site of this one. A missing,
     oversized or foreign file gives no sites; a damaged line is skipped
     and counted in one log line. Sorted by start (sites without one
@@ -369,13 +382,11 @@ def load_sites(year: int, *, stats_dir: Path | None = None) -> list[BaustelleSit
             continue
         by_title.setdefault(_title_key(row.title), []).append(row)
     if outside:
-        LOGGER.info(
-            "Stats-Datei %s: %d Zeile(n) mit Zeitraum außerhalb des Jahres %d nicht gezählt.",
-            sanitize_log_arg(str(path)),
-            outside,
-            year,
+        _report_once(
+            logging.INFO, "Stats-Datei %s: %d Zeile(n) mit Zeitraum außerhalb des Jahres %d nicht gezählt.",
+            path, outside, year,
         )
-    groups = (group for rows in by_title.values() for group in _separate_periods(rows))
+    groups = (group for rows in by_title.values() for group in _sites_of_title(rows))
     return sorted((_merge(group) for group in groups), key=_site_order)
 
 
@@ -636,8 +647,12 @@ def render_baustellen_section(
     (``mentions_oepnv`` in ``src/providers/baustellen.py``) takes any
     sentence that names public transport as affected, and 3 of the 19
     sites of 2026 are listed for a suspended tram service alone. The
-    sentence on names is there because the city entered one site of 2026
-    under two titles, and nothing in the data says the two are one.
+    sentences on names say how :func:`load_sites` counts: a changed period
+    counts once, the same name again when it is entered after the period in
+    force (the one shown) had ended, for a separate period
+    (:func:`_sites_of_title`), and a site under two names twice; the city
+    entered one site of 2026 under two titles, and nothing in the data
+    says the two are one.
 
     Count and list never come from the model (owner's decision of
     2026-11-10, point 4): the deterministic part is always present and is
@@ -651,8 +666,11 @@ def render_baustellen_section(
         "Folge für den öffentlichen Verkehr nennt, etwa eine verlegte oder aufgelassene "
         "Haltestelle, eine umgeleitete oder kurzgeführte Linie, einen eingestellten "
         "Straßenbahnbetrieb oder Ersatzbusse. Gezählt wird nach dem Namen, unter dem "
-        "die Stadt Wien eine Baustelle führt; trägt sie eine Baustelle unter einem "
-        "anderen Namen neu ein, steht sie hier zweimal."
+        "die Stadt Wien eine Baustelle führt. Ändert die Stadt den Zeitraum, bevor der "
+        "alte zu Ende ist, gilt der neue; trägt sie denselben Namen erst nach dem Ende "
+        "des geltenden Zeitraums für einen Zeitraum ein, der an diesen weder anschließt "
+        "noch ihn überschneidet, zählt er noch einmal. Trägt sie eine Baustelle unter "
+        "einem anderen Namen neu ein, zählt sie unter jedem Namen einmal."
     )
     since = recorded_since(sites, year)
     if since is not None:

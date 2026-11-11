@@ -557,8 +557,8 @@ jobs:
         # here must NEVER abort the job and block the feed publish
         # (``continue-on-error``: orange, the README stays one tick stale; from 04.01. the
         # flag ends every tick with 1 while a year's review is overdue). The key: the run after
-        # midnight, after all its writes, asks Gemini (one pass over the chain) for each finished
-        # year without an accepted review (year_review.py; one budget, all years ~2 min at most).
+        # midnight, after all its writes, asks Gemini (one pass over the chain for each finished year
+        # without an accepted review); all requests start within one 110 s budget (year_archive.py).
         continue-on-error: true
         timeout-minutes: 4
         env:

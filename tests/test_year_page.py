@@ -282,3 +282,22 @@ def test_replay_of_another_year_does_not_judge_the_review(tmp_path: Path) -> Non
     _seed(tmp_path, baustellen=True)
     flag = "--fail-on-missing-review"
     assert _run(tmp_path, "2027-02-01T00:01:00+01:00", "--year", "2026", "--skip-dashboard", flag) == 0
+
+
+def test_a_wrong_ledger_header_is_logged_once_per_run(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
+) -> None:
+    """A January dashboard run reads a finished year's ledger up to five times.
+
+    The review of 2026-11-10 counted the WARNING of a wrong header five times
+    in one run; each finding stands once per run, and again in the next run.
+    """
+    _seed(tmp_path, baustellen=True)
+    _answer(monkeypatch, None)
+    (tmp_path / "stats" / "ausfaelle_2026.csv").write_text("zeit,falsch\n", encoding="utf-8")
+    flag = "--fail-on-missing-review"
+    assert _run(tmp_path, "2027-01-05T00:05:00+01:00", flag) == 1
+    assert caplog.text.count("unerwarteten Header") == 1
+    caplog.clear()
+    assert _run(tmp_path, "2027-01-05T00:31:00+01:00", flag) == 1
+    assert caplog.text.count("unerwarteten Header") == 1

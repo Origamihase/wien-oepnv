@@ -3,9 +3,9 @@
 Owner's decision (Michael, 2026-11-10 17:44 Europe/Vienna), point 4: the
 year's Baustellen are summarised by Gemini, his explicit exception to "an
 AI only watches and reports, never rewrites" (2026-10-31), which stays for
-the feed. This module only asks; ``src/markdown_stats/year_review.py``
-builds the prompt and decides with a fixed guard whether the answer is
-published.
+the feed. This module asks and makes the answer one clean paragraph
+(:func:`clean_review`); ``src/markdown_stats/year_review.py`` builds the
+prompt and decides with a fixed guard whether the answer is published.
 
 The request is the KI-Wächter's (``scripts/ki_waechter.py``): the same
 endpoint, the key in the header ``x-goog-api-key`` (never in the URL or a
@@ -40,10 +40,11 @@ from typing import Any, Final
 
 import requests
 
-from src.ki_waechter.inputs import free_text
+from src.ki_waechter.inputs import _SECRET_RE, free_text
 from src.utils.files import loads_finite
 from src.utils.http import request_safe, session_with_retries
 from src.utils.logging import sanitize_log_arg
+from src.utils.text import normalise_markdown_text
 
 LOGGER = logging.getLogger("generate_markdown_stats.review_client")
 
@@ -81,8 +82,8 @@ DEFAULT_DEADLINE_S: Final = 110.0
 # request still counts in Google's quota.
 MIN_REQUEST_S: Final = 15.0
 # The Wächter's overload codes (a test keeps the two sets equal). The hand-over
-# below takes every 5xx, not only these: the owner's brief of 2026-11-10 says
-# "5xx", and a 501 or 529 names a server that did not answer just as well.
+# below takes every 5xx, not only these: a 501 or 529 names a server that did
+# not answer just as well.
 OVERLOAD_STATUS: Final = frozenset({500, 502, 503, 504})
 QUOTA_STATUS: Final = 429
 # A model Google has retired answers 404 (or 400 for a name it no longer
@@ -105,6 +106,10 @@ _SAFETY_CATEGORIES: Final = (
     "HARM_CATEGORY_SEXUALLY_EXPLICIT",
     "HARM_CATEGORY_DANGEROUS_CONTENT",
 )
+# What clean_review keeps of an answer: more than the guard of
+# ``year_review.check_review`` accepts, so an overlong answer is rejected for
+# its length and not cut to fit.
+MAX_CLEAN_CHARS: Final = 4000
 
 
 @dataclass(frozen=True)
@@ -113,6 +118,21 @@ class ReviewAnswer:
 
     text: str
     model: str
+
+
+def clean_review(text: object) -> str:
+    """The model's answer as one paragraph: whitespace collapsed, no control characters, no credentials.
+
+    Anything that is no string gives an empty text. Control, zero-width
+    and BiDi characters are removed, every whitespace run (line breaks
+    included) becomes one space, and whatever looks like a credential is
+    replaced by ``[entfernt]`` with the Wächter's pattern; the brackets
+    then fail the guard, so such a text is never published. Markup is left
+    as it is for the same reason: the guard rejects it, nothing hides it.
+    """
+    if not isinstance(text, str):
+        return ""
+    return _SECRET_RE.sub("[entfernt]", normalise_markdown_text(text, max_len=MAX_CLEAN_CHARS))
 
 
 def _valid_models(names: Sequence[str]) -> tuple[str, ...]:

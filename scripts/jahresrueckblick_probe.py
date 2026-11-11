@@ -3,8 +3,9 @@
 
 Owner's decision (Michael, 2026-11-10 17:44 Europe/Vienna), point 4: the
 year's Baustellen are summarised by Gemini on the page of a finished year.
-That page is written once a year, on 1 January, so nobody sees the prompt,
-the model's answer and the guard at work in between. This script is the
+Gemini is asked from 1 January on, in the Update cycle's dashboard runs,
+until a review is accepted and stored; outside those runs nobody sees the
+prompt, the model's answer and the guard at work. This script is the
 dry run for people and for pull requests that touch the package: it reads
 the year's Baustellen ledger, builds the prompt, asks Gemini once along
 the usual chain, cleans and checks the answer exactly like the dashboard
@@ -38,8 +39,8 @@ if __package__ in (None, ""):
 from src.feed.logging_safe import setup_script_logging
 from src.ki_waechter.inputs import free_text
 from src.markdown_stats.baustellen_year import load_sites
-from src.markdown_stats.review_client import GEMINI_KEY_ENV, ReviewAnswer, ask_review
-from src.markdown_stats.year_review import build_prompt, check_review, clean_review
+from src.markdown_stats.review_client import GEMINI_KEY_ENV, ReviewAnswer, ask_review, clean_review
+from src.markdown_stats.year_review import build_prompt, check_review
 from src.utils.stats import VIENNA_TZ
 from src.utils.text import escape_markdown
 from src.utils.vienna_clock import PLAUSIBLE_YEARS

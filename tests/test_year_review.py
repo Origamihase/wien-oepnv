@@ -21,7 +21,7 @@ import pytest
 from src.markdown_stats import baustellen_year as by
 from src.markdown_stats import year_review as yr
 from src.markdown_stats.baustellen_year import DISTRICT_NAMES, BaustelleSite
-from src.markdown_stats.review_client import ReviewAnswer
+from src.markdown_stats.review_client import MAX_CLEAN_CHARS, ReviewAnswer, clean_review
 from src.utils import stats
 from src.utils.stats import VIENNA_TZ
 
@@ -238,7 +238,7 @@ def test_rule_d_rejects_a_street_that_is_not_in_the_data(sentence: str, name: st
     assert _check(_with(sentence)) == [f"Straßenname nicht in den Daten: {name}"]
 
 
-def test_rule_d_covers_every_ending_of_the_brief() -> None:
+def test_rule_d_covers_every_street_ending() -> None:
     assert set(yr.STREET_SUFFIXES) == {
         "straße", "strasse", "gasse", "platz", "ring", "gürtel", "brücke", "kai", "weg", "allee", "markt",
         "steg", "zeile", "lände", "damm", "ufer",
@@ -345,12 +345,12 @@ def test_the_guard_reports_every_broken_rule() -> None:
 
 def test_clean_review_gives_one_paragraph_without_control_characters() -> None:
     raw = "  Erster Satz.\n\nZweiter\tSatz.\r\n Dritter​ Satz\x07.‮ "
-    assert yr.clean_review(raw) == "Erster Satz. Zweiter Satz. Dritter Satz."
+    assert clean_review(raw) == "Erster Satz. Zweiter Satz. Dritter Satz."
 
 
 def test_clean_review_removes_what_looks_like_a_credential() -> None:
     key = "AIza" + "B" * 35
-    cleaned = yr.clean_review(f"Der Schlüssel {key} steht im Text.")
+    cleaned = clean_review(f"Der Schlüssel {key} steht im Text.")
     assert key not in cleaned and cleaned == "Der Schlüssel [entfernt] steht im Text."
     # The replacement fails the guard: such a text is never published.
     assert "Formatierungszeichen im Text: [, ]" in _check(_with(cleaned))
@@ -358,12 +358,12 @@ def test_clean_review_removes_what_looks_like_a_credential() -> None:
 
 @pytest.mark.parametrize("value", [None, 5, ["Text"], {"rueckblick": "Text"}, b"Text"])
 def test_clean_review_of_anything_but_a_string_is_empty(value: object) -> None:
-    assert yr.clean_review(value) == ""
+    assert clean_review(value) == ""
 
 
 def test_clean_review_keeps_markup_for_the_guard_and_caps_the_length() -> None:
-    assert yr.clean_review("Ein <b>Satz</b> mit *Stern*.") == "Ein <b>Satz</b> mit *Stern*."
-    assert len(yr.clean_review("Wort " * 5000)) <= yr.MAX_CLEAN_CHARS > yr.MAX_REVIEW_CHARS
+    assert clean_review("Ein <b>Satz</b> mit *Stern*.") == "Ein <b>Satz</b> mit *Stern*."
+    assert len(clean_review("Wort " * 5000)) <= MAX_CLEAN_CHARS > yr.MAX_REVIEW_CHARS
 
 
 # ---- the prompt -------------------------------------------------------------------------

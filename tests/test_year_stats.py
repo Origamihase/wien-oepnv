@@ -147,11 +147,15 @@ def test_section_opens_with_heading_and_the_meaning_of_an_observation(page: list
     assert page[0] == "## Das Jahr im Überblick"
     assert page[1] == ""
     assert page[2].startswith("Eine Beobachtung ist eine Zeile je Richtung und Abfrage: ")
-    # The monitor takes R, REX and CJX trains as well; the sentence names them.
-    assert "beobachteten Abfahrten auf der Stammstrecke (S-Bahn, R, REX und CJX); " in page[2]
+    # The place, and the R, REX and CJX trains the monitor takes as well.
+    assert (
+        "mittlere Verspätung aller dabei am Wien Hauptbahnhof beobachteten Abfahrten "
+        "auf der Stammstrecke (S-Bahn, R, REX und CJX); "
+    ) in page[2]
     # The highest delay of a table is the highest row (the mean of one poll),
-    # not the delay of one train; the sentence says so.
-    assert page[2].endswith("„Höchste Verspätung“ nennt die höchste Beobachtung.")
+    # not the delay of one train; the sentence says so. The rounding sentence
+    # follows it (test_year_stats_more.py).
+    assert "„Höchste Verspätung“ nennt die höchste Beobachtung. Die Verspätungen " in page[2]
     assert page[-1] == ""
     assert [line for line in page if line.startswith("#")] == [
         "## Das Jahr im Überblick",

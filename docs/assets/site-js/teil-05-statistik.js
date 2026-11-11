@@ -68,16 +68,16 @@
   // Text of the links to finished years, as tooltip and accessible name: a
   // bare "2026" does not say where the link leads, and an English reader is
   // told beforehand that the page behind it is in German. The accessible
-  // name of the chip "ältere Jahre" starts with its visible text (WCAG 2.5.3).
+  // name of the chip "Ältere Jahre" starts with its visible text (WCAG 2.5.3).
   const YEAR_TEXT_DE = {
     "year-link-title": "Statistik {year} – abgeschlossenes Jahr",
-    "year-more": "ältere Jahre",
-    "year-more-title": "ältere Jahre – Liste aller Jahre auf der Statistikseite",
+    "year-more": "Ältere Jahre",
+    "year-more-title": "Ältere Jahre – Liste aller Jahre auf der Statistikseite",
   };
   const YEAR_TEXT_EN = {
     "year-link-title": "Statistics {year} – finished year (page in German)",
-    "year-more": "earlier years",
-    "year-more-title": "earlier years – list of all years on the statistics page (page in German)",
+    "year-more": "Earlier years",
+    "year-more-title": "Earlier years – list of all years on the statistics page (page in German)",
   };
   function yearText(key) {
     const dict = getLang() === "en" ? YEAR_TEXT_EN : YEAR_TEXT_DE;
@@ -89,7 +89,7 @@
   // the running year (a year page of the running year does not exist), each
   // once, newest first. The row shows at most ARCHIVE_YEAR_LIMIT of them so a
   // broken document cannot fill the header with chips; a longer list is not
-  // dropped without a word but ends in one more chip "ältere Jahre" to
+  // dropped without a word but ends in one more chip "Ältere Jahre" to
   // ``statistik.html``, whose line "Frühere Jahre" names every year (review
   // of 2026-11-10: no silent caps). With one page per year from 2026 the cut
   // first happens on 1 January 2057 (31 pages, 2026 to 2056).
@@ -116,14 +116,16 @@
   // after a language switch, which changes the link texts. The years change
   // once a year, so a draw with the same years and language leaves the row as
   // it is: rebuilding it on every 5-minute refresh would take the keyboard
-  // focus off a chip and drop it on <body> (review of 2026-11-10).
+  // focus off a chip and drop it on <body> (review of 2026-11-10). The key
+  // alone decides: nothing else sets nav.hidden, and a draw without years
+  // stores the empty key, so a row hidden and shown again is drawn anew.
   function renderYearSwitch(summary) {
     const nav = $("#year-switch");
     const list = $("#year-switch-list");
     if (!nav || !list) return;
     const all = archiveYears(summary);
     const drawn = all.length === 0 ? "" : `${getLang()}|${summary.year}|${all.join(",")}`;
-    if (list.dataset.drawn === drawn && nav.hidden === (drawn === "")) return;
+    if (list.dataset.drawn === drawn) return;
     list.dataset.drawn = drawn;
     clear(list);
     if (all.length === 0) {

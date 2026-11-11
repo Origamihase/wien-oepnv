@@ -11,7 +11,9 @@ from __future__ import annotations
 
 import csv
 import io
+import os
 import subprocess
+import sys
 from datetime import UTC, datetime, tzinfo
 from pathlib import Path
 from typing import Any
@@ -260,6 +262,47 @@ def test_only_wrong_arguments_fail(argv: list[str], capsys: pytest.CaptureFixtur
         probe.main(argv)
     assert raised.value.code == 2
     capsys.readouterr()
+
+
+@pytest.mark.parametrize("year", [2000, 2100])
+def test_the_bounds_of_the_plausible_years_are_accepted(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str], year: int
+) -> None:
+    """Finding 69 of the review of 2026-11-10: ``<`` in place of ``<=`` at ``_year`` passed every test."""
+    assert probe.main(["--year", str(year), "--stats-dir", str(tmp_path)], ask=None) == 0
+    assert capsys.readouterr().out.split("\n")[0] == f"## Jahresrückblick Baustellen {year} – Probelauf"
+
+
+@pytest.mark.parametrize("value", [None, ""])
+def test_outside_a_workflow_run_no_summary_file_is_opened(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str], monkeypatch: pytest.MonkeyPatch, value: str | None
+) -> None:
+    """Without ``GITHUB_STEP_SUMMARY`` (unset or empty) the report goes to stdout only."""
+    if value is not None:
+        monkeypatch.setenv("GITHUB_STEP_SUMMARY", value)
+    _ledger(tmp_path / "stats")
+    monkeypatch.chdir(tmp_path)
+
+    def forbidden(*args: object, **kwargs: object) -> None:
+        raise AssertionError("no summary file outside a workflow run")
+
+    monkeypatch.setattr(probe, "open", forbidden, raising=False)
+    assert "- Urteil: angenommen" in _run(tmp_path / "stats", capsys, _answering(GOOD))
+    assert sorted(entry.name for entry in tmp_path.iterdir()) == ["stats"]
+
+
+def test_the_probe_starts_as_a_script_from_the_repository(tmp_path: Path) -> None:
+    """``python scripts/jahresrueckblick_probe.py`` finds ``src`` without ``PYTHONPATH``, as the workflow starts it."""
+    _ledger(tmp_path)
+    env = {name: value for name, value in os.environ.items()
+           if name not in {"PYTHONPATH", "GEMINI_API_KEY", "GITHUB_STEP_SUMMARY", "JAHRESRUECKBLICK_MODEL"}}
+    result = subprocess.run(
+        [sys.executable, "scripts/jahresrueckblick_probe.py", "--year", str(YEAR), "--stats-dir", str(tmp_path)],
+        cwd=REPO, env=env, capture_output=True, text=True, check=False, timeout=120,
+    )
+    assert result.returncode == 0, result.stderr
+    assert result.stdout.rstrip().endswith("- Urteil: nicht gefragt (GEMINI_API_KEY ist leer)")
+    assert sorted(entry.name for entry in tmp_path.iterdir()) == ["baustellen_2026.csv"]
 
 
 def test_a_summary_that_cannot_be_written_does_not_fail_the_probe(

@@ -56,8 +56,9 @@ import re
 from collections.abc import Iterable, Mapping, Sequence
 from datetime import date, datetime
 from pathlib import Path
-from typing import Any, Final
+from typing import Any, Final, NamedTuple
 
+from src.providers.baustellen_events import _format_description
 from src.utils.files import read_capped_text
 from src.utils.logging import sanitize_log_arg
 from src.utils.stats import (
@@ -115,6 +116,13 @@ _ELLIPSIS: Final = "…"
 # A spreadsheet that saves the file as "UTF-8 with BOM" puts this character
 # before the header.
 _BOM: Final = "\ufeff"
+# What the provider writes as the description of a site that has no text,
+# no date, no measure and no district ("Baustelle ohne weitere Angaben").
+# It is the provider's wording, not the city's (review of 2026-11-10), so
+# the ledger stores an empty text instead. The provider keeps the text
+# inline in ``_format_description``; asking that function for a site
+# without any field gives exactly its text, so the two cannot drift apart.
+NO_DETAILS_TEXT: Final = _format_description({}, None, None)
 
 
 def _one_line(value: object) -> str:
@@ -196,11 +204,14 @@ def _own_text(event: Mapping[str, Any]) -> object:
     The end of the text is compared, not single lines, so a measure or a
     district that itself holds a line break is recognised too. A site
     without any text of the city keeps nothing: an empty description, not
-    the first generated line (review of 2026-11-10).
+    the first generated line and not the provider's
+    :data:`NO_DETAILS_TEXT` (review of 2026-11-10).
     """
     value = event.get("description")
     if not isinstance(value, str):
         return value
+    if value.strip() == NO_DETAILS_TEXT:
+        return ""
     context = event.get("context")
     context_lines: list[str] = []
     if isinstance(context, Mapping):
@@ -318,12 +329,15 @@ def baustelle_row(event: Mapping[str, Any], *, seen_at: datetime) -> tuple[str, 
     return _fit_row(head, _description(_own_text(event)))
 
 
-def _parse_line(line: str) -> list[str] | None:
+def split_ledger_line(line: str) -> list[str] | None:
     """One physical line as CSV fields; ``None`` when it is not a CSV record.
 
-    ``strict`` like the reader of the year page (``_split_line`` in
-    ``src/markdown_stats/baustellen_year.py``): a quotation mark that is
-    not closed on the line, or text after the closing one, is no record.
+    ``strict``: a quotation mark that is not closed on the line, or text
+    after the closing one, is no record. Without it the csv module would
+    return the first half of a record that a hand edit broke over two
+    lines as if it were whole. *line* is a string out of a size-capped
+    read; no file handle reaches the csv module
+    (tests/test_sentinel_csv_size_bomb.py).
     """
     try:
         return next(csv.reader(io.StringIO(line), strict=True), None)
@@ -331,25 +345,90 @@ def _parse_line(line: str) -> list[str] | None:
         return None
 
 
-def _is_site_row(row: Sequence[str]) -> bool:
-    """``True`` for a full row that the reader of the year page can read.
+def ledger_moment(value: str) -> datetime | None:
+    """A row's time stamp in Vienna time; a naive one is read as Vienna time.
 
-    The test of ``_parse_row`` in ``src/markdown_stats/baustellen_year.py``
-    (that module imports this one, so it is repeated here): a time stamp
-    that reads and lies in a plausible year, a guid and a title. A line the
-    reader skips as unreadable must not count as known here, or its site
-    would be missing from the year page and never be entered again (review
-    of 2026-11-10).
+    ``None`` for a value that does not read or lies outside
+    :data:`PLAUSIBLE_YEARS`: no ledger row can have been written then.
     """
     try:
-        seen = datetime.fromisoformat(row[_TIMESTAMP_COLUMN].strip())
-    except ValueError:
-        return False
-    return (
-        PLAUSIBLE_YEARS[0] <= seen.year <= PLAUSIBLE_YEARS[1]
-        and bool(row[_GUID_COLUMN].strip())
-        and bool(row[_TITLE_COLUMN].strip())
-    )
+        parsed = datetime.fromisoformat(value.strip())
+        if not PLAUSIBLE_YEARS[0] <= parsed.year <= PLAUSIBLE_YEARS[1]:
+            return None
+        if parsed.tzinfo is None:
+            return parsed.replace(tzinfo=VIENNA_TZ)
+        return parsed.astimezone(VIENNA_TZ)
+    except (ValueError, OverflowError):
+        return None
+
+
+class SiteLine(NamedTuple):
+    """A ledger line that holds a site: its time stamp and its ten cells."""
+
+    seen: datetime
+    cells: tuple[str, ...]
+
+
+def site_line(line: str) -> SiteLine | None:
+    """The site on one physical ledger line, or ``None`` when it holds none.
+
+    The one test of a ledger line, for the writer here and for the reader
+    of the year page (``_read_rows`` in
+    ``src/markdown_stats/baustellen_year.py`` imports it): a CSV record of
+    exactly the ten columns, not the header, with a time stamp that reads
+    (:func:`ledger_moment`), a guid and a title. A line the reader skips
+    must not count as known to the writer, or its site would be missing
+    from the year page and never be entered again; a line the reader
+    lists must count, or the site would be entered on every run (review
+    of 2026-11-10).
+
+    A U+FFFD in a cell does not decide anything: it is either a byte that
+    was no UTF-8 (both sides read with ``errors="replace"``) or the city's
+    own character, and the file cannot tell the two apart. A line that
+    still reads as a whole record keeps its site, the character shown as
+    it is.
+    """
+    cells = split_ledger_line(line)
+    if cells is None or len(cells) != len(BAUSTELLEN_HEADER) or tuple(cells) == BAUSTELLEN_HEADER:
+        return None
+    seen = ledger_moment(cells[_TIMESTAMP_COLUMN])
+    if seen is None or not cells[_GUID_COLUMN].strip() or not cells[_TITLE_COLUMN].strip():
+        return None
+    return SiteLine(seen, tuple(cells))
+
+
+class LedgerLines(NamedTuple):
+    """What a ledger text holds: its sites and the count of lines that hold none."""
+
+    sites: tuple[SiteLine, ...]
+    unreadable: int
+
+
+def read_ledger_text(text: str) -> LedgerLines | None:
+    """The sites of a ledger text, line by line; ``None`` for a foreign file.
+
+    *text* is the whole file, read with ``errors="replace"``. A byte order
+    mark and blank lines before the header are passed over (a spreadsheet
+    saves the file that way); a file whose first line with content is not
+    :data:`BAUSTELLEN_HEADER` gives ``None``. Every later line is tested on
+    its own with :func:`site_line`, so a torn or hand-edited line spoils
+    only itself. Blank lines and the header again (two branches created
+    the file, a union merge kept both) are not counted; every other line
+    without a site is.
+    """
+    lines = [line.rstrip("\r") for line in text.removeprefix(_BOM).split("\n")]
+    filled = [line for line in lines if line.strip()]
+    if not filled or tuple(split_ledger_line(filled[0]) or ()) != BAUSTELLEN_HEADER:
+        return None
+    sites: list[SiteLine] = []
+    unreadable = 0
+    for line in filled[1:]:
+        found = site_line(line)
+        if found is not None:
+            sites.append(found)
+        elif tuple(split_ledger_line(line) or ()) != BAUSTELLEN_HEADER:
+            unreadable += 1
+    return LedgerLines(tuple(sites), unreadable)
 
 
 def _ledger_guids(path: Path) -> set[str] | None:
@@ -365,11 +444,13 @@ def _ledger_guids(path: Path) -> set[str] | None:
     the year page does: a file saved once by a spreadsheet is still the
     ledger (review of 2026-11-10).
 
-    Every line is parsed on its own. The writer guarantees one record per
-    line, so a torn or hand-edited line with an open quotation mark spoils
-    only itself and not the lines after it. Only a line the reader can
-    read counts (:func:`_is_site_row`): a site whose line is damaged is
-    entered again. Undecodable bytes are replaced for the same reason.
+    Every line is parsed on its own (:func:`read_ledger_text`, the same
+    function the reader of the year page uses). The writer guarantees one
+    record per line, so a torn or hand-edited line with an open quotation
+    mark spoils only itself and not the lines after it. A line counts
+    exactly when the reader lists its site (:func:`site_line`): a site
+    whose line is damaged is entered again, one whose line still reads is
+    not, whether or not a byte of it was replaced.
     """
     text = read_capped_text(
         path,
@@ -396,25 +477,15 @@ def _ledger_guids(path: Path) -> set[str] | None:
         return None
     if not text:
         return set()
-    lines = [line.rstrip("\r") for line in text.removeprefix(_BOM).split("\n")]
-    header = list(BAUSTELLEN_HEADER)
-    if _parse_line(next((line for line in lines if line.strip()), "")) != header:
+    ledger = read_ledger_text(text)
+    if ledger is None:
         LOGGER.warning(
             "Baustellen-Statistik: %s hat eine andere Kopfzeile als erwartet; "
             "die Datei wird nicht gelesen und nicht ergänzt.",
             sanitize_log_arg(path.name),
         )
         return None
-    guids: set[str] = set()
-    for line in lines:
-        row = _parse_line(line)
-        # The header line is not a site, wherever it stands: a union merge
-        # of two runs that both created the file repeats it.
-        if row is None or len(row) != len(header) or row == header:
-            continue
-        if _is_site_row(row):
-            guids.add(row[_GUID_COLUMN].strip())
-    return guids
+    return {site.cells[_GUID_COLUMN].strip() for site in ledger.sites}
 
 
 def known_guids(year: int, *, stats_dir: Path | None = None) -> set[str]:
@@ -552,7 +623,14 @@ __all__ = [
     "MAX_BAUSTELLEN_CSV_BYTES",
     "MAX_DESCRIPTION_CHARS",
     "MAX_ROW_BYTES",
+    "NO_DETAILS_TEXT",
+    "LedgerLines",
+    "SiteLine",
     "append_baustellen_rows",
     "baustelle_row",
     "known_guids",
+    "ledger_moment",
+    "read_ledger_text",
+    "site_line",
+    "split_ledger_line",
 ]

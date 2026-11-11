@@ -56,7 +56,7 @@ Diagramm dieselbe Information zusätzlich als Fließtext darunter.
 - [9. Querverweise](architecture-teil-7.md#9-querverweise)
 - [10. Robustheit und Laufzeit des Feed-Baus (seit 2026-11-10)](architecture-teil-7.md#10-robustheit-und-laufzeit-des-feed-baus-seit-2026-11-10)
 - [11. Ein Vorfall, ein Platz: gekürzte Ursache und vertauschte Rollen (seit 2026-11-10)](architecture-teil-7.md#11-ein-vorfall-ein-platz-gekürzte-ursache-und-vertauschte-rollen-seit-2026-11-10)
-- [12. Jahresarchiv der Statistik (geprüft 2026-11-10)](architecture-teil-7.md#12-jahresarchiv-der-statistik-geprüft-2026-11-10)
+- [12. Die Jahresseite der Statistik: Überblick, Baustellen, Rückblick (seit 2026-11-10)](architecture-teil-7.md#12-die-jahresseite-der-statistik-überblick-baustellen-rückblick-seit-2026-11-10)
 
 ---
 

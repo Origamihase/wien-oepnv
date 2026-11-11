@@ -299,7 +299,11 @@ Schwellen und Rückprüfung über 1 975 Feed-Stände:
 
 Betreiberentscheidung (Michael, 2026-10-31): Die Regeln bleiben die
 Feed-Kette; eine KI liest nur mit und meldet, sie schreibt keinen Text um.
-Vorausgegangen war die Frage, ob ein kleines Sprachmodell die Quelltexte der
+Seine ausdrückliche Ausnahme (Betreiberentscheidung vom 10.11.2026): Die
+Baustellen eines abgeschlossenen Jahres fasst Gemini auf dessen Jahresseite
+zusammen, geprüft von einem festen Skript ([Teil 7,
+§12](architecture-teil-7.md#12-die-jahresseite-der-statistik-überblick-baustellen-rückblick-seit-2026-11-10));
+für den Feed gilt die Regel weiter. Vorausgegangen war die Frage, ob ein kleines Sprachmodell die Quelltexte der
 Betreiber selbst neu schreiben könnte. Gemessen an 20 echten Texten (WL, ÖBB,
 Baustellen) veränderten kleine Modelle auf CPU den Sinn jedes dritten Textes
 (erfundene Anfangszeiten, „U-Bahn“ statt Zug, „gesperrt“ statt „als Sackgasse

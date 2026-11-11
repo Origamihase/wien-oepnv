@@ -26,6 +26,7 @@ rewrites" (2026-10-31), which stays the rule for the feed.
 """
 from __future__ import annotations
 
+import logging
 import os
 import re
 import time
@@ -34,7 +35,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import NamedTuple, Protocol, TypeVar
 
-from src.markdown_stats.baustellen_year import load_sites, render_baustellen_section
+from src.markdown_stats.baustellen_year import forget_reported, load_sites, render_baustellen_section
 from src.markdown_stats.direction_coverage import (
     render_finished_year_coverage_note,
 )
@@ -47,10 +48,11 @@ from src.markdown_stats.rows import (
     StoerungRow,
     aggregate_ausfaelle,
     aggregate_stammstrecke,
+    forget_header_warnings,
     aggregate_stoerungen,
     collect_year_data,
 )
-from src.markdown_stats.year_review import ensure_review, load_review
+from src.markdown_stats.year_review import ensure_review, load_review, reset_dropped_review_log
 from src.markdown_stats.year_stats import render_year_overview
 from src.utils.files import read_capped_text
 from src.utils.liquid import liquid_safe
@@ -70,6 +72,48 @@ REVIEW_GRACE_DAYS = 3
 # ledgers of the dashboard (review of 2026-11-10: the footer named only those).
 BAUSTELLEN_SOURCE = "data/stats/baustellen_*.csv"
 REVIEW_SOURCE = "data/stats/baustellen_rueckblick_*.json"
+
+# Lines of this module already logged in the running statistics run. A
+# dashboard run renders a page twice while its review is missing (first
+# without requests, then with them), and until 2026-11-11 the same WARNING
+# about rows of another year, and the same ERROR of a page that could not be
+# written, stood twice in one log.
+_LOGGED: set[tuple[str, ...]] = set()
+
+
+def start_run() -> None:
+    """Begin a statistics run: each finding is logged once in it, and again in the next run.
+
+    It also resets the same memory of the roadworks ledger
+    (:func:`~src.markdown_stats.baustellen_year.forget_reported`), of a wrong
+    ledger header (:func:`~src.markdown_stats.rows.forget_header_warnings`) and of a
+    dropped stored review
+    (:func:`~src.markdown_stats.year_review.reset_dropped_review_log`): a
+    process that runs the script twice (the tests) gets each run's lines.
+    """
+    _LOGGED.clear()
+    forget_reported()
+    forget_header_warnings()
+    reset_dropped_review_log()
+
+
+# The random part of the name ``atomic_write`` gives its temporary file
+# (``statistik-2026.md.<32 hex>.tmp``): the same failed write of a page in
+# both passes of a run names two such files.
+_TEMP_NAME_RE = re.compile(r"\.[0-9a-f]{32}\.tmp\b")
+
+
+def _log_once(level: int, message: str, *args: object) -> None:
+    """Log *message* with *args* once per run.
+
+    The key is the message with its arguments, the random part of a
+    temporary file name left out.
+    """
+    key = (message, *(_TEMP_NAME_RE.sub(".tmp", str(arg)) for arg in args))
+    if key in _LOGGED:
+        return
+    _LOGGED.add(key)
+    LOGGER.log(level, message, *args)
 
 
 def archive_path(output_path: Path, year: int) -> Path:
@@ -122,7 +166,10 @@ class ReviewBudget:
     :data:`~src.markdown_stats.review_client.DEFAULT_DEADLINE_S`, so all
     requests of a run end after about two minutes (the last one may start
     with :data:`~src.markdown_stats.review_client.MIN_REQUEST_S` left, plus
-    its connect timeout). *clock* is for tests.
+    its connect timeout). The read timeout bounds each wait for data, not
+    the whole answer, so a server that keeps sending slowly can hold the
+    last request longer; the step's limit of four minutes in
+    ``update-cycle.yml`` is the hard bound. *clock* is for tests.
     """
 
     def __init__(self, clock: Callable[[], float] = time.monotonic) -> None:
@@ -165,7 +212,7 @@ def _baustellen_section(
         if left < MIN_REQUEST_S:
             LOGGER.warning(
                 "Baustellen-Rückblick %d: in diesem Lauf keine Anfrage mehr, die Zeit "
-                "für Anfragen ist aufgebraucht; der nächste Dashboard-Lauf fragt.",
+                "für Anfragen ist aufgebraucht; ein späterer Dashboard-Lauf fragt erneut.",
                 year,
             )
         else:
@@ -181,7 +228,8 @@ def _baustellen_section(
 
 class _Stamped(Protocol):
     @property
-    def timestamp(self) -> datetime: ...
+    def timestamp(self) -> datetime:
+        """The instant of the row; :func:`_of_year` takes its Vienna year."""
 
 
 _RowT = TypeVar("_RowT", bound=_Stamped)
@@ -221,7 +269,8 @@ def render_year_archive(
 
     "Rows" are those of the three ledgers the dashboard shows whose Vienna
     year is *year*; a year that only has roadworks gets no page. A row of
-    another year is left out of every figure and named in one log line.
+    another year is left out of every figure and named in one log line,
+    once per run (:func:`start_run`).
     *budget* allows the requests to Gemini for a missing review of the
     roadworks (:func:`_baustellen_section`); without it only a stored
     review is read.
@@ -235,10 +284,12 @@ def render_year_archive(
     """
     sm_rows, st_rows, au_rows, left_out = _rows_of_year(year, stats_dir=stats_dir)
     if left_out:
-        LOGGER.warning(
-            "Jahresarchiv %d: %d Zeilen mit dem Zeitstempel eines anderen Jahres nicht gezählt.",
+        _log_once(
+            logging.WARNING,
+            "Jahresarchiv %d: %d %s mit dem Zeitstempel eines anderen Jahres nicht gezählt.",
             year,
             left_out,
+            "Zeile" if left_out == 1 else "Zeilen",
         )
     if not (sm_rows or st_rows or au_rows):
         return None
@@ -409,20 +460,48 @@ def write_year_pages(
     Any exception is one German ERROR line with its class: until that
     review only an ``OSError`` was caught, a defect in the code of the page
     left the run as a traceback, and a failed page ended it before the
-    summary, the dashboard and the README.
+    summary, the dashboard and the README. The line stands once per run
+    (:func:`start_run`): the same failure in the second call is not logged
+    again, another one is.
     """
     try:
         if ask and not years_missing_review(before=year, stats_dir=stats_dir):
             return True
         write_year_archives(now=now, year=year, stats_dir=stats_dir, output_path=output_path, ask=ask)
     except Exception as exc:  # the other outputs of the run must not depend on it
-        LOGGER.error(
+        _log_once(
+            logging.ERROR,
             "Konnte Jahresarchiv nicht schreiben (%s): %s",
             type(exc).__name__,
             sanitize_log_arg(str(exc)),
         )
         return False
     return True
+
+
+def no_request_note(*, year: int, stats_dir: Path | None) -> str:
+    """The end of the ERROR line of a failed write in the dashboard run of *year*.
+
+    Such a failure ends the run before its requests: what the website and
+    the README show is the bigger alarm. While a finished year waits for
+    its review (:func:`years_missing_review`) the line says that this run
+    sends none; otherwise it is empty. The check only reads; should it
+    fail, the line stays as it was. The note starts with a dash: it follows
+    the error text of the failed write, which ends without a full stop
+    (until the review of 2026-11-11 the two ran together).
+    """
+    try:
+        years = years_missing_review(before=year, stats_dir=stats_dir)
+    except Exception:  # the failed write is the message; this only adds to it
+        return ""
+    if not years:
+        return ""
+    reviews = "den fehlenden Rückblick" if len(years) == 1 else "die fehlenden Rückblicke"
+    return (
+        f" — der Lauf endet hier, ohne Anfrage für {reviews} der Baustellen "
+        + ", ".join(str(missing) for missing in years)
+        + "; ein späterer Dashboard-Lauf fragt erneut."
+    )
 
 
 def overdue_reviews_reported(*, now: datetime, stats_dir: Path | None) -> bool:

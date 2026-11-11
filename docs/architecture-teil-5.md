@@ -69,16 +69,18 @@ Haltestelle vor einem Bahnhof, nennt ein ÖBB-Titel schon vorher den Bahnhof
 Drei Append-only-CSV-Ledger unter `data/stats/` fangen jede relevante
 Beobachtung ein, sobald sie auftritt. Sie bedienen **zwei Konsumenten**
 mit unterschiedlichen Fenstern: das tägliche Markdown-Dashboard
-(`docs/statistik.md`, Kalenderjahr; jedes abgeschlossene Jahr steht in
-`docs/statistik-<Jahr>.md`, vom Dashboard aus verlinkt und bei jedem
-Dashboard-Lauf mit seinem Ledger abgeglichen, Teil 7,
-§12) plus die vier README-STATS-
-Marker (`STATS:STAMMSTRECKE[_LIVE]` und `STATS:AUSFAELLE[_LIVE]`,
-60-Min- und 30-Tage-Snapshots), sowie den RSS-Feed selbst
-(Stammstrecken-Sektion, 1-Stunden-Fenster — siehe
+(`docs/statistik.md`, Kalenderjahr) plus die vier README-STATS-Marker
+(`STATS:STAMMSTRECKE[_LIVE]` und `STATS:AUSFAELLE[_LIVE]`, 60-Min- und
+30-Tage-Snapshots), sowie den RSS-Feed selbst (Stammstrecken-Sektion,
+1-Stunden-Fenster — siehe
 [`docs/reference/stammstrecke_provider_logic.md`](reference/stammstrecke_provider_logic.md)).
 Der Hot-Path-Build blockiert nie auf Observability-I/O — beide
-Konsumenten tolerieren fehlende oder fehlerhafte Zeilen kulant.
+Konsumenten tolerieren fehlende oder fehlerhafte Zeilen kulant. Jedes
+abgeschlossene Jahr mit Zeilen in diesen drei Ledgern hat eine Seite
+`docs/statistik-<Jahr>.md`, die jeder Dashboard-Lauf mit ihren Ledgern abgleicht,
+mit Jahresüberblick und den Baustellen aus einem vierten Ledger,
+`baustellen_<Jahr>.csv` (mit dem Baustellen-Cache geschrieben), samt einem
+geprüften Rückblick von Gemini ([Teil 7, §12](architecture-teil-7.md#12-die-jahresseite-der-statistik-überblick-baustellen-rückblick-seit-2026-11-10)).
 
 ```mermaid
 flowchart LR
@@ -90,6 +92,7 @@ flowchart LR
         SCSV[stammstrecke_YYYY.csv<br/><i>timestamp, weekday, hour, direction, delay_minutes</i>]
         ACSV[ausfaelle_YYYY.csv<br/><i>timestamp, weekday, hour, direction, line</i>]
         DCSV[stoerungen_YYYY.csv<br/><i>timestamp, weekday, hour, provider, location_name</i>]
+        BCSV[baustellen_YYYY.csv<br/><i>je Baustelle und Jahr, vom Baustellen-Cache</i>]
     end
     subgraph "Täglicher Aggregator (update-cycle.yml, erster Cycle-Tick nach Mitternacht Wien)"
         AGG[generate_markdown_stats.py<br/><i>nur stdlib, Kalenderjahr;<br/>README-Marker 60 Min / 30 Tage</i>]
@@ -98,7 +101,7 @@ flowchart LR
         FRP[src/feed/stammstrecke.py<br/><i>1-Stunden-Fenster, ≥2 Beobachtungen > 9 min</i>]
     end
     subgraph "Ausgaben"
-        MD[docs/statistik.md<br/><i>ASCII-/Emoji-Balken</i>]
+        MD[docs/statistik.md, statistik-JJJJ.md<br/><i>ASCII-/Emoji-Balken; Jahresseiten</i>]
         SUM[docs/stats-summary.json + README-Marker<br/><i>jeder Cycle-Tick</i>]
         RSS[docs/feed.xml<br/><i>0..2 Stammstrecken-Items</i>]
     end
@@ -109,6 +112,7 @@ flowchart LR
     SCSV --> AGG
     ACSV --> AGG
     DCSV --> AGG
+    BCSV --> AGG
     AGG --> MD
     AGG --> SUM
     SCSV --> FRP
@@ -119,7 +123,7 @@ flowchart LR
 
 | Ziel | Verwirklicht durch |
 | --- | --- |
-| **CI/CD-Entkoppelung** — `docs/statistik.md` wird nur auf den Cycle-Ticks zwischen 00:00 und 00:29 Wiener Zeit neu gerendert (in der Regel einer am Tag), gegated durch ein Inline-`TZ=Europe/Vienna date +%H%M`-Check in `update-cycle.yml`; die README-STATS-Marker und `docs/stats-summary.json` werden bei jedem ca. 30-Min-Cycle-Tick aktualisiert (`--skip-dashboard`) | `.github/workflows/update-cycle.yml`, Step „Refresh statistics dashboard and README snapshot" (der separate `generate-stats.yml`-Workflow wurde zusammen mit den per-Provider-Escapes entfernt; Ad-hoc-Regenerationen laufen jetzt über `manual-full-refresh.yml`) |
+| **CI/CD-Entkoppelung** — `docs/statistik.md` wird nur auf den Cycle-Ticks zwischen 00:00 und 00:29 Wiener Zeit neu gerendert (in der Regel einer am Tag), gegated durch ein Inline-`TZ=Europe/Vienna date +%H%M`-Check in `update-cycle.yml`; die README-STATS-Marker und `docs/stats-summary.json` werden bei jedem ca. 30-Min-Cycle-Tick aktualisiert (`--skip-dashboard`); der Lauf nach Mitternacht schreibt auch die Jahresseiten und fragt zuletzt Gemini nach einem fehlenden Rückblick (Teil 7, §12) | `.github/workflows/update-cycle.yml`, Step „Refresh statistics dashboard and README snapshot" (der separate `generate-stats.yml`-Workflow wurde zusammen mit den per-Provider-Escapes entfernt; Ad-hoc-Regenerationen laufen jetzt über `manual-full-refresh.yml`) |
 | **Strikt null Data-Science-Abhängigkeiten** — kein `numpy`, `pandas`, `matplotlib`; die CI-Installation bleibt sub-sekundär | `scripts/generate_markdown_stats.py` kommt ohne externe Data-Science-Pakete aus — nur Python-Standardbibliothek (u. a. `csv`, `datetime`, `statistics`, `zoneinfo`) und projekteigene `src.*`-Module |
 | **Append-only, lock-freie Producer** — Einzelzeilen-Writes sind unter POSIX bis `PIPE_BUF` (4 KiB) atomar, parallele Cycle-Ticks können also nicht mitten in einer Zeile Bytes verschachteln | `src/utils/stats.py:_append_row` (Modus `"a"`, kein `flock`) |
 | **Eine Zeile je Auftreten** — eine langlebige Meldung wird einmal aufgezeichnet, nicht einmal pro Build; eine wiederkehrende WL-Meldung (gleiche guid, neues Auftreten) zählt bei jedem Auftreten neu | `src/feed_build/item_meta.py:_update_item_state` schreibt beim State-Cache-Miss (weder `_identity` noch `guid` hatten einen Vorgängereintrag) und bei einem Eintrag, den `_restart_recurring_occurrences` als neues Auftreten markiert hat (`new_occurrence`), jeweils beim ersten Erscheinen im Feed |
@@ -191,7 +195,8 @@ rendert ausschließlich daraus. Zwei Konsequenzen über die Bytes hinaus:
 Die Roh-Ledger bleiben unverändert unter `data/stats/` und sind auf der
 Seite weiterhin verlinkt. `SUMMARY_SCHEMA_VERSION` versioniert das
 Format; die Seite verweigert ein unbekanntes, statt eine halbe
-Auswertung zu rendern.
+Auswertung zu rendern. `archive_years` (seit 2026-11-10, Jahre mit Seite)
+kam ohne neue Version dazu; fehlt es, bleibt die Jahreswahl verborgen.
 
 **Leeres Live-Fenster: „Keine Fahrten“ oder „N/A“ (Entscheidung Michael,
 2026-10-30).** Die Live-Kachel „Ø Verspätung Stammstrecke“ und der
@@ -324,12 +329,9 @@ Praterstern bis 14.08.2026 (3.831 Beobachtungen); der Hinweis sagt deshalb
 „Die Jahreszahlen unten enthalten Richtung Praterstern daher nur bis dahin.“
 statt „decken nur Richtung Meidling ab“, was die Tabelle direkt darunter
 widerlegte (`render_direction_coverage_note(..., yearly=True)`,
-`renderCoverageNotice` in `site.js`). Die Seite eines abgeschlossenen Jahres
-beurteilt dasselbe am Jahresende und sagt es in der Vergangenheit („Fahrten
-nur bis 14.08.2026 erfasst“, `render_finished_year_coverage_note`). Wann eine
-stille Richtung zuletzt fuhr, liest der Lauf notfalls aus früheren
-Jahresdateien, damit der Hinweis nicht endet, sobald das 30-Tage-Fenster das
-Vorjahr verlässt (`earlier_rows_until_every_direction`, seit 2026-11-10).
+`renderCoverageNotice` in `site.js`). Die Jahresseite sagt es in der
+Vergangenheit; eine Richtung, die zuletzt im Vorjahr fuhr, sucht der Lauf in
+früheren Jahresdateien (`earlier_rows_until_every_direction`).
 
 Replay vor dem Merge: 109 Feed-Stände seit 04.10. auf der alten und der
 neuen Seite (Chromium, Uhr auf den Stand eingefroren): 37 Kacheln, deren
@@ -657,6 +659,9 @@ schickte keine Mail. Gemessen ist keiner gescheitert (Update-Läufe seit
   (Feld `error` in `data/feed_watch.json`); er endet in diesem Fall mit
   Exit-Code 0, damit die Veröffentlichung weiterläuft, und sein Schritt
   zählt deshalb als sauber.
+* Der Statistik-Schritt endet ab dem 04.01. in jedem Tick mit 1, solange
+  einem abgeschlossenen Jahr der angenommene Rückblick der Baustellen fehlt
+  (`--fail-on-missing-review`, nur im Update-Lauf; Teil 7, §12).
 
 ### Überwachung: Veröffentlichung (seit 2026-10-31)
 

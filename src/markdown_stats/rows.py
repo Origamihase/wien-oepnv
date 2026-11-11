@@ -143,6 +143,18 @@ class AusfallAggregate:
 # ---- CSV reading -----------------------------------------------------------
 
 
+# Header findings already logged in this statistics run. One dashboard run reads
+# a finished year's ledger up to five times (the January window, the year page,
+# the check for an overdue review, the request pass); each finding is said once
+# per run (review of 2026-11-10). ``forget_header_warnings`` starts a new run.
+_HEADER_WARNED: set[tuple[str, str]] = set()
+
+
+def forget_header_warnings() -> None:
+    """Let the next statistics run in this process log a wrong header again."""
+    _HEADER_WARNED.clear()
+
+
 def _iter_csv_rows(path: Path, header: tuple[str, ...]) -> Iterator[dict[str, str]]:
     """Yield rows from *path* as dicts, validating the header.
 
@@ -166,11 +178,14 @@ def _iter_csv_rows(path: Path, header: tuple[str, ...]) -> Iterator[dict[str, st
     except StopIteration:
         return
     if tuple(actual_header) != header:
-        LOGGER.warning(
-            "Stats-Datei %s hat unerwarteten Header %r — überspringe.",
-            sanitize_log_arg(str(path)),
-            sanitize_log_arg(str(actual_header)),
-        )
+        key = (str(path), str(actual_header))
+        if key not in _HEADER_WARNED:
+            _HEADER_WARNED.add(key)
+            LOGGER.warning(
+                "Stats-Datei %s hat unerwarteten Header %r — überspringe.",
+                sanitize_log_arg(str(path)),
+                sanitize_log_arg(str(actual_header)),
+            )
         return
     for row in reader:
         if len(row) != len(header):
@@ -514,10 +529,11 @@ def earlier_rows_until_every_direction(
     every direction present nothing is read. While a direction has been
     silent since before the loaded year files, every run reads the earlier
     delay ledger again: with the real ledger (Praterstern silent since
-    14.08.2026) that is every tick from 31.01.2027, about 65 ms for the
-    2026 file (review of 2026-11-10). A state file with the last row of each
-    direction would save it, but it would be a second record beside the
-    ledger, which the pages follow (Michael, 2026-11-10 19:13).
+    14.08.2026) that is every tick from 31.01.2027, some 30 ms for the 2026
+    file (median of nine calls, 11,206 rows, 2026-11-11). The review of
+    2026-11-10 left that cost per tick as it is; a state file with the last
+    row of each direction would save it at the price of a second record
+    beside the ledger.
     """
     base = stats_dir if stats_dir is not None else DEFAULT_STATS_DIR
     seen = {row.direction for row in rows}

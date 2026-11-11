@@ -8,10 +8,12 @@ Markdown report to ``docs/statistik.md``.
 
 The dashboard run (without ``--skip-dashboard``) also writes the page of
 every finished year, ``docs/statistik-<Jahr>.md``
-(:mod:`src.markdown_stats.year_archive`). While such a year has roadworks
+(:mod:`src.markdown_stats.year_archive`). While such years have roadworks
 and no accepted review stored, that run ends with one pass over Gemini's
-model chain (:mod:`src.markdown_stats.review_client`, through
-``src.utils.http``), after everything else of the run is written.
+model chain for each of them (:mod:`src.markdown_stats.review_client`,
+through ``src.utils.http``), all within one time budget
+(:class:`src.markdown_stats.year_archive.ReviewBudget`), after everything
+else of the run is written.
 
 Aggregation and rendering use only the Python standard library (``csv``,
 ``collections``, ``datetime``, ``statistics``, ``pathlib``, ``zoneinfo``,
@@ -133,6 +135,8 @@ from src.markdown_stats.year_archive import (  # noqa: E402
     dashboard_nav as dashboard_nav,
     overdue_reviews_reported,
     write_year_archives as write_year_archives,
+    no_request_note,
+    start_run,
     write_year_pages,
     years_without_review as years_without_review,
 )
@@ -181,8 +185,15 @@ def main(argv: list[str] | None = None) -> int:
     roadworks is overdue (:func:`_finish`). Parsing errors of
     individual CSV rows are tolerated and never propagate to the exit
     code — the dashboard is regenerated from whatever can be parsed.
+
+    A failed write of the summary, the dashboard or the README ends the
+    run at once with ``1``, before the requests for a missing review: what
+    the website and the README show is the bigger alarm, and the review
+    waits for a later dashboard run; the ERROR line says so
+    (:func:`src.markdown_stats.year_archive.no_request_note`).
     """
     setup_script_logging(logging.INFO)
+    start_run()  # each finding once per run, also when a process runs main twice
 
     parser = argparse.ArgumentParser(
         description="Generate the Wien ÖPNV statistics dashboard.",
@@ -426,9 +437,10 @@ def main(argv: list[str] | None = None) -> int:
         # renders from this file, so a failed write is a broken tick,
         # not a cosmetic miss.
         LOGGER.error(
-            "Konnte Statistik-Summary nicht schreiben (%s): %s",
+            "Konnte Statistik-Summary nicht schreiben (%s): %s%s",
             sanitize_log_arg(str(summary_path)),
             sanitize_log_arg(str(exc)),
+            _no_request_note(args, now),
         )
         return 1
 
@@ -469,9 +481,10 @@ def main(argv: list[str] | None = None) -> int:
             write_dashboard(markdown, output_path=args.output)
         except OSError as exc:
             LOGGER.error(
-                "Konnte Dashboard nicht schreiben (%s): %s",
+                "Konnte Dashboard nicht schreiben (%s): %s%s",
                 sanitize_log_arg(str(args.output)),
                 sanitize_log_arg(str(exc)),
+                _no_request_note(args, now),
             )
             return 1
 
@@ -545,13 +558,20 @@ def main(argv: list[str] | None = None) -> int:
         patch_readme_stats(args.readme_path, sections)
     except OSError as exc:
         LOGGER.error(
-            "Konnte README nicht aktualisieren (%s): %s",
+            "Konnte README nicht aktualisieren (%s): %s%s",
             sanitize_log_arg(str(args.readme_path)),
             sanitize_log_arg(str(exc)),
+            _no_request_note(args, now),
         )
         return 1
 
     return _finish(args, now, pages_ok=pages_ok)
+
+
+def _no_request_note(args: argparse.Namespace, now: datetime) -> str:
+    """What a failed write costs the review: the end of its ERROR line (:func:`no_request_note`)."""
+    asks = not args.skip_dashboard and args.year == now.year
+    return no_request_note(year=args.year, stats_dir=args.stats_dir) if asks else ""
 
 
 def _finish(args: argparse.Namespace, now: datetime, *, pages_ok: bool) -> int:

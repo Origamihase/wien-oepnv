@@ -7,10 +7,12 @@ Second file next to ``tests/test_baustellen_year.py`` (the 700-line limit of
 * the period showed the latest end any row ever named, also after the city
   had moved it earlier (5 of the 19 sites of 2026),
 * the same title in two separate periods was one site from the first start
-  to the last end,
+  to the last end; a site postponed past its old end was two sites; a
+  period the city had withdrawn still joined a later job of the title,
 * a site that ended last year or starts next year was listed and counted,
 * a byte order mark made the file foreign, one byte that is no UTF-8 took
-  every site off the page without a log line,
+  every site off the page without a log line, and a line with a U+FFFD
+  was dropped although it read as a whole record,
 * every year claimed that its recording began on the day of its first site,
 * two table cells with a backtick each ran together on the website,
 * the facts for the model did not count the measures and did not say since
@@ -106,12 +108,71 @@ def test_the_same_title_in_two_separate_periods_is_two_sites(tmp_path: Path) -> 
 def test_rows_of_one_title_stay_together_while_their_periods_touch(
     tmp_path: Path, second: tuple[str, str], sites: int
 ) -> None:
+    """The second row is first seen after the first period ended: only the periods decide.
+
+    Until the review of 2026-11-10 it was seen on 15.03., inside the first period; that
+    case is a replaced period now (test_a_period_replaced_before_the_old_one_ended_is_one_site).
+    """
     rows = [
         _row("g1", "Burggasse 67", seen="2026-02-25T08:00:00+01:00", starts="2026-03-02", ends="2026-03-20"),
-        _row("g2", "Burggasse 67", seen="2026-03-15T08:00:00+01:00", starts=second[0], ends=second[1]),
+        _row("g2", "Burggasse 67", seen="2026-03-21T08:00:00+01:00", starts=second[0], ends=second[1]),
     ]
     _write(tmp_path, rows)
     assert len(by.load_sites(YEAR, stats_dir=tmp_path)) == sites
+
+
+@pytest.mark.parametrize(
+    ("seen", "sites"),
+    [
+        ("2026-02-27T08:00:00+01:00", 1),    # before the old period began
+        ("2026-03-10T08:00:00+01:00", 1),    # while it ran
+        ("2026-03-13T23:59:00+01:00", 1),    # on its last day, Vienna time
+        ("2026-03-13T23:30:00+00:00", 2),    # 00:30 on 14.03. in Vienna: the old period had ended
+        ("2026-03-14T08:00:00+01:00", 2),    # the day after
+    ],
+)
+def test_a_period_replaced_before_the_old_one_ended_is_one_site(tmp_path: Path, seen: str, sites: int) -> None:
+    """Postponed past its old end: the withdrawn period was listed and counted as a site of its own."""
+    rows = [
+        _row("g1", "Burggasse 67", seen="2026-02-25T08:00:00+01:00", starts="2026-03-02", ends="2026-03-13",
+             description="Alter Zeitraum."),
+        _row("g2", "Burggasse 67", seen=seen, starts="2026-03-16", ends="2026-03-27", description="Neuer Zeitraum."),
+    ]
+    _write(tmp_path, rows)
+    loaded = by.load_sites(YEAR, stats_dir=tmp_path)
+    assert len(loaded) == sites
+    if sites == 1:
+        (site,) = loaded
+        # The newest row's period; the withdrawn one is neither listed nor counted as a start.
+        assert by.period_text(site) == "16.03.2026 – 27.03.2026"
+        assert site.descriptions == ("Neuer Zeitraum.", "Alter Zeitraum.")
+        assert "Im Jahr 2026 ist **eine** solche Baustelle erfasst." in by.render_baustellen_section(loaded, year=YEAR)
+        assert "- Beginn im Jahr 2026, je Monat: März: 1" in by.facts_block(loaded, year=YEAR)
+    else:
+        assert [by.period_text(site) for site in loaded] == ["02.03.2026 – 13.03.2026", "16.03.2026 – 27.03.2026"]
+
+
+def test_a_period_moved_earlier_before_the_old_one_ended_is_one_site(tmp_path: Path) -> None:
+    rows = [
+        _row("g1", "Burggasse 67", seen="2026-02-25T08:00:00+01:00", starts="2026-06-01", ends="2026-06-30"),
+        _row("g2", "Burggasse 67", seen="2026-03-01T08:00:00+01:00", starts="2026-04-01", ends="2026-04-10"),
+    ]
+    _write(tmp_path, rows)
+    assert _periods(tmp_path) == [("Burggasse 67", "01.04.2026 – 10.04.2026")]
+
+
+def test_a_row_that_belongs_to_two_sites_joins_them(tmp_path: Path) -> None:
+    """Rows are taken by first sighting; a later row that reaches two earlier sites makes them one."""
+    rows = [
+        _row("g1", "Burggasse 67", seen="2026-02-25T08:00:00+01:00", starts="2026-03-02", ends="2026-03-06"),
+        _row("g2", "Burggasse 67", seen="2026-03-20T08:00:00+01:00", starts="2026-03-23", ends="2026-03-27"),
+        # Touches the first and overlaps the second.
+        _row("g3", "Burggasse 67", seen="2026-04-01T08:00:00+02:00", starts="2026-03-07", ends="2026-03-24"),
+    ]
+    _write(tmp_path, rows)
+    assert len(by.load_sites(YEAR, stats_dir=tmp_path)) == 1
+    _write(tmp_path, rows[:2])
+    assert len(by.load_sites(YEAR, stats_dir=tmp_path)) == 2
 
 
 def test_an_open_end_reaches_every_later_row_of_the_title(tmp_path: Path) -> None:
@@ -121,6 +182,47 @@ def test_an_open_end_reaches_every_later_row_of_the_title(tmp_path: Path) -> Non
     ]
     _write(tmp_path, rows)
     assert _periods(tmp_path) == [("Burggasse 67", "12.10.2026 – 06.11.2026")]
+
+
+def test_an_open_end_moved_wholly_before_its_start_is_one_site(tmp_path: Path) -> None:
+    """Open from 01.10., replaced before it began by 14.09.-25.09.: both periods were listed (review of 2026-11-10).
+
+    The periods neither overlap nor touch; only the open end, which has no
+    last day the new row could be seen after, makes the new row a
+    replacement.
+    """
+    rows = [
+        _row("g1", "Burggasse 67", seen="2026-09-10T08:00:00+02:00", starts="2026-10-01", ends=""),
+        _row("g2", "Burggasse 67", seen="2026-09-12T08:00:00+02:00", starts="2026-09-14", ends="2026-09-25"),
+    ]
+    _write(tmp_path, rows)
+    assert _periods(tmp_path) == [("Burggasse 67", "14.09.2026 – 25.09.2026")]
+
+
+@pytest.mark.parametrize("withdrawn_end", ["2026-12-31", ""])
+def test_a_withdrawn_period_does_not_join_a_later_job_of_the_title(tmp_path: Path, withdrawn_end: str) -> None:
+    """End moved from 31.12. (or an open end) to 20.03.; the job of October was merged into the March site.
+
+    The October row was first seen before the withdrawn end and inside the
+    withdrawn period, so compared with every row of the site it joined it;
+    the March site left the list and the count (review of 2026-11-10).
+    """
+    rows = [
+        _row("g1", "Burggasse 67", seen="2026-02-20T08:00:00+01:00", starts="2026-03-02", ends=withdrawn_end,
+             description="Erster Text, Ende weit."),
+        _row("g2", "Burggasse 67", seen="2026-03-05T08:00:00+01:00", starts="2026-03-02", ends="2026-03-20",
+             description="Ende vorgezogen."),
+        _row("g3", "Burggasse 67", seen="2026-10-01T08:00:00+02:00", starts="2026-10-12", ends="2026-11-06",
+             description="Zweite Baustelle im Herbst."),
+    ]
+    _write(tmp_path, rows)
+    loaded = by.load_sites(YEAR, stats_dir=tmp_path)
+    assert [(by.period_text(site), site.descriptions) for site in loaded] == [
+        ("02.03.2026 – 20.03.2026", ("Ende vorgezogen.", "Erster Text, Ende weit.")),
+        ("12.10.2026 – 06.11.2026", ("Zweite Baustelle im Herbst.",)),
+    ]
+    assert "Im Jahr 2026 sind **2** solche Baustellen erfasst." in by.render_baustellen_section(loaded, year=YEAR)
+    assert "- Beginn im Jahr 2026, je Monat: März: 1, Oktober: 1" in by.facts_block(loaded, year=YEAR)
 
 
 # ---- rows of another year -------------------------------------------------------
@@ -208,11 +310,24 @@ def test_a_byte_order_mark_does_not_open_the_file_for_another_header(tmp_path: P
     assert by.load_sites(YEAR, stats_dir=tmp_path) == []
 
 
-@pytest.mark.parametrize("cell", ["title", "description", "timestamp"])
-def test_a_byte_that_is_no_utf8_costs_its_line_and_is_counted(
-    tmp_path: Path, caplog: pytest.LogCaptureFixture, cell: str
+@pytest.mark.parametrize(
+    ("cell", "titles", "shown"),
+    [
+        # The line still reads as a whole record: the site stays, the replaced byte shown as it is.
+        ("title", ["Burggasse 67", "Ren\ufffdnweg 33A", "Zieglergasse 5"], "| Ren\ufffdnweg 33A |"),
+        ("description", ["Burggasse 67", "Rennweg 33A", "Zieglergasse 5"], None),
+        # A time stamp that no longer reads costs the line, counted.
+        ("timestamp", ["Burggasse 67", "Zieglergasse 5"], None),
+    ],
+)
+def test_a_byte_that_is_no_utf8_costs_its_line_only_when_the_line_no_longer_reads(
+    tmp_path: Path, caplog: pytest.LogCaptureFixture, cell: str, titles: list[str], shown: str | None
 ) -> None:
-    """Read strictly, the file gave no sites at all and no log line: the section left the page unseen."""
+    """Read strictly, the file gave no sites at all and no log line: the section left the page unseen.
+
+    Until the review of 2026-11-10 every line with a U+FFFD was dropped as well; the writer
+    knew its guid and never entered the site again.
+    """
     marks = {"title": b"Rennweg 33A", "description": b"zweite", "timestamp": b"2026-06-02"}
     rows = [
         _row("g1", "Burggasse 67"),
@@ -225,21 +340,42 @@ def test_a_byte_that_is_no_utf8_costs_its_line_and_is_counted(
     path.write_bytes(raw.replace(marks[cell], marks[cell][:3] + b"\xff" + marks[cell][3:]))
     with caplog.at_level(logging.WARNING, logger=STATS_LOGGER):
         sites = by.load_sites(YEAR, stats_dir=tmp_path)
-    assert [site.title for site in sites] == ["Burggasse 67", "Zieglergasse 5"]
-    (warning,) = _messages(caplog, logging.WARNING)
-    assert warning.endswith(": 1 unlesbare Zeile(n) übersprungen.")
-    # Nothing of the damaged line reaches the page.
-    assert "\ufffd" not in "\n".join(by.render_baustellen_section(sites, year=YEAR))
+    assert [site.title for site in sites] == titles
+    warnings = _messages(caplog, logging.WARNING)
+    if len(titles) == 3:
+        assert warnings == []
+    else:
+        (warning,) = warnings
+        assert warning.endswith(": 1 unlesbare Zeile(n) übersprungen.")
+    if shown is not None:
+        assert any(line.startswith(shown) for line in by.render_baustellen_section(sites, year=YEAR))
+    if cell == "description":
+        assert sites[1].descriptions == ("Die zwe\ufffdite Haltestelle.",)
 
 
-def test_a_last_line_cut_inside_a_character_costs_only_itself(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+def test_a_last_line_cut_inside_a_character_keeps_its_site(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+    """An unquoted last cell cut inside "ß" still reads as a whole record; until 2026-11-10 it was dropped."""
     path = _write(tmp_path, [_row("g1", "Burggasse 67"), _row("g2", "Gürtel 5", description="Straße")])
     raw = path.read_bytes().rstrip(b"\n")
     cut = raw[: raw.rindex("ß".encode()) + 1]   # the first of the two bytes of "ß"
     path.write_bytes(cut)
     with caplog.at_level(logging.WARNING, logger=STATS_LOGGER):
+        sites = by.load_sites(YEAR, stats_dir=tmp_path)
+    assert [(site.title, site.descriptions) for site in sites] == [
+        ("Burggasse 67", ("Die Haltestelle wird verlegt.",)), ("Gürtel 5", ("Stra\ufffd",)),
+    ]
+    assert _messages(caplog, logging.WARNING) == []
+
+
+def test_a_last_line_cut_inside_a_quoted_cell_costs_only_itself(tmp_path: Path, caplog: pytest.LogCaptureFixture) -> None:
+    path = _write(tmp_path, [_row("g1", "Burggasse 67"), _row("g2", "Gürtel 5", description="Straße, gesperrt")])
+    raw = path.read_bytes().rstrip(b"\n")
+    assert raw.endswith(b'"')
+    path.write_bytes(raw[: raw.rindex("ß".encode()) + 1])
+    with caplog.at_level(logging.WARNING, logger=STATS_LOGGER):
         assert [site.title for site in by.load_sites(YEAR, stats_dir=tmp_path)] == ["Burggasse 67"]
-    assert len(_messages(caplog, logging.WARNING)) == 1
+    (warning,) = _messages(caplog, logging.WARNING)
+    assert warning.endswith(": 1 unlesbare Zeile(n) übersprungen.")
 
 
 # ---- the section ----------------------------------------------------------
@@ -252,7 +388,7 @@ def test_only_the_year_the_ledger_began_in_names_the_first_day_of_its_record() -
     later = [_site("Burggasse 67", starts=date(2027, 2, 20), ends=date(2027, 3, 20), seen=seen)]
     intro = by.render_baustellen_section(later, year=2027)[2]
     assert "Aufzeichnung" not in intro and "14.02.2027" not in intro
-    assert intro.endswith("trägt sie eine Baustelle unter einem anderen Namen neu ein, steht sie hier zweimal.")
+    assert intro.endswith("Trägt sie eine Baustelle unter einem anderen Namen neu ein, zählt sie unter jedem Namen einmal.")
     assert by.recorded_since(later, 2027) is None
     first = [_site("Burggasse 67", seen=datetime(2026, 5, 24, 0, 52, tzinfo=VIENNA_TZ))]
     assert by.render_baustellen_section(first, year=2026)[2].endswith(" Die Aufzeichnung für 2026 beginnt am 24.05.2026.")
@@ -261,11 +397,22 @@ def test_only_the_year_the_ledger_began_in_names_the_first_day_of_its_record() -
 
 
 def test_the_section_names_a_suspended_tram_service_and_how_sites_are_told_apart() -> None:
-    """3 of the 19 sites of 2026 are listed for that consequence alone; one site stands under two titles."""
+    """3 of the 19 sites of 2026 are listed for that consequence alone; one site stands under two titles.
+
+    The sentence on names said "steht sie hier zweimal" and nothing of a name that counts
+    again in a later period (review of 2026-11-10).
+    """
     intro = by.render_baustellen_section([_site("Schottenring")], year=YEAR)[2]
     assert "nennt, etwa eine verlegte oder aufgelassene Haltestelle," in intro
     assert "eine umgeleitete oder kurzgeführte Linie, einen eingestellten Straßenbahnbetrieb oder Ersatzbusse." in intro
-    assert "Gezählt wird nach dem Namen, unter dem die Stadt Wien eine Baustelle führt;" in intro
+    assert (
+        "Gezählt wird nach dem Namen, unter dem die Stadt Wien eine Baustelle führt. Ändert die Stadt den "
+        "Zeitraum, bevor der alte zu Ende ist, gilt der neue; trägt sie denselben Namen erst nach dem Ende des "
+        "geltenden Zeitraums für einen Zeitraum ein, der an diesen weder anschließt noch ihn überschneidet, "
+        "zählt er noch einmal. Trägt sie "
+        "eine Baustelle unter einem anderen Namen neu ein, zählt sie unter jedem Namen einmal."
+    ) in intro
+    assert "zweimal" not in intro
 
 
 def test_backticks_in_two_cells_do_not_join_them() -> None:

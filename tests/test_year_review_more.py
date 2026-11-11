@@ -75,7 +75,7 @@ def real_sites(tmp_path_factory: pytest.TempPathFactory) -> list[BaustelleSite]:
 
 
 def _real(text: str, sites: list[BaustelleSite]) -> list[str]:
-    return yr.check_review(yr.clean_review(text), sites, year=YEAR)
+    return yr.check_review(rc.clean_review(text), sites, year=YEAR)
 
 
 def test_the_real_answer_of_2026_11_10_passes_the_guard(real_sites: list[BaustelleSite]) -> None:
@@ -169,11 +169,11 @@ def test_rule_h_reads_digits_directly_before_baustelle_only() -> None:
     assert _check(_with("Insgesamt waren es 77 Baustellen.")) == [
         "Zahl oder Kennung nicht in den Daten: 77", "Anzahl der Baustellen nicht aus dem Faktenblock: 77",
     ]
-    # The year after "Jahr", the tail of a date and a number word are no count; the year elsewhere is.
+    # The year of the page, the tail of a date and a number word are no count (round two of the review of
+    # 2026-11-10 changed "Es gab 2026 Baustellen.", rejected before, to accepted: the year is a time there).
     for sentence in ("Im Jahr 2026 Baustellen in 3 Bezirken.", "Ab 30.09.2026 Baustellen am Rennweg.",
-                     "Es waren siebenundsiebzig Baustellen."):
+                     "Es waren siebenundsiebzig Baustellen.", "Es gab 2026 Baustellen."):
         assert yr._count_reasons(sentence, SITES, YEAR) == [], sentence
-    assert yr._count_reasons("Es gab 2026 Baustellen.", SITES, YEAR) == ["Anzahl der Baustellen nicht aus dem Faktenblock: 2026"]
 
 
 def test_rule_h_takes_its_counts_from_the_facts_block() -> None:
@@ -207,8 +207,8 @@ def test_rule_i_rejects_a_word_that_judges(word: str) -> None:
 @pytest.mark.parametrize(
     "sentence",
     [
-        "Die Arbeiten sollten laut den Texten bis November dauern, gut die Hälfte begann im Juli, und die "
-        "Wiener Linien verlegten ihre Haltestellen.",
+        ("Die Arbeiten sollten laut den Texten bis November dauern, gut die Hälfte begann im Juli, und die "
+        "Wiener Linien verlegten ihre Haltestellen."),
         "Die Stadt Wien nennt in den Texten eine empfohlene Umleitung für den Verkehr.",
         "Die Arbeiten wirkten sich auf den Busverkehr aus, und die Meinungen der Texte unterscheiden sich nicht.",
     ],
@@ -221,7 +221,7 @@ def test_rule_j_rejects_a_text_in_another_language(real_sites: list[BaustelleSit
     english = ("In 2026, Vienna recorded 19 construction sites with consequences for public transport. Road works, "
                "pipe laying and track works were the most frequent measures. Most sites were located in Favoriten, "
                "and 9 of them started in July. The texts mention relocated stops and rail replacement services.")
-    assert _real(english, real_sites) == ["Text nicht auf Deutsch: 3 von 43 Wörtern sind deutsche Funktionswörter"]
+    assert _real(english, real_sites) == ["Anteil deutscher Funktionswörter unter 15 %: 3 von 43 Wörtern"]
     assert yr.MIN_GERMAN_SHARE == 0.15
 
 

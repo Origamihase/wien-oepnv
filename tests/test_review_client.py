@@ -146,7 +146,7 @@ def test_a_lite_model_is_asked_to_think(monkeypatch: pytest.MonkeyPatch) -> None
 # ---- hand-over along the chain -------------------------------------------------------
 
 
-# 501 and 529: "5xx" in the owner's brief is every server error, not only the Wächter's four codes.
+# 501 and 529: every 5xx hands over, not only the Wächter's four codes (review_client.OVERLOAD_STATUS).
 @pytest.mark.parametrize("status", [500, 501, 502, 503, 504, 529, 599, 429, 404, 400])
 def test_an_overloaded_spent_or_retired_model_hands_over(monkeypatch: pytest.MonkeyPatch, status: int) -> None:
     calls = _fake(monkeypatch, [_Response(status, BUSY), _ok()])

@@ -443,10 +443,10 @@ def test_at_most_thirty_finished_years() -> None:
     assert len(links) == 32
     assert _years(result)[:2] == ["2100", "2099"] and _years(result)[30] == "2070"
     assert links[-1] == {
-        "wrapper": "li", "tag": "a", "text": "ältere Jahre", "cls": "chip",
+        "wrapper": "li", "tag": "a", "text": "Ältere Jahre", "cls": "chip",
         "href": "statistik.html", "current": None,
-        "title": "ältere Jahre – Liste aller Jahre auf der Statistikseite",
-        "label": "ältere Jahre – Liste aller Jahre auf der Statistikseite",
+        "title": "Ältere Jahre – Liste aller Jahre auf der Statistikseite",
+        "label": "Ältere Jahre – Liste aller Jahre auf der Statistikseite",
         "hreflang": "de",
     }
 
@@ -462,10 +462,10 @@ def test_the_first_cut_year_and_the_extra_chip() -> None:
     links = _links(cut)
     assert len(links) == 32 and _years(cut)[30] == "2027"
     assert [link["text"] for link in links[1:31]] == [str(y) for y in range(2056, 2026, -1)]
-    assert links[-1]["href"] == "statistik.html" and links[-1]["text"] == "ältere Jahre"
+    assert links[-1]["href"] == "statistik.html" and links[-1]["text"] == "Ältere Jahre"
     english = _links(_switch({"year": 2057, "archive_years": list(range(2026, 2057))}, lang="en"))[-1]
-    assert english["text"] == "earlier years"
-    assert english["label"] == "earlier years – list of all years on the statistics page (page in German)"
+    assert english["text"] == "Earlier years"
+    assert english["label"] == "Earlier years – list of all years on the statistics page (page in German)"
     # WCAG 2.5.3: the accessible name starts with the visible text.
     assert str(english["label"]).startswith(str(english["text"]))
 
@@ -518,6 +518,7 @@ def test_same_years_leave_the_row_untouched() -> None:
     ):
         redrawn = _run([_draw(shown), mark, *change])
         assert "kept" not in _years(redrawn) and "2026" in _years(redrawn), change
-    # Hidden and shown again with the same years: the row is filled anew.
+    # Hidden and shown again with the same years: the key goes to "" and
+    # back, so the row is filled anew.
     again = _run([_draw(shown), _draw({"year": 2027}), _draw(shown)])
     assert again == _switch(shown)

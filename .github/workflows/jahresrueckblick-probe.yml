@@ -4,10 +4,10 @@ name: Jahresrückblick-Probe
 # (Michael, 17:44 Vienna time), point 4: on the page of a finished year the
 # year's Baustellen are summarised by Gemini, his explicit exception to "an
 # AI only watches and reports, never rewrites" (2026-10-31), which stays for
-# the feed. The real request is sent once a year by the statistics step of
-# the Update cycle (src/markdown_stats/year_review.py), in the first week
-# of January, so a change to the prompt, the client or the guard would show
-# its effect only then.
+# the feed. The real request is sent by the statistics step of the Update
+# cycle (src/markdown_stats/year_review.py) in the dashboard runs from
+# 1 January on, until a review is accepted and stored, so a change to the
+# prompt, the client or the guard would show its effect only in those runs.
 #
 # This workflow shows it at once: it reads the Baustellen ledger of a year
 # (data/stats/baustellen_<Jahr>.csv), builds the prompt, asks Gemini once

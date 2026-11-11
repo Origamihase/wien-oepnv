@@ -368,8 +368,11 @@ def test_the_section_without_a_review() -> None:
             "Hier stehen die Baustellen aus den Daten der Stadt Wien, deren Text eine Folge für den öffentlichen "
             "Verkehr nennt, etwa eine verlegte oder aufgelassene Haltestelle, eine umgeleitete oder kurzgeführte "
             "Linie, einen eingestellten Straßenbahnbetrieb oder Ersatzbusse. Gezählt wird nach dem Namen, unter dem "
-            "die Stadt Wien eine Baustelle führt; trägt sie eine Baustelle unter einem anderen Namen neu ein, steht "
-            "sie hier zweimal. Die Aufzeichnung für 2026 beginnt am 24.05.2026."
+            "die Stadt Wien eine Baustelle führt. Ändert die Stadt den Zeitraum, bevor der alte zu Ende ist, gilt "
+            "der neue; trägt sie denselben Namen erst nach dem Ende des geltenden Zeitraums für einen Zeitraum "
+            "ein, der an diesen weder anschließt noch ihn überschneidet, zählt er noch einmal. Trägt sie eine "
+            "Baustelle unter einem anderen Namen neu ein, zählt sie unter jedem Namen einmal. Die Aufzeichnung "
+            "für 2026 beginnt am 24.05.2026."
         ),
         "",
         "Im Jahr 2026 sind **2** solche Baustellen erfasst.",
