@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261111-0022, I20260925-0011, I20261111-0023, I20260909-0007, I20261111-0024, I20261020-0029"
+    "trafficInfoNameList": "I20261111-0022, I20261111-0023, I20260925-0011, I20260909-0007, I20261111-0024, I20261111-0025-F01, I20261020-0029, I20261111-0025-F02"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1875-101, R1876-101, R1880-101, R3886-480, R1881-101, R1882-101, R1884-101, R1883-101, R2558-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R318-437, R293-474, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1882-101, R1883-101, R1884-101, R1881-101, R1876-101, R1875-101, R1880-101, R3886-480, R2378-627, R2558-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R318-437, R293-474, R1974-466, R1199-205, R500-101, R355-105, R272-105, R356-105, R357-105, R211-105, R377-105, R381-105, R380-105, R379-105, R382-105, R354-105, R353-105, R352-105, R351-105, R384-105, R383-105, R385-105, R386-105, R272-112, R357-112, R211-112, R356-112, R355-112, R353-112, R354-112, R383-112, R381-112, R380-112, R379-112, R458-112, R382-112, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -254,7 +254,8 @@
     "status": "active",
     "time": {
      "created": "2026-11-11T16:15:00.000+0100",
-     "lastUpdate": "2026-11-11T16:15:00.000+0100",
+     "end": "2026-11-11T17:35:00.000+0100",
+     "lastUpdate": "2026-11-11T16:59:00.000+0100",
      "resume": "2026-11-11T16:15:00.000+0100",
      "start": "2026-11-11T16:15:00.000+0100"
     },
@@ -304,6 +305,102 @@
      "start": "2026-11-11T16:15:00.000+0100"
     },
     "title": "7A: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "5": "ptTram"
+     }
+    },
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "5: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261111-0025-F01",
+    "owner": "WL",
+    "parentName": "I20261111-0025",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 105,
+      "lineName": "5",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     356
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-11T16:56:00.000+0100",
+     "lastUpdate": "2026-11-11T16:56:00.000+0100",
+     "resume": "2026-11-11T16:56:00.000+0100",
+     "start": "2026-11-11T16:33:00.000+0100"
+    },
+    "title": "5: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "12": "ptTram"
+     }
+    },
+    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "12: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261111-0025-F02",
+    "owner": "WL",
+    "parentName": "I20261111-0025",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 112,
+      "lineName": "12",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     356
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-11T16:56:00.000+0100",
+     "lastUpdate": "2026-11-11T16:56:00.000+0100",
+     "resume": "2026-11-11T16:56:00.000+0100",
+     "start": "2026-11-11T16:33:00.000+0100"
+    },
+    "title": "12: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -511,6 +608,52 @@
      "start": "2026-11-11T04:40:07.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße",
+    "name": "R211-105",
+    "owner": "WL",
+    "parentName": "R211-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     211
+    ],
+    "time": {
+     "end": "2026-11-11T17:37:00.000+0100",
+     "start": "2026-11-11T16:38:17.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R211-112",
+    "owner": "WL",
+    "parentName": "R211-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     211
+    ],
+    "time": {
+     "end": "2026-11-11T17:41:00.000+0100",
+     "start": "2026-11-11T16:42:17.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -837,6 +980,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße",
+    "name": "R272-105",
+    "owner": "WL",
+    "parentName": "R272-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     272
+    ],
+    "time": {
+     "end": "2026-11-11T17:37:00.000+0100",
+     "start": "2026-11-11T16:38:17.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R272-112",
+    "owner": "WL",
+    "parentName": "R272-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     272
+    ],
+    "time": {
+     "end": "2026-11-11T17:41:00.000+0100",
+     "start": "2026-11-11T16:42:17.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -883,6 +1072,604 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße",
+    "name": "R351-105",
+    "owner": "WL",
+    "parentName": "R351-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     351
+    ],
+    "time": {
+     "end": "2026-11-11T17:39:00.000+0100",
+     "start": "2026-11-11T16:40:47.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße",
+    "name": "R352-105",
+    "owner": "WL",
+    "parentName": "R352-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     352
+    ],
+    "time": {
+     "end": "2026-11-11T17:39:00.000+0100",
+     "start": "2026-11-11T16:40:47.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße",
+    "name": "R353-105",
+    "owner": "WL",
+    "parentName": "R353-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     353
+    ],
+    "time": {
+     "end": "2026-11-11T17:39:00.000+0100",
+     "start": "2026-11-11T16:40:47.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R353-112",
+    "owner": "WL",
+    "parentName": "R353-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     353
+    ],
+    "time": {
+     "end": "2026-11-11T17:41:00.000+0100",
+     "start": "2026-11-11T16:42:17.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße",
+    "name": "R354-105",
+    "owner": "WL",
+    "parentName": "R354-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     354
+    ],
+    "time": {
+     "end": "2026-11-11T17:39:00.000+0100",
+     "start": "2026-11-11T16:40:47.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R354-112",
+    "owner": "WL",
+    "parentName": "R354-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     354
+    ],
+    "time": {
+     "end": "2026-11-11T17:41:00.000+0100",
+     "start": "2026-11-11T16:42:17.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße",
+    "name": "R355-105",
+    "owner": "WL",
+    "parentName": "R355-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     355
+    ],
+    "time": {
+     "end": "2026-11-11T17:37:00.000+0100",
+     "start": "2026-11-11T16:38:17.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R355-112",
+    "owner": "WL",
+    "parentName": "R355-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     355
+    ],
+    "time": {
+     "end": "2026-11-11T17:41:00.000+0100",
+     "start": "2026-11-11T16:42:17.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße",
+    "name": "R356-105",
+    "owner": "WL",
+    "parentName": "R356-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     356
+    ],
+    "time": {
+     "end": "2026-11-11T17:37:00.000+0100",
+     "start": "2026-11-11T16:38:17.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R356-112",
+    "owner": "WL",
+    "parentName": "R356-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     356
+    ],
+    "time": {
+     "end": "2026-11-11T17:41:00.000+0100",
+     "start": "2026-11-11T16:42:17.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße",
+    "name": "R357-105",
+    "owner": "WL",
+    "parentName": "R357-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     357
+    ],
+    "time": {
+     "end": "2026-11-11T17:37:00.000+0100",
+     "start": "2026-11-11T16:38:17.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R357-112",
+    "owner": "WL",
+    "parentName": "R357-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     357
+    ],
+    "time": {
+     "end": "2026-11-11T17:41:00.000+0100",
+     "start": "2026-11-11T16:42:17.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Klosterneuburger Straße",
+    "name": "R377-105",
+    "owner": "WL",
+    "parentName": "R377-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     377
+    ],
+    "time": {
+     "end": "2026-11-11T17:40:00.000+0100",
+     "start": "2026-11-11T16:39:19.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Klosterneuburger Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Klosterneuburger Straße",
+    "name": "R379-105",
+    "owner": "WL",
+    "parentName": "R379-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     379
+    ],
+    "time": {
+     "end": "2026-11-11T17:40:00.000+0100",
+     "start": "2026-11-11T16:39:19.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Klosterneuburger Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S ",
+    "name": "R379-112",
+    "owner": "WL",
+    "parentName": "R379-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     379
+    ],
+    "time": {
+     "end": "2026-11-11T17:41:00.000+0100",
+     "start": "2026-11-11T16:42:20.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Klosterneuburger Straße",
+    "name": "R380-105",
+    "owner": "WL",
+    "parentName": "R380-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     380
+    ],
+    "time": {
+     "end": "2026-11-11T17:40:00.000+0100",
+     "start": "2026-11-11T16:39:19.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Klosterneuburger Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S ",
+    "name": "R380-112",
+    "owner": "WL",
+    "parentName": "R380-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     380
+    ],
+    "time": {
+     "end": "2026-11-11T17:41:00.000+0100",
+     "start": "2026-11-11T16:42:20.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Klosterneuburger Straße",
+    "name": "R381-105",
+    "owner": "WL",
+    "parentName": "R381-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     381
+    ],
+    "time": {
+     "end": "2026-11-11T17:40:00.000+0100",
+     "start": "2026-11-11T16:39:19.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Klosterneuburger Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S ",
+    "name": "R381-112",
+    "owner": "WL",
+    "parentName": "R381-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     381
+    ],
+    "time": {
+     "end": "2026-11-11T17:41:00.000+0100",
+     "start": "2026-11-11T16:42:20.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Klosterneuburger Straße",
+    "name": "R382-105",
+    "owner": "WL",
+    "parentName": "R382-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     382
+    ],
+    "time": {
+     "end": "2026-11-11T17:40:00.000+0100",
+     "start": "2026-11-11T16:39:50.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Klosterneuburger Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S ",
+    "name": "R382-112",
+    "owner": "WL",
+    "parentName": "R382-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     382
+    ],
+    "time": {
+     "end": "2026-11-11T17:41:00.000+0100",
+     "start": "2026-11-11T16:42:20.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Klosterneuburger Straße",
+    "name": "R383-105",
+    "owner": "WL",
+    "parentName": "R383-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     383
+    ],
+    "time": {
+     "end": "2026-11-11T17:40:00.000+0100",
+     "start": "2026-11-11T16:41:20.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Klosterneuburger Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S ",
+    "name": "R383-112",
+    "owner": "WL",
+    "parentName": "R383-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     383
+    ],
+    "time": {
+     "end": "2026-11-11T17:41:00.000+0100",
+     "start": "2026-11-11T16:42:20.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Klosterneuburger Straße",
+    "name": "R384-105",
+    "owner": "WL",
+    "parentName": "R384-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     384
+    ],
+    "time": {
+     "end": "2026-11-11T17:40:00.000+0100",
+     "start": "2026-11-11T16:41:20.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Klosterneuburger Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Klosterneuburger Straße",
+    "name": "R385-105",
+    "owner": "WL",
+    "parentName": "R385-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     385
+    ],
+    "time": {
+     "end": "2026-11-11T17:40:00.000+0100",
+     "start": "2026-11-11T16:41:20.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Klosterneuburger Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nZüge halten bei Li. 31 Ri. Schottenring",
+    "name": "R386-105",
+    "owner": "WL",
+    "parentName": "R386-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     386
+    ],
+    "time": {
+     "end": "2026-11-11T17:41:00.000+0100",
+     "start": "2026-11-11T16:41:50.000+0100"
+    },
+    "title": "Schadhafter Zug\nZüge halten bei Li. 31 Ri. Schottenring"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
     "name": "R3886-480",
     "owner": "WL",
@@ -925,6 +1712,29 @@
      "start": "2026-11-05T00:00:27.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S ",
+    "name": "R458-112",
+    "owner": "WL",
+    "parentName": "R458-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     458
+    ],
+    "time": {
+     "end": "2026-11-11T17:41:00.000+0100",
+     "start": "2026-11-11T16:42:20.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S "
    },
    {
     "alertCause": "undefined alert cause",
