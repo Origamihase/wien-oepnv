@@ -374,6 +374,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "65A: Triester Straße/ Rossakgasse",
+    "description": "<p><strong><u>Haltestellenverlegung der Linie 65A in Richtung Wienerberg City (Inzersdorf)</u></strong></p><p><strong><u>Haltestelle:</u></strong> Triester Straße, Rossakgasse</p><p><strong><u>Von:</u></strong> Triester Straße 164</p><p><strong><u>Nach:</u></strong> Triester Straße 162</p><p><strong><u>Dauer:</u></strong> Ab 11. November 2026, 16:00 Uhr für etwa 2 Wochen</p><p><strong><u>Grund:</u></strong> Haltestellenumbau</p>",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "213d51762c51c0889ab9a4a34328e7b3245279259b35acb8575e9a76ec72d882",
+    "pubDate": "2026-11-11T09:38:00+01:00",
+    "starts_at": "2026-11-11T09:38:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|hinweis|L=65A|D=2026-11-11|TK=65a triester strasse rossakgasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "66A/N66: Grenzackerstraße",
     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 66A in Richtung Reumannplatz U und N66 in Richtung Oper, Karlsplatz U</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Grenzackerstra&szlig;e</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Laxenburger Stra&szlig;e 145, Nebenfahrbahn nach Raxstra&szlig;e</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Laxenburger Stra&szlig;e 143</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 26. Mai 2026, etwa 09:45 Uhr, auf unbestimmte Zeit</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Kabelarbeiten</span></p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -866,6 +878,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "3A: Verkehrsüberlastung",
+    "description": "Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "9f9e6187c209c35f7459a15952d47555cbf84b2191172cf18db8d559f94cca69",
+    "pubDate": "2026-11-11T09:40:00+01:00",
+    "starts_at": "2026-11-11T09:40:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=3A|D=2026-11-11|TK=3a verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261111-0008"
+    ],
+    "_incident_start": "2026-11-11T09:40:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -910,6 +938,94 @@
     "starts_at": "2026-11-09T00:00:19+01:00",
     "ends_at": "2026-11-11T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-09|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fremdunfall Betrieb ab Quartier Belvedere S",
+    "description": "Fremdunfall\nBetrieb ab Quartier Belvedere S",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "6a70a2f288bf621b794e8cf8e362684fef8b91336a0091b9c0cbe9fc7763bf94",
+    "pubDate": "2026-11-11T09:44:05+01:00",
+    "starts_at": "2026-11-11T09:44:05+01:00",
+    "ends_at": "2026-11-11T10:43:00+01:00",
+    "_identity": "wl|störung|L=O|D=2026-11-11|TK=fremdunfall betrieb ab quartier belvedere s"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fremdunfall Betrieb ab Quellenplatz",
+    "description": "Fremdunfall\nBetrieb ab Quellenplatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "06076533007ef2930b17429fae4f2c4f7f36dbf3fe61738ccf324bca71f77190",
+    "pubDate": "2026-11-11T09:45:35+01:00",
+    "starts_at": "2026-11-11T09:45:35+01:00",
+    "ends_at": "2026-11-11T10:44:00+01:00",
+    "_identity": "wl|störung|L=O|D=2026-11-11|TK=fremdunfall betrieb ab quellenplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fremdunfall Betrieb über Li. 6+D",
+    "description": "Fremdunfall\nBetrieb über Li. 6+D",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "5eb5818e360fbd05c32a9dd4e7929789e0af412f8ee0dde48e2229b4962fde56",
+    "pubDate": "2026-11-11T09:43:07+01:00",
+    "starts_at": "2026-11-11T09:43:07+01:00",
+    "ends_at": "2026-11-11T12:00:00+01:00",
+    "_identity": "wl|störung|L=O|D=2026-11-11|TK=fremdunfall betrieb über li 6 d"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fremdunfall Betrieb über Li. D+6",
+    "description": "Fremdunfall\nBetrieb über Li. D+6",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "349740adf6ce9876aee48b15788500dcd3851f247b91beba115d6b8da2659473",
+    "pubDate": "2026-11-11T09:45:05+01:00",
+    "starts_at": "2026-11-11T09:45:05+01:00",
+    "ends_at": "2026-11-11T10:44:00+01:00",
+    "_identity": "wl|störung|L=O|D=2026-11-11|TK=fremdunfall betrieb über li d 6"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fremdunfall Züge halten bei Li. 6 Ri. Burggasse, Stadthalle",
+    "description": "Fremdunfall\nZüge halten bei Li. 6 Ri. Burggasse, Stadthalle",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b61ba3fa9013d8ad031d3b814082c732c75b3a5439579908df69fe8c9671e851",
+    "pubDate": "2026-11-11T09:46:05+01:00",
+    "starts_at": "2026-11-11T09:46:05+01:00",
+    "ends_at": "2026-11-11T10:45:00+01:00",
+    "_identity": "wl|störung|L=O|D=2026-11-11|TK=fremdunfall züge halten bei li 6 ri burggasse stadthalle"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fremdunfall Züge halten bei Li. D Richtung Nußdorf",
+    "description": "Fremdunfall\nZüge halten bei Li. D Richtung Nußdorf",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "3abd166fbd6d42cf7c1ee169d12cbd885643d56f3545a9144265c8d1615a5815",
+    "pubDate": "2026-11-11T09:44:35+01:00",
+    "starts_at": "2026-11-11T09:44:35+01:00",
+    "ends_at": "2026-11-11T10:43:00+01:00",
+    "_identity": "wl|störung|L=O|D=2026-11-11|TK=fremdunfall züge halten bei li d richtung nussdorf"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Fremder Verkehrsunfall",
+    "description": "Linie O: Umleitung in beiden Richtungen zwischen Quellenplatz und Quartier Belvedere S über Reumannplatz U und Hauptbahnhof Ost S. Voraussichtliche Dauer: 10:30 Uhr. Grund: Fremder Verkehrsunfall im Haltestellenbereich Columbusplatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "36ad6a7c30b68d7345880b54bf25d283a433758da75c3a0fa4127d22d410a937",
+    "pubDate": "2026-11-11T09:41:00+01:00",
+    "starts_at": "2026-11-11T09:41:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=O|D=2026-11-11|TK=o fremder verkehrsunfall",
+    "_wl_ids": [
+      "I20261111-0009"
+    ],
+    "_incident_start": "2026-11-11T09:41:00+01:00"
   },
   {
     "source": "Wiener Linien",
