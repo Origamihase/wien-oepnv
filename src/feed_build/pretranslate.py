@@ -14,7 +14,7 @@ from ..feed.glossary import _FIELD_LABEL_EN
 from .masking import _station_base_forms
 
 __all__ = [
-    "_HOUR_ONLY_CLOCK_RE", "_normalise_for_translation", "_LABEL_RECORD_RE", "_MIN_LABELS_FOR_RECORD",
+    "_HOUR_ONLY_CLOCK_RE", "_DECIMAL_COMMA_RE", "_normalise_for_translation", "_LABEL_RECORD_RE", "_MIN_LABELS_FOR_RECORD",
     "_split_label_record", "_RECORD_EXPECTED_UNTIL_RE", "_RECORD_BIS_VORAUSSICHTLICH_RE", "_gloss_record_values",
     "_REASON_LABEL_RE", "_join_record",
 ]
@@ -43,6 +43,16 @@ _CLOCK_SUFFIX_RE: re.Pattern[str] = re.compile(
 # "Uhr", so a date ("02.11.2026") and a house number are untouched.
 _HOUR_ONLY_CLOCK_RE: re.Pattern[str] = re.compile(
     r"(?<![\d.:])(\d{1,2})(?:\.(\d{2}))?(?=\s*Uhr\b)"
+)
+
+# A German decimal comma in a number with a unit ("24,2 min", "1,5 km"). The
+# German feed writes it so (issue #2200, the Stammstrecke text read "24.2
+# min"); English takes a point. The model sometimes turned the comma into a
+# point itself and then rendered the rest of the sentence differently
+# ("in the direction of" for "towards"), so the point is set before the model
+# sees the text and the English stays as it was.
+_DECIMAL_COMMA_RE: re.Pattern[str] = re.compile(
+    r"(?<![\d,.])(\d+),(\d+)(?=\s*(?:min\b|Min\.|Minuten\b|km\b|m\b|%))"
 )
 
 # WL's stock referral closes on a separable "aus": "Weichen Sie ersatzweise
@@ -299,6 +309,7 @@ def _normalise_for_translation(text: str) -> str:
     # shields it ("bis Hohen Warte" → "bis Hohe Warte", see
     # ``_station_base_forms``).
     text = _station_base_forms(text)
+    text = _DECIMAL_COMMA_RE.sub(r"\1.\2", text)
     text = _HOUR_ONLY_CLOCK_RE.sub(
         lambda m: f"{m.group(1)}:{m.group(2) or '00'}", text
     )
