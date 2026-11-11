@@ -1,28 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-11T08:00:46.077138+00:00",
- "built": "2026-11-11T09:00:35+01:00",
+ "updated": "2026-11-11T08:30:56.789879+00:00",
+ "built": "2026-11-11T09:30:49+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-11T09:00:35+01:00",
+  "built": "2026-11-11T09:30:49+01:00",
   "items": [
-   {
-    "title": "59A: Verkehrsüberlastung",
-    "time_line": "Seit 08:31"
-   },
-   {
-    "title": "16A: Störung an einem Bahnübergang",
-    "time_line": "Seit 08:19"
-   },
    {
     "title": "U1: Rettungseinsatz",
     "time_line": "Seit 07:41"
-   },
-   {
-    "title": "60: Verkehrsunfall",
-    "time_line": "Seit 06:32"
    },
    {
     "title": "Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx",
@@ -47,31 +35,23 @@
    {
     "title": "31: Wexstraße",
     "time_line": "Seit 09.11."
+   },
+   {
+    "title": "64A/N64R: Zouvalgasse",
+    "time_line": "Seit 09.11."
+   },
+   {
+    "title": "71A: Schwechat, Hauptplatz",
+    "time_line": "Heute"
+   },
+   {
+    "title": "74A: Viehmarktgasse",
+    "time_line": "Ab Do 12.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-04T08:01:00.794651+00:00",
-   "raw": {
-    "wl-stoerungen": 62,
-    "wl-hinweise": 68,
-    "oebb": 180,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 11,
-    "oebb": 158,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 6,
-    "wl": 91
-   }
-  },
   {
    "t": "2026-11-04T08:31:20.264826+00:00",
    "raw": {
@@ -6791,17 +6771,37 @@
     "oebb": 5,
     "wl": 82
    }
+  },
+  {
+   "t": "2026-11-11T08:30:56.789879+00:00",
+   "raw": {
+    "wl-stoerungen": 37,
+    "wl-hinweise": 84,
+    "oebb": 188,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 21,
+    "oebb": 165,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 5,
+    "wl": 78
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-11T08:00:46.077138+00:00"
+   "last_ok": "2026-11-11T08:30:56.789879+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-11T08:00:46.077138+00:00"
+   "last_ok": "2026-11-11T08:30:56.789879+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-11T08:00:46.077138+00:00"
+   "last_ok": "2026-11-11T08:30:56.789879+00:00"
   }
  }
 }
