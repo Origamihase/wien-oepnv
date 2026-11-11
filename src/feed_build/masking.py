@@ -20,7 +20,7 @@ from .entities import (
 from .placeholders import (
     _ENTITY_PLACEHOLDER_FORMAT, _ENTITY_PLACEHOLDER_RE, _HYPHEN_PREFIX_RE, _SLASH_NAME_CAME_BEFORE_RE,
     _SLASH_NAME_GOES_ON_RE, _SLASH_PARTNER_AFTER_RE, _SLASH_PARTNER_BEFORE_RE, _UNMASK_PLACEHOLDER_RE,
-    _WIEN_NAME_RE, _normalise_placeholder_debris,
+    _WIEN_NAME_RE, _absorb_glued_x, _normalise_placeholder_debris,
 )
 
 __all__ = [
@@ -498,7 +498,7 @@ def _mask_entities(text: str) -> tuple[str, dict[str, str]]:
     working = _absorb_wien_into_names(working, mapping, _register)
     working = _absorb_hyphen_prefixes(working, mapping, _register)
     working = _shield_slash_partners(working, mapping, _register)
-    return working, mapping
+    return _absorb_glued_x(working, mapping, _register), mapping
 
 
 def _shield_slash_partners(

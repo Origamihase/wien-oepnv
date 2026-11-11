@@ -1,40 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-10T22:00:55.829208+00:00",
- "built": "2026-11-10T23:00:45+01:00",
+ "updated": "2026-11-11T01:00:44.784010+00:00",
+ "built": "2026-11-11T02:00:39+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-10T23:00:45+01:00",
+  "built": "2026-11-11T02:00:39+01:00",
   "items": [
-   {
-    "title": "62: Polizeieinsatz",
-    "time_line": "Seit 22:38"
-   },
-   {
-    "title": "71A: Rettungseinsatz",
-    "time_line": "Seit 22:34"
-   },
-   {
-    "title": "O: Verspätungen",
-    "time_line": "Seit 21:35"
-   },
-   {
-    "title": "2: Fremder Verkehrsunfall",
-    "time_line": "Seit 18:16"
-   },
    {
     "title": "Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx",
     "time_line": "Bis 31.10.2027"
-   },
-   {
-    "title": "REX50/REX51/S50: Wien Westbahnhof ↔ St. Pölten Hbf",
-    "time_line": "Bis Mi 11.11."
-   },
-   {
-    "title": "R95: Wien Hauptbahnhof ↔ Felixdorf",
-    "time_line": "Heute"
    },
    {
     "title": "79A/79B: Alberner Hafenzufahrtsstraße",
@@ -47,131 +23,35 @@
    {
     "title": "5B: Bauarbeiten",
     "time_line": "Bis 10.12."
+   },
+   {
+    "title": "31: Wexstraße",
+    "time_line": "Seit 09.11."
+   },
+   {
+    "title": "64A/N64R: Zouvalgasse",
+    "time_line": "Seit 09.11."
+   },
+   {
+    "title": "71A: Schwechat, Hauptplatz",
+    "time_line": "Heute"
+   },
+   {
+    "title": "74A: Viehmarktgasse",
+    "time_line": "Ab Do 12.11."
+   },
+   {
+    "title": "52A: Bauarbeiten",
+    "time_line": "Seit 05.11."
+   },
+   {
+    "title": "68A: Laaer Berg, Kurpark Nordeingang",
+    "time_line": "Seit 05.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-03T22:01:10.513202+00:00",
-   "raw": {
-    "wl-stoerungen": 52,
-    "wl-hinweise": 70,
-    "oebb": 180,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 11,
-    "oebb": 156,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 7,
-    "wl": 86
-   }
-  },
-  {
-   "t": "2026-11-03T22:31:17.967557+00:00",
-   "raw": {
-    "wl-stoerungen": 52,
-    "wl-hinweise": 70,
-    "oebb": 180,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 11,
-    "oebb": 156,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 7,
-    "wl": 86
-   }
-  },
-  {
-   "t": "2026-11-03T23:01:06.752906+00:00",
-   "raw": {
-    "wl-stoerungen": 49,
-    "wl-hinweise": 70,
-    "oebb": 178,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 11,
-    "oebb": 155,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 7,
-    "wl": 83
-   }
-  },
-  {
-   "t": "2026-11-03T23:31:00.033324+00:00",
-   "raw": {
-    "wl-stoerungen": 64,
-    "wl-hinweise": 70,
-    "oebb": 178,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 12,
-    "oebb": 155,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 7,
-    "wl": 85
-   }
-  },
-  {
-   "t": "2026-11-04T00:01:15.469496+00:00",
-   "raw": {
-    "wl-stoerungen": 69,
-    "wl-hinweise": 71,
-    "oebb": 178,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 13,
-    "oebb": 155,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 7,
-    "wl": 91
-   }
-  },
-  {
-   "t": "2026-11-04T00:30:57.932158+00:00",
-   "raw": {
-    "wl-stoerungen": 61,
-    "wl-hinweise": 69,
-    "oebb": 178,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 11,
-    "oebb": 155,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 7,
-    "wl": 93
-   }
-  },
   {
    "t": "2026-11-04T01:00:47.025756+00:00",
    "raw": {
@@ -6791,17 +6671,139 @@
     "oebb": 7,
     "wl": 80
    }
+  },
+  {
+   "t": "2026-11-10T22:30:57.689984+00:00",
+   "raw": {
+    "wl-stoerungen": 52,
+    "wl-hinweise": 87,
+    "oebb": 195,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 23,
+    "oebb": 170,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 77
+   }
+  },
+  {
+   "t": "2026-11-10T23:01:01.009809+00:00",
+   "raw": {
+    "wl-stoerungen": 35,
+    "wl-hinweise": 87,
+    "oebb": 194,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 23,
+    "oebb": 170,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 76
+   }
+  },
+  {
+   "t": "2026-11-10T23:30:56.411181+00:00",
+   "raw": {
+    "wl-stoerungen": 36,
+    "wl-hinweise": 87,
+    "oebb": 194,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 23,
+    "oebb": 170,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 77
+   }
+  },
+  {
+   "t": "2026-11-11T00:02:21.122781+00:00",
+   "raw": {
+    "wl-stoerungen": 36,
+    "wl-hinweise": 87,
+    "oebb": 194,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 23,
+    "oebb": 170,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 77
+   }
+  },
+  {
+   "t": "2026-11-11T00:30:49.042577+00:00",
+   "raw": {
+    "wl-stoerungen": 43,
+    "wl-hinweise": 82,
+    "oebb": 194,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 19,
+    "oebb": 170,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 83
+   }
+  },
+  {
+   "t": "2026-11-11T01:00:44.784010+00:00",
+   "raw": {
+    "wl-stoerungen": 43,
+    "wl-hinweise": 82,
+    "oebb": 194,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 19,
+    "oebb": 170,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 83
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-10T22:00:55.829208+00:00"
+   "last_ok": "2026-11-11T01:00:44.784010+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-10T22:00:55.829208+00:00"
+   "last_ok": "2026-11-11T01:00:44.784010+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-10T22:00:55.829208+00:00"
+   "last_ok": "2026-11-11T00:30:49.042577+00:00",
+   "last_exit": 1,
+   "failing_since": "2026-11-11T01:00:44.784010+00:00"
   }
  }
 }

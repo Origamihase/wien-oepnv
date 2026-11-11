@@ -33,7 +33,7 @@ shape.
 from __future__ import annotations
 
 import hypothesis.strategies as st
-from hypothesis import given, settings
+from hypothesis import example, given, settings
 
 from src.build_feed import (
     _ENTITY_PLACEHOLDER_RE,
@@ -61,6 +61,10 @@ _KNOWN_ENTITIES = (
 
 @given(text=_texts)
 @settings(max_examples=300, deadline=None)
+@example(text="X⬀")
+@example(text="REX→Wien")
+@example(text="→X")
+@example(text="→0X")
 def test_mask_unmask_round_trip_identity(text: str) -> None:
     """When the translator does NOT touch the masked text, unmask must
     recover the original exactly.

@@ -660,7 +660,7 @@
     "guid": "a8ba70cda76bd25ad99c44435ef8692615c7aebef6b5a98d838a46d6688684c5",
     "pubDate": "2026-11-05T00:00:27+01:00",
     "starts_at": "2026-11-05T00:00:27+01:00",
-    "ends_at": "2026-11-10T23:59:59+01:00",
+    "ends_at": "2026-11-11T23:59:59+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-05|TK=umleitung"
   },
   {
@@ -672,7 +672,7 @@
     "guid": "722cc49eaf4e8ccbbfe11eab494c610693f50dbe6938f2a0c361d11a120d69cf",
     "pubDate": "2026-11-09T00:00:19+01:00",
     "starts_at": "2026-11-09T00:00:19+01:00",
-    "ends_at": "2026-11-10T23:59:59+01:00",
+    "ends_at": "2026-11-11T23:59:59+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-09|TK=betrieb ab knöllgasse"
   },
   {
@@ -684,7 +684,7 @@
     "guid": "ec874d834c0a5c0aa688bd397a5e8471438bf598da32edc1550ce6a027f19df7",
     "pubDate": "2026-11-09T00:00:19+01:00",
     "starts_at": "2026-11-09T00:00:19+01:00",
-    "ends_at": "2026-11-10T23:59:59+01:00",
+    "ends_at": "2026-11-11T23:59:59+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-09|TK=kein betrieb"
   },
   {
@@ -696,8 +696,20 @@
     "guid": "490d571258786cc2850533d4ea421322d4bc7f58d105e4c1b0bf76a1cefc02ca",
     "pubDate": "2026-11-09T00:00:19+01:00",
     "starts_at": "2026-11-09T00:00:19+01:00",
-    "ends_at": "2026-11-10T23:59:59+01:00",
+    "ends_at": "2026-11-11T23:59:59+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-09|TK=züge halten quellenstrasse 156 linie 6"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
+    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db",
+    "pubDate": "2026-11-11T00:30:18+01:00",
+    "starts_at": "2026-11-11T00:30:18+01:00",
+    "ends_at": "2026-11-11T04:59:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-11-11|TK=bhf hütteldorf öbb ersatzbus für 80"
   },
   {
     "source": "Wiener Linien",
@@ -724,7 +736,7 @@
     "guid": "92b3e1526626662f64af03a055d226fd12ea9f9ee7f18ad3adc6d69e6127aa8f",
     "pubDate": "2026-11-09T00:00:20+01:00",
     "starts_at": "2026-11-09T00:00:20+01:00",
-    "ends_at": "2026-11-10T23:59:59+01:00",
+    "ends_at": "2026-11-11T23:59:59+01:00",
     "_identity": "wl|störung|L=25|D=2026-11-09|TK=ersatzbus 26e hält karl waldbrunner platz vor schlosshofer strasse"
   },
   {
@@ -736,7 +748,7 @@
     "guid": "b1de336024668692cfc392366c00463863c75ca201ea3e3f1095df9b15711853",
     "pubDate": "2026-11-09T00:00:20+01:00",
     "starts_at": "2026-11-09T00:00:20+01:00",
-    "ends_at": "2026-11-10T23:59:59+01:00",
+    "ends_at": "2026-11-11T23:59:59+01:00",
     "_identity": "wl|störung|L=25|D=2026-11-09|TK=züge halten donaufelder strasse 175 177"
   },
   {
@@ -764,7 +776,7 @@
     "guid": "74ed68a20871c9df99a595b2acb24eda6475c9b75f4c5324e420a36b068f03d7",
     "pubDate": "2026-11-09T00:00:20+01:00",
     "starts_at": "2026-11-09T00:00:20+01:00",
-    "ends_at": "2026-11-10T23:59:59+01:00",
+    "ends_at": "2026-11-11T23:59:59+01:00",
     "_identity": "wl|störung|L=26E|D=2026-11-09|TK=busse halten bessemerstrasse 1 3"
   },
   {
@@ -776,7 +788,7 @@
     "guid": "d69ee1efc28bc606f7aa2a731eedcb97ba6b6353c22eca615aa68fa75d27c771",
     "pubDate": "2026-11-09T00:00:20+01:00",
     "starts_at": "2026-11-09T00:00:20+01:00",
-    "ends_at": "2026-11-10T23:59:59+01:00",
+    "ends_at": "2026-11-11T23:59:59+01:00",
     "_identity": "wl|störung|L=26E|D=2026-11-09|TK=busse halten hossplatz 11"
   },
   {
@@ -788,7 +800,7 @@
     "guid": "2008cbaf36893e0d453fc689a916eff611bcdc08a4fc946ad2a11efd0db1eb3c",
     "pubDate": "2026-11-09T00:00:20+01:00",
     "starts_at": "2026-11-09T00:00:20+01:00",
-    "ends_at": "2026-11-10T23:59:59+01:00",
+    "ends_at": "2026-11-11T23:59:59+01:00",
     "_identity": "wl|störung|L=26E|D=2026-11-09|TK=busse halten satzingerweg 41"
   },
   {
@@ -800,7 +812,7 @@
     "guid": "cf73c65995ea0c4918cc88d67855f7a7749c1551a4fef3f02ba7c54c8550d609",
     "pubDate": "2026-11-09T00:00:20+01:00",
     "starts_at": "2026-11-09T00:00:20+01:00",
-    "ends_at": "2026-11-10T23:59:59+01:00",
+    "ends_at": "2026-11-11T23:59:59+01:00",
     "_identity": "wl|störung|L=26E|D=2026-11-09|TK=ersatzbus hält karl waldbrunner platz vor schlosshofer strasse"
   },
   {
@@ -812,7 +824,7 @@
     "guid": "544df376802b1177e5b0248149f682aaa8e4c43cffba470c30fbb130a531b8d8",
     "pubDate": "2026-11-09T00:00:20+01:00",
     "starts_at": "2026-11-09T00:00:20+01:00",
-    "ends_at": "2026-11-10T23:59:59+01:00",
+    "ends_at": "2026-11-11T23:59:59+01:00",
     "_identity": "wl|störung|L=26|D=2026-11-09|TK=züge halten in tokiostrasse"
   },
   {
@@ -824,7 +836,7 @@
     "guid": "850d1ea5a2f242340850bbce64f4516a1e196325253cc145d45d09c3a0832c88",
     "pubDate": "2026-11-09T00:00:20+01:00",
     "starts_at": "2026-11-09T00:00:20+01:00",
-    "ends_at": "2026-11-10T23:59:59+01:00",
+    "ends_at": "2026-11-11T23:59:59+01:00",
     "_identity": "wl|störung|L=27|D=2026-11-09|TK=linie 25 in tokiostrasse benützen"
   },
   {
@@ -836,24 +848,8 @@
     "guid": "a31338a0ecb32781b4cf40a6af8ec75d291bf050aaaa43964e8ab0ac144747a7",
     "pubDate": "2026-11-09T00:00:20+01:00",
     "starts_at": "2026-11-09T00:00:20+01:00",
-    "ends_at": "2026-11-10T23:59:59+01:00",
+    "ends_at": "2026-11-11T23:59:59+01:00",
     "_identity": "wl|störung|L=27|D=2026-11-09|TK=züge halten bei linie 31"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "2: Fremder Verkehrsunfall",
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "0749610181f65ab0658c177429fbd2fa37ffe19a156e13edf490d50626a4aa1b",
-    "pubDate": "2026-11-10T18:16:00+01:00",
-    "starts_at": "2026-11-10T18:16:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=2|D=2026-11-10|TK=2 fremder verkehrsunfall",
-    "_wl_ids": [
-      "I20261110-0036"
-    ],
-    "_incident_start": "2026-11-10T18:16:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -864,64 +860,8 @@
     "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
     "pubDate": "2026-11-09T00:00:21+01:00",
     "starts_at": "2026-11-09T00:00:21+01:00",
-    "ends_at": "2026-11-10T23:59:59+01:00",
+    "ends_at": "2026-11-11T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-11-09|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5B: Busse halten Pappenheimgasse 24-28",
-    "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "72637a0e7f145666712a9b4de8e489d06ed131402df1b9c8e4f4d78ca88a48da",
-    "pubDate": "2026-11-10T04:45:22+01:00",
-    "starts_at": "2026-11-10T04:45:22+01:00",
-    "ends_at": "2026-11-10T23:59:59+01:00",
-    "_identity": "wl|störung|L=5B|D=2026-11-10|TK=busse halten pappenheimgasse 24 28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2563cb7e5e67c7016a99b581b604e1f7ef686490b44625d39ce5e66b47c20dc1",
-    "pubDate": "2026-11-10T22:38:00+01:00",
-    "starts_at": "2026-11-10T22:56:40+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=62|D=2026-11-10|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261110-0041"
-    ],
-    "_incident_start": "2026-11-10T22:38:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "66A: Busse halten Salvatorianerplatz",
-    "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417",
-    "pubDate": "2026-11-10T04:40:22+01:00",
-    "starts_at": "2026-11-10T04:40:22+01:00",
-    "ends_at": "2026-11-11T01:00:00+01:00",
-    "_identity": "wl|störung|L=66A|D=2026-11-10|TK=busse halten salvatorianerplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71A: Rettungseinsatz",
-    "description": "Linie 71A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Schwechat, Brauerei.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "da65c0b35f394aeaaa61b36892d0759260ae54169160e864821db395325d0d29",
-    "pubDate": "2026-11-10T22:34:00+01:00",
-    "starts_at": "2026-11-10T22:34:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=71A|D=2026-11-10|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261110-0040"
-    ],
-    "_incident_start": "2026-11-10T22:34:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -932,7 +872,7 @@
     "guid": "2797d59462910f71456b76916229f0a7dc623a8edebf6f4ac24269030a87606e",
     "pubDate": "2026-11-09T00:00:21+01:00",
     "starts_at": "2026-11-09T00:00:21+01:00",
-    "ends_at": "2026-11-10T23:59:59+01:00",
+    "ends_at": "2026-11-11T23:59:59+01:00",
     "_identity": "wl|störung|L=74A|D=2026-11-09|TK=einstieg leberstrasse vor s bahn gebäude"
   },
   {
@@ -944,24 +884,104 @@
     "guid": "ea6dc6157351e6aa6eb8ae0f07011aa7c794ec979aee036f3e93c7c998c73346",
     "pubDate": "2026-11-09T00:00:19+01:00",
     "starts_at": "2026-11-09T00:00:19+01:00",
-    "ends_at": "2026-11-10T23:59:59+01:00",
+    "ends_at": "2026-11-11T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-09|TK=betrieb ab vivariumstrasse 2"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Verspätungen",
-    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "title": "N20: Busse halten auf der Hauptfahrbahn",
+    "description": "Gleisbauarbeiten\nBusse halten auf der Hauptfahrbahn",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "178cf2e06d6bf9e3207e789e31504019ebfed19bf91191929c7996b4b8b6d1a7",
-    "pubDate": "2026-11-10T21:35:00+01:00",
-    "starts_at": "2026-11-10T21:35:00+01:00",
-    "ends_at": "2026-11-10T23:10:00+01:00",
-    "_identity": "wl|störung|L=O|D=2026-11-10|TK=o verspätungen",
-    "_wl_ids": [
-      "I20261110-0039"
-    ],
-    "_incident_start": "2026-11-10T21:35:00+01:00"
+    "guid": "2465b8f495aa09c30a1900425c8f402136474c4599d6f3677d4f46d051c9c4ae",
+    "pubDate": "2026-11-11T01:16:24+01:00",
+    "starts_at": "2026-11-11T01:16:24+01:00",
+    "ends_at": "2026-11-11T04:52:00+01:00",
+    "_identity": "wl|störung|L=N20|D=2026-11-11|TK=busse halten auf der hauptfahrbahn"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N20: Busse halten Bessemerstraße 1-3",
+    "description": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "f3142d4f32419f4772ec66186ea9d3101fb32548016973434774ef3660ca4236",
+    "pubDate": "2026-11-11T01:30:25+01:00",
+    "starts_at": "2026-11-11T01:30:25+01:00",
+    "ends_at": "2026-11-11T04:35:00+01:00",
+    "_identity": "wl|störung|L=N20|D=2026-11-11|TK=busse halten bessemerstrasse 1 3"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N20: Busse halten Donaufelder Straße 40-42",
+    "description": "Bauarbeiten\nBusse halten Donaufelder Straße 40-42",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "fbb2a8ec5e05f8147afc547298621b5aa410a4dd847efd2a4b79524c0dfd7460",
+    "pubDate": "2026-11-11T01:10:23+01:00",
+    "starts_at": "2026-11-11T01:10:23+01:00",
+    "ends_at": "2026-11-11T04:50:00+01:00",
+    "_identity": "wl|störung|L=N20|D=2026-11-11|TK=busse halten donaufelder strasse 40 42"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N66: Busse halten Salvatorianerplatz",
+    "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "24aa68a100b6cf9da31697ad90c76566903c00e84cace4ff88a183b77a6b231c",
+    "pubDate": "2026-11-11T01:00:21+01:00",
+    "starts_at": "2026-11-11T01:00:21+01:00",
+    "ends_at": "2026-11-11T04:20:00+01:00",
+    "_identity": "wl|störung|L=N66|D=2026-11-11|TK=busse halten salvatorianerplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N6: Busse halten Neilreichgasse 20-22",
+    "description": "Bauarbeiten Busse halten Neilreichgasse 20-22",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "65ba91c9ad3212cf9699f4930b16f23c05c678ab5cf7575ab4e562f2f003cfbc",
+    "pubDate": "2026-11-11T00:55:21+01:00",
+    "starts_at": "2026-11-11T00:55:21+01:00",
+    "ends_at": "2026-11-11T05:05:00+01:00",
+    "_identity": "wl|störung|L=N6|D=2026-11-11|TK=busse halten neilreichgasse 20 22"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N6: Busse halten Quellenstraße 189",
+    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "702d63d7625c3038f025628d02f9115371cb86897a042af3fea6ba3fa90b5500",
+    "pubDate": "2026-11-11T00:54:20+01:00",
+    "starts_at": "2026-11-11T00:54:20+01:00",
+    "ends_at": "2026-11-11T05:04:00+01:00",
+    "_identity": "wl|störung|L=N6|D=2026-11-11|TK=busse halten quellenstrasse 189"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N8: Busse halten Aßmayergasse 48 bei Linie 59A",
+    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "637f1a6ac83241b370a1aaf6804c2955c70ae12c21c23052d06685192de2962d",
+    "pubDate": "2026-11-11T00:45:23+01:00",
+    "starts_at": "2026-11-11T00:45:23+01:00",
+    "ends_at": "2026-11-11T04:45:00+01:00",
+    "_identity": "wl|störung|L=N8|D=2026-11-11|TK=busse halten assmayergasse 48 bei linie 59a"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N8: Busse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
+    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "10b9a6d53b42f1dead1c688ecfaaf4e6a3c8058ce9e29c10c1d6b71e47353c17",
+    "pubDate": "2026-11-11T00:45:23+01:00",
+    "starts_at": "2026-11-11T00:45:23+01:00",
+    "ends_at": "2026-11-11T05:15:00+01:00",
+    "_identity": "wl|störung|L=N8|D=2026-11-11|TK=busse halten assmayergasse nach flurschützstrasse bei linie 59a"
   },
   {
     "source": "Wiener Linien",
