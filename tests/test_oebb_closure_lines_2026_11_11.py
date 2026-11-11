@@ -112,19 +112,19 @@ CLOSURE_ITEM = _oebb(
     "lead",
     [
         "Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof von 31.10.2026 bis "
-        "30.11.2026 (jeweils von Samstag 23:15 Uhr bis Sonntag 04:40 Uhr und von Sonntag 23:15 Uhr bis "
-        "Montag 04:40 Uhr) keine Nahverkehrszüge fahren.",
+        + "30.11.2026 (jeweils von Samstag 23:15 Uhr bis Sonntag 04:40 Uhr und von Sonntag 23:15 Uhr bis "
+        + "Montag 04:40 Uhr) keine Nahverkehrszüge fahren.",
         "Wegen Bauarbeiten können zwischen St.Pölten Hbf und Wien Westbahnhof (U) von 03.11.2026 bis "
-        "10.11.2026 keine REX50-Züge fahren.",
+        + "10.11.2026 keine REX50-Züge fahren.",
         "Wegen Bauarbeiten können von 02.11.2026 bis 03.11.2026 zwischen Wien Franz-Josefs-Bahnhof und "
-        "St.Andrä-Wördern Bahnhof keine R 40-Züge fahren.",
+        + "St.Andrä-Wördern Bahnhof keine R 40-Züge fahren.",
         "Wegen Bauarbeiten können zwischen Wien Franz-Josefs-Bahnhof und Wien Heiligenstadt Bahnhof (U) von "
-        "31.10.2026 (22:00 Uhr) bis 06.11.2026 (04:00 Uhr) keine R40- und S40-Züge fahren.",
+        + "31.10.2026 (22:00 Uhr) bis 06.11.2026 (04:00 Uhr) keine R40- und S40-Züge fahren.",
         "Wegen Bauarbeiten können in Himberg b.Wien Bahnhof von 06.10.2025 bis 16.11.2026 keine Züge halten.",
         "Wegen einer Oberleitungsstörung sind zwischen Wien Heiligenstadt Bahnhof (U) und Wien "
-        "Franz-Josefs-Bahnhof bis voraussichtlich 22:00 Uhr keine Fahrten möglich.",
+        + "Franz-Josefs-Bahnhof bis voraussichtlich 22:00 Uhr keine Fahrten möglich.",
         "Wegen Bauarbeiten ist zwischen Wien Meidling Bahnhof (U) und Wien Liesing Bahnhof am 01.12.2026 "
-        "kein Zugverkehr möglich.",
+        + "kein Zugverkehr möglich.",
     ],
 )
 def test_a_lead_that_stops_the_trains_closes_the_line(lead: str) -> None:
@@ -135,16 +135,16 @@ def test_a_lead_that_stops_the_trains_closes_the_line(lead: str) -> None:
     "lead",
     [
         "Wegen Bauarbeiten kann zwischen Wien Leopoldau Bahnhst (U) und Mistelbach/Zaya Bahnhof am "
-        "25.10.2026 und 01.11.2026 der S2-Zug 23360 nicht fahren.",
+        + "25.10.2026 und 01.11.2026 der S2-Zug 23360 nicht fahren.",
         "Zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) können von 03.11.2026 bis 10.11.2026 "
-        "die REX51-Züge 1604, 1608, 1614 und 1618 nicht fahren.",
+        + "die REX51-Züge 1604, 1608, 1614 und 1618 nicht fahren.",
         "Wegen Bauarbeiten fahren zwischen Salzburg Hbf und Flughafen Wien Bahnhof bzw. Hegyeshalom von "
-        "17.10.2026 (22:30 Uhr) bis 21.10.2026 (04:00 Uhr) einige Fernverkehrszüge mit geänderten Fahrzeiten.",
+        + "17.10.2026 (22:30 Uhr) bis 21.10.2026 (04:00 Uhr) einige Fernverkehrszüge mit geänderten Fahrzeiten.",
         "Wegen Bauarbeiten wird von 19.03.2027 bis 30.03.2027 der Zug RJ 12265 umgeleitet.",
         "Wegen Bauarbeiten können zwischen Gänserndorf Bahnhof und Deutsch Wagram Bahnhof von 11.09.2026 "
-        "(00:10 Uhr) bis 05.10.2026 (04:20 Uhr) einige Nahverkehrszüge nicht fahren.",
+        + "(00:10 Uhr) bis 05.10.2026 (04:20 Uhr) einige Nahverkehrszüge nicht fahren.",
         "Wegen eines Schadens am Gleis sind zwischen Wien Meidling Bahnhof (U) und Wien Liesing Bahnhof "
-        "Zugfahrten bis voraussichtlich 08.11.2026 23:59 Uhr nur eingeschränkt möglich.",
+        + "Zugfahrten bis voraussichtlich 08.11.2026 23:59 Uhr nur eingeschränkt möglich.",
     ],
 )
 def test_single_trains_changed_times_and_diversions_close_nothing(lead: str) -> None:

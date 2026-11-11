@@ -151,12 +151,12 @@ def _oebb(title: str, description: str) -> dict[str, Any]:
     "sentence",
     [
         "Wegen Bauarbeiten kann zwischen Wien Leopoldau Bahnhst (U) und Mistelbach/Zaya Bahnhof am 25.10.2026 und "
-        "01.11.2026 der S2-Zug 23360 nicht fahren.",
+        + "01.11.2026 der S2-Zug 23360 nicht fahren.",
         "TEILAUSFALL: Von 18.10.2026 bis 19.10.2026 kann der Zug RJ 263 zwischen Wien Hütteldorf Bahnhof (U) und "
-        "Wien Hbf (U) nicht fahren.",
+        + "Wien Hbf (U) nicht fahren.",
         "Wegen Bauarbeiten wird von 19.03.2027 bis 30.03.2027 der Zug RJ 12265 umgeleitet.",
         "Wegen Bauarbeiten können zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof am 04.10.2026 die Züge "
-        "S60(26093) und REX64(2674) nicht fahren.",
+        + "S60(26093) und REX64(2674) nicht fahren.",
         "Zwischen Wien Hbf (U) und Wien Stadlau Bahnhst können die S80-Züge 2590, 25080 und 25091 nicht fahren.",
         "Der REX 41-Zug 2157 kann zwischen Tulln/Donau Bahnhof und Wien Franz-Josefs-Bahnhof nicht fahren.",
         "Wegen Bauarbeiten werden von 04.01.2027 bis 17.01.2027 die NJ-Züge 446, 466 und 40462 umgeleitet.",
@@ -171,7 +171,7 @@ def _oebb(title: str, description: str) -> dict[str, Any]:
         "Wegen Bauarbeiten kann am 07.10.2026 der RJX-Zug 62 nicht fahren.",
         # Cache 05.05.2026.
         "Wegen Bauarbeiten können zwischen Gänserndorf Bahnhof und Bernhardsthal Bahnhof von 09.03.2026 bis "
-        "03.07.2026 die Züge REX 1 (2334, 2338 und 2342) nicht fahren.",
+        + "03.07.2026 die Züge REX 1 (2334, 2338 und 2342) nicht fahren.",
         "Wegen Bauarbeiten können am 21.10.2026 einzelne Züge nicht halten.",
         "Wegen Bauarbeiten können am 21.10.2026 einzelne Nahverkehrszüge nicht fahren.",
         "Wegen Bauarbeiten können am 21.10.2026 einzelne S50-Züge nicht fahren.",
@@ -185,28 +185,28 @@ def test_names_single_trains(sentence: str) -> None:
     "sentence",
     [
         "Wegen Bauarbeiten können zwischen St.Pölten Hbf und Wien Westbahnhof (U) von 03.11.2026 bis 10.11.2026 "
-        "keine REX50-Züge fahren.",
+        + "keine REX50-Züge fahren.",
         "Von 31.10.2026 (22:00 Uhr) bis 03.11.2026 können zwischen Wien Franz-Josefs-Bahnhof und Wien Nußdorf "
-        "Bahnhst keine S 40-Züge fahren.",
+        + "Bahnhst keine S 40-Züge fahren.",
         "Für die Züge REX 63 und REX 64 haben wir für Sie einen Autobus zw. Wien Hbf (U) bis Gramatneusiedl "
-        "Bahnhof organisiert.",
+        + "Bahnhof organisiert.",
         "REX 1-Züge werden zwischen Deutsch Wagram Bahnhof und Wien Hbf (U) über Wien Stadlau Bahnhst (U) "
-        "umgeleitet.",
+        + "umgeleitet.",
         "Wegen eines defekten Zuges auf der Strecke sind zwischen Wien Meidling Bahnhof (U) und Wien Liesing "
-        "Bahnhof Zugfahrten derzeit nur eingeschränkt möglich.",
+        + "Bahnhof Zugfahrten derzeit nur eingeschränkt möglich.",
         "Wegen Bauarbeiten können an einzelnen Tagen keine Nahverkehrszüge fahren.",
         "Als Ersatz haben Sie die Möglichkeit den nächsten fahrplanmäßigen Zug zu nehmen.",
         "Planen Sie einige Minuten mehr Reisezeit ein.",
         # "Einige" trains without numbers: the section runs fewer trains (cache, May to August 2026).
         "Wegen Bauarbeiten können von 08.03.2026 (04:40 Uhr) bis 22.06.2026 (04:40 Uhr) zwischen Wien Hbf (U) und "
-        "Götzendorf Bahnhof, zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof, und zwischen Wien Hbf (U) und "
-        "Bruck/Leitha Bahnhof einige Nahverkehrszüge nicht fahren.",
+        + "Götzendorf Bahnhof, zwischen Wien Hbf (U) und Gramatneusiedl Bahnhof, und zwischen Wien Hbf (U) und "
+        + "Bruck/Leitha Bahnhof einige Nahverkehrszüge nicht fahren.",
         "Wegen Bauarbeiten werden zwischen Wien Hbf (U) und Deutsch Wagram Bahnhof von 28.03.2026 bis 02.05.2026 "
-        "einige REX 1-Züge umgeleitet und können in Wien Mitte-Landstraße und Wien Praterstern nicht halten.",
+        + "einige REX 1-Züge umgeleitet und können in Wien Mitte-Landstraße und Wien Praterstern nicht halten.",
         "Wegen Bauarbeiten können zwischen Wien Westbahnhof (U) und Wien Hütteldorf Bahnhof (U) von 02.11.2026 "
-        "(20:00 Uhr) bis 14.11.2026 (17:00 Uhr) einige S50-Züge nicht fahren.",
+        + "(20:00 Uhr) bis 14.11.2026 (17:00 Uhr) einige S50-Züge nicht fahren.",
         "Wegen Bauarbeiten fahren zwischen Wien Meidling Bahnhof und Baden b.Wien Bahnhof von 08.06.2026 bis "
-        "14.06.2026 einige Nahverkehrszüge mit geänderten Fahrzeiten.",
+        + "14.06.2026 einige Nahverkehrszüge mit geänderten Fahrzeiten.",
         "Wegen Bauarbeiten können am 21.10.2026 einige REX Züge nicht fahren.",
     ],
 )
