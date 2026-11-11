@@ -683,16 +683,16 @@ Jahresdateien still ist, liest jeder Tick das Verspätungs-Ledger des Vorjahres
 erneut, rund 30 ms für die Datei von 2026. Eine Zustandsdatei gibt es nicht;
 das ist das Ergebnis der Prüfung, keine Betreiberentscheidung.
 
-**Gemessen** am 10.11.2026, erster Bau (`40cf0d5aa`) gegen den alten Stand.
-Nachspiel echter Ticks: alle 87 Dashboard-Läufe vom 16.08. bis 10.11.2026 und
-alle 1.451 übrigen Ticks vom 11.10. bis 10.11.2026 (1.538 Ticks), README und
+**Gemessen** am 11.11.2026 am Endstand nach beiden Korrekturrunden gegen main.
+Nachspiel echter Ticks: alle 88 Dashboard-Läufe vom 16.08. bis 11.11.2026 und
+alle 1.465 übrigen Ticks vom 11.10. bis 11.11.2026 (1.553 Ticks), README und
 `docs/statistik.md` byte-gleich, `docs/stats-summary.json` nur mit
 `"archive_years": []` mehr. Jahreswechsel im Zeitraffer (echte Ticks vom
 04.11. bis 07.11. auf 30.12.2026 bis 02.01.2027 verschoben, künstliche bis
-05.01.2027) in fünf Läufen (alter Code; ohne Schlüssel; mit angenommener,
-verworfener und erst am 05.01. angenommener Antwort einer Attrappe statt
-Gemini): alle Exit-Codes und Anfragen wie vorgesehen, rc 1 ab 04.01. nur ohne
-angenommenen Rückblick. Echte Probe am 10.11.2026 um 23:19:
+05.01.2027, mit `--fail-on-missing-review`) in fünf Läufen (ohne Schlüssel;
+angenommene Antwort einer Attrappe, auch die echte vom 10.11.; verworfene;
+erst am 05.01. angenommene): Exit-Codes und Anfragen wie vorgesehen, rc 1 ab
+04.01. nur ohne angenommenen Rückblick. Echte Probe am 10.11.2026 um 23:19:
 gemini-3.5-flash-lite antwortete mit 634 Zeichen, von der Prüfung angenommen.
 Tests: `tests/test_year_*.py`, `test_review_client.py`,
 `test_baustellen_ledger*.py`, `test_baustellen_year*.py`,
