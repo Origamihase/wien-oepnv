@@ -55,12 +55,12 @@
     },
     "total": 1956
   },
-  "generated_at": "2026-11-11T15:01:04+01:00",
+  "generated_at": "2026-11-11T15:30:47+01:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 0.91,
     "by_direction": {
-      "Meidling": 7395,
+      "Meidling": 7396,
       "Praterstern": 3830
     },
     "by_hour_avg": {
@@ -102,33 +102,33 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-11-11T14:55:00+01:00",
+          "last_seen": "2026-11-11T15:25:00+01:00",
           "peer_rows_since": 0,
           "rows_in_window": 1178
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 3545,
+          "peer_rows_since": 3546,
           "rows_in_window": 0
         }
       },
       "peer_rows_required": 6,
       "poll": {
-        "last_success": "2026-11-11T15:00:53+01:00",
+        "last_success": "2026-11-11T15:30:36+01:00",
         "stale_hours": 3.0
       },
       "silence_hours": 1.0,
       "window_days": 30
     },
     "live": {
-      "avg_delay_minutes": 1.25,
+      "avg_delay_minutes": 0.0,
       "observations": 2,
       "window_minutes": 60
     },
     "max_delay_minutes": 203.0,
     "threshold_exceedances": 152,
     "threshold_minutes": 9.0,
-    "total_observations": 11225
+    "total_observations": 11226
   },
   "stoerungen": {
     "by_hour": {
@@ -147,7 +147,7 @@
       "12": 317,
       "13": 343,
       "14": 331,
-      "15": 352,
+      "15": 353,
       "16": 342,
       "17": 275,
       "18": 327,
@@ -160,19 +160,19 @@
     "by_provider": {
       "Stadt Wien – Baustellen": 180,
       "VOR/VAO": 13,
-      "Wiener Linien": 4778,
+      "Wiener Linien": 4779,
       "ÖBB": 324
     },
     "by_weekday": {
       "Di": 808,
       "Do": 815,
       "Fr": 860,
-      "Mi": 788,
+      "Mi": 789,
       "Mo": 745,
       "Sa": 672,
       "So": 607
     },
-    "total": 5295
+    "total": 5296
   },
   "year": 2026
 }

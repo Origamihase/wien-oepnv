@@ -58,5 +58,17 @@
     "starts_at": "2027-03-19T00:00:00+01:00",
     "ends_at": "2027-03-30T23:59:59+02:00",
     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&923942"
+  },
+  {
+    "source": "ÖBB",
+    "category": "Störung",
+    "title": "S 50: Wien Westbahnhof ↔ Wien Hütteldorf",
+    "description": "22.02.2027 - 08.03.2027<br/><br/>Wegen Bauarbeiten können zwischen <b>Wien Westbahnhof (U)</b> und <b>Wien Hütteldorf Bahnhof (U)</b> von <b>22.02.2027</b> (22:00 Uhr) bis <b>08.03.2027</b> (04:30 Uhr) keine S50-Züge fahren.<br>Wir bitten um Entschuldigung.",
+    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&926151",
+    "pubDate": "2026-11-11T15:14:30+01:00",
+    "starts_at": "2027-02-22T00:00:00+01:00",
+    "ends_at": "2027-03-08T23:59:59+01:00",
+    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&926151"
   }
 ]

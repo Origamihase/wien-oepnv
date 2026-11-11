@@ -452,7 +452,7 @@
     "guid": "a283d0e2e437795796c0e7a743565b30ce8fddbc07070af76ea09899ed55a1e7",
     "pubDate": "2026-09-01T16:30:00+02:00",
     "starts_at": "2026-09-01T16:30:00+02:00",
-    "ends_at": "2027-09-01T11:11:00+02:00",
+    "ends_at": null,
     "_identity": "wl|hinweis|L=74A|D=2026-09-01|TK=74a rabengasse"
   },
   {
@@ -471,13 +471,13 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "74A: Viehmarktgasse",
-    "description": "<p><strong><u>Haltestellenverlegung der Linie 74A in Richtung St. Marx S</u></strong></p><p><strong><u>Haltestelle:</u></strong> Viehmarktgasse</p><p><strong><u>Von:</u></strong> Landstraßer Hauptstraße 148 vor Schlachthausgasse</p><p><strong><u>Nach:</u></strong> Landstraßer Hauptstraße gegenüber 173-175</p><p><strong><u>Dauer:</u></strong> Ab 12. November 2026, etwa 07:00 Uhr, Dauer unbekannt</p><p><strong><u>Grund:</u></strong> Straßenbau</p>",
+    "description": "<p><strong><u>Haltestellenverlegung der Linie 74A in Richtung St. Marx S</u></strong></p><p><strong><u>Haltestelle:</u></strong> Viehmarktgasse</p><p><strong><u>Von:</u></strong> Landstraßer Hauptstraße 148 vor Schlachthausgasse</p><p><strong><u>Nach:</u></strong> Landstraßer Hauptstraße gegenüber 173-175</p><p><strong><u>Dauer:</u></strong> Ab 16. November 2026, etwa 07:00 Uhr, Dauer unbekannt</p><p><strong><u>Grund:</u></strong> Straßenbau</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "209cb31a62c904eb68902d303a11723d91ea5136757eeb08ef5b96f69caa1c73",
     "pubDate": "2026-11-05T15:47:00+01:00",
-    "starts_at": "2026-11-12T00:00:00+01:00",
+    "starts_at": "2026-11-16T00:00:00+01:00",
     "ends_at": null,
-    "_identity": "wl|hinweis|L=74A|D=2026-11-12|TK=74a viehmarktgasse"
+    "_identity": "wl|hinweis|L=74A|D=2026-11-16|TK=74a viehmarktgasse"
   },
   {
     "source": "Wiener Linien",
@@ -670,6 +670,22 @@
     "starts_at": "2026-07-13T14:07:00+02:00",
     "ends_at": "2026-12-31T14:07:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-07-13|TK=haltestelle stadionbrücke im rahmen des strassenbahn neubaus der linie 18 aufgelassen bitte auf nahegelegene haltestellen ausweichen"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1A: Verkehrsunfall",
+    "description": "Linie 1A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "9c4b20eeb0989a8f43e6b6aa56a0761d9fd3f3c3c7627ef6c508b6ef4287118a",
+    "pubDate": "2026-11-11T15:14:00+01:00",
+    "starts_at": "2026-11-11T15:14:00+01:00",
+    "ends_at": "2026-11-11T15:55:00+01:00",
+    "_identity": "wl|störung|L=1A|D=2026-11-11|TK=1a verkehrsunfall",
+    "_wl_ids": [
+      "I20261111-0020"
+    ],
+    "_incident_start": "2026-11-11T15:14:00+01:00"
   },
   {
     "source": "Wiener Linien",
