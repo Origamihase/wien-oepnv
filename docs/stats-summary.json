@@ -54,12 +54,12 @@
     },
     "total": 1955
   },
-  "generated_at": "2026-11-11T08:30:49+01:00",
+  "generated_at": "2026-11-11T09:00:43+01:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 0.9,
     "by_direction": {
-      "Meidling": 7382,
+      "Meidling": 7383,
       "Praterstern": 3830
     },
     "by_hour_avg": {
@@ -71,7 +71,7 @@
       "05": 1.11,
       "06": 0.81,
       "07": 0.83,
-      "08": 1.04,
+      "08": 1.11,
       "09": 0.91,
       "10": 0.88,
       "11": 0.72,
@@ -92,7 +92,7 @@
       "Di": 0.98,
       "Do": 0.89,
       "Fr": 0.96,
-      "Mi": 1.18,
+      "Mi": 1.2,
       "Mo": 1.03,
       "Sa": 0.63,
       "So": 0.68
@@ -101,33 +101,33 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-11-11T08:25:00+01:00",
+          "last_seen": "2026-11-11T08:55:00+01:00",
           "peer_rows_since": 0,
           "rows_in_window": 1177
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 3532,
+          "peer_rows_since": 3533,
           "rows_in_window": 0
         }
       },
       "peer_rows_required": 6,
       "poll": {
-        "last_success": "2026-11-11T08:30:40+01:00",
+        "last_success": "2026-11-11T09:00:33+01:00",
         "stale_hours": 3.0
       },
       "silence_hours": 1.0,
       "window_days": 30
     },
     "live": {
-      "avg_delay_minutes": 0.0,
+      "avg_delay_minutes": 18.5,
       "observations": 2,
       "window_minutes": 60
     },
     "max_delay_minutes": 203.0,
-    "threshold_exceedances": 148,
+    "threshold_exceedances": 149,
     "threshold_minutes": 9.0,
-    "total_observations": 11212
+    "total_observations": 11213
   },
   "stoerungen": {
     "by_hour": {
@@ -140,7 +140,7 @@
       "06": 162,
       "07": 182,
       "08": 267,
-      "09": 265,
+      "09": 266,
       "10": 261,
       "11": 293,
       "12": 314,
@@ -159,19 +159,19 @@
     "by_provider": {
       "Stadt Wien – Baustellen": 180,
       "VOR/VAO": 12,
-      "Wiener Linien": 4763,
+      "Wiener Linien": 4764,
       "ÖBB": 324
     },
     "by_weekday": {
       "Di": 808,
       "Do": 815,
       "Fr": 860,
-      "Mi": 772,
+      "Mi": 773,
       "Mo": 745,
       "Sa": 672,
       "So": 607
     },
-    "total": 5279
+    "total": 5280
   },
   "year": 2026
 }

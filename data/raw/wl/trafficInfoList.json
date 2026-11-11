@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261111-0002-F01, I20261111-0004-F01, I20261111-0005, I20261111-0006-F01, I20261111-0006-F02, I20261111-0006-F03, I20261111-0006-F04"
+    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261111-0002-F01, I20261111-0004-F01, I20261111-0006-F01, I20261111-0007"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R3886-480, R1884-101, R1883-101, R1882-101, R1881-101, R1875-101, R1880-101, R1876-101, R2558-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R318-437, R293-474, R1974-466, R1199-205, R500-101, R3190-0, R2930-0, R2900-0, R2882-0, R2931-0, R2236-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R3886-480, R1875-101, R1880-101, R1876-101, R1881-101, R1882-101, R1884-101, R1883-101, R2372-125, R2371-125, R2378-627, R2343-125, R2359-125, R2343-626, R2370-125, R2558-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R293-474, R318-437, R1974-466, R1199-205, R500-101, R3190-0, R2882-0, R2931-0, R2930-0, R2900-0, R2236-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -267,50 +267,6 @@
     "title": "U1: Rettungseinsatz"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "31A": "ptBusCity"
-     }
-    },
-    "description": "Linie 31A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie 31A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Rettungseinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 31A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie 31A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-       "title": "31A: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261111-0005",
-    "owner": "WL",
-    "parentName": "I20261111-0005",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "31A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 431,
-      "lineName": "31A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-11T08:05:00.000+0100",
-     "lastUpdate": "2026-11-11T08:05:00.000+0100",
-     "start": "2026-11-11T08:04:00.000+0100"
-    },
-    "title": "31A: Rettungseinsatz"
-   },
-   {
     "alertCause": "level crossing failure",
     "alertCauseId": 40,
     "attributes": {
@@ -357,142 +313,49 @@
     "title": "16A: Störung an einem Bahnübergang"
    },
    {
-    "alertCause": "level crossing failure",
-    "alertCauseId": 40,
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
     "attributes": {
      "relatedLineTypes": {
-      "17A": "ptBusCity"
+      "59A": "ptBusCity"
      }
     },
-    "description": "Linie 17A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 17A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 17A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 17A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "17A: Störung an einem Bahnübergang"
+       "descriptionHtml": "<p>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "59A: Verkehrsüberlastung"
       }
      }
     ],
-    "location": "Himberger Straße",
-    "name": "I20261111-0006-F02",
+    "name": "I20261111-0007",
     "owner": "WL",
-    "parentName": "I20261111-0006",
+    "parentName": "I20261111-0007",
     "priority": "1",
-    "reasonId": 42,
-    "reasonName": "Störung an einem Bahnübergang",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "17A"
+     "59A"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 417,
-      "lineName": "17A",
+      "lineId": 459,
+      "lineName": "59A",
       "vehicleType": "ptBusCity"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-11T08:20:00.000+0100",
-     "lastUpdate": "2026-11-11T08:20:00.000+0100",
-     "resume": "2026-11-11T08:20:00.000+0100",
-     "start": "2026-11-11T08:19:00.000+0100"
+     "created": "2026-11-11T08:31:00.000+0100",
+     "lastUpdate": "2026-11-11T08:31:00.000+0100",
+     "resume": "2026-11-11T08:31:00.000+0100",
+     "start": "2026-11-11T08:31:00.000+0100"
     },
-    "title": "17A: Störung an einem Bahnübergang"
-   },
-   {
-    "alertCause": "level crossing failure",
-    "alertCauseId": 40,
-    "attributes": {
-     "relatedLineTypes": {
-      "67A": "ptBusCity"
-     }
-    },
-    "description": "Linie 67A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 67A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 67A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 67A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "67A: Störung an einem Bahnübergang"
-      }
-     }
-    ],
-    "location": "Himberger Straße",
-    "name": "I20261111-0006-F03",
-    "owner": "WL",
-    "parentName": "I20261111-0006",
-    "priority": "1",
-    "reasonId": 42,
-    "reasonName": "Störung an einem Bahnübergang",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "67A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 467,
-      "lineName": "67A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-11T08:20:00.000+0100",
-     "lastUpdate": "2026-11-11T08:20:00.000+0100",
-     "resume": "2026-11-11T08:20:00.000+0100",
-     "start": "2026-11-11T08:19:00.000+0100"
-    },
-    "title": "67A: Störung an einem Bahnübergang"
-   },
-   {
-    "alertCause": "level crossing failure",
-    "alertCauseId": 40,
-    "attributes": {
-     "relatedLineTypes": {
-      "67B": "ptBusCity"
-     }
-    },
-    "description": "Linie 67B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 67B: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 67B: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 67B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "67B: Störung an einem Bahnübergang"
-      }
-     }
-    ],
-    "location": "Himberger Straße",
-    "name": "I20261111-0006-F04",
-    "owner": "WL",
-    "parentName": "I20261111-0006",
-    "priority": "1",
-    "reasonId": 42,
-    "reasonName": "Störung an einem Bahnübergang",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "67B"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 267,
-      "lineName": "67B",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-11T08:20:00.000+0100",
-     "lastUpdate": "2026-11-11T08:20:00.000+0100",
-     "resume": "2026-11-11T08:20:00.000+0100",
-     "start": "2026-11-11T08:19:00.000+0100"
-    },
-    "title": "67B: Störung an einem Bahnübergang"
+    "title": "59A: Verkehrsüberlastung"
    },
    {
     "alertCause": "undefined alert cause",
