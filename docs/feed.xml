@@ -8,22 +8,8 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 11 Nov 2026 23:30:30 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2026 00:00:50 +0100</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[32A: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">e7c83441f75a4e79213dc74497d534a0ae14537b1901e683b8c8c96c12038205</guid>
-      <pubDate>Wed, 11 Nov 2026 21:30:14 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 11 Nov 2026 21:30:14 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 11 Nov 2026 21:32:00 +0100</ext:starts_at>
-      <ext:ends_at>Wed, 11 Nov 2026 23:45:00 +0100</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 21:30]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 21:30]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[U6: Stellwerksstörung]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -34,8 +20,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 11 Nov 2026 18:30:00 +0100</ext:first_seen>
       <ext:starts_at>Wed, 11 Nov 2026 18:30:00 +0100</ext:starts_at>
-      <description>Die Linie U6 fährt derzeit zwischen den Stationen Alterlaa und Am Schöpfwerk in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig. [Seit 18:30]</description>
-      <content:encoded><![CDATA[Die Linie U6 fährt derzeit zwischen den Stationen Alterlaa und Am Schöpfwerk in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig.<br/>[Seit 18:30]]]></content:encoded>
+      <description>Die Linie U6 fährt derzeit zwischen den Stationen Alterlaa und Am Schöpfwerk in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig. Voraussichtlich bis Betriebsschluss. [Seit 11.11.]</description>
+      <content:encoded><![CDATA[Die Linie U6 fährt derzeit zwischen den Stationen Alterlaa und Am Schöpfwerk in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig. Voraussichtlich bis Betriebsschluss.<br/>[Seit 11.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx]]></title>
@@ -52,6 +38,21 @@
       <content:encoded><![CDATA[Wegen Bauarbeiten können zwischen Wien Hbf bzw. Wien St. Marx und Wien Praterstern von 07.09.2026 bis Ende Oktober 2027 keine Züge fahren.<br/>[Bis 31.10.2027]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[54B: Stock im Weg]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">8fe77e2503cc2b0f1bf0f1b0ca342a9105121af49a3da6871627b654c2e59093</guid>
+      <pubDate>Wed, 11 Nov 2026 10:09:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 11 Nov 2026 10:09:00 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 12 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 13 Nov 2026 17:00:00 +0100</ext:ends_at>
+      <georss:point>48.180312 16.260180</georss:point>
+      <description>→ Ghelengasse 28. Haltestellenverlegung der Linie 54B in Richtung St. Veiter Tor. Grund: Straßenbau. → Ghelengasse gegenüber 32. Haltestellenverlegung der Linie 54B … [Bis Fr 13.11.]</description>
+      <content:encoded><![CDATA[→ Ghelengasse 28. Haltestellenverlegung der Linie 54B in Richtung St. Veiter Tor. Grund: Straßenbau. → Ghelengasse gegenüber 32. Haltestellenverlegung der Linie 54B …<br/>[Bis Fr 13.11.]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[39B: Friedhofsverkehr]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">d5d2e1b8a8de2a9c25c8fafd757a1841d8c1bd7f80a0f56979c9659f0d027de0</guid>
@@ -66,21 +67,6 @@
       <content:encoded><![CDATA[Inbetriebnahme einer Autobuslinie. Anlässlich des 24. Dezember wird die Autobuslinie 39B in Betrieb genommen und diverse Linien zu Friedhöfen verstärkt geführt.<br/>[Bis 24.12.]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[54B: Stock im Weg]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">8fe77e2503cc2b0f1bf0f1b0ca342a9105121af49a3da6871627b654c2e59093</guid>
-      <pubDate>Wed, 11 Nov 2026 10:09:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 11 Nov 2026 10:09:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 12 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 13 Nov 2026 17:00:00 +0100</ext:ends_at>
-      <georss:point>48.180312 16.260180</georss:point>
-      <description>→ Ghelengasse 28. Haltestellenverlegung der Linie 54B in Richtung St. Veiter Tor. Grund: Straßenbau. → Ghelengasse gegenüber 32. Haltestellenverlegung der Linie 54B … [Ab Do 12.11. bis Fr 13.11.]</description>
-      <content:encoded><![CDATA[→ Ghelengasse 28. Haltestellenverlegung der Linie 54B in Richtung St. Veiter Tor. Grund: Straßenbau. → Ghelengasse gegenüber 32. Haltestellenverlegung der Linie 54B …<br/>[Ab Do 12.11. bis Fr 13.11.]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[65A: Triester Straße, Rossakgasse]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">213d51762c51c0889ab9a4a34328e7b3245279259b35acb8575e9a76ec72d882</guid>
@@ -91,8 +77,8 @@
       <ext:first_seen>Wed, 11 Nov 2026 09:38:00 +0100</ext:first_seen>
       <ext:starts_at>Wed, 11 Nov 2026 09:38:00 +0100</ext:starts_at>
       <georss:point>48.145871 16.332540</georss:point>
-      <description>Triester Straße 164 → Triester Straße 162. Haltestellenverlegung der Linie 65A in Richtung Wienerberg City (Inzersdorf). Grund: Straßenbauarbeiten. [Seit heute]</description>
-      <content:encoded><![CDATA[Triester Straße 164 → Triester Straße 162. Haltestellenverlegung der Linie 65A in Richtung Wienerberg City (Inzersdorf). Grund: Straßenbauarbeiten.<br/>[Seit heute]]]></content:encoded>
+      <description>Triester Straße 164 → Triester Straße 162. Haltestellenverlegung der Linie 65A in Richtung Wienerberg City (Inzersdorf). Grund: Straßenbauarbeiten. [Seit 11.11.]</description>
+      <content:encoded><![CDATA[Triester Straße 164 → Triester Straße 162. Haltestellenverlegung der Linie 65A in Richtung Wienerberg City (Inzersdorf). Grund: Straßenbauarbeiten.<br/>[Seit 11.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
@@ -105,8 +91,8 @@
       <ext:first_seen>Wed, 11 Nov 2026 05:00:35 +0100</ext:first_seen>
       <ext:starts_at>Wed, 11 Nov 2026 04:40:07 +0100</ext:starts_at>
       <ext:ends_at>Thu, 12 Nov 2026 01:00:00 +0100</ext:ends_at>
-      <description>Grund: Bauarbeiten. [Bis Do 12.11.]</description>
-      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Bis Do 12.11.]]]></content:encoded>
+      <description>Grund: Bauarbeiten. [Heute]</description>
+      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[79A/79B: Alberner Hafenzufahrtsstraße]]></title>
@@ -120,8 +106,8 @@
       <ext:starts_at>Tue, 10 Nov 2026 00:00:00 +0100</ext:starts_at>
       <ext:ends_at>Thu, 12 Nov 2026 18:00:00 +0100</ext:ends_at>
       <georss:point>48.172094 16.472479</georss:point>
-      <description>Landwehrstraße nach Alberner Hafenzufahrtsstraße → ca. 40 Meter in Fahrtrichtung. Haltestellenverlegung der Linien 79A und 79B in Richtung Kaiserebersdorf. … [Bis Do 12.11.]</description>
-      <content:encoded><![CDATA[Landwehrstraße nach Alberner Hafenzufahrtsstraße → ca. 40 Meter in Fahrtrichtung. Haltestellenverlegung der Linien 79A und 79B in Richtung Kaiserebersdorf. …<br/>[Bis Do 12.11.]]]></content:encoded>
+      <description>Landwehrstraße nach Alberner Hafenzufahrtsstraße → ca. 40 Meter in Fahrtrichtung. Haltestellenverlegung der Linien 79A und 79B in Richtung Kaiserebersdorf. … [Heute]</description>
+      <content:encoded><![CDATA[Landwehrstraße nach Alberner Hafenzufahrtsstraße → ca. 40 Meter in Fahrtrichtung. Haltestellenverlegung der Linien 79A und 79B in Richtung Kaiserebersdorf. …<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[5A/N31: Obere Augartenstraße]]></title>
@@ -150,6 +136,20 @@
       <ext:ends_at>Thu, 10 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Wegen Straßenbauarbeiten in der Wexstraße werden die Busse umgeleitet. Linie 5B: Umleitung ab Klosterneuburger Straße / Wexstraße über Klosterneuburger Straße … [Bis 10.12.]</description>
       <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Wexstraße werden die Busse umgeleitet. Linie 5B: Umleitung ab Klosterneuburger Straße / Wexstraße über Klosterneuburger Straße …<br/>[Bis 10.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[31: Wexstraße]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">349cce99b21e13e0a504471640a3afdac3838a3618bf31ecfa28d333e3f00a83</guid>
+      <pubDate>Thu, 05 Nov 2026 13:45:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 05 Nov 2026 13:45:00 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 09 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <georss:point>48.235958 16.365885</georss:point>
+      <description>Wexstraße 12 → Klosterneuburger Straße 88-90. Haltestellenverlegung der Linie 31 in Richtung Stammersdorf. Grund: Haltestellenumbau. [Seit 09.11.]</description>
+      <content:encoded><![CDATA[Wexstraße 12 → Klosterneuburger Straße 88-90. Haltestellenverlegung der Linie 31 in Richtung Stammersdorf. Grund: Haltestellenumbau.<br/>[Seit 09.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
