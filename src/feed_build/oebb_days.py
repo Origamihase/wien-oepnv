@@ -19,11 +19,28 @@ höherer Priorität formulieren". The category alone cannot carry it: WL
 sends planned works tickers ("26E: Gleisbauarbeiten", "S80: ÖBB-Ersatzbus")
 as "Störung", and those are notices by his decision of 03.11.2026.
 
-The days come from the lead sentence, the closure the feed shows: ÖBB adds
-further sections for single trains ("HALTAUSFALL: Von 11.09.2026 bis
-09.10.2026 … kann der Zug RJ 263 in Wien Hütteldorf … nicht halten."), and
-their days would put a text about another week in front ("Hbf ↔
-Westbahnhof … von 23.10. bis 27.10. keine Fernverkehrszüge" on 29.10.).
+The days come from the lead sentence, the sentence the feed shows first
+(``_oebb_shown_sentences`` in :mod:`.oebb_lead`): ÖBB adds further sections
+for single trains ("HALTAUSFALL: Von 11.09.2026 bis 09.10.2026 … kann der
+Zug RJ 263 in Wien Hütteldorf … nicht halten."), and their days would put a
+text about another week in front ("Hbf ↔ Westbahnhof … von 23.10. bis 27.10.
+keine Fernverkehrszüge" on 29.10.). When the display leads with a later
+section because it names the title's route, that section gives the days:
+under "Wien Hütteldorf ↔ Wien Hauptbahnhof" (17.10.2026) the feed showed
+"Teilausfall: Von 18.10.2026 bis 19.10.2026 kann der Zug RJ 263 …", while
+the days came from ÖBB's first sentence about changed times between Salzburg
+and Flughafen Wien (independent check 2026-11-11).
+
+A dated measure ranks as a closure only when its lead sentence says that no
+trains run or stop (:data:`_CLOSES_LINE_RE`: "keine Nahverkehrszüge fahren",
+"keine R40- und S40-Züge fahren", "keine Züge halten", "keine Fahrten
+möglich"). A single cancelled train, a list of trains, changed times or a
+diversion closes nothing: "der S1-Zug 23626" (between Deutsch Wagram and
+Gänserndorf on 14., 15., 21., 22. and 28.11.2026, outside Vienna) would
+have stood ahead of every WL notice on those days; from 01.10. to 11.11.
+single trains (S1 23626, S2 23360, REX64 2679, RJ 263) pushed WL notices out
+of the first ten in 159 of 1,220 replayed feed states (independent check
+2026-11-11, operator decision of the same day).
 The lead sentence gives its days by the dates ÖBB writes ("von 03.11.2026 bis 10.11.2026",
 "am 25.10.2026 und 01.11.2026", "von 23.10.2026 (23:00 Uhr) bis 27.10.2026
 (04:00 Uhr)"), narrowed by a weekday window ("(jeweils von Samstag 23:15 Uhr
@@ -41,13 +58,25 @@ from datetime import date, datetime, time, timedelta
 
 from ..feed_types import FeedItem
 from .base import _OEBB_SOURCE, _SENTENCE_SPLIT_RE, _VIENNA_TZ, _parse_datetime, _to_utc
+from .oebb_lead import _oebb_shown_sentences
 
-__all__ = ["_oebb_closure_days", "_is_oebb_closure_day"]
+__all__ = ["_oebb_closure_days", "_oebb_closes_line", "_is_oebb_closure_day"]
 
 _DATE = r"(\d{1,2})\.(\d{2})\.(\d{4})"
 _TIME = r"(?:\s*\(\d{1,2}:\d{2} Uhr\))?"
-_RANGE_RE = re.compile(rf"\bvon {_DATE}{_TIME} bis {_DATE}(?:\s*\((\d{{1,2}}):(\d{{2}}) Uhr\))?")
-_SINGLE_RE = re.compile(rf"\b(?:am|und) {_DATE}")
+# "Von" and "Am" open a section: "TEILAUSFALL: Von 18.10.2026 bis 19.10.2026 …".
+_RANGE_RE = re.compile(rf"\b[Vv]on {_DATE}{_TIME} bis {_DATE}(?:\s*\((\d{{1,2}}):(\d{{2}}) Uhr\))?")
+_SINGLE_RE = re.compile(rf"\b(?:[Aa]m|und) {_DATE}")
+# The lead says that no trains run or stop on its days: "keine
+# Nahverkehrszüge fahren", "keine R40- und S40-Züge fahren", "keine Züge
+# halten", "keine Fahrten möglich", "kein Zugverkehr möglich". "der
+# S1-Zug 23626 … nicht fahren", "die REX51-Züge 1604, … nicht fahren",
+# "einige Fernverkehrszüge mit geänderten Fahrzeiten" and "der Zug RJ 12265
+# umgeleitet" close nothing.
+_CLOSES_LINE_RE = re.compile(
+    r"\bkeine?\s+[^.,;:()]{0,40}?(?:Züge|züge|Fahrten|Zugverkehr)\s+(?:\w+\s+){0,2}?"
+    r"(?:fahren|verkehren|halten|möglich)\b"
+)
 # ÖBB breaks digits with markup: "von <b>2</b>4.10.2026", "am 25 .10.2026".
 _SPLIT_DAY_RE = re.compile(r"(?<!\d)(\d) (\d)\.(\d{2}\.\d{4})")
 _SPACE_DOT_RE = re.compile(r"(\d) \.(\d{2}\.\d{4})")
@@ -124,12 +153,21 @@ def _oebb_closure_days(description: str) -> dict[date, time | None] | None:
     return days
 
 
+def _oebb_closes_line(lead: str) -> bool:
+    """Whether an ÖBB lead sentence says that no trains run or stop (:data:`_CLOSES_LINE_RE`)."""
+    return bool(_CLOSES_LINE_RE.search(_plain(lead)))
+
+
 def _is_oebb_closure_day(item: FeedItem, now_utc: datetime) -> bool:
     """Whether *item* is an ÖBB measure that closes its line today (Vienna).
 
-    The item must have begun and not ended (``starts_at``/``ends_at``);
-    within that, today must be one of :func:`_oebb_closure_days` (on a last
-    day with an end time only until then), or the text names no date at all.
+    The item must have begun and not ended (``starts_at``/``ends_at``).
+    Its lead is the sentence the feed shows first (``_oebb_shown_sentences``).
+    A lead without a date counts on every day (an unplanned disruption, "bis
+    Ende Oktober 2027"). A dated lead counts only when it closes the line
+    (:func:`_oebb_closes_line`), and only on one of its
+    :func:`_oebb_closure_days` (on a last day with an end time only until
+    then).
     """
     if item.get("source") != _OEBB_SOURCE:
         return False
@@ -139,9 +177,13 @@ def _is_oebb_closure_day(item: FeedItem, now_utc: datetime) -> bool:
     end = _parse_datetime(item.get("ends_at"))
     if isinstance(end, datetime) and _to_utc(end) <= now_utc:
         return False
-    days = _oebb_closure_days(str(item.get("description") or ""))
+    _, shown = _oebb_shown_sentences(item)
+    lead = shown[0] if shown else ""
+    days = _oebb_closure_days(lead)
     if days is None:
         return True
+    if not _oebb_closes_line(lead):
+        return False
     local = _to_utc(now_utc).astimezone(_VIENNA_TZ)
     if local.date() not in days:
         return False

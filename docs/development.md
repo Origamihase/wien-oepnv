@@ -270,6 +270,25 @@ Leitsatz der Meldung, dem Satz, den der Feed zeigt: „von … bis …“ (ein E
 mit Uhrzeit, „bis 27.10.2026 (04:00 Uhr)“, gilt am letzten Tag nur bis dahin),
 „am … und …“, eingeschränkt durch ein Wochentagsfenster („(jeweils von
 Samstag 23:15 Uhr bis Sonntag 04:40 Uhr und …)“ ergibt Samstag und Sonntag).
+Der Leitsatz ist der Satz, den der Feed zuerst zeigt, auch wenn dort ein
+späterer Abschnitt steht, weil er die Strecke des Titels nennt
+(`_oebb_shown_sentences` in `src/feed_build/oebb_lead.py`, seit 2026-11-11;
+vorher las die Prüfung ÖBBs ersten Satz: Unter „Wien Hütteldorf ↔ Wien
+Hauptbahnhof“ zeigte der Feed am 17.10. „Teilausfall: Von 18.10.2026 bis
+19.10.2026 …“, die Tage kamen aus den geänderten Fahrzeiten zwischen Salzburg
+und Flughafen Wien, 17. bis 21.10.). Ein Leitsatz mit Datum zählt seit
+2026-11-11 nur, wenn er sagt, dass keine Züge fahren oder halten („keine
+Nahverkehrszüge fahren“, „keine R40- und S40-Züge fahren“, „keine Züge
+halten“, „keine Fahrten möglich“; `_oebb_closes_line`). Ein einzelner Zug,
+eine Liste von Zügen, geänderte Fahrzeiten oder eine Umleitung sperren keine
+Strecke und reihen sich wie die übrigen Hinweise ein (Betreiberentscheidung
+vom 2026-11-11, „Nein, nur echte Sperren“). Anlass (unabhängige Prüfung vom
+2026-11-11): „S1: Wien Leopoldau ↔ Deutsch Wagram“ („der S1-Zug 23626 …
+nicht fahren“) stand an seinen Tagen vor allen WL-Hinweisen, am 14., 15.,
+21., 22. und 28.11. für einen Zug zwischen Deutsch Wagram und Gänserndorf,
+außerhalb Wiens; vom 01.10. bis 11.11. verdrängten einzelne Züge (S1 23626,
+S2 23360, REX64 2679, RJ 263) in 159 von 1.220 nachgespielten Feed-Ständen
+WL-Hinweise aus den ersten zehn.
 Nennt der Leitsatz kein Datum (eine ungeplante Störung „bis voraussichtlich
 09:00 Uhr“), zählt jeder Tag zwischen Beginn und Ende der Meldung. Die
 Kategorie allein trägt das nicht: WL schickt geplante Tafel-Meldungen
