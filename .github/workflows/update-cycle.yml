@@ -552,25 +552,25 @@ jobs:
       - name: Refresh statistics dashboard and README snapshot
         id: stats
         if: steps.freshness.outputs.should_run == 'true'
-        # Cosmetic and non-critical: the README markers + yearly dashboard
-        # are nice-to-have, NOT the deliverable (``docs/feed.xml`` is).
-        # The step runs BEFORE the commit so its output rides the same
-        # atomic commit, but a crash here must NEVER abort the job and
-        # block the feed publish (which is exactly what happened without
-        # this guard: the sequential job aborted before the commit step).
-        # ``continue-on-error`` surfaces a failure as an orange annotation
-        # while letting the feed publish proceed; the README simply stays
-        # one tick stale until the stats script is healthy again.
+        # Not the deliverable (``docs/feed.xml`` is): the step runs BEFORE
+        # the commit so its output rides the same atomic commit, but a crash
+        # here must NEVER abort the job and block the feed publish
+        # (``continue-on-error``: orange, the README stays one tick stale; from 04.01. the
+        # flag ends every tick with 1 while a year's review is overdue). The key: the run after
+        # midnight, after all its writes, asks Gemini (one pass over the chain for each finished year
+        # without an accepted review); all requests start within one 110 s budget (year_archive.py).
         continue-on-error: true
-        timeout-minutes: 2
+        timeout-minutes: 4
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           vienna_hhmm=$(TZ=Europe/Vienna date +%H%M)
           if [ "$vienna_hhmm" -lt 30 ]; then
             echo "Vienna-local $vienna_hhmm — refreshing dashboard + README markers."
-            python scripts/generate_markdown_stats.py
+            python scripts/generate_markdown_stats.py --fail-on-missing-review
           else
             echo "Vienna-local $vienna_hhmm — README-only tick (dashboard skipped)."
-            python scripts/generate_markdown_stats.py --skip-dashboard
+            python scripts/generate_markdown_stats.py --skip-dashboard --fail-on-missing-review
           fi
 
       # Stage 3 of the line check (audit 2026-09-25, A.14): compares the lines

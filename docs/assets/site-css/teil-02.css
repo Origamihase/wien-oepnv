@@ -362,6 +362,39 @@
 /* Under "Aktuelle Meldungen" it follows the sub line directly. */
 .section__header .coverage-notice { margin: 0.6rem 0 0.15rem; }
 
+/* Year switch under "Aktuelle Meldungen" (owner decision 2026-11-10): the
+   running year and one link per finished year, as chips. ``[hidden]`` until
+   the summary names a finished year, so it takes no space before that. The
+   chips wrap below the label on a phone. */
+.year-switch {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.6rem;
+  margin: 0.6rem 0 0.15rem;
+}
+.year-switch[hidden] { display: none; }
+.year-switch__label {
+  color: var(--c-text-muted);
+  font-size: 0.95rem;
+}
+.year-switch__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* A chip that is a link looks like the button chips: no underline, and the
+   line height of a button instead of the one of running text. Colours, hover
+   and focus ring come from ``.chip``; the source dot needs ``data-filter``,
+   which these links do not carry. */
+a.chip {
+  line-height: normal;
+  text-decoration: none;
+}
+
 .kpis {
   display: grid;
   grid-template-columns: 1fr;

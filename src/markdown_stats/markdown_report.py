@@ -6,24 +6,19 @@ location so ``DEFAULT_OUTPUT_PATH`` stays the same path.
 """
 from __future__ import annotations
 
+from collections.abc import Sequence
 from datetime import datetime
 from pathlib import Path
 from typing import Final
 
 from src.markdown_stats.direction_coverage import COVERAGE_ORIGIN_LABEL
 from src.markdown_stats.rows import (
-    LOGGER,
     AusfallAggregate,
     StammstreckeAggregate,
     StoerungAggregate,
-    aggregate_ausfaelle,
-    aggregate_stammstrecke,
-    aggregate_stoerungen,
-    collect_year_data,
 )
 from src.utils.files import atomic_write
 from src.utils.liquid import liquid_safe
-from src.utils.logging import sanitize_log_arg
 from src.utils.stats import STAMMSTRECKE_DIRECTIONS, WEEKDAY_LABELS
 from src.utils.text import (
     escape_markdown_cell,
@@ -210,13 +205,17 @@ def _format_summary_section(
     stammstrecke: StammstreckeAggregate,
     stoerungen: StoerungAggregate,
     ausfaelle: AusfallAggregate,
+    nav: str = "",
 ) -> list[str]:
     """Render the top-of-report key metrics block.
 
     Every cell in this block is scoped to the calendar *year*. The
     rolling 30-day window only feeds the README snapshot — keeping
     the two views distinct (year vs. 30 days) avoids the same data
-    point being summed into both numbers at once.
+    point being summed into both numbers at once. *nav* is the line that
+    leads to the pages of the other years
+    (:mod:`src.markdown_stats.year_archive`); empty, the block is the one
+    it always was.
     """
     if stammstrecke.total_observations:
         # Observation-weighted (micro) mean over all rows of *year*.
@@ -237,6 +236,7 @@ def _format_summary_section(
         "",
         f"_Automatisch erzeugt am {generated_at.isoformat(timespec='minutes')} (Europe/Vienna)._",
         "",
+        *([nav, ""] if nav else []),
         "## Kennzahlen auf einen Blick",
         "",
         "| Kennzahl | Wert |",
@@ -399,6 +399,14 @@ def _format_ausfall_lines_section(ausfaelle: AusfallAggregate) -> list[str]:
     return lines
 
 
+# The ledgers every page is made from, in the order of the source line.
+_LEDGER_SOURCES = (
+    "data/stats/stammstrecke_*.csv",
+    "data/stats/ausfaelle_*.csv",
+    "data/stats/stoerungen_*.csv",
+)
+
+
 def render_markdown(
     *,
     year: int,
@@ -407,8 +415,21 @@ def render_markdown(
     stoerungen: StoerungAggregate,
     ausfaelle: AusfallAggregate,
     coverage_note: str = "",
+    nav: str = "",
+    after_summary: Sequence[str] = (),
+    before_sources: Sequence[str] = (),
+    extra_sources: Sequence[str] = (),
 ) -> str:
-    """Compose the full Markdown dashboard string from the aggregates."""
+    """Compose the full Markdown dashboard string from the aggregates.
+
+    *after_summary* and *before_sources* are finished Markdown lines a page
+    of a finished year adds: the overview of the year below the key
+    figures, the roadworks above the source line
+    (:mod:`src.markdown_stats.year_archive`). *extra_sources* are the
+    files those lines were made from, named after the three ledgers in the
+    source line (review of 2026-11-10: a page with the roadworks named only
+    the three). Empty, the page is the dashboard it always was.
+    """
     sections: list[str] = []
     sections.extend(
         _format_summary_section(
@@ -417,8 +438,10 @@ def render_markdown(
             stammstrecke=stammstrecke,
             stoerungen=stoerungen,
             ausfaelle=ausfaelle,
+            nav=nav,
         )
     )
+    sections.extend(after_summary)
 
     # VAO "Start" contract, point 5.3: name the VAO "Start" access as the
     # basis of the Stammstrecke data (Michael, 17.10.2026; NOTICE.md). The
@@ -485,15 +508,18 @@ def render_markdown(
         )
     )
 
+    sections.extend(before_sources)
+    if before_sources and before_sources[-1].strip():
+        # kramdown (GitHub Pages) reads a "---" directly under a line of text
+        # as a setext heading: the roadworks' attribution became an <h2> and
+        # the rule was gone (review of 2026-11-10).
+        sections.append("")
+    sources = ", ".join(f"`{name}`" for name in (*_LEDGER_SOURCES, *extra_sources))
     sections.extend(
         [
             "---",
             "",
-            (
-                "_Quellen_: `data/stats/stammstrecke_*.csv`, "
-                "`data/stats/ausfaelle_*.csv`, `data/stats/stoerungen_*.csv`. "
-                "Generiert von `scripts/generate_markdown_stats.py`."
-            ),
+            f"_Quellen_: {sources}. Generiert von `scripts/generate_markdown_stats.py`.",
             "",
         ]
     )
@@ -517,44 +543,3 @@ def write_dashboard(
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with atomic_write(output_path, mode="w", encoding="utf-8", permissions=0o644) as fh:
         fh.write(liquid_safe(markdown))
-
-
-def write_year_archive(
-    *,
-    now: datetime,
-    year: int,
-    stats_dir: Path | None,
-    output_path: Path,
-) -> Path | None:
-    """Keep the finished previous year as ``statistik-<Vorjahr>.md`` next to *output_path*.
-
-    The dashboard is re-rendered once a day, shortly after midnight, and
-    shows the calendar year. Its last render of a year therefore ran on
-    31.12. at about 00:15, without New Year's Eve, and on 01.01. an almost
-    empty new year replaced it. The first dashboard run of a new year now
-    also writes the whole previous year, 31.12. included, to an archive
-    page that is never touched again (decision 2026-10-03, "Jahresarchiv").
-    A missed or late 01.01. tick does not matter: the archive is written
-    by whichever dashboard run first finds it missing. Nothing is written
-    for an explicit ``--year`` other than the current one, or when the
-    previous year has no rows at all. Returns the path written, if any.
-    """
-    if year != now.year:
-        return None
-    previous = year - 1
-    archive = output_path.with_name(f"{output_path.stem}-{previous}{output_path.suffix}")
-    if archive.exists():
-        return None
-    sm_rows, st_rows, au_rows = collect_year_data(previous, stats_dir=stats_dir)
-    if not (sm_rows or st_rows or au_rows):
-        return None
-    markdown = render_markdown(
-        year=previous,
-        generated_at=now,
-        stammstrecke=aggregate_stammstrecke(sm_rows),
-        stoerungen=aggregate_stoerungen(st_rows),
-        ausfaelle=aggregate_ausfaelle(au_rows),
-    )
-    write_dashboard(markdown, output_path=archive)
-    LOGGER.info("Jahresarchiv geschrieben: %s.", sanitize_log_arg(str(archive)))
-    return archive

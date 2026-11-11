@@ -110,7 +110,7 @@ Weiterreichung, `from src.x import name as name`):
 |---|---|
 | `enrich_station_aliases.py` | `src/places/station_aliases.py` |
 | `feed_watch.py` | `src/feed_watch/` (model, feed_rules, sources, evaluate, issues, state_io; seit 2026-11-10 skipped_items) |
-| `generate_markdown_stats.py` | `src/markdown_stats/` (rows, direction_coverage, markdown_report, readme, summary) |
+| `generate_markdown_stats.py` | `src/markdown_stats/` (rows, direction_coverage, markdown_report, readme, summary; seit 2026-11-10 year_archive, year_stats, baustellen_year, year_review, review_client) |
 | `health_check.py` | `src/health_check/` (common, sources, outputs, workflow_secrets, github_runs) |
 | `ki_waechter.py` | `src/ki_waechter/` (inputs, audit) |
 | `update_all_stations.py` | `src/stations_refresh/` (diff, quarantine, heartbeat) |
@@ -345,3 +345,22 @@ Namen definiert, nicht die Fassade oder das Skript, das ihn nur weiterreicht.
 `tests/test_doc_code_pointers.py` prüft das für `AGENTS.md`, `README.md`,
 `CONTRIBUTING.md` und `docs/` außer `docs/archive/`; das CHANGELOG beschreibt
 den Stand seines Tages und bleibt außen vor.
+
+Nachtrag (2026-11-11, Jahresseite der Statistik): Die Seite eines
+abgeschlossenen Jahres (Betreiberentscheidung vom 10.11.2026) kam als neue
+Module dazu, nicht als Teilung; jedes hält die Grenze von 700 Zeilen
+(gemessen mit `wc -l` am 11.11.2026):
+
+| Modul | Zeilen | Inhalt |
+|---|---|---|
+| `src/markdown_stats/year_archive.py` | 522 | Seiten der abgeschlossenen Jahre, Reihenfolge des Dashboard-Laufs, Zeitbudget der Anfragen (`ReviewBudget`) |
+| `src/markdown_stats/year_stats.py` | 587 | Abschnitt „Das Jahr im Überblick“ |
+| `src/markdown_stats/baustellen_year.py` | 700 | Abschnitt Baustellen aus dem Ledger, Faktenblock |
+| `src/markdown_stats/year_review.py` | 700 | Prompt, Prüfung und gespeicherter Rückblick |
+| `src/markdown_stats/review_client.py` | 422 | Anfrage an Gemini, `clean_review` |
+| `src/utils/stats_baustellen.py` | 636 | Schreiber des Ledgers `data/stats/baustellen_<Jahr>.csv` und die gemeinsame Zeilenprüfung |
+| `scripts/jahresrueckblick_probe.py` | 155 | Probelauf für `jahresrueckblick-probe.yml` |
+
+`scripts/generate_markdown_stats.py` hat danach 693 Zeilen (vorher 603).
+`baustellen_year.py` und `year_review.py` stehen genau an der Grenze: Was dort
+dazukommt, braucht ein weiteres Modul.

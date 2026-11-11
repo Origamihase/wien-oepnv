@@ -1,0 +1,128 @@
+name: Jahresrückblick-Probe
+
+# Dry run of the yearly Baustellen review. Operator decision 2026-11-10
+# (Michael, 17:44 Vienna time), point 4: on the page of a finished year the
+# year's Baustellen are summarised by Gemini, his explicit exception to "an
+# AI only watches and reports, never rewrites" (2026-10-31), which stays for
+# the feed. The real request is sent by the statistics step of the Update
+# cycle (src/markdown_stats/year_review.py) in the dashboard runs from
+# 1 January on, until a review is accepted and stored, so a change to the
+# prompt, the client or the guard would show its effect only in those runs.
+#
+# This workflow shows it at once: it reads the Baustellen ledger of a year
+# (data/stats/baustellen_<Jahr>.csv), builds the prompt, asks Gemini once
+# along the usual chain of models, checks the answer with the fixed guard
+# and writes a short report into the run's summary: number of sites, size
+# of the input, the model, its text, the verdict and the reasons. It stores
+# nothing and publishes nothing; the page of a year is written only by the
+# Update cycle.
+#
+# When: by hand (input ``year``), and on a pull request that touches the
+# package. A run asks at most once per model of the chain, without a second
+# pass. Google counts the requests (Michael 2026-11-05: "Zähle es bitte so
+# wie Google. Wir brauchen keine eigene Zähltechnik."); a model whose quota
+# is reached answers 429 and the next one is asked.
+#
+# The run stays green whatever Gemini does: an overloaded model or a
+# rejected text is a result to read, not a failed check. Only wrong
+# arguments fail it.
+
+on:
+  workflow_dispatch:
+    inputs:
+      year:
+        description: "Jahr, dessen Baustellen zusammengefasst werden (leer: das laufende Jahr)"
+        required: false
+        default: ""
+  pull_request:
+    paths:
+      - src/markdown_stats/baustellen_year.py
+      - src/markdown_stats/year_review.py
+      - src/markdown_stats/review_client.py
+      - scripts/jahresrueckblick_probe.py
+      - .github/workflows/jahresrueckblick-probe.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: jahresrueckblick-probe-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    # The request itself ends after about two minutes
+    # (DEFAULT_DEADLINE_S in src/markdown_stats/review_client.py); the rest
+    # is checkout and installation.
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - name: Decide whether to ask
+        id: decide
+        env:
+          EVENT: ${{ github.event_name }}
+          YEAR_INPUT: ${{ inputs.year }}
+          OWNER_REPO: ${{ github.repository }}
+          PR_HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          out() { echo "$1" >> "$GITHUB_OUTPUT"; }
+          note() { echo "$1"; echo "$1" >> "$GITHUB_STEP_SUMMARY"; }
+          # A fork gets no secrets; its pull request skips the request
+          # (the same check as the gate of ki-waechter.yml).
+          if [[ "${EVENT}" == "pull_request" && "${PR_HEAD_REPO}" != "${OWNER_REPO}" ]]; then
+            note "Jahresrückblick-Probe: Pull Request aus einem Fork, keine Anfrage an Gemini."
+            out "ask=false"; exit 0
+          fi
+          # A year only (four digits): the value reaches the probe as an
+          # argument.
+          if [[ -n "${YEAR_INPUT}" && ! "${YEAR_INPUT}" =~ ^[0-9]{4}$ ]]; then
+            echo "::error title=Jahresrückblick-Probe::year muss ein Jahr mit vier Ziffern sein"; exit 1
+          fi
+          out "year=${YEAR_INPUT}"
+          out "ask=true"
+
+      # Workaround for actions/checkout#2351, as in the other workflows.
+      - name: Check out repository (attempt 1/2)
+        id: checkout
+        if: steps.decide.outputs.ask == 'true'
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 1
+        continue-on-error: true
+
+      - name: Check out repository (attempt 2/2 — runs only if attempt 1 hit checkout#2351)
+        if: steps.decide.outputs.ask == 'true' && steps.checkout.outcome == 'failure'
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 1
+
+      - name: Set up Python
+        if: steps.decide.outputs.ask == 'true'
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        if: steps.decide.outputs.ask == 'true'
+        uses: ./.github/actions/install-deps
+
+      # No tools: the model sees only the prompt, and only this step sees
+      # the key. The probe prints its report and appends it to the run's
+      # summary; it exits 0 unless its arguments are wrong.
+      - name: Gemini writes, the guard checks
+        if: steps.decide.outputs.ask == 'true'
+        timeout-minutes: 5
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          YEAR: ${{ steps.decide.outputs.year }}
+        shell: bash
+        run: python scripts/jahresrueckblick_probe.py ${YEAR:+--year "${YEAR}"}

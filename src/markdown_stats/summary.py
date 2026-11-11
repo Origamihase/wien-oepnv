@@ -11,6 +11,7 @@ import math
 import statistics
 from collections import defaultdict
 from datetime import datetime, timedelta
+from collections.abc import Sequence
 from pathlib import Path
 from typing import Final
 
@@ -219,6 +220,7 @@ def build_stats_summary(
     all_window_rows: list[StammstreckeRow],
     window_days: int,
     poll: dict[str, object] | None = None,
+    archive_years: Sequence[int] = (),
 ) -> dict[str, object]:
     """Assemble the JSON payload ``docs/assets/site-js/`` renders from.
 
@@ -228,6 +230,15 @@ def build_stats_summary(
     computed here rather than widened into
     :class:`StammstreckeAggregate` (which exists to serve the Markdown
     render and has no use for them).
+
+    ``archive_years`` are the finished years that have a page
+    ``docs/statistik-<year>.md``. Owner decision 2026-11-10 (Michael):
+    "the year can be chosen on the website under the heading *Aktuelle
+    Meldungen*" — the page builds its year switch from this list
+    (``renderYearSwitch`` in ``docs/assets/site-js/``). The caller knows
+    which pages exist; this function only puts the list into one fixed
+    order (newest first, each year once) so the file does not change
+    from tick to tick for the order the caller happened to find them in.
     """
     delays = [row.delay_minutes for row in stammstrecke_rows]
     live_avg, live_count = _live_window_delay(
@@ -238,6 +249,12 @@ def build_stats_summary(
         "schema_version": SUMMARY_SCHEMA_VERSION,
         "year": year,
         "generated_at": generated_at.isoformat(timespec="seconds"),
+        # Additive, so ``SUMMARY_SCHEMA_VERSION`` stays as it is: the page
+        # ignores fields it does not know and reads a missing
+        # ``archive_years`` as "no finished year" (the year switch stays
+        # hidden). A bump would instead make every page still cached in a
+        # browser refuse the new document outright.
+        "archive_years": sorted({int(item) for item in archive_years}, reverse=True),
         "stammstrecke": {
             "total_observations": stammstrecke.total_observations,
             "avg_delay_minutes": statistics.fmean(delays) if delays else 0.0,

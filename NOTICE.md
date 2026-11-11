@@ -112,7 +112,7 @@ drei offenen Datensätzen oben.
 
 Wer `data/` als Ganzes weiterverwendet, übernimmt diese Bedingungen je Datei.
 
-## Statistik (`data/stats/`, `docs/statistik.md`, Website-Dashboard)
+## Statistik (`data/stats/`, `docs/statistik.md`, `docs/statistik-<Jahr>.md`, Website-Dashboard)
 
 Die Störungsstatistik zählt die Feed-Meldungen; es gelten die Angaben zum Feed.
 Die Stammstrecken-Statistik beruht auf Abfragen der VOR/VAO ReST API über den
@@ -129,6 +129,28 @@ im Dashboard an diesen beiden Abschnitten („Quelle: VOR/VAO“), im README und
 hier; jede andere Quelle behält ihren eigenen Hinweis. Endet der Vertrag,
 müssen diese Hinweise wieder entfernt werden (Punkt 7.7). Der Vertragstext selbst
 liegt nicht im Repository.
+
+Die Seite eines abgeschlossenen Jahres (`docs/statistik-<Jahr>.md`) trägt
+dieselben Hinweise wie `docs/statistik.md` und dazu den Abschnitt „Baustellen
+mit Folgen für den öffentlichen Verkehr“ (Betreiberentscheidung vom
+10.11.2026). Er beruht auf `data/stats/baustellen_*.csv`: Titel, Zeitraum,
+Bezirk, Maßnahme und Text der Baustellen aus dem Baustellen-Layer der Stadt
+Wien (CC BY 4.0, „Datenquelle: Stadt Wien – data.wien.gv.at“). Die Seite zeigt
+diese Texte **bearbeitet** (gekürzt und vereinheitlicht); der Abschnitt endet
+deshalb mit der Quelle, dem Hinweis auf die Bearbeitung und dem Link zur
+Lizenz („Datenquelle: Stadt Wien – data.wien.gv.at. Die Texte der Stadt Wien
+sind hier bearbeitet (gekürzt und vereinheitlicht). Lizenz: CC BY 4.0.“).
+
+Steht dort ein Rückblick in Worten (`data/stats/baustellen_rueckblick_*.json`),
+ist er maschinell geschrieben: Gemini (Google) fasst die Texte der Stadt Wien
+zusammen, ein festes Skript prüft das Ergebnis vor dem Speichern gegen diese
+Texte, Anzahl und Liste kommen aus dem Ledger. Die Seite sagt das unter dem
+Text („Dieser Rückblick wurde automatisch mit Gemini (Google) aus den Texten
+der Stadt Wien zusammengefasst und von einem festen Skript gegen diese Texte
+geprüft. Anzahl und Liste stammen direkt aus den Daten.“), und der Hinweis auf
+die Bearbeitung lautet dann „gekürzt, vereinheitlicht und im Rückblick
+maschinell zusammengefasst“. Die Datei nennt das Modell, das den Text
+geschrieben hat. Details: [`data/stats/README.md`](data/stats/README.md).
 
 ## Bilder der Webseite (`docs/assets/`)
 

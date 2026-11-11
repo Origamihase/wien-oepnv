@@ -143,6 +143,18 @@ class AusfallAggregate:
 # ---- CSV reading -----------------------------------------------------------
 
 
+# Header findings already logged in this statistics run. One dashboard run reads
+# a finished year's ledger up to five times (the January window, the year page,
+# the check for an overdue review, the request pass); each finding is said once
+# per run (review of 2026-11-10). ``forget_header_warnings`` starts a new run.
+_HEADER_WARNED: set[tuple[str, str]] = set()
+
+
+def forget_header_warnings() -> None:
+    """Let the next statistics run in this process log a wrong header again."""
+    _HEADER_WARNED.clear()
+
+
 def _iter_csv_rows(path: Path, header: tuple[str, ...]) -> Iterator[dict[str, str]]:
     """Yield rows from *path* as dicts, validating the header.
 
@@ -166,11 +178,14 @@ def _iter_csv_rows(path: Path, header: tuple[str, ...]) -> Iterator[dict[str, st
     except StopIteration:
         return
     if tuple(actual_header) != header:
-        LOGGER.warning(
-            "Stats-Datei %s hat unerwarteten Header %r — überspringe.",
-            sanitize_log_arg(str(path)),
-            sanitize_log_arg(str(actual_header)),
-        )
+        key = (str(path), str(actual_header))
+        if key not in _HEADER_WARNED:
+            _HEADER_WARNED.add(key)
+            LOGGER.warning(
+                "Stats-Datei %s hat unerwarteten Header %r — überspringe.",
+                sanitize_log_arg(str(path)),
+                sanitize_log_arg(str(actual_header)),
+            )
         return
     for row in reader:
         if len(row) != len(header):
@@ -487,3 +502,49 @@ def collect_year_data(
     st_rows = _parse_stoerung_rows(_iter_csv_rows(st_path, STOERUNGEN_HEADER))
     au_rows = _parse_ausfall_rows(_iter_csv_rows(au_path, AUSFAELLE_HEADER))
     return sm_rows, st_rows, au_rows
+
+
+def earlier_rows_until_every_direction(
+    rows: Iterable[StammstreckeRow],
+    *,
+    before_year: int,
+    directions: tuple[str, ...],
+    stats_dir: Path | None = None,
+) -> list[StammstreckeRow]:
+    """Delay rows of the years before *before_year*, back to each direction's last one.
+
+    The coverage note and the website banner say when a silent direction
+    last reported and how many journeys the other one has logged since
+    (``find_silent_coverage_directions``). They read that off the rows they
+    are given, and the run loaded the year files its 30-day window touches:
+    the current year and, until 30.01., the one before. A direction whose
+    last journey lies in a year file that is no longer loaded then counted
+    as "never measured", and README and website dropped the caveat while the
+    direction was as silent as the day before (found 2026-11-10 by replaying
+    the real ledger past New Year: Praterstern, silent since 14.08.2026,
+    lost its note on 31.01.2027).
+
+    So when *rows* lack a direction, the earlier year files are read, newest
+    first, until every direction has a row or a year has no file. With
+    every direction present nothing is read. While a direction has been
+    silent since before the loaded year files, every run reads the earlier
+    delay ledger again: with the real ledger (Praterstern silent since
+    14.08.2026) that is every tick from 31.01.2027, some 30 ms for the 2026
+    file (median of nine calls, 11,206 rows, 2026-11-11). The review of
+    2026-11-10 left that cost per tick as it is; a state file with the last
+    row of each direction would save it at the price of a second record
+    beside the ledger.
+    """
+    base = stats_dir if stats_dir is not None else DEFAULT_STATS_DIR
+    seen = {row.direction for row in rows}
+    earlier: list[StammstreckeRow] = []
+    year = before_year - 1
+    while any(d not in seen for d in directions):
+        path = stats_path("stammstrecke", year, base_dir=base)
+        if not path.is_file():
+            break
+        year_rows = _parse_stammstrecke_rows(_iter_csv_rows(path, STAMMSTRECKE_HEADER))
+        earlier.extend(year_rows)
+        seen.update(row.direction for row in year_rows)
+        year -= 1
+    return earlier

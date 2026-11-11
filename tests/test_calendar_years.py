@@ -359,10 +359,16 @@ def test_new_year_keeps_the_whole_previous_year(tmp_path: Path) -> None:
     assert "Statistik 2026" in archive
     assert "| Erfasste Störungen (2026) | 3 |" in archive
     assert "Statistik 2027" in (tmp_path / "statistik.md").read_text(encoding="utf-8")
-    # Written once, never touched again.
-    _seed_year(tmp_path / "stats", 2026, 5)
+    # A day on which the year's ledger did not change leaves the page alone,
+    # the time of writing included.
     assert _run_stats(tmp_path, "2027-01-02T00:15:00+01:00") == 0
     assert (tmp_path / "statistik-2026.md").read_text(encoding="utf-8") == archive
+    # The page follows its ledger (until 2026-11-10: written once).
+    _seed_year(tmp_path / "stats", 2026, 5)
+    assert _run_stats(tmp_path, "2027-01-03T00:15:00+01:00") == 0
+    later = (tmp_path / "statistik-2026.md").read_text(encoding="utf-8")
+    assert "| Erfasste Störungen (2026) | 5 |" in later
+    assert "erzeugt am 2027-01-03T00:15+01:00" in later
 
 
 def test_no_archive_without_data_or_on_a_readme_tick(tmp_path: Path) -> None:

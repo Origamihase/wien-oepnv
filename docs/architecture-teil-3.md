@@ -30,8 +30,10 @@
     Silvester, und am 01.01. ersetzte sie ein fast leeres neues Jahr. Jetzt
     schreibt der erste Dashboard-Lauf eines neuen Jahres zusätzlich das ganze
     Vorjahr samt 31.12. nach `docs/statistik-<Vorjahr>.md` (Michaels Wahl
-    „Jahresarchiv“, 2026-10-03). Die Seite wird danach nie mehr angefasst;
-    fällt der Lauf am 01.01. aus, schreibt sie der nächste.
+    „Jahresarchiv“, 2026-10-03); fällt der Lauf am 01.01. aus, schreibt sie
+    der nächste. Bis 2026-11-10 wurde die Seite danach nie mehr angefasst;
+    seither folgt sie ihrem Ledger, ist vom Dashboard aus verlinkt und trägt
+    den Abdeckungshinweis ihres Jahres (Teil 7, §12).
   Tests: `tests/test_calendar_years.py`.
 
 ### Zeitraum einer WL-Meldung: Plausibilitätsprüfung (seit 2026-10-02)
@@ -297,7 +299,11 @@ Schwellen und Rückprüfung über 1 975 Feed-Stände:
 
 Betreiberentscheidung (Michael, 2026-10-31): Die Regeln bleiben die
 Feed-Kette; eine KI liest nur mit und meldet, sie schreibt keinen Text um.
-Vorausgegangen war die Frage, ob ein kleines Sprachmodell die Quelltexte der
+Seine ausdrückliche Ausnahme (Betreiberentscheidung vom 10.11.2026): Die
+Baustellen eines abgeschlossenen Jahres fasst Gemini auf dessen Jahresseite
+zusammen, geprüft von einem festen Skript ([Teil 7,
+§12](architecture-teil-7.md#12-die-jahresseite-der-statistik-überblick-baustellen-rückblick-seit-2026-11-10));
+für den Feed gilt die Regel weiter. Vorausgegangen war die Frage, ob ein kleines Sprachmodell die Quelltexte der
 Betreiber selbst neu schreiben könnte. Gemessen an 20 echten Texten (WL, ÖBB,
 Baustellen) veränderten kleine Modelle auf CPU den Sinn jedes dritten Textes
 (erfundene Anfangszeiten, „U-Bahn“ statt Zug, „gesperrt“ statt „als Sackgasse

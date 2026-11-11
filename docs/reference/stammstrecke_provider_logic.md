@@ -386,8 +386,9 @@ Statistik-Dashboard:
   on-time-Fahrten). Ausfälle landen separat in
   `data/stats/ausfaelle_<YYYY>.csv` (eine Zeile pro Cancellation).
 * **Renderer** — `scripts/generate_markdown_stats.py` regeneriert
-  `docs/statistik.md` täglich aus den CSV-Ledgers (Kalenderjahr; das
-  abgeschlossene Vorjahr in `docs/statistik-<Vorjahr>.md`)
+  `docs/statistik.md` täglich aus den CSV-Ledgers (Kalenderjahr; jedes
+  abgeschlossene Jahr in `docs/statistik-<Jahr>.md`, im selben Lauf mit
+  seinem Ledger abgeglichen)
   und patcht zusätzlich die `<!-- STATS:* -->`-Marker im README
   (60-Min- und 30-Tage-Snapshots für Verspätungen + Ausfälle).
 * **Feed-Builder** — liest `stammstrecke_<YYYY>.csv` mit einem

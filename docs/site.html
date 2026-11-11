@@ -18,7 +18,7 @@
   <link rel="alternate" type="application/rss+xml" title="Wien ÖPNV Feed" href="feed.xml">
   <link rel="alternate" type="application/rss+xml" title="Vienna Public Transport Feed (English)" href="feed.en.xml">
   <link rel="icon" type="image/svg+xml" href="assets/site-favicon.svg">
-  <link rel="stylesheet" href="assets/site.min.css?v=27e62b3a39e1">
+  <link rel="stylesheet" href="assets/site.min.css?v=5f6934d48004">
   <!-- Audit E.3: the statistics panels used to fetch three raw yearly CSVs
        (~705 KB and growing) from raw.githubusercontent.com, which is why this
        head used to warm a cross-origin socket. They now read one ~3 KB
@@ -174,6 +174,20 @@
           – <code>data/stats/stammstrecke_<span data-year-label>–</span>.csv</code>.
           Quelle: VOR/VAO.
         </p>
+
+        <!-- Year switch (owner decision 2026-11-10: the year can be chosen
+             under "Aktuelle Meldungen"). Hidden until ``renderYearSwitch``
+             in site.js finds a finished year in ``archive_years`` of
+             stats-summary.json; it then fills the list with the running
+             year (a link to the first statistics section on this page,
+             #stoerungen) and one link per finished year to
+             ``statistik-<year>.html``; beyond thirty finished years one more
+             chip leads to statistik.html, which lists every year. Without
+             JavaScript or without a finished year the row takes no space. -->
+        <nav class="year-switch" id="year-switch" aria-label="Statistik nach Jahr" data-i18n-aria-label="year-switch-aria" hidden>
+          <span class="year-switch__label" data-i18n="year-switch-label">Statistik nach Jahr:</span>
+          <ul class="year-switch__list" id="year-switch-list"></ul>
+        </nav>
 
         <!-- Coverage caveat, filled by ``renderCoverageNotice`` in site.js when
              one Stammstrecke direction has stopped reporting while the other
@@ -369,6 +383,6 @@
     </div>
   </footer>
 
-  <script src="assets/site.min.js?v=6bb611e985b1" defer></script>
+  <script src="assets/site.min.js?v=29916211e40c" defer></script>
 </body>
 </html>

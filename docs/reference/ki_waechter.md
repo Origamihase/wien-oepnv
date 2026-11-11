@@ -5,13 +5,14 @@ Meldungstext, der in den letzten 24 Stunden im Feed stand, neben seinen
 Quelltexten und meldet, was der TV-Zuschauer falsch gelesen hat. Der Wächter
 ändert den Feed nie.
 
-Entscheidungen des Betreibers vom 2026-10-31: Die Regeln bleiben die
-Feed-Kette, eine KI meldet nur. Geprüft werden die Meldungen der letzten
-24 Stunden, nicht nur die zehn aktuellen („Ein Review der Meldungen der
-letzten 24h wäre besser“). Das Modell ist Gemini über das Gratis-Kontingent der
-Gemini API, weil das Claude-Abo nur bei Bedarf läuft. Die Gründe und die
-Messung dazu stehen in [`architecture.md`](../architecture.md), Abschnitt
-„KI-Wächter“.
+Entscheidungen des Betreibers vom 2026-10-31: Die Regeln bleiben die Feed-Kette,
+eine KI meldet nur (Ausnahme, Betreiberentscheidung vom 10.11.2026: Gemini fasst
+die Baustellen eines abgeschlossenen Jahres auf dessen Statistikseite zusammen,
+Abschnitt „Jahresrückblick der Baustellen“; für den Feed gilt die Regel weiter).
+Geprüft werden die Meldungen der letzten 24 Stunden, nicht nur die zehn aktuellen
+(„Ein Review der Meldungen der letzten 24h wäre besser“). Das Modell ist Gemini
+über das Gratis-Kontingent der Gemini API, weil das Claude-Abo nur bei Bedarf
+läuft. Die Gründe und die Messung dazu: [`architecture.md`](../architecture.md), „KI-Wächter“.
 
 ## Ablauf
 
@@ -417,12 +418,27 @@ Zähltechnik.“):
 Im Gratis-Kontingent darf Google die Eingaben verwenden; sie bestehen nur aus
 den öffentlichen Texten des Feeds und der Betreiber.
 
+## Jahresrückblick der Baustellen
+
+Derselbe Schlüssel und dieselbe Modellkette (`DEFAULT_MODELS` in `src/markdown_stats/review_client.py`,
+ein Test hält sie gleich mit `KI_WAECHTER_MODEL`) schreiben den Rückblick der
+Baustellen eines abgeschlossenen Jahres, in denselben Kontingenten. Gefragt wird
+nicht einmal im Jahr: Der Statistik-Schritt von `update-cycle.yml` fragt in
+seinen Dashboard-Läufen ab 1. Jänner, bis ein Rückblick angenommen und
+gespeichert ist; je fehlendem Jahr ein Durchgang ohne Pause, alle Anfragen eines
+Laufs beginnen innerhalb von 110 Sekunden (`ReviewBudget` in `src/markdown_stats/year_archive.py`).
+`jahresrueckblick-probe.yml` fragt zur Probe und speichert nichts. Echte Probe am
+10.11.2026, 23:19 Uhr: 3.5 Flash-Lite antwortete mit 634 Zeichen, von der
+Prüfung angenommen. Ablauf,
+Prüfung und Datei: [`data/stats/README.md`](https://github.com/Origamihase/wien-oepnv/blob/main/data/stats/README.md).
+
 ## Sicherheit
 
 - Das Modell bekommt nur den Prompt und die Eingabe, keine Werkzeuge. Es kann
   nichts lesen, schreiben, ausführen oder veröffentlichen; das tun die
   Schritte danach, mit festem Inhalt.
-- Nur der Schritt „Gemini reads and compares“ bekommt `GEMINI_API_KEY`. Der
+- `GEMINI_API_KEY` bekommen nur der Schritt „Gemini reads and compares“, der
+  Statistik-Schritt von `update-cycle.yml` und `jahresrueckblick-probe.yml`. Der
   Schlüssel geht im Kopf `x-goog-api-key` mit, nie in der URL oder im Log.
 - Die Texte der Betreiber sind Daten, keine Anweisungen; der Prompt sagt das,
   und die Eingabe rahmt sie mit `<<<DATEN … DATEN>>>`.

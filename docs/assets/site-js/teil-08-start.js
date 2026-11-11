@@ -11,9 +11,9 @@
     $, clear, currentFeedUrl, feedState, fetchSummary, fetchText, getLang,
     hideError, I18N_EN, loadWeather, parseFeed, parseRfc2822, REFRESH_MS,
     renderAusfaelleStats, renderFeed, renderStammstreckeStats,
-    renderStoerungenStats, renderWeather, resetStammstreckeLiveTile,
-    resetSummaryCache, resolveErrorDetail, setLang, setLastUpdate, setStatus,
-    setYearLabels, showError, statusText, viennaYear,
+    renderStoerungenStats, renderWeather, renderYearSwitch,
+    resetStammstreckeLiveTile, resetSummaryCache, resolveErrorDetail, setLang,
+    setLastUpdate, setStatus, setYearLabels, showError, statusText, viennaYear,
   } = WienOepnv;
 
   // ----- Loading orchestration -----
@@ -28,6 +28,9 @@
   // (currently #stoerungen and #ausfaelle). A refresh always re-runs the
   // feed and stammstrecke loaders, plus whatever lives in this set.
   const loadedSections = new Set();
+  // The summary of the last successful fetch. The year switch is drawn from
+  // it again after a language switch, before the refetch has answered.
+  let lastSummary = null;
 
   async function loadAll() {
     if (currentAbort) currentAbort.abort();
@@ -112,6 +115,10 @@
     try {
       hideError("stammstrecke-error");
       const summary = await fetchSummary(signal);
+      // Stammstrecke is the one section that loads on every cycle, so the
+      // year switch in the feed header is drawn here, from the same document.
+      lastSummary = summary;
+      renderYearSwitch(summary);
       renderStammstreckeStats(summary.year, summary.stammstrecke || {});
     } catch (err) {
       // Bei Abort die Live-Kachel nicht auf "–" zurücksetzen – der neue
@@ -369,6 +376,8 @@
       // Relabel the weather tooltip/aria from cached state in the new
       // language (loadAll() below refetches too, but this is instant).
       renderWeather();
+      // The links of the year switch carry text in the page language.
+      renderYearSwitch(lastSummary);
       // Re-fetch the feed in the new language (no full reload — keeps
       // the strict CSP intact).
       loadAll();
