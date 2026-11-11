@@ -286,7 +286,7 @@ def _close_blocks(text: str, raw_title: str) -> tuple[str, bool]:
         kept = [block for block in found if not _DATE_FIELD_RE.match(block)]
         # A label that stood before a date field now meets its own text.
         found = _join_continued_blocks(kept) if kept else found
-    found = _relocation_first(found, title_words)
+    found = _relocation_first(found, title_words, _truncate_summary_180)
     closed: list[tuple[str, bool]] = []
     for block in found:
         fragment = len(_WORD_RE.findall(block)) > 1 and not block.endswith(

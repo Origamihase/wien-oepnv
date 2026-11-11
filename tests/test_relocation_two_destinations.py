@@ -91,3 +91,43 @@ def test_a_relocation_that_fits_keeps_its_old_place() -> None:
     )
     text = _short_text("3A: Oper, Karlsplatz", notice)
     assert text.startswith("Kärntner Ring, Nebenfahrbahn vor Kärntner Straße → Kärntner Ring 5, Nebenfahrbahn.")
+
+
+# "54B: Stock im Weg", 11.11.2026 (KI-Wächter, issue #2200): both
+# destinations seemed to fit, the second one ended at character 167. The
+# cut ends at 175 characters on a word and drops a bare "32." behind it, so
+# the feed read "Ghelengasse gegenüber 28 → Ghelengasse gegenüber …". The
+# check now uses the feed's own cut.
+NOTICE_54B = (
+    "<p><strong><u>Haltestellenverlegung der Linie 54B in Richtung St. Veiter Tor</u></strong></p>"
+    + _field("Haltestelle:", "Stock im Weg")
+    + _field("Von:", "Ghelengasse 30")
+    + _field("Nach:", "Ghelengasse 28")
+    + _field("Dauer:", "Ab 12. November 2026, 07:00 Uhr bis 13. November 2026 17:00 Uhr")
+    + _field("Grund:", "Straßenbau")
+    + "<p></p>"
+    + "<p><strong><u>Haltestellenverlegung der Linie 54B in Richtung Ober St. Veit</u></strong></p>"
+    + _field("Haltestelle:", "Stock im Weg")
+    + _field("Von:", "Ghelengasse gegenüber 28")
+    + _field("Nach:", "Ghelengasse gegenüber 32")
+    + _field("Dauer:", "Ab 12. November 2026, 07:00 Uhr bis 13. November 2026 17:00 Uhr")
+    + _field("Grund:", "Straßenbau")
+)
+
+
+def test_a_destination_the_cut_would_shorten_drops_the_old_places() -> None:
+    text = _short_text("54B: Stock im Weg", NOTICE_54B)
+    assert text.startswith(
+        "→ Ghelengasse 28. Haltestellenverlegung der Linie 54B in Richtung St. Veiter Tor. "
+        "Grund: Straßenbau. → Ghelengasse gegenüber 32. "
+    )
+    assert "gegenüber …" not in text
+
+
+def test_a_destination_counts_only_as_whole_words() -> None:
+    from src.feed_build.relocation import _shows_whole
+
+    assert _shows_whole("Ghelengasse 32 …", "Ghelengasse 32")
+    assert not _shows_whole("Ghelengasse 321 …", "Ghelengasse 32")
+    assert _shows_whole("Gasse 321, Gasse 32.", "Gasse 32")
+    assert not _shows_whole("Ghelengasse gegenüber …", "Ghelengasse gegenüber 32")

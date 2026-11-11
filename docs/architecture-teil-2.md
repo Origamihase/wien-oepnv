@@ -221,8 +221,13 @@
   39.“ Vorher endete „40A: Bauernfeldplatz“ mit „… gegenüber
   Bauernfeldplatz → …“. Eine Verlegung, die alle Ziele zeigt, bleibt wie
   sie ist; zeigt auch die kürzere Form nicht mehr Ziele (15A/7A/N62, drei
-  Linien je Richtung), bleibt die alte. Seit Juli betrifft das zwei
-  Meldungen (40A Bauernfeldplatz, 17A Josef-Enslein-Platz).
+  Linien je Richtung), bleibt die alte. Ob ein Ziel passt, misst die
+  Kürzung des Feeds selbst (`_truncate_summary_180`, seit 2026-11-11): sie
+  endet bei 175 Zeichen an einem Wort und lässt eine bloße „32.“ fallen, so
+  las „54B: Stock im Weg“ am 11.11. „… → Ghelengasse gegenüber …“ (Issue
+  #2200; im Nachspiel 28.10.–11.11. die einzige Meldung, die das ändert).
+  Seit Juli betrifft die kürzere Form 40A Bauernfeldplatz, 17A
+  Josef-Enslein-Platz und 54B Stock im Weg.
   Im englischen Feed lesen beide Überschriften
   „Towards …“: Auch der Satz mit dem bloßen „aufgelassen“ geht wie jede
   Pfeilzeile ohne Modell (`_RELOCATION_CLOSED_LINE_RE`, seit 2026-10-25);

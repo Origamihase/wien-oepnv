@@ -7,7 +7,7 @@ re-exports every name that src/, scripts/ or the tests read from it.
 from __future__ import annotations
 
 import re
-from collections.abc import Sequence
+from collections.abc import Callable, Sequence
 
 __all__ = [
     "_BLOCK_TERMINAL_PUNCT", "_WORD_RE", "_RELOCATION_ARROW", "_relocation_first",
@@ -87,18 +87,33 @@ _RELOCATION_DIRECTION = "Fahrtrichtung:"
 # the cut, the old places go and every destination keeps its arrow: "Richtung
 # Schottentor U: → Liechtensteinstraße 39." (operator decision 2026-10-29, "Von
 # weglassen, wenn zu lang"). A text that shows every destination stays as it is.
-_RELOCATION_DISPLAY_LIMIT = 180
+#
+# Whether a destination is shown is measured with the feed's own cut
+# (``_truncate_summary_180``), not with a count of 180 characters: the cut
+# ends at 175 characters on a word and drops a bare number with a full stop
+# behind it, so a house number at character 167 fell off. "54B: Stock im
+# Weg" read "… Ghelengasse gegenüber 28 → Ghelengasse gegenüber …" on
+# 11.11.2026 (KI-Wächter, issue #2200), the 32 of the destination was gone.
+# A destination counts as shown only when the cut text holds it whole.
 
 
-def _relocation_targets_shown(blocks: list[str], targets: Sequence[str]) -> int:
-    """How many of *targets* the 180 characters of *blocks*, closed as sentences, show whole."""
-    text = " ".join(b if b.endswith(tuple(_BLOCK_TERMINAL_PUNCT)) else f"{b}." for b in blocks)
-    shown = 0
-    for target in targets:
-        index = text.find(target)
-        if index >= 0 and index + len(target) <= _RELOCATION_DISPLAY_LIMIT:
-            shown += 1
-    return shown
+def _relocation_targets_shown(blocks: list[str], targets: Sequence[str], cut: Callable[[str], str]) -> int:
+    """How many of *targets* the feed's 180-character *cut* of *blocks*, closed as sentences, shows whole."""
+    text = cut(
+        " ".join(b if b.endswith(tuple(_BLOCK_TERMINAL_PUNCT)) else f"{b}." for b in blocks)
+    )
+    return sum(1 for target in targets if _shows_whole(text, target))
+
+
+def _shows_whole(text: str, target: str) -> bool:
+    """Whether *text* holds *target* as whole words ("Gasse 32", not "Gasse 3")."""
+    index = text.find(target)
+    while index >= 0:
+        end = index + len(target)
+        if end == len(text) or not text[end].isalnum():
+            return True
+        index = text.find(target, index + 1)
+    return False
 
 
 def _without_origins(blocks: list[str]) -> list[str]:
@@ -119,8 +134,12 @@ def _without_origins(blocks: list[str]) -> list[str]:
     return out
 
 
-def _relocation_first(blocks: list[str], title_words: set[str]) -> list[str]:
-    """Put a relocation's ``Von:`` and ``Nach:`` fields in front; old places go if a destination would be cut."""
+def _relocation_first(blocks: list[str], title_words: set[str], cut: Callable[[str], str]) -> list[str]:
+    """Put a relocation's ``Von:`` and ``Nach:`` fields in front; old places go if a destination would be cut.
+
+    *cut* is the feed's 180-character cut (``_truncate_summary_180``, passed in
+    by :mod:`.summary_text`, which imports this module).
+    """
     if not any(block.startswith(_RELOCATION_TO) for block in blocks):
         return blocks
     ordered = _relocation_ordered(blocks, title_words)
@@ -128,11 +147,11 @@ def _relocation_first(blocks: list[str], title_words: set[str]) -> list[str]:
         b[len(_RELOCATION_TO):].strip() for b in blocks if b.startswith(_RELOCATION_TO)
     ))
     targets = [t for t in targets if t and not _RELOCATION_CLOSED_RE.match(t)]
-    shown = _relocation_targets_shown(ordered, targets)
+    shown = _relocation_targets_shown(ordered, targets, cut)
     if shown >= len(targets):
         return ordered
     short = _without_origins(_relocation_ordered(blocks, title_words, keep_origins=False))
-    return short if _relocation_targets_shown(short, targets) > shown else ordered
+    return short if _relocation_targets_shown(short, targets, cut) > shown else ordered
 
 
 def _relocation_ordered(blocks: list[str], title_words: set[str], *, keep_origins: bool = True) -> list[str]:

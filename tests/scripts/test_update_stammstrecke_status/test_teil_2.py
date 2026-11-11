@@ -173,11 +173,11 @@ def test_collect_delays_handles_single_leg_object_payload() -> None:
     assert script._collect_sbahn_delays_minutes(trips) == [11.0]
 
 
-def test_format_minutes_strips_trailing_zero() -> None:
+def test_format_minutes_strips_trailing_zero_and_uses_german_comma() -> None:
     assert script._format_minutes(12.0) == "12"
-    assert script._format_minutes(12.5) == "12.5"
+    assert script._format_minutes(12.5) == "12,5"
     assert script._format_minutes(11.04) == "11"  # rounds to 11.0
-    assert script._format_minutes(11.05) == "11.1"
+    assert script._format_minutes(11.05) == "11,1"
 
 
 def test_directions_table_covers_both_targets() -> None:

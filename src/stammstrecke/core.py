@@ -16,6 +16,10 @@ from pathlib import Path
 from typing import Final
 from zoneinfo import ZoneInfo
 
+# One rendering of a minute count for the whole repository (German comma,
+# issue #2200); the scripts still read it from here.
+from src.feed.stammstrecke import _format_minutes
+
 # ``__all__`` lists every name this module defines. Some private names are
 # read only by other modules and tests; CodeQL (py/unused-global-variable)
 # counts such a read through an import only when the name is listed here.
@@ -194,14 +198,3 @@ def _now_vienna() -> datetime:
 
     return datetime.now(tz=VIENNA_TZ)
 
-
-def _format_minutes(value: float) -> str:
-    """Format *value* as a German-readable minute count.
-
-    ``round(x, 1)`` followed by ``:g`` strips trailing ``.0`` so a
-    whole-minute value renders as ``"12"`` rather than ``"12.0"``,
-    while a fractional value keeps its single decimal (``"12.5"``).
-    """
-
-    rounded = round(value, 1)
-    return f"{rounded:g}"
