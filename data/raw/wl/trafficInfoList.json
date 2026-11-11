@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261111-0009-F01, I20261111-0010-F01, I20261111-0012-F01"
+    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261111-0009-F01, I20261111-0010-F01, I20261111-0012-F01, I20261111-0013"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1876-101, R1880-101, R1875-101, R1881-101, R1882-101, R1883-101, R1884-101, R3886-480, R2370-125, R2373-126, R2379-627, R2380-627, R2345-127, R2558-125, R2359-125, R2371-125, R2373-127, R2373-125, R2372-125, R2378-627, R2343-125, R2343-626, R318-437, R293-474, R1974-466, R1199-205, R500-101, R2900-0, R2882-0, R2930-0, R2931-0, R2236-0, R3190-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1876-101, R1881-101, R1880-101, R3886-480, R1875-101, R1884-101, R1883-101, R1882-101, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2558-125, R293-474, R318-437, R1974-466, R1199-205, R500-101, R2900-0, R2882-0, R2930-0, R2931-0, R2236-0, R3190-0, R481-0, R429-0, R430-0, R483-0, R428-0, R427-0, R462-0, R464-0, R398-0, R397-0, R396-0, R482-0, R461-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -209,11 +209,12 @@
     "relatedStops": [
      301
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-11T10:39:00.000+0100",
-     "lastUpdate": "2026-11-11T10:39:00.000+0100",
-     "resume": "2026-11-11T10:39:00.000+0100",
+     "end": "2026-11-11T12:29:00.000+0100",
+     "lastUpdate": "2026-11-11T12:29:00.000+0100",
+     "resume": "2026-11-11T12:29:00.000+0100",
      "start": "2026-11-11T09:41:00.000+0100"
     },
     "title": "O: Fremder Verkehrsunfall"
@@ -257,11 +258,12 @@
     "relatedStops": [
      2736
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-11T11:36:00.000+0100",
-     "lastUpdate": "2026-11-11T11:36:00.000+0100",
-     "resume": "2026-11-11T11:36:00.000+0100",
+     "end": "2026-11-11T12:29:00.000+0100",
+     "lastUpdate": "2026-11-11T12:29:00.000+0100",
+     "resume": "2026-11-11T12:29:00.000+0100",
      "start": "2026-11-11T11:36:00.000+0100"
     },
     "title": "97A: Rettungseinsatz"
@@ -305,14 +307,69 @@
     "relatedStops": [
      1238
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-11T11:55:00.000+0100",
-     "lastUpdate": "2026-11-11T11:55:00.000+0100",
-     "resume": "2026-11-11T11:55:00.000+0100",
+     "end": "2026-11-11T12:30:00.000+0100",
+     "lastUpdate": "2026-11-11T12:30:00.000+0100",
+     "resume": "2026-11-11T12:30:00.000+0100",
      "start": "2026-11-11T11:51:00.000+0100"
     },
     "title": "35A: Verkehrsunfall"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "18": "ptTram",
+      "6": "ptTram"
+     }
+    },
+    "description": "Linie 6: Betrieb nur zwischen Geiereckstraße und Eichenstraße. Weiterfahrt bis Bahnhof Meidling S U, Dörfelstraße. Linie 18: Betrieb nur zwischen Stadion U und Eichenstraße. Weiterfahrt bis Bahnhof Meidling S U, Dörfelstraße. Ersatz: Linien U6,12A und 59A. Voraussichtliche Dauer: 12:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Margaretengürtel U.",
+    "descriptionHTML": "<p>Linie 6:<br>Betrieb nur zwischen Geiereckstraße und Eichenstraße.<br>Weiterfahrt bis Bahnhof Meidling S U, Dörfelstraße.<br>Linie 18:<br>Betrieb nur zwischen Stadion U und Eichenstraße.<br>Weiterfahrt bis Bahnhof Meidling S U, Dörfelstraße.</p><p>Ersatz: Linien U6,12A und 59A.</p><p>Voraussichtliche Dauer: 12:50 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Margaretengürtel U.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 6:<br>Betrieb nur zwischen Geiereckstraße und Eichenstraße.<br>Weiterfahrt bis Bahnhof Meidling S U, Dörfelstraße.<br>Linie 18:<br>Betrieb nur zwischen Stadion U und Eichenstraße.<br>Weiterfahrt bis Bahnhof Meidling S U, Dörfelstraße.</p><p>Ersatz: Linien U6,12A und 59A.</p><p>Voraussichtliche Dauer: 12:50 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Margaretengürtel U.</p>",
+       "descriptionPlain": "Linie 6: Betrieb nur zwischen Geiereckstraße und Eichenstraße. Weiterfahrt bis Bahnhof Meidling S U, Dörfelstraße. Linie 18: Betrieb nur zwischen Stadion U und Eichenstraße. Weiterfahrt bis Bahnhof Meidling S U, Dörfelstraße. Ersatz: Linien U6,12A und 59A. Voraussichtliche Dauer: 12:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Margaretengürtel U.",
+       "title": "6, 18: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261111-0013",
+    "owner": "WL",
+    "parentName": "I20261111-0013",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "6",
+     "18"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 106,
+      "lineName": "6",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 118,
+      "lineName": "18",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     397
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-11T12:07:00.000+0100",
+     "lastUpdate": "2026-11-11T12:11:00.000+0100",
+     "start": "2026-11-11T12:06:00.000+0100"
+    },
+    "title": "6, 18: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1035,6 +1092,66 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Eichenstraße \n\n",
+    "name": "R396-0",
+    "owner": "WL",
+    "parentName": "R396-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     396
+    ],
+    "time": {
+     "end": "2026-11-11T13:11:00.000+0100",
+     "start": "2026-11-11T12:12:22.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Eichenstraße \n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Eichenstraße \n\n",
+    "name": "R397-0",
+    "owner": "WL",
+    "parentName": "R397-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     397
+    ],
+    "time": {
+     "end": "2026-11-11T13:11:00.000+0100",
+     "start": "2026-11-11T12:12:22.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Eichenstraße \n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Eichenstraße \n\n",
+    "name": "R398-0",
+    "owner": "WL",
+    "parentName": "R398-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     398
+    ],
+    "time": {
+     "end": "2026-11-11T13:11:00.000+0100",
+     "start": "2026-11-11T12:12:22.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Eichenstraße \n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nUmleitung zum Reumannplatz",
     "name": "R401-101",
     "owner": "WL",
@@ -1054,6 +1171,206 @@
      "start": "2026-11-05T00:00:27.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
+    "name": "R427-0",
+    "owner": "WL",
+    "parentName": "R427-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     427
+    ],
+    "time": {
+     "end": "2026-11-11T13:11:00.000+0100",
+     "start": "2026-11-11T12:11:22.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
+    "name": "R428-0",
+    "owner": "WL",
+    "parentName": "R428-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     428
+    ],
+    "time": {
+     "end": "2026-11-11T13:11:00.000+0100",
+     "start": "2026-11-11T12:11:22.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
+    "name": "R429-0",
+    "owner": "WL",
+    "parentName": "R429-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     429
+    ],
+    "time": {
+     "end": "2026-11-11T13:08:00.000+0100",
+     "start": "2026-11-11T12:09:22.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
+    "name": "R430-0",
+    "owner": "WL",
+    "parentName": "R430-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     430
+    ],
+    "time": {
+     "end": "2026-11-11T13:08:00.000+0100",
+     "start": "2026-11-11T12:09:22.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Eichenstraße \n\n",
+    "name": "R461-0",
+    "owner": "WL",
+    "parentName": "R461-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     461
+    ],
+    "time": {
+     "end": "2026-11-11T13:11:00.000+0100",
+     "start": "2026-11-11T12:12:22.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Eichenstraße \n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Eichenstraße \n\n",
+    "name": "R462-0",
+    "owner": "WL",
+    "parentName": "R462-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     462
+    ],
+    "time": {
+     "end": "2026-11-11T13:11:00.000+0100",
+     "start": "2026-11-11T12:12:22.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Eichenstraße \n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Eichenstraße \n\n",
+    "name": "R464-0",
+    "owner": "WL",
+    "parentName": "R464-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     464
+    ],
+    "time": {
+     "end": "2026-11-11T13:11:00.000+0100",
+     "start": "2026-11-11T12:12:22.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Eichenstraße \n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
+    "name": "R481-0",
+    "owner": "WL",
+    "parentName": "R481-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     481
+    ],
+    "time": {
+     "end": "2026-11-11T13:08:00.000+0100",
+     "start": "2026-11-11T12:09:22.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Eichenstraße \n\n",
+    "name": "R482-0",
+    "owner": "WL",
+    "parentName": "R482-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     482
+    ],
+    "time": {
+     "end": "2026-11-11T13:11:00.000+0100",
+     "start": "2026-11-11T12:12:22.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Eichenstraße \n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
+    "name": "R483-0",
+    "owner": "WL",
+    "parentName": "R483-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     483
+    ],
+    "time": {
+     "end": "2026-11-11T13:08:00.000+0100",
+     "start": "2026-11-11T12:09:22.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
    },
    {
     "alertCause": "undefined alert cause",
