@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261111-0018-F01, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261111-0022, I20260925-0011, I20261111-0023, I20260909-0007, I20261111-0024, I20261020-0029"
    },
    {
     "id": 3,
@@ -171,52 +171,139 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "31": "ptTram"
+      "U4": "ptMetro"
      }
     },
-    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "31: Rettungseinsatz"
+       "descriptionHtml": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U4: Verspätungen"
       }
      }
     ],
-    "name": "I20261111-0018-F01",
+    "name": "I20261111-0022",
     "owner": "WL",
-    "parentName": "I20261111-0018",
+    "parentName": "I20261111-0022",
     "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "31"
+     "U4"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 131,
-      "lineName": "31",
-      "vehicleType": "ptTram"
+      "lineId": 304,
+      "lineName": "U4",
+      "vehicleType": "ptMetro"
      }
-    ],
-    "relatedStops": [
-     2168
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-11T14:58:00.000+0100",
-     "end": "2026-11-11T16:22:00.000+0100",
-     "lastUpdate": "2026-11-11T15:48:00.000+0100",
-     "start": "2026-11-11T14:32:00.000+0100"
+     "created": "2026-11-11T16:08:00.000+0100",
+     "lastUpdate": "2026-11-11T16:08:00.000+0100",
+     "resume": "2026-11-11T16:08:00.000+0100",
+     "start": "2026-11-11T16:08:00.000+0100"
     },
-    "title": "31: Rettungseinsatz"
+    "title": "U4: Verspätungen"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "35A": "ptBusCity"
+     }
+    },
+    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "35A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261111-0023",
+    "owner": "WL",
+    "parentName": "I20261111-0023",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "35A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 435,
+      "lineName": "35A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-11T16:15:00.000+0100",
+     "lastUpdate": "2026-11-11T16:15:00.000+0100",
+     "resume": "2026-11-11T16:15:00.000+0100",
+     "start": "2026-11-11T16:15:00.000+0100"
+    },
+    "title": "35A: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "7A": "ptBusCity"
+     }
+    },
+    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "7A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261111-0024",
+    "owner": "WL",
+    "parentName": "I20261111-0024",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 407,
+      "lineName": "7A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-11T16:16:00.000+0100",
+     "lastUpdate": "2026-11-11T16:16:00.000+0100",
+     "resume": "2026-11-11T16:15:00.000+0100",
+     "start": "2026-11-11T16:15:00.000+0100"
+    },
+    "title": "7A: Verkehrsüberlastung"
    },
    {
     "alertCause": "undefined alert cause",

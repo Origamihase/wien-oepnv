@@ -1,24 +1,32 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-11T15:00:47.807139+00:00",
- "built": "2026-11-11T16:00:36+01:00",
+ "updated": "2026-11-11T15:30:57.426079+00:00",
+ "built": "2026-11-11T16:30:46+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-11T16:00:36+01:00",
+  "built": "2026-11-11T16:30:46+01:00",
   "items": [
    {
-    "title": "31: Rettungseinsatz",
-    "time_line": "Seit 14:32"
+    "title": "7A/35A: Verkehrsüberlastung",
+    "time_line": "Seit 16:15"
+   },
+   {
+    "title": "U4: Verspätungen",
+    "time_line": "Seit 16:08"
    },
    {
     "title": "Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx",
     "time_line": "Bis 31.10.2027"
    },
    {
+    "title": "39B: Friedhofsverkehr",
+    "time_line": "Bis 24.12."
+   },
+   {
     "title": "54B: Stock im Weg",
-    "time_line": "Ab Do 12.11."
+    "time_line": "Ab Do 12.11. bis Fr 13.11."
    },
    {
     "title": "65A: Triester Straße, Rossakgasse",
@@ -39,39 +47,11 @@
    {
     "title": "5B: Bauarbeiten",
     "time_line": "Bis 10.12."
-   },
-   {
-    "title": "31: Wexstraße",
-    "time_line": "Seit 09.11."
-   },
-   {
-    "title": "64A/N64R: Zouvalgasse",
-    "time_line": "Seit 09.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-04T15:01:24.284386+00:00",
-   "raw": {
-    "wl-stoerungen": 66,
-    "wl-hinweise": 72,
-    "oebb": 190,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 12,
-    "oebb": 166,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 6,
-    "wl": 93
-   }
-  },
   {
    "t": "2026-11-04T15:30:57.772443+00:00",
    "raw": {
@@ -6791,17 +6771,37 @@
     "oebb": 6,
     "wl": 81
    }
+  },
+  {
+   "t": "2026-11-11T15:30:57.426079+00:00",
+   "raw": {
+    "wl-stoerungen": 39,
+    "wl-hinweise": 90,
+    "oebb": 192,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 21,
+    "oebb": 167,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 85
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-11T15:00:47.807139+00:00"
+   "last_ok": "2026-11-11T15:30:57.426079+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-11T15:00:47.807139+00:00"
+   "last_ok": "2026-11-11T15:30:57.426079+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-11T15:00:47.807139+00:00"
+   "last_ok": "2026-11-11T15:30:57.426079+00:00"
   }
  }
 }
