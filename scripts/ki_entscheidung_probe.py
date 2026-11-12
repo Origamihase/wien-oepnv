@@ -242,7 +242,8 @@ def main(argv: Sequence[str] | None = None, *, ask: Ask | None = None) -> int:
     try:
         report = run_probe(args.cases, ask=ask, passes=args.passes, pause_s=args.pause)
     except CasesUnreadable:
-        parser.error(f"Fallsammlung nicht lesbar (kein JSON mit einer Liste unter „faelle“): {args.cases}")
+        print(f"{parser.prog}: error: Fallsammlung nicht lesbar (kein JSON mit einer Liste unter „faelle“): {args.cases}", file=sys.stderr)
+        return 2
     print(report)
     _write_summary(report)
     return 0

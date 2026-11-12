@@ -188,9 +188,9 @@ def test_a_collection_that_cannot_be_read_stops_the_probe(
     with pytest.raises(probe.CasesUnreadable):
         probe.run_probe(broken, ask=lambda descriptions: ChainAnswer(None, "", 0, False))
     if text is not None:  # the missing file is caught before, by its own message
-        with pytest.raises(SystemExit) as stopped:
-            probe.main(["--cases", str(broken)], ask=lambda descriptions: ChainAnswer(None, "", 0, False))
-        assert stopped.value.code == 2 and "Fallsammlung nicht lesbar" in capsys.readouterr().err
+        assert probe.main(["--cases", str(broken)], ask=lambda descriptions: ChainAnswer(None, "", 0, False)) == 2
+        printed = capsys.readouterr()
+        assert "Fallsammlung nicht lesbar" in printed.err and "Probelauf" not in printed.out
 
 
 # ---- the workflow ------------------------------------------------------------

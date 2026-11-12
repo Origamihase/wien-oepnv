@@ -382,7 +382,7 @@ dazu; der Feed-Build ruft es an einer Stelle auf (`decide` in
 | `src/ki_entscheidung/ask.py` | 193 | Prompt, Schema, Modellkette (Lite voran), Lesen der Antwort |
 | `src/ki_entscheidung/store.py` | 160 | Speicher `data/ki_entscheidungen.json` (Antworten, Zeitpunkte der Anfragen, abgelehnter Schlüssel) |
 | `src/ki_entscheidung/run.py` | 283 | Ein Build: lesen, höchstens einmal fragen, die Antwort ihres Ereignisses anwenden, speichern, Ergebnis für den Health check |
-| `scripts/ki_entscheidung_probe.py` | 252 | Probelauf für `ki-entscheidung-probe.yml` |
+| `scripts/ki_entscheidung_probe.py` | 253 | Probelauf für `ki-entscheidung-probe.yml` |
 
 `src/markdown_stats/review_client.py` trägt seither beide Anfragen
 (`ask_chain` mit einem `JsonCall` je Aufrufer) und hat 522 Zeilen (vorher

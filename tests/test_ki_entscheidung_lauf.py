@@ -245,6 +245,7 @@ def test_busy_models_leave_the_rules_and_the_next_build_asks_again(monkeypatch: 
     calls = _fake(monkeypatch, [_ok((1, "ploetzlich"))])
     item = _tokio()
     assert _build([item], NOW + timedelta(minutes=30)).outcome() == "success" and item.get("_ki_art") == "ploetzlich"
+    assert len(calls) == 1
 
 
 def test_a_changed_text_is_asked_again_and_keeps_the_old_answer_until_then(monkeypatch: pytest.MonkeyPatch) -> None:
