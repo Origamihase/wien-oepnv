@@ -831,29 +831,6 @@
   {
    "geometry": {
     "first_position": [
-     16.32479348,
-     48.19861052
-    ],
-    "type": "LineString"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Kundentelefon Wiener Linien",
-    "ANSPRECHPERSON_TEL": "Tel.: 01-7909/100",
-    "ANTRAGSTELLER": "Wiener Linien GmbH & Co KG",
-    "BEHINDERUNGSART": "Gleisbau",
-    "BEZEICHNUNG": "Märzstraße 49 bis Kreuzung Huglgasse sowie Kreuzung Huglgasse bis Kreuzung Hütteldorfer Straße",
-    "BEZIRK": 15,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-09-14Z",
-    "OBJEKT_ENDE": "2026-11-15Z",
-    "PRESSETEXT": "DieArbeiten erfolgen bei Sperre der Huglgasse von Kreuzung Hütteldorfer Straße bis KreuzungMärzstraße und Sperre der Märzstraße von Kreuzung Huglgasse bis Kreuzung Stättermayergasse. Die angrenzenden Straßenzüge werden als Sackgassen ausgebildet und die Zufahrt bis zum gesperrten Bereich ist möglich. Die Umleitung erfolgt über: Hütteldorfer Straße - Schweglerstraße. DerFußgängerverkehr kann aufrecht gehalten werden.Nähere Informationen zu den betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
      16.36033255,
      48.15809252
     ],
@@ -963,29 +940,6 @@
     "OBJEKT_BEGINN": "2021-02-28Z",
     "OBJEKT_ENDE": "2028-05-31Z",
     "PRESSETEXT": "Für den Neubau der U-Bahnstation der U2 Pilgramgasse wird die Rechte Wienzeile von der Ramperstorffergasse bis zur Pilgramgasse für den Fahrzeugverkehr gesperrt. Die Umleitungsstrecke wird über die Schönbrunner Straße und Pilgramgasse geführt.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
-     16.38560234,
-     48.19481689
-    ],
-    "type": "LineString"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Kundentelefon Wiener Linien",
-    "ANSPRECHPERSON_TEL": "Tel.: 01-7909/100",
-    "ANTRAGSTELLER": "Wiener Linien GmbH & Co KG",
-    "BEHINDERUNGSART": "Gleisbau",
-    "BEZEICHNUNG": "Rennweg von 33A bis 37",
-    "BEZIRK": 3,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-09-30Z",
-    "OBJEKT_ENDE": "2026-11-15Z",
-    "PRESSETEXT": "DieArbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Derlinke Fahrstreifen in Fahrtrichtung stadteinwärts wird gesperrt. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.Nähere Informationen zu den betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen.",
     "SE_ANNO_CAD_DATA": null
    }
   },

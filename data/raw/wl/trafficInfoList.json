@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261112-0027, I20261112-0029, I20260925-0011, I20261112-0028, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20261112-0030-F01, I20260909-0007, I20261020-0029, I20261112-0031, I20261112-0032"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1883-101, R1881-101, R318-437, R293-474, R1882-101, R3886-480, R2558-125, R1884-101, R1875-101, R1876-101, R1880-101, R2373-125, R2373-127, R2343-626, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R401-101, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1881-101, R1876-101, R3886-480, R1875-101, R2558-125, R1880-101, R318-437, R293-474, R1884-101, R1883-101, R1882-101, R2378-627, R2373-126, R2379-627, R2380-627, R2345-127, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R401-101, R1974-466, R1199-205, R500-101, R552-109, R521-109, R143-109, R524-109, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,140 +171,142 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
     "attributes": {
      "relatedLineTypes": {
-      "24A": "ptBusCity"
+      "9": "ptTram"
      }
     },
-    "description": "Linie 24A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "descriptionHTML": "<p>Linie 24A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 24A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
-       "descriptionPlain": "Linie 24A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-       "title": "24A: Polizeieinsatz"
+       "descriptionHtml": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "9: Falschparker"
       }
      }
     ],
-    "location": "Breitenleer Straße / Zwerchäckerweg",
-    "name": "I20261112-0027",
+    "location": "Hormayrgasse 58",
+    "name": "I20261112-0030-F01",
     "owner": "WL",
-    "parentName": "I20261112-0027",
+    "parentName": "I20261112-0030",
     "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "24A"
+     "9"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 424,
-      "lineName": "24A",
-      "vehicleType": "ptBusCity"
+      "lineId": 109,
+      "lineName": "9",
+      "vehicleType": "ptTram"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-12T12:58:00.000+0100",
-     "lastUpdate": "2026-11-12T12:59:00.000+0100",
-     "resume": "2026-11-12T12:57:00.000+0100",
-     "start": "2026-11-12T12:57:00.000+0100"
+     "created": "2026-11-12T14:26:00.000+0100",
+     "lastUpdate": "2026-11-12T14:26:00.000+0100",
+     "resume": "2026-11-12T14:26:00.000+0100",
+     "start": "2026-11-12T14:10:00.000+0100"
     },
-    "title": "24A: Polizeieinsatz"
+    "title": "9: Falschparker"
    },
    {
     "alertCause": "emergency medical services",
     "alertCauseId": 14,
     "attributes": {
      "relatedLineTypes": {
-      "16A": "ptBusCity"
+      "59A": "ptBusCity"
      }
     },
-    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie 16A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 16A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-       "title": "16A: Rettungseinsatz"
+       "descriptionHtml": "<p>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "59A: Rettungseinsatz"
       }
      }
     ],
-    "name": "I20261112-0028",
+    "name": "I20261112-0031",
     "owner": "WL",
-    "parentName": "I20261112-0028",
+    "parentName": "I20261112-0031",
     "priority": "1",
     "reasonId": 9,
     "reasonName": "Rettungseinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "16A"
+     "59A"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 416,
-      "lineName": "16A",
+      "lineId": 459,
+      "lineName": "59A",
       "vehicleType": "ptBusCity"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-12T13:04:00.000+0100",
-     "lastUpdate": "2026-11-12T13:04:00.000+0100",
-     "resume": "2026-11-12T13:03:00.000+0100",
-     "start": "2026-11-12T13:03:00.000+0100"
+     "created": "2026-11-12T14:23:00.000+0100",
+     "lastUpdate": "2026-11-12T14:23:00.000+0100",
+     "resume": "2026-11-12T14:22:00.000+0100",
+     "start": "2026-11-12T14:22:00.000+0100"
     },
-    "title": "16A: Rettungseinsatz"
+    "title": "59A: Rettungseinsatz"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "29B": "ptBusCity"
+      "U3": "ptMetro"
      }
     },
-    "description": "Linie 29B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie 29B:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "description": "Die Linie U3 fährt derzeit zwischen den Stationen Kardinal-Nagl-Platz und Rochusgasse in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig. Voraussichtliche Dauer: 15:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rochusgasse.",
+    "descriptionHTML": "<p>Die Linie U3 fährt derzeit zwischen den Stationen Kardinal-Nagl-Platz und Rochusgasse in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 15:00 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rochusgasse.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 29B:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie 29B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-       "title": "29B: Rettungseinsatz"
+       "descriptionHtml": "<p>Die Linie U3 fährt derzeit zwischen den Stationen Kardinal-Nagl-Platz und Rochusgasse in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 15:00 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rochusgasse.</p>",
+       "descriptionPlain": "Die Linie U3 fährt derzeit zwischen den Stationen Kardinal-Nagl-Platz und Rochusgasse in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig. Voraussichtliche Dauer: 15:00 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rochusgasse.",
+       "title": "U3: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261112-0029",
+    "name": "I20261112-0032",
     "owner": "WL",
-    "parentName": "I20261112-0029",
+    "parentName": "I20261112-0032",
     "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "29B"
+     "U3"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 229,
-      "lineName": "29B",
-      "vehicleType": "ptBusCity"
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
      }
+    ],
+    "relatedStops": [
+     4914
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-12T13:57:00.000+0100",
-     "lastUpdate": "2026-11-12T13:57:00.000+0100",
-     "resume": "2026-11-12T13:57:00.000+0100",
-     "start": "2026-11-12T13:57:00.000+0100"
+     "created": "2026-11-12T14:25:00.000+0100",
+     "lastUpdate": "2026-11-12T14:27:00.000+0100",
+     "start": "2026-11-12T14:24:00.000+0100"
     },
-    "title": "29B: Rettungseinsatz"
+    "title": "U3: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -328,6 +330,29 @@
      "start": "2026-11-12T04:45:18.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R143-109",
+    "owner": "WL",
+    "parentName": "R143-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     143
+    ],
+    "time": {
+     "end": "2026-11-12T15:18:00.000+0100",
+     "start": "2026-11-12T14:19:15.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -949,6 +974,75 @@
      "start": "2026-11-12T05:00:19.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R521-109",
+    "owner": "WL",
+    "parentName": "R521-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     521
+    ],
+    "time": {
+     "end": "2026-11-12T15:10:00.000+0100",
+     "start": "2026-11-12T14:10:43.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R524-109",
+    "owner": "WL",
+    "parentName": "R524-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     524
+    ],
+    "time": {
+     "end": "2026-11-12T15:24:00.000+0100",
+     "start": "2026-11-12T14:24:14.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R552-109",
+    "owner": "WL",
+    "parentName": "R552-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     552
+    ],
+    "time": {
+     "end": "2026-11-12T15:10:00.000+0100",
+     "start": "2026-11-12T14:10:42.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
