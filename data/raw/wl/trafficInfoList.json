@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261112-0016-F01, I20261112-0019, I20261112-0021-F01, I20260925-0011, I20260909-0007, I20261112-0022, I20261020-0029, I20261112-0020, I20261112-0018-F01, I20261112-0018-F02, I20261112-0018"
+    "trafficInfoNameList": "I20261112-0020, I20261020-0029, I20261112-0018-F01, I20261112-0023, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R3886-480, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R2558-125, R318-437, R293-474, R2378-627, R2373-126, R2379-627, R2380-627, R2345-127, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R401-101, R1974-466, R1199-205, R500-101, R588-102, R1365-102, R561-102, R562-102, R560-102, R1366-102, R1367-102, R1368-102, R548-102, R1363-102, R1362-102, R1364-102, R2173-127, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R3886-480, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R318-437, R293-474, R2558-125, R2380-627, R2373-126, R2379-627, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R401-101, R1974-466, R1199-205, R500-101, R1365-102, R588-102, R562-102, R560-102, R561-102, R1366-102, R1368-102, R1367-102, R548-102, R1363-102, R1362-102, R1364-102, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,108 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U4: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261112-0016-F01",
-    "owner": "WL",
-    "parentName": "I20261112-0016",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 304,
-      "lineName": "U4",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4427
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T09:47:00.000+0100",
-     "lastUpdate": "2026-11-12T09:47:00.000+0100",
-     "resume": "2026-11-12T09:47:00.000+0100",
-     "start": "2026-11-12T09:42:00.000+0100"
-    },
-    "title": "U4: Polizeieinsatz"
-   },
-   {
-    "alertCause": "overhead wire failure",
-    "alertCauseId": 39,
-    "attributes": {
-     "relatedLineTypes": {
-      "10": "ptTram",
-      "2": "ptTram"
-     }
-    },
-    "description": "Linie 2: Umleitung in beiden Richtungen zwischen Dornbach und Johann-Nepomuk-Berger-Platz über die Strecke der Linien 43 und 9. Linie 10: Betrieb nur zwischen Unter St. Veit, Hummelgasse und Ottakring, Maroltingergasse. Voraussichtliche Dauer: 11:10 Uhr. Grund: Fahrleitungsgebrechen im Bereich Sandleitengasse.",
-    "descriptionHTML": "<p><strong>Linie 2: </strong><br>Umleitung in beiden Richtungen <br>zwischen Dornbach und Johann-Nepomuk-Berger-Platz <br>über die Strecke der Linien 43 und 9.<br>Linie 10:<br>Betrieb nur zwischen Unter St. Veit, Hummelgasse und Ottakring, Maroltingergasse.</p><p>Voraussichtliche Dauer: 11:10 Uhr.</p><p>Grund: Fahrleitungsgebrechen im Bereich Sandleitengasse.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p><strong>Linie 2: </strong><br>Umleitung in beiden Richtungen <br>zwischen Dornbach und Johann-Nepomuk-Berger-Platz <br>über die Strecke der Linien 43 und 9.<br>Linie 10:<br>Betrieb nur zwischen Unter St. Veit, Hummelgasse und Ottakring, Maroltingergasse.</p><p>Voraussichtliche Dauer: 11:10 Uhr.</p><p>Grund: Fahrleitungsgebrechen im Bereich Sandleitengasse.</p>",
-       "descriptionPlain": "Linie 2: Umleitung in beiden Richtungen zwischen Dornbach und Johann-Nepomuk-Berger-Platz über die Strecke der Linien 43 und 9. Linie 10: Betrieb nur zwischen Unter St. Veit, Hummelgasse und Ottakring, Maroltingergasse. Voraussichtliche Dauer: 11:10 Uhr. Grund: Fahrleitungsgebrechen im Bereich Sandleitengasse.",
-       "title": "2, 10: Beschädigte Oberleitung"
-      }
-     }
-    ],
-    "location": "Sandleitengasse",
-    "name": "I20261112-0018",
-    "owner": "WL",
-    "parentName": "I20261112-0018",
-    "priority": "1",
-    "reasonId": 23,
-    "reasonName": "Fahrleitungsgebrechen",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "2",
-     "10"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 102,
-      "lineName": "2",
-      "vehicleType": "ptTram"
-     },
-     {
-      "lineId": 110,
-      "lineName": "10",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-12T09:50:00.000+0100",
-     "end": "2026-11-12T10:59:00.000+0100",
-     "lastUpdate": "2026-11-12T10:59:00.000+0100",
-     "resume": "2026-11-12T10:59:00.000+0100",
-     "start": "2026-11-12T09:49:00.000+0100"
-    },
-    "title": "2, 10: Beschädigte Oberleitung"
-   },
-   {
     "alertCause": "overhead wire failure",
     "alertCauseId": 39,
     "attributes": {
@@ -317,97 +215,6 @@
      "start": "2026-11-12T09:49:00.000+0100"
     },
     "title": "2: Beschädigte Oberleitung"
-   },
-   {
-    "alertCause": "overhead wire failure",
-    "alertCauseId": 39,
-    "attributes": {
-     "relatedLineTypes": {
-      "10": "ptTram"
-     }
-    },
-    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "10: Beschädigte Oberleitung"
-      }
-     }
-    ],
-    "location": "Sandleitengasse",
-    "name": "I20261112-0018-F02",
-    "owner": "WL",
-    "parentName": "I20261112-0018",
-    "priority": "1",
-    "reasonId": 23,
-    "reasonName": "Fahrleitungsgebrechen",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 110,
-      "lineName": "10",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T10:59:00.000+0100",
-     "lastUpdate": "2026-11-12T10:59:00.000+0100",
-     "resume": "2026-11-12T10:59:00.000+0100",
-     "start": "2026-11-12T09:49:00.000+0100"
-    },
-    "title": "10: Beschädigte Oberleitung"
-   },
-   {
-    "alertCause": "vandalism",
-    "alertCauseId": 16,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
-       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-       "title": "U3: Verunreinigung"
-      }
-     }
-    ],
-    "name": "I20261112-0019",
-    "owner": "WL",
-    "parentName": "I20261112-0019",
-    "priority": "1",
-    "reasonId": 36,
-    "reasonName": "Verunreinigung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T09:50:00.000+0100",
-     "lastUpdate": "2026-11-12T09:50:00.000+0100",
-     "resume": "2026-11-12T09:50:00.000+0100",
-     "start": "2026-11-12T09:50:00.000+0100"
-    },
-    "title": "U3: Verunreinigung"
    },
    {
     "alertCause": "miscellaneous",
@@ -455,97 +262,51 @@
     "title": "U6: Verspätungen"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "27": "ptTram"
+      "U3": "ptMetro"
      }
     },
-    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 27: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Die Linie U3 fährt derzeit zwischen den Stationen Kardinal-Nagl-Platz und Rochusgasse in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig. Voraussichtliche Dauer: 11:55 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kardinal-Nagl-Platz.",
+    "descriptionHTML": "<p>Die Linie U3 fährt derzeit zwischen den Stationen Kardinal-Nagl-Platz und Rochusgasse in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 11:55 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kardinal-Nagl-Platz.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 27: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "27: Rettungseinsatz"
+       "descriptionHtml": "<p>Die Linie U3 fährt derzeit zwischen den Stationen Kardinal-Nagl-Platz und Rochusgasse in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 11:55 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kardinal-Nagl-Platz.</p>",
+       "descriptionPlain": "Die Linie U3 fährt derzeit zwischen den Stationen Kardinal-Nagl-Platz und Rochusgasse in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig. Voraussichtliche Dauer: 11:55 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kardinal-Nagl-Platz.",
+       "title": "U3: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261112-0021-F01",
+    "name": "I20261112-0023",
     "owner": "WL",
-    "parentName": "I20261112-0021",
+    "parentName": "I20261112-0023",
     "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "27"
+     "U3"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 127,
-      "lineName": "27",
-      "vehicleType": "ptTram"
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
      }
     ],
     "relatedStops": [
-     2174
+     4915
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-12T10:44:00.000+0100",
-     "lastUpdate": "2026-11-12T10:44:00.000+0100",
-     "resume": "2026-11-12T10:44:00.000+0100",
-     "start": "2026-11-12T10:28:00.000+0100"
+     "created": "2026-11-12T11:25:00.000+0100",
+     "lastUpdate": "2026-11-12T11:29:00.000+0100",
+     "start": "2026-11-12T11:24:00.000+0100"
     },
-    "title": "27: Rettungseinsatz"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "77A": "ptBusCity"
-     }
-    },
-    "description": "Linie 77A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 77A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 77A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 77A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-       "title": "77A: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261112-0022",
-    "owner": "WL",
-    "parentName": "I20261112-0022",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "77A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 477,
-      "lineName": "77A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T10:52:00.000+0100",
-     "lastUpdate": "2026-11-12T10:52:00.000+0100",
-     "resume": "2026-11-12T10:52:00.000+0100",
-     "start": "2026-11-12T10:52:00.000+0100"
-    },
-    "title": "77A: Verkehrsunfall"
+    "title": "U3: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -914,29 +675,6 @@
      "start": "2026-11-12T04:40:18.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Koloniestraße",
-    "name": "R2173-127",
-    "owner": "WL",
-    "parentName": "R2173-127",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "27"
-    ],
-    "relatedStops": [
-     2173
-    ],
-    "time": {
-     "end": "2026-11-12T11:29:00.000+0100",
-     "start": "2026-11-12T10:30:22.000+0100"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Koloniestraße"
    },
    {
     "alertCause": "undefined alert cause",

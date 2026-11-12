@@ -1,36 +1,24 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-12T10:01:03.159801+00:00",
- "built": "2026-11-12T11:00:49+01:00",
+ "updated": "2026-11-12T10:31:00.523679+00:00",
+ "built": "2026-11-12T11:30:44+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-12T11:00:49+01:00",
+  "built": "2026-11-12T11:30:44+01:00",
   "items": [
    {
-    "title": "77A: Verkehrsunfall",
-    "time_line": "Seit 10:52"
-   },
-   {
-    "title": "27: Rettungseinsatz",
-    "time_line": "Seit 10:28"
+    "title": "U3: Schadhaftes Fahrzeug",
+    "time_line": "Seit 11:24"
    },
    {
     "title": "U6: Verspätungen",
     "time_line": "Seit 09:58"
    },
    {
-    "title": "U3: Verunreinigung",
-    "time_line": "Seit 09:50"
-   },
-   {
-    "title": "2/10: Beschädigte Oberleitung",
+    "title": "2: Beschädigte Oberleitung",
     "time_line": "Seit 09:49"
-   },
-   {
-    "title": "U4: Polizeieinsatz",
-    "time_line": "Seit 09:42"
    },
    {
     "title": "Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx",
@@ -47,31 +35,23 @@
    {
     "title": "65A: Triester Straße, Rossakgasse",
     "time_line": "Seit 11.11."
+   },
+   {
+    "title": "66A: Busse halten Salvatorianerplatz",
+    "time_line": "Bis Fr 13.11."
+   },
+   {
+    "title": "79A/79B: Alberner Hafenzufahrtsstraße",
+    "time_line": "Heute"
+   },
+   {
+    "title": "5A/N31: Obere Augartenstraße",
+    "time_line": "Seit 09.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-05T10:01:34.330589+00:00",
-   "raw": {
-    "wl-stoerungen": 55,
-    "wl-hinweise": 70,
-    "oebb": 194,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 12,
-    "oebb": 169,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 7,
-    "wl": 90
-   }
-  },
   {
    "t": "2026-11-05T10:31:06.166808+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 6,
     "wl": 90
    }
+  },
+  {
+   "t": "2026-11-12T10:31:00.523679+00:00",
+   "raw": {
+    "wl-stoerungen": 51,
+    "wl-hinweise": 77,
+    "oebb": 197,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 18,
+    "oebb": 171,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 86
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-12T10:01:03.159801+00:00"
+   "last_ok": "2026-11-12T10:31:00.523679+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-12T10:01:03.159801+00:00"
+   "last_ok": "2026-11-12T10:31:00.523679+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-12T10:01:03.159801+00:00"
+   "last_ok": "2026-11-12T10:31:00.523679+00:00"
   }
  }
 }
