@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 12 Nov 2026 10:30:41 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2026 11:00:49 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[77A: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">b1866dbda10de11cf3a1ffe8fa6fa879751a915b069299afcb4c2a0a6f3945d6</guid>
+      <pubDate>Thu, 12 Nov 2026 10:52:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 12 Nov 2026 10:52:00 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 12 Nov 2026 10:52:00 +0100</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: traffic accident. [Since 10:52]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 10:52]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[27: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -20,8 +33,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 12 Nov 2026 10:28:00 +0100</ext:first_seen>
       <ext:starts_at>Thu, 12 Nov 2026 10:30:22 +0100</ext:starts_at>
-      <description>Service from Koloniestraße. Local diversion towards Strebersdorf between Floridsdorf and Koloniestraße. [Since 10:28]</description>
-      <content:encoded><![CDATA[Service from Koloniestraße. Local diversion towards Strebersdorf between Floridsdorf and Koloniestraße.<br/>[Since 10:28]]]></content:encoded>
+      <description>Service from Koloniestraße. After a service obstruction, there are irregular intervals. Use 25 line in Tokiostraße; trains stop at the stop of line 31. [Since 10:28]</description>
+      <content:encoded><![CDATA[Service from Koloniestraße. After a service obstruction, there are irregular intervals. Use 25 line in Tokiostraße; trains stop at the stop of line 31.<br/>[Since 10:28]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Delays]]></title>
@@ -37,33 +50,6 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption.<br/>[Since 09:58]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[10: Third-party traffic accident]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">537e1c6887b1c4413eea88250c3abf02adc575a540ab895807090cae43d76a2a</guid>
-      <pubDate>Thu, 12 Nov 2026 09:51:17 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 12 Nov 2026 09:51:17 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 12 Nov 2026 09:51:17 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 12 Nov 2026 10:50:00 +0100</ext:ends_at>
-      <description>Service obstruction. [Since 09:51]</description>
-      <content:encoded><![CDATA[Service obstruction.<br/>[Since 09:51]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[2/10: Power failure, damaged overhead line]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">2e40b6b732d05935713a3251ae9bfad89bec9021122b7d49b2a044c285d5c23f</guid>
-      <pubDate>Thu, 12 Nov 2026 09:50:17 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 12 Nov 2026 09:50:17 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 12 Nov 2026 09:59:48 +0100</ext:starts_at>
-      <description>Power failure: service obstruction; 10: boarding at the stop of line 44. Damaged overhead line: service only between Friedrich-Engels-Platz and Johann-Nepomuk-Berger-Platz. [Since 09:50]</description>
-      <content:encoded><![CDATA[Power failure: service obstruction; 10: boarding at the stop of line 44. Damaged overhead line: service only between Friedrich-Engels-Platz and Johann-Nepomuk-Berger-Platz.<br/>[Since 09:50]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[U3: Contamination]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">dab653cb7d1e9fa892720640dfc104f15c3333766d48f43a94a5949ecee6dfe6</guid>
@@ -75,6 +61,19 @@
       <ext:starts_at>Thu, 12 Nov 2026 09:50:00 +0100</ext:starts_at>
       <description>Irregular intervals in both directions. Reason: contamination. [Since 09:50]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[Since 09:50]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2/10: Damaged overhead line]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">0b0284d78a316ebef8be6e0e8d32399cae271f8fd9ee0b606886b77c893467b0</guid>
+      <pubDate>Thu, 12 Nov 2026 09:49:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 12 Nov 2026 09:49:00 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 12 Nov 2026 09:49:00 +0100</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 09:49]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 09:49]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U4: Police operation]]></title>
@@ -104,6 +103,20 @@
       <content:encoded><![CDATA[Due to construction works, there are no trains between Wien Hbf or Wien St. Marx and Wien Praterstern from 07.09.2026 until the end of October 2027.<br/>[Until 31.10.2027]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[38B/39B: Cemetery service]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">9a89bc812bcca905d18e6e1337f681d93161179d06103169cef56146927aac0f</guid>
+      <pubDate>Wed, 11 Nov 2026 15:55:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 12 Nov 2026 11:00:49 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 11 Nov 2026 15:55:00 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 24 Dec 2026 17:10:00 +0100</ext:ends_at>
+      <description>On the occasion of the 24. December, the 38B and 39B bus lines will be put into operation and various lines will be led to cemeteries. [Until 24.12.]</description>
+      <content:encoded><![CDATA[On the occasion of the 24. December, the 38B and 39B bus lines will be put into operation and various lines will be led to cemeteries.<br/>[Until 24.12.]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[54B: Stock im Weg]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">8fe77e2503cc2b0f1bf0f1b0ca342a9105121af49a3da6871627b654c2e59093</guid>
@@ -117,20 +130,6 @@
       <georss:point>48.180312 16.260180</georss:point>
       <description>→ Ghelengasse 28. Stop relocation of line 54B towards St. Veiter Tor. Reason: roadworks. → Ghelengasse opposite 32. Stop relocation of line 54B … [Until Fri 13.11.]</description>
       <content:encoded><![CDATA[→ Ghelengasse 28. Stop relocation of line 54B towards St. Veiter Tor. Reason: roadworks. → Ghelengasse opposite 32. Stop relocation of line 54B …<br/>[Until Fri 13.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[39B: Cemetery service]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">d5d2e1b8a8de2a9c25c8fafd757a1841d8c1bd7f80a0f56979c9659f0d027de0</guid>
-      <pubDate>Wed, 11 Nov 2026 15:55:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 11 Nov 2026 16:30:46 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 11 Nov 2026 15:55:00 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 24 Dec 2026 17:00:00 +0100</ext:ends_at>
-      <description>Commissioning of a bus line. On the occasion of the 24. December, the 39B bus line will be put into operation and various lines will be led to cemeteries. [Until 24.12.]</description>
-      <content:encoded><![CDATA[Commissioning of a bus line. On the occasion of the 24. December, the 39B bus line will be put into operation and various lines will be led to cemeteries.<br/>[Until 24.12.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[65A: Triester Straße, Rossakgasse]]></title>

@@ -1,5 +1,90 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R1362-102|2026-11-12T09:59:48.000+0100|Fahrtbehinderung\nwegen Stromstörung",
+   "name": "R1362-102",
+   "title": "Fahrtbehinderung\nwegen Stromstörung",
+   "end": "2026-11-12T11:39:00.000+0100",
+   "incident": "I20261112-0018"
+  },
+  {
+   "key": "R1363-102|2026-11-12T09:59:48.000+0100|Fahrtbehinderung\nwegen Stromstörung",
+   "name": "R1363-102",
+   "title": "Fahrtbehinderung\nwegen Stromstörung",
+   "end": "2026-11-12T11:39:00.000+0100",
+   "incident": "I20261112-0018"
+  },
+  {
+   "key": "R1364-102|2026-11-12T09:59:48.000+0100|Fahrtbehinderung\nwegen Stromstörung",
+   "name": "R1364-102",
+   "title": "Fahrtbehinderung\nwegen Stromstörung",
+   "end": "2026-11-12T11:39:00.000+0100",
+   "incident": "I20261112-0018"
+  },
+  {
+   "key": "R1365-102|2026-11-12T09:50:17.000+0100|Fahrtbehinderung\nwegen Stromstörung",
+   "name": "R1365-102",
+   "title": "Fahrtbehinderung\nwegen Stromstörung",
+   "end": "2026-11-12T11:39:00.000+0100",
+   "incident": "I20261112-0018"
+  },
+  {
+   "key": "R1366-102|2026-11-12T09:51:48.000+0100|Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "name": "R1366-102",
+   "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "end": "2026-11-12T11:38:00.000+0100",
+   "incident": "I20261112-0018"
+  },
+  {
+   "key": "R1367-102|2026-11-12T09:51:48.000+0100|Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "name": "R1367-102",
+   "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "end": "2026-11-12T11:38:00.000+0100",
+   "incident": "I20261112-0018"
+  },
+  {
+   "key": "R1368-102|2026-11-12T09:51:48.000+0100|Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "name": "R1368-102",
+   "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "end": "2026-11-12T11:38:00.000+0100",
+   "incident": "I20261112-0018"
+  },
+  {
+   "key": "R548-102|2026-11-12T09:59:47.000+0100|Stromstörung\nUmleitung über Linien 9 + 43 nach Dornbach",
+   "name": "R548-102",
+   "title": "Stromstörung\nUmleitung über Linien 9 + 43 nach Dornbach",
+   "end": "2026-11-12T11:40:00.000+0100",
+   "incident": "I20261112-0018"
+  },
+  {
+   "key": "R560-102|2026-11-12T09:51:47.000+0100|Stromstörung\nUmleitung über Linien 43 + 9 zum Johann-Nepomuk-Berger-Platz",
+   "name": "R560-102",
+   "title": "Stromstörung\nUmleitung über Linien 43 + 9 zum Johann-Nepomuk-Berger-Platz",
+   "end": "2026-11-12T11:38:00.000+0100",
+   "incident": "I20261112-0018"
+  },
+  {
+   "key": "R561-102|2026-11-12T09:51:47.000+0100|Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "name": "R561-102",
+   "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "end": "2026-11-12T11:38:00.000+0100",
+   "incident": "I20261112-0018"
+  },
+  {
+   "key": "R562-102|2026-11-12T09:51:47.000+0100|Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "name": "R562-102",
+   "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+   "end": "2026-11-12T11:38:00.000+0100",
+   "incident": "I20261112-0018"
+  },
+  {
+   "key": "R588-102|2026-11-12T09:50:17.000+0100|Fahrtbehinderung\nwegen Stromstörung",
+   "name": "R588-102",
+   "title": "Fahrtbehinderung\nwegen Stromstörung",
+   "end": "2026-11-12T11:39:00.000+0100",
+   "incident": "I20261112-0018"
+  }
+ ]
 }
