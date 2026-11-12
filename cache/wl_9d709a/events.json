@@ -926,6 +926,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "60: Verkehrsunfall",
+    "description": "Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "f1fe5d52a5a574694cd18960683874af6f978ac62924632bfae77052d94b803d",
+    "pubDate": "2026-11-12T09:15:00+01:00",
+    "starts_at": "2026-11-12T09:15:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=60|D=2026-11-12|TK=60 verkehrsunfall",
+    "_wl_ids": [
+      "I20261112-0015"
+    ],
+    "_incident_start": "2026-11-12T09:15:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
