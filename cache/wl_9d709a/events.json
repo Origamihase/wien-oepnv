@@ -914,22 +914,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "51A: Verkehrsüberlastung",
-    "description": "Linie 51A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "a47b90fb2db1bcb565195ef1ba3ab0d9b4357d2b69c51f7b3dc152c267284048",
-    "pubDate": "2026-11-12T07:34:00+01:00",
-    "starts_at": "2026-11-12T07:34:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=51A|D=2026-11-12|TK=51a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261112-0011"
-    ],
-    "_incident_start": "2026-11-12T07:34:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -942,22 +926,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "63A: Verkehrsunfall",
-    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "256dd0cdb2b1c0eb23186e5c51158dfe6e5a1b6abe24847907b9a52340324733",
-    "pubDate": "2026-11-12T07:57:00+01:00",
-    "starts_at": "2026-11-12T07:57:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=63A|D=2026-11-12|TK=63a verkehrsunfall",
-    "_wl_ids": [
-      "I20261112-0013"
-    ],
-    "_incident_start": "2026-11-12T07:57:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -966,22 +934,6 @@
     "starts_at": "2026-11-12T04:40:18+01:00",
     "ends_at": "2026-11-13T01:00:00+01:00",
     "_identity": "wl|störung|L=66A|D=2026-11-12|TK=busse halten salvatorianerplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "73A: Verkehrsüberlastung",
-    "description": "Linie 73A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "940daac2fef212c9cddd5440d3809d24aa7da2f2e101a94668be35f7543dd90e",
-    "pubDate": "2026-11-12T07:48:00+01:00",
-    "starts_at": "2026-11-12T07:48:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=73A|D=2026-11-12|TK=73a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261112-0012"
-    ],
-    "_incident_start": "2026-11-12T07:48:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1006,6 +958,22 @@
     "starts_at": "2026-11-12T00:00:01+01:00",
     "ends_at": "2026-11-12T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-12|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Verkehrsüberlastung",
+    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d",
+    "pubDate": "2026-11-12T08:54:00+01:00",
+    "starts_at": "2026-11-12T08:54:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=O|D=2026-11-12|TK=o verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261112-0014"
+    ],
+    "_incident_start": "2026-11-12T08:54:00+01:00"
   },
   {
     "source": "Wiener Linien",
