@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "description": "Contradictions between the sources of a Wiener-Linien item (time fields, title date, 'Zeitraum:' text) and how src/providers/wl_plausibility.py settled them: year_conflict, begin_after_end, unconfirmed_lead, source_start_after_end. One record per kind and WL title; days in Europe/Vienna.",
+  "description": "Contradictions between the sources of a Wiener-Linien item (time fields, title date, 'Zeitraum:' text) and how src/providers/wl_plausibility.py settled them: year_conflict, stale_year, begin_after_end, unconfirmed_lead, source_start_after_end. One record per kind and WL title; days in Europe/Vienna.",
   "anomalies": [
     {
       "kind": "year_conflict",
@@ -33,6 +33,14 @@
       "last_seen": "2026-10-16",
       "days_seen": 1,
       "detail": "Titel nennt 20.10.2026, Ende ist 16.10.2026; Titeldatum verworfen"
+    },
+    {
+      "kind": "stale_year",
+      "title": "38B, 39B: Friedhofsverkehr",
+      "first_seen": "2026-11-12",
+      "last_seen": "2026-11-12",
+      "days_seen": 1,
+      "detail": "Zeitraum 24.12.2024 liegt vor der Veröffentlichung 11.11.2026; gilt 24.12.2026 (Jahr einer älteren Meldung, Ende 24.12.2026)"
     }
   ]
 }
