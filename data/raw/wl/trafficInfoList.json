@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261112-0010, I20261112-0008, I20261112-0014, I20261112-0015, I20261020-0029, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261112-0015, I20261112-0016-F01, I20261112-0019, I20260925-0011, I20260909-0007, I20261112-0018, I20261112-0010, I20261020-0029, I20261112-0014, I20261112-0020"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1884-101, R1881-101, R1883-101, R318-437, R293-474, R3886-480, R2558-125, R1882-101, R1875-101, R1876-101, R1880-101, R2373-125, R2373-127, R2343-626, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R401-101, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1880-101, R1876-101, R1875-101, R1883-101, R1884-101, R3886-480, R2558-125, R293-474, R318-437, R1882-101, R1881-101, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R2345-127, R2380-627, R401-101, R1974-466, R1199-205, R500-101, R1365-102, R588-102, R588-110, R586-110, R587-110, R566-110, R568-110, R564-110, R565-110, R563-110, R556-102, R562-102, R561-102, R560-102, R248-102, R247-102, R1366-102, R1367-102, R1368-102, R561-110, R562-110, R3468-110, R548-102, R1364-102, R1362-102, R1363-102, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -175,51 +175,6 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U4: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261112-0008",
-    "owner": "WL",
-    "parentName": "I20261112-0008",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 304,
-      "lineName": "U4",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T06:37:00.000+0100",
-     "lastUpdate": "2026-11-12T06:37:00.000+0100",
-     "resume": "2026-11-12T06:37:00.000+0100",
-     "start": "2026-11-12T06:37:00.000+0100"
-    },
-    "title": "U4: Verspätungen"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
       "U1": "ptMetro"
      }
     },
@@ -351,6 +306,196 @@
     "title": "60: Verkehrsunfall"
    },
    {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "U4": "ptMetro"
+     }
+    },
+    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U4: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261112-0016-F01",
+    "owner": "WL",
+    "parentName": "I20261112-0016",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 304,
+      "lineName": "U4",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4427
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T09:47:00.000+0100",
+     "lastUpdate": "2026-11-12T09:47:00.000+0100",
+     "resume": "2026-11-12T09:47:00.000+0100",
+     "start": "2026-11-12T09:42:00.000+0100"
+    },
+    "title": "U4: Polizeieinsatz"
+   },
+   {
+    "alertCause": "overhead wire failure",
+    "alertCauseId": 39,
+    "attributes": {
+     "relatedLineTypes": {
+      "10": "ptTram",
+      "2": "ptTram"
+     }
+    },
+    "description": "Linie 2: Betrieb nur zwischen Friedrich-Engels-Platz und Johann-Nepomuk-Berger-Platz. Linie 10: Betrieb nur zwischen Unter St. Veit, Hummelgasse und Ottakring, Maroltingergasse. Voraussichtliche Dauer: 11:00 Uhr. Grund: Fahrleitungsgebrechen im Bereich Sandleitengasse.",
+    "descriptionHTML": "<p><strong>Linie 2: </strong><br>Betrieb nur zwischen Friedrich-Engels-Platz und Johann-Nepomuk-Berger-Platz.<br>Linie 10:<br>Betrieb nur zwischen Unter St. Veit, Hummelgasse und Ottakring, Maroltingergasse.</p><p>Voraussichtliche Dauer: 11:00 Uhr.</p><p>Grund: Fahrleitungsgebrechen im Bereich Sandleitengasse.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><strong>Linie 2: </strong><br>Betrieb nur zwischen Friedrich-Engels-Platz und Johann-Nepomuk-Berger-Platz.<br>Linie 10:<br>Betrieb nur zwischen Unter St. Veit, Hummelgasse und Ottakring, Maroltingergasse.</p><p>Voraussichtliche Dauer: 11:00 Uhr.</p><p>Grund: Fahrleitungsgebrechen im Bereich Sandleitengasse.</p>",
+       "descriptionPlain": "Linie 2: Betrieb nur zwischen Friedrich-Engels-Platz und Johann-Nepomuk-Berger-Platz. Linie 10: Betrieb nur zwischen Unter St. Veit, Hummelgasse und Ottakring, Maroltingergasse. Voraussichtliche Dauer: 11:00 Uhr. Grund: Fahrleitungsgebrechen im Bereich Sandleitengasse.",
+       "title": "2, 10: Beschädigte Oberleitung"
+      }
+     }
+    ],
+    "location": "Sandleitengasse",
+    "name": "I20261112-0018",
+    "owner": "WL",
+    "parentName": "I20261112-0018",
+    "priority": "1",
+    "reasonId": 23,
+    "reasonName": "Fahrleitungsgebrechen",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2",
+     "10"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 102,
+      "lineName": "2",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 110,
+      "lineName": "10",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T09:50:00.000+0100",
+     "lastUpdate": "2026-11-12T09:56:00.000+0100",
+     "start": "2026-11-12T09:49:00.000+0100"
+    },
+    "title": "2, 10: Beschädigte Oberleitung"
+   },
+   {
+    "alertCause": "vandalism",
+    "alertCauseId": 16,
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
+       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+       "title": "U3: Verunreinigung"
+      }
+     }
+    ],
+    "name": "I20261112-0019",
+    "owner": "WL",
+    "parentName": "I20261112-0019",
+    "priority": "1",
+    "reasonId": 36,
+    "reasonName": "Verunreinigung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T09:50:00.000+0100",
+     "lastUpdate": "2026-11-12T09:50:00.000+0100",
+     "resume": "2026-11-12T09:50:00.000+0100",
+     "start": "2026-11-12T09:50:00.000+0100"
+    },
+    "title": "U3: Verunreinigung"
+   },
+   {
+    "alertCause": "miscellaneous",
+    "alertCauseId": 137,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+       "title": "U6: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261112-0020",
+    "owner": "WL",
+    "parentName": "I20261112-0020",
+    "priority": "1",
+    "reasonId": 14,
+    "reasonName": "Betriebsstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T09:59:00.000+0100",
+     "lastUpdate": "2026-11-12T09:59:00.000+0100",
+     "resume": "2026-11-12T09:58:00.000+0100",
+     "start": "2026-11-12T09:58:00.000+0100"
+    },
+    "title": "U6: Verspätungen"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -372,6 +517,167 @@
      "start": "2026-11-12T04:45:18.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R1362-102",
+    "owner": "WL",
+    "parentName": "R1362-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1362
+    ],
+    "time": {
+     "end": "2026-11-12T10:59:00.000+0100",
+     "start": "2026-11-12T09:59:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R1363-102",
+    "owner": "WL",
+    "parentName": "R1363-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1363
+    ],
+    "time": {
+     "end": "2026-11-12T10:59:00.000+0100",
+     "start": "2026-11-12T09:59:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R1364-102",
+    "owner": "WL",
+    "parentName": "R1364-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1364
+    ],
+    "time": {
+     "end": "2026-11-12T10:59:00.000+0100",
+     "start": "2026-11-12T09:59:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R1365-102",
+    "owner": "WL",
+    "parentName": "R1365-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1365
+    ],
+    "time": {
+     "end": "2026-11-12T10:59:00.000+0100",
+     "start": "2026-11-12T09:50:17.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R1366-102",
+    "owner": "WL",
+    "parentName": "R1366-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1366
+    ],
+    "time": {
+     "end": "2026-11-12T10:58:00.000+0100",
+     "start": "2026-11-12T09:51:48.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R1367-102",
+    "owner": "WL",
+    "parentName": "R1367-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1367
+    ],
+    "time": {
+     "end": "2026-11-12T10:58:00.000+0100",
+     "start": "2026-11-12T09:51:48.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R1368-102",
+    "owner": "WL",
+    "parentName": "R1368-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1368
+    ],
+    "time": {
+     "end": "2026-11-12T10:58:00.000+0100",
+     "start": "2026-11-12T09:51:48.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -859,6 +1165,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R247-102",
+    "owner": "WL",
+    "parentName": "R247-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     247
+    ],
+    "time": {
+     "end": "2026-11-12T10:51:00.000+0100",
+     "start": "2026-11-12T09:51:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R248-102",
+    "owner": "WL",
+    "parentName": "R248-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     248
+    ],
+    "time": {
+     "end": "2026-11-12T10:51:00.000+0100",
+     "start": "2026-11-12T09:51:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
     "name": "R2558-125",
     "owner": "WL",
@@ -928,6 +1280,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Maroltingergasse",
+    "name": "R3468-110",
+    "owner": "WL",
+    "parentName": "R3468-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     3468
+    ],
+    "time": {
+     "end": "2026-11-12T10:57:00.000+0100",
+     "start": "2026-11-12T09:57:52.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Maroltingergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
     "name": "R3886-480",
     "owner": "WL",
@@ -993,6 +1368,374 @@
      "start": "2026-11-12T05:00:19.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R548-102",
+    "owner": "WL",
+    "parentName": "R548-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     548
+    ],
+    "time": {
+     "end": "2026-11-12T10:59:00.000+0100",
+     "start": "2026-11-12T09:59:47.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R556-102",
+    "owner": "WL",
+    "parentName": "R556-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     556
+    ],
+    "time": {
+     "end": "2026-11-12T10:51:00.000+0100",
+     "start": "2026-11-12T09:51:47.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R560-102",
+    "owner": "WL",
+    "parentName": "R560-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     560
+    ],
+    "time": {
+     "end": "2026-11-12T10:58:00.000+0100",
+     "start": "2026-11-12T09:51:47.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R561-102",
+    "owner": "WL",
+    "parentName": "R561-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     561
+    ],
+    "time": {
+     "end": "2026-11-12T10:58:00.000+0100",
+     "start": "2026-11-12T09:51:47.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Maroltingergasse",
+    "name": "R561-110",
+    "owner": "WL",
+    "parentName": "R561-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     561
+    ],
+    "time": {
+     "end": "2026-11-12T10:57:00.000+0100",
+     "start": "2026-11-12T09:57:47.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Maroltingergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R562-102",
+    "owner": "WL",
+    "parentName": "R562-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     562
+    ],
+    "time": {
+     "end": "2026-11-12T10:58:00.000+0100",
+     "start": "2026-11-12T09:51:47.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Maroltingergasse",
+    "name": "R562-110",
+    "owner": "WL",
+    "parentName": "R562-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     562
+    ],
+    "time": {
+     "end": "2026-11-12T10:57:00.000+0100",
+     "start": "2026-11-12T09:57:47.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Maroltingergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nEinstieg bei Linie 44",
+    "name": "R563-110",
+    "owner": "WL",
+    "parentName": "R563-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     563
+    ],
+    "time": {
+     "end": "2026-11-12T10:57:00.000+0100",
+     "start": "2026-11-12T09:51:17.000+0100"
+    },
+    "title": "Stromstörung\nEinstieg bei Linie 44"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R564-110",
+    "owner": "WL",
+    "parentName": "R564-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     564
+    ],
+    "time": {
+     "end": "2026-11-12T10:50:00.000+0100",
+     "start": "2026-11-12T09:51:17.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R565-110",
+    "owner": "WL",
+    "parentName": "R565-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     565
+    ],
+    "time": {
+     "end": "2026-11-12T10:50:00.000+0100",
+     "start": "2026-11-12T09:51:17.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R566-110",
+    "owner": "WL",
+    "parentName": "R566-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     566
+    ],
+    "time": {
+     "end": "2026-11-12T10:50:00.000+0100",
+     "start": "2026-11-12T09:51:17.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R568-110",
+    "owner": "WL",
+    "parentName": "R568-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     568
+    ],
+    "time": {
+     "end": "2026-11-12T10:50:00.000+0100",
+     "start": "2026-11-12T09:51:17.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R586-110",
+    "owner": "WL",
+    "parentName": "R586-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     586
+    ],
+    "time": {
+     "end": "2026-11-12T10:57:00.000+0100",
+     "start": "2026-11-12T09:50:47.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R587-110",
+    "owner": "WL",
+    "parentName": "R587-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     587
+    ],
+    "time": {
+     "end": "2026-11-12T10:57:00.000+0100",
+     "start": "2026-11-12T09:50:47.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R588-102",
+    "owner": "WL",
+    "parentName": "R588-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     588
+    ],
+    "time": {
+     "end": "2026-11-12T10:59:00.000+0100",
+     "start": "2026-11-12T09:50:17.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R588-110",
+    "owner": "WL",
+    "parentName": "R588-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     588
+    ],
+    "time": {
+     "end": "2026-11-12T10:57:00.000+0100",
+     "start": "2026-11-12T09:50:47.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
    },
    {
     "alertCause": "undefined alert cause",
