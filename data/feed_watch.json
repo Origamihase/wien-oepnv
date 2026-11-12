@@ -1,13 +1,21 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-12T05:01:07.415987+00:00",
- "built": "2026-11-12T06:00:52+01:00",
+ "updated": "2026-11-12T05:31:02.302542+00:00",
+ "built": "2026-11-12T06:30:49+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-12T06:00:52+01:00",
+  "built": "2026-11-12T06:30:49+01:00",
   "items": [
+   {
+    "title": "U2: Feuerwehreinsatz",
+    "time_line": "Seit 06:10"
+   },
+   {
+    "title": "6/11: Polizeieinsatz",
+    "time_line": "Seit 06:11"
+   },
    {
     "title": "U6: Verunreinigung",
     "time_line": "Seit 05:56"
@@ -38,14 +46,6 @@
    },
    {
     "title": "5A/N31: Obere Augartenstraße",
-    "time_line": "Seit 09.11."
-   },
-   {
-    "title": "5B: Bauarbeiten",
-    "time_line": "Bis 10.12."
-   },
-   {
-    "title": "31: Wexstraße",
     "time_line": "Seit 09.11."
    }
   ]
@@ -6751,17 +6751,37 @@
     "oebb": 6,
     "wl": 82
    }
+  },
+  {
+   "t": "2026-11-12T05:31:02.302542+00:00",
+   "raw": {
+    "wl-stoerungen": 55,
+    "wl-hinweise": 76,
+    "oebb": 192,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 15,
+    "oebb": 166,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 84
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-12T05:01:07.415987+00:00"
+   "last_ok": "2026-11-12T05:31:02.302542+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-12T05:01:07.415987+00:00"
+   "last_ok": "2026-11-12T05:31:02.302542+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-12T05:01:07.415987+00:00"
+   "last_ok": "2026-11-12T05:31:02.302542+00:00"
   }
  }
 }

@@ -674,6 +674,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "6/11: Polizeieinsatz",
+    "description": "Linie 6: Betrieb nur zwischen Burggasse, Stadthalle U und Reumannplatz U. Linie 11: Umleitung in Richtung Otto-Probst-Platz zwischen Absberggasse und Quellenplatz über Hauptbahnhof S U. Voraussichtliche Dauer: 07:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Gellertplatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "ecbae73ed8dbc02289fce68ed609bdade8afb52216c1ad34322b4dc19c223770",
+    "pubDate": "2026-11-12T06:11:00+01:00",
+    "starts_at": "2026-11-12T06:11:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=11,6|D=2026-11-12|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261112-0007"
+    ],
+    "_incident_start": "2026-11-12T06:11:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -958,6 +974,22 @@
     "starts_at": "2026-11-12T00:00:01+01:00",
     "ends_at": "2026-11-12T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-12|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Feuerwehreinsatz",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "156f715adb25cf23079ca64d919d0b82ddae6fd1a12f508776403b4bff80f501",
+    "pubDate": "2026-11-12T06:10:00+01:00",
+    "starts_at": "2026-11-12T06:10:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U2|D=2026-11-12|TK=feuerwehreinsatz",
+    "_wl_ids": [
+      "I20261112-0006"
+    ],
+    "_incident_start": "2026-11-12T06:10:00+01:00"
   },
   {
     "source": "Wiener Linien",
