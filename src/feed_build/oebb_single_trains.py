@@ -17,7 +17,9 @@ by number or as "einzelne" trains (:data:`_SINGLE_TRAINS_RE`):
 * "… die Züge REX6(7777), S60(26085), S60(26086) und REX6(7776) …", "… die
   Züge REX 1 (2334, 2338 und 2342) nicht fahren."
 
-"Einige" trains without numbers stay: "einige Nahverkehrszüge nicht fahren"
+"Einige" trains without numbers stay (operator decision of 2026-11-12, card
+"Zählen ÖBB-Meldungen über „einige Züge“ ohne Zugnummer auch als
+Einzelzüge?", answer "Nein, sie bleiben im Feed"): "einige Nahverkehrszüge nicht fahren"
 (Wien Hbf ↔ Gramatneusiedl/Götzendorf/Bruck an der Leitha from 08.03. to
 22.06.2026), "einige REX 1-Züge … können in Wien Mitte-Landstraße, Wien
 Praterstern … nicht halten" say that the section runs fewer trains, often for
