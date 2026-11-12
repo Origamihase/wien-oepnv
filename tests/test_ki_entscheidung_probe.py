@@ -167,14 +167,30 @@ def test_a_block_no_model_answered_is_put_again_in_the_next_pass(tmp_path: Path,
     assert pauses == []
 
 
-def test_a_missing_or_empty_collection_is_reported(tmp_path: Path) -> None:
+def test_a_collection_without_an_unclear_case_is_reported(tmp_path: Path) -> None:
     empty = tmp_path / "data" / "faelle.json"
     empty.parent.mkdir()
     empty.write_text('{"faelle": [{"jetzt": "kein Datum"}, 7]}', encoding="utf-8")
-    for path in (empty, tmp_path / "data" / "fehlt.json"):
-        assert probe.run_probe(path, ask=lambda descriptions: ChainAnswer(None, "", 0, False)).rstrip().endswith(
-            "- Ergebnis: nicht gefragt (keine Meldung der Sammlung ist nach den Regeln unklar)"
-        )
+    assert probe.run_probe(empty, ask=lambda descriptions: ChainAnswer(None, "", 0, False)).rstrip().endswith(
+        "- Ergebnis: nicht gefragt (keine Meldung der Sammlung ist nach den Regeln unklar)"
+    )
+
+
+@pytest.mark.parametrize("text", ["{kein JSON", '{"faelle": {"1": {}}}', "[]", None])
+def test_a_collection_that_cannot_be_read_stops_the_probe(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str], text: str | None
+) -> None:
+    """A broken file must not read like "no unclear case": no report, exit code 2."""
+    broken = tmp_path / "data" / "faelle.json"
+    broken.parent.mkdir()
+    if text is not None:
+        broken.write_text(text, encoding="utf-8")
+    with pytest.raises(probe.CasesUnreadable):
+        probe.run_probe(broken, ask=lambda descriptions: ChainAnswer(None, "", 0, False))
+    if text is not None:  # the missing file is caught before, by its own message
+        with pytest.raises(SystemExit) as stopped:
+            probe.main(["--cases", str(broken)], ask=lambda descriptions: ChainAnswer(None, "", 0, False))
+        assert stopped.value.code == 2 and "Fallsammlung nicht lesbar" in capsys.readouterr().err
 
 
 # ---- the workflow ------------------------------------------------------------

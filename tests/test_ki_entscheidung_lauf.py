@@ -3,8 +3,8 @@
 Owner's decision of 2026-11-12 (Michael, card "Soll ich die
 Gemini-Entscheidung für unklare Fälle so bauen?": "Ja, so bauen"): the
 model answers only "ploetzlich", "geplant" or "unklar", the answer is kept
-per message, the Lite models are asked first, at most six requests a day,
-and without an answer the rules decide and the build does not wait. No
+per message, the Lite models are asked first, at most six asking builds a
+day, and without an answer the rules decide and the build does not wait. No
 test here reaches the network: ``request_safe`` of the connector is
 replaced by a fake.
 """
@@ -460,13 +460,19 @@ def test_more_than_four_messages_wait_for_the_next_build(monkeypatch: pytest.Mon
     assert [item.get("_ki_art") for item in second] == ["geplant"] * 4 + ["ploetzlich"]
 
 
-def test_the_window_ends_to_the_second(monkeypatch: pytest.MonkeyPatch) -> None:
-    key = _key_of(_tokio())
+@pytest.mark.parametrize("edge", ["first_seen", "begin"])
+def test_the_window_ends_to_the_second(monkeypatch: pytest.MonkeyPatch, edge: str) -> None:
+    """Both ends of the window: the moment the feed first held the message, and the begin it would show."""
     for late, asked in ((timedelta(0), 1), (timedelta(seconds=1), 0)):
         calls = _fake(monkeypatch, [_ok((1, "unklar"))])
-        now = START + run.ASK_WINDOW + late
-        seen = (now - run.ASK_WINDOW - late).astimezone(UTC).isoformat()
-        _build([_tokio(f"{asked}: Züge halten in Tokiostraße")], now, state={key: {"first_seen": seen}})
+        old = NOW - run.ASK_WINDOW - late
+        title = f"{asked}: Züge halten in Tokiostraße"
+        if edge == "first_seen":  # begun five minutes ago, in the feed for the whole window
+            item = _tokio(title, NOW - timedelta(minutes=5))
+            state: dict[str, Any] = {_key_of(item): {"first_seen": old.astimezone(UTC).isoformat()}}
+        else:  # new to the feed, begun the whole window ago
+            item, state = _tokio(title, old), {}
+        _build([item], NOW, state=state)
         assert len(calls) == asked
 
 

@@ -24,8 +24,9 @@ feed changes. The report goes to stdout and, in a workflow, to the step
 summary. The key comes from ``GEMINI_API_KEY``; without it the script says
 so and asks nothing.
 
-Exit code 0 unless the arguments are wrong: a busy Gemini or an answer
-that differs from the expectation is a result to read.
+Exit code 0 unless the arguments are wrong or the cases file cannot be
+read: a busy Gemini or an answer that differs from the expectation is a
+result to read.
 """
 
 from __future__ import annotations
@@ -67,6 +68,10 @@ _TIME_FIELDS = ("pubDate", "starts_at", "ends_at", "_incident_start")
 Ask = Callable[[Sequence[str]], ChainAnswer[dict[int, tuple[str, str]]]]
 
 
+class CasesUnreadable(ValueError):
+    """The cases file is missing, too large, no JSON or holds no list under ``faelle``."""
+
+
 def _item(raw: object) -> FeedItem | None:
     """A message of the cases file as the feed chain holds it (times as ``datetime``)."""
     if not isinstance(raw, dict):
@@ -83,11 +88,17 @@ def _item(raw: object) -> FeedItem | None:
 
 
 def load_cases(path: Path) -> list[tuple[dict[str, Any], Candidate, list[FeedItem]]]:
-    """The cases of *path* that the rules still leave unclear: (case, candidate, all messages of that moment)."""
+    """The cases of *path* that the rules still leave unclear: (case, candidate, all messages of that moment).
+
+    Raises :class:`CasesUnreadable` when the file gives no list of cases, so
+    a broken collection does not read like one without an unclear message.
+    """
     data = read_capped_json(path, MAX_CASES_BYTES, label="ki_entscheidung_faelle", logger=LOGGER)
     raw_cases = data.get("faelle") if isinstance(data, dict) else None
+    if not isinstance(raw_cases, list):
+        raise CasesUnreadable(str(path))
     cases: list[tuple[dict[str, Any], Candidate, list[FeedItem]]] = []
-    for raw in raw_cases if isinstance(raw_cases, list) else []:
+    for raw in raw_cases:
         if not isinstance(raw, dict):
             continue
         item = _item(raw.get("meldung"))
@@ -228,7 +239,10 @@ def main(argv: Sequence[str] | None = None, *, ask: Ask | None = None) -> int:
     if not args.cases.is_file():
         parser.error(f"Fallsammlung nicht gefunden: {args.cases}")
     setup_script_logging()
-    report = run_probe(args.cases, ask=ask, passes=args.passes, pause_s=args.pause)
+    try:
+        report = run_probe(args.cases, ask=ask, passes=args.passes, pause_s=args.pause)
+    except CasesUnreadable:
+        parser.error(f"Fallsammlung nicht lesbar (kein JSON mit einer Liste unter „faelle“): {args.cases}")
     print(report)
     _write_summary(report)
     return 0

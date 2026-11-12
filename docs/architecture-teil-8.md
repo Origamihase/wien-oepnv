@@ -315,12 +315,13 @@ die 20 unklaren Meldungen des Nachspiels vor, jede mit den anderen Meldungen
 ihrer Linien zu ihrem Zeitpunkt und mit der Antwort, die ein Leser der Quelle
 erwartet (`data/samples/ki_entscheidung_faelle.json`). Er fragt wie der Build
 (derselbe Prompt, dieselbe Kette, vier Meldungen je Anfrage), wiederholt einen
-Block ohne Antwort einmal und speichert nichts. Drei Läufe am 12.11.2026,
+Block ohne Antwort einmal und speichert nichts. Vier Läufe am 12.11.2026,
 alle bei zeitweise überlasteten Modellen: um 18:57 Uhr (Wiener Zeit, noch acht
 Meldungen je Anfrage) 8 von 20 beantwortet, alle wie erwartet; um 19:15 Uhr 16
 von 20, davon 15 wie erwartet („44A: Fahrplanaushang bitte beachten“ `unklar`
 statt `geplant`, was im Feed dasselbe ergibt); um 19:21 Uhr 20 von 20
-beantwortet und alle wie erwartet, alle von einem Lite-Modell. Eine
+beantwortet und alle wie erwartet, alle von einem Lite-Modell; um 19:29 Uhr
+wieder 20 von 20 beantwortet, 19 wie erwartet (erneut „44A“ `unklar`). Eine
 beantwortete Anfrage mit vier Meldungen dauerte 5 bis 10 Sekunden. Darunter die Fälle, die nur die Nachbarn entscheiden: „26: Züge
 halten in Tokiostraße“ `geplant` („Andere Meldung derselben Linie kündigt
 Gleisbauarbeiten an“), „9: Züge halten bei Linie 52“ `ploetzlich` („Die andere

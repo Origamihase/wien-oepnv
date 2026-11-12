@@ -148,7 +148,7 @@ def _asked_moments(records: Iterable[Mapping[str, Any]]) -> set[str]:
 
 
 def requests_on(records: Mapping[str, Mapping[str, Any]], day: date) -> int:
-    """How many requests the records show for the Vienna day *day* (one moment, one request)."""
+    """How many builds asked on the Vienna day *day* (one moment per asking build, however many models it tried)."""
     count = 0
     for moment in _asked_moments(records.values()):
         try:
