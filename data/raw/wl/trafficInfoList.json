@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261112-0005, I20261112-0006, I20261112-0007"
+    "trafficInfoNameList": "I20261112-0008, I20261112-0005, I20260925-0011, I20260909-0007, I20261112-0006, I20261112-0007-F01, I20261112-0007-F02, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R2558-125, R3886-480, R293-474, R2380-627, R2373-126, R2379-627, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R401-101, R1974-466, R1199-205, R500-101, R423-106, R411-106, R426-106, R425-106, R424-106, R421-106, R422-106, R1926-111, R1925-111, R423-111, R421-111, R422-111, R2254-111, R418-111, R416-111, R3434-111, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R2558-125, R3886-480, R293-474, R2379-627, R2373-126, R2380-627, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R401-101, R1974-466, R1199-205, R500-101, R411-106, R426-106, R425-106, R424-106, R423-106, R422-106, R421-106, R1925-111, R1926-111, R423-111, R421-111, R422-111, R2254-111, R416-111, R418-111, R3434-111, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -265,22 +265,21 @@
     "alertCauseId": 3,
     "attributes": {
      "relatedLineTypes": {
-      "11": "ptTram",
       "6": "ptTram"
      }
     },
-    "description": "Linie 6: Betrieb nur zwischen Burggasse, Stadthalle U und Reumannplatz U. Linie 11: Umleitung in Richtung Otto-Probst-Platz zwischen Absberggasse und Quellenplatz über Hauptbahnhof S U. Voraussichtliche Dauer: 07:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Gellertplatz.",
-    "descriptionHTML": "<p>Linie 6:<br>Betrieb nur zwischen Burggasse, Stadthalle U und Reumannplatz U.<br>Linie 11:<br>Umleitung in Richtung Otto-Probst-Platz<br>zwischen Absberggasse und Quellenplatz <br>über Hauptbahnhof S U.</p><p>Voraussichtliche Dauer: 07:00 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Gellertplatz.</p>",
+    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 6:<br>Betrieb nur zwischen Burggasse, Stadthalle U und Reumannplatz U.<br>Linie 11:<br>Umleitung in Richtung Otto-Probst-Platz<br>zwischen Absberggasse und Quellenplatz <br>über Hauptbahnhof S U.</p><p>Voraussichtliche Dauer: 07:00 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Gellertplatz.</p>",
-       "descriptionPlain": "Linie 6: Betrieb nur zwischen Burggasse, Stadthalle U und Reumannplatz U. Linie 11: Umleitung in Richtung Otto-Probst-Platz zwischen Absberggasse und Quellenplatz über Hauptbahnhof S U. Voraussichtliche Dauer: 07:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Gellertplatz.",
-       "title": "6, 11: Polizeieinsatz"
+       "descriptionHtml": "<p>Linie 6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "6: Polizeieinsatz"
       }
      }
     ],
-    "name": "I20261112-0007",
+    "name": "I20261112-0007-F01",
     "owner": "WL",
     "parentName": "I20261112-0007",
     "priority": "1",
@@ -288,15 +287,57 @@
     "reasonName": "Polizeieinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "6",
-     "11"
+     "6"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 106,
       "lineName": "6",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "relatedStops": [
+     405
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T06:35:00.000+0100",
+     "lastUpdate": "2026-11-12T06:35:00.000+0100",
+     "resume": "2026-11-12T06:35:00.000+0100",
+     "start": "2026-11-12T06:11:00.000+0100"
+    },
+    "title": "6: Polizeieinsatz"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "11": "ptTram"
+     }
+    },
+    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "11: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261112-0007-F02",
+    "owner": "WL",
+    "parentName": "I20261112-0007",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 111,
       "lineName": "11",
@@ -308,11 +349,57 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-12T06:12:00.000+0100",
-     "lastUpdate": "2026-11-12T06:14:00.000+0100",
+     "created": "2026-11-12T06:35:00.000+0100",
+     "lastUpdate": "2026-11-12T06:35:00.000+0100",
+     "resume": "2026-11-12T06:35:00.000+0100",
      "start": "2026-11-12T06:11:00.000+0100"
     },
-    "title": "6, 11: Polizeieinsatz"
+    "title": "11: Polizeieinsatz"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U4": "ptMetro"
+     }
+    },
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U4: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261112-0008",
+    "owner": "WL",
+    "parentName": "I20261112-0008",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 304,
+      "lineName": "U4",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T06:37:00.000+0100",
+     "lastUpdate": "2026-11-12T06:37:00.000+0100",
+     "resume": "2026-11-12T06:37:00.000+0100",
+     "start": "2026-11-12T06:37:00.000+0100"
+    },
+    "title": "U4: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",
