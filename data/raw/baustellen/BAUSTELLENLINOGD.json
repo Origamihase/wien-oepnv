@@ -440,6 +440,29 @@
   {
    "geometry": {
     "first_position": [
+     16.35770241,
+     48.23739621
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": null,
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Heiligenstädter Straße 28 bis 50-52",
+    "BEZIRK": 19,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-11-02Z",
+    "OBJEKT_ENDE": "2026-11-20Z",
+    "PRESSETEXT": "Die Arbeiten erfolgen bei Nacht. Außerhalb der Arbeitszeit bleibt der Verkehr unbehindert. Die Arbeiten erfolgen abschnittsweise im Fahrbahnbereich und der Verkehr wird über das richtungsführende Gleis umgeleitet.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
      16.31447731,
      48.22388744
     ],
@@ -601,6 +624,29 @@
   {
    "geometry": {
     "first_position": [
+     16.36822664,
+     48.16477368
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Gerhard Baumann",
+    "ANSPRECHPERSON_TEL": "Tel.: 050128/32740",
+    "ANTRAGSTELLER": null,
+    "BEHINDERUNGSART": "Rohrlegung",
+    "BEZEICHNUNG": "Laxenburger Straße 104-110 bis 149",
+    "BEZIRK": 10,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-07-12Z",
+    "OBJEKT_ENDE": "2026-11-27Z",
+    "PRESSETEXT": "DieArbeiten erfolgen in der Zeit von 20:00 bis 04:00 Uhr. Es wird abschnittsweise ein Fahrstreifen in Fahrtrichtung stadtauswärts sowie in Fahrtrichtung stadteinwärts gesperrt. Die restlichen Fahrstreifen werden aufrechtgehalten. An 5 Tagen wird in der Zeit von 9:00 Uhr bis 15:00 Uhr ein Fahrstreifen in Fahrtrichtung stadteinwärts für Betonierarbeiten gesperrt. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
      16.28245933,
      48.13496719
     ],
@@ -664,6 +710,29 @@
     "OBJEKT_BEGINN": "2026-11-01Z",
     "OBJEKT_ENDE": "2026-12-18Z",
     "PRESSETEXT": "DieArbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Derrechte Fahrstreifen wird in Fahrtrichtung stadtauswärts gesperrt. Die restlichenFahrstreifen werden aufrechtgehalten. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.35404543,
+     48.19303091
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundentelefon Wiener Linien",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-7909/100",
+    "ANTRAGSTELLER": "Wiener Linien GmbH & Co KG",
+    "BEHINDERUNGSART": "U-Bahnbau",
+    "BEZEICHNUNG": "Linke Wienzeile von Hofmühlgasse und Pilgrambrücke bis Turmburggasse",
+    "BEZIRK": 6,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-11-15Z",
+    "OBJEKT_ENDE": "2027-02-26Z",
+    "PRESSETEXT": "Der rechte Fahrstreifen wird gesperrt und die zwei Geradeaus-Fahrstreifen in Fahrtrichtung stadtauswärts werden mittels Fahrbahnverschwenk unter Mitbenützung des Parkstreifens aufrecht gehalten.",
     "SE_ANNO_CAD_DATA": null
    }
   },

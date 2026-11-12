@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_725, ftazW_84, ftazW_722, ftazW_509, ftazW_575, ftazW_45"
+    "trafficInfoNameList": "ftazW_84, ftazW_722, ftazW_509, ftazW_575, ftazW_45"
    }
   ],
   "poiCategoryGroups": [
@@ -3114,45 +3114,6 @@
      "start": "2026-11-13T01:15:00.000+0100"
     },
     "title": "Heiligenstadt"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "13.11.2026 06:00",
-     "ausVon": "12.11.2026 22:00",
-     "location": "U2 Mittelbahnsteig - Passage",
-     "rbls": [
-      4203,
-      4212
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U2"
-     ],
-     "station": "Schottentor",
-     "status": "geplante Wartung",
-     "towards": "U2 beide Richtungen"
-    },
-    "description": "U2 Mittelbahnsteig - Passage",
-    "elevatorId": "SO 01",
-    "name": "ftazW_725",
-    "parentName": "ftazW_725",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedStops": [
-     4203,
-     4212
-    ],
-    "time": {
-     "end": "2026-11-13T06:00:00.000+0100",
-     "start": "2026-11-12T22:00:00.000+0100"
-    },
-    "title": "Schottentor"
    },
    {
     "alertCause": "undefined alert cause",

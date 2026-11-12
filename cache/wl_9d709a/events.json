@@ -675,17 +675,13 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "10: Fahrtbehinderung wegen Feuerwehreinsatz",
-    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "16c51ee2b2984d45bbd71989ff3d0d66e0985c8e3f7cd97f24dd849e4de65737",
     "pubDate": "2026-11-12T21:36:25+01:00",
-    "starts_at": "2026-11-12T21:37:00+01:00",
-    "ends_at": "2026-11-12T23:00:00+01:00",
-    "_identity": "wl|störung|L=10|D=2026-11-12|TK=feuerwehreinsatz",
-    "_wl_ids": [
-      "I20261112-0061"
-    ],
-    "_incident_start": "2026-11-12T21:37:00+01:00"
+    "starts_at": "2026-11-12T21:36:29+01:00",
+    "ends_at": "2026-11-12T22:36:00+01:00",
+    "_identity": "wl|störung|L=10|D=2026-11-12|TK=feuerwehreinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -986,18 +982,6 @@
       "I20261112-0060"
     ],
     "_incident_start": "2026-11-12T21:19:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "11dae11dafaf0878f07d1e1c010007790105e67c155ad06ba2cd6c87388c9e93",
-    "pubDate": "2026-11-12T21:01:25+01:00",
-    "starts_at": "2026-11-12T21:01:25+01:00",
-    "ends_at": "2026-11-12T22:20:00+01:00",
-    "_identity": "wl|störung|L=62|D=2026-11-12|TK=fahrtbehinderung schadhafter zug"
   },
   {
     "source": "Wiener Linien",
