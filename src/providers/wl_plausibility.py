@@ -13,6 +13,10 @@ The rules, in this order:
 1. **Majority on a contradiction.** A title date and a text date with the
    same day and month but different years disagree on the year only; the
    year nearer the publication wins (the publication is the third voice).
+   A begin date before the publication whose day falls, in a later year,
+   shortly after the publication and not after an end that can confirm it
+   carries the year of an older notice; that day is the begin
+   (:func:`_restated_year`, :func:`_confirming_end`).
 2. **Hard limits.** A begin date past the end is outvoted by the end. A
    begin date more than :data:`MAX_LEAD_DAYS` after the publication counts
    only when another source names it too (the other date, or an end at or
@@ -26,8 +30,9 @@ The rules, in this order:
 
 The established rules stay as they were and are no correction: an 11:11
 end gives way to the end "Zeitraum:" names, or to the one its duration
-gives (:func:`plausible_end`), a begin date only moves the start later, and
-a text date past the end is not the start but a later phase's date. An
+gives (:func:`plausible_end`), a begin date only moves the start later (a
+stale year aside, rule 1), and a text date past the end is not the start
+but a later phase's date. An
 11:11 end the text backs with neither an end nor a duration is not shown
 (:func:`end_unknown`). An end at 23:59 exactly a year after the publication
 is the same date set by hand (:func:`placeholder_end`, operator decision
@@ -109,12 +114,54 @@ def incident_begin(published: datetime | None, incident_start: datetime | None) 
 # the 47B typo above.
 MAX_LEAD_DAYS = 365
 
+# A begin date in a year before its publication is one WL carried over from
+# an older notice. "39B: Friedhofsverkehr", published 11.11.2026 15:55 for
+# a bus on Christmas Eve, read "Zeitraum: Am 24. Dezember 2024, zwischen
+# ca. 8:00 Uhr und 17:00 Uhr" beside ``time.end`` 24.12.2026 17:00; a begin
+# date before the publication counted as a phase already running, so the
+# publication stayed the start and the feed held the notice from 11.11. on
+# among what runs, "[Bis 24.12.]", as if the bus ran then. In the WL data
+# since 21.02.2026 (8,826 cache versions, raw answers since 04.10.) four
+# notices named a begin 357 to 687 days before their publication, all such
+# typos: 5B Muthgasse ("Dienstag, 17. März 2025", published 09.03.2026),
+# 53A ("Montag, 15. Juni 2025 … bis Freitag, 19. Juni 2026", published
+# 10.06.2026), N25/SEV U1 Kaisermühlen ("Ab 19. Mai 2025", published
+# 13.05.2026) and 39B. Every other begin date before its publication lay at
+# most 40 days before it, a phase already running ("18: Ende der
+# Kurzführung ab 19.12.2025", published 28.01.2026).
+#
+# The day moves into the first later year in which it is not before the
+# publication (that year's weekday is the one 5B and 53A name), when it
+# then lies at most this many days after the publication and not after an
+# end that can confirm the year (:func:`_confirming_end`: WL's own end or
+# the one the text names, never a placeholder or an estimate from a
+# duration). WL announced 99 % of the 486 measures that began after their
+# publication at most 89 days ahead (Stammstrecke phase 2, 10.06. to
+# 07.09.); the four typos 5 to 43 days. The limit keeps a measure that has
+# run for months, published anew after New Year with its first year (like
+# 18 above), from being taken for one that begins next December. What it
+# cannot tell apart is a measure running for 9 to 12 months, published anew
+# within this many days of the anniversary of its begin and beside an end
+# that confirms; there was none since 21.02.2026. Without such an end (N25:
+# 11:11) the date stays unread as before.
+#
+# Operator decision 2026-11-11 (Michael, "ja, bitte" to: a begin date before
+# the publication whose day lies, in another year, between the publication
+# and WL's real end takes that year, and the correction is recorded). Added
+# in the build: the limit and title dates. That the end the text names in
+# place of a placeholder confirms too (5B) is operator decision 2026-11-12
+# (decision card, "Ja, Text-Ende zählt").
+STALE_YEAR_MAX_LEAD_DAYS = 90
+
 # The kinds of correction.
 YEAR_CONFLICT = "year_conflict"
+STALE_YEAR = "stale_year"
 BEGIN_AFTER_END = "begin_after_end"
 UNCONFIRMED_LEAD = "unconfirmed_lead"
 SOURCE_START_AFTER_END = "source_start_after_end"
-CORRECTION_KINDS = frozenset({YEAR_CONFLICT, BEGIN_AFTER_END, UNCONFIRMED_LEAD, SOURCE_START_AFTER_END})
+# In the order the anomaly file names them (:func:`write_collection`).
+_KIND_ORDER = (YEAR_CONFLICT, STALE_YEAR, BEGIN_AFTER_END, UNCONFIRMED_LEAD, SOURCE_START_AFTER_END)
+CORRECTION_KINDS = frozenset(_KIND_ORDER)
 
 
 @dataclass(frozen=True)
@@ -253,6 +300,102 @@ def _settle_year(
     return winner, winner, [correction]
 
 
+def _first_day_from(day: date, earliest: date) -> date | None:
+    """*day*'s day and month in the first year in which it is not before *earliest*.
+
+    ``None`` when that day exists in neither of the two years in question
+    (a 29.02. outside a leap year).
+    """
+    for year in (earliest.year, earliest.year + 1):
+        try:
+            candidate = date(year, day.month, day.day)
+        except ValueError:
+            continue
+        if candidate >= earliest:
+            return candidate
+    return None
+
+
+def _confirming_end(desc_raw: str, start: datetime | None, end: datetime | None) -> datetime | None:
+    """*end* when it can confirm the year of a begin date (:func:`_restated_year`), else ``None``.
+
+    WL's own end counts, and so does the end the "Zeitraum:" names in place
+    of a placeholder (:func:`plausible_end`; operator decision 2026-11-12,
+    "Ja, Text-Ende zählt"): 5B Muthgasse, "Dienstag, 17. März 2025, etwa
+    08:00 Uhr bis voraussichtlich Juni 2026", published 09.03.2026 beside
+    09.03.2027 23:59: the Tuesday it names is 17.03.2026. A
+    placeholder (:func:`placeholder_end`) confirms nothing, and neither does
+    an end :func:`plausible_end` estimated from the text's duration: that
+    end counts from the very begin date in question and so agrees with
+    whatever year the date carries. "1A: Habsburgergasse" ("Ab 19. Jänner
+    2026 … für etwa ein Jahr", an 11:11 end, estimated end 20.07.2027),
+    published anew in December 2026 while it ran, would otherwise have
+    waited for 19.01.2027.
+    """
+    if start is None or end is None or placeholder_end(end, start):
+        return None
+    if end == _duration_end(desc_raw, start):
+        return None
+    return end
+
+
+def _restated_year(
+    named: datetime | None, start: datetime | None, end: datetime | None
+) -> datetime | None:
+    """*named* in the year WL meant, when its own year is a stale one; else ``None``.
+
+    A begin date before the publication *start* whose day, in the first
+    later year not before the publication, lies at most
+    :data:`STALE_YEAR_MAX_LEAD_DAYS` after it and not after *end*, an end
+    that confirms the year (:func:`_confirming_end`). Midnight
+    Europe/Vienna of that day, like every begin date. A day that lands on
+    the publication day itself would change nothing and gives ``None``.
+    """
+    if named is None or start is None or end is None:
+        return None
+    published = start.astimezone(_VIENNA_TZ).date()
+    day = named.astimezone(_VIENNA_TZ).date()
+    if day >= published:
+        return None
+    moved = _first_day_from(day, published)
+    if (
+        moved is None
+        or moved == published
+        or (moved - published).days > STALE_YEAR_MAX_LEAD_DAYS
+        or moved > end.astimezone(_VIENNA_TZ).date()
+    ):
+        return None
+    return datetime(moved.year, moved.month, moved.day, tzinfo=_VIENNA_TZ)
+
+
+def _restate_stale_years(
+    titled: datetime | None,
+    texted: datetime | None,
+    start: datetime | None,
+    end: datetime | None,
+) -> tuple[datetime | None, datetime | None, dict[str, Correction]]:
+    """Rule 1, second half: a begin date with the year of an older notice takes the year WL meant.
+
+    Title and text are restated each on its own, against *end* as
+    :func:`_confirming_end` gives it. The correction of each restated date
+    comes back under its source ("Titel", "Zeitraum"); only the one whose
+    date becomes the start is recorded (:func:`plausible_start`).
+    """
+    notes: dict[str, Correction] = {}
+    restated: list[datetime | None] = []
+    for source, named in (("Titel", titled), ("Zeitraum", texted)):
+        moved = _restated_year(named, start, end)
+        restated.append(moved or named)
+        if moved is None or named is None or start is None or end is None:
+            continue
+        notes[source] = Correction(
+            STALE_YEAR,
+            f"{source} {_day(named)} liegt vor der Veröffentlichung {_day(start)}; "
+            f"gilt {_day(moved)} (Jahr einer älteren Meldung, Ende {_day(end)})",
+        )
+    return restated[0], restated[1], notes
+
+
 def _confirmed(named: datetime, other: datetime | None, end: datetime | None) -> bool:
     """Whether a second source supports the begin date *named*."""
     return (other is not None and other.date() == named.date()) or (end is not None and end >= named)
@@ -270,7 +413,10 @@ def plausible_start(
     WL's ``time.start`` is when a message is published and valid, not when
     the measure begins. The title (``ab``/``am`` a date) names the begin,
     else the "Zeitraum:" section of the description. Either only moves the
-    start later, never earlier: an earlier date is a phase already running.
+    start later, never earlier: an earlier date is a phase already running,
+    unless its year is one carried over from an older notice
+    (:func:`_restated_year`, :data:`STALE_YEAR_MAX_LEAD_DAYS`); that
+    correction is recorded only when the restated date becomes the start.
     A date from the description that lies past the end is not taken (the
     first date behind the heading is then not the start). Contradictions
     between the sources follow the module's rules. Both dates are anchored
@@ -282,12 +428,13 @@ def plausible_start(
     titled = extract_date_from_title(title_raw, reference_date=reference)
     texted = extract_start_from_description(desc_raw, reference_date=reference)
     titled, texted, corrections = _settle_year(titled, texted, reference)
+    titled, texted, stale = _restate_stale_years(titled, texted, start, _confirming_end(desc_raw, start, end))
     if titled is not None and end is not None and titled > end:
         corrections.append(Correction(BEGIN_AFTER_END, f"Titel nennt {_day(titled)}, Ende ist {_day(end)}; Titeldatum verworfen"))
         titled = None
     if texted is not None and end is not None and texted > end:
         texted = None  # a later phase's date, not a contradiction
-    named, other = (titled, texted) if titled is not None else (texted, None)
+    named, other, source = (titled, texted, "Titel") if titled is not None else (texted, None, "Zeitraum")
     if (
         named is not None
         and start is not None
@@ -306,7 +453,8 @@ def plausible_start(
         return start, corrections
     if start and named.date() <= start.astimezone(_VIENNA_TZ).date():
         return start, corrections
-    return named, corrections
+    restated = stale.get(source)
+    return named, corrections if restated is None else [*corrections, restated]
 
 
 # --- Collection -------------------------------------------------------------
@@ -413,9 +561,8 @@ def write_collection(path: Path, records: Sequence[Mapping[str, Any]]) -> None:
         "version": 1,
         "description": (
             "Contradictions between the sources of a Wiener-Linien item (time fields, title date, "
-            "'Zeitraum:' text) and how src/providers/wl_plausibility.py settled them: year_conflict, "
-            "begin_after_end, unconfirmed_lead, source_start_after_end. One record per kind and WL "
-            "title; days in Europe/Vienna."
+            "'Zeitraum:' text) and how src/providers/wl_plausibility.py settled them: "
+            f"{', '.join(_KIND_ORDER)}. One record per kind and WL title; days in Europe/Vienna."
         ),
         "anomalies": list(records),
     }
@@ -449,6 +596,8 @@ __all__ = [
     "MIN_DURATION_BUFFER",
     "PLACEHOLDER_END",
     "SOURCE_START_AFTER_END",
+    "STALE_YEAR",
+    "STALE_YEAR_MAX_LEAD_DAYS",
     "UNCONFIRMED_LEAD",
     "YEAR_CONFLICT",
     "collected_corrections",

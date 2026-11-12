@@ -50,7 +50,13 @@ dieser Reihenfolge:
 
 1. **Mehrheit bei Widerspruch.** Titel- und Textdatum mit gleichem Tag und
    Monat, aber anderem Jahr: Es gilt das Jahr näher an der Veröffentlichung
-   (`year_conflict`).
+   (`year_conflict`). Ein Beginndatum vor der Veröffentlichung, dessen Tag in
+   einem späteren Jahr höchstens 90 Tage nach ihr liegt und nicht nach WLs
+   echtem Ende oder dem Text-Ende statt eines Platzhalters (so entschieden
+   vom Betreiber am 12.11.2026, „Ja, Text-Ende zählt“; nicht einem aus einer
+   Dauer gerechneten), trägt das Jahr einer älteren Meldung: Es gilt dieser
+   Tag (`stale_year`, seit 2026-11-11). Anlass: 39B Friedhofsverkehr,
+   „Am 24. Dezember 2024“, stand ab 11.11.2026 als laufend im Feed.
 2. **Harte Grenzen.** Ein Beginn nach dem Ende wird vom Ende überstimmt
    (`begin_after_end`). Ein Beginn mehr als 365 Tage nach der
    Veröffentlichung zählt nur, wenn eine zweite Angabe ihn bestätigt
@@ -58,36 +64,33 @@ dieser Reihenfolge:
    Tage (Stammstrecke Phase 2).
 3. **Im Zweifel konservativ.** Was offen bleibt, fällt auf `time.start`
    zurück. Eine Meldung wird wegen eines Widerspruchs nie versteckt; ein
-   `time.start` nach `time.end` wird nur gemeldet
-   (`source_start_after_end`).
+   `time.start` nach `time.end` wird nur gemeldet (`source_start_after_end`).
 4. **Jede Korrektur wird gesammelt.** Sie steht als Warnung im Log, und
    `scripts/update_wl_cache.py` führt sie in
    `data/wl_plausibility_anomalies.json` (gleiches Format wie
-   `data/feed_line_anomalies.json`: `kind`, `title`, `detail`,
-   `first_seen`, `last_seen`, `days_seen`). Die Datei entsteht erst mit der
-   ersten Korrektur.
+   `data/feed_line_anomalies.json`: `kind`, `title`, `detail`, `first_seen`,
+   `last_seen`, `days_seen`). Die Datei entsteht erst mit der ersten
+   Korrektur.
 
-Die bisherigen Regeln gelten unverändert und zählen nicht als Korrektur:
-Ein 11:11-Ende weicht dem Ende aus „Zeitraum:“, ein Beginndatum verschiebt
-den Start nur nach hinten, und ein Textdatum hinter dem Ende ist das Datum
-einer späteren Phase. Was die Prüfung nicht sehen kann: eine Angabe, die an
-allen Stellen gleich falsch ist.
+Die bisherigen Regeln gelten unverändert und zählen nicht als Korrektur: Ein
+11:11-Ende weicht dem Ende aus „Zeitraum:“, ein Beginndatum verschiebt den
+Start nur nach hinten (ein altes Jahr ausgenommen, Regel 1), und ein Textdatum
+hinter dem Ende ist das Datum einer späteren Phase. Was die Prüfung nicht
+sehen kann: eine Angabe, die an allen Stellen gleich falsch ist.
 
 Ein Ende ohne Jahr („Ab 24. August 2026 … bis 07. September“) ist der erste
-solche Tag ab dem Beginn im Text, auch über den Jahreswechsel; ohne Beginn
-im Text das Datum, das der Veröffentlichung am nächsten liegt (seit
-2026-10-03).
+solche Tag ab dem Beginn im Text, auch über den Jahreswechsel; ohne Beginn im
+Text das Datum, das der Veröffentlichung am nächsten liegt (seit 2026-10-03).
 
 Nennt „Zeitraum:“ kein Ende, sondern eine Dauer („auf Dauer von etwa sechs
-Wochen“, seit 2026-10-02), gilt statt eines 11:11-Endes der Start aus dem
-Text plus Dauer plus Puffer, auf 23:59 des Tags. Der Puffer ist die halbe
-Dauer, mindestens eine Woche (`MIN_DURATION_BUFFER`): WL schreibt „etwa“,
-und eine Baustelle, die länger dauert, soll nicht aus dem Feed fallen,
-solange WL sie noch ausliefert. Die Rechnung verkürzt ein 11:11-Ende nur,
-sie verlängert es nie. Anlass: „65A/66A“ (ab 12.08., „etwa zwei Wochen“)
-stand am 02.10. noch mit Ende 31.08.2027 im Cache; 29B/N25 endet jetzt am
-07.12. statt 31.12., 36A/36B am 12.11. statt 16.09.2027, 63A behält sein
-11.11.
+Wochen“, seit 2026-10-02), gilt statt eines 11:11-Endes der Start aus dem Text
+plus Dauer plus Puffer, auf 23:59 des Tags. Der Puffer ist die halbe Dauer,
+mindestens eine Woche (`MIN_DURATION_BUFFER`): WL schreibt „etwa“, und eine
+Baustelle, die länger dauert, soll nicht aus dem Feed fallen, solange WL sie
+noch ausliefert. Die Rechnung verkürzt ein 11:11-Ende nur, sie verlängert es
+nie. Anlass: „65A/66A“ (ab 12.08., „etwa zwei Wochen“) stand am 02.10. noch
+mit Ende 31.08.2027 im Cache; 29B/N25 endet jetzt am 07.12. statt 31.12.,
+36A/36B am 12.11. statt 16.09.2027, 63A behält sein 11.11.
 
 Eine Haltestellenverlegung oder -auflassung nennt ihren Zeitraum unter
 „Dauer:“ statt „Zeitraum:“ („Dauer: Ab 05. Oktober 2026, etwa 07:00 Uhr für
@@ -165,36 +168,35 @@ Ein WL-Hinweis, dessen Text leer ist (nur Tags, `&nbsp;` und Leerraum),
 wartet, bis WL ihn füllt; der nächste Abruf mit Text bringt ihn in den Feed
 (`_is_empty_wl_notice` in `_post_filter_wl`,
 `src/feed_build/cache_filters.py`). Anlass: WL stellte „5B: Bauarbeiten“ am
-06.11.2026 um 13:59 mit dem Text „<p></p>“ online und füllte ihn um 14:11;
-der Feed von 14:01 zeigte den Titel nur mit „[Seit heute]“ (KI-Wächter,
-Issue #2170). Ein Hinweis-Titel („Bauarbeiten“) sagt nicht, was sich für
-den Fahrgast ändert, und Hinweise stehen hinter Störungen. Eine Störung
-ohne Text bleibt: Ihr Titel nennt Linie und Ursache („U2:
-Betriebsstörung“). Gemessen über alle WL-Cache-Stände seit 01.06.2026
-(6.328 Stände, 337 Hinweise): Der 5B-Hinweis ist der einzige leere, dazu
-sechs Störungen für je einen bis vier Abrufe. Betreiberentscheidung
-2026-11-07 („Zurückhalten bis Text da ist“).
+06.11.2026 um 13:59 mit dem Text „<p></p>“ online und füllte ihn um 14:11; der
+Feed von 14:01 zeigte den Titel nur mit „[Seit heute]“ (KI-Wächter, Issue
+#2170). Ein Hinweis-Titel („Bauarbeiten“) sagt nicht, was sich für den
+Fahrgast ändert, und Hinweise stehen hinter Störungen. Eine Störung ohne Text
+bleibt: Ihr Titel nennt Linie und Ursache („U2: Betriebsstörung“). Gemessen
+über alle WL-Cache-Stände seit 01.06.2026 (6.328 Stände, 337 Hinweise): Der
+5B-Hinweis ist der einzige leere, dazu sechs Störungen für je einen bis vier
+Abrufe. Betreiberentscheidung 2026-11-07 („Zurückhalten bis Text da ist“).
 
 #### WL-Netzänderung als Hinweis (seit 2026-11-07)
 
 Eine WL-Langmeldung kommt nur in den Feed, wenn ihr Text ein
 Einschränkungs-Stichwort trägt (`KW_RESTRICTION`, `docs/development.md`,
-„Wiener Linien“). Eine Netzänderung schränkt nichts ein – eine Linie
-bekommt eine Haltestelle – und nennt deshalb keines: „9A: Errichtung einer
+„Wiener Linien“). Eine Netzänderung schränkt nichts ein – eine Linie bekommt
+eine Haltestelle – und nennt deshalb keines: „9A: Errichtung einer
 Haltestelle“ (ab 07.09.2026) und „57A: Errichtung einer Haltestelle“ (ab
 05.09.) fielen in jedem Abruf vom 04. bis 07.10.2026. WL setzt die Art der
 Meldung als Überschrift an den Textanfang („<h2>Netzänderung</h2>“);
-`is_network_change` (`src/providers/wl_news_kind.py`) liest diese
-Markierung, nicht Wörter im Fließtext, und `_news_passes_gate` in
+`is_network_change` (`src/providers/wl_news_kind.py`) liest diese Markierung,
+nicht Wörter im Fließtext, und `_news_passes_gate` in
 `src/providers/wl_fetch.py` lässt die Meldung als Hinweis durch. Sie steht
-ohne Ende im Feed (`_notice_end`): WLs `time.end` ist das Ende des
-Hinweises, Wochen nach der Änderung (9A: ein Monat, N67: zehn Tage), nicht
-der Maßnahme; als „[Bis Mi 07.10.]“ hätte es die neue Haltestelle befristet.
-Ihren Beginn nennt WL unter „Zeitpunkt:“ (`_PERIOD_HEADING_RE`), die
-Zeitzeile zeigt „Seit 07.09.“. Auch eine Netzänderung, die das Tor am
-Stichwort passiert („N67: Geänderte Linienführung ab 05.12.2026“: „Die Fahrt
-über Inzersdorf, Biróstraße entfällt“), steht ohne WLs Ende (15.12.).
-Betreiberentscheidung 2026-11-07 („Als Hinweis aufnehmen“).
+ohne Ende im Feed (`_notice_end`): WLs `time.end` ist das Ende des Hinweises,
+Wochen nach der Änderung (9A: ein Monat, N67: zehn Tage), nicht der Maßnahme;
+als „[Bis Mi 07.10.]“ hätte es die neue Haltestelle befristet. Ihren Beginn
+nennt WL unter „Zeitpunkt:“ (`_PERIOD_HEADING_RE`), die Zeitzeile zeigt „Seit
+07.09.“. Auch eine Netzänderung, die das Tor am Stichwort passiert („N67:
+Geänderte Linienführung ab 05.12.2026“: „Die Fahrt über Inzersdorf, Biróstraße
+entfällt“), steht ohne WLs Ende (15.12.). Betreiberentscheidung 2026-11-07
+(„Als Hinweis aufnehmen“).
 
 ### Rohdaten und Verwürfe des Abrufs (seit 2026-10-04)
 
@@ -204,9 +206,8 @@ deshalb nachträglich nicht klären, und eine Rohantwort lässt sich später
 nicht mehr abholen. Mit `RAW_CAPTURE=1` (gesetzt nur im Fetcher-Schritt von
 `update-cycle.yml`) schreibt jeder Abruf nach `data/raw/<quelle>/`:
 
-* je Antwort einen **Stand** (`write_snapshot` in
-  `src/utils/raw_capture.py`): WL `trafficInfoList` und `newsList`, ÖBB-RSS,
-  je Baustellen-WFS-Layer;
+* je Antwort einen **Stand** (`write_snapshot` in `src/utils/raw_capture.py`):
+  WL `trafficInfoList` und `newsList`, ÖBB-RSS, je Baustellen-WFS-Layer;
 * `verworfen.json`: jede Meldung, die der Abruf verwarf, mit Grund.
 
 Die Dateien werden überschrieben, die Git-Historie ist das Archiv. Drei
@@ -630,11 +631,10 @@ diesem Fall still übersprungen. Jetzt gilt:
   `session_with_retries` und für `request_safe`). `verify_response_ip` prüft
   dasselbe nach der Antwort.
 - Die Liste nennt genau die Upstreams des Projekts: Wiener Linien, ÖBB
-  (Fahrplan und Daten), VAO, Stadt Wien (Baustellen), Overpass,
-  GitHub-API und `raw.githubusercontent.com` (Google Places ist seit
-  2026-10-16 entfernt). Ein Test
-  gleicht sie mit den im Code konfigurierten Hosts ab, in beide Richtungen.
-  Ein neuer Upstream muss dort eingetragen werden.
+  (Fahrplan und Daten), VAO, Stadt Wien (Baustellen), Overpass, GitHub-API
+  und `raw.githubusercontent.com` (Google Places ist seit 2026-10-16
+  entfernt). Ein Test gleicht sie mit den im Code konfigurierten Hosts ab,
+  in beide Richtungen. Ein neuer Upstream muss dort eingetragen werden.
 - Die Produktions-Workflows setzen keinen Proxy. Betroffen sind
   Entwicklungsrechner und Sandboxes. GitHub-Enterprise-Hosts aus
   `FEED_GITHUB_ENTERPRISE_HOSTS` stehen nicht auf der Liste und scheitern
