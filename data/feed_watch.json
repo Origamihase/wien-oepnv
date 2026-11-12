@@ -1,13 +1,21 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-12T16:00:58.856359+00:00",
- "built": "2026-11-12T17:00:40+01:00",
+ "updated": "2026-11-12T16:30:53.478418+00:00",
+ "built": "2026-11-12T17:30:42+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-12T17:00:40+01:00",
+  "built": "2026-11-12T17:30:42+01:00",
   "items": [
+   {
+    "title": "36A/36B: Verkehrsunfall",
+    "time_line": "Seit 17:26"
+   },
+   {
+    "title": "U4: Schadhaftes Fahrzeug",
+    "time_line": "Seit 17:07"
+   },
    {
     "title": "2/59A/77A: Verkehrsüberlastung",
     "time_line": "Seit 16:49"
@@ -39,39 +47,11 @@
    {
     "title": "U3: Schadhaftes Fahrzeug",
     "time_line": "Seit 14:24"
-   },
-   {
-    "title": "Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx",
-    "time_line": "Bis 31.10.2027"
-   },
-   {
-    "title": "54B: Stock im Weg",
-    "time_line": "Bis Fr 13.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-05T16:01:22.880408+00:00",
-   "raw": {
-    "wl-stoerungen": 87,
-    "wl-hinweise": 71,
-    "oebb": 192,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 12,
-    "oebb": 166,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 7,
-    "wl": 99
-   }
-  },
   {
    "t": "2026-11-05T16:31:07.666678+00:00",
    "raw": {
@@ -6771,17 +6751,39 @@
     "oebb": 6,
     "wl": 99
    }
+  },
+  {
+   "t": "2026-11-12T16:30:53.478418+00:00",
+   "raw": {
+    "wl-stoerungen": 51,
+    "wl-hinweise": 76,
+    "oebb": 183,
+    "baustellen-linien": 51,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 14,
+    "oebb": 158,
+    "baustellen": 61
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 97
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-12T16:00:58.856359+00:00"
+   "last_ok": "2026-11-12T16:30:53.478418+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-12T16:00:58.856359+00:00"
+   "last_ok": "2026-11-12T16:00:58.856359+00:00",
+   "last_exit": 1,
+   "failing_since": "2026-11-12T16:30:53.478418+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-12T16:00:58.856359+00:00"
+   "last_ok": "2026-11-12T16:30:53.478418+00:00"
   }
  }
 }

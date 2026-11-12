@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261112-0039, I20261112-0042, I20261112-0043, I20261112-0046, I20261112-0032-F01, I20261112-0037, I20261112-0044, I20260925-0011, I20261112-0047, I20261112-0034, I20260909-0007, I20261112-0040, I20261112-0041-F01, I20261112-0045, I20261112-0048, I20261020-0029"
+    "trafficInfoNameList": "I20261112-0039, I20261112-0042, I20261112-0043, I20261112-0046, I20261112-0032-F01, I20261112-0037, I20261112-0044, I20260925-0011, I20261112-0047, I20261112-0049-F01, I20260909-0007, I20261112-0040, I20261112-0041-F01, I20261112-0045, I20261112-0048, I20261112-0050, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R2558-125, R3886-480, R293-474, R2343-125, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R401-101, R1974-466, R1199-205, R500-101, R585-110, R586-110, R587-110, R588-110, R584-110, R583-110, R565-110, R566-110, R581-110, R579-110, R570-110, R571-110, R412-415, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1884-101, R1880-101, R1883-101, R1882-101, R318-437, R1881-101, R3886-480, R293-474, R2558-125, R1875-101, R1876-101, R2373-125, R2373-127, R2343-626, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R401-101, R1974-466, R1199-205, R500-101, R412-415, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -217,52 +217,6 @@
      "start": "2026-11-12T14:24:00.000+0100"
     },
     "title": "U3: Schadhaftes Fahrzeug"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U1: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261112-0034",
-    "owner": "WL",
-    "parentName": "I20261112-0034",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 301,
-      "lineName": "U1",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-12T14:43:00.000+0100",
-     "end": "2026-11-12T16:59:00.000+0100",
-     "lastUpdate": "2026-11-12T16:59:00.000+0100",
-     "resume": "2026-11-12T14:43:00.000+0100",
-     "start": "2026-11-12T14:43:00.000+0100"
-    },
-    "title": "U1: Verspätungen"
    },
    {
     "alertCause": "heavy traffic",
@@ -762,6 +716,107 @@
      "start": "2026-11-12T16:51:00.000+0100"
     },
     "title": "77A: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U4": "ptMetro"
+     }
+    },
+    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U4: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261112-0049-F01",
+    "owner": "WL",
+    "parentName": "I20261112-0049",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 304,
+      "lineName": "U4",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4427
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T17:16:00.000+0100",
+     "lastUpdate": "2026-11-12T17:16:00.000+0100",
+     "resume": "2026-11-12T17:16:00.000+0100",
+     "start": "2026-11-12T17:07:00.000+0100"
+    },
+    "title": "U4: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "36A": "ptBusCity",
+      "36B": "ptBusCity"
+     }
+    },
+    "description": "Linie 36B: Unregelmäßige Intervalle in beiden Richtungen. Linie 36A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "<p>Linie 36B:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 36A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 36B:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 36A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+       "descriptionPlain": "Linie 36B: Unregelmäßige Intervalle in beiden Richtungen. Linie 36A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+       "title": "36B, 36A: Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Carabelligasse 17",
+    "name": "I20261112-0050",
+    "owner": "WL",
+    "parentName": "I20261112-0050",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "36B",
+     "36A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 236,
+      "lineName": "36B",
+      "vehicleType": "ptBusCity"
+     },
+     {
+      "lineId": 436,
+      "lineName": "36A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T17:30:00.000+0100",
+     "lastUpdate": "2026-11-12T17:30:00.000+0100",
+     "resume": "2026-11-12T17:26:00.000+0100",
+     "start": "2026-11-12T17:26:00.000+0100"
+    },
+    "title": "36B, 36A: Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1429,282 +1484,6 @@
      "start": "2026-11-12T05:00:19.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Schloss Schönbrunn",
-    "name": "R565-110",
-    "owner": "WL",
-    "parentName": "R565-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     565
-    ],
-    "time": {
-     "end": "2026-11-12T17:17:00.000+0100",
-     "start": "2026-11-12T16:18:25.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Schloss Schönbrunn"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Schloss Schönbrunn",
-    "name": "R566-110",
-    "owner": "WL",
-    "parentName": "R566-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     566
-    ],
-    "time": {
-     "end": "2026-11-12T17:17:00.000+0100",
-     "start": "2026-11-12T16:18:25.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Schloss Schönbrunn"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Schloss Schönbrunn",
-    "name": "R570-110",
-    "owner": "WL",
-    "parentName": "R570-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     570
-    ],
-    "time": {
-     "end": "2026-11-12T17:23:00.000+0100",
-     "start": "2026-11-12T16:25:25.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Schloss Schönbrunn"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Schloss Schönbrunn",
-    "name": "R571-110",
-    "owner": "WL",
-    "parentName": "R571-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     571
-    ],
-    "time": {
-     "end": "2026-11-12T17:23:00.000+0100",
-     "start": "2026-11-12T16:25:25.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Schloss Schönbrunn"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Joachimsthalerplatz",
-    "name": "R579-110",
-    "owner": "WL",
-    "parentName": "R579-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     579
-    ],
-    "time": {
-     "end": "2026-11-12T17:18:00.000+0100",
-     "start": "2026-11-12T16:18:55.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Joachimsthalerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Joachimsthalerplatz",
-    "name": "R581-110",
-    "owner": "WL",
-    "parentName": "R581-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     581
-    ],
-    "time": {
-     "end": "2026-11-12T17:18:00.000+0100",
-     "start": "2026-11-12T16:18:55.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Joachimsthalerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nBetrieb ab Joachimsthalerplatz",
-    "name": "R583-110",
-    "owner": "WL",
-    "parentName": "R583-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     583
-    ],
-    "time": {
-     "end": "2026-11-12T17:22:00.000+0100",
-     "start": "2026-11-12T16:11:24.000+0100"
-    },
-    "title": "Verkehrsunfall\nBetrieb ab Joachimsthalerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Verkehrsunfall\nEinstieg bei Linie 46 in der Schleife",
-    "name": "R584-110",
-    "owner": "WL",
-    "parentName": "R584-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     584
-    ],
-    "time": {
-     "end": "2026-11-12T17:13:00.000+0100",
-     "start": "2026-11-12T16:11:24.000+0100"
-    },
-    "title": "Verkehrsunfall\nEinstieg bei Linie 46 in der Schleife"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R585-110",
-    "owner": "WL",
-    "parentName": "R585-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     585
-    ],
-    "time": {
-     "end": "2026-11-12T17:11:00.000+0100",
-     "start": "2026-11-12T16:11:24.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R586-110",
-    "owner": "WL",
-    "parentName": "R586-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     586
-    ],
-    "time": {
-     "end": "2026-11-12T17:11:00.000+0100",
-     "start": "2026-11-12T16:11:24.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R587-110",
-    "owner": "WL",
-    "parentName": "R587-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     587
-    ],
-    "time": {
-     "end": "2026-11-12T17:11:00.000+0100",
-     "start": "2026-11-12T16:11:24.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R588-110",
-    "owner": "WL",
-    "parentName": "R588-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     588
-    ],
-    "time": {
-     "end": "2026-11-12T17:11:00.000+0100",
-     "start": "2026-11-12T16:11:24.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
