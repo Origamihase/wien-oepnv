@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261112-0042, I20261112-0046, I20261112-0053, I20261112-0037, I20261112-0044, I20260925-0011, I20261112-0047, I20261112-0049-F01, I20260909-0007, I20261112-0054, I20261112-0055, I20261020-0029, I20261112-0051-F01"
+    "trafficInfoNameList": "I20261112-0054-F01, I20261112-0053-F01, I20261020-0029, I20261112-0053-F02, I20261112-0053-F03, I20261112-0042, I20261112-0047, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1876-101, R293-474, R1875-101, R3886-480, R1880-101, R2558-125, R1881-101, R318-437, R1882-101, R1883-101, R1884-101, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R2345-127, R401-101, R1974-466, R1199-205, R500-101, R1011-125, R375-105, R367-105, R364-105, R374-105, R377-105, R81-171, R13-171, R14-171, R15-171, R17-171, R18-171, R19-171, R46-171, R49-171, R50-171, R47-171, R51-171, R44-171, R45-171, R45-136, R46-136, R47-136, R49-136, R50-136, R51-136, R45-101, R51-101, R50-101, R49-101, R47-101, R46-101, R379-105, R384-105, R383-105, R382-105, R381-105, R380-105, R388-105, R387-105, R386-105, R385-105, R366-105, R362-105, R361-105, R272-105, R370-105, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R3886-480, R318-437, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R2558-125, R1884-101, R293-474, R2370-125, R2373-127, R2373-125, R2372-125, R2371-125, R2359-125, R2343-626, R2343-125, R2378-627, R2345-127, R2380-627, R2379-627, R2373-126, R401-101, R1974-466, R1199-205, R500-101, R367-105, R374-105, R364-105, R375-105, R377-105, R19-171, R81-171, R14-171, R15-171, R17-171, R13-171, R18-171, R51-171, R46-171, R45-171, R44-171, R49-171, R47-171, R50-171, R45-136, R46-136, R47-136, R51-136, R49-136, R50-136, R45-101, R46-101, R47-101, R49-101, R50-101, R51-101, R380-105, R385-105, R384-105, R383-105, R382-105, R381-105, R379-105, R388-105, R387-105, R386-105, R361-105, R362-105, R366-105, R272-105, R370-105, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -175,51 +175,6 @@
     "alertCauseId": 60,
     "attributes": {
      "relatedLineTypes": {
-      "O": "ptTram"
-     }
-    },
-    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "O: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261112-0037",
-    "owner": "WL",
-    "parentName": "I20261112-0037",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 170,
-      "lineName": "O",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T15:02:00.000+0100",
-     "lastUpdate": "2026-11-12T15:02:00.000+0100",
-     "resume": "2026-11-12T15:02:00.000+0100",
-     "start": "2026-11-12T15:02:00.000+0100"
-    },
-    "title": "O: Verkehrsüberlastung"
-   },
-   {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
       "7A": "ptBusCity"
      }
     },
@@ -251,104 +206,15 @@
       "vehicleType": "ptBusCity"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-12T16:36:00.000+0100",
-     "lastUpdate": "2026-11-12T16:36:00.000+0100",
+     "end": "2026-11-12T18:59:00.000+0100",
+     "lastUpdate": "2026-11-12T18:59:00.000+0100",
      "resume": "2026-11-12T16:35:00.000+0100",
      "start": "2026-11-12T16:35:00.000+0100"
     },
     "title": "7A: Verkehrsüberlastung"
-   },
-   {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
-      "4A": "ptBusCity"
-     }
-    },
-    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie 4A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 4A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "4A: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261112-0044",
-    "owner": "WL",
-    "parentName": "I20261112-0044",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "4A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 404,
-      "lineName": "4A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T16:38:00.000+0100",
-     "lastUpdate": "2026-11-12T16:38:00.000+0100",
-     "resume": "2026-11-12T16:38:00.000+0100",
-     "start": "2026-11-12T16:38:00.000+0100"
-    },
-    "title": "4A: Verkehrsüberlastung"
-   },
-   {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
-      "2": "ptTram"
-     }
-    },
-    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p><strong>Linie 2:</strong><br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p><strong>Linie 2:</strong><br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "2: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261112-0046",
-    "owner": "WL",
-    "parentName": "I20261112-0046",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 102,
-      "lineName": "2",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T16:49:00.000+0100",
-     "lastUpdate": "2026-11-12T16:49:00.000+0100",
-     "resume": "2026-11-12T16:49:00.000+0100",
-     "start": "2026-11-12T16:49:00.000+0100"
-    },
-    "title": "2: Verkehrsüberlastung"
    },
    {
     "alertCause": "heavy traffic",
@@ -396,124 +262,26 @@
     "title": "59A: Verkehrsüberlastung"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U4: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261112-0049-F01",
-    "owner": "WL",
-    "parentName": "I20261112-0049",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 304,
-      "lineName": "U4",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4427
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T17:16:00.000+0100",
-     "lastUpdate": "2026-11-12T17:16:00.000+0100",
-     "resume": "2026-11-12T17:16:00.000+0100",
-     "start": "2026-11-12T17:07:00.000+0100"
-    },
-    "title": "U4: Schadhaftes Fahrzeug"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "25": "ptTram"
-     }
-    },
-    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "25: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261112-0051-F01",
-    "owner": "WL",
-    "parentName": "I20261112-0051",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 125,
-      "lineName": "25",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     1012
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T18:04:00.000+0100",
-     "lastUpdate": "2026-11-12T18:04:00.000+0100",
-     "resume": "2026-11-12T18:04:00.000+0100",
-     "start": "2026-11-12T17:53:00.000+0100"
-    },
-    "title": "25: Rettungseinsatz"
-   },
-   {
     "alertCause": "accident",
     "alertCauseId": 77,
     "attributes": {
      "relatedLineTypes": {
-      "1": "ptTram",
-      "71": "ptTram",
-      "D": "ptTram"
+      "1": "ptTram"
      }
     },
-    "description": "Linie 1: Umleitung in Richtung Reumannplatz U: Wende über Börse und Umleitung bis Resselgasse über Schwedenplatz U und Schwarzenbergplatz. Einstieg am Karlsplatz U (bei Linie 4A) möglich. Fahrgäste zwischen Börse und Schwedenplatz mit dem Ziel Prater Hauptallee müssen am Julius-Raab-Platz in einen anderen Zug der Linie 1 umsteigen. Linie D: Umleitung in Richtung Absberggasse zwischen Börse und Schwarzenbergplatz über Schwedenplatz U und Stubentor U. Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Voraussichtliche Dauer: 18:40 Uhr. Grund: Verkehrsunfall im Bereich Schottenring.",
-    "descriptionHTML": "<p>Linie 1:<br>Umleitung in Richtung Reumannplatz U:<br>Wende über Börse und Umleitung bis Resselgasse<br>über Schwedenplatz U und Schwarzenbergplatz.<br>Einstieg am Karlsplatz U (bei Linie 4A) möglich.<br>Fahrgäste zwischen Börse und Schwedenplatz mit dem Ziel Prater Hauptallee müssen am Julius-Raab-Platz in einen anderen Zug der Linie 1 umsteigen.<br>Linie D:<br>Umleitung in Richtung Absberggasse<br>zwischen Börse und Schwarzenbergplatz <br>über Schwedenplatz U und Stubentor U.<br>Linie 71:<br>Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.</p><p>Voraussichtliche Dauer: 18:40 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Schottenring.</p>",
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 1:<br>Umleitung in Richtung Reumannplatz U:<br>Wende über Börse und Umleitung bis Resselgasse<br>über Schwedenplatz U und Schwarzenbergplatz.<br>Einstieg am Karlsplatz U (bei Linie 4A) möglich.<br>Fahrgäste zwischen Börse und Schwedenplatz mit dem Ziel Prater Hauptallee müssen am Julius-Raab-Platz in einen anderen Zug der Linie 1 umsteigen.<br>Linie D:<br>Umleitung in Richtung Absberggasse<br>zwischen Börse und Schwarzenbergplatz <br>über Schwedenplatz U und Stubentor U.<br>Linie 71:<br>Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.</p><p>Voraussichtliche Dauer: 18:40 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Schottenring.</p>",
-       "descriptionPlain": "Linie 1: Umleitung in Richtung Reumannplatz U: Wende über Börse und Umleitung bis Resselgasse über Schwedenplatz U und Schwarzenbergplatz. Einstieg am Karlsplatz U (bei Linie 4A) möglich. Fahrgäste zwischen Börse und Schwedenplatz mit dem Ziel Prater Hauptallee müssen am Julius-Raab-Platz in einen anderen Zug der Linie 1 umsteigen. Linie D: Umleitung in Richtung Absberggasse zwischen Börse und Schwarzenbergplatz über Schwedenplatz U und Stubentor U. Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Voraussichtliche Dauer: 18:40 Uhr. Grund: Verkehrsunfall im Bereich Schottenring.",
-       "title": "1, 71, D: Verkehrsunfall"
+       "descriptionHtml": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "1: Verkehrsunfall"
       }
      }
     ],
     "location": "Schottenring",
-    "name": "I20261112-0053",
+    "name": "I20261112-0053-F01",
     "owner": "WL",
     "parentName": "I20261112-0053",
     "priority": "1",
@@ -521,21 +289,55 @@
     "reasonName": "Verkehrsunfall",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "1",
-     "D",
-     "71"
+     "1"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 101,
       "lineName": "1",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T18:36:00.000+0100",
+     "lastUpdate": "2026-11-12T18:36:00.000+0100",
+     "resume": "2026-11-12T18:36:00.000+0100",
+     "start": "2026-11-12T18:06:00.000+0100"
+    },
+    "title": "1: Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "71": "ptTram"
+     }
+    },
+    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 71: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
      {
-      "lineId": 136,
-      "lineName": "D",
-      "vehicleType": "ptTram"
-     },
+      "de": {
+       "descriptionHtml": "<p>Linie 71: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "71: Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Schottenring",
+    "name": "I20261112-0053-F02",
+    "owner": "WL",
+    "parentName": "I20261112-0053",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "71"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 171,
       "lineName": "71",
@@ -544,11 +346,58 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-12T18:08:00.000+0100",
-     "lastUpdate": "2026-11-12T18:08:00.000+0100",
+     "created": "2026-11-12T18:36:00.000+0100",
+     "lastUpdate": "2026-11-12T18:36:00.000+0100",
+     "resume": "2026-11-12T18:36:00.000+0100",
      "start": "2026-11-12T18:06:00.000+0100"
     },
-    "title": "1, 71, D: Verkehrsunfall"
+    "title": "71: Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "D": "ptTram"
+     }
+    },
+    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "D: Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Schottenring",
+    "name": "I20261112-0053-F03",
+    "owner": "WL",
+    "parentName": "I20261112-0053",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 136,
+      "lineName": "D",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T18:36:00.000+0100",
+     "lastUpdate": "2026-11-12T18:36:00.000+0100",
+     "resume": "2026-11-12T18:36:00.000+0100",
+     "start": "2026-11-12T18:06:00.000+0100"
+    },
+    "title": "D: Verkehrsunfall"
    },
    {
     "alertCause": "vehicle on the line",
@@ -558,19 +407,19 @@
       "5": "ptTram"
      }
     },
-    "description": "Linie 5: Betrieb nur zwischen Praterstern S U und Blindengasse. Weiterfahrt bis Josefstädter Straße U. Ersatz: Linie U6. Voraussichtliche Dauer: 18:40 Uhr. Grund: Falschparker im Bereich Kaiserstraße.",
-    "descriptionHTML": "<p>Linie 5: <br>Betrieb nur zwischen Praterstern S U und Blindengasse.<br>Weiterfahrt bis Josefstädter Straße U.</p><p>Ersatz: Linie U6.</p><p>Voraussichtliche Dauer: 18:40 Uhr.</p><p>Grund: Falschparker im Bereich Kaiserstraße.</p>",
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 5: <br>Betrieb nur zwischen Praterstern S U und Blindengasse.<br>Weiterfahrt bis Josefstädter Straße U.</p><p>Ersatz: Linie U6.</p><p>Voraussichtliche Dauer: 18:40 Uhr.</p><p>Grund: Falschparker im Bereich Kaiserstraße.</p>",
-       "descriptionPlain": "Linie 5: Betrieb nur zwischen Praterstern S U und Blindengasse. Weiterfahrt bis Josefstädter Straße U. Ersatz: Linie U6. Voraussichtliche Dauer: 18:40 Uhr. Grund: Falschparker im Bereich Kaiserstraße.",
+       "descriptionHtml": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "5: Falschparker"
       }
      }
     ],
     "location": "Kaiserstraße",
-    "name": "I20261112-0054",
+    "name": "I20261112-0054-F01",
     "owner": "WL",
     "parentName": "I20261112-0054",
     "priority": "1",
@@ -589,79 +438,12 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-12T18:18:00.000+0100",
-     "lastUpdate": "2026-11-12T18:21:00.000+0100",
+     "created": "2026-11-12T18:35:00.000+0100",
+     "lastUpdate": "2026-11-12T18:35:00.000+0100",
+     "resume": "2026-11-12T18:35:00.000+0100",
      "start": "2026-11-12T18:18:00.000+0100"
     },
     "title": "5: Falschparker"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "7B": "ptBusCity"
-     }
-    },
-    "description": "Linie 7B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 7B:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 7B:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 7B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-       "title": "7B: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261112-0055",
-    "owner": "WL",
-    "parentName": "I20261112-0055",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "7B"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 207,
-      "lineName": "7B",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T18:26:00.000+0100",
-     "lastUpdate": "2026-11-12T18:26:00.000+0100",
-     "resume": "2026-11-12T18:26:00.000+0100",
-     "start": "2026-11-12T18:26:00.000+0100"
-    },
-    "title": "7B: Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1011-125",
-    "owner": "WL",
-    "parentName": "R1011-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     1011
-    ],
-    "time": {
-     "end": "2026-11-12T18:54:00.000+0100",
-     "start": "2026-11-12T17:54:36.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",

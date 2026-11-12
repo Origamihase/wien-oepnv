@@ -674,22 +674,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/71/D: Verkehrsunfall",
-    "description": "Linie 1: Umleitung in Richtung Reumannplatz U: Wende über Börse und Umleitung bis Resselgasse über Schwedenplatz U und Schwarzenbergplatz. Einstieg am Karlsplatz U (bei Linie 4A) möglich. Fahrgäste zwischen Börse und Schwedenplatz mit dem Ziel Prater Hauptallee müssen am Julius-Raab-Platz in einen anderen Zug der Linie 1 umsteigen. Linie D: Umleitung in Richtung Absberggasse zwischen Börse und Schwarzenbergplatz über Schwedenplatz U und Stubentor U. Linie 71: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz. Voraussichtliche Dauer: 18:40 Uhr. Grund: Verkehrsunfall im Bereich Schottenring.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "36721bc5b665c2713e7ccd609090194a595589d6f25da396a160c8e592080210",
-    "pubDate": "2026-11-12T18:06:00+01:00",
-    "starts_at": "2026-11-12T18:06:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=1,71,D|D=2026-11-12|TK=1 71 d verkehrsunfall",
-    "_wl_ids": [
-      "I20261112-0053"
-    ],
-    "_incident_start": "2026-11-12T18:06:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -714,6 +698,22 @@
       "I20261020-0029"
     ],
     "_incident_start": "2026-10-20T11:58:00+02:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Verkehrsunfall",
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "6c9455b3b094392684c322ab8f2b761a9537a1a83acceaa982e1237d79b94be8",
+    "pubDate": "2026-11-12T18:06:00+01:00",
+    "starts_at": "2026-11-12T18:06:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=1|D=2026-11-12|TK=1 verkehrsunfall",
+    "_wl_ids": [
+      "I20261112-0053"
+    ],
+    "_incident_start": "2026-11-12T18:06:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -766,6 +766,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1: Verkehrsunfall Betrieb ab Resselgasse",
+    "description": "Verkehrsunfall\nBetrieb ab Resselgasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "3ba081d4452991e183ba634ee562260c61a3d0213d0076ce6501f66a908bfac4",
+    "pubDate": "2026-11-12T18:10:37+01:00",
+    "starts_at": "2026-11-12T18:10:37+01:00",
+    "ends_at": "2026-11-12T19:10:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-11-12|TK=verkehrsunfall betrieb ab resselgasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Verkehrsunfall Betrieb über Schwedenplatz",
+    "description": "Verkehrsunfall\nBetrieb über Schwedenplatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "3fee2823bc54c3d0055ff4a2352172d24dd726ca7203a138d66d43b42c10890c",
+    "pubDate": "2026-11-12T18:08:37+01:00",
+    "starts_at": "2026-11-12T18:08:37+01:00",
+    "ends_at": "2026-11-12T19:08:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-11-12|TK=verkehrsunfall betrieb über schwedenplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "1: Züge halten Quellenstraße 156 (Linie 6)",
     "description": "Gleisbauarbeiten\nZüge halten Quellenstraße 156 (Linie 6)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -802,22 +826,6 @@
     "starts_at": "2026-11-12T00:00:03+01:00",
     "ends_at": "2026-11-12T23:59:59+01:00",
     "_identity": "wl|störung|L=25|D=2026-11-12|TK=ersatzbus 26e hält karl waldbrunner platz vor schlosshofer strasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7432174b0dd142a4728e8ba0144127ca655d49ae49e269a9660834d572eca3ab",
-    "pubDate": "2026-11-12T17:53:00+01:00",
-    "starts_at": "2026-11-12T17:54:36+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=25|D=2026-11-12|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261112-0051"
-    ],
-    "_incident_start": "2026-11-12T17:53:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -934,22 +942,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Verkehrsüberlastung",
-    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2c1a7be072fb0c6769578fb03bbd41b65f46e10143beb37ef354c91d9adee656",
-    "pubDate": "2026-11-12T16:49:00+01:00",
-    "starts_at": "2026-11-12T16:49:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=2|D=2026-11-12|TK=2 verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261112-0046"
-    ],
-    "_incident_start": "2026-11-12T16:49:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -958,22 +950,6 @@
     "starts_at": "2026-11-12T00:00:01+01:00",
     "ends_at": "2026-11-12T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-11-12|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "4A: Verkehrsüberlastung",
-    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "c56de491edf41d83da857f489a91726653fbe3100222ed7e7ce91bebf0b5453c",
-    "pubDate": "2026-11-12T16:38:00+01:00",
-    "starts_at": "2026-11-12T16:38:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=4A|D=2026-11-12|TK=4a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261112-0044"
-    ],
-    "_incident_start": "2026-11-12T16:38:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1007,7 +983,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "5: Falschparker Betrieb ab Josefstädter Straße U",
-    "description": "Linie 5: Betrieb nur zwischen Praterstern S U und Blindengasse. Weiterfahrt bis Josefstädter Straße U. Ersatz: Linie U6. Voraussichtliche Dauer: 18:40 Uhr. Grund: Falschparker im Bereich Kaiserstraße.",
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5",
     "pubDate": "2026-11-12T17:59:05+01:00",
@@ -1034,6 +1010,46 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "71: Verkehrsunfall",
+    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "2caeb4baf3b29e0e30d9eeefd3e4438d2d58294d03eb90f5e10bc6f2d98754f7",
+    "pubDate": "2026-11-12T18:06:00+01:00",
+    "starts_at": "2026-11-12T18:06:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=71|D=2026-11-12|TK=71 verkehrsunfall",
+    "_wl_ids": [
+      "I20261112-0053"
+    ],
+    "_incident_start": "2026-11-12T18:06:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "12c122fd59c34caf7f02ba0225ce436dc57cac19067265e4e00cf01131a3ccaf",
+    "pubDate": "2026-11-12T18:06:37+01:00",
+    "starts_at": "2026-11-12T18:06:37+01:00",
+    "ends_at": "2026-11-12T19:05:00+01:00",
+    "_identity": "wl|störung|L=71|D=2026-11-12|TK=fahrtbehinderung verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Verkehrsunfall Betrieb ab Schwarzenbergplatz",
+    "description": "Verkehrsunfall\nBetrieb ab Schwarzenbergplatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "ec258ce73adc65025033078d5db8429a649cc5548bacc1db291dc2a3bacf52bb",
+    "pubDate": "2026-11-12T18:07:07+01:00",
+    "starts_at": "2026-11-12T18:07:07+01:00",
+    "ends_at": "2026-11-12T19:06:00+01:00",
+    "_identity": "wl|störung|L=71|D=2026-11-12|TK=verkehrsunfall betrieb ab schwarzenbergplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "74A: Einstieg Leberstraße vor S-Bahn-Gebäude",
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1042,38 +1058,6 @@
     "starts_at": "2026-11-12T00:00:01+01:00",
     "ends_at": "2026-11-12T23:59:59+01:00",
     "_identity": "wl|störung|L=74A|D=2026-11-12|TK=einstieg leberstrasse vor s bahn gebäude"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "7A: Verkehrsüberlastung",
-    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "d42feba360670cfda87028286a8ecfeb9e71d0ba08aad231aa70fa3fa08c2adc",
-    "pubDate": "2026-11-12T16:35:00+01:00",
-    "starts_at": "2026-11-12T16:35:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=7A|D=2026-11-12|TK=7a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261112-0042"
-    ],
-    "_incident_start": "2026-11-12T16:35:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "7B: Verkehrsunfall",
-    "description": "Linie 7B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "b4b491a65d96477889ae128635b88be761ae0826bdaef6e61698c43cccd6738a",
-    "pubDate": "2026-11-12T18:26:00+01:00",
-    "starts_at": "2026-11-12T18:26:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=7B|D=2026-11-12|TK=7b verkehrsunfall",
-    "_wl_ids": [
-      "I20261112-0055"
-    ],
-    "_incident_start": "2026-11-12T18:26:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1090,34 +1074,42 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Verkehrsüberlastung",
-    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "title": "D: Verkehrsunfall",
+    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d",
-    "pubDate": "2026-11-12T15:02:00+01:00",
-    "starts_at": "2026-11-12T15:02:00+01:00",
+    "guid": "99d97a77a399286ca28d0b822ce176ae2d28f6c5a979031093f6afc6f33d065e",
+    "pubDate": "2026-11-12T18:06:00+01:00",
+    "starts_at": "2026-11-12T18:06:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=O|D=2026-11-12|TK=o verkehrsüberlastung",
+    "_identity": "wl|störung|L=D|D=2026-11-12|TK=d verkehrsunfall",
     "_wl_ids": [
-      "I20261112-0037"
+      "I20261112-0053"
     ],
-    "_incident_start": "2026-11-12T15:02:00+01:00"
+    "_incident_start": "2026-11-12T18:06:00+01:00"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Schadhaftes Fahrzeug",
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "D: Verkehrsunfall Betrieb ab Schwarzenbergplatz",
+    "description": "Verkehrsunfall\nBetrieb ab Schwarzenbergplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
-    "pubDate": "2026-11-12T17:07:00+01:00",
-    "starts_at": "2026-11-12T17:07:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U4|D=2026-11-12|TK=u4 schadhaftes fahrzeug",
-    "_wl_ids": [
-      "I20261112-0049"
-    ],
-    "_incident_start": "2026-11-12T17:07:00+01:00"
+    "guid": "11cd1f4fbafe01510e09caa19e54c113ad42d6be2db6c055fcf2b6a803ab7dfa",
+    "pubDate": "2026-11-12T18:08:07+01:00",
+    "starts_at": "2026-11-12T18:08:07+01:00",
+    "ends_at": "2026-11-12T19:07:00+01:00",
+    "_identity": "wl|störung|L=D|D=2026-11-12|TK=verkehrsunfall betrieb ab schwarzenbergplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Verkehrsunfall Betrieb über Schwedenplatz",
+    "description": "Verkehrsunfall\nBetrieb über Schwedenplatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "05d958a24d18566d4b095289f27db1266195c9d927fd4ae8809a67bce9893e47",
+    "pubDate": "2026-11-12T18:07:37+01:00",
+    "starts_at": "2026-11-12T18:07:37+01:00",
+    "ends_at": "2026-11-12T19:07:00+01:00",
+    "_identity": "wl|störung|L=D|D=2026-11-12|TK=verkehrsunfall betrieb über schwedenplatz"
   },
   {
     "source": "Wiener Linien",
