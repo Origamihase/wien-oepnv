@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 12 Nov 2026 13:30:36 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2026 13:51:45 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[16A: Rescue operation]]></title>
@@ -65,20 +65,6 @@
       <content:encoded><![CDATA[Due to a police operation between Tullnerfeld station and St. Pölten Hbf or Tullnerfeld station and Moosbierbaum-Heiligeneich station, until approx. 14:00 …<br/>[Since 12:25]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[29A: Third-party traffic accident]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">1534e244024c6fb9e3253e471eb9562f405710d4c44c22618d4cc9462129a50b</guid>
-      <pubDate>Thu, 12 Nov 2026 12:23:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 12 Nov 2026 12:23:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 12 Nov 2026 12:34:35 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 12 Nov 2026 13:33:00 +0100</ext:ends_at>
-      <description>Service obstruction. [Since 12:23]</description>
-      <content:encoded><![CDATA[Service obstruction.<br/>[Since 12:23]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[U3: Defective vehicle]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3</guid>
@@ -131,8 +117,8 @@
       <ext:starts_at>Thu, 12 Nov 2026 00:00:00 +0100</ext:starts_at>
       <ext:ends_at>Fri, 13 Nov 2026 17:00:00 +0100</ext:ends_at>
       <georss:point>48.180312 16.260180</georss:point>
-      <description>→ Ghelengasse 28. Stop relocation of line 54B towards St. Veiter Tor. Reason: roadworks. → Ghelengasse opposite 32. Stop relocation of line 54B … [Until Fri 13.11.]</description>
-      <content:encoded><![CDATA[→ Ghelengasse 28. Stop relocation of line 54B towards St. Veiter Tor. Reason: roadworks. → Ghelengasse opposite 32. Stop relocation of line 54B …<br/>[Until Fri 13.11.]]]></content:encoded>
+      <description>Ghelengasse 30 → Ghelengasse 28. Stop relocation of line 54B towards St. Veiter Tor. Reason: roadworks. Ghelengasse opposite 28 → Ghelengasse opposite 32. … [Until Fri 13.11.]</description>
+      <content:encoded><![CDATA[Ghelengasse 30 → Ghelengasse 28. Stop relocation of line 54B towards St. Veiter Tor. Reason: roadworks. Ghelengasse opposite 28 → Ghelengasse opposite 32. …<br/>[Until Fri 13.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[65A: Triester Straße, Rossakgasse]]></title>
@@ -147,6 +133,20 @@
       <georss:point>48.145871 16.332540</georss:point>
       <description>Triester Straße 164 → Triester Straße 162. Stop relocation of line 65A towards Wienerberg City (Inzersdorf). Reason: roadworks. [Since 11.11.]</description>
       <content:encoded><![CDATA[Triester Straße 164 → Triester Straße 162. Stop relocation of line 65A towards Wienerberg City (Inzersdorf). Reason: roadworks.<br/>[Since 11.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Buses stop at Salvatorianerplatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
+      <pubDate>Thu, 12 Nov 2026 04:40:18 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 11 Nov 2026 05:00:35 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 12 Nov 2026 04:40:18 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 13 Nov 2026 01:00:00 +0100</ext:ends_at>
+      <description>Reason: construction works. [Until Fri 13.11.]</description>
+      <content:encoded><![CDATA[Reason: construction works.<br/>[Until Fri 13.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
