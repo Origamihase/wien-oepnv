@@ -164,3 +164,203 @@ Jahresrückblicks). Sie verwechseln vor allem die andere Richtung, ein echtes
 Satzende, das nicht als eines gilt; das ist eine eigene Klasse. Tests:
 `tests/test_abbreviation_periods.py`, `tests/test_bhf_cut_and_phrase_stops.py`,
 `tests/test_wl_stop_markers.py`, `tests/test_ticker_title_split.py`.
+
+## 14. Gemini entscheidet, wo die Regeln eine Störung offen lassen (seit 2026-11-12)
+
+Betreiberentscheidung vom 12.11.2026 (Michael): „Erstelle ein neues
+Entscheidungs-Modul mit Gemini. Verwende den vorhandenen, modularen
+Gemini-Konnektor … Wenn bei einer Meldung nicht klar ist, ob sie eine Störung
+oder ein Hinweis ist, soll Gemini dies über ein neues Modul entscheiden können.
+Plötzliche Störungen haben Priorität. Geplante Hinweise kommen danach. Neue
+Störungen sind an den ersten Plätzen. Alte (aber noch gültige) Hinweise an den
+letzten Plätzen.“ Zur Karte „Soll ich die Gemini-Entscheidung für unklare Fälle
+so bauen?“: „Ja, so bauen“. Es ist seine zweite ausdrückliche Ausnahme von
+„eine KI liest nur mit und meldet“ (Teil 3, „KI-Wächter“); einen Text des Feeds
+schreibt weiter keine KI.
+
+**Was offen bleibt.** Ob eine Störung plötzlich kam, liest `_incident_since`
+(`src/feed_build/time_line.py`) aus ihren Wörtern: Ein Planwort irgendwo in
+Titel oder Text (`PLANNED_DISRUPTION_RE`) macht sie geplant, eine WL-Störung
+ohne Ursache gilt als geplant, wenn sie zur vollen Stunde begann. Eine
+plötzliche Störung zeigt „[Seit hh:mm]“ und steht in der ersten Gruppe
+(`_is_current_incident`), eine geplante zeigt ihren Tag und steht in der
+normalen Reihenfolge. Im Nachspiel der 2.169 Cache-Stände vom 20.09. bis
+12.11.2026 entscheidet das bei 22 von 1.026 Störungen kein klares Wort. Sie
+fallen in drei Klassen (`unclear_class` in
+`src/ki_entscheidung/candidates.py`):
+
+- `ohne-ursache`: eine WL-Störung ohne Ursache und ohne Planwort, über die nur
+  die Uhr entscheidet. „26: Züge halten in Tokiostraße“ (Anzeigetext der
+  Gleisbauarbeiten in der Donaufelder Straße) stand am 21.09.2026 von 09:01
+  bis 23:01 mit „[Seit 08:48]“ in der Gruppe der aktuellen Störungen (28
+  Feed-Stände, mit „27: Linie 25 in Tokiostraße benützen“ und „26E: Busse
+  halten Satzingerweg 41“); „9: Züge halten bei Linie 52“ (18.10.,
+  Rettungseinsatz auf den Linien 6/9/18/52) unterscheidet davon nur die Minute.
+- `bauwort`: eine WL-Störung, deren Ursache ein Störungswort ist, während ein
+  Bauwort an anderer Stelle im Text steht. „U6: Weichenstörung“ (22.09., „Die
+  Station Neue Donau kann … wegen Bauarbeiten nicht eingehalten werden“) zeigte
+  „[Heute]“ statt „[Seit 22:12]“; „48A: Gasrohrgebrechen“ (30.09., „Aufgrund
+  der Bauarbeiten werden die Busse … umgeleitet“, Ende nach Mitternacht) stand
+  mit „[Bis Do 01.10.]“ hinter den aktuellen Störungen (die Zeile nennt bei
+  einem Ende nach Mitternacht in jedem Fall das Ende).
+- `oebb-tag`: eine ÖBB-Meldung mit Bauwort, die ÖBB am Tag ihres Beginns
+  erstmals veröffentlicht und die an diesem Tag endet. „Wegen Verlängerung der
+  Bauarbeiten sind zwischen Wien Franz-Josefs-Bahnhof und Wien Heiligenstadt
+  Bahnhof bis voraussichtlich 09:00 Uhr keine Fahrten möglich“ stand am
+  01.11.2026 um 06:01 als „[Heute]“ auf Platz 7. Geplante Sperren
+  veröffentlicht ÖBB Tage vorher.
+
+Bei den Regeln bleibt, was der Betreiber entschieden hat: Ein Text, der eine
+Verlegung, eine Demonstration, eine Veranstaltung, einen Staatsbesuch oder
+eine Übung nennt, ist geplant (03.11.2026) und kein Kandidat; `bauwort` und
+`oebb-tag` gelten nur, wenn jedes Planwort des Textes ein Bauwort ist. Eine
+ÖBB-Meldung über eine beendete Störung bleibt, was sie ist. Ein Vorfall, der
+in Arbeiten übergeht („1: Gleisschaden“, 20.10., danach „1:
+Gleisbauarbeiten“), ist auf beiden Seiten klar.
+
+**Was Gemini darf.** Eine Antwort je Meldung: `ploetzlich`, `geplant` oder
+`unklar`, dazu ein Satz Begründung. Die Antwort setzt nur das Feld `_ki_art`
+der Meldung; `_incident_since` wählt damit zwischen den zwei Fassungen, die
+die Regeln ohnehin bauen. Bei `unklar` und ohne Antwort entscheiden die Regeln
+wie bisher. Gemini schreibt keinen Titel, keinen Text und keine Zeitzeile; die
+Begründung steht nur im Speicher. Das Modell liest von der Meldung Quelle,
+Titel, Text, Beginn, Ende und Veröffentlichung und bis zu vier andere
+Meldungen derselben Linie oder Strecke (`describe`, `neighbours_of`): den
+Hinweis über Gleisbauarbeiten neben „26: Züge halten in Tokiostraße“, den
+Rettungseinsatz neben „9: Züge halten bei Linie 52“. Die Texte der Betreiber
+stehen als Daten zwischen festen Marken; Werkzeuge hat das Modell keine.
+
+**Wann gefragt wird.** Nur der Feed-Build des Update-Laufs fragt
+(`Decider.decide` in `src/ki_entscheidung/run.py`, aufgerufen in
+`_assemble_feed_items` nach `_carry_item_identity` und vor der Sortierung),
+höchstens einmal je Build und mit höchstens vier Meldungen (so viele standen im
+Nachspiel höchstens zugleich an; was nicht hineinpasst, fragt der nächste
+Build). `feed lint`, die Einzelproben des Builds, Nachspiele und Tests lesen
+nur den Speicher (`apply_stored`). Gefragt wird nach einer Meldung nur,
+solange sie neu ist: höchstens 2 h 45 min im Feed, und der Beginn, den ein
+„plötzlich“ zeigen würde, liegt ebenso kurz zurück (`ASK_WINDOW`). Der
+Feed-Wächter meldet ein „[Seit hh:mm]“, das mehr als drei Stunden nach seiner
+Uhrzeit zum ersten Mal erscheint (`seit-zu-frueh`); eine späte Antwort würde
+genau das erzeugen. Je Ereignis einer Meldung fragen höchstens drei Builds, je
+Wiener Tag höchstens sechs (gelesen aus den gespeicherten Zeitpunkten, kein
+eigener Zähler); ein geänderter Text wird in diesem Rahmen neu gefragt, die
+wechselnde Prognose von WL („Voraussichtliche Dauer: …“) zählt nicht als
+Änderung.
+
+Ein Build fragt die Modellkette einmal ab (`ask_chain` in
+`src/markdown_stats/review_client.py`, der Konnektor des Jahresrückblicks,
+Schlüssel im Kopf `x-goog-api-key`): die Lite-Modelle der Wächter-Kette zuerst
+(`MODELS` in `ask.py`), jedes Modell höchstens einmal, das nächste nur, wenn
+das vorige überlastet, am Kontingent oder nicht erreichbar ist. Im Regelfall
+ist das eine Anfrage. Im äußersten Fall sind es vier je Build und damit sechs
+am Tag an jedes der beiden Flash-Modelle. Ist das Tageskontingent eines
+Modells erreicht, antwortet es mit 429, und diese Kette wie die des
+KI-Wächters geht zum nächsten Modell. Auf ein Modell wartet der Build
+höchstens 12 Sekunden (`MAX_READ_S`), später als 15 Sekunden nach der ersten
+startet keine Anfrage mehr, und auf eine Antwort wartet keine über die 20
+Sekunden (`DEADLINE_S`) hinaus. Gemessen am 12.11.2026 mit vier überlasteten
+Modellen: 20,1 Sekunden. Öffnet sich eine Verbindung langsam, kommen
+höchstens zehn Sekunden dazu: Spätestens 30 Sekunden nach seinem Beginn ist
+der Durchgang zu Ende.
+
+**Eine Antwort gilt für ihr Ereignis.** Der Schlüssel im Speicher ist die GUID
+der Meldung, und eine WL-GUID trägt kein Datum: „9: Züge halten bei Linie 52“
+kehrt Tage nach einem Rettungseinsatz mit demselben Schlüssel und demselben
+Text zurück, wenn WL eine geplante Maßnahme einträgt. Eine Antwort gilt
+deshalb nur, wenn sie nicht älter ist als der Beginn, den die Meldung jetzt
+zeigt (`_answer_holds`): Das nächste Ereignis desselben Tickers wird neu
+gefragt und hat seine eigenen drei Versuche, bis dahin gelten für es die
+Regeln. Bekommt ein Ticker, der im Feed geblieben ist, einen neuen Beginn,
+gelten ebenfalls die Regeln (gefragt wird er nicht mehr, er ist nicht neu).
+Innerhalb eines Ereignisses bleibt die Antwort stehen, wenn der Betreiber den
+Text fortschreibt (ÖBB am 01.11.2026: fünf Fassungen einer Meldung in fünf
+Stunden); neu gefragt wird der geänderte Text nur, solange die Meldung neu
+ist. Eine ÖBB-Meldung, die als `oebb-tag` gefragt wurde, behält ihre Antwort,
+wenn ÖBB das Ende später auf den nächsten Tag legt.
+
+**Ohne Gemini.** Fehlt der Schlüssel, ist ein Modell überlastet, das
+Kontingent erreicht oder die Antwort unbrauchbar, gilt für die Meldung die
+Regel; der Build scheitert daran nie. Er meldet sein Ergebnis als Nebenschritt
+„KI-Entscheidung“ (Ausgabe `ki_outcome`, Teil 5, „Überwachung:
+Nebenschritte“). Rot ist sofort, was nicht laufen kann („ein Fehler sollte
+auffallen“, 28.10.2026): ein leerer Schlüssel, ein abgebrochener Durchlauf,
+ein Speicher, der sich nicht schreiben lässt, eine Anfrage, die sich nicht
+senden lässt, und ein von Google abgelehnter Schlüssel. Die Ablehnung steht
+im Speicher (`schluessel_abgelehnt`) und bleibt rot, bis Google wieder eine
+Anfrage annimmt, längstens 24 Stunden: Ein Build ohne unklare Meldung fragt
+nichts und würde sonst eine halbe Stunde später Grün melden; nach einem Tag
+hat der KI-Wächter mit demselben Schlüssel gefragt und meldet ihn selbst. Die
+abgelehnte Anfrage zählt nicht als Versuch der Meldung. Bekam eine neue
+Meldung in keinem ihrer drei Builds eine Antwort oder sind die sechs des Tages
+verbraucht, ist das wie beim KI-Wächter ein Hinweis (04.11.2026), der endet,
+sobald die Meldung nicht mehr neu ist; er wird hier nie rot, denn jeder Build
+ohne unklare Meldung meldet Erfolg. Schweigen die Modelle über Tage, zeigt das
+der Eintrag des KI-Wächters, der dieselbe Kette täglich fragt.
+`KI_ENTSCHEIDUNG=0` schaltet die Anfragen ab und meldet Erfolg; gespeicherte
+Antworten gelten weiter. Builds ohne Schlüssel (`build-feed.yml`,
+`manual-full-refresh.yml`, lokal) lesen den Speicher und schreiben ihn nie.
+
+**Speicher.** `data/ki_entscheidungen.json` fährt im Commit des Update-Laufs
+mit wie `data/first_seen.json`: je Meldung (Schlüssel wie im Zustand, die
+GUID) die Antwort `art`, ihr `grund`, das `modell`, der Abdruck des Textes,
+der Zeitpunkt der Antwort (`entschieden`), die Zeitpunkte der letzten Anfragen
+und der Tag, an dem die Meldung zuletzt in einem Build stand. Ein Eintrag
+fällt eine Woche danach weg. Ein Nachbau desselben Commits liest dieselben
+Antworten und baut denselben Feed.
+
+**Probelauf.** `scripts/ki_entscheidung_probe.py` (Workflow
+`ki-entscheidung-probe.yml`: von Hand und bei einem Push auf einen Zweig, der
+das Paket, den Konnektor, das Skript oder die Fallsammlung ändert) legt Gemini
+die 20 unklaren Meldungen des Nachspiels vor, jede mit den anderen Meldungen
+ihrer Linien zu ihrem Zeitpunkt und mit der Antwort, die ein Leser der Quelle
+erwartet (`data/samples/ki_entscheidung_faelle.json`). Er fragt wie der Build
+(derselbe Prompt, dieselbe Kette, vier Meldungen je Anfrage), wiederholt einen
+Block ohne Antwort einmal und speichert nichts. Vier Läufe am 12.11.2026,
+alle bei zeitweise überlasteten Modellen: um 18:57 Uhr (Wiener Zeit, noch acht
+Meldungen je Anfrage) 8 von 20 beantwortet, alle wie erwartet; um 19:15 Uhr 16
+von 20, davon 15 wie erwartet („44A: Fahrplanaushang bitte beachten“ `unklar`
+statt `geplant`, was im Feed dasselbe ergibt); um 19:21 Uhr 20 von 20
+beantwortet und alle wie erwartet, alle von einem Lite-Modell; um 19:29 Uhr
+wieder 20 von 20 beantwortet, 19 wie erwartet (erneut „44A“ `unklar`). Eine
+beantwortete Anfrage mit vier Meldungen dauerte 5 bis 10 Sekunden. Darunter die Fälle, die nur die Nachbarn entscheiden: „26: Züge
+halten in Tokiostraße“ `geplant` („Andere Meldung derselben Linie kündigt
+Gleisbauarbeiten an“), „9: Züge halten bei Linie 52“ `ploetzlich` („Die andere
+Meldung derselben Linie nennt einen Rettungseinsatz als Grund“), „37: Züge
+halten Währigner Gürtel 164“ (so die Quelle) ohne Nachbarn `unklar`.
+
+**Nachspiel alt gegen neu** über die 2.169 Cache-Stände vom 20.09. bis
+12.11.2026, durch die ganze Kette bis zum deutschen Feed. Ohne gespeicherte
+Antworten baut der neue Code in allen 2.169 Ständen denselben Feed wie der
+alte. Mit den Antworten des Probelaufs, in der Reihenfolge der Stände gefragt
+und gespeichert wie im Betrieb, fragen 19 Builds nach 24 Meldungen (rund
+zweieinhalb Builds je Woche, höchstens vier Meldungen in einem), und 57 Stände
+an sechs Tagen ändern sich:
+
+- 21.09. 09:01 bis 22.09. 08:31 (41 Stände): „26: Züge halten in
+  Tokiostraße“, „26E: Busse halten Satzingerweg 41“ und „27: Linie 25 in
+  Tokiostraße benützen“ zeigen „[Heute]“ statt „[Seit 08:48]“ und stehen
+  hinter den aktuellen Störungen; „26A: Rettungseinsatz“ rückt von Platz 5
+  auf 2, „43/44: Stromstörung“ von 6 auf 3, „60: Fremder Verkehrsunfall“ kommt
+  in die ersten zehn.
+- 22.09. 22:30: „U6: Weichenstörung“ zeigt „[Seit 22:12]“ statt „[Heute]“.
+- 30.09. 22:02 bis 01.10. 00:31 (4 Stände): „48A: Gasrohrgebrechen“ steht auf
+  Platz 1 bis 2 statt 2 bis 4, Zeile unverändert.
+- 01.11. 05:31 bis 10:01 (9 Stände): „Wien Franz-Josefs-Bahnhof ↔ Wien
+  Heiligenstadt … Wegen Verlängerung der Bauarbeiten … keine Fahrten möglich“
+  (im ersten Stand noch unter dem Titel „Wien Franz-Josefs-Bahnhof“) zeigt
+  „[Seit 05:09]“ statt „[Heute]“ und steht auf Platz 1 bis 2 statt 1 bis 7.
+- 09.11. 04:31 und 05:01: „Wien Hauptbahnhof ↔ Gramatneusiedl“ (Verlängerung
+  der Bauarbeiten) steht auf Platz 1 mit „[Seit 04:30]“, danach „[Seit
+  04:50]“; vorher stand die Meldung nicht unter den ersten zehn.
+
+Alle übrigen Antworten bestätigen, was die Regeln zeigen. Kein Text und kein
+Titel ändert sich, nur Zeitzeile und Platz.
+
+**Tests.** `tests/test_ki_entscheidung_faelle.py` (Klassen, Betreiberliste,
+Abdruck, was das Modell liest, Wirkung der Antwort auf Zeitzeile und Gruppe,
+Antwort je Ereignis, Speicher lesen), `tests/test_ki_entscheidung_lauf.py`
+(Anfrage, Fristen, Speicher, Grenzen, abgelehnter Schlüssel, Ergebnis für den
+Health check), `tests/test_ki_entscheidung_build.py` (`build_feed.main()` und
+`lint()` mit Schlüssel und ersetztem Transport), `tests/test_ki_entscheidung_probe.py`
+(Fallsammlung, Bericht, Workflow) und `tests/test_record_side_steps.py`
+(Nebenschritt im Health check).

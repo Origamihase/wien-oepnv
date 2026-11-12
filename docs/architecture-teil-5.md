@@ -615,7 +615,7 @@ Veröffentlichung nie aufhalten dürfen: Statistik
 Feed-Wächter (`feed_watch.py`) im Update-Lauf, ÖBB-Stationslinien
 (`update_oebb_station_lines.py`) im Stationslauf, seit 2026-10-31 die
 Repository-Metadaten (`REPO_ADMIN_TOKEN`) im SEO-Lauf (siehe „Werkzeuge“
-unten) und der tägliche KI-Wächter (`ki-waechter.yml`, Grenze 36 h). Bis 2026-10-28 hinterließ
+unten) und der tägliche KI-Wächter (`ki-waechter.yml`, Grenze 36 h); seit 2026-11-12 meldet der Feed-Build seine KI-Entscheidung selbst als Nebenschritt (Ausgabe `ki_outcome`, Teil 8, §14). Bis 2026-10-28 hinterließ
 ihr Scheitern nur eine orange Annotation in einem grünen Lauf, und GitHub
 schickte keine Mail. Gemessen ist keiner gescheitert (Update-Läufe seit
 01.09.2026, Stationsläufe seit 01.01.2026), der Mangel war latent.

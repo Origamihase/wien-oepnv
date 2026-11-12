@@ -3,7 +3,7 @@
 Owner's decision (Michael, 2026-11-10 17:44 Europe/Vienna), point 4: "The
 year's Baustellen (roadworks) are summarised by Gemini." It is his explicit
 exception to "an AI only watches and reports, never rewrites" (2026-10-31),
-which stays for the feed: this is the first text of a model the project
+which stays for the feed's texts: this is the first text of a model the project
 publishes, and only on the page of a finished year.
 
 Three parts:

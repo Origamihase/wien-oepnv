@@ -1,0 +1,665 @@
+{
+ "stand": "Nachspiel der Cache-Stände vom 20.09.2026 bis 12.11.2026 (2169 Stände): jede Störung, die die Regeln offen lassen, zum ersten Stand, in dem der Feed-Build nach ihr gefragt hätte. Texte: Wiener Linien und ÖBB (NOTICE.md). 'erwartet' und 'warum' sind die Einschätzung eines Lesers der Quelle, kein Teil der Regeln.",
+ "faelle": [
+  {
+   "jetzt": "2026-09-20T22:01:15+00:00",
+   "klasse": "ohne-ursache",
+   "erwartet": "geplant",
+   "warum": "Ersatzverkehr, der um Mitternacht für den ganzen Tag eingeschaltet wird",
+   "feed_damals": null,
+   "platz_damals": null,
+   "meldung": {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197",
+    "description": "Ersatzverkehr\nBusse halten Simmeringer Hauptstraße ggü. 197",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "c7cab16c6b000ee634396f641ed4edd7e44c32a779d60cb67d089f602389de45",
+    "pubDate": "2026-09-21T00:00:16+02:00",
+    "starts_at": "2026-09-21T00:00:19+02:00",
+    "ends_at": "2026-09-21T23:59:59+02:00",
+    "_identity": "wl|störung|L=71E|D=2026-09-21|TK=ersatzverkehr"
+   },
+   "nachbarn": []
+  },
+  {
+   "jetzt": "2026-09-21T07:01:32+00:00",
+   "klasse": "ohne-ursache",
+   "erwartet": "geplant",
+   "warum": "Haltestellen eines Ersatzbusses während der Gleisbauarbeiten in der Donaufelder Straße",
+   "feed_damals": "Busse halten Bessemerstraße 1-3, auf Hauptfahrbahn, Hoßplatz 11; Ersatzbus hält Karl-Waldbrunner-Platz vor Schloßhofer Straße. [Seit 08:48]",
+   "platz_damals": 2,
+   "meldung": {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26E: Busse halten Satzingerweg 41",
+    "description": "Busse halten Bessemerstraße 1-3, auf Hauptfahrbahn, Hoßplatz 11; Ersatzbus hält Karl-Waldbrunner-Platz vor Schloßhofer Straße.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "2008cbaf36893e0d453fc689a916eff611bcdc08a4fc946ad2a11efd0db1eb3c",
+    "pubDate": "2026-09-21T08:48:02+02:00",
+    "starts_at": "2026-09-21T08:48:02+02:00",
+    "ends_at": "2026-09-21T23:59:59+02:00",
+    "_identity": "wl|störung|L=26E|D=2026-09-21|TK=busse halten satzingerweg 41"
+   },
+   "nachbarn": []
+  },
+  {
+   "jetzt": "2026-09-21T07:01:32+00:00",
+   "klasse": "ohne-ursache",
+   "erwartet": "geplant",
+   "warum": "Anzeigetext der Gleisbauarbeiten in der Donaufelder Straße (Hinweis 25/26/27, 14.09. bis 31.12.2026)",
+   "feed_damals": "[Seit 08:48]",
+   "platz_damals": 3,
+   "meldung": {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Züge halten in Tokiostraße",
+    "description": "Züge halten in\nTokiostraße",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "544df376802b1177e5b0248149f682aaa8e4c43cffba470c30fbb130a531b8d8",
+    "pubDate": "2026-09-21T08:48:02+02:00",
+    "starts_at": "2026-09-21T08:48:02+02:00",
+    "ends_at": "2026-09-21T23:59:59+02:00",
+    "_identity": "wl|störung|L=26|D=2026-09-21|TK=züge halten in tokiostrasse"
+   },
+   "nachbarn": [
+    {
+     "source": "Wiener Linien",
+     "category": "Hinweis",
+     "title": "25/26/27: Gleisbauarbeiten",
+     "description": "<h2>Gleisbauarbeiten</h2> <p>Die Gleise in der Donaufelder Stra&szlig;e werden erneuert, daher kommt es zu Einschr&auml;nkungen bei den Linien 25, 26, 27 und N20. N20 siehe eigenen Eintrag, Verkehrsma&szlig;nahmen beginnen dort bereits am 11. September 2026!<br />Planen Sie ca. 15 Minuten mehr Fahrzeit ein.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Montag, 14. September 2026 bis Ende 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie 25:</strong><br />Betrieb zwischen Aspern, Oberdorfstra&szlig;e bis Josef-Baumann-Gasse. Ab Josef-Baumann-Gasse fahren die Z&uuml;ge &uuml;ber die Strecke der Linie 27 bis Aspern Nord S U.</p> <p><strong>Linie 26:</strong><br />Betrieb nur zwischen Hausfeldstra&szlig;e U und Josef-Baumann-Gasse. Die Z&uuml;ge fahren ab Josef-Baumann-Gasse weiter bis Kagran U.</p> <p><strong>Linie 27:</strong><br />Betrieb nur zwischen Strebersdorf und Floridsdorf S U.</p> <p><strong>Alternativen:</strong><br />Weichen Sie nach M&ouml;glichkeit gro&szlig;r&auml;umig auf die Linien U1, 27A, 29A, 31A, 33A und die S-Bahn aus. Nutzen Sie die WienMobil App, um Ihre ideale Ausweichstrecke zu planen.</p> <p><span style=\"text-decoration: underline;\">Von Kagran bis Floridsdorf:</span><br />Mit dem 27A bis zur Eipeldauer Stra&szlig;e und weiter mit dem 29A bis Floridsdorf.<br />Mit der U1 bis Leopoldau und weiter mit der S-Bahn bis Floridsdorf.<br />Mit der U1 bis Praterstern und weiter mit der S-Bahn bis Floridsdorf.</p> <p><span style=\"text-decoration: underline;\">Vom Kagraner Platz bis Floridsdorf:</span><br />Mit dem 31A bis zur Leopoldauer Stra&szlig;e und weiter mit dem 29A bis Floridsdorf.<br />Mit dem 31A bis zur Siemensstra&szlig;e und weiter mit der S-Bahn bis Floridsdorf.<br />Mit der U1 bis Gro&szlig;feldsiedlung und weiter mit dem 29A bis Floridsdorf.<br />Mit der U1 bis Leopoldau und weiter mit der S-Bahn bis Floridsdorf.<br />Mit der U1 bis Praterstern und weiter mit der S-Bahn bis Floridsdorf.</p> <p><span style=\"text-decoration: underline;\">Von Aspern und Breitenlee bis Floridsdorf:</span><br />Mit der U2 bis zum Praterstern und weiter mit der S-Bahn&nbsp;bis Floridsdorf.</p> <p><span style=\"text-decoration: underline;\">F&uuml;r die Haltestellen Ho&szlig;platz, Fultonstra&szlig;e und Carminweg:</span><br />Der Ersatzbus 26E bindet die Haltestellen zwischen Floridsdorf und Josef-Baumann-Gasse an.</p> <p><span style=\"text-decoration: underline;\"><strong>Skizzen:</strong></span><br /><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/25_26_27_Gleisbau_Donaufelder_Str.png\" alt=\"\" width=\"3578\" height=\"3578\" /></p> <p>&nbsp;</p> <p><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/25_26_27_Gleisbau_Donaufelder_Str_Flodo.png\" alt=\"\" width=\"3578\" height=\"3578\" /></p>",
+     "link": "https://www.wienerlinien.at/ogd_realtime",
+     "guid": "3e1d11937d825307b73e5648ab1bb3565749be3c6e0a3d31611f44791ada2c5a",
+     "pubDate": "2026-08-13T12:00:00+02:00",
+     "starts_at": "2026-09-14T00:00:00+02:00",
+     "ends_at": "2026-12-31T23:59:00+01:00",
+     "_identity": "wl|hinweis|L=25,26,27|D=2026-09-14|TK=25 26 27 gleisbauarbeiten"
+    }
+   ]
+  },
+  {
+   "jetzt": "2026-09-21T07:01:32+00:00",
+   "klasse": "ohne-ursache",
+   "erwartet": "geplant",
+   "warum": "Anzeigetext der Gleisbauarbeiten in der Donaufelder Straße (Hinweis 25/26/27, 14.09. bis 31.12.2026)",
+   "feed_damals": "Züge halten bei Linie 31. [Seit 08:48]",
+   "platz_damals": 4,
+   "meldung": {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "27: Linie 25 in Tokiostraße benützen",
+    "description": "Züge halten bei Linie 31.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "850d1ea5a2f242340850bbce64f4516a1e196325253cc145d45d09c3a0832c88",
+    "pubDate": "2026-09-21T08:48:02+02:00",
+    "starts_at": "2026-09-21T08:48:02+02:00",
+    "ends_at": "2026-09-21T23:59:59+02:00",
+    "_identity": "wl|störung|L=27|D=2026-09-21|TK=linie 25 in tokiostrasse benützen"
+   },
+   "nachbarn": [
+    {
+     "source": "Wiener Linien",
+     "category": "Hinweis",
+     "title": "25/26/27: Gleisbauarbeiten",
+     "description": "<h2>Gleisbauarbeiten</h2> <p>Die Gleise in der Donaufelder Stra&szlig;e werden erneuert, daher kommt es zu Einschr&auml;nkungen bei den Linien 25, 26, 27 und N20. N20 siehe eigenen Eintrag, Verkehrsma&szlig;nahmen beginnen dort bereits am 11. September 2026!<br />Planen Sie ca. 15 Minuten mehr Fahrzeit ein.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Montag, 14. September 2026 bis Ende 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linie 25:</strong><br />Betrieb zwischen Aspern, Oberdorfstra&szlig;e bis Josef-Baumann-Gasse. Ab Josef-Baumann-Gasse fahren die Z&uuml;ge &uuml;ber die Strecke der Linie 27 bis Aspern Nord S U.</p> <p><strong>Linie 26:</strong><br />Betrieb nur zwischen Hausfeldstra&szlig;e U und Josef-Baumann-Gasse. Die Z&uuml;ge fahren ab Josef-Baumann-Gasse weiter bis Kagran U.</p> <p><strong>Linie 27:</strong><br />Betrieb nur zwischen Strebersdorf und Floridsdorf S U.</p> <p><strong>Alternativen:</strong><br />Weichen Sie nach M&ouml;glichkeit gro&szlig;r&auml;umig auf die Linien U1, 27A, 29A, 31A, 33A und die S-Bahn aus. Nutzen Sie die WienMobil App, um Ihre ideale Ausweichstrecke zu planen.</p> <p><span style=\"text-decoration: underline;\">Von Kagran bis Floridsdorf:</span><br />Mit dem 27A bis zur Eipeldauer Stra&szlig;e und weiter mit dem 29A bis Floridsdorf.<br />Mit der U1 bis Leopoldau und weiter mit der S-Bahn bis Floridsdorf.<br />Mit der U1 bis Praterstern und weiter mit der S-Bahn bis Floridsdorf.</p> <p><span style=\"text-decoration: underline;\">Vom Kagraner Platz bis Floridsdorf:</span><br />Mit dem 31A bis zur Leopoldauer Stra&szlig;e und weiter mit dem 29A bis Floridsdorf.<br />Mit dem 31A bis zur Siemensstra&szlig;e und weiter mit der S-Bahn bis Floridsdorf.<br />Mit der U1 bis Gro&szlig;feldsiedlung und weiter mit dem 29A bis Floridsdorf.<br />Mit der U1 bis Leopoldau und weiter mit der S-Bahn bis Floridsdorf.<br />Mit der U1 bis Praterstern und weiter mit der S-Bahn bis Floridsdorf.</p> <p><span style=\"text-decoration: underline;\">Von Aspern und Breitenlee bis Floridsdorf:</span><br />Mit der U2 bis zum Praterstern und weiter mit der S-Bahn&nbsp;bis Floridsdorf.</p> <p><span style=\"text-decoration: underline;\">F&uuml;r die Haltestellen Ho&szlig;platz, Fultonstra&szlig;e und Carminweg:</span><br />Der Ersatzbus 26E bindet die Haltestellen zwischen Floridsdorf und Josef-Baumann-Gasse an.</p> <p><span style=\"text-decoration: underline;\"><strong>Skizzen:</strong></span><br /><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/25_26_27_Gleisbau_Donaufelder_Str.png\" alt=\"\" width=\"3578\" height=\"3578\" /></p> <p>&nbsp;</p> <p><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/25_26_27_Gleisbau_Donaufelder_Str_Flodo.png\" alt=\"\" width=\"3578\" height=\"3578\" /></p>",
+     "link": "https://www.wienerlinien.at/ogd_realtime",
+     "guid": "3e1d11937d825307b73e5648ab1bb3565749be3c6e0a3d31611f44791ada2c5a",
+     "pubDate": "2026-08-13T12:00:00+02:00",
+     "starts_at": "2026-09-14T00:00:00+02:00",
+     "ends_at": "2026-12-31T23:59:00+01:00",
+     "_identity": "wl|hinweis|L=25,26,27|D=2026-09-14|TK=25 26 27 gleisbauarbeiten"
+    }
+   ]
+  },
+  {
+   "jetzt": "2026-09-22T20:30:50+00:00",
+   "klasse": "bauwort",
+   "erwartet": "ploetzlich",
+   "warum": "Weichenstörung; die Bauarbeiten nennt der Text nur für die Station Neue Donau",
+   "feed_damals": "Die Linie U6 fährt derzeit zwischen den Stationen Dresdner Straße und Neue Donau in beiden Richtungen über Gleis 1. Die Station Neue Donau kann in beiden Richtungen … [Heute]",
+   "platz_damals": 1,
+   "meldung": {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Weichenstörung",
+    "description": "Die Linie U6 fährt derzeit zwischen den Stationen Dresdner Straße und Neue Donau in beiden Richtungen über Gleis 1. Die Station Neue Donau kann in beiden Richtungen wegen Bauarbeiten nicht eingehalten werden Die Störung dauert voraussichtlich bis 23:30 Uhr. Grund dafür ist eine Weichenstörung im Haltestellenbereich Handelskai.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "861eb589822612a9402ffcc15457641ff4cf74d6a9632da81a7b59b0d8e8dda0",
+    "pubDate": "2026-09-22T22:12:00+02:00",
+    "starts_at": "2026-09-22T22:12:00+02:00",
+    "ends_at": "2026-09-22T23:55:00+02:00",
+    "_identity": "wl|störung|L=U6|D=2026-09-22|TK=u6 weichenstörung"
+   },
+   "nachbarn": []
+  },
+  {
+   "jetzt": "2026-09-26T15:31:15+00:00",
+   "klasse": "ohne-ursache",
+   "erwartet": "unklar",
+   "warum": "Text und Nachbarn nennen keinen Anlass",
+   "feed_damals": "[Seit 16:23]",
+   "platz_damals": 1,
+   "meldung": {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Züge halten Währigner Gürtel 164",
+    "description": "Züge halten\nWährigner Gürtel 164",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "e3f4c29d3289dac4f6ec38b1e983749adcb4e094557f3c310b527b123faa268f",
+    "pubDate": "2026-09-26T16:23:01+02:00",
+    "starts_at": "2026-09-26T16:23:01+02:00",
+    "ends_at": "2026-09-26T17:33:00+02:00",
+    "_identity": "wl|störung|L=37|D=2026-09-26|TK=züge halten währigner gürtel 164"
+   },
+   "nachbarn": []
+  },
+  {
+   "jetzt": "2026-09-30T20:02:15+00:00",
+   "klasse": "bauwort",
+   "erwartet": "ploetzlich",
+   "warum": "Gasrohrgebrechen; die Bauarbeiten nennt der Text nur für die Umleitung",
+   "feed_damals": "Betrieb nur zwischen Parlament, Volkstheater und Joachimsthalerplatz. Die Busse fahren ab Pfenninggeldgasse über die Spetterbrücke - Wernhardtstraße zum Joachimsthalerplatz. [Bis Do 01.10.]",
+   "platz_damals": 4,
+   "meldung": {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "48A: Gasrohrgebrechen",
+    "description": "Betrieb nur zwischen Parlament, U Volkstheater und Joachimsthalerplatz. Die Busse fahren ab Pfenninggeldgasse über die Spetterbrücke - Wernhardtstraße zum Joachimsthalerplatz. Um Ottakring S U zu erreichen fahren Sie bitte weiter in die Gegenrichtung. Zwischen Joachimsthalerplatz und Klinik Penzing wurde ein Pendelbusverkehr eingerichtet, dieser hält am Joachimsthalerplatz in der Abfahrtshaltestelle der Linie 46. Aufgrund der Bauarbeiten werden die Busse über über die Breitenseer Straße umgeleitet und können die Haltestellen Klinik Ottakring und Waidäckergasse nicht einhalten!; Shuttlebus eingerichtet, Abfahrtsstelle: Haltestelle Linie 46! Voraussichtliche Dauer: Betriebsschluss. Grund: Gasrohrgebrechen im Bereich Flötzersteig.",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "3387d8dbca374bec4aee4170d550468b4dadbe0e839ef24a9be85ee625c517de",
+    "pubDate": "2026-09-30T21:45:01+02:00",
+    "starts_at": "2026-09-30T21:47:00+02:00",
+    "ends_at": "2026-10-01T01:00:00+02:00",
+    "_identity": "wl|störung|L=48A|D=2026-09-30|TK=48a gasrohrgebrechen"
+   },
+   "nachbarn": []
+  },
+  {
+   "jetzt": "2026-10-05T22:01:17+00:00",
+   "klasse": "ohne-ursache",
+   "erwartet": "geplant",
+   "warum": "Fahrplanhinweis um Mitternacht",
+   "feed_damals": "[Heute]",
+   "platz_damals": 1,
+   "meldung": {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44A: Fahrplanaushang bitte beachten",
+    "description": "Fahrplanaushang\nbitte beachten",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "671cc0c195d21d4fcb1c89c63b69ded89beaf3904ba0827a164bc22c70777036",
+    "pubDate": "2026-10-06T00:00:18+02:00",
+    "starts_at": "2026-10-06T00:00:28+02:00",
+    "ends_at": "2026-10-06T00:30:00+02:00",
+    "_identity": "wl|störung|L=44A|D=2026-10-06|TK=fahrplanaushang bitte beachten"
+   },
+   "nachbarn": []
+  },
+  {
+   "jetzt": "2026-10-08T05:31:15+00:00",
+   "klasse": "ohne-ursache",
+   "erwartet": "ploetzlich",
+   "warum": "Rettungseinsatz",
+   "feed_damals": "[Seit 07:22]",
+   "platz_damals": 3,
+   "meldung": {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Rettungseinsatz züge halten Favoritenstraße 113",
+    "description": "Rettungseinsatz\nzüge halten Favoritenstraße 113",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "4644464f47eb90a718b9b2e586a96c5f50e6b9f45d44d41c1ba62910a698bbc4",
+    "pubDate": "2026-10-08T07:22:57+02:00",
+    "starts_at": "2026-10-08T07:27:57+02:00",
+    "ends_at": "2026-10-08T08:28:00+02:00",
+    "_identity": "wl|störung|L=6|D=2026-10-08|TK=rettungseinsatz"
+   },
+   "nachbarn": []
+  },
+  {
+   "jetzt": "2026-10-16T04:01:30+00:00",
+   "klasse": "ohne-ursache",
+   "erwartet": "ploetzlich",
+   "warum": "Schadhafter Zug",
+   "feed_damals": "[Seit 05:58]",
+   "platz_damals": 1,
+   "meldung": {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "30: Schadhafter Zug Alle Züge über das Gleis der Linie 31",
+    "description": "Schadhafter Zug\nAlle Züge über das Gleis der Linie 31",
+    "link": "https://www.wienerlinien.at/ogd_realtime",
+    "guid": "d25a927cbbd34ead0459d30c64b7ec42b15edd724da474d46985e7480536ef79",
+    "pubDate": "2026-10-16T05:58:46+02:00",
+    "starts_at": "2026-10-16T05:58:46+02:00",
+    "ends_at": "2026-10-16T06:57:00+02:00",
+    "_identity": "wl|störung|L=30|D=2026-10-16|TK=schadhafter zug alle züge über das gleis der linie 31"
+   },
+   "nachbarn": []
+  },
+  {
+   "jetzt": "2026-10-18T19:31:05+00:00",
+   "klasse": "ohne-ursache",
+   "erwartet": "ploetzlich",
+   "warum": "Anzeigetext zum Rettungseinsatz der Linien 6/9/18/52 von 21:16",
+   "feed_damals": "[Seit 21:22]",
+   "platz_damals": 1,
+   "meldung": {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Züge halten bei Linie 52",
+    "description": "Züge halten bei\nLinie 52",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1ba16e6c1aaaa57bf1e8a6610ba7b82a16be4907054ec5f96f7c9b7cca6550b5",
+    "pubDate": "2026-10-18T21:22:16+02:00",
+    "starts_at": "2026-10-18T21:22:16+02:00",
+    "ends_at": "2026-10-18T22:21:00+02:00",
+    "_identity": "wl|störung|L=9|D=2026-10-18|TK=züge halten bei linie 52"
+   },
+   "nachbarn": [
+    {
+     "source": "Wiener Linien",
+     "category": "Störung",
+     "title": "6/9/18/52: Rettungseinsatz",
+     "description": "Betrieb nur zwischen Geiereckstraße und Westbahnhof S U. Linie 9: Betrieb nur zwischen Gersthof S und Urban-Loritz-Platz. Linie 18: Betrieb nur zwischen Stadion U und Westbahnhof S U. Die Linie 52 fährt derzeit nicht zwischen Westbahnhof S U und Urban-Loritz-Platz. Weichen Sie ersatzweise auf die Linie U6 aus. Voraussichtliche Dauer: 22:15 Uhr. Grund: Rettungseinsatz im Bereich Neubaugürtel.",
+     "link": "https://www.wienerlinien.at/betriebsinfo",
+     "guid": "2d9e5e07e55318a09766dbf27e836197397566da9140db5c09f4272a2dae3a8d",
+     "pubDate": "2026-10-18T21:16:00+02:00",
+     "starts_at": "2026-10-18T21:16:00+02:00",
+     "ends_at": "2026-10-18T23:55:00+02:00",
+     "_identity": "wl|störung|L=18,52,6,9|D=2026-10-18|TK=rettungseinsatz",
+     "_incident_start": "2026-10-18T21:16:00+02:00",
+     "_wl_ids": [
+      "I20261018-0021"
+     ]
+    }
+   ]
+  },
+  {
+   "jetzt": "2026-10-23T13:31:15+00:00",
+   "klasse": "ohne-ursache",
+   "erwartet": "ploetzlich",
+   "warum": "Verkehrsunfall mit Vorfallsnummer",
+   "feed_damals": "Züge halten bei Linie 12 Richtung Josefstädter Str. [Seit 15:14]",
+   "platz_damals": 3,
+   "meldung": {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fremder Verkehrsunfall",
+    "description": "Züge halten bei Linie 12 Richtung Josefstädter Str.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "9f6f169116b156fd9fd7cecfd8e7169154e32a11b295fe50167321f9a6d12f7b",
+    "pubDate": "2026-10-23T15:14:00+02:00",
+    "starts_at": "2026-10-23T15:14:00+02:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=12|D=2026-10-23|TK=12 fremder verkehrsunfall",
+    "_incident_start": "2026-10-23T15:14:00+02:00",
+    "_wl_ids": [
+     "I20261023-0033"
+    ]
+   },
+   "nachbarn": [
+    {
+     "source": "Wiener Linien",
+     "category": "Hinweis",
+     "title": "5/12: Albertgasse",
+     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 5 und 12 in Richtung Westbahnhof U bzw. Josefst&auml;dter Stra&szlig;e U</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Albertgasse</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Albertgasse 27</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong> <span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">Albertgasse 33 - 35</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 13. Oktober 2026 etwa 09:00 Uhr, f&uuml;r voraussichtlich 2 Wochen</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Bauarbeiten</span></p>",
+     "link": "https://www.wienerlinien.at/betriebsinfo",
+     "guid": "3e5225e046a0df3ec11a86c99a2c68a57b90ba1f9c0a3a5c4fdf60d90cdf02e7",
+     "pubDate": "2026-10-09T00:00:00+02:00",
+     "starts_at": "2026-10-13T00:00:00+02:00",
+     "ends_at": "2026-11-03T23:59:00+01:00",
+     "_identity": "wl|hinweis|L=12,5|D=2026-10-13|TK=5 12 albertgasse"
+    }
+   ]
+  },
+  {
+   "jetzt": "2026-10-28T01:30:59+00:00",
+   "klasse": "ohne-ursache",
+   "erwartet": "ploetzlich",
+   "warum": "Verkehrsunfall",
+   "feed_damals": "Busse halten bei 13A! [Seit 01:56]",
+   "platz_damals": 1,
+   "meldung": {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N46: Fremder Verkehrsunfall",
+    "description": "Busse halten bei 13A!",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "d37553de63247b9ddc715d62350c6516a8501340c842c5cbd3c3dffb8f3e3353",
+    "pubDate": "2026-10-28T01:56:58+01:00",
+    "starts_at": "2026-10-28T01:57:02+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=N46|D=2026-10-28|TK=fahrtbehinderung fremder verkehrsunfall",
+    "_incident_start": "2026-10-28T01:59:00+01:00"
+   },
+   "nachbarn": []
+  },
+  {
+   "jetzt": "2026-10-28T02:01:04+00:00",
+   "klasse": "ohne-ursache",
+   "erwartet": "ploetzlich",
+   "warum": "Verkehrsunfall",
+   "feed_damals": "Busse halten bei 13A! [Seit 01:56]",
+   "platz_damals": 1,
+   "meldung": {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "N46: Fremdunfall",
+    "description": "Busse halten bei 13A!",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "d37553de63247b9ddc715d62350c6516a8501340c842c5cbd3c3dffb8f3e3353",
+    "pubDate": "2026-10-28T00:56:58+00:00",
+    "starts_at": "2026-10-28T01:57:02+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=N46|D=2026-10-28|TK=fremdunfall busse halten bei 13a",
+    "_incident_start": "2026-10-28T01:59:00+01:00"
+   },
+   "nachbarn": []
+  },
+  {
+   "jetzt": "2026-10-30T10:01:16+00:00",
+   "klasse": "ohne-ursache",
+   "erwartet": "ploetzlich",
+   "warum": "Anzeigetext zum Feuerwehreinsatz der Linien 2/12 von 10:39",
+   "feed_damals": "[Seit 10:42]",
+   "platz_damals": 2,
+   "meldung": {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Umleitung zum Westbahnhof",
+    "description": "Umleitung zum Westbahnhof",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "8197ecc1d5e132b0518259b9864122b4c6d7c6c5003678b5f8243507485dfd73",
+    "pubDate": "2026-10-30T10:42:05+01:00",
+    "starts_at": "2026-10-30T10:42:05+01:00",
+    "ends_at": "2026-10-30T11:41:00+01:00",
+    "_identity": "wl|störung|L=12|D=2026-10-30|TK=umleitung"
+   },
+   "nachbarn": [
+    {
+     "source": "Wiener Linien",
+     "category": "Hinweis",
+     "title": "5/12: Albertgasse",
+     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 5 und 12 in Richtung Westbahnhof U bzw. Josefst&auml;dter Stra&szlig;e U</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Albertgasse</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Albertgasse 27</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong> <span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">Albertgasse 33 - 35</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 13. Oktober 2026 etwa 09:00 Uhr, f&uuml;r voraussichtlich 2 Wochen</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Bauarbeiten</span></p>",
+     "link": "https://www.wienerlinien.at/betriebsinfo",
+     "guid": "3e5225e046a0df3ec11a86c99a2c68a57b90ba1f9c0a3a5c4fdf60d90cdf02e7",
+     "pubDate": "2026-10-09T00:00:00+02:00",
+     "starts_at": "2026-10-13T00:00:00+02:00",
+     "ends_at": "2026-11-03T23:59:00+01:00",
+     "_identity": "wl|hinweis|L=12,5|D=2026-10-13|TK=5 12 albertgasse"
+    },
+    {
+     "source": "Wiener Linien",
+     "category": "Störung",
+     "title": "2/12: Feuerwehreinsatz",
+     "description": "Die Linie 2 fährt derzeit nicht zwischen Josefstädter Straße und Parlament, Volkstheater.Die Linie 12 fährt derzeit nur zwischen Hillerstraße und Blindengasse und weiter zum Westbahnhof.Die Störung dauert voraussichtlich bis 11:20 Uhr.Grund dafür ist ein Feuerwehreinsatz im Bereich Josefstädter Straße.",
+     "link": "https://www.wienerlinien.at/betriebsinfo",
+     "guid": "f2966cf53f37809847d4a3e60e295c6b13638d2451ea76e51e3953ac4386a5ce",
+     "pubDate": "2026-10-30T10:39:00+01:00",
+     "starts_at": "2026-10-30T10:39:00+01:00",
+     "ends_at": null,
+     "_identity": "wl|störung|L=12,2|D=2026-10-30|TK=feuerwehreinsatz",
+     "_incident_start": "2026-10-30T10:39:00+01:00",
+     "_wl_ids": [
+      "I20261030-0016"
+     ]
+    }
+   ]
+  },
+  {
+   "jetzt": "2026-10-31T07:01:26+00:00",
+   "klasse": "ohne-ursache",
+   "erwartet": "ploetzlich",
+   "warum": "Verunreinigung mit Verspätungen",
+   "feed_damals": "[Seit 07:13]",
+   "platz_damals": 1,
+   "meldung": {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5A: Verunreinigung Es kommt zu Verspätungen",
+    "description": "Verunreinigung\nEs kommt zu Verspätungen",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "41f02312478d348f55b88df14dcbd3b5eb2149ef99afa0c9a80fdb9f04b3eab2",
+    "pubDate": "2026-10-31T06:13:00+00:00",
+    "starts_at": "2026-10-31T07:14:58+01:00",
+    "ends_at": "2026-10-31T08:13:00+01:00",
+    "_identity": "wl|störung|L=5A|D=2026-10-31|TK=verunreinigung es kommt zu verspätungen"
+   },
+   "nachbarn": [
+    {
+     "source": "Wiener Linien",
+     "category": "Hinweis",
+     "title": "5A/5B/N31: Obere Augartenstraße",
+     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 5A in Richtung Griegstra&szlig;e,&nbsp;</span></u></strong><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">5B in Richtung Heiligenstadt S U und N31 in Richtung Stammersdorf</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;Obere Augartenstra&szlig;e&nbsp;</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Untere Augartenstra&szlig;e 40</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;</span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">Untere Augartenstra&szlig;e 42</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;30. September 2025, etwa 18:00 Uhr auf Dauer von etwa einem Jahr</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Dachgeschossausbau&nbsp;</span></p>",
+     "link": "https://www.wienerlinien.at/betriebsinfo",
+     "guid": "5cd26b46e3d83d83054e14525825191f05326ae3f22d63f0dcf5a305c21f2157",
+     "pubDate": "2025-09-25T13:00:00+02:00",
+     "starts_at": "2025-09-30T00:00:00+02:00",
+     "ends_at": "2026-11-01T11:11:00+01:00",
+     "_identity": "wl|hinweis|L=5A,5B,N31|D=2025-09-30|TK=5a 5b n31 obere augartenstrasse"
+    },
+    {
+     "source": "Wiener Linien",
+     "category": "Hinweis",
+     "title": "5A/N31: Obere Augartenstraße",
+     "description": "<p><strong><u>Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf</u></strong></p><p><strong><u>Haltestelle:</u></strong> Obere Augartenstraße</p><p><strong><u>Von:</u></strong> Untere Augartenstraße 40</p><p><strong><u>Nach:</u></strong> Untere Augartenstraße 42</p><p><strong><u>Dauer:</u></strong> Von 07.11.2026 ca. 05:00 Uhr bis 09.11.2026 ca. 07:00 Uhr</p><p><strong><u>Grund:</u></strong> Demontage eines Turmdrehkrans</p>",
+     "link": "https://www.wienerlinien.at/betriebsinfo",
+     "guid": "4b133e0a2bf2849867177ba0646eb9eec8984fee0146b9475c8c15c934464586",
+     "pubDate": "2026-10-29T14:00:00+01:00",
+     "starts_at": "2026-11-07T00:00:00+01:00",
+     "ends_at": "2026-11-09T07:00:00+01:00",
+     "_identity": "wl|hinweis|L=5A,N31|D=2026-11-07|TK=5a n31 obere augartenstrasse"
+    }
+   ]
+  },
+  {
+   "jetzt": "2026-11-01T04:31:12+00:00",
+   "klasse": "oebb-tag",
+   "erwartet": "ploetzlich",
+   "warum": "Arbeiten dauern länger als geplant, Sperre am selben Morgen gemeldet",
+   "feed_damals": "Wegen Verlängerung der Bauarbeiten sind in Wien Franz-Josefs-Bahnhof bis voraussichtlich 09:00 Uhr keine Fahrten möglich. Die Züge warten die Sperre vorerst ab. [Heute]",
+   "platz_damals": 5,
+   "meldung": {
+    "source": "ÖBB",
+    "category": "Störung",
+    "title": "Wien Franz-Josefs-Bahnhof",
+    "description": "01.11.2026<br/><br/>Wegen Verlängerung der Bauarbeiten sind <b>in </b><b>Wien Franz-Josefs-Bahnhof </b>bis voraussichtlich <b>09:00 Uhr keine Fahrten</b> möglich. Die <b>Züge warten </b>die Sperre <b>vorerst ab</b>.<br>Sobald uns weitere Informationen vorliegen, informieren wir Sie.<br>Wir bitten um Entschuldigung.",
+    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&923451",
+    "pubDate": "2026-11-01T05:09:20+01:00",
+    "starts_at": "2026-11-01T00:00:00+01:00",
+    "ends_at": "2026-11-01T23:59:59+01:00",
+    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&923451"
+   },
+   "nachbarn": [
+    {
+     "source": "ÖBB",
+     "category": "Störung",
+     "title": "R 40/REX 41/REX 4/S 40: Wien Franz-Josefs-Bahnhof ↔ Tulln an der Donau",
+     "description": "31.10.2026 - 04.11.2026<br/><br/>Wegen Bauarbeiten können<br>von <b>02.11.2026</b> bis <b>03.11.2026</b><br>zwischen <b>Wien Franz-Josefs-Bahnhof</b> und <b>St.Andrä-Wördern Bahnhof</b><br>keine R 40-Züge fahren.<br>Der REX 41-Zug 2157 kann<br>zwischen <b>Tulln/Donau Bahnhof</b> und <b>Wien Franz-Josefs-Bahnhof</b> nicht fahren.<br>Als Ersatz haben Sie die Möglichkeit den nächsten fahrplanmäßigen Zug zu nehmen.<br><br>Von <b>31.10.2026</b> (22:00 Uhr) bis <b>01.11.2026</b> (06:00 Uhr) können<br>zwischen <b>Wien Franz-Josefs-Bahnhof</b> und <b>Wien Heiligenstadt Bahnhof</b><br>keine REX 4-Züge fahren.<br>Von <b>31.10.2026</b> (22:00 Uhr) <b>bis 03.11.2026</b> können<br>zwischen <b>Wien Franz-Josefs-Bahnhof</b> und <b>Wien Nußdorf Bahnhst</b><br>keine S 40-Züge fahren.<br>Am <b>01.11.2026</b> können<br>zwischen <b>Wien Franz-Josefs-Bahnhof</b> und <b>Wien Heiligenstadt Bahnhof</b><br>keine REX 41-Züge fahren.<br><br>Reisende mit gültigem Ticket haben die Möglichkeit folgende Alternativverbindungen der <b>Wiener Linien</b> zu nutzen:<br><b>Linie Tram D</b> zwischen <b>Wien Augasse</b> und <b>Wien Nußdorf Bahnhst</b><br><b>Linie U4</b> zwischen <b>Wien Heiligenstadt Bahnhof</b> und <b>Wien Spittelau Bahnhst/Wien Friedensbrücke</b><br><b>VOR-Linie Bus 400</b> zwischen <b>Wien Heiligenstadt Bahnhof</b> und <b>Wien Nußdorf Bahnhst/Klosterneuburg-Kierling Bahnhof</b><br><br><b>SCHIENENERSATZVERKEHR ab 02.11.2026:</b><br>Zusätzlich wird für Sie von <b>02.11.2026</b> bis <b>03.11.2026</b> ein Schienenersatzverkehr mit Autobussen zwischen <b>Wien Heiligenstadt Bahnhof</b> und <b>Wien Nußdorf Bahnhst</b> eingerichtet.<br><b><br>ACHTUNG:</b><br>Anschlussverbindungen können nicht gewährleistet werden.<br><b>HINWEISE:</b><br>Bitte beachten Sie, dass der Zustieg in Stationen mit Ticketautomaten oder Ticketschalter ausschließlich mit einem gültigen Ticket gestattet ist. Der Ticketverkauf in den Bussen des Schienenersatzverkehres ist nur eingeschränkt möglich.<br>Fahrräder können nicht befördert werden.<b><br><br>Mobilitätseingeschränkten Fahrgästen,</b> die für ihre Fahrt Unterstützung benötigen, wird dringend empfohlen, sich vor Reiseantritt mit dem ÖBB Kund:innenservice unter 05-1717-5 in Verbindung zu setzen, um eine barrierefreie Reisekette zu gewährleisten.<br><br>Wir bitten um Entschuldigung. <br/><a href=\"https://kundeninformation-pv.oebb.at/dam/kundeninformation/extern/OEBB/2026/2026_10/Serv10284_Gesamt.pdf\">Details finden Sie hier...</a>",
+     "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+     "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&915701",
+     "pubDate": "2026-10-28T14:31:52+01:00",
+     "starts_at": "2026-10-31T00:00:00+01:00",
+     "ends_at": "2026-11-04T23:59:59+01:00",
+     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&915701"
+    }
+   ]
+  },
+  {
+   "jetzt": "2026-11-01T05:01:20+00:00",
+   "klasse": "oebb-tag",
+   "erwartet": "ploetzlich",
+   "warum": "Arbeiten dauern länger als geplant, Sperre am selben Morgen gemeldet",
+   "feed_damals": "Wegen Verlängerung der Bauarbeiten sind zwischen Wien Franz-Josefs-Bahnhof und Wien Heiligenstadt Bahnhof bis voraussichtlich 09:00 Uhr keine Fahrten möglich. [Heute]",
+   "platz_damals": 7,
+   "meldung": {
+    "source": "ÖBB",
+    "category": "Störung",
+    "title": "Wien Franz-Josefs-Bahnhof ↔ Wien Heiligenstadt",
+    "description": "01.11.2026<br/><br/>Wegen Verlängerung der Bauarbeiten sind zwischen <b>Wien Franz-Josefs-Bahnhof </b>und <b>Wien Heiligenstadt Bahnhof (U) </b>bis voraussichtlich <b>09:00 Uhr keine Fahrten</b> möglich.<br>Fahrgäste mit ÖBB-Tickets können zwischen <b>Wien Franz-Josefs-Bahnhof </b>und <b>Wien Heiligenstadt Bahnhof (U) </b>die <b>Wiener Linien </b>benutzen.<br>Wir bitten um Entschuldigung.",
+    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&923451",
+    "pubDate": "2026-11-01T05:58:37+01:00",
+    "starts_at": "2026-11-01T00:00:00+01:00",
+    "ends_at": "2026-11-01T23:59:59+01:00",
+    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&923451"
+   },
+   "nachbarn": [
+    {
+     "source": "ÖBB",
+     "category": "Störung",
+     "title": "R 40/REX 41/REX 4/S 40: Wien Franz-Josefs-Bahnhof ↔ Tulln an der Donau",
+     "description": "31.10.2026 - 04.11.2026<br/><br/>Wegen Bauarbeiten können<br>von <b>02.11.2026</b> bis <b>03.11.2026</b><br>zwischen <b>Wien Franz-Josefs-Bahnhof</b> und <b>St.Andrä-Wördern Bahnhof</b><br>keine R 40-Züge fahren.<br>Der REX 41-Zug 2157 kann<br>zwischen <b>Tulln/Donau Bahnhof</b> und <b>Wien Franz-Josefs-Bahnhof</b> nicht fahren.<br>Als Ersatz haben Sie die Möglichkeit den nächsten fahrplanmäßigen Zug zu nehmen.<br><br>Von <b>31.10.2026</b> (22:00 Uhr) bis <b>01.11.2026</b> (06:00 Uhr) können<br>zwischen <b>Wien Franz-Josefs-Bahnhof</b> und <b>Wien Heiligenstadt Bahnhof</b><br>keine REX 4-Züge fahren.<br>Von <b>31.10.2026</b> (22:00 Uhr) <b>bis 03.11.2026</b> können<br>zwischen <b>Wien Franz-Josefs-Bahnhof</b> und <b>Wien Nußdorf Bahnhst</b><br>keine S 40-Züge fahren.<br>Am <b>01.11.2026</b> können<br>zwischen <b>Wien Franz-Josefs-Bahnhof</b> und <b>Wien Heiligenstadt Bahnhof</b><br>keine REX 41-Züge fahren.<br><br>Reisende mit gültigem Ticket haben die Möglichkeit folgende Alternativverbindungen der <b>Wiener Linien</b> zu nutzen:<br><b>Linie Tram D</b> zwischen <b>Wien Augasse</b> und <b>Wien Nußdorf Bahnhst</b><br><b>Linie U4</b> zwischen <b>Wien Heiligenstadt Bahnhof</b> und <b>Wien Spittelau Bahnhst/Wien Friedensbrücke</b><br><b>VOR-Linie Bus 400</b> zwischen <b>Wien Heiligenstadt Bahnhof</b> und <b>Wien Nußdorf Bahnhst/Klosterneuburg-Kierling Bahnhof</b><br><br><b>SCHIENENERSATZVERKEHR ab 02.11.2026:</b><br>Zusätzlich wird für Sie von <b>02.11.2026</b> bis <b>03.11.2026</b> ein Schienenersatzverkehr mit Autobussen zwischen <b>Wien Heiligenstadt Bahnhof</b> und <b>Wien Nußdorf Bahnhst</b> eingerichtet.<br><b><br>ACHTUNG:</b><br>Anschlussverbindungen können nicht gewährleistet werden.<br><b>HINWEISE:</b><br>Bitte beachten Sie, dass der Zustieg in Stationen mit Ticketautomaten oder Ticketschalter ausschließlich mit einem gültigen Ticket gestattet ist. Der Ticketverkauf in den Bussen des Schienenersatzverkehres ist nur eingeschränkt möglich.<br>Fahrräder können nicht befördert werden.<b><br><br>Mobilitätseingeschränkten Fahrgästen,</b> die für ihre Fahrt Unterstützung benötigen, wird dringend empfohlen, sich vor Reiseantritt mit dem ÖBB Kund:innenservice unter 05-1717-5 in Verbindung zu setzen, um eine barrierefreie Reisekette zu gewährleisten.<br><br>Wir bitten um Entschuldigung. <br/><a href=\"https://kundeninformation-pv.oebb.at/dam/kundeninformation/extern/OEBB/2026/2026_10/Serv10284_Gesamt.pdf\">Details finden Sie hier...</a>",
+     "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+     "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&915701",
+     "pubDate": "2026-10-28T14:31:52+01:00",
+     "starts_at": "2026-10-31T00:00:00+01:00",
+     "ends_at": "2026-11-04T23:59:59+01:00",
+     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&915701"
+    }
+   ]
+  },
+  {
+   "jetzt": "2026-11-09T03:31:16+00:00",
+   "klasse": "oebb-tag",
+   "erwartet": "ploetzlich",
+   "warum": "Arbeiten dauern länger als geplant, Sperre am selben Morgen gemeldet",
+   "feed_damals": null,
+   "platz_damals": null,
+   "meldung": {
+    "source": "ÖBB",
+    "category": "Störung",
+    "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
+    "description": "09.11.2026<br/><br/>Wegen Verlängerung der Bauarbeiten sind zwischen <b>Gramatneusiedl Bahnhof </b>und <b>Wien Hbf (U) </b>bis voraussichtlich<b> 05:30 Uhr keine Fahrten </b>möglich. Wir haben für Sie einen <b>Schienenersatzverkehr </b>zwischen <b>Gramatneusiedl Bahnhof </b>und <b>Wien Hbf (U) angefordert</b>. Planen Sie in diesem Bereich derzeit bis zu <b>30 Minuten</b> mehr Reisezeit ein.<br>Bitte beachten Sie, dass das Platzangebot begrenzt sein kann, und nutzen Sie daher nach Möglichkeit auch alternative Reisemöglichkeiten. Mobilitätseingeschränkten Fahrgästen, die für ihre Fahrt Unterstützung benötigen, wird dringend empfohlen, sich vor Reiseantritt mit dem ÖBB Kund:innenservice unter +43 (0)5-1717-5 in Verbindung zu setzen, um eine barrierefreie Reisekette zu gewährleisten.<br>Wir bitten um Entschuldigung.",
+    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&925229",
+    "pubDate": "2026-11-09T04:30:02+01:00",
+    "starts_at": "2026-11-09T00:00:00+01:00",
+    "ends_at": "2026-11-09T23:59:59+01:00",
+    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&925229"
+   },
+   "nachbarn": [
+    {
+     "source": "ÖBB",
+     "category": "Störung",
+     "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
+     "description": "31.10.2026 - 30.11.2026<br/><br/>Wegen Bauarbeiten können <br>zwischen <b>Wien Hbf (U)</b> und <b>Gramatneusiedl Bahnhof </b><br>von <b>31.10.2026</b> bis <b>30.11.2026 </b><span>(jeweils von Samstag 23:15 Uhr bis Sonntag 04:40 Uhr und von Sonntag 23:15 Uhr bis Montag 04:40 Uhr)<br></span>keine Nahverkehrszüge fahren.<br>Ein Schienenersatzverkehr mit Autobussen wird für Sie eingerichtet.<b><br><br>ACHTUNG:</b><br>Anschlussverbindungen können nicht gewährleistet werden.<br><b>HINWEISE:</b><br>Bitte beachten Sie, dass der Zustieg in Stationen mit Ticketautomaten oder Ticketschalter ausschließlich mit einem gültigen Ticket gestattet ist. Der Ticketverkauf in den Bussen des Schienenersatzverkehres ist nur eingeschränkt möglich.<br>Fahrräder können nicht befördert werden.<b><br><br>Mobilitätseingeschränkten Fahrgästen,</b> die für ihre Fahrt Unterstützung benötigen, wird dringend empfohlen, sich vor Reiseantritt mit dem ÖBB Kund:innenservice unter 05-1717-5 in Verbindung zu setzen, um eine barrierefreie Reisekette zu gewährleisten. <br><br>Wir bitten um Entschuldigung. <br/><a href=\"https://kundeninformation-pv.oebb.at/dam/kundeninformation/extern/OEBB/2026/2026_10/Serv10259_Gesamt.pdf\">Details finden Sie hier...</a>",
+     "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+     "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&906928",
+     "pubDate": "2026-09-16T08:51:40+02:00",
+     "starts_at": "2026-10-31T00:00:00+01:00",
+     "ends_at": "2026-11-30T23:59:59+01:00",
+     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&906928"
+    },
+    {
+     "source": "ÖBB",
+     "category": "Störung",
+     "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
+     "description": "05.12.2026 - 07.12.2026<br/><br/>Wegen Bauarbeiten können <br>zwischen <b>Wien Hbf (U)</b> und <b>Gramatneusiedl Bahnhof </b><br>von <b>05<span>.12.2026</span></b> bis <b>07</b><b>.12.2026 </b><span>(jeweils von 23:15 Uhr bis 04:40 Uhr)<br></span>keine Nahverkehrszüge fahren.<br>Ein Schienenersatzverkehr mit Autobussen wird für Sie eingerichtet.<b><br><br>ACHTUNG:</b><br>Anschlussverbindungen können nicht gewährleistet werden.<br><b>HINWEISE:</b><br>Bitte beachten Sie, dass der Zustieg in Stationen mit Ticketautomaten oder Ticketschalter ausschließlich mit einem gültigen Ticket gestattet ist. Der Ticketverkauf in den Bussen des Schienenersatzverkehres ist nur eingeschränkt möglich.<br>Fahrräder können nicht befördert werden.<b><br><br>Mobilitätseingeschränkten Fahrgästen,</b> die für ihre Fahrt Unterstützung benötigen, wird dringend empfohlen, sich vor Reiseantritt mit dem ÖBB Kund:innenservice unter 05-1717-5 in Verbindung zu setzen, um eine barrierefreie Reisekette zu gewährleisten. <br><br>Wir bitten um Entschuldigung. <br/><a href=\"https://kundeninformation-pv.oebb.at/dam/kundeninformation/extern/OEBB/2026/2026_12/Serv10281_Gesamt.pdf\">Details finden Sie hier...</a>",
+     "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+     "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&910806",
+     "pubDate": "2026-09-30T07:08:25+02:00",
+     "starts_at": "2026-12-05T00:00:00+01:00",
+     "ends_at": "2026-12-07T23:59:59+01:00",
+     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&910806"
+    },
+    {
+     "source": "ÖBB",
+     "category": "Störung",
+     "title": "R 95: Wien Hauptbahnhof ↔ Felixdorf",
+     "description": "10.02.2026 - 10.11.2026<br/><br/>Wegen Bauarbeiten können <br>zwischen <b>Wien Hbf (U)</b> und <b>Felixdorf Bahnhof </b><br>am <b>10.02.2026</b><br>am <b>10.03.2026</b><br>am <b>14.04.2026</b><br>am <b>12.05.2026</b><br>am <b>09.06.2026</b><br>am <b>14.07.2026</b><br>am <b>11.08.2026</b><br>am <b>08.09.2026</b><br>am <b>13.10.2026 </b>und<br>am <span><b>10.11.2026 </b>(jeweils 14:00 Uhr - 22:00 Uhr)<b> </b></span>keine <i>R95-Züge</i> fahren.<br>Ein Schienenersatzverkehr mit Autobussen wird für Sie eingerichtet.<b><br><br>ACHTUNG:</b><br>Anschlussverbindungen können nicht gewährleistet werden.<br><b>HINWEISE:</b><br>Bitte beachten Sie, dass der Zustieg in Stationen mit Ticketautomaten oder Ticketschalter ausschließlich mit einem gültigen Ticket gestattet ist. Der Ticketverkauf in den Bussen des Schienenersatzverkehres ist nur eingeschränkt möglich.<br>Fahrräder können nicht befördert werden.<b><br><br>Mobilitätseingeschränkten Fahrgästen,</b> die für ihre Fahrt Unterstützung benötigen, wird dringend empfohlen, sich vor Reiseantritt mit dem ÖBB Kund:innenservice unter 05-1717-5 in Verbindung zu setzen, um eine barrierefreie Reisekette zu gewährleisten. <br><br>Wir bitten um Entschuldigung. <br/><a href=\"https://kundeninformation-pv.oebb.at/dam/kundeninformation/extern/OEBB/2026/2026_02/Serv10055_Gesamt.pdf\">Details finden Sie hier...</a>",
+     "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+     "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&835981",
+     "pubDate": "2025-12-19T10:07:13+01:00",
+     "starts_at": "2026-02-10T00:00:00+01:00",
+     "ends_at": "2026-11-10T23:59:59+01:00",
+     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&835981"
+    },
+    {
+     "source": "ÖBB",
+     "category": "Störung",
+     "title": "Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx",
+     "description": "07.09.2026 - 31.10.2027<br/><br/>Wegen Bauarbeiten können <br>zwischen <b>Wien Hbf </b>bzw.<b> Wien St.Marx</b> und <b>Wien Praterstern</b><br>von <b>07.09.2026</b> bis <b>Ende Oktober 2027 </b><br>keine Züge fahren.<br>Als Ersatz haben Sie die Möglichkeit das Angebot der Wiener Linien zu nutzen.<br><br><b>Gültige ÖBB-Tickets werden auf folgenden Verbindungen der Wiener Linien anerkannt (davon ausgenommen sind Gruppentickets der ÖBB), VOR-Zeitkarten mit \"Wien Regionalverkehr\" sind in der Ticketanerkenntnis enthalten:</b><br><br><b>U-Bahnen:<br></b><b>U1:</b> Praterstern - Hauptbahnhof, <b>U2:</b> Praterstern - Stadion<br><br><b>Straßenbahnen:<br></b><b>Linie 18:</b> Stadion - Hauptbahnhof, <b>Linie O:</b> Praterstern - Hauptbahnhof <br><br>Wir bitten um Entschuldigung. <br/><a href=\"https://www.oebb.at/dam/jcr:80a9fe9a-1afe-4100-89d9-245b3058f7b2/infofolder-hauptsperre-barrierefrei.pdf\">Details finden Sie hier...</a><br/><a href=\"https://www.oebb.at/de/fahrplan/baustelleninformation/bauarbeiten-stammstrecke/bauphase2\">Information (Homepage)</a>",
+     "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+     "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&909456",
+     "pubDate": "2026-09-04T11:10:05+02:00",
+     "starts_at": "2026-09-07T00:00:00+02:00",
+     "ends_at": "2027-10-31T23:59:59+01:00",
+     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&909456"
+    }
+   ]
+  },
+  {
+   "jetzt": "2026-11-09T04:01:14+00:00",
+   "klasse": "oebb-tag",
+   "erwartet": "ploetzlich",
+   "warum": "Arbeiten dauern länger als geplant, Sperre am selben Morgen gemeldet",
+   "feed_damals": null,
+   "platz_damals": null,
+   "meldung": {
+    "source": "ÖBB",
+    "category": "Störung",
+    "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
+    "description": "09.11.2026<br/><br/>Wegen Verlängerung der Bauarbeiten sind zwischen <b>Gramatneusiedl Bahnhof </b>und <b>Wien Hbf (U) </b>bis voraussichtlich<b> 05:30 Uhr keine Fahrten </b>möglich. Wir haben für Sie einen <b>Schienenersatzverkehr </b>zwischen <b>Gramatneusiedl Bahnhof </b>und <b>Wien Hbf (U) eingerichtet</b>. Planen Sie in diesem Bereich derzeit bis zu <b>30 Minuten</b> mehr Reisezeit ein.<br>Bitte beachten Sie, dass das Platzangebot begrenzt sein kann, und nutzen Sie daher nach Möglichkeit auch alternative Reisemöglichkeiten. Mobilitätseingeschränkten Fahrgästen, die für ihre Fahrt Unterstützung benötigen, wird dringend empfohlen, sich vor Reiseantritt mit dem ÖBB Kund:innenservice unter +43 (0)5-1717-5 in Verbindung zu setzen, um eine barrierefreie Reisekette zu gewährleisten.<br>Wir bitten um Entschuldigung.",
+    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&925229",
+    "pubDate": "2026-11-09T04:50:35+01:00",
+    "starts_at": "2026-11-09T00:00:00+01:00",
+    "ends_at": "2026-11-09T23:59:59+01:00",
+    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&925229"
+   },
+   "nachbarn": [
+    {
+     "source": "ÖBB",
+     "category": "Störung",
+     "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
+     "description": "31.10.2026 - 30.11.2026<br/><br/>Wegen Bauarbeiten können <br>zwischen <b>Wien Hbf (U)</b> und <b>Gramatneusiedl Bahnhof </b><br>von <b>31.10.2026</b> bis <b>30.11.2026 </b><span>(jeweils von Samstag 23:15 Uhr bis Sonntag 04:40 Uhr und von Sonntag 23:15 Uhr bis Montag 04:40 Uhr)<br></span>keine Nahverkehrszüge fahren.<br>Ein Schienenersatzverkehr mit Autobussen wird für Sie eingerichtet.<b><br><br>ACHTUNG:</b><br>Anschlussverbindungen können nicht gewährleistet werden.<br><b>HINWEISE:</b><br>Bitte beachten Sie, dass der Zustieg in Stationen mit Ticketautomaten oder Ticketschalter ausschließlich mit einem gültigen Ticket gestattet ist. Der Ticketverkauf in den Bussen des Schienenersatzverkehres ist nur eingeschränkt möglich.<br>Fahrräder können nicht befördert werden.<b><br><br>Mobilitätseingeschränkten Fahrgästen,</b> die für ihre Fahrt Unterstützung benötigen, wird dringend empfohlen, sich vor Reiseantritt mit dem ÖBB Kund:innenservice unter 05-1717-5 in Verbindung zu setzen, um eine barrierefreie Reisekette zu gewährleisten. <br><br>Wir bitten um Entschuldigung. <br/><a href=\"https://kundeninformation-pv.oebb.at/dam/kundeninformation/extern/OEBB/2026/2026_10/Serv10259_Gesamt.pdf\">Details finden Sie hier...</a>",
+     "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+     "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&906928",
+     "pubDate": "2026-09-16T08:51:40+02:00",
+     "starts_at": "2026-10-31T00:00:00+01:00",
+     "ends_at": "2026-11-30T23:59:59+01:00",
+     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&906928"
+    },
+    {
+     "source": "ÖBB",
+     "category": "Störung",
+     "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
+     "description": "05.12.2026 - 07.12.2026<br/><br/>Wegen Bauarbeiten können <br>zwischen <b>Wien Hbf (U)</b> und <b>Gramatneusiedl Bahnhof </b><br>von <b>05<span>.12.2026</span></b> bis <b>07</b><b>.12.2026 </b><span>(jeweils von 23:15 Uhr bis 04:40 Uhr)<br></span>keine Nahverkehrszüge fahren.<br>Ein Schienenersatzverkehr mit Autobussen wird für Sie eingerichtet.<b><br><br>ACHTUNG:</b><br>Anschlussverbindungen können nicht gewährleistet werden.<br><b>HINWEISE:</b><br>Bitte beachten Sie, dass der Zustieg in Stationen mit Ticketautomaten oder Ticketschalter ausschließlich mit einem gültigen Ticket gestattet ist. Der Ticketverkauf in den Bussen des Schienenersatzverkehres ist nur eingeschränkt möglich.<br>Fahrräder können nicht befördert werden.<b><br><br>Mobilitätseingeschränkten Fahrgästen,</b> die für ihre Fahrt Unterstützung benötigen, wird dringend empfohlen, sich vor Reiseantritt mit dem ÖBB Kund:innenservice unter 05-1717-5 in Verbindung zu setzen, um eine barrierefreie Reisekette zu gewährleisten. <br><br>Wir bitten um Entschuldigung. <br/><a href=\"https://kundeninformation-pv.oebb.at/dam/kundeninformation/extern/OEBB/2026/2026_12/Serv10281_Gesamt.pdf\">Details finden Sie hier...</a>",
+     "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+     "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&910806",
+     "pubDate": "2026-09-30T07:08:25+02:00",
+     "starts_at": "2026-12-05T00:00:00+01:00",
+     "ends_at": "2026-12-07T23:59:59+01:00",
+     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&910806"
+    },
+    {
+     "source": "ÖBB",
+     "category": "Störung",
+     "title": "R 95: Wien Hauptbahnhof ↔ Felixdorf",
+     "description": "10.02.2026 - 10.11.2026<br/><br/>Wegen Bauarbeiten können <br>zwischen <b>Wien Hbf (U)</b> und <b>Felixdorf Bahnhof </b><br>am <b>10.02.2026</b><br>am <b>10.03.2026</b><br>am <b>14.04.2026</b><br>am <b>12.05.2026</b><br>am <b>09.06.2026</b><br>am <b>14.07.2026</b><br>am <b>11.08.2026</b><br>am <b>08.09.2026</b><br>am <b>13.10.2026 </b>und<br>am <span><b>10.11.2026 </b>(jeweils 14:00 Uhr - 22:00 Uhr)<b> </b></span>keine <i>R95-Züge</i> fahren.<br>Ein Schienenersatzverkehr mit Autobussen wird für Sie eingerichtet.<b><br><br>ACHTUNG:</b><br>Anschlussverbindungen können nicht gewährleistet werden.<br><b>HINWEISE:</b><br>Bitte beachten Sie, dass der Zustieg in Stationen mit Ticketautomaten oder Ticketschalter ausschließlich mit einem gültigen Ticket gestattet ist. Der Ticketverkauf in den Bussen des Schienenersatzverkehres ist nur eingeschränkt möglich.<br>Fahrräder können nicht befördert werden.<b><br><br>Mobilitätseingeschränkten Fahrgästen,</b> die für ihre Fahrt Unterstützung benötigen, wird dringend empfohlen, sich vor Reiseantritt mit dem ÖBB Kund:innenservice unter 05-1717-5 in Verbindung zu setzen, um eine barrierefreie Reisekette zu gewährleisten. <br><br>Wir bitten um Entschuldigung. <br/><a href=\"https://kundeninformation-pv.oebb.at/dam/kundeninformation/extern/OEBB/2026/2026_02/Serv10055_Gesamt.pdf\">Details finden Sie hier...</a>",
+     "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+     "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&835981",
+     "pubDate": "2025-12-19T10:07:13+01:00",
+     "starts_at": "2026-02-10T00:00:00+01:00",
+     "ends_at": "2026-11-10T23:59:59+01:00",
+     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&835981"
+    },
+    {
+     "source": "ÖBB",
+     "category": "Störung",
+     "title": "Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx",
+     "description": "07.09.2026 - 31.10.2027<br/><br/>Wegen Bauarbeiten können <br>zwischen <b>Wien Hbf </b>bzw.<b> Wien St.Marx</b> und <b>Wien Praterstern</b><br>von <b>07.09.2026</b> bis <b>Ende Oktober 2027 </b><br>keine Züge fahren.<br>Als Ersatz haben Sie die Möglichkeit das Angebot der Wiener Linien zu nutzen.<br><br><b>Gültige ÖBB-Tickets werden auf folgenden Verbindungen der Wiener Linien anerkannt (davon ausgenommen sind Gruppentickets der ÖBB), VOR-Zeitkarten mit \"Wien Regionalverkehr\" sind in der Ticketanerkenntnis enthalten:</b><br><br><b>U-Bahnen:<br></b><b>U1:</b> Praterstern - Hauptbahnhof, <b>U2:</b> Praterstern - Stadion<br><br><b>Straßenbahnen:<br></b><b>Linie 18:</b> Stadion - Hauptbahnhof, <b>Linie O:</b> Praterstern - Hauptbahnhof <br><br>Wir bitten um Entschuldigung. <br/><a href=\"https://www.oebb.at/dam/jcr:80a9fe9a-1afe-4100-89d9-245b3058f7b2/infofolder-hauptsperre-barrierefrei.pdf\">Details finden Sie hier...</a><br/><a href=\"https://www.oebb.at/de/fahrplan/baustelleninformation/bauarbeiten-stammstrecke/bauphase2\">Information (Homepage)</a>",
+     "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+     "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&909456",
+     "pubDate": "2026-09-04T11:10:05+02:00",
+     "starts_at": "2026-09-07T00:00:00+02:00",
+     "ends_at": "2027-10-31T23:59:59+01:00",
+     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&909456"
+    }
+   ]
+  }
+ ]
+}

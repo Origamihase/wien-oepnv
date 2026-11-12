@@ -5,12 +5,14 @@ import json
 import os
 import sys
 import xml.etree.ElementTree as ET  # nosec B405
+from collections.abc import Callable
 from datetime import datetime, UTC
 from pathlib import Path
 from time import perf_counter
 from typing import Any, cast
 
 from .feed_types import FeedItem
+from . import ki_entscheidung
 from .feed import config as feed_config
 # ``as`` re-exports explicitly: tests read the tables from ``build_feed``.
 from .feed.glossary import (
@@ -356,6 +358,7 @@ def _assemble_feed_items(
     now: datetime,
     *,
     stats: FeedAssemblyStats | None = None,
+    decide: Callable[[list[FeedItem], dict[str, Any], datetime], None] = ki_entscheidung.apply_stored,
 ) -> list[FeedItem]:
     """Turn the collected provider items into the ordered feed list.
 
@@ -365,7 +368,8 @@ def _assemble_feed_items(
     probe that rebuilds a past feed state from cached data, so a probe can
     never compute a different feed than the real build (older probes that
     copied the steps by hand missed the twin step). Fetching, RSS rendering,
-    file writes and ``_save_state`` stay in ``main``.
+    file writes and ``_save_state`` stay in ``main``, and so does asking
+    Gemini: ``decide`` only reads stored answers unless ``main`` passes its own.
 
     ``state`` is updated in place as before (first_seen, restarts, carried
     identities). The list is not cut to ``MAX_ITEMS``; ``_make_rss`` does that.
@@ -450,6 +454,8 @@ def _assemble_feed_items(
     # ``_carry_item_identity``. The entry of a GUID carried on stays,
     # though its own message may have run out above.
     items = _carry_item_identity(items, state, now)
+    # Sudden or planned, where the rules cannot tell (``src.ki_entscheidung``).
+    decide(items, state, now)
     stats.dropped_ids -= {str(it.get("guid")) for it in items if it.get("guid")}
     stats.deduped_count = len(items)
     stats.duplicates_removed = sum(
@@ -543,9 +549,13 @@ def main() -> int:
             collect_duration,
         )
 
+        ki = ki_entscheidung.Decider(now)
+
         def _chain(its: list[FeedItem], st: dict[str, Any], counted: bool = True) -> list[FeedItem]:
             nonlocal new_items_count
-            ordered = _assemble_feed_items(its, st, now, stats=stats if counted else FeedAssemblyStats())
+            ordered = _assemble_feed_items(
+                its, st, now, stats=stats if counted else FeedAssemblyStats(), decide=ki.decide if counted else ki.apply
+            )
             # Before the rendering: it enters new items into the state.
             fresh = _count_new_items(ordered, st)
             new_items_count = fresh if counted else new_items_count
@@ -603,6 +613,7 @@ def main() -> int:
 
         _record_translation_status(now)
         _remember_item_identity(items, state, now)
+        ki.finish()
 
         try:
             _save_state(state, deletions=stats.dropped_ids)

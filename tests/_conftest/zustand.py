@@ -200,6 +200,26 @@ def time_line_today(monkeypatch: pytest.MonkeyPatch) -> None:
 
 
 @pytest.fixture(autouse=True)
+def isolate_ki_decisions(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Iterator[None]:
+    """Keep ``data/ki_entscheidungen.json``, the Gemini key and the step output out of test runs.
+
+    A build reads Gemini's stored answers for unclear disruptions
+    (``src.ki_entscheidung``) and, with a key, asks and writes them. Tests
+    drive builds; without this guard a build under test would read the
+    committed answers, a key in the caller's shell would send a request,
+    and in CI every such build would append ``ki_outcome=…`` to the test
+    job's ``$GITHUB_OUTPUT``. The variable (not a module attribute) is set
+    for the same reason as in ``isolate_translation_status``; outside the
+    allowed roots the file is neither read nor written, and tests of the
+    store ``chdir`` into *tmp_path*.
+    """
+    monkeypatch.setenv("KI_ENTSCHEIDUNGEN_PATH", str(tmp_path / "data" / "ki_entscheidungen.json"))
+    monkeypatch.delenv("GEMINI_API_KEY", raising=False)
+    monkeypatch.delenv("GITHUB_OUTPUT", raising=False)
+    yield
+
+
+@pytest.fixture(autouse=True)
 def isolate_translation_status(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Iterator[None]:
     """Keep ``data/translation_status.json`` out of test runs.
 

@@ -61,10 +61,14 @@ WORKFLOW_SECRETS: tuple[WorkflowSecret, ...] = (
     # never asks). Without an accepted review the year page keeps its count
     # and list and says that a review follows; from 04.01. that step, and
     # only that step (``--fail-on-missing-review``), ends with 1 on every
-    # tick while the review is missing, which shows in "Nebenschritte". The
-    # feed never needs the key, so the kind stays ``tooling``.
+    # tick while the review is missing, which shows in "Nebenschritte". Since
+    # 2026-11-12 the feed build of the Update cycle uses the key too
+    # (``src/ki_entscheidung``, owner's decision): it does not need it, the
+    # rules decide without an answer, and a build whose key is empty or
+    # refused reports the side step "KI-Entscheidung" as failed. So the kind
+    # stays ``tooling``.
     WorkflowSecret("GEMINI_API_KEY", "tooling",
-                   "KI-Wächter und Jahresrückblick der Baustellen (Gemini API, Gratis-Kontingent)"),
+                   "KI-Wächter, KI-Entscheidung und Jahresrückblick der Baustellen (Gemini API, Gratis-Kontingent)"),
     WorkflowSecret("REPO_ADMIN_TOKEN", "tooling",
                    "SEO-Guard: Beschreibung und Homepage des Repositorys"),
 )

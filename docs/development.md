@@ -188,8 +188,11 @@ schreibt. Die wichtigsten Parameter:
 | `RAW_CAPTURE`            | `1` schreibt beim Abruf von WL, ÖBB und Baustellen die normalisierten Rohantworten und die verworfenen Meldungen nach `data/raw/<quelle>/` (`src/utils/raw_capture.py`, `data/raw/README.md`). Standard aus; gesetzt nur im Fetcher-Schritt von `update-cycle.yml`. |
 | `BAUSTELLEN_TIMEOUT`     | Per-Request-Timeout (Sekunden) für `scripts/update_baustellen_cache.py` (Standard `20`, hart geklammert auf `MAX_BAUSTELLEN_TIMEOUT`). |
 | `BAUSTELLEN_FALLBACK_PATH` | Pfad zur lokalen JSON-Fallback-Datei (Standard `data/samples/baustellen_sample.geojson`), die verwendet wird, wenn der OGD-Endpoint der Stadt Wien nicht erreichbar ist und noch kein Cache existiert. |
-| `GEMINI_API_KEY`         | Schlüssel der Gemini API (Repository-Secret, Gratis-Kontingent ohne Abrechnung) für den KI-Wächter und den Jahresrückblick der Baustellen; der Feed braucht ihn nie. Den Rückblick fragt nur der Statistik-Schritt von `update-cycle.yml` in seinen Dashboard-Läufen, bis ein Text angenommen und gespeichert ist; ohne Schlüssel fragt er nicht, und die Seite des Jahres sagt, dass ein Rückblick ergänzt wird. Siehe [`reference/ki_waechter.md`](reference/ki_waechter.md) und „Statistik-Schritt und Jahresseiten“ in [Teil 2](development-teil-2.md). |
+| `GEMINI_API_KEY`         | Schlüssel der Gemini API (Repository-Secret, Gratis-Kontingent ohne Abrechnung) für den KI-Wächter, den Jahresrückblick der Baustellen und seit 2026-11-12 die KI-Entscheidung im Feed-Build (`src/ki_entscheidung`, Schritt „Build feed“ von `update-cycle.yml`; ohne Schlüssel entscheiden die Regeln, und der Nebenschritt „KI-Entscheidung“ gilt als gescheitert). Der Feed braucht ihn nicht. Den Rückblick fragt nur der Statistik-Schritt von `update-cycle.yml` in seinen Dashboard-Läufen, bis ein Text angenommen und gespeichert ist; ohne Schlüssel fragt er nicht, und die Seite des Jahres sagt, dass ein Rückblick ergänzt wird. Siehe [`reference/ki_waechter.md`](reference/ki_waechter.md) und „Statistik-Schritt und Jahresseiten“ in [Teil 2](development-teil-2.md). |
 | `JAHRESRUECKBLICK_MODEL` | Optionale andere Modellkette für den Jahresrückblick, kommagetrennt, für einen Versuch (`models_from_env` in `src/markdown_stats/review_client.py`). Leer gilt die Kette des KI-Wächters (`DEFAULT_MODELS`); ein ungültiger Name verwirft den ganzen Wert mit einer Log-Zeile. Kein Workflow setzt sie. |
+| `KI_ENTSCHEIDUNG`        | `0` schaltet die Anfragen der KI-Entscheidung ab (`src/ki_entscheidung/run.py`, Standard an); gespeicherte Antworten gelten weiter, es entscheiden sonst die Regeln, und der Nebenschritt „KI-Entscheidung“ meldet Erfolg (ein früheres Rot bleibt so nicht stehen). Kein Workflow setzt sie. |
+| `KI_ENTSCHEIDUNG_MODEL`  | Optionale andere Modellkette für die KI-Entscheidung, kommagetrennt, für einen Versuch (`models` in `src/ki_entscheidung/ask.py`). Leer gilt die Kette des KI-Wächters mit den Lite-Modellen voran (`MODELS`). Kein Workflow setzt sie. |
+| `KI_ENTSCHEIDUNGEN_PATH` | Speicher der Antworten (Standard `data/ki_entscheidungen.json`, `store_path` in `src/ki_entscheidung/store.py`). Ein Pfad außerhalb der erlaubten Ordner: keine Anfrage, und der Nebenschritt meldet einen Fehler. |
 | `SITE_BASE_URL`          | Basis-URL für die Sitemap-Generierung (`scripts/generate_sitemap.py`). Standard identisch mit `PAGES_BASE_URL`; gegen die GitHub-Pages-Allow-List validiert. |
 | `WIEN_TOKEN`             | Override des Wien-Token-Matches für die `in_vienna`-Heuristik in `src/utils/stations.py` (Standard `wien`). Diakritik wird automatisch geklammert; nur für Test-Sandboxen interessant. |
 
@@ -238,7 +241,10 @@ dann `pubDate`). Davor stehen immer die aktuellen Störungen
 Störungen sollen oberste Priorität haben. Vorangekündigte Baustellen sollen
 eine niedrigere Priorität haben.“): ungeplante Störungen, deren Zeitzeile
 „[Seit hh:mm]“ zeigt (`_incident_since`), die begonnen haben und seit
-höchstens `_CURRENT_INCIDENT_WINDOW` (24 h) im Feed stehen. Untereinander
+höchstens `_CURRENT_INCIDENT_WINDOW` (24 h) im Feed stehen. Wo die Wörter
+einer neuen Störung offen lassen, ob sie plötzlich kam oder geplant ist,
+entscheidet seit 2026-11-12 eine gespeicherte Antwort von Gemini
+(`_ki_art`, `src/ki_entscheidung`; [`architecture-teil-8.md`](architecture-teil-8.md), §14). Untereinander
 gilt in beiden Gruppen dieselbe Sortierung. Ohne diese Stufe stand am
 03.10. um 15:01 „43A: Veranstaltung“ vor „9A: Rettungseinsatz“, am 04.10. um
 16:30 „U6: Neue Donau, kein Halt“ vor vier laufenden Störungen. Die 24 h

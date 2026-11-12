@@ -22,7 +22,7 @@ sections the running dashboard does not have: the overview of the year
 for public transport (:mod:`src.markdown_stats.baustellen_year`), whose
 review in words Gemini writes (:mod:`src.markdown_stats.year_review`). That
 review is his exception to "an AI only watches and reports, never
-rewrites" (2026-10-31), which stays the rule for the feed.
+rewrites" (2026-10-31), which stays the rule for the feed's texts.
 """
 from __future__ import annotations
 
