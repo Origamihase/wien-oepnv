@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261112-0039, I20261112-0042, I20261112-0043, I20261112-0046, I20261112-0032-F01, I20261112-0037, I20261112-0044, I20260925-0011, I20261112-0047, I20261112-0049-F01, I20260909-0007, I20261112-0040, I20261112-0041-F01, I20261112-0045, I20261112-0048, I20261112-0050, I20261020-0029"
+    "trafficInfoNameList": "I20261112-0042, I20261112-0043, I20261112-0046, I20261112-0051, I20261112-0037, I20261112-0044, I20260925-0011, I20261112-0047, I20261112-0049-F01, I20261112-0052, I20260909-0007, I20261112-0045, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1884-101, R1880-101, R1883-101, R1882-101, R318-437, R1881-101, R3886-480, R293-474, R2558-125, R1875-101, R1876-101, R2373-125, R2373-127, R2343-626, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R401-101, R1974-466, R1199-205, R500-101, R412-415, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1884-101, R318-437, R293-474, R3886-480, R2558-125, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R2373-125, R2379-627, R2380-627, R2345-127, R2373-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-126, R401-101, R1974-466, R1199-205, R500-101, R1011-125, R374-105, R364-105, R367-105, R375-105, R377-105, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,54 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U3: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261112-0032-F01",
-    "owner": "WL",
-    "parentName": "I20261112-0032",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4914
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T14:41:00.000+0100",
-     "lastUpdate": "2026-11-12T14:41:00.000+0100",
-     "resume": "2026-11-12T14:41:00.000+0100",
-     "start": "2026-11-12T14:24:00.000+0100"
-    },
-    "title": "U3: Schadhaftes Fahrzeug"
-   },
-   {
     "alertCause": "heavy traffic",
     "alertCauseId": 60,
     "attributes": {
@@ -262,145 +214,6 @@
      "start": "2026-11-12T15:02:00.000+0100"
     },
     "title": "O: Verkehrsüberlastung"
-   },
-   {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
-    "attributes": {
-     "relatedLineTypes": {
-      "U2": "ptMetro"
-     }
-    },
-    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "descriptionHTML": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-       "descriptionPlain": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-       "title": "U2: Betriebsstörung"
-      }
-     }
-    ],
-    "name": "I20261112-0039",
-    "owner": "WL",
-    "parentName": "I20261112-0039",
-    "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 302,
-      "lineName": "U2",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4209
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T15:49:00.000+0100",
-     "lastUpdate": "2026-11-12T15:49:00.000+0100",
-     "resume": "2026-11-12T15:49:00.000+0100",
-     "start": "2026-11-12T15:49:00.000+0100"
-    },
-    "title": "U2: Betriebsstörung"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "3A": "ptBusCity"
-     }
-    },
-    "description": "Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie 3A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 3A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "3A: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261112-0040",
-    "owner": "WL",
-    "parentName": "I20261112-0040",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "3A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 403,
-      "lineName": "3A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T16:08:00.000+0100",
-     "lastUpdate": "2026-11-12T16:08:00.000+0100",
-     "resume": "2026-11-12T16:08:00.000+0100",
-     "start": "2026-11-12T16:08:00.000+0100"
-    },
-    "title": "3A: Verspätungen"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "10": "ptTram"
-     }
-    },
-    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "10: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Wernhardtstraße 12",
-    "name": "I20261112-0041-F01",
-    "owner": "WL",
-    "parentName": "I20261112-0041",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 110,
-      "lineName": "10",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T16:31:00.000+0100",
-     "lastUpdate": "2026-11-12T16:31:00.000+0100",
-     "resume": "2026-11-12T16:31:00.000+0100",
-     "start": "2026-11-12T16:10:00.000+0100"
-    },
-    "title": "10: Verkehrsunfall"
    },
    {
     "alertCause": "heavy traffic",
@@ -673,51 +486,6 @@
     "title": "59A: Verkehrsüberlastung"
    },
    {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
-      "77A": "ptBusCity"
-     }
-    },
-    "description": "Linie 77A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie 77A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 77A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie 77A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "77A: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261112-0048",
-    "owner": "WL",
-    "parentName": "I20261112-0048",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "77A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 477,
-      "lineName": "77A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T16:51:00.000+0100",
-     "lastUpdate": "2026-11-12T16:51:00.000+0100",
-     "resume": "2026-11-12T16:51:00.000+0100",
-     "start": "2026-11-12T16:51:00.000+0100"
-    },
-    "title": "77A: Verkehrsüberlastung"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -766,57 +534,119 @@
     "title": "U4: Schadhaftes Fahrzeug"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
     "attributes": {
      "relatedLineTypes": {
-      "36A": "ptBusCity",
-      "36B": "ptBusCity"
+      "25": "ptTram"
      }
     },
-    "description": "Linie 36B: Unregelmäßige Intervalle in beiden Richtungen. Linie 36A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 36B:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 36A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+    "description": "Linie 25: Fahrtbehinderung in Richtung Aspern, Oberdorfstraße. Voraussichtliche Dauer: 18:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Hardeggasse.",
+    "descriptionHTML": "<p>Linie 25:<br>Fahrtbehinderung in Richtung Aspern, Oberdorfstraße.</p><p>Voraussichtliche Dauer: 18:20 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Hardeggasse.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 36B:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 36A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 36B: Unregelmäßige Intervalle in beiden Richtungen. Linie 36A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-       "title": "36B, 36A: Verkehrsunfall"
+       "descriptionHtml": "<p>Linie 25:<br>Fahrtbehinderung in Richtung Aspern, Oberdorfstraße.</p><p>Voraussichtliche Dauer: 18:20 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Hardeggasse.</p>",
+       "descriptionPlain": "Linie 25: Fahrtbehinderung in Richtung Aspern, Oberdorfstraße. Voraussichtliche Dauer: 18:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Hardeggasse.",
+       "title": "25: Rettungseinsatz"
       }
      }
     ],
-    "location": "Carabelligasse 17",
-    "name": "I20261112-0050",
+    "name": "I20261112-0051",
     "owner": "WL",
-    "parentName": "I20261112-0050",
+    "parentName": "I20261112-0051",
     "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "36B",
-     "36A"
+     "25"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 236,
-      "lineName": "36B",
-      "vehicleType": "ptBusCity"
-     },
+      "lineId": 125,
+      "lineName": "25",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     1012
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T17:54:00.000+0100",
+     "lastUpdate": "2026-11-12T17:54:00.000+0100",
+     "start": "2026-11-12T17:53:00.000+0100"
+    },
+    "title": "25: Rettungseinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "5": "ptTram"
+     }
+    },
+    "description": "Linie 5: Fahrtbehinderung in Richtung Praterstern S U. Voraussichtliche Dauer: 18:25 Uhr. Grund: Rettungseinsatz im Bereich Mariahilfer Straße.",
+    "descriptionHTML": "<p>Linie 5:<br>Fahrtbehinderung in Richtung Praterstern S U.</p><p>Voraussichtliche Dauer: 18:25 Uhr.</p><p>Grund: Rettungseinsatz im Bereich Mariahilfer Straße.</p>",
+    "languages": [
      {
-      "lineId": 436,
-      "lineName": "36A",
-      "vehicleType": "ptBusCity"
+      "de": {
+       "descriptionHtml": "<p>Linie 5:<br>Fahrtbehinderung in Richtung Praterstern S U.</p><p>Voraussichtliche Dauer: 18:25 Uhr.</p><p>Grund: Rettungseinsatz im Bereich Mariahilfer Straße.</p>",
+       "descriptionPlain": "Linie 5: Fahrtbehinderung in Richtung Praterstern S U. Voraussichtliche Dauer: 18:25 Uhr. Grund: Rettungseinsatz im Bereich Mariahilfer Straße.",
+       "title": "5: Rettungseinsatz"
+      }
+     }
+    ],
+    "location": "Mariahilfer Straße",
+    "name": "I20261112-0052",
+    "owner": "WL",
+    "parentName": "I20261112-0052",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 105,
+      "lineName": "5",
+      "vehicleType": "ptTram"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-12T17:30:00.000+0100",
-     "lastUpdate": "2026-11-12T17:30:00.000+0100",
-     "resume": "2026-11-12T17:26:00.000+0100",
-     "start": "2026-11-12T17:26:00.000+0100"
+     "created": "2026-11-12T18:00:00.000+0100",
+     "lastUpdate": "2026-11-12T18:00:00.000+0100",
+     "start": "2026-11-12T17:58:00.000+0100"
     },
-    "title": "36B, 36A: Verkehrsunfall"
+    "title": "5: Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1011-125",
+    "owner": "WL",
+    "parentName": "R1011-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     1011
+    ],
+    "time": {
+     "end": "2026-11-12T18:54:00.000+0100",
+     "start": "2026-11-12T17:54:36.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1396,6 +1226,121 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R364-105",
+    "owner": "WL",
+    "parentName": "R364-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     364
+    ],
+    "time": {
+     "end": "2026-11-12T18:58:00.000+0100",
+     "start": "2026-11-12T17:59:05.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R367-105",
+    "owner": "WL",
+    "parentName": "R367-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     367
+    ],
+    "time": {
+     "end": "2026-11-12T18:58:00.000+0100",
+     "start": "2026-11-12T17:59:05.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R374-105",
+    "owner": "WL",
+    "parentName": "R374-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     374
+    ],
+    "time": {
+     "end": "2026-11-12T18:58:00.000+0100",
+     "start": "2026-11-12T17:59:05.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R375-105",
+    "owner": "WL",
+    "parentName": "R375-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     375
+    ],
+    "time": {
+     "end": "2026-11-12T18:58:00.000+0100",
+     "start": "2026-11-12T17:59:05.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R377-105",
+    "owner": "WL",
+    "parentName": "R377-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     377
+    ],
+    "time": {
+     "end": "2026-11-12T19:00:00.000+0100",
+     "start": "2026-11-12T18:00:37.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
     "name": "R3886-480",
     "owner": "WL",
@@ -1438,29 +1383,6 @@
      "start": "2026-11-12T00:00:04.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBusse halten auf der Hauptfahrbahn",
-    "name": "R412-415",
-    "owner": "WL",
-    "parentName": "R412-415",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "15A"
-    ],
-    "relatedStops": [
-     412
-    ],
-    "time": {
-     "end": "2026-11-12T17:34:00.000+0100",
-     "start": "2026-11-12T16:35:28.000+0100"
-    },
-    "title": "Rettungseinsatz\nBusse halten auf der Hauptfahrbahn"
    },
    {
     "alertCause": "undefined alert cause",
