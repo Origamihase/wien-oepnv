@@ -686,6 +686,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "16A: Rettungseinsatz",
+    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "5a34fd9d1d85761937e73cc1505db5c332e3d5fe85c5450ebb4c6466c12885ea",
+    "pubDate": "2026-11-12T13:03:00+01:00",
+    "starts_at": "2026-11-12T13:03:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=16A|D=2026-11-12|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261112-0028"
+    ],
+    "_incident_start": "2026-11-12T13:03:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -930,22 +946,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "29A: Fremder Verkehrsunfall",
-    "description": "Linie 29A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "1534e244024c6fb9e3253e471eb9562f405710d4c44c22618d4cc9462129a50b",
-    "pubDate": "2026-11-12T12:23:00+01:00",
-    "starts_at": "2026-11-12T12:23:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=29A|D=2026-11-12|TK=29a fremder verkehrsunfall",
-    "_wl_ids": [
-      "I20261112-0025"
-    ],
-    "_incident_start": "2026-11-12T12:23:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "29A: Fahrtbehinderung Fremder Verkehrsunfall",
     "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1058,22 +1058,6 @@
       "I20261112-0023"
     ],
     "_incident_start": "2026-11-12T11:24:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Verspätungen",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
-    "pubDate": "2026-11-12T09:58:00+01:00",
-    "starts_at": "2026-11-12T09:58:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U6|D=2026-11-12|TK=u6 verspätungen",
-    "_wl_ids": [
-      "I20261112-0020"
-    ],
-    "_incident_start": "2026-11-12T09:58:00+01:00"
   },
   {
     "source": "Wiener Linien",
