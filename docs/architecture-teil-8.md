@@ -164,3 +164,106 @@ Jahresrückblicks). Sie verwechseln vor allem die andere Richtung, ein echtes
 Satzende, das nicht als eines gilt; das ist eine eigene Klasse. Tests:
 `tests/test_abbreviation_periods.py`, `tests/test_bhf_cut_and_phrase_stops.py`,
 `tests/test_wl_stop_markers.py`, `tests/test_ticker_title_split.py`.
+
+## 14. Gemini entscheidet, wo die Regeln eine Störung offen lassen (seit 2026-11-12)
+
+Betreiberentscheidung vom 12.11.2026 (Michael): „Erstelle ein neues
+Entscheidungs-Modul mit Gemini. Verwende den vorhandenen, modularen
+Gemini-Konnektor … Wenn bei einer Meldung nicht klar ist, ob sie eine Störung
+oder ein Hinweis ist, soll Gemini dies über ein neues Modul entscheiden können.
+Plötzliche Störungen haben Priorität. Geplante Hinweise kommen danach. Neue
+Störungen sind an den ersten Plätzen. Alte (aber noch gültige) Hinweise an den
+letzten Plätzen.“ Zur Karte „Soll ich die Gemini-Entscheidung für unklare Fälle
+so bauen?“: „Ja, so bauen“. Es ist seine zweite ausdrückliche Ausnahme von
+„eine KI liest nur mit und meldet“ (Teil 3, „KI-Wächter“); einen Text des Feeds
+schreibt weiter keine KI.
+
+**Was offen bleibt.** Ob eine Störung plötzlich kam, liest `_incident_since`
+(`src/feed_build/time_line.py`) aus ihren Wörtern: Ein Planwort irgendwo in
+Titel oder Text (`PLANNED_DISRUPTION_RE`) macht sie geplant, eine WL-Störung
+ohne Ursache gilt als geplant, wenn sie zur vollen Stunde begann. Eine
+plötzliche Störung zeigt „[Seit hh:mm]“ und steht in der ersten Gruppe
+(`_is_current_incident`), eine geplante zeigt ihren Tag und steht in der
+normalen Reihenfolge. Im Nachspiel der 2.169 Cache-Stände vom 20.09. bis
+12.11.2026 entscheidet das bei 22 von 1.026 Störungen kein klares Wort. Sie
+fallen in drei Klassen (`unclear_class` in
+`src/ki_entscheidung/candidates.py`):
+
+- `ohne-ursache`: eine WL-Störung ohne Ursache und ohne Planwort, über die nur
+  die Uhr entscheidet. „26: Züge halten in Tokiostraße“ (Anzeigetext der
+  Gleisbauarbeiten in der Donaufelder Straße) stand am 21.09.2026 von 09:01
+  bis 23:01 mit „[Seit 08:48]“ in der Gruppe der aktuellen Störungen (28
+  Feed-Stände, mit „27: Linie 25 in Tokiostraße benützen“ und „26E: Busse
+  halten Satzingerweg 41“); „9: Züge halten bei Linie 52“ (18.10.,
+  Rettungseinsatz auf den Linien 6/9/18/52) unterscheidet davon nur die Minute.
+- `bauwort`: eine WL-Störung, deren Ursache ein Störungswort ist, während ein
+  Bauwort an anderer Stelle im Text steht. „48A: Gasrohrgebrechen“ (30.09.,
+  „Aufgrund der Bauarbeiten werden die Busse … umgeleitet“) zeigte „[Bis Do
+  01.10.]“, „U6: Weichenstörung“ (22.09., „Die Station Neue Donau kann … wegen
+  Bauarbeiten nicht eingehalten werden“) „[Heute]“.
+- `oebb-tag`: eine ÖBB-Meldung mit Bauwort, die ÖBB am Tag ihres Beginns
+  erstmals veröffentlicht und die an diesem Tag endet. „Wegen Verlängerung der
+  Bauarbeiten sind zwischen Wien Franz-Josefs-Bahnhof und Wien Heiligenstadt
+  Bahnhof bis voraussichtlich 09:00 Uhr keine Fahrten möglich“ stand am
+  01.11.2026 um 06:01 als „[Heute]“ auf Platz 7. Geplante Sperren
+  veröffentlicht ÖBB Tage vorher.
+
+Bei den Regeln bleibt, was der Betreiber entschieden hat: Ein Text, der eine
+Verlegung, eine Demonstration, eine Veranstaltung, einen Staatsbesuch oder
+eine Übung nennt, ist geplant (03.11.2026) und kein Kandidat; `bauwort` und
+`oebb-tag` gelten nur, wenn jedes Planwort des Textes ein Bauwort ist. Eine
+ÖBB-Meldung über eine beendete Störung bleibt, was sie ist. Ein Vorfall, der
+in Arbeiten übergeht („1: Gleisschaden“, 20.10., danach „1:
+Gleisbauarbeiten“), ist auf beiden Seiten klar.
+
+**Was Gemini darf.** Eine Antwort je Meldung: `ploetzlich`, `geplant` oder
+`unklar`, dazu ein Satz Begründung. Die Antwort setzt nur das Feld `_ki_art`
+der Meldung; `_incident_since` wählt damit zwischen den zwei Fassungen, die
+die Regeln ohnehin bauen. Bei `unklar` und ohne Antwort entscheiden die Regeln
+wie bisher. Gemini schreibt keinen Titel, keinen Text und keine Zeitzeile; die
+Begründung steht nur im Speicher. Das Modell liest von der Meldung Quelle,
+Titel, Text, Beginn, Ende und Veröffentlichung und bis zu vier andere
+Meldungen derselben Linie oder Strecke (`describe`, `neighbours_of`): den
+Hinweis über Gleisbauarbeiten neben „26: Züge halten in Tokiostraße“, den
+Rettungseinsatz neben „9: Züge halten bei Linie 52“. Die Texte der Betreiber
+stehen als Daten zwischen festen Marken; Werkzeuge hat das Modell keine.
+
+**Wann gefragt wird.** Nur der Feed-Build des Update-Laufs fragt
+(`Decider.decide` in `src/ki_entscheidung/run.py`, aufgerufen in
+`_assemble_feed_items` nach `_carry_item_identity` und vor der Sortierung),
+höchstens einmal je Build und mit höchstens acht Meldungen. `feed lint`, die
+Einzelproben des Builds, Nachspiele und Tests lesen nur den Speicher
+(`apply_stored`). Gefragt wird nach einer Meldung nur, solange sie neu ist:
+höchstens 2 h 45 min im Feed, und der Beginn, den ein „plötzlich“ zeigen würde,
+liegt ebenso kurz zurück (`ASK_WINDOW`). Der Feed-Wächter meldet ein „[Seit
+hh:mm]“, das mehr als drei Stunden nach seiner Uhrzeit zum ersten Mal
+erscheint (`seit-zu-frueh`); eine späte Antwort würde genau das erzeugen. Je
+Meldung gibt es höchstens drei Anfragen, je Wiener Tag höchstens sechs (gelesen
+aus den gespeicherten Zeitpunkten der Anfragen, kein eigener Zähler); ein
+geänderter Text wird in diesem Rahmen neu gefragt, die wechselnde Prognose von
+WL („Voraussichtliche Dauer: …“) zählt nicht als Änderung. Gefragt werden die
+Lite-Modelle der Wächter-Kette zuerst (`MODELS` in `ask.py`), damit die beiden
+Flash-Modelle ihr Tageskontingent für den KI-Wächter behalten; nach 20
+Sekunden startet keine weitere Anfrage. Die Anfrage läuft über den Konnektor
+des Jahresrückblicks (`ask_chain` in `src/markdown_stats/review_client.py`,
+Schlüssel im Kopf `x-goog-api-key`).
+
+**Ohne Gemini.** Fehlt der Schlüssel, ist ein Modell überlastet, das
+Kontingent erreicht oder die Antwort unbrauchbar, gilt für die Meldung die
+Regel; der Build wartet nie länger als die 20 Sekunden und scheitert daran
+nie. Der Build meldet sein Ergebnis als Nebenschritt „KI-Entscheidung“
+(Ausgabe `ki_outcome`, Teil 5, „Überwachung: Nebenschritte“): Ein leerer oder
+von Google abgelehnter Schlüssel ist sofort rot („ein Fehler sollte
+auffallen“, 28.10.2026). Bekam eine neue Meldung auf keine ihrer drei Anfragen
+eine Antwort oder sind die sechs Anfragen des Tages verbraucht, ist das wie
+beim KI-Wächter ein Hinweis (04.11.2026), der endet, sobald die Meldung nicht
+mehr neu ist. `KI_ENTSCHEIDUNG=0` schaltet die Anfragen ab. Builds ohne
+Schlüssel (`build-feed.yml`, `manual-full-refresh.yml`, lokal) lesen den
+Speicher und schreiben ihn nie.
+
+**Speicher.** `data/ki_entscheidungen.json` fährt im Commit des Update-Laufs
+mit wie `data/first_seen.json`: je Meldung (Schlüssel wie im Zustand, die
+GUID) die Antwort `art`, ihr `grund`, das `modell`, der Abdruck des Textes,
+die Zeitpunkte der Anfragen und der Tag, an dem die Meldung zuletzt in einem
+Build stand. Ein Eintrag fällt eine Woche danach weg. Ein Nachbau desselben
+Commits liest dieselben Antworten und baut denselben Feed.

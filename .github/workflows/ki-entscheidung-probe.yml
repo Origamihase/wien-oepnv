@@ -1,0 +1,92 @@
+name: KI-Entscheidung-Probe
+
+# Dry run of the Gemini decision for unclear disruptions. Operator decision
+# 2026-11-12 (Michael, card "Soll ich die Gemini-Entscheidung für unklare
+# Fälle so bauen?": "Ja, so bauen"): where the rules leave open whether a
+# disruption came suddenly or is a planned measure, Gemini answers
+# "ploetzlich", "geplant" or "unklar" and the feed build chooses between
+# the two renderings the rules make (src/ki_entscheidung). The build asks
+# about three times a week, so a change to the prompt, the classes or the
+# connector would show its effect only days later.
+#
+# This workflow shows it at once: it puts the unclear messages measured in
+# the replay of 20.09. to 12.11.2026 (data/samples/ki_entscheidung_faelle.json)
+# to Gemini exactly like the build, eight messages a request along the same
+# chain of models, and writes a table into the run's summary: what the
+# rules show today, what a reader of the source expects, Gemini's answer
+# and its reason. It stores nothing and publishes nothing.
+#
+# When: by hand, and on a push to a branch other than main that touches the
+# package (a branch of this repository; a fork's pull request starts no
+# run and gets no key). Google counts the requests (Michael 2026-11-05:
+# "Zähle es bitte so wie Google. Wir brauchen keine eigene Zähltechnik.");
+# a model whose quota is reached answers 429 and the next one is asked.
+#
+# The run stays green whatever Gemini does: a busy model or an answer that
+# differs from the expectation is a result to read. Only wrong arguments
+# fail it.
+
+on:
+  workflow_dispatch:
+  push:
+    branches-ignore:
+      - main
+    paths:
+      - src/ki_entscheidung/**
+      - src/markdown_stats/review_client.py
+      - scripts/ki_entscheidung_probe.py
+      - data/samples/ki_entscheidung_faelle.json
+      - .github/workflows/ki-entscheidung-probe.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ki-entscheidung-probe-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    # Three requests of at most 20 s each (DEADLINE_S in
+    # src/ki_entscheidung/ask.py); the rest is checkout and installation.
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      # Workaround for actions/checkout#2351, as in the other workflows.
+      - name: Check out repository (attempt 1/2)
+        id: checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 1
+        continue-on-error: true
+
+      - name: Check out repository (attempt 2/2 — runs only if attempt 1 hit checkout#2351)
+        if: steps.checkout.outcome == 'failure'
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-deps
+
+      # No tools: the model sees only the prompt, and only this step sees
+      # the key. The probe prints its report and appends it to the run's
+      # summary; it exits 0 unless its arguments are wrong.
+      - name: Gemini answers, the table shows it
+        timeout-minutes: 5
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        shell: bash
+        run: python scripts/ki_entscheidung_probe.py

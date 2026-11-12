@@ -368,3 +368,22 @@ Module dazu, nicht als Teilung; jedes hält die Grenze von 700 Zeilen
 `scripts/generate_markdown_stats.py` hat danach 693 Zeilen (vorher 603).
 `baustellen_year.py` und `year_review.py` stehen genau an der Grenze: Was dort
 dazukommt, braucht ein weiteres Modul.
+
+Nachtrag (2026-11-12, KI-Entscheidung): Die Entscheidung von Gemini für
+unklare Störungen (Betreiberentscheidung vom 12.11.2026,
+[`architecture-teil-8.md`](architecture-teil-8.md), §14) kam als eigenes Paket
+dazu; der Feed-Build ruft es an einer Stelle auf (`decide` in
+`_assemble_feed_items`), und `_incident_since` liest nur das Feld `_ki_art`
+(gemessen mit `wc -l` am 12.11.2026):
+
+| Modul | Zeilen | Inhalt |
+|---|---|---|
+| `src/ki_entscheidung/candidates.py` | 245 | Welche Störungen unklar sind (drei Klassen), ihr Abdruck, was das Modell von ihnen liest |
+| `src/ki_entscheidung/ask.py` | 172 | Prompt, Schema, Modellkette (Lite voran), Lesen der Antwort |
+| `src/ki_entscheidung/store.py` | 140 | Speicher `data/ki_entscheidungen.json` |
+| `src/ki_entscheidung/run.py` | 214 | Ein Build: lesen, höchstens einmal fragen, anwenden, speichern, Ergebnis für den Health check |
+| `scripts/ki_entscheidung_probe.py` | 207 | Probelauf für `ki-entscheidung-probe.yml` |
+
+`src/markdown_stats/review_client.py` trägt seither beide Anfragen
+(`ask_chain` mit einem `JsonCall` je Aufrufer) und hat 518 Zeilen (vorher
+422), `src/build_feed.py` 693 (vorher 682).

@@ -95,6 +95,9 @@ def test_the_workflows_record_every_side_step() -> None:
         assert f"id: {step_id}\n" in cycle
         assert f"${{{{ steps.{step_id}.outcome }}}}" in cycle
         assert f'"{label}=$' in cycle
+    # The feed build reports its Gemini decision itself (``src/ki_entscheidung/run.py``, output ``ki_outcome``).
+    assert "id: build\n" in cycle and "${{ steps.build.outputs.ki_outcome }}" in cycle
+    assert '"KI-Entscheidung=$KI_OUTCOME"' in cycle
     assert "--state data/side_steps/update-cycle.json" in cycle
     assert cycle.index("Record side-step outcomes") < cycle.index("Validate and publish cycle outputs")
     stations = (REPO / ".github/workflows/update-stations.yml").read_text(encoding="utf-8")
@@ -204,7 +207,9 @@ def test_the_seo_metadata_step_retries_and_records_a_github_outage_as_overloaded
     record = seo.split("- name: Record side-step outcomes", 1)[1].split("- name:", 1)[0]
     assert 'metadata-overloaded" ]]; then outcome=overloaded' in record
     files = {name: overload for name, _workflow, _age, overload in hc.SIDE_STEP_RECORDS}
-    assert files["seo-guard.json"] == 48.0 and files["update-cycle.json"] is None
+    # The Update run's only "overloaded" is the build's "KI-Entscheidung" (owner 2026-11-12): a note like the KI-Wächter's.
+    assert files["seo-guard.json"] == 48.0 and files["update-cycle.json"] == files["ki-waechter.json"] == 30.0
+    assert files["update-stations.json"] is None
     side = tmp_path / "side_steps"
     side.mkdir()
     entry = {"outcome": "overloaded", "at": "2026-11-04T10:03:46+00:00",
@@ -217,3 +222,32 @@ def test_the_seo_metadata_step_retries_and_records_a_github_outage_as_overloaded
     note = hc.check_side_steps(datetime(2026, 11, 4, 11, 1, tzinfo=UTC))
     assert note.ok and note.note and "rot ab 06.11. 10:14" in note.summary
     assert not hc.check_side_steps(datetime(2026, 11, 6, 9, 15, tzinfo=UTC)).ok
+
+
+def test_the_ki_decision_of_the_update_run_is_red_without_its_key_and_a_note_when_gemini_is_busy(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Owner 2026-11-12 (``src/ki_entscheidung``): the feed build reports its Gemini decision as side step
+    "KI-Entscheidung". A key that is empty or refused must be noticed (2026-10-28); a Gemini that only gave
+    a new message no answer left the feed to the rules and is a note, as for the KI-Wächter (2026-11-04)."""
+    side = tmp_path / "side_steps"
+    side.mkdir()
+    monkeypatch.setattr(hc_outputs, "SIDE_STEP_DIR", side)
+    monkeypatch.setattr(hc_outputs, "SIDE_STEP_RECORDS",
+                        [r for r in hc.SIDE_STEP_RECORDS if r[0] == "update-cycle.json"])
+
+    def check(outcome: str) -> hc.Check:
+        entry = {"outcome": outcome, "at": "2026-11-12T17:01:00+00:00",
+                 "last_success": "2026-11-12T16:31:00+00:00", "run": "u"}
+        record = {"updated": entry["at"], "steps": {"KI-Entscheidung": entry}}
+        (side / "update-cycle.json").write_text(json.dumps(record), encoding="utf-8")
+        return hc.check_side_steps(datetime(2026, 11, 12, 17, 5, tzinfo=UTC))
+
+    busy = check("overloaded")
+    assert busy.ok and busy.note and "KI-Entscheidung (Update-Lauf) ohne Antwort, Dienst überlastet" in busy.summary
+    dead = check("failure")
+    assert not dead.ok and "KI-Entscheidung (Update-Lauf) gescheitert" in dead.summary
+    assert check("success").ok and not check("success").note
+    # A build that has nothing to report (a request is still due) leaves the record alone.
+    assert "overloaded" in rec.RECORDED_OUTCOMES
+    assert rec.update({}, {"KI-Entscheidung": ""}, now=_T0, url="") == rec.update({}, {}, now=_T0, url="")

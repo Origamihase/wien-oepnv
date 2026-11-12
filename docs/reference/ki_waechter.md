@@ -8,7 +8,7 @@ Quelltexten und meldet, was der TV-Zuschauer falsch gelesen hat. Der Wächter
 Entscheidungen des Betreibers vom 2026-10-31: Die Regeln bleiben die Feed-Kette,
 eine KI meldet nur (Ausnahme, Betreiberentscheidung vom 10.11.2026: Gemini fasst
 die Baustellen eines abgeschlossenen Jahres auf dessen Statistikseite zusammen,
-Abschnitt „Jahresrückblick der Baustellen“; für den Feed gilt die Regel weiter).
+Abschnitt „Jahresrückblick der Baustellen“; Ausnahme vom 12.11.2026: Gemini entscheidet bei unklaren Störungen zwischen „plötzlich“ und „geplant“, [`architecture-teil-8.md`](../architecture-teil-8.md), §14; einen Text des Feeds schreibt weiter keine KI).
 Geprüft werden die Meldungen der letzten 24 Stunden, nicht nur die zehn aktuellen
 („Ein Review der Meldungen der letzten 24h wäre besser“). Das Modell ist Gemini
 über das Gratis-Kontingent der Gemini API, weil das Claude-Abo nur bei Bedarf
@@ -438,7 +438,7 @@ Prüfung und Datei: [`data/stats/README.md`](https://github.com/Origamihase/wien
   nichts lesen, schreiben, ausführen oder veröffentlichen; das tun die
   Schritte danach, mit festem Inhalt.
 - `GEMINI_API_KEY` bekommen nur der Schritt „Gemini reads and compares“, der
-  Statistik-Schritt von `update-cycle.yml` und `jahresrueckblick-probe.yml`. Der
+  Statistik-Schritt und seit 2026-11-12 der Schritt „Build feed“ von `update-cycle.yml` sowie die zwei Probeläufe (`jahresrueckblick-probe.yml`, `ki-entscheidung-probe.yml`). Der
   Schlüssel geht im Kopf `x-goog-api-key` mit, nie in der URL oder im Log.
 - Die Texte der Betreiber sind Daten, keine Anweisungen; der Prompt sagt das,
   und die Eingabe rahmt sie mit `<<<DATEN … DATEN>>>`.

@@ -3,7 +3,7 @@
 Owner's decision (Michael, 2026-11-10 17:44 Europe/Vienna), point 4: the
 year's Baustellen are summarised by Gemini, his explicit exception to "an
 AI only watches and reports, never rewrites" (2026-10-31), which stays for
-the feed. This module asks and makes the answer one clean paragraph
+the feed's texts. This module asks and makes the answer one clean paragraph
 (:func:`clean_review`); ``src/markdown_stats/year_review.py`` builds the
 prompt and decides with a fixed guard whether the answer is published.
 
@@ -26,6 +26,11 @@ run of the next day asks again while the review is missing.
 No request counter (owner 2026-11-05: "Zähle es bitte so wie Google. Wir
 brauchen keine eigene Zähltechnik."): a model whose quota Google reports
 as reached answers 429 and the next one is asked.
+
+The pass over the chain is not tied to the review (:func:`ask_chain`): a
+second caller names its own answer schema, parser, log label and time
+budget in a :class:`JsonCall`. ``src/ki_entscheidung`` (owner 2026-11-12)
+asks through it; :func:`ask_review` is this module's own call.
 """
 from __future__ import annotations
 
@@ -36,7 +41,7 @@ import re
 import time
 from collections.abc import Callable, Mapping, Sequence
 from dataclasses import dataclass
-from typing import Any, Final
+from typing import Any, Final, Generic, TypeVar
 
 import requests
 
@@ -112,6 +117,44 @@ _SAFETY_CATEGORIES: Final = (
 MAX_CLEAN_CHARS: Final = 4000
 
 
+T = TypeVar("T")
+
+
+@dataclass(frozen=True)
+class JsonCall(Generic[T]):
+    """What one caller of :func:`ask_chain` wants: its schema, its parser, its log label and its patience.
+
+    ``parse`` turns the model's JSON text into the caller's value (``None``:
+    not usable, ``missing`` says why in the log line). ``min_request_s`` is
+    the least time a request must be able to wait for its answer to be sent
+    at all, ``lite_thinking`` the thinking level asked of a Lite model
+    (``None``: the model's own default).
+    """
+
+    label: str
+    user_agent: str
+    schema: Mapping[str, Any]
+    parse: Callable[[str], T | None]
+    missing: str
+    min_request_s: float = MIN_REQUEST_S
+    lite_thinking: str | None = LITE_THINKING_LEVEL
+
+
+@dataclass(frozen=True)
+class ChainAnswer(Generic[T]):
+    """What one pass over the chain gave: the value and its model, or neither.
+
+    ``requests`` counts the requests sent, ``key_rejected`` says that Google
+    refused the key itself (401, 403 or a 400 naming it), which no later
+    request can cure.
+    """
+
+    value: T | None
+    model: str
+    requests: int
+    key_rejected: bool
+
+
 @dataclass(frozen=True)
 class ReviewAnswer:
     """The model's text (the value of ``rueckblick``, unchecked) and the model that wrote it."""
@@ -166,8 +209,14 @@ def is_lite(model: str) -> bool:
     return LITE_MARK in model
 
 
-def review_request(prompt: str, model: str = "") -> dict[str, Any]:
-    """One generateContent body: the prompt, JSON out in :data:`REVIEW_SCHEMA`, no tools.
+def review_request(
+    prompt: str,
+    model: str = "",
+    *,
+    schema: Mapping[str, Any] = REVIEW_SCHEMA,
+    lite_thinking: str | None = LITE_THINKING_LEVEL,
+) -> dict[str, Any]:
+    """One generateContent body: the prompt, JSON out in *schema*, no tools.
 
     The shape of ``gemini_request`` in ``scripts/ki_waechter.py`` with this
     call's schema. The safety settings are open for the same reason as
@@ -177,10 +226,10 @@ def review_request(prompt: str, model: str = "") -> dict[str, Any]:
     """
     generation: dict[str, Any] = {
         "responseMimeType": "application/json",
-        "responseJsonSchema": REVIEW_SCHEMA,
+        "responseJsonSchema": schema,
     }
-    if is_lite(model):
-        generation["thinkingConfig"] = {"thinkingLevel": LITE_THINKING_LEVEL}
+    if is_lite(model) and lite_thinking is not None:
+        generation["thinkingConfig"] = {"thinkingLevel": lite_thinking}
     return {
         "contents": [{"role": "user", "parts": [{"text": prompt}]}],
         "generationConfig": generation,
@@ -234,36 +283,34 @@ def _review_of(text: str) -> str | None:
     return value if isinstance(value, str) and value.strip() else None
 
 
-def _answer_from(response: requests.Response, model: str) -> ReviewAnswer | None:
-    """The review in a generateContent response; ``None`` (and a log line) without one."""
+def _answer_from(response: requests.Response, model: str, call: JsonCall[T]) -> T | None:
+    """The caller's value in a generateContent response; ``None`` (and a log line) without one."""
     payload = _payload_of(response)
     if response.status_code != 200:
         LOGGER.warning(
-            "Jahresrückblick: Gemini %s antwortet HTTP %d: %s",
+            "%s: Gemini %s antwortet HTTP %d: %s",
+            call.label,
             sanitize_log_arg(model),
             response.status_code,
             sanitize_log_arg(_error_text(payload)),
         )
         return None
     if payload is None:
-        LOGGER.warning("Jahresrückblick: Antwort von %s ist kein JSON-Objekt.", sanitize_log_arg(model))
+        LOGGER.warning("%s: Antwort von %s ist kein JSON-Objekt.", call.label, sanitize_log_arg(model))
         return None
     reason, text = _candidate_text(payload)
     if reason != "STOP" or not text.strip():
         LOGGER.warning(
-            "Jahresrückblick: %s brach ab (%s).",
+            "%s: %s brach ab (%s).",
+            call.label,
             sanitize_log_arg(model),
             sanitize_log_arg(free_text(reason)[:60] or "ohne Grund"),
         )
         return None
-    review = _review_of(text)
-    if review is None:
-        LOGGER.warning(
-            "Jahresrückblick: Antwort von %s enthält keinen Text unter „rueckblick“.",
-            sanitize_log_arg(model),
-        )
-        return None
-    return ReviewAnswer(text=review, model=model)
+    value = call.parse(text)
+    if value is None:
+        LOGGER.warning("%s: Antwort von %s %s.", call.label, sanitize_log_arg(model), call.missing)
+    return value
 
 
 def _key_rejected(response: requests.Response) -> bool:
@@ -287,8 +334,9 @@ def _ask_one(
     body: str,
     key: str,
     remaining: float,
-) -> tuple[ReviewAnswer | None, bool]:
-    """One request to *model*: (answer, whether the next model may be asked).
+    call: JsonCall[T],
+) -> tuple[T | None, bool, bool]:
+    """One request to *model*: (value, whether the next model may be asked, whether the key was refused).
 
     Hands over on a server error (every 5xx), a retired model, a reached
     quota, a dropped connection (before the answer or while its body is
@@ -319,26 +367,29 @@ def _ask_one(
     # requests does not file it under ConnectionError.
     except (requests.ConnectionError, requests.Timeout, requests.exceptions.ChunkedEncodingError) as exc:
         LOGGER.warning(
-            "Jahresrückblick: Gemini %s nicht erreichbar (%s).",
+            "%s: Gemini %s nicht erreichbar (%s).",
+            call.label,
             sanitize_log_arg(model),
             type(exc).__name__,
         )
-        return None, True
+        return None, True, False
     except (requests.RequestException, ValueError) as exc:
         # The class only: the message of a transport error can carry the URL.
         LOGGER.warning(
-            "Jahresrückblick: Anfrage an %s gescheitert (%s).",
+            "%s: Anfrage an %s gescheitert (%s).",
+            call.label,
             sanitize_log_arg(model),
             type(exc).__name__,
         )
         # A plain ValueError is request_safe's own refusal (see the docstring).
         # Some errors of requests are ValueErrors as well (InvalidHeader,
         # InvalidURL); they are transport errors and end the pass.
-        return None, not isinstance(exc, requests.RequestException)
-    answer = _answer_from(response, model)
+        return None, not isinstance(exc, requests.RequestException), False
+    value = _answer_from(response, model, call)
     status = response.status_code
+    rejected = status in (401, 403) or _key_rejected(response)
     hand_over = status in HANDOVER_STATUS or 500 <= status <= 599
-    return answer, answer is None and hand_over and not _key_rejected(response)
+    return value, value is None and hand_over and not rejected, rejected
 
 
 def _ask_chain(
@@ -347,31 +398,97 @@ def _ask_chain(
     chain: Sequence[str],
     deadline_s: float,
     clock: Callable[[], float],
-) -> ReviewAnswer | None:
+    call: JsonCall[T],
+) -> ChainAnswer[T]:
     bodies = {
-        lite: json.dumps(review_request(prompt, LITE_MARK if lite else ""), ensure_ascii=True, allow_nan=False)
+        lite: json.dumps(
+            review_request(prompt, LITE_MARK if lite else "", schema=call.schema, lite_thinking=call.lite_thinking),
+            ensure_ascii=True,
+            allow_nan=False,
+        )
         for lite in (False, True)
     }
     started = clock()
+    sent = 0
     # total=0: the session never repeats a request; the loop sends every one.
     with session_with_retries(
-        "wien-oepnv-jahresrueckblick",
+        call.user_agent,
         timeout=(CONNECT_TIMEOUT_S, MAX_READ_TIMEOUT_S),
         total=0,
     ) as session:
         for model in chain:
             remaining = deadline_s - (clock() - started)
-            if remaining < MIN_REQUEST_S:
+            if remaining < call.min_request_s:
                 LOGGER.warning(
-                    "Jahresrückblick: nach %d s keine weitere Anfrage (ab %s nicht gefragt).",
+                    "%s: nach %d s keine weitere Anfrage (ab %s nicht gefragt).",
+                    call.label,
                     int(clock() - started),
                     sanitize_log_arg(model),
                 )
-                return None
-            answer, hand_over = _ask_one(session, model, bodies[is_lite(model)], key, remaining)
-            if answer is not None or not hand_over:
-                return answer
-    return None
+                break
+            sent += 1
+            one = _ask_one(session, model, bodies[is_lite(model)], key, remaining, call)
+            value, hand_over, rejected = one
+            if value is not None or not hand_over:
+                return ChainAnswer(value, model if value is not None else "", sent, rejected)
+    return ChainAnswer(None, "", sent, False)
+
+
+def ask_chain(
+    prompt: str,
+    *,
+    key: str,
+    models: Sequence[str],
+    call: JsonCall[T],
+    deadline_s: float,
+    clock: Callable[[], float] = time.monotonic,
+) -> ChainAnswer[T]:
+    """Send *prompt* along *models* once for *call*; the first model whose answer ``call.parse`` accepts wins.
+
+    Each model is asked at most once, in order, without a wait in between:
+    a server error (every 5xx, also one that arrives as an error page
+    instead of JSON), a reached quota (429), a retired model (404, 400
+    without a rejected key), a dropped connection or a timeout hands over
+    to the next one, as long as at least ``call.min_request_s`` of
+    *deadline_s* are left (measured with *clock* from the first request).
+    Every request waits at most ``min(90, seconds left)`` for its answer.
+    An answer counts only with ``finishReason`` ``STOP`` and a value from
+    ``call.parse``.
+
+    Never raises: without an answer the value is ``None`` and the log names
+    the HTTP status or the class of the error under ``call.label`` (Google's
+    error text capped at 200 characters and cleaned like the Wächter's). The
+    key travels in a header, never in the URL or a log line.
+    """
+    try:
+        chain = _valid_models(models)
+        if not chain:
+            LOGGER.warning("%s: kein gültiger Modellname, keine Anfrage.", call.label)
+            return ChainAnswer(None, "", 0, False)
+        if not key.strip():
+            LOGGER.warning("%s: %s ist leer, keine Anfrage.", call.label, GEMINI_KEY_ENV)
+            return ChainAnswer(None, "", 0, False)
+        if len(prompt) > MAX_REQUEST_CHARS:
+            LOGGER.warning(
+                "%s: Eingabe zu groß (%d Zeichen, Grenze %d); nicht gesendet.",
+                call.label,
+                len(prompt),
+                MAX_REQUEST_CHARS,
+            )
+            return ChainAnswer(None, "", 0, False)
+        return _ask_chain(prompt, key.strip(), chain, deadline_s, clock, call)
+    except Exception as exc:  # the caller's step must not fail on this call
+        LOGGER.warning("%s: Anfrage abgebrochen (%s).", call.label, type(exc).__name__)
+        return ChainAnswer(None, "", 0, False)
+
+
+_REVIEW_CALL: Final[JsonCall[str]] = JsonCall(
+    label="Jahresrückblick",
+    user_agent="wien-oepnv-jahresrueckblick",
+    schema=REVIEW_SCHEMA,
+    parse=_review_of,
+    missing="enthält keinen Text unter „rueckblick“",
+)
 
 
 def ask_review(
@@ -384,39 +501,18 @@ def ask_review(
 ) -> ReviewAnswer | None:
     """Send *prompt* along the chain once; the first model that answers wins.
 
-    *models* defaults to :func:`models_from_env`. Each model is asked at
-    most once, in order, without a wait in between: a server error (every
-    5xx, also one that arrives as an error page instead of JSON), a
-    reached quota (429), a retired model (404, 400 without a rejected
-    key), a dropped connection or a timeout hands over to the next one, as
-    long as at least :data:`MIN_REQUEST_S` of *deadline_s* are left
-    (measured with *clock* from the first request). Every request waits at
-    most ``min(90, seconds left)`` for its answer. An answer counts only
-    with ``finishReason`` ``STOP`` and a non-empty string under
-    ``rueckblick``.
+    *models* defaults to :func:`models_from_env`. The pass is
+    :func:`ask_chain` with this module's schema: an answer counts only with
+    a non-empty string under ``rueckblick``; at least :data:`MIN_REQUEST_S`
+    of *deadline_s* must be left for a further request.
 
-    Never raises: without an answer the result is ``None`` and the log
-    names the HTTP status or the class of the error (Google's error text
-    capped at 200 characters and cleaned like the Wächter's). The key
-    travels in a header, never in the URL or a log line. Why so short: see
-    the module docstring.
+    Never raises: without an answer the result is ``None``. Why so short:
+    see the module docstring.
     """
     try:
-        chain = _valid_models(models) if models is not None else models_from_env()
-        if not chain:
-            LOGGER.warning("Jahresrückblick: kein gültiger Modellname, keine Anfrage.")
-            return None
-        if not key.strip():
-            LOGGER.warning("Jahresrückblick: %s ist leer, keine Anfrage.", GEMINI_KEY_ENV)
-            return None
-        if len(prompt) > MAX_REQUEST_CHARS:
-            LOGGER.warning(
-                "Jahresrückblick: Eingabe zu groß (%d Zeichen, Grenze %d); nicht gesendet.",
-                len(prompt),
-                MAX_REQUEST_CHARS,
-            )
-            return None
-        return _ask_chain(prompt, key.strip(), chain, deadline_s, clock)
+        chain = models if models is not None else models_from_env()
     except Exception as exc:  # the statistics step must not fail on this call
         LOGGER.warning("Jahresrückblick: Anfrage abgebrochen (%s).", type(exc).__name__)
         return None
+    answer = ask_chain(prompt, key=key, models=chain, call=_REVIEW_CALL, deadline_s=deadline_s, clock=clock)
+    return ReviewAnswer(text=answer.value, model=answer.model) if answer.value is not None else None

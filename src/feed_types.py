@@ -39,6 +39,9 @@ class FeedItem(TypedDict):
     # The earliest start of those messages (``wl_plausibility.incident_begin``);
     # an ISO string once read back from the cache.
     _incident_start: NotRequired[datetime | str]
+    # "ploetzlich" or "geplant": Gemini's answer for a disruption the rules
+    # leave unclear (``src.ki_entscheidung``), read by ``_incident_since``.
+    _ki_art: NotRequired[str]
 
 
 @runtime_checkable

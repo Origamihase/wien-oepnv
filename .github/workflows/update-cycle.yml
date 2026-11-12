@@ -508,26 +508,23 @@ jobs:
         continue-on-error: true
         run: python scripts/update_stammstrecke_hbf.py
 
-      # ----- Feed build (no API call — pure consumer of caches) -----------
+      # ----- Feed build (consumer of the caches; one Gemini request at most) --
 
       - name: Build feed
+        id: build
         if: steps.freshness.outputs.should_run == 'true'
         # Step ceiling below the 10-min job cap so a hung builder (e.g. a
         # stalled translation-pipeline call) is killed fast and still
         # leaves budget for the publish step. Healthy builds finish well
-        # under a minute.
+        # under a minute. The key: a new disruption the rules leave unclear is put to Gemini once,
+        # 20 s at most (src/ki_entscheidung, owner 2026-11-12); without an answer the rules decide.
         timeout-minutes: 5
         shell: bash
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          # Atom self/alternate links are written by the Python builder.
-          # Derive the GitHub Pages base from the always-present
-          # ``$GITHUB_REPOSITORY`` / ``$GITHUB_REPOSITORY_OWNER`` runner
-          # env vars rather than ``${{ github.event.repository.name }}``:
-          # the event payload is empty on ``schedule`` events (the new
-          # backup-cron trigger), which would otherwise emit a broken
-          # ``https://owner.github.io/`` with no repo segment. Forks
-          # inherit their own repo, so atom:link URLs stay correct
-          # instead of pointing at the upstream repo.
+          # Atom links: the Pages base comes from the runner's ``$GITHUB_REPOSITORY`` vars,
+          # not the event payload (empty on ``schedule`` events); forks get their own repo.
           export PAGES_BASE_URL="https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}"
           python -m src.cli feed build
 
@@ -631,7 +628,8 @@ jobs:
       # ``data/side_steps/update-cycle.json``, which rides this run's commit;
       # ``scripts/health_check.py`` (check "Nebenschritte") reads it, and a
       # record older than 4 h is red there as well. ``!cancelled()`` so it
-      # also runs after a failed side step; it never blocks the publish.
+      # also runs after a failed side step; it never blocks the publish. "KI-Entscheidung" is
+      # the build's own word (output ``ki_outcome``): failure = key missing or refused.
       - name: Record side-step outcomes
         if: ${{ !cancelled() && steps.freshness.outputs.should_run == 'true' }}
         continue-on-error: true
@@ -640,12 +638,14 @@ jobs:
           STATS_OUTCOME: ${{ steps.stats.outcome }}
           LINES_OUTCOME: ${{ steps.lines.outcome }}
           WATCH_OUTCOME: ${{ steps.watch.outcome }}
+          KI_OUTCOME: ${{ steps.build.outputs.ki_outcome }}
         run: >-
           python scripts/record_side_steps.py
           --state data/side_steps/update-cycle.json
           "Statistik=$STATS_OUTCOME"
           "Linienprüfung=$LINES_OUTCOME"
           "Feed-Wächter=$WATCH_OUTCOME"
+          "KI-Entscheidung=$KI_OUTCOME"
 
       # ----- Validate + single atomic publish ----------------------------
 

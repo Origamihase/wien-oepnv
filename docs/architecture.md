@@ -1,9 +1,8 @@
 # Architektur-Karte — Wien ÖPNV Feed
 
 Dieses Dokument ist die visuelle Ergänzung zur README. Es ist für
-Entwickler:innen geschrieben, die in einem halben Jahr zum Projekt
-stoßen: jene Person, die verstehen muss, **wie das System
-zusammenhängt**, bevor sie sich in irgendeine einzelne Datei stürzt.
+Entwickler:innen geschrieben, die in einem halben Jahr zum Projekt stoßen: jene Person,
+die verstehen muss, **wie das System zusammenhängt**, bevor sie sich in irgendeine einzelne Datei stürzt.
 
 Die Diagramme weiter unten werden von GitHub automatisch gerendert. Wer das
 hier in einem Viewer ohne Mermaid-Unterstützung liest, findet zu jedem
@@ -58,6 +57,7 @@ Diagramm dieselbe Information zusätzlich als Fließtext darunter.
 - [11. Ein Vorfall, ein Platz: gekürzte Ursache und vertauschte Rollen (seit 2026-11-10)](architecture-teil-7.md#11-ein-vorfall-ein-platz-gekürzte-ursache-und-vertauschte-rollen-seit-2026-11-10)
 - [12. Die Jahresseite der Statistik: Überblick, Baustellen, Rückblick (seit 2026-11-10)](architecture-teil-7.md#12-die-jahresseite-der-statistik-überblick-baustellen-rückblick-seit-2026-11-10)
 - [13. Wo ein Satz endet: der Punkt einer Abkürzung (seit 2026-11-12)](architecture-teil-8.md#13-wo-ein-satz-endet-der-punkt-einer-abkürzung-seit-2026-11-12)
+- [14. Gemini entscheidet, wo die Regeln eine Störung offen lassen (seit 2026-11-12)](architecture-teil-8.md#14-gemini-entscheidet-wo-die-regeln-eine-störung-offen-lassen-seit-2026-11-12)
 
 ---
 

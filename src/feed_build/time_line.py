@@ -227,7 +227,15 @@ def _incident_since(
     if it.get("category") != "Störung" or not isinstance(starts_at, datetime):
         return None
     text = f"{it.get('title') or ''} {html_to_text(str(it.get('description') or ''))}"
-    if _PLANNED_DISRUPTION_RE.search(text) or _reports_past_disruption(it, text):
+    # Where the words below leave a disruption unclear (a works word beside
+    # an incident, no cause at all), Gemini's stored answer decides instead
+    # of them (owner 2026-11-12, ``src.ki_entscheidung``, his exception to
+    # "an AI only watches"). Only such a disruption carries ``_ki_art``; a
+    # report of a disruption that is over stays one whatever the answer.
+    decided = it.get("_ki_art")
+    if _reports_past_disruption(it, text) or decided == "geplant":
+        return None
+    if decided != "ploetzlich" and _PLANNED_DISRUPTION_RE.search(text):
         return None
     if it.get("source") in _MEASURED_SOURCES:
         return starts_at
@@ -256,7 +264,7 @@ def _incident_since(
     # Midnight is no exception (operator decision 2026-11-04): a disruption
     # WL enters anew at 00:00 reads "[Seit 00:00]" even when it began the day
     # before ("31: Wasserrohrbruch" on 03.09.2026, first published 02.09.).
-    return since if not _scheduled_clock(since) or _incident_cause(it) else None
+    return since if decided == "ploetzlich" or not _scheduled_clock(since) or _incident_cause(it) else None
 
 
 # ÖBB reports a disruption that is already over in the past tense: "Wegen

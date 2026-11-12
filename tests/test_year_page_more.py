@@ -558,9 +558,16 @@ def test_the_requests_end_inside_the_step_limit() -> None:
     assert step["timeout-minutes"] < _workflow("update-cycle.yml")["jobs"]["cycle"]["timeout-minutes"]
 
 
-def test_only_the_statistics_step_of_the_cycle_has_the_key() -> None:
-    assert _stats_step()["env"] == {"GEMINI_API_KEY": "${{ secrets.GEMINI_API_KEY }}"}
-    assert (WORKFLOWS / "update-cycle.yml").read_text(encoding="utf-8").count("secrets.GEMINI_API_KEY") == 1
+def test_only_the_statistics_step_and_the_feed_build_of_the_cycle_have_the_key() -> None:
+    """The feed build has it since 2026-11-12 (owner, ``src/ki_entscheidung``); no other step."""
+    key = {"GEMINI_API_KEY": "${{ secrets.GEMINI_API_KEY }}"}
+    steps = _workflow("update-cycle.yml")["jobs"]["cycle"]["steps"]
+    assert _stats_step()["env"] == key
+    assert [step["name"] for step in steps if "GEMINI_API_KEY" in step.get("env", {})] == [
+        "Build feed", "Refresh statistics dashboard and README snapshot",
+    ]
+    assert next(step for step in steps if step["name"] == "Build feed")["env"] == key
+    assert (WORKFLOWS / "update-cycle.yml").read_text(encoding="utf-8").count("secrets.GEMINI_API_KEY") == 2
 
 
 @pytest.mark.parametrize(

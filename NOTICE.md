@@ -108,7 +108,7 @@ drei offenen Datensätzen oben.
 | `data/raw/wl/*` | letzte gute Antworten der Wiener-Linien-Echtzeitdaten und die verworfenen Meldungen | CC BY 4.0, „Datenquelle: Wiener Linien“ |
 | `data/raw/baustellen/*`, `data/samples/baustellen_sample.geojson` | Baustellen-Layer der Stadt Wien (ohne Geometrie bis auf die erste Position) | CC BY 4.0, „Datenquelle: Stadt Wien – data.wien.gv.at“ |
 | `data/raw/oebb/*` | **alle** Items des ÖBB-RSS, auch die ohne Wien-Bezug | wie die ÖBB-Meldungstexte (oben, „ÖBB-Inhalte“): keine offene Lizenz, gehört zu den ÖBB-Inhalten |
-| `data/first_seen.json`, `data/feed_watch.json`, `data/wl_resolved_tickers.json`, `data/wl_plausibility_anomalies.json`, `data/feed_line_anomalies.json` | Zustand des Feed-Builds mit Titeln und Texten der Meldungen (auch der englischen Übersetzung) | wie die Feeds oben; eigene Felder MIT |
+| `data/first_seen.json`, `data/feed_watch.json`, `data/wl_resolved_tickers.json`, `data/wl_plausibility_anomalies.json`, `data/feed_line_anomalies.json`, `data/ki_entscheidungen.json` (seit 12.11.2026: Titel der Meldung, Antwort und Begründung von Gemini), `data/samples/ki_entscheidung_faelle.json` (20 Meldungen der Wiener Linien und der ÖBB vom 20.09. bis 09.11.2026 mit den Meldungen ihrer Linien, Fallsammlung des Probelaufs der KI-Entscheidung) | Zustand des Feed-Builds mit Titeln und Texten der Meldungen (auch der englischen Übersetzung) | wie die Feeds oben; eigene Felder MIT |
 
 Wer `data/` als Ganzes weiterverwendet, übernimmt diese Bedingungen je Datei.
 

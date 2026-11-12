@@ -498,7 +498,7 @@ jedes Jahr am 01.01., das Jahr ist auf der Website unter „Aktuelle Meldungen�
 wählbar, sie fasst alle Ausfälle und Verspätungen in einer Statistik zusammen,
 und die Baustellen des Jahres fasst Gemini zusammen, seine ausdrückliche
 Ausnahme von „eine KI liest nur mit und meldet, sie schreibt keinen Text um“
-(Teil 3, „KI-Wächter“); für den Feed gilt die Regel weiter.
+(Teil 3, „KI-Wächter“); einen Text des Feeds schreibt weiter keine KI (zur zweiten Ausnahme vom 12.11.2026 siehe Teil 8, §14).
 
 **Prüfung des Jahresarchivs vom 10.11.2026.** Im Nachspiel mit dem echten
 Ledger (100 Ticks um 56 Tage auf den Jahreswechsel verschoben) schreibt der

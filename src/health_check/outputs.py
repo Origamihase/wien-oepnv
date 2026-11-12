@@ -304,7 +304,10 @@ def check_translation(now: datetime) -> Check:
 # counts as missing: the workflow's own freshness limit, and how long an
 # "overloaded" step stays a note; None: such a step is red at once).
 SIDE_STEP_RECORDS: list[tuple[str, str, float, float | None]] = [
-    ("update-cycle.json", "Update-Lauf", FEED_MAX_AGE_H, None),
+    # "overloaded" comes only from the build's "KI-Entscheidung" (Gemini gave a
+    # new unclear message no answer, the rules decided): a note like the
+    # KI-Wächter's (owner 2026-11-12, ``src.ki_entscheidung``).
+    ("update-cycle.json", "Update-Lauf", FEED_MAX_AGE_H, KI_WAECHTER_OVERLOAD_MAX_H),
     ("update-stations.json", "Stationslauf", STATIONS_MAX_AGE_H, None),
     # Gemini overloaded: a note for 30 h after the last clean audit
     # (Michael 2026-11-04, see KI_WAECHTER_OVERLOAD_MAX_H).

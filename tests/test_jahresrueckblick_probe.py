@@ -319,7 +319,7 @@ def test_a_summary_that_cannot_be_written_does_not_fail_the_probe(
 def test_the_health_check_names_both_uses_of_the_key() -> None:
     (secret,) = [entry for entry in WORKFLOW_SECRETS if entry.name == "GEMINI_API_KEY"]
     assert secret.kind == "tooling"
-    assert secret.purpose == "KI-Wächter und Jahresrückblick der Baustellen (Gemini API, Gratis-Kontingent)"
+    assert secret.purpose == "KI-Wächter, KI-Entscheidung und Jahresrückblick der Baustellen (Gemini API, Gratis-Kontingent)"
 
 
 def _doc() -> dict[Any, Any]:
