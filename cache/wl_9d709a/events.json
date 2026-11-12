@@ -15,12 +15,12 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "11: Wienerfeldgasse",
-    "description": "<p><strong><u>Haltestellenverlegung der Linie 11 in Richtung Kaiserebersdorf, Zinnergasse</u></strong></p><p><strong><u>Haltestelle:</u></strong> Wienerfeldgasse</p><p><strong><u>Von:</u></strong> Neilreichgasse 139C - 141</p><p><strong><u>Nach:</u></strong> Neilreichgasse 139A- 139B</p><p><strong><u>Dauer:</u></strong> von 27. Oktober 2026 etwa 07:00 Uhr, bis 19. November 2026 etwa 07:00 Uhr</p><p><strong><u>Grund:</u></strong> Gleisbauarbeiten</p>",
+    "description": "<p><strong><u>Haltestellenverlegung der Linie 11 in Richtung Kaiserebersdorf, Zinnergasse</u></strong></p><p><strong><u>Haltestelle:</u></strong> Wienerfeldgasse</p><p><strong><u>Von:</u></strong> Neilreichgasse 139C - 141</p><p><strong><u>Nach:</u></strong> Neilreichgasse 139A- 139B</p><p><strong><u>Dauer:</u></strong> von 27. Oktober 2026 etwa 07:00 Uhr, bis 18. Dezember 2026 etwa 04:30 Uhr</p><p><strong><u>Grund:</u></strong> Gleisbauarbeiten</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "6fcb2dbdc801695dc786479b97e858eebba95bec899f518ed2c7d0bd66d9f3fa",
     "pubDate": "2026-10-23T08:25:00+02:00",
     "starts_at": "2026-10-27T00:00:00+01:00",
-    "ends_at": "2026-11-19T07:00:00+01:00",
+    "ends_at": "2026-12-18T04:30:00+01:00",
     "_identity": "wl|hinweis|L=11|D=2026-10-27|TK=11 wienerfeldgasse"
   },
   {
@@ -914,6 +914,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "51A: Verkehrsüberlastung",
+    "description": "Linie 51A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "a47b90fb2db1bcb565195ef1ba3ab0d9b4357d2b69c51f7b3dc152c267284048",
+    "pubDate": "2026-11-12T07:34:00+01:00",
+    "starts_at": "2026-11-12T07:34:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=51A|D=2026-11-12|TK=51a verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261112-0011"
+    ],
+    "_incident_start": "2026-11-12T07:34:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -926,6 +942,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "63A: Verkehrsunfall",
+    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "256dd0cdb2b1c0eb23186e5c51158dfe6e5a1b6abe24847907b9a52340324733",
+    "pubDate": "2026-11-12T07:57:00+01:00",
+    "starts_at": "2026-11-12T07:57:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=63A|D=2026-11-12|TK=63a verkehrsunfall",
+    "_wl_ids": [
+      "I20261112-0013"
+    ],
+    "_incident_start": "2026-11-12T07:57:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -934,6 +966,22 @@
     "starts_at": "2026-11-12T04:40:18+01:00",
     "ends_at": "2026-11-13T01:00:00+01:00",
     "_identity": "wl|störung|L=66A|D=2026-11-12|TK=busse halten salvatorianerplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "73A: Verkehrsüberlastung",
+    "description": "Linie 73A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "940daac2fef212c9cddd5440d3809d24aa7da2f2e101a94668be35f7543dd90e",
+    "pubDate": "2026-11-12T07:48:00+01:00",
+    "starts_at": "2026-11-12T07:48:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=73A|D=2026-11-12|TK=73a verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261112-0012"
+    ],
+    "_incident_start": "2026-11-12T07:48:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -962,18 +1010,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Feuerwehreinsatz",
-    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz.",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "156f715adb25cf23079ca64d919d0b82ddae6fd1a12f508776403b4bff80f501",
-    "pubDate": "2026-11-12T06:10:00+01:00",
-    "starts_at": "2026-11-12T06:10:00+01:00",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-11-12T07:35:00+01:00",
+    "starts_at": "2026-11-12T07:35:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=U2|D=2026-11-12|TK=feuerwehreinsatz",
+    "_identity": "wl|störung|L=U1|D=2026-11-12|TK=u1 verspätungen",
     "_wl_ids": [
-      "I20261112-0006"
+      "I20261112-0010"
     ],
-    "_incident_start": "2026-11-12T06:10:00+01:00"
+    "_incident_start": "2026-11-12T07:35:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -990,22 +1038,6 @@
       "I20261112-0008"
     ],
     "_incident_start": "2026-11-12T06:37:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Verunreinigung",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "915e18ead502dc8610d1f4cabb6ce6d6bdc2826f1da93bdee9f3fb85f4d65515",
-    "pubDate": "2026-11-12T05:56:00+01:00",
-    "starts_at": "2026-11-12T05:56:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U6|D=2026-11-12|TK=u6 verunreinigung",
-    "_wl_ids": [
-      "I20261112-0005"
-    ],
-    "_incident_start": "2026-11-12T05:56:00+01:00"
   },
   {
     "source": "Wiener Linien",
