@@ -10,12 +10,20 @@ One record, under the message's state key (its GUID)::
 
     {"art": "ploetzlich", "abdruck": "…", "klasse": "bauwort", "titel": "48A: Gasrohrgebrechen",
      "modell": "gemini-3.5-flash-lite", "grund": "…", "entschieden": "2026-11-12T17:31:02+00:00",
-     "gefragt": ["2026-11-12T17:31:00+00:00"], "zuletzt": "2026-11-12"}
+     "gefragt": ["2026-11-12T17:31:02+00:00"], "zuletzt": "2026-11-12"}
 
 ``art`` is missing while no request for the message was answered.
-``gefragt`` holds the moment of every request that carried the message; the
-request count of a day is read from these moments, there is no counter of
-its own (owner 2026-11-05: "Wir brauchen keine eigene Zähltechnik.").
+``gefragt`` holds the moments of the last requests that carried the
+message; the request count of a day is read from these moments, there is
+no counter of its own (owner 2026-11-05: "Wir brauchen keine eigene
+Zähltechnik."). ``entschieden`` says which event the answer is about: a WL
+GUID carries no date, so the same key returns with the next event of that
+ticker, and an answer older than the begin the message shows then is not
+applied (``run._answer_holds``).
+
+Beside the records the file holds ``schluessel_abgelehnt``, the moment
+Google last refused the key, until a request is accepted again
+(``run.Decider.outcome``).
 """
 
 from __future__ import annotations
@@ -34,8 +42,8 @@ from ..utils.files import atomic_write, read_capped_json
 from ..utils.serialize import scrub_trojan_source_primitives
 
 __all__ = [
-    "PATH_ENV", "DEFAULT_PATH", "KINDS", "SUDDEN", "PLANNED", "UNCLEAR", "KEEP_DAYS", "store_path", "load", "save",
-    "prune", "requests_on", "render",
+    "PATH_ENV", "DEFAULT_PATH", "KINDS", "SUDDEN", "PLANNED", "UNCLEAR", "KEEP_DAYS", "REFUSED", "store_path", "read",
+    "load", "save", "prune", "requests_on", "render",
 ]
 
 LOGGER = logging.getLogger("build_feed.ki_entscheidung")
@@ -50,6 +58,7 @@ KINDS: Final = (SUDDEN, PLANNED, UNCLEAR)
 # A record leaves the file a week after its message last stood in a build.
 KEEP_DAYS: Final = 7
 VERSION: Final = 1
+REFUSED: Final = "schluessel_abgelehnt"
 
 
 def store_path() -> Path:
@@ -77,31 +86,42 @@ def _record(raw: object) -> dict[str, Any] | None:
     return record
 
 
-def load() -> dict[str, dict[str, Any]]:
-    """The stored records by key; empty when the file is missing or unreadable."""
+def read() -> tuple[dict[str, dict[str, Any]], str]:
+    """The stored records by key and the moment the key was last refused ("" when it was not).
+
+    Both are empty when the file is missing or unreadable.
+    """
     try:
         data = read_capped_json(store_path(), MAX_BYTES, label="ki_entscheidungen", logger=LOGGER)
     except Exception as exc:  # a broken path must not stop the build
         LOGGER.warning("KI-Entscheidung: Speicher nicht lesbar (%s).", type(exc).__name__)
-        return {}
+        return {}, ""
     raw = data.get("entscheidungen") if isinstance(data, dict) else None
     records: dict[str, dict[str, Any]] = {}
     for key, value in (raw.items() if isinstance(raw, dict) else ()):
         record = _record(value)
         if isinstance(key, str) and record is not None:
             records[key] = record
-    return records
+    refused = data.get(REFUSED) if isinstance(data, dict) else None
+    return records, refused if isinstance(refused, str) else ""
 
 
-def render(records: Mapping[str, Mapping[str, Any]]) -> str:
-    """The file's text for *records*: sorted keys, one field a line."""
-    document = {"version": VERSION, "entscheidungen": {key: dict(records[key]) for key in sorted(records)}}
+def load() -> dict[str, dict[str, Any]]:
+    """The stored records by key; empty when the file is missing or unreadable."""
+    return read()[0]
+
+
+def render(records: Mapping[str, Mapping[str, Any]], refused: str = "") -> str:
+    """The file's text for *records* (and a refused key's moment): sorted keys, one field a line."""
+    document: dict[str, Any] = {"version": VERSION, "entscheidungen": {key: dict(records[key]) for key in sorted(records)}}
+    if refused:
+        document[REFUSED] = refused
     return json.dumps(scrub_trojan_source_primitives(document), ensure_ascii=False, indent=1, sort_keys=True, allow_nan=False) + "\n"
 
 
-def save(records: Mapping[str, Mapping[str, Any]], before: str) -> bool:
+def save(records: Mapping[str, Mapping[str, Any]], before: str, refused: str = "") -> bool:
     """Write *records* unless their text equals *before*; whether the file was written."""
-    text = render(records)
+    text = render(records, refused)
     if text == before:
         return False
     with atomic_write(store_path(), mode="w", encoding="utf-8", permissions=0o644) as handle:

@@ -306,7 +306,9 @@ def check_translation(now: datetime) -> Check:
 SIDE_STEP_RECORDS: list[tuple[str, str, float, float | None]] = [
     # "overloaded" comes only from the build's "KI-Entscheidung" (Gemini gave a
     # new unclear message no answer, the rules decided): a note like the
-    # KI-Wächter's (owner 2026-11-12, ``src.ki_entscheidung``).
+    # KI-Wächter's (owner 2026-11-12, ``src.ki_entscheidung``). It ends with
+    # the next build that has nothing to ask, so the limit is never reached
+    # here; a chain that stays silent shows in the KI-Wächter's record.
     ("update-cycle.json", "Update-Lauf", FEED_MAX_AGE_H, KI_WAECHTER_OVERLOAD_MAX_H),
     ("update-stations.json", "Stationslauf", STATIONS_MAX_AGE_H, None),
     # Gemini overloaded: a note for 30 h after the last clean audit

@@ -10,13 +10,18 @@ the key in a header, no tools, JSON out in a fixed schema. What differs:
 * The Lite models are asked first (:data:`MODELS`), so the two Flash
   models keep their daily quota for the KI-Wächter.
 * The feed build must not wait: no new request later than
-  :data:`DEADLINE_S` after the first, and without an answer the rules of
+  :data:`DEADLINE_S` minus :data:`MIN_REQUEST_S` after the first, no model
+  is waited for longer than :data:`MAX_READ_S`, and the last request may
+  only use what is left of the deadline (measured 12.11.2026 with all four
+  models busy: 20.1 s; a connection that is slow to open can add what is
+  left once more, about 25 s in all). Without an answer the rules of
   ``feed_build.time_line._incident_since`` decide as before.
 """
 
 from __future__ import annotations
 
 import os
+import re
 from collections.abc import Sequence
 from typing import Any, Final
 
@@ -28,7 +33,7 @@ from ..utils.files import loads_finite
 from .store import KINDS
 
 __all__ = [
-    "MODEL_ENV", "MODELS", "DEADLINE_S", "MIN_REQUEST_S", "SCHEMA", "MAX_REASON_CHARS", "PROMPT", "api_key",
+    "MODEL_ENV", "MODELS", "DEADLINE_S", "MIN_REQUEST_S", "MAX_READ_S", "SCHEMA", "MAX_REASON_CHARS", "PROMPT", "api_key",
     "models", "build_prompt", "parse_answer", "ask",
 ]
 
@@ -41,7 +46,16 @@ MODELS: Final[tuple[str, ...]] = tuple(sorted(DEFAULT_MODELS, key=lambda model: 
 # worth holding the feed for.
 DEADLINE_S: Final = 20.0
 MIN_REQUEST_S: Final = 5.0
+# Probe of 12.11.2026: a busy first model answered 503 only after 16.4 s,
+# which left no time for the next one. No model gets more than this, so a
+# second one always fits into the deadline.
+MAX_READ_S: Final = 12.0
 MAX_REASON_CHARS: Final = 160
+# What opens and closes the data block of the prompt: every run of three
+# or more angle brackets in a description becomes a blank, so no text can
+# close the block from inside, also not by a marker that one removal of
+# "MELDUNGEN>>>" would only put together ("MELDUNMELDUNGEN>>>GEN>>>").
+_MARKER_RE: Final = re.compile(r"<{3,}|>{3,}")
 
 SCHEMA: Final[dict[str, Any]] = {
     "type": "object",
@@ -73,12 +87,16 @@ technische Störung, Falschparker. Auch plötzlich: Geplante Arbeiten dauern une
 angekündigt und der Betrieb kann deshalb jetzt nicht wie vorgesehen laufen. Auch plötzlich: eine Störung, \
 deren Text eine Baustelle nur nebenbei erwähnt (etwa als Grund einer Umleitung während der Störung).
 
-"geplant": eine vorab festgelegte Maßnahme. Beispiele: Bauarbeiten, Gleisbau, Ersatzverkehr oder geänderte \
-Linienführung wegen einer Baustelle, Fahrplanhinweis, Veranstaltung, verlegte Haltestelle. Kurze \
+"geplant": eine vorab festgelegte Maßnahme oder ein angekündigtes Ereignis. Beispiele: Bauarbeiten, \
+Gleisbau, Ersatzverkehr oder geänderte Linienführung wegen einer Baustelle, Fahrplanhinweis, verlegte oder \
+aufgelassene Haltestelle, Demonstration, Kundgebung, Veranstaltung, Staatsbesuch, Übung. Kurze \
 Anzeigetexte ohne Ursache, die nur sagen, wo Züge oder Busse halten oder fahren, gehören zu einer \
-geplanten Maßnahme, wenn eine andere Meldung derselben Linie laufende Arbeiten nennt oder der Text selbst \
-einen Ersatzverkehr nennt. Sie gehören zu einem plötzlichen Ereignis, wenn zur selben Zeit eine Störung \
-derselben oder der im Text genannten Linie läuft.
+geplanten Maßnahme, wenn eine andere Meldung derselben Linie laufende Arbeiten oder eines dieser \
+angekündigten Ereignisse nennt oder der Text selbst einen Ersatzverkehr nennt. Sie gehören zu einem \
+plötzlichen Ereignis, wenn eine andere Meldung derselben oder der im Text genannten Linie zur selben Zeit \
+eine plötzliche Ursache nennt (etwa Unfall, Einsatz, schadhaftes Fahrzeug, technische Störung). Dass eine \
+andere Meldung die Kategorie "Störung" trägt, sagt das allein nicht: Die Verkehrsbetriebe führen auch \
+geplante Maßnahmen so.
 
 "unklar": Der Text und die anderen Meldungen derselben Linie reichen für keine der beiden Antworten. Rate \
 nicht. Eine Regel entscheidet dann wie bisher.
@@ -114,10 +132,10 @@ def models() -> tuple[str, ...]:
 def build_prompt(descriptions: Sequence[str]) -> str:
     """The prompt for the numbered *descriptions* (``candidates.describe``).
 
-    The data markers cannot be closed from inside: a description that
-    carries one loses it.
+    The data block cannot be closed from inside: in a description every
+    run of three or more ``<`` or ``>`` becomes a blank.
     """
-    body = "\n\n".join(text.replace("MELDUNGEN>>>", "").replace("<<<MELDUNGEN", "") for text in descriptions)
+    body = "\n\n".join(_MARKER_RE.sub(" ", text) for text in descriptions)
     return PROMPT.replace("{MELDUNGEN}", body)
 
 
@@ -150,13 +168,15 @@ def parse_answer(text: str) -> dict[int, tuple[str, str]] | None:
     return {number: value for number, value in decided.items() if number not in torn}
 
 
+# The patience of this call: the least a request needs, the most one model gets.
+_PATIENCE: Final = (MIN_REQUEST_S, MAX_READ_S)
 _CALL: Final[JsonCall[dict[int, tuple[str, str]]]] = JsonCall(
-    label="KI-Entscheidung",
-    user_agent="wien-oepnv-ki-entscheidung",
-    schema=SCHEMA,
-    parse=parse_answer,
-    missing="enthält keine Liste unter „entscheidungen“",
-    min_request_s=MIN_REQUEST_S,
+    "KI-Entscheidung",
+    "wien-oepnv-ki-entscheidung",
+    SCHEMA,
+    parse_answer,
+    "enthält keine Liste unter „entscheidungen“",
+    *_PATIENCE,
 )
 
 

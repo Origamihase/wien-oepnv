@@ -10,11 +10,14 @@ the classes or the connector would show its effect only days later. This
 script is the dry run: it reads the unclear messages measured in the
 replay of 20.09. to 12.11.2026 (``data/samples/ki_entscheidung_faelle.json``,
 each with the other messages of its lines at that moment), asks exactly
-like the build (the same prompt, the same chain, eight messages a
+like the build (the same prompt, the same chain, four messages a
 request) and prints what the rules show today, what a reader of the
 source expects and what Gemini answers.
 
-    python scripts/ki_entscheidung_probe.py
+    python scripts/ki_entscheidung_probe.py [--passes 2 --pause 30]
+
+A request no model answered (Gemini busy) is put again in the next pass,
+as the next build would put it.
 
 It stores nothing: no answer reaches ``data/ki_entscheidungen.json`` and no
 feed changes. The report goes to stdout and, in a workflow, to the step
@@ -116,8 +119,20 @@ def _rule_line(candidate: Candidate) -> str:
     return f"[Seit {begin.astimezone(_VIENNA_TZ):%H:%M}]" if begin is not None else "ohne Beginn"
 
 
-def run_probe(path: Path = DEFAULT_CASES, *, ask: Ask | None = None, clock: Callable[[], float] = time.monotonic) -> str:
-    """The probe's report as Markdown; *ask* defaults to the real request."""
+def run_probe(
+    path: Path = DEFAULT_CASES,
+    *,
+    ask: Ask | None = None,
+    clock: Callable[[], float] = time.monotonic,
+    passes: int = 1,
+    pause_s: float = 0.0,
+    sleep: Callable[[float], None] = time.sleep,
+) -> str:
+    """The probe's report as Markdown; *ask* defaults to the real request.
+
+    A request that no model answered is put again in the next of *passes*
+    passes, *pause_s* seconds later, as the next build would put it.
+    """
     cases = load_cases(path)
     lines = [
         "## KI-Entscheidung – Probelauf",
@@ -132,22 +147,34 @@ def run_probe(path: Path = DEFAULT_CASES, *, ask: Ask | None = None, clock: Call
     if asker is None:
         return "\n".join([*lines, f"- Ergebnis: nicht gefragt ({GEMINI_KEY_ENV} ist leer)", ""])
     answers: dict[int, tuple[str, str, str]] = {}
-    for first in range(0, len(cases), MAX_PER_REQUEST):
-        batch = cases[first:first + MAX_PER_REQUEST]
-        started = clock()
-        try:
-            answer = asker([describe(number, candidate, items) for number, (_, candidate, items) in enumerate(batch, 1)])
-        except Exception as exc:  # a probe reports, it does not fail
-            LOGGER.warning("Probelauf: Anfrage gescheitert (%s).", type(exc).__name__)
-            answer = ChainAnswer(None, "", 0, False)
-        model = escape_markdown(free_text(answer.model)[:60]) or "keine Antwort"
-        lines.append(
-            f"- Anfrage für Meldung {first + 1} bis {first + len(batch)}: {model}, "
-            f"{clock() - started:.1f} s, {answer.requests} Anfrage(n) entlang der Kette"
-        )
-        for number, (kind, reason) in (answer.value or {}).items():
-            if 1 <= number <= len(batch) and kind in KINDS:
+    waiting = list(range(0, len(cases), MAX_PER_REQUEST))
+    for turn in range(1, max(1, passes) + 1):
+        if turn > 1 and waiting:
+            sleep(pause_s)
+        unanswered: list[int] = []
+        for first in waiting:
+            batch = cases[first:first + MAX_PER_REQUEST]
+            started = clock()
+            try:
+                answer = asker([describe(number, candidate, items) for number, (_, candidate, items) in enumerate(batch, 1)])
+            except Exception as exc:  # a probe reports, it does not fail
+                LOGGER.warning("Probelauf: Anfrage gescheitert (%s).", type(exc).__name__)
+                answer = ChainAnswer(None, "", 0, False)
+            model = escape_markdown(free_text(answer.model)[:60]) or "keine Antwort"
+            lines.append(
+                f"- Anfrage für Meldung {first + 1} bis {first + len(batch)}{f' ({turn}. Durchgang)' if turn > 1 else ''}: "
+                f"{model}, {clock() - started:.1f} s, {answer.requests} Anfrage(n) entlang der Kette"
+            )
+            usable = {
+                number: (kind, reason)
+                for number, (kind, reason) in (answer.value or {}).items()
+                if 1 <= number <= len(batch) and kind in KINDS
+            }
+            for number, (kind, reason) in usable.items():
                 answers[first + number] = (kind, reason, answer.model)
+            if not usable:
+                unanswered.append(first)
+        waiting = unanswered
     agree = sum(
         1 for number, (case, _, _) in enumerate(cases, 1)
         if case.get("erwartet") and number in answers and answers[number][0] == case["erwartet"]
@@ -195,9 +222,11 @@ def main(argv: Sequence[str] | None = None, *, ask: Ask | None = None) -> int:
         default=DEFAULT_CASES,
         help="Fallsammlung (Standard: data/samples/ki_entscheidung_faelle.json)",
     )
+    parser.add_argument("--passes", type=int, default=1, help="Durchgänge: ein unbeantworteter Block wird erneut gefragt (Standard: 1)")
+    parser.add_argument("--pause", type=float, default=0.0, help="Sekunden zwischen zwei Durchgängen (Standard: 0)")
     args = parser.parse_args(argv)
     setup_script_logging()
-    report = run_probe(args.cases, ask=ask)
+    report = run_probe(args.cases, ask=ask, passes=args.passes, pause_s=args.pause)
     print(report)
     _write_summary(report)
     return 0

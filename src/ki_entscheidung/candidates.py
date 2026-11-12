@@ -44,7 +44,7 @@ from datetime import date, datetime
 from typing import Any, Final, cast
 
 from ..feed.merge_items import _is_wl_disruption
-from ..feed_build.base import _OEBB_SOURCE, _VIENNA_TZ, _parse_datetime, _to_utc
+from ..feed_build.base import _OEBB_SOURCE, _VIENNA_TZ, _parse_datetime, _to_utc, log
 from ..feed_build.state import _lookup_state
 from ..feed_build.time_line import _first_published, _incident_since, _reports_past_disruption
 from ..feed_build.wl_tickers import _incident_cause
@@ -117,12 +117,17 @@ def _oebb_same_day(item: FeedItem, start: datetime, entry: Mapping[str, Any] | N
     )
 
 
-def unclear_class(item: FeedItem, entry: Mapping[str, Any] | None, now_utc: datetime) -> str | None:
+def unclear_class(
+    item: FeedItem, entry: Mapping[str, Any] | None, now_utc: datetime, known: str | None = None,
+) -> str | None:
     """The class of *item* when the rules leave it unclear, else ``None`` (module docstring).
 
     Only a disruption that has begun and is not reported as over can show
     "[Seit hh:mm]" or stand in the first tier; everything else is clear for
-    the feed whatever its words say.
+    the feed whatever its words say. *known* is the class the store holds
+    for the message: an ÖBB message that was asked about as ``oebb-tag``
+    stays one when ÖBB later moves its end to the next day ("bis
+    voraussichtlich morgen 04:00 Uhr"), so its answer keeps applying.
     """
     start = _parse_datetime(item.get("starts_at"))
     if item.get("category") != "Störung" or not isinstance(start, datetime) or _to_utc(start) > now_utc:
@@ -135,9 +140,9 @@ def unclear_class(item: FeedItem, entry: Mapping[str, Any] | None, now_utc: date
         if not planned:
             return None if _incident_cause(item) else CLASS_NO_CAUSE
         return CLASS_WORKS_WORD if _incident_cause(item) and _only_works_words(text) else None
-    if item.get("source") == _OEBB_SOURCE and _only_works_words(text) and _oebb_same_day(item, start, entry):
-        return CLASS_OEBB_DAY
-    return None
+    if item.get("source") != _OEBB_SOURCE or not _only_works_words(text):
+        return None
+    return CLASS_OEBB_DAY if known == CLASS_OEBB_DAY or _oebb_same_day(item, start, entry) else None
 
 
 def _begin(candidate: Candidate, kind: str | None) -> datetime | None:
@@ -164,17 +169,32 @@ def rule_begin(candidate: Candidate) -> datetime | None:
 def fingerprint(item: FeedItem) -> str:
     """A print of what *item* says: source, title and text without WL's changing forecast."""
     said = "\n".join((str(item.get("source") or ""), str(item.get("title") or ""), _FORECAST_RE.sub("", _plain(item))))
-    return hashlib.sha256(said.casefold().encode("utf-8")).hexdigest()[:16]
+    # A lone surrogate reaches a title through an escape in upstream JSON (``feed_build.state``).
+    return hashlib.sha256(said.casefold().encode("utf-8", "surrogatepass")).hexdigest()[:16]
 
 
-def candidates_of(items: Sequence[FeedItem], state: dict[str, dict[str, Any]], now_utc: datetime) -> list[Candidate]:
-    """The unclear disruptions among *items*, in their order, each under its state key."""
+def candidates_of(
+    items: Sequence[FeedItem],
+    state: dict[str, dict[str, Any]],
+    now_utc: datetime,
+    records: Mapping[str, Mapping[str, Any]] | None = None,
+) -> list[Candidate]:
+    """The unclear disruptions among *items*, in their order, each under its state key.
+
+    *records* are the stored answers (their class is the *known* of
+    :func:`unclear_class`). A message that cannot be read is skipped
+    alone, so the others keep their answers.
+    """
     found: list[Candidate] = []
     for item in items:
-        key, entry = _lookup_state(item, state)
-        kind = unclear_class(item, entry, now_utc)
-        if kind is not None and key:
-            found.append(Candidate(item, key, kind, fingerprint(item), entry))
+        try:
+            key, entry = _lookup_state(item, state)
+            record = records.get(key) if records is not None and key else None
+            kind = unclear_class(item, entry, now_utc, str(record.get("klasse") or "") if record else None)
+            if kind is not None and key:
+                found.append(Candidate(item, key, kind, fingerprint(item), entry))
+        except Exception as exc:
+            log.warning("KI-Entscheidung: eine Meldung übersprungen (%s).", type(exc).__name__)
     return found
 
 

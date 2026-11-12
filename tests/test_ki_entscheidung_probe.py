@@ -104,7 +104,7 @@ def test_the_report_shows_rules_expectation_and_answer_and_stores_nothing(
         return _as_expected(descriptions, offset)
 
     report = probe.run_probe(CASES, ask=fake, clock=lambda: 0.0)
-    assert sizes == [run.MAX_PER_REQUEST, run.MAX_PER_REQUEST, 4]
+    assert sizes == [run.MAX_PER_REQUEST] * 5 == [4] * 5
     assert "- Unklare Meldungen in der Fallsammlung: 20" in report and "- Antworten: 20 von 20" in report
     assert "- Wie erwartet: 20 von 20 Meldungen mit einer Erwartung" in report
     assert "| 3 | 26: Züge halten in Tokiostraße | ohne-ursache | [Seit 08:48] | geplant | geplant | Grund 3 |" in report
@@ -134,10 +134,31 @@ def test_a_failing_or_silent_gemini_is_a_result_not_a_failure(tmp_path: Path, mo
 
     assert probe.main([], ask=fake) == 0
     text = summary.read_text(encoding="utf-8")
-    assert "- Anfrage für Meldung 1 bis 8: keine Antwort" in text and "- Antworten: 2 von 20" in text
+    assert "- Anfrage für Meldung 1 bis 4: keine Antwort" in text and "- Antworten: 4 von 20" in text
     title = "71E: Ersatzverkehr Busse halten Simmeringer Hauptstraße ggü. 197"
     assert f"| 1 | {title} | ohne-ursache | ohne Beginn | geplant | keine Antwort |  |" in text
     assert "| 9 | 6: Rettungseinsatz züge halten Favoritenstraße 113 | ohne-ursache | [Seit 07:22] | ploetzlich | geplant |" in text
+
+
+def test_a_block_no_model_answered_is_put_again_in_the_next_pass(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.chdir(tmp_path)
+    asked: list[str] = []
+    pauses: list[float] = []
+
+    def fake(descriptions: Sequence[str]) -> Answer:
+        asked.append(descriptions[0].splitlines()[2])
+        if len(asked) in (2, 3):  # busy for the second and the third block of the first pass
+            return ChainAnswer(None, "", 4, False)
+        return ChainAnswer({number: ("unklar", "") for number in range(1, len(descriptions) + 1)}, "gemini-3.8-flash", 1, False)
+
+    report = probe.run_probe(CASES, ask=fake, clock=lambda: 0.0, passes=2, pause_s=30.0, sleep=pauses.append)
+    assert len(asked) == 7 and asked[5:] == asked[1:3] and pauses == [30.0]
+    assert "- Anfrage für Meldung 5 bis 8 (2. Durchgang): gemini-3.8-flash" in report and "- Antworten: 20 von 20" in report
+    # Everything answered in the first pass: no pause, no second pass.
+    asked.clear()
+    pauses.clear()
+    probe.run_probe(CASES, ask=lambda d: ChainAnswer({1: ("unklar", "")}, "m", 1, False), passes=3, pause_s=30.0, sleep=pauses.append)
+    assert pauses == []
 
 
 def test_a_missing_or_empty_collection_is_reported(tmp_path: Path) -> None:
@@ -175,7 +196,7 @@ def test_only_the_asking_step_of_the_probe_has_the_key() -> None:
     steps = yaml.safe_load(text)["jobs"]["probe"]["steps"]
     assert text.count("secrets.GEMINI_API_KEY") == 1 and text.count("secrets.") == 1
     (holder,) = [step for step in steps if "GEMINI_API_KEY" in (step.get("env") or {})]
-    assert holder["run"] == "python scripts/ki_entscheidung_probe.py"
+    assert holder["run"] == "python scripts/ki_entscheidung_probe.py --passes 2 --pause 30"
     assert holder["env"] == {"GEMINI_API_KEY": "${{ secrets.GEMINI_API_KEY }}"}
-    # Three requests of at most DEADLINE_S each fit the step's limit many times over.
-    assert 3 * (ask.DEADLINE_S + 10) < holder["timeout-minutes"] * 60
+    # Five blocks of at most DEADLINE_S each, all of them twice, fit the step's limit.
+    assert 2 * 5 * (ask.DEADLINE_S + 5) + 30 < holder["timeout-minutes"] * 60

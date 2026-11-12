@@ -11,7 +11,7 @@ name: KI-Entscheidung-Probe
 #
 # This workflow shows it at once: it puts the unclear messages measured in
 # the replay of 20.09. to 12.11.2026 (data/samples/ki_entscheidung_faelle.json)
-# to Gemini exactly like the build, eight messages a request along the same
+# to Gemini exactly like the build, four messages a request along the same
 # chain of models, and writes a table into the run's summary: what the
 # rules show today, what a reader of the source expects, Gemini's answer
 # and its reason. It stores nothing and publishes nothing.
@@ -48,8 +48,9 @@ concurrency:
 jobs:
   probe:
     runs-on: ubuntu-latest
-    # Three requests of at most 20 s each (DEADLINE_S in
-    # src/ki_entscheidung/ask.py); the rest is checkout and installation.
+    # Five blocks of about 20 s each (DEADLINE_S in
+    # src/ki_entscheidung/ask.py), a block no model answered once more after
+    # half a minute; the rest is checkout and installation.
     timeout-minutes: 10
     permissions:
       contents: read
@@ -89,4 +90,4 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         shell: bash
-        run: python scripts/ki_entscheidung_probe.py
+        run: python scripts/ki_entscheidung_probe.py --passes 2 --pause 30

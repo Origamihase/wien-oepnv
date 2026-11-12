@@ -29,6 +29,8 @@ from src.ki_entscheidung import store
 VIENNA = ZoneInfo("Europe/Vienna")
 NBSP = "\u00a0"
 NOW = datetime(2026, 9, 21, 9, 1, tzinfo=VIENNA)
+# The moment of a stored answer: at NOW, after the begin of every message below.
+DECIDED = "2026-09-21T07:01:00+00:00"
 GAS_TEXT = (
     "Betrieb nur zwischen Parlament, U Volkstheater und Joachimsthalerplatz. Zwischen Joachimsthalerplatz und "
     "Klinik Penzing wurde ein Pendelbusverkehr eingerichtet. Aufgrund der Bauarbeiten werden die Busse über die "
@@ -285,9 +287,9 @@ def test_without_stored_answers_the_chain_is_the_rules() -> None:
 
 def test_the_chain_orders_by_the_stored_answers(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     path = _write_store(tmp_path, monkeypatch, {
-        "guid-26: Züge halten in Tokiostraße": {"art": "geplant", "abdruck": "x", "gefragt": []},
-        "guid-48A: Gasrohrgebrechen": {"art": "ploetzlich", "abdruck": "x", "gefragt": []},
-        "rescue": {"art": "geplant", "abdruck": "x", "gefragt": []},
+        "guid-26: Züge halten in Tokiostraße": {"art": "geplant", "abdruck": "x", "gefragt": [], "entschieden": DECIDED},
+        "guid-48A: Gasrohrgebrechen": {"art": "ploetzlich", "abdruck": "x", "gefragt": [], "entschieden": DECIDED},
+        "rescue": {"art": "geplant", "abdruck": "x", "gefragt": [], "entschieden": DECIDED},
     })
     before = path.read_text(encoding="utf-8")
     state: dict[str, Any] = {}
@@ -305,13 +307,63 @@ def test_the_chain_orders_by_the_stored_answers(tmp_path: Path, monkeypatch: pyt
 
 def test_unclear_and_unknown_answers_leave_the_item_to_the_rules(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     _write_store(tmp_path, monkeypatch, {
-        "guid-26: Züge halten in Tokiostraße": {"art": "unklar", "abdruck": "x", "gefragt": []},
-        "guid-48A: Gasrohrgebrechen": {"art": "sofort löschen", "abdruck": "x", "gefragt": []},
+        "guid-26: Züge halten in Tokiostraße": {"art": "unklar", "abdruck": "x", "gefragt": [], "entschieden": DECIDED},
+        "guid-48A: Gasrohrgebrechen": {"art": "sofort löschen", "abdruck": "x", "gefragt": [], "entschieden": DECIDED},
     })
     items = [_tokio(), _gas()]
     apply_stored(items, {}, NOW)
     assert all("_ki_art" not in item for item in items)
-    assert store.load()["guid-48A: Gasrohrgebrechen"] == {"abdruck": "x", "gefragt": []}
+    assert store.load()["guid-48A: Gasrohrgebrechen"] == {"abdruck": "x", "gefragt": [], "entschieden": DECIDED}
+
+
+def test_an_answer_holds_for_the_event_it_was_given_for(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """A WL GUID carries no date: the same key and text return with the next event of the ticker."""
+    _write_store(tmp_path, monkeypatch, {
+        "guid-26: Züge halten in Tokiostraße": {"art": "ploetzlich", "abdruck": "x", "gefragt": [], "entschieden": DECIDED},
+    })
+    same = _tokio()
+    apply_stored([same], {}, NOW)
+    assert same.get("_ki_art") == "ploetzlich"
+    # Two days later WL enters the measure again at 05:00: the answer of the 21st says nothing about it.
+    again = _tokio(start=datetime(2026, 9, 23, 5, 0, 14, tzinfo=VIENNA))
+    apply_stored([again], {}, datetime(2026, 9, 23, 5, 6, tzinfo=VIENNA))
+    assert "_ki_art" not in again and bf._incident_since(again, again.get("starts_at")) is None
+    # A record without the moment of its answer (a hand-edited file) decides nothing.
+    _write_store(tmp_path, monkeypatch, {"guid-26: Züge halten in Tokiostraße": {"art": "geplant", "gefragt": []}})
+    undated = _tokio()
+    apply_stored([undated], {}, NOW)
+    assert "_ki_art" not in undated
+
+
+def test_an_oebb_answer_keeps_applying_when_the_end_moves_to_the_next_day(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    morning = datetime(2026, 9, 21, 6, 1, tzinfo=VIENNA)
+    moved = _overrun()
+    moved["ends_at"] = datetime(2026, 9, 22, 4, 0, tzinfo=VIENNA)
+    assert _class(moved, morning) is None
+    key = cand.candidates_of([_overrun()], {}, morning.astimezone(ZoneInfo("UTC")))[0].key
+    _write_store(tmp_path, monkeypatch, {key: {
+        "art": "ploetzlich", "klasse": cand.CLASS_OEBB_DAY, "abdruck": "x", "gefragt": [],
+        "entschieden": morning.astimezone(ZoneInfo("UTC")).isoformat(),
+    }})
+    apply_stored([moved], {}, morning + timedelta(hours=3))
+    assert moved.get("_ki_art") == "ploetzlich"
+    # The class alone is no answer: a text that names an event stays with the rules.
+    event = _overrun()
+    event["description"] = str(event["description"]) + " Grund: Veranstaltung."
+    apply_stored([event], {}, morning)
+    assert "_ki_art" not in event
+
+
+def test_one_unreadable_message_does_not_take_the_others_answers() -> None:
+    odd = _tokio()
+    odd["title"] = "26: Züge halten in Tokiostraße \ud800"
+    assert len(cand.fingerprint(odd)) == 16
+    broken = _tokio()
+    broken["starts_at"] = cast(Any, object())
+    found = cand.candidates_of([broken, _tokio(), _gas()], {}, NOW.astimezone(ZoneInfo("UTC")))
+    assert [candidate.kind for candidate in found] == [cand.CLASS_NO_CAUSE, cand.CLASS_WORKS_WORD]
 
 
 def test_a_broken_store_never_stops_the_chain(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:

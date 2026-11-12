@@ -127,8 +127,10 @@ class JsonCall(Generic[T]):
     ``parse`` turns the model's JSON text into the caller's value (``None``:
     not usable, ``missing`` says why in the log line). ``min_request_s`` is
     the least time a request must be able to wait for its answer to be sent
-    at all, ``lite_thinking`` the thinking level asked of a Lite model
-    (``None``: the model's own default).
+    at all, ``max_read_s`` the longest one model is waited for (a caller
+    with a short deadline keeps room for the next model that way),
+    ``lite_thinking`` the thinking level asked of a Lite model (``None``:
+    the model's own default).
     """
 
     label: str
@@ -137,6 +139,7 @@ class JsonCall(Generic[T]):
     parse: Callable[[str], T | None]
     missing: str
     min_request_s: float = MIN_REQUEST_S
+    max_read_s: float = MAX_READ_TIMEOUT_S
     lite_thinking: str | None = LITE_THINKING_LEVEL
 
 
@@ -358,7 +361,7 @@ def _ask_one(
             method="POST",
             data=body,
             headers={"Content-Type": "application/json", "x-goog-api-key": key},
-            timeout=(CONNECT_TIMEOUT_S, min(MAX_READ_TIMEOUT_S, remaining)),
+            timeout=(min(CONNECT_TIMEOUT_S, remaining), min(call.max_read_s, remaining)),
             max_bytes=MAX_ANSWER_BYTES,
             allowed_content_types=("application/json",),
             raise_for_status=False,
@@ -451,7 +454,8 @@ def ask_chain(
     without a rejected key), a dropped connection or a timeout hands over
     to the next one, as long as at least ``call.min_request_s`` of
     *deadline_s* are left (measured with *clock* from the first request).
-    Every request waits at most ``min(90, seconds left)`` for its answer.
+    Every request waits at most ``min(call.max_read_s, seconds left)`` for
+    its answer and as long for its connection (ten seconds at most).
     An answer counts only with ``finishReason`` ``STOP`` and a value from
     ``call.parse``.
 
