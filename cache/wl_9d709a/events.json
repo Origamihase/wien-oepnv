@@ -674,22 +674,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18/62: Rettungseinsatz",
-    "description": "Linie 18: Kein Betrieb zwischen Quartier Belvedere S und Matzleinsdorfer Platz S. Weiterfahrt ab Matzleinsdorfer Platz S bis Reumannplatz U. Die Linie 62 fährt derzeit nur zwischen Wolkersbergenstraße und Matzleinsdorfer Platz S. Die Züge werden ab Matzleinsdorfer Platz zum Reumannplatz umgeleitet. Voraussichtliche Dauer: 21:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Blechturmgasse.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "6098fe3ab30cd96fb580c5bc805331f1527b94e4e6ab0727f17d5c184d5e3c8a",
-    "pubDate": "2026-11-12T20:48:00+01:00",
-    "starts_at": "2026-11-12T20:48:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=18,62|D=2026-11-12|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261112-0058"
-    ],
-    "_incident_start": "2026-11-12T20:48:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -702,18 +686,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "19A: Verkehrsunfall",
-    "description": "Linie 19A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "18: Rettungseinsatz Züge halten bei Li. 6 Richtung Burggasse, Stadthalle",
+    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "66dbb61a7af65c04164612865bcb1f51f4aa63087e519318f828426ee478e520",
-    "pubDate": "2026-11-12T19:57:00+01:00",
-    "starts_at": "2026-11-12T19:57:00+01:00",
+    "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
+    "pubDate": "2026-11-12T20:48:00+01:00",
+    "starts_at": "2026-11-12T20:56:53+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=19A|D=2026-11-12|TK=19a verkehrsunfall",
+    "_identity": "wl|störung|L=18|D=2026-11-12|TK=rettungseinsatz",
     "_wl_ids": [
-      "I20261112-0057"
+      "I20261112-0058"
     ],
-    "_incident_start": "2026-11-12T19:57:00+01:00"
+    "_incident_start": "2026-11-12T20:48:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -958,6 +942,35 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "59A: Schadhaftes Fahrzeug",
+    "description": "Linie 59A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "67e2c4ff9a0715b42be38d1994c52ec3de3dfbd83b63ba04f9cd86b9086f27fd",
+    "pubDate": "2026-11-12T21:01:00+01:00",
+    "starts_at": "2026-11-12T21:19:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=59A|D=2026-11-12|TK=59a schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261112-0059",
+      "I20261112-0060"
+    ],
+    "_incident_start": "2026-11-12T21:01:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "59A: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "3999a92dd3ff190c2a27adfde9a859ecad25797611e18dbc997023e882885145",
+    "pubDate": "2026-11-12T21:02:56+01:00",
+    "starts_at": "2026-11-12T21:02:56+01:00",
+    "ends_at": "2026-11-12T22:24:00+01:00",
+    "_identity": "wl|störung|L=59A|D=2026-11-12|TK=fahrtbehinderung schadhafter zug"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -970,18 +983,42 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60: Verkehrsunfall",
-    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "62: Schadhaftes Fahrzeug",
+    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "f1fe5d52a5a574694cd18960683874af6f978ac62924632bfae77052d94b803d",
-    "pubDate": "2026-11-12T19:18:00+01:00",
-    "starts_at": "2026-11-12T19:18:00+01:00",
+    "guid": "609182136527b3c7baff4b9b43ba2d79979590761dcf61a917f5784db4aba3e6",
+    "pubDate": "2026-11-12T21:19:00+01:00",
+    "starts_at": "2026-11-12T21:19:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=60|D=2026-11-12|TK=60 verkehrsunfall",
+    "_identity": "wl|störung|L=62|D=2026-11-12|TK=62 schadhaftes fahrzeug",
     "_wl_ids": [
-      "I20261112-0056"
+      "I20261112-0060"
     ],
-    "_incident_start": "2026-11-12T19:18:00+01:00"
+    "_incident_start": "2026-11-12T21:19:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "11dae11dafaf0878f07d1e1c010007790105e67c155ad06ba2cd6c87388c9e93",
+    "pubDate": "2026-11-12T21:01:25+01:00",
+    "starts_at": "2026-11-12T21:01:25+01:00",
+    "ends_at": "2026-11-12T22:20:00+01:00",
+    "_identity": "wl|störung|L=62|D=2026-11-12|TK=fahrtbehinderung schadhafter zug"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Rettungseinsatz Züge halten bei Li. 6 Richtung Burggasse, Stadthalle",
+    "description": "Rettungseinsatz\nZüge halten bei Li. 6 Richtung Burggasse, Stadthalle",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d",
+    "pubDate": "2026-11-12T20:59:23+01:00",
+    "starts_at": "2026-11-12T21:00:23+01:00",
+    "ends_at": "2026-11-12T21:59:00+01:00",
+    "_identity": "wl|störung|L=62|D=2026-11-12|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -1018,6 +1055,22 @@
     "starts_at": "2026-11-12T00:00:01+01:00",
     "ends_at": "2026-11-12T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-12|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "LB: Schadhaftes Fahrzeug",
+    "description": "Linie Badner Bahn: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "774c369abf55d4b98bd5ebda52a86480f3fa9a01b09e15b6f14b1415b1970194",
+    "pubDate": "2026-11-12T21:19:00+01:00",
+    "starts_at": "2026-11-12T21:19:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=LB|D=2026-11-12|TK=badner bahn schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261112-0060"
+    ],
+    "_incident_start": "2026-11-12T21:19:00+01:00"
   },
   {
     "source": "Wiener Linien",

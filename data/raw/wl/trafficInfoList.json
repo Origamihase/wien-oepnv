@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261112-0056-F01, I20260925-0011, I20261112-0058, I20260909-0007, I20261112-0057-F01, I20261020-0029"
+    "trafficInfoNameList": "I20261112-0058-F01, I20260925-0011, I20260909-0007, I20261020-0029, I20261112-0059-F03, I20261112-0060-F01, I20261112-0060-F02, I20261112-0060-F03, I20261112-0060"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R2558-125, R3886-480, R293-474, R2379-627, R2373-126, R2380-627, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R401-101, R1974-466, R1199-205, R500-101, R3170-419, R293-118, R834-118, R835-118, R304-118, R832-118, R833-118, R303-118, R2619-118, R831-118, R400-118, R848-118, R849-118, R847-118, R339-118, R851-118, R303-162, R833-162, R832-162, R831-162, R400-162, R848-162, R339-162, R849-162, R847-162, R851-162, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1883-101, R1884-101, R3886-480, R318-437, R293-474, R2558-125, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R2359-125, R2378-627, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2343-626, R2343-125, R2373-126, R2379-627, R2380-627, R2345-127, R401-101, R1974-466, R1199-205, R500-101, R3170-419, R304-118, R293-118, R835-118, R834-118, R832-118, R833-118, R303-118, R2619-118, R831-118, R400-118, R847-118, R849-118, R848-118, R339-118, R851-118, R831-162, R832-162, R833-162, R303-162, R400-162, R847-162, R339-162, R849-162, R848-162, R851-162, R477-162, R1720-162, R1724-162, R1723-162, R1694-459, R1693-459, R1683-459, R1728-162, R1616-162, R1698-459, R1696-459, R477-399, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,118 +171,25 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "60": "ptTram"
-     }
-    },
-    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "60: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Speisinger Straße 213",
-    "name": "I20261112-0056-F01",
-    "owner": "WL",
-    "parentName": "I20261112-0056",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 160,
-      "lineName": "60",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T19:35:00.000+0100",
-     "lastUpdate": "2026-11-12T19:35:00.000+0100",
-     "resume": "2026-11-12T19:35:00.000+0100",
-     "start": "2026-11-12T19:18:00.000+0100"
-    },
-    "title": "60: Verkehrsunfall"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "19A": "ptBusCity"
-     }
-    },
-    "description": "Linie 19A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 19A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 19A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 19A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "19A: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Max-Fleischer-Gasse",
-    "name": "I20261112-0057-F01",
-    "owner": "WL",
-    "parentName": "I20261112-0057",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "19A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 419,
-      "lineName": "19A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T20:50:00.000+0100",
-     "lastUpdate": "2026-11-12T20:50:00.000+0100",
-     "resume": "2026-11-12T20:50:00.000+0100",
-     "start": "2026-11-12T19:57:00.000+0100"
-    },
-    "title": "19A: Verkehrsunfall"
-   },
-   {
     "alertCause": "emergency medical services",
     "alertCauseId": 14,
     "attributes": {
      "relatedLineTypes": {
-      "18": "ptTram",
-      "62": "ptTram"
+      "18": "ptTram"
      }
     },
-    "description": "Linie 18: Kein Betrieb zwischen Quartier Belvedere S und Matzleinsdorfer Platz S. Weiterfahrt ab Matzleinsdorfer Platz S bis Reumannplatz U. Die Linie 62 fährt derzeit nur zwischen Wolkersbergenstraße und Matzleinsdorfer Platz S. Die Züge werden ab Matzleinsdorfer Platz zum Reumannplatz umgeleitet. Voraussichtliche Dauer: 21:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Blechturmgasse.",
-    "descriptionHTML": "<p>Linie 18:<br>Kein Betrieb zwischen Quartier Belvedere S und Matzleinsdorfer Platz S. <br>Weiterfahrt ab Matzleinsdorfer Platz S bis Reumannplatz U.<br>Die Linie 62 fährt derzeit nur zwischen Wolkersbergenstraße und Matzleinsdorfer Platz S.</p><p>Die Züge werden ab Matzleinsdorfer Platz zum Reumannplatz umgeleitet.</p><p>Voraussichtliche Dauer: 21:15 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Blechturmgasse.</p>",
+    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 18: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 18:<br>Kein Betrieb zwischen Quartier Belvedere S und Matzleinsdorfer Platz S. <br>Weiterfahrt ab Matzleinsdorfer Platz S bis Reumannplatz U.<br>Die Linie 62 fährt derzeit nur zwischen Wolkersbergenstraße und Matzleinsdorfer Platz S.</p><p>Die Züge werden ab Matzleinsdorfer Platz zum Reumannplatz umgeleitet.</p><p>Voraussichtliche Dauer: 21:15 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Blechturmgasse.</p>",
-       "descriptionPlain": "Linie 18: Kein Betrieb zwischen Quartier Belvedere S und Matzleinsdorfer Platz S. Weiterfahrt ab Matzleinsdorfer Platz S bis Reumannplatz U. Die Linie 62 fährt derzeit nur zwischen Wolkersbergenstraße und Matzleinsdorfer Platz S. Die Züge werden ab Matzleinsdorfer Platz zum Reumannplatz umgeleitet. Voraussichtliche Dauer: 21:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Blechturmgasse.",
-       "title": "18, 62: Rettungseinsatz"
+       "descriptionHtml": "<p>Linie 18: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "18: Rettungseinsatz"
       }
      }
     ],
-    "name": "I20261112-0058",
+    "name": "I20261112-0058-F01",
     "owner": "WL",
     "parentName": "I20261112-0058",
     "priority": "1",
@@ -290,18 +197,12 @@
     "reasonName": "Rettungseinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "18",
-     "62"
+     "18"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 118,
       "lineName": "18",
-      "vehicleType": "ptTram"
-     },
-     {
-      "lineId": 162,
-      "lineName": "62",
       "vehicleType": "ptTram"
      }
     ],
@@ -310,11 +211,259 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-12T20:50:00.000+0100",
-     "lastUpdate": "2026-11-12T20:58:00.000+0100",
+     "created": "2026-11-12T21:08:00.000+0100",
+     "lastUpdate": "2026-11-12T21:08:00.000+0100",
+     "resume": "2026-11-12T21:08:00.000+0100",
      "start": "2026-11-12T20:48:00.000+0100"
     },
-    "title": "18, 62: Rettungseinsatz"
+    "title": "18: Rettungseinsatz"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "59A": "ptBusCity"
+     }
+    },
+    "description": "Linie 59A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 59A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 59A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 59A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "59A: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261112-0059-F03",
+    "owner": "WL",
+    "parentName": "I20261112-0059",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 459,
+      "lineName": "59A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "relatedStops": [
+     476
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T21:16:00.000+0100",
+     "lastUpdate": "2026-11-12T21:16:00.000+0100",
+     "resume": "2026-11-12T21:16:00.000+0100",
+     "start": "2026-11-12T21:01:00.000+0100"
+    },
+    "title": "59A: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "59A": "ptBusCity",
+      "62": "ptTram",
+      "LB": "ptTramWLB"
+     }
+    },
+    "description": "Linie 62: Fahrtbehinderung in Richtung Lainz, Wolkersbergenstraße. Badner Bahn: Fahrtbehinderung in Richtung Baden, Josefsplatz. Linie 59A: Fahrtbehinderung in Richtung Bahnhof Meidling S U. Voraussichtliche Dauer: 21.40 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Eichenstraße.",
+    "descriptionHTML": "<p>Linie 62:<br>Fahrtbehinderung in Richtung Lainz, Wolkersbergenstraße.<br>Badner Bahn:<br>Fahrtbehinderung in Richtung Baden, Josefsplatz.<br>Linie 59A:<br>Fahrtbehinderung in Richtung Bahnhof Meidling S U.</p><p>Voraussichtliche Dauer: 21.40 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Bereich Eichenstraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 62:<br>Fahrtbehinderung in Richtung Lainz, Wolkersbergenstraße.<br>Badner Bahn:<br>Fahrtbehinderung in Richtung Baden, Josefsplatz.<br>Linie 59A:<br>Fahrtbehinderung in Richtung Bahnhof Meidling S U.</p><p>Voraussichtliche Dauer: 21.40 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Bereich Eichenstraße.</p>",
+       "descriptionPlain": "Linie 62: Fahrtbehinderung in Richtung Lainz, Wolkersbergenstraße. Badner Bahn: Fahrtbehinderung in Richtung Baden, Josefsplatz. Linie 59A: Fahrtbehinderung in Richtung Bahnhof Meidling S U. Voraussichtliche Dauer: 21.40 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Eichenstraße.",
+       "title": "62, Badner Bahn, 59A: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "location": "Eichenstraße",
+    "name": "I20261112-0060",
+    "owner": "WL",
+    "parentName": "I20261112-0060",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "62",
+     "LB",
+     "59A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 162,
+      "lineName": "62",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 399,
+      "lineName": "LB",
+      "vehicleType": "ptTramWLB"
+     },
+     {
+      "lineId": 459,
+      "lineName": "59A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-11-12T21:20:00.000+0100",
+     "end": "2026-11-12T21:28:00.000+0100",
+     "lastUpdate": "2026-11-12T21:28:00.000+0100",
+     "resume": "2026-11-12T21:28:00.000+0100",
+     "start": "2026-11-12T21:19:00.000+0100"
+    },
+    "title": "62, Badner Bahn, 59A: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "62": "ptTram"
+     }
+    },
+    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "62: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "location": "Eichenstraße",
+    "name": "I20261112-0060-F01",
+    "owner": "WL",
+    "parentName": "I20261112-0060",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 162,
+      "lineName": "62",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T21:28:00.000+0100",
+     "lastUpdate": "2026-11-12T21:28:00.000+0100",
+     "resume": "2026-11-12T21:28:00.000+0100",
+     "start": "2026-11-12T21:19:00.000+0100"
+    },
+    "title": "62: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "LB": "ptTramWLB"
+     }
+    },
+    "description": "Linie Badner Bahn: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie Badner Bahn: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie Badner Bahn: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie Badner Bahn: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "Badner Bahn: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "location": "Eichenstraße",
+    "name": "I20261112-0060-F02",
+    "owner": "WL",
+    "parentName": "I20261112-0060",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 399,
+      "lineName": "LB",
+      "vehicleType": "ptTramWLB"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T21:28:00.000+0100",
+     "lastUpdate": "2026-11-12T21:28:00.000+0100",
+     "resume": "2026-11-12T21:28:00.000+0100",
+     "start": "2026-11-12T21:19:00.000+0100"
+    },
+    "title": "Badner Bahn: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "59A": "ptBusCity"
+     }
+    },
+    "description": "Linie 59A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 59A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 59A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 59A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "59A: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "location": "Eichenstraße",
+    "name": "I20261112-0060-F03",
+    "owner": "WL",
+    "parentName": "I20261112-0060",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 459,
+      "lineName": "59A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T21:28:00.000+0100",
+     "lastUpdate": "2026-11-12T21:28:00.000+0100",
+     "resume": "2026-11-12T21:28:00.000+0100",
+     "start": "2026-11-12T21:19:00.000+0100"
+    },
+    "title": "59A: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -338,6 +487,236 @@
      "start": "2026-11-12T04:45:18.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1616-162",
+    "owner": "WL",
+    "parentName": "R1616-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1616
+    ],
+    "time": {
+     "end": "2026-11-12T22:20:00.000+0100",
+     "start": "2026-11-12T21:09:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1683-459",
+    "owner": "WL",
+    "parentName": "R1683-459",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1683
+    ],
+    "time": {
+     "end": "2026-11-12T22:24:00.000+0100",
+     "start": "2026-11-12T21:02:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1693-459",
+    "owner": "WL",
+    "parentName": "R1693-459",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1693
+    ],
+    "time": {
+     "end": "2026-11-12T22:24:00.000+0100",
+     "start": "2026-11-12T21:02:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1694-459",
+    "owner": "WL",
+    "parentName": "R1694-459",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1694
+    ],
+    "time": {
+     "end": "2026-11-12T22:24:00.000+0100",
+     "start": "2026-11-12T21:02:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1696-459",
+    "owner": "WL",
+    "parentName": "R1696-459",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1696
+    ],
+    "time": {
+     "end": "2026-11-12T22:24:00.000+0100",
+     "start": "2026-11-12T21:09:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1698-459",
+    "owner": "WL",
+    "parentName": "R1698-459",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedStops": [
+     1698
+    ],
+    "time": {
+     "end": "2026-11-12T22:09:00.000+0100",
+     "start": "2026-11-12T21:09:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1720-162",
+    "owner": "WL",
+    "parentName": "R1720-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1720
+    ],
+    "time": {
+     "end": "2026-11-12T22:20:00.000+0100",
+     "start": "2026-11-12T21:01:25.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1723-162",
+    "owner": "WL",
+    "parentName": "R1723-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1723
+    ],
+    "time": {
+     "end": "2026-11-12T22:20:00.000+0100",
+     "start": "2026-11-12T21:01:25.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1724-162",
+    "owner": "WL",
+    "parentName": "R1724-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1724
+    ],
+    "time": {
+     "end": "2026-11-12T22:20:00.000+0100",
+     "start": "2026-11-12T21:01:25.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1728-162",
+    "owner": "WL",
+    "parentName": "R1728-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1728
+    ],
+    "time": {
+     "end": "2026-11-12T22:20:00.000+0100",
+     "start": "2026-11-12T21:09:26.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1166,6 +1545,52 @@
      "start": "2026-11-12T00:00:04.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R477-162",
+    "owner": "WL",
+    "parentName": "R477-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     477
+    ],
+    "time": {
+     "end": "2026-11-12T22:20:00.000+0100",
+     "start": "2026-11-12T21:01:25.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R477-399",
+    "owner": "WL",
+    "parentName": "R477-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     477
+    ],
+    "time": {
+     "end": "2026-11-12T22:26:00.000+0100",
+     "start": "2026-11-12T21:26:58.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
