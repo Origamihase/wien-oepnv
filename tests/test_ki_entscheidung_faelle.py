@@ -130,13 +130,21 @@ def test_a_clear_cause_is_decided_by_the_rules(title: str, text: str) -> None:
     assert _class(_wl(title, text, datetime(2026, 9, 21, 8, 48, tzinfo=VIENNA))) is None
 
 
-@pytest.mark.parametrize("word", ["Demonstration", "Veranstaltung", "Haltestellenverlegung", "Staatsbesuch"])
-def test_what_the_owner_decided_is_a_notice_stays_with_the_rules(word: str) -> None:
+@pytest.mark.parametrize(
+    "words",
+    [
+        "einer Demonstration", "einer Kundgebung", "einer Veranstaltung", "einer Haltestellenverlegung", "eines Staatsbesuchs",
+        "einer Übung", "der Auflassung der Haltestelle", "Bauarbeiten und einer Veranstaltung",
+    ],
+)
+def test_what_the_owner_decided_is_a_notice_stays_with_the_rules(words: str) -> None:
     # 2026-11-03: a moved stop, a demonstration, an event are notices, even
-    # in a text whose cause names an incident.
-    item = _wl("2: Polizeieinsatz", f"Fahrtbehinderung. Wegen einer {word} am Ring.",
-               datetime(2026, 9, 21, 8, 48, tzinfo=VIENNA))
-    assert _class(item) is None
+    # in a text whose cause names an incident and beside a works word.
+    start = datetime(2026, 9, 21, 8, 48, tzinfo=VIENNA)
+    assert _class(_wl("2: Polizeieinsatz", f"Fahrtbehinderung. Wegen {words} am Ring.", start)) is None
+    overrun = _overrun()
+    overrun["description"] = f"{OVERRUN} Wegen {words}."
+    assert _class(overrun) is None
 
 
 def test_only_a_disruption_that_has_begun_is_unclear() -> None:
@@ -235,6 +243,30 @@ def test_sudden_gives_the_begin_back_to_an_incident_beside_a_works_word() -> Non
     overrun = _overrun()
     overrun["_ki_art"] = "ploetzlich"
     assert _line(overrun) == "Seit 05:12"
+
+
+def test_an_incident_that_ends_after_midnight_keeps_its_line_and_moves_up() -> None:
+    """The real "48A: Gasrohrgebrechen" of 30.09.2026 ended at 01:00: its line names the end under every answer."""
+    item = _gas()
+    item["ends_at"] = datetime(2026, 9, 22, 1, 0, tzinfo=VIENNA)
+    now_utc = NOW.astimezone(ZoneInfo("UTC"))
+    assert _line(item) == "Bis Di 22.09." and bf._recency_sort_key(item, {}, now_utc)[0] == 2
+    item["_ki_art"] = "ploetzlich"
+    assert _line(item) == "Bis Di 22.09." and bf._recency_sort_key(item, {}, now_utc)[0] == 0
+
+
+def test_the_model_reads_when_oebb_first_published_the_message() -> None:
+    """ÖBB's ``pubDate`` moves with every update; the state entry keeps the first one."""
+    item = _overrun()
+    item["pubDate"] = datetime(2026, 9, 21, 8, 30, tzinfo=VIENNA)
+    now_utc = datetime(2026, 9, 21, 8, 31, tzinfo=VIENNA).astimezone(ZoneInfo("UTC"))
+    key = cand.candidates_of([item], {}, now_utc)[0].key
+    state = {key: {"first_seen": "2026-09-21T03:20:00+00:00", "first_published": "2026-09-21T03:12:00+00:00"}}
+    (candidate,) = cand.candidates_of([item], state, now_utc)
+    assert "Erstmals veröffentlicht: Mo 21.09.2026 05:12" in cand.describe(1, candidate, [item])
+    assert state[key] == {"first_seen": "2026-09-21T03:20:00+00:00", "first_published": "2026-09-21T03:12:00+00:00"}
+    (tokio,) = cand.candidates_of([_tokio()], {}, NOW.astimezone(ZoneInfo("UTC")))
+    assert "Erstmals veröffentlicht: Mo 21.09.2026 08:48" in cand.describe(1, tokio, [])
 
 
 def test_sudden_also_holds_on_a_full_hour() -> None:

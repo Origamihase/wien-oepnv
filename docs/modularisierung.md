@@ -378,12 +378,12 @@ dazu; der Feed-Build ruft es an einer Stelle auf (`decide` in
 
 | Modul | Zeilen | Inhalt |
 |---|---|---|
-| `src/ki_entscheidung/candidates.py` | 245 | Welche Störungen unklar sind (drei Klassen), ihr Abdruck, was das Modell von ihnen liest |
-| `src/ki_entscheidung/ask.py` | 172 | Prompt, Schema, Modellkette (Lite voran), Lesen der Antwort |
-| `src/ki_entscheidung/store.py` | 140 | Speicher `data/ki_entscheidungen.json` |
-| `src/ki_entscheidung/run.py` | 214 | Ein Build: lesen, höchstens einmal fragen, anwenden, speichern, Ergebnis für den Health check |
-| `scripts/ki_entscheidung_probe.py` | 207 | Probelauf für `ki-entscheidung-probe.yml` |
+| `src/ki_entscheidung/candidates.py` | 265 | Welche Störungen unklar sind (drei Klassen), ihr Abdruck, was das Modell von ihnen liest |
+| `src/ki_entscheidung/ask.py` | 192 | Prompt, Schema, Modellkette (Lite voran), Lesen der Antwort |
+| `src/ki_entscheidung/store.py` | 160 | Speicher `data/ki_entscheidungen.json` (Antworten, Zeitpunkte der Anfragen, abgelehnter Schlüssel) |
+| `src/ki_entscheidung/run.py` | 279 | Ein Build: lesen, höchstens einmal fragen, die Antwort ihres Ereignisses anwenden, speichern, Ergebnis für den Health check |
+| `scripts/ki_entscheidung_probe.py` | 236 | Probelauf für `ki-entscheidung-probe.yml` |
 
 `src/markdown_stats/review_client.py` trägt seither beide Anfragen
-(`ask_chain` mit einem `JsonCall` je Aufrufer) und hat 518 Zeilen (vorher
+(`ask_chain` mit einem `JsonCall` je Aufrufer) und hat 522 Zeilen (vorher
 422), `src/build_feed.py` 693 (vorher 682).

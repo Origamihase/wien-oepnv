@@ -142,7 +142,11 @@ class Decider:
                 self._seen(candidate, today)
             open_ones = [candidate for candidate in found if self._needs_answer(candidate)]
             if open_ones and not self._asked:
-                self._ask(open_ones, items)
+                try:
+                    self._ask(open_ones, items)
+                except Exception as exc:  # the stored answers of the other messages still apply below
+                    self._failed = True
+                    log.warning("KI-Entscheidung: Anfrage abgebrochen (%s), es gelten die Regeln.", type(exc).__name__)
             self._due = any(self._needs_answer(candidate) for candidate in found)
             self._spent = any(self._unanswered(candidate) for candidate in found)
             _apply(found, self.records)

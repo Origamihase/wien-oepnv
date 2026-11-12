@@ -20,6 +20,11 @@ older than the workflow's own limit (this script could not record).
     python scripts/record_side_steps.py --state data/side_steps/update-cycle.json \\
         "Statistik=failure" "Linienprüfung=success"
 
+One side step speaks for itself: "KI-Entscheidung" of the Update run is no
+step of its own, the feed build reports it as its output ``ki_outcome``
+(``src/ki_entscheidung/run.py``, since 2026-11-12): ``failure`` when it
+cannot ask Gemini, ``overloaded`` when a new unclear message got no answer.
+
 One file per workflow, so two workflows publishing at the same time never
 touch the same file. ``skipped``, ``cancelled`` and an empty outcome leave the
 step's previous record alone: the step did not run to an end.
@@ -49,7 +54,8 @@ from src.utils.serialize import scrub_trojan_source_primitives
 LOGGER = getLogger("record_side_steps")
 
 # ``overloaded``: the step could not run only because an outside service was
-# busy (the KI-Wächter when Gemini answers 503; Michael 2026-11-04). The
+# busy (the KI-Wächter when Gemini answers 503; Michael 2026-11-04; since
+# 2026-11-12 also the feed build's "KI-Entscheidung"). The
 # Health check shows it as a note until the step's last success is older
 # than its overload limit.
 RECORDED_OUTCOMES = ("success", "failure", "overloaded")

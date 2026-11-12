@@ -140,6 +140,12 @@ def test_a_failing_or_silent_gemini_is_a_result_not_a_failure(tmp_path: Path, mo
     assert "| 9 | 6: Rettungseinsatz züge halten Favoritenstraße 113 | ohne-ursache | [Seit 07:22] | ploetzlich | geplant |" in text
 
 
+def test_a_cases_file_that_does_not_exist_is_a_wrong_argument(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
+    with pytest.raises(SystemExit) as stopped:
+        probe.main(["--cases", str(tmp_path / "fehlt.json")])
+    assert stopped.value.code == 2 and "Fallsammlung nicht gefunden" in capsys.readouterr().err
+
+
 def test_a_block_no_model_answered_is_put_again_in_the_next_pass(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.chdir(tmp_path)
     asked: list[str] = []

@@ -16,10 +16,12 @@ and only those are put to the model (:mod:`src.ki_entscheidung`):
     is told apart from it by its minute alone.
 ``bauwort``
     A WL disruption whose cause names an incident while a works word
-    stands elsewhere in its text: "48A: Gasrohrgebrechen" (30.09.,
-    "Aufgrund der Bauarbeiten werden die Busse … umgeleitet") and "U6:
-    Weichenstörung" (22.09., "Die Station Neue Donau kann … wegen
-    Bauarbeiten nicht eingehalten werden") lost their "[Seit hh:mm]".
+    stands elsewhere in its text: "U6: Weichenstörung" (22.09., "Die
+    Station Neue Donau kann … wegen Bauarbeiten nicht eingehalten werden")
+    read "[Heute]" where an incident reads "[Seit 22:12]"; "48A:
+    Gasrohrgebrechen" (30.09., "Aufgrund der Bauarbeiten werden die Busse
+    … umgeleitet", end after midnight) kept its line "[Bis Do 01.10.]" and
+    stood below the current incidents.
 ``oebb-tag``
     An ÖBB message with a works word that ÖBB first published on the day
     it begins and that ends on that day: "Wegen Verlängerung der
@@ -244,6 +246,8 @@ def describe(number: int, candidate: Candidate, items: Sequence[FeedItem]) -> st
     incident on line 52 beside "9: Züge halten bei Linie 52".
     """
     item = candidate.item
+    # ÖBB's ``pubDate`` moves with every update of a message; the state entry keeps the first one.
+    published = _first_published(item, dict(candidate.entry) if candidate.entry else None) or item.get("pubDate")
     lines = [
         f"Meldung {number}",
         f"Quelle: {item.get('source') or ''}",
@@ -251,7 +255,7 @@ def describe(number: int, candidate: Candidate, items: Sequence[FeedItem]) -> st
         f"Text: {_plain(item)[:MAX_TEXT_CHARS] or '(kein Text)'}",
         f"Beginn laut Quelle: {_when(item.get('starts_at'))}",
         f"Ende laut Quelle: {_when(item.get('ends_at'))}",
-        f"Erstmals veröffentlicht: {_when(item.get('pubDate'))}",
+        f"Erstmals veröffentlicht: {_when(published)}",
     ]
     neighbours = neighbours_of(item, items)
     for other in neighbours:

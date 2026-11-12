@@ -21,10 +21,13 @@ What the exception covers, and what it does not:
   would otherwise read the clock or a works word: a sudden disruption
   shows "[Seit hh:mm]" and stands in the first tier for its first day, a
   planned one stands in the normal order.
-* The answers are stored per message (:mod:`.store`) and asked for once;
-  without an answer (no key, a busy model, a reached limit, ``unklar``)
-  the rules decide as before, and the feed never waits longer than
-  ``ask.DEADLINE_S`` (:mod:`.run`).
+* The answers are stored per message (:mod:`.store`) and hold for the
+  event they were given for: the next event under the same WL key is asked
+  about anew. Without an answer (no key, a busy model, a reached limit,
+  ``unklar``) the rules decide as before. The build sends no new request
+  later than fifteen seconds after the first and waits about twenty
+  seconds for the models, twenty-five when a connection is slow to open
+  (:mod:`.ask`, :mod:`.run`).
 """
 
 from .run import Decider, apply_stored

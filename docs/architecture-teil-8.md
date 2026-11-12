@@ -231,39 +231,75 @@ stehen als Daten zwischen festen Marken; Werkzeuge hat das Modell keine.
 **Wann gefragt wird.** Nur der Feed-Build des Update-Laufs fragt
 (`Decider.decide` in `src/ki_entscheidung/run.py`, aufgerufen in
 `_assemble_feed_items` nach `_carry_item_identity` und vor der Sortierung),
-höchstens einmal je Build und mit höchstens acht Meldungen. `feed lint`, die
-Einzelproben des Builds, Nachspiele und Tests lesen nur den Speicher
-(`apply_stored`). Gefragt wird nach einer Meldung nur, solange sie neu ist:
-höchstens 2 h 45 min im Feed, und der Beginn, den ein „plötzlich“ zeigen würde,
-liegt ebenso kurz zurück (`ASK_WINDOW`). Der Feed-Wächter meldet ein „[Seit
-hh:mm]“, das mehr als drei Stunden nach seiner Uhrzeit zum ersten Mal
-erscheint (`seit-zu-frueh`); eine späte Antwort würde genau das erzeugen. Je
-Meldung gibt es höchstens drei Anfragen, je Wiener Tag höchstens sechs (gelesen
-aus den gespeicherten Zeitpunkten der Anfragen, kein eigener Zähler); ein
-geänderter Text wird in diesem Rahmen neu gefragt, die wechselnde Prognose von
-WL („Voraussichtliche Dauer: …“) zählt nicht als Änderung. Gefragt werden die
-Lite-Modelle der Wächter-Kette zuerst (`MODELS` in `ask.py`), damit die beiden
-Flash-Modelle ihr Tageskontingent für den KI-Wächter behalten; nach 20
-Sekunden startet keine weitere Anfrage. Die Anfrage läuft über den Konnektor
-des Jahresrückblicks (`ask_chain` in `src/markdown_stats/review_client.py`,
-Schlüssel im Kopf `x-goog-api-key`).
+höchstens einmal je Build und mit höchstens vier Meldungen (so viele standen im
+Nachspiel höchstens zugleich an; was nicht hineinpasst, fragt der nächste
+Build). `feed lint`, die Einzelproben des Builds, Nachspiele und Tests lesen
+nur den Speicher (`apply_stored`). Gefragt wird nach einer Meldung nur,
+solange sie neu ist: höchstens 2 h 45 min im Feed, und der Beginn, den ein
+„plötzlich“ zeigen würde, liegt ebenso kurz zurück (`ASK_WINDOW`). Der
+Feed-Wächter meldet ein „[Seit hh:mm]“, das mehr als drei Stunden nach seiner
+Uhrzeit zum ersten Mal erscheint (`seit-zu-frueh`); eine späte Antwort würde
+genau das erzeugen. Je Ereignis einer Meldung fragen höchstens drei Builds, je
+Wiener Tag höchstens sechs (gelesen aus den gespeicherten Zeitpunkten, kein
+eigener Zähler); ein geänderter Text wird in diesem Rahmen neu gefragt, die
+wechselnde Prognose von WL („Voraussichtliche Dauer: …“) zählt nicht als
+Änderung.
+
+Ein Build fragt die Modellkette einmal ab (`ask_chain` in
+`src/markdown_stats/review_client.py`, der Konnektor des Jahresrückblicks,
+Schlüssel im Kopf `x-goog-api-key`): die Lite-Modelle der Wächter-Kette zuerst
+(`MODELS` in `ask.py`), jedes Modell höchstens einmal, das nächste nur, wenn
+das vorige überlastet, am Kontingent oder nicht erreichbar ist. Im Regelfall
+ist das eine Anfrage. Im äußersten Fall sind es vier je Build und damit sechs
+am Tag an jedes der beiden Flash-Modelle; mit den höchstens zehn des
+KI-Wächters bleibt das unter deren Tageskontingent von zwanzig. Auf ein Modell
+wartet der Build höchstens 12 Sekunden (`MAX_READ_S`), später als 15 Sekunden
+nach der ersten startet keine Anfrage mehr, und die letzte bekommt nur, was
+von den 20 Sekunden (`DEADLINE_S`) übrig ist. Gemessen am 12.11.2026 mit vier
+überlasteten Modellen: 20,1 Sekunden; öffnet sich eine Verbindung langsam,
+können es rund 25 werden.
+
+**Eine Antwort gilt für ihr Ereignis.** Der Schlüssel im Speicher ist die GUID
+der Meldung, und eine WL-GUID trägt kein Datum: „9: Züge halten bei Linie 52“
+kehrt Tage nach einem Rettungseinsatz mit demselben Schlüssel und demselben
+Text zurück, wenn WL eine geplante Maßnahme einträgt. Eine Antwort gilt
+deshalb nur, wenn sie nicht älter ist als der Beginn, den die Meldung jetzt
+zeigt (`_answer_holds`): Das nächste Ereignis desselben Tickers wird neu
+gefragt und hat seine eigenen drei Versuche, bis dahin gelten für es die
+Regeln. Bekommt ein Ticker, der im Feed geblieben ist, einen neuen Beginn,
+gelten ebenfalls die Regeln (gefragt wird er nicht mehr, er ist nicht neu).
+Innerhalb eines Ereignisses bleibt die Antwort stehen, wenn der Betreiber den
+Text fortschreibt (ÖBB am 01.11.2026: fünf Fassungen einer Meldung in fünf
+Stunden); neu gefragt wird der geänderte Text nur, solange die Meldung neu
+ist. Eine ÖBB-Meldung, die als `oebb-tag` gefragt wurde, behält ihre Antwort,
+wenn ÖBB das Ende später auf den nächsten Tag legt.
 
 **Ohne Gemini.** Fehlt der Schlüssel, ist ein Modell überlastet, das
 Kontingent erreicht oder die Antwort unbrauchbar, gilt für die Meldung die
-Regel; der Build wartet nie länger als die 20 Sekunden und scheitert daran
-nie. Der Build meldet sein Ergebnis als Nebenschritt „KI-Entscheidung“
-(Ausgabe `ki_outcome`, Teil 5, „Überwachung: Nebenschritte“): Ein leerer oder
-von Google abgelehnter Schlüssel ist sofort rot („ein Fehler sollte
-auffallen“, 28.10.2026). Bekam eine neue Meldung auf keine ihrer drei Anfragen
-eine Antwort oder sind die sechs Anfragen des Tages verbraucht, ist das wie
-beim KI-Wächter ein Hinweis (04.11.2026), der endet, sobald die Meldung nicht
-mehr neu ist. `KI_ENTSCHEIDUNG=0` schaltet die Anfragen ab. Builds ohne
-Schlüssel (`build-feed.yml`, `manual-full-refresh.yml`, lokal) lesen den
-Speicher und schreiben ihn nie.
+Regel; der Build scheitert daran nie. Er meldet sein Ergebnis als Nebenschritt
+„KI-Entscheidung“ (Ausgabe `ki_outcome`, Teil 5, „Überwachung:
+Nebenschritte“). Rot ist sofort, was nicht laufen kann („ein Fehler sollte
+auffallen“, 28.10.2026): ein leerer Schlüssel, ein abgebrochener Durchlauf,
+ein Speicher, der sich nicht schreiben lässt, eine Anfrage, die sich nicht
+senden lässt, und ein von Google abgelehnter Schlüssel. Die Ablehnung steht
+im Speicher (`schluessel_abgelehnt`) und bleibt rot, bis Google wieder eine
+Anfrage annimmt, längstens 24 Stunden: Ein Build ohne unklare Meldung fragt
+nichts und würde sonst eine halbe Stunde später Grün melden; nach einem Tag
+hat der KI-Wächter mit demselben Schlüssel gefragt und meldet ihn selbst. Die
+abgelehnte Anfrage zählt nicht als Versuch der Meldung. Bekam eine neue
+Meldung in keinem ihrer drei Builds eine Antwort oder sind die sechs des Tages
+verbraucht, ist das wie beim KI-Wächter ein Hinweis (04.11.2026), der endet,
+sobald die Meldung nicht mehr neu ist; er wird hier nie rot, denn jeder Build
+ohne unklare Meldung meldet Erfolg. Schweigen die Modelle über Tage, zeigt das
+der Eintrag des KI-Wächters, der dieselbe Kette täglich fragt.
+`KI_ENTSCHEIDUNG=0` schaltet die Anfragen ab und meldet Erfolg; gespeicherte
+Antworten gelten weiter. Builds ohne Schlüssel (`build-feed.yml`,
+`manual-full-refresh.yml`, lokal) lesen den Speicher und schreiben ihn nie.
 
 **Speicher.** `data/ki_entscheidungen.json` fährt im Commit des Update-Laufs
 mit wie `data/first_seen.json`: je Meldung (Schlüssel wie im Zustand, die
 GUID) die Antwort `art`, ihr `grund`, das `modell`, der Abdruck des Textes,
-die Zeitpunkte der Anfragen und der Tag, an dem die Meldung zuletzt in einem
-Build stand. Ein Eintrag fällt eine Woche danach weg. Ein Nachbau desselben
-Commits liest dieselben Antworten und baut denselben Feed.
+der Zeitpunkt der Antwort (`entschieden`), die Zeitpunkte der letzten Anfragen
+und der Tag, an dem die Meldung zuletzt in einem Build stand. Ein Eintrag
+fällt eine Woche danach weg. Ein Nachbau desselben Commits liest dieselben
+Antworten und baut denselben Feed.

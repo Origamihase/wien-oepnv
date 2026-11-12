@@ -368,7 +368,10 @@ def check_side_steps(now: datetime) -> Check:
     failure would go unseen again. A record that does not exist yet (before
     the first run with the recorder) is a note. A KI-Wächter day without an
     answer only because Gemini was overloaded is a note until 30 h after the
-    last clean audit (Michael 2026-11-04, card "Ja, so bauen").
+    last clean audit (Michael 2026-11-04, card "Ja, so bauen"). Since
+    2026-11-12 the Update run's record also holds "KI-Entscheidung", the
+    feed build's own word: red when it cannot ask Gemini, a note when a new
+    unclear message got no answer (``src.ki_entscheidung.run.Decider.outcome``).
     """
     name = "Nebenschritte"
     problems: list[str] = []

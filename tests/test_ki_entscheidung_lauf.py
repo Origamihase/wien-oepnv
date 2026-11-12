@@ -419,6 +419,73 @@ def test_at_most_six_requests_a_day(monkeypatch: pytest.MonkeyPatch) -> None:
     assert len(calls) == 1
 
 
+def test_the_day_is_viennas_and_a_busy_chain_sends_one_request_per_model(monkeypatch: pytest.MonkeyPatch) -> None:
+    evening = datetime(2026, 9, 21, 23, 0, tzinfo=VIENNA)
+    sent: list[str] = []
+    for number in range(run.MAX_REQUESTS_PER_DAY):
+        calls = _fake(monkeypatch, [_Response(503, BUSY)] * 4)
+        now = evening + timedelta(minutes=number * 10)
+        _build([_tokio(f"{number}: Züge halten in Tokiostraße", now - timedelta(minutes=3))], now)
+        sent += _models(calls)
+    # Six builds asked; each sent one request to each model of the chain, the two Flash models included.
+    assert len(sent) == 24 and {sent.count(model) for model in ask.MODELS} == {6}
+    calls = _fake(monkeypatch, [])
+    last = evening + timedelta(minutes=58)
+    assert _build([_tokio("7: Züge halten in Tokiostraße", last - timedelta(minutes=3))], last).outcome() == "overloaded"
+    assert calls == []
+    # 00:10 in Vienna is a new day there, though still the 21st in UTC.
+    calls = _fake(monkeypatch, [_ok((1, "geplant"))])
+    night = datetime(2026, 9, 22, 0, 10, tzinfo=VIENNA)
+    assert night.astimezone(UTC).date() == evening.date()
+    _build([_tokio("8: Züge halten in Tokiostraße", night - timedelta(minutes=3))], night)
+    assert len(calls) == 1
+
+
+def test_more_than_four_messages_wait_for_the_next_build(monkeypatch: pytest.MonkeyPatch) -> None:
+    def items() -> list[FeedItem]:
+        return [_tokio(f"{number}: Züge halten in Tokiostraße") for number in range(1, 6)]
+
+    calls = _fake(monkeypatch, [_ok(*[(number, "geplant") for number in range(1, 5)])])
+    first = items()
+    decider = _build(first)
+    text = json.loads(calls[0]["data"])["contents"][0]["parts"][0]["text"]
+    assert run.MAX_PER_REQUEST == 4 and "Meldung 4\n" in text and "Meldung 5\n" not in text
+    # The fifth waits, by the rules, and that is nothing to report.
+    assert [item.get("_ki_art") for item in first] == ["geplant"] * 4 + [None] and decider.outcome() == ""
+    calls = _fake(monkeypatch, [_ok((1, "ploetzlich"))])
+    second = items()
+    assert _build(second, NOW + timedelta(minutes=30)).outcome() == "success" and len(calls) == 1
+    assert [item.get("_ki_art") for item in second] == ["geplant"] * 4 + ["ploetzlich"]
+
+
+def test_the_window_ends_to_the_second(monkeypatch: pytest.MonkeyPatch) -> None:
+    key = _key_of(_tokio())
+    for late, asked in ((timedelta(0), 1), (timedelta(seconds=1), 0)):
+        calls = _fake(monkeypatch, [_ok((1, "unklar"))])
+        now = START + run.ASK_WINDOW + late
+        seen = (now - run.ASK_WINDOW - late).astimezone(UTC).isoformat()
+        _build([_tokio(f"{asked}: Züge halten in Tokiostraße")], now, state={key: {"first_seen": seen}})
+        assert len(calls) == asked
+
+
+@pytest.mark.parametrize(
+    "refusal",
+    [
+        _Response(400, {"error": {"message": "API key not valid.", "details": [{"reason": rc.KEY_REJECTED_REASON}]}}),
+        _Response(401, {"error": {"message": "Request had invalid authentication credentials."}}),
+    ],
+)
+def test_every_form_of_a_refused_key_is_a_failure_and_no_log_line_carries_the_key(
+    monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture, refusal: _Response
+) -> None:
+    caplog.set_level("DEBUG")
+    calls = _fake(monkeypatch, [refusal])
+    assert _build([_tokio()]).outcome() == "failure" and len(calls) == 1 and store.read()[1]
+    _fake(monkeypatch, [_Response(503, BUSY), requests.ConnectionError(f"https://x/?key={KEY}"), _ok((1, "geplant"))])
+    assert _build([_tokio()], NOW + timedelta(minutes=30)).outcome() == "success"
+    assert "KI-Entscheidung" in caplog.text and KEY not in caplog.text
+
+
 def test_trials_and_a_second_pass_never_ask(monkeypatch: pytest.MonkeyPatch) -> None:
     calls = _fake(monkeypatch, [_ok()])
     decider = run.Decider(NOW, key=KEY)
@@ -443,10 +510,14 @@ def test_a_failing_request_never_stops_the_build(monkeypatch: pytest.MonkeyPatch
     def broken(*args: object, **kwargs: object) -> None:
         raise RuntimeError("unerwartet")
 
+    _fake(monkeypatch, [_ok((1, "geplant"))])
+    _build([_tokio()])
     monkeypatch.setattr(ask, "ask", broken)
-    item = _tokio()
-    decider = run.Decider(NOW, key=KEY)
-    decider.decide([item], {}, NOW)
+    known, item = _tokio(), _tokio("27: Linie 25 in Tokiostraße benützen")
+    decider = run.Decider(NOW + timedelta(minutes=30), key=KEY)
+    decider.decide([known, item], {}, NOW)
     decider.finish()
-    # The rules decide, and the Health check learns that the pass broke off.
-    assert "_ki_art" not in item and decider.outcome() == "failure"
+    # The rules decide for the new message, the stored answer of the other one still applies,
+    # nothing counts as a try, and the Health check learns that the request broke off.
+    assert "_ki_art" not in item and known.get("_ki_art") == "geplant" and decider.outcome() == "failure"
+    assert list(_stored()) == [_key_of(known)]

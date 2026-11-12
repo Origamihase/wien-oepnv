@@ -225,6 +225,8 @@ def main(argv: Sequence[str] | None = None, *, ask: Ask | None = None) -> int:
     parser.add_argument("--passes", type=int, default=1, help="Durchgänge: ein unbeantworteter Block wird erneut gefragt (Standard: 1)")
     parser.add_argument("--pause", type=float, default=0.0, help="Sekunden zwischen zwei Durchgängen (Standard: 0)")
     args = parser.parse_args(argv)
+    if not args.cases.is_file():
+        parser.error(f"Fallsammlung nicht gefunden: {args.cases}")
     setup_script_logging()
     report = run_probe(args.cases, ask=ask, passes=args.passes, pause_s=args.pause)
     print(report)
