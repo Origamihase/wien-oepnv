@@ -529,6 +529,22 @@ Nicht jeder Text gehört in ein NMT-Modell:
   Nachgespielt mit dem echten Modell über alle 3.003 Texte: Nur Texte mit
   einer dieser Formen ändern sich; die übrigen Unterschiede sind das
   bekannte Rauschen der Wiederholung unter zufälliger Nonce.
+* **Ein Haltestellenname beginnt groß (seit 2026-11-12).** Die Suche nach
+  Stationsnamen (`_station_entity_pattern`) ignoriert Groß- und
+  Kleinschreibung, damit WLs Listen in Großbuchstaben („STADION U“) geschützt
+  bleiben. Dadurch traf die Haltestelle „Am Bahnhof“ auch die Wendung „am
+  Bahnhof“ im Fließtext: ÖBBs „Wegen einer Stellwerkstörung am Bahnhof …“
+  stand im englischen Feed als „Due to an interlocking malfunction am
+  Bahnhof, …“ (31.05. bis 02.10.2026; „interlocking fault am Bahnhof“ ab
+  19.06.). Seit dem Glossareintrag „am Bahnhof“ → „at the station“ vom
+  03.10.2026 verschwindet die Wendung vor der Maskierung, die Maskierung
+  blieb aber falsch. Jetzt darf ein Treffer nicht mit der Kleinschreibung
+  eines Anfangsbuchstabens aus dem Verzeichnis beginnen („a“, „ö“, „š“ von
+  „Šatov“); jeder Name dort beginnt mit einem Großbuchstaben oder einer
+  Ziffer. Gemessen an allen 10.309 Quelltexten seit Juni (jeder Cache-Stand
+  von WL, ÖBB und Baustellen): Nur die 90 Texte mit „am Bahnhof“, alle von
+  ÖBB, werden anders maskiert; alle großgeschriebenen Treffer („Am Platz“,
+  „Am Schöpfwerk“, „Unter St. Veit“, „STADION“) bleiben Namen.
 * **ÖBBs Abschnittsnamen auf Englisch (seit 2026-10-23).** Der
   deutsche Feed schreibt ÖBBs Abschnittsnamen normal („Teilausfall:“, §1,
   `_oebb_section_labels_cased`); das Modell machte daraus „Partial

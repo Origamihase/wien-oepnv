@@ -167,6 +167,11 @@ def test_a_summary_with_part_of_the_consequence_gives_way() -> None:
     [
         ("Weichen Sie auf die Linien U3, 48A aus. Voraussichtliche Dauer: bis 22:00 Uhr.", 60, "aus."),
         ("Voraussichtliche Dauer: bis 22:00 Uhr. Grund: Veranstaltung im Bereich Neubaugasse.", 60, "Uhr."),
+        # Since 2026-11-12 the stop marker, a line and a number end a sentence
+        # too (``is_abbreviation_period``).
+        ("Kurzführung bis Karlsplatz U. Bereich Oper gesperrt", 40, "U."),
+        ("Streckensperre der Linien D. Die Busse fahren", 40, "D."),
+        ("Die Züge fahren über Gleis 2. Voraussichtliche Dauer: 22:10 Uhr", 40, "2."),
     ],
 )
 def test_the_last_sentence_end(text: str, limit: int, cut_after: str) -> None:
@@ -179,7 +184,8 @@ def test_the_last_sentence_end(text: str, limit: int, cut_after: str) -> None:
     [
         "Fahrt bis Wien Hbf. Richtung Süden",
         "Ab 17. Februar gesperrt",
-        "Gerasdorf b. Wien und Karlsplatz U. Bereich",
+        "Gerasdorf b. Wien und Karlsplatz",
+        "Züge halten bei Li. 6. Ri. Geiereckstr",
         "Bahnhst bzw. Gerasdorf",
         "Simmeringer Hauptstraße ggü. Nummer 197",
     ],

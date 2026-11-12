@@ -14,6 +14,7 @@ from typing import cast
 from ..feed_types import FeedItem
 from ..providers.wl_plausibility import incident_begin
 
+from .abbreviations import without_full_stop
 from .base import _SENTENCE_SPLIT_RE, _to_utc
 from .time_line import _wl_incident_start
 from .title_words import _HINDRANCE, _as_sentence, _rendered_title, _then_sentence
@@ -96,8 +97,11 @@ def _merged_ticker(members: Sequence[FeedItem]) -> FeedItem:
     merged["title"] = title
     # One sentence: the summary keeps at most two (``_SENTENCE_SPLIT_RE``), and
     # three short consequences would lose the third. The 180-character cap
-    # still applies; the order is WL's.
-    merged["description"] = "; ".join(m.rstrip(" .") for m in messages) + ("." if messages else "")
+    # still applies; the order is WL's. An abbreviation keeps its period
+    # ("Dörfelstr.; Betrieb ab …", ``without_full_stop``), and a sentence
+    # closed by WL is not closed twice ("Busse halten bei 13A!." on the N46
+    # item of 2026-10-28).
+    merged["description"] = _as_sentence("; ".join(without_full_stop(m) for m in messages)) if messages else ""
     return merged
 
 
@@ -226,8 +230,8 @@ def _with_consequences(entry: FeedItem, members: Sequence[FeedItem]) -> FeedItem
     ]
     if not messages:
         return entry
-    rider = [m.rstrip(" .") for m in _shared_openings(messages) if _RIDER_CONSEQUENCE_RE.search(m)]
-    rest = [m.rstrip(" .") for m in messages if not _RIDER_CONSEQUENCE_RE.search(m)]
+    rider = [without_full_stop(m) for m in _shared_openings(messages) if _RIDER_CONSEQUENCE_RE.search(m)]
+    rest = [without_full_stop(m) for m in messages if not _RIDER_CONSEQUENCE_RE.search(m)]
     tail = _LONG_MESSAGE_TAIL_RE.search(text)
     cut = tail.start() if tail else len(text)
     measure = text[:cut].rstrip()
@@ -235,7 +239,7 @@ def _with_consequences(entry: FeedItem, members: Sequence[FeedItem]) -> FeedItem
         # In the measure's own sentence, before the advice, expected end and
         # cause: the summary keeps two sentences, and "Wipplingerstr 39." ends
         # none it can see (D on 2026-09-30).
-        text = f"{measure.rstrip('.')}; {_as_sentence('; '.join(rider))}{text[cut:]}"
+        text = f"{without_full_stop(measure)}; {_as_sentence('; '.join(rider))}{text[cut:]}"
     elif rider:
         text = f"{_as_sentence('; '.join(rider))} {text}"
     if rest:
@@ -287,8 +291,8 @@ def _listed_incident(entry: FeedItem) -> tuple[str, str]:
     label = part.cause or part.body
     sentences = [s.strip() for s in _SENTENCE_SPLIT_RE.split(_LONG_MESSAGE_TAIL_RE.split(part.extra, maxsplit=1)[0])]
     reason = f"grund: {label.casefold()}"
-    measure = next((s for s in sentences if s and s.rstrip(" .").casefold() != reason), "").rstrip(" .")
-    consequence = part.consequence.strip().rstrip(" .")
+    measure = without_full_stop(next((s for s in sentences if s and s.rstrip(" .").casefold() != reason), ""))
+    consequence = without_full_stop(part.consequence.strip())
     if consequence and _WL_STOCK_SENTENCE_RE.match(f"{measure}."):
         measure = ""  # WL's stock sentence gives way to anything concrete
     details = [measure] if measure else []

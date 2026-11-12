@@ -6,14 +6,14 @@
     "name": "aktuelles",
     "refPoiCategoryGroupId": 61,
     "title": "Aktuelles",
-    "trafficInfoNameList": "N20260209-0049, N20260209-3501, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260702-5991, N20260813-6092, N20260808-6083, N20260808-6084, N20260817-6129, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260903-6175, N20260908-6177, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261005-6222, N20261006-6258, N20261007-6260, N20261007-6262, N20261009-6270, N20261021-0001, N20261021-0003, N20261023-0001, N20261029-0004, N20261028-0002, N20261102-0001, N20261103-0001, N20261104-0001, N20261104-0002, N20261104-0003, N20261104-0004, N20261105-0001, N20261105-0002, N20261022-0005, N20261106-0002, N20261109-0001, N20261111-0001, N20261111-0002, N20261111-0003, N20261111-0004, N20261111-0005, N20261111-0006, N20261111-0007"
+    "trafficInfoNameList": "N20260209-0049, N20260209-3501, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260629-5946, N20260702-5991, N20260813-6092, N20260808-6084, N20260808-6083, N20260817-6129, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260903-6175, N20260908-6177, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261006-6258, N20261007-6260, N20261007-6262, N20261009-6270, N20261021-0001, N20261021-0003, N20261023-0001, N20261029-0004, N20261028-0002, N20261102-0001, N20261103-0001, N20261104-0001, N20261104-0002, N20261104-0003, N20261104-0004, N20261105-0001, N20261105-0002, N20261022-0005, N20261106-0002, N20261109-0001, N20261111-0001, N20261111-0002, N20261111-0003, N20261111-0004, N20261111-0005, N20261111-0006, N20261111-0007, N20261112-0001"
    },
    {
     "id": -1,
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_729, ftazW_574, ftazW_508, ftazW_721, ftazW_83, ftazW_725, ftazW_84, ftazW_575, ftazW_45, ftazW_722, ftazW_509"
+    "trafficInfoNameList": "ftazW_729, ftazW_83, ftazW_574, ftazW_508, ftazW_721, ftazW_725, ftazW_84, ftazW_722, ftazW_509, ftazW_575, ftazW_45"
    }
   ],
   "poiCategoryGroups": [
@@ -1748,56 +1748,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 7A in Richtung Reumannplatz U, 15A in Richtung Enkplatz U, Grillgasse und N62 in Richtung Oper, Karlsplatz (U)</span></u></strong></p>\r\n<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Eibesbrunnergasse</span></p>\r\n<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Wienerbergstra&szlig;e 27b-27c</span></span></p>\r\n<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Wienerbergstra&szlig;e 27a</span></p>\r\n<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 06. Oktober 2026, etwa 10:00 Uhr f&uuml;r ca. drei Wochen</span></p>\r\n<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Instandsetzungsarbeiten</span></p>\r\n<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\">&nbsp;</p>\r\n<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 7A in Richtung Meidling Hauptstra&szlig;e U, 15A in Richtung Bhf. Meidling S U, Schedifkaplatz und N62 in Richtung Lainzer Tor</span></u></strong></p>\r\n<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Eibesbrunnergasse</span></p>\r\n<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Wienerbergstra&szlig;e 12, Stiege 21-22</span></span></p>\r\n<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Wienerbergstra&szlig;e 14-14A</span></p>\r\n<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 06. Oktober 2026, etwa 10:00 Uhr f&uuml;r ca. drei Wochen</span></p>\r\n<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\">&nbsp;</p>\r\n<p class=\"MsoNormal\" style=\"caret-color: rgba(0, 0, 0, 0);\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Instandsetzungsarbeiten</span></p>",
-    "id": "N20261005-6222",
-    "location": {
-     "properties": {
-      "attributes": {},
-      "coordName": "WGS84",
-      "type": "news"
-     },
-     "type": "Feature"
-    },
-    "name": "N20261005-6222",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": 13296,
-    "relatedLines": [
-     "7A",
-     "15A",
-     "N62"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 415,
-      "lineName": "15A",
-      "vehicleType": "ptBusCity"
-     },
-     {
-      "lineId": 407,
-      "lineName": "7A",
-      "vehicleType": "ptBusCity"
-     },
-     {
-      "lineId": 562,
-      "lineName": "N62",
-      "vehicleType": "ptBusNight"
-     }
-    ],
-    "relatedStops": [
-     779,
-     781
-    ],
-    "time": {
-     "end": "2027-10-05T11:11:00.000+0200",
-     "start": "2026-10-05T16:10:00.000+0200",
-     "validFrom": "2026-10-05T16:03:00.000+0200"
-    },
-    "title": "7A, 15A, N62: Eibesbrunnergasse beide Fahrtrichtungen"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "<h2>Bauarbeiten</h2>\r\n<p>Wegen der Neuerrichtung der &Ouml;BB-Bahnviadukte im Bereich Helenengasse und Stoffellagasse treten bei der Linie 80A Ma&szlig;nahmen in Kraft. Beachten Sie bitte die unterschiedlichen Ma&szlig;nahmen werktags bzw. am Wochenende.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Von Dienstag, 20. Oktober 2026 bis etwa September 2027.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Montag-Freitag, Linie 80A in Richtung Schlachthausgasse U:</strong><br />Umleitung ab Praterstern # Franzensbr&uuml;ckenstra&szlig;e &uuml;ber Praterstern - Hauptallee - Sportklubstra&szlig;e.</p>\r\n<p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:</span><br />- Vivariumstra&szlig;e (Vivariumstra&szlig;e 6)<br /><span style=\"text-decoration: underline;\">Ersatzhaltestelle:</span><br />- Vivariumstra&szlig;e (Sportklubstra&szlig;e nach Vivariumstra&szlig;e)</p>\r\n<p><strong>Samstag, Sonntag und Feiertag, Linie 80A:</strong><br />Betrieb nur zwischen Schlachthausgasse U und Franzensbr&uuml;cke.</p>\r\n<p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen in Richtung Schlachthausgasse:</span><br />- Praterstern (Praterstern, 3. Haltestelleinsel unter dem Bahnhofsvordach)<br />- Vivariumstra&szlig;e (Vivariumstra&szlig;e 6)<br /><span style=\"text-decoration: underline;\">Ersatzhaltestellen:</span><br />- Franzensbr&uuml;cke (Vivariumstra&szlig;e 2, provisorische End- und Anfangshaltestelle an Sa, So, Fei)<br />- Vivariumstra&szlig;e (Sportklubstra&szlig;e nach Vivariumstra&szlig;e)</p>",
     "id": "N20261006-6258",
     "location": {
@@ -2104,13 +2054,13 @@
    {
     "alertCause": "unknown",
     "alertCauseId": 0,
-    "description": "<p><strong><u>Haltestellenverlegung der Linie 11 in Richtung Kaiserebersdorf, Zinnergasse</u></strong></p><p><strong><u>Haltestelle:</u></strong> Wienerfeldgasse</p><p><strong><u>Von:</u></strong> Neilreichgasse 139C - 141</p><p><strong><u>Nach:</u></strong> Neilreichgasse 139A- 139B</p><p><strong><u>Dauer:</u></strong> von 27. Oktober 2026 etwa 07:00 Uhr, bis 19. November 2026 etwa 07:00 Uhr</p><p><strong><u>Grund:</u></strong> Gleisbauarbeiten</p>",
+    "description": "<p><strong><u>Haltestellenverlegung der Linie 11 in Richtung Kaiserebersdorf, Zinnergasse</u></strong></p><p><strong><u>Haltestelle:</u></strong> Wienerfeldgasse</p><p><strong><u>Von:</u></strong> Neilreichgasse 139C - 141</p><p><strong><u>Nach:</u></strong> Neilreichgasse 139A- 139B</p><p><strong><u>Dauer:</u></strong> von 27. Oktober 2026 etwa 07:00 Uhr, bis 18. Dezember 2026 etwa 04:30 Uhr</p><p><strong><u>Grund:</u></strong> Gleisbauarbeiten</p>",
     "id": "N20261023-0001",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p><strong><u>Haltestellenverlegung der Linie 11 in Richtung Kaiserebersdorf, Zinnergasse</u></strong></p><p><strong><u>Haltestelle:</u></strong> Wienerfeldgasse</p><p><strong><u>Von:</u></strong> Neilreichgasse 139C - 141</p><p><strong><u>Nach:</u></strong> Neilreichgasse 139A- 139B</p><p><strong><u>Dauer:</u></strong> von 27. Oktober 2026 etwa 07:00 Uhr, bis 19. November 2026 etwa 07:00 Uhr</p><p><strong><u>Grund:</u></strong> Gleisbauarbeiten</p>",
-       "descriptionPlain": "Haltestellenverlegung der Linie 11 in Richtung Kaiserebersdorf, Zinnergasse Haltestelle: Wienerfeldgasse Von: Neilreichgasse 139C - 141 Nach: Neilreichgasse 139A- 139B Dauer: von 27. Oktober 2026 etwa 07:00 Uhr, bis 19. November 2026 etwa 07:00 Uhr Grund: Gleisbauarbeiten",
+       "descriptionHtml": "<p><strong><u>Haltestellenverlegung der Linie 11 in Richtung Kaiserebersdorf, Zinnergasse</u></strong></p><p><strong><u>Haltestelle:</u></strong> Wienerfeldgasse</p><p><strong><u>Von:</u></strong> Neilreichgasse 139C - 141</p><p><strong><u>Nach:</u></strong> Neilreichgasse 139A- 139B</p><p><strong><u>Dauer:</u></strong> von 27. Oktober 2026 etwa 07:00 Uhr, bis 18. Dezember 2026 etwa 04:30 Uhr</p><p><strong><u>Grund:</u></strong> Gleisbauarbeiten</p>",
+       "descriptionPlain": "Haltestellenverlegung der Linie 11 in Richtung Kaiserebersdorf, Zinnergasse Haltestelle: Wienerfeldgasse Von: Neilreichgasse 139C - 141 Nach: Neilreichgasse 139A- 139B Dauer: von 27. Oktober 2026 etwa 07:00 Uhr, bis 18. Dezember 2026 etwa 04:30 Uhr Grund: Gleisbauarbeiten",
        "title": "11: Wienerfeldgasse"
       }
      }
@@ -2141,7 +2091,7 @@
      2258
     ],
     "time": {
-     "end": "2026-11-19T07:00:00.000+0100",
+     "end": "2026-12-18T04:30:00.000+0100",
      "start": "2026-10-23T08:25:00.000+0200",
      "validFrom": "2026-10-23T08:25:00.000+0200"
     },
@@ -2889,14 +2839,14 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "<h2>Inbetriebnahme einer Autobuslinie</h2><p></p><p>Anlässlich des 24. Dezember wird die Autobuslinie 39B in Betrieb genommen und diverse Linien zu Friedhöfen verstärkt geführt.</p><p><span><strong><u>Zeitraum:<br></u></strong></span>Am 24. Dezember 2024, zwischen ca. 8:00 Uhr und 17:00 Uhr.</p><p><span><strong><u>Maßnahmen:<br></u></strong></span></p><p><strong>Linie 39B:</strong><span><u><br></u></span>Rundkurs von der Haltestelle Karthäuserstraße zum Sieveringer Friedhof und zurück.</p><p><span><u>Fahrtverlauf:</u><strong><u><br></u></strong></span>Sieveringer Straße - Brechergasse - Nottebohmstraße - Karthäuserstraße - Sieveringer Straße.</p><p><span><u>Betriebszeiten:</u><strong><u><br></u></strong></span>Karthäuserstraße - Sieveringer Friedhof: Erster Bus 08:04 Uhr, letzter Bus 16:54 Uhr.<br>Sieveringer Friedhof - Karthäuserstraße: Erster Bus 08:08 Uhr, letzter Bus 16:58 Uhr.</p><p><span><u>Haltestellen:</u><strong><u><br></u></strong></span>Die Haltestelle Karthäuserstraße des 39B befindet sich in der Sieveringer Straße 118!</p>",
+    "description": "<h2>Inbetriebnahme der Autobuslinien</h2><p>Anlässlich des 24. Dezember werden die Autobuslinien 38B und 39B in Betrieb genommen und diverse Linien zu Friedhöfen verstärkt geführt.</p><p><strong><u>Zeitraum:<br></u></strong>Am 24. Dezember 2024, zwischen ca. 8:00 Uhr und 17:00 Uhr.</p><p><strong><u>Maßnahmen:<br></u>Linie 38B:</strong><u><br></u>Rundkurs von Nußdorf, Beethovengang (bei der Endstation der Linie D) über den Nußdorfer Friedhof und den Heiligenstädter Friedhof zurück nach Nußdorf, Beethovengang.</p><p>Der erste Bus fährt bereits ab Bhf. Heiligenstadt S U, der letzte Bus fährt bis Bhf. Heiligenstadt S U und hält zusätzlich die Haltestelle Nußdorf S ein.</p><p><u>Fahrtverlauf:</u><strong><u><br></u></strong>Zahnradbahnstraße - Bockkellerstraße - Nußbergstraße - Dennweg - Kahlenberger Straße - Wildgrubgasse - Kahlenberger Straße - Greinergasse zur Zahnradbahnstraße.</p><p><u>Betriebszeiten:</u><br>Bhf. Heiligenstadt S U - Heiligenstädter Friedhof: Erster Bus: 07:52 Uhr<br>Nußdorf, Beethovengang - Heiligenstädter Friedhof: Erster Bus: 08:02 Uhr, letzter Bus: 17:00 Uhr.<br>Heiligenstädter Friedhof - Nußdorf, Beethovengang: Erster Bus: 08:09 Uhr, letzter Bus: 16:47 Uhr.<br>Heiligenstädter Friedhof - Bhf. Heiligenstadt: Letzter Bus: 17:07 Uhr.<strong><u><br></u></strong></p><p><strong>Linie 39B:</strong><u><br></u>Rundkurs von der Haltestelle Karthäuserstraße zum Sieveringer Friedhof und zurück.</p><p><u>Fahrtverlauf:</u><strong><u><br></u></strong>Sieveringer Straße - Brechergasse - Nottebohmstraße - Karthäuserstraße - Sieveringer Straße.</p><p><u>Betriebszeiten:</u><strong><u><br></u></strong>Karthäuserstraße - Sieveringer Friedhof: Erster Bus 08:04 Uhr, letzter Bus 16:54 Uhr.<br>Sieveringer Friedhof - Karthäuserstraße: Erster Bus 08:08 Uhr, letzter Bus 16:58 Uhr.</p><p><u>Haltestellen:</u><strong><u><br></u></strong>Die Haltestelle Karthäuserstraße des 39B befindet sich in der Sieveringer Straße 118!</p>",
     "id": "N20261111-0005",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<h2>Inbetriebnahme einer Autobuslinie</h2><p></p><p>Anlässlich des 24. Dezember wird die Autobuslinie 39B in Betrieb genommen und diverse Linien zu Friedhöfen verstärkt geführt.</p><p><span><strong><u>Zeitraum:<br></u></strong></span>Am 24. Dezember 2024, zwischen ca. 8:00 Uhr und 17:00 Uhr.</p><p><span><strong><u>Maßnahmen:<br></u></strong></span></p><p><strong>Linie 39B:</strong><span><u><br></u></span>Rundkurs von der Haltestelle Karthäuserstraße zum Sieveringer Friedhof und zurück.</p><p><span><u>Fahrtverlauf:</u><strong><u><br></u></strong></span>Sieveringer Straße - Brechergasse - Nottebohmstraße - Karthäuserstraße - Sieveringer Straße.</p><p><span><u>Betriebszeiten:</u><strong><u><br></u></strong></span>Karthäuserstraße - Sieveringer Friedhof: Erster Bus 08:04 Uhr, letzter Bus 16:54 Uhr.<br>Sieveringer Friedhof - Karthäuserstraße: Erster Bus 08:08 Uhr, letzter Bus 16:58 Uhr.</p><p><span><u>Haltestellen:</u><strong><u><br></u></strong></span>Die Haltestelle Karthäuserstraße des 39B befindet sich in der Sieveringer Straße 118!</p>",
-       "descriptionPlain": "Inbetriebnahme einer Autobuslinie Anlässlich des 24. Dezember wird die Autobuslinie 39B in Betrieb genommen und diverse Linien zu Friedhöfen verstärkt geführt. Zeitraum: Am 24. Dezember 2024, zwischen ca. 8:00 Uhr und 17:00 Uhr. Maßnahmen: Linie 39B: Rundkurs von der Haltestelle Karthäuserstraße zum Sieveringer Friedhof und zurück. Fahrtverlauf: Sieveringer Straße - Brechergasse - Nottebohmstraße - Karthäuserstraße - Sieveringer Straße. Betriebszeiten: Karthäuserstraße - Sieveringer Friedhof: Erster Bus 08:04 Uhr, letzter Bus 16:54 Uhr. Sieveringer Friedhof - Karthäuserstraße: Erster Bus 08:08 Uhr, letzter Bus 16:58 Uhr. Haltestellen: Die Haltestelle Karthäuserstraße des 39B befindet sich in der Sieveringer Straße 118!",
-       "title": "39B: Friedhofsverkehr"
+       "descriptionHtml": "<h2>Inbetriebnahme der Autobuslinien</h2><p>Anlässlich des 24. Dezember werden die Autobuslinien 38B und 39B in Betrieb genommen und diverse Linien zu Friedhöfen verstärkt geführt.</p><p><strong><u>Zeitraum:<br></u></strong>Am 24. Dezember 2024, zwischen ca. 8:00 Uhr und 17:00 Uhr.</p><p><strong><u>Maßnahmen:<br></u>Linie 38B:</strong><u><br></u>Rundkurs von Nußdorf, Beethovengang (bei der Endstation der Linie D) über den Nußdorfer Friedhof und den Heiligenstädter Friedhof zurück nach Nußdorf, Beethovengang.</p><p>Der erste Bus fährt bereits ab Bhf. Heiligenstadt S U, der letzte Bus fährt bis Bhf. Heiligenstadt S U und hält zusätzlich die Haltestelle Nußdorf S ein.</p><p><u>Fahrtverlauf:</u><strong><u><br></u></strong>Zahnradbahnstraße - Bockkellerstraße - Nußbergstraße - Dennweg - Kahlenberger Straße - Wildgrubgasse - Kahlenberger Straße - Greinergasse zur Zahnradbahnstraße.</p><p><u>Betriebszeiten:</u><br>Bhf. Heiligenstadt S U - Heiligenstädter Friedhof: Erster Bus: 07:52 Uhr<br>Nußdorf, Beethovengang - Heiligenstädter Friedhof: Erster Bus: 08:02 Uhr, letzter Bus: 17:00 Uhr.<br>Heiligenstädter Friedhof - Nußdorf, Beethovengang: Erster Bus: 08:09 Uhr, letzter Bus: 16:47 Uhr.<br>Heiligenstädter Friedhof - Bhf. Heiligenstadt: Letzter Bus: 17:07 Uhr.<strong><u><br></u></strong></p><p><strong>Linie 39B:</strong><u><br></u>Rundkurs von der Haltestelle Karthäuserstraße zum Sieveringer Friedhof und zurück.</p><p><u>Fahrtverlauf:</u><strong><u><br></u></strong>Sieveringer Straße - Brechergasse - Nottebohmstraße - Karthäuserstraße - Sieveringer Straße.</p><p><u>Betriebszeiten:</u><strong><u><br></u></strong>Karthäuserstraße - Sieveringer Friedhof: Erster Bus 08:04 Uhr, letzter Bus 16:54 Uhr.<br>Sieveringer Friedhof - Karthäuserstraße: Erster Bus 08:08 Uhr, letzter Bus 16:58 Uhr.</p><p><u>Haltestellen:</u><strong><u><br></u></strong>Die Haltestelle Karthäuserstraße des 39B befindet sich in der Sieveringer Straße 118!</p>",
+       "descriptionPlain": "Inbetriebnahme der AutobuslinienAnlässlich des 24. Dezember werden die Autobuslinien 38B und 39B in Betrieb genommen und diverse Linien zu Friedhöfen verstärkt geführt. Zeitraum: Am 24. Dezember 2024, zwischen ca. 8:00 Uhr und 17:00 Uhr. Maßnahmen: Linie 38B: Rundkurs von Nußdorf, Beethovengang (bei der Endstation der Linie D) über den Nußdorfer Friedhof und den Heiligenstädter Friedhof zurück nach Nußdorf, Beethovengang. Der erste Bus fährt bereits ab Bhf. Heiligenstadt S U, der letzte Bus fährt bis Bhf. Heiligenstadt S U und hält zusätzlich die Haltestelle Nußdorf S ein. Fahrtverlauf: Zahnradbahnstraße - Bockkellerstraße - Nußbergstraße - Dennweg - Kahlenberger Straße - Wildgrubgasse - Kahlenberger Straße - Greinergasse zur Zahnradbahnstraße. Betriebszeiten: Bhf. Heiligenstadt S U - Heiligenstädter Friedhof: Erster Bus: 07:52 Uhr Nußdorf, Beethovengang - Heiligenstädter Friedhof: Erster Bus: 08:02 Uhr, letzter Bus: 17:00 Uhr. Heiligenstädter Friedhof - Nußdorf, Beethovengang: Erster Bus: 08:09 Uhr, letzter Bus: 16:47 Uhr. Heiligenstädter Friedhof - Bhf. Heiligenstadt: Letzter Bus: 17:07 Uhr. Linie 39B: Rundkurs von der Haltestelle Karthäuserstraße zum Sieveringer Friedhof und zurück. Fahrtverlauf: Sieveringer Straße - Brechergasse - Nottebohmstraße - Karthäuserstraße - Sieveringer Straße. Betriebszeiten: Karthäuserstraße - Sieveringer Friedhof: Erster Bus 08:04 Uhr, letzter Bus 16:54 Uhr. Sieveringer Friedhof - Karthäuserstraße: Erster Bus 08:08 Uhr, letzter Bus 16:58 Uhr. Haltestellen: Die Haltestelle Karthäuserstraße des 39B befindet sich in der Sieveringer Straße 118!",
+       "title": "38B, 39B: Friedhofsverkehr"
       }
      }
     ],
@@ -2913,9 +2863,15 @@
     "reasonName": "Netzänderung",
     "refPoiCategoryId": 13296,
     "relatedLines": [
+     "38B",
      "39B"
     ],
     "relatedLinesDetails": [
+     {
+      "lineId": 238,
+      "lineName": "38B",
+      "vehicleType": "ptBusCity"
+     },
      {
       "lineId": 239,
       "lineName": "39B",
@@ -2923,11 +2879,11 @@
      }
     ],
     "time": {
-     "end": "2026-12-24T17:00:00.000+0100",
+     "end": "2026-12-24T17:10:00.000+0100",
      "start": "2026-11-11T15:55:00.000+0100",
      "validFrom": "2026-12-14T15:55:00.000+0100"
     },
-    "title": "39B: Friedhofsverkehr"
+    "title": "38B, 39B: Friedhofsverkehr"
    },
    {
     "alertCause": "construction work",
@@ -3020,6 +2976,49 @@
      "validFrom": "2026-11-11T16:12:00.000+0100"
     },
     "title": "5A, N31: Obere Augartenstraße "
+   },
+   {
+    "alertCause": "unknown",
+    "alertCauseId": 0,
+    "description": "<p><strong><u>Haltestellenverlegung der Linie 8A in Richtung Bahnhof Meidling S U</u></strong></p><p><strong><u>Haltestelle:</u></strong> Küniglberg, ORF Zentrum</p><p><strong><u>Von:</u></strong> Würzburggasse nach Einfahrt zum Friedhof</p><p><strong><u>Nach:</u></strong> Würzburggasse 49</p><p><strong><u>Dauer:</u></strong> von 16. November 2026 etwa 07:00 Uhr, bis 24. November 2026 etwa 09:00 Uhr</p><p><strong><u>Grund:</u></strong> Straßenbau</p>",
+    "id": "N20261112-0001",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><strong><u>Haltestellenverlegung der Linie 8A in Richtung Bahnhof Meidling S U</u></strong></p><p><strong><u>Haltestelle:</u></strong> Küniglberg, ORF Zentrum</p><p><strong><u>Von:</u></strong> Würzburggasse nach Einfahrt zum Friedhof</p><p><strong><u>Nach:</u></strong> Würzburggasse 49</p><p><strong><u>Dauer:</u></strong> von 16. November 2026 etwa 07:00 Uhr, bis 24. November 2026 etwa 09:00 Uhr</p><p><strong><u>Grund:</u></strong> Straßenbau</p>",
+       "descriptionPlain": "Haltestellenverlegung der Linie 8A in Richtung Bahnhof Meidling S U Haltestelle: Küniglberg, ORF Zentrum Von: Würzburggasse nach Einfahrt zum Friedhof Nach: Würzburggasse 49 Dauer: von 16. November 2026 etwa 07:00 Uhr, bis 24. November 2026 etwa 09:00 Uhr Grund: Straßenbau",
+       "title": "8A: Küniglberg, ORF Zentrum"
+      }
+     }
+    ],
+    "location": {
+     "properties": {
+      "attributes": {},
+      "coordName": "WGS84",
+      "type": "news"
+     },
+     "type": "Feature"
+    },
+    "name": "N20261112-0001",
+    "reasonId": 223,
+    "reasonName": "Haltestellenverlegung",
+    "refPoiCategoryId": 13296,
+    "relatedLines": [
+     "8A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 408,
+      "lineName": "8A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "time": {
+     "end": "2026-11-24T09:00:00.000+0100",
+     "start": "2026-11-12T10:13:00.000+0100",
+     "validFrom": "2026-11-12T10:13:00.000+0100"
+    },
+    "title": "8A: Küniglberg, ORF Zentrum"
    },
    {
     "alertCause": "undefined alert cause",

@@ -18,6 +18,7 @@ from ..feed.merge import member_guids
 from ..utils.logging import sanitize_log_arg
 from ..utils.text import names_planned_measure
 
+from .abbreviations import without_full_stop
 from .base import _to_utc, log
 from .time_line import _scheduled_clock
 from .wl_measures import _SHORT_LINE_MARKER_RE, _short_measure, _text_names_line
@@ -178,7 +179,7 @@ def _with_unowned(entry: FeedItem, members: Sequence[FeedItem]) -> FeedItem:
     said = _message_tokens(f"{_rendered_title(entry)} {text}")
     candidates = [(part.consequence or part.body).replace("*", "").strip() for part in map(_ticker_part, members)]
     messages = [
-        m.rstrip(" .")
+        without_full_stop(m)
         for m in _distinct_messages(candidates, _rendered_title(entry))
         if m.casefold() != _HINDRANCE.casefold() and not _said_already(m, said)
     ]
@@ -440,7 +441,9 @@ def _with_line_tickers(entry: FeedItem, tickers: Sequence[FeedItem]) -> FeedItem
         if all(line == stripped or _text_names_line(text, line) for line in lines):
             continue
         part = _ticker_part(ticker)
-        message = _without_cause(part.consequence or part.extra or part.body, cause).replace("*", "").strip(" .")
+        message = without_full_stop(
+            _without_cause(part.consequence or part.extra or part.body, cause).replace("*", "").lstrip(" .")
+        )
         if not message or message.casefold() == _HINDRANCE.casefold() or _said_already(message, said):
             continue
         if text and _WL_STOCK_SENTENCE_RE.match(f"{message}."):

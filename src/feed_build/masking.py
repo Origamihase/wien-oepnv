@@ -180,18 +180,20 @@ def _wl_stop_names(entry: dict[str, Any]) -> set[str]:
 def _station_entity_pattern() -> re.Pattern[str] | None:
     """A regex that matches every name of :func:`_station_entity_names`.
 
-    A hyphen in a name may stand between two spaces: WL writes the
-    directory's "Burggasse-Stadthalle" as "Burggasse - Stadthalle" (U6
-    tickers since July). Only "Burggasse" was protected, and the model made
-    "Burggasse - City Hall" of the rest (16.10.2026). A space on one side
-    only ("Lorenz-Müller- Gasse") is a typo of the source; the model left
-    it as written in the probe of 16.10.2026, so the name stays a name.
+    A hyphen may stand between two spaces ("Burggasse - Stadthalle": the
+    model made "City Hall" of the unprotected rest, 16.10.2026). Every name
+    opens with a capital or a digit, and a match may not open with the
+    lowercase form of one ("a", "ö", "š" of "Šatov"); the rest may differ in
+    case ("STADION U"). Else a stop named like a phrase ("Am Bahnhof")
+    shields the phrase in running text: "Stellwerkstörung am Bahnhof" read
+    "interlocking fault am Bahnhof" in the EN feed (31.05. to 02.10.2026).
     """
     sorted_names = _station_entity_names()
     if not sorted_names:
         return None
+    lower = "".join(sorted({name[0].lower() for name in sorted_names} - {name[0] for name in sorted_names}))
     pattern = (
-        r"(?<!\w)(?:"
+        (rf"(?<!\w)(?!(?-i:[{re.escape(lower)}]))(?:" if lower else r"(?<!\w)(?:")
         + "|".join(re.escape(name).replace(r"\-", r"(?: - |-)") for name in sorted_names)
         + r")(?!\w)"
     )
@@ -299,10 +301,7 @@ def _station_entity_names() -> tuple[str, ...]:
     """
     try:
         from ..utils.stations import _station_entries
-    except ImportError:
-        # Defensive: keeps the entity masker functional even if the
-        # stations helper is unavailable (e.g. a future refactor or a
-        # stripped-down test fixture).
+    except ImportError:  # keeps the masker working without the stations helper
         return ()
 
     names: set[str] = set()

@@ -24,9 +24,9 @@
   Gleisschaden“ zusammen.
   * WL: Ein Titel aus ganzen Sätzen behält den ersten Satz, und ist der
     noch zu lang, fällt dessen Begründung („im Rahmen …“, „zur …“,
-    „wegen …“) vor dem Partizip weg (`_shorten_wl_sentence_title`): „18:
-    Haltestelle Stadionbrücke aufgelassen“ statt
-    137 Zeichen. Nur wenn die Beschreibung jedes weggenommene Wort enthält;
+    „wegen …“) vor dem Partizip weg (`_shorten_wl_sentence_title`; der Punkt
+    einer Abkürzung bleibt, Teil 8, §13): „18: Haltestelle Stadionbrücke
+    aufgelassen“ statt 137 Zeichen. Nur wenn die Beschreibung jedes weggenommene Wort enthält;
     sie erscheint dann vollständig, weil sie den Titel nicht mehr wiederholt.
   * Baustellen: Im Abschnitt „von … bis …“ fällt zuerst „Kreuzung“ weg, dann
     jeder zweite Name an einem Ende (`_compact_baustellen_section`): „Rechte
@@ -222,12 +222,12 @@
   Bauernfeldplatz → …“. Eine Verlegung, die alle Ziele zeigt, bleibt wie
   sie ist; zeigt auch die kürzere Form nicht mehr Ziele (15A/7A/N62, drei
   Linien je Richtung), bleibt die alte. Ob ein Ziel passt, misst die
-  Kürzung des Feeds selbst (`_truncate_summary_180`, seit 2026-11-11): sie
-  endet bei 175 Zeichen an einem Wort und lässt eine bloße „32.“ fallen, so
-  las „54B: Stock im Weg“ am 11.11. „… → Ghelengasse gegenüber …“ (Issue
-  #2200; im Nachspiel 28.10.–11.11. die einzige Meldung, die das ändert).
-  Seit Juli betrifft die kürzere Form 40A Bauernfeldplatz, 17A
-  Josef-Enslein-Platz und 54B Stock im Weg.
+  Kürzung des Feeds selbst (`_truncate_summary_180`, seit 2026-11-11; vorher
+  las „54B: Stock im Weg“ „… → Ghelengasse gegenüber …“, Issue #2200). Seit
+  2026-11-12 behält sie „32.“ als Satzende (Teil 8, §13), und 54B zeigt
+  „Ghelengasse 30 → Ghelengasse 28“ mit beiden Zielen. Seit Juli betrifft
+  die kürzere Form 40A Bauernfeldplatz und 17A Josef-Enslein-Platz, 54B nur
+  vom Abend des 11.11. bis 12.11.2026.
   Im englischen Feed lesen beide Überschriften
   „Towards …“: Auch der Satz mit dem bloßen „aufgelassen“ geht wie jede
   Pfeilzeile ohne Modell (`_RELOCATION_CLOSED_LINE_RE`, seit 2026-10-25);
@@ -255,7 +255,9 @@
   endet der Text auf „… und N62 …“; ein Etikett davor fällt mit
   („Maßnahmen: Linie …“), was davor steht, bleibt ganz (Liniennummern,
   „Donaumarina U“, eine geschlossene Klammer, ein Satz mit Punkt). Von
-  308 gekürzten Texten seit Juli endeten 95 so.
+  308 gekürzten Texten seit Juli endeten 95 so. Ein Wort mit Punkt fällt
+  nur weg, wenn es eine Abkürzung ist, eine Zahl nur als Ordnungszahl;
+  „ein.“, „Uhr.“, „D.“, „Gleis 2.“ bleiben (seit 2026-11-12, Teil 8, §13).
 * **Verklebte Wörter (seit 2026-10-02).** Die Baustellentexte der Stadt
   Wien kamen mit Wörtern ohne Leerzeichen in den Feed („Derlinke
   Fahrstreifen“, „Außerhalbder Arbeitszeit“, „zuden“). Zwei Stellen: Der

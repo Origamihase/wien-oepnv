@@ -665,13 +665,12 @@ nie wegen eines fehlenden Rückblicks mit 1.
 **Website und Summary.** `docs/stats-summary.json` trägt in jedem Tick
 `archive_years`, die abgeschlossenen Jahre mit Seite, neueste zuerst;
 `SUMMARY_SCHEMA_VERSION` bleibt 1. Daraus zeichnet `renderYearSwitch`
-(`docs/assets/site-js/teil-05-statistik.js`) unter „Aktuelle Meldungen“ die
-Zeile „Statistik nach Jahr“: das laufende Jahr markiert (Sprung zu
-`#stoerungen`), dann je Jahr ein Link auf `statistik-<Jahr>.html`; ohne
-abgeschlossenes Jahr bleibt sie verborgen. Sie zeigt höchstens 30
-abgeschlossene Jahre; eine längere Liste endet in einem Chip „Ältere Jahre“
-(englisch „Earlier years“), der zu `statistik.html` führt, wo die Zeile
-„Frühere Jahre“ jedes Jahr nennt.
+(`docs/assets/site-js/teil-05-statistik.js`) unter „Aktuelle Meldungen“ die Zeile
+„Statistik nach Jahr“: das laufende Jahr markiert (Sprung zu `#stoerungen`), dann
+je Jahr ein Link auf `statistik-<Jahr>.html`; ohne abgeschlossenes Jahr bleibt
+sie verborgen. Sie zeigt höchstens 30 abgeschlossene Jahre; eine längere Liste
+endet in einem Chip „Ältere Jahre“ (englisch „Earlier years“), der zu
+`statistik.html` führt, wo die Zeile „Frühere Jahre“ jedes Jahr nennt.
 
 **Aufwand je Tick** (Median, 11.11.2026, Ledger von 2026). Mit dem Flag prüft
 jeder Tick, ob ein Rückblick überfällig ist: vor dem 04.01. ohne zu lesen,
@@ -687,14 +686,15 @@ das ist das Ergebnis der Prüfung, keine Betreiberentscheidung.
 Nachspiel echter Ticks: alle 88 Dashboard-Läufe vom 16.08. bis 11.11.2026 und
 alle 1.465 übrigen Ticks vom 11.10. bis 11.11.2026 (1.553 Ticks), README und
 `docs/statistik.md` byte-gleich, `docs/stats-summary.json` nur mit
-`"archive_years": []` mehr. Jahreswechsel im Zeitraffer (echte Ticks vom
-04.11. bis 07.11. auf 30.12.2026 bis 02.01.2027 verschoben, künstliche bis
-05.01.2027, mit `--fail-on-missing-review`) in fünf Läufen (ohne Schlüssel;
-angenommene Antwort einer Attrappe, auch die echte vom 10.11.; verworfene;
-erst am 05.01. angenommene): Exit-Codes und Anfragen wie vorgesehen, rc 1 ab
-04.01. nur ohne angenommenen Rückblick. Echte Probe am 10.11.2026 um 23:19:
-gemini-3.5-flash-lite antwortete mit 634 Zeichen, von der Prüfung angenommen.
-Tests: `tests/test_year_*.py`, `test_review_client.py`,
-`test_baustellen_ledger*.py`, `test_baustellen_year*.py`,
-`test_baustellen_rules.py`, `test_jahresrueckblick_probe.py`,
-`test_site_year_switch.py`.
+`"archive_years": []` mehr. Jahreswechsel im Zeitraffer (echte Ticks vom 04.11.
+bis 07.11. auf 30.12.2026 bis 02.01.2027 verschoben, künstliche bis 05.01.2027,
+mit `--fail-on-missing-review`) in fünf Läufen (ohne Schlüssel; angenommene
+Antwort einer Attrappe, auch die echte vom 10.11.; verworfene; erst am 05.01.
+angenommene): Exit-Codes und Anfragen wie vorgesehen, rc 1 ab 04.01. nur ohne
+angenommenen Rückblick. Echte Probe am 10.11.2026 um 23:19: gemini-3.5-flash-lite
+antwortete mit 634 Zeichen, von der Prüfung angenommen. Tests:
+`tests/test_year_*.py`, `test_review_client.py`, `test_baustellen_ledger*.py`,
+`test_baustellen_year*.py`, `test_baustellen_rules.py`,
+`test_jahresrueckblick_probe.py`, `test_site_year_switch.py`.
+
+Weiter in [Teil 8](architecture-teil-8.md).

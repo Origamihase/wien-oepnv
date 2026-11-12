@@ -12,6 +12,7 @@ from collections.abc import Sequence
 from ..feed_types import FeedItem
 from ..feed import config as feed_config
 
+from .abbreviations import is_abbreviation_period
 from .base import _WHITESPACE_RE, _sanitize_text
 from .display_titles import _CATEGORY_PREFIX_WORDS, _TICKER_ABBREVIATIONS, _TITLE_BODY_RE, _TITLE_REASON_WORDS
 from .summary_text import _strip_trailing_directional_marker, _title_body, _truncate_summary_180
@@ -190,13 +191,18 @@ def _lead_with_fragment(fragment: str, uncut_summary: str) -> str:
     The consequence in front costs the summary room: "Busse halten bei der
     Linie 14A." pushed the 13A summary past 180 characters, and a plain cut
     ended it on "… 48A aus. Voraussichtliche …". Over budget, the text ends
-    behind the last sentence that fits (:func:`_last_sentence_end`); only
-    when none does is it cut mid-sentence as before.
+    behind the last sentence of the summary that fits
+    (:func:`_last_sentence_end`). When not even its first sentence fits, the
+    text is cut mid-sentence like every other summary: the consequence alone
+    dropped all of WL's text, and five such descriptions were published
+    between 29.09. and 06.11.2026 ("13A: Feuerwehreinsatz" on 05.11. read
+    only "Betrieb ab Neubaugasse, Burggasse.").
     """
-    text = f"{_as_sentence(fragment)} {uncut_summary}"
+    lead = _as_sentence(fragment)
+    text = f"{lead} {uncut_summary}"
     if len(text) > 180:
         end = _last_sentence_end(text, 180, start=len(fragment))
-        if end is not None:
+        if end is not None and end > len(lead):
             text = text[:end]
     return _strip_trailing_directional_marker(_truncate_summary_180(text))
 
@@ -204,32 +210,30 @@ def _lead_with_fragment(fragment: str, uncut_summary: str) -> str:
 # A period between a word and a capitalised word, as candidates for a
 # sentence end in :func:`_last_sentence_end`.
 _LOOSE_SENTENCE_END_RE = re.compile(r"(?<=\w)\.(?=\s+[A-ZÄÖÜ])")
-_WORD_BEFORE_PERIOD_RE = re.compile(r"(\w+)$")
-# Abbreviations of three letters or more that WL texts put before a
-# capitalised word ("Bahnhst bzw. Gerasdorf", "Wien Hbf. Richtung …").
-_NOT_A_SENTENCE_END: frozenset[str] = frozenset({
-    "bzw", "usw", "ggf", "ggü", "etc", "vgl", "sog", "evtl", "inkl", "hbf", "str",
-})
-
 
 def _last_sentence_end(text: str, limit: int, *, start: int = 0) -> int | None:
     """End (after the period) of the last sentence in ``text[start:limit]``.
 
-    Looser than :data:`_SENTENCE_SPLIT_RE`: three letters before the period
-    suffice ("aus.", "Uhr."), because this only picks where to cut an
-    over-long text. Numbers ("17. Februar"), one- and two-letter
-    abbreviations ("U.", "b.", "Nr.") and :data:`_NOT_A_SENTENCE_END` never
-    end a sentence.
+    Looser than :data:`_SENTENCE_SPLIT_RE`: a period before a capital ends
+    a sentence unless :func:`is_abbreviation_period` says it closes an
+    abbreviation or an ordinal ("Bhf.", "Hbf.", "bzw.", "prov.", "b.",
+    "Fahrleitungsgebr.", "17. Februar"); the N8 summary of 30.10.2026 would
+    have ended "… in beiden Richtungen zwischen Bhf." because "Bhf.
+    Meidling" did. Words of every length end one ("aus.", "Uhr.", "PKW.",
+    the stop marker "U.", the line "D.", "Gleis 2."): until 2026-11-12 words
+    of one or two letters and numbers never did, and the lead "Betrieb ab
+    Matzleinsdorfer Platz." of line 6 (21.08.2026) stood over "… über
+    Hauptbahnhof S U. Grund: Polizeieinsatz …" cut mid-sentence although
+    the sentence before "Grund" fit. The capital after the period may lie
+    behind ``limit``: "… 52 und 48A aus." of 13A (26.09.2026) ended at
+    character 180 and must count.
     """
     best: int | None = None
-    for match in _LOOSE_SENTENCE_END_RE.finditer(text, start, limit):
-        word = _WORD_BEFORE_PERIOD_RE.search(text, 0, match.start())
-        if word is None:
-            continue
-        token = word.group(1)
-        if len(token) < 3 or token.isdigit() or token.casefold() in _NOT_A_SENTENCE_END:
-            continue
-        best = match.end()
+    for match in _LOOSE_SENTENCE_END_RE.finditer(text, start):
+        if match.end() > limit:
+            break
+        if not is_abbreviation_period(text, match.start()):
+            best = match.end()
     return best
 
 

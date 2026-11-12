@@ -95,9 +95,11 @@ def test_a_relocation_that_fits_keeps_its_old_place() -> None:
 
 # "54B: Stock im Weg", 11.11.2026 (KI-Wächter, issue #2200): both
 # destinations seemed to fit, the second one ended at character 167. The
-# cut ends at 175 characters on a word and drops a bare "32." behind it, so
-# the feed read "Ghelengasse gegenüber 28 → Ghelengasse gegenüber …". The
-# check now uses the feed's own cut.
+# cut then dropped a bare "32." behind it, so the feed read "Ghelengasse
+# gegenüber 28 → Ghelengasse gegenüber …". The check now uses the feed's own
+# cut, which since 2026-11-12 keeps "32." as the end of its sentence
+# (docs/architecture-teil-8.md, §13): both destinations show whole, the old
+# places stay.
 NOTICE_54B = (
     "<p><strong><u>Haltestellenverlegung der Linie 54B in Richtung St. Veiter Tor</u></strong></p>"
     + _field("Haltestelle:", "Stock im Weg")
@@ -115,11 +117,22 @@ NOTICE_54B = (
 )
 
 
-def test_a_destination_the_cut_would_shorten_drops_the_old_places() -> None:
+def test_54b_shows_both_destinations_with_their_old_places() -> None:
     text = _short_text("54B: Stock im Weg", NOTICE_54B)
     assert text.startswith(
+        "Ghelengasse 30 → Ghelengasse 28. Haltestellenverlegung der Linie 54B in Richtung "
+        "St. Veiter Tor. Grund: Straßenbau. Ghelengasse gegenüber 28 → Ghelengasse gegenüber 32. "
+    )
+    assert "gegenüber …" not in text
+
+
+def test_a_destination_the_cut_would_shorten_drops_the_old_places() -> None:
+    # Ends at character 178: inside 180 by count, behind the cut at 175.
+    notice = NOTICE_54B.replace("Ghelengasse gegenüber 32", "Ghelengasse gegenüber Hausnummer 32")
+    text = _short_text("54B: Stock im Weg", notice)
+    assert text.startswith(
         "→ Ghelengasse 28. Haltestellenverlegung der Linie 54B in Richtung St. Veiter Tor. "
-        "Grund: Straßenbau. → Ghelengasse gegenüber 32. "
+        "Grund: Straßenbau. → Ghelengasse gegenüber Hausnummer 32. "
     )
     assert "gegenüber …" not in text
 
