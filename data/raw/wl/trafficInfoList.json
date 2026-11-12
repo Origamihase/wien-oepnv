@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261112-0032-F01, I20261112-0034, I20261020-0029, I20261112-0036, I20261112-0033-F02, I20261112-0030-F01, I20260909-0007, I20261112-0033-F01, I20260925-0011, I20261112-0035"
+    "trafficInfoNameList": "I20261112-0032-F01, I20261112-0038-F02, I20261112-0034, I20261020-0029, I20261112-0037, I20261112-0036-F01, I20261112-0033-F02, I20261112-0038-F01, I20260909-0007, I20261112-0033-F01, I20260925-0011, I20261112-0035"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R2558-125, R3886-480, R293-474, R2380-627, R2373-126, R2379-627, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R401-101, R1974-466, R1199-205, R500-101, R552-109, R521-109, R143-109, R524-109, R576-160, R577-160, R1639-160, R1636-160, R1638-160, R1610-160, R1537-160, R1613-160, R1611-160, R5611-160, R578-110, R577-110, R574-110, R1603-110, R1605-110, R1602-110, R1597-110, R1610-110, R1599-110, R1615-160, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R2558-125, R3886-480, R293-474, R2379-627, R2373-126, R2380-627, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R401-101, R1974-466, R1199-205, R500-101, R577-160, R576-160, R1639-160, R1636-160, R1638-160, R1611-160, R1537-160, R1610-160, R1613-160, R5611-160, R574-110, R578-110, R577-110, R1603-110, R1605-110, R1602-110, R1610-110, R1597-110, R1599-110, R1615-160, R699-413, R698-413, R697-413, R695-413, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -169,53 +169,6 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "9": "ptTram"
-     }
-    },
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "9: Falschparker"
-      }
-     }
-    ],
-    "location": "Hormayrgasse 58",
-    "name": "I20261112-0030-F01",
-    "owner": "WL",
-    "parentName": "I20261112-0030",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 109,
-      "lineName": "9",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-12T14:26:00.000+0100",
-     "end": "2026-11-12T14:59:00.000+0100",
-     "lastUpdate": "2026-11-12T14:59:00.000+0100",
-     "resume": "2026-11-12T14:59:00.000+0100",
-     "start": "2026-11-12T14:10:00.000+0100"
-    },
-    "title": "9: Falschparker"
    },
    {
     "alertCause": "defective vehicle",
@@ -459,19 +412,19 @@
       "13A": "ptBusCity"
      }
     },
-    "description": "Linie 13A: Fahrtbehinderung in Richtung Alser Straße, Skodagasse. Voraussichtliche Dauer: 15:30 Uhr. Grund: Falschparker im Bereich Phorusgasse 8.",
-    "descriptionHTML": "<p>Linie 13A:<br>Fahrtbehinderung in Richtung Alser Straße, Skodagasse.</p><p>Voraussichtliche Dauer: 15:30 Uhr.</p><p>Grund: Falschparker im Bereich Phorusgasse 8.</p>",
+    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 13A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 13A:<br>Fahrtbehinderung in Richtung Alser Straße, Skodagasse.</p><p>Voraussichtliche Dauer: 15:30 Uhr.</p><p>Grund: Falschparker im Bereich Phorusgasse 8.</p>",
-       "descriptionPlain": "Linie 13A: Fahrtbehinderung in Richtung Alser Straße, Skodagasse. Voraussichtliche Dauer: 15:30 Uhr. Grund: Falschparker im Bereich Phorusgasse 8.",
+       "descriptionHtml": "<p>Linie 13A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "13A: Falschparker"
       }
      }
     ],
     "location": "Phorusgasse 8",
-    "name": "I20261112-0036",
+    "name": "I20261112-0036-F01",
     "owner": "WL",
     "parentName": "I20261112-0036",
     "priority": "1",
@@ -490,11 +443,149 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-12T14:59:00.000+0100",
-     "lastUpdate": "2026-11-12T14:59:00.000+0100",
+     "created": "2026-11-12T15:06:00.000+0100",
+     "lastUpdate": "2026-11-12T15:06:00.000+0100",
+     "resume": "2026-11-12T15:06:00.000+0100",
      "start": "2026-11-12T14:58:00.000+0100"
     },
     "title": "13A: Falschparker"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "O: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261112-0037",
+    "owner": "WL",
+    "parentName": "I20261112-0037",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 170,
+      "lineName": "O",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T15:02:00.000+0100",
+     "lastUpdate": "2026-11-12T15:02:00.000+0100",
+     "resume": "2026-11-12T15:02:00.000+0100",
+     "start": "2026-11-12T15:02:00.000+0100"
+    },
+    "title": "O: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "92A": "ptBusCity"
+     }
+    },
+    "description": "Linie 92A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 92A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 92A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 92A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "92A: Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Hardeggasse",
+    "name": "I20261112-0038-F01",
+    "owner": "WL",
+    "parentName": "I20261112-0038",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "92A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 492,
+      "lineName": "92A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T15:25:00.000+0100",
+     "lastUpdate": "2026-11-12T15:25:00.000+0100",
+     "resume": "2026-11-12T15:25:00.000+0100",
+     "start": "2026-11-12T15:09:00.000+0100"
+    },
+    "title": "92A: Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "96A": "ptBusCity"
+     }
+    },
+    "description": "Linie 96A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 96A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 96A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 96A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "96A: Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Hardeggasse",
+    "name": "I20261112-0038-F02",
+    "owner": "WL",
+    "parentName": "I20261112-0038",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "96A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 496,
+      "lineName": "96A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T15:25:00.000+0100",
+     "lastUpdate": "2026-11-12T15:25:00.000+0100",
+     "resume": "2026-11-12T15:25:00.000+0100",
+     "start": "2026-11-12T15:09:00.000+0100"
+    },
+    "title": "96A: Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -518,29 +609,6 @@
      "start": "2026-11-12T04:45:18.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R143-109",
-    "owner": "WL",
-    "parentName": "R143-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     143
-    ],
-    "time": {
-     "end": "2026-11-12T15:18:00.000+0100",
-     "start": "2026-11-12T14:19:15.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1488,75 +1556,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R521-109",
-    "owner": "WL",
-    "parentName": "R521-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     521
-    ],
-    "time": {
-     "end": "2026-11-12T15:10:00.000+0100",
-     "start": "2026-11-12T14:10:43.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R524-109",
-    "owner": "WL",
-    "parentName": "R524-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     524
-    ],
-    "time": {
-     "end": "2026-11-12T15:24:00.000+0100",
-     "start": "2026-11-12T14:24:14.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R552-109",
-    "owner": "WL",
-    "parentName": "R552-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     552
-    ],
-    "time": {
-     "end": "2026-11-12T15:10:00.000+0100",
-     "start": "2026-11-12T14:10:42.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Rettungseinsatz\nBetrieb ab Hofwiesengasse",
     "name": "R5611-160",
     "owner": "WL",
@@ -1691,6 +1690,98 @@
      "start": "2026-11-12T14:47:45.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Linzer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R695-413",
+    "owner": "WL",
+    "parentName": "R695-413",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     695
+    ],
+    "time": {
+     "end": "2026-11-12T16:01:00.000+0100",
+     "start": "2026-11-12T15:01:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R697-413",
+    "owner": "WL",
+    "parentName": "R697-413",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     697
+    ],
+    "time": {
+     "end": "2026-11-12T16:01:00.000+0100",
+     "start": "2026-11-12T15:01:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R698-413",
+    "owner": "WL",
+    "parentName": "R698-413",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     698
+    ],
+    "time": {
+     "end": "2026-11-12T16:01:00.000+0100",
+     "start": "2026-11-12T15:01:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R699-413",
+    "owner": "WL",
+    "parentName": "R699-413",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     699
+    ],
+    "time": {
+     "end": "2026-11-12T16:01:00.000+0100",
+     "start": "2026-11-12T15:01:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",

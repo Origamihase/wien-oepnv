@@ -1,13 +1,21 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-12T14:01:23.729991+00:00",
- "built": "2026-11-12T15:01:07+01:00",
+ "updated": "2026-11-12T14:30:49.704794+00:00",
+ "built": "2026-11-12T15:30:36+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-12T15:01:07+01:00",
+  "built": "2026-11-12T15:30:36+01:00",
   "items": [
+   {
+    "title": "92A/96A: Verkehrsunfall",
+    "time_line": "Seit 15:09"
+   },
+   {
+    "title": "O: Verkehrsüberlastung",
+    "time_line": "Seit 15:02"
+   },
    {
     "title": "13A: Falschparker",
     "time_line": "Seit 14:58"
@@ -25,10 +33,6 @@
     "time_line": "Seit 14:41"
    },
    {
-    "title": "Wien Meidling ↔ St. Pölten Hbf",
-    "time_line": "Seit 12:25"
-   },
-   {
     "title": "U3: Schadhaftes Fahrzeug",
     "time_line": "Seit 14:24"
    },
@@ -43,10 +47,6 @@
    {
     "title": "54B: Stock im Weg",
     "time_line": "Bis Fr 13.11."
-   },
-   {
-    "title": "65A: Triester Straße, Rossakgasse",
-    "time_line": "Seit 11.11."
    }
   ]
  },
@@ -6751,19 +6751,37 @@
     "oebb": 7,
     "wl": 88
    }
+  },
+  {
+   "t": "2026-11-12T14:30:49.704794+00:00",
+   "raw": {
+    "wl-stoerungen": 69,
+    "wl-hinweise": 76,
+    "oebb": 185,
+    "baustellen-linien": 51,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 14,
+    "oebb": 160,
+    "baustellen": 61
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 92
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-12T14:01:23.729991+00:00"
+   "last_ok": "2026-11-12T14:30:49.704794+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-12T13:30:53.168480+00:00",
-   "last_exit": 1,
-   "failing_since": "2026-11-12T14:01:23.729991+00:00"
+   "last_ok": "2026-11-12T14:30:49.704794+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-12T14:01:23.729991+00:00"
+   "last_ok": "2026-11-12T14:30:49.704794+00:00"
   }
  }
 }
