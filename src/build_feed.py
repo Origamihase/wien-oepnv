@@ -347,7 +347,6 @@ class FeedAssemblyStats:
     deduped_count: int = 0
     duplicates_removed: int = 0
     duplicate_summaries: list[DuplicateSummary] = dataclasses.field(default_factory=list)
-    dropped_ids: set[str] = dataclasses.field(default_factory=set)
     filter_duration: float = 0.0
     dedupe_duration: float = 0.0
 
@@ -385,8 +384,7 @@ def _assemble_feed_items(
     _note_announced_starts(items, state, now)
     # The shown ÖBB section's end, before the age filter reads ``ends_at``.
     _end_with_oebb_lead_section(items)
-    items, dropped_ids = _drop_old_items(items, now, state)
-    stats.dropped_ids = dropped_ids
+    items, _ = _drop_old_items(items, now, state)
     stats.filter_duration = perf_counter() - filter_start
     stats.filtered_count = len(items)
     log.info(
@@ -456,7 +454,6 @@ def _assemble_feed_items(
     items = _carry_item_identity(items, state, now)
     # Sudden or planned, where the rules cannot tell (``src.ki_entscheidung``).
     decide(items, state, now)
-    stats.dropped_ids -= {str(it.get("guid")) for it in items if it.get("guid")}
     stats.deduped_count = len(items)
     stats.duplicates_removed = sum(
         summary.count - 1 for summary in stats.duplicate_summaries
@@ -615,8 +612,9 @@ def main() -> int:
         _remember_item_identity(items, state, now)
         ki.finish()
 
+        # Without deletions: a message that left keeps its entry (``_drop_old_items``).
         try:
-            _save_state(state, deletions=stats.dropped_ids)
+            _save_state(state)
         except Exception as e:
             # Security (Clear-Text-Logging Drift): broad framework catch.
             log.warning(

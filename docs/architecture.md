@@ -145,7 +145,7 @@ sequenceDiagram
     Note over Build: Hinweis tritt zurück, solange<br/>WLs Live-Störung ihn meldet
     Build->>Build: _drop_baustellen_twins + _carry_item_identity
     Note over Build: Baustelle mit WL-Zwilling fällt weg,<br/>zusammengelegte Einträge behalten GUID
-    Build->>Build: Sortierung + _defer_* / _apply_topic_budget
+    Build->>Build: decide (KI-Entscheidung, §14) + Sortierung + _defer_* / _apply_topic_budget
     Note over Build: entscheidet, was die zehn Plätze bekommt
     Build->>RSS: _make_rss + atomic_write
     RSS-->>Cron: docs/feed.xml
@@ -165,9 +165,9 @@ sequenceDiagram
 
 ### Eine Feed-Kette, ein Modul (seit 2026-10-15)
 
-Alle Schritte zwischen Abruf und RSS (Testmeldungen, Altersfilter, Dedupe,
-WL-Zusammenlegung, Baustellen-Zwillinge, `_carry_item_identity`, Sortierung
-und die `_defer_*`-Regeln) stehen in genau einer Funktion,
+Alle Schritte zwischen Abruf und RSS (Testmeldungen, Altersfilter, Dedupe, WL-Zusammenlegung,
+Hinweis hinter der Live-Störung, Baustellen-Zwillinge, `_carry_item_identity`, Gemini-Antwort für
+unklare Störungen, Sortierung und die `_defer_*`-Regeln) stehen in genau einer Funktion,
 `_assemble_feed_items` in `src/build_feed.py`. `main()` ruft sie zwischen
 `_invoke_collect_items` und `_make_rss` auf und liest Zählwerte und Zeiten für
 den Health-Report aus `FeedAssemblyStats`. Jede Probe, die einen früheren

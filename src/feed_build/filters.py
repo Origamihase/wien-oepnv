@@ -97,6 +97,25 @@ def _drop_old_items(
        Quell-Startdatum. So fällt ein aktiver Langläufer nicht wegen eines
        alten Startdatums heraus; ein noch nicht im State vermerktes Item ist
        brandneu und wird hier nie ausgemustert.
+
+    Der zweite Rückgabewert nennt, was hier ausschied. Der State-Eintrag
+    einer solchen Meldung bleibt stehen (``main`` übergibt ``_save_state``
+    seit 2026-11-12 keine Löschungen mehr); erst die Aufbewahrungsfrist
+    ``STATE_RETENTION_DAYS`` vergisst ihn. Der Eintrag ist das, was der Feed
+    von einer Meldung weiß. Ein Takt-Lauf sieht ein Ende hier fast nie, der
+    Abruf lässt eine beendete Meldung vorher weg; ein Neubau zwischen zwei
+    Takten liest sie noch aus dem Cache. Am 11.11.2026 löschte der Neubau um
+    01:24 Wiener Zeit so den Eintrag von „66A: Busse halten
+    Salvatorianerplatz“ (Ende 01:00, im Feed seit 03.10.). WL gab die
+    Maßnahme um 04:40 wie jeden Tag neu aus, und sie stand als neu auf
+    Platz 2 statt um Platz 23. Mit dem Eintrag unterscheidet
+    ``_restart_recurring_occurrences`` die neu ausgegebene Maßnahme von
+    einem neuen Auftreten, wie nach jedem Takt-Lauf. Aus demselben Grund
+    bleibt eine Meldung jenseits von ``MAX_ITEM_AGE_DAYS`` draußen, solange
+    ihr Eintrag besteht: Ohne Eintrag käme sie mit dem nächsten Bau als neu
+    zurück. Die Aufbewahrungsfrist zählt ab ``first_seen``; führt die Quelle
+    eine Meldung 600 Tage nach ihrem ersten Erscheinen noch, gilt sie danach
+    wieder als neu.
     """
 
     out: list[FeedItem] = []

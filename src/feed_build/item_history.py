@@ -19,6 +19,7 @@ from ..providers.wl_text import STOP_NOTICE_LEAD_RE
 from ..utils.text import html_to_text
 
 from .base import _PLANNED_DISRUPTION_RE, _parse_datetime, _parse_first_seen, _parse_state_time, _to_utc, log
+from .filters import _drop_after
 from .state import _lookup_state
 from .time_line import _wl_incident_start
 from .title_words import _rendered_title
@@ -66,7 +67,8 @@ def _restart_recurring_occurrences(
     right up to the new start: WL re-issues running measures ("Busse halten
     …") with a fresh validity window every day or few days, and those must
     keep their place ("man kennt die Meldung schon"). ``last_seen`` tells the
-    two apart — stamped here on every build for every WL item with an entry:
+    two apart — stamped here on every build for every WL item with an entry
+    that has not run out:
 
     * last seen within ``_OCCURRENCE_GAP`` before the new start — within
       ``_PLANNED_OCCURRENCE_GAP`` for a planned measure, which WL re-issues
@@ -91,6 +93,17 @@ def _restart_recurring_occurrences(
             continue
         _, entry = _lookup_state(it, state)
         if entry is None:
+            continue
+        # A message that has run out leaves in ``_drop_old_items`` right
+        # after this, and its entry stays as the last build that showed it
+        # left it. A rebuild between two runs still reads such a message
+        # from the cache, and its stamp would say the message was there
+        # after its end: "U2: Schadhaftes Fahrzeug" ended at 09:35 on
+        # 03.11.2026, the rebuild of 09:59 read it once more, and the next
+        # incident of that name began at 11:53, within ``_OCCURRENCE_GAP``
+        # of the rebuild, not of the last run that showed it (09:30).
+        drop_after = _drop_after(it)
+        if drop_after is not None and drop_after < now_utc:
             continue
         first_seen = _parse_first_seen(entry, None)
         pub = _parse_datetime(it.get("pubDate"))

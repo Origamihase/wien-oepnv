@@ -319,9 +319,11 @@ def test_the_state_file_is_that_of_a_build_without_the_item(
 ) -> None:
     skipped, reference, now = _pair(monkeypatch, tmp_path, step)
 
-    # The earlier entry of the failing item stays, the one that ran out goes,
-    # and nothing of the failed run or of the single-item trials is left.
-    assert sorted(skipped.state) == sorted([*OTHERS, FAILING, "guid-gone"])
+    # The earlier entry of the failing item stays, as does the one of the
+    # item that ran out (since 2026-11-12 a build deletes no entry, see
+    # ``tests/test_state_entry_survives_expiry.py``), and nothing of the
+    # failed run or of the single-item trials is left.
+    assert sorted(skipped.state) == sorted([*OTHERS, FAILING, "guid-gone", "guid-expired"])
     assert skipped.state[FAILING] == _earlier_state(now)[FAILING]
     assert _without_run_times(skipped.state, now) == _without_run_times(reference.state, now)
 

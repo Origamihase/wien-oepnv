@@ -111,9 +111,8 @@ def _is_current_incident(
 def _baustelle_start_cap(item: FeedItem, moment: datetime, now_utc: datetime) -> datetime:
     """A Stadt Wien Baustelle counts as new no later than on its start day.
 
-    The Baustellen GUID carries the end date, and a site whose end has passed
-    leaves the state. When the city extends a site, it returns with a new
-    GUID and counted as brand-new: "Burggasse 67", running since 28.07., end
+    The Baustellen GUID carries the end date. When the city extends a site,
+    it returns with a new GUID and counted as brand-new: "Burggasse 67", running since 28.07., end
     moved from 02.10. to 30.10. and listed again on 08.10., stood on place 9
     as the newest item of the feed. Its start says what it is: works running
     since July. Like a re-issued WL measure, it keeps its place. A site seen
