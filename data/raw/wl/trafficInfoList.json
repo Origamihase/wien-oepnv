@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261112-0015, I20261112-0016-F01, I20261112-0019, I20260925-0011, I20260909-0007, I20261112-0018, I20261112-0010, I20261020-0029, I20261112-0014, I20261112-0020"
+    "trafficInfoNameList": "I20261112-0016-F01, I20261112-0019, I20261112-0021, I20260925-0011, I20260909-0007, I20261112-0018, I20261020-0029, I20261112-0020"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1880-101, R1876-101, R1875-101, R1883-101, R1884-101, R3886-480, R2558-125, R293-474, R318-437, R1882-101, R1881-101, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R2345-127, R2380-627, R401-101, R1974-466, R1199-205, R500-101, R1365-102, R588-102, R588-110, R586-110, R587-110, R566-110, R568-110, R564-110, R565-110, R563-110, R556-102, R562-102, R561-102, R560-102, R248-102, R247-102, R1366-102, R1367-102, R1368-102, R561-110, R562-110, R3468-110, R548-102, R1364-102, R1362-102, R1363-102, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R3886-480, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R2558-125, R293-474, R318-437, R2379-627, R2373-126, R2380-627, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R401-101, R1974-466, R1199-205, R500-101, R1365-102, R588-102, R588-110, R587-110, R586-110, R566-110, R568-110, R565-110, R564-110, R563-110, R556-102, R560-102, R562-102, R561-102, R248-102, R247-102, R1367-102, R1368-102, R1366-102, R561-110, R562-110, R3468-110, R548-102, R1364-102, R1363-102, R1362-102, R2173-127, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -169,141 +169,6 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U1: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261112-0010",
-    "owner": "WL",
-    "parentName": "I20261112-0010",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 301,
-      "lineName": "U1",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T07:36:00.000+0100",
-     "lastUpdate": "2026-11-12T07:36:00.000+0100",
-     "resume": "2026-11-12T07:35:00.000+0100",
-     "start": "2026-11-12T07:35:00.000+0100"
-    },
-    "title": "U1: Verspätungen"
-   },
-   {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
-      "O": "ptTram"
-     }
-    },
-    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "O: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261112-0014",
-    "owner": "WL",
-    "parentName": "I20261112-0014",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 170,
-      "lineName": "O",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T08:54:00.000+0100",
-     "lastUpdate": "2026-11-12T08:54:00.000+0100",
-     "resume": "2026-11-12T08:54:00.000+0100",
-     "start": "2026-11-12T08:54:00.000+0100"
-    },
-    "title": "O: Verkehrsüberlastung"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "60": "ptTram"
-     }
-    },
-    "description": "Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 60:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 60:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-       "title": "60: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261112-0015",
-    "owner": "WL",
-    "parentName": "I20261112-0015",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 160,
-      "lineName": "60",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T09:15:00.000+0100",
-     "lastUpdate": "2026-11-12T09:15:00.000+0100",
-     "resume": "2026-11-12T09:15:00.000+0100",
-     "start": "2026-11-12T09:15:00.000+0100"
-    },
-    "title": "60: Verkehrsunfall"
    },
    {
     "alertCause": "police activity",
@@ -494,6 +359,50 @@
      "start": "2026-11-12T09:58:00.000+0100"
     },
     "title": "U6: Verspätungen"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "27": "ptTram"
+     }
+    },
+    "description": "Linie 27: Örtliche Umleitung in Richtung Strebersdorf zwischen Floridsdorf S U und Koloniestraße. Die Haltestellen Nordbrücke und Am Spitz können dadurch nicht eingehalten werden. Voraussichtliche Dauer: 11:00 Uhr. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 27:<br>Örtliche Umleitung in Richtung Strebersdorf<br>zwischen Floridsdorf S U und Koloniestraße.<br>Die Haltestellen Nordbrücke und Am Spitz können dadurch nicht eingehalten werden.</p><p>Voraussichtliche Dauer: 11:00 Uhr.</p><p>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 27:<br>Örtliche Umleitung in Richtung Strebersdorf<br>zwischen Floridsdorf S U und Koloniestraße.<br>Die Haltestellen Nordbrücke und Am Spitz können dadurch nicht eingehalten werden.</p><p>Voraussichtliche Dauer: 11:00 Uhr.</p><p>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 27: Örtliche Umleitung in Richtung Strebersdorf zwischen Floridsdorf S U und Koloniestraße. Die Haltestellen Nordbrücke und Am Spitz können dadurch nicht eingehalten werden. Voraussichtliche Dauer: 11:00 Uhr. Grund: Rettungseinsatz.",
+       "title": "27: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261112-0021",
+    "owner": "WL",
+    "parentName": "I20261112-0021",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 127,
+      "lineName": "27",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T10:30:00.000+0100",
+     "lastUpdate": "2026-11-12T10:30:00.000+0100",
+     "start": "2026-11-12T10:28:00.000+0100"
+    },
+    "title": "27: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -862,6 +771,29 @@
      "start": "2026-11-12T04:40:18.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Koloniestraße",
+    "name": "R2173-127",
+    "owner": "WL",
+    "parentName": "R2173-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2173
+    ],
+    "time": {
+     "end": "2026-11-12T11:29:00.000+0100",
+     "start": "2026-11-12T10:30:22.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Koloniestraße"
    },
    {
     "alertCause": "undefined alert cause",
