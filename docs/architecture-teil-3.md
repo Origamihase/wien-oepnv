@@ -52,9 +52,10 @@ dieser Reihenfolge:
    Monat, aber anderem Jahr: Es gilt das Jahr näher an der Veröffentlichung
    (`year_conflict`). Ein Beginndatum vor der Veröffentlichung, dessen Tag in
    einem späteren Jahr höchstens 90 Tage nach ihr liegt und nicht nach WLs
-   echtem Ende oder dem Text-Ende statt eines Platzhalters (nicht einem aus
-   einer Dauer gerechneten), trägt das Jahr einer älteren Meldung: Es gilt
-   dieser Tag (`stale_year`, seit 2026-11-11). Anlass: 39B Friedhofsverkehr,
+   echtem Ende oder dem Text-Ende statt eines Platzhalters (so entschieden
+   vom Betreiber am 12.11.2026, „Ja, Text-Ende zählt“; nicht einem aus einer
+   Dauer gerechneten), trägt das Jahr einer älteren Meldung: Es gilt dieser
+   Tag (`stale_year`, seit 2026-11-11). Anlass: 39B Friedhofsverkehr,
    „Am 24. Dezember 2024“, stand ab 11.11.2026 als laufend im Feed.
 2. **Harte Grenzen.** Ein Beginn nach dem Ende wird vom Ende überstimmt
    (`begin_after_end`). Ein Beginn mehr als 365 Tage nach der
@@ -630,11 +631,10 @@ diesem Fall still übersprungen. Jetzt gilt:
   `session_with_retries` und für `request_safe`). `verify_response_ip` prüft
   dasselbe nach der Antwort.
 - Die Liste nennt genau die Upstreams des Projekts: Wiener Linien, ÖBB
-  (Fahrplan und Daten), VAO, Stadt Wien (Baustellen), Overpass,
-  GitHub-API und `raw.githubusercontent.com` (Google Places ist seit
-  2026-10-16 entfernt). Ein Test
-  gleicht sie mit den im Code konfigurierten Hosts ab, in beide Richtungen.
-  Ein neuer Upstream muss dort eingetragen werden.
+  (Fahrplan und Daten), VAO, Stadt Wien (Baustellen), Overpass, GitHub-API
+  und `raw.githubusercontent.com` (Google Places ist seit 2026-10-16
+  entfernt). Ein Test gleicht sie mit den im Code konfigurierten Hosts ab,
+  in beide Richtungen. Ein neuer Upstream muss dort eingetragen werden.
 - Die Produktions-Workflows setzen keinen Proxy. Betroffen sind
   Entwicklungsrechner und Sandboxes. GitHub-Enterprise-Hosts aus
   `FEED_GITHUB_ENTERPRISE_HOSTS` stehen nicht auf der Liste und scheitern

@@ -148,8 +148,9 @@ MAX_LEAD_DAYS = 365
 # Operator decision 2026-11-11 (Michael, "ja, bitte" to: a begin date before
 # the publication whose day lies, in another year, between the publication
 # and WL's real end takes that year, and the correction is recorded). Added
-# in the build: the limit, title dates, and the end the text names in place
-# of a placeholder (5B).
+# in the build: the limit and title dates. That the end the text names in
+# place of a placeholder confirms too (5B) is operator decision 2026-11-12
+# (decision card, "Ja, Text-Ende zählt").
 STALE_YEAR_MAX_LEAD_DAYS = 90
 
 # The kinds of correction.
@@ -319,9 +320,10 @@ def _confirming_end(desc_raw: str, start: datetime | None, end: datetime | None)
     """*end* when it can confirm the year of a begin date (:func:`_restated_year`), else ``None``.
 
     WL's own end counts, and so does the end the "Zeitraum:" names in place
-    of a placeholder (:func:`plausible_end`): 5B Muthgasse, "Dienstag, 17.
-    März 2025, etwa 08:00 Uhr bis voraussichtlich Juni 2026", published
-    09.03.2026 beside 09.03.2027 23:59: the Tuesday it names is 17.03.2026. A
+    of a placeholder (:func:`plausible_end`; operator decision 2026-11-12,
+    "Ja, Text-Ende zählt"): 5B Muthgasse, "Dienstag, 17. März 2025, etwa
+    08:00 Uhr bis voraussichtlich Juni 2026", published 09.03.2026 beside
+    09.03.2027 23:59: the Tuesday it names is 17.03.2026. A
     placeholder (:func:`placeholder_end`) confirms nothing, and neither does
     an end :func:`plausible_end` estimated from the text's duration: that
     end counts from the very begin date in question and so agrees with
