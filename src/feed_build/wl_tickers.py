@@ -17,6 +17,7 @@ from ..feed_types import FeedItem
 from ..providers.wl_lines import line_order_key
 from ..utils.text import html_to_text, names_planned_measure
 
+from .abbreviations import is_abbreviation_period
 from .base import _to_utc
 from .display_titles import _TITLE_BODY_RE
 from .title_words import _is_wl_ticker, _reason_and_fragment, _rendered_title
@@ -90,6 +91,10 @@ def _ticker_text(item: FeedItem) -> str:
     )
 
 
+# A mark that may end a sentence inside a text: more text follows it.
+_INNER_SENTENCE_MARK_RE = re.compile(r"[.!?](?=\s)")
+
+
 def _is_long_message(text: str) -> bool:
     """WL's long message (``stoerunglang``) is written in sentences.
 
@@ -98,8 +103,22 @@ def _is_long_message(text: str) -> bool:
     strips it when the feed reads the cache, and some long messages never
     had it ("Die Linie U1 fährt derzeit …"). WL cache, September 2026: all
     504 texts in sentences end in a full stop, none of 247 tickers does.
+
+    A ticker can end in the period of an abbreviation ("Züge halten bei
+    Linie 12 Richtung Josefstädter Str."); that is no sentence
+    (:func:`is_abbreviation_period`) unless another one ends inside the
+    text. Taken for a long message on 23.10.2026, the ticker kept its cause
+    and the feed read "12: Fremdunfall" over "Fremdunfall Züge halten bei
+    Linie 12 Richtung Josefstädter Str. Fremder Verkehrsunfall.".
     """
-    return text.endswith(".")
+    if not text.endswith("."):
+        return False
+    if not is_abbreviation_period(text, len(text) - 1):
+        return True
+    return any(
+        mark.group() != "." or not is_abbreviation_period(text, mark.start())
+        for mark in _INNER_SENTENCE_MARK_RE.finditer(text)
+    )
 
 
 def _ticker_part(item: FeedItem) -> _TickerPart:

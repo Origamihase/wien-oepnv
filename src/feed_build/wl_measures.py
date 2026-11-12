@@ -11,6 +11,7 @@ from collections.abc import Sequence
 
 from ..feed_types import FeedItem
 
+from .abbreviations import is_abbreviation_period
 from .base import _SENTENCE_SPLIT_RE
 
 __all__ = [
@@ -112,8 +113,20 @@ _WL_DESC_LINE_SEGMENT_SPLIT_RE: re.Pattern[str] = re.compile(
 # sentence splitter: it is only ever applied to the text of one segment,
 # and the split above already happens at a ``Linie X:`` boundary, so a
 # date like ``30.10.2026`` in a later sentence can never become a
-# segment boundary.
+# segment boundary. The period of an abbreviation or an ordinal ends no
+# sentence (:func:`is_abbreviation_period`): in WL's text of 08.07.2026 two
+# segments read "… Zentralfriedhof, 4. Tor.", their leads ended at "4.",
+# and collapsing them gives "4. Tor. Tor." (not published: that day the
+# feed showed the tickers).
 _WL_DESC_SENTENCE_END_RE: re.Pattern[str] = re.compile(r"[.!?](?:\s|$)")
+
+
+def _lead_end(body: str) -> re.Match[str] | None:
+    """The end of the first sentence of *body* (:data:`_WL_DESC_SENTENCE_END_RE`)."""
+    for mark in _WL_DESC_SENTENCE_END_RE.finditer(body):
+        if not mark.group().startswith(".") or not is_abbreviation_period(body, mark.start()):
+            return mark
+    return None
 
 
 def _collapse_repeated_wl_line_segments(desc: str) -> str:
@@ -148,7 +161,7 @@ def _collapse_repeated_wl_line_segments(desc: str) -> str:
     seen: set[str] = set()
     for segment in segments:
         body = _WL_DESC_LINIE_PREFIX_RE.sub("", segment, count=1)
-        end = _WL_DESC_SENTENCE_END_RE.search(body)
+        end = _lead_end(body)
         lead = body[: end.end()] if end else body
         normalised = " ".join(lead.split())
         if normalised in seen:

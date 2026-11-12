@@ -15,6 +15,7 @@ from ..utils.logging import sanitize_log_arg
 from ..providers.baustellen import names_site_street, shares_address, site_street
 from ..utils.text import html_to_text
 
+from .abbreviations import without_full_stop
 from .base import _VIENNA_TZ, _parse_datetime, _to_utc, log
 from .time_line import _wl_incident_start
 from .title_words import _is_baustelle, _is_wl_notice, _is_wl_ticker, _rendered_title
@@ -126,7 +127,7 @@ def _relocated_stops_shown(item: FeedItem, notice: FeedItem) -> bool:
     if not targets:
         return False
     part = _ticker_part(item)
-    text = (part.extra or part.consequence).rstrip(".").strip()
+    text = without_full_stop((part.extra or part.consequence).strip())
     text = _without_cause(text, part.cause)
     messages = [m.strip() for m in text.split(";") if m.strip()]
     if not messages:

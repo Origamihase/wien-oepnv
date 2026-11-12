@@ -9,6 +9,8 @@ from __future__ import annotations
 import re
 from collections.abc import Callable, Sequence
 
+from .abbreviations import without_full_stop
+
 __all__ = [
     "_BLOCK_TERMINAL_PUNCT", "_WORD_RE", "_RELOCATION_ARROW", "_relocation_first",
 ]
@@ -90,11 +92,12 @@ _RELOCATION_DIRECTION = "Fahrtrichtung:"
 #
 # Whether a destination is shown is measured with the feed's own cut
 # (``_truncate_summary_180``), not with a count of 180 characters: the cut
-# ends at 175 characters on a word and drops a bare number with a full stop
-# behind it, so a house number at character 167 fell off. "54B: Stock im
-# Weg" read "… Ghelengasse gegenüber 28 → Ghelengasse gegenüber …" on
-# 11.11.2026 (KI-Wächter, issue #2200), the 32 of the destination was gone.
-# A destination counts as shown only when the cut text holds it whole.
+# ends at 175 characters on a word and, until 2026-11-11, dropped any bare
+# number with a full stop behind it, so a house number at character 167 fell
+# off. "54B: Stock im Weg" read "… Ghelengasse gegenüber 28 → Ghelengasse
+# gegenüber …" on 11.11.2026 (KI-Wächter, issue #2200). Since 2026-11-12 the
+# cut keeps a number that ends its sentence (docs/architecture-teil-8.md,
+# §13). A destination counts as shown only when the cut text holds it whole.
 
 
 def _relocation_targets_shown(blocks: list[str], targets: Sequence[str], cut: Callable[[str], str]) -> int:
@@ -215,7 +218,7 @@ def _relocation_by_direction(blocks: list[str]) -> list[str]:
         if block.startswith(_RELOCATION_DIRECTION):
             flush()
             direction = re.split(r"\s+bzw\.\s+", block[len(_RELOCATION_DIRECTION):].strip(), maxsplit=1)[0]
-            direction = direction.rstrip(" .")
+            direction = without_full_stop(direction)
         elif block.startswith(_RELOCATION_FROM):
             origin = block[len(_RELOCATION_FROM):].strip().rstrip(".")
             # The same old place as a direction before: said once.
@@ -250,7 +253,7 @@ def _relocation_arrows(blocks: list[str]) -> list[str]:
             and block.startswith(_RELOCATION_TO)
             and joined[-1].startswith(_RELOCATION_FROM)
         ):
-            origin = joined[-1][len(_RELOCATION_FROM):].strip().rstrip(".")
+            origin = without_full_stop(joined[-1][len(_RELOCATION_FROM):].strip())
             target = block[len(_RELOCATION_TO):].strip()
             if origin and _RELOCATION_CLOSED_RE.match(target):
                 joined[-1] = f"{origin}: {target[0].lower()}{target[1:]}"

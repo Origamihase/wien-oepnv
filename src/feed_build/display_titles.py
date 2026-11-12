@@ -12,6 +12,8 @@ from collections.abc import Sequence
 from ..feed_types import FeedItem
 from ..providers.wl_text import _MONTHS_DE
 
+from .abbreviations import is_abbreviation_period
+
 __all__ = [
     "_DISPLAY_TITLE_TARGET", "_shorten_wl_sentence_title", "_repair_baustellen_title",
     "_compact_baustellen_section", "_ordnungsnummer_as_nr", "_mark_house_numbers", "_compact_line_prefix",
@@ -40,11 +42,11 @@ __all__ = [
 # (:func:`_baustellen_display`); ÖBB route titles are not shortened.
 _DISPLAY_TITLE_TARGET = 50
 
-# A sentence end inside a WL title: three lowercase letters, a full stop,
-# exclamation or question mark, then a capital. Abbreviations WL writes in
-# titles (``Bhf.``, ``Str.``, ``ggü. 197``) have fewer lowercase letters or
-# no capital after them.
-_WL_SENTENCE_END_RE = re.compile(r"(?<=[a-zäöüß]{3})[.!?]\s+(?=[A-ZÄÖÜ])")
+# A sentence end inside a WL title: a word, a full stop, exclamation or
+# question mark, then a capital. Whether a period closes an abbreviation
+# instead ("Bhf. Meidling", "Fahrleitungsgebr. Betrieb ab …") decides
+# :func:`is_abbreviation_period`; "Linie D. Betrieb ab …" ends a sentence.
+_WL_SENTENCE_END_RE = re.compile(r"(?<=\w)[.!?]+\s+(?=[A-ZÄÖÜ])")
 _WL_LINE_PREFIX_HEAD_RE = re.compile(r"^\S{1,40}:\s+")
 # The reason in "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus
 # der Linie 18 aufgelassen": from the causal preposition up to the closing
@@ -79,12 +81,31 @@ def _shorten_wl_sentence_title(title: str, description: str) -> str:
     body = title[len(head):].strip()
     if " ".join(body.split()).casefold() not in " ".join(description.split()).casefold():
         return title
-    shortened = _WL_SENTENCE_END_RE.split(body, maxsplit=1)[0].rstrip(".!? ")
+    shortened = _first_title_sentence(body)
     if len(head) + len(shortened) > _DISPLAY_TITLE_TARGET:
         shortened = _WL_REASON_CLAUSE_RE.sub("", shortened, count=1)
     if shortened == body or len(shortened.split()) < 2:
         return title
     return f"{head}{shortened}"
+
+
+def _first_title_sentence(body: str) -> str:
+    """The first sentence of a WL title body, without its closing mark.
+
+    The period of an abbreviation ends no sentence and stays: "Umleitung ab
+    Arbeitergasse über Gürtel - Flurschützstr." lost it on 30.10.2026, the
+    title no longer matched WL's description, and the feed read "59A:
+    Feuerwehreinsatz" over "Feuerwehreinsatz Umleitung ab Arbeitergasse über
+    Gürtel - Flurschützstr."; "2: Fahrleitungsgebr" (09.11.) lost it the
+    same way.
+    """
+    for mark in _WL_SENTENCE_END_RE.finditer(body):
+        if mark.group().startswith(".") and is_abbreviation_period(body, mark.start()):
+            continue
+        return body[: mark.start()].rstrip(".!? ")
+    if body.endswith(".") and is_abbreviation_period(body, len(body) - 1):
+        return body
+    return body.rstrip(".!? ")
 
 
 # ---- Baustellen title repair ------------------------------------------------

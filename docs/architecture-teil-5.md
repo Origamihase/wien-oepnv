@@ -15,29 +15,29 @@ Zusatz, im Titel und im Text, deutsch und englisch: „N71: Rennweg“,
 „Fahrtbehinderung in Richtung Floridsdorf“, „zwischen Kagran und
 Praterstern“ (`without_stop_markers` in `src/utils/wl_stop_markers.py`).
 
-Die Regel ist strukturell, keine Wortliste: Ein „S“ oder „U“ fällt nur
-hinter einem Wort weg, mit dem im WL-Haltestellenverzeichnis ein Name
-endet (`data/wienerlinien-ogd-haltepunkte.csv`, Spalte `StopText`, und
+Die Regel ist strukturell, keine Wortliste: Ein „S“ oder „U“ fällt nur hinter
+einem Wort weg, mit dem im WL-Haltestellenverzeichnis ein Name endet
+(`data/wienerlinien-ogd-haltepunkte.csv`, Spalte `StopText`, und
 `data/wienerlinien-ogd-haltestellen.csv`, Spalte `PlatformText`; beide
 aktualisiert der wöchentliche Stationslauf). So gehen auch Namen, die WL im
 Text mit Zusatz schreibt, im Verzeichnis aber ohne („Tscherttegasse U“,
-„Michelbeuern-AKH U“), und eine neue Haltestelle kommt mit dem nächsten
-Stationslauf ohne Codeänderung dazu. Vor einem Namen fällt ein „U“ nur
-vor einem Wort weg, vor dem es im Verzeichnis steht („U Volkstheater“).
-Ein Zusatz in Klammern, der nur aus „S“ und „U“ besteht, fällt ganz weg,
-auch ohne Verzeichnis: ÖBB schreibt jeden Umstieg so in den Text („Wien Hbf
-(U)“, „Wien Leopoldau Bahnhst (U)“; im Titel fiel er schon vorher weg,
+„Michelbeuern-AKH U“) oder mit Punkten, die das Verzeichnis weglässt („V.I.C.
+U“ für „VIC“, Teil 8, §13), und eine neue Haltestelle kommt mit dem nächsten
+Stationslauf ohne Codeänderung dazu. Vor einem Namen fällt ein „U“ nur vor
+einem Wort weg, vor dem es im Verzeichnis steht („U Volkstheater“). Ein Zusatz
+in Klammern, der nur aus „S“ und „U“ besteht, fällt ganz weg, auch ohne
+Verzeichnis: ÖBB schreibt jeden Umstieg so in den Text („Wien Hbf (U)“, „Wien
+Leopoldau Bahnhst (U)“; im Titel fiel er schon vorher weg,
 `_without_transfer_markers` in `src/providers/oebb_routes.py`), WL selten
 („Simmering (S U)“). Ebenso geht der Zusatz vor einem Namen am Satzende
 („Parlament, U Volkstheater.“) und hinter einem Namen mit angeklebtem
-Listenstrich („-Johnstraße U“) (unabhängige Prüfung 2026-11-04).
-Kein Haltestellenzusatz und daher unverändert: ein „U“ oder „S“ hinter
-einem Wort, das keinen Haltestellennamen beendet („in beiden Richtungen
-U.“, ein von WL abgeschnittenes „U6“), ein Buchstabe mit Bindestrich oder
-Ziffer („S-Bahn“, „U6“, „S 45“, „Kagran U 26A“), eine Klammer mit mehr als
-diesen Buchstaben („(S1)“) und Tippfehler der Quelle, deren Wort kein
-Name des Verzeichnisses beendet („Matzleinsdorfer Plaz S“, „Floridsorf S
-U“, Entscheidung zu #2023).
+Listenstrich („-Johnstraße U“) (unabhängige Prüfung 2026-11-04). Kein
+Haltestellenzusatz und daher unverändert: ein „U“ oder „S“ hinter einem Wort,
+das keinen Haltestellennamen beendet („in beiden Richtungen U.“, ein von WL
+abgeschnittenes „U6“), ein Buchstabe mit Bindestrich oder Ziffer („S-Bahn“,
+„U6“, „S 45“, „Kagran U 26A“), eine Klammer mit mehr als diesen Buchstaben
+(„(S1)“) und Tippfehler der Quelle, deren Wort kein Name des Verzeichnisses
+beendet („Matzleinsdorfer Plaz S“, „Floridsorf S U“, Entscheidung zu #2023).
 
 Die Regel wirkt nur auf das, was der Leser sieht, ganz am Ende von
 `_format_item_content` (`src/feed_build/item_format.py`): Satzgrenzen, die

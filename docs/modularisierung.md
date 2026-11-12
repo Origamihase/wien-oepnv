@@ -331,6 +331,7 @@ Tests):
 | `item_format` | Titel und Beschreibung eines Eintrags (`_format_item_content`) mit Helfern |
 | `rss` | RSS-Dokument: GeoRSS, ein `<item>` (`_emit_item`), Kanal-Metadaten und Lizenzzeilen, `_make_rss` |
 | `isolation` | Seit 2026-11-10: eine Meldung, an der Kette oder Ausgabe scheitert, fällt aus dem Lauf (`build_isolating`) |
+| `abbreviations` | Seit 2026-11-12: ob ein Punkt eine Abkürzung schließt oder einen Satz beendet, eine Regel für jeden Schritt (`is_abbreviation_period`, `without_full_stop`) |
 
 Wer eine Funktion des Feed-Baus ändert, ändert sie in ihrem Teil; ein neuer
 Name kommt in den Teil seines Themas, und liest ihn `src/`, `scripts/` oder ein

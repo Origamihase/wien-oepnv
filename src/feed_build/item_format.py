@@ -198,6 +198,10 @@ def _summary_duplicates_title(summary: str, title_out: str) -> bool:
         return False
     if summary.casefold() == title_body_compare.casefold():
         return True
+    # The title lost only its closing mark: "18: Gasrohrgebr. Kein Halt"
+    # over WL's "Gasrohrgebr. Kein Halt!!!" (04.05.2026) says it twice.
+    if summary.rstrip(".!? ").casefold() == title_body_compare.rstrip(".!? ").casefold():
+        return True
     # Marker-insensitive second attempt. The title has no ``<``/``>`` by
     # construction (see :data:`_DIRECTIONAL_MARKER_RE`), so a body that
     # differs from it by nothing else is the same sentence with one stray

@@ -20,7 +20,12 @@ while the directory names those stops without one. In front of a name a
 marker goes only before a word the directory writes behind one ("U
 Volkstheater"). A marker in front of a digit ("Kagran U 26A") or glued to a
 hyphen ("U-Bahn") is no stop marker and stays. A new stop reaches the rule
-with the next directory refresh, without a code change.
+with the next directory refresh, without a code change. A name WL writes
+with dots the directory leaves out counts as that name ("Kaisermühlen,
+V.I.C. U" for "Kaisermühlen, VIC"), and its last period also ends the
+sentence ("… V.I.C. U." → "… V.I.C."; since 2026-11-12, when the cut at 180
+characters stopped dropping the "U." of a 92B text of 18.08.2026 as if it
+were an abbreviation).
 
 The same goes for the "(WL)" the station directory puts behind a name of a
 Wiener Linien stop to keep it apart from a railway station ("Wien
@@ -70,9 +75,10 @@ _DIRECTORY_PREFIX_RE = re.compile(rf"(?:^|,\s*){_MARKER_RUN}\s+({_WORD})")
 # to it ("-Johnstraße U", "-Simmering S U", WL lists of 2026).
 _NAME_START = r"(?:(?<![\w.\-])|(?<=^-)|(?<=\s-))"
 # In a text: the word, the marker run, and then no word character, no
-# hyphen and no number ("U-Bahn", "U6", "Kagran U 26A" stay).
+# hyphen and no number ("U-Bahn", "U6", "Kagran U 26A" stay). A period
+# behind the marker comes along, for a name that ends in its own period.
 _TEXT_SUFFIX_RE = re.compile(
-    rf"(?P<word>{_NAME_START}{_WORD})(?P<marker>\s+{_MARKER_RUN})(?![\w\-]|\s*\d)"
+    rf"(?P<word>{_NAME_START}{_WORD})(?P<marker>\s+{_MARKER_RUN})(?![\w\-]|\s*\d)(?P<period>\.?)"
 )
 _TEXT_PREFIX_RE = re.compile(
     rf"(?<![\w.\-])(?P<marker>{_MARKER_RUN}\s+)(?P<word>{_WORD})(?![\w\-])"
@@ -152,13 +158,15 @@ def without_stop_markers(text: str) -> str:
 
     def known(word: str, words: frozenset[str]) -> bool:
         # A name at the end of a sentence carries its period: "U Volkstheater."
+        # WL writes the directory's "VIC" with dots: "Kaisermühlen, V.I.C. U".
         key = word.casefold()
-        return key in words or key.rstrip(".") in words
+        return key in words or key.rstrip(".") in words or key.replace(".", "") in words
 
     def suffix(match: re.Match[str]) -> str:
-        if known(match["word"], ends):
-            return match["word"]
-        return match[0]
+        if not known(match["word"], ends):
+            return match[0]
+        # "Floridsdorf S U." keeps the sentence's period, "V.I.C. U." its own.
+        return match["word"] if match["word"].endswith(".") else match["word"] + match["period"]
 
     def prefix(match: re.Match[str]) -> str:
         if known(match["word"], after):
