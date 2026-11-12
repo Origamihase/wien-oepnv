@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-12T01:00:56.579407+00:00",
- "built": "2026-11-12T02:00:43+01:00",
+ "updated": "2026-11-12T01:30:44.170372+00:00",
+ "built": "2026-11-12T02:30:34+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-12T02:00:43+01:00",
+  "built": "2026-11-12T02:30:34+01:00",
   "items": [
    {
     "title": "Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-05T01:01:03.648553+00:00",
-   "raw": {
-    "wl-stoerungen": 61,
-    "wl-hinweise": 70,
-    "oebb": 187,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 12,
-    "oebb": 162,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 7,
-    "wl": 95
-   }
-  },
   {
    "t": "2026-11-05T01:30:58.236840+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 6,
     "wl": 87
    }
+  },
+  {
+   "t": "2026-11-12T01:30:44.170372+00:00",
+   "raw": {
+    "wl-stoerungen": 43,
+    "wl-hinweise": 76,
+    "oebb": 193,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 15,
+    "oebb": 167,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 87
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-12T01:00:56.579407+00:00"
+   "last_ok": "2026-11-12T01:30:44.170372+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-12T01:00:56.579407+00:00"
+   "last_ok": "2026-11-12T01:30:44.170372+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-12T01:00:56.579407+00:00"
+   "last_ok": "2026-11-12T01:30:44.170372+00:00"
   }
  }
 }
