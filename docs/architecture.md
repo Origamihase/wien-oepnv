@@ -57,6 +57,7 @@ Diagramm dieselbe Information zusätzlich als Fließtext darunter.
 - [10. Robustheit und Laufzeit des Feed-Baus (seit 2026-11-10)](architecture-teil-7.md#10-robustheit-und-laufzeit-des-feed-baus-seit-2026-11-10)
 - [11. Ein Vorfall, ein Platz: gekürzte Ursache und vertauschte Rollen (seit 2026-11-10)](architecture-teil-7.md#11-ein-vorfall-ein-platz-gekürzte-ursache-und-vertauschte-rollen-seit-2026-11-10)
 - [12. Die Jahresseite der Statistik: Überblick, Baustellen, Rückblick (seit 2026-11-10)](architecture-teil-7.md#12-die-jahresseite-der-statistik-überblick-baustellen-rückblick-seit-2026-11-10)
+- [13. Wo ein Satz endet: der Punkt einer Abkürzung (seit 2026-11-12)](architecture-teil-8.md#13-wo-ein-satz-endet-der-punkt-einer-abkürzung-seit-2026-11-12)
 
 ---
 
@@ -292,29 +293,28 @@ verdrängt eine andere Störung.
   als „56B/58B/56A/58A“. Nachbau des WL-Abrufs aus 80 Rohdaten-Ständen seit
   26.09. und der Feed-Kette aus 182 Ständen: Es ändert sich nur die
   Reihenfolge im Präfix, Linien, Meldungen, GUIDs und Plätze bleiben gleich.
-* **Ticker-Titel: Ursache oben, Folge darunter (seit 2026-09-25).** Bei
-  einer WL-Störung behält der Titel nur Linie und Ursache, die Folge wandert
-  an den Anfang der Beschreibung (`_finish_reason_title`):
-  `14A: Rettungseinsatz` über `Betrieb ab Laxenburger Straße / Gudrunstraße
-  [Am 25.09.2026]`. Die Ursache findet `_reason_and_fragment` auf zwei Wegen:
-  über `_TITLE_REASON_WORDS` oder, für Ursachen außerhalb der Liste
-  („Schadhafter Zug“, „Signalstörung“, „PKW im Gleis“), über den Anfang der
-  Folge (`_CONSEQUENCE_START_RE`: „Betrieb ab/nur/über“, „Kein Betrieb“,
-  „Züge/Busse halten“, „Umleitung“). Davor dürfen höchstens drei Wörter ohne
-  Ziffer stehen. Nennt die Beschreibung die Folge schon, bleibt sie, wie sie
-  ist. Wiederholt sie nur Ursache und Folge, ersetzt die Folge sie. Sonst
-  steht die Folge vorn, und gekürzt wird hinter dem letzten passenden Satz
-  (`_last_sentence_end`). Den Strich behalten Hinweise, deren zweite Hälfte
-  ein Ort ist (`D: Gleisbauarbeiten – Althanstraße`), sowie Ticker, deren
-  kurzer Titel unter den sichtbaren Items doppelt wäre. WL schickt zu einem
-  Vorfall oft mehrere Ticker (`49: Gleisschaden`, `… Betrieb ab
-  Urban-Loritz-Platz`, `… Betrieb ab Hütteldorfer Straße`), und drei gleiche
-  Zeilen auf dem Display wären schlechter als drei lange
-  (`_short_title_collisions`, entschieden in `_make_rss` für DE und EN
-  gemeinsam). Trägt ein anderes sichtbares Item den kurzen Titel schon als
-  eigenen, bleiben alle lang. Sonst wird der am höchsten platzierte Ticker
-  kurz, die übrigen bleiben lang. Seit 2026-09-26 kommen solche Gruppen
-  meist gar nicht mehr so weit (nächster Punkt).
+* **Ticker-Titel: Ursache oben, Folge darunter (seit 2026-09-25).** Bei einer
+  WL-Störung behält der Titel nur Linie und Ursache, die Folge wandert an den
+  Anfang der Beschreibung (`_finish_reason_title`): `14A: Rettungseinsatz` über
+  `Betrieb ab Laxenburger Straße / Gudrunstraße [Am 25.09.2026]`. Die Ursache
+  findet `_reason_and_fragment` auf zwei Wegen: über `_TITLE_REASON_WORDS` oder,
+  für Ursachen außerhalb der Liste („Schadhafter Zug“, „Signalstörung“, „PKW im
+  Gleis“), über den Anfang der Folge (`_CONSEQUENCE_START_RE`: „Betrieb
+  ab/nur/über“, „Kein Betrieb“, „Züge/Busse halten“, „Umleitung“). Davor dürfen
+  höchstens drei Wörter ohne Ziffer stehen. Nennt die Beschreibung die Folge
+  schon, bleibt sie, wie sie ist. Wiederholt sie nur Ursache und Folge, ersetzt
+  die Folge sie. Sonst steht die Folge vorn, und gekürzt wird hinter dem letzten
+  passenden Satz der Beschreibung, sonst an einer Wortgrenze
+  (`_last_sentence_end`, §13). Den Strich behalten Hinweise, deren zweite Hälfte
+  ein Ort ist (`D: Gleisbauarbeiten – Althanstraße`), sowie Ticker, deren kurzer
+  Titel unter den sichtbaren Items doppelt wäre. WL schickt zu einem Vorfall oft
+  mehrere Ticker (`49: Gleisschaden`, `… Betrieb ab Urban-Loritz-Platz`, `…
+  Betrieb ab Hütteldorfer Straße`), und drei gleiche Zeilen auf dem Display wären
+  schlechter als drei lange (`_short_title_collisions`, entschieden in
+  `_make_rss` für DE und EN gemeinsam). Trägt ein anderes sichtbares Item den
+  kurzen Titel schon als eigenen, bleiben alle lang. Sonst wird der am höchsten
+  platzierte Ticker kurz, die übrigen bleiben lang. Seit 2026-09-26 kommen solche
+  Gruppen meist gar nicht mehr so weit (nächster Punkt).
 * **Ein Vorfall, ein Platz (seit 2026-09-26, Betreiberentscheidung).** Am
   26.09. belegte die Linie 62 drei der zehn Plätze mit drei Tickern aus 86
   Sekunden („ÖBB Bauarbeiten Betrieb ab Kliebergasse“, „Züge halte bei
@@ -324,22 +324,22 @@ verdrängt eine andere Störung.
   innerhalb von `WL_TICKER_CLUSTER_SECONDS` (600 s) nach der ersten
   erscheinen, zu einem Eintrag zusammen, nach der Duplikatprüfung und vor
   Sortierung und Platzvergabe (`main` und `lint`):
-  - Ausführliche Meldung (seit 2026-09-27): Sagt eine ausführliche
-    WL-Meldung der Gruppe mehr als den Standardsatz, steht sie mit Titel
-    und Text für die Gruppe; die Kurzmeldungen belegen keinen eigenen
-    Platz. Was Kurzmeldungen ankündigen und ihr Text nicht nennt, bleibt
-    (`_with_consequences`, seit 2026-10-01, Regeln unten bei „Eine Linie,
-    ein Platz“): „Betrieb ab Mühlbreiten“ der 64A vom 01.10. stand sonst
-    nirgends. Eine Tafel-Meldung anderer Ursache gibt nur ihre Maßnahme
-    dazu, ihr Ursachenwort bleibt draußen (`_announced`, seit 2026-11-06;
-    vorher fiel sie ganz weg: „12: Polizeieinsatz“ verlor am 05.11. „Betrieb
-    ab Spitalgasse“ der Tafel „Verkehrsunfall“). Erkannt wird die
-    ausführliche Meldung an ihren Sätzen (`_is_long_message`: Der Text endet
-    mit einem Punkt; im WL-Cache vom September gilt das für alle 504 Texte in
-    Sätzen und für keine der 247 Kurzmeldungen). Das Präfix „Linie 48A:“
-    taugt dafür nicht, weil `_post_filter_wl` es beim Lesen des Caches
-    entfernt (seit 2026-11-06 auch „Linie Badner Bahn:“, WLs Name der Linie
-    LB, mit dem der Satz am 05.11. seine englische Vorlage verfehlte;
+  - Ausführliche Meldung (seit 2026-09-27): Sagt eine ausführliche WL-Meldung der
+    Gruppe mehr als den Standardsatz, steht sie mit Titel und Text für die
+    Gruppe; die Kurzmeldungen belegen keinen eigenen Platz. Was Kurzmeldungen
+    ankündigen und ihr Text nicht nennt, bleibt (`_with_consequences`, seit
+    2026-10-01, Regeln unten bei „Eine Linie, ein Platz“): „Betrieb ab
+    Mühlbreiten“ der 64A vom 01.10. stand sonst nirgends. Eine Tafel-Meldung
+    anderer Ursache gibt nur ihre Maßnahme dazu, ihr Ursachenwort bleibt draußen
+    (`_announced`, seit 2026-11-06; vorher fiel sie ganz weg: „12:
+    Polizeieinsatz“ verlor am 05.11. „Betrieb ab Spitalgasse“ der Tafel
+    „Verkehrsunfall“). Erkannt wird die ausführliche Meldung an ihren Sätzen
+    (`_is_long_message`: Der Text endet mit einem Punkt, der nicht nur eine
+    Abkürzung schließt, §13; im WL-Cache vom September gilt das für alle 504
+    Texte in Sätzen und für keine der 247 Kurzmeldungen). Das Präfix „Linie 48A:“
+    taugt dafür nicht, weil `_post_filter_wl` es beim Lesen des Caches entfernt
+    (seit 2026-11-06 auch „Linie Badner Bahn:“, WLs Name der Linie LB, mit dem
+    der Satz am 05.11. seine englische Vorlage verfehlte;
     `tests/test_wl_badner_bahn_prefix.py`) und manche Meldungen es nie hatten.
     Anlass: Am 27.09. stand „48A: Falschparker“ über „Grund: Fremder
     Verkehrsunfall“, und Kurzmeldungen schoben den zweiten Satz über 180 Zeichen.

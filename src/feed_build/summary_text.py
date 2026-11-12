@@ -16,6 +16,7 @@ from ..feed import config as feed_config
 from ..providers.baustellen import REFERRAL_BOILERPLATE_RE
 from ..utils.text import BLOCK_END_MARK, truncate_html
 
+from .abbreviations import is_abbreviation, is_abbreviation_period
 from .base import _VIENNA_TZ, _parse_datetime, _to_utc
 from .relocation import _BLOCK_TERMINAL_PUNCT, _WORD_RE, _relocation_first
 from .display_titles import _CATEGORY_PREFIX_WORDS, _TITLE_BODY_RE
@@ -326,6 +327,12 @@ def _should_drop_trailing_tail(tail: str) -> bool:
 
     Drops short German abbreviations, all-uppercase line markers, bare
     numbers, and standalone unit tokens; preserves real content words.
+    A short word with a full stop is dropped only when it is an
+    abbreviation (:func:`is_abbreviation`: "Bhf.", "Str.", "bzw.", "Ri."),
+    whose name the cut took. A word that ends its sentence stays: "Planen
+    Sie ca. 15 Minuten mehr Fahrzeit ein." lost its "ein." on 19.08.2026,
+    and "… Streckensperre der Linien D." on 22.10. its "D." and, with the
+    words in front of it, the line.
     """
     tail_stripped = tail.rstrip(".")
     ends_with_period = tail.endswith(".")
@@ -334,7 +341,7 @@ def _should_drop_trailing_tail(tail: str) -> bool:
     if len(tail) > 5:
         return False
     if ends_with_period and tail_stripped.isalpha():
-        return True
+        return is_abbreviation(tail_stripped)
     if ends_with_period and tail_stripped.isdigit():
         return True
     if tail_stripped.isdigit():
@@ -344,8 +351,15 @@ def _should_drop_trailing_tail(tail: str) -> bool:
     return tail in _TRUNCATION_UNIT_TOKENS or tail_stripped in _TRUNCATION_UNIT_TOKENS
 
 
-def _trim_truncation_tail(truncated: str) -> str:
-    """Iteratively drop noise tokens at the end of a hard-truncated summary."""
+def _trim_truncation_tail(truncated: str, whole: str = "") -> str:
+    """Iteratively drop noise tokens at the end of a hard-truncated summary.
+
+    *whole* is the uncut text: a number with a period stays when the word
+    behind it in *whole* shows that the period ends the sentence
+    (:func:`is_abbreviation_period`: "… im Bereich Simmeringer Hauptstraße
+    26. Das Ende …", "… über Gleis 2. Voraussichtliche …"), and goes when it
+    was an ordinal whose noun the cut took ("bis 03. Juni").
+    """
     dangling_dropped = False
     for _ in range(8):
         # A label whose value the cut swallowed ("… Grund:", "… Ersatz:",
@@ -379,11 +393,20 @@ def _trim_truncation_tail(truncated: str) -> str:
         # über die") or a sentence ("Ersatz: U1, U2, D, 2 und 71. Die").
         if dangling_dropped:
             break
+        if _number_ends_sentence(tail, truncated, whole):
+            break
         if _should_drop_trailing_tail(tail):
             truncated = truncated[:last_space]
         else:
             break
     return truncated
+
+
+def _number_ends_sentence(tail: str, truncated: str, whole: str) -> bool:
+    """Whether *tail*, a number with a period at the end of *truncated*, ends its sentence in *whole*."""
+    if not (tail.endswith(".") and tail[:-1].isdigit() and whole.startswith(truncated)):
+        return False
+    return not is_abbreviation_period(whole, len(truncated) - 1)
 
 
 # The Stadt-Wien referral ("Nähere Informationen zu den betroffenen
@@ -432,7 +455,7 @@ def _truncate_summary_180(summary: str) -> str:
     # A WL measure the cut left with its line label alone ("…; Linie N8")
     # says nothing; the ellipsis stands behind the measure before it.
     truncated = _WL_BARE_MEASURE_LABEL_TAIL_RE.sub("", truncated)
-    truncated = _trim_truncation_tail(truncated)
+    truncated = _trim_truncation_tail(truncated, summary)
     if truncated.count("(") > truncated.count(")"):
         last_open = truncated.rfind("(")
         if last_open >= 0:

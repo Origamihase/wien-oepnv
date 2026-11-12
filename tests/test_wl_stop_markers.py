@@ -47,6 +47,13 @@ from src.utils.wl_stop_markers import without_stop_markers
         ("Fahrtbehinderung in Richtung Parlament, U Volkstheater. Grund: Unfall.",
          "Fahrtbehinderung in Richtung Parlament, Volkstheater. Grund: Unfall."),
         ("Ersatzhaltestellen: -Johnstraße U -Simmering S U", "Ersatzhaltestellen: -Johnstraße -Simmering"),
+        # A name WL writes with dots the directory leaves out ("Kaisermühlen,
+        # VIC"); a name that ends in its own period ends the sentence with it.
+        ("in Richtung Kaisermühlen, V.I.C. U Haltestelle: Kleehäufl",
+         "in Richtung Kaisermühlen, V.I.C. Haltestelle: Kleehäufl"),
+        ("in Richtung Kaisermühlen, V.I.C. U. …", "in Richtung Kaisermühlen, V.I.C. …"),
+        ("in Richtung Kaisermühlen, V.I.C U: Umleitung", "in Richtung Kaisermühlen, V.I.C: Umleitung"),
+        ("Betrieb nur bis Kledering, Bhf. S.", "Betrieb nur bis Kledering, Bhf."),
     ],
 )
 def test_a_stop_shows_without_its_marker(text: str, shown: str) -> None:
@@ -100,6 +107,28 @@ def test_the_feed_item_reads_rennweg() -> None:
     assert formatted.title_out == "N71: Rennweg"
     assert " S." not in formatted.desc_text_truncated
     assert "Rennweg S" not in formatted.desc_cdata
+
+
+def test_a_name_with_dots_loses_its_marker_where_the_text_is_cut() -> None:
+    # 92B, 18.08.2026: the cut at 180 characters ends on WL's "Kaisermühlen,
+    # V.I.C. U." Since 2026-11-12 it keeps a "U." that ends its sentence
+    # (``src/feed_build/abbreviations.py``), so the marker goes here.
+    item = {
+        "source": "Wiener Linien",
+        "category": "Hinweis",
+        "title": "92B: Kleehäufel in beiden Richtungen",
+        "description": (
+            "<p>Haltestellenverlegung der Linie 92B in Richtung Kaiserm&uuml;hlen, V.I.C. U</p>"
+            "<p>Haltestelle: Kleeh&auml;ufl</p>"
+            "<p>Von: Am Kaiserm&uuml;hlendamm vor Zufahrt zum Campingplatz</p>"
+            "<p>Nach: etwa 50 Meter gegen die Fahrtrichtung</p>"
+            "<p>Dauer: Ab 24. August 2026, etwa 07:00 Uhr bis 25. August 2026, etwa 17:00 Uhr</p>"
+            "<p>Grund: Instandsetzungsarbeiten</p>"
+        ),
+        "guid": "kleehaeufl-92b",
+    }
+    formatted = _format_item_content(cast(FeedItem, item), "kleehaeufl-92b", None, None)
+    assert formatted.desc_text_truncated.endswith("in Richtung Kaisermühlen, V.I.C. …")
 
 
 def test_a_marker_behind_an_html_entity_goes_too() -> None:
