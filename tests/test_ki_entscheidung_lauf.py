@@ -137,6 +137,8 @@ def test_one_request_with_the_key_in_a_header_and_the_schema(monkeypatch: pytest
     # The build does not wait: no model is waited for longer than MAX_READ_S, so a second one fits into the deadline.
     assert call["timeout"] == (rc.CONNECT_TIMEOUT_S, ask.MAX_READ_S) and 2 * ask.MAX_READ_S > ask.DEADLINE_S <= 20
     assert ask.DEADLINE_S - ask.MAX_READ_S >= ask.MIN_REQUEST_S
+    # The documented bound of one pass: whenever a request starts, its connection and its answer end within 30 s.
+    assert max(t + min(rc.CONNECT_TIMEOUT_S, 20 - t) + min(ask.MAX_READ_S, 20 - t) for t in range(16)) == 30
 
 
 def test_a_busy_model_hands_over_and_the_deadline_ends_the_pass(monkeypatch: pytest.MonkeyPatch) -> None:

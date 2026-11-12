@@ -26,8 +26,8 @@ What the exception covers, and what it does not:
   about anew. Without an answer (no key, a busy model, a reached limit,
   ``unklar``) the rules decide as before. The build sends no new request
   later than fifteen seconds after the first and waits about twenty
-  seconds for the models, twenty-five when a connection is slow to open
-  (:mod:`.ask`, :mod:`.run`).
+  seconds for the models, thirty at the latest when a connection is slow
+  to open (:mod:`.ask`, :mod:`.run`).
 """
 
 from .run import Decider, apply_stored

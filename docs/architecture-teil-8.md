@@ -197,10 +197,12 @@ fallen in drei Klassen (`unclear_class` in
   halten Satzingerweg 41“); „9: Züge halten bei Linie 52“ (18.10.,
   Rettungseinsatz auf den Linien 6/9/18/52) unterscheidet davon nur die Minute.
 - `bauwort`: eine WL-Störung, deren Ursache ein Störungswort ist, während ein
-  Bauwort an anderer Stelle im Text steht. „48A: Gasrohrgebrechen“ (30.09.,
-  „Aufgrund der Bauarbeiten werden die Busse … umgeleitet“) zeigte „[Bis Do
-  01.10.]“, „U6: Weichenstörung“ (22.09., „Die Station Neue Donau kann … wegen
-  Bauarbeiten nicht eingehalten werden“) „[Heute]“.
+  Bauwort an anderer Stelle im Text steht. „U6: Weichenstörung“ (22.09., „Die
+  Station Neue Donau kann … wegen Bauarbeiten nicht eingehalten werden“) zeigte
+  „[Heute]“ statt „[Seit 22:12]“; „48A: Gasrohrgebrechen“ (30.09., „Aufgrund
+  der Bauarbeiten werden die Busse … umgeleitet“, Ende nach Mitternacht) stand
+  mit „[Bis Do 01.10.]“ hinter den aktuellen Störungen (die Zeile nennt bei
+  einem Ende nach Mitternacht in jedem Fall das Ende).
 - `oebb-tag`: eine ÖBB-Meldung mit Bauwort, die ÖBB am Tag ihres Beginns
   erstmals veröffentlicht und die an diesem Tag endet. „Wegen Verlängerung der
   Bauarbeiten sind zwischen Wien Franz-Josefs-Bahnhof und Wien Heiligenstadt
@@ -251,13 +253,15 @@ Schlüssel im Kopf `x-goog-api-key`): die Lite-Modelle der Wächter-Kette zuerst
 (`MODELS` in `ask.py`), jedes Modell höchstens einmal, das nächste nur, wenn
 das vorige überlastet, am Kontingent oder nicht erreichbar ist. Im Regelfall
 ist das eine Anfrage. Im äußersten Fall sind es vier je Build und damit sechs
-am Tag an jedes der beiden Flash-Modelle; mit den höchstens zehn des
-KI-Wächters bleibt das unter deren Tageskontingent von zwanzig. Auf ein Modell
-wartet der Build höchstens 12 Sekunden (`MAX_READ_S`), später als 15 Sekunden
-nach der ersten startet keine Anfrage mehr, und die letzte bekommt nur, was
-von den 20 Sekunden (`DEADLINE_S`) übrig ist. Gemessen am 12.11.2026 mit vier
-überlasteten Modellen: 20,1 Sekunden; öffnet sich eine Verbindung langsam,
-können es rund 25 werden.
+am Tag an jedes der beiden Flash-Modelle. Ist das Tageskontingent eines
+Modells erreicht, antwortet es mit 429, und diese Kette wie die des
+KI-Wächters geht zum nächsten Modell. Auf ein Modell wartet der Build
+höchstens 12 Sekunden (`MAX_READ_S`), später als 15 Sekunden nach der ersten
+startet keine Anfrage mehr, und auf eine Antwort wartet keine über die 20
+Sekunden (`DEADLINE_S`) hinaus. Gemessen am 12.11.2026 mit vier überlasteten
+Modellen: 20,1 Sekunden. Öffnet sich eine Verbindung langsam, kommen
+höchstens zehn Sekunden dazu: Spätestens 30 Sekunden nach seinem Beginn ist
+der Durchgang zu Ende.
 
 **Eine Antwort gilt für ihr Ereignis.** Der Schlüssel im Speicher ist die GUID
 der Meldung, und eine WL-GUID trägt kein Datum: „9: Züge halten bei Linie 52“
@@ -303,3 +307,59 @@ der Zeitpunkt der Antwort (`entschieden`), die Zeitpunkte der letzten Anfragen
 und der Tag, an dem die Meldung zuletzt in einem Build stand. Ein Eintrag
 fällt eine Woche danach weg. Ein Nachbau desselben Commits liest dieselben
 Antworten und baut denselben Feed.
+
+**Probelauf.** `scripts/ki_entscheidung_probe.py` (Workflow
+`ki-entscheidung-probe.yml`: von Hand und bei einem Push auf einen Zweig, der
+das Paket, den Konnektor, das Skript oder die Fallsammlung ändert) legt Gemini
+die 20 unklaren Meldungen des Nachspiels vor, jede mit den anderen Meldungen
+ihrer Linien zu ihrem Zeitpunkt und mit der Antwort, die ein Leser der Quelle
+erwartet (`data/samples/ki_entscheidung_faelle.json`). Er fragt wie der Build
+(derselbe Prompt, dieselbe Kette, vier Meldungen je Anfrage), wiederholt einen
+Block ohne Antwort einmal und speichert nichts. Drei Läufe am 12.11.2026,
+alle bei zeitweise überlasteten Modellen: um 18:57 Uhr (Wiener Zeit, noch acht
+Meldungen je Anfrage) 8 von 20 beantwortet, alle wie erwartet; um 19:15 Uhr 16
+von 20, davon 15 wie erwartet („44A: Fahrplanaushang bitte beachten“ `unklar`
+statt `geplant`, was im Feed dasselbe ergibt); um 19:21 Uhr 20 von 20
+beantwortet und alle wie erwartet, alle von einem Lite-Modell. Eine
+beantwortete Anfrage mit vier Meldungen dauerte 5 bis 10 Sekunden. Darunter die Fälle, die nur die Nachbarn entscheiden: „26: Züge
+halten in Tokiostraße“ `geplant` („Andere Meldung derselben Linie kündigt
+Gleisbauarbeiten an“), „9: Züge halten bei Linie 52“ `ploetzlich` („Die andere
+Meldung derselben Linie nennt einen Rettungseinsatz als Grund“), „37: Züge
+halten Währigner Gürtel 164“ (so die Quelle) ohne Nachbarn `unklar`.
+
+**Nachspiel alt gegen neu** über die 2.169 Cache-Stände vom 20.09. bis
+12.11.2026, durch die ganze Kette bis zum deutschen Feed. Ohne gespeicherte
+Antworten baut der neue Code in allen 2.169 Ständen denselben Feed wie der
+alte. Mit den Antworten des Probelaufs, in der Reihenfolge der Stände gefragt
+und gespeichert wie im Betrieb, fragen 19 Builds nach 24 Meldungen (rund
+zweieinhalb Builds je Woche, höchstens vier Meldungen in einem), und 57 Stände
+an sechs Tagen ändern sich:
+
+- 21.09. 09:01 bis 22.09. 08:31 (41 Stände): „26: Züge halten in
+  Tokiostraße“, „26E: Busse halten Satzingerweg 41“ und „27: Linie 25 in
+  Tokiostraße benützen“ zeigen „[Heute]“ statt „[Seit 08:48]“ und stehen
+  hinter den aktuellen Störungen; „26A: Rettungseinsatz“ rückt von Platz 5
+  auf 2, „43/44: Stromstörung“ von 6 auf 3, „60: Fremder Verkehrsunfall“ kommt
+  in die ersten zehn.
+- 22.09. 22:30: „U6: Weichenstörung“ zeigt „[Seit 22:12]“ statt „[Heute]“.
+- 30.09. 22:02 bis 01.10. 00:31 (4 Stände): „48A: Gasrohrgebrechen“ steht auf
+  Platz 1 bis 2 statt 2 bis 4, Zeile unverändert.
+- 01.11. 05:31 bis 10:01 (9 Stände): „Wien Franz-Josefs-Bahnhof ↔ Wien
+  Heiligenstadt … Wegen Verlängerung der Bauarbeiten … keine Fahrten möglich“
+  (im ersten Stand noch unter dem Titel „Wien Franz-Josefs-Bahnhof“) zeigt
+  „[Seit 05:09]“ statt „[Heute]“ und steht auf Platz 1 bis 2 statt 1 bis 7.
+- 09.11. 04:31 und 05:01: „Wien Hauptbahnhof ↔ Gramatneusiedl“ (Verlängerung
+  der Bauarbeiten) steht auf Platz 1 mit „[Seit 04:30]“, danach „[Seit
+  04:50]“; vorher stand die Meldung nicht unter den ersten zehn.
+
+Alle übrigen Antworten bestätigen, was die Regeln zeigen. Kein Text und kein
+Titel ändert sich, nur Zeitzeile und Platz.
+
+**Tests.** `tests/test_ki_entscheidung_faelle.py` (Klassen, Betreiberliste,
+Abdruck, was das Modell liest, Wirkung der Antwort auf Zeitzeile und Gruppe,
+Antwort je Ereignis, Speicher lesen), `tests/test_ki_entscheidung_lauf.py`
+(Anfrage, Fristen, Speicher, Grenzen, abgelehnter Schlüssel, Ergebnis für den
+Health check), `tests/test_ki_entscheidung_build.py` (`build_feed.main()` und
+`lint()` mit Schlüssel und ersetztem Transport), `tests/test_ki_entscheidung_probe.py`
+(Fallsammlung, Bericht, Workflow) und `tests/test_record_side_steps.py`
+(Nebenschritt im Health check).

@@ -11,10 +11,11 @@ the key in a header, no tools, JSON out in a fixed schema. What differs:
   models keep their daily quota for the KI-Wächter.
 * The feed build must not wait: no new request later than
   :data:`DEADLINE_S` minus :data:`MIN_REQUEST_S` after the first, no model
-  is waited for longer than :data:`MAX_READ_S`, and the last request may
-  only use what is left of the deadline (measured 12.11.2026 with all four
-  models busy: 20.1 s; a connection that is slow to open can add what is
-  left once more, about 25 s in all). Without an answer the rules of
+  is waited for longer than :data:`MAX_READ_S`, and no request may wait for
+  its answer beyond the deadline (measured 12.11.2026 with all four models
+  busy: 20.1 s). A connection that is slow to open comes on top, ten
+  seconds at most: the pass ends 30 s after its start at the latest.
+  Without an answer the rules of
   ``feed_build.time_line._incident_since`` decide as before.
 """
 
