@@ -914,18 +914,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "29A: Fremder Verkehrsunfall",
+    "description": "Linie 29A: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 12:50 Uhr. Grund: Fremder Verkehrsunfall im Bereich Dopschstraße # Großfeldstraße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1534e244024c6fb9e3253e471eb9562f405710d4c44c22618d4cc9462129a50b",
+    "pubDate": "2026-11-12T12:23:00+01:00",
+    "starts_at": "2026-11-12T12:23:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=29A|D=2026-11-12|TK=29a fremder verkehrsunfall",
+    "_wl_ids": [
+      "I20261112-0025"
+    ],
+    "_incident_start": "2026-11-12T12:23:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "2: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "0a8aa8f7231d98faa38de820cfb27484955a1529c285e8a8472318b330368561",
-    "pubDate": "2026-11-12T11:32:00+01:00",
+    "pubDate": "2026-11-12T11:33:56+01:00",
     "starts_at": "2026-11-12T11:38:28+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=2|D=2026-11-12|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261112-0024"
-    ],
-    "_incident_start": "2026-11-12T11:32:00+01:00"
+    "ends_at": "2026-11-12T12:37:00+01:00",
+    "_identity": "wl|störung|L=2|D=2026-11-12|TK=polizeieinsatz"
   },
   {
     "source": "Wiener Linien",
