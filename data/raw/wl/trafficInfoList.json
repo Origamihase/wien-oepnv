@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261112-0039, I20261112-0041, I20261112-0032-F01, I20261112-0033-F02, I20261112-0037, I20260925-0011, I20260909-0007, I20261112-0040, I20261020-0029, I20261112-0034"
+    "trafficInfoNameList": "I20261112-0039, I20261112-0042, I20261112-0043, I20261112-0046, I20261112-0032-F01, I20261112-0037, I20261112-0044, I20260925-0011, I20261112-0047, I20261112-0034, I20260909-0007, I20261112-0040, I20261112-0041-F01, I20261112-0045, I20261112-0048, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R2558-125, R3886-480, R293-474, R2345-127, R2373-126, R2379-627, R2380-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R401-101, R1974-466, R1199-205, R500-101, R587-110, R586-110, R588-110, R585-110, R584-110, R583-110, R565-110, R566-110, R581-110, R579-110, R570-110, R571-110, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R2558-125, R3886-480, R293-474, R2343-125, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R401-101, R1974-466, R1199-205, R500-101, R585-110, R586-110, R587-110, R588-110, R584-110, R583-110, R565-110, R566-110, R581-110, R579-110, R570-110, R571-110, R412-415, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -219,54 +219,6 @@
     "title": "U3: Schadhaftes Fahrzeug"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "60": "ptTram"
-     }
-    },
-    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "60: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261112-0033-F02",
-    "owner": "WL",
-    "parentName": "I20261112-0033",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 160,
-      "lineName": "60",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     1610
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-12T14:57:00.000+0100",
-     "lastUpdate": "2026-11-12T14:57:00.000+0100",
-     "resume": "2026-11-12T14:57:00.000+0100",
-     "start": "2026-11-12T14:41:00.000+0100"
-    },
-    "title": "60: Rettungseinsatz"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -302,10 +254,11 @@
       "vehicleType": "ptMetro"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-12T14:43:00.000+0100",
-     "lastUpdate": "2026-11-12T14:43:00.000+0100",
+     "end": "2026-11-12T16:59:00.000+0100",
+     "lastUpdate": "2026-11-12T16:59:00.000+0100",
      "resume": "2026-11-12T14:43:00.000+0100",
      "start": "2026-11-12T14:43:00.000+0100"
     },
@@ -457,19 +410,19 @@
       "10": "ptTram"
      }
     },
-    "description": "Linie 10: Kein Betrieb zwischen Joachimsthalerplatz und Penzinger Straße. Ersatz: Linien U3, 52 und 48A. Voraussichtliche Dauer: 16:45 Uhr. Grund: Verkehrsunfall im Bereich Wernhardtstraße 12.",
-    "descriptionHTML": "<p>Linie 10:<br>Kein Betrieb zwischen Joachimsthalerplatz und Penzinger Straße.</p><p>Ersatz: Linien U3, 52 und 48A.</p><p>Voraussichtliche Dauer: 16:45 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Wernhardtstraße 12.</p>",
+    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 10:<br>Kein Betrieb zwischen Joachimsthalerplatz und Penzinger Straße.</p><p>Ersatz: Linien U3, 52 und 48A.</p><p>Voraussichtliche Dauer: 16:45 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Wernhardtstraße 12.</p>",
-       "descriptionPlain": "Linie 10: Kein Betrieb zwischen Joachimsthalerplatz und Penzinger Straße. Ersatz: Linien U3, 52 und 48A. Voraussichtliche Dauer: 16:45 Uhr. Grund: Verkehrsunfall im Bereich Wernhardtstraße 12.",
+       "descriptionHtml": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "10: Verkehrsunfall"
       }
      }
     ],
     "location": "Wernhardtstraße 12",
-    "name": "I20261112-0041",
+    "name": "I20261112-0041-F01",
     "owner": "WL",
     "parentName": "I20261112-0041",
     "priority": "1",
@@ -488,11 +441,327 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-12T16:13:00.000+0100",
-     "lastUpdate": "2026-11-12T16:13:00.000+0100",
+     "created": "2026-11-12T16:31:00.000+0100",
+     "lastUpdate": "2026-11-12T16:31:00.000+0100",
+     "resume": "2026-11-12T16:31:00.000+0100",
      "start": "2026-11-12T16:10:00.000+0100"
     },
     "title": "10: Verkehrsunfall"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "7A": "ptBusCity"
+     }
+    },
+    "description": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 7A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "7A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261112-0042",
+    "owner": "WL",
+    "parentName": "I20261112-0042",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "7A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 407,
+      "lineName": "7A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T16:36:00.000+0100",
+     "lastUpdate": "2026-11-12T16:36:00.000+0100",
+     "resume": "2026-11-12T16:35:00.000+0100",
+     "start": "2026-11-12T16:35:00.000+0100"
+    },
+    "title": "7A: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "14A": "ptBusCity"
+     }
+    },
+    "description": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "14A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261112-0043",
+    "owner": "WL",
+    "parentName": "I20261112-0043",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "14A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 414,
+      "lineName": "14A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T16:36:00.000+0100",
+     "lastUpdate": "2026-11-12T16:36:00.000+0100",
+     "resume": "2026-11-12T16:36:00.000+0100",
+     "start": "2026-11-12T16:36:00.000+0100"
+    },
+    "title": "14A: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "4A": "ptBusCity"
+     }
+    },
+    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 4A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 4A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "4A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261112-0044",
+    "owner": "WL",
+    "parentName": "I20261112-0044",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "4A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 404,
+      "lineName": "4A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T16:38:00.000+0100",
+     "lastUpdate": "2026-11-12T16:38:00.000+0100",
+     "resume": "2026-11-12T16:38:00.000+0100",
+     "start": "2026-11-12T16:38:00.000+0100"
+    },
+    "title": "4A: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "15A": "ptBusCity"
+     }
+    },
+    "description": "Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 15A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 15A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "15A: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261112-0045",
+    "owner": "WL",
+    "parentName": "I20261112-0045",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "15A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 415,
+      "lineName": "15A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T16:44:00.000+0100",
+     "lastUpdate": "2026-11-12T16:44:00.000+0100",
+     "resume": "2026-11-12T16:43:00.000+0100",
+     "start": "2026-11-12T16:43:00.000+0100"
+    },
+    "title": "15A: Verspätungen"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "2": "ptTram"
+     }
+    },
+    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p><strong>Linie 2:</strong><br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><strong>Linie 2:</strong><br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "2: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261112-0046",
+    "owner": "WL",
+    "parentName": "I20261112-0046",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 102,
+      "lineName": "2",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T16:49:00.000+0100",
+     "lastUpdate": "2026-11-12T16:49:00.000+0100",
+     "resume": "2026-11-12T16:49:00.000+0100",
+     "start": "2026-11-12T16:49:00.000+0100"
+    },
+    "title": "2: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "59A": "ptBusCity"
+     }
+    },
+    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "59A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261112-0047",
+    "owner": "WL",
+    "parentName": "I20261112-0047",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 459,
+      "lineName": "59A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T16:51:00.000+0100",
+     "lastUpdate": "2026-11-12T16:51:00.000+0100",
+     "resume": "2026-11-12T16:50:00.000+0100",
+     "start": "2026-11-12T16:50:00.000+0100"
+    },
+    "title": "59A: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "77A": "ptBusCity"
+     }
+    },
+    "description": "Linie 77A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 77A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 77A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 77A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "77A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261112-0048",
+    "owner": "WL",
+    "parentName": "I20261112-0048",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "77A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 477,
+      "lineName": "77A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-12T16:51:00.000+0100",
+     "lastUpdate": "2026-11-12T16:51:00.000+0100",
+     "resume": "2026-11-12T16:51:00.000+0100",
+     "start": "2026-11-12T16:51:00.000+0100"
+    },
+    "title": "77A: Verkehrsüberlastung"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1114,6 +1383,29 @@
      "start": "2026-11-12T00:00:04.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBusse halten auf der Hauptfahrbahn",
+    "name": "R412-415",
+    "owner": "WL",
+    "parentName": "R412-415",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "15A"
+    ],
+    "relatedStops": [
+     412
+    ],
+    "time": {
+     "end": "2026-11-12T17:34:00.000+0100",
+     "start": "2026-11-12T16:35:28.000+0100"
+    },
+    "title": "Rettungseinsatz\nBusse halten auf der Hauptfahrbahn"
    },
    {
     "alertCause": "undefined alert cause",
