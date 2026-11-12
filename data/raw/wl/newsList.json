@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_240, ftazW_491, ftazW_1018066, ftazW_82, ftazW_1351709, ftazW_511, ftazW_729, ftazW_83, ftazW_574, ftazW_508, ftazW_721, ftazW_725, ftazW_84, ftazW_722, ftazW_509, ftazW_575, ftazW_45"
+    "trafficInfoNameList": "ftazW_729, ftazW_83, ftazW_574, ftazW_508, ftazW_721, ftazW_725, ftazW_84, ftazW_722, ftazW_509, ftazW_575, ftazW_45"
    }
   ],
   "poiCategoryGroups": [
@@ -3025,123 +3025,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "12.11.2026 05:15",
-     "ausVon": "12.11.2026 01:15",
-     "location": "U2 Bahnsteig Richtung Seestadt - Ausgang Stella Klein Löw Weg",
-     "rbls": [
-      4266
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U2"
-     ],
-     "station": "Stadion",
-     "status": "geplante Wartung",
-     "towards": "U2 Seestadt"
-    },
-    "description": "U2 Bahnsteig Richtung Seestadt - Ausgang Stella Klein Löw Weg",
-    "elevatorId": "SW 02",
-    "name": "ftazW_1018066",
-    "parentName": "ftazW_1018066",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedStops": [
-     4266
-    ],
-    "time": {
-     "end": "2026-11-12T05:15:00.000+0100",
-     "start": "2026-11-12T01:15:00.000+0100"
-    },
-    "title": "Stadion"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "12.11.2026 05:15",
-     "ausVon": "12.11.2026 01:15",
-     "location": "beide Fahrtrichtungen - Ausgang Laaer Berg Straße",
-     "rbls": [
-      4134,
-      4133
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Oberlaa",
-     "status": "geplante Wartung",
-     "towards": "U1 beide Richtungen"
-    },
-    "description": "beide Fahrtrichtungen - Ausgang Laaer Berg Straße",
-    "elevatorId": "LO 03",
-    "name": "ftazW_1351709",
-    "parentName": "ftazW_1351709",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4134,
-     4133
-    ],
-    "time": {
-     "end": "2026-11-12T05:15:00.000+0100",
-     "start": "2026-11-12T01:15:00.000+0100"
-    },
-    "title": "Oberlaa"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "12.11.2026 05:15",
-     "ausVon": "12.11.2026 01:15",
-     "location": "U4 Bahnsteig Richtung Hütteldorf, U6 Bahnsteig Richtung Siebenhirten - Ausgang Storchensteg/Gierstergasse",
-     "rbls": [
-      4438,
-      4612
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4",
-      "U6"
-     ],
-     "station": "Längenfeldgasse",
-     "status": "geplante Wartung",
-     "towards": "U4 Hütteldorf, U6 Siebenhirten"
-    },
-    "description": "U4 Bahnsteig Richtung Hütteldorf, U6 Bahnsteig Richtung Siebenhirten - Ausgang Storchensteg/Gierstergasse",
-    "elevatorId": "LE 02",
-    "name": "ftazW_240",
-    "parentName": "ftazW_240",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4",
-     "U6"
-    ],
-    "relatedStops": [
-     4438,
-     4612
-    ],
-    "time": {
-     "end": "2026-11-12T05:15:00.000+0100",
-     "start": "2026-11-12T01:15:00.000+0100"
-    },
-    "title": "Längenfeldgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "13.11.2026 05:15",
      "ausVon": "13.11.2026 01:15",
      "location": "U3 Mittelbahnsteig - Ausgang Keinergasse",
@@ -3176,40 +3059,6 @@
      "start": "2026-11-13T01:15:00.000+0100"
     },
     "title": "Kardinal-Nagl-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "12.11.2026 05:15",
-     "ausVon": "12.11.2026 01:15",
-     "location": "Zwischengeschoss - Ausgang Heiligenstädter Straße",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U4",
-      "U6"
-     ],
-     "station": "Spittelau",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Zwischengeschoss - Ausgang Heiligenstädter Straße",
-    "elevatorId": "AU 06",
-    "name": "ftazW_491",
-    "parentName": "ftazW_491",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4",
-     "U6"
-    ],
-    "time": {
-     "end": "2026-11-12T05:15:00.000+0100",
-     "start": "2026-11-12T01:15:00.000+0100"
-    },
-    "title": "Spittelau"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3288,45 +3137,6 @@
      "start": "2026-11-13T01:15:00.000+0100"
     },
     "title": "Jägerstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "12.11.2026 05:15",
-     "ausVon": "12.11.2026 01:15",
-     "location": "U6 Mittelbahnsteig - Ausgang Dresdner Straße",
-     "rbls": [
-      4642,
-      4649
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Dresdner Straße",
-     "status": "geplante Wartung",
-     "towards": "U6 beide Richtungen"
-    },
-    "description": "U6 Mittelbahnsteig - Ausgang Dresdner Straße",
-    "elevatorId": "DS 02",
-    "name": "ftazW_511",
-    "parentName": "ftazW_511",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4642,
-     4649
-    ],
-    "time": {
-     "end": "2026-11-12T05:15:00.000+0100",
-     "start": "2026-11-12T01:15:00.000+0100"
-    },
-    "title": "Dresdner Straße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3551,49 +3361,6 @@
      "start": "2026-11-12T20:45:00.000+0100"
     },
     "title": "Stadtpark"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "12.11.2026 05:15",
-     "ausVon": "12.11.2026 01:15",
-     "location": "U3 Mittelbahnsteig - U2 Bahnsteig Richtung Seestadt - Ausgang Bellariastraße",
-     "rbls": [
-      4909,
-      4908,
-      4206
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U2",
-      "U3"
-     ],
-     "station": "Volkstheater",
-     "status": "geplante Wartung",
-     "towards": "U3 beide Richtungen, U2 Seestadt"
-    },
-    "description": "U3 Mittelbahnsteig - U2 Bahnsteig Richtung Seestadt - Ausgang Bellariastraße",
-    "elevatorId": "VT 03",
-    "name": "ftazW_82",
-    "parentName": "ftazW_82",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2",
-     "U3"
-    ],
-    "relatedStops": [
-     4909,
-     4908,
-     4206
-    ],
-    "time": {
-     "end": "2026-11-12T05:15:00.000+0100",
-     "start": "2026-11-12T01:15:00.000+0100"
-    },
-    "title": "Volkstheater"
    },
    {
     "alertCause": "undefined alert cause",
