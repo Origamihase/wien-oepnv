@@ -1,16 +1,24 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-12T17:01:03.338405+00:00",
- "built": "2026-11-12T18:00:51+01:00",
+ "updated": "2026-11-12T17:31:11.647996+00:00",
+ "built": "2026-11-12T18:30:50+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-12T18:00:51+01:00",
+  "built": "2026-11-12T18:30:50+01:00",
   "items": [
    {
-    "title": "5: Rettungseinsatz",
-    "time_line": "Seit 17:58"
+    "title": "1/71/D: Verkehrsunfall",
+    "time_line": "Seit 18:06"
+   },
+   {
+    "title": "5: Falschparker",
+    "time_line": "Seit 17:59"
+   },
+   {
+    "title": "7B: Verkehrsunfall",
+    "time_line": "Seit 18:26"
    },
    {
     "title": "25: Rettungseinsatz",
@@ -25,11 +33,7 @@
     "time_line": "Seit 16:49"
    },
    {
-    "title": "15A: Verspätungen",
-    "time_line": "Seit 16:35"
-   },
-   {
-    "title": "4A/7A/14A: Verkehrsüberlastung",
+    "title": "4A/7A: Verkehrsüberlastung",
     "time_line": "Seit 16:35"
    },
    {
@@ -43,35 +47,11 @@
    {
     "title": "54B: Stock im Weg",
     "time_line": "Bis Fr 13.11."
-   },
-   {
-    "title": "65A: Triester Straße, Rossakgasse",
-    "time_line": "Seit 11.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-05T17:01:06.722920+00:00",
-   "raw": {
-    "wl-stoerungen": 80,
-    "wl-hinweise": 71,
-    "oebb": 192,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 12,
-    "oebb": 166,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 7,
-    "wl": 96
-   }
-  },
   {
    "t": "2026-11-05T17:31:15.062967+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 6,
     "wl": 91
    }
+  },
+  {
+   "t": "2026-11-12T17:31:11.647996+00:00",
+   "raw": {
+    "wl-stoerungen": 93,
+    "wl-hinweise": 75,
+    "oebb": 184,
+    "baustellen-linien": 51,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 14,
+    "oebb": 159,
+    "baustellen": 61
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 91
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-12T17:01:03.338405+00:00"
+   "last_ok": "2026-11-12T17:31:11.647996+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-12T17:01:03.338405+00:00"
+   "last_ok": "2026-11-12T17:31:11.647996+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-12T17:01:03.338405+00:00"
+   "last_ok": "2026-11-12T17:31:11.647996+00:00"
   }
  }
 }
