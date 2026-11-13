@@ -11,8 +11,15 @@ gleichem ÖBB-Titel hält die Sperre mit Sperrtag den Platz, das frühere
 Fenster rückt hinter das Feld."). Live case: "Wien Hauptbahnhof ↔
 Gramatneusiedl" on 09.11.2026 from 04:31 to 06:31, where the weekend-night
 window held the slot and the item of the day stood behind the field. On a
-Sunday morning the window has its closure day too and keeps the slot; that
-case is not decided and pinned as it stands.
+Sunday morning the window has its closure day too and keeps the slot beside
+an item of the day that leads like it: operator decision 2026-11-13, card
+"Soll am Sonntagmorgen die Meldung des Tages vor dem Wochenendfenster
+stehen?": "Nein, Fenster behält den Platz" ("Es bleibt, wie es ist: An
+Samstag und Sonntag steht das Wochenendfenster vorn, die Meldung des Tages
+hinter dem Feld."). As it is: an item of the day that counts as a current
+incident (by the rules, or by the stored Gemini answer "ploetzlich") holds
+the slot on a Sunday too. Not named by the card and unchanged: on the first
+day of the window the place in the sorted order decides.
 
 It also settles the slot beside a closure of more than four weeks past its
 first week (decision 2026-11-12, "Vorrang nur in der ersten Woche"): as the
@@ -36,6 +43,7 @@ import pytest
 
 import src.build_feed as bf
 from src.feed_build.oebb_days import _long_closure_start
+from src.ki_entscheidung.candidates import unclear_class
 from src.feed_types import FeedItem
 
 VIENNA = ZoneInfo("Europe/Vienna")
@@ -95,8 +103,14 @@ def _seen(**days: date) -> dict[str, dict[str, Any]]:
     return {guid.replace("_", "-"): {"first_seen": _at(day, 9).isoformat()} for guid, day in days.items()}
 
 
-def _chain(items: list[FeedItem], state: dict[str, dict[str, Any]], now: datetime) -> list[str]:
-    return [str(item["guid"]) for item in bf._assemble_feed_items(list(items), state, now, decide=lambda *_: None)]
+def _chain(items: list[FeedItem], state: dict[str, dict[str, Any]], now: datetime, sudden: tuple[str, ...] = ()) -> list[str]:
+    def decide(feed_items: list[FeedItem], _state: dict[str, Any], _now: datetime) -> None:
+        # Stands for the Gemini step: the stored answer "ploetzlich" for the items named in *sudden*.
+        for item in feed_items:
+            if item.get("guid") in sudden:
+                item["_ki_art"] = "ploetzlich"
+
+    return [str(item["guid"]) for item in bf._assemble_feed_items(list(items), state, now, decide=decide)]
 
 
 def _tier(item: FeedItem, state: dict[str, dict[str, Any]], now: datetime) -> int:
@@ -223,10 +237,12 @@ def test_on_a_sunday_morning_the_weekend_window_keeps_the_slot(text: str, hour: 
     # The same overrun one day earlier. On Sunday the window of the weekend
     # nights has its closure day as well, both lead, and the window starts
     # first: the item of the day stands behind the field, as before the
-    # decision of 2026-11-13. Not decided by the operator; pinned as it is
-    # (independent check 2026-11-13). The place in the sorted order would put
-    # the item of the day in front here, and a report that closes nothing
-    # before the window in its closure night (next test).
+    # decision of 2026-11-13. The operator kept it that way on the same day
+    # ("Nein, Fenster behält den Platz"). No Gemini answer here; with the
+    # answer "ploetzlich" the first text is a current incident (further
+    # below). The place in the sorted order would put the item of the day in
+    # front here, and a report that closes nothing before the window in its
+    # closure night (next test).
     now = _at(date(2026, 11, 8), hour)
     nights = _closure("o-nights", date(2026, 10, 31), date(2026, 11, 30), "keine Nahverkehrszüge fahren", NIGHTS)
     december = _closure("o-december", date(2026, 12, 5), date(2026, 12, 7), "keine Nahverkehrszüge fahren")
@@ -254,6 +270,65 @@ def test_in_its_closure_night_the_window_keeps_the_slot_beside_a_newer_report_th
     state["o-report"] = {"first_seen": _at(date(2026, 11, 4), 19).isoformat()}
     assert (_tier(nights, state, now), _tier(report, state, now)) == (1, 1)
     assert _chain([report, note, nights], state, now) == ["o-nights", "w-note", "o-report"]
+
+
+def test_on_a_sunday_morning_a_current_incident_still_takes_the_slot_from_the_weekend_window() -> None:
+    # The decision "Nein, Fenster behält den Platz" is about two members
+    # that lead. A current incident of the same route goes first on a Sunday
+    # as on any day (operator decision 2026-10-04).
+    now = _at(date(2026, 11, 8), 5)
+    nights = _closure("o-nights", date(2026, 10, 31), date(2026, 11, 30), "keine Nahverkehrszüge fahren", NIGHTS)
+    storm = _oebb(
+        "o-storm", "Wegen eines Oberleitungsschadens sind zwischen Wien Floridsdorf und Wolkersdorf derzeit keine Fahrten möglich.",
+        date(2026, 11, 8), date(2026, 11, 8),
+    )
+    note = _notice("w-note", "Kagraner Platz", date(2026, 11, 6))
+    state = _seen(o_nights=date(2026, 10, 20), w_note=date(2026, 11, 6))
+    assert (_tier(storm, state, now), _tier(nights, state, now)) == (0, 1)
+    assert _chain([nights, note, storm], state, now) == ["o-storm", "w-note", "o-nights"]
+
+
+@pytest.mark.parametrize(
+    ("text", "hour", "expected"),
+    [(OVERRUN, 5, ["o-today", "w-note", "o-nights"]), (OVERRUN_ENDED, 6, ["o-nights", "w-note", "o-today"])],
+)
+def test_on_a_sunday_morning_the_overrun_holds_the_slot_while_gemini_calls_it_sudden(text: str, hour: int, expected: list[str]) -> None:
+    # "Es bleibt, wie es ist" includes the Gemini step (since 2026-11-12):
+    # for the overrun of 09.11. the case collection expects "ploetzlich"
+    # (data/samples/ki_entscheidung_faelle.json), and the probe runs of
+    # 12.11.2026 gave that answer (docs/architecture-teil-8.md, section 14,
+    # "Probelauf"). While the text closes the line the item of the day is
+    # then a current incident and holds the slot on a Sunday too; once it
+    # reads "waren bis 05:15 Uhr" the step no longer asks about it, the
+    # answer no longer counts and the window has the slot back.
+    now = _at(date(2026, 11, 8), hour)
+    nights = _closure("o-nights", date(2026, 10, 31), date(2026, 11, 30), "keine Nahverkehrszüge fahren", NIGHTS)
+    today = _oebb("o-today", text.replace("09.11.2026", "08.11.2026"), date(2026, 11, 8), date(2026, 11, 8))
+    today["pubDate"] = _at(date(2026, 11, 8), 4)  # ÖBB published the overrun on its day (09.11.: 04:30)
+    note = _notice("w-note", "Kagraner Platz", date(2026, 11, 6))
+    state = _seen(o_nights=date(2026, 10, 20), w_note=date(2026, 11, 6))
+    state["o-today"] = {"first_seen": _at(date(2026, 11, 8), 4).isoformat()}
+    assert unclear_class(today, state["o-today"], now) == ("oebb-tag" if text is OVERRUN else None)  # what the step asks about
+    assert _chain([nights, note, today], state, now, sudden=("o-today",)) == expected
+
+
+@pytest.mark.parametrize(("text", "hour", "minute"), [(OVERRUN, 5, 0), (OVERRUN_ENDED, 23, 31)])
+def test_on_the_first_day_of_the_weekend_window_the_sorted_order_decides(text: str, hour: int, minute: int) -> None:
+    # Saturday 31.10.2026: window and item of the day start on the same day,
+    # both lead, and as between any two windows of one day the place in the
+    # sorted order decides (tests/test_repeated_route_titles.py). The item of
+    # the day is the newer one and stands in front, at 23:31 also with a text
+    # that closes nothing any more, in the first closure night of the window
+    # (from 23:15). Not named by the card of 2026-11-13; pinned as it is.
+    now = _at(date(2026, 10, 31), hour) + timedelta(minutes=minute)
+    nights = _closure("o-nights", date(2026, 10, 31), date(2026, 11, 30), "keine Nahverkehrszüge fahren", NIGHTS)
+    today = _oebb("o-today", text.replace("09.11.2026", "31.10.2026"), date(2026, 10, 31), date(2026, 10, 31))
+    today["pubDate"] = _at(date(2026, 10, 31), 4)
+    note = _notice("w-note", "Kagraner Platz", date(2026, 10, 29))
+    state = _seen(o_nights=date(2026, 10, 20), w_note=date(2026, 10, 29))
+    state["o-today"] = {"first_seen": _at(date(2026, 10, 31), 4).isoformat()}
+    assert (_tier(nights, state, now), _tier(today, state, now)) == (1, 1)
+    assert _chain([nights, note, today], state, now) == ["o-today", "w-note", "o-nights"]
 
 
 def test_the_pass_stands_before_the_topic_budget_and_the_announced_items() -> None:
