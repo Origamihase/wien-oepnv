@@ -99,8 +99,9 @@ def _drop_old_items(
        brandneu und wird hier nie ausgemustert.
 
     Der zweite Rückgabewert nennt, was hier ausschied. Der State-Eintrag
-    einer solchen Meldung bleibt stehen (``main`` übergibt ``_save_state``
-    seit 2026-11-12 keine Löschungen mehr); erst die Aufbewahrungsfrist
+    einer solchen Meldung bleibt stehen (``_save_state`` bekommt seit
+    2026-11-12 keine Löschungen mehr, Aufruf über ``save_state_or_warn``
+    aus ``main``); erst die Aufbewahrungsfrist
     ``STATE_RETENTION_DAYS`` vergisst ihn. Der Eintrag ist das, was der Feed
     von einer Meldung weiß. Ein Takt-Lauf sieht ein Ende hier fast nie, der
     Abruf lässt eine beendete Meldung vorher weg; ein Neubau zwischen zwei

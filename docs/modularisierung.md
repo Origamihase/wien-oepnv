@@ -510,15 +510,25 @@ drei Zwischenvariablen, die nur die Kennzahlen speisten. Kein Wert von
 Für die Tests gilt die Regel aus Etappe 8: `_save_state`,
 `write_feed_health_report` und `write_feed_health_json` liest jetzt nur
 `outputs` (36 Ersetzungen in den Tests zeigen seither dorthin), `_make_rss`
-lesen die Fassade und `outputs` (13 Ersetzungen laufen über
-`setattr_all`/`patch_all`); zusammen 49 Stellen in 19 Testdateien. Die Fassade bindet die beiden Schreiber des Health-Berichts nicht
-mehr. Neu in `__all__` stehen `atomic_write` und `save_state_or_warn`, weil
-Tests sie über die Fassade lesen. `tests/test_build_feed_outputs.py` hält die
-Reihenfolge der Ausgaben und die Fehlerpfade fest (Zustand nicht gespeichert,
-englischer Spiegel nicht erzeugt oder nicht geschrieben, deutscher Feed nicht
-geschrieben, Kette gescheitert, Health-Markdown nicht geschrieben); die acht
-Tests über `main` laufen unverändert auch gegen den Stand vor dem Umbau, wenn
-die Ersetzungen auf die Fassade zeigen.
+lesen die Fassade und `outputs` (14 Ersetzungen laufen über
+`setattr_all`/`patch_all`); zusammen 50 Stellen in 20 Testdateien. Der
+Wächter `tests/test_build_feed_patch_targets.py` meldet seither auch ein
+Ziel hinter einem Attribut (etwa `run.outputs`) und einen Namen, der in einer
+Variablen steht. So fand er die Stelle in
+`tests/test_build_feed_skipped_item_edges.py`, die `_make_rss` über eine
+Variable nur in der Fassade ersetzte und damit den englischen Spiegel nicht
+mehr traf. `atomic_write` binden mehrere Teile; die Tests, die ein Schreiben
+scheitern lassen, ersetzen es über `setattr_all` und lassen nur die eine
+Datei scheitern. Die Fassade bindet die beiden Schreiber des Health-Berichts
+nicht mehr. Neu in `__all__` stehen `atomic_write` und `save_state_or_warn`, weil
+Tests sie über die Fassade lesen. `tests/test_build_feed_outputs.py` (acht
+Tests über `main`) hält die Reihenfolge der Ausgaben und die Fehlerpfade fest
+(Zustand nicht gespeichert, englischer Spiegel nicht erzeugt oder nicht
+geschrieben, deutscher Feed nicht geschrieben, Kette gescheitert,
+Health-Markdown nicht geschrieben); diese acht Tests laufen auch gegen den
+Stand vor dem Umbau, wenn die Ersetzungen auf die Fassade zeigen.
+`tests/test_build_feed_output_functions.py` (zehn Tests) ruft die neuen
+Funktionen einzeln auf.
 
 Replay mit echtem `main()` am 2026-11-14: 101 Feed-Stände vom 28.10. bis
 13.11. (jeder achte der 813 Stände des Vergleichslaufs vom 2026-11-13,

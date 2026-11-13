@@ -20,8 +20,10 @@ Geprüft wird per AST über ``tests/**/*.py``:
    Dekorator), ``monkeypatch.delattr`` und direkte Zuweisung, auch mit
    ``target=``/``name=``/``attribute=`` als Schlüsselwort. Ein Patch eines
    Feed-Build-Namens auf ein Ziel, das sich nicht auflösen lässt (etwa einen
-   Parameter einer Hilfsfunktion), schlägt fehl; die Selbsttests am Ende prüfen
-   die Formen;
+   Parameter einer Hilfsfunktion oder seit 2026-11-14 ein Attribut wie
+   ``run.outputs``), schlägt fehl, ebenso ein Patch auf ein Feed-Build-Modul,
+   dessen Name in einer Variablen steht; die Selbsttests am Ende prüfen die
+   Formen;
    Aliase werden über Importe, ``part(...)``, ``owner(...)`` und die Re-Import-Helfer
    aufgelöst. Patches auf Attribute geteilter Objekte (``json.load``,
    ``feed_config.OUT_PATH``, ``setitem`` auf ``_TRANSLATION_STATE``) werden
@@ -250,6 +252,11 @@ class _FileScan:
 
         return any(attr in names for names in module_definitions().values())
 
+    def _feed_build_binding(self, attr: str) -> bool:
+        """``attr`` ist ein Name, den ein Modul von ``src.build_feed`` bindet (definiert oder importiert)."""
+
+        return any(attr in names for names in module_bindings().values())
+
     def resolve(self, node: ast.AST) -> str | None:
         """Der Modulname, zu dem ``node`` auswertet, oder ``None``."""
 
@@ -340,6 +347,15 @@ class _FileScan:
                 # Ziel ist ein Parameter oder eine sonst unbekannte Variable:
                 # der Wächter kann das Modul nicht bestimmen.
                 self.census.unresolved.append(f"{self.rel}:{node.lineno} {inner.id}.{attr}")
+            elif attr is not None and isinstance(inner, ast.Attribute) and self._feed_build_binding(attr):
+                # Ziel ist ein Attribut (``run.outputs``), das ein Modul von
+                # ``src.build_feed`` halten kann: der Wächter kann das Modul nicht
+                # bestimmen (seit 2026-11-14).
+                self.census.unresolved.append(f"{self.rel}:{node.lineno} {ast.unparse(inner)}.{attr}")
+            elif attr is None and module is not None:
+                # Der Name steht in einer Variablen (``setattr(bf, name, v)``): der
+                # Wächter kann nicht prüfen, welche Module ihn lesen (seit 2026-11-14).
+                self.census.unresolved.append(f"{self.rel}:{node.lineno} {ast.unparse(inner)}.<{ast.unparse(args[1])}>")
             return
         if name == "setitem" and args and isinstance(args[0], ast.Attribute) and self.resolve(args[0].value):
             self.census.shared.append(f"{self.rel}:{node.lineno} {_dotted(args[0])}[...]")
@@ -489,6 +505,28 @@ def _scan_source(source: str) -> Census:
     result = Census()
     _FileScan(TESTS / "test_zz_mutant.py", result, text=source).scan()
     return result
+
+
+def test_the_guard_reports_attribute_targets_and_variable_names() -> None:
+    # Seit 2026-11-14 (Ausgaben von ``main`` in ``src.feed_build.outputs``): Beide
+    # Formen blieben dem Wächter verborgen. ``mp.setattr(bf, name, v)`` mit
+    # ``name = "_make_rss"`` traf danach nur noch die Fassade, nicht den Leser
+    # in ``outputs``.
+    source = (
+        "import src.build_feed as bf\n"
+        "def helper(run, mp, name):\n"
+        '    mp.setattr(run.outputs, "_save_state", None)\n'
+        '    mp.setattr(run.outputs, "atomic_write", None)\n'
+        "    mp.setattr(bf, name, None)\n"
+        '    mp.setattr(run.report, "add_warning", None)\n'
+    )
+    result = _scan_source(source)
+    assert result.unresolved == [
+        "tests/test_zz_mutant.py:3 run.outputs._save_state",
+        "tests/test_zz_mutant.py:4 run.outputs.atomic_write",
+        "tests/test_zz_mutant.py:5 bf.<name>",
+    ]
+    assert not result.patches
 
 
 def test_the_guard_flags_facade_patches_in_every_form() -> None:
