@@ -8,21 +8,20 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 13 Nov 2026 04:30:34 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 05:00:50 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[N46: Polizeieinsatz]]></title>
+      <title><![CDATA[31: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">d2d7e5c5bcfeb2d7ad3f55aa68f651eb8262b9942f397826837b10c59c540384</guid>
-      <pubDate>Fri, 13 Nov 2026 03:39:00 +0100</pubDate>
+      <guid isPermaLink="false">c831c69f1d02ea5b1902b4bfb704f891b55f41b9a049bf2bcf85f5ed6933bec2</guid>
+      <pubDate>Fri, 13 Nov 2026 04:55:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 13 Nov 2026 03:39:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 13 Nov 2026 03:55:25 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 13 Nov 2026 04:54:00 +0100</ext:ends_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 03:39]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 03:39]]]></content:encoded>
+      <ext:first_seen>Fri, 13 Nov 2026 04:55:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 13 Nov 2026 04:55:01 +0100</ext:starts_at>
+      <description>Fahrtbehinderung in Richtung Stammersdorf. Voraussichtlich bis 05:15 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Empergergasse. [Seit 04:55]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Stammersdorf. Voraussichtlich bis 05:15 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Empergergasse.<br/>[Seit 04:55]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx]]></title>
@@ -126,6 +125,20 @@
       <content:encoded><![CDATA[Triester Straße 164 → Triester Straße 162. Haltestellenverlegung der Linie 65A in Richtung Wienerberg City (Inzersdorf). Grund: Straßenbauarbeiten.<br/>[Seit 11.11.]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
+      <pubDate>Fri, 13 Nov 2026 04:40:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 11 Nov 2026 05:00:35 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 13 Nov 2026 04:40:00 +0100</ext:starts_at>
+      <ext:ends_at>Sat, 14 Nov 2026 01:00:00 +0100</ext:ends_at>
+      <description>Grund: Bauarbeiten. [Bis Sa 14.11.]</description>
+      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Bis Sa 14.11.]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[5A/N31: Obere Augartenstraße]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">4b133e0a2bf2849867177ba0646eb9eec8984fee0146b9475c8c15c934464586</guid>
@@ -139,20 +152,6 @@
       <georss:point>48.222757 16.375308</georss:point>
       <description>Untere Augartenstraße 40 → Untere Augartenstraße 42. Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf. Grund: Demontage eines Turmdrehkrans. [Bis 11.12.]</description>
       <content:encoded><![CDATA[Untere Augartenstraße 40 → Untere Augartenstraße 42. Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf. Grund: Demontage eines Turmdrehkrans.<br/>[Bis 11.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5B: Bauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">7f3e5db8abfea3bc72c1f2338313c17a67bc98bbf89a5bdb2e547704618ff7f5</guid>
-      <pubDate>Fri, 06 Nov 2026 14:11:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 06 Nov 2026 14:11:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 09 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 10 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <description>Wegen Straßenbauarbeiten in der Wexstraße werden die Busse umgeleitet. Linie 5B: Umleitung ab Klosterneuburger Straße / Wexstraße über Klosterneuburger Straße … [Bis 10.12.]</description>
-      <content:encoded><![CDATA[Wegen Straßenbauarbeiten in der Wexstraße werden die Busse umgeleitet. Linie 5B: Umleitung ab Klosterneuburger Straße / Wexstraße über Klosterneuburger Straße …<br/>[Bis 10.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
