@@ -124,6 +124,7 @@ from .feed_build.filters import (
     _apply_topic_budget, _defer_repeated_route_titles, _is_test_message, _drop_test_messages, _preview_last_day,
     _starts_after, _defer_upcoming_items, _defer_all_clear_items,
 )
+from .feed_build.oebb_days import _long_closure_start
 from .feed_build.oebb_lead import (
     _oebb_lead_section_end, _end_with_oebb_lead_section, _with_second_sentence, _oebb_sentence_without_place,
     _oebb_first_two_sentences,
@@ -347,7 +348,6 @@ class FeedAssemblyStats:
     deduped_count: int = 0
     duplicates_removed: int = 0
     duplicate_summaries: list[DuplicateSummary] = dataclasses.field(default_factory=list)
-    dropped_ids: set[str] = dataclasses.field(default_factory=set)
     filter_duration: float = 0.0
     dedupe_duration: float = 0.0
 
@@ -385,8 +385,7 @@ def _assemble_feed_items(
     _note_announced_starts(items, state, now)
     # The shown ÖBB section's end, before the age filter reads ``ends_at``.
     _end_with_oebb_lead_section(items)
-    items, dropped_ids = _drop_old_items(items, now, state)
-    stats.dropped_ids = dropped_ids
+    items, _ = _drop_old_items(items, now, state)
     stats.filter_duration = perf_counter() - filter_start
     stats.filtered_count = len(items)
     log.info(
@@ -456,7 +455,6 @@ def _assemble_feed_items(
     items = _carry_item_identity(items, state, now)
     # Sudden or planned, where the rules cannot tell (``src.ki_entscheidung``).
     decide(items, state, now)
-    stats.dropped_ids -= {str(it.get("guid")) for it in items if it.get("guid")}
     stats.deduped_count = len(items)
     stats.duplicates_removed = sum(
         summary.count - 1 for summary in stats.duplicate_summaries
@@ -473,7 +471,9 @@ def _assemble_feed_items(
     # see ``_defer_repeated_route_titles``; a current incident keeps its
     # place (tier 0 of the sort key).
     items = _defer_repeated_route_titles(
-        items, is_current=lambda it: sort_keys[id(it)][0] == 0
+        items, is_current=lambda it: sort_keys[id(it)][0] == 0,
+        gives_way=lambda it: _long_closure_start(it, now_utc) is not None,
+        leads=lambda it: sort_keys[id(it)][0] == 1,
     )
     # One event must not take every slot — see ``_apply_topic_budget``.
     items = _apply_topic_budget(items, feed_config.MAX_ITEMS_PER_TOPIC)
@@ -615,8 +615,9 @@ def main() -> int:
         _remember_item_identity(items, state, now)
         ki.finish()
 
+        # Without deletions: a message that left keeps its entry (``_drop_old_items``).
         try:
-            _save_state(state, deletions=stats.dropped_ids)
+            _save_state(state)
         except Exception as e:
             # Security (Clear-Text-Logging Drift): broad framework catch.
             log.warning(

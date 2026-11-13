@@ -69,6 +69,49 @@ Uhr"). A text that names days in a form the reader does not take ("in der
 Nacht von 14.02. auf 15.02.2026", "von 20.10.2026 auf 21.10.2026") is a
 planned measure and counts on every day only when it closes the line
 (:func:`_names_measure_day`, independent check 2026-11-11).
+
+A closure that runs day after day for more than four weeks leads the
+notices only in its first week (operator decision 2026-11-12, card "Soll die
+Dauersperre Praterstern–Hauptbahnhof bis Oktober 2027 täglich vorn stehen?":
+"Vorrang nur in der ersten Woche"; :func:`_past_first_week`). "Wien
+Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx" (07.09.2026 to 31.10.2027,
+"von 07.09.2026 bis Ende Oktober 2027 keine Züge fahren") held one of the
+ten places in 267 of the 283 published feed states from 07.11., 13:31, to
+12.11.2026, 23:00 Vienna time, and would have kept the front every day for
+a year, against his sentence of the same day: "Alte (aber noch gültige)
+Hinweise an den letzten Plätzen." After the first week such a closure ranks
+like the other notices and counts there from its first day
+(:func:`_long_closure_start`).
+
+What counts is the unbroken run of closure days around today
+(:func:`_closure_run`):
+
+* Weekend nights (Gramatneusiedl) are runs of two days and keep the front
+  in every closure night; a closure of up to four weeks keeps it
+  throughout; a day without closure between two runs starts a new run.
+* A closure in every night ("von 16.01.2027 bis 08.03.2027 (jeweils 00:30
+  Uhr - 04:00 Uhr)") has no day between its nights: one run, long after
+  four weeks.
+* A text that names no day, or a first day without a last one the reader
+  takes ("bis Ende Oktober 2027"), gives the item's own period as its run.
+  That holds for every undated ÖBB text that counts on each day, a closure
+  or not. A run without a known end counts as long as it has lasted (ÖBB
+  dates every item, so the feed has not seen one yet).
+* A text that names several days in a form the reader does not take ("in
+  den Nächten von 13.02. auf 14.02. und von 20.02. auf 21.02.2027") is
+  left as it was: every day of its period, however long.
+* A range of more than 400 days is not read (:func:`_oebb_closure_days`);
+  such a text falls under the period rule above, weekday window or not,
+  written "von … bis …" or "zwischen … und …".
+
+A current incident keeps the front and its moment whatever its period
+("Störungen gehen immer vor.", ``item_meta._recency_sort_key``), and a long
+closure past its first week hands the one slot of its ÖBB title to a
+closure of the same route on its closure day
+(``filters._defer_repeated_route_titles``).
+
+The length is counted in calendar days with closure: Monday 22:00 to Monday
+04:30 four weeks later closes on 29 days and is long.
 """
 
 from __future__ import annotations
@@ -81,7 +124,13 @@ from ..feed_types import FeedItem
 from .base import _OEBB_SOURCE, _SENTENCE_SPLIT_RE, _VIENNA_TZ, _parse_datetime, _to_utc
 from .oebb_lead import _oebb_shown_sentences
 
-__all__ = ["_oebb_closure_days", "_oebb_closes_line", "_is_oebb_closure_day"]
+__all__ = ["_oebb_closure_days", "_oebb_closes_line", "_is_oebb_closure_day", "_long_closure_start"]
+
+# A closure that runs day after day for more than ``_LONG_CLOSURE_DAYS``
+# leads the notices only on its first ``_LONG_CLOSURE_FRONT_DAYS`` days
+# (operator decision 2026-11-12, :func:`_past_first_week`).
+_LONG_CLOSURE_DAYS = 28
+_LONG_CLOSURE_FRONT_DAYS = 7
 
 _DATE = r"(\d{1,2})\.(\d{2})\.(\d{4})"
 _TIME = r"(?:\s*\(\d{1,2}:\d{2} Uhr\))?"
@@ -113,6 +162,13 @@ _SHORT_DATE_RE = re.compile(r"\b(\d{1,2})\.(\d{2})(?:\.(\d{4}|\d{2})?)?(?!\d)(?!
 # (Gramatneusiedl–Bruck/Leitha, 04.10.2026) reads like its twin without "am"
 # (independent check 2026-11-11).
 _UNTIL_BEFORE_RE = re.compile(r"\bbis(?:\s+\w+){0,2}\s*$")
+# "zwischen 06.10.2025 und 16.11.2026": the second date ends the range like
+# one behind "bis" (independent check 2026-11-13). Only this bare form, with
+# or without clock times in brackets; a list of days ("am 13.02. und
+# 20.02.") keeps both.
+_BETWEEN_END_RE = re.compile(
+    r"(\bzwischen \d{1,2}\.\d{2}(?:\.(?:\d{4}|\d{2})?)?(?:\s*\(\d{1,2}:\d{2} Uhr\))?) und(?= \d{1,2}\.\d{2}(?!\d))"
+)
 # The lead says that no trains run or stop on its days: "keine
 # Nahverkehrszüge fahren", "keine R40- und S40-Züge fahren", "keine Züge
 # halten", "keine Fahrten möglich", "kein Zugverkehr möglich". The verb may
@@ -268,63 +324,191 @@ def _oebb_closes_line(lead: str) -> bool:
     return bool(_CLOSES_LINE_RE.search(_plain(lead)))
 
 
-def _names_measure_day(sentence: str) -> bool:
-    """Whether an ÖBB sentence names a day of its measure, readable or not.
+def _measure_days_named(sentence: str) -> set[str]:
+    """The days an ÖBB sentence names for its measure, as written, readable or not.
 
-    Any date counts but one behind "bis" (:data:`_UNTIL_BEFORE_RE`): a
-    planned measure says when it is ("von 20.10.2026 auf 21.10.2026", "in der
-    Nacht von 14.02. auf 15.02.2026"); an unplanned disruption says at most
-    when it should end ("bis voraussichtlich 27.08.2026, 23:59 Uhr", "bis
-    voraussichtlich 09:00 Uhr").
+    Any date counts but one behind "bis" (:data:`_UNTIL_BEFORE_RE`) or the
+    second of "zwischen … und …" (:data:`_BETWEEN_END_RE`): a planned
+    measure says when it is ("von 20.10.2026 auf 21.10.2026", "in der Nacht
+    von 14.02. auf 15.02.2026"); an unplanned disruption says at most when it
+    should end ("bis voraussichtlich 27.08.2026, 23:59 Uhr", "bis
+    voraussichtlich 09:00 Uhr"). The strings are counted, not days: a time
+    written with a dot ("04.00 Uhr") counts like a day.
     """
-    text = _plain(sentence)
-    return any(not _UNTIL_BEFORE_RE.search(text[:match.start()]) for match in _SHORT_DATE_RE.finditer(text))
+    text = _BETWEEN_END_RE.sub(r"\1 bis", _plain(sentence))
+    return {match.group(0) for match in _SHORT_DATE_RE.finditer(text) if not _UNTIL_BEFORE_RE.search(text[:match.start()])}
 
 
-def _is_oebb_closure_day(item: FeedItem, now_utc: datetime) -> bool:
-    """Whether *item* is an ÖBB measure that closes its line today (Vienna).
+def _names_measure_day(sentence: str) -> bool:
+    """Whether an ÖBB sentence names a day of its measure (:func:`_measure_days_named`)."""
+    return bool(_measure_days_named(sentence))
 
-    The item must have begun and not ended (``starts_at``/``ends_at``).
-    Its lead is the sentence the feed shows first (``_oebb_shown_sentences``).
-    When the display moved a later section to the front and that section
-    names no date, the days come from ÖBB's first sentence, where ÖBB writes
-    them: under "REX 3/REX 1: Wien Hauptbahnhof ↔ Deutsch Wagram" (cache of
+
+def _closure_run(days: dict[date, time | None], today: date) -> tuple[date, date]:
+    """First and last day of the unbroken run of closure days around *today*."""
+    first = last = today
+    one_day = timedelta(days=1)
+    while first - one_day in days:
+        first -= one_day
+    while last + one_day in days:
+        last += one_day
+    return first, last
+
+
+def _closure_runs(days: dict[date, time | None]) -> list[tuple[date, date]]:
+    """Every unbroken run of closure days in *days*, first and last day each."""
+    runs: list[tuple[date, date]] = []
+    for day in sorted(days):
+        if runs and (day - runs[-1][1]).days == 1:
+            runs[-1] = (runs[-1][0], day)
+        else:
+            runs.append((day, day))
+    return runs
+
+
+def _local_day(moment: object) -> date | None:
+    """The Vienna date of a parsed ``starts_at``/``ends_at``, or None."""
+    return _to_utc(moment).astimezone(_VIENNA_TZ).date() if isinstance(moment, datetime) else None
+
+
+def _past_first_week(first: date | None, last: date | None, today: date) -> bool:
+    """Whether *today* lies behind the first week of a closure of more than four weeks.
+
+    *first* and *last* bound the unbroken run of closure days around
+    *today*: the days of the lead sentence (:func:`_closure_run`), or the
+    item's own period where the text names none ("von 07.09.2026 bis Ende
+    Oktober 2027" gives no last day the reader takes). A run without a known
+    end counts as long as it has lasted: on its 29th day it is a closure of
+    more than four weeks. A run without a known first day is left alone.
+
+    Operator decision 2026-11-12: "Vorrang nur in der ersten Woche" (module
+    docstring). The first week is the first seven days of the run; a closure
+    that enters the feed later than that never leads the notices.
+    """
+    if first is None:
+        return False
+    length = ((last or today) - first).days + 1
+    return length > _LONG_CLOSURE_DAYS and (today - first).days >= _LONG_CLOSURE_FRONT_DAYS
+
+
+def _oebb_closure_frame(
+    item: FeedItem, now_utc: datetime
+) -> dict[date, time | None] | tuple[date | None, date | None] | None:
+    """What a running ÖBB measure closes: its closure days, or its period, or None.
+
+    None unless *item* is an ÖBB measure that has begun and not ended
+    (``starts_at``/``ends_at``) and ranks as a closure. Its lead is the
+    sentence the feed shows first (``_oebb_shown_sentences``). When the
+    display moved a later section to the front and that section names no
+    date, the days come from ÖBB's first sentence, where ÖBB writes them:
+    under "REX 3/REX 1: Wien Hauptbahnhof ↔ Deutsch Wagram" (cache of
     04.09.2026) the feed showed "REX 1-Züge werden zwischen Deutsch Wagram
     Bahnhof und Wien Hbf über Wien Stadlau Bahnhst umgeleitet.", a diversion.
 
     A lead with days counts only when it closes the line
-    (:func:`_oebb_closes_line`), and only on one of its
-    :func:`_oebb_closure_days` (on a last day with an end time only until
-    then). A text that names no day at all counts on every day: an
-    unplanned disruption ("Wegen einer Oberleitungsstörung sind … Zugfahrten
-    derzeit nur eingeschränkt möglich", "Wegen Verlängerung der Bauarbeiten
-    sind … bis voraussichtlich 09:00 Uhr keine Fahrten möglich"). A measure
-    whose days are written in a form the reader does not take ("in der Nacht
-    von 14.02. auf 15.02.2026", "von 20.10.2026 auf 21.10.2026") is planned:
-    it counts on every day only when it closes the line, and a diversion or
+    (:func:`_oebb_closes_line`), and gives its :func:`_oebb_closure_days`.
+    A text that names no day at all counts on every day: an unplanned
+    disruption ("Wegen einer Oberleitungsstörung sind … Zugfahrten derzeit
+    nur eingeschränkt möglich", "Wegen Verlängerung der Bauarbeiten sind …
+    bis voraussichtlich 09:00 Uhr keine Fahrten möglich"). A measure whose
+    days are written in a form the reader does not take ("in der Nacht von
+    14.02. auf 15.02.2026", "von 20.10.2026 auf 21.10.2026") is planned: it
+    counts on every day only when it closes the line, and a diversion or
     changed times without a readable day rank like the other notices
     (:func:`_names_measure_day`, independent check 2026-11-11).
+
+    Such a text gives the item's own period, first and last Vienna day,
+    as one run of closure days: "von 07.09.2026 bis Ende Oktober 2027 keine
+    Züge fahren" names its first day and no last day the reader takes. A
+    text that names several days in an unread form ("in den Nächten von
+    13.02. auf 14.02. und von 20.02. auf 21.02.2027") closes on some days of
+    its period, nobody knows on which: it gives today alone, a run the long
+    closure rule never touches.
     """
     if item.get("source") != _OEBB_SOURCE:
-        return False
+        return None
     start = _parse_datetime(item.get("starts_at"))
     if isinstance(start, datetime) and _to_utc(start) > now_utc:
-        return False
+        return None
     end = _parse_datetime(item.get("ends_at"))
     if isinstance(end, datetime) and _to_utc(end) <= now_utc:
-        return False
+        return None
     sentences, shown = _oebb_shown_sentences(item)
     lead = shown[0] if shown else ""
     days = _oebb_closure_days(lead)
     if days is None and sentences and lead != sentences[0]:
         days = _oebb_closure_days(sentences[0])
-    if days is None:
-        first = sentences[0] if sentences else lead
-        return _oebb_closes_line(lead) or not (_names_measure_day(lead) or _names_measure_day(first))
-    if not _oebb_closes_line(lead):
-        return False
+    if days is not None:
+        return days if _oebb_closes_line(lead) else None
+    named = _measure_days_named(lead) or _measure_days_named(sentences[0] if sentences else lead)
+    if named and not _oebb_closes_line(lead):
+        return None
+    if len(named) > 1:
+        today = _to_utc(now_utc).astimezone(_VIENNA_TZ).date()
+        return today, today
+    return _local_day(start), _local_day(end)
+
+
+def _oebb_closure_run(item: FeedItem, now_utc: datetime) -> tuple[date | None, date | None] | None:
+    """The unbroken run of closure days around today (Vienna), or None when *item* closes nothing now.
+
+    From :func:`_oebb_closure_frame`: the run of its closure days that holds
+    today (:func:`_closure_run`; on a last day with an end time only until
+    then), or the item's period where the text names no day, either bound
+    None where the item does not give it.
+    """
+    frame = _oebb_closure_frame(item, now_utc)
+    if frame is None or isinstance(frame, tuple):
+        return frame
     local = _to_utc(now_utc).astimezone(_VIENNA_TZ)
-    if local.date() not in days:
-        return False
-    until = days[local.date()]
-    return until is None or local.time() < until
+    today = local.date()
+    if today not in frame:
+        return None
+    until = frame[today]
+    if until is not None and local.time() >= until:
+        return None
+    return _closure_run(frame, today)
+
+
+def _is_oebb_closure_day(item: FeedItem, now_utc: datetime) -> bool:
+    """Whether *item* is an ÖBB closure that leads the notices today (Vienna).
+
+    It closes its line today (:func:`_oebb_closure_run`), and it is not a
+    closure of more than four weeks past its first week
+    (:func:`_past_first_week`, operator decision 2026-11-12).
+    """
+    run = _oebb_closure_run(item, now_utc)
+    return run is not None and not _past_first_week(*run, _to_utc(now_utc).astimezone(_VIENNA_TZ).date())
+
+
+def _long_closure_start(item: FeedItem, now_utc: datetime) -> datetime | None:
+    """The first day (UTC moment of its Vienna midnight) of a long closure past its first week, else None.
+
+    Such a closure ranks like the other notices, and there it counts from
+    the day it began, not from the day it reached the feed
+    (``item_meta._recency_sort_key``). "Wien Praterstern ↔ Wien Hauptbahnhof
+    / Wien St. Marx" has closed the line since 07.09.2026 but reached the
+    feed on 07.11.2026, after the filter had learned its two-station
+    endpoint: counted from 07.11. it still stood among the first ten in 163
+    of the 283 replayed feed states from 07.11. to 12.11.2026 after it had
+    lost its priority, as a notice five days old. A measure announced ahead
+    counts from its start anyway (``announced_start``), and a WL stop notice
+    that enters through a filter change counts from its publication
+    (``_initial_first_seen``, 2026-10-04): each stands where it would stand
+    had the feed shown it from the beginning.
+
+    Every run of the item counts that is long and past its first week,
+    whether or not it closes the line at this hour: the moment does not jump
+    back to the day the item reached the feed when the closure pauses or
+    ends in the morning of its last day. Of several such runs the earliest.
+    """
+    frame = _oebb_closure_frame(item, now_utc)
+    if frame is None:
+        return None
+    today = _to_utc(now_utc).astimezone(_VIENNA_TZ).date()
+    runs = [frame] if isinstance(frame, tuple) else _closure_runs(frame)
+    starts = [first for first, last in runs if first is not None and _past_first_week(first, last, today)]
+    if not starts:
+        return None
+    first = min(starts)
+    return _to_utc(datetime(first.year, first.month, first.day, tzinfo=_VIENNA_TZ))

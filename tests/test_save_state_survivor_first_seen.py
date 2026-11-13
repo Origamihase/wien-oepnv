@@ -20,6 +20,11 @@ Post-fix ``_drop_old_items`` subtracts the surviving items' identities
 from ``dropped`` before returning, so ``dropped`` carries only items
 with no surviving twin. ``_save_state``'s existing pruning semantics
 (prune every key in ``deletions``) is therefore safe.
+
+Since 2026-11-12 ``main`` passes no deletions at all: a message that left
+keeps its state entry (``tests/test_state_entry_survives_expiry.py``). The
+guard and ``_save_state``'s parameter stay pinned here for any caller that
+passes the ids ``_drop_old_items`` returns.
 """
 from __future__ import annotations
 

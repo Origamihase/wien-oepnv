@@ -324,6 +324,12 @@ aktuellen Störungen und die Menge der Meldungen bleiben gleich; sieben
 vier zugleich), dafür fallen WL-Hinweise heraus. Mit der Regel vom 11.11. sind
 es vier echte Sperren (Hbf ↔ Westbahnhof, REX 50, Gramatneusiedl, R40),
 höchstens zwei zugleich (Nachbau aller 872 Stände vom 15.10. bis 08.11.).
+Seit 2026-11-12 hat eine Sperre, die länger als vier Wochen Tag für Tag
+sperrt, den Vorrang nur in ihren ersten sieben Tagen (`_past_first_week`,
+Betreiberentscheidung „Vorrang nur in der ersten Woche“; Anlass „Wien
+Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx“, 07.09.2026 bis 31.10.2027).
+Danach steht sie bei den übrigen Hinweisen und zählt dort ab ihrem ersten Tag
+(`_long_closure_start`); Wochenendnächte und kürzere Sperren behalten ihn (Lesarten: `docs/architecture.md`).
 
 Wiederkehrende WL-Meldungen: Die WL-GUID besteht aus Kategorie, Thema und
 Linien, ein Datum enthält sie nicht. „94A: Verkehrsunfall“ hat an jedem Tag
@@ -334,7 +340,7 @@ den `pubDate` (Gültigkeitsbeginn) der Meldung, sobald zwei Bedingungen
 zutreffen: `first_seen` liegt vor diesem Beginn, und die Meldung fehlte
 zuletzt länger als `_OCCURRENCE_GAP` (2 h) in den Daten. Wann eine Meldung
 zuletzt da war, steht im State-Feld `last_seen`. Der Build stempelt es bei
-jedem Lauf für jedes WL-Item mit State-Eintrag. Laufende Maßnahmen, die WL
+jedem Lauf für jedes WL-Item mit State-Eintrag, das noch gilt. Laufende Maßnahmen, die WL
 täglich mit neuem Gültigkeitsfenster neu ausgibt („Busse halten …“), waren
 bis zum neuen Beginn da und behalten ihren Platz. Geplante Maßnahmen
 (dieselben Wörter wie bei der Zeitzeile: Bauarbeiten, Veranstaltung,
@@ -345,6 +351,19 @@ und stand seit 26.09. in 370 von 387 Feed-Ständen vorn, obwohl es seit
 28.08. im Feed war (Audit und Betreiberentscheidung 2026-10-03). ÖBB, Baustellen und
 Stammstrecke bleiben unberührt, denn dort ist `pubDate` kein Beginn eines
 Auftretens.
+
+Der State-Eintrag bleibt, wenn eine Meldung ausscheidet (seit 2026-11-12):
+Bis dahin löschte ein Bau, der das Ende einer Meldung selbst sah, ihren
+Eintrag. Ein Takt-Lauf (`update-cycle.yml`) sieht das fast nie, der Abruf
+lässt eine beendete Meldung vorher weg; ein Neubau nach einem Merge
+(`build-feed.yml`) liest sie noch aus dem Cache. Am 11.11.2026 um 01:24
+löschte ein Neubau so den Eintrag von „66A: Busse halten
+Salvatorianerplatz“ (Ende 01:00); um 05:00 stand die Maßnahme als neu auf
+Platz 2. Jetzt löscht kein Bau einen Eintrag, nur die Aufbewahrungsfrist
+(`STATE_RETENTION_DAYS`, ab `first_seen`) vergisst ihn, und den Eintrag
+einer abgelaufenen Meldung fasst `_restart_recurring_occurrences` nicht mehr
+an. Eine Meldung jenseits von `MAX_ITEM_AGE_DAYS` kommt damit nicht mit dem
+nächsten Bau als neu zurück (`tests/test_state_entry_survives_expiry.py`).
 
 Eine Meldung, eine GUID (`_carry_item_identity`, seit 2026-10-06): Ein
 zusammengelegter Eintrag trägt GUID und `pubDate` einer seiner Meldungen,
@@ -429,7 +448,7 @@ löschen. Alle vier stellen Items nur hinter das Feld, von wo sie nachrücken:
    Störung wie eine Bauphase nach der Strecke, und eine laufende Bauphase
    hat immer das frühere Fenster. Ein Unfall zwischen Wien Hbf und Wien
    Westbahnhof wäre sonst neben den Bauarbeiten dort (11.09. bis
-   01.11.2026) hinter das Feld gerutscht. Seit Juli kam das noch nicht vor.
+   01.11.2026) hinter das Feld gerutscht. Seit Juli kam das noch nicht vor. Seit 2026-11-12 gibt eine Sperre über vier Wochen nach ihrer ersten Woche den Platz an eine Sperre derselben Strecke ab, die heute Sperrtag hat (`gives_way`, `leads`), und rückt selbst hinter das Feld: Als frühestes Fenster hielte sie den Platz ihres Titels sonst, bis sie endet („Kurze Sperren und Wochenendnächte behalten den Vorrang.“). Sonst gilt die Regel des frühesten Fensters unverändert: Ohne Sperre mit Sperrtag behält die lange Sperre den Platz, auch neben einem neueren Hinweis zur Strecke, und ein anderes frühestes Fenster behält ihn auch neben einem späteren Fenster mit Sperrtag (Gramatneusiedl am 09.11.2026 von 04:31 bis 06:31 Uhr: im Nachspiel das Fenster der Wochenendnächte auf Platz 11 bis 15, die Meldung des Tages hinter dem Feld).
 2. `_apply_topic_budget`: höchstens `MAX_ITEMS_PER_TOPIC` Einträge je
    Ursachenwort und Tag in den vorderen Plätzen.
 3. `_defer_upcoming_items`: Was erst nach `UPCOMING_PREVIEW_DAYS` Tagen ab
@@ -549,7 +568,7 @@ Der Meldungsfeed sammelt offizielle Störungs- und Hinweisinformationen der Wien
 - **Kontext**: Die Meldungen enthalten Metadaten zu Bezirk, Maßnahme, Zeitraum sowie geokodierte Adressen und ergänzen damit ÖPNV-Störungsmeldungen um bauzeitliche Einschränkungen.
 - **Auswahl**: In den Feed kommt eine Baustelle nur, wenn ihr eigener Text sagt, was sich für Öffis ändert: eine Haltestelle verlegt oder aufgelassen, eine Linie umgeleitet oder kurzgeführt, der Straßenbahnbetrieb eingestellt, ein Schienenersatzverkehr (`mentions_oepnv` in `src/providers/baustellen.py`, geprüft beim Abruf und noch einmal beim Bauen des Feeds; Betreiberentscheidung 2026-10-06, „Nur mit Öffi-Folgen“). Nicht zählen: die Nähe zu einem Bahnhof (bis 2026-10-06 reichte eine Baustelle bis 150 m neben einem Bahnhof, etwa eine nächtliche Fahrstreifensperre am Rennweg); die U-Bahn als Bauherr („Im Zuge des U-Bahnbaus“, „Bauvorhaben U2 / U5“; in dieser Quelle seit Mai nie eine Folge für die U-Bahn selbst); Sätze, die Öffis als unberührt nennen („in der betriebslosen Zeit der Straßenbahn“, „nicht beeinträchtigt“, „einschließlich des öffentlichen Verkehrs … aufrecht gehalten“; seit 2026-11-06 „aufrecht gehalten/erhalten“ und „bleibt … aufrecht“, sofern im Satz davor kein „nicht“, „nur“, „kein“, „eingeschränkt“ oder „teilweise“ steht (`_keeps_running`) – die Salztorbrücke stand mit „die Buslinie 2A kann aufrecht gehalten werden“ im Cache, obwohl nur Autos umgeleitet werden); der Verweis „Nähere Informationen … sind/ist der Auskunft der Wiener Linien … zu entnehmen“; der Firmenname „Wiener Linien“ und die „öffentliche Verkehrsfläche“ (die Straße). Gemessen an der Feed-Historie vom 23.05. bis 06.10.2026: Von 10.027 Plätzen gingen rund 4.800 an Baustellen ohne solche Folge; in einem Nachbau von 110 Ständen fielen 17 von 30 Baustellen-Plätzen weg, an ihre Stelle kamen WL-Meldungen und Baustellen mit echter Folge.
 - **WL-Zwilling**: Meldet ein WL-Hinweis, der bereits gilt, dieselbe Maßnahme, fällt die Baustelle beim Bauen des Feeds weg (`_drop_baustellen_twins`, Betreiberentscheidung 2026-10-09, „WL-Meldung genügt“). Zwilling ist ein WL-Hinweis, dessen Ursachensatz („Wegen Bauarbeiten im Bereich Neilreichgasse # Davidgasse …“, „Aufgrund von Bauarbeiten in der Maxingstraße …“) die Straße der Baustelle nennt (Kopf des Titels, `site_street`; `names_site_street`), oder der dieselbe Adresse nennt wie der Baustellentext („nach Burggasse ONr. 69“ / „Nach: Burggasse 69“, `shares_address`). Eine Straße nur in einer Umleitungsstrecke, einer Haltestellenliste oder einem Haltestellennamen zählt nicht: Lange Straßen tragen mehrere Maßnahmen zugleich (Burggasse im Sommer: 48A St.-Ulrichs-Platz, Burggasse 25 → 27, und eine Flohmarkt-Umleitung des 13A). Anlass: „Burggasse 67“ (Haltestelle „von Burggasse ONr.67 nach Burggasse ONr. 69“) stand am 08./09.10. auf Platz 9; WL meldete dieselbe Verlegung als „48A: Neubaugasse, Burggasse“ mit Linie und Richtung. Ohne Zwilling bleibt eine Baustelle im Feed.
-- **Verlängerung**: Die GUID enthält das Enddatum, und der State einer abgelaufenen Meldung wird gelöscht. Eine verlängerte Baustelle kommt deshalb mit neuer GUID zurück. Für die Reihenfolge zählt sie trotzdem nie später als an ihrem Starttag als neu (`_baustelle_start_cap`, seit 2026-10-09).
+- **Verlängerung**: Die GUID enthält das Enddatum. Eine verlängerte Baustelle kommt deshalb mit neuer GUID und ohne State-Eintrag zurück. Für die Reihenfolge zählt sie trotzdem nie später als an ihrem Starttag als neu (`_baustelle_start_cap`, seit 2026-10-09).
 - **Beginn**: `OBJEKT_BEGINN` und `OBJEKT_ENDE` kommen als UTC-Datum eines Wiener Zeitpunkts (`2026-06-22Z`). Der Beginn (Wiener Mitternacht) fällt dabei auf den Vortag, das Ende (Ende des letzten Tages) bleibt. Belegt an den Baustellentexten selbst: 13 von 13 nennen als ersten Tag den Tag nach `OBJEKT_BEGINN`, 8 von 9 als letzten Tag genau `OBJEKT_ENDE`. Das Cache-Skript setzt den Beginn deshalb auf den Folgetag (`_first_day`, seit 2026-10-06); die GUID bleibt am gelieferten Datum, damit keine Baustelle neu erscheint. Liefert die Stadt das Datum eines Tages korrigiert, stünde der Beginn einen Tag zu spät: Dann nennen die Texte („Bauphase 1 (23.06.2026 …)“) wieder das Datum aus `OBJEKT_BEGINN`.
 - **Jahres-Ledger** (seit 2026-11-10, Betreiberentscheidung: Gemini fasst die Baustellen eines abgeschlossenen Jahres auf dessen Statistikseite zusammen): Beim Schreiben des Caches bekommt jede Baustelle, die die Auswahl besteht, eine Zeile je guid und Wiener Jahr in `data/stats/baustellen_<YYYY>.csv` (`append_baustellen_rows` in `src/utils/stats_baustellen.py`), mit dem Text der ersten Sichtung im Jahr, ohne die vom Provider angehängten Zeilen und ohne den Platzhalter „Baustelle ohne weitere Angaben“. Eine Baustelle, die vor dem 1. Jänner des Schreibjahres endete, bekommt keine Zeile. Daraus entstehen Liste, Anzahl und Rückblick auf `docs/statistik-<Jahr>.md`; Regeln: [`data/stats/README.md`](https://github.com/Origamihase/wien-oepnv/blob/main/data/stats/README.md).
 - **Leerer Cache**: Nach der Auswahl bleiben oft nur wenige oder gar keine Baustellen. Ein Live-Abruf schreibt das Ergebnis trotzdem, auch leer (`write_cache(..., allow_shrink=True)`, Exit 0); ob die Antwort der Stadt brauchbar war, prüft das Skript vorher je Layer (`_usable_layer`, letzte gute Antwort). Liefert die Stadt gar keine Baustelle, ist das ein Ausfall, kein ruhiger Tag (beide Layer führen immer Langläufer): Der Cache bleibt stehen, Exit 1. Leer werden darf er nur, wenn die Stadt Baustellen liefert und keine eine Folge für Öffis hat. Die 20-%-Sperre von `write_cache` gilt weiter für das Demo-Beispiel. Im Feed-Bericht steht ein leerer Baustellen-Cache als `ok-empty` (`register_provider(..., empty_is_normal=True)`), es sei denn, die Cache-Datei fehlt oder ist unlesbar.

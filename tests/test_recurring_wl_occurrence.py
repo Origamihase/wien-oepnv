@@ -235,11 +235,15 @@ def test_main_orders_a_recurring_incident_first() -> None:
 
 _NIGHT_PUB = datetime(2026, 10, 3, 2, 40, 27, tzinfo=UTC)  # 04:40 Vienna
 _NIGHT_FIRST = datetime(2026, 8, 28, 3, 1, tzinfo=UTC)
+# The end of the window that begins at ``_NIGHT_PUB``: 01:00 Vienna the day
+# after. A message past its end is left alone by the function under test.
+_NIGHT_END = datetime(2026, 10, 3, 23, 0, tzinfo=UTC)
 
 
 def _measure(description: str) -> FeedItem:
     item = _item("66A: Busse halten Salvatorianerplatz", "g66", _NIGHT_PUB)
     item["description"] = description
+    item["ends_at"] = _NIGHT_END
     return item
 
 
@@ -263,6 +267,7 @@ def test_a_planned_measure_back_after_two_days_is_a_new_occurrence() -> None:
 
 def test_an_incident_after_the_night_is_still_a_new_occurrence() -> None:
     item = _item("U4: Rettungseinsatz", "gu4", _NIGHT_PUB)
+    item["ends_at"] = _NIGHT_END
     state = {"gu4": _entry(_NIGHT_FIRST, last_seen=datetime(2026, 10, 2, 22, 31, tzinfo=UTC))}
     moved = bf._restart_recurring_occurrences([item], state, _NIGHT_PUB + timedelta(minutes=20))
     assert moved == 1

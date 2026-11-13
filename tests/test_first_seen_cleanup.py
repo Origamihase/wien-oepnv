@@ -54,5 +54,8 @@ def test_state_cleanup_keeps_only_current_identities(
     build_feed._save_state(state, deletions={"guid-a"})
 
     state_after_second = build_feed._load_state()
-    # Behavior changed: items are no longer aggressively pruned
+    # Behavior changed: items are no longer aggressively pruned. Since
+    # 2026-11-12 the feed build passes no deletions (a message that left
+    # keeps its entry, tests/test_state_entry_survives_expiry.py); this pins
+    # the parameter of ``_save_state`` alone.
     assert set(state_after_second.keys()) == {"guid-b"}

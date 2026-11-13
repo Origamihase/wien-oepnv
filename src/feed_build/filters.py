@@ -97,6 +97,25 @@ def _drop_old_items(
        Quell-Startdatum. So fällt ein aktiver Langläufer nicht wegen eines
        alten Startdatums heraus; ein noch nicht im State vermerktes Item ist
        brandneu und wird hier nie ausgemustert.
+
+    Der zweite Rückgabewert nennt, was hier ausschied. Der State-Eintrag
+    einer solchen Meldung bleibt stehen (``main`` übergibt ``_save_state``
+    seit 2026-11-12 keine Löschungen mehr); erst die Aufbewahrungsfrist
+    ``STATE_RETENTION_DAYS`` vergisst ihn. Der Eintrag ist das, was der Feed
+    von einer Meldung weiß. Ein Takt-Lauf sieht ein Ende hier fast nie, der
+    Abruf lässt eine beendete Meldung vorher weg; ein Neubau zwischen zwei
+    Takten liest sie noch aus dem Cache. Am 11.11.2026 löschte der Neubau um
+    01:24 Wiener Zeit so den Eintrag von „66A: Busse halten
+    Salvatorianerplatz“ (Ende 01:00, im Feed seit 03.10.). WL gab die
+    Maßnahme um 04:40 wie jeden Tag neu aus, und sie stand als neu auf
+    Platz 2 statt um Platz 23. Mit dem Eintrag unterscheidet
+    ``_restart_recurring_occurrences`` die neu ausgegebene Maßnahme von
+    einem neuen Auftreten, wie nach jedem Takt-Lauf. Aus demselben Grund
+    bleibt eine Meldung jenseits von ``MAX_ITEM_AGE_DAYS`` draußen, solange
+    ihr Eintrag besteht: Ohne Eintrag käme sie mit dem nächsten Bau als neu
+    zurück. Die Aufbewahrungsfrist zählt ab ``first_seen``; führt die Quelle
+    eine Meldung 600 Tage nach ihrem ersten Erscheinen noch, gilt sie danach
+    wieder als neu.
     """
 
     out: list[FeedItem] = []
@@ -361,7 +380,10 @@ def _repeated_route_title_key(item: FeedItem) -> str | None:
 
 
 def _defer_repeated_route_titles(
-    items: list[FeedItem], is_current: Callable[[FeedItem], bool] | None = None
+    items: list[FeedItem],
+    is_current: Callable[[FeedItem], bool] | None = None,
+    gives_way: Callable[[FeedItem], bool] | None = None,
+    leads: Callable[[FeedItem], bool] | None = None,
 ) -> list[FeedItem]:
     """Give one slot to each ÖBB title, held by its earliest time window.
 
@@ -392,6 +414,23 @@ def _defer_repeated_route_titles(
     Wien Hbf and Wien Westbahnhof would have gone behind the field next to
     the works there (11.09. to 01.11.2026), against the operator decision of
     2026-10-04 that current disruptions come first.
+
+    An earliest window that *gives_way* hands the slot to a member that
+    *leads* today, the earliest of them, and goes behind the field itself.
+    It is an ÖBB closure of more than four weeks past its first week
+    (``oebb_days._long_closure_start``, operator decision 2026-11-12), and
+    the member that leads is a closure on its closure day (tier 1 of the
+    sort key): "Kurze Sperren und Wochenendnächte behalten den Vorrang."
+    As the earliest window of its title the long closure would hold the
+    slot for as long as it runs ("Wien Praterstern ↔ Wien Hauptbahnhof /
+    Wien St. Marx" until 31.10.2027), and a weekend closure of the same
+    route would stand behind the field in its own closure nights.
+
+    Nothing else about the slot changed with that decision. Without a
+    member that leads, the long closure keeps the slot like any earliest
+    window, also beside a newer notice for the route; and an earliest
+    window that is no such long closure keeps it beside a later window on
+    its closure day. Both are the earliest-window rule as it stood.
     """
     groups: dict[str, list[int]] = {}
     for index, item in enumerate(items):
@@ -408,6 +447,9 @@ def _defer_repeated_route_titles(
         if len(members) > 1:
             current = [m for m in members if is_current is not None and is_current(items[m])]
             lead = current[0] if current else min(members, key=window_start)
+            if not current and gives_way is not None and leads is not None and gives_way(items[lead]):
+                front = [m for m in members if leads(items[m])]
+                lead = min(front, key=window_start) if front else lead
             deferred_indices.update(m for m in members if m != lead)
     if not deferred_indices:
         return items
