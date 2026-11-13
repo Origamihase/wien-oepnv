@@ -894,6 +894,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "9/40/41: Polizeieinsatz",
+    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Linie 40: Fahrtbehinderung in Richtung Schottentor U. Linie 41: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 23:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Gersthof S.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "fedccc55887cd5994fa9e20723914dd99b422ee2a3399cb452914beaf2f3ea9f",
+    "pubDate": "2026-11-13T22:29:00+01:00",
+    "starts_at": "2026-11-13T22:29:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=40,41,9|D=2026-11-13|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261113-0056"
+    ],
+    "_incident_start": "2026-11-13T22:29:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
