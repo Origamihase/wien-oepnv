@@ -203,3 +203,37 @@ def test_a_bare_end_day_and_a_line_read_english(model: list[str]) -> None:
         "between Wien Penzing station and Wien Hütteldorf …"
     )
     assert all(text.startswith("Wegen ") for text in model)
+
+
+_TWO_ROUTES = (
+    "Wegen einer Oberleitungsstörung sind zwischen Wien Meidling Bahnhof (U) und Tullnerfeld "
+    "Bahnhof bzw. Wien Hütteldorf Bahnhof (U) und Tullnerfeld Bahnhof"
+)
+
+
+@pytest.mark.parametrize(
+    "tail",
+    [
+        " Ein- und Ausstiege nicht möglich.",
+        " erneut keine Fahrten möglich.",
+        " wieder nur eingeschränkt möglich.",
+        " mit Regionalzügen keine Fahrten möglich.",
+        " in beiden Richtungen bis voraussichtlich 13:30 Uhr nur eingeschränkt Fahrten möglich.",
+        " vorübergehend keine Fahrten möglich.",
+    ],
+)
+def test_a_place_that_is_no_station_list_keeps_its_order(tail: str) -> None:
+    # Independent check 2026-11-13: these words would have moved behind the
+    # colon, where the cut takes them.
+    sentence = _TWO_ROUTES + tail
+    assert len(sentence) > 180
+    assert _oebb_what_does_not_run_first(sentence) == sentence
+
+
+def test_a_stop_with_a_line_behind_the_article_keeps_its_name() -> None:
+    from src.build_feed import _render_record_table
+
+    rendered = _render_record_table(
+        "Haltestelle: Schottenring, Zugang zur U4", source="Wiener Linien", category="Hinweis"
+    )
+    assert rendered == "Stop: Schottenring, Zugang zur U4"

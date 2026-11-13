@@ -383,8 +383,10 @@ Bahnhof und St. Pölten Hbf bzw. Tullnerfeld Bahnhof …“
 (`_oebb_restriction_first`). Gekürzt wird weiter an der Wortgrenze
 (Michaels Entscheidung vom 05.11., „Wortweise bleibt“); umgestellt werden
 nur ÖBBs eigene Wörter. Ein Satz, der passt, behält seine Reihenfolge,
-ebenso einer mit anderen Wörtern zwischen Strecke und Ende („keine
-Fahrten der S 80 zwischen … möglich“). Lässt der zweite Satz die Strecke
+ebenso einer, dessen Ort keine reine Liste von Bahnhöfen ist („erneut“,
+„in beiden Richtungen“, „mit Regionalzügen“, „keine Fahrten der S 80
+zwischen … möglich“), und ein bloßes „nicht möglich“ ohne „Zugfahrten“
+(„Ein- und Ausstiege nicht möglich“). Lässt der zweite Satz die Strecke
 weg, die der Titel nennt, geht der Doppelpunkt mit
 (`_oebb_sentence_without_place`). Englisch: „Due to a police operation, no
 trains can run until approx. 13:30: between Tullnerfeld station and St.

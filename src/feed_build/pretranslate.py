@@ -551,7 +551,10 @@ _ENTRANCE_SIDES_EN: dict[str, str] = {
 # KI-Wächter issue #2209) read "Würzburggasse after the driveway zum
 # Friedhof", the word table knew "Einfahrt" but not what follows it. Each
 # noun has its English here; "Zufahrt zum Campingplatz" keeps the wording of
-# ``_RECORD_VALUE_RULES``.
+# ``_RECORD_VALUE_RULES``. A bare "Ausgang" is already "exit" in the domain
+# glossary before this pass runs, so only its compounds ("Seitenausgang des
+# Bades") come here; an U-Bahn line behind the article ("Zugang zur U4") is
+# a stop's name and stays.
 _ACCESS_NOUNS_EN: dict[str, str] = {
     "eingang": "entrance", "ausgang": "exit", "zugang": "access", "einfahrt": "driveway",
     "ausfahrt": "exit", "zufahrt": "access road", "hauseinfahrt": "building entrance",
@@ -560,8 +563,8 @@ _ENTRANCE_OF_RE: re.Pattern[str] = re.compile(
     r"(?<![\w-])(?!Zufahrt\s+zum\s+Campingplatz)"
     r"(?P<side>Nordost|Nordwest|Südost|Südwest|Nord|Süd|Ost|West|Haupt|Seiten|Neben|Hinter)?"
     r"(?P<noun>(?(side)(?:eingang|ausgang|zugang|einfahrt|ausfahrt|zufahrt)"
-    r"|(?:Eingang|Ausgang|Zugang|Einfahrt|Ausfahrt|Zufahrt|Hauseinfahrt)))"
-    r"\s+(?P<article>des|der|zum|zur)\s+(?P<name>[A-ZÄÖÜ][\wäöüß-]*)"
+    r"|(?:Eingang|Zugang|Einfahrt|Ausfahrt|Zufahrt|Hauseinfahrt)))"
+    r"\s+(?P<article>des|der|zum|zur)\s+(?!U\d)(?P<name>[A-ZÄÖÜ][\wäöüß-]*)"
 )
 
 

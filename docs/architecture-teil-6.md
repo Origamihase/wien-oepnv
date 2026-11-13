@@ -390,8 +390,8 @@ Nicht jeder Text gehört in ein NMT-Modell:
   Nordeingang“, „Laaer Berg, Nordosteingang“) bleibt ihr Name. Unter den
   188 Verlegungs-Records von WL seit Februar 2026 ändert sich nur dieser.
   Seit Epoche 34 gilt das für jeden Weg hinein oder hinaus, nicht nur den
-  Eingang (`_ACCESS_NOUNS_EN`: Eingang, Ausgang, Zugang, Einfahrt,
-  Ausfahrt, Zufahrt, Hauseinfahrt): „Würzburggasse nach Einfahrt zum
+  Eingang (`_ACCESS_NOUNS_EN`: Eingang, Zugang, Einfahrt, Ausfahrt,
+  Zufahrt, Hauseinfahrt, Zusammensetzungen wie „Seitenausgang“): „Würzburggasse nach Einfahrt zum
   Friedhof“ (8A, 13.11.2026, KI-Wächter-Issue #2209) las „Würzburggasse
   after the driveway zum Friedhof“ und liest nun „Würzburggasse after the
   driveway to Friedhof“. „Zufahrt zum Campingplatz“ behält seinen festen
