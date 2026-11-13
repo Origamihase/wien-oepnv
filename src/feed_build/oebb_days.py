@@ -105,10 +105,11 @@ What counts is the unbroken run of closure days around today
   written "von … bis …" or "zwischen … und …".
 
 A current incident keeps the front and its moment whatever its period
-("Störungen gehen immer vor.", ``item_meta._recency_sort_key``), and a long
-closure past its first week hands the one slot of its ÖBB title to a
-closure of the same route on its closure day
-(``filters._defer_repeated_route_titles``).
+("Störungen gehen immer vor.", ``item_meta._recency_sort_key``). The one
+slot of an ÖBB title goes to a closure on its closure day before any other
+window (``filters._defer_repeated_route_titles``, decision 2026-11-13), so
+a long closure past its first week does not hold it against a weekend
+closure of the same route.
 
 The length is counted in calendar days with closure: Monday 22:00 to Monday
 04:30 four weeks later closes on 29 days and is long.

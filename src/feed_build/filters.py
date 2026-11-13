@@ -382,10 +382,9 @@ def _repeated_route_title_key(item: FeedItem) -> str | None:
 def _defer_repeated_route_titles(
     items: list[FeedItem],
     is_current: Callable[[FeedItem], bool] | None = None,
-    gives_way: Callable[[FeedItem], bool] | None = None,
     leads: Callable[[FeedItem], bool] | None = None,
 ) -> list[FeedItem]:
-    """Give one slot to each ÖBB title, held by its earliest time window.
+    """Give one slot to each ÖBB title, held by the member that matters most today.
 
     ÖBB titles are the route and nothing else, so one route closed in three
     separate construction phases arrives as three items with one title::
@@ -401,36 +400,57 @@ def _defer_repeated_route_titles(
 
     The items are not merged: the phases are different measures (single
     trains in October, no local trains at night later), and one text for
-    all three would misstate two of them. Instead the item whose window
-    starts first keeps its own place in the sorted order and the others
-    move behind the field, in their original order — exactly like
-    :func:`_apply_topic_budget`. Nothing is dropped: once the first phase
-    has ended it leaves the feed and the next one holds the slot.
+    all three would misstate two of them. Instead one item keeps its own
+    place in the sorted order and the others move behind the field, in
+    their original order — exactly like :func:`_apply_topic_budget`.
+    Nothing is dropped: once the first phase has ended it leaves the feed
+    and the next one holds the slot.
 
-    A current incident (*is_current*, :func:`_is_current_incident`) holds
-    the slot instead, the first one in the sorted order. ÖBB names a
-    disruption by its route like a construction phase, and a phase that is
-    running started earlier than any disruption today: an accident between
-    Wien Hbf and Wien Westbahnhof would have gone behind the field next to
-    the works there (11.09. to 01.11.2026), against the operator decision of
-    2026-10-04 that current disruptions come first.
+    Who holds the slot, in this order:
 
-    An earliest window that *gives_way* hands the slot to a member that
-    *leads* today, the earliest of them, and goes behind the field itself.
-    It is an ÖBB closure of more than four weeks past its first week
-    (``oebb_days._long_closure_start``, operator decision 2026-11-12), and
-    the member that leads is a closure on its closure day (tier 1 of the
-    sort key): "Kurze Sperren und Wochenendnächte behalten den Vorrang."
-    As the earliest window of its title the long closure would hold the
-    slot for as long as it runs ("Wien Praterstern ↔ Wien Hauptbahnhof /
-    Wien St. Marx" until 31.10.2027), and a weekend closure of the same
-    route would stand behind the field in its own closure nights.
+    1. A current incident (*is_current*, :func:`_is_current_incident`), the
+       first one in the sorted order. ÖBB names a disruption by its route
+       like a construction phase, and a phase that is running started
+       earlier than any disruption today: an accident between Wien Hbf and
+       Wien Westbahnhof would have gone behind the field next to the works
+       there (11.09. to 01.11.2026), against the operator decision of
+       2026-10-04 that current disruptions come first.
+    2. A member that *leads* today (tier 1 of the sort key: what
+       :func:`~.oebb_days._is_oebb_closure_day` counts as a closure today),
+       of several the one whose window starts first. Operator decision
+       2026-11-13 "Ja, Sperre des Tages zuerst": "Bei gleichem ÖBB-Titel
+       hält die Sperre mit Sperrtag den Platz, das frühere Fenster rückt
+       hinter das Feld." On 09.11.2026 from 04:31 to 06:31 the
+       weekend-night window of "Wien Hauptbahnhof ↔ Gramatneusiedl" (31.10.
+       to 30.11.; Monday does not count as one of its closure days) held
+       the slot, and the item of the day ("Wegen Verlängerung der
+       Bauarbeiten sind … bis voraussichtlich 05:30 Uhr keine Fahrten
+       möglich") stood behind the field. The same order lets a closure of
+       more than four weeks past its first week (decision 2026-11-12,
+       :mod:`.oebb_days`), which as the earliest window of its title would
+       hold the slot until it ends, give the slot to a weekend closure of
+       the same route in its closure nights.
+       Tier 1 is wider than a closure in the strict sense: an ÖBB text that
+       names no day counts on every day of its period, also "waren bis
+       06:34 Uhr nur eingeschränkt Fahrten möglich". And it is narrower: a
+       closure of more than four weeks past its first week is a notice.
+    3. Else the member whose window starts first: the phase that is running
+       or comes next. A window that is only announced holds no slot in
+       front (:func:`_defer_upcoming_items` moves it back afterwards), which
+       is why the place in the sorted order alone does not decide.
 
-    Nothing else about the slot changed with that decision. Without a
-    member that leads, the long closure keeps the slot like any earliest
-    window, also beside a newer notice for the route; and an earliest
-    window that is no such long closure keeps it beside a later window on
-    its closure day. Both are the earliest-window rule as it stood.
+    Among several members that lead, the window decides and not the place
+    in the sorted order (independent check 2026-11-13): the build writes a
+    state entry only for what it shows, so the member behind the field
+    would count as just appeared in the next build and take the slot back,
+    and a newer report that closes nothing ("nur eingeschränkt") would
+    stand before a closure in its closure night. Only two windows that
+    start on the same day are still told apart by their place in the sorted
+    order, as before (``tests/test_repeated_route_titles.py``). Not decided
+    by the operator: on a Sunday morning the weekend-night window has its
+    closure day too, so beside it an overrun report of the day stands
+    behind the field as it did on Monday 09.11.
+    (``tests/test_oebb_title_slot.py`` pins it).
     """
     groups: dict[str, list[int]] = {}
     for index, item in enumerate(items):
@@ -446,10 +466,8 @@ def _defer_repeated_route_titles(
     for members in groups.values():
         if len(members) > 1:
             current = [m for m in members if is_current is not None and is_current(items[m])]
-            lead = current[0] if current else min(members, key=window_start)
-            if not current and gives_way is not None and leads is not None and gives_way(items[lead]):
-                front = [m for m in members if leads(items[m])]
-                lead = min(front, key=window_start) if front else lead
+            leading = [m for m in members if leads is not None and leads(items[m])]
+            lead = current[0] if current else min(leading or members, key=window_start)
             deferred_indices.update(m for m in members if m != lead)
     if not deferred_indices:
         return items

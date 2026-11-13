@@ -11,7 +11,7 @@ The rule looks at the unbroken run of closure days around today: weekend
 nights and closures of up to four weeks keep the front on every closure day.
 Past its first week the long closure stands among the notices and counts
 there from the day it began. A current incident keeps its place. The slot of
-an ÖBB title: ``tests/test_oebb_long_closure_title_slot.py``.
+an ÖBB title: ``tests/test_oebb_title_slot.py``.
 """
 
 from __future__ import annotations
@@ -492,31 +492,22 @@ def test_a_long_closure_gives_the_slot_of_its_title_to_a_closure_on_its_day() ->
     december["guid"] = "oebb-december"
     notice = _notice("5B: Bauarbeiten", "wl-5b", _noon(date(2026, 11, 10)))
 
-    def gives_way(item: FeedItem) -> bool:
-        return _long_closure_start(item, now) is not None
-
     def leads(item: FeedItem) -> bool:
         return _is_oebb_closure_day(item, now)
 
     # The weekend closes today: it holds the slot, the long closure goes behind the field.
     items = [weekend, notice, long_closure]
-    assert bf._defer_repeated_route_titles(list(items), gives_way=gives_way, leads=leads) == [weekend, notice, long_closure]
-    assert bf._defer_repeated_route_titles([long_closure, notice, weekend], gives_way=gives_way, leads=leads) == [
-        notice, weekend, long_closure,
-    ]
+    assert bf._defer_repeated_route_titles(list(items), leads=leads) == [weekend, notice, long_closure]
+    assert bf._defer_repeated_route_titles([long_closure, notice, weekend], leads=leads) == [notice, weekend, long_closure]
     # Without the rule the earliest window holds the slot and the weekend goes behind the field.
     assert bf._defer_repeated_route_titles(list(items)) == [notice, long_closure, weekend]
     # A window that does not close today leaves the slot with the long closure.
-    assert bf._defer_repeated_route_titles([long_closure, notice, december], gives_way=gives_way, leads=leads) == [
-        long_closure, notice, december,
-    ]
+    assert bf._defer_repeated_route_titles([long_closure, notice, december], leads=leads) == [long_closure, notice, december]
     # Among long closures the earliest keeps it as well.
     second = _oebb(_dated(date(2026, 10, 1), date(2026, 12, 31)), date(2026, 10, 1), date(2026, 12, 31), title)
     second["guid"] = "oebb-second"
-    assert gives_way(second) and not leads(second)
-    assert bf._defer_repeated_route_titles([second, notice, long_closure], gives_way=gives_way, leads=leads) == [
-        notice, long_closure, second,
-    ]
+    assert _long_closure_start(second, now) is not None and not leads(second)
+    assert bf._defer_repeated_route_titles([second, notice, long_closure], leads=leads) == [notice, long_closure, second]
 
 
 def test_first_week_bounds_are_the_ones_the_operator_chose() -> None:

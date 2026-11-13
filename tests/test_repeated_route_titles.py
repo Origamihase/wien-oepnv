@@ -1,4 +1,4 @@
-"""One ÖBB route, several construction phases: one slot, the earliest phase.
+"""One ÖBB route, several construction phases: one slot, among notices the earliest phase.
 
 The ÖBB cache carries three items with the title ``Wien Hauptbahnhof ↔
 Gramatneusiedl`` (03.–05.10., 31.10.–30.11., 05.–07.12.2026; three GUIDs,
@@ -11,12 +11,14 @@ on the displays, and two other disruptions would lose their slot.
 ``_defer_repeated_route_titles`` keeps the item whose window starts first in
 its own place and moves the other phases behind the field. The items are not
 merged: the phases are different measures, one text for all would misstate
-two of them. Nothing is dropped.
+two of them. Nothing is dropped. Before the earliest window come a current
+incident and, since 2026-11-13, a closure on its closure day (*leads*); who
+holds the slot then is tested in ``tests/test_oebb_title_slot.py``.
 
 Mutations checked against this file (each one caught, by the test named):
 
-* the lead is the first member in sorted order instead of the earliest
-  window → ``test_the_earliest_window_keeps_the_slot``.
+* among notices the lead is the first member in sorted order instead of the
+  earliest window → ``test_the_earliest_window_keeps_the_slot``.
 * the ÖBB source check is dropped →
   ``test_other_sources_are_left_alone``.
 * the pass is not wired into ``main()`` →
@@ -102,6 +104,15 @@ def test_a_missing_start_counts_as_latest() -> None:
         _item(_ROUTE, "dated", "2026-12-05T00:00:00+01:00"),
     ]
     assert _guids(_defer_repeated_route_titles(items)) == ["dated", "undated"]
+
+
+def test_a_member_that_leads_holds_the_slot_without_a_start() -> None:
+    items = [
+        _item(_ROUTE, "dated", "2026-10-03T00:00:00+02:00"),
+        _item(_ROUTE, "undated", None),
+    ]
+    held = _defer_repeated_route_titles(items, leads=lambda item: item["guid"] == "undated")
+    assert _guids(held) == ["undated", "dated"]
 
 
 def test_a_tie_keeps_the_sorted_order() -> None:
