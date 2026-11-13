@@ -50,10 +50,15 @@ jobs:
         id: checkout
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         continue-on-error: true
+        with:
+          # Two commits: the line-limit gate below compares with ``HEAD^1``.
+          fetch-depth: 2
 
       - name: Check out repository (attempt 2/2 — runs only if attempt 1 hit checkout#2351)
         if: steps.checkout.outcome == 'failure'
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          fetch-depth: 2
 
       - name: Set up Python
         uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
@@ -68,6 +73,14 @@ jobs:
 
       - name: Run static checks
         run: python scripts/run_static_checks.py
+
+      - name: Line limit, split instead of trim
+        # A file with 690 lines or more that gets a new line has to be split
+        # in the same change (owner decision 2026-11-13,
+        # scripts/check_line_limit_edits.py). ``HEAD^1`` is the base branch
+        # for a pull request (the checkout is the merge commit) and the
+        # previous commit for a push to main.
+        run: python scripts/check_line_limit_edits.py --base HEAD^1
 
       - name: Validate stations
         run: python scripts/validate_stations.py
