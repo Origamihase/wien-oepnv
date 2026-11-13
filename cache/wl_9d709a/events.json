@@ -254,18 +254,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "54A/54B: Bauarbeiten",
-    "description": "<h1>Bauarbeiten</h1><p>Wegen Straßenbauarbeiten im Bereich Einsiedeleigasse werden die Linien 54A und 54B umgeleitet.</p><p><strong><u>Zeitraum:</u></strong><br>Ab Dienstag, 27. Oktober 2026, etwa 10:00 Uhr, bis Freitag 13. November 2026 etwa 8:00 Uhr.</p><p><strong><u>Maßnahmen:</u></strong></p><p><strong>Linie 54A in Richtung Hörndlwald:</strong><br>Umleitung ab Vitusgasse # Erzbischofgasse über Erzbischofgasse – Schweizertalstraße – Hentschelgasse – Einsiedeleigasse zur Stammstrecke abgelenkt geführt.</p><p><strong>Linie 54B in Richtung St. Veiter Tor:</strong><br>Umleitung ab Vitusgasse # Erzbischofgasse über Erzbischofgasse – Schweizertalstraße – Hentschelgasse – Einsiedeleigasse zur Stammstrecke abgelenkt geführt.</p><p>Alle Haltestellen können regulär eingehalten werden.</p><p>In Richtung Ober St. Veit U fahren die Busse wieder über die reguläre Strecke.</p>",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "c879c0eb93c47cfaf8e8c207ba31d9583c4ed7e34d0436c9529b68f949c0a3eb",
-    "pubDate": "2026-10-30T15:00:00+01:00",
-    "starts_at": "2026-10-30T15:00:00+01:00",
-    "ends_at": "2026-11-13T08:00:00+01:00",
-    "_identity": "wl|hinweis|L=54A,54B|D=2026-10-30|TK=54b 54a bauarbeiten"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "54A: Wlassakstraße",
     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 54A in Richtung H&ouml;rndlwald</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;Wlassakstra&szlig;e</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;Joseph-Lister-Gasse 2</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> J</span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">oseph-Lister-Gasse 6-8</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 20. Februar 2026, etwa 07:00 Uhr, Dauer unbekannt</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;Hausbau</span></p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -914,6 +902,46 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "49: Gleisschaden",
+    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "7e01fc848976d0d587e141957de9da7afd74e084db6077e61c5f28daaa72b86e",
+    "pubDate": "2026-11-13T07:31:00+01:00",
+    "starts_at": "2026-11-13T07:31:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=49|D=2026-11-13|TK=49 gleisschaden",
+    "_wl_ids": [
+      "I20261113-0011"
+    ],
+    "_incident_start": "2026-11-13T07:31:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Gleisschaden Betrieb ab Hütteldorfer Straße",
+    "description": "Gleisschaden\nBetrieb ab Hütteldorfer Straße",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "0c8c38d7450fd20f9df0beb7024c91b962e431c05bc16a295c6b782f5d113b8b",
+    "pubDate": "2026-11-13T07:36:16+01:00",
+    "starts_at": "2026-11-13T07:36:16+01:00",
+    "ends_at": "2026-11-13T08:35:00+01:00",
+    "_identity": "wl|störung|L=49|D=2026-11-13|TK=gleisschaden betrieb ab hütteldorfer strasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Gleisschaden Betrieb ab Urban-Loritz-Platz",
+    "description": "Gleisschaden\nBetrieb ab Urban-Loritz-Platz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "daebfc84e978ba997bf9db03242e337ce2c13f18932a3d0cc38b273b66698b73",
+    "pubDate": "2026-11-13T07:35:46+01:00",
+    "starts_at": "2026-11-13T07:35:46+01:00",
+    "ends_at": "2026-11-13T08:34:00+01:00",
+    "_identity": "wl|störung|L=49|D=2026-11-13|TK=gleisschaden betrieb ab urban loritz platz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -962,6 +990,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "9: Verkehrsunfall",
+    "description": "Linie 9: Fahrtbehinderung in Richtung Gersthof S. Voraussichtliche Dauer: 08:30 Uhr. Grund: Verkehrsunfall im Bereich Kreuzgasse # Simonygasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "70a21e268e6526375afca6cddbf95e3f1acffc96f35534556c62be605d2351c9",
+    "pubDate": "2026-11-13T07:57:00+01:00",
+    "starts_at": "2026-11-13T07:57:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=9|D=2026-11-13|TK=9 verkehrsunfall",
+    "_wl_ids": [
+      "I20261113-0013"
+    ],
+    "_incident_start": "2026-11-13T07:57:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "D: Schadhaftes Fahrzeug",
     "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -978,30 +1022,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "47075b3ab9aea3f9e8790e8326394e6f935beb494cad7b02c64ce5fbe05f3cf6",
-    "pubDate": "2026-11-13T06:47:42+01:00",
-    "starts_at": "2026-11-13T06:51:42+01:00",
-    "ends_at": "2026-11-13T07:51:00+01:00",
-    "_identity": "wl|störung|L=D|D=2026-11-13|TK=fahrtbehinderung schadhafter zug"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Schadhafter Zug Betrieb ab Liechtenwerder Platz",
-    "description": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "23572e50e0dceeb2459836c3921beebd99a9e70ae916e57d98e31aff9c0772e5",
-    "pubDate": "2026-11-13T06:47:42+01:00",
-    "starts_at": "2026-11-13T06:52:42+01:00",
-    "ends_at": "2026-11-13T07:51:00+01:00",
-    "_identity": "wl|störung|L=D|D=2026-11-13|TK=schadhafter zug betrieb ab liechtenwerder platz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "U1: Schadhaftes Fahrzeug",
     "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1014,6 +1034,38 @@
       "I20261113-0009"
     ],
     "_incident_start": "2026-11-13T06:48:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Betriebsstörung",
+    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
+    "pubDate": "2026-11-13T07:54:00+01:00",
+    "starts_at": "2026-11-13T07:54:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U3|D=2026-11-13|TK=u3 betriebsstörung",
+    "_wl_ids": [
+      "I20261113-0012"
+    ],
+    "_incident_start": "2026-11-13T07:54:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Polizeieinsatz",
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab",
+    "pubDate": "2026-11-13T07:32:00+01:00",
+    "starts_at": "2026-11-13T07:32:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U6|D=2026-11-13|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261113-0010"
+    ],
+    "_incident_start": "2026-11-13T07:32:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1038,17 +1090,5 @@
     "starts_at": "2026-09-14T04:00:00+02:00",
     "ends_at": "2026-12-31T23:59:00+01:00",
     "_identity": "wl|störung|L=|D=2026-09-14|TK=sperre"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "cd5d56c06243b3c30195b876976da1ea43f2a200816330c453a40b5fc37dc6bc",
-    "pubDate": "2026-11-13T06:33:11+01:00",
-    "starts_at": "2026-11-13T06:33:11+01:00",
-    "ends_at": "2026-11-13T07:32:00+01:00",
-    "_identity": "wl|störung|L=|D=2026-11-13|TK=rettungseinsatz"
   }
 ]

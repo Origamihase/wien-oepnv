@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261113-0009-F01, I20261113-0006, I20260925-0011, I20260909-0007, I20261020-0029, I20261113-0008-F01"
+    "trafficInfoNameList": "I20261113-0013, I20261113-0009-F01, I20261113-0012-F01, I20260925-0011, I20260909-0007, I20261113-0010-F01, I20261113-0011-F01, I20261020-0029, I20261113-0008-F01, I20261113-0011-F02"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2378-627, R401-101, R293-474, R318-437, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R2558-125, R3886-480, R1974-466, R1199-205, R500-101, R2216-0, R2212-0, R2226-0, R2217-0, R99-136, R98-136, R95-136, R94-136, R93-136, R96-136, R97-136, R126-136, R125-136, R124-136, R123-136, R122-136, R121-136, R92-136, R91-136, R90-136, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R401-101, R293-474, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R1475-149, R1476-149, R1474-149, R1473-149, R1472-149, R1448-149, R1449-149, R1445-149, R1446-149, R1447-149, R556-109, R1475-109, R1476-109, R531-109, R532-109, R533-109, R530-109, R547-109, R1446-109, R546-109, R1447-109, R541-109, R543-109, R544-109, R545-109, R484-109, R521-109, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -175,52 +175,6 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "63A": "ptBusCity"
-     }
-    },
-    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "63A: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261113-0006",
-    "owner": "WL",
-    "parentName": "I20261113-0006",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "63A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 463,
-      "lineName": "63A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-13T05:58:00.000+0100",
-     "end": "2026-11-13T07:28:00.000+0100",
-     "lastUpdate": "2026-11-13T07:28:00.000+0100",
-     "resume": "2026-11-13T05:58:00.000+0100",
-     "start": "2026-11-13T05:58:00.000+0100"
-    },
-    "title": "63A: Verspätungen"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
       "D": "ptTram"
      }
     },
@@ -311,6 +265,240 @@
     "title": "U1: Schadhaftes Fahrzeug"
    },
    {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U6: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261113-0010-F01",
+    "owner": "WL",
+    "parentName": "I20261113-0010",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4622
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-13T07:47:00.000+0100",
+     "lastUpdate": "2026-11-13T07:47:00.000+0100",
+     "resume": "2026-11-13T07:47:00.000+0100",
+     "start": "2026-11-13T07:32:00.000+0100"
+    },
+    "title": "U6: Polizeieinsatz"
+   },
+   {
+    "alertCause": "roadway damage",
+    "alertCauseId": 67,
+    "attributes": {
+     "relatedLineTypes": {
+      "9": "ptTram"
+     }
+    },
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "9: Gleisschaden"
+      }
+     }
+    ],
+    "location": "Märzstraße / Schweglerstraße",
+    "name": "I20261113-0011-F01",
+    "owner": "WL",
+    "parentName": "I20261113-0011",
+    "priority": "1",
+    "reasonId": 28,
+    "reasonName": "Gleisschaden",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 109,
+      "lineName": "9",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-11-13T07:49:00.000+0100",
+     "end": "2026-11-13T07:58:00.000+0100",
+     "lastUpdate": "2026-11-13T07:58:00.000+0100",
+     "resume": "2026-11-13T07:58:00.000+0100",
+     "start": "2026-11-13T07:31:00.000+0100"
+    },
+    "title": "9: Gleisschaden"
+   },
+   {
+    "alertCause": "roadway damage",
+    "alertCauseId": 67,
+    "attributes": {
+     "relatedLineTypes": {
+      "49": "ptTram"
+     }
+    },
+    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 49: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 49: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "49: Gleisschaden"
+      }
+     }
+    ],
+    "location": "Märzstraße / Schweglerstraße",
+    "name": "I20261113-0011-F02",
+    "owner": "WL",
+    "parentName": "I20261113-0011",
+    "priority": "1",
+    "reasonId": 28,
+    "reasonName": "Gleisschaden",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 149,
+      "lineName": "49",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-13T07:49:00.000+0100",
+     "lastUpdate": "2026-11-13T07:49:00.000+0100",
+     "resume": "2026-11-13T07:49:00.000+0100",
+     "start": "2026-11-13T07:31:00.000+0100"
+    },
+    "title": "49: Gleisschaden"
+   },
+   {
+    "alertCause": "miscellaneous",
+    "alertCauseId": 137,
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U3: Betriebsstörung"
+      }
+     }
+    ],
+    "name": "I20261113-0012-F01",
+    "owner": "WL",
+    "parentName": "I20261113-0012",
+    "priority": "1",
+    "reasonId": 14,
+    "reasonName": "Betriebsstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4926
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-13T07:56:00.000+0100",
+     "lastUpdate": "2026-11-13T07:56:00.000+0100",
+     "resume": "2026-11-13T07:56:00.000+0100",
+     "start": "2026-11-13T07:54:00.000+0100"
+    },
+    "title": "U3: Betriebsstörung"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "9": "ptTram"
+     }
+    },
+    "description": "Linie 9: Fahrtbehinderung in Richtung Gersthof S. Voraussichtliche Dauer: 08:30 Uhr. Grund: Verkehrsunfall im Bereich Kreuzgasse # Simonygasse.",
+    "descriptionHTML": "<p>Linie 9:<br>Fahrtbehinderung in Richtung Gersthof S.</p><p>Voraussichtliche Dauer: 08:30 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Kreuzgasse # Simonygasse.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 9:<br>Fahrtbehinderung in Richtung Gersthof S.</p><p>Voraussichtliche Dauer: 08:30 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Kreuzgasse # Simonygasse.</p>",
+       "descriptionPlain": "Linie 9: Fahrtbehinderung in Richtung Gersthof S. Voraussichtliche Dauer: 08:30 Uhr. Grund: Verkehrsunfall im Bereich Kreuzgasse # Simonygasse.",
+       "title": "9: Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Kreuzgasse / Simonygasse",
+    "name": "I20261113-0013",
+    "owner": "WL",
+    "parentName": "I20261113-0013",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 109,
+      "lineName": "9",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-13T07:59:00.000+0100",
+     "lastUpdate": "2026-11-13T07:59:00.000+0100",
+     "start": "2026-11-13T07:57:00.000+0100"
+    },
+    "title": "9: Verkehrsunfall"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -336,140 +524,324 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R121-136",
+    "description": "Gleisschaden\nBetrieb ab Hütteldorfer Straße",
+    "name": "R1445-149",
     "owner": "WL",
-    "parentName": "R121-136",
+    "parentName": "R1445-149",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "D"
+     "49"
     ],
     "relatedStops": [
-     121
+     1445
     ],
     "time": {
-     "end": "2026-11-13T07:51:00.000+0100",
-     "start": "2026-11-13T06:51:42.000+0100"
+     "end": "2026-11-13T08:35:00.000+0100",
+     "start": "2026-11-13T07:36:16.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
+    "title": "Gleisschaden\nBetrieb ab Hütteldorfer Straße"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R122-136",
+    "description": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R1446-109",
     "owner": "WL",
-    "parentName": "R122-136",
+    "parentName": "R1446-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "D"
+     "9"
     ],
     "relatedStops": [
-     122
+     1446
     ],
     "time": {
-     "end": "2026-11-13T07:51:00.000+0100",
-     "start": "2026-11-13T06:51:42.000+0100"
+     "end": "2026-11-13T08:37:00.000+0100",
+     "start": "2026-11-13T07:38:16.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
+    "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R123-136",
+    "description": "Gleisschaden\nBetrieb ab Hütteldorfer Straße",
+    "name": "R1446-149",
     "owner": "WL",
-    "parentName": "R123-136",
+    "parentName": "R1446-149",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "D"
+     "49"
     ],
     "relatedStops": [
-     123
+     1446
     ],
     "time": {
-     "end": "2026-11-13T07:51:00.000+0100",
-     "start": "2026-11-13T06:51:42.000+0100"
+     "end": "2026-11-13T08:35:00.000+0100",
+     "start": "2026-11-13T07:36:16.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
+    "title": "Gleisschaden\nBetrieb ab Hütteldorfer Straße"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R124-136",
+    "description": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R1447-109",
     "owner": "WL",
-    "parentName": "R124-136",
+    "parentName": "R1447-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "D"
+     "9"
     ],
     "relatedStops": [
-     124
+     1447
     ],
     "time": {
-     "end": "2026-11-13T07:51:00.000+0100",
-     "start": "2026-11-13T06:51:42.000+0100"
+     "end": "2026-11-13T08:37:00.000+0100",
+     "start": "2026-11-13T07:38:16.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
+    "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R125-136",
+    "description": "Gleisschaden\nBetrieb ab Hütteldorfer Straße",
+    "name": "R1447-149",
     "owner": "WL",
-    "parentName": "R125-136",
+    "parentName": "R1447-149",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "D"
+     "49"
     ],
     "relatedStops": [
-     125
+     1447
     ],
     "time": {
-     "end": "2026-11-13T07:51:00.000+0100",
-     "start": "2026-11-13T06:51:42.000+0100"
+     "end": "2026-11-13T08:35:00.000+0100",
+     "start": "2026-11-13T07:36:16.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
+    "title": "Gleisschaden\nBetrieb ab Hütteldorfer Straße"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R126-136",
+    "description": "Gleisschaden\nBetrieb ab Hütteldorfer Straße",
+    "name": "R1448-149",
     "owner": "WL",
-    "parentName": "R126-136",
+    "parentName": "R1448-149",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "D"
+     "49"
     ],
     "relatedStops": [
-     126
+     1448
     ],
     "time": {
-     "end": "2026-11-13T07:51:00.000+0100",
-     "start": "2026-11-13T06:51:42.000+0100"
+     "end": "2026-11-13T08:35:00.000+0100",
+     "start": "2026-11-13T07:36:16.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
+    "title": "Gleisschaden\nBetrieb ab Hütteldorfer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisschaden\nBetrieb ab Hütteldorfer Straße",
+    "name": "R1449-149",
+    "owner": "WL",
+    "parentName": "R1449-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1449
+    ],
+    "time": {
+     "end": "2026-11-13T08:35:00.000+0100",
+     "start": "2026-11-13T07:36:16.000+0100"
+    },
+    "title": "Gleisschaden\nBetrieb ab Hütteldorfer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisschaden\nBetrieb ab Urban-Loritz-Platz",
+    "name": "R1472-149",
+    "owner": "WL",
+    "parentName": "R1472-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1472
+    ],
+    "time": {
+     "end": "2026-11-13T08:34:00.000+0100",
+     "start": "2026-11-13T07:35:46.000+0100"
+    },
+    "title": "Gleisschaden\nBetrieb ab Urban-Loritz-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisschaden\nBetrieb ab Urban-Loritz-Platz",
+    "name": "R1473-149",
+    "owner": "WL",
+    "parentName": "R1473-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1473
+    ],
+    "time": {
+     "end": "2026-11-13T08:34:00.000+0100",
+     "start": "2026-11-13T07:35:46.000+0100"
+    },
+    "title": "Gleisschaden\nBetrieb ab Urban-Loritz-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisschaden\nBetrieb ab Urban-Loritz-Platz",
+    "name": "R1474-149",
+    "owner": "WL",
+    "parentName": "R1474-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1474
+    ],
+    "time": {
+     "end": "2026-11-13T08:34:00.000+0100",
+     "start": "2026-11-13T07:35:46.000+0100"
+    },
+    "title": "Gleisschaden\nBetrieb ab Urban-Loritz-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nGleisschaden",
+    "name": "R1475-109",
+    "owner": "WL",
+    "parentName": "R1475-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     1475
+    ],
+    "time": {
+     "end": "2026-11-13T08:37:00.000+0100",
+     "start": "2026-11-13T07:37:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nGleisschaden"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisschaden\nBetrieb ab Urban-Loritz-Platz",
+    "name": "R1475-149",
+    "owner": "WL",
+    "parentName": "R1475-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1475
+    ],
+    "time": {
+     "end": "2026-11-13T08:34:00.000+0100",
+     "start": "2026-11-13T07:35:46.000+0100"
+    },
+    "title": "Gleisschaden\nBetrieb ab Urban-Loritz-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nGleisschaden",
+    "name": "R1476-109",
+    "owner": "WL",
+    "parentName": "R1476-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     1476
+    ],
+    "time": {
+     "end": "2026-11-13T08:37:00.000+0100",
+     "start": "2026-11-13T07:37:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nGleisschaden"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisschaden\nBetrieb ab Urban-Loritz-Platz",
+    "name": "R1476-149",
+    "owner": "WL",
+    "parentName": "R1476-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1476
+    ],
+    "time": {
+     "end": "2026-11-13T08:34:00.000+0100",
+     "start": "2026-11-13T07:35:46.000+0100"
+    },
+    "title": "Gleisschaden\nBetrieb ab Urban-Loritz-Platz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -654,86 +1026,6 @@
      "start": "2026-11-13T04:40:00.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
-    "name": "R2212-0",
-    "owner": "WL",
-    "parentName": "R2212-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2212
-    ],
-    "time": {
-     "end": "2026-11-13T07:32:00.000+0100",
-     "start": "2026-11-13T06:33:11.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
-    "name": "R2216-0",
-    "owner": "WL",
-    "parentName": "R2216-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2216
-    ],
-    "time": {
-     "end": "2026-11-13T07:32:00.000+0100",
-     "start": "2026-11-13T06:33:11.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
-    "name": "R2217-0",
-    "owner": "WL",
-    "parentName": "R2217-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2217
-    ],
-    "time": {
-     "end": "2026-11-13T07:32:00.000+0100",
-     "start": "2026-11-13T06:33:11.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
-    "name": "R2226-0",
-    "owner": "WL",
-    "parentName": "R2226-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2226
-    ],
-    "time": {
-     "end": "2026-11-13T07:32:00.000+0100",
-     "start": "2026-11-13T06:33:11.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1152,6 +1444,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R484-109",
+    "owner": "WL",
+    "parentName": "R484-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     484
+    ],
+    "time": {
+     "end": "2026-11-13T08:37:00.000+0100",
+     "start": "2026-11-13T07:38:17.000+0100"
+    },
+    "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -1175,232 +1490,278 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz",
-    "name": "R90-136",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R521-109",
     "owner": "WL",
-    "parentName": "R90-136",
+    "parentName": "R521-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "D"
+     "9"
     ],
     "relatedStops": [
-     90
+     521
     ],
     "time": {
-     "end": "2026-11-13T07:51:00.000+0100",
-     "start": "2026-11-13T06:52:42.000+0100"
+     "end": "2026-11-13T08:59:00.000+0100",
+     "start": "2026-11-13T07:59:49.000+0100"
     },
-    "title": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz"
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz",
-    "name": "R91-136",
+    "description": "Fahrtbehinderung\nGleisschaden",
+    "name": "R530-109",
     "owner": "WL",
-    "parentName": "R91-136",
+    "parentName": "R530-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "D"
+     "9"
     ],
     "relatedStops": [
-     91
+     530
     ],
     "time": {
-     "end": "2026-11-13T07:51:00.000+0100",
-     "start": "2026-11-13T06:52:42.000+0100"
+     "end": "2026-11-13T08:37:00.000+0100",
+     "start": "2026-11-13T07:37:47.000+0100"
     },
-    "title": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz"
+    "title": "Fahrtbehinderung\nGleisschaden"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz",
-    "name": "R92-136",
+    "description": "Fahrtbehinderung\nGleisschaden",
+    "name": "R531-109",
     "owner": "WL",
-    "parentName": "R92-136",
+    "parentName": "R531-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "D"
+     "9"
     ],
     "relatedStops": [
-     92
+     531
     ],
     "time": {
-     "end": "2026-11-13T07:51:00.000+0100",
-     "start": "2026-11-13T06:52:42.000+0100"
+     "end": "2026-11-13T08:37:00.000+0100",
+     "start": "2026-11-13T07:37:47.000+0100"
     },
-    "title": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz"
+    "title": "Fahrtbehinderung\nGleisschaden"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz",
-    "name": "R93-136",
+    "description": "Fahrtbehinderung\nGleisschaden",
+    "name": "R532-109",
     "owner": "WL",
-    "parentName": "R93-136",
+    "parentName": "R532-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "D"
+     "9"
     ],
     "relatedStops": [
-     93
+     532
     ],
     "time": {
-     "end": "2026-11-13T07:51:00.000+0100",
-     "start": "2026-11-13T06:47:42.000+0100"
+     "end": "2026-11-13T08:37:00.000+0100",
+     "start": "2026-11-13T07:37:47.000+0100"
     },
-    "title": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz"
+    "title": "Fahrtbehinderung\nGleisschaden"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz",
-    "name": "R94-136",
+    "description": "Fahrtbehinderung\nGleisschaden",
+    "name": "R533-109",
     "owner": "WL",
-    "parentName": "R94-136",
+    "parentName": "R533-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "D"
+     "9"
     ],
     "relatedStops": [
-     94
+     533
     ],
     "time": {
-     "end": "2026-11-13T07:51:00.000+0100",
-     "start": "2026-11-13T06:47:42.000+0100"
+     "end": "2026-11-13T08:37:00.000+0100",
+     "start": "2026-11-13T07:37:47.000+0100"
     },
-    "title": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz"
+    "title": "Fahrtbehinderung\nGleisschaden"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz",
-    "name": "R95-136",
+    "description": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R541-109",
     "owner": "WL",
-    "parentName": "R95-136",
+    "parentName": "R541-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "D"
+     "9"
     ],
     "relatedStops": [
-     95
+     541
     ],
     "time": {
-     "end": "2026-11-13T07:51:00.000+0100",
-     "start": "2026-11-13T06:47:42.000+0100"
+     "end": "2026-11-13T08:37:00.000+0100",
+     "start": "2026-11-13T07:38:16.000+0100"
     },
-    "title": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz"
+    "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz",
-    "name": "R96-136",
+    "description": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R543-109",
     "owner": "WL",
-    "parentName": "R96-136",
+    "parentName": "R543-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "D"
+     "9"
     ],
     "relatedStops": [
-     96
+     543
     ],
     "time": {
-     "end": "2026-11-13T07:51:00.000+0100",
-     "start": "2026-11-13T06:47:42.000+0100"
+     "end": "2026-11-13T08:37:00.000+0100",
+     "start": "2026-11-13T07:38:16.000+0100"
     },
-    "title": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz"
+    "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz",
-    "name": "R97-136",
+    "description": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R544-109",
     "owner": "WL",
-    "parentName": "R97-136",
+    "parentName": "R544-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "D"
+     "9"
     ],
     "relatedStops": [
-     97
+     544
     ],
     "time": {
-     "end": "2026-11-13T07:51:00.000+0100",
-     "start": "2026-11-13T06:47:42.000+0100"
+     "end": "2026-11-13T08:37:00.000+0100",
+     "start": "2026-11-13T07:38:16.000+0100"
     },
-    "title": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz"
+    "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz",
-    "name": "R98-136",
+    "description": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R545-109",
     "owner": "WL",
-    "parentName": "R98-136",
+    "parentName": "R545-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "D"
+     "9"
     ],
     "relatedStops": [
-     98
+     545
     ],
     "time": {
-     "end": "2026-11-13T07:51:00.000+0100",
-     "start": "2026-11-13T06:47:42.000+0100"
+     "end": "2026-11-13T08:37:00.000+0100",
+     "start": "2026-11-13T07:38:16.000+0100"
     },
-    "title": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz"
+    "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R99-136",
+    "description": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R546-109",
     "owner": "WL",
-    "parentName": "R99-136",
+    "parentName": "R546-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "D"
+     "9"
     ],
     "relatedStops": [
-     99
+     546
     ],
     "time": {
-     "end": "2026-11-13T07:47:00.000+0100",
-     "start": "2026-11-13T06:47:42.000+0100"
+     "end": "2026-11-13T08:37:00.000+0100",
+     "start": "2026-11-13T07:38:16.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
+    "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R547-109",
+    "owner": "WL",
+    "parentName": "R547-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     547
+    ],
+    "time": {
+     "end": "2026-11-13T08:37:00.000+0100",
+     "start": "2026-11-13T07:38:16.000+0100"
+    },
+    "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nGleisschaden",
+    "name": "R556-109",
+    "owner": "WL",
+    "parentName": "R556-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     556
+    ],
+    "time": {
+     "end": "2026-11-13T08:37:00.000+0100",
+     "start": "2026-11-13T07:37:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nGleisschaden"
    },
    {
     "alertCause": "undefined alert cause",
