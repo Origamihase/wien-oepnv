@@ -58,13 +58,13 @@ Diagramm dieselbe Information zusätzlich als Fließtext darunter.
 - [12. Die Jahresseite der Statistik: Überblick, Baustellen, Rückblick (seit 2026-11-10)](architecture-teil-7.md#12-die-jahresseite-der-statistik-überblick-baustellen-rückblick-seit-2026-11-10)
 - [13. Wo ein Satz endet: der Punkt einer Abkürzung (seit 2026-11-12)](architecture-teil-8.md#13-wo-ein-satz-endet-der-punkt-einer-abkürzung-seit-2026-11-12)
 - [14. Gemini entscheidet, wo die Regeln eine Störung offen lassen (seit 2026-11-12)](architecture-teil-8.md#14-gemini-entscheidet-wo-die-regeln-eine-störung-offen-lassen-seit-2026-11-12)
+- [15. Was nicht möglich ist, steht vorn (seit 2026-11-13)](architecture-teil-8.md#15-was-nicht-möglich-ist-steht-vorn-seit-2026-11-13)
 
 ---
 
 ## 1. Die Pipeline für den Abruf der Verkehrsdaten
 
-Der zentrale Workflow: Ein Cron-Job (bzw. die GitHub-Action
-`update-cycle.yml`) startet `python -m src.cli feed build` (das wiederum
+Der zentrale Workflow: Ein Cron-Job (bzw. die GitHub-Action `update-cycle.yml`) startet `python -m src.cli feed build` (das wiederum
 `build_feed.main()` aufruft), invokiert die registrierten
 Verkehrsdaten-Provider, dedupliziert die zusammengeführten Events und
 schreibt einen einzelnen RSS-Feed.

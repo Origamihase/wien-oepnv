@@ -103,7 +103,10 @@ def test_the_display_never_reads_a_broken_list() -> None:
     starts = datetime(2026, 9, 7, 3, 31, tzinfo=_VIENNA)
     summary = bf._format_item_content(GEISELBERG, "oebb", starts, None).desc_text_truncated
     assert "sind bzw." not in summary
+    # Since 2026-11-13 what is not possible stands first and the list
+    # follows whole behind the colon (``_oebb_restriction_first``, #2209).
     assert summary.startswith(
-        "Wegen Verlängerung der Bauarbeiten sind zwischen Wien Geiselbergstraße Bahnhst und "
-        "Flughafen Wien Bahnhof bzw. Wien Hbf"  # "(U)" off since 2026-11-04
+        "Wegen Verlängerung der Bauarbeiten sind bis voraussichtlich 07:00 Uhr keine Fahrten "
+        "möglich: zwischen Wien Geiselbergstraße Bahnhst und Flughafen Wien Bahnhof bzw. "
+        "Wien Hbf"  # "(U)" off since 2026-11-04
     )
