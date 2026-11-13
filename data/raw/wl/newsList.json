@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_84, ftazW_722, ftazW_509, ftazW_575, ftazW_45, ftazW_36, ftazW_113, ftazW_354, ftazW_519, ftazW_482, ftazW_1017117"
+    "trafficInfoNameList": "ftazW_36, ftazW_113, ftazW_354, ftazW_519, ftazW_482, ftazW_1017117"
    }
   ],
   "poiCategoryGroups": [
@@ -3116,45 +3116,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "13.11.2026 05:15",
-     "ausVon": "13.11.2026 01:15",
-     "location": "U3 Mittelbahnsteig - Ausgang Keinergasse",
-     "rbls": [
-      4915,
-      4902
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Kardinal-Nagl-Platz",
-     "status": "geplante Wartung",
-     "towards": "U3 beide Richtungen"
-    },
-    "description": "U3 Mittelbahnsteig - Ausgang Keinergasse",
-    "elevatorId": "KN 01",
-    "name": "ftazW_45",
-    "parentName": "ftazW_45",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4915,
-     4902
-    ],
-    "time": {
-     "end": "2026-11-13T05:15:00.000+0100",
-     "start": "2026-11-13T01:15:00.000+0100"
-    },
-    "title": "Kardinal-Nagl-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "16.11.2026 00:45",
      "ausVon": "15.11.2026 20:45",
      "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Erlaaer Straße/Ostrandstraße",
@@ -3192,45 +3153,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "13.11.2026 05:15",
-     "ausVon": "13.11.2026 01:15",
-     "location": "U6 Mittelbahnsteig - Ausgang Leipziger Platz",
-     "rbls": [
-      4641,
-      4650
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Jägerstraße",
-     "status": "geplante Wartung",
-     "towards": "U6 beide Richtungen"
-    },
-    "description": "U6 Mittelbahnsteig - Ausgang Leipziger Platz",
-    "elevatorId": "JG 02",
-    "name": "ftazW_509",
-    "parentName": "ftazW_509",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4641,
-     4650
-    ],
-    "time": {
-     "end": "2026-11-13T05:15:00.000+0100",
-     "start": "2026-11-13T01:15:00.000+0100"
-    },
-    "title": "Jägerstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "16.11.2026 00:45",
      "ausVon": "15.11.2026 20:45",
      "location": "ÖBB Bahnsteig Richtung Floridsdorf - Ausgang Engerthstraße",
@@ -3258,114 +3180,6 @@
      "start": "2026-11-15T20:45:00.000+0100"
     },
     "title": "Handelskai"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "13.11.2026 05:15",
-     "ausVon": "13.11.2026 01:15",
-     "location": "U4 Bahnsteig Richtung Richtung Hütteldorf - Ausgang Schloß Schönbrunn",
-     "rbls": [
-      4426
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4"
-     ],
-     "station": "Schönbrunn",
-     "status": "geplante Wartung",
-     "towards": "U4 Hütteldorf"
-    },
-    "description": "U4 Bahnsteig Richtung Richtung Hütteldorf - Ausgang Schloß Schönbrunn",
-    "elevatorId": "SB 02",
-    "name": "ftazW_575",
-    "parentName": "ftazW_575",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedStops": [
-     4426
-    ],
-    "time": {
-     "end": "2026-11-13T05:15:00.000+0100",
-     "start": "2026-11-13T01:15:00.000+0100"
-    },
-    "title": "Schönbrunn"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "13.11.2026 05:15",
-     "ausVon": "13.11.2026 01:15",
-     "location": "U4 Mittelbahnsteig Gleis 2 und Gleis 4, ÖBB Bahnsteig - Ausgang 12. Februar Platz",
-     "rbls": [
-      4435
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4"
-     ],
-     "station": "Heiligenstadt",
-     "status": "geplante Wartung",
-     "towards": "U4 Heiligenstadt"
-    },
-    "description": "U4 Mittelbahnsteig Gleis 2 und Gleis 4, ÖBB Bahnsteig - Ausgang 12. Februar Platz",
-    "elevatorId": "HS 02",
-    "name": "ftazW_722",
-    "parentName": "ftazW_722",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedStops": [
-     4435
-    ],
-    "time": {
-     "end": "2026-11-13T05:15:00.000+0100",
-     "start": "2026-11-13T01:15:00.000+0100"
-    },
-    "title": "Heiligenstadt"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "13.11.2026 05:15",
-     "ausVon": "13.11.2026 01:15",
-     "location": "Zwischengeschoss - Ausgang Dr. Karl Renner Ring",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U2",
-      "U3"
-     ],
-     "station": "Volkstheater",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Zwischengeschoss - Ausgang Dr. Karl Renner Ring",
-    "elevatorId": "VT 05",
-    "name": "ftazW_84",
-    "parentName": "ftazW_84",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2",
-     "U3"
-    ],
-    "time": {
-     "end": "2026-11-13T05:15:00.000+0100",
-     "start": "2026-11-13T01:15:00.000+0100"
-    },
-    "title": "Volkstheater"
    }
   ]
  },
