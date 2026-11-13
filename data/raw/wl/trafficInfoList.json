@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261113-0033, I20261113-0036-F01, I20260925-0011, I20260909-0007, I20261113-0038, I20261020-0029, I20261113-0030-F01, I20261113-0037, I20261113-0035"
+    "trafficInfoNameList": "I20261113-0036-F01, I20261113-0039, I20260925-0011, I20260909-0007, I20261113-0038, I20261113-0037, I20261020-0029, I20261113-0030-F01, I20261113-0033"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2380-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2378-627, R401-101, R293-474, R318-437, R2345-127, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R17-0, R47-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R318-437, R293-474, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R1876-101, R1882-101, R1881-101, R1875-101, R1880-101, R1884-101, R1883-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -257,58 +257,12 @@
     "status": "active",
     "time": {
      "created": "2026-11-13T15:23:00.000+0100",
-     "lastUpdate": "2026-11-13T15:43:00.000+0100",
+     "end": "2026-11-13T17:02:00.000+0100",
+     "lastUpdate": "2026-11-13T16:53:00.000+0100",
      "resume": "2026-11-13T15:22:00.000+0100",
      "start": "2026-11-13T15:22:00.000+0100"
     },
     "title": "16A: Verkehrsüberlastung"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "47B": "ptBusCity"
-     }
-    },
-    "description": "Linie 47B: Fahrtbehinderung in Richtung Bahnhof Hütteldorf S U. Voraussichtliche Dauer: 16:20 Uhr. Grund: Falschparker im Bereich Bahnhofstraße 3.",
-    "descriptionHTML": "<p>Linie 47B:<br>Fahrtbehinderung in Richtung Bahnhof Hütteldorf S U.</p><p>Voraussichtliche Dauer: 16:20 Uhr.</p><p>Grund: Falschparker im Bereich Bahnhofstraße 3.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 47B:<br>Fahrtbehinderung in Richtung Bahnhof Hütteldorf S U.</p><p>Voraussichtliche Dauer: 16:20 Uhr.</p><p>Grund: Falschparker im Bereich Bahnhofstraße 3.</p>",
-       "descriptionPlain": "Linie 47B: Fahrtbehinderung in Richtung Bahnhof Hütteldorf S U. Voraussichtliche Dauer: 16:20 Uhr. Grund: Falschparker im Bereich Bahnhofstraße 3.",
-       "title": "47B: Falschparker"
-      }
-     }
-    ],
-    "location": "Bahnhofstraße 3",
-    "name": "I20261113-0035",
-    "owner": "WL",
-    "parentName": "I20261113-0035",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "47B"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 247,
-      "lineName": "47B",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-13T15:56:00.000+0100",
-     "end": "2026-11-13T16:30:00.000+0100",
-     "lastUpdate": "2026-11-13T16:30:00.000+0100",
-     "resume": "2026-11-13T16:30:00.000+0100",
-     "start": "2026-11-13T15:54:00.000+0100"
-    },
-    "title": "47B: Falschparker"
    },
    {
     "alertCause": "emergency medical services",
@@ -398,7 +352,8 @@
     "status": "active",
     "time": {
      "created": "2026-11-13T16:24:00.000+0100",
-     "lastUpdate": "2026-11-13T16:24:00.000+0100",
+     "end": "2026-11-13T17:02:00.000+0100",
+     "lastUpdate": "2026-11-13T16:44:00.000+0100",
      "resume": "2026-11-13T16:19:00.000+0100",
      "start": "2026-11-13T16:19:00.000+0100"
     },
@@ -448,6 +403,51 @@
      "start": "2026-11-13T16:26:00.000+0100"
     },
     "title": "22A: Rettungseinsatz"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "65A": "ptBusCity"
+     }
+    },
+    "description": "Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "<p>Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. <br><br>Grund: Verkehrsunfall.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. <br><br>Grund: Verkehrsunfall.</p>",
+       "descriptionPlain": "Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. Grund: Verkehrsunfall.",
+       "title": "65A: Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261113-0039",
+    "owner": "WL",
+    "parentName": "I20261113-0039",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "65A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 465,
+      "lineName": "65A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-13T16:42:00.000+0100",
+     "lastUpdate": "2026-11-13T16:42:00.000+0100",
+     "resume": "2026-11-13T16:41:00.000+0100",
+     "start": "2026-11-13T16:41:00.000+0100"
+    },
+    "title": "65A: Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
