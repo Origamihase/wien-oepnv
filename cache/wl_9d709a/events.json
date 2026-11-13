@@ -679,17 +679,17 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "12: Rettungseinsatz Betrieb ab Bruno-Marek-Allee",
-    "description": "Linie 12: Betrieb nur zwischen Josefstädter Straße und Bruno-Marek-Allee. Voraussichtliche Dauer: 10:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Hillerstraße.",
+    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "301231dd4b3d1424c578c356e1ad1eaef839db54dc847e98930e9441759060a5",
-    "pubDate": "2026-11-13T09:46:00+01:00",
-    "starts_at": "2026-11-13T09:51:02+01:00",
+    "pubDate": "2026-11-13T09:50:32+01:00",
+    "starts_at": "2026-11-13T10:25:00+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=12|D=2026-11-13|TK=rettungseinsatz",
     "_wl_ids": [
-      "I20261113-0017"
+      "I20261113-0019"
     ],
-    "_incident_start": "2026-11-13T09:46:00+01:00"
+    "_incident_start": "2026-11-13T10:25:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1026,22 +1026,6 @@
       "I20261113-0016"
     ],
     "_incident_start": "2026-11-13T09:15:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Polizeieinsatz",
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab",
-    "pubDate": "2026-11-13T07:32:00+01:00",
-    "starts_at": "2026-11-13T07:32:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U6|D=2026-11-13|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261113-0010"
-    ],
-    "_incident_start": "2026-11-13T07:32:00+01:00"
   },
   {
     "source": "Wiener Linien",

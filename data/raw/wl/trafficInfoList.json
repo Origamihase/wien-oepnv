@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261113-0015-F01, I20261113-0016, I20261113-0017, I20260925-0011, I20261113-0018, I20260909-0007, I20261113-0010-F01, I20261113-0014-F01, I20261020-0029"
+    "trafficInfoNameList": "I20261113-0015-F01, I20261113-0016, I20260925-0011, I20261113-0018, I20261113-0019-F01, I20260909-0007, I20261113-0019, I20261113-0014-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2380-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2378-627, R401-101, R293-474, R318-437, R2345-127, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R3570-112, R3446-112, R3571-112, R3569-112, R3573-112, R3574-112, R3575-112, R3572-112, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2380-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2378-627, R2379-627, R401-101, R293-474, R318-437, R2345-127, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R3570-112, R3446-112, R3569-112, R3571-112, R3575-112, R3572-112, R3573-112, R3574-112, R3576-112, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,54 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U6: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261113-0010-F01",
-    "owner": "WL",
-    "parentName": "I20261113-0010",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4622
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-13T07:47:00.000+0100",
-     "lastUpdate": "2026-11-13T07:47:00.000+0100",
-     "resume": "2026-11-13T07:47:00.000+0100",
-     "start": "2026-11-13T07:32:00.000+0100"
-    },
-    "title": "U6: Polizeieinsatz"
-   },
-   {
     "alertCause": "emergency medical services",
     "alertCauseId": 14,
     "attributes": {
@@ -361,53 +313,6 @@
     "alertCauseId": 14,
     "attributes": {
      "relatedLineTypes": {
-      "12": "ptTram"
-     }
-    },
-    "description": "Linie 12: Betrieb nur zwischen Josefstädter Straße und Bruno-Marek-Allee. Voraussichtliche Dauer: 10:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Hillerstraße.",
-    "descriptionHTML": "<p>Linie 12:<br>Betrieb nur zwischen Josefstädter Straße und Bruno-Marek-Allee.</p><p>Voraussichtliche Dauer: 10:15 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Hillerstraße.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 12:<br>Betrieb nur zwischen Josefstädter Straße und Bruno-Marek-Allee.</p><p>Voraussichtliche Dauer: 10:15 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Hillerstraße.</p>",
-       "descriptionPlain": "Linie 12: Betrieb nur zwischen Josefstädter Straße und Bruno-Marek-Allee. Voraussichtliche Dauer: 10:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Hillerstraße.",
-       "title": "12: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261113-0017",
-    "owner": "WL",
-    "parentName": "I20261113-0017",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 112,
-      "lineName": "12",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     3572
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-13T09:48:00.000+0100",
-     "lastUpdate": "2026-11-13T09:48:00.000+0100",
-     "start": "2026-11-13T09:46:00.000+0100"
-    },
-    "title": "12: Rettungseinsatz"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
       "11A": "ptBusCity"
      }
     },
@@ -447,6 +352,103 @@
      "start": "2026-11-13T09:57:00.000+0100"
     },
     "title": "11A: Rettungseinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "12": "ptTram"
+     }
+    },
+    "description": "Linie 12: Betrieb nur zwischen Josefstädter Straße und Bruno-Marek-Allee. Voraussichtliche Dauer: 10:35 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Hillerstraße.",
+    "descriptionHTML": "<p>Linie 12:<br>Betrieb nur zwischen Josefstädter Straße und Bruno-Marek-Allee.</p><p>Voraussichtliche Dauer: 10:35 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Hillerstraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 12:<br>Betrieb nur zwischen Josefstädter Straße und Bruno-Marek-Allee.</p><p>Voraussichtliche Dauer: 10:35 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Hillerstraße.</p>",
+       "descriptionPlain": "Linie 12: Betrieb nur zwischen Josefstädter Straße und Bruno-Marek-Allee. Voraussichtliche Dauer: 10:35 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Hillerstraße.",
+       "title": "12: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261113-0019",
+    "owner": "WL",
+    "parentName": "I20261113-0019",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 112,
+      "lineName": "12",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     3572
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-11-13T10:25:00.000+0100",
+     "end": "2026-11-13T10:29:00.000+0100",
+     "lastUpdate": "2026-11-13T10:29:00.000+0100",
+     "resume": "2026-11-13T10:29:00.000+0100",
+     "start": "2026-11-13T10:25:00.000+0100"
+    },
+    "title": "12: Rettungseinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "12": "ptTram"
+     }
+    },
+    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "12: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261113-0019-F01",
+    "owner": "WL",
+    "parentName": "I20261113-0019",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 112,
+      "lineName": "12",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     3572
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-13T10:29:00.000+0100",
+     "lastUpdate": "2026-11-13T10:29:00.000+0100",
+     "resume": "2026-11-13T10:29:00.000+0100",
+     "start": "2026-11-13T10:25:00.000+0100"
+    },
+    "title": "12: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1206,6 +1208,29 @@
      "start": "2026-11-13T09:51:02.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Bruno-Marek-Allee"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nZüge halten in der Schleife",
+    "name": "R3576-112",
+    "owner": "WL",
+    "parentName": "R3576-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     3576
+    ],
+    "time": {
+     "end": "2026-11-13T11:04:00.000+0100",
+     "start": "2026-11-13T10:05:34.000+0100"
+    },
+    "title": "Rettungseinsatz\nZüge halten in der Schleife"
    },
    {
     "alertCause": "undefined alert cause",
