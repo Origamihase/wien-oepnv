@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261113-0004, I20260925-0011, I20261113-0005, I20260909-0007, I20261113-0003-F01, I20261020-0029"
+    "trafficInfoNameList": "I20261113-0004, I20260925-0011, I20261113-0005, I20260909-0007, I20261113-0003-F01, I20261020-0029, I20261113-0006"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R401-101, R318-437, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R2558-125, R3886-480, R1974-466, R1199-205, R2200-131, R2227-131, R2226-131, R2221-131, R2220-131, R2219-131, R2218-131, R2217-131, R2216-131, R2212-131, R2210-131, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R401-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R293-474, R1884-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1875-101, R2558-125, R3886-480, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -312,6 +312,51 @@
     "title": "U6: Rettungseinsatz"
    },
    {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "63A": "ptBusCity"
+     }
+    },
+    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "63A: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261113-0006",
+    "owner": "WL",
+    "parentName": "I20261113-0006",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "63A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 463,
+      "lineName": "63A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-13T05:58:00.000+0100",
+     "lastUpdate": "2026-11-13T05:58:00.000+0100",
+     "resume": "2026-11-13T05:58:00.000+0100",
+     "start": "2026-11-13T05:58:00.000+0100"
+    },
+    "title": "63A: Verspätungen"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -517,259 +562,6 @@
      "start": "2026-11-13T04:40:00.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R2200-131",
-    "owner": "WL",
-    "parentName": "R2200-131",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedStops": [
-     2200
-    ],
-    "time": {
-     "end": "2026-11-13T05:54:00.000+0100",
-     "start": "2026-11-13T04:55:01.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R2210-131",
-    "owner": "WL",
-    "parentName": "R2210-131",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedStops": [
-     2210
-    ],
-    "time": {
-     "end": "2026-11-13T05:54:00.000+0100",
-     "start": "2026-11-13T04:55:01.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R2212-131",
-    "owner": "WL",
-    "parentName": "R2212-131",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedStops": [
-     2212
-    ],
-    "time": {
-     "end": "2026-11-13T05:54:00.000+0100",
-     "start": "2026-11-13T04:55:01.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R2216-131",
-    "owner": "WL",
-    "parentName": "R2216-131",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedStops": [
-     2216
-    ],
-    "time": {
-     "end": "2026-11-13T05:54:00.000+0100",
-     "start": "2026-11-13T04:55:01.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R2217-131",
-    "owner": "WL",
-    "parentName": "R2217-131",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedStops": [
-     2217
-    ],
-    "time": {
-     "end": "2026-11-13T05:54:00.000+0100",
-     "start": "2026-11-13T04:55:01.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R2218-131",
-    "owner": "WL",
-    "parentName": "R2218-131",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedStops": [
-     2218
-    ],
-    "time": {
-     "end": "2026-11-13T05:54:00.000+0100",
-     "start": "2026-11-13T04:55:01.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R2219-131",
-    "owner": "WL",
-    "parentName": "R2219-131",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedStops": [
-     2219
-    ],
-    "time": {
-     "end": "2026-11-13T05:54:00.000+0100",
-     "start": "2026-11-13T04:55:01.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R2220-131",
-    "owner": "WL",
-    "parentName": "R2220-131",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedStops": [
-     2220
-    ],
-    "time": {
-     "end": "2026-11-13T05:54:00.000+0100",
-     "start": "2026-11-13T04:55:01.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R2221-131",
-    "owner": "WL",
-    "parentName": "R2221-131",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedStops": [
-     2221
-    ],
-    "time": {
-     "end": "2026-11-13T05:54:00.000+0100",
-     "start": "2026-11-13T04:55:01.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R2226-131",
-    "owner": "WL",
-    "parentName": "R2226-131",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedStops": [
-     2226
-    ],
-    "time": {
-     "end": "2026-11-13T05:54:00.000+0100",
-     "start": "2026-11-13T04:55:01.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R2227-131",
-    "owner": "WL",
-    "parentName": "R2227-131",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedStops": [
-     2227
-    ],
-    "time": {
-     "end": "2026-11-13T05:54:00.000+0100",
-     "start": "2026-11-13T04:55:01.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
    },
    {
     "alertCause": "undefined alert cause",
