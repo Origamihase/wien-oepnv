@@ -8,8 +8,34 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 13 Nov 2026 06:30:46 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 07:00:46 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U1: Defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7</guid>
+      <pubDate>Fri, 13 Nov 2026 06:48:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 13 Nov 2026 06:48:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 13 Nov 2026 06:48:00 +0100</ext:starts_at>
+      <description>Operation between the stations Kaisermühle V.I.C. and Donauinsel in both directions on track 1. Expected until 07:15. Reason: defective vehicle … [Since 06:48]</description>
+      <content:encoded><![CDATA[Operation between the stations Kaisermühle V.I.C. and Donauinsel in both directions on track 1. Expected until 07:15. Reason: defective vehicle …<br/>[Since 06:48]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[D: Defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">479d81556bc68dbdee0680cddad02646b0c604865221d4ea576921f46f65d96c</guid>
+      <pubDate>Fri, 13 Nov 2026 06:46:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 13 Nov 2026 06:46:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 13 Nov 2026 06:46:00 +0100</ext:starts_at>
+      <description>Service only between Absberggasse and Liechtenwerder Platz. Continue via Nußdorfer Straße to Marsanogasse. [Since 06:46]</description>
+      <content:encoded><![CDATA[Service only between Absberggasse and Liechtenwerder Platz. Continue via Nußdorfer Straße to Marsanogasse.<br/>[Since 06:46]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[30/31: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -20,8 +46,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 13 Nov 2026 06:27:00 +0100</ext:first_seen>
       <ext:starts_at>Fri, 13 Nov 2026 06:27:00 +0100</ext:starts_at>
-      <description>Service obstruction towards Stammersdorf. Expected until 06:40. Reason: rescue operation in the stop area of Großjedlersdorf. [Since 06:27]</description>
-      <content:encoded><![CDATA[Service obstruction towards Stammersdorf. Expected until 06:40. Reason: rescue operation in the stop area of Großjedlersdorf.<br/>[Since 06:27]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 06:27]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 06:27]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[63A: Delays]]></title>
@@ -122,34 +148,6 @@
       <georss:point>48.208780 16.510505</georss:point>
       <description>Lannesstraße before Arztgasse → Arztgasse 107 - 109. Stop relocation of line 98A towards Aspernstraße. Reason: conversion of the stop. [From Mon 16.11.]</description>
       <content:encoded><![CDATA[Lannesstraße before Arztgasse → Arztgasse 107 - 109. Stop relocation of line 98A towards Aspernstraße. Reason: conversion of the stop.<br/>[From Mon 16.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[65A: Triester Straße, Rossakgasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">213d51762c51c0889ab9a4a34328e7b3245279259b35acb8575e9a76ec72d882</guid>
-      <pubDate>Wed, 11 Nov 2026 09:38:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 11 Nov 2026 09:38:00 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 11 Nov 2026 09:38:00 +0100</ext:starts_at>
-      <georss:point>48.145871 16.332540</georss:point>
-      <description>Triester Straße 164 → Triester Straße 162. Stop relocation of line 65A towards Wienerberg City (Inzersdorf). Reason: roadworks. [Since 11.11.]</description>
-      <content:encoded><![CDATA[Triester Straße 164 → Triester Straße 162. Stop relocation of line 65A towards Wienerberg City (Inzersdorf). Reason: roadworks.<br/>[Since 11.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A: Buses stop at Salvatorianerplatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
-      <pubDate>Fri, 13 Nov 2026 04:40:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 11 Nov 2026 05:00:35 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 13 Nov 2026 04:40:00 +0100</ext:starts_at>
-      <ext:ends_at>Sat, 14 Nov 2026 01:00:00 +0100</ext:ends_at>
-      <description>Reason: construction works. [Until Sat 14.11.]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[Until Sat 14.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

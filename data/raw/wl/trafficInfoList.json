@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261113-0007, I20260925-0011, I20261113-0003-F01, I20260909-0007, I20261020-0029, I20261113-0006"
+    "trafficInfoNameList": "I20261113-0009, I20260925-0011, I20260909-0007, I20261020-0029, I20261113-0006, I20261113-0007-F01, I20261113-0007-F02, I20261113-0008"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R318-437, R293-474, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R2227-0, R2210-0, R2209-0, R2208-0, R2201-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R401-101, R293-474, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R2201-0, R2227-0, R2210-0, R2209-0, R2208-0, R2216-0, R2226-0, R2212-0, R2217-0, R99-136, R93-136, R95-136, R96-136, R97-136, R98-136, R94-136, R123-136, R122-136, R126-136, R125-136, R121-136, R124-136, R92-136, R90-136, R91-136, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,55 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "fire",
-    "alertCauseId": 5,
-    "attributes": {
-     "relatedLineTypes": {
-      "31": "ptTram"
-     }
-    },
-    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "31: Feuerwehreinsatz"
-      }
-     }
-    ],
-    "name": "I20261113-0003-F01",
-    "owner": "WL",
-    "parentName": "I20261113-0003",
-    "priority": "1",
-    "reasonId": 11,
-    "reasonName": "Feuerwehreinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 131,
-      "lineName": "31",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     2227
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-13T05:02:00.000+0100",
-     "end": "2026-11-13T06:29:00.000+0100",
-     "lastUpdate": "2026-11-13T06:29:00.000+0100",
-     "resume": "2026-11-13T06:29:00.000+0100",
-     "start": "2026-11-13T04:55:00.000+0100"
-    },
-    "title": "31: Feuerwehreinsatz"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -269,22 +220,21 @@
     "alertCauseId": 14,
     "attributes": {
      "relatedLineTypes": {
-      "30": "ptTram",
-      "31": "ptTram"
+      "30": "ptTram"
      }
     },
-    "description": "Linie 30: Fahrtbehinderung in Richtung Stammersdorf. Linie 31: Fahrtbehinderung in Richtung Stammersdorf. Voraussichtliche Dauer: 06:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Großjedlersdorf.",
-    "descriptionHTML": "<p>Linie 30:<br>Fahrtbehinderung in Richtung Stammersdorf.<br>Linie 31:<br>Fahrtbehinderung in Richtung Stammersdorf.</p><p>Voraussichtliche Dauer: 06:40 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Großjedlersdorf.</p>",
+    "description": "Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 30: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 30:<br>Fahrtbehinderung in Richtung Stammersdorf.<br>Linie 31:<br>Fahrtbehinderung in Richtung Stammersdorf.</p><p>Voraussichtliche Dauer: 06:40 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Großjedlersdorf.</p>",
-       "descriptionPlain": "Linie 30: Fahrtbehinderung in Richtung Stammersdorf. Linie 31: Fahrtbehinderung in Richtung Stammersdorf. Voraussichtliche Dauer: 06:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Großjedlersdorf.",
-       "title": "30, 31: Rettungseinsatz"
+       "descriptionHtml": "<p>Linie 30: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "30: Rettungseinsatz"
       }
      }
     ],
-    "name": "I20261113-0007",
+    "name": "I20261113-0007-F01",
     "owner": "WL",
     "parentName": "I20261113-0007",
     "priority": "1",
@@ -292,15 +242,57 @@
     "reasonName": "Rettungseinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "30",
-     "31"
+     "30"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 130,
       "lineName": "30",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "relatedStops": [
+     2208
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-13T06:37:00.000+0100",
+     "lastUpdate": "2026-11-13T06:37:00.000+0100",
+     "resume": "2026-11-13T06:37:00.000+0100",
+     "start": "2026-11-13T06:27:00.000+0100"
+    },
+    "title": "30: Rettungseinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "31": "ptTram"
+     }
+    },
+    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "31: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261113-0007-F02",
+    "owner": "WL",
+    "parentName": "I20261113-0007",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 131,
       "lineName": "31",
@@ -312,11 +304,104 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-13T06:28:00.000+0100",
-     "lastUpdate": "2026-11-13T06:28:00.000+0100",
+     "created": "2026-11-13T06:37:00.000+0100",
+     "lastUpdate": "2026-11-13T06:37:00.000+0100",
+     "resume": "2026-11-13T06:37:00.000+0100",
      "start": "2026-11-13T06:27:00.000+0100"
     },
-    "title": "30, 31: Rettungseinsatz"
+    "title": "31: Rettungseinsatz"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "D": "ptTram"
+     }
+    },
+    "description": "Linie D: Betrieb nur zwischen Absberggasse und Liechtenwerder Platz. Weiterfahrt über Nußdorfer Straße U bis Marsanogasse. Ersatz: Linien U4 sowie Reginalbus 400. Voraussichtliche Dauer: 07:20 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Heiligenstädter Straße # Grinzinger Straße.",
+    "descriptionHTML": "<p>Linie D:<br>Betrieb nur zwischen Absberggasse und Liechtenwerder Platz.<br>Weiterfahrt über Nußdorfer Straße U bis Marsanogasse.</p><p>Ersatz: Linien U4 sowie Reginalbus 400.</p><p>Voraussichtliche Dauer: 07:20 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Bereich Heiligenstädter Straße # Grinzinger Straße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie D:<br>Betrieb nur zwischen Absberggasse und Liechtenwerder Platz.<br>Weiterfahrt über Nußdorfer Straße U bis Marsanogasse.</p><p>Ersatz: Linien U4 sowie Reginalbus 400.</p><p>Voraussichtliche Dauer: 07:20 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Bereich Heiligenstädter Straße # Grinzinger Straße.</p>",
+       "descriptionPlain": "Linie D: Betrieb nur zwischen Absberggasse und Liechtenwerder Platz. Weiterfahrt über Nußdorfer Straße U bis Marsanogasse. Ersatz: Linien U4 sowie Reginalbus 400. Voraussichtliche Dauer: 07:20 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Heiligenstädter Straße # Grinzinger Straße.",
+       "title": "D: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "location": "Heiligenstädter Straße / Grinzinger Straße",
+    "name": "I20261113-0008",
+    "owner": "WL",
+    "parentName": "I20261113-0008",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 136,
+      "lineName": "D",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-13T06:47:00.000+0100",
+     "lastUpdate": "2026-11-13T06:51:00.000+0100",
+     "start": "2026-11-13T06:46:00.000+0100"
+    },
+    "title": "D: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Betrieb zwischen den Stationen Kaisermühlen V.I.C. und Donauinsel in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 07:15 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kaisermühlen-VIC.",
+    "descriptionHTML": "<p>Linie U1:<br>Betrieb zwischen den Stationen Kaisermühlen V.I.C. und Donauinsel in beiden Richtungen über Gleis 1.</p><p>Voraussichtliche Dauer: 07:15 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kaisermühlen-VIC.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U1:<br>Betrieb zwischen den Stationen Kaisermühlen V.I.C. und Donauinsel in beiden Richtungen über Gleis 1.</p><p>Voraussichtliche Dauer: 07:15 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kaisermühlen-VIC.</p>",
+       "descriptionPlain": "Linie U1: Betrieb zwischen den Stationen Kaisermühlen V.I.C. und Donauinsel in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 07:15 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kaisermühlen-VIC.",
+       "title": "U1: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261113-0009",
+    "owner": "WL",
+    "parentName": "I20261113-0009",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 301,
+      "lineName": "U1",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4123
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-13T06:49:00.000+0100",
+     "lastUpdate": "2026-11-13T06:52:00.000+0100",
+     "start": "2026-11-13T06:48:00.000+0100"
+    },
+    "title": "U1: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -340,6 +425,144 @@
      "start": "2026-11-13T04:45:00.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R121-136",
+    "owner": "WL",
+    "parentName": "R121-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     121
+    ],
+    "time": {
+     "end": "2026-11-13T07:51:00.000+0100",
+     "start": "2026-11-13T06:51:42.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R122-136",
+    "owner": "WL",
+    "parentName": "R122-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     122
+    ],
+    "time": {
+     "end": "2026-11-13T07:51:00.000+0100",
+     "start": "2026-11-13T06:51:42.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R123-136",
+    "owner": "WL",
+    "parentName": "R123-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     123
+    ],
+    "time": {
+     "end": "2026-11-13T07:51:00.000+0100",
+     "start": "2026-11-13T06:51:42.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R124-136",
+    "owner": "WL",
+    "parentName": "R124-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     124
+    ],
+    "time": {
+     "end": "2026-11-13T07:51:00.000+0100",
+     "start": "2026-11-13T06:51:42.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R125-136",
+    "owner": "WL",
+    "parentName": "R125-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     125
+    ],
+    "time": {
+     "end": "2026-11-13T07:51:00.000+0100",
+     "start": "2026-11-13T06:51:42.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R126-136",
+    "owner": "WL",
+    "parentName": "R126-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     126
+    ],
+    "time": {
+     "end": "2026-11-13T07:51:00.000+0100",
+     "start": "2026-11-13T06:51:42.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -602,6 +825,86 @@
     "time": {
      "end": "2026-11-13T07:27:00.000+0100",
      "start": "2026-11-13T06:27:41.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
+    "name": "R2212-0",
+    "owner": "WL",
+    "parentName": "R2212-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2212
+    ],
+    "time": {
+     "end": "2026-11-13T07:32:00.000+0100",
+     "start": "2026-11-13T06:33:11.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
+    "name": "R2216-0",
+    "owner": "WL",
+    "parentName": "R2216-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2216
+    ],
+    "time": {
+     "end": "2026-11-13T07:32:00.000+0100",
+     "start": "2026-11-13T06:33:11.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
+    "name": "R2217-0",
+    "owner": "WL",
+    "parentName": "R2217-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2217
+    ],
+    "time": {
+     "end": "2026-11-13T07:32:00.000+0100",
+     "start": "2026-11-13T06:33:11.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
+    "name": "R2226-0",
+    "owner": "WL",
+    "parentName": "R2226-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2226
+    ],
+    "time": {
+     "end": "2026-11-13T07:32:00.000+0100",
+     "start": "2026-11-13T06:33:11.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
    },
@@ -1061,6 +1364,236 @@
      "start": "2026-11-13T05:00:01.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz",
+    "name": "R90-136",
+    "owner": "WL",
+    "parentName": "R90-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     90
+    ],
+    "time": {
+     "end": "2026-11-13T07:51:00.000+0100",
+     "start": "2026-11-13T06:52:42.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz",
+    "name": "R91-136",
+    "owner": "WL",
+    "parentName": "R91-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     91
+    ],
+    "time": {
+     "end": "2026-11-13T07:51:00.000+0100",
+     "start": "2026-11-13T06:52:42.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz",
+    "name": "R92-136",
+    "owner": "WL",
+    "parentName": "R92-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     92
+    ],
+    "time": {
+     "end": "2026-11-13T07:51:00.000+0100",
+     "start": "2026-11-13T06:52:42.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz",
+    "name": "R93-136",
+    "owner": "WL",
+    "parentName": "R93-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     93
+    ],
+    "time": {
+     "end": "2026-11-13T07:51:00.000+0100",
+     "start": "2026-11-13T06:47:42.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz",
+    "name": "R94-136",
+    "owner": "WL",
+    "parentName": "R94-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     94
+    ],
+    "time": {
+     "end": "2026-11-13T07:51:00.000+0100",
+     "start": "2026-11-13T06:47:42.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz",
+    "name": "R95-136",
+    "owner": "WL",
+    "parentName": "R95-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     95
+    ],
+    "time": {
+     "end": "2026-11-13T07:51:00.000+0100",
+     "start": "2026-11-13T06:47:42.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz",
+    "name": "R96-136",
+    "owner": "WL",
+    "parentName": "R96-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     96
+    ],
+    "time": {
+     "end": "2026-11-13T07:51:00.000+0100",
+     "start": "2026-11-13T06:47:42.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz",
+    "name": "R97-136",
+    "owner": "WL",
+    "parentName": "R97-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     97
+    ],
+    "time": {
+     "end": "2026-11-13T07:51:00.000+0100",
+     "start": "2026-11-13T06:47:42.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz",
+    "name": "R98-136",
+    "owner": "WL",
+    "parentName": "R98-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     98
+    ],
+    "time": {
+     "end": "2026-11-13T07:51:00.000+0100",
+     "start": "2026-11-13T06:47:42.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Liechtenwerder Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R99-136",
+    "owner": "WL",
+    "parentName": "R99-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     99
+    ],
+    "time": {
+     "end": "2026-11-13T07:47:00.000+0100",
+     "start": "2026-11-13T06:47:42.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
