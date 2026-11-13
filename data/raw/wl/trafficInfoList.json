@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261113-0009, I20260925-0011, I20260909-0007, I20261020-0029, I20261113-0006, I20261113-0007-F01, I20261113-0007-F02, I20261113-0008"
+    "trafficInfoNameList": "I20261113-0009-F01, I20261113-0006, I20260925-0011, I20260909-0007, I20261020-0029, I20261113-0008-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R401-101, R293-474, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R2201-0, R2227-0, R2210-0, R2209-0, R2208-0, R2216-0, R2226-0, R2212-0, R2217-0, R99-136, R93-136, R95-136, R96-136, R97-136, R98-136, R94-136, R123-136, R122-136, R126-136, R125-136, R121-136, R124-136, R92-136, R90-136, R91-136, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2378-627, R401-101, R293-474, R318-437, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R2558-125, R3886-480, R1974-466, R1199-205, R500-101, R2216-0, R2212-0, R2226-0, R2217-0, R99-136, R98-136, R95-136, R94-136, R93-136, R96-136, R97-136, R126-136, R125-136, R124-136, R123-136, R122-136, R121-136, R92-136, R91-136, R90-136, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -206,110 +206,15 @@
       "vehicleType": "ptBusCity"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-13T05:58:00.000+0100",
-     "lastUpdate": "2026-11-13T05:58:00.000+0100",
+     "end": "2026-11-13T07:28:00.000+0100",
+     "lastUpdate": "2026-11-13T07:28:00.000+0100",
      "resume": "2026-11-13T05:58:00.000+0100",
      "start": "2026-11-13T05:58:00.000+0100"
     },
     "title": "63A: Verspätungen"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "30": "ptTram"
-     }
-    },
-    "description": "Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 30: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 30: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "30: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261113-0007-F01",
-    "owner": "WL",
-    "parentName": "I20261113-0007",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "30"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 130,
-      "lineName": "30",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     2208
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-13T06:37:00.000+0100",
-     "lastUpdate": "2026-11-13T06:37:00.000+0100",
-     "resume": "2026-11-13T06:37:00.000+0100",
-     "start": "2026-11-13T06:27:00.000+0100"
-    },
-    "title": "30: Rettungseinsatz"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "31": "ptTram"
-     }
-    },
-    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "31: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261113-0007-F02",
-    "owner": "WL",
-    "parentName": "I20261113-0007",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 131,
-      "lineName": "31",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     2208
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-13T06:37:00.000+0100",
-     "lastUpdate": "2026-11-13T06:37:00.000+0100",
-     "resume": "2026-11-13T06:37:00.000+0100",
-     "start": "2026-11-13T06:27:00.000+0100"
-    },
-    "title": "31: Rettungseinsatz"
    },
    {
     "alertCause": "defective vehicle",
@@ -319,19 +224,19 @@
       "D": "ptTram"
      }
     },
-    "description": "Linie D: Betrieb nur zwischen Absberggasse und Liechtenwerder Platz. Weiterfahrt über Nußdorfer Straße U bis Marsanogasse. Ersatz: Linien U4 sowie Reginalbus 400. Voraussichtliche Dauer: 07:20 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Heiligenstädter Straße # Grinzinger Straße.",
-    "descriptionHTML": "<p>Linie D:<br>Betrieb nur zwischen Absberggasse und Liechtenwerder Platz.<br>Weiterfahrt über Nußdorfer Straße U bis Marsanogasse.</p><p>Ersatz: Linien U4 sowie Reginalbus 400.</p><p>Voraussichtliche Dauer: 07:20 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Bereich Heiligenstädter Straße # Grinzinger Straße.</p>",
+    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie D:<br>Betrieb nur zwischen Absberggasse und Liechtenwerder Platz.<br>Weiterfahrt über Nußdorfer Straße U bis Marsanogasse.</p><p>Ersatz: Linien U4 sowie Reginalbus 400.</p><p>Voraussichtliche Dauer: 07:20 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Bereich Heiligenstädter Straße # Grinzinger Straße.</p>",
-       "descriptionPlain": "Linie D: Betrieb nur zwischen Absberggasse und Liechtenwerder Platz. Weiterfahrt über Nußdorfer Straße U bis Marsanogasse. Ersatz: Linien U4 sowie Reginalbus 400. Voraussichtliche Dauer: 07:20 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Heiligenstädter Straße # Grinzinger Straße.",
+       "descriptionHtml": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "D: Schadhaftes Fahrzeug"
       }
      }
     ],
     "location": "Heiligenstädter Straße / Grinzinger Straße",
-    "name": "I20261113-0008",
+    "name": "I20261113-0008-F01",
     "owner": "WL",
     "parentName": "I20261113-0008",
     "priority": "1",
@@ -350,8 +255,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-13T06:47:00.000+0100",
-     "lastUpdate": "2026-11-13T06:51:00.000+0100",
+     "created": "2026-11-13T07:21:00.000+0100",
+     "lastUpdate": "2026-11-13T07:21:00.000+0100",
+     "resume": "2026-11-13T07:21:00.000+0100",
      "start": "2026-11-13T06:46:00.000+0100"
     },
     "title": "D: Schadhaftes Fahrzeug"
@@ -364,18 +270,18 @@
       "U1": "ptMetro"
      }
     },
-    "description": "Linie U1: Betrieb zwischen den Stationen Kaisermühlen V.I.C. und Donauinsel in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 07:15 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kaisermühlen-VIC.",
-    "descriptionHTML": "<p>Linie U1:<br>Betrieb zwischen den Stationen Kaisermühlen V.I.C. und Donauinsel in beiden Richtungen über Gleis 1.</p><p>Voraussichtliche Dauer: 07:15 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kaisermühlen-VIC.</p>",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie U1:<br>Betrieb zwischen den Stationen Kaisermühlen V.I.C. und Donauinsel in beiden Richtungen über Gleis 1.</p><p>Voraussichtliche Dauer: 07:15 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kaisermühlen-VIC.</p>",
-       "descriptionPlain": "Linie U1: Betrieb zwischen den Stationen Kaisermühlen V.I.C. und Donauinsel in beiden Richtungen über Gleis 1. Voraussichtliche Dauer: 07:15 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Kaisermühlen-VIC.",
+       "descriptionHtml": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "U1: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261113-0009",
+    "name": "I20261113-0009-F01",
     "owner": "WL",
     "parentName": "I20261113-0009",
     "priority": "1",
@@ -397,8 +303,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-13T06:49:00.000+0100",
-     "lastUpdate": "2026-11-13T06:52:00.000+0100",
+     "created": "2026-11-13T07:20:00.000+0100",
+     "lastUpdate": "2026-11-13T07:20:00.000+0100",
+     "resume": "2026-11-13T07:20:00.000+0100",
      "start": "2026-11-13T06:48:00.000+0100"
     },
     "title": "U1: Schadhaftes Fahrzeug"
@@ -752,86 +659,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
-    "name": "R2201-0",
-    "owner": "WL",
-    "parentName": "R2201-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2201
-    ],
-    "time": {
-     "end": "2026-11-13T07:27:00.000+0100",
-     "start": "2026-11-13T06:27:41.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
-    "name": "R2208-0",
-    "owner": "WL",
-    "parentName": "R2208-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2208
-    ],
-    "time": {
-     "end": "2026-11-13T07:27:00.000+0100",
-     "start": "2026-11-13T06:27:41.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
-    "name": "R2209-0",
-    "owner": "WL",
-    "parentName": "R2209-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2209
-    ],
-    "time": {
-     "end": "2026-11-13T07:27:00.000+0100",
-     "start": "2026-11-13T06:27:41.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
-    "name": "R2210-0",
-    "owner": "WL",
-    "parentName": "R2210-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2210
-    ],
-    "time": {
-     "end": "2026-11-13T07:27:00.000+0100",
-     "start": "2026-11-13T06:27:41.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
     "name": "R2212-0",
     "owner": "WL",
     "parentName": "R2212-0",
@@ -905,26 +732,6 @@
     "time": {
      "end": "2026-11-13T07:32:00.000+0100",
      "start": "2026-11-13T06:33:11.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n",
-    "name": "R2227-0",
-    "owner": "WL",
-    "parentName": "R2227-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2227
-    ],
-    "time": {
-     "end": "2026-11-13T07:27:00.000+0100",
-     "start": "2026-11-13T06:27:41.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz\n\n"
    },

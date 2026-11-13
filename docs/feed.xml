@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 13 Nov 2026 07:00:46 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 07:30:43 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U1: Schadhaftes Fahrzeug]]></title>
@@ -20,11 +20,11 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 13 Nov 2026 06:48:00 +0100</ext:first_seen>
       <ext:starts_at>Fri, 13 Nov 2026 06:48:00 +0100</ext:starts_at>
-      <description>Betrieb zwischen den Stationen Kaisermühlen V.I.C. und Donauinsel in beiden Richtungen über Gleis 1. Voraussichtlich bis 07:15 Uhr. Grund: Schadhaftes Fahrzeug … [Seit 06:48]</description>
-      <content:encoded><![CDATA[Betrieb zwischen den Stationen Kaisermühlen V.I.C. und Donauinsel in beiden Richtungen über Gleis 1. Voraussichtlich bis 07:15 Uhr. Grund: Schadhaftes Fahrzeug …<br/>[Seit 06:48]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 06:48]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 06:48]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[D: Schadhaftes Fahrzeug]]></title>
+      <title><![CDATA[D: Schadhafter Zug]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">479d81556bc68dbdee0680cddad02646b0c604865221d4ea576921f46f65d96c</guid>
       <pubDate>Fri, 13 Nov 2026 06:46:00 +0100</pubDate>
@@ -33,34 +33,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 13 Nov 2026 06:46:00 +0100</ext:first_seen>
       <ext:starts_at>Fri, 13 Nov 2026 06:46:00 +0100</ext:starts_at>
-      <description>Betrieb nur zwischen Absberggasse und Liechtenwerder Platz. Weiterfahrt über Nußdorfer Straße bis Marsanogasse. [Seit 06:46]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Absberggasse und Liechtenwerder Platz. Weiterfahrt über Nußdorfer Straße bis Marsanogasse.<br/>[Seit 06:46]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[30/31: Rettungseinsatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">70431730fb981673f00e9f6f9e9161c71d549913578700320c2123e9f0bc4885</guid>
-      <pubDate>Fri, 13 Nov 2026 06:27:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 13 Nov 2026 06:27:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 13 Nov 2026 06:27:00 +0100</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 06:27]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 06:27]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[63A: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">499ac622a712bd280a6b728d5cd57eb6ebde96a246de80a08e9a389a60dab6f9</guid>
-      <pubDate>Fri, 13 Nov 2026 05:58:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 13 Nov 2026 05:58:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 13 Nov 2026 05:58:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 05:58]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 05:58]]]></content:encoded>
+      <description>Betrieb ab Liechtenwerder Platz. [Seit 06:46]</description>
+      <content:encoded><![CDATA[Betrieb ab Liechtenwerder Platz.<br/>[Seit 06:46]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx]]></title>
@@ -148,6 +122,34 @@
       <georss:point>48.208780 16.510505</georss:point>
       <description>Lannesstraße vor Arztgasse → Arztgasse 107 - 109. Haltestellenverlegung der Linie 98A in Richtung Aspernstraße. Grund: Umbau der Haltestelle. [Ab Mo 16.11.]</description>
       <content:encoded><![CDATA[Lannesstraße vor Arztgasse → Arztgasse 107 - 109. Haltestellenverlegung der Linie 98A in Richtung Aspernstraße. Grund: Umbau der Haltestelle.<br/>[Ab Mo 16.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[65A: Triester Straße, Rossakgasse]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">213d51762c51c0889ab9a4a34328e7b3245279259b35acb8575e9a76ec72d882</guid>
+      <pubDate>Wed, 11 Nov 2026 09:38:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 11 Nov 2026 09:38:00 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 11 Nov 2026 09:38:00 +0100</ext:starts_at>
+      <georss:point>48.145871 16.332540</georss:point>
+      <description>Triester Straße 164 → Triester Straße 162. Haltestellenverlegung der Linie 65A in Richtung Wienerberg City (Inzersdorf). Grund: Straßenbauarbeiten. [Seit 11.11.]</description>
+      <content:encoded><![CDATA[Triester Straße 164 → Triester Straße 162. Haltestellenverlegung der Linie 65A in Richtung Wienerberg City (Inzersdorf). Grund: Straßenbauarbeiten.<br/>[Seit 11.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
+      <pubDate>Fri, 13 Nov 2026 04:40:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 11 Nov 2026 05:00:35 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 13 Nov 2026 04:40:00 +0100</ext:starts_at>
+      <ext:ends_at>Sat, 14 Nov 2026 01:00:00 +0100</ext:ends_at>
+      <description>Grund: Bauarbeiten. [Bis Sa 14.11.]</description>
+      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Bis Sa 14.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

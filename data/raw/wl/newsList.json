@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1016493, ftazW_22, ftazW_1354391, ftazW_36, ftazW_113, ftazW_354, ftazW_519, ftazW_482, ftazW_1017117, ftazW_520, ftazW_114, ftazW_355, ftazW_483, ftazW_1017118"
+    "trafficInfoNameList": "ftazW_36, ftazW_113, ftazW_354, ftazW_519, ftazW_482, ftazW_1017117, ftazW_520, ftazW_114, ftazW_22, ftazW_355, ftazW_483, ftazW_1017118"
    }
   ],
   "poiCategoryGroups": [
@@ -2967,40 +2967,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "13.11.2026 17:00",
-     "ausVon": "13.11.2026 07:00",
-     "location": "Passage - Ausgang Südtirolerplatz",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U1",
-      "18"
-     ],
-     "station": "Südtiroler Platz-Hauptbahnhof",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Passage - Ausgang Südtirolerplatz",
-    "elevatorId": "SL 03",
-    "name": "ftazW_1016493",
-    "parentName": "ftazW_1016493",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1",
-     "18"
-    ],
-    "time": {
-     "end": "2026-11-13T17:00:00.000+0100",
-     "start": "2026-11-13T07:00:00.000+0100"
-    },
-    "title": "Südtiroler Platz-Hauptbahnhof"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "16.11.2026 00:45",
      "ausVon": "15.11.2026 20:45",
      "location": "U1 Mittelbahnsteig - Ausgang Aderklaaer Straße",
@@ -3081,7 +3047,7 @@
     "attributes": {
      "ausBis": "16.11.2026 00:45",
      "ausVon": "15.11.2026 20:45",
-     "location": "Zwischengeschoss Zugang Aufzug U1 - U4 Mittelbahnsteig",
+     "location": "U4 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U1",
      "rbls": [
       4427,
       4410
@@ -3095,7 +3061,7 @@
      "status": "geplante Wartung",
      "towards": "U4 beide Richtungen"
     },
-    "description": "Zwischengeschoss Zugang Aufzug U1 - U4 Mittelbahnsteig",
+    "description": "U4 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U1",
     "elevatorId": "SP 02",
     "name": "ftazW_113",
     "parentName": "ftazW_113",
@@ -3122,7 +3088,7 @@
     "attributes": {
      "ausBis": "16.11.2026 05:15",
      "ausVon": "16.11.2026 01:15",
-     "location": "Zwischengeschoss Zugang U4 - U1 Mittelbahnsteig",
+     "location": "U1 Mittelbahnsteig - Zwischengeschoss Zugang U4",
      "rbls": [
       4113,
       4116
@@ -3135,7 +3101,7 @@
      "status": "geplante Wartung",
      "towards": "U1 beide Richtungen"
     },
-    "description": "Zwischengeschoss Zugang U4 - U1 Mittelbahnsteig",
+    "description": "U1 Mittelbahnsteig - Zwischengeschoss Zugang U4",
     "elevatorId": "SP 03",
     "name": "ftazW_114",
     "parentName": "ftazW_114",
@@ -3159,40 +3125,8 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "13.11.2026 17:00",
-     "ausVon": "13.11.2026 07:00",
-     "location": "U4 Mittelbahnsteig - Ausgang Ruckergasse",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U4"
-     ],
-     "station": "Meidling Hauptstraße",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "U4 Mittelbahnsteig - Ausgang Ruckergasse",
-    "elevatorId": "MH 02",
-    "name": "ftazW_1354391",
-    "parentName": "ftazW_1354391",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4"
-    ],
-    "time": {
-     "end": "2026-11-13T17:00:00.000+0100",
-     "start": "2026-11-13T07:00:00.000+0100"
-    },
-    "title": "Meidling Hauptstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "13.11.2026 17:00",
-     "ausVon": "13.11.2026 07:00",
+     "ausBis": "16.11.2026 05:15",
+     "ausVon": "16.11.2026 01:15",
      "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Gumpendorfer Straße",
      "rbls": [
       4618
@@ -3219,8 +3153,8 @@
      4618
     ],
     "time": {
-     "end": "2026-11-13T17:00:00.000+0100",
-     "start": "2026-11-13T07:00:00.000+0100"
+     "end": "2026-11-16T05:15:00.000+0100",
+     "start": "2026-11-16T01:15:00.000+0100"
     },
     "title": "Gumpendorfer Straße"
    },
