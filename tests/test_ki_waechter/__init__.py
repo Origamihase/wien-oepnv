@@ -10,4 +10,6 @@ Gemini through the free API tier. These tests keep that gate closed.
 """
 
 # Aufgeteilt am 2026-11-02 (höchstens 700 Zeilen je Datei): Hilfen und Fixtures in
-# _support.py, die Tests in test_teil_<n>.py in ihrer alten Reihenfolge.
+# _support.py, die Tests in test_teil_<n>.py in ihrer alten Reihenfolge. Seit 2026-11-13
+# stehen die Tests aus test_teil_1.py nach Thema in test_eingabe.py, test_funde.py,
+# test_bericht.py, test_gemini.py und test_prompt.py.

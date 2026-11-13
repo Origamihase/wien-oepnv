@@ -130,7 +130,7 @@ eindeutig. Vermutungen gibt es nur in zwei Fällen (ein F3 ohne eigene Quelle
 oder mit abgeschnittenem Quelltext, ein unklares F1), in der Form „Meldung
 N, F3: „Zitat“ – fehlt: Quelle.“ Die Beispiele sind erfunden, weil der
 Prompt dem Modell keine Antwort der Replay-Stände vorsagen darf
-(`tests/test_ki_waechter/test_teil_1.py` hält die bekannten Fälle des 27.10.
+(`tests/test_ki_waechter/test_prompt.py` hält die bekannten Fälle des 27.10.
 und 30.10. heraus); die echten Fälle stehen im Abschnitt „Probelauf“.
 
 ## Warum ein Fund belegt sein muss
