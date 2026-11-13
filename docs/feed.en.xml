@@ -8,20 +8,46 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 13 Nov 2026 22:50:11 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 23:00:54 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[9/40/41: Police operation]]></title>
+      <title><![CDATA[42: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c</guid>
+      <pubDate>Fri, 13 Nov 2026 22:43:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 13 Nov 2026 22:43:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 13 Nov 2026 22:57:49 +0100</ext:starts_at>
+      <description>Service obstruction towards Antonigasse. Expected until 23:10. Reason: illegally parked vehicle in the area of Kreuzgasse 30. [Since 22:43]</description>
+      <content:encoded><![CDATA[Service obstruction towards Antonigasse. Expected until 23:10. Reason: illegally parked vehicle in the area of Kreuzgasse 30.<br/>[Since 22:43]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40/41: Police operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">fedccc55887cd5994fa9e20723914dd99b422ee2a3399cb452914beaf2f3ea9f</guid>
-      <pubDate>Fri, 13 Nov 2026 22:29:00 +0100</pubDate>
+      <pubDate>Fri, 13 Nov 2026 22:28:42 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 13 Nov 2026 22:30:41 +0100</ext:first_seen>
       <ext:starts_at>Fri, 13 Nov 2026 22:29:00 +0100</ext:starts_at>
-      <description>Service obstruction towards Westbahnhof. Line 40: service obstruction towards Schottentor. Expected until 23:00. Reason: police operation … [Since 22:29]</description>
-      <content:encoded><![CDATA[Service obstruction towards Westbahnhof. Line 40: service obstruction towards Schottentor. Expected until 23:00. Reason: police operation …<br/>[Since 22:29]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 22:28]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 22:28]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[9: Police operation]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">d0e4afae8a76682f9151e0252680d546a58090bd24478041f5804ac6fa3ff1de</guid>
+      <pubDate>Fri, 13 Nov 2026 22:29:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 13 Nov 2026 22:29:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 13 Nov 2026 22:30:42 +0100</ext:starts_at>
+      <description>Service from Vinzenzgasse. After a service obstruction, there are irregular intervals. [Since 22:29]</description>
+      <content:encoded><![CDATA[Service from Vinzenzgasse. After a service obstruction, there are irregular intervals.<br/>[Since 22:29]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[38A: Illegally parked vehicle]]></title>
@@ -32,7 +58,7 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 13 Nov 2026 22:00:41 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 13 Nov 2026 21:39:39 +0100</ext:starts_at>
+      <ext:starts_at>Fri, 13 Nov 2026 21:39:00 +0100</ext:starts_at>
       <description>After a service obstruction, there are irregular intervals. [Since 21:39]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 21:39]]]></content:encoded>
     </item>
@@ -121,35 +147,6 @@
       <georss:point>48.145871 16.332540</georss:point>
       <description>Triester Straße 164 → Triester Straße 162. Stop relocation of line 65A towards Wienerberg City (Inzersdorf). Reason: roadworks. [Since 11.11.]</description>
       <content:encoded><![CDATA[Triester Straße 164 → Triester Straße 162. Stop relocation of line 65A towards Wienerberg City (Inzersdorf). Reason: roadworks.<br/>[Since 11.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A: Buses stop at Salvatorianerplatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
-      <pubDate>Fri, 13 Nov 2026 04:40:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 11 Nov 2026 05:00:35 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 13 Nov 2026 04:40:00 +0100</ext:starts_at>
-      <ext:ends_at>Sat, 14 Nov 2026 01:00:00 +0100</ext:ends_at>
-      <description>Reason: construction works. [Until Sat 14.11.]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[Until Sat 14.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5A/N31: Obere Augartenstraße]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">4b133e0a2bf2849867177ba0646eb9eec8984fee0146b9475c8c15c934464586</guid>
-      <pubDate>Mon, 09 Nov 2026 07:13:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 09 Nov 2026 07:13:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 09 Nov 2026 07:13:00 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 11 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <georss:point>48.222757 16.375308</georss:point>
-      <description>Untere Augartenstraße 40 → Untere Augartenstraße 42. Stop relocation of lines 5A and N31 towards Griegstraße or Stammersdorf. Reason: dismantling of a tower crane. [Until 11.12.]</description>
-      <content:encoded><![CDATA[Untere Augartenstraße 40 → Untere Augartenstraße 42. Stop relocation of lines 5A and N31 towards Griegstraße or Stammersdorf. Reason: dismantling of a tower crane.<br/>[Until 11.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
