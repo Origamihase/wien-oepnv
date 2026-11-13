@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 13 Nov 2026 11:00:49 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 11:30:42 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[31: Defective vehicle]]></title>
@@ -47,23 +47,8 @@
       <ext:first_seen>Fri, 13 Nov 2026 09:46:00 +0100</ext:first_seen>
       <ext:starts_at>Fri, 13 Nov 2026 10:25:00 +0100</ext:starts_at>
       <ext:ends_at>Fri, 13 Nov 2026 12:00:00 +0100</ext:ends_at>
-      <description>Trains stop in the loop. After a service obstruction, there are irregular intervals. [Since 09:50]</description>
-      <content:encoded><![CDATA[Trains stop in the loop. After a service obstruction, there are irregular intervals.<br/>[Since 09:50]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Liesing ↔ Mödling]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;926859</guid>
-      <pubDate>Fri, 13 Nov 2026 10:31:58 +0100</pubDate>
-      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 13 Nov 2026 09:30:42 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 13 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 13 Nov 2026 23:59:59 +0100</ext:ends_at>
-      <georss:line>48.135046 16.283967 48.085650 16.295359</georss:line>
-      <description>Due to a delay in the workflow, trains could only run to a limited extent until 10:00. There are still occasional train cancellations and delays. [Today]</description>
-      <content:encoded><![CDATA[Due to a delay in the workflow, trains could only run to a limited extent until 10:00. There are still occasional train cancellations and delays.<br/>[Today]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 09:50]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 09:50]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx]]></title>
@@ -78,6 +63,20 @@
       <ext:ends_at>Sun, 31 Oct 2027 23:59:59 +0100</ext:ends_at>
       <description>Due to construction works, there are no trains between Wien Hbf or Wien St. Marx and Wien Praterstern from 07.09.2026 until the end of October 2027. [Until 31.10.2027]</description>
       <content:encoded><![CDATA[Due to construction works, there are no trains between Wien Hbf or Wien St. Marx and Wien Praterstern from 07.09.2026 until the end of October 2027.<br/>[Until 31.10.2027]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A: Bhf. Meidling, Schedifkaplatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">6a9aa11479dab3dd8f4715988095e03b1e86eba74320bd77d8fedee7b52d4c02</guid>
+      <pubDate>Fri, 13 Nov 2026 10:57:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 13 Nov 2026 10:57:00 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 16 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <georss:point>48.173382 16.330051</georss:point>
+      <description>Wurmbstraße 46-50 → Wurmbstraße 40-42. Stop relocation of line 15A towards Enkplatz, Grillgasse. Reason: repair works div. shaft lid. [From Mon 16.11.]</description>
+      <content:encoded><![CDATA[Wurmbstraße 46-50 → Wurmbstraße 40-42. Stop relocation of line 15A towards Enkplatz, Grillgasse. Reason: repair works div. shaft lid.<br/>[From Mon 16.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/71/D: Rathausplatz, Burgtheater]]></title>
