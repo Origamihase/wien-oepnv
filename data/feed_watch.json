@@ -1,32 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-13T22:30:49.456232+00:00",
- "built": "2026-11-13T23:30:38+01:00",
+ "updated": "2026-11-13T23:01:01.401618+00:00",
+ "built": "2026-11-14T00:00:44+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-13T23:30:38+01:00",
+  "built": "2026-11-14T00:00:44+01:00",
   "items": [
    {
-    "title": "4A: Polizeieinsatz",
-    "time_line": "Seit 23:08"
+    "title": "U4: Verunreinigung",
+    "time_line": "Seit 13.11."
    },
    {
-    "title": "42: Falschparker",
-    "time_line": "Seit 22:43"
-   },
-   {
-    "title": "40/41: Polizeieinsatz",
-    "time_line": "Seit 22:28"
-   },
-   {
-    "title": "9: Polizeieinsatz",
-    "time_line": "Seit 22:29"
-   },
-   {
-    "title": "38A: Falschparker",
-    "time_line": "Seit 21:39"
+    "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
+    "time_line": "Bis 30.11."
    },
    {
     "title": "15A: Bhf. Meidling, Schedifkaplatz",
@@ -47,31 +35,23 @@
    {
     "title": "98A: Arztgasse",
     "time_line": "Ab Mo 16.11."
+   },
+   {
+    "title": "65A: Triester Straße, Rossakgasse",
+    "time_line": "Seit 11.11."
+   },
+   {
+    "title": "66A: Busse halten Salvatorianerplatz",
+    "time_line": "Heute"
+   },
+   {
+    "title": "5A/N31: Obere Augartenstraße",
+    "time_line": "Bis 11.12."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-06T22:31:59.261001+00:00",
-   "raw": {
-    "wl-stoerungen": 52,
-    "wl-hinweise": 75,
-    "oebb": 191,
-    "baustellen-linien": 56,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 15,
-    "oebb": 166,
-    "baustellen": 64
-   },
-   "cache": {
-    "baustellen": 3,
-    "oebb": 6,
-    "wl": 88
-   }
-  },
   {
    "t": "2026-11-06T23:01:08.952169+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 6,
     "wl": 84
    }
+  },
+  {
+   "t": "2026-11-13T23:01:01.401618+00:00",
+   "raw": {
+    "wl-stoerungen": 35,
+    "wl-hinweise": 74,
+    "oebb": 186,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 15,
+    "oebb": 160,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 77
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-13T22:30:49.456232+00:00"
+   "last_ok": "2026-11-13T23:01:01.401618+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-13T22:30:49.456232+00:00"
+   "last_ok": "2026-11-13T23:01:01.401618+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-13T22:30:49.456232+00:00"
+   "last_ok": "2026-11-13T23:01:01.401618+00:00"
   }
  }
 }
