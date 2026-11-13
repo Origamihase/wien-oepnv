@@ -4,7 +4,7 @@ Michael on 2026-11-10: the page of a year is created on 01.01., the year
 can be chosen on the website under "Aktuelle Meldungen", the page sums up
 all cancellations and delays in a statistic and Gemini summarises the
 year's roadworks. The parts have their own tests (``test_year_stats.py``,
-``test_baustellen_year.py``, ``test_year_review.py``,
+``test_baustellen_year.py``, ``test_year_review_*.py``,
 ``test_site_year_switch.py``); this file drives
 ``scripts/generate_markdown_stats.py`` through a year change and checks
 that the parts reach the page, the summary and the exit code together.
@@ -27,7 +27,7 @@ OVERVIEW = "## Das Jahr im Überblick"
 BAUSTELLEN = "## Baustellen mit Folgen für den öffentlichen Verkehr"
 PENDING = "_Ein kurzer Rückblick in Worten wird hier ergänzt._"
 
-# The four sites and the text of tests/test_year_review.py: the text names
+# The four sites and the text of tests/_year_review_support.py: the text names
 # only what the sites hold, so the guard accepts it.
 EVENTS = [
     {

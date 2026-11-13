@@ -346,6 +346,8 @@ def test_the_workflow_runs_by_hand_and_on_pull_requests_that_touch_the_package()
         "src/markdown_stats/baustellen_sites.py",
         "src/markdown_stats/baustellen_facts.py",
         "src/markdown_stats/year_review.py",
+        "src/markdown_stats/year_review_prompt.py",
+        "src/markdown_stats/year_review_guard.py",
         "src/markdown_stats/review_client.py",
         "scripts/jahresrueckblick_probe.py",
         ".github/workflows/jahresrueckblick-probe.yml",

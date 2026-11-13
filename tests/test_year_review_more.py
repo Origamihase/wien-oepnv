@@ -1,6 +1,6 @@
 """The guard of the yearly Baustellen review: the cases of the review of 2026-11-10.
 
-Second file next to ``tests/test_year_review.py`` (the 700-line limit of
+Second file next to ``tests/test_year_review_guard.py`` (the 700-line limit of
 ``tests/test_file_line_limit.py``), with its fixtures. Each block names what
 ``src/markdown_stats/year_review.py`` or ``review_client.py`` did before:
 
@@ -30,10 +30,11 @@ import pytest
 from src.markdown_stats import baustellen_year as by
 from src.markdown_stats import review_client as rc
 from src.markdown_stats import year_review as yr
+from src.markdown_stats import year_review_prompt as yr_prompt
 from src.markdown_stats.baustellen_year import BaustelleSite
 from src.markdown_stats.review_client import ReviewAnswer
 from tests.test_review_client import KEY, _Clock, _fake, _ok, _Response
-from tests.test_year_review import GOOD, NOW, REPO, SITES, YEAR, _answer, _check, _ensure, _with
+from tests._year_review_support import GOOD, NOW, REPO, SITES, YEAR, _answer, _check, _ensure, _with
 
 STATS_LOGGER = "generate_markdown_stats"
 # The first real answer (gemini-3.5-flash-lite, 2026-11-10 23:19 Europe/Vienna), which passed the guard.
@@ -299,9 +300,9 @@ def test_a_stored_text_that_is_dropped_says_why(tmp_path: Path, caplog: pytest.L
 
 def test_a_prompt_of_exactly_the_cap_is_sent_whole(monkeypatch: pytest.MonkeyPatch) -> None:
     whole = yr.build_prompt(SITES, year=YEAR)
-    monkeypatch.setattr(yr, "MAX_PROMPT_CHARS", len(whole))
+    monkeypatch.setattr(yr_prompt, "MAX_PROMPT_CHARS", len(whole))
     assert yr.build_prompt(SITES, year=YEAR) == whole
-    monkeypatch.setattr(yr, "MAX_PROMPT_CHARS", len(whole) - 1)
+    monkeypatch.setattr(yr_prompt, "MAX_PROMPT_CHARS", len(whole) - 1)
     assert "- Hinweis: Die Texte der Baustellen sind in den Daten auf höchstens" in yr.build_prompt(SITES, year=YEAR)
 
 
