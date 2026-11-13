@@ -2,7 +2,7 @@
   "archive_years": [],
   "ausfaelle": {
     "by_direction": {
-      "Meidling": 1054,
+      "Meidling": 1055,
       "Praterstern": 911
     },
     "by_hour": {
@@ -16,7 +16,7 @@
       "07": 117,
       "08": 143,
       "09": 96,
-      "10": 92,
+      "10": 93,
       "11": 79,
       "12": 68,
       "13": 73,
@@ -39,7 +39,7 @@
       "REX2": 6,
       "REX3": 195,
       "REX92": 3,
-      "S1": 462,
+      "S1": 463,
       "S2": 302,
       "S3": 249,
       "S4": 149
@@ -47,20 +47,20 @@
     "by_weekday": {
       "Di": 300,
       "Do": 334,
-      "Fr": 395,
+      "Fr": 396,
       "Mi": 312,
       "Mo": 295,
       "Sa": 159,
       "So": 170
     },
-    "total": 1965
+    "total": 1966
   },
-  "generated_at": "2026-11-13T10:30:43+01:00",
+  "generated_at": "2026-11-13T11:00:59+01:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 0.91,
     "by_direction": {
-      "Meidling": 7461,
+      "Meidling": 7462,
       "Praterstern": 3830
     },
     "by_hour_avg": {
@@ -92,7 +92,7 @@
     "by_weekday_avg": {
       "Di": 0.98,
       "Do": 0.89,
-      "Fr": 0.99,
+      "Fr": 0.98,
       "Mi": 1.22,
       "Mo": 1.03,
       "Sa": 0.63,
@@ -102,19 +102,19 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-11-13T10:17:00+01:00",
+          "last_seen": "2026-11-13T10:55:00+01:00",
           "peer_rows_since": 0,
           "rows_in_window": 1177
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 3611,
+          "peer_rows_since": 3612,
           "rows_in_window": 0
         }
       },
       "peer_rows_required": 6,
       "poll": {
-        "last_success": "2026-11-13T10:30:33+01:00",
+        "last_success": "2026-11-13T11:00:47+01:00",
         "stale_hours": 3.0
       },
       "silence_hours": 1.0,
@@ -128,7 +128,7 @@
     "max_delay_minutes": 203.0,
     "threshold_exceedances": 154,
     "threshold_minutes": 9.0,
-    "total_observations": 11291
+    "total_observations": 11292
   },
   "stoerungen": {
     "by_hour": {
@@ -143,7 +143,7 @@
       "08": 277,
       "09": 270,
       "10": 274,
-      "11": 297,
+      "11": 298,
       "12": 320,
       "13": 346,
       "14": 334,
@@ -160,19 +160,19 @@
     "by_provider": {
       "Stadt Wien – Baustellen": 180,
       "VOR/VAO": 13,
-      "Wiener Linien": 4879,
+      "Wiener Linien": 4880,
       "ÖBB": 326
     },
     "by_weekday": {
       "Di": 808,
       "Do": 879,
-      "Fr": 882,
+      "Fr": 883,
       "Mi": 805,
       "Mo": 745,
       "Sa": 672,
       "So": 607
     },
-    "total": 5398
+    "total": 5399
   },
   "year": 2026
 }
