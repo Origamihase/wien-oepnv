@@ -22,6 +22,7 @@ from typing import Any
 import pytest
 import yaml
 
+from src.markdown_stats import cli as stats_cli
 from src.markdown_stats import review_client, year_archive, year_review
 from src.markdown_stats.review_client import ReviewAnswer
 from src.utils.stats import (
@@ -301,7 +302,7 @@ def test_a_failed_write_says_that_the_run_ends_without_a_request(
         (line,) = _warnings(caplog, level="ERROR")
         return line
 
-    monkeypatch.setattr(stats_script, name, write)
+    monkeypatch.setattr(stats_cli, name, write)
     assert error_line("2027-01-01T00:01:00+01:00").endswith(
         ": blockiert — der Lauf endet hier, ohne Anfrage für den fehlenden Rückblick der Baustellen 2026; "
         "ein späterer Dashboard-Lauf fragt erneut."
@@ -379,7 +380,7 @@ def test_a_failed_write_names_every_missing_review_in_the_plural(
     def full(*_args: Any, **_kwargs: Any) -> None:
         raise OSError("[Errno 28] No space left on device")
 
-    monkeypatch.setattr(stats_script, "patch_readme_stats", full)
+    monkeypatch.setattr(stats_cli, "patch_readme_stats", full)
     with caplog.at_level("ERROR"):
         assert _run(tmp_path, "2027-01-01T00:01:00+01:00") == 1
     (line,) = _warnings(caplog, level="ERROR")

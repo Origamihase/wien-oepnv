@@ -22,6 +22,7 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from scripts import generate_markdown_stats as stats_script  # noqa: E402
+from src.markdown_stats import cli as stats_cli  # noqa: E402
 from src.markdown_stats import rows as rows_module  # noqa: E402
 from src.markdown_stats.direction_coverage import (  # noqa: E402
     render_finished_year_coverage_note,
@@ -42,7 +43,7 @@ STAMP = "_Automatisch erzeugt am "
 def _no_poll_record(monkeypatch: pytest.MonkeyPatch) -> None:
     # The runs below are set in other years; the poll record of the working
     # copy would be months old or months ahead there.
-    monkeypatch.setattr(stats_script, "load_poll_status", lambda: None)
+    monkeypatch.setattr(stats_cli, "load_poll_status", lambda: None)
 
 
 def _sm_line(when: datetime, direction: str) -> str:

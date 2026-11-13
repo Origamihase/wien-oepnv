@@ -18,6 +18,7 @@ from pathlib import Path
 import pytest
 
 from scripts import generate_markdown_stats as stats_script
+from src.markdown_stats import cli as stats_cli
 from src.markdown_stats import year_review
 from src.markdown_stats.review_client import ReviewAnswer
 from src.utils.stats import STAMMSTRECKE_HEADER, VIENNA_TZ, WEEKDAY_LABELS
@@ -80,7 +81,7 @@ GOOD = (
 def _quiet_surroundings(monkeypatch: pytest.MonkeyPatch) -> None:
     # The poll record of the working copy would be months old in these runs,
     # and a key in the shell must not send a test to Gemini.
-    monkeypatch.setattr(stats_script, "load_poll_status", lambda: None)
+    monkeypatch.setattr(stats_cli, "load_poll_status", lambda: None)
     monkeypatch.delenv("GEMINI_API_KEY", raising=False)
 
 
