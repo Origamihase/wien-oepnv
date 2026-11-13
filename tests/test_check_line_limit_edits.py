@@ -16,6 +16,7 @@ from pathlib import Path
 import pytest
 
 from scripts import check_line_limit_edits as gate
+from src.utils import line_limit
 from src.utils.line_limit import LIMIT, SPLIT_FROM
 
 REPO = Path(__file__).resolve().parents[1]
@@ -179,3 +180,13 @@ def test_tests_workflow_runs_the_gate_with_its_base() -> None:
     assert "python scripts/check_line_limit_edits.py --base HEAD^1" in text
     assert text.count("uses: actions/checkout@") == text.count("fetch-depth: 2") == 2
     assert text.index("check_line_limit_edits.py") < text.index("python -m pytest")
+
+
+def test_file_that_cannot_be_counted_is_no_measurement(repo: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """A file above the read cap gives no count, and no count is no pass."""
+    path = repo / "src" / "full.py"
+    path.write_text(path.read_text(encoding="utf-8").replace("line 5\n", "line five\n"), encoding="utf-8")
+    monkeypatch.setattr(line_limit, "MAX_COUNTED_FILE_BYTES", 10)
+    with pytest.raises(ValueError, match="nicht lesbar oder größer"):
+        line_limit.count_lines(path)
+    assert gate.main(["--root", str(repo), "--base", "HEAD"]) == 2

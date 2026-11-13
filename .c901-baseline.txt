@@ -2,11 +2,11 @@
 # Written by `bash scripts/regen_c901_baseline.sh`. The gate fails on any
 # difference, so regenerate this file instead of editing it by hand.
 scripts/apply_station_overrides.py::apply_overrides 18
-scripts/generate_markdown_stats.py::main 16
 src/feed/github_issue.py::submit 18
 src/feed/merge.py::deduplicate_fuzzy 21
 src/feed_build/filters.py::_dedupe_items 18
 src/ki_waechter/inputs.py::prepare 17
+src/markdown_stats/cli.py::main 16
 src/places/station_aliases.py::_alias_candidates 46
 src/providers/oebb_relevance.py::_title_has_unknown_endpoint 27
 src/providers/oebb_title.py::_clean_title_keep_places 24

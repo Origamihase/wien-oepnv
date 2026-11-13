@@ -11,7 +11,12 @@ from __future__ import annotations
 
 from pathlib import Path
 
-__all__ = ["EXEMPT_PREFIXES", "LIMIT", "SPLIT_FROM", "SUFFIXES", "count_lines", "count_lines_bytes", "is_counted"]
+from .files import read_capped_bytes
+
+__all__ = [
+    "EXEMPT_PREFIXES", "LIMIT", "MAX_COUNTED_FILE_BYTES", "SPLIT_FROM", "SUFFIXES",
+    "count_lines", "count_lines_bytes", "is_counted",
+]
 
 #: No counted file has more lines than this.
 LIMIT = 700
@@ -22,6 +27,9 @@ SUFFIXES = frozenset(
     {".py", ".pyi", ".js", ".mjs", ".css", ".html", ".md", ".yml", ".yaml", ".sh", ".toml", ".cfg", ".ini", ".txt"}
 )
 EXEMPT_PREFIXES = ("data/", "cache/")
+#: Read cap for one counted file. A text file of 700 lines has some tens of
+#: KiB; a larger file than this is no file the rule can pass.
+MAX_COUNTED_FILE_BYTES = 16 * 1024 * 1024
 
 
 def is_counted(path: str) -> bool:
@@ -37,5 +45,12 @@ def count_lines_bytes(data: bytes) -> int:
 
 
 def count_lines(path: Path) -> int:
-    """Count the lines of the file at ``path`` (see ``count_lines_bytes``)."""
-    return count_lines_bytes(path.read_bytes())
+    """Count the lines of the file at ``path`` (see ``count_lines_bytes``).
+
+    Raises ``ValueError`` for a file that is missing, unreadable or larger
+    than ``MAX_COUNTED_FILE_BYTES``: no count is no pass.
+    """
+    data = read_capped_bytes(path, MAX_COUNTED_FILE_BYTES, label="line limit")
+    if data is None:
+        raise ValueError(f"{path}: nicht lesbar oder größer als {MAX_COUNTED_FILE_BYTES} Bytes")
+    return count_lines_bytes(data)

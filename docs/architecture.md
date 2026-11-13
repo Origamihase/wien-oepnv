@@ -260,4 +260,18 @@ Fassaden unter `src/`, die Teile von `src/feed_build/`), steht in
 [Modularisierung](modularisierung.md). Wer eine geteilte Datei ergänzt, liest
 dort, wohin der neue Teil gehört.
 
+**Teilen statt kürzen (seit 2026-11-13, Betreiberentscheidung).** Der Test
+oben zählt Zeilen; er sieht nicht, wie eine Datei unter 700 bleibt. Zehn
+Tage nach der letzten Etappe standen 14 Dateien genau auf 700 Zeilen, weil
+Änderungen an ihnen Kommentare zusammenzogen, statt die Datei zu teilen.
+Seither gilt: Eine Datei mit 690 oder mehr Zeilen wird von der nächsten
+Änderung, die ihr eine Zeile hinzufügt, nach Themen geteilt.
+`scripts/check_line_limit_edits.py` vergleicht jede Änderung mit ihrem
+Ausgangsstand und lässt den Lauf scheitern, wenn eine solche Datei eine neue
+Zeile bekam und immer noch 690 oder mehr hat; der Workflow `test.yml` ruft
+die Prüfung bei jedem Pull Request und jedem Push auf `main` auf. Eine
+Teilung lässt Luft (höchstens rund 450 Zeilen je neuer Datei). Regel, Ablauf
+und die am 2026-11-13 geteilten Dateien stehen in
+[Modularisierung](modularisierung.md), Nachtrag vom 2026-11-13.
+
 Weiter in [Teil 2](architecture-teil-2.md).

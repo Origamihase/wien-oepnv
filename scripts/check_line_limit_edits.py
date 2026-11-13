@@ -130,7 +130,10 @@ def find_unsplit_edits(root: Path, base: str) -> list[Finding]:
         current = root / path
         if not current.is_file():
             continue
-        lines = count_lines(current)
+        try:
+            lines = count_lines(current)
+        except ValueError as exc:
+            raise MeasurementError(str(exc)) from exc
         if lines < SPLIT_FROM:
             continue
         base_lines = _base_lines(root, base, path)

@@ -371,7 +371,7 @@ dazukommt, braucht ein weiteres Modul.
 
 Nachtrag (2026-11-12, KI-Entscheidung): Die Entscheidung von Gemini für
 unklare Störungen (Betreiberentscheidung vom 12.11.2026,
-[`architecture-teil-8.md`](architecture-teil-8.md), §14) kam als eigenes Paket
+[`architecture-teil-16.md`](architecture-teil-16.md), §14) kam als eigenes Paket
 dazu; der Feed-Build ruft es an einer Stelle auf (`decide` in
 `_assemble_feed_items`), und `_incident_since` liest nur das Feld `_ki_art`
 (gemessen mit `wc -l` am 12.11.2026):
@@ -387,3 +387,75 @@ dazu; der Feed-Build ruft es an einer Stelle auf (`decide` in
 `src/markdown_stats/review_client.py` trägt seither beide Anfragen
 (`ask_chain` mit einem `JsonCall` je Aufrufer) und hat 522 Zeilen (vorher
 422), `src/build_feed.py` 693 (vorher 682).
+
+Nachtrag (2026-11-13, teilen statt kürzen): Zehn Tage nach Etappe 8 lag
+keine Datei über der Grenze, aber 14 standen genau auf 700 Zeilen (am
+2026-11-03 eine) und 21 bei 690 oder mehr. Änderungen an ihnen fügten Zeilen
+ein und nahmen an anderer Stelle derselben Datei gleich viele heraus, meist
+indem Kommentare zusammengezogen wurden (`.github/workflows/update-cycle.yml`
+am 2026-11-12: zwölf Zeilen dazu, zwölf weg, aus neun Zeilen Begründung
+wurden zwei). Betreiberentscheidung vom 2026-11-13 (Michael, auf die Frage
+„Soll ich die 21 Dateien ab 690 Zeilen nach Themen aufteilen und im Test
+festhalten, dass eine Datei am Anschlag geteilt statt gekürzt wird?“: „Ja,
+bitte“):
+
+* **Die Regel.** Eine Datei mit 690 oder mehr Zeilen ist am Anschlag. Die
+  nächste Änderung, die ihr eine Zeile hinzufügt, teilt sie nach Themen, im
+  selben Pull Request. Kommentare kürzen, Zeilen zusammenziehen oder
+  Leerzeilen streichen, um unter 700 zu bleiben, ist kein Weg.
+  `scripts/check_line_limit_edits.py` vergleicht dafür jede Änderung mit
+  ihrem Ausgangsstand: Hatte eine gezählte Datei dort mindestens 690 Zeilen,
+  hat sie danach immer noch mindestens 690 und kam eine Zeile dazu,
+  scheitert der Lauf und nennt die Datei. Eine Datei darf also in den
+  Bereich 690 bis 700 hineinwachsen, aber nur einmal; nur Zeilen entfernen
+  ist erlaubt. Der Workflow `test.yml` ruft die Prüfung vor den Tests gegen
+  `HEAD^1` auf (bei einem Pull Request der Stand von `main`, bei einem Push
+  der Commit davor; beide Checkouts holen dafür zwei Commits). Lokal
+  vergleicht `python scripts/check_line_limit_edits.py` mit dem gemeinsamen
+  Vorfahren von `HEAD` und `origin/main`. Ohne Vergleichsstand endet sie mit
+  Exit 2, nicht grün. Zahlen und Zählweise beider Prüfungen stehen in
+  `src/utils/line_limit.py` (`LIMIT`, `SPLIT_FROM`);
+  `tests/test_check_line_limit_edits.py` spielt die Fälle in einem kleinen
+  Git-Repository nach.
+* **Wie geteilt wird.** Nach Themen, mit Luft: Jede Datei, die bei einer
+  Teilung entsteht, hat ein benennbares Thema und höchstens rund 450 Zeilen
+  (Etappe 6 und 7 schnitten auf 650; diese Dateien standen zehn Tage später
+  wieder an der Grenze). Sonst gilt, was die Etappen oben festlegen:
+  wörtlich verschieben, der alte Pfad bleibt Fassade mit einer Liste
+  `__all__`, ein Test ersetzt einen Namen in dem Modul, das ihn liest.
+
+Am 2026-11-13 so geteilt (wörtlich verschoben; jede nicht leere Zeile der
+alten Datei steht in einer der neuen, neu sind nur Importe, `__all__`,
+Modulbeschreibungen und Kopf- und Fußzeilen der Doku-Teile):
+
+| Datei (Zeilen vorher) | Danach |
+|---|---|
+| `src/providers/wl_text.py` (700) | Fassade mit den Relevanz- und Ausschlussfiltern; `wl_title_tidy.py` (Titelkosmetik), `wl_title_dates.py` (Datum aus dem Titel), `wl_period.py` (Abschnitte „Zeitraum:“, „Zeitpunkt:“, „Dauer:“, `is_stop_notice`), `wl_topic_key.py` (Themenschlüssel für Duplikate) |
+| `src/markdown_stats/baustellen_year.py` (700) | Fassade mit dem Abschnitt Baustellen; `baustellen_sites.py` (Ledger lesen, Zeilen zu Baustellen zusammenführen), `baustellen_facts.py` (Bezirk, Zeitraum, Faktenblock) |
+| `src/markdown_stats/year_review.py` (700) | Fassade mit dem gespeicherten Rückblick (`ensure_review`, `load_review`); `year_review_prompt.py` (Prompt, `source_text`), `year_review_guard.py` (Prüfung `check_review`, Regeln a bis j) |
+| `src/utils/files.py` (691) | Fassade mit `atomic_write` und den drei `read_capped_*`-Lesern (sie loggen unter `src.utils.files`); `files_paths.py` (Pfade zusammensetzen, Dateinamen, Datei-Hash), `files_json.py` (`loads_finite`), `files_zip.py` (`validate_zip_archive_safe`) |
+| `scripts/generate_markdown_stats.py` (693) | Skript mit Aufruf und Weiterreichung; `src/markdown_stats/cli.py` (`main` mit der Reihenfolge seiner Schritte), `cli_options.py` (`build_parser`). Tests ersetzen Namen, die `main` aufruft, in `src.markdown_stats.cli`. `main` steht in `.c901-baseline.txt` unter dem neuen Pfad, Wert 16 wie vorher |
+| `tests/test_year_review.py` (700) | `tests/_year_review_support.py` und `test_year_review_guard.py`, `_cleaning.py`, `_prompt.py`, `_stored.py` |
+| `tests/test_year_stats.py` (700) mit `test_year_stats_more.py` | `tests/_year_stats_support.py` und `test_year_stats.py`, `_ranking.py`, `_partial_years.py`, `_calendar.py`, `_formats.py`, `_coverage_note.py`, `_real_ledger.py` |
+| `tests/test_baustellen_ledger.py` (696) mit `test_baustellen_ledger_more.py` | `tests/_baustellen_ledger_support.py` und `test_baustellen_ledger.py`, `_file.py`, `_year.py`, `_failures.py`, `_isolation.py`, `_hook.py` |
+| `tests/test_sentinel_clear_text_logging_drift_utils.py` (700) | dazu `test_sentinel_clear_text_logging_drift_walker.py` (der Inventar-Walker) |
+| `tests/test_sentinel_heroku_docker_token_drift.py` (692) | dazu `test_sentinel_heroku_docker_token_drift_invariants.py` (Abschnitte 6 bis 10) und `tests/_sentinel_heroku_docker_token_support.py` |
+| `tests/test_ki_waechter/test_teil_1.py` (698) | `test_eingabe.py`, `test_funde.py`, `test_bericht.py`, `test_gemini.py`, `test_prompt.py` im selben Paket |
+| `docs/architecture.md` und Teile 2 bis 8 (sechs davon 696 bis 700) | 16 Teile nach Abschnitten, höchstens 468 Zeilen; die Abschnitte 10 bis 12 stehen in Teil 15, 13 bis 15 in Teil 16 |
+| `docs/development.md` (700) mit Teil 2 | vier Teile: Überblick, Setup und CLI; Konfiguration und lokaler Lauf; Provider, Datenquelle, Stationsverzeichnis; Workflows, Skripte, Qualitätssicherung, Betrieb |
+| `docs/reference/ki_waechter.md` (700) | drei Teile: Arbeitsweise; Betrieb; Probelauf im Pull Request |
+
+Die Tests sind dieselben wie vorher (gleiche Namen, nur der Dateiteil der
+Kennung ist anders). Wo ein Testmodul ohne klares Thema zu lang wird, bleibt
+das Paket mit `test_teil_<n>.py` aus Etappe 2 der Weg; wo die Themen
+erkennbar sind, bekommt jedes Thema sein Modul und gemeinsame Hilfen stehen
+in einem Modul `_<name>_support.py`.
+
+Zwei Dateien bleiben am Anschlag und sind eigene Schritte:
+`.github/workflows/update-cycle.yml` (700, der Workflow des Feed-Laufs) und
+`src/build_feed.py` (692). Für `build_feed.py` gibt es keinen Schnitt, der
+wörtlich verschiebt und die Entscheidung „Eine Feed-Kette, ein Modul“
+einhält: `lint`, `main` und `_assemble_feed_items` brauchen mit ihren
+Importen rund 480 Zeilen, der Rest ist die Weiterreichung in der einen Liste
+`__all__`. Bis zu einer Entscheidung dazu gilt für beide die Regel oben: Die
+nächste Änderung, die eine Zeile hinzufügt, muss teilen.
