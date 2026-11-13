@@ -385,7 +385,13 @@ def _oebb_sentence_without_place(sentence: str, title: str) -> str | None:
         end = _oebb_station_end(sentence, lead.end(), title, before_und=False)
     if end is None or re.search(r"\bzwischen\b", sentence[end:]):
         return None
-    return sentence[: lead.start()] + sentence[end:]
+    head, rest = sentence[: lead.start()], sentence[end:]
+    if head.endswith(":") and rest in {"", ".", "!"}:
+        # The place stood alone behind the colon that
+        # ``_oebb_restriction_first`` put there: "… keine Fahrten möglich:
+        # zwischen A und B." without it reads "… keine Fahrten möglich."
+        head = head[:-1]
+    return head + rest
 
 
 # ÖBB ends a sentence after a short word too: "Planen Sie bis zu 15 Minuten

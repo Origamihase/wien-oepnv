@@ -28,7 +28,8 @@ from .pretranslate import (
 from .en_repairs import _capitalise_sentence_start
 from .model_pass import _is_non_translatable_content, _model_pass
 from .en_templates import (
-    _CAUSE_EN_RE, _OEBB_NO_TRAINS_RE, _OEBB_RESTRICTION_RE, _OEBB_SENTENCE_SPLIT_RE, _OebbCannotRun,
+    _CAUSE_EN_RE, _OEBB_NO_TRAINS_RE, _OEBB_RESTRICTION_FRONT_RE, _OEBB_RESTRICTION_RE, _OEBB_SENTENCE_SPLIT_RE,
+    _OebbCannotRun, _oebb_cannot_run_middle_en,
     _RELOCATION_CLOSED_LINE_RE, _WL_BECAUSE_RE, _WL_HEADED_BECAUSE_RE, _WL_IRREGULAR_INTERVALS_RE,
     _WL_MAIN_CLAUSE_SMALL_WORDS, _WL_SENTENCE_SPLIT_RE, _WL_SERVICE_CHANGES_RE, _WL_THEREFORE_EN_RE,
     _oebb_cannot_run_parts, _oebb_slots_are_names, _oebb_station_en, _render_oebb_follow_up,
@@ -188,42 +189,12 @@ def _render_oebb_sentence(
     sentence = _HOUR_ONLY_CLOCK_RE.sub(
         lambda m: f"{m.group(1)}:{m.group(2) or '00'}", sentence
     )
+    front = _OEBB_RESTRICTION_FRONT_RE.fullmatch(sentence)
+    if front is not None:
+        return _render_oebb_restriction_front(front, ident, source, category)
     match = _OEBB_RESTRICTION_RE.fullmatch(sentence)
     if match is not None and _oebb_slots_are_names(match, "a", "b", "at", "area"):
-        cause = _oebb_cause_en(match["cause"], ident, source, category)
-        if cause is None:
-            return None
-        past = match["tense"] == "waren"
-        if match["none"]:
-            core = "no trains could run" if past else "no trains can run"
-        else:
-            core = (
-                "trains could only run to a limited extent"
-                if past
-                else "trains can only run to a limited extent"
-            )
-        if match["at"]:
-            place = f" at {_oebb_station_en(match['at'])}"
-        elif match["area"]:
-            place = f" in the area of {_oebb_station_en(match['area'])}"
-        elif match["a"]:
-            place = (
-                f" between {_oebb_station_en(match['a'])}"
-                f" and {_oebb_station_en(match['b'])}"
-            )
-        else:
-            place = ""
-        if match["time"]:
-            day = f"{match['date']}, " if match["date"] else ""
-            expected = match["expected"] or match["expected_first"]
-            when = (
-                f" until {'approx. ' if expected else ''}{day}{match['time']}"
-            )
-        elif match["now"]:
-            when = " at present"
-        else:
-            when = ""
-        return f"{cause}, {core}{place}{when}."
+        return _render_oebb_restriction(match, ident, source, category)
     match = _OEBB_NO_TRAINS_RE.fullmatch(sentence)
     if match is not None and _oebb_slots_are_names(match, "a", "b"):
         cause = _oebb_cause_en(match["cause"], ident, source, category)
@@ -249,6 +220,79 @@ def _render_oebb_sentence(
         cause = _oebb_cause_en(short["cause"].removeprefix("Wegen "), ident, source, category)
         return None if cause is None else f"{cause}, trains are cancelled: {short['rest']}"
     return _render_oebb_follow_up(sentence)
+
+
+def _render_oebb_restriction(
+    match: re.Match[str], ident: str, source: str | None, category: str | None
+) -> str | None:
+    """English for ÖBB's "Wegen … sind … keine Fahrten möglich." (``_OEBB_RESTRICTION_RE``)."""
+    cause = _oebb_cause_en(match["cause"], ident, source, category)
+    if cause is None:
+        return None
+    past = match["tense"] == "waren"
+    # "für Züge der Linie S 45" (Penzing–Hütteldorf, 23.07.2026).
+    trains = f"{match['line']} trains" if match["line"] else "trains"
+    if match["none"]:
+        core = f"no {trains} could run" if past else f"no {trains} can run"
+    else:
+        core = (
+            f"{trains} could only run to a limited extent"
+            if past
+            else f"{trains} can only run to a limited extent"
+        )
+    if match["at"]:
+        place = f" at {_oebb_station_en(match['at'])}"
+    elif match["area"]:
+        place = f" in the area of {_oebb_station_en(match['area'])}"
+    elif match["a"]:
+        place = (
+            f" between {_oebb_station_en(match['a'])}"
+            f" and {_oebb_station_en(match['b'])}"
+        )
+    else:
+        place = ""
+    if match["time"]:
+        day = f"{match['date']}, " if match["date"] else ""
+        expected = match["expected"] or match["expected_first"]
+        when = (
+            f" until {'approx. ' if expected else ''}{day}{match['time']}"
+        )
+    elif match["until_day"]:
+        expected = match["expected"] or match["expected_first"]
+        when = f" until {'approx. ' if expected else ''}{match['until_day']}"
+    elif match["now"]:
+        when = " at present"
+    else:
+        when = ""
+    return f"{cause}, {core}{place}{when}."
+
+
+def _render_oebb_restriction_front(
+    front: re.Match[str], ident: str, source: str | None, category: str | None
+) -> str | None:
+    """English for "Wegen … sind … keine Fahrten möglich: zwischen …" (``_OEBB_RESTRICTION_FRONT_RE``).
+
+    The head goes through the template of the sentence without its place
+    ("Due to a police operation, no trains can run until approx. 13:30"),
+    the places behind the colon through the closed set of the "kann …
+    nicht fahren" sentence, else through the model. A head outside the
+    template sends the whole sentence to the model as before (``""``).
+    """
+    head = _render_oebb_sentence(f"{front['head']}.", ident, source, category)
+    if not head:
+        return head
+    cut = bool(front["cut"])
+    end = " …" if cut else "."
+    middle = _oebb_cannot_run_middle_en(front["middle"], cut=cut)
+    if middle is None:
+        rest = _translate_text_attempt(
+            f"{front['middle']}{end}", ident, source=source, category=category, oebb_templates=False
+        )
+        if rest is None:
+            return None
+        rest = rest.strip()
+        middle, end = f" {rest[:1].lower()}{rest[1:]}", ""
+    return f"{head.removesuffix('.')}:{middle}{end}"
 
 
 def _render_oebb_cannot_run(

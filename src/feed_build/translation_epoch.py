@@ -227,7 +227,15 @@ __all__ = [
 #       "before the north entrance of Kurpark", ``_ENTRANCE_OF_RE``). Cached
 #       under 32: "Filmteichstraße before Nordeingang des Kurparks → …"; the
 #       source digest is unchanged, so only a bump evicts it.
-_TRANSLATION_CACHE_EPOCH = 33
+#  34 — KI-Wächter issue #2209 (2026-11-13): every way in or out of a
+#       place in a relocation is English ("nach Einfahrt zum Friedhof" →
+#       "after the driveway to Friedhof", ``_ACCESS_NOUNS_EN``), and ÖBB's
+#       "Wegen … sind … keine Fahrten möglich: zwischen …" with what is not
+#       possible first reads from its template
+#       (``_OEBB_RESTRICTION_FRONT_RE``). Cached under 33: "Würzburggasse
+#       after the driveway zum Friedhof → …"; the source digest is
+#       unchanged, so only a bump evicts it.
+_TRANSLATION_CACHE_EPOCH = 34
 
 
 # Fields whose correct English translation IS the German source, verified by

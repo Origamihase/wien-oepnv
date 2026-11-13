@@ -377,7 +377,7 @@
   halten“). Grundlage ist Michaels Auftrag vom 25.10. („Wenn Jules echte
   Fehler gefunden hat, sollten sie behoben werden“). Replay über alle 932
   ÖBB-Texte seit Dezember 2025: 57 Anzeigen ändern sich, alle mit diesem
-  Satzbau; im heutigen Feed nur S1.
+  Satzbau; im heutigen Feed nur S1. Dieselbe Regel für ÖBBs Störungssatz „… sind zwischen … keine Fahrten möglich.“: [Teil 8, §15](architecture-teil-8.md#15-was-nicht-möglich-ist-steht-vorn-seit-2026-11-13).
   **Vollständig umgesetzt seit 2026-10-11** (dieselbe Entscheidung, keine
   neue): Der Feed-Wächter (Regel `oebb-zweiter-satz`) fand Texte, die den
   zweiten Satz trotzdem verloren, ein Replay über alle 563 ÖBB-Texte im

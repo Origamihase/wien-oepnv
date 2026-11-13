@@ -286,12 +286,62 @@ def _oebb_window_kept(lead: str, head: str, middle: str, title: str, shown_end: 
     return match["window"][1:-1]
 
 
+# ÖBB writes a disruption in one more fixed form, again with what does not
+# run at the very end: "Wegen <Ursache> sind|waren zwischen <A> und <B>
+# [bzw. <C> und <D>][,] [Zugfahrten] [bis voraussichtlich <hh:mm> Uhr |
+# derzeit] keine Fahrten | nur eingeschränkt | nicht möglich." (the grammar
+# of ``_OEBB_RESTRICTION_RE`` in en_templates.py). With two routes the
+# sentence is over the 180 characters, and the cut took the one thing the
+# TV viewer needs: "Wegen eines Polizeieinsatzes sind zwischen Tullnerfeld
+# Bahnhof und St. Pölten Hbf bzw. Tullnerfeld Bahnhof und
+# Moosbierbaum-Heiligeneich Bahnhof, bis voraussichtlich 13:30 …"
+# (KI-Wächter 12. and 13.11.2026, issue #2209; 20 ÖBB disruptions since
+# December 2025 read the same, among them Stadlau–Simmering,
+# Meidling–Liesing and Hütteldorf–Handelskai). Same rule as for the trains
+# above: such a sentence says what is not possible, with its time, first,
+# and the routes follow behind a colon: "Wegen eines Polizeieinsatzes sind
+# bis voraussichtlich 13:30 Uhr keine Fahrten möglich: zwischen Tullnerfeld
+# Bahnhof und St. Pölten Hbf bzw. …". The cut then takes the end of the
+# routes, which the title names. Only ÖBB's own words move, the word cut
+# stays (operator decision 2026-11-05, "Wortweise bleibt"); a sentence that
+# fits keeps its order, and one with anything else after the routes ("keine
+# Fahrten der S 80 zwischen … möglich") too.
+_OEBB_RESTRICTION_LONG_RE = re.compile(
+    r"(?P<lead>Wegen [^.:]+?) (?P<tense>sind|waren)"
+    r" (?P<place>(?:zwischen|in|im Bereich) [^\d:]+?),?"
+    r"(?P<subject> Zugfahrten| für Züge der Linie [A-Z]{1,4} ?\d{1,3})?"
+    r"(?P<when> (?:bis (?:voraussichtlich )?|voraussichtlich bis )"
+    r"(?:\d{2}\.\d{2}\.\d{4}(?:,? \d{1,2}:\d{2}(?: Uhr)?)?|\d{1,2}:\d{2}(?: Uhr)?)| derzeit)?"
+    r" (?P<core>keine Fahrten|nur eingeschränkt(?: Fahrten)?|nicht) möglich\."
+)
+# What may not stand in the place: the template's own words. A place that
+# holds one is not a list of stations, and the sentence keeps its order.
+_OEBB_RESTRICTION_PLACE_NOT_A_NAME_RE = re.compile(r"\b(?:bis|derzeit|voraussichtlich|für|Zugfahrten|Fahrten|Züge)\b")
+
+
+def _oebb_restriction_first(sentence: str) -> str:
+    """ÖBB's "Wegen … sind zwischen … keine Fahrten möglich." with what is not possible first (see above)."""
+    match = _OEBB_RESTRICTION_LONG_RE.fullmatch(sentence)
+    if (
+        match is None
+        or _OEBB_OTHER_VERB_RE.search(match["lead"])
+        or _OEBB_RESTRICTION_PLACE_NOT_A_NAME_RE.search(match["place"])
+    ):
+        return sentence
+    return (
+        f"{match['lead']} {match['tense']}{match['subject'] or ''}{match['when'] or ''}"
+        f" {match['core']} möglich: {match['place']}."
+    )
+
+
 def _oebb_what_does_not_run_first(
     sentence: str, *, title: str = "", shown_end: date | None = None
 ) -> str:
     """An ÖBB sentence over 180 characters with its trains in front (see above)."""
     if len(sentence) <= _OEBB_DAYS_IN_WORDS_LIMIT:
         return sentence
+    if sentence.startswith("Wegen ") and not _OEBB_CANNOT_RUN_RE.fullmatch(sentence):
+        return _oebb_restriction_first(sentence)
     match = _OEBB_CANNOT_RUN_RE.fullmatch(sentence)
     if (
         match is None

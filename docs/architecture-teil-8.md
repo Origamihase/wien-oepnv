@@ -364,3 +364,35 @@ Health check), `tests/test_ki_entscheidung_build.py` (`build_feed.main()` und
 `lint()` mit Schlüssel und ersetztem Transport), `tests/test_ki_entscheidung_probe.py`
 (Fallsammlung, Bericht, Workflow) und `tests/test_record_side_steps.py`
 (Nebenschritt im Health check).
+
+## 15. Was nicht möglich ist, steht vorn (seit 2026-11-13)
+
+Dieselbe Regel wie „Was nicht fährt, steht vorn“ (seit 2026-10-25,
+[Teil 2](architecture-teil-2.md)) für ÖBBs Störungssatz „Wegen <Ursache> sind|waren zwischen <A> und <B>
+[bzw. <C> und <D>][,] [Zugfahrten | für Züge der Linie <L>] [bis
+voraussichtlich <Uhrzeit> | derzeit] keine Fahrten | nur eingeschränkt |
+nicht möglich.“ Mit zwei Strecken ist er über 180 Zeichen, und der
+Schnitt nahm die Kernaussage: „Wegen eines Polizeieinsatzes sind zwischen
+Tullnerfeld Bahnhof und St. Pölten Hbf bzw. Tullnerfeld Bahnhof und
+Moosbierbaum-Heiligeneich Bahnhof, bis voraussichtlich 13:30 …“
+(KI-Wächter 12. und 13.11.2026, Issue #2209). Ein solcher Satz sagt jetzt
+zuerst, was nicht möglich ist, mit seiner Zeit, die Strecken folgen
+hinter einem Doppelpunkt: „Wegen eines Polizeieinsatzes sind bis
+voraussichtlich 13:30 Uhr keine Fahrten möglich: zwischen Tullnerfeld
+Bahnhof und St. Pölten Hbf bzw. Tullnerfeld Bahnhof …“
+(`_oebb_restriction_first`). Gekürzt wird weiter an der Wortgrenze
+(Michaels Entscheidung vom 05.11., „Wortweise bleibt“); umgestellt werden
+nur ÖBBs eigene Wörter. Ein Satz, der passt, behält seine Reihenfolge,
+ebenso einer mit anderen Wörtern zwischen Strecke und Ende („keine
+Fahrten der S 80 zwischen … möglich“). Lässt der zweite Satz die Strecke
+weg, die der Titel nennt, geht der Doppelpunkt mit
+(`_oebb_sentence_without_place`). Englisch: „Due to a police operation, no
+trains can run until approx. 13:30: between Tullnerfeld station and St.
+Pölten Hbf or Tullnerfeld station …“ (`_OEBB_RESTRICTION_FRONT_RE`); die
+Vorlage kennt dafür auch „für Züge der Linie S 45“ („no S 45 trains“) und
+ein Ende ohne Uhrzeit („bis voraussichtlich 07.09.2026“). Replay über
+992 ÖBB-Texte seit Dezember 2025: 22 Anzeigen ändern sich (Meidling–St.
+Pölten, Stadlau–Simmering, Meidling–Liesing, Hütteldorf–Handelskai,
+Grillgasse, Süßenbrunn, Flughafen und andere), alle mit diesem Satzbau;
+englisch nur dieselben 22.
+Tests: `tests/test_oebb_einschraenkung_vorn.py`.

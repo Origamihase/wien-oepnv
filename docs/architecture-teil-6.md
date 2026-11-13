@@ -389,6 +389,14 @@ Nicht jeder Text gehört in ein NMT-Modell:
   englischen Feed. Eine Haltestelle mit dem Wort im Namen („Kurpark
   Nordeingang“, „Laaer Berg, Nordosteingang“) bleibt ihr Name. Unter den
   188 Verlegungs-Records von WL seit Februar 2026 ändert sich nur dieser.
+  Seit Epoche 34 gilt das für jeden Weg hinein oder hinaus, nicht nur den
+  Eingang (`_ACCESS_NOUNS_EN`: Eingang, Ausgang, Zugang, Einfahrt,
+  Ausfahrt, Zufahrt, Hauseinfahrt): „Würzburggasse nach Einfahrt zum
+  Friedhof“ (8A, 13.11.2026, KI-Wächter-Issue #2209) las „Würzburggasse
+  after the driveway zum Friedhof“ und liest nun „Würzburggasse after the
+  driveway to Friedhof“. „Zufahrt zum Campingplatz“ behält seinen festen
+  Wortlaut. Unter den 256 Verlegungswerten von WL seit 28.09.2026 ändert
+  sich nur dieser.
   Ein Satz endet dabei nicht hinter einer
   Ordnungszahl am Adressanfang („1. Haidequerstraße“) oder einer Abkürzung
   („ggü. 40“, `_WL_SENTENCE_SPLIT_RE`).

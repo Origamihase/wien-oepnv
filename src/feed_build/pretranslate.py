@@ -546,21 +546,34 @@ _ENTRANCE_SIDES_EN: dict[str, str] = {
     "Südwest": "southwest ", "Haupt": "main ", "Seiten": "side ", "Neben": "side ",
     "Hinter": "rear ",
 }
+# The same holds for every way in or out of a place, not only the entrance
+# on foot: "Würzburggasse nach Einfahrt zum Friedhof" (8A, 13.11.2026,
+# KI-Wächter issue #2209) read "Würzburggasse after the driveway zum
+# Friedhof", the word table knew "Einfahrt" but not what follows it. Each
+# noun has its English here; "Zufahrt zum Campingplatz" keeps the wording of
+# ``_RECORD_VALUE_RULES``.
+_ACCESS_NOUNS_EN: dict[str, str] = {
+    "eingang": "entrance", "ausgang": "exit", "zugang": "access", "einfahrt": "driveway",
+    "ausfahrt": "exit", "zufahrt": "access road", "hauseinfahrt": "building entrance",
+}
 _ENTRANCE_OF_RE: re.Pattern[str] = re.compile(
-    r"(?<![\w-])(?P<side>Nordost|Nordwest|Südost|Südwest|Nord|Süd|Ost|West|Haupt|Seiten"
-    r"|Neben|Hinter)?(?(side)eingang|Eingang)"
+    r"(?<![\w-])(?!Zufahrt\s+zum\s+Campingplatz)"
+    r"(?P<side>Nordost|Nordwest|Südost|Südwest|Nord|Süd|Ost|West|Haupt|Seiten|Neben|Hinter)?"
+    r"(?P<noun>(?(side)(?:eingang|ausgang|zugang|einfahrt|ausfahrt|zufahrt)"
+    r"|(?:Eingang|Ausgang|Zugang|Einfahrt|Ausfahrt|Zufahrt|Hauseinfahrt)))"
     r"\s+(?P<article>des|der|zum|zur)\s+(?P<name>[A-ZÄÖÜ][\wäöüß-]*)"
 )
 
 
 def _entrance_of_en(match: re.Match[str], label_placeholders: frozenset[str]) -> str:
-    """``Nordeingang des Kurparks`` → ``the north entrance of Kurpark``."""
+    """``Nordeingang des Kurparks`` → ``the north entrance of Kurpark``, ``Einfahrt zum Friedhof`` → ``the driveway to Friedhof``."""
     name = match["name"]
     if match["article"] == "des" and len(name) > 4 and name.endswith("s"):
         stem = name[:-2] if name.endswith("es") and name[-3] not in "aeiouäöüs" else name[:-1]
         name = stem
     link = "to" if match["article"] in ("zum", "zur") else "of"
-    english = f"{_ENTRANCE_SIDES_EN[match['side'] or '']}entrance {link} {name}"
+    noun = _ACCESS_NOUNS_EN[match["noun"].casefold()]
+    english = f"{_ENTRANCE_SIDES_EN[match['side'] or '']}{noun} {link} {name}"
     before = match.string[: match.start()].split()
     if not before or before[-1] in label_placeholders:
         return english[0].upper() + english[1:]
