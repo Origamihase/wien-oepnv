@@ -1,7 +1,7 @@
 from typing import Any
 from unittest.mock import MagicMock, patch
 import src.build_feed as bf
-from tests._conftest.build_feed_bindings import patch_all
+from tests._conftest.build_feed_bindings import part, patch_all
 
 def test_build_feed_mutation() -> None:
     items = [{"title": "original", "guid": "123"}]
@@ -11,9 +11,9 @@ def test_build_feed_mutation() -> None:
          patch.object(bf, "_summarize_duplicates", return_value=[]), \
          patch.object(bf, "_dedupe_items", return_value=items), \
          patch.object(bf, "deduplicate_fuzzy", return_value=items), \
-         patch.object(bf, "_make_rss", return_value=""), \
+         patch_all(bf, "_make_rss", return_value=""), \
          patch.object(bf, "_load_state", return_value={}), \
-         patch.object(bf, "_save_state"), \
+         patch.object(part(bf, "outputs"), "_save_state"), \
          patch_all(bf, "atomic_write", MagicMock()):
 
         # Make a hook to capture pre_dedupe_items before it goes to dedupe functions
@@ -26,8 +26,8 @@ def test_build_feed_mutation() -> None:
         with patch.object(bf, "_summarize_duplicates", side_effect=mock_summarize):
             # To avoid hitting actual paths
             with patch_all(bf, "validate_path", MagicMock()), \
-                 patch.object(bf, "write_feed_health_report", MagicMock()), \
-                 patch.object(bf, "write_feed_health_json", MagicMock()):
+                 patch.object(part(bf, "outputs"), "write_feed_health_report", MagicMock()), \
+                 patch.object(part(bf, "outputs"), "write_feed_health_json", MagicMock()):
                 bf.main()
 
         # The user-facing contract is that ``_summarize_duplicates`` observes

@@ -168,8 +168,26 @@ def test_save_state_failure_calls_report_add_warning_in_main() -> None:
             break
     assert main_func is not None, "build_feed.main not found"
 
+    # Since 2026-11-14 the ``try`` around ``_save_state`` stands in
+    # ``save_state_or_warn`` (src/feed_build/outputs.py); ``main`` must call
+    # it with the run's report, and the function must hold the warning.
+    assert any(
+        isinstance(n, ast.Call)
+        and isinstance(n.func, ast.Name)
+        and n.func.id == "save_state_or_warn"
+        and [a.id for a in n.args if isinstance(a, ast.Name)] == ["state", "report"]
+        for n in ast.walk(main_func)
+    ), "build_feed.main() must call save_state_or_warn(state, report)"
+    assert build_feed.save_state_or_warn is part(build_feed, "outputs").save_state_or_warn
+    outputs_tree = ast.parse(inspect.getsource(part(build_feed, "outputs")))
+    save_func = next(
+        node
+        for node in ast.walk(outputs_tree)
+        if isinstance(node, ast.FunctionDef) and node.name == "save_state_or_warn"
+    )
+
     found_warning_call = False
-    for node in ast.walk(main_func):
+    for node in ast.walk(save_func):
         if not isinstance(node, ast.Try):
             continue
         # Try body calls _save_state?
@@ -197,7 +215,7 @@ def test_save_state_failure_calls_report_add_warning_in_main() -> None:
             break
 
     assert found_warning_call, (
-        "build_feed.main() must call report.add_warning(...) inside the "
+        "save_state_or_warn() must call report.add_warning(...) inside the "
         "except arm wrapping _save_state(...). Pre-fix the exception was "
         "silently logged and the build still reported as fully successful."
     )

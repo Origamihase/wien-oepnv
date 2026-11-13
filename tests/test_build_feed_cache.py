@@ -99,7 +99,7 @@ def test_main_runs_without_network(
     monkeypatch.setattr(build_feed.feed_config, "STATE_FILE", state_file)
     monkeypatch.setattr(build_feed.feed_config, "FEED_HEALTH_PATH", tmp_path / "feed-health.md")
     monkeypatch.setattr(build_feed.feed_config, "FEED_HEALTH_JSON_PATH", tmp_path / "feed-health.json")
-    monkeypatch.setattr(build_feed, "_save_state", lambda state: None)
+    monkeypatch.setattr(part(build_feed, "outputs"), "_save_state", lambda state: None)
     monkeypatch.setattr(build_feed, "_load_state", lambda: {})
 
     # Prevent main() from resetting config via refresh_from_env
@@ -251,7 +251,7 @@ def test_cache_iso_items_sorted_and_emit_pubdate(monkeypatch: pytest.MonkeyPatch
 
     assert [it["guid"] for it in deduped] == ["new-guid", "older-guid"]
 
-    monkeypatch.setattr(build_feed, "_save_state", lambda state: None)
+    monkeypatch.setattr(part(build_feed, "outputs"), "_save_state", lambda state: None)
     rss = build_feed._make_rss(deduped, now, state)
 
     assert rss.count("<item>") == 2

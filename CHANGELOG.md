@@ -23,6 +23,7 @@ KI-Wächter die Entscheidung kennt und nicht als Fehler meldet (Betreiberentsche
 
 ### November 2026
 
+- [Samstag, 14. November 2026](changelog/2026-11-14.md)
 - [Freitag, 13. November 2026](changelog/2026-11-13.md)
 - [Donnerstag, 12. November 2026](changelog/2026-11-12.md)
 - [Mittwoch, 11. November 2026](changelog/2026-11-11.md)

@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import Any
 import pytest
 import types
-from tests._conftest.build_feed_bindings import fresh_build_feed
+from tests._conftest.build_feed_bindings import fresh_build_feed, setattr_all
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
@@ -54,7 +54,7 @@ def test_main_dedupes_items(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> 
         return ""
 
     monkeypatch.setattr(build_feed, "_collect_items", fake_collect)
-    monkeypatch.setattr(build_feed, "_make_rss", fake_make_rss)
+    setattr_all(monkeypatch, build_feed, "_make_rss", fake_make_rss)
     monkeypatch.chdir(tmp_path)
 
     build_feed.main()

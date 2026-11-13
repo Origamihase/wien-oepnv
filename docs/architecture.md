@@ -184,6 +184,17 @@ Seit Etappe 8 der 700-Zeilen-Regel (2026-11-03) steht die Kette weiter in
 `src/build_feed.py`, die einzelnen Schritte stehen in den Teilen unter
 `src/feed_build/` (etwa `filters`, `wl_joins`, `wl_notices`, `item_history`,
 `rss`; Liste in [Modularisierung](modularisierung.md)).
+Seit 2026-11-14 ruft `main()` für das, was ein Lauf schreibt, Funktionen aus
+`src/feed_build/outputs.py` auf (deutscher Feed, englischer Spiegel, Zustand,
+Health-Bericht, Abschluss des Laufberichts), und `lint()` gibt seinen Bericht
+über `print_lint_report` in `src/feed_build/lint_report.py` aus.
+Betreiberentscheidung vom 2026-11-14 (Michael, auf die Karte „Wähle, wie
+build_feed.py (692 Zeilen) wieder Luft bekommt“: „Teile von main auslagern“).
+Die Kette selbst zu verschieben war nicht gewählt und bleibt, wo sie ist:
+`_assemble_feed_items`, `main` und `lint` stehen in `src/build_feed.py`, die
+Reihenfolge der Schritte in `main` und `lint` ist dieselbe wie vorher
+([Modularisierung](modularisierung.md), Nachtrag vom 2026-11-13, letzter
+Abschnitt).
 
 `build_feed.py` bleibt ansonsten ein Modul. Michaels Entscheidung vom
 2026-10-15 nach Jules' Modularisierungs-Audit vom 2026-10-14

@@ -2,7 +2,7 @@ import sys
 import types
 from pathlib import Path
 import pytest
-from tests._conftest.build_feed_bindings import fresh_build_feed
+from tests._conftest.build_feed_bindings import fresh_build_feed, part, setattr_all
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
@@ -30,9 +30,9 @@ def test_out_path_rejects_outside_whitelist(
     # Set env var so refresh_from_env picks it up and validation fails
     monkeypatch.setenv("OUT_PATH", "../evil.xml")
     monkeypatch.setattr(build_feed, "_collect_items", lambda: [])
-    monkeypatch.setattr(build_feed, "_make_rss", lambda items, now, state: "")
+    setattr_all(monkeypatch, build_feed, "_make_rss", lambda items, now, state: "")
     monkeypatch.setattr(build_feed, "_load_state", lambda: {})
-    monkeypatch.setattr(build_feed, "_save_state", lambda state: None)
+    monkeypatch.setattr(part(build_feed, "outputs"), "_save_state", lambda state: None)
 
     with pytest.raises(ValueError):
         build_feed.main()

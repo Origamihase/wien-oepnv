@@ -332,6 +332,8 @@ Tests):
 | `rss` | RSS-Dokument: GeoRSS, ein `<item>` (`_emit_item`), Kanal-Metadaten und Lizenzzeilen, `_make_rss` |
 | `isolation` | Seit 2026-11-10: eine Meldung, an der Kette oder Ausgabe scheitert, fällt aus dem Lauf (`build_isolating`) |
 | `abbreviations` | Seit 2026-11-12: ob ein Punkt eine Abkürzung schließt oder einen Satz beendet, eine Regel für jeden Schritt (`is_abbreviation_period`, `without_full_stop`) |
+| `outputs` | Seit 2026-11-14: was ein Lauf schreibt, als Funktionen, die `main` in seiner Reihenfolge aufruft: deutscher Feed (`write_feed`), englischer Spiegel (`write_en_mirror`), Zustand (`save_state_or_warn`), Health-Bericht (`health_metrics_from`, `write_health_outputs`), Abschluss des Laufberichts (`record_successful_build`) |
+| `lint_report` | Seit 2026-11-14: der Bericht, den `lint` ausgibt, und der Exit-Code, der aus ihm folgt (`print_lint_report`) |
 
 Wer eine Funktion des Feed-Baus ändert, ändert sie in ihrem Teil; ein neuer
 Name kommt in den Teil seines Themas, und liest ihn `src/`, `scripts/` oder ein
@@ -462,14 +464,65 @@ das Paket mit `test_teil_<n>.py` aus Etappe 2 der Weg; wo die Themen
 erkennbar sind, bekommt jedes Thema sein Modul und gemeinsame Hilfen stehen
 in einem Modul `_<name>_support.py`.
 
-Zwei Dateien bleiben am Anschlag und sind eigene Schritte:
-`.github/workflows/update-cycle.yml` (700, der Workflow des Feed-Laufs) und
-`src/build_feed.py` (692). Für `build_feed.py` gibt es keinen Schnitt, der
+Eine Datei bleibt am Anschlag und ist ein eigener Schritt:
+`.github/workflows/update-cycle.yml` (700, der Workflow des Feed-Laufs). Für
+sie gilt die Regel oben: Die nächste Änderung, die eine Zeile hinzufügt, muss
+teilen. Das trifft auch eine Änderung, die nur eine Zeile ersetzt:
+`update-cycle.yml` nennt fünf Actions mit festem Commit, und ein
+Versions-Update von Dependabot (monatlich) scheitert an der Prüfung, bis der
+Workflow geteilt ist.
+
+`src/build_feed.py` stand am 2026-11-13 bei 692 Zeilen. Einen Schnitt, der
 wörtlich verschiebt und die Entscheidung „Eine Feed-Kette, ein Modul“
-einhält: `lint`, `main` und `_assemble_feed_items` brauchen mit ihren
-Importen rund 480 Zeilen, der Rest ist die Weiterreichung in der einen Liste
-`__all__`. Bis zu einer Entscheidung dazu gilt für beide die Regel oben: Die
-nächste Änderung, die eine Zeile hinzufügt, muss teilen. Das trifft auch
-eine Änderung, die nur eine Zeile ersetzt: `update-cycle.yml` nennt fünf
-Actions mit festem Commit, und ein Versions-Update von Dependabot (monatlich)
-scheitert an der Prüfung, bis der Workflow geteilt ist.
+einhält, gab es nicht: `lint`, `main` und `_assemble_feed_items` brauchten
+mit ihren Importen rund 480 Zeilen, der Rest ist die Weiterreichung in der
+einen Liste `__all__`. Betreiberentscheidung vom 2026-11-14 (Michael, auf die
+Karte „Wähle, wie build_feed.py (692 Zeilen) wieder Luft bekommt“: „Teile von
+main auslagern“; Text der Karte dazu: „Schreiben von Feed, Zustand und
+Health-Bericht wird zu eigenen Funktionen; das ist ein Umbau, kein
+Verschieben, und bringt rund 570 Zeilen.“). Die Kette zu verschieben war
+nicht gewählt: `lint`, `main` und `_assemble_feed_items` stehen weiter in
+`src/build_feed.py`, mit `FeedAssemblyStats` und der einen Liste `__all__`.
+
+Am 2026-11-14 so umgebaut (kein wörtliches Verschieben: Aus Blöcken einer
+Funktion wurden Funktionen mit Parametern; die Anweisungen und ihre
+Kommentare sind dieselben, `main` und `lint` rufen sie an der Stelle des
+Blocks auf, die Reihenfolge der Schritte ist unverändert):
+
+| Block (vorher in) | Danach |
+|---|---|
+| Deutschen Feed schreiben (`main`) | `write_feed` in `src/feed_build/outputs.py`; gibt den geprüften Pfad zurück |
+| Englischen Spiegel erzeugen und schreiben (`main`) | `write_en_mirror`; die Pfadprüfung steht wie vorher außerhalb des `try`, ein Fehler beim Erzeugen oder Schreiben wird wie vorher nur gewarnt |
+| Zustand speichern, bei Fehler warnen und im Laufbericht vermerken (`main`) | `save_state_or_warn` |
+| Health-Bericht als Markdown und JSON schreiben (innere Funktion `_write_health_outputs` in `main`) | `write_health_outputs`; Laufbericht, Kennzahlen und die beiden Pfade sind Parameter, die Pfade prüft `main` weiter vor dem Bau |
+| Kennzahlen des Health-Berichts aus den Zählern bilden (zweimal in `main`, einmal in `lint`) | `health_metrics_from` |
+| Zeile „Feed geschrieben“ loggen und den Laufbericht als erfolgreich abschließen (`main`) | `record_successful_build` |
+| Lint-Bericht ausgeben und den Exit-Code bestimmen (`lint`) | `print_lint_report` in `src/feed_build/lint_report.py` |
+
+Die Karte nannte rund 570 Zeilen. Die Prüfung verlangt nach einer Teilung
+höchstens 550; deshalb gingen außer dem Schreiben von Feed, Zustand und
+Health-Bericht auch die drei letzten Zeilen der Tabelle mit.
+`src/build_feed.py` hat danach 536 Zeilen, `outputs.py` 178 und
+`lint_report.py` 89 (gemessen mit `wc -l` am 2026-11-14). In `lint` entfielen
+drei Zwischenvariablen, die nur die Kennzahlen speisten. Kein Wert von
+`.c901-baseline.txt` ändert sich; die neuen Funktionen messen höchstens 11.
+
+Für die Tests gilt die Regel aus Etappe 8: `_save_state`,
+`write_feed_health_report` und `write_feed_health_json` liest jetzt nur
+`outputs` (36 Ersetzungen in den Tests zeigen seither dorthin), `_make_rss`
+lesen die Fassade und `outputs` (13 Ersetzungen laufen über
+`setattr_all`/`patch_all`); zusammen 49 Stellen in 19 Testdateien. Die Fassade bindet die beiden Schreiber des Health-Berichts nicht
+mehr. Neu in `__all__` stehen `atomic_write` und `save_state_or_warn`, weil
+Tests sie über die Fassade lesen. `tests/test_build_feed_outputs.py` hält die
+Reihenfolge der Ausgaben und die Fehlerpfade fest (Zustand nicht gespeichert,
+englischer Spiegel nicht erzeugt oder nicht geschrieben, deutscher Feed nicht
+geschrieben, Kette gescheitert, Health-Markdown nicht geschrieben); die acht
+Tests über `main` laufen unverändert auch gegen den Stand vor dem Umbau, wenn
+die Ersetzungen auf die Fassade zeigen.
+
+Replay mit echtem `main()` am 2026-11-14: 101 Feed-Stände vom 28.10. bis
+13.11. (jeder achte der 813 Stände des Vergleichslaufs vom 2026-11-13,
+einzeln neu gebaut, mit einem Echo an der Stelle des Übersetzungsmodells)
+gegen die Ergebnisse dieses Laufs für den Stand vor den Teilungen
+(`0f22303cd0`): deutscher und englischer Feed und Zustand sind in jedem der
+101 Stände gleich, kein Lauf endete mit einem Fehler.

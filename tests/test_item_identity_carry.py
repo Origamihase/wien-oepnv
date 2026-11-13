@@ -146,7 +146,7 @@ def _build(
     monkeypatch.setattr(bf.feed_config, "FEED_HEALTH_PATH", tmp_path / "feed-health.md")
     monkeypatch.setattr(bf.feed_config, "FEED_HEALTH_JSON_PATH", tmp_path / "feed-health.json")
     monkeypatch.setattr(bf, "_load_state", lambda: {key: dict(value) for key, value in state.items()})
-    monkeypatch.setattr(bf, "_save_state", save)
+    monkeypatch.setattr(part(bf, "outputs"), "_save_state", save)
     monkeypatch.setattr(bf, "refresh_from_env", lambda: None)
     assert bf.main() == 0
     channel = ET.parse(out_file).getroot().find("channel")

@@ -24,9 +24,7 @@ from .feed.glossary import (
 from .feed.merge import deduplicate_fuzzy
 from .feed.logging import configure_logging
 from .feed.providers import load_provider_plugins, provider_statuses
-from .feed.reporting import (
-    DuplicateSummary, FeedHealthMetrics, RunReport, write_feed_health_report, write_feed_health_json,
-)
+from .feed.reporting import DuplicateSummary, FeedHealthMetrics, RunReport
 from .utils.files import atomic_write
 from .utils.locking import file_lock
 from .utils.logging import sanitize_log_arg
@@ -146,6 +144,13 @@ from .feed_build.wl_joins import _split_by_cause, _merge_wl_ticker_clusters
 from .feed_build.wl_notices import _drop_baustellen_twins, _absorb_works_tickers, _yield_notices_to_incidents
 from .feed_build.rss import _item_geometry, _emit_item, _channel_metadata, _make_rss
 from .feed_build.isolation import build_isolating
+# Since 2026-11-14 (not verbatim): the report of ``lint`` and the blocks of
+# ``main`` that write feed, state and health report, as functions.
+from .feed_build.lint_report import print_lint_report
+from .feed_build.outputs import (
+    health_metrics_from, write_health_outputs, write_feed, write_en_mirror, save_state_or_warn,
+    record_successful_build,
+)
 
 
 __all__ = [
@@ -201,7 +206,7 @@ __all__ = [
     "_strip_summary_category_prefix", "_summary_is_title_without_reason", "_format_item_content",
     "_escape_description_markup", "_shared_openings", "_union_prefix", "_title_cause", "_split_by_cause",
     "_merge_wl_ticker_clusters", "_drop_baustellen_twins", "_absorb_works_tickers", "_yield_notices_to_incidents",
-    "ET", "_item_geometry", "_emit_item", "_channel_metadata", "_make_rss",
+    "ET", "_item_geometry", "_emit_item", "_channel_metadata", "_make_rss", "atomic_write", "save_state_or_warn",
 ]
 
 
@@ -244,78 +249,12 @@ def lint() -> int:
         # only read back by ``_count_new_items`` and never saved here.
         stats = FeedAssemblyStats()
         deduped_items = _assemble_feed_items(items, state, now, stats=stats)
-        filtered_count = stats.filtered_count
         duplicate_summaries = stats.duplicate_summaries
-        duplicates_removed = stats.duplicates_removed
-        deduped_count = stats.deduped_count
         new_items_count = _count_new_items(deduped_items, state)
         missing_guid_items = [it for it in deduped_items if not it.get("guid")]
 
-        metrics = FeedHealthMetrics(
-            raw_items=raw_count,
-            filtered_items=filtered_count,
-            deduped_items=deduped_count,
-            new_items=new_items_count,
-            duplicate_count=duplicates_removed,
-            duplicates=tuple(duplicate_summaries),
-        )
-
-        print("Feed-Lint Bericht")
-        print("==================")
-        print(f"Rohdaten: {metrics.raw_items}")
-        print(f"Nach Altersfilter: {metrics.filtered_items}")
-        print(
-            f"Nach Deduplizierung: {metrics.deduped_items} "
-            f"(entfernte Duplikate: {metrics.duplicate_count})"
-        )
-        print(f"Neue Items (vs. State): {metrics.new_items}")
-
-        if duplicate_summaries:
-            print("\nErkannte Duplikat-Gruppen:")
-            for summary in duplicate_summaries:
-                titles = ", ".join(
-                    title or "<ohne Titel>" for title in summary.titles if title is not None
-                )
-                titles = titles or "<keine Beispiele>"
-                print(
-                    f"- {summary.count}× Schlüssel {summary.dedupe_key}: {titles}"
-                )
-
-        if stale_cache_messages:
-            print("\nVeraltete Cache-Dateien:")
-            for message in stale_cache_messages:
-                print(f"- {message}")
-
-        if missing_guid_items:
-            print("\nEinträge ohne GUID:")
-            for item in missing_guid_items:
-                # Security: ``source`` / ``title`` are upstream-controlled and
-                # reach this operator-facing stdout sink BEFORE the per-item
-                # ``_format_item_content`` sanitisation runs (lint never formats
-                # the items). Route both through ``_sanitize_text`` so the
-                # canonical ``_CONTROL_RE`` floor (C0/C1 + BiDi + zero-width +
-                # line/paragraph separators + Tag/VS blocks) is stripped here too
-                # — the sibling duplicate-group print already sanitises its
-                # titles via ``_summarize_duplicates``; this closes the
-                # un-sanitised sibling path (Trojan-Source / terminal-escape /
-                # log-forgery on the lint report).
-                source = _sanitize_text(str(item.get("source") or "unbekannt"))
-                title = _sanitize_text(str(item.get("title") or "<ohne Titel>"))
-                print(f"- {source}: {title}")
-
-        provider_failures = report.has_errors()
-        if provider_failures:
-            print("\nProvider-Fehler erkannt – siehe Log-Ausgabe für Details.")
-
-        if not duplicate_summaries and not missing_guid_items and not provider_failures:
-            print("\nKeine strukturellen Probleme gefunden.")
-
-        if provider_failures:
-            exit_code = 2
-        elif duplicate_summaries or missing_guid_items or stale_cache_messages:
-            exit_code = 1
-        else:
-            exit_code = 0
+        metrics = health_metrics_from(raw_count, stats, new_items_count)
+        exit_code = print_lint_report(metrics, duplicate_summaries, stale_cache_messages, missing_guid_items, report)
 
         report.finish(
             build_successful=exit_code == 0,
@@ -367,7 +306,8 @@ def _assemble_feed_items(
     probe that rebuilds a past feed state from cached data, so a probe can
     never compute a different feed than the real build (older probes that
     copied the steps by hand missed the twin step). Fetching, RSS rendering,
-    file writes and ``_save_state`` stay in ``main``, and so does asking
+    file writes and ``_save_state`` stay with ``main`` (since 2026-11-14 it
+    calls ``src/feed_build/outputs.py`` for the writes), and so does asking
     Gemini: ``decide`` only reads stored answers unless ``main`` passes its own.
 
     ``state`` is updated in place as before (first_seen, restarts, carried
@@ -514,28 +454,6 @@ def main() -> int:
         Path(feed_config.FEED_HEALTH_JSON_PATH), "FEED_HEALTH_JSON_PATH"
     )
 
-    def _write_health_outputs(active_metrics: FeedHealthMetrics) -> None:
-        try:
-            write_feed_health_report(
-                report, active_metrics, output_path=health_path
-            )
-        except Exception as exc:  # pragma: no cover - defensive
-            # Security (Clear-Text-Logging Drift): defensive framework catch.
-            log.warning(
-                "Feed-Health-Markdown konnte nicht geschrieben werden: %s",
-                sanitize_log_arg(str(exc)),
-            )
-        try:
-            write_feed_health_json(
-                report, active_metrics, output_path=health_json_path
-            )
-        except Exception as exc:  # pragma: no cover - defensive
-            # Security (Clear-Text-Logging Drift): defensive framework catch.
-            log.warning(
-                "Feed-Health-JSON konnte nicht geschrieben werden: %s",
-                sanitize_log_arg(str(exc)),
-            )
-
     try:
         collect_start = perf_counter()
         items = _invoke_collect_items(report)
@@ -572,89 +490,22 @@ def main() -> int:
             reload_state=_load_state, reset=_fresh_stats, report=report,
             trial_assemble=lambda its, st: _chain(its, st, counted=False),
         )
-        health_metrics = FeedHealthMetrics(
-            raw_items=raw_count,
-            filtered_items=stats.filtered_count,
-            deduped_items=stats.deduped_count,
-            new_items=new_items_count,
-            duplicate_count=stats.duplicates_removed,
-            duplicates=tuple(stats.duplicate_summaries),
-        )
+        health_metrics = health_metrics_from(raw_count, stats, new_items_count)
 
-        out_path = validate_path(Path(feed_config.OUT_PATH), "OUT_PATH")
-        with atomic_write(
-            out_path, mode="w", encoding="utf-8", permissions=0o644
-        ) as f:
-            f.write(rss_de)
-
-        # English mirror — written next to ``feed.xml`` as ``feed.en.xml``.
-        # Failures during translation degrade gracefully to the German
-        # original via ``_translate_text`` / ``_apply_lang_overlay``;
-        # write errors are isolated so the primary feed (already on disk)
-        # stays committed even if the EN file cannot be produced.
-        en_path = out_path.with_name("feed.en.xml")
-        en_out_path = validate_path(en_path, "OUT_PATH")
-        try:
-            rss_en = _make_rss(
-                items, now, state, lang="en"
-            )
-            with atomic_write(
-                en_out_path, mode="w", encoding="utf-8", permissions=0o644
-            ) as f:
-                f.write(rss_en)
-        except Exception as exc:
-            log.warning(
-                "EN-Feed konnte nicht geschrieben werden (%s) – "
-                "deutscher Feed ist bereits aktualisiert.",
-                sanitize_log_arg(str(exc)),
-            )
+        out_path = write_feed(rss_de)
+        write_en_mirror(out_path, items, now, state)
 
         _record_translation_status(now)
         _remember_item_identity(items, state, now)
         ki.finish()
 
-        # Without deletions: a message that left keeps its entry (``_drop_old_items``).
-        try:
-            _save_state(state)
-        except Exception as e:
-            # Security (Clear-Text-Logging Drift): broad framework catch.
-            log.warning(
-                "State speichern fehlgeschlagen (%s) – Feed wurde geschrieben, State bleibt veraltet.",
-                sanitize_log_arg(str(e)),
-            )
-            # Surface the failure on the structured report so monitoring
-            # / dashboards see "degraded" instead of a clean
-            # ``build_successful=True``. Pre-fix the swallowed exception
-            # let the run report record a fully-successful build while
-            # first_seen / translations / stats counters silently
-            # drifted out of sync with the on-disk feed.
-            report.add_warning(
-                f"State save failed: {sanitize_log_arg(type(e).__name__)} — "
-                "first_seen / translations / stats may drift on the next run."
-            )
+        save_state_or_warn(state, report)
 
-        total_duration = perf_counter() - job_start
-        log.info(
-            "Feed geschrieben: %s (%d Items) in %.2fs (RSS-Erzeugung: %.2fs)",
-            out_path,
-            min(len(items), feed_config.MAX_ITEMS),
-            total_duration,
-            rss_duration,
+        record_successful_build(
+            report, out_path, items, raw_count=raw_count, stats=stats, collect_duration=collect_duration,
+            rss_duration=rss_duration, total_duration=perf_counter() - job_start,
         )
-        report.finish(
-            build_successful=True,
-            raw_items=raw_count,
-            final_items=len(items),
-            durations={
-                "collect": collect_duration,
-                "filter": stats.filter_duration,
-                "dedupe": stats.dedupe_duration,
-                "rss": rss_duration,
-                "total": total_duration,
-            },
-            feed_path=out_path,
-        )
-        _write_health_outputs(health_metrics)
+        write_health_outputs(report, health_metrics, health_path, health_json_path)
         report.log_results()
         return 0
     except Exception as exc:  # pragma: no cover - defensive
@@ -664,16 +515,9 @@ def main() -> int:
         if health_metrics is None:
             # Simplified fallback using pre-initialized counters (Task 3A);
             # ``stats`` holds what the feed chain counted before it failed.
-            health_metrics = FeedHealthMetrics(
-                raw_items=raw_count,
-                filtered_items=stats.filtered_count,
-                deduped_items=stats.deduped_count,
-                new_items=new_items_count,
-                duplicate_count=stats.duplicates_removed,
-                duplicates=tuple(stats.duplicate_summaries),
-            )
+            health_metrics = health_metrics_from(raw_count, stats, new_items_count)
         report.finish(build_successful=False)
-        _write_health_outputs(health_metrics)
+        write_health_outputs(report, health_metrics, health_path, health_json_path)
         report.log_results()
         raise
 
