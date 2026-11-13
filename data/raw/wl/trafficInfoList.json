@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261020-0029, I20261113-0022-F01, I20261113-0023-F01, I20261113-0023-F02, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261113-0023-F01, I20261113-0023-F02, I20260925-0011, I20261113-0027, I20260909-0007, I20261113-0025, I20261113-0026-F01, I20261020-0029, I20261113-0022-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2380-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R401-101, R293-474, R318-437, R2345-127, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R2558-125, R3886-480, R1974-466, R1199-205, R500-101, R208-137, R149-137, R209-137, R210-137, R211-137, R150-137, R217-144, R219-144, R218-144, R1346-144, R1345-144, R555-144, R1361-144, R1360-144, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2373-125, R401-101, R2345-127, R2380-627, R293-474, R318-437, R2379-627, R2373-126, R2373-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R2558-125, R3886-480, R1974-466, R1199-205, R500-101, R219-144, R217-144, R218-144, R1360-144, R1361-144, R1346-144, R1345-144, R555-144, R1478-149, R1477-149, R1479-149, R1480-149, R1487-149, R1375-149, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -315,6 +315,144 @@
     "title": "43: Beschädigte Oberleitung"
    },
    {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "63A": "ptBusCity"
+     }
+    },
+    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "descriptionHTML": "<p>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+       "descriptionPlain": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+       "title": "63A: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261113-0025",
+    "owner": "WL",
+    "parentName": "I20261113-0025",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "63A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 463,
+      "lineName": "63A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-13T14:06:00.000+0100",
+     "lastUpdate": "2026-11-13T14:06:00.000+0100",
+     "resume": "2026-11-13T14:06:00.000+0100",
+     "start": "2026-11-13T14:06:00.000+0100"
+    },
+    "title": "63A: Polizeieinsatz"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "U4": "ptMetro"
+     }
+    },
+    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U4: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261113-0026-F01",
+    "owner": "WL",
+    "parentName": "I20261113-0026",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 304,
+      "lineName": "U4",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4417
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-13T14:23:00.000+0100",
+     "lastUpdate": "2026-11-13T14:23:00.000+0100",
+     "resume": "2026-11-13T14:23:00.000+0100",
+     "start": "2026-11-13T14:18:00.000+0100"
+    },
+    "title": "U4: Polizeieinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "49": "ptTram"
+     }
+    },
+    "description": "Linie 49: Betrieb nur zwischen Hütteldorf, Bujattigasse und Urban-Loritz-Platz. Ersatz: Linien U3, 48A. Voraussichtliche Dauer: 14:45 Uhr. Grund: Rettungseinsatz im Bereich Westbahnstraße.",
+    "descriptionHTML": "<p>Linie 49:<br>Betrieb nur zwischen Hütteldorf, Bujattigasse und Urban-Loritz-Platz.</p><p>Ersatz: Linien U3, 48A.</p><p>Voraussichtliche Dauer: 14:45 Uhr.</p><p>Grund: Rettungseinsatz im Bereich Westbahnstraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 49:<br>Betrieb nur zwischen Hütteldorf, Bujattigasse und Urban-Loritz-Platz.</p><p>Ersatz: Linien U3, 48A.</p><p>Voraussichtliche Dauer: 14:45 Uhr.</p><p>Grund: Rettungseinsatz im Bereich Westbahnstraße.</p>",
+       "descriptionPlain": "Linie 49: Betrieb nur zwischen Hütteldorf, Bujattigasse und Urban-Loritz-Platz. Ersatz: Linien U3, 48A. Voraussichtliche Dauer: 14:45 Uhr. Grund: Rettungseinsatz im Bereich Westbahnstraße.",
+       "title": "49: Rettungseinsatz"
+      }
+     }
+    ],
+    "location": "Westbahnstraße",
+    "name": "I20261113-0027",
+    "owner": "WL",
+    "parentName": "I20261113-0027",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 149,
+      "lineName": "49",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-13T14:22:00.000+0100",
+     "lastUpdate": "2026-11-13T14:22:00.000+0100",
+     "start": "2026-11-13T14:20:00.000+0100"
+    },
+    "title": "49: Rettungseinsatz"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -432,48 +570,140 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R149-137",
+    "description": "Rettungseinsatz\nBetrieb ab Urban-Loritz-Platz",
+    "name": "R1375-149",
     "owner": "WL",
-    "parentName": "R149-137",
+    "parentName": "R1375-149",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "37"
+     "49"
     ],
     "relatedStops": [
-     149
+     1375
     ],
     "time": {
-     "end": "2026-11-13T14:14:00.000+0100",
-     "start": "2026-11-13T13:15:48.000+0100"
+     "end": "2026-11-13T15:23:00.000+0100",
+     "start": "2026-11-13T14:23:56.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
+    "title": "Rettungseinsatz\nBetrieb ab Urban-Loritz-Platz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R150-137",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1477-149",
     "owner": "WL",
-    "parentName": "R150-137",
+    "parentName": "R1477-149",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "37"
+     "49"
     ],
     "relatedStops": [
-     150
+     1477
     ],
     "time": {
-     "end": "2026-11-13T14:14:00.000+0100",
-     "start": "2026-11-13T13:15:48.000+0100"
+     "end": "2026-11-13T15:22:00.000+0100",
+     "start": "2026-11-13T14:22:26.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1478-149",
+    "owner": "WL",
+    "parentName": "R1478-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1478
+    ],
+    "time": {
+     "end": "2026-11-13T15:22:00.000+0100",
+     "start": "2026-11-13T14:22:26.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1479-149",
+    "owner": "WL",
+    "parentName": "R1479-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1479
+    ],
+    "time": {
+     "end": "2026-11-13T15:22:00.000+0100",
+     "start": "2026-11-13T14:22:26.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1480-149",
+    "owner": "WL",
+    "parentName": "R1480-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1480
+    ],
+    "time": {
+     "end": "2026-11-13T15:22:00.000+0100",
+     "start": "2026-11-13T14:22:26.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1487-149",
+    "owner": "WL",
+    "parentName": "R1487-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1487
+    ],
+    "time": {
+     "end": "2026-11-13T15:22:00.000+0100",
+     "start": "2026-11-13T14:22:26.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -658,98 +888,6 @@
      "start": "2026-11-13T04:40:00.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R208-137",
-    "owner": "WL",
-    "parentName": "R208-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     208
-    ],
-    "time": {
-     "end": "2026-11-13T14:14:00.000+0100",
-     "start": "2026-11-13T12:39:14.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R209-137",
-    "owner": "WL",
-    "parentName": "R209-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     209
-    ],
-    "time": {
-     "end": "2026-11-13T14:14:00.000+0100",
-     "start": "2026-11-13T13:15:48.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R210-137",
-    "owner": "WL",
-    "parentName": "R210-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     210
-    ],
-    "time": {
-     "end": "2026-11-13T14:14:00.000+0100",
-     "start": "2026-11-13T13:15:48.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R211-137",
-    "owner": "WL",
-    "parentName": "R211-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     211
-    ],
-    "time": {
-     "end": "2026-11-13T14:14:00.000+0100",
-     "start": "2026-11-13T13:15:48.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
