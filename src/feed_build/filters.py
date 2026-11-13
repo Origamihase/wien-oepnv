@@ -453,7 +453,7 @@ def _defer_repeated_route_titles(
     "Soll am Sonntagmorgen die Meldung des Tages vor dem Wochenendfenster
     stehen?": "Nein, Fenster behält den Platz" ("Es bleibt, wie es ist: An
     Samstag und Sonntag steht das Wochenendfenster vorn, die Meldung des
-    Tages hinter dem Feld."). As it is includes the current incident: a
+    Tages hinter dem Feld."). "Wie es ist" includes the current incident: a
     report that counts as one, by the rules or by the stored Gemini answer
     (``src.ki_entscheidung``, named on the card), holds the slot on that
     morning too. Not named by the card and unchanged: on the first day of

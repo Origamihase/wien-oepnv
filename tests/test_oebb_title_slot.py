@@ -16,10 +16,11 @@ an item of the day that leads like it: operator decision 2026-11-13, card
 "Soll am Sonntagmorgen die Meldung des Tages vor dem Wochenendfenster
 stehen?": "Nein, Fenster behält den Platz" ("Es bleibt, wie es ist: An
 Samstag und Sonntag steht das Wochenendfenster vorn, die Meldung des Tages
-hinter dem Feld."). As it is: an item of the day that counts as a current
-incident (by the rules, or by the stored Gemini answer "ploetzlich") holds
-the slot on a Sunday too. Not named by the card and unchanged: on the first
-day of the window the place in the sorted order decides.
+hinter dem Feld."). "Wie es ist" includes: an item of the day that counts
+as a current incident (by the rules, or by the stored Gemini answer
+"ploetzlich") holds the slot on a Sunday too. Not named by the card and
+unchanged: on the first day of the window the place in the sorted order
+decides.
 
 It also settles the slot beside a closure of more than four weeks past its
 first week (decision 2026-11-12, "Vorrang nur in der ersten Woche"): as the
