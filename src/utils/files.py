@@ -1,18 +1,57 @@
 """File utility helpers."""
+# Atomic writing (``atomic_write``) and the size-capped readers
+# (``read_capped_json`` / ``read_capped_text`` / ``read_capped_bytes``) live
+# here; the rest is split by topic and re-exported:
+#
+# * :mod:`src.utils.files_paths` - safe path joining, safe file names, hash,
+# * :mod:`src.utils.files_json` - strict JSON parsing (no NaN / Infinity),
+# * :mod:`src.utils.files_zip` - ZIP archive validation and its caps.
 from __future__ import annotations
 
 import hashlib
 import json
 import logging
-import math
 import os
-import re
 import secrets
-import zipfile
 from contextlib import contextmanager
 from pathlib import Path
 from typing import IO, Any
 from collections.abc import Iterator
+
+from .files_json import (
+    _reject_non_finite_constant,
+    _reject_non_finite_float,
+    loads_finite,
+)
+from .files_paths import get_file_hash, safe_path_join, sanitize_filename
+from .files_zip import (
+    DEFAULT_MAX_ZIP_ENTRIES,
+    DEFAULT_MAX_ZIP_FILENAME_LENGTH,
+    DEFAULT_MAX_ZIP_PER_ENTRY_UNCOMPRESSED,
+    DEFAULT_MAX_ZIP_TOTAL_UNCOMPRESSED,
+    validate_zip_archive_safe,
+)
+
+__all__ = [
+    "DEFAULT_MAX_BYTES_FILE_BYTES",
+    "DEFAULT_MAX_JSON_FILE_BYTES",
+    "DEFAULT_MAX_TEXT_FILE_BYTES",
+    "DEFAULT_MAX_ZIP_ENTRIES",
+    "DEFAULT_MAX_ZIP_FILENAME_LENGTH",
+    "DEFAULT_MAX_ZIP_PER_ENTRY_UNCOMPRESSED",
+    "DEFAULT_MAX_ZIP_TOTAL_UNCOMPRESSED",
+    "_reject_non_finite_constant",
+    "_reject_non_finite_float",
+    "atomic_write",
+    "get_file_hash",
+    "loads_finite",
+    "read_capped_bytes",
+    "read_capped_json",
+    "read_capped_text",
+    "safe_path_join",
+    "sanitize_filename",
+    "validate_zip_archive_safe",
+]
 
 # Default per-loader byte cap for on-disk JSON files. Sized at ~100x the
 # largest legitimately-written stations.json (~175 KiB) and polygon
@@ -43,28 +82,6 @@ DEFAULT_MAX_TEXT_FILE_BYTES = 50 * 1024 * 1024
 # (XLSX cache pinned at the HTTP fetch cap, small binary blob) pass an
 # explicit ``max_bytes``.
 DEFAULT_MAX_BYTES_FILE_BYTES = 50 * 1024 * 1024
-
-# Canonical defaults for the ``zipfile.ZipFile`` validator. The four caps
-# below close the four orthogonal axes that the existing
-# ``sum(info.file_size)`` check does NOT catch:
-#   (a) total uncompressed size (existing axis, kept for API compatibility);
-#   (b) per-entry uncompressed size (single huge member at exactly the
-#       total cap is undesirable for memory pressure);
-#   (c) entry count (millions-of-tiny-entries central-directory bombs
-#       inflate ``infolist()`` ZipInfo allocations and Python dict
-#       overhead even when ``sum(file_size) == 0``);
-#   (d) filename length (per-entry filenames up to 65535 bytes per ZIP
-#       spec — a cron pipeline's logging plumbing chokes on a multi-KiB
-#       filename written into a structured log line).
-# The defaults are sized at >>100x the largest legitimate xlsx shape so
-# production state is never rejected: a real ÖBB ``Verzeichnis der
-# Verkehrsstationen.xlsx`` has ~10-15 entries with the largest entry
-# (sheet1.xml) at ~5-10 MiB. A future xlsx with 100 sheets would fit
-# comfortably under the 1000-entry cap.
-DEFAULT_MAX_ZIP_TOTAL_UNCOMPRESSED = 100 * 1024 * 1024
-DEFAULT_MAX_ZIP_PER_ENTRY_UNCOMPRESSED = 50 * 1024 * 1024
-DEFAULT_MAX_ZIP_ENTRIES = 1000
-DEFAULT_MAX_ZIP_FILENAME_LENGTH = 1024
 
 
 def _close_and_cleanup_failed_write(
@@ -208,173 +225,6 @@ def atomic_write(
         # raised inside the ``with`` body must still close the temporary
         # file and remove it instead of leaking both.
         _close_and_cleanup_failed_write(f, fd, tmp_path)
-        raise
-
-
-def safe_path_join(base: str | Path, *paths: str | Path) -> Path:
-    """Safely join paths, ensuring the result is within the base directory."""
-    base_abs = os.path.abspath(base)
-
-    # Check for direct path traversal attempts in the inputs
-    for p in paths:
-        if '..' in str(p):
-            raise ValueError(f"Path traversal detected in '{p}'")
-
-    # os.path.join with an absolute path arg resets the path.
-    # We must prevent absolute path bypass.
-    for p in paths:
-        if os.path.isabs(p):
-            raise ValueError(f"Absolute path bypass detected in '{p}'")
-
-    final_path = os.path.abspath(os.path.join(base_abs, *paths))
-
-    # Ensure base_abs has a trailing separator for exact containment check
-    # so that "/var/lib/cache_dir" doesn't mistakenly contain "/var/lib/cache_dir_evil"
-    base_check = base_abs if base_abs.endswith(os.sep) else base_abs + os.sep
-
-    if not final_path.startswith(base_check) and final_path != base_abs:
-        raise ValueError(f"Path escape detected: {final_path} is outside of {base_abs}")
-
-    return Path(final_path)
-
-
-def sanitize_filename(filename_id: str) -> str:
-    """Sanitize a filename ID to prevent path traversal."""
-    # Only allow alphanumeric characters, dashes, and underscores
-    safe_base = re.sub(r'[^a-zA-Z0-9_-]', '_', str(filename_id))
-    # Verified: Uses SHA256 (no MD5) for security linter compliance
-    id_hash = hashlib.sha256(str(filename_id).encode('utf-8')).hexdigest()[:6]
-    return f"{safe_base}_{id_hash}"
-
-
-def get_file_hash(filepath: str | Path, chunk_size: int = 4096) -> str:
-    """Calculate the SHA256 hash of a file using chunked reading to minimize memory footprint."""
-    hasher = hashlib.sha256()
-    with open(filepath, "rb") as f:
-        for chunk in iter(lambda: f.read(chunk_size), b""):
-            hasher.update(chunk)
-    return hasher.hexdigest()
-
-
-# Reader-side defence-in-depth: reject non-finite ``NaN`` / ``Infinity`` /
-# ``-Infinity`` JSON literals (plus overflow-produced ``±inf`` via
-# scientific-notation tokens like ``1e1000``). Mirrors the writer-side
-# ``allow_nan=False`` pin closed at every committed-to-main writer in
-# Round 1485 / Round 1487 / Round 1488. Without the reader-side hooks
-# a planted non-standard literal in an on-disk state file (compromised
-# CI runner, parallel orchestrator atomic state swap, partial flush +
-# power loss, hostile PR landing a tampered fixture) propagates silently
-# as ``float('nan')`` / ``float('inf')`` into Python-level computation:
-#
-#   * ``nan != nan`` returns ``True`` — breaks every dedup invariant
-#     and timestamp comparison that uses ``!=``.
-#   * ``nan + 5`` returns ``nan`` — silently poisons every downstream
-#     arithmetic chain (latency averages, retention-cutoff windows).
-#   * ``inf - inf`` returns ``nan`` — same silent poison shape.
-#   * Round-trip back to a writer hits the ``allow_nan=False`` pin and
-#     raises ``ValueError`` — the cron pipeline crashes mid-write with
-#     no recovery, instead of detecting the corruption at read time and
-#     starting from a clean (empty) state per the canonical
-#     ``read_capped_json`` recovery pattern.
-#
-# Both hooks raise :class:`json.JSONDecodeError` (a :class:`ValueError`
-# subclass) so callers' existing ``except json.JSONDecodeError`` handlers
-# catch the rejection transparently — no per-callsite ``except`` widening
-# is needed. The planted bytes are reported back to the operator log
-# alongside the existing depth/size/encoding diagnostics under the same
-# "corrupt file, treat as missing" recovery shape.
-
-
-def _reject_non_finite_constant(constant: str) -> float:
-    """``parse_constant`` hook: reject ``NaN`` / ``Infinity`` / ``-Infinity``
-    literal tokens (invalid per RFC 8259 §6).
-
-    Python's lenient mode accepts these three tokens as JSON values; this
-    hook overrides the default behaviour so the rejection surfaces as
-    ``json.JSONDecodeError`` at the parse boundary. Used as the canonical
-    ``parse_constant`` argument to :func:`json.loads` across every
-    committed-state-file reader in the project.
-    """
-    raise json.JSONDecodeError(
-        f"Non-finite JSON literal {constant!r}; "
-        f"RFC 8259 forbids NaN/Infinity tokens",
-        constant, 0,
-    )
-
-
-def _reject_non_finite_float(value: str) -> float:
-    """``parse_float`` hook: reject overflow-produced non-finite floats.
-
-    Sibling defence to :func:`_reject_non_finite_constant`. Python's
-    ``json.loads`` parses syntactically-valid scientific-notation tokens
-    like ``"1e1000"`` (NOT a constant, NOT caught by ``parse_constant``)
-    by calling ``float(value)`` — which IEEE-754 overflows to ``+inf`` /
-    ``-inf`` silently. Without this hook a planted ``1e1000`` literal
-    bypasses the ``parse_constant`` defence and lands ``float('inf')``
-    in the parsed structure exactly the same as a ``NaN`` /
-    ``Infinity`` literal would.
-
-    Returns the parsed finite float unchanged; raises
-    :class:`json.JSONDecodeError` on overflow / underflow to a
-    non-finite value. Underflow to ``0.0`` (e.g. ``"1e-1000"``) is
-    finite and accepted — loss of precision is a separate threat
-    model from non-finite propagation.
-    """
-    parsed = float(value)
-    if not math.isfinite(parsed):
-        raise json.JSONDecodeError(
-            f"Non-finite JSON number {value!r}; "
-            f"RFC 8259 requires finite IEEE-754 doubles",
-            value, 0,
-        )
-    return parsed
-
-
-def loads_finite(raw: str | bytes | bytearray) -> object:
-    """Parse *raw* JSON, rejecting non-finite literals at the parse boundary.
-
-    Canonical wrapper for :func:`json.loads` that bakes in the
-    :func:`_reject_non_finite_constant` + :func:`_reject_non_finite_float`
-    hooks the on-disk readers already use (Round 1503). Closes the
-    network-tainted / env-tainted parse boundary that PR #1503 left open:
-
-    * Upstream HTTP responses (Wiener Linien, Google Places, OSM Overpass,
-      HAFAS, ÖBB VAO, VOR, GitHub API, Wien Baustellen) parsed via
-      ``json.loads(content)`` accept ``NaN`` / ``Infinity`` /
-      ``-Infinity`` literal tokens AND scientific-notation overflow
-      (``1e1000`` → ``+inf``) under Python's lenient default
-      ``json.loads`` settings. A compromised upstream / MITM / DNS-hijack
-      can plant non-finite floats into the in-memory data structure,
-      poisoning every downstream comparison (``nan != nan`` is ``True``
-      — breaks every dedup invariant), arithmetic chain (``nan + 5 ==
-      nan``), and round-trip back to the writer's ``allow_nan=False``
-      pin (Round 1485/1487/1488 — ``ValueError`` crashes the cron
-      pipeline mid-write).
-    * Env-controlled JSON (``BOUNDINGBOX_VIENNA``) parsed via
-      ``json.loads(env_str)`` accepts the same literals under the same
-      threat model — a leaked CI env / compromised secret store / hostile
-      operator can plant non-finite coordinates that propagate through
-      every downstream bounding-box computation.
-
-    Both hooks raise :class:`json.JSONDecodeError` (a :class:`ValueError`
-    subclass) so callers' existing ``except (ValueError,
-    json.JSONDecodeError, RecursionError)`` handlers catch the rejection
-    transparently — no per-callsite ``except`` widening is needed.
-    """
-    # The enclosing try/except is required to satisfy the JSON-parser
-    # audit walker (``tests/test_sentinel_json_audit_walker.py``) which
-    # enforces RecursionError tolerance at every ``json.loads`` callsite.
-    # ``loads_finite`` re-raises RecursionError unchanged so the caller's
-    # ``except RecursionError`` handler runs identically to the pre-fix
-    # bare ``json.loads(raw)`` shape — no behaviour change for the
-    # caller, just a structural pin for the walker invariant.
-    try:
-        return json.loads(
-            raw,
-            parse_constant=_reject_non_finite_constant,
-            parse_float=_reject_non_finite_float,
-        )
-    except RecursionError:
         raise
 
 
@@ -598,94 +448,3 @@ def read_capped_bytes(
             return raw
     except OSError:
         return None
-
-
-def validate_zip_archive_safe(
-    archive: zipfile.ZipFile,
-    *,
-    max_total_uncompressed: int = DEFAULT_MAX_ZIP_TOTAL_UNCOMPRESSED,
-    max_per_entry_uncompressed: int = DEFAULT_MAX_ZIP_PER_ENTRY_UNCOMPRESSED,
-    max_entries: int = DEFAULT_MAX_ZIP_ENTRIES,
-    max_filename_length: int = DEFAULT_MAX_ZIP_FILENAME_LENGTH,
-    label: str = "ZIP",
-) -> None:
-    """Validate a :class:`zipfile.ZipFile` against zip-bomb / metadata-trust
-    attacks. Raises :class:`ValueError` when any of the canonical caps is
-    exceeded.
-
-    Threat model: a compromised CDN / DNS-hijack / MITM serves a malicious
-    ZIP that the cron pipeline downloads via ``fetch_content_safe`` (≤ 10
-    MiB compressed). The orchestrator runs the consuming script via
-    ``subprocess.run(check=True)``, so any unhandled ``MemoryError`` /
-    ``zipfile.BadZipFile`` raises ``CalledProcessError`` and aborts the
-    WHOLE cron pipeline. The four axes closed here are orthogonal to the
-    existing ``sum(info.file_size) <= 100 MiB`` total cap and were left
-    open by every prior round of the size-bomb family:
-
-    1. **Per-entry uncompressed size** — the existing total-sum check
-       passes a single 100 MiB entry; production xlsx have no entry
-       larger than ~10 MiB (sheet1.xml). Capping per-entry independently
-       defeats the "single huge member" shape that the total-sum check
-       cannot catch.
-    2. **Entry count** — a ZIP with millions of tiny entries (each
-       declaring ``file_size = 0``) passes the total-sum check trivially
-       but inflates ``archive.infolist()`` to a ZipInfo array whose
-       Python overhead can OOM the runner before the consumer ever sees
-       a row. Capping entry count at 1000 (>> 50 in any legitimate xlsx)
-       defeats the central-directory bloat shape.
-    3. **Filename length** — each ZIP entry name can be up to 65535 bytes
-       per spec; a planted multi-KiB filename poisons every structured
-       log line that includes ``info.filename`` and breaks downstream
-       log parsers (and serializes-to-disk size in the cron pipeline's
-       diagnostic dumps). Capping filename length at 1024 bytes (>> any
-       legitimate xlsx member path) defeats the filename-bomb shape.
-    4. **Total uncompressed size** — preserved as the canonical axis the
-       prior fix-shape established (mirrors :func:`read_capped_json`).
-
-    Why metadata is sufficient: Python's :mod:`zipfile` enforces
-    ``info.file_size`` as the upper bound on ``archive.open(...).read()``
-    via per-entry CRC validation (see ``ZipExtFile._read1`` /
-    ``_update_crc`` in CPython). A lying central directory cannot
-    therefore amplify memory beyond the declared value under current
-    Python (3.11+) — an attacker who tries to ship a ZIP with declared
-    ``file_size = 1`` but actual decompressed payload ≫ 1 byte hits
-    ``BadZipFile: Bad CRC-32`` on the very first ``read()``. The
-    metadata-based caps closed in this validator therefore add
-    defense-in-depth on the *orthogonal* shape axes (per-entry, count,
-    filename) rather than the size-amplification axis.
-
-    Mirrors the canonical-helper pattern from :func:`read_capped_json` /
-    :func:`read_capped_text` — a single point of audit + a single
-    inventory-test target. New ZipFile constructor callsites that
-    bypass this helper fail the
-    ``test_no_unbounded_zipfile_zipfile_in_src_or_scripts`` walker at
-    PR-review time.
-    """
-    infos = archive.infolist()
-    if len(infos) > max_entries:
-        raise ValueError(
-            f"{label} archive has too many entries: {len(infos)} > {max_entries}"
-        )
-    total_declared = 0
-    for info in infos:
-        # Measure the encoded byte length: ``zipfile`` decodes entry names to a
-        # ``str``, so ``len()`` would count code points and let a multibyte
-        # (CJK/emoji) name reach ~4x the cap on disk / in a log line — the very
-        # filename-bomb shape this guard defends against.
-        filename_bytes = len(info.filename.encode("utf-8", "surrogatepass"))
-        if filename_bytes > max_filename_length:
-            raise ValueError(
-                f"{label} archive entry filename length exceeds threshold: "
-                f"{filename_bytes} > {max_filename_length} bytes"
-            )
-        if info.file_size > max_per_entry_uncompressed:
-            raise ValueError(
-                f"{label} archive entry declares {info.file_size} "
-                f"uncompressed bytes > {max_per_entry_uncompressed}"
-            )
-        total_declared += info.file_size
-        if total_declared > max_total_uncompressed:
-            raise ValueError(
-                f"{label} archive total declared uncompressed size "
-                f"exceeds threshold: {total_declared} > {max_total_uncompressed} bytes"
-            )

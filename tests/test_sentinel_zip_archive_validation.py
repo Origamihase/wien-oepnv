@@ -418,13 +418,14 @@ def test_validator_definition_does_not_trigger_inventory_walker() -> None:
     test pins that the helper definition module does not itself create
     a ZipFile and therefore does not need to call its own helper.
     """
-    files_module = (
-        Path(__file__).resolve().parents[1] / "src" / "utils" / "files.py"
-    )
-    source = files_module.read_text(encoding="utf-8")
-    # Type annotations like ``archive: zipfile.ZipFile`` are fine.
-    # Only the *constructor call* is the audit target.
-    assert "zipfile.ZipFile(" not in source, (
-        "src/utils/files.py should not itself call zipfile.ZipFile() — it "
-        "only consumes already-opened archives via validate_zip_archive_safe."
-    )
+    utils_dir = Path(__file__).resolve().parents[1] / "src" / "utils"
+    # ``files.py`` is the facade; the validator itself lives in
+    # ``files_zip.py`` since the 700-line split.
+    for files_module in (utils_dir / "files.py", utils_dir / "files_zip.py"):
+        source = files_module.read_text(encoding="utf-8")
+        # Type annotations like ``archive: zipfile.ZipFile`` are fine.
+        # Only the *constructor call* is the audit target.
+        assert "zipfile.ZipFile(" not in source, (
+            f"src/utils/{files_module.name} should not itself call zipfile.ZipFile() — it "
+            "only consumes already-opened archives via validate_zip_archive_safe."
+        )
