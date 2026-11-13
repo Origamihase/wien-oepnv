@@ -185,9 +185,9 @@ mit dem Hinweis, dass Gemini ihn geschrieben und ein Skript ihn geprüft hat.
   Verbindung geben an das nächste Modell weiter; ein abgelehnter Schlüssel
   (401, 403 oder 400 mit `API_KEY_INVALID`) beendet den Durchgang. Schlüssel,
   Modellkette und Kontingent teilt der Rückblick mit dem KI-Wächter
-  ([`docs/reference/ki_waechter.md`](../../docs/reference/ki_waechter.md),
+  ([`docs/reference/ki_waechter-teil-2.md`](../../docs/reference/ki_waechter-teil-2.md),
   „Jahresrückblick der Baustellen“); Statistik-Schritt, Exit-Codes und
-  Probelauf: [`docs/development-teil-2.md`](../../docs/development-teil-2.md).
+  Probelauf: [`docs/development-teil-4.md`](../../docs/development-teil-4.md).
 - **Der Prompt** (`build_prompt` in `src/markdown_stats/year_review.py`) gibt
   dem Modell die Regeln (4 bis 6 sachliche Sätze in einem Absatz, nur was in
   den Daten oder im Faktenblock steht, Antwort als `{"rueckblick": "…"}`),

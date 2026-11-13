@@ -27,7 +27,7 @@ name: Takt-Fallback
 # Runs started by the bot mail nobody, so the check also comments on the
 # issue once when the fallback fails and once when it runs again (Michael
 # 2026-11-04, card "Ja, Kommentar im Issue").
-# Details: src/takt_fallback.py, docs/development-teil-2.md ("Geplante
+# Details: src/takt_fallback.py, docs/development-teil-4.md ("Geplante
 # Läufe").
 #
 # The schedule below restarts the watch should the chain ever break (GitHub
