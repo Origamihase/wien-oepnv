@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_36, ftazW_113, ftazW_354, ftazW_519, ftazW_482, ftazW_1017117, ftazW_520, ftazW_114, ftazW_22, ftazW_355, ftazW_483, ftazW_1017118"
+    "trafficInfoNameList": "ftazW_36, ftazW_113, ftazW_354, ftazW_519, ftazW_482, ftazW_1017117, ftazW_520, ftazW_114, ftazW_355, ftazW_483, ftazW_1017118"
    }
   ],
   "poiCategoryGroups": [
@@ -3071,43 +3071,6 @@
      "start": "2026-11-16T01:15:00.000+0100"
     },
     "title": "Schwedenplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "16.11.2026 05:15",
-     "ausVon": "16.11.2026 01:15",
-     "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Gumpendorfer Straße",
-     "rbls": [
-      4618
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Gumpendorfer Straße",
-     "status": "geplante Wartung",
-     "towards": "U6 Floridsdorf"
-    },
-    "description": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Gumpendorfer Straße",
-    "elevatorId": "GU 01",
-    "name": "ftazW_22",
-    "parentName": "ftazW_22",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4618
-    ],
-    "time": {
-     "end": "2026-11-16T05:15:00.000+0100",
-     "start": "2026-11-16T01:15:00.000+0100"
-    },
-    "title": "Gumpendorfer Straße"
    },
    {
     "alertCause": "undefined alert cause",
