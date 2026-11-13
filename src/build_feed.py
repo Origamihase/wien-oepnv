@@ -124,6 +124,7 @@ from .feed_build.filters import (
     _apply_topic_budget, _defer_repeated_route_titles, _is_test_message, _drop_test_messages, _preview_last_day,
     _starts_after, _defer_upcoming_items, _defer_all_clear_items,
 )
+from .feed_build.oebb_days import _long_closure_start
 from .feed_build.oebb_lead import (
     _oebb_lead_section_end, _end_with_oebb_lead_section, _with_second_sentence, _oebb_sentence_without_place,
     _oebb_first_two_sentences,
@@ -470,7 +471,9 @@ def _assemble_feed_items(
     # see ``_defer_repeated_route_titles``; a current incident keeps its
     # place (tier 0 of the sort key).
     items = _defer_repeated_route_titles(
-        items, is_current=lambda it: sort_keys[id(it)][0] == 0
+        items, is_current=lambda it: sort_keys[id(it)][0] == 0,
+        gives_way=lambda it: _long_closure_start(it, now_utc) is not None,
+        leads=lambda it: sort_keys[id(it)][0] == 1,
     )
     # One event must not take every slot — see ``_apply_topic_budget``.
     items = _apply_topic_budget(items, feed_config.MAX_ITEMS_PER_TOPIC)

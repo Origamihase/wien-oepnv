@@ -324,6 +324,12 @@ aktuellen Störungen und die Menge der Meldungen bleiben gleich; sieben
 vier zugleich), dafür fallen WL-Hinweise heraus. Mit der Regel vom 11.11. sind
 es vier echte Sperren (Hbf ↔ Westbahnhof, REX 50, Gramatneusiedl, R40),
 höchstens zwei zugleich (Nachbau aller 872 Stände vom 15.10. bis 08.11.).
+Seit 2026-11-12 hat eine Sperre, die länger als vier Wochen Tag für Tag
+sperrt, den Vorrang nur in ihren ersten sieben Tagen (`_past_first_week`,
+Betreiberentscheidung „Vorrang nur in der ersten Woche“; Anlass „Wien
+Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx“, 07.09.2026 bis 31.10.2027).
+Danach steht sie bei den übrigen Hinweisen und zählt dort ab ihrem ersten Tag
+(`_long_closure_start`); Wochenendnächte und kürzere Sperren behalten ihn (Lesarten: `docs/architecture.md`).
 
 Wiederkehrende WL-Meldungen: Die WL-GUID besteht aus Kategorie, Thema und
 Linien, ein Datum enthält sie nicht. „94A: Verkehrsunfall“ hat an jedem Tag
@@ -442,7 +448,7 @@ löschen. Alle vier stellen Items nur hinter das Feld, von wo sie nachrücken:
    Störung wie eine Bauphase nach der Strecke, und eine laufende Bauphase
    hat immer das frühere Fenster. Ein Unfall zwischen Wien Hbf und Wien
    Westbahnhof wäre sonst neben den Bauarbeiten dort (11.09. bis
-   01.11.2026) hinter das Feld gerutscht. Seit Juli kam das noch nicht vor.
+   01.11.2026) hinter das Feld gerutscht. Seit Juli kam das noch nicht vor. Seit 2026-11-12 gibt eine Sperre über vier Wochen nach ihrer ersten Woche den Platz an eine Sperre derselben Strecke ab, die heute Sperrtag hat (`gives_way`, `leads`), und rückt selbst hinter das Feld: Als frühestes Fenster hielte sie den Platz ihres Titels sonst, bis sie endet („Kurze Sperren und Wochenendnächte behalten den Vorrang.“). Sonst gilt die Regel des frühesten Fensters unverändert: Ohne Sperre mit Sperrtag behält die lange Sperre den Platz, auch neben einem neueren Hinweis zur Strecke, und ein anderes frühestes Fenster behält ihn auch neben einem späteren Fenster mit Sperrtag (Gramatneusiedl am 09.11.2026 von 04:31 bis 06:31 Uhr: im Nachspiel das Fenster der Wochenendnächte auf Platz 11 bis 15, die Meldung des Tages hinter dem Feld).
 2. `_apply_topic_budget`: höchstens `MAX_ITEMS_PER_TOPIC` Einträge je
    Ursachenwort und Tag in den vorderen Plätzen.
 3. `_defer_upcoming_items`: Was erst nach `UPCOMING_PREVIEW_DAYS` Tagen ab

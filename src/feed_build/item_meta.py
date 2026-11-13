@@ -24,7 +24,7 @@ from .state import _identity_for_item, _lookup_state
 from .time_line import _first_published, _incident_since
 from .title_words import _is_baustelle, _is_wl_notice
 from .item_history import _NEW_OCCURRENCE_KEY, _initial_first_seen, _note_announced_starts
-from .oebb_days import _is_oebb_closure_day
+from .oebb_days import _is_oebb_closure_day, _long_closure_start
 
 __all__ = [
     "_sort_moment", "_CURRENT_INCIDENT_WINDOW", "_is_current_incident", "_recency_sort_key",
@@ -142,7 +142,10 @@ def _recency_sort_key(
     Sorts by the persisted (guid-stable) ``first_seen`` descending. An item
     not yet in the state counts as just-appeared (``now``) so genuinely new
     disruptions lead. An announced measure counts from its start once that
-    has come (:func:`_sort_moment`). No-longer-valid items are already removed upstream by
+    has come (:func:`_sort_moment`), an ÖBB closure of more than four weeks
+    past its first week from the day it began
+    (:func:`~.oebb_days._long_closure_start`), unless it is a current
+    incident. No-longer-valid items are already removed upstream by
     :func:`_drop_old_items`, so the visible Top-N are the newest still-valid
     disruptions; older ones fall off the bottom as fresher ones arrive.
 
@@ -165,6 +168,13 @@ def _recency_sort_key(
     first_seen = _parse_first_seen(entry, None) or _initial_first_seen(item, now_utc)
     first_seen = _sort_moment(entry, first_seen, now_utc)
     first_seen = _baustelle_start_cap(item, first_seen, now_utc)
+    # An ÖBB closure of more than four weeks past its first week counts from
+    # the day it began (operator decision 2026-11-12, :mod:`.oebb_days`). A
+    # current incident keeps its moment: "Störungen gehen immer vor."
+    current = _is_current_incident(item, entry, first_seen, now_utc)
+    closure_start = None if current else _long_closure_start(item, now_utc)
+    if closure_start is not None:
+        first_seen = min(first_seen, closure_start)
     pub = _parse_datetime(item.get("pubDate"))
     pub_ts = pub.timestamp() if isinstance(pub, datetime) else float("-inf")
     # Clamp a future pubDate to now: a bogus future publication date must not
@@ -174,8 +184,9 @@ def _recency_sort_key(
     guid_str = str(guid_val) if guid_val else _identity_for_item(item)
     # Tier 0: current incidents. Tier 1: an ÖBB closure on a day it closes
     # the line, a notice with higher priority (operator decision 2026-11-08,
-    # :mod:`.oebb_days`). Tier 2: everything else.
-    if _is_current_incident(item, entry, first_seen, now_utc):
+    # :mod:`.oebb_days`; a closure of more than four weeks only in its first
+    # week, decision 2026-11-12). Tier 2: everything else.
+    if current:
         tier = 0
     elif _is_oebb_closure_day(item, now_utc):
         tier = 1

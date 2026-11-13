@@ -239,7 +239,9 @@ def test_a_moved_lead_takes_its_days_from_the_first_sentence() -> None:
     assert not _is_oebb_closure_day(closed, _vienna(2026, 10, 15))
     # ÖBB's first sentence names its day in a form the reader does not take:
     # still a planned measure, and the diversion shown first closes nothing.
-    night = cast(FeedItem, {**item, "description": str(item["description"]).replace(
+    # Its own period of four weeks keeps the rule for long closures (12.11.) out of this.
+    night = cast(FeedItem, {**item, "starts_at": "2026-08-10T00:00:00+02:00", "ends_at": "2026-09-06T23:59:59+02:00",
+                            "description": str(item["description"]).replace(
         "von <b>10.08.2026</b> bis <b>06.09.2026 </b>", "in der Nacht von <b>14.08.</b> auf <b>15.08.2026</b> ")})
     sentences, shown = _oebb_shown_sentences(night)
     assert "in der Nacht von 14.08. auf 15.08.2026" in sentences[0] and shown[0].startswith(REX1_DIVERSION)
