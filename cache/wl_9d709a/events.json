@@ -662,6 +662,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11A: Rettungseinsatz",
+    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "42fd134123a418e9ad9efe9206b8aec78f4828e1289887cd32b9a179ab2ed7cd",
+    "pubDate": "2026-11-13T09:57:00+01:00",
+    "starts_at": "2026-11-13T09:57:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=11A|D=2026-11-13|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261113-0018"
+    ],
+    "_incident_start": "2026-11-13T09:57:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Rettungseinsatz Betrieb ab Bruno-Marek-Allee",
+    "description": "Linie 12: Betrieb nur zwischen Josefstädter Straße und Bruno-Marek-Allee. Voraussichtliche Dauer: 10:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Hillerstraße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "301231dd4b3d1424c578c356e1ad1eaef839db54dc847e98930e9441759060a5",
+    "pubDate": "2026-11-13T09:46:00+01:00",
+    "starts_at": "2026-11-13T09:51:02+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=12|D=2026-11-13|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261113-0017"
+    ],
+    "_incident_start": "2026-11-13T09:46:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
