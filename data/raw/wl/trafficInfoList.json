@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261113-0021-F01, I20260925-0011, I20260909-0007, I20261020-0029, I20261113-0023, I20261113-0022-F01"
+    "trafficInfoNameList": "I20261113-0024, I20261113-0021-F01, I20260925-0011, I20260909-0007, I20261020-0029, I20261113-0023, I20261113-0022-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2345-127, R2372-125, R2373-125, R401-101, R293-474, R318-437, R2373-127, R2373-126, R2379-627, R2380-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R1876-101, R1883-101, R1882-101, R1881-101, R1875-101, R1880-101, R1884-101, R2558-125, R3886-480, R1974-466, R1199-205, R500-101, R201-137, R206-137, R207-137, R205-137, R204-137, R203-137, R202-137, R1354-143, R1355-143, R1356-143, R1353-143, R208-137, R215-137, R216-137, R197-137, R196-137, R198-137, R199-137, R276-143, R277-143, R1387-144, R242-144, R245-144, R241-144, R244-144, R237-143, R236-143, R235-143, R234-143, R218-143, R217-143, R219-143, R1346-143, R1345-143, R236-144, R246-144, R237-144, R1371-144, R1370-144, R1372-144, R1373-144, R219-144, R218-144, R555-144, R217-144, R1360-144, R1345-144, R1361-144, R1346-144, R276-144, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R2380-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R401-101, R2378-627, R293-474, R2345-127, R1880-101, R1876-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R2558-125, R3886-480, R1974-466, R1199-205, R500-101, R202-137, R201-137, R203-137, R204-137, R205-137, R206-137, R207-137, R1353-143, R1356-143, R1355-143, R1354-143, R199-137, R216-137, R215-137, R198-137, R197-137, R196-137, R208-137, R277-143, R276-143, R1387-144, R241-144, R242-144, R245-144, R244-144, R235-143, R234-143, R236-143, R237-143, R217-143, R218-143, R219-143, R1345-143, R1346-143, R236-144, R246-144, R237-144, R1370-144, R1373-144, R1372-144, R1371-144, R219-144, R217-144, R555-144, R218-144, R1361-144, R1346-144, R1345-144, R1360-144, R276-144, R150-137, R209-137, R210-137, R211-137, R149-137, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -317,6 +317,51 @@
      "start": "2026-11-13T12:33:00.000+0100"
     },
     "title": "44, 43: Beschädigte Oberleitung"
+   },
+   {
+    "alertCause": "overhead wire failure",
+    "alertCauseId": 39,
+    "attributes": {
+     "relatedLineTypes": {
+      "38": "ptTram"
+     }
+    },
+    "description": "Linie 38: Unregelmäßige Intervalle in beiden Richtungen. Grund: Fahrleitungsgebrechen.",
+    "descriptionHTML": "<p>Linie 38:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Fahrleitungsgebrechen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 38:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Fahrleitungsgebrechen.</p>",
+       "descriptionPlain": "Linie 38: Unregelmäßige Intervalle in beiden Richtungen. Grund: Fahrleitungsgebrechen.",
+       "title": "38: Beschädigte Oberleitung"
+      }
+     }
+    ],
+    "name": "I20261113-0024",
+    "owner": "WL",
+    "parentName": "I20261113-0024",
+    "priority": "1",
+    "reasonId": 23,
+    "reasonName": "Fahrleitungsgebrechen",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 138,
+      "lineName": "38",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-13T13:19:00.000+0100",
+     "lastUpdate": "2026-11-13T13:19:00.000+0100",
+     "resume": "2026-11-13T13:18:00.000+0100",
+     "start": "2026-11-13T13:18:00.000+0100"
+    },
+    "title": "38: Beschädigte Oberleitung"
    },
    {
     "alertCause": "undefined alert cause",
@@ -685,6 +730,52 @@
      "start": "2026-11-13T12:41:16.000+0100"
     },
     "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R149-137",
+    "owner": "WL",
+    "parentName": "R149-137",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "37"
+    ],
+    "relatedStops": [
+     149
+    ],
+    "time": {
+     "end": "2026-11-13T14:14:00.000+0100",
+     "start": "2026-11-13T13:15:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R150-137",
+    "owner": "WL",
+    "parentName": "R150-137",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "37"
+    ],
+    "relatedStops": [
+     150
+    ],
+    "time": {
+     "end": "2026-11-13T14:14:00.000+0100",
+     "start": "2026-11-13T13:15:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1126,7 +1217,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Falschparker\nBetrieb ab Canisiusgasse",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "name": "R208-137",
     "owner": "WL",
     "parentName": "R208-137",
@@ -1141,10 +1232,79 @@
      208
     ],
     "time": {
-     "end": "2026-11-13T13:37:00.000+0100",
+     "end": "2026-11-13T14:14:00.000+0100",
      "start": "2026-11-13T12:39:14.000+0100"
     },
-    "title": "Falschparker\nBetrieb ab Canisiusgasse"
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R209-137",
+    "owner": "WL",
+    "parentName": "R209-137",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "37"
+    ],
+    "relatedStops": [
+     209
+    ],
+    "time": {
+     "end": "2026-11-13T14:14:00.000+0100",
+     "start": "2026-11-13T13:15:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R210-137",
+    "owner": "WL",
+    "parentName": "R210-137",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "37"
+    ],
+    "relatedStops": [
+     210
+    ],
+    "time": {
+     "end": "2026-11-13T14:14:00.000+0100",
+     "start": "2026-11-13T13:15:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R211-137",
+    "owner": "WL",
+    "parentName": "R211-137",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "37"
+    ],
+    "relatedStops": [
+     211
+    ],
+    "time": {
+     "end": "2026-11-13T14:14:00.000+0100",
+     "start": "2026-11-13T13:15:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
