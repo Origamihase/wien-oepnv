@@ -16,7 +16,8 @@ from .oebb_summary import (
 )
 
 __all__ = [
-    "_OEBB_RESTRICTION_RE", "_OEBB_NO_TRAINS_RE", "_OEBB_SLOT_NOT_A_NAME_RE", "_OEBB_SENTENCE_SPLIT_RE",
+    "_OEBB_RESTRICTION_RE", "_OEBB_RESTRICTION_FRONT_RE", "_oebb_cannot_run_middle_en", "_OEBB_NO_TRAINS_RE",
+    "_OEBB_SLOT_NOT_A_NAME_RE", "_OEBB_SENTENCE_SPLIT_RE",
     "_oebb_station_en", "_CAUSE_EN_RE", "_oebb_slots_are_names", "_OebbCannotRun", "_oebb_cannot_run_parts",
     "_render_oebb_follow_up", "_WL_BECAUSE_RE", "_WL_THEREFORE_EN_RE", "_WL_MAIN_CLAUSE_SMALL_WORDS",
     "_WL_SENTENCE_SPLIT_RE", "_RELOCATION_CLOSED_LINE_RE", "_WL_IRREGULAR_INTERVALS_RE",
@@ -28,10 +29,17 @@ __all__ = [
 # distinct ÖBB sentences published since 2026-05-20 open with "Wegen", and
 # almost all of them are one sentence with five slots::
 #
-#     Wegen <Ursache> sind|waren zwischen <A> und <B> | in <A> [Zugfahrten]
+#     Wegen <Ursache> sind|waren zwischen <A> und <B> | in <A> [Zugfahrten
+#     | für Züge der Linie <L>]
 #     [bis [voraussichtlich] | voraussichtlich bis] [<TT.MM.JJJJ>,] <hh:mm> Uhr
-#     | derzeit]
+#     | <TT.MM.JJJJ> | derzeit]
 #     keine Fahrten | nur eingeschränkt [Fahrten] möglich.
+#
+# The line and the bare end day were added on 2026-11-13 with the order of
+# ``_oebb_restriction_first``: "für Züge der Linie S 45 bis voraussichtlich
+# 24.07.2026, 01:00 Uhr" and "bis voraussichtlich 07.09.2026" went through
+# the model and read "trains on line S 45 until approx. 24.07.2026, 01:00 no
+# journeys are possible" and "until approx. 07.09.2026 is not possible".
 #
 # The model handled the verb at the end badly, and the meaning went with it
 # (EN audit 2026-10-03, all from the feed)::
@@ -55,12 +63,22 @@ __all__ = [
 _OEBB_RESTRICTION_RE: re.Pattern[str] = re.compile(
     r"Wegen (?P<cause>.+?) (?P<tense>sind|waren)"
     r"(?P<place> (?:zwischen (?P<a>.+?) und (?P<b>.+?)|in (?P<at>.+?)|im Bereich (?P<area>.+?)))?"
-    r"(?: Zugfahrten)?"
+    r"(?: Zugfahrten| für Züge der Linie (?P<line>[A-Z]{1,4} ?\d{1,3}))?"
     r"(?: (?:bis (?P<expected>voraussichtlich )?|(?P<expected_first>voraussichtlich) bis )"
-    r"(?:(?P<date>\d{2}\.\d{2}\.\d{4}),? )?"
-    r"(?P<time>\d{1,2}:\d{2})(?: Uhr)?"
+    r"(?:(?:(?P<date>\d{2}\.\d{2}\.\d{4}),? )?(?P<time>\d{1,2}:\d{2})(?: Uhr)?"
+    r"|(?P<until_day>\d{2}\.\d{2}\.\d{4}))"
     r"| (?P<now>derzeit))?"
     r" (?:(?P<none>keine Fahrten|nicht)|nur eingeschränkt(?: Fahrten)?) möglich\."
+)
+# The same sentence with what is not possible first and the places behind a
+# colon, as :func:`_oebb_restriction_first` gives it when it is over the 180
+# characters, cut or not: "Wegen eines Polizeieinsatzes sind bis
+# voraussichtlich 13:30 Uhr keine Fahrten möglich: zwischen Tullnerfeld
+# Bahnhof und St. Pölten Hbf bzw. Tullnerfeld Bahnhof …". The head is the
+# template above without its place, the places are read like those of
+# "… kann … nicht fahren: …" (``_oebb_cannot_run_middle_en``).
+_OEBB_RESTRICTION_FRONT_RE: re.Pattern[str] = re.compile(
+    r"(?P<head>Wegen .+? möglich): (?P<middle>(?:zwischen|in|im Bereich) .+?)(?:\.|(?P<cut> …))"
 )
 # The planned-works variant: "Wegen Bauarbeiten können [von D bis D]
 # [zwischen A und B] [von D bis D] keine R 40-Züge fahren." (the German

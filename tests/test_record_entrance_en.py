@@ -17,6 +17,9 @@ Mutations checked against this file (each one caught, by the test named):
   ``test_a_stop_named_after_an_entrance_keeps_its_name``.
 * the genitive ending is kept ("of Kurparks") →
   ``test_the_68a_place_reads_english``.
+* only "Eingang" is a way in (2026-11-13) → ``test_the_8a_place_reads_english``.
+* "Einfahrt" reads "entrance" → ``test_the_8a_place_reads_english``.
+* "Zufahrt zum Campingplatz" loses its fixed wording → ``test_the_access_forms``.
 """
 
 from __future__ import annotations
@@ -68,4 +71,39 @@ def test_a_stop_named_after_an_entrance_keeps_its_name() -> None:
     ],
 )
 def test_the_entrance_forms(record: str, expected: str) -> None:
+    assert _render(record) == expected
+
+
+# Every way in or out of a place, not only the entrance on foot (KI-Wächter
+# 13.11.2026, issue #2209): "8A: Küniglberg, ORF Zentrum" read "Würzburggasse
+# after the driveway zum Friedhof". Verbatim from cache/wl_9d709a/events.json
+# (12.11.2026), after HTML removal.
+DE_8A = "Von: Würzburggasse nach Einfahrt zum Friedhof Nach: Würzburggasse 49"
+
+
+def test_the_8a_place_reads_english() -> None:
+    assert _render(DE_8A) == (
+        "From: Würzburggasse after the driveway to Friedhof To: Würzburggasse 49"
+    )
+    # The relocation's way, as the summary shows it.
+    assert _render("Würzburggasse nach Einfahrt zum Friedhof → Würzburggasse 49.") == (
+        "Würzburggasse after the driveway to Friedhof → Würzburggasse 49."
+    )
+
+
+@pytest.mark.parametrize(
+    ("record", "expected"),
+    [
+        ("Von: Rosengasse 3 vor Ausfahrt der Garage", "From: Rosengasse 3 before the exit of Garage"),
+        ("Nach: Rosengasse nach Zufahrt zur Schule", "To: Rosengasse after the access road to Schule"),
+        ("Von: Rosengasse vor Seitenausgang des Bades", "From: Rosengasse before the side exit of Bad"),
+        ("Von: Hauseinfahrt der Stadthalle", "From: Building entrance of Stadthalle"),
+        ("Von: Zugang zum Park", "From: Access to Park"),
+        # The fixed wording of _RECORD_VALUE_RULES stays.
+        ("Von: Zufahrt zum Campingplatz", "From: The campsite access road"),
+        # Without an article behind it the word table renders the noun alone.
+        ("Von: Rosengasse vor Einfahrt 5", "From: Rosengasse before the driveway 5"),
+    ],
+)
+def test_the_access_forms(record: str, expected: str) -> None:
     assert _render(record) == expected
