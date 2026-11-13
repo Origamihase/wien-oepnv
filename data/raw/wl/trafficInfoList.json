@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20261113-0003, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261113-0004, I20260925-0011, I20261113-0005, I20260909-0007, I20261113-0003-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R401-101, R293-474, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R2558-125, R3886-480, R1749-508, R407-506, R402-506, R1974-466, R1199-205, R2218-131, R2220-131, R2221-131, R2226-131, R2227-131, R2219-131, R2200-131, R2210-131, R2212-131, R2216-131, R2217-131, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R401-101, R318-437, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R2558-125, R3886-480, R1974-466, R1199-205, R2200-131, R2227-131, R2226-131, R2221-131, R2220-131, R2219-131, R2218-131, R2217-131, R2216-131, R2212-131, R2210-131, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -178,18 +178,18 @@
       "31": "ptTram"
      }
     },
-    "description": "Linie 31: Fahrtbehinderung in Richtung Stammersdorf. Voraussichtliche Dauer: 05:15 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Empergergasse.",
-    "descriptionHTML": "<p>Linie 31:<br>Fahrtbehinderung in Richtung Stammersdorf.</p><p>Voraussichtliche Dauer: 05:15 Uhr.</p><p>Grund: Feuerwehreinsatz im Haltestellenbereich Empergergasse.</p>",
+    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 31:<br>Fahrtbehinderung in Richtung Stammersdorf.</p><p>Voraussichtliche Dauer: 05:15 Uhr.</p><p>Grund: Feuerwehreinsatz im Haltestellenbereich Empergergasse.</p>",
-       "descriptionPlain": "Linie 31: Fahrtbehinderung in Richtung Stammersdorf. Voraussichtliche Dauer: 05:15 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Empergergasse.",
+       "descriptionHtml": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "31: Feuerwehreinsatz"
       }
      }
     ],
-    "name": "I20261113-0003",
+    "name": "I20261113-0003-F01",
     "owner": "WL",
     "parentName": "I20261113-0003",
     "priority": "1",
@@ -211,11 +211,105 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-13T04:55:00.000+0100",
-     "lastUpdate": "2026-11-13T04:55:00.000+0100",
+     "created": "2026-11-13T05:02:00.000+0100",
+     "lastUpdate": "2026-11-13T05:02:00.000+0100",
+     "resume": "2026-11-13T05:02:00.000+0100",
      "start": "2026-11-13T04:55:00.000+0100"
     },
     "title": "31: Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U1: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261113-0004",
+    "owner": "WL",
+    "parentName": "I20261113-0004",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 301,
+      "lineName": "U1",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-13T05:21:00.000+0100",
+     "lastUpdate": "2026-11-13T05:21:00.000+0100",
+     "resume": "2026-11-13T05:21:00.000+0100",
+     "start": "2026-11-13T05:21:00.000+0100"
+    },
+    "title": "U1: Verspätungen"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie U6:<br>Fahrtbehinderung in Richtung Floridsdorf. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U6:<br>Fahrtbehinderung in Richtung Floridsdorf. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Grund: Rettungseinsatz.",
+       "title": "U6: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261113-0005",
+    "owner": "WL",
+    "parentName": "I20261113-0005",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4615
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-13T05:23:00.000+0100",
+     "lastUpdate": "2026-11-13T05:23:00.000+0100",
+     "resume": "2026-11-13T05:22:00.000+0100",
+     "start": "2026-11-13T05:22:00.000+0100"
+    },
+    "title": "U6: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -239,29 +333,6 @@
      "start": "2026-11-13T04:45:00.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
-    "name": "R1749-508",
-    "owner": "WL",
-    "parentName": "R1749-508",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N8"
-    ],
-    "relatedStops": [
-     1749
-    ],
-    "time": {
-     "end": "2026-11-13T05:15:00.000+0100",
-     "start": "2026-11-13T00:45:18.000+0100"
-    },
-    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1113,52 +1184,6 @@
      "start": "2026-11-13T00:00:12.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 ",
-    "name": "R402-506",
-    "owner": "WL",
-    "parentName": "R402-506",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N6"
-    ],
-    "relatedStops": [
-     402
-    ],
-    "time": {
-     "end": "2026-11-13T05:05:00.000+0100",
-     "start": "2026-11-13T00:55:17.000+0100"
-    },
-    "title": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
-    "name": "R407-506",
-    "owner": "WL",
-    "parentName": "R407-506",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N6"
-    ],
-    "relatedStops": [
-     407
-    ],
-    "time": {
-     "end": "2026-11-13T05:04:00.000+0100",
-     "start": "2026-11-13T00:54:17.000+0100"
-    },
-    "title": "Bauarbeiten\nBusse halten Quellenstraße 189"
    },
    {
     "alertCause": "undefined alert cause",
