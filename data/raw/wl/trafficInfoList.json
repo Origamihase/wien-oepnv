@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20261113-0045-F01, I20260909-0007, I20261020-0029, I20261113-0046"
+    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261113-0045-F01, I20261113-0046-F01, I20261113-0047, I20261113-0047-F01, I20261113-0048, I20261113-0049"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R318-437, R293-474, R2380-627, R2345-127, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1875-101, R1876-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R1586-457, R1590-457, R773-457, R1582-457, R587-110, R586-110, R585-110, R584-110, R583-110, R581-110, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R2380-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R318-437, R2345-127, R293-474, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R2558-125, R3886-480, R1974-466, R1199-205, R500-101, R17-0, R47-0, R1582-457, R587-110, R586-110, R585-110, R584-110, R583-110, R581-110, R588-110, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -223,19 +223,19 @@
       "10": "ptTram"
      }
     },
-    "description": "Linie 10: Fahrtbehinderung in Richtung Dornbach. Voraussichtliche Dauer: 19:25 Uhr. Grund: Falschparker im Bereich Reinlgasse 11.",
-    "descriptionHTML": "<p>Linie 10:<br>Fahrtbehinderung in Richtung Dornbach.</p><p>Voraussichtliche Dauer: 19:25 Uhr.</p><p>Grund: Falschparker im Bereich Reinlgasse 11.</p>",
+    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 10:<br>Fahrtbehinderung in Richtung Dornbach.</p><p>Voraussichtliche Dauer: 19:25 Uhr.</p><p>Grund: Falschparker im Bereich Reinlgasse 11.</p>",
-       "descriptionPlain": "Linie 10: Fahrtbehinderung in Richtung Dornbach. Voraussichtliche Dauer: 19:25 Uhr. Grund: Falschparker im Bereich Reinlgasse 11.",
+       "descriptionHtml": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "10: Falschparker"
       }
      }
     ],
     "location": "Reinlgasse 11",
-    "name": "I20261113-0046",
+    "name": "I20261113-0046-F01",
     "owner": "WL",
     "parentName": "I20261113-0046",
     "priority": "1",
@@ -254,11 +254,198 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-13T19:00:00.000+0100",
-     "lastUpdate": "2026-11-13T19:00:00.000+0100",
+     "created": "2026-11-13T19:10:00.000+0100",
+     "lastUpdate": "2026-11-13T19:10:00.000+0100",
+     "resume": "2026-11-13T19:10:00.000+0100",
      "start": "2026-11-13T18:59:00.000+0100"
     },
     "title": "10: Falschparker"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Voraussichtliche Dauer: 19:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Alser Straße.",
+    "descriptionHTML": "<p>Linie U6:<br>Fahrtbehinderung in Richtung Floridsdorf.</p><p>Voraussichtliche Dauer: 19:40 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Alser Straße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U6:<br>Fahrtbehinderung in Richtung Floridsdorf.</p><p>Voraussichtliche Dauer: 19:40 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Alser Straße.</p>",
+       "descriptionPlain": "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Voraussichtliche Dauer: 19:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Alser Straße.",
+       "title": "U6: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261113-0047",
+    "owner": "WL",
+    "parentName": "I20261113-0047",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4623
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-11-13T19:18:00.000+0100",
+     "end": "2026-11-13T19:29:00.000+0100",
+     "lastUpdate": "2026-11-13T19:29:00.000+0100",
+     "resume": "2026-11-13T19:29:00.000+0100",
+     "start": "2026-11-13T19:17:00.000+0100"
+    },
+    "title": "U6: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U6: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261113-0047-F01",
+    "owner": "WL",
+    "parentName": "I20261113-0047",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4623
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-13T19:29:00.000+0100",
+     "lastUpdate": "2026-11-13T19:29:00.000+0100",
+     "resume": "2026-11-13T19:29:00.000+0100",
+     "start": "2026-11-13T19:17:00.000+0100"
+    },
+    "title": "U6: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "35A": "ptBusCity"
+     }
+    },
+    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "35A: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261113-0048",
+    "owner": "WL",
+    "parentName": "I20261113-0048",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "35A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 435,
+      "lineName": "35A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-13T19:21:00.000+0100",
+     "lastUpdate": "2026-11-13T19:21:00.000+0100",
+     "resume": "2026-11-13T19:20:00.000+0100",
+     "start": "2026-11-13T19:20:00.000+0100"
+    },
+    "title": "35A: Verspätungen"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "49": "ptTram"
+     }
+    },
+    "description": "Linie 49: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 49:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 49:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 49: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "49: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261113-0049",
+    "owner": "WL",
+    "parentName": "I20261113-0049",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 149,
+      "lineName": "49",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-13T19:23:00.000+0100",
+     "lastUpdate": "2026-11-13T19:23:00.000+0100",
+     "start": "2026-11-13T19:23:00.000+0100"
+    },
+    "title": "49: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -305,52 +492,6 @@
      "start": "2026-11-13T18:24:51.000+0100"
     },
     "title": "Rettungseinsatz\nBusse halten Anschützgasse 40"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1586-457",
-    "owner": "WL",
-    "parentName": "R1586-457",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "57A"
-    ],
-    "relatedStops": [
-     1586
-    ],
-    "time": {
-     "end": "2026-11-13T19:15:00.000+0100",
-     "start": "2026-11-13T18:16:20.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1590-457",
-    "owner": "WL",
-    "parentName": "R1590-457",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "57A"
-    ],
-    "relatedStops": [
-     1590
-    ],
-    "time": {
-     "end": "2026-11-13T19:21:00.000+0100",
-     "start": "2026-11-13T18:21:50.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1154,25 +1295,25 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R773-457",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R588-110",
     "owner": "WL",
-    "parentName": "R773-457",
+    "parentName": "R588-110",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "57A"
+     "10"
     ],
     "relatedStops": [
-     773
+     588
     ],
     "time": {
-     "end": "2026-11-13T19:21:00.000+0100",
-     "start": "2026-11-13T18:21:51.000+0100"
+     "end": "2026-11-13T20:03:00.000+0100",
+     "start": "2026-11-13T19:03:53.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",

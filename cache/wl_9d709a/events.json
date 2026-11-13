@@ -639,11 +639,11 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "10: Fahrtbehinderung Falschparker",
-    "description": "Linie 10: Fahrtbehinderung in Richtung Dornbach. Voraussichtliche Dauer: 19:25 Uhr. Grund: Falschparker im Bereich Reinlgasse 11.",
+    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "0d70c69478856b9a3b8e5e9a4e597963f8077e418dad78a7ecf0b5dea4f9fa04",
     "pubDate": "2026-11-13T18:59:00+01:00",
-    "starts_at": "2026-11-13T18:59:53+01:00",
+    "starts_at": "2026-11-13T19:03:53+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=10|D=2026-11-13|TK=falschparker",
     "_wl_ids": [
@@ -882,6 +882,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "35A: Verspätungen",
+    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "67c751137c6566f442303d569ccfcae2618b18c074923f44066938ab05204482",
+    "pubDate": "2026-11-13T19:20:00+01:00",
+    "starts_at": "2026-11-13T19:20:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=35A|D=2026-11-13|TK=35a verspätungen",
+    "_wl_ids": [
+      "I20261113-0048"
+    ],
+    "_incident_start": "2026-11-13T19:20:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -894,11 +910,27 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "49: Rettungseinsatz",
+    "description": "Linie 49: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a",
+    "pubDate": "2026-11-13T19:23:00+01:00",
+    "starts_at": "2026-11-13T19:23:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=49|D=2026-11-13|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261113-0049"
+    ],
+    "_incident_start": "2026-11-13T19:23:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "57A: Rettungseinsatz Busse halten Anschützgasse 40",
     "description": "Rettungseinsatz\nBusse halten Anschützgasse 40",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "a2ac5fae7e3f48a67607975b18dba585c5ef50bbf2cc22863a26b7cf93ff0890",
-    "pubDate": "2026-11-13T18:16:20+01:00",
+    "pubDate": "2026-11-13T18:24:51+01:00",
     "starts_at": "2026-11-13T18:24:51+01:00",
     "ends_at": "2026-11-13T21:00:00+01:00",
     "_identity": "wl|störung|L=57A|D=2026-11-13|TK=rettungseinsatz"
@@ -966,6 +998,22 @@
     "starts_at": "2026-11-13T00:00:14+01:00",
     "ends_at": "2026-11-13T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-13|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Schadhaftes Fahrzeug",
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "3c71c013c6e58401c9103a010931456d8189141cc37fc6b86445292cda7ee7dd",
+    "pubDate": "2026-11-13T19:17:00+01:00",
+    "starts_at": "2026-11-13T19:17:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U6|D=2026-11-13|TK=u6 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261113-0047"
+    ],
+    "_incident_start": "2026-11-13T19:17:00+01:00"
   },
   {
     "source": "Wiener Linien",
