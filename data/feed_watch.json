@@ -1,13 +1,29 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-13T11:30:47.292678+00:00",
- "built": "2026-11-13T12:30:41+01:00",
+ "updated": "2026-11-13T12:01:31.857057+00:00",
+ "built": "2026-11-13T13:01:21+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-13T12:30:41+01:00",
+  "built": "2026-11-13T13:01:21+01:00",
   "items": [
+   {
+    "title": "43: Fahrleitungbruch",
+    "time_line": "Seit 12:37"
+   },
+   {
+    "title": "43/44: Stromstörung, Beschädigte Oberleitung",
+    "time_line": "Seit 12:40"
+   },
+   {
+    "title": "U2: Schadhaftes Fahrzeug",
+    "time_line": "Seit 12:34"
+   },
+   {
+    "title": "37: Falschparker",
+    "time_line": "Seit 12:32"
+   },
    {
     "title": "15A: Bhf. Meidling, Schedifkaplatz",
     "time_line": "Ab Mo 16.11."
@@ -31,67 +47,11 @@
    {
     "title": "98A: Arztgasse",
     "time_line": "Ab Mo 16.11."
-   },
-   {
-    "title": "65A: Triester Straße, Rossakgasse",
-    "time_line": "Seit 11.11."
-   },
-   {
-    "title": "66A: Busse halten Salvatorianerplatz",
-    "time_line": "Bis Sa 14.11."
-   },
-   {
-    "title": "5A/N31: Obere Augartenstraße",
-    "time_line": "Bis 11.12."
-   },
-   {
-    "title": "5B: Bauarbeiten",
-    "time_line": "Bis 10.12."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-06T11:31:13.650749+00:00",
-   "raw": {
-    "wl-stoerungen": 55,
-    "wl-hinweise": 75,
-    "oebb": 192,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 16
-   },
-   "discarded": {
-    "wl": 16,
-    "oebb": 167,
-    "baustellen": 66
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 6,
-    "wl": 90
-   }
-  },
-  {
-   "t": "2026-11-06T12:01:10.251176+00:00",
-   "raw": {
-    "wl-stoerungen": 68,
-    "wl-hinweise": 75,
-    "oebb": 192,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 16
-   },
-   "discarded": {
-    "wl": 16,
-    "oebb": 167,
-    "baustellen": 66
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 6,
-    "wl": 89
-   }
-  },
   {
    "t": "2026-11-06T12:31:02.158435+00:00",
    "raw": {
@@ -6771,17 +6731,37 @@
     "oebb": 6,
     "wl": 81
    }
+  },
+  {
+   "t": "2026-11-13T12:01:31.857057+00:00",
+   "raw": {
+    "wl-stoerungen": 89,
+    "wl-hinweise": 76,
+    "oebb": 186,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 14,
+    "oebb": 161,
+    "baustellen": 65
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 90
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-13T11:30:47.292678+00:00"
+   "last_ok": "2026-11-13T12:01:31.857057+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-13T11:30:47.292678+00:00"
+   "last_ok": "2026-11-13T12:01:31.857057+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-13T11:30:47.292678+00:00"
+   "last_ok": "2026-11-13T12:01:31.857057+00:00"
   }
  }
 }
