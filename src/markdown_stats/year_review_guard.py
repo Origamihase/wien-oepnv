@@ -343,7 +343,7 @@ def check_review(text: str, sites: Sequence[BaustelleSite], *, year: int) -> lis
     lists only: a judgement, an insult or an instruction in other words
     passes, and so does a text half in another language. Hence the page
     labels the review as written by a model and takes count and list from
-    the ledger (``docs/architecture-teil-3.md``: "ließe sich zudem nicht
+    the ledger (``docs/architecture-teil-6.md``: "ließe sich zudem nicht
     mechanisch belegen wie ein Fund"); deleting the year's review file
     makes the next dashboard run ask again.
     """

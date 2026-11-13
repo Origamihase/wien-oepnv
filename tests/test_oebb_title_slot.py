@@ -297,7 +297,7 @@ def test_on_a_sunday_morning_the_overrun_holds_the_slot_while_gemini_calls_it_su
     # "Es bleibt, wie es ist" includes the Gemini step (since 2026-11-12):
     # for the overrun of 09.11. the case collection expects "ploetzlich"
     # (data/samples/ki_entscheidung_faelle.json), and the probe runs of
-    # 12.11.2026 gave that answer (docs/architecture-teil-8.md, section 14,
+    # 12.11.2026 gave that answer (docs/architecture-teil-16.md, section 14,
     # "Probelauf"). While the text closes the line the item of the day is
     # then a current incident and holds the slot on a Sunday too; once it
     # reads "waren bis 05:15 Uhr" the step no longer asks about it, the

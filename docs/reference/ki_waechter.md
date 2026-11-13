@@ -8,7 +8,7 @@ Quelltexten und meldet, was der TV-Zuschauer falsch gelesen hat. Der Wächter
 Entscheidungen des Betreibers vom 2026-10-31: Die Regeln bleiben die Feed-Kette,
 eine KI meldet nur (Ausnahme, Betreiberentscheidung vom 10.11.2026: Gemini fasst
 die Baustellen eines abgeschlossenen Jahres auf dessen Statistikseite zusammen,
-Abschnitt „Jahresrückblick der Baustellen“; Ausnahme vom 12.11.2026: Gemini entscheidet bei unklaren Störungen zwischen „plötzlich“ und „geplant“, [`architecture-teil-8.md`](../architecture-teil-8.md), §14; einen Text des Feeds schreibt weiter keine KI).
+Abschnitt „Jahresrückblick der Baustellen“; Ausnahme vom 12.11.2026: Gemini entscheidet bei unklaren Störungen zwischen „plötzlich“ und „geplant“, [`architecture-teil-16.md`](../architecture-teil-16.md), §14; einen Text des Feeds schreibt weiter keine KI).
 Geprüft werden die Meldungen der letzten 24 Stunden, nicht nur die zehn aktuellen
 („Ein Review der Meldungen der letzten 24h wäre besser“). Das Modell ist Gemini
 über das Gratis-Kontingent der Gemini API, weil das Claude-Abo nur bei Bedarf
