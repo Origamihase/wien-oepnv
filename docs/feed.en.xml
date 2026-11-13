@@ -8,10 +8,23 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 13 Nov 2026 18:00:54 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 18:30:46 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[74A: Signal disruption, traffic light disturbance]]></title>
+      <title><![CDATA[57A: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">a2ac5fae7e3f48a67607975b18dba585c5ef50bbf2cc22863a26b7cf93ff0890</guid>
+      <pubDate>Fri, 13 Nov 2026 18:14:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 13 Nov 2026 18:14:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 13 Nov 2026 18:24:51 +0100</ext:starts_at>
+      <description>Buses stop at Anschützgasse 40. After a service obstruction, there are irregular intervals. [Since 18:14]</description>
+      <content:encoded><![CDATA[Buses stop at Anschützgasse 40. After a service obstruction, there are irregular intervals.<br/>[Since 18:14]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[74A: Signal disruption]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">e42a781836ec2814f0a4c06b6398c6abf7ac48b3b5c47aa27b1fc2a90ec45037</guid>
       <pubDate>Fri, 13 Nov 2026 17:47:14 +0100</pubDate>
@@ -20,8 +33,9 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 13 Nov 2026 17:47:14 +0100</ext:first_seen>
       <ext:starts_at>Fri, 13 Nov 2026 17:47:17 +0100</ext:starts_at>
-      <description>Signal disruption: service obstruction. [Since 17:47]</description>
-      <content:encoded><![CDATA[Signal disruption: service obstruction.<br/>[Since 17:47]]]></content:encoded>
+      <ext:ends_at>Fri, 13 Nov 2026 18:46:00 +0100</ext:ends_at>
+      <description>Service obstruction. [Since 17:47]</description>
+      <content:encoded><![CDATA[Service obstruction.<br/>[Since 17:47]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U4: Defective vehicle]]></title>
@@ -127,21 +141,6 @@
       <georss:point>48.173382 16.330051</georss:point>
       <description>Wurmbstraße 46-50 → Wurmbstraße 40-42. Stop relocation of line 15A towards Enkplatz, Grillgasse. Reason: repair works div. shaft lid. [From Mon 16.11.]</description>
       <content:encoded><![CDATA[Wurmbstraße 46-50 → Wurmbstraße 40-42. Stop relocation of line 15A towards Enkplatz, Grillgasse. Reason: repair works div. shaft lid.<br/>[From Mon 16.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/71/D: Rathausplatz, Burgtheater]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">8b53fb5a344796ca3ed900926c78ca0ae73b8735e3dc3859a1286705933af314</guid>
-      <pubDate>Fri, 06 Nov 2026 06:00:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 06 Nov 2026 06:00:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 13 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Sun, 20 Dec 2026 22:30:00 +0100</ext:ends_at>
-      <georss:point>48.210445 16.360657</georss:point>
-      <description>Stop closure of lines D, 1 and 71 in both directions. Stop: Rathausplatz, Burgtheater. Reason: Christkindlmarkt. Replacement: Schottentor. Parlament … [Until 20.12.]</description>
-      <content:encoded><![CDATA[Stop closure of lines D, 1 and 71 in both directions. Stop: Rathausplatz, Burgtheater. Reason: Christkindlmarkt. Replacement: Schottentor. Parlament …<br/>[Until 20.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
