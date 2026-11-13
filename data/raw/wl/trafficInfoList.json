@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261020-0029, I20261113-0019-F01"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
@@ -169,55 +169,6 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "12": "ptTram"
-     }
-    },
-    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "12: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261113-0019-F01",
-    "owner": "WL",
-    "parentName": "I20261113-0019",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 112,
-      "lineName": "12",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     3572
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-13T10:29:00.000+0100",
-     "end": "2026-11-13T12:00:00.000+0100",
-     "lastUpdate": "2026-11-13T12:00:00.000+0100",
-     "resume": "2026-11-13T12:00:00.000+0100",
-     "start": "2026-11-13T10:25:00.000+0100"
-    },
-    "title": "12: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
