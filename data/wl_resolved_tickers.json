@@ -1,5 +1,97 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R272-105|2026-11-13T14:52:59.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R272-105",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-13T15:52:00.000+0100",
+   "incident": "I20261113-0028"
+  },
+  {
+   "key": "R360-105|2026-11-13T14:52:59.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R360-105",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-13T15:52:00.000+0100",
+   "incident": "I20261113-0028"
+  },
+  {
+   "key": "R361-105|2026-11-13T14:52:59.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R361-105",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-13T15:52:00.000+0100",
+   "incident": "I20261113-0028"
+  },
+  {
+   "key": "R362-105|2026-11-13T14:52:59.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R362-105",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-13T15:52:00.000+0100",
+   "incident": "I20261113-0028"
+  },
+  {
+   "key": "R364-105|2026-11-13T14:50:59.000+0100|Falschparker\nBetrieb ab Albertgasse",
+   "name": "R364-105",
+   "title": "Falschparker\nBetrieb ab Albertgasse",
+   "end": "2026-11-13T15:50:00.000+0100",
+   "incident": "I20261113-0028"
+  },
+  {
+   "key": "R366-105|2026-11-13T14:52:59.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R366-105",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-13T15:52:00.000+0100",
+   "incident": "I20261113-0028"
+  },
+  {
+   "key": "R367-105|2026-11-13T14:44:58.000+0100|Falschparker\nBetrieb ab Albertgasse",
+   "name": "R367-105",
+   "title": "Falschparker\nBetrieb ab Albertgasse",
+   "end": "2026-11-13T15:50:00.000+0100",
+   "incident": "I20261113-0028"
+  },
+  {
+   "key": "R370-105|2026-11-13T14:50:59.000+0100|Falschparker\nBetrieb ab Albertgasse",
+   "name": "R370-105",
+   "title": "Falschparker\nBetrieb ab Albertgasse",
+   "end": "2026-11-13T15:50:00.000+0100",
+   "incident": "I20261113-0028"
+  },
+  {
+   "key": "R373-105|2026-11-13T14:50:59.000+0100|Falschparker\nBetrieb ab Albertgasse",
+   "name": "R373-105",
+   "title": "Falschparker\nBetrieb ab Albertgasse",
+   "end": "2026-11-13T15:50:00.000+0100",
+   "incident": "I20261113-0028"
+  },
+  {
+   "key": "R374-105|2026-11-13T14:44:58.000+0100|Falschparker\nBetrieb ab Albertgasse",
+   "name": "R374-105",
+   "title": "Falschparker\nBetrieb ab Albertgasse",
+   "end": "2026-11-13T15:50:00.000+0100",
+   "incident": "I20261113-0028"
+  },
+  {
+   "key": "R375-105|2026-11-13T14:44:58.000+0100|Falschparker\nBetrieb ab Albertgasse",
+   "name": "R375-105",
+   "title": "Falschparker\nBetrieb ab Albertgasse",
+   "end": "2026-11-13T15:50:00.000+0100",
+   "incident": "I20261113-0028"
+  },
+  {
+   "key": "R376-105|2026-11-13T14:44:58.000+0100|Falschparker\nBetrieb ab Albertgasse",
+   "name": "R376-105",
+   "title": "Falschparker\nBetrieb ab Albertgasse",
+   "end": "2026-11-13T15:50:00.000+0100",
+   "incident": "I20261113-0028"
+  },
+  {
+   "key": "R377-105|2026-11-13T14:44:46.000+0100|Falschparker\nBetrieb ab Albertgasse",
+   "name": "R377-105",
+   "title": "Falschparker\nBetrieb ab Albertgasse",
+   "end": "2026-11-13T15:50:00.000+0100",
+   "incident": "I20261113-0028"
+  }
+ ]
 }
