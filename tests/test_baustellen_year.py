@@ -18,6 +18,7 @@ from pathlib import Path
 
 import pytest
 
+from src.markdown_stats import baustellen_sites
 from src.markdown_stats import baustellen_year as by
 from src.markdown_stats.baustellen_year import BaustelleSite
 from src.utils import stats
@@ -202,7 +203,7 @@ def test_a_file_with_another_header_is_not_read(tmp_path: Path, caplog: pytest.L
 def test_an_oversized_ledger_is_not_read(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     path = _write(tmp_path, [_row("g1", "Burggasse 67")])
     assert len(by.load_sites(YEAR, stats_dir=tmp_path)) == 1
-    monkeypatch.setattr(by, "MAX_CSV_BYTES", path.stat().st_size - 1)
+    monkeypatch.setattr(baustellen_sites, "MAX_CSV_BYTES", path.stat().st_size - 1)
     assert by.load_sites(YEAR, stats_dir=tmp_path) == []
 
 
