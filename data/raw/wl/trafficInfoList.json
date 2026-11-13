@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261113-0054-F01, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261113-0055-F01, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2343-125, R2380-627, R2343-626, R2345-127, R318-437, R293-474, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R401-101, R2378-627, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R1819-464, R5592-464, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2343-125, R2343-626, R2380-627, R2345-127, R318-437, R293-474, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R401-101, R2378-627, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R859-438, R855-438, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -175,49 +175,46 @@
     "alertCauseId": 71,
     "attributes": {
      "relatedLineTypes": {
-      "64A": "ptBusCity"
+      "38A": "ptBusCity"
      }
     },
-    "description": "Linie 64A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 64A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie 38A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 38A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 64A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 64A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "64A: Falschparker"
+       "descriptionHtml": "<p>Linie 38A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 38A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "38A: Falschparker"
       }
      }
     ],
-    "location": "Per",
-    "name": "I20261113-0054-F01",
+    "location": "Sandgasse",
+    "name": "I20261113-0055-F01",
     "owner": "WL",
-    "parentName": "I20261113-0054",
+    "parentName": "I20261113-0055",
     "priority": "1",
     "reasonId": 25,
     "reasonName": "Falschparker",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "64A"
+     "38A"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 464,
-      "lineName": "64A",
+      "lineId": 438,
+      "lineName": "38A",
       "vehicleType": "ptBusCity"
      }
     ],
-    "relatedStops": [
-     1863
-    ],
     "status": "active",
     "time": {
-     "created": "2026-11-13T20:57:00.000+0100",
-     "lastUpdate": "2026-11-13T20:57:00.000+0100",
-     "resume": "2026-11-13T20:57:00.000+0100",
-     "start": "2026-11-13T20:34:00.000+0100"
+     "created": "2026-11-13T21:49:00.000+0100",
+     "lastUpdate": "2026-11-13T21:49:00.000+0100",
+     "resume": "2026-11-13T21:49:00.000+0100",
+     "start": "2026-11-13T21:39:00.000+0100"
     },
-    "title": "64A: Falschparker"
+    "title": "38A: Falschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -261,29 +258,6 @@
      "start": "2026-11-13T15:00:26.000+0100"
     },
     "title": "Haltestelle\naufgelassen!\n\nStop closed!"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1819-464",
-    "owner": "WL",
-    "parentName": "R1819-464",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "64A"
-    ],
-    "relatedStops": [
-     1819
-    ],
-    "time": {
-     "end": "2026-11-13T21:43:00.000+0100",
-     "start": "2026-11-13T20:44:36.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -930,22 +904,45 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R5592-464",
+    "name": "R855-438",
     "owner": "WL",
-    "parentName": "R5592-464",
+    "parentName": "R855-438",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "64A"
+     "38A"
     ],
     "relatedStops": [
-     5592
+     855
     ],
     "time": {
-     "end": "2026-11-13T21:44:00.000+0100",
-     "start": "2026-11-13T20:45:06.000+0100"
+     "end": "2026-11-13T22:38:00.000+0100",
+     "start": "2026-11-13T21:39:39.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R859-438",
+    "owner": "WL",
+    "parentName": "R859-438",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38A"
+    ],
+    "relatedStops": [
+     859
+    ],
+    "time": {
+     "end": "2026-11-13T22:38:00.000+0100",
+     "start": "2026-11-13T21:39:39.000+0100"
     },
     "title": "Fahrtbehinderung\nFalschparker"
    },
