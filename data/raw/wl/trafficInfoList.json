@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261113-0054-F01, I20261113-0051-F01, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261113-0054-F01, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2343-125, R2380-627, R2345-127, R318-437, R293-474, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R401-101, R2378-627, R1876-101, R1883-101, R1882-101, R1881-101, R1880-101, R1884-101, R1875-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R1819-464, R5592-464, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2343-125, R2380-627, R2343-626, R2345-127, R318-437, R293-474, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R401-101, R2378-627, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R1819-464, R5592-464, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -169,55 +169,6 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U3: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261113-0051-F01",
-    "owner": "WL",
-    "parentName": "I20261113-0051",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4921
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-13T19:43:00.000+0100",
-     "end": "2026-11-13T20:58:00.000+0100",
-     "lastUpdate": "2026-11-13T20:58:00.000+0100",
-     "resume": "2026-11-13T20:58:00.000+0100",
-     "start": "2026-11-13T19:39:00.000+0100"
-    },
-    "title": "U3: Polizeieinsatz"
    },
    {
     "alertCause": "vehicle on the line",
