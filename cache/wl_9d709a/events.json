@@ -754,6 +754,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "22A: Rettungseinsatz",
+    "description": "Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "edfb46a3756a0ab75a9ed9f7470b62a6f1dedbb0fae2794ad66ad85eeff23bcb",
+    "pubDate": "2026-11-13T16:26:00+01:00",
+    "starts_at": "2026-11-13T16:26:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=22A|D=2026-11-13|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261113-0038"
+    ],
+    "_incident_start": "2026-11-13T16:26:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "25/26/27: Gleisbauarbeiten",
     "description": "Linie 25: Betrieb nur zwischen Aspern, Oberdorfstraße und Josef-Baumann-Gasse. Weiterfahrt über Linie 27 bis Aspern Nord S U. Linie 26: Betrieb nur zwischen Hausfeldstraße U und Josef-Baumann-Gasse. Weiterfahrt nach Kagran U. Linie 27: Betrieb nur zwischen Strebersdorf, Meriangasse und Floridsdorf S U. Weichen Sie daher nach Möglichkeit großräumig auf die U1 und S-Bahn über Leopoldau S U oder Praterstern S U aus. Zwischen Kagraner Platz U und Floridsdorf S U können Sie auch auf die Linien 31A und anschließend 29A/29B oder 31A und S-Bahn ausweichen. Zwischen Kagran U und Floridsdorf S U können Sie auch auf die Linien 27A und anschließend 29A/29B ausweichen. Zwischen Floridsdorf S U und Josef-Baumann-Gasse fährt der Ersatzbus 26E. Beachten Sie, der 26E hat nicht die gleichen Kapazitäten wie eine Straßenbahn. Voraussichtliche Dauer: Ende 2026. Grund: Gleisbauarbeiten im Bereich Donaufelder Straße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -906,18 +922,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "47B: Falschparker",
-    "description": "Linie 47B: Fahrtbehinderung in Richtung Bahnhof Hütteldorf S U. Voraussichtliche Dauer: 16:20 Uhr. Grund: Falschparker im Bereich Bahnhofstraße 3.",
+    "title": "43: Verkehrsunfall",
+    "description": "Linie 43: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "fcba6781ad4bca7b22bfacd6e61aaefea543112de312f62f42bdb69a51a830b4",
-    "pubDate": "2026-11-13T15:54:00+01:00",
-    "starts_at": "2026-11-13T15:54:00+01:00",
+    "guid": "de57d7fc844121db03d0e532febfd7d62faf7f8cc5ced1951f3e1470fcd4d6c8",
+    "pubDate": "2026-11-13T16:19:00+01:00",
+    "starts_at": "2026-11-13T16:19:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=47B|D=2026-11-13|TK=falschparker",
+    "_identity": "wl|störung|L=43|D=2026-11-13|TK=43 verkehrsunfall",
     "_wl_ids": [
-      "I20261113-0035"
+      "I20261113-0037"
     ],
-    "_incident_start": "2026-11-13T15:54:00+01:00"
+    "_incident_start": "2026-11-13T16:19:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -970,18 +986,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U1: Polizeieinsatz",
+    "title": "U1: Rettungseinsatz",
     "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2fd34130689e264be35e2fe5c2a3b881400e4330803f8a22ce905e991a01ca49",
-    "pubDate": "2026-11-13T15:29:00+01:00",
-    "starts_at": "2026-11-13T15:29:00+01:00",
+    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
+    "pubDate": "2026-11-13T16:11:00+01:00",
+    "starts_at": "2026-11-13T16:11:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=U1|D=2026-11-13|TK=polizeieinsatz",
+    "_identity": "wl|störung|L=U1|D=2026-11-13|TK=rettungseinsatz",
     "_wl_ids": [
-      "I20261113-0034"
+      "I20261113-0036"
     ],
-    "_incident_start": "2026-11-13T15:29:00+01:00"
+    "_incident_start": "2026-11-13T16:11:00+01:00"
   },
   {
     "source": "Wiener Linien",
