@@ -2,6 +2,10 @@
 
 A year without rows or with one series only, and which months count as
 recorded when the series start and end at different times.
+
+From the review of 2026-11-10: each test that came from the former
+``test_year_stats_more.py`` pins one statement of the page that was false or
+missing in a case the first tests (``test_year_stats.py``) did not reach.
 """
 
 from __future__ import annotations

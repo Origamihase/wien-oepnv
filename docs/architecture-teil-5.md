@@ -92,7 +92,7 @@
     Kurzmeldungen laufen aus, die ausführliche Meldung wird erledigt),
     bleibt der Beginn stehen: Der Build merkt sich das früheste `pubDate`
     eines Eintrags im State-Feld `earliest_published`
-    (`_carry_item_identity`, seit 2026-10-06, siehe `docs/development.md`,
+    (`_carry_item_identity`, seit 2026-10-06, siehe `docs/development-teil-2.md`,
     „Eine Meldung, eine GUID“). Vorher sprang „43: Verkehrsunfall“ am
     06.10. um 01:14 ohne neue Daten von „[Seit 00:03]“ auf „[Seit 00:04]“.
   - **ÖBB:** Der Beginn ist die Minute, in der ÖBB die Meldung zum ersten
@@ -379,7 +379,7 @@ Abrufe. Betreiberentscheidung 2026-11-07 („Zurückhalten bis Text da ist“).
 #### WL-Netzänderung als Hinweis (seit 2026-11-07)
 
 Eine WL-Langmeldung kommt nur in den Feed, wenn ihr Text ein
-Einschränkungs-Stichwort trägt (`KW_RESTRICTION`, `docs/development.md`,
+Einschränkungs-Stichwort trägt (`KW_RESTRICTION`, `docs/development-teil-3.md`,
 „Wiener Linien“). Eine Netzänderung schränkt nichts ein – eine Linie bekommt
 eine Haltestelle – und nennt deshalb keines: „9A: Errichtung einer
 Haltestelle“ (ab 07.09.2026) und „57A: Errichtung einer Haltestelle“ (ab

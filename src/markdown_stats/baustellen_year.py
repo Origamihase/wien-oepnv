@@ -14,7 +14,8 @@ holds 61 rows for 19 sites. :func:`load_sites` therefore merges the rows
 of one title into one site and shows the period the city named last
 (review of 2026-11-10: the city also moves an end earlier, postpones a
 site past its old end, and the same address can be worked on twice);
-:func:`_sites_of_title` says when two rows of one title are two sites.
+:func:`src.markdown_stats.baustellen_sites._sites_of_title` says when two
+rows of one title are two sites.
 
 Licence: the texts are the city's, CC BY 4.0, and appear edited
 (``NOTICE.md``, "Generierte Feeds"): the section ends with the source, the
@@ -158,7 +159,8 @@ def render_baustellen_section(
     sentences on names say how :func:`load_sites` counts: a changed period
     counts once, the same name again when it is entered after the period in
     force (the one shown) had ended, for a separate period
-    (:func:`_sites_of_title`), and a site under two names twice; the city
+    (:func:`src.markdown_stats.baustellen_sites._sites_of_title`), and a
+    site under two names twice; the city
     entered one site of 2026 under two titles, and nothing in the data
     says the two are one.
 

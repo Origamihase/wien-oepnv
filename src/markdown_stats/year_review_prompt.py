@@ -1,7 +1,7 @@
 """The prompt of the year's Baustellen review: the text the model reads.
 
 Moved verbatim out of ``src/markdown_stats/year_review.py`` (which still
-offers every name): the ledger text as one plain line (:func:`_plain`), the
+offers every name another file imports or a test reads): the ledger text as one plain line (:func:`_plain`), the
 source text the guard compares (:func:`source_text`), the German rules, the
 facts block and the framed data block, and the cap that keeps the prompt
 below :data:`MAX_PROMPT_CHARS` (:func:`build_prompt`).

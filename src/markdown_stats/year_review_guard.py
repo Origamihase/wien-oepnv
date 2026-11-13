@@ -1,7 +1,7 @@
 """The guard of the year's Baustellen review: the rules a model's text must pass.
 
 Moved verbatim out of ``src/markdown_stats/year_review.py`` (which still
-offers every name): the limits and closed lists of the rules a to j, one
+offers every name another file imports or a test reads): the limits and closed lists of the rules a to j, one
 helper per rule (``_length_reasons`` to ``_language_reasons``),
 :func:`count_sentences` and :func:`check_review`, which gives the reasons
 why a text may not be published.

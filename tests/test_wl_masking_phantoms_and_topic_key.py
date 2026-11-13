@@ -15,7 +15,7 @@ deterministically before the fixes are applied.
    ``HH:MM:SS`` timestamp survived; the trailing 2-digit ``SS`` was then
    extracted as a phantom WL line. Fix: optional ``(?::\\d{2})?``.
 
-3. ``wl_text._GENERIC_FILLER`` — the ``betrieb\\s+ab.*`` alternation used a
+3. ``wl_topic_key._GENERIC_FILLER`` — the ``betrieb\\s+ab.*`` alternation used a
    greedy ``.*`` that swallowed every downstream token to end-of-string,
    eating legitimate topic tokens. ``Sperre Betrieb ab Karlsplatz mit
    Unfall`` collapsed to ``sperre`` (the ``unfall`` topic token was lost),

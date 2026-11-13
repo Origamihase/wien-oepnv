@@ -75,7 +75,7 @@ __all__ = [
 # The companion regex in ``src/utils/stations_validation.py`` uses
 # ``\u2028-\u202e``; this file pins the canonical UNION (incl. ALM, LRM,
 # RLM) so every WARNING/ERROR site routed through the audit walker
-# (``test_sentinel_clear_text_logging_drift_utils``) inherits the same
+# (``test_sentinel_clear_text_logging_drift_walker``) inherits the same
 # defence floor.
 _CONTROL_CHARS_RE = re.compile(
     r"[\x00-\x1f\x7f-\x9f"

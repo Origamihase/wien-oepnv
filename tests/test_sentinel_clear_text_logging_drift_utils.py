@@ -68,6 +68,9 @@ This file pins the invariant in three layers:
      ``log.exception`` (which routes through the logging framework's
      traceback formatter and therefore does not interpolate raw exc
      text into the message string).
+
+Layer 3 lives in ``test_sentinel_clear_text_logging_drift_walker.py`` (700-line
+limit, 2026-11-13); layers 1 and 2 stay in this file.
 """
 from __future__ import annotations
 

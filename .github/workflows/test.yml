@@ -76,7 +76,7 @@ jobs:
 
       - name: Line limit, split instead of trim
         # A file with 690 lines or more that gets a new line has to be split
-        # in the same change (owner decision 2026-11-13,
+        # in the same change, to 550 lines or fewer (owner decision 2026-11-13,
         # scripts/check_line_limit_edits.py). ``HEAD^1`` is the base branch
         # for a pull request (the checkout is the merge commit) and the
         # previous commit for a push to main.

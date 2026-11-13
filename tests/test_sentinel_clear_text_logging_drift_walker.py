@@ -283,7 +283,8 @@ def test_no_bare_exc_logging_in_clear_text_logging_modules() -> None:
 
 def test_walker_recognises_sanitised_and_unsanitised_shapes() -> None:
     """Smoke-test: the walker must distinguish the two canonical
-    shapes documented in this module's docstring.
+    shapes documented in the docstring of
+    ``test_sentinel_clear_text_logging_drift_utils.py``.
 
     Pin the precondition that the inventory walker fires on a bare
     ``log.warning("...: %s", exc)`` and accepts a wrapped

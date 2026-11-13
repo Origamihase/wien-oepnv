@@ -18,8 +18,8 @@ WL-Abruf. Solche Werte stehen in Quellen für „offen“ oder „unbekannt“; 
 ihnen lässt sich weder rechnen noch eine Zeitzeile schreiben. Die Regel
 greift dort, wo ein Zeitstempel gelesen wird: bei WL (`_iso` in
 `src/providers/wl_item_fields.py`, `_moment` in
-`src/providers/wl_resolved.py`, die Daten aus Titel und „Zeitraum:“-Text in
-`src/providers/wl_text.py`), bei den ÖBB (`_parse_dt_rfc2822` und
+`src/providers/wl_resolved.py`, die Daten aus dem Titel in `src/providers/wl_title_dates.py` und aus dem „Zeitraum:“-Text in
+`src/providers/wl_period.py`), bei den ÖBB (`_parse_dt_rfc2822` und
 `_parse_period` in `src/providers/oebb.py`, jede Seite eines Zeitraums für
 sich), bei den Baustellen (`_parse_datetime` in
 `src/providers/baustellen_events.py`), beim Lesen der Caches

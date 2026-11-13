@@ -204,7 +204,7 @@ Bedarf), und das API-Limit darf nicht überschritten werden.
   Grenze 36 h). War Gemini nur überlastet (503, abgebrochene Verbindung,
   Zeitüberschreitung, Kontingent), endet der Lauf mit einer Warnung, und die
   Prüfung bleibt ein Hinweis, bis 30 Stunden ohne gelungene Prüfung vergangen
-  sind (Betreiberentscheidung 2026-11-04, [`reference/ki_waechter.md`](reference/ki_waechter.md), „Ausfall“).
+  sind (Betreiberentscheidung 2026-11-04, [`reference/ki_waechter-teil-2.md`](reference/ki_waechter-teil-2.md), „Ausfall“).
 * Ein Pull Request, der Skript, Prompt oder Workflow ändert, spielt den
   Wächter über die 24 Stunden vor drei Feed-Ständen ab, ohne zu
   veröffentlichen: 27.10.2026 („algae path“ für Algenweg, 40A doppelt),

@@ -6,8 +6,8 @@ The review of that change named four places the rule did not reach yet.
 Each has its section here:
 
 * Wiener Linien write a date into a title ("ab 01.12.2026") and into the
-  "Zeitraum:" paragraph of a notice; ``src/providers/wl_text.py`` reads
-  both. With the year 9999 there, ``wl_fetch.fetch_events`` ended with
+  "Zeitraum:" paragraph of a notice; ``src/providers/wl_title_dates.py``
+  and ``src/providers/wl_period.py`` read them. With the year 9999 there, ``wl_fetch.fetch_events`` ended with
   ``OverflowError`` (``wl_plausibility._duration_end`` adds the duration to
   the start) or handed on an item that started or ended in the year 9999.
   Such a date is not set now: the item reads as it would without it.

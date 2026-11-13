@@ -14,13 +14,19 @@ This gate compares the work tree with a base revision. It fails for every
 counted file that
 
 * had at least ``SPLIT_FROM`` (690) lines at the base,
-* still has at least ``SPLIT_FROM`` lines now, and
-* got at least one added line.
+* got at least one added line, and
+* still has more than ``SPLIT_TO`` (550) lines now.
 
 So a file may grow into the range 690 to 700, but the next change that adds
-a line to it has to split it. Removing lines only is allowed. The gate
-cannot be met by shortening: a change that adds a line and leaves the file
-at 690 or more fails whatever else it removes.
+a line to it has to split it, and a split leaves it at 550 lines or fewer.
+Removing lines only is allowed. A renamed file is compared with its old
+path, so a new name does not reset the count.
+
+What the gate does not see: it reads one change. A change that only removes
+lines until the file has fewer than 690, followed by a second change that
+adds lines, passes both times. The rule forbids that as well (``AGENTS.md``,
+``docs/modularisierung.md``); it is left to the review. A revert that puts
+lines back into a file at the limit fails like any other change.
 
 The base is ``--base`` (CI: ``HEAD^1``, the base of the pull request's merge
 commit and the previous commit of a push), by default the merge base of
@@ -46,7 +52,7 @@ from pathlib import Path
 if str(Path(__file__).resolve().parents[1]) not in sys.path:
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from src.utils.line_limit import LIMIT, SPLIT_FROM, count_lines, count_lines_bytes, is_counted  # noqa: E402
+from src.utils.line_limit import LIMIT, SPLIT_FROM, SPLIT_TO, count_lines, count_lines_bytes, is_counted  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 GIT_TIMEOUT_SECONDS = 60
@@ -90,26 +96,42 @@ def resolve_base(root: Path, base: str | None) -> str:
     return _git(root, "rev-parse", "--verify", "--quiet", f"{base}^{{commit}}").decode("ascii").strip()
 
 
-def _added_lines(root: Path, base: str) -> dict[str, int]:
-    """Added lines per path between ``base`` and the work tree.
+def _added_lines(root: Path, base: str) -> dict[str, tuple[int, str]]:
+    """Added lines and base path per path between ``base`` and the work tree.
 
-    ``--no-renames``: a renamed file is a new path, its old path is gone.
-    Binary files report ``-`` and are left out (they are not counted files).
+    ``-M``: a renamed file is compared with its old path, so a file at the
+    limit cannot take new lines under a new name. With ``-z`` a rename is
+    ``plus TAB minus TAB NUL old NUL new NUL``, every other record ``plus
+    TAB minus TAB path NUL``. A counted file that git reads as binary (a NUL
+    byte in it, a ``-diff`` attribute) reports ``-``; it counts as edited,
+    and the line counts decide.
     """
-    out = _git(root, "diff", "--numstat", "--no-renames", "-z", base, "--").decode("utf-8", "surrogateescape")
-    added: dict[str, int] = {}
-    for record in out.split("\0"):
+    out = _git(root, "diff", "--numstat", "-M", "-z", base, "--").decode("utf-8", "surrogateescape")
+    fields = out.split("\0")
+    added: dict[str, tuple[int, str]] = {}
+    index = 0
+    while index < len(fields):
+        record = fields[index]
+        index += 1
         if not record:
             continue
         parts = record.split("\t", 2)
         if len(parts) != 3:
             raise MeasurementError(f"git diff --numstat: unlesbare Zeile {record!r}")
         plus, _minus, path = parts
+        base_path = path
+        if not path:
+            if index + 1 >= len(fields):
+                raise MeasurementError(f"git diff --numstat: Umbenennung ohne Pfade nach {record!r}")
+            base_path, path = fields[index], fields[index + 1]
+            index += 2
         if plus == "-":
+            if is_counted(path):
+                added[path] = (1, base_path)
             continue
         if not plus.isascii() or not plus.isdigit():
             raise MeasurementError(f"git diff --numstat: unlesbare Zahl {plus!r}")
-        added[path] = int(plus)
+        added[path] = (int(plus), base_path)
     return added
 
 
@@ -124,7 +146,7 @@ def _base_lines(root: Path, base: str, path: str) -> int:
 def find_unsplit_edits(root: Path, base: str) -> list[Finding]:
     """Every counted file at the limit that got added lines and no split."""
     findings: list[Finding] = []
-    for path, added in sorted(_added_lines(root, base).items()):
+    for path, (added, base_path) in sorted(_added_lines(root, base).items()):
         if added == 0 or not is_counted(path):
             continue
         current = root / path
@@ -134,9 +156,9 @@ def find_unsplit_edits(root: Path, base: str) -> list[Finding]:
             lines = count_lines(current)
         except ValueError as exc:
             raise MeasurementError(str(exc)) from exc
-        if lines < SPLIT_FROM:
+        if lines <= SPLIT_TO:
             continue
-        base_lines = _base_lines(root, base, path)
+        base_lines = _base_lines(root, base, base_path)
         if base_lines < SPLIT_FROM:
             continue
         findings.append(Finding(path, base_lines, lines, added))
@@ -159,7 +181,8 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     print(
         f"Dateien am Anschlag (ab {SPLIT_FROM} von {LIMIT} Zeilen) geändert, ohne sie zu teilen.\n"
-        "Nach Themen aufteilen (docs/modularisierung.md), nicht Kommentare kürzen oder Zeilen zusammenziehen:",
+        f"Nach Themen aufteilen, bis die Datei höchstens {SPLIT_TO} Zeilen hat (docs/modularisierung.md),\n"
+        "nicht Kommentare kürzen oder Zeilen zusammenziehen:",
         file=sys.stderr,
     )
     for f in findings:

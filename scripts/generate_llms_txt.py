@@ -101,6 +101,11 @@ _FEED_PAGES: tuple[tuple[str, str, str], ...] = (
 _FRONT_MATTER_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n", re.DOTALL)
 _FRONT_MATTER_LINE_RE = re.compile(r"^([A-Za-z_][\w-]*):\s*(.*)$")
 _H1_RE = re.compile(r"^#\s+(.+)$")
+# A later part of a page that is split for the 700-line rule
+# (``x-teil-2.md``, docs/modularisierung.md): the first page is listed, its
+# parts are reached through it. A part starts with a pointer to the first
+# page, not with a title, and would be listed under its file name.
+_CONTINUATION_PART_RE = re.compile(r"-teil-[0-9]+$")
 
 
 def _front_matter(text: str) -> dict[str, str]:
@@ -181,7 +186,9 @@ def build_llms_txt(base_url: str) -> str:
     )
 
     for heading, subdir in (("API-Referenz", "reference"), ("How-to", "how-to")):
-        pages = sorted((DOCS_DIR / subdir).glob("*.md"))
+        pages = sorted(
+            page for page in (DOCS_DIR / subdir).glob("*.md") if not _CONTINUATION_PART_RE.search(page.stem)
+        )
         if not pages:
             continue
         lines += ["", f"## {heading}", ""]

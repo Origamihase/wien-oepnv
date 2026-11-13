@@ -17,7 +17,7 @@ import pytest
 
 from scripts import check_line_limit_edits as gate
 from src.utils import line_limit
-from src.utils.line_limit import LIMIT, SPLIT_FROM
+from src.utils.line_limit import LIMIT, SPLIT_FROM, SPLIT_TO
 
 REPO = Path(__file__).resolve().parents[1]
 
@@ -85,6 +85,50 @@ def test_trimming_down_to_the_edge_still_fails(repo: Path) -> None:
     kept = path.read_text(encoding="utf-8").splitlines(keepends=True)[10:]
     path.write_text("".join(kept) + "new\n", encoding="utf-8")
     assert set(_findings(repo)) == {"src/full.py"}
+
+
+def test_trimming_below_the_zone_while_adding_fails(repo: Path) -> None:
+    """Twelve lines removed, one added: 689 lines are a trim, not a split."""
+    path = repo / "src" / "full.py"
+    kept = path.read_text(encoding="utf-8").splitlines(keepends=True)[12:]
+    path.write_text("".join(kept) + "new\n", encoding="utf-8")
+    found = _findings(repo)
+    assert set(found) == {"src/full.py"}
+    assert found["src/full.py"].lines == SPLIT_FROM - 1
+
+
+def test_a_split_leaves_at_most_split_to_lines(repo: Path) -> None:
+    path = repo / "src" / "full.py"
+    lines = path.read_text(encoding="utf-8").splitlines(keepends=True)
+    path.write_text("new\n" + "".join(lines[: SPLIT_TO]), encoding="utf-8")
+    assert set(_findings(repo)) == {"src/full.py"}
+    path.write_text("new\n" + "".join(lines[: SPLIT_TO - 1]), encoding="utf-8")
+    assert _findings(repo) == {}
+
+
+def test_renamed_file_keeps_its_count(repo: Path) -> None:
+    """A new name with a new line: the file is compared with its old path."""
+    _git(repo, "mv", "src/full.py", "src/moved.py")
+    path = repo / "src" / "moved.py"
+    path.write_text(path.read_text(encoding="utf-8").replace("line 5\n", "line five\n"), encoding="utf-8")
+    _git(repo, "add", "-A")
+    found = _findings(repo)
+    assert set(found) == {"src/moved.py"}
+    assert found["src/moved.py"].base_lines == LIMIT
+
+
+def test_counted_file_git_reads_as_binary_is_not_skipped(repo: Path) -> None:
+    path = repo / "src" / "full.py"
+    path.write_text(path.read_text(encoding="utf-8").replace("line 5\n", "line\x00five\n"), encoding="utf-8")
+    assert set(_findings(repo)) == {"src/full.py"}
+
+
+def test_revert_into_a_file_at_the_limit_fails_like_any_change(repo: Path) -> None:
+    path = repo / "src" / "full.py"
+    path.write_text("".join(path.read_text(encoding="utf-8").splitlines(keepends=True)[3:]), encoding="utf-8")
+    _git(repo, "commit", "-q", "-am", "three lines less")
+    _git(repo, "revert", "--no-edit", "HEAD")
+    assert set(_findings(repo, "HEAD^1")) == {"src/full.py"}
 
 
 def test_first_line_count_of_the_zone_counts(repo: Path) -> None:

@@ -14,15 +14,19 @@ from pathlib import Path
 from .files import read_capped_bytes
 
 __all__ = [
-    "EXEMPT_PREFIXES", "LIMIT", "MAX_COUNTED_FILE_BYTES", "SPLIT_FROM", "SUFFIXES",
+    "EXEMPT_PREFIXES", "LIMIT", "MAX_COUNTED_FILE_BYTES", "SPLIT_FROM", "SPLIT_TO", "SUFFIXES",
     "count_lines", "count_lines_bytes", "is_counted",
 ]
 
 #: No counted file has more lines than this.
 LIMIT = 700
 #: A file with at least this many lines is "at the limit": the next change
-#: that adds a line to it has to split it (bring it below this number).
+#: that adds a line to it has to split it.
 SPLIT_FROM = 690
+#: After that change the file has at most this many lines. The gap to
+#: ``SPLIT_FROM`` is what tells a split from a trim: nobody shortens 140
+#: lines of comments to make room for one new line.
+SPLIT_TO = 550
 SUFFIXES = frozenset(
     {".py", ".pyi", ".js", ".mjs", ".css", ".html", ".md", ".yml", ".yaml", ".sh", ".toml", ".cfg", ".ini", ".txt"}
 )

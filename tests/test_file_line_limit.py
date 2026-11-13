@@ -17,7 +17,8 @@ A file at the limit is split by topic, not trimmed (Michael's decision of
 2026-11-13). This test cannot see how a file stays below 700, so
 ``scripts/check_line_limit_edits.py`` compares each change with its base:
 a file with ``SPLIT_FROM`` (690) lines or more that gets a new line has to
-be split in the same change (``tests/test_check_line_limit_edits.py``).
+be split in the same change, down to ``SPLIT_TO`` (550) lines or fewer
+(``tests/test_check_line_limit_edits.py``).
 """
 
 from __future__ import annotations
@@ -26,7 +27,7 @@ import shutil
 import subprocess
 from pathlib import Path
 
-from src.utils.line_limit import LIMIT, SPLIT_FROM, count_lines, is_counted
+from src.utils.line_limit import LIMIT, SPLIT_FROM, SPLIT_TO, count_lines, is_counted
 
 _ROOT = Path(__file__).resolve().parents[1]
 _ALTFAELLE = _ROOT / "tests" / "line_limit_altfaelle.txt"
@@ -90,7 +91,7 @@ def test_altfaelle_are_still_over_the_limit() -> None:
 
 
 def test_split_zone_lies_below_the_limit() -> None:
-    assert 0 < SPLIT_FROM < LIMIT == 700
+    assert 0 < SPLIT_TO < SPLIT_FROM < LIMIT == 700
 
 
 def test_count_lines_matches_wc(tmp_path: Path) -> None:

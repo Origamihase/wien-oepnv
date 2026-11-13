@@ -3,7 +3,7 @@
 Holds how the page and the review write a site's district and period, and
 what the script counts for the facts block (:func:`facts_block`,
 :func:`fact_counts`, :func:`months_touched`). Moved verbatim out of
-``src/markdown_stats/baustellen_year.py``, which re-exports the names.
+``src/markdown_stats/baustellen_year.py``, which re-exports the names another file imports or a test reads.
 """
 from __future__ import annotations
 

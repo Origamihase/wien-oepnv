@@ -3,7 +3,7 @@
 Holds the reading of ``data/stats/baustellen_<Jahr>.csv`` (one row per guid),
 the rules that say which rows of one title are one site, and
 :func:`load_sites`. Moved verbatim out of
-``src/markdown_stats/baustellen_year.py``, which re-exports the names; the
+``src/markdown_stats/baustellen_year.py``, which re-exports the names another file imports or a test reads; the
 log lines keep the logger of ``src/markdown_stats/rows.py``.
 """
 from __future__ import annotations

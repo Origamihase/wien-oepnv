@@ -115,8 +115,8 @@ Wichtige Befehle:
 
 6.  **Dateigröße (700 Zeilen, teilen statt kürzen)**:
     - Keine Textdatei hat mehr als 700 Zeilen (`tests/test_file_line_limit.py`).
-    - Eine Datei mit 690 oder mehr Zeilen wird von der nächsten Änderung, die ihr eine Zeile hinzufügt, **nach Themen geteilt** (neue Dateien mit höchstens rund 450 Zeilen, wörtlich verschoben, alter Pfad bleibt Fassade; `docs/modularisierung.md`, Nachtrag vom 2026-11-13).
-    - **Niemals** Kommentare kürzen, Zeilen zusammenziehen oder Leerzeilen streichen, um unter der Grenze zu bleiben. `python scripts/check_line_limit_edits.py` prüft das vor dem Commit und in der CI (Betreiberentscheidung 2026-11-13).
+    - Eine Datei mit 690 oder mehr Zeilen wird von der nächsten Änderung, die ihr eine Zeile hinzufügt, **nach Themen geteilt** (danach hat sie höchstens 550 Zeilen, neue Dateien höchstens rund 450, wörtlich verschoben, alter Pfad bleibt Fassade; `docs/modularisierung.md`, Nachtrag vom 2026-11-13).
+    - **Niemals** Kommentare kürzen, Zeilen zusammenziehen oder Leerzeilen streichen, um unter der Grenze zu bleiben, auch nicht in zwei Schritten (erst kürzen, dann auffüllen). `python scripts/check_line_limit_edits.py` prüft das vor dem Commit und in der CI (Betreiberentscheidung 2026-11-13).
 
 ## Dokumentation
 - Änderungen am Code müssen in der Dokumentation (z. B. `README.md` oder `docs/`) reflektiert werden, falls sich das Verhalten ändert.

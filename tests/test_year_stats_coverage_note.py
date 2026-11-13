@@ -2,6 +2,10 @@
 
 Where the note of ``render_finished_year_coverage_note`` stands in the
 section and what an empty note leaves.
+
+From the review of 2026-11-10: each test that came from the former
+``test_year_stats_more.py`` pins one statement of the page that was false or
+missing in a case the first tests (``test_year_stats.py``) did not reach.
 """
 
 from __future__ import annotations

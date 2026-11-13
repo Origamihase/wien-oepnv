@@ -110,7 +110,7 @@ Weiterreichung, `from src.x import name as name`):
 |---|---|
 | `enrich_station_aliases.py` | `src/places/station_aliases.py` |
 | `feed_watch.py` | `src/feed_watch/` (model, feed_rules, sources, evaluate, issues, state_io; seit 2026-11-10 skipped_items) |
-| `generate_markdown_stats.py` | `src/markdown_stats/` (rows, direction_coverage, markdown_report, readme, summary; seit 2026-11-10 year_archive, year_stats, baustellen_year, year_review, review_client) |
+| `generate_markdown_stats.py` | `src/markdown_stats/` (rows, direction_coverage, markdown_report, readme, summary; seit 2026-11-10 year_archive, year_stats, baustellen_year, year_review, review_client; seit 2026-11-13 cli, cli_options, baustellen_sites, baustellen_facts, year_review_prompt, year_review_guard; `main` und die Optionen stehen seither in `cli.py` und `cli_options.py`, siehe Nachtrag 2026-11-13) |
 | `health_check.py` | `src/health_check/` (common, sources, outputs, workflow_secrets, github_runs) |
 | `ki_waechter.py` | `src/ki_waechter/` (inputs, audit) |
 | `update_all_stations.py` | `src/stations_refresh/` (diff, quarantine, heartbeat) |
@@ -405,28 +405,39 @@ bitte“):
   Leerzeilen streichen, um unter 700 zu bleiben, ist kein Weg.
   `scripts/check_line_limit_edits.py` vergleicht dafür jede Änderung mit
   ihrem Ausgangsstand: Hatte eine gezählte Datei dort mindestens 690 Zeilen,
-  hat sie danach immer noch mindestens 690 und kam eine Zeile dazu,
-  scheitert der Lauf und nennt die Datei. Eine Datei darf also in den
-  Bereich 690 bis 700 hineinwachsen, aber nur einmal; nur Zeilen entfernen
-  ist erlaubt. Der Workflow `test.yml` ruft die Prüfung vor den Tests gegen
+  kam eine Zeile dazu und hat sie danach mehr als 550, scheitert der Lauf
+  und nennt die Datei. Der Abstand zwischen 690 und 550 trennt die Teilung
+  vom Kürzen: Um eine Zeile unterzubringen, streicht niemand 140 Zeilen
+  Kommentar. Eine Datei darf in den Bereich 690 bis 700 hineinwachsen; nur
+  Zeilen entfernen ist erlaubt. Eine umbenannte Datei wird mit ihrem alten
+  Pfad verglichen. Die Prüfung sieht eine Änderung: Wer erst nur kürzt, bis
+  die Datei unter 690 liegt, und in einer zweiten Änderung auffüllt, wird
+  von ihr nicht erkannt; die Regel untersagt auch das, und es bleibt Sache
+  der Durchsicht. Ein Zurücknehmen (`git revert`), das einer Datei am
+  Anschlag Zeilen zurückgibt, scheitert wie jede andere Änderung und teilt
+  die Datei im selben Pull Request. Der Workflow `test.yml` ruft die Prüfung vor den Tests gegen
   `HEAD^1` auf (bei einem Pull Request der Stand von `main`, bei einem Push
   der Commit davor; beide Checkouts holen dafür zwei Commits). Lokal
   vergleicht `python scripts/check_line_limit_edits.py` mit dem gemeinsamen
   Vorfahren von `HEAD` und `origin/main`. Ohne Vergleichsstand endet sie mit
   Exit 2, nicht grün. Zahlen und Zählweise beider Prüfungen stehen in
-  `src/utils/line_limit.py` (`LIMIT`, `SPLIT_FROM`);
+  `src/utils/line_limit.py` (`LIMIT`, `SPLIT_FROM`, `SPLIT_TO`);
   `tests/test_check_line_limit_edits.py` spielt die Fälle in einem kleinen
   Git-Repository nach.
 * **Wie geteilt wird.** Nach Themen, mit Luft: Jede Datei, die bei einer
   Teilung entsteht, hat ein benennbares Thema und höchstens rund 450 Zeilen
-  (Etappe 6 und 7 schnitten auf 650; diese Dateien standen zehn Tage später
-  wieder an der Grenze). Sonst gilt, was die Etappen oben festlegen:
+  (Etappe 6 und 7 schnitten auf 650; zehn Tage später stand
+  `scripts/generate_markdown_stats.py` mit 693 Zeilen wieder an der Grenze).
+  Sonst gilt, was die Etappen oben festlegen:
   wörtlich verschieben, der alte Pfad bleibt Fassade mit einer Liste
   `__all__`, ein Test ersetzt einen Namen in dem Modul, das ihn liest.
 
-Am 2026-11-13 so geteilt (wörtlich verschoben; jede nicht leere Zeile der
-alten Datei steht in einer der neuen, neu sind nur Importe, `__all__`,
-Modulbeschreibungen und Kopf- und Fußzeilen der Doku-Teile):
+Am 2026-11-13 so geteilt (wörtlich verschoben; jede nicht leere Codezeile der
+alten Datei steht in einer der neuen. Neu sind nur Importe, `__all__`, die
+Modulbeschreibungen (die der alten Dateien wurden je Thema neu gefasst), Kopf-
+und Fußzeilen der Doku-Teile und in `cli_options.py` die Hülle
+`build_parser()` (`def`, Docstring, `return parser`) um den Parser-Block aus
+`main`, das ihn nun mit `parser = build_parser()` aufruft):
 
 | Datei (Zeilen vorher) | Danach |
 |---|---|
@@ -441,7 +452,7 @@ Modulbeschreibungen und Kopf- und Fußzeilen der Doku-Teile):
 | `tests/test_sentinel_clear_text_logging_drift_utils.py` (700) | dazu `test_sentinel_clear_text_logging_drift_walker.py` (der Inventar-Walker) |
 | `tests/test_sentinel_heroku_docker_token_drift.py` (692) | dazu `test_sentinel_heroku_docker_token_drift_invariants.py` (Abschnitte 6 bis 10) und `tests/_sentinel_heroku_docker_token_support.py` |
 | `tests/test_ki_waechter/test_teil_1.py` (698) | `test_eingabe.py`, `test_funde.py`, `test_bericht.py`, `test_gemini.py`, `test_prompt.py` im selben Paket |
-| `docs/architecture.md` und Teile 2 bis 8 (sechs davon 696 bis 700) | 16 Teile nach Abschnitten, höchstens 468 Zeilen; die Abschnitte 10 bis 12 stehen in Teil 15, 13 bis 15 in Teil 16 |
+| `docs/architecture.md` und Teile 2 bis 8 (sechs davon 696 bis 700) | 16 Teile nach Abschnitten, höchstens 468 Zeilen; die Abschnitte 10 bis 12 stehen in Teil 15, 13 bis 15 in Teil 16. Ausnahme: Der Abschnitt „Titel und Beschreibung im deutschen Feed“ hat keine Zwischenüberschriften und rund 1.180 Zeilen; er läuft von Teil 2 bis in Teil 5 und ist dort an Aufzählungspunkten geschnitten. Teil 3 und Teil 4 haben deshalb keine eigene Überschrift und keinen Eintrag im Inhaltsverzeichnis |
 | `docs/development.md` (700) mit Teil 2 | vier Teile: Überblick, Setup und CLI; Konfiguration und lokaler Lauf; Provider, Datenquelle, Stationsverzeichnis; Workflows, Skripte, Qualitätssicherung, Betrieb |
 | `docs/reference/ki_waechter.md` (700) | drei Teile: Arbeitsweise; Betrieb; Probelauf im Pull Request |
 
@@ -458,4 +469,7 @@ wörtlich verschiebt und die Entscheidung „Eine Feed-Kette, ein Modul“
 einhält: `lint`, `main` und `_assemble_feed_items` brauchen mit ihren
 Importen rund 480 Zeilen, der Rest ist die Weiterreichung in der einen Liste
 `__all__`. Bis zu einer Entscheidung dazu gilt für beide die Regel oben: Die
-nächste Änderung, die eine Zeile hinzufügt, muss teilen.
+nächste Änderung, die eine Zeile hinzufügt, muss teilen. Das trifft auch
+eine Änderung, die nur eine Zeile ersetzt: `update-cycle.yml` nennt fünf
+Actions mit festem Commit, und ein Versions-Update von Dependabot (monatlich)
+scheitert an der Prüfung, bis der Workflow geteilt ist.

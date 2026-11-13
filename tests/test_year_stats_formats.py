@@ -3,6 +3,10 @@
 How a delay and a count are written, how a delay is rounded (half up, as by
 hand), what the page says about its rounding, and that a text of the ledger
 cannot break a table.
+
+From the review of 2026-11-10: each test that came from the former
+``test_year_stats_more.py`` pins one statement of the page that was false or
+missing in a case the first tests (``test_year_stats.py``) did not reach.
 """
 
 from __future__ import annotations
