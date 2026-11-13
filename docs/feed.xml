@@ -8,8 +8,34 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 13 Nov 2026 17:30:57 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 18:00:54 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[74A: Signalstörung, Ampelstörung]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">e42a781836ec2814f0a4c06b6398c6abf7ac48b3b5c47aa27b1fc2a90ec45037</guid>
+      <pubDate>Fri, 13 Nov 2026 17:47:14 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 13 Nov 2026 17:47:14 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 13 Nov 2026 17:47:17 +0100</ext:starts_at>
+      <description>Signalstörung: Fahrtbehinderung. [Seit 17:47]</description>
+      <content:encoded><![CDATA[Signalstörung: Fahrtbehinderung.<br/>[Seit 17:47]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4</guid>
+      <pubDate>Fri, 13 Nov 2026 17:37:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 13 Nov 2026 17:37:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 13 Nov 2026 17:37:00 +0100</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 17:37]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 17:37]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[1: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -116,35 +142,6 @@
       <georss:point>48.210445 16.360657</georss:point>
       <description>Haltestellenauflassung der Linien D, 1 und 71 in beiden Richtungen. Haltestelle: Rathausplatz, Burgtheater. Grund: Christkindlmarkt. Ersatz: Schottentor. Parlament … [Bis 20.12.]</description>
       <content:encoded><![CDATA[Haltestellenauflassung der Linien D, 1 und 71 in beiden Richtungen. Haltestelle: Rathausplatz, Burgtheater. Grund: Christkindlmarkt. Ersatz: Schottentor. Parlament …<br/>[Bis 20.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[8A: Küniglberg, ORF Zentrum]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5aeaa62483dca9fdec215375dbb4563e5a96d5c2305faf7f534ce5f2edd88d19</guid>
-      <pubDate>Thu, 12 Nov 2026 10:13:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 12 Nov 2026 10:13:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 16 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Tue, 24 Nov 2026 09:00:00 +0100</ext:ends_at>
-      <georss:point>48.175514 16.291612</georss:point>
-      <description>Würzburggasse nach Einfahrt zum Friedhof → Würzburggasse 49. Haltestellenverlegung der Linie 8A in Richtung Bahnhof Meidling. Grund: Straßenbau. [Ab Mo 16.11. bis 24.11.]</description>
-      <content:encoded><![CDATA[Würzburggasse nach Einfahrt zum Friedhof → Würzburggasse 49. Haltestellenverlegung der Linie 8A in Richtung Bahnhof Meidling. Grund: Straßenbau.<br/>[Ab Mo 16.11. bis 24.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Rabengasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">a283d0e2e437795796c0e7a743565b30ce8fddbc07070af76ea09899ed55a1e7</guid>
-      <pubDate>Wed, 11 Nov 2026 15:24:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 11 Nov 2026 15:24:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 16 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.194051 16.397614</georss:point>
-      <description>Landstraßer Hauptstraße 140 -144 → Landstraßer Hauptstraße gegenüber 146. Haltestellenverlegung der Linie 74A in Richtung St. Marx. Grund: Straßenbau. [Ab Mo 16.11.]</description>
-      <content:encoded><![CDATA[Landstraßer Hauptstraße 140 -144 → Landstraßer Hauptstraße gegenüber 146. Haltestellenverlegung der Linie 74A in Richtung St. Marx. Grund: Straßenbau.<br/>[Ab Mo 16.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
