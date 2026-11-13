@@ -446,11 +446,20 @@ def _defer_repeated_route_titles(
     and a newer report that closes nothing ("nur eingeschränkt") would
     stand before a closure in its closure night. Only two windows that
     start on the same day are still told apart by their place in the sorted
-    order, as before (``tests/test_repeated_route_titles.py``). Not decided
-    by the operator: on a Sunday morning the weekend-night window has its
-    closure day too, so beside it an overrun report of the day stands
-    behind the field as it did on Monday 09.11.
-    (``tests/test_oebb_title_slot.py`` pins it).
+    order, as before (``tests/test_repeated_route_titles.py``). The
+    earliest window also holds on a Sunday morning, where the weekend-night
+    window has its closure day too: an overrun report of the day that leads
+    like it stands behind the field. Operator decision 2026-11-13, card
+    "Soll am Sonntagmorgen die Meldung des Tages vor dem Wochenendfenster
+    stehen?": "Nein, Fenster behält den Platz" ("Es bleibt, wie es ist: An
+    Samstag und Sonntag steht das Wochenendfenster vorn, die Meldung des
+    Tages hinter dem Feld."). "Wie es ist" includes the current incident: a
+    report that counts as one, by the rules or by the stored Gemini answer
+    (``src.ki_entscheidung``, named on the card), holds the slot on that
+    morning too. Not named by the card and unchanged: on the first day of
+    the window both start on the same day and the place in the sorted order
+    decides as above, so the newer report of the day stands in front, also
+    during the first closure night (``tests/test_oebb_title_slot.py``).
     """
     groups: dict[str, list[int]] = {}
     for index, item in enumerate(items):
