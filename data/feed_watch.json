@@ -1,28 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-13T05:00:54.357047+00:00",
- "built": "2026-11-13T06:00:49+01:00",
+ "updated": "2026-11-13T05:30:56.117350+00:00",
+ "built": "2026-11-13T06:30:46+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-13T06:00:49+01:00",
+  "built": "2026-11-13T06:30:46+01:00",
   "items": [
+   {
+    "title": "30/31: Rettungseinsatz",
+    "time_line": "Seit 06:27"
+   },
    {
     "title": "63A: Verspätungen",
     "time_line": "Seit 05:58"
-   },
-   {
-    "title": "U6: Rettungseinsatz",
-    "time_line": "Seit 05:22"
-   },
-   {
-    "title": "U1: Verspätungen",
-    "time_line": "Seit 05:21"
-   },
-   {
-    "title": "31: Feuerwehreinsatz",
-    "time_line": "Seit 04:55"
    },
    {
     "title": "Wien Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx",
@@ -47,31 +39,19 @@
    {
     "title": "98A: Arztgasse",
     "time_line": "Ab Mo 16.11."
+   },
+   {
+    "title": "65A: Triester Straße, Rossakgasse",
+    "time_line": "Seit 11.11."
+   },
+   {
+    "title": "66A: Busse halten Salvatorianerplatz",
+    "time_line": "Bis Sa 14.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-06T05:01:20.386965+00:00",
-   "raw": {
-    "wl-stoerungen": 55,
-    "wl-hinweise": 77,
-    "oebb": 190,
-    "baustellen-linien": 57,
-    "baustellen-punkte": 16
-   },
-   "discarded": {
-    "wl": 16,
-    "oebb": 165,
-    "baustellen": 66
-   },
-   "cache": {
-    "baustellen": 4,
-    "oebb": 6,
-    "wl": 92
-   }
-  },
   {
    "t": "2026-11-06T05:31:11.396258+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 6,
     "wl": 85
    }
+  },
+  {
+   "t": "2026-11-13T05:30:56.117350+00:00",
+   "raw": {
+    "wl-stoerungen": 44,
+    "wl-hinweise": 76,
+    "oebb": 179,
+    "baustellen-linien": 54,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 15,
+    "oebb": 154,
+    "baustellen": 65
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 84
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-13T05:00:54.357047+00:00"
+   "last_ok": "2026-11-13T05:30:56.117350+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-13T05:00:54.357047+00:00"
+   "last_ok": "2026-11-13T05:30:56.117350+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-13T05:00:54.357047+00:00"
+   "last_ok": "2026-11-13T05:30:56.117350+00:00"
   }
  }
 }

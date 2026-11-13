@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_36, ftazW_113, ftazW_354, ftazW_519, ftazW_1017117, ftazW_520, ftazW_114, ftazW_22, ftazW_355, ftazW_483, ftazW_1017118"
+    "trafficInfoNameList": "ftazW_36, ftazW_113, ftazW_354, ftazW_519, ftazW_482, ftazW_1017117, ftazW_520, ftazW_114, ftazW_22, ftazW_355, ftazW_483, ftazW_1017118"
    }
   ],
   "poiCategoryGroups": [
@@ -3265,6 +3265,43 @@
      "start": "2026-11-15T20:45:00.000+0100"
     },
     "title": "Josefstädter Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "16.11.2026 00:45",
+     "ausVon": "15.11.2026 20:45",
+     "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Erlaaer Straße/Ostrandstraße",
+     "rbls": [
+      4637
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Erlaaer Straße",
+     "status": "geplante Wartung",
+     "towards": "U6 Floridsdorf"
+    },
+    "description": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Erlaaer Straße/Ostrandstraße",
+    "elevatorId": "ES 01",
+    "name": "ftazW_482",
+    "parentName": "ftazW_482",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4637
+    ],
+    "time": {
+     "end": "2026-11-16T00:45:00.000+0100",
+     "start": "2026-11-15T20:45:00.000+0100"
+    },
+    "title": "Erlaaer Straße"
    },
    {
     "alertCause": "undefined alert cause",
