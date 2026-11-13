@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261113-0014, I20261113-0015, I20261113-0009-F01, I20260925-0011, I20260909-0007, I20261113-0010-F01, I20261020-0029, I20261113-0011-F02"
+    "trafficInfoNameList": "I20261113-0015-F01, I20261113-0009-F01, I20260925-0011, I20261113-0011-F02, I20261113-0015-F02, I20260909-0007, I20261113-0010-F01, I20261113-0014-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R401-101, R293-474, R318-437, R2345-127, R2380-627, R1884-101, R1883-101, R1875-101, R1880-101, R1881-101, R1876-101, R1882-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R1473-149, R1472-149, R1474-149, R1475-149, R1476-149, R1449-149, R1447-149, R1446-149, R1445-149, R1448-149, R556-109, R1475-109, R1476-109, R530-109, R533-109, R532-109, R531-109, R541-109, R545-109, R1446-109, R543-109, R1447-109, R547-109, R546-109, R544-109, R484-109, R521-109, R98-136, R100-136, R94-136, R95-136, R96-136, R97-136, R99-136, R554-109, R553-109, R550-109, R551-109, R552-109, R143-109, R523-109, R525-109, R526-109, R522-109, R524-109, R1342-142, R524-142, R3878-142, R3877-142, R1338-142, R1336-142, R102-136, R45-136, R46-136, R103-136, R130-136, R101-136, R223-109, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2380-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R401-101, R293-474, R318-437, R2378-627, R2345-127, R1880-101, R1875-101, R1881-101, R1876-101, R1884-101, R1883-101, R1882-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R521-109, R94-136, R95-136, R96-136, R98-136, R97-136, R99-136, R100-136, R550-109, R554-109, R553-109, R552-109, R551-109, R143-109, R525-109, R524-109, R526-109, R522-109, R523-109, R1342-142, R524-142, R3878-142, R3877-142, R1338-142, R1336-142, R46-136, R101-136, R102-136, R45-136, R103-136, R130-136, R223-109, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -306,8 +306,8 @@
     "status": "active",
     "time": {
      "created": "2026-11-13T07:49:00.000+0100",
-     "lastUpdate": "2026-11-13T07:49:00.000+0100",
-     "resume": "2026-11-13T07:49:00.000+0100",
+     "end": "2026-11-13T09:23:00.000+0100",
+     "lastUpdate": "2026-11-13T08:31:00.000+0100",
      "start": "2026-11-13T07:31:00.000+0100"
     },
     "title": "49: Gleisschaden"
@@ -320,18 +320,18 @@
       "D": "ptTram"
      }
     },
-    "description": "Linie D: Fahrtbehinderung in Richtung Absberggasse. Voraussichtliche Dauer: 08:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Heiligenstadt, 12.-Februar-Platz.",
-    "descriptionHTML": "<p>Linie D:<br>Fahrtbehinderung in Richtung Absberggasse.</p><p>Voraussichtliche Dauer: 08:40 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Heiligenstadt, 12.-Februar-Platz.</p>",
+    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie D:<br>Fahrtbehinderung in Richtung Absberggasse.</p><p>Voraussichtliche Dauer: 08:40 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Heiligenstadt, 12.-Februar-Platz.</p>",
-       "descriptionPlain": "Linie D: Fahrtbehinderung in Richtung Absberggasse. Voraussichtliche Dauer: 08:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Heiligenstadt, 12.-Februar-Platz.",
+       "descriptionHtml": "<p>Linie D: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "D: Rettungseinsatz"
       }
      }
     ],
-    "name": "I20261113-0014",
+    "name": "I20261113-0014-F01",
     "owner": "WL",
     "parentName": "I20261113-0014",
     "priority": "1",
@@ -353,8 +353,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-13T08:07:00.000+0100",
-     "lastUpdate": "2026-11-13T08:07:00.000+0100",
+     "created": "2026-11-13T08:31:00.000+0100",
+     "lastUpdate": "2026-11-13T08:31:00.000+0100",
+     "resume": "2026-11-13T08:31:00.000+0100",
      "start": "2026-11-13T08:06:00.000+0100"
     },
     "title": "D: Rettungseinsatz"
@@ -364,23 +365,22 @@
     "alertCauseId": 48,
     "attributes": {
      "relatedLineTypes": {
-      "42": "ptTram",
       "9": "ptTram"
      }
     },
-    "description": "Linie 9: Betrieb nur zwischen Westbahnhof S U und Rosensteingasse. Weiterfahrt bis Hernals, Wattgasse. Linie 42: Betrieb ab Währinger Straße, Volksoper nach Gersthof und zurück über die Linie 40. Voraussichtliche Dauer: 09:00 Uhr. Grund: Stromstörung im Bereich Kreuzgasse.",
-    "descriptionHTML": "<p>Linie 9:<br>Betrieb nur zwischen Westbahnhof S U und Rosensteingasse.<br>Weiterfahrt bis Hernals, Wattgasse.<br>Linie 42:<br>Betrieb ab Währinger Straße, Volksoper nach Gersthof und zurück über die Linie 40.</p><p>Voraussichtliche Dauer: 09:00 Uhr.</p><p>Grund: Stromstörung im Bereich Kreuzgasse.</p>",
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 9:<br>Betrieb nur zwischen Westbahnhof S U und Rosensteingasse.<br>Weiterfahrt bis Hernals, Wattgasse.<br>Linie 42:<br>Betrieb ab Währinger Straße, Volksoper nach Gersthof und zurück über die Linie 40.</p><p>Voraussichtliche Dauer: 09:00 Uhr.</p><p>Grund: Stromstörung im Bereich Kreuzgasse.</p>",
-       "descriptionPlain": "Linie 9: Betrieb nur zwischen Westbahnhof S U und Rosensteingasse. Weiterfahrt bis Hernals, Wattgasse. Linie 42: Betrieb ab Währinger Straße, Volksoper nach Gersthof und zurück über die Linie 40. Voraussichtliche Dauer: 09:00 Uhr. Grund: Stromstörung im Bereich Kreuzgasse.",
-       "title": "9, 42: Stromstörung"
+       "descriptionHtml": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "9: Stromstörung"
       }
      }
     ],
     "location": "Kreuzgasse",
-    "name": "I20261113-0015",
+    "name": "I20261113-0015-F01",
     "owner": "WL",
     "parentName": "I20261113-0015",
     "priority": "1",
@@ -388,15 +388,55 @@
     "reasonName": "Stromstörung",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "9",
-     "42"
+     "9"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 109,
       "lineName": "9",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-13T08:44:00.000+0100",
+     "lastUpdate": "2026-11-13T08:44:00.000+0100",
+     "resume": "2026-11-13T08:44:00.000+0100",
+     "start": "2026-11-13T08:12:00.000+0100"
+    },
+    "title": "9: Stromstörung"
+   },
+   {
+    "alertCause": "track circuit problem",
+    "alertCauseId": 48,
+    "attributes": {
+     "relatedLineTypes": {
+      "42": "ptTram"
+     }
+    },
+    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 42: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 42: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "42: Stromstörung"
+      }
+     }
+    ],
+    "location": "Kreuzgasse",
+    "name": "I20261113-0015-F02",
+    "owner": "WL",
+    "parentName": "I20261113-0015",
+    "priority": "1",
+    "reasonId": 33,
+    "reasonName": "Stromstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 142,
       "lineName": "42",
@@ -405,11 +445,12 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-13T08:14:00.000+0100",
-     "lastUpdate": "2026-11-13T08:14:00.000+0100",
+     "created": "2026-11-13T08:44:00.000+0100",
+     "end": "2026-11-13T09:08:00.000+0100",
+     "lastUpdate": "2026-11-13T08:53:00.000+0100",
      "start": "2026-11-13T08:12:00.000+0100"
     },
-    "title": "9, 42: Stromstörung"
+    "title": "42: Stromstörung"
    },
    {
     "alertCause": "undefined alert cause",
@@ -640,328 +681,6 @@
      "start": "2026-11-13T08:15:19.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Stromstörung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Hütteldorfer Straße",
-    "name": "R1445-149",
-    "owner": "WL",
-    "parentName": "R1445-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1445
-    ],
-    "time": {
-     "end": "2026-11-13T08:35:00.000+0100",
-     "start": "2026-11-13T07:36:16.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Hütteldorfer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-    "name": "R1446-109",
-    "owner": "WL",
-    "parentName": "R1446-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     1446
-    ],
-    "time": {
-     "end": "2026-11-13T08:37:00.000+0100",
-     "start": "2026-11-13T07:38:16.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Hütteldorfer Straße",
-    "name": "R1446-149",
-    "owner": "WL",
-    "parentName": "R1446-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1446
-    ],
-    "time": {
-     "end": "2026-11-13T08:35:00.000+0100",
-     "start": "2026-11-13T07:36:16.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Hütteldorfer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-    "name": "R1447-109",
-    "owner": "WL",
-    "parentName": "R1447-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     1447
-    ],
-    "time": {
-     "end": "2026-11-13T08:37:00.000+0100",
-     "start": "2026-11-13T07:38:16.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Hütteldorfer Straße",
-    "name": "R1447-149",
-    "owner": "WL",
-    "parentName": "R1447-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1447
-    ],
-    "time": {
-     "end": "2026-11-13T08:35:00.000+0100",
-     "start": "2026-11-13T07:36:16.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Hütteldorfer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Hütteldorfer Straße",
-    "name": "R1448-149",
-    "owner": "WL",
-    "parentName": "R1448-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1448
-    ],
-    "time": {
-     "end": "2026-11-13T08:35:00.000+0100",
-     "start": "2026-11-13T07:36:16.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Hütteldorfer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Hütteldorfer Straße",
-    "name": "R1449-149",
-    "owner": "WL",
-    "parentName": "R1449-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1449
-    ],
-    "time": {
-     "end": "2026-11-13T08:35:00.000+0100",
-     "start": "2026-11-13T07:36:16.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Hütteldorfer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Urban-Loritz-Platz",
-    "name": "R1472-149",
-    "owner": "WL",
-    "parentName": "R1472-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1472
-    ],
-    "time": {
-     "end": "2026-11-13T08:34:00.000+0100",
-     "start": "2026-11-13T07:35:46.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Urban-Loritz-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Urban-Loritz-Platz",
-    "name": "R1473-149",
-    "owner": "WL",
-    "parentName": "R1473-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1473
-    ],
-    "time": {
-     "end": "2026-11-13T08:34:00.000+0100",
-     "start": "2026-11-13T07:35:46.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Urban-Loritz-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Urban-Loritz-Platz",
-    "name": "R1474-149",
-    "owner": "WL",
-    "parentName": "R1474-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1474
-    ],
-    "time": {
-     "end": "2026-11-13T08:34:00.000+0100",
-     "start": "2026-11-13T07:35:46.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Urban-Loritz-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nGleisschaden",
-    "name": "R1475-109",
-    "owner": "WL",
-    "parentName": "R1475-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     1475
-    ],
-    "time": {
-     "end": "2026-11-13T08:37:00.000+0100",
-     "start": "2026-11-13T07:37:46.000+0100"
-    },
-    "title": "Fahrtbehinderung\nGleisschaden"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Urban-Loritz-Platz",
-    "name": "R1475-149",
-    "owner": "WL",
-    "parentName": "R1475-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1475
-    ],
-    "time": {
-     "end": "2026-11-13T08:34:00.000+0100",
-     "start": "2026-11-13T07:35:46.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Urban-Loritz-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nGleisschaden",
-    "name": "R1476-109",
-    "owner": "WL",
-    "parentName": "R1476-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     1476
-    ],
-    "time": {
-     "end": "2026-11-13T08:37:00.000+0100",
-     "start": "2026-11-13T07:37:46.000+0100"
-    },
-    "title": "Fahrtbehinderung\nGleisschaden"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Urban-Loritz-Platz",
-    "name": "R1476-149",
-    "owner": "WL",
-    "parentName": "R1476-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1476
-    ],
-    "time": {
-     "end": "2026-11-13T08:34:00.000+0100",
-     "start": "2026-11-13T07:35:46.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Urban-Loritz-Platz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1679,29 +1398,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-    "name": "R484-109",
-    "owner": "WL",
-    "parentName": "R484-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     484
-    ],
-    "time": {
-     "end": "2026-11-13T08:37:00.000+0100",
-     "start": "2026-11-13T07:38:17.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -1886,236 +1582,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nGleisschaden",
-    "name": "R530-109",
-    "owner": "WL",
-    "parentName": "R530-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     530
-    ],
-    "time": {
-     "end": "2026-11-13T08:37:00.000+0100",
-     "start": "2026-11-13T07:37:47.000+0100"
-    },
-    "title": "Fahrtbehinderung\nGleisschaden"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nGleisschaden",
-    "name": "R531-109",
-    "owner": "WL",
-    "parentName": "R531-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     531
-    ],
-    "time": {
-     "end": "2026-11-13T08:37:00.000+0100",
-     "start": "2026-11-13T07:37:47.000+0100"
-    },
-    "title": "Fahrtbehinderung\nGleisschaden"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nGleisschaden",
-    "name": "R532-109",
-    "owner": "WL",
-    "parentName": "R532-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     532
-    ],
-    "time": {
-     "end": "2026-11-13T08:37:00.000+0100",
-     "start": "2026-11-13T07:37:47.000+0100"
-    },
-    "title": "Fahrtbehinderung\nGleisschaden"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nGleisschaden",
-    "name": "R533-109",
-    "owner": "WL",
-    "parentName": "R533-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     533
-    ],
-    "time": {
-     "end": "2026-11-13T08:37:00.000+0100",
-     "start": "2026-11-13T07:37:47.000+0100"
-    },
-    "title": "Fahrtbehinderung\nGleisschaden"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-    "name": "R541-109",
-    "owner": "WL",
-    "parentName": "R541-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     541
-    ],
-    "time": {
-     "end": "2026-11-13T08:37:00.000+0100",
-     "start": "2026-11-13T07:38:16.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-    "name": "R543-109",
-    "owner": "WL",
-    "parentName": "R543-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     543
-    ],
-    "time": {
-     "end": "2026-11-13T08:37:00.000+0100",
-     "start": "2026-11-13T07:38:16.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-    "name": "R544-109",
-    "owner": "WL",
-    "parentName": "R544-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     544
-    ],
-    "time": {
-     "end": "2026-11-13T08:37:00.000+0100",
-     "start": "2026-11-13T07:38:16.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-    "name": "R545-109",
-    "owner": "WL",
-    "parentName": "R545-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     545
-    ],
-    "time": {
-     "end": "2026-11-13T08:37:00.000+0100",
-     "start": "2026-11-13T07:38:16.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-    "name": "R546-109",
-    "owner": "WL",
-    "parentName": "R546-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     546
-    ],
-    "time": {
-     "end": "2026-11-13T08:37:00.000+0100",
-     "start": "2026-11-13T07:38:16.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-    "name": "R547-109",
-    "owner": "WL",
-    "parentName": "R547-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     547
-    ],
-    "time": {
-     "end": "2026-11-13T08:37:00.000+0100",
-     "start": "2026-11-13T07:38:16.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Fahrtbehinderung\nwegen Stromstörung",
     "name": "R550-109",
     "owner": "WL",
@@ -2227,29 +1693,6 @@
      "start": "2026-11-13T08:14:50.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Stromstörung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nGleisschaden",
-    "name": "R556-109",
-    "owner": "WL",
-    "parentName": "R556-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     556
-    ],
-    "time": {
-     "end": "2026-11-13T08:37:00.000+0100",
-     "start": "2026-11-13T07:37:46.000+0100"
-    },
-    "title": "Fahrtbehinderung\nGleisschaden"
    },
    {
     "alertCause": "undefined alert cause",

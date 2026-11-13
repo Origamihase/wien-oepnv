@@ -8,10 +8,23 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 13 Nov 2026 08:30:46 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 09:00:55 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[9/42: Stromstörung]]></title>
+      <title><![CDATA[9: Stromstörung]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">4658e2d0c68d64b797de95bc096ae657d1d465d7f9ed90e9dee7155591e00b5b</guid>
+      <pubDate>Fri, 13 Nov 2026 07:59:49 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 13 Nov 2026 09:00:55 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 13 Nov 2026 08:15:20 +0100</ext:starts_at>
+      <description>Züge halten in der Rosensteingasse. [Seit 07:59]</description>
+      <content:encoded><![CDATA[Züge halten in der Rosensteingasse.<br/>[Seit 07:59]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[42: Stromstörung]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">fac9778458df78fecabb4499aca9cb41c06107a96dd92a80246f63ed7d5e9175</guid>
       <pubDate>Fri, 13 Nov 2026 08:12:00 +0100</pubDate>
@@ -20,8 +33,9 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 13 Nov 2026 08:30:46 +0100</ext:first_seen>
       <ext:starts_at>Fri, 13 Nov 2026 08:12:00 +0100</ext:starts_at>
-      <description>Betrieb nur zwischen Westbahnhof und Rosensteingasse. Weiterfahrt bis Hernals, Wattgasse. [Seit 08:12]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Westbahnhof und Rosensteingasse. Weiterfahrt bis Hernals, Wattgasse.<br/>[Seit 08:12]]]></content:encoded>
+      <ext:ends_at>Fri, 13 Nov 2026 09:17:00 +0100</ext:ends_at>
+      <description>Betrieb ab Währinger Straße, Volksoper; Züge halten bei Linie 40. [Seit 08:12]</description>
+      <content:encoded><![CDATA[Betrieb ab Währinger Straße, Volksoper; Züge halten bei Linie 40.<br/>[Seit 08:12]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[D: Rettungseinsatz]]></title>
@@ -33,8 +47,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 13 Nov 2026 08:06:00 +0100</ext:first_seen>
       <ext:starts_at>Fri, 13 Nov 2026 08:18:51 +0100</ext:starts_at>
-      <description>Fahrtbehinderung in Richtung Absberggasse. Voraussichtlich bis 08:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Heiligenstadt, 12.-Februar-Platz. [Seit 08:06]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Absberggasse. Voraussichtlich bis 08:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Heiligenstadt, 12.-Februar-Platz.<br/>[Seit 08:06]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 08:06]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 08:06]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U6: Polizeieinsatz]]></title>
@@ -59,8 +73,9 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 13 Nov 2026 07:31:00 +0100</ext:first_seen>
       <ext:starts_at>Fri, 13 Nov 2026 07:31:00 +0100</ext:starts_at>
-      <description>Betrieb ab Urban-Loritz-Platz, Hütteldorfer Straße. [Seit 07:31]</description>
-      <content:encoded><![CDATA[Betrieb ab Urban-Loritz-Platz, Hütteldorfer Straße.<br/>[Seit 07:31]]]></content:encoded>
+      <ext:ends_at>Fri, 13 Nov 2026 09:23:00 +0100</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 07:31]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 07:31]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Schadhaftes Fahrzeug]]></title>
@@ -133,20 +148,6 @@
       <georss:point>48.180312 16.260180</georss:point>
       <description>Ghelengasse 30 → Ghelengasse 28. Haltestellenverlegung der Linie 54B in Richtung St. Veiter Tor. Grund: Straßenbau. Ghelengasse gegenüber 28 → Ghelengasse gegenüber 32. … [Heute]</description>
       <content:encoded><![CDATA[Ghelengasse 30 → Ghelengasse 28. Haltestellenverlegung der Linie 54B in Richtung St. Veiter Tor. Grund: Straßenbau. Ghelengasse gegenüber 28 → Ghelengasse gegenüber 32. …<br/>[Heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Rabengasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">a283d0e2e437795796c0e7a743565b30ce8fddbc07070af76ea09899ed55a1e7</guid>
-      <pubDate>Wed, 11 Nov 2026 15:24:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 11 Nov 2026 15:24:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 16 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.194051 16.397614</georss:point>
-      <description>Landstraßer Hauptstraße 140 -144 → Landstraßer Hauptstraße gegenüber 146. Haltestellenverlegung der Linie 74A in Richtung St. Marx. Grund: Straßenbau. [Ab Mo 16.11.]</description>
-      <content:encoded><![CDATA[Landstraßer Hauptstraße 140 -144 → Landstraßer Hauptstraße gegenüber 146. Haltestellenverlegung der Linie 74A in Richtung St. Marx. Grund: Straßenbau.<br/>[Ab Mo 16.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
