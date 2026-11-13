@@ -43,11 +43,6 @@ _MEIDLING_HTML = (
     "Einzelne <b>Fernverkehrszüge</b> werden zwischen <b>St.Pölten Hbf</b> und <b>Wien "
     "Meidling Bahnhof </b>über Rekawinkel Bahnhof <b>umgeleitet</b>."
 )
-_MEIDLING_SENTENCE = (
-    "Wegen eines Polizeieinsatzes sind zwischen Tullnerfeld Bahnhof und St. Pölten Hbf bzw. "
-    "Tullnerfeld Bahnhof und Moosbierbaum-Heiligeneich Bahnhof, bis voraussichtlich 13:30 "
-    "Uhr keine Fahrten möglich."
-)
 
 
 def _render(title: str, raw_desc: str) -> str:
