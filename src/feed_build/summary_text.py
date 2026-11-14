@@ -132,6 +132,36 @@ _CONTINUING_WORDS: frozenset[str] = frozenset({
 # August 2026, ca. 15:00 Uhr bis Betriebsschluss.") or, in a field-built
 # text, the room the stop's new location needs.
 _DATE_FIELD_RE = re.compile(r"(?:Zeitraum|Dauer):")
+# The time line holds a start and an end, not the days or hours in between.
+# A date field that limits the measure to some of them keeps that part as a
+# sentence of its own, behind the lead: "Haltestellenauflassung der Linien D,
+# 1 und 71 … Dauer: 13. November 2026 bis 20. Dezember 2026 an Freitagen,
+# Samstagen, Sonntagen sowie am 08. Dezember jeweils von etwa 15:00 Uhr bis
+# 22:30 Uhr" read "aufgelassen … [Bis 20.12.]" on the TV, a closure on every
+# day (Christkindlmarkt 2026, up to place 2), and "63A: Umleitung wegen
+# Kranarbeiten" ("täglich von 20:00 Uhr bis 05:00 Uhr", October 2026, up to
+# place 3) a diversion around the clock. Those were the only two in all
+# 2,864 feed states since 20.09.2026. The window starts at the first word
+# that limits the days or hours; the dates in front of it stay with the time
+# line. A weekday followed by a date ("Von Montag, 05. Oktober 2026") is a
+# date, not a window. It closes the lead sentence as a clause: after "Uhr."
+# the sentence split (four letters before the full stop) would not see an
+# end, and a sentence of its own would take the measures with it.
+_WEEKDAY = r"(?:Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonntag)"
+_RECURRING_WINDOW_RE = re.compile(
+    rf"\b(?:an\s+(?:den\s+)?(?:{_WEEKDAY}|Wochenend|Werktag)\w*"
+    rf"|jeweils|täglich|nachts|in\s+den\s+Nächten|werktags|wochentags"
+    rf"|{_WEEKDAY}s?\s*(?:bis|-|–)\s*{_WEEKDAY})\b",
+    re.IGNORECASE,
+)
+
+
+def _recurring_window(field: str) -> str:
+    """The days or hours a ``Zeitraum:``/``Dauer:`` *field* limits the measure to, or ``""``."""
+    match = _RECURRING_WINDOW_RE.search(field)
+    if match is None:
+        return ""
+    return field[match.start():].strip(" ,;.")
 _DOUBLED_FULL_STOP_RE = re.compile(r"(?<!\.)\.\.(?!\.)")
 
 # WL ticker texts built from fields whose value was empty: the stop symbol
@@ -285,8 +315,12 @@ def _close_blocks(text: str, raw_title: str) -> tuple[str, bool]:
         found = found[1:]
     if len(found) > 1:
         kept = [block for block in found if not _DATE_FIELD_RE.match(block)]
+        windows = [w for w in (_recurring_window(b) for b in found if _DATE_FIELD_RE.match(b)) if w]
         # A label that stood before a date field now meets its own text.
         found = _join_continued_blocks(kept) if kept else found
+        if kept and windows:
+            lead = found[0].rstrip(" .")
+            found = [f"{lead}, {', '.join(windows)}", *found[1:]]
     found = _relocation_first(found, title_words, _truncate_summary_180)
     closed: list[tuple[str, bool]] = []
     for block in found:

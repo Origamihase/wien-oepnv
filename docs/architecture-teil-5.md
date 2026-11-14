@@ -116,6 +116,11 @@
     Vergangenheit („Wegen eines Polizeieinsatzes waren in Mödling Bahnhof
     bis 19:55 Uhr keine Fahrten möglich“, veröffentlicht 19:57) oder als
     „Aufhebung …“ (`_is_all_clear`); 60 der 193 ÖBB-Störungen seit Juli.
+    Baut der Abruf den Titel aus der Strecke im Text neu, bleibt das
+    Etikett seit 2026-11-14 davor („Aufhebung Streckenunterbrechung: Wien
+    Jedlersdorf ↔ Korneuburg“, `_keep_all_clear_label`); vorher fehlte es
+    allen 35 ÖBB-Fassungen dieser Art seit 04.10., sie lasen sich wie eine
+    laufende Störung, und `_defer_all_clear_items` griff nie.
     Sie behalten ihre Zeile (`_reports_past_disruption`), „[Seit 19:57]“
     behauptete das Gegenteil.
   - **Stammstrecke:** Der Beginn ist die erste gemessene verspätete
