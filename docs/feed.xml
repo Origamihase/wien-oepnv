@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 14 Nov 2026 20:00:45 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 20:14:05 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[11A: Falschparker]]></title>
@@ -90,8 +90,8 @@
       <ext:starts_at>Fri, 13 Nov 2026 00:00:00 +0100</ext:starts_at>
       <ext:ends_at>Sun, 20 Dec 2026 22:30:00 +0100</ext:ends_at>
       <georss:point>48.210445 16.360657</georss:point>
-      <description>Haltestellenauflassung der Linien D, 1 und 71 in beiden Richtungen. Haltestelle: Rathausplatz, Burgtheater. Grund: Christkindlmarkt. Ersatz: Schottentor. Parlament … [Bis 20.12.]</description>
-      <content:encoded><![CDATA[Haltestellenauflassung der Linien D, 1 und 71 in beiden Richtungen. Haltestelle: Rathausplatz, Burgtheater. Grund: Christkindlmarkt. Ersatz: Schottentor. Parlament …<br/>[Bis 20.12.]]]></content:encoded>
+      <description>Haltestellenauflassung der Linien D, 1 und 71 in beiden Richtungen, an Freitagen, Samstagen, Sonntagen sowie am 08. Dezember jeweils von etwa 15:00 Uhr bis 22:30 Uhr. … [Bis 20.12.]</description>
+      <content:encoded><![CDATA[Haltestellenauflassung der Linien D, 1 und 71 in beiden Richtungen, an Freitagen, Samstagen, Sonntagen sowie am 08. Dezember jeweils von etwa 15:00 Uhr bis 22:30 Uhr. …<br/>[Bis 20.12.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[8A: Küniglberg, ORF Zentrum]]></title>
