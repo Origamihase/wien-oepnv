@@ -1,16 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-14T23:01:02.092707+00:00",
- "built": "2026-11-15T00:00:41+01:00",
+ "updated": "2026-11-14T23:31:00.692687+00:00",
+ "built": "2026-11-15T00:30:46+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-15T00:00:41+01:00",
+  "built": "2026-11-15T00:30:46+01:00",
   "items": [
    {
-    "title": "60: Verunreinigung",
-    "time_line": "Seit 14.11."
+    "title": "31: Rettungseinsatz",
+    "time_line": "Seit 00:02"
    },
    {
     "title": "U6: Verspätungen",
@@ -19,10 +19,6 @@
    {
     "title": "13A: Rettungseinsatz",
     "time_line": "Heute"
-   },
-   {
-    "title": "2: Verspätungen",
-    "time_line": "Seit 14.11."
    },
    {
     "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
@@ -47,31 +43,15 @@
    {
     "title": "74A: Rabengasse",
     "time_line": "Ab Mo 16.11."
+   },
+   {
+    "title": "98A: Arztgasse",
+    "time_line": "Ab Mo 16.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-07T23:01:14.187137+00:00",
-   "raw": {
-    "wl-stoerungen": 36,
-    "wl-hinweise": 89,
-    "oebb": 187,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 21,
-    "oebb": 162,
-    "baustellen": 64
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 7,
-    "wl": 78
-   }
-  },
   {
    "t": "2026-11-07T23:31:00.797633+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 6,
     "wl": 81
    }
+  },
+  {
+   "t": "2026-11-14T23:31:00.692687+00:00",
+   "raw": {
+    "wl-stoerungen": 48,
+    "wl-hinweise": 89,
+    "oebb": 183,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 158,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 81
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-14T23:01:02.092707+00:00"
+   "last_ok": "2026-11-14T23:31:00.692687+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-14T23:01:02.092707+00:00"
+   "last_ok": "2026-11-14T23:31:00.692687+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-14T23:01:02.092707+00:00"
+   "last_ok": "2026-11-14T23:31:00.692687+00:00"
   }
  }
 }
