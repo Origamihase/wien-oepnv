@@ -31,6 +31,8 @@ from pathlib import Path
 import pytest
 import yaml
 
+from tests._conftest.cycle_scripts import step_program
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = REPO_ROOT / "scripts" / "publish_to_main.sh"
 WORKFLOWS = REPO_ROOT / ".github" / "workflows"
@@ -395,7 +397,8 @@ def _workflow_runs() -> dict[str, list[str]]:
         doc = yaml.safe_load(path.read_text(encoding="utf-8"))
         for job in (doc.get("jobs") or {}).values():
             for step in job.get("steps", []):
-                runs.setdefault(path.name, []).append(f"{step.get('uses', '')}\n{step.get('run', '')}")
+                # With the script a step starts from scripts/cycle/ (since 2026-11-14).
+                runs.setdefault(path.name, []).append(f"{step.get('uses', '')}\n{step_program(step)}")
     return runs
 
 
