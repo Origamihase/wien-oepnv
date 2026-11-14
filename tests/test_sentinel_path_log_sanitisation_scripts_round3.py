@@ -12,9 +12,11 @@ same drift shape against the env-controlled fallback path and the env-
 controlled raw path string.
 
 The ``update_baustellen_cache.py`` script runs every 30-minute cron tick
-inside ``.github/workflows/update-cycle.yml``:
+of ``.github/workflows/update-cycle.yml``, started by the step's script
+``scripts/cycle/fetch_free_apis.sh`` (inline in the workflow until
+2026-11-14):
 
-    python scripts/update_baustellen_cache.py > "$log_dir/baustellen.log" 2>&1 &
+    timeout --kill-after=10 90 python scripts/update_baustellen_cache.py > "$log_dir/baustellen.log" 2>&1 &
 
 so any Trojan-Source primitive that flows into one of the WARNING / INFO /
 ERROR log lines below lands inside ``$log_dir/baustellen.log`` (captured

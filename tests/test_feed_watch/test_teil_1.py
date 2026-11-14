@@ -487,6 +487,30 @@ def test_main_writes_its_state(data_file: Path, tmp_path: Path) -> None:
     assert "error" not in state
 
 
+def test_main_hands_the_fetch_exit_codes_to_the_rules(
+    data_file: Path, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """``FEED_WATCH_FETCH_EXIT``, the output ``exit_codes`` of the fetch step
+    (``scripts/cycle/fetch_free_apis.sh``, tests/test_cycle_scripts.py), reaches the rules."""
+    seen: list[dict[str, int]] = []
+    real = fw.evaluate
+
+    def spy(*args: Any, **kwargs: Any) -> Any:
+        seen.append(kwargs["fetch_exit"])
+        return real(*args, **kwargs)
+
+    monkeypatch.setattr(fw, "evaluate", spy)
+    monkeypatch.setenv("FEED_WATCH_FETCH_EXIT", "wl=3 oebb=1 baustellen=0")
+    feed = tmp_path / "feed.xml"
+    built = datetime.now(UTC).strftime("%a, %d %b %Y %H:%M:%S +0000")
+    feed.write_text(_feed(_filler(9), built=built), encoding="utf-8")
+    code = fw.main(
+        ["--feed", str(feed), "--state", str(data_file), "--cache-dir", str(tmp_path), "--raw-dir", str(tmp_path), "--no-issues"]
+    )
+    assert code == 0
+    assert seen == [{"wl": 3, "oebb": 1, "baustellen": 0}]
+
+
 def test_main_survives_a_broken_feed(data_file: Path, tmp_path: Path) -> None:
     feed = tmp_path / "feed.xml"
     feed.write_text("<rss><channel><item>", encoding="utf-8")

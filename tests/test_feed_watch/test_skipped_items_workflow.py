@@ -7,7 +7,9 @@ sees a report only while the watcher step runs after the build step of the
 same job, neither step sets ``FEED_HEALTH_JSON_PATH`` or ``--health-json``,
 and nothing in between removes the file. A change to one of these would
 leave the rule without a report and without any message ("Fehlt der
-Bericht, gibt es keinen Fund"); this test names it instead.
+Bericht, gibt es keinen Fund"); this test names it instead. A step that
+starts a script from ``scripts/cycle/`` (since 2026-11-14) is read together
+with that script.
 """
 
 from __future__ import annotations
@@ -16,6 +18,8 @@ from pathlib import Path
 from typing import Any
 
 import yaml
+
+from tests._conftest.cycle_scripts import started_script, step_program
 
 WORKFLOW = Path(__file__).resolve().parents[2] / ".github" / "workflows" / "update-cycle.yml"
 BUILD_STEP = "Build feed"
@@ -56,10 +60,14 @@ def test_no_step_moves_or_removes_the_report_between_the_two() -> None:
     between = steps[names.index(BUILD_STEP) + 1 : names.index(WATCH_STEP)]
 
     for step in between:
-        assert "feed-health" not in str(step.get("run", "")), step.get("name")
-    # Neither the workflow nor a step sets another path for the report.
+        assert "feed-health" not in step_program(step), step.get("name")
+    # Neither the workflow nor a step (nor a script one starts) sets another path for the report.
+    scripts = [script for script in map(started_script, steps) if script is not None]
     text = "\n".join(
-        line for line in WORKFLOW.read_text(encoding="utf-8").splitlines() if not line.lstrip().startswith("#")
+        line
+        for source in (WORKFLOW, *scripts)
+        for line in source.read_text(encoding="utf-8").splitlines()
+        if not line.lstrip().startswith("#")
     )
     assert "FEED_HEALTH_JSON_PATH" not in text
     assert "--health-json" not in text

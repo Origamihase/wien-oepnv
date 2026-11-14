@@ -11,8 +11,12 @@ boundary's commit time for a file that was not touched there and could
 wrongly skip a needed backup tick. The gate therefore deepens the clone
 and treats a boundary hit as "unknown" (= run).
 
-These tests run the gate's real shell script, extracted from the workflow,
-against throwaway repositories.
+These tests run the gate's real shell script against throwaway
+repositories, started the way the step starts it: the step's ``run`` text
+(``exec bash scripts/cycle/freshness_gate.sh``) under the step's shell
+(``shell: bash``, i.e. ``-e`` and ``-o pipefail``). Until 2026-11-14 the code
+stood in the step itself and the tests ran it from there; since then it
+stands in ``scripts/cycle/freshness_gate.sh`` (docs/modularisierung.md).
 """
 from __future__ import annotations
 
@@ -25,8 +29,11 @@ from pathlib import Path
 import pytest
 import yaml
 
+from tests._conftest.cycle_scripts import started_script
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = REPO_ROOT / ".github" / "workflows" / "update-cycle.yml"
+GATE = REPO_ROOT / "scripts" / "cycle" / "freshness_gate.sh"
 
 pytestmark = pytest.mark.skipif(shutil.which("git") is None, reason="git not installed")
 
@@ -40,11 +47,17 @@ def _steps() -> list[dict[str, object]]:
     return steps
 
 
-def _gate_script() -> str:
+def _gate_step() -> dict[str, object]:
     for step in _steps():
         if step.get("name") == "Backup-cron freshness gate":
-            return str(step["run"])
+            return step
     raise AssertionError("freshness gate step not found")
+
+
+def test_the_step_starts_the_gate_script() -> None:
+    step = _gate_step()
+    assert step["id"] == "freshness" and step["shell"] == "bash"
+    assert started_script(step) == GATE and GATE.is_file()
 
 
 def test_checkout_is_shallow() -> None:
@@ -98,6 +111,10 @@ def _run_gate(tmp_path: Path, origin: Path, event: str, *, drop_remote: bool = F
     _git(tmp_path, "clone", "-q", "--depth", "1", "--branch", "main", f"file://{origin}", str(work))
     if drop_remote:
         _git(work, "remote", "remove", "origin")
+    # The checkout holds the script; here it is copied in, untracked, which
+    # changes nothing the gate reads (the history of two data files).
+    (work / "scripts" / "cycle").mkdir(parents=True)
+    shutil.copy(GATE, work / "scripts" / "cycle" / GATE.name)
     output = tmp_path / "gh_output"
     output.write_text("", encoding="utf-8")
     env = dict(os.environ)
@@ -108,7 +125,8 @@ def _run_gate(tmp_path: Path, origin: Path, event: str, *, drop_remote: bool = F
         GIT_CONFIG_GLOBAL=os.devnull,
         GIT_CONFIG_SYSTEM=os.devnull,
     )
-    subprocess.run(["bash", "-c", _gate_script()], cwd=work, env=env, check=True, capture_output=True)
+    step_shell = ["bash", "--noprofile", "--norc", "-eo", "pipefail", "-c"]  # ``shell: bash``
+    subprocess.run([*step_shell, str(_gate_step()["run"])], cwd=work, env=env, check=True, capture_output=True)
     lines = [line for line in output.read_text(encoding="utf-8").splitlines() if line]
     assert len(lines) == 1, lines
     return lines[0]

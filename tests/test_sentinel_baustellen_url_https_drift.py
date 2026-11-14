@@ -24,8 +24,8 @@ Threat model
 ------------
 
 The Baustellen cache update is an automated cron job
-(``.github/workflows/update-cycle.yml`` line 154 fans it out alongside
-WL/ÖBB/Stammstrecke).  An env override
+(``.github/workflows/update-cycle.yml``: ``scripts/cycle/fetch_free_apis.sh``
+fans it out alongside WL/ÖBB; the Stammstrecke poll follows).  An env override
 ``BAUSTELLEN_DATA_URL=http://data.wien.gv.at/...`` (intentional
 misconfig, leaked CI env, copy-paste from old documentation,
 compromised secret store) is accepted verbatim because:

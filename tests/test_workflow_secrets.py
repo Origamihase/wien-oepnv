@@ -22,6 +22,7 @@ from pathlib import Path
 import pytest
 
 from scripts import health_check
+from tests._conftest.cycle_scripts import workflow_program
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 WORKFLOWS = REPO_ROOT / ".github" / "workflows"
@@ -158,10 +159,11 @@ def test_no_workflow_requires_an_optional_secret() -> None:
     ``VOR_BASE_URL`` falls back to the VAO host in ``src/providers/vor.py``;
     ``manual-full-refresh.yml`` failed and ``test-vor-api.yml`` skipped its
     smoke test when it was empty, although the Health check reports it as
-    optional.
+    optional. The scan covers the scripts a workflow's steps start
+    (``scripts/cycle/``, since 2026-11-14) as well.
     """
     optional = {s.name for s in health_check.WORKFLOW_SECRETS if s.kind == "optional"}
     gate = re.compile(r'-z "\$\{([A-Z_]+):-\}"')
     for path in sorted(WORKFLOWS.glob("*.yml")):
-        required_here = set(gate.findall(path.read_text(encoding="utf-8")))
+        required_here = set(gate.findall(workflow_program(path)))
         assert not (required_here & optional), (path.name, sorted(required_here & optional))

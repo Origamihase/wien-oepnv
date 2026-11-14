@@ -292,12 +292,13 @@ Rückblick und die Zeilen des Baustellen-Lesers (je Datei und Zahl); eine
 andere Ledger-Warnung kann mehrfach stehen.
 
 **Exit-Code.** `--fail-on-missing-review` geben nur die beiden Aufrufe im
-Statistik-Schritt von `update-cycle.yml`. Ab dem 04.01. (`REVIEW_GRACE_DAYS`)
-endet der Schritt damit in jedem Tick mit 1, solange ein abgeschlossenes Jahr
-mit Seite und Baustellen keinen angenommenen Rückblick hat („Rückblick der
-Baustellen fehlt für <Jahr>: …“, bei leerem Schlüssel mit „GEMINI_API_KEY ist
-in diesem Lauf leer.“), und der Health check zeigt es unter „Nebenschritte“
-(Teil 12), bis ein Dashboard-Lauf einen Rückblick speichert.
+Statistik-Schritt von `update-cycle.yml` (`scripts/cycle/refresh_stats.sh`).
+Ab dem 04.01. (`REVIEW_GRACE_DAYS`) endet der Schritt damit in jedem Tick
+mit 1, solange ein abgeschlossenes Jahr mit Seite und Baustellen keinen
+angenommenen Rückblick hat („Rückblick der Baustellen fehlt für <Jahr>: …“,
+bei leerem Schlüssel mit „GEMINI_API_KEY ist in diesem Lauf leer.“), und der
+Health check zeigt es unter „Nebenschritte“ (Teil 12), bis ein
+Dashboard-Lauf einen Rückblick speichert.
 `manual-full-refresh.yml` schreibt ebenfalls die Summary und die Jahresseiten,
 hat aber keinen `GEMINI_API_KEY` und kein Flag: Es fragt Gemini nie und endet
 nie wegen eines fehlenden Rückblicks mit 1.

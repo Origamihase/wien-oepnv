@@ -69,6 +69,18 @@ name: Update cycle
 #  10. ``scripts/ki_waechter.py dispatch`` (on ``main``): start the daily
 #      KI-Wächter when due (since 2026-11-05; before, its gate ran every tick)
 #
+# Shell code: the programs of steps 2, 3 (torch), 4 and 7 (statistics) stand
+# with their reasoning in ``scripts/cycle/`` (moved on 2026-11-14,
+# docs/modularisierung.md). Their steps start them with ``exec bash``, so the
+# step's process is the script's shell as before. ``bash <file>`` drops the
+# options of the step's shell (``-e``; with ``shell: bash`` also
+# ``-o pipefail``): a script whose code ran under them sets them itself; the
+# fetch switches ``-e`` off anyway. A step's text comes from the run's commit,
+# its script from the checkout (branch tip at job start), as with every
+# ``python scripts/...`` step: a script stays usable by the previous step text
+# until older runs are through (a renamed one keeps its old path as a one-line
+# ``exec bash`` forwarder, a removed one stays unchanged).
+#
 # Concurrency: the workflow holds the ``external-api-fetch`` lock
 # (shared with ``manual-full-refresh.yml`` and ``build-feed.yml`` runs on
 # ``main``) so the project never has two
@@ -172,58 +184,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      # Backup-cron freshness gate. The hourly ``schedule`` tick is a
-      # safety net (see "Trigger model" above), NOT a second cadence: when
-      # IFTTT is healthy a cycle tick has already run within the last
-      # ~30 min, so a backup tick would only burn a redundant VAO request
-      # (the daily budget is metered) plus free-API fetches. This gate
-      # makes a ``schedule`` run SKIP the fetch/build/publish work when a
-      # cycle tick committed inside the freshness window, so the backup
-      # cron costs ~zero API calls on healthy days and does real work only
-      # when IFTTT has genuinely gone silent. IFTTT (``repository_dispatch``)
-      # and operator (``workflow_dispatch``) runs are NEVER gated.
-      #
-      # Signal: the commit time of ``data/vor_request_count.json`` /
-      # ``docs/feed.xml`` — the counter is rewritten on every VAO poll and
-      # the feed on every content change, so "most recent commit touching
-      # either" tracks the last real tick. The checkout is shallow, so the
-      # gate first deepens it by 50 commits (one backup tick per hour, well
-      # under a megabyte); if the newest commit touching either file is
-      # still the shallow boundary, its commit time says nothing about the
-      # file (a boundary commit "adds" every path), so the gate treats the
-      # age as unknown and runs. The 35-min window sits just above
-      # IFTTT's ~30-min cadence (drift headroom) so a slightly-late IFTTT
-      # tick is not misread as an outage; a true outage is caught by the
-      # next hourly tick. Unknown / parse-fail defaults to "run" (fail safe).
+      # Backup-cron freshness gate: on a ``schedule`` run, skip the work when a
+      # cycle tick committed within ~35 min. Code: scripts/cycle/freshness_gate.sh.
       - name: Backup-cron freshness gate
         id: freshness
         shell: bash
-        run: |
-          set -uo pipefail
-          if [ "${GITHUB_EVENT_NAME}" != "schedule" ]; then
-            echo "Trigger '${GITHUB_EVENT_NAME}' is not the backup cron — running the full cycle."
-            echo "should_run=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          git fetch --no-tags --quiet --deepen=50 origin "${GITHUB_REF_NAME}" 2>/dev/null \
-            || echo "Could not deepen the shallow checkout; deciding from the commits present."
-          last=0
-          last_commit=$(git log -1 --format=%H -- data/vor_request_count.json docs/feed.xml 2>/dev/null || true)
-          shallow_file=$(git rev-parse --git-path shallow)
-          if [ -n "${last_commit}" ] && ! { [ -f "${shallow_file}" ] && grep -qx "${last_commit}" "${shallow_file}"; }; then
-            last=$(git log -1 --format=%ct "${last_commit}" 2>/dev/null || echo 0)
-          fi
-          last=${last:-0}
-          now=$(date +%s)
-          age=$(( now - last ))
-          window=2100  # 35 min, just above IFTTT's ~30-min cadence
-          if [ "${last}" -gt 0 ] && [ "${age}" -lt "${window}" ]; then
-            echo "Backup cron: last cycle tick was ${age}s ago (< ${window}s) — IFTTT looks healthy; skipping this redundant tick (no API calls)."
-            echo "should_run=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "Backup cron: last cycle tick was ${age}s ago (>= ${window}s or unknown) — IFTTT may be down; running the full cycle as a safety net."
-            echo "should_run=true" >> "$GITHUB_OUTPUT"
-          fi
+        run: exec bash scripts/cycle/freshness_gate.sh
 
       - name: Set up Python
         id: setup_python
@@ -295,6 +261,9 @@ jobs:
           # stuck on the ``[Partially translated]`` marker for
           # ~10 items/tick). Hashing the workflow file closes
           # that class of drift at the cache-key boundary.
+          # Not hashed: the files under ``scripts/cycle/``. The install stays
+          # in the next step of this file; the torch backstop only repairs a
+          # venv without torch. A change to them costs no reinstall.
           key: venv-${{ runner.os }}-py${{ steps.setup_python.outputs.python-version }}-${{ hashFiles('requirements.txt', '.github/actions/install-deps/action.yml', '.github/workflows/update-cycle.yml') }}
 
       - name: Install dependencies (cache miss)
@@ -327,71 +296,21 @@ jobs:
         # documented mechanism for cross-step PATH mutation.
         run: echo "$PWD/.venv/bin" >> "$GITHUB_PATH"
 
-      # Self-healing torch backstop. The cache-key fix above closes the
-      # drift channel that left ``torch`` missing from cached venvs
-      # after PR #1600, but it only takes effect when the workflow
-      # file itself changes. This idempotent step is the second layer:
-      # ``pip install torch …`` is a no-op (~1-2 s) when torch is
-      # already installed at the requested version, so it costs almost
-      # nothing on the healthy path. If a cached venv ever ends up
-      # missing torch again (silent cache restoration of an older
-      # pre-torch venv from a branch with a hash-collision, a future
-      # refactor that drops torch from the install step, an
-      # actions/cache restore-keys widening, …), this step heals it
-      # before the feed-build step runs and writes ``[Partially
-      # translated]`` markers into ``docs/feed.en.xml``. The ``--index-url``
-      # pin keeps the CPU-only wheel; without it pip would resolve
-      # against PyPI default and pull the multi-GiB CUDA build.
+      # Self-healing torch backstop: install the CPU-only wheel when the venv
+      # lacks torch. Code: scripts/cycle/ensure_torch.sh.
       - name: Ensure torch CPU wheel is present (self-healing)
         shell: bash
-        run: |
-          set -uo pipefail
-          # Healthy path: torch is already in the cached venv, so the
-          # import check short-circuits with ZERO network I/O. Previously
-          # this step ran an unconditional ``pip install`` on EVERY tick,
-          # so a transient ``download.pytorch.org`` outage red-badged the
-          # project's most important workflow even though torch was fine.
-          if python -c "import torch" 2>/dev/null; then
-            echo "torch already present — skipping reinstall (no network)."
-            exit 0
-          fi
-          # Genuinely missing: install the CPU-only wheel with a short
-          # retry so an index blip doesn't fail the tick. The ``--index-url``
-          # pin keeps the CPU wheel (else pip pulls the multi-GiB CUDA build).
-          for attempt in 1 2 3; do
-            if pip install torch --index-url https://download.pytorch.org/whl/cpu; then
-              echo "torch installed on attempt ${attempt}/3."
-              exit 0
-            fi
-            echo "::warning title=torch-install::install attempt ${attempt}/3 failed; retrying."
-            sleep "$((attempt * 3))"
-          done
-          # Soft degradation, never a hard fail: without torch the EN feed
-          # shows "[Partially translated]" for THIS tick only; the next
-          # tick self-heals. Far better than aborting the whole cycle.
-          echo "::warning title=torch-install::torch still missing after 3 attempts; EN feed may degrade to [Partially translated] this tick (next tick self-heals)."
-          exit 0
+        run: exec bash scripts/cycle/ensure_torch.sh
 
       # ----- Cache fetchers (free APIs, no quota gate) ---------------------
 
-      # Parallel free-API fetchers (replaces three sequential
-      # ``continue-on-error: true`` steps). Wiener Linien, ÖBB and the
-      # Stadt-Wien-OGD Baustellen API are independent upstreams — no
-      # shared rate limit, no shared connection pool — and each script
-      # writes to its own ``cache/<provider>_<hash>/events.json`` so
-      # concurrent execution is race-free. Wall-clock ~30 s vs ~90 s
-      # sequential; preserves the same best-effort semantics (a failed
-      # fetcher leaves the last committed cache in place and the
-      # downstream ``feed build`` reads what is on disk). Per-fetcher
-      # exit codes surface as ``::warning::`` annotations so a silent
-      # upstream outage stays operator-visible — the previous
-      # ``continue-on-error: true`` raised an orange badge per failed
-      # step; the warning emits the same operator-visible signal here.
+      # Parallel free-API fetchers (Wiener Linien, ÖBB, Baustellen), each best
+      # effort; output ``exit_codes``. Code: scripts/cycle/fetch_free_apis.sh.
       - name: Refresh free-API caches in parallel
         id: fetch
         if: steps.freshness.outputs.should_run == 'true'
         # Defense-in-depth step ceiling. The per-process ``timeout 90``
-        # wrappers below catch a single hung fetcher (their exit code
+        # wrappers in the script catch a single hung fetcher (their exit code
         # 124 surfaces via the report() ``::warning::`` annotation, so
         # the other two fetchers' caches still refresh on the same
         # tick). This step-level ``timeout-minutes: 3`` is the fallback
@@ -407,61 +326,7 @@ jobs:
           # ``data/raw/<source>/`` (``src/utils/raw_capture.py``); committed
           # by ``git add -A`` below, the git history is the archive.
           RAW_CAPTURE: '1'
-        run: |
-          set +e
-
-          log_dir="$RUNNER_TEMP/fetcher-logs"
-          mkdir -p "$log_dir"
-
-          # Per-process Slowloris-defence wrapper. ``timeout`` (GNU
-          # coreutils, ships on ubuntu-latest) sends SIGTERM after 90s
-          # and follows up with SIGKILL 10s later via ``--kill-after``
-          # so a fetcher stuck in an uninterruptible C-extension call
-          # (e.g. a hung HTTPS socket below urllib3's Python-layer
-          # read deadline) cannot survive the SIGTERM-ignore path.
-          # Exit code 124 = SIGTERM-on-timeout, 137 = SIGKILL — the
-          # report() helper prints both via the existing ``(exit ${rc})``
-          # annotation so operators see ``::warning::`` lines for the
-          # killed fetcher. 90s budget covers the WORST documented
-          # legitimate run (WL: 2 endpoints × ~25s timeout × app-retry
-          # ≈ 60-80s under heavy upstream retry-load); healthy fetchers
-          # finish in <10s.
-          timeout --kill-after=10 90 python scripts/update_wl_cache.py         > "$log_dir/wl.log"         2>&1 &
-          pid_wl=$!
-          timeout --kill-after=10 90 python scripts/update_oebb_cache.py       > "$log_dir/oebb.log"       2>&1 &
-          pid_oebb=$!
-          timeout --kill-after=10 90 python scripts/update_baustellen_cache.py > "$log_dir/baustellen.log" 2>&1 &
-          pid_baustellen=$!
-
-          wait "$pid_wl";         rc_wl=$?
-          wait "$pid_oebb";       rc_oebb=$?
-          wait "$pid_baustellen"; rc_baustellen=$?
-
-          # Exit codes for the Feed-Wächter (rule "Quelle ohne frische
-          # Antwort", docs/reference/feed_watch.md): 0 = fresh answer,
-          # anything else = the feed keeps the source's last good answer.
-          echo "exit_codes=wl=${rc_wl} oebb=${rc_oebb} baustellen=${rc_baustellen}" >> "$GITHUB_OUTPUT"
-
-          report() {
-            local name=$1
-            local rc=$2
-            echo "::group::${name} fetcher (exit ${rc})"
-            cat "$log_dir/${name}.log"
-            echo "::endgroup::"
-            if [ "$rc" -eq 3 ]; then
-              echo "::warning title=${name} cache fetcher::part of the source gave no usable answer (exit 3) — cache refreshed, that part taken from its last good answer in data/raw/."
-            elif [ "$rc" -ne 0 ]; then
-              echo "::warning title=${name} cache fetcher::non-zero exit (${rc}) — last committed cache will be used by feed build."
-            fi
-          }
-
-          report wl         "$rc_wl"
-          report oebb       "$rc_oebb"
-          report baustellen "$rc_baustellen"
-
-          # Best-effort: never fail the workflow on individual fetcher
-          # errors. Mirrors the previous per-step ``continue-on-error: true``.
-          exit 0
+        run: exec bash scripts/cycle/fetch_free_apis.sh
 
       # ----- Stammstrecke (VOR /trip — the single quota-gated API) --------
 
@@ -530,22 +395,8 @@ jobs:
 
       # ----- README + dashboard render (no API call) ----------------------
 
-      # Cadence split: the README STATS markers refresh on every
-      # ~30-min cycle tick (the snapshot covers the trailing 30 days,
-      # so a half-hour staleness window is the operator-visible
-      # budget). ``docs/statistik.md`` is the *yearly* dashboard —
-      # its values only meaningfully change once per day, so writing
-      # it 48× a day was pure churn (each tick refreshed the
-      # ``_Automatisch erzeugt am ..._`` timestamp at the top of the
-      # file and triggered a commit). The gate below pins the
-      # dashboard write to the first cycle tick after midnight
-      # Europe/Vienna: ``TZ=Europe/Vienna date +%H%M`` is DST-correct
-      # (the env var rebinds the active zone for that single ``date``
-      # invocation), and the ``-lt 30`` window absorbs up to ~29 min
-      # of IFTTT/dispatch trigger jitter on the 00:00 Vienna tick. If
-      # a tick is delayed beyond that window the dashboard misses
-      # one day; the next day's tick catches up. The README markers
-      # are unaffected.
+      # README snapshot on every tick, the yearly dashboard only on the first
+      # tick after midnight Vienna time. Code: scripts/cycle/refresh_stats.sh.
       - name: Refresh statistics dashboard and README snapshot
         id: stats
         if: steps.freshness.outputs.should_run == 'true'
@@ -553,22 +404,15 @@ jobs:
         # the commit so its output rides the same atomic commit, but a crash
         # here must NEVER abort the job and block the feed publish
         # (``continue-on-error``: orange, the README stays one tick stale; from 04.01. the
-        # flag ends every tick with 1 while a year's review is overdue). The key: the run after
-        # midnight, after all its writes, asks Gemini (one pass over the chain for each finished year
-        # without an accepted review); all requests start within one 110 s budget (year_archive.py).
+        # script's ``--fail-on-missing-review`` ends every tick with 1 while a year's review
+        # is overdue). The key: the run after midnight, after all its writes, asks Gemini
+        # (one pass over the chain for each finished year without an accepted review); all
+        # requests start within one 110 s budget (year_archive.py).
         continue-on-error: true
         timeout-minutes: 4
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: |
-          vienna_hhmm=$(TZ=Europe/Vienna date +%H%M)
-          if [ "$vienna_hhmm" -lt 30 ]; then
-            echo "Vienna-local $vienna_hhmm — refreshing dashboard + README markers."
-            python scripts/generate_markdown_stats.py --fail-on-missing-review
-          else
-            echo "Vienna-local $vienna_hhmm — README-only tick (dashboard skipped)."
-            python scripts/generate_markdown_stats.py --skip-dashboard --fail-on-missing-review
-          fi
+        run: exec bash scripts/cycle/refresh_stats.sh
 
       # Stage 3 of the line check (audit 2026-09-25, A.14): compares the lines
       # of the German feed with the station directory and logs what it cannot

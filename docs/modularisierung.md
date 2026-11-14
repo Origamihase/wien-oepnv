@@ -470,7 +470,7 @@ sie gilt die Regel oben: Die nächste Änderung, die eine Zeile hinzufügt, muss
 teilen. Das trifft auch eine Änderung, die nur eine Zeile ersetzt:
 `update-cycle.yml` nennt fünf Actions mit festem Commit, und ein
 Versions-Update von Dependabot (monatlich) scheitert an der Prüfung, bis der
-Workflow geteilt ist.
+Workflow geteilt ist. Geteilt am 2026-11-14 (Nachtrag am Ende).
 
 `src/build_feed.py` stand am 2026-11-13 bei 692 Zeilen. Einen Schnitt, der
 wörtlich verschiebt und die Entscheidung „Eine Feed-Kette, ein Modul“
@@ -564,3 +564,121 @@ deutscher und englischer Feed und Zustand sind in jedem der 813 Stände
 gleich, kein Lauf endete mit einem Fehler. `lint()` über dieselben 813
 Stände, alt gegen neu: Ausgabe und Exit-Code in jedem Stand gleich (der
 Exit-Code war überall 0; die Wege zu 1 und 2 halten die Tests fest).
+
+Nachtrag (2026-11-14, `update-cycle.yml` geteilt): Der Workflow des
+Feed-Laufs stand mit 700 Zeilen als letzte Datei am Anschlag. Den größten Teil
+machten Shell-Programme in `run:`-Blöcken und ihre Begründung aus. Vier davon
+stehen seither mit ihrer Begründung in eigenen Dateien unter `scripts/cycle/`
+(wörtlich verschoben):
+
+| Schritt in `update-cycle.yml` (`id`) | Datei | Zeilen |
+|---|---|---|
+| „Backup-cron freshness gate“ (`freshness`) | `scripts/cycle/freshness_gate.sh` | 61 |
+| „Ensure torch CPU wheel is present (self-healing)“ | `scripts/cycle/ensure_torch.sh` | 54 |
+| „Refresh free-API caches in parallel“ (`fetch`) | `scripts/cycle/fetch_free_apis.sh` | 79 |
+| „Refresh statistics dashboard and README snapshot“ (`stats`) | `scripts/cycle/refresh_stats.sh` | 36 |
+
+`update-cycle.yml` hat danach 544 Zeilen (gemessen mit `wc -l`). Name, `id`,
+Bedingung, Zeitlimit, `continue-on-error`, Umgebung und Reihenfolge der
+Schritte sind unverändert; der `run`-Text dieser vier Schritte ist nur noch
+`exec bash scripts/cycle/<name>.sh`. Mit `exec` wird der Prozess des
+Schritts zur Shell des Skripts, so wie vorher der Code in der Shell des
+Schritts lief; ein Abbruch oder das Zeitlimit des Schritts erreicht ihn auf
+demselben Weg. `bash <Datei>` startet ohne die Optionen, die GitHub der Shell
+eines Schritts gibt (`shell: bash`: `-e` und `-o pipefail`; ohne `shell`:
+`-e`). Deshalb steht in drei Skripten vor dem verschobenen Code `set -e`; die
+beiden Schritte mit `shell: bash` setzen `-o pipefail` schon in ihrer ersten
+Codezeile `set -uo pipefail`. Der Abruf braucht keine Zeile: Seine erste
+Codezeile `set +e` schaltete `-e` auch vorher ab. Sonst geändert: Zwei
+Verweise der Begründung, die mit „above“ eine Stelle im Workflow meinten,
+nennen jetzt `update-cycle.yml`, der Kommentar zum Zeitlimit des Abrufs
+spricht von den Grenzen „in the script“ statt „below“, und der Kommentar des
+Statistik-Schritts nennt statt „the flag“ `--fail-on-missing-review` aus dem
+Skript. Neu im Workflow sind ein Absatz im Kopf (die Skripte, ihre Optionen
+und die Regel unten), je zwei Zeilen vor den vier Schritten (Inhalt und
+Datei) und drei Zeilen beim Schlüssel des venv-Caches: Die Skripte gehen
+nicht in diesen Schlüssel ein. Keines baut die venv (die Installation bleibt
+ein Schritt in `update-cycle.yml`, und diese Datei steht im Schlüssel; das
+torch-Skript repariert nur eine venv ohne torch). Eine Änderung an den
+Skripten kostet deshalb keine Neuinstallation, eine Änderung an
+`update-cycle.yml` weiterhin eine (rund eine Minute im ersten Lauf danach).
+Ein Versions-Update von Dependabot für die Actions in `update-cycle.yml`
+scheitert nicht mehr an der Prüfung.
+
+Stand der Skripte: Den Text eines Schritts nimmt GitHub aus dem Commit, der
+den Lauf ausgelöst hat; das Skript kommt aus dem Checkout, also vom Stand
+des Zweigs beim Start des Jobs. Wartet ein Lauf in der Concurrency-Gruppe,
+während eine Änderung gemergt wird, trifft sein alter Schritttext auf das
+neue Skript. Das gilt seit dem 2026-10-25 auch für jeden Schritt mit
+`python scripts/…` und für `scripts/publish_to_main.sh`: Seitdem checkt der
+Lauf den Zweig beim Start des Jobs aus, vorher den Commit, der ihn
+ausgelöst hatte (`docs/development-teil-4.md`, „Veröffentlichen auf
+`main`“). Regel deshalb: Ein Skript unter `scripts/cycle/` bleibt mit dem
+Schritttext des vorigen Stands verwendbar, bis ein nach dem Merge
+ausgelöster Lauf durch ist (die Gruppe hält höchstens einen wartenden Lauf,
+ein neuer ersetzt ihn). Ein umbenanntes Skript bleibt so lange unter seinem
+alten Pfad als einzeilige Weiterleitung `exec bash scripts/cycle/<neu>.sh`
+stehen. Ein entferntes Skript (Schritt gestrichen oder Code zurück im
+Workflow, auch wenn diese Teilung einmal zurückgenommen wird) bleibt so
+lange unverändert stehen und steht in `RETIRED` in
+`tests/test_cycle_scripts.py`; erst eine spätere Änderung löscht Datei und
+Eintrag. Sonst endet ein solcher Lauf mit Exit 127, und Frische-Prüfung,
+torch-Schritt und Abruf haben kein `continue-on-error`. Ein „Re-run“ eines
+älteren Laufs liest ebenfalls dessen alten Schritttext; nach einer
+Umbenennung oder Entfernung startet man statt dessen einen neuen Lauf. Die
+Teilung selbst ist davon nicht betroffen: Ein Lauf mit altem Schritttext
+führt den Code noch inline aus.
+
+Zwei Kommentare unter `src/` nennen den Abruf- bzw. den Statistik-Schritt
+von `update-cycle.yml` (`src/feed_watch/model.py`, `src/markdown_stats/cli.py`).
+Sie stimmen weiter, der Schritt nennt sein Skript, und bleiben unverändert:
+Eine Änderung unter `src/` löst einen Neubau des Feeds aus.
+
+Tests: In `tests/_conftest/cycle_scripts.py` liefert `step_program` den Code
+eines Schritts samt dem Skript, das er startet, und `workflow_program` den
+Text eines Workflows samt den Skripten, die seine Schritte starten. Damit
+lesen die Tests, die den Code prüfen, weiter alles, was läuft:
+`tests/test_publish_to_main.py` (kein `git push`, kein `--force` außerhalb von
+`publish_to_main.sh`), `tests/test_year_page_more.py` (wer
+`generate_markdown_stats.py` aufruft),
+`tests/test_feed_watch/test_skipped_items_workflow.py` (kein anderer Pfad für
+den Health-Bericht), `tests/test_vor_ci_quota_gate.py` (keine Anfrage an die
+VAO am Zähler vorbei) und `tests/test_workflow_secrets.py` (kein optionales
+Secret als Bedingung). Die Frische-Prüfung
+(`tests/test_update_cycle_shallow_checkout.py`) und die Statistik
+(`tests/test_year_page_more.py`) laufen wie vorher als echtes Programm, jetzt
+über den `run`-Text des Schritts in dessen Shell. Neu ist
+`tests/test_cycle_scripts.py`: Jedes Skript hat genau einen Schritt (eine
+andere Datei ist nur als Weiterleitung von einem alten Pfad oder als
+entferntes Skript in `RETIRED` erlaubt) und jeder Aufruf sein Skript; ein
+Skript, dessen Code mit den Optionen der Shell seines Schritts lief, beginnt
+mit `set -e` (die beiden mit `shell: bash` danach mit ihrem eigenen
+`set -uo pipefail`), der Abruf wie vorher mit `set +e`; kein Skript enthält einen Ausdruck in der Schreibweise von GitHub
+Actions (Dollarzeichen, doppelte geschweifte Klammern): den setzt GitHub nur
+im Workflow ein, bash lehnt ihn ab; der parallele Abruf und der torch-Schritt
+laufen mit der Umgebung ihres Schritts (`RAW_CAPTURE`) und mit
+Stellvertretern für `python`, `pip`, `timeout` und `sleep` (bis dahin führte
+kein Test diese beiden Programme aus); die Exit-Codes des Abrufs gehen als
+Ausgabe `exit_codes` des Schritts `fetch` über `FEED_WATCH_FETCH_EXIT` an den
+Feed-Wächter, `parse_fetch_exit` liest sie so, wie das Skript sie schreibt,
+und `scripts/feed_watch.py` reicht sie an die Regeln weiter (Test in
+`tests/test_feed_watch/test_teil_1.py`).
+
+Nachweis vom 2026-11-14: Jedes der vier Programme lief alt (der `run`-Text
+vor der Teilung in der Shell seines Schritts) gegen neu (`exec bash
+scripts/cycle/…` in derselben Shell), in zusammen 36 Fällen
+(Frische-Prüfung 12, torch 5, Abruf 9, Statistik 10), mit echtem `git` und
+echtem `timeout` und Stellvertretern für die übrigen Befehle. Der Abruf lief
+auch mit drei Fehlschlägen, in umgekehrter Reihenfolge des Endes, mit großer
+Ausgabe auf beiden Kanälen, mit einem durch `SIGKILL` beendeten Abruf, ohne
+`$GITHUB_OUTPUT` und ohne `python` (Exit 127). Exit-Code, Ausgabe,
+Fehlerausgabe, `$GITHUB_OUTPUT` und die Aufrufe waren in allen 36 gleich, auch
+in den Fällen, die nur an `-e` oder `-u` hängen (Verzeichnis ohne Git,
+fehlende Variable, scheiternder Befehl). In fünf davon gilt das für die
+Fehlerausgabe erst, nachdem in den Meldungen von bash selbst Dateiname und
+Zeilennummer vereinheitlicht sind (dort steht jetzt das Skript statt der
+Datei des Schritts), einmal auch die Prozessnummer des beendeten Abrufs.
+Ohne das jeweilige `set -e` (im Abruf: mit `set -e` statt `set +e`) zeigte
+der Vergleich die Abweichung. `actionlint` mit `shellcheck` meldet für den
+alten und den neuen Workflow nichts, `shellcheck` für die vier Skripte
+nichts.

@@ -29,6 +29,7 @@ from pathlib import Path
 
 import pytest
 
+from tests._conftest.cycle_scripts import workflow_program
 from tests.doc_parts import read_doc
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -50,7 +51,7 @@ def _vor_workflows() -> list[Path]:
         path
         for path in sorted(WORKFLOW_DIR.glob("*.yml"))
         if path.name not in _NO_VAO_REQUESTS
-        and any(marker in path.read_text(encoding="utf-8") for marker in _VOR_MARKERS)
+        and any(marker in workflow_program(path) for marker in _VOR_MARKERS)
     ]
     assert found, "no VOR-touching workflow found — did the glob break?"
     return found
@@ -155,9 +156,10 @@ def test_no_workflow_makes_an_uncounted_vao_request(workflow: Path) -> None:
     ``data/vor_request_count.json``. Requests must go through
     ``src.providers.vor`` (which reserves a slot) — in practice via
     ``verify_vor_access_id.py``, ``check_vor_auth.py`` or the Stammstrecke
-    monitor.
+    monitor. The scan covers the scripts the workflow's steps start
+    (``scripts/cycle/``, since 2026-11-14) as well.
     """
-    text = _strip_comments(workflow.read_text(encoding="utf-8"))
+    text = _strip_comments(workflow_program(workflow))
 
     # The credential must never be interpolated into a shell request. This also
     # keeps it off the process command line, where it is world-readable.

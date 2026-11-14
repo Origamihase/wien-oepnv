@@ -113,8 +113,9 @@ def test_summary_is_written_even_when_the_dashboard_is_skipped(
 ) -> None:
     """The decisive one.
 
-    ``update-cycle.yml`` passes ``--skip-dashboard`` on every tick except
-    the one inside the 00:00 Europe/Vienna hour, so a summary emitted
+    ``update-cycle.yml`` passes ``--skip-dashboard`` (in
+    ``scripts/cycle/refresh_stats.sh``) on every tick except the one
+    between 00:00 and 00:29 Europe/Vienna time, so a summary emitted
     only in the dashboard branch would be up to 24 hours stale on a page
     that refreshes every five minutes. The aggregation deliberately sits
     *outside* that branch.
