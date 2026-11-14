@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261114-0033-F01, I20260925-0011, I20260909-0007, I20261114-0034-F01, I20261020-0029, I20261114-0035"
+    "trafficInfoNameList": "I20261114-0035-F01, I20260925-0011, I20260909-0007, I20261114-0034-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2370-125, R401-101, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2378-627, R2343-125, R2343-626, R2359-125, R2345-127, R2380-627, R3886-480, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R318-437, R1884-101, R293-474, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R699-414, R768-414, R773-414, R771-414, R759-414, R762-414, R761-414, R668-414, R757-414, R756-414, R754-414, R753-414, R751-414, R764-414, R666-414, R521-109, R552-109, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2370-125, R401-101, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2378-627, R2343-125, R2343-626, R2359-125, R2345-127, R2380-627, R3886-480, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R318-437, R1884-101, R293-474, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R699-414, R773-414, R771-414, R768-414, R762-414, R761-414, R759-414, R666-414, R756-414, R754-414, R764-414, R753-414, R751-414, R668-414, R757-414, R521-109, R552-109, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,54 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "11A": "ptBusCity"
-     }
-    },
-    "description": "Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 11A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 11A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "11A: Falschparker"
-      }
-     }
-    ],
-    "name": "I20261114-0033-F01",
-    "owner": "WL",
-    "parentName": "I20261114-0033",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 411,
-      "lineName": "11A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "relatedStops": [
-     625
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-14T20:02:00.000+0100",
-     "lastUpdate": "2026-11-14T20:02:00.000+0100",
-     "resume": "2026-11-14T20:02:00.000+0100",
-     "start": "2026-11-14T19:58:00.000+0100"
-    },
-    "title": "11A: Falschparker"
-   },
-   {
     "alertCause": "accident",
     "alertCauseId": 77,
     "attributes": {
@@ -272,19 +224,19 @@
       "9": "ptTram"
      }
     },
-    "description": "Linie 9: Fahrtbehinderung in Richtung Gersthof S. Voraussichtliche Dauer: 21:25 Uhr. Grund: Falschparker im Bereich Hormayrgasse.",
-    "descriptionHTML": "<p>Linie 9:<br>Fahrtbehinderung in Richtung Gersthof S.</p><p>Voraussichtliche Dauer: 21:25 Uhr.</p><p>Grund: Falschparker im Bereich Hormayrgasse.</p>",
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 9:<br>Fahrtbehinderung in Richtung Gersthof S.</p><p>Voraussichtliche Dauer: 21:25 Uhr.</p><p>Grund: Falschparker im Bereich Hormayrgasse.</p>",
-       "descriptionPlain": "Linie 9: Fahrtbehinderung in Richtung Gersthof S. Voraussichtliche Dauer: 21:25 Uhr. Grund: Falschparker im Bereich Hormayrgasse.",
+       "descriptionHtml": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "9: Falschparker"
       }
      }
     ],
     "location": "Hormayrgasse",
-    "name": "I20261114-0035",
+    "name": "I20261114-0035-F01",
     "owner": "WL",
     "parentName": "I20261114-0035",
     "priority": "1",
@@ -303,8 +255,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-14T20:56:00.000+0100",
-     "lastUpdate": "2026-11-14T20:56:00.000+0100",
+     "created": "2026-11-14T21:24:00.000+0100",
+     "lastUpdate": "2026-11-14T21:24:00.000+0100",
+     "resume": "2026-11-14T21:24:00.000+0100",
      "start": "2026-11-14T20:54:00.000+0100"
     },
     "title": "9: Falschparker"
