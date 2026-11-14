@@ -26,7 +26,7 @@ import pytest
 from scripts import update_baustellen_cache
 from src.markdown_stats import baustellen_year as by
 from src.utils.stats_baustellen import NO_DETAILS_TEXT, append_baustellen_rows, known_guids, site_line
-from tests.test_baustellen_ledger import GUID, HEADER_LINE, LINE, NOW, _event, _ledger, _row
+from tests._baustellen_ledger_support import GUID, HEADER_LINE, LINE, NOW, _event, _ledger, _row
 
 STATS_LOGGER = "generate_markdown_stats"
 

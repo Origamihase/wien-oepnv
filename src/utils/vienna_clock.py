@@ -28,7 +28,7 @@ VIENNA_OFFSETS = frozenset({timedelta(hours=1), timedelta(hours=2)})
 # the item stays, only without that date. That holds for every year outside
 # the range, not only for those Python cannot compute with: an end in 1970
 # no longer retires an item, a start in 2101 no longer holds it back
-# (docs/architecture-teil-7.md, §10, "Datum am Rand des Kalenders").
+# (docs/architecture-teil-15.md, §10, "Datum am Rand des Kalenders").
 PLAUSIBLE_YEARS = (2000, 2100)
 
 

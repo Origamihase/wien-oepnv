@@ -110,7 +110,7 @@ Weiterreichung, `from src.x import name as name`):
 |---|---|
 | `enrich_station_aliases.py` | `src/places/station_aliases.py` |
 | `feed_watch.py` | `src/feed_watch/` (model, feed_rules, sources, evaluate, issues, state_io; seit 2026-11-10 skipped_items) |
-| `generate_markdown_stats.py` | `src/markdown_stats/` (rows, direction_coverage, markdown_report, readme, summary; seit 2026-11-10 year_archive, year_stats, baustellen_year, year_review, review_client) |
+| `generate_markdown_stats.py` | `src/markdown_stats/` (rows, direction_coverage, markdown_report, readme, summary; seit 2026-11-10 year_archive, year_stats, baustellen_year, year_review, review_client; seit 2026-11-13 cli, cli_options, baustellen_sites, baustellen_facts, year_review_prompt, year_review_guard; `main` und die Optionen stehen seither in `cli.py` und `cli_options.py`, siehe Nachtrag 2026-11-13) |
 | `health_check.py` | `src/health_check/` (common, sources, outputs, workflow_secrets, github_runs) |
 | `ki_waechter.py` | `src/ki_waechter/` (inputs, audit) |
 | `update_all_stations.py` | `src/stations_refresh/` (diff, quarantine, heartbeat) |
@@ -332,6 +332,8 @@ Tests):
 | `rss` | RSS-Dokument: GeoRSS, ein `<item>` (`_emit_item`), Kanal-Metadaten und Lizenzzeilen, `_make_rss` |
 | `isolation` | Seit 2026-11-10: eine Meldung, an der Kette oder Ausgabe scheitert, fällt aus dem Lauf (`build_isolating`) |
 | `abbreviations` | Seit 2026-11-12: ob ein Punkt eine Abkürzung schließt oder einen Satz beendet, eine Regel für jeden Schritt (`is_abbreviation_period`, `without_full_stop`) |
+| `outputs` | Seit 2026-11-14: was ein Lauf schreibt, als Funktionen, die `main` in dieser Reihenfolge aufruft: Kennzahlen des Health-Berichts (`health_metrics_from`, auch von `lint` aufgerufen), deutscher Feed (`write_feed`), englischer Spiegel (`write_en_mirror`), Zustand (`save_state_or_warn`), Abschluss des Laufberichts (`record_successful_build`), Health-Bericht (`write_health_outputs`) |
+| `lint_report` | Seit 2026-11-14: der Bericht, den `lint` ausgibt, und der Exit-Code, der aus ihm folgt (`print_lint_report`) |
 
 Wer eine Funktion des Feed-Baus ändert, ändert sie in ihrem Teil; ein neuer
 Name kommt in den Teil seines Themas, und liest ihn `src/`, `scripts/` oder ein
@@ -371,7 +373,7 @@ dazukommt, braucht ein weiteres Modul.
 
 Nachtrag (2026-11-12, KI-Entscheidung): Die Entscheidung von Gemini für
 unklare Störungen (Betreiberentscheidung vom 12.11.2026,
-[`architecture-teil-8.md`](architecture-teil-8.md), §14) kam als eigenes Paket
+[`architecture-teil-16.md`](architecture-teil-16.md), §14) kam als eigenes Paket
 dazu; der Feed-Build ruft es an einer Stelle auf (`decide` in
 `_assemble_feed_items`), und `_incident_since` liest nur das Feld `_ki_art`
 (gemessen mit `wc -l` am 12.11.2026):
@@ -387,3 +389,178 @@ dazu; der Feed-Build ruft es an einer Stelle auf (`decide` in
 `src/markdown_stats/review_client.py` trägt seither beide Anfragen
 (`ask_chain` mit einem `JsonCall` je Aufrufer) und hat 522 Zeilen (vorher
 422), `src/build_feed.py` 693 (vorher 682).
+
+Nachtrag (2026-11-13, teilen statt kürzen): Zehn Tage nach Etappe 8 lag
+keine Datei über der Grenze, aber 14 standen genau auf 700 Zeilen (am
+2026-11-03 eine) und 21 bei 690 oder mehr. Änderungen an ihnen fügten Zeilen
+ein und nahmen an anderer Stelle derselben Datei gleich viele heraus, meist
+indem Kommentare zusammengezogen wurden (`.github/workflows/update-cycle.yml`
+am 2026-11-12: zwölf Zeilen dazu, zwölf weg, aus neun Zeilen Begründung
+wurden zwei). Betreiberentscheidung vom 2026-11-13 (Michael, auf die Frage
+„Soll ich die 21 Dateien ab 690 Zeilen nach Themen aufteilen und im Test
+festhalten, dass eine Datei am Anschlag geteilt statt gekürzt wird?“: „Ja,
+bitte“):
+
+* **Die Regel.** Eine Datei mit 690 oder mehr Zeilen ist am Anschlag. Die
+  nächste Änderung, die ihr eine Zeile hinzufügt, teilt sie nach Themen, im
+  selben Pull Request. Kommentare kürzen, Zeilen zusammenziehen oder
+  Leerzeilen streichen, um unter 700 zu bleiben, ist kein Weg.
+  `scripts/check_line_limit_edits.py` vergleicht dafür jede Änderung mit
+  ihrem Ausgangsstand: Hatte eine gezählte Datei dort mindestens 690 Zeilen,
+  kam eine Zeile dazu und hat sie danach mehr als 550, scheitert der Lauf
+  und nennt die Datei. Der Abstand zwischen 690 und 550 trennt die Teilung
+  vom Kürzen: Um eine Zeile unterzubringen, streicht niemand 140 Zeilen
+  Kommentar. Eine Datei darf in den Bereich 690 bis 700 hineinwachsen; nur
+  Zeilen entfernen ist erlaubt. Eine umbenannte Datei wird mit ihrem alten
+  Pfad verglichen. Die Prüfung sieht eine Änderung: Wer erst nur kürzt, bis
+  die Datei unter 690 liegt, und in einer zweiten Änderung auffüllt, wird
+  von ihr nicht erkannt; die Regel untersagt auch das, und es bleibt Sache
+  der Durchsicht. Ein Zurücknehmen (`git revert`), das einer Datei am
+  Anschlag Zeilen zurückgibt, scheitert wie jede andere Änderung und teilt
+  die Datei im selben Pull Request. Der Workflow `test.yml` ruft die Prüfung vor den Tests gegen
+  `HEAD^1` auf (bei einem Pull Request der Stand von `main`, bei einem Push
+  der Commit davor; beide Checkouts holen dafür zwei Commits). Lokal
+  vergleicht `python scripts/check_line_limit_edits.py` mit dem gemeinsamen
+  Vorfahren von `HEAD` und `origin/main`. Ohne Vergleichsstand endet sie mit
+  Exit 2, nicht grün. Zahlen und Zählweise beider Prüfungen stehen in
+  `src/utils/line_limit.py` (`LIMIT`, `SPLIT_FROM`, `SPLIT_TO`);
+  `tests/test_check_line_limit_edits.py` spielt die Fälle in einem kleinen
+  Git-Repository nach.
+* **Wie geteilt wird.** Nach Themen, mit Luft: Jede Datei, die bei einer
+  Teilung entsteht, hat ein benennbares Thema und höchstens rund 450 Zeilen
+  (Etappe 6 und 7 schnitten auf 650; zehn Tage später stand
+  `scripts/generate_markdown_stats.py` mit 693 Zeilen wieder an der Grenze).
+  Sonst gilt, was die Etappen oben festlegen:
+  wörtlich verschieben, der alte Pfad bleibt Fassade mit einer Liste
+  `__all__`, ein Test ersetzt einen Namen in dem Modul, das ihn liest.
+
+Am 2026-11-13 so geteilt (wörtlich verschoben; jede nicht leere Codezeile der
+alten Datei steht in einer der neuen. Neu sind nur Importe, `__all__`, die
+Modulbeschreibungen (die der alten Dateien wurden je Thema neu gefasst), Kopf-
+und Fußzeilen der Doku-Teile und in `cli_options.py` die Hülle
+`build_parser()` (`def`, Docstring, `return parser`) um den Parser-Block aus
+`main`, das ihn nun mit `parser = build_parser()` aufruft):
+
+| Datei (Zeilen vorher) | Danach |
+|---|---|
+| `src/providers/wl_text.py` (700) | Fassade mit den Relevanz- und Ausschlussfiltern; `wl_title_tidy.py` (Titelkosmetik), `wl_title_dates.py` (Datum aus dem Titel), `wl_period.py` (Abschnitte „Zeitraum:“, „Zeitpunkt:“, „Dauer:“, `is_stop_notice`), `wl_topic_key.py` (Themenschlüssel für Duplikate) |
+| `src/markdown_stats/baustellen_year.py` (700) | Fassade mit dem Abschnitt Baustellen; `baustellen_sites.py` (Ledger lesen, Zeilen zu Baustellen zusammenführen), `baustellen_facts.py` (Bezirk, Zeitraum, Faktenblock) |
+| `src/markdown_stats/year_review.py` (700) | Fassade mit dem gespeicherten Rückblick (`ensure_review`, `load_review`); `year_review_prompt.py` (Prompt, `source_text`), `year_review_guard.py` (Prüfung `check_review`, Regeln a bis j) |
+| `src/utils/files.py` (691) | Fassade mit `atomic_write` und den drei `read_capped_*`-Lesern (sie loggen unter `src.utils.files`); `files_paths.py` (Pfade zusammensetzen, Dateinamen, Datei-Hash), `files_json.py` (`loads_finite`), `files_zip.py` (`validate_zip_archive_safe`) |
+| `scripts/generate_markdown_stats.py` (693) | Skript mit Aufruf und Weiterreichung; `src/markdown_stats/cli.py` (`main` mit der Reihenfolge seiner Schritte), `cli_options.py` (`build_parser`). Tests ersetzen Namen, die `main` aufruft, in `src.markdown_stats.cli`. `main` steht in `.c901-baseline.txt` unter dem neuen Pfad, Wert 16 wie vorher |
+| `tests/test_year_review.py` (700) | `tests/_year_review_support.py` und `test_year_review_guard.py`, `_cleaning.py`, `_prompt.py`, `_stored.py` |
+| `tests/test_year_stats.py` (700) mit `test_year_stats_more.py` | `tests/_year_stats_support.py` und `test_year_stats.py`, `_ranking.py`, `_partial_years.py`, `_calendar.py`, `_formats.py`, `_coverage_note.py`, `_real_ledger.py` |
+| `tests/test_baustellen_ledger.py` (696) mit `test_baustellen_ledger_more.py` | `tests/_baustellen_ledger_support.py` und `test_baustellen_ledger.py`, `_file.py`, `_year.py`, `_failures.py`, `_isolation.py`, `_hook.py` |
+| `tests/test_sentinel_clear_text_logging_drift_utils.py` (700) | dazu `test_sentinel_clear_text_logging_drift_walker.py` (der Inventar-Walker) |
+| `tests/test_sentinel_heroku_docker_token_drift.py` (692) | dazu `test_sentinel_heroku_docker_token_drift_invariants.py` (Abschnitte 6 bis 10) und `tests/_sentinel_heroku_docker_token_support.py` |
+| `tests/test_ki_waechter/test_teil_1.py` (698) | `test_eingabe.py`, `test_funde.py`, `test_bericht.py`, `test_gemini.py`, `test_prompt.py` im selben Paket |
+| `docs/architecture.md` und Teile 2 bis 8 (sechs davon 696 bis 700) | 16 Teile nach Abschnitten, höchstens 468 Zeilen; die Abschnitte 10 bis 12 stehen in Teil 15, 13 bis 15 in Teil 16. Ausnahme: Der Abschnitt „Titel und Beschreibung im deutschen Feed“ hat keine Zwischenüberschriften und rund 1.180 Zeilen; er läuft von Teil 2 bis in Teil 5 und ist dort an Aufzählungspunkten geschnitten. Teil 3 und Teil 4 haben deshalb keine eigene Überschrift und keinen Eintrag im Inhaltsverzeichnis |
+| `docs/development.md` (700) mit Teil 2 | vier Teile: Überblick, Setup und CLI; Konfiguration und lokaler Lauf; Provider, Datenquelle, Stationsverzeichnis; Workflows, Skripte, Qualitätssicherung, Betrieb |
+| `docs/reference/ki_waechter.md` (700) | drei Teile: Arbeitsweise; Betrieb; Probelauf im Pull Request |
+
+Die Tests sind dieselben wie vorher (gleiche Namen, nur der Dateiteil der
+Kennung ist anders). Wo ein Testmodul ohne klares Thema zu lang wird, bleibt
+das Paket mit `test_teil_<n>.py` aus Etappe 2 der Weg; wo die Themen
+erkennbar sind, bekommt jedes Thema sein Modul und gemeinsame Hilfen stehen
+in einem Modul `_<name>_support.py`.
+
+Eine Datei bleibt am Anschlag und ist ein eigener Schritt:
+`.github/workflows/update-cycle.yml` (700, der Workflow des Feed-Laufs). Für
+sie gilt die Regel oben: Die nächste Änderung, die eine Zeile hinzufügt, muss
+teilen. Das trifft auch eine Änderung, die nur eine Zeile ersetzt:
+`update-cycle.yml` nennt fünf Actions mit festem Commit, und ein
+Versions-Update von Dependabot (monatlich) scheitert an der Prüfung, bis der
+Workflow geteilt ist.
+
+`src/build_feed.py` stand am 2026-11-13 bei 692 Zeilen. Einen Schnitt, der
+wörtlich verschiebt und die Entscheidung „Eine Feed-Kette, ein Modul“
+einhält, gab es nicht: `lint`, `main` und `_assemble_feed_items` brauchten
+mit ihren Importen rund 480 Zeilen, der Rest ist die Weiterreichung in der
+einen Liste `__all__`. Betreiberentscheidung vom 2026-11-14 (Michael, auf die
+Karte „Wähle, wie build_feed.py (692 Zeilen) wieder Luft bekommt“: „Teile von
+main auslagern“; Text der Karte dazu: „Schreiben von Feed, Zustand und
+Health-Bericht wird zu eigenen Funktionen; das ist ein Umbau, kein
+Verschieben, und bringt rund 570 Zeilen.“). Die Kette zu verschieben war
+nicht gewählt: `lint`, `main` und `_assemble_feed_items` stehen weiter in
+`src/build_feed.py`, mit `FeedAssemblyStats` und der einen Liste `__all__`.
+
+Am 2026-11-14 so umgebaut (kein wörtliches Verschieben: Aus Blöcken einer
+Funktion wurden Funktionen mit Parametern; die Kommentare sind dieselben,
+die Anweisungen bis auf die unter der Tabelle genannten Stellen auch, `main`
+und `lint` rufen die Funktionen an der Stelle des Blocks auf, die
+Reihenfolge der Schritte ist unverändert):
+
+| Block (vorher in) | Danach |
+|---|---|
+| Deutschen Feed schreiben (`main`) | `write_feed` in `src/feed_build/outputs.py`; gibt den geprüften Pfad zurück |
+| Englischen Spiegel erzeugen und schreiben (`main`) | `write_en_mirror`; die Pfadprüfung steht wie vorher außerhalb des `try`, ein Fehler beim Erzeugen oder Schreiben wird wie vorher nur gewarnt |
+| Zustand speichern, bei Fehler warnen und im Laufbericht vermerken (`main`) | `save_state_or_warn` |
+| Health-Bericht als Markdown und JSON schreiben (innere Funktion `_write_health_outputs` in `main`) | `write_health_outputs`; Laufbericht, Kennzahlen und die beiden Pfade sind Parameter, die Pfade prüft `main` weiter vor dem Bau |
+| Kennzahlen des Health-Berichts aus den Zählern bilden (zweimal in `main`, einmal in `lint`) | `health_metrics_from` |
+| Zeile „Feed geschrieben“ loggen und den Laufbericht als erfolgreich abschließen (`main`) | `record_successful_build` |
+| Lint-Bericht ausgeben und den Exit-Code bestimmen (`lint`) | `print_lint_report` in `src/feed_build/lint_report.py` |
+
+Die Karte nannte rund 570 Zeilen. Die Prüfung verlangt nach einer Teilung
+höchstens 550; deshalb gingen außer dem Schreiben von Feed, Zustand und
+Health-Bericht auch die drei letzten Zeilen der Tabelle mit.
+`src/build_feed.py` hat danach 539 Zeilen, `outputs.py` 183 und
+`lint_report.py` 92 (gemessen mit `wc -l` am 2026-11-14). Anders als vorher
+lauten nur diese Anweisungen, ohne Wirkung auf das Ergebnis: In `lint`
+entfielen drei Zwischenvariablen, die nur die Kennzahlen speisten; die
+Gesamtdauer rechnet `main` beim Aufruf von `record_successful_build` aus, an
+derselben Stelle des Ablaufs wie vorher; `write_feed`, `health_metrics_from`
+und `print_lint_report` geben ihr Ergebnis zurück. Wo zwei Parameter
+verwechselt werden könnten (zwei Zählwerte, zwei Pfade, die drei Listen des
+Lint-Berichts), übergeben die Aufrufe sie mit Namen. Kein Wert von
+`.c901-baseline.txt` ändert sich; die neuen Funktionen messen höchstens 11.
+
+Für die Tests gilt die Regel aus Etappe 8: `_save_state`,
+`write_feed_health_report` und `write_feed_health_json` liest jetzt nur
+`outputs` (36 Ersetzungen in den Tests zeigen seither dorthin), `_make_rss`
+lesen die Fassade und `outputs` (14 Ersetzungen laufen über
+`setattr_all`/`patch_all`); zusammen 50 Stellen in 20 Testdateien. Der
+Wächter `tests/test_build_feed_patch_targets.py` meldet seither in jeder
+Patch-Form, die er kennt, ein Ziel, das er nicht als Modul auflösen kann (ein
+Attribut wie `run.outputs`, ein Parameter, `part(bf, name)`, ein
+zusammengesetzter String, `patch.multiple`, direkte Zuweisung, `__dict__`),
+wenn ein Modul von `src.build_feed` den Namen bindet, und einen Namen, der in
+einer Variablen steht, auf einem Modul, das er auflösen kann. Frei bleiben
+Ziele, die nachweislich außerhalb liegen: importierte andere Module,
+Funktionen und Objekte des Tests. Ungeprüft bleiben `setattr`, `delattr` und
+`patch.object`, wenn weder Modul noch Name feststehen (etwa
+`mp.setattr(run.outputs, name, v)` und die Schleifen in `setattr_all` und
+`patch_all`), und ein Patch, dessen ganzer Pfad in einer Variablen steht
+(etwa `mock.patch(pfad)`). `setattr_all` und `patch_all` lehnen einen Teil
+statt der Fassade ab. So fand der Wächter
+die Stelle in `tests/test_build_feed_skipped_item_edges.py`, die `_make_rss`
+über eine Variable nur in der Fassade ersetzte und damit den englischen
+Spiegel nicht mehr traf. Mit allen Formen wäre die Datei des Wächters über
+700 Zeilen gewachsen; er steht seither in drei Dateien (wörtlich verschoben):
+Regel und Tests in `tests/test_build_feed_patch_targets.py`, das Wissen über
+die Module und die AST-Hilfen in `tests/_conftest/patch_census.py`, die
+Erfassung einer Testdatei in `tests/_conftest/patch_scan.py`. `atomic_write`
+binden mehrere Teile; die Tests, die ein Schreiben
+scheitern lassen, ersetzen es über `setattr_all` und lassen nur die eine
+Datei scheitern. Die Fassade bindet die beiden Schreiber des Health-Berichts
+nicht mehr. Neu in `__all__` stehen `atomic_write` und `save_state_or_warn`, weil
+Tests sie über die Fassade lesen. `tests/test_build_feed_outputs.py` (acht
+Tests über `main`) hält die Reihenfolge der Ausgaben und die Fehlerpfade fest
+(Zustand nicht gespeichert, englischer Spiegel nicht erzeugt oder nicht
+geschrieben, deutscher Feed nicht geschrieben, Kette gescheitert,
+Health-Markdown nicht geschrieben); diese acht Tests laufen auch gegen den
+Stand vor dem Umbau, wenn `part(bf, "outputs")` darin durch die Fassade `bf`
+ersetzt wird. `tests/test_build_feed_output_functions.py` (elf Tests) ruft
+die neuen Funktionen einzeln auf und hält fest, dass Parameter, die ein
+Aufruf verwechseln könnte, nur mit Namen übergeben werden. Vier neue Tests in
+`tests/test_feed_lint.py` halten fest, dass `lint` jeden Wert unter seiner
+Überschrift ausgibt und mit 2 endet, wenn die Kette scheitert oder der
+Laufbericht einen Fehler eines Providers trägt.
+
+Replay mit echtem `main()` am 2026-11-14 auf dem Endstand: alle 813
+Feed-Stände des Vergleichslaufs vom 2026-11-13 (28.10. bis 13.11., einzeln
+neu gebaut, mit einem Echo an der Stelle des Übersetzungsmodells) gegen die
+Ergebnisse dieses Laufs für den Stand vor den Teilungen (`0f22303cd0`):
+deutscher und englischer Feed und Zustand sind in jedem der 813 Stände
+gleich, kein Lauf endete mit einem Fehler. `lint()` über dieselben 813
+Stände, alt gegen neu: Ausgabe und Exit-Code in jedem Stand gleich (der
+Exit-Code war überall 0; die Wege zu 1 und 2 halten die Tests fest).

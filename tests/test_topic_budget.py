@@ -242,7 +242,7 @@ def test_the_budget_is_wired_into_the_build(monkeypatch: pytest.MonkeyPatch, tmp
     monkeypatch.setattr(bf.feed_config, "FEED_HEALTH_JSON_PATH", tmp_path / "feed-health.json")
     monkeypatch.setattr(bf.feed_config, "MAX_ITEMS", 10)
     monkeypatch.setattr(bf.feed_config, "MAX_ITEMS_PER_TOPIC", 3)
-    monkeypatch.setattr(bf, "_save_state", lambda state, **_: None)
+    monkeypatch.setattr(part(bf, "outputs"), "_save_state", lambda state, **_: None)
     monkeypatch.setattr(bf, "_load_state", lambda: {})
     monkeypatch.setattr(bf, "refresh_from_env", lambda: None)
 

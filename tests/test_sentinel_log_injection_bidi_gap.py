@@ -6,7 +6,7 @@ Threat model
 ``sanitize_log_message`` is the canonical log-injection / Trojan-Source
 defence shared across every WARNING/ERROR site in ``src/`` and
 ``scripts/`` — the audit walker in
-``test_sentinel_clear_text_logging_drift_utils`` enforces that every bound
+``test_sentinel_clear_text_logging_drift_walker`` enforces that every bound
 exception flows through it. Pre-fix the underlying ``_CONTROL_CHARS_RE``
 covers ASCII C0/C1, the CVE-2021-42574 BiDi formatting controls
 (LRE/RLE/PDF/LRO/RLO and LRI/RLI/FSI/PDI), the zero-width family

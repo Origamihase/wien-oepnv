@@ -339,6 +339,10 @@ def test_no_function_uses_unsafe_stat_then_open_pattern() -> None:
     """
     modules = [
         _BASE_DIR / "src" / "utils" / "files.py",
+        # Its parts (700-line rule): paths, strict JSON, ZIP validation.
+        _BASE_DIR / "src" / "utils" / "files_paths.py",
+        _BASE_DIR / "src" / "utils" / "files_json.py",
+        _BASE_DIR / "src" / "utils" / "files_zip.py",
         _BASE_DIR / "src" / "utils" / "stations.py",
         _BASE_DIR / "src" / "utils" / "stations_data.py",
         _BASE_DIR / "src" / "utils" / "cache.py",

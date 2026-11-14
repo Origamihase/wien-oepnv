@@ -4,12 +4,21 @@ Michael's rule of 2026-11-02: the project becomes modular, a file may not
 have more than 700 lines, and that holds for every text file (code, docs,
 CHANGELOG, archived audit reports). Only the source data under ``data/``
 and ``cache/`` is left out, as are JSON/CSV/XML files and images, whose
-suffixes are not in ``_SUFFIXES``.
+suffixes are not in ``SUFFIXES`` (``src/utils/line_limit.py``, which holds
+the numbers and the counting for this test and for
+``scripts/check_line_limit_edits.py``).
 
 Files that were already longer on 2026-11-02 are listed in
 ``tests/line_limit_altfaelle.txt``. They are split stage by stage. The list
 may only get shorter: a file that falls to 700 lines or fewer must leave
 it, and the frozen ``_ALTFAELLE_COUNT`` stops new entries.
+
+A file at the limit is split by topic, not trimmed (Michael's decision of
+2026-11-13). This test cannot see how a file stays below 700, so
+``scripts/check_line_limit_edits.py`` compares each change with its base:
+a file with ``SPLIT_FROM`` (690) lines or more that gets a new line has to
+be split in the same change, down to ``SPLIT_TO`` (550) lines or fewer
+(``tests/test_check_line_limit_edits.py``).
 """
 
 from __future__ import annotations
@@ -18,13 +27,10 @@ import shutil
 import subprocess
 from pathlib import Path
 
+from src.utils.line_limit import LIMIT, SPLIT_FROM, SPLIT_TO, count_lines, is_counted
+
 _ROOT = Path(__file__).resolve().parents[1]
 _ALTFAELLE = _ROOT / "tests" / "line_limit_altfaelle.txt"
-LIMIT = 700
-_SUFFIXES = frozenset(
-    {".py", ".pyi", ".js", ".mjs", ".css", ".html", ".md", ".yml", ".yaml", ".sh", ".toml", ".cfg", ".ini", ".txt"}
-)
-_EXEMPT_PREFIXES = ("data/", "cache/")
 # Number of entries on 2026-11-02. Lower it whenever an entry is deleted;
 # it may never go up.
 _ALTFAELLE_COUNT = 0
@@ -36,18 +42,6 @@ def _tracked_files() -> list[str]:
     argv = [git, "ls-files", "-z"]
     out = subprocess.run(argv, cwd=_ROOT, check=True, capture_output=True, timeout=60).stdout.decode("utf-8")  # noqa: S603
     return [p for p in out.split("\0") if p]
-
-
-def is_counted(path: str) -> bool:
-    if path.startswith(_EXEMPT_PREFIXES):
-        return False
-    return Path(path).suffix.lower() in _SUFFIXES
-
-
-def count_lines(path: Path) -> int:
-    """Count lines like ``wc -l`` plus a last line without newline."""
-    data = path.read_bytes()
-    return data.count(b"\n") + (1 if data and not data.endswith(b"\n") else 0)
 
 
 def _load_altfaelle() -> list[str]:
@@ -94,6 +88,10 @@ def test_altfaelle_are_still_over_the_limit() -> None:
         elif lines <= LIMIT:
             stale.append(f"{path}: nur noch {lines} Zeilen, Eintrag löschen")
     assert not stale, f"Veraltete Einträge in {_ALTFAELLE.name}:\n" + "\n".join(stale)
+
+
+def test_split_zone_lies_below_the_limit() -> None:
+    assert 0 < SPLIT_TO < SPLIT_FROM < LIMIT == 700
 
 
 def test_count_lines_matches_wc(tmp_path: Path) -> None:

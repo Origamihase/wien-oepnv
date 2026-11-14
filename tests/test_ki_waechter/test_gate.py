@@ -17,7 +17,7 @@ from scripts import ki_waechter as kw
 
 from ._support import REPO, _run_gate
 
-# The chain of ki-waechter.yml (a test in test_teil_1.py asks it through).
+# The chain of ki-waechter.yml (a test in test_gemini.py asks it through).
 CHAIN = "gemini-3.8-flash,gemini-3.6-flash,gemini-3.5-flash-lite,gemini-3.1-flash-lite"
 
 

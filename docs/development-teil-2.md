@@ -1,426 +1,377 @@
 [Entwicklerdokumentation – Wien ÖPNV Feed](development.md), Teil 2.
 
-### Aktualisierungsskripte
-
-| Skript | Funktion |
-| ------ | -------- |
-| `python -m src.cli stations update all --verbose` | Führt alle Teilaktualisierungen (ÖBB, WL) in einem Lauf aus. |
-| `python -m src.cli stations update directory --verbose` | Aktualisiert das ÖBB-Basisverzeichnis und setzt `in_vienna`/`pendler`. |
-| `python scripts/update_wl_stations.py [--no-download] -v` | Lädt die WL-OGD-CSVs vom kanonischen Wiener-Linien-OGD-Endpoint `www.wienerlinien.at/ogd_realtime/doku/ogd/` und führt sie mit `data/stations.json` zusammen. Dazu lädt es die GTFS-Haltestellen der Wiener Linien (`data/wienerlinien-gtfs-stops.csv`), die nur einspringen, wenn alle OGD-Haltepunkte einer DIVA außerhalb des WL-Netzes liegen. `--no-download` nutzt die lokal gepinnten CSVs (Sandbox/Offline-Modus). Beim Download-Erfolg wird die jeweilige CSV atomar geschrieben; bei Netzwerk-Fehlern wird das gepinnte Snapshot beibehalten. |
-
-
-Die GitHub Action `.github/workflows/update-stations.yml` aktualisiert
-`data/stations.json` wöchentlich automatisch (Cron `0 1 * * 0`, Sonntag 01:00 UTC). Pipeline-Schritte:
-
-1. **VOR-Stop-Liste**: gepinnt in `data/vor-haltestellen.csv`. Seit
-   2026-05-11 existiert kein automatisiertes VOR-Stop-Refresh-Skript
-   mehr; die CSV wird redaktionell gepflegt. Ihre Werte stammen aus dem
-   Auskunftssystem der AnachB-Webapp und stehen unter keiner bekannten
-   offenen Lizenz (`NOTICE.md`, „VOR-Haltestellendaten“); seit 17.10.2026
-   enthält sie deshalb keine Koordinaten mehr, und der lokale
-   Koordinatenindex (`_build_location_index`) bekommt aus ihr und aus
-   `data/gtfs/stops.txt` keine Werte mehr. VOR-Stop-IDs ändern sich
-   nur selten (Jahre).
-2. **Sub-Skripte** (`scripts/update_all_stations.py`) – `update_station_directory.py` →
-   `update_wl_stations.py` → `enrich_station_aliases.py`,
-   → `apply_station_overrides.py`, alle gegen ein Temp-File. Erst nach der
-   Validierung wird per `atomic_write` ins Repo zurückkopiert. Ein VOR-Stations-Sub-Skript
-   gibt es seit 2026-05-11 nicht mehr.
-3. **Validation-Gate** – die Sub-Skript-Ausgabe wird vom selben Wrapper
-   validiert. Vier Kategorien lösen die **Auto-Quarantäne** aus: Die
-   betroffenen Einträge werden aus dem Ergebnis herausgenommen und mit
-   Begründung in `data/quarantine.json` zur Prüfung abgelegt, der Lauf
-   schreibt die übrigen Stationen weiter (ein Teilfehler der Quelle hält
-   den Refresh nicht auf): `provider_issues`, `cross_station_id_issues`,
-   `naming_issues` (Vienna/Pendler-Mutual-Exclusivity + no-space-
-   Source-Format; die kanonische Namens-Eindeutigkeit wurde pre-
-   2026-05-12 entfernt — siehe Code-Kommentar in
-   `src/utils/station_checks/identity.py:_find_naming_issues`) und
-   `security_issues`. Andere Kategorien
-   (`alias_issues`, `coordinate_issues` mit Exemption für die
-   Sondertypen `manual_foreign_city` und `manual_distant_at`) sind
-   tolerant.
-4. **Beobachtbarkeit** – nach erfolgreichem Atomic-Write schreibt der
-   Wrapper zwei Artefakte:
-   - `data/stations_last_run.json` – Heartbeat mit Timestamp,
-     Sub-Skript-Laufzeiten und Exit-Codes, Validation-Summary nach
-     Kategorie, Diff-Summary und aktuelle Polygon-Vertex-Zahl.
-   - `docs/stations_diff.md` – menschenlesbarer Diff (added / removed /
-     renamed / Koordinaten-Drift ≥ 100 m) gegen den Pre-Update-Snapshot.
-     Ein leerer Bericht bestätigt den No-Change-Lauf (Heartbeat-Funktion).
-5. **Validation-Report regenerieren** – `python -m src.cli stations validate
-   --output docs/stations_validation_report.md` schreibt die Markdown-
-   Variante des Validation-Reports (alle 12 Kategorien) für Review-Zwecke.
-
-Der Workflow ruft dazu vor dem Wrapper `scripts/sync_hafas_profile.py`
-(Mgate-Profil-Sidecar) und danach `scripts/update_oebb_station_lines.py`
-(Linien je ÖBB-Station über HAFAS) als eigene Schritte auf.
-
-#### Automatisierte Qualitätsberichte
-
-`python -m src.cli stations validate` erzeugt einen Markdown-Bericht mit
-zwölf Issue-Kategorien: **geographic duplicates**, **alias issues**,
-**coordinate anomalies**, **GTFS mismatches**, **security warnings**,
-**provider issues** (VOR-/OEBB-Konsistenz), **cross-station ID
-collisions**, **identity field conflicts** (raw `wl_diva`/`bst_id`/
-`vor_id`/`bst_code`-Kollisionen zwischen Stationen, ergänzt 2026-05-16
-in PR #1539), **naming issues** (no-space-Source-Format +
-Vienna/Pendler Mutual-Exclusivity; die pre-2026-05-12 vorhandene
-kanonische Namens-Eindeutigkeits-Prüfung wurde entfernt, weil
-`name` ein operator-facing Display-Label ist, dessen
-strukturelle Eindeutigkeit von `wl_diva`/`bst_id`/`vor_id`/
-`bst_code` getragen wird), **cross-name alias collisions**
-(Namens-Alias-Kollisionen zwischen Stationen) und **alias-key
-collisions** (mehrere Stationen beanspruchen denselben normalisierten
-Alias und sind sich über den Ort uneins — abweichendes `in_vienna` oder
-mehr als 2 km Abstand; ergänzt 2026-09-12 in PR #1801, siehe
-`docs/architecture.md` §5) und **Namens-Zuordnungskonflikte** (zwei
-Einträge tragen denselben Namen, und der Lookup löst ihn auf den Eintrag
-auf, der keine Haltestelle dieses Namens hat; ergänzt 2026-09-18).
-Über `--output docs/stations_validation_report.md` wird der Bericht
-persistiert; mit `--fail-on-issues` bricht die CLI bei jedem Befund mit
-einem Fehlercode ab. In CI läuft der Validator als Pflicht-Gate (siehe
-`.github/workflows/test.yml`); zusätzlich regeneriert
-`update-stations.yml` den persistenten Report im wöchentlichen Daten-Refresh.
-
-### Pendler-Whitelist
-
-Zwei komplementäre Dateien legen fest, welche Bahnhöfe außerhalb der
-Stadtgrenze als Pendler-Knoten ins Verzeichnis aufgenommen werden:
-
-- **`data/pendler_bst_ids.json`** – Liste von ÖBB-`bst_id`-Werten.
-  Eintrag wirkt sofort: ist die ID im ÖBB-Excel-Verzeichnis vorhanden,
-  wird die Station mit `pendler=true` übernommen.
-- **`data/pendler_candidates.json`** – name-basierte Wishlist (siehe
-  [`docs/schema/pendler_candidates.schema.json`](schema/pendler_candidates.schema.json)).
-  Sinnvoll, wenn der `bst_id` der gewünschten Station unbekannt ist —
-  der Updater matcht den Stationsnamen aus dem ÖBB-Excel gegen diese
-  Liste und ergänzt die fehlende ID automatisch.
-
-Die Auswahl ist in beiden Dateien **redaktionell kuratiert** und
-priorisiert die für Wien-Pendler:innen relevantesten Bahnhöfe.
-Änderungen wirken beim nächsten Lauf von
-`python -m src.cli stations update directory`. Die Mutual-Exclusivity
-zu `in_vienna` (Vienna-Station vs. Pendler) wird sowohl vom Updater als
-auch vom Validator und JSON-Schema erzwungen — Verstöße führen zu einer
-WARNING bzw. nehmen den Eintrag per Auto-Quarantäne aus dem Ergebnis (`data/quarantine.json`).
-
-### Manuelle Station-Overrides
-
-`data/stations_overrides.json` ist eine schmal definierte
-Korrekturschicht, die `scripts/apply_station_overrides.py` zwischen
-WL-Merge und Validator-Gate auf `data/stations.json` anwendet.
-Sie behebt Upstream-Defekte der Wiener-Linien-OGD, die sich nicht
-durch Tuning der Merge-Logik beheben lassen (etwa fehlerhaft
-fehlende Haltepunkte, falsche Koordinaten einzelner DIVAs).
-
-Drei Operationen sind erlaubt — andere Schemata werden hart
-abgelehnt, damit ein bösartiger oder unaufmerksamer Override nicht
-das gesamte Verzeichnis umformen kann:
-
-| `op` | Wirkung |
-| ---- | ------- |
-| `restore` | Schreibt einen kompletten Station-Eintrag (inkl. `wl_stops`) zurück, wenn er beim letzten Cron-Tick verschwunden war. |
-| `patch_coords` | Setzt `latitude` / `longitude` auf der bestehenden Station neu — z. B. bei nachweislich falscher OGD-Koordinate. |
-| `remove` | Entfernt einen kompletten Eintrag (selten benötigt). |
-
-Jeder Eintrag trägt zwingend `reason` (kurze Begründung) und
-`expires_when` (Bedingung, unter der der Override retire-bar wird) —
-damit verfallene Workarounds beim nächsten Audit auffallen.
-Implementierung und Tests: `scripts/apply_station_overrides.py`,
-`tests/test_apply_station_overrides.py`.
-
-Eine Override-Koordinate muss aus einem offenen Datensatz stammen, wie
-jede Koordinate im Verzeichnis. Seit 2026-10-25 brauchen falsche
-WL-Koordinaten keinen Override mehr: Liegen alle OGD-Haltepunkte einer
-DIVA mehr als 50 km vom Netzmittelpunkt entfernt
-(`src.utils.stations.is_plausible_wl_coordinate`), nimmt
-`update_wl_stations.py` den Mittelwert derselben Haltestelle aus den
-GTFS-Fahrplandaten der Wiener Linien (`data/wienerlinien-gtfs-stops.csv`,
-GTFS-`stop_id` `at:49:1956:…` = DIVA 60201956), und die GeoRSS-Koordinate
-(`open_data_coordinate`) folgt derselben Regel. Das betraf am 25.10.2026
-Leopoldine-Padaurek-Straße, Halblehenweg und Wassermanngasse (60201954 bis
-60201956), die WL seit Mai im Waldviertel führt. Ihre drei
-`patch_coords`-Overrides sind entfernt; zwei davon trugen eine Koordinate,
-die nach OpenStreetMap bzw. Google Maps bestimmt war, was der Regel „nur
-offen lizenzierte Koordinaten“ (Michael, 16./17.10.2026) widersprach. Die
-GTFS-Werte liegen 5 bis 19 m von den früheren Override-Werten entfernt. Der
-Override für die Hummelgasse (60200558) ist ebenfalls entfernt, weil seine
-`expires_when`-Bedingung eingetreten ist: WL führt wieder einen Haltepunkt.
-
-### Zusätzliche Datenquellen
-
-Weitere offene Datensätze (z. B. ÖBB-GTFS, Streckendaten, Wiener OGD, INSPIRE-Geodaten) können lokal in `data/` abgelegt und mit
-Feed- oder Stationsdaten verknüpft werden. Hinweise zu Lizenzierung und Verknüpfung stehen in diesem Abschnitt, um eine saubere
-Nachnutzung zu gewährleisten.
-
-Wichtige Sidecar-Dateien unter `data/`, die im obigen Lizenz-Block
-nicht einzeln gelistet sind:
-
-| Datei / Verzeichnis | Zweck |
-| ------------------- | ----- |
-| `data/stations_metadata.json` | Kurate VZG-Streckennummern → Kilometer-Mapping für Stammstrecken-Auswertungen. Testabgesichert via `tests/test_stations_metadata.py`. |
-| `data/streckendaten/` | Platzhalter-Verzeichnis für lokale VZG-Schnittdaten (per `.gitignore` versioniert, Inhalt nicht commited). |
-| `data/stations_last_run.json` | Heartbeat des wöchentlichen Stations-Refreshs (Validation-Summary, Sub-Skript-Laufzeiten). |
-| `data/stations_overrides.json` | Manuelle Korrekturschicht — siehe Abschnitt darüber. |
-
-## Automatisierte Workflows
-
-Die wichtigsten GitHub Actions:
-
-- `update-cycle.yml` – die zentrale Refresh-Pipeline. Trigger: `repository_dispatch: ifttt_feed_trigger` (ein externes IFTTT-Applet feuert ~alle 30 Minuten auf :00/:30 — präziser als der frühere dichte GitHub-Cron `0,30 * * * *`, der am 2026-05-10 in Commit `55ca72f` zugunsten von IFTTT entfernt wurde), ein sparsamer GitHub-nativer Backup-Cron `schedule: '17 * * * *'` (Safety-Net mit Freshness-Gate, das sich selbst überspringt, wenn bereits ein frischer Tick committet wurde; GitHub stellt ihn nur unzuverlässig zu, siehe „Geplante Läufe“ unten) sowie `workflow_dispatch` für manuelle Operator-Läufe. Einziger Job, der in einem Runner sequenziell die Provider-Cache-Fetcher (WL, ÖBB, Baustellen), den VAO-Pre-flight + die Stammstrecke-Abfrage, den Feed-Build (`docs/feed.xml`, `data/first_seen.json`, `data/stats/stoerungen_<YYYY>.csv`) sowie das README-/`docs/statistik.md`-Render ausführt (im Dashboard-Lauf auch die Seiten abgeschlossener Jahre und, solange einem Jahr der Rückblick der Baustellen fehlt, die Anfrage an Gemini; Abschnitt „Statistik-Schritt und Jahresseiten“ unten) und alles in einem Commit über `scripts/publish_to_main.sh` veröffentlicht (siehe „Veröffentlichen auf `main`“ unten). Checkt flach aus (`fetch-depth: 1`, nur der letzte Stand); nur die Frische-Prüfung des Backup-Crons holt bei Bedarf 50 Commits nach. Hält auf `main` die `external-api-fetch`-Concurrency-Lane, damit nie zwei API-Cycles parallel laufen; ein manueller Start auf einem anderen Zweig hat eine eigene Gruppe je Zweig (siehe unten).
-- VOR ist **ausschließlich** für den S-Bahn-Stammstrecke-Verspätungs-Monitor in `update-cycle.yml` eingesetzt (seit 2026-05-15: `/departureBoard`-Endpunkt am Wien Hauptbahnhof, ~48 Calls/Tag von 100 VAO-Start-Tier-Quota; davor zwei `/trip`-Calls pro Tick = 96/Tag). Eine VOR-Disruption-Polling- bzw. Stations-Anreicherungs-Automatisierung gibt es nicht mehr (Entscheidung 2026-05-11); die zugehörigen Helper-Scripts (`update_vor_cache.py`, `update_vor_stations.py`, `fetch_vor_haltestellen.py`) wurden ebenfalls entfernt. Diagnose-Aufrufe gegen den VOR-Auth-Pfad bleiben via `scripts/verify_vor_access_id.py` und `scripts/check_vor_auth.py` möglich.
-- `build-feed.yml` – Code-Change-Verifikationspfad. Der reguläre Cron wurde 2026-05-09 in `update-cycle.yml` migriert; dieser Workflow läuft nur noch auf `push` (für `src/**`, `requirements.txt`, `pyproject.toml`, `.github/workflows/build-feed.yml`) sowie auf `workflow_dispatch` und baut den Feed aus den vorhandenen Caches neu — ohne neue API-Abfrage. Veröffentlicht wird seit 2026-09-24 mit reinem `git`, seit 2026-10-10 über `scripts/publish_to_main.sh` wie in `update-cycle.yml` (XML-Validierung, Allowlist `data/first_seen.json`, `docs/feed.xml`, `docs/feed.en.xml`, `README.md`, `data/stats/stoerungen_*.csv`, Push mit Wiederholungen, nie rot). Ausgecheckt wird seit 2026-10-05 der Stand des Branches beim Jobstart (`ref: github.ref`), nicht der gepushte Commit: Die Concurrency-Gruppe lässt den Job erst nach einem laufenden Update-Tick starten, und aus dem gepushten Commit gebaut hätte er dessen ältere Caches veröffentlicht; die zuvor genutzte `git-auto-commit-action` hatte mit dem mehrzeiligen `file_pattern` nur `data/first_seen.json` committet.
-- `update-stations.yml` – pflegt wöchentlich (Sonntag 01:00 UTC, Cron `0 1 * * 0`) `data/stations.json`. Bestehende Koordinaten bleiben; einer Station ohne Koordinate gibt `_fill_coordinates_from_geonetz` zuerst den GeoNetz-Punkt ihrer `bst_id`. HAFAS (ÖBB Scotty) übernimmt als **Fallback** nur den Rest — eingebettet in `request_safe` und durch einen eigenen `CircuitBreaker` abgesichert (siehe `docs/architecture.md` §5). Direkt davor läuft `scripts/sync_hafas_profile.py` als eigener Workflow-Step und aktualisiert das Mgate-Profil-Sidecar aus dem Open-Source-Projekt `public-transport/hafas-client`. Eine Station, die weder GeoNetz noch HAFAS auflöst, bleibt ohne Koordinate und wird im Lauf mit Namen gewarnt; Google Places ist seit 2026-10-16 entfernt, OpenStreetMap seit 2026-10-17 (Michaels Entscheidungen, `docs/architecture.md` §5). VOR ist seit 2026-05-11 **nicht mehr** Teil des Stations-Refreshs (VOR-Stop-IDs aus gepinnter `data/vor-haltestellen.csv`). Manuell gepflegte Auslands-/Distant-AT-Knoten (`type=manual_*`, source=`manual`) durchlaufen die ÖBB-Filter-Stufe und damit auch die Enrichment-Kaskade nicht; sie werden direkt vor dem `write_json` von `_enrich_manual_stations` über den bereits im Speicher liegenden `location_index` (GTFS + VOR) sowie HAFAS LocMatch nachgereichert (idempotent, Einträge mit Koordinaten überspringt der Helper). Env-toggle: `WIEN_OEPNV_MANUAL_ENRICH=0` deaktiviert den Schritt — vom Wrapper-Test (`tests/test_update_all_stations_wrapper.py:test_wrapper_atomic_on_success`) verwendet, weil 296 reale HAFAS-Round-trips eines GitHub-hosted Runners das 180-Sekunden-pytest-Budget reißen würden. Die Stammstrecke-Abfrage und die tägliche `docs/statistik.md`-Regeneration laufen jeweils als Schritt in `update-cycle.yml`.
-- `manual-full-refresh.yml` – `workflow_dispatch`-only-Komplettlauf für Disaster-Recovery. Führt sequenziell aus, was sonst auf `update-cycle.yml` und `update-stations.yml` verteilt ist: WL-/ÖBB-/Baustellen-Cache-Refresh, VOR-Secret-Validation, VAO-Pre-flight und Stammstrecke-`/departureBoard`-Tick (übersprungen, wenn das Tagesbudget ausgeschöpft ist), vollständiger Stations-Refresh (GeoNetz/HAFAS-Kaskade ohne OSM-Stufe + WL-OGD-Merge inkl. Re-Validierung), Feed-Build und Statistik-/README-Regeneration (auch `docs/stats-summary.json` und die Seite jedes abgeschlossenen Jahres; ohne `GEMINI_API_KEY` und ohne `--fail-on-missing-review`: dieser Lauf fragt Gemini nie und endet nie wegen eines fehlenden Rückblicks mit 1) — und committet alles in einem einzigen Commit. Nicht enthalten sind die beiden HAFAS-Schritte von `update-stations.yml` (`sync_hafas_profile.py`, `update_oebb_station_lines.py`). Teilt auf `main` die `external-api-fetch`-Concurrency-Lane mit `update-cycle.yml` und `build-feed.yml`; ein Start auf einem anderen Zweig hat eine eigene Gruppe je Zweig.
-- `test.yml` & `test-vor-api.yml` – führen die vollständige Test-Suite bzw. VOR-spezifische Integrationstests aus; `test.yml` läuft bei jedem Push auf `main` sowie bei jedem Pull Request und stellt die kontinuierliche Testabdeckung sicher.
-- `mypy-strict.yml`, `bandit.yml`, `codeql.yml`, `complexity-gate.yml`, `seo-guard.yml` – ergänzende Qualitäts-Gates (strikte Typprüfung, Security-Lint, CodeQL-Scan, Komplexitäts-Baseline, SEO/Sitemap-Pflege).
-- `pages-build-check.yml` – seit 2026-11-01 (Betreiberentscheidung „Beides bauen“): baut bei jedem Pull Request mit Änderungen unter `docs/` die Website mit derselben Action wie der Pages-Lauf (`actions/jekyll-build-pages`, Quelle `./docs`) und liefert nichts aus; ein Fehler zeigt sich als roter Check am PR, bevor er `main` erreicht. Kein Pflicht-Check. Seiten, die Workflows selbst nach `main` schreiben, erreichen keinen Pull Request; für sie gilt der Liquid-Schritt in `scripts/publish_to_main.sh` (siehe „Veröffentlichen auf `main`“).
-- `ki-waechter.yml` – täglicher KI-Wächter (auf `main` seit 2026-11-01, #2092): nach dem ersten erfolgreichen Update-Lauf ab 15:00 Wiener Zeit (bis 2026-11-05 ab 9:00), nach einem Fehler frühestens zwei Stunden später erneut (seit 2026-11-05 entscheidet das der letzte Schritt des Update-Laufs und startet ihn per `repository_dispatch`, `src/ki_waechter/dispatch.py`; bis dahin hing er an `workflow_run`, und sein Job `gate` startete 48-mal am Tag einen Rechner, um das festzustellen), dazu per `workflow_dispatch`; schickt alle Meldungstexte der letzten 24 Stunden mit ihren Quellen in einer Anfrage je Modell ohne Werkzeuge an die Gemini API (Gratis-Kontingent, Secret `GEMINI_API_KEY`; Google zählt je Modell, nach einer 429-Antwort bleibt das Modell im Lauf außen vor; ein überlastetes Modell gibt an das nächste der Kette 3.8 Flash, 3.6 Flash, 3.5 Flash-Lite, 3.1 Flash-Lite weiter, höchstens zwei Durchgänge), lässt nur wörtlich belegte Funde gelten und legt den Bericht in `docs/archive/audits/` ab; belegte Funde als Issue (Label `ki-waechter`). Ein Pull Request auf Skript, Prompt oder Workflow spielt ihn an zwei Tagen mit bekannten Funden und am aktuellen Feed ab ([`reference/ki_waechter.md`](reference/ki_waechter.md)).
-- `jahresrueckblick-probe.yml` – Probelauf des Jahresrückblicks der Baustellen (seit 2026-11-10): von Hand (`workflow_dispatch`, Eingabe `year`, leer das laufende Jahr) und bei Pull Requests, die `src/markdown_stats/baustellen_year.py`, `year_review.py`, `review_client.py`, `scripts/jahresrueckblick_probe.py` oder den Workflow selbst ändern (aus einem Fork ohne Anfrage). Liest `data/stats/baustellen_<Jahr>.csv`, baut den Prompt, fragt Gemini einmal über die Modellkette (je Modell höchstens eine Anfrage, kein zweiter Durchgang; Secret `GEMINI_API_KEY` nur im Schritt „Gemini writes, the guard checks“), prüft die Antwort mit derselben Prüfung wie der Statistik-Schritt und schreibt Zahl der Baustellen, Größe der Eingabe, Modell, Text, Urteil und Gründe in die Zusammenfassung des Laufs. Speichert und veröffentlicht nichts, nur Leserechte; grün, was immer Gemini tut, rot nur bei falschen Argumenten. Den echten Rückblick fragt nicht dieser Workflow, sondern der Statistik-Schritt des Update-Laufs, und nicht einmal im Jahr: in seinen Dashboard-Läufen ab 1. Jänner, bis ein Rückblick angenommen und gespeichert ist.
-- `ki-entscheidung-probe.yml` – Probelauf der KI-Entscheidung (seit 2026-11-12): von Hand (`workflow_dispatch`) und bei einem Push auf einen Zweig außer `main`, der `src/ki_entscheidung/`, `src/markdown_stats/review_client.py`, `scripts/ki_entscheidung_probe.py`, die Fallsammlung `data/samples/ki_entscheidung_faelle.json` oder den Workflow selbst ändert. Legt Gemini die im Nachspiel vom 20.09. bis 12.11.2026 gemessenen unklaren Störungen so vor wie der Feed-Build (derselbe Prompt, dieselbe Kette, vier Meldungen je Anfrage, ein unbeantworteter Block nach 30 Sekunden noch einmal; Secret `GEMINI_API_KEY` nur im Schritt „Gemini answers, the table shows it“) und schreibt eine Tabelle in die Step-Summary: was die Regeln allein zeigen, was ein Leser der Quelle erwartet, Geminis Antwort und ihr Grund. Speichert nichts, veröffentlicht nichts und bleibt grün, was immer Gemini antwortet ([`architecture-teil-8.md`](architecture-teil-8.md), §14).
-- `takt-fallback.yml` – Rückfall für den 30-Minuten-Takt (seit 2026-11-04, Betreiberentscheidung Michael): Jeder Update-Lauf auf `main` startet eine Prüfung (`workflow_run`, `requested`). GitHub hält sie mit der Wartezeit der Umgebung `takt-wartezeit` 40 Minuten zurück (Settings → Environments, „Wait timer“ 40 Minuten, `deployment: false`); in dieser Zeit läuft kein Rechner, und die Wartezeit zählt nicht als Laufzeit. Die Prüfung des nächsten Update-Laufs verwirft die wartende (`cancel-in-progress`), solange IFTTT tickt, erreicht also keine Prüfung einen Rechner (seit 2026-11-04 abends, Michael: „Effizienz ist mir wichtig. Das Projekt soll ressourcenschonend arbeiten.“; vorher wartete ein Job mit belegtem Rechner rund um die Uhr). Läuft eine Prüfung, kam 40 Minuten lang kein Update-Lauf: Sie startet `update-cycle.yml` selbst (`workflow_dispatch` mit dem `GITHUB_TOKEN` des Laufs, `actions: write`, kein persönliches Token), öffnet das Issue `ifttt-ausfall` und startet ihre Nachfolgerin, die nächste Prüfung in 40 Minuten. Der nächste IFTTT-Lauf schließt das Issue (Schritt „Close IFTTT outage issue“ in `update-cycle.yml`). Scheiterte der letzte Fallback-Lauf oder erschien er nicht, startet die Prüfung den Health check, dessen Prüfung `Takt` rot wird, wenn IFTTT schweigt und der Feed seit 80 Minuten keinen neuen Build hat. Weil GitHub einen roten Lauf nur dem meldet, der ihn startete, und die Läufe hier der Bot startet, schreibt die Prüfung außerdem einen Kommentar ins Issue `ifttt-ausfall` (Mail an Michael), einmal, wenn der Fallback scheitert, und einmal, wenn er wieder läuft; ist kein Issue offen, öffnet sie es zuerst (Michael 2026-11-04, Karte „Ja, Kommentar im Issue“). Läuft eine Prüfung früher als 35 Minuten nach ihrem Start, fehlt die Wartezeit der Umgebung: Sie endet rot mit diesem Hinweis. Ein Zeitplan alle drei Stunden (eigene Gruppe, verwirft also keine wartende Prüfung) startet die Kette neu, falls keine Prüfung wartet. Nachgespielt auf allen 1.607 Update-Läufen vom 05.10. bis 04.11.2026: eine Prüfung erreichte einen Rechner und startete den einzigen Fallback-Lauf, am 01.11. um 02:49 Wien, als IFTTT den Tick von 02:30 wirklich ausließ; ein simulierter Ausfall von sechs Stunden ergab neun Starts im Abstand von rund 41 Minuten. Logik in `src/takt_fallback.py`.
-- `health-check.yml` – stündlich nach jedem zweiten Update-Lauf (`workflow_run`; seit 2026-11-05 entscheidet die Bedingung des Jobs `health` nach der Laufnummer des Update-Laufs, gerade Nummern prüfen, und für die anderen startet kein Rechner; vom 2026-10-28 bis dahin ließ ein Job `gate` die Läufe bis UTC-Minute 29 durch), dazu per Cron alle 6 Stunden als Rückfall, falls der Update-Lauf ausfällt (`0 */6 * * *`; GitHub stellt davon in der Praxis etwa drei am Tag zu, Stunden verspätet, siehe „Geplante Läufe“ unten), und per `workflow_dispatch`, unabhängig vom Feed-Build. Welche Prüfung rot wird, welche ein Issue des Feed-Wächters auslöst und welche nur ein Hinweis ist, regelt [`architecture.md`](architecture.md), §7, „Alarmwege: rot, Issue, Hinweis“ (Betreiberentscheidung 2026-10-28). `scripts/health_check.py` startet die echten Cache-Updater (WL, ÖBB, Baustellen) als Stichprobe. Rot wird eine dieser Quellen seit 2026-10-28 wie die Stammstrecke erst, wenn die Update-Läufe seit drei Stunden keine brauchbare Antwort bekamen (Abrufstand in `data/feed_watch.json`, `fetch`; auch ein Teilausfall, Exit-Code 3, zählt nicht als brauchbar; `docs/architecture.md`, „Ausfall einer Quelle“); eine gescheiterte Stichprobe davor ist ein Hinweis. Nur wenn dieser Stand fehlt oder älter als vier Stunden ist, entscheidet die Stichprobe allein. Daneben prüft er, ob `docs/feed.xml` (`<lastBuildDate>`) und `data/stations_last_run.json` frisch sind. Die Prüfung `Stationsquellen` (seit 2026-10-25) ist rot, wenn eine Quelle des wöchentlichen Stationslaufs (ÖBB-Verkehrsstationen, die vier WL-OGD-Dateien, die WL-GTFS-Haltestellen) seit 15 Tagen keine gültige Antwort gab, also zwei Wochenläufe in Folge auf die letzte gute Kopie zurückfielen; sie liest dafür `checked_at` aus der `.cache.json`-Datei neben jeder Kopie, die der Lauf bei jeder Antwort 200 oder 304 schreibt. Liefert eine Stammstrecken-Richtung 6 Stunden lang keine Messwerte, während die Gegenrichtung liefert (`find_silent_directions` in `src/utils/stats.py`), meldet er das nur als Hinweis (ℹ️, `::warning`-Annotation); der Lauf bleibt grün. Für Leser zeigt die Website die Lücke (Abdeckungshinweis). Rot wird die Stammstrecke nur, wenn ihr Abruf nicht funktioniert (Prüfung `Stammstrecke-Abruf`, seit 2026-10-10): seit drei Stunden kein erfolgreicher Abruf laut `cache/stammstrecke/poll_status.json`, den der Monitor bei jedem Abruf schreibt. Eine gültige Antwort ohne Stammstrecken-Zug bleibt grün; dass keine Züge fahren, meldet die Website (`docs/architecture.md`, §7, „Überwachung: Abruf kaputt oder keine Züge“). Was der Feed-Wächter im letzten Update-Lauf fand (`data/feed_watch.json`), zeigt die Prüfung `Feed-Wächter` nur als Hinweis; Inhaltsfunde werden nie rot ([`reference/feed_watch.md`](reference/feed_watch.md)). Rot ist sie seit 2026-10-28, wenn der Wächter nicht prüfen konnte (Feld `error`). Die Prüfung `Übersetzung` (seit 2026-11-01) liest `data/translation_status.json`, das jeder Build schreibt, der das Übersetzungsmodell braucht: Lud es nicht, ist das für einen Build ein Hinweis und ab dem zweiten Build in Folge rot, weil neue EN-Meldungen sonst still deutsch bleiben (Betreiberentscheidung 2026-11-01, Anlass Dependabot #2114; [`architecture.md`](architecture.md), „Betrieb“ der Übersetzung). Die Prüfung `Nebenschritte` (seit 2026-10-28) ist rot, solange der letzte Lauf eines Nebenschritts scheiterte: Statistik, Linienprüfung und Feed-Wächter im Update-Lauf, ÖBB-Stationslinien (HAFAS) im Stationslauf, seit 2026-10-31 der tägliche KI-Wächter (war Gemini nur überlastet, ist das seit 2026-11-04 ein Hinweis, bis 30 Stunden ohne gelungene Prüfung vergangen sind; Betreiberentscheidung, [`reference/ki_waechter.md`](reference/ki_waechter.md), „Ausfall“), seit 2026-11-12 dort auch die KI-Entscheidung des Feed-Builds (Ausgabe `ki_outcome`: Schlüssel leer oder von Google abgelehnt ist rot; eine neue unklare Meldung, die keine Antwort bekam, ist ein Hinweis, der nicht rot wird; [`architecture-teil-8.md`](architecture-teil-8.md), §14). Diese Schritte laufen mit `continue-on-error` und halten die Veröffentlichung nie auf; ihr Ergebnis (`steps.<id>.outcome`) schreibt `scripts/record_side_steps.py` am Ende des Laufs nach `data/side_steps/` (eine Datei je Workflow). Rot ist sie auch, wenn diese Aufzeichnung älter ist als die Grenze ihres Workflows (4 h, 192 h, KI-Wächter 36 h), und sie nennt den Schritt, den Zeitpunkt, den letzten sauberen Lauf und den Link zum Lauf. Betreiberentscheidung (Michael, 2026-10-28): „Ich tendiere zu ‚er soll rot werden‘, denn ein Fehler sollte auffallen.“ Für Nebenschritte ersetzt das die frühere Regel „rot nur, wenn der Abruf nicht funktioniert“ (2026-10-10); die Schwellen für Quellenausfälle (drei Stunden bei der Stammstrecke) bleiben ([`architecture.md`](architecture.md), §7, „Überwachung: Nebenschritte“). Die Prüfung `Pages-Build` (seit 2026-11-01, Betreiberentscheidung „Beides bauen“) liest über die Actions-API den letzten abgeschlossenen Lauf von „pages build and deployment“: gescheitert im Jekyll-Build ist sofort rot, gescheitert auf GitHubs Seite (Auslieferung, Upload, auch ein Jekyll-Build, der an GitHubs API scheiterte; das liest er aus den Annotationen des Jobs mit `checks: read`) ist einmal ein Hinweis und zweimal in Folge rot ([`architecture.md`](architecture.md), §7, „Überwachung: Pages-Build“). Die Prüfung `Secrets` (seit 2026-10-16) ist rot, wenn ein Secret, das die Feed-Pipeline braucht (derzeit `VOR_ACCESS_ID`), leer oder gar nicht hinterlegt ankommt; sie nennt den Namen, nie den Wert (siehe „Authentifizierung & Sicherheit“). Ein roter Lauf löst die Mail von GitHub aus; auf den Feed-Build wirkt er nicht. Die Stammstrecke wird wegen des VAO-Tagesbudgets nicht live geprüft, sondern über den Abrufstatus des Monitors.
-- `probe-hafas-lines.yml` – nur `workflow_dispatch`: Diagnose für Stufe 2 der Linien-Prüfung (`scripts/probe_hafas_lines.py`, siehe unten).
-- `claude.yml`, `claude-code-review.yml` – Claude-Code-Integration: Antworten auf `@claude` in Issues und Pull Requests bzw. automatische Review jedes Pull Requests. Ihr Workflow-Token hat nur Leserechte (`contents: read`). Kann das Review nicht laufen (Token leer oder abgelaufen, API-Störung), wird der Lauf seit 2026-10-31 rot (kein `continue-on-error` mehr; kein Pflicht-Check, hält keinen Merge auf), und der Health check meldet es stündlich (Prüfung `Werkzeuge`). Pull Requests aus Forks und von Dependabot haben keine Secrets und werden übersprungen; die Prüfung `Werkzeuge` übergeht solche Läufe und wertet den letzten, der lief.
-
-Der `update-cycle.yml`-Job committet alle Cache-, Feed- und Statistik-Outputs in einem einzigen Commit; ein direkter `needs:`-Trigger zwischen Workflows ist damit unnötig. Eigenständige `update-<provider>-cache.yml`-Workflows gibt es seit der DAG-zu-Single-Job-Migration (2026-05-09) nicht mehr — alle Cache-Fetcher (`update_wl_cache.py`, `update_oebb_cache.py`, `update_baustellen_cache.py`) sind Schritte innerhalb von `update-cycle.yml`. Wer einzelne Cache-Fetcher außerhalb des Cycles manuell auslösen will, ruft das jeweilige Skript per `python -m src.cli cache update <provider>` direkt auf oder triggert den vollständigen `manual-full-refresh.yml`-Job.
-
-### Veröffentlichen auf `main`
-
-Sechs Workflows schreiben auf `main`: `update-cycle.yml`, `build-feed.yml`, `seo-guard.yml`, `update-stations.yml`, `manual-full-refresh.yml` und seit 2026-11-01 `ki-waechter.yml` (nur der Tagesbericht und seine Aufzeichnung). Seit 2026-10-10 veröffentlichen alle über dasselbe Skript `scripts/publish_to_main.sh`: Commit, dann ein **gewöhnlicher Push, nie `--force` oder `--force-with-lease`**. Lehnt GitHub ihn ab, weil inzwischen ein anderer Commit gelandet ist (ein Update-Tick, ein gemergter PR), holt das Skript den neuen Stand mit `git pull --rebase`, setzt den eigenen Commit darauf und versucht es erneut (vier Versuche, 2/4/8 Sekunden Abstand). In einem Rebase-Konflikt gewinnen die lokal gebauten Zeilen, alle übrigen Zeilen des anderen Commits bleiben (`keep_local_lines`, seit 2026-10-11): Dateien, die ein Lauf neu erzeugt, werden teils auch von Hand geändert (`README.md` neben dem Statistik-Block, `data/stations.json`). Bis dahin ersetzte die lokale Kopie die ganze Datei, und eine solche Änderung ging bei grünem Lauf verloren. Ohne alle drei Fassungen (Datei auf einer Seite neu oder gelöscht) oder bei Binärdateien bleibt es bei der ganzen lokalen Kopie. Lässt sich ein Rebase nicht abschließen, bricht das Skript ihn ab und versucht es von vorn; der Commit auf `main` bleibt in jedem Fall stehen.
-
-Was ein Lauf nicht veröffentlicht, ist weg (Architektur-Review 2026-10-31, Fund C): `data/first_seen.json`, `data/vor_request_count.json`, `data/feed_watch.json`, `data/ki_entscheidungen.json` (seit 2026-11-12; geht sie verloren, fragt der nächste Lauf eine noch neue Meldung erneut, sonst gelten die Regeln) und `data/side_steps/*.json` leben nur im Commit des Laufs, ein zweiter Speicherort gibt es nicht. `update-cycle.yml` ruft `publish_to_main.sh --validate-feeds --all` ohne `--strict`: Scheitern alle vier Push-Versuche oder ist der gebaute Feed kein wohlgeformtes XML, endet der Lauf grün und ohne Commit. Folgen, nachgerechnet: Der VAO-Zähler untertreibt um einen Request je verlorenem Lauf (bei 48 von 100 am Tag müssten über 50 Läufe am selben Tag verloren gehen, bevor das Budget reißt); `first_seen` wird im nächsten Lauf neu gestempelt, die „Seit“-Zeit rückt um einen Takt nach hinten; ein ausgebliebener Feed fällt nach 90 Minuten als Issue (`feed-alter`) und nach vier Stunden rot im Health check auf. Das ist so gewollt: Ein roter Update-Lauf wegen eines Push-Konflikts wäre eine Mail ohne Handlung.
-
-**Liquid-Schutz (seit 2026-11-01):** Vor dem Commit prüft das Skript jede vorgemerkte Seite unter `docs/`, die Jekyll rendert, mit `src/utils/liquid.py` und macht jedes Liquid-Zeichenpaar, das dort außerhalb eines intakten `raw`-Blocks noch steht, mit `liquid_safe` unwirksam (Warnung mit Datei und Zeilen); intakte `raw`-Blöcke bleiben Byte für Byte. Die Pfade gehen NUL-getrennt an das Skript, damit auch ein Dateiname mit Umlaut oder Anführungszeichen geprüft wird. Bei einem Symlink schreibt es das Ziel um und nimmt das Ziel in den Commit. Kann es eine Seite nicht lesen (nicht UTF-8), fehlt Python oder bricht die Prüfung ab, veröffentlicht es trotzdem und warnt; die Warnung sagt, welcher der drei Fälle es war (nur eine nicht lesbare Seite nennt `liquid.py` im Log). Der Commit bricht daran nie ab, und die Prüfung `Pages-Build` im Health check meldet einen Build, der daran scheitert. Die Prüfung der Feeds (`--validate-feeds`) nutzt denselben Interpreter (`python`, sonst `python3`); fehlt er, bleibt der Feed wie bei kaputtem XML unveröffentlicht, mit einer eigenen Warnung („no python on PATH“); ebenso, wenn er die Prüfung nicht ausführt (etwa eine kaputte Installation), dann mit seinem Exit-Code („not checked: … exit N“). „not well-formed XML“ heißt es nur, wenn der Parser den Feed ablehnt (Exit-Code 3 der Prüfung, auch bei einer unbekannten Kodierung). Ein Push mit dem `GITHUB_TOKEN` startet den Pages-Build, aber keinen Workflow des Repositorys wie `test.yml`; die Seiten der Workflows erreichen Pages also ohne Testlauf. Die Schreiber machen die Zeichenpaare in ihren Texten schon selbst unwirksam (`scripts/generate_markdown_stats.py`, `scripts/update_all_stations.py`, `ValidationReport.to_markdown` in `src/utils/station_checks/report.py`, `scripts/ki_waechter.py`, dort nach dem Entfernen unsichtbarer Zeichen, die sonst eine getrennte Klammer und ein Prozentzeichen wieder zusammenfügen); der Schritt fängt, was einer übersieht. Stationsnamen und Liniennamen kommen aus fremden Quellen: Ein Name mit einer geschweiften Klammer direkt vor einem Prozentzeichen hätte sonst den Pages-Build angehalten (nachgestellt in der Prüfung vom 2026-11-01).
-
-Alle sechs checken den Stand des Branches beim Jobstart aus (`ref: github.ref`), nicht den Commit, der den Lauf ausgelöst hat (`github.sha`, Vorgabe von `actions/checkout` ohne `ref`). Eine Concurrency-Gruppe hält einen Lauf zurück, solange ein anderer pusht; aus dem älteren Commit gebaut, gewännen seine Zustandsdateien (`data/first_seen.json`, `data/vor_request_count.json`, `data/feed_watch.json`) den Rebase-Konflikt gegen die neueren. `build-feed.yml` tut das seit 2026-10-05, die übrigen vier seit 2026-10-25. Gesehen einmal in 791 Update-Läufen vom 10.10. bis 25.10.2026: Am 17.10. um 08:30 UTC wartete der Tick 57 Sekunden auf den Rebuild nach dem Merge von #2034, baute auf dem Commit davor und landete im einzigen Rebase-Konflikt dieser Zeit (ohne verlorenen Eintrag, weil seine Zeilen die neueren waren). `tests/test_publish_to_main.py` prüft, dass jeder veröffentlichende Workflow so auscheckt.
-
-Die gemeinsame Concurrency-Gruppe `external-api-fetch` teilen nur die drei Workflows, die dieselben Feed- und Zustandsdateien schreiben (`update-cycle.yml`, `build-feed.yml`, `manual-full-refresh.yml`), und das nur auf `main`. Auf jedem anderen Zweig hat jeder dieser Workflows eine eigene Gruppe je Zweig (`build-feed-<ref>`, `update-cycle-<ref>`, `manual-full-refresh-<ref>`). `test-vor-api.yml` schreibt nichts und hat auf jedem Zweig, auch auf `main`, eine eigene Gruppe `test-vor-api-<ref>` (Entscheidung von Michael am 03.11.2026). Grund: GitHub hält je Gruppe nur einen wartenden Lauf, ein neuer wartender bricht ihn ab. Am 03.11.2026 wartete nach dem Merge von #2146 der Rebuild (Build feed 10480) auf `main` hinter dem VOR-Test 1056; der Push auf einen Arbeitszweig um 18:49:10 UTC reihte den VOR-Test 1057 in dieselbe Gruppe und brach den wartenden Rebuild um 18:49:12 UTC ab, bevor er startete. Ein Merge, der VOR-Pfade berührt, reihte außerdem VOR-Test und Rebuild gleichzeitig ein; lief gerade ein Takt, konnte einer den anderen verdrängen. Für das VAO-Budget brachte die gemeinsame Gruppe nichts: `test-vor-api.yml` hat nur Leserechte und committet `data/vor_request_count.json` nie, der committete Zähler sieht seine Anfrage also auf keinem Zweig; im Budget hält ihn das Pre-flight-Gate mit Reserve 1. `tests/test_vor_ci_quota_gate.py` prüft, dass jede Gruppe mit `external-api-fetch` auf `main` begrenzt ist und der VOR-Test nicht darin steht. `seo-guard.yml` (`docs/sitemap.xml`, `docs/llms.txt`) und `update-stations.yml` (`data/stations.json`) schreiben andere Dateien und haben eigene Gruppen; ein gleichzeitiger Push dort endet im Rebase oben. Eine gemeinsame Gruppe für alle hätte einen Nachteil: GitHub hält je Gruppe nur einen wartenden Lauf, ein weiterer wartender bricht ihn ab (so am 06.10. und 16.10.2026 zwei wartende Rebuilds). Die Audit-Dateien von Jules in `docs/archive/audits/` kamen als Pull Request; seit 2026-11-01 schreibt `ki-waechter.yml` dort einmal am Tag `ki-waechter-YYYY-MM-DD.md` (eigene Gruppe `ki-waechter-main`, andere Dateien als jeder andere Workflow). Ein manueller Start auf einem Zweig teilt diese Gruppe bewusst, weil das Gemini-Tageslimit für alle Zweige gilt und die Zählung im Gate nacheinander laufen muss; verdrängt er einen wartenden Lauf auf `main`, startet der Wächter beim nächsten Takt neu, weil heute noch kein Erfolg eingetragen ist.
-
-Warum: `update-cycle.yml` und `build-feed.yml` pushten bis dahin mit `--force-with-lease`. Der `git pull` zwischen zwei Versuchen holt `origin/main` und stellt damit das Lease auf genau den Commit, den es schützen soll (derselbe Mechanismus, der am 2026-09-11 den Merge von PR #1783 aus `main` entfernte, `docs/archive/audits/audit-2026-09-12-force-push-history-loss.md`). Musste der Rebase abgebrochen werden, überschrieb der nächste Versuch den dazwischen gelandeten Commit; `main` hatte damals keinen Branch-Schutz (seit 2026-10-16 schon, siehe unten). `seo-guard.yml`, `update-stations.yml` und `manual-full-refresh.yml` pushten einmal über `git-auto-commit-action` und wurden rot, sobald ein Update-Tick dazwischenkam (SEO Verify, 2026-10-04). Der Feed-Lauf und der Rebuild bleiben nie rot (Warnung, der nächste Tick baut neu), ebenso der SEO-Lauf; `update-stations.yml` und `manual-full-refresh.yml` werden rot (`--strict`), wenn nach allen Versuchen nichts veröffentlicht ist, damit ein verlorener Stations-Refresh auffällt. `tests/test_publish_to_main.py` prüft das an Wegwerf-Repositories und dass kein Workflow mehr selbst pusht.
-
-**Branch-Schutz (seit 2026-10-16):** Das Repository-Ruleset „main schützen“ (Status *Active*, Ziel: Standard-Branch, Bypass-Liste leer) setzt auf `main` genau zwei Regeln: *Restrict deletions* (`main` lässt sich nicht löschen) und *Block force pushes* (nur Pushes, die den bisherigen Stand fortsetzen). Alle übrigen Regeln bleiben bewusst aus, Michaels Entscheidung vom 2026-10-16: Der Update-Lauf und die anderen fünf Workflows pushen als `github-actions[bot]` direkt auf `main`, ohne Pull Request. *Require a pull request*, *Require status checks*, *Restrict updates*, *Require signed commits* oder *Require code scanning results* würden diese Pushes ablehnen, und der Feed bliebe stehen. Die zwei Regeln stören die Workflows nicht, weil `publish_to_main.sh` nur gewöhnlich pusht. Prüfen lässt sich der Stand ohne Admin-Rechte über `GET /repos/Origamihase/wien-oepnv/rules/branches/main` (erwartet: `deletion` und `non_fast_forward`). Lehnt GitHub einen Push trotzdem wegen einer Regel ab, bleibt der Update-Lauf grün (nur die Warnung `git push failed after 4 attempts`), der Feed wird aber nicht mehr veröffentlicht; dann im Ruleset den Status auf *Disabled* stellen und die Ursache suchen.
-
-**Repository-Einstellungen (Stand 2026-11-02):** Diese Einstellungen sieht nur der Repository-Inhaber unter *Settings*; Workflows, Threads und Audit-Werkzeuge können sie nicht lesen. Michael hat sie am 2026-11-02 im Rahmen eines Repo-Health-Checks geprüft und so festgelegt:
-
-* *Code security*: Dependency graph an, Dependabot alerts an, Dependabot security updates an (Sicherheits-PRs kommen damit außerhalb des monatlichen Zeitplans aus `.github/dependabot.yml`), Grouped security updates aus (die Gruppen stehen in `dependabot.yml`), Malware alerts aus (GitHub prüft dort nur npm-Pakete, das Repo hat keine), Automatic dependency submission aus (für Python liest GitHub `requirements*.txt` und `pyproject.toml` direkt). Private vulnerability reporting an, Secret scanning und Push protection an, CodeQL im Advanced setup (`codeql.yml`), Copilot Autofix an.
-* *Actions → General*: Workflow permissions „Read repository contents and packages permissions“; jeder Workflow setzt seine Rechte selbst über `permissions:` (oben oder je Job), die Vorgabe greift nur bei einem Workflow ohne diesen Block. „Allow GitHub Actions to create and approve pull requests“ aus: Kein Workflow legt Pull Requests mit dem `GITHUB_TOKEN` an. Fork-Workflows brauchen bei Erstbeitragenden eine Freigabe.
-* *General*: „Automatically delete head branches“ an. Eine CODEOWNERS-Datei gibt es nicht, weil es nur einen Mitwirkenden gibt.
-
-Ein neuer Workflow, der schreiben muss, braucht deshalb einen eigenen `permissions:`-Block; ohne ihn bekommt er nur Leserechte und scheitert sichtbar.
-
-### Geplante Läufe (`schedule`)
-
-GitHub startet geplante Läufe in diesem Repository stark verspätet und lässt viele aus (Auswertung aller Läufe vom 10.09. bis 10.10.2026): Vom stündlichen Backup-Cron des Update-Laufs kamen 157 von rund 730 an, vier bis sieben am Tag; der Health check (`0 */6 * * *`) kam bis Anfang Oktober meist viermal, seit 05.10. dreimal am Tag, jeweils zwei bis sieben Stunden nach der geplanten Zeit; der SEO-Lauf (`23 3 * * *`) startete seit 25.09. zwischen 08:40 und 10:41 UTC, die Stationspflege (`0 1 * * 0`) zwischen 05:40 und 06:37 UTC. Den 30-Minuten-Takt des Feeds trägt deshalb allein IFTTT (`repository_dispatch`: 1 466 Ticks in diesen 30 Tagen, nie mehr als 40 Minuten Abstand; ohne Commit blieb nur der GitHub-Runner-Ausfall am 05.10.). Fällt IFTTT aus, hält der Backup-Cron den Feed nur noch alle paar Stunden aktuell; der Health check meldet einen Feed, der älter als vier Stunden ist, mit seinem nächsten Lauf. Am 28.10.2026 kam zwischen 13:19 und 23:19 (Wiener Zeit) kein geplanter Health check; seither startet ihn zusätzlich jeder zweite Update-Lauf (`workflow_run`; bis 2026-11-05 der erste jeder Stunde), der Cron bleibt als Rückfall.
-
-Der IFTTT-Auslöser selbst steht nicht im Repository (Architektur-Review 2026-10-31, Fund D): Das Applet ruft `repository_dispatch` mit einem persönlichen Zugriffstoken des Betreibers auf (Recht `contents: write` bzw. `repo`), und nur der Betreiber sieht in seinen GitHub-Einstellungen, ob und wann es abläuft. Läuft es ab oder fällt IFTTT aus, startet seit 2026-11-04 der Takt-Fallback (`takt-fallback.yml`, oben) den Update-Lauf nach 40 Minuten ohne Lauf selbst, alle 40 Minuten, und öffnet das Issue `ifttt-ausfall`; der Feed bleibt aktuell. Scheitert auch der Fallback, wird der Health check nach 80 Minuten ohne neuen Build rot (Prüfung `Takt`). Vorher hielt allein der Backup-Cron den Feed, nur alle paar Stunden (142 Läufe vom 05.10. bis 04.11.2026, im Median 5,1 Stunden auseinander). Die Grenze der Concurrency-Gruppe (GitHub hält je Gruppe nur einen wartenden Lauf) steht unter „Veröffentlichen auf `main`“.
-
-## Skripte im Überblick
-
-Der Ordner `scripts/` versammelt alle Wartungs- und Hilfsskripte. Die
-meisten werden auch über die einheitliche CLI (`python -m src.cli …`)
-gekapselt; ein Direktaufruf bleibt jedoch sinnvoll, wenn Sondermodi
-benötigt werden (z. B. `--no-download` für die WL-OGD-CSVs).
-
-Skripte importieren Projektmodule nur über das Paket `src` (`from src.utils.cache import …`); auf `sys.path` kommt dafür allein das Repository-Wurzelverzeichnis. Lag zusätzlich `src/` selbst auf dem Pfad, lud Python dieselbe Datei zweimal, als `utils.cache` und als `src.utils.cache`, mit getrenntem Modulzustand: Ein am einen Modul registrierter Alarm-Hook sah einen Alarm aus dem anderen nicht, der HTTP-Sitzungs-Cache hielt zwei Aufräum-Threads, und mypy prüfte die nackt importierten Namen gar nicht (`ignore_missing_imports`), weshalb zwei überflüssige Casts und eine ungeprüfte Verzweigung im Health check erst mit der Umstellung auffielen (Code-Audit vom 31.10.2026, Fund A; Entscheidung des Betreibers am selben Tag). `tests/test_scripts_import_src_only.py` prüft die Regel für jedes Skript und seit 2026-11-01 auch für `src/` und `tests/`: nackte Importe, String-Ziele wie `mock.patch("utils.cache._CACHE_DIR")` oder `patch.dict(…)`, die das genannte Modul importieren, und Aufrufe von `sys.path.insert/append/extend` oder `monkeypatch.syspath_prepend`, die `src/` auf den Pfad legen (27 Testdateien taten das bis dahin ohne Wirkung; die Zeilen sind entfernt). Seit demselben Tag setzt kein Workflow mehr `PYTHONPATH: src`: Die Variable stand in zehn Workflows und in `scripts/regen_mypy_baseline.sh`, wirkte seit dem Aufräumen vom 31.10. nicht mehr und hielt doch den Weg zum zweiten Modulobjekt offen (Technical Debt Assessment vom 01.11.2026). Die früheren Import-Rückfälle auf nackte Modulnamen (`except ModuleNotFoundError: from utils… import …`) sind entfallen, weil sie nie liefen. `scripts/update_wl_stations.py` lädt seine `src`-Helfer weiterhin erst beim Aufruf, damit es ohne Pfad-Vorbereitung importierbar bleibt. Weil `src/__init__.py` den Feed-Builder importiert, starten `scan_secrets.py` und `configure_feed.py` seit der Umstellung etwa 0,3 s später und laufen wie jedes Skript mit `src`-Importen aus dem Repository-Wurzelverzeichnis (der Pfad-Wächter in `src/feed/config.py` prüft `LOG_DIR` schon beim Import).
-
-### Provider-Caches & Feed-Daten
-
-| Skript | Aufgabe |
-| --- | --- |
-| `update_wl_cache.py` | Liest die Realtime-Störungen der Wiener Linien und schreibt `cache/wl/events.json`; liest und schreibt außerdem `data/wl_resolved_tickers.json` (Kurzmeldungen erledigter Störungen, `src/providers/wl_resolved.py`). CLI: `python -m src.cli cache update wl`. |
-| `update_oebb_cache.py` | Holt die ÖBB-Störungs-RSS-Feeds, filtert sie strikt auf Wien-Bezug (`_is_relevant`) und persistiert sie. CLI: `python -m src.cli cache update oebb`. |
-| `update_baustellen_cache.py` | Lädt die Baustellen-Layer der Stadt Wien (ohne Cache ersatzweise den `data/samples/baustellen_sample.geojson`-Fallback) und legt Events ab. Schreibt dabei für jede Baustelle mit Öffi-Folgen eine Zeile je guid und Jahr nach `data/stats/baustellen_<YYYY>.csv` (`append_baustellen_rows` in `src/utils/stats_baustellen.py`, seit 2026-11-10; Spalten und Regeln: [`data/stats/README.md`](https://github.com/Origamihase/wien-oepnv/blob/main/data/stats/README.md)); ein Fehler dort ist eine WARNING und ändert weder Cache noch Exit-Code. CLI: `python -m src.cli cache update baustellen`. |
-| `update_stammstrecke_hbf.py` | Aktiver Refresh-Producer für den S-Bahn-Stammstrecke-Monitor (seit 2026-05-15; wird vom IFTTT-getriggerten `update-cycle.yml` ~alle 30 Min aufgerufen). Fragt einmal pro Tick `/departureBoard` am Wien Hauptbahnhof ab, klassifiziert die Abfahrten per Bahnsteig-1/2-Filter + Endhaltestellen-Whitelist und schreibt aggregierte Verspätungs-Zeilen pro Richtung nach `data/stats/stammstrecke_<YYYY>.csv` sowie eine Zeile pro Ausfall nach `data/stats/ausfaelle_<YYYY>.csv` (siehe [Reference](reference/stammstrecke_provider_logic.md)). |
-| `update_stammstrecke_status.py` | Legacy-Producer (`/trip` × 2 Richtungen, vor 2026-05-15). Wird vom Cron-Workflow nicht mehr direkt aufgerufen, bleibt aber als Modul importierbar — `update_stammstrecke_hbf.py` re-used die geteilte Pending-Trip- / Recently-Finalised-Infrastruktur, den Quota-Charger sowie das CircuitBreaker-Tuning daraus. |
-| `generate_markdown_stats.py` | Aggregiert die CSV-Ledger zu `docs/statistik.md` (laufendes Kalenderjahr), patcht die `<!-- STATS:* -->`-Marker im README und schreibt `docs/stats-summary.json` — die vorverdichteten Kennzahlen, aus denen das Live-Dashboard rendert. Die Aggregation läuft bei **jedem** Tick (auch mit `--skip-dashboard`), weil die Website alle fünf Minuten neu lädt; nur der Markdown-Render hängt am Flag. Der Dashboard-Lauf schreibt außerdem die Seite jedes abgeschlossenen Jahres, `docs/statistik-<Jahr>.md`, und fragt zuletzt Gemini nach einem fehlenden Rückblick der Baustellen; Flag `--fail-on-missing-review` (Abschnitt „Statistik-Schritt und Jahresseiten“ unten). Code: `src/markdown_stats/` (rows, direction_coverage, markdown_report, readme, summary, year_archive, year_stats, baustellen_year, year_review, review_client). |
-| `ki_entscheidung_probe.py` | Probelauf der KI-Entscheidung für `ki-entscheidung-probe.yml` (seit 2026-11-12): `--cases` (Standard `data/samples/ki_entscheidung_faelle.json`), `--passes` (Durchgänge, Standard 1: ein Block, auf den kein Modell antwortete, wird im nächsten Durchgang erneut gefragt, wie es der nächste Build täte) und `--pause` (Sekunden dazwischen); der Workflow nimmt zwei Durchgänge mit 30 Sekunden Pause. Liest die gemessenen unklaren Störungen mit den anderen Meldungen ihrer Linien, fragt Gemini wie der Feed-Build (`src/ki_entscheidung/ask.py`) und schreibt je Meldung Klasse, Zeitzeile der Regeln, Erwartung, Antwort und Grund nach stdout und in die Step-Summary; speichert nichts. Ohne `GEMINI_API_KEY` fragt es nicht und sagt das. Exit-Code 0 außer bei falschen Argumenten. |
-| `jahresrueckblick_probe.py` | Probelauf des Jahresrückblicks der Baustellen für `jahresrueckblick-probe.yml` (seit 2026-11-10): `--year` (Standard: das laufende Wiener Jahr), `--stats-dir`. Liest `baustellen_<Jahr>.csv`, baut den Prompt, fragt Gemini einmal über die Modellkette, macht die Antwort mit `clean_review` zu einem Absatz und prüft sie mit `check_review` wie der Statistik-Schritt; schreibt den Bericht nach stdout und in die Step-Summary, speichert nichts. Ohne `GEMINI_API_KEY` fragt es nicht. Exit 0, außer bei falschen Argumenten. |
-
-### Statistik-Schritt und Jahresseiten
-
-Betreiberentscheidung vom 10.11.2026 (17:44): Die Seite eines abgeschlossenen Jahres (`docs/statistik-<Jahr>.md`) entsteht am 01.01. jedes Jahres, das Jahr ist auf der Website unter „Aktuelle Meldungen“ wählbar, die Seite fasst Ausfälle und Verspätungen des Jahres in einer Statistik zusammen („Das Jahr im Überblick“), und Gemini fasst die Baustellen des Jahres zusammen. Um 19:13 Uhr desselben Tages hat er das Aufräumen der Jahres-Ledger zurückgenommen: Die Ledger bleiben, und die Seite folgt ihrem Ledger auf Dauer. Jeder Dashboard-Lauf rendert jedes abgeschlossene Jahr mit Ledger-Datei und schreibt die Seite nur, wenn sie fehlt oder anders lauten würde; die Zeile „Automatisch erzeugt am“ zählt nicht. Ein Jahr nur mit `baustellen_<Jahr>.csv` bekommt keine Seite. `docs/stats-summary.json` nennt die Jahre mit Seite in `archive_years` (Schema-Version bleibt 1), das Dashboard verlinkt sie unter „Frühere Jahre“. Was die Seite zeigt und warum: [`architecture-teil-7.md`](architecture-teil-7.md), §12; Ledger und Rückblick-Datei: [`data/stats/README.md`](https://github.com/Origamihase/wien-oepnv/blob/main/data/stats/README.md).
-
-Ein Dashboard-Lauf ist der Lauf ohne `--skip-dashboard`; in `update-cycle.yml` der Tick zwischen 00:00 und 00:29 Wiener Zeit. Seine Reihenfolge:
-
-1. die Seiten aller abgeschlossenen Jahre ohne Anfrage, mit dem gespeicherten Rückblick oder der Zeile „Ein kurzer Rückblick in Worten wird hier ergänzt.“; scheitert eine Seite (jede Ausnahme), steht „Konnte Jahresarchiv nicht schreiben (<Klasse>): …“ im Protokoll, und der Lauf endet später mit 1;
-2. `docs/stats-summary.json`, `docs/statistik.md` und die README-Marker wie bisher;
-3. zuletzt, und nur solange ein abgeschlossenes Jahr mit Seite und Baustellen keinen angenommenen Rückblick hat, die Anfragen an Gemini und ein zweiter Durchgang, der nur geänderte Seiten neu schreibt.
-
-Nichts, was der Schritt schreibt, wartet auf Gemini; ein Abbruch durch das Schrittlimit kostet nur den Rückblick. Ein Dashboard-Lauf fragt für jedes abgeschlossene Jahr ohne angenommenen Rückblick einmal über die Modellkette, das neueste Jahr zuerst. Alle Anfragen eines Laufs beginnen innerhalb eines Budgets von 110 Sekunden (`ReviewBudget` in `src/markdown_stats/year_archive.py`); ein Jahr, das keine Anfrage mehr bekommt, weil das Budget aufgebraucht ist, schreibt „… die Zeit für Anfragen ist aufgebraucht; ein späterer Dashboard-Lauf fragt erneut.“ Die harte Grenze ist das Schrittlimit von 4 Minuten (`timeout-minutes: 4`).
-
-Exit-Codes: 1 sofort bei einem ungültigen `--readme-window-days` oder `--now-iso`. Lässt sich Summary, Dashboard oder README nicht schreiben, endet der Lauf sofort mit 1 und sendet in diesem Lauf keine Anfrage für einen fehlenden Rückblick; wartet ein abgeschlossenes Jahr noch auf ihn, endet die ERROR-Zeile mit „… — der Lauf endet hier, ohne Anfrage für den fehlenden Rückblick der Baustellen <Jahr>; ein späterer Dashboard-Lauf fragt erneut.“ (bei mehreren Jahren „die fehlenden Rückblicke der Baustellen <Jahr>, <Jahr>“). Sonst ist der Exit-Code 1, nachdem alles andere geschrieben ist, wenn eine Jahresseite scheiterte oder, mit `--fail-on-missing-review`, vom 04.01. an (`REVIEW_GRACE_DAYS` = 3 in `src/markdown_stats/year_archive.py`) ein Rückblick überfällig ist: „Rückblick der Baustellen fehlt für <Jahr>: kein Text gespeichert, der die Prüfung besteht (Grund im Protokoll des Laufs kurz nach Mitternacht).“, dazu „GEMINI_API_KEY ist in diesem Lauf leer.“, wenn der Schlüssel leer ist. Überfällig ist ein Rückblick nur für ein abgeschlossenes Jahr mit Seite, mit Baustellen und ohne angenommenen Text. Das Flag geben nur die beiden Aufrufe im Statistik-Schritt von `update-cycle.yml` mit (`continue-on-error`), auf jedem Tick, solange der Rückblick fehlt; der Health check zeigt es unter „Nebenschritte“. Ohne das Flag ändert ein fehlender Rückblick den Exit-Code nie: `build-feed.yml` (mit `--skip-dashboard`) wird nur bei einem Schreibfehler rot, `manual-full-refresh.yml` auch, wenn eine Jahresseite scheitert.
-
-Einmal je Lauf stehen nur drei Zeilen: die WARNING über Zeilen mit dem Zeitstempel eines anderen Jahres („Jahresarchiv <Jahr>: <n> Zeilen mit dem Zeitstempel eines anderen Jahres nicht gezählt.“, bei einer Zeile „1 Zeile“), die ERROR-Zeile einer Jahresseite, die nicht geschrieben werden konnte, und die WARNING über einen gespeicherten Rückblick, der die Prüfung nicht mehr besteht; dazu die Meldungen des Baustellen-Lesers je Datei und Zahl. Eine andere WARNING eines Ledgers (unerwartete Kopfzeile, zu große Datei) kann mehrmals stehen.
-
-Schweigt eine Richtung der Stammstrecke seit vor den geladenen Jahresdateien, liest jeder Tick das Verspätungs-Ledger des Vorjahres nach (`earlier_rows_until_every_direction` in `src/markdown_stats/rows.py`), damit Abdeckungshinweis und Banner die Richtung nicht als „nie gemessen“ führen: mit dem echten Ledger (Praterstern still seit 14.08.2026) jeder Tick ab 31.01.2027, rund 30 ms für die Datei 2026 (11.206 Zeilen, gemessen am 11.11.2026). Eine Zustandsdatei gibt es dafür nicht; das ist das Ergebnis der Prüfung, keine Betreiberentscheidung.
-
-### Stationsverzeichnis
-
-| Skript | Aufgabe |
-| --- | --- |
-| `update_all_stations.py` | Wrapper für den vollständigen Stationsverzeichnis-Refresh; ruft die folgenden Sub-Skripte gegen ein Temp-File auf und committet erst nach erfolgreicher Validierung. CLI: `python -m src.cli stations update all`. |
-| `update_station_directory.py` | Lädt das ÖBB-Excel und ergänzt fehlende Koordinaten aus GeoNetz (über die `bst_id`), dann über HAFAS (Fallback); die Wien-Grenze prüft eine Station mit GeoNetz-Punkt an diesem Punkt, und je EVA-Nummer bleibt ein Eintrag (`_drop_duplicate_eva`). Details siehe `docs/architecture.md` §5. Zusätzlich reichert `_enrich_with_geonetz` aus der gepinnten `data/oebb_geonetz_stops.json` EVA-Nummer und IFOPT-ID an (Source-Token `oebb_geonetz`, keine Koordinaten-Stufe). Direkt vor dem Schreiben läuft `_enrich_manual_stations` über den Manual-Block (`type=manual_distant_at` / `manual_foreign_city`), der sonst den ÖBB-Filter umgeht und damit die Enrichment-Kaskade auslässt; er nutzt denselben `location_index` (GTFS + VOR) als billige erste Stufe und fällt auf HAFAS LocMatch zurück. Idempotent: Einträge mit bereits gesetzten Koordinaten werden übersprungen. |
-| `extract_oebb_geonetz_stops.py` | Extrahiert aus dem ÖBB-Infrastruktur-GeoNetz-Datensatz (23 MiB `GeoNetz_*.zip`, CC BY 3.0 AT) eine kompakte Stops-Projektion (`STP_*`-Stop-Points: EVA-Nummer, IFOPT-ID, Betriebsstellen-ID, autoritative Koordinaten) nach `data/oebb_geonetz_stops.json`. Liefert die Datengrundlage für die `oebb_geonetz`-Anreicherung in `update_station_directory.py`. Manuell ausgeführt, wenn ÖBB einen neuen GeoNetz-Stand veröffentlicht. |
-| `sync_hafas_profile.py` | Holt `salt` / `ver` / `aid` des ÖBB-Mgate-Profils aus dem Open-Source-Projekt `public-transport/hafas-client` und persistiert sie atomar in `data/hafas_profile.json`. Läuft in `update-stations.yml` als eigener Schritt unmittelbar vor `update_station_directory.py`, damit ÖBB-seitige Credential-Rotation automatisch nachgezogen wird. |
-| `update_oebb_station_lines.py` | Stufe 2 der Linien-Prüfung (A.14): sammelt für die ÖBB-Bahnhöfe in Wien und im Pendlerraum die Bahnlinien aus HAFAS-Abfahrtstafeln (zwei Stichtage, zwei Zeitfenster, Bahnklassen) und schreibt sie mit „zuletzt gesehen“ nach `data/oebb_station_lines.json` (Frist drei Jahre). Läuft wöchentlich in `update-stations.yml` als eigener Schritt mit `continue-on-error`. Beschreibt, was fährt oder gefahren ist: Eine Sperre, die begann, bevor eine Linie je gesehen wurde, versteckt sie. |
-| `check_feed_lines.py` | Stufe 3 der Linien-Prüfung (A.14), nur Bericht: prüft für jede Meldung des deutschen Feeds mit Linien-Präfix, ob es die Linie gibt (Wiener-Linien-Verzeichnis, `wl_lines`, HAFAS-Linien, gepflegte Liste `data/planned_station_lines.json`) und ob sie die genannten Bahnhöfe bedient. Richtungsangaben („Richtung Westbahnhof“) und Haltestellen ohne Bahnhof zählen nicht. Zuglinien an Bahnhöfen, an denen nie ein Zug gesehen wurde, bewertet es nicht („not judged“). Schreibt Befunde („not confirmed“) ins Log und sammelt alle Auffälligkeiten mit erstem und letztem Tag in `data/feed_line_anomalies.json`; `--no-record` lässt die Sammlung unverändert. Ändert nichts am Feed. Läuft in `update-cycle.yml` vor dem Veröffentlichen mit `continue-on-error`. |
-| `feed_watch.py` | Feed-Wächter (seit 2026-10-10), nur Bericht: prüft am Ende jedes Update-Laufs den fertigen deutschen Feed gegen die Regeln seit September 2026 (doppelte Einträge, alte Meldung als neue Störung, „Seit“-Zeit früher als die Störung, ÖBB-Text ohne zweiten Satz, Zeitzeile, Länge) und vergleicht die Quellen mit den letzten sieben Tagen. Ändert den Feed nie, blockiert die Veröffentlichung nie, Funde nie rot; Meldung als `::warning`, in `data/feed_watch.json`, als Hinweis im Health check und je Regel als GitHub-Issue (Label `feed-waechter`, schließt sich selbst). Kann er nicht prüfen, ist der Health check seit 2026-10-28 rot. Regeln und Rückprüfung: [`reference/feed_watch.md`](reference/feed_watch.md). |
-| `ki_waechter.py` | KI-Wächter (seit 2026-10-31) für `ki-waechter.yml`: `prepare` schreibt die Eingabe (jeder Meldungstext der Feed-Fassungen aus 24 Stunden Git-Historie, DE und EN, Cache-Ereignisse je Linie, auch bis zu einem älteren Commit mit `--rev`), `ask` schickt sie an die Gemini API (die Modellkette, bis ein Modell antwortet; zwei Anfragen, seit 2026-11-07 je eine Hälfte des Tages, die zweite zuerst an das Modell der ersten; die Funde beider Antworten werden vereinigt, seit 2026-11-05), `verify` prüft jedes Zitat der KI wörtlich gegen Feed und Quellen und gegen das Entschiedene (ein Zitat aus der Zeitzeile, ein F2 hinter einem Maßnahmenwort oder zu einem vollständigen Satz und ein F3, dessen Fakt so in einer Quelle steht, gelten nicht, seit 2026-11-05) und schreibt den Bericht; Kopf, GUIDs und Tabelle kommen aus dem Skript. Prompt: `ki_waechter_prompt.md`; jede Entscheidung zu Feed-Texten in `changelog/<JJJJ-MM-TT>.md` bekommt im selben Pull Request ihre Zeile unter „Entschieden, also kein Fund“ (Regel seit 2026-11-05). Ändert den Feed nie ([`reference/ki_waechter.md`](reference/ki_waechter.md)). |
-| `probe_hafas_lines.py` | Manuelles Diagnoseskript für Stufe 2 der Linien-Prüfung (A.14): fragt für „Wien Hütteldorf“ und „Wien Meidling“ je `LocMatch` (Produktklassen `pCls`) und die Bahn-Abfahrten eines ganzen Tages (`StationBoard` in der Form von `hafas-client`) bei HAFAS ab und gibt nur die Form der Antwort aus (Liniennamen, `cls`, Größe, bei Fehlern `errTxt`). Läuft nur im Workflow `probe-hafas-lines.yml` (`workflow_dispatch`), weil die Entwicklungs-Sandbox `fahrplan.oebb.at` nicht erreicht. Schreibt nichts. |
-| `update_wl_stations.py` | Lädt `wienerlinien-ogd-haltestellen.csv` und `wienerlinien-ogd-haltepunkte.csv` vom kanonischen Endpoint `www.wienerlinien.at/ogd_realtime/doku/ogd/` und merged sie in `data/stations.json`. Vom selben Endpoint kommen `wienerlinien-ogd-linien.csv` und `wienerlinien-ogd-fahrwegverlaeufe.csv`, aus denen jede WL-Station ihre `wl_lines` erhält (optional: fehlen sie, läuft der Merge ohne Linien). Soft-fail mit den gepinnten lokalen CSVs bei Upstream-Outage. Mit `--no-download` werden ausschließlich die lokal gepinnten CSVs verwendet. |
-| `enrich_station_aliases.py` | Sucht alternative Schreibweisen pro Station und schreibt sie ins Verzeichnis. |
-| `apply_station_overrides.py` | Wendet die kuratierte Korrekturschicht aus `data/stations_overrides.json` auf `data/stations.json` an: drei Operationen (`restore` / `patch_coords` / `remove`), idempotent, defensive Logs bei fehlenden Ziel-DIVAs. Behebt Upstream-Defekte der Wiener Linien OGD (falsche Koordinaten für einzelne DIVAs, fehlende Haltepunkte bei aktiven Stationen, geografisch identische Haltepunkte unterschiedlicher DIVAs), die sich nicht durch Tuning der Merge-Logik beseitigen lassen. Läuft in `update_all_stations.py` zwischen `enrich_station_aliases.py` und dem Validator-Gate. Jeder Override trägt `reason` + `expires_when`-Prädikat, damit er retirable bleibt, sobald der Upstream-Feed gefixt ist. |
-| `validate_stations.py` | CLI-Front-end für `src.utils.stations_validation`; das gleiche Verhalten ist via `python -m src.cli stations validate` erreichbar. |
-| `validate_vor_mapping.py` | Prüft die statische `data/vor-haltestellen.mapping.json` (VOR-ID ↔ Name) auf duplikate IDs und Format-Drift. Die Mapping-Datei wird seit 2026-05-11 redaktionell gepflegt. |
-
-### Auth- & Diagnose-Helfer
-
-| Skript | Aufgabe |
-| --- | --- |
-| `verify_vor_access_id.py` | Smoke-Test für `VOR_ACCESS_ID` und `VOR_BASE_URL`. CLI: `python -m src.cli tokens verify vor`. |
-| `check_vor_auth.py` | Prüft den vollständigen Auth-Pfad (`VorAuth`) inklusive Header. CLI: `python -m src.cli tokens verify vor-auth`. |
-| `check_overpass_status.py` | OSM-Mirror-Smoke-Test mit `out count`-Query; seit 2026-10-17 nur noch beratend im Test-Workflow, der Stationslauf nutzt OSM nicht mehr. |
-| `takt_fallback.py` | Prüfung von `takt-fallback.yml` nach 40 Minuten Wartezeit ohne Rechner: startet `update-cycle.yml`, wenn 40 Minuten kein Update-Lauf entstand, und öffnet das Issue `ifttt-ausfall`; scheitert auch der Fallback, kommentiert es das Issue, und noch einmal, wenn er wieder läuft; `--schedule` für den Zeitplan, `--close-issue` schließt das Issue im IFTTT-Lauf (Logik in `src/takt_fallback.py`, Betreiberentscheidung 2026-11-04). |
-| `health_check.py` | Eigenständige Gesundheitsprüfung für `health-check.yml`: Quellen rot nach drei Stunden ohne brauchbare Antwort im Update-Lauf, dazu eine Stichprobe über die echten Cache-Updater und Frische von `docs/feed.xml` und `data/stations_last_run.json`; die Prüfung `Veröffentlichung` (seit 2026-10-31) vergleicht die Feeds auf GitHub Pages mit dem Repo und ist rot, wenn die Live-Kopie vier Stunden hinterherhängt; den Stand des Feed-Wächters zeigt er als Hinweis (rot, wenn der Wächter nicht prüfen konnte); die Prüfung `Übersetzung` (seit 2026-11-01) ist rot, wenn das Übersetzungsmodell in zwei Builds in Folge nicht lud (`data/translation_status.json`), nach einem Build ein Hinweis; die Prüfung `Nebenschritte` (seit 2026-10-28) ist rot, solange der letzte Lauf eines Nebenschritts scheiterte (`data/side_steps/`); die Prüfung `Takt` (seit 2026-11-04) ist grün, solange IFTTT den Update-Lauf innerhalb von 40 Minuten startet, ein Hinweis, solange der Takt-Fallback den Feed aktuell hält, und rot, wenn IFTTT schweigt und der Feed seit 80 Minuten keinen neuen Build hat (`HEALTH_TAKT_RED_MINUTES`); die Prüfung `Werkzeuge` (seit 2026-10-31) ist rot, solange der letzte Lauf von `claude-code-review.yml`, der lief, scheiterte (übersprungene zählen nicht; Actions-API, `GITHUB_TOKEN` des Laufs mit `actions: read`); die Prüfung `Pages-Build` (seit 2026-11-01) ist rot, sobald der letzte Pages-Lauf im Jekyll-Build scheiterte oder zwei in Folge bei GitHub scheiterten, auch an GitHubs API im Jekyll-Build (Actions-API, Annotationen mit `checks: read`); die Stammstrecke ist rot nur bei kaputtem Abruf (`cache/stammstrecke/poll_status.json`), eine stille Richtung ist nur ein Hinweis. Die Prüfung `Secrets` (seit 2026-10-16) ist rot, wenn ein Pflicht-Secret aus `WORKFLOW_SECRETS` leer ankommt, und nennt nur den Namen. Schwellen per Umgebungsvariable einstellbar: `HEALTH_FEED_MAX_AGE_HOURS` (4), `HEALTH_LIVE_LAG_MAX_HOURS` (4, Prüfung `Veröffentlichung`: Live-Feeds auf GitHub Pages hinter dem Repo) und `HEALTH_LIVE_FETCH_TIMEOUT_SECONDS` (20), `HEALTH_SEO_MAX_AGE_HOURS` (48, Aufzeichnung des SEO-Laufs in `data/side_steps/seo-guard.json`), `HEALTH_SEO_OVERLOAD_HOURS` (48, so lange bleibt der Metadaten-Schritt des SEO-Laufs ein Hinweis, wenn GitHub nur gestört war, 5xx oder keine Verbindung; seit 2026-11-04), `HEALTH_STATIONS_MAX_AGE_HOURS` (192), `HEALTH_KI_WAECHTER_MAX_AGE_HOURS` (36, Aufzeichnung des KI-Wächters in `data/side_steps/ki-waechter.json`), `HEALTH_KI_WAECHTER_OVERLOAD_HOURS` (30, so lange bleibt ein KI-Wächter, der nur wegen Überlastung von Gemini keine Antwort bekam, ein Hinweis; gezählt ab der letzten gelungenen Prüfung, seit 2026-11-04), `HEALTH_STATION_SOURCE_MAX_AGE_HOURS` (360, Prüfung `Stationsquellen`), `HEALTH_FETCH_TIMEOUT_SECONDS` (120), `HEALTH_STAMMSTRECKE_POLL_STALE_HOURS` (3), `HEALTH_SOURCE_STALE_HOURS` (3, WL, ÖBB und Baustellen ohne brauchbare Antwort im Update-Lauf, seit 2026-10-28) und `HEALTH_STAMMSTRECKE_WINDOW_HOURS` (6). |
-| `record_side_steps.py` | Letzter Schritt vor der Veröffentlichung in `update-cycle.yml` und `update-stations.yml` (seit 2026-10-28): schreibt das Ergebnis (`steps.<id>.outcome`) jedes Nebenschritts mit `continue-on-error` nach `data/side_steps/<workflow>.json` (Ergebnis, Zeitpunkt, letzter sauberer Lauf, Link zum Lauf, seit 2026-11-04 `failing_since`: erster Fehlschlag seit dem letzten sauberen Lauf). Neben `success` und `failure` kennt es seit 2026-11-04 `overloaded` (der KI-Wächter bekam nur wegen Überlastung von Gemini keine Antwort). Seit 2026-11-12 steht im Eintrag des Update-Laufs auch „KI-Entscheidung“: kein eigener Schritt, der Feed-Build meldet sie selbst als Ausgabe `ki_outcome` (`failure`, wenn er Gemini nicht fragen kann, `overloaded`, wenn eine neue unklare Meldung keine Antwort bekam). `skipped`, `cancelled` und ein leeres Ergebnis lassen den alten Eintrag stehen. Grundlage der Health-Check-Prüfung `Nebenschritte`. |
-| `preflight_quota_check.py` | Hard-Gate für `update-cycle.yml` und `manual-full-refresh.yml`: bricht **vor** jeder API-Anfrage ab, wenn das persistierte Tagesbudget bereits ausgeschöpft ist. Stdlib-only, eigene Exit-Codes. |
-| `scan_secrets.py` | Repository-Scan via `src.utils.secret_scanner`. CLI: `python -m src.cli security scan`. |
-| `configure_feed.py` | Interaktiver Konfigurations-Assistent (schreibt `.env`). CLI: `python -m src.cli config wizard`. |
-| `scaffold_provider_plugin.py` | Erzeugt ein lauffähiges Provider-Plugin-Skelett (`register_providers`-Hook); siehe [How-to](how-to/provider_plugins.md). |
-
-### Statische Analyse & Build-Hygiene
-
-| Skript | Aufgabe |
-| --- | --- |
-| `run_static_checks.py` | Dispatcher für `ruff check`, `mypy --strict`, `bandit`, den Secret-Scanner, das C901-Gate (`check_complexity.py`), das i18n-Gate (`check_i18n_coverage.py`) und `pip-audit`; CI-äquivalent. CLI: `python -m src.cli checks`. |
-| `check_complexity.py` | C901-Komplexitäts-Gate über `src/` und `scripts/` (Threshold 15, Allowlist `.c901-baseline.txt` mit einer Zeile `<pfad>::<funktion> <wert>` je Funktion über 15). Grün ist es nur, wenn Messung und Allowlist genau übereinstimmen: Rot werden eine neue Funktion über 15, ein höherer Wert und seit 2026-11-01 auch ein niedrigerer Wert oder eine Funktion, die auf 15 oder darunter sinkt. Bis dahin blieb eine Verbesserung unbemerkt (`fetch_events` stand einen Monat mit 51 in der Liste, gemessen waren 35), das Gate prüfte nur `src/` (in `scripts/` lagen neun Funktionen über 15) und nur den Funktionsnamen: Mit `scripts/` im Umfang wäre jedes weitere `main` bis 16 unter dem Eintrag `scripts/generate_markdown_stats.py::main 16` durchgelaufen (38 Dateien definieren `main`). Kann ruff nicht messen (nicht installiert, Abbruch, unlesbare Ausgabe), endet das Gate mit Exit 2. Vorher meldete es bei einem ruff, der startete und abbrach, oder bei unlesbarer Ausgabe alle Einträge als behoben und blieb grün; fehlte ruff oder hing es, endete das Skript mit einem Traceback. Ein Pfad mit Leerzeichen ist ein gültiger Schlüssel; ein Pfad mit Zeilenumbruch kann keine Zeile der Allowlist sein und zählt als fehlgeschlagene Messung. `.c901-baseline.txt` und `.mypy-baseline.txt` stehen auf `.secret-scan-ignore`: Sie bestehen aus Pfaden, die die Gates schreiben, und der Secret-Scanner meldet eine Folge von mindestens 24 Zeichen aus Buchstaben, Ziffern und `/_-+=`, die Kleinbuchstaben mit Ziffern oder Großbuchstaben mischt, als hochentropischen Token-String; ein Pfad mit Ziffern wie `scripts/check_i18n_coverage.py` ist so eine Folge. |
-| `regen_c901_baseline.sh` | Schreibt `.c901-baseline.txt` neu (`check_complexity.py --write-baseline`, mit dem ruff des laufenden Interpreters, also im dev-venv ausführen). Nach jeder gewollten Änderung eines Werts über 15 ausführen und die Datei im selben Change committen; kann ruff nicht messen, bleibt sie unverändert. |
-| `regen_mypy_baseline.sh` | Regeneriert `.mypy-baseline.txt` (derzeit leer). Installiert dafür wie `mypy-strict.yml` `requirements-dev.txt`, also mypy samt den `types-*`-Stubs, damit die Allowlist dieselben Fehler sieht wie das Gate. |
-| `generate_sitemap.py` | Generiert `docs/sitemap.xml` und `docs/feed.xml`-Hinweise; läuft im `seo-guard.yml`-Workflow. `<lastmod>` wird in einem einzigen gestreamten `git log` ermittelt (kein N+1-Subprozess pro Datei). |
-| `generate_llms_txt.py` | Generiert `docs/llms.txt` (kuratierter Markdown-Index der informationsdichtesten Seiten nach [llms.txt-Standard](https://llmstxt.org/)) für LLM-/KI-Crawler; läuft im `seo-guard.yml`-Workflow. URLs/Host-Pin werden mit `generate_sitemap` geteilt; Ausgabe ist deterministisch. |
-| `gtfs.py` | GTFS-Hilfsmodul (`read_gtfs_stops`); wird von Tests und vom Stations-Validator konsumiert. |
-| `optimize_site_assets.py` | Erzeugt minifizierte `site.min.css` / `site.min.js` aus den lesbaren Quellen sowie WebP-Geschwister für `train.png` / `footer-bg.jpg`. Wird vom Pre-Commit-Hook `site-assets-minified --check` aufgerufen, um Drift zwischen Quelle und committetem Bundle zu verhindern. Idempotent (`--check`/`--skip-images` ohne Image-Tools nutzbar). |
-| `check_i18n_coverage.py` | i18n-Coverage-Gate für das Live-Dashboard (`docs/site.html`): prüft, dass jedes `data-i18n*`-Attribut einen passenden Schlüssel im `I18N_EN`-Dictionary in `docs/assets/site-js/` hat. Fehlende oder leere Übersetzungen brechen den Lauf ab, verwaiste Schlüssel sind eine Warnung. Zusätzlich werden die **JS-eigenen DE/EN-Wörterbuchpaare** abgeglichen (`CHART_TEXT_DE`/`_EN`, `WEEKDAY_LONG_DE`/`_EN`, `STATUS_TEXT.de`/`.en` …): Ein Schlüssel, den nur eine Seite führt, fällt zur Laufzeit stumm auf die andere Sprache zurück. Läuft als Pre-Commit-Hook (`i18n-coverage`) und in CI via `run_static_checks.py`. |
-
-### Mehrsprachiges Dashboard (i18n)
-
-Das öffentliche Live-Dashboard (`docs/site.html`) ist zweisprachig: **Deutsch ist die Quellsprache** (direkt im HTML-Markup), die englische Fassung liegt als `I18N_EN`-Wörterbuch in `docs/assets/site-js/` und wird zur Laufzeit client-seitig über `data-i18n*`-Attribute eingespielt. Die gewählte Sprache wird im `localStorage` (`wienoepnv:lang`) gemerkt; ein Umschalter im UI wechselt zwischen „Deutsch" und „English". Wer eine neue deutsche UI-Zeichenkette ergänzt, muss den passenden `I18N_EN`-Schlüssel mitliefern — sonst schlägt das `check_i18n_coverage.py`-Gate fehl (Pre-Commit **und** CI). Zeichenketten, die das JavaScript selbst erzeugt (Diagramm-Beschriftungen, Wetterwörter, Wochentage, Status- und Fehlerzeilen), haben keinen `data-i18n`-Knoten und liegen deshalb in DE/EN-Wörterbuchpaaren; sie lösen durchwegs als `dict[key] || DE[key] || key` auf, weshalb dasselbe Gate beide Seiten auf Schlüsselgleichheit prüft. Diese Übersetzungsschicht betrifft ausschließlich das Dashboard; die übrige Projektdokumentation ist durchgängig deutsch.
-
-## Entwicklung & Qualitätssicherung
-
-- **Tests**: `python -m pytest` führt rund 11 900 Unit- und Integrationstests in rund 650 Modulen unter `tests/` aus (Stand 2026-10-28).
-- **Test-Isolation**: Autouse-Fixtures in `tests/conftest.py` halten jeden Test von echten Dateien und der Umgebung fern:
-  - `isolate_stats_writes` und `isolate_episode_starts_writes` leiten die Statistik-Ledger (auch `baustellen_<Jahr>.csv`) und `cache/stammstrecke/episode_starts.json` nach `tmp_path` um. Die Tests des Baustellen-Hooks geben dem Schreiber den festen Zeitpunkt 10.11.2026 17:44:05 (Wien); die Standard-Uhr prüft `tests/test_baustellen_ledger_more.py`.
-  - `reset_vor_request_count` tut das für den VAO-Zähler.
-  - `forget_resolved_tickers` leert das Gedächtnis von `src/providers/wl_resolved.py` vor und nach jedem Test und leitet `data/wl_resolved_tickers.json` nach `tmp_path` um; vorher leerte ein Test, der `update_wl_cache.main()` ausführt, die echte Datei (Gegenprüfung 2026-10-05).
-  - `_baustellen_fallback_layers_reset` leert vor jedem Test die Liste `_fallback_layers` von `scripts/update_baustellen_cache.py`. Nur `_fetch_layers` leerte sie; nach einem Teilausfall-Test endete `main()` in drei Tests, die `_fetch_layers` ersetzen, mit 3 statt 0, wenn kein leerender Test dazwischen lief. Die Sammelreihenfolge verdeckte das, unter `-n auto` hätten es die Grenzen der Arbeitspakete je nach Größe der Suite aufgedeckt (Gegenprüfung 2026-11-01).
-  - `isolate_ki_decisions` leitet den Speicher der KI-Entscheidung (`data/ki_entscheidungen.json`) nach `tmp_path` um und entfernt `GEMINI_API_KEY` und `GITHUB_OUTPUT`: Kein Test liest echte Antworten, fragt Gemini oder schreibt in die Ausgabe eines Laufs.
-  - `reset_build_feed_state` und `reset_circuit_breakers` setzen Modulzustand zurück.
-  - `_environment_stays` stellt nach jedem Test `os.environ` wieder her. `load_env_file` schreibt selbst in die Umgebung, und `monkeypatch.delenv(..., raising=False)` merkt sich eine fehlende Variable nicht; bis 2026-10-28 liefen deshalb alle Tests nach `tests/test_env_loader.py` mit `VOR_ACCESS_ID=token`, und ein Health-Check-Test bestand nur dadurch.
-  - `_cache_dir_stays` leitet `_CACHE_DIR` von `src.utils.cache` nach `tmp_path` um. `write_cache` räumt nach dem Schreiben das Verzeichnis seiner Quelle nach Dateialter auf; zwei Baustellen-Tests lenkten nur `_cache_file` um und löschten so den echten `cache/baustellen_*/events.json`, sobald dessen Datei älter als 48 Stunden war (älterer Klon, Sandbox; Prüfung 2026-10-28).
-  - `_without_host_proxy` entfernt Proxy-Variablen, damit die Suite in einer Sandbox mit Proxy dasselbe Ergebnis liefert wie in der CI (`PROXY_TRUSTED_HOSTS`).
-  - `_health_report_stays_untouched` lässt jeden Test scheitern, der `docs/feed-health.*` anlegt oder ändert (Audit 2026-09-25, A.7).
-  - `_no_real_dns` beantwortet jede DNS-Abfrage mit einer festen öffentlichen Adresse (`STUB_PUBLIC_IP`); kein Test fragt das echte DNS. Wer eine andere Antwort braucht, patcht `dns.resolver.Resolver.resolve` oder `_resolve_hostname_safe` selbst, Letzteres mit `patch_all` aus `tests/_conftest/http_bindings.py`: Seit 2026-11-03 lesen mehrere Module von `src/utils/http_safety/` den Namen, ein Patch nur auf `src.utils.http` träfe nicht alle Aufrufer (`tests/test_http_patch_bindings.py`).
-  - `_no_network` lässt jeden Test scheitern, der eine Netzverbindung öffnet (alles außer Loopback und Unix-Sockets): Die Verbindung scheitert sofort mit `ENETUNREACH`, und der Test wird danach rot, auch wenn der Code den Fehler schluckt; die Meldung nennt Adresse und Aufrufstelle. Die Wiederholungen der HTTP-Schicht laufen vorher trotzdem ab (rund 8 s je Abruf), der Mock gehört deshalb auf die HTTP-Schicht. `STUB_PUBLIC_IP` ist die Adresse eines echten GitHub-Servers. Bis 2026-11-01 riefen zwei Tests (14 Testfälle) sie ohne Mock 15-mal je Lauf ab; jeder Abruf scheiterte und wurde viermal wiederholt, 75 Verbindungsversuche und rund zweieinhalb Minuten je CI-Lauf (Technical Debt Assessment und Gegenprüfung vom 01.11.2026). Auf einem frischen Runner holten außerdem Tests, die den englischen Feed ohne Stub bauen, die `config.json` des Übersetzungsmodells von huggingface.co; `tests/conftest.py` setzt deshalb beim Import `HF_HUB_OFFLINE=1`, und die Übersetzung fällt sofort aus wie bisher in der CI (die Test-Jobs installieren kein torch). `SafeDNSHTTPSConnection` und `PinnedHTTPSConnection` in `src/utils/http_safety/adapters.py` liefen bis dahin nur über die echten Verbindungen, `SafeDNSHTTPConnection` gar nicht; seither prüft `tests/test_ssrf_pinned_connections.py` alle drei gezielt und offline. Unterprozesse deckt der Wächter nicht ab; seine eigenen Tests stehen in `tests/test_no_network_guard.py`.
-  - `_restore_replaced_modules` setzt nach jedem Test die Module zurück, die er aus `sys.modules` entfernt oder ersetzt hat (viele Testdateien laden Fassade und Teile über `fresh_build_feed()` aus `tests/_conftest/build_feed_bindings.py` neu), und stellt den Inhalt jedes Moduls wieder her, das er mit `importlib.reload` neu geladen hat. Sonst griffen `reset_build_feed_state` und `time_line_today` für den Rest des Laufs ins Leere, und Tests hielten Klassen, die das Modul nicht mehr wirft.
-  - `_feed_config_stays` stellt jeden Wert von `src.feed.config` wieder her, den ein Test (etwa über `refresh_from_env()`) geändert hat.
-  - `_root_logger_stays_clean` entfernt Handler, die ein Test am Root-Logger hinterlässt, und stellt Formatter und Level der übrigen wieder her (`configure_logging` setzt einen `SafeFormatter` auch auf pytests Capture-Handler).
-  - Hypothesis läuft ohne Zeitlimit pro Beispiel (Profil `wien-oepnv`); Hänger fängt `pytest-timeout`.
-  - Das Streckendaten-Sample unter `data/streckendaten/` legt die Session-Fixture `streckendaten_dataset` an. Mit `pytest-xdist` teilen sich die Worker diesen festen Pfad: Ein Dateilock im Temp-Verzeichnis serialisiert Anlegen und Aufräumen, und erst der letzte Worker räumt auf. Vorher las ein Worker das halb geschriebene Archiv oder fand es gelöscht, und alle Tests dieses Workers scheiterten im Setup (Prüfung 2026-10-04: 4.190 Fehler in einem Lauf mit `-n 4 -p randomly`).
-
-  Die Suite besteht in beliebiger Reihenfolge, seriell wie parallel (`pytest -n 4`), ohne Netz, in jeder Zeitzone des Rechners, mit jedem heutigen Datum und in einer Arbeitskopie, deren Dateien Tage alt sind (Prüfung 2026-10-04: Zufallsreihenfolge mit `pytest-randomly`, Lauf ohne Netz per `unshare -rn`, Uhr mit `time-machine` auf beide Zeitumstellungen, Silvester, Neujahr, Schalttag 2028 und 2030 gestellt, `TZ` auf New York und Kiribati; wiederholt 2026-10-28 mit zwei Zufallsreihenfolgen, ohne Netz, Uhr auf 01.11.2026, Wiener Mitternacht, Neujahr und Sommerzeit 2027 sowie allen Dateien unter `cache/`, `data/`, `docs/`, `log/` zehn Tage alt; zuletzt 2026-11-01 mit drei Zufallsreihenfolgen unter `-n 4` und einem Lauf wie auf einem frischen Runner, mit leerem Home-Verzeichnis und damit ohne Modell-Cache). Ausnahme beim verstellten Datum: Tests, die Dateien schreiben und deren Alter am Dateisystem messen (Cache-Bereinigung), oder Unterprozesse starten, sehen die echte Uhr des Dateisystems bzw. des Unterprozesses. CI und alle Workflows laufen mit Python 3.11; unter Python 3.13 sind drei Tests rot, weil Python sich geändert hat (Unicode 15.1 kennt sieben neue Formatzeichen, die `_INVISIBLE_DANGEROUS_RE` nicht enthält; `Path.resolve()` meldet Symlink-Schleifen nicht mehr als Fehler).
-
-  Tests, die `main()` ausführen, leiten `OUT_PATH`, `STATE_FILE`, `FEED_HEALTH_PATH` und `FEED_HEALTH_JSON_PATH` nach `tmp_path` um. Sie patchen am Modulobjekt (`monkeypatch.setattr(bf.feed_config, …)`), nicht über den String-Pfad `"src.build_feed.…"`: Einige Tests laden das Modul neu, und der String-Patch träfe dann ein anderes Modul als das, dessen `main()` läuft.
-- **Kontinuierliche Tests**: Die GitHub Action `test.yml` automatisiert die im Audit empfohlene regelmäßige Testausführung und bricht Builds bei fehlschlagender Test-Suite ab. Seit 2026-11-01 startet sie pytest parallel auf allen Kernen des Runners (`python -m pytest -n auto`, `pytest-xdist`, vier Worker auf `ubuntu-latest`), `test-vor-api.yml` ebenso; vorher lief der Schritt seriell (Median 9,8 min, 589,5 s, in den 20 Läufen vom 31.10. 14:42 bis 01.11. 08:43 MEZ). Die Abdeckung (`--cov`, Bericht im Log und als Artefakt `coverage-xml`, ohne Mindestwert) misst seit 2026-11-01 `src/` und `scripts/`; der Gesamtwert im Log sank dadurch von 90,1 % auf 87,2 % (Tests-Läufe 5424 und 5425 auf `main` am 2026-11-01, der letzte vor und der erste nach der Umstellung). Aus dem Artefakt von Lauf 5425 nachgerechnet (Zeilen und Zweige je Datei, nach Verzeichnis summiert) liegt `src/` wie vorher bei 90,1 % und `scripts/` bei 82,9 %. Spätere Läufe können andere Werte zeigen, wenn sich Code oder Tests ändern.
-- **Liquid in `docs/`**: GitHub Pages baut `docs/` mit Jekyll 3.10 und Liquid 4.0.4. Jede Markdown-Datei ist dort eine Seite, auch ohne Front Matter (`jekyll-optional-front-matter`), ebenso jede andere Datei mit Front Matter, und Liquid läuft vor Markdown darüber. Ein `{` mit direkt folgendem `{` oder `%` außerhalb eines `raw`-Blocks wird ausgewertet: Ein vollständiger Ausdruck wird durch seinen Wert ersetzt, meist durch nichts, ein bekanntes Tag (etwa `comment`, `if`) ändert den Text, und ein unvollständiges Paar oder ein unbekanntes oder fehlerhaftes Tag lässt den ganzen Pages-Build scheitern, und Website, Feed-Adresse und Fernseher bleiben auf dem alten Stand (2026-11-01 nach #2092, zweieinhalb Stunden). Von Hand geschriebene Seiten setzen den ganzen Block (Absatz, Tabelle, Codeblock) zwischen zwei eigene Zeilen mit je einem HTML-Kommentar, der das Liquid-Tag `raw` bzw. `endraw` in der einfachen Form ohne Bindestrich enthält, ohne Einrückung (ein Block in einer Liste: die ganze Liste umschließen) und mit einer Leerzeile vor und nach jeder dieser Zeilen; ohne diese Leerzeilen macht kramdown auf der Website aus einer folgenden Tabelle einen Absatz mit Strichen, und GitHubs Ansicht zeigt davon nichts. Auch im Block gilt eine Grenze: Bleibt ein `{` mit folgendem `{` oder `%` bis zu einem weiteren vollständigen Tag desselben Blocks (außer dem schließenden) offen, ohne `}` bzw. `%}` dazwischen, gibt Liquid den Text von dieser Klammer bis zum Beginn des Tags doppelt aus, etwa eine Tabelle mit einer dritten Spalte; der Test meldet das. Beide Ansichten blenden die Kommentare aus; ein Beispiel steht im Quelltext von [`how-to/test-api-secrets.md`](how-to/test-api-secrets.md). Erzeugte Seiten gehen durch `liquid_safe` aus `src/utils/liquid.py` (ein Leerzeichen hinter jeder öffnenden Klammer eines Paars), und `scripts/publish_to_main.sh` macht vor jedem Commit eines Workflows die verbliebenen Paare jeder vorgemerkten Seite unwirksam (siehe „Veröffentlichen auf `main`“). `tests/test_docs_liquid.py` prüft jede Seite, die Jekyll rendert, mit einem Nachbau von Liquids Zerlegung in `src/utils/liquid.py`; Posts gibt es in `docs/` nicht, ein Test verbietet Ordner und Dateien namens `_posts` und `_drafts`: Jekyll gibt einem Post einen Auszug (den ersten Absatz und die Linkdefinitionen des Rests, auch aus einem `raw`-Block) und liest ihn ein zweites Mal mit Liquid, und das baut der Nachbau nicht nach. Jeder Name, der mit `.htaccess` beginnt, wird trotz `exclude` gerendert (Jekylls Vorgabe `include: [.htaccess]` vergleicht den Anfang des Namens). Die Vorlagen unter `docs/_layouts/` und `docs/_includes/` sind keine Seiten und nutzen Liquid absichtlich; dort prüft der Test nur, was jeden Build anhält (ein Tag ohne Ende, ein offener `raw`-Block). Front Matter muss eine Zuordnung sein (Schlüssel und Werte); eine Liste oder ein bloßer Text hält den Build ebenfalls an. Jeder Schlüssel in `docs/_config.yml` außer `theme`, `lang`, `title`, `description` und `exclude` macht den Test rot; ändert er, welche Dateien Jekyll rendert (etwa `include` oder `collections`), muss `rendered_pages()` ihn zuerst berücksichtigen, dann kommt er in die Liste des Tests. Was der Nachbau nicht kennt (Sass, Includes, Plugins, Liquid in den Vorlagen), fängt seit 2026-11-01 der Workflow `pages-build-check.yml`, soweit es den Build anhält (etwa ein unbekanntes Tag, ein fehlendes Include, ein Sass-Fehler); gibt eine Vorlage nur still etwas anderes aus (eine unbekannte Variable, ein unbekannter Filter), fängt das keine der beiden Prüfungen. Der Workflow baut bei jedem Pull Request mit Änderungen unter `docs/` die Website mit derselben Action wie GitHub Pages (siehe „Automatisierte Workflows“).
-- **Statische Analyse & Typprüfung**: `ruff check` (Stil/Konsistenz, Regelgruppen `E`, `F`, `S`, `B`, `UP` — siehe `pyproject.toml`) und `mypy --strict` laufen via `python -m src.cli checks`; optional lassen sich über `--fix` Ruff-Autofixes aktivieren oder zusätzliche Argumente an Ruff durchreichen. Mypy prüft überall denselben Umfang, `src/`, `tests/` und `scripts/` (`files` in `pyproject.toml`; bis 2026-11-01 prüften `checks` und der Pre-Commit-Hook nur `src/`), und zwar mit den `types-*`-Stubs aus `requirements-dev.txt` für PyYAML, python-dateutil, openpyxl und defusedxml. Bis 2026-11-01 lief CI ohne diese Stubs, und 19 Meldungen zeigte nur ein lokales venv, das sie hatte; sie sind behoben. `types-requests` fehlt mit Absicht: requests bringt seit 2.34 eigene Typen mit, die das Stub-Paket verdecken würde. Der Workflow `mypy-strict.yml` prüft jeden Push auf `main` und jeden Pull Request (derzeit 0 Errors) gegen die leere Allowlist `.mypy-baseline.txt`; neue Fehler lassen ihn rot werden. Das C901-Gate (`check_complexity.py`, siehe Tabelle oben) misst `src/` und `scripts/` gegen `.c901-baseline.txt`.
-- **Pre-Commit-Hooks**: `.pre-commit-config.yaml` aktiviert lokale Checks bei jedem `git commit`: Ruff, `mypy --strict`, Bandit, der eigene Secret-Scanner (`scripts/scan_secrets.py`), das C901-Komplexitäts-Gate (`scripts/check_complexity.py`), der Site-Asset-Drift-Check (`site-assets-minified` → `scripts/optimize_site_assets.py --check`), das Dashboard-i18n-Gate (`i18n-coverage` → `scripts/check_i18n_coverage.py`) sowie Whitespace-/Merge-Conflict-/YAML-/TOML-/JSON-/Large-File-Hygiene. Ruff, mypy und Bandit laufen wie die eigenen Checks mit dem Python des aktiven venv (`language: system`), also in den Versionen aus `requirements-dev.txt`, die auch CI installiert und Dependabot aktuell hält; bis 2026-11-01 pinnte der Hook ruff zusätzlich auf 0.4.7 (CI: 0.17.3) und Bandit auf 1.9.4. Die beiden Whitespace-Hooks (`trailing-whitespace`, `end-of-file-fixer`) prüfen nur Textdateien. Sie lassen `cache/`, `data/` (außer den README), Feeds, Sitemap, `llms.txt`, Statistik und Stationsberichte in `docs/`, die minifizierten Assets und das Audit-Archiv aus, dazu aus der alten Liste `tests/fixtures/`, ein Verzeichnis, das es nicht gibt. Alle anderen Textdateien prüfen sie, auch die Testdaten unter `tests/providers/data/` und Dateien, in die ein Programm schreibt, etwa `README.md` (Statistik-Abschnitte aus `scripts/generate_markdown_stats.py`), `docs/site.html` (`?v=`-Marken aus `scripts/optimize_site_assets.py`), `.c901-baseline.txt` und `.mypy-baseline.txt`. Bis 2026-11-01 standen nur `docs/feed.xml`, `docs/sitemap.xml`, die JSON-Dateien in `cache/` und `data/` sowie alles unter `tests/fixtures/` in der Ausnahmeliste, und `pre-commit run --all-files` scheiterte auf `main`. Einmalig nach dem Klonen `pre-commit install` ausführen — Details in [`CONTRIBUTING.md`](https://github.com/Origamihase/wien-oepnv/blob/main/CONTRIBUTING.md).
-- **Logging**: Zur Laufzeit entsteht `log/errors.log` mit rotierenden Dateien; Größe und Anzahl sind konfigurierbar.
-
-## Developer Experience & Observability
-
-### Einheitliche CLI für Betriebsaufgaben
-
-Die neue Kommandozeile (`python -m src.cli`) bündelt bisher verstreute Skripte. Wichtige Unterbefehle:
-
-- `python -m src.cli cache update <wl|oebb|baustellen>` – aktualisiert den jeweiligen Provider-Cache. (VOR ist seit 2026-05-11 nicht mehr cache-fähig — der Stammstrecke-Monitor läuft als eigener Workflow-Step und schreibt direkt in den CSV-Ledger.)
-- `python -m src.cli stations update <all|directory|wl>` – führt die bestehenden Stations-Skripte mit optionalem `--verbose` aus. (VOR-Stations-Refresh wurde 2026-05-11 entfernt — `data/vor-haltestellen.csv` wird redaktionell gepflegt.)
-- `python -m src.cli feed build` – startet den Feed-Build mit der aktuellen Umgebung.
-- `python -m src.cli feed lint` – prüft die aggregierten Items auf fehlende GUIDs oder unerwartete Duplikate. Seit 2026-10-15 läuft dafür dieselbe Feed-Kette wie im Build (`_assemble_feed_items`); die Zählwerte entsprechen damit dem Health-Report, und fehlende GUIDs zählen nur bei Einträgen, die in den Feed kämen. Die Einzelprüfung des Baus (seit 2026-11-10, `docs/architecture-teil-7.md`, §10) macht `lint` nicht: Scheitert die Feed-Kette an einer Meldung, endet `lint` mit Exit-Code 2. Die Ausgabe des Feeds erzeugt `lint` nicht; eine Meldung, an der erst die Ausgabe scheitert, findet nur der Bau.
-- `python -m src.cli tokens verify <vor|vor-auth>` – validiert Secrets und API-Zugänge.
-- `python -m src.cli checks [--fix] [--ruff-args …]` – ruft die statischen Prüfungen konsistent zur CI auf.
-
-### Qualitätsberichte für das Stationsverzeichnis
-
-`python -m src.cli stations validate --output docs/stations_validation_report.md` erstellt den Report `docs/stations_validation_report.md`. Die Ausgabe enthält zusammengefasste Kennzahlen und detaillierte Listen der gefundenen Probleme.
-
-| Flag | Zweck |
-| ---- | ----- |
-| `--stations PATH` | Alternativer Pfad zur `stations.json` (Default `data/stations.json`). |
-| `--gtfs PATH` | Alternativer Pfad zur GTFS-`stops.txt` (Default `data/gtfs/stops.txt`). |
-| `--decimal-places N` | Toleranz beim Koordinaten-Matching (Default 5 Nachkommastellen). |
-| `--output PATH` | Schreibt den Markdown-Bericht zusätzlich an den angegebenen Ort. |
-| `--fail-on-issues` | Beendet den Lauf mit Exit-Code 1, sobald irgendeine Issue-Kategorie nicht leer ist (CI-Gate). |
-
-### Logging & Beobachtbarkeit
-
-Die CLI respektiert die vorhandene Logging-Konfiguration (`log/errors.log`, `log/diagnostics.log`). Für Ad-hoc-Audits lassen sich Berichte und Skriptausgaben über `--output`-Parameter in nachvollziehbaren Pfaden versionieren. Jeder Feed-Build erzeugt zusätzlich zwei Gesundheitsberichte unter `docs/feed-health.md` (menschenlesbar) und `docs/feed-health.json` (maschinenlesbar) — beide werden lokal nach jedem Build geschrieben und sind nicht im Repository versioniert.
-
-### Optionale GitHub-Issue-Auto-Erstellung bei Feed-Build-Fehlern
-
-Operator:innen können den Feed-Builder so konfigurieren, dass er bei Fehlern automatisch ein GitHub Issue im konfigurierten Repository öffnet (`src/feed/github_issue.py:_GithubIssueConfig`). Die Funktion ist standardmäßig **deaktiviert**; sie wird erst aktiv, wenn `FEED_GITHUB_CREATE_ISSUES=true` gesetzt ist und sowohl ein Repository als auch ein Token vorliegen:
-
-| Variable | Zweck |
-| --- | --- |
-| `FEED_GITHUB_CREATE_ISSUES` | Master-Switch (`true`/`false`, Standard `false`). |
-| `FEED_GITHUB_REPOSITORY` | Ziel-Repository im Format `owner/name`. Fallback `GITHUB_REPOSITORY` (von GitHub Actions automatisch gesetzt). Wird gegen die GitHub-Slug-Grammatik validiert. |
-| `FEED_GITHUB_TOKEN` | API-Token mit `issues:write`. Fallback `GITHUB_TOKEN`. Wird ausschließlich an vertrauenswürdige GitHub-API-Hosts gesendet. |
-| `FEED_GITHUB_API_URL` | Optionaler API-Base-Override (z. B. GitHub Enterprise `https://<host>/api/v3`). Fallback `GITHUB_API_URL`, Default `https://api.github.com`. |
-| `FEED_GITHUB_ENTERPRISE_HOSTS` | CSV-Allowlist erlaubter GHE-Hosts; muss bei nicht-public-GitHub-API gesetzt sein, sonst lehnt der Reporter den Call ab und der Token verlässt den Prozess nicht. |
-| `FEED_GITHUB_ISSUE_LABELS` / `_ASSIGNEES` | Komma-separierte Listen für Issue-Labels/Assignees. |
-| `FEED_GITHUB_ISSUE_TITLE_PREFIX` | Titel-Präfix (Standard `"Fehlerbericht"`). |
-
-Sicherheits-Gates: Der Reporter validiert das Repo-Slug gegen GitHubs Naming-Grammatik (`owner` 1-39 Zeichen alphanumerisch/Bindestrich, `name` 1-100 Zeichen `[A-Za-z0-9._-]`) und akzeptiert als API-Host **nur** `api.github.com` (öffentliches GitHub) oder Hosts, die explizit über `FEED_GITHUB_ENTERPRISE_HOSTS` gewhitelistet wurden. Seit [PR #1512](https://github.com/Origamihase/wien-oepnv/pull/1512) ist der Scheme zusätzlich auf **`https://` gepinnt** — `http://`-URLs werden auch bei korrektem Host abgelehnt, damit der Bearer-Token niemals im Klartext über die Leitung geht. Eine fehlkonfigurierte `FEED_GITHUB_API_URL` führt deshalb nicht zur Token-Exfiltration.
-
-## Authentifizierung & Sicherheit
-
-- **Secrets**: Pflicht- und optionale Variablen (`VOR_ACCESS_ID`, `VOR_BASE_URL`, `VOR_VERSION` / `VOR_VERSIONS`, …) sind im Tabellenblock [„Konfiguration des Feed-Builds"](development.md#konfiguration-des-feed-builds) gelistet. Sie liegen nie im Repository. Die Zugangsdaten `VOR_ACCESS_ID`/`VAO_ACCESS_ID` und `FEED_GITHUB_TOKEN`/`GITHUB_TOKEN` liest `read_secret` (`src/utils/env.py`) in dieser Reihenfolge: systemd Credentials (`$CREDENTIALS_DIRECTORY/<Name>`), Docker Secrets (`/run/secrets/<Name>`), Umgebungsvariable (auch aus den `.env`-Dateien, siehe `WIEN_OEPNV_ENV_FILES`); alle übrigen Werte kommen aus der Umgebung; das Skript `src/utils/secret_scanner.py` schützt proaktiv vor versehentlich eingecheckten Geheimnissen. In `.github/workflows/update-cycle.yml` werden diese Werte als Build-Secrets durchgereicht.
-- **Repository-Secrets und ihre Überwachung** (seit 2026-10-16): `WORKFLOW_SECRETS` in `src/health_check/workflow_secrets.py` (gelesen von `scripts/health_check.py`) listet jedes Repository-Secret, das ein Workflow verwendet, mit seiner Art: `required` (die Feed-Pipeline braucht es: `VOR_ACCESS_ID`), `optional` (der Code hat einen Standard: `VOR_BASE_URL`) und `tooling` (Werkzeug-Workflows ohne Bezug zum Feed: `CLAUDE_CODE_OAUTH_TOKEN`, `GEMINI_API_KEY` für den KI-Wächter, den Jahresrückblick der Baustellen und seit 2026-11-12 die KI-Entscheidung im Feed-Build, der ohne den Schlüssel nach den Regeln entscheidet, `REPO_ADMIN_TOKEN`). Der Health check bekommt die `required`- und `optional`-Secrets übergeben und wird rot, wenn ein `required`-Secret leer ankommt; er prüft nur, ob ein Wert da ist, und gibt nie einen Wert aus. Ob ein hinterlegter Schlüssel noch angenommen wird, zeigt `Stammstrecke-Abruf` (abgelehnte Abrufe färben ihn nach drei Stunden rot). Die `tooling`-Secrets werden seit 2026-10-31 über ihre Läufe überwacht (Architektur-Review, Fund B): `REPO_ADMIN_TOKEN` als Nebenschritt des SEO-Laufs (`data/side_steps/seo-guard.json`), `CLAUDE_CODE_OAUTH_TOKEN` über das Ergebnis des letzten Review-Laufs (Prüfung `Werkzeuge`), `GEMINI_API_KEY` als Nebenschritt des KI-Wächters (`data/side_steps/ki-waechter.json`), seit 2026-11-12 bei jedem Update-Lauf als Nebenschritt „KI-Entscheidung“ (`data/side_steps/update-cycle.json`: leer oder von Google abgelehnt ist sofort rot; die Ablehnung bleibt rot, bis Google wieder eine Anfrage annimmt, längstens 24 Stunden) und, solange ein Rückblick der Baustellen fehlt, ab 04.01. über den Statistik-Schritt des Update-Laufs (Eintrag „Statistik“ in `data/side_steps/update-cycle.json`); leer oder abgelaufen heißt in allen Fällen rot. `GEMINI_API_KEY` bekommen nur der Prüfschritt von `ki-waechter.yml`, der Statistik-Schritt und seit 2026-11-12 der Schritt „Build feed“ von `update-cycle.yml` sowie die Probeschritte von `jahresrueckblick-probe.yml` und `ki-entscheidung-probe.yml`; `manual-full-refresh.yml` hat ihn nicht. `tests/test_workflow_secrets.py` gleicht in CI die Liste mit den `secrets.*`-Verweisen der Workflows und den Umgebungsnamen ab, die der Code liest: Ein Workflow, der ein unbekanntes Secret übergibt, und ein gelistetes Secret, das kein Workflow mehr übergibt, lassen den Test scheitern. Anlass (Michael, 16.10.2026: „Es sollte doch auffallen, wenn hinterlegte Secrets nicht mehr funktionieren“): Der Google-Places-Schlüssel erreichte seit 2026-05-11 keinen Workflow mehr, und zwei Workflows reichten die nie angelegten Secrets `VOR_VERSION` und `VOR_BASE` weiter, ohne dass es auffiel. Secrets, die in den Repository-Einstellungen liegen, aber in keinem Workflow vorkommen, kann ein Workflow nicht sehen; die Liste dort gleicht nur der Betreiber ab.
-- **SSRF-Schutz**: Externe Netzwerkanfragen laufen über `fetch_content_safe` (in `src/utils/http.py`). Diese Funktion verhindert Server-Side Request Forgery, indem sie DNS-Rebinding blockiert, private IP-Adressen (Localhost, internes Netzwerk) ablehnt und DNS-Timeouts erzwingt.
-- **Dateisystem**: Schreibvorgänge nutzen `atomic_write`, um Datenkorruption bei Abstürzen zu vermeiden. Pfadeingaben werden strikt validiert (`resolve_env_path` / `validate_path` aus `src/feed/config.py`), um Path-Traversal-Angriffe zu verhindern. Schreibzugriffe sind auf `docs/`, `data/` und `log/` beschränkt.
-- **Logging-Sicherheit**: Kontrollzeichen in Logs werden maskiert, um Log-Injection-Attacken zu unterbinden.
-- **Input-Validierung**: HTML-Ausgaben werden escaped und kritische XML-Felder in CDATA gekapselt, um XSS in Feed-Readern vorzubeugen.
-
-## VOR / VAO ReST API Dokumentation
-
-Die verbindliche API-Referenz ist das Handbuch der VAO GmbH („Handbuch VAO REST API“, zuletzt Version 2026-01-28). Die VAO stellt es mit den Release Notes öffentlich bereit: [Schnittstellen-Dokumentation](https://cloud.verkehrsauskunft.at/index.php/s/oXxTKf2tEH5fKJr) (verlinkt auf [verkehrsauskunft.at/start](https://www.verkehrsauskunft.at/start)). Das Repository führt seit 17.10.2026 keine eigene Kopie mehr, damit immer die aktuelle Fassung gilt und das Dokument der VAO nicht unter der MIT-Lizenz des Projekts mitverteilt wird (Michael: „Die Schnittstellen Dokumentation liegt bereits öffentlich im Internet … du kannst sie auch gerne entfernen“). Ergänzende Inhalte:
-
-- [`docs/reference/`](https://github.com/Origamihase/wien-oepnv/tree/main/docs/reference) – Endpunktbeschreibungen und Beispielanfragen.
-- [`docs/how-to/`](https://github.com/Origamihase/wien-oepnv/tree/main/docs/how-to) – Schritt-für-Schritt-Anleitungen (z. B. Versionsabfragen).
-- [`docs/examples/`](https://github.com/Origamihase/wien-oepnv/tree/main/docs/examples) – Shell-Snippets, etwa `version-check.sh`.
-
-Der Abschnitt [„Stationsverzeichnis"](development.md#stationsverzeichnis) erläutert, wie API-basierte Stationsdaten in das Verzeichnis aufgenommen werden.
-
-## Repository-SEO & Promotion
-
-- **About & Topics pflegen** – Verwende eine kurze, keyword-starke Projektbeschreibung (z. B. „RSS-Feed für Störungs- und Baustellenmeldungen im Wiener ÖPNV") und ergänze Topics wie `vienna`, `public-transport`, `verkehrsmeldungen`, `rss-feed`, `python`. So verbesserst du das Ranking innerhalb der GitHub-Suche.
-- **Feed prominent verlinken** – Der RSS-Feed ist unter [https://origamihase.github.io/wien-oepnv/feed.xml](https://origamihase.github.io/wien-oepnv/feed.xml) verfügbar. Nutze idealerweise immer diese absolute URL für RSS-Reader, um durchgängig aktuelle Updates zu erhalten. In GitHub Pages bindet der `<link rel="alternate" type="application/rss+xml">`-Eintrag den Feed direkt im HTML-Head ein, wodurch Google Discover & Co. ihn leichter finden.
-- **Sitemap & Robots nutzen** – `docs/robots.txt` verweist auf `docs/sitemap.xml`, die täglich vom `seo-guard.yml`-Workflow über `scripts/generate_sitemap.py` regeneriert und in den Branch committed wird. Reiche die Sitemap in der Google Search Console ein, damit neue Meldungen schneller indexiert werden.
-- **KI-/LLM-Sichtbarkeit (GEO) nutzen** – `docs/llms.txt` (nach [llms.txt-Standard](https://llmstxt.org/)) liefert generativen Suchmaschinen und LLM-Crawlern eine kuratierte, Markdown-formatierte Karte der informationsdichtesten Seiten. Sie wird im selben `seo-guard.yml`-Lauf über `scripts/generate_llms_txt.py` regeneriert und committed. `docs/robots.txt` erlaubt bereits alle Crawler (`User-agent: *` / `Allow: /`), sodass KI-Agenten wie GPTBot/ClaudeBot/PerplexityBot nicht ausgesperrt sind.
-- **Externe Signale aufbauen** – Stelle das Projekt in Blogposts, Foren (z. B. Reddit, Mastodon, lokale ÖPNV-Gruppen) oder Newsletter vor. Backlinks von thematisch relevanten Seiten erhöhen die Sichtbarkeit in klassischen Suchmaschinen.
-- **Monitoring etablieren** – Beobachte GitHub Insights (Stars, Forks, Traffic) sowie Feed-Validatoren wie <https://validator.w3.org/feed/>. Automatisierte Checks helfen, strukturelle Probleme früh zu erkennen.
-
-## Troubleshooting
-
-- **Leerer Feed**: Prüfen, ob alle Provider aktiviert sind und ihre Cache-Dateien gültige JSON-Listen enthalten.
-- **Abgelaufene Meldungen**: `MAX_ITEM_AGE_DAYS` und `ABSOLUTE_MAX_AGE_DAYS` anpassen; Logs geben Hinweise auf verworfene Items.
-- **Timeouts**: Einzelne Provider temporär deaktivieren, um Fehlerquellen einzugrenzen. `PROVIDER_TIMEOUT` lässt sich nur senken, nicht über 25 Sekunden anheben (siehe Konfigurationstabelle).
-
-## Audits & historische Reviews
-
-Für vertiefende Audits, technische Reviews und historische Entscheidungen liegen zahlreiche Berichte in `docs/archive/audits/`
-(z. B. [`system_review.md`](archive/audits/system_review.md), [`code_quality_review.md`](archive/audits/code_quality_review.md);
-ein Index steht unter [`docs/archive/audits/INDEX.md`](archive/audits/INDEX.md)). Diese Dokumente erleichtern die
-Einordnung vergangener Änderungen und liefern Kontext für Weiterentwicklungen des Wien-ÖPNV-Feeds.
+## Konfiguration des Feed-Builds
+
+Der Feed-Generator liest zahlreiche Umgebungsvariablen. Für den Einstieg empfiehlt sich der
+Assistent `python -m src.cli config wizard`, der eine bestehende `.env` einliest, die relevanten
+Schlüssel erklärt und wahlweise interaktiv oder per `--accept-defaults` eine neue Konfiguration
+schreibt. Die wichtigsten Parameter:
+
+| Variable                 | Zweck / Standardwert                                                            |
+| ------------------------ | ------------------------------------------------------------------------------- |
+| `OUT_PATH`               | Zielpfad für den RSS-Feed (Standard `docs/feed.xml`).                           |
+| `FEED_HEALTH_PATH` / `FEED_HEALTH_JSON_PATH` | Zielpfade für die nach jedem Build erzeugten Health-Reports (Standards: `docs/feed-health.md` / `docs/feed-health.json`). Beide nicht im Repository versioniert. |
+| `FEED_TITLE` / `FEED_DESC` | Titel und Beschreibung des Feeds (Standards: `"ÖPNV Störungen Wien & Pendler"` / `"Aktive Störungen/Baustellen/Einschränkungen aus offiziellen Quellen"`). |
+| `FEED_LINK`              | Referenz-URL (nur http/https, Standard: GitHub-Repository).                     |
+| `PAGES_BASE_URL`         | Basis-URL der GitHub-Pages-Site für absolute Permalinks (Standard `https://origamihase.github.io/wien-oepnv`). Wird gegen die Pages-Host-Allow-List validiert; abweichende Werte fallen auf den Standard zurück. |
+| `MAX_ITEMS`              | Anzahl der Einträge im Feed (Standard 10).                                      |
+| `MAX_ITEMS_PER_TOPIC`    | Höchstens so viele Einträge je Ursachenwort und Tag in den vorderen Plätzen; weitere rutschen hinter das Feld (Standard 3, 0 schaltet ab). Ohne eigene Variable gilt zusätzlich: Von mehreren ÖBB-Einträgen mit wortgleichem Titel (eine Strecke, mehrere Bauphasen) behält nur einer seinen Platz: eine laufende Störung auf dieser Strecke, sonst eine Sperre an ihrem Sperrtag (seit 2026-11-13), sonst der mit dem frühesten Zeitfenster. |
+| `UPCOMING_PREVIEW_DAYS`  | Was später als so viele Wiener Kalendertage nach heute beginnt, rückt hinter alles, was schon gilt (Standard 1: ab dem Vortag des Beginns vorn, freitags und samstags bis einschließlich Montag; höchstens 365). 0 lässt nur heute Beginnendes vorn. |
+| `FEED_TTL`               | Cache-Hinweis für Clients in Minuten (Standard 15).                             |
+| `MAX_ITEM_AGE_DAYS`      | Maximales Alter von Meldungen aus den Caches (Standard 365).                    |
+| `ABSOLUTE_MAX_AGE_DAYS`  | Harte Altersgrenze für Meldungen (Standard 540).                                |
+| `ENDS_AT_GRACE_MINUTES`  | Kulanzfenster für vergangene Endzeiten (Standard 10 Minuten), höchstens bis zur Wiener Mitternacht nach dem Tag, den die Zeitzeile nennt (`_drop_after` in `src/feed_build/filters.py`, seit 2026-10-24). |
+| `FRESH_PUBDATE_WINDOW_MIN` | Toleranzfenster (Minuten) für „frische" pubDates beim Aging-Check (Standard 5). |
+| `CACHE_MAX_AGE_HOURS`    | Maximalalter der Provider-Cache-Dateien, ab dem eine Warnung im Log erscheint (Standard 24). |
+| `FEED_TITLE_CHAR_LIMIT` / `DESCRIPTION_CHAR_LIMIT` | Maximale Zeichenzahl für Item-Titel/Beschreibungen (Standards 256 / 4000). Negative Werte werden auf `0` geklammert; eine obere Schranke wird derzeit nicht erzwungen (siehe `src/feed/config.py`). |
+| `PROVIDER_TIMEOUT`       | Globales Timeout für Netzwerkprovider (Standard 25 Sekunden). Per Provider via `PROVIDER_TIMEOUT_<NAME>` oder `<NAME>_TIMEOUT` anpassbar. Der Standard ist zugleich die Obergrenze (`MAX_PROVIDER_TIMEOUT`, Schutz gegen hängende Upstreams): Werte lassen sich nur senken, höhere werden auf 25 Sekunden geklammert. |
+| `PROVIDER_MAX_WORKERS`   | Anzahl paralleler Worker (0 = automatisch). Feiner steuerbar über `PROVIDER_MAX_WORKERS_<GRUPPE>` bzw. `<GRUPPE>_MAX_WORKERS`. |
+| `WL_ENABLE` / `OEBB_ENABLE` / `BAUSTELLEN_ENABLE` / `STAMMSTRECKE_ENABLE` | Aktiviert bzw. deaktiviert die einzelnen Default-Provider (alle Standard: aktiv). `STAMMSTRECKE_ENABLE` steuert den VOR/VAO-basierten Verspätungs- und Ausfall-Monitor. Eine separate `VOR_ENABLE`-Variable existiert seit der 2026-05-11-Konsolidierung **nicht mehr**. |
+| `WL_RSS_URL` / `OEBB_RSS_URL` / `BAUSTELLEN_DATA_URL` / `OVERPASS_URL` | Override der Upstream-URLs. Validiert gegen eine Allow-List bekannter Hosts; abweichende Werte werden ignoriert und der Default verwendet (siehe Modul-Docstrings für Details). |
+| `OEBB_ONLY_VIENNA`       | Strikte ÖBB-Filterung (`1`/`true`/`0`/`false`, Standard `false`): nur Meldungen mit explizitem Wien-Bezug akzeptieren — keine Pendlerbahnhof-Fallbacks (siehe [`docs/reference/oebb_provider_logic.md`](reference/oebb_provider_logic.md)). |
+| `WIEN_OEPNV_AT_RECONCILE` | Toggle (Standard `1`) für den netzgestützten Koordinaten-Abgleich der Stationen, die WL und ÖBB gemeinsam führen (WL → HAFAS, bei Widerspruch bleibt WL; seit 2026-10-17 ohne OSM-Schiedsrichter, `scripts/update_wl_stations.py`); `0` überspringt ihn (Wrapper-Test, Offline-Läufe). |
+| `WIEN_OEPNV_MANUAL_ENRICH` | Toggle (Standard `1`) für die Nachreicherung manuell gepflegter Auslands-/Distant-AT-Knoten (`type=manual_*`) in `src/station_directory/coordinates.py:_enrich_manual_stations` (aufgerufen von `scripts/update_station_directory.py`). Auf `0` gesetzt, um in Test-Sandboxen die ~296 realen HAFAS-Round-trips zu vermeiden (siehe `tests/test_update_all_stations_wrapper.py`). |
+| `WIEN_OEPNV_PROVIDER_PLUGINS` | Komma-separierte Liste optionaler Provider-Plugin-Module (siehe [`docs/how-to/provider_plugins.md`](how-to/provider_plugins.md)). Standard leer; nicht gesetzte Module werden ignoriert. |
+| `WIEN_OEPNV_ENV_FILES` | Komma-separierte Liste zusätzlicher `.env`-Dateien, die vor der Konfiguration eingelesen werden (`src/utils/env.py`). Standard liest `.env`, `data/secrets.env`, `config/secrets.env`. |
+| `LOG_LEVEL`, `LOG_DIR`, `LOG_MAX_BYTES`, `LOG_BACKUP_COUNT`, `LOG_FORMAT` | Steuerung der Logging-Ausgabe (`log/errors.log`, `log/diagnostics.log`). `LOG_LEVEL` Standard `INFO`; `LOG_FORMAT=json` aktiviert JSON-Logs. |
+| `STATE_PATH`, `STATE_RETENTION_DAYS` | Pfad (eine Datei, nur für den Feed-Build) & Aufbewahrungstage für `data/first_seen.json` (Standard 600 Tage = absolute Altersgrenze 540 + 60; seit 2026-09-12, vorher 60). |
+| `WIEN_OEPNV_CACHE_PRETTY` | Steuert die Formatierung der Cache-Dateien (`1` = gut lesbar, `0` = kompakt). |
+| `WIEN_OEPNV_DEBUG`       | Auf `1` gesetzt zeigt die CLI (`python -m src.cli`) bei Fehlern den vollständigen Traceback; Standard verhält sich fail-secure (keine Trace-Ausgabe). |
+| `VOR_ACCESS_ID`          | **Pflicht-Secret** für den Stammstrecken-Monitor (VAO-Access-Token). Niemals committen — laden via `.env`, `data/secrets.env` oder `config/secrets.env`. Validierbar mit `python -m src.cli tokens verify vor`. |
+| `VOR_BASE_URL`           | Optionales Secret: Basis-URL der VAO-ReST-API (validiert und auf den VAO-Host festgenagelt in `src/providers/vor_auth.py:_validated_vor_base_url`). Leer gilt der Standard aus `src/providers/vor.py`. Legacy-Alias `VOR_BASE` (nur lokal; kein Workflow reicht ihn seit 2026-10-16 weiter). |
+| `VOR_USER_AGENT`         | Custom User-Agent für VOR/VAO-API-Calls (Standard `wien-oepnv/1.0 (+https://github.com/Origamihase/wien-oepnv)`). |
+| `VOR_REQUEST_COUNT_FILE` | Override für den Persistenzpfad des VAO-Tagesbudget-Counters (Standard `data/vor_request_count.json`). |
+| `VOR_AUTH_TYPE`          | Erzwingt das Auth-Schema bei der VAO-Token-Normalisierung (`bearer` oder `basic`, Standard: automatische Erkennung aus dem Token-Format in `src/providers/vor_auth.py:_normalise_access_token`). |
+| `VOR_VERSION` / `VOR_VERSIONS` | Versions-String für die VAO-URL (z. B. `v1.12.0`); `VOR_VERSIONS` ist Fallback-Alias für `VOR_VERSION`. Optional, nur lokal: Kein Workflow reicht sie weiter (bis 2026-10-16 übergaben zwei Workflows ein nie angelegtes Secret `VOR_VERSION`), es gilt die Version, die der Stammstrecken-Monitor aus der VAO-Liste wählt (`cache/stammstrecke/vao_version.json`, seit 2026-10-29), sonst `DEFAULT_VERSION` aus `src/providers/vor.py`. Ist sie gesetzt, wählt der Monitor nicht. |
+| `RAW_CAPTURE`            | `1` schreibt beim Abruf von WL, ÖBB und Baustellen die normalisierten Rohantworten und die verworfenen Meldungen nach `data/raw/<quelle>/` (`src/utils/raw_capture.py`, `data/raw/README.md`). Standard aus; gesetzt nur im Fetcher-Schritt von `update-cycle.yml`. |
+| `BAUSTELLEN_TIMEOUT`     | Per-Request-Timeout (Sekunden) für `scripts/update_baustellen_cache.py` (Standard `20`, hart geklammert auf `MAX_BAUSTELLEN_TIMEOUT`). |
+| `BAUSTELLEN_FALLBACK_PATH` | Pfad zur lokalen JSON-Fallback-Datei (Standard `data/samples/baustellen_sample.geojson`), die verwendet wird, wenn der OGD-Endpoint der Stadt Wien nicht erreichbar ist und noch kein Cache existiert. |
+| `GEMINI_API_KEY`         | Schlüssel der Gemini API (Repository-Secret, Gratis-Kontingent ohne Abrechnung) für den KI-Wächter, den Jahresrückblick der Baustellen und seit 2026-11-12 die KI-Entscheidung im Feed-Build (`src/ki_entscheidung`, Schritt „Build feed“ von `update-cycle.yml`; ohne Schlüssel entscheiden die Regeln, und der Nebenschritt „KI-Entscheidung“ gilt als gescheitert). Der Feed braucht ihn nicht. Den Rückblick fragt nur der Statistik-Schritt von `update-cycle.yml` in seinen Dashboard-Läufen, bis ein Text angenommen und gespeichert ist; ohne Schlüssel fragt er nicht, und die Seite des Jahres sagt, dass ein Rückblick ergänzt wird. Siehe [`reference/ki_waechter.md`](reference/ki_waechter.md) und „Statistik-Schritt und Jahresseiten“ in [Teil 4](development-teil-4.md). |
+| `JAHRESRUECKBLICK_MODEL` | Optionale andere Modellkette für den Jahresrückblick, kommagetrennt, für einen Versuch (`models_from_env` in `src/markdown_stats/review_client.py`). Leer gilt die Kette des KI-Wächters (`DEFAULT_MODELS`); ein ungültiger Name verwirft den ganzen Wert mit einer Log-Zeile. Kein Workflow setzt sie. |
+| `KI_ENTSCHEIDUNG`        | `0` schaltet die Anfragen der KI-Entscheidung ab (`src/ki_entscheidung/run.py`, Standard an); gespeicherte Antworten gelten weiter, es entscheiden sonst die Regeln, und der Nebenschritt „KI-Entscheidung“ meldet Erfolg (ein früheres Rot bleibt so nicht stehen). Kein Workflow setzt sie. |
+| `KI_ENTSCHEIDUNG_MODEL`  | Optionale andere Modellkette für die KI-Entscheidung, kommagetrennt, für einen Versuch (`models` in `src/ki_entscheidung/ask.py`). Leer gilt die Kette des KI-Wächters mit den Lite-Modellen voran (`MODELS`). Kein Workflow setzt sie. |
+| `KI_ENTSCHEIDUNGEN_PATH` | Speicher der Antworten (Standard `data/ki_entscheidungen.json`, `store_path` in `src/ki_entscheidung/store.py`). Ein Pfad außerhalb der erlaubten Ordner: keine Anfrage, und der Nebenschritt meldet einen Fehler. |
+| `SITE_BASE_URL`          | Basis-URL für die Sitemap-Generierung (`scripts/generate_sitemap.py`). Standard identisch mit `PAGES_BASE_URL`; gegen die GitHub-Pages-Allow-List validiert. |
+| `WIEN_TOKEN`             | Override des Wien-Token-Matches für die `in_vienna`-Heuristik in `src/utils/stations.py` (Standard `wien`). Diakritik wird automatisch geklammert; nur für Test-Sandboxen interessant. |
+
+Alle Pfade werden durch `resolve_env_path` (in `src/feed/config.py`) auf `docs/`, `data/` oder `log/` beschränkt, um Path-Traversal zu verhindern.
+
+### Reihenfolge im Feed
+
+Vorher, gleich nach dem Einsammeln, verwirft `_drop_test_messages`
+Testmeldungen der Anbieter: Titel oder Text enthält „Testmeldung“, oder
+Titel bzw. Text sind höchstens fünf Wörter lang und enthalten das Wort
+„Test“ (ein Bindestrich gehört zum Wort: „Test-Fahrten“ ist keine
+Testmeldung). Seit 2026-10-03 auch „Testfall“, „Testtext“ und ein Text
+beliebiger Länge, der nach dem Linienpräfix nur aus „Test“ besteht
+(„Test Test Tes Test Test Test“). Anlass: Zwei Testmeldungen der Wiener Linien standen am 23.09.2026
+je einen Zyklus im Feed („71/72: Dies ist eine Testmeldung“, „62: F57f
+Test“). In 488 Meldungen des Feeds und 952 der Caches traf die erste Fassung
+nur diese beiden; „Haltestelle“ oder „Testbetrieb“ enthalten das Wort nicht.
+Die heutige Regel trifft in der ganzen Cache-Historie 26 Titel, alle Tests.
+
+Nach Altersfilter und beiden Dedupe-Stufen legt `_merge_wl_ticker_clusters`
+die WL-Störungen eines Vorfalls zusammen: dieselben Linien, veröffentlicht
+innerhalb von zehn Minuten nach der ersten. Titel ist Linie plus häufigste
+Ursache, die Beschreibung sammelt alle Folgen („62: ÖBB Bauarbeiten“ über
+„Betrieb ab Kliebergasse; Züge halte bei Linie 18, Richtung Burggasse; Kein
+Betrieb.“). Sagt eine ausführliche Meldung der Gruppe mehr als WLs
+Standardsatz, steht stattdessen sie, so wie allein (Details in
+`docs/architecture.md`). Kurzmeldungen einzelner Linien gehen in die
+ausführliche Meldung eines Vorfalls mehrerer Linien auf, wenn sie dieselbe
+Ursache nennen und höchstens zehn Minuten vor ihr begannen
+(`_join_part_line_tickers`, seit 2026-10-15; „30A/31A/36B:
+Gasrohrgebrechen“ stand am 11.10. sonst neben drei Tickern „Gasrohrbruch“).
+Zeigt ein solcher Eintrag nur die Baustelle eines
+WL-Hinweises (gleiche Ursache, Linien, Zeitraum und eine gemeinsame Straße),
+geht er in diesem Hinweis auf (`_absorb_works_tickers`). Meldet umgekehrt
+eine laufende WL-Störung mit Vorfallsbeginn (ausführliche Meldung) dieselbe
+Ursache an derselben Straße für jede Linie eines geltenden Hinweises über
+höchstens einen Betriebstag, tritt der Hinweis zurück, solange sie läuft,
+auch wenn WL der Störung ein Ende gibt (`_yield_notices_to_incidents`, seit
+2026-11-01, Betreiberentscheidung „Störung bleibt“ und Grundsatz „Störungen
+haben höchste Priorität im Feed! Hinweise sind weniger wichtig.“; Anlass „1/2/71/D:
+Nationalfeiertag“ neben „1/2/71/D: Veranstaltung“ am 26.10.). Tests dazu lesen die Meldungen wie der Feed, über
+`_post_filter_wl`. Danach sortiert der Build die
+Items nach `first_seen` (neueste zuerst; Gleichstand: Störung vor Baustelle,
+dann `pubDate`). Davor stehen immer die aktuellen Störungen
+(`_is_current_incident`, Betreiberentscheidung vom 2026-10-04: „Aktuelle
+Störungen sollen oberste Priorität haben. Vorangekündigte Baustellen sollen
+eine niedrigere Priorität haben.“): ungeplante Störungen, deren Zeitzeile
+„[Seit hh:mm]“ zeigt (`_incident_since`), die begonnen haben und seit
+höchstens `_CURRENT_INCIDENT_WINDOW` (24 h) im Feed stehen. Wo die Wörter
+einer neuen Störung offen lassen, ob sie plötzlich kam oder geplant ist,
+entscheidet seit 2026-11-12 eine gespeicherte Antwort von Gemini
+(`_ki_art`, `src/ki_entscheidung`; [`architecture-teil-16.md`](architecture-teil-16.md), §14). Untereinander
+gilt in beiden Gruppen dieselbe Sortierung. Ohne diese Stufe stand am
+03.10. um 15:01 „43A: Veranstaltung“ vor „9A: Rettungseinsatz“, am 04.10. um
+16:30 „U6: Neue Donau, kein Halt“ vor vier laufenden Störungen. Die 24 h
+halten Langläufer, die wie Störungen klingen, in der normalen Reihenfolge
+(„18: Haltestelle Stadionbrücke … aufgelassen“ seit 13.07., der täglich
+neue „S80: ÖBB-Ersatzbus“ seit 25.09.). Im Nachbau von 36 Feed-Ständen (Wiener Zeit, Fr
+02.10. 07:00–18:30, Sa 03.10. 15:00 bis So 04.10. 22:30) änderte sich in 14
+nur die Reihenfolge innerhalb der zehn Plätze, keine Meldung kam dazu oder
+fiel heraus. Eine neue Meldung zählt mit `first_seen` = jetzt, eine
+WL-Haltestellenverlegung oder -auflassung dagegen ab ihrer Veröffentlichung
+bei WL (`pubDate`, `_initial_first_seen`, seit 2026-10-04): Mit „Alle
+aufnehmen“ kamen auf einen Schlag 24 solche Meldungen dazu, manche seit 2023
+gültig, und hätten als neu alle zehn Plätze belegt. So steht jede dort, wo
+sie ohne den alten Filter stünde; „26E/N20: Fultonstraße“ (veröffentlicht
+28.09., ab 05.10.) zählt ab dem 28.09. und rückt wie jede Ankündigung erst
+ab dem Vortag nach vorn. Im Feed-Nachbau der zehn echten Läufe vom
+2026-10-04 (09:31–14:00 UTC) kamen so zwei Meldungen unter die ersten zehn
+(„16A/N65: Grohnergasse“, „26E/N20: Fultonstraße“), keine Welle.
+
+Zwischen den aktuellen Störungen und dem Rest steht seit 2026-11-08 eine
+ÖBB-Sperre an den Tagen, an denen sie die Strecke wirklich sperrt
+(`_is_oebb_closure_day` in `src/feed_build/oebb_days.py`, Betreiberentscheidung
+vom 2026-11-08: „Störungen gehen immer vor.“, „Man könnte es auch als Hinweis
+mit höherer Priorität formulieren“ und „Auf ungeplante Störungen kann man sich
+nicht vorbereiten. Auf geplante Bauarbeiten, Sperren etc schon.“). Die
+ungeplanten Störungen bleiben vorn; die Sperre bleibt eine geplante Maßnahme,
+steht an ihren Sperrtagen aber vor den übrigen Hinweisen. Die Tage stehen im
+Leitsatz der Meldung, dem Satz, den der Feed zeigt: „von … bis …“ (ein Ende
+mit Uhrzeit, „bis 27.10.2026 (04:00 Uhr)“, gilt am letzten Tag nur bis dahin),
+„zwischen 29.10.2026 und 01.11.2026“, „am … und …“ und Listen mit Komma („am
+03.02.2027, 03.03.2027 … und 02.06.2027“); ein Tag ohne Jahr nimmt das Jahr
+des nächsten vollen Datums („von 08.03. bis 10.03.2027“, „am 02.07., 06.08.
+… und 05.11.2026“), zwei Ziffern stehen für 20xx („am 03.02.27“). Ein
+Wochentagsfenster schränkt die Tage ein („(jeweils von Samstag 23:15 Uhr bis
+Sonntag 04:40 Uhr und …)“ ergibt Samstag und Sonntag, „(jeweils Sonntags … und
+Montags …)“ Sonntag und Montag). Sperrstunden innerhalb eines Tages enden dort,
+wenn der nächste Tag nicht weiter gesperrt ist: „R95: Wien Hauptbahnhof ↔
+Felixdorf“ „(jeweils 14:00 Uhr - 22:00 Uhr)“ stand am 10.11. bis 23:30 vor
+den WL-Hinweisen, nach dem Ende der Sperre. „bis voraussichtlich am
+07.10.2026“ ist das erwartete Ende einer Störung, kein Sperrtag. Der Leitsatz
+ist der Satz, den der Feed zuerst zeigt, auch wenn dort ein späterer
+Abschnitt steht, weil er die Strecke des Titels nennt
+(`_oebb_shown_sentences` in `src/feed_build/oebb_lead.py`, seit 2026-11-11;
+vorher las die Prüfung ÖBBs ersten Satz: Unter „Wien Hütteldorf ↔ Wien
+Hauptbahnhof“ zeigte der Feed am 17.10. „Teilausfall: Von 18.10.2026 bis
+19.10.2026 …“, die Tage kamen aus den geänderten Fahrzeiten zwischen Salzburg
+und Flughafen Wien, 17. bis 21.10.); nennt dieser Abschnitt kein Datum, kommen
+die Tage aus ÖBBs erstem Satz. Ein Leitsatz zählt seit 2026-11-11 nur, wenn
+er sagt, dass keine Züge fahren oder halten („keine Nahverkehrszüge fahren“,
+„keine Züge halten“, „keine Fahrten möglich“, „Zugfahrten derzeit nicht
+möglich“, auch am Ende einer Zugliste: „… keine S50-Züge … die S50-Züge 20063,
+… nicht fahren“; `_oebb_closes_line`). Ein einzelner Zug, eine Liste von
+Zügen, geänderte Fahrzeiten oder eine Umleitung sperren keine Strecke und
+reihen sich wie die übrigen Hinweise ein (Betreiberentscheidung vom
+2026-11-11, „Nein, nur echte Sperren“). Anlass (unabhängige Prüfung vom
+2026-11-11): „S1: Wien Leopoldau ↔ Deutsch Wagram“ („der S1-Zug 23626 …
+nicht fahren“) stünde am 14., 15., 21., 22. und 28.11. vor allen
+WL-Hinweisen, für einen Zug zwischen Deutsch Wagram und Gänserndorf,
+außerhalb Wiens; vom 01.10. bis 11.11. verdrängten einzelne Züge (S1 23626,
+S2 23360, REX64 2679, RJ 263) in 152 von 1.220 nachgespielten Feed-Ständen
+WL-Hinweise aus den ersten zehn. Seit derselben Entscheidung bleibt eine
+Meldung, deren Leitsatz nur einzelne Züge nennt, ganz aus dem Feed
+(„Einzelzüge sollen nicht in den Feed.“, Abschnitt „ÖBB“ unten).
+Nennt eine Meldung gar keinen Tag (eine ungeplante Störung „derzeit“ oder
+„bis voraussichtlich 09:00 Uhr“), zählt jeder Tag zwischen Beginn und Ende
+der Meldung. Nennt sie Tage in einer Form, die das Lesen nicht kennt („in der
+Nacht von 14.02. auf 15.02.2026“), ist sie geplant und zählt nur, wenn sie
+sperrt (`_names_measure_day`). Die
+Kategorie allein trägt das nicht: WL schickt geplante Tafel-Meldungen
+(„26E: Gleisbauarbeiten“, „S80: ÖBB-Ersatzbus“) als „Störung“, und im Nachbau
+von 312 Feed-Ständen seit 15.10. wären sie in 308 nach vorn gerückt. Anlass:
+„Wien Hauptbahnhof ↔ Gramatneusiedl“ (Wochenendnächte 31.10.–30.11.) fiel am
+07.11. hinter neuere WL-Haltestellenverlegungen auf Platz 11 bis 14 und stand
+in seinen Sperrnächten nicht am Bildschirm. Nachbau derselben 312 Stände: Die
+aktuellen Störungen und die Menge der Meldungen bleiben gleich; sieben
+ÖBB-Meldungen kommen an ihren Sperrtagen unter die ersten zehn (höchstens
+vier zugleich), dafür fallen WL-Hinweise heraus. Mit der Regel vom 11.11. sind
+es vier echte Sperren (Hbf ↔ Westbahnhof, REX 50, Gramatneusiedl, R40),
+höchstens zwei zugleich (Nachbau aller 872 Stände vom 15.10. bis 08.11.).
+Seit 2026-11-12 hat eine Sperre, die länger als vier Wochen Tag für Tag
+sperrt, den Vorrang nur in ihren ersten sieben Tagen (`_past_first_week`,
+Betreiberentscheidung „Vorrang nur in der ersten Woche“; Anlass „Wien
+Praterstern ↔ Wien Hauptbahnhof / Wien St. Marx“, 07.09.2026 bis 31.10.2027).
+Danach steht sie bei den übrigen Hinweisen und zählt dort ab ihrem ersten Tag
+(`_long_closure_start`); Wochenendnächte und kürzere Sperren behalten ihn (Lesarten: `docs/architecture.md`).
+
+Wiederkehrende WL-Meldungen: Die WL-GUID besteht aus Kategorie, Thema und
+Linien, ein Datum enthält sie nicht. „94A: Verkehrsunfall“ hat an jedem Tag
+dieselbe GUID. Ohne Gegenmaßnahme erbt ein neuer Unfall das `first_seen` des
+Unfalls vor Monaten und landet hinter allen Haltestellenverlegungen. Deshalb
+setzt `_restart_recurring_occurrences` vor dem Altersfilter `first_seen` auf
+den `pubDate` (Gültigkeitsbeginn) der Meldung, sobald zwei Bedingungen
+zutreffen: `first_seen` liegt vor diesem Beginn, und die Meldung fehlte
+zuletzt länger als `_OCCURRENCE_GAP` (2 h) in den Daten. Wann eine Meldung
+zuletzt da war, steht im State-Feld `last_seen`. Der Build stempelt es bei
+jedem Lauf für jedes WL-Item mit State-Eintrag, das noch gilt. Laufende Maßnahmen, die WL
+täglich mit neuem Gültigkeitsfenster neu ausgibt („Busse halten …“), waren
+bis zum neuen Beginn da und behalten ihren Platz. Geplante Maßnahmen
+(dieselben Wörter wie bei der Zeitzeile: Bauarbeiten, Veranstaltung,
+verlegte Haltestelle usw.) pausieren länger, etwa „66A: Busse halten
+Salvatorianerplatz“ jede Nacht von 01:00 bis 04:40; für sie gilt
+`_PLANNED_OCCURRENCE_GAP` (36 h). Mit 2 h zählte 66A jeden Morgen als neu
+und stand seit 26.09. in 370 von 387 Feed-Ständen vorn, obwohl es seit
+28.08. im Feed war (Audit und Betreiberentscheidung 2026-10-03). ÖBB, Baustellen und
+Stammstrecke bleiben unberührt, denn dort ist `pubDate` kein Beginn eines
+Auftretens.
+
+Der State-Eintrag bleibt, wenn eine Meldung ausscheidet (seit 2026-11-12):
+Bis dahin löschte ein Bau, der das Ende einer Meldung selbst sah, ihren
+Eintrag. Ein Takt-Lauf (`update-cycle.yml`) sieht das fast nie, der Abruf
+lässt eine beendete Meldung vorher weg; ein Neubau nach einem Merge
+(`build-feed.yml`) liest sie noch aus dem Cache. Am 11.11.2026 um 01:24
+löschte ein Neubau so den Eintrag von „66A: Busse halten
+Salvatorianerplatz“ (Ende 01:00); um 05:00 stand die Maßnahme als neu auf
+Platz 2. Jetzt löscht kein Bau einen Eintrag, nur die Aufbewahrungsfrist
+(`STATE_RETENTION_DAYS`, ab `first_seen`) vergisst ihn, und den Eintrag
+einer abgelaufenen Meldung fasst `_restart_recurring_occurrences` nicht mehr
+an. Eine Meldung jenseits von `MAX_ITEM_AGE_DAYS` kommt damit nicht mit dem
+nächsten Bau als neu zurück (`tests/test_state_entry_survives_expiry.py`).
+
+Eine Meldung, eine GUID (`_carry_item_identity`, seit 2026-10-06): Ein
+zusammengelegter Eintrag trägt GUID und `pubDate` einer seiner Meldungen,
+etwa der frühesten Kurzmeldung (`_merge_wl_ticker_clusters`) oder des
+Überlebenden von `deduplicate_fuzzy`. Fiel genau diese Meldung weg,
+während die übrigen blieben, bekam der Eintrag die GUID der nächsten, und
+die Zeitzeile sprang. „43: Verkehrsunfall“ stand am 06.10. ab 00:30 als
+„[Seit 00:03]“ im Feed; um 01:03 liefen die Kurzmeldungen aus, und der
+Rebuild um 01:14 zeigte ohne neue Daten eine neue GUID und „[Seit 00:04]“.
+Ebenso „1: Verkehrsunfall“ am 06.10. um 11:30 (ausführliche Meldung
+erledigt, „[Seit 10:40]“ wurde „[Seit 10:43]“), „41/42: Verkehrsunfall“
+am 05.10. um 01:30 (WL ersetzte die Störung durch je eine Folgemeldung pro
+Linie) und „9: Falschparker“ am 05.10. um 19:01. Seither merkt sich der
+Build nach jedem Lauf im State-Eintrag jedes Items, für welche Meldungen es
+steht (`members`: deren GUIDs und, für WL, die Störungsnummer
+`I20261004-0019` ohne `-F01`, die `wl_fetch` als `_wl_ids` in den Cache
+schreibt), wann (`members_seen`) und bei WL-Störungen das früheste `pubDate`
+(`earliest_published`). Ein Item, das in keinem Lauf der letzten
+`_OCCURRENCE_GAP` (2 h) unter seiner eigenen GUID stand, übernimmt die GUID
+des Items, mit dem es dort eine Meldung teilte, und dessen frühestes
+`pubDate`, wenn seine eigene Meldung darin enthalten war oder nicht neuer
+ist als dessen Beginn (WL trägt die ausführliche Meldung oft nach den
+Kurzmeldungen ein und datiert sie zurück). Eine neuere Meldung ist eine
+neue Störung, die eine laufende aufnimmt („52: Rettungseinsatz“ am 05.10.
+mit einer Kurzmeldung vom 30.09.): Sie behält ihre GUID und steht vorn.
+Tragen beide Seiten WL-Störungsnummern und teilen keine, ist es ebenfalls
+eine neue Störung (`_other_incident`): Sie übernimmt weder GUID noch Beginn.
+„13A/14A: Falschparker“ am 06.10.: `I20261006-0030` (Beginn 17:22) endete,
+`I20261006-0033` (Beginn 17:44) kam unter derselben GUID und zeigte ab 18:30
+„[Seit 17:22]“.
+Ein Eintrag mehrerer Störungen einer Linie zählt nur die Meldungen der
+neuesten; endet sie, kehrt er zur GUID der älteren zurück. Eine Meldung
+ohne Ursache, die älter ist als jede dieser Störungen, zählt nie mit
+(`_with_unowned`, seit 2026-10-09): Die Haltestellen-Meldungen der
+Gleisbauarbeiten der Linie 25 (seit 23.09.) übernahmen sonst am 09.10.
+nach dem Ende von „25: Verspätungen“ deren GUID und Beginn und standen von
+12:01 bis 22:02 als neue Störung im Feed, bis auf Platz 2. Und ein Item, das
+unter seiner eigenen GUID früher im Feed stand als das Item, mit dem es eine
+Meldung teilt, übernimmt dessen GUID nie: Es war zuerst da, das andere hat
+es aufgenommen. Der Zustand aus der Zeit vor der Regel hielt die
+Haltestellen der Linie 25 sonst auch nach dem Merge unter der GUID der
+Verspätung, im Lauf um 22:00 auf Platz 2, und jeder weitere Lauf hätte das
+fortgesetzt. „Im Feed stand“ heißt: Ein Lauf hat den eigenen State-Eintrag
+seit dessen `first_seen` notiert (`members_seen`), und dieses `first_seen`
+ist älter als das des anderen. `first_seen` allein genügt nicht: Bei einer
+wiederkehrenden WL-GUID ist es der Beginn der Meldung selbst
+(`_restart_recurring_occurrences`), und WL datiert die lange Meldung zurück
+(„60: Schadhafter PKW“ am 01.10., datiert 18:48, kam nach den Tafeln von
+18:50 und trägt deren GUID weiter). Der erste Lauf
+nach der Änderung schreibt nur die Notizen und ändert keine GUID, es gibt
+also keine Welle. Im Feed-Nachbau aller 117 Läufe vom 04.10. 11:31 bis
+06.10. 14:31 (Wiener Zeit, WL-Rohdaten neu durch `wl_fetch` geschickt, State
+weitergetragen) unterschieden sich 11 Feed-Stände, alle an diesen Fällen.
+
+Angekündigte Maßnahmen zählen ab ihrem Beginn als neu
+(`_note_announced_starts`, `_sort_moment`, seit 2026-10-04), stehen aber wie
+alles Geplante hinter den aktuellen Störungen: Solange der Beginn (`starts_at`) eines Items mit
+State-Eintrag noch bevorsteht, merkt sich der Build ihn im State-Feld
+`announced_start` (ein verschobener Beginn überschreibt ihn). Ist er
+erreicht, sortiert das Item mit diesem Zeitpunkt statt mit seinem
+`first_seen` und altert danach wie jedes andere. Vorher stand eine Wochen
+früher angekündigte Sperre schon an ihrem ersten Tag hinten: die
+S-Bahn-Stammstrecke Phase 2 (gesehen 10.06.) war am 07.09. auf keinem der
+zehn Plätze, die ÖBB-Sperre Hbf–Gramatneusiedl (gesehen 08.07., gültig
+03.–05.10.) stand am 04.10. auf Platz 49. Was erst ab seinem Beginn in den
+Daten steht, bekommt kein `announced_start`; WL-Maßnahmen, die jede Nacht neu
+ausgegeben werden („66A: Busse halten Salvatorianerplatz“), behalten so
+ihren Platz. Im Nachbau (Wiener Zeit) Fr 02.10. 21:00 bis Sa 03.10. 10:30 (33 Stände, State
+weitergetragen) änderte diese Regel nur eines: die ÖBB-Sperre stand ab
+Samstag 00:00 auf Platz 1 bis 4, auch mit der Störungsstufe davor. Mi 30.09. 20:00 bis Do 01.10. 11:30 (32 Stände)
+blieb unverändert.
+
+Danach greifen vier Regeln, die Plätze freihalten, ohne etwas zu
+löschen. Alle vier stellen Items nur hinter das Feld, von wo sie nachrücken:
+
+1. `_defer_repeated_route_titles`: Von mehreren ÖBB-Items mit wortgleichem
+   Titel (dieselbe Strecke in mehreren Bauphasen, z. B. dreimal
+   `Wien Hauptbahnhof ↔ Gramatneusiedl`) bleibt nur eines vorn: eine laufende
+   Störung, sonst eine Sperre an ihrem Sperrtag, sonst das mit dem frühesten
+   Zeitfenster. Zusammengeführt wird nicht — die Phasen sind verschiedene Maßnahmen. Seit 2026-10-05 behält eine laufende Störung
+   (`_is_current_incident`) den Platz ihres Titels: ÖBB benennt eine
+   Störung wie eine Bauphase nach der Strecke, und eine laufende Bauphase
+   hat immer das frühere Fenster. Ein Unfall zwischen Wien Hbf und Wien
+   Westbahnhof wäre sonst neben den Bauarbeiten dort (11.09. bis
+   01.11.2026) hinter das Feld gerutscht. Seit Juli kam das noch nicht vor. Seit 2026-11-13 hält vor dem frühesten Fenster eine Sperre an ihrem Sperrtag den Platz (`leads`, Stufe 1 des Sortierschlüssels; von mehreren die mit dem frühesten Fenster), Betreiberentscheidung „Ja, Sperre des Tages zuerst“ („Bei gleichem ÖBB-Titel hält die Sperre mit Sperrtag den Platz, das frühere Fenster rückt hinter das Feld.“): Am 09.11.2026 von 04:31 bis 06:31 Uhr hielt das Fenster der Wochenendnächte Gramatneusiedl (31.10. bis 30.11.; der Montag zählt nicht als sein Sperrtag) den Platz, und die Meldung des Tages („Wegen Verlängerung der Bauarbeiten sind … bis voraussichtlich 05:30 Uhr keine Fahrten möglich“) stand hinter dem Feld (im Nachspiel mit der Regel vom 2026-11-12, Commit aed1c9be6, auf Platz 61 bis 64). Stufe 1 ist weiter als eine Sperre im engen Sinn (eine ÖBB-Meldung ganz ohne Tag zählt an jedem Tag ihres Zeitraums, auch „waren bis 06:34 Uhr nur eingeschränkt Fahrten möglich“) und enger (eine Sperre über vier Wochen ist nach ihrer ersten Woche ein Hinweis, Entscheidung 2026-11-12: Sie gibt den Platz ab, sobald eine Sperre derselben Strecke Sperrtag hat, und nimmt ihn keinem früheren Fenster). Unter mehreren Sperren mit Sperrtag entscheidet das Fenster und nicht der Platz in der Sortierung: Der Bau legt State-Einträge nur für das an, was er zeigt, die Meldung hinter dem Feld gälte im nächsten Bau als eben erschienen und nähme den Platz zurück, und eine neuere Meldung, die nichts sperrt, stünde vor einer Sperre in ihrer Sperrnacht. Das gilt auch am Sonntagmorgen: Dann hat auch das Fenster der Wochenendnächte Sperrtag und behält den Platz neben einer Meldung des Tages, die wie es als Sperre mit Sperrtag zählt; sie steht hinter dem Feld (Betreiberentscheidung 2026-11-13 „Nein, Fenster behält den Platz“: „Es bleibt, wie es ist: An Samstag und Sonntag steht das Wochenendfenster vorn, die Meldung des Tages hinter dem Feld.“). Es bleibt damit auch dabei, dass die aktuelle Störung vorgeht: Zählt die Meldung des Tages als aktuelle Störung (nach den Regeln oder nach der gespeicherten Gemini-Antwort „ploetzlich“ aus `src/ki_entscheidung`; so lautete die Antwort im Probelauf vom 12.11.2026 für „Wegen Verlängerung der Bauarbeiten sind … keine Fahrten möglich“ vom 09.11.), hält sie den Platz auch am Sonntag, bis ihr Text „waren bis …“ lautet. Von der Karte nicht genannt und unverändert: Am ersten Tag des Fensters beginnen beide am selben Tag, dort entscheidet der Platz in der Sortierung, und die neuere Meldung des Tages steht vorn, auch in der ersten Sperrnacht. Ohne aktuelle Störung und ohne Sperre mit Sperrtag bleibt es beim frühesten Fenster, auch neben einem neueren Hinweis zur Strecke, weil ein nur angekündigtes Fenster danach noch hinter das Feld rückt (`_defer_upcoming_items`). Nachspiel alt gegen neu über 2.241 Feed-Stände (01.10. bis 13.11.2026, 12:01 Uhr): kein Fehler, genau die fünf Stände vom 09.11. ändern sich, die Meldung des Tages steht dort auf Platz 1 bis 5 direkt hinter den aktuellen Störungen (in drei der fünf schon mit „waren bis 05:15 Uhr keine Fahrten möglich“).
+2. `_apply_topic_budget`: höchstens `MAX_ITEMS_PER_TOPIC` Einträge je
+   Ursachenwort und Tag in den vorderen Plätzen.
+3. `_defer_upcoming_items`: Was erst nach `UPCOMING_PREVIEW_DAYS` Tagen ab
+   heute (Wiener Kalendertag, Standard 1) beginnt, steht hinter allem, was
+   gilt oder bald beginnt. Betreiberentscheidung vom 02.10.2026: Am 02.10.
+   um 18:00 belegten fünf der zehn Plätze Meldungen, die noch nicht
+   begonnen hatten („20A: Bauarbeiten“ ab 13.10., die Sperre der R 40 ab
+   31.10.), während „N71: Ersatzverkehr“ und „62: ÖBB Bauarbeiten“, beide
+   an diesem Abend gültig, auf den Plätzen 11 und 12 standen. Anfangs galten
+   drei Tage Vorlauf. Nachgerechnet über 3.875 Feed-Stände seit 15.07.
+   belegten Ankündigungen mit Beginn in ein bis drei Tagen so 1.442 Plätze
+   in 1.083 Ständen, jedes Mal mit einer laufenden Meldung auf Platz 11 oder
+   dahinter (Audit und Betreiberentscheidung 2026-10-03). Seitdem steht eine
+   Ankündigung ab dem Vortag ihres Beginns vorn, freitags und samstags
+   außerdem alles, was bis einschließlich Montag beginnt
+   (`_preview_last_day`, Betreiberentscheidung „Wochenende mit“): Wer die
+   Anzeige nur werktags sieht, liest die Umleitung ab Montag noch am Freitag.
+   Die Sperre in vier Wochen rückt nach, sobald ein Platz frei ist.
+4. `_defer_all_clear_items`: Entwarnungen der ÖBB („Aufhebung
+   Verkehrseinschränkung: …“, „Aufhebung Streckenunterbrechung: …“) stehen
+   hinter allen anderen Items. Betreiberentscheidung vom 25.09.2026: Eine
+   laufende Störung ist wichtiger als eine Entwarnung. Eine Entwarnung ist
+   aber besser als ein leerer Platz. Sie erscheint deshalb nur, wenn weniger
+   als `MAX_ITEMS` andere Items vorliegen.
+
+Erst dann schneidet `MAX_ITEMS` ab.
+
+### Logging-Initialisierung als Bibliothek verwenden
+
+Wird `build_feed` als Skript ausgeführt (`python -m src.cli feed build`), richtet es seine Logging-Handler automatisch über
+`configure_logging()` ein. Beim Einbinden des Moduls in andere Anwendungen bleibt die globale Logging-Konfiguration ab
+Python-Import unverändert; rufe in diesem Fall `src.build_feed.configure_logging()` explizit auf, bevor du die Feed-Funktionen
+verwendest.
+
+### Fehlerprotokolle
+
+- Läuft der Feed-Build über `python -m src.cli feed build`, landen Fehler- und Traceback-Ausgaben automatisch in `log/errors.log` (rotierende Log-Datei, konfigurierbar über `LOG_DIR`, `LOG_MAX_BYTES`, `LOG_BACKUP_COUNT`). Ohne Fehler bleibt die Datei unberührt.
+- Ausführliche Statusmeldungen (z. B. zum VOR-Abruf) werden zusätzlich in `log/diagnostics.log` gesammelt.
+- Beim manuellen Aufruf der Hilfsskripte (bzw. `python -m src.cli cache update wl`) erscheinen Warnungen und Fehler direkt auf `stdout`. Für nachträgliche Analysen kannst du den jeweiligen Lauf zusätzlich mit `LOG_DIR` auf ein separates Verzeichnis umleiten.
+- Setzt du `LOG_FORMAT=json`, schreibt das Projekt strukturierte JSON-Logs mit Zeitstempeln im Format `Europe/Vienna`. Ohne Angabe bleibt das klassische Textformat aktiv.
+
+## Feed-Ausführung lokal
+
+Vor produktiven oder manuellen Abrufen empfiehlt sich ein schneller
+Vollständigkeitscheck der benötigten Secrets:
+
+```bash
+python -m src.cli tokens verify
+```
+
+Das Skript lädt automatisch `.env`, `data/secrets.env` und
+`config/secrets.env` und bricht mit Exit-Code `1` ab, wenn kein gültiger
+`VOR_ACCESS_ID`-Token gefunden wurde.
+
+```bash
+export WL_ENABLE=true
+export OEBB_ENABLE=true
+export BAUSTELLEN_ENABLE=true
+export STAMMSTRECKE_ENABLE=true
+# Stammstrecke-Monitor benötigt VOR-Secrets: VOR_ACCESS_ID, VOR_BASE_URL.
+# Eine eigenständige VOR_ENABLE-Variable gibt es seit der 2026-05-11-
+# Konsolidierung nicht mehr (VOR ist Stammstrecke-only).
+python -m src.cli feed build
+```
+
+Der Feed liegt anschließend unter `docs/feed.xml`. Bei Bedarf lässt sich `OUT_PATH` auf ein alternatives Verzeichnis umbiegen.
+
+Weiter in [Teil 3](development-teil-3.md).

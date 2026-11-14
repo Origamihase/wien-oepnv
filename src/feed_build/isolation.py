@@ -35,7 +35,7 @@ How :func:`build_isolating` does it:
   whose feed is returned: a failed run and the single-item trials count
   nothing.
 
-docs/architecture-teil-7.md, §10, "Eine Meldung hält den Bau nicht an".
+docs/architecture-teil-15.md, §10, "Eine Meldung hält den Bau nicht an".
 """
 from __future__ import annotations
 

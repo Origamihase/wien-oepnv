@@ -5,7 +5,7 @@ from typing import Any
 import pytest
 import types
 from datetime import datetime, timedelta, UTC
-from tests._conftest.build_feed_bindings import fresh_build_feed
+from tests._conftest.build_feed_bindings import fresh_build_feed, part, setattr_all
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch, env: dict[str, str]) -> types.ModuleType:
@@ -62,9 +62,9 @@ def test_main_filters_items_older_than_max(
         return ""
 
     monkeypatch.setattr(build_feed, "_collect_items", fake_collect)
-    monkeypatch.setattr(build_feed, "_make_rss", fake_make_rss)
+    setattr_all(monkeypatch, build_feed, "_make_rss", fake_make_rss)
     monkeypatch.setattr(build_feed, "_load_state", lambda: dict(fake_state))
-    monkeypatch.setattr(build_feed, "_save_state", lambda *a, **k: None)
+    monkeypatch.setattr(part(build_feed, "outputs"), "_save_state", lambda *a, **k: None)
     monkeypatch.chdir(tmp_path)
 
     build_feed.main()
@@ -109,9 +109,9 @@ def test_main_filters_items_older_than_absolute(
         return ""
 
     monkeypatch.setattr(build_feed, "_collect_items", fake_collect)
-    monkeypatch.setattr(build_feed, "_make_rss", fake_make_rss)
+    setattr_all(monkeypatch, build_feed, "_make_rss", fake_make_rss)
     monkeypatch.setattr(build_feed, "_load_state", lambda: dict(fake_state))
-    monkeypatch.setattr(build_feed, "_save_state", lambda *a, **k: None)
+    monkeypatch.setattr(part(build_feed, "outputs"), "_save_state", lambda *a, **k: None)
     monkeypatch.chdir(tmp_path)
 
     build_feed.main()

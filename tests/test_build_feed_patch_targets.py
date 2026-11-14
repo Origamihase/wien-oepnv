@@ -18,10 +18,20 @@ Geprüft wird per AST über ``tests/**/*.py``:
    ``monkeypatch.setattr`` (auch in der Punkt-Form ``"src.build_feed.X"``),
    ``setattr``, ``patch.object``, ``patch.multiple``, ``patch("...")`` (auch als
    Dekorator), ``monkeypatch.delattr`` und direkte Zuweisung, auch mit
-   ``target=``/``name=``/``attribute=`` als Schlüsselwort. Ein Patch eines
-   Feed-Build-Namens auf ein Ziel, das sich nicht auflösen lässt (etwa einen
-   Parameter einer Hilfsfunktion), schlägt fehl; die Selbsttests am Ende prüfen
-   die Formen;
+   ``target=``/``name=``/``attribute=`` als Schlüsselwort, dazu ``setitem`` und
+   ``patch.dict`` auf ``__dict__``/``vars()`` eines Moduls. Lässt sich das Ziel
+   nicht auflösen (ein Parameter einer Hilfsfunktion, ein Attribut wie
+   ``run.outputs``, ein Aufruf wie ``part(bf, name)``, ein zusammengesetzter
+   String wie ``f"src.build_feed.{name}"``), schlägt der Patch fehl, wenn ein
+   Modul von ``src.build_feed`` den Namen bindet (Dunder-Namen ausgenommen);
+   ebenso ein Patch, dessen Name in einer Variablen steht. Ausgenommen sind
+   Ziele, die nachweislich außerhalb liegen: ein importiertes anderes Modul
+   (``from src.providers import wl_fetch``, ``import scripts.x as y``) und
+   Attribute geteilter Objekte, Funktionen und Objekte, die der Test selbst
+   baut. Seit 2026-11-14 gilt das für jede Form; die Selbsttests am Ende
+   prüfen die Formen. Ungeprüft bleibt ein Aufruf, bei dem weder Modul noch
+   Name feststehen (die Schleife in ``setattr_all``); ``setattr_all`` und
+   ``patch_all`` mit einem Teil statt der Fassade scheitern zur Laufzeit;
    Aliase werden über Importe, ``part(...)``, ``owner(...)`` und die Re-Import-Helfer
    aufgelöst. Patches auf Attribute geteilter Objekte (``json.load``,
    ``feed_config.OUT_PATH``, ``setitem`` auf ``_TRANSLATION_STATE``) werden
@@ -40,333 +50,18 @@ Geprüft wird per AST über ``tests/**/*.py``:
 
 from __future__ import annotations
 
-import ast
-import dataclasses
-import functools
-import symtable
-from collections.abc import Iterator
-from pathlib import Path
-
-import src.build_feed as build_feed
-from tests._conftest.build_feed_bindings import FACADE, PACKAGE, build_feed_modules, defined_names
-
-ROOT = Path(__file__).resolve().parents[1]
-TESTS = ROOT / "tests"
-FACADE_ALIASES = {"build_feed", "bf", "build_feed_mod", "build_feed_module"}
-REBOUND_STATE = {"PROVIDERS", "DEFAULT_PROVIDERS", "_PROVIDERS_INITIALIZED"}
-PATCH_FUNCS = {"setattr", "delattr", "object"}
-MULTI_FUNCS = {"setattr_all", "patch_all"}
-REIMPORT_MARKERS = (
-    'sys.modules.pop("src.build_feed"',
-    "sys.modules.pop('src.build_feed'",
-    'del sys.modules["src.build_feed"]',
-    "importlib.reload(",
-    "fresh_build_feed(",
+from tests._conftest.build_feed_bindings import FACADE, PACKAGE
+from tests._conftest.patch_census import (
+    REBOUND_STATE,
+    TESTS,
+    Census,
+    Patch,
+    module_bindings,
+    module_definitions,
+    owner_name,
+    readers,
 )
-
-
-@dataclasses.dataclass(frozen=True)
-class Patch:
-    path: str
-    line: int
-    module: str
-    name: str
-    multi: bool
-    function: str
-    alias_is_top_import: bool
-
-    def where(self) -> str:
-        return f"{self.path}:{self.line}"
-
-
-@dataclasses.dataclass(frozen=True)
-class Read:
-    path: str
-    line: int
-    module: str
-    name: str
-    function: str
-
-
-@dataclasses.dataclass
-class Census:
-    patches: list[Patch] = dataclasses.field(default_factory=list)
-    shared: list[str] = dataclasses.field(default_factory=list)
-    reads: list[Read] = dataclasses.field(default_factory=list)
-    reimport_files: set[str] = dataclasses.field(default_factory=set)
-    unresolved: list[str] = dataclasses.field(default_factory=list)
-
-
-# ------------------------------------------------------------------ modules
-
-
-@functools.cache
-def module_names() -> tuple[str, ...]:
-    return tuple(module.__name__ for module in build_feed_modules(build_feed))
-
-
-@functools.cache
-def module_bindings() -> dict[str, frozenset[str]]:
-    return {module.__name__: frozenset(vars(module)) for module in build_feed_modules(build_feed)}
-
-
-@functools.cache
-def module_definitions() -> dict[str, frozenset[str]]:
-    return {module.__name__: defined_names(module) for module in build_feed_modules(build_feed)}
-
-
-def _global_loads(source: str) -> set[str]:
-    table = symtable.symtable(source, "<module>", "exec")
-    found: set[str] = set()
-
-    def walk(tab: symtable.SymbolTable, top: bool) -> None:
-        for sym in tab.get_symbols():
-            if not sym.is_referenced():
-                continue
-            if top or sym.is_global():
-                found.add(sym.get_name())
-            elif tab.get_type() == "class" and not sym.is_assigned():
-                found.add(sym.get_name())
-        for child in tab.get_children():
-            walk(child, False)
-
-    walk(table, True)
-    return found
-
-
-@functools.cache
-def readers_by_module() -> dict[str, frozenset[str]]:
-    """Modul -> Namen, die sein Code als Global liest (auch auf Modulebene)."""
-
-    out: dict[str, frozenset[str]] = {}
-    for module in build_feed_modules(build_feed):
-        path = Path(module.__file__ or "")
-        out[module.__name__] = frozenset(_global_loads(path.read_text(encoding="utf-8")))
-    return out
-
-
-def readers(name: str) -> set[str]:
-    return {module for module, names in readers_by_module().items() if name in names}
-
-
-def owner_name(name: str) -> str | None:
-    for module, names in module_definitions().items():
-        if name in names:
-            return module
-    return None
-
-
-# ------------------------------------------------------------------ census
-
-
-def _dotted(node: ast.AST) -> str | None:
-    if isinstance(node, ast.Name):
-        return node.id
-    if isinstance(node, ast.Attribute):
-        inner = _dotted(node.value)
-        return f"{inner}.{node.attr}" if inner else None
-    return None
-
-
-def _string(node: ast.AST | None) -> str | None:
-    if isinstance(node, ast.Constant) and isinstance(node.value, str):
-        return node.value
-    return None
-
-
-_KEYWORD_SLOTS = {
-    # Funktionsname -> Schlüsselwörter der ersten beiden Positionsargumente
-    "setattr": (("target",), ("name",)),
-    "delattr": (("target",), ("name",)),
-    "object": (("target",), ("attribute",)),
-    "patch": (("target",), ()),
-    "multiple": (("target",), ()),
-}
-
-
-def _call_args(node: ast.Call, name: str) -> list[ast.expr]:
-    """Positionsargumente, ergänzt um ``target=``/``name=``/``attribute=``."""
-
-    args = list(node.args)
-    by_keyword = {keyword.arg: keyword.value for keyword in node.keywords if keyword.arg}
-    for index, slot in enumerate(_KEYWORD_SLOTS.get(name, ())):
-        if len(args) > index:
-            continue
-        value = next((by_keyword[key] for key in slot if key in by_keyword), None)
-        if value is None:
-            break
-        args.append(value)
-    return args
-
-
-def _call_name(node: ast.Call) -> str:
-    func = node.func
-    if isinstance(func, ast.Name):
-        return func.id
-    if isinstance(func, ast.Attribute):
-        return func.attr
-    return ""
-
-
-class _FileScan:
-    def __init__(self, path: Path, census: Census, text: str | None = None) -> None:
-        self.path = path
-        self.rel = str(path.relative_to(ROOT)) if path.is_relative_to(ROOT) else path.name
-        self.census = census
-        self.text = path.read_text(encoding="utf-8") if text is None else text
-        self.tree = ast.parse(self.text)
-        self.aliases: dict[str, str] = {name: FACADE for name in FACADE_ALIASES}
-        self.top_aliases: set[str] = set()
-        self.reimports = any(marker in self.text for marker in REIMPORT_MARKERS)
-        if self.reimports:
-            census.reimport_files.add(self.rel)
-        self._collect_aliases()
-
-    def _collect_aliases(self) -> None:
-        top = set(id(node) for node in self.tree.body)
-        for node in ast.walk(self.tree):
-            bound: list[tuple[str, str]] = []
-            if isinstance(node, ast.Import):
-                for alias in node.names:
-                    if alias.name == FACADE or alias.name.startswith(PACKAGE + "."):
-                        if alias.asname:
-                            bound.append((alias.asname, alias.name))
-            elif isinstance(node, ast.ImportFrom) and node.module in ("src", PACKAGE):
-                for alias in node.names:
-                    full = f"{node.module}.{alias.name}"
-                    if full == FACADE or full.startswith(PACKAGE + "."):
-                        bound.append((alias.asname or alias.name, full))
-            elif isinstance(node, ast.Assign) and isinstance(node.value, ast.Call):
-                target = self.resolve(node.value)
-                if target is not None:
-                    bound.extend((t.id, target) for t in node.targets if isinstance(t, ast.Name))
-            for local, module in bound:
-                self.aliases[local] = module
-                if id(node) in top and module != FACADE:
-                    self.top_aliases.add(local)
-
-    def _feed_build_name(self, attr: str) -> bool:
-        """``attr`` ist ein Name, den ein Modul von ``src.build_feed`` selbst definiert."""
-
-        return any(attr in names for names in module_definitions().values())
-
-    def resolve(self, node: ast.AST) -> str | None:
-        """Der Modulname, zu dem ``node`` auswertet, oder ``None``."""
-
-        if isinstance(node, ast.Name):
-            return self.aliases.get(node.id)
-        if isinstance(node, ast.Attribute):
-            dotted = _dotted(node)
-            if dotted in module_names():
-                return dotted
-            if dotted is not None and dotted.endswith(".build_feed_module"):
-                return FACADE
-            return None
-        if isinstance(node, ast.Subscript) and _dotted(node.value) == "sys.modules":
-            key = _string(node.slice)
-            return key if key in module_names() else None
-        if isinstance(node, ast.Call):
-            name = _call_name(node)
-            if name == "part" and len(node.args) == 2:
-                short = _string(node.args[1])
-                return f"{PACKAGE}.{short}" if f"{PACKAGE}.{short}" in module_names() else None
-            if name == "owner" and len(node.args) == 2:
-                wanted = _string(node.args[1])
-                return owner_name(wanted) if wanted else None
-            if name == "import_module" and node.args:
-                key = _string(node.args[0])
-                return key if key in module_names() else None
-            if "build_feed" in name and name not in MULTI_FUNCS:
-                return FACADE
-        return None
-
-    def scan(self) -> None:
-        for function, node in self._walk_with_function(self.tree, "<module>"):
-            if isinstance(node, ast.Call):
-                self._scan_call(node, function)
-            elif isinstance(node, (ast.Assign, ast.AugAssign, ast.AnnAssign)):
-                targets = node.targets if isinstance(node, ast.Assign) else [node.target]
-                for target in targets:
-                    if isinstance(target, ast.Attribute):
-                        module = self.resolve(target.value)
-                        if module is not None:
-                            self._add(node.lineno, module, target.attr, False, function, target.value)
-            elif isinstance(node, ast.Attribute) and isinstance(node.ctx, ast.Load):
-                module = self.resolve(node.value)
-                if module is not None and not isinstance(node.value, ast.Call):
-                    self.census.reads.append(Read(self.rel, node.lineno, module, node.attr, function))
-
-    def _walk_with_function(self, node: ast.AST, function: str) -> Iterator[tuple[str, ast.AST]]:
-        for child in ast.iter_child_nodes(node):
-            name = function
-            if isinstance(child, (ast.FunctionDef, ast.AsyncFunctionDef)):
-                name = f"{function}.{child.name}" if function != "<module>" else child.name
-            yield name, child
-            yield from self._walk_with_function(child, name)
-
-    def _add(self, line: int, module: str, name: str, multi: bool, function: str, alias: ast.AST | None) -> None:
-        top = isinstance(alias, ast.Name) and alias.id in self.top_aliases
-        self.census.patches.append(Patch(self.rel, line, module, name, multi, function, top))
-
-    def _scan_call(self, node: ast.Call, function: str) -> None:
-        name = _call_name(node)
-        args = _call_args(node, name)
-        if name == "multiple" and args:
-            # patch.multiple(bf, X=...) / patch.multiple("src.build_feed", X=...)
-            module = self.resolve(args[0]) or _string(args[0])
-            if module in module_names():
-                for keyword in node.keywords:
-                    if keyword.arg is not None:
-                        self._add(node.lineno, module, keyword.arg, False, function, args[0])
-            return
-        if name in MULTI_FUNCS:
-            # setattr_all(monkeypatch, bf, "X", v) / patch_all(bf, "X", ...)
-            strings = [s for s in (_string(a) for a in args) if s is not None]
-            if strings:
-                self._add(node.lineno, FACADE, strings[0], True, function, None)
-            return
-        # Ein String als erstes Argument ist die Punkt-Form
-        # (``monkeypatch.setattr("src.build_feed.X", v)``) und läuft unten weiter.
-        if name in PATCH_FUNCS and len(args) >= 2 and _string(args[0]) is None:
-            module = self.resolve(args[0])
-            attr = _string(args[1])
-            if module is not None and attr is not None:
-                self._add(node.lineno, module, attr, False, function, args[0])
-                return
-            inner = args[0]
-            if attr is not None and isinstance(inner, ast.Attribute) and self.resolve(inner.value):
-                self.census.shared.append(f"{self.rel}:{node.lineno} {_dotted(inner)}.{attr}")
-            elif attr is not None and isinstance(inner, ast.Name) and self._feed_build_name(attr):
-                # Ziel ist ein Parameter oder eine sonst unbekannte Variable:
-                # der Wächter kann das Modul nicht bestimmen.
-                self.census.unresolved.append(f"{self.rel}:{node.lineno} {inner.id}.{attr}")
-            return
-        if name == "setitem" and args and isinstance(args[0], ast.Attribute) and self.resolve(args[0].value):
-            self.census.shared.append(f"{self.rel}:{node.lineno} {_dotted(args[0])}[...]")
-            return
-        dotted = _string(args[0]) if args else None
-        if name in ("patch", "setattr", "delattr") and dotted is not None:
-            for module in sorted(module_names(), key=len, reverse=True):
-                if dotted.startswith(module + "."):
-                    rest = dotted[len(module) + 1:]
-                    if "." in rest:
-                        self.census.shared.append(f"{self.rel}:{node.lineno} {dotted}")
-                    else:
-                        self._add(node.lineno, module, rest, False, function, None)
-                    return
-
-
-@functools.cache
-def census() -> Census:
-    result = Census()
-    for path in sorted(TESTS.rglob("*.py")):
-        if path.name == Path(__file__).name:
-            continue
-        text = path.read_text(encoding="utf-8")
-        if "build_feed" not in text and "feed_build" not in text:
-            continue
-        _FileScan(path, result).scan()
-    return result
+from tests._conftest.patch_scan import _FileScan, census
 
 
 # ------------------------------------------------------------------ tests
@@ -482,6 +177,16 @@ MUTANTS = {
         "def test_m():\n"
         '    with mock.patch.multiple("src.build_feed", _mask_entities=f):\n        pass\n'
     ),
+    "patch_multiple_target_keyword": (
+        "from unittest import mock\n"
+        "def test_m():\n    with mock.patch.multiple(target=bf, _mask_entities=f):\n        pass\n"
+    ),
+    "namespace_setitem": 'def test_m(monkeypatch):\n    monkeypatch.setitem(bf.__dict__, "_mask_entities", f)\n',
+    "namespace_patch_dict": (
+        "from unittest import mock\nimport src.build_feed as feedmod\n"
+        "def test_m():\n"
+        '    with mock.patch.dict(vars(feedmod), {"_mask_entities": f}):\n        pass\n'
+    ),
 }
 
 
@@ -489,6 +194,88 @@ def _scan_source(source: str) -> Census:
     result = Census()
     _FileScan(TESTS / "test_zz_mutant.py", result, text=source).scan()
     return result
+
+
+def test_the_guard_reports_attribute_targets_and_variable_names() -> None:
+    # Seit 2026-11-14 (Ausgaben von ``main`` in ``src.feed_build.outputs``): Beide
+    # Formen blieben dem Wächter verborgen. ``mp.setattr(bf, name, v)`` mit
+    # ``name = "_make_rss"`` traf danach nur noch die Fassade, nicht den Leser
+    # in ``outputs``.
+    source = (
+        "import src.build_feed as bf\n"
+        "def helper(run, mp, name):\n"
+        '    mp.setattr(run.outputs, "_save_state", None)\n'
+        '    mp.setattr(run.outputs, "atomic_write", None)\n'
+        "    mp.setattr(bf, name, None)\n"
+        '    mp.setattr(run.report, "add_warning", None)\n'
+    )
+    result = _scan_source(source)
+    assert result.unresolved == [
+        "tests/test_zz_mutant.py:3 run.outputs._save_state",
+        "tests/test_zz_mutant.py:4 run.outputs.atomic_write",
+        "tests/test_zz_mutant.py:5 bf.<name>",
+    ]
+    assert not result.patches
+
+
+def test_the_guard_reports_every_form_it_cannot_resolve() -> None:
+    # Seit 2026-11-14 für jede Form, die der Wächter kennt: ein Ziel, das sich
+    # nicht als Modul auflösen lässt, und ein Name, der erst zur Laufzeit feststeht.
+    source = (
+        "import sys\n"
+        "from unittest import mock\n"
+        "import src.build_feed as bf\n"
+        "from tests._conftest.build_feed_bindings import part\n"
+        "def helper(run, mp, outputs, which, name):\n"
+        '    mp.setattr(outputs, "atomic_write", None)\n'
+        "    run.outputs._make_rss = None\n"
+        "    mock.patch.multiple(run.outputs, _make_rss=None)\n"
+        "    mock.patch.multiple(bf, **{name: None})\n"
+        '    mp.setattr(part(bf, which), "_make_rss", None)\n'
+        '    mp.setattr(sys.modules.get(name), "_make_rss", None)\n'
+        '    mp.setattr(f"src.build_feed.{name}", None)\n'
+        '    mock.patch("src.feed_build." + name)\n'
+        "    mp.setitem(bf.__dict__, name, None)\n"
+        '    mock.patch.dict(vars(run.outputs), {"_make_rss": None})\n'
+    )
+    result = _scan_source(source)
+    assert [entry.split(" ", 1)[1] for entry in result.unresolved] == [
+        "outputs.atomic_write",
+        "run.outputs._make_rss",
+        "run.outputs._make_rss",
+        "bf.<**{name: None}>",
+        "part(bf, which)._make_rss",
+        "sys.modules.get(name)._make_rss",
+        "f'src.build_feed.{name}'",
+        "'src.feed_build.' + name",
+        "bf.__dict__[name]",
+        "vars(run.outputs)['_make_rss']",
+    ]
+    assert [int(entry.split(" ", 1)[0].rsplit(":", 1)[1]) for entry in result.unresolved] == list(range(6, 16))
+    assert not result.patches
+
+
+def test_the_guard_leaves_targets_outside_the_feed_build_alone() -> None:
+    # Importierte andere Module, Dunder-Namen, Attribute geteilter Objekte und
+    # Funktionen des Tests selbst sind keine Ziele in src.build_feed.
+    source = (
+        "import src.providers.wl_fetch\n"
+        "from src.providers import wl_api\n"
+        "import scripts.update_baustellen_cache as ubc\n"
+        "import src.build_feed as bf\n"
+        "def test_m(mp, stub):\n"
+        '    mp.setattr(wl_api, "validate_http_url", None)\n'
+        '    mp.setattr(src.providers.wl_fetch, "datetime", None)\n'
+        '    mp.setattr(ubc, "configure_logging", None)\n'
+        '    mp.setattr(stub.fetch, "__name__", "wl")\n'
+        '    mp.setattr(bf.feed_config, "OUT_PATH", None)\n'
+        "    def _fetch():\n"
+        "        pass\n"
+        '    _fetch._provider_concurrency_key = "group"\n'
+    )
+    result = _scan_source(source)
+    assert result.unresolved == [] and result.patches == []
+    assert result.shared == ["tests/test_zz_mutant.py:10 bf.feed_config.OUT_PATH"]
 
 
 def test_the_guard_flags_facade_patches_in_every_form() -> None:
@@ -505,3 +292,9 @@ def test_the_guard_reports_unresolvable_patch_targets() -> None:
     result = _scan_source(source)
     assert result.unresolved == ["tests/test_zz_mutant.py:2 mod._mask_entities"]
     assert not result.patches
+    # Ein Parameter mit dem Namen eines importierten Moduls kann alles halten.
+    source = (
+        "from src.providers import wl_fetch\n"
+        'def helper(mp, wl_fetch):\n    mp.setattr(wl_fetch, "_make_rss", None)\n'
+    )
+    assert _scan_source(source).unresolved == ["tests/test_zz_mutant.py:3 wl_fetch._make_rss"]

@@ -1,6 +1,6 @@
 """The guard and the stored text of the yearly Baustellen review: round two of the review of 2026-11-10.
 
-Third file next to ``tests/test_year_review.py`` and ``tests/test_year_review_more.py``
+Third file next to ``tests/test_year_review_guard.py`` and ``tests/test_year_review_more.py``
 (the 700-line limit of ``tests/test_file_line_limit.py``). Each block names
 what ``src/markdown_stats/year_review.py`` did before:
 
@@ -23,7 +23,7 @@ import pytest
 from src.markdown_stats import baustellen_year as by
 from src.markdown_stats import year_review as yr
 from src.markdown_stats.baustellen_year import BaustelleSite
-from tests.test_year_review import NOW, REPO, SITES, YEAR, _answer, _check, _ensure, _site, _with
+from tests._year_review_support import NOW, REPO, SITES, YEAR, _answer, _check, _ensure, _site, _with
 from tests.test_year_review_more import ANSWERED_AT, BASE, STATS_LOGGER, _real
 
 COUNT = "Anzahl der Baustellen nicht aus dem Faktenblock"

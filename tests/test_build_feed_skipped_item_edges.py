@@ -93,7 +93,9 @@ def _fail_second_run(monkeypatch: pytest.MonkeyPatch, step: str) -> list[BaseExc
             raise raised[-1]
         return real(items, *args, **kwargs)
 
-    monkeypatch.setattr(bf, name, step_over_four)
+    # ``_make_rss`` renders the German feed in ``src.build_feed`` and the
+    # English one in ``src.feed_build.outputs``: replaced in both, as before.
+    setattr_all(monkeypatch, bf, name, step_over_four)
     return raised
 
 

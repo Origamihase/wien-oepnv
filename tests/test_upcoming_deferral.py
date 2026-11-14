@@ -15,7 +15,7 @@ from zoneinfo import ZoneInfo
 
 import src.build_feed as bf
 from src.feed_types import FeedItem
-from tests._conftest.build_feed_bindings import patch_all
+from tests._conftest.build_feed_bindings import part, patch_all
 
 VIENNA = ZoneInfo("Europe/Vienna")
 NOW = datetime(2026, 10, 2, 20, 0, tzinfo=VIENNA)
@@ -86,12 +86,12 @@ def test_main_fills_free_slots_with_announcements() -> None:
 
     with patch.object(bf, "_invoke_collect_items", return_value=[announced, running]), \
          patch.object(bf, "_load_state", return_value=state), \
-         patch.object(bf, "_make_rss", side_effect=fake_make_rss), \
-         patch.object(bf, "_save_state", MagicMock()), \
+         patch_all(bf, "_make_rss", side_effect=fake_make_rss), \
+         patch.object(part(bf, "outputs"), "_save_state", MagicMock()), \
          patch_all(bf, "atomic_write", MagicMock()), \
          patch_all(bf, "validate_path", MagicMock()), \
-         patch.object(bf, "write_feed_health_report", MagicMock()), \
-         patch.object(bf, "write_feed_health_json", MagicMock()):
+         patch.object(part(bf, "outputs"), "write_feed_health_report", MagicMock()), \
+         patch.object(part(bf, "outputs"), "write_feed_health_json", MagicMock()):
         assert bf.main() == 0
 
     # Behind the running item, but still in the feed: a slot was free.

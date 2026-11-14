@@ -96,7 +96,7 @@ _RELOCATION_DIRECTION = "Fahrtrichtung:"
 # number with a full stop behind it, so a house number at character 167 fell
 # off. "54B: Stock im Weg" read "… Ghelengasse gegenüber 28 → Ghelengasse
 # gegenüber …" on 11.11.2026 (KI-Wächter, issue #2200). Since 2026-11-12 the
-# cut keeps a number that ends its sentence (docs/architecture-teil-8.md,
+# cut keeps a number that ends its sentence (docs/architecture-teil-16.md,
 # §13). A destination counts as shown only when the cut text holds it whole.
 
 

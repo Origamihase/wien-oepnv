@@ -1,6 +1,6 @@
 """The table of contents of ``docs/architecture.md`` matches its headings.
 
-The document has over 3,000 lines in seven parts (``architecture.md`` and
+The document has over 5,000 lines in sixteen parts (``architecture.md`` and
 ``architecture-teil-2.md`` …, 700-line limit since 2026-11-02); the list
 under "Inhalt" at the top of the first part is the way in. Every ``##`` and
 ``###`` heading of every part must be listed there in order, and every link

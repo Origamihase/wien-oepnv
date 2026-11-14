@@ -37,7 +37,11 @@ on:
   pull_request:
     paths:
       - src/markdown_stats/baustellen_year.py
+      - src/markdown_stats/baustellen_sites.py
+      - src/markdown_stats/baustellen_facts.py
       - src/markdown_stats/year_review.py
+      - src/markdown_stats/year_review_prompt.py
+      - src/markdown_stats/year_review_guard.py
       - src/markdown_stats/review_client.py
       - scripts/jahresrueckblick_probe.py
       - .github/workflows/jahresrueckblick-probe.yml

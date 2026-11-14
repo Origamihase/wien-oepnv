@@ -1,0 +1,400 @@
+[Architektur-Karte — Wien ÖPNV Feed](architecture.md), Teil 16.
+
+## 13. Wo ein Satz endet: der Punkt einer Abkürzung (seit 2026-11-12)
+
+WL und ÖBB kürzen mitten im Text ab: „Bhf. Meidling“, „Hlst. Li. 95A“, „prov.
+Haltestelle“, „bzw. Lainzer Tor“, „Josefstädter Str.“, „Fahrleitungsgebr.“,
+„Johann-N.-B.-Pl.“, „Zentralfriedhof, 4. Tor“, „bis 03. Juni“. Jeder Schritt,
+der das Ende eines Satzes sucht oder einem Satz den Schlusspunkt abnimmt, muss
+diese Punkte vom Satzende unterscheiden („… und S80. Die …“, „… durch einen
+PKW. Grund: …“, „… Fahrzeit ein.“). Bis 2026-11-11 hatte jeder Schritt dafür
+eine eigene Regel: Die Kürzung hinter einem ganzen Satz hielt „Bhf.“ für ein
+Satzende und „U.“ nie, der Titel ließ „2: Fahrleitungsgebr“ ohne seinen Punkt
+stehen, und die Kürzung auf 180 Zeichen warf „ein.“ und „D.“ weg, als wären es
+Abkürzungen. Seit 2026-11-12 fragen diese Schritte dieselbe Regel
+(`src/feed_build/abbreviations.py`; Auftrag des Betreibers vom 11.11.2026,
+Klasse 15 der Qualitätsprüfung der Wächter-Funde vom 06.11.). Klasse 16
+derselben Prüfung, „am Bahnhof“ als Haltestelle maskiert, steht in Teil 13 unter
+[Was am Modell vorbeigeht](architecture-teil-13.md#was-am-modell-vorbeigeht)
+(„Ein Haltestellenname beginnt groß“).
+
+**Die Regel** (`is_abbreviation`, `is_abbreviation_period`) liest die Form des
+Wortes vor dem Punkt, keine Liste aller Abkürzungen:
+
+* Ein Wort aus Buchstaben ohne Vokal ist eine Abkürzung („Bhf“, „Hbf“, „Hlst“,
+  „Str“, „St“, „Nr“, „Wr“, „bzw“, „zw“, „b“); ein deutsches Wort hat einen
+  („Uhr“, „aus“, „ein“).
+* Kein deutsches Wort endet auf einen Konsonanten und „r“, außer auf „hr“
+  („Uhr“, „Verkehr“) und „rr“ („Herr“): „Fahrleitungsgebr“, „Hauptstr“ und
+  „Hausnr“ sind gekürzt.
+* Ein Wort aus Großbuchstaben oder mit einem Großbuchstaben im Inneren ist ein
+  Name, eine Linie oder ein Kurzwort und beendet einen Satz wie jedes Wort
+  („PKW“, „KG“, „WLB“, „GmbH“, die Zeichen „S“ und „U“ der Haltestellen, die
+  Linie „D“), ebenso eine Linie mit Ziffern („S80“, „N20“). Ein einzelner
+  Großbuchstabe direkt hinter einem Bindestrich oder Punkt ist die Initiale
+  eines Namens („J-Baumann-G.“, „V.I.C.“).
+* Einige Abkürzungen haben einen Vokal oder einen Großbuchstaben im Inneren.
+  `_WITH_VOWEL` hält die, die WL, ÖBB und Stadt Wien von April bis November
+  2026 in die Caches schrieben („ca.“, „ggü.“, „prov.“, „geg.“, „Li.“, „Ri.“,
+  „Haltest.“, „gem.“, „mind.“, „etc.“, „ONr.“), dazu „usw.“, „sog.“, „evtl.“
+  und „inkl.“ aus der früheren Liste der Kürzung hinter einem Satz. „Pkw“,
+  „Lkw“ und „Kfz“ haben keinen Vokal, stehen aber für ein Hauptwort und beenden
+  einen Satz wie eines.
+* Eine Zahl mit einer oder zwei Ziffern ist eine Ordnungszahl und kein
+  Satzende, wenn ein Monat, „Tor“, „Bezirk“ oder die „Haidequerstraße“ folgt
+  („bis 03. Juni“, „Zentralfriedhof, 4. Tor“, „1. Bezirk“, „1.
+  Haidequerstraße“), eine Abkürzung mit ihrem Punkt (WLs „Li. 6. Ri.
+  Geiereckstr.“ vom 05.04.2026), oder wenn sie in einer offenen Klammer steht
+  („(Simmeringer Platz, Busbahnhof, 3. und 4. Haltestelle)“, „(Nacht von 6.
+  auf 7.)“). „die Linie 49. Voraussichtliche Dauer“, „über Gleis 2.
+  Voraussichtliche …“ und „der Linien 43 und 9. Haltestelle Mayssengasse“
+  (Linie 2, 06.11.2026) enden dort.
+
+**Wo sie gilt.** Jede Stelle des deutschen Feed-Baus, die Sätze trennt oder
+einen Schlusspunkt abnimmt, außer den unter „Grenzen“ genannten; der englische
+Feed übersetzt das Ergebnis.
+
+* Die Kürzung hinter einem ganzen Satz, wenn die Folge eines WL-Tickers vor der
+  Beschreibung steht (`_last_sentence_end` und `_lead_with_fragment` in
+  `src/feed_build/title_words.py`, Teil 2, „Ticker-Titel: Ursache oben, Folge
+  darunter“). Seither zählt dort nur ein Satz der Beschreibung, und er endet an
+  jedem Wort, das die Regel nicht als Abkürzung liest, auch an „U.“, „D.“ und
+  „Gleis 2.“ (bis 2026-11-11 nie an einem Wort unter drei Buchstaben oder einer
+  Zahl). Passt keiner, wird an einer Wortgrenze gekürzt wie jeder andere Text,
+  statt nur die Folge zu zeigen. Ein Satz, der genau am 180. Zeichen endet,
+  zählt („… 52 und 48A aus.“ bei 13A am 26.09.2026; der Großbuchstabe danach
+  liegt hinter der Grenze). Fünf Beschreibungen vom 29.09. bis 06.11.2026
+  bestanden nur aus der Folge („13A: Feuerwehreinsatz“ am 05.11.: „Betrieb ab
+  Neubaugasse, Burggasse.“), und für N8 hätte WLs Text vom 30.10. „Betrieb ab
+  Bhf. Meidling. Die Linie N8 wird in beiden Richtungen zwischen Bhf.“
+  ergeben. Für Linie 6 am 21.08. endet der Text jetzt „… über Hauptbahnhof.“
+  vor „Grund: Polizeieinsatz“ (WL: „Hauptbahnhof S U.“).
+* Die Kürzung auf 180 Zeichen (`_should_drop_trailing_tail` und
+  `_trim_truncation_tail` in `src/feed_build/summary_text.py`) nimmt ein
+  angeschnittenes Wort mit Punkt nur weg, wenn es eine Abkürzung ist, deren
+  Namen der Schnitt abtrennt (bleibt von „gegenüber Bhf. Meidling“ nur
+  „gegenüber Bhf.“, endet der Text „… gegenüber …“), und eine Zahl mit Punkt
+  nur, wenn sie im ungekürzten Text eine Ordnungszahl ist („bis 03.“ vor
+  „Juni“). Ein Wort, das seinen Satz beendet, bleibt: „Planen Sie ca. 15
+  Minuten mehr Fahrzeit ein.“ verlor am 19.08.2026 sein „ein.“
+  (25/26/27/N20), „… die baustellenbedingte Streckensperre der Linien D.“
+  endete am 22.10. auf „Streckensperre …“, „Voraussichtlich bis 11:15 Uhr.“
+  am 13.10. auf „bis 11:15 …“ (38); ein WL-Text der Linie 71 vom Mai 2026 („…
+  im Bereich Simmeringer Hauptstraße 26. Das Ende der Störung …“) endete in
+  der Kürzung auf „Hauptstraße …“.
+* Die ausführliche Meldung eines Vorfalls (`_is_long_message` in
+  `src/feed_build/wl_tickers.py`, Teil 2, „Ein Vorfall, ein Platz“): Ein
+  Ticker, der mit einer Abkürzung endet („Züge halten bei Linie 12 Richtung
+  Josefstädter Str.“), ist keine, solange davor kein Satz endet. Am 23.10.2026
+  galt er als eine, behielt seine Ursache, und der Feed las „12: Fremdunfall“
+  über „Fremdunfall Züge halten bei Linie 12 Richtung Josefstädter Str. Fremder
+  Verkehrsunfall.“. Unter allen WL-Titeln und -Texten seit April enden 46 so;
+  keiner davon ist eine ausführliche Meldung.
+* Der Titel einer Tafel-Meldung (`_first_title_sentence` in
+  `src/feed_build/display_titles.py`) behält den Punkt einer Abkürzung und
+  endet an jedem anderen Satzende („Streckensperre der Linie D. Betrieb ab …“;
+  bis 2026-11-11 erst hinter drei Kleinbuchstaben). „Umleitung ab
+  Arbeitergasse über Gürtel - Flurschützstr.“ verlor den Punkt am 30.10.2026,
+  der Titel passte nicht mehr zu WLs Beschreibung, und der Feed las „59A:
+  Feuerwehreinsatz“ über „Feuerwehreinsatz Umleitung ab Arbeitergasse über
+  Gürtel - Flurschützstr.“; ebenso stand am 09.11. „2: Fahrleitungsgebr“ ohne
+  Punkt im Feed. Verliert ein Titel nur sein Schlusszeichen, wiederholt der Text
+  ihn nicht (`_summary_duplicates_title` in `src/feed_build/item_format.py`):
+  WLs „18: Gasrohrgebr. Kein Halt!!!“ vom 04.05.2026 ergäbe sonst „18:
+  Gasrohrgebr. Kein Halt“ über „Gasrohrgebr. Kein Halt!!!“.
+* Der erste Satz eines Abschnitts, wenn wiederholte Linienabschnitte
+  zusammengelegt werden (`_lead_end` in `src/feed_build/wl_measures.py`): Er
+  endet nicht an „4.“. WLs Text vom 08.07.2026 („Linie 11: Kein Betrieb
+  zwischen Fickeysstraße und Zentralfriedhof, 4. Tor. Linie 71: …“) ergab sonst
+  „4. Tor. Tor.“; der Feed zeigte an diesem Tag die Ticker, nicht diesen Text.
+* Das Verbinden mit „; “ und der Pfeil einer Verlegung (`without_full_stop`,
+  genutzt in `wl_ticker_text.py`, `wl_joins.py` mit `_with_unowned` und
+  `_with_line_tickers`, `relocation.py` und `wl_notices.py`): Der Schlusspunkt
+  fällt weg, der Punkt einer Abkürzung bleibt („Betrieb nur bis Bhf. Meidling
+  Dörfelstr.; Betrieb ab …“, „13A: Umleitung über Josefstädter Str.; 57A: …“,
+  „Josefstädter Str. → Lange Gasse 5“), und ein Satz, den WL mit „!“ schloss,
+  bekommt keinen zweiten Punkt („Busse halten bei 13A!.“ bei N46 am
+  28.10.2026).
+
+**Haltestellenzeichen hinter einem Namen mit Punkten.** WL schreibt
+„Kaisermühlen, V.I.C. U“, das Verzeichnis „Kaisermühlen, VIC“. Die Kürzung auf
+180 Zeichen warf das „U.“ am Ende eines 92B-Texts vom 18.08.2026 bisher als
+Abkürzung weg; seit es als Satzende bleibt, muss das Zeichen dort wie überall
+fallen. `without_stop_markers` in `src/utils/wl_stop_markers.py` erkennt einen
+Namen deshalb auch mit den Punkten, die das Verzeichnis weglässt, und der
+letzte Punkt des Namens beendet dann zugleich den Satz: „… Kaisermühlen, V.I.C.
+U. …“ wird „… Kaisermühlen, V.I.C. …“, wie die Kürzung es vorher zeigte (Teil
+9, [Haltestellen ohne „S“ und „U“](architecture-teil-9.md#haltestellen-ohne-s-und-u-seit-2026-11-04)).
+
+**Gemessen.** Über alle Titel und Beschreibungen der WL-, ÖBB- und
+Baustellen-Caches seit April 2026 und den veröffentlichten deutschen Feed liest
+die Regel jedes Wort, das sie Abkürzung nennt, als gekürzt. Nachspiel alt
+gegen neu durch die ganze Kette (`main()` mit Cache und Zustand jedes Stands,
+die Übersetzung durch ein Echo ersetzt): 4.244 Feed-Stände vom 15.08.2026,
+03:01 Wien, bis 12.11.2026; kein Stand scheitert, 597 Stände des deutschen
+Feeds ändern sich, alle auf die beschriebenen Arten. Am häufigsten endet eine
+Verlegung mit ihrem Satz, wo die Kürzung hinter „Alterlaa U.“ fiel (WLs
+Überschrift „… beziehungsweise Alterlaa U“, als Satz geschlossen; jetzt „…
+beziehungsweise Alterlaa. …“ statt „… Alterlaa …“, 64A/N64R in 350 Ständen,
+35A/N35R/N35 in 108, 12A/14A in 85); WLs „40A. aus.“ bleibt (D, 51); „54B:
+Stock im Weg“ zeigt vom 11.11. an „Ghelengasse 30 → Ghelengasse 28“ mit
+beiden Zielen, weil die Kürzung „32.“ vor „Haltestellenverlegung“ als
+Satzende behält und die Ziele damit ganz zeigt (29; Teil 4, Verlegung);
+„57A: Derzeit keine Echtzeitinformation“ wiederholt den Titel nicht (27);
+„13A: Veranstaltung“ am 26.09. endet hinter „… 52 und 48A aus.“ statt mitten
+in der Linienliste (16).
+
+**Grenzen.** Die Form verrät kein gekürztes Wort, das einen Vokal behält und
+anders endet („Quartier Belv.“, „Matzleinsd. Platz“, „Schwarzenbergpl.“, je
+ein- bis dreimal seit April), keine Abkürzung am Satzende („Oberleitung def.
+Betrieb ab Kagran“), deren Punkt beides ist, und keine Ordnungszahl vor einem
+verschriebenen Monat („31. Auust“). WLs eigener Tippfehler „… 71 und 40A.
+aus.“ (30.09.2026, so auch veröffentlicht) steht jetzt auch am Ende einer
+Kürzung, wie WL ihn schrieb. Eigene Regeln für das Satzende haben noch: die
+Satztrennung in `base.py` (`_SENTENCE_SPLIT_RE`, vier Buchstaben vor dem Punkt;
+sie sieht hinter „N81.“ oder „ein.“ kein Satzende), die ÖBB-Sätze
+(`_oebb_first_two_sentences`, die Strecken in `oebb_routes.py` und
+`_sentence_around` in `oebb_route_title.py`), die Sätze der Baustellen
+(`_split_into_sentences` mit eigener Liste in `baustellen.py`), das
+Zusammenlegen von Beschreibungen (`_collapse_description_prefix` in
+`merge_texts.py`), der englische Feed (`_WL_SENTENCE_SPLIT_RE`,
+`_OEBB_SENTENCE_SPLIT_RE`, `_capitalise_glossary_after_stop`) und die Prüfer
+(`_ends_its_sentence` des KI-Wächters, `feed_rules.py`, `count_sentences` des
+Jahresrückblicks). Sie verwechseln vor allem die andere Richtung, ein echtes
+Satzende, das nicht als eines gilt; das ist eine eigene Klasse. Tests:
+`tests/test_abbreviation_periods.py`, `tests/test_bhf_cut_and_phrase_stops.py`,
+`tests/test_wl_stop_markers.py`, `tests/test_ticker_title_split.py`.
+
+## 14. Gemini entscheidet, wo die Regeln eine Störung offen lassen (seit 2026-11-12)
+
+Betreiberentscheidung vom 12.11.2026 (Michael): „Erstelle ein neues
+Entscheidungs-Modul mit Gemini. Verwende den vorhandenen, modularen
+Gemini-Konnektor … Wenn bei einer Meldung nicht klar ist, ob sie eine Störung
+oder ein Hinweis ist, soll Gemini dies über ein neues Modul entscheiden können.
+Plötzliche Störungen haben Priorität. Geplante Hinweise kommen danach. Neue
+Störungen sind an den ersten Plätzen. Alte (aber noch gültige) Hinweise an den
+letzten Plätzen.“ Zur Karte „Soll ich die Gemini-Entscheidung für unklare Fälle
+so bauen?“: „Ja, so bauen“. Es ist seine zweite ausdrückliche Ausnahme von
+„eine KI liest nur mit und meldet“ (Teil 6, „KI-Wächter“); einen Text des Feeds
+schreibt weiter keine KI.
+
+**Was offen bleibt.** Ob eine Störung plötzlich kam, liest `_incident_since`
+(`src/feed_build/time_line.py`) aus ihren Wörtern: Ein Planwort irgendwo in
+Titel oder Text (`PLANNED_DISRUPTION_RE`) macht sie geplant, eine WL-Störung
+ohne Ursache gilt als geplant, wenn sie zur vollen Stunde begann. Eine
+plötzliche Störung zeigt „[Seit hh:mm]“ und steht in der ersten Gruppe
+(`_is_current_incident`), eine geplante zeigt ihren Tag und steht in der
+normalen Reihenfolge. Im Nachspiel der 2.169 Cache-Stände vom 20.09. bis
+12.11.2026 entscheidet das bei 22 von 1.026 Störungen kein klares Wort. Sie
+fallen in drei Klassen (`unclear_class` in
+`src/ki_entscheidung/candidates.py`):
+
+- `ohne-ursache`: eine WL-Störung ohne Ursache und ohne Planwort, über die nur
+  die Uhr entscheidet. „26: Züge halten in Tokiostraße“ (Anzeigetext der
+  Gleisbauarbeiten in der Donaufelder Straße) stand am 21.09.2026 von 09:01
+  bis 23:01 mit „[Seit 08:48]“ in der Gruppe der aktuellen Störungen (28
+  Feed-Stände, mit „27: Linie 25 in Tokiostraße benützen“ und „26E: Busse
+  halten Satzingerweg 41“); „9: Züge halten bei Linie 52“ (18.10.,
+  Rettungseinsatz auf den Linien 6/9/18/52) unterscheidet davon nur die Minute.
+- `bauwort`: eine WL-Störung, deren Ursache ein Störungswort ist, während ein
+  Bauwort an anderer Stelle im Text steht. „U6: Weichenstörung“ (22.09., „Die
+  Station Neue Donau kann … wegen Bauarbeiten nicht eingehalten werden“) zeigte
+  „[Heute]“ statt „[Seit 22:12]“; „48A: Gasrohrgebrechen“ (30.09., „Aufgrund
+  der Bauarbeiten werden die Busse … umgeleitet“, Ende nach Mitternacht) stand
+  mit „[Bis Do 01.10.]“ hinter den aktuellen Störungen (die Zeile nennt bei
+  einem Ende nach Mitternacht in jedem Fall das Ende).
+- `oebb-tag`: eine ÖBB-Meldung mit Bauwort, die ÖBB am Tag ihres Beginns
+  erstmals veröffentlicht und die an diesem Tag endet. „Wegen Verlängerung der
+  Bauarbeiten sind zwischen Wien Franz-Josefs-Bahnhof und Wien Heiligenstadt
+  Bahnhof bis voraussichtlich 09:00 Uhr keine Fahrten möglich“ stand am
+  01.11.2026 um 06:01 als „[Heute]“ auf Platz 7. Geplante Sperren
+  veröffentlicht ÖBB Tage vorher.
+
+Bei den Regeln bleibt, was der Betreiber entschieden hat: Ein Text, der eine
+Verlegung, eine Demonstration, eine Veranstaltung, einen Staatsbesuch oder
+eine Übung nennt, ist geplant (03.11.2026) und kein Kandidat; `bauwort` und
+`oebb-tag` gelten nur, wenn jedes Planwort des Textes ein Bauwort ist. Eine
+ÖBB-Meldung über eine beendete Störung bleibt, was sie ist. Ein Vorfall, der
+in Arbeiten übergeht („1: Gleisschaden“, 20.10., danach „1:
+Gleisbauarbeiten“), ist auf beiden Seiten klar.
+
+**Was Gemini darf.** Eine Antwort je Meldung: `ploetzlich`, `geplant` oder
+`unklar`, dazu ein Satz Begründung. Die Antwort setzt nur das Feld `_ki_art`
+der Meldung; `_incident_since` wählt damit zwischen den zwei Fassungen, die
+die Regeln ohnehin bauen. Bei `unklar` und ohne Antwort entscheiden die Regeln
+wie bisher. Gemini schreibt keinen Titel, keinen Text und keine Zeitzeile; die
+Begründung steht nur im Speicher. Das Modell liest von der Meldung Quelle,
+Titel, Text, Beginn, Ende und Veröffentlichung und bis zu vier andere
+Meldungen derselben Linie oder Strecke (`describe`, `neighbours_of`): den
+Hinweis über Gleisbauarbeiten neben „26: Züge halten in Tokiostraße“, den
+Rettungseinsatz neben „9: Züge halten bei Linie 52“. Die Texte der Betreiber
+stehen als Daten zwischen festen Marken; Werkzeuge hat das Modell keine.
+
+**Wann gefragt wird.** Nur der Feed-Build des Update-Laufs fragt
+(`Decider.decide` in `src/ki_entscheidung/run.py`, aufgerufen in
+`_assemble_feed_items` nach `_carry_item_identity` und vor der Sortierung),
+höchstens einmal je Build und mit höchstens vier Meldungen (so viele standen im
+Nachspiel höchstens zugleich an; was nicht hineinpasst, fragt der nächste
+Build). `feed lint`, die Einzelproben des Builds, Nachspiele und Tests lesen
+nur den Speicher (`apply_stored`). Gefragt wird nach einer Meldung nur,
+solange sie neu ist: höchstens 2 h 45 min im Feed, und der Beginn, den ein
+„plötzlich“ zeigen würde, liegt ebenso kurz zurück (`ASK_WINDOW`). Der
+Feed-Wächter meldet ein „[Seit hh:mm]“, das mehr als drei Stunden nach seiner
+Uhrzeit zum ersten Mal erscheint (`seit-zu-frueh`); eine späte Antwort würde
+genau das erzeugen. Je Ereignis einer Meldung fragen höchstens drei Builds, je
+Wiener Tag höchstens sechs (gelesen aus den gespeicherten Zeitpunkten, kein
+eigener Zähler); ein geänderter Text wird in diesem Rahmen neu gefragt, die
+wechselnde Prognose von WL („Voraussichtliche Dauer: …“) zählt nicht als
+Änderung.
+
+Ein Build fragt die Modellkette einmal ab (`ask_chain` in
+`src/markdown_stats/review_client.py`, der Konnektor des Jahresrückblicks,
+Schlüssel im Kopf `x-goog-api-key`): die Lite-Modelle der Wächter-Kette zuerst
+(`MODELS` in `ask.py`), jedes Modell höchstens einmal, das nächste nur, wenn
+das vorige überlastet, am Kontingent oder nicht erreichbar ist. Im Regelfall
+ist das eine Anfrage. Im äußersten Fall sind es vier je Build und damit sechs
+am Tag an jedes der beiden Flash-Modelle. Ist das Tageskontingent eines
+Modells erreicht, antwortet es mit 429, und diese Kette wie die des
+KI-Wächters geht zum nächsten Modell. Auf ein Modell wartet der Build
+höchstens 12 Sekunden (`MAX_READ_S`), später als 15 Sekunden nach der ersten
+startet keine Anfrage mehr, und auf eine Antwort wartet keine über die 20
+Sekunden (`DEADLINE_S`) hinaus. Gemessen am 12.11.2026 mit vier überlasteten
+Modellen: 20,1 Sekunden. Öffnet sich eine Verbindung langsam, kommen
+höchstens zehn Sekunden dazu: Spätestens 30 Sekunden nach seinem Beginn ist
+der Durchgang zu Ende.
+
+**Eine Antwort gilt für ihr Ereignis.** Der Schlüssel im Speicher ist die GUID
+der Meldung, und eine WL-GUID trägt kein Datum: „9: Züge halten bei Linie 52“
+kehrt Tage nach einem Rettungseinsatz mit demselben Schlüssel und demselben
+Text zurück, wenn WL eine geplante Maßnahme einträgt. Eine Antwort gilt
+deshalb nur, wenn sie nicht älter ist als der Beginn, den die Meldung jetzt
+zeigt (`_answer_holds`): Das nächste Ereignis desselben Tickers wird neu
+gefragt und hat seine eigenen drei Versuche, bis dahin gelten für es die
+Regeln. Bekommt ein Ticker, der im Feed geblieben ist, einen neuen Beginn,
+gelten ebenfalls die Regeln (gefragt wird er nicht mehr, er ist nicht neu).
+Innerhalb eines Ereignisses bleibt die Antwort stehen, wenn der Betreiber den
+Text fortschreibt (ÖBB am 01.11.2026: fünf Fassungen einer Meldung in fünf
+Stunden); neu gefragt wird der geänderte Text nur, solange die Meldung neu
+ist. Eine ÖBB-Meldung, die als `oebb-tag` gefragt wurde, behält ihre Antwort,
+wenn ÖBB das Ende später auf den nächsten Tag legt.
+
+**Ohne Gemini.** Fehlt der Schlüssel, ist ein Modell überlastet, das
+Kontingent erreicht oder die Antwort unbrauchbar, gilt für die Meldung die
+Regel; der Build scheitert daran nie. Er meldet sein Ergebnis als Nebenschritt
+„KI-Entscheidung“ (Ausgabe `ki_outcome`, Teil 12, „Überwachung:
+Nebenschritte“). Rot ist sofort, was nicht laufen kann („ein Fehler sollte
+auffallen“, 28.10.2026): ein leerer Schlüssel, ein abgebrochener Durchlauf,
+ein Speicher, der sich nicht schreiben lässt, eine Anfrage, die sich nicht
+senden lässt, und ein von Google abgelehnter Schlüssel. Die Ablehnung steht
+im Speicher (`schluessel_abgelehnt`) und bleibt rot, bis Google wieder eine
+Anfrage annimmt, längstens 24 Stunden: Ein Build ohne unklare Meldung fragt
+nichts und würde sonst eine halbe Stunde später Grün melden; nach einem Tag
+hat der KI-Wächter mit demselben Schlüssel gefragt und meldet ihn selbst. Die
+abgelehnte Anfrage zählt nicht als Versuch der Meldung. Bekam eine neue
+Meldung in keinem ihrer drei Builds eine Antwort oder sind die sechs des Tages
+verbraucht, ist das wie beim KI-Wächter ein Hinweis (04.11.2026), der endet,
+sobald die Meldung nicht mehr neu ist; er wird hier nie rot, denn jeder Build
+ohne unklare Meldung meldet Erfolg. Schweigen die Modelle über Tage, zeigt das
+der Eintrag des KI-Wächters, der dieselbe Kette täglich fragt.
+`KI_ENTSCHEIDUNG=0` schaltet die Anfragen ab und meldet Erfolg; gespeicherte
+Antworten gelten weiter. Builds ohne Schlüssel (`build-feed.yml`,
+`manual-full-refresh.yml`, lokal) lesen den Speicher und schreiben ihn nie.
+
+**Speicher.** `data/ki_entscheidungen.json` fährt im Commit des Update-Laufs
+mit wie `data/first_seen.json`: je Meldung (Schlüssel wie im Zustand, die
+GUID) die Antwort `art`, ihr `grund`, das `modell`, der Abdruck des Textes,
+der Zeitpunkt der Antwort (`entschieden`), die Zeitpunkte der letzten Anfragen
+und der Tag, an dem die Meldung zuletzt in einem Build stand. Ein Eintrag
+fällt eine Woche danach weg. Ein Nachbau desselben Commits liest dieselben
+Antworten und baut denselben Feed.
+
+**Probelauf.** `scripts/ki_entscheidung_probe.py` (Workflow
+`ki-entscheidung-probe.yml`: von Hand und bei einem Push auf einen Zweig, der
+das Paket, den Konnektor, das Skript oder die Fallsammlung ändert) legt Gemini
+die 20 unklaren Meldungen des Nachspiels vor, jede mit den anderen Meldungen
+ihrer Linien zu ihrem Zeitpunkt und mit der Antwort, die ein Leser der Quelle
+erwartet (`data/samples/ki_entscheidung_faelle.json`). Er fragt wie der Build
+(derselbe Prompt, dieselbe Kette, vier Meldungen je Anfrage), wiederholt einen
+Block ohne Antwort einmal und speichert nichts. Vier Läufe am 12.11.2026,
+alle bei zeitweise überlasteten Modellen: um 18:57 Uhr (Wiener Zeit, noch acht
+Meldungen je Anfrage) 8 von 20 beantwortet, alle wie erwartet; um 19:15 Uhr 16
+von 20, davon 15 wie erwartet („44A: Fahrplanaushang bitte beachten“ `unklar`
+statt `geplant`, was im Feed dasselbe ergibt); um 19:21 Uhr 20 von 20
+beantwortet und alle wie erwartet, alle von einem Lite-Modell; um 19:29 Uhr
+wieder 20 von 20 beantwortet, 19 wie erwartet (erneut „44A“ `unklar`). Eine
+beantwortete Anfrage mit vier Meldungen dauerte 5 bis 10 Sekunden. Darunter die Fälle, die nur die Nachbarn entscheiden: „26: Züge
+halten in Tokiostraße“ `geplant` („Andere Meldung derselben Linie kündigt
+Gleisbauarbeiten an“), „9: Züge halten bei Linie 52“ `ploetzlich` („Die andere
+Meldung derselben Linie nennt einen Rettungseinsatz als Grund“), „37: Züge
+halten Währigner Gürtel 164“ (so die Quelle) ohne Nachbarn `unklar`.
+
+**Nachspiel alt gegen neu** über die 2.169 Cache-Stände vom 20.09. bis
+12.11.2026, durch die ganze Kette bis zum deutschen Feed. Ohne gespeicherte
+Antworten baut der neue Code in allen 2.169 Ständen denselben Feed wie der
+alte. Mit den Antworten des Probelaufs, in der Reihenfolge der Stände gefragt
+und gespeichert wie im Betrieb, fragen 19 Builds nach 24 Meldungen (rund
+zweieinhalb Builds je Woche, höchstens vier Meldungen in einem), und 57 Stände
+an sechs Tagen ändern sich:
+
+- 21.09. 09:01 bis 22.09. 08:31 (41 Stände): „26: Züge halten in
+  Tokiostraße“, „26E: Busse halten Satzingerweg 41“ und „27: Linie 25 in
+  Tokiostraße benützen“ zeigen „[Heute]“ statt „[Seit 08:48]“ und stehen
+  hinter den aktuellen Störungen; „26A: Rettungseinsatz“ rückt von Platz 5
+  auf 2, „43/44: Stromstörung“ von 6 auf 3, „60: Fremder Verkehrsunfall“ kommt
+  in die ersten zehn.
+- 22.09. 22:30: „U6: Weichenstörung“ zeigt „[Seit 22:12]“ statt „[Heute]“.
+- 30.09. 22:02 bis 01.10. 00:31 (4 Stände): „48A: Gasrohrgebrechen“ steht auf
+  Platz 1 bis 2 statt 2 bis 4, Zeile unverändert.
+- 01.11. 05:31 bis 10:01 (9 Stände): „Wien Franz-Josefs-Bahnhof ↔ Wien
+  Heiligenstadt … Wegen Verlängerung der Bauarbeiten … keine Fahrten möglich“
+  (im ersten Stand noch unter dem Titel „Wien Franz-Josefs-Bahnhof“) zeigt
+  „[Seit 05:09]“ statt „[Heute]“ und steht auf Platz 1 bis 2 statt 1 bis 7.
+- 09.11. 04:31 und 05:01: „Wien Hauptbahnhof ↔ Gramatneusiedl“ (Verlängerung
+  der Bauarbeiten) steht auf Platz 1 mit „[Seit 04:30]“, danach „[Seit
+  04:50]“; vorher stand die Meldung nicht unter den ersten zehn.
+
+Alle übrigen Antworten bestätigen, was die Regeln zeigen. Kein Text und kein
+Titel ändert sich, nur Zeitzeile und Platz.
+
+**Tests.** `tests/test_ki_entscheidung_faelle.py` (Klassen, Betreiberliste,
+Abdruck, was das Modell liest, Wirkung der Antwort auf Zeitzeile und Gruppe,
+Antwort je Ereignis, Speicher lesen), `tests/test_ki_entscheidung_lauf.py`
+(Anfrage, Fristen, Speicher, Grenzen, abgelehnter Schlüssel, Ergebnis für den
+Health check), `tests/test_ki_entscheidung_build.py` (`build_feed.main()` und
+`lint()` mit Schlüssel und ersetztem Transport), `tests/test_ki_entscheidung_probe.py`
+(Fallsammlung, Bericht, Workflow) und `tests/test_record_side_steps.py`
+(Nebenschritt im Health check).
+
+## 15. Was nicht möglich ist, steht vorn (seit 2026-11-13)
+
+Dieselbe Regel wie „Was nicht fährt, steht vorn“ (seit 2026-10-25,
+[Teil 4](architecture-teil-4.md)) für ÖBBs Störungssatz „Wegen <Ursache> sind|waren zwischen <A> und <B>
+[bzw. <C> und <D>][,] [Zugfahrten | für Züge der Linie <L>] [bis
+voraussichtlich <Uhrzeit> | derzeit] keine Fahrten | nur eingeschränkt |
+nicht möglich.“ Mit zwei Strecken ist er über 180 Zeichen, und der
+Schnitt nahm die Kernaussage: „Wegen eines Polizeieinsatzes sind zwischen
+Tullnerfeld Bahnhof und St. Pölten Hbf bzw. Tullnerfeld Bahnhof und
+Moosbierbaum-Heiligeneich Bahnhof, bis voraussichtlich 13:30 …“
+(KI-Wächter 12. und 13.11.2026, Issue #2209). Ein solcher Satz sagt jetzt
+zuerst, was nicht möglich ist, mit seiner Zeit, die Strecken folgen
+hinter einem Doppelpunkt: „Wegen eines Polizeieinsatzes sind bis
+voraussichtlich 13:30 Uhr keine Fahrten möglich: zwischen Tullnerfeld
+Bahnhof und St. Pölten Hbf bzw. Tullnerfeld Bahnhof …“
+(`_oebb_restriction_first`). Gekürzt wird weiter an der Wortgrenze
+(Michaels Entscheidung vom 05.11., „Wortweise bleibt“); umgestellt werden
+nur ÖBBs eigene Wörter. Ein Satz, der passt, behält seine Reihenfolge,
+ebenso einer, dessen Ort keine reine Liste von Bahnhöfen ist („erneut“,
+„in beiden Richtungen“, „mit Regionalzügen“, „keine Fahrten der S 80
+zwischen … möglich“), und ein bloßes „nicht möglich“ ohne „Zugfahrten“
+(„Ein- und Ausstiege nicht möglich“). Lässt der zweite Satz die Strecke
+weg, die der Titel nennt, geht der Doppelpunkt mit
+(`_oebb_sentence_without_place`). Englisch: „Due to a police operation, no
+trains can run until approx. 13:30: between Tullnerfeld station and St.
+Pölten Hbf or Tullnerfeld station …“ (`_OEBB_RESTRICTION_FRONT_RE`); die
+Vorlage kennt dafür auch „für Züge der Linie S 45“ („no S 45 trains“) und
+ein Ende ohne Uhrzeit („bis voraussichtlich 07.09.2026“). Replay über
+992 ÖBB-Texte seit Dezember 2025: 22 Anzeigen ändern sich (Meidling–St.
+Pölten, Stadlau–Simmering, Meidling–Liesing, Hütteldorf–Handelskai,
+Grillgasse, Süßenbrunn, Flughafen und andere), alle mit diesem Satzbau;
+englisch nur dieselben 22.
+Tests: `tests/test_oebb_einschraenkung_vorn.py`.

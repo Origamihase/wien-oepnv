@@ -98,7 +98,7 @@ def test_a_relocation_that_fits_keeps_its_old_place() -> None:
 # cut then dropped a bare "32." behind it, so the feed read "Ghelengasse
 # gegenüber 28 → Ghelengasse gegenüber …". The check now uses the feed's own
 # cut, which since 2026-11-12 keeps "32." as the end of its sentence
-# (docs/architecture-teil-8.md, §13): both destinations show whole, the old
+# (docs/architecture-teil-16.md, §13): both destinations show whole, the old
 # places stay.
 NOTICE_54B = (
     "<p><strong><u>Haltestellenverlegung der Linie 54B in Richtung St. Veiter Tor</u></strong></p>"

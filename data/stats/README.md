@@ -113,7 +113,7 @@ nächste Lauf versucht es wieder.
   (Formelschutz wie in den anderen Ledgern). Die Felder der Ansprechpersonen
   im WFS-Layer der Stadt gehören nicht zum Cache-Eintrag und stehen nie hier.
 
-So zählt die Jahresseite (`load_sites` in `src/markdown_stats/baustellen_year.py`):
+So zählt die Jahresseite (`load_sites` in `src/markdown_stats/baustellen_sites.py`):
 
 - Eine Zeile je guid, die früheste; eine doppelte Zeile (Union-Merge) zählt
   einmal. Eine Zeile, deren Zeitraum ganz außerhalb des Jahres liegt (Ende vor
@@ -166,7 +166,7 @@ Der Rückblick in Worten auf der Seite eines abgeschlossenen Jahres
 zusammen; seine ausdrückliche Ausnahme von „KI beobachtet nur, schreibt nie
 um“, die für den Feed bleibt). Die Datei schreibt `ensure_review` in
 `src/markdown_stats/year_review.py`, und nur dann, wenn der Text von Gemini
-die feste Prüfung `check_review` derselben Datei besteht: ein JSON-Objekt mit
+die feste Prüfung `check_review` in `src/markdown_stats/year_review_guard.py` besteht: ein JSON-Objekt mit
 `year`, `created_at` (Wiener Zeit), `model`, `text` und `sites` (Zahl der
 Baustellen beim Speichern). Anzahl und Liste der Seite kommen immer aus
 `baustellen_<Jahr>.csv`, nie aus dem Text; der Text steht unter „### Rückblick“
@@ -185,10 +185,10 @@ mit dem Hinweis, dass Gemini ihn geschrieben und ein Skript ihn geprüft hat.
   Verbindung geben an das nächste Modell weiter; ein abgelehnter Schlüssel
   (401, 403 oder 400 mit `API_KEY_INVALID`) beendet den Durchgang. Schlüssel,
   Modellkette und Kontingent teilt der Rückblick mit dem KI-Wächter
-  ([`docs/reference/ki_waechter.md`](../../docs/reference/ki_waechter.md),
+  ([`docs/reference/ki_waechter-teil-2.md`](../../docs/reference/ki_waechter-teil-2.md),
   „Jahresrückblick der Baustellen“); Statistik-Schritt, Exit-Codes und
-  Probelauf: [`docs/development-teil-2.md`](../../docs/development-teil-2.md).
-- **Der Prompt** (`build_prompt` in `src/markdown_stats/year_review.py`) gibt
+  Probelauf: [`docs/development-teil-4.md`](../../docs/development-teil-4.md).
+- **Der Prompt** (`build_prompt` in `src/markdown_stats/year_review_prompt.py`) gibt
   dem Modell die Regeln (4 bis 6 sachliche Sätze in einem Absatz, nur was in
   den Daten oder im Faktenblock steht, Antwort als `{"rueckblick": "…"}`),
   einen Faktenblock, den das Skript selbst zählt, und je Baustelle Ort,
@@ -211,7 +211,7 @@ mit dem Hinweis, dass Gemini ihn geschrieben und ein Skript ihn geprüft hat.
   `year_review.py` und der Probelauf nehmen sie von dort. Ein verworfener Text
   steht mit den Gründen und höchstens 400 Zeichen im Protokoll.
 
-Die Prüfung (`check_review` in `src/markdown_stats/year_review.py`) nimmt einen
+Die Prüfung (`check_review` in `src/markdown_stats/year_review_guard.py`) nimmt einen
 Text nur an, wenn er alle zehn Regeln erfüllt:
 
 - a: 200 bis 1.500 Zeichen und 3 bis 8 Sätze.

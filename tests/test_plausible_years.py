@@ -238,7 +238,8 @@ class Reader:
         return f"{self.function} ({self.form})"
 
 
-_WL_TEXT = "src/providers/wl_text.py"
+_WL_TITLE = "src/providers/wl_title_dates.py"
+_WL_PERIOD = "src/providers/wl_period.py"
 
 # Every function under src/ that applies the rule, in every form of input it
 # accepts. A function that applies it and is missing here fails
@@ -267,13 +268,13 @@ READERS: tuple[Reader, ...] = (
     Reader("src/providers/baustellen_events.py", "_parse_datetime", "ISO string", lambda s: parse_wfs_date(s.iso())),
     Reader("src/providers/baustellen_events.py", "_parse_datetime", "naive string", lambda s: parse_wfs_date(s.naive_iso())),
     Reader("src/providers/baustellen_events.py", "_parse_datetime", "epoch number", lambda s: parse_wfs_date(s.epoch())),
-    Reader(_WL_TEXT, "extract_date_from_title", "day in digits", lambda s: title_date(f"U1: Umleitung ab {s.oebb_day()}")),
-    Reader(_WL_TEXT, "extract_date_from_title", "month by name", lambda s: title_date(f"U1: Umleitung ab {s.named_day()}")),
-    Reader(_WL_TEXT, "extract_start_from_description", "day in digits", lambda s: period_start(f"<p>Zeitraum: Ab {s.oebb_day()}</p>")),
-    Reader(_WL_TEXT, "extract_start_from_description", "month by name", lambda s: period_start(f"<p>Zeitraum: Ab {s.named_day()}</p>")),
-    Reader(_WL_TEXT, "extract_end_from_description", "day in digits", lambda s: period_end(f"<p>Zeitraum: bis {s.oebb_day()}</p>")),
-    Reader(_WL_TEXT, "extract_end_from_description", "month by name", lambda s: period_end(f"<p>Zeitraum: bis {s.named_day()}</p>")),
-    Reader(_WL_TEXT, "extract_end_from_description", "end of the year", lambda s: period_end(f"<p>Zeitraum: bis Ende {s.year:04d}</p>")),
+    Reader(_WL_TITLE, "extract_date_from_title", "day in digits", lambda s: title_date(f"U1: Umleitung ab {s.oebb_day()}")),
+    Reader(_WL_TITLE, "extract_date_from_title", "month by name", lambda s: title_date(f"U1: Umleitung ab {s.named_day()}")),
+    Reader(_WL_PERIOD, "extract_start_from_description", "day in digits", lambda s: period_start(f"<p>Zeitraum: Ab {s.oebb_day()}</p>")),
+    Reader(_WL_PERIOD, "extract_start_from_description", "month by name", lambda s: period_start(f"<p>Zeitraum: Ab {s.named_day()}</p>")),
+    Reader(_WL_PERIOD, "extract_end_from_description", "day in digits", lambda s: period_end(f"<p>Zeitraum: bis {s.oebb_day()}</p>")),
+    Reader(_WL_PERIOD, "extract_end_from_description", "month by name", lambda s: period_end(f"<p>Zeitraum: bis {s.named_day()}</p>")),
+    Reader(_WL_PERIOD, "extract_end_from_description", "end of the year", lambda s: period_end(f"<p>Zeitraum: bis Ende {s.year:04d}</p>")),
     Reader("src/stammstrecke/legs.py", "_parse_vao_dt", "date and time", lambda s: _parse_vao_dt(*s.vao())),
 )
 

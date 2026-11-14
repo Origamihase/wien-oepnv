@@ -374,7 +374,7 @@ def site_line(line: str) -> SiteLine | None:
 
     The one test of a ledger line, for the writer here and for the reader
     of the year page (``_read_rows`` in
-    ``src/markdown_stats/baustellen_year.py`` imports it): a CSV record of
+    ``src/markdown_stats/baustellen_sites.py`` imports it): a CSV record of
     exactly the ten columns, not the header, with a time stamp that reads
     (:func:`ledger_moment`), a guid and a title. A line the reader skips
     must not count as known to the writer, or its site would be missing

@@ -215,12 +215,12 @@ def test_main_orders_a_recurring_incident_first() -> None:
 
     with patch.object(bf, "_invoke_collect_items", return_value=[incident, relocation]), \
          patch.object(bf, "_load_state", return_value=state), \
-         patch.object(bf, "_make_rss", side_effect=fake_make_rss), \
-         patch.object(bf, "_save_state", side_effect=fake_save_state), \
+         patch_all(bf, "_make_rss", side_effect=fake_make_rss), \
+         patch.object(part(bf, "outputs"), "_save_state", side_effect=fake_save_state), \
          patch_all(bf, "atomic_write", MagicMock()), \
          patch_all(bf, "validate_path", MagicMock()), \
-         patch.object(bf, "write_feed_health_report", MagicMock()), \
-         patch.object(bf, "write_feed_health_json", MagicMock()):
+         patch.object(part(bf, "outputs"), "write_feed_health_report", MagicMock()), \
+         patch.object(part(bf, "outputs"), "write_feed_health_json", MagicMock()):
         assert bf.main() == 0
 
     assert rendered[0] == ["94A: Verkehrsunfall", "72A: Kraftwerk Simmering"]

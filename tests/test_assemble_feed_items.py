@@ -21,7 +21,7 @@ import pytest
 
 import src.build_feed as bf
 from src.feed_types import FeedItem
-from tests._conftest.build_feed_bindings import patch_all
+from tests._conftest.build_feed_bindings import part, patch_all
 
 # Every step of the chain. ``main`` must reach them only through
 # ``_assemble_feed_items``, so the chain exists exactly once.
@@ -121,12 +121,12 @@ def test_main_renders_what_assemble_returns() -> None:
     with patch.object(bf, "_invoke_collect_items", return_value=items), \
          patch.object(bf, "_assemble_feed_items", side_effect=spy), \
          patch.object(bf, "_load_state", return_value={}), \
-         patch.object(bf, "_make_rss", side_effect=fake_make_rss), \
-         patch.object(bf, "_save_state", MagicMock()), \
+         patch_all(bf, "_make_rss", side_effect=fake_make_rss), \
+         patch.object(part(bf, "outputs"), "_save_state", MagicMock()), \
          patch_all(bf, "atomic_write", MagicMock()), \
          patch_all(bf, "validate_path", MagicMock()), \
-         patch.object(bf, "write_feed_health_report", MagicMock()), \
-         patch.object(bf, "write_feed_health_json", MagicMock()):
+         patch.object(part(bf, "outputs"), "write_feed_health_report", MagicMock()), \
+         patch.object(part(bf, "outputs"), "write_feed_health_json", MagicMock()):
         assert bf.main() == 0
 
     assert len(assembled) == 1

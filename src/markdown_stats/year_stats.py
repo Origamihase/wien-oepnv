@@ -97,7 +97,7 @@ ROUNDING_NOTE: Final = (
 )
 
 # Austrian German: "Jänner", as Wiener Linien titles write it
-# (src/providers/wl_text.py); the other eleven are the same everywhere.
+# (src/providers/wl_title_dates.py); the other eleven are the same everywhere.
 MONTH_NAMES: Final = (
     "Jänner",
     "Februar",

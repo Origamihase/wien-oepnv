@@ -71,7 +71,7 @@ Werte nennt. Die Einträge mischen mehrere Quellen:
 Die Lizenzangaben sind am 17.10.2026 gegen die Originalseiten geprüft
 (Datensatzseiten auf `data.gv.at` und `data.oebb.at`, Wiener Linien Open
 Data); dieselbe Tabelle mit Dateidetails steht unter
-„Datenquellen und Lizenzen“ in [`docs/development.md`](docs/development.md).
+„Datenquellen und Lizenzen“ in [`docs/development-teil-3.md`](docs/development-teil-3.md).
 
 ### VOR-Haltestellendaten
 

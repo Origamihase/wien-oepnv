@@ -4,7 +4,7 @@ from typing import Any
 
 import pytest
 import types
-from tests._conftest.build_feed_bindings import fresh_build_feed, setattr_all
+from tests._conftest.build_feed_bindings import fresh_build_feed, part, setattr_all
 
 
 def _import_build_feed(monkeypatch: pytest.MonkeyPatch) -> types.ModuleType:
@@ -50,7 +50,7 @@ def test_main_does_not_save_state_on_io_error(
         nonlocal save_state_called
         save_state_called = True
 
-    monkeypatch.setattr(build_feed, "_save_state", spy_save_state)
+    monkeypatch.setattr(part(build_feed, "outputs"), "_save_state", spy_save_state)
 
     # Mock atomic_write to raise IOError
     def failing_atomic_write(path: Any, mode: str = "w", encoding: str = "utf-8", permissions: int = 0o644) -> Any:

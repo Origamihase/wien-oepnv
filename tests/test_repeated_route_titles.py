@@ -229,7 +229,7 @@ def test_the_pass_is_wired_into_the_build(monkeypatch: pytest.MonkeyPatch, tmp_p
     monkeypatch.setattr(bf.feed_config, "FEED_HEALTH_PATH", tmp_path / "feed-health.md")
     monkeypatch.setattr(bf.feed_config, "FEED_HEALTH_JSON_PATH", tmp_path / "feed-health.json")
     monkeypatch.setattr(bf.feed_config, "MAX_ITEMS", 10)
-    monkeypatch.setattr(bf, "_save_state", lambda state: None)
+    monkeypatch.setattr(part(bf, "outputs"), "_save_state", lambda state: None)
     monkeypatch.setattr(bf, "_load_state", lambda: {})
     monkeypatch.setattr(bf, "refresh_from_env", lambda: None)
 
@@ -320,7 +320,7 @@ def test_a_disruption_beside_running_works_leads_the_build(
     monkeypatch.setattr(bf.feed_config, "FEED_HEALTH_PATH", tmp_path / "feed-health.md")
     monkeypatch.setattr(bf.feed_config, "FEED_HEALTH_JSON_PATH", tmp_path / "feed-health.json")
     monkeypatch.setattr(bf.feed_config, "MAX_ITEMS", 10)
-    monkeypatch.setattr(bf, "_save_state", lambda state: None)
+    monkeypatch.setattr(part(bf, "outputs"), "_save_state", lambda state: None)
     monkeypatch.setattr(bf, "_load_state", lambda: {})
     monkeypatch.setattr(bf, "refresh_from_env", lambda: None)
 

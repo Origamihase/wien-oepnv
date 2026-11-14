@@ -1,700 +1,400 @@
 [Architektur-Karte — Wien ÖPNV Feed](architecture.md), Teil 5.
 
-### Haltestellen ohne „S“ und „U“ (seit 2026-11-04)
-
-> **Entscheidung 2026-11-04 (Michael):** „Der Name „Rennweg S“ gefällt mir
-> nicht. „Rennweg“ ohne S würde mir besser gefallen. … Gibt es weitere
-> Bahnhöfe mit einem S oder einem U? Dies würde mich auch in den Meldungen
-> stören.“
-
-Die Wiener Linien hängen einer Haltestelle mit Umstieg zur S-Bahn oder
-U-Bahn ein einzelnes „S“, „U“ oder „S U“ an („Rennweg S“, „Schottentor U“,
-„Praterstern S U“, einmal davor: „Parlament, U Volkstheater“), und so
-stehen die Namen in ihren Meldungen. Der Feed zeigt den Ort ohne diesen
-Zusatz, im Titel und im Text, deutsch und englisch: „N71: Rennweg“,
-„Fahrtbehinderung in Richtung Floridsdorf“, „zwischen Kagran und
-Praterstern“ (`without_stop_markers` in `src/utils/wl_stop_markers.py`).
-
-Die Regel ist strukturell, keine Wortliste: Ein „S“ oder „U“ fällt nur hinter
-einem Wort weg, mit dem im WL-Haltestellenverzeichnis ein Name endet
-(`data/wienerlinien-ogd-haltepunkte.csv`, Spalte `StopText`, und
-`data/wienerlinien-ogd-haltestellen.csv`, Spalte `PlatformText`; beide
-aktualisiert der wöchentliche Stationslauf). So gehen auch Namen, die WL im
-Text mit Zusatz schreibt, im Verzeichnis aber ohne („Tscherttegasse U“,
-„Michelbeuern-AKH U“) oder mit Punkten, die das Verzeichnis weglässt („V.I.C.
-U“ für „VIC“, Teil 8, §13), und eine neue Haltestelle kommt mit dem nächsten
-Stationslauf ohne Codeänderung dazu. Vor einem Namen fällt ein „U“ nur vor
-einem Wort weg, vor dem es im Verzeichnis steht („U Volkstheater“). Ein Zusatz
-in Klammern, der nur aus „S“ und „U“ besteht, fällt ganz weg, auch ohne
-Verzeichnis: ÖBB schreibt jeden Umstieg so in den Text („Wien Hbf (U)“, „Wien
-Leopoldau Bahnhst (U)“; im Titel fiel er schon vorher weg,
-`_without_transfer_markers` in `src/providers/oebb_routes.py`), WL selten
-(„Simmering (S U)“). Ebenso geht der Zusatz vor einem Namen am Satzende
-(„Parlament, U Volkstheater.“) und hinter einem Namen mit angeklebtem
-Listenstrich („-Johnstraße U“) (unabhängige Prüfung 2026-11-04). Kein
-Haltestellenzusatz und daher unverändert: ein „U“ oder „S“ hinter einem Wort,
-das keinen Haltestellennamen beendet („in beiden Richtungen U.“, ein von WL
-abgeschnittenes „U6“), ein Buchstabe mit Bindestrich oder Ziffer („S-Bahn“,
-„U6“, „S 45“, „Kagran U 26A“), eine Klammer mit mehr als diesen Buchstaben
-(„(S1)“) und Tippfehler der Quelle, deren Wort kein Name des Verzeichnisses
-beendet („Matzleinsdorfer Plaz S“, „Floridsorf S U“, Entscheidung zu #2023).
-
-Die Regel wirkt nur auf das, was der Leser sieht, ganz am Ende von
-`_format_item_content` (`src/feed_build/item_format.py`): Satzgrenzen, die
-180-Zeichen-Grenze, der Vergleich von Titel und Text („Haltestelle:“, das
-nur den Titel wiederholt), das Zusammenführen von Meldungen, die
-Baustellen-Zwillinge und der GeoRSS-Punkt lesen weiter die Namen, wie WL
-sie schickt. Ohne Zusatz käme sonst hinter „Donauspital“ eine Satzgrenze,
-wo „Donauspital U.“ keine war, und eine Meldung verlöre ihren Grund und
-ihr voraussichtliches Ende (im Nachbau 12 Texte). Der Zusatz ändert so
-keine Satzwahl und keinen Schnitt, nur den Namen.
-`tests/test_wl_stop_markers.py` prüft jede Haltestelle des Verzeichnisses
-mit Zusatz, also auch nach jeder Aktualisierung in CI.
-
-> **Entscheidung 2026-11-08 (Michael):** „Den Zusatz „WL“ kannst du gerne,
-> so wie „S“ oder „U“ auch entfernen.“
-
-Das Verzeichnis setzt „(WL)“ hinter den Namen einer Haltestelle der Wiener
-Linien, um sie von einem gleichnamigen Bahnhof zu trennen. In den Feed kam
-der Zusatz über ÖBB-Titel aus dem Verzeichnis („REX 6: Wien Baumgarten (WL)
-↔ Ebenfurth“ im September, „Wien Liechtenwerder Platz (WL) ↔ Mödling ↔ Wien
-Liesing“ im Mai 2026). Er sagt, woher der Eintrag stammt, nicht wo die
-Haltestelle ist, und keine Quelle schreibt ihn; `without_stop_markers`
-entfernt ihn an derselben Stelle wie „S“ und „U“. Steht eine solche
-Haltestelle vor einem Bahnhof, nennt ein ÖBB-Titel schon vorher den Bahnhof
-(Teil 4, „Ein Ort, zwei Namen“).
-
-## 6. Statistik- und Dashboard-Pipeline
-
-Drei Append-only-CSV-Ledger unter `data/stats/` fangen jede relevante
-Beobachtung ein, sobald sie auftritt. Sie bedienen **zwei Konsumenten**
-mit unterschiedlichen Fenstern: das tägliche Markdown-Dashboard
-(`docs/statistik.md`, Kalenderjahr) plus die vier README-STATS-Marker
-(`STATS:STAMMSTRECKE[_LIVE]` und `STATS:AUSFAELLE[_LIVE]`, 60-Min- und
-30-Tage-Snapshots), sowie den RSS-Feed selbst (Stammstrecken-Sektion,
-1-Stunden-Fenster — siehe
-[`docs/reference/stammstrecke_provider_logic.md`](reference/stammstrecke_provider_logic.md)).
-Der Hot-Path-Build blockiert nie auf Observability-I/O — beide
-Konsumenten tolerieren fehlende oder fehlerhafte Zeilen kulant. Jedes
-abgeschlossene Jahr mit Zeilen in diesen drei Ledgern hat eine Seite
-`docs/statistik-<Jahr>.md`, die jeder Dashboard-Lauf mit ihren Ledgern abgleicht,
-mit Jahresüberblick und den Baustellen aus einem vierten Ledger,
-`baustellen_<Jahr>.csv` (mit dem Baustellen-Cache geschrieben), samt einem
-geprüften Rückblick von Gemini ([Teil 7, §12](architecture-teil-7.md#12-die-jahresseite-der-statistik-überblick-baustellen-rückblick-seit-2026-11-10)).
-
-```mermaid
-flowchart LR
-    subgraph "Producer (jeder Cycle-Tick — IFTTT-getriggertes update-cycle.yml, ca. 30 Min)"
-        SS[update_stammstrecke_hbf.py<br/><i>schreibt eine Delay-Zeile je Richtung<br/>+ eine Zeile je Ausfall</i>]
-        BF[build_feed.main<br/><i>_update_item_state strict-new-Branch</i>]
-    end
-    subgraph "Append-only-Ledger (data/stats/)"
-        SCSV[stammstrecke_YYYY.csv<br/><i>timestamp, weekday, hour, direction, delay_minutes</i>]
-        ACSV[ausfaelle_YYYY.csv<br/><i>timestamp, weekday, hour, direction, line</i>]
-        DCSV[stoerungen_YYYY.csv<br/><i>timestamp, weekday, hour, provider, location_name</i>]
-        BCSV[baustellen_YYYY.csv<br/><i>je Baustelle und Jahr, vom Baustellen-Cache</i>]
-    end
-    subgraph "Täglicher Aggregator (update-cycle.yml, erster Cycle-Tick nach Mitternacht Wien)"
-        AGG[generate_markdown_stats.py<br/><i>nur stdlib, Kalenderjahr;<br/>README-Marker 60 Min / 30 Tage</i>]
-    end
-    subgraph "Feed-Build-Konsument"
-        FRP[src/feed/stammstrecke.py<br/><i>1-Stunden-Fenster, ≥2 Beobachtungen > 9 min</i>]
-    end
-    subgraph "Ausgaben"
-        MD[docs/statistik.md, statistik-JJJJ.md<br/><i>ASCII-/Emoji-Balken; Jahresseiten</i>]
-        SUM[docs/stats-summary.json + README-Marker<br/><i>jeder Cycle-Tick</i>]
-        RSS[docs/feed.xml<br/><i>0..2 Stammstrecken-Items</i>]
-    end
-
-    SS -- append --> SCSV
-    SS -- append --> ACSV
-    BF -- append --> DCSV
-    SCSV --> AGG
-    ACSV --> AGG
-    DCSV --> AGG
-    BCSV --> AGG
-    AGG --> MD
-    AGG --> SUM
-    SCSV --> FRP
-    FRP --> RSS
-```
-
-### Architektur-Ziele
-
-| Ziel | Verwirklicht durch |
-| --- | --- |
-| **CI/CD-Entkoppelung** — `docs/statistik.md` wird nur auf den Cycle-Ticks zwischen 00:00 und 00:29 Wiener Zeit neu gerendert (in der Regel einer am Tag), gegated durch ein Inline-`TZ=Europe/Vienna date +%H%M`-Check in `update-cycle.yml`; die README-STATS-Marker und `docs/stats-summary.json` werden bei jedem ca. 30-Min-Cycle-Tick aktualisiert (`--skip-dashboard`); der Lauf nach Mitternacht schreibt auch die Jahresseiten und fragt zuletzt Gemini nach einem fehlenden Rückblick (Teil 7, §12) | `.github/workflows/update-cycle.yml`, Step „Refresh statistics dashboard and README snapshot" (der separate `generate-stats.yml`-Workflow wurde zusammen mit den per-Provider-Escapes entfernt; Ad-hoc-Regenerationen laufen jetzt über `manual-full-refresh.yml`) |
-| **Strikt null Data-Science-Abhängigkeiten** — kein `numpy`, `pandas`, `matplotlib`; die CI-Installation bleibt sub-sekundär | `scripts/generate_markdown_stats.py` kommt ohne externe Data-Science-Pakete aus — nur Python-Standardbibliothek (u. a. `csv`, `datetime`, `statistics`, `zoneinfo`) und projekteigene `src.*`-Module |
-| **Append-only, lock-freie Producer** — Einzelzeilen-Writes sind unter POSIX bis `PIPE_BUF` (4 KiB) atomar, parallele Cycle-Ticks können also nicht mitten in einer Zeile Bytes verschachteln | `src/utils/stats.py:_append_row` (Modus `"a"`, kein `flock`) |
-| **Eine Zeile je Auftreten** — eine langlebige Meldung wird einmal aufgezeichnet, nicht einmal pro Build; eine wiederkehrende WL-Meldung (gleiche guid, neues Auftreten) zählt bei jedem Auftreten neu | `src/feed_build/item_meta.py:_update_item_state` schreibt beim State-Cache-Miss (weder `_identity` noch `guid` hatten einen Vorgängereintrag) und bei einem Eintrag, den `_restart_recurring_occurrences` als neues Auftreten markiert hat (`new_occurrence`), jeweils beim ersten Erscheinen im Feed |
-| **Idempotente, byte-stabile Ausgabe** — ein erneuter Aggregator-Lauf auf identischer Eingabe erzeugt byte-identisches Markdown, damit der Commit-Schritt der Workflows (`scripts/publish_to_main.sh`) zum No-op wird, wenn sich nichts geändert hat | Stabiler Sekundär-Sort (alphabetische Tie-Breaks, z. B. `key=lambda pair: (-pair[1], pair[0])` in `_format_providers_section`, `_format_ausfall_directions_section`, `_format_ausfall_lines_section`) in jeder Rangliste; der Renderer liest `now()` nur für den Zeitstempel im Header |
-| **Per-Jahr-Datei-Rotation** — die einzelne Ledger-Größe bleibt auch über Mehrjahres-Betrieb beschränkt | Dateiname wird aus dem Wien-lokalen `timestamp.year` der Zeile abgeleitet, nicht aus der Prozess-Uhr |
-
-### Resilienz-Schichten
-
-Die Producer sind Observability, keine Kern-Funktionalität, deshalb
-ist jeder Fehlerpfad **best-effort, no-throw**: ein `OSError` aus dem
-Writer wird auf WARNING geloggt und verschluckt. Produktions-Pipelines
-crashen nie, weil die Platte vollgelaufen ist.
-
-Der Aggregator hingegen ist der Engpass, der *nicht vertrauenswürdige*
-Bytes von der Platte lesen muss (eine im CI-Runner manipulierte
-riesige CSV ist das kanonische Threat-Modell). Drei gestaffelte
-Verteidigungslinien decken ihn ab:
-
-1. **Begrenzte Reads** — jede CSV wird über `read_capped_text` geladen
-   (`open` + `fstat` auf den offenen Filedescriptor + gedeckeltes
-   `read(MAX_CSV_BYTES + 1)`) und über `csv.reader` über einem
-   In-Memory-`io.StringIO` geparst. Das „kein bares
-   `csv.reader(handle)` in `src/` oder `scripts/`"-Invariant ist über
-   `tests/test_sentinel_csv_size_bomb.py` durchgesetzt.
-2. **Toleranz gegenüber fehlerhaften Zeilen** —
-   `_parse_stammstrecke_rows` / `_parse_stoerung_rows` /
-   `_parse_ausfall_rows` überspringen einzelne Zeilen, die
-   `fromisoformat` oder `float()` werfen. Ein fehlerhaft editierter
-   Eintrag legt nicht das ganze Dashboard lahm.
-3. **Atomarer Dashboard-Write** — das gerenderte Markdown landet via
-   `src.utils.files.atomic_write` auf der Platte. Ein Kill-Signal
-   mitten im Render-Vorgang kann das vorhandene Dashboard nicht durch
-   eine halbgeschriebene Datei ersetzen.
-
-### Test-Isolation
-
-Die Produktion-Writer defaulten via `src.utils.stats.DEFAULT_STATS_DIR`
-auf `<repo>/data/stats/`. Eine autouse-Fixture `isolate_stats_writes`
-in `tests/conftest.py` monkey-patcht diese Konstante für **jeden** Test
-auf einen per-Test-`tmp_path`, sodass jeder Test, der transitiv einen
-Hot-Path triggert, der Statistik schreibt (der
-`_update_item_state`-strict-new-Branch, die
-Stammstrecken-Processing-Schleife) den committeten CSV-Ledger nicht
-verunreinigen kann. Tests, die explizit ein anderes `stats_dir` ansetzen
-(die dedizierten Unit-Tests in `tests/test_utils_stats/`), bleiben
-unberührt, weil das explizite Keyword innerhalb von `stats_path` immer
-gewinnt.
-
-### Woher das Live-Dashboard seine Zahlen nimmt
-
-`docs/site.html` las die drei Jahres-Ledger bis 2026-09-14 direkt von
-`raw.githubusercontent.com` und verdichtete sie im Browser — rund
-**705 KB pro Seitenaufruf** (und über das Jahr wachsend), um ein paar
-KPI-Kacheln und Balken zu zeichnen. Seit Audit-Befund **E.3** schreibt
-`scripts/generate_markdown_stats.py` bei jedem Tick zusätzlich
-`docs/stats-summary.json` (~3 KB, feste Dimensionen: 7 Wochentage,
-24 Stunden, eine Handvoll Provider, Linien und Richtungen) und die Seite
-rendert ausschließlich daraus. Zwei Konsequenzen über die Bytes hinaus:
-
-* **Gleiche Origin.** `raw.githubusercontent.com` ist kein
-  Auslieferungs-CDN, hat eigene Rate-Limits und liegt außerhalb der
-  Pages-Zusage. Der Host steht deshalb nicht mehr im `connect-src` der
-  Seite.
-* **Eine Rechenstelle.** Kennzahlen wie „kritische Verspätungen"
-  (`delay_minutes > DELAY_THRESHOLD_MINUTES`) werden nur noch in Python
-  gebildet; die frühere JS-Zweitimplementierung — die Quelle einer
-  echten Drift (`>=` auf der Website, `>` im Backend) — ist entfallen.
-
-Die Roh-Ledger bleiben unverändert unter `data/stats/` und sind auf der
-Seite weiterhin verlinkt. `SUMMARY_SCHEMA_VERSION` versioniert das
-Format; die Seite verweigert ein unbekanntes, statt eine halbe
-Auswertung zu rendern. `archive_years` (seit 2026-11-10, Jahre mit Seite)
-kam ohne neue Version dazu; fehlt es, bleibt die Jahreswahl verborgen.
-
-**Leeres Live-Fenster: „Keine Fahrten“ oder „N/A“ (Entscheidung Michael,
-2026-10-30).** Die Live-Kachel „Ø Verspätung Stammstrecke“ und der
-README-Block `STATS:STAMMSTRECKE_LIVE` zeigen den Mittelwert der letzten
-60 Minuten. Liegt darin keine Beobachtung, zeigen beide „Keine Fahrten“
-(EN „No trains“), wenn der letzte erfolgreiche Abruf des Monitors
-(`coverage.poll.last_success`) im selben 60-Minuten-Fenster liegt: Der
-Abruf lief, gefahren ist kein Zug (Nachtpause oder alle Züge der Stunde
-ausgefallen, so am 30.10. 15:00–16:00 bei einem Gleisschaden zwischen
-Meidling und Liesing). Ohne einen solchen Abruf wurde nichts gemessen, und
-die Anzeige bleibt „N/A“. Die Grenze ist das Live-Fenster, nicht die drei
-Stunden des Health Checks. Python (`_live_fetch_covers`) und Seite
-(`renderStammstreckeLiveTile`) prüfen dieselbe Regel; die Seite misst gegen
-die Uhr des Browsers, damit ein liegengebliebener Stand nicht weiter
-„Keine Fahrten“ behauptet.
-
-### Was das Dashboard beantwortet
-
-| Frage | Sektion in `docs/statistik.md` |
-|---|---|
-| **Wann** treten Stammstrecken-Verspätungen auf? | „Stammstrecke" — Wochentag- und Stunden-Verteilung sowohl der Beobachtungszahl als auch der mittleren Verspätung |
-| **Wie häufig** fallen auf der Stammstrecke Züge aus? | „Ausfälle" — per-Richtung- und per-Linien-Tabellen plus Wochentag- und Stunden-Verteilung |
-| **Wann** bündeln sich Disruption-Events? | „Störungen" — per-Provider-Tabelle plus Wochentag- und Stunden-Verteilung |
-
-`extract_location_name` ist weiterhin Teil der Producer-Pipeline (siehe
-`src/utils/stats.py` und `src/feed_build/item_meta.py`) und persistiert die
-abgeleitete Location pro Disruption-Zeile in
-`data/stats/stoerungen_<YYYY>.csv`. Die aktuelle Dashboard-Renderung
-aggregiert die Daten allerdings nur nach `provider`, `weekday` und
-`hour` (siehe `aggregate_stoerungen` in
-`scripts/generate_markdown_stats.py`) — eine frühere „Top-5
-Hotspots mit Stundenprofil"-Sektion wurde entfernt, die Roh-Daten in
-der CSV bleiben aber für Ad-hoc-Analysen erhalten. Die Heuristik selbst
-ist katalog-zentriert: Ein Kandidat wird nur zurückgegeben, wenn er
-über die kuratierte Verzeichnisdatei `data/stations.json` (`station_info`)
-auflösbar ist. In dieser Reihenfolge versucht sie — (1)
-`| Haltestelle:` (WL-`relatedStops`, erster Eintrag, verbatim
-akzeptiert), (2) `| Station:` / `| Location:` (WL-Extras), (3)
-`in Richtung X` (Stammstrecke-Renderer), (4) `zwischen X und Y`
-(ÖBB-Phrasierung, Capture Group 1), (5) `Wien <Stadtteil>`, (6) einen
-Sliding-Window-Verzeichnis-Scan über Titel + Beschreibung; der Scan
-nimmt nur einen Stationsnamen, keinen Code und keine ID
-(`station_named_in_text`, seit 2026-10-05, vorher stand etwa „am
-Olympiaplatz“ unter der WL-Haltestelle „Am Bahnhof“). Einziger
-Fallback ist `"unbekannt"`; einen Freitext-/Token-Fallback samt
-Stoppwortliste gibt es bewusst **nicht** mehr (die Freitext-Regex-
-Matches wurden 2026-05-09 entfernt, weil deutsche Substantive durchweg
-großgeschrieben sind und Störungstypen wie `Demonstration Linie`
-fälschlich als Haltestellen akzeptiert wurden). So rendert das Dashboard
-auch bei adversarial Provider-Input noch.
-
-### Gestaltung des Live-Dashboards (Kacheln, 2026-10-17)
-
-Michael am 17.10.2026 zu `site.html`: „Der Aufbau selbst ist gut. Ich mag
-auch die Farben. Der kleine Zug ist ein Hingucker und die Fußzeile ist, mit
-dem Hintergrund, auch in Ordnung. Die Kacheln selbst sehen aber ziemlich
-generisch aus.“ Daraus folgt, was bleibt und was neu ist:
-
-* **Bleibt, auf seinen Wunsch:** Aufbau und Reihenfolge der Sektionen,
-  Farbpalette (alle Tokens in `:root`), der fahrende Zug, Kopfzeile und die
-  Fußzeile mit Foto-Hintergrund. HTML und JavaScript sind unverändert; die
-  Änderung steckt allein im Stylesheet (seit 2026-11-02 die Teile in
-  `docs/assets/site-css/`) und dem daraus erzeugten `site.min.css`.
-* **Neu: Jede Kachel trägt die Farbe dessen, wofür sie steht.** Eine Meldung
-  hat die Farbe ihrer Quelle als `--src` (Randstreifen links, ein Hauch der
-  Farbe hinter dem Etikett, das Etikett selbst in der Quellfarbe; ein
-  farbiger Punkt steht im passenden Filter-Chip). Das Etikett trägt seit
-  dem 30.10.2026 keinen Punkt mehr (Michael: „Bitte entferne den Punkt aus
-  den 'Pillen'“), nur noch den Namen der Quelle; der Punkt im Filter-Chip
-  bleibt. Im Dunkelmodus sind das die dunkleren
-  Markenrot-Varianten, die schon vorher für die weiße Etikettschrift galten
-  (Kontrast ≥ 6:1).
-* **Neu: Jede Statistik-Sektion hat einen Ton** (`--tone`): Störungen Blau,
-  Stammstrecken-Verspätungen Orange, Ausfälle Rot, also die Farbe ihrer
-  Balken. Der Ton färbt das Quadrat vor der Überschrift, den Schimmer und das
-  Quadrat der Kennzahl-Kacheln, den Strich unter jedem Diagrammtitel und das
-  Hover-Band einer Balkenzeile. Die Live-Kachel „Ø Verspätung Stammstrecke“
-  nimmt den Ton der Sektion, auf die sie verlinkt, und trägt einen
-  pulsierenden Live-Punkt.
-* **Neu: Beginn, Bis und Erstmals** stehen als kleine Kapseln unter dem
-  Meldungstext statt als lose Textzeile.
-* **Bewegung:** Kacheln blenden beim Rendern kurz nacheinander ein, Meldungen
-  heben sich bei Hover an (nur mit Maus). Alles nur über `opacity` und
-  `transform`, also ohne Layout-Verschiebung; bei
-  `prefers-reduced-motion: reduce` ist beides aus.
-* **Behoben dabei:** Der aktive Filter-Chip nutzte `--c-brand` als
-  Hintergrund, das im Dunkelmodus die Seitenfarbe ist; „Alle“ war dort nicht
-  als aktiv erkennbar. Er nutzt jetzt die Textfarbe als Hintergrund.
-
-Geprüft vor dem Merge in Chromium (Desktop 1366 px hell/dunkel, Handy
-375 px und 320 px, DE und EN): keine axe-Verstöße, kein waagrechter
-Überlauf, ein `<h1>`, Feed-Autodiscovery DE/EN und beide Open-Meteo-Links
-vorhanden, keine Konsolenfehler unter der strengen CSP. Wächter:
-`tests/test_site_css_tiles.py`. Wie das Ergebnis auf seinem eigenen Gerät
-wirkt (Bildschirm, Schrift, Bewegung), beurteilt Michael selbst.
-
-### Was eine Meldungskachel zeigt (2026-10-25)
-
-Die Kachel einer Meldung auf `site.html` sagt dasselbe wie ihr Text am TV:
-
-* **Quelle:** Etikett, Farbe und Filter-Chip folgen dem RSS-`<source>` der
-  Meldung (`_ITEM_SOURCES` in `src/feed_build/item_meta.py`, deutsche und englische
-  Namen). Link und Titel entscheiden nur noch bei einer Meldung ohne
-  bekannten Tag. Vorher entschied der Link: Baustellen der Stadt Wien
-  verlinken seit 17.10.2026 auf `wien.gv.at/verkehr/baustellen` und wären
-  unter „Andere“ gelandet, die Stammstrecken-Meldung (Link zur
-  ÖBB-Streckeninformation, Tag „VOR/VAO“) unter „ÖBB“.
-* **Beginn** ist `ext:starts_at`, wie in der Zeitzeile; ein früheres
-  `pubDate` desselben Wiener Tages, das nicht auf einer vollen Stunde liegt,
-  ist die Minute, in der WL die Störung eingetragen hat, und gilt dann
-  (`_incident_since`). `pubDate` allein ist kein Beginn: WL veröffentlicht
-  geplante Ereignisse Tage vorher („1/2/71/D: Nationalfeiertag“, Beginn
-  bisher 16.10., Text „[Am Mo 26.10.]“), ÖBB rückt es bei jeder
-  Aktualisierung weiter. Ein Beginn um 00:00 Uhr steht als Datum da.
-* **Bis** ist ein Datum ohne Uhrzeit, wie am TV: Die Uhrzeit eines Endes ist
-  ein Puffer (23:59, 01:00, 04:00) oder WLs Standardwert, keine Ankündigung.
-  `ext:ends_at` trägt das Ende, das die Zeitzeile nennt (`_shown_end`);
-  WLs 11:11-Ablaufdatum ohne Ende im Text fehlt dort wie in der Zeitzeile
-  („48A: Neubaugasse, Neustiftgasse“: TV „[Seit 19.10.]“, Website bisher
-  „Bis: 08.10.2027, 11:11“). Im Cache bleibt es das Ablaufdatum der Meldung.
-* **Datenstand** im Kopf ist das `lastBuildDate` des Feeds, also der Stand
-  der Daten. Bisher stand dort die Uhrzeit, zu der der Browser geladen
-  hatte; ein Feed, der nicht mehr aktualisiert wurde, sah dadurch aktuell
-  aus.
-
-Der Abdeckungshinweis der Stammstrecke beurteilt die Kennzahlen an den
-Zeilen, aus denen sie bestehen: im README am 30-Tage-Fenster, auf der Website
-und in `docs/statistik.md` am ganzen Jahr. Die Jahreszahlen enthalten
-Praterstern bis 14.08.2026 (3.831 Beobachtungen); der Hinweis sagt deshalb
-„Die Jahreszahlen unten enthalten Richtung Praterstern daher nur bis dahin.“
-statt „decken nur Richtung Meidling ab“, was die Tabelle direkt darunter
-widerlegte (`render_direction_coverage_note(..., yearly=True)`,
-`renderCoverageNotice` in `site.js`). Die Jahresseite sagt es in der
-Vergangenheit; eine Richtung, die zuletzt im Vorjahr fuhr, sucht der Lauf in
-früheren Jahresdateien (`earlier_rows_until_every_direction`).
-
-Replay vor dem Merge: 109 Feed-Stände seit 04.10. auf der alten und der
-neuen Seite (Chromium, Uhr auf den Stand eingefroren): 37 Kacheln, deren
-Beginn oder Bis der Zeitzeile widersprach, und 314 mit einer Uhrzeit beim
-Ende vorher, 0 nachher. 61 echte Stände durch `build_feed.main()`: Titel und
-Texte gleich, es fehlen nur die `ext:ends_at`-Zeilen mit 11:11-Ablaufdatum. Tests:
-`tests/test_site_feed_tiles.py`, `tests/test_stammstrecke_direction_health/`.
-
-### Bilder ohne Marken, Hinweis „inoffiziell“ (2026-10-17)
-
-Beide Bilder der Seite (`docs/assets/train.png`, der fahrende Zug, und
-`docs/assets/footer-bg.jpg`, der Hintergrund der Fußzeile) sind laut Michael
-KI-generiert. Sie zeigten aber ÖBB-Marken: das ÖBB-Logo und den Schriftzug
-„cityjet“ am Zug, ÖBB-Logos auf Sitzen, Liniennetzplan und Fahrschein im
-Hintergrund. Die Nutzungsbedingungen von oebb.at (Punkt 3) verlangen auch für
-Markennamen eine vorherige schriftliche Genehmigung. Michael hat am 17.10.2026
-entschieden, nur Inhalte mit geklärten Nutzungsrechten zu zeigen. Deshalb sind die Marken
-aus beiden Bildern entfernt (übermalt aus der umgebenden Fläche); Motiv,
-Farben, Größe und Aufbau bleiben, die WebP-Fassungen sind aus den neuen
-Bildern erzeugt. Aus demselben Grund steht am Anfang des `<copyright>` beider
-Feeds, in der Fußzeile (DE/EN) und im README der Satz „Inoffizielles Projekt
-ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind
-die verlinkten Originalmeldungen.“ (`_UNOFFICIAL_DE`/`_EN` in
-`src/feed_build/rss.py`, Test `tests/test_channel_copyright.py`). Titel und Texte
-der Meldungen ändern sich dadurch nicht. Ein neues Bild für die Seite trägt
-keine Marke eines Verkehrsunternehmens.
-
----
-
-## 7. VOR/VAO-API — Stammstrecke-only-Scope (2026-05-11)
-
-Die VOR/VAO-ReST-API erlaubt **100 Requests pro Tag** (`VAO Start`-
-Kontingent). Seit 2026-05-11 (Operator-Policy „VOR nur noch für die
-Verspätungen der Stammstrecke") ist der Stammstrecken-Monitor der
-**dominierende** automatisierte VOR-Konsument im Projekt; daneben
-steht nur noch der CI-Smoke-Test in `test-vor-api.yml` (siehe
-Tabelle). Der frühere
-wöchentliche Station-Enrichment-Pfad und das optionale
-Disruption-Polling sind aus den automatisierten Pfaden entfernt;
-die zugehörigen Helper-Skripte (`update_vor_cache.py`,
-`update_vor_stations.py`, `fetch_vor_haltestellen.py`) wurden
-2026-05-11 aus `scripts/` gelöscht. VOR-Stop-IDs kommen jetzt
-ausschließlich aus dem gepinnten
-`data/vor-haltestellen.csv`-Snapshot. Seit 2026-05-15 verbraucht der
-Monitor zudem nur noch **48 Calls/Tag** (vorher 96): das aktive
-`scripts/update_stammstrecke_hbf.py`-Skript setzt pro Cron-Tick
-**eine** `/departureBoard`-Query am Wien Hauptbahnhof ab statt zwei
-`/trip`-Queries (Floridsdorf ↔ Meidling). Siehe
-[`docs/reference/stammstrecke_provider_logic.md`](reference/stammstrecke_provider_logic.md)
-für Details zum Stammstrecken-Monitor.
-
-| Konsument | Default-Calls/Tag | Konfigurierbar |
-| :--- | ---: | :--- |
-| **Stammstrecke `/departureBoard`** (ca. alle 30 Min × 1 Hbf-Call) | 48 | IFTTT-Cadence des `update-cycle.yml`-Triggers |
-| **CI-Smoke-Test `location.name`** (`test-vor-api.yml`) | **0–4** | feuert nur bei Push auf VOR-Pfade; Pre-flight-Gate (Reserve 1), eigene Concurrency-Gruppe |
-| **Station-Enrichment `location.name`** | **0** (Pfad und Skript 2026-05-11 entfernt) | — |
-| **Disruption-Polling `departureBoard`** | **0** (Pfad und Skript 2026-05-11 entfernt) | — |
-| **Auth-Diagnose** (`verify_vor_access_id.py`, `check_vor_auth.py`) | **0–2** | nur manueller Operator-Aufruf, einmalige Smoke-Tests |
-| **Tagesbudget gesamt** | **48–54 / 100** | — |
-
-> **Korrektur 2026-09-13 (Audit A.1/F.1).** Diese Tabelle führte den
-> CI-Smoke-Test zuvor nicht auf und schrieb `location.name` pauschal auf
-> **0** Calls/Tag. Tatsächlich setzte `test-vor-api.yml` bei jedem Push auf
-> `scripts/**` (ein Filter, der ~40 Dateien traf) einen echten
-> `location.name`-Request per rohem `curl` ab — an `save_request_count`
-> vorbei, ohne Pre-flight-Gate und außerhalb der
-> `external-api-fetch`-Concurrency-Gruppe. Der Verbrauch war damit real,
-> aber für den Zähler unsichtbar. Behoben am 2026-09-13: Pfad-Filter auf die
-> VOR-relevanten Skripte verengt, Concurrency-Gruppe ergänzt, Pre-flight-Gate
-> davorgeschaltet und der `curl` durch `scripts/verify_vor_access_id.py`
-> ersetzt, das den Request über `reserve_request_slot()` bucht.
-
-Zwei zusammenwirkende Mechanismen schützen das Budget:
-
-1. **Keine automatisierten Nicht-Stammstrecke-Pfade**: Weder
-   `update-cycle.yml` noch `update-stations.yml` noch
-   `manual-full-refresh.yml` rufen VOR-Disruption-Polling oder
-   VOR-Station-Enrichment auf. Die früheren Helper-Skripte existieren
-   nicht mehr; nur die Auth-Diagnose-Helfer
-   (`scripts/verify_vor_access_id.py`, `scripts/check_vor_auth.py`)
-   bleiben für gezielte manuelle Smoke-Tests verfügbar. Der einzige
-   weitere automatisierte Pfad ist `test-vor-api.yml`: er ruft
-   `verify_vor_access_id.py` auf, ist seit 2026-09-13 auf die
-   VOR-relevanten Pfade verengt, hing bis 2026-11-03 in derselben
-   `external-api-fetch`-Concurrency-Gruppe und hat seitdem eine eigene
-   Gruppe je Zweig, damit er keinen wartenden Takt oder Rebuild auf `main`
-   abbricht (die gemeinsame Gruppe schützte das Budget nicht, weil der
-   Workflow den Zähler nie committet). Er wird vom selben
-   Pre-flight-Gate abgeschaltet, sobald der Zähler keinen Slot mehr
-   lässt.
-
-2. **`_charge_one_request`** (definiert in
-   `scripts/update_stammstrecke_status.py`, vom aktiven
-   `update_stammstrecke_hbf.py` per Import wiederverwendet). Vor
-   jedem `/departureBoard`-Call wird über
-   `vor_provider.save_request_count` ein Quota-Slot reserviert; ein
-   Lauf, der das Tagesbudget reißen würde, raised `_QuotaExceeded`
-   *vor* dem Network-Call. Defense-in-Depth: `update-cycle.yml` und
-   `manual-full-refresh.yml` (seit 2026-09-27, Audit A.6) schalten den
-   Step zusätzlich über
-   `scripts/preflight_quota_check.py --check vor --margin 1` aus, sobald
-   der persistierte Counter keinen Slot mehr lässt.
-
-Mit 48 von 100 Calls/Tag bleibt komfortabel ein Puffer von ca. 52
-Calls für Operator-Direktaufrufe (`workflow_dispatch` auf
-`update-cycle.yml`, manuelle Smoke-Tests). Sollte das Budget in
-Zukunft enger werden, sind die niedrig hängenden Hebel:
-
-* IFTTT-Applet von ca. 30-Min- auf Stunden-Cadence umstellen (halbiert
-  die Stammstrecke auf 24 Calls/Tag).
-* `DEPARTURE_BOARD_DURATION_MIN = 45` → kürzeres Fenster (kein
-  API-Effekt, aber kleinere Antwort-Payloads).
-* Operating-Hours-Cadence im IFTTT-Applet (nur 04–23 Uhr statt
-  ganztägig) — die Stammstrecke fährt zwischen 00:30 und 04:00 nur
-  ausgedünnt, das Monitoring liefert dort kaum Signal. Seit 2026-10-28
-  hängen daran alle Dauerschwellen, nicht nur `POLL_STALE_HOURS` (unten):
-  die drei Stunden aller vier Quellen und die vier Stunden Feed-Alter im
-  Health check, `quelle-ohne-antwort` (2 h) und `feed-alter` (90 min) im
-  Feed-Wächter. Ohne nächtliche Läufe startet auch der stündliche Health
-  check nicht, und der Rückfall-Cron fände einen alten Stand. Jede dieser
-  Regeln bräuchte eine Ausnahme für die Pause, sonst färbt sie den Health
-  check jede Nacht rot („Alarmwege“ in diesem Abschnitt).
-
-### Der VAO-„Start“-Vertrag (geprüft 2026-10-17)
-
-Michael nutzt das kostenlose Paket „Start“ der Verkehrsauskunft Österreich
-VAO GmbH; den Vertrag hat er am 17.10.2026 übergeben, sein Text liegt nicht
-im Repository. Was er für dieses Projekt bedeutet:
-
-* **Abfragen:** bis zu 100 pro Kalendertag (Punkt 1.3). Der Zähler
-  `data/vor_request_count.json` rechnet nach Wiener Kalendertag, die beiden
-  Schutzschichten oben halten den Monitor bei 48.
-* **Nutzung:** produktiver Einsatz und das Einbetten der Abfrageergebnisse
-  in den eigenen Dienst sind erlaubt (Präambel Punkt 4, Punkt 1.3); Rechte an
-  den Daten selbst räumt die VAO nicht ein. Feed und Statistik zeigen deshalb
-  nur eigene Auswertungen (Verspätungsepisoden, Ausfallzählungen), nie
-  Rohantworten.
-* **Zugangsdaten und Doku:** die Access-ID liegt nur im Secret
-  `VOR_ACCESS_ID` und wird in Logs maskiert (Punkt 5.4); es gibt genau einen
-  Zugang (Punkt 5.5). Das Handbuch stellt die VAO selbst öffentlich bereit;
-  das Repository verlinkt es nur (`docs/development.md`).
-* **Hinweis auf die Grundlage (Punkt 5.3):** Michael hat am 17.10.2026
-  entschieden, den Satz „Stammstrecken-Daten: Grundlage ist der
-  VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH.“ überall zu
-  führen: im `<copyright>` beider Feeds (`_VAO_BASIS_DE`/`_VAO_BASIS_EN` in
-  `src/feed_build/rss.py`), in der Fußzeile der Webseite (DE in
-  `docs/site.html`, EN in `docs/assets/site-js/`), auf `docs/statistik.md`
-  (`VAO_BASIS_NOTE` in `src/markdown_stats/markdown_report.py`), im README und in
-  `NOTICE.md`. VAO ist dort Grundlage, kein Lizenzgeber: Die
-  Stammstrecken-Meldung ist ein eigener Text. Der Quellen-Tag `<source>`
-  VOR/VAO am Item bleibt. Endet der Vertrag, müssen diese Hinweise wieder
-  entfernt werden (Punkt 7.7).
-* **API-Version:** seit 28.10.2026 v1.12.0 (`DEFAULT_VERSION` in
-  `src/providers/vor.py`), in Betrieb bis 30.08.2027. Michael, 24.10.2026: „Wir
-  können die VAO-Version gerne anheben“. Gewählt ist die neueste Version, die
-  die VAO unter `https://routenplaner.verkehrsauskunft.at/vao/restproxy`
-  listet, weil sie am längsten läuft. Das war vom 24.10. an v1.13.0, bis die
-  VAO sie am 28.10.2026 zwischen 14:30 und 15:00 zurückzog: Seitdem antwortet
-  jede v1.13.0-Anfrage mit HTTP 404, und jeder Stammstrecken-Abruf scheiterte
-  bis zum Wechsel. Dieselbe `/departureBoard`-Abfrage an v1.11.0, v1.12.0 und
-  v1.13.0 lieferte am 24.10. dieselben Abfahrten und Beobachtungen. Vorgehen beim nächsten
-  Umstieg: `docs/how-to/versions.md`, „Version anheben“.
-* **Automatische Wahl der Version (seit 29.10.2026):** Michael, 29.10.2026:
-  „Eine dynamische und automatische Wahl für ein Fallback klingt für mich
-  besser“ (ein Wechsel per PR bräuchte jedes Mal seinen Merge) und „Lies
-  automatisch aus, was die neuste Version ist. Wenn sie nicht funktioniert,
-  nimm automatisch die davor“. Jeder Stammstrecken-Abruf liest zuerst die
-  Versionsliste der VAO (ohne Access-ID, zählt nicht zum Tageskontingent) und
-  fragt die neueste Version, deren Abschaltdatum noch nicht vorbei ist.
-  Antwortet sie nicht brauchbar, fragt derselbe Abruf die nächstältere. Eine
-  gescheiterte Version kommt 24 Stunden lang erst nach den anderen dran:
-  Scheitert jede Version (abgelehnter Schlüssel, Ausfall der VAO), kostet ein
-  Abruf so einen Platz im Kontingent, nicht einen je Version. Ist die Liste
-  nicht lesbar, gilt die zuletzt funktionierende Version, sonst
-  `DEFAULT_VERSION`. Die Wahl steht in `cache/stammstrecke/vao_version.json`
-  und kommt mit dem Update-Lauf ins Repository. Die CI-Probe
-  (`verify_vor_access_id.py`) und `check_vor_auth.py` fragen dieselbe
-  Version. Setzt die Umgebung `VOR_VERSION` oder `VOR_BASE_URL`, gilt diese
-  Vorgabe ohne Wahl. Jeder Wechsel öffnet die Feed-Wächter-Regel
-  `vao-version` als Issue, das sich nach zwei Läufen selbst schließt. Code:
-  `src/utils/vao_version.py`, `_poll_listed_versions` in
-  `scripts/update_stammstrecke_hbf.py`. Nachgespielt mit den echten
-  Abrufzeiten des 28.10.2026: Ab 15:01 hätte jeder Abruf v1.12.0 gefragt und
-  funktioniert. Nennt die Liste die kaputte Version weiter, kostet der Wechsel
-  einen Platz mehr (20 statt 19 Plätze von 14:00 bis 23:01). Bis dahin
-  scheiterten 16 Abrufe von 15:00 bis 22:30.
-* **Jede Quelle ihr eigener Hinweis:** Michael, 17.10.2026: „Bitte beachte,
-  dass jede Quelle den passenden Quellenhinweis erhält. ÖBB für die ÖBB, WL
-  für WL und VOR/VAO für VOR/VAO“, und „Am TV soll sich weiterhin nichts
-  ändern“. Der VAO-Satz steht deshalb nur bei den Stammstrecken-Daten, nie
-  als Hinweis für den ganzen Dienst: im Feed als eigener Satz im
-  `<copyright>` neben den anderen Quellen, auf `docs/statistik.md` unter
-  „Stammstrecke“ und „Ausfälle“ (beide aus denselben VAO-Abfragen), im
-  Dashboard „Quelle: VOR/VAO“ an diesen Abschnitten. Die Störungsstatistik
-  nennt ihre vier Quellen (`STOERUNGEN_SOURCES_NOTE`), jede Meldung zählt
-  unter ihrer eigenen; im Feed trägt jede Meldung ihre Quelle im `<source>`
-  (siehe §1, „Link und Quelle jeder Meldung“). Titel und Texte der
-  Meldungen bleiben unberührt.
-
-### Überwachung: Abruf kaputt oder keine Züge (seit 2026-10-10)
-
-Betreiberentscheidung (Michael, 2026-10-10): „Der Check soll nur auf
-rot, wenn der Abruf nicht funktioniert. Wenn die Technik funktioniert
-gehört er auch auf grün. Wenn wirklich keine Züge fahren, gehört dies
-auf der Homepage gemeldet, aber der Check bleibt grün.“
-
-Vorher wurde ein komplett ausgefallener Monitor nirgends rot: Die
-Richtungsprüfung im Health check wird nie rot (Entscheidung 2026-10-03,
-#1939), und ein Korridor ohne Ledger-Zeilen sieht aus wie eine Nacht.
-Die Ledger halten nur Züge fest, sie können „kein Zug fuhr“ und „wir
-haben nichts gesehen“ nicht unterscheiden. Deshalb schreibt der Monitor
-jeden Abruf, auch den gescheiterten, nach
-`cache/stammstrecke/poll_status.json` (letzter Versuch und sein
-Ergebnis, letzter erfolgreicher Abruf, Abfahrten und Stammstrecken-Züge
-darauf, letzter Abruf mit Zug). Die Regel steht einmal in
-`src/utils/stammstrecke_poll.py`:
-
-* **Abruf kaputt** heißt: seit `POLL_STALE_HOURS` (3 h) kein
-  erfolgreicher Abruf, oder kein lesbarer Status. Darunter fallen ein
-  gescheiterter Request (HTTP-Fehler, Timeout), eine unlesbare Antwort
-  (kein JSON, `errorCode`-Hülle), eine **unvollständige** Antwort (die
-  Tafel listet Abfahrten, aber keine trägt Linie, Planzeit und
-  Bahnsteig; strukturell, ohne Wortliste), ein übersprungener Abruf
-  (Tageslimit, Circuit Breaker) und ein Monitor, der gar nicht mehr
-  läuft. Drei Stunden: Der längste Abstand zwischen zwei Abrufen vom
-  09.09. bis 10.10.2026 war 2:00 h (1 492 Abrufe, rekonstruiert aus dem
-  VAO-Zähler in der Git-Historie). Ein einzelner gescheiterter Abruf
-  macht noch nichts rot.
-* **Abruf funktioniert, keine Züge** heißt: eine gültige Antwort ohne
-  Stammstrecken-Zug, auch eine leere Tafel. Beispiel 22.09.2026 21:00:
-  29 Abfahrten am Hbf, 16 auf anderen Bahnsteigen, kein Zug auf Gleis
-  1/2; der Monitor-Schritt lief erfolgreich.
-
-Wer die Regel liest:
-
-* `scripts/health_check.py`, Prüfung `Stammstrecke-Abruf`: rot nur im
-  ersten Fall; im zweiten grün mit „derzeit kein Stammstrecken-Zug auf
-  der Tafel“. Kein ℹ️-Hinweis, weil die Nachtpause sonst jede Nacht
-  einen erzeugte. Die Richtungsprüfung bleibt unverändert nie rot.
-* Website (`docs/assets/site-js/`) und README/Statistik
-  (`render_direction_coverage_note` in
-  `scripts/generate_markdown_stats.py`): Den ganzen Korridor („Aktuell
-  keine Fahrten von Wien Hbf Richtung Meidling und Praterstern“) nennen
-  sie nur, solange der Abruf funktioniert (`fetch_working`;
-  `coverage.poll` in `docs/stats-summary.json`, im Browser gegen die
-  Uhr des Lesers geprüft). Hinter einem kaputten Abruf wäre der Satz
-  eine Behauptung, die der Monitor nicht machen kann; der Fall gehört
-  dem Health check. Die Schwellen des Hinweises (eine Stunde je
-  Richtung mit Nachweis aus der Gegenrichtung, acht Stunden für den
-  ganzen Korridor) bleiben, ebenso der Hinweis für eine einzelne stille
-  Richtung.
-
-Seit 2026-10-28 schreibt der Monitor zu einem gescheiterten Abruf den Grund
-in Log und `poll_status.json` (`last_error`), nicht nur den Namen der
-Ausnahme: etwa `ValueError: Invalid Content-Type: text/html (expected
-('application/json',))` oder die `errorCode`-Hülle mit ihrem `errorText`.
-Am 21.10.2026 von 17:31 bis 20:01 und ab 28.10.2026 15:00 stand dort nur
-„ValueError“, eine falsche Antwortart, eine `errorCode`-Hülle und ein
-kaputter Text sahen gleich aus. `describe_failure` in
-`src/providers/vor.py` schickt die Meldung durch den VOR-Filter, der den
-`accessId` selbst und jeden Parameter mit Zugangsnamen maskiert, und kürzt
-sie auf 240 Zeichen; der Feed-Wächter und der Health check zeigen sie mit.
-Dieselbe Funktion nutzen die CI-Probe `scripts/verify_vor_access_id.py`
-(dort stand am 28.10.2026 nur „HTTPError“, ein 403 und ein 503 sahen gleich
-aus) und der frühere `/trip`-Monitor.
-
-### Überwachung: Nebenschritte (seit 2026-10-28)
-
-Betreiberentscheidung (Michael, 2026-10-28, auf die Frage, ob ein
-Nebenschritt, der nicht laufen kann, den Health check rot machen soll):
-„Ich tendiere zu ‚er soll rot werden‘, denn ein Fehler sollte auffallen.“
-Für Nebenschritte ersetzt das die Regel vom 2026-10-10 („rot nur, wenn der
-Abruf nicht funktioniert“, #1939, #1999). Die Schwellen für Quellen bleiben:
-Die Stammstrecke wird erst nach drei Stunden ohne erfolgreichen Abruf rot,
-die Richtungsprüfung nie, ein Inhaltsfund des Feed-Wächters bleibt ein
-Hinweis.
-
-Nebenschritte sind die Schritte mit `continue-on-error`, die die
-Veröffentlichung nie aufhalten dürfen: Statistik
-(`generate_markdown_stats.py`), Linienprüfung (`check_feed_lines.py`) und
-Feed-Wächter (`feed_watch.py`) im Update-Lauf, ÖBB-Stationslinien
-(`update_oebb_station_lines.py`) im Stationslauf, seit 2026-10-31 die
-Repository-Metadaten (`REPO_ADMIN_TOKEN`) im SEO-Lauf (siehe „Werkzeuge“
-unten) und der tägliche KI-Wächter (`ki-waechter.yml`, Grenze 36 h); seit 2026-11-12 meldet der Feed-Build seine KI-Entscheidung selbst als Nebenschritt (Ausgabe `ki_outcome`, Teil 8, §14). Bis 2026-10-28 hinterließ
-ihr Scheitern nur eine orange Annotation in einem grünen Lauf, und GitHub
-schickte keine Mail. Gemessen ist keiner gescheitert (Update-Läufe seit
-01.09.2026, Stationsläufe seit 01.01.2026), der Mangel war latent.
-
-* Der letzte Schritt vor der Veröffentlichung (`Record side-step outcomes`)
-  ruft `scripts/record_side_steps.py` mit dem Ergebnis jedes Nebenschritts
-  auf. Er liest `steps.<id>.outcome`, nicht `conclusion`: Unter
-  `continue-on-error` heißt die `conclusion` eines gescheiterten Schritts
-  `success`. Das Ergebnis landet in `data/side_steps/update-cycle.json` bzw.
-  `data/side_steps/update-stations.json` (eine Datei je Workflow, damit zwei
-  gleichzeitige Veröffentlichungen nie dieselbe Datei schreiben) und fährt
-  im Commit des Laufs mit. Ein übersprungener oder abgebrochener Schritt
-  ändert seinen Eintrag nicht.
-* Die Prüfung „Nebenschritte“ des Health checks (`scripts/health_check.py`,
-  Code in `src/health_check/outputs.py`) ist rot, solange
-  der letzte Lauf eines Nebenschritts scheiterte, und nennt Schritt,
-  Zeitpunkt, letzten sauberen Lauf und den Link zum Lauf. Rot ist sie auch,
-  wenn eine Aufzeichnung älter ist als die Grenze ihres Workflows (4 h für
-  den Update-Lauf, 192 h für den Stationslauf): Dann konnte die
-  Aufzeichnung selbst nicht laufen. Fehlt eine Datei noch (vor dem ersten
-  Lauf mit der Aufzeichnung), ist das ein Hinweis.
-* Ausnahme seit 2026-11-04 (Michael, Karte „Ja, so bauen“): Bekam der
-  KI-Wächter nur deshalb keine Antwort, weil Gemini überlastet war
-  (Ergebnis `overloaded`: 500/502/503/504, abgebrochene Verbindung,
-  Zeitüberschreitung, 429), ist das ein Hinweis mit der Uhrzeit, ab der es
-  rot wird: 30 Stunden nach der letzten gelungenen Prüfung
-  (`KI_WAECHTER_OVERLOAD_MAX_H`, `HEALTH_KI_WAECHTER_OVERLOAD_HOURS`), ohne
-  gelungene Prüfung 30 Stunden nach dem ersten Fehlschlag (`failing_since`,
-  das `record_side_steps.py` beim ersten Fehlschlag nach einem sauberen Lauf
-  setzt). Anlass: Vom 01. bis 04.11.2026 antwortete Gemini um 9:00 jeden Tag
-  mit 503, 34 Health-check-Läufe waren rot, obwohl der Feed lief und der
-  zweite Versuch um 11:31 zweimal durchkam; nachgespielt wäre keiner davon
-  rot gewesen. Ein abgelehnter Schlüssel oder ein Fehler im Code bleibt
-  sofort rot, so fällt eine Stufe, die wirklich nicht läuft, weiter auf.
-  Dieselbe Regel gilt seit 2026-11-04 für die Repository-Metadaten des
-  SEO-Laufs (Karte „Beides“): 5xx oder keine Verbindung zu GitHub nach zwei
-  Wiederholungen ist `overloaded`, Hinweis bis 48 Stunden ohne gelungenen Lauf
-  (`SEO_OVERLOAD_MAX_H`, `HEALTH_SEO_OVERLOAD_HOURS`); siehe
-  [„Werkzeuge“](architecture-teil-6.md).
-* Die Prüfung `Feed-Wächter` ist rot, wenn der Wächter nicht prüfen konnte
-  (Feld `error` in `data/feed_watch.json`); er endet in diesem Fall mit
-  Exit-Code 0, damit die Veröffentlichung weiterläuft, und sein Schritt
-  zählt deshalb als sauber.
-* Der Statistik-Schritt endet ab dem 04.01. in jedem Tick mit 1, solange
-  einem abgeschlossenen Jahr der angenommene Rückblick der Baustellen fehlt
-  (`--fail-on-missing-review`, nur im Update-Lauf; Teil 7, §12).
-
-### Überwachung: Veröffentlichung (seit 2026-10-31)
-
-Anlass war der Architektur-Review vom 2026-10-31 (Michael: „Ja, A bauen“ auf
-der Karte „Soll der Health check die Live-URL der Feeds gegen das Repo
-prüfen?“). Die Kette endet nicht bei `docs/feed.xml` im Repository, sondern
-am Fernseher: Zwischen dem Commit und der Anzeige liegt der Pages-Build von
-GitHub (`pages-build-deployment`, Jekyll mit dem Theme aus
-`docs/_config.yml`). Jede andere Prüfung liest den Checkout; ein Pages-Build,
-der nicht mehr ausliefert, ließ den Fernseher auf dem alten Stand, während
-Update-Lauf, Health check und Feed-Wächter grün blieben. Den einzigen Blick
-auf die Live-Adresse hatte der SEO-Lauf einmal am Tag, als Warnung mit
-Exit-Code 0 und ohne das Datum zu vergleichen.
-
-Die Prüfung `Veröffentlichung` (`check_published_feeds` in
-`scripts/health_check.py`) holt `feed.xml` und `feed.en.xml` von der
-Pages-Adresse (`PAGES_BASE_URL`, aus dem Repository-Namen abgeleitet wie in
-`build-feed.yml`; über `request_safe`, höchstens 2 MB, nur XML) und
-vergleicht ihr `<lastBuildDate>` mit der Kopie im Checkout. Nach der
-Alarmlinie unten:
-
-* **Rot**, wenn eine Live-Kopie mehr als 4 Stunden hinter der Repo-Kopie
-  liegt (`HEALTH_LIVE_LAG_MAX_HOURS`): Pages liefert anhaltend nicht aus. Die
-  Meldung nennt beide Stände.
-* **Grün**, wenn Live und Repo gleich sind oder die Live-Kopie neuer ist (ein
-  Update-Lauf hat seit dem Checkout dieses Laufs veröffentlicht) oder nur
-  Minuten dahinter (der Pages-Build braucht nach dem Commit ein bis zwei
-  Minuten; gemessen am 2026-10-31: 65 Sekunden).
-* **Hinweis**, wenn der Live-Abruf gerade nicht gelingt oder die Live-Kopie
-  kein `<lastBuildDate>` trägt: ein einzelner Abruf sagt nichts über die
-  Dauer, und bei einer Pages-Störung bleibt die letzte Auslieferung in der
-  Regel erreichbar, sodass der veraltete Stand der Fall ist, der zählt. Eine
-  Repo-Kopie, die nicht lesbar ist, ist in `Feed-Build` schon rot und hier nur
-  ein Hinweis, damit sie nicht doppelt zählt.
+* **Zeitzeile: was für heute zählt (seit 2026-10-02, Betreiberentscheidung).**
+  Wer vor dem Display steht, fragt: Gilt das jetzt, und wie lange noch?
+  `format_local_times` antwortet darauf statt mit zwei vollen Daten:
+  „[Heute]“ (endet heute), „[Bis Sa 03.10.]“ (läuft, der vergangene Beginn
+  zählt nicht), „[Seit 30.09.]“ (läuft ohne Ende), „[Am So 04.10.]“ (ein
+  künftiger Tag), „[Ab Mo 05.10. bis 11.11.]“ (beginnt später). Das Jahr
+  steht nur, wenn es nicht das laufende ist, der Wochentag nur in den
+  nächsten sieben Tagen. Eine Uhrzeit für das Ende steht bewusst nicht da
+  (den Beginn einer Störung nennt der nächste Punkt): In den
+  40 WL-Cache-Ständen bis 02.10. endeten 18 von 44 Störungen mit einer
+  Uhrzeit am selben Tag genau eine Stunde nach ihrem Beginn („42:
+  Feuerwehreinsatz“ 19:10 bis 20:10). Das sieht nach WLs Standardwert aus,
+  nicht nach einer Prognose. Datum und Wochentag sind immer die realen des
+  Kalenders nach Wiener Zeit (Europe/Vienna): Ein Ende am 03.10. um 01:00
+  heißt „Bis Sa 03.10.“. Eine Verschiebung auf den Betriebstag davor (#1927)
+  hat der Betreiber am 2026-10-02 verworfen. Ein sehr fernes Ende (mehr als `ABSOLUTE_MAX_AGE_DAYS` nach heute
+  bzw. nach einem künftigen Beginn) fällt weg; gemessen ab dem Beginn verlor
+  „N8: Thaliastraße U“ (seit 24.07.2024) sein Ende 16.11.2026. Der EN-Feed
+  tauscht die Wörter einzeln aus (`_TIME_WORDS_DE_TO_EN`: „[From Mon 05.10.
+  until 11.11.]“), die Daten bleiben. `ext:starts_at` und `ext:ends_at`
+  ändern sich nicht. Die Wörter der Zeitzeile verbindet ein geschütztes
+  Leerzeichen (U+00A0), damit das Display sie nie in der Mitte umbricht;
+  bis 2026-10-06 war es das schmale (U+202F), mit dem „[Ab Mi 07.10. bis
+  28.10.]“ in der EasySignage-Vorschau fast wie ein Wort aussah.
+* **Zeitzeile einer Störung: „[Seit 10:37]“ (seit 2026-10-03,
+  Betreiberwunsch „Störung bitte mit Zeitangabe“).** Bei einer Störung will
+  der Leser abschätzen, wie alt die Meldung ist. `_incident_since` liefert
+  den Beginn einer ungeplanten Störung (Kategorie „Störung“: WL-`trafficInfos`,
+  ÖBB, Stammstrecke), `format_local_times` zeigt ihn als Uhrzeit, wenn er
+  heute liegt und die Störung heute endet oder kein Ende hat. Sonst bleiben
+  die Zeilen oben.
+  - **WL:** Ein Eintrag bündelt oft mehrere WL-Meldungen desselben
+    Einsatzes: `pubDate` ist die früheste, `starts_at` die jüngste
+    (`wl_fetch` nimmt die jüngste, damit eine wiederverwendete alte
+    Kurzmeldung nichts zurückdatiert). Am 03.10. trugen „86A/87A/95A:
+    Fahrtbehinderung wegen Rettungseinsatz“ `pubDate` 10:37:00, den von WL
+    eingetragenen Beginn, und die Kurzmeldungen der Linien von 10:42:44 bis
+    10:54:13 als `starts_at`. Geprüft am 10.10. an den Rohdaten seit 04.10.
+    (366 ungeplante WL-Störungen, `reports/seit-zeit-2026-10-10.md`):
+    `time.start` einer Störungsmeldung ist der Beginn, den WL bei der
+    Erfassung (`time.created`) einträgt, bei der Erstmeldung 0 bis 10
+    Minuten davor (177 von 205 binnen einer Minute); Folgemeldungen
+    (`-F01` …) erben ihn. Unser Abruf sah keine Meldung vor ihrer
+    Erfassung und jede im nächsten Abruf danach. Der Beginn ist daher `pubDate`, wenn es am
+    selben Wiener Tag liegt und nicht auf einer vollen Stunde; sonst
+    `starts_at`. Von den 18 Bündeln seit Juli, deren früheste Meldung mehr
+    als eine Stunde vor der jüngsten lag, trugen 12 eines dieser Merkmale,
+    alle aus einem alten Stand („10A: Fahrtbehinderung“ mit 09.07. 00:00:25
+    am 11.07.); bei den übrigen dürfte die früheste Meldung der echte
+    Beginn sein („66A: Feuerwehreinsatz“ 13:43:00, jüngste Meldung
+    15:06:30). Vorab eingetragene Maßnahmen schaltet WL zur vollen Stunde
+    ein, wenige Sekunden später („12: Betrieb ab Franz-Josefs-Bahnhof“
+    04:00:16), ohne dass der Titel die Ursache nennt; ein Beginn auf einer
+    vollen Stunde zeigt deshalb keine Uhrzeit. Nennt die Ursache eine
+    Störung, zeigt auch ein Beginn zur vollen Stunde die Uhrzeit (Michaels
+    Entscheidung vom 03.11.2026: „Eine Störung kann auch zur vollen Stunde
+    gemeldet werden“, „[Seit hh:00] bringt mehr Infos“; `_incident_cause`
+    in `src/feed_build/wl_tickers.py`): die Ursache im Titel („N71:
+    Polizeieinsatz“ ab 02:00:25) oder das „Grund:“ im Text („U2:
+    Verspätungen“ mit „Grund: Schadhaftes Fahrzeug.“). Maßnahmewörter
+    („Ersatzverkehr“, „Busse halten“, „Betrieb ab …“) zählen nicht als
+    Störung. Ein früheres `pubDate` auf einer vollen Stunde zieht den Beginn
+    weiter nicht vor, es ist das Zeichen einer alten Kurzmeldung. Über jeden
+    dritten Stand seit Juli (2 056) zeigen 65 Störungen jetzt „[Seit hh:00]“
+    statt „[Heute]“, alle 26 Maßnahmen bleiben bei „[Heute]“. Das gilt
+    auch um 00:00: Eine Störung, die über Mitternacht läuft, trägt WL um
+    00:00 neu ein und zeigt dann „[Seit 00:00]“, auch wenn sie am Vortag
+    begann („31: Wasserrohrbruch“, erstmals 02.09.2026 06:43, am 03.09. ab
+    00:00:15). Michaels Entscheidung vom 04.11.2026: das bleibt so, keine
+    Ausnahme für Mitternacht. Die Beginne passen zur
+    Beobachtung: 2 038 der 2 324 WL-Störungen seit Juli tauchten binnen 35
+    Minuten nach ihrem `starts_at` im Feed auf (Takt 30 Minuten).
+    Eine Kurzmeldung darf den Beginn der Störungsmeldung (WL-Nummer
+    `I…`) höchstens `TICKER_LEAD_MAX` = 60 Minuten vorziehen
+    (`wl_plausibility.incident_begin`, seit 2026-10-10; Entscheidung von
+    Michael am 11.10.2026, „Fenster 60 Minuten“, weil es alle echten
+    Vorläufe behält und die umgeschriebene Anzeige korrigiert; das Feld
+    `_incident_start` trägt den Beginn der Störungsmeldungen durch Cache
+    und Merge). WL schaltet die Anzeigen bis zu 39 Minuten vor der
+    Erfassung ein, dann stimmt die frühere Zeit („9: Falschparker“ am
+    09.10.: Anzeige 14:21, Meldung 15:00). Ältere stammen von einer
+    Anzeige, die WL für den neuen Einsatz umgeschrieben hat und die ihre
+    alte Startzeit behielt: Am 09.10. lasen die Anzeigen einer
+    Demonstration von 13:08 „Fahrtbehinderung wegen Polizeieinsatz“ für den
+    Polizeieinsatz ab 20:08, der Feed zeigte um 20:30 „2/71: Polizeieinsatz
+    [Seit 13:08]“. Ohne Störungsmeldung im Eintrag sagt nichts, dass eine
+    Anzeige umgeschrieben wurde; so blieb um 21:01 „71: Polizeieinsatz
+    [Seit 13:10]“, als WL für die 71 nur noch die Anzeigen führte.
+    Fällt die früheste Meldung weg, während die übrigen bleiben (die
+    Kurzmeldungen laufen aus, die ausführliche Meldung wird erledigt),
+    bleibt der Beginn stehen: Der Build merkt sich das früheste `pubDate`
+    eines Eintrags im State-Feld `earliest_published`
+    (`_carry_item_identity`, seit 2026-10-06, siehe `docs/development-teil-2.md`,
+    „Eine Meldung, eine GUID“). Vorher sprang „43: Verkehrsunfall“ am
+    06.10. um 01:14 ohne neue Daten von „[Seit 00:03]“ auf „[Seit 00:04]“.
+  - **ÖBB:** Der Beginn ist die Minute, in der ÖBB die Meldung zum ersten
+    Mal veröffentlicht hat (`_first_published`). `starts_at` taugt dafür
+    nicht: Seit 2026-09-12 ist es der Tag, ab dem die Meldung gilt (00:00,
+    aus dem Zeitraum vor dem Text, „03.10.2026<br/><br/>Wegen …“), und bis
+    zur Korrektur vom 2026-10-03 zeigte deshalb keine ÖBB-Störung ein
+    „[Seit …]“. Auch `pubDate` allein taugt nicht: ÖBB veröffentlicht die
+    Meldung bei jeder Aktualisierung unter derselben GUID neu („Wien
+    Floridsdorf ↔ Wien Praterstern“ am 27.09. um 15:48, 17:26 und 20:07; 21
+    der 33 ÖBB-Störungen vom 12.09. bis 02.10.). Das früheste `pubDate`
+    steht daher im State-Eintrag der Meldung als `first_published`; ein
+    Eintrag von vor diesem Feld beginnt beim früheren von `pubDate` und
+    `first_seen`. Die Regel der vollen Stunde gilt für ÖBB nicht: Sie
+    erkennt von WL vorab eingetragene Maßnahmen, ÖBB veröffentlicht von
+    Hand. Die beiden ÖBB-Störungen seit Juli, die zur vollen Stunde
+    erschienen, waren echte Vorfälle; „Wien Meidling ↔ Wien Liesing“
+    (Polizeieinsatz, veröffentlicht 03.10. 20:00:01, „bis voraussichtlich
+    20:30 Uhr keine Fahrten“) zeigte bis zur Korrektur vom selben Abend
+    „[Heute]“ statt „[Seit 20:00]“. Baustellen heißen „Bauarbeiten“. ÖBB meldet eine beendete Störung in der
+    Vergangenheit („Wegen eines Polizeieinsatzes waren in Mödling Bahnhof
+    bis 19:55 Uhr keine Fahrten möglich“, veröffentlicht 19:57) oder als
+    „Aufhebung …“ (`_is_all_clear`); 60 der 193 ÖBB-Störungen seit Juli.
+    Sie behalten ihre Zeile (`_reports_past_disruption`), „[Seit 19:57]“
+    behauptete das Gegenteil.
+  - **Stammstrecke:** Der Beginn ist die erste gemessene verspätete
+    Abfahrt, auch zur vollen Stunde (`_MEASURED_SOURCES`). Die Beschreibung
+    trägt kein eigenes „[Seit …]“ mehr; sie las sich „… in Richtung
+    Praterstern [Seit 09.08.2026]“ über der Zeitzeile „[Seit 09.08.2026]“.
+  - **Geplant** heißt `_PLANNED_DISRUPTION_RE` in Titel oder Beschreibung:
+    Veranstaltung, Demonstration, Kundgebung, „…arbeiten“, Staatsbesuch,
+    „…übung“, „…verlegung“, Netzänderung, die geplanten Ursachen unter den
+    WL-Störungen seit Juli. Seit 2026-11-03 auch eine verlegte oder
+    aufgelassene Haltestelle in den Worten der Anzeigetafel („verlegt“,
+    „aufgelassen“, „Auflassung“), ein Bau als Ursache („Straßenbau“,
+    „Gleisbau“, „Brückenbau“, „Kanalbau“) und WLs „ÖBB-Ersatzbus“
+    (Betreiberentscheidung: „Eine Verlegung der Haltestelle ist zB nur ein
+    Hinweis, aber keine Störung.“). Anlass: „62A: Straßenbau Haltestelle
+    verlegt zur Wienerbergbrücke vor Breitenfurter Straße [Seit 07:20]“
+    stand am 21.10. um 07:31 Uhr auf Platz 1, über vier laufenden
+    Störungen, und 33 Stände lang vorn; „S80: ÖBB-Ersatzbus – Bhf.
+    Hütteldorf [Seit 00:30]“ (die Haltestelle des Ersatzbusses für die
+    ÖBB-Bauarbeiten) vom 06. bis 14.10. 65 Stände lang, sechsmal auf Platz
+    1. Unter allen WL- und ÖBB-Störungen vom 20.09. bis 03.11. trafen die
+    neuen Wörter fünf geplante Maßnahmen und keinen Vorfall. Dieselbe Liste
+    entscheidet über die Pause einer wiederkehrenden Meldung
+    (`_PLANNED_OCCURRENCE_GAP`) und die Zuordnung erledigter Kurzmeldungen
+    (`wl_resolved`). „Reparaturarbeiten“ (auch WLs „Reperaturarbeiten“)
+    zählen nicht dazu, sie folgen auf einen Vorfall („Wegen Reparaturarbeiten
+    nach einem Unfall“, ÖBB 27.08.). Stadt-Wien-Baustellen sind keine Störungen.
+* **Zeitumstellung (geprüft 2026-10-03 für den 25.10.2026 und den 28.03.2027).**
+  Tage, Wochentage und Uhrzeiten sind die von Europe/Vienna; der 25-Stunden-Tag
+  des 25.10. ist ein Tag („[Heute]“ bis 23:59 Winterzeit). Die Reihenfolge
+  zweier Zeitpunkte und jedes Rechnen mit Stunden laufen in UTC: Python
+  vergleicht und subtrahiert zwei Zeiten derselben Zone nach der Wanduhr und
+  übergeht den Offset. Geprüft mit der echten Nacht vom 26./27.09.2026, um vier
+  Wochen in die Nacht des 25.10. verschoben (33 Feed-Läufe, State fortgeschrieben,
+  freezegun mit erhaltenem `fold`), und um 26 Wochen in die des 28.03.2027;
+  Reihenfolge, Altersgrenzen, Vorlauf und Zeitzeilen stimmten bis auf diese
+  Stellen:
+  - **Zeitzeile:** In der doppelten Stunde (02:00 bis 03:00) las sich der
+    48A-Unfall von 02:26 Sommerzeit um 02:01 Winterzeit, 35 Minuten danach, als
+    „noch nicht begonnen“ und zeigte „[Heute]“ statt „[Seit 02:26]“; umgekehrt
+    hätte ein Unfall von 02:40 Winterzeit um 02:50 Sommerzeit schon „[Seit
+    02:40]“ gezeigt. `format_local_times` und `_plausible_end` vergleichen
+    jetzt in UTC. Die Uhrzeit bleibt die echte Wiener Uhrzeit des Beginns,
+    ohne Zusatz für Sommer- oder Winterzeit.
+  - **Stammstrecke:** `current - FEED_WINDOW` verschob die Wanduhr: am 25.10.
+    reichte das Ein-Stunden-Fenster von 02:00 bis 04:00 Winterzeit zwei Stunden
+    zurück, am Morgen der Umstellung auf Sommerzeit war es von 03:00 bis 04:00
+    leer, eine laufende Verspätung verschwand und konnte ihren gemerkten Beginn
+    verlieren.
+    Die Fenster in `compute_stammstrecke_events`, `_has_recent_exceedance` und
+    `read_recent_stammstrecke_observations` werden in UTC abgezogen. Der Monitor
+    rechnet die Verspätung aus den Wiener Ortszeiten der VAO ebenfalls in UTC
+    (`scripts/update_stammstrecke_status.py`): Ein Zug, fällig 01:55, der zehn Minuten später um
+    03:05 Sommerzeit fuhr, zählte als 70 Minuten verspätet. Eine VAO-Zeit in
+    der doppelten Stunde sagt nicht, welche der beiden gemeint ist; dort
+    rechnet der Monitor weiter mit der Wanduhr, richtig, solange beide Zeiten
+    in derselben der zwei Stunden liegen.
+  - **ÖBB-`pubDate`:** ÖBB versieht jede Veröffentlichungszeit mit dem Offset
+    zum Zeitpunkt des Abrufs. Beim ersten Abruf nach dem 29.03.2026 wechselten
+    alle laufenden Meldungen bei gleicher Uhrzeit von +01:00 auf +02:00, und
+    alle 38 Wintermeldungen im Cache tragen seither +02:00 („19 Dec 2025
+    10:07:13 +0200“). Ab dem 25.10. trügen Sommermeldungen +01:00.
+    `vienna_wall_clock` (`src/utils/vienna_clock.py`) liest die Uhrzeit als
+    Wiener Ortszeit, wenn der Offset nicht zu ihr passt; in der doppelten
+    Stunde passen beide und der gesendete gilt.
+  - **WL-Zeitstempel (seit 2026-10-10 ebenso):** Solange Winterzeit galt,
+    trugen alle Sommerzeiten von WL +01:00 (am 20.03.2026 alle 17, darunter
+    die 11:11-Platzhalter „2027-06-30T11:11:00+01:00“ und Datumsenden
+    „2026-05-31T23:56:00+01:00“); gemeint war die Uhrzeit. In der Sommerzeit
+    stimmen die Offsets beider Jahreszeiten (kein falscher unter 7 775
+    Winterzeiten in jedem 20. Cache-Stand von Mai bis Oktober, keiner unter
+    den 53 der Rohantworten seit 04.10.). Der Fehler tritt also nur in der
+    Winterzeit auf und ist ab dem 25.10. zurückzuerwarten. Ungeschützt
+    zählte ein 11:11-Ende dann als 12:11 nicht mehr als Platzhalter (die
+    Zeitzeile zeigte „[Bis 30.06.2027]“ für rund 27 Hinweise mit einem
+    Sommer-Platzhalter), und ein Ende um 23:56 fiele auf den Folgetag.
+    `wl_fetch._iso` und `wl_resolved._moment` lesen deshalb dieselbe
+    Wanduhr wie ÖBB. Bis zur Umstellung ändert das nichts (alle Offsets
+    passen); ob WL ab 25.10. wieder +01:00 schickt, zeigt der WL-Rohstand
+    dieser Nacht.
+  - Die Statistik-Spalte `hour` zählt am 25.10. die Stunde 02 doppelt; das ist
+    die reale Wiener Stunde und bleibt so.
+
+* **Folgejahre, Jahreswechsel, Schaltjahre (geprüft 2026-10-03 bis 2040).**
+  Dieselbe echte Septembernacht auf jede Umstellung bis 2040 verschoben (letzter
+  Sonntag im Oktober und März, darunter Jahre mit dem 25. und dem 31.), dazu
+  echte Nächte gleichen Wochentags auf jeden Silvester 2026 bis 2040, eine
+  echte Woche über den Jahreswechsel 2026/27 und über den 29.02.2028 sowie die
+  Schalttage 2032, 2036 und 2040: 49 Szenarien, 1 854 Feed-Läufe, deutscher
+  und englischer Feed. Verschoben wird nach der Wiener Uhrzeit (Datum plus N
+  Tage), ein Lauf in der doppelten Stunde läuft zweimal. Bis auf die
+  verschobenen Daten stimmten alle Läufe mit dem Original überein: Jahr in der
+  Zeitzeile nur außerhalb des laufenden Jahres („[Bis 08.01.2027]“ am 31.12.,
+  „[Bis 08.01.]“ ab 01.01.), Wochentag nur bis sechs Tage voraus und richtig,
+  „[Seit 31.12.2026]“ für eine Störung von Silvester nach Mitternacht.
+  Gefunden und behoben:
+  - **WL-Ende ohne Jahr:** WL schreibt das Jahr oft nur beim Beginn („Ab
+    24. August 2026, etwa 06:00 Uhr, bis 07. September“). Das Ende wurde
+    unabhängig davon auf das nächstgelegene Datum gelegt; „Ab 01. Mai 2026
+    bis Ende Dezember“ las sich als Dezember 2025, und das Ende ging verloren.
+    Ein Ende ohne Jahr ist jetzt der erste solche Tag ab dem Beginn im Text
+    (`_end_day`), auch über den Jahreswechsel („Ab 28. Dezember 2026 bis
+    06. Jänner“). In den 228 Texten mit Ende seit Juli änderte sich nichts.
+  - **Statistik-Jahr:** `scripts/generate_markdown_stats.py` las das Jahr beim
+    Einlesen der Argumente von der Uhr der Maschine; ein Lauf mit `--now-iso`
+    in einem anderen Jahr wertete das falsche Jahr aus. Es folgt jetzt der
+    Laufzeit.
+  - **Statistik-Seite am Jahreswechsel:** `docs/statistik.md` wird nur beim
+    Lauf zwischen 00:00 und 00:29 neu geschrieben und zeigt das Kalenderjahr.
+    Ihr letzter Stand eines Jahres entstand am 31.12. gegen 00:15, ohne
+    Silvester, und am 01.01. ersetzte sie ein fast leeres neues Jahr. Jetzt
+    schreibt der erste Dashboard-Lauf eines neuen Jahres zusätzlich das ganze
+    Vorjahr samt 31.12. nach `docs/statistik-<Vorjahr>.md` (Michaels Wahl
+    „Jahresarchiv“, 2026-10-03); fällt der Lauf am 01.01. aus, schreibt sie
+    der nächste. Bis 2026-11-10 wurde die Seite danach nie mehr angefasst;
+    seither folgt sie ihrem Ledger, ist vom Dashboard aus verlinkt und trägt
+    den Abdeckungshinweis ihres Jahres (Teil 15, §12).
+  Tests: `tests/test_calendar_years.py`.
+
+### Zeitraum einer WL-Meldung: Plausibilitätsprüfung (seit 2026-10-02)
+
+Wiener Linien nennen den Zeitraum einer Meldung bis zu dreimal: in
+`time.start`/`time.end`, als „ab“/„am“-Datum im Titel und im Abschnitt
+„Zeitraum:“ der Beschreibung. Ein Tippfehler steht meist nur an einer
+Stelle. Anlass: „47B: Laufveranstaltung am 04.10.2027“ (Text und `time.end`:
+04.10.2026) schob den Beginn ein Jahr hinter das Ende, der deutsche Feed
+zeigte „[Ab 04.10.2027]“ für einen Lauf am selben Sonntag.
+
+`src/providers/wl_plausibility.py` wägt die Angaben gegeneinander ab, in
+dieser Reihenfolge:
+
+1. **Mehrheit bei Widerspruch.** Titel- und Textdatum mit gleichem Tag und
+   Monat, aber anderem Jahr: Es gilt das Jahr näher an der Veröffentlichung
+   (`year_conflict`). Ein Beginndatum vor der Veröffentlichung, dessen Tag in
+   einem späteren Jahr höchstens 90 Tage nach ihr liegt und nicht nach WLs
+   echtem Ende oder dem Text-Ende statt eines Platzhalters (so entschieden
+   vom Betreiber am 12.11.2026, „Ja, Text-Ende zählt“; nicht einem aus einer
+   Dauer gerechneten), trägt das Jahr einer älteren Meldung: Es gilt dieser
+   Tag (`stale_year`, seit 2026-11-11). Anlass: 39B Friedhofsverkehr,
+   „Am 24. Dezember 2024“, stand ab 11.11.2026 als laufend im Feed.
+2. **Harte Grenzen.** Ein Beginn nach dem Ende wird vom Ende überstimmt
+   (`begin_after_end`). Ein Beginn mehr als 365 Tage nach der
+   Veröffentlichung zählt nur, wenn eine zweite Angabe ihn bestätigt
+   (`unconfirmed_lead`). Längster echter Vorlauf im Cache vom 02.10.: 88
+   Tage (Stammstrecke Phase 2).
+3. **Im Zweifel konservativ.** Was offen bleibt, fällt auf `time.start`
+   zurück. Eine Meldung wird wegen eines Widerspruchs nie versteckt; ein
+   `time.start` nach `time.end` wird nur gemeldet (`source_start_after_end`).
+4. **Jede Korrektur wird gesammelt.** Sie steht als Warnung im Log, und
+   `scripts/update_wl_cache.py` führt sie in
+   `data/wl_plausibility_anomalies.json` (gleiches Format wie
+   `data/feed_line_anomalies.json`: `kind`, `title`, `detail`, `first_seen`,
+   `last_seen`, `days_seen`). Die Datei entsteht erst mit der ersten
+   Korrektur.
+
+Die bisherigen Regeln gelten unverändert und zählen nicht als Korrektur: Ein
+11:11-Ende weicht dem Ende aus „Zeitraum:“, ein Beginndatum verschiebt den
+Start nur nach hinten (ein altes Jahr ausgenommen, Regel 1), und ein Textdatum
+hinter dem Ende ist das Datum einer späteren Phase. Was die Prüfung nicht
+sehen kann: eine Angabe, die an allen Stellen gleich falsch ist.
+
+Ein Ende ohne Jahr („Ab 24. August 2026 … bis 07. September“) ist der erste
+solche Tag ab dem Beginn im Text, auch über den Jahreswechsel; ohne Beginn im
+Text das Datum, das der Veröffentlichung am nächsten liegt (seit 2026-10-03).
+
+Nennt „Zeitraum:“ kein Ende, sondern eine Dauer („auf Dauer von etwa sechs
+Wochen“, seit 2026-10-02), gilt statt eines 11:11-Endes der Start aus dem Text
+plus Dauer plus Puffer, auf 23:59 des Tags. Der Puffer ist die halbe Dauer,
+mindestens eine Woche (`MIN_DURATION_BUFFER`): WL schreibt „etwa“, und eine
+Baustelle, die länger dauert, soll nicht aus dem Feed fallen, solange WL sie
+noch ausliefert. Die Rechnung verkürzt ein 11:11-Ende nur, sie verlängert es
+nie. Anlass: „65A/66A“ (ab 12.08., „etwa zwei Wochen“) stand am 02.10. noch
+mit Ende 31.08.2027 im Cache; 29B/N25 endet jetzt am 07.12. statt 31.12.,
+36A/36B am 12.11. statt 16.09.2027, 63A behält sein 11.11.
+
+Eine Haltestellenverlegung oder -auflassung nennt ihren Zeitraum unter
+„Dauer:“ statt „Zeitraum:“ („Dauer: Ab 05. Oktober 2026, etwa 07:00 Uhr für
+etwa zwei Wochen“); alle 37 solchen Meldungen der Rohdaten vom 2026-10-04
+tun das, keine hat „Zeitraum:“. Seit 2026-10-04 gilt „Dauer:“ dort als
+Überschrift des Zeitraums (`_period_text`), mit denselben Regeln. Anlass:
+„26E/N20: Fultonstraße“, am 28.09. für den 05.10. veröffentlicht, stand mit
+„[Bis 28.09.2027]“ (11:11-Ende) im Feed-Nachbau; jetzt „[Ab Mo 05.10. bis
+26.10.]“. 27 der 37 Meldungen beginnen dadurch später (der Tag aus dem Text
+statt der Veröffentlichung), sechs enden früher (27A, 60A und 76A Ende
+Oktober 2026 statt im Herbst 2027). Nur dort: Vier WL-Störungen schreiben „Dauer:“ vor
+eine Uhrzeit oder „Bis 30.10.2026 Betriebsschluss“, das die Beginnregel für
+einen Beginn am 30.10. hielte.
+
+Eine Dauer in Jahren („für etwa ein Jahr“, „für ca. 1 Jahr“, „für etwa
+1,5 Jahre“, „eineinhalb“) zählt seit 2026-10-08 wie Wochen und Monate
+(365 Tage je Jahr). Anlass: 1A Habsburgergasse, 57A Haus des Meeres und
+26A/N20 Siebeckstraße standen mit ihrem 11:11-Ende zwei und drei Jahre
+nach der Veröffentlichung im Feed; jetzt enden sie am 20.07.2027,
+31.08.2027 und 24.09.2028 (Start plus Dauer plus halbe Dauer).
+
+**Ein 11:11-Ende ohne Ende und Dauer im Text erscheint nicht in der
+Zeitzeile** (seit 2026-10-08, Betreiberentscheidung „Kein Ende“,
+`wl_plausibility.end_unknown`). Das 11:11-Ende ist bei WL ein von Hand
+gesetztes Ablaufdatum, meist ein Jahr nach der Veröffentlichung, kein
+erwartetes Ende: Von den 124 Hinweisen mit 11:11-Ende, die WL zwischen dem
+21.02. und dem 08.10.2026 beendete, verschwanden 122 vor diesem Datum, im
+Median 336 Tage davor. Die Zeitzeile liest sich deshalb wie bei jeder
+Meldung ohne Ende: „[Seit 08.10.]“, angekündigt „[Ab Mo 19.10.]“ statt
+„[Bis 08.10.2027]“ (72A Haidestraße S) oder „[Bis 31.12.2027]“ (38A, „auf
+derzeit unbekannte Zeit“). Am 08.10. betraf das 25 der 49 WL-Hinweise mit
+11:11-Ende. Nennt der Text ein Ende oder eine Dauer, bleibt alles wie oben,
+auch ein 11:11-Ende, das eine längere Dauer nicht verkürzt (63A). Ein
+vages Ende („bis voraussichtlich Mitte August 2026“, „bis etwa Frühjahr
+2027“) nennt keinen Tag und zählt als keines; als Monatsletzter gelesen
+hätte es Meldungen beendet, die WL noch auslieferte (85A, „Mitte Mai“, bis
+02.08.2026 gelistet). Eine Dauer-Spanne („für etwa zwei bis drei Wochen“,
+„2–3 Monate“) zählt ebenso als keine Dauer (Betreiberentscheidung
+2026-10-15, „So lassen“): Die Meldung zeigt kein Ende und bleibt, solange
+WL sie ausliefert; falsch ist dabei nichts. In den 9.741 verschiedenen
+Texten aller Anbieter seit 01.07.2026 kam keine Spanne vor, alle 103
+Dauerangaben waren einfache Zahlen. Das 11:11-Datum bleibt das Ablaufdatum der Meldung
+(`ends_at`, Altersfilter); geändert ist nur die Zeitzeile, im englischen
+Feed ebenso.
+
+**Ein Ende um 23:59 genau ein Jahr nach der Veröffentlichung zählt wie das
+11:11-Ende** (seit 2026-11-06, Betreiberentscheidung „Ja, bitte“,
+`wl_plausibility.placeholder_end`). Anlass: „5B: Bauarbeiten“, am 06.11.2026
+um 14:11 veröffentlicht mit „Ab Montag, den 9. November 2026, etwa 07:00 Uhr
+für ca. drei Wochen“, hatte `time.end` 06.11.2027 23:59 und stand ab 14:31
+mit „[Ab Mo 09.11. bis 06.11.2027]“ im Feed; von den elf WL-Hinweisen mit
+einem 23:59-Ende im Cache dieses Tages war es der einzige mit dem Jahrestag
+der Veröffentlichung, die anderen endeten binnen Tagen. Für so ein Ende
+gelten dieselben Regeln wie für 11:11: das Ende aus dem Text, sonst Start
+plus Dauer plus Puffer (5B: 09.11. + 21 Tage + 10,5 Tage, „bis 10.12.“),
+sonst kein Ende in der Zeitzeile. Die Zeitzeile braucht dazu die
+Veröffentlichung der Meldung (`pubDate`, `_shown_end` in
+`src/feed_build/item_meta.py`); ein 23:59-Ende an jedem anderen Tag ist
+ein Ende („bis 08.11.“). Der 29.02. hat seinen Jahrestag am 28.02.
+
+**Ein Text-Ende beendet die Meldung, auch wenn WL sie noch ausliefert**
+(Betreiberentscheidung 2026-10-09, „Text-Ende beendet“). Ist das Ende aus
+dem Text oder aus Start plus Dauer vorbei, verwirft der Abruf die Meldung
+(„außerhalb des Zeitraums“). WL liefert solche Meldungen oft noch Tage bis
+Wochen aus (13 von 52 zwischen Februar und Oktober 2026, 1 bis 41 Tage,
+z. B. 93A/96A/N91 Schillwasserweg „bis etwa Ende Juli“, gelistet bis 10.09.).
+Das ist gewollt und kein Defekt: Bliebe die Meldung, zeigte ihr eigener
+Text („bis etwa Ende Juli 2026“), dass sie abgelaufen ist, und das
+verwirrt. Ein Versuch, sie bis zum Rückzug durch WL zu behalten (#1989),
+wurde mit #1990 zurückgenommen.
+
+#### WL-Hinweis ohne Text (seit 2026-11-07)
+
+Ein WL-Hinweis, dessen Text leer ist (nur Tags, `&nbsp;` und Leerraum),
+wartet, bis WL ihn füllt; der nächste Abruf mit Text bringt ihn in den Feed
+(`_is_empty_wl_notice` in `_post_filter_wl`,
+`src/feed_build/cache_filters.py`). Anlass: WL stellte „5B: Bauarbeiten“ am
+06.11.2026 um 13:59 mit dem Text „<p></p>“ online und füllte ihn um 14:11; der
+Feed von 14:01 zeigte den Titel nur mit „[Seit heute]“ (KI-Wächter, Issue
+#2170). Ein Hinweis-Titel („Bauarbeiten“) sagt nicht, was sich für den
+Fahrgast ändert, und Hinweise stehen hinter Störungen. Eine Störung ohne Text
+bleibt: Ihr Titel nennt Linie und Ursache („U2: Betriebsstörung“). Gemessen
+über alle WL-Cache-Stände seit 01.06.2026 (6.328 Stände, 337 Hinweise): Der
+5B-Hinweis ist der einzige leere, dazu sechs Störungen für je einen bis vier
+Abrufe. Betreiberentscheidung 2026-11-07 („Zurückhalten bis Text da ist“).
+
+#### WL-Netzänderung als Hinweis (seit 2026-11-07)
+
+Eine WL-Langmeldung kommt nur in den Feed, wenn ihr Text ein
+Einschränkungs-Stichwort trägt (`KW_RESTRICTION`, `docs/development-teil-3.md`,
+„Wiener Linien“). Eine Netzänderung schränkt nichts ein – eine Linie bekommt
+eine Haltestelle – und nennt deshalb keines: „9A: Errichtung einer
+Haltestelle“ (ab 07.09.2026) und „57A: Errichtung einer Haltestelle“ (ab
+05.09.) fielen in jedem Abruf vom 04. bis 07.10.2026. WL setzt die Art der
+Meldung als Überschrift an den Textanfang („<h2>Netzänderung</h2>“);
+`is_network_change` (`src/providers/wl_news_kind.py`) liest diese Markierung,
+nicht Wörter im Fließtext, und `_news_passes_gate` in
+`src/providers/wl_fetch.py` lässt die Meldung als Hinweis durch. Sie steht
+ohne Ende im Feed (`_notice_end`): WLs `time.end` ist das Ende des Hinweises,
+Wochen nach der Änderung (9A: ein Monat, N67: zehn Tage), nicht der Maßnahme;
+als „[Bis Mi 07.10.]“ hätte es die neue Haltestelle befristet. Ihren Beginn
+nennt WL unter „Zeitpunkt:“ (`_PERIOD_HEADING_RE`), die Zeitzeile zeigt „Seit
+07.09.“. Auch eine Netzänderung, die das Tor am Stichwort passiert („N67:
+Geänderte Linienführung ab 05.12.2026“: „Die Fahrt über Inzersdorf, Biróstraße
+entfällt“), steht ohne WLs Ende (15.12.). Betreiberentscheidung 2026-11-07
+(„Als Hinweis aufnehmen“).
 
 Weiter in [Teil 6](architecture-teil-6.md).

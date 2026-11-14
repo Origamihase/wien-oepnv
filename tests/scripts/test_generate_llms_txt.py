@@ -190,3 +190,25 @@ def test_real_tree_lists_exactly_its_year_pages() -> None:
     )
     listed = [int(year) for year in re.findall(r"\): Statistik (\d{4}): abgeschlossenes Jahr", out)]
     assert listed == expected
+
+
+def test_later_parts_of_a_split_page_are_not_listed(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """``x-teil-2.md`` has no title of its own; the first page stands for the whole page.
+
+    Since 2026-11-13 ``docs/reference/ki_waechter.md`` has three parts
+    (700-line rule). Without the filter the list gained two entries named
+    after the files, "ki_waechter-teil-2" and "ki_waechter-teil-3".
+    """
+    docs = _docs_tree(tmp_path, monkeypatch)
+    (docs / "reference" / "trip-teil-2.md").write_text("[GET /trip](trip.md), Teil 2.\n", encoding="utf-8")
+    (docs / "reference" / "anteil-2026.md").write_text("# Anteil\n", encoding="utf-8")
+    out = generate_llms_txt.build_llms_txt(BASE)
+    assert f"({BASE}/reference/trip.html)" in out
+    assert "trip-teil-2" not in out
+    assert f"({BASE}/reference/anteil-2026.html)" in out
+
+
+def test_real_tree_lists_each_reference_page_once() -> None:
+    out = generate_llms_txt.build_llms_txt(BASE)
+    assert f"({BASE}/reference/ki_waechter.html)" in out
+    assert "-teil-" not in out

@@ -490,7 +490,7 @@ def _redirect_build(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> Path:
     monkeypatch.setattr(bf.feed_config, "STATE_FILE", tmp_path / "state.json")
     monkeypatch.setattr(bf.feed_config, "FEED_HEALTH_PATH", tmp_path / "feed-health.md")
     monkeypatch.setattr(bf.feed_config, "FEED_HEALTH_JSON_PATH", tmp_path / "feed-health.json")
-    monkeypatch.setattr(bf, "_save_state", lambda state, deletions=None: None)
+    monkeypatch.setattr(part(bf, "outputs"), "_save_state", lambda state, deletions=None: None)
     monkeypatch.setattr(bf, "_load_state", lambda: {})
     # ``main`` would read the configuration from the environment again.
     monkeypatch.setattr(bf, "refresh_from_env", lambda: None)

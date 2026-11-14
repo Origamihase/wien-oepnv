@@ -1,400 +1,358 @@
 [Architektur-Karte — Wien ÖPNV Feed](architecture.md), Teil 8.
 
-## 13. Wo ein Satz endet: der Punkt einer Abkürzung (seit 2026-11-12)
+## 5. Stationsverzeichnis-Anreicherung (GeoNetz → HAFAS)
 
-WL und ÖBB kürzen mitten im Text ab: „Bhf. Meidling“, „Hlst. Li. 95A“, „prov.
-Haltestelle“, „bzw. Lainzer Tor“, „Josefstädter Str.“, „Fahrleitungsgebr.“,
-„Johann-N.-B.-Pl.“, „Zentralfriedhof, 4. Tor“, „bis 03. Juni“. Jeder Schritt,
-der das Ende eines Satzes sucht oder einem Satz den Schlusspunkt abnimmt, muss
-diese Punkte vom Satzende unterscheiden („… und S80. Die …“, „… durch einen
-PKW. Grund: …“, „… Fahrzeit ein.“). Bis 2026-11-11 hatte jeder Schritt dafür
-eine eigene Regel: Die Kürzung hinter einem ganzen Satz hielt „Bhf.“ für ein
-Satzende und „U.“ nie, der Titel ließ „2: Fahrleitungsgebr“ ohne seinen Punkt
-stehen, und die Kürzung auf 180 Zeichen warf „ein.“ und „D.“ weg, als wären es
-Abkürzungen. Seit 2026-11-12 fragen diese Schritte dieselbe Regel
-(`src/feed_build/abbreviations.py`; Auftrag des Betreibers vom 11.11.2026,
-Klasse 15 der Qualitätsprüfung der Wächter-Funde vom 06.11.). Klasse 16
-derselben Prüfung, „am Bahnhof“ als Haltestelle maskiert, steht in Teil 6 unter
-[Was am Modell vorbeigeht](architecture-teil-6.md#was-am-modell-vorbeigeht)
-(„Ein Haltestellenname beginnt groß“).
+Stationskoordinaten und -Metadaten werden über eine geschichtete
+Anreicherungspipeline befüllt, die von
+`scripts/update_station_directory.py` orchestriert wird. Eine Station
+behält ihre bisherige Koordinate (Koordinaten-Trägheit). Fehlt ihr eine,
+bekommt sie zuerst den GeoNetz-Punkt ihrer `bst_id`
+(`_fill_coordinates_from_geonetz`, ÖBB-Infrastruktur, CC BY 3.0 AT);
+HAFAS (ÖBB Scotty) fragt der Lauf nur noch für den Rest. Eine Station,
+die auch HAFAS nicht auflöst, bleibt ohne Koordinate; der Lauf nennt sie
+in einer Warnung.
 
-**Die Regel** (`is_abbreviation`, `is_abbreviation_period`) liest die Form des
-Wortes vor dem Punkt, keine Liste aller Abkürzungen:
+> **Entscheidung 2026-10-17 (Michael): keine OpenStreetMap-Stufe mehr.**
+> Bis dahin war OpenStreetMap (Overpass) die erste Stufe des Stationslaufs
+> und im WL-Lauf der Schiedsrichter, wenn WL und HAFAS sich bei einer
+> gemeinsamen Station widersprachen. OSM-Werte stehen unter der ODbL 1.0;
+> je Station mit WL-, GeoNetz- und HAFAS-Werten in einer Datei gemischt,
+> wird `data/stations.json` eine abgeleitete Datenbank, die als Ganzes
+> unter der ODbL stehen müsste. Das geht nicht, weil die Datei auch Daten
+> ohne geklärte Weitergaberechte enthält. Auf die Frage „OSM-Koordinaten
+> durch GeoNetz/WL ersetzen und den wöchentlichen OSM-Lauf keine
+> Koordinaten mehr schreiben lassen?“ antwortete er „Ja, bitte“. Alle 150
+> Einträge mit dem Token `osm` haben seitdem die Koordinate aus GeoNetz
+> oder der WL-OGD-Liste (bei WL-Stationen die WL-Koordinate, die der
+> Abgleich ohne Schiedsrichter behält); 93 lagen schon unter 1 m daneben,
+> 56 unter 200 m. Die eine große Abweichung war ein Fehler der OSM-Stufe:
+> `Siebenhirten` (`bst_id` 1371, bei Mistelbach) trug über den Namen die
+> Koordinate des gleichnamigen Ortsteils in Liesing. Deshalb füllt
+> `_fill_coordinates_from_geonetz` nur über die `bst_id`, nie über den
+> Namen. Derselbe Namensfehler steckte in der Wien-Grenze: `in_vienna`
+> prüfte die Koordinate, die der Lauf über den Namen fand, und das war für
+> Siebenhirten die Liesinger WL-Haltestelle. Seitdem prüft
+> `_annotate_station_flags` eine Station mit GeoNetz-Punkt ihrer `bst_id`
+> an diesem Punkt, und die WL-Hochstufung zu `pendler` gilt nur, wenn der
+> geprüfte Ort der über den Namen gefundene ist. Siebenhirten liegt weder in
+> Wien noch im Pendlergürtel und ist aus dem Verzeichnis gegangen (im Nachbau
+> ohne Folge für den Feed). Weil die Grenze damit `Kaiserebersdorf` (1059)
+> als Wien erkennt, für das schon der Ersatzeintrag `Wien Kaiserebersdorf`
+> (900105) steht, und das ÖBB-Excel `Handelskai` (1586) neben
+> `Wien Handelskai` (779) führt, behält `_drop_duplicate_eva` je EVA-Nummer
+> nur einen Eintrag, den schon vorhandenen. Entfernt sind `_enrich_with_osm`, der Schalter
+> `--osm-enrich`/`WIEN_OEPNV_OSM_ENRICH`, der OSM-Schiedsrichter in
+> `scripts/update_wl_stations.py` (ein Widerspruch WL/HAFAS behält WL) und
+> der Overpass-Vorabtest in `update-stations.yml`. `src/places/osm_client.py`
+> und `scripts/check_overpass_status.py` bleiben mit ihren Tests im
+> Repository, ohne Aufruf im Produktivlauf. Der Feed war nie betroffen:
+> GeoRSS nimmt nur GeoNetz, WL-OGD und Stadt Wien (§1); der Nachbau von
+> 198 Feed-Ständen (13.–17.10.2026) mit altem und neuem Verzeichnis war
+> identisch, ein Stationslauf mit dem neuen Code änderte außer Siebenhirten
+> kein `in_vienna` und kein `pendler`.
 
-* Ein Wort aus Buchstaben ohne Vokal ist eine Abkürzung („Bhf“, „Hbf“, „Hlst“,
-  „Str“, „St“, „Nr“, „Wr“, „bzw“, „zw“, „b“); ein deutsches Wort hat einen
-  („Uhr“, „aus“, „ein“).
-* Kein deutsches Wort endet auf einen Konsonanten und „r“, außer auf „hr“
-  („Uhr“, „Verkehr“) und „rr“ („Herr“): „Fahrleitungsgebr“, „Hauptstr“ und
-  „Hausnr“ sind gekürzt.
-* Ein Wort aus Großbuchstaben oder mit einem Großbuchstaben im Inneren ist ein
-  Name, eine Linie oder ein Kurzwort und beendet einen Satz wie jedes Wort
-  („PKW“, „KG“, „WLB“, „GmbH“, die Zeichen „S“ und „U“ der Haltestellen, die
-  Linie „D“), ebenso eine Linie mit Ziffern („S80“, „N20“). Ein einzelner
-  Großbuchstabe direkt hinter einem Bindestrich oder Punkt ist die Initiale
-  eines Namens („J-Baumann-G.“, „V.I.C.“).
-* Einige Abkürzungen haben einen Vokal oder einen Großbuchstaben im Inneren.
-  `_WITH_VOWEL` hält die, die WL, ÖBB und Stadt Wien von April bis November
-  2026 in die Caches schrieben („ca.“, „ggü.“, „prov.“, „geg.“, „Li.“, „Ri.“,
-  „Haltest.“, „gem.“, „mind.“, „etc.“, „ONr.“), dazu „usw.“, „sog.“, „evtl.“
-  und „inkl.“ aus der früheren Liste der Kürzung hinter einem Satz. „Pkw“,
-  „Lkw“ und „Kfz“ haben keinen Vokal, stehen aber für ein Hauptwort und beenden
-  einen Satz wie eines.
-* Eine Zahl mit einer oder zwei Ziffern ist eine Ordnungszahl und kein
-  Satzende, wenn ein Monat, „Tor“, „Bezirk“ oder die „Haidequerstraße“ folgt
-  („bis 03. Juni“, „Zentralfriedhof, 4. Tor“, „1. Bezirk“, „1.
-  Haidequerstraße“), eine Abkürzung mit ihrem Punkt (WLs „Li. 6. Ri.
-  Geiereckstr.“ vom 05.04.2026), oder wenn sie in einer offenen Klammer steht
-  („(Simmeringer Platz, Busbahnhof, 3. und 4. Haltestelle)“, „(Nacht von 6.
-  auf 7.)“). „die Linie 49. Voraussichtliche Dauer“, „über Gleis 2.
-  Voraussichtliche …“ und „der Linien 43 und 9. Haltestelle Mayssengasse“
-  (Linie 2, 06.11.2026) enden dort.
+> **Falsche WL-Koordinaten (seit 2026-10-25):** Die Regel „nur offen
+> lizenzierte Koordinaten“ gilt auch für die Korrekturschicht
+> `data/stations_overrides.json`. Drei ihrer Einträge setzten die
+> Koordinate der Haltestellen Leopoldine-Padaurek-Straße, Halblehenweg und
+> Wassermanngasse (DIVA 60201954 bis 60201956), die die WL-OGD-Liste seit
+> Mai im Waldviertel führt; zwei dieser Werte waren nach OpenStreetMap
+> bzw. Google Maps bestimmt. Sie sind entfernt. Stattdessen nimmt
+> `scripts/update_wl_stations.py` für jede DIVA, deren OGD-Haltepunkte alle
+> außerhalb des WL-Netzes liegen, dieselbe Haltestelle aus den
+> GTFS-Fahrplandaten der Wiener Linien (`data/wienerlinien-gtfs-stops.csv`,
+> CC BY 4.0, wöchentlich geladen). Das deckt jeden künftigen Fall dieser
+> Art ohne Handarbeit ab. Im Nachbau des Stationslaufs mit altem und neuem
+> Code änderten sich nur diese drei Einträge, um 5 bis 19 m, kein
+> `in_vienna`, kein `pendler`, keine Quarantäne.
+>
+> **Tote Stationsquellen fallen auf (seit 2026-10-25):** Scheitert ein
+> Abruf, rechnet der Stationslauf mit der letzten guten Kopie unter
+> `data/` weiter und bleibt grün. Jede gute Antwort (200 oder 304) stempelt
+> deshalb `checked_at` in die `.cache.json`-Datei neben der Kopie, und der
+> Health check („Stationsquellen“, `scripts/health_check.py`) wird rot,
+> wenn ein Stempel älter als 15 Tage ist, also zwei Wochenläufe in Folge
+> ohne Antwort blieben. Grund ist die Regel des Betreibers, dass eine
+> Quelle, die nicht mehr läuft, ihm auffallen muss (16.10.2026); eine
+> Warnung im Protokoll reicht nicht.
 
-**Wo sie gilt.** Jede Stelle des deutschen Feed-Baus, die Sätze trennt oder
-einen Schlusspunkt abnimmt, außer den unter „Grenzen“ genannten; der englische
-Feed übersetzt das Ergebnis.
+> **Entscheidung 2026-10-16 (Michael): keine Google-Places-Stufe mehr.**
+> Bis dahin war Google Places die dritte Stufe für die Restmenge. Das
+> Verzeichnis soll nur Koordinaten führen, deren Herkunft und
+> Bedingungen bekannt sind (`NOTICE.md`); die 18 Google-Koordinaten
+> wurden in #2025 durch ÖBB-GeoNetz und WL-OGD ersetzt. Der Schlüssel
+> erreichte zudem seit 2026-05-11 keinen Workflow mehr, die Stufe lief
+> also längst still ins Leere. Entfernt sind der Client
+> (`src/places/client.py`, `quota.py`, `tiling.py`, `diagnostics.py`),
+> die Skripte `fetch_google_places_stations.py` und
+> `verify_google_places_access.py`, `data/places_quota.json`, die
+> Quota-Prüfung `--check places` in `scripts/preflight_quota_check.py`
+> und `places.googleapis.com` aus `PROXY_TRUSTED_HOSTS`. Die
+> Datenklasse `Place` liegt jetzt in `src/places/place.py`.
 
-* Die Kürzung hinter einem ganzen Satz, wenn die Folge eines WL-Tickers vor der
-  Beschreibung steht (`_last_sentence_end` und `_lead_with_fragment` in
-  `src/feed_build/title_words.py`, Teil 1, „Ticker-Titel: Ursache oben, Folge
-  darunter“). Seither zählt dort nur ein Satz der Beschreibung, und er endet an
-  jedem Wort, das die Regel nicht als Abkürzung liest, auch an „U.“, „D.“ und
-  „Gleis 2.“ (bis 2026-11-11 nie an einem Wort unter drei Buchstaben oder einer
-  Zahl). Passt keiner, wird an einer Wortgrenze gekürzt wie jeder andere Text,
-  statt nur die Folge zu zeigen. Ein Satz, der genau am 180. Zeichen endet,
-  zählt („… 52 und 48A aus.“ bei 13A am 26.09.2026; der Großbuchstabe danach
-  liegt hinter der Grenze). Fünf Beschreibungen vom 29.09. bis 06.11.2026
-  bestanden nur aus der Folge („13A: Feuerwehreinsatz“ am 05.11.: „Betrieb ab
-  Neubaugasse, Burggasse.“), und für N8 hätte WLs Text vom 30.10. „Betrieb ab
-  Bhf. Meidling. Die Linie N8 wird in beiden Richtungen zwischen Bhf.“
-  ergeben. Für Linie 6 am 21.08. endet der Text jetzt „… über Hauptbahnhof.“
-  vor „Grund: Polizeieinsatz“ (WL: „Hauptbahnhof S U.“).
-* Die Kürzung auf 180 Zeichen (`_should_drop_trailing_tail` und
-  `_trim_truncation_tail` in `src/feed_build/summary_text.py`) nimmt ein
-  angeschnittenes Wort mit Punkt nur weg, wenn es eine Abkürzung ist, deren
-  Namen der Schnitt abtrennt (bleibt von „gegenüber Bhf. Meidling“ nur
-  „gegenüber Bhf.“, endet der Text „… gegenüber …“), und eine Zahl mit Punkt
-  nur, wenn sie im ungekürzten Text eine Ordnungszahl ist („bis 03.“ vor
-  „Juni“). Ein Wort, das seinen Satz beendet, bleibt: „Planen Sie ca. 15
-  Minuten mehr Fahrzeit ein.“ verlor am 19.08.2026 sein „ein.“
-  (25/26/27/N20), „… die baustellenbedingte Streckensperre der Linien D.“
-  endete am 22.10. auf „Streckensperre …“, „Voraussichtlich bis 11:15 Uhr.“
-  am 13.10. auf „bis 11:15 …“ (38); ein WL-Text der Linie 71 vom Mai 2026 („…
-  im Bereich Simmeringer Hauptstraße 26. Das Ende der Störung …“) endete in
-  der Kürzung auf „Hauptstraße …“.
-* Die ausführliche Meldung eines Vorfalls (`_is_long_message` in
-  `src/feed_build/wl_tickers.py`, Teil 1, „Ein Vorfall, ein Platz“): Ein
-  Ticker, der mit einer Abkürzung endet („Züge halten bei Linie 12 Richtung
-  Josefstädter Str.“), ist keine, solange davor kein Satz endet. Am 23.10.2026
-  galt er als eine, behielt seine Ursache, und der Feed las „12: Fremdunfall“
-  über „Fremdunfall Züge halten bei Linie 12 Richtung Josefstädter Str. Fremder
-  Verkehrsunfall.“. Unter allen WL-Titeln und -Texten seit April enden 46 so;
-  keiner davon ist eine ausführliche Meldung.
-* Der Titel einer Tafel-Meldung (`_first_title_sentence` in
-  `src/feed_build/display_titles.py`) behält den Punkt einer Abkürzung und
-  endet an jedem anderen Satzende („Streckensperre der Linie D. Betrieb ab …“;
-  bis 2026-11-11 erst hinter drei Kleinbuchstaben). „Umleitung ab
-  Arbeitergasse über Gürtel - Flurschützstr.“ verlor den Punkt am 30.10.2026,
-  der Titel passte nicht mehr zu WLs Beschreibung, und der Feed las „59A:
-  Feuerwehreinsatz“ über „Feuerwehreinsatz Umleitung ab Arbeitergasse über
-  Gürtel - Flurschützstr.“; ebenso stand am 09.11. „2: Fahrleitungsgebr“ ohne
-  Punkt im Feed. Verliert ein Titel nur sein Schlusszeichen, wiederholt der Text
-  ihn nicht (`_summary_duplicates_title` in `src/feed_build/item_format.py`):
-  WLs „18: Gasrohrgebr. Kein Halt!!!“ vom 04.05.2026 ergäbe sonst „18:
-  Gasrohrgebr. Kein Halt“ über „Gasrohrgebr. Kein Halt!!!“.
-* Der erste Satz eines Abschnitts, wenn wiederholte Linienabschnitte
-  zusammengelegt werden (`_lead_end` in `src/feed_build/wl_measures.py`): Er
-  endet nicht an „4.“. WLs Text vom 08.07.2026 („Linie 11: Kein Betrieb
-  zwischen Fickeysstraße und Zentralfriedhof, 4. Tor. Linie 71: …“) ergab sonst
-  „4. Tor. Tor.“; der Feed zeigte an diesem Tag die Ticker, nicht diesen Text.
-* Das Verbinden mit „; “ und der Pfeil einer Verlegung (`without_full_stop`,
-  genutzt in `wl_ticker_text.py`, `wl_joins.py` mit `_with_unowned` und
-  `_with_line_tickers`, `relocation.py` und `wl_notices.py`): Der Schlusspunkt
-  fällt weg, der Punkt einer Abkürzung bleibt („Betrieb nur bis Bhf. Meidling
-  Dörfelstr.; Betrieb ab …“, „13A: Umleitung über Josefstädter Str.; 57A: …“,
-  „Josefstädter Str. → Lange Gasse 5“), und ein Satz, den WL mit „!“ schloss,
-  bekommt keinen zweiten Punkt („Busse halten bei 13A!.“ bei N46 am
-  28.10.2026).
+> **Hinweis zur GeoNetz-Anreicherung:** Orthogonal zur Koordinaten-Kaskade
+> läuft `_enrich_with_geonetz`. Es liest die gepinnte
+> `data/oebb_geonetz_stops.json` (eine kompakte Stops-Projektion, die
+> `scripts/extract_oebb_geonetz_stops.py` aus dem 23 MiB großen
+> ÖBB-Infrastruktur-`GeoNetz_*.zip` extrahiert) und hängt **Identifier-
+> Metadaten** an — EVA-Nummer und IFOPT-ID, markiert über den Source-Token
+> `oebb_geonetz`. Das ist mit ~390 Stationen die zweithäufigste
+> Source-Klasse im Verzeichnis, **liefert aber keine Koordinaten** und ist
+> daher keine eigene Tier-Stufe.
 
-**Haltestellenzeichen hinter einem Namen mit Punkten.** WL schreibt
-„Kaisermühlen, V.I.C. U“, das Verzeichnis „Kaisermühlen, VIC“. Die Kürzung auf
-180 Zeichen warf das „U.“ am Ende eines 92B-Texts vom 18.08.2026 bisher als
-Abkürzung weg; seit es als Satzende bleibt, muss das Zeichen dort wie überall
-fallen. `without_stop_markers` in `src/utils/wl_stop_markers.py` erkennt einen
-Namen deshalb auch mit den Punkten, die das Verzeichnis weglässt, und der
-letzte Punkt des Namens beendet dann zugleich den Satz: „… Kaisermühlen, V.I.C.
-U. …“ wird „… Kaisermühlen, V.I.C. …“, wie die Kürzung es vorher zeigte (Teil
-5, [Haltestellen ohne „S“ und „U“](architecture-teil-5.md#haltestellen-ohne-s-und-u-seit-2026-11-04)).
+```mermaid
+flowchart LR
+    A[ÖBB-Verzeichnis<br/>(Excel)] --> B[Stationsliste<br/>mit bisherigen Koordinaten]
+    B --> H[Stationen ohne Koordinaten?]
+    H -- ja --> G[GeoNetz-Punkt der bst_id<br/>(_fill_coordinates_from_geonetz)]
+    G --> N[Rest noch ohne Koordinaten?]
+    N -- ja --> K[HAFAS Mgate<br/>(src/places/hafas_client.py)]
+    K --> L[HAFAS CircuitBreaker<br/>5 Fails / 5 Min Cool-off]
+    L --> M[Rest noch ohne Koordinaten?]
+    M -- ja --> I[Warnung mit Stationsnamen<br/>(Station bleibt ohne Koordinate)]
+    M -- nein --> J[stations.json]
+    N -- nein --> J
+    H -- nein --> J
+    I --> J
+```
 
-**Gemessen.** Über alle Titel und Beschreibungen der WL-, ÖBB- und
-Baustellen-Caches seit April 2026 und den veröffentlichten deutschen Feed liest
-die Regel jedes Wort, das sie Abkürzung nennt, als gekürzt. Nachspiel alt
-gegen neu durch die ganze Kette (`main()` mit Cache und Zustand jedes Stands,
-die Übersetzung durch ein Echo ersetzt): 4.244 Feed-Stände vom 15.08.2026,
-03:01 Wien, bis 12.11.2026; kein Stand scheitert, 597 Stände des deutschen
-Feeds ändern sich, alle auf die beschriebenen Arten. Am häufigsten endet eine
-Verlegung mit ihrem Satz, wo die Kürzung hinter „Alterlaa U.“ fiel (WLs
-Überschrift „… beziehungsweise Alterlaa U“, als Satz geschlossen; jetzt „…
-beziehungsweise Alterlaa. …“ statt „… Alterlaa …“, 64A/N64R in 350 Ständen,
-35A/N35R/N35 in 108, 12A/14A in 85); WLs „40A. aus.“ bleibt (D, 51); „54B:
-Stock im Weg“ zeigt vom 11.11. an „Ghelengasse 30 → Ghelengasse 28“ mit
-beiden Zielen, weil die Kürzung „32.“ vor „Haltestellenverlegung“ als
-Satzende behält und die Ziele damit ganz zeigt (29; Teil 2, Verlegung);
-„57A: Derzeit keine Echtzeitinformation“ wiederholt den Titel nicht (27);
-„13A: Veranstaltung“ am 26.09. endet hinter „… 52 und 48A aus.“ statt mitten
-in der Linienliste (16).
+**Warum HAFAS der Level-2-Fallback ist:****Warum HAFAS der Level-2-Fallback ist:**
 
-**Grenzen.** Die Form verrät kein gekürztes Wort, das einen Vokal behält und
-anders endet („Quartier Belv.“, „Matzleinsd. Platz“, „Schwarzenbergpl.“, je
-ein- bis dreimal seit April), keine Abkürzung am Satzende („Oberleitung def.
-Betrieb ab Kagran“), deren Punkt beides ist, und keine Ordnungszahl vor einem
-verschriebenen Monat („31. Auust“). WLs eigener Tippfehler „… 71 und 40A.
-aus.“ (30.09.2026, so auch veröffentlicht) steht jetzt auch am Ende einer
-Kürzung, wie WL ihn schrieb. Eigene Regeln für das Satzende haben noch: die
-Satztrennung in `base.py` (`_SENTENCE_SPLIT_RE`, vier Buchstaben vor dem Punkt;
-sie sieht hinter „N81.“ oder „ein.“ kein Satzende), die ÖBB-Sätze
-(`_oebb_first_two_sentences`, die Strecken in `oebb_routes.py` und
-`_sentence_around` in `oebb_route_title.py`), die Sätze der Baustellen
-(`_split_into_sentences` mit eigener Liste in `baustellen.py`), das
-Zusammenlegen von Beschreibungen (`_collapse_description_prefix` in
-`merge_texts.py`), der englische Feed (`_WL_SENTENCE_SPLIT_RE`,
-`_OEBB_SENTENCE_SPLIT_RE`, `_capitalise_glossary_after_stop`) und die Prüfer
-(`_ends_its_sentence` des KI-Wächters, `feed_rules.py`, `count_sentences` des
-Jahresrückblicks). Sie verwechseln vor allem die andere Richtung, ein echtes
-Satzende, das nicht als eines gilt; das ist eine eigene Klasse. Tests:
-`tests/test_abbreviation_periods.py`, `tests/test_bhf_cut_and_phrase_stops.py`,
-`tests/test_wl_stop_markers.py`, `tests/test_ticker_title_split.py`.
+- **Betreiber-authoritative Koordinaten und EVA-Nummern.** HAFAS ist
+  die hauseigene Routing-Backbone der ÖBB. Eine `LocMatch`-Query
+  liefert den kanonischen Stationsrecord zusammen mit der EVA-Nummer
+  (`extId`, z. B. `"8100353"` für Wien Hauptbahnhof), die das Projekt
+  in jeder HAFAS-aufgelösten Station als Top-Level-Feld
+  `hafas_extId` persistiert. Die Antwort-Koordinaten sind in
+  Mikrograd codiert (`x=16377778` → `16.377778°`) und werden von
+  `src/places/hafas_client.py:_extract_first_location` zu
+  WGS84-Floats skaliert.
+- **Kein Tages-/Monats-Request-Budget.** Anders als der
+  VAO-ReST-Endpoint (gedeckelt auf 100 Req/Tag, reserviert für den
+  Stammstrecken-Monitor — siehe §7) hat die HAFAS-Mgate-API kein
+  publiziertes per-Konsumenten-Limit, das die Cron-Pipeline
+  routinemäßig reißen würde.
+- **Selbstheilende Credential-Rotation.** Die ÖBB rotiert das
+  Mgate-`salt`/`ver`/`aid`-Tripel ohne Vorankündigung. Das
+  Begleit-Skript `scripts/sync_hafas_profile.py` läuft in
+  `update-stations.yml` **vor** der Anreicherung, extrahiert die
+  aktuellen Werte aus dem Open-Source-Profil
+  `public-transport/hafas-client` (OEBB-Profil:
+  `p/oebb/index.js` + `p/oebb/base.js`) und persistiert sie atomar
+  nach `data/hafas_profile.json`. Ein rotiertes Upstream-Profil
+  fließt damit automatisch in den nächsten Cron-Tick ein — das
+  zwischengespeicherte Profil wird bei jedem Lauf aus der kanonischen
+  Quelle neu aufgebaut.
+- **Schlanke Integration.** Es wird **keine** externe
+  HAFAS-Client-Bibliothek verwendet. Der Mgate-`LocMatch`-Body wird
+  direkt konstruiert, durch
+  `json.dumps(payload, separators=(',', ':'))` serialisiert
+  (sodass die On-the-Wire-Bytes byte-genau dem MAC-Input entsprechen),
+  optional mit `MD5(body + salt)` signiert, sobald das Upstream-Profil
+  ein Salt trägt (aktuell nicht), und durch dieselbe
+  `request_safe`-Security-State-Machine (§2) abgesetzt wie jeder
+  andere Provider. Ein dedizierter modulweiter
+  `CircuitBreaker("hafas_enrichment", failure_threshold=5,
+  recovery_timeout=300.0)` kühlt das Upstream nach einer Fehlerserie
+  fünf Minuten lang — eine ÖBB-Störung kann die Cron-Pipeline damit
+  nicht in Selbst-DDoS treiben. `CircuitBreakerOpen` wird am
+  öffentlichen Einstiegspunkt zu `None` konvertiert: ein
+  HAFAS-Schluckauf crasht das Skript nicht; die betroffenen Stationen
+  behalten ihre bisherige Koordinate oder bleiben ohne.
+  Den Transport (Profil, Umschlag, MAC, `request_safe`, JSON-Hooks)
+  kapselt seit 2026-09-25 `post_mgate(svcReqL, max_bytes=…)`, damit
+  weitere Mgate-Methoden (z. B. `StationBoard` für die Linien je
+  ÖBB-Bahnhof, Stufe 2 der Linien-Prüfung aus A.14) denselben Weg
+  nehmen; der Circuit Breaker bleibt Sache des jeweiligen Aufrufers.
+  Die Antwortform dafür erhebt das manuelle Diagnoseskript
+  `scripts/probe_hafas_lines.py` im Workflow `probe-hafas-lines.yml`
+  (nur `workflow_dispatch`, höchstens sechs Anfragen, schreibt nichts).
+  Erster Lauf (2026-09-25): `LocMatch` liefert je Station nur die
+  Produktklassen (`pCls`, Bitmaske laut `hafas-client`: 32 = S-Bahn,
+  16 = R/REX, 256 = U-Bahn, 512 = Straßenbahn), keine Linien. Eine
+  `StationBoard` mit `getPasslist` lehnt ÖBB mit `err=PARSE` ab.
 
-## 14. Gemini entscheidet, wo die Regeln eine Störung offen lassen (seit 2026-11-12)
+**ÖBB-Linien je Bahnhof (Stufe 2 der Linien-Prüfung, seit 2026-09-25).**
+`scripts/update_oebb_station_lines.py` läuft wöchentlich in
+`update-stations.yml` (eigener Schritt, `continue-on-error`, 25 Minuten) und
+schreibt ausschließlich `data/oebb_station_lines.json`:
 
-Betreiberentscheidung vom 12.11.2026 (Michael): „Erstelle ein neues
-Entscheidungs-Modul mit Gemini. Verwende den vorhandenen, modularen
-Gemini-Konnektor … Wenn bei einer Meldung nicht klar ist, ob sie eine Störung
-oder ein Hinweis ist, soll Gemini dies über ein neues Modul entscheiden können.
-Plötzliche Störungen haben Priorität. Geplante Hinweise kommen danach. Neue
-Störungen sind an den ersten Plätzen. Alte (aber noch gültige) Hinweise an den
-letzten Plätzen.“ Zur Karte „Soll ich die Gemini-Entscheidung für unklare Fälle
-so bauen?“: „Ja, so bauen“. Es ist seine zweite ausdrückliche Ausnahme von
-„eine KI liest nur mit und meldet“ (Teil 3, „KI-Wächter“); einen Text des Feeds
-schreibt weiter keine KI.
+- Umfang: die ÖBB-Bahnhöfe (`bst_id`) in Wien und im Pendlerraum, derzeit
+  162. Die HAFAS-Stations-ID ermittelt `LocMatch` mit bis zu acht
+  Kandidaten (`pick_rail_location`): Es zählt der nächstgelegene Kandidat,
+  dessen Produktklassen (`pCls`) R/REX oder S-Bahn enthalten (16 | 32) und
+  der höchstens 800 m entfernt liegt. Nur diese Züge tragen Liniennummern.
+  Irgendeine Bahnklasse reichte nicht: Sie ließ am 26.09. das Busterminal
+  am Flughafen Wien (pCls 1090, „CAT by bus“) vor dem Bahnhof gewinnen.
+  Findet der volle Name keinen Bahn-Halt, folgt eine zweite Anfrage mit
+  der ÖBB-Abkürzung (`short_name`: „Wien Hauptbahnhof“ → „Wien Hbf“);
+  „Wien Hauptbahnhof“ lieferte nur Meidling, Floridsdorf, Hütteldorf und
+  den Flughafen. Der Ort bleibt in der Anfrage, und der 800-m-Umkreis um
+  die eigenen Koordinaten schließt jeden anderen Hauptbahnhof aus
+  (St. Pölten: 56 km). Ein Treffer der zweiten Anfrage muss außerdem „Hbf“
+  im Namen tragen: Quartier Belvedere liegt 526 m vom Hauptbahnhof.
+  Gespeichert werden ID, HAFAS-Name, Klassen und Abstand.
+  Zuordnungen nach älteren Regeln werden einmal neu ermittelt, ein
+  Bahnhof ohne Linie bei jedem Lauf.
+- Derselbe Ort, mehrere Halte: HAFAS führt manche Bahnhöfe als mehrere
+  Halte mit denselben Koordinaten, und nur einer davon trägt die
+  Abfahrten („Simmering (Wien)“ und „Wien Simmering Bahnhof (U)“,
+  „Himberg b.Wien Bahnhof“ und „Himberg b.Wien“; gewählt war jeweils der
+  mit leeren Tafeln). Zeigen die Tafeln des gewählten Halts keine Linie,
+  werden bis zu zwei weitere R/REX- oder S-Bahn-Halte im Umkreis von 50 m
+  um ihn abgefragt (`same_place_stops`); der erste mit Linien wird
+  gespeichert. Nicht weiter: Quartier Belvedere liegt 526 m vom
+  Hauptbahnhof.
+- Diagnose im Log: jede Zuordnung mit Name, Klassen und Abstand; ohne
+  Bahn-Halt alle `LocMatch`-Kandidaten (`describe_candidates`); bei Tafeln
+  ohne Linie je Zeitfenster Abfahrten, Produkte und deren `catOut`/`line`/
+  `lineId` (`board_summary`), dazu die Kandidaten.
+- Je Bahnhof und Lauf vier `StationBoard`-Anfragen: nächster Dienstag und
+  der Dienstag fünf Wochen später, jeweils 06:00–09:00 und 15:00–18:00,
+  nur Bahnklassen (Filter 4159), `maxJny` 400. Ohne `maxJny` lieferte
+  HAFAS im Messlauf nur rund 50 Abfahrten.
+- Linien stammen aus `prodCtx.lineId` (`at:obb:vor|S45:` → `S45`), sonst
+  aus `catOut` + `line`. Fernzüge (RJ, IC, WESTbahn) tragen nur
+  Zugnummern und zählen nicht; Schienenersatzverkehr (`catOut` Bus bzw.
+  „Schienenersatzverkehr“) zählt nie als Linie.
+- Jede Linie trägt das Datum, an dem sie zuletzt gesehen wurde, und fällt
+  erst nach drei Jahren ohne Nachweis heraus (bis 2026-09-26: 56 Tage).
+  Lange Sperren sind die Regel, eine Linie soll sie überdauern. Fällt eine
+  Linie wirklich weg, bleibt sie so lange bekannt; Stufe 3 übersieht dann
+  höchstens einen Befund, einen falschen erzeugt das nicht. Ein Bahnhof
+  ohne Antwort behält seine Linien unverändert. Nach fünf Fehlschlägen in
+  Folge endet der Lauf und schreibt, was er hat. Zwischen den Anfragen
+  liegen 0,5 Sekunden.
+- **Grenze:** Die Datei beschreibt, was fährt oder in den letzten drei
+  Jahren gefahren ist, nicht das geplante Netz. Eine Sperre, die begann,
+  bevor Stufe 2 die Linie je gesehen hat, versteckt sie ganz. Das betrifft
+  die Sperren, die vor dem ersten Lauf (September 2026) begannen. Belegt:
+  keine S80 in Hütteldorf und Speising
+  (Schienenersatzverkehr auf der Verbindungsbahn bis Ende 2027); keine
+  Linie in Wien Mitte-Landstraße, Rennweg und Quartier Belvedere, weil die
+  Stammstrecke zwischen Praterstern und Hauptbahnhof/St. Marx vom
+  07.09.2026 bis Ende Oktober 2027 gesperrt ist (ÖBB-Folder „Sperren S-Bahn
+  Wien Stammstrecke 2026/27“, SNNB-Anhang 2.5.1; in Wien Mitte fährt „CAT
+  by bus“); keine Linie in Himberg, dessen Bahnhof umgebaut wird
+  (ÖBB-Rahmenplan: Inbetriebnahme 2026). Die Prüfung in Stufe 3
+  liest ein Fehlen deshalb nie als Beweis (siehe dort, „Unbekannt ist nicht
+  falsch“).
 
-**Was offen bleibt.** Ob eine Störung plötzlich kam, liest `_incident_since`
-(`src/feed_build/time_line.py`) aus ihren Wörtern: Ein Planwort irgendwo in
-Titel oder Text (`PLANNED_DISRUPTION_RE`) macht sie geplant, eine WL-Störung
-ohne Ursache gilt als geplant, wenn sie zur vollen Stunde begann. Eine
-plötzliche Störung zeigt „[Seit hh:mm]“ und steht in der ersten Gruppe
-(`_is_current_incident`), eine geplante zeigt ihren Tag und steht in der
-normalen Reihenfolge. Im Nachspiel der 2.169 Cache-Stände vom 20.09. bis
-12.11.2026 entscheidet das bei 22 von 1.026 Störungen kein klares Wort. Sie
-fallen in drei Klassen (`unclear_class` in
-`src/ki_entscheidung/candidates.py`):
+**Linien-Prüfung des Feeds (Stufe 3, seit 2026-09-26).**
+`scripts/check_feed_lines.py` läuft in `update-cycle.yml` nach der
+Statistik und vor dem Veröffentlichen (`continue-on-error`, 1 Minute; es
+braucht rund eine Sekunde) und prüft `docs/feed.xml`. Nur Bericht: Das
+Skript ändert nie eine Meldung. Es schreibt nur seine Sammlung
+`data/feed_line_anomalies.json`, die im selben Commit wie der Feed landet.
 
-- `ohne-ursache`: eine WL-Störung ohne Ursache und ohne Planwort, über die nur
-  die Uhr entscheidet. „26: Züge halten in Tokiostraße“ (Anzeigetext der
-  Gleisbauarbeiten in der Donaufelder Straße) stand am 21.09.2026 von 09:01
-  bis 23:01 mit „[Seit 08:48]“ in der Gruppe der aktuellen Störungen (28
-  Feed-Stände, mit „27: Linie 25 in Tokiostraße benützen“ und „26E: Busse
-  halten Satzingerweg 41“); „9: Züge halten bei Linie 52“ (18.10.,
-  Rettungseinsatz auf den Linien 6/9/18/52) unterscheidet davon nur die Minute.
-- `bauwort`: eine WL-Störung, deren Ursache ein Störungswort ist, während ein
-  Bauwort an anderer Stelle im Text steht. „U6: Weichenstörung“ (22.09., „Die
-  Station Neue Donau kann … wegen Bauarbeiten nicht eingehalten werden“) zeigte
-  „[Heute]“ statt „[Seit 22:12]“; „48A: Gasrohrgebrechen“ (30.09., „Aufgrund
-  der Bauarbeiten werden die Busse … umgeleitet“, Ende nach Mitternacht) stand
-  mit „[Bis Do 01.10.]“ hinter den aktuellen Störungen (die Zeile nennt bei
-  einem Ende nach Mitternacht in jedem Fall das Ende).
-- `oebb-tag`: eine ÖBB-Meldung mit Bauwort, die ÖBB am Tag ihres Beginns
-  erstmals veröffentlicht und die an diesem Tag endet. „Wegen Verlängerung der
-  Bauarbeiten sind zwischen Wien Franz-Josefs-Bahnhof und Wien Heiligenstadt
-  Bahnhof bis voraussichtlich 09:00 Uhr keine Fahrten möglich“ stand am
-  01.11.2026 um 06:01 als „[Heute]“ auf Platz 7. Geplante Sperren
-  veröffentlicht ÖBB Tage vorher.
+- Geprüft werden Meldungen mit Linien-Präfix (`7A/N65/N66: …`). Erstens:
+  Gibt es die Linie? Bekannt sind die Linien der Wiener Linien
+  (`data/wienerlinien-ogd-linien.csv`, alle `wl_lines`), die HAFAS-Linien
+  aus `data/oebb_station_lines.json` und die gepflegten Linien aus
+  `data/planned_station_lines.json`. Eine Ersatzlinie `<Linie>E` zählt,
+  wenn `<Linie>` bekannt ist. Zweitens: Bedient eine der Linien die
+  Bahnhöfe, die Titel oder Beschreibung nennen?
+- Nur ÖBB-Bahnhöfe werden geprüft. Wiener-Linien-Meldungen nennen oft
+  vorübergehende Haltestellen einer anderen Linie („37A: Busse halten
+  Pasettistraße … (bei Linie 5A)“). Die Linien eines Bahnhofs sind seine
+  HAFAS-Linien, seine gepflegten Linien, seine `wl_lines` und die
+  `wl_lines` der Wiener-Linien-Haltestellen im Umkreis von 200 m. Eine
+  Haltestelle in diesem Umkreis gilt als Teil des Bahnhofs; weiter nicht,
+  „Hauptbahnhof Ost“ liegt 354 m von Quartier Belvedere und näher an ihm
+  als am Hauptbahnhof.
+- Namen werden aus Stationsnamen und Aliasen gesucht, der längste zuerst
+  („Meidling Hauptstraße“ ist nicht der Bahnhof Meidling). Kürzel unter
+  vier Zeichen, reine Nummern, allgemeine Wörter („Hauptbahnhof“) und
+  mehrdeutige Namen zählen nicht, ebenso ein Name direkt nach „Richtung“:
+  Er nennt das Ziel, keinen Halt.
+- **Unbekannt ist nicht falsch** (seit 2026-09-26, Betreiberentscheidung).
+  Eine Zuglinie, also eine Linie, die HAFAS oder die gepflegte Liste an
+  irgendeinem Bahnhof kennt, wird an einem Bahnhof nur bewertet, wenn dort
+  je ein Zug gesehen wurde. Ein Bahnhof ohne jede bekannte Linie wird gar
+  nicht bewertet. Das Ergebnis heißt dann „not judged“ und ist kein
+  Befund. Die Regel gilt für alle Bahnhöfe gleich und braucht keine
+  Einträge: Himberg, Wien Mitte-Landstraße, Rennweg, Quartier Belvedere
+  und Speising fallen darunter, solange HAFAS dort keinen Zug zeigt.
+  Wiener-Linien-Linien werden dort weiter bewertet. Der Preis: Eine
+  falsche Zuglinie an einem solchen Bahnhof fällt nicht auf, ebenso an
+  Bahnhöfen ohne Bahnverkehr (Karlsplatz, Schottentor, Stephansplatz,
+  Siebenhirten).
+- Die gepflegte Liste ist nur noch Starthilfe: Sie nennt Linien, die
+  Stufe 2 an einem Bahnhof nie gesehen hat, an dem andere Züge fahren. Das
+  betrifft nur Sperren, die vor dem ersten Lauf begannen. Einziger Eintrag:
+  S80 in Hütteldorf bis 11.12.2027 (Verbindungsbahn; ÖBB-Folder „Sperren
+  S-Bahn Wien Stammstrecke 2026/27“, SNNB-Anhang 2.5.1, B-92487). Die
+  Einträge für Stammstrecke, Speising und Himberg sind seit 2026-09-26
+  entfallen, ihre Quellen stehen im Audit vom 26.09. (Update 16:40).
+  Ein abgelaufener Eintrag zählt nicht mehr. Eine Warnung im Log und in
+  der Sammlung gibt es nur, solange HAFAS seine Linien am Bahnhof noch
+  nicht zeigt; fährt die Linie wieder, genügt eine Info-Zeile.
+- Befunde lauten „not confirmed“, nie „falsch“, und stehen im Log des
+  Schritts. Rückschau über 678 Stände des Feeds (482 verschiedene
+  Meldungen, 432 mit Präfix): drei Befunde, alle berechtigt. „1: Bhf.
+  Hütteldorf ÖBB-Ersatzbus für 80“ (der Anlass der Prüfung), „71/72: Dies
+  ist eine Testmeldung“ (keine Linie 72) und „66A: Demonstration Betrieb
+  ab Quartier Belvedere“. Mit den Regeln vom 26.09. ergibt die Rückschau
+  über 685 Stände dieselben drei Befunde und kein „not judged“.
+- **Sammlung zur späteren Auswertung:** `data/feed_line_anomalies.json`
+  hält jede Auffälligkeit als Datensatz: `kind` (`unknown_line`,
+  `not_confirmed`, `not_judged`, `planned_expired`), `subject` (Linie oder
+  Bahnhof), `title` (Titel der Meldung), `detail`, `first_seen`,
+  `last_seen` und `days_seen` (Tage in Europe/Vienna). Dieselbe
+  Auffälligkeit zählt je Tag einmal, weitere Zyklen desselben Tages ändern
+  die Datei nicht. Datensätze bleiben, auch wenn die Meldung verschwindet;
+  über 1000 fallen die am längsten nicht mehr gesehenen weg. Titel und
+  Text sind auf 300 Zeichen gekürzt. `--no-record` prüft nur, etwa für
+  Rückschauen über alte Feed-Stände.
 
-Bei den Regeln bleibt, was der Betreiber entschieden hat: Ein Text, der eine
-Verlegung, eine Demonstration, eine Veranstaltung, einen Staatsbesuch oder
-eine Übung nennt, ist geplant (03.11.2026) und kein Kandidat; `bauwort` und
-`oebb-tag` gelten nur, wenn jedes Planwort des Textes ein Bauwort ist. Eine
-ÖBB-Meldung über eine beendete Störung bleibt, was sie ist. Ein Vorfall, der
-in Arbeiten übergeht („1: Gleisschaden“, 20.10., danach „1:
-Gleisbauarbeiten“), ist auf beiden Seiten klar.
+**`STATE_PATH` hat nur eine Bedeutung (seit 2026-10-10).** Der
+Feed-Build (`src/feed/config.py`) liest die Variable als **Datei**
+(`data/first_seen.json`). Bis 2026-10-10 las der Google-Places-Zähler sie
+ersatzweise als **Verzeichnis**. Betreiberentscheidung vom 2026-10-10:
+Jeder Zweck bekommt eine eigene Variable, kein Name hat zwei Bedeutungen.
+`tests/test_state_path_env_reader.py` wacht darüber, dass außer
+`src/feed/config.py` kein Modul `STATE_PATH` liest.
 
-**Was Gemini darf.** Eine Antwort je Meldung: `ploetzlich`, `geplant` oder
-`unklar`, dazu ein Satz Begründung. Die Antwort setzt nur das Feld `_ki_art`
-der Meldung; `_incident_since` wählt damit zwischen den zwei Fassungen, die
-die Regeln ohnehin bauen. Bei `unklar` und ohne Antwort entscheiden die Regeln
-wie bisher. Gemini schreibt keinen Titel, keinen Text und keine Zeitzeile; die
-Begründung steht nur im Speicher. Das Modell liest von der Meldung Quelle,
-Titel, Text, Beginn, Ende und Veröffentlichung und bis zu vier andere
-Meldungen derselben Linie oder Strecke (`describe`, `neighbours_of`): den
-Hinweis über Gleisbauarbeiten neben „26: Züge halten in Tokiostraße“, den
-Rettungseinsatz neben „9: Züge halten bei Linie 52“. Die Texte der Betreiber
-stehen als Daten zwischen festen Marken; Werkzeuge hat das Modell keine.
+**Netzwerk-Resilienz-Schichten:**
 
-**Wann gefragt wird.** Nur der Feed-Build des Update-Laufs fragt
-(`Decider.decide` in `src/ki_entscheidung/run.py`, aufgerufen in
-`_assemble_feed_items` nach `_carry_item_identity` und vor der Sortierung),
-höchstens einmal je Build und mit höchstens vier Meldungen (so viele standen im
-Nachspiel höchstens zugleich an; was nicht hineinpasst, fragt der nächste
-Build). `feed lint`, die Einzelproben des Builds, Nachspiele und Tests lesen
-nur den Speicher (`apply_stored`). Gefragt wird nach einer Meldung nur,
-solange sie neu ist: höchstens 2 h 45 min im Feed, und der Beginn, den ein
-„plötzlich“ zeigen würde, liegt ebenso kurz zurück (`ASK_WINDOW`). Der
-Feed-Wächter meldet ein „[Seit hh:mm]“, das mehr als drei Stunden nach seiner
-Uhrzeit zum ersten Mal erscheint (`seit-zu-frueh`); eine späte Antwort würde
-genau das erzeugen. Je Ereignis einer Meldung fragen höchstens drei Builds, je
-Wiener Tag höchstens sechs (gelesen aus den gespeicherten Zeitpunkten, kein
-eigener Zähler); ein geänderter Text wird in diesem Rahmen neu gefragt, die
-wechselnde Prognose von WL („Voraussichtliche Dauer: …“) zählt nicht als
-Änderung.
+1. **HAFAS-Profil-Sync** (`scripts/sync_hafas_profile.py`) läuft im
+   selben Workflow vor `update_all_stations.py` und aktualisiert
+   `data/hafas_profile.json` über `request_safe` aus dem Upstream-
+   Community-Profil. Persistiert wird über
+   `src.utils.files.atomic_write`, sodass ein abgebrochener Download
+   keine korrupte JSON-Sidecar-Datei hinterlassen kann.
+2. **`urllib3`-JitterRetry** (`session_with_retries`) behandelt
+   transiente 5xx und Connection-Resets innerhalb eines einzelnen
+   HAFAS-Aufrufs.
+3. **`CircuitBreaker`** — `src/places/hafas_client.py:_BREAKER`
+   öffnet nach fünf aufeinanderfolgenden Fehlern und bleibt fünf
+   Minuten offen; er konvertiert `CircuitBreakerOpen` zu einem soft-fail
+   `None` pro Call, sodass die Cron-Pipeline weiterläuft.
+4. **`request_safe`** umhüllt jeden HAFAS-Call in der
+   Security-State-Machine (§2): SSRF, Redirect, Content-Type,
+   Slowloris, Payload-Cap.
+5. **Test-Isolation** — `tests/conftest.py` registriert eine
+   autouse-Fixture `reset_circuit_breakers`, die über
+   `CircuitBreaker.iter_instances()` (ein prozessweites
+   `weakref.WeakSet`, das jeder `CircuitBreaker.__init__` automatisch
+   befüllt) läuft und vor und nach jedem Test auf jedem registrierten
+   Breaker `.reset()` aufruft. Damit werden **alle** Breaker — inkl.
+   des HAFAS-Breakers (`hafas_enrichment`) und der Stammstrecke-Breaker
+   — ohne manuelles Inventar erfasst; ein neu hinzugefügter Breaker ist
+   automatisch isoliert, ein gesondertes `breaker.reset()` pro Test ist
+   nicht nötig.
 
-Ein Build fragt die Modellkette einmal ab (`ask_chain` in
-`src/markdown_stats/review_client.py`, der Konnektor des Jahresrückblicks,
-Schlüssel im Kopf `x-goog-api-key`): die Lite-Modelle der Wächter-Kette zuerst
-(`MODELS` in `ask.py`), jedes Modell höchstens einmal, das nächste nur, wenn
-das vorige überlastet, am Kontingent oder nicht erreichbar ist. Im Regelfall
-ist das eine Anfrage. Im äußersten Fall sind es vier je Build und damit sechs
-am Tag an jedes der beiden Flash-Modelle. Ist das Tageskontingent eines
-Modells erreicht, antwortet es mit 429, und diese Kette wie die des
-KI-Wächters geht zum nächsten Modell. Auf ein Modell wartet der Build
-höchstens 12 Sekunden (`MAX_READ_S`), später als 15 Sekunden nach der ersten
-startet keine Anfrage mehr, und auf eine Antwort wartet keine über die 20
-Sekunden (`DEADLINE_S`) hinaus. Gemessen am 12.11.2026 mit vier überlasteten
-Modellen: 20,1 Sekunden. Öffnet sich eine Verbindung langsam, kommen
-höchstens zehn Sekunden dazu: Spätestens 30 Sekunden nach seinem Beginn ist
-der Durchgang zu Ende.
+Relevante CLI-Flags / Env-Vars:
 
-**Eine Antwort gilt für ihr Ereignis.** Der Schlüssel im Speicher ist die GUID
-der Meldung, und eine WL-GUID trägt kein Datum: „9: Züge halten bei Linie 52“
-kehrt Tage nach einem Rettungseinsatz mit demselben Schlüssel und demselben
-Text zurück, wenn WL eine geplante Maßnahme einträgt. Eine Antwort gilt
-deshalb nur, wenn sie nicht älter ist als der Beginn, den die Meldung jetzt
-zeigt (`_answer_holds`): Das nächste Ereignis desselben Tickers wird neu
-gefragt und hat seine eigenen drei Versuche, bis dahin gelten für es die
-Regeln. Bekommt ein Ticker, der im Feed geblieben ist, einen neuen Beginn,
-gelten ebenfalls die Regeln (gefragt wird er nicht mehr, er ist nicht neu).
-Innerhalb eines Ereignisses bleibt die Antwort stehen, wenn der Betreiber den
-Text fortschreibt (ÖBB am 01.11.2026: fünf Fassungen einer Meldung in fünf
-Stunden); neu gefragt wird der geänderte Text nur, solange die Meldung neu
-ist. Eine ÖBB-Meldung, die als `oebb-tag` gefragt wurde, behält ihre Antwort,
-wenn ÖBB das Ende später auf den nächsten Tag legt.
+| Flag / Env | Default | Zweck |
+|---|---|---|
+| `WIEN_OEPNV_MANUAL_ENRICH` | `1` | `0` überspringt die Anreicherung der manuellen Einträge (Testlauf des Orchestrators) |
+| `WIEN_OEPNV_AT_RECONCILE` | `1` | `0` überspringt den Koordinaten-Abgleich WL/HAFAS im WL-Lauf |
 
-**Ohne Gemini.** Fehlt der Schlüssel, ist ein Modell überlastet, das
-Kontingent erreicht oder die Antwort unbrauchbar, gilt für die Meldung die
-Regel; der Build scheitert daran nie. Er meldet sein Ergebnis als Nebenschritt
-„KI-Entscheidung“ (Ausgabe `ki_outcome`, Teil 5, „Überwachung:
-Nebenschritte“). Rot ist sofort, was nicht laufen kann („ein Fehler sollte
-auffallen“, 28.10.2026): ein leerer Schlüssel, ein abgebrochener Durchlauf,
-ein Speicher, der sich nicht schreiben lässt, eine Anfrage, die sich nicht
-senden lässt, und ein von Google abgelehnter Schlüssel. Die Ablehnung steht
-im Speicher (`schluessel_abgelehnt`) und bleibt rot, bis Google wieder eine
-Anfrage annimmt, längstens 24 Stunden: Ein Build ohne unklare Meldung fragt
-nichts und würde sonst eine halbe Stunde später Grün melden; nach einem Tag
-hat der KI-Wächter mit demselben Schlüssel gefragt und meldet ihn selbst. Die
-abgelehnte Anfrage zählt nicht als Versuch der Meldung. Bekam eine neue
-Meldung in keinem ihrer drei Builds eine Antwort oder sind die sechs des Tages
-verbraucht, ist das wie beim KI-Wächter ein Hinweis (04.11.2026), der endet,
-sobald die Meldung nicht mehr neu ist; er wird hier nie rot, denn jeder Build
-ohne unklare Meldung meldet Erfolg. Schweigen die Modelle über Tage, zeigt das
-der Eintrag des KI-Wächters, der dieselbe Kette täglich fragt.
-`KI_ENTSCHEIDUNG=0` schaltet die Anfragen ab und meldet Erfolg; gespeicherte
-Antworten gelten weiter. Builds ohne Schlüssel (`build-feed.yml`,
-`manual-full-refresh.yml`, lokal) lesen den Speicher und schreiben ihn nie.
+HAFAS selbst hat keinen CLI-Schalter — die Stufe ist aktiv, sobald die
+Profil-Sidecar-Datei existiert. Wer HAFAS zu Debug-Zwecken überspringen
+will, löscht schlicht `data/hafas_profile.json`; der Client kurz-
+schließt dann für jede Station auf `None`, hinterlässt eine einzige
+Log-Zeile `HAFAS enrichment disabled: …`.
 
-**Speicher.** `data/ki_entscheidungen.json` fährt im Commit des Update-Laufs
-mit wie `data/first_seen.json`: je Meldung (Schlüssel wie im Zustand, die
-GUID) die Antwort `art`, ihr `grund`, das `modell`, der Abdruck des Textes,
-der Zeitpunkt der Antwort (`entschieden`), die Zeitpunkte der letzten Anfragen
-und der Tag, an dem die Meldung zuletzt in einem Build stand. Ein Eintrag
-fällt eine Woche danach weg. Ein Nachbau desselben Commits liest dieselben
-Antworten und baut denselben Feed.
-
-**Probelauf.** `scripts/ki_entscheidung_probe.py` (Workflow
-`ki-entscheidung-probe.yml`: von Hand und bei einem Push auf einen Zweig, der
-das Paket, den Konnektor, das Skript oder die Fallsammlung ändert) legt Gemini
-die 20 unklaren Meldungen des Nachspiels vor, jede mit den anderen Meldungen
-ihrer Linien zu ihrem Zeitpunkt und mit der Antwort, die ein Leser der Quelle
-erwartet (`data/samples/ki_entscheidung_faelle.json`). Er fragt wie der Build
-(derselbe Prompt, dieselbe Kette, vier Meldungen je Anfrage), wiederholt einen
-Block ohne Antwort einmal und speichert nichts. Vier Läufe am 12.11.2026,
-alle bei zeitweise überlasteten Modellen: um 18:57 Uhr (Wiener Zeit, noch acht
-Meldungen je Anfrage) 8 von 20 beantwortet, alle wie erwartet; um 19:15 Uhr 16
-von 20, davon 15 wie erwartet („44A: Fahrplanaushang bitte beachten“ `unklar`
-statt `geplant`, was im Feed dasselbe ergibt); um 19:21 Uhr 20 von 20
-beantwortet und alle wie erwartet, alle von einem Lite-Modell; um 19:29 Uhr
-wieder 20 von 20 beantwortet, 19 wie erwartet (erneut „44A“ `unklar`). Eine
-beantwortete Anfrage mit vier Meldungen dauerte 5 bis 10 Sekunden. Darunter die Fälle, die nur die Nachbarn entscheiden: „26: Züge
-halten in Tokiostraße“ `geplant` („Andere Meldung derselben Linie kündigt
-Gleisbauarbeiten an“), „9: Züge halten bei Linie 52“ `ploetzlich` („Die andere
-Meldung derselben Linie nennt einen Rettungseinsatz als Grund“), „37: Züge
-halten Währigner Gürtel 164“ (so die Quelle) ohne Nachbarn `unklar`.
-
-**Nachspiel alt gegen neu** über die 2.169 Cache-Stände vom 20.09. bis
-12.11.2026, durch die ganze Kette bis zum deutschen Feed. Ohne gespeicherte
-Antworten baut der neue Code in allen 2.169 Ständen denselben Feed wie der
-alte. Mit den Antworten des Probelaufs, in der Reihenfolge der Stände gefragt
-und gespeichert wie im Betrieb, fragen 19 Builds nach 24 Meldungen (rund
-zweieinhalb Builds je Woche, höchstens vier Meldungen in einem), und 57 Stände
-an sechs Tagen ändern sich:
-
-- 21.09. 09:01 bis 22.09. 08:31 (41 Stände): „26: Züge halten in
-  Tokiostraße“, „26E: Busse halten Satzingerweg 41“ und „27: Linie 25 in
-  Tokiostraße benützen“ zeigen „[Heute]“ statt „[Seit 08:48]“ und stehen
-  hinter den aktuellen Störungen; „26A: Rettungseinsatz“ rückt von Platz 5
-  auf 2, „43/44: Stromstörung“ von 6 auf 3, „60: Fremder Verkehrsunfall“ kommt
-  in die ersten zehn.
-- 22.09. 22:30: „U6: Weichenstörung“ zeigt „[Seit 22:12]“ statt „[Heute]“.
-- 30.09. 22:02 bis 01.10. 00:31 (4 Stände): „48A: Gasrohrgebrechen“ steht auf
-  Platz 1 bis 2 statt 2 bis 4, Zeile unverändert.
-- 01.11. 05:31 bis 10:01 (9 Stände): „Wien Franz-Josefs-Bahnhof ↔ Wien
-  Heiligenstadt … Wegen Verlängerung der Bauarbeiten … keine Fahrten möglich“
-  (im ersten Stand noch unter dem Titel „Wien Franz-Josefs-Bahnhof“) zeigt
-  „[Seit 05:09]“ statt „[Heute]“ und steht auf Platz 1 bis 2 statt 1 bis 7.
-- 09.11. 04:31 und 05:01: „Wien Hauptbahnhof ↔ Gramatneusiedl“ (Verlängerung
-  der Bauarbeiten) steht auf Platz 1 mit „[Seit 04:30]“, danach „[Seit
-  04:50]“; vorher stand die Meldung nicht unter den ersten zehn.
-
-Alle übrigen Antworten bestätigen, was die Regeln zeigen. Kein Text und kein
-Titel ändert sich, nur Zeitzeile und Platz.
-
-**Tests.** `tests/test_ki_entscheidung_faelle.py` (Klassen, Betreiberliste,
-Abdruck, was das Modell liest, Wirkung der Antwort auf Zeitzeile und Gruppe,
-Antwort je Ereignis, Speicher lesen), `tests/test_ki_entscheidung_lauf.py`
-(Anfrage, Fristen, Speicher, Grenzen, abgelehnter Schlüssel, Ergebnis für den
-Health check), `tests/test_ki_entscheidung_build.py` (`build_feed.main()` und
-`lint()` mit Schlüssel und ersetztem Transport), `tests/test_ki_entscheidung_probe.py`
-(Fallsammlung, Bericht, Workflow) und `tests/test_record_side_steps.py`
-(Nebenschritt im Health check).
-
-## 15. Was nicht möglich ist, steht vorn (seit 2026-11-13)
-
-Dieselbe Regel wie „Was nicht fährt, steht vorn“ (seit 2026-10-25,
-[Teil 2](architecture-teil-2.md)) für ÖBBs Störungssatz „Wegen <Ursache> sind|waren zwischen <A> und <B>
-[bzw. <C> und <D>][,] [Zugfahrten | für Züge der Linie <L>] [bis
-voraussichtlich <Uhrzeit> | derzeit] keine Fahrten | nur eingeschränkt |
-nicht möglich.“ Mit zwei Strecken ist er über 180 Zeichen, und der
-Schnitt nahm die Kernaussage: „Wegen eines Polizeieinsatzes sind zwischen
-Tullnerfeld Bahnhof und St. Pölten Hbf bzw. Tullnerfeld Bahnhof und
-Moosbierbaum-Heiligeneich Bahnhof, bis voraussichtlich 13:30 …“
-(KI-Wächter 12. und 13.11.2026, Issue #2209). Ein solcher Satz sagt jetzt
-zuerst, was nicht möglich ist, mit seiner Zeit, die Strecken folgen
-hinter einem Doppelpunkt: „Wegen eines Polizeieinsatzes sind bis
-voraussichtlich 13:30 Uhr keine Fahrten möglich: zwischen Tullnerfeld
-Bahnhof und St. Pölten Hbf bzw. Tullnerfeld Bahnhof …“
-(`_oebb_restriction_first`). Gekürzt wird weiter an der Wortgrenze
-(Michaels Entscheidung vom 05.11., „Wortweise bleibt“); umgestellt werden
-nur ÖBBs eigene Wörter. Ein Satz, der passt, behält seine Reihenfolge,
-ebenso einer, dessen Ort keine reine Liste von Bahnhöfen ist („erneut“,
-„in beiden Richtungen“, „mit Regionalzügen“, „keine Fahrten der S 80
-zwischen … möglich“), und ein bloßes „nicht möglich“ ohne „Zugfahrten“
-(„Ein- und Ausstiege nicht möglich“). Lässt der zweite Satz die Strecke
-weg, die der Titel nennt, geht der Doppelpunkt mit
-(`_oebb_sentence_without_place`). Englisch: „Due to a police operation, no
-trains can run until approx. 13:30: between Tullnerfeld station and St.
-Pölten Hbf or Tullnerfeld station …“ (`_OEBB_RESTRICTION_FRONT_RE`); die
-Vorlage kennt dafür auch „für Züge der Linie S 45“ („no S 45 trains“) und
-ein Ende ohne Uhrzeit („bis voraussichtlich 07.09.2026“). Replay über
-992 ÖBB-Texte seit Dezember 2025: 22 Anzeigen ändern sich (Meidling–St.
-Pölten, Stadlau–Simmering, Meidling–Liesing, Hütteldorf–Handelskai,
-Grillgasse, Süßenbrunn, Flughafen und andere), alle mit diesem Satzbau;
-englisch nur dieselben 22.
-Tests: `tests/test_oebb_einschraenkung_vorn.py`.
+Weiter in [Teil 9](architecture-teil-9.md).

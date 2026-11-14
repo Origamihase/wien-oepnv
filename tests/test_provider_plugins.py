@@ -215,7 +215,7 @@ def test_main_generates_feed_and_health_with_plugin(
         monkeypatch.setattr(build_feed.feed_config, "FEED_HEALTH_JSON_PATH", health_json_path)
         monkeypatch.setattr(build_feed.feed_config, "STATE_FILE", state_path)
         monkeypatch.setattr(build_feed, "_load_state", lambda: {})
-        monkeypatch.setattr(build_feed, "_save_state", lambda state, deletions=None: None)
+        monkeypatch.setattr(part(build_feed, "outputs"), "_save_state", lambda state, deletions=None: None)
 
         # Patch ENV vars for paths so refresh_from_env uses them
         monkeypatch.setenv("OUT_PATH", str(out_path))
