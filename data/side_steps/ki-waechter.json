@@ -1,11 +1,12 @@
 {
  "steps": {
   "KI-Wächter": {
-   "at": "2026-11-13T14:02:32+00:00",
+   "at": "2026-11-14T14:11:47+00:00",
+   "failing_since": "2026-11-14T14:11:47+00:00",
    "last_success": "2026-11-13T14:02:32+00:00",
-   "outcome": "success",
-   "run": "https://github.com/Origamihase/wien-oepnv/actions/runs/43438748622"
+   "outcome": "overloaded",
+   "run": "https://github.com/Origamihase/wien-oepnv/actions/runs/43602651885"
   }
  },
- "updated": "2026-11-13T14:02:32+00:00"
+ "updated": "2026-11-14T14:11:47+00:00"
 }
