@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261114-0012-F01, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20261114-0014, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2379-627, R2380-627, R401-101, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R3886-480, R318-437, R293-474, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R1880-101, R2558-125, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2345-127, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R401-101, R2378-627, R2343-125, R3886-480, R318-437, R1881-101, R1880-101, R1876-101, R1875-101, R1884-101, R1883-101, R293-474, R1882-101, R2558-125, R1974-466, R1199-205, R500-101, R146-141, R144-141, R143-141, R147-141, R187-141, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,52 +171,51 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
+    "alertCause": "police activity",
+    "alertCauseId": 3,
     "attributes": {
      "relatedLineTypes": {
-      "27": "ptTram"
+      "41": "ptTram"
      }
     },
-    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 27: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie 41: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 11:30 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Türkenschanzplatz.",
+    "descriptionHTML": "<p>Linie 41:<br>Fahrtbehinderung in Richtung Schottentor U.</p><p>Voraussichtliche Dauer: 11:30 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Türkenschanzplatz.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 27: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "27: Rettungseinsatz"
+       "descriptionHtml": "<p>Linie 41:<br>Fahrtbehinderung in Richtung Schottentor U.</p><p>Voraussichtliche Dauer: 11:30 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Türkenschanzplatz.</p>",
+       "descriptionPlain": "Linie 41: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 11:30 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Türkenschanzplatz.",
+       "title": "41: Polizeieinsatz"
       }
      }
     ],
-    "name": "I20261114-0012-F01",
+    "name": "I20261114-0014",
     "owner": "WL",
-    "parentName": "I20261114-0012",
+    "parentName": "I20261114-0014",
     "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "27"
+     "41"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 127,
-      "lineName": "27",
+      "lineId": 141,
+      "lineName": "41",
       "vehicleType": "ptTram"
      }
     ],
     "relatedStops": [
-     2178
+     1310
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-14T09:20:00.000+0100",
-     "lastUpdate": "2026-11-14T09:20:00.000+0100",
-     "resume": "2026-11-14T09:20:00.000+0100",
-     "start": "2026-11-14T08:45:00.000+0100"
+     "created": "2026-11-14T10:54:00.000+0100",
+     "lastUpdate": "2026-11-14T10:54:00.000+0100",
+     "start": "2026-11-14T10:53:00.000+0100"
     },
-    "title": "27: Rettungseinsatz"
+    "title": "41: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -240,6 +239,121 @@
      "start": "2026-11-14T04:45:13.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R143-141",
+    "owner": "WL",
+    "parentName": "R143-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     143
+    ],
+    "time": {
+     "end": "2026-11-14T11:53:00.000+0100",
+     "start": "2026-11-14T10:54:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R144-141",
+    "owner": "WL",
+    "parentName": "R144-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     144
+    ],
+    "time": {
+     "end": "2026-11-14T11:53:00.000+0100",
+     "start": "2026-11-14T10:54:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R146-141",
+    "owner": "WL",
+    "parentName": "R146-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     146
+    ],
+    "time": {
+     "end": "2026-11-14T11:53:00.000+0100",
+     "start": "2026-11-14T10:54:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R147-141",
+    "owner": "WL",
+    "parentName": "R147-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     147
+    ],
+    "time": {
+     "end": "2026-11-14T11:53:00.000+0100",
+     "start": "2026-11-14T10:54:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R187-141",
+    "owner": "WL",
+    "parentName": "R187-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     187
+    ],
+    "time": {
+     "end": "2026-11-14T11:53:00.000+0100",
+     "start": "2026-11-14T10:54:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
