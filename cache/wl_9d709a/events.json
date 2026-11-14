@@ -638,6 +638,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11: Polizeieinsatz",
+    "description": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "84fb66f823fe0256bdb55c275e537630afbdb20e631f62ff4a78dbb9fd614ed6",
+    "pubDate": "2026-11-14T18:13:00+01:00",
+    "starts_at": "2026-11-14T18:13:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=11|D=2026-11-14|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261114-0031"
+    ],
+    "_incident_start": "2026-11-14T18:13:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -778,6 +794,22 @@
       "I20261114-0026"
     ],
     "_incident_start": "2026-11-14T16:13:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26A: Polizeieinsatz",
+    "description": "Linie 26A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "cc50dc6a5ca22ae79c6dcc472391441d2a97d10bcf2b47c7cba4c68f563860cc",
+    "pubDate": "2026-11-14T18:25:00+01:00",
+    "starts_at": "2026-11-14T18:25:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=26A|D=2026-11-14|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261114-0032"
+    ],
+    "_incident_start": "2026-11-14T18:25:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -950,22 +982,6 @@
       "I20261114-0020"
     ],
     "_incident_start": "2026-11-14T13:12:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d",
-    "pubDate": "2026-11-14T16:55:00+01:00",
-    "starts_at": "2026-11-14T17:05:28+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=62|D=2026-11-14|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261114-0028"
-    ],
-    "_incident_start": "2026-11-14T16:55:00+01:00"
   },
   {
     "source": "Wiener Linien",
