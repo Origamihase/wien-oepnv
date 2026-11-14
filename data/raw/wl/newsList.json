@@ -6,7 +6,7 @@
     "name": "aktuelles",
     "refPoiCategoryGroupId": 61,
     "title": "Aktuelles",
-    "trafficInfoNameList": "N20260209-0049, N20260209-3501, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260702-5991, N20260813-6092, N20260808-6083, N20260808-6084, N20260817-6129, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260903-6175, N20260908-6177, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261006-6258, N20261007-6260, N20261007-6262, N20261009-6270, N20261021-0001, N20261021-0003, N20261023-0001, N20261029-0004, N20261102-0001, N20261104-0001, N20261104-0002, N20261104-0003, N20261104-0004, N20261105-0001, N20261105-0002, N20261022-0005, N20261106-0002, N20261109-0001, N20261111-0001, N20261111-0003, N20261111-0004, N20261111-0005, N20261111-0006, N20261111-0007, N20261112-0001, N20261113-0002"
+    "trafficInfoNameList": "N20260209-0049, N20260209-3501, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260529-5870, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260702-5991, N20260813-6092, N20260808-6083, N20260808-6084, N20260817-6129, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260903-6175, N20260908-6177, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261006-6258, N20261007-6260, N20261007-6262, N20261009-6270, N20261021-0001, N20261021-0003, N20261023-0001, N20261029-0004, N20261102-0001, N20261104-0001, N20261104-0002, N20261104-0003, N20261104-0004, N20261105-0001, N20261105-0002, N20261022-0005, N20261106-0002, N20261109-0001, N20261111-0001, N20261111-0003, N20261111-0004, N20261111-0005, N20261111-0006, N20261111-0007, N20261112-0001, N20261113-0002, N20261012-6272"
    },
    {
     "id": -1,
@@ -1860,6 +1860,58 @@
     "title": "5, 12: Albertgasse"
    },
    {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "<h2>Weihnachtseinkaufstage</h2>\r\n<p>An den Samstagen vor Weihnachten sowie am 8. Dezember kommt es zu Linien- und Intervallanpassungen im Netz.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span></p>\r\n<ul>\r\n<li>Samstag, 28. November 2026</li>\r\n<li>Samstag, 5. Dezember 2026</li>\r\n<li>Dienstag, 8. Dezember 2026</li>\r\n<li>Samstag, 12. Dezember 2026</li>\r\n<li>Samstag, 19. Dezember 2026</li>\r\n</ul>\r\n<p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Linien 1A, 2A und 3A:</strong><br />Diese Linien sind an den genannten Tagen aus Sicherheitsgr&uuml;nden zur G&auml;nze eingestellt.</p>\r\n<p><strong>Linie 13A:</strong><br /><span style=\"text-decoration: underline;\">Geteilte Linienf&uuml;hrung:<br /></span>In der Zeit von 09:00 - 19:30 Uhr:<br />Kein Betrieb zwischen Neubaugasse U und Burggasse, Neubaugasse.<br />&Auml;nderung:<br />Die Busse, die zwischen Alser Stra&szlig;e, Skodagasse und Neubaugasse, Burggasse fahren, fahren anschlie&szlig;end &uuml;ber die Strecke der Linie 48A zur Haltestelle Volkstheater U und dann &uuml;ber die Neustiftgasse zur&uuml;ck zur Kellermanngasse.</p>\r\n<p><span style=\"text-decoration: underline;\">Zus&auml;tzliche Haltestellen in Richtung Volkstheater U:</span><br />- St.-Ulrichs-Platz (Burggasse 25, Haltestelle der Linie 48A)<br />- Volkstheater U (Burggasse vor Museumstra&szlig;e, Gleisk&ouml;rper, Haltestelle der Linien 49 und 48A)</p>\r\n<p><span style=\"text-decoration: underline;\">Zus&auml;tzliche Haltestellen in Richtung Alser Stra&szlig;e, Skodagasse:</span><br />- Volkstheater U (Neustiftgasse gegen&uuml;ber Volkstheater, Haltestelle der Linie 48A)</p>",
+    "id": "N20261012-6272",
+    "location": {
+     "properties": {
+      "attributes": {},
+      "coordName": "WGS84",
+      "type": "news"
+     },
+     "type": "Feature"
+    },
+    "name": "N20261012-6272",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": 13296,
+    "relatedLines": [
+     "1A",
+     "2A",
+     "3A",
+     "13A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 413,
+      "lineName": "13A",
+      "vehicleType": "ptBusCity"
+     },
+     {
+      "lineId": 401,
+      "lineName": "1A",
+      "vehicleType": "ptBusCity"
+     },
+     {
+      "lineId": 402,
+      "lineName": "2A",
+      "vehicleType": "ptBusCity"
+     },
+     {
+      "lineId": 403,
+      "lineName": "3A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "time": {
+     "end": "2026-12-19T23:59:00.000+0100",
+     "start": "2026-11-15T00:00:00.000+0100",
+     "validFrom": "2026-11-28T04:00:00.000+0100"
+    },
+    "title": "Weihnachtseinkaufstage 2026"
+   },
+   {
     "alertCause": "construction work",
     "alertCauseId": 45,
     "description": "<h2>Gleisbauarbeiten</h2><p>Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1.</p><p><strong><u>Zeitraum:</u></strong><br>Ab 20. Oktober 2026 bis Mitte Dezember 2026.<br>Aufgrund eines spontanen Gleisgebrechens müssen die Gleisbauarbeiten vorgezogen werden.</p><p><strong><u>Maßnahmen:</u></strong><br><strong>Linie 1:</strong><br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Die Züge werden ab Knöllgasse zum Reumannplatz umgeleitet.</p><p><strong><u>Ersatz:</u></strong><br>Weichen Sie ersatzweise auf die Linien 7A oder 65A aus.</p><p><strong><u>Skizze:</u></strong><br><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/1_Umleitung_Reumannplatz.png\" alt=\"\" width=\"1000\" height=\"1000\"></p>",
@@ -3226,7 +3278,7 @@
     "attributes": {
      "ausBis": "16.11.2026 00:45",
      "ausVon": "15.11.2026 20:45",
-     "location": "U4 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U1",
+     "location": "Zwischengeschoss Zugang Aufzug U1 - U4 Mittelbahnsteig",
      "rbls": [
       4427,
       4410
@@ -3240,7 +3292,7 @@
      "status": "geplante Wartung",
      "towards": "U4 beide Richtungen"
     },
-    "description": "U4 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U1",
+    "description": "Zwischengeschoss Zugang Aufzug U1 - U4 Mittelbahnsteig",
     "elevatorId": "SP 02",
     "name": "ftazW_113",
     "parentName": "ftazW_113",
@@ -3267,7 +3319,7 @@
     "attributes": {
      "ausBis": "16.11.2026 05:15",
      "ausVon": "16.11.2026 01:15",
-     "location": "U1 Mittelbahnsteig - Zwischengeschoss Zugang U4",
+     "location": "Zwischengeschoss Zugang U4 - U1 Mittelbahnsteig",
      "rbls": [
       4113,
       4116
@@ -3280,7 +3332,7 @@
      "status": "geplante Wartung",
      "towards": "U1 beide Richtungen"
     },
-    "description": "U1 Mittelbahnsteig - Zwischengeschoss Zugang U4",
+    "description": "Zwischengeschoss Zugang U4 - U1 Mittelbahnsteig",
     "elevatorId": "SP 03",
     "name": "ftazW_114",
     "parentName": "ftazW_114",
