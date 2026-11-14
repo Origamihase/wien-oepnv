@@ -34,6 +34,7 @@ from src.utils.stats import (
 )
 from src.utils.stats_baustellen import append_baustellen_rows
 from scripts import generate_markdown_stats as stats_script
+from tests._conftest.cycle_scripts import started_script, step_program
 from tests.test_year_page import (
     EVENTS,
     GOOD,
@@ -580,9 +581,16 @@ def test_only_the_statistics_step_and_the_feed_build_of_the_cycle_have_the_key()
     ],
 )  # fmt: skip
 def test_only_the_half_hour_after_midnight_is_a_dashboard_run(tmp_path: Path, hhmm: str, arguments: str) -> None:
-    """The step's script with a ``date`` that answers *hhmm* and a ``python`` that notes its arguments."""
-    script = str(_stats_step()["run"])
-    assert "${{" not in script and "TZ=Europe/Vienna date +%H%M" in script
+    """The step's script with a ``date`` that answers *hhmm* and a ``python`` that notes its arguments.
+
+    Since 2026-11-14 the code stands in ``scripts/cycle/refresh_stats.sh``; the
+    test runs the step's ``run`` text from the repository root, as the step does.
+    """
+    step = _stats_step()
+    script = started_script(step)
+    assert script is not None and script.name == "refresh_stats.sh"
+    text = script.read_text(encoding="utf-8")
+    assert "${{" not in text and "TZ=Europe/Vienna date +%H%M" in text
     calls = tmp_path / "calls"
     for name, body in (
         ("date", f'[ "$TZ" = "Europe/Vienna" ] && [ "$1" = "+%H%M" ] && echo {hhmm}\n'),
@@ -592,7 +600,7 @@ def test_only_the_half_hour_after_midnight_is_a_dashboard_run(tmp_path: Path, hh
         tool.write_text(f"#!/bin/bash\n{body}", encoding="utf-8")
         tool.chmod(0o755)
     env = {"PATH": f"{tmp_path}{os.pathsep}/usr/bin:/bin"}
-    subprocess.run(["bash", "-e", "-c", script], env=env, check=True, capture_output=True)
+    subprocess.run(["bash", "-e", "-c", str(step["run"])], cwd=REPO, env=env, check=True, capture_output=True)
     assert calls.read_text(encoding="utf-8").splitlines() == [f"scripts/generate_markdown_stats.py {arguments}"]
 
 
@@ -603,11 +611,15 @@ def test_only_a_step_that_tolerates_the_one_asks_for_it() -> None:
     for path in sorted(WORKFLOWS.glob("*.yml")):
         for job in _workflow(path.name).get("jobs", {}).values():
             for step in job.get("steps", []):
-                run = str(step.get("run", ""))
+                run = step_program(step)  # with the script a step starts (scripts/cycle/)
                 if "generate_markdown_stats.py" not in run:
                     continue
                 callers += 1
-                calls = [line for line in run.splitlines() if "scripts/generate_markdown_stats.py" in line]
+                calls = [
+                    line
+                    for line in run.splitlines()
+                    if "scripts/generate_markdown_stats.py" in line and not line.lstrip().startswith("#")
+                ]
                 if path.name == "update-cycle.yml":
                     assert len(calls) == 2 and all(FLAG in line for line in calls)
                     assert step["continue-on-error"] is True
