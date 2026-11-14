@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261114-0015-F01, I20261114-0016, I20261114-0018, I20261114-0019"
+    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261114-0015-F01, I20261114-0018-F01, I20261114-0018-F02, I20261114-0019"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2343-626, R401-101, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2378-627, R2343-125, R2359-125, R3886-480, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R293-474, R1884-101, R318-437, R2558-125, R1974-466, R1199-205, R500-101, R1610-160, R1617-160, R1616-160, R1615-160, R1614-160, R1613-160, R1612-160, R1611-160, R5611-160, R1599-110, R1598-110, R1597-110, R1610-110, R1600-110, R574-110, R577-110, R574-160, R577-160, R1535-160, R1536-160, R1537-160, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2371-125, R401-101, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2372-125, R3886-480, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R318-437, R1884-101, R293-474, R2558-125, R1974-466, R1199-205, R500-101, R1610-160, R1617-160, R1616-160, R1615-160, R1611-160, R1612-160, R1613-160, R1614-160, R5611-160, R1597-110, R1600-110, R1599-110, R1598-110, R1610-110, R574-110, R577-110, R574-160, R577-160, R1537-160, R1536-160, R1535-160, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -219,72 +219,26 @@
     "title": "U6: Rettungseinsatz"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "4A": "ptBusCity"
-     }
-    },
-    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie 4A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 4A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "4A: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261114-0016",
-    "owner": "WL",
-    "parentName": "I20261114-0016",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "4A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 404,
-      "lineName": "4A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-14T12:05:00.000+0100",
-     "lastUpdate": "2026-11-14T12:05:00.000+0100",
-     "resume": "2026-11-14T12:05:00.000+0100",
-     "start": "2026-11-14T12:05:00.000+0100"
-    },
-    "title": "4A: Verspätungen"
-   },
-   {
     "alertCause": "fire",
     "alertCauseId": 5,
     "attributes": {
      "relatedLineTypes": {
-      "10": "ptTram",
-      "60": "ptTram"
+      "10": "ptTram"
      }
     },
-    "description": "Linie 10: Kein Betrieb zwischen Hietzing U und Penzinger Straße. Linie 60: Kein Betrieb zwischen Penzinger Straße und Anschützgasse. Ersatz: Linien U4 und 10A. Voraussichtliche Dauer: 13 Uhr. Grund: Feuerwehreinsatz im Bereich Hadikgasse 56.",
-    "descriptionHTML": "<p>Linie 10:<br>Kein Betrieb zwischen Hietzing U und Penzinger Straße.<br>Linie 60:<br>Kein Betrieb zwischen Penzinger Straße und Anschützgasse.</p><p>Ersatz: Linien U4 und 10A.</p><p>Voraussichtliche Dauer: 13 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Hadikgasse 56.</p>",
+    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 10:<br>Kein Betrieb zwischen Hietzing U und Penzinger Straße.<br>Linie 60:<br>Kein Betrieb zwischen Penzinger Straße und Anschützgasse.</p><p>Ersatz: Linien U4 und 10A.</p><p>Voraussichtliche Dauer: 13 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Hadikgasse 56.</p>",
-       "descriptionPlain": "Linie 10: Kein Betrieb zwischen Hietzing U und Penzinger Straße. Linie 60: Kein Betrieb zwischen Penzinger Straße und Anschützgasse. Ersatz: Linien U4 und 10A. Voraussichtliche Dauer: 13 Uhr. Grund: Feuerwehreinsatz im Bereich Hadikgasse 56.",
-       "title": "10, 60: Feuerwehreinsatz"
+       "descriptionHtml": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "10: Feuerwehreinsatz"
       }
      }
     ],
     "location": "Hadikgasse 56",
-    "name": "I20261114-0018",
+    "name": "I20261114-0018-F01",
     "owner": "WL",
     "parentName": "I20261114-0018",
     "priority": "1",
@@ -292,15 +246,55 @@
     "reasonName": "Feuerwehreinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "10",
-     "60"
+     "10"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 110,
       "lineName": "10",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-14T12:31:00.000+0100",
+     "lastUpdate": "2026-11-14T12:31:00.000+0100",
+     "resume": "2026-11-14T12:31:00.000+0100",
+     "start": "2026-11-14T12:16:00.000+0100"
+    },
+    "title": "10: Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "fire",
+    "alertCauseId": 5,
+    "attributes": {
+     "relatedLineTypes": {
+      "60": "ptTram"
+     }
+    },
+    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "60: Feuerwehreinsatz"
+      }
+     }
+    ],
+    "location": "Hadikgasse 56",
+    "name": "I20261114-0018-F02",
+    "owner": "WL",
+    "parentName": "I20261114-0018",
+    "priority": "1",
+    "reasonId": 11,
+    "reasonName": "Feuerwehreinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 160,
       "lineName": "60",
@@ -309,11 +303,12 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-14T12:17:00.000+0100",
-     "lastUpdate": "2026-11-14T12:17:00.000+0100",
+     "created": "2026-11-14T12:31:00.000+0100",
+     "lastUpdate": "2026-11-14T12:31:00.000+0100",
+     "resume": "2026-11-14T12:31:00.000+0100",
      "start": "2026-11-14T12:16:00.000+0100"
     },
-    "title": "10, 60: Feuerwehreinsatz"
+    "title": "60: Feuerwehreinsatz"
    },
    {
     "alertCause": "defective vehicle",
