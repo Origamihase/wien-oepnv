@@ -16,6 +16,7 @@ from datetime import datetime
 import pytest
 
 import src.build_feed  # noqa: F401  (loads the feed modules in their order)
+from src.feed_types import FeedItem
 from src.feed_build.item_format import _format_item_content
 from src.feed_build.summary_text import _recurring_window
 
@@ -39,7 +40,7 @@ _KRANARBEITEN = (
 
 
 def _summary(title: str, description: str, start: str, end: str) -> str:
-    item = {
+    item: FeedItem = {
         "source": "Wiener Linien",
         "category": "Hinweis",
         "title": title,

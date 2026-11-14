@@ -17,6 +17,7 @@ from xml.etree.ElementTree import Element, SubElement
 
 import src.build_feed as bf
 from src.feed_build.cache_filters import _post_filter_oebb
+from src.feed_types import FeedItem
 from src.providers import oebb
 from src.providers.oebb_route_title import _apply_route_title
 
@@ -69,7 +70,7 @@ def test_a_running_disruption_gets_no_label() -> None:
 
 
 def test_cached_all_clear_keeps_the_label_through_the_build() -> None:
-    item = {
+    item: FeedItem = {
         "source": "ÖBB",
         "category": "Störung",
         "title": _EXPECTED,
@@ -79,4 +80,5 @@ def test_cached_all_clear_keeps_the_label_through_the_build() -> None:
     }
     kept = _post_filter_oebb([item])
     assert [it["title"] for it in kept] == [_EXPECTED]
-    assert bf._defer_all_clear_items([dict(item), {"title": "U4: Betriebsstörung"}])[-1]["title"] == _EXPECTED
+    other: FeedItem = {"title": "U4: Betriebsstörung", "description": "", "link": ""}
+    assert bf._defer_all_clear_items([item, other])[-1]["title"] == _EXPECTED
