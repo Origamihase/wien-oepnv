@@ -239,6 +239,7 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
         # A) TrafficInfos (Störungen)
         infos = list(_fetch_traffic_infos(timeout=timeout, session=session))
         stale = wl_resolved.stale_tickers(infos, _is_finished)
+        rewritten = wl_resolved.rewritten_starts(infos, _is_finished)
         for ti in infos:
             attrs = _coerce_dict(ti.get("attributes"))
             drop_reason = _status_drop_reason(ti, stale)
@@ -267,6 +268,9 @@ def fetch_events(timeout: int = 20) -> list[dict[str, Any]]:
 
             tinfo = _coerce_dict(ti.get("time"))
             start = _iso(tinfo.get("start")) or _best_ts(ti)
+            # A ticker WL rewrote for a newer incident begins with that one
+            # (``wl_resolved.rewritten_starts``, operator decision 2026-11-14).
+            start = rewritten.get(wl_resolved.ticker_key(ti), start)
             end = _effective_end(desc_raw, _iso(tinfo.get("end")), start)
 
             real_start = _effective_start(title_raw, desc_raw, start, end, now)

@@ -127,7 +127,11 @@ verdrängt eine andere Störung.
     beginnt, gehört deshalb zu einer neuen Störung und bleibt („38A:
     Falschparker“, 05.10.: Nachlauf von 11:30 bis 12:59 Uhr).
     `scripts/update_wl_cache.py` merkt sich die Kurzmeldungen (Name, Beginn,
-    Titel) in `data/wl_resolved_tickers.json`, bis WL sie entfernt.
+    Titel) in `data/wl_resolved_tickers.json`, bis WL sie entfernt. Im Feld
+    `owners` steht dort außerdem, zu welcher Störung der Start jeder
+    Kurzmeldung gehört; schreibt WL eine Kurzmeldung für eine neuere
+    Störung um, beginnt sie mit dieser (seit 2026-11-14,
+    `rewritten_starts`, siehe `docs/architecture-teil-5.md`).
   - Sonst ist der Titel Linie und die häufigste Ursache der Gruppe; ohne
     Ursache der Titel der ersten Meldung. Die Ursache kommt aus dem Titel
     (`_reason_and_fragment`), aus einer ausführlichen Meldung mit dem

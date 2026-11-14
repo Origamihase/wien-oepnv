@@ -93,6 +93,10 @@ DAY_END = (23, 59)
 # [Seit 13:08]". The 60-minute window is Michael's decision of 11.10.2026
 # (decision card, "Fenster 60 Minuten"): it keeps every real ticker lead seen
 # and corrects the rewritten ticker; do not change it without asking him.
+# The window alone does not catch a ticker rewritten within the hour ("60:
+# Falschparker [Seit 12:17]" on 14.11.2026, incident from 13:12): since his
+# decision of 14.11.2026 ("Ja, als Klasse beheben") the provider gives such a
+# ticker the newer incident's start (``wl_resolved.rewritten_starts``).
 TICKER_LEAD_MAX = timedelta(minutes=60)
 
 
