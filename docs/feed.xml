@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 14 Nov 2026 20:14:05 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 20:30:35 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[14A: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">42270d028cd443977f582a2b48222c38c0603b64b1f2d3ae98143b310e12046e</guid>
+      <pubDate>Sat, 14 Nov 2026 19:59:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Sat, 14 Nov 2026 19:59:00 +0100</ext:first_seen>
+      <ext:starts_at>Sat, 14 Nov 2026 19:59:00 +0100</ext:starts_at>
+      <description>Fahrtbehinderung in beiden Richtungen. Voraussichtlich bis 21:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Gudrunstraße. [Seit 19:59]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in beiden Richtungen. Voraussichtlich bis 21:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Gudrunstraße.<br/>[Seit 19:59]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[11A: Falschparker]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -20,34 +33,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sat, 14 Nov 2026 19:58:00 +0100</ext:first_seen>
       <ext:starts_at>Sat, 14 Nov 2026 19:58:00 +0100</ext:starts_at>
-      <description>Fahrtbehinderung in Richtung Stadion. Voraussichtlich bis 20:30 Uhr. Grund: Falschparker im Haltestellenbereich Friedrich-Engels-Platz. [Seit 19:58]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Stadion. Voraussichtlich bis 20:30 Uhr. Grund: Falschparker im Haltestellenbereich Friedrich-Engels-Platz.<br/>[Seit 19:58]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[26A: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">cc50dc6a5ca22ae79c6dcc472391441d2a97d10bcf2b47c7cba4c68f563860cc</guid>
-      <pubDate>Sat, 14 Nov 2026 18:25:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sat, 14 Nov 2026 18:25:00 +0100</ext:first_seen>
-      <ext:starts_at>Sat, 14 Nov 2026 18:25:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Seit 18:25]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Seit 18:25]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[48A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">00b15b6969938db3d2a3979ffcf1966869591a5c68663ff5373d31c8041e5033</guid>
-      <pubDate>Sat, 14 Nov 2026 17:14:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sat, 14 Nov 2026 17:14:00 +0100</ext:first_seen>
-      <ext:starts_at>Sat, 14 Nov 2026 17:14:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 17:14]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 17:14]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 19:58]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 19:58]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
@@ -149,6 +136,20 @@
       <georss:point>48.145871 16.332540</georss:point>
       <description>Triester Straße 164 → Triester Straße 162. Haltestellenverlegung der Linie 65A in Richtung Wienerberg City (Inzersdorf). Grund: Straßenbauarbeiten. [Seit 11.11.]</description>
       <content:encoded><![CDATA[Triester Straße 164 → Triester Straße 162. Haltestellenverlegung der Linie 65A in Richtung Wienerberg City (Inzersdorf). Grund: Straßenbauarbeiten.<br/>[Seit 11.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[66A: Busse halten Salvatorianerplatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
+      <pubDate>Sat, 14 Nov 2026 04:40:14 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 11 Nov 2026 05:00:35 +0100</ext:first_seen>
+      <ext:starts_at>Sat, 14 Nov 2026 04:40:14 +0100</ext:starts_at>
+      <ext:ends_at>Sun, 15 Nov 2026 01:00:00 +0100</ext:ends_at>
+      <description>Grund: Bauarbeiten. [Bis So 15.11.]</description>
+      <content:encoded><![CDATA[Grund: Bauarbeiten.<br/>[Bis So 15.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
