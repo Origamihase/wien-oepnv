@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261114-0010, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20261114-0012, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R3886-480, R293-474, R1883-101, R1880-101, R1881-101, R1882-101, R1884-101, R318-437, R1875-101, R1876-101, R2558-125, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2373-127, R401-101, R2345-127, R2380-627, R2379-627, R2373-126, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R3886-480, R1876-101, R293-474, R318-437, R1880-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R2558-125, R1974-466, R1199-205, R500-101, R2179-127, R2178-127, R2185-127, R2184-127, R2183-127, R2182-127, R2186-127, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,50 +171,51 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
     "attributes": {
      "relatedLineTypes": {
-      "13A": "ptBusCity"
+      "27": "ptTram"
      }
     },
-    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 13A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+    "description": "Linie 27: Fahrtbehinderung in beiden Richtungen. Ersatz: Linien S-Bahn, 24A, 36A, 36B. Voraussichtliche Dauer: 09:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Autokaderstraße.",
+    "descriptionHTML": "<p>Linie 27:<br>Fahrtbehinderung in beiden Richtungen.</p><p>Ersatz: Linien S-Bahn, 24A, 36A, 36B.</p><p>Voraussichtliche Dauer: 09:30 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Autokaderstraße.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 13A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-       "title": "13A: Verkehrsunfall"
+       "descriptionHtml": "<p>Linie 27:<br>Fahrtbehinderung in beiden Richtungen.</p><p>Ersatz: Linien S-Bahn, 24A, 36A, 36B.</p><p>Voraussichtliche Dauer: 09:30 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Autokaderstraße.</p>",
+       "descriptionPlain": "Linie 27: Fahrtbehinderung in beiden Richtungen. Ersatz: Linien S-Bahn, 24A, 36A, 36B. Voraussichtliche Dauer: 09:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Autokaderstraße.",
+       "title": "27: Rettungseinsatz"
       }
      }
     ],
-    "location": "Weyringergasse 11",
-    "name": "I20261114-0010",
+    "name": "I20261114-0012",
     "owner": "WL",
-    "parentName": "I20261114-0010",
+    "parentName": "I20261114-0012",
     "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "13A"
+     "27"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 413,
-      "lineName": "13A",
-      "vehicleType": "ptBusCity"
+      "lineId": 127,
+      "lineName": "27",
+      "vehicleType": "ptTram"
      }
+    ],
+    "relatedStops": [
+     2178
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-14T07:04:00.000+0100",
-     "lastUpdate": "2026-11-14T07:04:00.000+0100",
-     "resume": "2026-11-14T07:02:00.000+0100",
-     "start": "2026-11-14T07:02:00.000+0100"
+     "created": "2026-11-14T08:46:00.000+0100",
+     "lastUpdate": "2026-11-14T08:54:00.000+0100",
+     "start": "2026-11-14T08:45:00.000+0100"
     },
-    "title": "13A: Verkehrsunfall"
+    "title": "27: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -422,6 +423,167 @@
      "start": "2026-11-14T04:40:14.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2178-127",
+    "owner": "WL",
+    "parentName": "R2178-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2178
+    ],
+    "time": {
+     "end": "2026-11-14T09:44:00.000+0100",
+     "start": "2026-11-14T08:45:07.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2179-127",
+    "owner": "WL",
+    "parentName": "R2179-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2179
+    ],
+    "time": {
+     "end": "2026-11-14T09:44:00.000+0100",
+     "start": "2026-11-14T08:45:07.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2182-127",
+    "owner": "WL",
+    "parentName": "R2182-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2182
+    ],
+    "time": {
+     "end": "2026-11-14T09:56:00.000+0100",
+     "start": "2026-11-14T08:57:09.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2183-127",
+    "owner": "WL",
+    "parentName": "R2183-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2183
+    ],
+    "time": {
+     "end": "2026-11-14T09:56:00.000+0100",
+     "start": "2026-11-14T08:57:09.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2184-127",
+    "owner": "WL",
+    "parentName": "R2184-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2184
+    ],
+    "time": {
+     "end": "2026-11-14T09:56:00.000+0100",
+     "start": "2026-11-14T08:57:09.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2185-127",
+    "owner": "WL",
+    "parentName": "R2185-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2185
+    ],
+    "time": {
+     "end": "2026-11-14T09:56:00.000+0100",
+     "start": "2026-11-14T08:57:09.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2186-127",
+    "owner": "WL",
+    "parentName": "R2186-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2186
+    ],
+    "time": {
+     "end": "2026-11-14T09:56:00.000+0100",
+     "start": "2026-11-14T08:57:09.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
