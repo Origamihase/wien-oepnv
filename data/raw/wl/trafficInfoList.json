@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261114-0014-F01, I20260925-0011, I20260909-0007, I20261020-0029, I20261114-0015-F01, I20261114-0015"
+    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261114-0015-F01, I20261114-0016, I20261114-0018, I20261114-0019"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2373-126, R2380-627, R401-101, R2345-127, R2379-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R3886-480, R318-437, R293-474, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R1880-101, R2558-125, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2343-626, R401-101, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2378-627, R2343-125, R2359-125, R3886-480, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R293-474, R1884-101, R318-437, R2558-125, R1974-466, R1199-205, R500-101, R1610-160, R1617-160, R1616-160, R1615-160, R1614-160, R1613-160, R1612-160, R1611-160, R5611-160, R1599-110, R1598-110, R1597-110, R1610-110, R1600-110, R574-110, R577-110, R574-160, R577-160, R1535-160, R1536-160, R1537-160, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,103 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "41": "ptTram"
-     }
-    },
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "41: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261114-0014-F01",
-    "owner": "WL",
-    "parentName": "I20261114-0014",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 141,
-      "lineName": "41",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     1310
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-14T11:03:00.000+0100",
-     "lastUpdate": "2026-11-14T11:03:00.000+0100",
-     "resume": "2026-11-14T11:03:00.000+0100",
-     "start": "2026-11-14T10:53:00.000+0100"
-    },
-    "title": "41: Polizeieinsatz"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Voraussichtliche Dauer: 12:10 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Jägerstraße.",
-    "descriptionHTML": "<p>Linie U6:<br>Fahrtbehinderung in Richtung Floridsdorf.</p><p>Voraussichtliche Dauer: 12:10 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Jägerstraße.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U6:<br>Fahrtbehinderung in Richtung Floridsdorf.</p><p>Voraussichtliche Dauer: 12:10 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Jägerstraße.</p>",
-       "descriptionPlain": "Linie U6: Fahrtbehinderung in Richtung Floridsdorf. Voraussichtliche Dauer: 12:10 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Jägerstraße.",
-       "title": "U6: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261114-0015",
-    "owner": "WL",
-    "parentName": "I20261114-0015",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4641
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-14T11:58:00.000+0100",
-     "end": "2026-11-14T12:00:00.000+0100",
-     "lastUpdate": "2026-11-14T12:00:00.000+0100",
-     "resume": "2026-11-14T12:00:00.000+0100",
-     "start": "2026-11-14T11:57:00.000+0100"
-    },
-    "title": "U6: Rettungseinsatz"
-   },
-   {
     "alertCause": "emergency medical services",
     "alertCauseId": 14,
     "attributes": {
@@ -316,6 +219,148 @@
     "title": "U6: Rettungseinsatz"
    },
    {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "4A": "ptBusCity"
+     }
+    },
+    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie 4A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 4A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "4A: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261114-0016",
+    "owner": "WL",
+    "parentName": "I20261114-0016",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "4A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 404,
+      "lineName": "4A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-14T12:05:00.000+0100",
+     "lastUpdate": "2026-11-14T12:05:00.000+0100",
+     "resume": "2026-11-14T12:05:00.000+0100",
+     "start": "2026-11-14T12:05:00.000+0100"
+    },
+    "title": "4A: Verspätungen"
+   },
+   {
+    "alertCause": "fire",
+    "alertCauseId": 5,
+    "attributes": {
+     "relatedLineTypes": {
+      "10": "ptTram",
+      "60": "ptTram"
+     }
+    },
+    "description": "Linie 10: Kein Betrieb zwischen Hietzing U und Penzinger Straße. Linie 60: Kein Betrieb zwischen Penzinger Straße und Anschützgasse. Ersatz: Linien U4 und 10A. Voraussichtliche Dauer: 13 Uhr. Grund: Feuerwehreinsatz im Bereich Hadikgasse 56.",
+    "descriptionHTML": "<p>Linie 10:<br>Kein Betrieb zwischen Hietzing U und Penzinger Straße.<br>Linie 60:<br>Kein Betrieb zwischen Penzinger Straße und Anschützgasse.</p><p>Ersatz: Linien U4 und 10A.</p><p>Voraussichtliche Dauer: 13 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Hadikgasse 56.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 10:<br>Kein Betrieb zwischen Hietzing U und Penzinger Straße.<br>Linie 60:<br>Kein Betrieb zwischen Penzinger Straße und Anschützgasse.</p><p>Ersatz: Linien U4 und 10A.</p><p>Voraussichtliche Dauer: 13 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Hadikgasse 56.</p>",
+       "descriptionPlain": "Linie 10: Kein Betrieb zwischen Hietzing U und Penzinger Straße. Linie 60: Kein Betrieb zwischen Penzinger Straße und Anschützgasse. Ersatz: Linien U4 und 10A. Voraussichtliche Dauer: 13 Uhr. Grund: Feuerwehreinsatz im Bereich Hadikgasse 56.",
+       "title": "10, 60: Feuerwehreinsatz"
+      }
+     }
+    ],
+    "location": "Hadikgasse 56",
+    "name": "I20261114-0018",
+    "owner": "WL",
+    "parentName": "I20261114-0018",
+    "priority": "1",
+    "reasonId": 11,
+    "reasonName": "Feuerwehreinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "10",
+     "60"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 110,
+      "lineName": "10",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 160,
+      "lineName": "60",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-14T12:17:00.000+0100",
+     "lastUpdate": "2026-11-14T12:17:00.000+0100",
+     "start": "2026-11-14T12:16:00.000+0100"
+    },
+    "title": "10, 60: Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U2": "ptMetro"
+     }
+    },
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U2: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261114-0019",
+    "owner": "WL",
+    "parentName": "I20261114-0019",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 302,
+      "lineName": "U2",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-14T12:19:00.000+0100",
+     "lastUpdate": "2026-11-14T12:19:00.000+0100",
+     "resume": "2026-11-14T12:19:00.000+0100",
+     "start": "2026-11-14T12:19:00.000+0100"
+    },
+    "title": "U2: Verspätungen"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -337,6 +382,374 @@
      "start": "2026-11-14T04:45:13.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Hietzing",
+    "name": "R1535-160",
+    "owner": "WL",
+    "parentName": "R1535-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1535
+    ],
+    "time": {
+     "end": "2026-11-14T13:18:00.000+0100",
+     "start": "2026-11-14T12:18:58.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Hietzing"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Hietzing",
+    "name": "R1536-160",
+    "owner": "WL",
+    "parentName": "R1536-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1536
+    ],
+    "time": {
+     "end": "2026-11-14T13:18:00.000+0100",
+     "start": "2026-11-14T12:18:58.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Hietzing"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Hietzing",
+    "name": "R1537-160",
+    "owner": "WL",
+    "parentName": "R1537-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1537
+    ],
+    "time": {
+     "end": "2026-11-14T13:18:00.000+0100",
+     "start": "2026-11-14T12:18:58.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Hietzing"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "name": "R1597-110",
+    "owner": "WL",
+    "parentName": "R1597-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     1597
+    ],
+    "time": {
+     "end": "2026-11-14T13:07:00.000+0100",
+     "start": "2026-11-14T12:08:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter PKW"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "name": "R1598-110",
+    "owner": "WL",
+    "parentName": "R1598-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     1598
+    ],
+    "time": {
+     "end": "2026-11-14T13:07:00.000+0100",
+     "start": "2026-11-14T12:08:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter PKW"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "name": "R1599-110",
+    "owner": "WL",
+    "parentName": "R1599-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     1599
+    ],
+    "time": {
+     "end": "2026-11-14T13:07:00.000+0100",
+     "start": "2026-11-14T12:08:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter PKW"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "name": "R1600-110",
+    "owner": "WL",
+    "parentName": "R1600-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     1600
+    ],
+    "time": {
+     "end": "2026-11-14T13:07:00.000+0100",
+     "start": "2026-11-14T12:08:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter PKW"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "name": "R1610-110",
+    "owner": "WL",
+    "parentName": "R1610-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     1610
+    ],
+    "time": {
+     "end": "2026-11-14T13:07:00.000+0100",
+     "start": "2026-11-14T12:08:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter PKW"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "name": "R1610-160",
+    "owner": "WL",
+    "parentName": "R1610-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1610
+    ],
+    "time": {
+     "end": "2026-11-14T13:06:00.000+0100",
+     "start": "2026-11-14T12:07:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter PKW"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "name": "R1611-160",
+    "owner": "WL",
+    "parentName": "R1611-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1611
+    ],
+    "time": {
+     "end": "2026-11-14T13:06:00.000+0100",
+     "start": "2026-11-14T12:07:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter PKW"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "name": "R1612-160",
+    "owner": "WL",
+    "parentName": "R1612-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1612
+    ],
+    "time": {
+     "end": "2026-11-14T13:06:00.000+0100",
+     "start": "2026-11-14T12:07:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter PKW"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "name": "R1613-160",
+    "owner": "WL",
+    "parentName": "R1613-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1613
+    ],
+    "time": {
+     "end": "2026-11-14T13:06:00.000+0100",
+     "start": "2026-11-14T12:07:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter PKW"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "name": "R1614-160",
+    "owner": "WL",
+    "parentName": "R1614-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1614
+    ],
+    "time": {
+     "end": "2026-11-14T13:06:00.000+0100",
+     "start": "2026-11-14T12:07:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter PKW"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "name": "R1615-160",
+    "owner": "WL",
+    "parentName": "R1615-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1615
+    ],
+    "time": {
+     "end": "2026-11-14T13:06:00.000+0100",
+     "start": "2026-11-14T12:07:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter PKW"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "name": "R1616-160",
+    "owner": "WL",
+    "parentName": "R1616-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1616
+    ],
+    "time": {
+     "end": "2026-11-14T13:06:00.000+0100",
+     "start": "2026-11-14T12:07:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter PKW"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "name": "R1617-160",
+    "owner": "WL",
+    "parentName": "R1617-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1617
+    ],
+    "time": {
+     "end": "2026-11-14T13:06:00.000+0100",
+     "start": "2026-11-14T12:07:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter PKW"
    },
    {
     "alertCause": "undefined alert cause",
@@ -958,6 +1371,121 @@
      "start": "2026-11-14T05:00:14.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "name": "R5611-160",
+    "owner": "WL",
+    "parentName": "R5611-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     5611
+    ],
+    "time": {
+     "end": "2026-11-14T13:06:00.000+0100",
+     "start": "2026-11-14T12:07:32.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter PKW"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Penzinger Straße",
+    "name": "R574-110",
+    "owner": "WL",
+    "parentName": "R574-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     574
+    ],
+    "time": {
+     "end": "2026-11-14T13:15:00.000+0100",
+     "start": "2026-11-14T12:16:29.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Penzinger Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Anschützgasse",
+    "name": "R574-160",
+    "owner": "WL",
+    "parentName": "R574-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     574
+    ],
+    "time": {
+     "end": "2026-11-14T13:17:00.000+0100",
+     "start": "2026-11-14T12:18:29.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Anschützgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nZüge halten bei Linie 52",
+    "name": "R577-110",
+    "owner": "WL",
+    "parentName": "R577-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     577
+    ],
+    "time": {
+     "end": "2026-11-14T13:16:00.000+0100",
+     "start": "2026-11-14T12:17:29.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nZüge halten bei Linie 52"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Feuerwehreinsatz\nBetrieb ab Anschützgasse",
+    "name": "R577-160",
+    "owner": "WL",
+    "parentName": "R577-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     577
+    ],
+    "time": {
+     "end": "2026-11-14T13:17:00.000+0100",
+     "start": "2026-11-14T12:18:29.000+0100"
+    },
+    "title": "Feuerwehreinsatz\nBetrieb ab Anschützgasse"
    },
    {
     "alertCause": "undefined alert cause",

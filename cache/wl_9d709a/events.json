@@ -638,6 +638,34 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10/60: Feuerwehreinsatz",
+    "description": "Linie 10: Kein Betrieb zwischen Hietzing U und Penzinger Straße. Linie 60: Kein Betrieb zwischen Penzinger Straße und Anschützgasse. Ersatz: Linien U4 und 10A. Voraussichtliche Dauer: 13 Uhr. Grund: Feuerwehreinsatz im Bereich Hadikgasse 56.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4f19075487eec37361aaab6d8078aa0bb253640a9cd8b08fef359889cb66e6ed",
+    "pubDate": "2026-11-14T12:16:00+01:00",
+    "starts_at": "2026-11-14T12:16:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=10,60|D=2026-11-14|TK=feuerwehreinsatz",
+    "_wl_ids": [
+      "I20261114-0018"
+    ],
+    "_incident_start": "2026-11-14T12:16:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Fahrtbehinderung Schadhafter PKW",
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "7e80f3fc61dbee2cf4cb61257b270a1f915a5b335b89273ffd90629f258b2546",
+    "pubDate": "2026-11-14T12:08:27+01:00",
+    "starts_at": "2026-11-14T12:08:27+01:00",
+    "ends_at": "2026-11-14T13:07:00+01:00",
+    "_identity": "wl|störung|L=10|D=2026-11-14|TK=fahrtbehinderung schadhafter pkw"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -878,18 +906,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "41: Polizeieinsatz",
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "4A: Verspätungen",
+    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "c00c177609807206f4916d92d93f2b3dcefd7c4893f63c45f581cfba2bdad937",
-    "pubDate": "2026-11-14T10:53:00+01:00",
-    "starts_at": "2026-11-14T10:53:00+01:00",
+    "guid": "c488466d4e8c651bfdcfdf462d4fb9251bbd52636edf4eb2c38b9c6842c4ecda",
+    "pubDate": "2026-11-14T12:05:00+01:00",
+    "starts_at": "2026-11-14T12:05:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=41|D=2026-11-14|TK=polizeieinsatz",
+    "_identity": "wl|störung|L=4A|D=2026-11-14|TK=4a verspätungen",
     "_wl_ids": [
-      "I20261114-0014"
+      "I20261114-0016"
     ],
-    "_incident_start": "2026-11-14T10:53:00+01:00"
+    "_incident_start": "2026-11-14T12:05:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -902,6 +930,18 @@
     "starts_at": "2026-11-14T04:45:13+01:00",
     "ends_at": "2026-11-14T23:59:59+01:00",
     "_identity": "wl|störung|L=5B|D=2026-11-14|TK=busse halten pappenheimgasse 24 28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Fahrtbehinderung Schadhafter PKW",
+    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "eb0220c8ef7f3244966779ffeb71846a32bc1560ec4d2fb47fb20f95b4beea7a",
+    "pubDate": "2026-11-14T12:07:27+01:00",
+    "starts_at": "2026-11-14T12:07:32+01:00",
+    "ends_at": "2026-11-14T13:06:00+01:00",
+    "_identity": "wl|störung|L=60|D=2026-11-14|TK=fahrtbehinderung schadhafter pkw"
   },
   {
     "source": "Wiener Linien",
@@ -938,6 +978,22 @@
     "starts_at": "2026-11-13T00:00:14+01:00",
     "ends_at": "2026-11-14T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-13|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Verspätungen",
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
+    "pubDate": "2026-11-14T12:19:00+01:00",
+    "starts_at": "2026-11-14T12:19:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U2|D=2026-11-14|TK=u2 verspätungen",
+    "_wl_ids": [
+      "I20261114-0019"
+    ],
+    "_incident_start": "2026-11-14T12:19:00+01:00"
   },
   {
     "source": "Wiener Linien",
