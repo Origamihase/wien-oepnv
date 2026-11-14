@@ -21,6 +21,15 @@
   gehört zum nächsten Absatz und steht nie allein am Ende. Absätze mit
   „Zeitraum:“ und „Dauer:“ fallen in jedem mehrteiligen Text weg, denn die
   Zeitzeile nennt die Daten schon, und sie nahmen den Maßnahmen den Platz.
+  Beschränkt ein solcher Absatz die Maßnahme auf Wochentage oder Uhrzeiten,
+  schließt dieser Teil seit 2026-11-14 den Einleitungssatz ab
+  (`_recurring_window`): „Haltestellenauflassung der Linien D, 1 und 71 in
+  beiden Richtungen, an Freitagen, Samstagen, Sonntagen sowie am 08.
+  Dezember jeweils von etwa 15:00 Uhr bis 22:30 Uhr.“ Die Zeitzeile trägt
+  nur Beginn und Ende; ohne ihn las sich diese Sperre („[Bis 20.12.]“) wie
+  eine an jedem Tag und „63A: Umleitung wegen Kranarbeiten“ (nur „täglich
+  von 20:00 Uhr bis 05:00 Uhr“) wie eine Umleitung rund um die Uhr, die
+  einzigen zwei in allen Feed-Ständen seit 20.09.2026.
   Ein Maßnahmenblock („Linie D: …; Linie 1: …“) folgt einem stehen
   gebliebenen Einleitungssatz auch dann, wenn beide nicht in 180 Zeichen
   passen, und wird mit „…“ gekürzt, solange die Linie und mindestens drei

@@ -16,7 +16,7 @@ from ..utils.stations import (
     station_lines,
 )
 from ..utils.geo import calculate_distance_meters
-from .oebb_title import _LEADING_LINE_PREFIX_RE
+from .oebb_title import _LEADING_LINE_PREFIX_RE, _join_label, _split_all_clear_label
 from .oebb_routes import _extract_routes
 from .oebb_relevance import _route_is_wien_relevant
 
@@ -524,8 +524,31 @@ def _apply_route_title(title: str, desc: str) -> str:
         (a, b) for (a, b) in routes if _route_is_wien_relevant(a, b)
     ]
     if relevant_routes:
-        return _format_route_title(relevant_routes, effective_prefix)
+        return _keep_all_clear_label(title, _format_route_title(relevant_routes, effective_prefix))
 
     if desc_line and not existing_line_prefix:
         return f"{desc_line}: {title}"
     return title
+
+
+def _keep_all_clear_label(title: str, rebuilt: str) -> str:
+    """*rebuilt* with the all-clear label of *title* in front of its route.
+
+    ``_clean_title_keep_places`` keeps "Aufhebung Streckenunterbrechung" so
+    an all-clear does not read like a running disruption, but a title built
+    from the route in the text dropped it: "Update 7 (14.11.2026 15:50)
+    Aufhebung Streckenunterbrechung: Wien Floridsdorf Bahnhof (U) - Wien
+    Jedlersdorf Bahnhst" ("waren … bis 15:34 Uhr keine Fahrten möglich")
+    became "Wien Jedlersdorf ↔ Korneuburg" and stood on place 5, and
+    ``_defer_all_clear_items`` (operator decision 2026-09-25: an all-clear
+    goes behind the whole field) never saw it; so did every Wien all-clear
+    with a route in its text since 04.10.2026. The label goes behind the
+    line prefix, where ``_clean_title_keep_places`` puts it.
+    """
+    _, rest = _extract_line_prefix(title)
+    label, _ = _split_all_clear_label(rest)
+    if not label:
+        return rebuilt
+    prefix, route = _extract_line_prefix(rebuilt)
+    labelled = _join_label(label, route)
+    return f"{prefix}: {labelled}" if prefix else labelled
