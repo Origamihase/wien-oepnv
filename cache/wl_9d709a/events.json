@@ -638,6 +638,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10A: Rettungseinsatz",
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "219e547df2be869f9c5e196043c5ef1b5d356073d50ea5347540dd618f54101f",
+    "pubDate": "2026-11-14T15:39:00+01:00",
+    "starts_at": "2026-11-14T15:39:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=10A|D=2026-11-14|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261114-0025"
+    ],
+    "_incident_start": "2026-11-14T15:39:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -918,22 +934,6 @@
       "I20261114-0020"
     ],
     "_incident_start": "2026-11-14T13:12:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "66A: Verkehrsunfall",
-    "description": "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "74d7957440840d3e04ef7e63c6b0e84924838c4a84cdab001ac77313773a37b5",
-    "pubDate": "2026-11-14T14:57:00+01:00",
-    "starts_at": "2026-11-14T14:57:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=66A|D=2026-11-14|TK=66a verkehrsunfall",
-    "_wl_ids": [
-      "I20261114-0024"
-    ],
-    "_incident_start": "2026-11-14T14:57:00+01:00"
   },
   {
     "source": "Wiener Linien",
