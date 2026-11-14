@@ -88,6 +88,22 @@
     [Seit 13:08]“. Ohne Störungsmeldung im Eintrag sagt nichts, dass eine
     Anzeige umgeschrieben wurde; so blieb um 21:01 „71: Polizeieinsatz
     [Seit 13:10]“, als WL für die 71 nur noch die Anzeigen führte.
+    Das Fenster allein fängt eine Anzeige nicht, die WL binnen der Stunde
+    umschreibt: Am 14.11.2026 las „Feuerwehreinsatz / Züge halten bei Linie
+    52“ (Start 12:17, Störung `I20261114-0018` ab 12:16) ab 13:31
+    „Fahrtbehinderung / Falschparker“ für die Störung ab 13:12, und der Feed
+    zeigte „60: Falschparker [Seit 12:17]“. Seit Michaels Entscheidung vom
+    14.11.2026 („Ja, als Klasse beheben“) gibt der Abruf einer solchen
+    Anzeige den Beginn der Störung, die sie jetzt zeigt
+    (`wl_resolved.rewritten_starts`): Ihr Start gehört zur Störung, mit der
+    sie kam (Regel 2 aus `wl_resolved`: die neueste Meldung ihrer Art auf
+    ihren Linien, höchstens zehn Minuten nach ihr begonnen; gemerkt in
+    `data/wl_resolved_tickers.json`, Feld `owners`, solange WL die Anzeige
+    schickt). Ist diese Störung vorbei oder trägt die Anzeige einen anderen
+    Titel als damals, und läuft auf ihren Linien eine später begonnene
+    Meldung anderer Nummer, zählt deren Beginn. Eine Anzeige ohne ältere
+    Störung (echter Vorlauf, bis 43 Minuten am 07.11.) behält ihren Start,
+    ebenso eine Anzeige, deren Störung mit unverändertem Titel weiterläuft.
     Fällt die früheste Meldung weg, während die übrigen bleiben (die
     Kurzmeldungen laufen aus, die ausführliche Meldung wird erledigt),
     bleibt der Beginn stehen: Der Build merkt sich das früheste `pubDate`

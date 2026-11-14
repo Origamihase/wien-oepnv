@@ -60,6 +60,11 @@ found then are remembered by name, start and title
 (``data/wl_resolved_tickers.json``, written by
 ``scripts/update_wl_cache.py``) and dropped until WL removes them. A ticker
 WL reuses for a new incident gets a new start or title and counts as new.
+
+A reused ticker keeps the start of its old incident; :func:`rewritten_starts`
+gives it the start of the incident it now shows, so it does not date that
+one back (operator decision 2026-11-14). The same file remembers which
+incident each ticker's start dates.
 """
 
 from __future__ import annotations
@@ -96,6 +101,10 @@ MAX_MEMORY_BYTES = 256 * 1024
 
 # Tickers of closed incidents, remembered across fetches: key -> record.
 _remembered: dict[str, dict[str, str]] = {}
+# Name and start of each ticker -> the incident that start dates and the
+# ticker's title when it came with it, remembered across fetches
+# (``rewritten_starts``).
+_owners: dict[str, dict[str, str]] = {}
 
 
 def _moment(value: object) -> datetime | None:
@@ -236,9 +245,112 @@ def _record(key: str, ticker: Mapping[str, Any], incident: str) -> dict[str, str
     }
 
 
+def _start_key(info: Mapping[str, Any]) -> str:
+    """Name and start of a ticker: what WL keeps when it rewrites the title."""
+    start = info.get("time", {}).get("start") if isinstance(info.get("time"), Mapping) else ""
+    return str(scrub_trojan_source_primitives(f"{info.get('name') or ''}|{start or ''}"))
+
+
+def _serves(ticker: Mapping[str, Any], message: Mapping[str, Any]) -> bool:
+    """Whether *message* is one *ticker* could show: rules 1 and 3 above."""
+    return _lines(ticker) <= _lines(message) and _planned(message) == _planned(ticker)
+
+
+def rewritten_starts(
+    infos: Iterable[Mapping[str, Any]], finished: Callable[[Mapping[str, Any]], bool]
+) -> dict[str, datetime]:
+    """Ticker key -> begin, for the tickers WL rewrote for a newer incident.
+
+    WL rewrites the display tickers of an incident for the next incident on
+    the same lines and keeps their start: "Feuerwehreinsatz / Züge halten
+    bei Linie 52" (``R577-110``, start 12:17, incident ``I20261114-0018``
+    from 12:16) read "Fahrtbehinderung / Falschparker" from 13:31 for
+    ``I20261114-0020`` (from 13:12), and the feed showed "60: Falschparker
+    [Seit 12:17]". A ticker's start dates the incident it came with: the
+    newest message of its kind on its lines that began at most
+    :data:`TICKER_LEAD` after it (rule 2), or, once that message has left
+    the data, the incident remembered for its name and start. When the
+    ticker no longer shows that incident (``_rewritten``), a running message
+    of another number on its lines that began after the ticker is the
+    incident it now shows, and that message's start is its begin (operator
+    decision 2026-11-14, "Ja, als Klasse beheben"). A ticker
+    without such an incident (it came before its message, up to 43 minutes
+    on 07.11.2026) keeps its start, and so does a works ticker: the time
+    line shows no "Seit" for a planned measure.
+    """
+    infos = [info for info in infos if isinstance(info, Mapping)]
+    messages = [info for info in infos if not is_ticker(info)]
+    owners: dict[str, dict[str, str]] = {}
+    begins: dict[str, datetime] = {}
+    for ticker in infos:
+        began = _time(ticker, "start")
+        if not is_ticker(ticker) or began is None or _planned(ticker):
+            continue
+        owner = _owner(ticker, messages)
+        if owner is None:
+            continue
+        newer = [
+            (start, _incident_number(message))
+            for message in messages
+            if not finished(message) and _incident_number(message) != owner["incident"]
+            and _serves(ticker, message) and (start := _time(message, "start")) is not None
+            and start > began + TICKER_LEAD
+        ]
+        if newer and _rewritten(ticker, owner, messages, finished):
+            start, number = max(newer)
+            owner = {"incident": number, "title": str(ticker.get("title") or ""), "begin": start.isoformat()}
+        owners[_start_key(ticker)] = owner
+        begin = _moment(owner.get("begin"))
+        if begin is not None:
+            begins[ticker_key(ticker)] = begin
+    _owners.clear()
+    _owners.update(owners)
+    return begins
+
+
+def _owner(ticker: Mapping[str, Any], messages: Iterable[Mapping[str, Any]]) -> dict[str, str] | None:
+    """The incident *ticker*'s start dates, with the title the ticker had then.
+
+    A ticker found rewritten keeps the newer incident and its begin
+    (``begin``) for as long as WL sends it: when that incident is closed in
+    turn, nothing else on its lines began after it.
+    """
+    remembered = _owners.get(_start_key(ticker))
+    if remembered and remembered.get("begin"):
+        return remembered  # rewritten before: it shows the incident noted then
+    incident = _incident_of(ticker, messages)
+    if incident:
+        number = _incident_number(incident[0])
+        if remembered and remembered.get("incident") == number:
+            return remembered
+        return {"incident": number, "title": str(ticker.get("title") or "")}
+    return remembered
+
+
+def _rewritten(
+    ticker: Mapping[str, Any],
+    owner: Mapping[str, str],
+    messages: Iterable[Mapping[str, Any]],
+    finished: Callable[[Mapping[str, Any]], bool],
+) -> bool:
+    """Whether *ticker* no longer shows *owner*'s incident.
+
+    It does not once that incident is over, or when WL gave the ticker a new
+    title while the incident still runs: on 21.10.2026 "Fahrtbehinderung /
+    Fremdunfall" of "10, 46: Fremder Verkehrsunfall" (09:26) read "wegen
+    Rettungseinsatz" for "46: Rettungseinsatz" (10:07). A ticker whose
+    incident runs and whose title stayed shows that incident, although a
+    newer one runs beside it ("11: Schadhafter Zug" beside "71, 11:
+    Verkehrsunfall", 20.10.2026).
+    """
+    running = any(_incident_number(m) == owner.get("incident") and not finished(m) for m in messages)
+    return not running or str(ticker.get("title") or "") != owner.get("title")
+
+
 def load_memory(path: Path) -> None:
     """Remember the tickers stored at *path*; an absent or broken file is no memory."""
     _remembered.clear()
+    _owners.clear()
     if not path.exists():
         return
     payload = read_capped_json(path, MAX_MEMORY_BYTES, label="WL resolved tickers", logger=log)
@@ -246,19 +358,26 @@ def load_memory(path: Path) -> None:
     for record in records if isinstance(records, list) else []:
         if isinstance(record, dict) and isinstance(record.get("key"), str):
             _remembered[record["key"]] = {k: str(v) for k, v in record.items() if isinstance(k, str)}
+    owners = payload.get("owners") if isinstance(payload, dict) else None
+    for key, owner in owners.items() if isinstance(owners, dict) else ():
+        if isinstance(owner, dict) and isinstance(owner.get("incident"), str):
+            _owners[str(key)] = {k: str(v) for k, v in owner.items() if isinstance(k, str)}
 
 
 def save_memory(path: Path) -> None:
     """Write the remembered tickers to *path*, only when that changes the file."""
-    if not _remembered and not path.exists():
+    if not _remembered and not _owners and not path.exists():
         return
     document = {
         "version": 1,
         "description": (
             "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. "
-            "src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title."
+            "src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. "
+            "owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, "
+            "for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts)."
         ),
         "tickers": [_remembered[key] for key in sorted(_remembered)],
+        "owners": {key: _owners[key] for key in sorted(_owners)},
     }
     text = json.dumps(scrub_trojan_source_primitives(document), ensure_ascii=False, indent=1, allow_nan=False) + "\n"
     if path.exists() and read_capped_text(path, MAX_MEMORY_BYTES, label="WL resolved tickers", logger=log) == text:
@@ -275,6 +394,7 @@ def remembered() -> dict[str, dict[str, str]]:
 def forget() -> None:
     """Clear the memory (tests)."""
     _remembered.clear()
+    _owners.clear()
 
 
 __all__ = [
@@ -285,6 +405,7 @@ __all__ = [
     "is_ticker",
     "load_memory",
     "remembered",
+    "rewritten_starts",
     "save_memory",
     "stale_tickers",
     "ticker_key",
