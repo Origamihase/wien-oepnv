@@ -1,5 +1,146 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "tickers": [
+  {
+   "key": "R1559-160|2026-11-14T13:15:34.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R1559-160",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-14T14:14:00.000+0100",
+   "incident": "I20261114-0020"
+  },
+  {
+   "key": "R1562-160|2026-11-14T13:15:34.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R1562-160",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-14T14:14:00.000+0100",
+   "incident": "I20261114-0020"
+  },
+  {
+   "key": "R1597-110|2026-11-14T13:20:04.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R1597-110",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-14T14:19:00.000+0100",
+   "incident": "I20261114-0020"
+  },
+  {
+   "key": "R1599-110|2026-11-14T13:24:05.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R1599-110",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-14T14:23:00.000+0100",
+   "incident": "I20261114-0020"
+  },
+  {
+   "key": "R1605-110|2026-11-14T13:22:05.000+0100|Falschparker\nBetrieb ab Hietzing",
+   "name": "R1605-110",
+   "title": "Falschparker\nBetrieb ab Hietzing",
+   "end": "2026-11-14T14:21:00.000+0100",
+   "incident": "I20261114-0020"
+  },
+  {
+   "key": "R1610-110|2026-11-14T13:20:04.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R1610-110",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-14T14:19:00.000+0100",
+   "incident": "I20261114-0020"
+  },
+  {
+   "key": "R1610-160|2026-11-14T13:20:34.000+0100|Falschparker\nBetrieb ab Hofwiesengasse",
+   "name": "R1610-160",
+   "title": "Falschparker\nBetrieb ab Hofwiesengasse",
+   "end": "2026-11-14T14:20:00.000+0100",
+   "incident": "I20261114-0020"
+  },
+  {
+   "key": "R1611-160|2026-11-14T13:20:34.000+0100|Falschparker\nBetrieb ab Hofwiesengasse",
+   "name": "R1611-160",
+   "title": "Falschparker\nBetrieb ab Hofwiesengasse",
+   "end": "2026-11-14T14:20:00.000+0100",
+   "incident": "I20261114-0020"
+  },
+  {
+   "key": "R1612-160|2026-11-14T13:20:34.000+0100|Falschparker\nBetrieb ab Hofwiesengasse",
+   "name": "R1612-160",
+   "title": "Falschparker\nBetrieb ab Hofwiesengasse",
+   "end": "2026-11-14T14:20:00.000+0100",
+   "incident": "I20261114-0020"
+  },
+  {
+   "key": "R1613-160|2026-11-14T13:20:34.000+0100|Falschparker\nBetrieb ab Hofwiesengasse",
+   "name": "R1613-160",
+   "title": "Falschparker\nBetrieb ab Hofwiesengasse",
+   "end": "2026-11-14T14:20:00.000+0100",
+   "incident": "I20261114-0020"
+  },
+  {
+   "key": "R1634-160|2026-11-14T13:21:04.000+0100|Falschparker\nBetrieb ab Hietzing",
+   "name": "R1634-160",
+   "title": "Falschparker\nBetrieb ab Hietzing",
+   "end": "2026-11-14T14:20:00.000+0100",
+   "incident": "I20261114-0020"
+  },
+  {
+   "key": "R1635-160|2026-11-14T13:21:04.000+0100|Falschparker\nBetrieb ab Hietzing",
+   "name": "R1635-160",
+   "title": "Falschparker\nBetrieb ab Hietzing",
+   "end": "2026-11-14T14:20:00.000+0100",
+   "incident": "I20261114-0020"
+  },
+  {
+   "key": "R1636-160|2026-11-14T13:21:04.000+0100|Falschparker\nBetrieb ab Hietzing",
+   "name": "R1636-160",
+   "title": "Falschparker\nBetrieb ab Hietzing",
+   "end": "2026-11-14T14:20:00.000+0100",
+   "incident": "I20261114-0020"
+  },
+  {
+   "key": "R1637-160|2026-11-14T13:21:04.000+0100|Falschparker\nBetrieb ab Hietzing",
+   "name": "R1637-160",
+   "title": "Falschparker\nBetrieb ab Hietzing",
+   "end": "2026-11-14T14:20:00.000+0100",
+   "incident": "I20261114-0020"
+  },
+  {
+   "key": "R1638-160|2026-11-14T13:21:04.000+0100|Falschparker\nBetrieb ab Hietzing",
+   "name": "R1638-160",
+   "title": "Falschparker\nBetrieb ab Hietzing",
+   "end": "2026-11-14T14:20:00.000+0100",
+   "incident": "I20261114-0020"
+  },
+  {
+   "key": "R1639-160|2026-11-14T13:21:04.000+0100|Falschparker\nBetrieb ab Hietzing",
+   "name": "R1639-160",
+   "title": "Falschparker\nBetrieb ab Hietzing",
+   "end": "2026-11-14T14:20:00.000+0100",
+   "incident": "I20261114-0020"
+  },
+  {
+   "key": "R5611-160|2026-11-14T13:20:39.000+0100|Falschparker\nBetrieb ab Hofwiesengasse",
+   "name": "R5611-160",
+   "title": "Falschparker\nBetrieb ab Hofwiesengasse",
+   "end": "2026-11-14T14:20:00.000+0100",
+   "incident": "I20261114-0020"
+  },
+  {
+   "key": "R574-110|2026-11-14T13:16:05.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R574-110",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-14T14:15:00.000+0100",
+   "incident": "I20261114-0020"
+  },
+  {
+   "key": "R578-110|2026-11-14T13:16:05.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R578-110",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-14T14:15:00.000+0100",
+   "incident": "I20261114-0020"
+  },
+  {
+   "key": "R579-110|2026-11-14T13:16:05.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R579-110",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-14T14:15:00.000+0100",
+   "incident": "I20261114-0020"
+  }
+ ]
 }

@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261114-0015-F01, I20261114-0018-F01, I20261114-0018-F02, I20261114-0019"
+    "trafficInfoNameList": "I20261114-0020-F01, I20261114-0020-F02, I20261114-0020, I20260925-0011, I20260909-0007, I20261020-0029, I20261114-0019"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2371-125, R401-101, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2372-125, R3886-480, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R318-437, R1884-101, R293-474, R2558-125, R1974-466, R1199-205, R500-101, R1610-160, R1617-160, R1616-160, R1615-160, R1611-160, R1612-160, R1613-160, R1614-160, R5611-160, R1597-110, R1600-110, R1599-110, R1598-110, R1610-110, R574-110, R577-110, R574-160, R577-160, R1537-160, R1536-160, R1535-160, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2379-627, R2380-627, R401-101, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R3886-480, R1875-101, R293-474, R318-437, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2558-125, R1974-466, R1199-205, R500-101, R577-110, R574-160, R577-160, R1562-160, R1559-160, R579-110, R578-110, R574-110, R1610-110, R1597-110, R1610-160, R1613-160, R1612-160, R1611-160, R5611-160, R1636-160, R1635-160, R1634-160, R1639-160, R1638-160, R1637-160, R1605-110, R1599-110, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,146 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U6: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261114-0015-F01",
-    "owner": "WL",
-    "parentName": "I20261114-0015",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4641
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-14T12:00:00.000+0100",
-     "lastUpdate": "2026-11-14T12:00:00.000+0100",
-     "resume": "2026-11-14T12:00:00.000+0100",
-     "start": "2026-11-14T11:57:00.000+0100"
-    },
-    "title": "U6: Rettungseinsatz"
-   },
-   {
-    "alertCause": "fire",
-    "alertCauseId": 5,
-    "attributes": {
-     "relatedLineTypes": {
-      "10": "ptTram"
-     }
-    },
-    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "10: Feuerwehreinsatz"
-      }
-     }
-    ],
-    "location": "Hadikgasse 56",
-    "name": "I20261114-0018-F01",
-    "owner": "WL",
-    "parentName": "I20261114-0018",
-    "priority": "1",
-    "reasonId": 11,
-    "reasonName": "Feuerwehreinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 110,
-      "lineName": "10",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-14T12:31:00.000+0100",
-     "lastUpdate": "2026-11-14T12:31:00.000+0100",
-     "resume": "2026-11-14T12:31:00.000+0100",
-     "start": "2026-11-14T12:16:00.000+0100"
-    },
-    "title": "10: Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "fire",
-    "alertCauseId": 5,
-    "attributes": {
-     "relatedLineTypes": {
-      "60": "ptTram"
-     }
-    },
-    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "60: Feuerwehreinsatz"
-      }
-     }
-    ],
-    "location": "Hadikgasse 56",
-    "name": "I20261114-0018-F02",
-    "owner": "WL",
-    "parentName": "I20261114-0018",
-    "priority": "1",
-    "reasonId": 11,
-    "reasonName": "Feuerwehreinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 160,
-      "lineName": "60",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-14T12:31:00.000+0100",
-     "lastUpdate": "2026-11-14T12:31:00.000+0100",
-     "resume": "2026-11-14T12:31:00.000+0100",
-     "start": "2026-11-14T12:16:00.000+0100"
-    },
-    "title": "60: Feuerwehreinsatz"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -356,6 +216,152 @@
     "title": "U2: Verspätungen"
    },
    {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "10": "ptTram",
+      "60": "ptTram"
+     }
+    },
+    "description": "Linie 10: Betrieb nur zwischen Dornbach und Hietzing U. Linie 60: Kein Betrieb zwischen Hofwiesengasse und Hietzing U. Voraussichtliche Dauer: 13:50 Uhr. Grund: Falschparker im Bereich Hietzinger Hauptstraße 5.",
+    "descriptionHTML": "<p>Linie 10:<br>Betrieb nur zwischen Dornbach und Hietzing U.<br>Linie 60:<br>Kein Betrieb zwischen Hofwiesengasse und Hietzing U.</p><p>Voraussichtliche Dauer: 13:50 Uhr.</p><p>Grund: Falschparker im Bereich Hietzinger Hauptstraße 5.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 10:<br>Betrieb nur zwischen Dornbach und Hietzing U.<br>Linie 60:<br>Kein Betrieb zwischen Hofwiesengasse und Hietzing U.</p><p>Voraussichtliche Dauer: 13:50 Uhr.</p><p>Grund: Falschparker im Bereich Hietzinger Hauptstraße 5.</p>",
+       "descriptionPlain": "Linie 10: Betrieb nur zwischen Dornbach und Hietzing U. Linie 60: Kein Betrieb zwischen Hofwiesengasse und Hietzing U. Voraussichtliche Dauer: 13:50 Uhr. Grund: Falschparker im Bereich Hietzinger Hauptstraße 5.",
+       "title": "10, 60: Falschparker"
+      }
+     }
+    ],
+    "location": "Hietzinger Hauptstraße 5",
+    "name": "I20261114-0020",
+    "owner": "WL",
+    "parentName": "I20261114-0020",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "10",
+     "60"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 110,
+      "lineName": "10",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 160,
+      "lineName": "60",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-11-14T13:13:00.000+0100",
+     "end": "2026-11-14T13:28:00.000+0100",
+     "lastUpdate": "2026-11-14T13:28:00.000+0100",
+     "resume": "2026-11-14T13:28:00.000+0100",
+     "start": "2026-11-14T13:12:00.000+0100"
+    },
+    "title": "10, 60: Falschparker"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "10": "ptTram"
+     }
+    },
+    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "10: Falschparker"
+      }
+     }
+    ],
+    "location": "Hietzinger Hauptstraße 5",
+    "name": "I20261114-0020-F01",
+    "owner": "WL",
+    "parentName": "I20261114-0020",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 110,
+      "lineName": "10",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-14T13:28:00.000+0100",
+     "lastUpdate": "2026-11-14T13:28:00.000+0100",
+     "resume": "2026-11-14T13:28:00.000+0100",
+     "start": "2026-11-14T13:12:00.000+0100"
+    },
+    "title": "10: Falschparker"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "60": "ptTram"
+     }
+    },
+    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "60: Falschparker"
+      }
+     }
+    ],
+    "location": "Hietzinger Hauptstraße 5",
+    "name": "I20261114-0020-F02",
+    "owner": "WL",
+    "parentName": "I20261114-0020",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 160,
+      "lineName": "60",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-14T13:28:00.000+0100",
+     "lastUpdate": "2026-11-14T13:28:00.000+0100",
+     "resume": "2026-11-14T13:28:00.000+0100",
+     "start": "2026-11-14T13:12:00.000+0100"
+    },
+    "title": "60: Falschparker"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -381,10 +387,10 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nBetrieb ab Hietzing",
-    "name": "R1535-160",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1559-160",
     "owner": "WL",
-    "parentName": "R1535-160",
+    "parentName": "R1559-160",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
@@ -393,21 +399,21 @@
      "60"
     ],
     "relatedStops": [
-     1535
+     1559
     ],
     "time": {
-     "end": "2026-11-14T13:18:00.000+0100",
-     "start": "2026-11-14T12:18:58.000+0100"
+     "end": "2026-11-14T14:14:00.000+0100",
+     "start": "2026-11-14T13:15:34.000+0100"
     },
-    "title": "Feuerwehreinsatz\nBetrieb ab Hietzing"
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nBetrieb ab Hietzing",
-    "name": "R1536-160",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1562-160",
     "owner": "WL",
-    "parentName": "R1536-160",
+    "parentName": "R1562-160",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
@@ -416,41 +422,18 @@
      "60"
     ],
     "relatedStops": [
-     1536
+     1562
     ],
     "time": {
-     "end": "2026-11-14T13:18:00.000+0100",
-     "start": "2026-11-14T12:18:58.000+0100"
+     "end": "2026-11-14T14:14:00.000+0100",
+     "start": "2026-11-14T13:15:34.000+0100"
     },
-    "title": "Feuerwehreinsatz\nBetrieb ab Hietzing"
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nBetrieb ab Hietzing",
-    "name": "R1537-160",
-    "owner": "WL",
-    "parentName": "R1537-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1537
-    ],
-    "time": {
-     "end": "2026-11-14T13:18:00.000+0100",
-     "start": "2026-11-14T12:18:58.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Hietzing"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "description": "Fahrtbehinderung\nFalschparker",
     "name": "R1597-110",
     "owner": "WL",
     "parentName": "R1597-110",
@@ -465,38 +448,15 @@
      1597
     ],
     "time": {
-     "end": "2026-11-14T13:07:00.000+0100",
-     "start": "2026-11-14T12:08:27.000+0100"
+     "end": "2026-11-14T14:19:00.000+0100",
+     "start": "2026-11-14T13:20:04.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter PKW"
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter PKW",
-    "name": "R1598-110",
-    "owner": "WL",
-    "parentName": "R1598-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     1598
-    ],
-    "time": {
-     "end": "2026-11-14T13:07:00.000+0100",
-     "start": "2026-11-14T12:08:27.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter PKW"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "description": "Fahrtbehinderung\nFalschparker",
     "name": "R1599-110",
     "owner": "WL",
     "parentName": "R1599-110",
@@ -511,18 +471,18 @@
      1599
     ],
     "time": {
-     "end": "2026-11-14T13:07:00.000+0100",
-     "start": "2026-11-14T12:08:27.000+0100"
+     "end": "2026-11-14T14:23:00.000+0100",
+     "start": "2026-11-14T13:24:05.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter PKW"
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter PKW",
-    "name": "R1600-110",
+    "description": "Falschparker\nBetrieb ab Hietzing",
+    "name": "R1605-110",
     "owner": "WL",
-    "parentName": "R1600-110",
+    "parentName": "R1605-110",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
@@ -531,18 +491,18 @@
      "10"
     ],
     "relatedStops": [
-     1600
+     1605
     ],
     "time": {
-     "end": "2026-11-14T13:07:00.000+0100",
-     "start": "2026-11-14T12:08:27.000+0100"
+     "end": "2026-11-14T14:21:00.000+0100",
+     "start": "2026-11-14T13:22:05.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter PKW"
+    "title": "Falschparker\nBetrieb ab Hietzing"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "description": "Fahrtbehinderung\nFalschparker",
     "name": "R1610-110",
     "owner": "WL",
     "parentName": "R1610-110",
@@ -557,15 +517,15 @@
      1610
     ],
     "time": {
-     "end": "2026-11-14T13:07:00.000+0100",
-     "start": "2026-11-14T12:08:27.000+0100"
+     "end": "2026-11-14T14:19:00.000+0100",
+     "start": "2026-11-14T13:20:04.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter PKW"
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "description": "Falschparker\nBetrieb ab Hofwiesengasse",
     "name": "R1610-160",
     "owner": "WL",
     "parentName": "R1610-160",
@@ -580,15 +540,15 @@
      1610
     ],
     "time": {
-     "end": "2026-11-14T13:06:00.000+0100",
-     "start": "2026-11-14T12:07:27.000+0100"
+     "end": "2026-11-14T14:20:00.000+0100",
+     "start": "2026-11-14T13:20:34.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter PKW"
+    "title": "Falschparker\nBetrieb ab Hofwiesengasse"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "description": "Falschparker\nBetrieb ab Hofwiesengasse",
     "name": "R1611-160",
     "owner": "WL",
     "parentName": "R1611-160",
@@ -603,15 +563,15 @@
      1611
     ],
     "time": {
-     "end": "2026-11-14T13:06:00.000+0100",
-     "start": "2026-11-14T12:07:27.000+0100"
+     "end": "2026-11-14T14:20:00.000+0100",
+     "start": "2026-11-14T13:20:34.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter PKW"
+    "title": "Falschparker\nBetrieb ab Hofwiesengasse"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "description": "Falschparker\nBetrieb ab Hofwiesengasse",
     "name": "R1612-160",
     "owner": "WL",
     "parentName": "R1612-160",
@@ -626,15 +586,15 @@
      1612
     ],
     "time": {
-     "end": "2026-11-14T13:06:00.000+0100",
-     "start": "2026-11-14T12:07:27.000+0100"
+     "end": "2026-11-14T14:20:00.000+0100",
+     "start": "2026-11-14T13:20:34.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter PKW"
+    "title": "Falschparker\nBetrieb ab Hofwiesengasse"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "description": "Falschparker\nBetrieb ab Hofwiesengasse",
     "name": "R1613-160",
     "owner": "WL",
     "parentName": "R1613-160",
@@ -649,18 +609,18 @@
      1613
     ],
     "time": {
-     "end": "2026-11-14T13:06:00.000+0100",
-     "start": "2026-11-14T12:07:27.000+0100"
+     "end": "2026-11-14T14:20:00.000+0100",
+     "start": "2026-11-14T13:20:34.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter PKW"
+    "title": "Falschparker\nBetrieb ab Hofwiesengasse"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter PKW",
-    "name": "R1614-160",
+    "description": "Falschparker\nBetrieb ab Hietzing",
+    "name": "R1634-160",
     "owner": "WL",
-    "parentName": "R1614-160",
+    "parentName": "R1634-160",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
@@ -669,21 +629,21 @@
      "60"
     ],
     "relatedStops": [
-     1614
+     1634
     ],
     "time": {
-     "end": "2026-11-14T13:06:00.000+0100",
-     "start": "2026-11-14T12:07:27.000+0100"
+     "end": "2026-11-14T14:20:00.000+0100",
+     "start": "2026-11-14T13:21:04.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter PKW"
+    "title": "Falschparker\nBetrieb ab Hietzing"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter PKW",
-    "name": "R1615-160",
+    "description": "Falschparker\nBetrieb ab Hietzing",
+    "name": "R1635-160",
     "owner": "WL",
-    "parentName": "R1615-160",
+    "parentName": "R1635-160",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
@@ -692,21 +652,21 @@
      "60"
     ],
     "relatedStops": [
-     1615
+     1635
     ],
     "time": {
-     "end": "2026-11-14T13:06:00.000+0100",
-     "start": "2026-11-14T12:07:27.000+0100"
+     "end": "2026-11-14T14:20:00.000+0100",
+     "start": "2026-11-14T13:21:04.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter PKW"
+    "title": "Falschparker\nBetrieb ab Hietzing"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter PKW",
-    "name": "R1616-160",
+    "description": "Falschparker\nBetrieb ab Hietzing",
+    "name": "R1636-160",
     "owner": "WL",
-    "parentName": "R1616-160",
+    "parentName": "R1636-160",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
@@ -715,21 +675,21 @@
      "60"
     ],
     "relatedStops": [
-     1616
+     1636
     ],
     "time": {
-     "end": "2026-11-14T13:06:00.000+0100",
-     "start": "2026-11-14T12:07:27.000+0100"
+     "end": "2026-11-14T14:20:00.000+0100",
+     "start": "2026-11-14T13:21:04.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter PKW"
+    "title": "Falschparker\nBetrieb ab Hietzing"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter PKW",
-    "name": "R1617-160",
+    "description": "Falschparker\nBetrieb ab Hietzing",
+    "name": "R1637-160",
     "owner": "WL",
-    "parentName": "R1617-160",
+    "parentName": "R1637-160",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
@@ -738,13 +698,59 @@
      "60"
     ],
     "relatedStops": [
-     1617
+     1637
     ],
     "time": {
-     "end": "2026-11-14T13:06:00.000+0100",
-     "start": "2026-11-14T12:07:27.000+0100"
+     "end": "2026-11-14T14:20:00.000+0100",
+     "start": "2026-11-14T13:21:04.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter PKW"
+    "title": "Falschparker\nBetrieb ab Hietzing"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Hietzing",
+    "name": "R1638-160",
+    "owner": "WL",
+    "parentName": "R1638-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1638
+    ],
+    "time": {
+     "end": "2026-11-14T14:20:00.000+0100",
+     "start": "2026-11-14T13:21:04.000+0100"
+    },
+    "title": "Falschparker\nBetrieb ab Hietzing"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Hietzing",
+    "name": "R1639-160",
+    "owner": "WL",
+    "parentName": "R1639-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1639
+    ],
+    "time": {
+     "end": "2026-11-14T14:20:00.000+0100",
+     "start": "2026-11-14T13:21:04.000+0100"
+    },
+    "title": "Falschparker\nBetrieb ab Hietzing"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1370,7 +1376,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter PKW",
+    "description": "Falschparker\nBetrieb ab Hofwiesengasse",
     "name": "R5611-160",
     "owner": "WL",
     "parentName": "R5611-160",
@@ -1385,15 +1391,15 @@
      5611
     ],
     "time": {
-     "end": "2026-11-14T13:06:00.000+0100",
-     "start": "2026-11-14T12:07:32.000+0100"
+     "end": "2026-11-14T14:20:00.000+0100",
+     "start": "2026-11-14T13:20:39.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter PKW"
+    "title": "Falschparker\nBetrieb ab Hofwiesengasse"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nBetrieb ab Penzinger Straße",
+    "description": "Fahrtbehinderung\nFalschparker",
     "name": "R574-110",
     "owner": "WL",
     "parentName": "R574-110",
@@ -1408,15 +1414,15 @@
      574
     ],
     "time": {
-     "end": "2026-11-14T13:15:00.000+0100",
-     "start": "2026-11-14T12:16:29.000+0100"
+     "end": "2026-11-14T14:15:00.000+0100",
+     "start": "2026-11-14T13:16:05.000+0100"
     },
-    "title": "Feuerwehreinsatz\nBetrieb ab Penzinger Straße"
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nBetrieb ab Anschützgasse",
+    "description": "Fahrtbehinderung\nFalschparker",
     "name": "R574-160",
     "owner": "WL",
     "parentName": "R574-160",
@@ -1431,15 +1437,15 @@
      574
     ],
     "time": {
-     "end": "2026-11-14T13:17:00.000+0100",
+     "end": "2026-11-14T14:14:00.000+0100",
      "start": "2026-11-14T12:18:29.000+0100"
     },
-    "title": "Feuerwehreinsatz\nBetrieb ab Anschützgasse"
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nZüge halten bei Linie 52",
+    "description": "Fahrtbehinderung\nFalschparker",
     "name": "R577-110",
     "owner": "WL",
     "parentName": "R577-110",
@@ -1454,15 +1460,15 @@
      577
     ],
     "time": {
-     "end": "2026-11-14T13:16:00.000+0100",
+     "end": "2026-11-14T14:15:00.000+0100",
      "start": "2026-11-14T12:17:29.000+0100"
     },
-    "title": "Feuerwehreinsatz\nZüge halten bei Linie 52"
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nBetrieb ab Anschützgasse",
+    "description": "Fahrtbehinderung\nFalschparker",
     "name": "R577-160",
     "owner": "WL",
     "parentName": "R577-160",
@@ -1477,10 +1483,56 @@
      577
     ],
     "time": {
-     "end": "2026-11-14T13:17:00.000+0100",
+     "end": "2026-11-14T14:14:00.000+0100",
      "start": "2026-11-14T12:18:29.000+0100"
     },
-    "title": "Feuerwehreinsatz\nBetrieb ab Anschützgasse"
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R578-110",
+    "owner": "WL",
+    "parentName": "R578-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     578
+    ],
+    "time": {
+     "end": "2026-11-14T14:15:00.000+0100",
+     "start": "2026-11-14T13:16:05.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R579-110",
+    "owner": "WL",
+    "parentName": "R579-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     579
+    ],
+    "time": {
+     "end": "2026-11-14T14:15:00.000+0100",
+     "start": "2026-11-14T13:16:05.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
