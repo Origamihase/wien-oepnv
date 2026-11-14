@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261114-0026-F01, I20261114-0026-F02, I20261114-0032, I20261114-0020-F02, I20260925-0011, I20261114-0029, I20261114-0031, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261114-0032, I20260925-0011, I20261114-0029, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2380-627, R401-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2345-127, R3886-480, R1883-101, R318-437, R293-474, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2343-125, R2343-626, R2359-125, R2380-627, R2345-127, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R401-101, R2378-627, R3886-480, R1880-101, R1884-101, R318-437, R293-474, R1883-101, R1882-101, R1875-101, R1876-101, R1881-101, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,144 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "60": "ptTram"
-     }
-    },
-    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "60: Falschparker"
-      }
-     }
-    ],
-    "location": "Hietzinger Hauptstraße 5",
-    "name": "I20261114-0020-F02",
-    "owner": "WL",
-    "parentName": "I20261114-0020",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 160,
-      "lineName": "60",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-14T13:28:00.000+0100",
-     "lastUpdate": "2026-11-14T13:28:00.000+0100",
-     "resume": "2026-11-14T13:28:00.000+0100",
-     "start": "2026-11-14T13:12:00.000+0100"
-    },
-    "title": "60: Falschparker"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "25": "ptTram"
-     }
-    },
-    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "25: Rettungseinsatz"
-      }
-     }
-    ],
-    "location": "Spargelfeldstraße",
-    "name": "I20261114-0026-F01",
-    "owner": "WL",
-    "parentName": "I20261114-0026",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 125,
-      "lineName": "25",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-14T16:42:00.000+0100",
-     "lastUpdate": "2026-11-14T16:42:00.000+0100",
-     "resume": "2026-11-14T16:42:00.000+0100",
-     "start": "2026-11-14T16:13:00.000+0100"
-    },
-    "title": "25: Rettungseinsatz"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "26": "ptTram"
-     }
-    },
-    "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 26: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 26: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "26: Rettungseinsatz"
-      }
-     }
-    ],
-    "location": "Spargelfeldstraße",
-    "name": "I20261114-0026-F02",
-    "owner": "WL",
-    "parentName": "I20261114-0026",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "26"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 126,
-      "lineName": "26",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-14T16:42:00.000+0100",
-     "lastUpdate": "2026-11-14T16:42:00.000+0100",
-     "resume": "2026-11-14T16:42:00.000+0100",
-     "start": "2026-11-14T16:13:00.000+0100"
-    },
-    "title": "26: Rettungseinsatz"
-   },
-   {
     "alertCause": "accident",
     "alertCauseId": 77,
     "attributes": {
@@ -355,51 +217,6 @@
      "start": "2026-11-14T17:14:00.000+0100"
     },
     "title": "48A: Verkehrsunfall"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "11": "ptTram"
-     }
-    },
-    "description": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "descriptionHTML": "<p>Linie 11:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 11:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
-       "descriptionPlain": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-       "title": "11: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261114-0031",
-    "owner": "WL",
-    "parentName": "I20261114-0031",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 111,
-      "lineName": "11",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-14T18:14:00.000+0100",
-     "lastUpdate": "2026-11-14T18:14:00.000+0100",
-     "resume": "2026-11-14T18:13:00.000+0100",
-     "start": "2026-11-14T18:13:00.000+0100"
-    },
-    "title": "11: Polizeieinsatz"
    },
    {
     "alertCause": "police activity",
