@@ -332,7 +332,7 @@ Tests):
 | `rss` | RSS-Dokument: GeoRSS, ein `<item>` (`_emit_item`), Kanal-Metadaten und Lizenzzeilen, `_make_rss` |
 | `isolation` | Seit 2026-11-10: eine Meldung, an der Kette oder Ausgabe scheitert, fällt aus dem Lauf (`build_isolating`) |
 | `abbreviations` | Seit 2026-11-12: ob ein Punkt eine Abkürzung schließt oder einen Satz beendet, eine Regel für jeden Schritt (`is_abbreviation_period`, `without_full_stop`) |
-| `outputs` | Seit 2026-11-14: was ein Lauf schreibt, als Funktionen, die `main` in seiner Reihenfolge aufruft: deutscher Feed (`write_feed`), englischer Spiegel (`write_en_mirror`), Zustand (`save_state_or_warn`), Health-Bericht (`health_metrics_from`, `write_health_outputs`), Abschluss des Laufberichts (`record_successful_build`) |
+| `outputs` | Seit 2026-11-14: was ein Lauf schreibt, als Funktionen, die `main` in dieser Reihenfolge aufruft: Kennzahlen des Health-Berichts (`health_metrics_from`, auch von `lint` aufgerufen), deutscher Feed (`write_feed`), englischer Spiegel (`write_en_mirror`), Zustand (`save_state_or_warn`), Abschluss des Laufberichts (`record_successful_build`), Health-Bericht (`write_health_outputs`) |
 | `lint_report` | Seit 2026-11-14: der Bericht, den `lint` ausgibt, und der Exit-Code, der aus ihm folgt (`print_lint_report`) |
 
 Wer eine Funktion des Feed-Baus ändert, ändert sie in ihrem Teil; ein neuer
@@ -485,9 +485,10 @@ nicht gewählt: `lint`, `main` und `_assemble_feed_items` stehen weiter in
 `src/build_feed.py`, mit `FeedAssemblyStats` und der einen Liste `__all__`.
 
 Am 2026-11-14 so umgebaut (kein wörtliches Verschieben: Aus Blöcken einer
-Funktion wurden Funktionen mit Parametern; die Anweisungen und ihre
-Kommentare sind dieselben, `main` und `lint` rufen sie an der Stelle des
-Blocks auf, die Reihenfolge der Schritte ist unverändert):
+Funktion wurden Funktionen mit Parametern; die Kommentare sind dieselben,
+die Anweisungen bis auf die unter der Tabelle genannten Stellen auch, `main`
+und `lint` rufen die Funktionen an der Stelle des Blocks auf, die
+Reihenfolge der Schritte ist unverändert):
 
 | Block (vorher in) | Danach |
 |---|---|
@@ -503,8 +504,12 @@ Die Karte nannte rund 570 Zeilen. Die Prüfung verlangt nach einer Teilung
 höchstens 550; deshalb gingen außer dem Schreiben von Feed, Zustand und
 Health-Bericht auch die drei letzten Zeilen der Tabelle mit.
 `src/build_feed.py` hat danach 536 Zeilen, `outputs.py` 178 und
-`lint_report.py` 89 (gemessen mit `wc -l` am 2026-11-14). In `lint` entfielen
-drei Zwischenvariablen, die nur die Kennzahlen speisten. Kein Wert von
+`lint_report.py` 89 (gemessen mit `wc -l` am 2026-11-14). Anders als vorher
+lauten nur diese Anweisungen, ohne Wirkung auf das Ergebnis: In `lint`
+entfielen drei Zwischenvariablen, die nur die Kennzahlen speisten; die
+Gesamtdauer rechnet `main` beim Aufruf von `record_successful_build` aus, an
+derselben Stelle des Ablaufs wie vorher; `write_feed`, `health_metrics_from`
+und `print_lint_report` geben ihr Ergebnis zurück. Kein Wert von
 `.c901-baseline.txt` ändert sich; die neuen Funktionen messen höchstens 11.
 
 Für die Tests gilt die Regel aus Etappe 8: `_save_state`,
@@ -512,12 +517,21 @@ Für die Tests gilt die Regel aus Etappe 8: `_save_state`,
 `outputs` (36 Ersetzungen in den Tests zeigen seither dorthin), `_make_rss`
 lesen die Fassade und `outputs` (14 Ersetzungen laufen über
 `setattr_all`/`patch_all`); zusammen 50 Stellen in 20 Testdateien. Der
-Wächter `tests/test_build_feed_patch_targets.py` meldet seither auch ein
-Ziel hinter einem Attribut (etwa `run.outputs`) und einen Namen, der in einer
-Variablen steht. So fand er die Stelle in
-`tests/test_build_feed_skipped_item_edges.py`, die `_make_rss` über eine
-Variable nur in der Fassade ersetzte und damit den englischen Spiegel nicht
-mehr traf. `atomic_write` binden mehrere Teile; die Tests, die ein Schreiben
+Wächter `tests/test_build_feed_patch_targets.py` meldet seither in jeder
+Patch-Form, die er kennt, ein Ziel, das er nicht als Modul auflösen kann (ein
+Attribut wie `run.outputs`, ein Parameter, `part(bf, name)`, ein
+zusammengesetzter String, `patch.multiple`, direkte Zuweisung, `__dict__`),
+wenn ein Modul von `src.build_feed` den Namen bindet, und einen Namen, der in
+einer Variablen steht. Frei bleiben Ziele, die nachweislich außerhalb liegen:
+importierte andere Module, Funktionen und Objekte des Tests. `setattr_all`
+und `patch_all` lehnen einen Teil statt der Fassade ab. So fand der Wächter
+die Stelle in `tests/test_build_feed_skipped_item_edges.py`, die `_make_rss`
+über eine Variable nur in der Fassade ersetzte und damit den englischen
+Spiegel nicht mehr traf. Mit allen Formen wäre die Datei des Wächters über
+700 Zeilen gewachsen; er steht seither in drei Dateien (wörtlich verschoben):
+Regel und Tests in `tests/test_build_feed_patch_targets.py`, das Wissen über
+die Module und die AST-Hilfen in `tests/_conftest/patch_census.py`, die
+Erfassung einer Testdatei in `tests/_conftest/patch_scan.py`. `atomic_write` binden mehrere Teile; die Tests, die ein Schreiben
 scheitern lassen, ersetzen es über `setattr_all` und lassen nur die eine
 Datei scheitern. Die Fassade bindet die beiden Schreiber des Health-Berichts
 nicht mehr. Neu in `__all__` stehen `atomic_write` und `save_state_or_warn`, weil

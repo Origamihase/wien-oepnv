@@ -1,6 +1,7 @@
 """What a build writes: the feed files, the state and the health report.
 
-Until 2026-11-14 these blocks stood inside ``build_feed.main``. Operator
+Until 2026-11-14 these blocks stood inside ``build_feed.main`` (the health
+metrics also inside ``build_feed.lint``). Operator
 decision Michael 2026-11-14 (card "Wähle, wie build_feed.py (692 Zeilen)
 wieder Luft bekommt", answer "Teile von main auslagern": "Schreiben von Feed,
 Zustand und Health-Bericht wird zu eigenen Funktionen; das ist ein Umbau,
@@ -8,9 +9,12 @@ kein Verschieben, und bringt rund 570 Zeilen."). ``main`` keeps the order of
 the steps and calls the functions below; the feed chain
 (``_assemble_feed_items``), ``lint`` and ``main`` stay in ``src/build_feed.py``.
 
-Every function takes what it works on as a parameter; the statements and
-their comments are the ones ``main`` had. The values of ``feed_config`` are
-read when a function runs, as before.
+Every function takes what it works on as a parameter. The comments are the
+ones ``main`` had, and so are the statements, except that ``write_feed``
+returns the path it wrote, ``health_metrics_from`` returns the metrics, and
+``main`` computes the total duration where it calls
+``record_successful_build`` (the same point of the run as before). The
+values of ``feed_config`` are read when a function runs, as before.
 """
 
 from __future__ import annotations

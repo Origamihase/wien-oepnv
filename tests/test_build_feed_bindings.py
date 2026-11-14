@@ -30,7 +30,8 @@ from tests._conftest.build_feed_bindings import (
     patch_all,
     setattr_all,
 )
-from tests.test_build_feed_patch_targets import census, readers
+from tests._conftest.patch_census import readers
+from tests._conftest.patch_scan import census
 
 ROOT = Path(__file__).resolve().parents[1]
 PARTS = sorted((ROOT / "src" / "feed_build").glob("*.py"))
@@ -62,7 +63,7 @@ def test_every_global_a_module_reads_is_bound() -> None:
 
 
 def _reads_of(module: Any) -> set[str]:
-    from tests.test_build_feed_patch_targets import readers_by_module
+    from tests._conftest.patch_census import readers_by_module
 
     return set(readers_by_module()[module.__name__])
 
@@ -103,6 +104,17 @@ def test_stacked_decorators_pass_mocks_bottom_first(mock_atomic: MagicMock, mock
     translator = part(build_feed, "translator")
     assert vars(build_feed)["atomic_write"] is mock_atomic and translator.atomic_write is mock_atomic
     assert build_feed.validate_path is mock_validate and translator.validate_path is mock_validate
+
+
+def test_the_helpers_take_the_facade_not_a_part(monkeypatch: pytest.MonkeyPatch) -> None:
+    # ``setattr_all(mp, part(bf, "outputs"), "_make_rss", f)`` ersetzte sonst nur
+    # die Bindungen der Teile; die Fassade rendert mit ihrer den deutschen Feed.
+    outputs = part(build_feed, "outputs")
+    with pytest.raises(TypeError, match="expected the facade"):
+        setattr_all(monkeypatch, outputs, "_make_rss", object())
+    with pytest.raises(TypeError, match="expected the facade"):
+        bindings("_make_rss", outputs)
+    assert outputs._make_rss is build_feed._make_rss
 
 
 def test_owner_and_part_name_the_defining_module() -> None:

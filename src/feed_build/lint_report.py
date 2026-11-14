@@ -4,7 +4,8 @@ Until 2026-11-14 this block stood inside ``build_feed.lint``. It left with
 the output blocks of ``main`` (operator decision Michael 2026-11-14, see
 ``src/feed_build/outputs.py``); ``lint`` keeps the order of its steps and
 calls :func:`print_lint_report` where the block stood. The statements and
-their comments are the ones ``lint`` had.
+their comments are the ones ``lint`` had; the function returns the exit code,
+which ``lint`` then returns.
 """
 
 from __future__ import annotations

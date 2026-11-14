@@ -234,9 +234,15 @@ def test_a_rejected_en_path_fails_the_build_after_the_german_feed(
     with pytest.raises(ValueError, match="outside the allowed roots"):
         bf.main()
 
+    # Both health outputs, as a failed build with the counts the chain reached.
     assert run.steps() == ["rss:de", "health_md", "health_json"]
     assert run.out.exists() and not run.en.exists()
-    assert all(entry["successful"] is False for entry in run.health)
+    for entry in run.health:
+        assert entry["successful"] is False
+        assert entry["feed_path"] is None
+        assert entry["metrics"].raw_items == 2
+        assert entry["metrics"].filtered_items == 2
+        assert entry["metrics"].deduped_items == 2
 
 
 def test_a_failed_german_write_fails_the_build_and_reports_the_counts(

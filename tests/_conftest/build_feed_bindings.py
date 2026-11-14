@@ -60,7 +60,11 @@ def _module_of_globals(namespace: dict[str, Any], name: str) -> ModuleType:
 
 
 def _facade(bf: ModuleType | None) -> ModuleType:
-    return bf if bf is not None else importlib.import_module(FACADE)
+    facade = bf if bf is not None else importlib.import_module(FACADE)
+    # Ein Teil statt der Fassade ließe die Bindung der Fassade aus (seit 2026-11-14).
+    if facade.__name__ != FACADE:
+        raise TypeError(f"expected the facade {FACADE}, got {facade.__name__}")
+    return facade
 
 
 def build_feed_modules(bf: ModuleType | None = None) -> list[ModuleType]:
