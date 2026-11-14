@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-14T10:01:06.989268+00:00",
- "built": "2026-11-14T11:00:54+01:00",
+ "updated": "2026-11-14T10:30:55.213036+00:00",
+ "built": "2026-11-14T11:30:43+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-14T11:00:54+01:00",
+  "built": "2026-11-14T11:30:43+01:00",
   "items": [
+   {
+    "title": "Wien Floridsdorf ↔ Stockerau",
+    "time_line": "Seit 11:29"
+   },
    {
     "title": "41: Polizeieinsatz",
     "time_line": "Seit 10:53"
@@ -43,10 +47,6 @@
    {
     "title": "66A: Busse halten Salvatorianerplatz",
     "time_line": "Bis So 15.11."
-   },
-   {
-    "title": "5A/N31: Obere Augartenstraße",
-    "time_line": "Bis 11.12."
    }
   ]
  },
@@ -6751,17 +6751,37 @@
     "oebb": 6,
     "wl": 79
    }
+  },
+  {
+   "t": "2026-11-14T10:30:55.213036+00:00",
+   "raw": {
+    "wl-stoerungen": 45,
+    "wl-hinweise": 88,
+    "oebb": 185,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 159,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 79
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-14T10:01:06.989268+00:00"
+   "last_ok": "2026-11-14T10:30:55.213036+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-14T10:01:06.989268+00:00"
+   "last_ok": "2026-11-14T10:30:55.213036+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-14T10:01:06.989268+00:00"
+   "last_ok": "2026-11-14T10:30:55.213036+00:00"
   }
  }
 }
