@@ -284,7 +284,7 @@ def test_lint_report_exit_codes(capsys: pytest.CaptureFixture[str]) -> None:
     assert capsys.readouterr().out == "\nProvider-Fehler erkannt – siehe Log-Ausgabe für Details.\n"
 
 
-def test_parameters_of_the_same_type_are_passed_by_name() -> None:
+def test_parameters_a_call_could_swap_are_passed_by_name() -> None:
     # Two counts, two paths: a call that swapped them would still run.
     for module in (part(bf, "outputs"), part(bf, "lint_report")):
         for name in module.__all__:
@@ -297,3 +297,8 @@ def test_parameters_of_the_same_type_are_passed_by_name() -> None:
                 if parameter.kind in (parameter.POSITIONAL_ONLY, parameter.POSITIONAL_OR_KEYWORD)
             ]
             assert len(positional) == len(set(positional)), f"{module.__name__}.{name}: {positional}"
+
+    # The three lists of the lint report differ in type, so the loop above
+    # passes them either way; their names are held here.
+    lint_parameters = inspect.signature(part(bf, "lint_report").print_lint_report).parameters.values()
+    assert [p.name for p in lint_parameters if p.kind is not p.KEYWORD_ONLY] == ["metrics"]

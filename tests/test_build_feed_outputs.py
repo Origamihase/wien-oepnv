@@ -99,6 +99,10 @@ class _Run:
 
         return write
 
+    def health_targets(self) -> list[tuple[str, Path]]:
+        """Which writer ran, and with which path."""
+        return [(entry["label"], entry["path"]) for entry in self.health]
+
     def steps(self) -> list[str]:
         """The recorded steps without the path checks."""
         return [event for event in self.events if not event.startswith("validate:")]
@@ -136,10 +140,7 @@ def test_main_writes_feed_mirror_state_and_health_in_this_order(
         "validate:OUT_PATH:feed.en.xml",
     ]
     assert run.events.index("validate:OUT_PATH:feed.xml") > run.events.index("rss:de")
-    assert [(entry["label"], entry["path"]) for entry in run.health] == [
-        ("health_md", run.health_md),
-        ("health_json", run.health_json),
-    ]
+    assert run.health_targets() == [("health_md", run.health_md), ("health_json", run.health_json)]
     for entry in run.health:
         assert entry["successful"] is True
         assert entry["finished_at"] is not None
@@ -245,6 +246,7 @@ def test_a_rejected_en_path_fails_the_build_after_the_german_feed(
 
     # Both health outputs, as a failed build with the counts the chain reached.
     assert run.steps() == ["rss:de", "health_md", "health_json", "log_results"]
+    assert run.health_targets() == [("health_md", run.health_md), ("health_json", run.health_json)]
     assert run.out.exists() and not run.en.exists()
     for entry in run.health:
         assert entry["successful"] is False
@@ -275,6 +277,7 @@ def test_a_failed_german_write_fails_the_build_and_reports_the_counts(
     # No mirror, no state, but both health outputs, as a failed build with
     # the counts the chain reached.
     assert run.steps() == ["rss:de", "health_md", "health_json", "log_results"]
+    assert run.health_targets() == [("health_md", run.health_md), ("health_json", run.health_json)]
     assert not run.out.exists() and not run.en.exists()
     for entry in run.health:
         assert entry["successful"] is False
@@ -302,6 +305,7 @@ def test_a_failed_chain_reports_the_counts_reached_before_it(
         bf.main()
 
     assert run.steps() == ["health_md", "health_json", "log_results"]
+    assert run.health_targets() == [("health_md", run.health_md), ("health_json", run.health_json)]
     for entry in run.health:
         assert entry["successful"] is False
         assert entry["finished_at"] is not None

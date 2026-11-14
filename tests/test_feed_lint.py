@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+import logging
 from datetime import datetime, UTC
 
 import pytest
 
 from src import build_feed
+from src.feed.reporting import RunReport
 
 
 def _make_item(
@@ -151,3 +153,50 @@ def test_feed_lint_reports_duplicates_alone(
     assert "Veraltete Cache-Dateien" not in captured and "ohne GUID" not in captured
     assert "Keine strukturellen Probleme gefunden" not in captured
     assert exit_code == 1
+
+
+def test_feed_lint_ends_with_2_when_the_chain_fails(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str], caplog: pytest.LogCaptureFixture
+) -> None:
+    items = [_make_item("foo", guid="foo-guid", title="Foo")]
+
+    def failing_chain(*args: object, **kwargs: object) -> list[dict[str, object]]:
+        raise RuntimeError("chain broke")
+
+    monkeypatch.setattr(build_feed, "_invoke_collect_items", lambda report: list(items))
+    monkeypatch.setattr(build_feed, "_load_state", lambda: {})
+    monkeypatch.setattr(build_feed, "_detect_stale_caches", lambda report, now: [])
+    monkeypatch.setattr(build_feed, "_assemble_feed_items", failing_chain)
+
+    with caplog.at_level(logging.ERROR, logger="build_feed"):
+        exit_code = build_feed.lint()
+
+    assert exit_code == 2
+    assert "Feed-Lint Bericht" not in capsys.readouterr().out
+    assert [
+        (record.levelno, record.getMessage())
+        for record in caplog.records
+        if record.name == "build_feed" and record.getMessage().startswith("Feed-Lint fehlgeschlagen")
+    ] == [(logging.ERROR, "Feed-Lint fehlgeschlagen: chain broke")]
+
+
+def test_feed_lint_ends_with_2_after_a_provider_error(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    # The report lint hands to its printout is the one the collection wrote to.
+    items = [_make_item("foo", guid="foo-guid", title="Foo")]
+
+    def collect(report: RunReport) -> list[dict[str, object]]:
+        report.add_error_message("wl: Abruf fehlgeschlagen")
+        return list(items)
+
+    monkeypatch.setattr(build_feed, "_invoke_collect_items", collect)
+    monkeypatch.setattr(build_feed, "_load_state", lambda: {})
+    monkeypatch.setattr(build_feed, "_detect_stale_caches", lambda report, now: [])
+
+    exit_code = build_feed.lint()
+
+    captured = capsys.readouterr().out
+    assert "\nProvider-Fehler erkannt – siehe Log-Ausgabe für Details.\n" in captured
+    assert "Keine strukturellen Probleme gefunden" not in captured
+    assert exit_code == 2

@@ -524,16 +524,22 @@ Patch-Form, die er kennt, ein Ziel, das er nicht als Modul auflösen kann (ein
 Attribut wie `run.outputs`, ein Parameter, `part(bf, name)`, ein
 zusammengesetzter String, `patch.multiple`, direkte Zuweisung, `__dict__`),
 wenn ein Modul von `src.build_feed` den Namen bindet, und einen Namen, der in
-einer Variablen steht. Frei bleiben Ziele, die nachweislich außerhalb liegen:
-importierte andere Module, Funktionen und Objekte des Tests. `setattr_all`
-und `patch_all` lehnen einen Teil statt der Fassade ab. So fand der Wächter
+einer Variablen steht, auf einem Modul, das er auflösen kann. Frei bleiben
+Ziele, die nachweislich außerhalb liegen: importierte andere Module,
+Funktionen und Objekte des Tests. Ungeprüft bleiben `setattr`, `delattr` und
+`patch.object`, wenn weder Modul noch Name feststehen (etwa
+`mp.setattr(run.outputs, name, v)` und die Schleifen in `setattr_all` und
+`patch_all`), und ein Patch, dessen ganzer Pfad in einer Variablen steht
+(etwa `mock.patch(pfad)`). `setattr_all` und `patch_all` lehnen einen Teil
+statt der Fassade ab. So fand der Wächter
 die Stelle in `tests/test_build_feed_skipped_item_edges.py`, die `_make_rss`
 über eine Variable nur in der Fassade ersetzte und damit den englischen
 Spiegel nicht mehr traf. Mit allen Formen wäre die Datei des Wächters über
 700 Zeilen gewachsen; er steht seither in drei Dateien (wörtlich verschoben):
 Regel und Tests in `tests/test_build_feed_patch_targets.py`, das Wissen über
 die Module und die AST-Hilfen in `tests/_conftest/patch_census.py`, die
-Erfassung einer Testdatei in `tests/_conftest/patch_scan.py`. `atomic_write` binden mehrere Teile; die Tests, die ein Schreiben
+Erfassung einer Testdatei in `tests/_conftest/patch_scan.py`. `atomic_write`
+binden mehrere Teile; die Tests, die ein Schreiben
 scheitern lassen, ersetzen es über `setattr_all` und lassen nur die eine
 Datei scheitern. Die Fassade bindet die beiden Schreiber des Health-Berichts
 nicht mehr. Neu in `__all__` stehen `atomic_write` und `save_state_or_warn`, weil
@@ -542,11 +548,13 @@ Tests über `main`) hält die Reihenfolge der Ausgaben und die Fehlerpfade fest
 (Zustand nicht gespeichert, englischer Spiegel nicht erzeugt oder nicht
 geschrieben, deutscher Feed nicht geschrieben, Kette gescheitert,
 Health-Markdown nicht geschrieben); diese acht Tests laufen auch gegen den
-Stand vor dem Umbau, wenn die Ersetzungen auf die Fassade zeigen.
-`tests/test_build_feed_output_functions.py` (elf Tests) ruft die neuen
-Funktionen einzeln auf und hält fest, dass zwei Parameter desselben Typs nur
-mit Namen übergeben werden. Zwei Tests in `tests/test_feed_lint.py` halten
-fest, dass `lint` jeden Wert unter seiner Überschrift ausgibt.
+Stand vor dem Umbau, wenn `part(bf, "outputs")` darin durch die Fassade `bf`
+ersetzt wird. `tests/test_build_feed_output_functions.py` (elf Tests) ruft
+die neuen Funktionen einzeln auf und hält fest, dass Parameter, die ein
+Aufruf verwechseln könnte, nur mit Namen übergeben werden. Vier neue Tests in
+`tests/test_feed_lint.py` halten fest, dass `lint` jeden Wert unter seiner
+Überschrift ausgibt und mit 2 endet, wenn die Kette scheitert oder der
+Laufbericht einen Fehler eines Providers trägt.
 
 Replay mit echtem `main()` am 2026-11-14 auf dem Endstand: alle 813
 Feed-Stände des Vergleichslaufs vom 2026-11-13 (28.10. bis 13.11., einzeln
