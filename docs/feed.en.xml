@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 14 Nov 2026 03:00:55 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 03:30:38 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U4: Vandalism]]></title>
@@ -22,19 +22,6 @@
       <ext:starts_at>Sat, 14 Nov 2026 02:55:00 +0100</ext:starts_at>
       <description>Irregular intervals in both directions. Reason: vandalism. [Since 02:55]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: vandalism.<br/>[Since 02:55]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U3: Police operation]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">d9f09bd2a626f0dff4211f9bfe402f5b3537fd4fe8f424b4ebf56281b91f2182</guid>
-      <pubDate>Sat, 14 Nov 2026 02:02:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sat, 14 Nov 2026 02:02:00 +0100</ext:first_seen>
-      <ext:starts_at>Sat, 14 Nov 2026 02:02:00 +0100</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 02:02]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 02:02]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
@@ -151,6 +138,20 @@
       <georss:point>48.222757 16.375308</georss:point>
       <description>Untere Augartenstraße 40 → Untere Augartenstraße 42. Stop relocation of lines 5A and N31 towards Griegstraße or Stammersdorf. Reason: dismantling of a tower crane. [Until 11.12.]</description>
       <content:encoded><![CDATA[Untere Augartenstraße 40 → Untere Augartenstraße 42. Stop relocation of lines 5A and N31 towards Griegstraße or Stammersdorf. Reason: dismantling of a tower crane.<br/>[Until 11.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5B: Construction works]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">7f3e5db8abfea3bc72c1f2338313c17a67bc98bbf89a5bdb2e547704618ff7f5</guid>
+      <pubDate>Fri, 06 Nov 2026 14:11:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 06 Nov 2026 14:11:00 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 09 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 10 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>Due to roadworks in Wexstraße the buses are redirected. Line 5B: diversion from Klosterneuburger Straße / Wexstraße via Klosterneuburger Straße … [Until 10.12.]</description>
+      <content:encoded><![CDATA[Due to roadworks in Wexstraße the buses are redirected. Line 5B: diversion from Klosterneuburger Straße / Wexstraße via Klosterneuburger Straße …<br/>[Until 10.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
