@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261114-0020-F02, I20260925-0011, I20260909-0007, I20261114-0026, I20261020-0029"
+    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261114-0020-F02, I20261114-0026-F01, I20261114-0026-F02, I20261114-0027-F01, I20261114-0027-F02, I20261114-0028"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2371-125, R2379-627, R2373-126, R401-101, R2373-127, R2373-125, R2345-127, R2380-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2372-125, R3886-480, R293-474, R1880-101, R1884-101, R1883-101, R1882-101, R318-437, R1876-101, R1875-101, R1881-101, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R2376-125, R2377-125, R3115-125, R3069-125, R3183-125, R3186-125, R3185-125, R885-125, R3184-125, R2566-125, R3187-125, R2375-125, R2374-125, R3005-125, R3068-125, R2634-125, R2556-125, R3191-125, R3192-125, R3193-125, R3197-125, R3196-125, R3197-126, R3196-126, R3005-126, R3187-126, R3186-126, R3185-126, R3184-126, R3183-126, R2377-126, R2376-126, R3069-126, R3115-126, R885-126, R2566-126, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2378-627, R2379-627, R2373-126, R401-101, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2345-127, R2380-627, R2343-125, R3886-480, R1876-101, R1880-101, R1884-101, R293-474, R1883-101, R318-437, R1882-101, R1881-101, R1875-101, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R2377-125, R2376-125, R3115-125, R3069-125, R3186-125, R3187-125, R3183-125, R2566-125, R885-125, R3184-125, R3185-125, R2374-125, R2375-125, R3068-125, R3005-125, R2556-125, R2634-125, R3196-125, R3197-125, R3193-125, R3192-125, R3191-125, R3197-126, R3196-126, R3005-126, R3187-126, R3186-126, R3185-126, R3184-126, R3183-126, R2377-126, R2376-126, R3069-126, R3115-126, R885-126, R2566-126, R385-105, R384-105, R383-105, R352-0, R353-0, R470-162, R1742-162, R1743-162, R1744-162, R1745-162, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -221,23 +221,22 @@
     "alertCauseId": 14,
     "attributes": {
      "relatedLineTypes": {
-      "25": "ptTram",
-      "26": "ptTram"
+      "25": "ptTram"
      }
     },
-    "description": "Die Linie 25 fährt derzeit nicht zwischen Prinzgasse und Kagran U.Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße und Aspern Nord.Die Störung dauert voraussichtlich bis 16:50 Uhr.Weichen Sie ersatzweise auf die Linien U1 und U2 aus.Grund dafür ist ein Rettungseinsatz im Bereich Spargelfeldstraße.",
-    "descriptionHTML": "<p><span style=\"color: rgba(0, 0, 0, 0.87);\">Die Linie 25 fährt derzeit nicht zwischen Prinzgasse und Kagran U.<br>Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße und Aspern Nord.<br><br>Die Störung dauert voraussichtlich bis 16:50 Uhr.<br></span></p><p><span style=\"color: rgba(0, 0, 0, 0.87);\">Weichen Sie ersatzweise auf die Linien U1 und U2 aus.</span></p><p><span style=\"color: rgba(0, 0, 0, 0.87);\"><br>Grund dafür ist ein Rettungseinsatz im Bereich Spargelfeldstraße.</span></p>",
+    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p><span style=\"color: rgba(0, 0, 0, 0.87);\">Die Linie 25 fährt derzeit nicht zwischen Prinzgasse und Kagran U.<br>Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße und Aspern Nord.<br><br>Die Störung dauert voraussichtlich bis 16:50 Uhr.<br></span></p><p><span style=\"color: rgba(0, 0, 0, 0.87);\">Weichen Sie ersatzweise auf die Linien U1 und U2 aus.</span></p><p><span style=\"color: rgba(0, 0, 0, 0.87);\"><br>Grund dafür ist ein Rettungseinsatz im Bereich Spargelfeldstraße.</span></p>",
-       "descriptionPlain": "Die Linie 25 fährt derzeit nicht zwischen Prinzgasse und Kagran U.Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße und Aspern Nord.Die Störung dauert voraussichtlich bis 16:50 Uhr.Weichen Sie ersatzweise auf die Linien U1 und U2 aus.Grund dafür ist ein Rettungseinsatz im Bereich Spargelfeldstraße.",
-       "title": "25, 26: Rettungseinsatz"
+       "descriptionHtml": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "25: Rettungseinsatz"
       }
      }
     ],
     "location": "Spargelfeldstraße",
-    "name": "I20261114-0026",
+    "name": "I20261114-0026-F01",
     "owner": "WL",
     "parentName": "I20261114-0026",
     "priority": "1",
@@ -245,15 +244,55 @@
     "reasonName": "Rettungseinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "25",
-     "26"
+     "25"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 125,
       "lineName": "25",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-14T16:42:00.000+0100",
+     "lastUpdate": "2026-11-14T16:42:00.000+0100",
+     "resume": "2026-11-14T16:42:00.000+0100",
+     "start": "2026-11-14T16:13:00.000+0100"
+    },
+    "title": "25: Rettungseinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "26": "ptTram"
+     }
+    },
+    "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 26: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 26: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "26: Rettungseinsatz"
+      }
+     }
+    ],
+    "location": "Spargelfeldstraße",
+    "name": "I20261114-0026-F02",
+    "owner": "WL",
+    "parentName": "I20261114-0026",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 126,
       "lineName": "26",
@@ -262,11 +301,151 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-14T16:22:00.000+0100",
-     "lastUpdate": "2026-11-14T16:23:00.000+0100",
+     "created": "2026-11-14T16:42:00.000+0100",
+     "lastUpdate": "2026-11-14T16:42:00.000+0100",
+     "resume": "2026-11-14T16:42:00.000+0100",
      "start": "2026-11-14T16:13:00.000+0100"
     },
-    "title": "25, 26: Rettungseinsatz"
+    "title": "26: Rettungseinsatz"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "5": "ptTram"
+     }
+    },
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "5: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Alserbachstraße",
+    "name": "I20261114-0027-F01",
+    "owner": "WL",
+    "parentName": "I20261114-0027",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 105,
+      "lineName": "5",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-14T16:35:00.000+0100",
+     "lastUpdate": "2026-11-14T16:35:00.000+0100",
+     "resume": "2026-11-14T16:35:00.000+0100",
+     "start": "2026-11-14T16:28:00.000+0100"
+    },
+    "title": "5: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "12": "ptTram"
+     }
+    },
+    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "12: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Alserbachstraße",
+    "name": "I20261114-0027-F02",
+    "owner": "WL",
+    "parentName": "I20261114-0027",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 112,
+      "lineName": "12",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-14T16:35:00.000+0100",
+     "lastUpdate": "2026-11-14T16:35:00.000+0100",
+     "resume": "2026-11-14T16:35:00.000+0100",
+     "start": "2026-11-14T16:28:00.000+0100"
+    },
+    "title": "12: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "62": "ptTram"
+     }
+    },
+    "description": "Linie 62: Fahrtbehinderung in Richtung Quartier Belvedere S. Voraussichtliche Dauer: 17:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Atzgersdorfer Straße.",
+    "descriptionHTML": "<p>Linie 62:<br>Fahrtbehinderung in Richtung Quartier Belvedere S.</p><p>Voraussichtliche Dauer: 17:30 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Atzgersdorfer Straße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 62:<br>Fahrtbehinderung in Richtung Quartier Belvedere S.</p><p>Voraussichtliche Dauer: 17:30 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Atzgersdorfer Straße.</p>",
+       "descriptionPlain": "Linie 62: Fahrtbehinderung in Richtung Quartier Belvedere S. Voraussichtliche Dauer: 17:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Atzgersdorfer Straße.",
+       "title": "62: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261114-0028",
+    "owner": "WL",
+    "parentName": "I20261114-0028",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 162,
+      "lineName": "62",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     1726
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-14T16:56:00.000+0100",
+     "lastUpdate": "2026-11-14T16:56:00.000+0100",
+     "start": "2026-11-14T16:55:00.000+0100"
+    },
+    "title": "62: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -310,6 +489,98 @@
      "start": "2026-11-14T15:00:13.000+0100"
     },
     "title": "Haltestelle\naufgelassen!\n\nStop closed!"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1742-162",
+    "owner": "WL",
+    "parentName": "R1742-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1742
+    ],
+    "time": {
+     "end": "2026-11-14T17:56:00.000+0100",
+     "start": "2026-11-14T16:56:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1743-162",
+    "owner": "WL",
+    "parentName": "R1743-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1743
+    ],
+    "time": {
+     "end": "2026-11-14T17:56:00.000+0100",
+     "start": "2026-11-14T16:56:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1744-162",
+    "owner": "WL",
+    "parentName": "R1744-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1744
+    ],
+    "time": {
+     "end": "2026-11-14T17:56:00.000+0100",
+     "start": "2026-11-14T16:56:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1745-162",
+    "owner": "WL",
+    "parentName": "R1745-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1745
+    ],
+    "time": {
+     "end": "2026-11-14T17:56:00.000+0100",
+     "start": "2026-11-14T16:56:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -958,7 +1229,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Berresgasse",
+    "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
     "name": "R2558-125",
     "owner": "WL",
     "parentName": "R2558-125",
@@ -973,10 +1244,10 @@
      2558
     ],
     "time": {
-     "end": "2026-11-14T17:22:00.000+0100",
+     "end": "2026-11-14T23:59:59.000+0100",
      "start": "2026-11-14T00:00:27.000+0100"
     },
-    "title": "Rettungseinsatz\nBetrieb ab Berresgasse"
+    "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1648,6 +1919,115 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab\nAlserbachstraße\n",
+    "name": "R352-0",
+    "owner": "WL",
+    "parentName": "R352-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     352
+    ],
+    "time": {
+     "end": "2026-11-14T17:31:00.000+0100",
+     "start": "2026-11-14T16:32:21.000+0100"
+    },
+    "title": "Fremdunfall\nBetrieb ab\nAlserbachstraße\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab\nAlserbachstraße\n",
+    "name": "R353-0",
+    "owner": "WL",
+    "parentName": "R353-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     353
+    ],
+    "time": {
+     "end": "2026-11-14T17:31:00.000+0100",
+     "start": "2026-11-14T16:32:21.000+0100"
+    },
+    "title": "Fremdunfall\nBetrieb ab\nAlserbachstraße\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Klosterneuburger Straße",
+    "name": "R383-105",
+    "owner": "WL",
+    "parentName": "R383-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     383
+    ],
+    "time": {
+     "end": "2026-11-14T17:30:00.000+0100",
+     "start": "2026-11-14T16:31:21.000+0100"
+    },
+    "title": "Fremdunfall\nBetrieb ab Klosterneuburger Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Klosterneuburger Straße",
+    "name": "R384-105",
+    "owner": "WL",
+    "parentName": "R384-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     384
+    ],
+    "time": {
+     "end": "2026-11-14T17:30:00.000+0100",
+     "start": "2026-11-14T16:31:21.000+0100"
+    },
+    "title": "Fremdunfall\nBetrieb ab Klosterneuburger Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Klosterneuburger Straße",
+    "name": "R385-105",
+    "owner": "WL",
+    "parentName": "R385-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     385
+    ],
+    "time": {
+     "end": "2026-11-14T17:30:00.000+0100",
+     "start": "2026-11-14T16:31:21.000+0100"
+    },
+    "title": "Fremdunfall\nBetrieb ab Klosterneuburger Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
     "name": "R3886-480",
     "owner": "WL",
@@ -1710,6 +2090,29 @@
      "start": "2026-11-14T15:00:13.000+0100"
     },
     "title": "Haltestelle\naufgelassen!\n\nStop closed!"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R470-162",
+    "owner": "WL",
+    "parentName": "R470-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     470
+    ],
+    "time": {
+     "end": "2026-11-14T17:56:00.000+0100",
+     "start": "2026-11-14T16:56:53.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
