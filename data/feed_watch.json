@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-14T10:30:55.213036+00:00",
- "built": "2026-11-14T11:30:43+01:00",
+ "updated": "2026-11-14T11:01:06.112962+00:00",
+ "built": "2026-11-14T12:00:57+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-14T11:30:43+01:00",
+  "built": "2026-11-14T12:00:57+01:00",
   "items": [
+   {
+    "title": "U6: Rettungseinsatz",
+    "time_line": "Seit 11:57"
+   },
    {
     "title": "Wien Floridsdorf ↔ Stockerau",
     "time_line": "Seit 11:29"
@@ -43,35 +47,11 @@
    {
     "title": "65A: Triester Straße, Rossakgasse",
     "time_line": "Seit 11.11."
-   },
-   {
-    "title": "66A: Busse halten Salvatorianerplatz",
-    "time_line": "Bis So 15.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-07T10:31:11.884647+00:00",
-   "raw": {
-    "wl-stoerungen": 40,
-    "wl-hinweise": 89,
-    "oebb": 189,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 22,
-    "oebb": 165,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 2,
-    "oebb": 6,
-    "wl": 78
-   }
-  },
   {
    "t": "2026-11-07T11:01:18.314836+00:00",
    "raw": {
@@ -6771,17 +6751,39 @@
     "oebb": 7,
     "wl": 79
    }
+  },
+  {
+   "t": "2026-11-14T11:01:06.112962+00:00",
+   "raw": {
+    "wl-stoerungen": 39,
+    "wl-hinweise": 88,
+    "oebb": 185,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 23,
+    "oebb": 159,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 80
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-14T10:30:55.213036+00:00"
+   "last_ok": "2026-11-14T11:01:06.112962+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-14T10:30:55.213036+00:00"
+   "last_ok": "2026-11-14T10:30:55.213036+00:00",
+   "last_exit": 1,
+   "failing_since": "2026-11-14T11:01:06.112962+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-14T10:30:55.213036+00:00"
+   "last_ok": "2026-11-14T11:01:06.112962+00:00"
   }
  }
 }
