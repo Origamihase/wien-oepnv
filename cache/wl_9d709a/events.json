@@ -638,14 +638,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "title": "13A: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 13A: Fahrtbehinderung in Richtung Alser Straße, Skodagasse. Voraussichtliche Dauer: 23:50 Uhr. Grund: Rettungseinsatz im Bereich Kolschitzkygasse.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "8367f8afe2a9f39ca8cf03e76be20fa4296cfe9979e676c8914046cecf9feb71",
-    "pubDate": "2026-11-14T22:04:24+01:00",
-    "starts_at": "2026-11-14T22:04:26+01:00",
-    "ends_at": "2026-11-14T23:03:00+01:00",
-    "_identity": "wl|störung|L=13A|D=2026-11-14|TK=polizeieinsatz"
+    "guid": "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0",
+    "pubDate": "2026-11-14T23:23:00+01:00",
+    "starts_at": "2026-11-14T23:23:34+01:00",
+    "ends_at": "2026-11-15T23:59:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2026-11-14|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261114-0038"
+    ],
+    "_incident_start": "2026-11-14T23:23:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -866,6 +870,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Verspätungen",
+    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "02eba5a10b6bfbc053ab8e3cd1f9dabf24000400cc5596a3921352c78e6875e3",
+    "pubDate": "2026-11-14T23:16:00+01:00",
+    "starts_at": "2026-11-14T23:16:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=2|D=2026-11-14|TK=2 verspätungen",
+    "_wl_ids": [
+      "I20261114-0037"
+    ],
+    "_incident_start": "2026-11-14T23:16:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -922,6 +942,22 @@
     "starts_at": "2026-11-13T00:00:14+01:00",
     "ends_at": "2026-11-14T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-13|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Verspätungen",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
+    "pubDate": "2026-11-14T23:25:00+01:00",
+    "starts_at": "2026-11-14T23:25:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U6|D=2026-11-14|TK=u6 verspätungen",
+    "_wl_ids": [
+      "I20261114-0039"
+    ],
+    "_incident_start": "2026-11-14T23:25:00+01:00"
   },
   {
     "source": "Wiener Linien",
