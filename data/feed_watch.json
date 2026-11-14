@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-14T20:31:05.787443+00:00",
- "built": "2026-11-14T21:30:56+01:00",
+ "updated": "2026-11-14T21:00:51.100258+00:00",
+ "built": "2026-11-14T22:00:41+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-14T21:30:56+01:00",
+  "built": "2026-11-14T22:00:41+01:00",
   "items": [
+   {
+    "title": "13A: Polizeieinsatz",
+    "time_line": "Seit 21:58"
+   },
    {
     "title": "9: Falschparker",
     "time_line": "Seit 20:54"
@@ -43,35 +47,11 @@
    {
     "title": "65A: Triester Straße, Rossakgasse",
     "time_line": "Seit 11.11."
-   },
-   {
-    "title": "66A: Busse halten Salvatorianerplatz",
-    "time_line": "Bis So 15.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-07T20:31:11.286070+00:00",
-   "raw": {
-    "wl-stoerungen": 42,
-    "wl-hinweise": 89,
-    "oebb": 189,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 23,
-    "oebb": 164,
-    "baustellen": 64
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 7,
-    "wl": 80
-   }
-  },
   {
    "t": "2026-11-07T21:01:07.161837+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 6,
     "wl": 82
    }
+  },
+  {
+   "t": "2026-11-14T21:00:51.100258+00:00",
+   "raw": {
+    "wl-stoerungen": 58,
+    "wl-hinweise": 88,
+    "oebb": 184,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 159,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 83
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-14T20:31:05.787443+00:00"
+   "last_ok": "2026-11-14T21:00:51.100258+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-14T20:31:05.787443+00:00"
+   "last_ok": "2026-11-14T21:00:51.100258+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-14T20:31:05.787443+00:00"
+   "last_ok": "2026-11-14T21:00:51.100258+00:00"
   }
  }
 }
