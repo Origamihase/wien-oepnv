@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261114-0020-F01, I20261114-0020-F02, I20261114-0020, I20260925-0011, I20260909-0007, I20261020-0029, I20261114-0019"
+    "trafficInfoNameList": "I20261114-0021, I20261114-0020-F01, I20261114-0020-F02, I20261114-0022, I20260925-0011, I20260909-0007, I20261020-0029, I20261114-0019"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2379-627, R2380-627, R401-101, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R3886-480, R1875-101, R293-474, R318-437, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2558-125, R1974-466, R1199-205, R500-101, R577-110, R574-160, R577-160, R1562-160, R1559-160, R579-110, R578-110, R574-110, R1610-110, R1597-110, R1610-160, R1613-160, R1612-160, R1611-160, R5611-160, R1636-160, R1635-160, R1634-160, R1639-160, R1638-160, R1637-160, R1605-110, R1599-110, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2379-627, R2380-627, R2345-127, R401-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R3886-480, R1875-101, R318-437, R293-474, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2558-125, R1974-466, R1199-205, R500-101, R577-110, R577-160, R574-160, R1559-160, R1562-160, R574-110, R579-110, R578-110, R1610-110, R1597-110, R1610-160, R1613-160, R1612-160, R1611-160, R5611-160, R1636-160, R1635-160, R1634-160, R1639-160, R1638-160, R1637-160, R1605-110, R1599-110, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -220,60 +220,6 @@
     "alertCauseId": 71,
     "attributes": {
      "relatedLineTypes": {
-      "10": "ptTram",
-      "60": "ptTram"
-     }
-    },
-    "description": "Linie 10: Betrieb nur zwischen Dornbach und Hietzing U. Linie 60: Kein Betrieb zwischen Hofwiesengasse und Hietzing U. Voraussichtliche Dauer: 13:50 Uhr. Grund: Falschparker im Bereich Hietzinger Hauptstraße 5.",
-    "descriptionHTML": "<p>Linie 10:<br>Betrieb nur zwischen Dornbach und Hietzing U.<br>Linie 60:<br>Kein Betrieb zwischen Hofwiesengasse und Hietzing U.</p><p>Voraussichtliche Dauer: 13:50 Uhr.</p><p>Grund: Falschparker im Bereich Hietzinger Hauptstraße 5.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 10:<br>Betrieb nur zwischen Dornbach und Hietzing U.<br>Linie 60:<br>Kein Betrieb zwischen Hofwiesengasse und Hietzing U.</p><p>Voraussichtliche Dauer: 13:50 Uhr.</p><p>Grund: Falschparker im Bereich Hietzinger Hauptstraße 5.</p>",
-       "descriptionPlain": "Linie 10: Betrieb nur zwischen Dornbach und Hietzing U. Linie 60: Kein Betrieb zwischen Hofwiesengasse und Hietzing U. Voraussichtliche Dauer: 13:50 Uhr. Grund: Falschparker im Bereich Hietzinger Hauptstraße 5.",
-       "title": "10, 60: Falschparker"
-      }
-     }
-    ],
-    "location": "Hietzinger Hauptstraße 5",
-    "name": "I20261114-0020",
-    "owner": "WL",
-    "parentName": "I20261114-0020",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "10",
-     "60"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 110,
-      "lineName": "10",
-      "vehicleType": "ptTram"
-     },
-     {
-      "lineId": 160,
-      "lineName": "60",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-14T13:13:00.000+0100",
-     "end": "2026-11-14T13:28:00.000+0100",
-     "lastUpdate": "2026-11-14T13:28:00.000+0100",
-     "resume": "2026-11-14T13:28:00.000+0100",
-     "start": "2026-11-14T13:12:00.000+0100"
-    },
-    "title": "10, 60: Falschparker"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
       "10": "ptTram"
      }
     },
@@ -360,6 +306,96 @@
      "start": "2026-11-14T13:12:00.000+0100"
     },
     "title": "60: Falschparker"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "22A": "ptBusCity"
+     }
+    },
+    "description": "Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 22A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 22A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "22A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261114-0021",
+    "owner": "WL",
+    "parentName": "I20261114-0021",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "22A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 422,
+      "lineName": "22A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-14T13:45:00.000+0100",
+     "lastUpdate": "2026-11-14T13:45:00.000+0100",
+     "resume": "2026-11-14T13:45:00.000+0100",
+     "start": "2026-11-14T13:45:00.000+0100"
+    },
+    "title": "22A: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "miscellaneous",
+    "alertCauseId": 137,
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+       "title": "U3: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261114-0022",
+    "owner": "WL",
+    "parentName": "I20261114-0022",
+    "priority": "1",
+    "reasonId": 14,
+    "reasonName": "Betriebsstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-14T13:49:00.000+0100",
+     "lastUpdate": "2026-11-14T13:49:00.000+0100",
+     "resume": "2026-11-14T13:48:00.000+0100",
+     "start": "2026-11-14T13:48:00.000+0100"
+    },
+    "title": "U3: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",
