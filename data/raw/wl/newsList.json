@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_36, ftazW_113, ftazW_354, ftazW_519, ftazW_482, ftazW_1017117, ftazW_520, ftazW_114, ftazW_22, ftazW_355, ftazW_483, ftazW_1017118, ftazW_371, ftazW_37, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_112, ftazW_1017119, ftazW_599, ftazW_23, ftazW_370, ftazW_1018061, ftazW_393, ftazW_1032342, ftazW_1017120, ftazW_283"
+    "trafficInfoNameList": "ftazW_36, ftazW_113, ftazW_354, ftazW_519, ftazW_482, ftazW_1017117, ftazW_520, ftazW_114, ftazW_22, ftazW_355, ftazW_483, ftazW_1017118, ftazW_371, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_112, ftazW_1017119, ftazW_599, ftazW_23, ftazW_370, ftazW_1018061, ftazW_393, ftazW_1032342, ftazW_1017120, ftazW_283"
    }
   ],
   "poiCategoryGroups": [
@@ -3518,43 +3518,6 @@
     "time": {
      "end": "2026-11-16T00:45:00.000+0100",
      "start": "2026-11-15T20:45:00.000+0100"
-    },
-    "title": "Josefstädter Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "17.11.2026 00:45",
-     "ausVon": "16.11.2026 20:45",
-     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Neulerchenfelder Straße",
-     "rbls": [
-      4607
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Josefstädter Straße",
-     "status": "geplante Wartung",
-     "towards": "U6 Siebenhirten"
-    },
-    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Neulerchenfelder Straße",
-    "elevatorId": "JS 02",
-    "name": "ftazW_37",
-    "parentName": "ftazW_37",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4607
-    ],
-    "time": {
-     "end": "2026-11-17T00:45:00.000+0100",
-     "start": "2026-11-16T20:45:00.000+0100"
     },
     "title": "Josefstädter Straße"
    },
