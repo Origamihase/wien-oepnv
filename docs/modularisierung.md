@@ -548,9 +548,11 @@ Funktionen einzeln auf und hält fest, dass zwei Parameter desselben Typs nur
 mit Namen übergeben werden. Zwei Tests in `tests/test_feed_lint.py` halten
 fest, dass `lint` jeden Wert unter seiner Überschrift ausgibt.
 
-Replay mit echtem `main()` am 2026-11-14: 101 Feed-Stände vom 28.10. bis
-13.11. (jeder achte der 813 Stände des Vergleichslaufs vom 2026-11-13,
-einzeln neu gebaut, mit einem Echo an der Stelle des Übersetzungsmodells)
-gegen die Ergebnisse dieses Laufs für den Stand vor den Teilungen
-(`0f22303cd0`): deutscher und englischer Feed und Zustand sind in jedem der
-101 Stände gleich, kein Lauf endete mit einem Fehler.
+Replay mit echtem `main()` am 2026-11-14 auf dem Endstand: alle 813
+Feed-Stände des Vergleichslaufs vom 2026-11-13 (28.10. bis 13.11., einzeln
+neu gebaut, mit einem Echo an der Stelle des Übersetzungsmodells) gegen die
+Ergebnisse dieses Laufs für den Stand vor den Teilungen (`0f22303cd0`):
+deutscher und englischer Feed und Zustand sind in jedem der 813 Stände
+gleich, kein Lauf endete mit einem Fehler. `lint()` über dieselben 813
+Stände, alt gegen neu: Ausgabe und Exit-Code in jedem Stand gleich (der
+Exit-Code war überall 0; die Wege zu 1 und 2 halten die Tests fest).
