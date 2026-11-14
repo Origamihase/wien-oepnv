@@ -20,6 +20,7 @@ __all__ = ["print_lint_report"]
 
 def print_lint_report(
     metrics: FeedHealthMetrics,
+    *,
     duplicate_summaries: list[DuplicateSummary],
     stale_cache_messages: list[str],
     missing_guid_items: list[FeedItem],
@@ -29,7 +30,8 @@ def print_lint_report(
 
     0: nothing found; 1: duplicates, items without GUID or stale caches;
     2: ``report`` holds a provider error (asked after the findings are
-    printed, where ``lint`` asked it).
+    printed, where ``lint`` asked it). Everything after ``metrics`` is passed
+    by name, so a call cannot put one list where another belongs.
     """
     print("Feed-Lint Bericht")
     print("==================")

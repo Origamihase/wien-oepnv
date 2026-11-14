@@ -104,3 +104,50 @@ def test_feed_lint_ok_without_issues(
     captured = capsys.readouterr().out
     assert "Keine strukturellen Probleme gefunden" in captured
     assert exit_code == 0
+
+
+def test_feed_lint_reports_stale_caches_with_the_counts(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    # Each value lint hands to its report stands under its own heading.
+    now = datetime.now(UTC)
+    items = [
+        _make_item("foo", guid="foo-guid", title="Foo"),
+        _make_item("bar", guid="bar-guid", title="Bar"),
+    ]
+
+    monkeypatch.setattr(build_feed, "_invoke_collect_items", lambda report: list(items))
+    monkeypatch.setattr(build_feed, "_load_state", lambda: {"foo": {"first_seen": now.isoformat()}})
+    monkeypatch.setattr(build_feed, "_detect_stale_caches", lambda report, now: ["wl: 30 h"])
+
+    exit_code = build_feed.lint()
+
+    captured = capsys.readouterr().out
+    assert "Rohdaten: 2\n" in captured
+    assert "Neue Items (vs. State): 1\n" in captured
+    assert "\nVeraltete Cache-Dateien:\n- wl: 30 h\n" in captured
+    assert "Duplikat-Gruppen" not in captured and "ohne GUID" not in captured
+    # Stale caches are no structural problem, but they fail the lint.
+    assert "Keine strukturellen Probleme gefunden" in captured
+    assert exit_code == 1
+
+
+def test_feed_lint_reports_duplicates_alone(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    items = [
+        _make_item("foo", guid="foo-guid", title="Foo A"),
+        _make_item("foo", guid="foo-guid-2", title="Foo B"),
+    ]
+
+    monkeypatch.setattr(build_feed, "_invoke_collect_items", lambda report: list(items))
+    monkeypatch.setattr(build_feed, "_load_state", lambda: {})
+    monkeypatch.setattr(build_feed, "_detect_stale_caches", lambda report, now: [])
+
+    exit_code = build_feed.lint()
+
+    captured = capsys.readouterr().out
+    assert "\nErkannte Duplikat-Gruppen:\n- 2× Schlüssel " in captured
+    assert "Veraltete Cache-Dateien" not in captured and "ohne GUID" not in captured
+    assert "Keine strukturellen Probleme gefunden" not in captured
+    assert exit_code == 1

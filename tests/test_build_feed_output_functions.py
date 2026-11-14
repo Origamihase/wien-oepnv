@@ -9,6 +9,7 @@ the steps and the failure paths; these tests call each function directly.
 
 from __future__ import annotations
 
+import inspect
 import logging
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
@@ -46,7 +47,7 @@ class _Stats:
 
 
 def test_health_metrics_from_reads_the_counters() -> None:
-    metrics = part(bf, "outputs").health_metrics_from(9, _Stats(), 4)
+    metrics = part(bf, "outputs").health_metrics_from(raw_count=9, stats=_Stats(), new_items_count=4)
 
     assert metrics == FeedHealthMetrics(
         raw_items=9,
@@ -74,15 +75,15 @@ def test_write_health_outputs_survives_both_writers_failing(
     monkeypatch.setattr(outputs, "write_feed_health_report", fail("markdown"))
     monkeypatch.setattr(outputs, "write_feed_health_json", fail("json"))
     report = RunReport([])
-    metrics = outputs.health_metrics_from(0, _Stats(), 0)
+    metrics = outputs.health_metrics_from(raw_count=0, stats=_Stats(), new_items_count=0)
 
     with caplog.at_level(logging.WARNING, logger="build_feed"):
-        outputs.write_health_outputs(report, metrics, tmp_path / "h.md", tmp_path / "h.json")
+        outputs.write_health_outputs(report, metrics, health_path=tmp_path / "h.md", health_json_path=tmp_path / "h.json")
 
     assert calls == [("markdown", tmp_path / "h.md"), ("json", tmp_path / "h.json")]
-    assert [record.getMessage() for record in caplog.records if record.name == "build_feed"] == [
-        "Feed-Health-Markdown konnte nicht geschrieben werden: markdown failed",
-        "Feed-Health-JSON konnte nicht geschrieben werden: json failed",
+    assert [(record.levelno, record.getMessage()) for record in caplog.records if record.name == "build_feed"] == [
+        (logging.WARNING, "Feed-Health-Markdown konnte nicht geschrieben werden: markdown failed"),
+        (logging.WARNING, "Feed-Health-JSON konnte nicht geschrieben werden: json failed"),
     ]
 
 
@@ -215,7 +216,7 @@ _HEAD = (
 
 
 def _lint(report: _Report, **findings: Any) -> int:
-    metrics = part(bf, "outputs").health_metrics_from(9, _Stats(), 4)
+    metrics = part(bf, "outputs").health_metrics_from(raw_count=9, stats=_Stats(), new_items_count=4)
     args = {"duplicate_summaries": [], "stale_cache_messages": [], "missing_guid_items": [], **findings}
     return int(part(bf, "lint_report").print_lint_report(metrics, report=report, **args))
 
@@ -264,6 +265,15 @@ def test_lint_report_exit_codes(capsys: pytest.CaptureFixture[str]) -> None:
     assert _lint(report, stale_cache_messages=["oebb: 40 h"]) == 1
     assert capsys.readouterr().out == "\nKeine strukturellen Probleme gefunden.\n"
 
+    # A finding alone: exit 1, and the closing line is left out.
+    report = _Report(False, capsys)
+    assert _lint(report, missing_guid_items=[{"title": "x"}]) == 1
+    assert capsys.readouterr().out == ""
+
+    report = _Report(False, capsys)
+    assert _lint(report, duplicate_summaries=[DuplicateSummary(dedupe_key="k", count=2, titles=("a",))]) == 1
+    assert capsys.readouterr().out == ""
+
     # A provider error outranks every finding.
     report = _Report(True, capsys)
     assert _lint(report, missing_guid_items=[{"title": "x"}]) == 2
@@ -272,3 +282,18 @@ def test_lint_report_exit_codes(capsys: pytest.CaptureFixture[str]) -> None:
     report = _Report(True, capsys)
     assert _lint(report) == 2
     assert capsys.readouterr().out == "\nProvider-Fehler erkannt – siehe Log-Ausgabe für Details.\n"
+
+
+def test_parameters_of_the_same_type_are_passed_by_name() -> None:
+    # Two counts, two paths: a call that swapped them would still run.
+    for module in (part(bf, "outputs"), part(bf, "lint_report")):
+        for name in module.__all__:
+            func = getattr(module, name)
+            if not inspect.isfunction(func):
+                continue
+            positional = [
+                parameter.annotation
+                for parameter in inspect.signature(func).parameters.values()
+                if parameter.kind in (parameter.POSITIONAL_ONLY, parameter.POSITIONAL_OR_KEYWORD)
+            ]
+            assert len(positional) == len(set(positional)), f"{module.__name__}.{name}: {positional}"

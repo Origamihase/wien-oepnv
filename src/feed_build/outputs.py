@@ -9,7 +9,8 @@ kein Verschieben, und bringt rund 570 Zeilen."). ``main`` keeps the order of
 the steps and calls the functions below; the feed chain
 (``_assemble_feed_items``), ``lint`` and ``main`` stay in ``src/build_feed.py``.
 
-Every function takes what it works on as a parameter. The comments are the
+Every function takes what it works on as a parameter; parameters that share
+a type are passed by name, so a call cannot swap them. The comments are the
 ones ``main`` had, and so are the statements, except that ``write_feed``
 returns the path it wrote, ``health_metrics_from`` returns the metrics, and
 ``main`` computes the total duration where it calls
@@ -52,7 +53,7 @@ class AssemblyCounts(Protocol):
     dedupe_duration: float
 
 
-def health_metrics_from(raw_count: int, stats: AssemblyCounts, new_items_count: int) -> FeedHealthMetrics:
+def health_metrics_from(*, raw_count: int, stats: AssemblyCounts, new_items_count: int) -> FeedHealthMetrics:
     """The health metrics of a run from its counters, as they stand at the call."""
     return FeedHealthMetrics(
         raw_items=raw_count,
@@ -65,7 +66,7 @@ def health_metrics_from(raw_count: int, stats: AssemblyCounts, new_items_count: 
 
 
 def write_health_outputs(
-    report: RunReport, active_metrics: FeedHealthMetrics, health_path: Path, health_json_path: Path
+    report: RunReport, active_metrics: FeedHealthMetrics, *, health_path: Path, health_json_path: Path
 ) -> None:
     """Write the health report as Markdown and as JSON; a failed write is logged and does not end the run."""
     try:

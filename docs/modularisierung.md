@@ -503,13 +503,15 @@ Reihenfolge der Schritte ist unverändert):
 Die Karte nannte rund 570 Zeilen. Die Prüfung verlangt nach einer Teilung
 höchstens 550; deshalb gingen außer dem Schreiben von Feed, Zustand und
 Health-Bericht auch die drei letzten Zeilen der Tabelle mit.
-`src/build_feed.py` hat danach 536 Zeilen, `outputs.py` 178 und
-`lint_report.py` 89 (gemessen mit `wc -l` am 2026-11-14). Anders als vorher
+`src/build_feed.py` hat danach 539 Zeilen, `outputs.py` 183 und
+`lint_report.py` 92 (gemessen mit `wc -l` am 2026-11-14). Anders als vorher
 lauten nur diese Anweisungen, ohne Wirkung auf das Ergebnis: In `lint`
 entfielen drei Zwischenvariablen, die nur die Kennzahlen speisten; die
 Gesamtdauer rechnet `main` beim Aufruf von `record_successful_build` aus, an
 derselben Stelle des Ablaufs wie vorher; `write_feed`, `health_metrics_from`
-und `print_lint_report` geben ihr Ergebnis zurück. Kein Wert von
+und `print_lint_report` geben ihr Ergebnis zurück. Wo zwei Parameter
+verwechselt werden könnten (zwei Zählwerte, zwei Pfade, die drei Listen des
+Lint-Berichts), übergeben die Aufrufe sie mit Namen. Kein Wert von
 `.c901-baseline.txt` ändert sich; die neuen Funktionen messen höchstens 11.
 
 Für die Tests gilt die Regel aus Etappe 8: `_save_state`,
@@ -541,8 +543,10 @@ Tests über `main`) hält die Reihenfolge der Ausgaben und die Fehlerpfade fest
 geschrieben, deutscher Feed nicht geschrieben, Kette gescheitert,
 Health-Markdown nicht geschrieben); diese acht Tests laufen auch gegen den
 Stand vor dem Umbau, wenn die Ersetzungen auf die Fassade zeigen.
-`tests/test_build_feed_output_functions.py` (zehn Tests) ruft die neuen
-Funktionen einzeln auf.
+`tests/test_build_feed_output_functions.py` (elf Tests) ruft die neuen
+Funktionen einzeln auf und hält fest, dass zwei Parameter desselben Typs nur
+mit Namen übergeben werden. Zwei Tests in `tests/test_feed_lint.py` halten
+fest, dass `lint` jeden Wert unter seiner Überschrift ausgibt.
 
 Replay mit echtem `main()` am 2026-11-14: 101 Feed-Stände vom 28.10. bis
 13.11. (jeder achte der 813 Stände des Vergleichslaufs vom 2026-11-13,

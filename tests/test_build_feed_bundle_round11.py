@@ -148,8 +148,10 @@ def test_submit_network_fetches_shares_semaphore_across_concurrency_group(
 
 
 def test_save_state_failure_calls_report_add_warning_in_main() -> None:
-    """AST sentinel: ``main()`` MUST call ``report.add_warning(...)``
-    inside the ``except`` arm that wraps the ``_save_state(...)`` call.
+    """AST sentinel: ``main()`` MUST call ``save_state_or_warn(state, report)``,
+    and ``save_state_or_warn`` (src/feed_build/outputs.py) MUST call
+    ``report.add_warning(...)`` inside the ``except`` arm that wraps
+    ``_save_state(...)``.
 
     Pre-fix the exception was log-only and ``report.finish`` still
     recorded ``build_successful=True`` with no structured warning, so

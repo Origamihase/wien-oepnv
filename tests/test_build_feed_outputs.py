@@ -69,6 +69,7 @@ class _Run:
         monkeypatch.setattr(part(bf, "outputs"), "_save_state", self.save_state)
         monkeypatch.setattr(part(bf, "outputs"), "write_feed_health_report", self.health_writer("health_md"))
         monkeypatch.setattr(part(bf, "outputs"), "write_feed_health_json", self.health_writer("health_json"))
+        monkeypatch.setattr(RunReport, "log_results", lambda report: self.events.append("log_results"))
 
     def validate_path(self, path: Any, name: str) -> Path:
         self.events.append(f"validate:{name}:{Path(path).name}")
@@ -91,6 +92,7 @@ class _Run:
                     "successful": report.build_successful,
                     "warnings": list(report.warnings),
                     "feed_path": report.feed_path,
+                    "finished_at": report.finished_at,
                     "metrics": metrics,
                 }
             )
@@ -102,7 +104,18 @@ class _Run:
         return [event for event in self.events if not event.startswith("validate:")]
 
 
-_ALL_STEPS = ["rss:de", "rss:en", "translation_status", "remember", "save_state", "health_md", "health_json"]
+_ALL_STEPS = [
+    "rss:de", "rss:en", "translation_status", "remember", "save_state", "health_md", "health_json", "log_results",
+]
+
+
+def _logged(caplog: pytest.LogCaptureFixture, prefix: str) -> list[tuple[int, str]]:
+    """Level and text of the ``build_feed`` lines that start with ``prefix``."""
+    return [
+        (record.levelno, record.getMessage())
+        for record in caplog.records
+        if record.name == "build_feed" and record.getMessage().startswith(prefix)
+    ]
 
 
 def test_main_writes_feed_mirror_state_and_health_in_this_order(
@@ -129,6 +142,7 @@ def test_main_writes_feed_mirror_state_and_health_in_this_order(
     ]
     for entry in run.health:
         assert entry["successful"] is True
+        assert entry["finished_at"] is not None
         assert entry["feed_path"] == run.out.as_posix()
         assert entry["warnings"] == []
         assert entry["metrics"].raw_items == 2
@@ -156,11 +170,10 @@ def test_a_failed_state_save_is_a_warning_and_the_health_report_is_still_written
         assert entry["warnings"] == [
             "State save failed: OSError — first_seen / translations / stats may drift on the next run."
         ]
-    messages = [record.getMessage() for record in caplog.records if record.name == "build_feed"]
-    saved = [message for message in messages if message.startswith("State speichern fehlgeschlagen")]
-    assert len(saved) == 1
-    assert saved[0].endswith("– Feed wurde geschrieben, State bleibt veraltet.")
-    assert "\x1b" not in saved[0]
+    [(level, saved)] = _logged(caplog, "State speichern fehlgeschlagen")
+    assert level == logging.WARNING
+    assert saved.endswith("– Feed wurde geschrieben, State bleibt veraltet.")
+    assert "\x1b" not in saved
 
 
 def test_a_failed_en_rendering_keeps_the_german_feed_and_the_later_steps(
@@ -183,11 +196,9 @@ def test_a_failed_en_rendering_keeps_the_german_feed_and_the_later_steps(
     assert run.out.read_bytes() == b"<rss lang='de'/>\n"
     assert not run.en.exists()
     assert all(entry["successful"] is True and entry["warnings"] == [] for entry in run.health)
-    messages = [record.getMessage() for record in caplog.records if record.name == "build_feed"]
-    assert (
-        "EN-Feed konnte nicht geschrieben werden (translation broke) – deutscher Feed ist bereits aktualisiert."
-        in messages
-    )
+    assert _logged(caplog, "EN-Feed") == [
+        (logging.WARNING, "EN-Feed konnte nicht geschrieben werden (translation broke) – deutscher Feed ist bereits aktualisiert.")
+    ]
 
 
 def test_a_failed_en_write_keeps_the_german_feed_and_the_later_steps(
@@ -210,11 +221,9 @@ def test_a_failed_en_write_keeps_the_german_feed_and_the_later_steps(
     assert run.steps() == _ALL_STEPS
     assert run.out.read_bytes() == b"<rss lang='de' items='2'/>\n"
     assert not run.en.exists()
-    assert any(
-        record.getMessage().startswith("EN-Feed konnte nicht geschrieben werden (no space left)")
-        for record in caplog.records
-        if record.name == "build_feed"
-    )
+    [(level, message)] = _logged(caplog, "EN-Feed")
+    assert level == logging.WARNING
+    assert message.startswith("EN-Feed konnte nicht geschrieben werden (no space left)")
 
 
 def test_a_rejected_en_path_fails_the_build_after_the_german_feed(
@@ -235,10 +244,11 @@ def test_a_rejected_en_path_fails_the_build_after_the_german_feed(
         bf.main()
 
     # Both health outputs, as a failed build with the counts the chain reached.
-    assert run.steps() == ["rss:de", "health_md", "health_json"]
+    assert run.steps() == ["rss:de", "health_md", "health_json", "log_results"]
     assert run.out.exists() and not run.en.exists()
     for entry in run.health:
         assert entry["successful"] is False
+        assert entry["finished_at"] is not None
         assert entry["feed_path"] is None
         assert entry["metrics"].raw_items == 2
         assert entry["metrics"].filtered_items == 2
@@ -264,10 +274,11 @@ def test_a_failed_german_write_fails_the_build_and_reports_the_counts(
 
     # No mirror, no state, but both health outputs, as a failed build with
     # the counts the chain reached.
-    assert run.steps() == ["rss:de", "health_md", "health_json"]
+    assert run.steps() == ["rss:de", "health_md", "health_json", "log_results"]
     assert not run.out.exists() and not run.en.exists()
     for entry in run.health:
         assert entry["successful"] is False
+        assert entry["finished_at"] is not None
         assert entry["feed_path"] is None
         assert entry["metrics"].raw_items == 2
         assert entry["metrics"].filtered_items == 2
@@ -290,9 +301,10 @@ def test_a_failed_chain_reports_the_counts_reached_before_it(
     with pytest.raises(RuntimeError, match="chain broke"):
         bf.main()
 
-    assert run.steps() == ["health_md", "health_json"]
+    assert run.steps() == ["health_md", "health_json", "log_results"]
     for entry in run.health:
         assert entry["successful"] is False
+        assert entry["finished_at"] is not None
         metrics = entry["metrics"]
         assert (metrics.raw_items, metrics.filtered_items, metrics.deduped_items, metrics.new_items) == (2, 2, 0, 0)
         assert metrics.duplicates == (summary,)
@@ -314,6 +326,5 @@ def test_a_failed_health_markdown_still_writes_the_json(
 
     assert run.steps() == _ALL_STEPS
     assert [entry["label"] for entry in run.health] == ["health_json"]
-    messages = [record.getMessage() for record in caplog.records if record.name == "build_feed"]
-    markdown = [message for message in messages if message.startswith("Feed-Health-Markdown konnte nicht")]
-    assert len(markdown) == 1 and "\n" not in markdown[0]
+    [(level, markdown)] = _logged(caplog, "Feed-Health-Markdown konnte nicht")
+    assert level == logging.WARNING and "\n" not in markdown

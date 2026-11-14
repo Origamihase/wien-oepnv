@@ -253,8 +253,11 @@ def lint() -> int:
         new_items_count = _count_new_items(deduped_items, state)
         missing_guid_items = [it for it in deduped_items if not it.get("guid")]
 
-        metrics = health_metrics_from(raw_count, stats, new_items_count)
-        exit_code = print_lint_report(metrics, duplicate_summaries, stale_cache_messages, missing_guid_items, report)
+        metrics = health_metrics_from(raw_count=raw_count, stats=stats, new_items_count=new_items_count)
+        exit_code = print_lint_report(
+            metrics, duplicate_summaries=duplicate_summaries, stale_cache_messages=stale_cache_messages,
+            missing_guid_items=missing_guid_items, report=report,
+        )
 
         report.finish(
             build_successful=exit_code == 0,
@@ -490,7 +493,7 @@ def main() -> int:
             reload_state=_load_state, reset=_fresh_stats, report=report,
             trial_assemble=lambda its, st: _chain(its, st, counted=False),
         )
-        health_metrics = health_metrics_from(raw_count, stats, new_items_count)
+        health_metrics = health_metrics_from(raw_count=raw_count, stats=stats, new_items_count=new_items_count)
 
         out_path = write_feed(rss_de)
         write_en_mirror(out_path, items, now, state)
@@ -505,7 +508,7 @@ def main() -> int:
             report, out_path, items, raw_count=raw_count, stats=stats, collect_duration=collect_duration,
             rss_duration=rss_duration, total_duration=perf_counter() - job_start,
         )
-        write_health_outputs(report, health_metrics, health_path, health_json_path)
+        write_health_outputs(report, health_metrics, health_path=health_path, health_json_path=health_json_path)
         report.log_results()
         return 0
     except Exception as exc:  # pragma: no cover - defensive
@@ -515,9 +518,9 @@ def main() -> int:
         if health_metrics is None:
             # Simplified fallback using pre-initialized counters (Task 3A);
             # ``stats`` holds what the feed chain counted before it failed.
-            health_metrics = health_metrics_from(raw_count, stats, new_items_count)
+            health_metrics = health_metrics_from(raw_count=raw_count, stats=stats, new_items_count=new_items_count)
         report.finish(build_successful=False)
-        write_health_outputs(report, health_metrics, health_path, health_json_path)
+        write_health_outputs(report, health_metrics, health_path=health_path, health_json_path=health_json_path)
         report.log_results()
         raise
 
