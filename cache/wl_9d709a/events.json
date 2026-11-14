@@ -998,6 +998,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U3: Polizeieinsatz",
+    "description": "Linie U3: Betrieb nur zwischen Ottakring und Erdberg. Voraussichtliche Dauer: Nicht absehbar. Grund: Polizeieinsatz im Bereich Enkplatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "d9f09bd2a626f0dff4211f9bfe402f5b3537fd4fe8f424b4ebf56281b91f2182",
+    "pubDate": "2026-11-14T02:02:00+01:00",
+    "starts_at": "2026-11-14T02:02:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U3|D=2026-11-14|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261114-0003"
+    ],
+    "_incident_start": "2026-11-14T02:02:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
