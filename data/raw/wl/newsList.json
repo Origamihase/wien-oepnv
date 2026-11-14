@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_36, ftazW_113, ftazW_354, ftazW_519, ftazW_482, ftazW_1017117, ftazW_520, ftazW_114, ftazW_22, ftazW_355, ftazW_483, ftazW_1017118"
+    "trafficInfoNameList": "ftazW_36, ftazW_113, ftazW_354, ftazW_519, ftazW_482, ftazW_1017117, ftazW_520, ftazW_114, ftazW_22, ftazW_355, ftazW_483, ftazW_1017118, ftazW_371, ftazW_37, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_112, ftazW_1017119"
    }
   ],
   "poiCategoryGroups": [
@@ -2949,6 +2949,164 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "17.11.2026 00:45",
+     "ausVon": "16.11.2026 20:45",
+     "location": "U1 Mittelbahnsteig - Ausgang Dopschstraße",
+     "rbls": [
+      4184,
+      4189
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Großfeldsiedlung",
+     "status": "geplante Wartung",
+     "towards": "U1 beide Richtungen"
+    },
+    "description": "U1 Mittelbahnsteig - Ausgang Dopschstraße",
+    "elevatorId": "GF 01",
+    "name": "ftazW_1017119",
+    "parentName": "ftazW_1017119",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4184,
+     4189
+    ],
+    "time": {
+     "end": "2026-11-17T00:45:00.000+0100",
+     "start": "2026-11-16T20:45:00.000+0100"
+    },
+    "title": "Großfeldsiedlung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "17.11.2026 00:45",
+     "ausVon": "16.11.2026 20:45",
+     "location": "U2 Mittelbahnsteig - Ausgang Messe",
+     "rbls": [
+      4259,
+      4264
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Messe-Prater",
+     "status": "geplante Wartung",
+     "towards": "U2 beide Richtungen"
+    },
+    "description": "U2 Mittelbahnsteig - Ausgang Messe",
+    "elevatorId": "MS 02",
+    "name": "ftazW_1018062",
+    "parentName": "ftazW_1018062",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4259,
+     4264
+    ],
+    "time": {
+     "end": "2026-11-17T00:45:00.000+0100",
+     "start": "2026-11-16T20:45:00.000+0100"
+    },
+    "title": "Messe-Prater"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "17.11.2026 00:45",
+     "ausVon": "16.11.2026 20:45",
+     "location": "U2 Mittelbahnsteig - Ausgang Hasibederstraße",
+     "rbls": [
+      4279,
+      4274
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Hausfeldstraße",
+     "status": "geplante Wartung",
+     "towards": "U2 beide Richtungen"
+    },
+    "description": "U2 Mittelbahnsteig - Ausgang Hasibederstraße",
+    "elevatorId": "HU 01",
+    "name": "ftazW_1032341",
+    "parentName": "ftazW_1032341",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4279,
+     4274
+    ],
+    "time": {
+     "end": "2026-11-17T00:45:00.000+0100",
+     "start": "2026-11-16T20:45:00.000+0100"
+    },
+    "title": "Hausfeldstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "17.11.2026 00:45",
+     "ausVon": "16.11.2026 20:45",
+     "location": "U1 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U4 - Ausgang Schwedenplatz",
+     "rbls": [
+      4113,
+      4116
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1",
+      "U4"
+     ],
+     "station": "Schwedenplatz",
+     "status": "geplante Wartung",
+     "towards": "U1 beide Richtungen"
+    },
+    "description": "U1 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U4 - Ausgang Schwedenplatz",
+    "elevatorId": "SP 01",
+    "name": "ftazW_112",
+    "parentName": "ftazW_112",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1",
+     "U4"
+    ],
+    "relatedStops": [
+     4113,
+     4116
+    ],
+    "time": {
+     "end": "2026-11-17T00:45:00.000+0100",
+     "start": "2026-11-16T20:45:00.000+0100"
+    },
+    "title": "Schwedenplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "16.11.2026 00:45",
      "ausVon": "15.11.2026 20:45",
      "location": "U4 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U1",
@@ -3174,6 +3332,82 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "17.11.2026 00:45",
+     "ausVon": "16.11.2026 20:45",
+     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Neulerchenfelder Straße",
+     "rbls": [
+      4607
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Josefstädter Straße",
+     "status": "geplante Wartung",
+     "towards": "U6 Siebenhirten"
+    },
+    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Neulerchenfelder Straße",
+    "elevatorId": "JS 02",
+    "name": "ftazW_37",
+    "parentName": "ftazW_37",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4607
+    ],
+    "time": {
+     "end": "2026-11-17T00:45:00.000+0100",
+     "start": "2026-11-16T20:45:00.000+0100"
+    },
+    "title": "Josefstädter Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "17.11.2026 00:45",
+     "ausVon": "16.11.2026 20:45",
+     "location": "U3 Bahnsteig Richtung Ottakring - U3 Bahnsteig Richtung Simmering - Zwischengeschoss",
+     "rbls": [
+      4919,
+      4922
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Zieglergasse",
+     "status": "geplante Wartung",
+     "towards": "U3 Ottakring, U3 Simmering"
+    },
+    "description": "U3 Bahnsteig Richtung Ottakring - U3 Bahnsteig Richtung Simmering - Zwischengeschoss",
+    "elevatorId": "GZ 04",
+    "name": "ftazW_371",
+    "parentName": "ftazW_371",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedStops": [
+     4919,
+     4922
+    ],
+    "time": {
+     "end": "2026-11-17T00:45:00.000+0100",
+     "start": "2026-11-16T20:45:00.000+0100"
+    },
+    "title": "Zieglergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "16.11.2026 00:45",
      "ausVon": "15.11.2026 20:45",
      "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Erlaaer Straße/Ostrandstraße",
@@ -3310,6 +3544,43 @@
     "time": {
      "end": "2026-11-16T05:15:00.000+0100",
      "start": "2026-11-16T01:15:00.000+0100"
+    },
+    "title": "Handelskai"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "17.11.2026 00:45",
+     "ausVon": "16.11.2026 20:45",
+     "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Engerthstraße",
+     "rbls": [
+      4643
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Handelskai",
+     "status": "geplante Wartung",
+     "towards": "U6 Floridsdorf"
+    },
+    "description": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Engerthstraße",
+    "elevatorId": "HK 08",
+    "name": "ftazW_521",
+    "parentName": "ftazW_521",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4643
+    ],
+    "time": {
+     "end": "2026-11-17T00:45:00.000+0100",
+     "start": "2026-11-16T20:45:00.000+0100"
     },
     "title": "Handelskai"
    }
