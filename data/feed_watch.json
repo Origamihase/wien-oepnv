@@ -1,16 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-15T05:00:51.366581+00:00",
- "built": "2026-11-15T06:00:41+01:00",
+ "updated": "2026-11-15T05:30:58.871744+00:00",
+ "built": "2026-11-15T06:30:43+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-15T06:00:41+01:00",
+  "built": "2026-11-15T06:30:43+01:00",
   "items": [
    {
-    "title": "U1: Verspätungen",
-    "time_line": "Seit 05:50"
+    "title": "U4: Verspätungen",
+    "time_line": "Seit 06:29"
    },
    {
     "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-08T05:01:15.325905+00:00",
-   "raw": {
-    "wl-stoerungen": 37,
-    "wl-hinweise": 99,
-    "oebb": 188,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 25,
-    "oebb": 163,
-    "baustellen": 64
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 7,
-    "wl": 79
-   }
-  },
   {
    "t": "2026-11-08T05:31:08.157921+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 6,
     "wl": 80
    }
+  },
+  {
+   "t": "2026-11-15T05:30:58.871744+00:00",
+   "raw": {
+    "wl-stoerungen": 37,
+    "wl-hinweise": 98,
+    "oebb": 185,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 27,
+    "oebb": 160,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 80
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-15T05:00:51.366581+00:00"
+   "last_ok": "2026-11-15T05:30:58.871744+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-15T05:00:51.366581+00:00"
+   "last_ok": "2026-11-15T05:30:58.871744+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-15T05:00:51.366581+00:00"
+   "last_ok": "2026-11-15T05:30:58.871744+00:00"
   }
  }
 }
