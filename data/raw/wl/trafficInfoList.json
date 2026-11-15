@@ -13,7 +13,7 @@
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2380-627, R2378-627, R2343-125, R2343-626, R401-101, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2345-127, R3886-480, R1875-101, R1880-101, R1876-101, R293-474, R318-437, R1884-101, R1883-101, R1882-101, R1881-101, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R355-105, R353-105, R352-105, R351-105, R350-105, R354-105, R349-105, R211-105, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2379-627, R401-101, R2345-127, R2380-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R3886-480, R318-437, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R293-474, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -492,29 +492,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R211-105",
-    "owner": "WL",
-    "parentName": "R211-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     211
-    ],
-    "time": {
-     "end": "2026-11-15T16:40:00.000+0100",
-     "start": "2026-11-15T15:41:01.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2343-125",
     "owner": "WL",
@@ -879,167 +856,6 @@
      "start": "2026-11-14T00:00:24.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R349-105",
-    "owner": "WL",
-    "parentName": "R349-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     349
-    ],
-    "time": {
-     "end": "2026-11-15T16:40:00.000+0100",
-     "start": "2026-11-15T15:41:00.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R350-105",
-    "owner": "WL",
-    "parentName": "R350-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     350
-    ],
-    "time": {
-     "end": "2026-11-15T16:40:00.000+0100",
-     "start": "2026-11-15T15:41:00.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R351-105",
-    "owner": "WL",
-    "parentName": "R351-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     351
-    ],
-    "time": {
-     "end": "2026-11-15T16:40:00.000+0100",
-     "start": "2026-11-15T15:41:00.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R352-105",
-    "owner": "WL",
-    "parentName": "R352-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     352
-    ],
-    "time": {
-     "end": "2026-11-15T16:40:00.000+0100",
-     "start": "2026-11-15T15:41:00.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R353-105",
-    "owner": "WL",
-    "parentName": "R353-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     353
-    ],
-    "time": {
-     "end": "2026-11-15T16:40:00.000+0100",
-     "start": "2026-11-15T15:41:00.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R354-105",
-    "owner": "WL",
-    "parentName": "R354-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     354
-    ],
-    "time": {
-     "end": "2026-11-15T16:40:00.000+0100",
-     "start": "2026-11-15T15:41:00.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R355-105",
-    "owner": "WL",
-    "parentName": "R355-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     355
-    ],
-    "time": {
-     "end": "2026-11-15T16:40:00.000+0100",
-     "start": "2026-11-15T15:41:00.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
