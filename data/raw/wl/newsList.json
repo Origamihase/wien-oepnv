@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_36, ftazW_113, ftazW_354, ftazW_519, ftazW_482, ftazW_1017117, ftazW_520, ftazW_114, ftazW_22, ftazW_355, ftazW_483, ftazW_1017118, ftazW_371, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_112, ftazW_1017119, ftazW_599, ftazW_23, ftazW_370, ftazW_1018061, ftazW_393, ftazW_1032342, ftazW_1017120, ftazW_283, ftazW_485, ftazW_369, ftazW_17, ftazW_4"
+    "trafficInfoNameList": "ftazW_36, ftazW_113, ftazW_354, ftazW_519, ftazW_482, ftazW_1017117, ftazW_520, ftazW_114, ftazW_22, ftazW_355, ftazW_483, ftazW_1017118, ftazW_371, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_112, ftazW_1017119, ftazW_599, ftazW_23, ftazW_370, ftazW_1018061, ftazW_393, ftazW_1032342, ftazW_1017120, ftazW_283, ftazW_485, ftazW_369, ftazW_17, ftazW_4, ftazW_18, ftazW_484, ftazW_368, ftazW_15, ftazW_1032355"
    }
   ],
   "poiCategoryGroups": [
@@ -3235,6 +3235,45 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "18.11.2026 05:15",
+     "ausVon": "18.11.2026 01:15",
+     "location": "Bahnsteig Linie U2 - Ausgang Seestadtstraße, zu den Buslinien",
+     "rbls": [
+      4277,
+      4276
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Seestadt",
+     "status": "geplante Wartung",
+     "towards": "U2 beide Richtungen"
+    },
+    "description": "Bahnsteig Linie U2 - Ausgang Seestadtstraße, zu den Buslinien",
+    "elevatorId": "EE 03",
+    "name": "ftazW_1032355",
+    "parentName": "ftazW_1032355",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4277,
+     4276
+    ],
+    "time": {
+     "end": "2026-11-18T05:15:00.000+0100",
+     "start": "2026-11-18T01:15:00.000+0100"
+    },
+    "title": "Seestadt"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "17.11.2026 00:45",
      "ausVon": "16.11.2026 20:45",
      "location": "U1 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U4 - Ausgang Schwedenplatz",
@@ -3356,6 +3395,43 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "18.11.2026 05:15",
+     "ausVon": "18.11.2026 01:15",
+     "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Urban Loritz Platz",
+     "rbls": [
+      4620
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Burggasse-Stadthalle",
+     "status": "geplante Wartung",
+     "towards": "U6 Floridsdorf"
+    },
+    "description": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Urban Loritz Platz",
+    "elevatorId": "BU 01",
+    "name": "ftazW_15",
+    "parentName": "ftazW_15",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4620
+    ],
+    "time": {
+     "end": "2026-11-18T05:15:00.000+0100",
+     "start": "2026-11-18T01:15:00.000+0100"
+    },
+    "title": "Burggasse-Stadthalle"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "18.11.2026 00:45",
      "ausVon": "17.11.2026 20:45",
      "location": "Zwischengeschoss - Ausgang Erdbergstraße",
@@ -3381,6 +3457,45 @@
     "time": {
      "end": "2026-11-18T00:45:00.000+0100",
      "start": "2026-11-17T20:45:00.000+0100"
+    },
+    "title": "Erdberg"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "18.11.2026 05:15",
+     "ausVon": "18.11.2026 01:15",
+     "location": "U3 Mittelbahnsteig - Ausgang Franzosengraben",
+     "rbls": [
+      4917,
+      4900
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Erdberg",
+     "status": "geplante Wartung",
+     "towards": "U3 beide Richtungen"
+    },
+    "description": "U3 Mittelbahnsteig - Ausgang Franzosengraben",
+    "elevatorId": "ED 02",
+    "name": "ftazW_18",
+    "parentName": "ftazW_18",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedStops": [
+     4917,
+     4900
+    ],
+    "time": {
+     "end": "2026-11-18T05:15:00.000+0100",
+     "start": "2026-11-18T01:15:00.000+0100"
     },
     "title": "Erdberg"
    },
@@ -3604,6 +3719,38 @@
      "start": "2026-11-15T20:45:00.000+0100"
     },
     "title": "Josefstädter Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "18.11.2026 05:15",
+     "ausVon": "18.11.2026 01:15",
+     "location": "Zwischengeschoss - Ausgang Schottenfeldgasse",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Zieglergasse",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Zwischengeschoss - Ausgang Schottenfeldgasse",
+    "elevatorId": "GZ 01",
+    "name": "ftazW_368",
+    "parentName": "ftazW_368",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "time": {
+     "end": "2026-11-18T05:15:00.000+0100",
+     "start": "2026-11-18T01:15:00.000+0100"
+    },
+    "title": "Zieglergasse"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3859,6 +4006,43 @@
      "start": "2026-11-16T01:15:00.000+0100"
     },
     "title": "Erlaaer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "18.11.2026 05:15",
+     "ausVon": "18.11.2026 01:15",
+     "location": "U6 Bahnsteig Richtung Siebenhirten - Passage - Ausgang Anton Baumgartner Straße",
+     "rbls": [
+      4631
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Alterlaa",
+     "status": "geplante Wartung",
+     "towards": "U6 Siebenhirten"
+    },
+    "description": "U6 Bahnsteig Richtung Siebenhirten - Passage - Ausgang Anton Baumgartner Straße",
+    "elevatorId": "AE 02",
+    "name": "ftazW_484",
+    "parentName": "ftazW_484",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4631
+    ],
+    "time": {
+     "end": "2026-11-18T05:15:00.000+0100",
+     "start": "2026-11-18T01:15:00.000+0100"
+    },
+    "title": "Alterlaa"
    },
    {
     "alertCause": "undefined alert cause",
