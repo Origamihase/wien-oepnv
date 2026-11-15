@@ -1,20 +1,20 @@
 # stations.json — Diff-Bericht
 
-_Erzeugt am: 2026-11-08T06:57:47+00:00_
+_Erzeugt am: 2026-11-15T07:36:08+00:00_
 
-**Stationen: 2243 → 2244 (Δ +1)**
+**Stationen: 2244 → 2244 (Δ +0)**
 
-## Hinzugefügt (1)
+## Hinzugefügt (0)
 
-- `diva:60201985` — Wien Köstlergasse \(WL\)
+_Keine._
 
 ## Entfernt (0)
 
 _Keine._
 
-## Umbenannt (0)
+## Umbenannt (1)
 
-_Keine._
+- `diva:60201237`: "Wien Siebensterngasse \(WL\)" → "Wien Kirchengasse \(WL\)"
 
 ## Koordinaten verschoben (≥ 100 m) (0)
 
