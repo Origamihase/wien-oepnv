@@ -878,18 +878,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "46: Fahrtbehinderung Schadhafter PKW",
-    "description": "Fahrtbehinderung\nSchadhafter PKW",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2cf52f57b82ccdeebf3156a88f1b2e0a88d0bf90fee89e25e3a91cd930624d24",
-    "pubDate": "2026-11-15T20:35:00+01:00",
-    "starts_at": "2026-11-15T20:35:01+01:00",
-    "ends_at": "2026-11-15T22:30:00+01:00",
-    "_identity": "wl|störung|L=46|D=2026-11-15|TK=fahrtbehinderung schadhafter pkw"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -954,6 +942,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U4: Betriebsstörung",
+    "description": "Die Linie U4 fährt derzeit zwischen den Stationen Schönbrunn und Hietzing in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig. Voraussichtliche Dauer: 23:00 Uhr. Grund: Betriebsstörung im Haltestellenbereich Hietzing.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
+    "pubDate": "2026-11-15T22:24:00+01:00",
+    "starts_at": "2026-11-15T22:24:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U4|D=2026-11-15|TK=u4 betriebsstörung",
+    "_wl_ids": [
+      "I20261115-0036"
+    ],
+    "_incident_start": "2026-11-15T22:24:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -974,17 +978,5 @@
     "starts_at": "2026-09-14T04:00:00+02:00",
     "ends_at": "2026-12-31T23:59:00+01:00",
     "_identity": "wl|störung|L=|D=2026-09-14|TK=sperre"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Haltestelle aufgelassen! Stop closed!",
-    "description": "Haltestelle\naufgelassen! Stop closed!",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "b3d058f2a7d9443431d0c6a57bef734f51e51c799560d9ce542bccfc3df4425a",
-    "pubDate": "2026-11-15T15:00:25+01:00",
-    "starts_at": "2026-11-15T15:00:25+01:00",
-    "ends_at": "2026-11-15T22:30:00+01:00",
-    "_identity": "wl|störung|L=|D=2026-11-15|TK=haltestelle aufgelassen stop closed"
   }
 ]

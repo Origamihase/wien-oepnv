@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 15 Nov 2026 22:00:58 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 15 Nov 2026 22:30:35 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U4: Service disruption]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682</guid>
+      <pubDate>Sun, 15 Nov 2026 22:24:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Sun, 15 Nov 2026 22:24:00 +0100</ext:first_seen>
+      <ext:starts_at>Sun, 15 Nov 2026 22:24:00 +0100</ext:starts_at>
+      <description>The U4 line currently runs between the stations Schönbrunn and Hietzing in both directions on track 1 and therefore runs irregularly. [Since 22:24]</description>
+      <content:encoded><![CDATA[The U4 line currently runs between the stations Schönbrunn and Hietzing in both directions on track 1 and therefore runs irregularly.<br/>[Since 22:24]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[66A: Third-party traffic accident]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -22,20 +35,6 @@
       <ext:starts_at>Sun, 15 Nov 2026 21:39:00 +0100</ext:starts_at>
       <description>Diversion towards Liesing between Reumannplatz and Laxenburger Straße, Troststraße via Davidgasse and Laxenburger Straße. [Since 21:39]</description>
       <content:encoded><![CDATA[Diversion towards Liesing between Reumannplatz and Laxenburger Straße, Troststraße via Davidgasse and Laxenburger Straße.<br/>[Since 21:39]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[46: Defective car]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">e68481e80a382dfa61b7874990b89fd585b2d44b8393f1ecdb651923baa9c2bd</guid>
-      <pubDate>Sun, 15 Nov 2026 20:33:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sun, 15 Nov 2026 20:33:00 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 15 Nov 2026 20:35:01 +0100</ext:starts_at>
-      <ext:ends_at>Sun, 15 Nov 2026 22:30:00 +0100</ext:ends_at>
-      <description>Service obstruction. [Since 20:33]</description>
-      <content:encoded><![CDATA[Service obstruction.<br/>[Since 20:33]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
