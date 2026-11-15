@@ -72,29 +72,6 @@
   {
    "geometry": {
     "first_position": [
-     16.35994769,
-     48.22798854
-    ],
-    "type": "LineString"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Kundentelefon Wiener Linien",
-    "ANSPRECHPERSON_TEL": "Tel.: 01-7909/100",
-    "ANTRAGSTELLER": "Wiener Linien GmbH & Co KG",
-    "BEHINDERUNGSART": "Gleisbau",
-    "BEZEICHNUNG": "Althanstraße 21-25 bis Augasse und Newaldgasse",
-    "BEZIRK": 9,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-09-21Z",
-    "OBJEKT_ENDE": "2026-11-15Z",
-    "PRESSETEXT": "Bauphase 2 von 3 (11.10.2026 bis 25.10.2026): Die Althanstraße wird von Newaldgasse bis zur Einfahrt des Frachtenbahnhofs gesperrt. Die Newaldgasse wird von Althanstraße bis Liechtensteinstraße als Einbahn geführt. Die Umleitung für die Fahrtrichtung stadteinwärts erfolgt über: Newaldgasse- Liechtensteinstraße - Reznicekgasse - Badgasse. Die Umleitung für die Fahrtrichtung stadtauswärts erfolgt über: Fechtergasse - Badgasse - Reznicekgasse - Liechtensteinstraße.Eine großräumige Umfahrung über die Liechtensteinstraße oder Spittelauer Lände wird empfohlen.NEU: Bauphase 3 von 3 (25.10.2026 bis 15.11.2026): Die Althanstraße wird von Reznicekgasse bis Newaldgassegesperrt. Die Newaldgasse wird von Althanstraße bis Liechtensteinstraße als Einbahn geführt. Die Umleitung für die Fahrtrichtung stadteinwärts erfolgt über: Newaldgasse- Liechtensteinstraße - Reznicekgasse - Badgasse. Die Umleitung für die Fahrtrichtung stadtauswärts erfolgt über: Badgasse - Reznicekgasse - Liechtensteinstraße. Eine großräumige Umfahrung über die Liechtensteinstraße oder Spittelauer Lände wird empfohlen.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
      16.40052808,
      48.21792973
     ],
@@ -319,29 +296,6 @@
     "OBJEKT_BEGINN": "2026-10-18Z",
     "OBJEKT_ENDE": "2026-12-11Z",
     "PRESSETEXT": "Die Arbeiten werden in der Nacht von 20:00-05:00 Uhr durchgeführt. Der Fahrzeugverkehr wird mittels Verkehrszeichen wechselweise durch den Arbeitsbereich geschleust. Der Fußgängerverkehr wird in geeigneter und sicherer Weise aufrecht gehalten.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
-     16.37537409,
-     48.18121198
-    ],
-    "type": "LineString"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Kundenzentrum",
-    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
-    "ANTRAGSTELLER": "MA28",
-    "BEHINDERUNGSART": "Straßenbau",
-    "BEZEICHNUNG": "Favoritenstraße von Kreuzung Landgutgasse bis Kreuzung Keplerplatz und Keplergasse",
-    "BEZIRK": 10,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-04-19Z",
-    "OBJEKT_ENDE": "2026-11-15Z",
-    "PRESSETEXT": "Die Instandsetzungs- und Umgestaltungarbeiten in der Fußgängerzone Favoritenstraße werden nach den derzeit laufenden Abdichtungsarbeiten der Wiener Linien GmbH & Co KG an der Decke des U Bahn-Bauwerks bei Freihaltung entsprechend breiter Flächen für den FußgängerInnen- bzw. Lieferverkehr durchgeführt. Die Zufahrt für Ladetätigkeiten wird von Montag bis Samstag (werktags) von 06:00 Uhr bis 13:00 Uhr auf einer Seite der Favoritenstraße wie bereits während der Arbeiten der Wiener Linien GmbH & Co KG einseitig aufrechterhalten.",
     "SE_ANNO_CAD_DATA": null
    }
   },
@@ -1078,29 +1032,6 @@
     "OBJEKT_BEGINN": "2026-09-14Z",
     "OBJEKT_ENDE": "2026-12-18Z",
     "PRESSETEXT": "DieArbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. Im Baustellenbereich wird eine Restfahrbahn mit 3,00 m freigehalten. Der Fußgängerverkehr kann aufrecht gehalten werden.Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
-     16.39378949,
-     48.2128918
-    ],
-    "type": "LineString"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "ÖBB - Infrastruktur AG",
-    "ANSPRECHPERSON_TEL": "Mail: infra.kundenservice@oebb.at",
-    "ANTRAGSTELLER": "ÖBB Infrastruktur AG",
-    "BEHINDERUNGSART": "Arbeiten an Sonderbauwerken",
-    "BEZEICHNUNG": "Schüttelstraße von 9 bis 3",
-    "BEZIRK": 2,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-09-14Z",
-    "OBJEKT_ENDE": "2026-11-15Z",
-    "PRESSETEXT": "In Fahrtrichtung stadteinwärts wird in der Zeit von 05:00 bis 20:00 Uhr ein Fahrstreifen und in der Zeit von 20:00 Uhr bis 5:00 Uhr zwei Fahrstreifen gesperrt. Die restlichen Fahrstreifen werde. aufrechtgehalten.",
     "SE_ANNO_CAD_DATA": null
    }
   },
