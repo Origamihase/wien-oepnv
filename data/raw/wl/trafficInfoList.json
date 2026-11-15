@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20261115-0036, I20260909-0007, I20261020-0029, I20261115-0035"
+    "trafficInfoNameList": "I20261115-0036-F01, I20260925-0011, I20260909-0007, I20261115-0035-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2343-125, R2379-627, R2380-627, R2345-127, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R401-101, R2343-626, R2378-627, R3886-480, R1882-101, R1884-101, R318-437, R293-474, R1875-101, R1876-101, R1880-101, R1881-101, R1883-101, R2558-125, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2343-125, R2380-627, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R401-101, R2379-627, R2345-127, R2378-627, R3886-480, R318-437, R293-474, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R2558-125, R1974-466, R1199-205, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -178,19 +178,19 @@
       "66A": "ptBusCity"
      }
     },
-    "description": "Linie 66A: Umleitung in Richtung Liesing S zwischen Reumannplatz und Laxenburger Straße, Troststraße über Davidgasse und Laxenburger Straße. Voraussichtliche Dauer: 22:30 Uhr. Grund: Fremder Verkehrsunfall im Bereich Leibnizgasse.",
-    "descriptionHTML": "<p>Linie 66A:<br>Umleitung in Richtung Liesing S<br>zwischen Reumannplatz und Laxenburger Straße, Troststraße über Davidgasse und Laxenburger Straße.</p><p>Voraussichtliche Dauer: 22:30 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Leibnizgasse.</p>",
+    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 66A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 66A:<br>Umleitung in Richtung Liesing S<br>zwischen Reumannplatz und Laxenburger Straße, Troststraße über Davidgasse und Laxenburger Straße.</p><p>Voraussichtliche Dauer: 22:30 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Leibnizgasse.</p>",
-       "descriptionPlain": "Linie 66A: Umleitung in Richtung Liesing S zwischen Reumannplatz und Laxenburger Straße, Troststraße über Davidgasse und Laxenburger Straße. Voraussichtliche Dauer: 22:30 Uhr. Grund: Fremder Verkehrsunfall im Bereich Leibnizgasse.",
+       "descriptionHtml": "<p>Linie 66A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "66A: Fremder Verkehrsunfall"
       }
      }
     ],
     "location": "Leibnizgasse",
-    "name": "I20261115-0035",
+    "name": "I20261115-0035-F01",
     "owner": "WL",
     "parentName": "I20261115-0035",
     "priority": "1",
@@ -209,8 +209,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-15T21:42:00.000+0100",
-     "lastUpdate": "2026-11-15T21:59:00.000+0100",
+     "created": "2026-11-15T22:50:00.000+0100",
+     "lastUpdate": "2026-11-15T22:50:00.000+0100",
+     "resume": "2026-11-15T22:50:00.000+0100",
      "start": "2026-11-15T21:39:00.000+0100"
     },
     "title": "66A: Fremder Verkehrsunfall"
@@ -223,18 +224,18 @@
       "U4": "ptMetro"
      }
     },
-    "description": "Die Linie U4 fährt derzeit zwischen den Stationen Schönbrunn und Hietzing in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig. Voraussichtliche Dauer: 23:00 Uhr. Grund: Betriebsstörung im Haltestellenbereich Hietzing.",
-    "descriptionHTML": "<p>Die Linie U4 fährt derzeit zwischen den Stationen Schönbrunn und Hietzing in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 23:00 Uhr.</p><p>Grund: Betriebsstörung im Haltestellenbereich Hietzing.</p>",
+    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Die Linie U4 fährt derzeit zwischen den Stationen Schönbrunn und Hietzing in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 23:00 Uhr.</p><p>Grund: Betriebsstörung im Haltestellenbereich Hietzing.</p>",
-       "descriptionPlain": "Die Linie U4 fährt derzeit zwischen den Stationen Schönbrunn und Hietzing in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig. Voraussichtliche Dauer: 23:00 Uhr. Grund: Betriebsstörung im Haltestellenbereich Hietzing.",
+       "descriptionHtml": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "U4: Betriebsstörung"
       }
      }
     ],
-    "name": "I20261115-0036",
+    "name": "I20261115-0036-F01",
     "owner": "WL",
     "parentName": "I20261115-0036",
     "priority": "1",
@@ -256,8 +257,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-15T22:26:00.000+0100",
-     "lastUpdate": "2026-11-15T22:28:00.000+0100",
+     "created": "2026-11-15T22:43:00.000+0100",
+     "lastUpdate": "2026-11-15T22:43:00.000+0100",
+     "resume": "2026-11-15T22:43:00.000+0100",
      "start": "2026-11-15T22:24:00.000+0100"
     },
     "title": "U4: Betriebsstörung"
@@ -882,29 +884,6 @@
      "start": "2026-11-13T00:00:12.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
-    "name": "R500-101",
-    "owner": "WL",
-    "parentName": "R500-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     500
-    ],
-    "time": {
-     "end": "2026-11-15T23:00:00.000+0100",
-     "start": "2026-11-15T05:00:27.000+0100"
-    },
-    "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
    {
     "alertCause": "undefined alert cause",
