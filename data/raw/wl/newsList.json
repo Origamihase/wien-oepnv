@@ -3233,7 +3233,7 @@
     "attributes": {
      "ausBis": "17.11.2026 00:45",
      "ausVon": "16.11.2026 20:45",
-     "location": "U1 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U4 - Ausgang Schwedenplatz",
+     "location": "Zwischengeschoss Zugang Aufzug U4 - Ausgang Schwedenplatz - U1 Mittelbahnsteig",
      "rbls": [
       4113,
       4116
@@ -3247,7 +3247,7 @@
      "status": "geplante Wartung",
      "towards": "U1 beide Richtungen"
     },
-    "description": "U1 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U4 - Ausgang Schwedenplatz",
+    "description": "Zwischengeschoss Zugang Aufzug U4 - Ausgang Schwedenplatz - U1 Mittelbahnsteig",
     "elevatorId": "SP 01",
     "name": "ftazW_112",
     "parentName": "ftazW_112",
@@ -3274,7 +3274,7 @@
     "attributes": {
      "ausBis": "16.11.2026 00:45",
      "ausVon": "15.11.2026 20:45",
-     "location": "Zwischengeschoss Zugang Aufzug U1 - U4 Mittelbahnsteig",
+     "location": "U4 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U1",
      "rbls": [
       4427,
       4410
@@ -3288,7 +3288,7 @@
      "status": "geplante Wartung",
      "towards": "U4 beide Richtungen"
     },
-    "description": "Zwischengeschoss Zugang Aufzug U1 - U4 Mittelbahnsteig",
+    "description": "U4 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U1",
     "elevatorId": "SP 02",
     "name": "ftazW_113",
     "parentName": "ftazW_113",

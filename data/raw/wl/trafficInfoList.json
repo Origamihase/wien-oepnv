@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261115-0024-F01, I20261115-0026-F01, I20260925-0011, I20261115-0023, I20260909-0007, I20261020-0029, I20261115-0025-F01"
+    "trafficInfoNameList": "I20261115-0024-F01, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2345-127, R2343-626, R2359-125, R2370-125, R401-101, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2378-627, R2343-125, R3886-480, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R318-437, R293-474, R2558-125, R1974-466, R1199-205, R500-101, R859-438, R579-152, R1542-152, R1539-152, R1465-152, R1556-152, R1553-152, R1558-152, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2373-125, R2373-126, R2343-125, R2343-626, R2373-127, R2380-627, R2359-125, R2370-125, R2379-627, R2371-125, R2372-125, R401-101, R2345-127, R2378-627, R3886-480, R1881-101, R1884-101, R1883-101, R1882-101, R1875-101, R1880-101, R1876-101, R318-437, R293-474, R2558-125, R1974-466, R1199-205, R500-101, R579-152, R1542-152, R1539-152, R1465-152, R1556-152, R1558-152, R1553-152, R47-0, R17-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -175,52 +175,6 @@
     "alertCauseId": 14,
     "attributes": {
      "relatedLineTypes": {
-      "5A": "ptBusCity"
-     }
-    },
-    "description": "Linie 5A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie 5A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 5A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie 5A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-       "title": "5A: Rettungseinsatz"
-      }
-     }
-    ],
-    "location": "Wasnergasse",
-    "name": "I20261115-0023",
-    "owner": "WL",
-    "parentName": "I20261115-0023",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "5A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 405,
-      "lineName": "5A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-15T13:24:00.000+0100",
-     "lastUpdate": "2026-11-15T13:24:00.000+0100",
-     "resume": "2026-11-15T13:23:00.000+0100",
-     "start": "2026-11-15T13:23:00.000+0100"
-    },
-    "title": "5A: Rettungseinsatz"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
       "38A": "ptBusCity"
      }
     },
@@ -261,98 +215,6 @@
      "start": "2026-11-15T13:41:00.000+0100"
     },
     "title": "38A: Rettungseinsatz"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "31": "ptTram"
-     }
-    },
-    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "31: Polizeieinsatz"
-      }
-     }
-    ],
-    "location": "Gaußplatz",
-    "name": "I20261115-0025-F01",
-    "owner": "WL",
-    "parentName": "I20261115-0025",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 131,
-      "lineName": "31",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-15T14:00:00.000+0100",
-     "lastUpdate": "2026-11-15T14:00:00.000+0100",
-     "resume": "2026-11-15T14:00:00.000+0100",
-     "start": "2026-11-15T13:58:00.000+0100"
-    },
-    "title": "31: Polizeieinsatz"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "52": "ptTram"
-     }
-    },
-    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 52: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 52: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "52: Rettungseinsatz"
-      }
-     }
-    ],
-    "location": "Linzer Straße",
-    "name": "I20261115-0026-F01",
-    "owner": "WL",
-    "parentName": "I20261115-0026",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 152,
-      "lineName": "52",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-15T14:18:00.000+0100",
-     "lastUpdate": "2026-11-15T14:18:00.000+0100",
-     "resume": "2026-11-15T14:18:00.000+0100",
-     "start": "2026-11-15T14:13:00.000+0100"
-    },
-    "title": "52: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -514,6 +376,26 @@
      "start": "2026-11-15T14:16:23.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Linzer Straße, Johnstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Haltestelle\naufgelassen!\n\nStop closed!",
+    "name": "R17-0",
+    "owner": "WL",
+    "parentName": "R17-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     17
+    ],
+    "time": {
+     "end": "2026-11-15T22:30:00.000+0100",
+     "start": "2026-11-15T15:00:25.000+0100"
+    },
+    "title": "Haltestelle\naufgelassen!\n\nStop closed!"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1116,6 +998,26 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Haltestelle\naufgelassen!\n\nStop closed!",
+    "name": "R47-0",
+    "owner": "WL",
+    "parentName": "R47-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     47
+    ],
+    "time": {
+     "end": "2026-11-15T22:00:00.000+0100",
+     "start": "2026-11-15T15:00:25.000+0100"
+    },
+    "title": "Haltestelle\naufgelassen!\n\nStop closed!"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -1156,29 +1058,6 @@
     "time": {
      "end": "2026-11-15T15:14:00.000+0100",
      "start": "2026-11-15T14:14:51.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R859-438",
-    "owner": "WL",
-    "parentName": "R859-438",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38A"
-    ],
-    "relatedStops": [
-     859
-    ],
-    "time": {
-     "end": "2026-11-15T14:41:00.000+0100",
-     "start": "2026-11-15T13:42:19.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
