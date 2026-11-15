@@ -1,24 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-15T11:30:45.864132+00:00",
- "built": "2026-11-15T12:30:34+01:00",
+ "updated": "2026-11-15T12:01:11.555397+00:00",
+ "built": "2026-11-15T13:01:00+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-15T12:30:34+01:00",
+  "built": "2026-11-15T13:01:00+01:00",
   "items": [
    {
-    "title": "26E: Verspätungen",
-    "time_line": "Seit 12:21"
+    "title": "U6: Verspätungen",
+    "time_line": "Seit 12:52"
    },
    {
-    "title": "U6: Betriebsstörung",
-    "time_line": "Seit 11:44"
-   },
-   {
-    "title": "60: Verkehrsunfall",
-    "time_line": "Seit 10:53"
+    "title": "U2: Verspätungen",
+    "time_line": "Seit 12:50"
    },
    {
     "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
@@ -47,31 +43,15 @@
    {
     "title": "65A: Triester Straße, Rossakgasse",
     "time_line": "Seit 11.11."
+   },
+   {
+    "title": "66A: Busse halten Salvatorianerplatz",
+    "time_line": "Bis Mo 16.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-08T11:31:07.062715+00:00",
-   "raw": {
-    "wl-stoerungen": 35,
-    "wl-hinweise": 98,
-    "oebb": 187,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 25,
-    "oebb": 162,
-    "baustellen": 64
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 7,
-    "wl": 77
-   }
-  },
   {
    "t": "2026-11-08T12:01:20.244564+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 6,
     "wl": 84
    }
+  },
+  {
+   "t": "2026-11-15T12:01:11.555397+00:00",
+   "raw": {
+    "wl-stoerungen": 39,
+    "wl-hinweise": 96,
+    "oebb": 184,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 28,
+    "oebb": 159,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 80
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-15T11:30:45.864132+00:00"
+   "last_ok": "2026-11-15T12:01:11.555397+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-15T11:30:45.864132+00:00"
+   "last_ok": "2026-11-15T12:01:11.555397+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-15T11:30:45.864132+00:00"
+   "last_ok": "2026-11-15T12:01:11.555397+00:00"
   }
  }
 }
