@@ -662,6 +662,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "18: Veranstaltung Betrieb ab Ludwig-Koeßler-Platz",
+    "description": "Linie 18: Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U. Ersatz: Linien U2, U3, 80A. Voraussichtliche Dauer: 12:00 Uhr. Grund: Veranstaltung im Bereich Prater Hauptallee.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "d2995b04c903bb084f2bfb47e72067defed09d1b288eaf3deecb9883a85cd47e",
+    "pubDate": "2026-11-15T08:40:00+01:00",
+    "starts_at": "2026-11-15T09:06:25+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=18|D=2026-11-15|TK=veranstaltung",
+    "_wl_ids": [
+      "I20261115-0012"
+    ],
+    "_incident_start": "2026-11-15T08:40:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "1: Gleisbauarbeiten",
     "description": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A und 65A. Voraussichtliche Dauer: Mitte Dezember 2026. Grund: Gleisbauarbeiten im Bereich Stefan-Fadinger-Platz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",

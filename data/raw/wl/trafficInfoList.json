@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261115-0012, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2343-125, R2379-627, R2380-627, R2345-127, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R401-101, R2378-627, R2343-626, R3886-480, R1882-101, R1884-101, R318-437, R293-474, R1875-101, R1876-101, R1880-101, R1881-101, R1883-101, R2558-125, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2379-627, R2378-627, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2345-127, R2380-627, R401-101, R2343-626, R3886-480, R318-437, R1876-101, R1875-101, R293-474, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R2558-125, R1974-466, R1199-205, R500-101, R2632-118, R2420-118, R2422-118, R2750-118, R3608-118, R3607-118, R3606-118, R3605-118, R3604-118, R3603-118, R3609-118, R3602-118, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -169,6 +169,51 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
+   },
+   {
+    "alertCause": "special event",
+    "alertCauseId": 120,
+    "attributes": {
+     "relatedLineTypes": {
+      "18": "ptTram"
+     }
+    },
+    "description": "Linie 18: Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U. Ersatz: Linien U2, U3, 80A. Voraussichtliche Dauer: 12:00 Uhr. Grund: Veranstaltung im Bereich Prater Hauptallee.",
+    "descriptionHTML": "<p>Linie 18:<br>Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U.</p><p>Ersatz: Linien U2, U3, 80A.</p><p>Voraussichtliche Dauer: 12:00 Uhr.</p><p>Grund: Veranstaltung im Bereich Prater Hauptallee.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 18:<br>Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U.</p><p>Ersatz: Linien U2, U3, 80A.</p><p>Voraussichtliche Dauer: 12:00 Uhr.</p><p>Grund: Veranstaltung im Bereich Prater Hauptallee.</p>",
+       "descriptionPlain": "Linie 18: Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U. Ersatz: Linien U2, U3, 80A. Voraussichtliche Dauer: 12:00 Uhr. Grund: Veranstaltung im Bereich Prater Hauptallee.",
+       "title": "18: Veranstaltung"
+      }
+     }
+    ],
+    "location": "Prater Hauptallee",
+    "name": "I20261115-0012",
+    "owner": "WL",
+    "parentName": "I20261115-0012",
+    "priority": "1",
+    "reasonId": 35,
+    "reasonName": "Veranstaltung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 118,
+      "lineName": "18",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-15T09:06:00.000+0100",
+     "lastUpdate": "2026-11-15T09:06:00.000+0100",
+     "start": "2026-11-15T08:40:00.000+0100"
+    },
+    "title": "18: Veranstaltung"
    },
    {
     "alertCause": "undefined alert cause",
@@ -679,6 +724,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVeranstaltung",
+    "name": "R2420-118",
+    "owner": "WL",
+    "parentName": "R2420-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     2420
+    ],
+    "time": {
+     "end": "2026-11-15T12:00:00.000+0100",
+     "start": "2026-11-15T09:06:22.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVeranstaltung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Ludwig-Koeßler-Platz",
+    "name": "R2422-118",
+    "owner": "WL",
+    "parentName": "R2422-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     2422
+    ],
+    "time": {
+     "end": "2026-11-15T12:00:00.000+0100",
+     "start": "2026-11-15T09:06:22.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Ludwig-Koeßler-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
     "name": "R2558-125",
     "owner": "WL",
@@ -698,6 +789,52 @@
      "start": "2026-11-14T00:00:27.000+0100"
     },
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVeranstaltung",
+    "name": "R2632-118",
+    "owner": "WL",
+    "parentName": "R2632-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     2632
+    ],
+    "time": {
+     "end": "2026-11-15T12:00:00.000+0100",
+     "start": "2026-11-15T09:06:22.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVeranstaltung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Ludwig-Koeßler-Platz",
+    "name": "R2750-118",
+    "owner": "WL",
+    "parentName": "R2750-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     2750
+    ],
+    "time": {
+     "end": "2026-11-15T12:00:00.000+0100",
+     "start": "2026-11-15T09:06:23.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Ludwig-Koeßler-Platz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -744,6 +881,190 @@
      "start": "2026-11-14T00:00:24.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVeranstaltung",
+    "name": "R3602-118",
+    "owner": "WL",
+    "parentName": "R3602-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3602
+    ],
+    "time": {
+     "end": "2026-11-15T12:00:00.000+0100",
+     "start": "2026-11-15T09:06:25.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVeranstaltung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVeranstaltung",
+    "name": "R3603-118",
+    "owner": "WL",
+    "parentName": "R3603-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3603
+    ],
+    "time": {
+     "end": "2026-11-15T12:00:00.000+0100",
+     "start": "2026-11-15T09:06:25.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVeranstaltung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVeranstaltung",
+    "name": "R3604-118",
+    "owner": "WL",
+    "parentName": "R3604-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3604
+    ],
+    "time": {
+     "end": "2026-11-15T12:00:00.000+0100",
+     "start": "2026-11-15T09:06:25.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVeranstaltung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Ludwig-Koeßler-Platz",
+    "name": "R3605-118",
+    "owner": "WL",
+    "parentName": "R3605-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3605
+    ],
+    "time": {
+     "end": "2026-11-15T12:00:00.000+0100",
+     "start": "2026-11-15T09:06:25.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Ludwig-Koeßler-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Ludwig-Koeßler-Platz",
+    "name": "R3606-118",
+    "owner": "WL",
+    "parentName": "R3606-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3606
+    ],
+    "time": {
+     "end": "2026-11-15T12:00:00.000+0100",
+     "start": "2026-11-15T09:06:25.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Ludwig-Koeßler-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Ludwig-Koeßler-Platz",
+    "name": "R3607-118",
+    "owner": "WL",
+    "parentName": "R3607-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3607
+    ],
+    "time": {
+     "end": "2026-11-15T12:00:00.000+0100",
+     "start": "2026-11-15T09:06:25.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Ludwig-Koeßler-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nBetrieb ab Ludwig-Koeßler-Platz",
+    "name": "R3608-118",
+    "owner": "WL",
+    "parentName": "R3608-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3608
+    ],
+    "time": {
+     "end": "2026-11-15T12:00:00.000+0100",
+     "start": "2026-11-15T09:06:25.000+0100"
+    },
+    "title": "Veranstaltung\nBetrieb ab Ludwig-Koeßler-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Veranstaltung\nZüge halten in der Schnirchgasse",
+    "name": "R3609-118",
+    "owner": "WL",
+    "parentName": "R3609-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3609
+    ],
+    "time": {
+     "end": "2026-11-15T12:00:00.000+0100",
+     "start": "2026-11-15T09:06:25.000+0100"
+    },
+    "title": "Veranstaltung\nZüge halten in der Schnirchgasse"
    },
    {
     "alertCause": "undefined alert cause",
