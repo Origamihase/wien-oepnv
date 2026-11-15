@@ -3,6 +3,34 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
+  "R1606-160|2026-11-15T10:56:03.000+0100": {
+   "incident": "I20261115-0017",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
+  "R1615-160|2026-11-15T10:56:03.000+0100": {
+   "incident": "I20261115-0017",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
+  "R1616-160|2026-11-15T10:56:03.000+0100": {
+   "incident": "I20261115-0017",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
+  "R1617-160|2026-11-15T10:56:03.000+0100": {
+   "incident": "I20261115-0017",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
+  "R1618-160|2026-11-15T10:56:03.000+0100": {
+   "incident": "I20261115-0017",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
+  "R1619-160|2026-11-15T10:56:03.000+0100": {
+   "incident": "I20261115-0017",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
+  "R1620-160|2026-11-15T10:56:03.000+0100": {
+   "incident": "I20261115-0017",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
   "R2168-112|2026-11-15T10:30:01.000+0100": {
    "incident": "I20261115-0015",
    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
@@ -27,7 +55,15 @@
    "incident": "I20261115-0015",
    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
   },
+  "R385-105|2026-11-15T10:30:29.000+0100": {
+   "incident": "I20261115-0015",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
   "R385-112|2026-11-15T10:29:59.000+0100": {
+   "incident": "I20261115-0015",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R386-105|2026-11-15T10:30:29.000+0100": {
    "incident": "I20261115-0015",
    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
   },
@@ -35,7 +71,15 @@
    "incident": "I20261115-0015",
    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
   },
+  "R387-105|2026-11-15T10:30:29.000+0100": {
+   "incident": "I20261115-0015",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
   "R387-112|2026-11-15T10:29:59.000+0100": {
+   "incident": "I20261115-0015",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R388-105|2026-11-15T10:30:29.000+0100": {
    "incident": "I20261115-0015",
    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
   }
