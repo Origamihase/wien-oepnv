@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261115-0001-F01, I20261114-0038, I20260925-0011, I20260909-0007, I20261114-0039, I20261020-0029"
+    "trafficInfoNameList": "I20261115-0001-F01, I20261114-0038, I20260925-0011, I20260909-0007, I20261114-0039, I20261115-0002, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2379-627, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2380-627, R3886-480, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R318-437, R293-474, R2558-125, R1974-466, R2159-131, R2222-131, R2213-131, R2196-131, R2195-131, R2193-131, R2190-131, R321-131, R322-131, R2189-131, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2373-125, R401-101, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R3886-480, R1875-101, R318-437, R293-474, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2558-125, R2159-131, R322-131, R2213-131, R321-131, R2189-131, R2190-131, R2193-131, R2195-131, R2196-131, R2222-131, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1974-566, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -310,6 +310,97 @@
     "title": "31: Rettungseinsatz"
    },
    {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "6": "ptTram"
+     }
+    },
+    "description": "Linie 6: Fahrtbehinderung in Richtung Geiereckstraße. Voraussichtliche Dauer: 01:00 Uhr. Grund: Falschparker im Bereich Quellenstraße.",
+    "descriptionHTML": "<p>Linie 6:<br>Fahrtbehinderung in Richtung Geiereckstraße.</p><p>Voraussichtliche Dauer: 01:00 Uhr.</p><p>Grund: Falschparker im Bereich Quellenstraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 6:<br>Fahrtbehinderung in Richtung Geiereckstraße.</p><p>Voraussichtliche Dauer: 01:00 Uhr.</p><p>Grund: Falschparker im Bereich Quellenstraße.</p>",
+       "descriptionPlain": "Linie 6: Fahrtbehinderung in Richtung Geiereckstraße. Voraussichtliche Dauer: 01:00 Uhr. Grund: Falschparker im Bereich Quellenstraße.",
+       "title": "6: Falschparker"
+      }
+     }
+    ],
+    "location": "Quellenstraße",
+    "name": "I20261115-0002",
+    "owner": "WL",
+    "parentName": "I20261115-0002",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 106,
+      "lineName": "6",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-15T00:40:00.000+0100",
+     "lastUpdate": "2026-11-15T00:40:00.000+0100",
+     "start": "2026-11-15T00:39:00.000+0100"
+    },
+    "title": "6: Falschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A",
+    "name": "R1718-508",
+    "owner": "WL",
+    "parentName": "R1718-508",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N8"
+    ],
+    "relatedStops": [
+     1718
+    ],
+    "time": {
+     "end": "2026-11-15T04:45:00.000+0100",
+     "start": "2026-11-15T00:45:10.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
+    "name": "R1749-508",
+    "owner": "WL",
+    "parentName": "R1749-508",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N8"
+    ],
+    "relatedStops": [
+     1749
+    ],
+    "time": {
+     "end": "2026-11-15T05:15:00.000+0100",
+     "start": "2026-11-15T00:45:10.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nKein Betrieb",
@@ -474,22 +565,22 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
-    "name": "R1974-466",
+    "name": "R1974-566",
     "owner": "WL",
-    "parentName": "R1974-466",
+    "parentName": "R1974-566",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "66A"
+     "N66"
     ],
     "relatedStops": [
      1974
     ],
     "time": {
-     "end": "2026-11-15T01:00:00.000+0100",
-     "start": "2026-11-14T04:40:14.000+0100"
+     "end": "2026-11-15T04:20:00.000+0100",
+     "start": "2026-11-15T01:00:15.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
    },
@@ -1136,6 +1227,52 @@
      "start": "2026-11-13T00:00:12.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 ",
+    "name": "R402-506",
+    "owner": "WL",
+    "parentName": "R402-506",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N6"
+    ],
+    "relatedStops": [
+     402
+    ],
+    "time": {
+     "end": "2026-11-15T05:05:00.000+0100",
+     "start": "2026-11-15T00:55:11.000+0100"
+    },
+    "title": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
+    "name": "R407-506",
+    "owner": "WL",
+    "parentName": "R407-506",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N6"
+    ],
+    "relatedStops": [
+     407
+    ],
+    "time": {
+     "end": "2026-11-15T05:04:00.000+0100",
+     "start": "2026-11-15T00:54:10.000+0100"
+    },
+    "title": "Bauarbeiten\nBusse halten Quellenstraße 189"
    },
    {
     "alertCause": "undefined alert cause",

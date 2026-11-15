@@ -1,5 +1,47 @@
 {
  "version": 1,
- "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title.",
- "tickers": []
+ "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
+ "tickers": [],
+ "owners": {
+  "R2159-131|2026-11-15T00:02:37.000+0100": {
+   "incident": "I20261115-0001",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R2189-131|2026-11-15T00:02:38.000+0100": {
+   "incident": "I20261115-0001",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R2190-131|2026-11-15T00:02:38.000+0100": {
+   "incident": "I20261115-0001",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R2193-131|2026-11-15T00:02:38.000+0100": {
+   "incident": "I20261115-0001",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R2195-131|2026-11-15T00:02:38.000+0100": {
+   "incident": "I20261115-0001",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R2196-131|2026-11-15T00:02:38.000+0100": {
+   "incident": "I20261115-0001",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R2213-131|2026-11-15T00:02:38.000+0100": {
+   "incident": "I20261115-0001",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R2222-131|2026-11-15T00:02:38.000+0100": {
+   "incident": "I20261115-0001",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R321-131|2026-11-15T00:02:38.000+0100": {
+   "incident": "I20261115-0001",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R322-131|2026-11-15T00:02:38.000+0100": {
+   "incident": "I20261115-0001",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  }
+ }
 }
