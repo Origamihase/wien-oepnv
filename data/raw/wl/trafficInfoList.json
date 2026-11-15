@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261115-0019, I20260925-0011, I20261115-0020, I20260909-0007, I20261020-0029, I20261115-0021"
+    "trafficInfoNameList": "I20261115-0022-F01, I20260925-0011, I20261115-0020, I20261115-0023, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2343-125, R2379-627, R2380-627, R2345-127, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R401-101, R2343-626, R2378-627, R3886-480, R1882-101, R1884-101, R318-437, R293-474, R1875-101, R1876-101, R1880-101, R1881-101, R1883-101, R2558-125, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2378-627, R2343-626, R2379-627, R2380-627, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2345-127, R401-101, R2343-125, R3886-480, R1882-101, R1884-101, R318-437, R293-474, R1883-101, R1875-101, R1876-101, R1880-101, R1881-101, R2558-125, R1974-466, R1199-205, R500-101, R1542-152, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,52 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "26E": "ptTram"
-     }
-    },
-    "description": "Linie 26E: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie 26E:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 26E:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 26E: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "26E: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261115-0019",
-    "owner": "WL",
-    "parentName": "I20261115-0019",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "26E"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 626,
-      "lineName": "26E",
-      "vehicleType": "ptBus"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-15T12:22:00.000+0100",
-     "end": "2026-11-15T13:00:00.000+0100",
-     "lastUpdate": "2026-11-15T13:00:00.000+0100",
-     "resume": "2026-11-15T12:21:00.000+0100",
-     "start": "2026-11-15T12:21:00.000+0100"
-    },
-    "title": "26E: Verspätungen"
-   },
-   {
     "alertCause": "miscellaneous",
     "alertCauseId": 137,
     "attributes": {
@@ -262,49 +216,96 @@
     "title": "U2: Verspätungen"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
+    "alertCause": "accident",
+    "alertCauseId": 77,
     "attributes": {
      "relatedLineTypes": {
-      "U6": "ptMetro"
+      "52": "ptTram"
      }
     },
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 52: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U6: Verspätungen"
+       "descriptionHtml": "<p>Linie 52: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "52: Verkehrsunfall"
       }
      }
     ],
-    "name": "I20261115-0021",
+    "location": "Lützowgasse",
+    "name": "I20261115-0022-F01",
     "owner": "WL",
-    "parentName": "I20261115-0021",
+    "parentName": "I20261115-0022",
     "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "U6"
+     "52"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
+      "lineId": 152,
+      "lineName": "52",
+      "vehicleType": "ptTram"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-15T12:52:00.000+0100",
-     "lastUpdate": "2026-11-15T12:52:00.000+0100",
-     "resume": "2026-11-15T12:52:00.000+0100",
-     "start": "2026-11-15T12:52:00.000+0100"
+     "created": "2026-11-15T13:13:00.000+0100",
+     "lastUpdate": "2026-11-15T13:13:00.000+0100",
+     "resume": "2026-11-15T13:13:00.000+0100",
+     "start": "2026-11-15T13:00:00.000+0100"
     },
-    "title": "U6: Verspätungen"
+    "title": "52: Verkehrsunfall"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "5A": "ptBusCity"
+     }
+    },
+    "description": "Linie 5A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 5A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 5A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 5A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "5A: Rettungseinsatz"
+      }
+     }
+    ],
+    "location": "Wasnergasse",
+    "name": "I20261115-0023",
+    "owner": "WL",
+    "parentName": "I20261115-0023",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "5A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 405,
+      "lineName": "5A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-15T13:24:00.000+0100",
+     "lastUpdate": "2026-11-15T13:24:00.000+0100",
+     "resume": "2026-11-15T13:23:00.000+0100",
+     "start": "2026-11-15T13:23:00.000+0100"
+    },
+    "title": "5A: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -328,6 +329,29 @@
      "start": "2026-11-15T04:45:27.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R1542-152",
+    "owner": "WL",
+    "parentName": "R1542-152",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedStops": [
+     1542
+    ],
+    "time": {
+     "end": "2026-11-15T14:01:00.000+0100",
+     "start": "2026-11-15T13:01:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
