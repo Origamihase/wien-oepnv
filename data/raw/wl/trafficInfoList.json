@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261115-0012-F01, I20261115-0017, I20261115-0018"
+    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261115-0017-F01, I20261115-0018, I20261115-0019"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2345-127, R2380-627, R2379-627, R2373-125, R2373-127, R2373-126, R401-101, R2343-626, R2378-627, R3886-480, R293-474, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R318-437, R2558-125, R1974-466, R1199-205, R500-101, R1619-160, R1620-160, R1618-160, R1617-160, R1616-160, R1615-160, R1606-160, R1630-160, R1607-160, R1629-160, R1625-160, R1631-160, R1633-160, R1634-160, R1632-160, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2343-626, R2370-125, R2371-125, R2372-125, R2345-127, R2380-627, R2379-627, R2373-125, R2359-125, R2373-127, R2373-126, R401-101, R2378-627, R2343-125, R3886-480, R318-437, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R293-474, R2558-125, R1974-466, R1199-205, R500-101, R1619-160, R1620-160, R1618-160, R1617-160, R1616-160, R1615-160, R1606-160, R1630-160, R1607-160, R1629-160, R1625-160, R1631-160, R1633-160, R1634-160, R1632-160, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,52 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "special event",
-    "alertCauseId": 120,
-    "attributes": {
-     "relatedLineTypes": {
-      "18": "ptTram"
-     }
-    },
-    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 18: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 18: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "18: Veranstaltung"
-      }
-     }
-    ],
-    "location": "Prater Hauptallee",
-    "name": "I20261115-0012-F01",
-    "owner": "WL",
-    "parentName": "I20261115-0012",
-    "priority": "1",
-    "reasonId": 35,
-    "reasonName": "Veranstaltung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 118,
-      "lineName": "18",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-15T11:37:00.000+0100",
-     "lastUpdate": "2026-11-15T11:37:00.000+0100",
-     "resume": "2026-11-15T11:37:00.000+0100",
-     "start": "2026-11-15T08:40:00.000+0100"
-    },
-    "title": "18: Veranstaltung"
-   },
-   {
     "alertCause": "accident",
     "alertCauseId": 77,
     "attributes": {
@@ -224,19 +178,19 @@
       "60": "ptTram"
      }
     },
-    "description": "Linie 60: Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse. Voraussichtliche Dauer: 13:00 Uhr. Grund: Verkehrsunfall im Bereich Speisinger Straße.",
-    "descriptionHTML": "<p>Linie 60:<br>Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse.</p><p>Voraussichtliche Dauer: 13:00 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Speisinger Straße.</p>",
+    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 60:<br>Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse.</p><p>Voraussichtliche Dauer: 13:00 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Speisinger Straße.</p>",
-       "descriptionPlain": "Linie 60: Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse. Voraussichtliche Dauer: 13:00 Uhr. Grund: Verkehrsunfall im Bereich Speisinger Straße.",
+       "descriptionHtml": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "60: Verkehrsunfall"
       }
      }
     ],
     "location": "Speisinger Straße",
-    "name": "I20261115-0017",
+    "name": "I20261115-0017-F01",
     "owner": "WL",
     "parentName": "I20261115-0017",
     "priority": "1",
@@ -255,8 +209,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-15T10:55:00.000+0100",
-     "lastUpdate": "2026-11-15T11:59:00.000+0100",
+     "created": "2026-11-15T12:04:00.000+0100",
+     "end": "2026-11-15T12:31:00.000+0100",
+     "lastUpdate": "2026-11-15T12:15:00.000+0100",
      "start": "2026-11-15T10:53:00.000+0100"
     },
     "title": "60: Verkehrsunfall"
@@ -305,6 +260,51 @@
      "start": "2026-11-15T11:44:00.000+0100"
     },
     "title": "U6: Betriebsstörung"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "26E": "ptTram"
+     }
+    },
+    "description": "Linie 26E: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie 26E:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 26E:<br>Unregelmäßige Intervalle in beiden Richtungen.<br> <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie 26E: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "26E: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261115-0019",
+    "owner": "WL",
+    "parentName": "I20261115-0019",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "26E"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 626,
+      "lineName": "26E",
+      "vehicleType": "ptBus"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-15T12:22:00.000+0100",
+     "lastUpdate": "2026-11-15T12:22:00.000+0100",
+     "resume": "2026-11-15T12:21:00.000+0100",
+     "start": "2026-11-15T12:21:00.000+0100"
+    },
+    "title": "26E: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",

@@ -650,22 +650,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Veranstaltung",
-    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "d2995b04c903bb084f2bfb47e72067defed09d1b288eaf3deecb9883a85cd47e",
-    "pubDate": "2026-11-15T08:40:00+01:00",
-    "starts_at": "2026-11-15T08:40:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=18|D=2026-11-15|TK=veranstaltung",
-    "_wl_ids": [
-      "I20261115-0012"
-    ],
-    "_incident_start": "2026-11-15T08:40:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Gleisbauarbeiten",
     "description": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A und 65A. Voraussichtliche Dauer: Mitte Dezember 2026. Grund: Gleisbauarbeiten im Bereich Stefan-Fadinger-Platz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -846,6 +830,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "26E: Verspätungen",
+    "description": "Linie 26E: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4893efe8e33ff75e6f86fb0aa8a746350d7083686ab2d68f46f943a897fcbc02",
+    "pubDate": "2026-11-15T12:21:00+01:00",
+    "starts_at": "2026-11-15T12:21:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=26E|D=2026-11-15|TK=26e verspätungen",
+    "_wl_ids": [
+      "I20261115-0019"
+    ],
+    "_incident_start": "2026-11-15T12:21:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26: Züge halten in Tokiostraße",
     "description": "Züge halten in\nTokiostraße",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -907,12 +907,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "60: Verkehrsunfall",
-    "description": "Linie 60: Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse. Voraussichtliche Dauer: 13:00 Uhr. Grund: Verkehrsunfall im Bereich Speisinger Straße.",
+    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "f1fe5d52a5a574694cd18960683874af6f978ac62924632bfae77052d94b803d",
     "pubDate": "2026-11-15T10:53:00+01:00",
     "starts_at": "2026-11-15T10:53:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-15T12:31:00+01:00",
     "_identity": "wl|störung|L=60|D=2026-11-15|TK=60 verkehrsunfall",
     "_wl_ids": [
       "I20261115-0017"
