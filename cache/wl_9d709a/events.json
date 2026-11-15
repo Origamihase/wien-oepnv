@@ -866,6 +866,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "30: Polizeieinsatz",
+    "description": "Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "0b04f102bd159f98a41bb7194d24ea5268065185467f63b745203825c9848323",
+    "pubDate": "2026-11-15T17:39:00+01:00",
+    "starts_at": "2026-11-15T17:39:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=30|D=2026-11-15|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261115-0030"
+    ],
+    "_incident_start": "2026-11-15T17:39:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "31: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "ded38e51a87168b5dec5fa7cf47e1322d71a9fc82b58c76e54b10b9190810f6c",
+    "pubDate": "2026-11-15T17:39:00+01:00",
+    "starts_at": "2026-11-15T17:39:14+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=31|D=2026-11-15|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261115-0030"
+    ],
+    "_incident_start": "2026-11-15T17:39:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -878,18 +910,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49A: Falschparker",
-    "description": "Linie 49A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "48A: Verkehrsüberlastung",
+    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "535949d900686766460ddb8a9829917e5ea3ee61ba1c4e6f4c3cbc3a74961bb7",
-    "pubDate": "2026-11-15T15:50:00+01:00",
-    "starts_at": "2026-11-15T15:50:00+01:00",
+    "guid": "68437700f8aeaee18ffffa29c3114cdeb4dd158a27bedb1178d146036ce0af2b",
+    "pubDate": "2026-11-15T17:45:00+01:00",
+    "starts_at": "2026-11-15T17:45:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=49A|D=2026-11-15|TK=falschparker",
+    "_identity": "wl|störung|L=48A|D=2026-11-15|TK=48a verkehrsüberlastung",
     "_wl_ids": [
-      "I20261115-0028"
+      "I20261115-0031"
     ],
-    "_incident_start": "2026-11-15T15:50:00+01:00"
+    "_incident_start": "2026-11-15T17:45:00+01:00"
   },
   {
     "source": "Wiener Linien",
