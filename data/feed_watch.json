@@ -1,17 +1,13 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-15T01:30:45.495940+00:00",
- "built": "2026-11-15T02:30:34+01:00",
+ "updated": "2026-11-15T02:00:51.897021+00:00",
+ "built": "2026-11-15T03:00:45+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-15T02:30:34+01:00",
+  "built": "2026-11-15T03:00:45+01:00",
   "items": [
-   {
-    "title": "U1: Gleisschaden",
-    "time_line": "Seit 01:43"
-   },
    {
     "title": "13A: Rettungseinsatz",
     "time_line": "Heute"
@@ -47,31 +43,15 @@
    {
     "title": "65A: Triester Straße, Rossakgasse",
     "time_line": "Seit 11.11."
+   },
+   {
+    "title": "5A/N31: Obere Augartenstraße",
+    "time_line": "Bis 11.12."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-08T01:31:06.258259+00:00",
-   "raw": {
-    "wl-stoerungen": 44,
-    "wl-hinweise": 94,
-    "oebb": 187,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 24,
-    "oebb": 162,
-    "baustellen": 64
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 7,
-    "wl": 85
-   }
-  },
   {
    "t": "2026-11-08T02:01:00.535665+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 6,
     "wl": 87
    }
+  },
+  {
+   "t": "2026-11-15T02:00:51.897021+00:00",
+   "raw": {
+    "wl-stoerungen": 44,
+    "wl-hinweise": 93,
+    "oebb": 183,
+    "baustellen-linien": 53,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 25,
+    "oebb": 158,
+    "baustellen": 64
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 86
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-15T01:30:45.495940+00:00"
+   "last_ok": "2026-11-15T02:00:51.897021+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-15T01:30:45.495940+00:00"
+   "last_ok": "2026-11-15T02:00:51.897021+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-15T01:30:45.495940+00:00"
+   "last_ok": "2026-11-15T02:00:51.897021+00:00"
   }
  }
 }
