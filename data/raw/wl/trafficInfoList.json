@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261115-0031, I20261115-0032, I20261115-0033-F01"
+    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261115-0032, I20261115-0033-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2345-127, R2380-627, R2343-125, R2343-626, R2379-627, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2378-627, R401-101, R3886-480, R1881-101, R1884-101, R1883-101, R318-437, R293-474, R1880-101, R1882-101, R1875-101, R1876-101, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R1338-142, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2379-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2345-127, R2380-627, R401-101, R3886-480, R318-437, R1884-101, R1882-101, R1883-101, R293-474, R1875-101, R1876-101, R1880-101, R1881-101, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -175,51 +175,6 @@
     "alertCauseId": 60,
     "attributes": {
      "relatedLineTypes": {
-      "48A": "ptBusCity"
-     }
-    },
-    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie 48A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 48A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "48A: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261115-0031",
-    "owner": "WL",
-    "parentName": "I20261115-0031",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 448,
-      "lineName": "48A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-15T17:46:00.000+0100",
-     "lastUpdate": "2026-11-15T17:46:00.000+0100",
-     "resume": "2026-11-15T17:45:00.000+0100",
-     "start": "2026-11-15T17:45:00.000+0100"
-    },
-    "title": "48A: Verkehrsüberlastung"
-   },
-   {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
       "74A": "ptBusCity"
      }
     },
@@ -328,29 +283,6 @@
      "start": "2026-11-15T04:45:27.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1338-142",
-    "owner": "WL",
-    "parentName": "R1338-142",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedStops": [
-     1338
-    ],
-    "time": {
-     "end": "2026-11-15T19:19:00.000+0100",
-     "start": "2026-11-15T18:19:47.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
