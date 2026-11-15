@@ -2,34 +2,5 @@
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
- "owners": {
-  "R1465-152|2026-11-15T14:15:54.000+0100": {
-   "incident": "I20261115-0026",
-   "title": "Rettungseinsatz\nBetrieb ab Linzer Straße, Johnstraße"
-  },
-  "R1539-152|2026-11-15T14:14:53.000+0100": {
-   "incident": "I20261115-0026",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R1542-152|2026-11-15T14:14:53.000+0100": {
-   "incident": "I20261115-0026",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R1553-152|2026-11-15T14:16:23.000+0100": {
-   "incident": "I20261115-0026",
-   "title": "Rettungseinsatz\nBetrieb ab Linzer Straße, Johnstraße"
-  },
-  "R1556-152|2026-11-15T14:16:23.000+0100": {
-   "incident": "I20261115-0026",
-   "title": "Rettungseinsatz\nBetrieb ab Linzer Straße, Johnstraße"
-  },
-  "R1558-152|2026-11-15T14:16:23.000+0100": {
-   "incident": "I20261115-0026",
-   "title": "Rettungseinsatz\nBetrieb ab Linzer Straße, Johnstraße"
-  },
-  "R579-152|2026-11-15T14:14:51.000+0100": {
-   "incident": "I20261115-0026",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  }
- }
+ "owners": {}
 }
