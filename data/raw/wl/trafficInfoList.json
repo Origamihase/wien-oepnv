@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261116-0006-F01, I20261116-0007-F01, I20261116-0009-F01, I20261116-0010"
+    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261116-0006-F01, I20261116-0007-F01, I20261116-0009-F01, I20261116-0010, I20261116-0010-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2380-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2345-127, R401-101, R3886-480, R1880-101, R293-474, R318-437, R1884-101, R1883-101, R1882-101, R1875-101, R1876-101, R1881-101, R2558-125, R1974-466, R1199-205, R500-101, R2959-415, R218-144, R219-144, R217-144, R555-144, R1361-144, R1360-144, R1345-144, R219-143, R217-143, R218-143, R1345-143, R236-143, R235-143, R237-143, R237-144, R236-144, R1372-144, R1371-144, R1373-144, R244-144, R241-144, R246-144, R242-144, R245-144, R1387-144, R231-143, R230-143, R234-143, R233-143, R232-143, R1356-143, R1354-143, R1353-143, R1357-143, R1355-143, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2372-125, R2373-126, R2378-627, R2343-125, R2373-127, R2343-626, R2359-125, R2370-125, R2371-125, R2380-627, R2379-627, R2373-125, R401-101, R2345-127, R3886-480, R1875-101, R1881-101, R293-474, R318-437, R1880-101, R1884-101, R1882-101, R1876-101, R1883-101, R2558-125, R1974-466, R1199-205, R500-101, R2959-415, R235-143, R236-143, R237-143, R236-144, R237-144, R1372-144, R1371-144, R1373-144, R242-144, R246-144, R241-144, R245-144, R244-144, R1387-144, R230-143, R234-143, R233-143, R232-143, R231-143, R1355-143, R1353-143, R1354-143, R1357-143, R1356-143, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -317,18 +317,17 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "43": "ptTram",
       "44": "ptTram"
      }
     },
-    "description": "Linie 43: Betrieb nur zwischen Neuwaldegg und Alser Straße U. Linie 44: Betrieb nur zwischen Ottakring, Maroltingergasse und Johann-Nepomuk-Berger-Platz. Ersatz: Linien U2, U6, 2, 5, 12, 40 und 41. Voraussichtliche Dauer: 09:30 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Schottentor U.",
-    "descriptionHTML": "<p>Linie 43:<br>Betrieb nur zwischen Neuwaldegg und Alser Straße U.<br>Linie 44:<br>Betrieb nur zwischen Ottakring, Maroltingergasse und Johann-Nepomuk-Berger-Platz.</p><p>Ersatz: Linien U2, U6, 2, 5, 12, 40 und 41.</p><p>Voraussichtliche Dauer: 09:30 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Schottentor U.</p>",
+    "description": "Linie 44: Betrieb nur zwischen Ottakring, Maroltingergasse und Johann-Nepomuk-Berger-Platz. Ersatz: Linien U2, U6, 2, 5, 12, 40 und 41. Voraussichtliche Dauer: 09:50 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Schottentor U.",
+    "descriptionHTML": "<p>Linie 44:<br>Betrieb nur zwischen Ottakring, Maroltingergasse und Johann-Nepomuk-Berger-Platz.</p><p>Ersatz: Linien U2, U6, 2, 5, 12, 40 und 41.</p><p>Voraussichtliche Dauer: 09:50 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Schottentor U.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 43:<br>Betrieb nur zwischen Neuwaldegg und Alser Straße U.<br>Linie 44:<br>Betrieb nur zwischen Ottakring, Maroltingergasse und Johann-Nepomuk-Berger-Platz.</p><p>Ersatz: Linien U2, U6, 2, 5, 12, 40 und 41.</p><p>Voraussichtliche Dauer: 09:30 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Schottentor U.</p>",
-       "descriptionPlain": "Linie 43: Betrieb nur zwischen Neuwaldegg und Alser Straße U. Linie 44: Betrieb nur zwischen Ottakring, Maroltingergasse und Johann-Nepomuk-Berger-Platz. Ersatz: Linien U2, U6, 2, 5, 12, 40 und 41. Voraussichtliche Dauer: 09:30 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Schottentor U.",
-       "title": "43, 44: Schadhaftes Fahrzeug"
+       "descriptionHtml": "<p>Linie 44:<br>Betrieb nur zwischen Ottakring, Maroltingergasse und Johann-Nepomuk-Berger-Platz.</p><p>Ersatz: Linien U2, U6, 2, 5, 12, 40 und 41.</p><p>Voraussichtliche Dauer: 09:50 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Schottentor U.</p>",
+       "descriptionPlain": "Linie 44: Betrieb nur zwischen Ottakring, Maroltingergasse und Johann-Nepomuk-Berger-Platz. Ersatz: Linien U2, U6, 2, 5, 12, 40 und 41. Voraussichtliche Dauer: 09:50 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Schottentor U.",
+       "title": "44: Schadhaftes Fahrzeug"
       }
      }
     ],
@@ -340,15 +339,9 @@
     "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "43",
      "44"
     ],
     "relatedLinesDetails": [
-     {
-      "lineId": 143,
-      "lineName": "43",
-      "vehicleType": "ptTram"
-     },
      {
       "lineId": 144,
       "lineName": "44",
@@ -361,10 +354,58 @@
     "status": "active",
     "time": {
      "created": "2026-11-16T08:59:00.000+0100",
-     "lastUpdate": "2026-11-16T09:07:00.000+0100",
+     "lastUpdate": "2026-11-16T09:30:00.000+0100",
      "start": "2026-11-16T08:58:00.000+0100"
     },
-    "title": "43, 44: Schadhaftes Fahrzeug"
+    "title": "44: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "43": "ptTram"
+     }
+    },
+    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "43: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261116-0010-F01",
+    "owner": "WL",
+    "parentName": "I20261116-0010",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "43"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 143,
+      "lineName": "43",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     1345
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T09:34:00.000+0100",
+     "lastUpdate": "2026-11-16T09:34:00.000+0100",
+     "resume": "2026-11-16T09:34:00.000+0100",
+     "start": "2026-11-16T08:58:00.000+0100"
+    },
+    "title": "43: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -388,52 +429,6 @@
      "start": "2026-11-16T04:45:10.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Alser Straße ",
-    "name": "R1345-143",
-    "owner": "WL",
-    "parentName": "R1345-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     1345
-    ],
-    "time": {
-     "end": "2026-11-16T10:00:00.000+0100",
-     "start": "2026-11-16T09:01:06.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Alser Straße "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Johhan-N.-Berger. Platz",
-    "name": "R1345-144",
-    "owner": "WL",
-    "parentName": "R1345-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     1345
-    ],
-    "time": {
-     "end": "2026-11-16T09:59:00.000+0100",
-     "start": "2026-11-16T09:00:36.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Johhan-N.-Berger. Platz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -549,52 +544,6 @@
      "start": "2026-11-16T09:12:07.000+0100"
     },
     "title": "Schadhafter Zug\nBetrieb nur bis Alser Straße "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Johhan-N.-Berger. Platz",
-    "name": "R1360-144",
-    "owner": "WL",
-    "parentName": "R1360-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     1360
-    ],
-    "time": {
-     "end": "2026-11-16T09:59:00.000+0100",
-     "start": "2026-11-16T09:00:36.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Johhan-N.-Berger. Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Johhan-N.-Berger. Platz",
-    "name": "R1361-144",
-    "owner": "WL",
-    "parentName": "R1361-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     1361
-    ],
-    "time": {
-     "end": "2026-11-16T09:59:00.000+0100",
-     "start": "2026-11-16T09:00:36.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Johhan-N.-Berger. Platz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -871,144 +820,6 @@
      "start": "2026-11-16T04:40:10.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Alser Straße ",
-    "name": "R217-143",
-    "owner": "WL",
-    "parentName": "R217-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     217
-    ],
-    "time": {
-     "end": "2026-11-16T10:00:00.000+0100",
-     "start": "2026-11-16T09:01:03.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Alser Straße "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Johhan-N.-Berger. Platz",
-    "name": "R217-144",
-    "owner": "WL",
-    "parentName": "R217-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     217
-    ],
-    "time": {
-     "end": "2026-11-16T09:59:00.000+0100",
-     "start": "2026-11-16T09:00:33.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Johhan-N.-Berger. Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Alser Straße ",
-    "name": "R218-143",
-    "owner": "WL",
-    "parentName": "R218-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     218
-    ],
-    "time": {
-     "end": "2026-11-16T10:00:00.000+0100",
-     "start": "2026-11-16T09:01:03.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Alser Straße "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Johhan-N.-Berger. Platz",
-    "name": "R218-144",
-    "owner": "WL",
-    "parentName": "R218-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     218
-    ],
-    "time": {
-     "end": "2026-11-16T09:59:00.000+0100",
-     "start": "2026-11-16T09:00:33.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Johhan-N.-Berger. Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Alser Straße ",
-    "name": "R219-143",
-    "owner": "WL",
-    "parentName": "R219-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     219
-    ],
-    "time": {
-     "end": "2026-11-16T10:00:00.000+0100",
-     "start": "2026-11-16T09:01:03.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Alser Straße "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Johhan-N.-Berger. Platz",
-    "name": "R219-144",
-    "owner": "WL",
-    "parentName": "R219-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     219
-    ],
-    "time": {
-     "end": "2026-11-16T09:59:00.000+0100",
-     "start": "2026-11-16T09:00:33.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Johhan-N.-Berger. Platz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1814,29 +1625,6 @@
      "start": "2026-11-16T05:00:11.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Johhan-N.-Berger. Platz",
-    "name": "R555-144",
-    "owner": "WL",
-    "parentName": "R555-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     555
-    ],
-    "time": {
-     "end": "2026-11-16T09:59:00.000+0100",
-     "start": "2026-11-16T09:00:34.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Johhan-N.-Berger. Platz"
    },
    {
     "alertCause": "undefined alert cause",
