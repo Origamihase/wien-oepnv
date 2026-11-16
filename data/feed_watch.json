@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-16T08:00:56.322564+00:00",
- "built": "2026-11-16T09:00:46+01:00",
+ "updated": "2026-11-16T08:30:54.574389+00:00",
+ "built": "2026-11-16T09:30:42+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-16T09:00:46+01:00",
+  "built": "2026-11-16T09:30:42+01:00",
   "items": [
    {
     "title": "43/44: Schadhaftes Fahrzeug",
@@ -18,7 +18,7 @@
    },
    {
     "title": "40A: Falschparker",
-    "time_line": "Seit 08:01"
+    "time_line": "Seit 08:00"
    },
    {
     "title": "60: Schadhaftes Fahrzeug",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-09T08:01:27.476018+00:00",
-   "raw": {
-    "wl-stoerungen": 54,
-    "wl-hinweise": 97,
-    "oebb": 186,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 28,
-    "oebb": 160,
-    "baustellen": 64
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 8,
-    "wl": 85
-   }
-  },
   {
    "t": "2026-11-09T08:31:15.551833+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 6,
     "wl": 84
    }
+  },
+  {
+   "t": "2026-11-16T08:30:54.574389+00:00",
+   "raw": {
+    "wl-stoerungen": 76,
+    "wl-hinweise": 98,
+    "oebb": 170,
+    "baustellen-linien": 50,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 29,
+    "oebb": 145,
+    "baustellen": 61
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 89
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-16T08:00:56.322564+00:00"
+   "last_ok": "2026-11-16T08:30:54.574389+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-16T08:00:56.322564+00:00"
+   "last_ok": "2026-11-16T08:30:54.574389+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-16T08:00:56.322564+00:00"
+   "last_ok": "2026-11-16T08:30:54.574389+00:00"
   }
  }
 }
