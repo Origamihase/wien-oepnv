@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261116-0028-F01, I20260925-0011, I20261116-0031, I20260909-0007, I20261116-0030-F01, I20261020-0029"
+    "trafficInfoNameList": "I20261116-0032-F01, I20260925-0011, I20261116-0031, I20261116-0033, I20260909-0007, I20261116-0030-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R3886-480, R1883-101, R1884-101, R1881-101, R318-437, R1882-101, R293-474, R1875-101, R1876-101, R1880-101, R2558-125, R1974-466, R1199-205, R500-101, R2959-415, R2915-401, R2904-401, R2910-401, R47-0, R17-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2380-627, R2379-627, R401-101, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R3886-480, R1883-101, R293-474, R318-437, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1884-101, R2558-125, R1974-466, R1199-205, R500-101, R2959-415, R2915-401, R47-0, R17-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -175,52 +175,6 @@
     "alertCauseId": 71,
     "attributes": {
      "relatedLineTypes": {
-      "41": "ptTram"
-     }
-    },
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "41: Falschparker"
-      }
-     }
-    ],
-    "location": "Währinger Straße 136",
-    "name": "I20261116-0028-F01",
-    "owner": "WL",
-    "parentName": "I20261116-0028",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 141,
-      "lineName": "41",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-16T16:43:00.000+0100",
-     "lastUpdate": "2026-11-16T16:43:00.000+0100",
-     "resume": "2026-11-16T16:43:00.000+0100",
-     "start": "2026-11-16T16:21:00.000+0100"
-    },
-    "title": "41: Falschparker"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
       "5": "ptTram"
      }
     },
@@ -306,6 +260,102 @@
      "start": "2026-11-16T17:17:00.000+0100"
     },
     "title": "U1: Betriebsstörung"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U6: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261116-0032-F01",
+    "owner": "WL",
+    "parentName": "I20261116-0032",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4619
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-11-16T18:16:00.000+0100",
+     "end": "2026-11-16T18:28:00.000+0100",
+     "lastUpdate": "2026-11-16T18:28:00.000+0100",
+     "resume": "2026-11-16T18:28:00.000+0100",
+     "start": "2026-11-16T18:14:00.000+0100"
+    },
+    "title": "U6: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Floridsdorf.",
+    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Floridsdorf.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Floridsdorf.</p>",
+       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz im Haltestellenbereich Floridsdorf.",
+       "title": "U6: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261116-0033",
+    "owner": "WL",
+    "parentName": "I20261116-0033",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4645
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T18:29:00.000+0100",
+     "lastUpdate": "2026-11-16T18:29:00.000+0100",
+     "start": "2026-11-16T18:28:00.000+0100"
+    },
+    "title": "U6: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -855,52 +905,6 @@
      "start": "2026-11-14T00:00:27.000+0100"
     },
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R2904-401",
-    "owner": "WL",
-    "parentName": "R2904-401",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1A"
-    ],
-    "relatedStops": [
-     2904
-    ],
-    "time": {
-     "end": "2026-11-16T18:30:00.000+0100",
-     "start": "2026-11-16T12:42:58.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R2910-401",
-    "owner": "WL",
-    "parentName": "R2910-401",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1A"
-    ],
-    "relatedStops": [
-     2910
-    ],
-    "time": {
-     "end": "2026-11-16T18:30:00.000+0100",
-     "start": "2026-11-16T12:55:29.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
