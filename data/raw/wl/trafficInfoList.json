@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261020-0029, I20261116-0012-F01, I20261116-0014"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261116-0014-F01, I20261020-0029"
    },
    {
     "id": 3,
@@ -171,54 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "60": "ptTram"
-     }
-    },
-    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "60: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261116-0012-F01",
-    "owner": "WL",
-    "parentName": "I20261116-0012",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 160,
-      "lineName": "60",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     1624
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-16T11:03:00.000+0100",
-     "lastUpdate": "2026-11-16T11:03:00.000+0100",
-     "resume": "2026-11-16T11:03:00.000+0100",
-     "start": "2026-11-16T10:34:00.000+0100"
-    },
-    "title": "60: Polizeieinsatz"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -226,18 +178,18 @@
       "U4": "ptMetro"
      }
     },
-    "description": "Linie U4: Fahrtbehinderung in Richtung Heiligenstadt. Voraussichtliche Dauer: 12:15 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Karlsplatz.",
-    "descriptionHTML": "<p>Linie U4:<br>Fahrtbehinderung in Richtung Heiligenstadt.</p><p>Voraussichtliche Dauer: 12:15 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Karlsplatz.</p>",
+    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie U4:<br>Fahrtbehinderung in Richtung Heiligenstadt.</p><p>Voraussichtliche Dauer: 12:15 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Karlsplatz.</p>",
-       "descriptionPlain": "Linie U4: Fahrtbehinderung in Richtung Heiligenstadt. Voraussichtliche Dauer: 12:15 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Karlsplatz.",
+       "descriptionHtml": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "U4: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261116-0014",
+    "name": "I20261116-0014-F01",
     "owner": "WL",
     "parentName": "I20261116-0014",
     "priority": "1",
@@ -259,8 +211,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-16T11:59:00.000+0100",
-     "lastUpdate": "2026-11-16T11:59:00.000+0100",
+     "created": "2026-11-16T12:07:00.000+0100",
+     "lastUpdate": "2026-11-16T12:07:00.000+0100",
+     "resume": "2026-11-16T12:07:00.000+0100",
      "start": "2026-11-16T11:59:00.000+0100"
     },
     "title": "U4: Schadhaftes Fahrzeug"
