@@ -1,158 +1,27 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
- "tickers": [
-  {
-   "key": "R1345-144|2026-11-16T15:54:17.000+0100|Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
-   "name": "R1345-144",
-   "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
-   "end": "2026-11-16T16:52:00.000+0100",
-   "incident": "I20261116-0024"
-  },
-  {
-   "key": "R1360-144|2026-11-16T15:54:17.000+0100|Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
-   "name": "R1360-144",
-   "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
-   "end": "2026-11-16T16:52:00.000+0100",
-   "incident": "I20261116-0024"
-  },
-  {
-   "key": "R1361-144|2026-11-16T15:54:17.000+0100|Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
-   "name": "R1361-144",
-   "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
-   "end": "2026-11-16T16:52:00.000+0100",
-   "incident": "I20261116-0024"
-  },
-  {
-   "key": "R1387-144|2026-11-16T16:05:48.000+0100|Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz",
-   "name": "R1387-144",
-   "title": "Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz",
-   "end": "2026-11-16T16:54:00.000+0100",
-   "incident": "I20261116-0024"
-  },
-  {
-   "key": "R217-144|2026-11-16T15:54:14.000+0100|Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
-   "name": "R217-144",
-   "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
-   "end": "2026-11-16T16:52:00.000+0100",
-   "incident": "I20261116-0024"
-  },
-  {
-   "key": "R218-144|2026-11-16T15:54:14.000+0100|Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
-   "name": "R218-144",
-   "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
-   "end": "2026-11-16T16:52:00.000+0100",
-   "incident": "I20261116-0024"
-  },
-  {
-   "key": "R219-144|2026-11-16T15:54:14.000+0100|Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
-   "name": "R219-144",
-   "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
-   "end": "2026-11-16T16:52:00.000+0100",
-   "incident": "I20261116-0024"
-  },
-  {
-   "key": "R241-144|2026-11-16T16:06:15.000+0100|Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz",
-   "name": "R241-144",
-   "title": "Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz",
-   "end": "2026-11-16T16:54:00.000+0100",
-   "incident": "I20261116-0024"
-  },
-  {
-   "key": "R242-144|2026-11-16T16:06:15.000+0100|Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz",
-   "name": "R242-144",
-   "title": "Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz",
-   "end": "2026-11-16T16:54:00.000+0100",
-   "incident": "I20261116-0024"
-  },
-  {
-   "key": "R244-144|2026-11-16T16:06:15.000+0100|Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz",
-   "name": "R244-144",
-   "title": "Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz",
-   "end": "2026-11-16T16:54:00.000+0100",
-   "incident": "I20261116-0024"
-  },
-  {
-   "key": "R245-144|2026-11-16T16:06:15.000+0100|Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz",
-   "name": "R245-144",
-   "title": "Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz",
-   "end": "2026-11-16T16:54:00.000+0100",
-   "incident": "I20261116-0024"
-  },
-  {
-   "key": "R276-144|2026-11-16T15:54:16.000+0100|Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
-   "name": "R276-144",
-   "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
-   "end": "2026-11-16T16:52:00.000+0100",
-   "incident": "I20261116-0024"
-  },
-  {
-   "key": "R277-144|2026-11-16T15:51:16.000+0100|Fahrtbehinderung\nFremder Verkehrsunfall",
-   "name": "R277-144",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
-   "end": "2026-11-16T16:50:00.000+0100",
-   "incident": "I20261116-0024"
-  },
-  {
-   "key": "R555-144|2026-11-16T15:54:15.000+0100|Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
-   "name": "R555-144",
-   "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
-   "end": "2026-11-16T16:52:00.000+0100",
-   "incident": "I20261116-0024"
-  }
- ],
+ "tickers": [],
  "owners": {
-  "R1345-144|2026-11-16T15:54:17.000+0100": {
-   "incident": "I20261116-0024",
-   "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz"
+  "R211-105|2026-11-16T16:49:49.000+0100": {
+   "incident": "I20261116-0030",
+   "title": "Falschparker\nBetrieb nur bis Josefstädter Straße "
   },
-  "R1360-144|2026-11-16T15:54:17.000+0100": {
-   "incident": "I20261116-0024",
-   "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz"
+  "R2185-127|2026-11-16T16:33:50.000+0100": {
+   "incident": "I20261116-0029",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
   },
-  "R1361-144|2026-11-16T15:54:17.000+0100": {
-   "incident": "I20261116-0024",
-   "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz"
+  "R2186-127|2026-11-16T16:33:50.000+0100": {
+   "incident": "I20261116-0029",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
   },
-  "R1387-144|2026-11-16T16:05:48.000+0100": {
-   "incident": "I20261116-0024",
-   "title": "Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz"
+  "R2188-127|2026-11-16T16:40:21.000+0100": {
+   "incident": "I20261116-0029",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
   },
-  "R217-144|2026-11-16T15:54:14.000+0100": {
-   "incident": "I20261116-0024",
-   "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz"
-  },
-  "R218-144|2026-11-16T15:54:14.000+0100": {
-   "incident": "I20261116-0024",
-   "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz"
-  },
-  "R219-144|2026-11-16T15:54:14.000+0100": {
-   "incident": "I20261116-0024",
-   "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz"
-  },
-  "R241-144|2026-11-16T16:06:15.000+0100": {
-   "incident": "I20261116-0024",
-   "title": "Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz"
-  },
-  "R242-144|2026-11-16T16:06:15.000+0100": {
-   "incident": "I20261116-0024",
-   "title": "Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz"
-  },
-  "R244-144|2026-11-16T16:06:15.000+0100": {
-   "incident": "I20261116-0024",
-   "title": "Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz"
-  },
-  "R245-144|2026-11-16T16:06:15.000+0100": {
-   "incident": "I20261116-0024",
-   "title": "Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz"
-  },
-  "R276-144|2026-11-16T15:54:16.000+0100": {
-   "incident": "I20261116-0024",
-   "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz"
-  },
-  "R277-144|2026-11-16T15:51:16.000+0100": {
-   "incident": "I20261116-0024",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  "R2343-127|2026-11-16T16:40:23.000+0100": {
+   "incident": "I20261116-0029",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
   },
   "R2904-401|2026-11-16T12:42:58.000+0100": {
    "incident": "I20261116-0016",
@@ -166,9 +35,69 @@
    "incident": "I20261116-0016",
    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
   },
-  "R555-144|2026-11-16T15:54:15.000+0100": {
-   "incident": "I20261116-0024",
-   "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz"
+  "R352-105|2026-11-16T16:49:51.000+0100": {
+   "incident": "I20261116-0030",
+   "title": "Falschparker\nBetrieb nur bis Josefstädter Straße "
+  },
+  "R353-105|2026-11-16T16:49:51.000+0100": {
+   "incident": "I20261116-0030",
+   "title": "Falschparker\nBetrieb nur bis Josefstädter Straße "
+  },
+  "R354-105|2026-11-16T16:49:51.000+0100": {
+   "incident": "I20261116-0030",
+   "title": "Falschparker\nBetrieb nur bis Josefstädter Straße "
+  },
+  "R355-105|2026-11-16T16:49:51.000+0100": {
+   "incident": "I20261116-0030",
+   "title": "Falschparker\nBetrieb nur bis Josefstädter Straße "
+  },
+  "R356-105|2026-11-16T16:49:51.000+0100": {
+   "incident": "I20261116-0030",
+   "title": "Falschparker\nBetrieb nur bis Josefstädter Straße "
+  },
+  "R357-105|2026-11-16T16:49:51.000+0100": {
+   "incident": "I20261116-0030",
+   "title": "Falschparker\nBetrieb nur bis Josefstädter Straße "
+  },
+  "R358-105|2026-11-16T16:49:51.000+0100": {
+   "incident": "I20261116-0030",
+   "title": "Falschparker\nBetrieb nur bis Josefstädter Straße "
+  },
+  "R361-105|2026-11-16T16:45:51.000+0100": {
+   "incident": "I20261116-0030",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R362-105|2026-11-16T16:45:51.000+0100": {
+   "incident": "I20261116-0030",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R364-105|2026-11-16T16:57:22.000+0100": {
+   "incident": "I20261116-0030",
+   "title": "Falschparker\nBetrieb ab Albertgasse"
+  },
+  "R366-105|2026-11-16T16:45:51.000+0100": {
+   "incident": "I20261116-0030",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R367-105|2026-11-16T16:57:22.000+0100": {
+   "incident": "I20261116-0030",
+   "title": "Falschparker\nBetrieb ab Albertgasse"
+  },
+  "R370-105|2026-11-16T16:57:22.000+0100": {
+   "incident": "I20261116-0030",
+   "title": "Falschparker\nBetrieb ab Albertgasse"
+  },
+  "R373-105|2026-11-16T16:57:22.000+0100": {
+   "incident": "I20261116-0030",
+   "title": "Falschparker\nBetrieb ab Albertgasse"
+  },
+  "R374-105|2026-11-16T16:57:22.000+0100": {
+   "incident": "I20261116-0030",
+   "title": "Falschparker\nBetrieb ab Albertgasse"
+  },
+  "R375-105|2026-11-16T16:57:22.000+0100": {
+   "incident": "I20261116-0030",
+   "title": "Falschparker\nBetrieb ab Albertgasse"
   },
   "R699-412|2026-11-16T16:18:18.000+0100": {
    "incident": "I20261116-0027",
