@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261116-0010-F02, I20260925-0011, I20260909-0007, I20261020-0029, I20261116-0012"
+    "trafficInfoNameList": "I20261116-0010-F02, I20260925-0011, I20260909-0007, I20261020-0029, I20261116-0012-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2343-125, R401-101, R2345-127, R2380-627, R2379-627, R2343-626, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2378-627, R3886-480, R1876-101, R318-437, R293-474, R1875-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2558-125, R1974-466, R1199-205, R500-101, R2959-415, R1625-160, R1607-160, R1630-160, R1629-160, R1631-160, R1639-160, R1638-160, R1637-160, R1636-160, R1635-160, R1634-160, R1633-160, R1632-160, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2343-125, R401-101, R2345-127, R2380-627, R2379-627, R2378-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R3886-480, R1880-101, R318-437, R293-474, R1875-101, R1876-101, R1881-101, R1882-101, R1883-101, R1884-101, R2558-125, R1974-466, R1199-205, R500-101, R2959-415, R1625-160, R1607-160, R1629-160, R1630-160, R1631-160, R1633-160, R1632-160, R1639-160, R1638-160, R1637-160, R1636-160, R1635-160, R1634-160, R1612-160, R1611-160, R1613-160, R1614-160, R1615-160, R1616-160, R1617-160, R1618-160, R1619-160, R1620-160, R1621-160, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -226,18 +226,18 @@
       "60": "ptTram"
      }
     },
-    "description": "Linie 60: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 11:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Rodaun.",
-    "descriptionHTML": "<p>Linie 60:<br>Fahrtbehinderung in Richtung Westbahnhof S U.</p><p>Voraussichtliche Dauer: 11:00 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Rodaun.</p>",
+    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 60:<br>Fahrtbehinderung in Richtung Westbahnhof S U.</p><p>Voraussichtliche Dauer: 11:00 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Rodaun.</p>",
-       "descriptionPlain": "Linie 60: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 11:00 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Rodaun.",
+       "descriptionHtml": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "60: Polizeieinsatz"
       }
      }
     ],
-    "name": "I20261116-0012",
+    "name": "I20261116-0012-F01",
     "owner": "WL",
     "parentName": "I20261116-0012",
     "priority": "1",
@@ -259,8 +259,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-16T10:35:00.000+0100",
-     "lastUpdate": "2026-11-16T10:35:00.000+0100",
+     "created": "2026-11-16T11:03:00.000+0100",
+     "lastUpdate": "2026-11-16T11:03:00.000+0100",
+     "resume": "2026-11-16T11:03:00.000+0100",
      "start": "2026-11-16T10:34:00.000+0100"
     },
     "title": "60: Polizeieinsatz"
@@ -310,6 +311,259 @@
      "start": "2026-11-16T10:37:15.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse",
+    "name": "R1611-160",
+    "owner": "WL",
+    "parentName": "R1611-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1611
+    ],
+    "time": {
+     "end": "2026-11-16T12:00:00.000+0100",
+     "start": "2026-11-16T11:01:17.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse",
+    "name": "R1612-160",
+    "owner": "WL",
+    "parentName": "R1612-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1612
+    ],
+    "time": {
+     "end": "2026-11-16T12:00:00.000+0100",
+     "start": "2026-11-16T11:01:17.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse",
+    "name": "R1613-160",
+    "owner": "WL",
+    "parentName": "R1613-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1613
+    ],
+    "time": {
+     "end": "2026-11-16T12:00:00.000+0100",
+     "start": "2026-11-16T11:01:17.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse",
+    "name": "R1614-160",
+    "owner": "WL",
+    "parentName": "R1614-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1614
+    ],
+    "time": {
+     "end": "2026-11-16T12:00:00.000+0100",
+     "start": "2026-11-16T11:01:17.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse",
+    "name": "R1615-160",
+    "owner": "WL",
+    "parentName": "R1615-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1615
+    ],
+    "time": {
+     "end": "2026-11-16T12:00:00.000+0100",
+     "start": "2026-11-16T11:01:17.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse",
+    "name": "R1616-160",
+    "owner": "WL",
+    "parentName": "R1616-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1616
+    ],
+    "time": {
+     "end": "2026-11-16T12:00:00.000+0100",
+     "start": "2026-11-16T11:01:17.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse",
+    "name": "R1617-160",
+    "owner": "WL",
+    "parentName": "R1617-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1617
+    ],
+    "time": {
+     "end": "2026-11-16T12:00:00.000+0100",
+     "start": "2026-11-16T11:01:17.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse",
+    "name": "R1618-160",
+    "owner": "WL",
+    "parentName": "R1618-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1618
+    ],
+    "time": {
+     "end": "2026-11-16T12:00:00.000+0100",
+     "start": "2026-11-16T11:01:17.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse",
+    "name": "R1619-160",
+    "owner": "WL",
+    "parentName": "R1619-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1619
+    ],
+    "time": {
+     "end": "2026-11-16T12:00:00.000+0100",
+     "start": "2026-11-16T11:01:17.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse",
+    "name": "R1620-160",
+    "owner": "WL",
+    "parentName": "R1620-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1620
+    ],
+    "time": {
+     "end": "2026-11-16T12:00:00.000+0100",
+     "start": "2026-11-16T11:01:17.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse",
+    "name": "R1621-160",
+    "owner": "WL",
+    "parentName": "R1621-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1621
+    ],
+    "time": {
+     "end": "2026-11-16T12:00:00.000+0100",
+     "start": "2026-11-16T11:01:17.000+0100"
+    },
+    "title": "Polizeieinsatz\nBetrieb nur bis Maurer-Lange-Gasse"
    },
    {
     "alertCause": "undefined alert cause",
