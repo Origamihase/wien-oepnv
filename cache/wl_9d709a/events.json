@@ -398,6 +398,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "68A: Geänderte Linienführung",
+    "description": "<h2>Netzänderung</h2><p>Die Linienführung der Linie 68A wird im Bereich der Filmteichstraße angepasst.</p><p><strong><u>Zeitpunkt:</u></strong><br>Ab Montag, 23. November 2026, 04:30 Uhr.</p><p><strong><u>Neue Fahrstrecke:</u></strong><br>Die Streckenführung in der Filmteichstraße wird auf Grund verkehrsorganisatorischer Umgestaltung geändert (siehe Skizze).</p><p><u>Nicht mehr bediente Haltestellen in Richtung Reumannplatz U:</u><br>- Hederichgasse (Filmteichstraße 2a-4)<br>- Burgenlandgasse (Filmteichstraße 20 bis Burgenlandgasse 107)</p><p><u>Neu bediente Haltestellen in Richtung Reumannplatz U:</u><br>- Kurpark Nordeingang (vormals Laaer Berg, Kurpark Nordeingang)</p><p><u>Umbenennung von Haltestellen:</u><br>Alt: Laaer Berg, Kurpark Nordeingang<br>Neu: Kurpark Nordeingang</p><p>Alt: Laaer Berg, Kurpark Nordosteingang<br>Neu: Laaer Berg</p><p><strong><u>Skizze:</u></strong></p><p><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/68A_Grafik.png\" alt=\"Skizze\"></p>",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e492cfa06a0bbcc7e2c6f1233068abbf56eea121924fc72efc72f30f7ef56e29",
+    "pubDate": "2026-11-16T14:16:00+01:00",
+    "starts_at": "2026-11-23T00:00:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|hinweis|L=68A|D=2026-11-23|TK=68a geänderte linienführung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "72A: Kraftwerk Simmering",
     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 72A in Richtung Hasenleiten</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Kraftwerk Simmering</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> 1. Haidequerstra&szlig;e 2</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;</span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">1. Haidequerstra&szlig;e 510</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 22. September 2026, etwa 08:00 Uhr auf Dauer von etwa drei Monaten</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Kabelarbeiten</span></p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -650,8 +662,24 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "18: Rettungseinsatz Betrieb nur bis Ernst-H.-Stadion",
+    "description": "Linie 18: Betrieb nur zwischen Burggasse, Stadthalle U und Ernst-Happel-Stadion. Voraussichtliche Dauer: 14:50 Uhr. Grund: Rettungseinsatz im Bereich Dr.-Natterer-Gasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
+    "pubDate": "2026-11-16T14:19:00+01:00",
+    "starts_at": "2026-11-16T14:23:08+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=18|D=2026-11-16|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261116-0019"
+    ],
+    "_incident_start": "2026-11-16T14:19:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "1A: Demonstration",
-    "description": "Derzeit ist ein Betrieb der Linie 1A nicht möglich.Ersatz: U-Bahnlinien.Voraussichtliche Dauer: Nicht absehbar.Grund: Demonstration im Bereich Strauchgasse.",
+    "description": "Linie 1A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "d8fe6fd0955a0fc75185b8b41c44d447371100b92c53bcc73cae08c5fc350ae4",
     "pubDate": "2026-11-16T12:39:00+01:00",
@@ -811,11 +839,11 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "25: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 25: Fahrtbehinderung Richtung Aspern Nord S U. Voraussichtliche Dauer: 14:20 Uhr. Grund: Rettungseinsatz im Bereich Kagran.",
+    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "7432174b0dd142a4728e8ba0144127ca655d49ae49e269a9660834d572eca3ab",
     "pubDate": "2026-11-16T13:55:00+01:00",
-    "starts_at": "2026-11-16T14:00:05+01:00",
+    "starts_at": "2026-11-16T14:01:08+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=25|D=2026-11-16|TK=rettungseinsatz",
     "_wl_ids": [

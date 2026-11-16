@@ -6,7 +6,7 @@
     "name": "aktuelles",
     "refPoiCategoryGroupId": 61,
     "title": "Aktuelles",
-    "trafficInfoNameList": "N20260209-0049, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260702-5991, N20260813-6092, N20260808-6084, N20260808-6083, N20260817-6129, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260903-6175, N20260908-6177, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261006-6258, N20261007-6260, N20261007-6262, N20261009-6270, N20261021-0001, N20261021-0003, N20261023-0001, N20261102-0001, N20261104-0001, N20261104-0002, N20261104-0003, N20261104-0004, N20261105-0001, N20261105-0002, N20261022-0005, N20261106-0002, N20261111-0001, N20261111-0003, N20261111-0004, N20261111-0005, N20261111-0006, N20261111-0007, N20261112-0001, N20261113-0002, N20261012-6272"
+    "trafficInfoNameList": "N20260209-0049, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260702-5991, N20260813-6092, N20260808-6084, N20260808-6083, N20260817-6129, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260903-6175, N20260908-6177, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261006-6258, N20261007-6260, N20261007-6262, N20261009-6270, N20261021-0001, N20261021-0003, N20261023-0001, N20261102-0001, N20261104-0001, N20261104-0002, N20261104-0003, N20261104-0004, N20261105-0001, N20261105-0002, N20261022-0005, N20261106-0002, N20261111-0001, N20261111-0003, N20261111-0004, N20261111-0005, N20261111-0006, N20261111-0007, N20261112-0001, N20261113-0002, N20261012-6272, N20261116-0001"
    },
    {
     "id": -1,
@@ -2737,6 +2737,49 @@
      "validFrom": "2026-11-16T08:00:00.000+0100"
     },
     "title": "15A: Bhf. Meidling S U, Schedifkaplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "<h2>Netzänderung</h2><p>Die Linienführung der Linie 68A wird im Bereich der Filmteichstraße angepasst.</p><p><strong><u>Zeitpunkt:</u></strong><br>Ab Montag, 23. November 2026, 04:30 Uhr.</p><p><strong><u>Neue Fahrstrecke:</u></strong><br>Die Streckenführung in der Filmteichstraße wird auf Grund verkehrsorganisatorischer Umgestaltung geändert (siehe Skizze).</p><p><u>Nicht mehr bediente Haltestellen in Richtung Reumannplatz U:</u><br>- Hederichgasse (Filmteichstraße 2a-4)<br>- Burgenlandgasse (Filmteichstraße 20 bis Burgenlandgasse 107)</p><p><u>Neu bediente Haltestellen in Richtung Reumannplatz U:</u><br>- Kurpark Nordeingang (vormals Laaer Berg, Kurpark Nordeingang)</p><p><u>Umbenennung von Haltestellen:</u><br>Alt: Laaer Berg, Kurpark Nordeingang<br>Neu: Kurpark Nordeingang</p><p>Alt: Laaer Berg, Kurpark Nordosteingang<br>Neu: Laaer Berg</p><p><strong><u>Skizze:</u></strong></p><p><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/68A_Grafik.png\" alt=\"Skizze\"></p>",
+    "id": "N20261116-0001",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<h2>Netzänderung</h2><p>Die Linienführung der Linie 68A wird im Bereich der Filmteichstraße angepasst.</p><p><strong><u>Zeitpunkt:</u></strong><br>Ab Montag, 23. November 2026, 04:30 Uhr.</p><p><strong><u>Neue Fahrstrecke:</u></strong><br>Die Streckenführung in der Filmteichstraße wird auf Grund verkehrsorganisatorischer Umgestaltung geändert (siehe Skizze).</p><p><u>Nicht mehr bediente Haltestellen in Richtung Reumannplatz U:</u><br>- Hederichgasse (Filmteichstraße 2a-4)<br>- Burgenlandgasse (Filmteichstraße 20 bis Burgenlandgasse 107)</p><p><u>Neu bediente Haltestellen in Richtung Reumannplatz U:</u><br>- Kurpark Nordeingang (vormals Laaer Berg, Kurpark Nordeingang)</p><p><u>Umbenennung von Haltestellen:</u><br>Alt: Laaer Berg, Kurpark Nordeingang<br>Neu: Kurpark Nordeingang</p><p>Alt: Laaer Berg, Kurpark Nordosteingang<br>Neu: Laaer Berg</p><p><strong><u>Skizze:</u></strong></p><p><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/68A_Grafik.png\" alt=\"Skizze\"></p>",
+       "descriptionPlain": "NetzänderungDie Linienführung der Linie 68A wird im Bereich der Filmteichstraße angepasst. Zeitpunkt: Ab Montag, 23. November 2026, 04:30 Uhr. Neue Fahrstrecke: Die Streckenführung in der Filmteichstraße wird auf Grund verkehrsorganisatorischer Umgestaltung geändert (siehe Skizze). Nicht mehr bediente Haltestellen in Richtung Reumannplatz U: - Hederichgasse (Filmteichstraße 2a-4) - Burgenlandgasse (Filmteichstraße 20 bis Burgenlandgasse 107) Neu bediente Haltestellen in Richtung Reumannplatz U: - Kurpark Nordeingang (vormals Laaer Berg, Kurpark Nordeingang) Umbenennung von Haltestellen: Alt: Laaer Berg, Kurpark Nordeingang Neu: Kurpark Nordeingang Alt: Laaer Berg, Kurpark Nordosteingang Neu: Laaer Berg Skizze:",
+       "title": "68A: Geänderte Linienführung ab 23.11.2026"
+      }
+     }
+    ],
+    "location": {
+     "properties": {
+      "attributes": {},
+      "coordName": "WGS84",
+      "type": "news"
+     },
+     "type": "Feature"
+    },
+    "name": "N20261116-0001",
+    "reasonId": 258,
+    "reasonName": "Netzänderung",
+    "refPoiCategoryId": 13296,
+    "relatedLines": [
+     "68A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 468,
+      "lineName": "68A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "time": {
+     "end": "2026-11-30T23:59:00.000+0100",
+     "start": "2026-11-16T14:16:00.000+0100",
+     "validFrom": "2026-11-23T04:30:00.000+0100"
+    },
+    "title": "68A: Geänderte Linienführung ab 23.11.2026"
    },
    {
     "alertCause": "undefined alert cause",

@@ -3,9 +3,29 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
+  "R2374-125|2026-11-16T14:01:07.000+0100": {
+   "incident": "I20261116-0018",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R2375-125|2026-11-16T14:01:07.000+0100": {
+   "incident": "I20261116-0018",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R2422-118|2026-11-16T14:21:39.000+0100": {
+   "incident": "I20261116-0019",
+   "title": "Rettungseinsatz\nBetrieb ab Ernst-H.-Stadion"
+  },
   "R2556-125|2026-11-16T14:00:05.000+0100": {
    "incident": "I20261116-0018",
    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R2619-118|2026-11-16T14:22:38.000+0100": {
+   "incident": "I20261116-0019",
+   "title": "Rettungseinsatz\nBetrieb nur bis Ernst-H.-Stadion"
+  },
+  "R2632-118|2026-11-16T14:22:38.000+0100": {
+   "incident": "I20261116-0019",
+   "title": "Rettungseinsatz\nBetrieb nur bis Ernst-H.-Stadion"
   },
   "R2634-125|2026-11-16T14:00:05.000+0100": {
    "incident": "I20261116-0018",
@@ -22,6 +42,46 @@
   "R2915-401|2026-11-16T12:36:57.000+0100": {
    "incident": "I20261116-0016",
    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R293-118|2026-11-16T14:22:37.000+0100": {
+   "incident": "I20261116-0019",
+   "title": "Rettungseinsatz\nBetrieb nur bis Ernst-H.-Stadion"
+  },
+  "R3068-125|2026-11-16T14:01:08.000+0100": {
+   "incident": "I20261116-0018",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R3191-125|2026-11-16T14:01:08.000+0100": {
+   "incident": "I20261116-0018",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R3192-125|2026-11-16T14:01:08.000+0100": {
+   "incident": "I20261116-0018",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R3193-125|2026-11-16T14:01:08.000+0100": {
+   "incident": "I20261116-0018",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R3602-118|2026-11-16T14:22:38.000+0100": {
+   "incident": "I20261116-0019",
+   "title": "Rettungseinsatz\nBetrieb nur bis Ernst-H.-Stadion"
+  },
+  "R3603-118|2026-11-16T14:22:38.000+0100": {
+   "incident": "I20261116-0019",
+   "title": "Rettungseinsatz\nBetrieb nur bis Ernst-H.-Stadion"
+  },
+  "R3605-118|2026-11-16T14:23:08.000+0100": {
+   "incident": "I20261116-0019",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R3606-118|2026-11-16T14:21:38.000+0100": {
+   "incident": "I20261116-0019",
+   "title": "Rettungseinsatz\nBetrieb ab Ernst-H.-Stadion"
+  },
+  "R835-118|2026-11-16T14:22:37.000+0100": {
+   "incident": "I20261116-0019",
+   "title": "Rettungseinsatz\nBetrieb nur bis Ernst-H.-Stadion"
   }
  }
 }
