@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-16T16:01:00.481054+00:00",
- "built": "2026-11-16T17:00:46+01:00",
+ "updated": "2026-11-16T16:30:48.806194+00:00",
+ "built": "2026-11-16T17:30:38+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-16T17:00:46+01:00",
+  "built": "2026-11-16T17:30:38+01:00",
   "items": [
+   {
+    "title": "U1: Betriebsstörung",
+    "time_line": "Seit 17:17"
+   },
    {
     "title": "5: Falschparker",
     "time_line": "Seit 16:45"
@@ -21,57 +25,33 @@
     "time_line": "Seit 16:12"
    },
    {
-    "title": "9/42: Falschparker",
-    "time_line": "Seit 16:27"
-   },
-   {
     "title": "40/41: Falschparker",
     "time_line": "Seit 16:21"
-   },
-   {
-    "title": "12A: Falschparker",
-    "time_line": "Seit 16:18"
    },
    {
     "title": "16A/17A/67A/67B: Störung an einem Bahnübergang",
     "time_line": "Seit 16:16"
    },
    {
-    "title": "44: Fremder Verkehrsunfall",
-    "time_line": "Seit 15:51"
+    "title": "1A: Polizeieinsatz",
+    "time_line": "Seit 12:36"
    },
    {
-    "title": "60: Rettungseinsatz",
-    "time_line": "Seit 14:45"
+    "title": "15A: Busse halten Wurmbstraße 40 - 42",
+    "time_line": "Heute"
    },
    {
-    "title": "18: Rettungseinsatz",
-    "time_line": "Seit 14:19"
+    "title": "15A: Bhf. Meidling, Schedifkaplatz",
+    "time_line": "Seit heute"
+   },
+   {
+    "title": "8A: Küniglberg, ORF Zentrum",
+    "time_line": "Bis 24.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-09T16:01:27.010829+00:00",
-   "raw": {
-    "wl-stoerungen": 56,
-    "wl-hinweise": 98,
-    "oebb": 183,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 27,
-    "oebb": 157,
-    "baustellen": 64
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 8,
-    "wl": 83
-   }
-  },
   {
    "t": "2026-11-09T16:31:07.660705+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 6,
     "wl": 98
    }
+  },
+  {
+   "t": "2026-11-16T16:30:48.806194+00:00",
+   "raw": {
+    "wl-stoerungen": 73,
+    "wl-hinweise": 96,
+    "oebb": 174,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 28,
+    "oebb": 150,
+    "baustellen": 60
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 92
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-16T16:01:00.481054+00:00"
+   "last_ok": "2026-11-16T16:30:48.806194+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-16T16:01:00.481054+00:00"
+   "last_ok": "2026-11-16T16:30:48.806194+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-16T16:01:00.481054+00:00"
+   "last_ok": "2026-11-16T16:30:48.806194+00:00"
   }
  }
 }
