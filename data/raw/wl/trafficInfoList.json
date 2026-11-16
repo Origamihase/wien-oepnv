@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261116-0036-F02, I20261020-0029"
+    "trafficInfoNameList": "I20261116-0038-F01, I20260925-0011, I20260909-0007, I20261116-0036-F02, I20261020-0029"
    },
    {
     "id": 3,
@@ -217,6 +217,54 @@
      "start": "2026-11-16T21:02:00.000+0100"
     },
     "title": "O: Polizeieinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U3: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261116-0038-F01",
+    "owner": "WL",
+    "parentName": "I20261116-0038",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4915
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T23:03:00.000+0100",
+     "lastUpdate": "2026-11-16T23:03:00.000+0100",
+     "resume": "2026-11-16T23:03:00.000+0100",
+     "start": "2026-11-16T23:00:00.000+0100"
+    },
+    "title": "U3: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
