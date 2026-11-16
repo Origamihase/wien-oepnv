@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_520, ftazW_114, ftazW_22, ftazW_355, ftazW_483, ftazW_1017118, ftazW_371, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_112, ftazW_1017119, ftazW_599, ftazW_23, ftazW_370, ftazW_1018061, ftazW_393, ftazW_1032342, ftazW_1017120, ftazW_283, ftazW_485, ftazW_369, ftazW_17, ftazW_4, ftazW_18, ftazW_484, ftazW_368, ftazW_15, ftazW_1032355, ftazW_5, ftazW_603, ftazW_209, ftazW_1017121, ftazW_19, ftazW_41"
+    "trafficInfoNameList": "ftazW_371, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_112, ftazW_1017119, ftazW_599, ftazW_23, ftazW_370, ftazW_1018061, ftazW_1032342, ftazW_1017120, ftazW_283, ftazW_485, ftazW_369, ftazW_17, ftazW_4, ftazW_18, ftazW_484, ftazW_368, ftazW_15, ftazW_1032355, ftazW_5, ftazW_603, ftazW_209, ftazW_1017121, ftazW_19, ftazW_41"
    }
   ],
   "poiCategoryGroups": [
@@ -2880,45 +2880,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "16.11.2026 05:15",
-     "ausVon": "16.11.2026 01:15",
-     "location": "U1 Mittelbahnsteig - Ausgang Baldassgasse",
-     "rbls": [
-      4183,
-      4188
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Aderklaaer Straße",
-     "status": "geplante Wartung",
-     "towards": "U1 beide Richtungen"
-    },
-    "description": "U1 Mittelbahnsteig - Ausgang Baldassgasse",
-    "elevatorId": "AK 02",
-    "name": "ftazW_1017118",
-    "parentName": "ftazW_1017118",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4183,
-     4188
-    ],
-    "time": {
-     "end": "2026-11-16T05:15:00.000+0100",
-     "start": "2026-11-16T01:15:00.000+0100"
-    },
-    "title": "Aderklaaer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "17.11.2026 00:45",
      "ausVon": "16.11.2026 20:45",
      "location": "U1 Mittelbahnsteig - Ausgang Dopschstraße",
@@ -3272,45 +3233,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "16.11.2026 05:15",
-     "ausVon": "16.11.2026 01:15",
-     "location": "U1 Mittelbahnsteig - Zwischengeschoss Zugang U4",
-     "rbls": [
-      4113,
-      4116
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Schwedenplatz",
-     "status": "geplante Wartung",
-     "towards": "U1 beide Richtungen"
-    },
-    "description": "U1 Mittelbahnsteig - Zwischengeschoss Zugang U4",
-    "elevatorId": "SP 03",
-    "name": "ftazW_114",
-    "parentName": "ftazW_114",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4113,
-     4116
-    ],
-    "time": {
-     "end": "2026-11-16T05:15:00.000+0100",
-     "start": "2026-11-16T01:15:00.000+0100"
-    },
-    "title": "Schwedenplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "18.11.2026 05:15",
      "ausVon": "18.11.2026 01:15",
      "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Urban Loritz Platz",
@@ -3495,43 +3417,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "16.11.2026 05:15",
-     "ausVon": "16.11.2026 01:15",
-     "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Gumpendorfer Straße",
-     "rbls": [
-      4618
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Gumpendorfer Straße",
-     "status": "geplante Wartung",
-     "towards": "U6 Floridsdorf"
-    },
-    "description": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Gumpendorfer Straße",
-    "elevatorId": "GU 01",
-    "name": "ftazW_22",
-    "parentName": "ftazW_22",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4618
-    ],
-    "time": {
-     "end": "2026-11-16T05:15:00.000+0100",
-     "start": "2026-11-16T01:15:00.000+0100"
-    },
-    "title": "Gumpendorfer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "17.11.2026 05:15",
      "ausVon": "17.11.2026 01:15",
      "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Sechshauserstraße",
@@ -3603,45 +3488,6 @@
      "start": "2026-11-17T01:15:00.000+0100"
     },
     "title": "Kagran"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "16.11.2026 05:15",
-     "ausVon": "16.11.2026 01:15",
-     "location": "U3 Bahnsteig Richtung Ottakring - U3 Bahnsteig Richtung Simmering - Zwischengeschoss Aufgang Stiftgasse/Kirchengasse",
-     "rbls": [
-      4918,
-      4923
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Neubaugasse",
-     "status": "geplante Wartung",
-     "towards": "U3 Ottakring, U3 Simmering"
-    },
-    "description": "U3 Bahnsteig Richtung Ottakring - U3 Bahnsteig Richtung Simmering - Zwischengeschoss Aufgang Stiftgasse/Kirchengasse",
-    "elevatorId": "MA 04",
-    "name": "ftazW_355",
-    "parentName": "ftazW_355",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4918,
-     4923
-    ],
-    "time": {
-     "end": "2026-11-16T05:15:00.000+0100",
-     "start": "2026-11-16T01:15:00.000+0100"
-    },
-    "title": "Neubaugasse"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3789,40 +3635,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "17.11.2026 05:15",
-     "ausVon": "17.11.2026 01:15",
-     "location": "Passage - Ausgang Äußere Mariahilferstraße",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U6",
-      "U3"
-     ],
-     "station": "Westbahnhof",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Passage - Ausgang Äußere Mariahilferstraße",
-    "elevatorId": "WS 10",
-    "name": "ftazW_393",
-    "parentName": "ftazW_393",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6",
-     "U3"
-    ],
-    "time": {
-     "end": "2026-11-17T05:15:00.000+0100",
-     "start": "2026-11-17T01:15:00.000+0100"
-    },
-    "title": "Westbahnhof"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "18.11.2026 00:45",
      "ausVon": "17.11.2026 20:45",
      "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Lazarettgasse, Kinderspitalgasse",
@@ -3892,43 +3704,6 @@
      "start": "2026-11-18T20:45:00.000+0100"
     },
     "title": "Kaisermühlen-VIC"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "16.11.2026 05:15",
-     "ausVon": "16.11.2026 01:15",
-     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Erlaaer Straße / Ostrandstraße",
-     "rbls": [
-      4632
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Erlaaer Straße",
-     "status": "geplante Wartung",
-     "towards": "U6 Siebenhirten"
-    },
-    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Erlaaer Straße / Ostrandstraße",
-    "elevatorId": "ES 02",
-    "name": "ftazW_483",
-    "parentName": "ftazW_483",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4632
-    ],
-    "time": {
-     "end": "2026-11-16T05:15:00.000+0100",
-     "start": "2026-11-16T01:15:00.000+0100"
-    },
-    "title": "Erlaaer Straße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -4040,43 +3815,6 @@
      "start": "2026-11-18T20:45:00.000+0100"
     },
     "title": "Alser Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "16.11.2026 05:15",
-     "ausVon": "16.11.2026 01:15",
-     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Engerthstraße",
-     "rbls": [
-      4648
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Handelskai",
-     "status": "geplante Wartung",
-     "towards": "U6 Siebenhirten"
-    },
-    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Engerthstraße",
-    "elevatorId": "HK 07",
-    "name": "ftazW_520",
-    "parentName": "ftazW_520",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4648
-    ],
-    "time": {
-     "end": "2026-11-16T05:15:00.000+0100",
-     "start": "2026-11-16T01:15:00.000+0100"
-    },
-    "title": "Handelskai"
    },
    {
     "alertCause": "undefined alert cause",
