@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20261116-0031, I20261116-0033, I20260909-0007, I20261020-0029, I20261116-0030-F01"
+    "trafficInfoNameList": "I20261116-0034, I20260925-0011, I20261116-0031, I20261116-0033, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2379-627, R401-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2345-127, R2380-627, R3886-480, R1881-101, R1876-101, R1880-101, R1882-101, R1883-101, R1884-101, R318-437, R293-474, R1875-101, R2558-125, R1974-466, R1199-205, R500-101, R2959-415, R47-0, R17-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2379-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R401-101, R2345-127, R2380-627, R3886-480, R1882-101, R1884-101, R318-437, R293-474, R1875-101, R1876-101, R1880-101, R1881-101, R1883-101, R2558-125, R1974-466, R1199-205, R500-101, R2959-415, R47-0, R17-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,52 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "5": "ptTram"
-     }
-    },
-    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "5: Falschparker"
-      }
-     }
-    ],
-    "location": "Kaiserstraße",
-    "name": "I20261116-0030-F01",
-    "owner": "WL",
-    "parentName": "I20261116-0030",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 105,
-      "lineName": "5",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-16T17:19:00.000+0100",
-     "end": "2026-11-16T19:48:00.000+0100",
-     "lastUpdate": "2026-11-16T19:00:00.000+0100",
-     "start": "2026-11-16T16:48:00.000+0100"
-    },
-    "title": "5: Falschparker"
-   },
-   {
     "alertCause": "miscellaneous",
     "alertCauseId": 137,
     "attributes": {
@@ -307,6 +261,51 @@
      "start": "2026-11-16T18:28:00.000+0100"
     },
     "title": "U6: Rettungseinsatz"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U4": "ptMetro"
+     }
+    },
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U4: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261116-0034",
+    "owner": "WL",
+    "parentName": "I20261116-0034",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 304,
+      "lineName": "U4",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T19:36:00.000+0100",
+     "lastUpdate": "2026-11-16T19:36:00.000+0100",
+     "resume": "2026-11-16T19:36:00.000+0100",
+     "start": "2026-11-16T19:36:00.000+0100"
+    },
+    "title": "U4: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",
