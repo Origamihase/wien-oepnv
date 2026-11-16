@@ -8,8 +8,47 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Mon, 16 Nov 2026 08:00:48 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 16 Nov 2026 08:30:37 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[5: Police operation]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">8f92fb936b7c740f0f8bc713737d2ddddc0101ed1972011221685e252f6f06f4</guid>
+      <pubDate>Mon, 16 Nov 2026 08:15:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 16 Nov 2026 08:15:00 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 16 Nov 2026 08:19:01 +0100</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 08:15]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 08:15]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: Delays]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
+      <pubDate>Mon, 16 Nov 2026 08:06:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 16 Nov 2026 08:06:00 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 16 Nov 2026 08:06:00 +0100</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 08:06]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 08:06]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[40A: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">502438d7745d32b9aed77971dc1aa753d1ce24a0e28a7b386725a3175a6cf1c8</guid>
+      <pubDate>Mon, 16 Nov 2026 08:00:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 16 Nov 2026 08:00:00 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 16 Nov 2026 08:01:01 +0100</ext:starts_at>
+      <description>Service from Linneplatz. After a service obstruction, there are irregular intervals. [Since 08:01]</description>
+      <content:encoded><![CDATA[Service from Linneplatz. After a service obstruction, there are irregular intervals.<br/>[Since 08:01]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[60: Defective vehicle]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -22,6 +61,20 @@
       <ext:starts_at>Mon, 16 Nov 2026 06:18:00 +0100</ext:starts_at>
       <description>After a service obstruction, there are irregular intervals. [Since 06:18]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 06:18]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[15A: Buses stop at Wurmbstraße 40 - 42]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">9d0eacf1b428f84d17e0b774927d1841cef94349c634717540acf1759e2a0632</guid>
+      <pubDate>Mon, 16 Nov 2026 08:16:31 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 16 Nov 2026 08:30:37 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 16 Nov 2026 08:16:31 +0100</ext:starts_at>
+      <ext:ends_at>Mon, 16 Nov 2026 23:59:59 +0100</ext:ends_at>
+      <description>[Today]</description>
+      <content:encoded><![CDATA[[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[15A: Bhf. Meidling, Schedifkaplatz]]></title>
@@ -94,63 +147,6 @@
       <georss:point>48.208780 16.510505</georss:point>
       <description>Lannesstraße before Arztgasse → Arztgasse 107 - 109. Stop relocation of line 98A towards Aspernstraße. Reason: conversion of the stop. [Since today]</description>
       <content:encoded><![CDATA[Lannesstraße before Arztgasse → Arztgasse 107 - 109. Stop relocation of line 98A towards Aspernstraße. Reason: conversion of the stop.<br/>[Since today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Viehmarktgasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">209cb31a62c904eb68902d303a11723d91ea5136757eeb08ef5b96f69caa1c73</guid>
-      <pubDate>Thu, 05 Nov 2026 15:47:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 05 Nov 2026 15:47:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 16 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.190488 16.401090</georss:point>
-      <description>Landstraßer Hauptstraße 148 before Schlachthausgasse → Landstraßer Hauptstraße opposite 173-175. Stop relocation of line 74A towards St. Marx. Reason: roadworks. [Since today]</description>
-      <content:encoded><![CDATA[Landstraßer Hauptstraße 148 before Schlachthausgasse → Landstraßer Hauptstraße opposite 173-175. Stop relocation of line 74A towards St. Marx. Reason: roadworks.<br/>[Since today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/71/D: Rathausplatz, Burgtheater]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">8b53fb5a344796ca3ed900926c78ca0ae73b8735e3dc3859a1286705933af314</guid>
-      <pubDate>Fri, 06 Nov 2026 06:00:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 06 Nov 2026 06:00:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 13 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Sun, 20 Dec 2026 22:30:00 +0100</ext:ends_at>
-      <georss:point>48.210445 16.360657</georss:point>
-      <description>Stop closure of lines D, 1 and 71 in both directions, on Fridays, Saturdays, Sundays and on December 08 each from about 15:00 to 22:30. … [Until 20.12.]</description>
-      <content:encoded><![CDATA[Stop closure of lines D, 1 and 71 in both directions, on Fridays, Saturdays, Sundays and on December 08 each from about 15:00 to 22:30. …<br/>[Until 20.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[65A: Triester Straße, Rossakgasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">213d51762c51c0889ab9a4a34328e7b3245279259b35acb8575e9a76ec72d882</guid>
-      <pubDate>Wed, 11 Nov 2026 09:38:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 11 Nov 2026 09:38:00 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 11 Nov 2026 09:38:00 +0100</ext:starts_at>
-      <georss:point>48.145871 16.332540</georss:point>
-      <description>Triester Straße 164 → Triester Straße 162. Stop relocation of line 65A towards Wienerberg City (Inzersdorf). Reason: roadworks. [Since 11.11.]</description>
-      <content:encoded><![CDATA[Triester Straße 164 → Triester Straße 162. Stop relocation of line 65A towards Wienerberg City (Inzersdorf). Reason: roadworks.<br/>[Since 11.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[66A: Buses stop at Salvatorianerplatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">f420c43dafa493d7cd5e855cdebe7e0afc8fe4ff957d33772f0fd3916247a417</guid>
-      <pubDate>Mon, 16 Nov 2026 04:40:10 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 11 Nov 2026 05:00:35 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 16 Nov 2026 04:40:10 +0100</ext:starts_at>
-      <ext:ends_at>Tue, 17 Nov 2026 01:00:00 +0100</ext:ends_at>
-      <description>Reason: construction works. [Until Tue 17.11.]</description>
-      <content:encoded><![CDATA[Reason: construction works.<br/>[Until Tue 17.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

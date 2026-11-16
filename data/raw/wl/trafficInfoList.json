@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261116-0006-F01"
+    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261116-0006-F01, I20261116-0007-F01, I20261116-0008, I20261116-0009-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2380-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2379-627, R2373-125, R2373-127, R2373-126, R401-101, R2345-127, R3886-480, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R318-437, R293-474, R2558-125, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2380-627, R2345-127, R401-101, R2378-627, R2343-125, R2343-626, R2379-627, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R3886-480, R1884-101, R1883-101, R318-437, R293-474, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R2558-125, R1974-466, R1199-205, R500-101, R1282-440, R2959-415, R366-105, R362-105, R361-105, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -219,6 +219,145 @@
     "title": "60: Schadhaftes Fahrzeug"
    },
    {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "40A": "ptBusCity"
+     }
+    },
+    "description": "Linie 40A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 40A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 40A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 40A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "40A: Falschparker"
+      }
+     }
+    ],
+    "location": "Dänenstraße 4",
+    "name": "I20261116-0007-F01",
+    "owner": "WL",
+    "parentName": "I20261116-0007",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "40A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 440,
+      "lineName": "40A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T08:22:00.000+0100",
+     "lastUpdate": "2026-11-16T08:22:00.000+0100",
+     "resume": "2026-11-16T08:22:00.000+0100",
+     "start": "2026-11-16T08:00:00.000+0100"
+    },
+    "title": "40A: Falschparker"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U3: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261116-0008",
+    "owner": "WL",
+    "parentName": "I20261116-0008",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T08:06:00.000+0100",
+     "lastUpdate": "2026-11-16T08:06:00.000+0100",
+     "resume": "2026-11-16T08:06:00.000+0100",
+     "start": "2026-11-16T08:06:00.000+0100"
+    },
+    "title": "U3: Verspätungen"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "5": "ptTram"
+     }
+    },
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "5: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261116-0009-F01",
+    "owner": "WL",
+    "parentName": "I20261116-0009",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 105,
+      "lineName": "5",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     360
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T08:22:00.000+0100",
+     "lastUpdate": "2026-11-16T08:22:00.000+0100",
+     "resume": "2026-11-16T08:22:00.000+0100",
+     "start": "2026-11-16T08:15:00.000+0100"
+    },
+    "title": "5: Polizeieinsatz"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -240,6 +379,29 @@
      "start": "2026-11-16T04:45:10.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker \nBetrieb ab Linneplatz",
+    "name": "R1282-440",
+    "owner": "WL",
+    "parentName": "R1282-440",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40A"
+    ],
+    "relatedStops": [
+     1282
+    ],
+    "time": {
+     "end": "2026-11-16T09:05:00.000+0100",
+     "start": "2026-11-16T08:01:01.000+0100"
+    },
+    "title": "Falschparker \nBetrieb ab Linneplatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -773,6 +935,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Busse halten \nWurmbstraße 40 - 42",
+    "name": "R2959-415",
+    "owner": "WL",
+    "parentName": "R2959-415",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "15A"
+    ],
+    "relatedStops": [
+     2959
+    ],
+    "time": {
+     "end": "2026-11-16T23:59:59.000+0100",
+     "start": "2026-11-16T08:16:31.000+0100"
+    },
+    "title": "Busse halten \nWurmbstraße 40 - 42"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -792,6 +977,75 @@
      "start": "2026-11-14T00:00:24.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R361-105",
+    "owner": "WL",
+    "parentName": "R361-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     361
+    ],
+    "time": {
+     "end": "2026-11-16T09:18:00.000+0100",
+     "start": "2026-11-16T08:19:01.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R362-105",
+    "owner": "WL",
+    "parentName": "R362-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     362
+    ],
+    "time": {
+     "end": "2026-11-16T09:18:00.000+0100",
+     "start": "2026-11-16T08:19:01.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R366-105",
+    "owner": "WL",
+    "parentName": "R366-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     366
+    ],
+    "time": {
+     "end": "2026-11-16T09:18:00.000+0100",
+     "start": "2026-11-16T08:19:01.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
