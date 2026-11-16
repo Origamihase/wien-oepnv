@@ -638,6 +638,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12A: Fahrtbehinderung Falschparker",
+    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
+    "pubDate": "2026-11-16T16:18:18+01:00",
+    "starts_at": "2026-11-16T16:21:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=12A|D=2026-11-16|TK=falschparker",
+    "_wl_ids": [
+      "I20261116-0027"
+    ],
+    "_incident_start": "2026-11-16T16:21:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "15A: Busse halten Wurmbstraße 40 - 42",
     "description": "Busse halten Wurmbstraße 40 - 42",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -646,6 +662,38 @@
     "starts_at": "2026-11-16T08:16:31+01:00",
     "ends_at": "2026-11-16T23:59:59+01:00",
     "_identity": "wl|störung|L=15A|D=2026-11-16|TK=busse halten wurmbstrasse 40 42"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "16A: Störung an einem Bahnübergang",
+    "description": "Linie 16A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "78cfc305e07fdf703edca3374236eb576bf584080a19450b6f7f78fade7ec1e8",
+    "pubDate": "2026-11-16T16:16:00+01:00",
+    "starts_at": "2026-11-16T16:16:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=16A|D=2026-11-16|TK=16a störung an einem bahnübergang",
+    "_wl_ids": [
+      "I20261116-0026"
+    ],
+    "_incident_start": "2026-11-16T16:16:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "17A: Störung an einem Bahnübergang",
+    "description": "Linie 17A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "a9a27425e5abc97ac537f8ede7996cb196df826cae17e716388d06154a7c5243",
+    "pubDate": "2026-11-16T16:16:00+01:00",
+    "starts_at": "2026-11-16T16:16:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=17A|D=2026-11-16|TK=17a störung an einem bahnübergang",
+    "_wl_ids": [
+      "I20261116-0026"
+    ],
+    "_incident_start": "2026-11-16T16:16:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -934,8 +982,36 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "40/41: Falschparker",
+    "description": "Linie 40: Umleitung in Richtung Schottentor U zwischen Gersthof S und Währinger Straße, Volksoper U über Michelbeuern-AKH U (Strecke Linien 9 und 42). Linie 41: Umleitung in Richtung Schottentor U zwischen Gersthof S und Währinger Straße, Volksoper U über Michelbeuern-AKH U (Strecke der Linien 9 und 42). Voraussichtliche Dauer: 16:50 Uhr. Grund: Falschparker im Bereich Währinger Straße 136.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "46770cbdcca7b3b0724e5953b64353d0a982642ac049261e3dfdc906c581b130",
+    "pubDate": "2026-11-16T16:21:00+01:00",
+    "starts_at": "2026-11-16T16:21:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=40,41|D=2026-11-16|TK=falschparker",
+    "_wl_ids": [
+      "I20261116-0028"
+    ],
+    "_incident_start": "2026-11-16T16:21:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9/42: Falschparker Umleitung ab Gersthof über 9 und 42",
+    "description": "Falschparker\nUmleitung ab Gersthof über 9 und 42",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "d0306412af66249baa2e50a703d32bf283d9f6320fd3f4faaa25f07a5180723d",
+    "pubDate": "2026-11-16T16:27:47+01:00",
+    "starts_at": "2026-11-16T16:27:47+01:00",
+    "ends_at": "2026-11-16T17:26:00+01:00",
+    "_identity": "wl|störung|L=42,9|D=2026-11-16|TK=falschparker umleitung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "44: Fremder Verkehrsunfall",
-    "description": "Linie 44: Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Ersatz: Linien 2, 9 und 46. Voraussichtliche Dauer: 16:30 Uhr. Grund: Fremder Verkehrsunfall im Bereich Ottakringer Straße # Wichtelgasse.",
+    "description": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "f53a283f3ee969f2582a7c1c05102b661c4ea8366276196d0cf3bbc0187a3be3",
     "pubDate": "2026-11-16T15:51:00+01:00",
@@ -946,30 +1022,6 @@
       "I20261116-0024"
     ],
     "_incident_start": "2026-11-16T15:51:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "44: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "13da360ca8a94dcafa0dd3aa043ce5baefa02c1c92c93d57c144cc19166804d0",
-    "pubDate": "2026-11-16T15:51:16+01:00",
-    "starts_at": "2026-11-16T15:51:16+01:00",
-    "ends_at": "2026-11-16T16:50:00+01:00",
-    "_identity": "wl|störung|L=44|D=2026-11-16|TK=fahrtbehinderung fremder verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "44: Rettungseinsatz Betrieb nur bis Johann-N.-Berger-Platz",
-    "description": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "c14ad7374d16f14cd0154afd971ba66872a46e7f70c45ab6156ec3ada2b6a22a",
-    "pubDate": "2026-11-16T15:54:14+01:00",
-    "starts_at": "2026-11-16T15:54:17+01:00",
-    "ends_at": "2026-11-16T16:52:00+01:00",
-    "_identity": "wl|störung|L=44|D=2026-11-16|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -986,12 +1038,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60: Rettungseinsatz Züge halten bei Linie 62 Richtung Lainz",
+    "title": "60: Rettungseinsatz",
     "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "911f0fcc6fdfed00c2ef81140492f9b6ca350247d2d5a8e0bed2784b7bb92789",
     "pubDate": "2026-11-16T14:45:00+01:00",
-    "starts_at": "2026-11-16T15:05:11+01:00",
+    "starts_at": "2026-11-16T14:45:00+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=60|D=2026-11-16|TK=rettungseinsatz",
     "_wl_ids": [
@@ -1014,6 +1066,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "67A: Störung an einem Bahnübergang",
+    "description": "Linie 67A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "6e99216299a61049561d5a4425452f6c84cc32619ff3840ff8b07559a0c13400",
+    "pubDate": "2026-11-16T16:16:00+01:00",
+    "starts_at": "2026-11-16T16:16:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=67A|D=2026-11-16|TK=67a störung an einem bahnübergang",
+    "_wl_ids": [
+      "I20261116-0026"
+    ],
+    "_incident_start": "2026-11-16T16:16:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "67B: Störung an einem Bahnübergang",
+    "description": "Linie 67B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "64adf3f111f665b0756e206081b736c33bee655dba42034dde513aed6f0ef56b",
+    "pubDate": "2026-11-16T16:16:00+01:00",
+    "starts_at": "2026-11-16T16:16:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=67B|D=2026-11-16|TK=67b störung an einem bahnübergang",
+    "_wl_ids": [
+      "I20261116-0026"
+    ],
+    "_incident_start": "2026-11-16T16:16:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "74A: Einstieg Leberstraße vor S-Bahn-Gebäude",
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1026,6 +1110,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "76B: Rettungseinsatz",
+    "description": "Linie 76B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "7f7e9f9edcc8a10fa56f60f483e440473a14ab074a7fbd3653d6d60be6bb4706",
+    "pubDate": "2026-11-16T16:12:00+01:00",
+    "starts_at": "2026-11-16T16:12:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=76B|D=2026-11-16|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261116-0025"
+    ],
+    "_incident_start": "2026-11-16T16:12:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "80A: Betrieb ab Vivariumstraße 2",
     "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1034,22 +1134,6 @@
     "starts_at": "2026-11-13T00:00:14+01:00",
     "ends_at": "2026-11-16T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-13|TK=betrieb ab vivariumstrasse 2"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Betriebsstörung",
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
-    "pubDate": "2026-11-16T15:40:00+01:00",
-    "starts_at": "2026-11-16T15:40:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U4|D=2026-11-16|TK=u4 betriebsstörung",
-    "_wl_ids": [
-      "I20261116-0023"
-    ],
-    "_incident_start": "2026-11-16T15:40:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1074,6 +1158,30 @@
     "starts_at": "2026-09-14T04:00:00+02:00",
     "ends_at": "2026-12-31T23:59:00+01:00",
     "_identity": "wl|störung|L=|D=2026-09-14|TK=sperre"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Fahrtbehinderung Störung am Schranken",
+    "description": "Fahrtbehinderung Störung am Schranken",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "dd004471aa7ba2b5ebad1bcb9611359316a7331b55b0662bd9fc8bf1203ce37e",
+    "pubDate": "2026-11-16T16:17:22+01:00",
+    "starts_at": "2026-11-16T16:17:49+01:00",
+    "ends_at": "2026-11-16T17:16:00+01:00",
+    "_identity": "wl|störung|L=|D=2026-11-16|TK=fahrtbehinderung störung am schranken"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Falschparker Betrieb ab Volksoper",
+    "description": "Falschparker\nBetrieb ab Volksoper",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "123bfd62dc7da0ffcd0f3060d27cb4dab7826707d05ffaed1e40fdb867f626eb",
+    "pubDate": "2026-11-16T16:27:17+01:00",
+    "starts_at": "2026-11-16T16:27:17+01:00",
+    "ends_at": "2026-11-16T17:26:00+01:00",
+    "_identity": "wl|störung|L=|D=2026-11-16|TK=falschparker"
   },
   {
     "source": "Wiener Linien",

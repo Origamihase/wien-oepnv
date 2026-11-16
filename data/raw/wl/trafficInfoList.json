@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261116-0019-F01, I20260925-0011, I20260909-0007, I20261116-0022, I20261116-0024, I20261020-0029, I20261116-0021-F01, I20261116-0023"
+    "trafficInfoNameList": "I20261116-0019-F01, I20261116-0027-F01, I20261116-0028, I20260925-0011, I20260909-0007, I20261116-0022, I20261116-0026-F01, I20261116-0026-F02, I20261116-0026-F03, I20261116-0026-F04, I20261116-0024-F01, I20261116-0024, I20261020-0029, I20261116-0021-F01, I20261116-0025"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2343-125, R2359-125, R2370-125, R2380-627, R2371-125, R2343-626, R2379-627, R2372-125, R401-101, R2373-126, R2373-127, R2345-127, R2373-125, R2378-627, R3886-480, R293-474, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R318-437, R2558-125, R1974-466, R1199-205, R500-101, R2959-415, R2915-401, R2904-401, R2910-401, R47-0, R17-0, R1633-160, R1632-160, R1634-160, R277-144, R217-144, R219-144, R218-144, R555-144, R276-144, R1345-144, R1360-144, R1361-144, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2379-627, R2373-126, R401-101, R2345-127, R2380-627, R2373-127, R2373-125, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R3886-480, R1881-101, R1875-101, R1882-101, R1876-101, R293-474, R318-437, R1884-101, R1883-101, R1880-101, R2558-125, R1974-466, R1199-205, R500-101, R2959-415, R2915-401, R2904-401, R2910-401, R47-0, R17-0, R277-144, R217-144, R218-144, R219-144, R555-144, R276-144, R1361-144, R1360-144, R1345-144, R1387-144, R244-144, R245-144, R241-144, R242-144, R3190-0, R2882-0, R2900-0, R2930-0, R2931-0, R2236-0, R699-412, R187-0, R146-0, R143-0, R144-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -310,51 +310,6 @@
     "title": "26A: Rettungseinsatz"
    },
    {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "descriptionHTML": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-       "descriptionPlain": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-       "title": "U4: Betriebsstörung"
-      }
-     }
-    ],
-    "name": "I20261116-0023",
-    "owner": "WL",
-    "parentName": "I20261116-0023",
-    "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 304,
-      "lineName": "U4",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-16T15:40:00.000+0100",
-     "lastUpdate": "2026-11-16T15:40:00.000+0100",
-     "resume": "2026-11-16T15:40:00.000+0100",
-     "start": "2026-11-16T15:40:00.000+0100"
-    },
-    "title": "U4: Betriebsstörung"
-   },
-   {
     "alertCause": "accident",
     "alertCauseId": 77,
     "attributes": {
@@ -391,13 +346,387 @@
       "vehicleType": "ptTram"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-16T15:52:00.000+0100",
-     "lastUpdate": "2026-11-16T15:53:00.000+0100",
+     "end": "2026-11-16T16:29:00.000+0100",
+     "lastUpdate": "2026-11-16T16:29:00.000+0100",
+     "resume": "2026-11-16T16:29:00.000+0100",
      "start": "2026-11-16T15:51:00.000+0100"
     },
     "title": "44: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "44": "ptTram"
+     }
+    },
+    "description": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 44: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 44: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "44: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Ottakringer Straße / Wichtelgasse",
+    "name": "I20261116-0024-F01",
+    "owner": "WL",
+    "parentName": "I20261116-0024",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 144,
+      "lineName": "44",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T16:29:00.000+0100",
+     "lastUpdate": "2026-11-16T16:29:00.000+0100",
+     "resume": "2026-11-16T16:29:00.000+0100",
+     "start": "2026-11-16T15:51:00.000+0100"
+    },
+    "title": "44: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "76B": "ptBusCity"
+     }
+    },
+    "description": "Linie 76B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 76B:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 76B:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 76B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "76B: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261116-0025",
+    "owner": "WL",
+    "parentName": "I20261116-0025",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "76B"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 276,
+      "lineName": "76B",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T16:13:00.000+0100",
+     "lastUpdate": "2026-11-16T16:13:00.000+0100",
+     "start": "2026-11-16T16:12:00.000+0100"
+    },
+    "title": "76B: Rettungseinsatz"
+   },
+   {
+    "alertCause": "level crossing failure",
+    "alertCauseId": 40,
+    "attributes": {
+     "relatedLineTypes": {
+      "16A": "ptBusCity"
+     }
+    },
+    "description": "Linie 16A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 16A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 16A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 16A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "16A: Störung an einem Bahnübergang"
+      }
+     }
+    ],
+    "location": "Himberger Straße",
+    "name": "I20261116-0026-F01",
+    "owner": "WL",
+    "parentName": "I20261116-0026",
+    "priority": "1",
+    "reasonId": 42,
+    "reasonName": "Störung an einem Bahnübergang",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "16A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 416,
+      "lineName": "16A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T16:24:00.000+0100",
+     "lastUpdate": "2026-11-16T16:24:00.000+0100",
+     "resume": "2026-11-16T16:24:00.000+0100",
+     "start": "2026-11-16T16:16:00.000+0100"
+    },
+    "title": "16A: Störung an einem Bahnübergang"
+   },
+   {
+    "alertCause": "level crossing failure",
+    "alertCauseId": 40,
+    "attributes": {
+     "relatedLineTypes": {
+      "17A": "ptBusCity"
+     }
+    },
+    "description": "Linie 17A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 17A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 17A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 17A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "17A: Störung an einem Bahnübergang"
+      }
+     }
+    ],
+    "location": "Himberger Straße",
+    "name": "I20261116-0026-F02",
+    "owner": "WL",
+    "parentName": "I20261116-0026",
+    "priority": "1",
+    "reasonId": 42,
+    "reasonName": "Störung an einem Bahnübergang",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "17A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 417,
+      "lineName": "17A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T16:24:00.000+0100",
+     "lastUpdate": "2026-11-16T16:24:00.000+0100",
+     "resume": "2026-11-16T16:24:00.000+0100",
+     "start": "2026-11-16T16:16:00.000+0100"
+    },
+    "title": "17A: Störung an einem Bahnübergang"
+   },
+   {
+    "alertCause": "level crossing failure",
+    "alertCauseId": 40,
+    "attributes": {
+     "relatedLineTypes": {
+      "67A": "ptBusCity"
+     }
+    },
+    "description": "Linie 67A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 67A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 67A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 67A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "67A: Störung an einem Bahnübergang"
+      }
+     }
+    ],
+    "location": "Himberger Straße",
+    "name": "I20261116-0026-F03",
+    "owner": "WL",
+    "parentName": "I20261116-0026",
+    "priority": "1",
+    "reasonId": 42,
+    "reasonName": "Störung an einem Bahnübergang",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "67A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 467,
+      "lineName": "67A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T16:24:00.000+0100",
+     "lastUpdate": "2026-11-16T16:24:00.000+0100",
+     "resume": "2026-11-16T16:24:00.000+0100",
+     "start": "2026-11-16T16:16:00.000+0100"
+    },
+    "title": "67A: Störung an einem Bahnübergang"
+   },
+   {
+    "alertCause": "level crossing failure",
+    "alertCauseId": 40,
+    "attributes": {
+     "relatedLineTypes": {
+      "67B": "ptBusCity"
+     }
+    },
+    "description": "Linie 67B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 67B: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 67B: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 67B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "67B: Störung an einem Bahnübergang"
+      }
+     }
+    ],
+    "location": "Himberger Straße",
+    "name": "I20261116-0026-F04",
+    "owner": "WL",
+    "parentName": "I20261116-0026",
+    "priority": "1",
+    "reasonId": 42,
+    "reasonName": "Störung an einem Bahnübergang",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "67B"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 267,
+      "lineName": "67B",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T16:24:00.000+0100",
+     "lastUpdate": "2026-11-16T16:24:00.000+0100",
+     "resume": "2026-11-16T16:24:00.000+0100",
+     "start": "2026-11-16T16:16:00.000+0100"
+    },
+    "title": "67B: Störung an einem Bahnübergang"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "12A": "ptBusCity"
+     }
+    },
+    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 12A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 12A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "12A: Falschparker"
+      }
+     }
+    ],
+    "location": "Obere Amtshausgasse",
+    "name": "I20261116-0027-F01",
+    "owner": "WL",
+    "parentName": "I20261116-0027",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 412,
+      "lineName": "12A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T16:23:00.000+0100",
+     "lastUpdate": "2026-11-16T16:23:00.000+0100",
+     "resume": "2026-11-16T16:23:00.000+0100",
+     "start": "2026-11-16T16:21:00.000+0100"
+    },
+    "title": "12A: Falschparker"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "40": "ptTram",
+      "41": "ptTram"
+     }
+    },
+    "description": "Linie 40: Umleitung in Richtung Schottentor U zwischen Gersthof S und Währinger Straße, Volksoper U über Michelbeuern-AKH U (Strecke Linien 9 und 42). Linie 41: Umleitung in Richtung Schottentor U zwischen Gersthof S und Währinger Straße, Volksoper U über Michelbeuern-AKH U (Strecke der Linien 9 und 42). Voraussichtliche Dauer: 16:50 Uhr. Grund: Falschparker im Bereich Währinger Straße 136.",
+    "descriptionHTML": "<p>Linie 40:<br>Umleitung in Richtung Schottentor U <br>zwischen Gersthof S und Währinger Straße, Volksoper U <br>über Michelbeuern-AKH U (Strecke Linien 9 und 42).<br>Linie 41:<br>Umleitung in Richtung Schottentor U <br>zwischen Gersthof S und Währinger Straße, Volksoper U <br>über Michelbeuern-AKH U (Strecke der Linien 9 und 42).</p><p>Voraussichtliche Dauer: 16:50 Uhr.</p><p>Grund: Falschparker im Bereich Währinger Straße 136.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 40:<br>Umleitung in Richtung Schottentor U <br>zwischen Gersthof S und Währinger Straße, Volksoper U <br>über Michelbeuern-AKH U (Strecke Linien 9 und 42).<br>Linie 41:<br>Umleitung in Richtung Schottentor U <br>zwischen Gersthof S und Währinger Straße, Volksoper U <br>über Michelbeuern-AKH U (Strecke der Linien 9 und 42).</p><p>Voraussichtliche Dauer: 16:50 Uhr.</p><p>Grund: Falschparker im Bereich Währinger Straße 136.</p>",
+       "descriptionPlain": "Linie 40: Umleitung in Richtung Schottentor U zwischen Gersthof S und Währinger Straße, Volksoper U über Michelbeuern-AKH U (Strecke Linien 9 und 42). Linie 41: Umleitung in Richtung Schottentor U zwischen Gersthof S und Währinger Straße, Volksoper U über Michelbeuern-AKH U (Strecke der Linien 9 und 42). Voraussichtliche Dauer: 16:50 Uhr. Grund: Falschparker im Bereich Währinger Straße 136.",
+       "title": "41, 40: Falschparker"
+      }
+     }
+    ],
+    "location": "Währinger Straße 136",
+    "name": "I20261116-0028",
+    "owner": "WL",
+    "parentName": "I20261116-0028",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "40",
+     "41"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 140,
+      "lineName": "40",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 141,
+      "lineName": "41",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T16:22:00.000+0100",
+     "lastUpdate": "2026-11-16T16:25:00.000+0100",
+     "start": "2026-11-16T16:21:00.000+0100"
+    },
+    "title": "41, 40: Falschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -494,71 +823,85 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Hofwiesengasse",
-    "name": "R1632-160",
+    "description": "Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz",
+    "name": "R1387-144",
     "owner": "WL",
-    "parentName": "R1632-160",
+    "parentName": "R1387-144",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "60"
+     "44"
     ],
     "relatedStops": [
-     1632
+     1387
     ],
     "time": {
-     "end": "2026-11-16T16:01:00.000+0100",
-     "start": "2026-11-16T15:02:41.000+0100"
+     "end": "2026-11-16T16:54:00.000+0100",
+     "start": "2026-11-16T16:05:48.000+0100"
     },
-    "title": "Rettungseinsatz\nBetrieb ab Hofwiesengasse"
+    "title": "Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Hofwiesengasse",
-    "name": "R1633-160",
+    "description": "Falschparker\nUmleitung ab Gersthof über 9 und 42\n\n",
+    "name": "R143-0",
     "owner": "WL",
-    "parentName": "R1633-160",
+    "parentName": "R143-0",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
     "relatedStops": [
-     1633
+     143
     ],
     "time": {
-     "end": "2026-11-16T16:01:00.000+0100",
-     "start": "2026-11-16T15:02:41.000+0100"
+     "end": "2026-11-16T17:26:00.000+0100",
+     "start": "2026-11-16T16:27:47.000+0100"
     },
-    "title": "Rettungseinsatz\nBetrieb ab Hofwiesengasse"
+    "title": "Falschparker\nUmleitung ab Gersthof über 9 und 42\n\n"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Rettungseinsatz\nZüge halten bei Linie 62 Richtung Lainz",
-    "name": "R1634-160",
+    "description": "Falschparker\nUmleitung ab Gersthof über 9 und 42\n\n",
+    "name": "R144-0",
     "owner": "WL",
-    "parentName": "R1634-160",
+    "parentName": "R144-0",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
     "relatedStops": [
-     1634
+     144
     ],
     "time": {
-     "end": "2026-11-16T16:02:00.000+0100",
-     "start": "2026-11-16T15:05:11.000+0100"
+     "end": "2026-11-16T17:26:00.000+0100",
+     "start": "2026-11-16T16:27:47.000+0100"
     },
-    "title": "Rettungseinsatz\nZüge halten bei Linie 62 Richtung Lainz"
+    "title": "Falschparker\nUmleitung ab Gersthof über 9 und 42\n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Volksoper\n\n",
+    "name": "R146-0",
+    "owner": "WL",
+    "parentName": "R146-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     146
+    ],
+    "time": {
+     "end": "2026-11-16T17:26:00.000+0100",
+     "start": "2026-11-16T16:27:17.000+0100"
+    },
+    "title": "Falschparker\nBetrieb ab Volksoper\n\n"
    },
    {
     "alertCause": "undefined alert cause",
@@ -579,6 +922,26 @@
      "start": "2026-11-16T15:00:11.000+0100"
     },
     "title": "Haltestelle\naufgelassen!\n\nStop closed!"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Volksoper\n\n",
+    "name": "R187-0",
+    "owner": "WL",
+    "parentName": "R187-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     187
+    ],
+    "time": {
+     "end": "2026-11-16T17:26:00.000+0100",
+     "start": "2026-11-16T16:27:17.000+0100"
+    },
+    "title": "Falschparker\nBetrieb ab Volksoper\n\n"
    },
    {
     "alertCause": "undefined alert cause",
@@ -832,6 +1195,26 @@
      "start": "2026-11-16T15:54:14.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung \nStörung am Schranken",
+    "name": "R2236-0",
+    "owner": "WL",
+    "parentName": "R2236-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2236
+    ],
+    "time": {
+     "end": "2026-11-16T17:16:00.000+0100",
+     "start": "2026-11-16T16:17:49.000+0100"
+    },
+    "title": "Fahrtbehinderung \nStörung am Schranken"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1135,6 +1518,98 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz",
+    "name": "R241-144",
+    "owner": "WL",
+    "parentName": "R241-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     241
+    ],
+    "time": {
+     "end": "2026-11-16T16:54:00.000+0100",
+     "start": "2026-11-16T16:06:15.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz",
+    "name": "R242-144",
+    "owner": "WL",
+    "parentName": "R242-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     242
+    ],
+    "time": {
+     "end": "2026-11-16T16:54:00.000+0100",
+     "start": "2026-11-16T16:06:15.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz",
+    "name": "R244-144",
+    "owner": "WL",
+    "parentName": "R244-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     244
+    ],
+    "time": {
+     "end": "2026-11-16T16:54:00.000+0100",
+     "start": "2026-11-16T16:06:15.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz",
+    "name": "R245-144",
+    "owner": "WL",
+    "parentName": "R245-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     245
+    ],
+    "time": {
+     "end": "2026-11-16T16:54:00.000+0100",
+     "start": "2026-11-16T16:06:15.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Jaohann-N.-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
     "name": "R2558-125",
     "owner": "WL",
@@ -1200,6 +1675,46 @@
      "start": "2026-11-16T15:51:16.000+0100"
     },
     "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung \nStörung am Schranken",
+    "name": "R2882-0",
+    "owner": "WL",
+    "parentName": "R2882-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2882
+    ],
+    "time": {
+     "end": "2026-11-16T17:16:00.000+0100",
+     "start": "2026-11-16T16:17:49.000+0100"
+    },
+    "title": "Fahrtbehinderung \nStörung am Schranken"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung \nStörung am Schranken",
+    "name": "R2900-0",
+    "owner": "WL",
+    "parentName": "R2900-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2900
+    ],
+    "time": {
+     "end": "2026-11-16T17:16:00.000+0100",
+     "start": "2026-11-16T16:17:49.000+0100"
+    },
+    "title": "Fahrtbehinderung \nStörung am Schranken"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1296,6 +1811,46 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung \nStörung am Schranken",
+    "name": "R2930-0",
+    "owner": "WL",
+    "parentName": "R2930-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2930
+    ],
+    "time": {
+     "end": "2026-11-16T17:16:00.000+0100",
+     "start": "2026-11-16T16:17:49.000+0100"
+    },
+    "title": "Fahrtbehinderung \nStörung am Schranken"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung \nStörung am Schranken",
+    "name": "R2931-0",
+    "owner": "WL",
+    "parentName": "R2931-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     2931
+    ],
+    "time": {
+     "end": "2026-11-16T17:16:00.000+0100",
+     "start": "2026-11-16T16:17:49.000+0100"
+    },
+    "title": "Fahrtbehinderung \nStörung am Schranken"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Busse halten \nWurmbstraße 40 - 42",
     "name": "R2959-415",
     "owner": "WL",
@@ -1338,6 +1893,26 @@
      "start": "2026-11-14T00:00:24.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung \nStörung am Schranken",
+    "name": "R3190-0",
+    "owner": "WL",
+    "parentName": "R3190-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     3190
+    ],
+    "time": {
+     "end": "2026-11-16T17:16:00.000+0100",
+     "start": "2026-11-16T16:17:22.000+0100"
+    },
+    "title": "Fahrtbehinderung \nStörung am Schranken"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1450,6 +2025,29 @@
      "start": "2026-11-16T15:54:15.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R699-412",
+    "owner": "WL",
+    "parentName": "R699-412",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12A"
+    ],
+    "relatedStops": [
+     699
+    ],
+    "time": {
+     "end": "2026-11-16T17:17:00.000+0100",
+     "start": "2026-11-16T16:18:18.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
