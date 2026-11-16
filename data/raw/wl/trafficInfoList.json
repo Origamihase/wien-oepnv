@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261116-0014-F01, I20261020-0029"
+    "trafficInfoNameList": "I20261116-0017-F01, I20261116-0017, I20261116-0015-F01-F01, I20260925-0011, I20261116-0016, I20260909-0007, I20261116-0014-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2380-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2379-627, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2345-127, R401-101, R3886-480, R1876-101, R1884-101, R1883-101, R1882-101, R1881-101, R318-437, R293-474, R1875-101, R1880-101, R2558-125, R1974-466, R1199-205, R500-101, R2959-415, R676-413, R675-413, R674-413, R673-413, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2373-127, R2373-126, R401-101, R2345-127, R2380-627, R2379-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R3886-480, R1883-101, R318-437, R293-474, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1884-101, R2558-125, R1974-466, R1199-205, R500-101, R2959-415, R41-101, R23-101, R2915-401, R2904-401, R174-101, R172-101, R169-101, R170-101, R171-101, R17-101, R18-101, R20-101, R19-101, R21-101, R14-101, R15-101, R22-101, R165-101, R132-101, R2910-401, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -219,6 +219,190 @@
     "title": "U4: Schadhaftes Fahrzeug"
    },
    {
+    "alertCause": "overhead wire failure",
+    "alertCauseId": 39,
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "O: Beschädigte Oberleitung"
+      }
+     }
+    ],
+    "location": "Radetzkystraße 2",
+    "name": "I20261116-0015-F01-F01",
+    "owner": "WL",
+    "parentName": "I20261116-0015",
+    "priority": "1",
+    "reasonId": 23,
+    "reasonName": "Fahrleitungsgebrechen",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 170,
+      "lineName": "O",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T12:44:00.000+0100",
+     "lastUpdate": "2026-11-16T12:44:00.000+0100",
+     "resume": "2026-11-16T12:44:00.000+0100",
+     "start": "2026-11-16T12:29:00.000+0100"
+    },
+    "title": "O: Beschädigte Oberleitung"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "1A": "ptBusCity"
+     }
+    },
+    "description": "Derzeit ist ein Betrieb der Linie 1A nicht möglich. Voraussichtliche Dauer: 11:20 Uhr. Grund: Polizeieinsatz im Bereich Herrengasse.",
+    "descriptionHTML": "<p>Derzeit ist ein Betrieb der Linie 1A nicht möglich.</p><p>Voraussichtliche Dauer: 11:20 Uhr.</p><p>Grund: Polizeieinsatz im Bereich Herrengasse.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Derzeit ist ein Betrieb der Linie 1A nicht möglich.</p><p>Voraussichtliche Dauer: 11:20 Uhr.</p><p>Grund: Polizeieinsatz im Bereich Herrengasse.</p>",
+       "descriptionPlain": "Derzeit ist ein Betrieb der Linie 1A nicht möglich. Voraussichtliche Dauer: 11:20 Uhr. Grund: Polizeieinsatz im Bereich Herrengasse.",
+       "title": "1A: Polizeieinsatz"
+      }
+     }
+    ],
+    "location": "Herrengasse",
+    "name": "I20261116-0016",
+    "owner": "WL",
+    "parentName": "I20261116-0016",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 401,
+      "lineName": "1A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T12:40:00.000+0100",
+     "lastUpdate": "2026-11-16T13:00:00.000+0100",
+     "start": "2026-11-16T12:39:00.000+0100"
+    },
+    "title": "1A: Polizeieinsatz"
+   },
+   {
+    "alertCause": "overhead wire failure",
+    "alertCauseId": 39,
+    "attributes": {
+     "relatedLineTypes": {
+      "1": "ptTram"
+     }
+    },
+    "description": "Linie 1: Betrieb nur zwischen Reumannplatz U und Schwedenplatz U. Ersatz: Linien U1, 4A, 80A. Voraussichtliche Dauer: 13:20 Uhr. Grund: Fahrleitungsgebrechen im Bereich Radetzkystraße.",
+    "descriptionHTML": "<p><strong>Linie 1: </strong><br>Betrieb nur zwischen Reumannplatz U und Schwedenplatz U.</p><p>Ersatz: Linien U1, 4A, 80A.</p><p>Voraussichtliche Dauer: 13:20 Uhr.</p><p>Grund: Fahrleitungsgebrechen im Bereich Radetzkystraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><strong>Linie 1: </strong><br>Betrieb nur zwischen Reumannplatz U und Schwedenplatz U.</p><p>Ersatz: Linien U1, 4A, 80A.</p><p>Voraussichtliche Dauer: 13:20 Uhr.</p><p>Grund: Fahrleitungsgebrechen im Bereich Radetzkystraße.</p>",
+       "descriptionPlain": "Linie 1: Betrieb nur zwischen Reumannplatz U und Schwedenplatz U. Ersatz: Linien U1, 4A, 80A. Voraussichtliche Dauer: 13:20 Uhr. Grund: Fahrleitungsgebrechen im Bereich Radetzkystraße.",
+       "title": "1: Beschädigte Oberleitung"
+      }
+     }
+    ],
+    "location": "Radetzkystraße",
+    "name": "I20261116-0017",
+    "owner": "WL",
+    "parentName": "I20261116-0017",
+    "priority": "1",
+    "reasonId": 23,
+    "reasonName": "Fahrleitungsgebrechen",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 101,
+      "lineName": "1",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-11-16T12:50:00.000+0100",
+     "end": "2026-11-16T12:58:00.000+0100",
+     "lastUpdate": "2026-11-16T12:58:00.000+0100",
+     "resume": "2026-11-16T12:58:00.000+0100",
+     "start": "2026-11-16T12:48:00.000+0100"
+    },
+    "title": "1: Beschädigte Oberleitung"
+   },
+   {
+    "alertCause": "overhead wire failure",
+    "alertCauseId": 39,
+    "attributes": {
+     "relatedLineTypes": {
+      "1": "ptTram"
+     }
+    },
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "1: Beschädigte Oberleitung"
+      }
+     }
+    ],
+    "location": "Radetzkystraße",
+    "name": "I20261116-0017-F01",
+    "owner": "WL",
+    "parentName": "I20261116-0017",
+    "priority": "1",
+    "reasonId": 23,
+    "reasonName": "Fahrleitungsgebrechen",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 101,
+      "lineName": "1",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T12:58:00.000+0100",
+     "lastUpdate": "2026-11-16T12:58:00.000+0100",
+     "resume": "2026-11-16T12:58:00.000+0100",
+     "start": "2026-11-16T12:48:00.000+0100"
+    },
+    "title": "1: Beschädigte Oberleitung"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -240,6 +424,259 @@
      "start": "2026-11-16T04:45:10.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nkein Betrieb",
+    "name": "R132-101",
+    "owner": "WL",
+    "parentName": "R132-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     132
+    ],
+    "time": {
+     "end": "2026-11-16T13:53:00.000+0100",
+     "start": "2026-11-16T12:53:28.000+0100"
+    },
+    "title": "Stromstörung\nkein Betrieb"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb nur bis Schwedenplatz",
+    "name": "R14-101",
+    "owner": "WL",
+    "parentName": "R14-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     14
+    ],
+    "time": {
+     "end": "2026-11-16T13:52:00.000+0100",
+     "start": "2026-11-16T12:52:58.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb nur bis Schwedenplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb nur bis Schwedenplatz",
+    "name": "R15-101",
+    "owner": "WL",
+    "parentName": "R15-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-11-16T13:52:00.000+0100",
+     "start": "2026-11-16T12:52:58.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb nur bis Schwedenplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nkein Betrieb",
+    "name": "R165-101",
+    "owner": "WL",
+    "parentName": "R165-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     165
+    ],
+    "time": {
+     "end": "2026-11-16T13:53:00.000+0100",
+     "start": "2026-11-16T12:53:26.000+0100"
+    },
+    "title": "Stromstörung\nkein Betrieb"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Schwedenplatz",
+    "name": "R169-101",
+    "owner": "WL",
+    "parentName": "R169-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     169
+    ],
+    "time": {
+     "end": "2026-11-16T13:50:00.000+0100",
+     "start": "2026-11-16T12:52:26.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Schwedenplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb nur bis Schwedenplatz",
+    "name": "R17-101",
+    "owner": "WL",
+    "parentName": "R17-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     17
+    ],
+    "time": {
+     "end": "2026-11-16T13:52:00.000+0100",
+     "start": "2026-11-16T12:52:58.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb nur bis Schwedenplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Schwedenplatz",
+    "name": "R170-101",
+    "owner": "WL",
+    "parentName": "R170-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     170
+    ],
+    "time": {
+     "end": "2026-11-16T13:50:00.000+0100",
+     "start": "2026-11-16T12:52:26.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Schwedenplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Schwedenplatz",
+    "name": "R171-101",
+    "owner": "WL",
+    "parentName": "R171-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     171
+    ],
+    "time": {
+     "end": "2026-11-16T13:50:00.000+0100",
+     "start": "2026-11-16T12:52:26.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Schwedenplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Schwedenplatz",
+    "name": "R172-101",
+    "owner": "WL",
+    "parentName": "R172-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     172
+    ],
+    "time": {
+     "end": "2026-11-16T13:50:00.000+0100",
+     "start": "2026-11-16T12:52:26.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Schwedenplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Schwedenplatz",
+    "name": "R174-101",
+    "owner": "WL",
+    "parentName": "R174-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     174
+    ],
+    "time": {
+     "end": "2026-11-16T13:50:00.000+0100",
+     "start": "2026-11-16T12:52:26.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Schwedenplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb nur bis Schwedenplatz",
+    "name": "R18-101",
+    "owner": "WL",
+    "parentName": "R18-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     18
+    ],
+    "time": {
+     "end": "2026-11-16T13:52:00.000+0100",
+     "start": "2026-11-16T12:52:58.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb nur bis Schwedenplatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -405,6 +842,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb nur bis Schwedenplatz",
+    "name": "R19-101",
+    "owner": "WL",
+    "parentName": "R19-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     19
+    ],
+    "time": {
+     "end": "2026-11-16T13:52:00.000+0100",
+     "start": "2026-11-16T12:52:58.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb nur bis Schwedenplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "name": "R1974-466",
     "owner": "WL",
@@ -424,6 +884,98 @@
      "start": "2026-11-16T04:40:10.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb nur bis Schwedenplatz",
+    "name": "R20-101",
+    "owner": "WL",
+    "parentName": "R20-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     20
+    ],
+    "time": {
+     "end": "2026-11-16T13:52:00.000+0100",
+     "start": "2026-11-16T12:52:58.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb nur bis Schwedenplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb nur bis Schwedenplatz",
+    "name": "R21-101",
+    "owner": "WL",
+    "parentName": "R21-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     21
+    ],
+    "time": {
+     "end": "2026-11-16T13:52:00.000+0100",
+     "start": "2026-11-16T12:52:58.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb nur bis Schwedenplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb nur bis Schwedenplatz",
+    "name": "R22-101",
+    "owner": "WL",
+    "parentName": "R22-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     22
+    ],
+    "time": {
+     "end": "2026-11-16T13:52:00.000+0100",
+     "start": "2026-11-16T12:52:58.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb nur bis Schwedenplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nkein Betrieb",
+    "name": "R23-101",
+    "owner": "WL",
+    "parentName": "R23-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     23
+    ],
+    "time": {
+     "end": "2026-11-16T13:53:00.000+0100",
+     "start": "2026-11-16T12:35:26.000+0100"
+    },
+    "title": "Stromstörung\nkein Betrieb"
    },
    {
     "alertCause": "undefined alert cause",
@@ -750,6 +1302,75 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2904-401",
+    "owner": "WL",
+    "parentName": "R2904-401",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1A"
+    ],
+    "relatedStops": [
+     2904
+    ],
+    "time": {
+     "end": "2026-11-16T13:53:00.000+0100",
+     "start": "2026-11-16T12:42:58.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2910-401",
+    "owner": "WL",
+    "parentName": "R2910-401",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1A"
+    ],
+    "relatedStops": [
+     2910
+    ],
+    "time": {
+     "end": "2026-11-16T13:53:00.000+0100",
+     "start": "2026-11-16T12:55:29.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R2915-401",
+    "owner": "WL",
+    "parentName": "R2915-401",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1A"
+    ],
+    "relatedStops": [
+     2915
+    ],
+    "time": {
+     "end": "2026-11-16T13:36:00.000+0100",
+     "start": "2026-11-16T12:36:57.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -865,6 +1486,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Schwedenplatz",
+    "name": "R41-101",
+    "owner": "WL",
+    "parentName": "R41-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     41
+    ],
+    "time": {
+     "end": "2026-11-16T13:50:00.000+0100",
+     "start": "2026-11-16T12:33:26.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Schwedenplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -884,98 +1528,6 @@
      "start": "2026-11-16T05:00:11.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R673-413",
-    "owner": "WL",
-    "parentName": "R673-413",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedStops": [
-     673
-    ],
-    "time": {
-     "end": "2026-11-16T12:42:00.000+0100",
-     "start": "2026-11-16T11:42:51.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R674-413",
-    "owner": "WL",
-    "parentName": "R674-413",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedStops": [
-     674
-    ],
-    "time": {
-     "end": "2026-11-16T12:42:00.000+0100",
-     "start": "2026-11-16T11:42:51.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R675-413",
-    "owner": "WL",
-    "parentName": "R675-413",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedStops": [
-     675
-    ],
-    "time": {
-     "end": "2026-11-16T12:42:00.000+0100",
-     "start": "2026-11-16T11:42:51.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R676-413",
-    "owner": "WL",
-    "parentName": "R676-413",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedStops": [
-     676
-    ],
-    "time": {
-     "end": "2026-11-16T12:42:00.000+0100",
-     "start": "2026-11-16T11:42:51.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
