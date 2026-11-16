@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261116-0017-F01, I20261116-0017, I20261116-0015-F01-F01, I20260925-0011, I20261116-0016, I20260909-0007, I20261116-0014-F01, I20261020-0029"
+    "trafficInfoNameList": "I20261116-0017-F01, I20261116-0015-F01-F01, I20260925-0011, I20261116-0016, I20260909-0007, I20261116-0014-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2373-127, R2373-126, R401-101, R2345-127, R2380-627, R2379-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R3886-480, R1883-101, R318-437, R293-474, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1884-101, R2558-125, R1974-466, R1199-205, R500-101, R2959-415, R41-101, R23-101, R2915-401, R2904-401, R174-101, R172-101, R169-101, R170-101, R171-101, R17-101, R18-101, R20-101, R19-101, R21-101, R14-101, R15-101, R22-101, R165-101, R132-101, R2910-401, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2378-627, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R401-101, R2373-126, R2343-125, R2345-127, R2380-627, R2379-627, R3886-480, R293-474, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R318-437, R2558-125, R1974-466, R1199-205, R500-101, R2959-415, R41-101, R23-101, R2915-401, R2904-401, R171-101, R172-101, R174-101, R170-101, R169-101, R14-101, R15-101, R17-101, R18-101, R19-101, R20-101, R21-101, R22-101, R165-101, R132-101, R2910-401, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -272,13 +272,13 @@
       "1A": "ptBusCity"
      }
     },
-    "description": "Derzeit ist ein Betrieb der Linie 1A nicht möglich. Voraussichtliche Dauer: 11:20 Uhr. Grund: Polizeieinsatz im Bereich Herrengasse.",
-    "descriptionHTML": "<p>Derzeit ist ein Betrieb der Linie 1A nicht möglich.</p><p>Voraussichtliche Dauer: 11:20 Uhr.</p><p>Grund: Polizeieinsatz im Bereich Herrengasse.</p>",
+    "description": "Derzeit ist ein Betrieb der Linie 1A nicht möglich.Ersatz: Linien U-Bahn.Voraussichtliche Dauer: Nicht absehbar.Grund: Polizeieinsatz im Bereich Herrengasse.",
+    "descriptionHTML": "<p>Derzeit ist ein Betrieb der Linie 1A nicht möglich.</p><p>Ersatz: Linien U-Bahn.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Polizeieinsatz im Bereich Herrengasse.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Derzeit ist ein Betrieb der Linie 1A nicht möglich.</p><p>Voraussichtliche Dauer: 11:20 Uhr.</p><p>Grund: Polizeieinsatz im Bereich Herrengasse.</p>",
-       "descriptionPlain": "Derzeit ist ein Betrieb der Linie 1A nicht möglich. Voraussichtliche Dauer: 11:20 Uhr. Grund: Polizeieinsatz im Bereich Herrengasse.",
+       "descriptionHtml": "<p>Derzeit ist ein Betrieb der Linie 1A nicht möglich.</p><p>Ersatz: Linien U-Bahn.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Polizeieinsatz im Bereich Herrengasse.</p>",
+       "descriptionPlain": "Derzeit ist ein Betrieb der Linie 1A nicht möglich.Ersatz: Linien U-Bahn.Voraussichtliche Dauer: Nicht absehbar.Grund: Polizeieinsatz im Bereich Herrengasse.",
        "title": "1A: Polizeieinsatz"
       }
      }
@@ -304,57 +304,10 @@
     "status": "active",
     "time": {
      "created": "2026-11-16T12:40:00.000+0100",
-     "lastUpdate": "2026-11-16T13:00:00.000+0100",
+     "lastUpdate": "2026-11-16T13:28:00.000+0100",
      "start": "2026-11-16T12:39:00.000+0100"
     },
     "title": "1A: Polizeieinsatz"
-   },
-   {
-    "alertCause": "overhead wire failure",
-    "alertCauseId": 39,
-    "attributes": {
-     "relatedLineTypes": {
-      "1": "ptTram"
-     }
-    },
-    "description": "Linie 1: Betrieb nur zwischen Reumannplatz U und Schwedenplatz U. Ersatz: Linien U1, 4A, 80A. Voraussichtliche Dauer: 13:20 Uhr. Grund: Fahrleitungsgebrechen im Bereich Radetzkystraße.",
-    "descriptionHTML": "<p><strong>Linie 1: </strong><br>Betrieb nur zwischen Reumannplatz U und Schwedenplatz U.</p><p>Ersatz: Linien U1, 4A, 80A.</p><p>Voraussichtliche Dauer: 13:20 Uhr.</p><p>Grund: Fahrleitungsgebrechen im Bereich Radetzkystraße.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p><strong>Linie 1: </strong><br>Betrieb nur zwischen Reumannplatz U und Schwedenplatz U.</p><p>Ersatz: Linien U1, 4A, 80A.</p><p>Voraussichtliche Dauer: 13:20 Uhr.</p><p>Grund: Fahrleitungsgebrechen im Bereich Radetzkystraße.</p>",
-       "descriptionPlain": "Linie 1: Betrieb nur zwischen Reumannplatz U und Schwedenplatz U. Ersatz: Linien U1, 4A, 80A. Voraussichtliche Dauer: 13:20 Uhr. Grund: Fahrleitungsgebrechen im Bereich Radetzkystraße.",
-       "title": "1: Beschädigte Oberleitung"
-      }
-     }
-    ],
-    "location": "Radetzkystraße",
-    "name": "I20261116-0017",
-    "owner": "WL",
-    "parentName": "I20261116-0017",
-    "priority": "1",
-    "reasonId": 23,
-    "reasonName": "Fahrleitungsgebrechen",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 101,
-      "lineName": "1",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-16T12:50:00.000+0100",
-     "end": "2026-11-16T12:58:00.000+0100",
-     "lastUpdate": "2026-11-16T12:58:00.000+0100",
-     "resume": "2026-11-16T12:58:00.000+0100",
-     "start": "2026-11-16T12:48:00.000+0100"
-    },
-    "title": "1: Beschädigte Oberleitung"
    },
    {
     "alertCause": "overhead wire failure",
@@ -1317,7 +1270,7 @@
      2904
     ],
     "time": {
-     "end": "2026-11-16T13:53:00.000+0100",
+     "end": "2026-11-16T18:30:00.000+0100",
      "start": "2026-11-16T12:42:58.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
@@ -1340,7 +1293,7 @@
      2910
     ],
     "time": {
-     "end": "2026-11-16T13:53:00.000+0100",
+     "end": "2026-11-16T18:30:00.000+0100",
      "start": "2026-11-16T12:55:29.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
@@ -1363,7 +1316,7 @@
      2915
     ],
     "time": {
-     "end": "2026-11-16T13:36:00.000+0100",
+     "end": "2026-11-16T18:45:00.000+0100",
      "start": "2026-11-16T12:36:57.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
