@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_371, ftazW_37, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_112, ftazW_1017119, ftazW_599, ftazW_23, ftazW_370, ftazW_1018061, ftazW_393, ftazW_1032342, ftazW_1017120, ftazW_283, ftazW_485, ftazW_369, ftazW_17, ftazW_4, ftazW_18, ftazW_484, ftazW_368, ftazW_15, ftazW_1032355, ftazW_5, ftazW_603, ftazW_209, ftazW_1017121, ftazW_19, ftazW_41"
+    "trafficInfoNameList": "ftazW_371, ftazW_37, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_112, ftazW_1017119, ftazW_599, ftazW_23, ftazW_370, ftazW_1018061, ftazW_393, ftazW_1032342, ftazW_1017120, ftazW_283, ftazW_485, ftazW_369, ftazW_17, ftazW_4, ftazW_18, ftazW_484, ftazW_368, ftazW_15, ftazW_1032355, ftazW_5, ftazW_603, ftazW_209, ftazW_1017121, ftazW_19, ftazW_41, ftazW_16, ftazW_606, ftazW_1018092, ftazW_42, ftazW_1018049, ftazW_210, ftazW_1017123"
    }
   ],
   "poiCategoryGroups": [
@@ -2939,6 +2939,70 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "19.11.2026 05:15",
+     "ausVon": "19.11.2026 01:15",
+     "location": "Passage - Ausgang Schererstraße",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Leopoldau",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Passage - Ausgang Schererstraße",
+    "elevatorId": "LU 03",
+    "name": "ftazW_1017123",
+    "parentName": "ftazW_1017123",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "time": {
+     "end": "2026-11-19T05:15:00.000+0100",
+     "start": "2026-11-19T01:15:00.000+0100"
+    },
+    "title": "Leopoldau"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "19.11.2026 05:15",
+     "ausVon": "19.11.2026 01:15",
+     "location": "Zwischengeschoß - Ausgang Nottendorfergasse",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Erdberg",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Zwischengeschoß - Ausgang Nottendorfergasse",
+    "elevatorId": "ED 04",
+    "name": "ftazW_1018049",
+    "parentName": "ftazW_1018049",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "time": {
+     "end": "2026-11-19T05:15:00.000+0100",
+     "start": "2026-11-19T01:15:00.000+0100"
+    },
+    "title": "Erdberg"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "17.11.2026 05:15",
      "ausVon": "17.11.2026 01:15",
      "location": "U2 Mittelbahnsteig - Ausgang Prater",
@@ -3012,6 +3076,47 @@
      "start": "2026-11-16T20:45:00.000+0100"
     },
     "title": "Messe-Prater"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "19.11.2026 05:15",
+     "ausVon": "19.11.2026 01:15",
+     "location": "U2 Mittelbahnsteig - Ausgang Venediger Au/Ausstellungsstraße",
+     "rbls": [
+      4260,
+      4263
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2",
+      "U1"
+     ],
+     "station": "Praterstern",
+     "status": "geplante Wartung",
+     "towards": "U2 beide Richtungen"
+    },
+    "description": "U2 Mittelbahnsteig - Ausgang Venediger Au/Ausstellungsstraße",
+    "elevatorId": "PR 06",
+    "name": "ftazW_1018092",
+    "parentName": "ftazW_1018092",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2",
+     "U1"
+    ],
+    "relatedStops": [
+     4260,
+     4263
+    ],
+    "time": {
+     "end": "2026-11-19T05:15:00.000+0100",
+     "start": "2026-11-19T01:15:00.000+0100"
+    },
+    "title": "Praterstern"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3212,6 +3317,43 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "19.11.2026 05:15",
+     "ausVon": "19.11.2026 01:15",
+     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Urban Loritz Platz",
+     "rbls": [
+      4609
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Burggasse-Stadthalle",
+     "status": "geplante Wartung",
+     "towards": "U6 Siebenhirten"
+    },
+    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Urban Loritz Platz",
+    "elevatorId": "BU 02",
+    "name": "ftazW_16",
+    "parentName": "ftazW_16",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4609
+    ],
+    "time": {
+     "end": "2026-11-19T05:15:00.000+0100",
+     "start": "2026-11-19T01:15:00.000+0100"
+    },
+    "title": "Burggasse-Stadthalle"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "18.11.2026 00:45",
      "ausVon": "17.11.2026 20:45",
      "location": "Zwischengeschoss - Ausgang Erdbergstraße",
@@ -3352,6 +3494,43 @@
     "time": {
      "end": "2026-11-19T00:45:00.000+0100",
      "start": "2026-11-18T20:45:00.000+0100"
+    },
+    "title": "Nußdorfer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "19.11.2026 05:15",
+     "ausVon": "19.11.2026 01:15",
+     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Döblinger Hauptstraße",
+     "rbls": [
+      4603
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Nußdorfer Straße",
+     "status": "geplante Wartung",
+     "towards": "U6 Siebenhirten"
+    },
+    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Döblinger Hauptstraße",
+    "elevatorId": "NS 02",
+    "name": "ftazW_210",
+    "parentName": "ftazW_210",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4603
+    ],
+    "time": {
+     "end": "2026-11-19T05:15:00.000+0100",
+     "start": "2026-11-19T01:15:00.000+0100"
     },
     "title": "Nußdorfer Straße"
    },
@@ -3722,6 +3901,43 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "19.11.2026 05:15",
+     "ausVon": "19.11.2026 01:15",
+     "location": "U1 Bahnsteig Richtung Oberlaa - Ausgang Schüttaustraße",
+     "rbls": [
+      4106
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Kaisermühlen-VIC",
+     "status": "geplante Wartung",
+     "towards": "U1 Oberlaa"
+    },
+    "description": "U1 Bahnsteig Richtung Oberlaa - Ausgang Schüttaustraße",
+    "elevatorId": "KM 02",
+    "name": "ftazW_42",
+    "parentName": "ftazW_42",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4106
+    ],
+    "time": {
+     "end": "2026-11-19T05:15:00.000+0100",
+     "start": "2026-11-19T01:15:00.000+0100"
+    },
+    "title": "Kaisermühlen-VIC"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "18.11.2026 05:15",
      "ausVon": "18.11.2026 01:15",
      "location": "U6 Bahnsteig Richtung Siebenhirten - Passage - Ausgang Anton Baumgartner Straße",
@@ -3939,6 +4155,43 @@
     "time": {
      "end": "2026-11-19T00:45:00.000+0100",
      "start": "2026-11-18T20:45:00.000+0100"
+    },
+    "title": "Ottakring"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "19.11.2026 05:15",
+     "ausVon": "19.11.2026 01:15",
+     "location": "U3 Bahnsteig Richtung Simmering - Ausgang Koppstraße",
+     "rbls": [
+      4931
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Ottakring",
+     "status": "geplante Wartung",
+     "towards": "U3 Simmering"
+    },
+    "description": "U3 Bahnsteig Richtung Simmering - Ausgang Koppstraße",
+    "elevatorId": "OK 04",
+    "name": "ftazW_606",
+    "parentName": "ftazW_606",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedStops": [
+     4931
+    ],
+    "time": {
+     "end": "2026-11-19T05:15:00.000+0100",
+     "start": "2026-11-19T01:15:00.000+0100"
     },
     "title": "Ottakring"
    }

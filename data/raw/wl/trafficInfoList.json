@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261020-0029, I20261115-0038-F01"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261116-0001, I20261116-0003, I20261020-0029, I20261116-0002, I20261116-0004"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R401-101, R2379-627, R2380-627, R3886-480, R1884-101, R1880-101, R1881-101, R1882-101, R1883-101, R318-437, R293-474, R1875-101, R1876-101, R2558-125, R1749-508, R407-506, R402-506, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2380-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2379-627, R2373-127, R2373-126, R2378-627, R401-101, R2345-127, R3886-480, R318-437, R293-474, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2558-125, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,52 +171,184 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
+    "alertCause": "miscellaneous",
+    "alertCauseId": 137,
     "attributes": {
      "relatedLineTypes": {
-      "71": "ptTram"
+      "U6": "ptMetro"
      }
     },
-    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 71: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie U6: Unregelmäßige Intervalle in Richtung Floridsdorf. Grund: Betriebsstörung.",
+    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in Richtung Floridsdorf. <br><br>Grund: Betriebsstörung.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 71: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "71: Rettungseinsatz"
+       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in Richtung Floridsdorf. <br><br>Grund: Betriebsstörung.</p>",
+       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in Richtung Floridsdorf. Grund: Betriebsstörung.",
+       "title": "U6: Verspätungen"
       }
      }
     ],
-    "name": "I20261115-0038-F01",
+    "name": "I20261116-0001",
     "owner": "WL",
-    "parentName": "I20261115-0038",
+    "parentName": "I20261116-0001",
     "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
+    "reasonId": 14,
+    "reasonName": "Betriebsstörung",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "71"
+     "U6"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 171,
-      "lineName": "71",
-      "vehicleType": "ptTram"
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
      }
-    ],
-    "relatedStops": [
-     2012
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-16T00:06:00.000+0100",
-     "lastUpdate": "2026-11-16T00:06:00.000+0100",
-     "resume": "2026-11-16T00:06:00.000+0100",
-     "start": "2026-11-15T23:53:00.000+0100"
+     "created": "2026-11-16T05:07:00.000+0100",
+     "lastUpdate": "2026-11-16T05:07:00.000+0100",
+     "resume": "2026-11-16T05:05:00.000+0100",
+     "start": "2026-11-16T05:05:00.000+0100"
     },
-    "title": "71: Rettungseinsatz"
+    "title": "U6: Verspätungen"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U3: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261116-0002",
+    "owner": "WL",
+    "parentName": "I20261116-0002",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T05:11:00.000+0100",
+     "lastUpdate": "2026-11-16T05:11:00.000+0100",
+     "resume": "2026-11-16T05:10:00.000+0100",
+     "start": "2026-11-16T05:10:00.000+0100"
+    },
+    "title": "U3: Verspätungen"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U1: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261116-0003",
+    "owner": "WL",
+    "parentName": "I20261116-0003",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 301,
+      "lineName": "U1",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-11-16T05:25:00.000+0100",
+     "end": "2026-11-16T05:28:00.000+0100",
+     "lastUpdate": "2026-11-16T05:28:00.000+0100",
+     "resume": "2026-11-16T05:25:00.000+0100",
+     "start": "2026-11-16T05:25:00.000+0100"
+    },
+    "title": "U1: Verspätungen"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Die Linie U1 fährt derzeit zwischen den Stationen Kagran und Kagraner Platz in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig. Voraussichtliche Dauer: 06:00 Uhr. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Die Linie U1 fährt derzeit zwischen den Stationen Kagran und Kagraner Platz in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 06:00 Uhr.</p><p>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Die Linie U1 fährt derzeit zwischen den Stationen Kagran und Kagraner Platz in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 06:00 Uhr.</p><p>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Die Linie U1 fährt derzeit zwischen den Stationen Kagran und Kagraner Platz in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig. Voraussichtliche Dauer: 06:00 Uhr. Grund: Schadhaftes Fahrzeug.",
+       "title": "U1: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261116-0004",
+    "owner": "WL",
+    "parentName": "I20261116-0004",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 301,
+      "lineName": "U1",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T05:30:00.000+0100",
+     "lastUpdate": "2026-11-16T05:30:00.000+0100",
+     "start": "2026-11-16T05:28:00.000+0100"
+    },
+    "title": "U1: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -240,29 +372,6 @@
      "start": "2026-11-16T04:45:10.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
-    "name": "R1749-508",
-    "owner": "WL",
-    "parentName": "R1749-508",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N8"
-    ],
-    "relatedStops": [
-     1749
-    ],
-    "time": {
-     "end": "2026-11-16T05:15:00.000+0100",
-     "start": "2026-11-16T00:45:00.000+0100"
-    },
-    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A"
    },
    {
     "alertCause": "undefined alert cause",
@@ -861,52 +970,6 @@
      "start": "2026-11-13T00:00:12.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 ",
-    "name": "R402-506",
-    "owner": "WL",
-    "parentName": "R402-506",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N6"
-    ],
-    "relatedStops": [
-     402
-    ],
-    "time": {
-     "end": "2026-11-16T05:05:00.000+0100",
-     "start": "2026-11-16T00:55:24.000+0100"
-    },
-    "title": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
-    "name": "R407-506",
-    "owner": "WL",
-    "parentName": "R407-506",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N6"
-    ],
-    "relatedStops": [
-     407
-    ],
-    "time": {
-     "end": "2026-11-16T05:04:00.000+0100",
-     "start": "2026-11-16T00:54:24.000+0100"
-    },
-    "title": "Bauarbeiten\nBusse halten Quellenstraße 189"
    },
    {
     "alertCause": "undefined alert cause",
