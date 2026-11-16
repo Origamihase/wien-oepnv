@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261116-0004-F01, I20261116-0005, I20260925-0011, I20260909-0007, I20261020-0029, I20261116-0002"
+    "trafficInfoNameList": "I20261116-0004-F01, I20261116-0005, I20261116-0006, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2380-627, R401-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2379-627, R2372-125, R2373-125, R2373-127, R2373-126, R2345-127, R3886-480, R318-437, R293-474, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2558-125, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2373-126, R401-101, R2379-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2345-127, R2380-627, R3886-480, R1875-101, R293-474, R318-437, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R2558-125, R1974-466, R1199-205, R500-101, R1625-160, R1607-160, R1627-160, R1626-160, R1615-160, R1620-160, R1619-160, R1621-160, R1618-160, R1617-160, R1616-160, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -175,51 +175,6 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U3: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261116-0002",
-    "owner": "WL",
-    "parentName": "I20261116-0002",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-16T05:11:00.000+0100",
-     "lastUpdate": "2026-11-16T05:11:00.000+0100",
-     "resume": "2026-11-16T05:10:00.000+0100",
-     "start": "2026-11-16T05:10:00.000+0100"
-    },
-    "title": "U3: Verspätungen"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
       "U1": "ptMetro"
      }
     },
@@ -306,6 +261,53 @@
     "title": "63A: Verspätungen"
    },
    {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "60": "ptTram"
+     }
+    },
+    "description": "Linie 60: Betrieb nur zwischen Westbahnhof S U und Maurer-Lange-Gasse. Ersatz: Linie 60A. Voraussichtliche Dauer: 06:45 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rodaun.",
+    "descriptionHTML": "<p>Linie 60:<br>Betrieb nur zwischen Westbahnhof S U und Maurer-Lange-Gasse.</p><p>Ersatz: Linie 60A.</p><p>Voraussichtliche Dauer: 06:45 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rodaun.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 60:<br>Betrieb nur zwischen Westbahnhof S U und Maurer-Lange-Gasse.</p><p>Ersatz: Linie 60A.</p><p>Voraussichtliche Dauer: 06:45 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rodaun.</p>",
+       "descriptionPlain": "Linie 60: Betrieb nur zwischen Westbahnhof S U und Maurer-Lange-Gasse. Ersatz: Linie 60A. Voraussichtliche Dauer: 06:45 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rodaun.",
+       "title": "60: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261116-0006",
+    "owner": "WL",
+    "parentName": "I20261116-0006",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 160,
+      "lineName": "60",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     1624
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T06:19:00.000+0100",
+     "lastUpdate": "2026-11-16T06:19:00.000+0100",
+     "start": "2026-11-16T06:18:00.000+0100"
+    },
+    "title": "60: Schadhaftes Fahrzeug"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -327,6 +329,259 @@
      "start": "2026-11-16T04:45:10.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Maurer-Lange-Gasse",
+    "name": "R1607-160",
+    "owner": "WL",
+    "parentName": "R1607-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1607
+    ],
+    "time": {
+     "end": "2026-11-16T07:18:00.000+0100",
+     "start": "2026-11-16T06:19:49.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Maurer-Lange-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb nur bis Maurer-L.-Gasse",
+    "name": "R1615-160",
+    "owner": "WL",
+    "parentName": "R1615-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1615
+    ],
+    "time": {
+     "end": "2026-11-16T07:19:00.000+0100",
+     "start": "2026-11-16T06:20:19.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Maurer-L.-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb nur bis Maurer-L.-Gasse",
+    "name": "R1616-160",
+    "owner": "WL",
+    "parentName": "R1616-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1616
+    ],
+    "time": {
+     "end": "2026-11-16T07:19:00.000+0100",
+     "start": "2026-11-16T06:20:19.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Maurer-L.-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb nur bis Maurer-L.-Gasse",
+    "name": "R1617-160",
+    "owner": "WL",
+    "parentName": "R1617-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1617
+    ],
+    "time": {
+     "end": "2026-11-16T07:19:00.000+0100",
+     "start": "2026-11-16T06:20:19.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Maurer-L.-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb nur bis Maurer-L.-Gasse",
+    "name": "R1618-160",
+    "owner": "WL",
+    "parentName": "R1618-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1618
+    ],
+    "time": {
+     "end": "2026-11-16T07:19:00.000+0100",
+     "start": "2026-11-16T06:20:19.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Maurer-L.-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb nur bis Maurer-L.-Gasse",
+    "name": "R1619-160",
+    "owner": "WL",
+    "parentName": "R1619-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1619
+    ],
+    "time": {
+     "end": "2026-11-16T07:19:00.000+0100",
+     "start": "2026-11-16T06:20:19.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Maurer-L.-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb nur bis Maurer-L.-Gasse",
+    "name": "R1620-160",
+    "owner": "WL",
+    "parentName": "R1620-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1620
+    ],
+    "time": {
+     "end": "2026-11-16T07:19:00.000+0100",
+     "start": "2026-11-16T06:20:19.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Maurer-L.-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb nur bis Maurer-L.-Gasse",
+    "name": "R1621-160",
+    "owner": "WL",
+    "parentName": "R1621-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1621
+    ],
+    "time": {
+     "end": "2026-11-16T07:19:00.000+0100",
+     "start": "2026-11-16T06:20:19.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb nur bis Maurer-L.-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Maurer-Lange-Gasse",
+    "name": "R1625-160",
+    "owner": "WL",
+    "parentName": "R1625-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1625
+    ],
+    "time": {
+     "end": "2026-11-16T07:18:00.000+0100",
+     "start": "2026-11-16T06:19:49.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Maurer-Lange-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Maurer-Lange-Gasse",
+    "name": "R1626-160",
+    "owner": "WL",
+    "parentName": "R1626-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1626
+    ],
+    "time": {
+     "end": "2026-11-16T07:18:00.000+0100",
+     "start": "2026-11-16T06:19:49.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Maurer-Lange-Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Maurer-Lange-Gasse",
+    "name": "R1627-160",
+    "owner": "WL",
+    "parentName": "R1627-160",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "60"
+    ],
+    "relatedStops": [
+     1627
+    ],
+    "time": {
+     "end": "2026-11-16T07:18:00.000+0100",
+     "start": "2026-11-16T06:19:49.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Maurer-Lange-Gasse"
    },
    {
     "alertCause": "undefined alert cause",
