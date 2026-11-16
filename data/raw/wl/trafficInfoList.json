@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261116-0019-F01, I20260925-0011, I20260909-0007, I20261116-0022, I20261020-0029, I20261116-0021-F01"
+    "trafficInfoNameList": "I20261116-0019-F01, I20260925-0011, I20260909-0007, I20261116-0022, I20261116-0024, I20261020-0029, I20261116-0021-F01, I20261116-0023"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2373-127, R2343-626, R401-101, R2343-125, R2373-126, R2345-127, R2359-125, R2380-627, R2370-125, R2378-627, R2371-125, R2379-627, R2372-125, R2373-125, R3886-480, R1876-101, R318-437, R293-474, R1875-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2558-125, R1974-466, R1199-205, R500-101, R2959-415, R2915-401, R2904-401, R2910-401, R1621-160, R1622-160, R1623-160, R1606-160, R1620-160, R5611-160, R1614-160, R1615-160, R1613-160, R1610-160, R1611-160, R1612-160, R1616-160, R1619-160, R1618-160, R1617-160, R47-0, R17-0, R1625-160, R1607-160, R1631-160, R1630-160, R1629-160, R1628-160, R1627-160, R1626-160, R1633-160, R1632-160, R1634-160, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2343-125, R2359-125, R2370-125, R2380-627, R2371-125, R2343-626, R2379-627, R2372-125, R401-101, R2373-126, R2373-127, R2345-127, R2373-125, R2378-627, R3886-480, R293-474, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R318-437, R2558-125, R1974-466, R1199-205, R500-101, R2959-415, R2915-401, R2904-401, R2910-401, R47-0, R17-0, R1633-160, R1632-160, R1634-160, R277-144, R217-144, R219-144, R218-144, R555-144, R276-144, R1345-144, R1360-144, R1361-144, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -310,6 +310,96 @@
     "title": "26A: Rettungseinsatz"
    },
    {
+    "alertCause": "miscellaneous",
+    "alertCauseId": 137,
+    "attributes": {
+     "relatedLineTypes": {
+      "U4": "ptMetro"
+     }
+    },
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "descriptionHTML": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+       "descriptionPlain": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+       "title": "U4: Betriebsstörung"
+      }
+     }
+    ],
+    "name": "I20261116-0023",
+    "owner": "WL",
+    "parentName": "I20261116-0023",
+    "priority": "1",
+    "reasonId": 14,
+    "reasonName": "Betriebsstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 304,
+      "lineName": "U4",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T15:40:00.000+0100",
+     "lastUpdate": "2026-11-16T15:40:00.000+0100",
+     "resume": "2026-11-16T15:40:00.000+0100",
+     "start": "2026-11-16T15:40:00.000+0100"
+    },
+    "title": "U4: Betriebsstörung"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "44": "ptTram"
+     }
+    },
+    "description": "Linie 44: Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Ersatz: Linien 2, 9 und 46. Voraussichtliche Dauer: 16:30 Uhr. Grund: Fremder Verkehrsunfall im Bereich Ottakringer Straße # Wichtelgasse.",
+    "descriptionHTML": "<p>Linie 44:<br>Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz.</p><p>Ersatz: Linien 2, 9 und 46.</p><p>Voraussichtliche Dauer: 16:30 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Ottakringer Straße # Wichtelgasse.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 44:<br>Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz.</p><p>Ersatz: Linien 2, 9 und 46.</p><p>Voraussichtliche Dauer: 16:30 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Ottakringer Straße # Wichtelgasse.</p>",
+       "descriptionPlain": "Linie 44: Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Ersatz: Linien 2, 9 und 46. Voraussichtliche Dauer: 16:30 Uhr. Grund: Fremder Verkehrsunfall im Bereich Ottakringer Straße # Wichtelgasse.",
+       "title": "44: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Ottakringer Straße / Wichtelgasse",
+    "name": "I20261116-0024",
+    "owner": "WL",
+    "parentName": "I20261116-0024",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 144,
+      "lineName": "44",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-16T15:52:00.000+0100",
+     "lastUpdate": "2026-11-16T15:53:00.000+0100",
+     "start": "2026-11-16T15:51:00.000+0100"
+    },
+    "title": "44: Fremder Verkehrsunfall"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -335,531 +425,71 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1606-160",
+    "description": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
+    "name": "R1345-144",
     "owner": "WL",
-    "parentName": "R1606-160",
+    "parentName": "R1345-144",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "60"
+     "44"
     ],
     "relatedStops": [
-     1606
+     1345
     ],
     "time": {
-     "end": "2026-11-16T15:45:00.000+0100",
-     "start": "2026-11-16T14:46:09.000+0100"
+     "end": "2026-11-16T16:52:00.000+0100",
+     "start": "2026-11-16T15:54:17.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1607-160",
+    "description": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
+    "name": "R1360-144",
     "owner": "WL",
-    "parentName": "R1607-160",
+    "parentName": "R1360-144",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "60"
+     "44"
     ],
     "relatedStops": [
-     1607
+     1360
     ],
     "time": {
-     "end": "2026-11-16T16:00:00.000+0100",
-     "start": "2026-11-16T15:00:41.000+0100"
+     "end": "2026-11-16T16:52:00.000+0100",
+     "start": "2026-11-16T15:54:17.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb nur bis Hofwiesengasse",
-    "name": "R1610-160",
+    "description": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
+    "name": "R1361-144",
     "owner": "WL",
-    "parentName": "R1610-160",
+    "parentName": "R1361-144",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "60"
+     "44"
     ],
     "relatedStops": [
-     1610
+     1361
     ],
     "time": {
-     "end": "2026-11-16T15:51:00.000+0100",
-     "start": "2026-11-16T14:53:10.000+0100"
+     "end": "2026-11-16T16:52:00.000+0100",
+     "start": "2026-11-16T15:54:17.000+0100"
     },
-    "title": "Rettungseinsatz\nBetrieb nur bis Hofwiesengasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb nur bis Hofwiesengasse",
-    "name": "R1611-160",
-    "owner": "WL",
-    "parentName": "R1611-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1611
-    ],
-    "time": {
-     "end": "2026-11-16T15:51:00.000+0100",
-     "start": "2026-11-16T14:53:10.000+0100"
-    },
-    "title": "Rettungseinsatz\nBetrieb nur bis Hofwiesengasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb nur bis Hofwiesengasse",
-    "name": "R1612-160",
-    "owner": "WL",
-    "parentName": "R1612-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1612
-    ],
-    "time": {
-     "end": "2026-11-16T15:51:00.000+0100",
-     "start": "2026-11-16T14:53:10.000+0100"
-    },
-    "title": "Rettungseinsatz\nBetrieb nur bis Hofwiesengasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb nur bis Hofwiesengasse",
-    "name": "R1613-160",
-    "owner": "WL",
-    "parentName": "R1613-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1613
-    ],
-    "time": {
-     "end": "2026-11-16T15:51:00.000+0100",
-     "start": "2026-11-16T14:53:10.000+0100"
-    },
-    "title": "Rettungseinsatz\nBetrieb nur bis Hofwiesengasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb nur bis Hofwiesengasse",
-    "name": "R1614-160",
-    "owner": "WL",
-    "parentName": "R1614-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1614
-    ],
-    "time": {
-     "end": "2026-11-16T15:51:00.000+0100",
-     "start": "2026-11-16T14:53:10.000+0100"
-    },
-    "title": "Rettungseinsatz\nBetrieb nur bis Hofwiesengasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb nur bis Hofwiesengasse",
-    "name": "R1615-160",
-    "owner": "WL",
-    "parentName": "R1615-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1615
-    ],
-    "time": {
-     "end": "2026-11-16T15:51:00.000+0100",
-     "start": "2026-11-16T14:53:10.000+0100"
-    },
-    "title": "Rettungseinsatz\nBetrieb nur bis Hofwiesengasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1616-160",
-    "owner": "WL",
-    "parentName": "R1616-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1616
-    ],
-    "time": {
-     "end": "2026-11-16T15:52:00.000+0100",
-     "start": "2026-11-16T14:53:10.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1617-160",
-    "owner": "WL",
-    "parentName": "R1617-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1617
-    ],
-    "time": {
-     "end": "2026-11-16T15:52:00.000+0100",
-     "start": "2026-11-16T14:53:10.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1618-160",
-    "owner": "WL",
-    "parentName": "R1618-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1618
-    ],
-    "time": {
-     "end": "2026-11-16T15:52:00.000+0100",
-     "start": "2026-11-16T14:53:10.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1619-160",
-    "owner": "WL",
-    "parentName": "R1619-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1619
-    ],
-    "time": {
-     "end": "2026-11-16T15:52:00.000+0100",
-     "start": "2026-11-16T14:53:10.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1620-160",
-    "owner": "WL",
-    "parentName": "R1620-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1620
-    ],
-    "time": {
-     "end": "2026-11-16T15:45:00.000+0100",
-     "start": "2026-11-16T14:46:09.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1621-160",
-    "owner": "WL",
-    "parentName": "R1621-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1621
-    ],
-    "time": {
-     "end": "2026-11-16T15:45:00.000+0100",
-     "start": "2026-11-16T14:46:09.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1622-160",
-    "owner": "WL",
-    "parentName": "R1622-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1622
-    ],
-    "time": {
-     "end": "2026-11-16T15:45:00.000+0100",
-     "start": "2026-11-16T14:46:09.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1623-160",
-    "owner": "WL",
-    "parentName": "R1623-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1623
-    ],
-    "time": {
-     "end": "2026-11-16T15:45:00.000+0100",
-     "start": "2026-11-16T14:46:09.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1625-160",
-    "owner": "WL",
-    "parentName": "R1625-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1625
-    ],
-    "time": {
-     "end": "2026-11-16T16:00:00.000+0100",
-     "start": "2026-11-16T15:00:41.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1626-160",
-    "owner": "WL",
-    "parentName": "R1626-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1626
-    ],
-    "time": {
-     "end": "2026-11-16T16:00:00.000+0100",
-     "start": "2026-11-16T15:00:41.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1627-160",
-    "owner": "WL",
-    "parentName": "R1627-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1627
-    ],
-    "time": {
-     "end": "2026-11-16T16:00:00.000+0100",
-     "start": "2026-11-16T15:00:41.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1628-160",
-    "owner": "WL",
-    "parentName": "R1628-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1628
-    ],
-    "time": {
-     "end": "2026-11-16T16:00:00.000+0100",
-     "start": "2026-11-16T15:00:41.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1629-160",
-    "owner": "WL",
-    "parentName": "R1629-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1629
-    ],
-    "time": {
-     "end": "2026-11-16T16:00:00.000+0100",
-     "start": "2026-11-16T15:00:41.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1630-160",
-    "owner": "WL",
-    "parentName": "R1630-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1630
-    ],
-    "time": {
-     "end": "2026-11-16T16:00:00.000+0100",
-     "start": "2026-11-16T15:00:41.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1631-160",
-    "owner": "WL",
-    "parentName": "R1631-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1631
-    ],
-    "time": {
-     "end": "2026-11-16T16:00:00.000+0100",
-     "start": "2026-11-16T15:00:41.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1133,6 +763,75 @@
      "start": "2026-11-16T04:40:10.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
+    "name": "R217-144",
+    "owner": "WL",
+    "parentName": "R217-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     217
+    ],
+    "time": {
+     "end": "2026-11-16T16:52:00.000+0100",
+     "start": "2026-11-16T15:54:14.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
+    "name": "R218-144",
+    "owner": "WL",
+    "parentName": "R218-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     218
+    ],
+    "time": {
+     "end": "2026-11-16T16:52:00.000+0100",
+     "start": "2026-11-16T15:54:14.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
+    "name": "R219-144",
+    "owner": "WL",
+    "parentName": "R219-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     219
+    ],
+    "time": {
+     "end": "2026-11-16T16:52:00.000+0100",
+     "start": "2026-11-16T15:54:14.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1459,6 +1158,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
+    "name": "R276-144",
+    "owner": "WL",
+    "parentName": "R276-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     276
+    ],
+    "time": {
+     "end": "2026-11-16T16:52:00.000+0100",
+     "start": "2026-11-16T15:54:16.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R277-144",
+    "owner": "WL",
+    "parentName": "R277-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     277
+    ],
+    "time": {
+     "end": "2026-11-16T16:50:00.000+0100",
+     "start": "2026-11-16T15:51:16.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
     "name": "R2904-401",
     "owner": "WL",
@@ -1686,25 +1431,25 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb nur bis Hofwiesengasse",
-    "name": "R5611-160",
+    "description": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
+    "name": "R555-144",
     "owner": "WL",
-    "parentName": "R5611-160",
+    "parentName": "R555-144",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "60"
+     "44"
     ],
     "relatedStops": [
-     5611
+     555
     ],
     "time": {
-     "end": "2026-11-16T15:51:00.000+0100",
-     "start": "2026-11-16T14:52:42.000+0100"
+     "end": "2026-11-16T16:52:00.000+0100",
+     "start": "2026-11-16T15:54:15.000+0100"
     },
-    "title": "Rettungseinsatz\nBetrieb nur bis Hofwiesengasse"
+    "title": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",

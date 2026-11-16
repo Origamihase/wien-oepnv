@@ -934,6 +934,46 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "44: Fremder Verkehrsunfall",
+    "description": "Linie 44: Betrieb nur zwischen Schottentor U und Johann-Nepomuk-Berger-Platz. Ersatz: Linien 2, 9 und 46. Voraussichtliche Dauer: 16:30 Uhr. Grund: Fremder Verkehrsunfall im Bereich Ottakringer Straße # Wichtelgasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "f53a283f3ee969f2582a7c1c05102b661c4ea8366276196d0cf3bbc0187a3be3",
+    "pubDate": "2026-11-16T15:51:00+01:00",
+    "starts_at": "2026-11-16T15:51:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=44|D=2026-11-16|TK=44 fremder verkehrsunfall",
+    "_wl_ids": [
+      "I20261116-0024"
+    ],
+    "_incident_start": "2026-11-16T15:51:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "13da360ca8a94dcafa0dd3aa043ce5baefa02c1c92c93d57c144cc19166804d0",
+    "pubDate": "2026-11-16T15:51:16+01:00",
+    "starts_at": "2026-11-16T15:51:16+01:00",
+    "ends_at": "2026-11-16T16:50:00+01:00",
+    "_identity": "wl|störung|L=44|D=2026-11-16|TK=fahrtbehinderung fremder verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Rettungseinsatz Betrieb nur bis Johann-N.-Berger-Platz",
+    "description": "Rettungseinsatz\nBetrieb nur bis Johann-N.-Berger-Platz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "c14ad7374d16f14cd0154afd971ba66872a46e7f70c45ab6156ec3ada2b6a22a",
+    "pubDate": "2026-11-16T15:54:14+01:00",
+    "starts_at": "2026-11-16T15:54:17+01:00",
+    "ends_at": "2026-11-16T16:52:00+01:00",
+    "_identity": "wl|störung|L=44|D=2026-11-16|TK=rettungseinsatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -994,6 +1034,22 @@
     "starts_at": "2026-11-13T00:00:14+01:00",
     "ends_at": "2026-11-16T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-13|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Betriebsstörung",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682",
+    "pubDate": "2026-11-16T15:40:00+01:00",
+    "starts_at": "2026-11-16T15:40:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U4|D=2026-11-16|TK=u4 betriebsstörung",
+    "_wl_ids": [
+      "I20261116-0023"
+    ],
+    "_incident_start": "2026-11-16T15:40:00+01:00"
   },
   {
     "source": "Wiener Linien",
