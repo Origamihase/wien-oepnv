@@ -2,5 +2,74 @@
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
- "owners": {}
+ "owners": {
+  "R1925-170|2026-11-16T21:05:17.000+0100": {
+   "incident": "I20261116-0036",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1926-111|2026-11-16T21:03:17.000+0100": {
+   "incident": "I20261116-0036",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1926-170|2026-11-16T21:02:17.000+0100": {
+   "incident": "I20261116-0036",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1930-170|2026-11-16T21:02:17.000+0100": {
+   "incident": "I20261116-0036",
+   "title": "Polizeieinsatz\nBetrieb ab Quellenplatz"
+  },
+  "R1931-170|2026-11-16T21:05:47.000+0100": {
+   "incident": "I20261116-0036",
+   "title": "Polizeieinsatz\nBetrieb ab Quellenplatz"
+  },
+  "R1932-170|2026-11-16T21:05:47.000+0100": {
+   "incident": "I20261116-0036",
+   "title": "Polizeieinsatz\nBetrieb ab Quellenplatz"
+  },
+  "R1933-170|2026-11-16T21:06:17.000+0100": {
+   "incident": "I20261116-0036",
+   "title": "Polizeieinsatz\nZüge halten bei Linie 6 Richtung Burggasse"
+  },
+  "R2231-111|2026-11-16T21:06:47.000+0100": {
+   "incident": "I20261116-0036",
+   "title": "Polizeieinsatz\nBetrieb ab Quellenplatz"
+  },
+  "R2244-111|2026-11-16T21:06:17.000+0100": {
+   "incident": "I20261116-0036",
+   "title": "Polizeieinsatz\nBetrieb ab Quellenplatz"
+  },
+  "R2252-111|2026-11-16T21:03:17.000+0100": {
+   "incident": "I20261116-0036",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R2253-111|2026-11-16T21:03:17.000+0100": {
+   "incident": "I20261116-0036",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R2254-111|2026-11-16T21:03:17.000+0100": {
+   "incident": "I20261116-0036",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R2255-111|2026-11-16T21:03:17.000+0100": {
+   "incident": "I20261116-0036",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R2256-111|2026-11-16T21:03:17.000+0100": {
+   "incident": "I20261116-0036",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R2261-111|2026-11-16T21:03:17.000+0100": {
+   "incident": "I20261116-0036",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R299-170|2026-11-16T21:02:16.000+0100": {
+   "incident": "I20261116-0036",
+   "title": "Polizeieinsatz\nBetrieb ab Quellenplatz"
+  },
+  "R343-170|2026-11-16T21:05:17.000+0100": {
+   "incident": "I20261116-0036",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  }
+ }
 }
