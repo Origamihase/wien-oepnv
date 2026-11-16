@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_371, ftazW_37, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_1017119, ftazW_599, ftazW_23, ftazW_370, ftazW_1018061, ftazW_393, ftazW_1032342, ftazW_1017120, ftazW_283, ftazW_485, ftazW_369, ftazW_17, ftazW_4, ftazW_18, ftazW_484, ftazW_368, ftazW_15, ftazW_1032355, ftazW_5, ftazW_603, ftazW_209, ftazW_1017121, ftazW_19, ftazW_41, ftazW_16, ftazW_606, ftazW_1018092, ftazW_42, ftazW_1018049, ftazW_210, ftazW_1017123"
+    "trafficInfoNameList": "ftazW_371, ftazW_37, ftazW_1018062, ftazW_521, ftazW_1032341, ftazW_112, ftazW_1017119, ftazW_599, ftazW_23, ftazW_370, ftazW_1018061, ftazW_393, ftazW_1032342, ftazW_1017120, ftazW_283, ftazW_485, ftazW_369, ftazW_17, ftazW_4, ftazW_18, ftazW_484, ftazW_368, ftazW_15, ftazW_1032355, ftazW_5, ftazW_603, ftazW_209, ftazW_1017121, ftazW_19, ftazW_41, ftazW_16, ftazW_606, ftazW_1018092, ftazW_42, ftazW_1018049, ftazW_210, ftazW_1017123"
    }
   ],
   "poiCategoryGroups": [
@@ -3154,6 +3154,47 @@
      "start": "2026-11-18T01:15:00.000+0100"
     },
     "title": "Seestadt"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "17.11.2026 00:45",
+     "ausVon": "16.11.2026 20:45",
+     "location": "U1 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U4 - Ausgang Schwedenplatz",
+     "rbls": [
+      4113,
+      4116
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1",
+      "U4"
+     ],
+     "station": "Schwedenplatz",
+     "status": "geplante Wartung",
+     "towards": "U1 beide Richtungen"
+    },
+    "description": "U1 Mittelbahnsteig - Zwischengeschoss Zugang Aufzug U4 - Ausgang Schwedenplatz",
+    "elevatorId": "SP 01",
+    "name": "ftazW_112",
+    "parentName": "ftazW_112",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1",
+     "U4"
+    ],
+    "relatedStops": [
+     4113,
+     4116
+    ],
+    "time": {
+     "end": "2026-11-17T00:45:00.000+0100",
+     "start": "2026-11-16T20:45:00.000+0100"
+    },
+    "title": "Schwedenplatz"
    },
    {
     "alertCause": "undefined alert cause",
