@@ -906,6 +906,34 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "43/44: Schadhaftes Fahrzeug",
+    "description": "Linie 43: Betrieb nur zwischen Neuwaldegg und Alser Straße U. Linie 44: Betrieb nur zwischen Ottakring, Maroltingergasse und Johann-Nepomuk-Berger-Platz. Voraussichtliche Dauer: 09:30 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Schottentor U.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "8c61d1d238976ebb3859bc9f9a2330185c9ae7d2caacd27f862b42bbe624cceb",
+    "pubDate": "2026-11-16T08:58:00+01:00",
+    "starts_at": "2026-11-16T08:58:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=43,44|D=2026-11-16|TK=43 44 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261116-0010"
+    ],
+    "_incident_start": "2026-11-16T08:58:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Schadhafter Zug Betrieb ab Johhan-N.-Berger. Platz",
+    "description": "Schadhafter Zug\nBetrieb ab Johhan-N.-Berger. Platz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "ca94eb13cf20031ffa0a80ca802c326d8153eef45b7056856607fa3d7400c366",
+    "pubDate": "2026-11-16T09:00:33+01:00",
+    "starts_at": "2026-11-16T09:00:36+01:00",
+    "ends_at": "2026-11-16T09:59:00+01:00",
+    "_identity": "wl|störung|L=44|D=2026-11-16|TK=schadhafter zug betrieb ab johhan n berger platz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -982,22 +1010,6 @@
     "starts_at": "2026-11-13T00:00:14+01:00",
     "ends_at": "2026-11-16T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-13|TK=betrieb ab vivariumstrasse 2"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Verspätungen",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
-    "pubDate": "2026-11-16T08:06:00+01:00",
-    "starts_at": "2026-11-16T08:06:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U3|D=2026-11-16|TK=u3 verspätungen",
-    "_wl_ids": [
-      "I20261116-0008"
-    ],
-    "_incident_start": "2026-11-16T08:06:00+01:00"
   },
   {
     "source": "Wiener Linien",
