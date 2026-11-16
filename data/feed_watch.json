@@ -1,16 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-16T09:30:56.844381+00:00",
- "built": "2026-11-16T10:30:41+01:00",
+ "updated": "2026-11-16T10:00:45.782348+00:00",
+ "built": "2026-11-16T11:00:34+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-16T10:30:41+01:00",
+  "built": "2026-11-16T11:00:34+01:00",
   "items": [
    {
-    "title": "48A: Rettungseinsatz",
-    "time_line": "Seit 10:10"
+    "title": "60: Polizeieinsatz",
+    "time_line": "Seit 10:34"
    },
    {
     "title": "44: Schadhaftes Fahrzeug",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-09T09:30:57.876611+00:00",
-   "raw": {
-    "wl-stoerungen": 36,
-    "wl-hinweise": 97,
-    "oebb": 177,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 27,
-    "oebb": 150,
-    "baustellen": 64
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 9,
-    "wl": 77
-   }
-  },
   {
    "t": "2026-11-09T10:01:03.656340+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 6,
     "wl": 81
    }
+  },
+  {
+   "t": "2026-11-16T10:00:45.782348+00:00",
+   "raw": {
+    "wl-stoerungen": 52,
+    "wl-hinweise": 98,
+    "oebb": 177,
+    "baustellen-linien": 50,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 29,
+    "oebb": 152,
+    "baustellen": 61
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 81
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-16T09:30:56.844381+00:00"
+   "last_ok": "2026-11-16T10:00:45.782348+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-16T09:30:56.844381+00:00"
+   "last_ok": "2026-11-16T10:00:45.782348+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-16T09:30:56.844381+00:00"
+   "last_ok": "2026-11-16T10:00:45.782348+00:00"
   }
  }
 }
