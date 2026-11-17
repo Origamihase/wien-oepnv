@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261117-0035-F01-F01, I20261117-0033, I20261117-0038, I20261117-0039-F01, I20260925-0011, I20260909-0007, I20261117-0034, I20261117-0031, I20261117-0041, I20261020-0029, I20261117-0032-F01, I20261117-0037, I20261117-0040-F01"
+    "trafficInfoNameList": "I20261117-0033, I20261117-0038, I20261117-0039-F01, I20261117-0042, I20260925-0011, I20260909-0007, I20261117-0034, I20261117-0031, I20261117-0041, I20261117-0035-F01-F01, I20261020-0029, I20261117-0032-F01, I20261117-0037, I20261117-0040-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2558-125, R318-437, R293-474, R401-101, R1876-101, R1875-101, R1882-101, R1883-101, R1881-101, R1880-101, R1884-101, R2373-126, R2380-627, R2379-627, R2371-125, R2372-125, R2373-125, R2370-125, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2373-127, R3886-480, R1974-466, R1199-205, R500-101, R47-0, R17-0, R49-102, R531-109, R556-109, R532-109, R526-109, R530-109, R223-109, R966-125, R1021-125, R1015-125, R1012-125, R880-125, R1007-125, R1006-125, R1008-125, R533-109, R1475-109, R1476-109, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2558-125, R293-474, R318-437, R401-101, R1881-101, R1880-101, R1876-101, R1875-101, R1884-101, R1883-101, R1882-101, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R3886-480, R1974-466, R1199-205, R500-101, R47-0, R17-0, R49-102, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -388,11 +388,12 @@
       "vehicleType": "ptTram"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-17T16:59:00.000+0100",
      "end": "2026-11-17T18:29:00.000+0100",
-     "lastUpdate": "2026-11-17T17:42:00.000+0100",
+     "lastUpdate": "2026-11-17T18:29:00.000+0100",
+     "resume": "2026-11-17T18:29:00.000+0100",
      "start": "2026-11-17T16:36:00.000+0100"
     },
     "title": "60: Fremder Verkehrsunfall"
@@ -628,142 +629,49 @@
     "title": "U4: Betriebsstörung"
    },
    {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "PKW im Gleis\nBetrieb ab SMZ",
-    "name": "R1006-125",
-    "owner": "WL",
-    "parentName": "R1006-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     1006
-    ],
-    "time": {
-     "end": "2026-11-17T18:08:00.000+0100",
-     "start": "2026-11-17T17:09:07.000+0100"
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
     },
-    "title": "PKW im Gleis\nBetrieb ab SMZ"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "PKW im Gleis\nBetrieb ab SMZ",
-    "name": "R1007-125",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "U6: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261117-0042",
     "owner": "WL",
-    "parentName": "R1007-125",
+    "parentName": "I20261117-0042",
     "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "25"
+     "U6"
     ],
-    "relatedStops": [
-     1007
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
     ],
+    "status": "active",
     "time": {
-     "end": "2026-11-17T18:08:00.000+0100",
-     "start": "2026-11-17T17:09:07.000+0100"
+     "created": "2026-11-17T18:10:00.000+0100",
+     "lastUpdate": "2026-11-17T18:10:00.000+0100",
+     "resume": "2026-11-17T18:10:00.000+0100",
+     "start": "2026-11-17T18:10:00.000+0100"
     },
-    "title": "PKW im Gleis\nBetrieb ab SMZ"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "PKW im Gleis\nBetrieb ab SMZ",
-    "name": "R1008-125",
-    "owner": "WL",
-    "parentName": "R1008-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     1008
-    ],
-    "time": {
-     "end": "2026-11-17T18:08:00.000+0100",
-     "start": "2026-11-17T17:09:07.000+0100"
-    },
-    "title": "PKW im Gleis\nBetrieb ab SMZ"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "PKW im Gleis \nBetrieb ab Kagran ",
-    "name": "R1012-125",
-    "owner": "WL",
-    "parentName": "R1012-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     1012
-    ],
-    "time": {
-     "end": "2026-11-17T18:06:00.000+0100",
-     "start": "2026-11-17T17:08:07.000+0100"
-    },
-    "title": "PKW im Gleis \nBetrieb ab Kagran "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "PKW im Gleis \nBetrieb ab Kagran ",
-    "name": "R1015-125",
-    "owner": "WL",
-    "parentName": "R1015-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     1015
-    ],
-    "time": {
-     "end": "2026-11-17T18:06:00.000+0100",
-     "start": "2026-11-17T17:08:07.000+0100"
-    },
-    "title": "PKW im Gleis \nBetrieb ab Kagran "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "PKW im Gleis \nBetrieb ab Kagran ",
-    "name": "R1021-125",
-    "owner": "WL",
-    "parentName": "R1021-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     1021
-    ],
-    "time": {
-     "end": "2026-11-17T18:06:00.000+0100",
-     "start": "2026-11-17T17:08:07.000+0100"
-    },
-    "title": "PKW im Gleis \nBetrieb ab Kagran "
+    "title": "U6: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -787,52 +695,6 @@
      "start": "2026-11-17T04:45:22.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1475-109",
-    "owner": "WL",
-    "parentName": "R1475-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     1475
-    ],
-    "time": {
-     "end": "2026-11-17T18:10:00.000+0100",
-     "start": "2026-11-17T17:10:37.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1476-109",
-    "owner": "WL",
-    "parentName": "R1476-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     1476
-    ],
-    "time": {
-     "end": "2026-11-17T18:10:00.000+0100",
-     "start": "2026-11-17T17:10:37.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1037,29 +899,6 @@
      "start": "2026-11-17T04:40:22.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R223-109",
-    "owner": "WL",
-    "parentName": "R223-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     223
-    ],
-    "time": {
-     "end": "2026-11-17T18:04:00.000+0100",
-     "start": "2026-11-17T17:04:35.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1540,190 +1379,6 @@
      "start": "2026-11-17T05:00:22.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R526-109",
-    "owner": "WL",
-    "parentName": "R526-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     526
-    ],
-    "time": {
-     "end": "2026-11-17T18:04:00.000+0100",
-     "start": "2026-11-17T17:04:33.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R530-109",
-    "owner": "WL",
-    "parentName": "R530-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     530
-    ],
-    "time": {
-     "end": "2026-11-17T18:04:00.000+0100",
-     "start": "2026-11-17T17:04:33.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R531-109",
-    "owner": "WL",
-    "parentName": "R531-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     531
-    ],
-    "time": {
-     "end": "2026-11-17T18:04:00.000+0100",
-     "start": "2026-11-17T17:04:33.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R532-109",
-    "owner": "WL",
-    "parentName": "R532-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     532
-    ],
-    "time": {
-     "end": "2026-11-17T18:04:00.000+0100",
-     "start": "2026-11-17T17:04:33.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R533-109",
-    "owner": "WL",
-    "parentName": "R533-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     533
-    ],
-    "time": {
-     "end": "2026-11-17T18:10:00.000+0100",
-     "start": "2026-11-17T17:10:34.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R556-109",
-    "owner": "WL",
-    "parentName": "R556-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     556
-    ],
-    "time": {
-     "end": "2026-11-17T18:04:00.000+0100",
-     "start": "2026-11-17T17:04:33.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "PKW im Gleis\nBetrieb ab SMZ",
-    "name": "R880-125",
-    "owner": "WL",
-    "parentName": "R880-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     880
-    ],
-    "time": {
-     "end": "2026-11-17T18:08:00.000+0100",
-     "start": "2026-11-17T17:09:05.000+0100"
-    },
-    "title": "PKW im Gleis\nBetrieb ab SMZ"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "PKW im Gleis \nBetrieb ab Kagran ",
-    "name": "R966-125",
-    "owner": "WL",
-    "parentName": "R966-125",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedStops": [
-     966
-    ],
-    "time": {
-     "end": "2026-11-17T18:06:00.000+0100",
-     "start": "2026-11-17T17:08:07.000+0100"
-    },
-    "title": "PKW im Gleis \nBetrieb ab Kagran "
    },
    {
     "alertCause": "undefined alert cause",
