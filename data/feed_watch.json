@@ -1,20 +1,44 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-17T07:30:57.103004+00:00",
- "built": "2026-11-17T08:30:41+01:00",
+ "updated": "2026-11-17T08:00:53.524304+00:00",
+ "built": "2026-11-17T09:00:34+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-17T08:30:41+01:00",
+  "built": "2026-11-17T09:00:34+01:00",
   "items": [
    {
-    "title": "U1: Schadhaftes Fahrzeug",
-    "time_line": "Seit 08:29"
+    "title": "10A: Stromstörung",
+    "time_line": "Seit 08:51"
    },
    {
-    "title": "U2: Schadhaftes Fahrzeug",
-    "time_line": "Seit 08:03"
+    "title": "5/12: Stromstörung",
+    "time_line": "Seit 08:37"
+   },
+   {
+    "title": "37: Stromstörung",
+    "time_line": "Seit 08:34"
+   },
+   {
+    "title": "9: Stromstörung",
+    "time_line": "Seit 08:30"
+   },
+   {
+    "title": "U2: Rettungseinsatz",
+    "time_line": "Seit 08:56"
+   },
+   {
+    "title": "35A: Verspätungen",
+    "time_line": "Seit 08:55"
+   },
+   {
+    "title": "40/41: Stromstörung",
+    "time_line": "Seit 08:30"
+   },
+   {
+    "title": "42: Stromstörung",
+    "time_line": "Seit 08:30"
    },
    {
     "title": "5: Rettungseinsatz",
@@ -23,55 +47,11 @@
    {
     "title": "U6: Verspätungen",
     "time_line": "Seit 07:45"
-   },
-   {
-    "title": "O: Verkehrsunfall",
-    "time_line": "Seit 07:43"
-   },
-   {
-    "title": "32A: Rettungseinsatz",
-    "time_line": "Seit 07:25"
-   },
-   {
-    "title": "13A: Demonstration",
-    "time_line": "Seit heute"
-   },
-   {
-    "title": "N31: Bauarbeiten",
-    "time_line": "Ab Mi 18.11. bis Do 19.11."
-   },
-   {
-    "title": "15A: Bhf. Meidling, Schedifkaplatz",
-    "time_line": "Seit 16.11."
-   },
-   {
-    "title": "8A: Küniglberg, ORF Zentrum",
-    "time_line": "Bis 24.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-10T07:31:04.028723+00:00",
-   "raw": {
-    "wl-stoerungen": 45,
-    "wl-hinweise": 93,
-    "oebb": 181,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 25,
-    "oebb": 156,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 7,
-    "wl": 86
-   }
-  },
   {
    "t": "2026-11-10T08:01:13.866314+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 6,
     "wl": 86
    }
+  },
+  {
+   "t": "2026-11-17T08:00:53.524304+00:00",
+   "raw": {
+    "wl-stoerungen": 94,
+    "wl-hinweise": 91,
+    "oebb": 171,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 25,
+    "oebb": 148,
+    "baustellen": 60
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 102
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-17T07:30:57.103004+00:00"
+   "last_ok": "2026-11-17T08:00:53.524304+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-17T07:30:57.103004+00:00"
+   "last_ok": "2026-11-17T08:00:53.524304+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-17T07:30:57.103004+00:00"
+   "last_ok": "2026-11-17T08:00:53.524304+00:00"
   }
  }
 }

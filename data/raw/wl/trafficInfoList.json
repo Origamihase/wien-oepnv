@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261117-0001, I20261117-0006, I20260925-0011, I20261117-0002-F01, I20261117-0004-F01, I20261117-0005, I20261117-0007, I20260909-0007, I20261117-0003, I20261020-0029"
+    "trafficInfoNameList": "I20261117-0001, I20261117-0003, I20261117-0002-F01, I20261117-0006, I20261020-0029, I20261117-0008-F01, I20261117-0008-F02, I20261117-0008-F03, I20261117-0008-F04, I20261117-0009, I20261117-0004-F01, I20261117-0010, I20261117-0011, I20261117-0007-F01, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2558-125, R318-437, R293-474, R401-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R1883-101, R1884-101, R2372-125, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R3886-480, R1974-466, R1199-205, R500-101, R303-170, R304-170, R305-170, R302-170, R301-170, R306-170, R307-170, R350-105, R349-105, R347-105, R345-105, R346-105, R390-105, R388-105, R387-105, R392-105, R693-413, R40-413, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2558-125, R293-474, R318-437, R401-101, R1875-101, R1880-101, R1884-101, R1883-101, R1882-101, R1881-101, R1876-101, R2359-125, R2378-627, R2343-125, R2343-626, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2370-125, R2371-125, R2372-125, R2373-125, R3886-480, R1974-466, R1199-205, R500-101, R349-105, R345-105, R346-105, R347-105, R387-105, R388-105, R390-105, R392-105, R693-413, R40-413, R177-0, R141-0, R521-0, R189-0, R190-0, R192-0, R188-0, R141-140, R1315-141, R1316-0, R1315-0, R143-0, R144-0, R146-0, R147-0, R187-0, R148-0, R524-109, R526-109, R223-109, R521-109, R552-109, R550-109, R549-109, R524-142, R493-142, R1342-142, R455-142, R1336-142, R1338-142, R2973-410, R2971-410, R2968-410, R2977-410, R2880-410, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -348,58 +348,11 @@
     "status": "active",
     "time": {
      "created": "2026-11-17T08:04:00.000+0100",
-     "lastUpdate": "2026-11-17T08:04:00.000+0100",
-     "resume": "2026-11-17T08:04:00.000+0100",
+     "end": "2026-11-17T09:48:00.000+0100",
+     "lastUpdate": "2026-11-17T08:55:00.000+0100",
      "start": "2026-11-17T07:54:00.000+0100"
     },
     "title": "5: Rettungseinsatz"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U2": "ptMetro"
-     }
-    },
-    "description": "Linie U2: Betrieb zwischen den Stationen Schottentor und Volkstheater in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 08:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rathaus.",
-    "descriptionHTML": "<p>Linie U2:<br>Betrieb zwischen den Stationen Schottentor und Volkstheater in beiden Richtungen über Gleis 2.</p><p>Voraussichtliche Dauer: 08:40 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rathaus.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U2:<br>Betrieb zwischen den Stationen Schottentor und Volkstheater in beiden Richtungen über Gleis 2.</p><p>Voraussichtliche Dauer: 08:40 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rathaus.</p>",
-       "descriptionPlain": "Linie U2: Betrieb zwischen den Stationen Schottentor und Volkstheater in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 08:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rathaus.",
-       "title": "U2: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261117-0005",
-    "owner": "WL",
-    "parentName": "I20261117-0005",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 302,
-      "lineName": "U2",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4205
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-17T08:04:00.000+0100",
-     "lastUpdate": "2026-11-17T08:19:00.000+0100",
-     "start": "2026-11-17T08:03:00.000+0100"
-    },
-    "title": "U2: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "demonstration",
@@ -454,18 +407,18 @@
       "U1": "ptMetro"
      }
     },
-    "description": "Linie U1: Fahrtbehinderung in Richtung Oberlaa. Voraussichtliche Dauer: 08:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Keplerplatz.",
-    "descriptionHTML": "<p>Linie U1:<br>Fahrtbehinderung in Richtung Oberlaa.</p><p>Voraussichtliche Dauer: 08:40 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Keplerplatz.</p>",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie U1:<br>Fahrtbehinderung in Richtung Oberlaa.</p><p>Voraussichtliche Dauer: 08:40 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Keplerplatz.</p>",
-       "descriptionPlain": "Linie U1: Fahrtbehinderung in Richtung Oberlaa. Voraussichtliche Dauer: 08:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Keplerplatz.",
+       "descriptionHtml": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "U1: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261117-0007",
+    "name": "I20261117-0007-F01",
     "owner": "WL",
     "parentName": "I20261117-0007",
     "priority": "1",
@@ -485,13 +438,345 @@
     "relatedStops": [
      4103
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
-     "created": "2026-11-17T08:29:00.000+0100",
-     "lastUpdate": "2026-11-17T08:29:00.000+0100",
+     "created": "2026-11-17T08:31:00.000+0100",
+     "end": "2026-11-17T08:59:00.000+0100",
+     "lastUpdate": "2026-11-17T08:59:00.000+0100",
+     "resume": "2026-11-17T08:59:00.000+0100",
      "start": "2026-11-17T08:29:00.000+0100"
     },
     "title": "U1: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "track circuit problem",
+    "alertCauseId": 48,
+    "attributes": {
+     "relatedLineTypes": {
+      "9": "ptTram"
+     }
+    },
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "9: Stromstörung"
+      }
+     }
+    ],
+    "name": "I20261117-0008-F01",
+    "owner": "WL",
+    "parentName": "I20261117-0008",
+    "priority": "1",
+    "reasonId": 33,
+    "reasonName": "Stromstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 109,
+      "lineName": "9",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     143
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-17T08:53:00.000+0100",
+     "lastUpdate": "2026-11-17T08:53:00.000+0100",
+     "resume": "2026-11-17T08:53:00.000+0100",
+     "start": "2026-11-17T08:30:00.000+0100"
+    },
+    "title": "9: Stromstörung"
+   },
+   {
+    "alertCause": "track circuit problem",
+    "alertCauseId": 48,
+    "attributes": {
+     "relatedLineTypes": {
+      "40": "ptTram"
+     }
+    },
+    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "40: Stromstörung"
+      }
+     }
+    ],
+    "name": "I20261117-0008-F02",
+    "owner": "WL",
+    "parentName": "I20261117-0008",
+    "priority": "1",
+    "reasonId": 33,
+    "reasonName": "Stromstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 140,
+      "lineName": "40",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     143
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-17T08:53:00.000+0100",
+     "lastUpdate": "2026-11-17T08:53:00.000+0100",
+     "resume": "2026-11-17T08:53:00.000+0100",
+     "start": "2026-11-17T08:30:00.000+0100"
+    },
+    "title": "40: Stromstörung"
+   },
+   {
+    "alertCause": "track circuit problem",
+    "alertCauseId": 48,
+    "attributes": {
+     "relatedLineTypes": {
+      "41": "ptTram"
+     }
+    },
+    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "41: Stromstörung"
+      }
+     }
+    ],
+    "name": "I20261117-0008-F03",
+    "owner": "WL",
+    "parentName": "I20261117-0008",
+    "priority": "1",
+    "reasonId": 33,
+    "reasonName": "Stromstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 141,
+      "lineName": "41",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     143
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-17T08:53:00.000+0100",
+     "lastUpdate": "2026-11-17T08:53:00.000+0100",
+     "resume": "2026-11-17T08:53:00.000+0100",
+     "start": "2026-11-17T08:30:00.000+0100"
+    },
+    "title": "41: Stromstörung"
+   },
+   {
+    "alertCause": "track circuit problem",
+    "alertCauseId": 48,
+    "attributes": {
+     "relatedLineTypes": {
+      "42": "ptTram"
+     }
+    },
+    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 42: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 42: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "42: Stromstörung"
+      }
+     }
+    ],
+    "name": "I20261117-0008-F04",
+    "owner": "WL",
+    "parentName": "I20261117-0008",
+    "priority": "1",
+    "reasonId": 33,
+    "reasonName": "Stromstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 142,
+      "lineName": "42",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     143
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-17T08:53:00.000+0100",
+     "lastUpdate": "2026-11-17T08:53:00.000+0100",
+     "resume": "2026-11-17T08:53:00.000+0100",
+     "start": "2026-11-17T08:30:00.000+0100"
+    },
+    "title": "42: Stromstörung"
+   },
+   {
+    "alertCause": "track circuit problem",
+    "alertCauseId": 48,
+    "attributes": {
+     "relatedLineTypes": {
+      "10A": "ptBusCity"
+     }
+    },
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Stromstörung.",
+    "descriptionHTML": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Stromstörung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Stromstörung.</p>",
+       "descriptionPlain": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Stromstörung.",
+       "title": "10A: Stromstörung"
+      }
+     }
+    ],
+    "name": "I20261117-0009",
+    "owner": "WL",
+    "parentName": "I20261117-0009",
+    "priority": "1",
+    "reasonId": 33,
+    "reasonName": "Stromstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 410,
+      "lineName": "10A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-17T08:54:00.000+0100",
+     "lastUpdate": "2026-11-17T08:54:00.000+0100",
+     "resume": "2026-11-17T08:52:00.000+0100",
+     "start": "2026-11-17T08:52:00.000+0100"
+    },
+    "title": "10A: Stromstörung"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "35A": "ptBusCity"
+     }
+    },
+    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "35A: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261117-0010",
+    "owner": "WL",
+    "parentName": "I20261117-0010",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "35A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 435,
+      "lineName": "35A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-17T08:56:00.000+0100",
+     "end": "2026-11-17T09:37:00.000+0100",
+     "lastUpdate": "2026-11-17T08:56:00.000+0100",
+     "resume": "2026-11-17T08:55:00.000+0100",
+     "start": "2026-11-17T08:55:00.000+0100"
+    },
+    "title": "35A: Verspätungen"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "U2": "ptMetro"
+     }
+    },
+    "description": "Die Linie U2 fährt derzeit zwischen den Stationen Krieau und Messe in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig. Voraussichtliche Dauer: 09:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Krieau.",
+    "descriptionHTML": "<p>Die Linie U2 fährt derzeit zwischen den Stationen Krieau und Messe in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 09:20 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Krieau.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Die Linie U2 fährt derzeit zwischen den Stationen Krieau und Messe in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 09:20 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Krieau.</p>",
+       "descriptionPlain": "Die Linie U2 fährt derzeit zwischen den Stationen Krieau und Messe in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig. Voraussichtliche Dauer: 09:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Krieau.",
+       "title": "U2: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261117-0011",
+    "owner": "WL",
+    "parentName": "I20261117-0011",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 302,
+      "lineName": "U2",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4258
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-17T08:58:00.000+0100",
+     "lastUpdate": "2026-11-17T08:58:00.000+0100",
+     "start": "2026-11-17T08:56:00.000+0100"
+    },
+    "title": "U2: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -515,6 +800,321 @@
      "start": "2026-11-17T04:45:22.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung \nBetrieb ab Spitalgasse",
+    "name": "R1315-0",
+    "owner": "WL",
+    "parentName": "R1315-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     1315
+    ],
+    "time": {
+     "end": "2026-11-17T09:35:00.000+0100",
+     "start": "2026-11-17T08:36:15.000+0100"
+    },
+    "title": "Stromstörung \nBetrieb ab Spitalgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R1315-141",
+    "owner": "WL",
+    "parentName": "R1315-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     1315
+    ],
+    "time": {
+     "end": "2026-11-17T09:34:00.000+0100",
+     "start": "2026-11-17T08:35:15.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung \nBetrieb ab Spitalgasse",
+    "name": "R1316-0",
+    "owner": "WL",
+    "parentName": "R1316-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     1316
+    ],
+    "time": {
+     "end": "2026-11-17T09:35:00.000+0100",
+     "start": "2026-11-17T08:36:15.000+0100"
+    },
+    "title": "Stromstörung \nBetrieb ab Spitalgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R1336-142",
+    "owner": "WL",
+    "parentName": "R1336-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     1336
+    ],
+    "time": {
+     "end": "2026-11-17T09:41:00.000+0100",
+     "start": "2026-11-17T08:42:16.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R1338-142",
+    "owner": "WL",
+    "parentName": "R1338-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     1338
+    ],
+    "time": {
+     "end": "2026-11-17T09:41:00.000+0100",
+     "start": "2026-11-17T08:42:16.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung \nBetrieb ab Spitalgasse",
+    "name": "R1342-142",
+    "owner": "WL",
+    "parentName": "R1342-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     1342
+    ],
+    "time": {
+     "end": "2026-11-17T09:41:00.000+0100",
+     "start": "2026-11-17T08:41:46.000+0100"
+    },
+    "title": "Stromstörung \nBetrieb ab Spitalgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung ",
+    "name": "R141-0",
+    "owner": "WL",
+    "parentName": "R141-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     141
+    ],
+    "time": {
+     "end": "2026-11-17T09:32:00.000+0100",
+     "start": "2026-11-17T08:33:14.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R141-140",
+    "owner": "WL",
+    "parentName": "R141-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     141
+    ],
+    "time": {
+     "end": "2026-11-17T09:34:00.000+0100",
+     "start": "2026-11-17T08:34:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung \nBetrieb ab Spitalgasse \n\n",
+    "name": "R143-0",
+    "owner": "WL",
+    "parentName": "R143-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     143
+    ],
+    "time": {
+     "end": "2026-11-17T09:36:00.000+0100",
+     "start": "2026-11-17T08:37:15.000+0100"
+    },
+    "title": "Stromstörung \nBetrieb ab Spitalgasse \n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung \nBetrieb ab Spitalgasse \n\n",
+    "name": "R144-0",
+    "owner": "WL",
+    "parentName": "R144-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     144
+    ],
+    "time": {
+     "end": "2026-11-17T09:36:00.000+0100",
+     "start": "2026-11-17T08:37:15.000+0100"
+    },
+    "title": "Stromstörung \nBetrieb ab Spitalgasse \n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung \nBetrieb ab Spitalgasse \n\n",
+    "name": "R146-0",
+    "owner": "WL",
+    "parentName": "R146-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     146
+    ],
+    "time": {
+     "end": "2026-11-17T09:36:00.000+0100",
+     "start": "2026-11-17T08:37:15.000+0100"
+    },
+    "title": "Stromstörung \nBetrieb ab Spitalgasse \n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung \nBetrieb ab Spitalgasse \n\n",
+    "name": "R147-0",
+    "owner": "WL",
+    "parentName": "R147-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     147
+    ],
+    "time": {
+     "end": "2026-11-17T09:36:00.000+0100",
+     "start": "2026-11-17T08:37:15.000+0100"
+    },
+    "title": "Stromstörung \nBetrieb ab Spitalgasse \n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung \nZüge halten bei Linien 5 und 12\n\n\n\n",
+    "name": "R148-0",
+    "owner": "WL",
+    "parentName": "R148-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     148
+    ],
+    "time": {
+     "end": "2026-11-17T09:36:00.000+0100",
+     "start": "2026-11-17T08:37:45.000+0100"
+    },
+    "title": "Stromstörung \nZüge halten bei Linien 5 und 12\n\n\n\n"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung ",
+    "name": "R177-0",
+    "owner": "WL",
+    "parentName": "R177-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     177
+    ],
+    "time": {
+     "end": "2026-11-17T09:32:00.000+0100",
+     "start": "2026-11-17T08:33:14.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung \nBetrieb ab Spitalgasse \n\n",
+    "name": "R187-0",
+    "owner": "WL",
+    "parentName": "R187-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     187
+    ],
+    "time": {
+     "end": "2026-11-17T09:36:00.000+0100",
+     "start": "2026-11-17T08:37:15.000+0100"
+    },
+    "title": "Stromstörung \nBetrieb ab Spitalgasse \n\n"
    },
    {
     "alertCause": "undefined alert cause",
@@ -561,6 +1161,26 @@
      "start": "2026-11-17T00:00:06.000+0100"
     },
     "title": "Gleisbauarbeiten\nKein Betrieb"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung \nUmleitung über die Linie 37, Nußdorfer Straße \n\n",
+    "name": "R188-0",
+    "owner": "WL",
+    "parentName": "R188-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     188
+    ],
+    "time": {
+     "end": "2026-11-17T09:33:00.000+0100",
+     "start": "2026-11-17T08:34:14.000+0100"
+    },
+    "title": "Stromstörung \nUmleitung über die Linie 37, Nußdorfer Straße \n\n"
    },
    {
     "alertCause": "undefined alert cause",
@@ -680,6 +1300,66 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung ",
+    "name": "R189-0",
+    "owner": "WL",
+    "parentName": "R189-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     189
+    ],
+    "time": {
+     "end": "2026-11-17T09:32:00.000+0100",
+     "start": "2026-11-17T08:33:14.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung ",
+    "name": "R190-0",
+    "owner": "WL",
+    "parentName": "R190-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     190
+    ],
+    "time": {
+     "end": "2026-11-17T09:32:00.000+0100",
+     "start": "2026-11-17T08:33:14.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung ",
+    "name": "R192-0",
+    "owner": "WL",
+    "parentName": "R192-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     192
+    ],
+    "time": {
+     "end": "2026-11-17T09:32:00.000+0100",
+     "start": "2026-11-17T08:33:14.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "name": "R1974-466",
     "owner": "WL",
@@ -699,6 +1379,29 @@
      "start": "2026-11-17T04:40:22.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nZüge halten Rosensteingasse 61",
+    "name": "R223-109",
+    "owner": "WL",
+    "parentName": "R223-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     223
+    ],
+    "time": {
+     "end": "2026-11-17T09:38:00.000+0100",
+     "start": "2026-11-17T08:39:15.000+0100"
+    },
+    "title": "Stromstörung\nZüge halten Rosensteingasse 61"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1025,6 +1728,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R2880-410",
+    "owner": "WL",
+    "parentName": "R2880-410",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     2880
+    ],
+    "time": {
+     "end": "2026-11-17T09:51:00.000+0100",
+     "start": "2026-11-17T08:51:47.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -1048,163 +1774,94 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R301-170",
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R2968-410",
     "owner": "WL",
-    "parentName": "R301-170",
+    "parentName": "R2968-410",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "O"
+     "10A"
     ],
     "relatedStops": [
-     301
+     2968
     ],
     "time": {
-     "end": "2026-11-17T08:44:00.000+0100",
-     "start": "2026-11-17T07:45:10.000+0100"
+     "end": "2026-11-17T09:51:00.000+0100",
+     "start": "2026-11-17T08:51:47.000+0100"
     },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R302-170",
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R2971-410",
     "owner": "WL",
-    "parentName": "R302-170",
+    "parentName": "R2971-410",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "O"
+     "10A"
     ],
     "relatedStops": [
-     302
+     2971
     ],
     "time": {
-     "end": "2026-11-17T08:44:00.000+0100",
-     "start": "2026-11-17T07:45:10.000+0100"
+     "end": "2026-11-17T09:51:00.000+0100",
+     "start": "2026-11-17T08:51:47.000+0100"
     },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R303-170",
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R2973-410",
     "owner": "WL",
-    "parentName": "R303-170",
+    "parentName": "R2973-410",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "O"
+     "10A"
     ],
     "relatedStops": [
-     303
+     2973
     ],
     "time": {
-     "end": "2026-11-17T08:44:00.000+0100",
-     "start": "2026-11-17T07:45:10.000+0100"
+     "end": "2026-11-17T09:51:00.000+0100",
+     "start": "2026-11-17T08:51:47.000+0100"
     },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R304-170",
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R2977-410",
     "owner": "WL",
-    "parentName": "R304-170",
+    "parentName": "R2977-410",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "O"
+     "10A"
     ],
     "relatedStops": [
-     304
+     2977
     ],
     "time": {
-     "end": "2026-11-17T08:44:00.000+0100",
-     "start": "2026-11-17T07:45:10.000+0100"
+     "end": "2026-11-17T09:51:00.000+0100",
+     "start": "2026-11-17T08:51:47.000+0100"
     },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R305-170",
-    "owner": "WL",
-    "parentName": "R305-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     305
-    ],
-    "time": {
-     "end": "2026-11-17T08:44:00.000+0100",
-     "start": "2026-11-17T07:45:10.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R306-170",
-    "owner": "WL",
-    "parentName": "R306-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     306
-    ],
-    "time": {
-     "end": "2026-11-17T08:51:00.000+0100",
-     "start": "2026-11-17T07:51:40.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R307-170",
-    "owner": "WL",
-    "parentName": "R307-170",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedStops": [
-     307
-    ],
-    "time": {
-     "end": "2026-11-17T08:51:00.000+0100",
-     "start": "2026-11-17T07:51:40.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1317,29 +1974,6 @@
     ],
     "time": {
      "end": "2026-11-17T09:01:00.000+0100",
-     "start": "2026-11-17T07:53:41.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R350-105",
-    "owner": "WL",
-    "parentName": "R350-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     350
-    ],
-    "time": {
-     "end": "2026-11-17T08:53:00.000+0100",
      "start": "2026-11-17T07:53:41.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -1508,6 +2142,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R455-142",
+    "owner": "WL",
+    "parentName": "R455-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     455
+    ],
+    "time": {
+     "end": "2026-11-17T09:41:00.000+0100",
+     "start": "2026-11-17T08:42:15.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung \nBetrieb ab Spitalgasse",
+    "name": "R493-142",
+    "owner": "WL",
+    "parentName": "R493-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     493
+    ],
+    "time": {
+     "end": "2026-11-17T09:41:00.000+0100",
+     "start": "2026-11-17T08:41:45.000+0100"
+    },
+    "title": "Stromstörung \nBetrieb ab Spitalgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -1527,6 +2207,187 @@
      "start": "2026-11-17T05:00:22.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung ",
+    "name": "R521-0",
+    "owner": "WL",
+    "parentName": "R521-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     521
+    ],
+    "time": {
+     "end": "2026-11-17T09:32:00.000+0100",
+     "start": "2026-11-17T08:33:14.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R521-109",
+    "owner": "WL",
+    "parentName": "R521-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     521
+    ],
+    "time": {
+     "end": "2026-11-17T09:39:00.000+0100",
+     "start": "2026-11-17T08:39:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Rosensteingasse ",
+    "name": "R524-109",
+    "owner": "WL",
+    "parentName": "R524-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     524
+    ],
+    "time": {
+     "end": "2026-11-17T09:38:00.000+0100",
+     "start": "2026-11-17T08:38:44.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Rosensteingasse "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung \nBetrieb ab Spitalgasse",
+    "name": "R524-142",
+    "owner": "WL",
+    "parentName": "R524-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     524
+    ],
+    "time": {
+     "end": "2026-11-17T09:41:00.000+0100",
+     "start": "2026-11-17T08:41:45.000+0100"
+    },
+    "title": "Stromstörung \nBetrieb ab Spitalgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Rosensteingasse ",
+    "name": "R526-109",
+    "owner": "WL",
+    "parentName": "R526-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     526
+    ],
+    "time": {
+     "end": "2026-11-17T09:38:00.000+0100",
+     "start": "2026-11-17T08:38:44.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Rosensteingasse "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R549-109",
+    "owner": "WL",
+    "parentName": "R549-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     549
+    ],
+    "time": {
+     "end": "2026-11-17T09:39:00.000+0100",
+     "start": "2026-11-17T08:39:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R550-109",
+    "owner": "WL",
+    "parentName": "R550-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     550
+    ],
+    "time": {
+     "end": "2026-11-17T09:39:00.000+0100",
+     "start": "2026-11-17T08:39:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R552-109",
+    "owner": "WL",
+    "parentName": "R552-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     552
+    ],
+    "time": {
+     "end": "2026-11-17T09:39:00.000+0100",
+     "start": "2026-11-17T08:39:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
    },
    {
     "alertCause": "undefined alert cause",
