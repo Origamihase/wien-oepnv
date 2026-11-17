@@ -1,40 +1,32 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-17T22:30:53.150682+00:00",
- "built": "2026-11-17T23:30:35+01:00",
+ "updated": "2026-11-17T23:00:59.845611+00:00",
+ "built": "2026-11-18T00:00:45+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-17T23:30:35+01:00",
+  "built": "2026-11-18T00:00:45+01:00",
   "items": [
    {
     "title": "U4: Schadhaftes Fahrzeug",
-    "time_line": "Seit 23:19"
-   },
-   {
-    "title": "U2: Betriebsstörung",
-    "time_line": "Seit 23:03"
-   },
-   {
-    "title": "U6: Betriebsstörung",
-    "time_line": "Seit 21:57"
+    "time_line": "Seit 17.11."
    },
    {
     "title": "2: Gleisschaden",
-    "time_line": "Seit 16:04"
+    "time_line": "Seit 17.11."
    },
    {
     "title": "N71: Bauarbeiten",
-    "time_line": "Ab Mi 18.11. bis 27.11."
+    "time_line": "Bis 27.11."
+   },
+   {
+    "title": "N31: Bauarbeiten",
+    "time_line": "Bis Do 19.11."
    },
    {
     "title": "1A: Polizeiübung",
     "time_line": "Bis Mo 23.11."
-   },
-   {
-    "title": "N31: Bauarbeiten",
-    "time_line": "Ab Mi 18.11. bis Do 19.11."
    },
    {
     "title": "15A: Bhf. Meidling, Schedifkaplatz",
@@ -42,36 +34,24 @@
    },
    {
     "title": "8A: Küniglberg, ORF Zentrum",
-    "time_line": "Bis 24.11."
+    "time_line": "Bis Di 24.11."
    },
    {
     "title": "5A/N31: Obere Augartenstraße",
     "time_line": "Bis 11.12."
+   },
+   {
+    "title": "74A: Rabengasse",
+    "time_line": "Seit 16.11."
+   },
+   {
+    "title": "98A: Arztgasse",
+    "time_line": "Seit 16.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-10T22:30:57.689984+00:00",
-   "raw": {
-    "wl-stoerungen": 52,
-    "wl-hinweise": 87,
-    "oebb": 195,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 23,
-    "oebb": 170,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 7,
-    "wl": 77
-   }
-  },
   {
    "t": "2026-11-10T23:01:01.009809+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 7,
     "wl": 82
    }
+  },
+  {
+   "t": "2026-11-17T23:00:59.845611+00:00",
+   "raw": {
+    "wl-stoerungen": 39,
+    "wl-hinweise": 91,
+    "oebb": 173,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 27,
+    "oebb": 152,
+    "baustellen": 60
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 79
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-17T22:30:53.150682+00:00"
+   "last_ok": "2026-11-17T23:00:59.845611+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-17T22:30:53.150682+00:00"
+   "last_ok": "2026-11-17T23:00:59.845611+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-17T22:30:53.150682+00:00"
+   "last_ok": "2026-11-17T23:00:59.845611+00:00"
   }
  }
 }
