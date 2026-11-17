@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261117-0033, I20261117-0038, I20260925-0011, I20260909-0007, I20261117-0034, I20261117-0036, I20261117-0031, I20261020-0029, I20261117-0028-F02, I20261117-0032-F01, I20261117-0037, I20261117-0035, I20261117-0035-F01-F01, I20261117-0035-F01"
+    "trafficInfoNameList": "I20261117-0033, I20261117-0038, I20261117-0039-F01, I20260925-0011, I20260909-0007, I20261117-0034, I20261117-0031, I20261020-0029, I20261117-0032-F01, I20261117-0037, I20261117-0035-F01-F01, I20261117-0040"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2558-125, R318-437, R293-474, R401-101, R1881-101, R1880-101, R1876-101, R1875-101, R1884-101, R1882-101, R1883-101, R2380-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2345-127, R3886-480, R1974-466, R1199-205, R500-101, R47-0, R17-0, R49-102, R45-136, R46-136, R130-136, R118-136, R103-136, R102-136, R1620-160, R1606-160, R1618-160, R1616-160, R1617-160, R1619-160, R1633-160, R1607-160, R1625-160, R1629-160, R1630-160, R1631-160, R1632-160, R1634-160, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2558-125, R318-437, R293-474, R401-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R2373-125, R2373-127, R2373-126, R2379-627, R2345-127, R2380-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R3886-480, R1974-466, R1199-205, R500-101, R47-0, R17-0, R49-102, R1606-160, R1620-160, R1617-160, R1616-160, R1618-160, R1619-160, R1630-160, R1633-160, R1607-160, R1632-160, R1629-160, R1631-160, R1625-160, R1634-160, R532-109, R556-109, R526-109, R530-109, R531-109, R223-109, R966-125, R1021-125, R1015-125, R1012-125, R880-125, R1008-125, R1007-125, R1006-125, R533-109, R1475-109, R1476-109, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -169,54 +169,6 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "52": "ptTram"
-     }
-    },
-    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 52: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 52: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "52: Schadhafter PKW"
-      }
-     }
-    ],
-    "name": "I20261117-0028-F02",
-    "owner": "WL",
-    "parentName": "I20261117-0028",
-    "priority": "1",
-    "reasonId": 18,
-    "reasonName": "Schadhafter PKW",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "52"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 152,
-      "lineName": "52",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     1455
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-17T15:19:00.000+0100",
-     "lastUpdate": "2026-11-17T15:19:00.000+0100",
-     "resume": "2026-11-17T15:19:00.000+0100",
-     "start": "2026-11-17T14:57:00.000+0100"
-    },
-    "title": "52: Schadhafter PKW"
    },
    {
     "alertCause": "roadway damage",
@@ -407,100 +359,6 @@
       "60": "ptTram"
      }
     },
-    "description": "Linie 60: Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse. Ersatz: Linien 56A und 60A. Voraussichtliche Dauer: 17:10 Uhr. Grund: Fremder Verkehrsunfall im Bereich Speisinger Straße # 258.",
-    "descriptionHTML": "<p>Linie 60:<br>Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse.</p><p>Ersatz: Linien 56A und 60A.</p><p>Voraussichtliche Dauer: 17:10 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Speisinger Straße # 258.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 60:<br>Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse.</p><p>Ersatz: Linien 56A und 60A.</p><p>Voraussichtliche Dauer: 17:10 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Speisinger Straße # 258.</p>",
-       "descriptionPlain": "Linie 60: Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse. Ersatz: Linien 56A und 60A. Voraussichtliche Dauer: 17:10 Uhr. Grund: Fremder Verkehrsunfall im Bereich Speisinger Straße # 258.",
-       "title": "60: Fremder Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Speisinger Straße / 258",
-    "name": "I20261117-0035",
-    "owner": "WL",
-    "parentName": "I20261117-0035",
-    "priority": "1",
-    "reasonId": 13,
-    "reasonName": "Fremder Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 160,
-      "lineName": "60",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-17T16:37:00.000+0100",
-     "end": "2026-11-17T16:59:00.000+0100",
-     "lastUpdate": "2026-11-17T16:59:00.000+0100",
-     "resume": "2026-11-17T16:59:00.000+0100",
-     "start": "2026-11-17T16:36:00.000+0100"
-    },
-    "title": "60: Fremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "60": "ptTram"
-     }
-    },
-    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "60: Fremder Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Speisinger Straße / 258",
-    "name": "I20261117-0035-F01",
-    "owner": "WL",
-    "parentName": "I20261117-0035",
-    "priority": "1",
-    "reasonId": 13,
-    "reasonName": "Fremder Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 160,
-      "lineName": "60",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-17T16:59:00.000+0100",
-     "end": "2026-11-17T16:59:00.000+0100",
-     "lastUpdate": "2026-11-17T16:59:00.000+0100",
-     "resume": "2026-11-17T16:59:00.000+0100",
-     "start": "2026-11-17T16:36:00.000+0100"
-    },
-    "title": "60: Fremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "60": "ptTram"
-     }
-    },
     "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
@@ -538,51 +396,6 @@
      "start": "2026-11-17T16:36:00.000+0100"
     },
     "title": "60: Fremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "64A": "ptBusCity"
-     }
-    },
-    "description": "Linie 64A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 64A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 64A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 64A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-       "title": "64A: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261117-0036",
-    "owner": "WL",
-    "parentName": "I20261117-0036",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "64A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 464,
-      "lineName": "64A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-17T16:43:00.000+0100",
-     "lastUpdate": "2026-11-17T16:43:00.000+0100",
-     "resume": "2026-11-17T16:43:00.000+0100",
-     "start": "2026-11-17T16:43:00.000+0100"
-    },
-    "title": "64A: Verkehrsunfall"
    },
    {
     "alertCause": "heavy traffic",
@@ -675,73 +488,233 @@
     "title": "12A: Verkehrsüberlastung"
    },
    {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R102-136",
-    "owner": "WL",
-    "parentName": "R102-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     102
-    ],
-    "time": {
-     "end": "2026-11-17T17:26:00.000+0100",
-     "start": "2026-11-17T16:27:30.000+0100"
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "9": "ptTram"
+     }
     },
-    "title": "Fahrtbehinderung\nFalschparker"
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "9: Falschparker"
+      }
+     }
+    ],
+    "location": "Hormayrgasse",
+    "name": "I20261117-0039-F01",
+    "owner": "WL",
+    "parentName": "I20261117-0039",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 109,
+      "lineName": "9",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-17T17:17:00.000+0100",
+     "lastUpdate": "2026-11-17T17:17:00.000+0100",
+     "resume": "2026-11-17T17:17:00.000+0100",
+     "start": "2026-11-17T17:03:00.000+0100"
+    },
+    "title": "9: Falschparker"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "25": "ptTram"
+     }
+    },
+    "description": "Die Linie 25 fährt derzeit nicht zwischen Donauspital U und Kagran U. Ersatz: Linien U2, 26A, 95A, 96A. Voraussichtliche Dauer: 18:00 Uhr. Grund: Fahrzeug im Gleis im Bereich Wagramer Straße.",
+    "descriptionHTML": "<p>Die Linie 25 fährt derzeit nicht zwischen Donauspital U und Kagran U.</p><p>Ersatz: Linien U2, 26A, 95A, 96A.</p><p>Voraussichtliche Dauer: 18:00 Uhr.</p><p>Grund: Fahrzeug im Gleis im Bereich Wagramer Straße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Die Linie 25 fährt derzeit nicht zwischen Donauspital U und Kagran U.</p><p>Ersatz: Linien U2, 26A, 95A, 96A.</p><p>Voraussichtliche Dauer: 18:00 Uhr.</p><p>Grund: Fahrzeug im Gleis im Bereich Wagramer Straße.</p>",
+       "descriptionPlain": "Die Linie 25 fährt derzeit nicht zwischen Donauspital U und Kagran U. Ersatz: Linien U2, 26A, 95A, 96A. Voraussichtliche Dauer: 18:00 Uhr. Grund: Fahrzeug im Gleis im Bereich Wagramer Straße.",
+       "title": "25: Fahrzeug im Gleis"
+      }
+     }
+    ],
+    "location": "Wagramer Straße",
+    "name": "I20261117-0040",
+    "owner": "WL",
+    "parentName": "I20261117-0040",
+    "priority": "1",
+    "reasonId": 45,
+    "reasonName": "Fahrzeug im Gleis",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 125,
+      "lineName": "25",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-17T17:09:00.000+0100",
+     "lastUpdate": "2026-11-17T17:11:00.000+0100",
+     "start": "2026-11-17T17:06:00.000+0100"
+    },
+    "title": "25: Fahrzeug im Gleis"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R103-136",
+    "description": "PKW im Gleis\nBetrieb ab SMZ",
+    "name": "R1006-125",
     "owner": "WL",
-    "parentName": "R103-136",
+    "parentName": "R1006-125",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "D"
+     "25"
     ],
     "relatedStops": [
-     103
+     1006
     ],
     "time": {
-     "end": "2026-11-17T17:26:00.000+0100",
-     "start": "2026-11-17T16:27:30.000+0100"
+     "end": "2026-11-17T18:08:00.000+0100",
+     "start": "2026-11-17T17:09:07.000+0100"
     },
-    "title": "Fahrtbehinderung\nFalschparker"
+    "title": "PKW im Gleis\nBetrieb ab SMZ"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R118-136",
+    "description": "PKW im Gleis\nBetrieb ab SMZ",
+    "name": "R1007-125",
     "owner": "WL",
-    "parentName": "R118-136",
+    "parentName": "R1007-125",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "D"
+     "25"
     ],
     "relatedStops": [
-     118
+     1007
     ],
     "time": {
-     "end": "2026-11-17T17:26:00.000+0100",
-     "start": "2026-11-17T16:27:30.000+0100"
+     "end": "2026-11-17T18:08:00.000+0100",
+     "start": "2026-11-17T17:09:07.000+0100"
     },
-    "title": "Fahrtbehinderung\nFalschparker"
+    "title": "PKW im Gleis\nBetrieb ab SMZ"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "PKW im Gleis\nBetrieb ab SMZ",
+    "name": "R1008-125",
+    "owner": "WL",
+    "parentName": "R1008-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     1008
+    ],
+    "time": {
+     "end": "2026-11-17T18:08:00.000+0100",
+     "start": "2026-11-17T17:09:07.000+0100"
+    },
+    "title": "PKW im Gleis\nBetrieb ab SMZ"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "PKW im Gleis \nBetrieb ab Kagran ",
+    "name": "R1012-125",
+    "owner": "WL",
+    "parentName": "R1012-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     1012
+    ],
+    "time": {
+     "end": "2026-11-17T18:06:00.000+0100",
+     "start": "2026-11-17T17:08:07.000+0100"
+    },
+    "title": "PKW im Gleis \nBetrieb ab Kagran "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "PKW im Gleis \nBetrieb ab Kagran ",
+    "name": "R1015-125",
+    "owner": "WL",
+    "parentName": "R1015-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     1015
+    ],
+    "time": {
+     "end": "2026-11-17T18:06:00.000+0100",
+     "start": "2026-11-17T17:08:07.000+0100"
+    },
+    "title": "PKW im Gleis \nBetrieb ab Kagran "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "PKW im Gleis \nBetrieb ab Kagran ",
+    "name": "R1021-125",
+    "owner": "WL",
+    "parentName": "R1021-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     1021
+    ],
+    "time": {
+     "end": "2026-11-17T18:06:00.000+0100",
+     "start": "2026-11-17T17:08:07.000+0100"
+    },
+    "title": "PKW im Gleis \nBetrieb ab Kagran "
    },
    {
     "alertCause": "undefined alert cause",
@@ -770,22 +743,45 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R130-136",
+    "name": "R1475-109",
     "owner": "WL",
-    "parentName": "R130-136",
+    "parentName": "R1475-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "D"
+     "9"
     ],
     "relatedStops": [
-     130
+     1475
     ],
     "time": {
-     "end": "2026-11-17T17:26:00.000+0100",
-     "start": "2026-11-17T16:27:30.000+0100"
+     "end": "2026-11-17T18:10:00.000+0100",
+     "start": "2026-11-17T17:10:37.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1476-109",
+    "owner": "WL",
+    "parentName": "R1476-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     1476
+    ],
+    "time": {
+     "end": "2026-11-17T18:10:00.000+0100",
+     "start": "2026-11-17T17:10:37.000+0100"
     },
     "title": "Fahrtbehinderung\nFalschparker"
    },
@@ -1318,6 +1314,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R223-109",
+    "owner": "WL",
+    "parentName": "R223-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     223
+    ],
+    "time": {
+     "end": "2026-11-17T18:04:00.000+0100",
+     "start": "2026-11-17T17:04:35.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Linien 25 und 26\nBetrieb ab Josef-Baumann-Gasse",
     "name": "R2343-125",
     "owner": "WL",
@@ -1732,52 +1751,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R45-136",
-    "owner": "WL",
-    "parentName": "R45-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     45
-    ],
-    "time": {
-     "end": "2026-11-17T17:26:00.000+0100",
-     "start": "2026-11-17T16:27:30.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R46-136",
-    "owner": "WL",
-    "parentName": "R46-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     46
-    ],
-    "time": {
-     "end": "2026-11-17T17:26:00.000+0100",
-     "start": "2026-11-17T16:27:30.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Haltestelle\naufgelassen!\n\nStop closed!",
     "name": "R47-0",
     "owner": "WL",
@@ -1840,6 +1813,190 @@
      "start": "2026-11-17T05:00:22.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R526-109",
+    "owner": "WL",
+    "parentName": "R526-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     526
+    ],
+    "time": {
+     "end": "2026-11-17T18:04:00.000+0100",
+     "start": "2026-11-17T17:04:33.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R530-109",
+    "owner": "WL",
+    "parentName": "R530-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     530
+    ],
+    "time": {
+     "end": "2026-11-17T18:04:00.000+0100",
+     "start": "2026-11-17T17:04:33.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R531-109",
+    "owner": "WL",
+    "parentName": "R531-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     531
+    ],
+    "time": {
+     "end": "2026-11-17T18:04:00.000+0100",
+     "start": "2026-11-17T17:04:33.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R532-109",
+    "owner": "WL",
+    "parentName": "R532-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     532
+    ],
+    "time": {
+     "end": "2026-11-17T18:04:00.000+0100",
+     "start": "2026-11-17T17:04:33.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R533-109",
+    "owner": "WL",
+    "parentName": "R533-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     533
+    ],
+    "time": {
+     "end": "2026-11-17T18:10:00.000+0100",
+     "start": "2026-11-17T17:10:34.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R556-109",
+    "owner": "WL",
+    "parentName": "R556-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     556
+    ],
+    "time": {
+     "end": "2026-11-17T18:04:00.000+0100",
+     "start": "2026-11-17T17:04:33.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "PKW im Gleis\nBetrieb ab SMZ",
+    "name": "R880-125",
+    "owner": "WL",
+    "parentName": "R880-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     880
+    ],
+    "time": {
+     "end": "2026-11-17T18:08:00.000+0100",
+     "start": "2026-11-17T17:09:05.000+0100"
+    },
+    "title": "PKW im Gleis\nBetrieb ab SMZ"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "PKW im Gleis \nBetrieb ab Kagran ",
+    "name": "R966-125",
+    "owner": "WL",
+    "parentName": "R966-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     966
+    ],
+    "time": {
+     "end": "2026-11-17T18:06:00.000+0100",
+     "start": "2026-11-17T17:08:07.000+0100"
+    },
+    "title": "PKW im Gleis \nBetrieb ab Kagran "
    },
    {
     "alertCause": "undefined alert cause",

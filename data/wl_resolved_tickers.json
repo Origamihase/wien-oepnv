@@ -3,34 +3,6 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [
   {
-   "key": "R102-136|2026-11-17T16:27:30.000+0100|Fahrtbehinderung\nFalschparker",
-   "name": "R102-136",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-11-17T17:26:00.000+0100",
-   "incident": "I20261117-0032"
-  },
-  {
-   "key": "R103-136|2026-11-17T16:27:30.000+0100|Fahrtbehinderung\nFalschparker",
-   "name": "R103-136",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-11-17T17:26:00.000+0100",
-   "incident": "I20261117-0032"
-  },
-  {
-   "key": "R118-136|2026-11-17T16:27:30.000+0100|Fahrtbehinderung\nFalschparker",
-   "name": "R118-136",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-11-17T17:26:00.000+0100",
-   "incident": "I20261117-0032"
-  },
-  {
-   "key": "R130-136|2026-11-17T16:27:30.000+0100|Fahrtbehinderung\nFalschparker",
-   "name": "R130-136",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-11-17T17:26:00.000+0100",
-   "incident": "I20261117-0032"
-  },
-  {
    "key": "R1606-160|2026-11-17T16:38:03.000+0100|Fahrtbehinderung\nFremder Verkehrsunfall",
    "name": "R1606-160",
    "title": "Fahrtbehinderung\nFremder Verkehrsunfall",
@@ -127,37 +99,39 @@
    "title": "Fremdunfall\nZüge halten bei Linie 62 Richtung Lainz ",
    "end": "2026-11-17T17:41:00.000+0100",
    "incident": "I20261117-0035"
-  },
-  {
-   "key": "R45-136|2026-11-17T16:27:30.000+0100|Fahrtbehinderung\nFalschparker",
-   "name": "R45-136",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-11-17T17:26:00.000+0100",
-   "incident": "I20261117-0032"
-  },
-  {
-   "key": "R46-136|2026-11-17T16:27:30.000+0100|Fahrtbehinderung\nFalschparker",
-   "name": "R46-136",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "end": "2026-11-17T17:26:00.000+0100",
-   "incident": "I20261117-0032"
   }
  ],
  "owners": {
-  "R102-136|2026-11-17T16:27:30.000+0100": {
-   "incident": "I20261117-0032",
+  "R1006-125|2026-11-17T17:09:07.000+0100": {
+   "incident": "I20261117-0040",
+   "title": "PKW im Gleis\nBetrieb ab SMZ"
+  },
+  "R1007-125|2026-11-17T17:09:07.000+0100": {
+   "incident": "I20261117-0040",
+   "title": "PKW im Gleis\nBetrieb ab SMZ"
+  },
+  "R1008-125|2026-11-17T17:09:07.000+0100": {
+   "incident": "I20261117-0040",
+   "title": "PKW im Gleis\nBetrieb ab SMZ"
+  },
+  "R1012-125|2026-11-17T17:08:07.000+0100": {
+   "incident": "I20261117-0040",
+   "title": "PKW im Gleis \nBetrieb ab Kagran "
+  },
+  "R1015-125|2026-11-17T17:08:07.000+0100": {
+   "incident": "I20261117-0040",
+   "title": "PKW im Gleis \nBetrieb ab Kagran "
+  },
+  "R1021-125|2026-11-17T17:08:07.000+0100": {
+   "incident": "I20261117-0040",
+   "title": "PKW im Gleis \nBetrieb ab Kagran "
+  },
+  "R1475-109|2026-11-17T17:10:37.000+0100": {
+   "incident": "I20261117-0039",
    "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R103-136|2026-11-17T16:27:30.000+0100": {
-   "incident": "I20261117-0032",
-   "title": "Fahrtbehinderung\nFalschparker"
-  },
-  "R118-136|2026-11-17T16:27:30.000+0100": {
-   "incident": "I20261117-0032",
-   "title": "Fahrtbehinderung\nFalschparker"
-  },
-  "R130-136|2026-11-17T16:27:30.000+0100": {
-   "incident": "I20261117-0032",
+  "R1476-109|2026-11-17T17:10:37.000+0100": {
+   "incident": "I20261117-0039",
    "title": "Fahrtbehinderung\nFalschparker"
   },
   "R1606-160|2026-11-17T16:38:03.000+0100": {
@@ -216,17 +190,45 @@
    "incident": "I20261117-0035",
    "title": "Fremdunfall\nZüge halten bei Linie 62 Richtung Lainz "
   },
-  "R45-136|2026-11-17T16:27:30.000+0100": {
-   "incident": "I20261117-0032",
-   "title": "Fahrtbehinderung\nFalschparker"
-  },
-  "R46-136|2026-11-17T16:27:30.000+0100": {
-   "incident": "I20261117-0032",
+  "R223-109|2026-11-17T17:04:35.000+0100": {
+   "incident": "I20261117-0039",
    "title": "Fahrtbehinderung\nFalschparker"
   },
   "R49-102|2026-11-17T16:10:59.000+0100": {
    "incident": "I20261117-0031",
    "title": "Gleisschaden\nZüge halten Burgring nach Bellariastraße "
+  },
+  "R526-109|2026-11-17T17:04:33.000+0100": {
+   "incident": "I20261117-0039",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R530-109|2026-11-17T17:04:33.000+0100": {
+   "incident": "I20261117-0039",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R531-109|2026-11-17T17:04:33.000+0100": {
+   "incident": "I20261117-0039",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R532-109|2026-11-17T17:04:33.000+0100": {
+   "incident": "I20261117-0039",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R533-109|2026-11-17T17:10:34.000+0100": {
+   "incident": "I20261117-0039",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R556-109|2026-11-17T17:04:33.000+0100": {
+   "incident": "I20261117-0039",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R880-125|2026-11-17T17:09:05.000+0100": {
+   "incident": "I20261117-0040",
+   "title": "PKW im Gleis\nBetrieb ab SMZ"
+  },
+  "R966-125|2026-11-17T17:08:07.000+0100": {
+   "incident": "I20261117-0040",
+   "title": "PKW im Gleis \nBetrieb ab Kagran "
   }
  }
 }

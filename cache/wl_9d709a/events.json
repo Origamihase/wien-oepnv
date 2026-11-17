@@ -770,6 +770,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "25: Fahrzeug im Gleis",
+    "description": "Die Linie 25 fährt derzeit nicht zwischen Donauspital U und Kagran U. Ersatz: Linien U2, 26A, 95A, 96A. Voraussichtliche Dauer: 18:00 Uhr. Grund: Fahrzeug im Gleis im Bereich Wagramer Straße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "29a5d1f2995cfdaaaa1eafaa79b6e0330a28ef79356a04065cce43acca8f7ecf",
+    "pubDate": "2026-11-17T17:06:00+01:00",
+    "starts_at": "2026-11-17T17:06:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=25|D=2026-11-17|TK=25 fahrzeug im gleis",
+    "_wl_ids": [
+      "I20261117-0040"
+    ],
+    "_incident_start": "2026-11-17T17:06:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "25: Ersatzbus 26E hält Karl-Waldbrunner-Platz vor Schloßhofer Straße",
     "description": "Ersatzbus 26E\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -778,6 +794,30 @@
     "starts_at": "2026-11-17T00:00:07+01:00",
     "ends_at": "2026-11-17T23:59:59+01:00",
     "_identity": "wl|störung|L=25|D=2026-11-17|TK=ersatzbus 26e hält karl waldbrunner platz vor schlosshofer strasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: PKW im Gleis Betrieb ab Kagran",
+    "description": "PKW im Gleis Betrieb ab Kagran",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1266d63fab91bb1e9de1f770219395ad0f7008d14be42086b5d94348248639df",
+    "pubDate": "2026-11-17T17:08:07+01:00",
+    "starts_at": "2026-11-17T17:08:07+01:00",
+    "ends_at": "2026-11-17T18:06:00+01:00",
+    "_identity": "wl|störung|L=25|D=2026-11-17|TK=pkw im gleis betrieb ab kagran"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: PKW im Gleis Betrieb ab SMZ",
+    "description": "PKW im Gleis\nBetrieb ab SMZ",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "ffed4c493abc35a0b762694b1b8b44bd64387b930058042fed69c9edb19e23ba",
+    "pubDate": "2026-11-17T17:09:05+01:00",
+    "starts_at": "2026-11-17T17:09:07+01:00",
+    "ends_at": "2026-11-17T18:08:00+01:00",
+    "_identity": "wl|störung|L=25|D=2026-11-17|TK=pkw im gleis betrieb ab smz"
   },
   {
     "source": "Wiener Linien",
@@ -938,22 +978,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "52: Schadhafter PKW",
-    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "13ddbae4c3fbe725cdbc57feffb503dbb6277d56b6ff7cf08563093d0aa7e3ae",
-    "pubDate": "2026-11-17T14:57:00+01:00",
-    "starts_at": "2026-11-17T14:57:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=52|D=2026-11-17|TK=52 schadhafter pkw",
-    "_wl_ids": [
-      "I20261117-0028"
-    ],
-    "_incident_start": "2026-11-17T14:57:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -990,22 +1014,6 @@
       "I20261117-0033"
     ],
     "_incident_start": "2026-11-17T16:28:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "64A: Verkehrsunfall",
-    "description": "Linie 64A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2b43b2cf270ad0eb82141dcac02a8b63277141db79e08f4221106b9f3fd4836e",
-    "pubDate": "2026-11-17T16:43:00+01:00",
-    "starts_at": "2026-11-17T16:43:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=64A|D=2026-11-17|TK=64a verkehrsunfall",
-    "_wl_ids": [
-      "I20261117-0036"
-    ],
-    "_incident_start": "2026-11-17T16:43:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1058,6 +1066,22 @@
     "starts_at": "2026-11-17T00:00:08+01:00",
     "ends_at": "2026-11-17T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-17|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Fahrtbehinderung Falschparker",
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
+    "pubDate": "2026-11-17T17:03:00+01:00",
+    "starts_at": "2026-11-17T17:10:37+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=9|D=2026-11-17|TK=falschparker",
+    "_wl_ids": [
+      "I20261117-0039"
+    ],
+    "_incident_start": "2026-11-17T17:03:00+01:00"
   },
   {
     "source": "Wiener Linien",
