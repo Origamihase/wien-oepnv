@@ -1,24 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-17T21:01:09.505707+00:00",
- "built": "2026-11-17T22:00:58+01:00",
+ "updated": "2026-11-17T21:30:45.044880+00:00",
+ "built": "2026-11-17T22:30:38+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-17T22:00:58+01:00",
+  "built": "2026-11-17T22:30:38+01:00",
   "items": [
    {
     "title": "U6: Betriebsstörung",
     "time_line": "Seit 21:57"
-   },
-   {
-    "title": "31: Verkehrsunfall",
-    "time_line": "Seit 21:41"
-   },
-   {
-    "title": "27: Verunreinigung",
-    "time_line": "Seit 21:29"
    },
    {
     "title": "U3: Rettungseinsatz",
@@ -47,6 +39,14 @@
    {
     "title": "8A: Küniglberg, ORF Zentrum",
     "time_line": "Bis 24.11."
+   },
+   {
+    "title": "5A/N31: Obere Augartenstraße",
+    "time_line": "Bis 11.12."
+   },
+   {
+    "title": "74A: Rabengasse",
+    "time_line": "Seit 16.11."
    }
   ]
  },
@@ -6751,17 +6751,37 @@
     "oebb": 7,
     "wl": 85
    }
+  },
+  {
+   "t": "2026-11-17T21:30:45.044880+00:00",
+   "raw": {
+    "wl-stoerungen": 40,
+    "wl-hinweise": 91,
+    "oebb": 177,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 25,
+    "oebb": 154,
+    "baustellen": 60
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 82
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-17T21:01:09.505707+00:00"
+   "last_ok": "2026-11-17T21:30:45.044880+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-17T21:01:09.505707+00:00"
+   "last_ok": "2026-11-17T21:30:45.044880+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-17T21:01:09.505707+00:00"
+   "last_ok": "2026-11-17T21:30:45.044880+00:00"
   }
  }
 }

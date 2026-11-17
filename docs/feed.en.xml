@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 17 Nov 2026 22:00:58 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 17 Nov 2026 22:30:38 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U6: Service disruption]]></title>
@@ -22,32 +22,6 @@
       <ext:starts_at>Tue, 17 Nov 2026 21:57:00 +0100</ext:starts_at>
       <description>Irregular intervals towards Siebenhirten. Reason: service disruption. [Since 21:57]</description>
       <content:encoded><![CDATA[Irregular intervals towards Siebenhirten. Reason: service disruption.<br/>[Since 21:57]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">84f9fe1b5c4beaf00a73c1565363074e86a57541f0f409f0ef6b0f7aac539f50</guid>
-      <pubDate>Tue, 17 Nov 2026 21:41:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 17 Nov 2026 21:41:00 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 17 Nov 2026 21:41:00 +0100</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: traffic accident. [Since 21:41]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 21:41]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[27: Contamination]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">3b461e93a7acf379e3b4faaf7c359e36ab260879a160a5afe603e68440f7b733</guid>
-      <pubDate>Tue, 17 Nov 2026 21:29:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 17 Nov 2026 21:29:00 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 17 Nov 2026 21:29:00 +0100</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: contamination. [Since 21:29]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[Since 21:29]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Rescue operation]]></title>
@@ -145,6 +119,35 @@
       <georss:point>48.175514 16.291612</georss:point>
       <description>Würzburggasse after the driveway to Friedhof → Würzburggasse 49. Stop relocation of line 8A towards Bahnhof Meidling. Reason: roadworks. [Until 24.11.]</description>
       <content:encoded><![CDATA[Würzburggasse after the driveway to Friedhof → Würzburggasse 49. Stop relocation of line 8A towards Bahnhof Meidling. Reason: roadworks.<br/>[Until 24.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5A/N31: Obere Augartenstraße]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">4b133e0a2bf2849867177ba0646eb9eec8984fee0146b9475c8c15c934464586</guid>
+      <pubDate>Wed, 11 Nov 2026 16:12:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 09 Nov 2026 07:13:00 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 16 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 11 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <georss:point>48.222757 16.375308</georss:point>
+      <description>Untere Augartenstraße 40 → Obere Augartenstraße 42. Stop relocation of lines 5A and N31 towards Griegstraße and Stammersdorf respectively. [Until 11.12.]</description>
+      <content:encoded><![CDATA[Untere Augartenstraße 40 → Obere Augartenstraße 42. Stop relocation of lines 5A and N31 towards Griegstraße and Stammersdorf respectively.<br/>[Until 11.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[74A: Rabengasse]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">a283d0e2e437795796c0e7a743565b30ce8fddbc07070af76ea09899ed55a1e7</guid>
+      <pubDate>Wed, 11 Nov 2026 15:24:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 11 Nov 2026 15:24:00 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 16 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <georss:point>48.194051 16.397614</georss:point>
+      <description>Landstraßer Hauptstraße 140 -144 → Landstraßer Hauptstraße opposite 146. Stop relocation of line 74A towards St. Marx. Reason: roadworks. [Since 16.11.]</description>
+      <content:encoded><![CDATA[Landstraßer Hauptstraße 140 -144 → Landstraßer Hauptstraße opposite 146. Stop relocation of line 74A towards St. Marx. Reason: roadworks.<br/>[Since 16.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
