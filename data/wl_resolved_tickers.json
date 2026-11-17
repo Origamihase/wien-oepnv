@@ -3,26 +3,6 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R1452-149|2026-11-17T15:00:55.000+0100": {
-   "incident": "I20261117-0028",
-   "title": "Schadhafter PKW\nBetrieb ab Baumgarten"
-  },
-  "R1453-149|2026-11-17T15:00:55.000+0100": {
-   "incident": "I20261117-0028",
-   "title": "Schadhafter PKW\nBetrieb ab Baumgarten"
-  },
-  "R1454-149|2026-11-17T15:00:25.000+0100": {
-   "incident": "I20261117-0028",
-   "title": "Schadhafter PKW\nBetrieb ab Baumgarten "
-  },
-  "R1455-149|2026-11-17T15:00:25.000+0100": {
-   "incident": "I20261117-0028",
-   "title": "Schadhafter PKW\nBetrieb ab Baumgarten "
-  },
-  "R1456-149|2026-11-17T15:00:25.000+0100": {
-   "incident": "I20261117-0028",
-   "title": "Schadhafter PKW\nBetrieb ab Baumgarten "
-  },
   "R1458-149|2026-11-17T15:01:55.000+0100": {
    "incident": "I20261117-0028",
    "title": "Schadhafter PKW\nZüge halten bei Linie 52 Richtung Hütteldorf"

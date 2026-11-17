@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261117-0026-F01, I20260925-0011, I20261117-0030, I20260909-0007, I20261117-0028-F01, I20261020-0029, I20261117-0028-F02"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261117-0028-F01, I20261020-0029, I20261117-0028-F02"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2558-125, R293-474, R318-437, R401-101, R1884-101, R1883-101, R1881-101, R1880-101, R1876-101, R1875-101, R1882-101, R2380-627, R2345-127, R2372-125, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2373-125, R2373-127, R2373-126, R2379-627, R3886-480, R1974-466, R1199-205, R500-101, R47-0, R17-0, R1454-149, R1456-149, R1455-149, R1452-149, R1453-149, R1458-149, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2558-125, R318-437, R293-474, R401-101, R1876-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1875-101, R2370-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2343-125, R2378-627, R2371-125, R2343-626, R2359-125, R3886-480, R1974-466, R1199-205, R500-101, R47-0, R17-0, R1458-149, R2179-127, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,54 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "2": "ptTram"
-     }
-    },
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "2: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261117-0026-F01",
-    "owner": "WL",
-    "parentName": "I20261117-0026",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 102,
-      "lineName": "2",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     251
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-17T14:03:00.000+0100",
-     "end": "2026-11-17T15:54:00.000+0100",
-     "lastUpdate": "2026-11-17T15:16:00.000+0100",
-     "start": "2026-11-17T13:45:00.000+0100"
-    },
-    "title": "2: Rettungseinsatz"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -315,51 +267,6 @@
     "title": "52: Schadhafter PKW"
    },
    {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
-      "59A": "ptBusCity"
-     }
-    },
-    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "59A: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261117-0030",
-    "owner": "WL",
-    "parentName": "I20261117-0030",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "59A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 459,
-      "lineName": "59A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-17T15:04:00.000+0100",
-     "lastUpdate": "2026-11-17T15:04:00.000+0100",
-     "resume": "2026-11-17T15:04:00.000+0100",
-     "start": "2026-11-17T15:04:00.000+0100"
-    },
-    "title": "59A: Verkehrsüberlastung"
-   },
-   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -381,121 +288,6 @@
      "start": "2026-11-17T04:45:22.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter PKW\nBetrieb ab Baumgarten",
-    "name": "R1452-149",
-    "owner": "WL",
-    "parentName": "R1452-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1452
-    ],
-    "time": {
-     "end": "2026-11-17T16:00:00.000+0100",
-     "start": "2026-11-17T15:00:55.000+0100"
-    },
-    "title": "Schadhafter PKW\nBetrieb ab Baumgarten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter PKW\nBetrieb ab Baumgarten",
-    "name": "R1453-149",
-    "owner": "WL",
-    "parentName": "R1453-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1453
-    ],
-    "time": {
-     "end": "2026-11-17T16:00:00.000+0100",
-     "start": "2026-11-17T15:00:55.000+0100"
-    },
-    "title": "Schadhafter PKW\nBetrieb ab Baumgarten"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter PKW\nBetrieb ab Baumgarten ",
-    "name": "R1454-149",
-    "owner": "WL",
-    "parentName": "R1454-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1454
-    ],
-    "time": {
-     "end": "2026-11-17T15:59:00.000+0100",
-     "start": "2026-11-17T15:00:25.000+0100"
-    },
-    "title": "Schadhafter PKW\nBetrieb ab Baumgarten "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter PKW\nBetrieb ab Baumgarten ",
-    "name": "R1455-149",
-    "owner": "WL",
-    "parentName": "R1455-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1455
-    ],
-    "time": {
-     "end": "2026-11-17T15:59:00.000+0100",
-     "start": "2026-11-17T15:00:25.000+0100"
-    },
-    "title": "Schadhafter PKW\nBetrieb ab Baumgarten "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter PKW\nBetrieb ab Baumgarten ",
-    "name": "R1456-149",
-    "owner": "WL",
-    "parentName": "R1456-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1456
-    ],
-    "time": {
-     "end": "2026-11-17T15:59:00.000+0100",
-     "start": "2026-11-17T15:00:25.000+0100"
-    },
-    "title": "Schadhafter PKW\nBetrieb ab Baumgarten "
    },
    {
     "alertCause": "undefined alert cause",
@@ -723,6 +515,29 @@
      "start": "2026-11-17T04:40:22.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R2179-127",
+    "owner": "WL",
+    "parentName": "R2179-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2179
+    ],
+    "time": {
+     "end": "2026-11-17T16:36:00.000+0100",
+     "start": "2026-11-17T15:36:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
    },
    {
     "alertCause": "undefined alert cause",
