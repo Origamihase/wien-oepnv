@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_485, ftazW_369, ftazW_17, ftazW_4, ftazW_18, ftazW_484, ftazW_368, ftazW_15, ftazW_1032355, ftazW_5, ftazW_603, ftazW_1017121, ftazW_19, ftazW_41, ftazW_16, ftazW_606, ftazW_1018092, ftazW_42, ftazW_1018049, ftazW_352, ftazW_1018058, ftazW_572, ftazW_476, ftazW_1354338"
+    "trafficInfoNameList": "ftazW_485, ftazW_369, ftazW_17, ftazW_4, ftazW_18, ftazW_484, ftazW_368, ftazW_15, ftazW_1032355, ftazW_5, ftazW_603, ftazW_209, ftazW_1017121, ftazW_19, ftazW_41, ftazW_16, ftazW_606, ftazW_1018092, ftazW_42, ftazW_1018049, ftazW_352, ftazW_1018058, ftazW_572, ftazW_476, ftazW_281, ftazW_1354338"
    }
   ],
   "poiCategoryGroups": [
@@ -3186,6 +3186,80 @@
      "start": "2026-11-18T20:45:00.000+0100"
     },
     "title": "Erdberg"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "19.11.2026 00:45",
+     "ausVon": "18.11.2026 20:45",
+     "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Nußdorfer Straße",
+     "rbls": [
+      4626
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Nußdorfer Straße",
+     "status": "geplante Wartung",
+     "towards": "U6 Floridsdorf"
+    },
+    "description": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Nußdorfer Straße",
+    "elevatorId": "NS 01",
+    "name": "ftazW_209",
+    "parentName": "ftazW_209",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4626
+    ],
+    "time": {
+     "end": "2026-11-19T00:45:00.000+0100",
+     "start": "2026-11-18T20:45:00.000+0100"
+    },
+    "title": "Nußdorfer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "20.11.2026 00:45",
+     "ausVon": "19.11.2026 20:45",
+     "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Währingerstraße, Volksoper",
+     "rbls": [
+      4625
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Währinger Straße-Volksoper",
+     "status": "geplante Wartung",
+     "towards": "U6 Floridsdorf"
+    },
+    "description": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Währingerstraße, Volksoper",
+    "elevatorId": "WA 01",
+    "name": "ftazW_281",
+    "parentName": "ftazW_281",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4625
+    ],
+    "time": {
+     "end": "2026-11-20T00:45:00.000+0100",
+     "start": "2026-11-19T20:45:00.000+0100"
+    },
+    "title": "Währinger Straße-Volksoper"
    },
    {
     "alertCause": "undefined alert cause",
