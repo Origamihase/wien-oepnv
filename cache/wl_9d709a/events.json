@@ -890,6 +890,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "29A: Verunreinigung",
+    "description": "Linie 29A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "94d5a6d02b7df6368d7be6bdf497f700e1760dc3ae541c38c609f175f693e71e",
+    "pubDate": "2026-11-17T13:06:00+01:00",
+    "starts_at": "2026-11-17T13:06:00+01:00",
+    "ends_at": "2026-11-17T13:38:00+01:00",
+    "_identity": "wl|störung|L=29A|D=2026-11-17|TK=29a verunreinigung",
+    "_wl_ids": [
+      "I20261117-0025"
+    ],
+    "_incident_start": "2026-11-17T13:06:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -898,18 +914,6 @@
     "starts_at": "2026-11-17T00:00:04+01:00",
     "ends_at": "2026-11-17T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-11-17|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "42: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "930d80e075929cf21fe799fda5426fd5228d64088925dc7f7064542f79ff0bc7",
-    "pubDate": "2026-11-17T12:04:05+01:00",
-    "starts_at": "2026-11-17T12:04:06+01:00",
-    "ends_at": "2026-11-17T13:03:00+01:00",
-    "_identity": "wl|störung|L=42|D=2026-11-17|TK=fahrtbehinderung verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
@@ -958,22 +962,6 @@
     "starts_at": "2026-11-17T00:00:08+01:00",
     "ends_at": "2026-11-17T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-17|TK=betrieb ab vivariumstrasse 2"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9A: Rettungseinsatz",
-    "description": "Linie 9A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "210b08a061991185eeff2755a4bd167b6c9a20d1703d1c621da74ef84d96a1b5",
-    "pubDate": "2026-11-17T12:39:00+01:00",
-    "starts_at": "2026-11-17T12:39:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=9A|D=2026-11-17|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261117-0024"
-    ],
-    "_incident_start": "2026-11-17T12:39:00+01:00"
   },
   {
     "source": "Wiener Linien",

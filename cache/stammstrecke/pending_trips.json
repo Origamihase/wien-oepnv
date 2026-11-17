@@ -1,10 +1,18 @@
 {
-  "Meidling|S1|2026-11-17T13:17:00+01:00": {
+  "Meidling|CJX9|2026-11-17T13:55:00+01:00": {
     "cancelled": false,
     "direction": "Meidling",
-    "last_seen_at": "2026-11-17T13:00:58.971069+01:00",
+    "last_seen_at": "2026-11-17T13:30:37.198244+01:00",
+    "latest_delay_minutes": 0.0,
+    "name": "CJX9",
+    "scheduled": "2026-11-17T13:55:00+01:00"
+  },
+  "Meidling|S1|2026-11-17T13:47:00+01:00": {
+    "cancelled": false,
+    "direction": "Meidling",
+    "last_seen_at": "2026-11-17T13:30:37.198244+01:00",
     "latest_delay_minutes": 0.0,
     "name": "S1",
-    "scheduled": "2026-11-17T13:17:00+01:00"
+    "scheduled": "2026-11-17T13:47:00+01:00"
   }
 }

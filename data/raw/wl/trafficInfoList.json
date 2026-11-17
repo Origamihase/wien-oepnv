@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261117-0024, I20260925-0011, I20260909-0007, I20261020-0029, I20261117-0023"
+    "trafficInfoNameList": "I20261117-0025, I20260925-0011, I20260909-0007, I20261020-0029, I20261117-0023"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2558-125, R318-437, R293-474, R401-101, R1883-101, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2343-626, R2359-125, R2370-125, R2378-627, R2343-125, R3886-480, R1974-466, R1199-205, R500-101, R1213-142, R1212-142, R188-142, R1336-142, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2558-125, R293-474, R318-437, R401-101, R1883-101, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R2373-127, R2379-627, R2380-627, R2345-127, R2359-125, R2343-626, R2373-126, R2343-125, R2378-627, R2370-125, R2371-125, R2372-125, R2373-125, R3886-480, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -216,49 +216,50 @@
     "title": "U2: Verspätungen"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
+    "alertCause": "vandalism",
+    "alertCauseId": 16,
     "attributes": {
      "relatedLineTypes": {
-      "9A": "ptBusCity"
+      "29A": "ptBusCity"
      }
     },
-    "description": "Linie 9A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie 9A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "description": "Linie 29A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "descriptionHTML": "<p>Linie 29A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 9A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie 9A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-       "title": "9A: Rettungseinsatz"
+       "descriptionHtml": "<p>Linie 29A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
+       "descriptionPlain": "Linie 29A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+       "title": "29A: Verunreinigung"
       }
      }
     ],
-    "name": "I20261117-0024",
+    "name": "I20261117-0025",
     "owner": "WL",
-    "parentName": "I20261117-0024",
+    "parentName": "I20261117-0025",
     "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
+    "reasonId": 36,
+    "reasonName": "Verunreinigung",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "9A"
+     "29A"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 409,
-      "lineName": "9A",
+      "lineId": 429,
+      "lineName": "29A",
       "vehicleType": "ptBusCity"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-17T12:40:00.000+0100",
-     "lastUpdate": "2026-11-17T12:40:00.000+0100",
-     "resume": "2026-11-17T12:39:00.000+0100",
-     "start": "2026-11-17T12:39:00.000+0100"
+     "created": "2026-11-17T13:08:00.000+0100",
+     "end": "2026-11-17T13:38:00.000+0100",
+     "lastUpdate": "2026-11-17T13:08:00.000+0100",
+     "resume": "2026-11-17T13:06:00.000+0100",
+     "start": "2026-11-17T13:06:00.000+0100"
     },
-    "title": "9A: Rettungseinsatz"
+    "title": "29A: Verunreinigung"
    },
    {
     "alertCause": "undefined alert cause",
@@ -282,75 +283,6 @@
      "start": "2026-11-17T04:45:22.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1212-142",
-    "owner": "WL",
-    "parentName": "R1212-142",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedStops": [
-     1212
-    ],
-    "time": {
-     "end": "2026-11-17T13:03:00.000+0100",
-     "start": "2026-11-17T12:04:05.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1213-142",
-    "owner": "WL",
-    "parentName": "R1213-142",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedStops": [
-     1213
-    ],
-    "time": {
-     "end": "2026-11-17T13:03:00.000+0100",
-     "start": "2026-11-17T12:04:05.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1336-142",
-    "owner": "WL",
-    "parentName": "R1336-142",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedStops": [
-     1336
-    ],
-    "time": {
-     "end": "2026-11-17T13:03:00.000+0100",
-     "start": "2026-11-17T12:04:06.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -397,29 +329,6 @@
      "start": "2026-11-17T00:00:06.000+0100"
     },
     "title": "Gleisbauarbeiten\nKein Betrieb"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R188-142",
-    "owner": "WL",
-    "parentName": "R188-142",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedStops": [
-     188
-    ],
-    "time": {
-     "end": "2026-11-17T13:03:00.000+0100",
-     "start": "2026-11-17T12:04:05.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
