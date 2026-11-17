@@ -638,6 +638,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "13A: Demonstration Betrieb ab Wiedner Hauptstraße",
+    "description": "Linie 13A: Umleitung in Richtung Alser Straße, Skodagasse zwischen Karl-Popper-Straße und Johann-Strauß-Gasse über Wiedner Gürtel und Wiedner Hauptstraße. Voraussichtliche Dauer: 11:00 Uhr. Grund: Demonstration im Bereich Schönburgstraße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1c629dbb1ab44f38d4116936e03e299129ac24d8b47b2ee816bc8a7924bf6f1d",
+    "pubDate": "2026-11-17T08:19:00+01:00",
+    "starts_at": "2026-11-17T08:27:12+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=13A|D=2026-11-17|TK=demonstration",
+    "_wl_ids": [
+      "I20261117-0006"
+    ],
+    "_incident_start": "2026-11-17T08:19:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -906,12 +922,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Rettungseinsatz Betrieb ab Wallensteinplatz",
-    "description": "Linie 5: Betrieb nur zwischen Westbahnhof S U und Wallensteinplatz. Ersatz: Linie 5B. Voraussichtliche Dauer: 08:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Nordwestbahnstraße.",
+    "title": "5: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "3c0f04fc72c473debc1c3aced181d4782b1f08226a834b9859b95c38c56635f5",
     "pubDate": "2026-11-17T07:53:41+01:00",
-    "starts_at": "2026-11-17T07:57:41+01:00",
+    "starts_at": "2026-11-17T08:02:11+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=5|D=2026-11-17|TK=rettungseinsatz",
     "_wl_ids": [
@@ -982,6 +998,38 @@
       "I20261117-0002"
     ],
     "_incident_start": "2026-11-17T07:43:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Schadhaftes Fahrzeug",
+    "description": "Linie U1: Fahrtbehinderung in Richtung Oberlaa. Voraussichtliche Dauer: 08:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Keplerplatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
+    "pubDate": "2026-11-17T08:29:00+01:00",
+    "starts_at": "2026-11-17T08:29:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U1|D=2026-11-17|TK=u1 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261117-0007"
+    ],
+    "_incident_start": "2026-11-17T08:29:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Schadhaftes Fahrzeug",
+    "description": "Linie U2: Betrieb zwischen den Stationen Schottentor und Volkstheater in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 08:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rathaus.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104",
+    "pubDate": "2026-11-17T08:03:00+01:00",
+    "starts_at": "2026-11-17T08:03:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U2|D=2026-11-17|TK=u2 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261117-0005"
+    ],
+    "_incident_start": "2026-11-17T08:03:00+01:00"
   },
   {
     "source": "Wiener Linien",

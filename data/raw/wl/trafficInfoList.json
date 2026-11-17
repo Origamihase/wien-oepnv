@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261117-0001, I20260925-0011, I20261117-0002-F01, I20260909-0007, I20261117-0003, I20261117-0004, I20261020-0029"
+    "trafficInfoNameList": "I20261117-0001, I20261117-0006, I20260925-0011, I20261117-0002-F01, I20261117-0004-F01, I20261117-0005, I20261117-0007, I20260909-0007, I20261117-0003, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2558-125, R318-437, R293-474, R401-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R1884-101, R1883-101, R2379-627, R2380-627, R2345-127, R2343-626, R2343-125, R2359-125, R2378-627, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R3886-480, R1974-466, R1199-205, R500-101, R301-170, R302-170, R303-170, R305-170, R304-170, R306-170, R307-170, R350-105, R349-105, R345-105, R346-105, R347-105, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2558-125, R318-437, R293-474, R401-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R1883-101, R1884-101, R2372-125, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R3886-480, R1974-466, R1199-205, R500-101, R303-170, R304-170, R305-170, R302-170, R301-170, R306-170, R307-170, R350-105, R349-105, R347-105, R345-105, R346-105, R390-105, R388-105, R387-105, R392-105, R693-413, R40-413, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -314,18 +314,18 @@
       "5": "ptTram"
      }
     },
-    "description": "Linie 5: Betrieb nur zwischen Westbahnhof S U und Wallensteinplatz. Ersatz: Linie 5B. Voraussichtliche Dauer: 08:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Nordwestbahnstraße.",
-    "descriptionHTML": "<p>Linie 5: <br>Betrieb nur zwischen Westbahnhof S U und Wallensteinplatz.</p><p>Ersatz: Linie 5B.</p><p>Voraussichtliche Dauer: 08:20 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Nordwestbahnstraße.</p>",
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 5: <br>Betrieb nur zwischen Westbahnhof S U und Wallensteinplatz.</p><p>Ersatz: Linie 5B.</p><p>Voraussichtliche Dauer: 08:20 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Nordwestbahnstraße.</p>",
-       "descriptionPlain": "Linie 5: Betrieb nur zwischen Westbahnhof S U und Wallensteinplatz. Ersatz: Linie 5B. Voraussichtliche Dauer: 08:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Nordwestbahnstraße.",
+       "descriptionHtml": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "5: Rettungseinsatz"
       }
      }
     ],
-    "name": "I20261117-0004",
+    "name": "I20261117-0004-F01",
     "owner": "WL",
     "parentName": "I20261117-0004",
     "priority": "1",
@@ -347,11 +347,151 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-17T07:55:00.000+0100",
-     "lastUpdate": "2026-11-17T07:57:00.000+0100",
+     "created": "2026-11-17T08:04:00.000+0100",
+     "lastUpdate": "2026-11-17T08:04:00.000+0100",
+     "resume": "2026-11-17T08:04:00.000+0100",
      "start": "2026-11-17T07:54:00.000+0100"
     },
     "title": "5: Rettungseinsatz"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U2": "ptMetro"
+     }
+    },
+    "description": "Linie U2: Betrieb zwischen den Stationen Schottentor und Volkstheater in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 08:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rathaus.",
+    "descriptionHTML": "<p>Linie U2:<br>Betrieb zwischen den Stationen Schottentor und Volkstheater in beiden Richtungen über Gleis 2.</p><p>Voraussichtliche Dauer: 08:40 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rathaus.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U2:<br>Betrieb zwischen den Stationen Schottentor und Volkstheater in beiden Richtungen über Gleis 2.</p><p>Voraussichtliche Dauer: 08:40 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rathaus.</p>",
+       "descriptionPlain": "Linie U2: Betrieb zwischen den Stationen Schottentor und Volkstheater in beiden Richtungen über Gleis 2. Voraussichtliche Dauer: 08:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Rathaus.",
+       "title": "U2: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261117-0005",
+    "owner": "WL",
+    "parentName": "I20261117-0005",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 302,
+      "lineName": "U2",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4205
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-17T08:04:00.000+0100",
+     "lastUpdate": "2026-11-17T08:19:00.000+0100",
+     "start": "2026-11-17T08:03:00.000+0100"
+    },
+    "title": "U2: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "demonstration",
+    "alertCauseId": 122,
+    "attributes": {
+     "relatedLineTypes": {
+      "13A": "ptBusCity"
+     }
+    },
+    "description": "Linie 13A: Umleitung in Richtung Alser Straße, Skodagasse zwischen Karl-Popper-Straße und Johann-Strauß-Gasse über Wiedner Gürtel und Wiedner Hauptstraße. Voraussichtliche Dauer: 11:00 Uhr. Grund: Demonstration im Bereich Schönburgstraße.",
+    "descriptionHTML": "<p>Linie 13A:<br>Umleitung in Richtung Alser Straße, Skodagasse <br>zwischen Karl-Popper-Straße und Johann-Strauß-Gasse<br>über Wiedner Gürtel und Wiedner Hauptstraße.</p><p>Voraussichtliche Dauer: 11:00 Uhr.</p><p>Grund: Demonstration im Bereich Schönburgstraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 13A:<br>Umleitung in Richtung Alser Straße, Skodagasse <br>zwischen Karl-Popper-Straße und Johann-Strauß-Gasse<br>über Wiedner Gürtel und Wiedner Hauptstraße.</p><p>Voraussichtliche Dauer: 11:00 Uhr.</p><p>Grund: Demonstration im Bereich Schönburgstraße.</p>",
+       "descriptionPlain": "Linie 13A: Umleitung in Richtung Alser Straße, Skodagasse zwischen Karl-Popper-Straße und Johann-Strauß-Gasse über Wiedner Gürtel und Wiedner Hauptstraße. Voraussichtliche Dauer: 11:00 Uhr. Grund: Demonstration im Bereich Schönburgstraße.",
+       "title": "13A: Demonstration"
+      }
+     }
+    ],
+    "location": "Schönburgstraße",
+    "name": "I20261117-0006",
+    "owner": "WL",
+    "parentName": "I20261117-0006",
+    "priority": "1",
+    "reasonId": 22,
+    "reasonName": "Demonstration",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 413,
+      "lineName": "13A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-17T08:24:00.000+0100",
+     "lastUpdate": "2026-11-17T08:29:00.000+0100",
+     "start": "2026-11-17T08:19:00.000+0100"
+    },
+    "title": "13A: Demonstration"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Fahrtbehinderung in Richtung Oberlaa. Voraussichtliche Dauer: 08:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Keplerplatz.",
+    "descriptionHTML": "<p>Linie U1:<br>Fahrtbehinderung in Richtung Oberlaa.</p><p>Voraussichtliche Dauer: 08:40 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Keplerplatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U1:<br>Fahrtbehinderung in Richtung Oberlaa.</p><p>Voraussichtliche Dauer: 08:40 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Keplerplatz.</p>",
+       "descriptionPlain": "Linie U1: Fahrtbehinderung in Richtung Oberlaa. Voraussichtliche Dauer: 08:40 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Keplerplatz.",
+       "title": "U1: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261117-0007",
+    "owner": "WL",
+    "parentName": "I20261117-0007",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 301,
+      "lineName": "U1",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4103
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-17T08:29:00.000+0100",
+     "lastUpdate": "2026-11-17T08:29:00.000+0100",
+     "start": "2026-11-17T08:29:00.000+0100"
+    },
+    "title": "U1: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1092,7 +1232,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Wallensteinplatz",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
     "name": "R345-105",
     "owner": "WL",
     "parentName": "R345-105",
@@ -1107,15 +1247,15 @@
      345
     ],
     "time": {
-     "end": "2026-11-17T08:57:00.000+0100",
+     "end": "2026-11-17T09:01:00.000+0100",
      "start": "2026-11-17T07:57:41.000+0100"
     },
-    "title": "Rettungseinsatz\nBetrieb ab Wallensteinplatz"
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Wallensteinplatz",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
     "name": "R346-105",
     "owner": "WL",
     "parentName": "R346-105",
@@ -1130,15 +1270,15 @@
      346
     ],
     "time": {
-     "end": "2026-11-17T08:57:00.000+0100",
+     "end": "2026-11-17T09:01:00.000+0100",
      "start": "2026-11-17T07:57:41.000+0100"
     },
-    "title": "Rettungseinsatz\nBetrieb ab Wallensteinplatz"
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Wallensteinplatz",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
     "name": "R347-105",
     "owner": "WL",
     "parentName": "R347-105",
@@ -1153,15 +1293,15 @@
      347
     ],
     "time": {
-     "end": "2026-11-17T08:57:00.000+0100",
+     "end": "2026-11-17T09:01:00.000+0100",
      "start": "2026-11-17T07:57:41.000+0100"
     },
-    "title": "Rettungseinsatz\nBetrieb ab Wallensteinplatz"
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Wallensteinplatz",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
     "name": "R349-105",
     "owner": "WL",
     "parentName": "R349-105",
@@ -1176,10 +1316,10 @@
      349
     ],
     "time": {
-     "end": "2026-11-17T08:57:00.000+0100",
+     "end": "2026-11-17T09:01:00.000+0100",
      "start": "2026-11-17T07:53:41.000+0100"
     },
-    "title": "Rettungseinsatz\nBetrieb ab Wallensteinplatz"
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1207,6 +1347,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R387-105",
+    "owner": "WL",
+    "parentName": "R387-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     387
+    ],
+    "time": {
+     "end": "2026-11-17T09:01:00.000+0100",
+     "start": "2026-11-17T08:02:11.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R388-105",
+    "owner": "WL",
+    "parentName": "R388-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     388
+    ],
+    "time": {
+     "end": "2026-11-17T09:01:00.000+0100",
+     "start": "2026-11-17T08:02:11.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
     "name": "R3886-480",
     "owner": "WL",
@@ -1226,6 +1412,75 @@
      "start": "2026-11-17T00:00:08.000+0100"
     },
     "title": "Bauarbeiten\nBetrieb ab Vivariumstraße 2"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R390-105",
+    "owner": "WL",
+    "parentName": "R390-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     390
+    ],
+    "time": {
+     "end": "2026-11-17T09:01:00.000+0100",
+     "start": "2026-11-17T08:02:11.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R392-105",
+    "owner": "WL",
+    "parentName": "R392-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     392
+    ],
+    "time": {
+     "end": "2026-11-17T09:01:00.000+0100",
+     "start": "2026-11-17T08:02:11.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Wiedner Hauptstraße ",
+    "name": "R40-413",
+    "owner": "WL",
+    "parentName": "R40-413",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     40
+    ],
+    "time": {
+     "end": "2026-11-17T09:26:00.000+0100",
+     "start": "2026-11-17T08:27:12.000+0100"
+    },
+    "title": "Demonstration\nBetrieb ab Wiedner Hauptstraße "
    },
    {
     "alertCause": "undefined alert cause",
@@ -1272,6 +1527,29 @@
      "start": "2026-11-17T05:00:22.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Wiedner Hauptstraße ",
+    "name": "R693-413",
+    "owner": "WL",
+    "parentName": "R693-413",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     693
+    ],
+    "time": {
+     "end": "2026-11-17T09:22:00.000+0100",
+     "start": "2026-11-17T08:23:13.000+0100"
+    },
+    "title": "Demonstration\nBetrieb ab Wiedner Hauptstraße "
    },
    {
     "alertCause": "undefined alert cause",
