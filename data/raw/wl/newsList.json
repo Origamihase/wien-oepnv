@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_599, ftazW_23, ftazW_370, ftazW_1018061, ftazW_393, ftazW_1032342, ftazW_283, ftazW_485, ftazW_369, ftazW_17, ftazW_4, ftazW_18, ftazW_484, ftazW_368, ftazW_15, ftazW_1032355, ftazW_5, ftazW_603, ftazW_209, ftazW_1017121, ftazW_19, ftazW_41, ftazW_16, ftazW_606, ftazW_1018092, ftazW_42, ftazW_1018049, ftazW_210"
+    "trafficInfoNameList": "ftazW_599, ftazW_23, ftazW_370, ftazW_1018061, ftazW_393, ftazW_1032342, ftazW_283, ftazW_485, ftazW_369, ftazW_17, ftazW_4, ftazW_18, ftazW_484, ftazW_368, ftazW_15, ftazW_1032355, ftazW_5, ftazW_603, ftazW_209, ftazW_1017121, ftazW_19, ftazW_41, ftazW_16, ftazW_606, ftazW_1018092, ftazW_42, ftazW_1018049, ftazW_210, ftazW_352, ftazW_1018058, ftazW_572, ftazW_476, ftazW_281, ftazW_1354338"
    }
   ],
   "poiCategoryGroups": [
@@ -2856,6 +2856,45 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "20.11.2026 00:45",
+     "ausVon": "19.11.2026 20:45",
+     "location": "U2 Mittelbahnsteig - Zwischengeschoss - Ausgang Taborstraße/Obere Augartenstraße",
+     "rbls": [
+      4261,
+      4262
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Taborstraße",
+     "status": "geplante Wartung",
+     "towards": "U2 beide Richtungen"
+    },
+    "description": "U2 Mittelbahnsteig - Zwischengeschoss - Ausgang Taborstraße/Obere Augartenstraße",
+    "elevatorId": "TB 01",
+    "name": "ftazW_1018058",
+    "parentName": "ftazW_1018058",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4261,
+     4262
+    ],
+    "time": {
+     "end": "2026-11-20T00:45:00.000+0100",
+     "start": "2026-11-19T20:45:00.000+0100"
+    },
+    "title": "Taborstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "17.11.2026 05:15",
      "ausVon": "17.11.2026 01:15",
      "location": "U2 Mittelbahnsteig - Ausgang Prater",
@@ -3009,6 +3048,38 @@
      "start": "2026-11-18T01:15:00.000+0100"
     },
     "title": "Seestadt"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "20.11.2026 00:45",
+     "ausVon": "19.11.2026 20:45",
+     "location": "U2 Mittelbahnsteig - Ausgang Franz-Wels-Gasse",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Lina-Loos-Platz",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "U2 Mittelbahnsteig - Ausgang Franz-Wels-Gasse",
+    "elevatorId": "AZ 01",
+    "name": "ftazW_1354338",
+    "parentName": "ftazW_1354338",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "time": {
+     "end": "2026-11-20T00:45:00.000+0100",
+     "start": "2026-11-19T20:45:00.000+0100"
+    },
+    "title": "Lina-Loos-Platz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3309,6 +3380,43 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "20.11.2026 00:45",
+     "ausVon": "19.11.2026 20:45",
+     "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Währingerstraße, Volksoper",
+     "rbls": [
+      4625
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Währinger Straße-Volksoper",
+     "status": "geplante Wartung",
+     "towards": "U6 Floridsdorf"
+    },
+    "description": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Währingerstraße, Volksoper",
+    "elevatorId": "WA 01",
+    "name": "ftazW_281",
+    "parentName": "ftazW_281",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4625
+    ],
+    "time": {
+     "end": "2026-11-20T00:45:00.000+0100",
+     "start": "2026-11-19T20:45:00.000+0100"
+    },
+    "title": "Währinger Straße-Volksoper"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "17.11.2026 05:15",
      "ausVon": "17.11.2026 01:15",
      "location": "U1 Mittelbahnsteig - Ausgang Anton Sattler Gasse",
@@ -3343,6 +3451,38 @@
      "start": "2026-11-17T01:15:00.000+0100"
     },
     "title": "Kagran"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "20.11.2026 00:45",
+     "ausVon": "19.11.2026 20:45",
+     "location": "Zwischengeschoss - Ausgang Neubaugasse",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Neubaugasse",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Zwischengeschoss - Ausgang Neubaugasse",
+    "elevatorId": "MA 01",
+    "name": "ftazW_352",
+    "parentName": "ftazW_352",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "time": {
+     "end": "2026-11-20T00:45:00.000+0100",
+     "start": "2026-11-19T20:45:00.000+0100"
+    },
+    "title": "Neubaugasse"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3596,6 +3736,43 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "20.11.2026 00:45",
+     "ausVon": "19.11.2026 20:45",
+     "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Am Schöpfwerk",
+     "rbls": [
+      4639
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Am Schöpfwerk",
+     "status": "geplante Wartung",
+     "towards": "U6 Floridsdorf"
+    },
+    "description": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Am Schöpfwerk",
+    "elevatorId": "PW 01",
+    "name": "ftazW_476",
+    "parentName": "ftazW_476",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4639
+    ],
+    "time": {
+     "end": "2026-11-20T00:45:00.000+0100",
+     "start": "2026-11-19T20:45:00.000+0100"
+    },
+    "title": "Am Schöpfwerk"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "18.11.2026 05:15",
      "ausVon": "18.11.2026 01:15",
      "location": "U6 Bahnsteig Richtung Siebenhirten - Passage - Ausgang Anton Baumgartner Straße",
@@ -3702,6 +3879,43 @@
      "start": "2026-11-18T20:45:00.000+0100"
     },
     "title": "Alser Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "20.11.2026 00:45",
+     "ausVon": "19.11.2026 20:45",
+     "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Morizgasse",
+     "rbls": [
+      4415
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Margaretengürtel",
+     "status": "geplante Wartung",
+     "towards": "U4 Heiligenstadt"
+    },
+    "description": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Morizgasse",
+    "elevatorId": "MG 01",
+    "name": "ftazW_572",
+    "parentName": "ftazW_572",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4415
+    ],
+    "time": {
+     "end": "2026-11-20T00:45:00.000+0100",
+     "start": "2026-11-19T20:45:00.000+0100"
+    },
+    "title": "Margaretengürtel"
    },
    {
     "alertCause": "undefined alert cause",
