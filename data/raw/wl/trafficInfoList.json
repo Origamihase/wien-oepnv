@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20261117-0026-F01, I20261117-0027-F01, I20260909-0007, I20261117-0028, I20261020-0029"
+    "trafficInfoNameList": "I20261117-0026-F01, I20260925-0011, I20261117-0030, I20260909-0007, I20261117-0028-F01, I20261020-0029, I20261117-0028-F02"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2558-125, R293-474, R318-437, R401-101, R1883-101, R1882-101, R1881-101, R1884-101, R1876-101, R1875-101, R1880-101, R2373-126, R2379-627, R2380-627, R2345-127, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2378-627, R3886-480, R1974-466, R1199-205, R500-101, R47-0, R17-0, R1454-149, R1455-149, R1456-149, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2558-125, R293-474, R318-437, R401-101, R1884-101, R1883-101, R1881-101, R1880-101, R1876-101, R1875-101, R1882-101, R2380-627, R2345-127, R2372-125, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2373-125, R2373-127, R2373-126, R2379-627, R3886-480, R1974-466, R1199-205, R500-101, R47-0, R17-0, R1454-149, R1456-149, R1455-149, R1452-149, R1453-149, R1458-149, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -212,79 +212,32 @@
     "status": "active",
     "time": {
      "created": "2026-11-17T14:03:00.000+0100",
-     "lastUpdate": "2026-11-17T14:03:00.000+0100",
-     "resume": "2026-11-17T14:03:00.000+0100",
+     "end": "2026-11-17T15:54:00.000+0100",
+     "lastUpdate": "2026-11-17T15:16:00.000+0100",
      "start": "2026-11-17T13:45:00.000+0100"
     },
     "title": "2: Rettungseinsatz"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "12A": "ptBusCity"
-     }
-    },
-    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 12A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 12A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "12A: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Reinprechtsdorfer Straße / Fendigasse",
-    "name": "I20261117-0027-F01",
-    "owner": "WL",
-    "parentName": "I20261117-0027",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "12A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 412,
-      "lineName": "12A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-17T14:39:00.000+0100",
-     "lastUpdate": "2026-11-17T14:39:00.000+0100",
-     "resume": "2026-11-17T14:39:00.000+0100",
-     "start": "2026-11-17T14:33:00.000+0100"
-    },
-    "title": "12A: Verkehrsunfall"
    },
    {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "49": "ptTram",
-      "52": "ptTram"
+      "49": "ptTram"
      }
     },
-    "description": "Linie 49: Betrieb nur zwischen Parlament, U Volkstheater und Breitensee S. Linie 52: Verlängerter Betrieb über Baumgarten hinaus bis Hütteldorf, Bujattigasse als Ersatz für die Linie 49. Voraussichtliche Dauer: 15:30 Uhr. Grund: Schadhafter PKW im Haltestellenbereich Seckendorfstraße.",
-    "descriptionHTML": "<p>Linie 49:<br>Betrieb nur zwischen Parlament, U Volkstheater und Breitensee S.<br>Linie 52:<br>Verlängerter Betrieb über Baumgarten hinaus bis Hütteldorf, Bujattigasse als Ersatz für die Linie 49.</p><p>Voraussichtliche Dauer: 15:30 Uhr.</p><p>Grund: Schadhafter PKW im Haltestellenbereich Seckendorfstraße.</p>",
+    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 49: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 49:<br>Betrieb nur zwischen Parlament, U Volkstheater und Breitensee S.<br>Linie 52:<br>Verlängerter Betrieb über Baumgarten hinaus bis Hütteldorf, Bujattigasse als Ersatz für die Linie 49.</p><p>Voraussichtliche Dauer: 15:30 Uhr.</p><p>Grund: Schadhafter PKW im Haltestellenbereich Seckendorfstraße.</p>",
-       "descriptionPlain": "Linie 49: Betrieb nur zwischen Parlament, U Volkstheater und Breitensee S. Linie 52: Verlängerter Betrieb über Baumgarten hinaus bis Hütteldorf, Bujattigasse als Ersatz für die Linie 49. Voraussichtliche Dauer: 15:30 Uhr. Grund: Schadhafter PKW im Haltestellenbereich Seckendorfstraße.",
-       "title": "49, 52: Schadhafter PKW"
+       "descriptionHtml": "<p>Linie 49: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "49: Schadhafter PKW"
       }
      }
     ],
-    "name": "I20261117-0028",
+    "name": "I20261117-0028-F01",
     "owner": "WL",
     "parentName": "I20261117-0028",
     "priority": "1",
@@ -292,15 +245,57 @@
     "reasonName": "Schadhafter PKW",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "49",
-     "52"
+     "49"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 149,
       "lineName": "49",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "relatedStops": [
+     1455
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-17T15:19:00.000+0100",
+     "lastUpdate": "2026-11-17T15:19:00.000+0100",
+     "resume": "2026-11-17T15:19:00.000+0100",
+     "start": "2026-11-17T14:57:00.000+0100"
+    },
+    "title": "49: Schadhafter PKW"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "52": "ptTram"
+     }
+    },
+    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 52: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 52: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "52: Schadhafter PKW"
+      }
+     }
+    ],
+    "name": "I20261117-0028-F02",
+    "owner": "WL",
+    "parentName": "I20261117-0028",
+    "priority": "1",
+    "reasonId": 18,
+    "reasonName": "Schadhafter PKW",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 152,
       "lineName": "52",
@@ -312,11 +307,57 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-17T14:58:00.000+0100",
-     "lastUpdate": "2026-11-17T14:58:00.000+0100",
+     "created": "2026-11-17T15:19:00.000+0100",
+     "lastUpdate": "2026-11-17T15:19:00.000+0100",
+     "resume": "2026-11-17T15:19:00.000+0100",
      "start": "2026-11-17T14:57:00.000+0100"
     },
-    "title": "49, 52: Schadhafter PKW"
+    "title": "52: Schadhafter PKW"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "59A": "ptBusCity"
+     }
+    },
+    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "59A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261117-0030",
+    "owner": "WL",
+    "parentName": "I20261117-0030",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "59A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 459,
+      "lineName": "59A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-17T15:04:00.000+0100",
+     "lastUpdate": "2026-11-17T15:04:00.000+0100",
+     "resume": "2026-11-17T15:04:00.000+0100",
+     "start": "2026-11-17T15:04:00.000+0100"
+    },
+    "title": "59A: Verkehrsüberlastung"
    },
    {
     "alertCause": "undefined alert cause",
@@ -340,6 +381,52 @@
      "start": "2026-11-17T04:45:22.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter PKW\nBetrieb ab Baumgarten",
+    "name": "R1452-149",
+    "owner": "WL",
+    "parentName": "R1452-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1452
+    ],
+    "time": {
+     "end": "2026-11-17T16:00:00.000+0100",
+     "start": "2026-11-17T15:00:55.000+0100"
+    },
+    "title": "Schadhafter PKW\nBetrieb ab Baumgarten"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter PKW\nBetrieb ab Baumgarten",
+    "name": "R1453-149",
+    "owner": "WL",
+    "parentName": "R1453-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1453
+    ],
+    "time": {
+     "end": "2026-11-17T16:00:00.000+0100",
+     "start": "2026-11-17T15:00:55.000+0100"
+    },
+    "title": "Schadhafter PKW\nBetrieb ab Baumgarten"
    },
    {
     "alertCause": "undefined alert cause",
@@ -409,6 +496,29 @@
      "start": "2026-11-17T15:00:25.000+0100"
     },
     "title": "Schadhafter PKW\nBetrieb ab Baumgarten "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter PKW\nZüge halten bei Linie 52 Richtung Hütteldorf",
+    "name": "R1458-149",
+    "owner": "WL",
+    "parentName": "R1458-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1458
+    ],
+    "time": {
+     "end": "2026-11-17T16:01:00.000+0100",
+     "start": "2026-11-17T15:01:55.000+0100"
+    },
+    "title": "Schadhafter PKW\nZüge halten bei Linie 52 Richtung Hütteldorf"
    },
    {
     "alertCause": "undefined alert cause",

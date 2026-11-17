@@ -650,22 +650,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Verkehrsunfall",
-    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "75e9cdbc4576e94fd8403d3bb53fd7f0c241ca05e419063e677c764a9f1e8d35",
-    "pubDate": "2026-11-17T14:33:00+01:00",
-    "starts_at": "2026-11-17T14:33:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=12A|D=2026-11-17|TK=12a verkehrsunfall",
-    "_wl_ids": [
-      "I20261117-0027"
-    ],
-    "_incident_start": "2026-11-17T14:33:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -900,7 +884,7 @@
     "guid": "590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b",
     "pubDate": "2026-11-17T13:45:00+01:00",
     "starts_at": "2026-11-17T13:45:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-17T15:54:00+01:00",
     "_identity": "wl|störung|L=2|D=2026-11-17|TK=rettungseinsatz",
     "_wl_ids": [
       "I20261117-0026"
@@ -922,18 +906,74 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49/52: Schadhafter PKW",
-    "description": "Linie 49: Betrieb nur zwischen Parlament, U Volkstheater und Breitensee S. Linie 52: Verlängerter Betrieb über Baumgarten hinaus bis Hütteldorf, Bujattigasse als Ersatz für die Linie 49. Voraussichtliche Dauer: 15:30 Uhr. Grund: Schadhafter PKW im Haltestellenbereich Seckendorfstraße.",
+    "title": "49: Schadhafter PKW",
+    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "144ca6f86c7c00a2e71213f90cb76c46db7887917a2e0cf0258fd395d6f5145d",
+    "guid": "0ba600bcfee185018ef209f9f657eb5b4b9f85c891aa2f6c7dacd09de563aef8",
     "pubDate": "2026-11-17T14:57:00+01:00",
     "starts_at": "2026-11-17T14:57:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=49,52|D=2026-11-17|TK=49 52 schadhafter pkw",
+    "_identity": "wl|störung|L=49|D=2026-11-17|TK=49 schadhafter pkw",
     "_wl_ids": [
       "I20261117-0028"
     ],
     "_incident_start": "2026-11-17T14:57:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Schadhafter PKW Betrieb ab Baumgarten",
+    "description": "Schadhafter PKW\nBetrieb ab Baumgarten",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b18e166c978a2b63856ab799358aff2112539e0c6bf26fef197f88990e539b36",
+    "pubDate": "2026-11-17T15:00:25+01:00",
+    "starts_at": "2026-11-17T15:00:55+01:00",
+    "ends_at": "2026-11-17T16:00:00+01:00",
+    "_identity": "wl|störung|L=49|D=2026-11-17|TK=schadhafter pkw betrieb ab baumgarten"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Schadhafter PKW Züge halten bei Linie 52 Richtung Hütteldorf",
+    "description": "Schadhafter PKW\nZüge halten bei Linie 52 Richtung Hütteldorf",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "eff32dd40d2d4d1ab6ed2fb859a61b6ed6a566409f17de6aff0fdb979ac705c1",
+    "pubDate": "2026-11-17T15:01:55+01:00",
+    "starts_at": "2026-11-17T15:01:55+01:00",
+    "ends_at": "2026-11-17T16:01:00+01:00",
+    "_identity": "wl|störung|L=49|D=2026-11-17|TK=schadhafter pkw züge halten bei linie 52 richtung hütteldorf"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Schadhafter PKW",
+    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "13ddbae4c3fbe725cdbc57feffb503dbb6277d56b6ff7cf08563093d0aa7e3ae",
+    "pubDate": "2026-11-17T14:57:00+01:00",
+    "starts_at": "2026-11-17T14:57:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=52|D=2026-11-17|TK=52 schadhafter pkw",
+    "_wl_ids": [
+      "I20261117-0028"
+    ],
+    "_incident_start": "2026-11-17T14:57:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "59A: Verkehrsüberlastung",
+    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5",
+    "pubDate": "2026-11-17T15:04:00+01:00",
+    "starts_at": "2026-11-17T15:04:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=59A|D=2026-11-17|TK=59a verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261117-0030"
+    ],
+    "_incident_start": "2026-11-17T15:04:00+01:00"
   },
   {
     "source": "Wiener Linien",
