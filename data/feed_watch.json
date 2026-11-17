@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-17T21:30:45.044880+00:00",
- "built": "2026-11-17T22:30:38+01:00",
+ "updated": "2026-11-17T22:00:55.557021+00:00",
+ "built": "2026-11-17T23:00:49+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-17T22:30:38+01:00",
+  "built": "2026-11-17T23:00:49+01:00",
   "items": [
    {
     "title": "U6: Betriebsstörung",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-10T21:30:52.226294+00:00",
-   "raw": {
-    "wl-stoerungen": 38,
-    "wl-hinweise": 87,
-    "oebb": 195,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 23,
-    "oebb": 170,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 7,
-    "wl": 79
-   }
-  },
   {
    "t": "2026-11-10T22:00:55.829208+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 7,
     "wl": 82
    }
+  },
+  {
+   "t": "2026-11-17T22:00:55.557021+00:00",
+   "raw": {
+    "wl-stoerungen": 39,
+    "wl-hinweise": 91,
+    "oebb": 176,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 25,
+    "oebb": 153,
+    "baustellen": 60
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 81
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-17T21:30:45.044880+00:00"
+   "last_ok": "2026-11-17T22:00:55.557021+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-17T21:30:45.044880+00:00"
+   "last_ok": "2026-11-17T22:00:55.557021+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-17T21:30:45.044880+00:00"
+   "last_ok": "2026-11-17T22:00:55.557021+00:00"
   }
  }
 }
