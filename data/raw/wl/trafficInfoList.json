@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261117-0015, I20261117-0014-F01, I20260925-0011, I20260909-0007, I20261117-0008-F01, I20261117-0008-F02, I20261117-0008-F03, I20261117-0008-F04, I20261117-0006, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261117-0008-F02, I20261117-0008-F03, I20261117-0006, I20261020-0029"
    },
    {
     "id": 3,
@@ -220,54 +220,6 @@
     "alertCauseId": 48,
     "attributes": {
      "relatedLineTypes": {
-      "9": "ptTram"
-     }
-    },
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "9: Stromstörung"
-      }
-     }
-    ],
-    "name": "I20261117-0008-F01",
-    "owner": "WL",
-    "parentName": "I20261117-0008",
-    "priority": "1",
-    "reasonId": 33,
-    "reasonName": "Stromstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 109,
-      "lineName": "9",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     143
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-17T08:53:00.000+0100",
-     "lastUpdate": "2026-11-17T08:53:00.000+0100",
-     "resume": "2026-11-17T08:53:00.000+0100",
-     "start": "2026-11-17T08:30:00.000+0100"
-    },
-    "title": "9: Stromstörung"
-   },
-   {
-    "alertCause": "track circuit problem",
-    "alertCauseId": 48,
-    "attributes": {
-     "relatedLineTypes": {
       "40": "ptTram"
      }
     },
@@ -358,148 +310,6 @@
      "start": "2026-11-17T08:30:00.000+0100"
     },
     "title": "41: Stromstörung"
-   },
-   {
-    "alertCause": "track circuit problem",
-    "alertCauseId": 48,
-    "attributes": {
-     "relatedLineTypes": {
-      "42": "ptTram"
-     }
-    },
-    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 42: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 42: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "42: Stromstörung"
-      }
-     }
-    ],
-    "name": "I20261117-0008-F04",
-    "owner": "WL",
-    "parentName": "I20261117-0008",
-    "priority": "1",
-    "reasonId": 33,
-    "reasonName": "Stromstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 142,
-      "lineName": "42",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     143
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-17T08:53:00.000+0100",
-     "lastUpdate": "2026-11-17T08:53:00.000+0100",
-     "resume": "2026-11-17T08:53:00.000+0100",
-     "start": "2026-11-17T08:30:00.000+0100"
-    },
-    "title": "42: Stromstörung"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U4: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261117-0014-F01",
-    "owner": "WL",
-    "parentName": "I20261117-0014",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 304,
-      "lineName": "U4",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4417
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-17T09:24:00.000+0100",
-     "end": "2026-11-17T09:59:00.000+0100",
-     "lastUpdate": "2026-11-17T09:59:00.000+0100",
-     "resume": "2026-11-17T09:59:00.000+0100",
-     "start": "2026-11-17T09:23:00.000+0100"
-    },
-    "title": "U4: Schadhaftes Fahrzeug"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "95A": "ptBusCity"
-     }
-    },
-    "description": "Linie 95A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie 95A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 95A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 95A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "95A: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261117-0015",
-    "owner": "WL",
-    "parentName": "I20261117-0015",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "95A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 495,
-      "lineName": "95A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-17T09:42:00.000+0100",
-     "lastUpdate": "2026-11-17T09:42:00.000+0100",
-     "resume": "2026-11-17T09:41:00.000+0100",
-     "start": "2026-11-17T09:41:00.000+0100"
-    },
-    "title": "95A: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",
