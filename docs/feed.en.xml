@@ -8,10 +8,10 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 17 Nov 2026 17:30:42 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 17 Nov 2026 18:00:58 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[25: Vehicle on the track]]></title>
+      <title><![CDATA[25: Car on track, vehicle on the track]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">29a5d1f2995cfdaaaa1eafaa79b6e0330a28ef79356a04065cce43acca8f7ecf</guid>
       <pubDate>Tue, 17 Nov 2026 17:06:00 +0100</pubDate>
@@ -19,9 +19,22 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Tue, 17 Nov 2026 17:30:42 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 17 Nov 2026 17:06:00 +0100</ext:starts_at>
-      <description>Service from Kagran, SMZ. Line 25 does not currently travel between Donauspital and Kagran. Replacement: lines U2, 26A, 95A, 96A. Expected until 18:00. Reason: vehicle … [Since 17:06]</description>
-      <content:encoded><![CDATA[Service from Kagran, SMZ. Line 25 does not currently travel between Donauspital and Kagran. Replacement: lines U2, 26A, 95A, 96A. Expected until 18:00. Reason: vehicle …<br/>[Since 17:06]]]></content:encoded>
+      <ext:starts_at>Tue, 17 Nov 2026 17:08:07 +0100</ext:starts_at>
+      <description>Car on track: service from Kagran, SMZ. Replacement bus 26E stops at Karl-Waldbrunner-Platz before Schloßhofer Straße; trains stop at Donaufelder Straße 175-177. [Since 17:06]</description>
+      <content:encoded><![CDATA[Car on track: service from Kagran, SMZ. Replacement bus 26E stops at Karl-Waldbrunner-Platz before Schloßhofer Straße; trains stop at Donaufelder Straße 175-177.<br/>[Since 17:06]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U4: Service disruption]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">2f362347fdb50112dac9e757cd78f8d886699ae0cfb2c4ed81858f3cdb1f4682</guid>
+      <pubDate>Tue, 17 Nov 2026 17:29:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 17 Nov 2026 17:29:00 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 17 Nov 2026 17:29:00 +0100</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: service disruption. [Since 17:29]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption.<br/>[Since 17:29]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[9: Illegally parked vehicle]]></title>
@@ -59,6 +72,7 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Tue, 17 Nov 2026 16:36:00 +0100</ext:first_seen>
       <ext:starts_at>Tue, 17 Nov 2026 16:36:00 +0100</ext:starts_at>
+      <ext:ends_at>Tue, 17 Nov 2026 18:29:00 +0100</ext:ends_at>
       <description>After a service obstruction, there are irregular intervals. [Since 16:36]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 16:36]]]></content:encoded>
     </item>
@@ -128,20 +142,6 @@
       <ext:ends_at>Mon, 23 Nov 2026 11:00:00 +0100</ext:ends_at>
       <description>On Monday, the 23.11.2026 will be Strauchgasse and Herrengasse in the period between approx.10:00 to approx.11:00, in 1010 Vienna due to an exercise on the … bollard lock system [Until Mon 23.11.]</description>
       <content:encoded><![CDATA[On Monday, the 23.11.2026 will be Strauchgasse and Herrengasse in the period between approx.10:00 to approx.11:00, in 1010 Vienna due to an exercise on the … bollard lock system<br/>[Until Mon 23.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N31: Construction works]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">8411eb99ed3e5104bdcb5535c59eb331d8fbcc0b3a11e90b8b9db429614fedf3</guid>
-      <pubDate>Wed, 11 Nov 2026 16:04:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 17 Nov 2026 00:00:31 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 18 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 19 Nov 2026 05:00:00 +0100</ext:ends_at>
-      <description>Due to roadworks in Schloßhofer Straße, line N31 is redirected. [From Wed 18.11. until Thu 19.11.]</description>
-      <content:encoded><![CDATA[Due to roadworks in Schloßhofer Straße, line N31 is redirected.<br/>[From Wed 18.11. until Thu 19.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

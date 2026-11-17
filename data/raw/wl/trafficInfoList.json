@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261117-0033, I20261117-0038, I20261117-0039-F01, I20260925-0011, I20260909-0007, I20261117-0034, I20261117-0031, I20261020-0029, I20261117-0032-F01, I20261117-0037, I20261117-0035-F01-F01, I20261117-0040"
+    "trafficInfoNameList": "I20261117-0035-F01-F01, I20261117-0033, I20261117-0038, I20261117-0039-F01, I20260925-0011, I20260909-0007, I20261117-0034, I20261117-0031, I20261117-0041, I20261020-0029, I20261117-0032-F01, I20261117-0037, I20261117-0040-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2558-125, R318-437, R293-474, R401-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R2373-125, R2373-127, R2373-126, R2379-627, R2345-127, R2380-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R3886-480, R1974-466, R1199-205, R500-101, R47-0, R17-0, R49-102, R1606-160, R1620-160, R1617-160, R1616-160, R1618-160, R1619-160, R1630-160, R1633-160, R1607-160, R1632-160, R1629-160, R1631-160, R1625-160, R1634-160, R532-109, R556-109, R526-109, R530-109, R531-109, R223-109, R966-125, R1021-125, R1015-125, R1012-125, R880-125, R1008-125, R1007-125, R1006-125, R533-109, R1475-109, R1476-109, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2558-125, R318-437, R293-474, R401-101, R1876-101, R1875-101, R1882-101, R1883-101, R1881-101, R1880-101, R1884-101, R2373-126, R2380-627, R2379-627, R2371-125, R2372-125, R2373-125, R2370-125, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2373-127, R3886-480, R1974-466, R1199-205, R500-101, R47-0, R17-0, R49-102, R531-109, R556-109, R532-109, R526-109, R530-109, R223-109, R966-125, R1021-125, R1015-125, R1012-125, R880-125, R1007-125, R1006-125, R1008-125, R533-109, R1475-109, R1476-109, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -391,8 +391,8 @@
     "status": "active",
     "time": {
      "created": "2026-11-17T16:59:00.000+0100",
-     "lastUpdate": "2026-11-17T16:59:00.000+0100",
-     "resume": "2026-11-17T16:59:00.000+0100",
+     "end": "2026-11-17T18:29:00.000+0100",
+     "lastUpdate": "2026-11-17T17:42:00.000+0100",
      "start": "2026-11-17T16:36:00.000+0100"
     },
     "title": "60: Fremder Verkehrsunfall"
@@ -541,19 +541,19 @@
       "25": "ptTram"
      }
     },
-    "description": "Die Linie 25 fährt derzeit nicht zwischen Donauspital U und Kagran U. Ersatz: Linien U2, 26A, 95A, 96A. Voraussichtliche Dauer: 18:00 Uhr. Grund: Fahrzeug im Gleis im Bereich Wagramer Straße.",
-    "descriptionHTML": "<p>Die Linie 25 fährt derzeit nicht zwischen Donauspital U und Kagran U.</p><p>Ersatz: Linien U2, 26A, 95A, 96A.</p><p>Voraussichtliche Dauer: 18:00 Uhr.</p><p>Grund: Fahrzeug im Gleis im Bereich Wagramer Straße.</p>",
+    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Die Linie 25 fährt derzeit nicht zwischen Donauspital U und Kagran U.</p><p>Ersatz: Linien U2, 26A, 95A, 96A.</p><p>Voraussichtliche Dauer: 18:00 Uhr.</p><p>Grund: Fahrzeug im Gleis im Bereich Wagramer Straße.</p>",
-       "descriptionPlain": "Die Linie 25 fährt derzeit nicht zwischen Donauspital U und Kagran U. Ersatz: Linien U2, 26A, 95A, 96A. Voraussichtliche Dauer: 18:00 Uhr. Grund: Fahrzeug im Gleis im Bereich Wagramer Straße.",
+       "descriptionHtml": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "25: Fahrzeug im Gleis"
       }
      }
     ],
     "location": "Wagramer Straße",
-    "name": "I20261117-0040",
+    "name": "I20261117-0040-F01",
     "owner": "WL",
     "parentName": "I20261117-0040",
     "priority": "1",
@@ -572,11 +572,60 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-17T17:09:00.000+0100",
-     "lastUpdate": "2026-11-17T17:11:00.000+0100",
+     "created": "2026-11-17T17:34:00.000+0100",
+     "lastUpdate": "2026-11-17T17:34:00.000+0100",
+     "resume": "2026-11-17T17:34:00.000+0100",
      "start": "2026-11-17T17:06:00.000+0100"
     },
     "title": "25: Fahrzeug im Gleis"
+   },
+   {
+    "alertCause": "miscellaneous",
+    "alertCauseId": 137,
+    "attributes": {
+     "relatedLineTypes": {
+      "U4": "ptMetro"
+     }
+    },
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "descriptionHTML": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+       "descriptionPlain": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+       "title": "U4: Betriebsstörung"
+      }
+     }
+    ],
+    "name": "I20261117-0041",
+    "owner": "WL",
+    "parentName": "I20261117-0041",
+    "priority": "1",
+    "reasonId": 14,
+    "reasonName": "Betriebsstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 304,
+      "lineName": "U4",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4419
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-17T17:31:00.000+0100",
+     "lastUpdate": "2026-11-17T17:31:00.000+0100",
+     "resume": "2026-11-17T17:29:00.000+0100",
+     "start": "2026-11-17T17:29:00.000+0100"
+    },
+    "title": "U4: Betriebsstörung"
    },
    {
     "alertCause": "undefined alert cause",
@@ -784,328 +833,6 @@
      "start": "2026-11-17T17:10:37.000+0100"
     },
     "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R1606-160",
-    "owner": "WL",
-    "parentName": "R1606-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1606
-    ],
-    "time": {
-     "end": "2026-11-17T17:37:00.000+0100",
-     "start": "2026-11-17T16:38:03.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Hofwiesengasse ",
-    "name": "R1607-160",
-    "owner": "WL",
-    "parentName": "R1607-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1607
-    ],
-    "time": {
-     "end": "2026-11-17T17:41:00.000+0100",
-     "start": "2026-11-17T16:49:04.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Hofwiesengasse "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R1616-160",
-    "owner": "WL",
-    "parentName": "R1616-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1616
-    ],
-    "time": {
-     "end": "2026-11-17T17:40:00.000+0100",
-     "start": "2026-11-17T16:41:04.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R1617-160",
-    "owner": "WL",
-    "parentName": "R1617-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1617
-    ],
-    "time": {
-     "end": "2026-11-17T17:40:00.000+0100",
-     "start": "2026-11-17T16:41:04.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R1618-160",
-    "owner": "WL",
-    "parentName": "R1618-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1618
-    ],
-    "time": {
-     "end": "2026-11-17T17:40:00.000+0100",
-     "start": "2026-11-17T16:41:04.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R1619-160",
-    "owner": "WL",
-    "parentName": "R1619-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1619
-    ],
-    "time": {
-     "end": "2026-11-17T17:40:00.000+0100",
-     "start": "2026-11-17T16:41:04.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R1620-160",
-    "owner": "WL",
-    "parentName": "R1620-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1620
-    ],
-    "time": {
-     "end": "2026-11-17T17:37:00.000+0100",
-     "start": "2026-11-17T16:38:03.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Hofwiesengasse ",
-    "name": "R1625-160",
-    "owner": "WL",
-    "parentName": "R1625-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1625
-    ],
-    "time": {
-     "end": "2026-11-17T17:41:00.000+0100",
-     "start": "2026-11-17T16:49:04.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Hofwiesengasse "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Hofwiesengasse ",
-    "name": "R1629-160",
-    "owner": "WL",
-    "parentName": "R1629-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1629
-    ],
-    "time": {
-     "end": "2026-11-17T17:41:00.000+0100",
-     "start": "2026-11-17T16:49:04.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Hofwiesengasse "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Hofwiesengasse ",
-    "name": "R1630-160",
-    "owner": "WL",
-    "parentName": "R1630-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1630
-    ],
-    "time": {
-     "end": "2026-11-17T17:41:00.000+0100",
-     "start": "2026-11-17T16:49:04.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Hofwiesengasse "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Hofwiesengasse ",
-    "name": "R1631-160",
-    "owner": "WL",
-    "parentName": "R1631-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1631
-    ],
-    "time": {
-     "end": "2026-11-17T17:41:00.000+0100",
-     "start": "2026-11-17T16:49:04.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Hofwiesengasse "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Hofwiesengasse ",
-    "name": "R1632-160",
-    "owner": "WL",
-    "parentName": "R1632-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1632
-    ],
-    "time": {
-     "end": "2026-11-17T17:41:00.000+0100",
-     "start": "2026-11-17T16:49:04.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Hofwiesengasse "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBetrieb ab Hofwiesengasse ",
-    "name": "R1633-160",
-    "owner": "WL",
-    "parentName": "R1633-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1633
-    ],
-    "time": {
-     "end": "2026-11-17T17:41:00.000+0100",
-     "start": "2026-11-17T16:49:04.000+0100"
-    },
-    "title": "Fremdunfall\nBetrieb ab Hofwiesengasse "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nZüge halten bei Linie 62 Richtung Lainz ",
-    "name": "R1634-160",
-    "owner": "WL",
-    "parentName": "R1634-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1634
-    ],
-    "time": {
-     "end": "2026-11-17T17:41:00.000+0100",
-     "start": "2026-11-17T16:53:05.000+0100"
-    },
-    "title": "Fremdunfall\nZüge halten bei Linie 62 Richtung Lainz "
    },
    {
     "alertCause": "undefined alert cause",
