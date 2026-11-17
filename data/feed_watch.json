@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-17T03:30:49.011160+00:00",
- "built": "2026-11-17T04:30:43+01:00",
+ "updated": "2026-11-17T04:00:50.096547+00:00",
+ "built": "2026-11-17T05:00:42+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-17T04:30:43+01:00",
+  "built": "2026-11-17T05:00:42+01:00",
   "items": [
    {
     "title": "N31: Bauarbeiten",
@@ -45,53 +45,13 @@
     "time_line": "Seit 11.11."
    },
    {
-    "title": "5B: Bauarbeiten",
-    "time_line": "Bis 10.12."
+    "title": "66A: Busse halten Salvatorianerplatz",
+    "time_line": "Bis Mi 18.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-10T03:31:02.897840+00:00",
-   "raw": {
-    "wl-stoerungen": 42,
-    "wl-hinweise": 87,
-    "oebb": 181,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 24,
-    "oebb": 156,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 7,
-    "wl": 82
-   }
-  },
-  {
-   "t": "2026-11-10T04:00:47.088945+00:00",
-   "raw": {
-    "wl-stoerungen": 39,
-    "wl-hinweise": 87,
-    "oebb": 181,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 24,
-    "oebb": 156,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 7,
-    "wl": 80
-   }
-  },
   {
    "t": "2026-11-10T04:30:50.416209+00:00",
    "raw": {
@@ -6771,17 +6731,37 @@
     "oebb": 6,
     "wl": 83
    }
+  },
+  {
+   "t": "2026-11-17T04:00:50.096547+00:00",
+   "raw": {
+    "wl-stoerungen": 39,
+    "wl-hinweise": 87,
+    "oebb": 169,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 24,
+    "oebb": 146,
+    "baustellen": 60
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 81
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-17T03:30:49.011160+00:00"
+   "last_ok": "2026-11-17T04:00:50.096547+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-17T03:30:49.011160+00:00"
+   "last_ok": "2026-11-17T04:00:50.096547+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-17T03:30:49.011160+00:00"
+   "last_ok": "2026-11-17T04:00:50.096547+00:00"
   }
  }
 }
