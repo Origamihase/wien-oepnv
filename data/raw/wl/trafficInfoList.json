@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261117-0044, I20261020-0029, I20261117-0043, I20261117-0031, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261117-0045, I20261020-0029, I20261117-0044-F01, I20261117-0031, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2558-125, R318-437, R293-474, R401-101, R1881-101, R1884-101, R1883-101, R1882-101, R1875-101, R1876-101, R1880-101, R2359-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2370-125, R2343-125, R2343-626, R3886-480, R1974-466, R1199-205, R500-101, R47-0, R17-0, R49-102, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2558-125, R293-474, R318-437, R401-101, R1881-101, R1880-101, R1876-101, R1875-101, R1882-101, R1883-101, R1884-101, R2372-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2373-125, R2371-125, R3886-480, R1974-466, R1199-205, R500-101, R47-0, R17-0, R49-102, R1443-149, R1442-149, R1441-149, R1486-149, R1446-149, R1445-149, R1444-149, R1447-149, R1449-149, R1448-149, R1375-149, R1454-149, R1453-149, R1452-149, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -216,51 +216,6 @@
     "title": "2: Gleisschaden"
    },
    {
-    "alertCause": "vandalism",
-    "alertCauseId": 16,
-    "attributes": {
-     "relatedLineTypes": {
-      "38": "ptTram"
-     }
-    },
-    "description": "Linie 38: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-    "descriptionHTML": "<p>Linie 38:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 38:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
-       "descriptionPlain": "Linie 38: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
-       "title": "38: Verunreinigung"
-      }
-     }
-    ],
-    "name": "I20261117-0043",
-    "owner": "WL",
-    "parentName": "I20261117-0043",
-    "priority": "1",
-    "reasonId": 36,
-    "reasonName": "Verunreinigung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 138,
-      "lineName": "38",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-17T19:15:00.000+0100",
-     "lastUpdate": "2026-11-17T19:15:00.000+0100",
-     "resume": "2026-11-17T19:14:00.000+0100",
-     "start": "2026-11-17T19:14:00.000+0100"
-    },
-    "title": "38: Verunreinigung"
-   },
-   {
     "alertCause": "vehicle on the line",
     "alertCauseId": 71,
     "attributes": {
@@ -268,19 +223,19 @@
       "77A": "ptBusCity"
      }
     },
-    "description": "Linie 77A: Fahrtbehinderung in Richtung Rennweg S. Voraussichtliche Dauer: 20:00 Uhr. Grund: Falschparker im Bereich Rabengasse 2.",
-    "descriptionHTML": "<p>Linie 77A:<br>Fahrtbehinderung in Richtung Rennweg S.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Falschparker im Bereich Rabengasse 2.</p>",
+    "description": "Linie 77A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 77A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 77A:<br>Fahrtbehinderung in Richtung Rennweg S.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Falschparker im Bereich Rabengasse 2.</p>",
-       "descriptionPlain": "Linie 77A: Fahrtbehinderung in Richtung Rennweg S. Voraussichtliche Dauer: 20:00 Uhr. Grund: Falschparker im Bereich Rabengasse 2.",
+       "descriptionHtml": "<p>Linie 77A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 77A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "77A: Falschparker"
       }
      }
     ],
     "location": "Rabengasse 2",
-    "name": "I20261117-0044",
+    "name": "I20261117-0044-F01",
     "owner": "WL",
     "parentName": "I20261117-0044",
     "priority": "1",
@@ -299,11 +254,59 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-17T19:39:00.000+0100",
-     "lastUpdate": "2026-11-17T19:39:00.000+0100",
+     "created": "2026-11-17T20:03:00.000+0100",
+     "lastUpdate": "2026-11-17T20:03:00.000+0100",
+     "resume": "2026-11-17T20:03:00.000+0100",
      "start": "2026-11-17T19:38:00.000+0100"
     },
     "title": "77A: Falschparker"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "49": "ptTram"
+     }
+    },
+    "description": "Linie 49: Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse. Voraussichtliche Dauer: 20:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Volkstheater U.",
+    "descriptionHTML": "<p>Linie 49:<br>Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse.</p><p>Voraussichtliche Dauer: 20:40 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Volkstheater U.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 49:<br>Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse.</p><p>Voraussichtliche Dauer: 20:40 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Volkstheater U.</p>",
+       "descriptionPlain": "Linie 49: Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse. Voraussichtliche Dauer: 20:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Volkstheater U.",
+       "title": "49: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261117-0045",
+    "owner": "WL",
+    "parentName": "I20261117-0045",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 149,
+      "lineName": "49",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     1440
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-17T20:16:00.000+0100",
+     "lastUpdate": "2026-11-17T20:16:00.000+0100",
+     "start": "2026-11-17T20:16:00.000+0100"
+    },
+    "title": "49: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -327,6 +330,328 @@
      "start": "2026-11-17T04:45:22.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1375-149",
+    "owner": "WL",
+    "parentName": "R1375-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1375
+    ],
+    "time": {
+     "end": "2026-11-17T21:29:00.000+0100",
+     "start": "2026-11-17T20:30:26.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1441-149",
+    "owner": "WL",
+    "parentName": "R1441-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1441
+    ],
+    "time": {
+     "end": "2026-11-17T21:19:00.000+0100",
+     "start": "2026-11-17T20:16:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1442-149",
+    "owner": "WL",
+    "parentName": "R1442-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1442
+    ],
+    "time": {
+     "end": "2026-11-17T21:19:00.000+0100",
+     "start": "2026-11-17T20:16:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1443-149",
+    "owner": "WL",
+    "parentName": "R1443-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1443
+    ],
+    "time": {
+     "end": "2026-11-17T21:19:00.000+0100",
+     "start": "2026-11-17T20:16:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1444-149",
+    "owner": "WL",
+    "parentName": "R1444-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1444
+    ],
+    "time": {
+     "end": "2026-11-17T21:19:00.000+0100",
+     "start": "2026-11-17T20:16:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1445-149",
+    "owner": "WL",
+    "parentName": "R1445-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1445
+    ],
+    "time": {
+     "end": "2026-11-17T21:19:00.000+0100",
+     "start": "2026-11-17T20:16:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1446-149",
+    "owner": "WL",
+    "parentName": "R1446-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1446
+    ],
+    "time": {
+     "end": "2026-11-17T21:19:00.000+0100",
+     "start": "2026-11-17T20:16:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1447-149",
+    "owner": "WL",
+    "parentName": "R1447-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1447
+    ],
+    "time": {
+     "end": "2026-11-17T21:19:00.000+0100",
+     "start": "2026-11-17T20:19:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1448-149",
+    "owner": "WL",
+    "parentName": "R1448-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1448
+    ],
+    "time": {
+     "end": "2026-11-17T21:24:00.000+0100",
+     "start": "2026-11-17T20:24:57.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1449-149",
+    "owner": "WL",
+    "parentName": "R1449-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1449
+    ],
+    "time": {
+     "end": "2026-11-17T21:24:00.000+0100",
+     "start": "2026-11-17T20:24:57.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1452-149",
+    "owner": "WL",
+    "parentName": "R1452-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1452
+    ],
+    "time": {
+     "end": "2026-11-17T21:29:00.000+0100",
+     "start": "2026-11-17T20:30:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1453-149",
+    "owner": "WL",
+    "parentName": "R1453-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1453
+    ],
+    "time": {
+     "end": "2026-11-17T21:29:00.000+0100",
+     "start": "2026-11-17T20:30:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1454-149",
+    "owner": "WL",
+    "parentName": "R1454-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1454
+    ],
+    "time": {
+     "end": "2026-11-17T21:29:00.000+0100",
+     "start": "2026-11-17T20:30:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "name": "R1486-149",
+    "owner": "WL",
+    "parentName": "R1486-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1486
+    ],
+    "time": {
+     "end": "2026-11-17T21:19:00.000+0100",
+     "start": "2026-11-17T20:16:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",

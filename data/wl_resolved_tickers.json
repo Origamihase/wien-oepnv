@@ -3,6 +3,62 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
+  "R1375-149|2026-11-17T20:30:26.000+0100": {
+   "incident": "I20261117-0045",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1441-149|2026-11-17T20:16:56.000+0100": {
+   "incident": "I20261117-0045",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1442-149|2026-11-17T20:16:56.000+0100": {
+   "incident": "I20261117-0045",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1443-149|2026-11-17T20:16:56.000+0100": {
+   "incident": "I20261117-0045",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1444-149|2026-11-17T20:16:56.000+0100": {
+   "incident": "I20261117-0045",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1445-149|2026-11-17T20:16:56.000+0100": {
+   "incident": "I20261117-0045",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1446-149|2026-11-17T20:16:56.000+0100": {
+   "incident": "I20261117-0045",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1447-149|2026-11-17T20:19:56.000+0100": {
+   "incident": "I20261117-0045",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1448-149|2026-11-17T20:24:57.000+0100": {
+   "incident": "I20261117-0045",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1449-149|2026-11-17T20:24:57.000+0100": {
+   "incident": "I20261117-0045",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1452-149|2026-11-17T20:30:27.000+0100": {
+   "incident": "I20261117-0045",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1453-149|2026-11-17T20:30:27.000+0100": {
+   "incident": "I20261117-0045",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1454-149|2026-11-17T20:30:27.000+0100": {
+   "incident": "I20261117-0045",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1486-149|2026-11-17T20:16:56.000+0100": {
+   "incident": "I20261117-0045",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
   "R49-102|2026-11-17T16:10:59.000+0100": {
    "incident": "I20261117-0031",
    "title": "Gleisschaden\nZüge halten Burgring nach Bellariastraße "
