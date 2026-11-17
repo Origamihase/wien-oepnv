@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261117-0045, I20261020-0029, I20261117-0044-F01, I20261117-0031, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261117-0031, I20261117-0045-F01, I20261117-0046"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2558-125, R293-474, R318-437, R401-101, R1881-101, R1880-101, R1876-101, R1875-101, R1882-101, R1883-101, R1884-101, R2372-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2373-125, R2371-125, R3886-480, R1974-466, R1199-205, R500-101, R47-0, R17-0, R49-102, R1443-149, R1442-149, R1441-149, R1486-149, R1446-149, R1445-149, R1444-149, R1447-149, R1449-149, R1448-149, R1375-149, R1454-149, R1453-149, R1452-149, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2558-125, R293-474, R318-437, R401-101, R1876-101, R1882-101, R1875-101, R1881-101, R1883-101, R1884-101, R1880-101, R2343-125, R2343-626, R2359-125, R2370-125, R2378-627, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R3886-480, R1974-466, R1199-205, R500-101, R47-0, R17-0, R49-102, R1446-149, R1486-149, R1443-149, R1442-149, R1441-149, R1444-149, R1445-149, R1447-149, R1449-149, R1448-149, R1375-149, R1453-149, R1452-149, R1454-149, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -216,52 +216,6 @@
     "title": "2: Gleisschaden"
    },
    {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "77A": "ptBusCity"
-     }
-    },
-    "description": "Linie 77A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 77A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 77A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 77A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "77A: Falschparker"
-      }
-     }
-    ],
-    "location": "Rabengasse 2",
-    "name": "I20261117-0044-F01",
-    "owner": "WL",
-    "parentName": "I20261117-0044",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "77A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 477,
-      "lineName": "77A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-17T20:03:00.000+0100",
-     "lastUpdate": "2026-11-17T20:03:00.000+0100",
-     "resume": "2026-11-17T20:03:00.000+0100",
-     "start": "2026-11-17T19:38:00.000+0100"
-    },
-    "title": "77A: Falschparker"
-   },
-   {
     "alertCause": "emergency medical services",
     "alertCauseId": 14,
     "attributes": {
@@ -269,18 +223,18 @@
       "49": "ptTram"
      }
     },
-    "description": "Linie 49: Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse. Voraussichtliche Dauer: 20:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Volkstheater U.",
-    "descriptionHTML": "<p>Linie 49:<br>Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse.</p><p>Voraussichtliche Dauer: 20:40 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Volkstheater U.</p>",
+    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 49: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 49:<br>Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse.</p><p>Voraussichtliche Dauer: 20:40 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Volkstheater U.</p>",
-       "descriptionPlain": "Linie 49: Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse. Voraussichtliche Dauer: 20:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Volkstheater U.",
+       "descriptionHtml": "<p>Linie 49: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "49: Rettungseinsatz"
       }
      }
     ],
-    "name": "I20261117-0045",
+    "name": "I20261117-0045-F01",
     "owner": "WL",
     "parentName": "I20261117-0045",
     "priority": "1",
@@ -302,11 +256,57 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-17T20:16:00.000+0100",
-     "lastUpdate": "2026-11-17T20:16:00.000+0100",
+     "created": "2026-11-17T20:31:00.000+0100",
+     "lastUpdate": "2026-11-17T20:31:00.000+0100",
+     "resume": "2026-11-17T20:31:00.000+0100",
      "start": "2026-11-17T20:16:00.000+0100"
     },
     "title": "49: Rettungseinsatz"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "94A": "ptBusCity"
+     }
+    },
+    "description": "Linie 94A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "descriptionHTML": "<p>Linie 94A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 94A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+       "descriptionPlain": "Linie 94A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+       "title": "94A: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261117-0046",
+    "owner": "WL",
+    "parentName": "I20261117-0046",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "94A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 494,
+      "lineName": "94A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-17T20:41:00.000+0100",
+     "lastUpdate": "2026-11-17T20:41:00.000+0100",
+     "resume": "2026-11-17T20:41:00.000+0100",
+     "start": "2026-11-17T20:41:00.000+0100"
+    },
+    "title": "94A: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
