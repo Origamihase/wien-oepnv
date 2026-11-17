@@ -2,5 +2,66 @@
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
- "owners": {}
+ "owners": {
+  "R1214-138|2026-11-17T10:49:28.000+0100": {
+   "incident": "I20261117-0016",
+   "title": "Fahrtbehinderung\nwegen Witterung "
+  },
+  "R1215-138|2026-11-17T10:49:28.000+0100": {
+   "incident": "I20261117-0016",
+   "title": "Fahrtbehinderung\nwegen Witterung "
+  },
+  "R1216-138|2026-11-17T10:49:28.000+0100": {
+   "incident": "I20261117-0016",
+   "title": "Fahrtbehinderung\nwegen Witterung "
+  },
+  "R1217-138|2026-11-17T10:49:28.000+0100": {
+   "incident": "I20261117-0016",
+   "title": "Fahrtbehinderung\nwegen Witterung "
+  },
+  "R1221-138|2026-11-17T10:47:28.000+0100": {
+   "incident": "I20261117-0016",
+   "title": "Fahrtbehinderung\nwegen Witterung "
+  },
+  "R1223-138|2026-11-17T10:47:28.000+0100": {
+   "incident": "I20261117-0016",
+   "title": "Fahrtbehinderung\nWitterung "
+  },
+  "R1224-138|2026-11-17T10:47:28.000+0100": {
+   "incident": "I20261117-0016",
+   "title": "Fahrtbehinderung\nWitterung "
+  },
+  "R1225-138|2026-11-17T10:47:28.000+0100": {
+   "incident": "I20261117-0016",
+   "title": "Fahrtbehinderung\nWitterung "
+  },
+  "R1226-138|2026-11-17T10:47:28.000+0100": {
+   "incident": "I20261117-0016",
+   "title": "Fahrtbehinderung\nWitterung "
+  },
+  "R1227-138|2026-11-17T10:47:28.000+0100": {
+   "incident": "I20261117-0016",
+   "title": "Fahrtbehinderung\nWitterung "
+  },
+  "R208-138|2026-11-17T10:48:28.000+0100": {
+   "incident": "I20261117-0016",
+   "title": "Witterung \nZüge halten Währinger Gürtel ggü. 164"
+  },
+  "R215-138|2026-11-17T10:49:28.000+0100": {
+   "incident": "I20261117-0016",
+   "title": "Fahrtbehinderung\nwegen Witterung "
+  },
+  "R216-138|2026-11-17T10:49:28.000+0100": {
+   "incident": "I20261117-0016",
+   "title": "Fahrtbehinderung\nwegen Witterung "
+  },
+  "R2964-138|2026-11-17T10:49:28.000+0100": {
+   "incident": "I20261117-0016",
+   "title": "Fahrtbehinderung\nwegen Witterung "
+  },
+  "R2985-138|2026-11-17T10:47:28.000+0100": {
+   "incident": "I20261117-0016",
+   "title": "Fahrtbehinderung\nWitterung "
+  }
+ }
 }

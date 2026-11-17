@@ -706,6 +706,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1: Falschparker Betrieb ab Neilreichgasse",
+    "description": "Falschparker\nBetrieb ab Neilreichgasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1",
+    "pubDate": "2026-11-17T10:59:28+01:00",
+    "starts_at": "2026-11-17T10:59:58+01:00",
+    "ends_at": "2026-11-17T11:59:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-11-17|TK=falschparker"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "1: Kein Betrieb",
     "description": "Gleisbauarbeiten\nKein Betrieb",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -890,6 +902,58 @@
     "starts_at": "2026-11-17T00:00:04+01:00",
     "ends_at": "2026-11-17T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-11-17|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Aktuelle Wetterlage",
+    "description": "Linie 38: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Voraussichtliche Dauer: 11:15 Uhr. Grund: Aktuelle Wetterlage im Bereich Grinzinger Allee.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "17bd41294bfaf719edc6e8bbedc53df82ea26d96df008351534db7cc43866547",
+    "pubDate": "2026-11-17T10:45:00+01:00",
+    "starts_at": "2026-11-17T10:45:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=38|D=2026-11-17|TK=38 aktuelle wetterlage",
+    "_wl_ids": [
+      "I20261117-0016"
+    ],
+    "_incident_start": "2026-11-17T10:45:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung wegen Witterung",
+    "description": "Fahrtbehinderung\nwegen Witterung",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "7a4a73de88f0831a3f06167861b160dfadc29bc4d100420378a72fd33b47a502",
+    "pubDate": "2026-11-17T10:47:28+01:00",
+    "starts_at": "2026-11-17T10:49:28+01:00",
+    "ends_at": "2026-11-17T11:48:00+01:00",
+    "_identity": "wl|störung|L=38|D=2026-11-17|TK=fahrtbehinderung wegen witterung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung Witterung",
+    "description": "Fahrtbehinderung\nWitterung",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "56c962eca53b059f01ef2bfccff3d924369208f62ee7d2082a39354d7b6cd3e0",
+    "pubDate": "2026-11-17T10:47:28+01:00",
+    "starts_at": "2026-11-17T10:47:28+01:00",
+    "ends_at": "2026-11-17T11:46:00+01:00",
+    "_identity": "wl|störung|L=38|D=2026-11-17|TK=fahrtbehinderung witterung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Witterung Züge halten Währinger Gürtel ggü. 164",
+    "description": "Witterung Züge halten Währinger Gürtel ggü. 164",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "018a2fd7df7eeda200bf54fd4b9d22ef2b6ab994c78b8f0d340ebfb1dae62683",
+    "pubDate": "2026-11-17T10:48:28+01:00",
+    "starts_at": "2026-11-17T10:48:28+01:00",
+    "ends_at": "2026-11-17T11:47:00+01:00",
+    "_identity": "wl|störung|L=38|D=2026-11-17|TK=witterung züge halten währinger gürtel ggü 164"
   },
   {
     "source": "Wiener Linien",
