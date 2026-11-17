@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_485, ftazW_369, ftazW_17, ftazW_4, ftazW_18, ftazW_484, ftazW_368, ftazW_15, ftazW_1032355, ftazW_5, ftazW_603, ftazW_209, ftazW_1017121, ftazW_19, ftazW_41, ftazW_16, ftazW_606, ftazW_1018092, ftazW_42, ftazW_1018049, ftazW_210, ftazW_1017123, ftazW_352, ftazW_1018058, ftazW_572, ftazW_476, ftazW_281, ftazW_1354338, ftazW_353, ftazW_282, ftazW_573, ftazW_477, ftazW_1354339"
+    "trafficInfoNameList": "ftazW_485, ftazW_369, ftazW_17, ftazW_4, ftazW_18, ftazW_484, ftazW_368, ftazW_15, ftazW_1032355, ftazW_5, ftazW_603, ftazW_209, ftazW_1017121, ftazW_19, ftazW_41, ftazW_16, ftazW_606, ftazW_1018092, ftazW_42, ftazW_1018049, ftazW_210, ftazW_1017123, ftazW_352, ftazW_1018058, ftazW_572, ftazW_476, ftazW_281, ftazW_1354338, ftazW_353, ftazW_282, ftazW_573, ftazW_477, ftazW_1354339, ftazW_1354337"
    }
   ],
   "poiCategoryGroups": [
@@ -3092,6 +3092,43 @@
      "start": "2026-11-18T01:15:00.000+0100"
     },
     "title": "Seestadt"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "20.11.2026 05:15",
+     "ausVon": "20.11.2026 01:15",
+     "location": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Florianigasse",
+     "rbls": [
+      4205
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Rathaus",
+     "status": "geplante Wartung",
+     "towards": "U2 Karlsplatz"
+    },
+    "description": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Florianigasse",
+    "elevatorId": "RH 05",
+    "name": "ftazW_1354337",
+    "parentName": "ftazW_1354337",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4205
+    ],
+    "time": {
+     "end": "2026-11-20T05:15:00.000+0100",
+     "start": "2026-11-20T01:15:00.000+0100"
+    },
+    "title": "Rathaus"
    },
    {
     "alertCause": "undefined alert cause",
