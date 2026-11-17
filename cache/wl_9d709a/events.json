@@ -866,6 +866,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "32A: Rettungseinsatz",
+    "description": "Linie 32A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "72b15e921cc21a0aeb5361674384109c63f686e18c932390d3ce9867dda79e61",
+    "pubDate": "2026-11-17T07:25:00+01:00",
+    "starts_at": "2026-11-17T07:25:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=32A|D=2026-11-17|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261117-0001"
+    ],
+    "_incident_start": "2026-11-17T07:25:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -946,17 +962,5 @@
     "starts_at": "2026-09-14T04:00:00+02:00",
     "ends_at": "2026-12-31T23:59:00+01:00",
     "_identity": "wl|störung|L=|D=2026-09-14|TK=sperre"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "TEST",
-    "description": "TEST",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "48381bb81118f7d0ae0cc8769ab73a622f2b41439ac547d5d2db27545eca010c",
-    "pubDate": "2026-11-17T06:06:59+01:00",
-    "starts_at": "2026-11-17T06:06:59+01:00",
-    "ends_at": "2026-11-17T07:06:00+01:00",
-    "_identity": "wl|störung|L=|D=2026-11-17|TK=test"
   }
 ]
