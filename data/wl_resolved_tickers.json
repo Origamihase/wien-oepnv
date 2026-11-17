@@ -2,5 +2,50 @@
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
- "owners": {}
+ "owners": {
+  "R1001-102|2026-11-17T13:59:48.000+0100": {
+   "incident": "I20261117-0026",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R134-102|2026-11-17T13:59:46.000+0100": {
+   "incident": "I20261117-0026",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R251-102|2026-11-17T13:45:45.000+0100": {
+   "incident": "I20261117-0026",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R252-102|2026-11-17T13:45:45.000+0100": {
+   "incident": "I20261117-0026",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R49-102|2026-11-17T13:45:44.000+0100": {
+   "incident": "I20261117-0026",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R50-102|2026-11-17T13:45:44.000+0100": {
+   "incident": "I20261117-0026",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R51-102|2026-11-17T13:45:44.000+0100": {
+   "incident": "I20261117-0026",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R52-102|2026-11-17T13:52:45.000+0100": {
+   "incident": "I20261117-0026",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R53-102|2026-11-17T13:52:45.000+0100": {
+   "incident": "I20261117-0026",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R54-102|2026-11-17T13:52:45.000+0100": {
+   "incident": "I20261117-0026",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R55-102|2026-11-17T13:52:45.000+0100": {
+   "incident": "I20261117-0026",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  }
+ }
 }

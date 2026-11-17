@@ -1877,14 +1877,14 @@
    {
     "alertCause": "unknown",
     "alertCauseId": 0,
-    "description": "<p><strong><u>Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa U</u></strong></p><p><strong><u>Haltestelle:</u></strong> Erlaaer Spitz</p><p><strong><u>Von:</u></strong> Perfektastraße 3</p><p><strong><u>Nach:</u></strong> Perfektastraße 9</p><p><strong><u>Dauer:</u></strong> Ab Donnerstag 22. Oktober 2026, etwa 16:00 Uhr,  Dauer unbekannt</p><p><strong><u>Grund:</u></strong> Straßenbauarbeiten</p>",
+    "description": "<p><strong><u>Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa U</u></strong></p><p><strong><u>Haltestelle:</u></strong> Erlaaer Spitz</p><p><strong><u>Von:</u></strong> Perfektastraße 3</p><p><strong><u>Nach:</u></strong> Perfektastraße 9</p><p><strong><u>Dauer:</u></strong> Ab Donnerstag 22. Oktober 2026, etwa 16:00 Uhr,  bis Dienstag 17. November 2026, etwa 15:00 Uhr</p><p><strong><u>Grund:</u></strong> Straßenbauarbeiten</p>",
     "id": "N20261021-0003",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p><strong><u>Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa U</u></strong></p><p><strong><u>Haltestelle:</u></strong> Erlaaer Spitz</p><p><strong><u>Von:</u></strong> Perfektastraße 3</p><p><strong><u>Nach:</u></strong> Perfektastraße 9</p><p><strong><u>Dauer:</u></strong> Ab Donnerstag 22. Oktober 2026, etwa 16:00 Uhr,  Dauer unbekannt</p><p><strong><u>Grund:</u></strong> Straßenbauarbeiten</p>",
-       "descriptionPlain": "Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa U Haltestelle: Erlaaer Spitz Von: Perfektastraße 3 Nach: Perfektastraße 9 Dauer: Ab Donnerstag 22. Oktober 2026, etwa 16:00 Uhr, Dauer unbekannt Grund: Straßenbauarbeiten",
-       "title": "64A, Rufbus N64: Erlaaer Spitz"
+       "descriptionHtml": "<p><strong><u>Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa U</u></strong></p><p><strong><u>Haltestelle:</u></strong> Erlaaer Spitz</p><p><strong><u>Von:</u></strong> Perfektastraße 3</p><p><strong><u>Nach:</u></strong> Perfektastraße 9</p><p><strong><u>Dauer:</u></strong> Ab Donnerstag 22. Oktober 2026, etwa 16:00 Uhr,  bis Dienstag 17. November 2026, etwa 15:00 Uhr</p><p><strong><u>Grund:</u></strong> Straßenbauarbeiten</p>",
+       "descriptionPlain": "Haltestellenverlegung der Linien 64A und N64 Rufbus in Richtung Atzgersdorf, Ziedlergasse, beziehungsweise Alterlaa U Haltestelle: Erlaaer Spitz Von: Perfektastraße 3 Nach: Perfektastraße 9 Dauer: Ab Donnerstag 22. Oktober 2026, etwa 16:00 Uhr, bis Dienstag 17. November 2026, etwa 15:00 Uhr Grund: Straßenbauarbeiten",
+       "title": "Haltestellenverlegung"
       }
      }
     ],
@@ -1920,10 +1920,11 @@
      1855
     ],
     "time": {
+     "end": "2026-11-17T15:00:00.000+0100",
      "start": "2026-10-21T10:12:00.000+0200",
      "validFrom": "2026-10-22T16:00:00.000+0200"
     },
-    "title": "64A, Rufbus N64: Erlaaer Spitz"
+    "title": "Haltestellenverlegung"
    },
    {
     "alertCause": "unknown",
