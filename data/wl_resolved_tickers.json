@@ -3,6 +3,18 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
+  "R1212-142|2026-11-17T12:04:05.000+0100": {
+   "incident": "I20261117-0021",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
+  "R1213-142|2026-11-17T12:04:05.000+0100": {
+   "incident": "I20261117-0021",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
+  "R1336-142|2026-11-17T12:04:06.000+0100": {
+   "incident": "I20261117-0021",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
   "R1342-142|2026-11-17T11:53:35.000+0100": {
    "incident": "I20261117-0021",
    "title": "Fahrtbehinderung\nVerkehrsunfall"
@@ -15,57 +27,9 @@
    "incident": "I20261117-0021",
    "title": "Fahrtbehinderung\nVerkehrsunfall"
   },
-  "R3434-106|2026-11-17T11:02:31.000+0100": {
-   "incident": "I20261117-0017",
-   "title": "Falschparker\nBetrieb ab Neilreichgasse "
-  },
-  "R403-106|2026-11-17T11:02:59.000+0100": {
-   "incident": "I20261117-0017",
-   "title": "Fahrtbehinderung\nFalschparker"
-  },
-  "R404-106|2026-11-17T11:02:59.000+0100": {
-   "incident": "I20261117-0017",
-   "title": "Fahrtbehinderung\nFalschparker"
-  },
-  "R404-111|2026-11-17T11:01:28.000+0100": {
-   "incident": "I20261117-0017",
-   "title": "Falschparker\nBetrieb ab Absberggasse "
-  },
-  "R405-106|2026-11-17T11:02:59.000+0100": {
-   "incident": "I20261117-0017",
-   "title": "Fahrtbehinderung\nFalschparker"
-  },
-  "R405-111|2026-11-17T11:01:28.000+0100": {
-   "incident": "I20261117-0017",
-   "title": "Falschparker\nBetrieb ab Absberggasse "
-  },
-  "R406-106|2026-11-17T11:02:59.000+0100": {
-   "incident": "I20261117-0017",
-   "title": "Fahrtbehinderung\nFalschparker"
-  },
-  "R406-111|2026-11-17T11:01:28.000+0100": {
-   "incident": "I20261117-0017",
-   "title": "Falschparker\nBetrieb ab Absberggasse "
-  },
-  "R418-106|2026-11-17T11:02:28.000+0100": {
-   "incident": "I20261117-0017",
-   "title": "Falschparker\nBetrieb ab Neilreichgasse "
-  },
-  "R420-106|2026-11-17T11:02:28.000+0100": {
-   "incident": "I20261117-0017",
-   "title": "Falschparker\nBetrieb ab Neilreichgasse "
-  },
-  "R421-106|2026-11-17T11:02:28.000+0100": {
-   "incident": "I20261117-0017",
-   "title": "Falschparker\nBetrieb ab Neilreichgasse "
-  },
-  "R422-106|2026-11-17T11:02:28.000+0100": {
-   "incident": "I20261117-0017",
-   "title": "Falschparker\nBetrieb ab Neilreichgasse "
-  },
-  "R423-106|2026-11-17T11:02:28.000+0100": {
-   "incident": "I20261117-0017",
-   "title": "Falschparker\nBetrieb ab Neilreichgasse "
+  "R188-142|2026-11-17T12:04:05.000+0100": {
+   "incident": "I20261117-0021",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
   },
   "R493-142|2026-11-17T11:54:03.000+0100": {
    "incident": "I20261117-0021",
