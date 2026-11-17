@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-17T17:30:59.574511+00:00",
- "built": "2026-11-17T18:30:41+01:00",
+ "updated": "2026-11-17T18:01:00.280533+00:00",
+ "built": "2026-11-17T19:00:55+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-17T18:30:41+01:00",
+  "built": "2026-11-17T19:00:55+01:00",
   "items": [
    {
     "title": "U6: Rettungseinsatz",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-10T17:31:03.446709+00:00",
-   "raw": {
-    "wl-stoerungen": 76,
-    "wl-hinweise": 92,
-    "oebb": 196,
-    "baustellen-linien": 52,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 25,
-    "oebb": 170,
-    "baustellen": 62
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 8,
-    "wl": 89
-   }
-  },
   {
    "t": "2026-11-10T18:01:05.503657+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 8,
     "wl": 90
    }
+  },
+  {
+   "t": "2026-11-17T18:01:00.280533+00:00",
+   "raw": {
+    "wl-stoerungen": 49,
+    "wl-hinweise": 95,
+    "oebb": 175,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 25,
+    "oebb": 151,
+    "baustellen": 60
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 8,
+    "wl": 90
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-17T17:30:59.574511+00:00"
+   "last_ok": "2026-11-17T18:01:00.280533+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-17T17:30:59.574511+00:00"
+   "last_ok": "2026-11-17T18:01:00.280533+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-17T17:30:59.574511+00:00"
+   "last_ok": "2026-11-17T18:01:00.280533+00:00"
   }
  }
 }
