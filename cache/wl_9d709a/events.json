@@ -86,6 +86,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "1A: Polizeiübung",
+    "description": "<p>Am Montag, den 23.11.2026 wird in der Zeit zwischen ca. 10:00 Uhr bis ca.11:00 Uhr die Strauchgasse und Herrengasse, in 1010 Wien wegen einer Übung am Pollersperrsystem polizeilich gesperrt.</p><p>Ein Betrieb der Linie 1A ist nicht möglich. </p>",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "3c24781e7b84a6853b0b9610ad33b66329e9f155260908ddc03798b6f4229886",
+    "pubDate": "2026-11-17T11:37:00+01:00",
+    "starts_at": "2026-11-17T11:37:00+01:00",
+    "ends_at": "2026-11-23T11:00:00+01:00",
+    "_identity": "wl|hinweis|L=1A|D=2026-11-17|TK=1a polizeiübung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "1: Gleisbauarbeiten",
     "description": "<h2>Gleisbauarbeiten</h2><p>Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1.</p><p><strong><u>Zeitraum:</u></strong><br>Ab 20. Oktober 2026 bis Mitte Dezember 2026.<br>Aufgrund eines spontanen Gleisgebrechens müssen die Gleisbauarbeiten vorgezogen werden.</p><p><strong><u>Maßnahmen:</u></strong><br><strong>Linie 1:</strong><br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Die Züge werden ab Knöllgasse zum Reumannplatz umgeleitet.</p><p><strong><u>Ersatz:</u></strong><br>Weichen Sie ersatzweise auf die Linien 7A oder 65A aus.</p><p><strong><u>Skizze:</u></strong><br><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/1_Umleitung_Reumannplatz.png\" alt=\"\" width=\"1000\" height=\"1000\"></p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -654,18 +666,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Falschparker Umleitung über die Linien O und D",
-    "description": "Falschparker Umleitung über die Linien O und D",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "bb35883c73fae6f1c5fe5613373232f42a1b4aa46ff9d47686e261857044981a",
-    "pubDate": "2026-11-17T11:01:30+01:00",
-    "starts_at": "2026-11-17T11:01:30+01:00",
-    "ends_at": "2026-11-17T12:00:00+01:00",
-    "_identity": "wl|störung|L=11|D=2026-11-17|TK=falschparker umleitung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "13A: Demonstration Betrieb ab Wiedner Hauptstraße",
     "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -730,22 +730,6 @@
     "starts_at": "2026-11-17T05:00:22+01:00",
     "ends_at": "2026-11-17T23:00:00+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-17|TK=bhf hütteldorf öbb ersatzbus für 80"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Falschparker Betrieb ab Neilreichgasse",
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1",
-    "pubDate": "2026-11-17T10:53:00+01:00",
-    "starts_at": "2026-11-17T10:59:58+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=1|D=2026-11-17|TK=falschparker",
-    "_wl_ids": [
-      "I20261117-0017"
-    ],
-    "_incident_start": "2026-11-17T10:53:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -938,6 +922,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "37: Schadhaftes Fahrzeug",
+    "description": "Linie 37: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "680feea65497ba72c174dc1d3b77299d887769ca2260c03b8399deb5bcb5e778",
+    "pubDate": "2026-11-17T11:46:00+01:00",
+    "starts_at": "2026-11-17T11:46:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=37|D=2026-11-17|TK=37 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261117-0020"
+    ],
+    "_incident_start": "2026-11-17T11:46:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "38: Aktuelle Wetterlage",
     "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -954,54 +954,62 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38: Fahrtbehinderung wegen Witterung",
-    "description": "Fahrtbehinderung\nwegen Witterung",
+    "title": "40: Falschparker",
+    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7a4a73de88f0831a3f06167861b160dfadc29bc4d100420378a72fd33b47a502",
-    "pubDate": "2026-11-17T10:47:28+01:00",
-    "starts_at": "2026-11-17T10:49:28+01:00",
-    "ends_at": "2026-11-17T11:48:00+01:00",
-    "_identity": "wl|störung|L=38|D=2026-11-17|TK=fahrtbehinderung wegen witterung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38: Fahrtbehinderung Witterung",
-    "description": "Fahrtbehinderung\nWitterung",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "56c962eca53b059f01ef2bfccff3d924369208f62ee7d2082a39354d7b6cd3e0",
-    "pubDate": "2026-11-17T10:47:28+01:00",
-    "starts_at": "2026-11-17T10:47:28+01:00",
-    "ends_at": "2026-11-17T11:46:00+01:00",
-    "_identity": "wl|störung|L=38|D=2026-11-17|TK=fahrtbehinderung witterung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38: Witterung Züge halten Währinger Gürtel ggü. 164",
-    "description": "Witterung Züge halten Währinger Gürtel ggü. 164",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "018a2fd7df7eeda200bf54fd4b9d22ef2b6ab994c78b8f0d340ebfb1dae62683",
-    "pubDate": "2026-11-17T10:48:28+01:00",
-    "starts_at": "2026-11-17T10:48:28+01:00",
-    "ends_at": "2026-11-17T11:47:00+01:00",
-    "_identity": "wl|störung|L=38|D=2026-11-17|TK=witterung züge halten währinger gürtel ggü 164"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40/41: Falschparker",
-    "description": "Linie 40: Fahrtbehinderung in Richtung Gersthof, Herbeckstraße. Linie 41: Fahrtbehinderung in Richtung Pötzleinsdorf. Voraussichtliche Dauer: 11:50 Uhr. Grund: Falschparker im Bereich Gentzgasse.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "46770cbdcca7b3b0724e5953b64353d0a982642ac049261e3dfdc906c581b130",
+    "guid": "0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919",
     "pubDate": "2026-11-17T11:25:00+01:00",
     "starts_at": "2026-11-17T11:25:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=40,41|D=2026-11-17|TK=falschparker",
+    "_identity": "wl|störung|L=40|D=2026-11-17|TK=falschparker",
     "_wl_ids": [
       "I20261117-0019"
     ],
     "_incident_start": "2026-11-17T11:25:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Falschparker",
+    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
+    "pubDate": "2026-11-17T11:25:00+01:00",
+    "starts_at": "2026-11-17T11:25:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=41|D=2026-11-17|TK=falschparker",
+    "_wl_ids": [
+      "I20261117-0019"
+    ],
+    "_incident_start": "2026-11-17T11:25:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9/42: Falschparker Umleitung über die Linien 42 und 9",
+    "description": "Falschparker Umleitung über die Linien 42 und 9",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "d0306412af66249baa2e50a703d32bf283d9f6320fd3f4faaa25f07a5180723d",
+    "pubDate": "2026-11-17T11:34:02+01:00",
+    "starts_at": "2026-11-17T11:34:02+01:00",
+    "ends_at": "2026-11-17T12:32:00+01:00",
+    "_identity": "wl|störung|L=42,9|D=2026-11-17|TK=falschparker umleitung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Verkehrsunfall",
+    "description": "Linie 42: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 12:10 Uhr. Grund: Verkehrsunfall im Bereich Kreuzgasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "fb8ee4d5a29493e27f80e3db638fbbff263fc1757a809406ca73ec8b5d665786",
+    "pubDate": "2026-11-17T11:49:00+01:00",
+    "starts_at": "2026-11-17T11:49:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=42|D=2026-11-17|TK=42 verkehrsunfall",
+    "_wl_ids": [
+      "I20261117-0021"
+    ],
+    "_incident_start": "2026-11-17T11:49:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1115,8 +1123,8 @@
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "123bfd62dc7da0ffcd0f3060d27cb4dab7826707d05ffaed1e40fdb867f626eb",
     "pubDate": "2026-11-17T11:28:01+01:00",
-    "starts_at": "2026-11-17T11:28:02+01:00",
-    "ends_at": "2026-11-17T12:27:00+01:00",
+    "starts_at": "2026-11-17T11:34:32+01:00",
+    "ends_at": "2026-11-17T12:33:00+01:00",
     "_identity": "wl|störung|L=|D=2026-11-17|TK=falschparker"
   }
 ]

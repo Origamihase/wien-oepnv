@@ -3,81 +3,21 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R1214-138|2026-11-17T10:49:28.000+0100": {
-   "incident": "I20261117-0016",
-   "title": "Fahrtbehinderung\nwegen Witterung "
+  "R1342-142|2026-11-17T11:53:35.000+0100": {
+   "incident": "I20261117-0021",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
   },
-  "R1215-138|2026-11-17T10:49:28.000+0100": {
-   "incident": "I20261117-0016",
-   "title": "Fahrtbehinderung\nwegen Witterung "
+  "R148-142|2026-11-17T11:53:34.000+0100": {
+   "incident": "I20261117-0021",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
   },
-  "R1216-138|2026-11-17T10:49:28.000+0100": {
-   "incident": "I20261117-0016",
-   "title": "Fahrtbehinderung\nwegen Witterung "
-  },
-  "R1217-138|2026-11-17T10:49:28.000+0100": {
-   "incident": "I20261117-0016",
-   "title": "Fahrtbehinderung\nwegen Witterung "
-  },
-  "R1221-138|2026-11-17T10:47:28.000+0100": {
-   "incident": "I20261117-0016",
-   "title": "Fahrtbehinderung\nwegen Witterung "
-  },
-  "R1223-138|2026-11-17T10:47:28.000+0100": {
-   "incident": "I20261117-0016",
-   "title": "Fahrtbehinderung\nWitterung "
-  },
-  "R1224-138|2026-11-17T10:47:28.000+0100": {
-   "incident": "I20261117-0016",
-   "title": "Fahrtbehinderung\nWitterung "
-  },
-  "R1225-138|2026-11-17T10:47:28.000+0100": {
-   "incident": "I20261117-0016",
-   "title": "Fahrtbehinderung\nWitterung "
-  },
-  "R1226-138|2026-11-17T10:47:28.000+0100": {
-   "incident": "I20261117-0016",
-   "title": "Fahrtbehinderung\nWitterung "
-  },
-  "R1227-138|2026-11-17T10:47:28.000+0100": {
-   "incident": "I20261117-0016",
-   "title": "Fahrtbehinderung\nWitterung "
-  },
-  "R1933-111|2026-11-17T11:01:30.000+0100": {
-   "incident": "I20261117-0017",
-   "title": "Falschparker \nUmleitung über die Linien O und D"
-  },
-  "R208-138|2026-11-17T10:48:28.000+0100": {
-   "incident": "I20261117-0016",
-   "title": "Witterung \nZüge halten Währinger Gürtel ggü. 164"
-  },
-  "R215-138|2026-11-17T10:49:28.000+0100": {
-   "incident": "I20261117-0016",
-   "title": "Fahrtbehinderung\nwegen Witterung "
-  },
-  "R216-138|2026-11-17T10:49:28.000+0100": {
-   "incident": "I20261117-0016",
-   "title": "Fahrtbehinderung\nwegen Witterung "
-  },
-  "R2243-101|2026-11-17T10:59:29.000+0100": {
-   "incident": "I20261117-0017",
-   "title": "Falschparker\nBetrieb ab Neilreichgasse"
-  },
-  "R2964-138|2026-11-17T10:49:28.000+0100": {
-   "incident": "I20261117-0016",
-   "title": "Fahrtbehinderung\nwegen Witterung "
-  },
-  "R2985-138|2026-11-17T10:47:28.000+0100": {
-   "incident": "I20261117-0016",
-   "title": "Fahrtbehinderung\nWitterung "
+  "R150-142|2026-11-17T11:53:34.000+0100": {
+   "incident": "I20261117-0021",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
   },
   "R3434-106|2026-11-17T11:02:31.000+0100": {
    "incident": "I20261117-0017",
    "title": "Falschparker\nBetrieb ab Neilreichgasse "
-  },
-  "R403-101|2026-11-17T10:59:58.000+0100": {
-   "incident": "I20261117-0017",
-   "title": "Fahrtbehinderung\nFalschparker"
   },
   "R403-106|2026-11-17T11:02:59.000+0100": {
    "incident": "I20261117-0017",
@@ -123,13 +63,13 @@
    "incident": "I20261117-0017",
    "title": "Falschparker\nBetrieb ab Neilreichgasse "
   },
-  "R423-101|2026-11-17T10:59:28.000+0100": {
-   "incident": "I20261117-0017",
-   "title": "Falschparker\nBetrieb ab Neilreichgasse"
-  },
   "R423-106|2026-11-17T11:02:28.000+0100": {
    "incident": "I20261117-0017",
    "title": "Falschparker\nBetrieb ab Neilreichgasse "
+  },
+  "R493-142|2026-11-17T11:54:03.000+0100": {
+   "incident": "I20261117-0021",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
   }
  }
 }
