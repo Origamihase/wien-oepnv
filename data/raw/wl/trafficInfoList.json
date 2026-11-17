@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20261117-0026-F01, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20261117-0026-F01, I20261117-0027-F01, I20260909-0007, I20261117-0028, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2558-125, R318-437, R293-474, R401-101, R1875-101, R1881-101, R1876-101, R1884-101, R1883-101, R1882-101, R1880-101, R2380-627, R2345-127, R2373-126, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2379-627, R3886-480, R1974-466, R1199-205, R500-101, R50-102, R51-102, R49-102, R252-102, R251-102, R54-102, R52-102, R53-102, R55-102, R134-102, R1001-102, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2558-125, R293-474, R318-437, R401-101, R1883-101, R1882-101, R1881-101, R1884-101, R1876-101, R1875-101, R1880-101, R2373-126, R2379-627, R2380-627, R2345-127, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2378-627, R3886-480, R1974-466, R1199-205, R500-101, R47-0, R17-0, R1454-149, R1455-149, R1456-149, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -219,27 +219,104 @@
     "title": "2: Rettungseinsatz"
    },
    {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1001-102",
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "12A": "ptBusCity"
+     }
+    },
+    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 12A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 12A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "12A: Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Reinprechtsdorfer Straße / Fendigasse",
+    "name": "I20261117-0027-F01",
     "owner": "WL",
-    "parentName": "R1001-102",
+    "parentName": "I20261117-0027",
     "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "2"
+     "12A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 412,
+      "lineName": "12A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-17T14:39:00.000+0100",
+     "lastUpdate": "2026-11-17T14:39:00.000+0100",
+     "resume": "2026-11-17T14:39:00.000+0100",
+     "start": "2026-11-17T14:33:00.000+0100"
+    },
+    "title": "12A: Verkehrsunfall"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "49": "ptTram",
+      "52": "ptTram"
+     }
+    },
+    "description": "Linie 49: Betrieb nur zwischen Parlament, U Volkstheater und Breitensee S. Linie 52: Verlängerter Betrieb über Baumgarten hinaus bis Hütteldorf, Bujattigasse als Ersatz für die Linie 49. Voraussichtliche Dauer: 15:30 Uhr. Grund: Schadhafter PKW im Haltestellenbereich Seckendorfstraße.",
+    "descriptionHTML": "<p>Linie 49:<br>Betrieb nur zwischen Parlament, U Volkstheater und Breitensee S.<br>Linie 52:<br>Verlängerter Betrieb über Baumgarten hinaus bis Hütteldorf, Bujattigasse als Ersatz für die Linie 49.</p><p>Voraussichtliche Dauer: 15:30 Uhr.</p><p>Grund: Schadhafter PKW im Haltestellenbereich Seckendorfstraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 49:<br>Betrieb nur zwischen Parlament, U Volkstheater und Breitensee S.<br>Linie 52:<br>Verlängerter Betrieb über Baumgarten hinaus bis Hütteldorf, Bujattigasse als Ersatz für die Linie 49.</p><p>Voraussichtliche Dauer: 15:30 Uhr.</p><p>Grund: Schadhafter PKW im Haltestellenbereich Seckendorfstraße.</p>",
+       "descriptionPlain": "Linie 49: Betrieb nur zwischen Parlament, U Volkstheater und Breitensee S. Linie 52: Verlängerter Betrieb über Baumgarten hinaus bis Hütteldorf, Bujattigasse als Ersatz für die Linie 49. Voraussichtliche Dauer: 15:30 Uhr. Grund: Schadhafter PKW im Haltestellenbereich Seckendorfstraße.",
+       "title": "49, 52: Schadhafter PKW"
+      }
+     }
+    ],
+    "name": "I20261117-0028",
+    "owner": "WL",
+    "parentName": "I20261117-0028",
+    "priority": "1",
+    "reasonId": 18,
+    "reasonName": "Schadhafter PKW",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "49",
+     "52"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 149,
+      "lineName": "49",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 152,
+      "lineName": "52",
+      "vehicleType": "ptTram"
+     }
     ],
     "relatedStops": [
-     1001
+     1455
     ],
+    "status": "active",
     "time": {
-     "end": "2026-11-17T14:59:00.000+0100",
-     "start": "2026-11-17T13:59:48.000+0100"
+     "created": "2026-11-17T14:58:00.000+0100",
+     "lastUpdate": "2026-11-17T14:58:00.000+0100",
+     "start": "2026-11-17T14:57:00.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "49, 52: Schadhafter PKW"
    },
    {
     "alertCause": "undefined alert cause",
@@ -267,25 +344,91 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R134-102",
+    "description": "Schadhafter PKW\nBetrieb ab Baumgarten ",
+    "name": "R1454-149",
     "owner": "WL",
-    "parentName": "R134-102",
+    "parentName": "R1454-149",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "2"
+     "49"
     ],
     "relatedStops": [
-     134
+     1454
     ],
     "time": {
-     "end": "2026-11-17T14:59:00.000+0100",
-     "start": "2026-11-17T13:59:46.000+0100"
+     "end": "2026-11-17T15:59:00.000+0100",
+     "start": "2026-11-17T15:00:25.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Schadhafter PKW\nBetrieb ab Baumgarten "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter PKW\nBetrieb ab Baumgarten ",
+    "name": "R1455-149",
+    "owner": "WL",
+    "parentName": "R1455-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1455
+    ],
+    "time": {
+     "end": "2026-11-17T15:59:00.000+0100",
+     "start": "2026-11-17T15:00:25.000+0100"
+    },
+    "title": "Schadhafter PKW\nBetrieb ab Baumgarten "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter PKW\nBetrieb ab Baumgarten ",
+    "name": "R1456-149",
+    "owner": "WL",
+    "parentName": "R1456-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1456
+    ],
+    "time": {
+     "end": "2026-11-17T15:59:00.000+0100",
+     "start": "2026-11-17T15:00:25.000+0100"
+    },
+    "title": "Schadhafter PKW\nBetrieb ab Baumgarten "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Haltestelle\naufgelassen!\n\nStop closed!",
+    "name": "R17-0",
+    "owner": "WL",
+    "parentName": "R17-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     17
+    ],
+    "time": {
+     "end": "2026-11-17T22:30:00.000+0100",
+     "start": "2026-11-17T15:00:22.000+0100"
+    },
+    "title": "Haltestelle\naufgelassen!\n\nStop closed!"
    },
    {
     "alertCause": "undefined alert cause",
@@ -773,52 +916,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R251-102",
-    "owner": "WL",
-    "parentName": "R251-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     251
-    ],
-    "time": {
-     "end": "2026-11-17T14:45:00.000+0100",
-     "start": "2026-11-17T13:45:45.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R252-102",
-    "owner": "WL",
-    "parentName": "R252-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     252
-    ],
-    "time": {
-     "end": "2026-11-17T14:45:00.000+0100",
-     "start": "2026-11-17T13:45:45.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
     "name": "R2558-125",
     "owner": "WL",
@@ -934,48 +1031,22 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R49-102",
+    "description": "Haltestelle\naufgelassen!\n\nStop closed!",
+    "name": "R47-0",
     "owner": "WL",
-    "parentName": "R49-102",
+    "parentName": "R47-0",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
     "relatedStops": [
-     49
+     47
     ],
     "time": {
-     "end": "2026-11-17T14:45:00.000+0100",
-     "start": "2026-11-17T13:45:44.000+0100"
+     "end": "2026-11-17T22:00:00.000+0100",
+     "start": "2026-11-17T15:00:22.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R50-102",
-    "owner": "WL",
-    "parentName": "R50-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     50
-    ],
-    "time": {
-     "end": "2026-11-17T14:45:00.000+0100",
-     "start": "2026-11-17T13:45:44.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Haltestelle\naufgelassen!\n\nStop closed!"
    },
    {
     "alertCause": "undefined alert cause",
@@ -999,121 +1070,6 @@
      "start": "2026-11-17T05:00:22.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R51-102",
-    "owner": "WL",
-    "parentName": "R51-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     51
-    ],
-    "time": {
-     "end": "2026-11-17T14:45:00.000+0100",
-     "start": "2026-11-17T13:45:44.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R52-102",
-    "owner": "WL",
-    "parentName": "R52-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     52
-    ],
-    "time": {
-     "end": "2026-11-17T14:52:00.000+0100",
-     "start": "2026-11-17T13:52:45.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R53-102",
-    "owner": "WL",
-    "parentName": "R53-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     53
-    ],
-    "time": {
-     "end": "2026-11-17T14:52:00.000+0100",
-     "start": "2026-11-17T13:52:45.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R54-102",
-    "owner": "WL",
-    "parentName": "R54-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     54
-    ],
-    "time": {
-     "end": "2026-11-17T14:52:00.000+0100",
-     "start": "2026-11-17T13:52:45.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R55-102",
-    "owner": "WL",
-    "parentName": "R55-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     55
-    ],
-    "time": {
-     "end": "2026-11-17T14:52:00.000+0100",
-     "start": "2026-11-17T13:52:45.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
