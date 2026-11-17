@@ -1,77 +1,57 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-17T08:30:58.356006+00:00",
- "built": "2026-11-17T09:30:43+01:00",
+ "updated": "2026-11-17T09:00:44.464733+00:00",
+ "built": "2026-11-17T10:00:32+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-17T09:30:43+01:00",
+  "built": "2026-11-17T10:00:32+01:00",
   "items": [
    {
-    "title": "U4: Schadhaftes Fahrzeug",
-    "time_line": "Seit 09:23"
+    "title": "95A: Verspätungen",
+    "time_line": "Seit 09:41"
    },
    {
-    "title": "10A: Stromstörung, Falschparker",
-    "time_line": "Seit 09:17"
-   },
-   {
-    "title": "14A: Falschparker",
-    "time_line": "Seit 09:16"
-   },
-   {
-    "title": "5/12: Stromstörung",
-    "time_line": "Seit 08:37"
-   },
-   {
-    "title": "37: Stromstörung",
-    "time_line": "Seit 08:34"
-   },
-   {
-    "title": "9: Stromstörung",
+    "title": "9/40/41/42: Stromstörung",
     "time_line": "Seit 08:30"
    },
    {
-    "title": "U2: Rettungseinsatz",
-    "time_line": "Seit 08:56"
+    "title": "13A: Demonstration",
+    "time_line": "Seit heute"
    },
    {
-    "title": "35A: Verspätungen",
-    "time_line": "Seit 08:55"
+    "title": "N31: Bauarbeiten",
+    "time_line": "Ab Mi 18.11. bis Do 19.11."
    },
    {
-    "title": "40/41: Stromstörung",
-    "time_line": "Seit 08:30"
+    "title": "15A: Bhf. Meidling, Schedifkaplatz",
+    "time_line": "Seit 16.11."
    },
    {
-    "title": "42: Stromstörung",
-    "time_line": "Seit 08:30"
+    "title": "8A: Küniglberg, ORF Zentrum",
+    "time_line": "Bis 24.11."
+   },
+   {
+    "title": "5A/N31: Obere Augartenstraße",
+    "time_line": "Bis 11.12."
+   },
+   {
+    "title": "74A: Rabengasse",
+    "time_line": "Seit 16.11."
+   },
+   {
+    "title": "98A: Arztgasse",
+    "time_line": "Seit 16.11."
+   },
+   {
+    "title": "74A: Viehmarktgasse",
+    "time_line": "Seit 16.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-10T08:31:05.958040+00:00",
-   "raw": {
-    "wl-stoerungen": 44,
-    "wl-hinweise": 93,
-    "oebb": 187,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 26,
-    "oebb": 162,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 7,
-    "wl": 81
-   }
-  },
   {
    "t": "2026-11-10T09:01:05.331677+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 6,
     "wl": 101
    }
+  },
+  {
+   "t": "2026-11-17T09:00:44.464733+00:00",
+   "raw": {
+    "wl-stoerungen": 45,
+    "wl-hinweise": 92,
+    "oebb": 170,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 25,
+    "oebb": 147,
+    "baustellen": 60
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 6,
+    "wl": 84
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-17T08:30:58.356006+00:00"
+   "last_ok": "2026-11-17T09:00:44.464733+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-17T08:30:58.356006+00:00"
+   "last_ok": "2026-11-17T09:00:44.464733+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-17T08:30:58.356006+00:00"
+   "last_ok": "2026-11-17T09:00:44.464733+00:00"
   }
  }
 }
