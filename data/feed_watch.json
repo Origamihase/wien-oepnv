@@ -1,28 +1,36 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-17T15:31:05.009105+00:00",
- "built": "2026-11-17T16:30:50+01:00",
+ "updated": "2026-11-17T16:00:59.654369+00:00",
+ "built": "2026-11-17T17:00:46+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-17T16:30:50+01:00",
+  "built": "2026-11-17T17:00:46+01:00",
   "items": [
+   {
+    "title": "4A/12A: Verkehrsüberlastung",
+    "time_line": "Seit 16:53"
+   },
+   {
+    "title": "64A: Verkehrsunfall",
+    "time_line": "Seit 16:43"
+   },
+   {
+    "title": "60: Fremder Verkehrsunfall",
+    "time_line": "Seit 16:36"
+   },
    {
     "title": "2: Gleisschaden",
     "time_line": "Seit 16:04"
    },
    {
-    "title": "63A: Verkehrsüberlastung",
+    "title": "7A/63A: Verkehrsüberlastung",
     "time_line": "Seit 16:28"
    },
    {
     "title": "D: Falschparker",
     "time_line": "Seit 16:25"
-   },
-   {
-    "title": "27: Stromstörung",
-    "time_line": "Seit 15:36"
    },
    {
     "title": "52: Schadhafter PKW",
@@ -39,14 +47,6 @@
    {
     "title": "N31: Bauarbeiten",
     "time_line": "Ab Mi 18.11. bis Do 19.11."
-   },
-   {
-    "title": "15A: Bhf. Meidling, Schedifkaplatz",
-    "time_line": "Seit 16.11."
-   },
-   {
-    "title": "8A: Küniglberg, ORF Zentrum",
-    "time_line": "Bis 24.11."
    }
   ]
  },
@@ -6751,17 +6751,37 @@
     "oebb": 7,
     "wl": 85
    }
+  },
+  {
+   "t": "2026-11-17T16:00:59.654369+00:00",
+   "raw": {
+    "wl-stoerungen": 70,
+    "wl-hinweise": 95,
+    "oebb": 174,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 30,
+    "oebb": 151,
+    "baustellen": 60
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 89
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-17T15:31:05.009105+00:00"
+   "last_ok": "2026-11-17T16:00:59.654369+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-17T15:31:05.009105+00:00"
+   "last_ok": "2026-11-17T16:00:59.654369+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-17T15:31:05.009105+00:00"
+   "last_ok": "2026-11-17T16:00:59.654369+00:00"
   }
  }
 }
