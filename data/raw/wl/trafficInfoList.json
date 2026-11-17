@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261117-0001, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261117-0001, I20260925-0011, I20261117-0002-F01, I20260909-0007, I20261117-0003, I20261117-0004, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R2558-125, R318-437, R293-474, R401-101, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R2379-627, R2345-127, R2373-125, R2373-127, R2373-126, R2380-627, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R2371-125, R2372-125, R3886-480, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R2558-125, R318-437, R293-474, R401-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R1884-101, R1883-101, R2379-627, R2380-627, R2345-127, R2343-626, R2343-125, R2359-125, R2378-627, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R3886-480, R1974-466, R1199-205, R500-101, R301-170, R302-170, R303-170, R305-170, R304-170, R306-170, R307-170, R350-105, R349-105, R345-105, R346-105, R347-105, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -214,6 +214,144 @@
      "start": "2026-11-17T07:25:00.000+0100"
     },
     "title": "32A: Rettungseinsatz"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "O: Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Laxenburger Straße 27",
+    "name": "I20261117-0002-F01",
+    "owner": "WL",
+    "parentName": "I20261117-0002",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 170,
+      "lineName": "O",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-17T07:55:00.000+0100",
+     "lastUpdate": "2026-11-17T07:55:00.000+0100",
+     "resume": "2026-11-17T07:55:00.000+0100",
+     "start": "2026-11-17T07:43:00.000+0100"
+    },
+    "title": "O: Verkehrsunfall"
+   },
+   {
+    "alertCause": "miscellaneous",
+    "alertCauseId": 137,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+       "title": "U6: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261117-0003",
+    "owner": "WL",
+    "parentName": "I20261117-0003",
+    "priority": "1",
+    "reasonId": 14,
+    "reasonName": "Betriebsstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-17T07:46:00.000+0100",
+     "lastUpdate": "2026-11-17T07:46:00.000+0100",
+     "resume": "2026-11-17T07:45:00.000+0100",
+     "start": "2026-11-17T07:45:00.000+0100"
+    },
+    "title": "U6: Verspätungen"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "5": "ptTram"
+     }
+    },
+    "description": "Linie 5: Betrieb nur zwischen Westbahnhof S U und Wallensteinplatz. Ersatz: Linie 5B. Voraussichtliche Dauer: 08:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Nordwestbahnstraße.",
+    "descriptionHTML": "<p>Linie 5: <br>Betrieb nur zwischen Westbahnhof S U und Wallensteinplatz.</p><p>Ersatz: Linie 5B.</p><p>Voraussichtliche Dauer: 08:20 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Nordwestbahnstraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 5: <br>Betrieb nur zwischen Westbahnhof S U und Wallensteinplatz.</p><p>Ersatz: Linie 5B.</p><p>Voraussichtliche Dauer: 08:20 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Nordwestbahnstraße.</p>",
+       "descriptionPlain": "Linie 5: Betrieb nur zwischen Westbahnhof S U und Wallensteinplatz. Ersatz: Linie 5B. Voraussichtliche Dauer: 08:20 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Nordwestbahnstraße.",
+       "title": "5: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261117-0004",
+    "owner": "WL",
+    "parentName": "I20261117-0004",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 105,
+      "lineName": "5",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     348
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-17T07:55:00.000+0100",
+     "lastUpdate": "2026-11-17T07:57:00.000+0100",
+     "start": "2026-11-17T07:54:00.000+0100"
+    },
+    "title": "5: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -770,6 +908,167 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R301-170",
+    "owner": "WL",
+    "parentName": "R301-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     301
+    ],
+    "time": {
+     "end": "2026-11-17T08:44:00.000+0100",
+     "start": "2026-11-17T07:45:10.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R302-170",
+    "owner": "WL",
+    "parentName": "R302-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     302
+    ],
+    "time": {
+     "end": "2026-11-17T08:44:00.000+0100",
+     "start": "2026-11-17T07:45:10.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R303-170",
+    "owner": "WL",
+    "parentName": "R303-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     303
+    ],
+    "time": {
+     "end": "2026-11-17T08:44:00.000+0100",
+     "start": "2026-11-17T07:45:10.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R304-170",
+    "owner": "WL",
+    "parentName": "R304-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     304
+    ],
+    "time": {
+     "end": "2026-11-17T08:44:00.000+0100",
+     "start": "2026-11-17T07:45:10.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R305-170",
+    "owner": "WL",
+    "parentName": "R305-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     305
+    ],
+    "time": {
+     "end": "2026-11-17T08:44:00.000+0100",
+     "start": "2026-11-17T07:45:10.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R306-170",
+    "owner": "WL",
+    "parentName": "R306-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     306
+    ],
+    "time": {
+     "end": "2026-11-17T08:51:00.000+0100",
+     "start": "2026-11-17T07:51:40.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R307-170",
+    "owner": "WL",
+    "parentName": "R307-170",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "O"
+    ],
+    "relatedStops": [
+     307
+    ],
+    "time": {
+     "end": "2026-11-17T08:51:00.000+0100",
+     "start": "2026-11-17T07:51:40.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -789,6 +1088,121 @@
      "start": "2026-11-17T00:00:04.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Wallensteinplatz",
+    "name": "R345-105",
+    "owner": "WL",
+    "parentName": "R345-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     345
+    ],
+    "time": {
+     "end": "2026-11-17T08:57:00.000+0100",
+     "start": "2026-11-17T07:57:41.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Wallensteinplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Wallensteinplatz",
+    "name": "R346-105",
+    "owner": "WL",
+    "parentName": "R346-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     346
+    ],
+    "time": {
+     "end": "2026-11-17T08:57:00.000+0100",
+     "start": "2026-11-17T07:57:41.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Wallensteinplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Wallensteinplatz",
+    "name": "R347-105",
+    "owner": "WL",
+    "parentName": "R347-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     347
+    ],
+    "time": {
+     "end": "2026-11-17T08:57:00.000+0100",
+     "start": "2026-11-17T07:57:41.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Wallensteinplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Wallensteinplatz",
+    "name": "R349-105",
+    "owner": "WL",
+    "parentName": "R349-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     349
+    ],
+    "time": {
+     "end": "2026-11-17T08:57:00.000+0100",
+     "start": "2026-11-17T07:53:41.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Wallensteinplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R350-105",
+    "owner": "WL",
+    "parentName": "R350-105",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedStops": [
+     350
+    ],
+    "time": {
+     "end": "2026-11-17T08:53:00.000+0100",
+     "start": "2026-11-17T07:53:41.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",

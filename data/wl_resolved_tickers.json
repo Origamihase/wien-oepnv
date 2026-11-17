@@ -2,5 +2,54 @@
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
- "owners": {}
+ "owners": {
+  "R301-170|2026-11-17T07:45:10.000+0100": {
+   "incident": "I20261117-0002",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
+  "R302-170|2026-11-17T07:45:10.000+0100": {
+   "incident": "I20261117-0002",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
+  "R303-170|2026-11-17T07:45:10.000+0100": {
+   "incident": "I20261117-0002",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
+  "R304-170|2026-11-17T07:45:10.000+0100": {
+   "incident": "I20261117-0002",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
+  "R305-170|2026-11-17T07:45:10.000+0100": {
+   "incident": "I20261117-0002",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
+  "R306-170|2026-11-17T07:51:40.000+0100": {
+   "incident": "I20261117-0002",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
+  "R307-170|2026-11-17T07:51:40.000+0100": {
+   "incident": "I20261117-0002",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
+  "R345-105|2026-11-17T07:57:41.000+0100": {
+   "incident": "I20261117-0004",
+   "title": "Rettungseinsatz\nBetrieb ab Wallensteinplatz"
+  },
+  "R346-105|2026-11-17T07:57:41.000+0100": {
+   "incident": "I20261117-0004",
+   "title": "Rettungseinsatz\nBetrieb ab Wallensteinplatz"
+  },
+  "R347-105|2026-11-17T07:57:41.000+0100": {
+   "incident": "I20261117-0004",
+   "title": "Rettungseinsatz\nBetrieb ab Wallensteinplatz"
+  },
+  "R349-105|2026-11-17T07:53:41.000+0100": {
+   "incident": "I20261117-0004",
+   "title": "Rettungseinsatz\nBetrieb ab Wallensteinplatz"
+  },
+  "R350-105|2026-11-17T07:53:41.000+0100": {
+   "incident": "I20261117-0004",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  }
+ }
 }
