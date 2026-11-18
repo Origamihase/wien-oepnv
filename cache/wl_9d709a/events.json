@@ -470,6 +470,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "7A: Haltestellenverlegung",
+    "description": "<p><strong><u>Haltestellenverlegung der Linie 7A in Richtung Reumannplatz U</u></strong></p><p><strong><u>Haltestelle:</u></strong> Antonsplatz</p><p><strong><u>Von:</u></strong> Antonsplatz 13 vor Rechberggasse</p><p><strong><u>Nach:</u></strong> Antonsplatz 14-16</p><p><strong><u>Dauer:</u></strong> 24. November 2026, etwa 07:00 Uhr bis 25. November, etwa 17:00 Uhr</p><p><strong><u>Grund:</u></strong> Straßenbauarbeiten</p>",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4ff3f3f8af77a0c8672583049e527acc9e6d50b8ba7f5aaf691ba8f3030b2331",
+    "pubDate": "2026-11-18T12:54:00+01:00",
+    "starts_at": "2026-11-24T00:00:00+01:00",
+    "ends_at": "2026-11-25T17:00:00+01:00",
+    "_identity": "wl|hinweis|L=7A|D=2026-11-24|TK=haltestellenverlegung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "80A: ÖBB-Bauarbeiten",
     "description": "<h2>Bauarbeiten</h2> <p>Wegen der Neuerrichtung der &Ouml;BB-Bahnviadukte im Bereich Helenengasse und Stoffellagasse treten bei der Linie 80A Ma&szlig;nahmen in Kraft. Beachten Sie bitte die unterschiedlichen Ma&szlig;nahmen werktags bzw. am Wochenende.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Von Dienstag, 20. Oktober 2026 bis etwa September 2027.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Montag-Freitag, Linie 80A in Richtung Schlachthausgasse U:</strong><br />Umleitung ab Praterstern # Franzensbr&uuml;ckenstra&szlig;e &uuml;ber Praterstern - Hauptallee - Sportklubstra&szlig;e.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:</span><br />- Vivariumstra&szlig;e (Vivariumstra&szlig;e 6)<br /><span style=\"text-decoration: underline;\">Ersatzhaltestelle:</span><br />- Vivariumstra&szlig;e (Sportklubstra&szlig;e nach Vivariumstra&szlig;e)</p> <p><strong>Samstag, Sonntag und Feiertag, Linie 80A:</strong><br />Betrieb nur zwischen Schlachthausgasse U und Franzensbr&uuml;cke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen in Richtung Schlachthausgasse:</span><br />- Praterstern (Praterstern, 3. Haltestelleinsel unter dem Bahnhofsvordach)<br />- Vivariumstra&szlig;e (Vivariumstra&szlig;e 6)<br /><span style=\"text-decoration: underline;\">Ersatzhaltestellen:</span><br />- Franzensbr&uuml;cke (Vivariumstra&szlig;e 2, provisorische End- und Anfangshaltestelle an Sa, So, Fei)<br />- Vivariumstra&szlig;e (Sportklubstra&szlig;e nach Vivariumstra&szlig;e)</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -706,22 +718,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Verkehrsunfall",
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "6c9455b3b094392684c322ab8f2b761a9537a1a83acceaa982e1237d79b94be8",
-    "pubDate": "2026-11-18T11:44:00+01:00",
-    "starts_at": "2026-11-18T11:44:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=1|D=2026-11-18|TK=1 verkehrsunfall",
-    "_wl_ids": [
-      "I20261118-0024"
-    ],
-    "_incident_start": "2026-11-18T11:44:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Betrieb ab Knöllgasse",
     "description": "Gleisbauarbeiten\nBetrieb ab Knöllgasse",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -742,18 +738,6 @@
     "starts_at": "2026-11-18T05:00:04+01:00",
     "ends_at": "2026-11-18T23:00:00+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-18|TK=bhf hütteldorf öbb ersatzbus für 80"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "e105ca57f2aa7daecce2d0c7b4277004ad37ec7461843c457618fc8980286aef",
-    "pubDate": "2026-11-18T11:48:45+01:00",
-    "starts_at": "2026-11-18T11:54:15+01:00",
-    "ends_at": "2026-11-18T12:51:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-11-18|TK=fahrtbehinderung verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
@@ -938,18 +922,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "5350dbcdf4a6c02ceca95e97660eae6f09e9befc64d1bc90e3b2181f28e061ed",
-    "pubDate": "2026-11-18T11:49:45+01:00",
-    "starts_at": "2026-11-18T11:49:46+01:00",
-    "ends_at": "2026-11-18T12:49:00+01:00",
-    "_identity": "wl|störung|L=2|D=2026-11-18|TK=fahrtbehinderung verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -986,34 +958,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Verkehrsunfall",
-    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2caeb4baf3b29e0e30d9eeefd3e4438d2d58294d03eb90f5e10bc6f2d98754f7",
-    "pubDate": "2026-11-18T11:44:00+01:00",
-    "starts_at": "2026-11-18T11:44:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=71|D=2026-11-18|TK=71 verkehrsunfall",
-    "_wl_ids": [
-      "I20261118-0024"
-    ],
-    "_incident_start": "2026-11-18T11:44:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "12c122fd59c34caf7f02ba0225ce436dc57cac19067265e4e00cf01131a3ccaf",
-    "pubDate": "2026-11-18T11:51:15+01:00",
-    "starts_at": "2026-11-18T11:51:15+01:00",
-    "ends_at": "2026-11-18T12:50:00+01:00",
-    "_identity": "wl|störung|L=71|D=2026-11-18|TK=fahrtbehinderung verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Einstieg Leberstraße vor S-Bahn-Gebäude",
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1039,7 +983,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "9: Verkehrsunfall",
-    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 12:50 Uhr. Grund: Verkehrsunfall im Bereich Schweglerstraße # Hütteldorfer Straße.",
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "70a21e268e6526375afca6cddbf95e3f1acffc96f35534556c62be605d2351c9",
     "pubDate": "2026-11-18T12:27:00+01:00",
@@ -1054,20 +998,20 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Fahrtbehinderung Verkehrsunfall",
+    "title": "9: Fahrtbehinderung Verkehrsunfall",
     "description": "Fahrtbehinderung\nVerkehrsunfall",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "051fe237cd9d1bc03ec48c00ed10749fdd7ce5ba869a0aa8db07e86f4bc6eeb9",
-    "pubDate": "2026-11-18T11:50:45+01:00",
-    "starts_at": "2026-11-18T11:50:45+01:00",
-    "ends_at": "2026-11-18T12:50:00+01:00",
-    "_identity": "wl|störung|L=D|D=2026-11-18|TK=fahrtbehinderung verkehrsunfall"
+    "guid": "97d36012e56b1e5a07124d6ea367507c8e56424a01571c10477b0691d91eaa87",
+    "pubDate": "2026-11-18T12:28:19+01:00",
+    "starts_at": "2026-11-18T12:45:21+01:00",
+    "ends_at": "2026-11-18T13:45:00+01:00",
+    "_identity": "wl|störung|L=9|D=2026-11-18|TK=fahrtbehinderung verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U2: Rettungseinsatz",
-    "description": "Die Linie U2 fährt derzeit zwischen den Stationen Donaumarina und Donaustadtbrücke in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig. Voraussichtliche Dauer: 13:00 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Donaumarina.",
+    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8",
     "pubDate": "2026-11-18T12:27:00+01:00",
