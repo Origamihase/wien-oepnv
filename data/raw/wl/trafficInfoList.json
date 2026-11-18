@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261118-0018, I20261118-0017-F01, I20261118-0019-F01, I20261020-0029, I20261118-0011"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261118-0017-F01, I20261118-0019-F01, I20261118-0020, I20261020-0029, I20261118-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R293-474, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R318-437, R2558-125, R3886-480, R2373-126, R2379-627, R2380-627, R2345-127, R2373-125, R2373-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R1974-466, R1199-205, R500-101, R1634-162, R1744-162, R1743-162, R1735-162, R1737-162, R1738-162, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R293-474, R318-437, R1875-101, R1876-101, R1880-101, R1883-101, R1884-101, R1881-101, R1882-101, R3886-480, R2558-125, R2343-125, R2378-627, R2379-627, R2380-627, R2345-127, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -264,51 +264,6 @@
     "title": "62: Rettungseinsatz"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U4: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261118-0018",
-    "owner": "WL",
-    "parentName": "I20261118-0018",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 304,
-      "lineName": "U4",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-18T09:04:00.000+0100",
-     "lastUpdate": "2026-11-18T09:04:00.000+0100",
-     "resume": "2026-11-18T09:04:00.000+0100",
-     "start": "2026-11-18T09:04:00.000+0100"
-    },
-    "title": "U4: Verspätungen"
-   },
-   {
     "alertCause": "fire",
     "alertCauseId": 5,
     "attributes": {
@@ -355,6 +310,51 @@
     "title": "32A: Feuerwehreinsatz"
    },
    {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "60A": "ptBusCity"
+     }
+    },
+    "description": "Die Linie 60A wird in beiden Richtungen zwischen Maurer Hauptplatz und Am Spiegeln über Speisinger Straße und Franz-Graßler-Gasse umgeleitet. Voraussichtliche Dauer: 11:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Endresstraße.",
+    "descriptionHTML": "<p>Die Linie 60A wird in beiden Richtungen zwischen Maurer Hauptplatz und Am Spiegeln über Speisinger Straße und Franz-Graßler-Gasse umgeleitet.</p><p>Voraussichtliche Dauer: 11:00 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Endresstraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Die Linie 60A wird in beiden Richtungen zwischen Maurer Hauptplatz und Am Spiegeln über Speisinger Straße und Franz-Graßler-Gasse umgeleitet.</p><p>Voraussichtliche Dauer: 11:00 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Endresstraße.</p>",
+       "descriptionPlain": "Die Linie 60A wird in beiden Richtungen zwischen Maurer Hauptplatz und Am Spiegeln über Speisinger Straße und Franz-Graßler-Gasse umgeleitet. Voraussichtliche Dauer: 11:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Endresstraße.",
+       "title": "60A: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Endresstraße",
+    "name": "I20261118-0020",
+    "owner": "WL",
+    "parentName": "I20261118-0020",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "60A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 460,
+      "lineName": "60A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-18T10:24:00.000+0100",
+     "lastUpdate": "2026-11-18T10:29:00.000+0100",
+     "start": "2026-11-18T10:21:00.000+0100"
+    },
+    "title": "60A: Fremder Verkehrsunfall"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -376,144 +376,6 @@
      "start": "2026-11-18T04:45:04.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1634-162",
-    "owner": "WL",
-    "parentName": "R1634-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     1634
-    ],
-    "time": {
-     "end": "2026-11-18T10:01:00.000+0100",
-     "start": "2026-11-18T09:01:59.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1735-162",
-    "owner": "WL",
-    "parentName": "R1735-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     1735
-    ],
-    "time": {
-     "end": "2026-11-18T10:01:00.000+0100",
-     "start": "2026-11-18T09:02:00.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1737-162",
-    "owner": "WL",
-    "parentName": "R1737-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     1737
-    ],
-    "time": {
-     "end": "2026-11-18T10:01:00.000+0100",
-     "start": "2026-11-18T09:02:00.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1738-162",
-    "owner": "WL",
-    "parentName": "R1738-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     1738
-    ],
-    "time": {
-     "end": "2026-11-18T10:01:00.000+0100",
-     "start": "2026-11-18T09:02:00.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1743-162",
-    "owner": "WL",
-    "parentName": "R1743-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     1743
-    ],
-    "time": {
-     "end": "2026-11-18T10:01:00.000+0100",
-     "start": "2026-11-18T09:02:00.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1744-162",
-    "owner": "WL",
-    "parentName": "R1744-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     1744
-    ],
-    "time": {
-     "end": "2026-11-18T10:01:00.000+0100",
-     "start": "2026-11-18T09:02:00.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
