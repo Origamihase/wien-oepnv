@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:ext="https://wien-oepnv.example/schema" xmlns:georss="http://www.georss.org/georss" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:ext="https://wien-oepnv.example/schema" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
   <channel>
     <title>ÖPNV Störungen Wien &amp; Pendler</title>
     <link>https://github.com/Origamihase/wien-oepnv</link>
@@ -8,22 +8,47 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 18 Nov 2026 15:30:39 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 16:00:47 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[Wien Stadlau ↔ Wien Simmering]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;928317</guid>
-      <pubDate>Wed, 18 Nov 2026 15:11:25 +0100</pubDate>
-      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
+      <title><![CDATA[71: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">2caeb4baf3b29e0e30d9eeefd3e4438d2d58294d03eb90f5e10bc6f2d98754f7</guid>
+      <pubDate>Wed, 18 Nov 2026 15:45:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 18 Nov 2026 15:30:39 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 18 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Wed, 18 Nov 2026 23:59:59 +0100</ext:ends_at>
-      <georss:line>48.219255 16.448852 48.170132 16.419910</georss:line>
-      <description>Wegen eines defekten Zuges auf der Strecke sind Zugfahrten bis voraussichtlich 16:00 Uhr nur eingeschränkt möglich. Planen Sie bis zu 20 Minuten mehr Reisezeit ein. [Seit 15:11]</description>
-      <content:encoded><![CDATA[Wegen eines defekten Zuges auf der Strecke sind Zugfahrten bis voraussichtlich 16:00 Uhr nur eingeschränkt möglich. Planen Sie bis zu 20 Minuten mehr Reisezeit ein.<br/>[Seit 15:11]]]></content:encoded>
+      <ext:first_seen>Wed, 18 Nov 2026 15:45:00 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 18 Nov 2026 15:45:00 +0100</ext:starts_at>
+      <description>Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse. Voraussichtlich bis 16:10 Uhr. Grund: Verkehrsunfall im Bereich Rennweg. [Seit 15:45]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse. Voraussichtlich bis 16:10 Uhr. Grund: Verkehrsunfall im Bereich Rennweg.<br/>[Seit 15:45]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U6: Verspätungen]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e</guid>
+      <pubDate>Wed, 18 Nov 2026 15:41:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 18 Nov 2026 15:41:00 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 18 Nov 2026 15:41:00 +0100</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 15:41]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 15:41]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[5/9: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">3c0f04fc72c473debc1c3aced181d4782b1f08226a834b9859b95c38c56635f5</guid>
+      <pubDate>Wed, 18 Nov 2026 15:36:39 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 18 Nov 2026 15:36:39 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 18 Nov 2026 15:38:09 +0100</ext:starts_at>
+      <ext:ends_at>Wed, 18 Nov 2026 16:46:00 +0100</ext:ends_at>
+      <description>Fahrtbehinderung. [Seit 15:36]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 15:36]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[48A: Feuerwehreinsatz]]></title>
@@ -118,35 +143,6 @@
       <ext:ends_at>Mon, 23 Nov 2026 11:00:00 +0100</ext:ends_at>
       <description>Am Montag, den 23.11.2026 wird in der Zeit zwischen ca. 10:00 Uhr bis ca.11:00 Uhr die Strauchgasse und Herrengasse, in 1010 Wien wegen einer Übung am Pollersperrsystem … [Bis Mo 23.11.]</description>
       <content:encoded><![CDATA[Am Montag, den 23.11.2026 wird in der Zeit zwischen ca. 10:00 Uhr bis ca.11:00 Uhr die Strauchgasse und Herrengasse, in 1010 Wien wegen einer Übung am Pollersperrsystem …<br/>[Bis Mo 23.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[15A: Bhf. Meidling, Schedifkaplatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">6a9aa11479dab3dd8f4715988095e03b1e86eba74320bd77d8fedee7b52d4c02</guid>
-      <pubDate>Fri, 13 Nov 2026 10:57:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 13 Nov 2026 10:57:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 16 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.173382 16.330051</georss:point>
-      <description>Wurmbstraße 46-50 → Wurmbstraße 40-42. Haltestellenverlegung der Linie 15A in Richtung Enkplatz, Grillgasse. Grund: Instandsetzungsarbeiten div. Schachtdeckel. [Seit 16.11.]</description>
-      <content:encoded><![CDATA[Wurmbstraße 46-50 → Wurmbstraße 40-42. Haltestellenverlegung der Linie 15A in Richtung Enkplatz, Grillgasse. Grund: Instandsetzungsarbeiten div. Schachtdeckel.<br/>[Seit 16.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[8A: Küniglberg, ORF Zentrum]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5aeaa62483dca9fdec215375dbb4563e5a96d5c2305faf7f534ce5f2edd88d19</guid>
-      <pubDate>Thu, 12 Nov 2026 10:13:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 12 Nov 2026 10:13:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 16 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Tue, 24 Nov 2026 09:00:00 +0100</ext:ends_at>
-      <georss:point>48.175514 16.291612</georss:point>
-      <description>Würzburggasse nach Einfahrt zum Friedhof → Würzburggasse 49. Haltestellenverlegung der Linie 8A in Richtung Bahnhof Meidling. Grund: Straßenbau. [Bis Di 24.11.]</description>
-      <content:encoded><![CDATA[Würzburggasse nach Einfahrt zum Friedhof → Würzburggasse 49. Haltestellenverlegung der Linie 8A in Richtung Bahnhof Meidling. Grund: Straßenbau.<br/>[Bis Di 24.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
