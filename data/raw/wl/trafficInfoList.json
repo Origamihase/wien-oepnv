@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261118-0002, I20260925-0011, I20260909-0007, I20261118-0003, I20261020-0029"
+    "trafficInfoNameList": "I20261118-0003, I20260925-0011, I20260909-0007, I20261118-0002, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R293-474, R318-437, R1880-101, R1876-101, R1881-101, R1884-101, R1883-101, R1882-101, R1875-101, R3886-480, R2558-125, R2345-127, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2378-627, R2343-125, R2343-626, R2359-125, R1974-466, R1199-205, R500-101, R785-415, R784-415, R807-415, R786-415, R2959-415, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1883-101, R1884-101, R293-474, R1881-101, R1880-101, R1882-101, R318-437, R1875-101, R1876-101, R2558-125, R3886-480, R2373-125, R2373-126, R2379-627, R2345-127, R2380-627, R2371-125, R2372-125, R2373-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R1974-466, R1199-205, R500-101, R784-415, R785-415, R786-415, R807-415, R2959-415, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -178,13 +178,13 @@
       "15A": "ptBusCity"
      }
     },
-    "description": "Linie 15A: Fahrtbehinderung in Richtung Enkplatz U, Grillgasse. Voraussichtliche Dauer: 06:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Bhf. Meidling , Schedifkaplatz.",
-    "descriptionHTML": "<p>Linie 15A:<br>Fahrtbehinderung in Richtung Enkplatz U, Grillgasse.</p><p>Voraussichtliche Dauer: 06:15 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Bhf. Meidling <>, Schedifkaplatz.</p>",
+    "description": "Linie 15A: Betrieb nur zwischen Enkplatz U, Grillgasse und Eibesbrunnergasse. Voraussichtliche Dauer: 06:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Bhf. Meidling , Schedifkaplatz.",
+    "descriptionHTML": "<p>Linie 15A:<br>Betrieb nur zwischen Enkplatz U, Grillgasse und Eibesbrunnergasse.</p><p>Voraussichtliche Dauer: 06:30 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Bhf. Meidling <>, Schedifkaplatz.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 15A:<br>Fahrtbehinderung in Richtung Enkplatz U, Grillgasse.</p><p>Voraussichtliche Dauer: 06:15 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Bhf. Meidling <>, Schedifkaplatz.</p>",
-       "descriptionPlain": "Linie 15A: Fahrtbehinderung in Richtung Enkplatz U, Grillgasse. Voraussichtliche Dauer: 06:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Bhf. Meidling , Schedifkaplatz.",
+       "descriptionHtml": "<p>Linie 15A:<br>Betrieb nur zwischen Enkplatz U, Grillgasse und Eibesbrunnergasse.</p><p>Voraussichtliche Dauer: 06:30 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Bhf. Meidling <>, Schedifkaplatz.</p>",
+       "descriptionPlain": "Linie 15A: Betrieb nur zwischen Enkplatz U, Grillgasse und Eibesbrunnergasse. Voraussichtliche Dauer: 06:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Bhf. Meidling , Schedifkaplatz.",
        "title": "15A: Rettungseinsatz"
       }
      }
@@ -212,7 +212,7 @@
     "status": "active",
     "time": {
      "created": "2026-11-18T05:55:00.000+0100",
-     "lastUpdate": "2026-11-18T05:55:00.000+0100",
+     "lastUpdate": "2026-11-18T06:15:00.000+0100",
      "start": "2026-11-18T05:53:00.000+0100"
     },
     "title": "15A: Rettungseinsatz"
@@ -225,13 +225,13 @@
       "U6": "ptMetro"
      }
     },
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Stellwerksstörung.",
-    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Stellwerksstörung.</p>",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Stellwerksstörung im Haltestellenbereich Bahnhof Meidling.",
+    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Stellwerksstörung im Haltestellenbereich Bahnhof Meidling.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Stellwerksstörung.</p>",
-       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Stellwerksstörung.",
+       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Stellwerksstörung im Haltestellenbereich Bahnhof Meidling.</p>",
+       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Stellwerksstörung im Haltestellenbereich Bahnhof Meidling.",
        "title": "U6: Stellwerksstörung"
       }
      }
@@ -259,7 +259,7 @@
     "status": "active",
     "time": {
      "created": "2026-11-18T06:00:00.000+0100",
-     "lastUpdate": "2026-11-18T06:00:00.000+0100",
+     "lastUpdate": "2026-11-18T06:07:00.000+0100",
      "resume": "2026-11-18T05:59:00.000+0100",
      "start": "2026-11-18T05:59:00.000+0100"
     },
@@ -820,7 +820,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "description": "Rettungseinsatz\nBetrieb ab Gesundheitszentrum Süd",
     "name": "R2959-415",
     "owner": "WL",
     "parentName": "R2959-415",
@@ -835,10 +835,10 @@
      2959
     ],
     "time": {
-     "end": "2026-11-18T06:53:00.000+0100",
+     "end": "2026-11-18T07:07:00.000+0100",
      "start": "2026-11-18T05:54:11.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Rettungseinsatz\nBetrieb ab Gesundheitszentrum Süd"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1004,7 +1004,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "description": "Rettungseinsatz\nBetrieb ab Gesundheitszentrum Süd",
     "name": "R807-415",
     "owner": "WL",
     "parentName": "R807-415",
@@ -1019,10 +1019,10 @@
      807
     ],
     "time": {
-     "end": "2026-11-18T06:53:00.000+0100",
+     "end": "2026-11-18T07:07:00.000+0100",
      "start": "2026-11-18T05:54:10.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Rettungseinsatz\nBetrieb ab Gesundheitszentrum Süd"
    },
    {
     "alertCause": "undefined alert cause",
