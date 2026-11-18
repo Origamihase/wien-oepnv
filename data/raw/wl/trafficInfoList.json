@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261118-0052, I20261118-0050-F01, I20261118-0049-F01, I20261118-0051, I20260925-0011, I20261118-0046, I20260909-0007, I20261118-0039-F01, I20261020-0029"
+    "trafficInfoNameList": "I20261118-0052, I20261118-0051, I20260925-0011, I20261118-0049-F01, I20260909-0007, I20261118-0050-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R293-474, R318-437, R1884-101, R1882-101, R1881-101, R1883-101, R1875-101, R1876-101, R1880-101, R2558-125, R3886-480, R2378-627, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R293-474, R318-437, R1883-101, R1882-101, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R2558-125, R3886-480, R2378-627, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,98 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "71": "ptTram"
-     }
-    },
-    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 71: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 71: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "71: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Rennweg",
-    "name": "I20261118-0039-F01",
-    "owner": "WL",
-    "parentName": "I20261118-0039",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 171,
-      "lineName": "71",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-18T16:09:00.000+0100",
-     "end": "2026-11-18T19:48:00.000+0100",
-     "lastUpdate": "2026-11-18T18:59:00.000+0100",
-     "start": "2026-11-18T15:45:00.000+0100"
-    },
-    "title": "71: Verkehrsunfall"
-   },
-   {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
-      "10A": "ptBusCity"
-     }
-    },
-    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "10A: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261118-0046",
-    "owner": "WL",
-    "parentName": "I20261118-0046",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "10A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 410,
-      "lineName": "10A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-18T17:14:00.000+0100",
-     "end": "2026-11-18T19:42:00.000+0100",
-     "lastUpdate": "2026-11-18T19:07:00.000+0100",
-     "resume": "2026-11-18T17:14:00.000+0100",
-     "start": "2026-11-18T17:14:00.000+0100"
-    },
-    "title": "10A: Verkehrsüberlastung"
-   },
-   {
     "alertCause": "police activity",
     "alertCauseId": 3,
     "attributes": {
@@ -304,8 +212,8 @@
     "status": "active",
     "time": {
      "created": "2026-11-18T18:25:00.000+0100",
-     "lastUpdate": "2026-11-18T18:25:00.000+0100",
-     "resume": "2026-11-18T18:25:00.000+0100",
+     "end": "2026-11-18T20:30:00.000+0100",
+     "lastUpdate": "2026-11-18T19:59:00.000+0100",
      "start": "2026-11-18T17:33:00.000+0100"
     },
     "title": "2: Polizeieinsatz"
@@ -349,11 +257,12 @@
     "relatedStops": [
      4123
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-18T18:19:00.000+0100",
-     "lastUpdate": "2026-11-18T18:19:00.000+0100",
-     "resume": "2026-11-18T18:19:00.000+0100",
+     "end": "2026-11-18T19:59:00.000+0100",
+     "lastUpdate": "2026-11-18T19:59:00.000+0100",
+     "resume": "2026-11-18T19:59:00.000+0100",
      "start": "2026-11-18T18:13:00.000+0100"
     },
     "title": "U1: Betriebsstörung"
@@ -397,7 +306,8 @@
     "status": "active",
     "time": {
      "created": "2026-11-18T18:59:00.000+0100",
-     "lastUpdate": "2026-11-18T18:59:00.000+0100",
+     "end": "2026-11-18T20:03:00.000+0100",
+     "lastUpdate": "2026-11-18T19:55:00.000+0100",
      "resume": "2026-11-18T18:58:00.000+0100",
      "start": "2026-11-18T18:58:00.000+0100"
     },
