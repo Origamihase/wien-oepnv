@@ -950,22 +950,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "31: Schadhaftes Fahrzeug",
-    "description": "Linie 31: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "899bf6038c3a38ee5193e2d6c7398a8b95520941bd268edc5b6be3fa4cd67f49",
-    "pubDate": "2026-11-18T11:25:00+01:00",
-    "starts_at": "2026-11-18T11:25:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=31|D=2026-11-18|TK=31 schadhaftes fahrzeug",
-    "_wl_ids": [
-      "I20261118-0023"
-    ],
-    "_incident_start": "2026-11-18T11:25:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1054,18 +1038,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Verkehrsunfall",
-    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "9: Verkehrsunfall",
+    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 12:50 Uhr. Grund: Verkehrsunfall im Bereich Schweglerstraße # Hütteldorfer Straße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "99d97a77a399286ca28d0b822ce176ae2d28f6c5a979031093f6afc6f33d065e",
-    "pubDate": "2026-11-18T11:44:00+01:00",
-    "starts_at": "2026-11-18T11:44:00+01:00",
+    "guid": "70a21e268e6526375afca6cddbf95e3f1acffc96f35534556c62be605d2351c9",
+    "pubDate": "2026-11-18T12:27:00+01:00",
+    "starts_at": "2026-11-18T12:27:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=D|D=2026-11-18|TK=d verkehrsunfall",
+    "_identity": "wl|störung|L=9|D=2026-11-18|TK=9 verkehrsunfall",
     "_wl_ids": [
-      "I20261118-0024"
+      "I20261118-0026"
     ],
-    "_incident_start": "2026-11-18T11:44:00+01:00"
+    "_incident_start": "2026-11-18T12:27:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1082,18 +1066,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U6: Verspätungen",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "title": "U2: Rettungseinsatz",
+    "description": "Die Linie U2 fährt derzeit zwischen den Stationen Donaumarina und Donaustadtbrücke in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig. Voraussichtliche Dauer: 13:00 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Donaumarina.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
-    "pubDate": "2026-11-18T11:07:00+01:00",
-    "starts_at": "2026-11-18T11:07:00+01:00",
+    "guid": "710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8",
+    "pubDate": "2026-11-18T12:27:00+01:00",
+    "starts_at": "2026-11-18T12:27:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=U6|D=2026-11-18|TK=u6 verspätungen",
+    "_identity": "wl|störung|L=U2|D=2026-11-18|TK=rettungseinsatz",
     "_wl_ids": [
-      "I20261118-0022"
+      "I20261118-0025"
     ],
-    "_incident_start": "2026-11-18T11:07:00+01:00"
+    "_incident_start": "2026-11-18T12:27:00+01:00"
   },
   {
     "source": "Wiener Linien",
