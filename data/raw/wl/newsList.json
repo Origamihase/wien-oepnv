@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_16, ftazW_606, ftazW_1018092, ftazW_42, ftazW_1018049, ftazW_210, ftazW_1017123, ftazW_352, ftazW_1018058, ftazW_572, ftazW_476, ftazW_281, ftazW_1354338, ftazW_353, ftazW_282, ftazW_573, ftazW_477, ftazW_1354339, ftazW_1354337"
+    "trafficInfoNameList": "ftazW_16, ftazW_606, ftazW_1018092, ftazW_1018049, ftazW_210, ftazW_1017123, ftazW_352, ftazW_1018058, ftazW_572, ftazW_476, ftazW_281, ftazW_1354338, ftazW_353, ftazW_282, ftazW_573, ftazW_477, ftazW_1354339, ftazW_1354337"
    }
   ],
   "poiCategoryGroups": [
@@ -3502,43 +3502,6 @@
      "start": "2026-11-20T01:15:00.000+0100"
     },
     "title": "Neubaugasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "19.11.2026 05:15",
-     "ausVon": "19.11.2026 01:15",
-     "location": "U1 Bahnsteig Richtung Oberlaa - Ausgang Schüttaustraße",
-     "rbls": [
-      4106
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Kaisermühlen-VIC",
-     "status": "geplante Wartung",
-     "towards": "U1 Oberlaa"
-    },
-    "description": "U1 Bahnsteig Richtung Oberlaa - Ausgang Schüttaustraße",
-    "elevatorId": "KM 02",
-    "name": "ftazW_42",
-    "parentName": "ftazW_42",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4106
-    ],
-    "time": {
-     "end": "2026-11-19T05:15:00.000+0100",
-     "start": "2026-11-19T01:15:00.000+0100"
-    },
-    "title": "Kaisermühlen-VIC"
    },
    {
     "alertCause": "undefined alert cause",
