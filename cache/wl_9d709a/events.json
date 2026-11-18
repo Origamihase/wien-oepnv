@@ -686,6 +686,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11: Polizeieinsatz",
+    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "84fb66f823fe0256bdb55c275e537630afbdb20e631f62ff4a78dbb9fd614ed6",
+    "pubDate": "2026-11-18T23:17:00+01:00",
+    "starts_at": "2026-11-18T23:17:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=11|D=2026-11-18|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261118-0053"
+    ],
+    "_incident_start": "2026-11-18T23:17:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -962,18 +978,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U6: Betriebsstörung",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung im Haltestellenbereich Burggasse - Stadthalle.",
+    "title": "O: Polizeieinsatz",
+    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "8436d7c372e35f229b7350ebb6a7860314ebdfa557555003150b65e6c0800f22",
-    "pubDate": "2026-11-18T19:22:00+01:00",
-    "starts_at": "2026-11-18T19:22:00+01:00",
+    "guid": "b3799ddddf61cd5c6404f1e8b07bf577d21dbd25d292c9833575d0f1f823d0c6",
+    "pubDate": "2026-11-18T23:17:00+01:00",
+    "starts_at": "2026-11-18T23:17:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=U6|D=2026-11-18|TK=u6 betriebsstörung",
+    "_identity": "wl|störung|L=O|D=2026-11-18|TK=polizeieinsatz",
     "_wl_ids": [
-      "I20261118-0052"
+      "I20261118-0053"
     ],
-    "_incident_start": "2026-11-18T19:22:00+01:00"
+    "_incident_start": "2026-11-18T23:17:00+01:00"
   },
   {
     "source": "Wiener Linien",
