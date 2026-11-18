@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_722, ftazW_594, ftazW_603, ftazW_593, ftazW_5, ftazW_209, ftazW_1017121, ftazW_19, ftazW_41, ftazW_16, ftazW_606, ftazW_1018092, ftazW_42, ftazW_1018049, ftazW_210, ftazW_1017123, ftazW_352, ftazW_1018058, ftazW_572, ftazW_476, ftazW_281, ftazW_1354338, ftazW_353, ftazW_282, ftazW_573, ftazW_477, ftazW_1354339, ftazW_1354337"
+    "trafficInfoNameList": "ftazW_5, ftazW_603, ftazW_209, ftazW_1017121, ftazW_19, ftazW_41, ftazW_16, ftazW_606, ftazW_1018092, ftazW_42, ftazW_1018049, ftazW_210, ftazW_1017123, ftazW_352, ftazW_1018058, ftazW_572, ftazW_476, ftazW_281, ftazW_1354338, ftazW_353, ftazW_282, ftazW_573, ftazW_477, ftazW_1354339, ftazW_1354337"
    }
   ],
   "poiCategoryGroups": [
@@ -3661,82 +3661,8 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "18.11.2026 15:00",
-     "ausVon": "18.11.2026 07:00",
-     "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Kennedybrücke",
-     "rbls": [
-      4409
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4"
-     ],
-     "station": "Hietzing",
-     "status": "geplante Wartung",
-     "towards": "U4 Heiligenstadt"
-    },
-    "description": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Kennedybrücke",
-    "elevatorId": "HI 01",
-    "name": "ftazW_593",
-    "parentName": "ftazW_593",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedStops": [
-     4409
-    ],
-    "time": {
-     "end": "2026-11-18T15:00:00.000+0100",
-     "start": "2026-11-18T07:00:00.000+0100"
-    },
-    "title": "Hietzing"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "18.11.2026 15:00",
-     "ausVon": "18.11.2026 07:00",
-     "location": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Kennedybrücke",
-     "rbls": [
-      4428
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4"
-     ],
-     "station": "Hietzing",
-     "status": "geplante Wartung",
-     "towards": "U4 Hütteldorf"
-    },
-    "description": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Kennedybrücke",
-    "elevatorId": "HI 02",
-    "name": "ftazW_594",
-    "parentName": "ftazW_594",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedStops": [
-     4428
-    ],
-    "time": {
-     "end": "2026-11-18T15:00:00.000+0100",
-     "start": "2026-11-18T07:00:00.000+0100"
-    },
-    "title": "Hietzing"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "18.11.2026 15:00",
-     "ausVon": "18.11.2026 07:00",
+     "ausBis": "19.11.2026 00:45",
+     "ausVon": "18.11.2026 20:45",
      "location": "U3 Bahnsteig Richtung Simmering - Ausgang Thaliastraße",
      "rbls": [
       4931
@@ -3763,8 +3689,8 @@
      4931
     ],
     "time": {
-     "end": "2026-11-18T15:00:00.000+0100",
-     "start": "2026-11-18T07:00:00.000+0100"
+     "end": "2026-11-19T00:45:00.000+0100",
+     "start": "2026-11-18T20:45:00.000+0100"
     },
     "title": "Ottakring"
    },
@@ -3804,43 +3730,6 @@
      "start": "2026-11-19T01:15:00.000+0100"
     },
     "title": "Ottakring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "18.11.2026 15:00",
-     "ausVon": "18.11.2026 07:00",
-     "location": "U4 Mittelbahnsteig Gleis 2 und Gleis 4, ÖBB Bahnsteig - Ausgang 12. Februar Platz",
-     "rbls": [
-      4435
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4"
-     ],
-     "station": "Heiligenstadt",
-     "status": "geplante Wartung",
-     "towards": "U4 Heiligenstadt"
-    },
-    "description": "U4 Mittelbahnsteig Gleis 2 und Gleis 4, ÖBB Bahnsteig - Ausgang 12. Februar Platz",
-    "elevatorId": "HS 02",
-    "name": "ftazW_722",
-    "parentName": "ftazW_722",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedStops": [
-     4435
-    ],
-    "time": {
-     "end": "2026-11-18T15:00:00.000+0100",
-     "start": "2026-11-18T07:00:00.000+0100"
-    },
-    "title": "Heiligenstadt"
    }
   ]
  },

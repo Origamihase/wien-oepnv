@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20261118-0002-F01, I20260909-0007, I20261118-0003, I20261020-0029"
+    "trafficInfoNameList": "I20261118-0004, I20260925-0011, I20261118-0002-F01, I20260909-0007, I20261118-0005, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R293-474, R318-437, R1884-101, R1882-101, R1883-101, R1875-101, R1876-101, R1880-101, R1881-101, R2558-125, R3886-480, R2345-127, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R1974-466, R1199-205, R500-101, R807-415, R2959-415, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R293-474, R318-437, R1876-101, R1880-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R2558-125, R3886-480, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R1974-466, R1199-205, R500-101, R2210-130, R2210-131, R2217-130, R84-130, R2216-130, R2212-131, R2227-130, R2209-130, R2227-131, R2209-131, R2226-130, R2216-131, R2226-131, R2217-131, R2218-130, R2218-131, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -219,52 +219,106 @@
     "title": "15A: Rettungseinsatz"
    },
    {
-    "alertCause": "traffic management system failure",
-    "alertCauseId": 41,
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
     "attributes": {
      "relatedLineTypes": {
-      "U6": "ptMetro"
+      "37": "ptTram"
      }
     },
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Stellwerksstörung im Haltestellenbereich Bahnhof Meidling.",
-    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Stellwerksstörung im Haltestellenbereich Bahnhof Meidling.</p>",
+    "description": "Linie 37: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+    "descriptionHTML": "<p>Linie 37:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Falschparker.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Stellwerksstörung im Haltestellenbereich Bahnhof Meidling.</p>",
-       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Stellwerksstörung im Haltestellenbereich Bahnhof Meidling.",
-       "title": "U6: Stellwerksstörung"
+       "descriptionHtml": "<p>Linie 37:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Falschparker.</p>",
+       "descriptionPlain": "Linie 37: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+       "title": "37: Falschparker"
       }
      }
     ],
-    "name": "I20261118-0003",
+    "name": "I20261118-0004",
     "owner": "WL",
-    "parentName": "I20261118-0003",
+    "parentName": "I20261118-0004",
     "priority": "1",
-    "reasonId": 32,
-    "reasonName": "Stellwerksstörung",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "U6"
+     "37"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
+      "lineId": 137,
+      "lineName": "37",
+      "vehicleType": "ptTram"
      }
     ],
     "relatedStops": [
-     4615
+     240
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-18T06:00:00.000+0100",
-     "lastUpdate": "2026-11-18T06:47:00.000+0100",
-     "resume": "2026-11-18T05:59:00.000+0100",
-     "start": "2026-11-18T05:59:00.000+0100"
+     "created": "2026-11-18T07:11:00.000+0100",
+     "lastUpdate": "2026-11-18T07:11:00.000+0100",
+     "resume": "2026-11-18T07:10:00.000+0100",
+     "start": "2026-11-18T07:10:00.000+0100"
     },
-    "title": "U6: Stellwerksstörung"
+    "title": "37: Falschparker"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "30": "ptTram",
+      "31": "ptTram"
+     }
+    },
+    "description": "Linie 30: Betrieb nur zwischen Floridsdorf S U und Brünner Straße, Hanreitergasse. Linie 31: Betrieb nur zwischen Schottenring U und Brünner Straße, Hanreitergasse. Ersatz: Linie 30A. Voraussichtliche Dauer: 08:00 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Empergergasse.",
+    "descriptionHTML": "<p>Linie 30:<br>Betrieb nur zwischen Floridsdorf S U und Brünner Straße, Hanreitergasse.<br>Linie 31:<br>Betrieb nur zwischen Schottenring U und Brünner Straße, Hanreitergasse.</p><p>Ersatz: Linie 30A.</p><p>Voraussichtliche Dauer: 08:00 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Empergergasse.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 30:<br>Betrieb nur zwischen Floridsdorf S U und Brünner Straße, Hanreitergasse.<br>Linie 31:<br>Betrieb nur zwischen Schottenring U und Brünner Straße, Hanreitergasse.</p><p>Ersatz: Linie 30A.</p><p>Voraussichtliche Dauer: 08:00 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Empergergasse.</p>",
+       "descriptionPlain": "Linie 30: Betrieb nur zwischen Floridsdorf S U und Brünner Straße, Hanreitergasse. Linie 31: Betrieb nur zwischen Schottenring U und Brünner Straße, Hanreitergasse. Ersatz: Linie 30A. Voraussichtliche Dauer: 08:00 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Empergergasse.",
+       "title": "30, 31: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261118-0005",
+    "owner": "WL",
+    "parentName": "I20261118-0005",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "30",
+     "31"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 130,
+      "lineName": "30",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 131,
+      "lineName": "31",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     2227
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-18T07:19:00.000+0100",
+     "lastUpdate": "2026-11-18T07:21:00.000+0100",
+     "start": "2026-11-18T07:17:00.000+0100"
+    },
+    "title": "30, 31: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -472,6 +526,351 @@
      "start": "2026-11-18T04:40:04.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2209-130",
+    "owner": "WL",
+    "parentName": "R2209-130",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "30"
+    ],
+    "relatedStops": [
+     2209
+    ],
+    "time": {
+     "end": "2026-11-18T08:20:00.000+0100",
+     "start": "2026-11-18T07:21:19.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2209-131",
+    "owner": "WL",
+    "parentName": "R2209-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2209
+    ],
+    "time": {
+     "end": "2026-11-18T08:21:00.000+0100",
+     "start": "2026-11-18T07:21:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2210-130",
+    "owner": "WL",
+    "parentName": "R2210-130",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "30"
+    ],
+    "relatedStops": [
+     2210
+    ],
+    "time": {
+     "end": "2026-11-18T08:20:00.000+0100",
+     "start": "2026-11-18T07:18:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2210-131",
+    "owner": "WL",
+    "parentName": "R2210-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2210
+    ],
+    "time": {
+     "end": "2026-11-18T08:21:00.000+0100",
+     "start": "2026-11-18T07:18:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Hanreitergasse",
+    "name": "R2212-131",
+    "owner": "WL",
+    "parentName": "R2212-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2212
+    ],
+    "time": {
+     "end": "2026-11-18T08:22:00.000+0100",
+     "start": "2026-11-18T07:19:48.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Hanreitergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Hanreitergasse",
+    "name": "R2216-130",
+    "owner": "WL",
+    "parentName": "R2216-130",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "30"
+    ],
+    "relatedStops": [
+     2216
+    ],
+    "time": {
+     "end": "2026-11-18T08:22:00.000+0100",
+     "start": "2026-11-18T07:19:18.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Hanreitergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Hanreitergasse",
+    "name": "R2216-131",
+    "owner": "WL",
+    "parentName": "R2216-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2216
+    ],
+    "time": {
+     "end": "2026-11-18T08:22:00.000+0100",
+     "start": "2026-11-18T07:24:49.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Hanreitergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Hanreitergasse",
+    "name": "R2217-130",
+    "owner": "WL",
+    "parentName": "R2217-130",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "30"
+    ],
+    "relatedStops": [
+     2217
+    ],
+    "time": {
+     "end": "2026-11-18T08:22:00.000+0100",
+     "start": "2026-11-18T07:19:18.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Hanreitergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Hanreitergasse",
+    "name": "R2217-131",
+    "owner": "WL",
+    "parentName": "R2217-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2217
+    ],
+    "time": {
+     "end": "2026-11-18T08:22:00.000+0100",
+     "start": "2026-11-18T07:24:49.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Hanreitergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nEinstieg in der Schleife",
+    "name": "R2218-130",
+    "owner": "WL",
+    "parentName": "R2218-130",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "30"
+    ],
+    "relatedStops": [
+     2218
+    ],
+    "time": {
+     "end": "2026-11-18T08:24:00.000+0100",
+     "start": "2026-11-18T07:25:19.000+0100"
+    },
+    "title": "Rettungseinsatz\nEinstieg in der Schleife"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nEinstieg in der Schleife",
+    "name": "R2218-131",
+    "owner": "WL",
+    "parentName": "R2218-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2218
+    ],
+    "time": {
+     "end": "2026-11-18T08:25:00.000+0100",
+     "start": "2026-11-18T07:25:49.000+0100"
+    },
+    "title": "Rettungseinsatz\nEinstieg in der Schleife"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Hanreitergasse",
+    "name": "R2226-130",
+    "owner": "WL",
+    "parentName": "R2226-130",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "30"
+    ],
+    "relatedStops": [
+     2226
+    ],
+    "time": {
+     "end": "2026-11-18T08:22:00.000+0100",
+     "start": "2026-11-18T07:22:49.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Hanreitergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nBetrieb ab Hanreitergasse",
+    "name": "R2226-131",
+    "owner": "WL",
+    "parentName": "R2226-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2226
+    ],
+    "time": {
+     "end": "2026-11-18T08:22:00.000+0100",
+     "start": "2026-11-18T07:24:49.000+0100"
+    },
+    "title": "Rettungseinsatz\nBetrieb ab Hanreitergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2227-130",
+    "owner": "WL",
+    "parentName": "R2227-130",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "30"
+    ],
+    "relatedStops": [
+     2227
+    ],
+    "time": {
+     "end": "2026-11-18T08:20:00.000+0100",
+     "start": "2026-11-18T07:21:19.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2227-131",
+    "owner": "WL",
+    "parentName": "R2227-131",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "31"
+    ],
+    "relatedStops": [
+     2227
+    ],
+    "time": {
+     "end": "2026-11-18T08:21:00.000+0100",
+     "start": "2026-11-18T07:21:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -821,29 +1220,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Gesundheitszentrum Süd",
-    "name": "R2959-415",
-    "owner": "WL",
-    "parentName": "R2959-415",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "15A"
-    ],
-    "relatedStops": [
-     2959
-    ],
-    "time": {
-     "end": "2026-11-18T07:07:00.000+0100",
-     "start": "2026-11-18T05:54:11.000+0100"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Gesundheitszentrum Süd"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -936,25 +1312,25 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Gesundheitszentrum Süd",
-    "name": "R807-415",
+    "description": "Rettungseinsatz\nBetrieb ab Hanreitergasse",
+    "name": "R84-130",
     "owner": "WL",
-    "parentName": "R807-415",
+    "parentName": "R84-130",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "15A"
+     "30"
     ],
     "relatedStops": [
-     807
+     84
     ],
     "time": {
-     "end": "2026-11-18T07:07:00.000+0100",
-     "start": "2026-11-18T05:54:10.000+0100"
+     "end": "2026-11-18T08:22:00.000+0100",
+     "start": "2026-11-18T07:19:18.000+0100"
     },
-    "title": "Rettungseinsatz\nBetrieb ab Gesundheitszentrum Süd"
+    "title": "Rettungseinsatz\nBetrieb ab Hanreitergasse"
    },
    {
     "alertCause": "undefined alert cause",
