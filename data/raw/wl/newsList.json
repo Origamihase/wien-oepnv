@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_5, ftazW_603, ftazW_209, ftazW_1017121, ftazW_19, ftazW_41, ftazW_16, ftazW_606, ftazW_1018092, ftazW_42, ftazW_1018049, ftazW_210, ftazW_1017123, ftazW_352, ftazW_1018058, ftazW_572, ftazW_476, ftazW_281, ftazW_1354338, ftazW_353, ftazW_282, ftazW_573, ftazW_477, ftazW_1354339, ftazW_1354337"
+    "trafficInfoNameList": "ftazW_16, ftazW_606, ftazW_1018092, ftazW_42, ftazW_1018049, ftazW_210, ftazW_1017123, ftazW_352, ftazW_1018058, ftazW_572, ftazW_476, ftazW_281, ftazW_1354338, ftazW_353, ftazW_282, ftazW_573, ftazW_477, ftazW_1354339, ftazW_1354337"
    }
   ],
   "poiCategoryGroups": [
@@ -3043,45 +3043,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "19.11.2026 00:45",
-     "ausVon": "18.11.2026 20:45",
-     "location": "U1 Mittelbahnsteig - Passage",
-     "rbls": [
-      4185,
-      4190
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Leopoldau",
-     "status": "geplante Wartung",
-     "towards": "U1 beide Richtungen"
-    },
-    "description": "U1 Mittelbahnsteig - Passage",
-    "elevatorId": "LU 01",
-    "name": "ftazW_1017121",
-    "parentName": "ftazW_1017121",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4185,
-     4190
-    ],
-    "time": {
-     "end": "2026-11-19T00:45:00.000+0100",
-     "start": "2026-11-18T20:45:00.000+0100"
-    },
-    "title": "Leopoldau"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "19.11.2026 05:15",
      "ausVon": "19.11.2026 01:15",
      "location": "Passage - Ausgang Schererstraße",
@@ -3364,82 +3325,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "19.11.2026 00:45",
-     "ausVon": "18.11.2026 20:45",
-     "location": "U3 Mittelbahnsteig - Ausgang Nottendorfer Straße (Town Town)",
-     "rbls": [
-      4917,
-      4900
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Erdberg",
-     "status": "geplante Wartung",
-     "towards": "U3 beide Richtungen"
-    },
-    "description": "U3 Mittelbahnsteig - Ausgang Nottendorfer Straße (Town Town)",
-    "elevatorId": "ED 03",
-    "name": "ftazW_19",
-    "parentName": "ftazW_19",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4917,
-     4900
-    ],
-    "time": {
-     "end": "2026-11-19T00:45:00.000+0100",
-     "start": "2026-11-18T20:45:00.000+0100"
-    },
-    "title": "Erdberg"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "19.11.2026 00:45",
-     "ausVon": "18.11.2026 20:45",
-     "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Nußdorfer Straße",
-     "rbls": [
-      4626
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Nußdorfer Straße",
-     "status": "geplante Wartung",
-     "towards": "U6 Floridsdorf"
-    },
-    "description": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Nußdorfer Straße",
-    "elevatorId": "NS 01",
-    "name": "ftazW_209",
-    "parentName": "ftazW_209",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4626
-    ],
-    "time": {
-     "end": "2026-11-19T00:45:00.000+0100",
-     "start": "2026-11-18T20:45:00.000+0100"
-    },
-    "title": "Nußdorfer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "19.11.2026 05:15",
      "ausVon": "19.11.2026 01:15",
      "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Döblinger Hauptstraße",
@@ -3622,43 +3507,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "19.11.2026 00:45",
-     "ausVon": "18.11.2026 20:45",
-     "location": "U1 Bahnsteig Richtung Leopoldau - Ausgang Schüttaustraße",
-     "rbls": [
-      4123
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Kaisermühlen-VIC",
-     "status": "geplante Wartung",
-     "towards": "U1 Leopoldau"
-    },
-    "description": "U1 Bahnsteig Richtung Leopoldau - Ausgang Schüttaustraße",
-    "elevatorId": "KM 01",
-    "name": "ftazW_41",
-    "parentName": "ftazW_41",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4123
-    ],
-    "time": {
-     "end": "2026-11-19T00:45:00.000+0100",
-     "start": "2026-11-18T20:45:00.000+0100"
-    },
-    "title": "Kaisermühlen-VIC"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "19.11.2026 05:15",
      "ausVon": "19.11.2026 01:15",
      "location": "U1 Bahnsteig Richtung Oberlaa - Ausgang Schüttaustraße",
@@ -3770,43 +3618,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "19.11.2026 00:45",
-     "ausVon": "18.11.2026 20:45",
-     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Jörgerstraße, Hernalser Hauptstraße",
-     "rbls": [
-      4606
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Alser Straße",
-     "status": "geplante Wartung",
-     "towards": "U6 Siebenhirten"
-    },
-    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Jörgerstraße, Hernalser Hauptstraße",
-    "elevatorId": "AS 02",
-    "name": "ftazW_5",
-    "parentName": "ftazW_5",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4606
-    ],
-    "time": {
-     "end": "2026-11-19T00:45:00.000+0100",
-     "start": "2026-11-18T20:45:00.000+0100"
-    },
-    "title": "Alser Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "20.11.2026 00:45",
      "ausVon": "19.11.2026 20:45",
      "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Morizgasse",
@@ -3876,43 +3687,6 @@
      "start": "2026-11-20T01:15:00.000+0100"
     },
     "title": "Margaretengürtel"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "19.11.2026 00:45",
-     "ausVon": "18.11.2026 20:45",
-     "location": "U3 Bahnsteig Richtung Simmering - Ausgang Thaliastraße",
-     "rbls": [
-      4931
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Ottakring",
-     "status": "geplante Wartung",
-     "towards": "U3 Simmering"
-    },
-    "description": "U3 Bahnsteig Richtung Simmering - Ausgang Thaliastraße",
-    "elevatorId": "OK 01",
-    "name": "ftazW_603",
-    "parentName": "ftazW_603",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4931
-    ],
-    "time": {
-     "end": "2026-11-19T00:45:00.000+0100",
-     "start": "2026-11-18T20:45:00.000+0100"
-    },
-    "title": "Ottakring"
    },
    {
     "alertCause": "undefined alert cause",
