@@ -230,6 +230,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "48A: Haltestellenverlegung",
+    "description": "<p><strong><u>Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing</u></strong></p><p><strong><u>Haltestelle:</u></strong> Klinik Penzing</p><p><strong><u>Von:</u></strong> Sanatoriumstraße 2</p><p><strong><u>Nach:</u></strong> Sanatoriumstraße 2 vor Krankenhauseinfahrt</p><p><strong><u>Dauer:</u></strong> 25. November 2026, etwa 07:00 Uhr bis 17. Dezember 2026, etwa 13:00 Uhr</p><p><strong><u>Grund:</u></strong> Straßenbau</p>",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "a7462f494eadd2e3165ce42b831100360c5c998deca1dc1c6619fd14cde11890",
+    "pubDate": "2026-11-18T14:35:00+01:00",
+    "starts_at": "2026-11-25T00:00:00+01:00",
+    "ends_at": "2026-12-17T13:00:00+01:00",
+    "_identity": "wl|hinweis|L=48A|D=2026-11-25|TK=haltestellenverlegung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "49A/50B: Hüttergasse",
     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 49A und 50B in Richtung Wolfersberg bzw. Auhof</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> H&uuml;ttergasse</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Anzengruberstra&szlig;e gegen&uuml;ber 77a</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong> <span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">H&uuml;ttergasse 6A-6B</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 31. August 2026, etwa 08:00 Uhr, Dauer unbekannt</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Rohrleitungsarbeiten</span></p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -738,6 +750,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1: Falschparker",
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1",
+    "pubDate": "2026-11-18T14:52:00+01:00",
+    "starts_at": "2026-11-18T14:52:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=1|D=2026-11-18|TK=falschparker",
+    "_wl_ids": [
+      "I20261118-0034"
+    ],
+    "_incident_start": "2026-11-18T14:52:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "1: Kein Betrieb",
     "description": "Gleisbauarbeiten\nKein Betrieb",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -914,6 +942,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "48A: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "2e0a6e14222b22b6398037a69dc9cc2840b751d87dc878574b3e2f29e488d399",
+    "pubDate": "2026-11-18T14:55:34+01:00",
+    "starts_at": "2026-11-18T14:55:34+01:00",
+    "ends_at": "2026-11-18T15:54:00+01:00",
+    "_identity": "wl|störung|L=48A|D=2026-11-18|TK=feuerwehreinsatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -926,28 +966,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Fahrtbehinderung Falschparker",
-    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5",
-    "pubDate": "2026-11-18T13:39:00+01:00",
-    "starts_at": "2026-11-18T13:58:26+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=5|D=2026-11-18|TK=falschparker",
-    "_wl_ids": [
-      "I20261118-0028"
-    ],
-    "_incident_start": "2026-11-18T13:39:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 62: Fahrtbehinderung in Richtung Quartier Belvedere S. Voraussichtliche Dauer: 14:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Rosenhügelstraße.",
+    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d",
     "pubDate": "2026-11-18T14:26:00+01:00",
-    "starts_at": "2026-11-18T14:27:31+01:00",
+    "starts_at": "2026-11-18T14:31:01+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=62|D=2026-11-18|TK=rettungseinsatz",
     "_wl_ids": [
@@ -995,33 +1019,45 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "9: Fahrtbehinderung Falschparker",
-    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 15:00 Uhr. Grund: Falschparker im Bereich Hormayrgasse # 40.",
+    "description": "Fahrtbehinderung\nFalschparker",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2026-11-18T14:29:00+01:00",
+    "pubDate": "2026-11-18T14:30:28+01:00",
     "starts_at": "2026-11-18T14:30:30+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=9|D=2026-11-18|TK=falschparker",
-    "_wl_ids": [
-      "I20261118-0032"
-    ],
-    "_incident_start": "2026-11-18T14:29:00+01:00"
+    "ends_at": "2026-11-18T15:29:00+01:00",
+    "_identity": "wl|störung|L=9|D=2026-11-18|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Polizeieinsatz",
-    "description": "Linie U4: Fahrtbehinderung in Richtung Heiligenstadt. Voraussichtliche Dauer: 14:45 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Braunschweiggasse.",
+    "title": "O: Falschparker",
+    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a",
-    "pubDate": "2026-11-18T14:27:00+01:00",
-    "starts_at": "2026-11-18T14:27:00+01:00",
+    "guid": "a90305646f013b3987fb55ef5dab8d20d35b0e58b3f412f792bb39c48c2fa5a8",
+    "pubDate": "2026-11-18T14:52:00+01:00",
+    "starts_at": "2026-11-18T14:52:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=U4|D=2026-11-18|TK=polizeieinsatz",
+    "_identity": "wl|störung|L=O|D=2026-11-18|TK=falschparker",
     "_wl_ids": [
-      "I20261118-0031"
+      "I20261118-0034"
     ],
-    "_incident_start": "2026-11-18T14:27:00+01:00"
+    "_incident_start": "2026-11-18T14:52:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Schadhaftes Fahrzeug",
+    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
+    "pubDate": "2026-11-18T14:52:00+01:00",
+    "starts_at": "2026-11-18T14:52:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U4|D=2026-11-18|TK=u4 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261118-0033"
+    ],
+    "_incident_start": "2026-11-18T14:52:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1046,5 +1082,17 @@
     "starts_at": "2026-09-14T04:00:00+02:00",
     "ends_at": "2026-12-31T23:59:00+01:00",
     "_identity": "wl|störung|L=|D=2026-09-14|TK=sperre"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Haltestelle aufgelassen! Stop closed!",
+    "description": "Haltestelle\naufgelassen! Stop closed!",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b3d058f2a7d9443431d0c6a57bef734f51e51c799560d9ce542bccfc3df4425a",
+    "pubDate": "2026-11-18T15:00:04+01:00",
+    "starts_at": "2026-11-18T15:00:04+01:00",
+    "ends_at": "2026-11-18T22:30:00+01:00",
+    "_identity": "wl|störung|L=|D=2026-11-18|TK=haltestelle aufgelassen stop closed"
   }
 ]

@@ -94,5 +94,17 @@
     "starts_at": "2026-12-13T00:00:00+01:00",
     "ends_at": "2027-12-11T23:59:59+01:00",
     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&928233"
+  },
+  {
+    "source": "ÖBB",
+    "category": "Störung",
+    "title": "Wien Hauptbahnhof ↔ Flughafen Wien",
+    "description": "25.04.2027 - 02.05.2027<br/><br/>Wegen Bauarbeiten fährt<br>zwischen <b>Wien Hbf (U)</b> und <b>Flughafen Wien Bahnhof<br></b>von <b>25.04.2027</b> bis <b>26.04.2027 </b>und<br>am<b> 01.05.2027<br></b>der Zug RJ 11265 mit geänderten Fahrzeiten.<br><br>Ihre Reisezeit verlängert sich um bis zu 6 Minuten.<br>Anschlussverbindungen können nicht gewährleistet werden.<br><br>Zwischen <b>Wien Hbf (U)</b> und <b>Flughafen Wien Bahnhof</b> kann<br>am <b>02.05.2027<br></b>der Zug RJ 11265 nicht fahren.<br>Als Ersatz haben Sie die Möglichkeit den nächsten fahrplanmäßigen Zug zu nehmen.<br><br>Wir bitten um Entschuldigung.",
+    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&928304",
+    "pubDate": "2026-11-18T14:54:24+01:00",
+    "starts_at": "2027-04-25T00:00:00+02:00",
+    "ends_at": "2027-05-02T23:59:59+02:00",
+    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&928304"
   }
 ]
