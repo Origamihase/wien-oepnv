@@ -3,17 +3,29 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R201-137|2026-11-18T16:42:11.000+0100": {
-   "incident": "I20261118-0042",
-   "title": "Fahrtbehinderung\nFalschparker"
+  "R10-102|2026-11-18T17:39:18.000+0100": {
+   "incident": "I20261118-0049",
+   "title": "Polizeieinsatz\nBetrieb ab Rathaus >"
   },
-  "R203-137|2026-11-18T16:42:11.000+0100": {
-   "incident": "I20261118-0042",
-   "title": "Fahrtbehinderung\nFalschparker"
+  "R11-102|2026-11-18T17:39:18.000+0100": {
+   "incident": "I20261118-0049",
+   "title": "Polizeieinsatz\nBetrieb ab Rathaus >"
   },
-  "R207-137|2026-11-18T16:42:11.000+0100": {
-   "incident": "I20261118-0042",
-   "title": "Fahrtbehinderung\nFalschparker"
+  "R12-102|2026-11-18T17:39:18.000+0100": {
+   "incident": "I20261118-0049",
+   "title": "Polizeieinsatz\nBetrieb ab Rathaus >"
+  },
+  "R13-102|2026-11-18T17:39:18.000+0100": {
+   "incident": "I20261118-0049",
+   "title": "Polizeieinsatz\nBetrieb ab Rathaus >"
+  },
+  "R14-102|2026-11-18T17:39:18.000+0100": {
+   "incident": "I20261118-0049",
+   "title": "Polizeieinsatz\nBetrieb ab Rathaus >"
+  },
+  "R15-102|2026-11-18T17:39:18.000+0100": {
+   "incident": "I20261118-0049",
+   "title": "Polizeieinsatz\nBetrieb ab Rathaus >"
   },
   "R2175-127|2026-11-18T17:11:17.000+0100": {
    "incident": "I20261118-0045",
@@ -34,6 +46,18 @@
   "R2179-127|2026-11-18T17:18:18.000+0100": {
    "incident": "I20261118-0045",
    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  },
+  "R22-102|2026-11-18T17:44:49.000+0100": {
+   "incident": "I20261118-0049",
+   "title": "Polizeieinsatz\nBetrieb ab Rathaus >"
+  },
+  "R268-474|2026-11-18T17:43:21.000+0100": {
+   "incident": "I20261118-0049",
+   "title": "Polizeieinsatz\nBetrieb ab Landstraße "
+  },
+  "R9-102|2026-11-18T17:44:49.000+0100": {
+   "incident": "I20261118-0049",
+   "title": "Polizeieinsatz\nBetrieb ab Rathaus >"
   }
  }
 }

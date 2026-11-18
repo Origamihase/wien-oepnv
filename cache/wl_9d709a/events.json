@@ -854,6 +854,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2/74A: Polizeieinsatz",
+    "description": "Linie 2: Umleitung in Richtung Dornbach zwischen Marienbrücke und Parlament, U Volkstheater über Schottenring. Haltestellen: Parlament, U Volkstheater: Einstiegstelle direkt vor dem Parlament. Linie 74A: Betrieb nur zwischen St. Marx S und Landstraße S U. Ersatz: Linien U1 und U3. Voraussichtliche Dauer: 18:10 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Stubentor U.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "d4e678ca638a3f2c6949047d9fbbe77b8ab7c7edf412fac38eb21701d68f8a0d",
+    "pubDate": "2026-11-18T17:33:00+01:00",
+    "starts_at": "2026-11-18T17:33:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=2,74A|D=2026-11-18|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261118-0049"
+    ],
+    "_incident_start": "2026-11-18T17:33:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "22A: Verkehrsüberlastung",
     "description": "Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1050,12 +1066,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37: Fahrtbehinderung Falschparker",
+    "title": "37: Falschparker",
     "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f",
     "pubDate": "2026-11-18T16:39:00+01:00",
-    "starts_at": "2026-11-18T16:42:11+01:00",
+    "starts_at": "2026-11-18T16:39:00+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=37|D=2026-11-18|TK=falschparker",
     "_wl_ids": [
