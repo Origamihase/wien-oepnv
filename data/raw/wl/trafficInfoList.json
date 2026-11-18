@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261118-0034-F01, I20261118-0034-F02, I20261118-0041, I20261118-0043, I20260925-0011, I20261118-0039-F01, I20260909-0007, I20261020-0029, I20261118-0040, I20261118-0042-F01"
+    "trafficInfoNameList": "I20261118-0034-F01, I20261118-0034-F02, I20261118-0041, I20261118-0043, I20261118-0048, I20260925-0011, I20261118-0039-F01, I20260909-0007, I20261118-0046, I20261118-0045-F01, I20261020-0029, I20261118-0040, I20261118-0042-F01, I20261118-0044-F01, I20261118-0047"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1880-101, R318-437, R293-474, R1884-101, R1883-101, R1882-101, R1881-101, R1876-101, R1875-101, R3886-480, R2558-125, R2373-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2359-125, R2370-125, R2378-627, R2371-125, R2372-125, R2343-125, R2343-626, R1974-466, R1199-205, R500-101, R47-0, R17-0, R201-137, R207-137, R203-137, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R293-474, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R318-437, R2558-125, R3886-480, R2370-125, R2343-626, R2359-125, R2371-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-125, R2378-627, R2343-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R203-137, R207-137, R201-137, R2177-127, R2178-127, R2175-127, R2176-127, R2179-127, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -490,6 +490,235 @@
     "title": "16A: Verkehrsüberlastung"
    },
    {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U6: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261118-0044-F01",
+    "owner": "WL",
+    "parentName": "I20261118-0044",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4621
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-18T17:09:00.000+0100",
+     "lastUpdate": "2026-11-18T17:09:00.000+0100",
+     "resume": "2026-11-18T17:09:00.000+0100",
+     "start": "2026-11-18T17:01:00.000+0100"
+    },
+    "title": "U6: Rettungseinsatz"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "27": "ptTram"
+     }
+    },
+    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 27: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 27: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "27: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Prager Straße",
+    "name": "I20261118-0045-F01",
+    "owner": "WL",
+    "parentName": "I20261118-0045",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 127,
+      "lineName": "27",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-18T17:21:00.000+0100",
+     "lastUpdate": "2026-11-18T17:21:00.000+0100",
+     "resume": "2026-11-18T17:21:00.000+0100",
+     "start": "2026-11-18T17:10:00.000+0100"
+    },
+    "title": "27: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "10A": "ptBusCity"
+     }
+    },
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "10A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261118-0046",
+    "owner": "WL",
+    "parentName": "I20261118-0046",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 410,
+      "lineName": "10A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-18T17:14:00.000+0100",
+     "lastUpdate": "2026-11-18T17:14:00.000+0100",
+     "resume": "2026-11-18T17:14:00.000+0100",
+     "start": "2026-11-18T17:14:00.000+0100"
+    },
+    "title": "10A: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "11A": "ptBusCity"
+     }
+    },
+    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 11A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 11A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "11A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261118-0047",
+    "owner": "WL",
+    "parentName": "I20261118-0047",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 411,
+      "lineName": "11A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-18T17:15:00.000+0100",
+     "lastUpdate": "2026-11-18T17:15:00.000+0100",
+     "resume": "2026-11-18T17:14:00.000+0100",
+     "start": "2026-11-18T17:14:00.000+0100"
+    },
+    "title": "11A: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "14A": "ptBusCity"
+     }
+    },
+    "description": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "14A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261118-0048",
+    "owner": "WL",
+    "parentName": "I20261118-0048",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "14A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 414,
+      "lineName": "14A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-18T17:15:00.000+0100",
+     "lastUpdate": "2026-11-18T17:15:00.000+0100",
+     "resume": "2026-11-18T17:15:00.000+0100",
+     "start": "2026-11-18T17:15:00.000+0100"
+    },
+    "title": "14A: Verkehrsüberlastung"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -784,6 +1013,121 @@
      "start": "2026-11-18T16:42:11.000+0100"
     },
     "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R2175-127",
+    "owner": "WL",
+    "parentName": "R2175-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2175
+    ],
+    "time": {
+     "end": "2026-11-18T18:10:00.000+0100",
+     "start": "2026-11-18T17:11:17.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R2176-127",
+    "owner": "WL",
+    "parentName": "R2176-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2176
+    ],
+    "time": {
+     "end": "2026-11-18T18:10:00.000+0100",
+     "start": "2026-11-18T17:11:17.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R2177-127",
+    "owner": "WL",
+    "parentName": "R2177-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2177
+    ],
+    "time": {
+     "end": "2026-11-18T18:10:00.000+0100",
+     "start": "2026-11-18T17:11:17.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R2178-127",
+    "owner": "WL",
+    "parentName": "R2178-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2178
+    ],
+    "time": {
+     "end": "2026-11-18T18:10:00.000+0100",
+     "start": "2026-11-18T17:11:17.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R2179-127",
+    "owner": "WL",
+    "parentName": "R2179-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2179
+    ],
+    "time": {
+     "end": "2026-11-18T18:18:00.000+0100",
+     "start": "2026-11-18T17:18:18.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
