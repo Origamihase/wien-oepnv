@@ -3,6 +3,22 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
+  "R1348-143|2026-11-18T07:35:50.000+0100": {
+   "incident": "I20261118-0006",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1349-143|2026-11-18T07:35:50.000+0100": {
+   "incident": "I20261118-0006",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1350-143|2026-11-18T07:35:50.000+0100": {
+   "incident": "I20261118-0006",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1351-143|2026-11-18T07:35:50.000+0100": {
+   "incident": "I20261118-0006",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
   "R2209-130|2026-11-18T07:21:19.000+0100": {
    "incident": "I20261118-0005",
    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -62,6 +78,10 @@
   "R2227-131|2026-11-18T07:21:49.000+0100": {
    "incident": "I20261118-0005",
    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R224-143|2026-11-18T07:35:50.000+0100": {
+   "incident": "I20261118-0006",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
   },
   "R84-130|2026-11-18T07:19:18.000+0100": {
    "incident": "I20261118-0005",

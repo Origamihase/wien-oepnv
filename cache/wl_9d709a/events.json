@@ -650,22 +650,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "15A: Rettungseinsatz",
-    "description": "Linie 15A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "bc65efc0eaddbdf7e05327a802d1b0275625e76f2f1601244d8cb88fec910412",
-    "pubDate": "2026-11-18T05:53:00+01:00",
-    "starts_at": "2026-11-18T05:53:00+01:00",
-    "ends_at": "2026-11-18T07:52:00+01:00",
-    "_identity": "wl|störung|L=15A|D=2026-11-18|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261118-0002"
-    ],
-    "_incident_start": "2026-11-18T05:53:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -674,6 +658,22 @@
     "starts_at": "2026-07-13T14:07:00+02:00",
     "ends_at": "2026-12-31T14:07:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-07-13|TK=haltestelle stadionbrücke im rahmen des strassenbahn neubaus der linie 18 aufgelassen bitte auf nahegelegene haltestellen ausweichen"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1A: Bauarbeiten",
+    "description": "Linie 1A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Bauarbeiten.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "c573f0d37d7649daa58ecc5d6cb89a20808a5afcae98b749d180c984f54d9c1f",
+    "pubDate": "2026-11-18T07:53:00+01:00",
+    "starts_at": "2026-11-18T07:53:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=1A|D=2026-11-18|TK=1a bauarbeiten",
+    "_wl_ids": [
+      "I20261118-0007"
+    ],
+    "_incident_start": "2026-11-18T07:53:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -934,6 +934,22 @@
       "I20261118-0004"
     ],
     "_incident_start": "2026-11-18T07:10:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43: Fahrtbehinderung wegen Polizeieinsatz",
+    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "988c80ab109007f5051aff806aa861e0141853ffcc393ab7f2657dc9a31b4cd0",
+    "pubDate": "2026-11-18T07:35:00+01:00",
+    "starts_at": "2026-11-18T07:35:50+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=43|D=2026-11-18|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261118-0006"
+    ],
+    "_incident_start": "2026-11-18T07:35:00+01:00"
   },
   {
     "source": "Wiener Linien",
