@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261118-0018, I20261118-0017-F01, I20261118-0019-F01, I20261118-0012, I20261020-0029, I20261118-0011"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261118-0018, I20261118-0017-F01, I20261118-0019-F01, I20261020-0029, I20261118-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R293-474, R318-437, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R2558-125, R3886-480, R2345-127, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2378-627, R2343-125, R2343-626, R1974-466, R1199-205, R500-101, R1634-162, R1744-162, R1735-162, R1743-162, R1738-162, R1737-162, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R293-474, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R318-437, R2558-125, R3886-480, R2373-126, R2379-627, R2380-627, R2345-127, R2373-125, R2373-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R1974-466, R1199-205, R500-101, R1634-162, R1744-162, R1743-162, R1735-162, R1737-162, R1738-162, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -214,52 +214,6 @@
      "start": "2026-11-18T08:05:00.000+0100"
     },
     "title": "O: Verkehrsüberlastung"
-   },
-   {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
-      "12A": "ptBusCity"
-     }
-    },
-    "description": "Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie 12A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 12A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "12A: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261118-0012",
-    "owner": "WL",
-    "parentName": "I20261118-0012",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "12A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 412,
-      "lineName": "12A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-18T08:05:00.000+0100",
-     "end": "2026-11-18T09:28:00.000+0100",
-     "lastUpdate": "2026-11-18T09:28:00.000+0100",
-     "resume": "2026-11-18T08:05:00.000+0100",
-     "start": "2026-11-18T08:05:00.000+0100"
-    },
-    "title": "12A: Verkehrsüberlastung"
    },
    {
     "alertCause": "emergency medical services",
