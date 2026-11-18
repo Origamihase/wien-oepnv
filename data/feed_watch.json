@@ -1,13 +1,21 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-18T15:30:55.793479+00:00",
- "built": "2026-11-18T16:30:45+01:00",
+ "updated": "2026-11-18T16:01:00.165822+00:00",
+ "built": "2026-11-18T17:00:45+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-18T16:30:45+01:00",
+  "built": "2026-11-18T17:00:45+01:00",
   "items": [
+   {
+    "title": "16A: Verkehrsüberlastung",
+    "time_line": "Seit 16:51"
+   },
+   {
+    "title": "37: Falschparker",
+    "time_line": "Seit 16:39"
+   },
    {
     "title": "4A/22A: Verkehrsüberlastung",
     "time_line": "Seit 16:18"
@@ -15,14 +23,6 @@
    {
     "title": "71: Verkehrsunfall",
     "time_line": "Seit 15:45"
-   },
-   {
-    "title": "5/9: Rettungseinsatz",
-    "time_line": "Seit 15:36"
-   },
-   {
-    "title": "48A: Feuerwehreinsatz",
-    "time_line": "Seit 14:55"
    },
    {
     "title": "1/O: Falschparker",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-11T15:30:57.426079+00:00",
-   "raw": {
-    "wl-stoerungen": 39,
-    "wl-hinweise": 90,
-    "oebb": 192,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 21,
-    "oebb": 167,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 6,
-    "wl": 85
-   }
-  },
   {
    "t": "2026-11-11T16:01:03.348631+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 10,
     "wl": 92
    }
+  },
+  {
+   "t": "2026-11-18T16:01:00.165822+00:00",
+   "raw": {
+    "wl-stoerungen": 48,
+    "wl-hinweise": 90,
+    "oebb": 172,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 148,
+    "baustellen": 60
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 10,
+    "wl": 90
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-18T15:30:55.793479+00:00"
+   "last_ok": "2026-11-18T16:01:00.165822+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-18T15:30:55.793479+00:00"
+   "last_ok": "2026-11-18T16:01:00.165822+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-18T15:30:55.793479+00:00"
+   "last_ok": "2026-11-18T16:01:00.165822+00:00"
   }
  }
 }
