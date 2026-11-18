@@ -1,28 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-18T09:30:48.336658+00:00",
- "built": "2026-11-18T10:30:35+01:00",
+ "updated": "2026-11-18T10:00:54.369951+00:00",
+ "built": "2026-11-18T11:00:39+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-18T10:30:35+01:00",
+  "built": "2026-11-18T11:00:39+01:00",
   "items": [
+   {
+    "title": "13A: Rettungseinsatz",
+    "time_line": "Seit 10:51"
+   },
    {
     "title": "60A: Fremder Verkehrsunfall",
     "time_line": "Seit 10:21"
-   },
-   {
-    "title": "32A: Feuerwehreinsatz",
-    "time_line": "Seit 09:09"
-   },
-   {
-    "title": "62: Rettungseinsatz",
-    "time_line": "Seit 08:57"
-   },
-   {
-    "title": "O: Verkehrsüberlastung",
-    "time_line": "Seit 08:03"
    },
    {
     "title": "N71: Bauarbeiten",
@@ -47,6 +39,14 @@
    {
     "title": "5A/N31: Obere Augartenstraße",
     "time_line": "Bis 11.12."
+   },
+   {
+    "title": "74A: Rabengasse",
+    "time_line": "Seit 16.11."
+   },
+   {
+    "title": "98A: Arztgasse",
+    "time_line": "Seit 16.11."
    }
   ]
  },
@@ -6751,17 +6751,37 @@
     "oebb": 7,
     "wl": 83
    }
+  },
+  {
+   "t": "2026-11-18T10:00:54.369951+00:00",
+   "raw": {
+    "wl-stoerungen": 39,
+    "wl-hinweise": 86,
+    "oebb": 171,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 23,
+    "oebb": 150,
+    "baustellen": 60
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 81
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-18T09:30:48.336658+00:00"
+   "last_ok": "2026-11-18T10:00:54.369951+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-18T09:30:48.336658+00:00"
+   "last_ok": "2026-11-18T10:00:54.369951+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-18T09:30:48.336658+00:00"
+   "last_ok": "2026-11-18T10:00:54.369951+00:00"
   }
  }
 }

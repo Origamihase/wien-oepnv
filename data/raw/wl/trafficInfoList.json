@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261118-0017-F01, I20261118-0019-F01, I20261118-0020, I20261020-0029, I20261118-0011"
+    "trafficInfoNameList": "I20261118-0021, I20261118-0020-F01, I20260925-0011, I20260909-0007, I20261118-0011, I20261020-0029"
    },
    {
     "id": 3,
@@ -206,108 +206,15 @@
       "vehicleType": "ptTram"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-18T08:05:00.000+0100",
-     "lastUpdate": "2026-11-18T08:05:00.000+0100",
+     "end": "2026-11-18T10:59:00.000+0100",
+     "lastUpdate": "2026-11-18T10:59:00.000+0100",
      "resume": "2026-11-18T08:05:00.000+0100",
      "start": "2026-11-18T08:05:00.000+0100"
     },
     "title": "O: Verkehrsüberlastung"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "62": "ptTram"
-     }
-    },
-    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "62: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261118-0017-F01",
-    "owner": "WL",
-    "parentName": "I20261118-0017",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 162,
-      "lineName": "62",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     1732
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-18T09:08:00.000+0100",
-     "lastUpdate": "2026-11-18T09:08:00.000+0100",
-     "resume": "2026-11-18T09:08:00.000+0100",
-     "start": "2026-11-18T08:57:00.000+0100"
-    },
-    "title": "62: Rettungseinsatz"
-   },
-   {
-    "alertCause": "fire",
-    "alertCauseId": 5,
-    "attributes": {
-     "relatedLineTypes": {
-      "32A": "ptBusCity"
-     }
-    },
-    "description": "Linie 32A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 32A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 32A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 32A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "32A: Feuerwehreinsatz"
-      }
-     }
-    ],
-    "location": "Scheydgasse",
-    "name": "I20261118-0019-F01",
-    "owner": "WL",
-    "parentName": "I20261118-0019",
-    "priority": "1",
-    "reasonId": 11,
-    "reasonName": "Feuerwehreinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "32A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 432,
-      "lineName": "32A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-18T09:12:00.000+0100",
-     "lastUpdate": "2026-11-18T09:12:00.000+0100",
-     "resume": "2026-11-18T09:12:00.000+0100",
-     "start": "2026-11-18T09:09:00.000+0100"
-    },
-    "title": "32A: Feuerwehreinsatz"
    },
    {
     "alertCause": "accident",
@@ -317,19 +224,19 @@
       "60A": "ptBusCity"
      }
     },
-    "description": "Die Linie 60A wird in beiden Richtungen zwischen Maurer Hauptplatz und Am Spiegeln über Speisinger Straße und Franz-Graßler-Gasse umgeleitet. Voraussichtliche Dauer: 11:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Endresstraße.",
-    "descriptionHTML": "<p>Die Linie 60A wird in beiden Richtungen zwischen Maurer Hauptplatz und Am Spiegeln über Speisinger Straße und Franz-Graßler-Gasse umgeleitet.</p><p>Voraussichtliche Dauer: 11:00 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Endresstraße.</p>",
+    "description": "Linie 60A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 60A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Die Linie 60A wird in beiden Richtungen zwischen Maurer Hauptplatz und Am Spiegeln über Speisinger Straße und Franz-Graßler-Gasse umgeleitet.</p><p>Voraussichtliche Dauer: 11:00 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Endresstraße.</p>",
-       "descriptionPlain": "Die Linie 60A wird in beiden Richtungen zwischen Maurer Hauptplatz und Am Spiegeln über Speisinger Straße und Franz-Graßler-Gasse umgeleitet. Voraussichtliche Dauer: 11:00 Uhr. Grund: Fremder Verkehrsunfall im Bereich Endresstraße.",
+       "descriptionHtml": "<p>Linie 60A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 60A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "60A: Fremder Verkehrsunfall"
       }
      }
     ],
     "location": "Endresstraße",
-    "name": "I20261118-0020",
+    "name": "I20261118-0020-F01",
     "owner": "WL",
     "parentName": "I20261118-0020",
     "priority": "1",
@@ -348,11 +255,57 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-18T10:24:00.000+0100",
-     "lastUpdate": "2026-11-18T10:29:00.000+0100",
+     "created": "2026-11-18T10:54:00.000+0100",
+     "lastUpdate": "2026-11-18T10:54:00.000+0100",
+     "resume": "2026-11-18T10:54:00.000+0100",
      "start": "2026-11-18T10:21:00.000+0100"
     },
     "title": "60A: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "13A": "ptBusCity"
+     }
+    },
+    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 13A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 13A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "13A: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261118-0021",
+    "owner": "WL",
+    "parentName": "I20261118-0021",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 413,
+      "lineName": "13A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-18T10:51:00.000+0100",
+     "lastUpdate": "2026-11-18T10:51:00.000+0100",
+     "resume": "2026-11-18T10:51:00.000+0100",
+     "start": "2026-11-18T10:51:00.000+0100"
+    },
+    "title": "13A: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
