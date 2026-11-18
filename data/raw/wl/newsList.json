@@ -2513,13 +2513,13 @@
    {
     "alertCause": "construction work",
     "alertCauseId": 45,
-    "description": "<h2>Bauarbeiten</h2><p>Wegen Straßenbauarbeiten in der Schloßhofer Straße  wird die Linie N31 umgeleitet.</p><p><strong><u>Zeitraum:</u></strong><br>Ab Mittwoch, 18. November 2026, etwa 01:00 Uhr bis 19. November etwa 05.00 Uhr</p><p><strong><u>Maßnahmen:</u></strong><br><strong>Linie N31 in Richtung Stammersdorf:</strong><br>Umleitung ab Schloßhofer Straße # Brünner Straße über Am Spitz, Prager Straße, Hermann-Bahr-Straße und Brünner Straße.</p><p>Alle Haltestellen werden eingehalten.</p>",
+    "description": "<h2>Bauarbeiten</h2><p>Wegen Straßenbauarbeiten in der Schloßhofer Straße  wird die Linie N31 umgeleitet.</p><p><strong><u>Zeitraum:</u></strong><br>Ab Mittwoch, 18. November 2026, etwa 01:00 Uhr bis 19. November etwa 01:00 Uhr</p><p><strong><u>Maßnahmen:</u></strong><br><strong>Linie N31 in Richtung Stammersdorf:</strong><br>Umleitung ab Schloßhofer Straße # Brünner Straße über Am Spitz, Prager Straße, Hermann-Bahr-Straße und Brünner Straße.</p><p>Alle Haltestellen werden eingehalten.</p>",
     "id": "N20261111-0006",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<h2>Bauarbeiten</h2><p>Wegen Straßenbauarbeiten in der Schloßhofer Straße  wird die Linie N31 umgeleitet.</p><p><strong><u>Zeitraum:</u></strong><br>Ab Mittwoch, 18. November 2026, etwa 01:00 Uhr bis 19. November etwa 05.00 Uhr</p><p><strong><u>Maßnahmen:</u></strong><br><strong>Linie N31 in Richtung Stammersdorf:</strong><br>Umleitung ab Schloßhofer Straße # Brünner Straße über Am Spitz, Prager Straße, Hermann-Bahr-Straße und Brünner Straße.</p><p>Alle Haltestellen werden eingehalten.</p>",
-       "descriptionPlain": "BauarbeitenWegen Straßenbauarbeiten in der Schloßhofer Straße wird die Linie N31 umgeleitet. Zeitraum: Ab Mittwoch, 18. November 2026, etwa 01:00 Uhr bis 19. November etwa 05.00 Uhr Maßnahmen: Linie N31 in Richtung Stammersdorf: Umleitung ab Schloßhofer Straße # Brünner Straße über Am Spitz, Prager Straße, Hermann-Bahr-Straße und Brünner Straße. Alle Haltestellen werden eingehalten.",
+       "descriptionHtml": "<h2>Bauarbeiten</h2><p>Wegen Straßenbauarbeiten in der Schloßhofer Straße  wird die Linie N31 umgeleitet.</p><p><strong><u>Zeitraum:</u></strong><br>Ab Mittwoch, 18. November 2026, etwa 01:00 Uhr bis 19. November etwa 01:00 Uhr</p><p><strong><u>Maßnahmen:</u></strong><br><strong>Linie N31 in Richtung Stammersdorf:</strong><br>Umleitung ab Schloßhofer Straße # Brünner Straße über Am Spitz, Prager Straße, Hermann-Bahr-Straße und Brünner Straße.</p><p>Alle Haltestellen werden eingehalten.</p>",
+       "descriptionPlain": "BauarbeitenWegen Straßenbauarbeiten in der Schloßhofer Straße wird die Linie N31 umgeleitet. Zeitraum: Ab Mittwoch, 18. November 2026, etwa 01:00 Uhr bis 19. November etwa 01:00 Uhr Maßnahmen: Linie N31 in Richtung Stammersdorf: Umleitung ab Schloßhofer Straße # Brünner Straße über Am Spitz, Prager Straße, Hermann-Bahr-Straße und Brünner Straße. Alle Haltestellen werden eingehalten.",
        "title": "N31: Bauarbeiten"
       }
      }
@@ -2547,7 +2547,7 @@
      }
     ],
     "time": {
-     "end": "2026-11-19T05:00:00.000+0100",
+     "end": "2026-11-19T01:00:00.000+0100",
      "start": "2026-11-11T16:04:00.000+0100",
      "validFrom": "2026-11-11T16:04:00.000+0100"
     },
