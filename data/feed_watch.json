@@ -1,24 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-18T07:31:08.375365+00:00",
- "built": "2026-11-18T08:30:57+01:00",
+ "updated": "2026-11-18T08:00:58.118804+00:00",
+ "built": "2026-11-18T09:00:45+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-18T08:30:57+01:00",
+  "built": "2026-11-18T09:00:45+01:00",
   "items": [
    {
     "title": "O/12A/16A/60A/63A/73A/74A/7B: Verkehrsüberlastung",
     "time_line": "Seit 08:03"
    },
    {
-    "title": "43: Polizeieinsatz",
-    "time_line": "Seit 07:35"
-   },
-   {
     "title": "30/31: Rettungseinsatz",
-    "time_line": "Seit 07:17"
+    "time_line": "Seit 07:25"
    },
    {
     "title": "N71: Bauarbeiten",
@@ -47,31 +43,15 @@
    {
     "title": "74A: Rabengasse",
     "time_line": "Seit 16.11."
+   },
+   {
+    "title": "98A: Arztgasse",
+    "time_line": "Seit 16.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-11T08:00:46.077138+00:00",
-   "raw": {
-    "wl-stoerungen": 46,
-    "wl-hinweise": 84,
-    "oebb": 195,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 21,
-    "oebb": 172,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 5,
-    "wl": 82
-   }
-  },
   {
    "t": "2026-11-11T08:30:56.789879+00:00",
    "raw": {
@@ -6751,17 +6731,37 @@
     "oebb": 7,
     "wl": 89
    }
+  },
+  {
+   "t": "2026-11-18T08:00:58.118804+00:00",
+   "raw": {
+    "wl-stoerungen": 60,
+    "wl-hinweise": 86,
+    "oebb": 173,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 22,
+    "oebb": 152,
+    "baustellen": 60
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 7,
+    "wl": 89
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-18T07:31:08.375365+00:00"
+   "last_ok": "2026-11-18T08:00:58.118804+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-18T07:31:08.375365+00:00"
+   "last_ok": "2026-11-18T08:00:58.118804+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-18T07:31:08.375365+00:00"
+   "last_ok": "2026-11-18T08:00:58.118804+00:00"
   }
  }
 }
