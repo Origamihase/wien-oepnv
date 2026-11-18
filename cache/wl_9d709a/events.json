@@ -790,6 +790,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "22A: Verkehrsüberlastung",
+    "description": "Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "058b4c8d1bcd5de597f6cab7230653901d4005a4a0eeb390c31a784c8b083aea",
+    "pubDate": "2026-11-18T16:19:00+01:00",
+    "starts_at": "2026-11-18T16:19:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=22A|D=2026-11-18|TK=22a verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261118-0041"
+    ],
+    "_incident_start": "2026-11-18T16:19:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "25/26/27: Gleisbauarbeiten",
     "description": "Linie 25: Betrieb nur zwischen Aspern, Oberdorfstraße und Josef-Baumann-Gasse. Weiterfahrt über Linie 27 bis Aspern Nord S U. Linie 26: Betrieb nur zwischen Hausfeldstraße U und Josef-Baumann-Gasse. Weiterfahrt nach Kagran U. Linie 27: Betrieb nur zwischen Strebersdorf, Meriangasse und Floridsdorf S U. Weichen Sie daher nach Möglichkeit großräumig auf die U1 und S-Bahn über Leopoldau S U oder Praterstern S U aus. Zwischen Kagraner Platz U und Floridsdorf S U können Sie auch auf die Linien 31A und anschließend 29A/29B oder 31A und S-Bahn ausweichen. Zwischen Kagran U und Floridsdorf S U können Sie auch auf die Linien 27A und anschließend 29A/29B ausweichen. Zwischen Floridsdorf S U und Josef-Baumann-Gasse fährt der Ersatzbus 26E. Beachten Sie, der 26E hat nicht die gleichen Kapazitäten wie eine Straßenbahn. Voraussichtliche Dauer: Ende 2026. Grund: Gleisbauarbeiten im Bereich Donaufelder Straße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -942,11 +958,11 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "48A: Fahrtbehinderung wegen Feuerwehreinsatz",
+    "title": "48A: Feuerwehreinsatz",
     "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Feuerwehreinsatz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "2e0a6e14222b22b6398037a69dc9cc2840b751d87dc878574b3e2f29e488d399",
-    "pubDate": "2026-11-18T14:55:34+01:00",
+    "pubDate": "2026-11-18T15:08:00+01:00",
     "starts_at": "2026-11-18T15:08:00+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=48A|D=2026-11-18|TK=feuerwehreinsatz",
@@ -954,6 +970,22 @@
       "I20261118-0036"
     ],
     "_incident_start": "2026-11-18T15:08:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "4A: Verkehrsüberlastung",
+    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "c56de491edf41d83da857f489a91726653fbe3100222ed7e7ce91bebf0b5453c",
+    "pubDate": "2026-11-18T16:18:00+01:00",
+    "starts_at": "2026-11-18T16:18:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=4A|D=2026-11-18|TK=4a verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261118-0040"
+    ],
+    "_incident_start": "2026-11-18T16:18:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -982,22 +1014,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62: Rettungseinsatz",
-    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "73e6763bf77433e60999e908b2301cf330fc6c42a4bd56f8c86bbd49ca14a12d",
-    "pubDate": "2026-11-18T14:26:00+01:00",
-    "starts_at": "2026-11-18T14:26:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=62|D=2026-11-18|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261118-0030"
-    ],
-    "_incident_start": "2026-11-18T14:26:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1011,7 +1027,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "71: Verkehrsunfall",
-    "description": "Linie 71: Fahrtbehinderung in Richtung Kaiserebersdorf, Zinnergasse. Voraussichtliche Dauer: 16:10 Uhr. Grund: Verkehrsunfall im Bereich Rennweg.",
+    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "2caeb4baf3b29e0e30d9eeefd3e4438d2d58294d03eb90f5e10bc6f2d98754f7",
     "pubDate": "2026-11-18T15:45:00+01:00",
@@ -1022,6 +1038,18 @@
       "I20261118-0039"
     ],
     "_incident_start": "2026-11-18T15:45:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "12c122fd59c34caf7f02ba0225ce436dc57cac19067265e4e00cf01131a3ccaf",
+    "pubDate": "2026-11-18T15:46:09+01:00",
+    "starts_at": "2026-11-18T15:59:40+01:00",
+    "ends_at": "2026-11-18T16:59:00+01:00",
+    "_identity": "wl|störung|L=71|D=2026-11-18|TK=fahrtbehinderung verkehrsunfall"
   },
   {
     "source": "Wiener Linien",
@@ -1074,38 +1102,6 @@
       "I20261118-0034"
     ],
     "_incident_start": "2026-11-18T14:52:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Schadhaftes Fahrzeug",
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
-    "pubDate": "2026-11-18T14:52:00+01:00",
-    "starts_at": "2026-11-18T14:52:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U4|D=2026-11-18|TK=u4 schadhaftes fahrzeug",
-    "_wl_ids": [
-      "I20261118-0033"
-    ],
-    "_incident_start": "2026-11-18T14:52:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Verspätungen",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
-    "pubDate": "2026-11-18T15:41:00+01:00",
-    "starts_at": "2026-11-18T15:41:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U6|D=2026-11-18|TK=u6 verspätungen",
-    "_wl_ids": [
-      "I20261118-0038"
-    ],
-    "_incident_start": "2026-11-18T15:41:00+01:00"
   },
   {
     "source": "Wiener Linien",
