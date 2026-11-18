@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261118-0001, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261118-0001-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R293-474, R318-437, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R3886-480, R2558-125, R2378-627, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R500-101, R2034-571, R2024-571, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R2371-520, R1640-508, R500-508, R1842-508, R2372-520, R2378-520, R2379-520, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R293-474, R318-437, R1884-101, R1883-101, R1875-101, R1880-101, R1876-101, R1882-101, R1881-101, R2558-125, R3886-480, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R500-101, R2034-571, R2024-571, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R2371-520, R1640-508, R500-508, R1842-508, R2372-520, R2379-520, R2378-520, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -178,18 +178,18 @@
       "N8": "ptBusNight"
      }
     },
-    "description": "Linie N8: Fahrtbehinderung in Richtung Alterlaa U. Voraussichtliche Dauer: 01:30 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Josefstädter Straße.",
-    "descriptionHTML": "<p>Linie N8:<br>Fahrtbehinderung in Richtung Alterlaa U.</p><p>Voraussichtliche Dauer: 01:30 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Josefstädter Straße.</p>",
+    "description": "Linie N8: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie N8: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie N8:<br>Fahrtbehinderung in Richtung Alterlaa U.</p><p>Voraussichtliche Dauer: 01:30 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Josefstädter Straße.</p>",
-       "descriptionPlain": "Linie N8: Fahrtbehinderung in Richtung Alterlaa U. Voraussichtliche Dauer: 01:30 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Josefstädter Straße.",
+       "descriptionHtml": "<p>Linie N8: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie N8: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "N8: Polizeieinsatz"
       }
      }
     ],
-    "name": "I20261118-0001",
+    "name": "I20261118-0001-F01",
     "owner": "WL",
     "parentName": "I20261118-0001",
     "priority": "1",
@@ -211,8 +211,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-18T01:13:00.000+0100",
-     "lastUpdate": "2026-11-18T01:13:00.000+0100",
+     "created": "2026-11-18T01:32:00.000+0100",
+     "lastUpdate": "2026-11-18T01:32:00.000+0100",
+     "resume": "2026-11-18T01:32:00.000+0100",
      "start": "2026-11-18T01:13:00.000+0100"
     },
     "title": "N8: Polizeieinsatz"
@@ -243,7 +244,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
+    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A",
     "name": "R1718-508",
     "owner": "WL",
     "parentName": "R1718-508",
@@ -258,10 +259,10 @@
      1718
     ],
     "time": {
-     "end": "2026-11-18T02:12:00.000+0100",
+     "end": "2026-11-18T04:45:00.000+0100",
      "start": "2026-11-18T00:45:22.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A"
    },
    {
     "alertCause": "undefined alert cause",

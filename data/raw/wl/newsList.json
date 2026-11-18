@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_5, ftazW_603, ftazW_209, ftazW_1017121, ftazW_19, ftazW_41, ftazW_16, ftazW_606, ftazW_1018092, ftazW_42, ftazW_1018049, ftazW_210, ftazW_1017123, ftazW_352, ftazW_1018058, ftazW_572, ftazW_476, ftazW_281, ftazW_1354338, ftazW_353, ftazW_282, ftazW_573, ftazW_477, ftazW_1354339, ftazW_1354337"
+    "trafficInfoNameList": "ftazW_5, ftazW_603, ftazW_209, ftazW_1017121, ftazW_19, ftazW_41, ftazW_16, ftazW_606, ftazW_1018092, ftazW_42, ftazW_1018049, ftazW_210, ftazW_1017123, ftazW_1018058, ftazW_572, ftazW_476, ftazW_281, ftazW_1354338, ftazW_353, ftazW_282, ftazW_573, ftazW_477, ftazW_1354339, ftazW_1354337"
    }
   ],
   "poiCategoryGroups": [
@@ -3326,38 +3326,6 @@
      "start": "2026-11-20T01:15:00.000+0100"
     },
     "title": "Währinger Straße-Volksoper"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "20.11.2026 00:45",
-     "ausVon": "19.11.2026 20:45",
-     "location": "Zwischengeschoss - Ausgang Neubaugasse",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Neubaugasse",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Zwischengeschoss - Ausgang Neubaugasse",
-    "elevatorId": "MA 01",
-    "name": "ftazW_352",
-    "parentName": "ftazW_352",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "time": {
-     "end": "2026-11-20T00:45:00.000+0100",
-     "start": "2026-11-19T20:45:00.000+0100"
-    },
-    "title": "Neubaugasse"
    },
    {
     "alertCause": "undefined alert cause",
