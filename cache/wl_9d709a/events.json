@@ -854,22 +854,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2/74A: Polizeieinsatz",
-    "description": "Linie 2: Umleitung in Richtung Dornbach zwischen Marienbrücke und Parlament, U Volkstheater über Schottenring. Haltestellen: Parlament, U Volkstheater: Einstiegstelle direkt vor dem Parlament. Linie 74A: Betrieb nur zwischen St. Marx S und Landstraße S U. Ersatz: Linien U1 und U3. Voraussichtliche Dauer: 18:10 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Stubentor U.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "d4e678ca638a3f2c6949047d9fbbe77b8ab7c7edf412fac38eb21701d68f8a0d",
-    "pubDate": "2026-11-18T17:33:00+01:00",
-    "starts_at": "2026-11-18T17:33:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=2,74A|D=2026-11-18|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261118-0049"
-    ],
-    "_incident_start": "2026-11-18T17:33:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "22A: Verkehrsüberlastung",
     "description": "Linie 22A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1002,34 +986,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "27: Fremder Verkehrsunfall",
-    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "9d69502e4ce35704998fd599963cc784e2209d0871e3b4cf191210220509b047",
-    "pubDate": "2026-11-18T17:10:00+01:00",
-    "starts_at": "2026-11-18T17:10:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=27|D=2026-11-18|TK=27 fremder verkehrsunfall",
-    "_wl_ids": [
-      "I20261118-0045"
-    ],
-    "_incident_start": "2026-11-18T17:10:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "27: Fahrtbehinderung Fremder Verkehrsunfall",
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "695554e1ca4c72c4d873e3af8ea608b715060f41524ad27dcd38573cb384c8a4",
-    "pubDate": "2026-11-18T17:11:17+01:00",
-    "starts_at": "2026-11-18T17:18:18+01:00",
-    "ends_at": "2026-11-18T18:18:00+01:00",
-    "_identity": "wl|störung|L=27|D=2026-11-18|TK=fahrtbehinderung fremder verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "27: Linie 25 in Tokiostraße benützen",
     "description": "Linie 25 in\nTokiostraße benützen",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1054,6 +1010,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Polizeieinsatz Betrieb ab Rathaus",
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "0a8aa8f7231d98faa38de820cfb27484955a1529c285e8a8472318b330368561",
+    "pubDate": "2026-11-18T17:33:00+01:00",
+    "starts_at": "2026-11-18T17:44:49+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=2|D=2026-11-18|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261118-0049"
+    ],
+    "_incident_start": "2026-11-18T17:33:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1066,38 +1038,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37: Falschparker",
-    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f",
-    "pubDate": "2026-11-18T16:39:00+01:00",
-    "starts_at": "2026-11-18T16:39:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=37|D=2026-11-18|TK=falschparker",
-    "_wl_ids": [
-      "I20261118-0042"
-    ],
-    "_incident_start": "2026-11-18T16:39:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "4A: Verkehrsüberlastung",
-    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "c56de491edf41d83da857f489a91726653fbe3100222ed7e7ce91bebf0b5453c",
-    "pubDate": "2026-11-18T16:18:00+01:00",
-    "starts_at": "2026-11-18T16:18:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=4A|D=2026-11-18|TK=4a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261118-0040"
-    ],
-    "_incident_start": "2026-11-18T16:18:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1106,6 +1046,18 @@
     "starts_at": "2026-11-18T04:45:04+01:00",
     "ends_at": "2026-11-18T23:59:59+01:00",
     "_identity": "wl|störung|L=5B|D=2026-11-18|TK=busse halten pappenheimgasse 24 28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "0c6fac2a8f34464f42aa5982eb08b79eef732903ec1dc89348c10739df0b8093",
+    "pubDate": "2026-11-18T18:29:22+01:00",
+    "starts_at": "2026-11-18T18:29:26+01:00",
+    "ends_at": "2026-11-18T19:28:00+01:00",
+    "_identity": "wl|störung|L=60|D=2026-11-18|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
@@ -1150,6 +1102,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "74A: Polizeieinsatz Betrieb ab Landstraße",
+    "description": "Linie 74A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "d3f78298c0cf7e3adb13e441ed10aff7e1e8b83ad2eeba7885e3b92a6ad6bd69",
+    "pubDate": "2026-11-18T17:33:00+01:00",
+    "starts_at": "2026-11-18T17:43:21+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=74A|D=2026-11-18|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261118-0049"
+    ],
+    "_incident_start": "2026-11-18T17:33:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "80A: Betrieb ab Vivariumstraße 2",
     "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1174,6 +1142,22 @@
       "I20261118-0034"
     ],
     "_incident_start": "2026-11-18T14:52:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Betriebsstörung",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a",
+    "pubDate": "2026-11-18T18:13:00+01:00",
+    "starts_at": "2026-11-18T18:13:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U1|D=2026-11-18|TK=u1 betriebsstörung",
+    "_wl_ids": [
+      "I20261118-0050"
+    ],
+    "_incident_start": "2026-11-18T18:13:00+01:00"
   },
   {
     "source": "Wiener Linien",
