@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261117-0052-F01, I20260925-0011, I20260909-0007, I20261117-0031, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1974-466, R49-102, R318-437, R1884-101, R293-474, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R2558-125, R3886-480, R2380-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2345-127, R500-101, R2034-571, R2024-571, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1882-101, R1883-101, R1884-101, R1880-101, R1876-101, R1881-101, R293-474, R318-437, R1875-101, R2558-125, R3886-480, R2373-125, R2345-127, R2380-627, R2379-627, R2373-126, R2372-125, R2373-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R500-101, R2034-571, R2024-571, R1718-508, R1749-508, R407-506, R402-506, R1974-566, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,94 +171,50 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "roadway damage",
-    "alertCauseId": 67,
-    "attributes": {
-     "relatedLineTypes": {
-      "2": "ptTram"
-     }
-    },
-    "description": "Linie 2: Umleitung in Richtung Friedrich-Engels-Platz zwischen Rathaus U und Parlament, U Volkstheater über die Reichsratsstraße. Im Bereich Parlament, U Volkstheater halten die Züge in der Bedarfshaltestelle am Burgring nach der Bellariastraße. Voraussichtliche Dauer: 17:30 Uhr. Grund: Gleisschaden im Bereich Stadiongasse.",
-    "descriptionHTML": "<p><strong>Linie 2: </strong><br>Umleitung in Richtung Friedrich-Engels-Platz <br>zwischen Rathaus U und Parlament, U Volkstheater<br>über die Reichsratsstraße.<br>Im Bereich Parlament, U Volkstheater halten die Züge in der Bedarfshaltestelle am Burgring nach der Bellariastraße.</p><p>Voraussichtliche Dauer: 17:30 Uhr.</p><p>Grund: Gleisschaden im Bereich Stadiongasse.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p><strong>Linie 2: </strong><br>Umleitung in Richtung Friedrich-Engels-Platz <br>zwischen Rathaus U und Parlament, U Volkstheater<br>über die Reichsratsstraße.<br>Im Bereich Parlament, U Volkstheater halten die Züge in der Bedarfshaltestelle am Burgring nach der Bellariastraße.</p><p>Voraussichtliche Dauer: 17:30 Uhr.</p><p>Grund: Gleisschaden im Bereich Stadiongasse.</p>",
-       "descriptionPlain": "Linie 2: Umleitung in Richtung Friedrich-Engels-Platz zwischen Rathaus U und Parlament, U Volkstheater über die Reichsratsstraße. Im Bereich Parlament, U Volkstheater halten die Züge in der Bedarfshaltestelle am Burgring nach der Bellariastraße. Voraussichtliche Dauer: 17:30 Uhr. Grund: Gleisschaden im Bereich Stadiongasse.",
-       "title": "2: Gleisschaden"
-      }
-     }
-    ],
-    "location": "Stadiongasse",
-    "name": "I20261117-0031",
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A",
+    "name": "R1718-508",
     "owner": "WL",
-    "parentName": "I20261117-0031",
+    "parentName": "R1718-508",
     "priority": "1",
-    "reasonId": 28,
-    "reasonName": "Gleisschaden",
-    "refTrafficInfoCategoryId": 2,
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "2"
+     "N8"
     ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 102,
-      "lineName": "2",
-      "vehicleType": "ptTram"
-     }
+    "relatedStops": [
+     1718
     ],
-    "status": "active",
     "time": {
-     "created": "2026-11-17T16:09:00.000+0100",
-     "lastUpdate": "2026-11-17T16:57:00.000+0100",
-     "start": "2026-11-17T16:04:00.000+0100"
+     "end": "2026-11-18T04:45:00.000+0100",
+     "start": "2026-11-18T00:45:22.000+0100"
     },
-    "title": "2: Gleisschaden"
+    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U4: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261117-0052-F01",
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
+    "name": "R1749-508",
     "owner": "WL",
-    "parentName": "I20261117-0052",
+    "parentName": "R1749-508",
     "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "U4"
+     "N8"
     ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 304,
-      "lineName": "U4",
-      "vehicleType": "ptMetro"
-     }
+    "relatedStops": [
+     1749
     ],
-    "status": "active",
     "time": {
-     "created": "2026-11-17T23:50:00.000+0100",
-     "lastUpdate": "2026-11-17T23:50:00.000+0100",
-     "resume": "2026-11-17T23:50:00.000+0100",
-     "start": "2026-11-17T23:19:00.000+0100"
+     "end": "2026-11-18T05:15:00.000+0100",
+     "start": "2026-11-18T00:45:22.000+0100"
     },
-    "title": "U4: Schadhaftes Fahrzeug"
+    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A"
    },
    {
     "alertCause": "undefined alert cause",
@@ -425,22 +381,22 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
-    "name": "R1974-466",
+    "name": "R1974-566",
     "owner": "WL",
-    "parentName": "R1974-466",
+    "parentName": "R1974-566",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "66A"
+     "N66"
     ],
     "relatedStops": [
      1974
     ],
     "time": {
-     "end": "2026-11-18T01:00:00.000+0100",
-     "start": "2026-11-17T04:40:22.000+0100"
+     "end": "2026-11-18T04:20:00.000+0100",
+     "start": "2026-11-18T01:00:25.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
    },
@@ -907,25 +863,48 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Gleisschaden\nZüge halten Burgring nach Bellariastraße ",
-    "name": "R49-102",
+    "description": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 ",
+    "name": "R402-506",
     "owner": "WL",
-    "parentName": "R49-102",
+    "parentName": "R402-506",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "2"
+     "N6"
     ],
     "relatedStops": [
-     49
+     402
     ],
     "time": {
-     "end": "2026-11-18T01:00:00.000+0100",
-     "start": "2026-11-18T00:00:15.000+0100"
+     "end": "2026-11-18T05:05:00.000+0100",
+     "start": "2026-11-18T00:55:19.000+0100"
     },
-    "title": "Gleisschaden\nZüge halten Burgring nach Bellariastraße "
+    "title": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
+    "name": "R407-506",
+    "owner": "WL",
+    "parentName": "R407-506",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N6"
+    ],
+    "relatedStops": [
+     407
+    ],
+    "time": {
+     "end": "2026-11-18T05:04:00.000+0100",
+     "start": "2026-11-18T00:54:19.000+0100"
+    },
+    "title": "Bauarbeiten\nBusse halten Quellenstraße 189"
    },
    {
     "alertCause": "undefined alert cause",
