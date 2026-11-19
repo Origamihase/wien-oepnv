@@ -890,22 +890,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2A: Verspätungen",
-    "description": "Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "57d004da43aa922d23ef17d2febd4d27e41c86903650f7772a81a3838692e289",
-    "pubDate": "2026-11-19T07:26:00+01:00",
-    "starts_at": "2026-11-19T07:26:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=2A|D=2026-11-19|TK=2a verspätungen",
-    "_wl_ids": [
-      "I20261119-0005"
-    ],
-    "_incident_start": "2026-11-19T07:26:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -942,22 +926,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "63A: Verkehrsüberlastung",
-    "description": "Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "e7e896d63b9b23989d8440713ce15b7c04d68a1b0098210082b12613484ee8b8",
-    "pubDate": "2026-11-19T09:01:00+01:00",
-    "starts_at": "2026-11-19T09:01:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=63A|D=2026-11-19|TK=63a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261119-0007"
-    ],
-    "_incident_start": "2026-11-19T09:01:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -990,18 +958,6 @@
     "starts_at": "2026-11-18T00:00:18+01:00",
     "ends_at": "2026-11-19T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-18|TK=betrieb ab vivariumstrasse 2"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2026-11-19T08:46:38+01:00",
-    "starts_at": "2026-11-19T08:49:09+01:00",
-    "ends_at": "2026-11-19T09:48:00+01:00",
-    "_identity": "wl|störung|L=9|D=2026-11-19|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
