@@ -26,6 +26,29 @@
   {
    "geometry": {
     "first_position": [
+     16.35994769,
+     48.22798854
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundentelefon Wiener Linien",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-7909/100",
+    "ANTRAGSTELLER": null,
+    "BEHINDERUNGSART": "Gleisbau",
+    "BEZEICHNUNG": "Althanstraße 21-25 bis Augasse und Newaldgasse",
+    "BEZIRK": 9,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-09-21Z",
+    "OBJEKT_ENDE": "2026-11-24Z",
+    "PRESSETEXT": "Bauphase 2 von 3 (11.10.2026 bis 25.10.2026): Die Althanstraße wird von Newaldgasse bis zur Einfahrt des Frachtenbahnhofs gesperrt. Die Newaldgasse wird von Althanstraße bis Liechtensteinstraße als Einbahn geführt. Die Umleitung für die Fahrtrichtung stadteinwärts erfolgt über: Newaldgasse- Liechtensteinstraße - Reznicekgasse - Badgasse. Die Umleitung für die Fahrtrichtung stadtauswärts erfolgt über: Fechtergasse - Badgasse - Reznicekgasse - Liechtensteinstraße.Eine großräumige Umfahrung über die Liechtensteinstraße oder Spittelauer Lände wird empfohlen.NEU: Bauphase 3 von 3 (25.10.2026 bis 24.11.2026): Die Althanstraße wird von Reznicekgasse bis Newaldgassegesperrt. Die Newaldgasse wird von Althanstraße bis Liechtensteinstraße als Einbahn geführt. Die Umleitung für die Fahrtrichtung stadteinwärts erfolgt über: Newaldgasse- Liechtensteinstraße - Reznicekgasse - Badgasse. Die Umleitung für die Fahrtrichtung stadtauswärts erfolgt über: Badgasse - Reznicekgasse - Liechtensteinstraße. Eine großräumige Umfahrung über die Liechtensteinstraße oder Spittelauer Lände wird empfohlen.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
      16.40052808,
      48.21792973
     ],
@@ -227,6 +250,29 @@
     "OBJEKT_BEGINN": "2026-11-03Z",
     "OBJEKT_ENDE": "2026-11-27Z",
     "PRESSETEXT": "Die Dreiständegasse wird von Rudolf-Waisenhorn-Gasse bis und in Fahrtrichtung Anton-Krieger-Gasse zur Einbahn. Die Umleitung in Fahrtrichtung Rudolf-Waisenhorn-Gasse erfolgt über: Dreiständegasse - Anton-Krieger-Gasse Silverster-Früchtl-Gasse - Rudolf-Waisenhorn-Gasse.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.33758068,
+     48.17267336
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Eibesbrunnergasse von Kreuzung Unter-Meidlinger Straße bis Kreuzung Wienerbergstraße",
+    "BEZIRK": 10,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-11-23Z",
+    "OBJEKT_ENDE": "2026-12-08Z",
+    "PRESSETEXT": "ImBaustellenbereich wird ein Fahrstreifen freigehalten und der Verkehr wechselweise mittels Personal durchgeschleust. Auf Höhe der Wienerbergstraße 27C in Fahrtrichtung Breitenfurter Straße wird ein Fahrstreifen gesperrt unter Aufrechterhaltung aller Fahrrelationen.",
     "SE_ANNO_CAD_DATA": null
    }
   },
@@ -1055,6 +1101,29 @@
     "OBJEKT_BEGINN": "2026-11-02Z",
     "OBJEKT_ENDE": "2026-12-04Z",
     "PRESSETEXT": "DerVerkehr wird in Fahrtrichtung Jedlersdorfer Straße über den angrenzenden Parkstreifen geführt. Vor der Kreuzung Jedlersdorfer Straße wird ein Fahrstreifen gesperrt unter Aufrechterhaltung aller Fahrrelationen.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.33669238,
+     48.13696626
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Vorarlberger Allee von Laxenburger Straße und Greta-Keller-Gasse bis Vorarlberger Allee 48",
+    "BEZIRK": 23,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-11-23Z",
+    "OBJEKT_ENDE": "2026-12-18Z",
+    "PRESSETEXT": "DieArbeiten erfolgen in der Zeit von 19:00 bis 05:00 Uhr. ImBaustellenbereich wird ein Fahrstreifen freigehalten und der Verkehr wechselweise mittels Verkehrszeichen durchgeschleust. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.",
     "SE_ANNO_CAD_DATA": null
    }
   },
