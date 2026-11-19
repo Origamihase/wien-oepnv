@@ -970,6 +970,90 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "38: Aktuelle Wetterlage",
+    "description": "Linie 38: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Voraussichtliche Dauer: 18:45 Uhr. Grund: Aktuelle Wetterlage im Haltestellenbereich Paradisgasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "17bd41294bfaf719edc6e8bbedc53df82ea26d96df008351534db7cc43866547",
+    "pubDate": "2026-11-19T18:02:00+01:00",
+    "starts_at": "2026-11-19T18:02:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=38|D=2026-11-19|TK=38 aktuelle wetterlage",
+    "_wl_ids": [
+      "I20261119-0040"
+    ],
+    "_incident_start": "2026-11-19T18:02:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung Aktuelle Wetterlage",
+    "description": "Fahrtbehinderung\nAktuelle Wetterlage",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "dbddddebfd6f53ec1b7a247226051754f725f066f80dcaad2e993a3e3e9379dc",
+    "pubDate": "2026-11-19T18:11:32+01:00",
+    "starts_at": "2026-11-19T18:11:32+01:00",
+    "ends_at": "2026-11-19T19:11:00+01:00",
+    "_identity": "wl|störung|L=38|D=2026-11-19|TK=fahrtbehinderung aktuelle wetterlage"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung Wetterlage, Schienenzustand",
+    "description": "Fahrtbehinderung\nWetterlage, Schienenzustand",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "5d06ea3dfae01379b5e4d09acfcbcdb909b074a8ccd28c712e733625250e5143",
+    "pubDate": "2026-11-19T18:13:02+01:00",
+    "starts_at": "2026-11-19T18:13:06+01:00",
+    "ends_at": "2026-11-19T19:12:00+01:00",
+    "_identity": "wl|störung|L=38|D=2026-11-19|TK=fahrtbehinderung wetterlage schienenzustand"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Wetterlage Betrieb ab Canisiusgasse",
+    "description": "Wetterlage\nBetrieb ab Canisiusgasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e57d6b162f8b68a3b8270a25806f69eca98025ab06d81de7a8a8f60b2bae903d",
+    "pubDate": "2026-11-19T18:11:32+01:00",
+    "starts_at": "2026-11-19T18:11:36+01:00",
+    "ends_at": "2026-11-19T19:13:00+01:00",
+    "_identity": "wl|störung|L=38|D=2026-11-19|TK=wetterlage betrieb ab canisiusgasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "43/44: Demonstration",
+    "description": "Linie 43: Betrieb nur zwischen Neuwaldegg und Alser Straße U. Linie 44: Betrieb nur zwischen Ottakring, Maroltingergasse und Johann-Nepomuk-Berger-Platz. Ersatz: Linien U6, 2, 40, 41, 42 und 40A. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich Alser Straße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "176ee273e9652b25ddc2469fadf98bebe5c304aa8e214067d34a744585279d1e",
+    "pubDate": "2026-11-19T18:09:00+01:00",
+    "starts_at": "2026-11-19T18:09:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=43,44|D=2026-11-19|TK=demonstration",
+    "_wl_ids": [
+      "I20261119-0042"
+    ],
+    "_incident_start": "2026-11-19T18:09:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "46: Demonstration Betrieb ab Thaliastraße",
+    "description": "Linie 46: Betrieb nur zwischen Joachimsthalerplatz und Thaliastraße U. Weiterfahrt bis Josefstädter Straße U. Ersatz: Linien U6, 49 und 48A. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich Lerchenfelder Straße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "9498a247db987f756d9ff4e93bd5a49a60bdb71931ac67008f8561fd089869da",
+    "pubDate": "2026-11-19T17:56:00+01:00",
+    "starts_at": "2026-11-19T18:16:35+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=46|D=2026-11-19|TK=demonstration",
+    "_wl_ids": [
+      "I20261119-0041"
+    ],
+    "_incident_start": "2026-11-19T17:56:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "4A: Verkehrsüberlastung",
     "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1110,6 +1194,22 @@
       "I20261119-0037"
     ],
     "_incident_start": "2026-11-19T17:37:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Rettungseinsatz",
+    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8",
+    "pubDate": "2026-11-19T18:15:00+01:00",
+    "starts_at": "2026-11-19T18:15:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U2|D=2026-11-19|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261119-0043"
+    ],
+    "_incident_start": "2026-11-19T18:15:00+01:00"
   },
   {
     "source": "Wiener Linien",
