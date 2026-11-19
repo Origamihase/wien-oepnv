@@ -1700,10 +1700,19 @@
     "title": "1A, 3A: Schwertgasse"
    },
    {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling S U, Schedifkaplatz</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Max-Mauermann-Gasse</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Bitterlichstra&szlig;e gegen&uuml;ber Max-Mauermann-Gasse</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Bitterlichstra&szlig;e gegen&uuml;ber Friedrich-Teller-Gasse</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 13. Oktober 2026, etwa 07:00 Uhr, f&uuml;r etwa sieben Wochen</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Stra&szlig;enbau</span></p>",
+    "alertCause": "unknown",
+    "alertCauseId": 0,
+    "description": "<p><span><strong><u>Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling S U, Schedifkaplatz</u></strong></span></p><p><span><strong><u>Haltestelle:</u></strong> Max-Mauermann-Gasse</span></p><p><span><strong><u>Von:</u></strong> Bitterlichstraße gegenüber Max-Mauermann-Gasse</span></p><p><span><strong><u>Nach:</u></strong> Bitterlichstraße gegenüber Friedrich-Teller-Gasse</span></p><p><span><strong><u>Dauer:</u></strong> Ab 13. Oktober 2026, etwa 07:00 Uhr bis 19. November 2026, etwa 15:00 Uhr</span></p><p><span><strong><u>Grund:</u></strong> Straßenbau</span></p>",
     "id": "N20261007-6262",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><span><strong><u>Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling S U, Schedifkaplatz</u></strong></span></p><p><span><strong><u>Haltestelle:</u></strong> Max-Mauermann-Gasse</span></p><p><span><strong><u>Von:</u></strong> Bitterlichstraße gegenüber Max-Mauermann-Gasse</span></p><p><span><strong><u>Nach:</u></strong> Bitterlichstraße gegenüber Friedrich-Teller-Gasse</span></p><p><span><strong><u>Dauer:</u></strong> Ab 13. Oktober 2026, etwa 07:00 Uhr bis 19. November 2026, etwa 15:00 Uhr</span></p><p><span><strong><u>Grund:</u></strong> Straßenbau</span></p>",
+       "descriptionPlain": "Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling S U, Schedifkaplatz Haltestelle: Max-Mauermann-Gasse Von: Bitterlichstraße gegenüber Max-Mauermann-Gasse Nach: Bitterlichstraße gegenüber Friedrich-Teller-Gasse Dauer: Ab 13. Oktober 2026, etwa 07:00 Uhr bis 19. November 2026, etwa 15:00 Uhr Grund: Straßenbau",
+       "title": "Haltestellenverlegung"
+      }
+     }
+    ],
     "location": {
      "properties": {
       "attributes": {},
@@ -1713,8 +1722,8 @@
      "type": "Feature"
     },
     "name": "N20261007-6262",
-    "reasonId": 0,
-    "reasonName": "undefined",
+    "reasonId": 223,
+    "reasonName": "Haltestellenverlegung",
     "refPoiCategoryId": 13296,
     "relatedLines": [
      "15A"
@@ -1730,7 +1739,7 @@
      817
     ],
     "time": {
-     "end": "2027-10-07T11:11:00.000+0200",
+     "end": "2026-11-19T15:00:00.000+0100",
      "start": "2026-10-07T15:30:00.000+0200",
      "validFrom": "2026-10-07T15:25:00.000+0200"
     },

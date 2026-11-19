@@ -39,12 +39,12 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "15A: Max-Mauermann-Gasse",
-    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling S U, Schedifkaplatz</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Max-Mauermann-Gasse</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Bitterlichstra&szlig;e gegen&uuml;ber Max-Mauermann-Gasse</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Bitterlichstra&szlig;e gegen&uuml;ber Friedrich-Teller-Gasse</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 13. Oktober 2026, etwa 07:00 Uhr, f&uuml;r etwa sieben Wochen</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Stra&szlig;enbau</span></p>",
+    "description": "<p><span><strong><u>Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling S U, Schedifkaplatz</u></strong></span></p><p><span><strong><u>Haltestelle:</u></strong> Max-Mauermann-Gasse</span></p><p><span><strong><u>Von:</u></strong> Bitterlichstraße gegenüber Max-Mauermann-Gasse</span></p><p><span><strong><u>Nach:</u></strong> Bitterlichstraße gegenüber Friedrich-Teller-Gasse</span></p><p><span><strong><u>Dauer:</u></strong> Ab 13. Oktober 2026, etwa 07:00 Uhr bis 19. November 2026, etwa 15:00 Uhr</span></p><p><span><strong><u>Grund:</u></strong> Straßenbau</span></p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "56aa798cbb018fbaed4813a991f56c2470867f1f9a0ce034661ba2e01da13007",
     "pubDate": "2026-10-07T15:30:00+02:00",
     "starts_at": "2026-10-13T00:00:00+02:00",
-    "ends_at": "2026-12-25T23:59:00+01:00",
+    "ends_at": "2026-11-19T15:00:00+01:00",
     "_identity": "wl|hinweis|L=15A|D=2026-10-13|TK=15a max mauermann gasse"
   },
   {
@@ -662,22 +662,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A: Rettungseinsatz",
-    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0",
-    "pubDate": "2026-11-19T10:55:00+01:00",
-    "starts_at": "2026-11-19T10:55:00+01:00",
-    "ends_at": "2026-11-19T11:41:00+01:00",
-    "_identity": "wl|störung|L=13A|D=2026-11-19|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261119-0012"
-    ],
-    "_incident_start": "2026-11-19T10:55:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -914,22 +898,6 @@
     "starts_at": "2026-11-19T00:00:28+01:00",
     "ends_at": "2026-11-19T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-11-19|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "42: Fahrtbehinderung Falschparker",
-    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
-    "pubDate": "2026-11-19T10:44:00+01:00",
-    "starts_at": "2026-11-19T10:53:51+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=42|D=2026-11-19|TK=falschparker",
-    "_wl_ids": [
-      "I20261119-0011"
-    ],
-    "_incident_start": "2026-11-19T10:44:00+01:00"
   },
   {
     "source": "Wiener Linien",
