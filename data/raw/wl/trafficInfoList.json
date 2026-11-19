@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261119-0003, I20261119-0004, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261119-0003, I20260925-0011, I20260909-0007, I20261119-0005, I20261119-0006, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R3886-480, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R318-437, R293-474, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-127, R2373-125, R2558-125, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R3886-480, R2378-627, R2373-126, R2379-627, R2380-627, R2345-127, R2373-127, R2373-125, R318-437, R293-474, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2558-125, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -215,50 +215,94 @@
     "title": "U1: Verspätungen"
    },
    {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "35A": "ptBusCity"
+      "2A": "ptBusCity"
      }
     },
-    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "descriptionHTML": "<p>Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+    "description": "Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie 2A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-       "descriptionPlain": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-       "title": "35A: Verspätungen"
+       "descriptionHtml": "<p>Linie 2A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie 2A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "2A: Verspätungen"
       }
      }
     ],
-    "name": "I20261119-0004",
+    "name": "I20261119-0005",
     "owner": "WL",
-    "parentName": "I20261119-0004",
+    "parentName": "I20261119-0005",
     "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "35A"
+     "2A"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 435,
-      "lineName": "35A",
+      "lineId": 402,
+      "lineName": "2A",
       "vehicleType": "ptBusCity"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-19T06:41:00.000+0100",
-     "end": "2026-11-19T07:05:00.000+0100",
-     "lastUpdate": "2026-11-19T06:48:00.000+0100",
-     "resume": "2026-11-19T06:41:00.000+0100",
-     "start": "2026-11-19T06:41:00.000+0100"
+     "created": "2026-11-19T07:27:00.000+0100",
+     "lastUpdate": "2026-11-19T07:27:00.000+0100",
+     "resume": "2026-11-19T07:26:00.000+0100",
+     "start": "2026-11-19T07:26:00.000+0100"
     },
-    "title": "35A: Verspätungen"
+    "title": "2A: Verspätungen"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "40A": "ptBusCity"
+     }
+    },
+    "description": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie 40A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 40A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "40A: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261119-0006",
+    "owner": "WL",
+    "parentName": "I20261119-0006",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "40A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 440,
+      "lineName": "40A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-19T07:27:00.000+0100",
+     "lastUpdate": "2026-11-19T07:27:00.000+0100",
+     "resume": "2026-11-19T07:27:00.000+0100",
+     "start": "2026-11-19T07:27:00.000+0100"
+    },
+    "title": "40A: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",
