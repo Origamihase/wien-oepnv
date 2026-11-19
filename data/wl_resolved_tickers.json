@@ -3,10 +3,6 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R1342-142|2026-11-19T15:11:47.000+0100": {
-   "incident": "I20261119-0023",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
   "R1475-109|2026-11-19T15:33:19.000+0100": {
    "incident": "I20261119-0025",
    "title": "Fahrtbehinderung\nFalschparker"
@@ -15,27 +11,258 @@
    "incident": "I20261119-0025",
    "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R148-142|2026-11-19T15:11:45.000+0100": {
-   "incident": "I20261119-0023",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R1933-111|2026-11-19T16:17:53.000+0100": {
+   "incident": "I20261119-0028",
+   "title": "Polizeieinsatz\nBetrieb über Li. O+D "
   },
   "R223-109|2026-11-19T15:24:46.000+0100": {
    "incident": "I20261119-0025",
    "title": "Fahrtbehinderung\nFalschparker",
    "begin": "2026-11-19T15:43:00+01:00"
   },
-  "R493-142|2026-11-19T15:11:47.000+0100": {
-   "incident": "I20261119-0023",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R2374-125|2026-11-19T16:13:23.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
   },
-  "R524-109|2026-11-19T15:24:18.000+0100": {
-   "incident": "I20261119-0025",
-   "title": "Fahrtbehinderung\nFalschparker",
-   "begin": "2026-11-19T15:43:00+01:00"
+  "R2374-126|2026-11-19T16:15:23.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
   },
-  "R524-142|2026-11-19T15:11:47.000+0100": {
-   "incident": "I20261119-0023",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R2375-125|2026-11-19T16:13:23.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R2375-126|2026-11-19T16:15:23.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
+  },
+  "R2376-125|2026-11-19T16:13:53.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Kagran U "
+  },
+  "R2376-126|2026-11-19T16:14:53.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R2377-125|2026-11-19T16:13:53.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Kagran U "
+  },
+  "R2377-126|2026-11-19T16:14:53.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R2556-125|2026-11-19T16:13:23.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R2556-126|2026-11-19T16:15:23.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
+  },
+  "R2558-126|2026-11-19T16:15:23.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
+  },
+  "R2566-125|2026-11-19T16:13:53.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Kagran U "
+  },
+  "R2566-126|2026-11-19T16:14:53.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R2634-125|2026-11-19T16:13:23.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R2634-126|2026-11-19T16:15:23.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
+  },
+  "R2861-125|2026-11-19T16:13:53.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Kagran U "
+  },
+  "R2864-125|2026-11-19T16:13:53.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Kagran U "
+  },
+  "R2865-125|2026-11-19T16:13:53.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Kagran U "
+  },
+  "R2866-125|2026-11-19T16:13:23.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R2867-125|2026-11-19T16:13:23.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R2870-125|2026-11-19T16:13:23.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R2874-125|2026-11-19T16:13:53.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Kagran U "
+  },
+  "R3005-125|2026-11-19T16:13:26.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R3005-126|2026-11-19T16:15:26.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
+  },
+  "R3009-126|2026-11-19T16:14:56.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R3068-125|2026-11-19T16:13:26.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R3068-126|2026-11-19T16:15:26.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
+  },
+  "R3069-125|2026-11-19T16:13:56.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Kagran U "
+  },
+  "R3069-126|2026-11-19T16:14:56.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R3115-125|2026-11-19T16:13:56.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Kagran U "
+  },
+  "R3115-126|2026-11-19T16:14:56.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R3183-125|2026-11-19T16:13:54.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Kagran U "
+  },
+  "R3183-126|2026-11-19T16:14:54.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R3184-125|2026-11-19T16:13:54.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Kagran U "
+  },
+  "R3184-126|2026-11-19T16:14:54.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R3185-125|2026-11-19T16:13:54.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Kagran U "
+  },
+  "R3185-126|2026-11-19T16:14:54.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R3186-125|2026-11-19T16:13:54.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Kagran U "
+  },
+  "R3186-126|2026-11-19T16:14:54.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R3187-125|2026-11-19T16:13:54.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Kagran U "
+  },
+  "R3187-126|2026-11-19T16:14:54.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R3191-125|2026-11-19T16:13:24.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R3191-126|2026-11-19T16:15:24.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
+  },
+  "R3192-125|2026-11-19T16:13:24.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R3192-126|2026-11-19T16:15:24.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
+  },
+  "R3193-125|2026-11-19T16:13:24.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R3193-126|2026-11-19T16:15:24.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
+  },
+  "R3196-125|2026-11-19T16:13:24.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R3196-126|2026-11-19T16:15:24.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
+  },
+  "R3197-125|2026-11-19T16:13:24.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R3197-126|2026-11-19T16:15:24.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
+  },
+  "R3434-106|2026-11-19T16:17:24.000+0100": {
+   "incident": "I20261119-0028",
+   "title": "Polizeieinsatz\nBetrieb ab Reumannplatz U "
+  },
+  "R404-106|2026-11-19T16:16:23.000+0100": {
+   "incident": "I20261119-0028",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R404-111|2026-11-19T16:18:23.000+0100": {
+   "incident": "I20261119-0028",
+   "title": "Polizeieinsatz\nBetrieb ab Absberggasse"
+  },
+  "R405-106|2026-11-19T16:16:23.000+0100": {
+   "incident": "I20261119-0028",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R405-111|2026-11-19T16:18:23.000+0100": {
+   "incident": "I20261119-0028",
+   "title": "Polizeieinsatz\nBetrieb ab Absberggasse"
+  },
+  "R406-106|2026-11-19T16:16:23.000+0100": {
+   "incident": "I20261119-0028",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R406-111|2026-11-19T16:18:23.000+0100": {
+   "incident": "I20261119-0028",
+   "title": "Polizeieinsatz\nBetrieb ab Absberggasse"
+  },
+  "R418-106|2026-11-19T16:17:23.000+0100": {
+   "incident": "I20261119-0028",
+   "title": "Polizeieinsatz\nBetrieb ab Reumannplatz U "
+  },
+  "R420-106|2026-11-19T16:17:23.000+0100": {
+   "incident": "I20261119-0028",
+   "title": "Polizeieinsatz\nBetrieb ab Reumannplatz U "
+  },
+  "R421-106|2026-11-19T16:17:23.000+0100": {
+   "incident": "I20261119-0028",
+   "title": "Polizeieinsatz\nBetrieb ab Reumannplatz U "
   },
   "R526-109|2026-11-19T15:24:18.000+0100": {
    "incident": "I20261119-0025",
@@ -65,6 +292,14 @@
    "incident": "I20261119-0025",
    "title": "Fahrtbehinderung\nFalschparker",
    "begin": "2026-11-19T15:43:00+01:00"
+  },
+  "R885-125|2026-11-19T16:13:53.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Rettungseinsatz\nBetrieb ab Kagran U "
+  },
+  "R885-126|2026-11-19T16:14:53.000+0100": {
+   "incident": "I20261119-0027",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
   }
  }
 }
