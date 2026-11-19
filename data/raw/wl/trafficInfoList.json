@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261119-0009-F01, I20261119-0009-F03, I20261119-0009-F04, I20261119-0010, I20261119-0010-F01, I20260925-0011, I20260909-0007, I20261119-0008-F01, I20261020-0029"
+    "trafficInfoNameList": "I20261119-0009-F01, I20261119-0009-F03, I20261119-0012-F01, I20261119-0012, I20260925-0011, I20261119-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1884-101, R1883-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R3886-480, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R293-474, R318-437, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2558-125, R1974-466, R1199-205, R500-101, R2236-0, R2882-0, R2900-0, R2930-0, R2931-0, R3190-0, R1351-143, R1350-143, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R3886-480, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2345-127, R2373-126, R2379-627, R2343-125, R2380-627, R2378-627, R293-474, R318-437, R2558-125, R1974-466, R1199-205, R500-101, R1350-143, R1351-143, R149-142, R150-142, R148-142, R493-142, R1342-142, R1212-142, R1213-142, R188-142, R1336-142, R676-413, R673-413, R674-413, R675-413, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,54 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U4: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261119-0008-F01",
-    "owner": "WL",
-    "parentName": "I20261119-0008",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 304,
-      "lineName": "U4",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4421
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-19T09:22:00.000+0100",
-     "lastUpdate": "2026-11-19T09:22:00.000+0100",
-     "resume": "2026-11-19T09:22:00.000+0100",
-     "start": "2026-11-19T09:02:00.000+0100"
-    },
-    "title": "U4: Rettungseinsatz"
-   },
-   {
     "alertCause": "level crossing failure",
     "alertCauseId": 40,
     "attributes": {
@@ -311,143 +263,142 @@
     "title": "67A: Störung an einem Bahnübergang"
    },
    {
-    "alertCause": "level crossing failure",
-    "alertCauseId": 40,
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
     "attributes": {
      "relatedLineTypes": {
-      "67B": "ptBusCity"
+      "42": "ptTram"
      }
     },
-    "description": "Linie 67B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 67B: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie 42: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 11:05 Uhr. Grund: Falschparker im Bereich Kreuzgasse 51.",
+    "descriptionHTML": "<p>Linie 42:<br>Fahrtbehinderung in Richtung Schottentor U.</p><p>Voraussichtliche Dauer: 11:05 Uhr.</p><p>Grund: Falschparker im Bereich Kreuzgasse 51.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 67B: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 67B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "67B: Störung an einem Bahnübergang"
+       "descriptionHtml": "<p>Linie 42:<br>Fahrtbehinderung in Richtung Schottentor U.</p><p>Voraussichtliche Dauer: 11:05 Uhr.</p><p>Grund: Falschparker im Bereich Kreuzgasse 51.</p>",
+       "descriptionPlain": "Linie 42: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 11:05 Uhr. Grund: Falschparker im Bereich Kreuzgasse 51.",
+       "title": "42: Falschparker"
       }
      }
     ],
-    "location": "Himberger Straße",
-    "name": "I20261119-0009-F04",
+    "location": "Kreuzgasse 51",
+    "name": "I20261119-0011",
     "owner": "WL",
-    "parentName": "I20261119-0009",
+    "parentName": "I20261119-0011",
     "priority": "1",
-    "reasonId": 42,
-    "reasonName": "Störung an einem Bahnübergang",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "67B"
+     "42"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 267,
-      "lineName": "67B",
+      "lineId": 142,
+      "lineName": "42",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-19T10:44:00.000+0100",
+     "lastUpdate": "2026-11-19T10:44:00.000+0100",
+     "start": "2026-11-19T10:44:00.000+0100"
+    },
+    "title": "42: Falschparker"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "13A": "ptBusCity"
+     }
+    },
+    "description": "Linie 13A: Fahrtbehinderung in Richtung Hauptbahnhof S U. Voraussichtliche Dauer: 11:15 Uhr. Grund: Rettungseinsatz im Bereich Ziegelofengasse 6A.",
+    "descriptionHTML": "<p>Linie 13A:<br>Fahrtbehinderung in Richtung Hauptbahnhof S U.</p><p>Voraussichtliche Dauer: 11:15 Uhr.</p><p>Grund: Rettungseinsatz im Bereich Ziegelofengasse 6A.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 13A:<br>Fahrtbehinderung in Richtung Hauptbahnhof S U.</p><p>Voraussichtliche Dauer: 11:15 Uhr.</p><p>Grund: Rettungseinsatz im Bereich Ziegelofengasse 6A.</p>",
+       "descriptionPlain": "Linie 13A: Fahrtbehinderung in Richtung Hauptbahnhof S U. Voraussichtliche Dauer: 11:15 Uhr. Grund: Rettungseinsatz im Bereich Ziegelofengasse 6A.",
+       "title": "13A: Rettungseinsatz"
+      }
+     }
+    ],
+    "location": "Ziegelofengasse 6A",
+    "name": "I20261119-0012",
+    "owner": "WL",
+    "parentName": "I20261119-0012",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 413,
+      "lineName": "13A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-11-19T10:55:00.000+0100",
+     "end": "2026-11-19T11:00:00.000+0100",
+     "lastUpdate": "2026-11-19T11:00:00.000+0100",
+     "resume": "2026-11-19T11:00:00.000+0100",
+     "start": "2026-11-19T10:55:00.000+0100"
+    },
+    "title": "13A: Rettungseinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "13A": "ptBusCity"
+     }
+    },
+    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 13A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 13A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "13A: Rettungseinsatz"
+      }
+     }
+    ],
+    "location": "Ziegelofengasse 6A",
+    "name": "I20261119-0012-F01",
+    "owner": "WL",
+    "parentName": "I20261119-0012",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 413,
+      "lineName": "13A",
       "vehicleType": "ptBusCity"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-19T10:06:00.000+0100",
-     "lastUpdate": "2026-11-19T10:06:00.000+0100",
-     "resume": "2026-11-19T10:06:00.000+0100",
-     "start": "2026-11-19T10:00:00.000+0100"
+     "created": "2026-11-19T11:00:00.000+0100",
+     "lastUpdate": "2026-11-19T11:00:00.000+0100",
+     "resume": "2026-11-19T11:00:00.000+0100",
+     "start": "2026-11-19T10:55:00.000+0100"
     },
-    "title": "67B: Störung an einem Bahnübergang"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "43": "ptTram"
-     }
-    },
-    "description": "Linie 43: Fahrtbehinderung in Richtung Neuwaldegg. Voraussichtliche Dauer: 10:45 Uhr. Grund: Verkehrsunfall im Bereich Vollbadgasse 1.",
-    "descriptionHTML": "<p>Linie 43:<br>Fahrtbehinderung in Richtung Neuwaldegg.</p><p>Voraussichtliche Dauer: 10:45 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Vollbadgasse 1.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 43:<br>Fahrtbehinderung in Richtung Neuwaldegg.</p><p>Voraussichtliche Dauer: 10:45 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Vollbadgasse 1.</p>",
-       "descriptionPlain": "Linie 43: Fahrtbehinderung in Richtung Neuwaldegg. Voraussichtliche Dauer: 10:45 Uhr. Grund: Verkehrsunfall im Bereich Vollbadgasse 1.",
-       "title": "43: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Vollbadgasse 1",
-    "name": "I20261119-0010",
-    "owner": "WL",
-    "parentName": "I20261119-0010",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 143,
-      "lineName": "43",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-19T10:27:00.000+0100",
-     "end": "2026-11-19T10:29:00.000+0100",
-     "lastUpdate": "2026-11-19T10:29:00.000+0100",
-     "resume": "2026-11-19T10:29:00.000+0100",
-     "start": "2026-11-19T10:26:00.000+0100"
-    },
-    "title": "43: Verkehrsunfall"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "43": "ptTram"
-     }
-    },
-    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "43: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Vollbadgasse 1",
-    "name": "I20261119-0010-F01",
-    "owner": "WL",
-    "parentName": "I20261119-0010",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 143,
-      "lineName": "43",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-19T10:29:00.000+0100",
-     "end": "2026-11-19T10:39:00.000+0100",
-     "lastUpdate": "2026-11-19T10:30:00.000+0100",
-     "start": "2026-11-19T10:26:00.000+0100"
-    },
-    "title": "43: Verkehrsunfall"
+    "title": "13A: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -471,6 +422,98 @@
      "start": "2026-11-19T04:45:14.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1212-142",
+    "owner": "WL",
+    "parentName": "R1212-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     1212
+    ],
+    "time": {
+     "end": "2026-11-19T11:48:00.000+0100",
+     "start": "2026-11-19T10:48:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1213-142",
+    "owner": "WL",
+    "parentName": "R1213-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     1213
+    ],
+    "time": {
+     "end": "2026-11-19T11:48:00.000+0100",
+     "start": "2026-11-19T10:48:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1336-142",
+    "owner": "WL",
+    "parentName": "R1336-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     1336
+    ],
+    "time": {
+     "end": "2026-11-19T11:53:00.000+0100",
+     "start": "2026-11-19T10:53:51.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1342-142",
+    "owner": "WL",
+    "parentName": "R1342-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     1342
+    ],
+    "time": {
+     "end": "2026-11-19T11:45:00.000+0100",
+     "start": "2026-11-19T10:45:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -521,6 +564,75 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R148-142",
+    "owner": "WL",
+    "parentName": "R148-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     148
+    ],
+    "time": {
+     "end": "2026-11-19T11:45:00.000+0100",
+     "start": "2026-11-19T10:45:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R149-142",
+    "owner": "WL",
+    "parentName": "R149-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     149
+    ],
+    "time": {
+     "end": "2026-11-19T11:45:00.000+0100",
+     "start": "2026-11-19T10:45:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R150-142",
+    "owner": "WL",
+    "parentName": "R150-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     150
+    ],
+    "time": {
+     "end": "2026-11-19T11:45:00.000+0100",
+     "start": "2026-11-19T10:45:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nKein Betrieb",
     "name": "R1875-101",
     "owner": "WL",
@@ -563,6 +675,29 @@
      "start": "2026-11-18T00:00:17.000+0100"
     },
     "title": "Gleisbauarbeiten\nKein Betrieb"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R188-142",
+    "owner": "WL",
+    "parentName": "R188-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     188
+    ],
+    "time": {
+     "end": "2026-11-19T11:53:00.000+0100",
+     "start": "2026-11-19T10:53:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -701,26 +836,6 @@
      "start": "2026-11-19T04:40:15.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Bahnschranken ÖBB",
-    "name": "R2236-0",
-    "owner": "WL",
-    "parentName": "R2236-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2236
-    ],
-    "time": {
-     "end": "2026-11-19T10:59:00.000+0100",
-     "start": "2026-11-19T10:00:46.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Bahnschranken ÖBB"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1047,46 +1162,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Bahnschranken ÖBB",
-    "name": "R2882-0",
-    "owner": "WL",
-    "parentName": "R2882-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2882
-    ],
-    "time": {
-     "end": "2026-11-19T10:59:00.000+0100",
-     "start": "2026-11-19T10:00:47.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Bahnschranken ÖBB"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Bahnschranken ÖBB",
-    "name": "R2900-0",
-    "owner": "WL",
-    "parentName": "R2900-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2900
-    ],
-    "time": {
-     "end": "2026-11-19T10:59:00.000+0100",
-     "start": "2026-11-19T10:00:47.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Bahnschranken ÖBB"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -1110,46 +1185,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Bahnschranken ÖBB",
-    "name": "R2930-0",
-    "owner": "WL",
-    "parentName": "R2930-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2930
-    ],
-    "time": {
-     "end": "2026-11-19T10:59:00.000+0100",
-     "start": "2026-11-19T10:00:47.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Bahnschranken ÖBB"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Bahnschranken ÖBB",
-    "name": "R2931-0",
-    "owner": "WL",
-    "parentName": "R2931-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2931
-    ],
-    "time": {
-     "end": "2026-11-19T10:59:00.000+0100",
-     "start": "2026-11-19T10:00:47.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Bahnschranken ÖBB"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -1169,26 +1204,6 @@
      "start": "2026-11-19T00:00:28.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Bahnschranken ÖBB",
-    "name": "R3190-0",
-    "owner": "WL",
-    "parentName": "R3190-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     3190
-    ],
-    "time": {
-     "end": "2026-11-19T10:59:00.000+0100",
-     "start": "2026-11-19T10:00:48.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Bahnschranken ÖBB"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1239,6 +1254,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R493-142",
+    "owner": "WL",
+    "parentName": "R493-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     493
+    ],
+    "time": {
+     "end": "2026-11-19T11:45:00.000+0100",
+     "start": "2026-11-19T10:45:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -1258,6 +1296,98 @@
      "start": "2026-11-19T05:00:16.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R673-413",
+    "owner": "WL",
+    "parentName": "R673-413",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     673
+    ],
+    "time": {
+     "end": "2026-11-19T11:55:00.000+0100",
+     "start": "2026-11-19T10:55:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R674-413",
+    "owner": "WL",
+    "parentName": "R674-413",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     674
+    ],
+    "time": {
+     "end": "2026-11-19T11:55:00.000+0100",
+     "start": "2026-11-19T10:55:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R675-413",
+    "owner": "WL",
+    "parentName": "R675-413",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     675
+    ],
+    "time": {
+     "end": "2026-11-19T11:55:00.000+0100",
+     "start": "2026-11-19T10:55:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R676-413",
+    "owner": "WL",
+    "parentName": "R676-413",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     676
+    ],
+    "time": {
+     "end": "2026-11-19T11:55:00.000+0100",
+     "start": "2026-11-19T10:55:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
