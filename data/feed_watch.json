@@ -1,40 +1,28 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-19T19:32:17.067119+00:00",
- "built": "2026-11-19T20:32:03+01:00",
+ "updated": "2026-11-19T20:02:03.094161+00:00",
+ "built": "2026-11-19T21:01:57+01:00",
  "findings": [
   {
    "rule": "quelle-ohne-antwort",
    "title": "Quelle ohne frische Antwort",
    "rank": "Quelle",
    "subject": "Baustellen (Stadt Wien)",
-   "text": "seit 7 h 01 min keine brauchbare Antwort (Abruf endet mit Exit 1); der Feed nutzt die letzte gute Antwort von 19.11. 13:30"
+   "text": "seit 7 h 31 min keine brauchbare Antwort (Abruf endet mit Exit 1); der Feed nutzt die letzte gute Antwort von 19.11. 13:30"
   }
  ],
  "rules": {
   "quelle-ohne-antwort": {
    "since": "2026-11-19T14:32:31.652200+00:00",
-   "last": "2026-11-19T19:32:17.067119+00:00",
+   "last": "2026-11-19T20:02:03.094161+00:00",
    "held_runs": 0,
    "issue": 2222
   }
  },
  "previous_feed": {
-  "built": "2026-11-19T20:32:03+01:00",
+  "built": "2026-11-19T21:01:57+01:00",
   "items": [
-   {
-    "title": "37/38: Schadhafter Zug",
-    "time_line": "Seit 19:45"
-   },
-   {
-    "title": "37/D: Schadhafter Zug",
-    "time_line": "Seit 19:44"
-   },
-   {
-    "title": "U3: Schadhaftes Fahrzeug",
-    "time_line": "Seit 19:57"
-   },
    {
     "title": "5/12: Schadhaftes Fahrzeug",
     "time_line": "Seit 19:41"
@@ -48,10 +36,6 @@
     "time_line": "Seit 19:23"
    },
    {
-    "title": "U2: Betriebsstörung",
-    "time_line": "Seit 19:08"
-   },
-   {
     "title": "13A: Demonstration",
     "time_line": "Seit heute"
    },
@@ -62,31 +46,27 @@
    {
     "title": "1/71/D: Haltestellenverlegung",
     "time_line": "Bis 20.12."
+   },
+   {
+    "title": "N71: Bauarbeiten",
+    "time_line": "Bis 27.11."
+   },
+   {
+    "title": "1A: Polizeiübung",
+    "time_line": "Bis Mo 23.11."
+   },
+   {
+    "title": "8A: Küniglberg, ORF Zentrum",
+    "time_line": "Bis Di 24.11."
+   },
+   {
+    "title": "5A/N31: Obere Augartenstraße",
+    "time_line": "Bis 11.12."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-12T20:01:04.299761+00:00",
-   "raw": {
-    "wl-stoerungen": 65,
-    "wl-hinweise": 70,
-    "oebb": 185,
-    "baustellen-linien": 51,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 13,
-    "oebb": 160,
-    "baustellen": 61
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 6,
-    "wl": 85
-   }
-  },
   {
    "t": "2026-11-12T20:31:08.565699+00:00",
    "raw": {
@@ -6786,14 +6766,34 @@
     "oebb": 10,
     "wl": 89
    }
+  },
+  {
+   "t": "2026-11-19T20:02:03.094161+00:00",
+   "raw": {
+    "wl-stoerungen": 57,
+    "wl-hinweise": 68,
+    "oebb": 172,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 16,
+    "oebb": 146,
+    "baustellen": 60
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 10,
+    "wl": 85
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-19T19:32:17.067119+00:00"
+   "last_ok": "2026-11-19T20:02:03.094161+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-19T19:32:17.067119+00:00"
+   "last_ok": "2026-11-19T20:02:03.094161+00:00"
   },
   "baustellen": {
    "last_ok": "2026-11-19T12:30:54.124908+00:00",
