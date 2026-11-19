@@ -531,10 +531,19 @@
     "title": "N25, SEV U1: Kaisermühlen, V.I.C."
    },
    {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "<h2>Bauarbeiten</h2>\r\n<p>Wegen Bauarbeiten im Bereich Donaueschingenstra&szlig;e wird die Linie 37A umgeleitet.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Ab Donnerstag, 21. Mai 2026, etwa 08:30 Uhr, bis voraussichtlich Mitte November 2026</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:<br /></strong></span><strong>Linie 37A in Richtung D&auml;nenstra&szlig;e bzw. Nu&szlig;dorfer Stra&szlig;e U:<br /></strong>Umleitung ab Pasettistra&szlig;e # Donaueschingenstra&szlig;e &uuml;ber Pasettistra&szlig;e &ndash; Hellwagstra&szlig;e &ndash; Dresdner Stra&szlig;e.</p>\r\n<p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen:<br /></span>- Lorenz-B&ouml;hler-Unfallkrankenhaus (Donaueschingenstra&szlig;e nach Pasettistra&szlig;e)<br />- Dresdner Stra&szlig;e U (Dresdner Stra&szlig;e 47)</p>\r\n<p><span style=\"text-decoration: underline;\">Ersatzhaltestellen:<br /></span>- Lorenz-B&ouml;hler-Unfallkrankenhaus (Pasettistra&szlig;e 65 nach Donaueschingenstra&szlig;e)<br />- Pasettistra&szlig;e (Pasettistra&szlig;e vor Hellwagstra&szlig;e)</p>\r\n<p>&nbsp;</p>",
+    "alertCause": "construction work",
+    "alertCauseId": 45,
+    "description": "<h2>Bauarbeiten</h2><p>Wegen Bauarbeiten im Bereich Donaueschingenstraße wird die Linie 37A umgeleitet.</p><p><span><strong><u>Zeitraum:</u></strong></span><br>Ab Donnerstag, 21. Mai 2026, etwa 08:30 Uhr, bis 27. November 2026, etwa 07:00 Uhr</p><p><span><strong><u>Maßnahmen:<br></u></strong></span><strong>Linie 37A in Richtung Dänenstraße bzw. Nußdorfer Straße U:<br></strong>Umleitung ab Pasettistraße # Donaueschingenstraße über Pasettistraße – Hellwagstraße – Dresdner Straße.</p><p><span><u>Aufgelassene Haltestellen:<br></u></span>- Lorenz-Böhler-Unfallkrankenhaus (Donaueschingenstraße nach Pasettistraße)<br>- Dresdner Straße U (Dresdner Straße 47)</p><p><span><u>Ersatzhaltestellen:<br></u></span>- Lorenz-Böhler-Unfallkrankenhaus (Pasettistraße 65 nach Donaueschingenstraße)<br>- Pasettistraße (Pasettistraße vor Hellwagstraße)</p><p>&nbsp;</p>",
     "id": "N20260519-5848",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<h2>Bauarbeiten</h2><p>Wegen Bauarbeiten im Bereich Donaueschingenstraße wird die Linie 37A umgeleitet.</p><p><span><strong><u>Zeitraum:</u></strong></span><br>Ab Donnerstag, 21. Mai 2026, etwa 08:30 Uhr, bis 27. November 2026, etwa 07:00 Uhr</p><p><span><strong><u>Maßnahmen:<br></u></strong></span><strong>Linie 37A in Richtung Dänenstraße bzw. Nußdorfer Straße U:<br></strong>Umleitung ab Pasettistraße # Donaueschingenstraße über Pasettistraße – Hellwagstraße – Dresdner Straße.</p><p><span><u>Aufgelassene Haltestellen:<br></u></span>- Lorenz-Böhler-Unfallkrankenhaus (Donaueschingenstraße nach Pasettistraße)<br>- Dresdner Straße U (Dresdner Straße 47)</p><p><span><u>Ersatzhaltestellen:<br></u></span>- Lorenz-Böhler-Unfallkrankenhaus (Pasettistraße 65 nach Donaueschingenstraße)<br>- Pasettistraße (Pasettistraße vor Hellwagstraße)</p><p>&nbsp;</p>",
+       "descriptionPlain": "BauarbeitenWegen Bauarbeiten im Bereich Donaueschingenstraße wird die Linie 37A umgeleitet. Zeitraum: Ab Donnerstag, 21. Mai 2026, etwa 08:30 Uhr, bis 27. November 2026, etwa 07:00 Uhr Maßnahmen: Linie 37A in Richtung Dänenstraße bzw. Nußdorfer Straße U: Umleitung ab Pasettistraße # Donaueschingenstraße über Pasettistraße – Hellwagstraße – Dresdner Straße. Aufgelassene Haltestellen: - Lorenz-Böhler-Unfallkrankenhaus (Donaueschingenstraße nach Pasettistraße) - Dresdner Straße U (Dresdner Straße 47) Ersatzhaltestellen: - Lorenz-Böhler-Unfallkrankenhaus (Pasettistraße 65 nach Donaueschingenstraße) - Pasettistraße (Pasettistraße vor Hellwagstraße)",
+       "title": "37A: Bauarbeiten"
+      }
+     }
+    ],
     "location": {
      "properties": {
       "attributes": {},
@@ -544,8 +553,8 @@
      "type": "Feature"
     },
     "name": "N20260519-5848",
-    "reasonId": 0,
-    "reasonName": "undefined",
+    "reasonId": 21,
+    "reasonName": "Bauarbeiten",
     "refPoiCategoryId": 13296,
     "relatedLines": [
      "37A"
@@ -558,7 +567,7 @@
      }
     ],
     "time": {
-     "end": "2027-08-31T11:11:00.000+0200",
+     "end": "2026-11-27T07:00:00.000+0100",
      "start": "2026-05-21T08:30:00.000+0200",
      "validFrom": "2026-05-19T16:59:00.000+0200"
     },

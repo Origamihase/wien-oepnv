@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261119-0020, I20261119-0022, I20260925-0011, I20261119-0021, I20260909-0007, I20261119-0017-F01, I20261119-0019-F01, I20261119-0019-F02, I20261020-0029"
+    "trafficInfoNameList": "I20261119-0020, I20261119-0024, I20260925-0011, I20261119-0022-F01, I20260909-0007, I20261119-0019-F01, I20261119-0019-F02, I20261020-0029, I20261119-0023"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1881-101, R1882-101, R1875-101, R1876-101, R1883-101, R1880-101, R1884-101, R3886-480, R2343-626, R2378-627, R293-474, R318-437, R2371-125, R2370-125, R2359-125, R2343-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2558-125, R1974-466, R1199-205, R500-101, R366-105, R272-105, R361-105, R362-105, R401-106, R399-106, R400-106, R834-118, R835-118, R833-118, R832-118, R831-118, R304-118, R303-118, R400-118, R425-106, R424-106, R411-106, R423-106, R427-106, R426-106, R398-106, R402-106, R407-106, R847-118, R849-118, R851-118, R848-118, R427-118, R398-118, R399-118, R832-162, R831-162, R833-162, R400-162, R399-162, R1748-162, R1749-162, R851-162, R849-162, R847-162, R848-162, R339-162, R303-162, R427-162, R1717-162, R1718-162, R216-138, R215-138, R1215-138, R1216-138, R1217-138, R1214-138, R2964-138, R1225-138, R1221-138, R1224-138, R1223-138, R1227-138, R1226-138, R2985-138, R208-138, R47-0, R17-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1884-101, R1883-101, R1882-101, R1880-101, R1876-101, R1875-101, R1881-101, R3886-480, R293-474, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2345-127, R318-437, R2380-627, R2558-125, R1974-466, R1199-205, R500-101, R215-138, R216-138, R1217-138, R1214-138, R1215-138, R1216-138, R2964-138, R1221-138, R1223-138, R1224-138, R1225-138, R1227-138, R1226-138, R2985-138, R208-138, R47-0, R17-0, R148-142, R1342-142, R524-142, R493-142, R530-109, R532-109, R556-109, R531-109, R524-109, R526-109, R223-109, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,54 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U1: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261119-0017-F01",
-    "owner": "WL",
-    "parentName": "I20261119-0017",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 301,
-      "lineName": "U1",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4113
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-19T13:49:00.000+0100",
-     "lastUpdate": "2026-11-19T13:49:00.000+0100",
-     "resume": "2026-11-19T13:49:00.000+0100",
-     "start": "2026-11-19T13:37:00.000+0100"
-    },
-    "title": "U1: Polizeieinsatz"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -357,65 +309,21 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U3: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261119-0021",
-    "owner": "WL",
-    "parentName": "I20261119-0021",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-19T14:30:00.000+0100",
-     "lastUpdate": "2026-11-19T14:30:00.000+0100",
-     "start": "2026-11-19T14:30:00.000+0100"
-    },
-    "title": "U3: Verspätungen"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
       "38": "ptTram"
      }
     },
-    "description": "Linie 38: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Ersatz: Linien 10A, 35A und 38A. Voraussichtliche Dauer: 15:15 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Paradisgasse.",
-    "descriptionHTML": "<p>Linie 38:<br>Betrieb nur zwischen Schottentor U und Nußdorfer Straße U.</p><p>Ersatz: Linien 10A, 35A und 38A.</p><p>Voraussichtliche Dauer: 15:15 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Paradisgasse.</p>",
+    "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 38: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 38:<br>Betrieb nur zwischen Schottentor U und Nußdorfer Straße U.</p><p>Ersatz: Linien 10A, 35A und 38A.</p><p>Voraussichtliche Dauer: 15:15 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Paradisgasse.</p>",
-       "descriptionPlain": "Linie 38: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Ersatz: Linien 10A, 35A und 38A. Voraussichtliche Dauer: 15:15 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Paradisgasse.",
+       "descriptionHtml": "<p>Linie 38: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "38: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261119-0022",
+    "name": "I20261119-0022-F01",
     "owner": "WL",
     "parentName": "I20261119-0022",
     "priority": "1",
@@ -437,11 +345,102 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-19T14:40:00.000+0100",
-     "lastUpdate": "2026-11-19T14:47:00.000+0100",
+     "created": "2026-11-19T15:09:00.000+0100",
+     "lastUpdate": "2026-11-19T15:09:00.000+0100",
+     "resume": "2026-11-19T15:09:00.000+0100",
      "start": "2026-11-19T14:39:00.000+0100"
     },
     "title": "38: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "poor weather",
+    "alertCauseId": 85,
+    "attributes": {
+     "relatedLineTypes": {
+      "42": "ptTram"
+     }
+    },
+    "description": "Linie 42: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "descriptionHTML": "<p>Linie 42:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 42:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
+       "descriptionPlain": "Linie 42: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+       "title": "42: Aktuelle Wetterlage"
+      }
+     }
+    ],
+    "name": "I20261119-0023",
+    "owner": "WL",
+    "parentName": "I20261119-0023",
+    "priority": "1",
+    "reasonId": 40,
+    "reasonName": "Aktuelle Wetterlage",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 142,
+      "lineName": "42",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-19T15:10:00.000+0100",
+     "lastUpdate": "2026-11-19T15:10:00.000+0100",
+     "resume": "2026-11-19T15:09:00.000+0100",
+     "start": "2026-11-19T15:09:00.000+0100"
+    },
+    "title": "42: Aktuelle Wetterlage"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "9": "ptTram"
+     }
+    },
+    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 15:45 Uhr. Grund: Falschparker im Bereich Hormayrgasse 57.",
+    "descriptionHTML": "<p><strong>Linie 9:</strong><br>Fahrtbehinderung in Richtung Westbahnhof S U.</p><p>Voraussichtliche Dauer: 15:45 Uhr.</p><p>Grund: Falschparker im Bereich Hormayrgasse 57.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><strong>Linie 9:</strong><br>Fahrtbehinderung in Richtung Westbahnhof S U.</p><p>Voraussichtliche Dauer: 15:45 Uhr.</p><p>Grund: Falschparker im Bereich Hormayrgasse 57.</p>",
+       "descriptionPlain": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 15:45 Uhr. Grund: Falschparker im Bereich Hormayrgasse 57.",
+       "title": "9: Falschparker"
+      }
+     }
+    ],
+    "location": "Hormayrgasse 57",
+    "name": "I20261119-0024",
+    "owner": "WL",
+    "parentName": "I20261119-0024",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 109,
+      "lineName": "9",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-19T15:25:00.000+0100",
+     "lastUpdate": "2026-11-19T15:25:00.000+0100",
+     "start": "2026-11-19T15:25:00.000+0100"
+    },
+    "title": "9: Falschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -699,6 +698,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R1342-142",
+    "owner": "WL",
+    "parentName": "R1342-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     1342
+    ],
+    "time": {
+     "end": "2026-11-19T16:11:00.000+0100",
+     "start": "2026-11-19T15:11:47.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R148-142",
+    "owner": "WL",
+    "parentName": "R148-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     148
+    ],
+    "time": {
+     "end": "2026-11-19T16:11:00.000+0100",
+     "start": "2026-11-19T15:11:45.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Haltestelle\naufgelassen!\n\nStop closed!",
     "name": "R17-0",
     "owner": "WL",
@@ -715,98 +760,6 @@
      "start": "2026-11-19T15:00:14.000+0100"
     },
     "title": "Haltestelle\naufgelassen!\n\nStop closed!"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Dörfelstraße",
-    "name": "R1717-162",
-    "owner": "WL",
-    "parentName": "R1717-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     1717
-    ],
-    "time": {
-     "end": "2026-11-19T15:18:00.000+0100",
-     "start": "2026-11-19T14:19:14.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Dörfelstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Dörfelstraße",
-    "name": "R1718-162",
-    "owner": "WL",
-    "parentName": "R1718-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     1718
-    ],
-    "time": {
-     "end": "2026-11-19T15:18:00.000+0100",
-     "start": "2026-11-19T14:19:14.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Dörfelstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1748-162",
-    "owner": "WL",
-    "parentName": "R1748-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     1748
-    ],
-    "time": {
-     "end": "2026-11-19T15:18:00.000+0100",
-     "start": "2026-11-19T14:18:44.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1749-162",
-    "owner": "WL",
-    "parentName": "R1749-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     1749
-    ],
-    "time": {
-     "end": "2026-11-19T15:18:00.000+0100",
-     "start": "2026-11-19T14:18:44.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1060,6 +1013,29 @@
      "start": "2026-11-19T14:40:41.000+0100"
     },
     "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R223-109",
+    "owner": "WL",
+    "parentName": "R223-109",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedStops": [
+     223
+    ],
+    "time": {
+     "end": "2026-11-19T16:24:00.000+0100",
+     "start": "2026-11-19T15:24:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1386,29 +1362,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R272-105",
-    "owner": "WL",
-    "parentName": "R272-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     272
-    ],
-    "time": {
-     "end": "2026-11-19T15:10:00.000+0100",
-     "start": "2026-11-19T14:11:11.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -1478,75 +1431,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R303-118",
-    "owner": "WL",
-    "parentName": "R303-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     303
-    ],
-    "time": {
-     "end": "2026-11-19T15:12:00.000+0100",
-     "start": "2026-11-19T14:12:41.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Dörfelstraße",
-    "name": "R303-162",
-    "owner": "WL",
-    "parentName": "R303-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     303
-    ],
-    "time": {
-     "end": "2026-11-19T15:18:00.000+0100",
-     "start": "2026-11-19T14:19:12.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Dörfelstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R304-118",
-    "owner": "WL",
-    "parentName": "R304-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     304
-    ],
-    "time": {
-     "end": "2026-11-19T15:12:00.000+0100",
-     "start": "2026-11-19T14:12:41.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -1566,98 +1450,6 @@
      "start": "2026-11-19T00:00:28.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Dörfelstraße",
-    "name": "R339-162",
-    "owner": "WL",
-    "parentName": "R339-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     339
-    ],
-    "time": {
-     "end": "2026-11-19T15:18:00.000+0100",
-     "start": "2026-11-19T14:19:12.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Dörfelstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R361-105",
-    "owner": "WL",
-    "parentName": "R361-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     361
-    ],
-    "time": {
-     "end": "2026-11-19T15:10:00.000+0100",
-     "start": "2026-11-19T14:11:11.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R362-105",
-    "owner": "WL",
-    "parentName": "R362-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     362
-    ],
-    "time": {
-     "end": "2026-11-19T15:10:00.000+0100",
-     "start": "2026-11-19T14:11:11.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R366-105",
-    "owner": "WL",
-    "parentName": "R366-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     366
-    ],
-    "time": {
-     "end": "2026-11-19T15:10:00.000+0100",
-     "start": "2026-11-19T14:11:11.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1685,190 +1477,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Quellenplatz",
-    "name": "R398-106",
-    "owner": "WL",
-    "parentName": "R398-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     398
-    ],
-    "time": {
-     "end": "2026-11-19T15:14:00.000+0100",
-     "start": "2026-11-19T14:14:41.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Quellenplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Hauptbahnhof S U ",
-    "name": "R398-118",
-    "owner": "WL",
-    "parentName": "R398-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     398
-    ],
-    "time": {
-     "end": "2026-11-19T15:16:00.000+0100",
-     "start": "2026-11-19T14:16:41.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Hauptbahnhof S U "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Quellenplatz",
-    "name": "R399-106",
-    "owner": "WL",
-    "parentName": "R399-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     399
-    ],
-    "time": {
-     "end": "2026-11-19T15:14:00.000+0100",
-     "start": "2026-11-19T14:12:11.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Quellenplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Hauptbahnhof S U ",
-    "name": "R399-118",
-    "owner": "WL",
-    "parentName": "R399-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     399
-    ],
-    "time": {
-     "end": "2026-11-19T15:16:00.000+0100",
-     "start": "2026-11-19T14:16:41.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Hauptbahnhof S U "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R399-162",
-    "owner": "WL",
-    "parentName": "R399-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     399
-    ],
-    "time": {
-     "end": "2026-11-19T15:18:00.000+0100",
-     "start": "2026-11-19T14:18:42.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Quellenplatz",
-    "name": "R400-106",
-    "owner": "WL",
-    "parentName": "R400-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     400
-    ],
-    "time": {
-     "end": "2026-11-19T15:14:00.000+0100",
-     "start": "2026-11-19T14:12:11.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Quellenplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Hauptbahnhof S U ",
-    "name": "R400-118",
-    "owner": "WL",
-    "parentName": "R400-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     400
-    ],
-    "time": {
-     "end": "2026-11-19T15:16:00.000+0100",
-     "start": "2026-11-19T14:12:41.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Hauptbahnhof S U "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R400-162",
-    "owner": "WL",
-    "parentName": "R400-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     400
-    ],
-    "time": {
-     "end": "2026-11-19T15:18:00.000+0100",
-     "start": "2026-11-19T14:18:42.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nUmleitung zum Reumannplatz",
     "name": "R401-101",
     "owner": "WL",
@@ -1892,259 +1500,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Quellenplatz",
-    "name": "R401-106",
-    "owner": "WL",
-    "parentName": "R401-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     401
-    ],
-    "time": {
-     "end": "2026-11-19T15:14:00.000+0100",
-     "start": "2026-11-19T14:12:11.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Quellenplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Quellenplatz",
-    "name": "R402-106",
-    "owner": "WL",
-    "parentName": "R402-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     402
-    ],
-    "time": {
-     "end": "2026-11-19T15:14:00.000+0100",
-     "start": "2026-11-19T14:14:41.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Quellenplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Quellenplatz",
-    "name": "R407-106",
-    "owner": "WL",
-    "parentName": "R407-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     407
-    ],
-    "time": {
-     "end": "2026-11-19T15:14:00.000+0100",
-     "start": "2026-11-19T14:14:41.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Quellenplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel",
-    "name": "R411-106",
-    "owner": "WL",
-    "parentName": "R411-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     411
-    ],
-    "time": {
-     "end": "2026-11-19T15:13:00.000+0100",
-     "start": "2026-11-19T14:14:11.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel",
-    "name": "R423-106",
-    "owner": "WL",
-    "parentName": "R423-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     423
-    ],
-    "time": {
-     "end": "2026-11-19T15:13:00.000+0100",
-     "start": "2026-11-19T14:14:11.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel",
-    "name": "R424-106",
-    "owner": "WL",
-    "parentName": "R424-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     424
-    ],
-    "time": {
-     "end": "2026-11-19T15:13:00.000+0100",
-     "start": "2026-11-19T14:14:11.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel",
-    "name": "R425-106",
-    "owner": "WL",
-    "parentName": "R425-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     425
-    ],
-    "time": {
-     "end": "2026-11-19T15:13:00.000+0100",
-     "start": "2026-11-19T14:14:11.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel",
-    "name": "R426-106",
-    "owner": "WL",
-    "parentName": "R426-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     426
-    ],
-    "time": {
-     "end": "2026-11-19T15:13:00.000+0100",
-     "start": "2026-11-19T14:14:11.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel",
-    "name": "R427-106",
-    "owner": "WL",
-    "parentName": "R427-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     427
-    ],
-    "time": {
-     "end": "2026-11-19T15:13:00.000+0100",
-     "start": "2026-11-19T14:14:11.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel",
-    "name": "R427-118",
-    "owner": "WL",
-    "parentName": "R427-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     427
-    ],
-    "time": {
-     "end": "2026-11-19T15:14:00.000+0100",
-     "start": "2026-11-19T14:16:11.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Dörfelstraße",
-    "name": "R427-162",
-    "owner": "WL",
-    "parentName": "R427-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     427
-    ],
-    "time": {
-     "end": "2026-11-19T15:18:00.000+0100",
-     "start": "2026-11-19T14:19:12.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Dörfelstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Haltestelle\naufgelassen!\n\nStop closed!",
     "name": "R47-0",
     "owner": "WL",
@@ -2161,6 +1516,29 @@
      "start": "2026-11-19T15:00:14.000+0100"
     },
     "title": "Haltestelle\naufgelassen!\n\nStop closed!"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R493-142",
+    "owner": "WL",
+    "parentName": "R493-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     493
+    ],
+    "time": {
+     "end": "2026-11-19T16:11:00.000+0100",
+     "start": "2026-11-19T15:11:47.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2188,370 +1566,163 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Hauptbahnhof S U ",
-    "name": "R831-118",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R524-109",
     "owner": "WL",
-    "parentName": "R831-118",
+    "parentName": "R524-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "18"
+     "9"
     ],
     "relatedStops": [
-     831
+     524
     ],
     "time": {
-     "end": "2026-11-19T15:16:00.000+0100",
-     "start": "2026-11-19T14:12:40.000+0100"
+     "end": "2026-11-19T16:24:00.000+0100",
+     "start": "2026-11-19T15:24:18.000+0100"
     },
-    "title": "Schadhafter Zug\nBetrieb ab Hauptbahnhof S U "
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R831-162",
+    "name": "R524-142",
     "owner": "WL",
-    "parentName": "R831-162",
+    "parentName": "R524-142",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "62"
+     "42"
     ],
     "relatedStops": [
-     831
+     524
     ],
     "time": {
-     "end": "2026-11-19T15:18:00.000+0100",
-     "start": "2026-11-19T14:18:40.000+0100"
+     "end": "2026-11-19T16:11:00.000+0100",
+     "start": "2026-11-19T15:11:47.000+0100"
     },
     "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Hauptbahnhof S U ",
-    "name": "R832-118",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R526-109",
     "owner": "WL",
-    "parentName": "R832-118",
+    "parentName": "R526-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "18"
+     "9"
     ],
     "relatedStops": [
-     832
+     526
     ],
     "time": {
-     "end": "2026-11-19T15:16:00.000+0100",
-     "start": "2026-11-19T14:12:40.000+0100"
+     "end": "2026-11-19T16:24:00.000+0100",
+     "start": "2026-11-19T15:24:18.000+0100"
     },
-    "title": "Schadhafter Zug\nBetrieb ab Hauptbahnhof S U "
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R832-162",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R530-109",
     "owner": "WL",
-    "parentName": "R832-162",
+    "parentName": "R530-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "62"
+     "9"
     ],
     "relatedStops": [
-     832
+     530
     ],
     "time": {
-     "end": "2026-11-19T15:18:00.000+0100",
-     "start": "2026-11-19T14:18:40.000+0100"
+     "end": "2026-11-19T16:24:00.000+0100",
+     "start": "2026-11-19T15:24:18.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Zug\nZüge halten bei Li. O Ri. Bruno-Marek-Allee",
-    "name": "R833-118",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R531-109",
     "owner": "WL",
-    "parentName": "R833-118",
+    "parentName": "R531-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "18"
+     "9"
     ],
     "relatedStops": [
-     833
+     531
     ],
     "time": {
-     "end": "2026-11-19T15:16:00.000+0100",
-     "start": "2026-11-19T14:12:40.000+0100"
+     "end": "2026-11-19T16:24:00.000+0100",
+     "start": "2026-11-19T15:24:18.000+0100"
     },
-    "title": "Schadhafter Zug\nZüge halten bei Li. O Ri. Bruno-Marek-Allee"
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R833-162",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R532-109",
     "owner": "WL",
-    "parentName": "R833-162",
+    "parentName": "R532-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "62"
+     "9"
     ],
     "relatedStops": [
-     833
+     532
     ],
     "time": {
-     "end": "2026-11-19T15:18:00.000+0100",
-     "start": "2026-11-19T14:18:40.000+0100"
+     "end": "2026-11-19T16:24:00.000+0100",
+     "start": "2026-11-19T15:24:18.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R834-118",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R556-109",
     "owner": "WL",
-    "parentName": "R834-118",
+    "parentName": "R556-109",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "18"
+     "9"
     ],
     "relatedStops": [
-     834
+     556
     ],
     "time": {
-     "end": "2026-11-19T15:12:00.000+0100",
-     "start": "2026-11-19T14:12:40.000+0100"
+     "end": "2026-11-19T16:24:00.000+0100",
+     "start": "2026-11-19T15:24:18.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R835-118",
-    "owner": "WL",
-    "parentName": "R835-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     835
-    ],
-    "time": {
-     "end": "2026-11-19T15:12:00.000+0100",
-     "start": "2026-11-19T14:12:40.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel",
-    "name": "R847-118",
-    "owner": "WL",
-    "parentName": "R847-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     847
-    ],
-    "time": {
-     "end": "2026-11-19T15:14:00.000+0100",
-     "start": "2026-11-19T14:16:10.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Dörfelstraße",
-    "name": "R847-162",
-    "owner": "WL",
-    "parentName": "R847-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     847
-    ],
-    "time": {
-     "end": "2026-11-19T15:18:00.000+0100",
-     "start": "2026-11-19T14:19:11.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Dörfelstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel",
-    "name": "R848-118",
-    "owner": "WL",
-    "parentName": "R848-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     848
-    ],
-    "time": {
-     "end": "2026-11-19T15:14:00.000+0100",
-     "start": "2026-11-19T14:16:10.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Dörfelstraße",
-    "name": "R848-162",
-    "owner": "WL",
-    "parentName": "R848-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     848
-    ],
-    "time": {
-     "end": "2026-11-19T15:18:00.000+0100",
-     "start": "2026-11-19T14:19:11.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Dörfelstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel",
-    "name": "R849-118",
-    "owner": "WL",
-    "parentName": "R849-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     849
-    ],
-    "time": {
-     "end": "2026-11-19T15:14:00.000+0100",
-     "start": "2026-11-19T14:16:10.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Dörfelstraße",
-    "name": "R849-162",
-    "owner": "WL",
-    "parentName": "R849-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     849
-    ],
-    "time": {
-     "end": "2026-11-19T15:18:00.000+0100",
-     "start": "2026-11-19T14:19:11.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Dörfelstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel",
-    "name": "R851-118",
-    "owner": "WL",
-    "parentName": "R851-118",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedStops": [
-     851
-    ],
-    "time": {
-     "end": "2026-11-19T15:14:00.000+0100",
-     "start": "2026-11-19T14:16:10.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Dörfelstraße",
-    "name": "R851-162",
-    "owner": "WL",
-    "parentName": "R851-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     851
-    ],
-    "time": {
-     "end": "2026-11-19T15:18:00.000+0100",
-     "start": "2026-11-19T14:19:11.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Dörfelstraße"
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
