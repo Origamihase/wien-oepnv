@@ -738,6 +738,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1: Verkehrsunfall",
+    "description": "Linie 1: Betrieb nur zwischen Reumannplatz U und Radetzkyplatz. Weiterfahrt zum Praterstern S U. Ersatz: Linien 4A und 80A. Voraussichtliche Dauer: 13:15 Uhr. Grund: Verkehrsunfall im Bereich Löwengasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "6c9455b3b094392684c322ab8f2b761a9537a1a83acceaa982e1237d79b94be8",
+    "pubDate": "2026-11-19T12:37:00+01:00",
+    "starts_at": "2026-11-19T12:37:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=1|D=2026-11-19|TK=1 verkehrsunfall",
+    "_wl_ids": [
+      "I20261119-0014"
+    ],
+    "_incident_start": "2026-11-19T12:37:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -746,6 +762,30 @@
     "starts_at": "2026-11-19T05:00:16+01:00",
     "ends_at": "2026-11-19T23:00:00+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-19|TK=bhf hütteldorf öbb ersatzbus für 80"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e105ca57f2aa7daecce2d0c7b4277004ad37ec7461843c457618fc8980286aef",
+    "pubDate": "2026-11-19T12:38:00+01:00",
+    "starts_at": "2026-11-19T12:39:00+01:00",
+    "ends_at": "2026-11-19T13:38:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-11-19|TK=fahrtbehinderung verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Verkehrsunfall Betrieb ab Radetzkyplatz",
+    "description": "Verkehrsunfall\nBetrieb ab Radetzkyplatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "6b4c2d7c86160c3f3fb4e36caf756ca2f975f559fb2c51a20160d9326b7483d4",
+    "pubDate": "2026-11-19T12:40:00+01:00",
+    "starts_at": "2026-11-19T12:40:00+01:00",
+    "ends_at": "2026-11-19T13:38:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-11-19|TK=verkehrsunfall betrieb ab radetzkyplatz"
   },
   {
     "source": "Wiener Linien",
@@ -962,6 +1002,22 @@
       "I20261119-0013"
     ],
     "_incident_start": "2026-11-19T12:27:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Verspätungen",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
+    "pubDate": "2026-11-19T12:56:00+01:00",
+    "starts_at": "2026-11-19T12:56:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U6|D=2026-11-19|TK=u6 verspätungen",
+    "_wl_ids": [
+      "I20261119-0015"
+    ],
+    "_incident_start": "2026-11-19T12:56:00+01:00"
   },
   {
     "source": "Wiener Linien",
