@@ -3,13 +3,13 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "1/71/D: Haltestellenverlegung",
-    "description": "<p><strong><u>Haltestellenauflassung der Linien D, 1 und 71 in beiden Richtungen</u></strong></p><p><strong><u>Haltestelle:</u></strong> Rathausplatz, Burgtheater</p><p><strong><u>Dauer:</u></strong> <br>13. November 2026 bis 20. Dezember 2026<br>an Freitagen, Samstagen, Sonntagen sowie am 08. Dezember<br>jeweils von etwa 15:00 Uhr bis 22:30 Uhr</p><p><strong><u>Grund:</u></strong> Christkindlmarkt</p><p><strong><u>Ersatz:</u></strong> </p><ul><li><p>Schottentor U</p></li><li><p>Parlament, U Volkstheater</p></li></ul><p></p>",
+    "description": "<p><strong><u>Haltestellenauflassung der Linien D, 1 und 71 in beiden Richtungen</u></strong></p><p><strong><u>Haltestelle:</u></strong> Rathausplatz, Burgtheater</p><p><strong><u>Dauer:</u></strong><br>13. November 2026 bis 20. Dezember 2026<br>an Freitagen, Samstagen, Sonntagen sowie am 08. Dezember<br>jeweils von etwa 15:00 Uhr bis 22:30 Uhr</p><p><strong><u>Grund:</u></strong> Christkindlmarkt</p><p><strong><u>Ersatz:</u></strong></p><ul><li><p>Schottentor U</p></li><li><p>Parlament, U Volkstheater</p></li></ul><p><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/D_1_71_Christkindlmarkt_Rathauspl.png\" alt=\"Skizze\"></p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "d962355223a7a9cd785ccb8198946ea2a4bcb7aa6579a57ac7115a46abaa33fa",
-    "pubDate": "2026-11-06T06:00:00+01:00",
-    "starts_at": "2026-11-13T00:00:00+01:00",
+    "pubDate": "2026-11-19T13:59:00+01:00",
+    "starts_at": "2026-11-19T13:59:00+01:00",
     "ends_at": "2026-12-20T22:30:00+01:00",
-    "_identity": "wl|hinweis|L=1,71,D|D=2026-11-13|TK=haltestellenverlegung"
+    "_identity": "wl|hinweis|L=1,71,D|D=2026-11-19|TK=haltestellenverlegung"
   },
   {
     "source": "Wiener Linien",
@@ -674,6 +674,70 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "18: Schadhaftes Fahrzeug",
+    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "9211cb3d8ce68889c7066532dfb5410be52f492f45bf8c859a2229f0a241d27f",
+    "pubDate": "2026-11-19T14:11:00+01:00",
+    "starts_at": "2026-11-19T14:11:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=18|D=2026-11-19|TK=18 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261119-0019"
+    ],
+    "_incident_start": "2026-11-19T14:11:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b5c18c502bca3e563ccf2d3da3d06868790f6d4f4fe3fd3fc1429807b9bed37f",
+    "pubDate": "2026-11-19T14:12:40+01:00",
+    "starts_at": "2026-11-19T14:12:41+01:00",
+    "ends_at": "2026-11-19T15:12:00+01:00",
+    "_identity": "wl|störung|L=18|D=2026-11-19|TK=fahrtbehinderung schadhafter zug"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Schadhafter Zug Betrieb ab Arbeitergasse, Gürtel",
+    "description": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "20999f0d135a589cb0aecbf18fcdfb8b9fe09060ab870ee4082f5e51c50e0919",
+    "pubDate": "2026-11-19T14:16:10+01:00",
+    "starts_at": "2026-11-19T14:16:11+01:00",
+    "ends_at": "2026-11-19T15:14:00+01:00",
+    "_identity": "wl|störung|L=18|D=2026-11-19|TK=schadhafter zug betrieb ab arbeitergasse gürtel"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Schadhafter Zug Betrieb ab Hauptbahnhof S U",
+    "description": "Schadhafter Zug\nBetrieb ab Hauptbahnhof S U",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1481282976abbbeb98fced51d382f5dd81b09c2ebae80e9e564e04cd2f19d1f9",
+    "pubDate": "2026-11-19T14:12:40+01:00",
+    "starts_at": "2026-11-19T14:16:41+01:00",
+    "ends_at": "2026-11-19T15:16:00+01:00",
+    "_identity": "wl|störung|L=18|D=2026-11-19|TK=schadhafter zug betrieb ab hauptbahnhof s u"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Schadhafter Zug Züge halten bei Li. O Ri. Bruno-Marek-Allee",
+    "description": "Schadhafter Zug\nZüge halten bei Li. O Ri. Bruno-Marek-Allee",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "465efa7220ff50b56a928f409cb6eb1522e1473fe99db97fe4e433948536f660",
+    "pubDate": "2026-11-19T14:12:40+01:00",
+    "starts_at": "2026-11-19T14:12:40+01:00",
+    "ends_at": "2026-11-19T15:16:00+01:00",
+    "_identity": "wl|störung|L=18|D=2026-11-19|TK=schadhafter zug züge halten bei li o ri bruno marek allee"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "1: Gleisbauarbeiten",
     "description": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A und 65A. Voraussichtliche Dauer: Mitte Dezember 2026. Grund: Gleisbauarbeiten im Bereich Stefan-Fadinger-Platz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -744,7 +808,7 @@
     "guid": "6c9455b3b094392684c322ab8f2b761a9537a1a83acceaa982e1237d79b94be8",
     "pubDate": "2026-11-19T12:37:00+01:00",
     "starts_at": "2026-11-19T12:37:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-19T15:01:00+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-19|TK=1 verkehrsunfall",
     "_wl_ids": [
       "I20261119-0014"
@@ -906,22 +970,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "31: Falschparker Betrieb über Jägerstraße",
-    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7fc5dec6c1828e780870a54d956a3e47494ba66068f3920d342fbe84b2c28065",
-    "pubDate": "2026-11-19T13:08:36+01:00",
-    "starts_at": "2026-11-19T13:13:06+01:00",
-    "ends_at": "2026-11-19T14:24:00+01:00",
-    "_identity": "wl|störung|L=31|D=2026-11-19|TK=falschparker",
-    "_wl_ids": [
-      "I20261119-0016"
-    ],
-    "_incident_start": "2026-11-19T13:13:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -946,6 +994,42 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5",
+    "pubDate": "2026-11-19T14:11:11+01:00",
+    "starts_at": "2026-11-19T14:11:11+01:00",
+    "ends_at": "2026-11-19T15:10:00+01:00",
+    "_identity": "wl|störung|L=5|D=2026-11-19|TK=falschparker"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "11dae11dafaf0878f07d1e1c010007790105e67c155ad06ba2cd6c87388c9e93",
+    "pubDate": "2026-11-19T14:18:40+01:00",
+    "starts_at": "2026-11-19T14:18:44+01:00",
+    "ends_at": "2026-11-19T15:18:00+01:00",
+    "_identity": "wl|störung|L=62|D=2026-11-19|TK=fahrtbehinderung schadhafter zug"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62: Schadhafter Zug Betrieb ab Dörfelstraße",
+    "description": "Schadhafter Zug\nBetrieb ab Dörfelstraße",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "88c7406c51828594f73a8ba477ff47532264dc347460a3e4cc1b19483b4531e3",
+    "pubDate": "2026-11-19T14:19:11+01:00",
+    "starts_at": "2026-11-19T14:19:14+01:00",
+    "ends_at": "2026-11-19T15:18:00+01:00",
+    "_identity": "wl|störung|L=62|D=2026-11-19|TK=schadhafter zug betrieb ab dörfelstrasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -954,6 +1038,46 @@
     "starts_at": "2026-11-19T04:40:15+01:00",
     "ends_at": "2026-11-20T01:00:00+01:00",
     "_identity": "wl|störung|L=66A|D=2026-11-19|TK=busse halten salvatorianerplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Schadhaftes Fahrzeug",
+    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4281aa32ed45a54c560c823ba6cd35e8febae67fca71fa894a80ce4b806088d3",
+    "pubDate": "2026-11-19T14:11:00+01:00",
+    "starts_at": "2026-11-19T14:11:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=6|D=2026-11-19|TK=6 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261119-0019"
+    ],
+    "_incident_start": "2026-11-19T14:11:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Schadhafter Zug Betrieb ab Arbeitergasse, Gürtel",
+    "description": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "351298cb86a051481108ba54201815eb24d77bce03beec1b745c1e898a6a13a2",
+    "pubDate": "2026-11-19T14:14:11+01:00",
+    "starts_at": "2026-11-19T14:14:11+01:00",
+    "ends_at": "2026-11-19T15:13:00+01:00",
+    "_identity": "wl|störung|L=6|D=2026-11-19|TK=schadhafter zug betrieb ab arbeitergasse gürtel"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Schadhafter Zug Betrieb ab Quellenplatz",
+    "description": "Schadhafter Zug\nBetrieb ab Quellenplatz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "0b11f7760dccff159583551ef897645a2c02ea5c875383d89a793921f25377fb",
+    "pubDate": "2026-11-19T14:12:11+01:00",
+    "starts_at": "2026-11-19T14:14:41+01:00",
+    "ends_at": "2026-11-19T15:14:00+01:00",
+    "_identity": "wl|störung|L=6|D=2026-11-19|TK=schadhafter zug betrieb ab quellenplatz"
   },
   {
     "source": "Wiener Linien",
@@ -994,6 +1118,22 @@
       "I20261119-0017"
     ],
     "_incident_start": "2026-11-19T13:37:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Verspätungen",
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f",
+    "pubDate": "2026-11-19T14:15:00+01:00",
+    "starts_at": "2026-11-19T14:15:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U4|D=2026-11-19|TK=u4 verspätungen",
+    "_wl_ids": [
+      "I20261119-0020"
+    ],
+    "_incident_start": "2026-11-19T14:15:00+01:00"
   },
   {
     "source": "Wiener Linien",

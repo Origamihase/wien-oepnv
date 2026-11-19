@@ -3,21 +3,113 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R2193-131|2026-11-19T13:12:36.000+0100": {
-   "incident": "I20261119-0016",
-   "title": "Falschparker\nBetrieb über Jägerstraße"
+  "R303-118|2026-11-19T14:12:41.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
   },
-  "R2195-131|2026-11-19T13:13:06.000+0100": {
-   "incident": "I20261119-0016",
-   "title": "Falschparker\nBetrieb ab Gaußplatz"
+  "R304-118|2026-11-19T14:12:41.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
   },
-  "R2196-131|2026-11-19T13:13:06.000+0100": {
-   "incident": "I20261119-0016",
-   "title": "Falschparker\nBetrieb ab Gaußplatz"
+  "R398-106|2026-11-19T14:14:41.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Quellenplatz"
   },
-  "R2198-131|2026-11-19T13:08:36.000+0100": {
-   "incident": "I20261119-0016",
-   "title": "Fahrtbehinderung\nFalschparker"
+  "R398-118|2026-11-19T14:16:41.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Hauptbahnhof S U "
+  },
+  "R399-106|2026-11-19T14:12:11.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Quellenplatz"
+  },
+  "R399-118|2026-11-19T14:16:41.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Hauptbahnhof S U "
+  },
+  "R400-106|2026-11-19T14:12:11.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Quellenplatz"
+  },
+  "R400-118|2026-11-19T14:12:41.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Hauptbahnhof S U "
+  },
+  "R401-106|2026-11-19T14:12:11.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Quellenplatz"
+  },
+  "R402-106|2026-11-19T14:14:41.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Quellenplatz"
+  },
+  "R407-106|2026-11-19T14:14:41.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Quellenplatz"
+  },
+  "R411-106|2026-11-19T14:14:11.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
+  },
+  "R423-106|2026-11-19T14:14:11.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
+  },
+  "R424-106|2026-11-19T14:14:11.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
+  },
+  "R425-106|2026-11-19T14:14:11.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
+  },
+  "R426-106|2026-11-19T14:14:11.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
+  },
+  "R427-106|2026-11-19T14:14:11.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
+  },
+  "R427-118|2026-11-19T14:16:11.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
+  },
+  "R831-118|2026-11-19T14:12:40.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Hauptbahnhof S U "
+  },
+  "R832-118|2026-11-19T14:12:40.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Hauptbahnhof S U "
+  },
+  "R833-118|2026-11-19T14:12:40.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nZüge halten bei Li. O Ri. Bruno-Marek-Allee"
+  },
+  "R834-118|2026-11-19T14:12:40.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R835-118|2026-11-19T14:12:40.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R847-118|2026-11-19T14:16:10.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
+  },
+  "R848-118|2026-11-19T14:16:10.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
+  },
+  "R849-118|2026-11-19T14:16:10.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
+  },
+  "R851-118|2026-11-19T14:16:10.000+0100": {
+   "incident": "I20261119-0019",
+   "title": "Schadhafter Zug\nBetrieb ab Arbeitergasse, Gürtel"
   }
  }
 }
