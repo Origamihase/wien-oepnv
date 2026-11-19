@@ -666,6 +666,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5/12: Schadhaftes Fahrzeug",
+    "description": "Linie 5: Unregelmäßige Intervalle in beiden Richtungen. Linie 12: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "d4e34f09d4feef2c9a3d0b25bc620ab6468efd635b84d9e7f803ea88c87e5d21",
+    "pubDate": "2026-11-19T19:41:00+01:00",
+    "starts_at": "2026-11-19T19:41:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=12,5|D=2026-11-19|TK=5 12 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261119-0049"
+    ],
+    "_incident_start": "2026-11-19T19:41:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "13A: Demonstration Busse halten am Bundesländerplatz",
     "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -690,22 +706,6 @@
     "starts_at": "2026-07-13T14:07:00+02:00",
     "ends_at": "2026-12-31T14:07:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-07-13|TK=haltestelle stadionbrücke im rahmen des strassenbahn neubaus der linie 18 aufgelassen bitte auf nahegelegene haltestellen ausweichen"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
-    "pubDate": "2026-11-19T18:37:06+01:00",
-    "starts_at": "2026-11-19T18:50:08+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=18|D=2026-11-19|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261119-0044"
-    ],
-    "_incident_start": "2026-11-19T18:41:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -926,6 +926,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "37/38: Schadhafter Zug Züge halten bei Linien 37 und 38!",
+    "description": "Schadhafter Zug\nZüge halten\nbei Linien 37\nund 38!",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "07854379dde80c35d7ee783161b7f5240fa9961bd68e30a01892068718c32b61",
+    "pubDate": "2026-11-19T19:45:12+01:00",
+    "starts_at": "2026-11-19T19:45:12+01:00",
+    "ends_at": "2026-11-19T20:44:00+01:00",
+    "_identity": "wl|störung|L=37,38|D=2026-11-19|TK=schadhafter zug züge halten bei linien 37 und 38"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37/D: Schadhafter Zug Umleitung bis Alserbachstraße über D und 37",
+    "description": "Schadhafter Zug\nUmleitung bis\nAlserbachstraße\nüber D und 37",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b2421569b26891ccb8320cbf9fab0fde60102e8c948e063d9752e417f6752436",
+    "pubDate": "2026-11-19T19:44:42+01:00",
+    "starts_at": "2026-11-19T19:44:42+01:00",
+    "ends_at": "2026-11-19T20:44:00+01:00",
+    "_identity": "wl|störung|L=37,D|D=2026-11-19|TK=umleitung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -934,22 +958,6 @@
     "starts_at": "2026-11-19T00:00:28+01:00",
     "ends_at": "2026-11-19T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-11-19|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38: Aktuelle Wetterlage",
-    "description": "Linie 38: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Voraussichtliche Dauer: 18:45 Uhr. Grund: Aktuelle Wetterlage im Haltestellenbereich Paradisgasse.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "17bd41294bfaf719edc6e8bbedc53df82ea26d96df008351534db7cc43866547",
-    "pubDate": "2026-11-19T18:02:00+01:00",
-    "starts_at": "2026-11-19T18:02:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=38|D=2026-11-19|TK=38 aktuelle wetterlage",
-    "_wl_ids": [
-      "I20261119-0040"
-    ],
-    "_incident_start": "2026-11-19T18:02:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -971,17 +979,13 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "46: Fahrtbehinderung wegen Demonstration",
-    "description": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nwegen Demonstration",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "9498a247db987f756d9ff4e93bd5a49a60bdb71931ac67008f8561fd089869da",
-    "pubDate": "2026-11-19T17:56:00+01:00",
+    "pubDate": "2026-11-19T18:06:34+01:00",
     "starts_at": "2026-11-19T18:06:34+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=46|D=2026-11-19|TK=demonstration",
-    "_wl_ids": [
-      "I20261119-0041"
-    ],
-    "_incident_start": "2026-11-19T17:56:00+01:00"
+    "ends_at": "2026-11-19T23:45:00+01:00",
+    "_identity": "wl|störung|L=46|D=2026-11-19|TK=demonstration"
   },
   {
     "source": "Wiener Linien",
@@ -1062,6 +1066,22 @@
       "I20261119-0045"
     ],
     "_incident_start": "2026-11-19T19:08:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Schadhaftes Fahrzeug",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
+    "pubDate": "2026-11-19T19:57:00+01:00",
+    "starts_at": "2026-11-19T19:57:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U3|D=2026-11-19|TK=u3 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261119-0050"
+    ],
+    "_incident_start": "2026-11-19T19:57:00+01:00"
   },
   {
     "source": "Wiener Linien",

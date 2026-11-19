@@ -2,58 +2,5 @@
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
- "owners": {
-  "R2420-118|2026-11-19T18:37:07.000+0100": {
-   "incident": "I20261119-0044",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R2422-118|2026-11-19T18:50:08.000+0100": {
-   "incident": "I20261119-0044",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R2619-118|2026-11-19T18:37:06.000+0100": {
-   "incident": "I20261119-0044",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R2632-118|2026-11-19T18:37:06.000+0100": {
-   "incident": "I20261119-0044",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R2750-118|2026-11-19T18:50:08.000+0100": {
-   "incident": "I20261119-0044",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R293-118|2026-11-19T18:37:06.000+0100": {
-   "incident": "I20261119-0044",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R3602-118|2026-11-19T18:37:07.000+0100": {
-   "incident": "I20261119-0044",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R3603-118|2026-11-19T18:37:07.000+0100": {
-   "incident": "I20261119-0044",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R3604-118|2026-11-19T18:37:07.000+0100": {
-   "incident": "I20261119-0044",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R3605-118|2026-11-19T18:50:08.000+0100": {
-   "incident": "I20261119-0044",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R3606-118|2026-11-19T18:50:08.000+0100": {
-   "incident": "I20261119-0044",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R3607-118|2026-11-19T18:50:08.000+0100": {
-   "incident": "I20261119-0044",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R3608-118|2026-11-19T18:50:08.000+0100": {
-   "incident": "I20261119-0044",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  }
- }
+ "owners": {}
 }
