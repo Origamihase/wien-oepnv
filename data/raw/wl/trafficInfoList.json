@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261020-0029, I20261119-0028-F01, I20261119-0028-F02, I20261119-0027-F01, I20261119-0027-F02, I20261119-0032, I20261119-0033, I20261119-0034, I20261119-0035, I20261119-0036, I20261119-0037, I20261119-0038, I20261119-0031, I20261119-0039, I20261119-0041, I20261119-0044-F01, I20261119-0042, I20261119-0040, I20261119-0043-F01, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261119-0042, I20261119-0045-F01, I20261119-0046-F01, I20260925-0011, I20260909-0007, I20261119-0048, I20261119-0040, I20261119-0044-F01, I20261119-0041-F01, I20261020-0029, I20261119-0047"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1876-101, R1880-101, R1881-101, R1875-101, R1882-101, R1884-101, R1883-101, R3886-480, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R2373-125, R2380-627, R293-474, R318-437, R2345-127, R2379-627, R2373-126, R2373-127, R2372-125, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R234-143, R246-144, R236-144, R237-144, R1373-144, R1394-146, R1393-146, R1392-146, R1372-144, R1371-144, R235-143, R237-143, R236-143, R210-138, R209-138, R208-138, R1223-138, R1221-138, R1222-138, R1227-138, R1226-138, R1225-138, R1224-138, R2985-138, R1345-144, R215-138, R216-138, R1214-138, R1215-138, R1216-138, R1217-138, R1218-138, R2964-138, R1375-146, R1376-146, R1377-146, R217-144, R1345-143, R1378-146, R218-144, R219-144, R1360-144, R217-143, R219-143, R218-143, R1361-144, R555-144, R276-144, R293-118, R2632-118, R2619-118, R3604-118, R3603-118, R2420-118, R3602-118, R3608-118, R3607-118, R2422-118, R3606-118, R3605-118, R2750-118, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1876-101, R1875-101, R1882-101, R1884-101, R1883-101, R1881-101, R1880-101, R3886-480, R2373-127, R2373-125, R2372-125, R2371-125, R2343-626, R2359-125, R2370-125, R2380-627, R293-474, R318-437, R2345-127, R2379-627, R2373-126, R2378-627, R2343-125, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R234-143, R237-144, R236-144, R246-144, R1392-146, R1393-146, R1373-144, R1372-144, R1371-144, R1394-146, R235-143, R237-143, R236-143, R2632-118, R293-118, R2619-118, R3604-118, R3602-118, R2420-118, R3603-118, R3606-118, R2750-118, R3605-118, R3607-118, R3608-118, R2422-118, R663-413, R660-413, R662-413, R665-413, R3528-413, R3527-413, R688-413, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,602 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "25": "ptTram"
-     }
-    },
-    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "25: Rettungseinsatz"
-      }
-     }
-    ],
-    "location": "Donaufelder Straße 164",
-    "name": "I20261119-0027-F01",
-    "owner": "WL",
-    "parentName": "I20261119-0027",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 125,
-      "lineName": "25",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-19T17:02:00.000+0100",
-     "lastUpdate": "2026-11-19T17:02:00.000+0100",
-     "resume": "2026-11-19T17:02:00.000+0100",
-     "start": "2026-11-19T16:09:00.000+0100"
-    },
-    "title": "25: Rettungseinsatz"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "26": "ptTram"
-     }
-    },
-    "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 26: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 26: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "26: Rettungseinsatz"
-      }
-     }
-    ],
-    "location": "Donaufelder Straße 164",
-    "name": "I20261119-0027-F02",
-    "owner": "WL",
-    "parentName": "I20261119-0027",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "26"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 126,
-      "lineName": "26",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-19T17:02:00.000+0100",
-     "lastUpdate": "2026-11-19T17:02:00.000+0100",
-     "resume": "2026-11-19T17:02:00.000+0100",
-     "start": "2026-11-19T16:09:00.000+0100"
-    },
-    "title": "26: Rettungseinsatz"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "6": "ptTram"
-     }
-    },
-    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "6: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261119-0028-F01",
-    "owner": "WL",
-    "parentName": "I20261119-0028",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 106,
-      "lineName": "6",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     3435
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-19T16:22:00.000+0100",
-     "lastUpdate": "2026-11-19T16:22:00.000+0100",
-     "resume": "2026-11-19T16:22:00.000+0100",
-     "start": "2026-11-19T16:17:00.000+0100"
-    },
-    "title": "6: Polizeieinsatz"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "11": "ptTram"
-     }
-    },
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "11: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261119-0028-F02",
-    "owner": "WL",
-    "parentName": "I20261119-0028",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 111,
-      "lineName": "11",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     3435
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-19T16:22:00.000+0100",
-     "lastUpdate": "2026-11-19T16:22:00.000+0100",
-     "resume": "2026-11-19T16:22:00.000+0100",
-     "start": "2026-11-19T16:17:00.000+0100"
-    },
-    "title": "11: Polizeieinsatz"
-   },
-   {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-       "title": "U3: Betriebsstörung"
-      }
-     }
-    ],
-    "name": "I20261119-0031",
-    "owner": "WL",
-    "parentName": "I20261119-0031",
-    "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-19T17:11:00.000+0100",
-     "lastUpdate": "2026-11-19T17:47:00.000+0100",
-     "resume": "2026-11-19T17:10:00.000+0100",
-     "start": "2026-11-19T17:10:00.000+0100"
-    },
-    "title": "U3: Betriebsstörung"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-       "title": "U6: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261119-0032",
-    "owner": "WL",
-    "parentName": "I20261119-0032",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4623
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-19T17:33:00.000+0100",
-     "lastUpdate": "2026-11-19T17:33:00.000+0100",
-     "resume": "2026-11-19T17:31:00.000+0100",
-     "start": "2026-11-19T17:31:00.000+0100"
-    },
-    "title": "U6: Rettungseinsatz"
-   },
-   {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
-      "4A": "ptBusCity"
-     }
-    },
-    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie 4A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 4A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "4A: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261119-0033",
-    "owner": "WL",
-    "parentName": "I20261119-0033",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "4A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 404,
-      "lineName": "4A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-19T17:34:00.000+0100",
-     "lastUpdate": "2026-11-19T17:34:00.000+0100",
-     "resume": "2026-11-19T17:34:00.000+0100",
-     "start": "2026-11-19T17:34:00.000+0100"
-    },
-    "title": "4A: Verkehrsüberlastung"
-   },
-   {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
-      "16A": "ptBusCity"
-     }
-    },
-    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie 16A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 16A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "16A: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261119-0034",
-    "owner": "WL",
-    "parentName": "I20261119-0034",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "16A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 416,
-      "lineName": "16A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-19T17:35:00.000+0100",
-     "lastUpdate": "2026-11-19T17:35:00.000+0100",
-     "resume": "2026-11-19T17:34:00.000+0100",
-     "start": "2026-11-19T17:34:00.000+0100"
-    },
-    "title": "16A: Verkehrsüberlastung"
-   },
-   {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
-      "59A": "ptBusCity"
-     }
-    },
-    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "59A: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261119-0035",
-    "owner": "WL",
-    "parentName": "I20261119-0035",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "59A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 459,
-      "lineName": "59A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-19T17:35:00.000+0100",
-     "lastUpdate": "2026-11-19T17:35:00.000+0100",
-     "resume": "2026-11-19T17:35:00.000+0100",
-     "start": "2026-11-19T17:35:00.000+0100"
-    },
-    "title": "59A: Verkehrsüberlastung"
-   },
-   {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
-      "60": "ptTram"
-     }
-    },
-    "description": "Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie 60:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 60:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "60: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261119-0036",
-    "owner": "WL",
-    "parentName": "I20261119-0036",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 160,
-      "lineName": "60",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-19T17:35:00.000+0100",
-     "lastUpdate": "2026-11-19T17:35:00.000+0100",
-     "resume": "2026-11-19T17:35:00.000+0100",
-     "start": "2026-11-19T17:35:00.000+0100"
-    },
-    "title": "60: Verkehrsüberlastung"
-   },
-   {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
-      "O": "ptTram"
-     }
-    },
-    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "O: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261119-0037",
-    "owner": "WL",
-    "parentName": "I20261119-0037",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "O"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 170,
-      "lineName": "O",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-19T17:38:00.000+0100",
-     "lastUpdate": "2026-11-19T17:38:00.000+0100",
-     "resume": "2026-11-19T17:37:00.000+0100",
-     "start": "2026-11-19T17:37:00.000+0100"
-    },
-    "title": "O: Verkehrsüberlastung"
-   },
-   {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
-      "27A": "ptBusCity"
-     }
-    },
-    "description": "Linie 27A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie 27A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 27A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie 27A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-       "title": "27A: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261119-0038",
-    "owner": "WL",
-    "parentName": "I20261119-0038",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "27A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 427,
-      "lineName": "27A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-19T17:41:00.000+0100",
-     "lastUpdate": "2026-11-19T17:41:00.000+0100",
-     "resume": "2026-11-19T17:41:00.000+0100",
-     "start": "2026-11-19T17:41:00.000+0100"
-    },
-    "title": "27A: Verkehrsüberlastung"
-   },
-   {
-    "alertCause": "heavy traffic",
-    "alertCauseId": 60,
-    "attributes": {
-     "relatedLineTypes": {
-      "63A": "ptBusCity"
-     }
-    },
-    "description": "Linie 63A: Unregelmäßige Intervalle in Richtung Am Rosenhügel. Grund: Verkehrsüberlastung.",
-    "descriptionHTML": "<p>Linie 63A:<br>Unregelmäßige Intervalle in Richtung Am Rosenhügel. <br><br>Grund: Verkehrsüberlastung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 63A:<br>Unregelmäßige Intervalle in Richtung Am Rosenhügel. <br><br>Grund: Verkehrsüberlastung.</p>",
-       "descriptionPlain": "Linie 63A: Unregelmäßige Intervalle in Richtung Am Rosenhügel. Grund: Verkehrsüberlastung.",
-       "title": "63A: Verkehrsüberlastung"
-      }
-     }
-    ],
-    "name": "I20261119-0039",
-    "owner": "WL",
-    "parentName": "I20261119-0039",
-    "priority": "1",
-    "reasonId": 46,
-    "reasonName": "Verkehrsüberlastung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "63A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 463,
-      "lineName": "63A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-19T17:56:00.000+0100",
-     "lastUpdate": "2026-11-19T17:56:00.000+0100",
-     "resume": "2026-11-19T17:56:00.000+0100",
-     "start": "2026-11-19T17:56:00.000+0100"
-    },
-    "title": "63A: Verkehrsüberlastung"
-   },
-   {
     "alertCause": "poor weather",
     "alertCauseId": 85,
     "attributes": {
@@ -821,19 +225,19 @@
       "46": "ptTram"
      }
     },
-    "description": "Linie 46: Betrieb nur zwischen Joachimsthalerplatz und Thaliastraße U. Weiterfahrt bis Josefstädter Straße U. Ersatz: Linien U6, 49 und 48A. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich Lerchenfelder Straße.",
-    "descriptionHTML": "<p>Linie 46:<br>Betrieb nur zwischen Joachimsthalerplatz und Thaliastraße U.<br>Weiterfahrt bis Josefstädter Straße U.</p><p>Ersatz: Linien U6, 49 und 48A.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Demonstration im Bereich Lerchenfelder Straße.</p>",
+    "description": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 46: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 46:<br>Betrieb nur zwischen Joachimsthalerplatz und Thaliastraße U.<br>Weiterfahrt bis Josefstädter Straße U.</p><p>Ersatz: Linien U6, 49 und 48A.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Demonstration im Bereich Lerchenfelder Straße.</p>",
-       "descriptionPlain": "Linie 46: Betrieb nur zwischen Joachimsthalerplatz und Thaliastraße U. Weiterfahrt bis Josefstädter Straße U. Ersatz: Linien U6, 49 und 48A. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich Lerchenfelder Straße.",
+       "descriptionHtml": "<p>Linie 46: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "46: Demonstration"
       }
      }
     ],
     "location": "Lerchenfelder Straße",
-    "name": "I20261119-0041",
+    "name": "I20261119-0041-F01",
     "owner": "WL",
     "parentName": "I20261119-0041",
     "priority": "1",
@@ -852,8 +256,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-19T18:05:00.000+0100",
-     "lastUpdate": "2026-11-19T18:05:00.000+0100",
+     "created": "2026-11-19T19:11:00.000+0100",
+     "lastUpdate": "2026-11-19T19:11:00.000+0100",
+     "resume": "2026-11-19T19:11:00.000+0100",
      "start": "2026-11-19T17:56:00.000+0100"
     },
     "title": "46: Demonstration"
@@ -915,54 +320,6 @@
     "alertCauseId": 14,
     "attributes": {
      "relatedLineTypes": {
-      "U2": "ptMetro"
-     }
-    },
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U2: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261119-0043-F01",
-    "owner": "WL",
-    "parentName": "I20261119-0043",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 302,
-      "lineName": "U2",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4203
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-19T18:19:00.000+0100",
-     "lastUpdate": "2026-11-19T18:19:00.000+0100",
-     "resume": "2026-11-19T18:19:00.000+0100",
-     "start": "2026-11-19T18:15:00.000+0100"
-    },
-    "title": "U2: Rettungseinsatz"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
       "18": "ptTram"
      }
     },
@@ -1007,6 +364,211 @@
     "title": "18: Rettungseinsatz"
    },
    {
+    "alertCause": "miscellaneous",
+    "alertCauseId": 137,
+    "attributes": {
+     "relatedLineTypes": {
+      "U2": "ptMetro"
+     }
+    },
+    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U2: Betriebsstörung"
+      }
+     }
+    ],
+    "name": "I20261119-0045-F01",
+    "owner": "WL",
+    "parentName": "I20261119-0045",
+    "priority": "1",
+    "reasonId": 14,
+    "reasonName": "Betriebsstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 302,
+      "lineName": "U2",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4209
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-19T19:11:00.000+0100",
+     "lastUpdate": "2026-11-19T19:11:00.000+0100",
+     "resume": "2026-11-19T19:11:00.000+0100",
+     "start": "2026-11-19T19:08:00.000+0100"
+    },
+    "title": "U2: Betriebsstörung"
+   },
+   {
+    "alertCause": "demonstration",
+    "alertCauseId": 122,
+    "attributes": {
+     "relatedLineTypes": {
+      "13A": "ptBusCity"
+     }
+    },
+    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 13A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 13A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "13A: Demonstration"
+      }
+     }
+    ],
+    "location": "Strozzigasse",
+    "name": "I20261119-0046-F01",
+    "owner": "WL",
+    "parentName": "I20261119-0046",
+    "priority": "1",
+    "reasonId": 22,
+    "reasonName": "Demonstration",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 413,
+      "lineName": "13A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-19T19:26:00.000+0100",
+     "lastUpdate": "2026-11-19T19:26:00.000+0100",
+     "resume": "2026-11-19T19:26:00.000+0100",
+     "start": "2026-11-19T19:22:00.000+0100"
+    },
+    "title": "13A: Demonstration"
+   },
+   {
+    "alertCause": "poor weather",
+    "alertCauseId": 85,
+    "attributes": {
+     "relatedLineTypes": {
+      "1": "ptTram",
+      "2": "ptTram",
+      "71": "ptTram",
+      "D": "ptTram"
+     }
+    },
+    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "descriptionHTML": "<p><strong>Linie 1:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br><strong>Linie 2:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie D:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 71:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><strong>Linie 1:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br><strong>Linie 2:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie D:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 71:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
+       "descriptionPlain": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+       "title": "D, 1, 2, 71: Aktuelle Wetterlage"
+      }
+     }
+    ],
+    "name": "I20261119-0047",
+    "owner": "WL",
+    "parentName": "I20261119-0047",
+    "priority": "1",
+    "reasonId": 40,
+    "reasonName": "Aktuelle Wetterlage",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1",
+     "2",
+     "D",
+     "71"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 101,
+      "lineName": "1",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 102,
+      "lineName": "2",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 136,
+      "lineName": "D",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 171,
+      "lineName": "71",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-19T19:26:00.000+0100",
+     "lastUpdate": "2026-11-19T19:26:00.000+0100",
+     "resume": "2026-11-19T19:23:00.000+0100",
+     "start": "2026-11-19T19:23:00.000+0100"
+    },
+    "title": "D, 1, 2, 71: Aktuelle Wetterlage"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "9": "ptTram"
+     }
+    },
+    "description": "Linie 9: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p><strong>Linie 9:</strong><br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><strong>Linie 9:</strong><br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 9: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "9: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261119-0048",
+    "owner": "WL",
+    "parentName": "I20261119-0048",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 109,
+      "lineName": "9",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-19T19:30:00.000+0100",
+     "lastUpdate": "2026-11-19T19:30:00.000+0100",
+     "resume": "2026-11-19T19:30:00.000+0100",
+     "start": "2026-11-19T19:30:00.000+0100"
+    },
+    "title": "9: Verkehrsüberlastung"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -1028,374 +590,6 @@
      "start": "2026-11-19T04:45:14.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nWetterlage, Schienenzustand",
-    "name": "R1214-138",
-    "owner": "WL",
-    "parentName": "R1214-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1214
-    ],
-    "time": {
-     "end": "2026-11-19T19:12:00.000+0100",
-     "start": "2026-11-19T18:13:04.000+0100"
-    },
-    "title": "Fahrtbehinderung\nWetterlage, Schienenzustand"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nWetterlage, Schienenzustand",
-    "name": "R1215-138",
-    "owner": "WL",
-    "parentName": "R1215-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1215
-    ],
-    "time": {
-     "end": "2026-11-19T19:12:00.000+0100",
-     "start": "2026-11-19T18:13:04.000+0100"
-    },
-    "title": "Fahrtbehinderung\nWetterlage, Schienenzustand"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nWetterlage, Schienenzustand",
-    "name": "R1216-138",
-    "owner": "WL",
-    "parentName": "R1216-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1216
-    ],
-    "time": {
-     "end": "2026-11-19T19:12:00.000+0100",
-     "start": "2026-11-19T18:13:04.000+0100"
-    },
-    "title": "Fahrtbehinderung\nWetterlage, Schienenzustand"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nWetterlage, Schienenzustand",
-    "name": "R1217-138",
-    "owner": "WL",
-    "parentName": "R1217-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1217
-    ],
-    "time": {
-     "end": "2026-11-19T19:12:00.000+0100",
-     "start": "2026-11-19T18:13:04.000+0100"
-    },
-    "title": "Fahrtbehinderung\nWetterlage, Schienenzustand"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nWetterlage, Schienenzustand",
-    "name": "R1218-138",
-    "owner": "WL",
-    "parentName": "R1218-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1218
-    ],
-    "time": {
-     "end": "2026-11-19T19:12:00.000+0100",
-     "start": "2026-11-19T18:13:04.000+0100"
-    },
-    "title": "Fahrtbehinderung\nWetterlage, Schienenzustand"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Wetterlage\nBetrieb ab Canisiusgasse",
-    "name": "R1221-138",
-    "owner": "WL",
-    "parentName": "R1221-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1221
-    ],
-    "time": {
-     "end": "2026-11-19T19:13:00.000+0100",
-     "start": "2026-11-19T18:11:34.000+0100"
-    },
-    "title": "Wetterlage\nBetrieb ab Canisiusgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Wetterlage\nBetrieb ab Canisiusgasse",
-    "name": "R1222-138",
-    "owner": "WL",
-    "parentName": "R1222-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1222
-    ],
-    "time": {
-     "end": "2026-11-19T19:13:00.000+0100",
-     "start": "2026-11-19T18:11:34.000+0100"
-    },
-    "title": "Wetterlage\nBetrieb ab Canisiusgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Wetterlage\nBetrieb ab Canisiusgasse",
-    "name": "R1223-138",
-    "owner": "WL",
-    "parentName": "R1223-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1223
-    ],
-    "time": {
-     "end": "2026-11-19T19:13:00.000+0100",
-     "start": "2026-11-19T18:11:34.000+0100"
-    },
-    "title": "Wetterlage\nBetrieb ab Canisiusgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Wetterlage\nBetrieb ab Canisiusgasse",
-    "name": "R1224-138",
-    "owner": "WL",
-    "parentName": "R1224-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1224
-    ],
-    "time": {
-     "end": "2026-11-19T19:13:00.000+0100",
-     "start": "2026-11-19T18:11:34.000+0100"
-    },
-    "title": "Wetterlage\nBetrieb ab Canisiusgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Wetterlage\nBetrieb ab Canisiusgasse",
-    "name": "R1225-138",
-    "owner": "WL",
-    "parentName": "R1225-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1225
-    ],
-    "time": {
-     "end": "2026-11-19T19:13:00.000+0100",
-     "start": "2026-11-19T18:11:34.000+0100"
-    },
-    "title": "Wetterlage\nBetrieb ab Canisiusgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Wetterlage\nBetrieb ab Canisiusgasse",
-    "name": "R1226-138",
-    "owner": "WL",
-    "parentName": "R1226-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1226
-    ],
-    "time": {
-     "end": "2026-11-19T19:13:00.000+0100",
-     "start": "2026-11-19T18:11:34.000+0100"
-    },
-    "title": "Wetterlage\nBetrieb ab Canisiusgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Wetterlage\nBetrieb ab Canisiusgasse",
-    "name": "R1227-138",
-    "owner": "WL",
-    "parentName": "R1227-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     1227
-    ],
-    "time": {
-     "end": "2026-11-19T19:13:00.000+0100",
-     "start": "2026-11-19T18:11:34.000+0100"
-    },
-    "title": "Wetterlage\nBetrieb ab Canisiusgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Alser Straße >",
-    "name": "R1345-143",
-    "owner": "WL",
-    "parentName": "R1345-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     1345
-    ],
-    "time": {
-     "end": "2026-11-19T19:15:00.000+0100",
-     "start": "2026-11-19T18:16:05.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Alser Straße >"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-    "name": "R1345-144",
-    "owner": "WL",
-    "parentName": "R1345-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     1345
-    ],
-    "time": {
-     "end": "2026-11-19T19:11:00.000+0100",
-     "start": "2026-11-19T18:12:35.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-    "name": "R1360-144",
-    "owner": "WL",
-    "parentName": "R1360-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     1360
-    ],
-    "time": {
-     "end": "2026-11-19T19:17:00.000+0100",
-     "start": "2026-11-19T18:18:06.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-    "name": "R1361-144",
-    "owner": "WL",
-    "parentName": "R1361-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     1361
-    ],
-    "time": {
-     "end": "2026-11-19T19:22:00.000+0100",
-     "start": "2026-11-19T18:23:36.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Johann-Nepomuk-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1465,98 +659,6 @@
      "start": "2026-11-19T18:06:34.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Demonstration"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Thaliastraße >",
-    "name": "R1375-146",
-    "owner": "WL",
-    "parentName": "R1375-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1375
-    ],
-    "time": {
-     "end": "2026-11-19T19:14:00.000+0100",
-     "start": "2026-11-19T18:14:35.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Thaliastraße >"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Thaliastraße >",
-    "name": "R1376-146",
-    "owner": "WL",
-    "parentName": "R1376-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1376
-    ],
-    "time": {
-     "end": "2026-11-19T19:14:00.000+0100",
-     "start": "2026-11-19T18:14:35.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Thaliastraße >"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Thaliastraße >",
-    "name": "R1377-146",
-    "owner": "WL",
-    "parentName": "R1377-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1377
-    ],
-    "time": {
-     "end": "2026-11-19T19:14:00.000+0100",
-     "start": "2026-11-19T18:14:35.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Thaliastraße >"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Thaliastraße >",
-    "name": "R1378-146",
-    "owner": "WL",
-    "parentName": "R1378-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1378
-    ],
-    "time": {
-     "end": "2026-11-19T19:16:00.000+0100",
-     "start": "2026-11-19T18:16:35.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Thaliastraße >"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1830,259 +932,6 @@
      "start": "2026-11-19T04:40:15.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Wetterlage\nBetrieb ab Canisiusgasse",
-    "name": "R208-138",
-    "owner": "WL",
-    "parentName": "R208-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     208
-    ],
-    "time": {
-     "end": "2026-11-19T19:13:00.000+0100",
-     "start": "2026-11-19T18:11:32.000+0100"
-    },
-    "title": "Wetterlage\nBetrieb ab Canisiusgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nAktuelle Wetterlage",
-    "name": "R209-138",
-    "owner": "WL",
-    "parentName": "R209-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     209
-    ],
-    "time": {
-     "end": "2026-11-19T19:11:00.000+0100",
-     "start": "2026-11-19T18:11:32.000+0100"
-    },
-    "title": "Fahrtbehinderung\nAktuelle Wetterlage"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nAktuelle Wetterlage",
-    "name": "R210-138",
-    "owner": "WL",
-    "parentName": "R210-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     210
-    ],
-    "time": {
-     "end": "2026-11-19T19:11:00.000+0100",
-     "start": "2026-11-19T18:11:32.000+0100"
-    },
-    "title": "Fahrtbehinderung\nAktuelle Wetterlage"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nWetterlage, Schienenzustand",
-    "name": "R215-138",
-    "owner": "WL",
-    "parentName": "R215-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     215
-    ],
-    "time": {
-     "end": "2026-11-19T19:12:00.000+0100",
-     "start": "2026-11-19T18:13:02.000+0100"
-    },
-    "title": "Fahrtbehinderung\nWetterlage, Schienenzustand"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nWetterlage, Schienenzustand",
-    "name": "R216-138",
-    "owner": "WL",
-    "parentName": "R216-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     216
-    ],
-    "time": {
-     "end": "2026-11-19T19:12:00.000+0100",
-     "start": "2026-11-19T18:13:02.000+0100"
-    },
-    "title": "Fahrtbehinderung\nWetterlage, Schienenzustand"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Alser Straße >",
-    "name": "R217-143",
-    "owner": "WL",
-    "parentName": "R217-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     217
-    ],
-    "time": {
-     "end": "2026-11-19T19:22:00.000+0100",
-     "start": "2026-11-19T18:23:03.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Alser Straße >"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-    "name": "R217-144",
-    "owner": "WL",
-    "parentName": "R217-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     217
-    ],
-    "time": {
-     "end": "2026-11-19T19:14:00.000+0100",
-     "start": "2026-11-19T18:15:02.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Alser Straße >",
-    "name": "R218-143",
-    "owner": "WL",
-    "parentName": "R218-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     218
-    ],
-    "time": {
-     "end": "2026-11-19T19:22:00.000+0100",
-     "start": "2026-11-19T18:23:03.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Alser Straße >"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-    "name": "R218-144",
-    "owner": "WL",
-    "parentName": "R218-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     218
-    ],
-    "time": {
-     "end": "2026-11-19T19:16:00.000+0100",
-     "start": "2026-11-19T18:17:02.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Alser Straße >",
-    "name": "R219-143",
-    "owner": "WL",
-    "parentName": "R219-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     219
-    ],
-    "time": {
-     "end": "2026-11-19T19:22:00.000+0100",
-     "start": "2026-11-19T18:23:03.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Alser Straße >"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-    "name": "R219-144",
-    "owner": "WL",
-    "parentName": "R219-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     219
-    ],
-    "time": {
-     "end": "2026-11-19T19:16:00.000+0100",
-     "start": "2026-11-19T18:17:02.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Johann-Nepomuk-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2685,29 +1534,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Demonstration\nZüge halten bei Linie 9 Richtung Westbahnhof (Rosensteing.)",
-    "name": "R276-144",
-    "owner": "WL",
-    "parentName": "R276-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     276
-    ],
-    "time": {
-     "end": "2026-11-19T19:23:00.000+0100",
-     "start": "2026-11-19T18:24:05.000+0100"
-    },
-    "title": "Demonstration\nZüge halten bei Linie 9 Richtung Westbahnhof (Rosensteing.)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
     "name": "R293-118",
     "owner": "WL",
@@ -2754,52 +1580,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nWetterlage, Schienenzustand",
-    "name": "R2964-138",
-    "owner": "WL",
-    "parentName": "R2964-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     2964
-    ],
-    "time": {
-     "end": "2026-11-19T19:12:00.000+0100",
-     "start": "2026-11-19T18:13:06.000+0100"
-    },
-    "title": "Fahrtbehinderung\nWetterlage, Schienenzustand"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Wetterlage\nBetrieb ab Canisiusgasse",
-    "name": "R2985-138",
-    "owner": "WL",
-    "parentName": "R2985-138",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedStops": [
-     2985
-    ],
-    "time": {
-     "end": "2026-11-19T19:13:00.000+0100",
-     "start": "2026-11-19T18:11:36.000+0100"
-    },
-    "title": "Wetterlage\nBetrieb ab Canisiusgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -2819,6 +1599,52 @@
      "start": "2026-11-19T00:00:28.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R3527-413",
+    "owner": "WL",
+    "parentName": "R3527-413",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     3527
+    ],
+    "time": {
+     "end": "2026-11-19T20:18:00.000+0100",
+     "start": "2026-11-19T19:19:41.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R3528-413",
+    "owner": "WL",
+    "parentName": "R3528-413",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     3528
+    ],
+    "time": {
+     "end": "2026-11-19T20:18:00.000+0100",
+     "start": "2026-11-19T19:19:41.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3073,25 +1899,117 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Johann-Nepomuk-Berger-Platz",
-    "name": "R555-144",
+    "description": "Demonstration\nBetrieb ab Neubaugasse >",
+    "name": "R660-413",
     "owner": "WL",
-    "parentName": "R555-144",
+    "parentName": "R660-413",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "44"
+     "13A"
     ],
     "relatedStops": [
-     555
+     660
     ],
     "time": {
-     "end": "2026-11-19T19:22:00.000+0100",
-     "start": "2026-11-19T18:23:37.000+0100"
+     "end": "2026-11-19T20:19:00.000+0100",
+     "start": "2026-11-19T19:19:39.000+0100"
     },
-    "title": "Demonstration\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+    "title": "Demonstration\nBetrieb ab Neubaugasse >"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Neubaugasse >",
+    "name": "R662-413",
+    "owner": "WL",
+    "parentName": "R662-413",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     662
+    ],
+    "time": {
+     "end": "2026-11-19T20:19:00.000+0100",
+     "start": "2026-11-19T19:19:39.000+0100"
+    },
+    "title": "Demonstration\nBetrieb ab Neubaugasse >"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Neubaugasse >",
+    "name": "R663-413",
+    "owner": "WL",
+    "parentName": "R663-413",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     663
+    ],
+    "time": {
+     "end": "2026-11-19T20:19:00.000+0100",
+     "start": "2026-11-19T19:19:39.000+0100"
+    },
+    "title": "Demonstration\nBetrieb ab Neubaugasse >"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBetrieb ab Neubaugasse >",
+    "name": "R665-413",
+    "owner": "WL",
+    "parentName": "R665-413",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     665
+    ],
+    "time": {
+     "end": "2026-11-19T20:19:00.000+0100",
+     "start": "2026-11-19T19:19:39.000+0100"
+    },
+    "title": "Demonstration\nBetrieb ab Neubaugasse >"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Demonstration\nBusse halten am Bundesländerplatz",
+    "name": "R688-413",
+    "owner": "WL",
+    "parentName": "R688-413",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "13A"
+    ],
+    "relatedStops": [
+     688
+    ],
+    "time": {
+     "end": "2026-11-19T20:19:00.000+0100",
+     "start": "2026-11-19T19:20:09.000+0100"
+    },
+    "title": "Demonstration\nBusse halten am Bundesländerplatz"
    },
    {
     "alertCause": "undefined alert cause",

@@ -650,34 +650,34 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Polizeieinsatz",
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "1/2/71/D: Aktuelle Wetterlage",
+    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "84fb66f823fe0256bdb55c275e537630afbdb20e631f62ff4a78dbb9fd614ed6",
-    "pubDate": "2026-11-19T16:17:00+01:00",
-    "starts_at": "2026-11-19T16:17:00+01:00",
+    "guid": "7637bed92fd38508a180c708db671c3c46de8024a921d312e6901d2c71243488",
+    "pubDate": "2026-11-19T19:23:00+01:00",
+    "starts_at": "2026-11-19T19:23:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=11|D=2026-11-19|TK=polizeieinsatz",
+    "_identity": "wl|störung|L=1,2,71,D|D=2026-11-19|TK=d 1 2 71 aktuelle wetterlage",
     "_wl_ids": [
-      "I20261119-0028"
+      "I20261119-0047"
     ],
-    "_incident_start": "2026-11-19T16:17:00+01:00"
+    "_incident_start": "2026-11-19T19:23:00+01:00"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "16A: Verkehrsüberlastung",
-    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "title": "13A: Demonstration Busse halten am Bundesländerplatz",
+    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "08f8f9d0c414c51fe010c32727e4eaf8cc098f2c840c0b9f9cbd2fc85b0426e7",
-    "pubDate": "2026-11-19T17:34:00+01:00",
-    "starts_at": "2026-11-19T17:34:00+01:00",
+    "guid": "1c629dbb1ab44f38d4116936e03e299129ac24d8b47b2ee816bc8a7924bf6f1d",
+    "pubDate": "2026-11-19T19:19:39+01:00",
+    "starts_at": "2026-11-19T19:22:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=16A|D=2026-11-19|TK=16a verkehrsüberlastung",
+    "_identity": "wl|störung|L=13A|D=2026-11-19|TK=demonstration",
     "_wl_ids": [
-      "I20261119-0034"
+      "I20261119-0046"
     ],
-    "_incident_start": "2026-11-19T17:34:00+01:00"
+    "_incident_start": "2026-11-19T19:22:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -814,22 +814,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "25: Rettungseinsatz",
-    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7432174b0dd142a4728e8ba0144127ca655d49ae49e269a9660834d572eca3ab",
-    "pubDate": "2026-11-19T16:09:00+01:00",
-    "starts_at": "2026-11-19T16:09:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=25|D=2026-11-19|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261119-0027"
-    ],
-    "_incident_start": "2026-11-19T16:09:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "25: Züge halten Donaufelder Straße 175-177",
     "description": "Züge halten\nDonaufelder Straße 175-177",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -906,22 +890,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26: Rettungseinsatz",
-    "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "5ad871156e427d523784cb28867242cf1070538a7d455f2b56d31b9e1028dfac",
-    "pubDate": "2026-11-19T16:09:00+01:00",
-    "starts_at": "2026-11-19T16:09:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=26|D=2026-11-19|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261119-0027"
-    ],
-    "_incident_start": "2026-11-19T16:09:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "26: Züge halten in Tokiostraße",
     "description": "Züge halten in\nTokiostraße",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -930,22 +898,6 @@
     "starts_at": "2026-11-19T00:00:28+01:00",
     "ends_at": "2026-11-19T23:59:59+01:00",
     "_identity": "wl|störung|L=26|D=2026-11-19|TK=züge halten in tokiostrasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "27A: Verkehrsüberlastung",
-    "description": "Linie 27A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "5475a334194ae02ac39e541163c811e272827d6ff3082e02ef3e3223924bcb4f",
-    "pubDate": "2026-11-19T17:41:00+01:00",
-    "starts_at": "2026-11-19T17:41:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=27A|D=2026-11-19|TK=27a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261119-0038"
-    ],
-    "_incident_start": "2026-11-19T17:41:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1002,42 +954,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38: Fahrtbehinderung Aktuelle Wetterlage",
-    "description": "Fahrtbehinderung\nAktuelle Wetterlage",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "dbddddebfd6f53ec1b7a247226051754f725f066f80dcaad2e993a3e3e9379dc",
-    "pubDate": "2026-11-19T18:11:32+01:00",
-    "starts_at": "2026-11-19T18:11:32+01:00",
-    "ends_at": "2026-11-19T19:11:00+01:00",
-    "_identity": "wl|störung|L=38|D=2026-11-19|TK=fahrtbehinderung aktuelle wetterlage"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38: Fahrtbehinderung Wetterlage, Schienenzustand",
-    "description": "Fahrtbehinderung\nWetterlage, Schienenzustand",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "5d06ea3dfae01379b5e4d09acfcbcdb909b074a8ccd28c712e733625250e5143",
-    "pubDate": "2026-11-19T18:13:02+01:00",
-    "starts_at": "2026-11-19T18:13:06+01:00",
-    "ends_at": "2026-11-19T19:12:00+01:00",
-    "_identity": "wl|störung|L=38|D=2026-11-19|TK=fahrtbehinderung wetterlage schienenzustand"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "38: Wetterlage Betrieb ab Canisiusgasse",
-    "description": "Wetterlage\nBetrieb ab Canisiusgasse",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "e57d6b162f8b68a3b8270a25806f69eca98025ab06d81de7a8a8f60b2bae903d",
-    "pubDate": "2026-11-19T18:11:32+01:00",
-    "starts_at": "2026-11-19T18:11:36+01:00",
-    "ends_at": "2026-11-19T19:13:00+01:00",
-    "_identity": "wl|störung|L=38|D=2026-11-19|TK=wetterlage betrieb ab canisiusgasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "43/44: Demonstration",
     "description": "Linie 43: Betrieb nur zwischen Neuwaldegg und Alser Straße U. Linie 44: Betrieb nur zwischen Ottakring, Maroltingergasse und Johann-Nepomuk-Berger-Platz. Ersatz: Linien U6, 2, 40, 41, 42 und 40A. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich Alser Straße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1054,50 +970,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "46: Demonstration Betrieb ab Thaliastraße",
-    "description": "Linie 46: Betrieb nur zwischen Joachimsthalerplatz und Thaliastraße U. Weiterfahrt bis Josefstädter Straße U. Ersatz: Linien U6, 49 und 48A. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich Lerchenfelder Straße.",
+    "title": "46: Fahrtbehinderung wegen Demonstration",
+    "description": "Linie 46: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "9498a247db987f756d9ff4e93bd5a49a60bdb71931ac67008f8561fd089869da",
     "pubDate": "2026-11-19T17:56:00+01:00",
-    "starts_at": "2026-11-19T18:16:35+01:00",
+    "starts_at": "2026-11-19T18:06:34+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=46|D=2026-11-19|TK=demonstration",
     "_wl_ids": [
       "I20261119-0041"
     ],
     "_incident_start": "2026-11-19T17:56:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "4A: Verkehrsüberlastung",
-    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "c56de491edf41d83da857f489a91726653fbe3100222ed7e7ce91bebf0b5453c",
-    "pubDate": "2026-11-19T17:34:00+01:00",
-    "starts_at": "2026-11-19T17:34:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=4A|D=2026-11-19|TK=4a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261119-0033"
-    ],
-    "_incident_start": "2026-11-19T17:34:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "59A: Verkehrsüberlastung",
-    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "305d31fe55b01aa5bd221769c51589222f0e1ba541273be2c21941ef6215f7d5",
-    "pubDate": "2026-11-19T17:35:00+01:00",
-    "starts_at": "2026-11-19T17:35:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=59A|D=2026-11-19|TK=59a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261119-0035"
-    ],
-    "_incident_start": "2026-11-19T17:35:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1114,38 +998,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60: Verkehrsüberlastung",
-    "description": "Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "08e61c125855aaa8e72bedc583a0371a48ce4c3e4d16af18872e566ea043e1b3",
-    "pubDate": "2026-11-19T17:35:00+01:00",
-    "starts_at": "2026-11-19T17:35:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=60|D=2026-11-19|TK=60 verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261119-0036"
-    ],
-    "_incident_start": "2026-11-19T17:35:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "63A: Verkehrsüberlastung",
-    "description": "Linie 63A: Unregelmäßige Intervalle in Richtung Am Rosenhügel. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "e7e896d63b9b23989d8440713ce15b7c04d68a1b0098210082b12613484ee8b8",
-    "pubDate": "2026-11-19T17:56:00+01:00",
-    "starts_at": "2026-11-19T17:56:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=63A|D=2026-11-19|TK=63a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261119-0039"
-    ],
-    "_incident_start": "2026-11-19T17:56:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1154,22 +1006,6 @@
     "starts_at": "2026-11-19T04:40:15+01:00",
     "ends_at": "2026-11-20T01:00:00+01:00",
     "_identity": "wl|störung|L=66A|D=2026-11-19|TK=busse halten salvatorianerplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Polizeieinsatz",
-    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "eddff31c5e34cf838483d912c1f74034cc5d725285c266c86546ff511743c52d",
-    "pubDate": "2026-11-19T16:17:00+01:00",
-    "starts_at": "2026-11-19T16:17:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=6|D=2026-11-19|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261119-0028"
-    ],
-    "_incident_start": "2026-11-19T16:17:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1198,66 +1034,34 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "O: Verkehrsüberlastung",
-    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "title": "9: Verkehrsüberlastung",
+    "description": "Linie 9: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "0598d063fd5b5e1216fb2c04c3f4777b73e557c51bce93a5dddd1dcd0043f73d",
-    "pubDate": "2026-11-19T17:37:00+01:00",
-    "starts_at": "2026-11-19T17:37:00+01:00",
+    "guid": "daae9dd899e5efe2489bff7cb63614c8064d655738828f62f1250888b3f95e4f",
+    "pubDate": "2026-11-19T19:30:00+01:00",
+    "starts_at": "2026-11-19T19:30:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=O|D=2026-11-19|TK=o verkehrsüberlastung",
+    "_identity": "wl|störung|L=9|D=2026-11-19|TK=9 verkehrsüberlastung",
     "_wl_ids": [
-      "I20261119-0037"
+      "I20261119-0048"
     ],
-    "_incident_start": "2026-11-19T17:37:00+01:00"
+    "_incident_start": "2026-11-19T19:30:00+01:00"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Rettungseinsatz",
+    "title": "U2: Betriebsstörung",
     "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8",
-    "pubDate": "2026-11-19T18:15:00+01:00",
-    "starts_at": "2026-11-19T18:15:00+01:00",
+    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
+    "pubDate": "2026-11-19T19:08:00+01:00",
+    "starts_at": "2026-11-19T19:08:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=U2|D=2026-11-19|TK=rettungseinsatz",
+    "_identity": "wl|störung|L=U2|D=2026-11-19|TK=u2 betriebsstörung",
     "_wl_ids": [
-      "I20261119-0043"
+      "I20261119-0045"
     ],
-    "_incident_start": "2026-11-19T18:15:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Betriebsstörung",
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
-    "pubDate": "2026-11-19T17:10:00+01:00",
-    "starts_at": "2026-11-19T17:10:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U3|D=2026-11-19|TK=u3 betriebsstörung",
-    "_wl_ids": [
-      "I20261119-0031"
-    ],
-    "_incident_start": "2026-11-19T17:10:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Rettungseinsatz",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
-    "pubDate": "2026-11-19T17:31:00+01:00",
-    "starts_at": "2026-11-19T17:31:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U6|D=2026-11-19|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261119-0032"
-    ],
-    "_incident_start": "2026-11-19T17:31:00+01:00"
+    "_incident_start": "2026-11-19T19:08:00+01:00"
   },
   {
     "source": "Wiener Linien",
