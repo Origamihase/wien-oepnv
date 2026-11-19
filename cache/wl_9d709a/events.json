@@ -38,18 +38,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "15A: Max-Mauermann-Gasse",
-    "description": "<p><span><strong><u>Haltestellenverlegung der Linie 15A in Richtung Bahnhof Meidling S U, Schedifkaplatz</u></strong></span></p><p><span><strong><u>Haltestelle:</u></strong> Max-Mauermann-Gasse</span></p><p><span><strong><u>Von:</u></strong> Bitterlichstraße gegenüber Max-Mauermann-Gasse</span></p><p><span><strong><u>Nach:</u></strong> Bitterlichstraße gegenüber Friedrich-Teller-Gasse</span></p><p><span><strong><u>Dauer:</u></strong> Ab 13. Oktober 2026, etwa 07:00 Uhr bis 19. November 2026, etwa 15:00 Uhr</span></p><p><span><strong><u>Grund:</u></strong> Straßenbau</span></p>",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "56aa798cbb018fbaed4813a991f56c2470867f1f9a0ce034661ba2e01da13007",
-    "pubDate": "2026-10-07T15:30:00+02:00",
-    "starts_at": "2026-10-13T00:00:00+02:00",
-    "ends_at": "2026-11-19T15:00:00+01:00",
-    "_identity": "wl|hinweis|L=15A|D=2026-10-13|TK=15a max mauermann gasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "1A/3A: Schwertgasse",
     "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 1A und 3A in Richtung Schottentor U bzw. Schottenring U</span></u></strong></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Schwertgasse</span></p> <p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Wipplingerstra&szlig;e 14-16</span></span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">&nbsp;</span><span style=\"font-family: 'Segoe UI', sans-serif; font-size: 16px;\">Wipplingerstra&szlig;e 18</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 09. Oktober 2026 bis voraussichtlich M&auml;rz 2027</span></p> <p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Haussanierung</span></p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -802,22 +790,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Verkehrsunfall",
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "6c9455b3b094392684c322ab8f2b761a9537a1a83acceaa982e1237d79b94be8",
-    "pubDate": "2026-11-19T12:37:00+01:00",
-    "starts_at": "2026-11-19T12:37:00+01:00",
-    "ends_at": "2026-11-19T15:01:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-11-19|TK=1 verkehrsunfall",
-    "_wl_ids": [
-      "I20261119-0014"
-    ],
-    "_incident_start": "2026-11-19T12:37:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -982,6 +954,58 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "38: Schadhaftes Fahrzeug",
+    "description": "Linie 38: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Ersatz: Linien 10A, 35A und 38A. Voraussichtliche Dauer: 15:15 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Paradisgasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "c16184b68509899faf02a65c374d8c059400404774e2da3970444c5b92e08600",
+    "pubDate": "2026-11-19T14:39:00+01:00",
+    "starts_at": "2026-11-19T14:39:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=38|D=2026-11-19|TK=38 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261119-0022"
+    ],
+    "_incident_start": "2026-11-19T14:39:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "911c7a028e544de1b42c6534805352cc07a6eb36f1d72824aaa0331d4bb2db94",
+    "pubDate": "2026-11-19T14:40:41+01:00",
+    "starts_at": "2026-11-19T14:40:45+01:00",
+    "ends_at": "2026-11-19T15:40:00+01:00",
+    "_identity": "wl|störung|L=38|D=2026-11-19|TK=fahrtbehinderung schadhafter zug"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Schadhafter Zug Betrieb ab Nußdorfer Straße U",
+    "description": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße U",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "f4333acfab09af5e589ec6ccf460733af285338103d4874e6e5e55d4104578f6",
+    "pubDate": "2026-11-19T14:55:44+01:00",
+    "starts_at": "2026-11-19T14:55:47+01:00",
+    "ends_at": "2026-11-19T15:41:00+01:00",
+    "_identity": "wl|störung|L=38|D=2026-11-19|TK=schadhafter zug betrieb ab nussdorfer strasse u"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Schadhafter Zug Züge halten Währinger Gürtel 164",
+    "description": "Schadhafter Zug\nZüge halten Währinger Gürtel 164",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "31cf781f871b7ae7281247e071db9471b394d876feb39fa88b110dbdb73fa4aa",
+    "pubDate": "2026-11-19T14:57:13+01:00",
+    "starts_at": "2026-11-19T14:57:13+01:00",
+    "ends_at": "2026-11-19T15:55:00+01:00",
+    "_identity": "wl|störung|L=38|D=2026-11-19|TK=schadhafter zug züge halten währinger gürtel 164"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1122,6 +1146,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-11-19T14:30:00+01:00",
+    "starts_at": "2026-11-19T14:30:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U3|D=2026-11-19|TK=u3 verspätungen",
+    "_wl_ids": [
+      "I20261119-0021"
+    ],
+    "_incident_start": "2026-11-19T14:30:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "U4: Verspätungen",
     "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1158,5 +1198,17 @@
     "starts_at": "2026-09-14T04:00:00+02:00",
     "ends_at": "2026-12-31T23:59:00+01:00",
     "_identity": "wl|störung|L=|D=2026-09-14|TK=sperre"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "Haltestelle aufgelassen! Stop closed!",
+    "description": "Haltestelle\naufgelassen! Stop closed!",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b3d058f2a7d9443431d0c6a57bef734f51e51c799560d9ce542bccfc3df4425a",
+    "pubDate": "2026-11-19T15:00:14+01:00",
+    "starts_at": "2026-11-19T15:00:14+01:00",
+    "ends_at": "2026-11-19T22:30:00+01:00",
+    "_identity": "wl|störung|L=|D=2026-11-19|TK=haltestelle aufgelassen stop closed"
   }
 ]

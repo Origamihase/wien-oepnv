@@ -3,6 +3,66 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
+  "R1214-138|2026-11-19T14:40:43.000+0100": {
+   "incident": "I20261119-0022",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R1215-138|2026-11-19T14:40:43.000+0100": {
+   "incident": "I20261119-0022",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R1216-138|2026-11-19T14:40:43.000+0100": {
+   "incident": "I20261119-0022",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R1217-138|2026-11-19T14:40:43.000+0100": {
+   "incident": "I20261119-0022",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R1221-138|2026-11-19T14:55:44.000+0100": {
+   "incident": "I20261119-0022",
+   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße U "
+  },
+  "R1223-138|2026-11-19T14:55:44.000+0100": {
+   "incident": "I20261119-0022",
+   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße U "
+  },
+  "R1224-138|2026-11-19T14:55:44.000+0100": {
+   "incident": "I20261119-0022",
+   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße U "
+  },
+  "R1225-138|2026-11-19T14:55:44.000+0100": {
+   "incident": "I20261119-0022",
+   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße U "
+  },
+  "R1226-138|2026-11-19T14:55:44.000+0100": {
+   "incident": "I20261119-0022",
+   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße U "
+  },
+  "R1227-138|2026-11-19T14:55:44.000+0100": {
+   "incident": "I20261119-0022",
+   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße U "
+  },
+  "R208-138|2026-11-19T14:57:13.000+0100": {
+   "incident": "I20261119-0022",
+   "title": "Schadhafter Zug\nZüge halten Währinger Gürtel 164"
+  },
+  "R215-138|2026-11-19T14:40:41.000+0100": {
+   "incident": "I20261119-0022",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R216-138|2026-11-19T14:40:41.000+0100": {
+   "incident": "I20261119-0022",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R2964-138|2026-11-19T14:40:45.000+0100": {
+   "incident": "I20261119-0022",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R2985-138|2026-11-19T14:55:47.000+0100": {
+   "incident": "I20261119-0022",
+   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße U "
+  },
   "R303-118|2026-11-19T14:12:41.000+0100": {
    "incident": "I20261119-0019",
    "title": "Fahrtbehinderung\nSchadhafter Zug"
