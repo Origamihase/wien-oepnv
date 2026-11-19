@@ -3,22 +3,6 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R165-101|2026-11-19T12:39:00.000+0100": {
-   "incident": "I20261119-0014",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R169-101|2026-11-19T12:40:00.000+0100": {
-   "incident": "I20261119-0014",
-   "title": "Verkehrsunfall\nBetrieb ab Radetzkyplatz"
-  },
-  "R172-101|2026-11-19T12:40:00.000+0100": {
-   "incident": "I20261119-0014",
-   "title": "Verkehrsunfall\nBetrieb ab Radetzkyplatz"
-  },
-  "R174-101|2026-11-19T12:38:00.000+0100": {
-   "incident": "I20261119-0014",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
   "R2193-131|2026-11-19T13:12:36.000+0100": {
    "incident": "I20261119-0016",
    "title": "Falschparker\nBetrieb über Jägerstraße"
@@ -34,10 +18,6 @@
   "R2198-131|2026-11-19T13:08:36.000+0100": {
    "incident": "I20261119-0016",
    "title": "Fahrtbehinderung\nFalschparker"
-  },
-  "R41-101|2026-11-19T12:38:00.000+0100": {
-   "incident": "I20261119-0014",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
   }
  }
 }
