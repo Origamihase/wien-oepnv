@@ -13,7 +13,7 @@
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R3886-480, R2370-125, R2380-627, R2345-127, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R318-437, R293-474, R2378-627, R2343-125, R2343-626, R2359-125, R2558-125, R1974-466, R1199-205, R500-101, R17-0, R47-0, R234-143, R246-144, R236-144, R237-144, R1393-146, R1394-146, R1371-144, R1372-144, R1373-144, R1392-146, R235-143, R236-143, R237-143, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R3886-480, R318-437, R2380-627, R2345-127, R2379-627, R2373-126, R2373-127, R293-474, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2558-125, R1974-466, R1199-205, R500-101, R234-143, R236-144, R237-144, R246-144, R1393-146, R1394-146, R1371-144, R1372-144, R1373-144, R1392-146, R235-143, R236-143, R237-143, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -207,11 +207,12 @@
       "vehicleType": "ptBusCity"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-19T19:26:00.000+0100",
-     "lastUpdate": "2026-11-19T19:26:00.000+0100",
-     "resume": "2026-11-19T19:26:00.000+0100",
+     "end": "2026-11-19T22:30:00.000+0100",
+     "lastUpdate": "2026-11-19T22:30:00.000+0100",
+     "resume": "2026-11-19T22:30:00.000+0100",
      "start": "2026-11-19T19:22:00.000+0100"
     },
     "title": "13A: Demonstration"
@@ -376,26 +377,6 @@
      "start": "2026-11-19T18:06:34.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Demonstration"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Haltestelle\naufgelassen!\n\nStop closed!",
-    "name": "R17-0",
-    "owner": "WL",
-    "parentName": "R17-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     17
-    ],
-    "time": {
-     "end": "2026-11-19T22:30:00.000+0100",
-     "start": "2026-11-19T15:00:14.000+0100"
-    },
-    "title": "Haltestelle\naufgelassen!\n\nStop closed!"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1155,26 +1136,6 @@
      "start": "2026-11-17T00:00:05.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Haltestelle\naufgelassen!\n\nStop closed!",
-    "name": "R47-0",
-    "owner": "WL",
-    "parentName": "R47-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     47
-    ],
-    "time": {
-     "end": "2026-11-19T22:30:00.000+0100",
-     "start": "2026-11-19T15:00:14.000+0100"
-    },
-    "title": "Haltestelle\naufgelassen!\n\nStop closed!"
    },
    {
     "alertCause": "undefined alert cause",

@@ -1,32 +1,28 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-19T21:02:06.870860+00:00",
- "built": "2026-11-19T22:02:00+01:00",
+ "updated": "2026-11-19T21:32:13.064836+00:00",
+ "built": "2026-11-19T22:32:07+01:00",
  "findings": [
   {
    "rule": "quelle-ohne-antwort",
    "title": "Quelle ohne frische Antwort",
    "rank": "Quelle",
    "subject": "Baustellen (Stadt Wien)",
-   "text": "seit 8 h 31 min keine brauchbare Antwort (Abruf endet mit Exit 1); der Feed nutzt die letzte gute Antwort von 19.11. 13:30"
+   "text": "seit 9 h 01 min keine brauchbare Antwort (Abruf endet mit Exit 124); der Feed nutzt die letzte gute Antwort von 19.11. 13:30"
   }
  ],
  "rules": {
   "quelle-ohne-antwort": {
    "since": "2026-11-19T14:32:31.652200+00:00",
-   "last": "2026-11-19T21:02:06.870860+00:00",
+   "last": "2026-11-19T21:32:13.064836+00:00",
    "held_runs": 0,
    "issue": 2222
   }
  },
  "previous_feed": {
-  "built": "2026-11-19T22:02:00+01:00",
+  "built": "2026-11-19T22:32:07+01:00",
   "items": [
-   {
-    "title": "13A: Demonstration",
-    "time_line": "Seit heute"
-   },
    {
     "title": "46: Demonstration",
     "time_line": "Heute"
@@ -62,31 +58,15 @@
    {
     "title": "74A: Viehmarktgasse",
     "time_line": "Seit 16.11."
+   },
+   {
+    "title": "65A: Triester Straße, Rossakgasse",
+    "time_line": "Seit 11.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-12T21:30:59.229258+00:00",
-   "raw": {
-    "wl-stoerungen": 57,
-    "wl-hinweise": 69,
-    "oebb": 184,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 12,
-    "oebb": 159,
-    "baustellen": 65
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 6,
-    "wl": 85
-   }
-  },
   {
    "t": "2026-11-12T22:00:58.667272+00:00",
    "raw": {
@@ -6786,18 +6766,38 @@
     "oebb": 11,
     "wl": 82
    }
+  },
+  {
+   "t": "2026-11-19T21:32:13.064836+00:00",
+   "raw": {
+    "wl-stoerungen": 50,
+    "wl-hinweise": 68,
+    "oebb": 173,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 15,
+    "oebb": 146,
+    "baustellen": 60
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 11,
+    "wl": 80
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-19T21:02:06.870860+00:00"
+   "last_ok": "2026-11-19T21:32:13.064836+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-19T21:02:06.870860+00:00"
+   "last_ok": "2026-11-19T21:32:13.064836+00:00"
   },
   "baustellen": {
    "last_ok": "2026-11-19T12:30:54.124908+00:00",
-   "last_exit": 1,
+   "last_exit": 124,
    "failing_since": "2026-11-19T13:02:29.066750+00:00"
   }
  }
