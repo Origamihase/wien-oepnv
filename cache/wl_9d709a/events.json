@@ -668,28 +668,12 @@
     "guid": "a1b528fec1967205d003f5fcaca847ac9c5054a2a190049bc6ff10dbfc5db5d0",
     "pubDate": "2026-11-19T10:55:00+01:00",
     "starts_at": "2026-11-19T10:55:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-19T11:41:00+01:00",
     "_identity": "wl|störung|L=13A|D=2026-11-19|TK=rettungseinsatz",
     "_wl_ids": [
       "I20261119-0012"
     ],
     "_incident_start": "2026-11-19T10:55:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "16A: Störung an einem Bahnübergang",
-    "description": "Linie 16A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "78cfc305e07fdf703edca3374236eb576bf584080a19450b6f7f78fade7ec1e8",
-    "pubDate": "2026-11-19T10:00:00+01:00",
-    "starts_at": "2026-11-19T10:00:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=16A|D=2026-11-19|TK=16a störung an einem bahnübergang",
-    "_wl_ids": [
-      "I20261119-0009"
-    ],
-    "_incident_start": "2026-11-19T10:00:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -935,7 +919,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "42: Fahrtbehinderung Falschparker",
-    "description": "Linie 42: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 11:05 Uhr. Grund: Falschparker im Bereich Kreuzgasse 51.",
+    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
     "pubDate": "2026-11-19T10:44:00+01:00",
@@ -970,22 +954,6 @@
     "starts_at": "2026-11-19T04:40:15+01:00",
     "ends_at": "2026-11-20T01:00:00+01:00",
     "_identity": "wl|störung|L=66A|D=2026-11-19|TK=busse halten salvatorianerplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "67A: Störung an einem Bahnübergang",
-    "description": "Linie 67A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "6e99216299a61049561d5a4425452f6c84cc32619ff3840ff8b07559a0c13400",
-    "pubDate": "2026-11-19T10:00:00+01:00",
-    "starts_at": "2026-11-19T10:00:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=67A|D=2026-11-19|TK=67a störung an einem bahnübergang",
-    "_wl_ids": [
-      "I20261119-0009"
-    ],
-    "_incident_start": "2026-11-19T10:00:00+01:00"
   },
   {
     "source": "Wiener Linien",

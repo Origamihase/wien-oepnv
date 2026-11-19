@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-19T10:01:04.528548+00:00",
- "built": "2026-11-19T11:00:49+01:00",
+ "updated": "2026-11-19T10:32:25.869566+00:00",
+ "built": "2026-11-19T11:32:12+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-19T11:00:49+01:00",
+  "built": "2026-11-19T11:32:12+01:00",
   "items": [
    {
     "title": "13A: Rettungseinsatz",
@@ -15,10 +15,6 @@
    {
     "title": "42: Falschparker",
     "time_line": "Seit 10:44"
-   },
-   {
-    "title": "16A/67A: Störung an einem Bahnübergang",
-    "time_line": "Seit 10:00"
    },
    {
     "title": "N71: Bauarbeiten",
@@ -47,31 +43,15 @@
    {
     "title": "74A: Viehmarktgasse",
     "time_line": "Seit 16.11."
+   },
+   {
+    "title": "1/71/D: Rathausplatz, Burgtheater",
+    "time_line": "Bis 20.12."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-12T10:31:00.523679+00:00",
-   "raw": {
-    "wl-stoerungen": 51,
-    "wl-hinweise": 77,
-    "oebb": 197,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 18,
-    "oebb": 171,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 6,
-    "wl": 86
-   }
-  },
   {
    "t": "2026-11-12T11:00:51.287733+00:00",
    "raw": {
@@ -6771,17 +6751,39 @@
     "oebb": 9,
     "wl": 84
    }
+  },
+  {
+   "t": "2026-11-19T10:32:25.869566+00:00",
+   "raw": {
+    "wl-stoerungen": 51,
+    "wl-hinweise": 75,
+    "oebb": 174,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 15,
+    "oebb": 150,
+    "baustellen": 60
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 9,
+    "wl": 82
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-19T10:01:04.528548+00:00"
+   "last_ok": "2026-11-19T10:32:25.869566+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-19T10:01:04.528548+00:00"
+   "last_ok": "2026-11-19T10:32:25.869566+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-19T10:01:04.528548+00:00"
+   "last_ok": "2026-11-19T10:01:04.528548+00:00",
+   "last_exit": 124,
+   "failing_since": "2026-11-19T10:32:25.869566+00:00"
   }
  }
 }
