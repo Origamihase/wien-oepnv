@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261119-0026, I20261119-0027, I20261119-0028-F01, I20261119-0028-F02, I20261119-0029, I20260925-0011, I20260909-0007, I20261119-0025-F01, I20261020-0029"
+    "trafficInfoNameList": "I20261119-0026, I20261119-0028-F01, I20261119-0028-F02, I20261119-0025-F01, I20260925-0011, I20260909-0007, I20261119-0029-F01, I20261020-0029, I20261119-0027"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1875-101, R1876-101, R1881-101, R1882-101, R1880-101, R1884-101, R1883-101, R3886-480, R2345-127, R2359-125, R2380-627, R293-474, R318-437, R2379-627, R2373-126, R2373-127, R2373-125, R2343-125, R2343-626, R2378-627, R2372-125, R2371-125, R2370-125, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R532-109, R556-109, R531-109, R530-109, R526-109, R223-109, R1476-109, R533-109, R1475-109, R2374-125, R2866-125, R2867-125, R2870-125, R2375-125, R2634-125, R2556-125, R3192-125, R3196-125, R3197-125, R3191-125, R3193-125, R3068-125, R3005-125, R2861-125, R2566-125, R2377-125, R2865-125, R2864-125, R2874-125, R885-125, R2376-125, R3185-125, R3184-125, R3183-125, R3187-125, R3186-125, R3069-125, R3115-125, R2376-126, R2566-126, R885-126, R2377-126, R3185-126, R3187-126, R3186-126, R3184-126, R3183-126, R3115-126, R3009-126, R3069-126, R2558-126, R2634-126, R2556-126, R2375-126, R2374-126, R3196-126, R3191-126, R3192-126, R3193-126, R3197-126, R3068-126, R3005-126, R404-106, R406-106, R405-106, R421-106, R418-106, R420-106, R3434-106, R1933-111, R405-111, R404-111, R406-111, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1875-101, R1882-101, R1880-101, R1876-101, R1881-101, R1884-101, R1883-101, R3886-480, R2343-125, R2343-626, R2378-627, R318-437, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2380-627, R293-474, R2345-127, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R2867-125, R2866-125, R2870-125, R2374-125, R2375-125, R2634-125, R2556-125, R3191-125, R3196-125, R3192-125, R3193-125, R3197-125, R3005-125, R3068-125, R2874-125, R885-125, R2377-125, R2376-125, R2864-125, R2566-125, R2865-125, R2861-125, R3187-125, R3186-125, R3185-125, R3184-125, R3183-125, R3115-125, R3069-125, R885-126, R2566-126, R2376-126, R2377-126, R3186-126, R3184-126, R3183-126, R3185-126, R3187-126, R3115-126, R3069-126, R3009-126, R2558-126, R2374-126, R2556-126, R2375-126, R2634-126, R3192-126, R3191-126, R3196-126, R3197-126, R3193-126, R3068-126, R3005-126, R405-106, R406-106, R404-106, R421-106, R418-106, R420-106, R3434-106, R1933-111, R406-111, R404-111, R405-111, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -210,8 +210,8 @@
     "status": "active",
     "time": {
      "created": "2026-11-19T15:51:00.000+0100",
-     "lastUpdate": "2026-11-19T15:51:00.000+0100",
-     "resume": "2026-11-19T15:51:00.000+0100",
+     "end": "2026-11-19T17:23:00.000+0100",
+     "lastUpdate": "2026-11-19T16:53:00.000+0100",
      "start": "2026-11-19T15:43:00.000+0100"
     },
     "title": "9: Falschparker"
@@ -269,13 +269,13 @@
       "26": "ptTram"
      }
     },
-    "description": "Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Kagran U. Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße U und Zanggasse. Die Züge werden weiters nach Aspern Nord geführt Voraussichtliche Dauer: 16:30 Uhr. Grund: Rettungseinsatz im Bereich Donaufelder Straße 164.",
-    "descriptionHTML": "<p>Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Kagran U.<br>Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße U und Zanggasse.</p><p>Die Züge werden weiters nach Aspern Nord geführt</p><p>Voraussichtliche Dauer: 16:30 Uhr.</p><p>Grund: Rettungseinsatz im Bereich Donaufelder Straße 164.</p>",
+    "description": "Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Kagran U. Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße U und Zanggasse. Die Züge werden weiters nach Aspern Nord geführt Voraussichtliche Dauer: 17:15 Uhr. Grund: Rettungseinsatz im Bereich Donaufelder Straße 164.",
+    "descriptionHTML": "<p>Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Kagran U.<br>Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße U und Zanggasse.</p><p>Die Züge werden weiters nach Aspern Nord geführt</p><p>Voraussichtliche Dauer: 17:15 Uhr.</p><p>Grund: Rettungseinsatz im Bereich Donaufelder Straße 164.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Kagran U.<br>Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße U und Zanggasse.</p><p>Die Züge werden weiters nach Aspern Nord geführt</p><p>Voraussichtliche Dauer: 16:30 Uhr.</p><p>Grund: Rettungseinsatz im Bereich Donaufelder Straße 164.</p>",
-       "descriptionPlain": "Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Kagran U. Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße U und Zanggasse. Die Züge werden weiters nach Aspern Nord geführt Voraussichtliche Dauer: 16:30 Uhr. Grund: Rettungseinsatz im Bereich Donaufelder Straße 164.",
+       "descriptionHtml": "<p>Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Kagran U.<br>Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße U und Zanggasse.</p><p>Die Züge werden weiters nach Aspern Nord geführt</p><p>Voraussichtliche Dauer: 17:15 Uhr.</p><p>Grund: Rettungseinsatz im Bereich Donaufelder Straße 164.</p>",
+       "descriptionPlain": "Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Kagran U. Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße U und Zanggasse. Die Züge werden weiters nach Aspern Nord geführt Voraussichtliche Dauer: 17:15 Uhr. Grund: Rettungseinsatz im Bereich Donaufelder Straße 164.",
        "title": "25, 26: Rettungseinsatz"
       }
      }
@@ -307,7 +307,7 @@
     "status": "active",
     "time": {
      "created": "2026-11-19T16:13:00.000+0100",
-     "lastUpdate": "2026-11-19T16:13:00.000+0100",
+     "lastUpdate": "2026-11-19T16:38:00.000+0100",
      "start": "2026-11-19T16:09:00.000+0100"
     },
     "title": "25, 26: Rettungseinsatz"
@@ -416,18 +416,18 @@
       "U1": "ptMetro"
      }
     },
-    "description": "Linie U1: Fahrtbehinderung in Richtung Oberlaa. Voraussichtliche Dauer: 16:50 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Troststraße.",
-    "descriptionHTML": "<p>Linie U1:<br>Fahrtbehinderung in Richtung Oberlaa.</p><p>Voraussichtliche Dauer: 16:50 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Troststraße.</p>",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie U1:<br>Fahrtbehinderung in Richtung Oberlaa.</p><p>Voraussichtliche Dauer: 16:50 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Troststraße.</p>",
-       "descriptionPlain": "Linie U1: Fahrtbehinderung in Richtung Oberlaa. Voraussichtliche Dauer: 16:50 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Troststraße.",
+       "descriptionHtml": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "U1: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261119-0029",
+    "name": "I20261119-0029-F01",
     "owner": "WL",
     "parentName": "I20261119-0029",
     "priority": "1",
@@ -449,8 +449,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-19T16:23:00.000+0100",
-     "lastUpdate": "2026-11-19T16:23:00.000+0100",
+     "created": "2026-11-19T16:33:00.000+0100",
+     "lastUpdate": "2026-11-19T16:33:00.000+0100",
+     "resume": "2026-11-19T16:33:00.000+0100",
      "start": "2026-11-19T16:23:00.000+0100"
     },
     "title": "U1: Schadhaftes Fahrzeug"
@@ -477,52 +478,6 @@
      "start": "2026-11-19T04:45:14.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1475-109",
-    "owner": "WL",
-    "parentName": "R1475-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     1475
-    ],
-    "time": {
-     "end": "2026-11-19T16:43:00.000+0100",
-     "start": "2026-11-19T15:33:19.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1476-109",
-    "owner": "WL",
-    "parentName": "R1476-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     1476
-    ],
-    "time": {
-     "end": "2026-11-19T16:43:00.000+0100",
-     "start": "2026-11-19T15:33:19.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -750,29 +705,6 @@
      "start": "2026-11-19T04:40:15.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R223-109",
-    "owner": "WL",
-    "parentName": "R223-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     223
-    ],
-    "time": {
-     "end": "2026-11-19T16:43:00.000+0100",
-     "start": "2026-11-19T15:24:46.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1022,7 +954,7 @@
      2374
     ],
     "time": {
-     "end": "2026-11-19T17:12:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:23.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -1068,7 +1000,7 @@
      2375
     ],
     "time": {
-     "end": "2026-11-19T17:12:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:23.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -1114,7 +1046,7 @@
      2376
     ],
     "time": {
-     "end": "2026-11-19T17:13:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:53.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Kagran U "
@@ -1160,7 +1092,7 @@
      2377
     ],
     "time": {
-     "end": "2026-11-19T17:13:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:53.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Kagran U "
@@ -1275,7 +1207,7 @@
      2556
     ],
     "time": {
-     "end": "2026-11-19T17:12:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:23.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -1321,7 +1253,7 @@
      2558
     ],
     "time": {
-     "end": "2026-11-19T17:12:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T00:00:30.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -1367,7 +1299,7 @@
      2566
     ],
     "time": {
-     "end": "2026-11-19T17:13:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:53.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Kagran U "
@@ -1413,7 +1345,7 @@
      2634
     ],
     "time": {
-     "end": "2026-11-19T17:12:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:23.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -1459,7 +1391,7 @@
      2861
     ],
     "time": {
-     "end": "2026-11-19T17:13:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:53.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Kagran U "
@@ -1482,7 +1414,7 @@
      2864
     ],
     "time": {
-     "end": "2026-11-19T17:13:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:53.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Kagran U "
@@ -1505,7 +1437,7 @@
      2865
     ],
     "time": {
-     "end": "2026-11-19T17:13:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:53.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Kagran U "
@@ -1528,7 +1460,7 @@
      2866
     ],
     "time": {
-     "end": "2026-11-19T17:12:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:23.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -1551,7 +1483,7 @@
      2867
     ],
     "time": {
-     "end": "2026-11-19T17:12:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:23.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -1574,7 +1506,7 @@
      2870
     ],
     "time": {
-     "end": "2026-11-19T17:12:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:23.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -1597,7 +1529,7 @@
      2874
     ],
     "time": {
-     "end": "2026-11-19T17:13:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:53.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Kagran U "
@@ -1873,7 +1805,7 @@
      3183
     ],
     "time": {
-     "end": "2026-11-19T17:13:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:54.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Kagran U "
@@ -1919,7 +1851,7 @@
      3184
     ],
     "time": {
-     "end": "2026-11-19T17:13:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:54.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Kagran U "
@@ -1965,7 +1897,7 @@
      3185
     ],
     "time": {
-     "end": "2026-11-19T17:13:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:54.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Kagran U "
@@ -2011,7 +1943,7 @@
      3186
     ],
     "time": {
-     "end": "2026-11-19T17:13:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:54.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Kagran U "
@@ -2057,7 +1989,7 @@
      3187
     ],
     "time": {
-     "end": "2026-11-19T17:13:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:54.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Kagran U "
@@ -2103,7 +2035,7 @@
      3191
     ],
     "time": {
-     "end": "2026-11-19T17:12:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:24.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -2149,7 +2081,7 @@
      3192
     ],
     "time": {
-     "end": "2026-11-19T17:12:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:24.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -2195,7 +2127,7 @@
      3193
     ],
     "time": {
-     "end": "2026-11-19T17:12:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:24.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -2241,7 +2173,7 @@
      3196
     ],
     "time": {
-     "end": "2026-11-19T17:12:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:24.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -2287,7 +2219,7 @@
      3197
     ],
     "time": {
-     "end": "2026-11-19T17:12:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:24.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -2637,144 +2569,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R526-109",
-    "owner": "WL",
-    "parentName": "R526-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     526
-    ],
-    "time": {
-     "end": "2026-11-19T16:43:00.000+0100",
-     "start": "2026-11-19T15:24:18.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R530-109",
-    "owner": "WL",
-    "parentName": "R530-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     530
-    ],
-    "time": {
-     "end": "2026-11-19T16:43:00.000+0100",
-     "start": "2026-11-19T15:24:18.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R531-109",
-    "owner": "WL",
-    "parentName": "R531-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     531
-    ],
-    "time": {
-     "end": "2026-11-19T16:43:00.000+0100",
-     "start": "2026-11-19T15:24:18.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R532-109",
-    "owner": "WL",
-    "parentName": "R532-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     532
-    ],
-    "time": {
-     "end": "2026-11-19T16:43:00.000+0100",
-     "start": "2026-11-19T15:24:18.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R533-109",
-    "owner": "WL",
-    "parentName": "R533-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     533
-    ],
-    "time": {
-     "end": "2026-11-19T16:43:00.000+0100",
-     "start": "2026-11-19T15:33:19.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R556-109",
-    "owner": "WL",
-    "parentName": "R556-109",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedStops": [
-     556
-    ],
-    "time": {
-     "end": "2026-11-19T16:43:00.000+0100",
-     "start": "2026-11-19T15:24:18.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Rettungseinsatz\nBetrieb ab Kagran U ",
     "name": "R885-125",
     "owner": "WL",
@@ -2790,7 +2584,7 @@
      885
     ],
     "time": {
-     "end": "2026-11-19T17:13:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:53.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Kagran U "
