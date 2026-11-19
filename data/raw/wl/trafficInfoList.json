@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261119-0042, I20261119-0045-F01, I20261119-0046-F01, I20260925-0011, I20260909-0007, I20261119-0048, I20261020-0029, I20261119-0047, I20261119-0049, I20261119-0050"
+    "trafficInfoNameList": "I20261119-0045-F01, I20261119-0046-F01, I20260925-0011, I20260909-0007, I20261119-0048, I20261020-0029, I20261119-0047, I20261119-0049, I20261119-0050, I20261119-0042-F01, I20261119-0042-F02"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1883-101, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R3886-480, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R2380-627, R2345-127, R2379-627, R293-474, R318-437, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R234-143, R236-144, R246-144, R237-144, R1371-144, R1373-144, R1393-146, R1392-146, R1394-146, R1372-144, R235-143, R236-143, R237-143, R662-413, R660-413, R663-413, R665-413, R3528-413, R3527-413, R688-413, R353-0, R354-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1881-101, R1880-101, R1876-101, R1875-101, R1884-101, R1883-101, R1882-101, R3886-480, R2373-126, R2380-627, R293-474, R318-437, R2345-127, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2379-627, R2378-627, R2343-125, R2343-626, R2359-125, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R234-143, R246-144, R236-144, R237-144, R1393-146, R1394-146, R1371-144, R1372-144, R1373-144, R1392-146, R235-143, R236-143, R237-143, R353-0, R354-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -175,23 +175,22 @@
     "alertCauseId": 122,
     "attributes": {
      "relatedLineTypes": {
-      "43": "ptTram",
-      "44": "ptTram"
+      "43": "ptTram"
      }
     },
-    "description": "Linie 43: Betrieb nur zwischen Neuwaldegg und Alser Straße U. Linie 44: Betrieb nur zwischen Ottakring, Maroltingergasse und Johann-Nepomuk-Berger-Platz. Ersatz: Linien U6, 2, 40, 41, 42 und 40A. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich Alser Straße.",
-    "descriptionHTML": "<p>Linie 43:<br>Betrieb nur zwischen Neuwaldegg und Alser Straße U.<br>Linie 44:<br>Betrieb nur zwischen Ottakring, Maroltingergasse und Johann-Nepomuk-Berger-Platz.</p><p>Ersatz: Linien U6, 2, 40, 41, 42 und 40A.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Demonstration im Bereich Alser Straße.</p>",
+    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 43:<br>Betrieb nur zwischen Neuwaldegg und Alser Straße U.<br>Linie 44:<br>Betrieb nur zwischen Ottakring, Maroltingergasse und Johann-Nepomuk-Berger-Platz.</p><p>Ersatz: Linien U6, 2, 40, 41, 42 und 40A.</p><p>Voraussichtliche Dauer: 20:00 Uhr.</p><p>Grund: Demonstration im Bereich Alser Straße.</p>",
-       "descriptionPlain": "Linie 43: Betrieb nur zwischen Neuwaldegg und Alser Straße U. Linie 44: Betrieb nur zwischen Ottakring, Maroltingergasse und Johann-Nepomuk-Berger-Platz. Ersatz: Linien U6, 2, 40, 41, 42 und 40A. Voraussichtliche Dauer: 20:00 Uhr. Grund: Demonstration im Bereich Alser Straße.",
-       "title": "43, 44: Demonstration"
+       "descriptionHtml": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "43: Demonstration"
       }
      }
     ],
     "location": "Alser Straße",
-    "name": "I20261119-0042",
+    "name": "I20261119-0042-F01",
     "owner": "WL",
     "parentName": "I20261119-0042",
     "priority": "1",
@@ -199,28 +198,71 @@
     "reasonName": "Demonstration",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "43",
-     "44"
+     "43"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 143,
       "lineName": "43",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-11-19T20:06:00.000+0100",
+     "end": "2026-11-19T20:28:00.000+0100",
+     "lastUpdate": "2026-11-19T20:28:00.000+0100",
+     "resume": "2026-11-19T20:28:00.000+0100",
+     "start": "2026-11-19T18:09:00.000+0100"
+    },
+    "title": "43: Demonstration"
+   },
+   {
+    "alertCause": "demonstration",
+    "alertCauseId": 122,
+    "attributes": {
+     "relatedLineTypes": {
+      "44": "ptTram"
+     }
+    },
+    "description": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 44: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 44: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "44: Demonstration"
+      }
+     }
+    ],
+    "location": "Alser Straße",
+    "name": "I20261119-0042-F02",
+    "owner": "WL",
+    "parentName": "I20261119-0042",
+    "priority": "1",
+    "reasonId": 22,
+    "reasonName": "Demonstration",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 144,
       "lineName": "44",
       "vehicleType": "ptTram"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
-     "created": "2026-11-19T18:12:00.000+0100",
-     "lastUpdate": "2026-11-19T18:12:00.000+0100",
+     "created": "2026-11-19T20:06:00.000+0100",
+     "end": "2026-11-19T20:29:00.000+0100",
+     "lastUpdate": "2026-11-19T20:29:00.000+0100",
+     "resume": "2026-11-19T20:29:00.000+0100",
      "start": "2026-11-19T18:09:00.000+0100"
     },
-    "title": "43, 44: Demonstration"
+    "title": "44: Demonstration"
    },
    {
     "alertCause": "miscellaneous",
@@ -1421,52 +1463,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Demonstration",
-    "name": "R3527-413",
-    "owner": "WL",
-    "parentName": "R3527-413",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedStops": [
-     3527
-    ],
-    "time": {
-     "end": "2026-11-19T20:18:00.000+0100",
-     "start": "2026-11-19T19:19:41.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Demonstration"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Demonstration",
-    "name": "R3528-413",
-    "owner": "WL",
-    "parentName": "R3528-413",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedStops": [
-     3528
-    ],
-    "time": {
-     "end": "2026-11-19T20:18:00.000+0100",
-     "start": "2026-11-19T19:19:41.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Demonstration"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Schadhafter Zug\nUmleitung bis\nAlserbachstraße\nüber D und 37",
     "name": "R353-0",
     "owner": "WL",
@@ -1592,121 +1588,6 @@
      "start": "2026-11-19T05:00:16.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Neubaugasse >",
-    "name": "R660-413",
-    "owner": "WL",
-    "parentName": "R660-413",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedStops": [
-     660
-    ],
-    "time": {
-     "end": "2026-11-19T20:19:00.000+0100",
-     "start": "2026-11-19T19:19:39.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Neubaugasse >"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Neubaugasse >",
-    "name": "R662-413",
-    "owner": "WL",
-    "parentName": "R662-413",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedStops": [
-     662
-    ],
-    "time": {
-     "end": "2026-11-19T20:19:00.000+0100",
-     "start": "2026-11-19T19:19:39.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Neubaugasse >"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Neubaugasse >",
-    "name": "R663-413",
-    "owner": "WL",
-    "parentName": "R663-413",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedStops": [
-     663
-    ],
-    "time": {
-     "end": "2026-11-19T20:19:00.000+0100",
-     "start": "2026-11-19T19:19:39.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Neubaugasse >"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Neubaugasse >",
-    "name": "R665-413",
-    "owner": "WL",
-    "parentName": "R665-413",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedStops": [
-     665
-    ],
-    "time": {
-     "end": "2026-11-19T20:19:00.000+0100",
-     "start": "2026-11-19T19:19:39.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Neubaugasse >"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBusse halten am Bundesländerplatz",
-    "name": "R688-413",
-    "owner": "WL",
-    "parentName": "R688-413",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedStops": [
-     688
-    ],
-    "time": {
-     "end": "2026-11-19T20:19:00.000+0100",
-     "start": "2026-11-19T19:20:09.000+0100"
-    },
-    "title": "Demonstration\nBusse halten am Bundesländerplatz"
    },
    {
     "alertCause": "undefined alert cause",

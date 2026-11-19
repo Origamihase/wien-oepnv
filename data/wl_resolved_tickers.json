@@ -1,6 +1,77 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
- "tickers": [],
+ "tickers": [
+  {
+   "key": "R1371-144|2026-11-19T18:06:34.000+0100|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R1371-144",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-11-19T23:45:00.000+0100",
+   "incident": "I20261119-0042-F02"
+  },
+  {
+   "key": "R1372-144|2026-11-19T18:06:34.000+0100|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R1372-144",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-11-19T23:45:00.000+0100",
+   "incident": "I20261119-0042-F02"
+  },
+  {
+   "key": "R1373-144|2026-11-19T18:06:34.000+0100|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R1373-144",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-11-19T23:45:00.000+0100",
+   "incident": "I20261119-0042-F02"
+  },
+  {
+   "key": "R234-143|2026-11-19T18:06:01.000+0100|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R234-143",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-11-19T23:45:00.000+0100",
+   "incident": "I20261119-0042-F01"
+  },
+  {
+   "key": "R235-143|2026-11-19T18:08:02.000+0100|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R235-143",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-11-19T23:45:00.000+0100",
+   "incident": "I20261119-0042-F01"
+  },
+  {
+   "key": "R236-143|2026-11-19T18:09:02.000+0100|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R236-143",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-11-19T23:45:00.000+0100",
+   "incident": "I20261119-0042-F01"
+  },
+  {
+   "key": "R236-144|2026-11-19T18:06:31.000+0100|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R236-144",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-11-19T23:45:00.000+0100",
+   "incident": "I20261119-0042-F02"
+  },
+  {
+   "key": "R237-143|2026-11-19T18:09:02.000+0100|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R237-143",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-11-19T23:45:00.000+0100",
+   "incident": "I20261119-0042-F01"
+  },
+  {
+   "key": "R237-144|2026-11-19T18:06:31.000+0100|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R237-144",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-11-19T23:45:00.000+0100",
+   "incident": "I20261119-0042-F02"
+  },
+  {
+   "key": "R246-144|2026-11-19T18:06:31.000+0100|Fahrtbehinderung\nwegen Demonstration",
+   "name": "R246-144",
+   "title": "Fahrtbehinderung\nwegen Demonstration",
+   "end": "2026-11-19T23:45:00.000+0100",
+   "incident": "I20261119-0042-F02"
+  }
+ ],
  "owners": {}
 }

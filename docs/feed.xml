@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 19 Nov 2026 20:01:57 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 20:32:03 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[37/38: Schadhafter Zug]]></title>
@@ -113,8 +113,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 19 Nov 2026 19:19:39 +0100</ext:first_seen>
       <ext:starts_at>Thu, 19 Nov 2026 19:22:00 +0100</ext:starts_at>
-      <description>Busse halten am Bundesländerplatz. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit heute]</description>
-      <content:encoded><![CDATA[Busse halten am Bundesländerplatz. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit heute]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit heute]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[46: Demonstration]]></title>
@@ -131,17 +131,18 @@
       <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[43/44: Demonstration]]></title>
+      <title><![CDATA[1/71/D: Haltestellenverlegung]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">176ee273e9652b25ddc2469fadf98bebe5c304aa8e214067d34a744585279d1e</guid>
-      <pubDate>Thu, 19 Nov 2026 18:09:00 +0100</pubDate>
+      <guid isPermaLink="false">d962355223a7a9cd785ccb8198946ea2a4bcb7aa6579a57ac7115a46abaa33fa</guid>
+      <pubDate>Thu, 19 Nov 2026 13:59:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 19 Nov 2026 18:09:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 19 Nov 2026 18:09:00 +0100</ext:starts_at>
-      <description>Betrieb nur: 43 Neuwaldegg – Alser Straße; 44 Ottakring, Maroltingergasse – Johann-Nepomuk-Berger-Platz. [Seit heute]</description>
-      <content:encoded><![CDATA[Betrieb nur: 43 Neuwaldegg – Alser Straße; 44 Ottakring, Maroltingergasse – Johann-Nepomuk-Berger-Platz.<br/>[Seit heute]]]></content:encoded>
+      <ext:first_seen>Thu, 19 Nov 2026 13:59:00 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 19 Nov 2026 13:59:00 +0100</ext:starts_at>
+      <ext:ends_at>Sun, 20 Dec 2026 22:30:00 +0100</ext:ends_at>
+      <description>Haltestellenauflassung der Linien D, 1 und 71 in beiden Richtungen, an Freitagen, Samstagen, Sonntagen sowie am 08. Dezember jeweils von etwa 15:00 Uhr bis 22:30 Uhr. … [Bis 20.12.]</description>
+      <content:encoded><![CDATA[Haltestellenauflassung der Linien D, 1 und 71 in beiden Richtungen, an Freitagen, Samstagen, Sonntagen sowie am 08. Dezember jeweils von etwa 15:00 Uhr bis 22:30 Uhr. …<br/>[Bis 20.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
