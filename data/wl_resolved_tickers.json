@@ -3,109 +3,68 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R1214-138|2026-11-19T14:40:43.000+0100": {
-   "incident": "I20261119-0022",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R1215-138|2026-11-19T14:40:43.000+0100": {
-   "incident": "I20261119-0022",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R1216-138|2026-11-19T14:40:43.000+0100": {
-   "incident": "I20261119-0022",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R1217-138|2026-11-19T14:40:43.000+0100": {
-   "incident": "I20261119-0022",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R1221-138|2026-11-19T14:55:44.000+0100": {
-   "incident": "I20261119-0022",
-   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße U "
-  },
-  "R1223-138|2026-11-19T14:55:44.000+0100": {
-   "incident": "I20261119-0022",
-   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße U "
-  },
-  "R1224-138|2026-11-19T14:55:44.000+0100": {
-   "incident": "I20261119-0022",
-   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße U "
-  },
-  "R1225-138|2026-11-19T14:55:44.000+0100": {
-   "incident": "I20261119-0022",
-   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße U "
-  },
-  "R1226-138|2026-11-19T14:55:44.000+0100": {
-   "incident": "I20261119-0022",
-   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße U "
-  },
-  "R1227-138|2026-11-19T14:55:44.000+0100": {
-   "incident": "I20261119-0022",
-   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße U "
-  },
   "R1342-142|2026-11-19T15:11:47.000+0100": {
    "incident": "I20261119-0023",
    "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R1475-109|2026-11-19T15:33:19.000+0100": {
+   "incident": "I20261119-0025",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R1476-109|2026-11-19T15:33:19.000+0100": {
+   "incident": "I20261119-0025",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
   "R148-142|2026-11-19T15:11:45.000+0100": {
    "incident": "I20261119-0023",
    "title": "Fahrtbehinderung\nSchadhafter Zug"
   },
-  "R208-138|2026-11-19T14:57:13.000+0100": {
-   "incident": "I20261119-0022",
-   "title": "Schadhafter Zug\nZüge halten Währinger Gürtel 164"
-  },
-  "R215-138|2026-11-19T14:40:41.000+0100": {
-   "incident": "I20261119-0022",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R216-138|2026-11-19T14:40:41.000+0100": {
-   "incident": "I20261119-0022",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
   "R223-109|2026-11-19T15:24:46.000+0100": {
-   "incident": "I20261119-0024",
-   "title": "Fahrtbehinderung\nFalschparker"
-  },
-  "R2964-138|2026-11-19T14:40:45.000+0100": {
-   "incident": "I20261119-0022",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R2985-138|2026-11-19T14:55:47.000+0100": {
-   "incident": "I20261119-0022",
-   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße U "
+   "incident": "I20261119-0025",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "begin": "2026-11-19T15:43:00+01:00"
   },
   "R493-142|2026-11-19T15:11:47.000+0100": {
    "incident": "I20261119-0023",
    "title": "Fahrtbehinderung\nSchadhafter Zug"
   },
   "R524-109|2026-11-19T15:24:18.000+0100": {
-   "incident": "I20261119-0024",
-   "title": "Fahrtbehinderung\nFalschparker"
+   "incident": "I20261119-0025",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "begin": "2026-11-19T15:43:00+01:00"
   },
   "R524-142|2026-11-19T15:11:47.000+0100": {
    "incident": "I20261119-0023",
    "title": "Fahrtbehinderung\nSchadhafter Zug"
   },
   "R526-109|2026-11-19T15:24:18.000+0100": {
-   "incident": "I20261119-0024",
-   "title": "Fahrtbehinderung\nFalschparker"
+   "incident": "I20261119-0025",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "begin": "2026-11-19T15:43:00+01:00"
   },
   "R530-109|2026-11-19T15:24:18.000+0100": {
-   "incident": "I20261119-0024",
-   "title": "Fahrtbehinderung\nFalschparker"
+   "incident": "I20261119-0025",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "begin": "2026-11-19T15:43:00+01:00"
   },
   "R531-109|2026-11-19T15:24:18.000+0100": {
-   "incident": "I20261119-0024",
-   "title": "Fahrtbehinderung\nFalschparker"
+   "incident": "I20261119-0025",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "begin": "2026-11-19T15:43:00+01:00"
   },
   "R532-109|2026-11-19T15:24:18.000+0100": {
-   "incident": "I20261119-0024",
+   "incident": "I20261119-0025",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "begin": "2026-11-19T15:43:00+01:00"
+  },
+  "R533-109|2026-11-19T15:33:19.000+0100": {
+   "incident": "I20261119-0025",
    "title": "Fahrtbehinderung\nFalschparker"
   },
   "R556-109|2026-11-19T15:24:18.000+0100": {
-   "incident": "I20261119-0024",
-   "title": "Fahrtbehinderung\nFalschparker"
+   "incident": "I20261119-0025",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "begin": "2026-11-19T15:43:00+01:00"
   }
  }
 }
