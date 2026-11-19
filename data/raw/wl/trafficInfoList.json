@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261119-0026, I20261119-0028-F01, I20261119-0028-F02, I20261119-0025-F01, I20260925-0011, I20260909-0007, I20261119-0029-F01, I20261020-0029, I20261119-0027"
+    "trafficInfoNameList": "I20261119-0028-F01, I20261119-0028-F02, I20260925-0011, I20260909-0007, I20261119-0029-F01, I20261119-0027-F01, I20261119-0027-F02, I20261119-0031, I20261020-0029, I20261119-0030"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1875-101, R1882-101, R1880-101, R1876-101, R1881-101, R1884-101, R1883-101, R3886-480, R2343-125, R2343-626, R2378-627, R318-437, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2380-627, R293-474, R2345-127, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R2867-125, R2866-125, R2870-125, R2374-125, R2375-125, R2634-125, R2556-125, R3191-125, R3196-125, R3192-125, R3193-125, R3197-125, R3005-125, R3068-125, R2874-125, R885-125, R2377-125, R2376-125, R2864-125, R2566-125, R2865-125, R2861-125, R3187-125, R3186-125, R3185-125, R3184-125, R3183-125, R3115-125, R3069-125, R885-126, R2566-126, R2376-126, R2377-126, R3186-126, R3184-126, R3183-126, R3185-126, R3187-126, R3115-126, R3069-126, R3009-126, R2558-126, R2374-126, R2556-126, R2375-126, R2634-126, R3192-126, R3191-126, R3196-126, R3197-126, R3193-126, R3068-126, R3005-126, R405-106, R406-106, R404-106, R421-106, R418-106, R420-106, R3434-106, R1933-111, R406-111, R404-111, R405-111, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R1883-101, R1884-101, R3886-480, R2380-627, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R293-474, R318-437, R2345-127, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R2556-125, R2866-125, R2867-125, R2870-125, R2374-125, R2375-125, R2634-125, R3192-125, R3191-125, R3196-125, R3193-125, R3197-125, R3005-125, R3068-125, R2874-125, R2377-125, R2376-125, R885-125, R2865-125, R2566-125, R2864-125, R2861-125, R3185-125, R3183-125, R3184-125, R3187-125, R3186-125, R3115-125, R3069-125, R2376-126, R2566-126, R2377-126, R885-126, R3185-126, R3184-126, R3183-126, R3187-126, R3186-126, R3069-126, R3009-126, R3115-126, R2634-126, R2558-126, R2374-126, R2375-126, R2556-126, R3197-126, R3196-126, R3193-126, R3192-126, R3191-126, R3068-126, R3005-126, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,117 +171,26 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "9": "ptTram"
-     }
-    },
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 9: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "9: Falschparker"
-      }
-     }
-    ],
-    "location": "Hormayrgasse",
-    "name": "I20261119-0025-F01",
-    "owner": "WL",
-    "parentName": "I20261119-0025",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "9"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 109,
-      "lineName": "9",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-19T15:51:00.000+0100",
-     "end": "2026-11-19T17:23:00.000+0100",
-     "lastUpdate": "2026-11-19T16:53:00.000+0100",
-     "start": "2026-11-19T15:43:00.000+0100"
-    },
-    "title": "9: Falschparker"
-   },
-   {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
-    "attributes": {
-     "relatedLineTypes": {
-      "U2": "ptMetro"
-     }
-    },
-    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "descriptionHTML": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Betriebsstörung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Betriebsstörung.</p>",
-       "descriptionPlain": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-       "title": "U2: Betriebsstörung"
-      }
-     }
-    ],
-    "name": "I20261119-0026",
-    "owner": "WL",
-    "parentName": "I20261119-0026",
-    "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 302,
-      "lineName": "U2",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-19T15:50:00.000+0100",
-     "lastUpdate": "2026-11-19T15:50:00.000+0100",
-     "start": "2026-11-19T15:50:00.000+0100"
-    },
-    "title": "U2: Betriebsstörung"
-   },
-   {
     "alertCause": "emergency medical services",
     "alertCauseId": 14,
     "attributes": {
      "relatedLineTypes": {
-      "25": "ptTram",
-      "26": "ptTram"
+      "25": "ptTram"
      }
     },
-    "description": "Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Kagran U. Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße U und Zanggasse. Die Züge werden weiters nach Aspern Nord geführt Voraussichtliche Dauer: 17:15 Uhr. Grund: Rettungseinsatz im Bereich Donaufelder Straße 164.",
-    "descriptionHTML": "<p>Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Kagran U.<br>Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße U und Zanggasse.</p><p>Die Züge werden weiters nach Aspern Nord geführt</p><p>Voraussichtliche Dauer: 17:15 Uhr.</p><p>Grund: Rettungseinsatz im Bereich Donaufelder Straße 164.</p>",
+    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Kagran U.<br>Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße U und Zanggasse.</p><p>Die Züge werden weiters nach Aspern Nord geführt</p><p>Voraussichtliche Dauer: 17:15 Uhr.</p><p>Grund: Rettungseinsatz im Bereich Donaufelder Straße 164.</p>",
-       "descriptionPlain": "Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Kagran U. Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße U und Zanggasse. Die Züge werden weiters nach Aspern Nord geführt Voraussichtliche Dauer: 17:15 Uhr. Grund: Rettungseinsatz im Bereich Donaufelder Straße 164.",
-       "title": "25, 26: Rettungseinsatz"
+       "descriptionHtml": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "25: Rettungseinsatz"
       }
      }
     ],
     "location": "Donaufelder Straße 164",
-    "name": "I20261119-0027",
+    "name": "I20261119-0027-F01",
     "owner": "WL",
     "parentName": "I20261119-0027",
     "priority": "1",
@@ -289,15 +198,55 @@
     "reasonName": "Rettungseinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "25",
-     "26"
+     "25"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 125,
       "lineName": "25",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-19T17:02:00.000+0100",
+     "lastUpdate": "2026-11-19T17:02:00.000+0100",
+     "resume": "2026-11-19T17:02:00.000+0100",
+     "start": "2026-11-19T16:09:00.000+0100"
+    },
+    "title": "25: Rettungseinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "26": "ptTram"
+     }
+    },
+    "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 26: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 26: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "26: Rettungseinsatz"
+      }
+     }
+    ],
+    "location": "Donaufelder Straße 164",
+    "name": "I20261119-0027-F02",
+    "owner": "WL",
+    "parentName": "I20261119-0027",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 126,
       "lineName": "26",
@@ -306,11 +255,12 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-19T16:13:00.000+0100",
-     "lastUpdate": "2026-11-19T16:38:00.000+0100",
+     "created": "2026-11-19T17:02:00.000+0100",
+     "lastUpdate": "2026-11-19T17:02:00.000+0100",
+     "resume": "2026-11-19T17:02:00.000+0100",
      "start": "2026-11-19T16:09:00.000+0100"
     },
-    "title": "25, 26: Rettungseinsatz"
+    "title": "26: Rettungseinsatz"
    },
    {
     "alertCause": "police activity",
@@ -455,6 +405,95 @@
      "start": "2026-11-19T16:23:00.000+0100"
     },
     "title": "U1: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "36A": "ptBusCity"
+     }
+    },
+    "description": "Linie 36A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 36A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 36A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 36A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "36A: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261119-0030",
+    "owner": "WL",
+    "parentName": "I20261119-0030",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "36A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 436,
+      "lineName": "36A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-19T17:07:00.000+0100",
+     "lastUpdate": "2026-11-19T17:07:00.000+0100",
+     "resume": "2026-11-19T17:07:00.000+0100",
+     "start": "2026-11-19T17:07:00.000+0100"
+    },
+    "title": "36A: Rettungseinsatz"
+   },
+   {
+    "alertCause": "miscellaneous",
+    "alertCauseId": 137,
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Betriebsstörung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Betriebsstörung.</p>",
+       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+       "title": "U3: Betriebsstörung"
+      }
+     }
+    ],
+    "name": "I20261119-0031",
+    "owner": "WL",
+    "parentName": "I20261119-0031",
+    "priority": "1",
+    "reasonId": 14,
+    "reasonName": "Betriebsstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-19T17:11:00.000+0100",
+     "lastUpdate": "2026-11-19T17:11:00.000+0100",
+     "start": "2026-11-19T17:10:00.000+0100"
+    },
+    "title": "U3: Betriebsstörung"
    },
    {
     "alertCause": "undefined alert cause",
@@ -659,29 +698,6 @@
      "start": "2026-11-18T00:00:17.000+0100"
     },
     "title": "Gleisbauarbeiten\nZüge halten Quellenstraße 156 (Linie 6)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nBetrieb über Li. O+D ",
-    "name": "R1933-111",
-    "owner": "WL",
-    "parentName": "R1933-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     1933
-    ],
-    "time": {
-     "end": "2026-11-19T17:17:00.000+0100",
-     "start": "2026-11-19T16:17:53.000+0100"
-    },
-    "title": "Polizeieinsatz\nBetrieb über Li. O+D "
    },
    {
     "alertCause": "undefined alert cause",
@@ -977,7 +993,7 @@
      2374
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:15:23.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
@@ -1023,7 +1039,7 @@
      2375
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:15:23.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
@@ -1069,7 +1085,7 @@
      2376
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:14:53.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -1115,7 +1131,7 @@
      2377
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:14:53.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -1230,7 +1246,7 @@
      2556
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:15:23.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
@@ -1238,7 +1254,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
     "name": "R2558-125",
     "owner": "WL",
     "parentName": "R2558-125",
@@ -1253,10 +1269,10 @@
      2558
     ],
     "time": {
-     "end": "2026-11-19T18:00:00.000+0100",
+     "end": "2026-11-19T23:59:59.000+0100",
      "start": "2026-11-19T00:00:30.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1276,7 +1292,7 @@
      2558
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:15:23.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
@@ -1322,7 +1338,7 @@
      2566
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:14:53.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -1368,7 +1384,7 @@
      2634
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:15:23.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
@@ -1575,7 +1591,7 @@
      3005
     ],
     "time": {
-     "end": "2026-11-19T17:12:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:26.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -1598,7 +1614,7 @@
      3005
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:15:26.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
@@ -1621,7 +1637,7 @@
      3009
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:14:56.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -1644,7 +1660,7 @@
      3068
     ],
     "time": {
-     "end": "2026-11-19T17:12:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:26.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -1667,7 +1683,7 @@
      3068
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:15:26.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
@@ -1690,7 +1706,7 @@
      3069
     ],
     "time": {
-     "end": "2026-11-19T17:13:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:56.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Kagran U "
@@ -1713,7 +1729,7 @@
      3069
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:14:56.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -1736,7 +1752,7 @@
      3115
     ],
     "time": {
-     "end": "2026-11-19T17:13:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:13:56.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Kagran U "
@@ -1759,7 +1775,7 @@
      3115
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:14:56.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -1828,7 +1844,7 @@
      3183
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:14:54.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -1874,7 +1890,7 @@
      3184
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:14:54.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -1920,7 +1936,7 @@
      3185
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:14:54.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -1966,7 +1982,7 @@
      3186
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:14:54.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -2012,7 +2028,7 @@
      3187
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:14:54.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
@@ -2058,7 +2074,7 @@
      3191
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:15:24.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
@@ -2104,7 +2120,7 @@
      3192
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:15:24.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
@@ -2150,7 +2166,7 @@
      3193
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:15:24.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
@@ -2196,7 +2212,7 @@
      3196
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:15:24.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
@@ -2242,33 +2258,10 @@
      3197
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:15:24.000+0100"
     },
     "title": "Rettungseinsatz\nBetrieb ab Zanggasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nBetrieb ab Reumannplatz U ",
-    "name": "R3434-106",
-    "owner": "WL",
-    "parentName": "R3434-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     3434
-    ],
-    "time": {
-     "end": "2026-11-19T17:16:00.000+0100",
-     "start": "2026-11-19T16:17:24.000+0100"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Reumannplatz U "
    },
    {
     "alertCause": "undefined alert cause",
@@ -2315,213 +2308,6 @@
      "start": "2026-11-17T00:00:05.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R404-106",
-    "owner": "WL",
-    "parentName": "R404-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     404
-    ],
-    "time": {
-     "end": "2026-11-19T17:15:00.000+0100",
-     "start": "2026-11-19T16:16:23.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nBetrieb ab Absberggasse",
-    "name": "R404-111",
-    "owner": "WL",
-    "parentName": "R404-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     404
-    ],
-    "time": {
-     "end": "2026-11-19T17:17:00.000+0100",
-     "start": "2026-11-19T16:18:23.000+0100"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Absberggasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R405-106",
-    "owner": "WL",
-    "parentName": "R405-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     405
-    ],
-    "time": {
-     "end": "2026-11-19T17:15:00.000+0100",
-     "start": "2026-11-19T16:16:23.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nBetrieb ab Absberggasse",
-    "name": "R405-111",
-    "owner": "WL",
-    "parentName": "R405-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     405
-    ],
-    "time": {
-     "end": "2026-11-19T17:17:00.000+0100",
-     "start": "2026-11-19T16:18:23.000+0100"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Absberggasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R406-106",
-    "owner": "WL",
-    "parentName": "R406-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     406
-    ],
-    "time": {
-     "end": "2026-11-19T17:15:00.000+0100",
-     "start": "2026-11-19T16:16:23.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nBetrieb ab Absberggasse",
-    "name": "R406-111",
-    "owner": "WL",
-    "parentName": "R406-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     406
-    ],
-    "time": {
-     "end": "2026-11-19T17:17:00.000+0100",
-     "start": "2026-11-19T16:18:23.000+0100"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Absberggasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nBetrieb ab Reumannplatz U ",
-    "name": "R418-106",
-    "owner": "WL",
-    "parentName": "R418-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     418
-    ],
-    "time": {
-     "end": "2026-11-19T17:16:00.000+0100",
-     "start": "2026-11-19T16:17:23.000+0100"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Reumannplatz U "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nBetrieb ab Reumannplatz U ",
-    "name": "R420-106",
-    "owner": "WL",
-    "parentName": "R420-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     420
-    ],
-    "time": {
-     "end": "2026-11-19T17:16:00.000+0100",
-     "start": "2026-11-19T16:17:23.000+0100"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Reumannplatz U "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Polizeieinsatz\nBetrieb ab Reumannplatz U ",
-    "name": "R421-106",
-    "owner": "WL",
-    "parentName": "R421-106",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedStops": [
-     421
-    ],
-    "time": {
-     "end": "2026-11-19T17:16:00.000+0100",
-     "start": "2026-11-19T16:17:23.000+0100"
-    },
-    "title": "Polizeieinsatz\nBetrieb ab Reumannplatz U "
    },
    {
     "alertCause": "undefined alert cause",
@@ -2607,7 +2393,7 @@
      885
     ],
     "time": {
-     "end": "2026-11-19T17:14:00.000+0100",
+     "end": "2026-11-19T18:00:00.000+0100",
      "start": "2026-11-19T16:14:53.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
