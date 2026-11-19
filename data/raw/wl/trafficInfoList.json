@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261119-0002, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R3886-480, R2373-126, R2379-627, R2380-627, R2345-127, R2372-125, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2373-125, R2373-127, R318-437, R293-474, R2558-125, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R2736-126, R2377-126, R2737-126, R2376-126, R2566-126, R885-126, R2703-126, R3069-126, R3115-126, R3184-126, R3183-126, R3186-126, R3009-126, R3187-126, R2371-520, R2372-520, R2379-520, R2378-520, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1875-101, R1876-101, R3886-480, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R293-474, R318-437, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2558-125, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R2371-520, R2372-520, R2378-520, R2379-520, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -169,6 +169,53 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "relatedLineTypes": {
+      "LB": "ptTramWLB"
+     }
+    },
+    "description": "Badner Bahn: Unregelmäßige Intervalle in beiden Richtungen. Grund: Testfall im Haltestellenbereich Flurschützstraße.",
+    "descriptionHTML": "<p>Badner Bahn:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Testfall im Haltestellenbereich Flurschützstraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Badner Bahn:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Testfall im Haltestellenbereich Flurschützstraße.</p>",
+       "descriptionPlain": "Badner Bahn: Unregelmäßige Intervalle in beiden Richtungen. Grund: Testfall im Haltestellenbereich Flurschützstraße.",
+       "title": "Badner Bahn: Testfall"
+      }
+     }
+    ],
+    "name": "I20261119-0002",
+    "owner": "WL",
+    "parentName": "I20261119-0002",
+    "priority": "1",
+    "reasonId": 53,
+    "reasonName": "Testfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 399,
+      "lineName": "LB",
+      "vehicleType": "ptTramWLB"
+     }
+    ],
+    "relatedStops": [
+     1717
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-19T02:24:00.000+0100",
+     "lastUpdate": "2026-11-19T02:24:00.000+0100",
+     "start": "2026-11-19T02:23:00.000+0100"
+    },
+    "title": "Badner Bahn: Testfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -679,52 +726,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R2376-126",
-    "owner": "WL",
-    "parentName": "R2376-126",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "26"
-    ],
-    "relatedStops": [
-     2376
-    ],
-    "time": {
-     "end": "2026-11-19T02:05:00.000+0100",
-     "start": "2026-11-19T01:05:34.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R2377-126",
-    "owner": "WL",
-    "parentName": "R2377-126",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "26"
-    ],
-    "relatedStops": [
-     2377
-    ],
-    "time": {
-     "end": "2026-11-19T02:05:00.000+0100",
-     "start": "2026-11-19T01:05:34.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3",
     "name": "R2378-520",
     "owner": "WL",
@@ -863,98 +864,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R2566-126",
-    "owner": "WL",
-    "parentName": "R2566-126",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "26"
-    ],
-    "relatedStops": [
-     2566
-    ],
-    "time": {
-     "end": "2026-11-19T02:05:00.000+0100",
-     "start": "2026-11-19T01:05:35.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R2703-126",
-    "owner": "WL",
-    "parentName": "R2703-126",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "26"
-    ],
-    "relatedStops": [
-     2703
-    ],
-    "time": {
-     "end": "2026-11-19T02:05:00.000+0100",
-     "start": "2026-11-19T01:05:36.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R2736-126",
-    "owner": "WL",
-    "parentName": "R2736-126",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "26"
-    ],
-    "relatedStops": [
-     2736
-    ],
-    "time": {
-     "end": "2026-11-19T02:05:00.000+0100",
-     "start": "2026-11-19T01:05:34.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R2737-126",
-    "owner": "WL",
-    "parentName": "R2737-126",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "26"
-    ],
-    "relatedStops": [
-     2737
-    ],
-    "time": {
-     "end": "2026-11-19T02:05:00.000+0100",
-     "start": "2026-11-19T01:05:34.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -978,75 +887,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R3009-126",
-    "owner": "WL",
-    "parentName": "R3009-126",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "26"
-    ],
-    "relatedStops": [
-     3009
-    ],
-    "time": {
-     "end": "2026-11-19T02:05:00.000+0100",
-     "start": "2026-11-19T01:05:37.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R3069-126",
-    "owner": "WL",
-    "parentName": "R3069-126",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "26"
-    ],
-    "relatedStops": [
-     3069
-    ],
-    "time": {
-     "end": "2026-11-19T02:05:00.000+0100",
-     "start": "2026-11-19T01:05:37.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R3115-126",
-    "owner": "WL",
-    "parentName": "R3115-126",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "26"
-    ],
-    "relatedStops": [
-     3115
-    ],
-    "time": {
-     "end": "2026-11-19T02:05:00.000+0100",
-     "start": "2026-11-19T01:05:37.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -1066,98 +906,6 @@
      "start": "2026-11-19T00:00:28.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R3183-126",
-    "owner": "WL",
-    "parentName": "R3183-126",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "26"
-    ],
-    "relatedStops": [
-     3183
-    ],
-    "time": {
-     "end": "2026-11-19T02:05:00.000+0100",
-     "start": "2026-11-19T01:05:37.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R3184-126",
-    "owner": "WL",
-    "parentName": "R3184-126",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "26"
-    ],
-    "relatedStops": [
-     3184
-    ],
-    "time": {
-     "end": "2026-11-19T02:05:00.000+0100",
-     "start": "2026-11-19T01:05:37.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R3186-126",
-    "owner": "WL",
-    "parentName": "R3186-126",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "26"
-    ],
-    "relatedStops": [
-     3186
-    ],
-    "time": {
-     "end": "2026-11-19T02:05:00.000+0100",
-     "start": "2026-11-19T01:05:37.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R3187-126",
-    "owner": "WL",
-    "parentName": "R3187-126",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "26"
-    ],
-    "relatedStops": [
-     3187
-    ],
-    "time": {
-     "end": "2026-11-19T02:05:00.000+0100",
-     "start": "2026-11-19T01:05:37.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1273,29 +1021,6 @@
      "start": "2026-11-19T00:30:28.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
-    "name": "R885-126",
-    "owner": "WL",
-    "parentName": "R885-126",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "26"
-    ],
-    "relatedStops": [
-     885
-    ],
-    "time": {
-     "end": "2026-11-19T02:05:00.000+0100",
-     "start": "2026-11-19T01:05:35.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
