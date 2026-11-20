@@ -8,21 +8,59 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 20 Nov 2026 20:00:38 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 20:30:39 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[41: Illegally parked vehicle]]></title>
+      <title><![CDATA[U4: Police operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa</guid>
-      <pubDate>Fri, 20 Nov 2026 19:56:00 +0100</pubDate>
+      <guid isPermaLink="false">630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a</guid>
+      <pubDate>Fri, 20 Nov 2026 20:17:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 20 Nov 2026 19:56:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 20 Nov 2026 19:56:00 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 20 Nov 2026 20:03:00 +0100</ext:ends_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 19:56]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 19:56]]]></content:encoded>
+      <ext:first_seen>Fri, 20 Nov 2026 20:17:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 20 Nov 2026 20:17:00 +0100</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: police operation. [Since 20:17]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: police operation.<br/>[Since 20:17]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">12ff83112586e0361c9b3bb513bbeb5521093cf8088e8e4486ea78b982c81120</guid>
+      <pubDate>Fri, 20 Nov 2026 20:13:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 20 Nov 2026 20:13:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 20 Nov 2026 20:13:00 +0100</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 20:13]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 20:13]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[42: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c</guid>
+      <pubDate>Fri, 20 Nov 2026 20:13:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 20 Nov 2026 20:13:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 20 Nov 2026 20:24:27 +0100</ext:starts_at>
+      <description>Service obstruction towards Antonigasse. Reason: illegally parked vehicle in the stop area of Johann-Nepomuk-Vogl-Platz. [Since 20:13]</description>
+      <content:encoded><![CDATA[Service obstruction towards Antonigasse. Reason: illegally parked vehicle in the stop area of Johann-Nepomuk-Vogl-Platz.<br/>[Since 20:13]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U1: Police operation]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">2fd34130689e264be35e2fe5c2a3b881400e4330803f8a22ce905e991a01ca49</guid>
+      <pubDate>Fri, 20 Nov 2026 20:01:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 20 Nov 2026 20:01:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 20 Nov 2026 20:01:00 +0100</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 20:01]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 20:01]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[25: Police operation]]></title>
@@ -34,8 +72,9 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 20 Nov 2026 17:23:00 +0100</ext:first_seen>
       <ext:starts_at>Fri, 20 Nov 2026 20:00:24 +0100</ext:starts_at>
-      <description>Service obstruction towards Aspern, Oberdorfstraße. Expected until 20:15. Reason: police operation in the stop area of Oberdorfstraße. [Since 19:55]</description>
-      <content:encoded><![CDATA[Service obstruction towards Aspern, Oberdorfstraße. Expected until 20:15. Reason: police operation in the stop area of Oberdorfstraße.<br/>[Since 19:55]]]></content:encoded>
+      <ext:ends_at>Fri, 20 Nov 2026 20:59:00 +0100</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. Replacement bus 26E stops at Karl-Waldbrunner-Platz before Schloßhofer Straße; trains stop at Donaufelder Straße … [Since 19:55]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals. Replacement bus 26E stops at Karl-Waldbrunner-Platz before Schloßhofer Straße; trains stop at Donaufelder Straße …<br/>[Since 19:55]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[57A: Service disruption]]></title>
@@ -106,47 +145,6 @@
       <ext:ends_at>Fri, 20 Nov 2026 22:00:00 +0100</ext:ends_at>
       <description>Service from Neubaugasse. [Today]</description>
       <content:encoded><![CDATA[Service from Neubaugasse.<br/>[Today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1/71/D: Stop relocation]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">d962355223a7a9cd785ccb8198946ea2a4bcb7aa6579a57ac7115a46abaa33fa</guid>
-      <pubDate>Thu, 19 Nov 2026 13:59:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 19 Nov 2026 13:59:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 19 Nov 2026 13:59:00 +0100</ext:starts_at>
-      <ext:ends_at>Sun, 20 Dec 2026 22:30:00 +0100</ext:ends_at>
-      <description>Stop closure of lines D, 1 and 71 in both directions, on Fridays, Saturdays, Sundays and on December 08 each from about 15:00 to 22:30. … [Until 20.12.]</description>
-      <content:encoded><![CDATA[Stop closure of lines D, 1 and 71 in both directions, on Fridays, Saturdays, Sundays and on December 08 each from about 15:00 to 22:30. …<br/>[Until 20.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[52A/43B/52B: Stop relocation]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">ddf5afe69bfdb2b51b77fda8d4f7b4d3d99eef36d4b9d1eb5d402088a8312394</guid>
-      <pubDate>Wed, 18 Nov 2026 14:22:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 18 Nov 2026 14:22:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 23 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <description>Hüttelbergstraße opposite 117 → Hüttelbergstraße opposite 105-109. Stop relocation of lines 43B towards Neustift, Agnesgasse, 52A towards Jägerwaldsiedlung … [From Mon 23.11.]</description>
-      <content:encoded><![CDATA[Hüttelbergstraße opposite 117 → Hüttelbergstraße opposite 105-109. Stop relocation of lines 43B towards Neustift, Agnesgasse, 52A towards Jägerwaldsiedlung …<br/>[From Mon 23.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[N71: Construction works]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">af23ed7227ff7b8bc3271b140e28528a15ad1077e7580664948eabe70277ce0e</guid>
-      <pubDate>Tue, 17 Nov 2026 11:50:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 17 Nov 2026 12:30:40 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 18 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 27 Nov 2026 05:00:00 +0100</ext:ends_at>
-      <description>Due to track construction works in the area of Simmeringer Hauptstraße, line N71 is redirected via the main carriageway. [Until 27.11.]</description>
-      <content:encoded><![CDATA[Due to track construction works in the area of Simmeringer Hauptstraße, line N71 is redirected via the main carriageway.<br/>[Until 27.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
