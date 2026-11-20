@@ -8,20 +8,36 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 20 Nov 2026 23:30:42 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 21 Nov 2026 00:00:57 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[1/6/11: Illegally parked vehicle]]></title>
+      <title><![CDATA[99B: Traffic accident]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">9e09b54fb6a6adba307fdb3eeae7dbc14d8ef807496d6c53b12926ff7656d9e1</guid>
-      <pubDate>Fri, 20 Nov 2026 23:07:13 +0100</pubDate>
+      <guid isPermaLink="false">5bfb3c88f9ea5ecd9ddb72a42e0bb321a5f3670b1347d165f90b1ba7186cbab6</guid>
+      <pubDate>Fri, 20 Nov 2026 23:38:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 20 Nov 2026 23:07:13 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 20 Nov 2026 23:08:00 +0100</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 23:07]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 23:07]]]></content:encoded>
+      <ext:first_seen>Fri, 20 Nov 2026 23:38:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 20 Nov 2026 23:38:00 +0100</ext:starts_at>
+      <ext:ends_at>Sat, 21 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <description>Currently, operation of the 99B line is not possible. Expected until end of service. [Today]</description>
+      <content:encoded><![CDATA[Currently, operation of the 99B line is not possible. Expected until end of service.<br/>[Today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
+      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
+      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;906928</guid>
+      <pubDate>Wed, 16 Sep 2026 08:51:40 +0200</pubDate>
+      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Mon, 24 Aug 2026 13:00:55 +0200</ext:first_seen>
+      <ext:starts_at>Sat, 31 Oct 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Mon, 30 Nov 2026 23:59:59 +0100</ext:ends_at>
+      <georss:line>48.185201 16.376296 48.034917 16.491315</georss:line>
+      <description>Due to construction works, no local trains can run: from Saturday 23:15 to Sunday 04:40 and from Sunday 23:15 to Monday 04:40. [Until 30.11.]</description>
+      <content:encoded><![CDATA[Due to construction works, no local trains can run: from Saturday 23:15 to Sunday 04:40 and from Sunday 23:15 to Monday 04:40.<br/>[Until 30.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[68A: Changed lines]]></title>
@@ -74,8 +90,8 @@
       <ext:first_seen>Tue, 17 Nov 2026 12:30:40 +0100</ext:first_seen>
       <ext:starts_at>Wed, 18 Nov 2026 00:00:00 +0100</ext:starts_at>
       <ext:ends_at>Fri, 27 Nov 2026 05:00:00 +0100</ext:ends_at>
-      <description>Due to track construction works in the area of Simmeringer Hauptstraße, line N71 is redirected via the main carriageway. [Until 27.11.]</description>
-      <content:encoded><![CDATA[Due to track construction works in the area of Simmeringer Hauptstraße, line N71 is redirected via the main carriageway.<br/>[Until 27.11.]]]></content:encoded>
+      <description>Due to track construction works in the area of Simmeringer Hauptstraße, line N71 is redirected via the main carriageway. [Until Fri 27.11.]</description>
+      <content:encoded><![CDATA[Due to track construction works in the area of Simmeringer Hauptstraße, line N71 is redirected via the main carriageway.<br/>[Until Fri 27.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1A: Police exercise]]></title>
@@ -134,20 +150,6 @@
       <georss:point>48.194051 16.397614</georss:point>
       <description>Landstraßer Hauptstraße 140 -144 → Landstraßer Hauptstraße opposite 146. Stop relocation of line 74A towards St. Marx. Reason: roadworks. [Since 16.11.]</description>
       <content:encoded><![CDATA[Landstraßer Hauptstraße 140 -144 → Landstraßer Hauptstraße opposite 146. Stop relocation of line 74A towards St. Marx. Reason: roadworks.<br/>[Since 16.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[98A: Arztgasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">0f48935e95b229ada01317d43dcef5fe0ca4a5664a8658d1c728212fe235fb80</guid>
-      <pubDate>Wed, 11 Nov 2026 10:22:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 11 Nov 2026 10:22:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 16 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.208780 16.510505</georss:point>
-      <description>Lannesstraße before Arztgasse → Arztgasse 107 - 109. Stop relocation of line 98A towards Aspernstraße. Reason: conversion of the stop. [Since 16.11.]</description>
-      <content:encoded><![CDATA[Lannesstraße before Arztgasse → Arztgasse 107 - 109. Stop relocation of line 98A towards Aspernstraße. Reason: conversion of the stop.<br/>[Since 16.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

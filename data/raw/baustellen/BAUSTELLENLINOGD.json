@@ -210,29 +210,6 @@
   {
    "geometry": {
     "first_position": [
-     16.29085568,
-     48.23409863
-    ],
-    "type": "LineString"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Ma 31 Kundencenter",
-    "ANSPRECHPERSON_TEL": "Tel.: 01-59959/31600",
-    "ANTRAGSTELLER": null,
-    "BEHINDERUNGSART": "Zuleitungs- Schieber- Hydrantenarbeiten",
-    "BEZEICHNUNG": "Dornbacher Straße von 118 bis 120",
-    "BEZIRK": 17,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-11-09Z",
-    "OBJEKT_ENDE": "2026-11-20Z",
-    "PRESSETEXT": "DieArbeiten erfolgen in der Zeit von 20:00 bis 05:00 Uhr. ImBaustellenbereich wird eine Restfahrbahn mit 3,50 mfreigehalten und der Verkehr wechselweise mittels Personal durchgeschleust. Außerhalb der Arbeitszeit bleibt der Verkehr unbehindert. DerFußgängerverkehr kann aufrecht gehalten werden.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
      16.26471652,
      48.14157033
     ],
@@ -388,29 +365,6 @@
     "OBJEKT_BEGINN": "2025-06-22Z",
     "OBJEKT_ENDE": "2027-12-31Z",
     "PRESSETEXT": "Zur Errichtung eines Schachtbauwerkes(Zwischenschacht) für den Tunnelvortrieb des Wientalsammelkanals werden in derHadikgasse auf Höhe der Kaltenbäckgasse nach Sperre des linken Fahrstreifensdie beiden Fahrbahnen entsprechend verschwenkt. Die Bodenmarkierungen werdendafür entsprechend angepasst.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
-     16.35770241,
-     48.23739621
-    ],
-    "type": "LineString"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Kundenzentrum",
-    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
-    "ANTRAGSTELLER": null,
-    "BEHINDERUNGSART": "Straßenbau",
-    "BEZEICHNUNG": "Heiligenstädter Straße 28 bis 50-52",
-    "BEZIRK": 19,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-11-02Z",
-    "OBJEKT_ENDE": "2026-11-20Z",
-    "PRESSETEXT": "Die Arbeiten erfolgen bei Nacht. Außerhalb der Arbeitszeit bleibt der Verkehr unbehindert. Die Arbeiten erfolgen abschnittsweise im Fahrbahnbereich und der Verkehr wird über das richtungsführende Gleis umgeleitet.",
     "SE_ANNO_CAD_DATA": null
    }
   },
