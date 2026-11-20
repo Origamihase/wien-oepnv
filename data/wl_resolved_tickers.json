@@ -2,5 +2,58 @@
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
- "owners": {}
+ "owners": {
+  "R1345-144|2026-11-20T22:02:07.000+0100": {
+   "incident": "I20261120-0046",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R1360-144|2026-11-20T22:02:07.000+0100": {
+   "incident": "I20261120-0046",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R1361-144|2026-11-20T22:02:07.000+0100": {
+   "incident": "I20261120-0046",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R1371-144|2026-11-20T22:01:37.000+0100": {
+   "incident": "I20261120-0046",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R1372-144|2026-11-20T22:01:37.000+0100": {
+   "incident": "I20261120-0046",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R217-144|2026-11-20T22:02:05.000+0100": {
+   "incident": "I20261120-0046",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R218-144|2026-11-20T22:02:05.000+0100": {
+   "incident": "I20261120-0046",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R219-144|2026-11-20T22:02:05.000+0100": {
+   "incident": "I20261120-0046",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R236-144|2026-11-20T22:01:35.000+0100": {
+   "incident": "I20261120-0046",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R237-144|2026-11-20T22:01:35.000+0100": {
+   "incident": "I20261120-0046",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R276-144|2026-11-20T22:02:05.000+0100": {
+   "incident": "I20261120-0046",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R277-144|2026-11-20T22:02:05.000+0100": {
+   "incident": "I20261120-0046",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R555-144|2026-11-20T22:02:08.000+0100": {
+   "incident": "I20261120-0046",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  }
+ }
 }
