@@ -938,18 +938,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U3: Polizeieinsatz",
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "U3: Betriebsstörung",
+    "description": "Linie U3: Fahrtbehinderung in Richtung Ottakring. Voraussichtliche Dauer: 07:20 Uhr. Grund: Betriebsstörung im Haltestellenbereich Stephansplatz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "d9f09bd2a626f0dff4211f9bfe402f5b3537fd4fe8f424b4ebf56281b91f2182",
-    "pubDate": "2026-11-20T05:29:00+01:00",
-    "starts_at": "2026-11-20T05:29:00+01:00",
+    "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
+    "pubDate": "2026-11-20T06:57:00+01:00",
+    "starts_at": "2026-11-20T06:57:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=U3|D=2026-11-20|TK=polizeieinsatz",
+    "_identity": "wl|störung|L=U3|D=2026-11-20|TK=u3 betriebsstörung",
     "_wl_ids": [
-      "I20261120-0001"
+      "I20261120-0002"
     ],
-    "_incident_start": "2026-11-20T05:29:00+01:00"
+    "_incident_start": "2026-11-20T06:57:00+01:00"
   },
   {
     "source": "Wiener Linien",
