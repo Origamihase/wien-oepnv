@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_353, ftazW_282, ftazW_573, ftazW_477, ftazW_1354339, ftazW_1354337"
+    "trafficInfoNameList": "ftazW_353, ftazW_282, ftazW_573, ftazW_477, ftazW_1354339, ftazW_1354337, ftazW_576, ftazW_1354336, ftazW_1353812"
    }
   ],
   "poiCategoryGroups": [
@@ -2930,6 +2930,90 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "23.11.2026 00:45",
+     "ausVon": "22.11.2026 20:45",
+     "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang In der Wiesen",
+     "rbls": [
+      4637
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Erlaaer Straße",
+     "status": "geplante Wartung",
+     "towards": "U6 Floridsdorf"
+    },
+    "description": "U6 Bahnsteig Richtung Floridsdorf - Ausgang In der Wiesen",
+    "elevatorId": "ES 03",
+    "name": "ftazW_1353812",
+    "parentName": "ftazW_1353812",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4637
+    ],
+    "time": {
+     "end": "2026-11-23T00:45:00.000+0100",
+     "start": "2026-11-22T20:45:00.000+0100"
+    },
+    "title": "Erlaaer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "23.11.2026 00:45",
+     "ausVon": "22.11.2026 20:45",
+     "location": "Passage - Bahnsteig Linie 1, 18, 62, Badner Bahn",
+     "rbls": [
+      400,
+      400,
+      851
+     ],
+     "reason": "",
+     "relatedLines": [
+      "18",
+      "62",
+      "1",
+      "LB"
+     ],
+     "station": "Matzleinsdorfer Platz",
+     "status": "geplante Wartung",
+     "towards": "18 Schlachthausgasse, WLB Oper, Karlsplatz U, 62 Lainz, Wolkersbergenstraße"
+    },
+    "description": "Passage - Bahnsteig Linie 1, 18, 62, Badner Bahn",
+    "elevatorId": "MP 05",
+    "name": "ftazW_1354336",
+    "parentName": "ftazW_1354336",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "18",
+     "62",
+     "1",
+     "LB"
+    ],
+    "relatedStops": [
+     400,
+     400,
+     851
+    ],
+    "time": {
+     "end": "2026-11-23T00:45:00.000+0100",
+     "start": "2026-11-22T20:45:00.000+0100"
+    },
+    "title": "Matzleinsdorfer Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "20.11.2026 05:15",
      "ausVon": "20.11.2026 01:15",
      "location": "U2 Bahnsteig Richtung Karlsplatz - Ausgang Florianigasse",
@@ -3144,6 +3228,45 @@
      "start": "2026-11-20T01:15:00.000+0100"
     },
     "title": "Margaretengürtel"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "23.11.2026 00:45",
+     "ausVon": "22.11.2026 20:45",
+     "location": "U4 beide Fahrtrichtungen - Passage",
+     "rbls": [
+      4401,
+      4436
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Hütteldorf",
+     "status": "geplante Wartung",
+     "towards": "U4 beide Richtungen"
+    },
+    "description": "U4 beide Fahrtrichtungen - Passage",
+    "elevatorId": "HF 01",
+    "name": "ftazW_576",
+    "parentName": "ftazW_576",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4401,
+     4436
+    ],
+    "time": {
+     "end": "2026-11-23T00:45:00.000+0100",
+     "start": "2026-11-22T20:45:00.000+0100"
+    },
+    "title": "Hütteldorf"
    }
   ]
  },
