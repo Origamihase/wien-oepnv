@@ -1,20 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-20T22:00:56.972846+00:00",
- "built": "2026-11-20T23:00:40+01:00",
+ "updated": "2026-11-20T22:30:52.183333+00:00",
+ "built": "2026-11-20T23:30:42+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-20T23:00:40+01:00",
+  "built": "2026-11-20T23:30:42+01:00",
   "items": [
    {
-    "title": "62: Schadhaftes Fahrzeug",
-    "time_line": "Seit 22:26"
-   },
-   {
-    "title": "44: Schadhafter Zug",
-    "time_line": "Seit 22:01"
+    "title": "1/6/11: Falschparker",
+    "time_line": "Seit 23:07"
    },
    {
     "title": "68A: Geänderte Linienführung",
@@ -47,51 +43,15 @@
    {
     "title": "74A: Rabengasse",
     "time_line": "Seit 16.11."
+   },
+   {
+    "title": "98A: Arztgasse",
+    "time_line": "Seit 16.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-13T22:01:11.155535+00:00",
-   "raw": {
-    "wl-stoerungen": 70,
-    "wl-hinweise": 74,
-    "oebb": 187,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 15,
-    "oebb": 161,
-    "baustellen": 65
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 6,
-    "wl": 83
-   }
-  },
-  {
-   "t": "2026-11-13T22:30:49.456232+00:00",
-   "raw": {
-    "wl-stoerungen": 54,
-    "wl-hinweise": 74,
-    "oebb": 187,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 15,
-    "oebb": 161,
-    "baustellen": 65
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 6,
-    "wl": 84
-   }
-  },
   {
    "t": "2026-11-13T23:01:01.401618+00:00",
    "raw": {
@@ -6791,17 +6751,37 @@
     "oebb": 10,
     "wl": 82
    }
+  },
+  {
+   "t": "2026-11-20T22:30:52.183333+00:00",
+   "raw": {
+    "wl-stoerungen": 62,
+    "wl-hinweise": 68,
+    "oebb": 165,
+    "baustellen-linien": 51,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 11,
+    "oebb": 141,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 10,
+    "wl": 82
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-20T22:00:56.972846+00:00"
+   "last_ok": "2026-11-20T22:30:52.183333+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-20T22:00:56.972846+00:00"
+   "last_ok": "2026-11-20T22:30:52.183333+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-20T22:00:56.972846+00:00"
+   "last_ok": "2026-11-20T22:30:52.183333+00:00"
   }
  }
 }

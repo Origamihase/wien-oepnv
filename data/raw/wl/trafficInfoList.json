@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261120-0047, I20261020-0029, I20261120-0048, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261120-0049-F01, I20261120-0049-F02, I20261120-0049-F03, I20261020-0029, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1884-101, R1883-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R3886-480, R2373-125, R2343-125, R2359-125, R293-474, R318-437, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2371-125, R2370-125, R2343-626, R2378-627, R2372-125, R2558-125, R1974-466, R1199-205, R237-144, R236-144, R1372-144, R1371-144, R277-144, R219-144, R218-144, R217-144, R276-144, R1360-144, R1361-144, R1345-144, R555-144, R1634-162, R470-162, R1744-162, R1738-162, R1743-162, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1883-101, R1884-101, R1882-101, R1875-101, R1876-101, R1880-101, R1881-101, R3886-480, R2371-125, R2372-125, R2373-125, R2345-127, R2380-627, R2370-125, R2379-627, R2373-126, R2373-127, R2378-627, R2343-125, R2343-626, R2359-125, R293-474, R318-437, R2558-125, R1974-466, R1199-205, R423-101, R2243-101, R404-106, R405-106, R2023-111, R404-111, R405-111, R406-111, R408-111, R409-111, R1933-111, R2009-111, R2024-111, R2025-111, R2026-111, R2027-111, R4732-111, R418-106, R421-106, R420-106, R3434-106, R422-106, R423-106, R2299-111, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,96 +171,142 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
     "attributes": {
      "relatedLineTypes": {
-      "62": "ptTram"
+      "1": "ptTram"
      }
     },
-    "description": "Linie 62: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie 62:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 62:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 62: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "62: Schadhaftes Fahrzeug"
+       "descriptionHtml": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "1: Falschparker"
       }
      }
     ],
-    "name": "I20261120-0047",
+    "location": "Quellenstraße / Leibnizgasse",
+    "name": "I20261120-0049-F01",
     "owner": "WL",
-    "parentName": "I20261120-0047",
+    "parentName": "I20261120-0049",
     "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "62"
+     "1"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 162,
-      "lineName": "62",
+      "lineId": 101,
+      "lineName": "1",
       "vehicleType": "ptTram"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-20T22:34:00.000+0100",
-     "end": "2026-11-20T23:02:00.000+0100",
-     "lastUpdate": "2026-11-20T22:49:00.000+0100",
-     "resume": "2026-11-20T22:34:00.000+0100",
-     "start": "2026-11-20T22:34:00.000+0100"
+     "created": "2026-11-20T23:23:00.000+0100",
+     "lastUpdate": "2026-11-20T23:23:00.000+0100",
+     "resume": "2026-11-20T23:23:00.000+0100",
+     "start": "2026-11-20T23:08:00.000+0100"
     },
-    "title": "62: Schadhaftes Fahrzeug"
+    "title": "1: Falschparker"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
     "attributes": {
      "relatedLineTypes": {
-      "84A": "ptBusCity"
+      "6": "ptTram"
      }
     },
-    "description": "Linie 84A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie 84A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 84A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie 84A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-       "title": "84A: Rettungseinsatz"
+       "descriptionHtml": "<p>Linie 6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "6: Falschparker"
       }
      }
     ],
-    "name": "I20261120-0048",
+    "location": "Quellenstraße / Leibnizgasse",
+    "name": "I20261120-0049-F02",
     "owner": "WL",
-    "parentName": "I20261120-0048",
+    "parentName": "I20261120-0049",
     "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "84A"
+     "6"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 484,
-      "lineName": "84A",
-      "vehicleType": "ptBusCity"
+      "lineId": 106,
+      "lineName": "6",
+      "vehicleType": "ptTram"
      }
     ],
-    "status": "resolved",
+    "status": "active",
     "time": {
-     "created": "2026-11-20T22:34:00.000+0100",
-     "end": "2026-11-20T23:00:00.000+0100",
-     "lastUpdate": "2026-11-20T23:00:00.000+0100",
-     "resume": "2026-11-20T22:34:00.000+0100",
-     "start": "2026-11-20T22:34:00.000+0100"
+     "created": "2026-11-20T23:23:00.000+0100",
+     "lastUpdate": "2026-11-20T23:23:00.000+0100",
+     "resume": "2026-11-20T23:23:00.000+0100",
+     "start": "2026-11-20T23:08:00.000+0100"
     },
-    "title": "84A: Rettungseinsatz"
+    "title": "6: Falschparker"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "11": "ptTram"
+     }
+    },
+    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "11: Falschparker"
+      }
+     }
+    ],
+    "location": "Quellenstraße / Leibnizgasse",
+    "name": "I20261120-0049-F03",
+    "owner": "WL",
+    "parentName": "I20261120-0049",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 111,
+      "lineName": "11",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-20T23:23:00.000+0100",
+     "lastUpdate": "2026-11-20T23:23:00.000+0100",
+     "resume": "2026-11-20T23:23:00.000+0100",
+     "start": "2026-11-20T23:08:00.000+0100"
+    },
+    "title": "11: Falschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -284,213 +330,6 @@
      "start": "2026-11-20T04:45:24.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1345-144",
-    "owner": "WL",
-    "parentName": "R1345-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     1345
-    ],
-    "time": {
-     "end": "2026-11-20T23:01:00.000+0100",
-     "start": "2026-11-20T22:02:07.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1360-144",
-    "owner": "WL",
-    "parentName": "R1360-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     1360
-    ],
-    "time": {
-     "end": "2026-11-20T23:01:00.000+0100",
-     "start": "2026-11-20T22:02:07.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1361-144",
-    "owner": "WL",
-    "parentName": "R1361-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     1361
-    ],
-    "time": {
-     "end": "2026-11-20T23:01:00.000+0100",
-     "start": "2026-11-20T22:02:07.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1371-144",
-    "owner": "WL",
-    "parentName": "R1371-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     1371
-    ],
-    "time": {
-     "end": "2026-11-20T23:01:00.000+0100",
-     "start": "2026-11-20T22:01:37.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1372-144",
-    "owner": "WL",
-    "parentName": "R1372-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     1372
-    ],
-    "time": {
-     "end": "2026-11-20T23:01:00.000+0100",
-     "start": "2026-11-20T22:01:37.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1634-162",
-    "owner": "WL",
-    "parentName": "R1634-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     1634
-    ],
-    "time": {
-     "end": "2026-11-20T23:26:00.000+0100",
-     "start": "2026-11-20T22:26:37.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1738-162",
-    "owner": "WL",
-    "parentName": "R1738-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     1738
-    ],
-    "time": {
-     "end": "2026-11-20T23:26:00.000+0100",
-     "start": "2026-11-20T22:26:40.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1743-162",
-    "owner": "WL",
-    "parentName": "R1743-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     1743
-    ],
-    "time": {
-     "end": "2026-11-20T23:26:00.000+0100",
-     "start": "2026-11-20T22:26:40.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R1744-162",
-    "owner": "WL",
-    "parentName": "R1744-162",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedStops": [
-     1744
-    ],
-    "time": {
-     "end": "2026-11-20T23:26:00.000+0100",
-     "start": "2026-11-20T22:26:40.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -656,6 +495,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1933-111",
+    "owner": "WL",
+    "parentName": "R1933-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     1933
+    ],
+    "time": {
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:17:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "name": "R1974-466",
     "owner": "WL",
@@ -679,71 +541,186 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R217-144",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R2009-111",
     "owner": "WL",
-    "parentName": "R217-144",
+    "parentName": "R2009-111",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "44"
+     "11"
     ],
     "relatedStops": [
-     217
+     2009
     ],
     "time": {
-     "end": "2026-11-20T23:01:00.000+0100",
-     "start": "2026-11-20T22:02:05.000+0100"
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:17:44.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R218-144",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R2023-111",
     "owner": "WL",
-    "parentName": "R218-144",
+    "parentName": "R2023-111",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "44"
+     "11"
     ],
     "relatedStops": [
-     218
+     2023
     ],
     "time": {
-     "end": "2026-11-20T23:01:00.000+0100",
-     "start": "2026-11-20T22:02:05.000+0100"
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:17:44.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R219-144",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R2024-111",
     "owner": "WL",
-    "parentName": "R219-144",
+    "parentName": "R2024-111",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "44"
+     "11"
     ],
     "relatedStops": [
-     219
+     2024
     ],
     "time": {
-     "end": "2026-11-20T23:01:00.000+0100",
-     "start": "2026-11-20T22:02:05.000+0100"
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:17:44.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R2025-111",
+    "owner": "WL",
+    "parentName": "R2025-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2025
+    ],
+    "time": {
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:17:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R2026-111",
+    "owner": "WL",
+    "parentName": "R2026-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2026
+    ],
+    "time": {
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:17:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R2027-111",
+    "owner": "WL",
+    "parentName": "R2027-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2027
+    ],
+    "time": {
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:17:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R2243-101",
+    "owner": "WL",
+    "parentName": "R2243-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     2243
+    ],
+    "time": {
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:07:45.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R2299-111",
+    "owner": "WL",
+    "parentName": "R2299-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     2299
+    ],
+    "time": {
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:21:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -836,52 +813,6 @@
      "start": "2026-11-19T00:00:28.000+0100"
     },
     "title": "Ersatzbus 26E\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R236-144",
-    "owner": "WL",
-    "parentName": "R236-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     236
-    ],
-    "time": {
-     "end": "2026-11-20T23:01:00.000+0100",
-     "start": "2026-11-20T22:01:35.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R237-144",
-    "owner": "WL",
-    "parentName": "R237-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     237
-    ],
-    "time": {
-     "end": "2026-11-20T23:01:00.000+0100",
-     "start": "2026-11-20T22:01:35.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1116,52 +1047,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R276-144",
-    "owner": "WL",
-    "parentName": "R276-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     276
-    ],
-    "time": {
-     "end": "2026-11-20T23:01:00.000+0100",
-     "start": "2026-11-20T22:02:05.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R277-144",
-    "owner": "WL",
-    "parentName": "R277-144",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "44"
-    ],
-    "relatedStops": [
-     277
-    ],
-    "time": {
-     "end": "2026-11-20T23:01:00.000+0100",
-     "start": "2026-11-20T22:02:05.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -1204,6 +1089,29 @@
      "start": "2026-11-19T00:00:28.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R3434-106",
+    "owner": "WL",
+    "parentName": "R3434-106",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     3434
+    ],
+    "time": {
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:18:18.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1254,48 +1162,324 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R470-162",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R404-106",
     "owner": "WL",
-    "parentName": "R470-162",
+    "parentName": "R404-106",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "62"
+     "6"
     ],
     "relatedStops": [
-     470
+     404
     ],
     "time": {
-     "end": "2026-11-20T23:26:00.000+0100",
-     "start": "2026-11-20T22:26:39.000+0100"
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:12:13.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R555-144",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R404-111",
     "owner": "WL",
-    "parentName": "R555-144",
+    "parentName": "R404-111",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "44"
+     "11"
     ],
     "relatedStops": [
-     555
+     404
     ],
     "time": {
-     "end": "2026-11-20T23:01:00.000+0100",
-     "start": "2026-11-20T22:02:08.000+0100"
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:17:44.000+0100"
     },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R405-106",
+    "owner": "WL",
+    "parentName": "R405-106",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     405
+    ],
+    "time": {
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:12:13.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R405-111",
+    "owner": "WL",
+    "parentName": "R405-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     405
+    ],
+    "time": {
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:17:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R406-111",
+    "owner": "WL",
+    "parentName": "R406-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     406
+    ],
+    "time": {
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:17:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R408-111",
+    "owner": "WL",
+    "parentName": "R408-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     408
+    ],
+    "time": {
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:17:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R409-111",
+    "owner": "WL",
+    "parentName": "R409-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     409
+    ],
+    "time": {
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:17:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R418-106",
+    "owner": "WL",
+    "parentName": "R418-106",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     418
+    ],
+    "time": {
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:18:14.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R420-106",
+    "owner": "WL",
+    "parentName": "R420-106",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     420
+    ],
+    "time": {
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:18:14.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R421-106",
+    "owner": "WL",
+    "parentName": "R421-106",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     421
+    ],
+    "time": {
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:18:14.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R422-106",
+    "owner": "WL",
+    "parentName": "R422-106",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     422
+    ],
+    "time": {
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:21:14.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R423-101",
+    "owner": "WL",
+    "parentName": "R423-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     423
+    ],
+    "time": {
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:07:13.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R423-106",
+    "owner": "WL",
+    "parentName": "R423-106",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     423
+    ],
+    "time": {
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:21:14.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R4732-111",
+    "owner": "WL",
+    "parentName": "R4732-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     4732
+    ],
+    "time": {
+     "end": "2026-11-20T23:59:59.000+0100",
+     "start": "2026-11-20T23:17:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",

@@ -3,77 +3,101 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R1345-144|2026-11-20T22:02:07.000+0100": {
-   "incident": "I20261120-0046",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R1933-111|2026-11-20T23:17:44.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R1360-144|2026-11-20T22:02:07.000+0100": {
-   "incident": "I20261120-0046",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R2009-111|2026-11-20T23:17:44.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R1361-144|2026-11-20T22:02:07.000+0100": {
-   "incident": "I20261120-0046",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R2023-111|2026-11-20T23:17:44.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R1371-144|2026-11-20T22:01:37.000+0100": {
-   "incident": "I20261120-0046",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R2024-111|2026-11-20T23:17:44.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R1372-144|2026-11-20T22:01:37.000+0100": {
-   "incident": "I20261120-0046",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R2025-111|2026-11-20T23:17:44.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R1634-162|2026-11-20T22:26:37.000+0100": {
-   "incident": "I20261120-0047",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R2026-111|2026-11-20T23:17:44.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R1738-162|2026-11-20T22:26:40.000+0100": {
-   "incident": "I20261120-0047",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R2027-111|2026-11-20T23:17:44.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R1743-162|2026-11-20T22:26:40.000+0100": {
-   "incident": "I20261120-0047",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R2243-101|2026-11-20T23:07:45.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R1744-162|2026-11-20T22:26:40.000+0100": {
-   "incident": "I20261120-0047",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R2299-111|2026-11-20T23:21:46.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R217-144|2026-11-20T22:02:05.000+0100": {
-   "incident": "I20261120-0046",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R3434-106|2026-11-20T23:18:18.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R218-144|2026-11-20T22:02:05.000+0100": {
-   "incident": "I20261120-0046",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R404-106|2026-11-20T23:12:13.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R219-144|2026-11-20T22:02:05.000+0100": {
-   "incident": "I20261120-0046",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R404-111|2026-11-20T23:17:44.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R236-144|2026-11-20T22:01:35.000+0100": {
-   "incident": "I20261120-0046",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R405-106|2026-11-20T23:12:13.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R237-144|2026-11-20T22:01:35.000+0100": {
-   "incident": "I20261120-0046",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R405-111|2026-11-20T23:17:44.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R276-144|2026-11-20T22:02:05.000+0100": {
-   "incident": "I20261120-0046",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R406-111|2026-11-20T23:17:44.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R277-144|2026-11-20T22:02:05.000+0100": {
-   "incident": "I20261120-0046",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R408-111|2026-11-20T23:17:44.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R470-162|2026-11-20T22:26:39.000+0100": {
-   "incident": "I20261120-0047",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R409-111|2026-11-20T23:17:44.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R555-144|2026-11-20T22:02:08.000+0100": {
-   "incident": "I20261120-0046",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R418-106|2026-11-20T23:18:14.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R420-106|2026-11-20T23:18:14.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R421-106|2026-11-20T23:18:14.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R422-106|2026-11-20T23:21:14.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R423-101|2026-11-20T23:07:13.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R423-106|2026-11-20T23:21:14.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R4732-111|2026-11-20T23:17:46.000+0100": {
+   "incident": "I20261120-0049",
+   "title": "Fahrtbehinderung\nFalschparker"
   }
  }
 }
