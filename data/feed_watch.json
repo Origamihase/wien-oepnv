@@ -1,19 +1,15 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-20T09:01:02.147171+00:00",
- "built": "2026-11-20T10:00:42+01:00",
+ "updated": "2026-11-20T09:30:46.987819+00:00",
+ "built": "2026-11-20T10:30:32+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-20T10:00:42+01:00",
+  "built": "2026-11-20T10:30:32+01:00",
   "items": [
    {
-    "title": "2: Strfomstörung, Stromstörung, Beschädigte Oberleitung",
-    "time_line": "Seit 09:41"
-   },
-   {
-    "title": "10/46: Beschädigte Oberleitung durch einen Kran",
+    "title": "2/10/44/46: Beschädigte Oberleitung durch einen Kran",
     "time_line": "Seit 09:38"
    },
    {
@@ -21,12 +17,8 @@
     "time_line": "Seit 09:57"
    },
    {
-    "title": "10: Stromstörung",
-    "time_line": "Seit 09:46"
-   },
-   {
-    "title": "44: Stromstörung, Beschädigte Oberleitung",
-    "time_line": "Seit 09:42"
+    "title": "2/10/44: Stromstörung",
+    "time_line": "Seit 09:40"
    },
    {
     "title": "68A: Geänderte Linienführung",
@@ -47,51 +39,19 @@
    {
     "title": "1A: Polizeiübung",
     "time_line": "Bis Mo 23.11."
+   },
+   {
+    "title": "8A: Küniglberg, ORF Zentrum",
+    "time_line": "Bis Di 24.11."
+   },
+   {
+    "title": "5A/N31: Obere Augartenstraße",
+    "time_line": "Bis 11.12."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-13T09:01:10.725626+00:00",
-   "raw": {
-    "wl-stoerungen": 50,
-    "wl-hinweise": 74,
-    "oebb": 179,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 13,
-    "oebb": 153,
-    "baustellen": 65
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 7,
-    "wl": 86
-   }
-  },
-  {
-   "t": "2026-11-13T09:30:45.896989+00:00",
-   "raw": {
-    "wl-stoerungen": 51,
-    "wl-hinweise": 74,
-    "oebb": 179,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 14,
-    "oebb": 153,
-    "baustellen": 65
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 7,
-    "wl": 85
-   }
-  },
   {
    "t": "2026-11-13T10:01:02.976238+00:00",
    "raw": {
@@ -6791,17 +6751,37 @@
     "oebb": 10,
     "wl": 92
    }
+  },
+  {
+   "t": "2026-11-20T09:30:46.987819+00:00",
+   "raw": {
+    "wl-stoerungen": 76,
+    "wl-hinweise": 67,
+    "oebb": 165,
+    "baustellen-linien": 51,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 11,
+    "oebb": 141,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 10,
+    "wl": 90
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-20T09:01:02.147171+00:00"
+   "last_ok": "2026-11-20T09:30:46.987819+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-20T09:01:02.147171+00:00"
+   "last_ok": "2026-11-20T09:30:46.987819+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-20T09:01:02.147171+00:00"
+   "last_ok": "2026-11-20T09:30:46.987819+00:00"
   }
  }
 }
