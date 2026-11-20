@@ -2,5 +2,50 @@
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
- "owners": {}
+ "owners": {
+  "R1606-160|2026-11-21T00:13:16.000+0100": {
+   "incident": "I20261121-0001",
+   "title": "Fahrtbehinderung\nGleisschaden"
+  },
+  "R1607-160|2026-11-21T00:17:47.000+0100": {
+   "incident": "I20261121-0001",
+   "title": "Gleisschaden\nBetrieb ab Hermesstraße"
+  },
+  "R1617-160|2026-11-21T00:11:16.000+0100": {
+   "incident": "I20261121-0001",
+   "title": "Fahrtbehinderung\nGleisschaden"
+  },
+  "R1618-160|2026-11-21T00:11:16.000+0100": {
+   "incident": "I20261121-0001",
+   "title": "Fahrtbehinderung\nGleisschaden"
+  },
+  "R1619-160|2026-11-21T00:11:16.000+0100": {
+   "incident": "I20261121-0001",
+   "title": "Fahrtbehinderung\nGleisschaden"
+  },
+  "R1620-160|2026-11-21T00:11:16.000+0100": {
+   "incident": "I20261121-0001",
+   "title": "Fahrtbehinderung\nGleisschaden"
+  },
+  "R1625-160|2026-11-21T00:17:47.000+0100": {
+   "incident": "I20261121-0001",
+   "title": "Gleisschaden\nBetrieb ab Hermesstraße"
+  },
+  "R1629-160|2026-11-21T00:24:17.000+0100": {
+   "incident": "I20261121-0001",
+   "title": "Gleisschaden\nBetrieb ab Hermesstraße"
+  },
+  "R1630-160|2026-11-21T00:24:17.000+0100": {
+   "incident": "I20261121-0001",
+   "title": "Gleisschaden\nBetrieb ab Hermesstraße"
+  },
+  "R1631-160|2026-11-21T00:24:17.000+0100": {
+   "incident": "I20261121-0001",
+   "title": "Gleisschaden\nBetrieb ab Hermesstraße"
+  },
+  "R1632-160|2026-11-21T00:24:17.000+0100": {
+   "incident": "I20261121-0001",
+   "title": "Gleisschaden\nBetrieb ab Hermesstraße"
+  }
+ }
 }
