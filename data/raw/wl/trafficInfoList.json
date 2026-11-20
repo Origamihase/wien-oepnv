@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261120-0046-F01, I20261020-0029, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261120-0047, I20261020-0029, I20261120-0048, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1876-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R3886-480, R2380-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2345-127, R318-437, R293-474, R2558-125, R1974-466, R1199-205, R500-101, R1570-457, R237-144, R236-144, R1372-144, R1371-144, R276-144, R218-144, R219-144, R217-144, R277-144, R1345-144, R1361-144, R1360-144, R555-144, R1634-162, R470-162, R1738-162, R1743-162, R1744-162, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1884-101, R1883-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R3886-480, R2373-125, R2343-125, R2359-125, R293-474, R318-437, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2371-125, R2370-125, R2343-626, R2378-627, R2372-125, R2558-125, R1974-466, R1199-205, R237-144, R236-144, R1372-144, R1371-144, R277-144, R219-144, R218-144, R217-144, R276-144, R1360-144, R1361-144, R1345-144, R555-144, R1634-162, R470-162, R1744-162, R1738-162, R1743-162, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -175,48 +175,92 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "44": "ptTram"
+      "62": "ptTram"
      }
     },
-    "description": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 44: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie 62: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie 62:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 44: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "44: Schadhaftes Fahrzeug"
+       "descriptionHtml": "<p>Linie 62:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie 62: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "62: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261120-0046-F01",
+    "name": "I20261120-0047",
     "owner": "WL",
-    "parentName": "I20261120-0046",
+    "parentName": "I20261120-0047",
     "priority": "1",
     "reasonId": 20,
     "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "44"
+     "62"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 144,
-      "lineName": "44",
+      "lineId": 162,
+      "lineName": "62",
       "vehicleType": "ptTram"
      }
     ],
-    "relatedStops": [
-     1360
-    ],
     "status": "active",
     "time": {
-     "created": "2026-11-20T22:03:00.000+0100",
-     "lastUpdate": "2026-11-20T22:03:00.000+0100",
-     "resume": "2026-11-20T22:03:00.000+0100",
-     "start": "2026-11-20T22:01:00.000+0100"
+     "created": "2026-11-20T22:34:00.000+0100",
+     "end": "2026-11-20T23:02:00.000+0100",
+     "lastUpdate": "2026-11-20T22:49:00.000+0100",
+     "resume": "2026-11-20T22:34:00.000+0100",
+     "start": "2026-11-20T22:34:00.000+0100"
     },
-    "title": "44: Schadhaftes Fahrzeug"
+    "title": "62: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "84A": "ptBusCity"
+     }
+    },
+    "description": "Linie 84A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 84A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 84A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 84A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "84A: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261120-0048",
+    "owner": "WL",
+    "parentName": "I20261120-0048",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "84A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 484,
+      "lineName": "84A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-11-20T22:34:00.000+0100",
+     "end": "2026-11-20T23:00:00.000+0100",
+     "lastUpdate": "2026-11-20T23:00:00.000+0100",
+     "resume": "2026-11-20T22:34:00.000+0100",
+     "start": "2026-11-20T22:34:00.000+0100"
+    },
+    "title": "84A: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -355,29 +399,6 @@
      "start": "2026-11-20T22:01:37.000+0100"
     },
     "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Betriebsstörung\nBetrieb ab Haus des Meeres",
-    "name": "R1570-457",
-    "owner": "WL",
-    "parentName": "R1570-457",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "57A"
-    ],
-    "relatedStops": [
-     1570
-    ],
-    "time": {
-     "end": "2026-11-20T23:00:00.000+0100",
-     "start": "2026-11-20T16:29:02.000+0100"
-    },
-    "title": "Betriebsstörung\nBetrieb ab Haus des Meeres"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1252,29 +1273,6 @@
      "start": "2026-11-20T22:26:39.000+0100"
     },
     "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
-    "name": "R500-101",
-    "owner": "WL",
-    "parentName": "R500-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     500
-    ],
-    "time": {
-     "end": "2026-11-20T23:00:00.000+0100",
-     "start": "2026-11-20T05:00:25.000+0100"
-    },
-    "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
    },
    {
     "alertCause": "undefined alert cause",
