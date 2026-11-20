@@ -8,10 +8,10 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 20 Nov 2026 18:30:37 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 19:00:41 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[6/11/14A: Service disruption]]></title>
+      <title><![CDATA[6/11: Service disruption]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">1ce7b5feac6777b87454ae90ecf1a21ccc30d9d9f775c8de00d123245575dcec</guid>
       <pubDate>Fri, 20 Nov 2026 18:21:00 +0100</pubDate>
@@ -22,19 +22,6 @@
       <ext:starts_at>Fri, 20 Nov 2026 18:21:00 +0100</ext:starts_at>
       <description>After a service obstruction, there are irregular intervals. [Since 18:21]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 18:21]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[3A: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">d0ca726f4f3064439e34273bfe62cd8cb00619d515176ac7f96f9e089a05e6ac</guid>
-      <pubDate>Fri, 20 Nov 2026 18:25:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 20 Nov 2026 18:25:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 20 Nov 2026 18:25:00 +0100</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: traffic accident. [Since 18:25]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 18:25]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[6: Defective train]]></title>
@@ -51,35 +38,7 @@
       <content:encoded><![CDATA[Service obstruction.<br/>[Since 18:10]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[85A: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">52462eeec0007aac13b6f4d7a9e7a3c1eec236f598c647b25a2bb00b97cd2c1a</guid>
-      <pubDate>Fri, 20 Nov 2026 17:49:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 20 Nov 2026 18:00:46 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 20 Nov 2026 17:49:00 +0100</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: traffic accident. [Since 17:49]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: traffic accident.<br/>[Since 17:49]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[St. Pölten Hbf]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;928870</guid>
-      <pubDate>Fri, 20 Nov 2026 18:17:27 +0100</pubDate>
-      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 20 Nov 2026 17:30:40 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 20 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 20 Nov 2026 23:59:59 +0100</ext:ends_at>
-      <georss:point>48.207980 15.624408</georss:point>
-      <description>Due to a switch fault, trains can only run to a limited extent at St. Pölten Hbf until approx. 20:30. Allow up to 15 minutes of extra travel time. [Since 17:29]</description>
-      <content:encoded><![CDATA[Due to a switch fault, trains can only run to a limited extent at St. Pölten Hbf until approx. 20:30. Allow up to 15 minutes of extra travel time.<br/>[Since 17:29]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25/26: Police operation]]></title>
+      <title><![CDATA[25: Police operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">5aaba97144ab1f9a110bad400e29c07d9fcca47c4b94a7b2a49b8438a1b01109</guid>
       <pubDate>Fri, 20 Nov 2026 17:23:00 +0100</pubDate>
@@ -88,8 +47,9 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 20 Nov 2026 17:23:00 +0100</ext:first_seen>
       <ext:starts_at>Fri, 20 Nov 2026 17:23:00 +0100</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 17:23]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 17:23]]]></content:encoded>
+      <ext:ends_at>Fri, 20 Nov 2026 19:06:00 +0100</ext:ends_at>
+      <description>After a service obstruction, there are irregular intervals. Replacement bus 26E stops at Karl-Waldbrunner-Platz before Schloßhofer Straße; trains stop at Donaufelder Straße … [Since 17:23]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals. Replacement bus 26E stops at Karl-Waldbrunner-Platz before Schloßhofer Straße; trains stop at Donaufelder Straße …<br/>[Since 17:23]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[57A: Service disruption]]></title>
@@ -109,7 +69,7 @@
       <title><![CDATA[Wien Westbahnhof ↔ Wien Hütteldorf]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;928825</guid>
-      <pubDate>Fri, 20 Nov 2026 18:14:12 +0100</pubDate>
+      <pubDate>Fri, 20 Nov 2026 18:50:21 +0100</pubDate>
       <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
@@ -146,6 +106,47 @@
       <ext:starts_at>Fri, 20 Nov 2026 17:14:00 +0100</ext:starts_at>
       <description>After a service obstruction, there are irregular intervals. [Since today]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[68A: Changed lines]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">e492cfa06a0bbcc7e2c6f1233068abbf56eea121924fc72efc72f30f7ef56e29</guid>
+      <pubDate>Mon, 16 Nov 2026 14:16:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 20 Nov 2026 00:00:51 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 23 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <description>In the area of Filmteichstraße is adapted to the lines of the 68A line. [From Mon 23.11.]</description>
+      <content:encoded><![CDATA[In the area of Filmteichstraße is adapted to the lines of the 68A line.<br/>[From Mon 23.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">1c629dbb1ab44f38d4116936e03e299129ac24d8b47b2ee816bc8a7924bf6f1d</guid>
+      <pubDate>Fri, 20 Nov 2026 15:49:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 19 Nov 2026 19:19:39 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 20 Nov 2026 15:53:02 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 20 Nov 2026 22:00:00 +0100</ext:ends_at>
+      <description>Service from Neubaugasse. [Today]</description>
+      <content:encoded><![CDATA[Service from Neubaugasse.<br/>[Today]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/71/D: Stop relocation]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">d962355223a7a9cd785ccb8198946ea2a4bcb7aa6579a57ac7115a46abaa33fa</guid>
+      <pubDate>Thu, 19 Nov 2026 13:59:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 19 Nov 2026 13:59:00 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 19 Nov 2026 13:59:00 +0100</ext:starts_at>
+      <ext:ends_at>Sun, 20 Dec 2026 22:30:00 +0100</ext:ends_at>
+      <description>Stop closure of lines D, 1 and 71 in both directions, on Fridays, Saturdays, Sundays and on December 08 each from about 15:00 to 22:30. … [Until 20.12.]</description>
+      <content:encoded><![CDATA[Stop closure of lines D, 1 and 71 in both directions, on Fridays, Saturdays, Sundays and on December 08 each from about 15:00 to 22:30. …<br/>[Until 20.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>

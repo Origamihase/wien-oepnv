@@ -1,35 +1,23 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-20T17:30:48.098019+00:00",
- "built": "2026-11-20T18:30:37+01:00",
+ "updated": "2026-11-20T18:00:52.508082+00:00",
+ "built": "2026-11-20T19:00:41+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-20T18:30:37+01:00",
+  "built": "2026-11-20T19:00:41+01:00",
   "items": [
    {
-    "title": "6/11/14A: Betriebsstörung",
+    "title": "6/11: Betriebsstörung",
     "time_line": "Seit 18:21"
-   },
-   {
-    "title": "3A: Verkehrsunfall",
-    "time_line": "Seit 18:25"
    },
    {
     "title": "6: Schadhafter Zug",
     "time_line": "Seit 18:10"
    },
    {
-    "title": "85A: Verkehrsunfall",
-    "time_line": "Seit 17:49"
-   },
-   {
-    "title": "St. Pölten Hbf",
-    "time_line": "Seit 17:29"
-   },
-   {
-    "title": "25/26: Polizeieinsatz",
+    "title": "25: Polizeieinsatz",
     "time_line": "Seit 17:23"
    },
    {
@@ -47,31 +35,23 @@
    {
     "title": "2/71/D: Demonstration",
     "time_line": "Seit heute"
+   },
+   {
+    "title": "68A: Geänderte Linienführung",
+    "time_line": "Ab Mo 23.11."
+   },
+   {
+    "title": "13A: Demonstration",
+    "time_line": "Heute"
+   },
+   {
+    "title": "1/71/D: Haltestellenverlegung",
+    "time_line": "Bis 20.12."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-13T17:31:01.263690+00:00",
-   "raw": {
-    "wl-stoerungen": 54,
-    "wl-hinweise": 74,
-    "oebb": 187,
-    "baustellen-linien": 54,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 15,
-    "oebb": 161,
-    "baustellen": 65
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 6,
-    "wl": 88
-   }
-  },
   {
    "t": "2026-11-13T18:01:17.504541+00:00",
    "raw": {
@@ -6791,17 +6771,37 @@
     "oebb": 12,
     "wl": 98
    }
+  },
+  {
+   "t": "2026-11-20T18:00:52.508082+00:00",
+   "raw": {
+    "wl-stoerungen": 62,
+    "wl-hinweise": 68,
+    "oebb": 167,
+    "baustellen-linien": 51,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 11,
+    "oebb": 141,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 12,
+    "wl": 94
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-20T17:30:48.098019+00:00"
+   "last_ok": "2026-11-20T18:00:52.508082+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-20T17:30:48.098019+00:00"
+   "last_ok": "2026-11-20T18:00:52.508082+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-20T17:30:48.098019+00:00"
+   "last_ok": "2026-11-20T18:00:52.508082+00:00"
   }
  }
 }

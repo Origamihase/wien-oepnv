@@ -690,22 +690,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "14A: Betriebsstörung",
-    "description": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "1ce7b5feac6777b87454ae90ecf1a21ccc30d9d9f775c8de00d123245575dcec",
-    "pubDate": "2026-11-20T18:21:00+01:00",
-    "starts_at": "2026-11-20T18:21:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=14A|D=2026-11-20|TK=14a betriebsstörung",
-    "_wl_ids": [
-      "I20261120-0037"
-    ],
-    "_incident_start": "2026-11-20T18:21:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -880,7 +864,7 @@
     "guid": "a366c32c65098559124d9098d458131cf3e677c92ae8069e81b721bb4295db1a",
     "pubDate": "2026-11-20T17:23:00+01:00",
     "starts_at": "2026-11-20T17:23:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-20T19:06:00+01:00",
     "_identity": "wl|störung|L=25|D=2026-11-20|TK=polizeieinsatz",
     "_wl_ids": [
       "I20261120-0032"
@@ -966,22 +950,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26: Polizeieinsatz",
-    "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "5aaba97144ab1f9a110bad400e29c07d9fcca47c4b94a7b2a49b8438a1b01109",
-    "pubDate": "2026-11-20T17:23:00+01:00",
-    "starts_at": "2026-11-20T17:23:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=26|D=2026-11-20|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261120-0032"
-    ],
-    "_incident_start": "2026-11-20T17:23:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "27: Linie 25 in Tokiostraße benützen",
     "description": "Linie 25 in\nTokiostraße benützen",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1030,22 +998,6 @@
     "starts_at": "2026-11-19T00:00:28+01:00",
     "ends_at": "2026-11-20T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-11-19|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "3A: Verkehrsunfall",
-    "description": "Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "d0ca726f4f3064439e34273bfe62cd8cb00619d515176ac7f96f9e089a05e6ac",
-    "pubDate": "2026-11-20T18:25:00+01:00",
-    "starts_at": "2026-11-20T18:25:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=3A|D=2026-11-20|TK=3a verkehrsunfall",
-    "_wl_ids": [
-      "I20261120-0038"
-    ],
-    "_incident_start": "2026-11-20T18:25:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1132,7 +1084,7 @@
     "guid": "c3bc1799723b116ebf4b83b471a9da3fca2e1fd490f9c8a631a88fa52b77863a",
     "pubDate": "2026-11-20T17:14:00+01:00",
     "starts_at": "2026-11-20T17:14:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-20T19:05:00+01:00",
     "_identity": "wl|störung|L=71|D=2026-11-20|TK=demonstration",
     "_wl_ids": [
       "I20261120-0031"
@@ -1162,22 +1114,6 @@
     "starts_at": "2026-11-18T00:00:18+01:00",
     "ends_at": "2026-11-20T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-18|TK=betrieb ab vivariumstrasse 2"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "85A: Verkehrsunfall",
-    "description": "Linie 85A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "52462eeec0007aac13b6f4d7a9e7a3c1eec236f598c647b25a2bb00b97cd2c1a",
-    "pubDate": "2026-11-20T17:49:00+01:00",
-    "starts_at": "2026-11-20T17:49:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=85A|D=2026-11-20|TK=85a verkehrsunfall",
-    "_wl_ids": [
-      "I20261120-0034"
-    ],
-    "_incident_start": "2026-11-20T17:49:00+01:00"
   },
   {
     "source": "Wiener Linien",
