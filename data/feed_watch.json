@@ -1,24 +1,44 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-20T09:30:46.987819+00:00",
- "built": "2026-11-20T10:30:32+01:00",
+ "updated": "2026-11-20T10:00:56.009408+00:00",
+ "built": "2026-11-20T11:00:38+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-20T10:30:32+01:00",
+  "built": "2026-11-20T11:00:38+01:00",
   "items": [
    {
-    "title": "2/10/44/46: Beschädigte Oberleitung durch einen Kran",
-    "time_line": "Seit 09:38"
+    "title": "71: Betriebsstörung",
+    "time_line": "Seit 10:57"
    },
    {
-    "title": "46: Stromstörung",
+    "title": "13A: Polizeieinsatz",
+    "time_line": "Seit 10:39"
+   },
+   {
+    "title": "U1: Betriebsstörung",
+    "time_line": "Seit 10:33"
+   },
+   {
+    "title": "46: Stromstörung, Beschädigte Oberleitung",
     "time_line": "Seit 09:57"
    },
    {
-    "title": "2/10/44: Stromstörung",
+    "title": "10: Stromstörung, Beschädigte Oberleitung",
     "time_line": "Seit 09:40"
+   },
+   {
+    "title": "44: Stromstörung, Beschädigte Oberleitung",
+    "time_line": "Seit 09:42"
+   },
+   {
+    "title": "2: Stromstörung, Beschädigte Oberleitung",
+    "time_line": "Seit 09:40"
+   },
+   {
+    "title": "1/71/D: Demonstration",
+    "time_line": "Seit heute"
    },
    {
     "title": "68A: Geänderte Linienführung",
@@ -27,26 +47,6 @@
    {
     "title": "1/71/D: Haltestellenverlegung",
     "time_line": "Bis 20.12."
-   },
-   {
-    "title": "52A/43B/52B: Haltestellenverlegung",
-    "time_line": "Ab Mo 23.11."
-   },
-   {
-    "title": "N71: Bauarbeiten",
-    "time_line": "Bis 27.11."
-   },
-   {
-    "title": "1A: Polizeiübung",
-    "time_line": "Bis Mo 23.11."
-   },
-   {
-    "title": "8A: Küniglberg, ORF Zentrum",
-    "time_line": "Bis Di 24.11."
-   },
-   {
-    "title": "5A/N31: Obere Augartenstraße",
-    "time_line": "Bis 11.12."
    }
   ]
  },
@@ -6771,17 +6771,37 @@
     "oebb": 10,
     "wl": 90
    }
+  },
+  {
+   "t": "2026-11-20T10:00:56.009408+00:00",
+   "raw": {
+    "wl-stoerungen": 112,
+    "wl-hinweise": 67,
+    "oebb": 165,
+    "baustellen-linien": 51,
+    "baustellen-punkte": 15
+   },
+   "discarded": {
+    "wl": 11,
+    "oebb": 141,
+    "baustellen": 63
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 10,
+    "wl": 96
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-20T09:30:46.987819+00:00"
+   "last_ok": "2026-11-20T10:00:56.009408+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-20T09:30:46.987819+00:00"
+   "last_ok": "2026-11-20T10:00:56.009408+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-20T09:30:46.987819+00:00"
+   "last_ok": "2026-11-20T10:00:56.009408+00:00"
   }
  }
 }
