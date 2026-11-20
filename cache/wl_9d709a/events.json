@@ -662,6 +662,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11: Verspätungen",
+    "description": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "eaf96db733f004733a9b91b0e04111a3f9331a02f6c30911495b5b22f6e936d3",
+    "pubDate": "2026-11-20T17:55:00+01:00",
+    "starts_at": "2026-11-20T17:55:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=11|D=2026-11-20|TK=11 verspätungen",
+    "_wl_ids": [
+      "I20261120-0035"
+    ],
+    "_incident_start": "2026-11-20T17:55:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "12: Verkehrsunfall",
     "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -691,17 +707,13 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "13A: Demonstration Betrieb ab Neubaugasse",
-    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Demonstration\nBetrieb ab Neubaugasse",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "1c629dbb1ab44f38d4116936e03e299129ac24d8b47b2ee816bc8a7924bf6f1d",
-    "pubDate": "2026-11-20T15:49:00+01:00",
+    "pubDate": "2026-11-20T15:52:30+01:00",
     "starts_at": "2026-11-20T15:53:02+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=13A|D=2026-11-20|TK=demonstration",
-    "_wl_ids": [
-      "I20261120-0021"
-    ],
-    "_incident_start": "2026-11-20T15:49:00+01:00"
+    "ends_at": "2026-11-20T22:00:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2026-11-20|TK=demonstration"
   },
   {
     "source": "Wiener Linien",
@@ -1010,22 +1022,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "32A: Rettungseinsatz",
-    "description": "Linie 32A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "72b15e921cc21a0aeb5361674384109c63f686e18c932390d3ce9867dda79e61",
-    "pubDate": "2026-11-20T17:02:00+01:00",
-    "starts_at": "2026-11-20T17:02:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=32A|D=2026-11-20|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261120-0028"
-    ],
-    "_incident_start": "2026-11-20T17:02:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1051,17 +1047,13 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "57A: Fahrtbehinderung wegen Demonstration",
-    "description": "Linie 57A: Betrieb nur zwischen Rudolfsheim, Anschützg. und Esterházygasse. Ersatz: Linie U3. Voraussichtliche Dauer: 18:00 Uhr. Grund: Demonstration im Bereich Burgring.",
+    "description": "Fahrtbehinderung\nwegen Demonstration",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "96286a7f0df4710fd02917d4828da01c6be2f4262ae3bab0fc285406a2243348",
     "pubDate": "2026-11-20T16:28:32+01:00",
-    "starts_at": "2026-11-20T16:33:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=57A|D=2026-11-20|TK=demonstration",
-    "_wl_ids": [
-      "I20261120-0027"
-    ],
-    "_incident_start": "2026-11-20T16:33:00+01:00"
+    "starts_at": "2026-11-20T16:28:32+01:00",
+    "ends_at": "2026-11-20T20:45:00+01:00",
+    "_identity": "wl|störung|L=57A|D=2026-11-20|TK=demonstration"
   },
   {
     "source": "Wiener Linien",
@@ -1078,22 +1070,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5: Demonstration",
-    "description": "Linie 5: Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "3f848b305f7e5348073201d236d38c52525af0d92bf4dd693288dc56c298f7b6",
-    "pubDate": "2026-11-20T16:04:00+01:00",
-    "starts_at": "2026-11-20T16:04:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=5|D=2026-11-20|TK=demonstration",
-    "_wl_ids": [
-      "I20261120-0024"
-    ],
-    "_incident_start": "2026-11-20T16:04:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1106,30 +1082,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "66A: Rettungseinsatz",
-    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "6: Verspätungen",
+    "description": "Linie 6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107",
-    "pubDate": "2026-11-20T16:19:00+01:00",
-    "starts_at": "2026-11-20T16:19:00+01:00",
+    "guid": "03b747bc4c57f0d83aba2ed60a1156b616a882a8e9b1ca40258d97373518d195",
+    "pubDate": "2026-11-20T17:31:00+01:00",
+    "starts_at": "2026-11-20T17:31:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=66A|D=2026-11-20|TK=rettungseinsatz",
+    "_identity": "wl|störung|L=6|D=2026-11-20|TK=6 verspätungen",
     "_wl_ids": [
-      "I20261120-0026"
+      "I20261120-0033"
     ],
-    "_incident_start": "2026-11-20T16:19:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Betriebsstörung Betrieb ab Schwarzenbergplatz",
-    "description": "Betriebsstörung\nBetrieb ab Schwarzenbergplatz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "752b4af90f9c24b876852b3d721e3951c9a06d15f66ce324e8f64e984c081f14",
-    "pubDate": "2026-11-20T10:57:00+01:00",
-    "starts_at": "2026-11-20T10:57:00+01:00",
-    "ends_at": "2026-11-20T18:00:00+01:00",
-    "_identity": "wl|störung|L=71|D=2026-11-20|TK=betriebsstörung betrieb ab schwarzenbergplatz"
+    "_incident_start": "2026-11-20T17:31:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1174,18 +1138,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "80A: Verunreinigung",
-    "description": "Linie 80A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "title": "85A: Verkehrsunfall",
+    "description": "Linie 85A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "09eba80fd48e6939206444fb645011f93d01957b97213aa511f19e5f4c614527",
-    "pubDate": "2026-11-20T16:01:00+01:00",
-    "starts_at": "2026-11-20T16:01:00+01:00",
+    "guid": "52462eeec0007aac13b6f4d7a9e7a3c1eec236f598c647b25a2bb00b97cd2c1a",
+    "pubDate": "2026-11-20T17:49:00+01:00",
+    "starts_at": "2026-11-20T17:49:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=80A|D=2026-11-20|TK=80a verunreinigung",
+    "_identity": "wl|störung|L=85A|D=2026-11-20|TK=85a verkehrsunfall",
     "_wl_ids": [
-      "I20261120-0022"
+      "I20261120-0034"
     ],
-    "_incident_start": "2026-11-20T16:01:00+01:00"
+    "_incident_start": "2026-11-20T17:49:00+01:00"
   },
   {
     "source": "Wiener Linien",
