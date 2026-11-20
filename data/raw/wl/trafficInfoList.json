@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261120-0007, I20261020-0029, I20261120-0021, I20261120-0019, I20261120-0020, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261120-0007, I20261120-0024, I20261020-0029, I20261120-0021, I20261120-0025, I20261120-0019, I20261120-0020, I20261120-0022, I20261120-0023, I20261120-0026-F01, I20261120-0026-F02, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1883-101, R1881-101, R1882-101, R1884-101, R1875-101, R1876-101, R1880-101, R3886-480, R2359-125, R2343-626, R2343-125, R2378-627, R2345-127, R318-437, R2380-627, R293-474, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2558-125, R1974-466, R1199-205, R500-101, R81-171, R19-171, R14-171, R13-171, R15-171, R18-171, R49-171, R44-171, R45-171, R46-171, R50-171, R51-171, R51-101, R46-101, R49-101, R50-101, R14-101, R22-101, R20-101, R19-101, R18-101, R15-101, R13-101, R50-136, R51-136, R46-136, R49-136, R14-136, R13-136, R18-136, R15-136, R49-102, R15-102, R47-0, R17-0, R665-413, R3528-413, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1875-101, R1884-101, R1876-101, R1880-101, R1883-101, R1882-101, R1881-101, R3886-480, R2359-125, R2370-125, R2371-125, R2372-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R293-474, R318-437, R2373-125, R2378-627, R2343-125, R2343-626, R2558-125, R1974-466, R1199-205, R500-101, R15-171, R19-171, R18-171, R14-171, R13-171, R81-171, R49-171, R44-171, R45-171, R46-171, R51-171, R50-171, R51-101, R46-101, R49-101, R50-101, R14-101, R15-101, R18-101, R19-101, R20-101, R22-101, R13-101, R50-136, R49-136, R46-136, R51-136, R13-136, R14-136, R15-136, R18-136, R49-102, R15-102, R47-0, R17-0, R665-413, R3528-413, R1940-466, R1941-466, R1590-457, R1570-457, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -372,6 +372,278 @@
     "title": "13A: Demonstration"
    },
    {
+    "alertCause": "vandalism",
+    "alertCauseId": 16,
+    "attributes": {
+     "relatedLineTypes": {
+      "80A": "ptBusCity"
+     }
+    },
+    "description": "Linie 80A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "descriptionHTML": "<p>Linie 80A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 80A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
+       "descriptionPlain": "Linie 80A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+       "title": "80A: Verunreinigung"
+      }
+     }
+    ],
+    "name": "I20261120-0022",
+    "owner": "WL",
+    "parentName": "I20261120-0022",
+    "priority": "1",
+    "reasonId": 36,
+    "reasonName": "Verunreinigung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "80A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 480,
+      "lineName": "80A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-20T16:01:00.000+0100",
+     "lastUpdate": "2026-11-20T16:01:00.000+0100",
+     "resume": "2026-11-20T16:01:00.000+0100",
+     "start": "2026-11-20T16:01:00.000+0100"
+    },
+    "title": "80A: Verunreinigung"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "50A": "ptBusCity"
+     }
+    },
+    "description": "Linie 50A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 50A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 50A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 50A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "50A: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261120-0023",
+    "owner": "WL",
+    "parentName": "I20261120-0023",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "50A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 450,
+      "lineName": "50A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-20T16:02:00.000+0100",
+     "lastUpdate": "2026-11-20T16:02:00.000+0100",
+     "resume": "2026-11-20T16:01:00.000+0100",
+     "start": "2026-11-20T16:01:00.000+0100"
+    },
+    "title": "50A: Rettungseinsatz"
+   },
+   {
+    "alertCause": "demonstration",
+    "alertCauseId": 122,
+    "attributes": {
+     "relatedLineTypes": {
+      "5": "ptTram"
+     }
+    },
+    "description": "Linie 5: Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.",
+    "descriptionHTML": "<p>Linie 5:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Demonstration.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 5:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Demonstration.</p>",
+       "descriptionPlain": "Linie 5: Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.",
+       "title": "5: Demonstration"
+      }
+     }
+    ],
+    "name": "I20261120-0024",
+    "owner": "WL",
+    "parentName": "I20261120-0024",
+    "priority": "1",
+    "reasonId": 22,
+    "reasonName": "Demonstration",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "5"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 105,
+      "lineName": "5",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-20T16:04:00.000+0100",
+     "lastUpdate": "2026-11-20T16:04:00.000+0100",
+     "resume": "2026-11-20T16:04:00.000+0100",
+     "start": "2026-11-20T16:04:00.000+0100"
+    },
+    "title": "5: Demonstration"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "31A": "ptBusCity"
+     }
+    },
+    "description": "Linie 31A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "<p>Linie 31A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 31A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+       "descriptionPlain": "Linie 31A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+       "title": "31A: Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261120-0025",
+    "owner": "WL",
+    "parentName": "I20261120-0025",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "31A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 431,
+      "lineName": "31A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-20T16:08:00.000+0100",
+     "lastUpdate": "2026-11-20T16:08:00.000+0100",
+     "resume": "2026-11-20T16:08:00.000+0100",
+     "start": "2026-11-20T16:08:00.000+0100"
+    },
+    "title": "31A: Verkehrsunfall"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "65A": "ptBusCity"
+     }
+    },
+    "description": "Linie 65A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 65A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 65A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 65A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "65A: Rettungseinsatz"
+      }
+     }
+    ],
+    "location": "Leibnizgasse",
+    "name": "I20261120-0026-F01",
+    "owner": "WL",
+    "parentName": "I20261120-0026",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "65A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 465,
+      "lineName": "65A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-20T16:22:00.000+0100",
+     "lastUpdate": "2026-11-20T16:22:00.000+0100",
+     "resume": "2026-11-20T16:22:00.000+0100",
+     "start": "2026-11-20T16:19:00.000+0100"
+    },
+    "title": "65A: Rettungseinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "66A": "ptBusCity"
+     }
+    },
+    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 66A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 66A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "66A: Rettungseinsatz"
+      }
+     }
+    ],
+    "location": "Leibnizgasse",
+    "name": "I20261120-0026-F02",
+    "owner": "WL",
+    "parentName": "I20261120-0026",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "66A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 466,
+      "lineName": "66A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-20T16:22:00.000+0100",
+     "lastUpdate": "2026-11-20T16:22:00.000+0100",
+     "resume": "2026-11-20T16:22:00.000+0100",
+     "start": "2026-11-20T16:19:00.000+0100"
+    },
+    "title": "66A: Rettungseinsatz"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -621,6 +893,52 @@
     "time": {
      "end": "2026-11-20T18:15:00.000+0100",
      "start": "2026-11-20T10:56:30.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Betriebsstörung\nBetrieb ab Haus des Meeres",
+    "name": "R1570-457",
+    "owner": "WL",
+    "parentName": "R1570-457",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "57A"
+    ],
+    "relatedStops": [
+     1570
+    ],
+    "time": {
+     "end": "2026-11-20T23:00:00.000+0100",
+     "start": "2026-11-20T16:29:02.000+0100"
+    },
+    "title": "Betriebsstörung\nBetrieb ab Haus des Meeres"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Demonstration",
+    "name": "R1590-457",
+    "owner": "WL",
+    "parentName": "R1590-457",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "57A"
+    ],
+    "relatedStops": [
+     1590
+    ],
+    "time": {
+     "end": "2026-11-20T20:45:00.000+0100",
+     "start": "2026-11-20T16:28:32.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Demonstration"
    },
@@ -919,6 +1237,52 @@
      "start": "2026-11-20T10:56:30.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Demonstration"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1940-466",
+    "owner": "WL",
+    "parentName": "R1940-466",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "66A"
+    ],
+    "relatedStops": [
+     1940
+    ],
+    "time": {
+     "end": "2026-11-20T17:19:00.000+0100",
+     "start": "2026-11-20T16:20:04.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1941-466",
+    "owner": "WL",
+    "parentName": "R1941-466",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "66A"
+    ],
+    "relatedStops": [
+     1941
+    ],
+    "time": {
+     "end": "2026-11-20T17:19:00.000+0100",
+     "start": "2026-11-20T16:20:04.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
