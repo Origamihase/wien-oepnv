@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 20 Nov 2026 15:30:40 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 16:00:43 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[7A: Verkehrsüberlastung]]></title>
@@ -40,7 +40,7 @@
       <title><![CDATA[Wien Westbahnhof ↔ Wien Hütteldorf]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
       <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;928825</guid>
-      <pubDate>Fri, 20 Nov 2026 15:16:55 +0100</pubDate>
+      <pubDate>Fri, 20 Nov 2026 15:45:49 +0100</pubDate>
       <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
@@ -92,6 +92,19 @@
       <content:encoded><![CDATA[Die Linienführung der Linie 68A wird im Bereich der Filmteichstraße angepasst.<br/>[Ab Mo 23.11.]]]></content:encoded>
     </item>
     <item>
+      <title><![CDATA[13A: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">1c629dbb1ab44f38d4116936e03e299129ac24d8b47b2ee816bc8a7924bf6f1d</guid>
+      <pubDate>Fri, 20 Nov 2026 15:49:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 19 Nov 2026 19:19:39 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 20 Nov 2026 15:53:02 +0100</ext:starts_at>
+      <description>Betrieb ab Neubaugasse. Kein Betrieb zwischen Neubaugasse und Burggasse, Neubaugasse. Ersatz: Linien U3, U6 und 48A. Voraussichtlich bis 18:00 Uhr. [Seit heute]</description>
+      <content:encoded><![CDATA[Betrieb ab Neubaugasse. Kein Betrieb zwischen Neubaugasse und Burggasse, Neubaugasse. Ersatz: Linien U3, U6 und 48A. Voraussichtlich bis 18:00 Uhr.<br/>[Seit heute]]]></content:encoded>
+    </item>
+    <item>
       <title><![CDATA[1/71/D: Haltestellenverlegung]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">d962355223a7a9cd785ccb8198946ea2a4bcb7aa6579a57ac7115a46abaa33fa</guid>
@@ -131,20 +144,6 @@
       <ext:ends_at>Fri, 27 Nov 2026 05:00:00 +0100</ext:ends_at>
       <description>Wegen Gleisbauarbeiten im Bereich Simmeringer Hauptstraße wird die Linie N71 über die Hauptfahrbahn umgeleitet. [Bis 27.11.]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten im Bereich Simmeringer Hauptstraße wird die Linie N71 über die Hauptfahrbahn umgeleitet.<br/>[Bis 27.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1A: Polizeiübung]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">3c24781e7b84a6853b0b9610ad33b66329e9f155260908ddc03798b6f4229886</guid>
-      <pubDate>Tue, 17 Nov 2026 11:37:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 17 Nov 2026 12:00:48 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 17 Nov 2026 11:37:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 23 Nov 2026 11:00:00 +0100</ext:ends_at>
-      <description>Am Montag, den 23.11.2026 wird in der Zeit zwischen ca. 10:00 Uhr bis ca.11:00 Uhr die Strauchgasse und Herrengasse, in 1010 Wien wegen einer Übung am Pollersperrsystem … [Bis Mo 23.11.]</description>
-      <content:encoded><![CDATA[Am Montag, den 23.11.2026 wird in der Zeit zwischen ca. 10:00 Uhr bis ca.11:00 Uhr die Strauchgasse und Herrengasse, in 1010 Wien wegen einer Übung am Pollersperrsystem …<br/>[Bis Mo 23.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
