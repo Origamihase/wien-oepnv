@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20261120-0004-F01, I20261120-0004-F02, I20261120-0004, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R3886-480, R2373-127, R2373-126, R293-474, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2379-627, R2380-627, R2345-127, R318-437, R2558-125, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R3886-480, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R318-437, R293-474, R2379-627, R2345-127, R2380-627, R2373-126, R2558-125, R1974-466, R1199-205, R500-101, R1364-102, R1362-102, R1363-102, R1365-102, R588-102, R1367-102, R561-102, R1366-102, R1368-102, R562-102, R560-102, R277-144, R276-144, R241-144, R242-144, R244-144, R245-144, R1387-144, R584-110, R583-110, R588-110, R585-110, R586-110, R587-110, R581-110, R579-110, R565-110, R569-110, R568-110, R566-110, R564-110, R563-110, R562-110, R561-110, R3468-110, R564-146, R565-146, R1386-146, R585-146, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -173,6 +173,150 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "attributes": {
+     "relatedLineTypes": {
+      "10": "ptTram",
+      "46": "ptTram"
+     }
+    },
+    "description": "Linie 10: Betrieb nur zwischen Dornbach und Hütteldorfer Straße U. Weiterfahrt über Linie 49 bis Baumgarten. Linie 46: Fahrtbehinderung in Richtung Parlament, U Volkstheater Ersatz: Linien U3, 46A und 48A. Voraussichtliche Dauer: 11:00 Uhr. Grund: Fahrleitungsgebrechen durch Kran im Bereich Joachimsthalerplatz.",
+    "descriptionHTML": "<p><strong>Linie 10:</strong><br>Betrieb nur zwischen Dornbach und Hütteldorfer Straße U.<br>Weiterfahrt über Linie 49 bis Baumgarten.<br>Linie 46:<br>Fahrtbehinderung in Richtung Parlament, U Volkstheater</p><p>Ersatz: Linien U3, 46A und 48A.</p><p>Voraussichtliche Dauer: 11:00 Uhr.</p><p>Grund: Fahrleitungsgebrechen durch Kran im Bereich Joachimsthalerplatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><strong>Linie 10:</strong><br>Betrieb nur zwischen Dornbach und Hütteldorfer Straße U.<br>Weiterfahrt über Linie 49 bis Baumgarten.<br>Linie 46:<br>Fahrtbehinderung in Richtung Parlament, U Volkstheater</p><p>Ersatz: Linien U3, 46A und 48A.</p><p>Voraussichtliche Dauer: 11:00 Uhr.</p><p>Grund: Fahrleitungsgebrechen durch Kran im Bereich Joachimsthalerplatz.</p>",
+       "descriptionPlain": "Linie 10: Betrieb nur zwischen Dornbach und Hütteldorfer Straße U. Weiterfahrt über Linie 49 bis Baumgarten. Linie 46: Fahrtbehinderung in Richtung Parlament, U Volkstheater Ersatz: Linien U3, 46A und 48A. Voraussichtliche Dauer: 11:00 Uhr. Grund: Fahrleitungsgebrechen durch Kran im Bereich Joachimsthalerplatz.",
+       "title": "10, 46: Beschädigte Oberleitung durch einen Kran"
+      }
+     }
+    ],
+    "location": "Joachimsthalerplatz",
+    "name": "I20261120-0004",
+    "owner": "WL",
+    "parentName": "I20261120-0004",
+    "priority": "1",
+    "reasonId": 89,
+    "reasonName": "Fahrleitungsgebrechen durch Kran",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "10",
+     "46"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 110,
+      "lineName": "10",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 146,
+      "lineName": "46",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-20T09:45:00.000+0100",
+     "lastUpdate": "2026-11-20T09:45:00.000+0100",
+     "start": "2026-11-20T09:38:00.000+0100"
+    },
+    "title": "10, 46: Beschädigte Oberleitung durch einen Kran"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "relatedLineTypes": {
+      "2": "ptTram"
+     }
+    },
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "2: Beschädigte Oberleitung durch einen Kran"
+      }
+     }
+    ],
+    "location": "Joachimsthalerplatz",
+    "name": "I20261120-0004-F01",
+    "owner": "WL",
+    "parentName": "I20261120-0004",
+    "priority": "1",
+    "reasonId": 89,
+    "reasonName": "Fahrleitungsgebrechen durch Kran",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 102,
+      "lineName": "2",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-20T09:54:00.000+0100",
+     "lastUpdate": "2026-11-20T09:54:00.000+0100",
+     "resume": "2026-11-20T09:54:00.000+0100",
+     "start": "2026-11-20T09:38:00.000+0100"
+    },
+    "title": "2: Beschädigte Oberleitung durch einen Kran"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "relatedLineTypes": {
+      "44": "ptTram"
+     }
+    },
+    "description": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 44: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 44: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "44: Beschädigte Oberleitung durch einen Kran"
+      }
+     }
+    ],
+    "location": "Joachimsthalerplatz",
+    "name": "I20261120-0004-F02",
+    "owner": "WL",
+    "parentName": "I20261120-0004",
+    "priority": "1",
+    "reasonId": 89,
+    "reasonName": "Fahrleitungsgebrechen durch Kran",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 144,
+      "lineName": "44",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-20T09:54:00.000+0100",
+     "lastUpdate": "2026-11-20T09:54:00.000+0100",
+     "resume": "2026-11-20T09:54:00.000+0100",
+     "start": "2026-11-20T09:38:00.000+0100"
+    },
+    "title": "44: Beschädigte Oberleitung durch einen Kran"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "name": "R1199-205",
     "owner": "WL",
@@ -192,6 +336,213 @@
      "start": "2026-11-20T04:45:24.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R1362-102",
+    "owner": "WL",
+    "parentName": "R1362-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1362
+    ],
+    "time": {
+     "end": "2026-11-20T21:30:00.000+0100",
+     "start": "2026-11-20T09:40:23.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R1363-102",
+    "owner": "WL",
+    "parentName": "R1363-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1363
+    ],
+    "time": {
+     "end": "2026-11-20T21:30:00.000+0100",
+     "start": "2026-11-20T09:40:23.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R1364-102",
+    "owner": "WL",
+    "parentName": "R1364-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1364
+    ],
+    "time": {
+     "end": "2026-11-20T21:30:00.000+0100",
+     "start": "2026-11-20T09:40:23.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R1365-102",
+    "owner": "WL",
+    "parentName": "R1365-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1365
+    ],
+    "time": {
+     "end": "2026-11-20T21:30:00.000+0100",
+     "start": "2026-11-20T09:40:23.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R1366-102",
+    "owner": "WL",
+    "parentName": "R1366-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1366
+    ],
+    "time": {
+     "end": "2026-11-20T10:40:00.000+0100",
+     "start": "2026-11-20T09:41:23.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R1367-102",
+    "owner": "WL",
+    "parentName": "R1367-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1367
+    ],
+    "time": {
+     "end": "2026-11-20T10:40:00.000+0100",
+     "start": "2026-11-20T09:41:23.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R1368-102",
+    "owner": "WL",
+    "parentName": "R1368-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     1368
+    ],
+    "time": {
+     "end": "2026-11-20T10:40:00.000+0100",
+     "start": "2026-11-20T09:41:23.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Maroltingergasse",
+    "name": "R1386-146",
+    "owner": "WL",
+    "parentName": "R1386-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1386
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:57:55.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Maroltingergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R1387-144",
+    "owner": "WL",
+    "parentName": "R1387-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     1387
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:43:53.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -679,6 +1030,98 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R241-144",
+    "owner": "WL",
+    "parentName": "R241-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     241
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:43:52.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R242-144",
+    "owner": "WL",
+    "parentName": "R242-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     242
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:43:52.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R244-144",
+    "owner": "WL",
+    "parentName": "R244-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     244
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:43:52.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R245-144",
+    "owner": "WL",
+    "parentName": "R245-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     245
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:43:52.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
     "name": "R2558-125",
     "owner": "WL",
@@ -698,6 +1141,52 @@
      "start": "2026-11-19T00:00:30.000+0100"
     },
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R276-144",
+    "owner": "WL",
+    "parentName": "R276-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     276
+    ],
+    "time": {
+     "end": "2026-11-20T10:42:00.000+0100",
+     "start": "2026-11-20T09:42:52.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R277-144",
+    "owner": "WL",
+    "parentName": "R277-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     277
+    ],
+    "time": {
+     "end": "2026-11-20T10:42:00.000+0100",
+     "start": "2026-11-20T09:42:52.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
    },
    {
     "alertCause": "undefined alert cause",
@@ -744,6 +1233,29 @@
      "start": "2026-11-19T00:00:28.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Linzer Straße",
+    "name": "R3468-110",
+    "owner": "WL",
+    "parentName": "R3468-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     3468
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:48:56.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Linzer Straße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -813,6 +1325,535 @@
      "start": "2026-11-20T05:00:25.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Strfomstörung\nZüge halten in der Paschinggasse",
+    "name": "R560-102",
+    "owner": "WL",
+    "parentName": "R560-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     560
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:41:53.000+0100"
+    },
+    "title": "Strfomstörung\nZüge halten in der Paschinggasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R561-102",
+    "owner": "WL",
+    "parentName": "R561-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     561
+    ],
+    "time": {
+     "end": "2026-11-20T10:40:00.000+0100",
+     "start": "2026-11-20T09:41:23.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Linzer Straße",
+    "name": "R561-110",
+    "owner": "WL",
+    "parentName": "R561-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     561
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:48:54.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Linzer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz",
+    "name": "R562-102",
+    "owner": "WL",
+    "parentName": "R562-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     562
+    ],
+    "time": {
+     "end": "2026-11-20T10:40:00.000+0100",
+     "start": "2026-11-20T09:41:23.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Linzer Straße",
+    "name": "R562-110",
+    "owner": "WL",
+    "parentName": "R562-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     562
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:48:54.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Linzer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Linzer Straße",
+    "name": "R563-110",
+    "owner": "WL",
+    "parentName": "R563-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     563
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:48:54.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Linzer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Linzer Straße",
+    "name": "R564-110",
+    "owner": "WL",
+    "parentName": "R564-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     564
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:48:54.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Linzer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R564-146",
+    "owner": "WL",
+    "parentName": "R564-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     564
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:57:25.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Linzer Straße",
+    "name": "R565-110",
+    "owner": "WL",
+    "parentName": "R565-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     565
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:48:54.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Linzer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R565-146",
+    "owner": "WL",
+    "parentName": "R565-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     565
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:57:25.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Linzer Straße",
+    "name": "R566-110",
+    "owner": "WL",
+    "parentName": "R566-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     566
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:48:54.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Linzer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Linzer Straße",
+    "name": "R568-110",
+    "owner": "WL",
+    "parentName": "R568-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     568
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:48:54.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Linzer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Linzer Straße",
+    "name": "R569-110",
+    "owner": "WL",
+    "parentName": "R569-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     569
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:48:54.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Linzer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nUmleitung nach Baumgarten",
+    "name": "R579-110",
+    "owner": "WL",
+    "parentName": "R579-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     579
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:47:24.000+0100"
+    },
+    "title": "Stromstörung\nUmleitung nach Baumgarten"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R581-110",
+    "owner": "WL",
+    "parentName": "R581-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     581
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:46:54.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R583-110",
+    "owner": "WL",
+    "parentName": "R583-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     583
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:46:54.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R584-110",
+    "owner": "WL",
+    "parentName": "R584-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     584
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:46:54.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R585-110",
+    "owner": "WL",
+    "parentName": "R585-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     585
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:46:54.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Stromstörung\nBetrieb ab Maroltingergasse",
+    "name": "R585-146",
+    "owner": "WL",
+    "parentName": "R585-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     585
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:57:55.000+0100"
+    },
+    "title": "Stromstörung\nBetrieb ab Maroltingergasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R586-110",
+    "owner": "WL",
+    "parentName": "R586-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     586
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:46:54.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R587-110",
+    "owner": "WL",
+    "parentName": "R587-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     587
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:46:54.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R588-102",
+    "owner": "WL",
+    "parentName": "R588-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     588
+    ],
+    "time": {
+     "end": "2026-11-20T21:30:00.000+0100",
+     "start": "2026-11-20T09:40:23.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "name": "R588-110",
+    "owner": "WL",
+    "parentName": "R588-110",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10"
+    ],
+    "relatedStops": [
+     588
+    ],
+    "time": {
+     "end": "2026-11-20T12:00:00.000+0100",
+     "start": "2026-11-20T09:46:54.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Stromstörung"
    },
    {
     "alertCause": "undefined alert cause",

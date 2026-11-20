@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:ext="https://wien-oepnv.example/schema" xmlns:georss="http://www.georss.org/georss" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:ext="https://wien-oepnv.example/schema" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
   <channel>
     <title>ÖPNV Störungen Wien &amp; Pendler</title>
     <link>https://github.com/Origamihase/wien-oepnv</link>
@@ -8,8 +8,75 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 20 Nov 2026 09:30:29 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 10:00:42 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[2: Strfomstörung, Stromstörung, Beschädigte Oberleitung]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">dec37f1d04a41d07995d3fcbd89ead8db053db2cc1eb2dda7b9c202d94e17b6e</guid>
+      <pubDate>Fri, 20 Nov 2026 09:41:53 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 20 Nov 2026 10:00:42 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 20 Nov 2026 09:41:53 +0100</ext:starts_at>
+      <description>Strfomstörung: Züge halten in der Paschinggasse. Stromstörung: Fahrtbehinderung; Betrieb ab Johann-Nepomuk-Berger-Platz. [Seit 09:41]</description>
+      <content:encoded><![CDATA[Strfomstörung: Züge halten in der Paschinggasse. Stromstörung: Fahrtbehinderung; Betrieb ab Johann-Nepomuk-Berger-Platz.<br/>[Seit 09:41]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10/46: Beschädigte Oberleitung durch einen Kran]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">364ef3c49e2604b8cccdd6fce0756d017038e4b22256cc27f96b73c1ddb471e4</guid>
+      <pubDate>Fri, 20 Nov 2026 09:38:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 20 Nov 2026 10:00:42 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 20 Nov 2026 09:38:00 +0100</ext:starts_at>
+      <description>10: Betrieb nur Dornbach – Hütteldorfer Straße; 46: Fahrtbehinderung. Voraussichtlich bis 11:00 Uhr. [Seit 09:38]</description>
+      <content:encoded><![CDATA[10: Betrieb nur Dornbach – Hütteldorfer Straße; 46: Fahrtbehinderung. Voraussichtlich bis 11:00 Uhr.<br/>[Seit 09:38]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[46: Stromstörung]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">1208d769280f3717e072900bf0525bfeea3a5bbcf57cdabc919e0b5db800c594</guid>
+      <pubDate>Fri, 20 Nov 2026 09:57:25 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 20 Nov 2026 09:57:25 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 20 Nov 2026 09:57:25 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 20 Nov 2026 12:00:00 +0100</ext:ends_at>
+      <description>Fahrtbehinderung; Betrieb ab Maroltingergasse. [Seit 09:57]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung; Betrieb ab Maroltingergasse.<br/>[Seit 09:57]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[10: Stromstörung]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">03904adffffa10dfd49c8686d95b1660bf5dbf0d71210e737e56444f6c1e5ec0</guid>
+      <pubDate>Fri, 20 Nov 2026 09:46:54 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 20 Nov 2026 09:46:54 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 20 Nov 2026 09:46:54 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 20 Nov 2026 12:00:00 +0100</ext:ends_at>
+      <description>Fahrtbehinderung; Umleitung nach Baumgarten; Betrieb ab Linzer Straße. [Seit 09:46]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung; Umleitung nach Baumgarten; Betrieb ab Linzer Straße.<br/>[Seit 09:46]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[44: Stromstörung, Beschädigte Oberleitung]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">9e70d6dd9a64c448028f0fc1fd3e46a24b5abb8fcfe6f436c247ebb882147e94</guid>
+      <pubDate>Fri, 20 Nov 2026 09:42:52 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 20 Nov 2026 09:42:52 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 20 Nov 2026 09:42:52 +0100</ext:starts_at>
+      <description>Beschädigte Oberleitung durch einen Kran: Fahrtbehinderung; Betrieb ab Johann-Nepomuk-Berger-Platz. [Seit 09:42]</description>
+      <content:encoded><![CDATA[Beschädigte Oberleitung durch einen Kran: Fahrtbehinderung; Betrieb ab Johann-Nepomuk-Berger-Platz.<br/>[Seit 09:42]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[68A: Geänderte Linienführung]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -77,78 +144,6 @@
       <ext:ends_at>Mon, 23 Nov 2026 11:00:00 +0100</ext:ends_at>
       <description>Am Montag, den 23.11.2026 wird in der Zeit zwischen ca. 10:00 Uhr bis ca.11:00 Uhr die Strauchgasse und Herrengasse, in 1010 Wien wegen einer Übung am Pollersperrsystem … [Bis Mo 23.11.]</description>
       <content:encoded><![CDATA[Am Montag, den 23.11.2026 wird in der Zeit zwischen ca. 10:00 Uhr bis ca.11:00 Uhr die Strauchgasse und Herrengasse, in 1010 Wien wegen einer Übung am Pollersperrsystem …<br/>[Bis Mo 23.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[8A: Küniglberg, ORF Zentrum]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5aeaa62483dca9fdec215375dbb4563e5a96d5c2305faf7f534ce5f2edd88d19</guid>
-      <pubDate>Thu, 12 Nov 2026 10:13:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 12 Nov 2026 10:13:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 16 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Tue, 24 Nov 2026 09:00:00 +0100</ext:ends_at>
-      <georss:point>48.175514 16.291612</georss:point>
-      <description>Würzburggasse nach Einfahrt zum Friedhof → Würzburggasse 49. Haltestellenverlegung der Linie 8A in Richtung Bahnhof Meidling. Grund: Straßenbau. [Bis Di 24.11.]</description>
-      <content:encoded><![CDATA[Würzburggasse nach Einfahrt zum Friedhof → Würzburggasse 49. Haltestellenverlegung der Linie 8A in Richtung Bahnhof Meidling. Grund: Straßenbau.<br/>[Bis Di 24.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5A/N31: Obere Augartenstraße]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">4b133e0a2bf2849867177ba0646eb9eec8984fee0146b9475c8c15c934464586</guid>
-      <pubDate>Wed, 11 Nov 2026 16:12:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 09 Nov 2026 07:13:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 16 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 11 Dec 2026 23:59:00 +0100</ext:ends_at>
-      <georss:point>48.222757 16.375308</georss:point>
-      <description>Untere Augartenstraße 40 → Obere Augartenstraße 42. Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf. [Bis 11.12.]</description>
-      <content:encoded><![CDATA[Untere Augartenstraße 40 → Obere Augartenstraße 42. Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf.<br/>[Bis 11.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Rabengasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">a283d0e2e437795796c0e7a743565b30ce8fddbc07070af76ea09899ed55a1e7</guid>
-      <pubDate>Wed, 11 Nov 2026 15:24:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 11 Nov 2026 15:24:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 16 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.194051 16.397614</georss:point>
-      <description>Landstraßer Hauptstraße 140 -144 → Landstraßer Hauptstraße gegenüber 146. Haltestellenverlegung der Linie 74A in Richtung St. Marx. Grund: Straßenbau. [Seit 16.11.]</description>
-      <content:encoded><![CDATA[Landstraßer Hauptstraße 140 -144 → Landstraßer Hauptstraße gegenüber 146. Haltestellenverlegung der Linie 74A in Richtung St. Marx. Grund: Straßenbau.<br/>[Seit 16.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[98A: Arztgasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">0f48935e95b229ada01317d43dcef5fe0ca4a5664a8658d1c728212fe235fb80</guid>
-      <pubDate>Wed, 11 Nov 2026 10:22:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 11 Nov 2026 10:22:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 16 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.208780 16.510505</georss:point>
-      <description>Lannesstraße vor Arztgasse → Arztgasse 107 - 109. Haltestellenverlegung der Linie 98A in Richtung Aspernstraße. Grund: Umbau der Haltestelle. [Seit 16.11.]</description>
-      <content:encoded><![CDATA[Lannesstraße vor Arztgasse → Arztgasse 107 - 109. Haltestellenverlegung der Linie 98A in Richtung Aspernstraße. Grund: Umbau der Haltestelle.<br/>[Seit 16.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Viehmarktgasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">209cb31a62c904eb68902d303a11723d91ea5136757eeb08ef5b96f69caa1c73</guid>
-      <pubDate>Thu, 05 Nov 2026 15:47:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 05 Nov 2026 15:47:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 16 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.190488 16.401090</georss:point>
-      <description>Landstraßer Hauptstraße 148 vor Schlachthausgasse → Landstraßer Hauptstraße gegenüber 173-175. Haltestellenverlegung der Linie 74A in Richtung St. Marx. Grund: Straßenbau. [Seit 16.11.]</description>
-      <content:encoded><![CDATA[Landstraßer Hauptstraße 148 vor Schlachthausgasse → Landstraßer Hauptstraße gegenüber 173-175. Haltestellenverlegung der Linie 74A in Richtung St. Marx. Grund: Straßenbau.<br/>[Seit 16.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
