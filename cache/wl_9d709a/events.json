@@ -939,7 +939,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "U3: Betriebsstörung",
-    "description": "Linie U3: Fahrtbehinderung in Richtung Ottakring. Voraussichtliche Dauer: 07:20 Uhr. Grund: Betriebsstörung im Haltestellenbereich Stephansplatz.",
+    "description": "Die Linie U3 fährt derzeit zwischen den Stationen Herrengasse und Landstraße in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig. Voraussichtliche Dauer: 07:20 Uhr. Grund: Betriebsstörung im Haltestellenbereich Stephansplatz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "36cffa94f96b6e3d8a334c43e470046466e537318ef5020924c0a8c5f4e97c1f",
     "pubDate": "2026-11-20T06:57:00+01:00",
@@ -950,6 +950,22 @@
       "I20261120-0002"
     ],
     "_incident_start": "2026-11-20T06:57:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Verspätungen",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "7372c47df614588c23190a3b67df161df4e4d2f811b00ee43371fce213e6463e",
+    "pubDate": "2026-11-20T07:04:00+01:00",
+    "starts_at": "2026-11-20T07:04:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U6|D=2026-11-20|TK=u6 verspätungen",
+    "_wl_ids": [
+      "I20261120-0003"
+    ],
+    "_incident_start": "2026-11-20T07:04:00+01:00"
   },
   {
     "source": "Wiener Linien",
