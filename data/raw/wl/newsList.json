@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_576, ftazW_1354336, ftazW_1353812, ftazW_1353813, ftazW_1351086"
+    "trafficInfoNameList": "ftazW_576, ftazW_1354336, ftazW_1353812, ftazW_1351086"
    }
   ],
   "poiCategoryGroups": [
@@ -3047,43 +3047,6 @@
     "time": {
      "end": "2026-11-23T00:45:00.000+0100",
      "start": "2026-11-22T20:45:00.000+0100"
-    },
-    "title": "Erlaaer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "23.11.2026 05:15",
-     "ausVon": "23.11.2026 01:15",
-     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang In der Wiesen",
-     "rbls": [
-      4632
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Erlaaer Straße",
-     "status": "geplante Wartung",
-     "towards": "U6 Siebenhirten"
-    },
-    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang In der Wiesen",
-    "elevatorId": "ES 04",
-    "name": "ftazW_1353813",
-    "parentName": "ftazW_1353813",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4632
-    ],
-    "time": {
-     "end": "2026-11-23T05:15:00.000+0100",
-     "start": "2026-11-23T01:15:00.000+0100"
     },
     "title": "Erlaaer Straße"
    },
