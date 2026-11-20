@@ -966,6 +966,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "60: Fahrtbehinderung Falschparker",
+    "description": "Linie 60: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 13:50 Uhr. Grund: Falschparker im Bereich Preyergasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "0c6fac2a8f34464f42aa5982eb08b79eef732903ec1dc89348c10739df0b8093",
+    "pubDate": "2026-11-20T13:28:00+01:00",
+    "starts_at": "2026-11-20T13:29:15+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=60|D=2026-11-20|TK=falschparker",
+    "_wl_ids": [
+      "I20261120-0012"
+    ],
+    "_incident_start": "2026-11-20T13:28:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
