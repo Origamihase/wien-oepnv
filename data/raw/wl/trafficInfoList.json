@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261121-0025-F01, I20260925-0011, I20260909-0007, I20261121-0029-F01, I20261121-0032, I20261121-0033-F01, I20261020-0029, I20261121-0031-F01, I20261121-0034"
+    "trafficInfoNameList": "I20261121-0035, I20260925-0011, I20260909-0007, I20261121-0029-F01, I20261121-0033-F01, I20261121-0036, I20261020-0029, I20261121-0031-F01, I20261121-0034, I20261121-0032-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1884-101, R1883-101, R1882-101, R1880-101, R1876-101, R1875-101, R1881-101, R3886-480, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R318-437, R293-474, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R2966-410, R2973-410, R2977-410, R2968-410, R355-105, R354-105, R353-105, R211-105, R352-105, R350-105, R349-105, R356-105, R351-105, R357-105, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1884-101, R1883-101, R1882-101, R1880-101, R1876-101, R1875-101, R1881-101, R3886-480, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-626, R2343-125, R2359-125, R318-437, R293-474, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R351-105, R349-105, R355-105, R354-105, R353-105, R352-105, R211-105, R350-105, R356-105, R357-105, R2420-118, R2632-118, R3603-118, R3604-118, R3602-118, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,52 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "43": "ptTram"
-     }
-    },
-    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "43: Rettungseinsatz"
-      }
-     }
-    ],
-    "location": "Hernalser Hauptstraße",
-    "name": "I20261121-0025-F01",
-    "owner": "WL",
-    "parentName": "I20261121-0025",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 143,
-      "lineName": "43",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-21T17:53:00.000+0100",
-     "end": "2026-11-21T19:40:00.000+0100",
-     "lastUpdate": "2026-11-21T19:26:00.000+0100",
-     "start": "2026-11-21T17:49:00.000+0100"
-    },
-    "title": "43: Rettungseinsatz"
-   },
-   {
     "alertCause": "vehicle on the line",
     "alertCauseId": 71,
     "attributes": {
@@ -318,19 +272,19 @@
       "7A": "ptBusCity"
      }
     },
-    "description": "Linie 7A: Fahrtbehinderung in Richtung Meidling Hauptstraße U. Voraussichtliche Dauer: 19:40 Uhr. Grund: Verkehrsunfall im Bereich Davidgasse # Herzgasse.",
-    "descriptionHTML": "<p>Linie 7A:<br>Fahrtbehinderung in Richtung Meidling Hauptstraße U.</p><p>Voraussichtliche Dauer: 19:40 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Davidgasse # Herzgasse.</p>",
+    "description": "Linie 7A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 7A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 7A:<br>Fahrtbehinderung in Richtung Meidling Hauptstraße U.</p><p>Voraussichtliche Dauer: 19:40 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Davidgasse # Herzgasse.</p>",
-       "descriptionPlain": "Linie 7A: Fahrtbehinderung in Richtung Meidling Hauptstraße U. Voraussichtliche Dauer: 19:40 Uhr. Grund: Verkehrsunfall im Bereich Davidgasse # Herzgasse.",
+       "descriptionHtml": "<p>Linie 7A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 7A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "7A: Verkehrsunfall"
       }
      }
     ],
     "location": "Davidgasse / Herzgasse",
-    "name": "I20261121-0032",
+    "name": "I20261121-0032-F01",
     "owner": "WL",
     "parentName": "I20261121-0032",
     "priority": "1",
@@ -349,8 +303,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-21T19:09:00.000+0100",
-     "lastUpdate": "2026-11-21T19:09:00.000+0100",
+     "created": "2026-11-21T19:48:00.000+0100",
+     "lastUpdate": "2026-11-21T19:48:00.000+0100",
+     "resume": "2026-11-21T19:48:00.000+0100",
      "start": "2026-11-21T19:08:00.000+0100"
     },
     "title": "7A: Verkehrsunfall"
@@ -447,6 +402,100 @@
      "start": "2026-11-21T19:29:00.000+0100"
     },
     "title": "U2: Verspätungen"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Die Linie U3 fährt derzeit zwischen den Stationen Westbahnhof und Herrengasse in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig. Voraussichtliche Dauer: 20:15 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Volkstheater.",
+    "descriptionHTML": "<p>Die Linie U3 fährt derzeit zwischen den Stationen Westbahnhof und Herrengasse in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 20:15 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Volkstheater.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Die Linie U3 fährt derzeit zwischen den Stationen Westbahnhof und Herrengasse in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 20:15 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Volkstheater.</p>",
+       "descriptionPlain": "Die Linie U3 fährt derzeit zwischen den Stationen Westbahnhof und Herrengasse in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig. Voraussichtliche Dauer: 20:15 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Volkstheater.",
+       "title": "U3: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261121-0035",
+    "owner": "WL",
+    "parentName": "I20261121-0035",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4909
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-21T19:42:00.000+0100",
+     "lastUpdate": "2026-11-21T19:51:00.000+0100",
+     "start": "2026-11-21T19:40:00.000+0100"
+    },
+    "title": "U3: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "18": "ptTram"
+     }
+    },
+    "description": "Linie 18: Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U. Voraussichtliche Dauer: 20:30 Uhr. Grund: Fremder Verkehrsunfall im Haltestellenbereich Ludwig-Koeßler-Platz.",
+    "descriptionHTML": "<p>Linie 18:<br>Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U.</p><p>Voraussichtliche Dauer: 20:30 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Haltestellenbereich Ludwig-Koeßler-Platz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 18:<br>Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U.</p><p>Voraussichtliche Dauer: 20:30 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Haltestellenbereich Ludwig-Koeßler-Platz.</p>",
+       "descriptionPlain": "Linie 18: Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U. Voraussichtliche Dauer: 20:30 Uhr. Grund: Fremder Verkehrsunfall im Haltestellenbereich Ludwig-Koeßler-Platz.",
+       "title": "18: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261121-0036",
+    "owner": "WL",
+    "parentName": "I20261121-0036",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 118,
+      "lineName": "18",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     3602
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-21T19:54:00.000+0100",
+     "lastUpdate": "2026-11-21T19:54:00.000+0100",
+     "start": "2026-11-21T19:52:00.000+0100"
+    },
+    "title": "18: Fremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1000,6 +1049,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R2420-118",
+    "owner": "WL",
+    "parentName": "R2420-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     2420
+    ],
+    "time": {
+     "end": "2026-11-21T20:53:00.000+0100",
+     "start": "2026-11-21T19:53:32.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
     "name": "R2558-125",
     "owner": "WL",
@@ -1023,6 +1095,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R2632-118",
+    "owner": "WL",
+    "parentName": "R2632-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     2632
+    ],
+    "time": {
+     "end": "2026-11-21T20:53:00.000+0100",
+     "start": "2026-11-21T19:53:33.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -1042,98 +1137,6 @@
      "start": "2026-11-19T00:00:28.000+0100"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R2966-410",
-    "owner": "WL",
-    "parentName": "R2966-410",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10A"
-    ],
-    "relatedStops": [
-     2966
-    ],
-    "time": {
-     "end": "2026-11-21T19:38:00.000+0100",
-     "start": "2026-11-21T18:39:29.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R2968-410",
-    "owner": "WL",
-    "parentName": "R2968-410",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10A"
-    ],
-    "relatedStops": [
-     2968
-    ],
-    "time": {
-     "end": "2026-11-21T19:38:00.000+0100",
-     "start": "2026-11-21T18:39:29.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R2973-410",
-    "owner": "WL",
-    "parentName": "R2973-410",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10A"
-    ],
-    "relatedStops": [
-     2973
-    ],
-    "time": {
-     "end": "2026-11-21T19:38:00.000+0100",
-     "start": "2026-11-21T18:39:29.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R2977-410",
-    "owner": "WL",
-    "parentName": "R2977-410",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10A"
-    ],
-    "relatedStops": [
-     2977
-    ],
-    "time": {
-     "end": "2026-11-21T19:38:00.000+0100",
-     "start": "2026-11-21T18:39:29.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1364,6 +1367,75 @@
      "start": "2026-11-21T19:26:59.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R3602-118",
+    "owner": "WL",
+    "parentName": "R3602-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3602
+    ],
+    "time": {
+     "end": "2026-11-21T20:56:00.000+0100",
+     "start": "2026-11-21T19:56:35.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R3603-118",
+    "owner": "WL",
+    "parentName": "R3603-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3603
+    ],
+    "time": {
+     "end": "2026-11-21T20:53:00.000+0100",
+     "start": "2026-11-21T19:53:34.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R3604-118",
+    "owner": "WL",
+    "parentName": "R3604-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3604
+    ],
+    "time": {
+     "end": "2026-11-21T20:53:00.000+0100",
+     "start": "2026-11-21T19:53:34.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",

@@ -690,6 +690,34 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "18: Fremder Verkehrsunfall",
+    "description": "Linie 18: Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U. Voraussichtliche Dauer: 20:30 Uhr. Grund: Fremder Verkehrsunfall im Haltestellenbereich Ludwig-Koeßler-Platz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "9d5d830296db380d998cfac3ef2dc6b284f418d9c2fcaf12d004818d82b4f105",
+    "pubDate": "2026-11-21T19:52:00+01:00",
+    "starts_at": "2026-11-21T19:52:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=18|D=2026-11-21|TK=18 fremder verkehrsunfall",
+    "_wl_ids": [
+      "I20261121-0036"
+    ],
+    "_incident_start": "2026-11-21T19:52:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Fahrtbehinderung Fremder Verkehrsunfall",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "f474a4749825fcb2ccf9863b54083f44458a64e3ea577993bc4365b57ea5edfc",
+    "pubDate": "2026-11-21T19:53:32+01:00",
+    "starts_at": "2026-11-21T19:56:35+01:00",
+    "ends_at": "2026-11-21T20:56:00+01:00",
+    "_identity": "wl|störung|L=18|D=2026-11-21|TK=fahrtbehinderung fremder verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "1: Gleisbauarbeiten",
     "description": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A und 65A. Voraussichtliche Dauer: Mitte Dezember 2026. Grund: Gleisbauarbeiten im Bereich Stefan-Fadinger-Platz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -918,22 +946,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "43: Rettungseinsatz",
-    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "17e9a7fed1e0eaa8f6fe38b93eacaf76eb3ca142bc9e11cc7a41ff2d3a0a9991",
-    "pubDate": "2026-11-21T17:49:00+01:00",
-    "starts_at": "2026-11-21T17:49:00+01:00",
-    "ends_at": "2026-11-21T19:40:00+01:00",
-    "_identity": "wl|störung|L=43|D=2026-11-21|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261121-0025"
-    ],
-    "_incident_start": "2026-11-21T17:49:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -987,7 +999,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "7A: Verkehrsunfall",
-    "description": "Linie 7A: Fahrtbehinderung in Richtung Meidling Hauptstraße U. Voraussichtliche Dauer: 19:40 Uhr. Grund: Verkehrsunfall im Bereich Davidgasse # Herzgasse.",
+    "description": "Linie 7A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "d9c616ff8eaab98c987f46c03c04b116e60398ec5e67893f172fc419d4d258b5",
     "pubDate": "2026-11-21T19:08:00+01:00",
@@ -1026,6 +1038,22 @@
       "I20261121-0034"
     ],
     "_incident_start": "2026-11-21T19:29:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Schadhaftes Fahrzeug",
+    "description": "Die Linie U3 fährt derzeit zwischen den Stationen Westbahnhof und Herrengasse in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig. Voraussichtliche Dauer: 20:15 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Volkstheater.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
+    "pubDate": "2026-11-21T19:40:00+01:00",
+    "starts_at": "2026-11-21T19:40:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U3|D=2026-11-21|TK=u3 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261121-0035"
+    ],
+    "_incident_start": "2026-11-21T19:40:00+01:00"
   },
   {
     "source": "Wiener Linien",
