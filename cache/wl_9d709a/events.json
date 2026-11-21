@@ -782,6 +782,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "25/26: Schadhaftes Fahrzeug",
+    "description": "Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Kagran U beziehungsweise zwischen Hausfeldstraße und Aspern Nord.Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße und Zanggasse und weiter nach Aspern Nord.Dauer voraussichtlich bis 12:25 Uhr.Grund dafür ist ein schadhaftes Fahrzeug im Bereich Forstnergasse 7.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "3d017bc2c6551eb43f900290e42a0335335ec7c60bfab9907168d897833a8cbb",
+    "pubDate": "2026-11-21T11:37:00+01:00",
+    "starts_at": "2026-11-21T11:37:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=25,26|D=2026-11-21|TK=25 26 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261121-0011"
+    ],
+    "_incident_start": "2026-11-21T11:37:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "25: Ersatzbus 26E hält Karl-Waldbrunner-Platz vor Schloßhofer Straße",
     "description": "Ersatzbus 26E\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -794,6 +810,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "25: Schadhafter Zug Betrieb ab Zanggasse",
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "520901d97ac11dd448293ba3b5ab4c12e8e1db021fd24d6df1f2d78a1d3823bd",
+    "pubDate": "2026-11-19T00:00:30+01:00",
+    "starts_at": "2026-11-21T11:47:47+01:00",
+    "ends_at": "2026-11-21T12:46:00+01:00",
+    "_identity": "wl|störung|L=25|D=2026-11-19|TK=schadhafter zug betrieb ab zanggasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "25: Züge halten Donaufelder Straße 175-177",
     "description": "Züge halten\nDonaufelder Straße 175-177",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -802,6 +830,30 @@
     "starts_at": "2026-11-19T00:00:28+01:00",
     "ends_at": "2026-11-21T23:59:59+01:00",
     "_identity": "wl|störung|L=25|D=2026-11-19|TK=züge halten donaufelder strasse 175 177"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "abc260bf756a8d0275a4ce51c5b124812c4c380b787e4c627f39df2747b1c157",
+    "pubDate": "2026-11-21T11:40:46+01:00",
+    "starts_at": "2026-11-21T11:40:46+01:00",
+    "ends_at": "2026-11-21T12:40:00+01:00",
+    "_identity": "wl|störung|L=25|D=2026-11-21|TK=fahrtbehinderung schadhafter zug"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Schadhafter Zug Betrieb ab Kagran",
+    "description": "Schadhafter Zug\nBetrieb ab Kagran",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "034925fef1aa3638e7a6aa672cab9e7459748a47ef84c27b3354b1a6cd706c87",
+    "pubDate": "2026-11-21T11:40:45+01:00",
+    "starts_at": "2026-11-21T11:46:16+01:00",
+    "ends_at": "2026-11-21T12:45:00+01:00",
+    "_identity": "wl|störung|L=25|D=2026-11-21|TK=schadhafter zug betrieb ab kagran"
   },
   {
     "source": "Wiener Linien",
@@ -878,6 +930,42 @@
     "starts_at": "2026-11-19T00:00:28+01:00",
     "ends_at": "2026-11-21T23:59:59+01:00",
     "_identity": "wl|störung|L=26|D=2026-11-19|TK=züge halten in tokiostrasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "f36bfd0bb4774d14d71eac6889b393ad5dd3511aecc7a72a6d56cbd25c43546f",
+    "pubDate": "2026-11-21T11:56:47+01:00",
+    "starts_at": "2026-11-21T11:56:48+01:00",
+    "ends_at": "2026-11-21T12:45:00+01:00",
+    "_identity": "wl|störung|L=26|D=2026-11-21|TK=fahrtbehinderung schadhafter zug"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Schadhafter Zug Betrieb ab Zanggasse",
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "c05ca856bc09a21bbfddc3810915cfd9a04659ac7e90d5d39ae35c5afbfce2b5",
+    "pubDate": "2026-11-21T11:56:16+01:00",
+    "starts_at": "2026-11-21T11:56:18+01:00",
+    "ends_at": "2026-11-21T12:55:00+01:00",
+    "_identity": "wl|störung|L=26|D=2026-11-21|TK=schadhafter zug betrieb ab zanggasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Schadhafter Zug Umleitung nach Aspern Nord",
+    "description": "Schadhafter Zug Umleitung nach Aspern Nord",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "a1a584cf44c1e44b0490ba96e9cf8c8ec45b79167b4197c8ecb3cbc3f563301b",
+    "pubDate": "2026-11-21T11:55:16+01:00",
+    "starts_at": "2026-11-21T11:55:16+01:00",
+    "ends_at": "2026-11-21T12:54:00+01:00",
+    "_identity": "wl|störung|L=26|D=2026-11-21|TK=umleitung"
   },
   {
     "source": "Wiener Linien",

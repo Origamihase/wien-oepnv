@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261020-0029, I20261121-0009, I20261121-0010, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261020-0029, I20261121-0009, I20261121-0011, I20261121-0010, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1883-101, R1882-101, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R3886-480, R2345-127, R293-474, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2343-125, R2343-626, R2359-125, R318-437, R2378-627, R2558-125, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1875-101, R1876-101, R1880-101, R1884-101, R1883-101, R1882-101, R1881-101, R3886-480, R2380-627, R2345-127, R293-474, R2343-626, R318-437, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2359-125, R2343-125, R2378-627, R2558-125, R1974-466, R1199-205, R500-101, R3069-125, R880-125, R2376-125, R885-125, R3187-125, R2566-125, R2377-125, R3115-125, R3183-125, R3186-125, R3185-125, R3184-125, R3191-125, R3005-125, R3068-125, R3197-125, R3196-125, R3192-125, R3193-125, R2634-125, R2374-125, R2556-125, R2375-125, R3009-126, R3068-126, R3005-126, R3192-126, R3193-126, R3196-126, R3197-126, R2374-126, R2634-126, R2375-126, R3191-126, R881-126, R2558-126, R2556-126, R3115-126, R3183-126, R3186-126, R3185-126, R2376-126, R2377-126, R3069-126, R3187-126, R3184-126, R2566-126, R885-126, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -259,6 +259,58 @@
      "start": "2026-11-21T11:26:00.000+0100"
     },
     "title": "11A: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "25": "ptTram",
+      "26": "ptTram"
+     }
+    },
+    "description": "Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Kagran U beziehungsweise zwischen Hausfeldstraße und Aspern Nord.Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße und Zanggasse und weiter nach Aspern Nord.Dauer voraussichtlich bis 12:25 Uhr.Grund dafür ist ein schadhaftes Fahrzeug im Bereich Forstnergasse 7.",
+    "descriptionHTML": "<p><span style=\"color: rgba(0, 0, 0, 0.87);\">Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Kagran U beziehungsweise zwischen Hausfeldstraße und Aspern Nord.<br>Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße und Zanggasse und weiter nach Aspern Nord.<br><br>Dauer voraussichtlich bis 12:25 Uhr.<br><br>Grund dafür ist ein schadhaftes Fahrzeug im Bereich Forstnergasse 7.</span></p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><span style=\"color: rgba(0, 0, 0, 0.87);\">Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Kagran U beziehungsweise zwischen Hausfeldstraße und Aspern Nord.<br>Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße und Zanggasse und weiter nach Aspern Nord.<br><br>Dauer voraussichtlich bis 12:25 Uhr.<br><br>Grund dafür ist ein schadhaftes Fahrzeug im Bereich Forstnergasse 7.</span></p>",
+       "descriptionPlain": "Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Kagran U beziehungsweise zwischen Hausfeldstraße und Aspern Nord.Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße und Zanggasse und weiter nach Aspern Nord.Dauer voraussichtlich bis 12:25 Uhr.Grund dafür ist ein schadhaftes Fahrzeug im Bereich Forstnergasse 7.",
+       "title": "25, 26: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "location": "Forstnergasse 7",
+    "name": "I20261121-0011",
+    "owner": "WL",
+    "parentName": "I20261121-0011",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "25",
+     "26"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 125,
+      "lineName": "25",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 126,
+      "lineName": "26",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-21T11:39:00.000+0100",
+     "lastUpdate": "2026-11-21T11:47:00.000+0100",
+     "start": "2026-11-21T11:37:00.000+0100"
+    },
+    "title": "25, 26: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -700,6 +752,190 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse",
+    "name": "R2374-125",
+    "owner": "WL",
+    "parentName": "R2374-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2374
+    ],
+    "time": {
+     "end": "2026-11-21T12:46:00.000+0100",
+     "start": "2026-11-21T11:47:47.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse ",
+    "name": "R2374-126",
+    "owner": "WL",
+    "parentName": "R2374-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     2374
+    ],
+    "time": {
+     "end": "2026-11-21T12:55:00.000+0100",
+     "start": "2026-11-21T11:56:17.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse",
+    "name": "R2375-125",
+    "owner": "WL",
+    "parentName": "R2375-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2375
+    ],
+    "time": {
+     "end": "2026-11-21T12:46:00.000+0100",
+     "start": "2026-11-21T11:47:47.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse ",
+    "name": "R2375-126",
+    "owner": "WL",
+    "parentName": "R2375-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     2375
+    ],
+    "time": {
+     "end": "2026-11-21T12:55:00.000+0100",
+     "start": "2026-11-21T11:56:17.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Kagran ",
+    "name": "R2376-125",
+    "owner": "WL",
+    "parentName": "R2376-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2376
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:40:46.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Kagran "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R2376-126",
+    "owner": "WL",
+    "parentName": "R2376-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     2376
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:56:47.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Kagran ",
+    "name": "R2377-125",
+    "owner": "WL",
+    "parentName": "R2377-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2377
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:40:46.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Kagran "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R2377-126",
+    "owner": "WL",
+    "parentName": "R2377-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     2377
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:56:47.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Busse halten\nSatzingerweg 41",
     "name": "R2378-627",
     "owner": "WL",
@@ -769,7 +1005,53 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse",
+    "name": "R2556-125",
+    "owner": "WL",
+    "parentName": "R2556-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2556
+    ],
+    "time": {
+     "end": "2026-11-21T12:46:00.000+0100",
+     "start": "2026-11-21T11:47:47.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse ",
+    "name": "R2556-126",
+    "owner": "WL",
+    "parentName": "R2556-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     2556
+    ],
+    "time": {
+     "end": "2026-11-21T12:55:00.000+0100",
+     "start": "2026-11-21T11:56:18.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse",
     "name": "R2558-125",
     "owner": "WL",
     "parentName": "R2558-125",
@@ -784,10 +1066,125 @@
      2558
     ],
     "time": {
-     "end": "2026-11-21T23:59:59.000+0100",
+     "end": "2026-11-21T12:46:00.000+0100",
      "start": "2026-11-19T00:00:30.000+0100"
     },
-    "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse ",
+    "name": "R2558-126",
+    "owner": "WL",
+    "parentName": "R2558-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     2558
+    ],
+    "time": {
+     "end": "2026-11-21T12:55:00.000+0100",
+     "start": "2026-11-21T11:56:18.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Kagran ",
+    "name": "R2566-125",
+    "owner": "WL",
+    "parentName": "R2566-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2566
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:40:46.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Kagran "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R2566-126",
+    "owner": "WL",
+    "parentName": "R2566-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     2566
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:56:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse",
+    "name": "R2634-125",
+    "owner": "WL",
+    "parentName": "R2634-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     2634
+    ],
+    "time": {
+     "end": "2026-11-21T12:46:00.000+0100",
+     "start": "2026-11-21T11:47:46.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse ",
+    "name": "R2634-126",
+    "owner": "WL",
+    "parentName": "R2634-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     2634
+    ],
+    "time": {
+     "end": "2026-11-21T12:55:00.000+0100",
+     "start": "2026-11-21T11:56:17.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
    },
    {
     "alertCause": "undefined alert cause",
@@ -815,6 +1212,213 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse",
+    "name": "R3005-125",
+    "owner": "WL",
+    "parentName": "R3005-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3005
+    ],
+    "time": {
+     "end": "2026-11-21T12:46:00.000+0100",
+     "start": "2026-11-21T11:47:46.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse ",
+    "name": "R3005-126",
+    "owner": "WL",
+    "parentName": "R3005-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3005
+    ],
+    "time": {
+     "end": "2026-11-21T12:55:00.000+0100",
+     "start": "2026-11-21T11:56:16.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug \nUmleitung nach Aspern Nord ",
+    "name": "R3009-126",
+    "owner": "WL",
+    "parentName": "R3009-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3009
+    ],
+    "time": {
+     "end": "2026-11-21T12:54:00.000+0100",
+     "start": "2026-11-21T11:55:16.000+0100"
+    },
+    "title": "Schadhafter Zug \nUmleitung nach Aspern Nord "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse",
+    "name": "R3068-125",
+    "owner": "WL",
+    "parentName": "R3068-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3068
+    ],
+    "time": {
+     "end": "2026-11-21T12:46:00.000+0100",
+     "start": "2026-11-21T11:47:46.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse ",
+    "name": "R3068-126",
+    "owner": "WL",
+    "parentName": "R3068-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3068
+    ],
+    "time": {
+     "end": "2026-11-21T12:55:00.000+0100",
+     "start": "2026-11-21T11:56:16.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Kagran ",
+    "name": "R3069-125",
+    "owner": "WL",
+    "parentName": "R3069-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3069
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:40:45.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Kagran "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3069-126",
+    "owner": "WL",
+    "parentName": "R3069-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3069
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:56:47.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Kagran ",
+    "name": "R3115-125",
+    "owner": "WL",
+    "parentName": "R3115-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3115
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:46:15.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Kagran "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3115-126",
+    "owner": "WL",
+    "parentName": "R3115-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3115
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:56:47.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -834,6 +1438,466 @@
      "start": "2026-11-19T00:00:28.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Kagran ",
+    "name": "R3183-125",
+    "owner": "WL",
+    "parentName": "R3183-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3183
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:46:16.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Kagran "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3183-126",
+    "owner": "WL",
+    "parentName": "R3183-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3183
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:56:47.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Kagran ",
+    "name": "R3184-125",
+    "owner": "WL",
+    "parentName": "R3184-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3184
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:46:16.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Kagran "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3184-126",
+    "owner": "WL",
+    "parentName": "R3184-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3184
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:56:47.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Kagran ",
+    "name": "R3185-125",
+    "owner": "WL",
+    "parentName": "R3185-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3185
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:46:16.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Kagran "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3185-126",
+    "owner": "WL",
+    "parentName": "R3185-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3185
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:56:47.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Kagran ",
+    "name": "R3186-125",
+    "owner": "WL",
+    "parentName": "R3186-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3186
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:46:16.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Kagran "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3186-126",
+    "owner": "WL",
+    "parentName": "R3186-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3186
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:56:47.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Kagran ",
+    "name": "R3187-125",
+    "owner": "WL",
+    "parentName": "R3187-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3187
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:40:46.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Kagran "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R3187-126",
+    "owner": "WL",
+    "parentName": "R3187-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3187
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:56:47.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse",
+    "name": "R3191-125",
+    "owner": "WL",
+    "parentName": "R3191-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3191
+    ],
+    "time": {
+     "end": "2026-11-21T12:46:00.000+0100",
+     "start": "2026-11-21T11:47:46.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse ",
+    "name": "R3191-126",
+    "owner": "WL",
+    "parentName": "R3191-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3191
+    ],
+    "time": {
+     "end": "2026-11-21T12:55:00.000+0100",
+     "start": "2026-11-21T11:56:17.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse",
+    "name": "R3192-125",
+    "owner": "WL",
+    "parentName": "R3192-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3192
+    ],
+    "time": {
+     "end": "2026-11-21T12:46:00.000+0100",
+     "start": "2026-11-21T11:47:46.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse ",
+    "name": "R3192-126",
+    "owner": "WL",
+    "parentName": "R3192-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3192
+    ],
+    "time": {
+     "end": "2026-11-21T12:55:00.000+0100",
+     "start": "2026-11-21T11:56:17.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse",
+    "name": "R3193-125",
+    "owner": "WL",
+    "parentName": "R3193-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3193
+    ],
+    "time": {
+     "end": "2026-11-21T12:46:00.000+0100",
+     "start": "2026-11-21T11:47:46.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse ",
+    "name": "R3193-126",
+    "owner": "WL",
+    "parentName": "R3193-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3193
+    ],
+    "time": {
+     "end": "2026-11-21T12:55:00.000+0100",
+     "start": "2026-11-21T11:56:17.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse",
+    "name": "R3196-125",
+    "owner": "WL",
+    "parentName": "R3196-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3196
+    ],
+    "time": {
+     "end": "2026-11-21T12:46:00.000+0100",
+     "start": "2026-11-21T11:47:46.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse ",
+    "name": "R3196-126",
+    "owner": "WL",
+    "parentName": "R3196-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3196
+    ],
+    "time": {
+     "end": "2026-11-21T12:55:00.000+0100",
+     "start": "2026-11-21T11:56:17.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse",
+    "name": "R3197-125",
+    "owner": "WL",
+    "parentName": "R3197-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     3197
+    ],
+    "time": {
+     "end": "2026-11-21T12:46:00.000+0100",
+     "start": "2026-11-21T11:47:46.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse ",
+    "name": "R3197-126",
+    "owner": "WL",
+    "parentName": "R3197-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     3197
+    ],
+    "time": {
+     "end": "2026-11-21T12:55:00.000+0100",
+     "start": "2026-11-21T11:56:17.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
    },
    {
     "alertCause": "undefined alert cause",
@@ -903,6 +1967,98 @@
      "start": "2026-11-21T05:00:04.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R880-125",
+    "owner": "WL",
+    "parentName": "R880-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     880
+    ],
+    "time": {
+     "end": "2026-11-21T12:40:00.000+0100",
+     "start": "2026-11-21T11:40:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Zanggasse ",
+    "name": "R881-126",
+    "owner": "WL",
+    "parentName": "R881-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     881
+    ],
+    "time": {
+     "end": "2026-11-21T12:55:00.000+0100",
+     "start": "2026-11-21T11:56:18.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Schadhafter Zug\nBetrieb ab Kagran ",
+    "name": "R885-125",
+    "owner": "WL",
+    "parentName": "R885-125",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "25"
+    ],
+    "relatedStops": [
+     885
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:40:46.000+0100"
+    },
+    "title": "Schadhafter Zug\nBetrieb ab Kagran "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "name": "R885-126",
+    "owner": "WL",
+    "parentName": "R885-126",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedStops": [
+     885
+    ],
+    "time": {
+     "end": "2026-11-21T12:45:00.000+0100",
+     "start": "2026-11-21T11:56:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
