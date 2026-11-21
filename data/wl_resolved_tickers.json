@@ -3,197 +3,33 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R2374-125|2026-11-21T11:47:47.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
+  "R102-136|2026-11-21T12:48:51.000+0100": {
+   "incident": "I20261121-0013",
+   "title": "Fahrtbehinderung\nSchadhafter PKW"
   },
-  "R2374-126|2026-11-21T11:56:17.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
+  "R103-136|2026-11-21T12:48:51.000+0100": {
+   "incident": "I20261121-0013",
+   "title": "Fahrtbehinderung\nSchadhafter PKW"
   },
-  "R2375-125|2026-11-21T11:47:47.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
+  "R130-136|2026-11-21T12:48:51.000+0100": {
+   "incident": "I20261121-0013",
+   "title": "Fahrtbehinderung\nSchadhafter PKW"
   },
-  "R2375-126|2026-11-21T11:56:17.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
+  "R45-136|2026-11-21T12:48:51.000+0100": {
+   "incident": "I20261121-0013",
+   "title": "Fahrtbehinderung\nSchadhafter PKW"
   },
-  "R2376-125|2026-11-21T11:40:46.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Kagran "
+  "R46-136|2026-11-21T12:48:51.000+0100": {
+   "incident": "I20261121-0013",
+   "title": "Fahrtbehinderung\nSchadhafter PKW"
   },
-  "R2376-126|2026-11-21T11:56:47.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R49-136|2026-11-21T12:48:51.000+0100": {
+   "incident": "I20261121-0013",
+   "title": "Fahrtbehinderung\nSchadhafter PKW"
   },
-  "R2377-125|2026-11-21T11:40:46.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Kagran "
-  },
-  "R2377-126|2026-11-21T11:56:47.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R2556-125|2026-11-21T11:47:47.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
-  },
-  "R2556-126|2026-11-21T11:56:18.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
-  },
-  "R2558-126|2026-11-21T11:56:18.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
-  },
-  "R2566-125|2026-11-21T11:40:46.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Kagran "
-  },
-  "R2566-126|2026-11-21T11:56:48.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R2634-125|2026-11-21T11:47:46.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
-  },
-  "R2634-126|2026-11-21T11:56:17.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
-  },
-  "R3005-125|2026-11-21T11:47:46.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
-  },
-  "R3005-126|2026-11-21T11:56:16.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
-  },
-  "R3009-126|2026-11-21T11:55:16.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug \nUmleitung nach Aspern Nord "
-  },
-  "R3068-125|2026-11-21T11:47:46.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
-  },
-  "R3068-126|2026-11-21T11:56:16.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
-  },
-  "R3069-125|2026-11-21T11:40:45.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Kagran "
-  },
-  "R3069-126|2026-11-21T11:56:47.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R3115-125|2026-11-21T11:46:15.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Kagran "
-  },
-  "R3115-126|2026-11-21T11:56:47.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R3183-125|2026-11-21T11:46:16.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Kagran "
-  },
-  "R3183-126|2026-11-21T11:56:47.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R3184-125|2026-11-21T11:46:16.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Kagran "
-  },
-  "R3184-126|2026-11-21T11:56:47.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R3185-125|2026-11-21T11:46:16.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Kagran "
-  },
-  "R3185-126|2026-11-21T11:56:47.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R3186-125|2026-11-21T11:46:16.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Kagran "
-  },
-  "R3186-126|2026-11-21T11:56:47.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R3187-125|2026-11-21T11:40:46.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Kagran "
-  },
-  "R3187-126|2026-11-21T11:56:47.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R3191-125|2026-11-21T11:47:46.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
-  },
-  "R3191-126|2026-11-21T11:56:17.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
-  },
-  "R3192-125|2026-11-21T11:47:46.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
-  },
-  "R3192-126|2026-11-21T11:56:17.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
-  },
-  "R3193-125|2026-11-21T11:47:46.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
-  },
-  "R3193-126|2026-11-21T11:56:17.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
-  },
-  "R3196-125|2026-11-21T11:47:46.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
-  },
-  "R3196-126|2026-11-21T11:56:17.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
-  },
-  "R3197-125|2026-11-21T11:47:46.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
-  },
-  "R3197-126|2026-11-21T11:56:17.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
-  },
-  "R880-125|2026-11-21T11:40:46.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R881-126|2026-11-21T11:56:18.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Zanggasse "
-  },
-  "R885-125|2026-11-21T11:40:46.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Schadhafter Zug\nBetrieb ab Kagran "
-  },
-  "R885-126|2026-11-21T11:56:48.000+0100": {
-   "incident": "I20261121-0011",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R50-136|2026-11-21T12:48:51.000+0100": {
+   "incident": "I20261121-0013",
+   "title": "Fahrtbehinderung\nSchadhafter PKW"
   }
  }
 }
