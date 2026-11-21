@@ -1,7 +1,85 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
- "tickers": [],
+ "tickers": [
+  {
+   "key": "R1606-160|2026-11-21T00:13:16.000+0100|Fahrtbehinderung\nGleisschaden",
+   "name": "R1606-160",
+   "title": "Fahrtbehinderung\nGleisschaden",
+   "end": "2026-11-21T02:12:00.000+0100",
+   "incident": "I20261121-0001"
+  },
+  {
+   "key": "R1607-160|2026-11-21T00:17:47.000+0100|Gleisschaden\nBetrieb ab Hermesstraße",
+   "name": "R1607-160",
+   "title": "Gleisschaden\nBetrieb ab Hermesstraße",
+   "end": "2026-11-21T02:16:00.000+0100",
+   "incident": "I20261121-0001"
+  },
+  {
+   "key": "R1617-160|2026-11-21T00:11:16.000+0100|Fahrtbehinderung\nGleisschaden",
+   "name": "R1617-160",
+   "title": "Fahrtbehinderung\nGleisschaden",
+   "end": "2026-11-21T02:10:00.000+0100",
+   "incident": "I20261121-0001"
+  },
+  {
+   "key": "R1618-160|2026-11-21T00:11:16.000+0100|Fahrtbehinderung\nGleisschaden",
+   "name": "R1618-160",
+   "title": "Fahrtbehinderung\nGleisschaden",
+   "end": "2026-11-21T02:10:00.000+0100",
+   "incident": "I20261121-0001"
+  },
+  {
+   "key": "R1619-160|2026-11-21T00:11:16.000+0100|Fahrtbehinderung\nGleisschaden",
+   "name": "R1619-160",
+   "title": "Fahrtbehinderung\nGleisschaden",
+   "end": "2026-11-21T02:10:00.000+0100",
+   "incident": "I20261121-0001"
+  },
+  {
+   "key": "R1620-160|2026-11-21T00:11:16.000+0100|Fahrtbehinderung\nGleisschaden",
+   "name": "R1620-160",
+   "title": "Fahrtbehinderung\nGleisschaden",
+   "end": "2026-11-21T02:10:00.000+0100",
+   "incident": "I20261121-0001"
+  },
+  {
+   "key": "R1625-160|2026-11-21T00:17:47.000+0100|Gleisschaden\nBetrieb ab Hermesstraße",
+   "name": "R1625-160",
+   "title": "Gleisschaden\nBetrieb ab Hermesstraße",
+   "end": "2026-11-21T02:16:00.000+0100",
+   "incident": "I20261121-0001"
+  },
+  {
+   "key": "R1629-160|2026-11-21T00:24:17.000+0100|Gleisschaden\nBetrieb ab Hermesstraße",
+   "name": "R1629-160",
+   "title": "Gleisschaden\nBetrieb ab Hermesstraße",
+   "end": "2026-11-21T02:23:00.000+0100",
+   "incident": "I20261121-0001"
+  },
+  {
+   "key": "R1630-160|2026-11-21T00:24:17.000+0100|Gleisschaden\nBetrieb ab Hermesstraße",
+   "name": "R1630-160",
+   "title": "Gleisschaden\nBetrieb ab Hermesstraße",
+   "end": "2026-11-21T02:23:00.000+0100",
+   "incident": "I20261121-0001"
+  },
+  {
+   "key": "R1631-160|2026-11-21T00:24:17.000+0100|Gleisschaden\nBetrieb ab Hermesstraße",
+   "name": "R1631-160",
+   "title": "Gleisschaden\nBetrieb ab Hermesstraße",
+   "end": "2026-11-21T02:23:00.000+0100",
+   "incident": "I20261121-0001"
+  },
+  {
+   "key": "R1632-160|2026-11-21T00:24:17.000+0100|Gleisschaden\nBetrieb ab Hermesstraße",
+   "name": "R1632-160",
+   "title": "Gleisschaden\nBetrieb ab Hermesstraße",
+   "end": "2026-11-21T02:23:00.000+0100",
+   "incident": "I20261121-0001"
+  }
+ ],
  "owners": {
   "R1606-160|2026-11-21T00:13:16.000+0100": {
    "incident": "I20261121-0001",
