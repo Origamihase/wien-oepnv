@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261121-0020, I20261020-0029, I20261121-0016-F01, I20261121-0017-F01, I20261121-0021, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261121-0020, I20261020-0029, I20261121-0016-F01, I20261121-0021, I20261121-0022-F01, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
@@ -217,54 +217,6 @@
     "title": "25: Verkehrsunfall"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U4: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261121-0017-F01",
-    "owner": "WL",
-    "parentName": "I20261121-0017",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 304,
-      "lineName": "U4",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4417
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-21T14:07:00.000+0100",
-     "lastUpdate": "2026-11-21T14:07:00.000+0100",
-     "resume": "2026-11-21T14:07:00.000+0100",
-     "start": "2026-11-21T13:53:00.000+0100"
-    },
-    "title": "U4: Polizeieinsatz"
-   },
-   {
     "alertCause": "accident",
     "alertCauseId": 77,
     "attributes": {
@@ -353,6 +305,54 @@
      "start": "2026-11-21T15:20:00.000+0100"
     },
     "title": "1A: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "U2": "ptMetro"
+     }
+    },
+    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U2: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261121-0022-F01",
+    "owner": "WL",
+    "parentName": "I20261121-0022",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 302,
+      "lineName": "U2",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4253
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-21T15:53:00.000+0100",
+     "lastUpdate": "2026-11-21T15:53:00.000+0100",
+     "resume": "2026-11-21T15:53:00.000+0100",
+     "start": "2026-11-21T15:41:00.000+0100"
+    },
+    "title": "U2: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
