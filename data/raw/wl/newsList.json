@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_576, ftazW_1354336, ftazW_1353812, ftazW_1353813, ftazW_1351086, ftazW_85, ftazW_628, ftazW_1016544, ftazW_1018064, ftazW_480"
+    "trafficInfoNameList": "ftazW_576, ftazW_1354336, ftazW_1353812, ftazW_1353813, ftazW_1351086, ftazW_85, ftazW_628, ftazW_1016544, ftazW_1018064, ftazW_480, ftazW_629, ftazW_756, ftazW_481, ftazW_80, ftazW_1016545, ftazW_1018063"
    }
   ],
   "poiCategoryGroups": [
@@ -3017,6 +3017,82 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "24.11.2026 05:15",
+     "ausVon": "24.11.2026 01:15",
+     "location": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Preindlsteig",
+     "rbls": [
+      4434
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Ober St.Veit",
+     "status": "geplante Wartung",
+     "towards": "U4 Hütteldorf"
+    },
+    "description": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Preindlsteig",
+    "elevatorId": "OV 02",
+    "name": "ftazW_1016545",
+    "parentName": "ftazW_1016545",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4434
+    ],
+    "time": {
+     "end": "2026-11-24T05:15:00.000+0100",
+     "start": "2026-11-24T01:15:00.000+0100"
+    },
+    "title": "Ober St.Veit"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "24.11.2026 05:15",
+     "ausVon": "24.11.2026 01:15",
+     "location": "U2 Mittelbahnsteig - Ausgang Sturgasse",
+     "rbls": [
+      4258,
+      4265
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Krieau",
+     "status": "geplante Wartung",
+     "towards": "U2 beide Richtungen"
+    },
+    "description": "U2 Mittelbahnsteig - Ausgang Sturgasse",
+    "elevatorId": "KI 01",
+    "name": "ftazW_1018063",
+    "parentName": "ftazW_1018063",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4258,
+     4265
+    ],
+    "time": {
+     "end": "2026-11-24T05:15:00.000+0100",
+     "start": "2026-11-24T01:15:00.000+0100"
+    },
+    "title": "Krieau"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "24.11.2026 00:45",
      "ausVon": "23.11.2026 20:45",
      "location": "U2 Mittelbahnsteig - Ausgang Krieau",
@@ -3251,6 +3327,43 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "24.11.2026 05:15",
+     "ausVon": "24.11.2026 01:15",
+     "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Baslergasse",
+     "rbls": [
+      4635
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Siebenhirten",
+     "status": "geplante Wartung",
+     "towards": "U6 Floridsdorf"
+    },
+    "description": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Baslergasse",
+    "elevatorId": "HT 01",
+    "name": "ftazW_481",
+    "parentName": "ftazW_481",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4635
+    ],
+    "time": {
+     "end": "2026-11-24T05:15:00.000+0100",
+     "start": "2026-11-24T01:15:00.000+0100"
+    },
+    "title": "Siebenhirten"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "23.11.2026 00:45",
      "ausVon": "22.11.2026 20:45",
      "location": "U4 beide Fahrtrichtungen - Passage",
@@ -3322,6 +3435,121 @@
      "start": "2026-11-23T20:45:00.000+0100"
     },
     "title": "Kettenbrückengasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "24.11.2026 05:15",
+     "ausVon": "24.11.2026 01:15",
+     "location": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Wehrgasse",
+     "rbls": [
+      4418
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Kettenbrückengasse",
+     "status": "geplante Wartung",
+     "towards": "U4 Hütteldorf"
+    },
+    "description": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Wehrgasse",
+    "elevatorId": "KG 02",
+    "name": "ftazW_629",
+    "parentName": "ftazW_629",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4418
+    ],
+    "time": {
+     "end": "2026-11-24T05:15:00.000+0100",
+     "start": "2026-11-24T01:15:00.000+0100"
+    },
+    "title": "Kettenbrückengasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "24.11.2026 05:15",
+     "ausVon": "24.11.2026 01:15",
+     "location": "U3 Mittelbahnsteig - Ausgang Simmeringer Hauptstraße",
+     "rbls": [
+      4936,
+      4939
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Enkplatz",
+     "status": "geplante Wartung",
+     "towards": "U3 beide Richtungen"
+    },
+    "description": "U3 Mittelbahnsteig - Ausgang Simmeringer Hauptstraße",
+    "elevatorId": "EK 01",
+    "name": "ftazW_756",
+    "parentName": "ftazW_756",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedStops": [
+     4936,
+     4939
+    ],
+    "time": {
+     "end": "2026-11-24T05:15:00.000+0100",
+     "start": "2026-11-24T01:15:00.000+0100"
+    },
+    "title": "Enkplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "24.11.2026 05:15",
+     "ausVon": "24.11.2026 01:15",
+     "location": "U2 Bahnsteig Richtung Schottentor - Ausgang Burggasse",
+     "rbls": [
+      4209
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2",
+      "U3"
+     ],
+     "station": "Volkstheater",
+     "status": "geplante Wartung",
+     "towards": "U2 Karlsplatz"
+    },
+    "description": "U2 Bahnsteig Richtung Schottentor - Ausgang Burggasse",
+    "elevatorId": "VT 01",
+    "name": "ftazW_80",
+    "parentName": "ftazW_80",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2",
+     "U3"
+    ],
+    "relatedStops": [
+     4209
+    ],
+    "time": {
+     "end": "2026-11-24T05:15:00.000+0100",
+     "start": "2026-11-24T01:15:00.000+0100"
+    },
+    "title": "Volkstheater"
    },
    {
     "alertCause": "undefined alert cause",
