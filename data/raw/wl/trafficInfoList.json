@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261020-0029, I20261121-0009, I20261121-0011, I20261121-0010, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261121-0012, I20261020-0029, I20261121-0010, I20261121-0009, I20261121-0011-F01, I20261121-0011-F02, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1875-101, R1876-101, R1880-101, R1884-101, R1883-101, R1882-101, R1881-101, R3886-480, R2380-627, R2345-127, R293-474, R2343-626, R318-437, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2359-125, R2343-125, R2378-627, R2558-125, R1974-466, R1199-205, R500-101, R3069-125, R880-125, R2376-125, R885-125, R3187-125, R2566-125, R2377-125, R3115-125, R3183-125, R3186-125, R3185-125, R3184-125, R3191-125, R3005-125, R3068-125, R3197-125, R3196-125, R3192-125, R3193-125, R2634-125, R2374-125, R2556-125, R2375-125, R3009-126, R3068-126, R3005-126, R3192-126, R3193-126, R3196-126, R3197-126, R2374-126, R2634-126, R2375-126, R3191-126, R881-126, R2558-126, R2556-126, R3115-126, R3183-126, R3186-126, R3185-126, R2376-126, R2377-126, R3069-126, R3187-126, R3184-126, R2566-126, R885-126, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R3886-480, R2345-127, R2370-125, R2371-125, R2378-627, R2343-626, R2343-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R293-474, R318-437, R2359-125, R2558-125, R1974-466, R1199-205, R500-101, R3069-125, R880-125, R885-125, R3187-125, R2377-125, R2376-125, R2566-125, R3115-125, R3183-125, R3184-125, R3185-125, R3186-125, R3068-125, R2634-125, R3191-125, R3192-125, R3193-125, R3196-125, R3197-125, R3005-125, R2375-125, R2374-125, R2556-125, R3009-126, R3005-126, R3068-126, R2634-126, R3192-126, R3193-126, R3196-126, R3197-126, R2374-126, R2375-126, R3191-126, R881-126, R2558-126, R2556-126, R3185-126, R3115-126, R3069-126, R3184-126, R3186-126, R3187-126, R2376-126, R2377-126, R3183-126, R885-126, R2566-126, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -254,7 +254,8 @@
     "status": "active",
     "time": {
      "created": "2026-11-21T11:27:00.000+0100",
-     "lastUpdate": "2026-11-21T11:27:00.000+0100",
+     "end": "2026-11-21T12:45:00.000+0100",
+     "lastUpdate": "2026-11-21T12:27:00.000+0100",
      "resume": "2026-11-21T11:26:00.000+0100",
      "start": "2026-11-21T11:26:00.000+0100"
     },
@@ -265,23 +266,22 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "25": "ptTram",
-      "26": "ptTram"
+      "25": "ptTram"
      }
     },
-    "description": "Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Kagran U beziehungsweise zwischen Hausfeldstraße und Aspern Nord.Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße und Zanggasse und weiter nach Aspern Nord.Dauer voraussichtlich bis 12:25 Uhr.Grund dafür ist ein schadhaftes Fahrzeug im Bereich Forstnergasse 7.",
-    "descriptionHTML": "<p><span style=\"color: rgba(0, 0, 0, 0.87);\">Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Kagran U beziehungsweise zwischen Hausfeldstraße und Aspern Nord.<br>Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße und Zanggasse und weiter nach Aspern Nord.<br><br>Dauer voraussichtlich bis 12:25 Uhr.<br><br>Grund dafür ist ein schadhaftes Fahrzeug im Bereich Forstnergasse 7.</span></p>",
+    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p><span style=\"color: rgba(0, 0, 0, 0.87);\">Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Kagran U beziehungsweise zwischen Hausfeldstraße und Aspern Nord.<br>Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße und Zanggasse und weiter nach Aspern Nord.<br><br>Dauer voraussichtlich bis 12:25 Uhr.<br><br>Grund dafür ist ein schadhaftes Fahrzeug im Bereich Forstnergasse 7.</span></p>",
-       "descriptionPlain": "Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Kagran U beziehungsweise zwischen Hausfeldstraße und Aspern Nord.Die Linie 26 fährt derzeit nur zwischen Hausfeldstraße und Zanggasse und weiter nach Aspern Nord.Dauer voraussichtlich bis 12:25 Uhr.Grund dafür ist ein schadhaftes Fahrzeug im Bereich Forstnergasse 7.",
-       "title": "25, 26: Schadhaftes Fahrzeug"
+       "descriptionHtml": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "25: Schadhaftes Fahrzeug"
       }
      }
     ],
     "location": "Forstnergasse 7",
-    "name": "I20261121-0011",
+    "name": "I20261121-0011-F01",
     "owner": "WL",
     "parentName": "I20261121-0011",
     "priority": "1",
@@ -289,15 +289,55 @@
     "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "25",
-     "26"
+     "25"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 125,
       "lineName": "25",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-21T12:03:00.000+0100",
+     "lastUpdate": "2026-11-21T12:03:00.000+0100",
+     "resume": "2026-11-21T12:03:00.000+0100",
+     "start": "2026-11-21T11:37:00.000+0100"
+    },
+    "title": "25: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "26": "ptTram"
+     }
+    },
+    "description": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 26: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 26: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 26: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "26: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "location": "Forstnergasse 7",
+    "name": "I20261121-0011-F02",
+    "owner": "WL",
+    "parentName": "I20261121-0011",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "26"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 126,
       "lineName": "26",
@@ -306,11 +346,57 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-21T11:39:00.000+0100",
-     "lastUpdate": "2026-11-21T11:47:00.000+0100",
+     "created": "2026-11-21T12:03:00.000+0100",
+     "lastUpdate": "2026-11-21T12:03:00.000+0100",
+     "resume": "2026-11-21T12:03:00.000+0100",
      "start": "2026-11-21T11:37:00.000+0100"
     },
-    "title": "25, 26: Schadhaftes Fahrzeug"
+    "title": "26: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "miscellaneous",
+    "alertCauseId": 137,
+    "attributes": {
+     "relatedLineTypes": {
+      "40A": "ptBusCity"
+     }
+    },
+    "description": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "descriptionHTML": "<p>Linie 40A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 40A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
+       "descriptionPlain": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+       "title": "40A: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261121-0012",
+    "owner": "WL",
+    "parentName": "I20261121-0012",
+    "priority": "1",
+    "reasonId": 14,
+    "reasonName": "Betriebsstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "40A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 440,
+      "lineName": "40A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-21T12:27:00.000+0100",
+     "lastUpdate": "2026-11-21T12:27:00.000+0100",
+     "resume": "2026-11-21T12:26:00.000+0100",
+     "start": "2026-11-21T12:26:00.000+0100"
+    },
+    "title": "40A: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1051,7 +1137,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Zanggasse",
+    "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
     "name": "R2558-125",
     "owner": "WL",
     "parentName": "R2558-125",
@@ -1066,10 +1152,10 @@
      2558
     ],
     "time": {
-     "end": "2026-11-21T12:46:00.000+0100",
+     "end": "2026-11-21T23:59:59.000+0100",
      "start": "2026-11-19T00:00:30.000+0100"
     },
-    "title": "Schadhafter Zug\nBetrieb ab Zanggasse"
+    "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
    },
    {
     "alertCause": "undefined alert cause",
