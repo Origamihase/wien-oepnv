@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20261121-0023, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261121-0024, I20260925-0011, I20261121-0023, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1880-101, R1884-101, R1883-101, R1882-101, R1876-101, R1881-101, R1875-101, R3886-480, R2370-125, R2343-125, R2343-626, R2359-125, R2378-627, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R318-437, R293-474, R2558-125, R1974-466, R1199-205, R500-101, R17-0, R47-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1884-101, R1883-101, R1882-101, R1880-101, R1876-101, R1875-101, R1881-101, R3886-480, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R318-437, R293-474, R2558-125, R1974-466, R1199-205, R500-101, R17-0, R47-0, R2188-127, R2185-127, R2184-127, R2186-127, R2183-127, R2187-127, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -217,6 +217,51 @@
      "start": "2026-11-21T16:31:00.000+0100"
     },
     "title": "U6: Verunreinigung"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "27": "ptTram"
+     }
+    },
+    "description": "Linie 27: Fahrtbehinderung in Richtung Floridsdorf S U. Voraussichtliche Dauer: 18:00 Uhr. Grund: Verkehrsunfall im Bereich Prager Straße.",
+    "descriptionHTML": "<p>Linie 27:<br>Fahrtbehinderung in Richtung Floridsdorf S U.</p><p>Voraussichtliche Dauer: 18:00 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Prager Straße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 27:<br>Fahrtbehinderung in Richtung Floridsdorf S U.</p><p>Voraussichtliche Dauer: 18:00 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Prager Straße.</p>",
+       "descriptionPlain": "Linie 27: Fahrtbehinderung in Richtung Floridsdorf S U. Voraussichtliche Dauer: 18:00 Uhr. Grund: Verkehrsunfall im Bereich Prager Straße.",
+       "title": "27: Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Prager Straße",
+    "name": "I20261121-0024",
+    "owner": "WL",
+    "parentName": "I20261121-0024",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 127,
+      "lineName": "27",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-21T17:28:00.000+0100",
+     "lastUpdate": "2026-11-21T17:28:00.000+0100",
+     "start": "2026-11-21T17:26:00.000+0100"
+    },
+    "title": "27: Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -444,6 +489,144 @@
      "start": "2026-11-21T04:40:04.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R2183-127",
+    "owner": "WL",
+    "parentName": "R2183-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2183
+    ],
+    "time": {
+     "end": "2026-11-21T18:28:00.000+0100",
+     "start": "2026-11-21T17:29:21.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R2184-127",
+    "owner": "WL",
+    "parentName": "R2184-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2184
+    ],
+    "time": {
+     "end": "2026-11-21T18:28:00.000+0100",
+     "start": "2026-11-21T17:29:21.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R2185-127",
+    "owner": "WL",
+    "parentName": "R2185-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2185
+    ],
+    "time": {
+     "end": "2026-11-21T18:28:00.000+0100",
+     "start": "2026-11-21T17:29:21.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R2186-127",
+    "owner": "WL",
+    "parentName": "R2186-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2186
+    ],
+    "time": {
+     "end": "2026-11-21T18:28:00.000+0100",
+     "start": "2026-11-21T17:29:21.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R2187-127",
+    "owner": "WL",
+    "parentName": "R2187-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2187
+    ],
+    "time": {
+     "end": "2026-11-21T18:28:00.000+0100",
+     "start": "2026-11-21T17:29:21.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R2188-127",
+    "owner": "WL",
+    "parentName": "R2188-127",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "27"
+    ],
+    "relatedStops": [
+     2188
+    ],
+    "time": {
+     "end": "2026-11-21T18:28:00.000+0100",
+     "start": "2026-11-21T17:29:21.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",

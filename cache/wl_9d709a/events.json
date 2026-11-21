@@ -890,6 +890,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "27: Verkehrsunfall",
+    "description": "Linie 27: Fahrtbehinderung in Richtung Floridsdorf S U. Voraussichtliche Dauer: 18:00 Uhr. Grund: Verkehrsunfall im Bereich Prager Straße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "2944c0ef3d90e6a01626e659ff945114566768f92f2cfcb4aacd173962aa18ee",
+    "pubDate": "2026-11-21T17:26:00+01:00",
+    "starts_at": "2026-11-21T17:26:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=27|D=2026-11-21|TK=27 verkehrsunfall",
+    "_wl_ids": [
+      "I20261121-0024"
+    ],
+    "_incident_start": "2026-11-21T17:26:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
