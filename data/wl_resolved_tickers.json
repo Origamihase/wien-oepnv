@@ -2,5 +2,54 @@
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
- "owners": {}
+ "owners": {
+  "R1411-448|2026-11-22T00:09:57.000+0100": {
+   "incident": "I20261122-0001",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  },
+  "R1413-448|2026-11-22T00:09:57.000+0100": {
+   "incident": "I20261122-0001",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  },
+  "R1429-448|2026-11-22T00:09:57.000+0100": {
+   "incident": "I20261122-0001",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  },
+  "R1431-448|2026-11-22T00:09:57.000+0100": {
+   "incident": "I20261122-0001",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  },
+  "R1432-448|2026-11-22T00:09:57.000+0100": {
+   "incident": "I20261122-0001",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  },
+  "R1527-448|2026-11-22T00:10:00.000+0100": {
+   "incident": "I20261122-0001",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  },
+  "R1528-448|2026-11-22T00:10:00.000+0100": {
+   "incident": "I20261122-0001",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  },
+  "R1530-448|2026-11-22T00:10:00.000+0100": {
+   "incident": "I20261122-0001",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  },
+  "R565-448|2026-11-22T00:10:02.000+0100": {
+   "incident": "I20261122-0001",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  },
+  "R584-448|2026-11-22T00:10:02.000+0100": {
+   "incident": "I20261122-0001",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  },
+  "R585-448|2026-11-22T00:10:02.000+0100": {
+   "incident": "I20261122-0001",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  },
+  "R897-448|2026-11-22T00:09:59.000+0100": {
+   "incident": "I20261122-0001",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  }
+ }
 }
