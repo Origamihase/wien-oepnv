@@ -3,6 +3,30 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
+  "R199-137|2026-11-21T17:57:51.000+0100": {
+   "incident": "I20261121-0026",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R201-137|2026-11-21T17:58:51.000+0100": {
+   "incident": "I20261121-0026",
+   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße >"
+  },
+  "R203-137|2026-11-21T17:58:51.000+0100": {
+   "incident": "I20261121-0026",
+   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße >"
+  },
+  "R207-137|2026-11-21T17:58:51.000+0100": {
+   "incident": "I20261121-0026",
+   "title": "Schadhafter Zug\nBetrieb ab Nußdorfer Straße >"
+  },
+  "R216-137|2026-11-21T17:59:21.000+0100": {
+   "incident": "I20261121-0026",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R2173-127|2026-11-21T17:35:23.000+0100": {
+   "incident": "I20261121-0024",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
   "R2183-127|2026-11-21T17:29:21.000+0100": {
    "incident": "I20261121-0024",
    "title": "Fahrtbehinderung\nVerkehrsunfall"
@@ -26,6 +50,34 @@
   "R2188-127|2026-11-21T17:29:21.000+0100": {
    "incident": "I20261121-0024",
    "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
+  "R231-143|2026-11-21T17:52:50.000+0100": {
+   "incident": "I20261121-0025",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  },
+  "R232-143|2026-11-21T17:52:50.000+0100": {
+   "incident": "I20261121-0025",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  },
+  "R233-143|2026-11-21T17:52:50.000+0100": {
+   "incident": "I20261121-0025",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  },
+  "R234-143|2026-11-21T17:52:50.000+0100": {
+   "incident": "I20261121-0025",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  },
+  "R235-143|2026-11-21T17:52:50.000+0100": {
+   "incident": "I20261121-0025",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  },
+  "R236-143|2026-11-21T17:52:50.000+0100": {
+   "incident": "I20261121-0025",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  },
+  "R237-143|2026-11-21T17:52:50.000+0100": {
+   "incident": "I20261121-0025",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
   }
  }
 }
