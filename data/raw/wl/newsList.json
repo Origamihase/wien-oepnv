@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_576, ftazW_1354336, ftazW_1353812, ftazW_1353813, ftazW_1351086"
+    "trafficInfoNameList": "ftazW_576, ftazW_1354336, ftazW_1353812, ftazW_1353813, ftazW_1351086, ftazW_85, ftazW_628, ftazW_1016544, ftazW_1018064, ftazW_480"
    }
   ],
   "poiCategoryGroups": [
@@ -2980,6 +2980,82 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "24.11.2026 00:45",
+     "ausVon": "23.11.2026 20:45",
+     "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Preindlsteig",
+     "rbls": [
+      4403
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Ober St.Veit",
+     "status": "geplante Wartung",
+     "towards": "U4 Heiligenstadt"
+    },
+    "description": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Preindlsteig",
+    "elevatorId": "OV 01",
+    "name": "ftazW_1016544",
+    "parentName": "ftazW_1016544",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4403
+    ],
+    "time": {
+     "end": "2026-11-24T00:45:00.000+0100",
+     "start": "2026-11-23T20:45:00.000+0100"
+    },
+    "title": "Ober St.Veit"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "24.11.2026 00:45",
+     "ausVon": "23.11.2026 20:45",
+     "location": "U2 Mittelbahnsteig - Ausgang Krieau",
+     "rbls": [
+      4258,
+      4265
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Krieau",
+     "status": "geplante Wartung",
+     "towards": "U2 beide Richtungen"
+    },
+    "description": "U2 Mittelbahnsteig - Ausgang Krieau",
+    "elevatorId": "KI 02",
+    "name": "ftazW_1018064",
+    "parentName": "ftazW_1018064",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4258,
+     4265
+    ],
+    "time": {
+     "end": "2026-11-24T00:45:00.000+0100",
+     "start": "2026-11-23T20:45:00.000+0100"
+    },
+    "title": "Krieau"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "23.11.2026 05:15",
      "ausVon": "23.11.2026 01:15",
      "location": "Fahrtrichtung 60  Rodaun - Ausgang Breitenfurter Straße",
@@ -3138,6 +3214,43 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "24.11.2026 00:45",
+     "ausVon": "23.11.2026 20:45",
+     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Baslergasse",
+     "rbls": [
+      4634
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Siebenhirten",
+     "status": "geplante Wartung",
+     "towards": "U6 Siebenhirten"
+    },
+    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Baslergasse",
+    "elevatorId": "HT 02",
+    "name": "ftazW_480",
+    "parentName": "ftazW_480",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4634
+    ],
+    "time": {
+     "end": "2026-11-24T00:45:00.000+0100",
+     "start": "2026-11-23T20:45:00.000+0100"
+    },
+    "title": "Siebenhirten"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "23.11.2026 00:45",
      "ausVon": "22.11.2026 20:45",
      "location": "U4 beide Fahrtrichtungen - Passage",
@@ -3172,6 +3285,77 @@
      "start": "2026-11-22T20:45:00.000+0100"
     },
     "title": "Hütteldorf"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "24.11.2026 00:45",
+     "ausVon": "23.11.2026 20:45",
+     "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Wehrgasse",
+     "rbls": [
+      4419
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Kettenbrückengasse",
+     "status": "geplante Wartung",
+     "towards": "U4 Heiligenstadt"
+    },
+    "description": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Wehrgasse",
+    "elevatorId": "KG 01",
+    "name": "ftazW_628",
+    "parentName": "ftazW_628",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4419
+    ],
+    "time": {
+     "end": "2026-11-24T00:45:00.000+0100",
+     "start": "2026-11-23T20:45:00.000+0100"
+    },
+    "title": "Kettenbrückengasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "24.11.2026 00:45",
+     "ausVon": "23.11.2026 20:45",
+     "location": "Zwischengeschoss - Ausgang Volksgarten",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U2",
+      "U3"
+     ],
+     "station": "Volkstheater",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Zwischengeschoss - Ausgang Volksgarten",
+    "elevatorId": "VT 06",
+    "name": "ftazW_85",
+    "parentName": "ftazW_85",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2",
+     "U3"
+    ],
+    "time": {
+     "end": "2026-11-24T00:45:00.000+0100",
+     "start": "2026-11-23T20:45:00.000+0100"
+    },
+    "title": "Volkstheater"
    }
   ]
  },

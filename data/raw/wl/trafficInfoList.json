@@ -13,7 +13,7 @@
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1875-101, R1876-101, R3886-480, R2359-125, R2371-125, R2372-125, R2373-125, R2343-626, R2370-125, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R293-474, R318-437, R2378-627, R2343-125, R2558-125, R1974-466, R1617-160, R1620-160, R1619-160, R1618-160, R1606-160, R1625-160, R1607-160, R1632-160, R1631-160, R1629-160, R1630-160, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1876-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R3886-480, R2379-627, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2380-627, R2345-127, R318-437, R293-474, R2558-125, R1620-160, R1619-160, R1617-160, R1618-160, R1606-160, R1607-160, R1625-160, R1630-160, R1632-160, R1631-160, R1629-160, R500-101, R15-0, R1718-508, R1749-508, R407-506, R402-506, R1974-566, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -212,8 +212,8 @@
     "status": "active",
     "time": {
      "created": "2026-11-20T23:39:00.000+0100",
-     "end": "2026-11-21T23:59:00.000+0100",
-     "lastUpdate": "2026-11-20T23:39:00.000+0100",
+     "end": "2026-11-21T10:00:00.000+0100",
+     "lastUpdate": "2026-11-21T00:52:00.000+0100",
      "start": "2026-11-20T23:38:00.000+0100"
     },
     "title": "99B: Verkehrsunfall"
@@ -258,10 +258,31 @@
     "status": "active",
     "time": {
      "created": "2026-11-21T00:12:00.000+0100",
-     "lastUpdate": "2026-11-21T00:12:00.000+0100",
+     "end": "2026-11-21T01:28:00.000+0100",
+     "lastUpdate": "2026-11-21T00:53:00.000+0100",
      "start": "2026-11-21T00:08:00.000+0100"
     },
     "title": "60: Gleisschaden"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nZüge halten nach Bellariastraße",
+    "name": "R15-0",
+    "owner": "WL",
+    "parentName": "R15-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     15
+    ],
+    "time": {
+     "end": "2026-11-21T01:40:00.000+0100",
+     "start": "2026-11-21T00:40:51.000+0100"
+    },
+    "title": "Rettungseinsatz\nZüge halten nach Bellariastraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -519,6 +540,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A",
+    "name": "R1718-508",
+    "owner": "WL",
+    "parentName": "R1718-508",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N8"
+    ],
+    "relatedStops": [
+     1718
+    ],
+    "time": {
+     "end": "2026-11-21T04:45:00.000+0100",
+     "start": "2026-11-21T00:45:24.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
+    "name": "R1749-508",
+    "owner": "WL",
+    "parentName": "R1749-508",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N8"
+    ],
+    "relatedStops": [
+     1749
+    ],
+    "time": {
+     "end": "2026-11-21T05:15:00.000+0100",
+     "start": "2026-11-21T00:45:24.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nKein Betrieb",
     "name": "R1875-101",
     "owner": "WL",
@@ -681,22 +748,22 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
-    "name": "R1974-466",
+    "name": "R1974-566",
     "owner": "WL",
-    "parentName": "R1974-466",
+    "parentName": "R1974-566",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "66A"
+     "N66"
     ],
     "relatedStops": [
      1974
     ],
     "time": {
-     "end": "2026-11-21T01:00:00.000+0100",
-     "start": "2026-11-20T04:40:24.000+0100"
+     "end": "2026-11-21T04:20:00.000+0100",
+     "start": "2026-11-21T01:00:25.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
    },
@@ -1113,6 +1180,52 @@
      "start": "2026-11-17T00:00:05.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 ",
+    "name": "R402-506",
+    "owner": "WL",
+    "parentName": "R402-506",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N6"
+    ],
+    "relatedStops": [
+     402
+    ],
+    "time": {
+     "end": "2026-11-21T05:05:00.000+0100",
+     "start": "2026-11-21T00:55:23.000+0100"
+    },
+    "title": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
+    "name": "R407-506",
+    "owner": "WL",
+    "parentName": "R407-506",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N6"
+    ],
+    "relatedStops": [
+     407
+    ],
+    "time": {
+     "end": "2026-11-21T05:04:00.000+0100",
+     "start": "2026-11-21T00:54:23.000+0100"
+    },
+    "title": "Bauarbeiten\nBusse halten Quellenstraße 189"
    },
    {
     "alertCause": "undefined alert cause",
