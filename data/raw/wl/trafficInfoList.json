@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261121-0022-F01, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20261121-0023, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
@@ -171,52 +171,52 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
+    "alertCause": "vandalism",
+    "alertCauseId": 16,
     "attributes": {
      "relatedLineTypes": {
-      "U2": "ptMetro"
+      "U6": "ptMetro"
      }
     },
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U2: Rettungseinsatz"
+       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verunreinigung.</p>",
+       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
+       "title": "U6: Verunreinigung"
       }
      }
     ],
-    "name": "I20261121-0022-F01",
+    "name": "I20261121-0023",
     "owner": "WL",
-    "parentName": "I20261121-0022",
+    "parentName": "I20261121-0023",
     "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
+    "reasonId": 36,
+    "reasonName": "Verunreinigung",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "U2"
+     "U6"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 302,
-      "lineName": "U2",
+      "lineId": 306,
+      "lineName": "U6",
       "vehicleType": "ptMetro"
      }
     ],
     "relatedStops": [
-     4253
+     4624
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-21T15:53:00.000+0100",
-     "lastUpdate": "2026-11-21T15:53:00.000+0100",
-     "resume": "2026-11-21T15:53:00.000+0100",
-     "start": "2026-11-21T15:41:00.000+0100"
+     "created": "2026-11-21T16:32:00.000+0100",
+     "lastUpdate": "2026-11-21T16:32:00.000+0100",
+     "resume": "2026-11-21T16:31:00.000+0100",
+     "start": "2026-11-21T16:31:00.000+0100"
     },
-    "title": "U2: Rettungseinsatz"
+    "title": "U6: Verunreinigung"
    },
    {
     "alertCause": "undefined alert cause",

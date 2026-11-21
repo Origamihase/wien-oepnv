@@ -950,18 +950,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Rettungseinsatz",
-    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "U6: Verunreinigung",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verunreinigung.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "710505622c191dd881fdb7b5bda306d0a7b1363735d0a4e3cc6fa215a3b74ec8",
-    "pubDate": "2026-11-21T15:41:00+01:00",
-    "starts_at": "2026-11-21T15:41:00+01:00",
+    "guid": "915e18ead502dc8610d1f4cabb6ce6d6bdc2826f1da93bdee9f3fb85f4d65515",
+    "pubDate": "2026-11-21T16:31:00+01:00",
+    "starts_at": "2026-11-21T16:31:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=U2|D=2026-11-21|TK=rettungseinsatz",
+    "_identity": "wl|störung|L=U6|D=2026-11-21|TK=u6 verunreinigung",
     "_wl_ids": [
-      "I20261121-0022"
+      "I20261121-0023"
     ],
-    "_incident_start": "2026-11-21T15:41:00+01:00"
+    "_incident_start": "2026-11-21T16:31:00+01:00"
   },
   {
     "source": "Wiener Linien",
