@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261121-0001, I20261020-0029, I20261120-0050, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261020-0029, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R3886-480, R293-474, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R318-437, R2558-125, R1618-160, R1617-160, R1620-160, R1619-160, R1606-160, R1625-160, R1607-160, R1630-160, R1631-160, R1632-160, R1629-160, R500-101, R15-0, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R2371-520, R2372-520, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R3886-480, R2379-627, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2380-627, R2345-127, R318-437, R293-474, R2558-125, R1617-160, R1620-160, R1619-160, R1618-160, R1606-160, R1607-160, R1625-160, R1629-160, R1630-160, R1631-160, R1632-160, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R2371-520, R2372-520, R2378-520, R2379-520, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -169,121 +169,6 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "99B": "ptBusCity"
-     }
-    },
-    "description": "Derzeit ist ein Betrieb der Linie 99B nicht möglich. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Verkehrsunfall im Haltestellenbereich Niklas-Eslarn-Straße.",
-    "descriptionHTML": "<p>Derzeit ist ein Betrieb der Linie 99B nicht möglich.</p><p>Voraussichtliche Dauer: Bis Betriebsschluss.</p><p>Grund: Verkehrsunfall im Haltestellenbereich Niklas-Eslarn-Straße.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Derzeit ist ein Betrieb der Linie 99B nicht möglich.</p><p>Voraussichtliche Dauer: Bis Betriebsschluss.</p><p>Grund: Verkehrsunfall im Haltestellenbereich Niklas-Eslarn-Straße.</p>",
-       "descriptionPlain": "Derzeit ist ein Betrieb der Linie 99B nicht möglich. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Verkehrsunfall im Haltestellenbereich Niklas-Eslarn-Straße.",
-       "title": "99B: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261120-0050",
-    "owner": "WL",
-    "parentName": "I20261120-0050",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "99B"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 299,
-      "lineName": "99B",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "relatedStops": [
-     8027
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-20T23:39:00.000+0100",
-     "end": "2026-11-21T10:00:00.000+0100",
-     "lastUpdate": "2026-11-21T00:52:00.000+0100",
-     "start": "2026-11-20T23:38:00.000+0100"
-    },
-    "title": "99B: Verkehrsunfall"
-   },
-   {
-    "alertCause": "roadway damage",
-    "alertCauseId": 67,
-    "attributes": {
-     "relatedLineTypes": {
-      "60": "ptTram"
-     }
-    },
-    "description": "Linie 60: Betrieb nur zwischen Westbahnhof S U und Speising, Hermesstraße. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Gleisschaden im Bereich Sillerplatz.",
-    "descriptionHTML": "<p>Linie 60:<br>Betrieb nur zwischen Westbahnhof S U und Speising, Hermesstraße.</p><p>Voraussichtliche Dauer: Bis Betriebsschluss.</p><p>Grund: Gleisschaden im Bereich Sillerplatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 60:<br>Betrieb nur zwischen Westbahnhof S U und Speising, Hermesstraße.</p><p>Voraussichtliche Dauer: Bis Betriebsschluss.</p><p>Grund: Gleisschaden im Bereich Sillerplatz.</p>",
-       "descriptionPlain": "Linie 60: Betrieb nur zwischen Westbahnhof S U und Speising, Hermesstraße. Voraussichtliche Dauer: Bis Betriebsschluss. Grund: Gleisschaden im Bereich Sillerplatz.",
-       "title": "60: Gleisschaden"
-      }
-     }
-    ],
-    "location": "Sillerplatz",
-    "name": "I20261121-0001",
-    "owner": "WL",
-    "parentName": "I20261121-0001",
-    "priority": "1",
-    "reasonId": 28,
-    "reasonName": "Gleisschaden",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 160,
-      "lineName": "60",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-21T00:12:00.000+0100",
-     "end": "2026-11-21T01:28:00.000+0100",
-     "lastUpdate": "2026-11-21T01:28:00.000+0100",
-     "resume": "2026-11-21T01:28:00.000+0100",
-     "start": "2026-11-21T00:08:00.000+0100"
-    },
-    "title": "60: Gleisschaden"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Rettungseinsatz\nZüge halten nach Bellariastraße",
-    "name": "R15-0",
-    "owner": "WL",
-    "parentName": "R15-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     15
-    ],
-    "time": {
-     "end": "2026-11-21T01:40:00.000+0100",
-     "start": "2026-11-21T00:40:51.000+0100"
-    },
-    "title": "Rettungseinsatz\nZüge halten nach Bellariastraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1047,6 +932,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3",
+    "name": "R2378-520",
+    "owner": "WL",
+    "parentName": "R2378-520",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N20"
+    ],
+    "relatedStops": [
+     2378
+    ],
+    "time": {
+     "end": "2026-11-21T04:35:00.000+0100",
+     "start": "2026-11-21T01:30:29.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Busse halten\nSatzingerweg 41",
     "name": "R2378-627",
     "owner": "WL",
@@ -1066,6 +974,29 @@
      "start": "2026-11-19T00:00:28.000+0100"
     },
     "title": "Busse halten\nSatzingerweg 41"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3",
+    "name": "R2379-520",
+    "owner": "WL",
+    "parentName": "R2379-520",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N20"
+    ],
+    "relatedStops": [
+     2379
+    ],
+    "time": {
+     "end": "2026-11-21T04:35:00.000+0100",
+     "start": "2026-11-21T01:30:29.000+0100"
+    },
+    "title": "Gleisbauarbeiten\nBusse halten Bessemerstraße 1-3"
    },
    {
     "alertCause": "undefined alert cause",
