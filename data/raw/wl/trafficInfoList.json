@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261121-0036-F01, I20260925-0011, I20260909-0007, I20261121-0029-F01, I20261020-0029, I20261121-0031-F01, I20261121-0034, I20261121-0032-F01, I20261121-0035-F01"
+    "trafficInfoNameList": "I20261121-0036-F01, I20260925-0011, I20260909-0007, I20261121-0029-F01, I20261020-0029, I20261121-0031-F01, I20261121-0034, I20261121-0035-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1880-101, R1884-101, R1883-101, R1882-101, R1876-101, R1881-101, R1875-101, R3886-480, R2370-125, R2343-125, R2343-626, R2359-125, R2378-627, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R318-437, R293-474, R2558-125, R1974-466, R1199-205, R500-101, R17-0, R47-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1880-101, R1884-101, R1883-101, R1882-101, R1876-101, R1881-101, R1875-101, R3886-480, R2370-125, R2343-125, R2343-626, R2359-125, R2378-627, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R318-437, R293-474, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -263,52 +263,6 @@
      "start": "2026-11-21T18:54:00.000+0100"
     },
     "title": "U6: Schadhaftes Fahrzeug"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "7A": "ptBusCity"
-     }
-    },
-    "description": "Linie 7A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 7A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 7A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 7A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "7A: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Davidgasse / Herzgasse",
-    "name": "I20261121-0032-F01",
-    "owner": "WL",
-    "parentName": "I20261121-0032",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "7A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 407,
-      "lineName": "7A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-21T19:48:00.000+0100",
-     "lastUpdate": "2026-11-21T19:48:00.000+0100",
-     "resume": "2026-11-21T19:48:00.000+0100",
-     "start": "2026-11-21T19:08:00.000+0100"
-    },
-    "title": "7A: Verkehrsunfall"
    },
    {
     "alertCause": "defective vehicle",
