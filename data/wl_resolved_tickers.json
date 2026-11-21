@@ -2,46 +2,5 @@
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
- "owners": {
-  "R1006-125|2026-11-21T13:37:56.000+0100": {
-   "incident": "I20261121-0016",
-   "title": "Verkehrsunfall\nBetrieb ab Stadlau, SMZ Ost"
-  },
-  "R1007-125|2026-11-21T13:37:56.000+0100": {
-   "incident": "I20261121-0016",
-   "title": "Verkehrsunfall\nBetrieb ab Stadlau, SMZ Ost"
-  },
-  "R1008-125|2026-11-21T13:37:56.000+0100": {
-   "incident": "I20261121-0016",
-   "title": "Verkehrsunfall\nBetrieb ab Stadlau, SMZ Ost"
-  },
-  "R1010-125|2026-11-21T13:35:26.000+0100": {
-   "incident": "I20261121-0016",
-   "title": "Verkehrsunfall\nBetrieb ab Stadlau, SMZ Ost"
-  },
-  "R1011-125|2026-11-21T13:35:26.000+0100": {
-   "incident": "I20261121-0016",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R1012-125|2026-11-21T13:38:26.000+0100": {
-   "incident": "I20261121-0016",
-   "title": "Verkehrsunfall\nBetrieb ab Kagran"
-  },
-  "R1015-125|2026-11-21T13:38:26.000+0100": {
-   "incident": "I20261121-0016",
-   "title": "Verkehrsunfall\nBetrieb ab Kagran"
-  },
-  "R1021-125|2026-11-21T13:38:26.000+0100": {
-   "incident": "I20261121-0016",
-   "title": "Verkehrsunfall\nBetrieb ab Kagran"
-  },
-  "R880-125|2026-11-21T13:47:58.000+0100": {
-   "incident": "I20261121-0016",
-   "title": "Verkehrsunfall\nBetrieb ab Stadlau, SMZ Ost"
-  },
-  "R966-125|2026-11-21T13:38:26.000+0100": {
-   "incident": "I20261121-0016",
-   "title": "Verkehrsunfall\nBetrieb ab Kagran"
-  }
- }
+ "owners": {}
 }
