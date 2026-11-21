@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261121-0017, I20261020-0029, I20261121-0014, I20261121-0016, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261020-0029, I20261121-0016-F01, I20261121-0014, I20261121-0017-F01, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1881-101, R1880-101, R1882-101, R1884-101, R1883-101, R1875-101, R1876-101, R3886-480, R2379-627, R2380-627, R2345-127, R2343-626, R293-474, R318-437, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2378-627, R2343-125, R2359-125, R2558-125, R1974-466, R1199-205, R500-101, R3375-149, R3376-149, R1462-149, R1011-125, R1010-125, R1007-125, R1006-125, R1008-125, R1015-125, R1012-125, R966-125, R1021-125, R880-125, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1876-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R3886-480, R2345-127, R293-474, R318-437, R2343-626, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2343-125, R2359-125, R2378-627, R2558-125, R1974-466, R1199-205, R500-101, R1011-125, R1010-125, R1008-125, R1007-125, R1006-125, R1012-125, R966-125, R1021-125, R1015-125, R880-125, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -225,19 +225,19 @@
       "25": "ptTram"
      }
     },
-    "description": "Linie 25: Kein Betrieb zwischen Kagran U und Donauspital U. Voraussichtliche Dauer: 14:15 Uhr. Grund: Verkehrsunfall im Bereich Langobardenstraße.",
-    "descriptionHTML": "<p>Linie 25:<br>Kein Betrieb zwischen Kagran U und Donauspital U.</p><p>Voraussichtliche Dauer: 14:15 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Langobardenstraße.</p>",
+    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 25:<br>Kein Betrieb zwischen Kagran U und Donauspital U.</p><p>Voraussichtliche Dauer: 14:15 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Langobardenstraße.</p>",
-       "descriptionPlain": "Linie 25: Kein Betrieb zwischen Kagran U und Donauspital U. Voraussichtliche Dauer: 14:15 Uhr. Grund: Verkehrsunfall im Bereich Langobardenstraße.",
+       "descriptionHtml": "<p>Linie 25: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "25: Verkehrsunfall"
       }
      }
     ],
     "location": "Langobardenstraße",
-    "name": "I20261121-0016",
+    "name": "I20261121-0016-F01",
     "owner": "WL",
     "parentName": "I20261121-0016",
     "priority": "1",
@@ -256,8 +256,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-21T13:33:00.000+0100",
-     "lastUpdate": "2026-11-21T13:36:00.000+0100",
+     "created": "2026-11-21T14:07:00.000+0100",
+     "lastUpdate": "2026-11-21T14:07:00.000+0100",
+     "resume": "2026-11-21T14:07:00.000+0100",
      "start": "2026-11-21T13:32:00.000+0100"
     },
     "title": "25: Verkehrsunfall"
@@ -270,18 +271,18 @@
       "U4": "ptMetro"
      }
     },
-    "description": "Die Linie U4 fährt derzeit zwischen den Stationen Pilgramgasse und Kettenbrückengasse in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig. Voraussichtliche Dauer: 14:30 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Pilgramgasse.",
-    "descriptionHTML": "<p>Die Linie U4 fährt derzeit zwischen den Stationen Pilgramgasse und Kettenbrückengasse in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 14:30 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Pilgramgasse.</p>",
+    "description": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Die Linie U4 fährt derzeit zwischen den Stationen Pilgramgasse und Kettenbrückengasse in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 14:30 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Pilgramgasse.</p>",
-       "descriptionPlain": "Die Linie U4 fährt derzeit zwischen den Stationen Pilgramgasse und Kettenbrückengasse in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig. Voraussichtliche Dauer: 14:30 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Pilgramgasse.",
+       "descriptionHtml": "<p>Linie U4: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U4: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "U4: Polizeieinsatz"
       }
      }
     ],
-    "name": "I20261121-0017",
+    "name": "I20261121-0017-F01",
     "owner": "WL",
     "parentName": "I20261121-0017",
     "priority": "1",
@@ -303,8 +304,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-21T13:57:00.000+0100",
-     "lastUpdate": "2026-11-21T13:57:00.000+0100",
+     "created": "2026-11-21T14:07:00.000+0100",
+     "lastUpdate": "2026-11-21T14:07:00.000+0100",
+     "resume": "2026-11-21T14:07:00.000+0100",
      "start": "2026-11-21T13:53:00.000+0100"
     },
     "title": "U4: Polizeieinsatz"
@@ -515,29 +517,6 @@
      "start": "2026-11-21T04:45:04.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1462-149",
-    "owner": "WL",
-    "parentName": "R1462-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     1462
-    ],
-    "time": {
-     "end": "2026-11-21T14:30:00.000+0100",
-     "start": "2026-11-21T13:31:25.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1090,52 +1069,6 @@
      "start": "2026-11-19T00:00:28.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R3375-149",
-    "owner": "WL",
-    "parentName": "R3375-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     3375
-    ],
-    "time": {
-     "end": "2026-11-21T14:26:00.000+0100",
-     "start": "2026-11-21T13:27:28.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R3376-149",
-    "owner": "WL",
-    "parentName": "R3376-149",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "49"
-    ],
-    "relatedStops": [
-     3376
-    ],
-    "time": {
-     "end": "2026-11-21T14:30:00.000+0100",
-     "start": "2026-11-21T13:30:58.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
