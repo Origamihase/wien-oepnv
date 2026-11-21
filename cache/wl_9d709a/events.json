@@ -662,6 +662,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11A: Rettungseinsatz",
+    "description": "Linie 11A: Unregelmäßige Intervalle in Richtung Bahnhof Heiligenstadt S U. Voraussichtliche Dauer: 13:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Leystraße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "42fd134123a418e9ad9efe9206b8aec78f4828e1289887cd32b9a179ab2ed7cd",
+    "pubDate": "2026-11-21T13:17:00+01:00",
+    "starts_at": "2026-11-21T13:17:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=11A|D=2026-11-21|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261121-0014"
+    ],
+    "_incident_start": "2026-11-21T13:17:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -934,18 +950,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "40A: Verspätungen",
-    "description": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "title": "49: Verkehrsunfall",
+    "description": "Linie 49: Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse. Voraussichtliche Dauer: 13:55 Uhr. Grund: Verkehrsunfall im Bereich Linzer Straße 378.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "11aa33c68f3b235c869f74bc1c41192a0d48a3b681bedab9ef96a1e7b5d4a0d8",
-    "pubDate": "2026-11-21T12:26:00+01:00",
-    "starts_at": "2026-11-21T12:26:00+01:00",
+    "guid": "404f3551d0efb1f503b6da3f9dea1315ba797797becc9ded87406bb28d1acc34",
+    "pubDate": "2026-11-21T13:25:00+01:00",
+    "starts_at": "2026-11-21T13:25:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=40A|D=2026-11-21|TK=40a verspätungen",
+    "_identity": "wl|störung|L=49|D=2026-11-21|TK=49 verkehrsunfall",
     "_wl_ids": [
-      "I20261121-0012"
+      "I20261121-0015"
     ],
-    "_incident_start": "2026-11-21T12:26:00+01:00"
+    "_incident_start": "2026-11-21T13:25:00+01:00"
   },
   {
     "source": "Wiener Linien",

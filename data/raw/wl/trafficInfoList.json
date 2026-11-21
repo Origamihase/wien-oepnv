@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261121-0012, I20261121-0013-F01, I20261020-0029, I20261121-0009, I20261121-0011-F01, I20261121-0011-F02, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261121-0013-F01, I20261020-0029, I20261121-0014, I20261121-0009, I20261121-0015, I20261121-0011-F01, I20261121-0011-F02, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1881-101, R1884-101, R1883-101, R1882-101, R1875-101, R1876-101, R1880-101, R3886-480, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2359-125, R2370-125, R2343-125, R2343-626, R2371-125, R2378-627, R293-474, R318-437, R2558-125, R1974-466, R1199-205, R500-101, R102-136, R50-136, R49-136, R46-136, R45-136, R130-136, R103-136, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R3886-480, R293-474, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R318-437, R2370-125, R2371-125, R2558-125, R1974-466, R1199-205, R500-101, R45-136, R103-136, R102-136, R130-136, R50-136, R49-136, R46-136, R3375-149, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -308,51 +308,6 @@
     "title": "26: Schadhaftes Fahrzeug"
    },
    {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
-    "attributes": {
-     "relatedLineTypes": {
-      "40A": "ptBusCity"
-     }
-    },
-    "description": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "descriptionHTML": "<p>Linie 40A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 40A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-       "descriptionPlain": "Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-       "title": "40A: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261121-0012",
-    "owner": "WL",
-    "parentName": "I20261121-0012",
-    "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "40A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 440,
-      "lineName": "40A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-21T12:27:00.000+0100",
-     "lastUpdate": "2026-11-21T12:27:00.000+0100",
-     "resume": "2026-11-21T12:26:00.000+0100",
-     "start": "2026-11-21T12:26:00.000+0100"
-    },
-    "title": "40A: Verspätungen"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -399,6 +354,98 @@
      "start": "2026-11-21T12:47:00.000+0100"
     },
     "title": "D: Schadhafter PKW"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "11A": "ptBusCity"
+     }
+    },
+    "description": "Linie 11A: Unregelmäßige Intervalle in Richtung Bahnhof Heiligenstadt S U. Voraussichtliche Dauer: 13:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Leystraße.",
+    "descriptionHTML": "<p>Linie 11A:<br>Unregelmäßige Intervalle in Richtung Bahnhof Heiligenstadt S U.</p><p>Voraussichtliche Dauer: 13:50 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Leystraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 11A:<br>Unregelmäßige Intervalle in Richtung Bahnhof Heiligenstadt S U.</p><p>Voraussichtliche Dauer: 13:50 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Leystraße.</p>",
+       "descriptionPlain": "Linie 11A: Unregelmäßige Intervalle in Richtung Bahnhof Heiligenstadt S U. Voraussichtliche Dauer: 13:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Leystraße.",
+       "title": "11A: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261121-0014",
+    "owner": "WL",
+    "parentName": "I20261121-0014",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 411,
+      "lineName": "11A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "relatedStops": [
+     626
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-21T13:18:00.000+0100",
+     "lastUpdate": "2026-11-21T13:18:00.000+0100",
+     "start": "2026-11-21T13:17:00.000+0100"
+    },
+    "title": "11A: Rettungseinsatz"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "49": "ptTram"
+     }
+    },
+    "description": "Linie 49: Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse. Voraussichtliche Dauer: 13:55 Uhr. Grund: Verkehrsunfall im Bereich Linzer Straße 378.",
+    "descriptionHTML": "<p>Linie 49:<br>Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse.</p><p>Voraussichtliche Dauer: 13:55 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Linzer Straße 378.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 49:<br>Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse.</p><p>Voraussichtliche Dauer: 13:55 Uhr.</p><p>Grund: Verkehrsunfall im Bereich Linzer Straße 378.</p>",
+       "descriptionPlain": "Linie 49: Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse. Voraussichtliche Dauer: 13:55 Uhr. Grund: Verkehrsunfall im Bereich Linzer Straße 378.",
+       "title": "49: Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Linzer Straße 378",
+    "name": "I20261121-0015",
+    "owner": "WL",
+    "parentName": "I20261121-0015",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 149,
+      "lineName": "49",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-21T13:26:00.000+0100",
+     "lastUpdate": "2026-11-21T13:26:00.000+0100",
+     "start": "2026-11-21T13:25:00.000+0100"
+    },
+    "title": "49: Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1043,6 +1090,29 @@
      "start": "2026-11-19T00:00:28.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R3375-149",
+    "owner": "WL",
+    "parentName": "R3375-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     3375
+    ],
+    "time": {
+     "end": "2026-11-21T14:26:00.000+0100",
+     "start": "2026-11-21T13:27:28.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",

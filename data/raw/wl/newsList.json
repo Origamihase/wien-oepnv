@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_576, ftazW_1354336, ftazW_1353812, ftazW_1353813, ftazW_1351086, ftazW_85, ftazW_628, ftazW_1016544, ftazW_1018064, ftazW_480, ftazW_629, ftazW_756, ftazW_481, ftazW_80, ftazW_1016545, ftazW_1018063"
+    "trafficInfoNameList": "ftazW_576, ftazW_1354336, ftazW_1353812, ftazW_1353813, ftazW_1351086, ftazW_85, ftazW_1016544, ftazW_1018064, ftazW_480, ftazW_629, ftazW_756, ftazW_481, ftazW_80, ftazW_1016545, ftazW_1018063"
    }
   ],
   "poiCategoryGroups": [
@@ -3398,43 +3398,6 @@
      "start": "2026-11-22T20:45:00.000+0100"
     },
     "title": "Hütteldorf"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "24.11.2026 00:45",
-     "ausVon": "23.11.2026 20:45",
-     "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Wehrgasse",
-     "rbls": [
-      4419
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4"
-     ],
-     "station": "Kettenbrückengasse",
-     "status": "geplante Wartung",
-     "towards": "U4 Heiligenstadt"
-    },
-    "description": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Wehrgasse",
-    "elevatorId": "KG 01",
-    "name": "ftazW_628",
-    "parentName": "ftazW_628",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedStops": [
-     4419
-    ],
-    "time": {
-     "end": "2026-11-24T00:45:00.000+0100",
-     "start": "2026-11-23T20:45:00.000+0100"
-    },
-    "title": "Kettenbrückengasse"
    },
    {
     "alertCause": "undefined alert cause",
