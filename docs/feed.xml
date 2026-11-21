@@ -8,20 +8,47 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 21 Nov 2026 13:30:36 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 21 Nov 2026 14:00:52 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[49: Verkehrsunfall]]></title>
+      <title><![CDATA[U4: Polizeieinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">404f3551d0efb1f503b6da3f9dea1315ba797797becc9ded87406bb28d1acc34</guid>
-      <pubDate>Sat, 21 Nov 2026 13:25:00 +0100</pubDate>
+      <guid isPermaLink="false">630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a</guid>
+      <pubDate>Sat, 21 Nov 2026 13:53:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sat, 21 Nov 2026 13:25:00 +0100</ext:first_seen>
-      <ext:starts_at>Sat, 21 Nov 2026 13:25:00 +0100</ext:starts_at>
-      <description>Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse. Voraussichtlich bis 13:55 Uhr. Grund: Verkehrsunfall im Bereich Linzer Straße 378. [Seit 13:25]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse. Voraussichtlich bis 13:55 Uhr. Grund: Verkehrsunfall im Bereich Linzer Straße 378.<br/>[Seit 13:25]]]></content:encoded>
+      <ext:first_seen>Sat, 21 Nov 2026 13:53:00 +0100</ext:first_seen>
+      <ext:starts_at>Sat, 21 Nov 2026 13:53:00 +0100</ext:starts_at>
+      <description>Die Linie U4 fährt derzeit zwischen den Stationen Pilgramgasse und Kettenbrückengasse in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig. [Seit 13:53]</description>
+      <content:encoded><![CDATA[Die Linie U4 fährt derzeit zwischen den Stationen Pilgramgasse und Kettenbrückengasse in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig.<br/>[Seit 13:53]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[25: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">904ba03627e216651c3fe7a87850a5c4243041de296f0ebcb4c445c1842de781</guid>
+      <pubDate>Sat, 21 Nov 2026 13:32:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Sat, 21 Nov 2026 13:32:00 +0100</ext:first_seen>
+      <ext:starts_at>Sat, 21 Nov 2026 13:32:00 +0100</ext:starts_at>
+      <description>Kein Betrieb zwischen Kagran und Donauspital; Betrieb ab Stadlau, SMZ Ost. Voraussichtlich bis 14:15 Uhr. Grund: Verkehrsunfall im Bereich Langobardenstraße. [Seit 13:32]</description>
+      <content:encoded><![CDATA[Kein Betrieb zwischen Kagran und Donauspital; Betrieb ab Stadlau, SMZ Ost. Voraussichtlich bis 14:15 Uhr. Grund: Verkehrsunfall im Bereich Langobardenstraße.<br/>[Seit 13:32]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[49: Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">d3121440bb198809da6ad6777749127de887bfe17ce700d64f281bbb4593b9c8</guid>
+      <pubDate>Sat, 21 Nov 2026 13:27:28 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Sat, 21 Nov 2026 13:27:28 +0100</ext:first_seen>
+      <ext:starts_at>Sat, 21 Nov 2026 13:31:25 +0100</ext:starts_at>
+      <ext:ends_at>Sat, 21 Nov 2026 14:30:00 +0100</ext:ends_at>
+      <description>Fahrtbehinderung. [Seit 13:27]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 13:27]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11A: Rettungseinsatz]]></title>
@@ -33,47 +60,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sat, 21 Nov 2026 13:17:00 +0100</ext:first_seen>
       <ext:starts_at>Sat, 21 Nov 2026 13:17:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in Richtung Bahnhof Heiligenstadt. Voraussichtlich bis 13:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Leystraße. [Seit 13:17]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in Richtung Bahnhof Heiligenstadt. Voraussichtlich bis 13:50 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Leystraße.<br/>[Seit 13:17]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[D: Schadhafter PKW]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">78a847968ba43541f9f6d3f562a18388c488eb4c40e69ef01cead08a17f2e494</guid>
-      <pubDate>Sat, 21 Nov 2026 12:47:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sat, 21 Nov 2026 12:47:00 +0100</ext:first_seen>
-      <ext:starts_at>Sat, 21 Nov 2026 12:47:00 +0100</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 12:47]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 12:47]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25/26: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">59e208367d2d4abd51c67734b05d4470604d748bf4d8210aec89186b2434cefa</guid>
-      <pubDate>Sat, 21 Nov 2026 11:37:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sat, 21 Nov 2026 11:37:00 +0100</ext:first_seen>
-      <ext:starts_at>Sat, 21 Nov 2026 11:37:00 +0100</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 11:37]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 11:37]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U4: Verspätungen]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">a7bcf49e8001c8319678bcfc3f20e241a4596338715d04bba6d3c8f335b20d2f</guid>
-      <pubDate>Sat, 21 Nov 2026 10:27:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sat, 21 Nov 2026 08:32:00 +0100</ext:first_seen>
-      <ext:starts_at>Sat, 21 Nov 2026 10:27:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 10:27]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 10:27]]]></content:encoded>
+      <description>Unregelmäßige Intervalle in Richtung Bahnhof Heiligenstadt. Grund: Rettungseinsatz im Haltestellenbereich Leystraße. [Seit 13:17]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in Richtung Bahnhof Heiligenstadt. Grund: Rettungseinsatz im Haltestellenbereich Leystraße.<br/>[Seit 13:17]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
@@ -143,6 +131,20 @@
       <ext:ends_at>Fri, 27 Nov 2026 05:00:00 +0100</ext:ends_at>
       <description>Wegen Gleisbauarbeiten im Bereich Simmeringer Hauptstraße wird die Linie N71 über die Hauptfahrbahn umgeleitet. [Bis Fr 27.11.]</description>
       <content:encoded><![CDATA[Wegen Gleisbauarbeiten im Bereich Simmeringer Hauptstraße wird die Linie N71 über die Hauptfahrbahn umgeleitet.<br/>[Bis Fr 27.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1A: Polizeiübung]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">3c24781e7b84a6853b0b9610ad33b66329e9f155260908ddc03798b6f4229886</guid>
+      <pubDate>Tue, 17 Nov 2026 11:37:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 17 Nov 2026 12:00:48 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 17 Nov 2026 11:37:00 +0100</ext:starts_at>
+      <ext:ends_at>Mon, 23 Nov 2026 11:00:00 +0100</ext:ends_at>
+      <description>Am Montag, den 23.11.2026 wird in der Zeit zwischen ca. 10:00 Uhr bis ca.11:00 Uhr die Strauchgasse und Herrengasse, in 1010 Wien wegen einer Übung am Pollersperrsystem … [Bis Mo 23.11.]</description>
+      <content:encoded><![CDATA[Am Montag, den 23.11.2026 wird in der Zeit zwischen ca. 10:00 Uhr bis ca.11:00 Uhr die Strauchgasse und Herrengasse, in 1010 Wien wegen einer Übung am Pollersperrsystem …<br/>[Bis Mo 23.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
