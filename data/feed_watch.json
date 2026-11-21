@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-21T05:01:08.693071+00:00",
- "built": "2026-11-21T06:00:53+01:00",
+ "updated": "2026-11-21T05:30:48.087118+00:00",
+ "built": "2026-11-21T06:30:40+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-21T06:00:53+01:00",
+  "built": "2026-11-21T06:30:40+01:00",
   "items": [
    {
     "title": "10A: Verspätungen",
@@ -6771,17 +6771,37 @@
     "oebb": 10,
     "wl": 81
    }
+  },
+  {
+   "t": "2026-11-21T05:30:48.087118+00:00",
+   "raw": {
+    "wl-stoerungen": 37,
+    "wl-hinweise": 79,
+    "oebb": 163,
+    "baustellen-linien": 49,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 17,
+    "oebb": 139,
+    "baustellen": 60
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 10,
+    "wl": 81
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-21T05:01:08.693071+00:00"
+   "last_ok": "2026-11-21T05:30:48.087118+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-21T05:01:08.693071+00:00"
+   "last_ok": "2026-11-21T05:30:48.087118+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-21T05:01:08.693071+00:00"
+   "last_ok": "2026-11-21T05:30:48.087118+00:00"
   }
  }
 }
