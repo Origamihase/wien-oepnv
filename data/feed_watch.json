@@ -1,17 +1,13 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-22T09:00:46.893328+00:00",
- "built": "2026-11-22T10:00:41+01:00",
+ "updated": "2026-11-22T09:30:38.675497+00:00",
+ "built": "2026-11-22T10:30:32+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-22T10:00:41+01:00",
+  "built": "2026-11-22T10:30:32+01:00",
   "items": [
-   {
-    "title": "U1: Rettungseinsatz",
-    "time_line": "Seit 09:18"
-   },
    {
     "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
     "time_line": "Bis 30.11."
@@ -47,31 +43,15 @@
    {
     "title": "74A: Rabengasse",
     "time_line": "Seit 16.11."
+   },
+   {
+    "title": "98A: Arztgasse",
+    "time_line": "Seit 16.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-15T09:00:54.525677+00:00",
-   "raw": {
-    "wl-stoerungen": 50,
-    "wl-hinweise": 98,
-    "oebb": 185,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 28,
-    "oebb": 160,
-    "baustellen": 64
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 6,
-    "wl": 80
-   }
-  },
   {
    "t": "2026-11-15T09:30:54.164010+00:00",
    "raw": {
@@ -6791,17 +6771,37 @@
     "oebb": 10,
     "wl": 81
    }
+  },
+  {
+   "t": "2026-11-22T09:30:38.675497+00:00",
+   "raw": {
+    "wl-stoerungen": 36,
+    "wl-hinweise": 88,
+    "oebb": 157,
+    "baustellen-linien": 49,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 23,
+    "oebb": 134,
+    "baustellen": 60
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 10,
+    "wl": 80
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-22T09:00:46.893328+00:00"
+   "last_ok": "2026-11-22T09:30:38.675497+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-22T09:00:46.893328+00:00"
+   "last_ok": "2026-11-22T09:30:38.675497+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-22T09:00:46.893328+00:00"
+   "last_ok": "2026-11-22T09:30:38.675497+00:00"
   }
  }
 }
