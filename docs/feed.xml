@@ -8,48 +8,20 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 22 Nov 2026 23:30:40 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2026 00:00:44 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[49: Rettungseinsatz]]></title>
+      <title><![CDATA[52A/43B/52B: Haltestellenverlegung]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a</guid>
-      <pubDate>Sun, 22 Nov 2026 22:38:00 +0100</pubDate>
+      <guid isPermaLink="false">ddf5afe69bfdb2b51b77fda8d4f7b4d3d99eef36d4b9d1eb5d402088a8312394</guid>
+      <pubDate>Wed, 18 Nov 2026 14:22:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sun, 22 Nov 2026 22:38:00 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 22 Nov 2026 22:38:00 +0100</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 22:38]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 22:38]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[16A: Polizeieinsatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">bddea0983b2db5a0fe7561ce5a6d4149b903b23044a0e300481fa6a79c8cd0cb</guid>
-      <pubDate>Sun, 22 Nov 2026 22:30:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sun, 22 Nov 2026 22:30:00 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 22 Nov 2026 22:30:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz. [Seit 22:30]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.<br/>[Seit 22:30]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
-      <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
-      <guid isPermaLink="false">https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&amp;mapType=TRACKINFO&amp;906928</guid>
-      <pubDate>Wed, 16 Sep 2026 08:51:40 +0200</pubDate>
-      <source url="https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;">ÖBB</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 24 Aug 2026 13:00:55 +0200</ext:first_seen>
-      <ext:starts_at>Sat, 31 Oct 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Mon, 30 Nov 2026 23:59:59 +0100</ext:ends_at>
-      <georss:line>48.185201 16.376296 48.034917 16.491315</georss:line>
-      <description>Wegen Bauarbeiten können keine Nahverkehrszüge fahren: jeweils von Samstag 23:15 Uhr bis Sonntag 04:40 Uhr und von Sonntag 23:15 Uhr bis Montag 04:40 Uhr. [Bis 30.11.]</description>
-      <content:encoded><![CDATA[Wegen Bauarbeiten können keine Nahverkehrszüge fahren: jeweils von Samstag 23:15 Uhr bis Sonntag 04:40 Uhr und von Sonntag 23:15 Uhr bis Montag 04:40 Uhr.<br/>[Bis 30.11.]]]></content:encoded>
+      <ext:first_seen>Wed, 18 Nov 2026 14:22:00 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 23 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <description>Hüttelbergstraße gegenüber 117 → Hüttelbergstraße gegenüber 105-109. Haltestellenverlegung der Linien 43B in Richtung Neustift, Agnesgasse, 52A in Richtung Jägerwaldsiedlung … [Seit heute]</description>
+      <content:encoded><![CDATA[Hüttelbergstraße gegenüber 117 → Hüttelbergstraße gegenüber 105-109. Haltestellenverlegung der Linien 43B in Richtung Neustift, Agnesgasse, 52A in Richtung Jägerwaldsiedlung …<br/>[Seit heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[68A: Geänderte Linienführung]]></title>
@@ -61,8 +33,22 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 20 Nov 2026 00:00:51 +0100</ext:first_seen>
       <ext:starts_at>Mon, 23 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <description>Die Linienführung der Linie 68A wird im Bereich der Filmteichstraße angepasst. [Ab Mo 23.11.]</description>
-      <content:encoded><![CDATA[Die Linienführung der Linie 68A wird im Bereich der Filmteichstraße angepasst.<br/>[Ab Mo 23.11.]]]></content:encoded>
+      <description>Die Linienführung der Linie 68A wird im Bereich der Filmteichstraße angepasst. [Seit heute]</description>
+      <content:encoded><![CDATA[Die Linienführung der Linie 68A wird im Bereich der Filmteichstraße angepasst.<br/>[Seit heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[11: Haltestellenverlegung]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">cee7de03fd210cab2a224364f954bed6a6cde557a1d257b152748c34ab492edf</guid>
+      <pubDate>Fri, 20 Nov 2026 14:24:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 20 Nov 2026 14:24:00 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 24 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 18 Dec 2026 07:00:00 +0100</ext:ends_at>
+      <description>Neilreichgasse 139c-141 → Neilreichgasse 139A- 139B. Haltestellenverlegung der Linie 11 in Richtung Otto-Probst-Platz. Haltestelle: Wienerfeldgasse. Grund: Gleisbauarbeiten. [Ab Di 24.11. bis 18.12.]</description>
+      <content:encoded><![CDATA[Neilreichgasse 139c-141 → Neilreichgasse 139A- 139B. Haltestellenverlegung der Linie 11 in Richtung Otto-Probst-Platz. Haltestelle: Wienerfeldgasse. Grund: Gleisbauarbeiten.<br/>[Ab Di 24.11. bis 18.12.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/71/D: Haltestellenverlegung]]></title>
@@ -79,17 +65,18 @@
       <content:encoded><![CDATA[Haltestellenauflassung der Linien D, 1 und 71 in beiden Richtungen, an Freitagen, Samstagen, Sonntagen sowie am 08. Dezember jeweils von etwa 15:00 Uhr bis 22:30 Uhr. …<br/>[Bis 20.12.]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[52A/43B/52B: Haltestellenverlegung]]></title>
+      <title><![CDATA[7A: Haltestellenverlegung]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">ddf5afe69bfdb2b51b77fda8d4f7b4d3d99eef36d4b9d1eb5d402088a8312394</guid>
-      <pubDate>Wed, 18 Nov 2026 14:22:00 +0100</pubDate>
+      <guid isPermaLink="false">4ff3f3f8af77a0c8672583049e527acc9e6d50b8ba7f5aaf691ba8f3030b2331</guid>
+      <pubDate>Wed, 18 Nov 2026 12:54:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 18 Nov 2026 14:22:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 23 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <description>Hüttelbergstraße gegenüber 117 → Hüttelbergstraße gegenüber 105-109. Haltestellenverlegung der Linien 43B in Richtung Neustift, Agnesgasse, 52A in Richtung Jägerwaldsiedlung … [Ab Mo 23.11.]</description>
-      <content:encoded><![CDATA[Hüttelbergstraße gegenüber 117 → Hüttelbergstraße gegenüber 105-109. Haltestellenverlegung der Linien 43B in Richtung Neustift, Agnesgasse, 52A in Richtung Jägerwaldsiedlung …<br/>[Ab Mo 23.11.]]]></content:encoded>
+      <ext:first_seen>Wed, 18 Nov 2026 12:54:00 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 24 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Wed, 25 Nov 2026 17:00:00 +0100</ext:ends_at>
+      <description>Antonsplatz 13 vor Rechberggasse → Antonsplatz 14-16. Haltestellenverlegung der Linie 7A in Richtung Reumannplatz. Haltestelle: Antonsplatz. Grund: Straßenbauarbeiten. [Ab Di 24.11. bis Mi 25.11.]</description>
+      <content:encoded><![CDATA[Antonsplatz 13 vor Rechberggasse → Antonsplatz 14-16. Haltestellenverlegung der Linie 7A in Richtung Reumannplatz. Haltestelle: Antonsplatz. Grund: Straßenbauarbeiten.<br/>[Ab Di 24.11. bis Mi 25.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[N71: Bauarbeiten]]></title>
@@ -116,8 +103,8 @@
       <ext:first_seen>Tue, 17 Nov 2026 12:00:48 +0100</ext:first_seen>
       <ext:starts_at>Tue, 17 Nov 2026 11:37:00 +0100</ext:starts_at>
       <ext:ends_at>Mon, 23 Nov 2026 11:00:00 +0100</ext:ends_at>
-      <description>Am Montag, den 23.11.2026 wird in der Zeit zwischen ca. 10:00 Uhr bis ca.11:00 Uhr die Strauchgasse und Herrengasse, in 1010 Wien wegen einer Übung am Pollersperrsystem … [Bis Mo 23.11.]</description>
-      <content:encoded><![CDATA[Am Montag, den 23.11.2026 wird in der Zeit zwischen ca. 10:00 Uhr bis ca.11:00 Uhr die Strauchgasse und Herrengasse, in 1010 Wien wegen einer Übung am Pollersperrsystem …<br/>[Bis Mo 23.11.]]]></content:encoded>
+      <description>Am Montag, den 23.11.2026 wird in der Zeit zwischen ca. 10:00 Uhr bis ca.11:00 Uhr die Strauchgasse und Herrengasse, in 1010 Wien wegen einer Übung am Pollersperrsystem … [Heute]</description>
+      <content:encoded><![CDATA[Am Montag, den 23.11.2026 wird in der Zeit zwischen ca. 10:00 Uhr bis ca.11:00 Uhr die Strauchgasse und Herrengasse, in 1010 Wien wegen einer Übung am Pollersperrsystem …<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[8A: Küniglberg, ORF Zentrum]]></title>
@@ -148,6 +135,20 @@
       <georss:point>48.222757 16.375308</georss:point>
       <description>Untere Augartenstraße 40 → Obere Augartenstraße 42. Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf. [Bis 11.12.]</description>
       <content:encoded><![CDATA[Untere Augartenstraße 40 → Obere Augartenstraße 42. Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf.<br/>[Bis 11.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[74A: Rabengasse]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">a283d0e2e437795796c0e7a743565b30ce8fddbc07070af76ea09899ed55a1e7</guid>
+      <pubDate>Wed, 11 Nov 2026 15:24:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 11 Nov 2026 15:24:00 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 16 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <georss:point>48.194051 16.397614</georss:point>
+      <description>Landstraßer Hauptstraße 140 -144 → Landstraßer Hauptstraße gegenüber 146. Haltestellenverlegung der Linie 74A in Richtung St. Marx. Grund: Straßenbau. [Seit 16.11.]</description>
+      <content:encoded><![CDATA[Landstraßer Hauptstraße 140 -144 → Landstraßer Hauptstraße gegenüber 146. Haltestellenverlegung der Linie 74A in Richtung St. Marx. Grund: Straßenbau.<br/>[Seit 16.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
