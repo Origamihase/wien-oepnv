@@ -902,6 +902,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "41: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1b9880e738badf2ab93ca803b6161595a319b82ea03cebf2c5ff834226e92cd8",
+    "pubDate": "2026-11-22T13:37:00+01:00",
+    "starts_at": "2026-11-22T13:43:37+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=41|D=2026-11-22|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261122-0013"
+    ],
+    "_incident_start": "2026-11-22T13:37:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "57A: Verkehrsunfall",
     "description": "Linie 57A: Unregelmäßige Intervalle in Richtung Rudolfsheim, Anschützgasse. Grund: Verkehrsunfall.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -926,6 +942,22 @@
     "starts_at": "2026-11-22T04:45:14+01:00",
     "ends_at": "2026-11-22T23:59:59+01:00",
     "_identity": "wl|störung|L=5B|D=2026-11-22|TK=busse halten pappenheimgasse 24 28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Feuerwehreinsatz Züge halten bei Linie 12",
+    "description": "Linie 5: Betrieb nur zwischen Praterstern S U und Blindengasse. Weiterfahrt bis Josefstädter Straße U. Ersatz: Linie U6. Voraussichtliche Dauer: 14:30 Uhr. Grund: Feuerwehreinsatz im Bereich Kaiserstraße # Neustiftgasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1e75a876ba5d2fb19bc3545856b422cbe2876b7c531c7e805168d1258018e030",
+    "pubDate": "2026-11-22T13:34:00+01:00",
+    "starts_at": "2026-11-22T13:38:06+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=5|D=2026-11-22|TK=feuerwehreinsatz",
+    "_wl_ids": [
+      "I20261122-0012"
+    ],
+    "_incident_start": "2026-11-22T13:34:00+01:00"
   },
   {
     "source": "Wiener Linien",

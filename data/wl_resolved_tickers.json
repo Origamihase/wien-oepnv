@@ -2,5 +2,70 @@
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
- "owners": {}
+ "owners": {
+  "R1315-141|2026-11-22T13:43:37.000+0100": {
+   "incident": "I20261122-0013",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R1316-141|2026-11-22T13:43:37.000+0100": {
+   "incident": "I20261122-0013",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R272-105|2026-11-22T13:36:08.000+0100": {
+   "incident": "I20261122-0012",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  },
+  "R360-105|2026-11-22T13:36:08.000+0100": {
+   "incident": "I20261122-0012",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  },
+  "R361-105|2026-11-22T13:36:08.000+0100": {
+   "incident": "I20261122-0012",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  },
+  "R362-105|2026-11-22T13:36:08.000+0100": {
+   "incident": "I20261122-0012",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  },
+  "R363-105|2026-11-22T13:36:08.000+0100": {
+   "incident": "I20261122-0012",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  },
+  "R364-105|2026-11-22T13:37:38.000+0100": {
+   "incident": "I20261122-0012",
+   "title": "Feuerwehreinsatz\nBetrieb ab Blindengasse"
+  },
+  "R366-105|2026-11-22T13:36:08.000+0100": {
+   "incident": "I20261122-0012",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  },
+  "R367-105|2026-11-22T13:37:38.000+0100": {
+   "incident": "I20261122-0012",
+   "title": "Feuerwehreinsatz\nBetrieb ab Blindengasse"
+  },
+  "R370-105|2026-11-22T13:37:38.000+0100": {
+   "incident": "I20261122-0012",
+   "title": "Feuerwehreinsatz\nBetrieb ab Blindengasse"
+  },
+  "R373-105|2026-11-22T13:37:38.000+0100": {
+   "incident": "I20261122-0012",
+   "title": "Feuerwehreinsatz\nBetrieb ab Blindengasse"
+  },
+  "R374-105|2026-11-22T13:37:38.000+0100": {
+   "incident": "I20261122-0012",
+   "title": "Feuerwehreinsatz\nBetrieb ab Blindengasse"
+  },
+  "R375-105|2026-11-22T13:37:38.000+0100": {
+   "incident": "I20261122-0012",
+   "title": "Feuerwehreinsatz\nBetrieb ab Blindengasse"
+  },
+  "R376-105|2026-11-22T13:37:38.000+0100": {
+   "incident": "I20261122-0012",
+   "title": "Feuerwehreinsatz\nBetrieb ab Blindengasse"
+  },
+  "R377-105|2026-11-22T13:38:06.000+0100": {
+   "incident": "I20261122-0012",
+   "title": "Feuerwehreinsatz\nZüge halten bei Linie 12"
+  }
+ }
 }
