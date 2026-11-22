@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261122-0005-F01, I20261020-0029, I20261122-0003-F01"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261020-0029, I20261122-0006-F01"
    },
    {
     "id": 3,
@@ -171,52 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "10A": "ptBusCity"
-     }
-    },
-    "description": "Linie 10A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 10A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 10A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 10A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "10A: Fremder Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Gersthofer Straße 41",
-    "name": "I20261122-0003-F01",
-    "owner": "WL",
-    "parentName": "I20261122-0003",
-    "priority": "1",
-    "reasonId": 13,
-    "reasonName": "Fremder Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "10A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 410,
-      "lineName": "10A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-22T08:07:00.000+0100",
-     "end": "2026-11-22T09:14:00.000+0100",
-     "lastUpdate": "2026-11-22T08:51:00.000+0100",
-     "start": "2026-11-22T07:19:00.000+0100"
-    },
-    "title": "10A: Fremder Verkehrsunfall"
-   },
-   {
     "alertCause": "emergency medical services",
     "alertCauseId": 14,
     "attributes": {
@@ -235,9 +189,9 @@
       }
      }
     ],
-    "name": "I20261122-0005-F01",
+    "name": "I20261122-0006-F01",
     "owner": "WL",
-    "parentName": "I20261122-0005",
+    "parentName": "I20261122-0006",
     "priority": "1",
     "reasonId": 9,
     "reasonName": "Rettungseinsatz",
@@ -253,14 +207,14 @@
      }
     ],
     "relatedStops": [
-     4127
+     4136
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-22T08:03:00.000+0100",
-     "lastUpdate": "2026-11-22T08:03:00.000+0100",
-     "resume": "2026-11-22T08:03:00.000+0100",
-     "start": "2026-11-22T07:46:00.000+0100"
+     "created": "2026-11-22T09:24:00.000+0100",
+     "lastUpdate": "2026-11-22T09:24:00.000+0100",
+     "resume": "2026-11-22T09:24:00.000+0100",
+     "start": "2026-11-22T09:18:00.000+0100"
     },
     "title": "U1: Rettungseinsatz"
    },
