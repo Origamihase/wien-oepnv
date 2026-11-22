@@ -662,30 +662,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
-    "pubDate": "2026-11-22T12:01:58+01:00",
-    "starts_at": "2026-11-22T12:01:58+01:00",
-    "ends_at": "2026-11-22T13:01:00+01:00",
-    "_identity": "wl|störung|L=12A|D=2026-11-22|TK=falschparker"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "301231dd4b3d1424c578c356e1ad1eaef839db54dc847e98930e9441759060a5",
-    "pubDate": "2026-11-22T12:03:56+01:00",
-    "starts_at": "2026-11-22T12:03:57+01:00",
-    "ends_at": "2026-11-22T13:03:00+01:00",
-    "_identity": "wl|störung|L=12|D=2026-11-22|TK=rettungseinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -922,6 +898,22 @@
     "starts_at": "2026-11-19T00:00:28+01:00",
     "ends_at": "2026-11-22T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-11-19|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "57A: Verkehrsunfall",
+    "description": "Linie 57A: Unregelmäßige Intervalle in Richtung Rudolfsheim, Anschützgasse. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "d735177cc6e0c032bea05c9936fbbc2b7922b9a27c7090d9edb0f0dee69f67b3",
+    "pubDate": "2026-11-22T13:06:00+01:00",
+    "starts_at": "2026-11-22T13:06:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=57A|D=2026-11-22|TK=57a verkehrsunfall",
+    "_wl_ids": [
+      "I20261122-0011"
+    ],
+    "_incident_start": "2026-11-22T13:06:00+01:00"
   },
   {
     "source": "Wiener Linien",
