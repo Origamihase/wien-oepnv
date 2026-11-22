@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261020-0029, I20261122-0017"
+    "trafficInfoNameList": "I20261122-0017-F01, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1882-101, R1884-101, R1883-101, R1875-101, R1876-101, R1880-101, R1881-101, R3886-480, R2345-127, R293-474, R318-437, R2370-125, R2343-626, R2359-125, R2378-627, R2343-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2380-627, R2379-627, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R1963-466, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1880-101, R1884-101, R1883-101, R1882-101, R1881-101, R1875-101, R1876-101, R3886-480, R2345-127, R293-474, R318-437, R2343-125, R2343-626, R2359-125, R2370-125, R2378-627, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2380-627, R2379-627, R2558-125, R1974-466, R1199-205, R500-101, R17-0, R47-0, R1963-466, R1893-466, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -178,19 +178,19 @@
       "66A": "ptBusCity"
      }
     },
-    "description": "Linie 66A: Fahrtbehinderung in Richtung Reumannplatz U. Voraussichtliche Dauer: 20:30 Uhr. Grund: Falschparker im Bereich Rudolf-Waisenhorn-Gasse 26.",
-    "descriptionHTML": "<p>Linie 66A:<br>Fahrtbehinderung in Richtung Reumannplatz U.</p><p>Voraussichtliche Dauer: 20:30 Uhr.</p><p>Grund: Falschparker im Bereich Rudolf-Waisenhorn-Gasse 26.</p>",
+    "description": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 66A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 66A:<br>Fahrtbehinderung in Richtung Reumannplatz U.</p><p>Voraussichtliche Dauer: 20:30 Uhr.</p><p>Grund: Falschparker im Bereich Rudolf-Waisenhorn-Gasse 26.</p>",
-       "descriptionPlain": "Linie 66A: Fahrtbehinderung in Richtung Reumannplatz U. Voraussichtliche Dauer: 20:30 Uhr. Grund: Falschparker im Bereich Rudolf-Waisenhorn-Gasse 26.",
+       "descriptionHtml": "<p>Linie 66A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 66A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "66A: Falschparker"
       }
      }
     ],
     "location": "Rudolf-Waisenhorn-Gasse 26",
-    "name": "I20261122-0017",
+    "name": "I20261122-0017-F01",
     "owner": "WL",
     "parentName": "I20261122-0017",
     "priority": "1",
@@ -209,8 +209,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-22T19:57:00.000+0100",
-     "lastUpdate": "2026-11-22T19:57:00.000+0100",
+     "created": "2026-11-22T20:08:00.000+0100",
+     "lastUpdate": "2026-11-22T20:08:00.000+0100",
+     "resume": "2026-11-22T20:08:00.000+0100",
      "start": "2026-11-22T19:57:00.000+0100"
     },
     "title": "66A: Falschparker"
@@ -418,6 +419,29 @@
      "start": "2026-11-18T00:00:17.000+0100"
     },
     "title": "Gleisbauarbeiten\nZüge halten Quellenstraße 156 (Linie 6)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1893-466",
+    "owner": "WL",
+    "parentName": "R1893-466",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "66A"
+    ],
+    "relatedStops": [
+     1893
+    ],
+    "time": {
+     "end": "2026-11-22T21:01:00.000+0100",
+     "start": "2026-11-22T20:02:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
