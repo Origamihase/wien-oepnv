@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261122-0003-F01, I20260925-0011, I20260909-0007, I20261122-0005-F01, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261122-0005-F01, I20261020-0029, I20261122-0003-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R3886-480, R2373-126, R2379-627, R2380-627, R2345-127, R2373-125, R2372-125, R2371-125, R2370-125, R318-437, R293-474, R2373-127, R2378-627, R2343-125, R2343-626, R2359-125, R2558-125, R1974-466, R1199-205, R500-101, R2981-410, R2968-410, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1884-101, R1883-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R3886-480, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R293-474, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R318-437, R2558-125, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -210,8 +210,8 @@
     "status": "active",
     "time": {
      "created": "2026-11-22T08:07:00.000+0100",
-     "lastUpdate": "2026-11-22T08:07:00.000+0100",
-     "resume": "2026-11-22T08:07:00.000+0100",
+     "end": "2026-11-22T09:14:00.000+0100",
+     "lastUpdate": "2026-11-22T08:51:00.000+0100",
      "start": "2026-11-22T07:19:00.000+0100"
     },
     "title": "10A: Fremder Verkehrsunfall"
@@ -815,52 +815,6 @@
      "start": "2026-11-19T00:00:28.000+0100"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBusse halten am Gleiskörper",
-    "name": "R2968-410",
-    "owner": "WL",
-    "parentName": "R2968-410",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10A"
-    ],
-    "relatedStops": [
-     2968
-    ],
-    "time": {
-     "end": "2026-11-22T08:32:00.000+0100",
-     "start": "2026-11-22T07:33:01.000+0100"
-    },
-    "title": "Fremdunfall\nBusse halten am Gleiskörper"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fremdunfall\nBusse halten am Gleiskörper",
-    "name": "R2981-410",
-    "owner": "WL",
-    "parentName": "R2981-410",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10A"
-    ],
-    "relatedStops": [
-     2981
-    ],
-    "time": {
-     "end": "2026-11-22T08:32:00.000+0100",
-     "start": "2026-11-22T07:21:00.000+0100"
-    },
-    "title": "Fremdunfall\nBusse halten am Gleiskörper"
    },
    {
     "alertCause": "undefined alert cause",
