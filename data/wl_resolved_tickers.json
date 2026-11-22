@@ -3,37 +3,69 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R162-170|2026-11-22T15:30:16.000+0100": {
-   "incident": "I20261122-0014",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  "R10-102|2026-11-22T16:06:52.000+0100": {
+   "incident": "I20261122-0016",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
   },
-  "R163-170|2026-11-22T15:30:16.000+0100": {
-   "incident": "I20261122-0014",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  "R11-102|2026-11-22T16:06:52.000+0100": {
+   "incident": "I20261122-0016",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
   },
-  "R164-170|2026-11-22T15:30:16.000+0100": {
-   "incident": "I20261122-0014",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  "R12-102|2026-11-22T16:06:52.000+0100": {
+   "incident": "I20261122-0016",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
   },
-  "R310-170|2026-11-22T15:30:19.000+0100": {
-   "incident": "I20261122-0014",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  "R13-102|2026-11-22T16:06:52.000+0100": {
+   "incident": "I20261122-0016",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
   },
-  "R311-170|2026-11-22T15:30:19.000+0100": {
-   "incident": "I20261122-0014",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  "R14-102|2026-11-22T16:06:52.000+0100": {
+   "incident": "I20261122-0016",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
   },
-  "R3445-170|2026-11-22T15:30:20.000+0100": {
-   "incident": "I20261122-0014",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  "R1465-152|2026-11-22T16:02:22.000+0100": {
+   "incident": "I20261122-0015",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
   },
-  "R3446-170|2026-11-22T15:30:20.000+0100": {
-   "incident": "I20261122-0014",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  "R15-102|2026-11-22T16:06:52.000+0100": {
+   "incident": "I20261122-0016",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
   },
-  "R346-170|2026-11-22T15:30:19.000+0100": {
-   "incident": "I20261122-0014",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  "R1551-152|2026-11-22T16:02:21.000+0100": {
+   "incident": "I20261122-0015",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1552-152|2026-11-22T16:02:21.000+0100": {
+   "incident": "I20261122-0015",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1553-152|2026-11-22T16:02:21.000+0100": {
+   "incident": "I20261122-0015",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1554-152|2026-11-22T16:02:21.000+0100": {
+   "incident": "I20261122-0015",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1555-152|2026-11-22T16:02:21.000+0100": {
+   "incident": "I20261122-0015",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1556-152|2026-11-22T16:02:21.000+0100": {
+   "incident": "I20261122-0015",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1557-152|2026-11-22T16:02:21.000+0100": {
+   "incident": "I20261122-0015",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R1558-152|2026-11-22T16:02:21.000+0100": {
+   "incident": "I20261122-0015",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  },
+  "R571-152|2026-11-22T16:02:21.000+0100": {
+   "incident": "I20261122-0015",
+   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
   }
  }
 }
