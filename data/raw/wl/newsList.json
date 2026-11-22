@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_576, ftazW_1354336, ftazW_1353812, ftazW_1353813, ftazW_1351086, ftazW_85, ftazW_1016544, ftazW_1018064, ftazW_480, ftazW_629, ftazW_756, ftazW_481, ftazW_80, ftazW_1016545, ftazW_1018063, ftazW_81, ftazW_739, ftazW_1017627, ftazW_605, ftazW_478"
+    "trafficInfoNameList": "ftazW_576, ftazW_1354336, ftazW_1353812, ftazW_1353813, ftazW_1351086, ftazW_85, ftazW_1016544, ftazW_1018064, ftazW_480, ftazW_629, ftazW_756, ftazW_481, ftazW_80, ftazW_1016545, ftazW_1018063, ftazW_81, ftazW_739, ftazW_1017627, ftazW_605, ftazW_478, ftazW_604, ftazW_479, ftazW_725, ftazW_740, ftazW_1016611"
    }
   ],
   "poiCategoryGroups": [
@@ -3054,6 +3054,45 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "25.11.2026 05:15",
+     "ausVon": "25.11.2026 01:15",
+     "location": "U1 Mittelbahnsteig - Ausgang Favoritenstraße",
+     "rbls": [
+      4101,
+      4128
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Reumannplatz",
+     "status": "geplante Wartung",
+     "towards": "U1 beide Richtungen"
+    },
+    "description": "U1 Mittelbahnsteig - Ausgang Favoritenstraße",
+    "elevatorId": "RP 01",
+    "name": "ftazW_1016611",
+    "parentName": "ftazW_1016611",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4101,
+     4128
+    ],
+    "time": {
+     "end": "2026-11-25T05:15:00.000+0100",
+     "start": "2026-11-25T01:15:00.000+0100"
+    },
+    "title": "Reumannplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "25.11.2026 00:45",
      "ausVon": "24.11.2026 20:45",
      "location": "1 Bahnsteig Richtung Prater Hauptallee, 18 Bahnsteig Richtung Schlachthausgasse, 62 und Badner Bahn Bahnsteig Richtung Oper, Karlsplatz - Ausgang Landgutgasse",
@@ -3376,6 +3415,43 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "25.11.2026 05:15",
+     "ausVon": "25.11.2026 01:15",
+     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Perfektastraße",
+     "rbls": [
+      4633
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Perfektastraße",
+     "status": "geplante Wartung",
+     "towards": "U6 Siebenhirten"
+    },
+    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Perfektastraße",
+    "elevatorId": "PF 02",
+    "name": "ftazW_479",
+    "parentName": "ftazW_479",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4633
+    ],
+    "time": {
+     "end": "2026-11-25T05:15:00.000+0100",
+     "start": "2026-11-25T01:15:00.000+0100"
+    },
+    "title": "Perfektastraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "24.11.2026 00:45",
      "ausVon": "23.11.2026 20:45",
      "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang Baslergasse",
@@ -3489,6 +3565,43 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "25.11.2026 05:15",
+     "ausVon": "25.11.2026 01:15",
+     "location": "U3 Bahnsteig Richtung Ottakring - Ausgang Thaliastraße",
+     "rbls": [
+      4930
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Ottakring",
+     "status": "geplante Wartung",
+     "towards": "U3 Ottakring"
+    },
+    "description": "U3 Bahnsteig Richtung Ottakring - Ausgang Thaliastraße",
+    "elevatorId": "OK 02",
+    "name": "ftazW_604",
+    "parentName": "ftazW_604",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedStops": [
+     4930
+    ],
+    "time": {
+     "end": "2026-11-25T05:15:00.000+0100",
+     "start": "2026-11-25T01:15:00.000+0100"
+    },
+    "title": "Ottakring"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "25.11.2026 00:45",
      "ausVon": "24.11.2026 20:45",
      "location": "U3 Bahnsteig Richtung Ottakring - Ausgang Koppstraße",
@@ -3563,6 +3676,45 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "25.11.2026 05:15",
+     "ausVon": "25.11.2026 01:15",
+     "location": "U2 Mittelbahnsteig - Passage",
+     "rbls": [
+      4203,
+      4212
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Schottentor",
+     "status": "geplante Wartung",
+     "towards": "U2 beide Richtungen"
+    },
+    "description": "U2 Mittelbahnsteig - Passage",
+    "elevatorId": "SO 01",
+    "name": "ftazW_725",
+    "parentName": "ftazW_725",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4203,
+     4212
+    ],
+    "time": {
+     "end": "2026-11-25T05:15:00.000+0100",
+     "start": "2026-11-25T01:15:00.000+0100"
+    },
+    "title": "Schottentor"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "25.11.2026 00:45",
      "ausVon": "24.11.2026 20:45",
      "location": "U3 Mittelbahnsteig - Ausgang Zippererstraße/Simmeringer Hauptstraße",
@@ -3595,6 +3747,45 @@
     "time": {
      "end": "2026-11-25T00:45:00.000+0100",
      "start": "2026-11-24T20:45:00.000+0100"
+    },
+    "title": "Zippererstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "25.11.2026 05:15",
+     "ausVon": "25.11.2026 01:15",
+     "location": "U3 Mittelbahnsteig - Ausgang Eisteichstraße",
+     "rbls": [
+      4935,
+      4940
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Zippererstraße",
+     "status": "geplante Wartung",
+     "towards": "U3 beide Richtungen"
+    },
+    "description": "U3 Mittelbahnsteig - Ausgang Eisteichstraße",
+    "elevatorId": "PP 02",
+    "name": "ftazW_740",
+    "parentName": "ftazW_740",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedStops": [
+     4935,
+     4940
+    ],
+    "time": {
+     "end": "2026-11-25T05:15:00.000+0100",
+     "start": "2026-11-25T01:15:00.000+0100"
     },
     "title": "Zippererstraße"
    },
