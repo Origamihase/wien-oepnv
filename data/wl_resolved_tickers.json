@@ -1,7 +1,106 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
- "tickers": [],
+ "tickers": [
+  {
+   "key": "R272-105|2026-11-22T13:36:08.000+0100|Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "name": "R272-105",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "end": "2026-11-22T14:35:00.000+0100",
+   "incident": "I20261122-0012"
+  },
+  {
+   "key": "R360-105|2026-11-22T13:36:08.000+0100|Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "name": "R360-105",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "end": "2026-11-22T14:35:00.000+0100",
+   "incident": "I20261122-0012"
+  },
+  {
+   "key": "R361-105|2026-11-22T13:36:08.000+0100|Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "name": "R361-105",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "end": "2026-11-22T14:35:00.000+0100",
+   "incident": "I20261122-0012"
+  },
+  {
+   "key": "R362-105|2026-11-22T13:36:08.000+0100|Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "name": "R362-105",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "end": "2026-11-22T14:35:00.000+0100",
+   "incident": "I20261122-0012"
+  },
+  {
+   "key": "R363-105|2026-11-22T13:36:08.000+0100|Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "name": "R363-105",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "end": "2026-11-22T14:35:00.000+0100",
+   "incident": "I20261122-0012"
+  },
+  {
+   "key": "R364-105|2026-11-22T13:37:38.000+0100|Feuerwehreinsatz\nBetrieb ab Blindengasse",
+   "name": "R364-105",
+   "title": "Feuerwehreinsatz\nBetrieb ab Blindengasse",
+   "end": "2026-11-22T14:36:00.000+0100",
+   "incident": "I20261122-0012"
+  },
+  {
+   "key": "R366-105|2026-11-22T13:36:08.000+0100|Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "name": "R366-105",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
+   "end": "2026-11-22T14:35:00.000+0100",
+   "incident": "I20261122-0012"
+  },
+  {
+   "key": "R367-105|2026-11-22T13:37:38.000+0100|Feuerwehreinsatz\nBetrieb ab Blindengasse",
+   "name": "R367-105",
+   "title": "Feuerwehreinsatz\nBetrieb ab Blindengasse",
+   "end": "2026-11-22T14:36:00.000+0100",
+   "incident": "I20261122-0012"
+  },
+  {
+   "key": "R370-105|2026-11-22T13:37:38.000+0100|Feuerwehreinsatz\nBetrieb ab Blindengasse",
+   "name": "R370-105",
+   "title": "Feuerwehreinsatz\nBetrieb ab Blindengasse",
+   "end": "2026-11-22T14:36:00.000+0100",
+   "incident": "I20261122-0012"
+  },
+  {
+   "key": "R373-105|2026-11-22T13:37:38.000+0100|Feuerwehreinsatz\nBetrieb ab Blindengasse",
+   "name": "R373-105",
+   "title": "Feuerwehreinsatz\nBetrieb ab Blindengasse",
+   "end": "2026-11-22T14:36:00.000+0100",
+   "incident": "I20261122-0012"
+  },
+  {
+   "key": "R374-105|2026-11-22T13:37:38.000+0100|Feuerwehreinsatz\nBetrieb ab Blindengasse",
+   "name": "R374-105",
+   "title": "Feuerwehreinsatz\nBetrieb ab Blindengasse",
+   "end": "2026-11-22T14:36:00.000+0100",
+   "incident": "I20261122-0012"
+  },
+  {
+   "key": "R375-105|2026-11-22T13:37:38.000+0100|Feuerwehreinsatz\nBetrieb ab Blindengasse",
+   "name": "R375-105",
+   "title": "Feuerwehreinsatz\nBetrieb ab Blindengasse",
+   "end": "2026-11-22T14:36:00.000+0100",
+   "incident": "I20261122-0012"
+  },
+  {
+   "key": "R376-105|2026-11-22T13:37:38.000+0100|Feuerwehreinsatz\nBetrieb ab Blindengasse",
+   "name": "R376-105",
+   "title": "Feuerwehreinsatz\nBetrieb ab Blindengasse",
+   "end": "2026-11-22T14:36:00.000+0100",
+   "incident": "I20261122-0012"
+  },
+  {
+   "key": "R377-105|2026-11-22T13:38:06.000+0100|Feuerwehreinsatz\nZüge halten bei Linie 12",
+   "name": "R377-105",
+   "title": "Feuerwehreinsatz\nZüge halten bei Linie 12",
+   "end": "2026-11-22T14:37:00.000+0100",
+   "incident": "I20261122-0012"
+  }
+ ],
  "owners": {
   "R1315-141|2026-11-22T13:43:37.000+0100": {
    "incident": "I20261122-0013",
