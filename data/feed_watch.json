@@ -1,16 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-22T21:31:06.094486+00:00",
- "built": "2026-11-22T22:30:50+01:00",
+ "updated": "2026-11-22T22:01:13.702642+00:00",
+ "built": "2026-11-22T23:01:03+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-22T22:30:50+01:00",
+  "built": "2026-11-22T23:01:03+01:00",
   "items": [
    {
-    "title": "U3: Verunreinigung",
-    "time_line": "Seit 22:11"
+    "title": "49: Rettungseinsatz",
+    "time_line": "Seit 22:38"
+   },
+   {
+    "title": "16A: Polizeieinsatz",
+    "time_line": "Seit 22:30"
    },
    {
     "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
@@ -43,35 +47,11 @@
    {
     "title": "5A/N31: Obere Augartenstraße",
     "time_line": "Bis 11.12."
-   },
-   {
-    "title": "74A: Rabengasse",
-    "time_line": "Seit 16.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-15T22:01:07.005385+00:00",
-   "raw": {
-    "wl-stoerungen": 37,
-    "wl-hinweise": 90,
-    "oebb": 183,
-    "baustellen-linien": 53,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 25,
-    "oebb": 159,
-    "baustellen": 64
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 6,
-    "wl": 79
-   }
-  },
   {
    "t": "2026-11-15T22:30:51.377064+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 10,
     "wl": 81
    }
+  },
+  {
+   "t": "2026-11-22T22:01:13.702642+00:00",
+   "raw": {
+    "wl-stoerungen": 46,
+    "wl-hinweise": 85,
+    "oebb": 157,
+    "baustellen-linien": 49,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 25,
+    "oebb": 134,
+    "baustellen": 60
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 10,
+    "wl": 81
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-22T21:31:06.094486+00:00"
+   "last_ok": "2026-11-22T22:01:13.702642+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-22T21:31:06.094486+00:00"
+   "last_ok": "2026-11-22T22:01:13.702642+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-22T21:31:06.094486+00:00"
+   "last_ok": "2026-11-22T22:01:13.702642+00:00"
   }
  }
 }
