@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261122-0003, I20260925-0011, I20260909-0007, I20261122-0004, I20261020-0029"
+    "trafficInfoNameList": "I20261122-0003, I20260925-0011, I20261122-0005, I20260909-0007, I20261122-0004, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1880-101, R1881-101, R1875-101, R1884-101, R1876-101, R1883-101, R1882-101, R3886-480, R2378-627, R2343-125, R2343-626, R2359-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2372-125, R293-474, R318-437, R2370-125, R2371-125, R2558-125, R1974-466, R1199-205, R500-101, R2972-409, R898-409, R900-409, R901-409, R902-409, R2880-409, R2881-409, R2953-409, R2969-409, R2970-409, R2971-409, R2973-409, R2977-409, R2978-409, R8192-409, R1282-410, R2989-410, R2988-410, R2987-410, R2986-410, R2984-410, R2983-410, R2982-410, R2964-410, R2981-410, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1881-101, R1882-101, R1880-101, R1876-101, R1884-101, R1875-101, R1883-101, R3886-480, R2370-125, R293-474, R318-437, R2359-125, R2371-125, R2378-627, R2343-125, R2343-626, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2558-125, R1974-466, R1199-205, R500-101, R2972-409, R898-409, R900-409, R901-409, R902-409, R2880-409, R2881-409, R2953-409, R2969-409, R2970-409, R2971-409, R2973-409, R2977-409, R2978-409, R8192-409, R1282-410, R2982-410, R2983-410, R2964-410, R2989-410, R2988-410, R2987-410, R2986-410, R2984-410, R2981-410, R2968-410, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -259,6 +259,53 @@
      "start": "2026-11-22T07:28:00.000+0100"
     },
     "title": "U4: Verspätungen"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Die Linie U1 fährt derzeit zwischen den Stationen Kagran und Kagraner Platz in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig. Voraussichtliche Dauer: 08:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Kagran.",
+    "descriptionHTML": "<p>Die Linie U1 fährt derzeit zwischen den Stationen Kagran und Kagraner Platz in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 08:30 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Kagran.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Die Linie U1 fährt derzeit zwischen den Stationen Kagran und Kagraner Platz in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 08:30 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Kagran.</p>",
+       "descriptionPlain": "Die Linie U1 fährt derzeit zwischen den Stationen Kagran und Kagraner Platz in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig. Voraussichtliche Dauer: 08:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Kagran.",
+       "title": "U1: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261122-0005",
+    "owner": "WL",
+    "parentName": "I20261122-0005",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 301,
+      "lineName": "U1",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4127
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-22T07:47:00.000+0100",
+     "lastUpdate": "2026-11-22T07:47:00.000+0100",
+     "start": "2026-11-22T07:46:00.000+0100"
+    },
+    "title": "U1: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -930,6 +977,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fremdunfall\nBusse halten am Gleiskörper",
+    "name": "R2968-410",
+    "owner": "WL",
+    "parentName": "R2968-410",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     2968
+    ],
+    "time": {
+     "end": "2026-11-22T08:32:00.000+0100",
+     "start": "2026-11-22T07:33:01.000+0100"
+    },
+    "title": "Fremdunfall\nBusse halten am Gleiskörper"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
     "name": "R2969-409",
     "owner": "WL",
@@ -1091,7 +1161,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBusse halten am Gleiskörper",
     "name": "R2981-410",
     "owner": "WL",
     "parentName": "R2981-410",
@@ -1106,10 +1176,10 @@
      2981
     ],
     "time": {
-     "end": "2026-11-22T08:20:00.000+0100",
+     "end": "2026-11-22T08:32:00.000+0100",
      "start": "2026-11-22T07:21:00.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBusse halten am Gleiskörper"
    },
    {
     "alertCause": "undefined alert cause",

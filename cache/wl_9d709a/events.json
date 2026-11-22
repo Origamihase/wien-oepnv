@@ -678,6 +678,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10A: Fremdunfall Busse halten am Gleiskörper",
+    "description": "Fremdunfall\nBusse halten am Gleiskörper",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "0f1652264569533ec4aad72b7e1213b8ffc84f855ad8f717c0262ea874800afc",
+    "pubDate": "2026-11-22T07:21:00+01:00",
+    "starts_at": "2026-11-22T07:33:01+01:00",
+    "ends_at": "2026-11-22T08:32:00+01:00",
+    "_identity": "wl|störung|L=10A|D=2026-11-22|TK=fremdunfall busse halten am gleiskörper"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -974,6 +986,22 @@
     "starts_at": "2026-11-22T07:20:32+01:00",
     "ends_at": "2026-11-22T08:20:00+01:00",
     "_identity": "wl|störung|L=9A|D=2026-11-22|TK=fahrtbehinderung fremder verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Rettungseinsatz",
+    "description": "Die Linie U1 fährt derzeit zwischen den Stationen Kagran und Kagraner Platz in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig. Voraussichtliche Dauer: 08:30 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Kagran.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
+    "pubDate": "2026-11-22T07:46:00+01:00",
+    "starts_at": "2026-11-22T07:46:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U1|D=2026-11-22|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261122-0005"
+    ],
+    "_incident_start": "2026-11-22T07:46:00+01:00"
   },
   {
     "source": "Wiener Linien",

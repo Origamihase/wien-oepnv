@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 22 Nov 2026 07:30:43 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 22 Nov 2026 08:00:47 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U1: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945</guid>
+      <pubDate>Sun, 22 Nov 2026 07:46:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Sun, 22 Nov 2026 07:46:00 +0100</ext:first_seen>
+      <ext:starts_at>Sun, 22 Nov 2026 07:46:00 +0100</ext:starts_at>
+      <description>The U1 line currently runs between the stations Kagran and Kagraner Platz in both directions on track 2 and therefore runs irregularly. [Since 07:46]</description>
+      <content:encoded><![CDATA[The U1 line currently runs between the stations Kagran and Kagraner Platz in both directions on track 2 and therefore runs irregularly.<br/>[Since 07:46]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[U4: Delays]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -47,8 +60,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sun, 22 Nov 2026 07:19:00 +0100</ext:first_seen>
       <ext:starts_at>Sun, 22 Nov 2026 07:19:00 +0100</ext:starts_at>
-      <description>Line 10A: service obstruction in both directions. Expected until 07:40. Reason: third-party traffic accident in the area of Gersthofer Straße 41. [Since 07:19]</description>
-      <content:encoded><![CDATA[Line 10A: service obstruction in both directions. Expected until 07:40. Reason: third-party traffic accident in the area of Gersthofer Straße 41.<br/>[Since 07:19]]]></content:encoded>
+      <description>Buses stop at the track body. Line 10A: service obstruction in both directions. [Since 07:19]</description>
+      <content:encoded><![CDATA[Buses stop at the track body. Line 10A: service obstruction in both directions.<br/>[Since 07:19]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>
@@ -132,21 +145,6 @@
       <ext:ends_at>Mon, 23 Nov 2026 11:00:00 +0100</ext:ends_at>
       <description>On Monday, the 23.11.2026 will be Strauchgasse and Herrengasse in the period between approx.10:00 to approx.11:00, in 1010 Vienna due to an exercise on the … bollard lock system [Until Mon 23.11.]</description>
       <content:encoded><![CDATA[On Monday, the 23.11.2026 will be Strauchgasse and Herrengasse in the period between approx.10:00 to approx.11:00, in 1010 Vienna due to an exercise on the … bollard lock system<br/>[Until Mon 23.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[8A: Küniglberg, ORF Centre]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5aeaa62483dca9fdec215375dbb4563e5a96d5c2305faf7f534ce5f2edd88d19</guid>
-      <pubDate>Thu, 12 Nov 2026 10:13:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 12 Nov 2026 10:13:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 16 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Tue, 24 Nov 2026 09:00:00 +0100</ext:ends_at>
-      <georss:point>48.175514 16.291612</georss:point>
-      <description>Würzburggasse after the driveway to Friedhof → Würzburggasse 49. Stop relocation of line 8A towards Bahnhof Meidling. Reason: roadworks. [Until Tue 24.11.]</description>
-      <content:encoded><![CDATA[Würzburggasse after the driveway to Friedhof → Würzburggasse 49. Stop relocation of line 8A towards Bahnhof Meidling. Reason: roadworks.<br/>[Until Tue 24.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
