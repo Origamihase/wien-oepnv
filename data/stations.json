@@ -10696,8 +10696,8 @@
         "Wien-Aspern-Nord-(WL) Bf",
         "Wien-Aspern-Nord-(WL) bf"
       ],
-      "latitude": 48.234317,
-      "longitude": 16.504541,
+      "latitude": 48.23435,
+      "longitude": 16.504511,
       "source": "hafas,oebb,oebb_geonetz,wl",
       "_in_vienna_basis": [
         48.234663,
@@ -10711,6 +10711,12 @@
           "name": "Aspern Nord S U",
           "latitude": 48.2346117,
           "longitude": 16.5041808
+        },
+        {
+          "stop_id": "2874",
+          "name": "Aspern Nord S U",
+          "latitude": 48.2346117,
+          "longitude": 16.5042706
         },
         {
           "stop_id": "3339",
@@ -10759,7 +10765,9 @@
       "ifopt_id": "at:49:910",
       "address": "1220 Wien,",
       "wl_lines": [
+        "25",
         "26",
+        "27",
         "84A",
         "89A",
         "89AR",
@@ -57649,10 +57657,7 @@
       ],
       "source": "wl",
       "latitude": 48.15265,
-      "longitude": 16.403426,
-      "wl_lines": [
-        "68A"
-      ]
+      "longitude": 16.403426
     },
     {
       "name": "Wien Burgersteingasse (WL)",
@@ -68099,7 +68104,7 @@
           "longitude": 16.3085277
         },
         {
-          "stop_id": "560",
+          "stop_id": "3468",
           "name": "Dornbach",
           "latitude": 48.2261863,
           "longitude": 16.3079258
@@ -68189,6 +68194,7 @@
       "wl_lines": [
         "2",
         "9",
+        "10",
         "12",
         "43",
         "43A",
@@ -91862,6 +91868,7 @@
       "latitude": 48.244073,
       "longitude": 16.379545,
       "wl_lines": [
+        "1",
         "2",
         "5",
         "5A",
@@ -116100,135 +116107,6 @@
       "longitude": 16.479023,
       "wl_lines": [
         "92A"
-      ]
-    },
-    {
-      "name": "Wien Hederichgasse (WL)",
-      "in_vienna": true,
-      "pendler": false,
-      "wl_diva": "60201804",
-      "wl_stops": [
-        {
-          "stop_id": "4837",
-          "name": "Hederichgasse",
-          "latitude": 48.1527936,
-          "longitude": 16.4055188
-        }
-      ],
-      "aliases": [
-        "Wien Hederichgasse (WL)",
-        "Bahnhof Hederichg.",
-        "Bahnhof Hederichg. (WL)",
-        "Bahnhof Hederichg. Station",
-        "Bahnhof Hederichgasse",
-        "Bahnhof Hederichgasse (WL)",
-        "Bahnhof Hederichgasse Station",
-        "Bahnhof Wien Hederichg.",
-        "Bahnhof Wien Hederichgasse",
-        "Bahnhof Wien-Hederichg.",
-        "Bahnhof Wien-Hederichg.-(WL)",
-        "Bahnhof Wien-Hederichgasse",
-        "Bahnhof Wien-Hederichgasse-(WL)",
-        "Bf Hederichg.",
-        "bf Hederichg.",
-        "Bf Hederichg. (WL)",
-        "bf Hederichg. (WL)",
-        "Bf Hederichg. Station",
-        "bf Hederichg. Station",
-        "Bf Hederichgasse",
-        "bf Hederichgasse",
-        "Bf Hederichgasse (WL)",
-        "bf Hederichgasse (WL)",
-        "Bf Hederichgasse Station",
-        "bf Hederichgasse Station",
-        "Bf Wien Hederichg.",
-        "bf Wien Hederichg.",
-        "Bf Wien Hederichgasse",
-        "bf Wien Hederichgasse",
-        "Bf Wien-Hederichg.",
-        "bf Wien-Hederichg.",
-        "Bf Wien-Hederichg.-(WL)",
-        "bf Wien-Hederichg.-(WL)",
-        "Bf Wien-Hederichgasse",
-        "bf Wien-Hederichgasse",
-        "Bf Wien-Hederichgasse-(WL)",
-        "bf Wien-Hederichgasse-(WL)",
-        "Hederichg.",
-        "Hederichg. (WL)",
-        "Hederichg. (WL) Bahnhof",
-        "Hederichg. (WL) Bf",
-        "Hederichg. (WL) bf",
-        "Hederichg. Bahnhof",
-        "Hederichg. Bf",
-        "Hederichg. bf",
-        "Hederichg. Station",
-        "Hederichg. Station Bahnhof",
-        "Hederichg. Station Bf",
-        "Hederichg. Station bf",
-        "Hederichgasse",
-        "Hederichgasse (WL)",
-        "Hederichgasse (WL) Bahnhof",
-        "Hederichgasse (WL) Bf",
-        "Hederichgasse (WL) bf",
-        "Hederichgasse Bahnhof",
-        "Hederichgasse Bf",
-        "Hederichgasse bf",
-        "Hederichgasse Station",
-        "Hederichgasse Station Bahnhof",
-        "Hederichgasse Station Bf",
-        "Hederichgasse Station bf",
-        "Vienna Hederichgasse",
-        "Vienna Hederichgasse (WL)",
-        "Vienna Hederichgasse Station",
-        "Vienna Hederichgasse U",
-        "Vienna Hederichgasse U (VOR)",
-        "Wien Hederichg.",
-        "Wien Hederichg. (WL)",
-        "Wien Hederichg. (WL) Bahnhof",
-        "Wien Hederichg. (WL) Bf",
-        "Wien Hederichg. (WL) bf",
-        "Wien Hederichg. Bahnhof",
-        "Wien Hederichg. Bf",
-        "Wien Hederichg. bf",
-        "Wien Hederichg. Station",
-        "Wien Hederichg. Station Bahnhof",
-        "Wien Hederichg. Station Bf",
-        "Wien Hederichg. Station bf",
-        "Wien Hederichgasse",
-        "Wien Hederichgasse (WL) Bahnhof",
-        "Wien Hederichgasse (WL) Bf",
-        "Wien Hederichgasse (WL) bf",
-        "Wien Hederichgasse Bahnhof",
-        "Wien Hederichgasse Bf",
-        "Wien Hederichgasse bf",
-        "Wien Hederichgasse Station",
-        "Wien Hederichgasse Station Bahnhof",
-        "Wien Hederichgasse Station Bf",
-        "Wien Hederichgasse Station bf",
-        "Wien Hederichgasse U",
-        "Wien Hederichgasse U (VOR)",
-        "Wien-Hederichg.",
-        "Wien-Hederichg. Bahnhof",
-        "Wien-Hederichg. Bf",
-        "Wien-Hederichg. bf",
-        "Wien-Hederichg.-(WL)",
-        "Wien-Hederichg.-(WL) Bahnhof",
-        "Wien-Hederichg.-(WL) Bf",
-        "Wien-Hederichg.-(WL) bf",
-        "Wien-Hederichgasse",
-        "Wien-Hederichgasse Bahnhof",
-        "Wien-Hederichgasse Bf",
-        "Wien-Hederichgasse bf",
-        "Wien-Hederichgasse-(WL)",
-        "Wien-Hederichgasse-(WL) Bahnhof",
-        "Wien-Hederichgasse-(WL) Bf",
-        "Wien-Hederichgasse-(WL) bf"
-      ],
-      "source": "wl",
-      "latitude": 48.152794,
-      "longitude": 16.405519,
-      "wl_lines": [
-        "68A"
       ]
     },
     {
@@ -142816,7 +142694,7 @@
           "longitude": 16.3390255
         },
         {
-          "stop_id": "3477",
+          "stop_id": "365",
           "name": "Josefstädter Straße U",
           "latitude": 48.2116299,
           "longitude": 16.3395286
@@ -164525,9 +164403,15 @@
       "wl_stops": [
         {
           "stop_id": "3012",
-          "name": "Laaer Berg, Kurpark Nordeingang",
+          "name": "Kurpark Nordeingang",
           "latitude": 48.1519186,
           "longitude": 16.4017369
+        },
+        {
+          "stop_id": "4837",
+          "name": "Kurpark Nordeingang",
+          "latitude": 48.1520505,
+          "longitude": 16.4017279
         }
       ],
       "aliases": [
@@ -164562,7 +164446,6 @@
         "Kurpark Nordeingang Station Bahnhof",
         "Kurpark Nordeingang Station Bf",
         "Kurpark Nordeingang Station bf",
-        "Laaer Berg, Kurpark Nordeingang",
         "Vienna Kurpark Nordeingang",
         "Vienna Kurpark Nordeingang (WL)",
         "Vienna Kurpark Nordeingang Station",
@@ -164591,8 +164474,8 @@
         "Wien-Kurpark-Nordeingang-(WL) bf"
       ],
       "source": "wl",
-      "latitude": 48.151919,
-      "longitude": 16.401737,
+      "latitude": 48.151985,
+      "longitude": 16.401732,
       "wl_lines": [
         "68A"
       ]
@@ -164605,7 +164488,7 @@
       "wl_stops": [
         {
           "stop_id": "4836",
-          "name": "Laaer Berg, Kurpark Nordosteingang",
+          "name": "Laaer Berg",
           "latitude": 48.1517209,
           "longitude": 16.4065159
         }
@@ -164642,7 +164525,7 @@
         "Kurpark Nordosteingang Station Bahnhof",
         "Kurpark Nordosteingang Station Bf",
         "Kurpark Nordosteingang Station bf",
-        "Laaer Berg, Kurpark Nordosteingang",
+        "Laaer Berg",
         "Vienna Kurpark Nordosteingang",
         "Vienna Kurpark Nordosteingang (WL)",
         "Vienna Kurpark Nordosteingang Station",
@@ -216097,12 +215980,6 @@
           "longitude": 16.3487363
         },
         {
-          "stop_id": "2244",
-          "name": "Otto-Probst-Platz",
-          "latitude": 48.1539683,
-          "longitude": 16.3493741
-        },
-        {
           "stop_id": "3855",
           "name": "",
           "latitude": 48.1537585,
@@ -216308,10 +216185,9 @@
         "Wien-Otto-Probst-Platz-(WL) bf"
       ],
       "source": "wl",
-      "latitude": 48.153907,
-      "longitude": 16.349037,
+      "latitude": 48.153886,
+      "longitude": 16.348925,
       "wl_lines": [
-        "11",
         "16A",
         "66A",
         "N65"
@@ -240236,15 +240112,14 @@
           "longitude": 16.3232601
         },
         {
-          "stop_id": "6024",
-          "name": "Bahnhof Rudolfsheim (Bedarf)",
+          "stop_id": "7008",
+          "name": "Bhf.Rdh. / Halle III - A",
           "latitude": 48.19059,
           "longitude": 16.3226762
         }
       ],
       "aliases": [
         "Wien Rudolfsheim, Anschützgasse (WL)",
-        "Bahnhof Rudolfsheim (Bedarf)",
         "Bahnhof Rudolfsheim, Anschuetzg.",
         "Bahnhof Rudolfsheim, Anschuetzg. (WL)",
         "Bahnhof Rudolfsheim, Anschuetzg. Station",
@@ -240317,6 +240192,7 @@
         "bf Wien-Rudolfsheim,-Anschützgasse",
         "Bf Wien-Rudolfsheim,-Anschützgasse-(WL)",
         "bf Wien-Rudolfsheim,-Anschützgasse-(WL)",
+        "Bhf.Rdh. / Halle III - A",
         "Rudolfsheim, Anschuetzg.",
         "Rudolfsheim, Anschuetzg. (WL)",
         "Rudolfsheim, Anschuetzg. (WL) Bahnhof",
