@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261122-0013-F01, I20260925-0011, I20260909-0007, I20261122-0011, I20261122-0012-F01, I20261122-0012, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261122-0012-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1884-101, R1883-101, R1882-101, R1875-101, R1881-101, R1880-101, R1876-101, R3886-480, R2379-627, R2380-627, R2345-127, R2378-627, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R293-474, R318-437, R2373-126, R2343-626, R2343-125, R2359-125, R2558-125, R1974-466, R1199-205, R500-101, R272-105, R360-105, R363-105, R362-105, R361-105, R366-105, R364-105, R373-105, R370-105, R367-105, R376-105, R375-105, R374-105, R377-105, R1315-141, R1316-141, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1884-101, R1883-101, R1882-101, R1880-101, R1881-101, R1875-101, R1876-101, R3886-480, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R293-474, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R318-437, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,98 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "57A": "ptBusCity"
-     }
-    },
-    "description": "Linie 57A: Unregelmäßige Intervalle in Richtung Rudolfsheim, Anschützgasse. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 57A:<br>Unregelmäßige Intervalle in Richtung Rudolfsheim, Anschützgasse. <br><br>Grund: Verkehrsunfall.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 57A:<br>Unregelmäßige Intervalle in Richtung Rudolfsheim, Anschützgasse. <br><br>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 57A: Unregelmäßige Intervalle in Richtung Rudolfsheim, Anschützgasse. Grund: Verkehrsunfall.",
-       "title": "57A: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261122-0011",
-    "owner": "WL",
-    "parentName": "I20261122-0011",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "57A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 457,
-      "lineName": "57A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-22T13:07:00.000+0100",
-     "lastUpdate": "2026-11-22T13:07:00.000+0100",
-     "resume": "2026-11-22T13:06:00.000+0100",
-     "start": "2026-11-22T13:06:00.000+0100"
-    },
-    "title": "57A: Verkehrsunfall"
-   },
-   {
-    "alertCause": "fire",
-    "alertCauseId": 5,
-    "attributes": {
-     "relatedLineTypes": {
-      "5": "ptTram"
-     }
-    },
-    "description": "Linie 5: Betrieb nur zwischen Praterstern S U und Blindengasse. Weiterfahrt bis Josefstädter Straße U. Ersatz: Linie U6. Voraussichtliche Dauer: 14:30 Uhr. Grund: Feuerwehreinsatz im Bereich Kaiserstraße # Neustiftgasse.",
-    "descriptionHTML": "<p>Linie 5: <br>Betrieb nur zwischen Praterstern S U und Blindengasse.<br>Weiterfahrt bis Josefstädter Straße U.</p><p>Ersatz: Linie U6.</p><p>Voraussichtliche Dauer: 14:30 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Kaiserstraße # Neustiftgasse.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 5: <br>Betrieb nur zwischen Praterstern S U und Blindengasse.<br>Weiterfahrt bis Josefstädter Straße U.</p><p>Ersatz: Linie U6.</p><p>Voraussichtliche Dauer: 14:30 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Kaiserstraße # Neustiftgasse.</p>",
-       "descriptionPlain": "Linie 5: Betrieb nur zwischen Praterstern S U und Blindengasse. Weiterfahrt bis Josefstädter Straße U. Ersatz: Linie U6. Voraussichtliche Dauer: 14:30 Uhr. Grund: Feuerwehreinsatz im Bereich Kaiserstraße # Neustiftgasse.",
-       "title": "5: Feuerwehreinsatz"
-      }
-     }
-    ],
-    "location": "Kaiserstraße / Neustiftgasse",
-    "name": "I20261122-0012",
-    "owner": "WL",
-    "parentName": "I20261122-0012",
-    "priority": "1",
-    "reasonId": 11,
-    "reasonName": "Feuerwehreinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 105,
-      "lineName": "5",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-22T13:35:00.000+0100",
-     "end": "2026-11-22T14:28:00.000+0100",
-     "lastUpdate": "2026-11-22T14:28:00.000+0100",
-     "resume": "2026-11-22T14:28:00.000+0100",
-     "start": "2026-11-22T13:34:00.000+0100"
-    },
-    "title": "5: Feuerwehreinsatz"
-   },
-   {
     "alertCause": "fire",
     "alertCauseId": 5,
     "attributes": {
@@ -309,54 +217,6 @@
     "title": "5: Feuerwehreinsatz"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "41": "ptTram"
-     }
-    },
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "41: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261122-0013-F01",
-    "owner": "WL",
-    "parentName": "I20261122-0013",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 141,
-      "lineName": "41",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     1310
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-22T13:48:00.000+0100",
-     "end": "2026-11-22T14:43:00.000+0100",
-     "lastUpdate": "2026-11-22T14:01:00.000+0100",
-     "start": "2026-11-22T13:37:00.000+0100"
-    },
-    "title": "41: Rettungseinsatz"
-   },
-   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -382,48 +242,22 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1315-141",
+    "description": "Haltestelle\naufgelassen!\n\nStop closed!",
+    "name": "R17-0",
     "owner": "WL",
-    "parentName": "R1315-141",
+    "parentName": "R17-0",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
     "relatedStops": [
-     1315
+     17
     ],
     "time": {
-     "end": "2026-11-22T14:43:00.000+0100",
-     "start": "2026-11-22T13:43:37.000+0100"
+     "end": "2026-11-22T22:30:00.000+0100",
+     "start": "2026-11-22T15:00:15.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1316-141",
-    "owner": "WL",
-    "parentName": "R1316-141",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "41"
-    ],
-    "relatedStops": [
-     1316
-    ],
-    "time": {
-     "end": "2026-11-22T14:43:00.000+0100",
-     "start": "2026-11-22T13:43:37.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Haltestelle\naufgelassen!\n\nStop closed!"
    },
    {
     "alertCause": "undefined alert cause",
@@ -934,29 +768,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R272-105",
-    "owner": "WL",
-    "parentName": "R272-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     272
-    ],
-    "time": {
-     "end": "2026-11-22T14:35:00.000+0100",
-     "start": "2026-11-22T13:36:08.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -1003,305 +814,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R360-105",
-    "owner": "WL",
-    "parentName": "R360-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     360
-    ],
-    "time": {
-     "end": "2026-11-22T14:35:00.000+0100",
-     "start": "2026-11-22T13:36:08.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R361-105",
-    "owner": "WL",
-    "parentName": "R361-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     361
-    ],
-    "time": {
-     "end": "2026-11-22T14:35:00.000+0100",
-     "start": "2026-11-22T13:36:08.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R362-105",
-    "owner": "WL",
-    "parentName": "R362-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     362
-    ],
-    "time": {
-     "end": "2026-11-22T14:35:00.000+0100",
-     "start": "2026-11-22T13:36:08.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R363-105",
-    "owner": "WL",
-    "parentName": "R363-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     363
-    ],
-    "time": {
-     "end": "2026-11-22T14:35:00.000+0100",
-     "start": "2026-11-22T13:36:08.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nBetrieb ab Blindengasse",
-    "name": "R364-105",
-    "owner": "WL",
-    "parentName": "R364-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     364
-    ],
-    "time": {
-     "end": "2026-11-22T14:36:00.000+0100",
-     "start": "2026-11-22T13:37:38.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Blindengasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Feuerwehreinsatz",
-    "name": "R366-105",
-    "owner": "WL",
-    "parentName": "R366-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     366
-    ],
-    "time": {
-     "end": "2026-11-22T14:35:00.000+0100",
-     "start": "2026-11-22T13:36:08.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nBetrieb ab Blindengasse",
-    "name": "R367-105",
-    "owner": "WL",
-    "parentName": "R367-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     367
-    ],
-    "time": {
-     "end": "2026-11-22T14:36:00.000+0100",
-     "start": "2026-11-22T13:37:38.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Blindengasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nBetrieb ab Blindengasse",
-    "name": "R370-105",
-    "owner": "WL",
-    "parentName": "R370-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     370
-    ],
-    "time": {
-     "end": "2026-11-22T14:36:00.000+0100",
-     "start": "2026-11-22T13:37:38.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Blindengasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nBetrieb ab Blindengasse",
-    "name": "R373-105",
-    "owner": "WL",
-    "parentName": "R373-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     373
-    ],
-    "time": {
-     "end": "2026-11-22T14:36:00.000+0100",
-     "start": "2026-11-22T13:37:38.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Blindengasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nBetrieb ab Blindengasse",
-    "name": "R374-105",
-    "owner": "WL",
-    "parentName": "R374-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     374
-    ],
-    "time": {
-     "end": "2026-11-22T14:36:00.000+0100",
-     "start": "2026-11-22T13:37:38.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Blindengasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nBetrieb ab Blindengasse",
-    "name": "R375-105",
-    "owner": "WL",
-    "parentName": "R375-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     375
-    ],
-    "time": {
-     "end": "2026-11-22T14:36:00.000+0100",
-     "start": "2026-11-22T13:37:38.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Blindengasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nBetrieb ab Blindengasse",
-    "name": "R376-105",
-    "owner": "WL",
-    "parentName": "R376-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     376
-    ],
-    "time": {
-     "end": "2026-11-22T14:36:00.000+0100",
-     "start": "2026-11-22T13:37:38.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nBetrieb ab Blindengasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Feuerwehreinsatz\nZüge halten bei Linie 12",
-    "name": "R377-105",
-    "owner": "WL",
-    "parentName": "R377-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     377
-    ],
-    "time": {
-     "end": "2026-11-22T14:37:00.000+0100",
-     "start": "2026-11-22T13:38:06.000+0100"
-    },
-    "title": "Feuerwehreinsatz\nZüge halten bei Linie 12"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
     "name": "R3886-480",
     "owner": "WL",
@@ -1344,6 +856,26 @@
      "start": "2026-11-17T00:00:05.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Haltestelle\naufgelassen!\n\nStop closed!",
+    "name": "R47-0",
+    "owner": "WL",
+    "parentName": "R47-0",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedStops": [
+     47
+    ],
+    "time": {
+     "end": "2026-11-22T22:30:00.000+0100",
+     "start": "2026-11-22T15:00:15.000+0100"
+    },
+    "title": "Haltestelle\naufgelassen!\n\nStop closed!"
    },
    {
     "alertCause": "undefined alert cause",
