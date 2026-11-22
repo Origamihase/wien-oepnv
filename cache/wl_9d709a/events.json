@@ -663,45 +663,25 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "12A: Fahrtbehinderung Falschparker",
-    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nFalschparker",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
-    "pubDate": "2026-11-22T11:42:00+01:00",
+    "pubDate": "2026-11-22T12:01:58+01:00",
     "starts_at": "2026-11-22T12:01:58+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=12A|D=2026-11-22|TK=falschparker",
-    "_wl_ids": [
-      "I20261122-0009"
-    ],
-    "_incident_start": "2026-11-22T11:42:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12A: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "711bdd6742039946a988fc6856f5ba58cc852d11dc70306ccf9c11dcbf6587d7",
-    "pubDate": "2026-11-22T11:42:56+01:00",
-    "starts_at": "2026-11-22T11:42:56+01:00",
-    "ends_at": "2026-11-22T12:42:00+01:00",
-    "_identity": "wl|störung|L=12A|D=2026-11-22|TK=rettungseinsatz"
+    "ends_at": "2026-11-22T13:01:00+01:00",
+    "_identity": "wl|störung|L=12A|D=2026-11-22|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "12: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "301231dd4b3d1424c578c356e1ad1eaef839db54dc847e98930e9441759060a5",
-    "pubDate": "2026-11-22T12:01:00+01:00",
+    "pubDate": "2026-11-22T12:03:56+01:00",
     "starts_at": "2026-11-22T12:03:57+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=12|D=2026-11-22|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261122-0010"
-    ],
-    "_incident_start": "2026-11-22T12:01:00+01:00"
+    "ends_at": "2026-11-22T13:03:00+01:00",
+    "_identity": "wl|störung|L=12|D=2026-11-22|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -942,18 +922,6 @@
     "starts_at": "2026-11-19T00:00:28+01:00",
     "ends_at": "2026-11-22T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-11-19|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "cf8f02a0c1ead56a53f8dbdae00bb44eef624b39e9c526ac826dbb03b67ee34a",
-    "pubDate": "2026-11-22T11:30:55+01:00",
-    "starts_at": "2026-11-22T11:31:55+01:00",
-    "ends_at": "2026-11-22T12:31:00+01:00",
-    "_identity": "wl|störung|L=49|D=2026-11-22|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
