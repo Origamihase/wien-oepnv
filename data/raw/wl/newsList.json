@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_576, ftazW_1354336, ftazW_1353812, ftazW_1353813, ftazW_1351086, ftazW_85, ftazW_1016544, ftazW_1018064, ftazW_480, ftazW_629, ftazW_756, ftazW_481, ftazW_80, ftazW_1016545, ftazW_1018063, ftazW_81, ftazW_739, ftazW_1017627, ftazW_605, ftazW_478, ftazW_604, ftazW_479, ftazW_725, ftazW_740, ftazW_1016611"
+    "trafficInfoNameList": "ftazW_576, ftazW_1353812, ftazW_1353813, ftazW_1351086, ftazW_85, ftazW_1016544, ftazW_1018064, ftazW_480, ftazW_629, ftazW_756, ftazW_481, ftazW_80, ftazW_1016545, ftazW_1018063, ftazW_81, ftazW_739, ftazW_1017627, ftazW_605, ftazW_478, ftazW_604, ftazW_479, ftazW_725, ftazW_740, ftazW_1016611"
    }
   ],
   "poiCategoryGroups": [
@@ -3326,53 +3326,6 @@
      "start": "2026-11-23T01:15:00.000+0100"
     },
     "title": "Erlaaer Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "23.11.2026 00:45",
-     "ausVon": "22.11.2026 20:45",
-     "location": "Passage - Bahnsteig Linie 1, 18, 62, Badner Bahn",
-     "rbls": [
-      400,
-      400,
-      851
-     ],
-     "reason": "",
-     "relatedLines": [
-      "18",
-      "62",
-      "1",
-      "LB"
-     ],
-     "station": "Matzleinsdorfer Platz",
-     "status": "geplante Wartung",
-     "towards": "18 Schlachthausgasse, WLB Oper, Karlsplatz U, 62 Lainz, Wolkersbergenstraße"
-    },
-    "description": "Passage - Bahnsteig Linie 1, 18, 62, Badner Bahn",
-    "elevatorId": "MP 05",
-    "name": "ftazW_1354336",
-    "parentName": "ftazW_1354336",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "18",
-     "62",
-     "1",
-     "LB"
-    ],
-    "relatedStops": [
-     400,
-     400,
-     851
-    ],
-    "time": {
-     "end": "2026-11-23T00:45:00.000+0100",
-     "start": "2026-11-22T20:45:00.000+0100"
-    },
-    "title": "Matzleinsdorfer Platz"
    },
    {
     "alertCause": "undefined alert cause",
