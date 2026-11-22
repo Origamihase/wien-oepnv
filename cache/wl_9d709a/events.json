@@ -926,6 +926,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "66A: Fahrtbehinderung Falschparker",
+    "description": "Linie 66A: Fahrtbehinderung in Richtung Reumannplatz U. Voraussichtliche Dauer: 20:30 Uhr. Grund: Falschparker im Bereich Rudolf-Waisenhorn-Gasse 26.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "7fdb8d218c98770afcae364ee84c6bae842a6db49d7e944b0574b390a1d1a214",
+    "pubDate": "2026-11-22T19:57:00+01:00",
+    "starts_at": "2026-11-22T19:58:46+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=66A|D=2026-11-22|TK=falschparker",
+    "_wl_ids": [
+      "I20261122-0017"
+    ],
+    "_incident_start": "2026-11-22T19:57:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "74A: Einstieg Leberstraße vor S-Bahn-Gebäude",
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "link": "https://www.wienerlinien.at/betriebsinfo",
