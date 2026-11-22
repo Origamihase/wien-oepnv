@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sun, 22 Nov 2026 15:30:35 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 22 Nov 2026 16:00:45 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[52: Police operation]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">e434fd6d0742cbac394675e6b2cc5f55ef6198710b99799268ba19266e8f7734</guid>
+      <pubDate>Sun, 22 Nov 2026 15:57:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Sun, 22 Nov 2026 15:57:00 +0100</ext:first_seen>
+      <ext:starts_at>Sun, 22 Nov 2026 15:57:00 +0100</ext:starts_at>
+      <description>Service obstruction towards Westbahnhof. Expected until 16:15. Reason: police operation in the stop area of Baumgarten. [Since 15:57]</description>
+      <content:encoded><![CDATA[Service obstruction towards Westbahnhof. Expected until 16:15. Reason: police operation in the stop area of Baumgarten.<br/>[Since 15:57]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[O: Fire-brigade operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -20,21 +33,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sun, 22 Nov 2026 15:27:00 +0100</ext:first_seen>
       <ext:starts_at>Sun, 22 Nov 2026 15:30:20 +0100</ext:starts_at>
-      <description>Service obstruction towards Bruno-Marek-Allee. Expected until 15:45. Reason: fire-brigade operation in the area of Invalidenstraße. [Since 15:27]</description>
-      <content:encoded><![CDATA[Service obstruction towards Bruno-Marek-Allee. Expected until 15:45. Reason: fire-brigade operation in the area of Invalidenstraße.<br/>[Since 15:27]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[5: Fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">1e75a876ba5d2fb19bc3545856b422cbe2876b7c531c7e805168d1258018e030</guid>
-      <pubDate>Sun, 22 Nov 2026 13:34:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Sun, 22 Nov 2026 13:34:00 +0100</ext:first_seen>
-      <ext:starts_at>Sun, 22 Nov 2026 13:34:00 +0100</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 13:34]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 13:34]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 15:27]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 15:27]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[Wien Hauptbahnhof ↔ Gramatneusiedl]]></title>

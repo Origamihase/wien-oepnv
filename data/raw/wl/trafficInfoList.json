@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261122-0012-F01, I20261122-0014, I20261020-0029"
+    "trafficInfoNameList": "I20261122-0014-F01, I20260925-0011, I20260909-0007, I20261122-0015, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R3886-480, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R318-437, R2359-125, R2343-626, R2343-125, R293-474, R2378-627, R2558-125, R1974-466, R1199-205, R500-101, R17-0, R47-0, R163-170, R164-170, R162-170, R346-170, R310-170, R311-170, R3446-170, R3445-170, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1881-101, R1880-101, R1876-101, R1875-101, R1883-101, R1882-101, R1884-101, R3886-480, R2379-627, R2380-627, R2345-127, R2359-125, R2343-626, R2343-125, R2378-627, R2370-125, R2371-125, R2372-125, R2373-125, R293-474, R318-437, R2373-127, R2373-126, R2558-125, R1974-466, R1199-205, R500-101, R17-0, R47-0, R163-170, R162-170, R164-170, R346-170, R311-170, R310-170, R3446-170, R3445-170, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -175,68 +175,22 @@
     "alertCauseId": 5,
     "attributes": {
      "relatedLineTypes": {
-      "5": "ptTram"
-     }
-    },
-    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "5: Feuerwehreinsatz"
-      }
-     }
-    ],
-    "location": "Kaiserstraße / Neustiftgasse",
-    "name": "I20261122-0012-F01",
-    "owner": "WL",
-    "parentName": "I20261122-0012",
-    "priority": "1",
-    "reasonId": 11,
-    "reasonName": "Feuerwehreinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 105,
-      "lineName": "5",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-22T14:28:00.000+0100",
-     "lastUpdate": "2026-11-22T14:28:00.000+0100",
-     "resume": "2026-11-22T14:28:00.000+0100",
-     "start": "2026-11-22T13:34:00.000+0100"
-    },
-    "title": "5: Feuerwehreinsatz"
-   },
-   {
-    "alertCause": "fire",
-    "alertCauseId": 5,
-    "attributes": {
-     "relatedLineTypes": {
       "O": "ptTram"
      }
     },
-    "description": "Linie O: Fahrtbehinderung in Richtung Bruno-Marek-Allee. Voraussichtliche Dauer: 15:45 Uhr. Grund: Feuerwehreinsatz im Bereich Invalidenstraße.",
-    "descriptionHTML": "<p>Linie O:<br>Fahrtbehinderung in Richtung Bruno-Marek-Allee.</p><p>Voraussichtliche Dauer: 15:45 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Invalidenstraße.</p>",
+    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie O:<br>Fahrtbehinderung in Richtung Bruno-Marek-Allee.</p><p>Voraussichtliche Dauer: 15:45 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Invalidenstraße.</p>",
-       "descriptionPlain": "Linie O: Fahrtbehinderung in Richtung Bruno-Marek-Allee. Voraussichtliche Dauer: 15:45 Uhr. Grund: Feuerwehreinsatz im Bereich Invalidenstraße.",
+       "descriptionHtml": "<p>Linie O: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "O: Feuerwehreinsatz"
       }
      }
     ],
     "location": "Invalidenstraße",
-    "name": "I20261122-0014",
+    "name": "I20261122-0014-F01",
     "owner": "WL",
     "parentName": "I20261122-0014",
     "priority": "1",
@@ -255,11 +209,59 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-22T15:28:00.000+0100",
-     "lastUpdate": "2026-11-22T15:28:00.000+0100",
+     "created": "2026-11-22T15:31:00.000+0100",
+     "lastUpdate": "2026-11-22T15:31:00.000+0100",
+     "resume": "2026-11-22T15:31:00.000+0100",
      "start": "2026-11-22T15:27:00.000+0100"
     },
     "title": "O: Feuerwehreinsatz"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "52": "ptTram"
+     }
+    },
+    "description": "Linie 52: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 16:15 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Baumgarten.",
+    "descriptionHTML": "<p>Linie 52:<br>Fahrtbehinderung in Richtung Westbahnhof S U.</p><p>Voraussichtliche Dauer: 16:15 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Baumgarten.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 52:<br>Fahrtbehinderung in Richtung Westbahnhof S U.</p><p>Voraussichtliche Dauer: 16:15 Uhr.</p><p>Grund: Polizeieinsatz im Haltestellenbereich Baumgarten.</p>",
+       "descriptionPlain": "Linie 52: Fahrtbehinderung in Richtung Westbahnhof S U. Voraussichtliche Dauer: 16:15 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Baumgarten.",
+       "title": "52: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261122-0015",
+    "owner": "WL",
+    "parentName": "I20261122-0015",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "52"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 152,
+      "lineName": "52",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     1545
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-22T15:57:00.000+0100",
+     "lastUpdate": "2026-11-22T15:57:00.000+0100",
+     "start": "2026-11-22T15:57:00.000+0100"
+    },
+    "title": "52: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
