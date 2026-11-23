@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261123-0034, I20260925-0011, I20260909-0007, I20261123-0028, I20261020-0029"
+    "trafficInfoNameList": "I20261123-0035, I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
@@ -171,99 +171,49 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "roadway damage",
-    "alertCauseId": 67,
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "U6": "ptMetro"
+      "27B": "ptBusCity"
      }
     },
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung.",
-    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Weichenstörung.</p>",
+    "description": "Linie 27B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie 27B:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Weichenstörung.</p>",
-       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung.",
-       "title": "U6: Verspätungen"
+       "descriptionHtml": "<p>Linie 27B:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie 27B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "27B: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261123-0028",
+    "name": "I20261123-0035",
     "owner": "WL",
-    "parentName": "I20261123-0028",
+    "parentName": "I20261123-0035",
     "priority": "1",
-    "reasonId": 39,
-    "reasonName": "Weichenstörung",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "U6"
+     "27B"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4636
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-23T15:30:00.000+0100",
-     "end": "2026-11-23T19:29:00.000+0100",
-     "lastUpdate": "2026-11-23T19:29:00.000+0100",
-     "resume": "2026-11-23T15:30:00.000+0100",
-     "start": "2026-11-23T15:30:00.000+0100"
-    },
-    "title": "U6: Verspätungen"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "37": "ptTram"
-     }
-    },
-    "description": "Linie 37: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
-    "descriptionHTML": "<p>Linie 37:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Falschparker.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 37:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Falschparker.</p>",
-       "descriptionPlain": "Linie 37: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
-       "title": "37: Falschparker"
-      }
-     }
-    ],
-    "name": "I20261123-0034",
-    "owner": "WL",
-    "parentName": "I20261123-0034",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 137,
-      "lineName": "37",
-      "vehicleType": "ptTram"
+      "lineId": 227,
+      "lineName": "27B",
+      "vehicleType": "ptBusCity"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-23T18:57:00.000+0100",
-     "end": "2026-11-23T19:37:00.000+0100",
-     "lastUpdate": "2026-11-23T19:28:00.000+0100",
-     "resume": "2026-11-23T18:56:00.000+0100",
-     "start": "2026-11-23T18:56:00.000+0100"
+     "created": "2026-11-23T19:52:00.000+0100",
+     "lastUpdate": "2026-11-23T19:52:00.000+0100",
+     "resume": "2026-11-23T19:51:00.000+0100",
+     "start": "2026-11-23T19:51:00.000+0100"
     },
-    "title": "37: Falschparker"
+    "title": "27B: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
