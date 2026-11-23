@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20261123-0038-F01, I20260909-0007, I20261020-0029, I20261123-0038-F02"
+    "trafficInfoNameList": "I20260925-0011, I20261123-0038-F01, I20261123-0040, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R2378-627, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2370-125, R2359-125, R2343-626, R2343-125, R293-474, R318-437, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R1875-101, R1876-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R380-105, R381-105, R377-105, R382-105, R211-105, R356-105, R355-105, R272-105, R354-112, R356-112, R355-112, R272-112, R211-112, R380-112, R458-112, R383-112, R382-112, R381-112, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R2373-126, R2373-127, R2343-626, R2372-125, R2371-125, R2370-125, R2359-125, R2343-125, R1875-101, R1876-101, R1880-101, R1881-101, R2378-627, R293-474, R318-437, R2345-127, R2380-627, R1882-101, R2379-627, R1883-101, R1884-101, R2373-125, R3886-480, R2558-125, R1974-466, R1199-205, R1206-410, R2963-410, R2964-410, R2985-410, R2986-410, R2987-410, R2988-410, R2989-410, R2960-410, R2961-410, R2962-410, R2966-410, R564-146, R1383-146, R1382-146, R1381-146, R1385-146, R1384-146, R1379-146, R1375-146, R1378-146, R1377-146, R1376-146, R586-146, R585-146, R1386-146, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -219,52 +219,49 @@
     "title": "5: Schadhaftes Fahrzeug"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
+    "alertCause": "accident",
+    "alertCauseId": 77,
     "attributes": {
      "relatedLineTypes": {
-      "12": "ptTram"
+      "46": "ptTram"
      }
     },
-    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie 46: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 23:15 Uhr. Grund: Fremder Verkehrsunfall im Bereich Thaliastraße.",
+    "descriptionHTML": "<p>Linie 46:<br>Fahrtbehinderung in beiden Richtungen.</p><p>Voraussichtliche Dauer: 23:15 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Thaliastraße.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "12: Schadhaftes Fahrzeug"
+       "descriptionHtml": "<p>Linie 46:<br>Fahrtbehinderung in beiden Richtungen.</p><p>Voraussichtliche Dauer: 23:15 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Bereich Thaliastraße.</p>",
+       "descriptionPlain": "Linie 46: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 23:15 Uhr. Grund: Fremder Verkehrsunfall im Bereich Thaliastraße.",
+       "title": "46: Fremder Verkehrsunfall"
       }
      }
     ],
-    "name": "I20261123-0038-F02",
+    "location": "Thaliastraße",
+    "name": "I20261123-0040",
     "owner": "WL",
-    "parentName": "I20261123-0038",
+    "parentName": "I20261123-0040",
     "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "12"
+     "46"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 112,
-      "lineName": "12",
+      "lineId": 146,
+      "lineName": "46",
       "vehicleType": "ptTram"
      }
     ],
-    "relatedStops": [
-     355
-    ],
     "status": "active",
     "time": {
-     "created": "2026-11-23T22:03:00.000+0100",
-     "lastUpdate": "2026-11-23T22:03:00.000+0100",
-     "resume": "2026-11-23T22:03:00.000+0100",
-     "start": "2026-11-23T21:39:00.000+0100"
+     "created": "2026-11-23T22:45:00.000+0100",
+     "lastUpdate": "2026-11-23T22:51:00.000+0100",
+     "start": "2026-11-23T22:44:00.000+0100"
     },
-    "title": "12: Schadhaftes Fahrzeug"
+    "title": "46: Fremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -288,6 +285,282 @@
      "start": "2026-11-23T04:45:25.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1206-410",
+    "owner": "WL",
+    "parentName": "R1206-410",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     1206
+    ],
+    "time": {
+     "end": "2026-11-23T23:39:00.000+0100",
+     "start": "2026-11-23T22:39:41.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1375-146",
+    "owner": "WL",
+    "parentName": "R1375-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1375
+    ],
+    "time": {
+     "end": "2026-11-23T23:57:00.000+0100",
+     "start": "2026-11-23T22:57:43.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1376-146",
+    "owner": "WL",
+    "parentName": "R1376-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1376
+    ],
+    "time": {
+     "end": "2026-11-23T23:57:00.000+0100",
+     "start": "2026-11-23T22:57:43.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1377-146",
+    "owner": "WL",
+    "parentName": "R1377-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1377
+    ],
+    "time": {
+     "end": "2026-11-23T23:57:00.000+0100",
+     "start": "2026-11-23T22:57:43.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1378-146",
+    "owner": "WL",
+    "parentName": "R1378-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1378
+    ],
+    "time": {
+     "end": "2026-11-23T23:57:00.000+0100",
+     "start": "2026-11-23T22:57:43.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1379-146",
+    "owner": "WL",
+    "parentName": "R1379-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1379
+    ],
+    "time": {
+     "end": "2026-11-23T23:57:00.000+0100",
+     "start": "2026-11-23T22:57:43.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1381-146",
+    "owner": "WL",
+    "parentName": "R1381-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1381
+    ],
+    "time": {
+     "end": "2026-11-23T23:44:00.000+0100",
+     "start": "2026-11-23T22:44:42.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1382-146",
+    "owner": "WL",
+    "parentName": "R1382-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1382
+    ],
+    "time": {
+     "end": "2026-11-23T23:44:00.000+0100",
+     "start": "2026-11-23T22:44:42.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1383-146",
+    "owner": "WL",
+    "parentName": "R1383-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1383
+    ],
+    "time": {
+     "end": "2026-11-23T23:44:00.000+0100",
+     "start": "2026-11-23T22:44:42.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1384-146",
+    "owner": "WL",
+    "parentName": "R1384-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1384
+    ],
+    "time": {
+     "end": "2026-11-23T23:44:00.000+0100",
+     "start": "2026-11-23T22:44:42.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1385-146",
+    "owner": "WL",
+    "parentName": "R1385-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1385
+    ],
+    "time": {
+     "end": "2026-11-23T23:44:00.000+0100",
+     "start": "2026-11-23T22:44:42.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1386-146",
+    "owner": "WL",
+    "parentName": "R1386-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     1386
+    ],
+    "time": {
+     "end": "2026-11-23T23:57:00.000+0100",
+     "start": "2026-11-23T22:58:13.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -472,52 +745,6 @@
      "start": "2026-11-23T04:40:26.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße",
-    "name": "R211-105",
-    "owner": "WL",
-    "parentName": "R211-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     211
-    ],
-    "time": {
-     "end": "2026-11-23T22:47:00.000+0100",
-     "start": "2026-11-23T21:48:05.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R211-112",
-    "owner": "WL",
-    "parentName": "R211-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     211
-    ],
-    "time": {
-     "end": "2026-11-23T22:48:00.000+0100",
-     "start": "2026-11-23T21:49:05.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -844,52 +1071,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße",
-    "name": "R272-105",
-    "owner": "WL",
-    "parentName": "R272-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     272
-    ],
-    "time": {
-     "end": "2026-11-23T22:47:00.000+0100",
-     "start": "2026-11-23T21:48:09.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R272-112",
-    "owner": "WL",
-    "parentName": "R272-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     272
-    ],
-    "time": {
-     "end": "2026-11-23T22:48:00.000+0100",
-     "start": "2026-11-23T21:48:39.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -913,6 +1094,259 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2960-410",
+    "owner": "WL",
+    "parentName": "R2960-410",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     2960
+    ],
+    "time": {
+     "end": "2026-11-23T23:39:00.000+0100",
+     "start": "2026-11-23T22:39:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2961-410",
+    "owner": "WL",
+    "parentName": "R2961-410",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     2961
+    ],
+    "time": {
+     "end": "2026-11-23T23:39:00.000+0100",
+     "start": "2026-11-23T22:39:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2962-410",
+    "owner": "WL",
+    "parentName": "R2962-410",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     2962
+    ],
+    "time": {
+     "end": "2026-11-23T23:39:00.000+0100",
+     "start": "2026-11-23T22:39:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2963-410",
+    "owner": "WL",
+    "parentName": "R2963-410",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     2963
+    ],
+    "time": {
+     "end": "2026-11-23T23:39:00.000+0100",
+     "start": "2026-11-23T22:39:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2964-410",
+    "owner": "WL",
+    "parentName": "R2964-410",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     2964
+    ],
+    "time": {
+     "end": "2026-11-23T23:39:00.000+0100",
+     "start": "2026-11-23T22:39:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2966-410",
+    "owner": "WL",
+    "parentName": "R2966-410",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     2966
+    ],
+    "time": {
+     "end": "2026-11-23T23:40:00.000+0100",
+     "start": "2026-11-23T22:41:14.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2985-410",
+    "owner": "WL",
+    "parentName": "R2985-410",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     2985
+    ],
+    "time": {
+     "end": "2026-11-23T23:39:00.000+0100",
+     "start": "2026-11-23T22:39:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2986-410",
+    "owner": "WL",
+    "parentName": "R2986-410",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     2986
+    ],
+    "time": {
+     "end": "2026-11-23T23:39:00.000+0100",
+     "start": "2026-11-23T22:39:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2987-410",
+    "owner": "WL",
+    "parentName": "R2987-410",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     2987
+    ],
+    "time": {
+     "end": "2026-11-23T23:39:00.000+0100",
+     "start": "2026-11-23T22:39:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2988-410",
+    "owner": "WL",
+    "parentName": "R2988-410",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     2988
+    ],
+    "time": {
+     "end": "2026-11-23T23:39:00.000+0100",
+     "start": "2026-11-23T22:39:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R2989-410",
+    "owner": "WL",
+    "parentName": "R2989-410",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     2989
+    ],
+    "time": {
+     "end": "2026-11-23T23:39:00.000+0100",
+     "start": "2026-11-23T22:39:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -932,305 +1366,6 @@
      "start": "2026-11-23T00:00:10.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R354-112",
-    "owner": "WL",
-    "parentName": "R354-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     354
-    ],
-    "time": {
-     "end": "2026-11-23T22:48:00.000+0100",
-     "start": "2026-11-23T21:48:39.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße",
-    "name": "R355-105",
-    "owner": "WL",
-    "parentName": "R355-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     355
-    ],
-    "time": {
-     "end": "2026-11-23T22:47:00.000+0100",
-     "start": "2026-11-23T21:48:09.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R355-112",
-    "owner": "WL",
-    "parentName": "R355-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     355
-    ],
-    "time": {
-     "end": "2026-11-23T22:48:00.000+0100",
-     "start": "2026-11-23T21:48:39.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße",
-    "name": "R356-105",
-    "owner": "WL",
-    "parentName": "R356-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     356
-    ],
-    "time": {
-     "end": "2026-11-23T22:47:00.000+0100",
-     "start": "2026-11-23T21:48:09.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "name": "R356-112",
-    "owner": "WL",
-    "parentName": "R356-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     356
-    ],
-    "time": {
-     "end": "2026-11-23T22:48:00.000+0100",
-     "start": "2026-11-23T21:48:39.000+0100"
-    },
-    "title": "Fahrtbehinderung\nSchadhafter Zug"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Spitalgasse",
-    "name": "R377-105",
-    "owner": "WL",
-    "parentName": "R377-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     377
-    ],
-    "time": {
-     "end": "2026-11-23T22:46:00.000+0100",
-     "start": "2026-11-23T21:46:05.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Spitalgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Spitalgasse",
-    "name": "R380-105",
-    "owner": "WL",
-    "parentName": "R380-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     380
-    ],
-    "time": {
-     "end": "2026-11-23T22:46:00.000+0100",
-     "start": "2026-11-23T21:46:05.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Spitalgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S",
-    "name": "R380-112",
-    "owner": "WL",
-    "parentName": "R380-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     380
-    ],
-    "time": {
-     "end": "2026-11-23T22:48:00.000+0100",
-     "start": "2026-11-23T21:49:36.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Spitalgasse",
-    "name": "R381-105",
-    "owner": "WL",
-    "parentName": "R381-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     381
-    ],
-    "time": {
-     "end": "2026-11-23T22:46:00.000+0100",
-     "start": "2026-11-23T21:46:05.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Spitalgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S",
-    "name": "R381-112",
-    "owner": "WL",
-    "parentName": "R381-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     381
-    ],
-    "time": {
-     "end": "2026-11-23T22:48:00.000+0100",
-     "start": "2026-11-23T21:49:36.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nZüge halten bei Linie 37",
-    "name": "R382-105",
-    "owner": "WL",
-    "parentName": "R382-105",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "5"
-    ],
-    "relatedStops": [
-     382
-    ],
-    "time": {
-     "end": "2026-11-23T22:46:00.000+0100",
-     "start": "2026-11-23T21:47:05.000+0100"
-    },
-    "title": "Schadhafter Zug\nZüge halten bei Linie 37"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S",
-    "name": "R382-112",
-    "owner": "WL",
-    "parentName": "R382-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     382
-    ],
-    "time": {
-     "end": "2026-11-23T22:48:00.000+0100",
-     "start": "2026-11-23T21:49:36.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S",
-    "name": "R383-112",
-    "owner": "WL",
-    "parentName": "R383-112",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedStops": [
-     383
-    ],
-    "time": {
-     "end": "2026-11-23T22:48:00.000+0100",
-     "start": "2026-11-23T21:49:36.000+0100"
-    },
-    "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1281,48 +1416,71 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S",
-    "name": "R458-112",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R564-146",
     "owner": "WL",
-    "parentName": "R458-112",
+    "parentName": "R564-146",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "12"
+     "46"
     ],
     "relatedStops": [
-     458
+     564
     ],
     "time": {
-     "end": "2026-11-23T22:48:00.000+0100",
-     "start": "2026-11-23T21:49:36.000+0100"
+     "end": "2026-11-23T23:44:00.000+0100",
+     "start": "2026-11-23T22:44:40.000+0100"
     },
-    "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S"
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
-    "name": "R500-101",
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R585-146",
     "owner": "WL",
-    "parentName": "R500-101",
+    "parentName": "R585-146",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "1"
+     "46"
     ],
     "relatedStops": [
-     500
+     585
     ],
     "time": {
-     "end": "2026-11-23T23:00:00.000+0100",
-     "start": "2026-11-23T05:00:26.000+0100"
+     "end": "2026-11-23T23:57:00.000+0100",
+     "start": "2026-11-23T22:58:11.000+0100"
     },
-    "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R586-146",
+    "owner": "WL",
+    "parentName": "R586-146",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "46"
+    ],
+    "relatedStops": [
+     586
+    ],
+    "time": {
+     "end": "2026-11-23T23:57:00.000+0100",
+     "start": "2026-11-23T22:58:11.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",

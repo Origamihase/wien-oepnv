@@ -662,42 +662,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12: Schadhaftes Fahrzeug",
-    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "10A: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "f37ac9d780139dd8d71f16d421347f46e6132e81bedba6f8e24a961524205866",
-    "pubDate": "2026-11-23T21:39:00+01:00",
-    "starts_at": "2026-11-23T21:39:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=12|D=2026-11-23|TK=12 schadhaftes fahrzeug",
-    "_wl_ids": [
-      "I20261123-0038"
-    ],
-    "_incident_start": "2026-11-23T21:39:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "32ae66e6206b82ebc95ff253940dc84dcc795b64994268f24cd4036d2e9a3634",
-    "pubDate": "2026-11-23T21:48:39+01:00",
-    "starts_at": "2026-11-23T21:49:05+01:00",
-    "ends_at": "2026-11-23T22:48:00+01:00",
-    "_identity": "wl|störung|L=12|D=2026-11-23|TK=fahrtbehinderung schadhafter zug"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "12: Schadhafter Zug Betrieb ab Franz-Josefs-Bahnhof S",
-    "description": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "b745e9a3c299e43e79957b73d10495543b57a2d443ccf540a1888bd5acef80de",
-    "pubDate": "2026-11-23T21:49:36+01:00",
-    "starts_at": "2026-11-23T21:49:36+01:00",
-    "ends_at": "2026-11-23T22:48:00+01:00",
-    "_identity": "wl|störung|L=12|D=2026-11-23|TK=schadhafter zug betrieb ab franz josefs bahnhof s"
+    "guid": "219e547df2be869f9c5e196043c5ef1b5d356073d50ea5347540dd618f54101f",
+    "pubDate": "2026-11-23T22:39:41+01:00",
+    "starts_at": "2026-11-23T22:41:14+01:00",
+    "ends_at": "2026-11-23T23:40:00+01:00",
+    "_identity": "wl|störung|L=10A|D=2026-11-23|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -738,18 +710,6 @@
     "starts_at": "2026-11-23T00:00:10+01:00",
     "ends_at": "2026-11-23T23:59:59+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-23|TK=betrieb ab knöllgasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Bhf. Hütteldorf ÖBB-Ersatzbus für 80",
-    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "a2b77bf3b53be1ac11a83fab5eb09687b824df82ac6a4b9d37215889acd1d1db",
-    "pubDate": "2026-11-23T05:00:26+01:00",
-    "starts_at": "2026-11-23T05:00:26+01:00",
-    "ends_at": "2026-11-23T23:00:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-11-23|TK=bhf hütteldorf öbb ersatzbus für 80"
   },
   {
     "source": "Wiener Linien",
@@ -942,6 +902,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "46: Fremder Verkehrsunfall",
+    "description": "Linie 46: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 23:15 Uhr. Grund: Fremder Verkehrsunfall im Bereich Thaliastraße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "eed4ea629d44bb9f67a32b24760e7fc7e9fbb8fab9efd3a43457846fae26b28d",
+    "pubDate": "2026-11-23T22:44:00+01:00",
+    "starts_at": "2026-11-23T22:44:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=46|D=2026-11-23|TK=46 fremder verkehrsunfall",
+    "_wl_ids": [
+      "I20261123-0040"
+    ],
+    "_incident_start": "2026-11-23T22:44:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -966,42 +942,6 @@
       "I20261123-0038"
     ],
     "_incident_start": "2026-11-23T21:39:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Schadhafter Zug Betrieb ab Lerchenfelder Straße",
-    "description": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "919c967ddf51515d55b0a0360b3998156094070d1141f8585477b60abd4cdac1",
-    "pubDate": "2026-11-23T21:48:05+01:00",
-    "starts_at": "2026-11-23T21:48:09+01:00",
-    "ends_at": "2026-11-23T22:47:00+01:00",
-    "_identity": "wl|störung|L=5|D=2026-11-23|TK=schadhafter zug betrieb ab lerchenfelder strasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Schadhafter Zug Betrieb ab Spitalgasse",
-    "description": "Schadhafter Zug\nBetrieb ab Spitalgasse",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "4a40898fe1b7e70ac105cf296498bb1fcba0352bd7ddf9c4952e5461122ba002",
-    "pubDate": "2026-11-23T21:46:05+01:00",
-    "starts_at": "2026-11-23T21:46:05+01:00",
-    "ends_at": "2026-11-23T22:46:00+01:00",
-    "_identity": "wl|störung|L=5|D=2026-11-23|TK=schadhafter zug betrieb ab spitalgasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Schadhafter Zug Züge halten bei Linie 37",
-    "description": "Schadhafter Zug\nZüge halten bei Linie 37",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "dfdfd8c0efa2c71ece15a30b2ec297f51a4529bfea180353ba9c3eb29294f3ff",
-    "pubDate": "2026-11-23T21:47:05+01:00",
-    "starts_at": "2026-11-23T21:47:05+01:00",
-    "ends_at": "2026-11-23T22:46:00+01:00",
-    "_identity": "wl|störung|L=5|D=2026-11-23|TK=schadhafter zug züge halten bei linie 37"
   },
   {
     "source": "Wiener Linien",

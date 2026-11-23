@@ -3,77 +3,61 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R211-105|2026-11-23T21:48:05.000+0100": {
-   "incident": "I20261123-0038",
-   "title": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße"
+  "R1375-146|2026-11-23T22:57:43.000+0100": {
+   "incident": "I20261123-0040",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
   },
-  "R211-112|2026-11-23T21:49:05.000+0100": {
-   "incident": "I20261123-0038",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R1376-146|2026-11-23T22:57:43.000+0100": {
+   "incident": "I20261123-0040",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
   },
-  "R272-105|2026-11-23T21:48:09.000+0100": {
-   "incident": "I20261123-0038",
-   "title": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße"
+  "R1377-146|2026-11-23T22:57:43.000+0100": {
+   "incident": "I20261123-0040",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
   },
-  "R272-112|2026-11-23T21:48:39.000+0100": {
-   "incident": "I20261123-0038",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R1378-146|2026-11-23T22:57:43.000+0100": {
+   "incident": "I20261123-0040",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
   },
-  "R354-112|2026-11-23T21:48:39.000+0100": {
-   "incident": "I20261123-0038",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R1379-146|2026-11-23T22:57:43.000+0100": {
+   "incident": "I20261123-0040",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
   },
-  "R355-105|2026-11-23T21:48:09.000+0100": {
-   "incident": "I20261123-0038",
-   "title": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße"
+  "R1381-146|2026-11-23T22:44:42.000+0100": {
+   "incident": "I20261123-0040",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
   },
-  "R355-112|2026-11-23T21:48:39.000+0100": {
-   "incident": "I20261123-0038",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R1382-146|2026-11-23T22:44:42.000+0100": {
+   "incident": "I20261123-0040",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
   },
-  "R356-105|2026-11-23T21:48:09.000+0100": {
-   "incident": "I20261123-0038",
-   "title": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße"
+  "R1383-146|2026-11-23T22:44:42.000+0100": {
+   "incident": "I20261123-0040",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
   },
-  "R356-112|2026-11-23T21:48:39.000+0100": {
-   "incident": "I20261123-0038",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R1384-146|2026-11-23T22:44:42.000+0100": {
+   "incident": "I20261123-0040",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
   },
-  "R377-105|2026-11-23T21:46:05.000+0100": {
-   "incident": "I20261123-0038",
-   "title": "Schadhafter Zug\nBetrieb ab Spitalgasse"
+  "R1385-146|2026-11-23T22:44:42.000+0100": {
+   "incident": "I20261123-0040",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
   },
-  "R380-105|2026-11-23T21:46:05.000+0100": {
-   "incident": "I20261123-0038",
-   "title": "Schadhafter Zug\nBetrieb ab Spitalgasse"
+  "R1386-146|2026-11-23T22:58:13.000+0100": {
+   "incident": "I20261123-0040",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
   },
-  "R380-112|2026-11-23T21:49:36.000+0100": {
-   "incident": "I20261123-0038",
-   "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S"
+  "R564-146|2026-11-23T22:44:40.000+0100": {
+   "incident": "I20261123-0040",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
   },
-  "R381-105|2026-11-23T21:46:05.000+0100": {
-   "incident": "I20261123-0038",
-   "title": "Schadhafter Zug\nBetrieb ab Spitalgasse"
+  "R585-146|2026-11-23T22:58:11.000+0100": {
+   "incident": "I20261123-0040",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
   },
-  "R381-112|2026-11-23T21:49:36.000+0100": {
-   "incident": "I20261123-0038",
-   "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S"
-  },
-  "R382-105|2026-11-23T21:47:05.000+0100": {
-   "incident": "I20261123-0038",
-   "title": "Schadhafter Zug\nZüge halten bei Linie 37"
-  },
-  "R382-112|2026-11-23T21:49:36.000+0100": {
-   "incident": "I20261123-0038",
-   "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S"
-  },
-  "R383-112|2026-11-23T21:49:36.000+0100": {
-   "incident": "I20261123-0038",
-   "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S"
-  },
-  "R458-112|2026-11-23T21:49:36.000+0100": {
-   "incident": "I20261123-0038",
-   "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S"
+  "R586-146|2026-11-23T22:58:11.000+0100": {
+   "incident": "I20261123-0040",
+   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
   }
  }
 }
