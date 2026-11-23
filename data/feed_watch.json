@@ -1,24 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-23T11:01:03.910659+00:00",
- "built": "2026-11-23T12:00:51+01:00",
+ "updated": "2026-11-23T11:30:49.748542+00:00",
+ "built": "2026-11-23T12:30:34+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-23T12:00:51+01:00",
+  "built": "2026-11-23T12:30:34+01:00",
   "items": [
    {
-    "title": "48A: Betriebsstörung",
-    "time_line": "Seit 11:37"
+    "title": "66A: Rettungseinsatz",
+    "time_line": "Seit 12:16"
    },
    {
     "title": "3A: Verspätungen",
     "time_line": "Seit 11:28"
-   },
-   {
-    "title": "1: Verspätungen",
-    "time_line": "Seit 11:25"
    },
    {
     "title": "5: Falschparker",
@@ -47,6 +43,10 @@
    {
     "title": "5A/N31: Obere Augartenstraße",
     "time_line": "Bis 11.12."
+   },
+   {
+    "title": "74A: Rabengasse",
+    "time_line": "Seit 16.11."
    }
   ]
  },
@@ -6771,17 +6771,37 @@
     "oebb": 10,
     "wl": 82
    }
+  },
+  {
+   "t": "2026-11-23T11:30:49.748542+00:00",
+   "raw": {
+    "wl-stoerungen": 40,
+    "wl-hinweise": 91,
+    "oebb": 161,
+    "baustellen-linien": 49,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 23,
+    "oebb": 137,
+    "baustellen": 60
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 10,
+    "wl": 81
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-23T11:01:03.910659+00:00"
+   "last_ok": "2026-11-23T11:30:49.748542+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-23T11:01:03.910659+00:00"
+   "last_ok": "2026-11-23T11:30:49.748542+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-23T11:01:03.910659+00:00"
+   "last_ok": "2026-11-23T11:30:49.748542+00:00"
   }
  }
 }

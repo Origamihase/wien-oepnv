@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261123-0018, I20261123-0020, I20260925-0011, I20260909-0007, I20261020-0029, I20261123-0019"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261123-0021, I20261020-0029, I20261123-0019"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R293-474, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R318-437, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R361-105, R362-105, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R293-474, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R318-437, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R362-105, R361-105, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,51 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "1": "ptTram"
-     }
-    },
-    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p><strong>Linie 1:</strong><br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p><strong>Linie 1:</strong><br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "1: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261123-0018",
-    "owner": "WL",
-    "parentName": "I20261123-0018",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 101,
-      "lineName": "1",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-23T11:25:00.000+0100",
-     "lastUpdate": "2026-11-23T11:25:00.000+0100",
-     "resume": "2026-11-23T11:25:00.000+0100",
-     "start": "2026-11-23T11:25:00.000+0100"
-    },
-    "title": "1: Verspätungen"
-   },
-   {
     "alertCause": "miscellaneous",
     "alertCauseId": 137,
     "attributes": {
@@ -254,55 +209,57 @@
     "status": "active",
     "time": {
      "created": "2026-11-23T11:28:00.000+0100",
-     "lastUpdate": "2026-11-23T11:28:00.000+0100",
+     "end": "2026-11-23T12:48:00.000+0100",
+     "lastUpdate": "2026-11-23T12:13:00.000+0100",
      "resume": "2026-11-23T11:28:00.000+0100",
      "start": "2026-11-23T11:28:00.000+0100"
     },
     "title": "3A: Verspätungen"
    },
    {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
     "attributes": {
      "relatedLineTypes": {
-      "48A": "ptBusCity"
+      "66A": "ptBusCity"
      }
     },
-    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "descriptionHTML": "<p>Linie 48A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Betriebsstörung.</p>",
+    "description": "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie 66A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 48A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Betriebsstörung.</p>",
-       "descriptionPlain": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-       "title": "48A: Betriebsstörung"
+       "descriptionHtml": "<p>Linie 66A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "66A: Rettungseinsatz"
       }
      }
     ],
-    "name": "I20261123-0020",
+    "name": "I20261123-0021",
     "owner": "WL",
-    "parentName": "I20261123-0020",
+    "parentName": "I20261123-0021",
     "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "48A"
+     "66A"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 448,
-      "lineName": "48A",
+      "lineId": 466,
+      "lineName": "66A",
       "vehicleType": "ptBusCity"
      }
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-23T11:37:00.000+0100",
-     "lastUpdate": "2026-11-23T11:37:00.000+0100",
-     "start": "2026-11-23T11:37:00.000+0100"
+     "created": "2026-11-23T12:17:00.000+0100",
+     "lastUpdate": "2026-11-23T12:17:00.000+0100",
+     "resume": "2026-11-23T12:16:00.000+0100",
+     "start": "2026-11-23T12:16:00.000+0100"
     },
-    "title": "48A: Betriebsstörung"
+    "title": "66A: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",

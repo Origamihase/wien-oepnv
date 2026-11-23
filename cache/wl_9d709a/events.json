@@ -666,22 +666,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Verspätungen",
-    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "1d3414b1e3cc28842526c11ed2f6bc808d703447c6c64603053764ec08ab1b50",
-    "pubDate": "2026-11-23T11:25:00+01:00",
-    "starts_at": "2026-11-23T11:25:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=1|D=2026-11-23|TK=1 verspätungen",
-    "_wl_ids": [
-      "I20261123-0018"
-    ],
-    "_incident_start": "2026-11-23T11:25:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "1: Betrieb ab Knöllgasse",
     "description": "Gleisbauarbeiten\nBetrieb ab Knöllgasse",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -900,28 +884,12 @@
     "guid": "9d358731bdd90c07601bb9665d1fe894e602b065f0c6bead2062210847affb87",
     "pubDate": "2026-11-23T11:28:00+01:00",
     "starts_at": "2026-11-23T11:28:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-23T12:48:00+01:00",
     "_identity": "wl|störung|L=3A|D=2026-11-23|TK=3a verspätungen",
     "_wl_ids": [
       "I20261123-0019"
     ],
     "_incident_start": "2026-11-23T11:28:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "48A: Betriebsstörung",
-    "description": "Linie 48A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "40abe8015540dc340a7006b7131e0f8abed33a83dfde5af7bcbdf50c13a4eeb9",
-    "pubDate": "2026-11-23T11:37:00+01:00",
-    "starts_at": "2026-11-23T11:37:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=48A|D=2026-11-23|TK=48a betriebsstörung",
-    "_wl_ids": [
-      "I20261123-0020"
-    ],
-    "_incident_start": "2026-11-23T11:37:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -958,6 +926,22 @@
     "starts_at": "2026-11-23T04:40:26+01:00",
     "ends_at": "2026-11-24T01:00:00+01:00",
     "_identity": "wl|störung|L=66A|D=2026-11-23|TK=busse halten salvatorianerplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "66A: Rettungseinsatz",
+    "description": "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107",
+    "pubDate": "2026-11-23T12:16:00+01:00",
+    "starts_at": "2026-11-23T12:16:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=66A|D=2026-11-23|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261123-0021"
+    ],
+    "_incident_start": "2026-11-23T12:16:00+01:00"
   },
   {
     "source": "Wiener Linien",
