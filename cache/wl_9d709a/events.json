@@ -662,6 +662,46 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5/12: Schadhaftes Fahrzeug",
+    "description": "Linie 5: Kein Betrieb zwischen Spitalgasse und Lerchenfelder Straße. Weiterfahrt ab Spitalgasse bis Schottentor U. Weiterfahrt ab Lerchenfelderstraße bis Josefstädter Straße U. Linie 12: Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Voraussichtliche Dauer: 22:10 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Lazarettgasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "d4e34f09d4feef2c9a3d0b25bc620ab6468efd635b84d9e7f803ea88c87e5d21",
+    "pubDate": "2026-11-23T21:39:00+01:00",
+    "starts_at": "2026-11-23T21:39:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=12,5|D=2026-11-23|TK=5 12 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261123-0038"
+    ],
+    "_incident_start": "2026-11-23T21:39:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "32ae66e6206b82ebc95ff253940dc84dcc795b64994268f24cd4036d2e9a3634",
+    "pubDate": "2026-11-23T21:48:39+01:00",
+    "starts_at": "2026-11-23T21:49:05+01:00",
+    "ends_at": "2026-11-23T22:48:00+01:00",
+    "_identity": "wl|störung|L=12|D=2026-11-23|TK=fahrtbehinderung schadhafter zug"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "12: Schadhafter Zug Betrieb ab Franz-Josefs-Bahnhof S",
+    "description": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b745e9a3c299e43e79957b73d10495543b57a2d443ccf540a1888bd5acef80de",
+    "pubDate": "2026-11-23T21:49:36+01:00",
+    "starts_at": "2026-11-23T21:49:36+01:00",
+    "ends_at": "2026-11-23T22:48:00+01:00",
+    "_identity": "wl|störung|L=12|D=2026-11-23|TK=schadhafter zug betrieb ab franz josefs bahnhof s"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -902,6 +942,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "43: Polizeieinsatz",
+    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "988c80ab109007f5051aff806aa861e0141853ffcc393ab7f2657dc9a31b4cd0",
+    "pubDate": "2026-11-23T21:34:00+01:00",
+    "starts_at": "2026-11-23T21:34:00+01:00",
+    "ends_at": "2026-11-23T22:10:00+01:00",
+    "_identity": "wl|störung|L=43|D=2026-11-23|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261123-0037"
+    ],
+    "_incident_start": "2026-11-23T21:34:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -910,6 +966,42 @@
     "starts_at": "2026-11-23T04:45:25+01:00",
     "ends_at": "2026-11-23T23:59:59+01:00",
     "_identity": "wl|störung|L=5B|D=2026-11-23|TK=busse halten pappenheimgasse 24 28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Schadhafter Zug Betrieb ab Lerchenfelder Straße",
+    "description": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "919c967ddf51515d55b0a0360b3998156094070d1141f8585477b60abd4cdac1",
+    "pubDate": "2026-11-23T21:48:05+01:00",
+    "starts_at": "2026-11-23T21:48:09+01:00",
+    "ends_at": "2026-11-23T22:47:00+01:00",
+    "_identity": "wl|störung|L=5|D=2026-11-23|TK=schadhafter zug betrieb ab lerchenfelder strasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Schadhafter Zug Betrieb ab Spitalgasse",
+    "description": "Schadhafter Zug\nBetrieb ab Spitalgasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4a40898fe1b7e70ac105cf296498bb1fcba0352bd7ddf9c4952e5461122ba002",
+    "pubDate": "2026-11-23T21:46:05+01:00",
+    "starts_at": "2026-11-23T21:46:05+01:00",
+    "ends_at": "2026-11-23T22:46:00+01:00",
+    "_identity": "wl|störung|L=5|D=2026-11-23|TK=schadhafter zug betrieb ab spitalgasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Schadhafter Zug Züge halten bei Linie 37",
+    "description": "Schadhafter Zug\nZüge halten bei Linie 37",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "dfdfd8c0efa2c71ece15a30b2ec297f51a4529bfea180353ba9c3eb29294f3ff",
+    "pubDate": "2026-11-23T21:47:05+01:00",
+    "starts_at": "2026-11-23T21:47:05+01:00",
+    "ends_at": "2026-11-23T22:46:00+01:00",
+    "_identity": "wl|störung|L=5|D=2026-11-23|TK=schadhafter zug züge halten bei linie 37"
   },
   {
     "source": "Wiener Linien",

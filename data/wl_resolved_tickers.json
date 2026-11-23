@@ -2,5 +2,78 @@
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
- "owners": {}
+ "owners": {
+  "R211-105|2026-11-23T21:48:05.000+0100": {
+   "incident": "I20261123-0038",
+   "title": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße"
+  },
+  "R211-112|2026-11-23T21:49:05.000+0100": {
+   "incident": "I20261123-0038",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R272-105|2026-11-23T21:48:09.000+0100": {
+   "incident": "I20261123-0038",
+   "title": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße"
+  },
+  "R272-112|2026-11-23T21:48:39.000+0100": {
+   "incident": "I20261123-0038",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R354-112|2026-11-23T21:48:39.000+0100": {
+   "incident": "I20261123-0038",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R355-105|2026-11-23T21:48:09.000+0100": {
+   "incident": "I20261123-0038",
+   "title": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße"
+  },
+  "R355-112|2026-11-23T21:48:39.000+0100": {
+   "incident": "I20261123-0038",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R356-105|2026-11-23T21:48:09.000+0100": {
+   "incident": "I20261123-0038",
+   "title": "Schadhafter Zug\nBetrieb ab Lerchenfelder Straße"
+  },
+  "R356-112|2026-11-23T21:48:39.000+0100": {
+   "incident": "I20261123-0038",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R377-105|2026-11-23T21:46:05.000+0100": {
+   "incident": "I20261123-0038",
+   "title": "Schadhafter Zug\nBetrieb ab Spitalgasse"
+  },
+  "R380-105|2026-11-23T21:46:05.000+0100": {
+   "incident": "I20261123-0038",
+   "title": "Schadhafter Zug\nBetrieb ab Spitalgasse"
+  },
+  "R380-112|2026-11-23T21:49:36.000+0100": {
+   "incident": "I20261123-0038",
+   "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S"
+  },
+  "R381-105|2026-11-23T21:46:05.000+0100": {
+   "incident": "I20261123-0038",
+   "title": "Schadhafter Zug\nBetrieb ab Spitalgasse"
+  },
+  "R381-112|2026-11-23T21:49:36.000+0100": {
+   "incident": "I20261123-0038",
+   "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S"
+  },
+  "R382-105|2026-11-23T21:47:05.000+0100": {
+   "incident": "I20261123-0038",
+   "title": "Schadhafter Zug\nZüge halten bei Linie 37"
+  },
+  "R382-112|2026-11-23T21:49:36.000+0100": {
+   "incident": "I20261123-0038",
+   "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S"
+  },
+  "R383-112|2026-11-23T21:49:36.000+0100": {
+   "incident": "I20261123-0038",
+   "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S"
+  },
+  "R458-112|2026-11-23T21:49:36.000+0100": {
+   "incident": "I20261123-0038",
+   "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S"
+  }
+ }
 }
