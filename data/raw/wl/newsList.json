@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1353813, ftazW_1351086, ftazW_85, ftazW_1016544, ftazW_1018064, ftazW_480, ftazW_629, ftazW_756, ftazW_481, ftazW_80, ftazW_1016545, ftazW_1018063, ftazW_81, ftazW_739, ftazW_1017627, ftazW_605, ftazW_478, ftazW_604, ftazW_479, ftazW_725, ftazW_740, ftazW_529, ftazW_1016925, ftazW_1016592, ftazW_1354573"
+    "trafficInfoNameList": "ftazW_85, ftazW_1016544, ftazW_1018064, ftazW_480, ftazW_629, ftazW_756, ftazW_481, ftazW_80, ftazW_1016545, ftazW_1018063, ftazW_81, ftazW_739, ftazW_1017627, ftazW_605, ftazW_478, ftazW_604, ftazW_479, ftazW_725, ftazW_740, ftazW_529, ftazW_1016925, ftazW_1016592, ftazW_1354573"
    }
   ],
   "poiCategoryGroups": [
@@ -3264,80 +3264,6 @@
      "start": "2026-11-23T20:45:00.000+0100"
     },
     "title": "Krieau"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "23.11.2026 05:15",
-     "ausVon": "23.11.2026 01:15",
-     "location": "Fahrtrichtung 60  Rodaun - Ausgang Breitenfurter Straße",
-     "rbls": [
-      1606
-     ],
-     "reason": "",
-     "relatedLines": [
-      "60"
-     ],
-     "station": "Rodaunbrücke",
-     "status": "geplante Wartung",
-     "towards": "60  Rodaun"
-    },
-    "description": "Fahrtrichtung 60 Rodaun - Ausgang Breitenfurter Straße",
-    "elevatorId": "BTF 01",
-    "name": "ftazW_1351086",
-    "parentName": "ftazW_1351086",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1606
-    ],
-    "time": {
-     "end": "2026-11-23T05:15:00.000+0100",
-     "start": "2026-11-23T01:15:00.000+0100"
-    },
-    "title": "Rodaunbrücke"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "23.11.2026 05:15",
-     "ausVon": "23.11.2026 01:15",
-     "location": "U6 Bahnsteig Richtung Siebenhirten - Ausgang In der Wiesen",
-     "rbls": [
-      4632
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U6"
-     ],
-     "station": "Erlaaer Straße",
-     "status": "geplante Wartung",
-     "towards": "U6 Siebenhirten"
-    },
-    "description": "U6 Bahnsteig Richtung Siebenhirten - Ausgang In der Wiesen",
-    "elevatorId": "ES 04",
-    "name": "ftazW_1353813",
-    "parentName": "ftazW_1353813",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedStops": [
-     4632
-    ],
-    "time": {
-     "end": "2026-11-23T05:15:00.000+0100",
-     "start": "2026-11-23T01:15:00.000+0100"
-    },
-    "title": "Erlaaer Straße"
    },
    {
     "alertCause": "undefined alert cause",
