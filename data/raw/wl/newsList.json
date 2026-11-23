@@ -1990,13 +1990,13 @@
    {
     "alertCause": "unknown",
     "alertCauseId": 0,
-    "description": "<p><strong><u>Haltestellenverlegung der Linie 68A in Richtung Laaer Berg, Nordosteingang</u></strong></p><p><strong><u>Haltestelle:</u></strong> Laaer Berg, Kurpark Nordeingang</p><p><strong><u>Von:</u></strong> Filmteichstraße vor Nordeingang des Kurparks</p><p><strong><u>Nach:</u></strong> Etwa 30 Meter Richtung Laaer-Berg-Straße</p><p><strong><u>Dauer:</u></strong> 05. November 2026, 07:30 Uhr für etwa zwei Wochen</p><p><strong><u>Grund:</u></strong> Straßenbau</p>",
+    "description": "<p><strong><u>Haltestellenverlegung der Linie 68A in Richtung Laaer Berg, Nordosteingang</u></strong></p><p><strong><u>Haltestelle:</u></strong> Laaer Berg, Kurpark Nordeingang</p><p><strong><u>Von:</u></strong> Filmteichstraße vor Nordeingang des Kurparks</p><p><strong><u>Nach:</u></strong> Etwa 30 Meter Richtung Laaer-Berg-Straße</p><p><strong><u>Dauer:</u></strong> 05. November 2026, 07:30 Uhr, bis 23. November 2026, etwa 18:30 Uhr.</p><p><strong><u>Grund:</u></strong> Straßenbau</p>",
     "id": "N20261104-0003",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p><strong><u>Haltestellenverlegung der Linie 68A in Richtung Laaer Berg, Nordosteingang</u></strong></p><p><strong><u>Haltestelle:</u></strong> Laaer Berg, Kurpark Nordeingang</p><p><strong><u>Von:</u></strong> Filmteichstraße vor Nordeingang des Kurparks</p><p><strong><u>Nach:</u></strong> Etwa 30 Meter Richtung Laaer-Berg-Straße</p><p><strong><u>Dauer:</u></strong> 05. November 2026, 07:30 Uhr für etwa zwei Wochen</p><p><strong><u>Grund:</u></strong> Straßenbau</p>",
-       "descriptionPlain": "Haltestellenverlegung der Linie 68A in Richtung Laaer Berg, Nordosteingang Haltestelle: Laaer Berg, Kurpark Nordeingang Von: Filmteichstraße vor Nordeingang des Kurparks Nach: Etwa 30 Meter Richtung Laaer-Berg-Straße Dauer: 05. November 2026, 07:30 Uhr für etwa zwei Wochen Grund: Straßenbau",
+       "descriptionHtml": "<p><strong><u>Haltestellenverlegung der Linie 68A in Richtung Laaer Berg, Nordosteingang</u></strong></p><p><strong><u>Haltestelle:</u></strong> Laaer Berg, Kurpark Nordeingang</p><p><strong><u>Von:</u></strong> Filmteichstraße vor Nordeingang des Kurparks</p><p><strong><u>Nach:</u></strong> Etwa 30 Meter Richtung Laaer-Berg-Straße</p><p><strong><u>Dauer:</u></strong> 05. November 2026, 07:30 Uhr, bis 23. November 2026, etwa 18:30 Uhr.</p><p><strong><u>Grund:</u></strong> Straßenbau</p>",
+       "descriptionPlain": "Haltestellenverlegung der Linie 68A in Richtung Laaer Berg, Nordosteingang Haltestelle: Laaer Berg, Kurpark Nordeingang Von: Filmteichstraße vor Nordeingang des Kurparks Nach: Etwa 30 Meter Richtung Laaer-Berg-Straße Dauer: 05. November 2026, 07:30 Uhr, bis 23. November 2026, etwa 18:30 Uhr. Grund: Straßenbau",
        "title": "68A: Laaer Berg, Kurpark Nordeingang"
       }
      }
@@ -2030,6 +2030,7 @@
      3012
     ],
     "time": {
+     "end": "2026-11-23T18:30:00.000+0100",
      "start": "2026-11-04T13:28:00.000+0100",
      "validFrom": "2026-11-05T07:30:00.000+0100"
     },
