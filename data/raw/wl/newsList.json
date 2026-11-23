@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_85, ftazW_628, ftazW_1016544, ftazW_1018064, ftazW_480, ftazW_629, ftazW_481, ftazW_80, ftazW_1016545, ftazW_1018063, ftazW_81, ftazW_739, ftazW_1017627, ftazW_605, ftazW_478, ftazW_604, ftazW_479, ftazW_725, ftazW_740, ftazW_1016611, ftazW_529, ftazW_1016925, ftazW_1016592, ftazW_1354573, ftazW_475, ftazW_528, ftazW_1016926, ftazW_1016593, ftazW_1354391"
+    "trafficInfoNameList": "ftazW_85, ftazW_628, ftazW_1016544, ftazW_1018064, ftazW_480, ftazW_629, ftazW_481, ftazW_80, ftazW_1016545, ftazW_1018063, ftazW_81, ftazW_739, ftazW_1017627, ftazW_478, ftazW_604, ftazW_479, ftazW_725, ftazW_740, ftazW_1016611, ftazW_529, ftazW_1016925, ftazW_1016592, ftazW_1354573, ftazW_475, ftazW_528, ftazW_1016926, ftazW_1016593, ftazW_1354391"
    }
   ],
   "poiCategoryGroups": [
@@ -3921,43 +3921,6 @@
     "time": {
      "end": "2026-11-25T05:15:00.000+0100",
      "start": "2026-11-25T01:15:00.000+0100"
-    },
-    "title": "Ottakring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "25.11.2026 00:45",
-     "ausVon": "24.11.2026 20:45",
-     "location": "U3 Bahnsteig Richtung Ottakring - Ausgang Koppstraße",
-     "rbls": [
-      4930
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Ottakring",
-     "status": "geplante Wartung",
-     "towards": "U3 Ottakring"
-    },
-    "description": "U3 Bahnsteig Richtung Ottakring - Ausgang Koppstraße",
-    "elevatorId": "OK 03",
-    "name": "ftazW_605",
-    "parentName": "ftazW_605",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4930
-    ],
-    "time": {
-     "end": "2026-11-25T00:45:00.000+0100",
-     "start": "2026-11-24T20:45:00.000+0100"
     },
     "title": "Ottakring"
    },
