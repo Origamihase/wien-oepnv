@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-22T23:30:44.997990+00:00",
- "built": "2026-11-23T00:30:37+01:00",
+ "updated": "2026-11-23T00:00:56.232521+00:00",
+ "built": "2026-11-23T01:00:49+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-23T00:30:37+01:00",
+  "built": "2026-11-23T01:00:49+01:00",
   "items": [
    {
     "title": "52A/43B/52B: Haltestellenverlegung",
@@ -52,46 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-15T23:30:47.335182+00:00",
-   "raw": {
-    "wl-stoerungen": 39,
-    "wl-hinweise": 90,
-    "oebb": 176,
-    "baustellen-linien": 50,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 25,
-    "oebb": 151,
-    "baustellen": 61
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 7,
-    "wl": 78
-   }
-  },
-  {
-   "t": "2026-11-16T00:00:53.527281+00:00",
-   "raw": {
-    "wl-stoerungen": 40,
-    "wl-hinweise": 97,
-    "oebb": 176,
-    "baustellen-linien": 50,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 30,
-    "oebb": 151,
-    "baustellen": 61
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 7,
-    "wl": 82
-   }
-  },
   {
    "t": "2026-11-16T00:30:48.103481+00:00",
    "raw": {
@@ -6791,17 +6751,37 @@
     "oebb": 10,
     "wl": 79
    }
+  },
+  {
+   "t": "2026-11-23T00:00:56.232521+00:00",
+   "raw": {
+    "wl-stoerungen": 39,
+    "wl-hinweise": 88,
+    "oebb": 156,
+    "baustellen-linien": 49,
+    "baustellen-punkte": 14
+   },
+   "discarded": {
+    "wl": 23,
+    "oebb": 133,
+    "baustellen": 60
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 10,
+    "wl": 83
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-22T23:30:44.997990+00:00"
+   "last_ok": "2026-11-23T00:00:56.232521+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-22T23:30:44.997990+00:00"
+   "last_ok": "2026-11-23T00:00:56.232521+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-22T23:30:44.997990+00:00"
+   "last_ok": "2026-11-23T00:00:56.232521+00:00"
   }
  }
 }

@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_1353813, ftazW_1351086, ftazW_85, ftazW_1016544, ftazW_1018064, ftazW_480, ftazW_629, ftazW_756, ftazW_481, ftazW_80, ftazW_1016545, ftazW_1018063, ftazW_81, ftazW_739, ftazW_1017627, ftazW_605, ftazW_478, ftazW_604, ftazW_479, ftazW_725, ftazW_740"
+    "trafficInfoNameList": "ftazW_1353813, ftazW_1351086, ftazW_85, ftazW_1016544, ftazW_1018064, ftazW_480, ftazW_629, ftazW_756, ftazW_481, ftazW_80, ftazW_1016545, ftazW_1018063, ftazW_81, ftazW_739, ftazW_1017627, ftazW_605, ftazW_478, ftazW_604, ftazW_479, ftazW_725, ftazW_740, ftazW_529, ftazW_1016925, ftazW_1016592, ftazW_1354573"
    }
   ],
   "poiCategoryGroups": [
@@ -3054,6 +3054,94 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "26.11.2026 00:45",
+     "ausVon": "25.11.2026 20:45",
+     "location": "Ausgang Neustiftgasse - U2 Bahnsteig Fahrtrichtung Karlsplatz",
+     "rbls": [
+      4209
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2",
+      "U3"
+     ],
+     "station": "Volkstheater",
+     "status": "geplante Wartung",
+     "towards": "U2 Karlsplatz"
+    },
+    "description": "Ausgang Neustiftgasse - U2 Bahnsteig Fahrtrichtung Karlsplatz",
+    "elevatorId": "VT 07",
+    "name": "ftazW_1016592",
+    "parentName": "ftazW_1016592",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2",
+     "U3"
+    ],
+    "relatedStops": [
+     4209
+    ],
+    "time": {
+     "end": "2026-11-26T00:45:00.000+0100",
+     "start": "2026-11-25T20:45:00.000+0100"
+    },
+    "title": "Volkstheater"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "26.11.2026 00:45",
+     "ausVon": "25.11.2026 20:45",
+     "location": "6 Bahnsteig Richtung Geiereckstraße, 18 Bahnsteig Richtung Schlachthausgasse, 62 und Badner Bahn Bahnsteig Richtung Kärnter Ring / Oper - Ausgang Eichenstraße",
+     "rbls": [
+      427,
+      399,
+      427,
+      427
+     ],
+     "reason": "",
+     "relatedLines": [
+      "18",
+      "62",
+      "6",
+      "LB"
+     ],
+     "station": "Eichenstraße",
+     "status": "geplante Wartung",
+     "towards": "6 Burggasse-Stadthalle, 62 Kärntner Ring, Oper/Karlsplatz U, WLB Baden, 18 Burggasse-Stadthalle"
+    },
+    "description": "6 Bahnsteig Richtung Geiereckstraße, 18 Bahnsteig Richtung Schlachthausgasse, 62 und Badner Bahn Bahnsteig Richtung Kärnter Ring / Oper - Ausgang Eichenstraße",
+    "elevatorId": "EI 01",
+    "name": "ftazW_1016925",
+    "parentName": "ftazW_1016925",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "18",
+     "62",
+     "6",
+     "LB"
+    ],
+    "relatedStops": [
+     427,
+     399,
+     427,
+     427
+    ],
+    "time": {
+     "end": "2026-11-26T00:45:00.000+0100",
+     "start": "2026-11-25T20:45:00.000+0100"
+    },
+    "title": "Eichenstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "25.11.2026 00:45",
      "ausVon": "24.11.2026 20:45",
      "location": "1 Bahnsteig Richtung Prater Hauptallee, 18 Bahnsteig Richtung Schlachthausgasse, 62 und Badner Bahn Bahnsteig Richtung Oper, Karlsplatz - Ausgang Landgutgasse",
@@ -3255,6 +3343,43 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "26.11.2026 00:45",
+     "ausVon": "25.11.2026 20:45",
+     "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Tscherttegasse",
+     "rbls": [
+      4640
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Tscherttegasse",
+     "status": "geplante Wartung",
+     "towards": "U6 Floridsdorf"
+    },
+    "description": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Tscherttegasse",
+    "elevatorId": "TE 01",
+    "name": "ftazW_1354573",
+    "parentName": "ftazW_1354573",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4640
+    ],
+    "time": {
+     "end": "2026-11-26T00:45:00.000+0100",
+     "start": "2026-11-25T20:45:00.000+0100"
+    },
+    "title": "Tscherttegasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "25.11.2026 00:45",
      "ausVon": "24.11.2026 20:45",
      "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Perfektastraße",
@@ -3398,6 +3523,43 @@
      "start": "2026-11-24T01:15:00.000+0100"
     },
     "title": "Siebenhirten"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "26.11.2026 00:45",
+     "ausVon": "25.11.2026 20:45",
+     "location": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Neue Donau",
+     "rbls": [
+      4644
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Neue Donau",
+     "status": "geplante Wartung",
+     "towards": "U6 Floridsdorf"
+    },
+    "description": "U6 Bahnsteig Richtung Floridsdorf - Ausgang Neue Donau",
+    "elevatorId": "ND 01",
+    "name": "ftazW_529",
+    "parentName": "ftazW_529",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedStops": [
+     4644
+    ],
+    "time": {
+     "end": "2026-11-26T00:45:00.000+0100",
+     "start": "2026-11-25T20:45:00.000+0100"
+    },
+    "title": "Neue Donau"
    },
    {
     "alertCause": "undefined alert cause",
