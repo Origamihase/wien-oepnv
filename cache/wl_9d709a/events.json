@@ -930,34 +930,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "42: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
-    "pubDate": "2026-11-23T08:17:45+01:00",
-    "starts_at": "2026-11-23T08:30:17+01:00",
-    "ends_at": "2026-11-23T10:30:00+01:00",
-    "_identity": "wl|störung|L=42|D=2026-11-23|TK=falschparker"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "4A: Verkehrsüberlastung",
-    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "c56de491edf41d83da857f489a91726653fbe3100222ed7e7ce91bebf0b5453c",
-    "pubDate": "2026-11-23T08:14:00+01:00",
-    "starts_at": "2026-11-23T08:14:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=4A|D=2026-11-23|TK=4a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261123-0010"
-    ],
-    "_incident_start": "2026-11-23T08:14:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
