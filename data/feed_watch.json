@@ -1,24 +1,32 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-23T14:30:49.714758+00:00",
- "built": "2026-11-23T15:30:35+01:00",
+ "updated": "2026-11-23T15:01:04.272420+00:00",
+ "built": "2026-11-23T16:00:49+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-23T15:30:35+01:00",
+  "built": "2026-11-23T16:00:49+01:00",
   "items": [
+   {
+    "title": "U1: Rettungseinsatz",
+    "time_line": "Seit 15:51"
+   },
+   {
+    "title": "U6: Verspätungen",
+    "time_line": "Seit 15:30"
+   },
    {
     "title": "O: Rettungseinsatz",
     "time_line": "Seit 14:22"
    },
    {
-    "title": "12/31: Rettungseinsatz",
-    "time_line": "Seit 14:01"
+    "title": "31: Rettungseinsatz",
+    "time_line": "Seit 14:07"
    },
    {
-    "title": "1: Falschparker",
-    "time_line": "Seit 13:22"
+    "title": "12: Rettungseinsatz",
+    "time_line": "Seit 14:01"
    },
    {
     "title": "68A: Geänderte Linienführung",
@@ -39,59 +47,11 @@
    {
     "title": "8A: Küniglberg, ORF Zentrum",
     "time_line": "Bis Di 24.11."
-   },
-   {
-    "title": "5A/N31: Obere Augartenstraße",
-    "time_line": "Bis 11.12."
-   },
-   {
-    "title": "74A: Rabengasse",
-    "time_line": "Seit 16.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-16T14:31:08.672823+00:00",
-   "raw": {
-    "wl-stoerungen": 72,
-    "wl-hinweise": 97,
-    "oebb": 175,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 28,
-    "oebb": 151,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 6,
-    "wl": 84
-   }
-  },
-  {
-   "t": "2026-11-16T15:00:59.402702+00:00",
-   "raw": {
-    "wl-stoerungen": 59,
-    "wl-hinweise": 97,
-    "oebb": 175,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 28,
-    "oebb": 151,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 6,
-    "wl": 88
-   }
-  },
   {
    "t": "2026-11-16T15:30:53.982135+00:00",
    "raw": {
@@ -6791,17 +6751,37 @@
     "oebb": 10,
     "wl": 86
    }
+  },
+  {
+   "t": "2026-11-23T15:01:04.272420+00:00",
+   "raw": {
+    "wl-stoerungen": 71,
+    "wl-hinweise": 95,
+    "oebb": 164,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 23,
+    "oebb": 140,
+    "baustellen": 58
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 10,
+    "wl": 87
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-23T14:30:49.714758+00:00"
+   "last_ok": "2026-11-23T15:01:04.272420+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-23T14:30:49.714758+00:00"
+   "last_ok": "2026-11-23T15:01:04.272420+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-23T14:30:49.714758+00:00"
+   "last_ok": "2026-11-23T15:01:04.272420+00:00"
   }
  }
 }

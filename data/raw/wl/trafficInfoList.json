@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261123-0026-F01, I20261123-0025, I20260925-0011, I20261123-0026-F02, I20260909-0007, I20261020-0029, I20261123-0027-F01"
+    "trafficInfoNameList": "I20261123-0026-F01, I20261123-0029, I20260925-0011, I20261123-0028, I20260909-0007, I20261020-0029, I20261123-0027-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R2373-127, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-126, R2379-627, R2380-627, R2345-127, R318-437, R293-474, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R165-101, R2168-131, R2172-131, R2171-131, R2169-131, R2167-131, R2168-112, R2204-112, R323-112, R325-112, R324-112, R326-112, R3569-112, R3446-112, R2157-112, R2223-112, R2224-112, R211-112, R354-112, R352-112, R353-112, R351-112, R2198-131, R2195-131, R2194-131, R2193-131, R2196-131, R302-170, R301-170, R303-170, R17-0, R47-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R2373-127, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-126, R2379-627, R2380-627, R2345-127, R318-437, R293-474, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R2171-131, R2168-131, R2169-131, R2172-131, R2167-131, R2168-112, R2204-112, R324-112, R326-112, R323-112, R325-112, R3446-112, R3569-112, R2157-112, R2223-112, R211-112, R2224-112, R352-112, R354-112, R353-112, R351-112, R2195-131, R2196-131, R2198-131, R2193-131, R2194-131, R301-170, R302-170, R303-170, R17-0, R47-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,55 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U6: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261123-0025",
-    "owner": "WL",
-    "parentName": "I20261123-0025",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4615
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-23T14:00:00.000+0100",
-     "end": "2026-11-23T15:30:00.000+0100",
-     "lastUpdate": "2026-11-23T15:30:00.000+0100",
-     "resume": "2026-11-23T14:00:00.000+0100",
-     "start": "2026-11-23T14:00:00.000+0100"
-    },
-    "title": "U6: Schadhaftes Fahrzeug"
-   },
-   {
     "alertCause": "emergency medical services",
     "alertCauseId": 14,
     "attributes": {
@@ -270,52 +221,6 @@
     "alertCauseId": 14,
     "attributes": {
      "relatedLineTypes": {
-      "31": "ptTram"
-     }
-    },
-    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "31: Rettungseinsatz"
-      }
-     }
-    ],
-    "location": "Stromstraße 4",
-    "name": "I20261123-0026-F02",
-    "owner": "WL",
-    "parentName": "I20261123-0026",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 131,
-      "lineName": "31",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-23T14:20:00.000+0100",
-     "end": "2026-11-23T15:39:00.000+0100",
-     "lastUpdate": "2026-11-23T15:16:00.000+0100",
-     "start": "2026-11-23T14:01:00.000+0100"
-    },
-    "title": "31: Rettungseinsatz"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
       "O": "ptTram"
      }
     },
@@ -358,6 +263,99 @@
     "title": "O: Rettungseinsatz"
    },
    {
+    "alertCause": "roadway damage",
+    "alertCauseId": 67,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung.",
+    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Weichenstörung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Weichenstörung.</p>",
+       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung.",
+       "title": "U6: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261123-0028",
+    "owner": "WL",
+    "parentName": "I20261123-0028",
+    "priority": "1",
+    "reasonId": 39,
+    "reasonName": "Weichenstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4636
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-23T15:30:00.000+0100",
+     "lastUpdate": "2026-11-23T15:30:00.000+0100",
+     "resume": "2026-11-23T15:30:00.000+0100",
+     "start": "2026-11-23T15:30:00.000+0100"
+    },
+    "title": "U6: Verspätungen"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+       "title": "U1: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261123-0029",
+    "owner": "WL",
+    "parentName": "I20261123-0029",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 301,
+      "lineName": "U1",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-23T15:51:00.000+0100",
+     "lastUpdate": "2026-11-23T15:51:00.000+0100",
+     "resume": "2026-11-23T15:51:00.000+0100",
+     "start": "2026-11-23T15:51:00.000+0100"
+    },
+    "title": "U1: Rettungseinsatz"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -379,29 +377,6 @@
      "start": "2026-11-23T04:45:25.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R165-101",
-    "owner": "WL",
-    "parentName": "R165-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     165
-    ],
-    "time": {
-     "end": "2026-11-23T15:45:00.000+0100",
-     "start": "2026-11-23T13:29:47.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
