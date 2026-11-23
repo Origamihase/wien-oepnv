@@ -662,6 +662,34 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1A: Polizeiübung",
+    "description": "Derzeit ist ein Betrieb der Linie 1A nicht möglich. Ersatz: Linien U- Bahn. Voraussichtliche Dauer: bis ca. 11:30 Uhr. Grund: Polizeiübung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "7b2b51107dae0920ff8ddd25f90ed56ecbc505f6574f7472f92369661afcacc5",
+    "pubDate": "2026-11-23T09:28:00+01:00",
+    "starts_at": "2026-11-23T09:28:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=1A|D=2026-11-23|TK=1a polizeiübung",
+    "_wl_ids": [
+      "I20261123-0015"
+    ],
+    "_incident_start": "2026-11-23T09:28:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1A: Fahrtbehinderung wegen Polizeiübung",
+    "description": "Fahrtbehinderung\nwegen Polizeiübung",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e15a962eeb01239553b15d055ed66252f7f5eb60de62bc2c08e5ea32ffd8333f",
+    "pubDate": "2026-11-23T09:26:55+01:00",
+    "starts_at": "2026-11-23T09:26:55+01:00",
+    "ends_at": "2026-11-23T12:00:00+01:00",
+    "_identity": "wl|störung|L=1A|D=2026-11-23|TK=fahrtbehinderung wegen polizeiübung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "1: Gleisbauarbeiten",
     "description": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A und 65A. Voraussichtliche Dauer: Mitte Dezember 2026. Grund: Gleisbauarbeiten im Bereich Stefan-Fadinger-Platz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
