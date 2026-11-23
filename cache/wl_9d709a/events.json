@@ -878,22 +878,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "3A: Verspätungen",
-    "description": "Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "9d358731bdd90c07601bb9665d1fe894e602b065f0c6bead2062210847affb87",
-    "pubDate": "2026-11-23T11:28:00+01:00",
-    "starts_at": "2026-11-23T11:28:00+01:00",
-    "ends_at": "2026-11-23T12:48:00+01:00",
-    "_identity": "wl|störung|L=3A|D=2026-11-23|TK=3a verspätungen",
-    "_wl_ids": [
-      "I20261123-0019"
-    ],
-    "_incident_start": "2026-11-23T11:28:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -902,18 +886,6 @@
     "starts_at": "2026-11-23T04:45:25+01:00",
     "ends_at": "2026-11-23T23:59:59+01:00",
     "_identity": "wl|störung|L=5B|D=2026-11-23|TK=busse halten pappenheimgasse 24 28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "5: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5",
-    "pubDate": "2026-11-23T10:37:31+01:00",
-    "starts_at": "2026-11-23T10:37:31+01:00",
-    "ends_at": "2026-11-23T12:45:00+01:00",
-    "_identity": "wl|störung|L=5|D=2026-11-23|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
@@ -936,7 +908,7 @@
     "guid": "2be107df443404dfd7763972ed03f089ed27efef3882059c9e0f9e78ee115107",
     "pubDate": "2026-11-23T12:16:00+01:00",
     "starts_at": "2026-11-23T12:16:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-23T13:45:00+01:00",
     "_identity": "wl|störung|L=66A|D=2026-11-23|TK=rettungseinsatz",
     "_wl_ids": [
       "I20261123-0021"
