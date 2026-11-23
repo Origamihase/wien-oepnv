@@ -1,77 +1,57 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-23T22:30:56.103718+00:00",
- "built": "2026-11-23T23:30:45+01:00",
+ "updated": "2026-11-23T23:00:56.935046+00:00",
+ "built": "2026-11-24T00:00:45+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-23T23:30:45+01:00",
+  "built": "2026-11-24T00:00:45+01:00",
   "items": [
    {
-    "title": "46/49/48A: Schadhaftes Fahrzeug",
-    "time_line": "Seit 23:25"
-   },
-   {
-    "title": "U6: Stellwerksstörung",
-    "time_line": "Seit 23:18"
-   },
-   {
-    "title": "46: Fremder Verkehrsunfall",
-    "time_line": "Seit 22:44"
-   },
-   {
-    "title": "10A: Rettungseinsatz",
-    "time_line": "Seit 22:39"
-   },
-   {
-    "title": "5: Schadhaftes Fahrzeug",
-    "time_line": "Seit 21:39"
-   },
-   {
-    "title": "68A: Geänderte Linienführung",
-    "time_line": "Seit heute"
-   },
-   {
-    "title": "52A/43B/52B: Ulmenstraße",
-    "time_line": "Seit heute"
+    "title": "Wien Floridsdorf ↔ Wien Leopoldau",
+    "time_line": "Heute"
    },
    {
     "title": "7A: Antonsplatz",
-    "time_line": "Ab Di 24.11. bis Mi 25.11."
+    "time_line": "Bis Mi 25.11."
+   },
+   {
+    "title": "8A/58A/58B: Küniglberg, ORF-Zentrum, ORF Zentrum",
+    "time_line": "Seit 16.11."
+   },
+   {
+    "title": "68A: Geänderte Linienführung",
+    "time_line": "Seit 23.11."
+   },
+   {
+    "title": "48A: Klinik Penzing",
+    "time_line": "Ab Mi 25.11. bis 17.12."
+   },
+   {
+    "title": "52A/43B/52B: Ulmenstraße",
+    "time_line": "Seit 23.11."
    },
    {
     "title": "N71: Bauarbeiten",
     "time_line": "Bis Fr 27.11."
    },
    {
-    "title": "8A: Küniglberg, ORF Zentrum",
-    "time_line": "Bis Di 24.11."
+    "title": "5A/N31: Obere Augartenstraße",
+    "time_line": "Bis 11.12."
+   },
+   {
+    "title": "74A: Rabengasse",
+    "time_line": "Seit 16.11."
+   },
+   {
+    "title": "98A: Arztgasse",
+    "time_line": "Seit 16.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-16T23:00:46.984251+00:00",
-   "raw": {
-    "wl-stoerungen": 36,
-    "wl-hinweise": 88,
-    "oebb": 171,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 24,
-    "oebb": 148,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 6,
-    "wl": 78
-   }
-  },
   {
    "t": "2026-11-16T23:30:54.922866+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 10,
     "wl": 85
    }
+  },
+  {
+   "t": "2026-11-23T23:00:56.935046+00:00",
+   "raw": {
+    "wl-stoerungen": 35,
+    "wl-hinweise": 88,
+    "oebb": 163,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 24,
+    "oebb": 138,
+    "baustellen": 58
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 11,
+    "wl": 78
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-23T22:30:56.103718+00:00"
+   "last_ok": "2026-11-23T23:00:56.935046+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-23T22:30:56.103718+00:00"
+   "last_ok": "2026-11-23T23:00:56.935046+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-23T22:30:56.103718+00:00"
+   "last_ok": "2026-11-23T23:00:56.935046+00:00"
   }
  }
 }
