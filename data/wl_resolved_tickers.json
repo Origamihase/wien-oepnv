@@ -3,39 +3,7 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R1606-160|2026-11-23T16:57:08.000+0100": {
-   "incident": "I20261123-0031",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R1615-160|2026-11-23T17:00:08.000+0100": {
-   "incident": "I20261123-0031",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R1616-160|2026-11-23T17:00:08.000+0100": {
-   "incident": "I20261123-0031",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R1617-160|2026-11-23T16:57:08.000+0100": {
-   "incident": "I20261123-0031",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R1618-160|2026-11-23T16:57:08.000+0100": {
-   "incident": "I20261123-0031",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R1619-160|2026-11-23T16:57:08.000+0100": {
-   "incident": "I20261123-0031",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R1620-160|2026-11-23T16:57:08.000+0100": {
-   "incident": "I20261123-0031",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
   "R2167-131|2026-11-23T14:07:20.000+0100": {
-   "incident": "I20261123-0026",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R2168-112|2026-11-23T14:08:20.000+0100": {
    "incident": "I20261123-0026",
    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
   },
@@ -55,10 +23,6 @@
    "incident": "I20261123-0026",
    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
   },
-  "R2204-112|2026-11-23T14:08:21.000+0100": {
-   "incident": "I20261123-0026",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
   "R301-170|2026-11-23T14:24:54.000+0100": {
    "incident": "I20261123-0027",
    "title": "Rettungseinsatz\nBetrieb ab Quartier Belvedere"
@@ -70,30 +34,6 @@
   "R303-170|2026-11-23T14:25:54.000+0100": {
    "incident": "I20261123-0027",
    "title": "Rettungseinsatz\nZüge halten bei Linie D"
-  },
-  "R323-112|2026-11-23T14:08:22.000+0100": {
-   "incident": "I20261123-0026",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R324-112|2026-11-23T14:08:22.000+0100": {
-   "incident": "I20261123-0026",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R325-112|2026-11-23T14:08:22.000+0100": {
-   "incident": "I20261123-0026",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R326-112|2026-11-23T14:08:22.000+0100": {
-   "incident": "I20261123-0026",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R3446-112|2026-11-23T14:08:23.000+0100": {
-   "incident": "I20261123-0026",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R3569-112|2026-11-23T14:08:23.000+0100": {
-   "incident": "I20261123-0026",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
   }
  }
 }
