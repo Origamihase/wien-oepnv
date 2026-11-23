@@ -6,14 +6,14 @@
     "name": "aktuelles",
     "refPoiCategoryGroupId": 61,
     "title": "Aktuelles",
-    "trafficInfoNameList": "N20260209-0049, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260702-5991, N20260813-6092, N20260808-6084, N20260808-6083, N20260817-6129, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260903-6175, N20260908-6177, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261006-6258, N20261007-6260, N20261009-6270, N20261021-0001, N20261023-0001, N20261102-0001, N20261104-0001, N20261104-0002, N20261104-0003, N20261104-0004, N20261105-0001, N20261105-0002, N20261106-0002, N20261111-0001, N20261111-0003, N20261111-0004, N20261111-0005, N20261111-0007, N20261112-0001, N20261012-6272, N20261116-0001, N20261117-0001, N20261117-0002, N20261118-0001, N20261118-0002, N20261118-0003, N20261118-0004, N20261119-0001, N20261120-0001"
+    "trafficInfoNameList": "N20260209-0049, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260702-5991, N20260813-6092, N20260808-6084, N20260808-6083, N20260817-6129, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260903-6175, N20260908-6177, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261006-6258, N20261007-6260, N20261009-6270, N20261021-0001, N20261023-0001, N20261104-0001, N20261104-0002, N20261104-0003, N20261104-0004, N20261105-0001, N20261105-0002, N20261106-0002, N20261111-0001, N20261111-0003, N20261111-0004, N20261111-0005, N20261111-0007, N20261112-0001, N20261012-6272, N20261116-0001, N20261117-0001, N20261117-0002, N20261118-0001, N20261118-0002, N20261118-0003, N20261118-0004, N20261119-0001, N20261120-0001"
    },
    {
     "id": -1,
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_85, ftazW_628, ftazW_1016544, ftazW_1018064, ftazW_480, ftazW_629, ftazW_756, ftazW_481, ftazW_80, ftazW_1016545, ftazW_1018063, ftazW_81, ftazW_739, ftazW_1017627, ftazW_605, ftazW_478, ftazW_479, ftazW_604, ftazW_725, ftazW_740, ftazW_529, ftazW_1016925, ftazW_1016592, ftazW_1354573, ftazW_475, ftazW_528, ftazW_1016926, ftazW_1016593, ftazW_1354391"
+    "trafficInfoNameList": "ftazW_85, ftazW_628, ftazW_1016544, ftazW_1018064, ftazW_480, ftazW_629, ftazW_756, ftazW_481, ftazW_80, ftazW_1016545, ftazW_1018063, ftazW_81, ftazW_739, ftazW_1017627, ftazW_605, ftazW_478, ftazW_604, ftazW_479, ftazW_725, ftazW_740, ftazW_529, ftazW_1016925, ftazW_1016592, ftazW_1354573, ftazW_475, ftazW_528, ftazW_1016926, ftazW_1016593, ftazW_1354391"
    }
   ],
   "poiCategoryGroups": [
@@ -1891,48 +1891,6 @@
      "validFrom": "2026-10-23T08:25:00.000+0200"
     },
     "title": "11: Wienerfeldgasse"
-   },
-   {
-    "alertCause": "construction work",
-    "alertCauseId": 45,
-    "description": "<h2>Bauarbeiten</h2><p>Wegen Straßenbauarbeiten in der Knödelhüttenstraße wird die Linie 52A umgeleitet.</p><p><strong><u>Zeitraum:</u></strong><br>Ab Donnerstag, 5. November 2026, etwa 07:00 Uhr für etwa drei Wochen.</p><p><strong><u>Maßnahmen:</u></strong><br><strong>Linie 52A in Richtung Bhf. Hütteldorf S U:</strong><br>Umleitung ab Knödelhüttenstraße # Haspelmeistergasse über Haspelmeistergasse - Hüttelbergstraße.</p><p><u>Aufgelassene Haltestellen:</u><br>- Haspelmeistergasse (Knödelhüttenstraße 23)<br>- Edenstraße (Knödelhüttenstraße gegenüber 48-50)</p><p><u>Ersatzhaltestellen:</u><br>- Haspelmeistergasse (Knödelhüttenstraße 25, provisorische Haltestelle)<br>- Ulmenstraße (Hüttelbergstraße 115, Haltestelle der Linien 43B und 52B)</p>",
-    "id": "N20261102-0001",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<h2>Bauarbeiten</h2><p>Wegen Straßenbauarbeiten in der Knödelhüttenstraße wird die Linie 52A umgeleitet.</p><p><strong><u>Zeitraum:</u></strong><br>Ab Donnerstag, 5. November 2026, etwa 07:00 Uhr für etwa drei Wochen.</p><p><strong><u>Maßnahmen:</u></strong><br><strong>Linie 52A in Richtung Bhf. Hütteldorf S U:</strong><br>Umleitung ab Knödelhüttenstraße # Haspelmeistergasse über Haspelmeistergasse - Hüttelbergstraße.</p><p><u>Aufgelassene Haltestellen:</u><br>- Haspelmeistergasse (Knödelhüttenstraße 23)<br>- Edenstraße (Knödelhüttenstraße gegenüber 48-50)</p><p><u>Ersatzhaltestellen:</u><br>- Haspelmeistergasse (Knödelhüttenstraße 25, provisorische Haltestelle)<br>- Ulmenstraße (Hüttelbergstraße 115, Haltestelle der Linien 43B und 52B)</p>",
-       "descriptionPlain": "BauarbeitenWegen Straßenbauarbeiten in der Knödelhüttenstraße wird die Linie 52A umgeleitet. Zeitraum: Ab Donnerstag, 5. November 2026, etwa 07:00 Uhr für etwa drei Wochen. Maßnahmen: Linie 52A in Richtung Bhf. Hütteldorf S U: Umleitung ab Knödelhüttenstraße # Haspelmeistergasse über Haspelmeistergasse - Hüttelbergstraße. Aufgelassene Haltestellen: - Haspelmeistergasse (Knödelhüttenstraße 23) - Edenstraße (Knödelhüttenstraße gegenüber 48-50) Ersatzhaltestellen: - Haspelmeistergasse (Knödelhüttenstraße 25, provisorische Haltestelle) - Ulmenstraße (Hüttelbergstraße 115, Haltestelle der Linien 43B und 52B)",
-       "title": "52A: Bauarbeiten"
-      }
-     }
-    ],
-    "location": {
-     "properties": {
-      "attributes": {},
-      "coordName": "WGS84",
-      "type": "news"
-     },
-     "type": "Feature"
-    },
-    "name": "N20261102-0001",
-    "reasonId": 21,
-    "reasonName": "Bauarbeiten",
-    "refPoiCategoryId": 13296,
-    "relatedLines": [
-     "52A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 452,
-      "lineName": "52A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "time": {
-     "start": "2026-11-02T15:36:00.000+0100",
-     "validFrom": "2026-11-05T15:36:00.000+0100"
-    },
-    "title": "52A: Bauarbeiten"
    },
    {
     "alertCause": "special event",
