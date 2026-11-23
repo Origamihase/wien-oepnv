@@ -62,18 +62,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "1A: Polizeiübung",
-    "description": "<p>Am Montag, den 23.11.2026 wird in der Zeit zwischen ca. 10:00 Uhr bis ca.11:00 Uhr die Strauchgasse und Herrengasse, in 1010 Wien wegen einer Übung am Pollersperrsystem polizeilich gesperrt.</p><p>Ein Betrieb der Linie 1A ist nicht möglich. </p>",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "3c24781e7b84a6853b0b9610ad33b66329e9f155260908ddc03798b6f4229886",
-    "pubDate": "2026-11-17T11:37:00+01:00",
-    "starts_at": "2026-11-17T11:37:00+01:00",
-    "ends_at": "2026-11-23T11:00:00+01:00",
-    "_identity": "wl|hinweis|L=1A|D=2026-11-17|TK=1a polizeiübung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "1: Gleisbauarbeiten",
     "description": "<h2>Gleisbauarbeiten</h2><p>Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1.</p><p><strong><u>Zeitraum:</u></strong><br>Ab 20. Oktober 2026 bis Mitte Dezember 2026.<br>Aufgrund eines spontanen Gleisgebrechens müssen die Gleisbauarbeiten vorgezogen werden.</p><p><strong><u>Maßnahmen:</u></strong><br><strong>Linie 1:</strong><br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Die Züge werden ab Knöllgasse zum Reumannplatz umgeleitet.</p><p><strong><u>Ersatz:</u></strong><br>Weichen Sie ersatzweise auf die Linien 7A oder 65A aus.</p><p><strong><u>Skizze:</u></strong><br><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/1_Umleitung_Reumannplatz.png\" alt=\"\" width=\"1000\" height=\"1000\"></p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -286,6 +274,18 @@
     "starts_at": "2026-03-02T00:00:00+01:00",
     "ends_at": "2027-08-31T23:59:00+02:00",
     "_identity": "wl|hinweis|L=57A|D=2026-03-02|TK=57a haus des meeres"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
+    "title": "8A/58A/58B: Küniglberg, ORF-Zentrum",
+    "description": "<p><strong><u>Haltestellenverlegung der Linien 8A, 58A und 58B</u></strong></p><p><strong><u>Haltestelle:</u></strong> Küniglberg, ORF-Zentrum</p><p><strong><u>Von:</u></strong> Verbindungsfahrbahn zwischen Würzburggasse und Küniglberggasse</p><p><strong><u>Nach:</u></strong> Küniglberggasse 1-3, provisorische Haltestelle</p><p><strong><u>Dauer:</u></strong> Ab 25. November 2026, etwa 07:00 Uhr, für etwa zwei Wochen</p><p><strong><u>Grund:</u></strong> Örtliche Umleitung wegen Straßenbauarbeiten</p>",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "eb3e0204c1e47064e1548cf951957b36dcb1e8a69712b8b05d9fe73587d0b033",
+    "pubDate": "2026-11-23T10:57:00+01:00",
+    "starts_at": "2026-11-25T00:00:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|hinweis|L=58A,58B,8A|D=2026-11-25|TK=8a 58a 58b küniglberg orf zentrum"
   },
   {
     "source": "Wiener Linien",
@@ -651,7 +651,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "1A: Polizeiübung",
-    "description": "Derzeit ist ein Betrieb der Linie 1A nicht möglich. Ersatz: Linien U- Bahn. Voraussichtliche Dauer: bis ca. 11:30 Uhr. Grund: Polizeiübung.",
+    "description": "Derzeit ist ein Betrieb der Linie 1A nicht möglich. Ersatz: Linien U1, U3. Voraussichtliche Dauer: bis ca. 12:00 Uhr. Grund: Polizeiübung.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "7b2b51107dae0920ff8ddd25f90ed56ecbc505f6574f7472f92369661afcacc5",
     "pubDate": "2026-11-23T09:28:00+01:00",
@@ -930,6 +930,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "3A: Verkehrsstörung",
+    "description": "Linie 3A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsstörung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "eef1c973e67f015f87b587d72bb9ff42a8437e2d26f4b314f70960b7b9e23cad",
+    "pubDate": "2026-11-23T10:56:00+01:00",
+    "starts_at": "2026-11-23T10:56:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=3A|D=2026-11-23|TK=3a verkehrsstörung",
+    "_wl_ids": [
+      "I20261123-0017"
+    ],
+    "_incident_start": "2026-11-23T10:56:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -938,6 +954,22 @@
     "starts_at": "2026-11-23T04:45:25+01:00",
     "ends_at": "2026-11-23T23:59:59+01:00",
     "_identity": "wl|störung|L=5B|D=2026-11-23|TK=busse halten pappenheimgasse 24 28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Fahrtbehinderung Falschparker",
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "640e4ca4efdbfef0a155fa52b7f4ecf6eb12034e52fd20e8e21388ce8954f7a5",
+    "pubDate": "2026-11-23T10:36:00+01:00",
+    "starts_at": "2026-11-23T10:37:31+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=5|D=2026-11-23|TK=falschparker",
+    "_wl_ids": [
+      "I20261123-0016"
+    ],
+    "_incident_start": "2026-11-23T10:36:00+01:00"
   },
   {
     "source": "Wiener Linien",

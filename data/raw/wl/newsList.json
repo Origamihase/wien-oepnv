@@ -6,7 +6,7 @@
     "name": "aktuelles",
     "refPoiCategoryGroupId": 61,
     "title": "Aktuelles",
-    "trafficInfoNameList": "N20260209-0049, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260702-5991, N20260813-6092, N20260808-6084, N20260808-6083, N20260817-6129, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260903-6175, N20260908-6177, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261006-6258, N20261007-6260, N20261009-6270, N20261021-0001, N20261023-0001, N20261104-0001, N20261104-0002, N20261104-0003, N20261104-0004, N20261105-0001, N20261105-0002, N20261106-0002, N20261111-0001, N20261111-0003, N20261111-0004, N20261111-0005, N20261111-0007, N20261112-0001, N20261012-6272, N20261116-0001, N20261117-0001, N20261117-0002, N20261118-0001, N20261118-0002, N20261118-0003, N20261118-0004, N20261119-0001, N20261120-0001, N20261123-0001"
+    "trafficInfoNameList": "N20260209-0049, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260702-5991, N20260813-6092, N20260808-6084, N20260808-6083, N20260817-6129, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260903-6175, N20260908-6177, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261006-6258, N20261007-6260, N20261009-6270, N20261021-0001, N20261023-0001, N20261104-0001, N20261104-0002, N20261104-0003, N20261104-0004, N20261105-0001, N20261105-0002, N20261106-0002, N20261111-0001, N20261111-0003, N20261111-0004, N20261111-0005, N20261111-0007, N20261112-0001, N20261012-6272, N20261116-0001, N20261117-0002, N20261118-0001, N20261118-0002, N20261118-0003, N20261118-0004, N20261119-0001, N20261120-0001, N20261123-0001, N20261123-0002"
    },
    {
     "id": -1,
@@ -2521,49 +2521,6 @@
     "title": "68A: Geänderte Linienführung ab 23.11.2026"
    },
    {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "<p>Am Montag, den 23.11.2026 wird in der Zeit zwischen ca. 10:00 Uhr bis ca.11:00 Uhr die Strauchgasse und Herrengasse, in 1010 Wien wegen einer Übung am Pollersperrsystem polizeilich gesperrt.</p><p>Ein Betrieb der Linie 1A ist nicht möglich. </p>",
-    "id": "N20261117-0001",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Am Montag, den 23.11.2026 wird in der Zeit zwischen ca. 10:00 Uhr bis ca.11:00 Uhr die Strauchgasse und Herrengasse, in 1010 Wien wegen einer Übung am Pollersperrsystem polizeilich gesperrt.</p><p>Ein Betrieb der Linie 1A ist nicht möglich. </p>",
-       "descriptionPlain": "Am Montag, den 23.11.2026 wird in der Zeit zwischen ca. 10:00 Uhr bis ca.11:00 Uhr die Strauchgasse und Herrengasse, in 1010 Wien wegen einer Übung am Pollersperrsystem polizeilich gesperrt. Ein Betrieb der Linie 1A ist nicht möglich.",
-       "title": "1A: Polizeiübung"
-      }
-     }
-    ],
-    "location": {
-     "properties": {
-      "attributes": {},
-      "coordName": "WGS84",
-      "type": "news"
-     },
-     "type": "Feature"
-    },
-    "name": "N20261117-0001",
-    "reasonId": 157,
-    "reasonName": "Polizeiübung",
-    "refPoiCategoryId": 13296,
-    "relatedLines": [
-     "1A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 401,
-      "lineName": "1A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "time": {
-     "end": "2026-11-23T11:00:00.000+0100",
-     "start": "2026-11-17T11:37:00.000+0100",
-     "validFrom": "2026-11-17T11:45:00.000+0100"
-    },
-    "title": "1A: Polizeiübung"
-   },
-   {
     "alertCause": "construction work",
     "alertCauseId": 45,
     "description": "<h2>Bauarbeiten</h2><p>Wegen Gleisbauarbeiten im Bereich Simmeringer Hauptstraße wird die Linie N71 über die Hauptfahrbahn umgeleitet.</p><p><strong><u>Zeitraum:</u></strong></p><p>Ab Mittwoch, 18. November 2026, etwa 00:30 Uhr bis etwa 05:00 Uhr und am</p><p>Freitag 27. November 2026, etwa 00:30 Uhr bis etwa 05:00 Uhr</p><p><strong><u>Maßnahmen:</u></strong><br><strong>Linie N71 in Richtung Kaiserebersdorf, Zinnergasse:</strong><br>Umleitung zwischen Dommesgasse und Simmeringer Platz über Simmeringer Hauptstraße, Hauptfahrbahn.</p><p>Die Haltestelle Simmering wird zur Örtlichkeit Simmeringer Hauptstraße 120 verlegt. </p><p><strong>Linie N71 in Richtung Oper, Karlsplatz:</strong></p><p>Umleitung zwischen Simmeringer Platz und Dommesgasse über Simmeringer Hauptstraße, Hauptfahrbahn.</p><p>Die Haltestelle Simmering wird zur Örtlichkeit Simmeringer Hauptstraße 157-161 verlegt. </p>",
@@ -2979,6 +2936,63 @@
      "validFrom": "2026-12-21T05:30:00.000+0100"
     },
     "title": "43A: Umbenennung einer Haltestelle"
+   },
+   {
+    "alertCause": "unknown",
+    "alertCauseId": 0,
+    "description": "<p><strong><u>Haltestellenverlegung der Linien 8A, 58A und 58B</u></strong></p><p><strong><u>Haltestelle:</u></strong> Küniglberg, ORF-Zentrum</p><p><strong><u>Von:</u></strong> Verbindungsfahrbahn zwischen Würzburggasse und Küniglberggasse</p><p><strong><u>Nach:</u></strong> Küniglberggasse 1-3, provisorische Haltestelle</p><p><strong><u>Dauer:</u></strong> Ab 25. November 2026, etwa 07:00 Uhr, für etwa zwei Wochen</p><p><strong><u>Grund:</u></strong> Örtliche Umleitung wegen Straßenbauarbeiten</p>",
+    "id": "N20261123-0002",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><strong><u>Haltestellenverlegung der Linien 8A, 58A und 58B</u></strong></p><p><strong><u>Haltestelle:</u></strong> Küniglberg, ORF-Zentrum</p><p><strong><u>Von:</u></strong> Verbindungsfahrbahn zwischen Würzburggasse und Küniglberggasse</p><p><strong><u>Nach:</u></strong> Küniglberggasse 1-3, provisorische Haltestelle</p><p><strong><u>Dauer:</u></strong> Ab 25. November 2026, etwa 07:00 Uhr, für etwa zwei Wochen</p><p><strong><u>Grund:</u></strong> Örtliche Umleitung wegen Straßenbauarbeiten</p>",
+       "descriptionPlain": "Haltestellenverlegung der Linien 8A, 58A und 58B Haltestelle: Küniglberg, ORF-Zentrum Von: Verbindungsfahrbahn zwischen Würzburggasse und Küniglberggasse Nach: Küniglberggasse 1-3, provisorische Haltestelle Dauer: Ab 25. November 2026, etwa 07:00 Uhr, für etwa zwei Wochen Grund: Örtliche Umleitung wegen Straßenbauarbeiten",
+       "title": "8A, 58A, 58B: Küniglberg, ORF-Zentrum"
+      }
+     }
+    ],
+    "location": {
+     "properties": {
+      "attributes": {},
+      "coordName": "WGS84",
+      "type": "news"
+     },
+     "type": "Feature"
+    },
+    "name": "N20261123-0002",
+    "reasonId": 223,
+    "reasonName": "Haltestellenverlegung",
+    "refPoiCategoryId": 13296,
+    "relatedLines": [
+     "58B",
+     "8A",
+     "58A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 458,
+      "lineName": "58A",
+      "vehicleType": "ptBusCity"
+     },
+     {
+      "lineId": 258,
+      "lineName": "58B",
+      "vehicleType": "ptBusCity"
+     },
+     {
+      "lineId": 408,
+      "lineName": "8A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "relatedStops": [
+     1729
+    ],
+    "time": {
+     "start": "2026-11-23T10:57:00.000+0100",
+     "validFrom": "2026-11-25T07:00:00.000+0100"
+    },
+    "title": "8A, 58A, 58B: Küniglberg, ORF-Zentrum"
    },
    {
     "alertCause": "undefined alert cause",
