@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261123-0010, I20261123-0012, I20260925-0011, I20260909-0007, I20261123-0006, I20261123-0011, I20261123-0008, I20261020-0029, I20261123-0007"
+    "trafficInfoNameList": "I20261123-0010, I20261123-0011-F01, I20261123-0014, I20261123-0012, I20260925-0011, I20261123-0013, I20260909-0007, I20261123-0006, I20261123-0008-F01, I20261020-0029, I20261123-0007"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R2343-626, R2343-125, R2378-627, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2345-127, R1882-101, R1883-101, R1884-101, R293-474, R318-437, R2359-125, R1875-101, R1876-101, R1880-101, R1881-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R216-138, R1214-138, R1215-138, R1216-138, R1217-138, R2964-138, R1225-138, R1226-138, R1223-138, R1224-138, R1227-138, R1221-138, R2985-138, R148-142, R150-142, R1338-142, R524-142, R1342-142, R493-142, R188-142, R1212-142, R1213-142, R1336-142, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R2343-626, R2343-125, R2378-627, R293-474, R318-437, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R216-138, R1214-138, R1215-138, R1216-138, R1217-138, R2964-138, R1221-138, R1226-138, R1224-138, R1225-138, R1227-138, R1223-138, R2985-138, R148-142, R150-142, R1338-142, R493-142, R524-142, R1342-142, R188-142, R1212-142, R1213-142, R1336-142, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -268,19 +268,19 @@
       "38": "ptTram"
      }
     },
-    "description": "Linie 38: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Ersatz: Linien 10A, 35A, 38A und die S-Bahn. Voraussichtliche Dauer: 09:00 Uhr. Grund: Aktuelle Wetterlage im Bereich Grinzinger Allee.",
-    "descriptionHTML": "<p>Linie 38:<br>Betrieb nur zwischen Schottentor U und Nußdorfer Straße U.</p><p>Ersatz: Linien 10A, 35A, 38A und die S-Bahn.</p><p>Voraussichtliche Dauer: 09:00 Uhr.</p><p>Grund: Aktuelle Wetterlage im Bereich Grinzinger Allee.</p>",
+    "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 38: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 38:<br>Betrieb nur zwischen Schottentor U und Nußdorfer Straße U.</p><p>Ersatz: Linien 10A, 35A, 38A und die S-Bahn.</p><p>Voraussichtliche Dauer: 09:00 Uhr.</p><p>Grund: Aktuelle Wetterlage im Bereich Grinzinger Allee.</p>",
-       "descriptionPlain": "Linie 38: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Ersatz: Linien 10A, 35A, 38A und die S-Bahn. Voraussichtliche Dauer: 09:00 Uhr. Grund: Aktuelle Wetterlage im Bereich Grinzinger Allee.",
+       "descriptionHtml": "<p>Linie 38: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "38: Aktuelle Wetterlage"
       }
      }
     ],
     "location": "Grinzinger Allee",
-    "name": "I20261123-0008",
+    "name": "I20261123-0008-F01",
     "owner": "WL",
     "parentName": "I20261123-0008",
     "priority": "1",
@@ -299,8 +299,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-23T08:04:00.000+0100",
-     "lastUpdate": "2026-11-23T08:29:00.000+0100",
+     "created": "2026-11-23T08:44:00.000+0100",
+     "lastUpdate": "2026-11-23T08:44:00.000+0100",
+     "resume": "2026-11-23T08:44:00.000+0100",
      "start": "2026-11-23T08:02:00.000+0100"
     },
     "title": "38: Aktuelle Wetterlage"
@@ -358,19 +359,19 @@
       "42": "ptTram"
      }
     },
-    "description": "Linie 42: Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 08:45 Uhr. Grund: Falschparker im Bereich Kreuzgasse 30.",
-    "descriptionHTML": "<p>Linie 42:<br>Fahrtbehinderung in Richtung Antonigasse.</p><p>Voraussichtliche Dauer: 08:45 Uhr.</p><p>Grund: Falschparker im Bereich Kreuzgasse 30.</p>",
+    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 42: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 42:<br>Fahrtbehinderung in Richtung Antonigasse.</p><p>Voraussichtliche Dauer: 08:45 Uhr.</p><p>Grund: Falschparker im Bereich Kreuzgasse 30.</p>",
-       "descriptionPlain": "Linie 42: Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 08:45 Uhr. Grund: Falschparker im Bereich Kreuzgasse 30.",
+       "descriptionHtml": "<p>Linie 42: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "42: Falschparker"
       }
      }
     ],
     "location": "Kreuzgasse 30",
-    "name": "I20261123-0011",
+    "name": "I20261123-0011-F01",
     "owner": "WL",
     "parentName": "I20261123-0011",
     "priority": "1",
@@ -389,8 +390,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-23T08:18:00.000+0100",
-     "lastUpdate": "2026-11-23T08:18:00.000+0100",
+     "created": "2026-11-23T08:36:00.000+0100",
+     "lastUpdate": "2026-11-23T08:36:00.000+0100",
+     "resume": "2026-11-23T08:36:00.000+0100",
      "start": "2026-11-23T08:17:00.000+0100"
     },
     "title": "42: Falschparker"
@@ -453,6 +455,99 @@
      "start": "2026-11-23T08:23:00.000+0100"
     },
     "title": "O, 2, 43: Aktuelle Wetterlage"
+   },
+   {
+    "alertCause": "traffic management system failure",
+    "alertCauseId": 41,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Stellwerksstörung.",
+    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Stellwerksstörung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Stellwerksstörung.</p>",
+       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Stellwerksstörung.",
+       "title": "U6: Stellwerksstörung"
+      }
+     }
+    ],
+    "name": "I20261123-0013",
+    "owner": "WL",
+    "parentName": "I20261123-0013",
+    "priority": "1",
+    "reasonId": 32,
+    "reasonName": "Stellwerksstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-23T08:38:00.000+0100",
+     "lastUpdate": "2026-11-23T08:38:00.000+0100",
+     "resume": "2026-11-23T08:38:00.000+0100",
+     "start": "2026-11-23T08:38:00.000+0100"
+    },
+    "title": "U6: Stellwerksstörung"
+   },
+   {
+    "alertCause": "vandalism",
+    "alertCauseId": 16,
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Vandalismus.",
+    "descriptionHTML": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Vandalismus.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Vandalismus.</p>",
+       "descriptionPlain": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Vandalismus.",
+       "title": "U1: Vandalismus"
+      }
+     }
+    ],
+    "name": "I20261123-0014",
+    "owner": "WL",
+    "parentName": "I20261123-0014",
+    "priority": "1",
+    "reasonId": 52,
+    "reasonName": "Vandalismus",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 301,
+      "lineName": "U1",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4119
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-23T08:56:00.000+0100",
+     "lastUpdate": "2026-11-23T08:56:00.000+0100",
+     "resume": "2026-11-23T08:55:00.000+0100",
+     "start": "2026-11-23T08:55:00.000+0100"
+    },
+    "title": "U1: Vandalismus"
    },
    {
     "alertCause": "undefined alert cause",
