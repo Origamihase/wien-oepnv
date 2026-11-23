@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-23T17:31:03.870249+00:00",
- "built": "2026-11-23T18:30:58+01:00",
+ "updated": "2026-11-23T18:01:00.710387+00:00",
+ "built": "2026-11-23T19:00:45+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-23T18:30:58+01:00",
+  "built": "2026-11-23T19:00:45+01:00",
   "items": [
+   {
+    "title": "37: Falschparker",
+    "time_line": "Seit 18:56"
+   },
    {
     "title": "U1: Polizeieinsatz",
     "time_line": "Seit 18:09"
@@ -43,10 +47,6 @@
    {
     "title": "N71: Bauarbeiten",
     "time_line": "Bis Fr 27.11."
-   },
-   {
-    "title": "8A: Küniglberg, ORF Zentrum",
-    "time_line": "Bis Di 24.11."
    }
   ]
  },
@@ -6771,17 +6771,37 @@
     "oebb": 10,
     "wl": 86
    }
+  },
+  {
+   "t": "2026-11-23T18:01:00.710387+00:00",
+   "raw": {
+    "wl-stoerungen": 49,
+    "wl-hinweise": 93,
+    "oebb": 164,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 23,
+    "oebb": 140,
+    "baustellen": 58
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 10,
+    "wl": 87
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-23T17:31:03.870249+00:00"
+   "last_ok": "2026-11-23T18:01:00.710387+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-23T17:31:03.870249+00:00"
+   "last_ok": "2026-11-23T18:01:00.710387+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-23T17:31:03.870249+00:00"
+   "last_ok": "2026-11-23T18:01:00.710387+00:00"
   }
  }
 }

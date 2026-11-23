@@ -914,6 +914,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "37: Falschparker",
+    "description": "Linie 37: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f",
+    "pubDate": "2026-11-23T18:56:00+01:00",
+    "starts_at": "2026-11-23T18:56:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=37|D=2026-11-23|TK=falschparker",
+    "_wl_ids": [
+      "I20261123-0034"
+    ],
+    "_incident_start": "2026-11-23T18:56:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -967,7 +983,7 @@
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "011d5e8498133bc00e1bdf3e9fc71ce953ee78ab3f1b6b1f28b0860bcee4fb84",
     "pubDate": "2026-11-23T14:24:54+01:00",
-    "starts_at": "2026-11-23T14:25:54+01:00",
+    "starts_at": "2026-11-23T14:24:54+01:00",
     "ends_at": "2026-11-23T19:15:00+01:00",
     "_identity": "wl|störung|L=O|D=2026-11-23|TK=rettungseinsatz"
   },
