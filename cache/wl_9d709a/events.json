@@ -966,6 +966,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "U4: Polizeieinsatz",
+    "description": "Linie U4: Unregelmäßige Intervalle in Richtung Hütteldorf. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a",
+    "pubDate": "2026-11-23T07:08:00+01:00",
+    "starts_at": "2026-11-23T07:08:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U4|D=2026-11-23|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261123-0005"
+    ],
+    "_incident_start": "2026-11-23T07:08:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Rettungseinsatz",
+    "description": "Linie U6: Unregelmäßige Intervalle in Richtung Floridsdorf. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
+    "pubDate": "2026-11-23T07:03:00+01:00",
+    "starts_at": "2026-11-23T07:03:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U6|D=2026-11-23|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261123-0004"
+    ],
+    "_incident_start": "2026-11-23T07:03:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
