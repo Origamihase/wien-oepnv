@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261123-0023-F01, I20261123-0023, I20260925-0011, I20260909-0007, I20261123-0022, I20261020-0029, I20261123-0021"
+    "trafficInfoNameList": "I20261123-0022-F01, I20261123-0023-F01, I20260925-0011, I20260909-0007, I20261123-0024-F01, I20261123-0024, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R293-474, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R318-437, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R165-101, R172-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R293-474, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R318-437, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2378-627, R2343-125, R2343-626, R2359-125, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R165-101, R172-101, R470-162, R1749-162, R1748-162, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,52 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "66A": "ptBusCity"
-     }
-    },
-    "description": "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie 66A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 66A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-       "title": "66A: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261123-0021",
-    "owner": "WL",
-    "parentName": "I20261123-0021",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 466,
-      "lineName": "66A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-23T12:17:00.000+0100",
-     "end": "2026-11-23T13:45:00.000+0100",
-     "lastUpdate": "2026-11-23T12:33:00.000+0100",
-     "resume": "2026-11-23T12:16:00.000+0100",
-     "start": "2026-11-23T12:16:00.000+0100"
-    },
-    "title": "66A: Rettungseinsatz"
-   },
-   {
     "alertCause": "vehicle on the line",
     "alertCauseId": 71,
     "attributes": {
@@ -224,19 +178,19 @@
       "1": "ptTram"
      }
     },
-    "description": "Linie 1: Betrieb nur zwischen Stefan-Fadinger-Platz und Radetzkyplatz. Weiterfahrt zum Praterstern S U. Voraussichtliche Dauer: 14:00 Uhr. Grund: Falschparker im Bereich Löwengasse 44.",
-    "descriptionHTML": "<p><strong>Linie 1: </strong><br>Betrieb nur zwischen Stefan-Fadinger-Platz und Radetzkyplatz.<br>Weiterfahrt zum Praterstern S U.</p><p>Voraussichtliche Dauer: 14:00 Uhr.</p><p>Grund: Falschparker im Bereich Löwengasse 44.</p>",
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p><strong>Linie 1: </strong><br>Betrieb nur zwischen Stefan-Fadinger-Platz und Radetzkyplatz.<br>Weiterfahrt zum Praterstern S U.</p><p>Voraussichtliche Dauer: 14:00 Uhr.</p><p>Grund: Falschparker im Bereich Löwengasse 44.</p>",
-       "descriptionPlain": "Linie 1: Betrieb nur zwischen Stefan-Fadinger-Platz und Radetzkyplatz. Weiterfahrt zum Praterstern S U. Voraussichtliche Dauer: 14:00 Uhr. Grund: Falschparker im Bereich Löwengasse 44.",
+       "descriptionHtml": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "1: Falschparker"
       }
      }
     ],
     "location": "Löwengasse 44",
-    "name": "I20261123-0022",
+    "name": "I20261123-0022-F01",
     "owner": "WL",
     "parentName": "I20261123-0022",
     "priority": "1",
@@ -255,60 +209,12 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-23T13:23:00.000+0100",
-     "lastUpdate": "2026-11-23T13:28:00.000+0100",
+     "created": "2026-11-23T13:46:00.000+0100",
+     "lastUpdate": "2026-11-23T13:46:00.000+0100",
+     "resume": "2026-11-23T13:46:00.000+0100",
      "start": "2026-11-23T13:22:00.000+0100"
     },
     "title": "1: Falschparker"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Fahrtbehinderung in Richtung Oberlaa. Voraussichtliche Dauer: 13:45 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Vorgartenstraße.",
-    "descriptionHTML": "<p>Linie U1:<br>Fahrtbehinderung in Richtung Oberlaa.</p><p>Voraussichtliche Dauer: 13:45 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Vorgartenstraße.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U1:<br>Fahrtbehinderung in Richtung Oberlaa.</p><p>Voraussichtliche Dauer: 13:45 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Vorgartenstraße.</p>",
-       "descriptionPlain": "Linie U1: Fahrtbehinderung in Richtung Oberlaa. Voraussichtliche Dauer: 13:45 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Vorgartenstraße.",
-       "title": "U1: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261123-0023",
-    "owner": "WL",
-    "parentName": "I20261123-0023",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 301,
-      "lineName": "U1",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4119
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-23T13:27:00.000+0100",
-     "end": "2026-11-23T13:28:00.000+0100",
-     "lastUpdate": "2026-11-23T13:28:00.000+0100",
-     "resume": "2026-11-23T13:28:00.000+0100",
-     "start": "2026-11-23T13:27:00.000+0100"
-    },
-    "title": "U1: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "defective vehicle",
@@ -352,11 +258,108 @@
     "status": "active",
     "time": {
      "created": "2026-11-23T13:28:00.000+0100",
-     "lastUpdate": "2026-11-23T13:28:00.000+0100",
-     "resume": "2026-11-23T13:28:00.000+0100",
+     "end": "2026-11-23T14:35:00.000+0100",
+     "lastUpdate": "2026-11-23T13:49:00.000+0100",
      "start": "2026-11-23T13:27:00.000+0100"
     },
     "title": "U1: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "62": "ptTram"
+     }
+    },
+    "description": "Linie 62: Fahrtbehinderung in Richtung Quartier Belvedere S. Voraussichtliche Dauer: 14:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Sonnergasse.",
+    "descriptionHTML": "<p>Linie 62:<br>Fahrtbehinderung in Richtung Quartier Belvedere S.</p><p>Voraussichtliche Dauer: 14:15 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Sonnergasse.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 62:<br>Fahrtbehinderung in Richtung Quartier Belvedere S.</p><p>Voraussichtliche Dauer: 14:15 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Sonnergasse.</p>",
+       "descriptionPlain": "Linie 62: Fahrtbehinderung in Richtung Quartier Belvedere S. Voraussichtliche Dauer: 14:15 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Sonnergasse.",
+       "title": "62: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261123-0024",
+    "owner": "WL",
+    "parentName": "I20261123-0024",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 162,
+      "lineName": "62",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     1721
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-11-23T13:43:00.000+0100",
+     "end": "2026-11-23T13:58:00.000+0100",
+     "lastUpdate": "2026-11-23T13:58:00.000+0100",
+     "resume": "2026-11-23T13:58:00.000+0100",
+     "start": "2026-11-23T13:43:00.000+0100"
+    },
+    "title": "62: Rettungseinsatz"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "62": "ptTram"
+     }
+    },
+    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "62: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261123-0024-F01",
+    "owner": "WL",
+    "parentName": "I20261123-0024",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 162,
+      "lineName": "62",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     1721
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-23T13:58:00.000+0100",
+     "lastUpdate": "2026-11-23T13:58:00.000+0100",
+     "resume": "2026-11-23T13:58:00.000+0100",
+     "start": "2026-11-23T13:43:00.000+0100"
+    },
+    "title": "62: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -426,6 +429,52 @@
      "start": "2026-11-23T13:30:17.000+0100"
     },
     "title": "Falschparker\nBetrieb ab Radetzkyplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1748-162",
+    "owner": "WL",
+    "parentName": "R1748-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1748
+    ],
+    "time": {
+     "end": "2026-11-23T14:43:00.000+0100",
+     "start": "2026-11-23T13:44:19.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R1749-162",
+    "owner": "WL",
+    "parentName": "R1749-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1749
+    ],
+    "time": {
+     "end": "2026-11-23T14:43:00.000+0100",
+     "start": "2026-11-23T13:44:19.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1024,6 +1073,29 @@
      "start": "2026-11-23T00:00:09.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
+    "name": "R470-162",
+    "owner": "WL",
+    "parentName": "R470-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     470
+    ],
+    "time": {
+     "end": "2026-11-23T14:43:00.000+0100",
+     "start": "2026-11-23T13:44:17.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
