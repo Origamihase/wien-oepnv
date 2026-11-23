@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261123-0036, I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
@@ -169,51 +169,6 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
-   },
-   {
-    "alertCause": "fire",
-    "alertCauseId": 5,
-    "attributes": {
-     "relatedLineTypes": {
-      "73A": "ptBusCity"
-     }
-    },
-    "description": "Derzeit ist ein Betrieb der Linie 73A nicht möglich. Voraussichtliche Dauer: 21:30 Uhr. Grund: Feuerwehreinsatz im Bereich Geringergasse.",
-    "descriptionHTML": "<p>Derzeit ist ein Betrieb der Linie 73A nicht möglich.</p><p>Voraussichtliche Dauer: 21:30 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Geringergasse.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Derzeit ist ein Betrieb der Linie 73A nicht möglich.</p><p>Voraussichtliche Dauer: 21:30 Uhr.</p><p>Grund: Feuerwehreinsatz im Bereich Geringergasse.</p>",
-       "descriptionPlain": "Derzeit ist ein Betrieb der Linie 73A nicht möglich. Voraussichtliche Dauer: 21:30 Uhr. Grund: Feuerwehreinsatz im Bereich Geringergasse.",
-       "title": "73A: Feuerwehreinsatz"
-      }
-     }
-    ],
-    "location": "Geringergasse",
-    "name": "I20261123-0036",
-    "owner": "WL",
-    "parentName": "I20261123-0036",
-    "priority": "1",
-    "reasonId": 11,
-    "reasonName": "Feuerwehreinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "73A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 473,
-      "lineName": "73A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-23T20:49:00.000+0100",
-     "lastUpdate": "2026-11-23T20:57:00.000+0100",
-     "start": "2026-11-23T20:48:00.000+0100"
-    },
-    "title": "73A: Feuerwehreinsatz"
    },
    {
     "alertCause": "undefined alert cause",

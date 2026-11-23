@@ -8,21 +8,8 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Mon, 23 Nov 2026 21:01:00 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2026 21:30:39 +0100</lastBuildDate>
     <ttl>15</ttl>
-    <item>
-      <title><![CDATA[73A: Fire-brigade operation]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">a937121919d55afcf021b5f4b2c8a3584c572f64d78e714a9ab2bd52a329dfa1</guid>
-      <pubDate>Mon, 23 Nov 2026 20:48:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 23 Nov 2026 21:01:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 23 Nov 2026 20:48:00 +0100</ext:starts_at>
-      <description>Currently, operation of the 73A line is not possible. Expected until 21:30. Reason: fire-brigade operation in the area of Geringergasse. [Since 20:48]</description>
-      <content:encoded><![CDATA[Currently, operation of the 73A line is not possible. Expected until 21:30. Reason: fire-brigade operation in the area of Geringergasse.<br/>[Since 20:48]]]></content:encoded>
-    </item>
     <item>
       <title><![CDATA[68A: Changed lines]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -150,6 +137,21 @@
       <georss:point>48.190488 16.401090</georss:point>
       <description>Landstraßer Hauptstraße 148 before Schlachthausgasse → Landstraßer Hauptstraße opposite 173-175. Stop relocation of line 74A towards St. Marx. Reason: roadworks. [Since 16.11.]</description>
       <content:encoded><![CDATA[Landstraßer Hauptstraße 148 before Schlachthausgasse → Landstraßer Hauptstraße opposite 173-175. Stop relocation of line 74A towards St. Marx. Reason: roadworks.<br/>[Since 16.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/71/D: Rathausplatz, Burgtheater]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">8b53fb5a344796ca3ed900926c78ca0ae73b8735e3dc3859a1286705933af314</guid>
+      <pubDate>Thu, 19 Nov 2026 13:59:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 06 Nov 2026 06:00:00 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 19 Nov 2026 13:59:00 +0100</ext:starts_at>
+      <ext:ends_at>Sun, 20 Dec 2026 22:30:00 +0100</ext:ends_at>
+      <georss:point>48.210445 16.360657</georss:point>
+      <description>Stop closure of lines D, 1 and 71 in both directions, on Fridays, Saturdays, Sundays and on December 08 each from about 15:00 to 22:30. … [Until 20.12.]</description>
+      <content:encoded><![CDATA[Stop closure of lines D, 1 and 71 in both directions, on Fridays, Saturdays, Sundays and on December 08 each from about 15:00 to 22:30. …<br/>[Until 20.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
