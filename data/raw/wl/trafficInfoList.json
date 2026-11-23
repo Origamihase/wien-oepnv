@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261123-0038, I20260925-0011, I20261123-0037-F01, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20261123-0038-F01, I20260909-0007, I20261020-0029, I20261123-0038-F02"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R293-474, R318-437, R2345-127, R2380-627, R1881-101, R1876-101, R1880-101, R1882-101, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R1884-101, R1883-101, R1875-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R47-0, R17-0, R380-105, R377-105, R381-105, R382-105, R211-105, R356-105, R272-105, R355-105, R354-112, R355-112, R356-112, R272-112, R211-112, R380-112, R381-112, R382-112, R383-112, R458-112, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R2378-627, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2370-125, R2359-125, R2343-626, R2343-125, R293-474, R318-437, R2345-127, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R1875-101, R1876-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R380-105, R381-105, R377-105, R382-105, R211-105, R356-105, R355-105, R272-105, R354-112, R356-112, R355-112, R272-112, R211-112, R380-112, R458-112, R383-112, R382-112, R381-112, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,74 +171,25 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "43": "ptTram"
-     }
-    },
-    "description": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 43: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 43: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "43: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261123-0037-F01",
-    "owner": "WL",
-    "parentName": "I20261123-0037",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 143,
-      "lineName": "43",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     217
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-23T21:38:00.000+0100",
-     "end": "2026-11-23T22:10:00.000+0100",
-     "lastUpdate": "2026-11-23T21:56:00.000+0100",
-     "start": "2026-11-23T21:34:00.000+0100"
-    },
-    "title": "43: Polizeieinsatz"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "12": "ptTram",
       "5": "ptTram"
      }
     },
-    "description": "Linie 5: Kein Betrieb zwischen Spitalgasse und Lerchenfelder Straße. Weiterfahrt ab Spitalgasse bis Schottentor U. Weiterfahrt ab Lerchenfelderstraße bis Josefstädter Straße U. Linie 12: Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Voraussichtliche Dauer: 22:10 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Lazarettgasse.",
-    "descriptionHTML": "<p><strong>Linie 5: </strong><br>Kein Betrieb zwischen Spitalgasse und Lerchenfelder Straße. <br>Weiterfahrt ab Spitalgasse bis Schottentor U.<br>Weiterfahrt ab Lerchenfelderstraße bis Josefstädter Straße U.<br><strong>Linie 12:</strong><br>Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S.<br>Weiterfahrt bis Augasse.</p><p>Voraussichtliche Dauer: 22:10 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Lazarettgasse.</p>",
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p><strong>Linie 5: </strong><br>Kein Betrieb zwischen Spitalgasse und Lerchenfelder Straße. <br>Weiterfahrt ab Spitalgasse bis Schottentor U.<br>Weiterfahrt ab Lerchenfelderstraße bis Josefstädter Straße U.<br><strong>Linie 12:</strong><br>Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S.<br>Weiterfahrt bis Augasse.</p><p>Voraussichtliche Dauer: 22:10 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Lazarettgasse.</p>",
-       "descriptionPlain": "Linie 5: Kein Betrieb zwischen Spitalgasse und Lerchenfelder Straße. Weiterfahrt ab Spitalgasse bis Schottentor U. Weiterfahrt ab Lerchenfelderstraße bis Josefstädter Straße U. Linie 12: Betrieb nur zwischen Hillerstraße und Franz-Josefs-Bahnhof S. Weiterfahrt bis Augasse. Voraussichtliche Dauer: 22:10 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Lazarettgasse.",
-       "title": "5, 12: Schadhaftes Fahrzeug"
+       "descriptionHtml": "<p>Linie 5: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "5: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261123-0038",
+    "name": "I20261123-0038-F01",
     "owner": "WL",
     "parentName": "I20261123-0038",
     "priority": "1",
@@ -246,15 +197,57 @@
     "reasonName": "Schadhaftes Fahrzeug",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "5",
-     "12"
+     "5"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 105,
       "lineName": "5",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "relatedStops": [
+     355
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-23T22:03:00.000+0100",
+     "end": "2026-11-23T23:32:00.000+0100",
+     "lastUpdate": "2026-11-23T22:29:00.000+0100",
+     "start": "2026-11-23T21:39:00.000+0100"
+    },
+    "title": "5: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "12": "ptTram"
+     }
+    },
+    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "12: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261123-0038-F02",
+    "owner": "WL",
+    "parentName": "I20261123-0038",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 112,
       "lineName": "12",
@@ -266,11 +259,12 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-23T21:42:00.000+0100",
-     "lastUpdate": "2026-11-23T21:42:00.000+0100",
+     "created": "2026-11-23T22:03:00.000+0100",
+     "lastUpdate": "2026-11-23T22:03:00.000+0100",
+     "resume": "2026-11-23T22:03:00.000+0100",
      "start": "2026-11-23T21:39:00.000+0100"
     },
-    "title": "5, 12: Schadhaftes Fahrzeug"
+    "title": "12: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -294,26 +288,6 @@
      "start": "2026-11-23T04:45:25.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Haltestelle\naufgelassen!\n\nStop closed!",
-    "name": "R17-0",
-    "owner": "WL",
-    "parentName": "R17-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     17
-    ],
-    "time": {
-     "end": "2026-11-23T22:30:00.000+0100",
-     "start": "2026-11-23T15:00:26.000+0100"
-    },
-    "title": "Haltestelle\naufgelassen!\n\nStop closed!"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1326,26 +1300,6 @@
      "start": "2026-11-23T21:49:36.000+0100"
     },
     "title": "Schadhafter Zug\nBetrieb ab Franz-Josefs-Bahnhof S"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Haltestelle\naufgelassen!\n\nStop closed!",
-    "name": "R47-0",
-    "owner": "WL",
-    "parentName": "R47-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     47
-    ],
-    "time": {
-     "end": "2026-11-23T22:30:00.000+0100",
-     "start": "2026-11-23T15:00:26.000+0100"
-    },
-    "title": "Haltestelle\naufgelassen!\n\nStop closed!"
    },
    {
     "alertCause": "undefined alert cause",
