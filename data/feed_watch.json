@@ -1,13 +1,25 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-23T13:00:49.067401+00:00",
- "built": "2026-11-23T14:00:39+01:00",
+ "updated": "2026-11-23T13:30:47.079918+00:00",
+ "built": "2026-11-23T14:30:34+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-23T14:00:39+01:00",
+  "built": "2026-11-23T14:30:34+01:00",
   "items": [
+   {
+    "title": "O: Rettungseinsatz",
+    "time_line": "Seit 14:22"
+   },
+   {
+    "title": "12/31: Rettungseinsatz",
+    "time_line": "Seit 14:01"
+   },
+   {
+    "title": "U6: Schadhaftes Fahrzeug",
+    "time_line": "Seit 14:00"
+   },
    {
     "title": "62: Rettungseinsatz",
     "time_line": "Seit 13:43"
@@ -19,10 +31,6 @@
    {
     "title": "1: Falschparker",
     "time_line": "Seit 13:22"
-   },
-   {
-    "title": "Wien Meidling ↔ Wien Matzleinsdorfer Platz",
-    "time_line": "Heute"
    },
    {
     "title": "68A: Geänderte Linienführung",
@@ -39,14 +47,6 @@
    {
     "title": "N71: Bauarbeiten",
     "time_line": "Bis Fr 27.11."
-   },
-   {
-    "title": "8A: Küniglberg, ORF Zentrum",
-    "time_line": "Bis Di 24.11."
-   },
-   {
-    "title": "5A/N31: Obere Augartenstraße",
-    "time_line": "Bis 11.12."
    }
   ]
  },
@@ -6771,17 +6771,37 @@
     "oebb": 11,
     "wl": 82
    }
+  },
+  {
+   "t": "2026-11-23T13:30:47.079918+00:00",
+   "raw": {
+    "wl-stoerungen": 78,
+    "wl-hinweise": 94,
+    "oebb": 163,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 24,
+    "oebb": 139,
+    "baustellen": 58
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 10,
+    "wl": 88
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-23T13:00:49.067401+00:00"
+   "last_ok": "2026-11-23T13:30:47.079918+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-23T13:00:49.067401+00:00"
+   "last_ok": "2026-11-23T13:30:47.079918+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-23T13:00:49.067401+00:00"
+   "last_ok": "2026-11-23T13:30:47.079918+00:00"
   }
  }
 }

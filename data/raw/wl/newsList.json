@@ -6,7 +6,7 @@
     "name": "aktuelles",
     "refPoiCategoryGroupId": 61,
     "title": "Aktuelles",
-    "trafficInfoNameList": "N20260209-0049, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260702-5991, N20260813-6092, N20260808-6083, N20260808-6084, N20260817-6129, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260903-6175, N20260908-6177, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261006-6258, N20261007-6260, N20261009-6270, N20261021-0001, N20261023-0001, N20261104-0001, N20261104-0002, N20261104-0003, N20261104-0004, N20261105-0001, N20261105-0002, N20261106-0002, N20261111-0001, N20261111-0003, N20261111-0004, N20261111-0005, N20261111-0007, N20261112-0001, N20261012-6272, N20261116-0001, N20261117-0002, N20261118-0001, N20261118-0002, N20261118-0003, N20261118-0004, N20261119-0001, N20261120-0001, N20261123-0001, N20261123-0002, N20261123-0003"
+    "trafficInfoNameList": "N20260209-0049, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260702-5991, N20260813-6092, N20260808-6084, N20260808-6083, N20260817-6129, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260903-6175, N20260908-6177, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261006-6258, N20261007-6260, N20261009-6270, N20261021-0001, N20261023-0001, N20261104-0001, N20261104-0002, N20261104-0003, N20261104-0004, N20261105-0001, N20261105-0002, N20261106-0002, N20261111-0001, N20261111-0003, N20261111-0004, N20261111-0005, N20261111-0007, N20261112-0001, N20261012-6272, N20261116-0001, N20261117-0002, N20261118-0001, N20261118-0002, N20261118-0003, N20261118-0004, N20261119-0001, N20261120-0001, N20261123-0001, N20261123-0002, N20261123-0003, N20261123-0004"
    },
    {
     "id": -1,
@@ -937,10 +937,19 @@
     "title": "29A: Serpentingasse"
    },
    {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linie 31A in Richtung Kagraner Platz U</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Kagraner Friedhof</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Eipeldauer Stra&szlig;e vor Wagramer Stra&szlig;e</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Eipeldauer Stra&szlig;e 52 bis 54&nbsp;</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 19. August 2026, etwa 08:00 Uhr&nbsp;</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Stra&szlig;enbauarbeiten</span></p>",
+    "alertCause": "unknown",
+    "alertCauseId": 0,
+    "description": "<p><span><strong><u>Haltestellenverlegung der Linie 31A in Richtung Kagraner Platz U</u></strong></span></p><p><span><strong><u>Haltestelle:</u></strong> Kagraner Friedhof</span></p><p><span><strong><u>Von:</u></strong> Eipeldauer Straße vor Wagramer Straße</span></p><p><span><strong><u>Nach:</u></strong> Wagramer Straße 149, Busspur</span></p><p><span><strong><u>Dauer:</u></strong> Ab 19. August 2026, etwa 08:00 Uhr&nbsp;</span></p><p><span><strong><u>Grund:</u></strong> Straßenbauarbeiten</span></p>",
     "id": "N20260817-6129",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><span><strong><u>Haltestellenverlegung der Linie 31A in Richtung Kagraner Platz U</u></strong></span></p><p><span><strong><u>Haltestelle:</u></strong> Kagraner Friedhof</span></p><p><span><strong><u>Von:</u></strong> Eipeldauer Straße vor Wagramer Straße</span></p><p><span><strong><u>Nach:</u></strong> Wagramer Straße 149, Busspur</span></p><p><span><strong><u>Dauer:</u></strong> Ab 19. August 2026, etwa 08:00 Uhr&nbsp;</span></p><p><span><strong><u>Grund:</u></strong> Straßenbauarbeiten</span></p>",
+       "descriptionPlain": "Haltestellenverlegung der Linie 31A in Richtung Kagraner Platz U Haltestelle: Kagraner Friedhof Von: Eipeldauer Straße vor Wagramer Straße Nach: Wagramer Straße 149, Busspur Dauer: Ab 19. August 2026, etwa 08:00 Uhr Grund: Straßenbauarbeiten",
+       "title": "31A: Kagraner Friedhof"
+      }
+     }
+    ],
     "location": {
      "properties": {
       "attributes": {},
@@ -950,8 +959,8 @@
      "type": "Feature"
     },
     "name": "N20260817-6129",
-    "reasonId": 0,
-    "reasonName": "undefined",
+    "reasonId": 223,
+    "reasonName": "Haltestellenverlegung",
     "refPoiCategoryId": 13296,
     "relatedLines": [
      "31A"
@@ -3036,6 +3045,48 @@
      "validFrom": "2026-12-06T09:00:00.000+0100"
     },
     "title": "18: Laufveranstaltung"
+   },
+   {
+    "alertCause": "unknown",
+    "alertCauseId": 0,
+    "description": "<p><strong><u>Haltestellenverlegung der Linie 48A in Richtung Parlament, U Volkstheater</u></strong></p><p><strong><u>Haltestelle:</u></strong> Neubaugasse, Burggasse</p><p><strong><u>Von:</u></strong> Burggasse vor Neubaugasse</p><p><strong><u>Nach:</u></strong> Burggasse 69</p><p><strong><u>Dauer:</u></strong> Ab 30. November 2026, etwa 07:00 Uhr, für etwa zwei Wochen</p><p><strong><u>Grund:</u></strong> Adaptierung des Haltestellenbereichs</p>",
+    "id": "N20261123-0004",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><strong><u>Haltestellenverlegung der Linie 48A in Richtung Parlament, U Volkstheater</u></strong></p><p><strong><u>Haltestelle:</u></strong> Neubaugasse, Burggasse</p><p><strong><u>Von:</u></strong> Burggasse vor Neubaugasse</p><p><strong><u>Nach:</u></strong> Burggasse 69</p><p><strong><u>Dauer:</u></strong> Ab 30. November 2026, etwa 07:00 Uhr, für etwa zwei Wochen</p><p><strong><u>Grund:</u></strong> Adaptierung des Haltestellenbereichs</p>",
+       "descriptionPlain": "Haltestellenverlegung der Linie 48A in Richtung Parlament, U Volkstheater Haltestelle: Neubaugasse, Burggasse Von: Burggasse vor Neubaugasse Nach: Burggasse 69 Dauer: Ab 30. November 2026, etwa 07:00 Uhr, für etwa zwei Wochen Grund: Adaptierung des Haltestellenbereichs",
+       "title": "48A: Neubaugasse, Burggasse"
+      }
+     }
+    ],
+    "location": {
+     "properties": {
+      "attributes": {},
+      "coordName": "WGS84",
+      "type": "news"
+     },
+     "type": "Feature"
+    },
+    "name": "N20261123-0004",
+    "reasonId": 223,
+    "reasonName": "Haltestellenverlegung",
+    "refPoiCategoryId": 13296,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 448,
+      "lineName": "48A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "time": {
+     "start": "2026-11-23T14:13:00.000+0100",
+     "validFrom": "2026-11-30T07:00:00.000+0100"
+    },
+    "title": "48A: Neubaugasse, Burggasse"
    },
    {
     "alertCause": "undefined alert cause",
