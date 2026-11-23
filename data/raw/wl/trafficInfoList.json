@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261123-0032, I20260925-0011, I20261123-0028, I20260909-0007, I20261020-0029, I20261123-0030, I20261123-0031-F01"
+    "trafficInfoNameList": "I20260925-0011, I20261123-0028, I20260909-0007, I20261123-0033-F01, I20261020-0029, I20261123-0030"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R293-474, R1884-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R318-437, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R2167-131, R2171-131, R2172-131, R2168-131, R2169-131, R301-170, R302-170, R303-170, R17-0, R47-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R293-474, R1884-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R318-437, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R2172-131, R2169-131, R2168-131, R2171-131, R2167-131, R301-170, R302-170, R303-170, R47-0, R17-0, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -264,96 +264,52 @@
     "title": "U2: Schadhaftes Fahrzeug"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
+    "alertCause": "police activity",
+    "alertCauseId": 3,
     "attributes": {
      "relatedLineTypes": {
-      "60": "ptTram"
+      "U1": "ptMetro"
      }
     },
-    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "60: Verkehrsunfall"
+       "descriptionHtml": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U1: Polizeieinsatz"
       }
      }
     ],
-    "location": "Speisinger Straße 75",
-    "name": "I20261123-0031-F01",
+    "name": "I20261123-0033-F01",
     "owner": "WL",
-    "parentName": "I20261123-0031",
+    "parentName": "I20261123-0033",
     "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "60"
+     "U1"
     ],
     "relatedLinesDetails": [
      {
-      "lineId": 160,
-      "lineName": "60",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-23T17:05:00.000+0100",
-     "lastUpdate": "2026-11-23T17:05:00.000+0100",
-     "resume": "2026-11-23T17:05:00.000+0100",
-     "start": "2026-11-23T16:56:00.000+0100"
-    },
-    "title": "60: Verkehrsunfall"
-   },
-   {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Betriebsstörung.</p>",
-       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
-       "title": "U3: Betriebsstörung"
-      }
-     }
-    ],
-    "name": "I20261123-0032",
-    "owner": "WL",
-    "parentName": "I20261123-0032",
-    "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
+      "lineId": 301,
+      "lineName": "U1",
       "vehicleType": "ptMetro"
      }
     ],
-    "status": "resolved",
+    "relatedStops": [
+     4117
+    ],
+    "status": "active",
     "time": {
-     "created": "2026-11-23T17:51:00.000+0100",
-     "end": "2026-11-23T18:00:00.000+0100",
-     "lastUpdate": "2026-11-23T18:00:00.000+0100",
-     "resume": "2026-11-23T17:51:00.000+0100",
-     "start": "2026-11-23T17:51:00.000+0100"
+     "created": "2026-11-23T18:10:00.000+0100",
+     "lastUpdate": "2026-11-23T18:10:00.000+0100",
+     "resume": "2026-11-23T18:10:00.000+0100",
+     "start": "2026-11-23T18:09:00.000+0100"
     },
-    "title": "U3: Betriebsstörung"
+    "title": "U1: Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
