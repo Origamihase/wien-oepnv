@@ -738,6 +738,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2/43/O: Aktuelle Wetterlage",
+    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie 43: Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "5a921ea590980c221fb2d2a5881b437f02fa45753420173fc65e226a7ce5bd34",
+    "pubDate": "2026-11-23T08:23:00+01:00",
+    "starts_at": "2026-11-23T08:23:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=2,43,O|D=2026-11-23|TK=o 2 43 aktuelle wetterlage",
+    "_wl_ids": [
+      "I20261123-0012"
+    ],
+    "_incident_start": "2026-11-23T08:23:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "25/26/27: Gleisbauarbeiten",
     "description": "Linie 25: Betrieb nur zwischen Aspern, Oberdorfstraße und Josef-Baumann-Gasse. Weiterfahrt über Linie 27 bis Aspern Nord S U. Linie 26: Betrieb nur zwischen Hausfeldstraße U und Josef-Baumann-Gasse. Weiterfahrt nach Kagran U. Linie 27: Betrieb nur zwischen Strebersdorf, Meriangasse und Floridsdorf S U. Weichen Sie daher nach Möglichkeit großräumig auf die U1 und S-Bahn über Leopoldau S U oder Praterstern S U aus. Zwischen Kagraner Platz U und Floridsdorf S U können Sie auch auf die Linien 31A und anschließend 29A/29B oder 31A und S-Bahn ausweichen. Zwischen Kagran U und Floridsdorf S U können Sie auch auf die Linien 27A und anschließend 29A/29B ausweichen. Zwischen Floridsdorf S U und Josef-Baumann-Gasse fährt der Ersatzbus 26E. Beachten Sie, der 26E hat nicht die gleichen Kapazitäten wie eine Straßenbahn. Voraussichtliche Dauer: Ende 2026. Grund: Gleisbauarbeiten im Bereich Donaufelder Straße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -890,6 +906,78 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "38: Aktuelle Wetterlage",
+    "description": "Linie 38: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Ersatz: Linien 10A, 35A, 38A und die S-Bahn. Voraussichtliche Dauer: 09:00 Uhr. Grund: Aktuelle Wetterlage im Bereich Grinzinger Allee.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "17bd41294bfaf719edc6e8bbedc53df82ea26d96df008351534db7cc43866547",
+    "pubDate": "2026-11-23T08:02:00+01:00",
+    "starts_at": "2026-11-23T08:02:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=38|D=2026-11-23|TK=38 aktuelle wetterlage",
+    "_wl_ids": [
+      "I20261123-0008"
+    ],
+    "_incident_start": "2026-11-23T08:02:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung Witterungsbedingt",
+    "description": "Fahrtbehinderung\nWitterungsbedingt",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "610a9c0a9c4813744db4847dc24898eb526c75a8ef453e787bd8186bb465e63d",
+    "pubDate": "2026-11-23T08:04:44+01:00",
+    "starts_at": "2026-11-23T08:04:47+01:00",
+    "ends_at": "2026-11-23T12:00:00+01:00",
+    "_identity": "wl|störung|L=38|D=2026-11-23|TK=fahrtbehinderung witterungsbedingt"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Witterung Betrieb ab Nußdorfer Straße",
+    "description": "Witterung\nBetrieb ab Nußdorfer Straße",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "899efa722561ed594a0165e310d2a750f9cc7db50e5e5efee362f5c8e2d75297",
+    "pubDate": "2026-11-23T08:06:16+01:00",
+    "starts_at": "2026-11-23T08:06:17+01:00",
+    "ends_at": "2026-11-23T12:00:00+01:00",
+    "_identity": "wl|störung|L=38|D=2026-11-23|TK=witterung betrieb ab nussdorfer strasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Fahrtbehinderung Falschparker",
+    "description": "Linie 42: Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 08:45 Uhr. Grund: Falschparker im Bereich Kreuzgasse 30.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "7f4e7478bc96a696c709e2e41742f066fa8bf7bf22aa3d9f4035d606ad94551c",
+    "pubDate": "2026-11-23T08:17:00+01:00",
+    "starts_at": "2026-11-23T08:30:17+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=42|D=2026-11-23|TK=falschparker",
+    "_wl_ids": [
+      "I20261123-0011"
+    ],
+    "_incident_start": "2026-11-23T08:17:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "4A: Verkehrsüberlastung",
+    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "c56de491edf41d83da857f489a91726653fbe3100222ed7e7ce91bebf0b5453c",
+    "pubDate": "2026-11-23T08:14:00+01:00",
+    "starts_at": "2026-11-23T08:14:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=4A|D=2026-11-23|TK=4a verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261123-0010"
+    ],
+    "_incident_start": "2026-11-23T08:14:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -966,38 +1054,6 @@
       "I20261123-0007"
     ],
     "_incident_start": "2026-11-23T07:45:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U4: Polizeieinsatz",
-    "description": "Linie U4: Unregelmäßige Intervalle in Richtung Hütteldorf. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "630ddf51d327881cfbaf112e716d8ede7dac3c0eff48362dc57c1b4a0471a87a",
-    "pubDate": "2026-11-23T07:08:00+01:00",
-    "starts_at": "2026-11-23T07:08:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U4|D=2026-11-23|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261123-0005"
-    ],
-    "_incident_start": "2026-11-23T07:08:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Rettungseinsatz",
-    "description": "Linie U6: Unregelmäßige Intervalle in Richtung Floridsdorf. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "ba296464d8cb0a7de2d8309c1a5dc8baec7b8773af9e356f95f0836432e33306",
-    "pubDate": "2026-11-23T07:03:00+01:00",
-    "starts_at": "2026-11-23T07:03:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U6|D=2026-11-23|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261123-0004"
-    ],
-    "_incident_start": "2026-11-23T07:03:00+01:00"
   },
   {
     "source": "Wiener Linien",

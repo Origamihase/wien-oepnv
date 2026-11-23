@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261123-0004, I20261123-0006, I20261020-0029, I20261123-0005, I20261123-0007"
+    "trafficInfoNameList": "I20261123-0010, I20261123-0012, I20260925-0011, I20260909-0007, I20261123-0006, I20261123-0011, I20261123-0008, I20261020-0029, I20261123-0007"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R293-474, R2373-126, R2379-627, R2380-627, R2345-127, R318-437, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R2343-626, R2343-125, R2378-627, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R2345-127, R1882-101, R1883-101, R1884-101, R293-474, R318-437, R2359-125, R1875-101, R1876-101, R1880-101, R1881-101, R3886-480, R2558-125, R1974-466, R1199-205, R500-101, R216-138, R1214-138, R1215-138, R1216-138, R1217-138, R2964-138, R1225-138, R1226-138, R1223-138, R1224-138, R1227-138, R1221-138, R2985-138, R148-142, R150-142, R1338-142, R524-142, R1342-142, R493-142, R188-142, R1212-142, R1213-142, R1336-142, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,102 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Unregelmäßige Intervalle in Richtung Floridsdorf. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in Richtung Floridsdorf. <br><br>Grund: Rettungseinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in Richtung Floridsdorf. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in Richtung Floridsdorf. Grund: Rettungseinsatz.",
-       "title": "U6: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261123-0004",
-    "owner": "WL",
-    "parentName": "I20261123-0004",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4615
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-23T07:04:00.000+0100",
-     "lastUpdate": "2026-11-23T07:04:00.000+0100",
-     "resume": "2026-11-23T07:03:00.000+0100",
-     "start": "2026-11-23T07:03:00.000+0100"
-    },
-    "title": "U6: Rettungseinsatz"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Unregelmäßige Intervalle in Richtung Hütteldorf. Grund: Polizeieinsatz.",
-    "descriptionHTML": "<p>Linie U4:<br>Unregelmäßige Intervalle in Richtung Hütteldorf. <br><br>Grund: Polizeieinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U4:<br>Unregelmäßige Intervalle in Richtung Hütteldorf. <br><br>Grund: Polizeieinsatz.</p>",
-       "descriptionPlain": "Linie U4: Unregelmäßige Intervalle in Richtung Hütteldorf. Grund: Polizeieinsatz.",
-       "title": "U4: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261123-0005",
-    "owner": "WL",
-    "parentName": "I20261123-0005",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 304,
-      "lineName": "U4",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4415
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-23T07:10:00.000+0100",
-     "lastUpdate": "2026-11-23T07:10:00.000+0100",
-     "resume": "2026-11-23T07:08:00.000+0100",
-     "start": "2026-11-23T07:08:00.000+0100"
-    },
-    "title": "U4: Polizeieinsatz"
-   },
-   {
     "alertCause": "accident",
     "alertCauseId": 77,
     "attributes": {
@@ -357,6 +261,200 @@
     "title": "U3: Rettungseinsatz"
    },
    {
+    "alertCause": "poor weather",
+    "alertCauseId": 85,
+    "attributes": {
+     "relatedLineTypes": {
+      "38": "ptTram"
+     }
+    },
+    "description": "Linie 38: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Ersatz: Linien 10A, 35A, 38A und die S-Bahn. Voraussichtliche Dauer: 09:00 Uhr. Grund: Aktuelle Wetterlage im Bereich Grinzinger Allee.",
+    "descriptionHTML": "<p>Linie 38:<br>Betrieb nur zwischen Schottentor U und Nußdorfer Straße U.</p><p>Ersatz: Linien 10A, 35A, 38A und die S-Bahn.</p><p>Voraussichtliche Dauer: 09:00 Uhr.</p><p>Grund: Aktuelle Wetterlage im Bereich Grinzinger Allee.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 38:<br>Betrieb nur zwischen Schottentor U und Nußdorfer Straße U.</p><p>Ersatz: Linien 10A, 35A, 38A und die S-Bahn.</p><p>Voraussichtliche Dauer: 09:00 Uhr.</p><p>Grund: Aktuelle Wetterlage im Bereich Grinzinger Allee.</p>",
+       "descriptionPlain": "Linie 38: Betrieb nur zwischen Schottentor U und Nußdorfer Straße U. Ersatz: Linien 10A, 35A, 38A und die S-Bahn. Voraussichtliche Dauer: 09:00 Uhr. Grund: Aktuelle Wetterlage im Bereich Grinzinger Allee.",
+       "title": "38: Aktuelle Wetterlage"
+      }
+     }
+    ],
+    "location": "Grinzinger Allee",
+    "name": "I20261123-0008",
+    "owner": "WL",
+    "parentName": "I20261123-0008",
+    "priority": "1",
+    "reasonId": 40,
+    "reasonName": "Aktuelle Wetterlage",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 138,
+      "lineName": "38",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-23T08:04:00.000+0100",
+     "lastUpdate": "2026-11-23T08:29:00.000+0100",
+     "start": "2026-11-23T08:02:00.000+0100"
+    },
+    "title": "38: Aktuelle Wetterlage"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "4A": "ptBusCity"
+     }
+    },
+    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 4A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 4A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "4A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261123-0010",
+    "owner": "WL",
+    "parentName": "I20261123-0010",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "4A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 404,
+      "lineName": "4A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-23T08:15:00.000+0100",
+     "lastUpdate": "2026-11-23T08:15:00.000+0100",
+     "resume": "2026-11-23T08:14:00.000+0100",
+     "start": "2026-11-23T08:14:00.000+0100"
+    },
+    "title": "4A: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "42": "ptTram"
+     }
+    },
+    "description": "Linie 42: Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 08:45 Uhr. Grund: Falschparker im Bereich Kreuzgasse 30.",
+    "descriptionHTML": "<p>Linie 42:<br>Fahrtbehinderung in Richtung Antonigasse.</p><p>Voraussichtliche Dauer: 08:45 Uhr.</p><p>Grund: Falschparker im Bereich Kreuzgasse 30.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 42:<br>Fahrtbehinderung in Richtung Antonigasse.</p><p>Voraussichtliche Dauer: 08:45 Uhr.</p><p>Grund: Falschparker im Bereich Kreuzgasse 30.</p>",
+       "descriptionPlain": "Linie 42: Fahrtbehinderung in Richtung Antonigasse. Voraussichtliche Dauer: 08:45 Uhr. Grund: Falschparker im Bereich Kreuzgasse 30.",
+       "title": "42: Falschparker"
+      }
+     }
+    ],
+    "location": "Kreuzgasse 30",
+    "name": "I20261123-0011",
+    "owner": "WL",
+    "parentName": "I20261123-0011",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 142,
+      "lineName": "42",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-23T08:18:00.000+0100",
+     "lastUpdate": "2026-11-23T08:18:00.000+0100",
+     "start": "2026-11-23T08:17:00.000+0100"
+    },
+    "title": "42: Falschparker"
+   },
+   {
+    "alertCause": "poor weather",
+    "alertCauseId": 85,
+    "attributes": {
+     "relatedLineTypes": {
+      "2": "ptTram",
+      "43": "ptTram",
+      "O": "ptTram"
+     }
+    },
+    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie 43: Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "descriptionHTML": "<p><strong>Linie 2:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 43:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><strong>Linie 2:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 43:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
+       "descriptionPlain": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie 43: Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+       "title": "O, 2, 43: Aktuelle Wetterlage"
+      }
+     }
+    ],
+    "name": "I20261123-0012",
+    "owner": "WL",
+    "parentName": "I20261123-0012",
+    "priority": "1",
+    "reasonId": 40,
+    "reasonName": "Aktuelle Wetterlage",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2",
+     "43",
+     "O"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 102,
+      "lineName": "2",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 143,
+      "lineName": "43",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 170,
+      "lineName": "O",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-23T08:24:00.000+0100",
+     "lastUpdate": "2026-11-23T08:24:00.000+0100",
+     "resume": "2026-11-23T08:23:00.000+0100",
+     "start": "2026-11-23T08:23:00.000+0100"
+    },
+    "title": "O, 2, 43: Aktuelle Wetterlage"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -378,6 +476,397 @@
      "start": "2026-11-23T04:45:25.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1212-142",
+    "owner": "WL",
+    "parentName": "R1212-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     1212
+    ],
+    "time": {
+     "end": "2026-11-23T10:15:00.000+0100",
+     "start": "2026-11-23T08:24:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1213-142",
+    "owner": "WL",
+    "parentName": "R1213-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     1213
+    ],
+    "time": {
+     "end": "2026-11-23T10:15:00.000+0100",
+     "start": "2026-11-23T08:24:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nWitterungsbedingt",
+    "name": "R1214-138",
+    "owner": "WL",
+    "parentName": "R1214-138",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     1214
+    ],
+    "time": {
+     "end": "2026-11-23T12:00:00.000+0100",
+     "start": "2026-11-23T08:04:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nWitterungsbedingt"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nWitterungsbedingt",
+    "name": "R1215-138",
+    "owner": "WL",
+    "parentName": "R1215-138",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     1215
+    ],
+    "time": {
+     "end": "2026-11-23T12:00:00.000+0100",
+     "start": "2026-11-23T08:04:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nWitterungsbedingt"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nWitterungsbedingt",
+    "name": "R1216-138",
+    "owner": "WL",
+    "parentName": "R1216-138",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     1216
+    ],
+    "time": {
+     "end": "2026-11-23T12:00:00.000+0100",
+     "start": "2026-11-23T08:04:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nWitterungsbedingt"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nWitterungsbedingt",
+    "name": "R1217-138",
+    "owner": "WL",
+    "parentName": "R1217-138",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     1217
+    ],
+    "time": {
+     "end": "2026-11-23T12:00:00.000+0100",
+     "start": "2026-11-23T08:04:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nWitterungsbedingt"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Witterung\nBetrieb ab Nußdorfer Straße",
+    "name": "R1221-138",
+    "owner": "WL",
+    "parentName": "R1221-138",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     1221
+    ],
+    "time": {
+     "end": "2026-11-23T12:00:00.000+0100",
+     "start": "2026-11-23T08:06:16.000+0100"
+    },
+    "title": "Witterung\nBetrieb ab Nußdorfer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Witterung\nBetrieb ab Nußdorfer Straße",
+    "name": "R1223-138",
+    "owner": "WL",
+    "parentName": "R1223-138",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     1223
+    ],
+    "time": {
+     "end": "2026-11-23T12:00:00.000+0100",
+     "start": "2026-11-23T08:06:16.000+0100"
+    },
+    "title": "Witterung\nBetrieb ab Nußdorfer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Witterung\nBetrieb ab Nußdorfer Straße",
+    "name": "R1224-138",
+    "owner": "WL",
+    "parentName": "R1224-138",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     1224
+    ],
+    "time": {
+     "end": "2026-11-23T12:00:00.000+0100",
+     "start": "2026-11-23T08:06:16.000+0100"
+    },
+    "title": "Witterung\nBetrieb ab Nußdorfer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Witterung\nBetrieb ab Nußdorfer Straße",
+    "name": "R1225-138",
+    "owner": "WL",
+    "parentName": "R1225-138",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     1225
+    ],
+    "time": {
+     "end": "2026-11-23T12:00:00.000+0100",
+     "start": "2026-11-23T08:06:16.000+0100"
+    },
+    "title": "Witterung\nBetrieb ab Nußdorfer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Witterung\nBetrieb ab Nußdorfer Straße",
+    "name": "R1226-138",
+    "owner": "WL",
+    "parentName": "R1226-138",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     1226
+    ],
+    "time": {
+     "end": "2026-11-23T12:00:00.000+0100",
+     "start": "2026-11-23T08:06:16.000+0100"
+    },
+    "title": "Witterung\nBetrieb ab Nußdorfer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Witterung\nBetrieb ab Nußdorfer Straße",
+    "name": "R1227-138",
+    "owner": "WL",
+    "parentName": "R1227-138",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     1227
+    ],
+    "time": {
+     "end": "2026-11-23T12:00:00.000+0100",
+     "start": "2026-11-23T08:06:16.000+0100"
+    },
+    "title": "Witterung\nBetrieb ab Nußdorfer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1336-142",
+    "owner": "WL",
+    "parentName": "R1336-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     1336
+    ],
+    "time": {
+     "end": "2026-11-23T10:30:00.000+0100",
+     "start": "2026-11-23T08:30:17.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1338-142",
+    "owner": "WL",
+    "parentName": "R1338-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     1338
+    ],
+    "time": {
+     "end": "2026-11-23T10:15:00.000+0100",
+     "start": "2026-11-23T08:17:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R1342-142",
+    "owner": "WL",
+    "parentName": "R1342-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     1342
+    ],
+    "time": {
+     "end": "2026-11-23T10:15:00.000+0100",
+     "start": "2026-11-23T08:17:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R148-142",
+    "owner": "WL",
+    "parentName": "R148-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     148
+    ],
+    "time": {
+     "end": "2026-11-23T10:15:00.000+0100",
+     "start": "2026-11-23T08:17:45.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R150-142",
+    "owner": "WL",
+    "parentName": "R150-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     150
+    ],
+    "time": {
+     "end": "2026-11-23T10:15:00.000+0100",
+     "start": "2026-11-23T08:17:45.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -424,6 +913,29 @@
      "start": "2026-11-23T00:00:10.000+0100"
     },
     "title": "Gleisbauarbeiten\nKein Betrieb"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R188-142",
+    "owner": "WL",
+    "parentName": "R188-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     188
+    ],
+    "time": {
+     "end": "2026-11-23T10:15:00.000+0100",
+     "start": "2026-11-23T08:24:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -562,6 +1074,29 @@
      "start": "2026-11-23T04:40:26.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nWitterungsbedingt",
+    "name": "R216-138",
+    "owner": "WL",
+    "parentName": "R216-138",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     216
+    ],
+    "time": {
+     "end": "2026-11-23T12:00:00.000+0100",
+     "start": "2026-11-23T08:04:44.000+0100"
+    },
+    "title": "Fahrtbehinderung\nWitterungsbedingt"
    },
    {
     "alertCause": "undefined alert cause",
@@ -911,6 +1446,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nWitterungsbedingt",
+    "name": "R2964-138",
+    "owner": "WL",
+    "parentName": "R2964-138",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     2964
+    ],
+    "time": {
+     "end": "2026-11-23T12:00:00.000+0100",
+     "start": "2026-11-23T08:04:47.000+0100"
+    },
+    "title": "Fahrtbehinderung\nWitterungsbedingt"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Witterung\nBetrieb ab Nußdorfer Straße",
+    "name": "R2985-138",
+    "owner": "WL",
+    "parentName": "R2985-138",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "38"
+    ],
+    "relatedStops": [
+     2985
+    ],
+    "time": {
+     "end": "2026-11-23T12:00:00.000+0100",
+     "start": "2026-11-23T08:06:17.000+0100"
+    },
+    "title": "Witterung\nBetrieb ab Nußdorfer Straße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -980,6 +1561,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R493-142",
+    "owner": "WL",
+    "parentName": "R493-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     493
+    ],
+    "time": {
+     "end": "2026-11-23T10:15:00.000+0100",
+     "start": "2026-11-23T08:17:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
     "name": "R500-101",
     "owner": "WL",
@@ -999,6 +1603,29 @@
      "start": "2026-11-23T05:00:26.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R524-142",
+    "owner": "WL",
+    "parentName": "R524-142",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "42"
+    ],
+    "relatedStops": [
+     524
+    ],
+    "time": {
+     "end": "2026-11-23T10:15:00.000+0100",
+     "start": "2026-11-23T08:17:46.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
