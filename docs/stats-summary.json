@@ -2,7 +2,7 @@
   "archive_years": [],
   "ausfaelle": {
     "by_direction": {
-      "Meidling": 1068,
+      "Meidling": 1069,
       "Praterstern": 911
     },
     "by_hour": {
@@ -22,7 +22,7 @@
       "13": 73,
       "14": 77,
       "15": 120,
-      "16": 94,
+      "16": 95,
       "17": 111,
       "18": 108,
       "19": 132,
@@ -39,7 +39,7 @@
       "REX2": 6,
       "REX3": 195,
       "REX92": 3,
-      "S1": 471,
+      "S1": 472,
       "S2": 302,
       "S3": 250,
       "S4": 149
@@ -49,18 +49,18 @@
       "Do": 334,
       "Fr": 399,
       "Mi": 312,
-      "Mo": 298,
+      "Mo": 299,
       "Sa": 162,
       "So": 174
     },
-    "total": 1979
+    "total": 1980
   },
-  "generated_at": "2026-11-23T16:31:01+01:00",
+  "generated_at": "2026-11-23T17:01:13+01:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 0.88,
     "by_direction": {
-      "Meidling": 7895,
+      "Meidling": 7896,
       "Praterstern": 3830
     },
     "by_hour_avg": {
@@ -102,19 +102,19 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-11-23T16:25:00+01:00",
+          "last_seen": "2026-11-23T16:55:00+01:00",
           "peer_rows_since": 0,
           "rows_in_window": 1207
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 4045,
+          "peer_rows_since": 4046,
           "rows_in_window": 0
         }
       },
       "peer_rows_required": 6,
       "poll": {
-        "last_success": "2026-11-23T16:30:48+01:00",
+        "last_success": "2026-11-23T17:00:58+01:00",
         "stale_hours": 3.0
       },
       "silence_hours": 1.0,
@@ -128,7 +128,7 @@
     "max_delay_minutes": 203.0,
     "threshold_exceedances": 155,
     "threshold_minutes": 9.0,
-    "total_observations": 11725
+    "total_observations": 11726
   },
   "stoerungen": {
     "by_hour": {
@@ -149,7 +149,7 @@
       "14": 373,
       "15": 387,
       "16": 389,
-      "17": 317,
+      "17": 319,
       "18": 369,
       "19": 267,
       "20": 216,
@@ -160,7 +160,7 @@
     "by_provider": {
       "Stadt Wien – Baustellen": 180,
       "VOR/VAO": 13,
-      "Wiener Linien": 5337,
+      "Wiener Linien": 5339,
       "ÖBB": 340
     },
     "by_weekday": {
@@ -168,11 +168,11 @@
       "Do": 932,
       "Fr": 982,
       "Mi": 852,
-      "Mo": 819,
+      "Mo": 821,
       "Sa": 752,
       "So": 665
     },
-    "total": 5870
+    "total": 5872
   },
   "year": 2026
 }
