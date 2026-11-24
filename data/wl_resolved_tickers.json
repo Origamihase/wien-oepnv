@@ -1,8 +1,92 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
- "tickers": [],
+ "tickers": [
+  {
+   "key": "R1338-142|2026-11-24T14:10:01.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R1338-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-24T15:09:00.000+0100",
+   "incident": "I20261124-0028"
+  },
+  {
+   "key": "R1342-142|2026-11-24T14:14:31.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R1342-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-24T15:14:00.000+0100",
+   "incident": "I20261124-0028"
+  },
+  {
+   "key": "R148-142|2026-11-24T14:23:32.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R148-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-24T15:22:00.000+0100",
+   "incident": "I20261124-0028"
+  },
+  {
+   "key": "R149-142|2026-11-24T14:23:32.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R149-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-24T15:22:00.000+0100",
+   "incident": "I20261124-0028"
+  },
+  {
+   "key": "R150-142|2026-11-24T14:23:32.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R150-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-24T15:22:00.000+0100",
+   "incident": "I20261124-0028"
+  },
+  {
+   "key": "R3876-142|2026-11-24T14:10:02.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R3876-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-24T15:09:00.000+0100",
+   "incident": "I20261124-0028"
+  },
+  {
+   "key": "R3877-142|2026-11-24T14:10:02.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R3877-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-24T15:09:00.000+0100",
+   "incident": "I20261124-0028"
+  },
+  {
+   "key": "R493-142|2026-11-24T14:23:33.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R493-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-24T15:22:00.000+0100",
+   "incident": "I20261124-0028"
+  },
+  {
+   "key": "R524-142|2026-11-24T14:10:02.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R524-142",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-24T15:09:00.000+0100",
+   "incident": "I20261124-0028"
+  }
+ ],
  "owners": {
+  "R1338-142|2026-11-24T14:10:01.000+0100": {
+   "incident": "I20261124-0028",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R1342-142|2026-11-24T14:14:31.000+0100": {
+   "incident": "I20261124-0028",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R148-142|2026-11-24T14:23:32.000+0100": {
+   "incident": "I20261124-0028",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R149-142|2026-11-24T14:23:32.000+0100": {
+   "incident": "I20261124-0028",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R150-142|2026-11-24T14:23:32.000+0100": {
+   "incident": "I20261124-0028",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
   "R1531-160|2026-11-24T12:37:23.000+0100": {
    "incident": "I20261124-0025",
    "title": "Gleisschaden\nBetrieb nur bis Hietzing"
@@ -26,6 +110,18 @@
   "R1548-160|2026-11-24T12:37:23.000+0100": {
    "incident": "I20261124-0025",
    "title": "Gleisschaden\nBetrieb nur bis Hietzing"
+  },
+  "R1597-110|2026-11-24T14:02:32.000+0100": {
+   "incident": "I20261124-0025",
+   "title": "Fahrtbehinderung\nGleisschaden"
+  },
+  "R1598-110|2026-11-24T14:02:32.000+0100": {
+   "incident": "I20261124-0025",
+   "title": "Fahrtbehinderung\nGleisschaden"
+  },
+  "R1599-110|2026-11-24T14:02:32.000+0100": {
+   "incident": "I20261124-0025",
+   "title": "Fahrtbehinderung\nGleisschaden"
   },
   "R1602-110|2026-11-24T12:44:23.000+0100": {
    "incident": "I20261124-0025",
@@ -54,6 +150,22 @@
   "R1610-160|2026-11-24T12:37:23.000+0100": {
    "incident": "I20261124-0025",
    "title": "Gleisschaden\nBetrieb nur bis Hietzing"
+  },
+  "R1611-160|2026-11-24T14:02:32.000+0100": {
+   "incident": "I20261124-0025",
+   "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
+  },
+  "R1612-160|2026-11-24T14:02:32.000+0100": {
+   "incident": "I20261124-0025",
+   "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
+  },
+  "R1613-160|2026-11-24T14:02:32.000+0100": {
+   "incident": "I20261124-0025",
+   "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
+  },
+  "R1614-160|2026-11-24T14:02:32.000+0100": {
+   "incident": "I20261124-0025",
+   "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
   },
   "R1615-160|2026-11-24T12:46:54.000+0100": {
    "incident": "I20261124-0025",
@@ -119,9 +231,29 @@
    "incident": "I20261124-0025",
    "title": "Gleisschaden\nBetrieb nur bis Hietzing "
   },
+  "R3876-142|2026-11-24T14:10:02.000+0100": {
+   "incident": "I20261124-0028",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R3877-142|2026-11-24T14:10:02.000+0100": {
+   "incident": "I20261124-0028",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R493-142|2026-11-24T14:23:33.000+0100": {
+   "incident": "I20261124-0028",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R524-142|2026-11-24T14:10:02.000+0100": {
+   "incident": "I20261124-0028",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
   "R561-110|2026-11-24T12:35:22.000+0100": {
    "incident": "I20261124-0025",
    "title": "Gleisschaden\nBetrieb nur bis Hietzing "
+  },
+  "R5611-160|2026-11-24T14:02:03.000+0100": {
+   "incident": "I20261124-0025",
+   "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
   },
   "R562-110|2026-11-24T12:35:22.000+0100": {
    "incident": "I20261124-0025",

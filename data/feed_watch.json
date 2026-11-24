@@ -1,13 +1,21 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-24T13:01:22.824609+00:00",
- "built": "2026-11-24T14:01:07+01:00",
+ "updated": "2026-11-24T13:30:58.344771+00:00",
+ "built": "2026-11-24T14:30:45+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-24T14:01:07+01:00",
+  "built": "2026-11-24T14:30:45+01:00",
   "items": [
+   {
+    "title": "84A: Verspätungen",
+    "time_line": "Seit 14:13"
+   },
+   {
+    "title": "42: Falschparker",
+    "time_line": "Seit 14:09"
+   },
    {
     "title": "U6: Rettungseinsatz",
     "time_line": "Seit 13:32"
@@ -17,8 +25,8 @@
     "time_line": "Seit 12:32"
    },
    {
-    "title": "40/41: Falschparker",
-    "time_line": "Seit 12:11"
+    "title": "56A/58B: Gleisbauarbeiten",
+    "time_line": "Seit heute"
    },
    {
     "title": "7A: Antonsplatz",
@@ -39,39 +47,11 @@
    {
     "title": "52A/43B/52B: Ulmenstraße",
     "time_line": "Seit 23.11."
-   },
-   {
-    "title": "N71: Bauarbeiten",
-    "time_line": "Bis Fr 27.11."
-   },
-   {
-    "title": "5A/N31: Obere Augartenstraße",
-    "time_line": "Bis 11.12."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-17T13:30:44.960578+00:00",
-   "raw": {
-    "wl-stoerungen": 48,
-    "wl-hinweise": 96,
-    "oebb": 171,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 25,
-    "oebb": 148,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 6,
-    "wl": 81
-   }
-  },
   {
    "t": "2026-11-17T14:01:12.718260+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 12,
     "wl": 84
    }
+  },
+  {
+   "t": "2026-11-24T13:30:58.344771+00:00",
+   "raw": {
+    "wl-stoerungen": 100,
+    "wl-hinweise": 96,
+    "oebb": 175,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 27,
+    "oebb": 148,
+    "baustellen": 58
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 13,
+    "wl": 85
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-24T13:01:22.824609+00:00"
+   "last_ok": "2026-11-24T13:30:58.344771+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-24T13:01:22.824609+00:00"
+   "last_ok": "2026-11-24T13:30:58.344771+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-24T13:01:22.824609+00:00"
+   "last_ok": "2026-11-24T13:30:58.344771+00:00"
   }
  }
 }
