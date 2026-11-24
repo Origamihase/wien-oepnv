@@ -1,99 +1,129 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
- "tickers": [],
+ "tickers": [
+  {
+   "key": "R2159-131|2026-11-24T15:51:12.000+0100|Falschparker\nUmleitung ab Jägerstaße über Jägerstraße",
+   "name": "R2159-131",
+   "title": "Falschparker\nUmleitung ab Jägerstaße über Jägerstraße",
+   "end": "2026-11-24T16:50:00.000+0100",
+   "incident": "I20261124-0038"
+  },
+  {
+   "key": "R2190-131|2026-11-24T15:51:13.000+0100|Falschparker\nUmleitung ab Jägerstaße über Jägerstraße",
+   "name": "R2190-131",
+   "title": "Falschparker\nUmleitung ab Jägerstaße über Jägerstraße",
+   "end": "2026-11-24T16:50:00.000+0100",
+   "incident": "I20261124-0038"
+  },
+  {
+   "key": "R2193-131|2026-11-24T15:51:13.000+0100|Falschparker\nUmleitung ab Jägerstaße über Jägerstraße",
+   "name": "R2193-131",
+   "title": "Falschparker\nUmleitung ab Jägerstaße über Jägerstraße",
+   "end": "2026-11-24T16:50:00.000+0100",
+   "incident": "I20261124-0038"
+  },
+  {
+   "key": "R2194-131|2026-11-24T15:51:13.000+0100|Falschparker\nUmleitung ab Jägerstaße über Jägerstraße",
+   "name": "R2194-131",
+   "title": "Falschparker\nUmleitung ab Jägerstaße über Jägerstraße",
+   "end": "2026-11-24T16:50:00.000+0100",
+   "incident": "I20261124-0038"
+  },
+  {
+   "key": "R2195-131|2026-11-24T15:51:43.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R2195-131",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-24T16:51:00.000+0100",
+   "incident": "I20261124-0038"
+  },
+  {
+   "key": "R2196-131|2026-11-24T15:51:43.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R2196-131",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-24T16:51:00.000+0100",
+   "incident": "I20261124-0038"
+  },
+  {
+   "key": "R2198-131|2026-11-24T15:49:13.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R2198-131",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-24T16:48:00.000+0100",
+   "incident": "I20261124-0038"
+  },
+  {
+   "key": "R2199-131|2026-11-24T15:49:13.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R2199-131",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-24T16:48:00.000+0100",
+   "incident": "I20261124-0038"
+  },
+  {
+   "key": "R2214-131|2026-11-24T15:49:13.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R2214-131",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-24T16:48:00.000+0100",
+   "incident": "I20261124-0038"
+  },
+  {
+   "key": "R321-131|2026-11-24T15:51:12.000+0100|Falschparker\nUmleitung ab Jägerstaße über Jägerstraße",
+   "name": "R321-131",
+   "title": "Falschparker\nUmleitung ab Jägerstaße über Jägerstraße",
+   "end": "2026-11-24T16:50:00.000+0100",
+   "incident": "I20261124-0038"
+  },
+  {
+   "key": "R322-131|2026-11-24T15:51:12.000+0100|Falschparker\nUmleitung ab Jägerstaße über Jägerstraße",
+   "name": "R322-131",
+   "title": "Falschparker\nUmleitung ab Jägerstaße über Jägerstraße",
+   "end": "2026-11-24T16:50:00.000+0100",
+   "incident": "I20261124-0038"
+  }
+ ],
  "owners": {
-  "R1212-138|2026-11-24T14:39:34.000+0100": {
-   "incident": "I20261124-0031",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  "R2159-131|2026-11-24T15:51:12.000+0100": {
+   "incident": "I20261124-0038",
+   "title": "Falschparker\nUmleitung ab Jägerstaße über Jägerstraße"
   },
-  "R1227-138|2026-11-24T14:32:34.000+0100": {
-   "incident": "I20261124-0031",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  "R2190-131|2026-11-24T15:51:13.000+0100": {
+   "incident": "I20261124-0038",
+   "title": "Falschparker\nUmleitung ab Jägerstaße über Jägerstraße"
   },
-  "R1366-102|2026-11-24T14:39:04.000+0100": {
-   "incident": "I20261124-0032",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  "R2193-131|2026-11-24T15:51:13.000+0100": {
+   "incident": "I20261124-0038",
+   "title": "Falschparker\nUmleitung ab Jägerstaße über Jägerstraße"
   },
-  "R1367-102|2026-11-24T14:41:34.000+0100": {
-   "incident": "I20261124-0032",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  "R2194-131|2026-11-24T15:51:13.000+0100": {
+   "incident": "I20261124-0038",
+   "title": "Falschparker\nUmleitung ab Jägerstaße über Jägerstraße"
   },
-  "R1368-102|2026-11-24T14:41:34.000+0100": {
-   "incident": "I20261124-0032",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  "R2195-131|2026-11-24T15:51:43.000+0100": {
+   "incident": "I20261124-0038",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R150-138|2026-11-24T14:39:33.000+0100": {
-   "incident": "I20261124-0031",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  "R2196-131|2026-11-24T15:51:43.000+0100": {
+   "incident": "I20261124-0038",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R1616-162|2026-11-24T14:38:36.000+0100": {
-   "incident": "I20261124-0033",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  "R2198-131|2026-11-24T15:49:13.000+0100": {
+   "incident": "I20261124-0038",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R1723-162|2026-11-24T14:38:32.000+0100": {
-   "incident": "I20261124-0033",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  "R2199-131|2026-11-24T15:49:13.000+0100": {
+   "incident": "I20261124-0038",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R1724-162|2026-11-24T14:38:32.000+0100": {
-   "incident": "I20261124-0033",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  "R2214-131|2026-11-24T15:49:13.000+0100": {
+   "incident": "I20261124-0038",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R1725-162|2026-11-24T14:38:32.000+0100": {
-   "incident": "I20261124-0033",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  "R321-131|2026-11-24T15:51:12.000+0100": {
+   "incident": "I20261124-0038",
+   "title": "Falschparker\nUmleitung ab Jägerstaße über Jägerstraße"
   },
-  "R1726-162|2026-11-24T14:38:32.000+0100": {
-   "incident": "I20261124-0033",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-  },
-  "R1727-162|2026-11-24T14:38:32.000+0100": {
-   "incident": "I20261124-0033",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-  },
-  "R1728-162|2026-11-24T14:38:32.000+0100": {
-   "incident": "I20261124-0033",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-  },
-  "R208-138|2026-11-24T14:32:32.000+0100": {
-   "incident": "I20261124-0031",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R209-138|2026-11-24T14:32:32.000+0100": {
-   "incident": "I20261124-0031",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R210-138|2026-11-24T14:32:32.000+0100": {
-   "incident": "I20261124-0031",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R211-138|2026-11-24T14:32:32.000+0100": {
-   "incident": "I20261124-0031",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R2985-138|2026-11-24T14:32:35.000+0100": {
-   "incident": "I20261124-0031",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R560-102|2026-11-24T14:36:03.000+0100": {
-   "incident": "I20261124-0032",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R561-102|2026-11-24T14:36:03.000+0100": {
-   "incident": "I20261124-0032",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R562-102|2026-11-24T14:39:04.000+0100": {
-   "incident": "I20261124-0032",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R588-102|2026-11-24T14:36:03.000+0100": {
-   "incident": "I20261124-0032",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R588-110|2026-11-24T14:37:03.000+0100": {
-   "incident": "I20261124-0025",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  "R322-131|2026-11-24T15:51:12.000+0100": {
+   "incident": "I20261124-0038",
+   "title": "Falschparker\nUmleitung ab Jägerstaße über Jägerstraße"
   }
  }
 }

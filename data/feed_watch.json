@@ -1,39 +1,35 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-24T14:30:53.807915+00:00",
- "built": "2026-11-24T15:30:43+01:00",
+ "updated": "2026-11-24T15:01:15.068312+00:00",
+ "built": "2026-11-24T16:01:03+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-24T15:30:43+01:00",
+  "built": "2026-11-24T16:01:03+01:00",
   "items": [
    {
-    "title": "9: Betriebsstörung",
-    "time_line": "Seit 14:59"
+    "title": "31: Falschparker",
+    "time_line": "Seit 15:47"
    },
    {
-    "title": "62: Polizeieinsatz",
-    "time_line": "Seit 14:38"
+    "title": "11A: Verkehrsunfall",
+    "time_line": "Seit 15:45"
    },
    {
-    "title": "10: Verkehrsunfall",
-    "time_line": "Seit 14:37"
+    "title": "50A: Verkehrsunfall",
+    "time_line": "Seit 15:33"
    },
    {
-    "title": "2/38: Verkehrsunfall",
+    "title": "17A: Verkehrsunfall",
+    "time_line": "Seit 15:30"
+   },
+   {
+    "title": "2: Verkehrsunfall",
     "time_line": "Seit 14:32"
    },
    {
-    "title": "84A: Verspätungen",
-    "time_line": "Seit 14:13"
-   },
-   {
-    "title": "42: Falschparker",
-    "time_line": "Seit 14:09"
-   },
-   {
-    "title": "10/60: Gleisschaden",
+    "title": "60: Gleisschaden",
     "time_line": "Seit 12:32"
    },
    {
@@ -41,57 +37,21 @@
     "time_line": "Seit heute"
    },
    {
-    "title": "56A/58B: Gleisbauarbeiten",
+    "title": "58B: Gleisbauarbeiten",
     "time_line": "Seit heute"
    },
    {
     "title": "7A: Antonsplatz",
     "time_line": "Bis Mi 25.11."
+   },
+   {
+    "title": "8A/58A/58B: Küniglberg, ORF-Zentrum",
+    "time_line": "Ab Mi 25.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-17T14:31:04.349746+00:00",
-   "raw": {
-    "wl-stoerungen": 48,
-    "wl-hinweise": 95,
-    "oebb": 172,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 25,
-    "oebb": 149,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 7,
-    "wl": 86
-   }
-  },
-  {
-   "t": "2026-11-17T15:01:01.046141+00:00",
-   "raw": {
-    "wl-stoerungen": 42,
-    "wl-hinweise": 95,
-    "oebb": 173,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 25,
-    "oebb": 150,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 7,
-    "wl": 84
-   }
-  },
   {
    "t": "2026-11-17T15:31:05.009105+00:00",
    "raw": {
@@ -6791,17 +6751,37 @@
     "oebb": 13,
     "wl": 94
    }
+  },
+  {
+   "t": "2026-11-24T15:01:15.068312+00:00",
+   "raw": {
+    "wl-stoerungen": 58,
+    "wl-hinweise": 95,
+    "oebb": 178,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 28,
+    "oebb": 151,
+    "baustellen": 58
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 13,
+    "wl": 89
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-24T14:30:53.807915+00:00"
+   "last_ok": "2026-11-24T15:01:15.068312+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-24T14:30:53.807915+00:00"
+   "last_ok": "2026-11-24T15:01:15.068312+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-24T14:30:53.807915+00:00"
+   "last_ok": "2026-11-24T15:01:15.068312+00:00"
   }
  }
 }
