@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261124-0044-F01, I20261124-0045-F02, I20260925-0011, I20261124-0045-F01, I20260909-0007, I20261124-0046-F01, I20261020-0029"
+    "trafficInfoNameList": "I20261124-0044-F01, I20261124-0045-F02, I20260925-0011, I20261124-0045-F01, I20260909-0007, I20261124-0046-F01, I20261020-0029, I20261124-0048"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R3886-480, R2378-627, R2343-125, R2343-626, R2558-125, R293-474, R318-437, R1974-466, R1199-205, R500-101, R17-0, R47-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R2373-125, R2359-125, R2370-125, R2371-125, R2372-125, R3886-480, R2373-127, R2373-126, R2558-125, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2343-626, R293-474, R318-437, R1974-466, R1199-205, R500-101, R17-0, R47-0, R1462-149, R1458-149, R3376-149, R3375-149, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -305,11 +305,12 @@
     "relatedStops": [
      81
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-24T18:17:00.000+0100",
      "end": "2026-11-24T19:58:00.000+0100",
-     "lastUpdate": "2026-11-24T18:33:00.000+0100",
+     "lastUpdate": "2026-11-24T19:58:00.000+0100",
+     "resume": "2026-11-24T19:58:00.000+0100",
      "start": "2026-11-24T17:50:00.000+0100"
     },
     "title": "71: Rettungseinsatz"
@@ -363,6 +364,51 @@
     "title": "U1: Rettungseinsatz"
    },
    {
+    "alertCause": "roadway damage",
+    "alertCauseId": 67,
+    "attributes": {
+     "relatedLineTypes": {
+      "49": "ptTram"
+     }
+    },
+    "description": "Linie 49: Betrieb nur zwischen Parlament, U Volkstheater und Baumgarten. Ersatz: Linien U4, 47B, 49A und 50A. Voraussichtliche Dauer: 21:00 Uhr. Grund: Gleisschaden im Bereich Linzer Straße # Deutschordenstraße.",
+    "descriptionHTML": "<p>Linie 49:<br>Betrieb nur zwischen Parlament, U Volkstheater und Baumgarten.</p><p>Ersatz: Linien U4, 47B, 49A und 50A.</p><p>Voraussichtliche Dauer: 21:00 Uhr.</p><p>Grund: Gleisschaden im Bereich Linzer Straße # Deutschordenstraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 49:<br>Betrieb nur zwischen Parlament, U Volkstheater und Baumgarten.</p><p>Ersatz: Linien U4, 47B, 49A und 50A.</p><p>Voraussichtliche Dauer: 21:00 Uhr.</p><p>Grund: Gleisschaden im Bereich Linzer Straße # Deutschordenstraße.</p>",
+       "descriptionPlain": "Linie 49: Betrieb nur zwischen Parlament, U Volkstheater und Baumgarten. Ersatz: Linien U4, 47B, 49A und 50A. Voraussichtliche Dauer: 21:00 Uhr. Grund: Gleisschaden im Bereich Linzer Straße # Deutschordenstraße.",
+       "title": "49: Gleisschaden"
+      }
+     }
+    ],
+    "location": "Linzer Straße / Deutschordenstraße",
+    "name": "I20261124-0048",
+    "owner": "WL",
+    "parentName": "I20261124-0048",
+    "priority": "1",
+    "reasonId": 28,
+    "reasonName": "Gleisschaden",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 149,
+      "lineName": "49",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-24T19:43:00.000+0100",
+     "lastUpdate": "2026-11-24T19:43:00.000+0100",
+     "start": "2026-11-24T19:37:00.000+0100"
+    },
+    "title": "49: Gleisschaden"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -384,6 +430,52 @@
      "start": "2026-11-24T04:45:06.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nGleisschaden",
+    "name": "R1458-149",
+    "owner": "WL",
+    "parentName": "R1458-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1458
+    ],
+    "time": {
+     "end": "2026-11-24T21:15:00.000+0100",
+     "start": "2026-11-24T19:43:34.000+0100"
+    },
+    "title": "Fahrtbehinderung\nGleisschaden"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisschaden\nBetrieb ab Baumgarten",
+    "name": "R1462-149",
+    "owner": "WL",
+    "parentName": "R1462-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     1462
+    ],
+    "time": {
+     "end": "2026-11-24T21:15:00.000+0100",
+     "start": "2026-11-24T19:43:34.000+0100"
+    },
+    "title": "Gleisschaden\nBetrieb ab Baumgarten"
    },
    {
     "alertCause": "undefined alert cause",
@@ -956,6 +1048,52 @@
      "start": "2026-11-24T00:00:23.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nGleisschaden",
+    "name": "R3375-149",
+    "owner": "WL",
+    "parentName": "R3375-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     3375
+    ],
+    "time": {
+     "end": "2026-11-24T21:15:00.000+0100",
+     "start": "2026-11-24T19:43:35.000+0100"
+    },
+    "title": "Fahrtbehinderung\nGleisschaden"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisschaden\nBetrieb ab Baumgarten",
+    "name": "R3376-149",
+    "owner": "WL",
+    "parentName": "R3376-149",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedStops": [
+     3376
+    ],
+    "time": {
+     "end": "2026-11-24T21:15:00.000+0100",
+     "start": "2026-11-24T19:43:35.000+0100"
+    },
+    "title": "Gleisschaden\nBetrieb ab Baumgarten"
    },
    {
     "alertCause": "undefined alert cause",
