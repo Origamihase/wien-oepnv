@@ -3527,8 +3527,8 @@
      "rbls": [],
      "reason": "",
      "relatedLines": [
-      "U1",
       "U2",
+      "U1",
       "U4"
      ],
      "station": "Karlsplatz",
@@ -3543,8 +3543,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U1",
      "U2",
+     "U1",
      "U4"
     ],
     "time": {
@@ -3612,8 +3612,8 @@
      "rbls": [],
      "reason": "",
      "relatedLines": [
-      "U1",
       "U2",
+      "U1",
       "U4"
      ],
      "station": "Karlsplatz",
@@ -3628,8 +3628,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U1",
      "U2",
+     "U1",
      "U4"
     ],
     "time": {
@@ -4003,7 +4003,7 @@
     "attributes": {
      "ausBis": "27.11.2026 00:45",
      "ausVon": "26.11.2026 20:45",
-     "location": "Ausgang Gussenbauergasse - U4 Mittelbahnsteig",
+     "location": "U4 Mittelbahnsteig - Ausgang Gussenbauergasse",
      "rbls": [
       4433,
       4404
@@ -4016,7 +4016,7 @@
      "status": "geplante Wartung",
      "towards": "U4 beide Richtungen"
     },
-    "description": "Ausgang Gussenbauergasse - U4 Mittelbahnsteig",
+    "description": "U4 Mittelbahnsteig - Ausgang Gussenbauergasse",
     "elevatorId": "FB 01",
     "name": "ftazW_583",
     "parentName": "ftazW_583",
