@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261124-0020, I20260925-0011, I20260909-0007, I20261124-0023-F01, I20261020-0029"
+    "trafficInfoNameList": "I20261124-0024, I20260925-0011, I20260909-0007, I20261124-0023-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R2373-125, R2373-127, R2373-126, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2558-125, R2379-627, R2380-627, R3886-480, R293-474, R318-437, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1884-101, R1883-101, R1882-101, R1881-101, R1876-101, R1880-101, R1875-101, R2558-125, R2345-127, R3886-480, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2380-627, R2379-627, R293-474, R318-437, R1974-466, R1199-205, R500-101, R192-141, R193-141, R192-140, R521-140, R188-140, R189-140, R188-141, R189-141, R1212-140, R1213-140, R1213-141, R1212-141, R141-140, R1316-141, R1315-141, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -175,52 +175,6 @@
     "alertCauseId": 53,
     "attributes": {
      "relatedLineTypes": {
-      "U2": "ptMetro"
-     }
-    },
-    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U2: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261124-0020",
-    "owner": "WL",
-    "parentName": "I20261124-0020",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U2"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 302,
-      "lineName": "U2",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-24T10:14:00.000+0100",
-     "end": "2026-11-24T11:59:00.000+0100",
-     "lastUpdate": "2026-11-24T11:59:00.000+0100",
-     "resume": "2026-11-24T10:13:00.000+0100",
-     "start": "2026-11-24T10:13:00.000+0100"
-    },
-    "title": "U2: Verspätungen"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
       "U1": "ptMetro"
      }
     },
@@ -265,6 +219,58 @@
     "title": "U1: Schadhaftes Fahrzeug"
    },
    {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "40": "ptTram",
+      "41": "ptTram"
+     }
+    },
+    "description": "Linie 40: Umleitung in Richtung Gersthof, Herbeckstraße zwischen Währinger Straße, Volksoper U und Gersthof S über Michelbeuern-AKH U (Strecke Linien 42 und 9). Linie 41: Umleitung in Richtung Pötzleinsdorf zwischen Währinger Straße, Volksoper U und Gersthof S über Michelbeuern-AKH U (Strecke der Linien 42 und 9). Voraussichtliche Dauer: 12:40 Uhr. Grund: Falschparker im Bereich Gentzgasse 128.",
+    "descriptionHTML": "<p>Linie 40:<br>Umleitung in Richtung Gersthof, Herbeckstraße <br>zwischen Währinger Straße, Volksoper U und Gersthof S <br>über Michelbeuern-AKH U (Strecke Linien 42 und 9).<br>Linie 41:<br>Umleitung in Richtung Pötzleinsdorf <br>zwischen Währinger Straße, Volksoper U und Gersthof S <br>über Michelbeuern-AKH U (Strecke der Linien 42 und 9).</p><p>Voraussichtliche Dauer: 12:40 Uhr.</p><p>Grund: Falschparker im Bereich Gentzgasse 128.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 40:<br>Umleitung in Richtung Gersthof, Herbeckstraße <br>zwischen Währinger Straße, Volksoper U und Gersthof S <br>über Michelbeuern-AKH U (Strecke Linien 42 und 9).<br>Linie 41:<br>Umleitung in Richtung Pötzleinsdorf <br>zwischen Währinger Straße, Volksoper U und Gersthof S <br>über Michelbeuern-AKH U (Strecke der Linien 42 und 9).</p><p>Voraussichtliche Dauer: 12:40 Uhr.</p><p>Grund: Falschparker im Bereich Gentzgasse 128.</p>",
+       "descriptionPlain": "Linie 40: Umleitung in Richtung Gersthof, Herbeckstraße zwischen Währinger Straße, Volksoper U und Gersthof S über Michelbeuern-AKH U (Strecke Linien 42 und 9). Linie 41: Umleitung in Richtung Pötzleinsdorf zwischen Währinger Straße, Volksoper U und Gersthof S über Michelbeuern-AKH U (Strecke der Linien 42 und 9). Voraussichtliche Dauer: 12:40 Uhr. Grund: Falschparker im Bereich Gentzgasse 128.",
+       "title": "40, 41: Falschparker"
+      }
+     }
+    ],
+    "location": "Gentzgasse 128",
+    "name": "I20261124-0024",
+    "owner": "WL",
+    "parentName": "I20261124-0024",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "40",
+     "41"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 140,
+      "lineName": "40",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 141,
+      "lineName": "41",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-24T12:12:00.000+0100",
+     "lastUpdate": "2026-11-24T12:17:00.000+0100",
+     "start": "2026-11-24T12:11:00.000+0100"
+    },
+    "title": "40, 41: Falschparker"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -286,6 +292,167 @@
      "start": "2026-11-24T04:45:06.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nUmleitung ab Volksoper über Linien 42 und 9",
+    "name": "R1212-140",
+    "owner": "WL",
+    "parentName": "R1212-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     1212
+    ],
+    "time": {
+     "end": "2026-11-24T13:16:00.000+0100",
+     "start": "2026-11-24T12:17:50.000+0100"
+    },
+    "title": "Falschparker\nUmleitung ab Volksoper über Linien 42 und 9"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nUmleitung ab Volksoper über Linien 42 und 9",
+    "name": "R1212-141",
+    "owner": "WL",
+    "parentName": "R1212-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     1212
+    ],
+    "time": {
+     "end": "2026-11-24T13:17:00.000+0100",
+     "start": "2026-11-24T12:17:50.000+0100"
+    },
+    "title": "Falschparker\nUmleitung ab Volksoper über Linien 42 und 9"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nUmleitung ab Volksoper über Linien 42 und 9",
+    "name": "R1213-140",
+    "owner": "WL",
+    "parentName": "R1213-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     1213
+    ],
+    "time": {
+     "end": "2026-11-24T13:16:00.000+0100",
+     "start": "2026-11-24T12:17:50.000+0100"
+    },
+    "title": "Falschparker\nUmleitung ab Volksoper über Linien 42 und 9"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nUmleitung ab Volksoper über Linien 42 und 9",
+    "name": "R1213-141",
+    "owner": "WL",
+    "parentName": "R1213-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     1213
+    ],
+    "time": {
+     "end": "2026-11-24T13:17:00.000+0100",
+     "start": "2026-11-24T12:17:50.000+0100"
+    },
+    "title": "Falschparker\nUmleitung ab Volksoper über Linien 42 und 9"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Gersthof",
+    "name": "R1315-141",
+    "owner": "WL",
+    "parentName": "R1315-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     1315
+    ],
+    "time": {
+     "end": "2026-11-24T13:23:00.000+0100",
+     "start": "2026-11-24T12:23:50.000+0100"
+    },
+    "title": "Falschparker\nBetrieb ab Gersthof"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Gersthof",
+    "name": "R1316-141",
+    "owner": "WL",
+    "parentName": "R1316-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     1316
+    ],
+    "time": {
+     "end": "2026-11-24T13:23:00.000+0100",
+     "start": "2026-11-24T12:23:50.000+0100"
+    },
+    "title": "Falschparker\nBetrieb ab Gersthof"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Gersthof",
+    "name": "R141-140",
+    "owner": "WL",
+    "parentName": "R141-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     141
+    ],
+    "time": {
+     "end": "2026-11-24T13:21:00.000+0100",
+     "start": "2026-11-24T12:22:19.000+0100"
+    },
+    "title": "Falschparker\nBetrieb ab Gersthof"
    },
    {
     "alertCause": "undefined alert cause",
@@ -332,6 +499,52 @@
      "start": "2026-11-24T00:00:20.000+0100"
     },
     "title": "Gleisbauarbeiten\nKein Betrieb"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nUmleitung ab Volksoper über Linien 42 und 9",
+    "name": "R188-140",
+    "owner": "WL",
+    "parentName": "R188-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     188
+    ],
+    "time": {
+     "end": "2026-11-24T13:16:00.000+0100",
+     "start": "2026-11-24T12:17:49.000+0100"
+    },
+    "title": "Falschparker\nUmleitung ab Volksoper über Linien 42 und 9"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nUmleitung ab Volksoper über Linien 42 und 9",
+    "name": "R188-141",
+    "owner": "WL",
+    "parentName": "R188-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     188
+    ],
+    "time": {
+     "end": "2026-11-24T13:17:00.000+0100",
+     "start": "2026-11-24T12:17:49.000+0100"
+    },
+    "title": "Falschparker\nUmleitung ab Volksoper über Linien 42 und 9"
    },
    {
     "alertCause": "undefined alert cause",
@@ -447,6 +660,121 @@
      "start": "2026-11-24T00:00:20.000+0100"
     },
     "title": "Gleisbauarbeiten\nZüge halten Quellenstraße 156 (Linie 6)"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nUmleitung ab Volksoper über Linien 42 und 9",
+    "name": "R189-140",
+    "owner": "WL",
+    "parentName": "R189-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     189
+    ],
+    "time": {
+     "end": "2026-11-24T13:16:00.000+0100",
+     "start": "2026-11-24T12:17:49.000+0100"
+    },
+    "title": "Falschparker\nUmleitung ab Volksoper über Linien 42 und 9"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nUmleitung ab Volksoper über Linien 42 und 9",
+    "name": "R189-141",
+    "owner": "WL",
+    "parentName": "R189-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     189
+    ],
+    "time": {
+     "end": "2026-11-24T13:17:00.000+0100",
+     "start": "2026-11-24T12:17:49.000+0100"
+    },
+    "title": "Falschparker\nUmleitung ab Volksoper über Linien 42 und 9"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R192-140",
+    "owner": "WL",
+    "parentName": "R192-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     192
+    ],
+    "time": {
+     "end": "2026-11-24T13:12:00.000+0100",
+     "start": "2026-11-24T12:12:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R192-141",
+    "owner": "WL",
+    "parentName": "R192-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     192
+    ],
+    "time": {
+     "end": "2026-11-24T13:11:00.000+0100",
+     "start": "2026-11-24T12:12:18.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R193-141",
+    "owner": "WL",
+    "parentName": "R193-141",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "41"
+    ],
+    "relatedStops": [
+     193
+    ],
+    "time": {
+     "end": "2026-11-24T13:11:00.000+0100",
+     "start": "2026-11-24T12:12:18.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -907,6 +1235,29 @@
      "start": "2026-11-24T05:00:06.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R521-140",
+    "owner": "WL",
+    "parentName": "R521-140",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "40"
+    ],
+    "relatedStops": [
+     521
+    ],
+    "time": {
+     "end": "2026-11-24T13:12:00.000+0100",
+     "start": "2026-11-24T12:12:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
