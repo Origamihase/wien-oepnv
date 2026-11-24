@@ -13,7 +13,7 @@
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R3886-480, R2558-125, R2343-125, R2343-626, R2359-125, R2370-125, R2379-627, R2380-627, R2345-127, R2378-627, R318-437, R293-474, R1974-466, R1199-205, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1881-101, R1880-101, R1876-101, R1884-101, R1875-101, R1882-101, R1883-101, R2372-125, R2373-125, R2373-126, R2373-127, R3886-480, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2379-627, R2380-627, R2345-127, R2558-125, R318-437, R293-474, R1974-466, R1199-205, R125-136, R124-136, R120-136, R126-136, R123-136, R122-136, R121-136, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -192,6 +192,167 @@
      "start": "2026-11-24T04:45:06.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "name": "R120-136",
+    "owner": "WL",
+    "parentName": "R120-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     120
+    ],
+    "time": {
+     "end": "2026-11-24T23:59:59.000+0100",
+     "start": "2026-11-24T23:29:24.000+0100"
+    },
+    "title": "Fahrtbehinderung\nBetriebsstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "name": "R121-136",
+    "owner": "WL",
+    "parentName": "R121-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     121
+    ],
+    "time": {
+     "end": "2026-11-24T23:59:59.000+0100",
+     "start": "2026-11-24T23:29:24.000+0100"
+    },
+    "title": "Fahrtbehinderung\nBetriebsstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "name": "R122-136",
+    "owner": "WL",
+    "parentName": "R122-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     122
+    ],
+    "time": {
+     "end": "2026-11-24T23:59:59.000+0100",
+     "start": "2026-11-24T23:29:24.000+0100"
+    },
+    "title": "Fahrtbehinderung\nBetriebsstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "name": "R123-136",
+    "owner": "WL",
+    "parentName": "R123-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     123
+    ],
+    "time": {
+     "end": "2026-11-24T23:59:59.000+0100",
+     "start": "2026-11-24T23:29:24.000+0100"
+    },
+    "title": "Fahrtbehinderung\nBetriebsstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "name": "R124-136",
+    "owner": "WL",
+    "parentName": "R124-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     124
+    ],
+    "time": {
+     "end": "2026-11-24T23:59:59.000+0100",
+     "start": "2026-11-24T23:29:24.000+0100"
+    },
+    "title": "Fahrtbehinderung\nBetriebsstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "name": "R125-136",
+    "owner": "WL",
+    "parentName": "R125-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     125
+    ],
+    "time": {
+     "end": "2026-11-24T23:59:59.000+0100",
+     "start": "2026-11-24T23:29:24.000+0100"
+    },
+    "title": "Fahrtbehinderung\nBetriebsstörung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nBetriebsstörung",
+    "name": "R126-136",
+    "owner": "WL",
+    "parentName": "R126-136",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "D"
+    ],
+    "relatedStops": [
+     126
+    ],
+    "time": {
+     "end": "2026-11-24T23:59:59.000+0100",
+     "start": "2026-11-24T23:29:24.000+0100"
+    },
+    "title": "Fahrtbehinderung\nBetriebsstörung"
    },
    {
     "alertCause": "undefined alert cause",
