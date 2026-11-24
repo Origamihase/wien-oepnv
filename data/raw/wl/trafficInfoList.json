@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261124-0044-F01, I20261124-0045-F02, I20260925-0011, I20261124-0045-F01, I20260909-0007, I20261124-0046-F01, I20261020-0029, I20261124-0048"
+    "trafficInfoNameList": "I20261124-0044-F01, I20260925-0011, I20261124-0045-F01, I20260909-0007, I20261124-0046-F01, I20261020-0029, I20261124-0048"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R2373-125, R2359-125, R2370-125, R2371-125, R2372-125, R3886-480, R2373-127, R2373-126, R2558-125, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2343-626, R293-474, R318-437, R1974-466, R1199-205, R500-101, R17-0, R47-0, R1462-149, R1458-149, R3376-149, R3375-149, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1880-101, R1876-101, R1875-101, R1881-101, R1882-101, R1883-101, R1884-101, R2345-127, R3886-480, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2378-627, R2558-125, R2379-627, R2380-627, R318-437, R293-474, R1974-466, R1199-205, R500-101, R47-0, R17-0, R1462-149, R1458-149, R3375-149, R3376-149, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -265,55 +265,6 @@
      "start": "2026-11-24T17:50:00.000+0100"
     },
     "title": "D: Rettungseinsatz"
-   },
-   {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "71": "ptTram"
-     }
-    },
-    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 71: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 71: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "71: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261124-0045-F02",
-    "owner": "WL",
-    "parentName": "I20261124-0045",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 171,
-      "lineName": "71",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     81
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-24T18:17:00.000+0100",
-     "end": "2026-11-24T19:58:00.000+0100",
-     "lastUpdate": "2026-11-24T19:58:00.000+0100",
-     "resume": "2026-11-24T19:58:00.000+0100",
-     "start": "2026-11-24T17:50:00.000+0100"
-    },
-    "title": "71: Rettungseinsatz"
    },
    {
     "alertCause": "emergency medical services",

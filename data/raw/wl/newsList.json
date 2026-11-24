@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_81, ftazW_739, ftazW_1017627, ftazW_605, ftazW_478, ftazW_604, ftazW_479, ftazW_725, ftazW_740, ftazW_1016611, ftazW_529, ftazW_1016925, ftazW_1016592, ftazW_1354573, ftazW_475, ftazW_528, ftazW_1016926, ftazW_1016593, ftazW_1354391, ftazW_583, ftazW_166, ftazW_1016542, ftazW_1017125, ftazW_1016923, ftazW_580, ftazW_196, ftazW_1017717, ftazW_1016543, ftazW_735, ftazW_167, ftazW_1016924"
+    "trafficInfoNameList": "ftazW_81, ftazW_739, ftazW_605, ftazW_478, ftazW_604, ftazW_479, ftazW_725, ftazW_740, ftazW_1016611, ftazW_529, ftazW_1016925, ftazW_1016592, ftazW_1354573, ftazW_475, ftazW_528, ftazW_1016926, ftazW_1016593, ftazW_1354391, ftazW_583, ftazW_166, ftazW_1016542, ftazW_1017125, ftazW_1016923, ftazW_580, ftazW_196, ftazW_1017717, ftazW_1016543, ftazW_735, ftazW_167, ftazW_1016924"
    }
   ],
   "poiCategoryGroups": [
@@ -3552,55 +3552,6 @@
      "start": "2026-11-26T20:45:00.000+0100"
     },
     "title": "Karlsplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "25.11.2026 00:45",
-     "ausVon": "24.11.2026 20:45",
-     "location": "1 Bahnsteig Richtung Prater Hauptallee, 18 Bahnsteig Richtung Schlachthausgasse, 62 und Badner Bahn Bahnsteig Richtung Oper, Karlsplatz - Ausgang Landgutgasse",
-     "rbls": [
-      1715,
-      849,
-      831,
-      831
-     ],
-     "reason": "",
-     "relatedLines": [
-      "18",
-      "62",
-      "1",
-      "LB"
-     ],
-     "station": "Kliebergasse",
-     "status": "geplante Wartung",
-     "towards": "WLB Baden, 18 Burggasse-Stadthalle, 62 Kärntner Ring, Oper/Karlsplatz U, 1 Prater Hauptallee"
-    },
-    "description": "1 Bahnsteig Richtung Prater Hauptallee, 18 Bahnsteig Richtung Schlachthausgasse, 62 und Badner Bahn Bahnsteig Richtung Oper, Karlsplatz - Ausgang Landgutgasse",
-    "elevatorId": "KL 03",
-    "name": "ftazW_1017627",
-    "parentName": "ftazW_1017627",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "18",
-     "62",
-     "1",
-     "LB"
-    ],
-    "relatedStops": [
-     1715,
-     849,
-     831,
-     831
-    ],
-    "time": {
-     "end": "2026-11-25T00:45:00.000+0100",
-     "start": "2026-11-24T20:45:00.000+0100"
-    },
-    "title": "Kliebergasse"
    },
    {
     "alertCause": "undefined alert cause",
