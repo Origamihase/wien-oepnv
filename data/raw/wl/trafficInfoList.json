@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261124-0001, I20261020-0029"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261124-0001, I20261020-0029, I20261124-0002"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2373-125, R2373-127, R2373-126, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2558-125, R2379-627, R2380-627, R3886-480, R318-437, R293-474, R1749-508, R407-506, R402-506, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1880-101, R1881-101, R1882-101, R1876-101, R1884-101, R1875-101, R1883-101, R2373-127, R2373-126, R3886-480, R2345-127, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2558-125, R2379-627, R2380-627, R2378-627, R293-474, R318-437, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -216,6 +216,51 @@
     "title": "N8: Polizeieinsatz"
    },
    {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "49": "ptTram"
+     }
+    },
+    "description": "Linie 49: Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse. Voraussichtliche Dauer: 05:50 Uhr. Grund: Rettungseinsatz im Bereich Siebensterngasse 56.",
+    "descriptionHTML": "<p>Linie 49:<br>Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse.</p><p>Voraussichtliche Dauer: 05:50 Uhr.</p><p>Grund: Rettungseinsatz im Bereich Siebensterngasse 56.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 49:<br>Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse.</p><p>Voraussichtliche Dauer: 05:50 Uhr.</p><p>Grund: Rettungseinsatz im Bereich Siebensterngasse 56.</p>",
+       "descriptionPlain": "Linie 49: Fahrtbehinderung in Richtung Hütteldorf, Bujattigasse. Voraussichtliche Dauer: 05:50 Uhr. Grund: Rettungseinsatz im Bereich Siebensterngasse 56.",
+       "title": "49: Rettungseinsatz"
+      }
+     }
+    ],
+    "location": "Siebensterngasse 56",
+    "name": "I20261124-0002",
+    "owner": "WL",
+    "parentName": "I20261124-0002",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "49"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 149,
+      "lineName": "49",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-24T05:30:00.000+0100",
+     "lastUpdate": "2026-11-24T05:30:00.000+0100",
+     "start": "2026-11-24T05:29:00.000+0100"
+    },
+    "title": "49: Rettungseinsatz"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -237,29 +282,6 @@
      "start": "2026-11-24T04:45:06.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
-    "name": "R1749-508",
-    "owner": "WL",
-    "parentName": "R1749-508",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N8"
-    ],
-    "relatedStops": [
-     1749
-    ],
-    "time": {
-     "end": "2026-11-24T05:15:00.000+0100",
-     "start": "2026-11-24T00:45:24.000+0100"
-    },
-    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A"
    },
    {
     "alertCause": "undefined alert cause",
@@ -858,52 +880,6 @@
      "start": "2026-11-24T00:00:19.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 ",
-    "name": "R402-506",
-    "owner": "WL",
-    "parentName": "R402-506",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N6"
-    ],
-    "relatedStops": [
-     402
-    ],
-    "time": {
-     "end": "2026-11-24T05:05:00.000+0100",
-     "start": "2026-11-24T00:55:24.000+0100"
-    },
-    "title": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
-    "name": "R407-506",
-    "owner": "WL",
-    "parentName": "R407-506",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N6"
-    ],
-    "relatedStops": [
-     407
-    ],
-    "time": {
-     "end": "2026-11-24T05:04:00.000+0100",
-     "start": "2026-11-24T00:54:24.000+0100"
-    },
-    "title": "Bauarbeiten\nBusse halten Quellenstraße 189"
    },
    {
     "alertCause": "undefined alert cause",
