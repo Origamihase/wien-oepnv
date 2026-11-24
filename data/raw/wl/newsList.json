@@ -1414,10 +1414,19 @@
     "title": "N20: Gleisbauarbeiten ab 11.09.2026"
    },
    {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestellenverlegung der Linien 4A in Richtung Wittelsbachstra&szlig;e, 80A in Richtung Praterstern S U und N29 in Richtung Wittelsbachstra&szlig;e</span></u></strong></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Haltestelle:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Wittelsbachstra&szlig;e</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Von:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Sch&uuml;ttelstra&szlig;e 43-45</span></span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Nach:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Sch&uuml;ttelstra&szlig;e 41</span></p>\r\n<p class=\"MsoNormal\"><strong><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Dauer:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Ab 22. September 2026, etwa 10:00 Uhr bis voraussichtlich Ende 2026</span></p>\r\n<p class=\"MsoNormal\"><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"><strong style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: medium;\"><u><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\">Grund:</span></u></strong><span style=\"font-size: 12.0pt; line-height: 107%; font-family: 'Segoe UI',sans-serif;\"> Rohrleitungsarbeiten</span></span></p>",
+    "alertCause": "unknown",
+    "alertCauseId": 0,
+    "description": "<p><span><strong><u>Haltestellenverlegung der Linien 4A in Richtung Wittelsbachstraße, 80A in Richtung Praterstern S U und N29 in Richtung Wittelsbachstraße</u></strong></span></p><p><span><strong><u>Haltestelle:</u></strong> Wittelsbachstraße</span></p><p><span><strong><u>Von:</u></strong> Schüttelstraße 43-45</span></p><p><span><strong><u>Nach:</u></strong> Schüttelstraße 41</span></p><p><span><strong><u>Dauer:</u></strong> Ab 22. September 2026, etwa 10:00 Uhr bis 03. Dezember 2026, ca. 07:00 Uhr.</span></p><p><span><strong><u>Grund:</u></strong> Rohrleitungsarbeiten</span></p>",
     "id": "N20260916-6187",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><span><strong><u>Haltestellenverlegung der Linien 4A in Richtung Wittelsbachstraße, 80A in Richtung Praterstern S U und N29 in Richtung Wittelsbachstraße</u></strong></span></p><p><span><strong><u>Haltestelle:</u></strong> Wittelsbachstraße</span></p><p><span><strong><u>Von:</u></strong> Schüttelstraße 43-45</span></p><p><span><strong><u>Nach:</u></strong> Schüttelstraße 41</span></p><p><span><strong><u>Dauer:</u></strong> Ab 22. September 2026, etwa 10:00 Uhr bis 03. Dezember 2026, ca. 07:00 Uhr.</span></p><p><span><strong><u>Grund:</u></strong> Rohrleitungsarbeiten</span></p>",
+       "descriptionPlain": "Haltestellenverlegung der Linien 4A in Richtung Wittelsbachstraße, 80A in Richtung Praterstern S U und N29 in Richtung Wittelsbachstraße Haltestelle: Wittelsbachstraße Von: Schüttelstraße 43-45 Nach: Schüttelstraße 41 Dauer: Ab 22. September 2026, etwa 10:00 Uhr bis 03. Dezember 2026, ca. 07:00 Uhr. Grund: Rohrleitungsarbeiten",
+       "title": "4A, 80A, N29: Wittelsbachstraße"
+      }
+     }
+    ],
     "location": {
      "properties": {
       "attributes": {},
@@ -1427,8 +1436,8 @@
      "type": "Feature"
     },
     "name": "N20260916-6187",
-    "reasonId": 0,
-    "reasonName": "undefined",
+    "reasonId": 223,
+    "reasonName": "Haltestellenverlegung",
     "refPoiCategoryId": 13296,
     "relatedLines": [
      "4A",
@@ -1456,7 +1465,7 @@
      2114
     ],
     "time": {
-     "end": "2026-12-31T23:59:00.000+0100",
+     "end": "2026-12-03T07:00:00.000+0100",
      "start": "2026-09-16T00:00:00.000+0200",
      "validFrom": "2026-09-16T07:47:00.000+0200"
     },
@@ -3994,7 +4003,7 @@
     "attributes": {
      "ausBis": "27.11.2026 00:45",
      "ausVon": "26.11.2026 20:45",
-     "location": "U4 Mittelbahnsteig - Ausgang Gussenbauergasse",
+     "location": "Ausgang Gussenbauergasse - U4 Mittelbahnsteig",
      "rbls": [
       4433,
       4404
@@ -4007,7 +4016,7 @@
      "status": "geplante Wartung",
      "towards": "U4 beide Richtungen"
     },
-    "description": "U4 Mittelbahnsteig - Ausgang Gussenbauergasse",
+    "description": "Ausgang Gussenbauergasse - U4 Mittelbahnsteig",
     "elevatorId": "FB 01",
     "name": "ftazW_583",
     "parentName": "ftazW_583",
