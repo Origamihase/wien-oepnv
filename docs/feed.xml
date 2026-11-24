@@ -8,36 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 24 Nov 2026 23:30:42 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 25 Nov 2026 00:00:46 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[D: Betriebsstörung]]></title>
+      <title><![CDATA[D: Verkehrsstörung]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">8ab2ce0bc6c59daf4882de877c8d7f24ce1a9cca988b7f1cdfd8b48b8370a09f</guid>
-      <pubDate>Tue, 24 Nov 2026 23:29:24 +0100</pubDate>
+      <guid isPermaLink="false">49dd75190cd7187f6746bdf00f2126d9e70971204a97ddc0df8175084d3bf326</guid>
+      <pubDate>Tue, 24 Nov 2026 23:29:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Tue, 24 Nov 2026 23:30:42 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 24 Nov 2026 23:29:24 +0100</ext:starts_at>
-      <ext:ends_at>Tue, 24 Nov 2026 23:59:59 +0100</ext:ends_at>
-      <description>Fahrtbehinderung. [Seit 23:29]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 23:29]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Antonsplatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">a4909415cf96cc125197444bd009403ec86c54a31f4633d682eacf3be6d878cc</guid>
-      <pubDate>Wed, 18 Nov 2026 12:54:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 18 Nov 2026 12:54:00 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 24 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Wed, 25 Nov 2026 17:00:00 +0100</ext:ends_at>
-      <georss:point>48.170260 16.378498</georss:point>
-      <description>Antonsplatz 13 vor Rechberggasse → Antonsplatz 14-16. Haltestellenverlegung der Linie 7A in Richtung Reumannplatz. Grund: Straßenbauarbeiten. [Bis Mi 25.11.]</description>
-      <content:encoded><![CDATA[Antonsplatz 13 vor Rechberggasse → Antonsplatz 14-16. Haltestellenverlegung der Linie 7A in Richtung Reumannplatz. Grund: Straßenbauarbeiten.<br/>[Bis Mi 25.11.]]]></content:encoded>
+      <ext:first_seen>Wed, 25 Nov 2026 00:00:46 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 24 Nov 2026 23:29:00 +0100</ext:starts_at>
+      <ext:ends_at>Wed, 25 Nov 2026 00:15:00 +0100</ext:ends_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Heute]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[8A/58A/58B: Küniglberg, ORF-Zentrum]]></title>
@@ -50,21 +35,8 @@
       <ext:first_seen>Mon, 23 Nov 2026 10:57:00 +0100</ext:first_seen>
       <ext:starts_at>Wed, 25 Nov 2026 00:00:00 +0100</ext:starts_at>
       <georss:point>48.175514 16.291612</georss:point>
-      <description>Verbindungsfahrbahn zwischen Würzburggasse und Küniglberggasse → Küniglberggasse 1-3, provisorische Haltestelle. Haltestellenverlegung der Linien 8A, 58A und 58B. … [Ab Mi 25.11.]</description>
-      <content:encoded><![CDATA[Verbindungsfahrbahn zwischen Würzburggasse und Küniglberggasse → Küniglberggasse 1-3, provisorische Haltestelle. Haltestellenverlegung der Linien 8A, 58A und 58B. …<br/>[Ab Mi 25.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[68A: Geänderte Linienführung]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">e492cfa06a0bbcc7e2c6f1233068abbf56eea121924fc72efc72f30f7ef56e29</guid>
-      <pubDate>Mon, 16 Nov 2026 14:16:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 20 Nov 2026 00:00:51 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 23 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <description>Die Linienführung der Linie 68A wird im Bereich der Filmteichstraße angepasst. [Seit 23.11.]</description>
-      <content:encoded><![CDATA[Die Linienführung der Linie 68A wird im Bereich der Filmteichstraße angepasst.<br/>[Seit 23.11.]]]></content:encoded>
+      <description>Verbindungsfahrbahn zwischen Würzburggasse und Küniglberggasse → Küniglberggasse 1-3, provisorische Haltestelle. Haltestellenverlegung der Linien 8A, 58A und 58B. … [Seit heute]</description>
+      <content:encoded><![CDATA[Verbindungsfahrbahn zwischen Würzburggasse und Küniglberggasse → Küniglberggasse 1-3, provisorische Haltestelle. Haltestellenverlegung der Linien 8A, 58A und 58B. …<br/>[Seit heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[48A: Klinik Penzing]]></title>
@@ -78,8 +50,36 @@
       <ext:starts_at>Wed, 25 Nov 2026 00:00:00 +0100</ext:starts_at>
       <ext:ends_at>Thu, 17 Dec 2026 13:00:00 +0100</ext:ends_at>
       <georss:point>48.205224 16.272424</georss:point>
-      <description>Sanatoriumstraße 2 → Sanatoriumstraße 2 vor Krankenhauseinfahrt. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Straßenbau. [Ab Mi 25.11. bis 17.12.]</description>
-      <content:encoded><![CDATA[Sanatoriumstraße 2 → Sanatoriumstraße 2 vor Krankenhauseinfahrt. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Straßenbau.<br/>[Ab Mi 25.11. bis 17.12.]]]></content:encoded>
+      <description>Sanatoriumstraße 2 → Sanatoriumstraße 2 vor Krankenhauseinfahrt. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Straßenbau. [Bis 17.12.]</description>
+      <content:encoded><![CDATA[Sanatoriumstraße 2 → Sanatoriumstraße 2 vor Krankenhauseinfahrt. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Straßenbau.<br/>[Bis 17.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[7A: Antonsplatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">a4909415cf96cc125197444bd009403ec86c54a31f4633d682eacf3be6d878cc</guid>
+      <pubDate>Wed, 18 Nov 2026 12:54:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 18 Nov 2026 12:54:00 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 24 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Wed, 25 Nov 2026 17:00:00 +0100</ext:ends_at>
+      <georss:point>48.170260 16.378498</georss:point>
+      <description>Antonsplatz 13 vor Rechberggasse → Antonsplatz 14-16. Haltestellenverlegung der Linie 7A in Richtung Reumannplatz. Grund: Straßenbauarbeiten. [Heute]</description>
+      <content:encoded><![CDATA[Antonsplatz 13 vor Rechberggasse → Antonsplatz 14-16. Haltestellenverlegung der Linie 7A in Richtung Reumannplatz. Grund: Straßenbauarbeiten.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[68A: Geänderte Linienführung]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">e492cfa06a0bbcc7e2c6f1233068abbf56eea121924fc72efc72f30f7ef56e29</guid>
+      <pubDate>Mon, 16 Nov 2026 14:16:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 20 Nov 2026 00:00:51 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 23 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <description>Die Linienführung der Linie 68A wird im Bereich der Filmteichstraße angepasst. [Seit 23.11.]</description>
+      <content:encoded><![CDATA[Die Linienführung der Linie 68A wird im Bereich der Filmteichstraße angepasst.<br/>[Seit 23.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[52A/43B/52B: Ulmenstraße]]></title>
