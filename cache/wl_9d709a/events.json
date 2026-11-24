@@ -1022,6 +1022,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "N8: Polizeieinsatz",
+    "description": "Linie N8: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "6c974967da518882609007a1fe052da514b6b8570c2d08aacca8c047b0fb3f94",
+    "pubDate": "2026-11-24T03:59:00+01:00",
+    "starts_at": "2026-11-24T03:59:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=N8|D=2026-11-24|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261124-0001"
+    ],
+    "_incident_start": "2026-11-24T03:59:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
