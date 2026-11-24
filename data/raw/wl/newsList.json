@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_629, ftazW_481, ftazW_80, ftazW_1016545, ftazW_1018063, ftazW_81, ftazW_739, ftazW_1017627, ftazW_478, ftazW_604, ftazW_479, ftazW_725, ftazW_740, ftazW_1016611, ftazW_529, ftazW_1016925, ftazW_1016592, ftazW_1354573, ftazW_475, ftazW_528, ftazW_1016926, ftazW_1016593, ftazW_1354391"
+    "trafficInfoNameList": "ftazW_629, ftazW_481, ftazW_80, ftazW_1016545, ftazW_1018063, ftazW_81, ftazW_739, ftazW_1017627, ftazW_478, ftazW_604, ftazW_479, ftazW_725, ftazW_740, ftazW_1016611, ftazW_529, ftazW_1016925, ftazW_1016592, ftazW_1354573, ftazW_475, ftazW_528, ftazW_1016926, ftazW_1016593, ftazW_1354391, ftazW_583, ftazW_166, ftazW_1016542, ftazW_1017125, ftazW_1016923, ftazW_580"
    }
   ],
   "poiCategoryGroups": [
@@ -3099,6 +3099,43 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "27.11.2026 00:45",
+     "ausVon": "26.11.2026 20:45",
+     "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Hietzinger Kai, Hadikgasse",
+     "rbls": [
+      4405
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Unter St.Veit",
+     "status": "geplante Wartung",
+     "towards": "U4 Heiligenstadt"
+    },
+    "description": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Hietzinger Kai, Hadikgasse",
+    "elevatorId": "UV 01",
+    "name": "ftazW_1016542",
+    "parentName": "ftazW_1016542",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4405
+    ],
+    "time": {
+     "end": "2026-11-27T00:45:00.000+0100",
+     "start": "2026-11-26T20:45:00.000+0100"
+    },
+    "title": "Unter St.Veit"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "24.11.2026 05:15",
      "ausVon": "24.11.2026 01:15",
      "location": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Preindlsteig",
@@ -3253,6 +3290,51 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "27.11.2026 00:45",
+     "ausVon": "26.11.2026 20:45",
+     "location": "1 Bahnsteig Richtung Prater Hauptallee, 62 und Badner Bahn Bahnsteig Richtung Oper, Karlsplatz - Ausgang Laurenzgasse",
+     "rbls": [
+      1751,
+      1751,
+      1714
+     ],
+     "reason": "",
+     "relatedLines": [
+      "62",
+      "1",
+      "LB"
+     ],
+     "station": "Laurenzgasse",
+     "status": "geplante Wartung",
+     "towards": "1 Prater Hauptallee, 62 Kärntner Ring, Oper/Karlsplatz U, WLB Baden"
+    },
+    "description": "1 Bahnsteig Richtung Prater Hauptallee, 62 und Badner Bahn Bahnsteig Richtung Oper, Karlsplatz - Ausgang Laurenzgasse",
+    "elevatorId": "LG 01",
+    "name": "ftazW_1016923",
+    "parentName": "ftazW_1016923",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "62",
+     "1",
+     "LB"
+    ],
+    "relatedStops": [
+     1751,
+     1751,
+     1714
+    ],
+    "time": {
+     "end": "2026-11-27T00:45:00.000+0100",
+     "start": "2026-11-26T20:45:00.000+0100"
+    },
+    "title": "Laurenzgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "26.11.2026 00:45",
      "ausVon": "25.11.2026 20:45",
      "location": "6 Bahnsteig Richtung Geiereckstraße, 18 Bahnsteig Richtung Schlachthausgasse, 62 und Badner Bahn Bahnsteig Richtung Kärnter Ring / Oper - Ausgang Eichenstraße",
@@ -3346,6 +3428,42 @@
      "start": "2026-11-26T01:15:00.000+0100"
     },
     "title": "Eichenstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "27.11.2026 00:45",
+     "ausVon": "26.11.2026 20:45",
+     "location": "Passage - Ausgang Secession",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U2",
+      "U1",
+      "U4"
+     ],
+     "station": "Karlsplatz",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Passage - Ausgang Secession",
+    "elevatorId": "KP 07",
+    "name": "ftazW_1017125",
+    "parentName": "ftazW_1017125",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2",
+     "U1",
+     "U4"
+    ],
+    "time": {
+     "end": "2026-11-27T00:45:00.000+0100",
+     "start": "2026-11-26T20:45:00.000+0100"
+    },
+    "title": "Karlsplatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3503,6 +3621,45 @@
      "start": "2026-11-25T20:45:00.000+0100"
     },
     "title": "Tscherttegasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "27.11.2026 00:45",
+     "ausVon": "26.11.2026 20:45",
+     "location": "U3 Mittelbahnsteig - Zwischengeschoss - Ausgang Markhofgasse",
+     "rbls": [
+      4916,
+      4901
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Schlachthausgasse",
+     "status": "geplante Wartung",
+     "towards": "U3 beide Richtungen"
+    },
+    "description": "U3 Mittelbahnsteig - Zwischengeschoss - Ausgang Markhofgasse",
+    "elevatorId": "SG 01",
+    "name": "ftazW_166",
+    "parentName": "ftazW_166",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedStops": [
+     4916,
+     4901
+    ],
+    "time": {
+     "end": "2026-11-27T00:45:00.000+0100",
+     "start": "2026-11-26T20:45:00.000+0100"
+    },
+    "title": "Schlachthausgasse"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3725,6 +3882,72 @@
      "start": "2026-11-25T20:45:00.000+0100"
     },
     "title": "Neue Donau"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "27.11.2026 00:45",
+     "ausVon": "26.11.2026 20:45",
+     "location": "Karlsplatzpassage - U2 Bahnsteig Fahrtrichtung Seestadt",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [],
+     "station": "Karlsplatz",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Karlsplatzpassage - U2 Bahnsteig Fahrtrichtung Seestadt",
+    "elevatorId": "KP 02",
+    "name": "ftazW_580",
+    "parentName": "ftazW_580",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "time": {
+     "end": "2026-11-27T00:45:00.000+0100",
+     "start": "2026-11-26T20:45:00.000+0100"
+    },
+    "title": "Karlsplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "27.11.2026 00:45",
+     "ausVon": "26.11.2026 20:45",
+     "location": "U4 Mittelbahnsteig - Ausgang Gussenbauergasse",
+     "rbls": [
+      4433,
+      4404
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Friedensbrücke",
+     "status": "geplante Wartung",
+     "towards": "U4 beide Richtungen"
+    },
+    "description": "U4 Mittelbahnsteig - Ausgang Gussenbauergasse",
+    "elevatorId": "FB 01",
+    "name": "ftazW_583",
+    "parentName": "ftazW_583",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4433,
+     4404
+    ],
+    "time": {
+     "end": "2026-11-27T00:45:00.000+0100",
+     "start": "2026-11-26T20:45:00.000+0100"
+    },
+    "title": "Friedensbrücke"
    },
    {
     "alertCause": "undefined alert cause",
