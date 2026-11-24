@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261124-0021, I20261124-0015-F01, I20260925-0011, I20260909-0007, I20261124-0017-F01, I20261124-0020, I20261020-0029, I20261124-0018-F01, I20261124-0018-F02, I20261124-0018-F04"
+    "trafficInfoNameList": "I20261124-0021, I20260925-0011, I20260909-0007, I20261124-0020, I20261020-0029, I20261124-0018-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1883-101, R1882-101, R1881-101, R1875-101, R1876-101, R1884-101, R1880-101, R2373-125, R2373-127, R2373-126, R3886-480, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2558-125, R2379-627, R2380-627, R2345-127, R293-474, R318-437, R1974-466, R1199-205, R500-101, R5587-0, R2931-0, R2236-0, R2930-0, R3190-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1884-101, R1883-101, R2373-125, R2373-127, R2373-126, R3886-480, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2558-125, R2379-627, R2380-627, R293-474, R318-437, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,100 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "42": "ptTram"
-     }
-    },
-    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 42: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 42: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "42: Falschparker"
-      }
-     }
-    ],
-    "name": "I20261124-0015-F01",
-    "owner": "WL",
-    "parentName": "I20261124-0015",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 142,
-      "lineName": "42",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     3876
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-24T09:33:00.000+0100",
-     "lastUpdate": "2026-11-24T09:33:00.000+0100",
-     "resume": "2026-11-24T09:33:00.000+0100",
-     "start": "2026-11-24T09:12:00.000+0100"
-    },
-    "title": "42: Falschparker"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "73B": "ptBusCity"
-     }
-    },
-    "description": "Linie 73B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 73B: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 73B: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 73B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "73B: Schadhafter PKW"
-      }
-     }
-    ],
-    "location": "Etrichstraße 40",
-    "name": "I20261124-0017-F01",
-    "owner": "WL",
-    "parentName": "I20261124-0017",
-    "priority": "1",
-    "reasonId": 18,
-    "reasonName": "Schadhafter PKW",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "73B"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 273,
-      "lineName": "73B",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-24T10:01:00.000+0100",
-     "lastUpdate": "2026-11-24T10:01:00.000+0100",
-     "resume": "2026-11-24T10:01:00.000+0100",
-     "start": "2026-11-24T09:39:00.000+0100"
-    },
-    "title": "73B: Schadhafter PKW"
-   },
-   {
     "alertCause": "level crossing failure",
     "alertCauseId": 40,
     "attributes": {
@@ -309,98 +215,6 @@
      "start": "2026-11-24T09:45:00.000+0100"
     },
     "title": "16A: Störung an einem Bahnübergang"
-   },
-   {
-    "alertCause": "level crossing failure",
-    "alertCauseId": 40,
-    "attributes": {
-     "relatedLineTypes": {
-      "17A": "ptBusCity"
-     }
-    },
-    "description": "Linie 17A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 17A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 17A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 17A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "17A: Störung an einem Bahnübergang"
-      }
-     }
-    ],
-    "location": "Himberger Straße",
-    "name": "I20261124-0018-F02",
-    "owner": "WL",
-    "parentName": "I20261124-0018",
-    "priority": "1",
-    "reasonId": 42,
-    "reasonName": "Störung an einem Bahnübergang",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "17A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 417,
-      "lineName": "17A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-24T09:54:00.000+0100",
-     "lastUpdate": "2026-11-24T09:54:00.000+0100",
-     "resume": "2026-11-24T09:54:00.000+0100",
-     "start": "2026-11-24T09:45:00.000+0100"
-    },
-    "title": "17A: Störung an einem Bahnübergang"
-   },
-   {
-    "alertCause": "level crossing failure",
-    "alertCauseId": 40,
-    "attributes": {
-     "relatedLineTypes": {
-      "67B": "ptBusCity"
-     }
-    },
-    "description": "Linie 67B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 67B: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 67B: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 67B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "67B: Störung an einem Bahnübergang"
-      }
-     }
-    ],
-    "location": "Himberger Straße",
-    "name": "I20261124-0018-F04",
-    "owner": "WL",
-    "parentName": "I20261124-0018",
-    "priority": "1",
-    "reasonId": 42,
-    "reasonName": "Störung an einem Bahnübergang",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "67B"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 267,
-      "lineName": "67B",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-24T09:54:00.000+0100",
-     "lastUpdate": "2026-11-24T09:54:00.000+0100",
-     "resume": "2026-11-24T09:54:00.000+0100",
-     "start": "2026-11-24T09:45:00.000+0100"
-    },
-    "title": "67B: Störung an einem Bahnübergang"
    },
    {
     "alertCause": "defective vehicle",
@@ -701,26 +515,6 @@
      "start": "2026-11-24T04:40:05.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Signalstörung",
-    "name": "R2236-0",
-    "owner": "WL",
-    "parentName": "R2236-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2236
-    ],
-    "time": {
-     "end": "2026-11-24T10:44:00.000+0100",
-     "start": "2026-11-24T09:45:07.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Signalstörung"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1070,46 +864,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Signalstörung",
-    "name": "R2930-0",
-    "owner": "WL",
-    "parentName": "R2930-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2930
-    ],
-    "time": {
-     "end": "2026-11-24T10:44:00.000+0100",
-     "start": "2026-11-24T09:45:07.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Signalstörung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Signalstörung",
-    "name": "R2931-0",
-    "owner": "WL",
-    "parentName": "R2931-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2931
-    ],
-    "time": {
-     "end": "2026-11-24T10:44:00.000+0100",
-     "start": "2026-11-24T09:45:07.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Signalstörung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -1129,26 +883,6 @@
      "start": "2026-11-24T00:00:23.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Signalstörung",
-    "name": "R3190-0",
-    "owner": "WL",
-    "parentName": "R3190-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     3190
-    ],
-    "time": {
-     "end": "2026-11-24T10:44:00.000+0100",
-     "start": "2026-11-24T09:45:08.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Signalstörung"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1218,26 +952,6 @@
      "start": "2026-11-24T05:00:06.000+0100"
     },
     "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Signalstörung",
-    "name": "R5587-0",
-    "owner": "WL",
-    "parentName": "R5587-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     5587
-    ],
-    "time": {
-     "end": "2026-11-24T10:44:00.000+0100",
-     "start": "2026-11-24T09:45:07.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Signalstörung"
    },
    {
     "alertCause": "undefined alert cause",
