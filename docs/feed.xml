@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 24 Nov 2026 12:30:46 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2026 13:00:48 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[10/60: Gleisschaden]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">040736deee4e92ed10584d318e7707fbd0af05db3aa57e249e9abe987a319610</guid>
+      <pubDate>Tue, 24 Nov 2026 12:32:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 24 Nov 2026 13:00:48 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 24 Nov 2026 12:32:00 +0100</ext:starts_at>
+      <description>10: Betrieb nur Dornbach – Hietzing; 60: Kein Betrieb Hofwiesengasse – Hietzing. Voraussichtlich bis 14:00 Uhr. [Seit 12:32]</description>
+      <content:encoded><![CDATA[10: Betrieb nur Dornbach – Hietzing; 60: Kein Betrieb Hofwiesengasse – Hietzing. Voraussichtlich bis 14:00 Uhr.<br/>[Seit 12:32]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[40/41: Falschparker]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -19,9 +32,9 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Tue, 24 Nov 2026 12:11:00 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 24 Nov 2026 12:11:00 +0100</ext:starts_at>
-      <description>Umleitungen: 40 Währinger Straße, Volksoper – Gersthof; 41 Währinger Straße, Volksoper – Gersthof. Voraussichtlich bis 12:40 Uhr. [Seit 12:11]</description>
-      <content:encoded><![CDATA[Umleitungen: 40 Währinger Straße, Volksoper – Gersthof; 41 Währinger Straße, Volksoper – Gersthof. Voraussichtlich bis 12:40 Uhr.<br/>[Seit 12:11]]]></content:encoded>
+      <ext:starts_at>Tue, 24 Nov 2026 12:22:19 +0100</ext:starts_at>
+      <description>Betrieb ab Gersthof; Umleitung ab Volksoper über Linien 42 und 9. [Seit 12:11]</description>
+      <content:encoded><![CDATA[Betrieb ab Gersthof; Umleitung ab Volksoper über Linien 42 und 9.<br/>[Seit 12:11]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U1: Schadhaftes Fahrzeug]]></title>
@@ -33,6 +46,7 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Tue, 24 Nov 2026 11:53:00 +0100</ext:first_seen>
       <ext:starts_at>Tue, 24 Nov 2026 11:53:00 +0100</ext:starts_at>
+      <ext:ends_at>Tue, 24 Nov 2026 13:15:00 +0100</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 11:53]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 11:53]]]></content:encoded>
     </item>
@@ -135,20 +149,6 @@
       <georss:point>48.222757 16.375308</georss:point>
       <description>Untere Augartenstraße 40 → Obere Augartenstraße 42. Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf. [Bis 11.12.]</description>
       <content:encoded><![CDATA[Untere Augartenstraße 40 → Obere Augartenstraße 42. Haltestellenverlegung der Linien 5A und N31 in Richtung Griegstraße bzw. Stammersdorf.<br/>[Bis 11.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Rabengasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">a283d0e2e437795796c0e7a743565b30ce8fddbc07070af76ea09899ed55a1e7</guid>
-      <pubDate>Wed, 11 Nov 2026 15:24:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 11 Nov 2026 15:24:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 16 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.194051 16.397614</georss:point>
-      <description>Landstraßer Hauptstraße 140 -144 → Landstraßer Hauptstraße gegenüber 146. Haltestellenverlegung der Linie 74A in Richtung St. Marx. Grund: Straßenbau. [Seit 16.11.]</description>
-      <content:encoded><![CDATA[Landstraßer Hauptstraße 140 -144 → Landstraßer Hauptstraße gegenüber 146. Haltestellenverlegung der Linie 74A in Richtung St. Marx. Grund: Straßenbau.<br/>[Seit 16.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
