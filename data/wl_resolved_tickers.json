@@ -2,5 +2,26 @@
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
- "owners": {}
+ "owners": {
+  "R314-102|2026-11-24T07:44:22.000+0100": {
+   "incident": "I20261124-0007",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
+  "R315-102|2026-11-24T07:44:22.000+0100": {
+   "incident": "I20261124-0007",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
+  "R316-102|2026-11-24T07:44:22.000+0100": {
+   "incident": "I20261124-0007",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
+  "R317-102|2026-11-24T07:44:22.000+0100": {
+   "incident": "I20261124-0007",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
+  "R318-102|2026-11-24T07:44:22.000+0100": {
+   "incident": "I20261124-0007",
+   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  }
+ }
 }

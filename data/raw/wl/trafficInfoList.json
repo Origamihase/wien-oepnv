@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261124-0004, I20260925-0011, I20260909-0007, I20261124-0002-F01, I20261124-0006-F01, I20261020-0029"
+    "trafficInfoNameList": "I20261124-0006-F01, I20261124-0009, I20260925-0011, I20261124-0008, I20261124-0002-F01, I20260909-0007, I20261124-0007-F01, I20261124-0004, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1883-101, R1882-101, R2345-127, R2373-126, R2558-125, R2379-627, R2380-627, R3886-480, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R293-474, R318-437, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R2373-125, R2373-127, R2373-126, R2345-127, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2558-125, R2379-627, R2380-627, R3886-480, R318-437, R293-474, R1974-466, R1199-205, R500-101, R315-102, R314-102, R318-102, R317-102, R316-102, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -207,11 +207,12 @@
       "vehicleType": "ptTram"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-24T05:39:00.000+0100",
-     "lastUpdate": "2026-11-24T05:39:00.000+0100",
-     "resume": "2026-11-24T05:39:00.000+0100",
+     "end": "2026-11-24T07:58:00.000+0100",
+     "lastUpdate": "2026-11-24T07:58:00.000+0100",
+     "resume": "2026-11-24T07:58:00.000+0100",
      "start": "2026-11-24T05:29:00.000+0100"
     },
     "title": "49: Rettungseinsatz"
@@ -252,10 +253,12 @@
       "vehicleType": "ptMetro"
      }
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
      "created": "2026-11-24T06:46:00.000+0100",
-     "lastUpdate": "2026-11-24T06:46:00.000+0100",
+     "end": "2026-11-24T07:59:00.000+0100",
+     "lastUpdate": "2026-11-24T07:59:00.000+0100",
+     "resume": "2026-11-24T07:59:00.000+0100",
      "start": "2026-11-24T06:46:00.000+0100"
     },
     "title": "U1: Schadhaftes Fahrzeug"
@@ -302,11 +305,154 @@
     "status": "active",
     "time": {
      "created": "2026-11-24T07:06:00.000+0100",
-     "lastUpdate": "2026-11-24T07:06:00.000+0100",
-     "resume": "2026-11-24T07:06:00.000+0100",
+     "end": "2026-11-24T08:10:00.000+0100",
+     "lastUpdate": "2026-11-24T07:46:00.000+0100",
      "start": "2026-11-24T07:04:00.000+0100"
     },
     "title": "U3: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "2": "ptTram"
+     }
+    },
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "2: Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261124-0007-F01",
+    "owner": "WL",
+    "parentName": "I20261124-0007",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 102,
+      "lineName": "2",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     314
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-24T07:54:00.000+0100",
+     "lastUpdate": "2026-11-24T07:54:00.000+0100",
+     "resume": "2026-11-24T07:54:00.000+0100",
+     "start": "2026-11-24T07:43:00.000+0100"
+    },
+    "title": "2: Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "12A": "ptBusCity",
+      "14A": "ptBusCity"
+     }
+    },
+    "description": "Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "<p>Linie 12A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Verkehrsunfall.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 12A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Verkehrsunfall.</p>",
+       "descriptionPlain": "Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+       "title": "12A, 14A: Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261124-0008",
+    "owner": "WL",
+    "parentName": "I20261124-0008",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12A",
+     "14A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 412,
+      "lineName": "12A",
+      "vehicleType": "ptBusCity"
+     },
+     {
+      "lineId": 414,
+      "lineName": "14A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-24T07:49:00.000+0100",
+     "lastUpdate": "2026-11-24T07:49:00.000+0100",
+     "start": "2026-11-24T07:49:00.000+0100"
+    },
+    "title": "12A, 14A: Verkehrsunfall"
+   },
+   {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "11": "ptTram"
+     }
+    },
+    "description": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p><strong>Linie 11:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><strong>Linie 11:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.</p><p>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "11: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261124-0009",
+    "owner": "WL",
+    "parentName": "I20261124-0009",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 111,
+      "lineName": "11",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-24T07:57:00.000+0100",
+     "lastUpdate": "2026-11-24T07:57:00.000+0100",
+     "start": "2026-11-24T07:57:00.000+0100"
+    },
+    "title": "11: Verkehrsüberlastung"
    },
    {
     "alertCause": "undefined alert cause",
@@ -859,6 +1005,121 @@
      "start": "2026-11-24T00:00:23.000+0100"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R314-102",
+    "owner": "WL",
+    "parentName": "R314-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     314
+    ],
+    "time": {
+     "end": "2026-11-24T08:43:00.000+0100",
+     "start": "2026-11-24T07:44:22.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R315-102",
+    "owner": "WL",
+    "parentName": "R315-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     315
+    ],
+    "time": {
+     "end": "2026-11-24T08:43:00.000+0100",
+     "start": "2026-11-24T07:44:22.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R316-102",
+    "owner": "WL",
+    "parentName": "R316-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     316
+    ],
+    "time": {
+     "end": "2026-11-24T08:43:00.000+0100",
+     "start": "2026-11-24T07:44:22.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R317-102",
+    "owner": "WL",
+    "parentName": "R317-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     317
+    ],
+    "time": {
+     "end": "2026-11-24T08:43:00.000+0100",
+     "start": "2026-11-24T07:44:22.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "name": "R318-102",
+    "owner": "WL",
+    "parentName": "R318-102",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "2"
+    ],
+    "relatedStops": [
+     318
+    ],
+    "time": {
+     "end": "2026-11-24T08:43:00.000+0100",
+     "start": "2026-11-24T07:44:22.000+0100"
+    },
+    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
