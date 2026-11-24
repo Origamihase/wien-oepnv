@@ -3,21 +3,9 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R1012-125|2026-11-24T17:14:20.000+0100": {
-   "incident": "I20261124-0044",
-   "title": "Rettungseinsatz\nBetrieb nur bis Kagran"
-  },
-  "R1013-125|2026-11-24T17:14:20.000+0100": {
-   "incident": "I20261124-0044",
-   "title": "Rettungseinsatz\nBetrieb nur bis Kagran"
-  },
-  "R1015-125|2026-11-24T17:14:20.000+0100": {
-   "incident": "I20261124-0044",
-   "title": "Rettungseinsatz\nBetrieb nur bis Kagran"
-  },
-  "R1021-125|2026-11-24T17:14:20.000+0100": {
-   "incident": "I20261124-0044",
-   "title": "Rettungseinsatz\nBetrieb nur bis Kagran"
+  "R116-136|2026-11-24T18:00:52.000+0100": {
+   "incident": "I20261124-0045",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
   },
   "R13-136|2026-11-24T17:51:21.000+0100": {
    "incident": "I20261124-0045",
@@ -43,45 +31,25 @@
    "incident": "I20261124-0045",
    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
   },
-  "R2634-125|2026-11-24T17:14:21.000+0100": {
-   "incident": "I20261124-0044",
-   "title": "Rettungseinsatz\nBetrieb nur bis Kagran"
+  "R18-136|2026-11-24T18:00:52.000+0100": {
+   "incident": "I20261124-0045",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
   },
-  "R2736-126|2026-11-24T17:17:52.000+0100": {
-   "incident": "I20261124-0044",
-   "title": "Rettungseinsatz\nBetrieb nur bis Zanggasse"
+  "R18-171|2026-11-24T18:00:52.000+0100": {
+   "incident": "I20261124-0045",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
   },
-  "R2737-126|2026-11-24T17:17:52.000+0100": {
-   "incident": "I20261124-0044",
-   "title": "Rettungseinsatz\nBetrieb nur bis Zanggasse"
+  "R19-136|2026-11-24T18:00:52.000+0100": {
+   "incident": "I20261124-0045",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
   },
-  "R2861-125|2026-11-24T17:15:51.000+0100": {
-   "incident": "I20261124-0044",
-   "title": "Rettungseinsatz\nBetrieb nur bis Berresgasse"
+  "R19-171|2026-11-24T18:00:52.000+0100": {
+   "incident": "I20261124-0045",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
   },
-  "R2862-125|2026-11-24T17:15:51.000+0100": {
-   "incident": "I20261124-0044",
-   "title": "Rettungseinsatz\nBetrieb nur bis Berresgasse"
-  },
-  "R2863-125|2026-11-24T17:15:51.000+0100": {
-   "incident": "I20261124-0044",
-   "title": "Rettungseinsatz\nBetrieb nur bis Berresgasse"
-  },
-  "R2864-125|2026-11-24T17:15:51.000+0100": {
-   "incident": "I20261124-0044",
-   "title": "Rettungseinsatz\nBetrieb nur bis Berresgasse"
-  },
-  "R2865-125|2026-11-24T17:15:51.000+0100": {
-   "incident": "I20261124-0044",
-   "title": "Rettungseinsatz\nBetrieb nur bis Berresgasse"
-  },
-  "R2874-125|2026-11-24T17:15:51.000+0100": {
-   "incident": "I20261124-0044",
-   "title": "Rettungseinsatz\nBetrieb nur bis Berresgasse"
-  },
-  "R3009-126|2026-11-24T17:17:51.000+0100": {
-   "incident": "I20261124-0044",
-   "title": "Rettungseinsatz\nBetrieb nur bis Zanggasse"
+  "R2160-131|2026-11-24T18:12:26.000+0100": {
+   "incident": "I20261124-0047",
+   "title": "Rettungseinsatz\nEinstieg bei Linie 1"
   },
   "R81-136|2026-11-24T17:51:21.000+0100": {
    "incident": "I20261124-0045",
@@ -90,10 +58,6 @@
   "R81-171|2026-11-24T17:50:51.000+0100": {
    "incident": "I20261124-0045",
    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R966-125|2026-11-24T17:14:20.000+0100": {
-   "incident": "I20261124-0044",
-   "title": "Rettungseinsatz\nBetrieb nur bis Kagran"
   }
  }
 }
