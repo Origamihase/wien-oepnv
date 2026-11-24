@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-24T17:31:03.058680+00:00",
- "built": "2026-11-24T18:30:51+01:00",
+ "updated": "2026-11-24T18:01:03.651015+00:00",
+ "built": "2026-11-24T19:00:49+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-24T18:30:51+01:00",
+  "built": "2026-11-24T19:00:49+01:00",
   "items": [
    {
     "title": "31: Rettungseinsatz",
@@ -21,24 +21,8 @@
     "time_line": "Seit 17:50"
    },
    {
-    "title": "26A: Rettungseinsatz",
-    "time_line": "Seit 17:21"
-   },
-   {
-    "title": "25/26: Rettungseinsatz",
+    "title": "25: Rettungseinsatz",
     "time_line": "Seit 17:17"
-   },
-   {
-    "title": "16A/17A/67A/67B: Störung an einem Bahnübergang",
-    "time_line": "Seit 17:01"
-   },
-   {
-    "title": "24A: Verkehrsunfall",
-    "time_line": "Seit 16:53"
-   },
-   {
-    "title": "11A: Verkehrsunfall",
-    "time_line": "Seit 15:45"
    },
    {
     "title": "60: Gleisschaden",
@@ -47,31 +31,27 @@
    {
     "title": "7A: Antonsplatz",
     "time_line": "Bis Mi 25.11."
+   },
+   {
+    "title": "8A/58A/58B: Küniglberg, ORF-Zentrum",
+    "time_line": "Ab Mi 25.11."
+   },
+   {
+    "title": "68A: Geänderte Linienführung",
+    "time_line": "Seit 23.11."
+   },
+   {
+    "title": "48A: Klinik Penzing",
+    "time_line": "Ab Mi 25.11. bis 17.12."
+   },
+   {
+    "title": "52A/43B/52B: Ulmenstraße",
+    "time_line": "Seit 23.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-17T18:01:00.280533+00:00",
-   "raw": {
-    "wl-stoerungen": 49,
-    "wl-hinweise": 95,
-    "oebb": 175,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 25,
-    "oebb": 151,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 8,
-    "wl": 90
-   }
-  },
   {
    "t": "2026-11-17T18:30:48.450892+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 13,
     "wl": 95
    }
+  },
+  {
+   "t": "2026-11-24T18:01:03.651015+00:00",
+   "raw": {
+    "wl-stoerungen": 45,
+    "wl-hinweise": 97,
+    "oebb": 177,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 25,
+    "oebb": 150,
+    "baustellen": 58
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 13,
+    "wl": 87
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-24T17:31:03.058680+00:00"
+   "last_ok": "2026-11-24T18:01:03.651015+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-24T17:31:03.058680+00:00"
+   "last_ok": "2026-11-24T18:01:03.651015+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-24T17:31:03.058680+00:00"
+   "last_ok": "2026-11-24T18:01:03.651015+00:00"
   }
  }
 }

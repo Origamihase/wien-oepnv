@@ -3,61 +3,9 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R116-136|2026-11-24T18:00:52.000+0100": {
-   "incident": "I20261124-0045",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R13-136|2026-11-24T17:51:21.000+0100": {
-   "incident": "I20261124-0045",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R13-171|2026-11-24T17:50:51.000+0100": {
-   "incident": "I20261124-0045",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R14-136|2026-11-24T17:51:21.000+0100": {
-   "incident": "I20261124-0045",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R14-171|2026-11-24T17:50:51.000+0100": {
-   "incident": "I20261124-0045",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R15-136|2026-11-24T17:51:21.000+0100": {
-   "incident": "I20261124-0045",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R15-171|2026-11-24T17:50:51.000+0100": {
-   "incident": "I20261124-0045",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R18-136|2026-11-24T18:00:52.000+0100": {
-   "incident": "I20261124-0045",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R18-171|2026-11-24T18:00:52.000+0100": {
-   "incident": "I20261124-0045",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R19-136|2026-11-24T18:00:52.000+0100": {
-   "incident": "I20261124-0045",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R19-171|2026-11-24T18:00:52.000+0100": {
-   "incident": "I20261124-0045",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
   "R2160-131|2026-11-24T18:12:26.000+0100": {
    "incident": "I20261124-0047",
    "title": "Rettungseinsatz\nEinstieg bei Linie 1"
-  },
-  "R81-136|2026-11-24T17:51:21.000+0100": {
-   "incident": "I20261124-0045",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R81-171|2026-11-24T17:50:51.000+0100": {
-   "incident": "I20261124-0045",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
   }
  }
 }
