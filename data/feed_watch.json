@@ -1,13 +1,21 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-24T07:30:53.183507+00:00",
- "built": "2026-11-24T08:30:42+01:00",
+ "updated": "2026-11-24T08:00:59.555662+00:00",
+ "built": "2026-11-24T09:00:49+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-24T08:30:42+01:00",
+  "built": "2026-11-24T09:00:49+01:00",
   "items": [
+   {
+    "title": "U6: Polizeieinsatz",
+    "time_line": "Seit 08:52"
+   },
+   {
+    "title": "37/38/40/41/42: Schadhaftes Fahrzeug",
+    "time_line": "Seit 08:38"
+   },
    {
     "title": "4A/10A/59A/63A: Verkehrsüberlastung",
     "time_line": "Seit 08:19"
@@ -33,65 +41,17 @@
     "time_line": "Bis Mi 25.11."
    },
    {
-    "title": "8A/58A/58B: Küniglberg, ORF-Zentrum, ORF Zentrum",
-    "time_line": "Seit 16.11."
+    "title": "8A/58A/58B: Küniglberg, ORF-Zentrum",
+    "time_line": "Ab Mi 25.11."
    },
    {
     "title": "68A: Geänderte Linienführung",
-    "time_line": "Seit 23.11."
-   },
-   {
-    "title": "48A: Klinik Penzing",
-    "time_line": "Ab Mi 25.11. bis 17.12."
-   },
-   {
-    "title": "52A/43B/52B: Ulmenstraße",
     "time_line": "Seit 23.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-17T07:30:57.103004+00:00",
-   "raw": {
-    "wl-stoerungen": 61,
-    "wl-hinweise": 91,
-    "oebb": 171,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 24,
-    "oebb": 148,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 6,
-    "wl": 86
-   }
-  },
-  {
-   "t": "2026-11-17T08:00:53.524304+00:00",
-   "raw": {
-    "wl-stoerungen": 94,
-    "wl-hinweise": 91,
-    "oebb": 171,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 25,
-    "oebb": 148,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 6,
-    "wl": 102
-   }
-  },
   {
    "t": "2026-11-17T08:30:58.356006+00:00",
    "raw": {
@@ -6791,17 +6751,37 @@
     "oebb": 11,
     "wl": 89
    }
+  },
+  {
+   "t": "2026-11-24T08:00:59.555662+00:00",
+   "raw": {
+    "wl-stoerungen": 71,
+    "wl-hinweise": 95,
+    "oebb": 163,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 25,
+    "oebb": 138,
+    "baustellen": 58
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 11,
+    "wl": 94
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-24T07:30:53.183507+00:00"
+   "last_ok": "2026-11-24T08:00:59.555662+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-24T07:30:53.183507+00:00"
+   "last_ok": "2026-11-24T08:00:59.555662+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-24T07:30:53.183507+00:00"
+   "last_ok": "2026-11-24T08:00:59.555662+00:00"
   }
  }
 }
