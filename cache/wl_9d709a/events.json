@@ -650,22 +650,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "16A: Störung an einem Bahnübergang",
-    "description": "Linie 16A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "78cfc305e07fdf703edca3374236eb576bf584080a19450b6f7f78fade7ec1e8",
-    "pubDate": "2026-11-24T09:45:00+01:00",
-    "starts_at": "2026-11-24T09:45:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=16A|D=2026-11-24|TK=16a störung an einem bahnübergang",
-    "_wl_ids": [
-      "I20261124-0018"
-    ],
-    "_incident_start": "2026-11-24T09:45:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -954,34 +938,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U2: Verspätungen",
-    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "title": "U1: Schadhaftes Fahrzeug",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "1a8c5ac23197d9454e26b35fea58b6015cacd04ee11d468a3abaf8d3554000c1",
-    "pubDate": "2026-11-24T10:13:00+01:00",
-    "starts_at": "2026-11-24T10:13:00+01:00",
+    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
+    "pubDate": "2026-11-24T11:53:00+01:00",
+    "starts_at": "2026-11-24T11:53:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=U2|D=2026-11-24|TK=u2 verspätungen",
+    "_identity": "wl|störung|L=U1|D=2026-11-24|TK=u1 schadhaftes fahrzeug",
     "_wl_ids": [
-      "I20261124-0020"
+      "I20261124-0023"
     ],
-    "_incident_start": "2026-11-24T10:13:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U6: Weichenstörung",
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "861eb589822612a9402ffcc15457641ff4cf74d6a9632da81a7b59b0d8e8dda0",
-    "pubDate": "2026-11-24T10:20:00+01:00",
-    "starts_at": "2026-11-24T10:20:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U6|D=2026-11-24|TK=u6 weichenstörung",
-    "_wl_ids": [
-      "I20261124-0021"
-    ],
-    "_incident_start": "2026-11-24T10:20:00+01:00"
+    "_incident_start": "2026-11-24T11:53:00+01:00"
   },
   {
     "source": "Wiener Linien",
