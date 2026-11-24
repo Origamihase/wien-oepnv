@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261124-0024-F01, I20261124-0024-F02, I20260925-0011, I20261124-0025, I20260909-0007, I20261020-0029, I20261124-0026-F01"
+    "trafficInfoNameList": "I20261124-0024-F01, I20261124-0024-F02, I20261124-0025, I20260925-0011, I20261124-0027-F01, I20260909-0007, I20261020-0029, I20261124-0026-F01-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R401-101, R1875-101, R1876-101, R1880-101, R1881-101, R1884-101, R1883-101, R1882-101, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2345-127, R2380-627, R2379-627, R2378-627, R2343-626, R3886-480, R2558-125, R318-437, R293-474, R1974-466, R1199-205, R500-101, R3468-110, R1610-110, R561-110, R562-110, R563-110, R564-110, R565-110, R566-110, R567-110, R568-110, R569-110, R570-110, R571-110, R575-110, R1626-160, R1630-160, R1629-160, R1628-160, R1634-160, R1607-160, R1625-160, R1627-160, R1633-160, R1632-160, R1631-160, R1610-160, R1548-160, R1537-160, R1535-160, R1532-160, R1536-160, R1531-160, R1598-110, R1597-110, R1599-110, R1604-110, R1605-110, R1602-110, R1603-110, R1614-160, R1612-160, R1613-160, R1611-160, R5611-160, R1636-160, R1637-160, R1639-160, R1638-160, R1615-160, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R401-101, R1881-101, R1875-101, R1876-101, R1880-101, R1884-101, R1883-101, R1882-101, R2378-627, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R3886-480, R2558-125, R2345-127, R2380-627, R2379-627, R2343-125, R293-474, R318-437, R1974-466, R1199-205, R500-101, R565-110, R1610-110, R561-110, R562-110, R563-110, R564-110, R3468-110, R566-110, R567-110, R568-110, R569-110, R570-110, R571-110, R575-110, R1632-160, R1634-160, R1607-160, R1625-160, R1626-160, R1627-160, R1628-160, R1629-160, R1630-160, R1631-160, R1633-160, R1537-160, R1548-160, R1610-160, R1535-160, R1532-160, R1531-160, R1536-160, R1604-110, R1603-110, R1602-110, R1605-110, R1636-160, R1637-160, R1638-160, R1639-160, R1615-160, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -271,13 +271,13 @@
       "60": "ptTram"
      }
     },
-    "description": "Linie 10: Betrieb nur zwischen Dornbach und Hietzing U. Linie 60: Kein Betrieb zwischen Hofwiesengasse und Hietzing U. Ersatz: Linien U4, 53A, 56A und 56B. Voraussichtliche Dauer: 14:00 Uhr. Grund: Gleisschaden im Bereich Hietzinger Hauptstraße # Am Platz.",
-    "descriptionHTML": "<p><strong>Linie 10:</strong><br>Betrieb nur zwischen Dornbach und Hietzing U.<br><strong>Linie 60:</strong><br>Kein Betrieb zwischen Hofwiesengasse und Hietzing U.</p><p>Ersatz: Linien U4, 53A, 56A und 56B.</p><p>Voraussichtliche Dauer: 14:00 Uhr.</p><p>Grund: Gleisschaden im Bereich Hietzinger Hauptstraße # Am Platz.</p>",
+    "description": "Linie 10: Betrieb nur zwischen Dornbach und Hietzing U. Linie 60: Kein Betrieb zwischen Hofwiesengasse und Hietzing U. Ersatz: Linien U4, 53A, 56A und 56B. Voraussichtliche Dauer: 15:00 Uhr. Grund: Gleisschaden im Bereich Hietzinger Hauptstraße # Am Platz.",
+    "descriptionHTML": "<p><strong>Linie 10:</strong><br>Betrieb nur zwischen Dornbach und Hietzing U.<br><strong>Linie 60:</strong><br>Kein Betrieb zwischen Hofwiesengasse und Hietzing U.</p><p>Ersatz: Linien U4, 53A, 56A und 56B.</p><p>Voraussichtliche Dauer: 15:00 Uhr.</p><p>Grund: Gleisschaden im Bereich Hietzinger Hauptstraße # Am Platz.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p><strong>Linie 10:</strong><br>Betrieb nur zwischen Dornbach und Hietzing U.<br><strong>Linie 60:</strong><br>Kein Betrieb zwischen Hofwiesengasse und Hietzing U.</p><p>Ersatz: Linien U4, 53A, 56A und 56B.</p><p>Voraussichtliche Dauer: 14:00 Uhr.</p><p>Grund: Gleisschaden im Bereich Hietzinger Hauptstraße # Am Platz.</p>",
-       "descriptionPlain": "Linie 10: Betrieb nur zwischen Dornbach und Hietzing U. Linie 60: Kein Betrieb zwischen Hofwiesengasse und Hietzing U. Ersatz: Linien U4, 53A, 56A und 56B. Voraussichtliche Dauer: 14:00 Uhr. Grund: Gleisschaden im Bereich Hietzinger Hauptstraße # Am Platz.",
+       "descriptionHtml": "<p><strong>Linie 10:</strong><br>Betrieb nur zwischen Dornbach und Hietzing U.<br><strong>Linie 60:</strong><br>Kein Betrieb zwischen Hofwiesengasse und Hietzing U.</p><p>Ersatz: Linien U4, 53A, 56A und 56B.</p><p>Voraussichtliche Dauer: 15:00 Uhr.</p><p>Grund: Gleisschaden im Bereich Hietzinger Hauptstraße # Am Platz.</p>",
+       "descriptionPlain": "Linie 10: Betrieb nur zwischen Dornbach und Hietzing U. Linie 60: Kein Betrieb zwischen Hofwiesengasse und Hietzing U. Ersatz: Linien U4, 53A, 56A und 56B. Voraussichtliche Dauer: 15:00 Uhr. Grund: Gleisschaden im Bereich Hietzinger Hauptstraße # Am Platz.",
        "title": "10, 60: Gleisschaden"
       }
      }
@@ -309,7 +309,7 @@
     "status": "active",
     "time": {
      "created": "2026-11-24T12:34:00.000+0100",
-     "lastUpdate": "2026-11-24T12:41:00.000+0100",
+     "lastUpdate": "2026-11-24T13:47:00.000+0100",
      "start": "2026-11-24T12:32:00.000+0100"
     },
     "title": "10, 60: Gleisschaden"
@@ -333,7 +333,7 @@
       }
      }
     ],
-    "name": "I20261124-0026-F01",
+    "name": "I20261124-0026-F01-F01",
     "owner": "WL",
     "parentName": "I20261124-0026",
     "priority": "1",
@@ -353,14 +353,63 @@
     "relatedStops": [
      4255
     ],
-    "status": "active",
+    "status": "resolved",
     "time": {
-     "created": "2026-11-24T13:25:00.000+0100",
-     "lastUpdate": "2026-11-24T13:25:00.000+0100",
-     "resume": "2026-11-24T13:25:00.000+0100",
+     "created": "2026-11-24T13:56:00.000+0100",
+     "end": "2026-11-24T13:59:00.000+0100",
+     "lastUpdate": "2026-11-24T13:59:00.000+0100",
+     "resume": "2026-11-24T13:59:00.000+0100",
      "start": "2026-11-24T13:23:00.000+0100"
     },
     "title": "U2: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U6: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261124-0027-F01",
+    "owner": "WL",
+    "parentName": "I20261124-0027",
+    "priority": "1",
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4639
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-24T13:38:00.000+0100",
+     "lastUpdate": "2026-11-24T13:38:00.000+0100",
+     "resume": "2026-11-24T13:38:00.000+0100",
+     "start": "2026-11-24T13:32:00.000+0100"
+    },
+    "title": "U6: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -526,75 +575,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nGleisschaden",
-    "name": "R1597-110",
-    "owner": "WL",
-    "parentName": "R1597-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     1597
-    ],
-    "time": {
-     "end": "2026-11-24T13:38:00.000+0100",
-     "start": "2026-11-24T12:38:53.000+0100"
-    },
-    "title": "Fahrtbehinderung\nGleisschaden"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nGleisschaden",
-    "name": "R1598-110",
-    "owner": "WL",
-    "parentName": "R1598-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     1598
-    ],
-    "time": {
-     "end": "2026-11-24T13:38:00.000+0100",
-     "start": "2026-11-24T12:38:53.000+0100"
-    },
-    "title": "Fahrtbehinderung\nGleisschaden"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nGleisschaden",
-    "name": "R1599-110",
-    "owner": "WL",
-    "parentName": "R1599-110",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedStops": [
-     1599
-    ],
-    "time": {
-     "end": "2026-11-24T13:38:00.000+0100",
-     "start": "2026-11-24T12:38:53.000+0100"
-    },
-    "title": "Fahrtbehinderung\nGleisschaden"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisschaden\nBetrieb ab Hietzing",
     "name": "R1602-110",
     "owner": "WL",
@@ -752,98 +732,6 @@
      "start": "2026-11-24T12:37:23.000+0100"
     },
     "title": "Gleisschaden\nBetrieb nur bis Hietzing"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Hofwiesengasse",
-    "name": "R1611-160",
-    "owner": "WL",
-    "parentName": "R1611-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1611
-    ],
-    "time": {
-     "end": "2026-11-24T13:44:00.000+0100",
-     "start": "2026-11-24T12:44:53.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Hofwiesengasse",
-    "name": "R1612-160",
-    "owner": "WL",
-    "parentName": "R1612-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1612
-    ],
-    "time": {
-     "end": "2026-11-24T13:44:00.000+0100",
-     "start": "2026-11-24T12:44:53.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Hofwiesengasse",
-    "name": "R1613-160",
-    "owner": "WL",
-    "parentName": "R1613-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1613
-    ],
-    "time": {
-     "end": "2026-11-24T13:44:00.000+0100",
-     "start": "2026-11-24T12:44:53.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Hofwiesengasse",
-    "name": "R1614-160",
-    "owner": "WL",
-    "parentName": "R1614-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1614
-    ],
-    "time": {
-     "end": "2026-11-24T13:44:00.000+0100",
-     "start": "2026-11-24T12:44:53.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1856,29 +1744,6 @@
      "start": "2026-11-24T12:35:22.000+0100"
     },
     "title": "Gleisschaden\nBetrieb nur bis Hietzing "
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Gleisschaden\nBetrieb ab Hofwiesengasse",
-    "name": "R5611-160",
-    "owner": "WL",
-    "parentName": "R5611-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     5611
-    ],
-    "time": {
-     "end": "2026-11-24T13:44:00.000+0100",
-     "start": "2026-11-24T12:44:55.000+0100"
-    },
-    "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
    },
    {
     "alertCause": "undefined alert cause",
