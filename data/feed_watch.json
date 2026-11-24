@@ -1,17 +1,13 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-24T21:00:53.444812+00:00",
- "built": "2026-11-24T22:00:47+01:00",
+ "updated": "2026-11-24T21:30:50.041756+00:00",
+ "built": "2026-11-24T22:30:42+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-24T22:00:47+01:00",
+  "built": "2026-11-24T22:30:42+01:00",
   "items": [
-   {
-    "title": "49: Gleisschaden",
-    "time_line": "Seit 19:37"
-   },
    {
     "title": "7A: Antonsplatz",
     "time_line": "Bis Mi 25.11."
@@ -47,51 +43,15 @@
    {
     "title": "98A: Arztgasse",
     "time_line": "Seit 16.11."
+   },
+   {
+    "title": "74A: Viehmarktgasse",
+    "time_line": "Seit 16.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-17T21:01:09.505707+00:00",
-   "raw": {
-    "wl-stoerungen": 44,
-    "wl-hinweise": 91,
-    "oebb": 177,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 25,
-    "oebb": 154,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 7,
-    "wl": 85
-   }
-  },
-  {
-   "t": "2026-11-17T21:30:45.044880+00:00",
-   "raw": {
-    "wl-stoerungen": 40,
-    "wl-hinweise": 91,
-    "oebb": 177,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 25,
-    "oebb": 154,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 7,
-    "wl": 82
-   }
-  },
   {
    "t": "2026-11-17T22:00:55.557021+00:00",
    "raw": {
@@ -6791,17 +6751,37 @@
     "oebb": 13,
     "wl": 83
    }
+  },
+  {
+   "t": "2026-11-24T21:30:50.041756+00:00",
+   "raw": {
+    "wl-stoerungen": 36,
+    "wl-hinweise": 91,
+    "oebb": 178,
+    "baustellen-linien": 47,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 23,
+    "oebb": 151,
+    "baustellen": 57
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 13,
+    "wl": 80
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-24T21:00:53.444812+00:00"
+   "last_ok": "2026-11-24T21:30:50.041756+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-24T21:00:53.444812+00:00"
+   "last_ok": "2026-11-24T21:30:50.041756+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-24T21:00:53.444812+00:00"
+   "last_ok": "2026-11-24T21:30:50.041756+00:00"
   }
  }
 }

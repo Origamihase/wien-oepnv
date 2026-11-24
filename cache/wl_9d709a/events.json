@@ -902,30 +902,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Fahrtbehinderung Gleisschaden",
-    "description": "Fahrtbehinderung\nGleisschaden",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "85835cde8c73431dd3602de13bb4b6af756943d7eae432bd2b990eec4c81cfbb",
-    "pubDate": "2026-11-24T19:43:34+01:00",
-    "starts_at": "2026-11-24T19:43:35+01:00",
-    "ends_at": "2026-11-24T22:15:00+01:00",
-    "_identity": "wl|störung|L=49|D=2026-11-24|TK=fahrtbehinderung gleisschaden"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "49: Gleisschaden Betrieb ab Baumgarten",
-    "description": "Gleisschaden\nBetrieb ab Baumgarten",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "af04726e569140fedafdc49555c38ab69b1f72167823d548ca6e2af3d6cc4331",
-    "pubDate": "2026-11-24T19:43:34+01:00",
-    "starts_at": "2026-11-24T19:43:35+01:00",
-    "ends_at": "2026-11-24T22:15:00+01:00",
-    "_identity": "wl|störung|L=49|D=2026-11-24|TK=gleisschaden betrieb ab baumgarten"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -994,17 +970,5 @@
     "starts_at": "2026-09-14T04:00:00+02:00",
     "ends_at": "2026-12-31T23:59:00+01:00",
     "_identity": "wl|störung|L=|D=2026-09-14|TK=sperre"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Haltestelle aufgelassen! Stop closed!",
-    "description": "Haltestelle\naufgelassen! Stop closed!",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "b3d058f2a7d9443431d0c6a57bef734f51e51c799560d9ce542bccfc3df4425a",
-    "pubDate": "2026-11-24T15:00:05+01:00",
-    "starts_at": "2026-11-24T15:00:05+01:00",
-    "ends_at": "2026-11-24T22:30:00+01:00",
-    "_identity": "wl|störung|L=|D=2026-11-24|TK=haltestelle aufgelassen stop closed"
   }
 ]
