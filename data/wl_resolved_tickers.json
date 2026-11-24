@@ -3,6 +3,46 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
+  "R1932-111|2026-11-24T08:11:26.000+0100": {
+   "incident": "I20261124-0010",
+   "title": "Schadhafter Zug\nUmleitung ab Absberggasse über D / 18  / 71"
+  },
+  "R1933-111|2026-11-24T08:11:26.000+0100": {
+   "incident": "I20261124-0010",
+   "title": "Schadhafter Zug\nUmleitung ab Absberggasse über D / 18  / 71"
+  },
+  "R2009-111|2026-11-24T08:02:25.000+0100": {
+   "incident": "I20261124-0010",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R2023-111|2026-11-24T08:02:25.000+0100": {
+   "incident": "I20261124-0010",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R2024-111|2026-11-24T08:02:25.000+0100": {
+   "incident": "I20261124-0010",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R2025-111|2026-11-24T08:02:25.000+0100": {
+   "incident": "I20261124-0010",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R2026-111|2026-11-24T08:02:25.000+0100": {
+   "incident": "I20261124-0010",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R2027-111|2026-11-24T08:02:25.000+0100": {
+   "incident": "I20261124-0010",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R2028-111|2026-11-24T08:02:25.000+0100": {
+   "incident": "I20261124-0010",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R2299-111|2026-11-24T08:02:26.000+0100": {
+   "incident": "I20261124-0010",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
   "R314-102|2026-11-24T07:44:22.000+0100": {
    "incident": "I20261124-0007",
    "title": "Fahrtbehinderung\nVerkehrsunfall"
@@ -22,6 +62,38 @@
   "R318-102|2026-11-24T07:44:22.000+0100": {
    "incident": "I20261124-0007",
    "title": "Fahrtbehinderung\nVerkehrsunfall"
+  },
+  "R3435-111|2026-11-24T08:11:27.000+0100": {
+   "incident": "I20261124-0010",
+   "title": "Schadhafter Zug\nUmleitung ab Absberggasse über D / 18  / 71"
+  },
+  "R404-111|2026-11-24T08:11:25.000+0100": {
+   "incident": "I20261124-0010",
+   "title": "Schadhafter Zug\nUmleitung ab Absberggasse über D / 18  / 71"
+  },
+  "R405-111|2026-11-24T08:11:25.000+0100": {
+   "incident": "I20261124-0010",
+   "title": "Schadhafter Zug\nUmleitung ab Absberggasse über D / 18  / 71"
+  },
+  "R406-111|2026-11-24T08:11:25.000+0100": {
+   "incident": "I20261124-0010",
+   "title": "Schadhafter Zug\nUmleitung ab Absberggasse über D / 18  / 71"
+  },
+  "R408-111|2026-11-24T08:02:24.000+0100": {
+   "incident": "I20261124-0010",
+   "title": "Schadhafter Zug\nBetrieb ab Grillgase"
+  },
+  "R409-111|2026-11-24T08:02:24.000+0100": {
+   "incident": "I20261124-0010",
+   "title": "Schadhafter Zug\nBetrieb ab Grillgase"
+  },
+  "R410-111|2026-11-24T08:02:24.000+0100": {
+   "incident": "I20261124-0010",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  },
+  "R4732-111|2026-11-24T08:02:26.000+0100": {
+   "incident": "I20261124-0010",
+   "title": "Fahrtbehinderung\nSchadhafter Zug"
   }
  }
 }

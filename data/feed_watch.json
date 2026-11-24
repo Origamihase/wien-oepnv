@@ -1,16 +1,24 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-24T07:01:12.902005+00:00",
- "built": "2026-11-24T08:00:59+01:00",
+ "updated": "2026-11-24T07:30:53.183507+00:00",
+ "built": "2026-11-24T08:30:42+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-24T08:00:59+01:00",
+  "built": "2026-11-24T08:30:42+01:00",
   "items": [
    {
-    "title": "11: Verkehrsüberlastung",
-    "time_line": "Seit 07:57"
+    "title": "4A/10A/59A/63A: Verkehrsüberlastung",
+    "time_line": "Seit 08:19"
+   },
+   {
+    "title": "11: Schadhafter Zug",
+    "time_line": "Seit 08:02"
+   },
+   {
+    "title": "6: Schadhafter Zug",
+    "time_line": "Seit 08:03"
    },
    {
     "title": "12A/14A: Verkehrsunfall",
@@ -19,10 +27,6 @@
    {
     "title": "2: Verkehrsunfall",
     "time_line": "Seit 07:43"
-   },
-   {
-    "title": "U3: Schadhaftes Fahrzeug",
-    "time_line": "Seit 07:04"
    },
    {
     "title": "7A: Antonsplatz",
@@ -43,35 +47,11 @@
    {
     "title": "52A/43B/52B: Ulmenstraße",
     "time_line": "Seit 23.11."
-   },
-   {
-    "title": "N71: Bauarbeiten",
-    "time_line": "Bis Fr 27.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-17T07:01:14.050119+00:00",
-   "raw": {
-    "wl-stoerungen": 52,
-    "wl-hinweise": 92,
-    "oebb": 170,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 24,
-    "oebb": 147,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 6,
-    "wl": 83
-   }
-  },
   {
    "t": "2026-11-17T07:30:57.103004+00:00",
    "raw": {
@@ -6791,17 +6771,37 @@
     "oebb": 10,
     "wl": 85
    }
+  },
+  {
+   "t": "2026-11-24T07:30:53.183507+00:00",
+   "raw": {
+    "wl-stoerungen": 68,
+    "wl-hinweise": 96,
+    "oebb": 163,
+    "baustellen-linien": 48,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 25,
+    "oebb": 138,
+    "baustellen": 58
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 11,
+    "wl": 89
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-24T07:01:12.902005+00:00"
+   "last_ok": "2026-11-24T07:30:53.183507+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-24T07:01:12.902005+00:00"
+   "last_ok": "2026-11-24T07:30:53.183507+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-24T07:01:12.902005+00:00"
+   "last_ok": "2026-11-24T07:30:53.183507+00:00"
   }
  }
 }
