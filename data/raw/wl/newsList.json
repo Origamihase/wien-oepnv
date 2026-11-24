@@ -6,7 +6,7 @@
     "name": "aktuelles",
     "refPoiCategoryGroupId": 61,
     "title": "Aktuelles",
-    "trafficInfoNameList": "N20260209-0049, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260702-5991, N20260813-6092, N20260808-6083, N20260808-6084, N20260817-6129, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260903-6175, N20260908-6177, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261006-6258, N20261007-6260, N20261009-6270, N20261021-0001, N20261023-0001, N20261104-0001, N20261104-0002, N20261104-0004, N20261105-0001, N20261105-0002, N20261106-0002, N20261111-0001, N20261111-0003, N20261111-0004, N20261111-0005, N20261111-0007, N20261012-6272, N20261116-0001, N20261117-0002, N20261118-0001, N20261118-0002, N20261118-0003, N20261118-0004, N20261119-0001, N20261120-0001, N20261123-0001, N20261123-0002, N20261123-0003, N20261123-0004, N20261123-0005, N20261124-0001"
+    "trafficInfoNameList": "N20260209-0049, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260702-5991, N20260813-6092, N20260808-6083, N20260808-6084, N20260817-6129, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260903-6175, N20260908-6177, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261006-6258, N20261007-6260, N20261009-6270, N20261021-0001, N20261023-0001, N20261104-0001, N20261104-0002, N20261104-0004, N20261105-0001, N20261105-0002, N20261106-0002, N20261111-0001, N20261111-0003, N20261111-0004, N20261111-0005, N20261111-0007, N20261012-6272, N20261116-0001, N20261117-0002, N20261118-0001, N20261118-0002, N20261118-0003, N20261118-0004, N20261119-0001, N20261120-0001, N20261123-0001, N20261123-0002, N20261123-0003, N20261123-0004, N20261123-0005, N20261124-0001, N20261124-0002"
    },
    {
     "id": -1,
@@ -1327,10 +1327,19 @@
     "title": "U1: Starke Nachfrage"
    },
    {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "<h2>Gleisbauarbeiten</h2>\r\n<p>Die Gleise in der Donaufelder Stra&szlig;e werden erneuert, daher kommt es zu Einschr&auml;nkungen bei der Linie N20.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Freitag, 11. September 2026 bis Ende 2026.</p>\r\n<p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahme:</strong></span><br /><strong>Linie N20:</strong><br />Umleitung ab Donaufelder Stra&szlig;e # Angyalf&ouml;ldstra&szlig;e &uuml;ber Satzingerweg &ndash; Schenkendorfgasse &ndash; Bessemerstra&szlig;e &ndash; Donaufelder Stra&szlig;e zur Stammstrecke.</p>\r\n<p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen in Richtung Strebersdorf, Meriangasse:<br /></span>- Carminweg (Donaufelder Stra&szlig;e 101)<br />- Fultonstra&szlig;e (Donaufelder Stra&szlig;e 65-67)<br /><br /><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle in Richtung E&szlig;ling:<br /></span>- Carminweg (Donaufelder Stra&szlig;e 86)</p>\r\n<p><span style=\"text-decoration: underline;\">Ersatzhaltestellen in Richtung Strebersdorf, Meriangasse:<br /></span>- Carminweg (Satzingerweg 41)<br />- Fultonstra&szlig;e (Bessemerstra&szlig;e 1-3)</p>\r\n<p><span style=\"text-decoration: underline;\">Ersatzhaltestelle in Richtung E&szlig;ling:<br /></span>- Carminweg (Donaufelder Stra&szlig;e 84)</p>",
+    "alertCause": "construction work",
+    "alertCauseId": 45,
+    "description": "<h2>Gleisbauarbeiten</h2><p>Die Gleise in der Donaufelder Straße werden erneuert, daher kommt es zu Einschränkungen bei der Linie N20.</p><p><span><strong><u>Zeitraum:</u></strong></span><br>Freitag, 11. September 2026 bis 11. Dezember 2026, 04:30 Uhr.</p><p><span><strong><u>Maßnahme:</u></strong></span><br><strong>Linie N20:</strong><br>Umleitung ab Donaufelder Straße # Angyalföldstraße über Satzingerweg – Schenkendorfgasse – Bessemerstraße – Donaufelder Straße zur Stammstrecke.</p><p><span><u>Aufgelassene Haltestellen in Richtung Strebersdorf, Meriangasse:<br></u></span>- Carminweg (Donaufelder Straße 101)<br>- Fultonstraße (Donaufelder Straße 65-67)<br><br><span><u>Aufgelassene Haltestelle in Richtung Eßling:<br></u></span>- Carminweg (Donaufelder Straße 86)</p><p><span><u>Ersatzhaltestellen in Richtung Strebersdorf, Meriangasse:<br></u></span>- Carminweg (Satzingerweg 41)<br>- Fultonstraße (Bessemerstraße 1-3)</p><p><span><u>Ersatzhaltestelle in Richtung Eßling:<br></u></span>- Carminweg (Donaufelder Straße 84)</p>",
     "id": "N20260908-6177",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<h2>Gleisbauarbeiten</h2><p>Die Gleise in der Donaufelder Straße werden erneuert, daher kommt es zu Einschränkungen bei der Linie N20.</p><p><span><strong><u>Zeitraum:</u></strong></span><br>Freitag, 11. September 2026 bis 11. Dezember 2026, 04:30 Uhr.</p><p><span><strong><u>Maßnahme:</u></strong></span><br><strong>Linie N20:</strong><br>Umleitung ab Donaufelder Straße # Angyalföldstraße über Satzingerweg – Schenkendorfgasse – Bessemerstraße – Donaufelder Straße zur Stammstrecke.</p><p><span><u>Aufgelassene Haltestellen in Richtung Strebersdorf, Meriangasse:<br></u></span>- Carminweg (Donaufelder Straße 101)<br>- Fultonstraße (Donaufelder Straße 65-67)<br><br><span><u>Aufgelassene Haltestelle in Richtung Eßling:<br></u></span>- Carminweg (Donaufelder Straße 86)</p><p><span><u>Ersatzhaltestellen in Richtung Strebersdorf, Meriangasse:<br></u></span>- Carminweg (Satzingerweg 41)<br>- Fultonstraße (Bessemerstraße 1-3)</p><p><span><u>Ersatzhaltestelle in Richtung Eßling:<br></u></span>- Carminweg (Donaufelder Straße 84)</p>",
+       "descriptionPlain": "GleisbauarbeitenDie Gleise in der Donaufelder Straße werden erneuert, daher kommt es zu Einschränkungen bei der Linie N20. Zeitraum: Freitag, 11. September 2026 bis 11. Dezember 2026, 04:30 Uhr. Maßnahme: Linie N20: Umleitung ab Donaufelder Straße # Angyalföldstraße über Satzingerweg – Schenkendorfgasse – Bessemerstraße – Donaufelder Straße zur Stammstrecke. Aufgelassene Haltestellen in Richtung Strebersdorf, Meriangasse: - Carminweg (Donaufelder Straße 101) - Fultonstraße (Donaufelder Straße 65-67) Aufgelassene Haltestelle in Richtung Eßling: - Carminweg (Donaufelder Straße 86) Ersatzhaltestellen in Richtung Strebersdorf, Meriangasse: - Carminweg (Satzingerweg 41) - Fultonstraße (Bessemerstraße 1-3) Ersatzhaltestelle in Richtung Eßling: - Carminweg (Donaufelder Straße 84)",
+       "title": "N20: Gleisbauarbeiten"
+      }
+     }
+    ],
     "location": {
      "properties": {
       "attributes": {},
@@ -1340,8 +1349,8 @@
      "type": "Feature"
     },
     "name": "N20260908-6177",
-    "reasonId": 0,
-    "reasonName": "undefined",
+    "reasonId": 27,
+    "reasonName": "Gleisbauarbeiten",
     "refPoiCategoryId": 13296,
     "relatedLines": [
      "N20"
@@ -1356,27 +1365,9 @@
     "relatedStops": [
      636,
      637,
-     638,
-     639,
-     881,
      885,
-     892,
-     1004,
-     1007,
-     1008,
-     1009,
      1014,
      1015,
-     1023,
-     1026,
-     1027,
-     1028,
-     1029,
-     1030,
-     1031,
-     1032,
-     1033,
-     1034,
      1038,
      1040,
      1042,
@@ -1389,9 +1380,6 @@
      1049,
      1050,
      1091,
-     1506,
-     1507,
-     1508,
      1512,
      1513,
      1514,
@@ -1399,34 +1387,17 @@
      2177,
      2178,
      2181,
-     2182,
-     2183,
-     2184,
-     2185,
-     2186,
-     2343,
      2345,
-     2370,
-     2371,
-     2372,
-     2373,
-     2374,
      2376,
      2377,
      2378,
      2379,
      2380,
-     2403,
-     2404,
-     2405,
      2411,
-     2615,
      2631,
      2637,
      3043,
      3125,
-     3318,
-     3429,
      3430,
      5702,
      5703,
@@ -1436,7 +1407,7 @@
      5785
     ],
     "time": {
-     "end": "2027-09-08T11:11:00.000+0200",
+     "end": "2026-12-11T04:30:00.000+0100",
      "start": "2026-09-08T00:00:00.000+0200",
      "validFrom": "2026-09-08T09:59:00.000+0200"
     },
@@ -3103,6 +3074,60 @@
      "validFrom": "2026-12-02T07:00:00.000+0100"
     },
     "title": "12A, 14A: Pilgramgasse U"
+   },
+   {
+    "alertCause": "unknown",
+    "alertCauseId": 0,
+    "description": "<p><strong><u>Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse, sowie Rufbus N64 in Richtung Alterlaa</u></strong></p><p><strong><u>Haltestelle:</u></strong> Zouvalgasse</p><p><strong><u>Von:</u></strong> Perfektastraße 21-23</p><p><strong><u>Nach:</u></strong> Perfektastraße 15-17</p><p><strong><u>Dauer:</u></strong> Ab 25.11.2026, etwa 08:30 Uhr für voraussichtlich drei Wochen</p><p><strong><u>Grund:</u></strong> Rohrlegungsarbeiten</p>",
+    "id": "N20261124-0002",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><strong><u>Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse, sowie Rufbus N64 in Richtung Alterlaa</u></strong></p><p><strong><u>Haltestelle:</u></strong> Zouvalgasse</p><p><strong><u>Von:</u></strong> Perfektastraße 21-23</p><p><strong><u>Nach:</u></strong> Perfektastraße 15-17</p><p><strong><u>Dauer:</u></strong> Ab 25.11.2026, etwa 08:30 Uhr für voraussichtlich drei Wochen</p><p><strong><u>Grund:</u></strong> Rohrlegungsarbeiten</p>",
+       "descriptionPlain": "Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse, sowie Rufbus N64 in Richtung Alterlaa Haltestelle: Zouvalgasse Von: Perfektastraße 21-23 Nach: Perfektastraße 15-17 Dauer: Ab 25.11.2026, etwa 08:30 Uhr für voraussichtlich drei Wochen Grund: Rohrlegungsarbeiten",
+       "title": "64A, Rufbus N64: Zouvalgasse"
+      }
+     }
+    ],
+    "location": {
+     "properties": {
+      "attributes": {},
+      "coordName": "WGS84",
+      "type": "news"
+     },
+     "type": "Feature"
+    },
+    "name": "N20261124-0002",
+    "reasonId": 223,
+    "reasonName": "Haltestellenverlegung",
+    "refPoiCategoryId": 13296,
+    "relatedLines": [
+     "64A",
+     "N64R"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 464,
+      "lineName": "64A",
+      "relatedStops": [
+       1567
+      ],
+      "vehicleType": "ptBusCity"
+     },
+     {
+      "lineId": 864,
+      "lineName": "N64R",
+      "vehicleType": ""
+     }
+    ],
+    "relatedStops": [
+     1567
+    ],
+    "time": {
+     "start": "2026-11-24T16:28:00.000+0100",
+     "validFrom": "2026-11-25T08:30:00.000+0100"
+    },
+    "title": "64A, Rufbus N64: Zouvalgasse"
    },
    {
     "alertCause": "undefined alert cause",

@@ -387,7 +387,7 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "64A/N64R: Zouvalgasse",
-    "description": "<p><strong><u>Haltestellenverlegung der Linie 64A in Richtung Liesing S sowie Rufbus N64 in Richtung Siebenhirten</u></strong></p><p><strong><u>Haltestelle:</u></strong> Zouvalgasse</p><p><strong><u>Von:</u></strong> Perfektastraße 6-8</p><p><strong><u>Nach:</u></strong> Perfektastraße 10-12</p><p><strong><u>Dauer:</u></strong> Von 09. November 2026, 07:00 Uhr bis etwa Mitte Dezember 2026</p><p><strong><u>Grund:</u></strong> Rohrlegungsarbeiten</p>",
+    "description": "<p><strong><u>Haltestellenverlegung der Linie 64A in Richtung Atzgersdorf, Ziedlergasse, sowie Rufbus N64 in Richtung Alterlaa</u></strong></p><p><strong><u>Haltestelle:</u></strong> Zouvalgasse</p><p><strong><u>Von:</u></strong> Perfektastraße 21-23</p><p><strong><u>Nach:</u></strong> Perfektastraße 15-17</p><p><strong><u>Dauer:</u></strong> Ab 25.11.2026, etwa 08:30 Uhr für voraussichtlich drei Wochen</p><p><strong><u>Grund:</u></strong> Rohrlegungsarbeiten</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "cdff8b05c55300908c52c699e1c432a54ef6ee2d3a14ab4139d4744f9e32f9e1",
     "pubDate": "2026-11-04T14:21:00+01:00",
@@ -555,12 +555,12 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "N20: Gleisbauarbeiten",
-    "description": "<h2>Gleisbauarbeiten</h2> <p>Die Gleise in der Donaufelder Stra&szlig;e werden erneuert, daher kommt es zu Einschr&auml;nkungen bei der Linie N20.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Freitag, 11. September 2026 bis Ende 2026.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahme:</strong></span><br /><strong>Linie N20:</strong><br />Umleitung ab Donaufelder Stra&szlig;e # Angyalf&ouml;ldstra&szlig;e &uuml;ber Satzingerweg &ndash; Schenkendorfgasse &ndash; Bessemerstra&szlig;e &ndash; Donaufelder Stra&szlig;e zur Stammstrecke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen in Richtung Strebersdorf, Meriangasse:<br /></span>- Carminweg (Donaufelder Stra&szlig;e 101)<br />- Fultonstra&szlig;e (Donaufelder Stra&szlig;e 65-67)<br /><br /><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle in Richtung E&szlig;ling:<br /></span>- Carminweg (Donaufelder Stra&szlig;e 86)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestellen in Richtung Strebersdorf, Meriangasse:<br /></span>- Carminweg (Satzingerweg 41)<br />- Fultonstra&szlig;e (Bessemerstra&szlig;e 1-3)</p> <p><span style=\"text-decoration: underline;\">Ersatzhaltestelle in Richtung E&szlig;ling:<br /></span>- Carminweg (Donaufelder Stra&szlig;e 84)</p>",
+    "description": "<h2>Gleisbauarbeiten</h2><p>Die Gleise in der Donaufelder Straße werden erneuert, daher kommt es zu Einschränkungen bei der Linie N20.</p><p><span><strong><u>Zeitraum:</u></strong></span><br>Freitag, 11. September 2026 bis 11. Dezember 2026, 04:30 Uhr.</p><p><span><strong><u>Maßnahme:</u></strong></span><br><strong>Linie N20:</strong><br>Umleitung ab Donaufelder Straße # Angyalföldstraße über Satzingerweg – Schenkendorfgasse – Bessemerstraße – Donaufelder Straße zur Stammstrecke.</p><p><span><u>Aufgelassene Haltestellen in Richtung Strebersdorf, Meriangasse:<br></u></span>- Carminweg (Donaufelder Straße 101)<br>- Fultonstraße (Donaufelder Straße 65-67)<br><br><span><u>Aufgelassene Haltestelle in Richtung Eßling:<br></u></span>- Carminweg (Donaufelder Straße 86)</p><p><span><u>Ersatzhaltestellen in Richtung Strebersdorf, Meriangasse:<br></u></span>- Carminweg (Satzingerweg 41)<br>- Fultonstraße (Bessemerstraße 1-3)</p><p><span><u>Ersatzhaltestelle in Richtung Eßling:<br></u></span>- Carminweg (Donaufelder Straße 84)</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "56120f290569772124420487a0363d6016a3d90ca83cc5dffef0021e22bb6206",
     "pubDate": "2026-09-08T00:00:00+02:00",
     "starts_at": "2026-09-11T00:00:00+02:00",
-    "ends_at": "2026-12-31T23:59:00+01:00",
+    "ends_at": "2026-12-11T04:30:00+01:00",
     "_identity": "wl|hinweis|L=N20|D=2026-09-11|TK=n20 gleisbauarbeiten"
   },
   {
@@ -684,7 +684,7 @@
     "guid": "5663fecbf675128e997aa265491bb433f2c1a3c40b9e5aa509f998b0c368932d",
     "pubDate": "2026-11-24T15:30:00+01:00",
     "starts_at": "2026-11-24T15:30:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-24T16:35:00+01:00",
     "_identity": "wl|störung|L=17A|D=2026-11-24|TK=17a verkehrsunfall",
     "_wl_ids": [
       "I20261124-0035"
@@ -922,29 +922,13 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Verkehrsunfall",
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc",
-    "pubDate": "2026-11-24T14:35:00+01:00",
-    "starts_at": "2026-11-24T14:35:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=2|D=2026-11-24|TK=2 verkehrsunfall",
-    "_wl_ids": [
-      "I20261124-0032"
-    ],
-    "_incident_start": "2026-11-24T14:35:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "31: Falschparker",
     "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "7fc5dec6c1828e780870a54d956a3e47494ba66068f3920d342fbe84b2c28065",
     "pubDate": "2026-11-24T15:47:00+01:00",
     "starts_at": "2026-11-24T15:47:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-24T16:48:00+01:00",
     "_identity": "wl|störung|L=31|D=2026-11-24|TK=falschparker",
     "_wl_ids": [
       "I20261124-0038"
@@ -962,22 +946,6 @@
     "starts_at": "2026-11-24T00:00:23+01:00",
     "ends_at": "2026-11-24T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-11-24|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "50A: Verkehrsunfall",
-    "description": "Linie 50A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall im Haltestellenbereich Badgasse.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7eedb6b67ec70da5ecaed5a288c10adfe92c04840273d76d4a415e35de22ae07",
-    "pubDate": "2026-11-24T15:33:00+01:00",
-    "starts_at": "2026-11-24T15:33:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=50A|D=2026-11-24|TK=50a verkehrsunfall",
-    "_wl_ids": [
-      "I20261124-0036"
-    ],
-    "_incident_start": "2026-11-24T15:33:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1062,18 +1030,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Bauarbeiten",
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "U1: Schadhaftes Fahrzeug",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2d925ead9d242c5b58f042d965b5b91ef3379846d711f9f941ee3aa1e0c81018",
-    "pubDate": "2026-11-24T14:58:00+01:00",
-    "starts_at": "2026-11-24T14:58:00+01:00",
+    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
+    "pubDate": "2026-11-24T16:20:00+01:00",
+    "starts_at": "2026-11-24T16:20:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=9|D=2026-11-24|TK=9 bauarbeiten",
+    "_identity": "wl|störung|L=U1|D=2026-11-24|TK=u1 schadhaftes fahrzeug",
     "_wl_ids": [
-      "I20261124-0034"
+      "I20261124-0040"
     ],
-    "_incident_start": "2026-11-24T14:58:00+01:00"
+    "_incident_start": "2026-11-24T16:20:00+01:00"
   },
   {
     "source": "Wiener Linien",
