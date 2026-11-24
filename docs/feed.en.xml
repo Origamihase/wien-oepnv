@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Tue, 24 Nov 2026 17:30:50 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2026 18:00:42 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[71/D: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">c2a90c6568b73bacaffeebc00c705c56542fb5a7734bb78ea19061d197f41e66</guid>
+      <pubDate>Tue, 24 Nov 2026 17:50:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 24 Nov 2026 18:00:42 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 24 Nov 2026 17:50:00 +0100</ext:starts_at>
+      <description>Service obstruction: D, 71. Expected until 18:10. [Since 17:50]</description>
+      <content:encoded><![CDATA[Service obstruction: D, 71. Expected until 18:10.<br/>[Since 17:50]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[26A: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -24,17 +37,30 @@
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 17:21]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[25/26: Rescue operation]]></title>
+      <title><![CDATA[25: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">c140a2f5396c5aec965b18dc36aa17fd1e73dde7d3d577ffa4963f57bdd4fcfa</guid>
-      <pubDate>Tue, 24 Nov 2026 17:19:00 +0100</pubDate>
+      <pubDate>Tue, 24 Nov 2026 17:14:20 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Tue, 24 Nov 2026 17:19:00 +0100</ext:first_seen>
       <ext:starts_at>Tue, 24 Nov 2026 17:19:00 +0100</ext:starts_at>
-      <description>The 25 line does not currently travel between Kagran and Berresgasse. The 26 line currently only runs between Hausfeldstraße and Zanggasse and continues to Aspern Nord. [Since 17:19]</description>
-      <content:encoded><![CDATA[The 25 line does not currently travel between Kagran and Berresgasse. The 26 line currently only runs between Hausfeldstraße and Zanggasse and continues to Aspern Nord.<br/>[Since 17:19]]]></content:encoded>
+      <description>Service only to Berresgasse. After a service obstruction, there are irregular intervals. [Since 17:14]</description>
+      <content:encoded><![CDATA[Service only to Berresgasse. After a service obstruction, there are irregular intervals.<br/>[Since 17:14]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[26: Rescue operation]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">5ad871156e427d523784cb28867242cf1070538a7d455f2b56d31b9e1028dfac</guid>
+      <pubDate>Tue, 24 Nov 2026 17:17:51 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Tue, 24 Nov 2026 17:17:51 +0100</ext:first_seen>
+      <ext:starts_at>Tue, 24 Nov 2026 17:19:00 +0100</ext:starts_at>
+      <description>Service only to Zanggasse. After a service obstruction, there are irregular intervals. Trains stop in Tokiostraße. [Since 17:17]</description>
+      <content:encoded><![CDATA[Service only to Zanggasse. After a service obstruction, there are irregular intervals. Trains stop in Tokiostraße.<br/>[Since 17:17]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[16A/17A/67A/67B: Level crossing fault]]></title>
@@ -115,33 +141,6 @@
       <georss:point>48.170260 16.378498</georss:point>
       <description>Antonsplatz 13 before Rechberggasse → Antonsplatz 14-16. Stop relocation of line 7A towards Reumannplatz. Reason: roadworks. [Until Wed 25.11.]</description>
       <content:encoded><![CDATA[Antonsplatz 13 before Rechberggasse → Antonsplatz 14-16. Stop relocation of line 7A towards Reumannplatz. Reason: roadworks.<br/>[Until Wed 25.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[8A/58A/58B: Küniglberg, ORF-Zentrum]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">eb3e0204c1e47064e1548cf951957b36dcb1e8a69712b8b05d9fe73587d0b033</guid>
-      <pubDate>Mon, 23 Nov 2026 10:57:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 23 Nov 2026 10:57:00 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 25 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.175514 16.291612</georss:point>
-      <description>Verbindungsfahrbahn zwischen Würzburggasse und Küniglberggasse → Küniglberggasse 1-3, temporary stop. Stop relocation of lines 8A, 58A and 58B. … [From Wed 25.11.]</description>
-      <content:encoded><![CDATA[Verbindungsfahrbahn zwischen Würzburggasse und Küniglberggasse → Küniglberggasse 1-3, temporary stop. Stop relocation of lines 8A, 58A and 58B. …<br/>[From Wed 25.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[68A: Changed lines]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">e492cfa06a0bbcc7e2c6f1233068abbf56eea121924fc72efc72f30f7ef56e29</guid>
-      <pubDate>Mon, 16 Nov 2026 14:16:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 20 Nov 2026 00:00:51 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 23 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <description>In the area of Filmteichstraße is adapted to the lines of the 68A line. [Since 23.11.]</description>
-      <content:encoded><![CDATA[In the area of Filmteichstraße is adapted to the lines of the 68A line.<br/>[Since 23.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>

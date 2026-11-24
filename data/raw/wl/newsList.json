@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_81, ftazW_739, ftazW_1017627, ftazW_605, ftazW_478, ftazW_604, ftazW_479, ftazW_725, ftazW_740, ftazW_1016611, ftazW_529, ftazW_1016925, ftazW_1016592, ftazW_1354573, ftazW_475, ftazW_528, ftazW_1016926, ftazW_1016593, ftazW_1354391, ftazW_583, ftazW_166, ftazW_1016542, ftazW_1017125, ftazW_1016923, ftazW_580, ftazW_1017717, ftazW_1016543, ftazW_735, ftazW_167, ftazW_1016924"
+    "trafficInfoNameList": "ftazW_81, ftazW_739, ftazW_1017627, ftazW_605, ftazW_478, ftazW_604, ftazW_479, ftazW_725, ftazW_740, ftazW_1016611, ftazW_529, ftazW_1016925, ftazW_1016592, ftazW_1354573, ftazW_475, ftazW_528, ftazW_1016926, ftazW_1016593, ftazW_1354391, ftazW_583, ftazW_166, ftazW_1016542, ftazW_1017125, ftazW_1016923, ftazW_580, ftazW_196, ftazW_1017717, ftazW_1016543, ftazW_735, ftazW_167, ftazW_1016924"
    }
   ],
   "poiCategoryGroups": [
@@ -3784,6 +3784,45 @@
      "start": "2026-11-27T01:15:00.000+0100"
     },
     "title": "Schlachthausgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "27.11.2026 05:15",
+     "ausVon": "27.11.2026 01:15",
+     "location": "U4 Mittelbahnsteig - Ausgang Meidling Hauptstraße/Lobkowitzbrücke",
+     "rbls": [
+      4413,
+      4424
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Meidling Hauptstraße",
+     "status": "geplante Wartung",
+     "towards": "U4 beide Richtungen"
+    },
+    "description": "U4 Mittelbahnsteig - Ausgang Meidling Hauptstraße/Lobkowitzbrücke",
+    "elevatorId": "MH 01",
+    "name": "ftazW_196",
+    "parentName": "ftazW_196",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4413,
+     4424
+    ],
+    "time": {
+     "end": "2026-11-27T05:15:00.000+0100",
+     "start": "2026-11-27T01:15:00.000+0100"
+    },
+    "title": "Meidling Hauptstraße"
    },
    {
     "alertCause": "undefined alert cause",

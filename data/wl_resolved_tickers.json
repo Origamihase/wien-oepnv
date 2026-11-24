@@ -1,43 +1,7 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
- "tickers": [
-  {
-   "key": "R3066-424|2026-11-24T16:58:19.000+0100|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R3066-424",
-   "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-11-24T17:57:00.000+0100",
-   "incident": "I20261124-0041"
-  },
-  {
-   "key": "R3069-424|2026-11-24T16:58:49.000+0100|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R3069-424",
-   "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-11-24T17:58:00.000+0100",
-   "incident": "I20261124-0041"
-  },
-  {
-   "key": "R919-424|2026-11-24T16:58:48.000+0100|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R919-424",
-   "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-11-24T17:58:00.000+0100",
-   "incident": "I20261124-0041"
-  },
-  {
-   "key": "R920-424|2026-11-24T16:58:48.000+0100|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R920-424",
-   "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-11-24T17:58:00.000+0100",
-   "incident": "I20261124-0041"
-  },
-  {
-   "key": "R922-424|2026-11-24T16:58:48.000+0100|Fahrtbehinderung\nVerkehrsunfall",
-   "name": "R922-424",
-   "title": "Fahrtbehinderung\nVerkehrsunfall",
-   "end": "2026-11-24T17:58:00.000+0100",
-   "incident": "I20261124-0041"
-  }
- ],
+ "tickers": [],
  "owners": {
   "R1012-125|2026-11-24T17:14:20.000+0100": {
    "incident": "I20261124-0044",
@@ -54,6 +18,30 @@
   "R1021-125|2026-11-24T17:14:20.000+0100": {
    "incident": "I20261124-0044",
    "title": "Rettungseinsatz\nBetrieb nur bis Kagran"
+  },
+  "R13-136|2026-11-24T17:51:21.000+0100": {
+   "incident": "I20261124-0045",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R13-171|2026-11-24T17:50:51.000+0100": {
+   "incident": "I20261124-0045",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R14-136|2026-11-24T17:51:21.000+0100": {
+   "incident": "I20261124-0045",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R14-171|2026-11-24T17:50:51.000+0100": {
+   "incident": "I20261124-0045",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R15-136|2026-11-24T17:51:21.000+0100": {
+   "incident": "I20261124-0045",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R15-171|2026-11-24T17:50:51.000+0100": {
+   "incident": "I20261124-0045",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
   },
   "R2634-125|2026-11-24T17:14:21.000+0100": {
    "incident": "I20261124-0044",
@@ -95,25 +83,13 @@
    "incident": "I20261124-0044",
    "title": "Rettungseinsatz\nBetrieb nur bis Zanggasse"
   },
-  "R3066-424|2026-11-24T16:58:19.000+0100": {
-   "incident": "I20261124-0041",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  "R81-136|2026-11-24T17:51:21.000+0100": {
+   "incident": "I20261124-0045",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
   },
-  "R3069-424|2026-11-24T16:58:49.000+0100": {
-   "incident": "I20261124-0041",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R919-424|2026-11-24T16:58:48.000+0100": {
-   "incident": "I20261124-0041",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R920-424|2026-11-24T16:58:48.000+0100": {
-   "incident": "I20261124-0041",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R922-424|2026-11-24T16:58:48.000+0100": {
-   "incident": "I20261124-0041",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  "R81-171|2026-11-24T17:50:51.000+0100": {
+   "incident": "I20261124-0045",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
   },
   "R966-125|2026-11-24T17:14:20.000+0100": {
    "incident": "I20261124-0044",
