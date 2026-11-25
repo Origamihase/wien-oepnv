@@ -2,7 +2,7 @@
   "archive_years": [],
   "ausfaelle": {
     "by_direction": {
-      "Meidling": 1071,
+      "Meidling": 1072,
       "Praterstern": 911
     },
     "by_hour": {
@@ -11,7 +11,7 @@
       "02": 3,
       "03": 1,
       "04": 38,
-      "05": 75,
+      "05": 76,
       "06": 88,
       "07": 118,
       "08": 145,
@@ -39,7 +39,7 @@
       "REX2": 6,
       "REX3": 195,
       "REX92": 3,
-      "S1": 472,
+      "S1": 473,
       "S2": 302,
       "S3": 250,
       "S4": 149
@@ -48,14 +48,14 @@
       "Di": 301,
       "Do": 334,
       "Fr": 399,
-      "Mi": 312,
+      "Mi": 313,
       "Mo": 300,
       "Sa": 162,
       "So": 174
     },
-    "total": 1982
+    "total": 1983
   },
-  "generated_at": "2026-11-25T05:30:40+01:00",
+  "generated_at": "2026-11-25T06:00:55+01:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 0.88,
@@ -114,15 +114,15 @@
       },
       "peer_rows_required": 6,
       "poll": {
-        "last_success": "2026-11-25T05:30:36+01:00",
+        "last_success": "2026-11-25T06:00:42+01:00",
         "stale_hours": 3.0
       },
       "silence_hours": 1.0,
       "window_days": 30
     },
     "live": {
-      "avg_delay_minutes": 0.0,
-      "observations": 1,
+      "avg_delay_minutes": null,
+      "observations": 0,
       "window_minutes": 60
     },
     "max_delay_minutes": 203.0,
@@ -138,7 +138,7 @@
       "03": 28,
       "04": 95,
       "05": 167,
-      "06": 180,
+      "06": 182,
       "07": 206,
       "08": 305,
       "09": 300,
@@ -160,19 +160,19 @@
     "by_provider": {
       "Stadt Wien – Baustellen": 180,
       "VOR/VAO": 13,
-      "Wiener Linien": 5402,
+      "Wiener Linien": 5404,
       "ÖBB": 341
     },
     "by_weekday": {
       "Di": 919,
       "Do": 932,
       "Fr": 982,
-      "Mi": 854,
+      "Mi": 856,
       "Mo": 832,
       "Sa": 752,
       "So": 665
     },
-    "total": 5936
+    "total": 5938
   },
   "year": 2026
 }

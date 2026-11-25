@@ -914,6 +914,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5B: Rettungseinsatz",
+    "description": "Linie 5B: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "026034b61e72b8d6446ed6a38d301b8d35dab3ccc028632401c2c456a02db76a",
+    "pubDate": "2026-11-25T05:50:00+01:00",
+    "starts_at": "2026-11-25T05:50:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=5B|D=2026-11-25|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261125-0002"
+    ],
+    "_incident_start": "2026-11-25T05:50:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "62A: Rettungseinsatz",
+    "description": "Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "6460e1e726125cbd76631a4f606981ffec2a04a8e4742a5bba5493fa66c765df",
+    "pubDate": "2026-11-25T05:51:00+01:00",
+    "starts_at": "2026-11-25T05:51:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=62A|D=2026-11-25|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261125-0004"
+    ],
+    "_incident_start": "2026-11-25T05:51:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "66A: Busse halten Salvatorianerplatz",
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -946,6 +978,22 @@
     "starts_at": "2026-11-25T00:00:28+01:00",
     "ends_at": "2026-11-25T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-25|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U1: Verspätungen",
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "7eae744fbeb95dced662f8a7c2e8b5356f7b551a99bbc6a607f3b57c8b7b9f42",
+    "pubDate": "2026-11-25T05:51:00+01:00",
+    "starts_at": "2026-11-25T05:51:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U1|D=2026-11-25|TK=u1 verspätungen",
+    "_wl_ids": [
+      "I20261125-0003"
+    ],
+    "_incident_start": "2026-11-25T05:51:00+01:00"
   },
   {
     "source": "Wiener Linien",
