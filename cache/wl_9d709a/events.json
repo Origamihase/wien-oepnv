@@ -674,14 +674,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A/14A/57A/59A: Demonstration",
-    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Linie 57A: Unregelmäßige Intervalle in beiden Richtungen. Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.",
+    "title": "1/LB: Demonstration",
+    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Badner Bahn: Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "e6d4e8c179d393ba9fbdd5edd1dfd675cb3e1b598fb296e6e630917372b6cb0d",
+    "guid": "3ee8acaae2c679057c274f97f1a2aea17d67403b0a1327e9cd6fe008a8e9b69a",
+    "pubDate": "2026-11-25T20:00:00+01:00",
+    "starts_at": "2026-11-25T20:00:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=1,LB|D=2026-11-25|TK=demonstration",
+    "_wl_ids": [
+      "I20261125-0038"
+    ],
+    "_incident_start": "2026-11-25T20:00:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A/59A: Demonstration",
+    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1453914f4628c4df67986770670ca68947c0923ffcc5b6e755215746e5d42eba",
     "pubDate": "2026-11-25T19:09:00+01:00",
     "starts_at": "2026-11-25T19:09:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=13A,14A,57A,59A|D=2026-11-25|TK=demonstration",
+    "_identity": "wl|störung|L=13A,59A|D=2026-11-25|TK=demonstration",
     "_wl_ids": [
       "I20261125-0036"
     ],
@@ -946,22 +962,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "56A/56B: Verkehrsunfall",
-    "description": "Linie 56B: Unregelmäßige Intervalle in beiden Richtungen. Linie 56A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "e0d8f8c35b3563999bc0e16238d7e32f488d2c5815b86903b5cb79f0f5865525",
-    "pubDate": "2026-11-25T19:17:00+01:00",
-    "starts_at": "2026-11-25T19:17:00+01:00",
-    "ends_at": "2026-11-25T20:25:00+01:00",
-    "_identity": "wl|störung|L=56A,56B|D=2026-11-25|TK=56a 56b verkehrsunfall",
-    "_wl_ids": [
-      "I20261125-0037"
-    ],
-    "_incident_start": "2026-11-25T19:17:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1006,6 +1006,22 @@
     "starts_at": "2026-11-25T00:00:28+01:00",
     "ends_at": "2026-11-25T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-25|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Polizeieinsatz",
+    "description": "Die Linie U6 kann derzeit die Station Jägerstraße nicht einhalten. Voraussichtliche Dauer: 20:45 Uhr. Grund: Polizeieinsatz im Haltestellenbereich Jägerstraße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "2b04e3e4c6e529165b35d8767e8c3d7174a5f1193f3ad3e7d30bf4b0c7b6cfab",
+    "pubDate": "2026-11-25T20:19:00+01:00",
+    "starts_at": "2026-11-25T20:19:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U6|D=2026-11-25|TK=polizeieinsatz",
+    "_wl_ids": [
+      "I20261125-0039"
+    ],
+    "_incident_start": "2026-11-25T20:19:00+01:00"
   },
   {
     "source": "Wiener Linien",
