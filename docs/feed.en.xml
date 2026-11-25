@@ -8,8 +8,34 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 25 Nov 2026 16:30:48 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 25 Nov 2026 17:00:41 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[O: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">a90305646f013b3987fb55ef5dab8d20d35b0e58b3f412f792bb39c48c2fa5a8</guid>
+      <pubDate>Wed, 25 Nov 2026 16:49:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 25 Nov 2026 16:49:00 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 25 Nov 2026 16:49:00 +0100</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: illegally parked vehicle. [Since 16:49]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: illegally parked vehicle.<br/>[Since 16:49]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2: Traffic accident]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc</guid>
+      <pubDate>Wed, 25 Nov 2026 16:43:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 25 Nov 2026 16:43:00 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 25 Nov 2026 16:43:00 +0100</ext:starts_at>
+      <description>Trains stop at the stop of line 49. [Since 16:43]</description>
+      <content:encoded><![CDATA[Trains stop at the stop of line 49.<br/>[Since 16:43]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[Wien Liesing ↔ Mödling]]></title>
       <link>https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&amp;tpl=showmap_external&amp;</link>
@@ -24,19 +50,6 @@
       <georss:line>48.135046 16.283967 48.085650 16.295359</georss:line>
       <description>Due to a damaged bridge by a traffic accident, no trains can run until approx. 17:15. The long-distance trains and the CJX trains will be redirected. [Since 15:36]</description>
       <content:encoded><![CDATA[Due to a damaged bridge by a traffic accident, no trains can run until approx. 17:15. The long-distance trains and the CJX trains will be redirected.<br/>[Since 15:36]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[16A: Rescue operation]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5a34fd9d1d85761937e73cc1505db5c332e3d5fe85c5450ebb4c6466c12885ea</guid>
-      <pubDate>Wed, 25 Nov 2026 15:51:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 25 Nov 2026 15:51:00 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 25 Nov 2026 15:51:00 +0100</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: rescue operation. [Since 15:51]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: rescue operation.<br/>[Since 15:51]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[63A: Traffic accident]]></title>
@@ -118,21 +131,6 @@
       <georss:point>48.205224 16.272424</georss:point>
       <description>Sanatoriumstraße 2 → Sanatoriumstraße 2 before Krankenhauseinfahrt. Stop relocation of line 48A towards Klinik Penzing. Reason: roadworks. [Until 17.12.]</description>
       <content:encoded><![CDATA[Sanatoriumstraße 2 → Sanatoriumstraße 2 before Krankenhauseinfahrt. Stop relocation of line 48A towards Klinik Penzing. Reason: roadworks.<br/>[Until 17.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[7A: Antonsplatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">a4909415cf96cc125197444bd009403ec86c54a31f4633d682eacf3be6d878cc</guid>
-      <pubDate>Wed, 18 Nov 2026 12:54:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 18 Nov 2026 12:54:00 +0100</ext:first_seen>
-      <ext:starts_at>Tue, 24 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Wed, 25 Nov 2026 17:00:00 +0100</ext:ends_at>
-      <georss:point>48.170260 16.378498</georss:point>
-      <description>Antonsplatz 13 before Rechberggasse → Antonsplatz 14-16. Stop relocation of line 7A towards Reumannplatz. Reason: roadworks. [Today]</description>
-      <content:encoded><![CDATA[Antonsplatz 13 before Rechberggasse → Antonsplatz 14-16. Stop relocation of line 7A towards Reumannplatz. Reason: roadworks.<br/>[Today]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[68A: Changed lines]]></title>

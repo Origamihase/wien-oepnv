@@ -518,18 +518,6 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
-    "title": "7A: Antonsplatz",
-    "description": "<p><strong><u>Haltestellenverlegung der Linie 7A in Richtung Reumannplatz U</u></strong></p><p><strong><u>Haltestelle:</u></strong> Antonsplatz</p><p><strong><u>Von:</u></strong> Antonsplatz 13 vor Rechberggasse</p><p><strong><u>Nach:</u></strong> Antonsplatz 14-16</p><p><strong><u>Dauer:</u></strong> 24. November 2026, etwa 07:00 Uhr bis 25. November, etwa 17:00 Uhr</p><p><strong><u>Grund:</u></strong> Straßenbauarbeiten</p>",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "a4909415cf96cc125197444bd009403ec86c54a31f4633d682eacf3be6d878cc",
-    "pubDate": "2026-11-18T12:54:00+01:00",
-    "starts_at": "2026-11-24T00:00:00+01:00",
-    "ends_at": "2026-11-25T17:00:00+01:00",
-    "_identity": "wl|hinweis|L=7A|D=2026-11-24|TK=7a antonsplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Hinweis",
     "title": "80A: ÖBB-Bauarbeiten",
     "description": "<h2>Bauarbeiten</h2> <p>Wegen der Neuerrichtung der &Ouml;BB-Bahnviadukte im Bereich Helenengasse und Stoffellagasse treten bei der Linie 80A Ma&szlig;nahmen in Kraft. Beachten Sie bitte die unterschiedlichen Ma&szlig;nahmen werktags bzw. am Wochenende.</p> <p><span style=\"text-decoration: underline;\"><strong>Zeitraum:</strong></span><br />Von Dienstag, 20. Oktober 2026 bis etwa September 2027.</p> <p><span style=\"text-decoration: underline;\"><strong>Ma&szlig;nahmen:</strong></span><br /><strong>Montag-Freitag, Linie 80A in Richtung Schlachthausgasse U:</strong><br />Umleitung ab Praterstern # Franzensbr&uuml;ckenstra&szlig;e &uuml;ber Praterstern - Hauptallee - Sportklubstra&szlig;e.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestelle:</span><br />- Vivariumstra&szlig;e (Vivariumstra&szlig;e 6)<br /><span style=\"text-decoration: underline;\">Ersatzhaltestelle:</span><br />- Vivariumstra&szlig;e (Sportklubstra&szlig;e nach Vivariumstra&szlig;e)</p> <p><strong>Samstag, Sonntag und Feiertag, Linie 80A:</strong><br />Betrieb nur zwischen Schlachthausgasse U und Franzensbr&uuml;cke.</p> <p><span style=\"text-decoration: underline;\">Aufgelassene Haltestellen in Richtung Schlachthausgasse:</span><br />- Praterstern (Praterstern, 3. Haltestelleinsel unter dem Bahnhofsvordach)<br />- Vivariumstra&szlig;e (Vivariumstra&szlig;e 6)<br /><span style=\"text-decoration: underline;\">Ersatzhaltestellen:</span><br />- Franzensbr&uuml;cke (Vivariumstra&szlig;e 2, provisorische End- und Anfangshaltestelle an Sa, So, Fei)<br />- Vivariumstra&szlig;e (Sportklubstra&szlig;e nach Vivariumstra&szlig;e)</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -682,22 +670,6 @@
     "starts_at": "2026-09-14T00:00:00+02:00",
     "ends_at": "2026-12-31T23:59:00+01:00",
     "_identity": "wl|hinweis|L=U6|D=2026-09-14|TK=u6 neue donau kein halt richtung floridsdorf"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "16A: Rettungseinsatz",
-    "description": "Linie 16A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "5a34fd9d1d85761937e73cc1505db5c332e3d5fe85c5450ebb4c6466c12885ea",
-    "pubDate": "2026-11-25T15:51:00+01:00",
-    "starts_at": "2026-11-25T15:51:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=16A|D=2026-11-25|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261125-0029"
-    ],
-    "_incident_start": "2026-11-25T15:51:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -930,6 +902,34 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "2: Verkehrsunfall",
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "499b6729d6a91728001fc777be07b72ccb278484760a6227c68ea6886e07a9cc",
+    "pubDate": "2026-11-25T16:43:00+01:00",
+    "starts_at": "2026-11-25T16:43:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=2|D=2026-11-25|TK=2 verkehrsunfall",
+    "_wl_ids": [
+      "I20261125-0030"
+    ],
+    "_incident_start": "2026-11-25T16:43:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2: Verkehrsunfall Züge halten bei Linie 49",
+    "description": "Verkehrsunfall\nZüge halten bei Linie 49",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "514dc170e25336a6a9120ec2e4f3d4d6b18f2aa35d54f1491d61ca6348e939bc",
+    "pubDate": "2026-11-25T16:45:25+01:00",
+    "starts_at": "2026-11-25T16:45:25+01:00",
+    "ends_at": "2026-11-25T17:44:00+01:00",
+    "_identity": "wl|störung|L=2|D=2026-11-25|TK=verkehrsunfall züge halten bei linie 49"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1018,6 +1018,22 @@
       "I20261125-0026"
     ],
     "_incident_start": "2026-11-25T14:29:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "O: Falschparker",
+    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "a90305646f013b3987fb55ef5dab8d20d35b0e58b3f412f792bb39c48c2fa5a8",
+    "pubDate": "2026-11-25T16:49:00+01:00",
+    "starts_at": "2026-11-25T16:49:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=O|D=2026-11-25|TK=falschparker",
+    "_wl_ids": [
+      "I20261125-0031"
+    ],
+    "_incident_start": "2026-11-25T16:49:00+01:00"
   },
   {
     "source": "Wiener Linien",
