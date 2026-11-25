@@ -3,25 +3,9 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R2422-118|2026-11-25T13:47:39.000+0100": {
-   "incident": "I20261125-0024",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-  },
-  "R2750-118|2026-11-25T13:47:40.000+0100": {
-   "incident": "I20261125-0024",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-  },
-  "R3605-118|2026-11-25T13:47:40.000+0100": {
-   "incident": "I20261125-0024",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-  },
-  "R3606-118|2026-11-25T13:47:40.000+0100": {
-   "incident": "I20261125-0024",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-  },
-  "R3607-118|2026-11-25T13:47:40.000+0100": {
-   "incident": "I20261125-0024",
-   "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
+  "R111-136|2026-11-25T14:33:42.000+0100": {
+   "incident": "I20261125-0026",
+   "title": "Schadhafter Zug\nUmleitung über 18+71"
   }
  }
 }
