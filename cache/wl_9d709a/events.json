@@ -674,14 +674,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "13A/14A/57A: Demonstration",
-    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Linie 57A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.",
+    "title": "13A/14A/57A/59A: Demonstration",
+    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Linie 57A: Unregelmäßige Intervalle in beiden Richtungen. Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "f9f9328ff9a3e1ea37387c5f08b925e5211dccb597dd8a5c9f922727319762e5",
+    "guid": "e6d4e8c179d393ba9fbdd5edd1dfd675cb3e1b598fb296e6e630917372b6cb0d",
     "pubDate": "2026-11-25T19:09:00+01:00",
     "starts_at": "2026-11-25T19:09:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=13A,14A,57A|D=2026-11-25|TK=demonstration",
+    "_identity": "wl|störung|L=13A,14A,57A,59A|D=2026-11-25|TK=demonstration",
     "_wl_ids": [
       "I20261125-0036"
     ],
@@ -952,7 +952,7 @@
     "guid": "e0d8f8c35b3563999bc0e16238d7e32f488d2c5815b86903b5cb79f0f5865525",
     "pubDate": "2026-11-25T19:17:00+01:00",
     "starts_at": "2026-11-25T19:17:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-25T20:25:00+01:00",
     "_identity": "wl|störung|L=56A,56B|D=2026-11-25|TK=56a 56b verkehrsunfall",
     "_wl_ids": [
       "I20261125-0037"
