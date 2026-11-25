@@ -2,50 +2,5 @@
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
- "owners": {
-  "R1742-162|2026-11-25T20:48:50.000+0100": {
-   "incident": "I20261125-0040",
-   "title": "Fahrtbehinderung\nRettungseinsatz"
-  },
-  "R1743-162|2026-11-25T20:48:50.000+0100": {
-   "incident": "I20261125-0040",
-   "title": "Fahrtbehinderung\nRettungseinsatz"
-  },
-  "R1744-162|2026-11-25T20:48:50.000+0100": {
-   "incident": "I20261125-0040",
-   "title": "Fahrtbehinderung\nRettungseinsatz"
-  },
-  "R1748-162|2026-11-25T20:48:50.000+0100": {
-   "incident": "I20261125-0040",
-   "title": "Fahrtbehinderung\nRettungseinsatz"
-  },
-  "R1749-162|2026-11-25T20:53:51.000+0100": {
-   "incident": "I20261125-0040",
-   "title": "Fahrtbehinderung\nRettungseinsatz"
-  },
-  "R399-162|2026-11-25T20:53:49.000+0100": {
-   "incident": "I20261125-0040",
-   "title": "Fahrtbehinderung\nRettungseinsatz"
-  },
-  "R400-162|2026-11-25T21:01:19.000+0100": {
-   "incident": "I20261125-0040",
-   "title": "Fahrtbehinderung\nRettungseinsatz"
-  },
-  "R470-162|2026-11-25T20:48:48.000+0100": {
-   "incident": "I20261125-0040",
-   "title": "Fahrtbehinderung\nRettungseinsatz"
-  },
-  "R831-162|2026-11-25T21:01:17.000+0100": {
-   "incident": "I20261125-0040",
-   "title": "Fahrtbehinderung\nRettungseinsatz"
-  },
-  "R832-162|2026-11-25T21:01:17.000+0100": {
-   "incident": "I20261125-0040",
-   "title": "Fahrtbehinderung\nRettungseinsatz"
-  },
-  "R833-162|2026-11-25T21:01:17.000+0100": {
-   "incident": "I20261125-0040",
-   "title": "Fahrtbehinderung\nRettungseinsatz"
-  }
- }
+ "owners": {}
 }
