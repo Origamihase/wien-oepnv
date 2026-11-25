@@ -1,16 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-25T23:01:07.986281+00:00",
- "built": "2026-11-26T00:00:56+01:00",
+ "updated": "2026-11-25T23:30:51.805542+00:00",
+ "built": "2026-11-26T00:30:38+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-26T00:00:56+01:00",
+  "built": "2026-11-26T00:30:38+01:00",
   "items": [
    {
-    "title": "U1: Polizeieinsatz",
-    "time_line": "Seit 25.11."
+    "title": "Felixdorf",
+    "time_line": "Seit 00:05"
    },
    {
     "title": "60A: Veranstaltung am 27. und 28.11.2026",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-18T23:01:10.408882+00:00",
-   "raw": {
-    "wl-stoerungen": 37,
-    "wl-hinweise": 84,
-    "oebb": 169,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 21,
-    "oebb": 146,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 9,
-    "wl": 83
-   }
-  },
   {
    "t": "2026-11-18T23:31:00.114561+00:00",
    "raw": {
@@ -6791,17 +6771,37 @@
     "oebb": 13,
     "wl": 81
    }
+  },
+  {
+   "t": "2026-11-25T23:30:51.805542+00:00",
+   "raw": {
+    "wl-stoerungen": 947,
+    "wl-hinweise": 83,
+    "oebb": 180,
+    "baustellen-linien": 46,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 18,
+    "oebb": 153,
+    "baustellen": 56
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 14,
+    "wl": 81
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-25T23:01:07.986281+00:00"
+   "last_ok": "2026-11-25T23:30:51.805542+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-25T23:01:07.986281+00:00"
+   "last_ok": "2026-11-25T23:30:51.805542+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-25T23:01:07.986281+00:00"
+   "last_ok": "2026-11-25T23:30:51.805542+00:00"
   }
  }
 }
