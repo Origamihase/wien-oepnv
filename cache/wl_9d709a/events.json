@@ -978,18 +978,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Schadhaftes Fahrzeug",
-    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "D: Verkehrsüberlastung",
+    "description": "Linie D: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "479d81556bc68dbdee0680cddad02646b0c604865221d4ea576921f46f65d96c",
-    "pubDate": "2026-11-25T14:29:00+01:00",
-    "starts_at": "2026-11-25T14:29:00+01:00",
+    "guid": "5ff6e6069b79de35aa4ec286f280f6f243d51eb6b11af63ffd1e7dd92ca2a247",
+    "pubDate": "2026-11-25T18:28:00+01:00",
+    "starts_at": "2026-11-25T18:28:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=D|D=2026-11-25|TK=d schadhaftes fahrzeug",
+    "_identity": "wl|störung|L=D|D=2026-11-25|TK=d verkehrsüberlastung",
     "_wl_ids": [
-      "I20261125-0026"
+      "I20261125-0034"
     ],
-    "_incident_start": "2026-11-25T14:29:00+01:00"
+    "_incident_start": "2026-11-25T18:28:00+01:00"
   },
   {
     "source": "Wiener Linien",

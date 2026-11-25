@@ -1,16 +1,16 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-25T17:31:05.895663+00:00",
- "built": "2026-11-25T18:30:51+01:00",
+ "updated": "2026-11-25T18:00:56.696710+00:00",
+ "built": "2026-11-25T19:00:43+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-25T18:30:51+01:00",
+  "built": "2026-11-25T19:00:43+01:00",
   "items": [
    {
-    "title": "Wien Jedlersdorf ↔ Korneuburg",
-    "time_line": "Seit 18:14"
+    "title": "D: Verkehrsüberlastung",
+    "time_line": "Seit 18:28"
    },
    {
     "title": "O: Falschparker",
@@ -21,8 +21,8 @@
     "time_line": "Seit 16:43"
    },
    {
-    "title": "D: Schadhaftes Fahrzeug",
-    "time_line": "Seit 14:29"
+    "title": "Wien Jedlersdorf ↔ Korneuburg",
+    "time_line": "Heute"
    },
    {
     "title": "8A/58A/58B: Küniglberg, ORF-Zentrum",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-18T18:00:54.714573+00:00",
-   "raw": {
-    "wl-stoerungen": 51,
-    "wl-hinweise": 90,
-    "oebb": 172,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 22,
-    "oebb": 149,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 9,
-    "wl": 93
-   }
-  },
   {
    "t": "2026-11-18T18:30:44.605446+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 15,
     "wl": 86
    }
+  },
+  {
+   "t": "2026-11-25T18:00:56.696710+00:00",
+   "raw": {
+    "wl-stoerungen": 960,
+    "wl-hinweise": 87,
+    "oebb": 185,
+    "baustellen-linien": 46,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 19,
+    "oebb": 157,
+    "baustellen": 56
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 15,
+    "wl": 86
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-25T17:31:05.895663+00:00"
+   "last_ok": "2026-11-25T18:00:56.696710+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-25T17:31:05.895663+00:00"
+   "last_ok": "2026-11-25T18:00:56.696710+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-25T17:31:05.895663+00:00"
+   "last_ok": "2026-11-25T18:00:56.696710+00:00"
   }
  }
 }
