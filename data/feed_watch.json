@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-25T12:01:17.939801+00:00",
- "built": "2026-11-25T13:01:07+01:00",
+ "updated": "2026-11-25T12:31:04.300588+00:00",
+ "built": "2026-11-25T13:30:52+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-25T13:01:07+01:00",
+  "built": "2026-11-25T13:30:52+01:00",
   "items": [
+   {
+    "title": "4A: Verkehrsunfall",
+    "time_line": "Seit 13:18"
+   },
    {
     "title": "25: Falschparker",
     "time_line": "Seit 12:47"
@@ -29,10 +33,6 @@
     "time_line": "Seit 12:11"
    },
    {
-    "title": "13A: Falschparker",
-    "time_line": "Seit 10:36"
-   },
-   {
     "title": "8A/58A/58B: Küniglberg, ORF-Zentrum",
     "time_line": "Seit heute"
    },
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-18T12:30:54.136281+00:00",
-   "raw": {
-    "wl-stoerungen": 43,
-    "wl-hinweise": 87,
-    "oebb": 170,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 22,
-    "oebb": 149,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 7,
-    "wl": 84
-   }
-  },
   {
    "t": "2026-11-18T13:01:09.101219+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 13,
     "wl": 89
    }
+  },
+  {
+   "t": "2026-11-25T12:31:04.300588+00:00",
+   "raw": {
+    "wl-stoerungen": 966,
+    "wl-hinweise": 89,
+    "oebb": 183,
+    "baustellen-linien": 46,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 19,
+    "oebb": 156,
+    "baustellen": 56
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 13,
+    "wl": 89
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-25T12:01:17.939801+00:00"
+   "last_ok": "2026-11-25T12:31:04.300588+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-25T12:01:17.939801+00:00"
+   "last_ok": "2026-11-25T12:31:04.300588+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-25T12:01:17.939801+00:00"
+   "last_ok": "2026-11-25T12:31:04.300588+00:00"
   }
  }
 }
