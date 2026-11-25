@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 25 Nov 2026 23:30:51 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2026 00:00:56 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[U1: Polizeieinsatz]]></title>
@@ -20,8 +20,22 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Wed, 25 Nov 2026 23:21:00 +0100</ext:first_seen>
       <ext:starts_at>Wed, 25 Nov 2026 23:21:00 +0100</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 23:21]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 23:21]]]></content:encoded>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 25.11.]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 25.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60A: Veranstaltung am 27. und 28.11.2026]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">7922a9a36546404e6be9f65e8ad96bba3f8d23999a6635a6d256c6b60e8dc542</guid>
+      <pubDate>Wed, 04 Nov 2026 10:53:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 26 Nov 2026 00:00:56 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 27 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Sat, 28 Nov 2026 22:00:00 +0100</ext:ends_at>
+      <description>Wegen einer Veranstaltung in der Endresstraße wird die Linie 60A umgeleitet. Linie 60A: Umleitung in beiden Richtungen über Speisinger Straße - Franz-Graßler-Gasse … [Ab Fr 27.11. bis Sa 28.11.]</description>
+      <content:encoded><![CDATA[Wegen einer Veranstaltung in der Endresstraße wird die Linie 60A umgeleitet. Linie 60A: Umleitung in beiden Richtungen über Speisinger Straße - Franz-Graßler-Gasse …<br/>[Ab Fr 27.11. bis Sa 28.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[8A/58A/58B: Küniglberg, ORF-Zentrum]]></title>
@@ -34,8 +48,8 @@
       <ext:first_seen>Mon, 23 Nov 2026 10:57:00 +0100</ext:first_seen>
       <ext:starts_at>Wed, 25 Nov 2026 00:00:00 +0100</ext:starts_at>
       <georss:point>48.175514 16.291612</georss:point>
-      <description>Verbindungsfahrbahn zwischen Würzburggasse und Küniglberggasse → Küniglberggasse 1-3, provisorische Haltestelle. Haltestellenverlegung der Linien 8A, 58A und 58B. … [Seit heute]</description>
-      <content:encoded><![CDATA[Verbindungsfahrbahn zwischen Würzburggasse und Küniglberggasse → Küniglberggasse 1-3, provisorische Haltestelle. Haltestellenverlegung der Linien 8A, 58A und 58B. …<br/>[Seit heute]]]></content:encoded>
+      <description>Verbindungsfahrbahn zwischen Würzburggasse und Küniglberggasse → Küniglberggasse 1-3, provisorische Haltestelle. Haltestellenverlegung der Linien 8A, 58A und 58B. … [Seit 25.11.]</description>
+      <content:encoded><![CDATA[Verbindungsfahrbahn zwischen Würzburggasse und Küniglberggasse → Küniglberggasse 1-3, provisorische Haltestelle. Haltestellenverlegung der Linien 8A, 58A und 58B. …<br/>[Seit 25.11.]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[48A: Klinik Penzing]]></title>
@@ -135,20 +149,6 @@
       <georss:point>48.208780 16.510505</georss:point>
       <description>Lannesstraße vor Arztgasse → Arztgasse 107 - 109. Haltestellenverlegung der Linie 98A in Richtung Aspernstraße. Grund: Umbau der Haltestelle. [Seit 16.11.]</description>
       <content:encoded><![CDATA[Lannesstraße vor Arztgasse → Arztgasse 107 - 109. Haltestellenverlegung der Linie 98A in Richtung Aspernstraße. Grund: Umbau der Haltestelle.<br/>[Seit 16.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[74A: Viehmarktgasse]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">209cb31a62c904eb68902d303a11723d91ea5136757eeb08ef5b96f69caa1c73</guid>
-      <pubDate>Thu, 05 Nov 2026 15:47:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 05 Nov 2026 15:47:00 +0100</ext:first_seen>
-      <ext:starts_at>Mon, 16 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.190488 16.401090</georss:point>
-      <description>Landstraßer Hauptstraße 148 vor Schlachthausgasse → Landstraßer Hauptstraße gegenüber 173-175. Haltestellenverlegung der Linie 74A in Richtung St. Marx. Grund: Straßenbau. [Seit 16.11.]</description>
-      <content:encoded><![CDATA[Landstraßer Hauptstraße 148 vor Schlachthausgasse → Landstraßer Hauptstraße gegenüber 173-175. Haltestellenverlegung der Linie 74A in Richtung St. Marx. Grund: Straßenbau.<br/>[Seit 16.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
