@@ -674,6 +674,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "13A/14A/57A: Demonstration",
+    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Linie 57A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "f9f9328ff9a3e1ea37387c5f08b925e5211dccb597dd8a5c9f922727319762e5",
+    "pubDate": "2026-11-25T19:09:00+01:00",
+    "starts_at": "2026-11-25T19:09:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=13A,14A,57A|D=2026-11-25|TK=demonstration",
+    "_wl_ids": [
+      "I20261125-0036"
+    ],
+    "_incident_start": "2026-11-25T19:09:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -930,6 +946,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "56A/56B: Verkehrsunfall",
+    "description": "Linie 56B: Unregelmäßige Intervalle in beiden Richtungen. Linie 56A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e0d8f8c35b3563999bc0e16238d7e32f488d2c5815b86903b5cb79f0f5865525",
+    "pubDate": "2026-11-25T19:17:00+01:00",
+    "starts_at": "2026-11-25T19:17:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=56A,56B|D=2026-11-25|TK=56a 56b verkehrsunfall",
+    "_wl_ids": [
+      "I20261125-0037"
+    ],
+    "_incident_start": "2026-11-25T19:17:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -974,38 +1006,6 @@
     "starts_at": "2026-11-25T00:00:28+01:00",
     "ends_at": "2026-11-25T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-25|TK=betrieb ab vivariumstrasse 2"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Verkehrsüberlastung",
-    "description": "Linie D: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "5ff6e6069b79de35aa4ec286f280f6f243d51eb6b11af63ffd1e7dd92ca2a247",
-    "pubDate": "2026-11-25T18:28:00+01:00",
-    "starts_at": "2026-11-25T18:28:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=D|D=2026-11-25|TK=d verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261125-0034"
-    ],
-    "_incident_start": "2026-11-25T18:28:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Falschparker",
-    "description": "Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "a90305646f013b3987fb55ef5dab8d20d35b0e58b3f412f792bb39c48c2fa5a8",
-    "pubDate": "2026-11-25T16:49:00+01:00",
-    "starts_at": "2026-11-25T16:49:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=O|D=2026-11-25|TK=falschparker",
-    "_wl_ids": [
-      "I20261125-0031"
-    ],
-    "_incident_start": "2026-11-25T16:49:00+01:00"
   },
   {
     "source": "Wiener Linien",

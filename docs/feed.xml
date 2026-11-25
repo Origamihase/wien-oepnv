@@ -8,33 +8,20 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Wed, 25 Nov 2026 19:00:43 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 25 Nov 2026 19:30:41 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[D: Verkehrsüberlastung]]></title>
+      <title><![CDATA[56A/56B: Verkehrsunfall]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">5ff6e6069b79de35aa4ec286f280f6f243d51eb6b11af63ffd1e7dd92ca2a247</guid>
-      <pubDate>Wed, 25 Nov 2026 18:28:00 +0100</pubDate>
+      <guid isPermaLink="false">e0d8f8c35b3563999bc0e16238d7e32f488d2c5815b86903b5cb79f0f5865525</guid>
+      <pubDate>Wed, 25 Nov 2026 19:17:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 25 Nov 2026 19:00:43 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 25 Nov 2026 18:28:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung. [Seit 18:28]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.<br/>[Seit 18:28]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[O: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">a90305646f013b3987fb55ef5dab8d20d35b0e58b3f412f792bb39c48c2fa5a8</guid>
-      <pubDate>Wed, 25 Nov 2026 16:49:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 25 Nov 2026 16:49:00 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 25 Nov 2026 16:49:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker. [Seit 16:49]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Falschparker.<br/>[Seit 16:49]]]></content:encoded>
+      <ext:first_seen>Wed, 25 Nov 2026 19:30:41 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 25 Nov 2026 19:17:00 +0100</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 19:17]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 19:17]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[2: Verkehrsunfall]]></title>
@@ -63,6 +50,19 @@
       <georss:line>48.273955 16.396013 48.342964 16.328957</georss:line>
       <description>Wegen eines Schadens am Gleis waren bis 18:47 Uhr nur eingeschränkt Fahrten möglich. Es kommt noch zu vereinzelten Zugausfällen und Verzögerungen. [Heute]</description>
       <content:encoded><![CDATA[Wegen eines Schadens am Gleis waren bis 18:47 Uhr nur eingeschränkt Fahrten möglich. Es kommt noch zu vereinzelten Zugausfällen und Verzögerungen.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[13A/14A/57A: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">f9f9328ff9a3e1ea37387c5f08b925e5211dccb597dd8a5c9f922727319762e5</guid>
+      <pubDate>Wed, 25 Nov 2026 19:09:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Wed, 25 Nov 2026 19:30:41 +0100</ext:first_seen>
+      <ext:starts_at>Wed, 25 Nov 2026 19:09:00 +0100</ext:starts_at>
+      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration. [Seit heute]</description>
+      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Demonstration.<br/>[Seit heute]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[8A/58A/58B: Küniglberg, ORF-Zentrum]]></title>
