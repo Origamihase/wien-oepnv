@@ -674,14 +674,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10/11/25/49/60/62/71/O: Aktuelle Wetterlage",
-    "description": "Linie 10: Unregelmäßige Intervalle in beiden Richtungen. Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Linie 25: Unregelmäßige Intervalle in beiden Richtungen. Linie 49: Unregelmäßige Intervalle in beiden Richtungen. Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Linie 62: Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "title": "1/71/D: Aktuelle Wetterlage",
+    "description": "Die Linie 1 wird in Richtung Stefan-Fadinger-Platz zwischen Schottenring U und Schottentor U über Peregringasse umgeleitet. Die Linie D wird in Richtung Beethovengang zwischen Schottentor U und Schlickgasse über Peregringasse umgeleitet. Die Linie 71 wird in Richtung Kaiserebersdorf, Zinnergasse zwischen Schottenring U und Schottentor U über Peregringasse umgeleitet. Die Haltestelle Börse, kann dadurch nicht eingehalten werden. Ersatzweise halten die Züge in der Wipplingerstraße. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Bereich Schottenring.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "3359e3765f65c2014ec71e573ef422957c52f320583f3020b96e3bd9d3b3ed93",
+    "guid": "255f6e87c0bb011c0aae7a1fe1d247a1fc2b8009e160b5deac07481d7a7631ce",
+    "pubDate": "2026-11-26T08:02:00+01:00",
+    "starts_at": "2026-11-26T08:02:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=1,71,D|D=2026-11-26|TK=1 d 71 aktuelle wetterlage",
+    "_wl_ids": [
+      "I20261126-0022"
+    ],
+    "_incident_start": "2026-11-26T08:02:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "2/10/11/25/49/60/62/71/O: Aktuelle Wetterlage",
+    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie 10: Unregelmäßige Intervalle in beiden Richtungen. Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Linie 25: Unregelmäßige Intervalle in beiden Richtungen. Linie 49: Unregelmäßige Intervalle in beiden Richtungen. Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Linie 62: Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "42219ba2f3dcd7caea6760d85ac5a1b874c653b2d290d42f899c022584da0874",
     "pubDate": "2026-11-26T07:37:00+01:00",
     "starts_at": "2026-11-26T07:37:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=10,11,25,49,60,62,71,O|D=2026-11-26|TK=10 o 71 25 60 49 11 62 aktuelle wetterlage",
+    "_identity": "wl|störung|L=10,11,2,25,49,60,62,71,O|D=2026-11-26|TK=10 o 71 25 60 49 11 62 2 aktuelle wetterlage",
     "_wl_ids": [
       "I20261126-0019"
     ],
@@ -690,14 +706,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A/15A/38A/62A/63A/64A/66A: Aktuelle Wetterlage",
-    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Linie 38A: Unregelmäßige Intervalle in beiden Richtungen. Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Linie 64A: Unregelmäßige Intervalle in beiden Richtungen. Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "title": "10A/15A/38A/62A/63A/64A/68A/68B: Aktuelle Wetterlage",
+    "description": "Linie 68B: Unregelmäßige Intervalle in beiden Richtungen. Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Linie 38A: Unregelmäßige Intervalle in beiden Richtungen. Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Linie 64A: Unregelmäßige Intervalle in beiden Richtungen. Linie 68A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "fe3259d6a829795937931dc475fd96b399381745961fa5e29953d2079423c4d7",
+    "guid": "060bc9924c8a1e66b77c2eb18877d9fba1031a3e5b60f22e5d68650a2c06e8f1",
     "pubDate": "2026-11-26T05:36:00+01:00",
     "starts_at": "2026-11-26T05:36:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=10A,15A,38A,62A,63A,64A,66A|D=2026-11-26|TK=63a 15a 66a 62a 64a 10a 38a aktuelle wetterlage",
+    "_identity": "wl|störung|L=10A,15A,38A,62A,63A,64A,68A,68B|D=2026-11-26|TK=63a 15a 62a 64a 10a 38a 68a 68b aktuelle wetterlage",
     "_wl_ids": [
       "I20261126-0006"
     ],
@@ -706,14 +722,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11A/17A/27A/34A/40A/44A/47A/49A: Aktuelle Wetterlage",
-    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Linie 27A: Unregelmäßige Intervalle in beiden Richtungen. Linie 34A: Unregelmäßige Intervalle in beiden Richtungen. Linie 40A: Unregelmäßige Intervalle in beiden Richtungen. Linie 44A: Unregelmäßige Intervalle in beiden Richtungen. Linie 47A: Unregelmäßige Intervalle in beiden Richtungen. Linie 49A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "title": "11A/17A/27A/34A/44A/47A/49A: Aktuelle Wetterlage",
+    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Linie 27A: Unregelmäßige Intervalle in beiden Richtungen. Linie 34A: Unregelmäßige Intervalle in beiden Richtungen. Linie 44A: Unregelmäßige Intervalle in beiden Richtungen. Linie 47A: Unregelmäßige Intervalle in beiden Richtungen. Linie 49A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "edf7869167d14b963434b625f4c1c1a001258f298d96fe642f2fec22ed19b78c",
+    "guid": "a17fcfee050fa977f57053d2e7a296dd5fec21704283bc700736397a7687a55d",
     "pubDate": "2026-11-26T07:38:00+01:00",
     "starts_at": "2026-11-26T07:38:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=11A,17A,27A,34A,40A,44A,47A,49A|D=2026-11-26|TK=17a 11a 27a 34a 40a 44a 47a 49a aktuelle wetterlage",
+    "_identity": "wl|störung|L=11A,17A,27A,34A,44A,47A,49A|D=2026-11-26|TK=17a 11a 27a 34a 44a 47a 49a aktuelle wetterlage",
     "_wl_ids": [
       "I20261126-0020"
     ],
@@ -810,6 +826,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "1: Witterung Züge halten Wipplingerstraße",
+    "description": "Witterung\nZüge halten Wipplingerstraße",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "6992e2e4d2fe62251b3f16b504808777bb26b1188f109d0151827e5309041e15",
+    "pubDate": "2026-11-26T08:03:16+01:00",
+    "starts_at": "2026-11-26T08:03:16+01:00",
+    "ends_at": "2026-11-26T15:01:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-11-26|TK=witterung züge halten wipplingerstrasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "25/26/27: Gleisbauarbeiten",
     "description": "Linie 25: Betrieb nur zwischen Aspern, Oberdorfstraße und Josef-Baumann-Gasse. Weiterfahrt über Linie 27 bis Aspern Nord S U. Linie 26: Betrieb nur zwischen Hausfeldstraße U und Josef-Baumann-Gasse. Weiterfahrt nach Kagran U. Linie 27: Betrieb nur zwischen Strebersdorf, Meriangasse und Floridsdorf S U. Weichen Sie daher nach Möglichkeit großräumig auf die U1 und S-Bahn über Leopoldau S U oder Praterstern S U aus. Zwischen Kagraner Platz U und Floridsdorf S U können Sie auch auf die Linien 31A und anschließend 29A/29B oder 31A und S-Bahn ausweichen. Zwischen Kagran U und Floridsdorf S U können Sie auch auf die Linien 27A und anschließend 29A/29B ausweichen. Zwischen Floridsdorf S U und Josef-Baumann-Gasse fährt der Ersatzbus 26E. Beachten Sie, der 26E hat nicht die gleichen Kapazitäten wie eine Straßenbahn. Voraussichtliche Dauer: Ende 2026. Grund: Gleisbauarbeiten im Bereich Donaufelder Straße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -846,6 +874,18 @@
     "starts_at": "2026-11-24T00:00:22+01:00",
     "ends_at": "2026-11-26T23:59:59+01:00",
     "_identity": "wl|störung|L=25|D=2026-11-24|TK=züge halten donaufelder strasse 175 177"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Witterung Züge halten Wipplingerstraße",
+    "description": "Witterung\nZüge halten Wipplingerstraße",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "5b458a7d0ef1a290df03d08ec013c384f21174a10c54f5cf975925b0c3d0c1a4",
+    "pubDate": "2026-11-26T08:02:16+01:00",
+    "starts_at": "2026-11-26T08:02:16+01:00",
+    "ends_at": "2026-11-26T15:01:00+01:00",
+    "_identity": "wl|störung|L=25|D=2026-11-26|TK=witterung züge halten wipplingerstrasse"
   },
   {
     "source": "Wiener Linien",
@@ -1003,7 +1043,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "39A: Aktuelle Wetterlage",
-    "description": "Linie 39A: Betrieb nur zwischen Bahnhof Heiligenstadt S U und Sievering. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Bereich Agnesgasse.",
+    "description": "Linie 39A: Betrieb nur zwischen Bahnhof Heiligenstadt S U und Bellevuestraße. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Bereich Agnesgasse.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "0d23fbb2d463fb0fe86e69cd3638808fbff922f46e60affedac393f19bcdbbca",
     "pubDate": "2026-11-26T06:56:00+01:00",
@@ -1014,6 +1054,34 @@
       "I20261126-0014"
     ],
     "_incident_start": "2026-11-26T06:56:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40A: Aktuelle Wetterlage",
+    "description": "Linie 40A: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Bereich Hugo-Wolf-Park.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "040d3b9f25a98b8ff8d9244e0bd4586cbd5de0895eaf0d2269958679ad45cea0",
+    "pubDate": "2026-11-26T08:23:00+01:00",
+    "starts_at": "2026-11-26T08:23:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=40A|D=2026-11-26|TK=40a aktuelle wetterlage",
+    "_wl_ids": [
+      "I20261126-0023"
+    ],
+    "_incident_start": "2026-11-26T08:23:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40A: Fahrtbehinderung wegen Witterung",
+    "description": "Fahrtbehinderung\nwegen Witterung",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "f80fa15e15dc6f786feedcfda57f2deeec8b68d9f9ca7f084c38ab75033bc391",
+    "pubDate": "2026-11-26T08:25:49+01:00",
+    "starts_at": "2026-11-26T08:25:49+01:00",
+    "ends_at": "2026-11-26T09:25:00+01:00",
+    "_identity": "wl|störung|L=40A|D=2026-11-26|TK=fahrtbehinderung wegen witterung"
   },
   {
     "source": "Wiener Linien",
@@ -1034,14 +1102,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "4A/59A/65A/92A/94A/97A/98A: Aktuelle Wetterlage",
-    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. Linie 92A: Unregelmäßige Intervalle in beiden Richtungen. Linie 94A: Unregelmäßige Intervalle in beiden Richtungen. Linie 97A: Unregelmäßige Intervalle in beiden Richtungen. Linie 98A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "title": "4A/7A/59A/65A/92A/94A/97A/98A: Aktuelle Wetterlage",
+    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. Linie 92A: Unregelmäßige Intervalle in beiden Richtungen. Linie 94A: Unregelmäßige Intervalle in beiden Richtungen. Linie 97A: Unregelmäßige Intervalle in beiden Richtungen. Linie 98A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "9a5793e5623c048431c509d4347ac65dd59c3a6f61171e9d603f3d76b218c226",
+    "guid": "2987bd67a58defbb130e18eb6fb035321f94f687ae5d4524522588031172bfef",
     "pubDate": "2026-11-26T07:41:00+01:00",
     "starts_at": "2026-11-26T07:41:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=4A,59A,65A,92A,94A,97A,98A|D=2026-11-26|TK=98a 97a 94a 92a 4a 59a 65a aktuelle wetterlage",
+    "_identity": "wl|störung|L=4A,59A,65A,7A,92A,94A,97A,98A|D=2026-11-26|TK=98a 97a 94a 92a 4a 59a 65a 7a aktuelle wetterlage",
     "_wl_ids": [
       "I20261126-0021"
     ],
@@ -1090,42 +1158,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "69A: Aktuelle Wetterlage",
-    "description": "Linie 69A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "71: Witterung Züge halten Wipplingerstraße",
+    "description": "Witterung\nZüge halten Wipplingerstraße",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "79de41b8855baec8c789e83696ee5f1b9951e354d298cfbeffe64c4ca2a29195",
-    "pubDate": "2026-11-26T06:41:00+01:00",
-    "starts_at": "2026-11-26T06:41:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=69A|D=2026-11-26|TK=69a aktuelle wetterlage",
-    "_wl_ids": [
-      "I20261126-0011"
-    ],
-    "_incident_start": "2026-11-26T06:41:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "69A: Fahrtbehinderung wegen Witterung",
-    "description": "Fahrtbehinderung\nwegen Witterung",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "9bfc148e0532d12c95c04b088c08c16c980c345fa5d8f2957888dc8f2ea1feba",
-    "pubDate": "2026-11-26T06:48:38+01:00",
-    "starts_at": "2026-11-26T07:17:14+01:00",
-    "ends_at": "2026-11-26T10:48:00+01:00",
-    "_identity": "wl|störung|L=69A|D=2026-11-26|TK=fahrtbehinderung wegen witterung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "69A: Witterung Betrieb ab Lilienthalgasse",
-    "description": "Witterung\nBetrieb ab Lilienthalgasse",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "66087494508aa83b13f6abe2099f1693c3ba9a0cbb306d70db1051a443af1d3a",
-    "pubDate": "2026-11-26T06:48:39+01:00",
-    "starts_at": "2026-11-26T06:48:41+01:00",
-    "ends_at": "2026-11-26T10:15:00+01:00",
-    "_identity": "wl|störung|L=69A|D=2026-11-26|TK=witterung betrieb ab lilienthalgasse"
+    "guid": "6662d14bb67b30b92f106433b64b60353c9861d55346c348f03a3738e9d3e713",
+    "pubDate": "2026-11-26T08:04:47+01:00",
+    "starts_at": "2026-11-26T08:04:47+01:00",
+    "ends_at": "2026-11-26T09:04:00+01:00",
+    "_identity": "wl|störung|L=71|D=2026-11-26|TK=witterung züge halten wipplingerstrasse"
   },
   {
     "source": "Wiener Linien",
@@ -1150,6 +1190,18 @@
     "starts_at": "2026-11-25T00:00:28+01:00",
     "ends_at": "2026-11-26T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-25|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Witterung Züge halten Wipplingerstraße",
+    "description": "Witterung\nZüge halten Wipplingerstraße",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "236691d6ee203435cbd5cded60bc871a188b80c282939425444b0f53a41a8bfb",
+    "pubDate": "2026-11-26T08:04:17+01:00",
+    "starts_at": "2026-11-26T08:04:17+01:00",
+    "ends_at": "2026-11-26T15:03:00+01:00",
+    "_identity": "wl|störung|L=D|D=2026-11-26|TK=witterung züge halten wipplingerstrasse"
   },
   {
     "source": "Wiener Linien",
