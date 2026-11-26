@@ -1,16 +1,36 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-26T13:30:59.493320+00:00",
- "built": "2026-11-26T14:30:45+01:00",
+ "updated": "2026-11-26T14:01:12.843949+00:00",
+ "built": "2026-11-26T15:00:52+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-26T14:30:45+01:00",
+  "built": "2026-11-26T15:00:52+01:00",
   "items": [
    {
+    "title": "62/62A: Witterung",
+    "time_line": "Seit 14:39"
+   },
+   {
+    "title": "10/60: Betriebsstörung",
+    "time_line": "Seit 11:56"
+   },
+   {
+    "title": "52: Betriebsstörung",
+    "time_line": "Seit 11:45"
+   },
+   {
+    "title": "31: Falschparker, Verkehrsunfall",
+    "time_line": "Seit 14:55"
+   },
+   {
+    "title": "18: Falschparker, Feuerwehreinsatz",
+    "time_line": "Seit 14:55"
+   },
+   {
     "title": "1: Stromstörung, Witterung",
-    "time_line": "Seit 14:24"
+    "time_line": "Seit 14:48"
    },
    {
     "title": "36A: Aktuelle Wetterlage",
@@ -25,53 +45,13 @@
     "time_line": "Seit 14:29"
    },
    {
-    "title": "31: Verkehrsunfall",
+    "title": "27: Verkehrsunfall",
     "time_line": "Seit 14:28"
-   },
-   {
-    "title": "18: Verkehrsunfall, Feuerwehreinsatz",
-    "time_line": "Seit 14:08"
-   },
-   {
-    "title": "63A: Feuerwehreinsatz",
-    "time_line": "Seit 13:58"
-   },
-   {
-    "title": "1/6: Aktuelle Wetterlage",
-    "time_line": "Seit 13:53"
-   },
-   {
-    "title": "2: Witterung, Weichenstörung",
-    "time_line": "Seit 13:49"
-   },
-   {
-    "title": "6/9/18: Aktuelle Wetterlage",
-    "time_line": "Seit 13:29"
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-19T13:32:18.075398+00:00",
-   "raw": {
-    "wl-stoerungen": 88,
-    "wl-hinweise": 75,
-    "oebb": 172,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 14,
-    "oebb": 146,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 10,
-    "wl": 94
-   }
-  },
   {
    "t": "2026-11-19T14:02:36.017799+00:00",
    "raw": {
@@ -6791,11 +6771,31 @@
     "oebb": 14,
     "wl": 164
    }
+  },
+  {
+   "t": "2026-11-26T14:01:12.843949+00:00",
+   "raw": {
+    "wl-stoerungen": 330,
+    "wl-hinweise": 79,
+    "oebb": 188,
+    "baustellen-linien": 47,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 19,
+    "oebb": 160,
+    "baustellen": 57
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 14,
+    "wl": 174
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-26T13:30:59.493320+00:00"
+   "last_ok": "2026-11-26T14:01:12.843949+00:00"
   },
   "oebb": {
    "last_ok": "2026-11-26T13:01:07.798655+00:00",
@@ -6803,7 +6803,7 @@
    "failing_since": "2026-11-26T13:30:59.493320+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-26T13:30:59.493320+00:00"
+   "last_ok": "2026-11-26T14:01:12.843949+00:00"
   }
  }
 }
