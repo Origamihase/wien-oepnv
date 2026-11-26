@@ -1,13 +1,29 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-26T17:31:08.018191+00:00",
- "built": "2026-11-26T18:30:46+01:00",
+ "updated": "2026-11-26T18:01:03.834965+00:00",
+ "built": "2026-11-26T19:00:43+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-26T18:30:46+01:00",
+  "built": "2026-11-26T19:00:43+01:00",
   "items": [
+   {
+    "title": "Wien Grillgasse ↔ Kledering",
+    "time_line": "Seit 18:55"
+   },
+   {
+    "title": "52: Weichenschaden",
+    "time_line": "Seit 18:53"
+   },
+   {
+    "title": "10: Weichenschaden, Schadhafter PKW",
+    "time_line": "Seit 18:46"
+   },
+   {
+    "title": "10/52: Weichenstörung",
+    "time_line": "Seit 18:46"
+   },
    {
     "title": "1/6/11: Aktuelle Wetterlage",
     "time_line": "Seit 18:07"
@@ -17,20 +33,8 @@
     "time_line": "Seit 18:01"
    },
    {
-    "title": "2: Aktuelle Wetterlage",
+    "title": "2/5/12: Aktuelle Wetterlage",
     "time_line": "Seit 17:58"
-   },
-   {
-    "title": "12: Umleitung Zimmermannplatz",
-    "time_line": "Seit 18:09"
-   },
-   {
-    "title": "5/12: Aktuelle Wetterlage",
-    "time_line": "Seit 17:58"
-   },
-   {
-    "title": "10: Schadhafter PKW, Betriebsstörung",
-    "time_line": "Seit 17:53"
    },
    {
     "title": "U1: Betriebsstörung",
@@ -41,37 +45,13 @@
     "time_line": "Seit 07:38"
    },
    {
-    "title": "63A: Betriebsstörung, Feuerwehreinsatz",
+    "title": "63A: Betriebsstörung",
     "time_line": "Seit 17:24"
-   },
-   {
-    "title": "58B: Verkehrsunfall",
-    "time_line": "Seit 16:31"
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-19T17:32:05.942889+00:00",
-   "raw": {
-    "wl-stoerungen": 103,
-    "wl-hinweise": 74,
-    "oebb": 173,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 14,
-    "oebb": 147,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 10,
-    "wl": 100
-   }
-  },
   {
    "t": "2026-11-19T18:02:09.918698+00:00",
    "raw": {
@@ -6791,17 +6771,37 @@
     "oebb": 14,
     "wl": 130
    }
+  },
+  {
+   "t": "2026-11-26T18:01:03.834965+00:00",
+   "raw": {
+    "wl-stoerungen": 124,
+    "wl-hinweise": 79,
+    "oebb": 186,
+    "baustellen-linien": 47,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 20,
+    "oebb": 157,
+    "baustellen": 57
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 15,
+    "wl": 129
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-26T17:31:08.018191+00:00"
+   "last_ok": "2026-11-26T18:01:03.834965+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-26T17:31:08.018191+00:00"
+   "last_ok": "2026-11-26T18:01:03.834965+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-26T17:31:08.018191+00:00"
+   "last_ok": "2026-11-26T18:01:03.834965+00:00"
   }
  }
 }

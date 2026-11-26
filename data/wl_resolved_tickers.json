@@ -1,7 +1,71 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
- "tickers": [],
+ "tickers": [
+  {
+   "key": "R272-112|2026-11-26T18:09:18.000+0100|Fahrtbehinderung\nWitterung ",
+   "name": "R272-112",
+   "title": "Fahrtbehinderung\nWitterung ",
+   "end": "2026-11-26T19:08:00.000+0100",
+   "incident": "I20261126-0098"
+  },
+  {
+   "key": "R356-105|2026-11-26T18:07:47.000+0100|Witterung \nBetrieb ab Lerchenfelder Straße ",
+   "name": "R356-105",
+   "title": "Witterung \nBetrieb ab Lerchenfelder Straße ",
+   "end": "2026-11-26T19:06:00.000+0100",
+   "incident": "I20261126-0098"
+  },
+  {
+   "key": "R356-112|2026-11-26T18:09:48.000+0100|Umleitung \nZimmermannplatz",
+   "name": "R356-112",
+   "title": "Umleitung \nZimmermannplatz",
+   "end": "2026-11-26T19:09:00.000+0100",
+   "incident": "I20261126-0098"
+  },
+  {
+   "key": "R357-105|2026-11-26T18:07:47.000+0100|Witterung \nBetrieb ab Lerchenfelder Straße ",
+   "name": "R357-105",
+   "title": "Witterung \nBetrieb ab Lerchenfelder Straße ",
+   "end": "2026-11-26T19:06:00.000+0100",
+   "incident": "I20261126-0098"
+  },
+  {
+   "key": "R357-112|2026-11-26T18:09:18.000+0100|Fahrtbehinderung\nWitterung ",
+   "name": "R357-112",
+   "title": "Fahrtbehinderung\nWitterung ",
+   "end": "2026-11-26T19:08:00.000+0100",
+   "incident": "I20261126-0098"
+  },
+  {
+   "key": "R377-105|2026-11-26T18:05:50.000+0100|Witterung \nBetrieb ab Lange Gasse ",
+   "name": "R377-105",
+   "title": "Witterung \nBetrieb ab Lange Gasse ",
+   "end": "2026-11-26T19:05:00.000+0100",
+   "incident": "I20261126-0098"
+  },
+  {
+   "key": "R379-105|2026-11-26T18:05:50.000+0100|Witterung \nBetrieb ab Lange Gasse ",
+   "name": "R379-105",
+   "title": "Witterung \nBetrieb ab Lange Gasse ",
+   "end": "2026-11-26T19:05:00.000+0100",
+   "incident": "I20261126-0098"
+  },
+  {
+   "key": "R379-112|2026-11-26T18:08:50.000+0100|Witterung \nBetrieb ab Lange Gasse ",
+   "name": "R379-112",
+   "title": "Witterung \nBetrieb ab Lange Gasse ",
+   "end": "2026-11-26T19:08:00.000+0100",
+   "incident": "I20261126-0098"
+  },
+  {
+   "key": "R458-112|2026-11-26T18:08:50.000+0100|Witterung \nBetrieb ab Lange Gasse ",
+   "name": "R458-112",
+   "title": "Witterung \nBetrieb ab Lange Gasse ",
+   "end": "2026-11-26T19:08:00.000+0100",
+   "incident": "I20261126-0098"
+  }
+ ],
  "owners": {
   "R13-101|2026-11-26T15:30:31.000+0100": {
    "incident": "I20261126-0080",
@@ -16,17 +80,33 @@
    "incident": "I20261126-0080",
    "title": "Gleisschaden\nBetrieb ab Julius-Raab-Platz"
   },
+  "R1465-152|2026-11-26T18:53:50.000+0100": {
+   "incident": "I20261126-0100",
+   "title": "Weichenschaden \nUmleitung über 49 und 9"
+  },
   "R15-101|2026-11-26T15:30:31.000+0100": {
    "incident": "I20261126-0080",
    "title": "Gleisschaden\nBetrieb ab Julius-Raab-Platz"
   },
-  "R1595-463|2026-11-26T17:41:14.000+0100": {
-   "incident": "I20261126-0094",
-   "title": "Fahrtbehinderung\nBetriebsstörung"
+  "R1553-152|2026-11-26T18:54:21.000+0100": {
+   "incident": "I20261126-0100",
+   "title": "Fahrtbehinderung\nwegen Weichenschaden "
   },
-  "R1608-463|2026-11-26T17:41:14.000+0100": {
-   "incident": "I20261126-0094",
-   "title": "Fahrtbehinderung\nBetriebsstörung"
+  "R1556-152|2026-11-26T18:54:21.000+0100": {
+   "incident": "I20261126-0100",
+   "title": "Fahrtbehinderung\nwegen Weichenschaden "
+  },
+  "R1558-152|2026-11-26T18:54:21.000+0100": {
+   "incident": "I20261126-0100",
+   "title": "Fahrtbehinderung\nwegen Weichenschaden "
+  },
+  "R1559-152|2026-11-26T18:54:21.000+0100": {
+   "incident": "I20261126-0100",
+   "title": "Fahrtbehinderung\nwegen Weichenschaden "
+  },
+  "R1562-152|2026-11-26T18:54:21.000+0100": {
+   "incident": "I20261126-0100",
+   "title": "Fahrtbehinderung\nwegen Weichenschaden "
   },
   "R161-170|2026-11-26T15:36:30.000+0100": {
    "incident": "I20261126-0081",
@@ -44,18 +124,6 @@
    "incident": "I20261126-0080",
    "title": "Fahrtbehinderung\nwegen Weichenstörung",
    "begin": "2026-11-26T15:25:00+01:00"
-  },
-  "R1685-463|2026-11-26T17:41:13.000+0100": {
-   "incident": "I20261126-0094",
-   "title": "Fahrtbehinderung\nBetriebsstörung"
-  },
-  "R1762-463|2026-11-26T17:41:13.000+0100": {
-   "incident": "I20261126-0094",
-   "title": "Fahrtbehinderung\nBetriebsstörung"
-  },
-  "R1766-463|2026-11-26T17:41:13.000+0100": {
-   "incident": "I20261126-0094",
-   "title": "Fahrtbehinderung\nBetriebsstörung"
   },
   "R18-101|2026-11-26T15:30:31.000+0100": {
    "incident": "I20261126-0080",
@@ -86,10 +154,6 @@
   "R307-170|2026-11-26T15:30:01.000+0100": {
    "incident": "I20261126-0081",
    "title": "Fahrtbehinderung\nFahrbahnschaden"
-  },
-  "R3468-110|2026-11-26T17:54:46.000+0100": {
-   "incident": "I20261126-0097",
-   "title": "Fahrtbehinderung\nSchadhafter PKW"
   },
   "R356-105|2026-11-26T18:07:47.000+0100": {
    "incident": "I20261126-0098",
@@ -135,33 +199,64 @@
    "incident": "I20261126-0098",
    "title": "Witterung \nBetrieb ab Lange Gasse "
   },
+  "R565-110|2026-11-26T18:50:22.000+0100": {
+   "incident": "I20261126-0100",
+   "title": "Weichenschaden\nBetrieb ab Hietzing "
+  },
+  "R566-110|2026-11-26T18:50:22.000+0100": {
+   "incident": "I20261126-0100",
+   "title": "Weichenschaden\nBetrieb ab Hietzing "
+  },
+  "R568-110|2026-11-26T18:50:22.000+0100": {
+   "incident": "I20261126-0100",
+   "title": "Weichenschaden\nBetrieb ab Hietzing "
+  },
+  "R570-110|2026-11-26T18:50:22.000+0100": {
+   "incident": "I20261126-0100",
+   "title": "Weichenschaden\nBetrieb ab Hietzing "
+  },
+  "R571-110|2026-11-26T18:50:22.000+0100": {
+   "incident": "I20261126-0100",
+   "title": "Weichenschaden\nBetrieb ab Hietzing "
+  },
+  "R571-152|2026-11-26T18:53:53.000+0100": {
+   "incident": "I20261126-0100",
+   "title": "Fahrtbehinderung\nwegen Weichenschaden "
+  },
+  "R572-110|2026-11-26T18:50:22.000+0100": {
+   "incident": "I20261126-0100",
+   "title": "Weichenschaden\nBetrieb ab Hietzing "
+  },
+  "R574-110|2026-11-26T18:51:53.000+0100": {
+   "incident": "I20261126-0100",
+   "title": "Weichenschaden \nBetrieb ab Joachimsthalerplatz"
+  },
+  "R577-110|2026-11-26T18:51:53.000+0100": {
+   "incident": "I20261126-0100",
+   "title": "Weichenschaden \nBetrieb ab Joachimsthalerplatz"
+  },
+  "R578-110|2026-11-26T18:51:53.000+0100": {
+   "incident": "I20261126-0100",
+   "title": "Weichenschaden \nBetrieb ab Joachimsthalerplatz"
+  },
+  "R579-110|2026-11-26T18:51:53.000+0100": {
+   "incident": "I20261126-0100",
+   "title": "Weichenschaden \nBetrieb ab Joachimsthalerplatz"
+  },
   "R581-110|2026-11-26T17:54:46.000+0100": {
-   "incident": "I20261126-0097",
-   "title": "Fahrtbehinderung\nSchadhafter PKW"
+   "incident": "I20261126-0100",
+   "title": "Weichenschaden \nBetrieb ab Joachimsthalerplatz",
+   "begin": "2026-11-26T18:46:00+01:00"
   },
   "R583-110|2026-11-26T17:54:46.000+0100": {
-   "incident": "I20261126-0097",
-   "title": "Fahrtbehinderung\nSchadhafter PKW"
+   "incident": "I20261126-0100",
+   "title": "Weichenschaden \nBetrieb ab Joachimsthalerplatz",
+   "begin": "2026-11-26T18:46:00+01:00"
   },
   "R584-110|2026-11-26T17:54:46.000+0100": {
-   "incident": "I20261126-0097",
-   "title": "Fahrtbehinderung\nSchadhafter PKW"
-  },
-  "R585-110|2026-11-26T17:54:46.000+0100": {
-   "incident": "I20261126-0097",
-   "title": "Fahrtbehinderung\nSchadhafter PKW"
-  },
-  "R586-110|2026-11-26T17:54:46.000+0100": {
-   "incident": "I20261126-0097",
-   "title": "Fahrtbehinderung\nSchadhafter PKW"
-  },
-  "R587-110|2026-11-26T17:54:46.000+0100": {
-   "incident": "I20261126-0097",
-   "title": "Fahrtbehinderung\nSchadhafter PKW"
-  },
-  "R588-110|2026-11-26T17:54:46.000+0100": {
-   "incident": "I20261126-0097",
-   "title": "Fahrtbehinderung\nSchadhafter PKW"
+   "incident": "I20261126-0100",
+   "title": "Weichenschaden \nZüge halten bei Linie 46",
+   "begin": "2026-11-26T18:46:00+01:00"
   }
  }
 }
