@@ -686,14 +686,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/2/O: Aktuelle Wetterlage",
-    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "title": "1/2/31/O: Aktuelle Wetterlage",
+    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie 31: Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "597b53c47a75f660470f5a7b55c3555b5618439a23454a7dc6f80eba2978d93a",
+    "guid": "0ba372fbccaf6b87feb5e4ad13f5107473be4fbc6d3f1053ab382fd2ccdf3449",
     "pubDate": "2026-11-26T07:37:00+01:00",
     "starts_at": "2026-11-26T07:37:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=1,2,O|D=2026-11-26|TK=o 2 1 aktuelle wetterlage",
+    "_identity": "wl|störung|L=1,2,31,O|D=2026-11-26|TK=o 2 1 31 aktuelle wetterlage",
     "_wl_ids": [
       "I20261126-0019"
     ],
@@ -703,7 +703,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "10/52: Betriebsstörung",
-    "description": "Linie 10: Kein Betrieb zwischen Hietzing U und Hütteldorfer Straße U. Linie 52: Kein Betrieb zwischen Penzinger Straße und Anschützgasse. Ersatz: Linien U3 und 10A. Voraussichtliche Dauer: 12:40 Uhr. Grund: Betriebsstörung im Bereich Schloßallee # Penzinger Straße.",
+    "description": "Linie 10: Kein Betrieb zwischen Hietzing U und Hütteldorfer Straße U. Linie 52: Kein Betrieb zwischen Penzinger Straße und Anschützgasse. Ersatz: Linien U3 und 10A. Voraussichtliche Dauer: 13:20 Uhr. Grund: Betriebsstörung im Bereich Schloßallee # Penzinger Straße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "48c76da97247d45eeabda48f07abfee0228b29ac91562a32c622c9c58e37fa41",
     "pubDate": "2026-11-26T11:45:00+01:00",
@@ -815,15 +815,16 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "13A: Aktuelle Wetterlage",
-    "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Linie 13A: Betrieb nur zwischen Hauptbahnhof S U und Theater in der Josefstadt. Voraussichtliche Dauer: 13:30 Uhr. Grund: Aktuelle Wetterlage im Haltestellenbereich Alser Straße, Skodagasse.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "7343bfc155a7d703ae238d654376ec994bd7bd71ded9bb4a46553e7f7c9d7ddf",
     "pubDate": "2026-11-26T08:52:00+01:00",
-    "starts_at": "2026-11-26T08:52:00+01:00",
+    "starts_at": "2026-11-26T12:53:00+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=13A|D=2026-11-26|TK=13a aktuelle wetterlage",
     "_wl_ids": [
-      "I20261126-0028"
+      "I20261126-0028",
+      "I20261126-0058"
     ],
     "_incident_start": "2026-11-26T08:52:00+01:00"
   },
@@ -835,9 +836,21 @@
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "226d5fa5aee5615acafe6a0d616f9d50ab6393268911b1132ae2fd53fa663568",
     "pubDate": "2026-11-26T09:08:53+01:00",
-    "starts_at": "2026-11-26T09:08:54+01:00",
-    "ends_at": "2026-11-26T15:08:00+01:00",
+    "starts_at": "2026-11-26T12:59:45+01:00",
+    "ends_at": "2026-11-26T16:59:00+01:00",
     "_identity": "wl|störung|L=13A|D=2026-11-26|TK=fahrtbehinderung wegen witterung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Witterung Betrieb ab Strozzigasse",
+    "description": "Witterung\nBetrieb ab Strozzigasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b6d991cd9105dad71f31f4b0c1bd8e06ee87969084844e9f50fbe0efe12d9713",
+    "pubDate": "2026-11-26T12:57:45+01:00",
+    "starts_at": "2026-11-26T12:57:45+01:00",
+    "ends_at": "2026-11-26T16:57:00+01:00",
+    "_identity": "wl|störung|L=13A|D=2026-11-26|TK=witterung betrieb ab strozzigasse"
   },
   {
     "source": "Wiener Linien",
@@ -1218,12 +1231,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37: Fahrtbehinderung Falschparker",
+    "title": "37: Falschparker",
     "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f",
     "pubDate": "2026-11-26T11:30:00+01:00",
-    "starts_at": "2026-11-26T11:37:35+01:00",
+    "starts_at": "2026-11-26T11:30:00+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=37|D=2026-11-26|TK=falschparker",
     "_wl_ids": [
@@ -1246,6 +1259,38 @@
       "I20261126-0023"
     ],
     "_incident_start": "2026-11-26T08:23:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40: Fahrtbehinderung Falschparker",
+    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919",
+    "pubDate": "2026-11-26T12:42:12+01:00",
+    "starts_at": "2026-11-26T12:45:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=40|D=2026-11-26|TK=falschparker",
+    "_wl_ids": [
+      "I20261126-0057"
+    ],
+    "_incident_start": "2026-11-26T12:45:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Fahrtbehinderung Falschparker",
+    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa",
+    "pubDate": "2026-11-26T12:42:42+01:00",
+    "starts_at": "2026-11-26T12:45:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=41|D=2026-11-26|TK=falschparker",
+    "_wl_ids": [
+      "I20261126-0057"
+    ],
+    "_incident_start": "2026-11-26T12:45:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1370,6 +1415,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "60A: Verkehrsunfall",
+    "description": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "15ef57fce9c662ed7b76084303f102ef88811630f5a714caaf939a9b1b81af96",
+    "pubDate": "2026-11-26T12:54:00+01:00",
+    "starts_at": "2026-11-26T12:54:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=60A|D=2026-11-26|TK=60a verkehrsunfall",
+    "_wl_ids": [
+      "I20261126-0059"
+    ],
+    "_incident_start": "2026-11-26T12:54:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "60: Betriebsstörung",
     "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1406,58 +1467,6 @@
     "starts_at": "2026-11-26T11:56:10+01:00",
     "ends_at": "2026-11-26T15:55:00+01:00",
     "_identity": "wl|störung|L=60|D=2026-11-26|TK=betriebsstörung betrieb ab hietzing"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Verkehrsunfall Betrieb ab Hietzing",
-    "description": "Verkehrsunfall\nBetrieb ab Hietzing",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "9aa64ffbe125babfe2e0cc0a6f7a03ba356a1229ede5f60259d0e4e186056b56",
-    "pubDate": "2026-11-26T11:34:38+01:00",
-    "starts_at": "2026-11-26T11:45:00+01:00",
-    "ends_at": "2026-11-26T12:33:00+01:00",
-    "_identity": "wl|störung|L=60|D=2026-11-26|TK=verkehrsunfall betrieb ab hietzing"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Verkehrsunfall Betrieb ab Hofwiesengasse",
-    "description": "Verkehrsunfall\nBetrieb ab Hofwiesengasse",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "58fb55c12f3a50285072650650cee8366427aae593f0d22497c59c05afa0a673",
-    "pubDate": "2026-11-26T11:33:38+01:00",
-    "starts_at": "2026-11-26T11:45:00+01:00",
-    "ends_at": "2026-11-26T12:33:00+01:00",
-    "_identity": "wl|störung|L=60|D=2026-11-26|TK=verkehrsunfall betrieb ab hofwiesengasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Verkehrsunfall Einstieg bei Linie 62 Richtung Lainz",
-    "description": "Verkehrsunfall\nEinstieg bei Linie 62 Richtung Lainz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "e74df434e09a36beed89fc6e016d6315369c8dc8e52f4503cadde3946b935b80",
-    "pubDate": "2026-11-26T11:45:00+01:00",
-    "starts_at": "2026-11-26T11:45:00+01:00",
-    "ends_at": "2026-11-26T12:36:00+01:00",
-    "_identity": "wl|störung|L=60|D=2026-11-26|TK=verkehrsunfall einstieg bei linie 62 richtung lainz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62A: Aktuelle Wetterlage",
-    "description": "Linie 62A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "20a9c5689ff28e8678735357a14db6501f88e7d9258d79821199a1286ec8623d",
-    "pubDate": "2026-11-26T08:30:00+01:00",
-    "starts_at": "2026-11-26T08:30:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=62A|D=2026-11-26|TK=62a aktuelle wetterlage",
-    "_wl_ids": [
-      "I20261126-0025"
-    ],
-    "_incident_start": "2026-11-26T08:30:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1559,7 +1568,7 @@
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "ed407c6dcbddf97a6d7a31e2061c6df95440e82581e6d96098e62eb26b9fd64c",
     "pubDate": "2026-11-26T11:53:38+01:00",
-    "starts_at": "2026-11-26T12:00:39+01:00",
+    "starts_at": "2026-11-26T11:53:38+01:00",
     "ends_at": "2026-11-26T14:53:00+01:00",
     "_identity": "wl|störung|L=6|D=2026-11-26|TK=falschparker"
   },
@@ -1606,6 +1615,18 @@
     "starts_at": "2026-11-26T12:22:13+01:00",
     "ends_at": "2026-11-26T16:21:00+01:00",
     "_identity": "wl|störung|L=71|D=2026-11-26|TK=fahrtbehinderung wegen witterung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Witterung Betrieb ab Börse",
+    "description": "Witterung\nBetrieb ab Börse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "2d98d3c533e94d6d9f0dbea183ec655df6c2f042e58b08b85cbb89596021a13c",
+    "pubDate": "2026-11-26T12:21:43+01:00",
+    "starts_at": "2026-11-26T12:21:43+01:00",
+    "ends_at": "2026-11-26T13:46:00+01:00",
+    "_identity": "wl|störung|L=71|D=2026-11-26|TK=witterung betrieb ab börse"
   },
   {
     "source": "Wiener Linien",
@@ -1694,28 +1715,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9A: Aktuelle Wetterlage",
-    "description": "Linie 9A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7d498c5b59f7d1faf141cbb58412947e88e0e17105a4e8ce017b432c3408a183",
-    "pubDate": "2026-11-26T10:00:00+01:00",
-    "starts_at": "2026-11-26T10:00:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=9A|D=2026-11-26|TK=9a aktuelle wetterlage",
-    "_wl_ids": [
-      "I20261126-0035"
-    ],
-    "_incident_start": "2026-11-26T10:00:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "9: Falschparker",
+    "title": "9: Fahrtbehinderung Falschparker",
     "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "abc04ceb8ce4222ae87d913017de666c1c7b4270cf4d71087618d14cd9b72386",
-    "pubDate": "2026-11-26T10:42:00+01:00",
-    "starts_at": "2026-11-26T10:42:00+01:00",
+    "pubDate": "2026-11-26T12:30:00+01:00",
+    "starts_at": "2026-11-26T12:33:12+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=9|D=2026-11-26|TK=falschparker"
   },
