@@ -49,29 +49,6 @@
   {
    "geometry": {
     "first_position": [
-     16.40791105,
-     48.2752045
-    ],
-    "type": "Point"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Kundenzentrum",
-    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
-    "ANTRAGSTELLER": "MA28",
-    "BEHINDERUNGSART": "Straßenbau",
-    "BEZEICHNUNG": "Brünner Straße 114",
-    "BEZIRK": 21,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-11-09Z",
-    "OBJEKT_ENDE": "2026-11-27Z",
-    "PRESSETEXT": "Derrechte Fahrstreifen in Fahrtrichtung stadtauswärts wird gesperrt. Die restlichenFahrstreifen werden aufrechtgehalten. DerFußgängerverkehr kann aufrecht gehalten werden.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
      16.28541147,
      48.14733017
     ],
@@ -181,6 +158,29 @@
     "OBJEKT_BEGINN": "2026-09-20Z",
     "OBJEKT_ENDE": "2026-12-23Z",
     "PRESSETEXT": "ImBaustellenbereich wird ein Fahrstreifen freigehalten und der Verkehr wechselweise mittels Ampel durchgeschleust.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.35490739,
+     48.19361315
+    ],
+    "type": "Point"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Poststelle Wien Kanal",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000-30030",
+    "ANTRAGSTELLER": "Wienkanal",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Rechte Wienzeile Grüngasse bis 79",
+    "BEZIRK": 5,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-11-29Z",
+    "OBJEKT_ENDE": "2026-12-18Z",
+    "PRESSETEXT": "DieArbeiten erfolgen in der Zeit von 09:00 bis 15:00 Uhr. Derrechte Fahrstreifen in Fahrtrichtung stadteinwärts wird gesperrt. Die restlichenFahrstreifen werden aufrechtgehalten. Außerhalbder Arbeitszeit bleibt der Verkehr unbehindert.",
     "SE_ANNO_CAD_DATA": null
    }
   },

@@ -241,15 +241,15 @@
    "properties": {
     "ANSPRECHPERSON": "Kundentelefon Wiener Linien",
     "ANSPRECHPERSON_TEL": "Tel.: 01-7909/100",
-    "ANTRAGSTELLER": "Wiener Linien GmbH & Co KG",
+    "ANTRAGSTELLER": null,
     "BEHINDERUNGSART": "Gleisbau",
     "BEZEICHNUNG": "Flurschützstraße von Kreuzung Aßmayergasse und Wilhelmstraße bis Kreuzung Längenfeldgasse",
     "BEZIRK": 12,
     "GISCODE": 1,
     "GISCODE_TXT": "P90 Baustellen",
     "OBJEKT_BEGINN": "2026-10-05Z",
-    "OBJEKT_ENDE": "2026-11-27Z",
-    "PRESSETEXT": "DieArbeiten erfolgen bei Sperre der Flurschützstraße von Kreuzung Aßmayergasse bis KreuzungLängenfeldgasse. Eine Zufahrt zu den genehmigten Stellplätzen ist möglich. Die Umleitung inFahrtrichtung Gaudenzdorfer Gürtel erfolgt über: Aßmayergasse - Böckhgasse - Längenfeldgasse - Flurschützstraße.Nähere Informationen zu den betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen.",
+    "OBJEKT_ENDE": "2026-12-05Z",
+    "PRESSETEXT": "DieArbeiten erfolgen bei Sperre der Flurschützstraße von Kreuzung Aßmayergasse bis KreuzungLängenfeldgasse. Eine Zufahrt zu den genehmigten Stellplätzen ist möglich. Die Umleitung erfolgt über: Aßmayergasse - Böckhgasse - Längenfeldgasse - Flurschützstraße.Nähere Informationen zu den betroffenen öffentlichen Verkehrsmittel sind der Auskunft der Wiener Linien GmbH & Co KG zu entnehmen.",
     "SE_ANNO_CAD_DATA": null
    }
   },
@@ -342,6 +342,29 @@
     "OBJEKT_BEGINN": "2026-11-10Z",
     "OBJEKT_ENDE": "2027-04-30Z",
     "PRESSETEXT": "Die Arbeiten erfolgen bei Tag und Nacht bei Freihaltung einer 3,0 m breiten Restfahrbahn pro Fahrtrichtung. Hierfür wird der Verkehr über das richtungsführende Gleis geführt. Außerhalb der Arbeitszeit werden die Kreuzungsbereiche verkehrssicher überbrückt. Der Fußgängerverkehr wird nicht behindert.",
+    "SE_ANNO_CAD_DATA": null
+   }
+  },
+  {
+   "geometry": {
+    "first_position": [
+     16.38772784,
+     48.26937133
+    ],
+    "type": "LineString"
+   },
+   "properties": {
+    "ANSPRECHPERSON": "Kundenzentrum",
+    "ANSPRECHPERSON_TEL": "Tel.: 01-4000/49600",
+    "ANTRAGSTELLER": "MA28",
+    "BEHINDERUNGSART": "Straßenbau",
+    "BEZEICHNUNG": "Jeneweingasse von Kreuzung Anton-Bosch-Gasse bis Kreuzung Jedleseer Straße und Christian-Bucher-Gass",
+    "BEZIRK": 21,
+    "GISCODE": 1,
+    "GISCODE_TXT": "P90 Baustellen",
+    "OBJEKT_BEGINN": "2026-12-01Z",
+    "OBJEKT_ENDE": "2026-12-11Z",
+    "PRESSETEXT": "ImBaustellenbereich wird ein Fahrstreifen freigehalten und der Verkehr wechselweise mittels Personal von 06:00 Uhr bis 19:00 Uhr und mit Verkehrszeichen von 19:00 Uhr bis 6:00 Uhr durchgeschleust.",
     "SE_ANNO_CAD_DATA": null
    }
   },
