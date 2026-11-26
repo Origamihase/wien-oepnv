@@ -686,6 +686,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "11A: Feuerwehreinsatz",
+    "description": "Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "3793e8921a58590996f02a77722a31025d55f0a3c08aca4556364c807b20d0e5",
+    "pubDate": "2026-11-26T23:07:00+01:00",
+    "starts_at": "2026-11-26T23:07:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=11A|D=2026-11-26|TK=feuerwehreinsatz",
+    "_wl_ids": [
+      "I20261126-0116"
+    ],
+    "_incident_start": "2026-11-26T23:07:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "11: Weichenstörung",
     "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -702,6 +718,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "5/12/37/38: Gleisschaden",
+    "description": "Linie 5: Fahrtbehinderung in Richtung Westbahnhof S U. Line 5: Disruption towards Westbahnhof S U. Linie 12: Fahrtbehinderung in Richtung Josefstädter Straße U. Line 12: Disruption towards Josefstädter Straße. Linie 37: Fahrtbehinderung in Richtung Schottentor U. Linie 38: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 23:45 Uhr. Grund: Gleisschaden im Bereich Nußdorfer Straße 11.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b36833e93e354ef9ad20409191939bcbb7c480d6dbfe310f94cb4279cfb71edb",
+    "pubDate": "2026-11-26T23:26:00+01:00",
+    "starts_at": "2026-11-26T23:26:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=12,37,38,5|D=2026-11-26|TK=5 12 37 38 gleisschaden",
+    "_wl_ids": [
+      "I20261126-0117"
+    ],
+    "_incident_start": "2026-11-26T23:26:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -710,22 +742,6 @@
     "starts_at": "2026-07-13T14:07:00+02:00",
     "ends_at": "2026-12-31T14:07:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-07-13|TK=haltestelle stadionbrücke im rahmen des strassenbahn neubaus der linie 18 aufgelassen bitte auf nahegelegene haltestellen ausweichen"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Aktuelle Wetterlage",
-    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "ef8b44dfdad95aece97ab78c0702a454603fa107ab2b4f25d85ce0c9e57223d1",
-    "pubDate": "2026-11-26T19:44:00+01:00",
-    "starts_at": "2026-11-26T19:44:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=18|D=2026-11-26|TK=18 aktuelle wetterlage",
-    "_wl_ids": [
-      "I20261126-0103"
-    ],
-    "_incident_start": "2026-11-26T19:44:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -790,22 +806,6 @@
     "starts_at": "2026-11-25T00:00:29+01:00",
     "ends_at": "2026-11-26T23:59:59+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-25|TK=umleitung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Aktuelle Wetterlage",
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "5fe265bb00587bb0a69f6da8cf6562983174bb1caf45faebdfc2a468b62d7112",
-    "pubDate": "2026-11-26T18:07:00+01:00",
-    "starts_at": "2026-11-26T18:07:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=1|D=2026-11-26|TK=1 aktuelle wetterlage",
-    "_wl_ids": [
-      "I20261126-0099"
-    ],
-    "_incident_start": "2026-11-26T18:07:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -954,30 +954,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "26: Fahrtbehinderung Schadhafter Zug",
-    "description": "Fahrtbehinderung\nSchadhafter Zug",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "f36bfd0bb4774d14d71eac6889b393ad5dd3511aecc7a72a6d56cbd25c43546f",
-    "pubDate": "2026-11-26T22:08:12+01:00",
-    "starts_at": "2026-11-26T22:08:14+01:00",
-    "ends_at": "2026-11-26T23:07:00+01:00",
-    "_identity": "wl|störung|L=26|D=2026-11-26|TK=fahrtbehinderung schadhafter zug"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "26: Schadhafter Zug Betrieb ab Prinzgasse",
-    "description": "Schadhafter Zug\nBetrieb ab Prinzgasse",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "40cfca46d7fabeef623a64d66243f487a613abde4c951a8dadc8b24523577273",
-    "pubDate": "2026-11-26T21:55:42+01:00",
-    "starts_at": "2026-11-26T22:09:14+01:00",
-    "ends_at": "2026-11-26T23:08:00+01:00",
-    "_identity": "wl|störung|L=26|D=2026-11-26|TK=schadhafter zug betrieb ab prinzgasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "27: Linie 25 in Tokiostraße benützen",
     "description": "Linie 25 in\nTokiostraße benützen",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1070,22 +1046,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "71: Polizeieinsatz",
-    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "13ad442da299b2121f7e427f4ba860f1f37cd803b35cbedcd18c4a776e245c5d",
-    "pubDate": "2026-11-26T22:11:00+01:00",
-    "starts_at": "2026-11-26T22:11:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=71|D=2026-11-26|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261126-0114"
-    ],
-    "_incident_start": "2026-11-26T22:11:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Einstieg Leberstraße vor S-Bahn-Gebäude",
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1106,22 +1066,6 @@
     "starts_at": "2026-11-25T00:00:28+01:00",
     "ends_at": "2026-11-26T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-25|TK=betrieb ab vivariumstrasse 2"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "D: Polizeieinsatz",
-    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "f1ccf4d6b1a6d1d510b41cb2c10a04e3bb077aef3d27f0c5f99cad2a9c11f584",
-    "pubDate": "2026-11-26T22:11:00+01:00",
-    "starts_at": "2026-11-26T22:11:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=D|D=2026-11-26|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261126-0114"
-    ],
-    "_incident_start": "2026-11-26T22:11:00+01:00"
   },
   {
     "source": "Wiener Linien",
