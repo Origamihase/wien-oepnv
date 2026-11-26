@@ -154,5 +154,17 @@
     "starts_at": "2027-02-09T00:00:00+01:00",
     "ends_at": "2027-11-09T23:59:59+01:00",
     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&930082"
+  },
+  {
+    "source": "ÖBB",
+    "category": "Störung",
+    "title": "Aufhebung Streckenunterbrechung: Wien Floridsdorf ↔ Wolkersdorf",
+    "description": "26.11.2026<br/><br/>Wegen der derzeitigen Witterung <b>waren</b> zwischen Wolkersdorf im Weinviertel Bahnhof und Wien Floridsdorf Bahnhof (U) <b>bis </b><b>18:10 Uhr</b> keine Fahrten möglich. Planen Sie derzeit noch bis zu<b> 10 Minuten </b>mehr Reisezeit ein.<br>Wir bitten um Entschuldigung.",
+    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&931203",
+    "pubDate": "2026-11-26T18:15:48+01:00",
+    "starts_at": "2026-11-26T00:00:00+01:00",
+    "ends_at": "2026-11-26T23:59:59+01:00",
+    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&931203"
   }
 ]

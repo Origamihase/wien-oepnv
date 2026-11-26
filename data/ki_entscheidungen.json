@@ -13,6 +13,32 @@
    "titel": "31: Witterung Einstieg bei Linie 1",
    "zuletzt": "2026-11-26"
   },
+  "8197ecc1d5e132b0518259b9864122b4c6d7c6c5003678b5f8243507485dfd73": {
+   "abdruck": "73a92d4618ebbb88",
+   "art": "ploetzlich",
+   "entschieden": "2026-11-26T17:30:46+00:00",
+   "gefragt": [
+    "2026-11-26T17:30:46+00:00"
+   ],
+   "grund": "Eine andere Meldung derselben Linie nennt zur selben Zeit Witterung als plötzliche Ursache.",
+   "klasse": "ohne-ursache",
+   "modell": "gemini-3.5-flash-lite",
+   "titel": "12: Umleitung Zimmermannplatz",
+   "zuletzt": "2026-11-26"
+  },
+  "a142d3a199c70a25c468a6b80bec7eedd60cc977cfa54fd8b74e4926093632c2": {
+   "abdruck": "9051952c0aa77252",
+   "art": "ploetzlich",
+   "entschieden": "2026-11-26T17:30:46+00:00",
+   "gefragt": [
+    "2026-11-26T17:30:46+00:00"
+   ],
+   "grund": "Der Text nennt Witterung und eine andere Meldung die aktuelle Wetterlage als plötzliche Ursache.",
+   "klasse": "ohne-ursache",
+   "modell": "gemini-3.5-flash-lite",
+   "titel": "5/12/43/44: Witterung Züge der Linien 5 und 12 Halten bei den Linien 43 und 44",
+   "zuletzt": "2026-11-26"
+  },
   "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&930498": {
    "abdruck": "ac48e9a83247f8ec",
    "art": "ploetzlich",
