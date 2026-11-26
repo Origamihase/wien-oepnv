@@ -1,13 +1,33 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-26T08:31:01.242897+00:00",
- "built": "2026-11-26T09:30:47+01:00",
+ "updated": "2026-11-26T09:01:12.526462+00:00",
+ "built": "2026-11-26T10:00:50+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-26T09:30:47+01:00",
+  "built": "2026-11-26T10:00:50+01:00",
   "items": [
+   {
+    "title": "51A/51B: Aktuelle Wetterlage",
+    "time_line": "Seit 09:55"
+   },
+   {
+    "title": "Ticketanerkennung bei den Wiener Linien: Wien Stephansplatz (U1)",
+    "time_line": "Seit 09:53"
+   },
+   {
+    "title": "53A: Aktuelle Wetterlage",
+    "time_line": "Seit 09:34"
+   },
+   {
+    "title": "13A: Witterung",
+    "time_line": "Seit 09:08"
+   },
+   {
+    "title": "66A: Witterung, Aktuelle Wetterlage",
+    "time_line": "Seit 09:32"
+   },
    {
     "title": "46/49/48A: Aktuelle Wetterlage",
     "time_line": "Seit 09:10"
@@ -21,57 +41,17 @@
     "time_line": "Seit 09:24"
    },
    {
-    "title": "13A: Aktuelle Wetterlage",
+    "title": "9/13A: Aktuelle Wetterlage",
     "time_line": "Seit 08:52"
-   },
-   {
-    "title": "9: Aktuelle Wetterlage",
-    "time_line": "Seit 08:50"
    },
    {
     "title": "62A: Witterung, Aktuelle Wetterlage",
     "time_line": "Seit 08:39"
-   },
-   {
-    "title": "61A/64A: Aktuelle Wetterlage",
-    "time_line": "Seit 08:30"
-   },
-   {
-    "title": "40A: Aktuelle Wetterlage",
-    "time_line": "Seit 08:23"
-   },
-   {
-    "title": "1/25/D: Witterung",
-    "time_line": "Seit 08:02"
-   },
-   {
-    "title": "4A/7A/59A/65A/92A/94A/97A/98A: Aktuelle Wetterlage",
-    "time_line": "Seit 07:41"
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-19T09:00:50.161809+00:00",
-   "raw": {
-    "wl-stoerungen": 43,
-    "wl-hinweise": 75,
-    "oebb": 171,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 14,
-    "oebb": 147,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 9,
-    "wl": 82
-   }
-  },
   {
    "t": "2026-11-19T09:30:43.704708+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 15,
     "wl": 110
    }
+  },
+  {
+   "t": "2026-11-26T09:01:12.526462+00:00",
+   "raw": {
+    "wl-stoerungen": 109,
+    "wl-hinweise": 79,
+    "oebb": 187,
+    "baustellen-linien": 46,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 21,
+    "oebb": 157,
+    "baustellen": 56
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 16,
+    "wl": 112
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-26T08:31:01.242897+00:00"
+   "last_ok": "2026-11-26T09:01:12.526462+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-26T08:31:01.242897+00:00"
+   "last_ok": "2026-11-26T09:01:12.526462+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-26T08:31:01.242897+00:00"
+   "last_ok": "2026-11-26T09:01:12.526462+00:00"
   }
  }
 }
