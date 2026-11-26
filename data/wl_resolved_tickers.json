@@ -1,92 +1,31 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
- "tickers": [
-  {
-   "key": "R272-112|2026-11-26T18:09:18.000+0100|Fahrtbehinderung\nWitterung ",
-   "name": "R272-112",
-   "title": "Fahrtbehinderung\nWitterung ",
-   "end": "2026-11-26T19:08:00.000+0100",
-   "incident": "I20261126-0098"
-  },
-  {
-   "key": "R356-105|2026-11-26T18:07:47.000+0100|Witterung \nBetrieb ab Lerchenfelder Straße ",
-   "name": "R356-105",
-   "title": "Witterung \nBetrieb ab Lerchenfelder Straße ",
-   "end": "2026-11-26T19:06:00.000+0100",
-   "incident": "I20261126-0098"
-  },
-  {
-   "key": "R356-112|2026-11-26T18:09:48.000+0100|Umleitung \nZimmermannplatz",
-   "name": "R356-112",
-   "title": "Umleitung \nZimmermannplatz",
-   "end": "2026-11-26T19:09:00.000+0100",
-   "incident": "I20261126-0098"
-  },
-  {
-   "key": "R357-105|2026-11-26T18:07:47.000+0100|Witterung \nBetrieb ab Lerchenfelder Straße ",
-   "name": "R357-105",
-   "title": "Witterung \nBetrieb ab Lerchenfelder Straße ",
-   "end": "2026-11-26T19:06:00.000+0100",
-   "incident": "I20261126-0098"
-  },
-  {
-   "key": "R357-112|2026-11-26T18:09:18.000+0100|Fahrtbehinderung\nWitterung ",
-   "name": "R357-112",
-   "title": "Fahrtbehinderung\nWitterung ",
-   "end": "2026-11-26T19:08:00.000+0100",
-   "incident": "I20261126-0098"
-  },
-  {
-   "key": "R377-105|2026-11-26T18:05:50.000+0100|Witterung \nBetrieb ab Lange Gasse ",
-   "name": "R377-105",
-   "title": "Witterung \nBetrieb ab Lange Gasse ",
-   "end": "2026-11-26T19:05:00.000+0100",
-   "incident": "I20261126-0098"
-  },
-  {
-   "key": "R379-105|2026-11-26T18:05:50.000+0100|Witterung \nBetrieb ab Lange Gasse ",
-   "name": "R379-105",
-   "title": "Witterung \nBetrieb ab Lange Gasse ",
-   "end": "2026-11-26T19:05:00.000+0100",
-   "incident": "I20261126-0098"
-  },
-  {
-   "key": "R379-112|2026-11-26T18:08:50.000+0100|Witterung \nBetrieb ab Lange Gasse ",
-   "name": "R379-112",
-   "title": "Witterung \nBetrieb ab Lange Gasse ",
-   "end": "2026-11-26T19:08:00.000+0100",
-   "incident": "I20261126-0098"
-  },
-  {
-   "key": "R458-112|2026-11-26T18:08:50.000+0100|Witterung \nBetrieb ab Lange Gasse ",
-   "name": "R458-112",
-   "title": "Witterung \nBetrieb ab Lange Gasse ",
-   "end": "2026-11-26T19:08:00.000+0100",
-   "incident": "I20261126-0098"
-  }
- ],
+ "tickers": [],
  "owners": {
   "R13-101|2026-11-26T15:30:31.000+0100": {
-   "incident": "I20261126-0080",
-   "title": "Gleisschaden\nBetrieb ab Julius-Raab-Platz"
+   "incident": "I20261126-0099",
+   "title": "Gleisschaden\nBetrieb ab Julius-Raab-Platz",
+   "begin": "2026-11-26T18:07:00+01:00"
   },
   "R132-101|2026-11-26T14:26:55.000+0100": {
-   "incident": "I20261126-0080",
+   "incident": "I20261126-0099",
    "title": "Fahrtbehinderung\nwegen Weichenstörung",
-   "begin": "2026-11-26T15:25:00+01:00"
+   "begin": "2026-11-26T18:07:00+01:00"
   },
   "R14-101|2026-11-26T15:30:31.000+0100": {
-   "incident": "I20261126-0080",
-   "title": "Gleisschaden\nBetrieb ab Julius-Raab-Platz"
+   "incident": "I20261126-0099",
+   "title": "Gleisschaden\nBetrieb ab Julius-Raab-Platz",
+   "begin": "2026-11-26T18:07:00+01:00"
   },
   "R1465-152|2026-11-26T18:53:50.000+0100": {
    "incident": "I20261126-0100",
    "title": "Weichenschaden \nUmleitung über 49 und 9"
   },
   "R15-101|2026-11-26T15:30:31.000+0100": {
-   "incident": "I20261126-0080",
-   "title": "Gleisschaden\nBetrieb ab Julius-Raab-Platz"
+   "incident": "I20261126-0099",
+   "title": "Gleisschaden\nBetrieb ab Julius-Raab-Platz",
+   "begin": "2026-11-26T18:07:00+01:00"
   },
   "R1553-152|2026-11-26T18:54:21.000+0100": {
    "incident": "I20261126-0100",
@@ -121,17 +60,19 @@
    "title": "Fahrtbehinderung\nwegen Fahrbahnschaden"
   },
   "R165-101|2026-11-26T14:26:53.000+0100": {
-   "incident": "I20261126-0080",
+   "incident": "I20261126-0099",
    "title": "Fahrtbehinderung\nwegen Weichenstörung",
-   "begin": "2026-11-26T15:25:00+01:00"
+   "begin": "2026-11-26T18:07:00+01:00"
   },
   "R18-101|2026-11-26T15:30:31.000+0100": {
-   "incident": "I20261126-0080",
-   "title": "Gleisschaden\nBetrieb ab Julius-Raab-Platz"
+   "incident": "I20261126-0099",
+   "title": "Gleisschaden\nBetrieb ab Julius-Raab-Platz",
+   "begin": "2026-11-26T18:07:00+01:00"
   },
   "R19-101|2026-11-26T15:30:31.000+0100": {
-   "incident": "I20261126-0080",
-   "title": "Gleisschaden\nBetrieb ab Julius-Raab-Platz"
+   "incident": "I20261126-0099",
+   "title": "Gleisschaden\nBetrieb ab Julius-Raab-Platz",
+   "begin": "2026-11-26T18:07:00+01:00"
   },
   "R22-101|2026-11-26T14:26:55.000+0100": {
    "incident": "I20261126-0099",
@@ -139,37 +80,17 @@
    "begin": "2026-11-26T18:07:00+01:00"
   },
   "R23-101|2026-11-26T14:26:55.000+0100": {
-   "incident": "I20261126-0080",
+   "incident": "I20261126-0099",
    "title": "Fahrtbehinderung\nwegen Weichenstörung",
-   "begin": "2026-11-26T15:25:00+01:00"
+   "begin": "2026-11-26T18:07:00+01:00"
   },
   "R2420-411|2026-11-26T15:37:33.000+0100": {
    "incident": "I20261126-0082",
    "title": "Fahrtbehinderung\nwegen Witterung"
   },
-  "R272-112|2026-11-26T18:09:18.000+0100": {
-   "incident": "I20261126-0098",
-   "title": "Fahrtbehinderung\nWitterung "
-  },
   "R307-170|2026-11-26T15:30:01.000+0100": {
    "incident": "I20261126-0081",
    "title": "Fahrtbehinderung\nFahrbahnschaden"
-  },
-  "R356-105|2026-11-26T18:07:47.000+0100": {
-   "incident": "I20261126-0098",
-   "title": "Witterung \nBetrieb ab Lerchenfelder Straße "
-  },
-  "R356-112|2026-11-26T18:09:48.000+0100": {
-   "incident": "I20261126-0098",
-   "title": "Umleitung \nZimmermannplatz"
-  },
-  "R357-105|2026-11-26T18:07:47.000+0100": {
-   "incident": "I20261126-0098",
-   "title": "Witterung \nBetrieb ab Lerchenfelder Straße "
-  },
-  "R357-112|2026-11-26T18:09:18.000+0100": {
-   "incident": "I20261126-0098",
-   "title": "Fahrtbehinderung\nWitterung "
   },
   "R3573-411|2026-11-26T15:37:32.000+0100": {
    "incident": "I20261126-0082",
@@ -179,25 +100,9 @@
    "incident": "I20261126-0082",
    "title": "Fahrtbehinderung\nwegen Witterung"
   },
-  "R377-105|2026-11-26T18:05:50.000+0100": {
-   "incident": "I20261126-0098",
-   "title": "Witterung \nBetrieb ab Lange Gasse "
-  },
-  "R379-105|2026-11-26T18:05:50.000+0100": {
-   "incident": "I20261126-0098",
-   "title": "Witterung \nBetrieb ab Lange Gasse "
-  },
-  "R379-112|2026-11-26T18:08:50.000+0100": {
-   "incident": "I20261126-0098",
-   "title": "Witterung \nBetrieb ab Lange Gasse "
-  },
   "R44-171|2026-11-26T15:04:29.000+0100": {
    "incident": "I20261126-0079",
    "title": "Witterung\nEinstieg bei Linie 1"
-  },
-  "R458-112|2026-11-26T18:08:50.000+0100": {
-   "incident": "I20261126-0098",
-   "title": "Witterung \nBetrieb ab Lange Gasse "
   },
   "R565-110|2026-11-26T18:50:22.000+0100": {
    "incident": "I20261126-0100",

@@ -686,38 +686,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/6/11: Aktuelle Wetterlage",
-    "description": "Linie 1:Fahrtbehinderung in Richtung Prater Hauptallee.Linie 6:Fahrtbehinderung in Richtung Burggasse, Stadthalle U.Linie 11:Fahrtbehinderung in Richtung Otto-Probst-Platz.Voraussichtliche Dauer: Nicht absehbar.Grund: Aktuelle Wetterlage im Bereich Quellenstraße.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "12b96255fa3e3801333db6996e01ce5987d7fc994701235267bb66dc392c6575",
-    "pubDate": "2026-11-26T18:07:00+01:00",
-    "starts_at": "2026-11-26T18:07:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=1,11,6|D=2026-11-26|TK=1 6 11 aktuelle wetterlage",
-    "_wl_ids": [
-      "I20261126-0099"
-    ],
-    "_incident_start": "2026-11-26T18:07:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "10/52: Weichenstörung",
-    "description": "Die Linie 10 fährt derzeit nicht zwischen Joachimsthalerplatz und Hietzing U. Die Linie 52 wird in Richtung Westbahnhof S U zwischen Baumgarten und Westbahnhof S U über die Strecke der Linien 49 und 9 umgeleitet. Voraussichtliche Dauer: Nicht absehbar. Grund: Weichenstörung im Bereich Schloßallee # Penzinger Straße.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7f910687d06efc23cd07113e994a81cb997f94ad543229dea1082af4dcb4381e",
-    "pubDate": "2026-11-26T18:46:00+01:00",
-    "starts_at": "2026-11-26T18:46:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=10,52|D=2026-11-26|TK=10 52 weichenstörung",
-    "_wl_ids": [
-      "I20261126-0100"
-    ],
-    "_incident_start": "2026-11-26T18:46:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "10: Schadhafter PKW",
     "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -730,6 +698,22 @@
       "I20261126-0097"
     ],
     "_incident_start": "2026-11-26T17:53:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10: Weichenstörung",
+    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "c51b62554300bcac8999ebfae8f158801f5cfc0472f746e3ea5167d04c8c0c68",
+    "pubDate": "2026-11-26T18:46:00+01:00",
+    "starts_at": "2026-11-26T18:46:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=10|D=2026-11-26|TK=10 weichenstörung",
+    "_wl_ids": [
+      "I20261126-0100"
+    ],
+    "_incident_start": "2026-11-26T18:46:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -782,14 +766,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5/12/43/44: Witterung Züge der Linien 5 und 12 Halten bei den Linien 43 und 44",
-    "description": "Witterung Züge der Linien 5 und 12\nHalten bei den Linien 43 und 44",
+    "title": "11: Aktuelle Wetterlage",
+    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "a142d3a199c70a25c468a6b80bec7eedd60cc977cfa54fd8b74e4926093632c2",
-    "pubDate": "2026-11-26T18:01:20+01:00",
-    "starts_at": "2026-11-26T18:01:20+01:00",
-    "ends_at": "2026-11-26T19:05:00+01:00",
-    "_identity": "wl|störung|L=12,43,44,5|D=2026-11-26|TK=witterung züge der linien 5 und 12 halten bei den linien 43 und 44"
+    "guid": "0831a6de08463810778628f024632431da93d8a248cb99e7f001cde64a105ee7",
+    "pubDate": "2026-11-26T18:07:00+01:00",
+    "starts_at": "2026-11-26T18:07:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=11|D=2026-11-26|TK=11 aktuelle wetterlage",
+    "_wl_ids": [
+      "I20261126-0099"
+    ],
+    "_incident_start": "2026-11-26T18:07:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -934,18 +922,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Weichenstörung",
-    "description": "Linie 1: Umleitung in Richtung Prater Hauptallee zwischen Karlsplatz U und Julius-Raab-Platz über Schwarzenbergplatz und Stubentor U. Voraussichtliche Dauer: Nicht absehbar. Grund: Weichenstörung im Haltestellenbereich Schottenring U.",
+    "title": "1: Aktuelle Wetterlage",
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "c66ecdb5fb32ff3f315fe391a7f0493f46b66622d1b0768aefc16c4965f32e35",
-    "pubDate": "2026-11-26T15:25:00+01:00",
-    "starts_at": "2026-11-26T15:25:00+01:00",
+    "guid": "5fe265bb00587bb0a69f6da8cf6562983174bb1caf45faebdfc2a468b62d7112",
+    "pubDate": "2026-11-26T18:07:00+01:00",
+    "starts_at": "2026-11-26T18:07:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=1|D=2026-11-26|TK=1 weichenstörung",
+    "_identity": "wl|störung|L=1|D=2026-11-26|TK=1 aktuelle wetterlage",
     "_wl_ids": [
-      "I20261126-0080"
+      "I20261126-0099"
     ],
-    "_incident_start": "2026-11-26T15:25:00+01:00"
+    "_incident_start": "2026-11-26T18:07:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -966,8 +954,8 @@
     "description": "Fahrtbehinderung\nwegen Weichenstörung",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "8da6c141d651236cefb93cdbc10a7bdb4728d85f096e343906ef39c95e28a82f",
-    "pubDate": "2026-11-26T15:25:00+01:00",
-    "starts_at": "2026-11-26T15:25:00+01:00",
+    "pubDate": "2026-11-26T18:07:00+01:00",
+    "starts_at": "2026-11-26T18:07:00+01:00",
     "ends_at": "2026-11-26T20:06:00+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-26|TK=fahrtbehinderung wegen weichenstörung"
   },
@@ -1158,22 +1146,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "27: Polizeieinsatz",
-    "description": "Linie 27: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "625312ff0a505ab67720d68ebb14aca83e0a6ed463920bd05b72da054c66ead9",
-    "pubDate": "2026-11-26T16:28:00+01:00",
-    "starts_at": "2026-11-26T16:28:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=27|D=2026-11-26|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261126-0089"
-    ],
-    "_incident_start": "2026-11-26T16:28:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "2: Aktuelle Wetterlage",
     "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1186,22 +1158,6 @@
       "I20261126-0098"
     ],
     "_incident_start": "2026-11-26T17:58:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "30: Polizeieinsatz",
-    "description": "Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "0b04f102bd159f98a41bb7194d24ea5268065185467f63b745203825c9848323",
-    "pubDate": "2026-11-26T16:28:00+01:00",
-    "starts_at": "2026-11-26T16:28:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=30|D=2026-11-26|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261126-0089"
-    ],
-    "_incident_start": "2026-11-26T16:28:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1250,34 +1206,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "38: Aktuelle Wetterlage",
-    "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "40/41: Verkehrsunfall",
+    "description": "Linie 40: Fahrtbehinderung in Richtung Schottentor U. Linie 41: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 19:50 Uhr. Grund: Verkehrsunfall im Bereich Währinger Straße 136.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "17bd41294bfaf719edc6e8bbedc53df82ea26d96df008351534db7cc43866547",
-    "pubDate": "2026-11-26T13:10:00+01:00",
-    "starts_at": "2026-11-26T13:10:00+01:00",
+    "guid": "2eb68f371c0d737b7a5ab3e158e473973cc35e96b9aefc6807cce70740d62e8e",
+    "pubDate": "2026-11-26T19:27:00+01:00",
+    "starts_at": "2026-11-26T19:27:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=38|D=2026-11-26|TK=38 aktuelle wetterlage",
+    "_identity": "wl|störung|L=40,41|D=2026-11-26|TK=40 41 verkehrsunfall",
     "_wl_ids": [
-      "I20261126-0061"
+      "I20261126-0101"
     ],
-    "_incident_start": "2026-11-26T13:10:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "41: Rettungseinsatz",
-    "description": "Linie 41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "1b9880e738badf2ab93ca803b6161595a319b82ea03cebf2c5ff834226e92cd8",
-    "pubDate": "2026-11-26T15:49:00+01:00",
-    "starts_at": "2026-11-26T15:49:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=41|D=2026-11-26|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261126-0083"
-    ],
-    "_incident_start": "2026-11-26T15:49:00+01:00"
+    "_incident_start": "2026-11-26T19:27:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1342,6 +1282,22 @@
       "I20261126-0034"
     ],
     "_incident_start": "2026-11-26T09:55:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "52: Weichenstörung",
+    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1d1795472b387144deca50d46751795525990ac4372855281a419c92e6eed432",
+    "pubDate": "2026-11-26T18:46:00+01:00",
+    "starts_at": "2026-11-26T18:46:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=52|D=2026-11-26|TK=52 weichenstörung",
+    "_wl_ids": [
+      "I20261126-0100"
+    ],
+    "_incident_start": "2026-11-26T18:46:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1486,6 +1442,22 @@
     "starts_at": "2026-11-26T04:40:27+01:00",
     "ends_at": "2026-11-27T01:00:00+01:00",
     "_identity": "wl|störung|L=66A|D=2026-11-26|TK=busse halten salvatorianerplatz"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Aktuelle Wetterlage",
+    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1878b557421f9c31529c7f306a08f3b58b635b7813531dadd627e21e5433e8a9",
+    "pubDate": "2026-11-26T18:07:00+01:00",
+    "starts_at": "2026-11-26T18:07:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=6|D=2026-11-26|TK=6 aktuelle wetterlage",
+    "_wl_ids": [
+      "I20261126-0099"
+    ],
+    "_incident_start": "2026-11-26T18:07:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1666,18 +1638,6 @@
     "starts_at": "2026-09-14T04:00:00+02:00",
     "ends_at": "2026-12-31T23:59:00+01:00",
     "_identity": "wl|störung|L=|D=2026-09-14|TK=sperre"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Fahrtbehinderung aktuelle Wetterlage",
-    "description": "Fahrtbehinderung\naktuelle Wetterlage",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "3a95e790728df5643bb27af930f96abd4157fb8a78e4cb1232262261f9327b13",
-    "pubDate": "2026-11-26T18:03:17+01:00",
-    "starts_at": "2026-11-26T18:03:17+01:00",
-    "ends_at": "2026-11-26T19:02:00+01:00",
-    "_identity": "wl|störung|L=|D=2026-11-26|TK=fahrtbehinderung aktuelle wetterlage"
   },
   {
     "source": "Wiener Linien",
