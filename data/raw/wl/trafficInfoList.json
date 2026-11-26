@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261126-0005, I20260925-0011, I20260909-0007, I20261126-0003-F01, I20261020-0029, I20261126-0002, I20261126-0004"
+    "trafficInfoNameList": "I20261126-0005, I20260925-0011, I20260909-0007, I20261126-0007, I20261020-0029, I20261126-0004, I20261126-0006"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R2558-125, R2371-125, R2372-125, R2343-125, R2359-125, R2370-125, R2373-125, R2373-127, R2379-627, R2380-627, R2345-127, R2373-126, R2378-627, R2343-626, R3886-480, R318-437, R293-474, R401-101, R1974-466, R1199-205, R500-101, R400-162, R470-162, R399-162, R1748-162, R1749-162, R833-162, R832-162, R831-162, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R2558-125, R2371-125, R2372-125, R2343-125, R2359-125, R2370-125, R2373-125, R2373-127, R2379-627, R2380-627, R2345-127, R2373-126, R2378-627, R2343-626, R3886-480, R401-101, R293-474, R318-437, R1974-466, R1199-205, R500-101, R470-162, R400-162, R399-162, R1748-162, R831-162, R1749-162, R833-162, R832-162, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,102 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "62A": "ptBusCity"
-     }
-    },
-    "description": "Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 62A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 62A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-       "title": "62A: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261126-0002",
-    "owner": "WL",
-    "parentName": "I20261126-0002",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "62A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 462,
-      "lineName": "62A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "relatedStops": [
-     1720
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-26T05:01:00.000+0100",
-     "lastUpdate": "2026-11-26T05:01:00.000+0100",
-     "resume": "2026-11-26T04:58:00.000+0100",
-     "start": "2026-11-26T04:58:00.000+0100"
-    },
-    "title": "62A: Verkehrsunfall"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "62": "ptTram"
-     }
-    },
-    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "62: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261126-0003-F01",
-    "owner": "WL",
-    "parentName": "I20261126-0003",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 162,
-      "lineName": "62",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     1720
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-26T05:13:00.000+0100",
-     "lastUpdate": "2026-11-26T05:13:00.000+0100",
-     "resume": "2026-11-26T05:13:00.000+0100",
-     "start": "2026-11-26T05:08:00.000+0100"
-    },
-    "title": "62: Verkehrsunfall"
-   },
-   {
     "alertCause": "defective vehicle",
     "alertCauseId": 53,
     "attributes": {
@@ -355,6 +259,113 @@
      "start": "2026-11-26T05:23:00.000+0100"
     },
     "title": "U4: Verspätungen"
+   },
+   {
+    "alertCause": "poor weather",
+    "alertCauseId": 85,
+    "attributes": {
+     "relatedLineTypes": {
+      "10A": "ptBusCity",
+      "15A": "ptBusCity",
+      "63A": "ptBusCity"
+     }
+    },
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "descriptionHTML": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 15A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 15A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
+       "descriptionPlain": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+       "title": "10A, 63A, 15A: Aktuelle Wetterlage"
+      }
+     }
+    ],
+    "name": "I20261126-0006",
+    "owner": "WL",
+    "parentName": "I20261126-0006",
+    "priority": "1",
+    "reasonId": 40,
+    "reasonName": "Aktuelle Wetterlage",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "10A",
+     "15A",
+     "63A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 410,
+      "lineName": "10A",
+      "vehicleType": "ptBusCity"
+     },
+     {
+      "lineId": 415,
+      "lineName": "15A",
+      "vehicleType": "ptBusCity"
+     },
+     {
+      "lineId": 463,
+      "lineName": "63A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-26T05:36:00.000+0100",
+     "lastUpdate": "2026-11-26T05:37:00.000+0100",
+     "resume": "2026-11-26T05:36:00.000+0100",
+     "start": "2026-11-26T05:36:00.000+0100"
+    },
+    "title": "10A, 63A, 15A: Aktuelle Wetterlage"
+   },
+   {
+    "alertCause": "roadway damage",
+    "alertCauseId": 67,
+    "attributes": {
+     "relatedLineTypes": {
+      "U6": "ptMetro"
+     }
+    },
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung.",
+    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Weichenstörung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Weichenstörung.</p>",
+       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung.",
+       "title": "U6: Weichenstörung"
+      }
+     }
+    ],
+    "name": "I20261126-0007",
+    "owner": "WL",
+    "parentName": "I20261126-0007",
+    "priority": "1",
+    "reasonId": 39,
+    "reasonName": "Weichenstörung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 306,
+      "lineName": "U6",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4638
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-26T05:41:00.000+0100",
+     "lastUpdate": "2026-11-26T05:41:00.000+0100",
+     "resume": "2026-11-26T05:40:00.000+0100",
+     "start": "2026-11-26T05:40:00.000+0100"
+    },
+    "title": "U6: Weichenstörung"
    },
    {
     "alertCause": "undefined alert cause",

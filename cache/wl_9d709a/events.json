@@ -674,6 +674,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "10A/15A/63A: Aktuelle Wetterlage",
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "cb2ec8be297effa1e7b616c9cb81bb453841efd000d0d1f1587d9bfd0230de39",
+    "pubDate": "2026-11-26T05:36:00+01:00",
+    "starts_at": "2026-11-26T05:36:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=10A,15A,63A|D=2026-11-26|TK=10a 63a 15a aktuelle wetterlage",
+    "_wl_ids": [
+      "I20261126-0006"
+    ],
+    "_incident_start": "2026-11-26T05:36:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -926,38 +942,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "62A: Verkehrsunfall",
-    "description": "Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "9ce0b6d5a30b4e1685f4f825dd39e70de43d9861235273eddc64d5a8feb1a4ff",
-    "pubDate": "2026-11-26T04:58:00+01:00",
-    "starts_at": "2026-11-26T04:58:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=62A|D=2026-11-26|TK=62a verkehrsunfall",
-    "_wl_ids": [
-      "I20261126-0002"
-    ],
-    "_incident_start": "2026-11-26T04:58:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "62: Verkehrsunfall",
-    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "eed493b84b991f4fbb293a881224825ca49d2be64d70010ef16dbd19919e838a",
-    "pubDate": "2026-11-26T05:08:00+01:00",
-    "starts_at": "2026-11-26T05:08:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=62|D=2026-11-26|TK=62 verkehrsunfall",
-    "_wl_ids": [
-      "I20261126-0003"
-    ],
-    "_incident_start": "2026-11-26T05:08:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "62: Fahrtbehinderung Verkehrsunfall",
     "description": "Fahrtbehinderung\nVerkehrsunfall",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1034,6 +1018,22 @@
       "I20261126-0005"
     ],
     "_incident_start": "2026-11-26T05:23:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U6: Weichenstörung",
+    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "861eb589822612a9402ffcc15457641ff4cf74d6a9632da81a7b59b0d8e8dda0",
+    "pubDate": "2026-11-26T05:40:00+01:00",
+    "starts_at": "2026-11-26T05:40:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U6|D=2026-11-26|TK=u6 weichenstörung",
+    "_wl_ids": [
+      "I20261126-0007"
+    ],
+    "_incident_start": "2026-11-26T05:40:00+01:00"
   },
   {
     "source": "Wiener Linien",
