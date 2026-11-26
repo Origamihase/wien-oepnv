@@ -686,34 +686,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10: Fahrtbehinderung Falschparker",
-    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "0d70c69478856b9a3b8e5e9a4e597963f8077e418dad78a7ecf0b5dea4f9fa04",
-    "pubDate": "2026-11-26T21:04:00+01:00",
-    "starts_at": "2026-11-26T21:05:06+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=10|D=2026-11-26|TK=falschparker",
-    "_wl_ids": [
-      "I20261126-0113"
-    ],
-    "_incident_start": "2026-11-26T21:04:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11A: Fahrtbehinderung wegen Witterung",
-    "description": "Fahrtbehinderung\nwegen Witterung",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "136a1a33890fbc4ea6d5a9654fb8df5ebaf97ddcb5872d740e6dcebd3035fa3c",
-    "pubDate": "2026-11-26T15:37:32+01:00",
-    "starts_at": "2026-11-26T15:37:33+01:00",
-    "ends_at": "2026-11-26T22:22:00+01:00",
-    "_identity": "wl|störung|L=11A|D=2026-11-26|TK=fahrtbehinderung wegen witterung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "11: Weichenstörung",
     "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -978,14 +950,42 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "26: Schadhaftes Fahrzeug",
+    "description": "Linie 26: Fahrtbehinderung in Richtung Kagran U. Voraussichtliche Dauer: 22:45 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Zanggasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "59e208367d2d4abd51c67734b05d4470604d748bf4d8210aec89186b2434cefa",
+    "pubDate": "2026-11-26T22:17:00+01:00",
+    "starts_at": "2026-11-26T22:17:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=26|D=2026-11-26|TK=26 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261126-0115"
+    ],
+    "_incident_start": "2026-11-26T22:17:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "26: Fahrtbehinderung Schadhafter Zug",
     "description": "Fahrtbehinderung\nSchadhafter Zug",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "f36bfd0bb4774d14d71eac6889b393ad5dd3511aecc7a72a6d56cbd25c43546f",
     "pubDate": "2026-11-26T21:55:39+01:00",
-    "starts_at": "2026-11-26T21:57:41+01:00",
-    "ends_at": "2026-11-26T22:57:00+01:00",
+    "starts_at": "2026-11-26T22:08:14+01:00",
+    "ends_at": "2026-11-26T23:07:00+01:00",
     "_identity": "wl|störung|L=26|D=2026-11-26|TK=fahrtbehinderung schadhafter zug"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "26: Schadhafter Zug Betrieb ab Prinzgasse",
+    "description": "Schadhafter Zug\nBetrieb ab Prinzgasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "40cfca46d7fabeef623a64d66243f487a613abde4c951a8dadc8b24523577273",
+    "pubDate": "2026-11-26T21:55:42+01:00",
+    "starts_at": "2026-11-26T22:09:14+01:00",
+    "ends_at": "2026-11-26T23:08:00+01:00",
+    "_identity": "wl|störung|L=26|D=2026-11-26|TK=schadhafter zug betrieb ab prinzgasse"
   },
   {
     "source": "Wiener Linien",
@@ -1014,18 +1014,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Aktuelle Wetterlage",
+    "title": "2: Polizeieinsatz",
     "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "fe6c89e61425b7e9c658dc99c3d81164b4e588cc8c017615e4eafde673a8dc93",
-    "pubDate": "2026-11-26T20:12:00+01:00",
-    "starts_at": "2026-11-26T20:12:00+01:00",
+    "guid": "0a8aa8f7231d98faa38de820cfb27484955a1529c285e8a8472318b330368561",
+    "pubDate": "2026-11-26T22:11:00+01:00",
+    "starts_at": "2026-11-26T22:11:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=2|D=2026-11-26|TK=2 aktuelle wetterlage",
+    "_identity": "wl|störung|L=2|D=2026-11-26|TK=polizeieinsatz",
     "_wl_ids": [
-      "I20261126-0107"
+      "I20261126-0114"
     ],
-    "_incident_start": "2026-11-26T20:12:00+01:00"
+    "_incident_start": "2026-11-26T22:11:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1058,38 +1058,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Aktuelle Wetterlage",
-    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "fc7a2f63681a3cdc70f0d051a33a25584bfe9d454e7a7633594583d14abe8d52",
-    "pubDate": "2026-11-26T20:05:00+01:00",
-    "starts_at": "2026-11-26T20:05:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=49|D=2026-11-26|TK=49 aktuelle wetterlage",
-    "_wl_ids": [
-      "I20261126-0106"
-    ],
-    "_incident_start": "2026-11-26T20:05:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "52: Weichenstörung",
-    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "1d1795472b387144deca50d46751795525990ac4372855281a419c92e6eed432",
-    "pubDate": "2026-11-26T18:46:00+01:00",
-    "starts_at": "2026-11-26T18:46:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=52|D=2026-11-26|TK=52 weichenstörung",
-    "_wl_ids": [
-      "I20261126-0100"
-    ],
-    "_incident_start": "2026-11-26T18:46:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "5B: Busse halten Pappenheimgasse 24-28",
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1098,22 +1066,6 @@
     "starts_at": "2026-11-26T04:45:27+01:00",
     "ends_at": "2026-11-26T23:59:59+01:00",
     "_identity": "wl|störung|L=5B|D=2026-11-26|TK=busse halten pappenheimgasse 24 28"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60: Falschparker",
-    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "0c6fac2a8f34464f42aa5982eb08b79eef732903ec1dc89348c10739df0b8093",
-    "pubDate": "2026-11-26T20:19:00+01:00",
-    "starts_at": "2026-11-26T20:19:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=60|D=2026-11-26|TK=falschparker",
-    "_wl_ids": [
-      "I20261126-0108"
-    ],
-    "_incident_start": "2026-11-26T20:19:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1130,18 +1082,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Aktuelle Wetterlage",
-    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "71: Polizeieinsatz",
+    "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "1878b557421f9c31529c7f306a08f3b58b635b7813531dadd627e21e5433e8a9",
-    "pubDate": "2026-11-26T19:44:00+01:00",
-    "starts_at": "2026-11-26T19:44:00+01:00",
+    "guid": "13ad442da299b2121f7e427f4ba860f1f37cd803b35cbedcd18c4a776e245c5d",
+    "pubDate": "2026-11-26T22:11:00+01:00",
+    "starts_at": "2026-11-26T22:11:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=6|D=2026-11-26|TK=6 aktuelle wetterlage",
+    "_identity": "wl|störung|L=71|D=2026-11-26|TK=polizeieinsatz",
     "_wl_ids": [
-      "I20261126-0103"
+      "I20261126-0114"
     ],
-    "_incident_start": "2026-11-26T19:44:00+01:00"
+    "_incident_start": "2026-11-26T22:11:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1170,58 +1122,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Aktuelle Wetterlage",
-    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "D: Polizeieinsatz",
+    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "1cef9c9f10743e9741c249fe8b5b91d15c2220d91a22e1477c0b6f2c037037e3",
-    "pubDate": "2026-11-26T20:05:00+01:00",
-    "starts_at": "2026-11-26T20:05:00+01:00",
+    "guid": "f1ccf4d6b1a6d1d510b41cb2c10a04e3bb077aef3d27f0c5f99cad2a9c11f584",
+    "pubDate": "2026-11-26T22:11:00+01:00",
+    "starts_at": "2026-11-26T22:11:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=9|D=2026-11-26|TK=9 aktuelle wetterlage",
+    "_identity": "wl|störung|L=D|D=2026-11-26|TK=polizeieinsatz",
     "_wl_ids": [
-      "I20261126-0106"
+      "I20261126-0114"
     ],
-    "_incident_start": "2026-11-26T20:05:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Fahrtbehinderung Fahrbahnschaden",
-    "description": "Fahrtbehinderung\nFahrbahnschaden",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "5bddd00ed0cb443414a0e00416e4b2ada5c86d62ec751e5b0c095adffefafd7a",
-    "pubDate": "2026-11-26T19:42:00+01:00",
-    "starts_at": "2026-11-26T19:42:00+01:00",
-    "ends_at": "2026-11-26T22:22:00+01:00",
-    "_identity": "wl|störung|L=O|D=2026-11-26|TK=fahrtbehinderung fahrbahnschaden"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Fahrtbehinderung wegen Fahrbahnschaden",
-    "description": "Fahrtbehinderung\nwegen Fahrbahnschaden",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "50f495c28f174421d390cf5a599eba4fd4177ffa361d464cbf1a6c52e3369efd",
-    "pubDate": "2026-11-26T19:42:00+01:00",
-    "starts_at": "2026-11-26T19:42:00+01:00",
-    "ends_at": "2026-11-26T22:22:00+01:00",
-    "_identity": "wl|störung|L=O|D=2026-11-26|TK=fahrtbehinderung wegen fahrbahnschaden"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "O: Betriebsstörung",
-    "description": "Linie O: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "031185cc617d1370557e65b800e69f3976fc946bf7b245cd8a46f5593d5a3bba",
-    "pubDate": "2026-11-26T19:42:00+01:00",
-    "starts_at": "2026-11-26T19:42:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=O|D=2026-11-26|TK=o betriebsstörung",
-    "_wl_ids": [
-      "I20261126-0102"
-    ],
-    "_incident_start": "2026-11-26T19:42:00+01:00"
+    "_incident_start": "2026-11-26T22:11:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1246,17 +1158,5 @@
     "starts_at": "2026-09-14T04:00:00+02:00",
     "ends_at": "2026-12-31T23:59:00+01:00",
     "_identity": "wl|störung|L=|D=2026-09-14|TK=sperre"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "Haltestelle aufgelassen! Stop closed!",
-    "description": "Haltestelle\naufgelassen! Stop closed!",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "b3d058f2a7d9443431d0c6a57bef734f51e51c799560d9ce542bccfc3df4425a",
-    "pubDate": "2026-11-26T15:00:28+01:00",
-    "starts_at": "2026-11-26T15:00:28+01:00",
-    "ends_at": "2026-11-26T22:30:00+01:00",
-    "_identity": "wl|störung|L=|D=2026-11-26|TK=haltestelle aufgelassen stop closed"
   }
 ]
