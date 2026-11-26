@@ -3,21 +3,6 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R1001-102|2026-11-26T13:49:20.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Witterung\nBetrieb ab Höchstädtplatz",
-   "begin": "2026-11-26T16:40:00+01:00"
-  },
-  "R1002-102|2026-11-26T13:49:20.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Witterung\nBetrieb ab Höchstädtplatz",
-   "begin": "2026-11-26T16:40:00+01:00"
-  },
-  "R1003-102|2026-11-26T13:49:20.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Witterung\nBetrieb ab Höchstädtplatz",
-   "begin": "2026-11-26T16:40:00+01:00"
-  },
   "R13-101|2026-11-26T15:30:31.000+0100": {
    "incident": "I20261126-0080",
    "title": "Gleisschaden\nBetrieb ab Julius-Raab-Platz"
@@ -27,132 +12,42 @@
    "title": "Fahrtbehinderung\nwegen Weichenstörung",
    "begin": "2026-11-26T15:25:00+01:00"
   },
-  "R134-102|2026-11-26T13:49:21.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Witterung\nBetrieb ab Höchstädtplatz",
-   "begin": "2026-11-26T16:40:00+01:00"
-  },
-  "R1362-102|2026-11-26T16:42:38.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Fahrtbehinderung\nFalschparker"
-  },
-  "R1363-102|2026-11-26T16:42:38.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Fahrtbehinderung\nFalschparker"
-  },
-  "R1364-102|2026-11-26T16:42:38.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Fahrtbehinderung\nFalschparker"
-  },
-  "R1365-102|2026-11-26T16:42:38.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Fahrtbehinderung\nFalschparker"
-  },
   "R14-101|2026-11-26T15:30:31.000+0100": {
    "incident": "I20261126-0080",
    "title": "Gleisschaden\nBetrieb ab Julius-Raab-Platz"
-  },
-  "R1446-109|2026-11-26T13:33:49.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-  },
-  "R1447-109|2026-11-26T13:33:49.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-  },
-  "R1475-109|2026-11-26T13:34:19.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-  },
-  "R1476-109|2026-11-26T13:34:19.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
   },
   "R15-101|2026-11-26T15:30:31.000+0100": {
    "incident": "I20261126-0080",
    "title": "Gleisschaden\nBetrieb ab Julius-Raab-Platz"
   },
-  "R1606-160|2026-11-26T13:47:21.000+0100": {
-   "incident": "I20261126-0086",
-   "title": "Fahrtbehinderung\nwegen Witterung",
-   "begin": "2026-11-26T16:07:00+01:00"
+  "R1595-463|2026-11-26T17:41:14.000+0100": {
+   "incident": "I20261126-0094",
+   "title": "Fahrtbehinderung\nBetriebsstörung"
   },
-  "R1607-160|2026-11-26T13:17:48.000+0100": {
-   "incident": "I20261126-0086",
-   "title": "Witterung\nBetrieb ab Hofwiesengasse",
-   "begin": "2026-11-26T16:07:00+01:00"
+  "R1608-463|2026-11-26T17:41:14.000+0100": {
+   "incident": "I20261126-0094",
+   "title": "Fahrtbehinderung\nBetriebsstörung"
   },
   "R161-170|2026-11-26T15:36:30.000+0100": {
    "incident": "I20261126-0081",
    "title": "Fahrtbehinderung\nwegen Fahrbahnschaden"
   },
-  "R1616-160|2026-11-26T13:47:21.000+0100": {
-   "incident": "I20261126-0086",
-   "title": "Fahrtbehinderung\nwegen Witterung",
-   "begin": "2026-11-26T16:07:00+01:00"
-  },
-  "R1617-160|2026-11-26T13:47:21.000+0100": {
-   "incident": "I20261126-0086",
-   "title": "Fahrtbehinderung\nwegen Witterung",
-   "begin": "2026-11-26T16:07:00+01:00"
-  },
-  "R1618-160|2026-11-26T13:47:21.000+0100": {
-   "incident": "I20261126-0086",
-   "title": "Fahrtbehinderung\nwegen Witterung",
-   "begin": "2026-11-26T16:07:00+01:00"
-  },
-  "R1619-160|2026-11-26T13:47:21.000+0100": {
-   "incident": "I20261126-0086",
-   "title": "Fahrtbehinderung\nwegen Witterung",
-   "begin": "2026-11-26T16:07:00+01:00"
-  },
   "R162-170|2026-11-26T15:36:30.000+0100": {
    "incident": "I20261126-0081",
    "title": "Fahrtbehinderung\nwegen Fahrbahnschaden"
-  },
-  "R1620-160|2026-11-26T13:47:21.000+0100": {
-   "incident": "I20261126-0086",
-   "title": "Fahrtbehinderung\nwegen Witterung",
-   "begin": "2026-11-26T16:07:00+01:00"
-  },
-  "R1625-160|2026-11-26T13:17:48.000+0100": {
-   "incident": "I20261126-0086",
-   "title": "Witterung\nBetrieb ab Hofwiesengasse",
-   "begin": "2026-11-26T16:07:00+01:00"
-  },
-  "R1629-160|2026-11-26T13:46:21.000+0100": {
-   "incident": "I20261126-0086",
-   "title": "Witterung\nBetrieb ab Hofwiesengasse",
-   "begin": "2026-11-26T16:07:00+01:00"
   },
   "R163-170|2026-11-26T15:36:30.000+0100": {
    "incident": "I20261126-0081",
    "title": "Fahrtbehinderung\nwegen Fahrbahnschaden"
   },
-  "R1630-160|2026-11-26T13:46:21.000+0100": {
-   "incident": "I20261126-0086",
-   "title": "Witterung\nBetrieb ab Hofwiesengasse",
-   "begin": "2026-11-26T16:07:00+01:00"
-  },
-  "R1631-160|2026-11-26T13:46:21.000+0100": {
-   "incident": "I20261126-0086",
-   "title": "Witterung\nBetrieb ab Hofwiesengasse",
-   "begin": "2026-11-26T16:07:00+01:00"
-  },
-  "R1632-160|2026-11-26T13:46:21.000+0100": {
-   "incident": "I20261126-0086",
-   "title": "Witterung\nBetrieb ab Hofwiesengasse",
-   "begin": "2026-11-26T16:07:00+01:00"
-  },
-  "R1633-160|2026-11-26T13:46:21.000+0100": {
-   "incident": "I20261126-0086",
-   "title": "Witterung\nBetrieb ab Hofwiesengasse",
-   "begin": "2026-11-26T16:07:00+01:00"
-  },
   "R165-101|2026-11-26T14:26:53.000+0100": {
    "incident": "I20261126-0080",
    "title": "Fahrtbehinderung\nwegen Weichenstörung",
    "begin": "2026-11-26T15:25:00+01:00"
+  },
+  "R1685-463|2026-11-26T17:41:13.000+0100": {
+   "incident": "I20261126-0094",
+   "title": "Fahrtbehinderung\nBetriebsstörung"
   },
   "R172-101|2026-11-26T14:26:53.000+0100": {
    "incident": "I20261126-0080",
@@ -163,6 +58,14 @@
    "incident": "I20261126-0080",
    "title": "Weichenstörung\nBetrieb ab Börse",
    "begin": "2026-11-26T15:25:00+01:00"
+  },
+  "R1762-463|2026-11-26T17:41:13.000+0100": {
+   "incident": "I20261126-0094",
+   "title": "Fahrtbehinderung\nBetriebsstörung"
+  },
+  "R1766-463|2026-11-26T17:41:13.000+0100": {
+   "incident": "I20261126-0094",
+   "title": "Fahrtbehinderung\nBetriebsstörung"
   },
   "R18-101|2026-11-26T15:30:31.000+0100": {
    "incident": "I20261126-0080",
@@ -177,10 +80,6 @@
    "title": "Fahrtbehinderung\nwegen Weichenstörung",
    "begin": "2026-11-26T15:25:00+01:00"
   },
-  "R2243-101|2026-11-26T13:56:51.000+0100": {
-   "incident": "I20261126-0067",
-   "title": "Witterung\nBetrieb ab Matzleinsdorfer Platz"
-  },
   "R23-101|2026-11-26T14:26:55.000+0100": {
    "incident": "I20261126-0080",
    "title": "Fahrtbehinderung\nwegen Weichenstörung",
@@ -190,39 +89,13 @@
    "incident": "I20261126-0082",
    "title": "Fahrtbehinderung\nwegen Witterung"
   },
-  "R251-102|2026-11-26T13:49:19.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Witterung\nBetrieb ab Höchstädtplatz",
-   "begin": "2026-11-26T16:40:00+01:00"
-  },
   "R307-170|2026-11-26T15:30:01.000+0100": {
    "incident": "I20261126-0081",
    "title": "Fahrtbehinderung\nFahrbahnschaden"
   },
-  "R314-102|2026-11-26T13:49:21.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Witterung\nBetrieb ab Höchstädtplatz",
-   "begin": "2026-11-26T16:40:00+01:00"
-  },
-  "R315-102|2026-11-26T13:49:21.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Witterung\nBetrieb ab Höchstädtplatz",
-   "begin": "2026-11-26T16:40:00+01:00"
-  },
-  "R316-102|2026-11-26T13:49:21.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Witterung\nBetrieb ab Höchstädtplatz",
-   "begin": "2026-11-26T16:40:00+01:00"
-  },
-  "R317-102|2026-11-26T13:49:21.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Witterung\nBetrieb ab Höchstädtplatz",
-   "begin": "2026-11-26T16:40:00+01:00"
-  },
-  "R318-102|2026-11-26T13:49:21.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Witterung\nBetrieb ab Höchstädtplatz",
-   "begin": "2026-11-26T16:40:00+01:00"
+  "R3468-110|2026-11-26T17:54:46.000+0100": {
+   "incident": "I20261126-0097",
+   "title": "Fahrtbehinderung\nSchadhafter PKW"
   },
   "R3573-411|2026-11-26T15:37:32.000+0100": {
    "incident": "I20261126-0082",
@@ -232,202 +105,47 @@
    "incident": "I20261126-0082",
    "title": "Fahrtbehinderung\nwegen Witterung"
   },
-  "R396-106|2026-11-26T13:37:18.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Eichenstraße"
-  },
-  "R396-118|2026-11-26T13:39:49.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Eichenstraße"
-  },
-  "R397-106|2026-11-26T13:37:18.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Eichenstraße"
-  },
-  "R397-118|2026-11-26T13:39:49.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Eichenstraße"
-  },
-  "R398-106|2026-11-26T13:37:18.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Eichenstraße"
-  },
-  "R398-118|2026-11-26T13:39:49.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Eichenstraße"
-  },
-  "R402-101|2026-11-26T13:57:25.000+0100": {
-   "incident": "I20261126-0067",
-   "title": "Fahrtbehinderung\nwegen Witterung"
-  },
-  "R403-101|2026-11-26T13:57:25.000+0100": {
-   "incident": "I20261126-0067",
-   "title": "Fahrtbehinderung\nwegen Witterung"
-  },
-  "R407-101|2026-11-26T13:57:25.000+0100": {
-   "incident": "I20261126-0067",
-   "title": "Fahrtbehinderung\nwegen Witterung"
-  },
   "R41-101|2026-11-26T14:26:25.000+0100": {
    "incident": "I20261126-0080",
    "title": "Weichenstörung\nBetrieb ab Börse",
    "begin": "2026-11-26T15:25:00+01:00"
-  },
-  "R411-101|2026-11-26T13:56:55.000+0100": {
-   "incident": "I20261126-0067",
-   "title": "Witterung\nBetrieb ab Matzleinsdorfer Platz"
   },
   "R42-101|2026-11-26T14:26:25.000+0100": {
    "incident": "I20261126-0080",
    "title": "Weichenstörung\nBetrieb ab Börse",
    "begin": "2026-11-26T15:25:00+01:00"
   },
-  "R423-101|2026-11-26T13:56:55.000+0100": {
-   "incident": "I20261126-0067",
-   "title": "Witterung\nBetrieb ab Matzleinsdorfer Platz"
-  },
-  "R424-101|2026-11-26T13:56:55.000+0100": {
-   "incident": "I20261126-0067",
-   "title": "Witterung\nBetrieb ab Matzleinsdorfer Platz"
-  },
-  "R425-101|2026-11-26T13:56:55.000+0100": {
-   "incident": "I20261126-0067",
-   "title": "Witterung\nBetrieb ab Matzleinsdorfer Platz"
-  },
-  "R430-106|2026-11-26T13:41:19.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-  },
   "R44-171|2026-11-26T15:04:29.000+0100": {
    "incident": "I20261126-0079",
    "title": "Witterung\nEinstieg bei Linie 1"
   },
-  "R461-106|2026-11-26T13:37:18.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Eichenstraße"
+  "R581-110|2026-11-26T17:54:46.000+0100": {
+   "incident": "I20261126-0097",
+   "title": "Fahrtbehinderung\nSchadhafter PKW"
   },
-  "R462-106|2026-11-26T13:37:18.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Eichenstraße"
+  "R583-110|2026-11-26T17:54:46.000+0100": {
+   "incident": "I20261126-0097",
+   "title": "Fahrtbehinderung\nSchadhafter PKW"
   },
-  "R462-118|2026-11-26T13:39:49.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Eichenstraße"
+  "R584-110|2026-11-26T17:54:46.000+0100": {
+   "incident": "I20261126-0097",
+   "title": "Fahrtbehinderung\nSchadhafter PKW"
   },
-  "R464-106|2026-11-26T13:37:18.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Eichenstraße"
+  "R585-110|2026-11-26T17:54:46.000+0100": {
+   "incident": "I20261126-0097",
+   "title": "Fahrtbehinderung\nSchadhafter PKW"
   },
-  "R464-118|2026-11-26T13:39:49.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Eichenstraße"
+  "R586-110|2026-11-26T17:54:46.000+0100": {
+   "incident": "I20261126-0097",
+   "title": "Fahrtbehinderung\nSchadhafter PKW"
   },
-  "R481-106|2026-11-26T13:41:19.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  "R587-110|2026-11-26T17:54:46.000+0100": {
+   "incident": "I20261126-0097",
+   "title": "Fahrtbehinderung\nSchadhafter PKW"
   },
-  "R481-118|2026-11-26T13:41:49.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-  },
-  "R482-106|2026-11-26T13:37:18.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Eichenstraße"
-  },
-  "R482-118|2026-11-26T13:39:49.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Eichenstraße"
-  },
-  "R483-106|2026-11-26T13:41:19.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-  },
-  "R483-118|2026-11-26T13:41:49.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-  },
-  "R484-109|2026-11-26T13:33:48.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-  },
-  "R49-102|2026-11-26T13:49:21.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Witterung\nBetrieb ab Höchstädtplatz",
-   "begin": "2026-11-26T16:40:00+01:00"
-  },
-  "R50-102|2026-11-26T13:49:21.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Witterung\nBetrieb ab Höchstädtplatz",
-   "begin": "2026-11-26T16:40:00+01:00"
-  },
-  "R508-118|2026-11-26T13:39:49.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Eichenstraße"
-  },
-  "R51-102|2026-11-26T13:49:21.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Witterung\nBetrieb ab Höchstädtplatz",
-   "begin": "2026-11-26T16:40:00+01:00"
-  },
-  "R52-102|2026-11-26T13:49:21.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Witterung\nBetrieb ab Höchstädtplatz",
-   "begin": "2026-11-26T16:40:00+01:00"
-  },
-  "R53-102|2026-11-26T13:49:21.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Witterung\nBetrieb ab Höchstädtplatz",
-   "begin": "2026-11-26T16:40:00+01:00"
-  },
-  "R530-109|2026-11-26T13:34:18.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-  },
-  "R531-109|2026-11-26T13:34:18.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-  },
-  "R532-109|2026-11-26T13:34:18.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-  },
-  "R533-109|2026-11-26T13:34:18.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-  },
-  "R54-102|2026-11-26T13:49:21.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Witterung\nBetrieb ab Höchstädtplatz",
-   "begin": "2026-11-26T16:40:00+01:00"
-  },
-  "R541-109|2026-11-26T13:33:50.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-  },
-  "R543-109|2026-11-26T13:33:50.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-  },
-  "R544-109|2026-11-26T13:33:50.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-  },
-  "R545-109|2026-11-26T13:33:50.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-  },
-  "R546-109|2026-11-26T13:33:50.000+0100": {
-   "incident": "I20261126-0065",
-   "title": "Feuerwehreinsatz\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-  },
-  "R548-102|2026-11-26T16:42:39.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Fahrtbehinderung\nFalschparker"
-  },
-  "R55-102|2026-11-26T13:49:21.000+0100": {
-   "incident": "I20261126-0093",
-   "title": "Witterung\nBetrieb ab Höchstädtplatz",
-   "begin": "2026-11-26T16:40:00+01:00"
+  "R588-110|2026-11-26T17:54:46.000+0100": {
+   "incident": "I20261126-0097",
+   "title": "Fahrtbehinderung\nSchadhafter PKW"
   }
  }
 }
