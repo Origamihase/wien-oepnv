@@ -8,138 +8,141 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 26 Nov 2026 13:30:43 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2026 14:00:45 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[60: Aktuelle Wetterlage, Betriebsstörung]]></title>
+      <title><![CDATA[63A: Feuerwehreinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">d61c1984994396b89b1d7dde817a6043515703c66d3772c558afae63c38a264a</guid>
+      <pubDate>Thu, 26 Nov 2026 13:58:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 26 Nov 2026 14:00:45 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Nov 2026 13:58:00 +0100</ext:starts_at>
+      <description>Fahrtbehinderung in Richtung Am Rosenhügel. Voraussichtlich bis 14:25 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Kastanienallee. [Seit 13:58]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung in Richtung Am Rosenhügel. Voraussichtlich bis 14:25 Uhr. Grund: Feuerwehreinsatz im Haltestellenbereich Kastanienallee.<br/>[Seit 13:58]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/6: Aktuelle Wetterlage]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">95ee3c7d665ed9b577a7b06f87a979126e4f5db4df9c50fb379552cb9d852b22</guid>
+      <pubDate>Thu, 26 Nov 2026 13:53:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 26 Nov 2026 14:00:45 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Nov 2026 13:53:00 +0100</ext:starts_at>
+      <description>1: Betrieb nur Prater Hauptallee – Matzleinsdorfer Platz; 6: Umleitung Quellenplatz – Matzleinsdorfer Platz. [Seit 13:53]</description>
+      <content:encoded><![CDATA[1: Betrieb nur Prater Hauptallee – Matzleinsdorfer Platz; 6: Umleitung Quellenplatz – Matzleinsdorfer Platz.<br/>[Seit 13:53]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2: Witterung, Weichenstörung]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">23a842750a5806a4065c67ad714b249c4e849b0375927516ad94d9c27b36b6ac</guid>
+      <pubDate>Thu, 26 Nov 2026 13:49:19 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 26 Nov 2026 14:00:45 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Nov 2026 13:49:21 +0100</ext:starts_at>
+      <description>Witterung: Betrieb ab Höchstädtplatz. [Seit 13:49]</description>
+      <content:encoded><![CDATA[Witterung: Betrieb ab Höchstädtplatz.<br/>[Seit 13:49]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[6/9/18: Aktuelle Wetterlage]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">46de795e717860afb434138a88dc893f9dcd445960d7bcbece0899f241d2fc94</guid>
+      <pubDate>Thu, 26 Nov 2026 13:29:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 26 Nov 2026 14:00:45 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Nov 2026 13:29:00 +0100</ext:starts_at>
+      <description>Betrieb nur: 6 Geiereckstraße – Eichenstraße; 9 Gersthof – Johann-Nepomuk-Berger-Platz; 18 Stadion – Eichenstraße. Voraussichtlich bis 14:30 Uhr. [Seit 13:29]</description>
+      <content:encoded><![CDATA[Betrieb nur: 6 Geiereckstraße – Eichenstraße; 9 Gersthof – Johann-Nepomuk-Berger-Platz; 18 Stadion – Eichenstraße. Voraussichtlich bis 14:30 Uhr.<br/>[Seit 13:29]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[49: Aktuelle Wetterlage]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">fc7a2f63681a3cdc70f0d051a33a25584bfe9d454e7a7633594583d14abe8d52</guid>
+      <pubDate>Thu, 26 Nov 2026 13:29:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 26 Nov 2026 14:00:45 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Nov 2026 13:29:00 +0100</ext:starts_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 13:29]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 13:29]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[6: Feuerwehreinsatz, Weichenstörung, Falschparker]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">efb39628d1b0219c9738008a43aa98fc3f3f35824856fecae79e175b507efbb4</guid>
+      <pubDate>Thu, 26 Nov 2026 11:53:38 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 26 Nov 2026 14:00:45 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Nov 2026 13:41:19 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 26 Nov 2026 17:40:00 +0100</ext:ends_at>
+      <description>Feuerwehreinsatz: Betrieb ab Eichenstraße. Weichenstörung: Betrieb ab Absberggasse; EInstieg in der Schleife von Linie D. Falschparker: Fahrtbehinderung. [Seit 11:53]</description>
+      <content:encoded><![CDATA[Feuerwehreinsatz: Betrieb ab Eichenstraße. Weichenstörung: Betrieb ab Absberggasse; EInstieg in der Schleife von Linie D. Falschparker: Fahrtbehinderung.<br/>[Seit 11:53]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1: Witterung]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">74354e3fed6e0700d6cd78aeaa896370b98a1cb5ddac75efbba82876c608bd36</guid>
+      <pubDate>Wed, 25 Nov 2026 00:00:29 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 26 Nov 2026 14:00:45 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Nov 2026 13:57:25 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 26 Nov 2026 17:56:00 +0100</ext:ends_at>
+      <description>Fahrtbehinderung; Betrieb ab Matzleinsdorfer Platz. [Seit 13:57]</description>
+      <content:encoded><![CDATA[Fahrtbehinderung; Betrieb ab Matzleinsdorfer Platz.<br/>[Seit 13:57]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60: Witterung, Betriebsstörung]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">e1f85f9eeb4ed97f1c5de8e5d93fb28f096ce0a66f9bdfbb800952f8f42e3245</guid>
       <pubDate>Thu, 26 Nov 2026 13:17:48 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 26 Nov 2026 13:30:43 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Nov 2026 13:17:48 +0100</ext:starts_at>
-      <description>Aktuelle Wetterlage: Linie 60:Fahrtbehinderung in Richtung Hietzing. Voraussichtliche Dauer: Nicht absehbar. [Seit 13:17]</description>
-      <content:encoded><![CDATA[Aktuelle Wetterlage: Linie 60:Fahrtbehinderung in Richtung Hietzing. Voraussichtliche Dauer: Nicht absehbar.<br/>[Seit 13:17]]]></content:encoded>
+      <ext:first_seen>Thu, 26 Nov 2026 13:47:21 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Nov 2026 13:46:21 +0100</ext:starts_at>
+      <description>Witterung: Betrieb ab Hofwiesengasse; Fahrtbehinderung. Betriebsstörung: Betrieb nur zwischen Westbahnhof und Hofwiesengasse; Betrieb ab Anschützgasse; Betrieb ab Hietzing. [Seit 13:17]</description>
+      <content:encoded><![CDATA[Witterung: Betrieb ab Hofwiesengasse; Fahrtbehinderung. Betriebsstörung: Betrieb nur zwischen Westbahnhof und Hofwiesengasse; Betrieb ab Anschützgasse; Betrieb ab Hietzing.<br/>[Seit 13:17]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[6: Weichenstörung, Falschparker]]></title>
+      <title><![CDATA[18: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">13b81c18efb0c25882c12b010e1730a38e8651bbad4796d60994e76d18a05c3a</guid>
-      <pubDate>Thu, 26 Nov 2026 12:16:40 +0100</pubDate>
+      <guid isPermaLink="false">21c3ce36e6e832d351eaa39befee7dfc66ba32c5288ed8907a4cd7ecc35b7eb3</guid>
+      <pubDate>Thu, 26 Nov 2026 13:39:49 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 26 Nov 2026 13:30:43 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Nov 2026 12:16:40 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 26 Nov 2026 16:16:00 +0100</ext:ends_at>
-      <description>Weichenstörung: Betrieb ab Absberggasse; EInstieg in der Schleife von Linie D. Falschparker: Fahrtbehinderung. [Seit 12:16]</description>
-      <content:encoded><![CDATA[Weichenstörung: Betrieb ab Absberggasse; EInstieg in der Schleife von Linie D. Falschparker: Fahrtbehinderung.<br/>[Seit 12:16]]]></content:encoded>
+      <ext:first_seen>Thu, 26 Nov 2026 13:39:49 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Nov 2026 13:41:49 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 26 Nov 2026 17:41:00 +0100</ext:ends_at>
+      <description>Betrieb ab Eichenstraße. [Seit 13:39]</description>
+      <content:encoded><![CDATA[Betrieb ab Eichenstraße.<br/>[Seit 13:39]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U1: Betriebsstörung]]></title>
+      <title><![CDATA[9: Feuerwehreinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a</guid>
-      <pubDate>Thu, 26 Nov 2026 13:19:00 +0100</pubDate>
+      <guid isPermaLink="false">f70728020da97caa07e51eff2736191c9f68e1ac73881b3b2ca28860486dd22d</guid>
+      <pubDate>Thu, 26 Nov 2026 13:33:48 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 26 Nov 2026 13:19:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Nov 2026 13:19:00 +0100</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 13:19]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 13:19]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[38: Aktuelle Wetterlage]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">17bd41294bfaf719edc6e8bbedc53df82ea26d96df008351534db7cc43866547</guid>
-      <pubDate>Thu, 26 Nov 2026 13:10:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 26 Nov 2026 13:10:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Nov 2026 13:10:00 +0100</ext:starts_at>
-      <description>Linie 38:Betrieb nur zwischen Schottentor und Nußdorfer Straße.Weiterfahrt über die Linie 37 bis Hohen Warte. [Seit 13:10]</description>
-      <content:encoded><![CDATA[Linie 38:Betrieb nur zwischen Schottentor und Nußdorfer Straße.Weiterfahrt über die Linie 37 bis Hohen Warte.<br/>[Seit 13:10]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25/26: Schadhafter Zug, Aktuelle Wetterlage]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">f36bfd0bb4774d14d71eac6889b393ad5dd3511aecc7a72a6d56cbd25c43546f</guid>
-      <pubDate>Thu, 26 Nov 2026 13:02:46 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 26 Nov 2026 13:02:46 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Nov 2026 13:16:50 +0100</ext:starts_at>
-      <description>Schadhafter Zug: Fahrtbehinderung. [Seit 13:02]</description>
-      <content:encoded><![CDATA[Schadhafter Zug: Fahrtbehinderung.<br/>[Seit 13:02]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">15ef57fce9c662ed7b76084303f102ef88811630f5a714caaf939a9b1b81af96</guid>
-      <pubDate>Thu, 26 Nov 2026 12:54:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 26 Nov 2026 12:54:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Nov 2026 12:54:00 +0100</ext:starts_at>
-      <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 12:54]</description>
-      <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 12:54]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40/41: Falschparker]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919</guid>
-      <pubDate>Thu, 26 Nov 2026 12:42:12 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 26 Nov 2026 12:42:12 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Nov 2026 12:45:00 +0100</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 12:42]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 12:42]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[71: Betriebsstörung, Witterung, Aktuelle Wetterlage]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">6d80f739680119cc07c009b6c26f01b194d5b9021ee9dc8382c006060a9456a1</guid>
-      <pubDate>Thu, 26 Nov 2026 12:20:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 26 Nov 2026 12:30:53 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Nov 2026 12:20:00 +0100</ext:starts_at>
-      <description>Betriebsstörung: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz; Betrieb ab Börse. Witterung: Betrieb ab Fickeysstraße; Einstieg bei der Polizeistation. [Seit 12:20]</description>
-      <content:encoded><![CDATA[Betriebsstörung: Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz; Betrieb ab Börse. Witterung: Betrieb ab Fickeysstraße; Einstieg bei der Polizeistation.<br/>[Seit 12:20]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[11: Weichenstörung, Witterung]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">c08640d2eac204545b6b46dd799e5186f32c82f009e94de38211dd790d8904e8</guid>
-      <pubDate>Thu, 26 Nov 2026 12:11:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 26 Nov 2026 12:30:53 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Nov 2026 12:11:00 +0100</ext:starts_at>
-      <description>Weichenstörung: Betrieb ab Enkplatz, Grillgasse. Witterung: Betrieb ab Enkplatz, Grillgasse; Einstieg in der Grillgasse beim 15A; Betrieb ab FIckeysstraße. [Seit 12:11]</description>
-      <content:encoded><![CDATA[Weichenstörung: Betrieb ab Enkplatz, Grillgasse. Witterung: Betrieb ab Enkplatz, Grillgasse; Einstieg in der Grillgasse beim 15A; Betrieb ab FIckeysstraße.<br/>[Seit 12:11]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[14A: Verkehrsunfall]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">45135f0f9023593102b885c7d89c0c028d3a4d83421c93a8a39180b147612974</guid>
-      <pubDate>Thu, 26 Nov 2026 12:23:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 26 Nov 2026 12:23:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Nov 2026 12:23:00 +0100</ext:starts_at>
-      <description>Betrieb ab Laxenburger Straße, Gudrunstraße. [Seit 12:23]</description>
-      <content:encoded><![CDATA[Betrieb ab Laxenburger Straße, Gudrunstraße.<br/>[Seit 12:23]]]></content:encoded>
+      <ext:first_seen>Thu, 26 Nov 2026 13:33:48 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Nov 2026 13:34:19 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 26 Nov 2026 17:33:00 +0100</ext:ends_at>
+      <description>Betrieb ab Johann-Nepomuk-Berger-Platz. [Seit 13:33]</description>
+      <content:encoded><![CDATA[Betrieb ab Johann-Nepomuk-Berger-Platz.<br/>[Seit 13:33]]]></content:encoded>
     </item>
   </channel>
 </rss>
