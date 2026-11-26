@@ -1,17 +1,48 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
- "tickers": [],
+ "tickers": [
+  {
+   "key": "R2963-410|2026-11-26T07:22:44.000+0100|Witterung\nUmleitung über Krottenbachstraße zur Dänenstraße",
+   "name": "R2963-410",
+   "title": "Witterung\nUmleitung über Krottenbachstraße zur Dänenstraße",
+   "end": "2026-11-26T10:21:00.000+0100",
+   "incident": "I20261126-0016"
+  },
+  {
+   "key": "R2985-410|2026-11-26T07:21:44.000+0100|Witterung\nBetrieb ab Dänenstraße",
+   "name": "R2985-410",
+   "title": "Witterung\nBetrieb ab Dänenstraße",
+   "end": "2026-11-26T10:20:00.000+0100",
+   "incident": "I20261126-0016"
+  }
+ ],
  "owners": {
   "R1250-435|2026-11-26T06:28:07.000+0100": {
    "incident": "I20261126-0010",
    "title": "Wiiterung\nBetrieb ab Agnesgasse"
+  },
+  "R2963-410|2026-11-26T07:22:44.000+0100": {
+   "incident": "I20261126-0016",
+   "title": "Witterung\nUmleitung über Krottenbachstraße zur Dänenstraße"
+  },
+  "R2985-410|2026-11-26T07:21:44.000+0100": {
+   "incident": "I20261126-0016",
+   "title": "Witterung\nBetrieb ab Dänenstraße"
   },
   "R3367-469|2026-11-26T06:48:41.000+0100": {
    "incident": "I20261126-0011",
    "title": "Fahrtbehinderung\nwegen Witterung"
   },
   "R3368-469|2026-11-26T06:48:41.000+0100": {
+   "incident": "I20261126-0011",
+   "title": "Fahrtbehinderung\nwegen Witterung"
+  },
+  "R3369-469|2026-11-26T07:17:14.000+0100": {
+   "incident": "I20261126-0011",
+   "title": "Fahrtbehinderung\nwegen Witterung"
+  },
+  "R3370-469|2026-11-26T07:17:14.000+0100": {
    "incident": "I20261126-0011",
    "title": "Fahrtbehinderung\nwegen Witterung"
   },

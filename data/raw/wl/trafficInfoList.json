@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261126-0009, I20261126-0008-F01, I20261126-0006, I20261126-0011, I20260925-0011, I20260909-0007, I20261126-0007, I20261126-0010, I20261126-0012, I20261126-0013, I20261020-0029"
+    "trafficInfoNameList": "I20261126-0009, I20261126-0008-F01, I20261126-0016, I20260925-0011, I20261126-0012, I20261126-0015-F01, I20261126-0006, I20261126-0017, I20260909-0007, I20261126-0010, I20261126-0014, I20261020-0029, I20261126-0011-F01, I20261126-0013-F01"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1883-101, R1875-101, R1884-101, R1876-101, R1880-101, R1881-101, R1882-101, R2378-627, R2371-125, R2372-125, R2343-125, R2359-125, R2370-125, R2373-125, R2373-127, R2379-627, R2380-627, R2345-127, R2373-126, R2558-125, R2343-626, R3886-480, R293-474, R318-437, R401-101, R1974-466, R1199-205, R500-101, R1250-435, R408-469, R728-469, R8-469, R3368-469, R3367-469, R859-438, R5200-438, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R2558-125, R2371-125, R2372-125, R2343-125, R2359-125, R2370-125, R2373-125, R2373-127, R2379-627, R2380-627, R2345-127, R2373-126, R2378-627, R2343-626, R3886-480, R401-101, R318-437, R293-474, R1974-466, R1199-205, R500-101, R1250-435, R408-469, R8-469, R728-469, R3367-469, R3368-469, R859-438, R5200-438, R3370-469, R3369-469, R2985-410, R2963-410, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -177,18 +177,20 @@
      "relatedLineTypes": {
       "10A": "ptBusCity",
       "15A": "ptBusCity",
+      "62A": "ptBusCity",
       "63A": "ptBusCity",
+      "64A": "ptBusCity",
       "66A": "ptBusCity"
      }
     },
-    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
-    "descriptionHTML": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 15A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 66A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Linie 64A: Unregelmäßige Intervalle in beiden Richtungen. Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "descriptionHTML": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 15A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 62A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 64A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 66A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 15A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 66A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
-       "descriptionPlain": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
-       "title": "10A, 63A, 15A, 66A: Aktuelle Wetterlage"
+       "descriptionHtml": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 15A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 62A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 64A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 66A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
+       "descriptionPlain": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Linie 62A: Unregelmäßige Intervalle in beiden Richtungen. Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Linie 64A: Unregelmäßige Intervalle in beiden Richtungen. Linie 66A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+       "title": "63A, 15A, 66A, 62A, 64A, 10A: Aktuelle Wetterlage"
       }
      }
     ],
@@ -202,7 +204,9 @@
     "relatedLines": [
      "10A",
      "15A",
+     "62A",
      "63A",
+     "64A",
      "66A"
     ],
     "relatedLinesDetails": [
@@ -217,8 +221,18 @@
       "vehicleType": "ptBusCity"
      },
      {
+      "lineId": 462,
+      "lineName": "62A",
+      "vehicleType": "ptBusCity"
+     },
+     {
       "lineId": 463,
       "lineName": "63A",
+      "vehicleType": "ptBusCity"
+     },
+     {
+      "lineId": 464,
+      "lineName": "64A",
       "vehicleType": "ptBusCity"
      },
      {
@@ -230,59 +244,11 @@
     "status": "active",
     "time": {
      "created": "2026-11-26T05:36:00.000+0100",
-     "lastUpdate": "2026-11-26T06:46:00.000+0100",
+     "lastUpdate": "2026-11-26T07:29:00.000+0100",
      "resume": "2026-11-26T05:36:00.000+0100",
      "start": "2026-11-26T05:36:00.000+0100"
     },
-    "title": "10A, 63A, 15A, 66A: Aktuelle Wetterlage"
-   },
-   {
-    "alertCause": "roadway damage",
-    "alertCauseId": 67,
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung.",
-    "descriptionHTML": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Weichenstörung.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U6:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Weichenstörung.</p>",
-       "descriptionPlain": "Linie U6: Unregelmäßige Intervalle in beiden Richtungen. Grund: Weichenstörung.",
-       "title": "U6: Weichenstörung"
-      }
-     }
-    ],
-    "name": "I20261126-0007",
-    "owner": "WL",
-    "parentName": "I20261126-0007",
-    "priority": "1",
-    "reasonId": 39,
-    "reasonName": "Weichenstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4638
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-26T05:41:00.000+0100",
-     "lastUpdate": "2026-11-26T05:41:00.000+0100",
-     "resume": "2026-11-26T05:40:00.000+0100",
-     "start": "2026-11-26T05:40:00.000+0100"
-    },
-    "title": "U6: Weichenstörung"
+    "title": "63A, 15A, 66A, 62A, 64A, 10A: Aktuelle Wetterlage"
    },
    {
     "alertCause": "poor weather",
@@ -428,18 +394,18 @@
       "69A": "ptBusCity"
      }
     },
-    "description": "Linie 69A: Fahrtbehinderung in Richtung Simmering S U. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Haltestellenbereich Hauptbahnhof S U.",
-    "descriptionHTML": "<p>Linie 69A:<br>Fahrtbehinderung in Richtung Simmering S U.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Aktuelle Wetterlage im Haltestellenbereich Hauptbahnhof S U.</p>",
+    "description": "Linie 69A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 69A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 69A:<br>Fahrtbehinderung in Richtung Simmering S U.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Aktuelle Wetterlage im Haltestellenbereich Hauptbahnhof S U.</p>",
-       "descriptionPlain": "Linie 69A: Fahrtbehinderung in Richtung Simmering S U. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Haltestellenbereich Hauptbahnhof S U.",
+       "descriptionHtml": "<p>Linie 69A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 69A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "69A: Aktuelle Wetterlage"
       }
      }
     ],
-    "name": "I20261126-0011",
+    "name": "I20261126-0011-F01",
     "owner": "WL",
     "parentName": "I20261126-0011",
     "priority": "1",
@@ -461,8 +427,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-26T06:44:00.000+0100",
-     "lastUpdate": "2026-11-26T06:44:00.000+0100",
+     "created": "2026-11-26T07:23:00.000+0100",
+     "lastUpdate": "2026-11-26T07:23:00.000+0100",
+     "resume": "2026-11-26T07:23:00.000+0100",
      "start": "2026-11-26T06:41:00.000+0100"
     },
     "title": "69A: Aktuelle Wetterlage"
@@ -475,13 +442,13 @@
       "38A": "ptBusCity"
      }
     },
-    "description": "Linie 38A: Fahrtbehinderung in Richtung Leopoldsberg. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Haltestellenbereich Wagenwiese.",
-    "descriptionHTML": "<p>Linie 38A:<br>Fahrtbehinderung in Richtung Leopoldsberg.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Aktuelle Wetterlage im Haltestellenbereich Wagenwiese.</p>",
+    "description": "Linie 38A: Betrieb nur zwischen Bahnhof Heiligenstadt S U und Himmelstraße. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Haltestellenbereich Wagenwiese.",
+    "descriptionHTML": "<p>Linie 38A:<br>Betrieb nur zwischen Bahnhof Heiligenstadt S U und Himmelstraße.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Aktuelle Wetterlage im Haltestellenbereich Wagenwiese.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 38A:<br>Fahrtbehinderung in Richtung Leopoldsberg.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Aktuelle Wetterlage im Haltestellenbereich Wagenwiese.</p>",
-       "descriptionPlain": "Linie 38A: Fahrtbehinderung in Richtung Leopoldsberg. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Haltestellenbereich Wagenwiese.",
+       "descriptionHtml": "<p>Linie 38A:<br>Betrieb nur zwischen Bahnhof Heiligenstadt S U und Himmelstraße.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Aktuelle Wetterlage im Haltestellenbereich Wagenwiese.</p>",
+       "descriptionPlain": "Linie 38A: Betrieb nur zwischen Bahnhof Heiligenstadt S U und Himmelstraße. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Haltestellenbereich Wagenwiese.",
        "title": "38A: Aktuelle Wetterlage"
       }
      }
@@ -509,7 +476,7 @@
     "status": "active",
     "time": {
      "created": "2026-11-26T06:44:00.000+0100",
-     "lastUpdate": "2026-11-26T06:44:00.000+0100",
+     "lastUpdate": "2026-11-26T07:02:00.000+0100",
      "start": "2026-11-26T06:43:00.000+0100"
     },
     "title": "38A: Aktuelle Wetterlage"
@@ -522,18 +489,18 @@
       "U1": "ptMetro"
      }
     },
-    "description": "Die Linie U1 fährt derzeit zwischen den Stationen Taubstummengasse und Nestroyplatz in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig. Voraussichtliche Dauer: 07:10 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Karlsplatz.",
-    "descriptionHTML": "<p>Die Linie U1 fährt derzeit zwischen den Stationen Taubstummengasse und Nestroyplatz in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 07:10 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Karlsplatz.</p>",
+    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Die Linie U1 fährt derzeit zwischen den Stationen Taubstummengasse und Nestroyplatz in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig.</p><p>Voraussichtliche Dauer: 07:10 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Haltestellenbereich Karlsplatz.</p>",
-       "descriptionPlain": "Die Linie U1 fährt derzeit zwischen den Stationen Taubstummengasse und Nestroyplatz in beiden Richtungen über Gleis 2 und fährt daher unregelmäßig. Voraussichtliche Dauer: 07:10 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Karlsplatz.",
+       "descriptionHtml": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "U1: Schadhaftes Fahrzeug"
       }
      }
     ],
-    "name": "I20261126-0013",
+    "name": "I20261126-0013-F01",
     "owner": "WL",
     "parentName": "I20261126-0013",
     "priority": "1",
@@ -555,11 +522,197 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-26T06:49:00.000+0100",
-     "lastUpdate": "2026-11-26T06:50:00.000+0100",
+     "created": "2026-11-26T07:11:00.000+0100",
+     "end": "2026-11-26T08:45:00.000+0100",
+     "lastUpdate": "2026-11-26T07:27:00.000+0100",
      "start": "2026-11-26T06:47:00.000+0100"
     },
     "title": "U1: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "poor weather",
+    "alertCauseId": 85,
+    "attributes": {
+     "relatedLineTypes": {
+      "39A": "ptBusCity"
+     }
+    },
+    "description": "Linie 39A: Betrieb nur zwischen Bahnhof Heiligenstadt S U und Sievering. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Bereich Agnesgasse.",
+    "descriptionHTML": "<p>Linie 39A:<br>Betrieb nur zwischen Bahnhof Heiligenstadt S U und Sievering.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Aktuelle Wetterlage im Bereich Agnesgasse.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 39A:<br>Betrieb nur zwischen Bahnhof Heiligenstadt S U und Sievering.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Aktuelle Wetterlage im Bereich Agnesgasse.</p>",
+       "descriptionPlain": "Linie 39A: Betrieb nur zwischen Bahnhof Heiligenstadt S U und Sievering. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Bereich Agnesgasse.",
+       "title": "39A: Aktuelle Wetterlage"
+      }
+     }
+    ],
+    "location": "Agnesgasse",
+    "name": "I20261126-0014",
+    "owner": "WL",
+    "parentName": "I20261126-0014",
+    "priority": "1",
+    "reasonId": 40,
+    "reasonName": "Aktuelle Wetterlage",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "39A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 439,
+      "lineName": "39A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-26T07:01:00.000+0100",
+     "lastUpdate": "2026-11-26T07:02:00.000+0100",
+     "start": "2026-11-26T06:56:00.000+0100"
+    },
+    "title": "39A: Aktuelle Wetterlage"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U2": "ptMetro"
+     }
+    },
+    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "U2: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261126-0015-F01",
+    "owner": "WL",
+    "parentName": "I20261126-0015",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 302,
+      "lineName": "U2",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "relatedStops": [
+     4279
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-26T07:18:00.000+0100",
+     "end": "2026-11-26T08:33:00.000+0100",
+     "lastUpdate": "2026-11-26T07:27:00.000+0100",
+     "start": "2026-11-26T07:08:00.000+0100"
+    },
+    "title": "U2: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "poor weather",
+    "alertCauseId": 85,
+    "attributes": {
+     "relatedLineTypes": {
+      "10A": "ptBusCity"
+     }
+    },
+    "description": "Die Linie 10A wird in Richtung Niederhofstraße U zwischen Silbergasse und Dänenstraße über Krottenbachstraße umgeleitet. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Bereich Chimanistraße.",
+    "descriptionHTML": "<p>Die Linie 10A wird in Richtung Niederhofstraße U zwischen Silbergasse und Dänenstraße über Krottenbachstraße umgeleitet.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Aktuelle Wetterlage im Bereich Chimanistraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Die Linie 10A wird in Richtung Niederhofstraße U zwischen Silbergasse und Dänenstraße über Krottenbachstraße umgeleitet.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Aktuelle Wetterlage im Bereich Chimanistraße.</p>",
+       "descriptionPlain": "Die Linie 10A wird in Richtung Niederhofstraße U zwischen Silbergasse und Dänenstraße über Krottenbachstraße umgeleitet. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Bereich Chimanistraße.",
+       "title": "10A: Aktuelle Wetterlage"
+      }
+     }
+    ],
+    "location": "Chimanistraße",
+    "name": "I20261126-0016",
+    "owner": "WL",
+    "parentName": "I20261126-0016",
+    "priority": "1",
+    "reasonId": 40,
+    "reasonName": "Aktuelle Wetterlage",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 410,
+      "lineName": "10A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "resolved",
+    "time": {
+     "created": "2026-11-26T07:20:00.000+0100",
+     "end": "2026-11-26T07:29:00.000+0100",
+     "lastUpdate": "2026-11-26T07:29:00.000+0100",
+     "resume": "2026-11-26T07:29:00.000+0100",
+     "start": "2026-11-26T07:19:00.000+0100"
+    },
+    "title": "10A: Aktuelle Wetterlage"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
+    },
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U3: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261126-0017",
+    "owner": "WL",
+    "parentName": "I20261126-0017",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-26T07:29:00.000+0100",
+     "lastUpdate": "2026-11-26T07:29:00.000+0100",
+     "resume": "2026-11-26T07:29:00.000+0100",
+     "start": "2026-11-26T07:29:00.000+0100"
+    },
+    "title": "U3: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1139,6 +1292,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Witterung\nUmleitung über Krottenbachstraße zur Dänenstraße",
+    "name": "R2963-410",
+    "owner": "WL",
+    "parentName": "R2963-410",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     2963
+    ],
+    "time": {
+     "end": "2026-11-26T10:21:00.000+0100",
+     "start": "2026-11-26T07:22:44.000+0100"
+    },
+    "title": "Witterung\nUmleitung über Krottenbachstraße zur Dänenstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Witterung\nBetrieb ab Dänenstraße",
+    "name": "R2985-410",
+    "owner": "WL",
+    "parentName": "R2985-410",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedStops": [
+     2985
+    ],
+    "time": {
+     "end": "2026-11-26T10:20:00.000+0100",
+     "start": "2026-11-26T07:21:44.000+0100"
+    },
+    "title": "Witterung\nBetrieb ab Dänenstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -1162,7 +1361,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Witterung",
+    "description": "Witterung\nBetrieb ab Lilienthalgasse",
     "name": "R3367-469",
     "owner": "WL",
     "parentName": "R3367-469",
@@ -1177,15 +1376,15 @@
      3367
     ],
     "time": {
-     "end": "2026-11-26T10:48:00.000+0100",
+     "end": "2026-11-26T10:15:00.000+0100",
      "start": "2026-11-26T06:48:41.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Witterung"
+    "title": "Witterung\nBetrieb ab Lilienthalgasse"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Witterung",
+    "description": "Witterung\nBetrieb ab Lilienthalgasse",
     "name": "R3368-469",
     "owner": "WL",
     "parentName": "R3368-469",
@@ -1200,8 +1399,54 @@
      3368
     ],
     "time": {
-     "end": "2026-11-26T10:48:00.000+0100",
+     "end": "2026-11-26T10:15:00.000+0100",
      "start": "2026-11-26T06:48:41.000+0100"
+    },
+    "title": "Witterung\nBetrieb ab Lilienthalgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Witterung",
+    "name": "R3369-469",
+    "owner": "WL",
+    "parentName": "R3369-469",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "69A"
+    ],
+    "relatedStops": [
+     3369
+    ],
+    "time": {
+     "end": "2026-11-26T10:16:00.000+0100",
+     "start": "2026-11-26T07:17:14.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Witterung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Witterung",
+    "name": "R3370-469",
+    "owner": "WL",
+    "parentName": "R3370-469",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "69A"
+    ],
+    "relatedStops": [
+     3370
+    ],
+    "time": {
+     "end": "2026-11-26T10:16:00.000+0100",
+     "start": "2026-11-26T07:17:14.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Witterung"
    },
@@ -1346,7 +1591,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Witterung",
+    "description": "Witterung\nBetrieb ab Lilienthalgasse",
     "name": "R8-469",
     "owner": "WL",
     "parentName": "R8-469",
@@ -1361,10 +1606,10 @@
      8
     ],
     "time": {
-     "end": "2026-11-26T10:48:00.000+0100",
+     "end": "2026-11-26T10:15:00.000+0100",
      "start": "2026-11-26T06:48:39.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Witterung"
+    "title": "Witterung\nBetrieb ab Lilienthalgasse"
    },
    {
     "alertCause": "undefined alert cause",
