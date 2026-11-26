@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-26T03:30:49.708322+00:00",
- "built": "2026-11-26T04:30:41+01:00",
+ "updated": "2026-11-26T04:00:53.247747+00:00",
+ "built": "2026-11-26T05:00:35+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-26T04:30:41+01:00",
+  "built": "2026-11-26T05:00:35+01:00",
   "items": [
+   {
+    "title": "Wien Floridsdorf ↔ Wien Praterstern",
+    "time_line": "Seit 04:57"
+   },
    {
     "title": "Felixdorf",
     "time_line": "Seit 00:05"
@@ -43,35 +47,11 @@
    {
     "title": "74A: Rabengasse",
     "time_line": "Seit 16.11."
-   },
-   {
-    "title": "98A: Arztgasse",
-    "time_line": "Seit 16.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-19T04:00:34.884427+00:00",
-   "raw": {
-    "wl-stoerungen": 39,
-    "wl-hinweise": 76,
-    "oebb": 169,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 14,
-    "oebb": 146,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 9,
-    "wl": 84
-   }
-  },
   {
    "t": "2026-11-19T04:30:59.709566+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 14,
     "wl": 86
    }
+  },
+  {
+   "t": "2026-11-26T04:00:53.247747+00:00",
+   "raw": {
+    "wl-stoerungen": 38,
+    "wl-hinweise": 79,
+    "oebb": 182,
+    "baustellen-linien": 46,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 15,
+    "oebb": 154,
+    "baustellen": 56
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 15,
+    "wl": 83
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-26T03:30:49.708322+00:00"
+   "last_ok": "2026-11-26T04:00:53.247747+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-26T03:30:49.708322+00:00"
+   "last_ok": "2026-11-26T04:00:53.247747+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-26T03:30:49.708322+00:00"
+   "last_ok": "2026-11-26T04:00:53.247747+00:00"
   }
  }
 }

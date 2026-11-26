@@ -1,4 +1,18 @@
 {
- "entscheidungen": {},
+ "entscheidungen": {
+  "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&930498": {
+   "abdruck": "ac48e9a83247f8ec",
+   "art": "ploetzlich",
+   "entschieden": "2026-11-26T04:00:35+00:00",
+   "gefragt": [
+    "2026-11-26T04:00:35+00:00"
+   ],
+   "grund": "Wegen Verlängerung der Bauarbeiten sind Zugfahrten derzeit nur eingeschränkt möglich.",
+   "klasse": "oebb-tag",
+   "modell": "gemini-3.5-flash-lite",
+   "titel": "Wien Floridsdorf ↔ Wien Praterstern",
+   "zuletzt": "2026-11-26"
+  }
+ },
  "version": 1
 }
