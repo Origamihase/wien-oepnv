@@ -375,12 +375,12 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "5B: Bauarbeiten",
-    "description": "<h2>Bauarbeiten</h2><p>Wegen Straßenbauarbeiten in der Wexstraße werden die Busse umgeleitet.</p><p><strong><u>Zeitraum:</u></strong><br>Ab Montag, den 9. November 2026, etwa 07:00 Uhr für ca. drei Wochen.</p><p><strong><u>Maßnahmen:</u></strong><br>Linie 5B<br>Umleitung ab Klosterneuburger Straße # Wexstraße über Klosterneuburger Straße, Pappenheimgasse zur Jägerstraße.</p><p><u>Aufgelassene Haltestellen:</u><br>- Wexstraße<br>- Jägerstraße</p><p>Als Ersatz dient die provisorisch eingerichtete Haltestelle in der Pappenheimgasse 24-28, Höhe Stiege 15.</p><p><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/417%205B%20Wexstr.%20Grafik.png\" alt=\"Bild\"></p>",
+    "description": "<h2>Bauarbeiten</h2><p>Wegen Straßenbauarbeiten in der Wexstraße werden die Busse umgeleitet.</p><p><strong><u>Zeitraum:</u></strong><br>Ab Montag, den 9. November 2026, etwa 07:00 Uhr bis 04. Dezember 2026, etwa 07:00 Uhr.</p><p><strong><u>Maßnahmen:</u></strong><br>Linie 5B<br>Umleitung ab Klosterneuburger Straße # Wexstraße über Klosterneuburger Straße, Pappenheimgasse zur Jägerstraße.</p><p><u>Aufgelassene Haltestellen:</u><br>- Wexstraße<br>- Jägerstraße</p><p>Als Ersatz dient die provisorisch eingerichtete Haltestelle in der Pappenheimgasse 24-28, Höhe Stiege 15.</p><p><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/417%205B%20Wexstr.%20Grafik.png\" alt=\"Bild\"></p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "7f3e5db8abfea3bc72c1f2338313c17a67bc98bbf89a5bdb2e547704618ff7f5",
     "pubDate": "2026-11-06T14:11:00+01:00",
     "starts_at": "2026-11-09T00:00:00+01:00",
-    "ends_at": "2026-12-10T23:59:00+01:00",
+    "ends_at": "2026-12-04T07:00:00+01:00",
     "_identity": "wl|hinweis|L=5B|D=2026-11-09|TK=5b bauarbeiten"
   },
   {
@@ -674,14 +674,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/2/11/25/60/71/D/O: Aktuelle Wetterlage",
-    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Linie 25: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "title": "1/2/11/25/71/D/O: Aktuelle Wetterlage",
+    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Linie 25: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "c6e4573b975b42b64efc4762ec23bef4f5ae8454d188448fccc0d436ff939b63",
+    "guid": "4f1145a620ce27f69b954bcb736a5574b73ba7252620d127b625d93eeccb6b61",
     "pubDate": "2026-11-26T07:37:00+01:00",
     "starts_at": "2026-11-26T07:37:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=1,11,2,25,60,71,D,O|D=2026-11-26|TK=o 25 60 11 2 d 71 1 aktuelle wetterlage",
+    "_identity": "wl|störung|L=1,11,2,25,71,D,O|D=2026-11-26|TK=o 25 11 2 d 71 1 aktuelle wetterlage",
     "_wl_ids": [
       "I20261126-0019"
     ],
@@ -754,6 +754,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12A: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
+    "pubDate": "2026-11-26T11:21:05+01:00",
+    "starts_at": "2026-11-26T11:21:05+01:00",
+    "ends_at": "2026-11-26T12:20:00+01:00",
+    "_identity": "wl|störung|L=12A|D=2026-11-26|TK=falschparker"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "13A: Aktuelle Wetterlage",
     "description": "Linie 13A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -806,6 +818,22 @@
     "starts_at": "2026-07-13T14:07:00+02:00",
     "ends_at": "2026-12-31T14:07:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-07-13|TK=haltestelle stadionbrücke im rahmen des strassenbahn neubaus der linie 18 aufgelassen bitte auf nahegelegene haltestellen ausweichen"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "18: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 18: Fahrtbehinderung in Richtung Stadion U. Voraussichtliche Dauer: 11:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Ernst-Happel-Stadion.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
+    "pubDate": "2026-11-26T11:01:00+01:00",
+    "starts_at": "2026-11-26T11:25:37+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=18|D=2026-11-26|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261126-0043"
+    ],
+    "_incident_start": "2026-11-26T11:01:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1258,14 +1286,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "51A/51B: Aktuelle Wetterlage",
-    "description": "Die Linie 51B fährt derzeit nur zwischen Hietzing U und Braillegasse. Die Linie 51A fährt derzeit nur zwischen Hietzing U und Braillegasse. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage.",
+    "title": "51A: Aktuelle Wetterlage",
+    "description": "Linie 51A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "b8f96e0be6ef9668660ee10223b5cc34926013b86a7c601f0803f664211bc911",
+    "guid": "6df2853769174d9ba692133284b251b9f66126ba30cdcbdc43619c3cb4bc6ed2",
     "pubDate": "2026-11-26T09:55:00+01:00",
     "starts_at": "2026-11-26T09:55:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=51A,51B|D=2026-11-26|TK=51a 51b aktuelle wetterlage",
+    "_identity": "wl|störung|L=51A|D=2026-11-26|TK=51a aktuelle wetterlage",
+    "_wl_ids": [
+      "I20261126-0034"
+    ],
+    "_incident_start": "2026-11-26T09:55:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "51B: Aktuelle Wetterlage",
+    "description": "Linie 51B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "8abe15234ebb53458afd7866ff44dd4d28e49c5d38cf32de32637a7937e23889",
+    "pubDate": "2026-11-26T09:55:00+01:00",
+    "starts_at": "2026-11-26T09:55:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=51B|D=2026-11-26|TK=51b aktuelle wetterlage",
     "_wl_ids": [
       "I20261126-0034"
     ],
@@ -1275,7 +1319,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "53A: Aktuelle Wetterlage",
-    "description": "Derzeit ist ein Betrieb der Linie 53A nicht möglich. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage.",
+    "description": "Linie 53A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "1d01bb482c5c4cd5b78fe0305b60e24806546b9f0f01905e265ef8093c4e8994",
     "pubDate": "2026-11-26T09:34:00+01:00",
@@ -1298,6 +1342,46 @@
     "starts_at": "2026-11-26T04:45:27+01:00",
     "ends_at": "2026-11-26T23:59:59+01:00",
     "_identity": "wl|störung|L=5B|D=2026-11-26|TK=busse halten pappenheimgasse 24 28"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Verkehrsunfall",
+    "description": "Linie 60: Kein Betrieb zwischen Hofwiesengasse und Hietzing U. Ersatz: Linien 56A, 56B. Voraussichtliche Dauer: 11:50 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Gloriettegasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "f1fe5d52a5a574694cd18960683874af6f978ac62924632bfae77052d94b803d",
+    "pubDate": "2026-11-26T11:19:00+01:00",
+    "starts_at": "2026-11-26T11:19:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=60|D=2026-11-26|TK=60 verkehrsunfall",
+    "_wl_ids": [
+      "I20261126-0045"
+    ],
+    "_incident_start": "2026-11-26T11:19:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Fahrtbehinderung Verkehrsunfall",
+    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "d4fefbd61cffb826224497ce36210117717220dc478820ab5f401038825d1565",
+    "pubDate": "2026-11-26T11:22:07+01:00",
+    "starts_at": "2026-11-26T11:22:37+01:00",
+    "ends_at": "2026-11-26T12:22:00+01:00",
+    "_identity": "wl|störung|L=60|D=2026-11-26|TK=fahrtbehinderung verkehrsunfall"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "0c6fac2a8f34464f42aa5982eb08b79eef732903ec1dc89348c10739df0b8093",
+    "pubDate": "2026-11-26T11:05:36+01:00",
+    "starts_at": "2026-11-26T11:05:36+01:00",
+    "ends_at": "2026-11-26T12:05:00+01:00",
+    "_identity": "wl|störung|L=60|D=2026-11-26|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
@@ -1347,7 +1431,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "64A: Aktuelle Wetterlage",
-    "description": "Linie 64A: Fahrtbehinderung in Richtung Liesing S. Voraussichtliche Dauer: 11:30 Uhr. Grund: Aktuelle Wetterlage im Haltestellenbereich Kunerolgasse.",
+    "description": "Linie 64A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "d2a3fa5578ca1b6d0e5785094c8e8021154670d4e207f54934d4ade7defabd48",
     "pubDate": "2026-11-26T10:58:00+01:00",

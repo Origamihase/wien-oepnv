@@ -1,13 +1,25 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-26T10:00:54.577218+00:00",
- "built": "2026-11-26T11:00:35+01:00",
+ "updated": "2026-11-26T10:31:07.544842+00:00",
+ "built": "2026-11-26T11:30:51+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-26T11:00:35+01:00",
+  "built": "2026-11-26T11:30:51+01:00",
   "items": [
+   {
+    "title": "12A: Falschparker",
+    "time_line": "Seit 11:21"
+   },
+   {
+    "title": "60: Verkehrsunfall, Falschparker",
+    "time_line": "Seit 11:19"
+   },
+   {
+    "title": "18: Rettungseinsatz",
+    "time_line": "Seit 11:01"
+   },
    {
     "title": "64A: Aktuelle Wetterlage",
     "time_line": "Seit 10:58"
@@ -29,49 +41,17 @@
     "time_line": "Seit 10:18"
    },
    {
-    "title": "9A: Aktuelle Wetterlage",
-    "time_line": "Seit 10:00"
+    "title": "9A/51A/51B: Aktuelle Wetterlage",
+    "time_line": "Seit 09:55"
    },
    {
     "title": "44: Verkehrsunfall",
     "time_line": "Seit 10:13"
-   },
-   {
-    "title": "1A: Verkehrsunfall",
-    "time_line": "Seit 10:03"
-   },
-   {
-    "title": "51A/51B: Aktuelle Wetterlage",
-    "time_line": "Seit 09:55"
-   },
-   {
-    "title": "Ticketanerkennung bei den Wiener Linien: Wien Stephansplatz (U1)",
-    "time_line": "Seit 09:53"
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-19T10:01:04.528548+00:00",
-   "raw": {
-    "wl-stoerungen": 56,
-    "wl-hinweise": 75,
-    "oebb": 174,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 17,
-    "oebb": 150,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 9,
-    "wl": 84
-   }
-  },
   {
    "t": "2026-11-19T10:32:25.869566+00:00",
    "raw": {
@@ -6791,17 +6771,37 @@
     "oebb": 16,
     "wl": 122
    }
+  },
+  {
+   "t": "2026-11-26T10:31:07.544842+00:00",
+   "raw": {
+    "wl-stoerungen": 157,
+    "wl-hinweise": 79,
+    "oebb": 185,
+    "baustellen-linien": 46,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 19,
+    "oebb": 155,
+    "baustellen": 56
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 16,
+    "wl": 128
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-26T10:00:54.577218+00:00"
+   "last_ok": "2026-11-26T10:31:07.544842+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-26T10:00:54.577218+00:00"
+   "last_ok": "2026-11-26T10:31:07.544842+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-26T10:00:54.577218+00:00"
+   "last_ok": "2026-11-26T10:31:07.544842+00:00"
   }
  }
 }
