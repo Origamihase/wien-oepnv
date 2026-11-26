@@ -3,13 +3,6 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [
   {
-   "key": "R1375-146|2026-11-26T09:11:53.000+0100|Witterung\nBetrieb ab Thaliastraße",
-   "name": "R1375-146",
-   "title": "Witterung\nBetrieb ab Thaliastraße",
-   "end": "2026-11-26T10:11:00.000+0100",
-   "incident": "I20261126-0029"
-  },
-  {
    "key": "R1375-149|2026-11-26T09:13:53.000+0100|Witterung\nBetrieb ab Urban-Loritz-Platz",
    "name": "R1375-149",
    "title": "Witterung\nBetrieb ab Urban-Loritz-Platz",
@@ -21,27 +14,6 @@
    "name": "R1375-448",
    "title": "Fahrtbehinderung\nwegen Witterung",
    "end": "2026-11-26T15:16:00.000+0100",
-   "incident": "I20261126-0029"
-  },
-  {
-   "key": "R1376-146|2026-11-26T09:11:53.000+0100|Witterung\nBetrieb ab Thaliastraße",
-   "name": "R1376-146",
-   "title": "Witterung\nBetrieb ab Thaliastraße",
-   "end": "2026-11-26T10:11:00.000+0100",
-   "incident": "I20261126-0029"
-  },
-  {
-   "key": "R1377-146|2026-11-26T09:11:53.000+0100|Witterung\nBetrieb ab Thaliastraße",
-   "name": "R1377-146",
-   "title": "Witterung\nBetrieb ab Thaliastraße",
-   "end": "2026-11-26T10:11:00.000+0100",
-   "incident": "I20261126-0029"
-  },
-  {
-   "key": "R1378-146|2026-11-26T09:11:53.000+0100|Witterung\nBetrieb ab Thaliastraße",
-   "name": "R1378-146",
-   "title": "Witterung\nBetrieb ab Thaliastraße",
-   "end": "2026-11-26T10:11:00.000+0100",
    "incident": "I20261126-0029"
   },
   {
@@ -164,48 +136,6 @@
    "incident": "I20261126-0029"
   },
   {
-   "key": "R2963-410|2026-11-26T07:22:44.000+0100|Witterung\nUmleitung über Krottenbachstraße zur Dänenstraße",
-   "name": "R2963-410",
-   "title": "Witterung\nUmleitung über Krottenbachstraße zur Dänenstraße",
-   "end": "2026-11-26T10:21:00.000+0100",
-   "incident": "I20261126-0016"
-  },
-  {
-   "key": "R2985-410|2026-11-26T07:21:44.000+0100|Witterung\nBetrieb ab Dänenstraße",
-   "name": "R2985-410",
-   "title": "Witterung\nBetrieb ab Dänenstraße",
-   "end": "2026-11-26T10:20:00.000+0100",
-   "incident": "I20261126-0016"
-  },
-  {
-   "key": "R3367-469|2026-11-26T06:48:41.000+0100|Witterung\nBetrieb ab Lilienthalgasse",
-   "name": "R3367-469",
-   "title": "Witterung\nBetrieb ab Lilienthalgasse",
-   "end": "2026-11-26T10:15:00.000+0100",
-   "incident": "I20261126-0011-F01"
-  },
-  {
-   "key": "R3368-469|2026-11-26T06:48:41.000+0100|Witterung\nBetrieb ab Lilienthalgasse",
-   "name": "R3368-469",
-   "title": "Witterung\nBetrieb ab Lilienthalgasse",
-   "end": "2026-11-26T10:15:00.000+0100",
-   "incident": "I20261126-0011-F01"
-  },
-  {
-   "key": "R3369-469|2026-11-26T07:17:14.000+0100|Fahrtbehinderung\nwegen Witterung",
-   "name": "R3369-469",
-   "title": "Fahrtbehinderung\nwegen Witterung",
-   "end": "2026-11-26T10:16:00.000+0100",
-   "incident": "I20261126-0011-F01"
-  },
-  {
-   "key": "R3370-469|2026-11-26T07:17:14.000+0100|Fahrtbehinderung\nwegen Witterung",
-   "name": "R3370-469",
-   "title": "Fahrtbehinderung\nwegen Witterung",
-   "end": "2026-11-26T10:16:00.000+0100",
-   "incident": "I20261126-0011-F01"
-  },
-  {
    "key": "R408-469|2026-11-26T06:48:38.000+0100|Fahrtbehinderung\nwegen Witterung",
    "name": "R408-469",
    "title": "Fahrtbehinderung\nwegen Witterung",
@@ -218,20 +148,9 @@
    "title": "Fahrtbehinderung\nwegen Witterung",
    "end": "2026-11-26T10:48:00.000+0100",
    "incident": "I20261126-0011-F01"
-  },
-  {
-   "key": "R8-469|2026-11-26T06:48:39.000+0100|Witterung\nBetrieb ab Lilienthalgasse",
-   "name": "R8-469",
-   "title": "Witterung\nBetrieb ab Lilienthalgasse",
-   "end": "2026-11-26T10:15:00.000+0100",
-   "incident": "I20261126-0011-F01"
   }
  ],
  "owners": {
-  "R1375-146|2026-11-26T09:11:53.000+0100": {
-   "incident": "I20261126-0029",
-   "title": "Witterung\nBetrieb ab Thaliastraße"
-  },
   "R1375-149|2026-11-26T09:13:53.000+0100": {
    "incident": "I20261126-0029",
    "title": "Witterung\nBetrieb ab Urban-Loritz-Platz"
@@ -239,18 +158,6 @@
   "R1375-448|2026-11-26T09:16:54.000+0100": {
    "incident": "I20261126-0029",
    "title": "Fahrtbehinderung\nwegen Witterung"
-  },
-  "R1376-146|2026-11-26T09:11:53.000+0100": {
-   "incident": "I20261126-0029",
-   "title": "Witterung\nBetrieb ab Thaliastraße"
-  },
-  "R1377-146|2026-11-26T09:11:53.000+0100": {
-   "incident": "I20261126-0029",
-   "title": "Witterung\nBetrieb ab Thaliastraße"
-  },
-  "R1378-146|2026-11-26T09:11:53.000+0100": {
-   "incident": "I20261126-0029",
-   "title": "Witterung\nBetrieb ab Thaliastraße"
   },
   "R1393-146|2026-11-26T09:12:53.000+0100": {
    "incident": "I20261126-0029",
@@ -316,6 +223,10 @@
    "incident": "I20261126-0029",
    "title": "Fahrtbehinderung\nwegen Witterung"
   },
+  "R1528-448|2026-11-26T10:29:02.000+0100": {
+   "incident": "I20261126-0038",
+   "title": "Fahrtbehinderung\nwegen Witterung"
+  },
   "R1660-462|2026-11-26T08:39:50.000+0100": {
    "incident": "I20261126-0025",
    "title": "Witterung\nBetrieb ab Dr.-Neumann-Gasse"
@@ -335,34 +246,6 @@
   "R2636-448|2026-11-26T09:16:55.000+0100": {
    "incident": "I20261126-0029",
    "title": "Fahrtbehinderung\nwegen Witterung"
-  },
-  "R2963-410|2026-11-26T07:22:44.000+0100": {
-   "incident": "I20261126-0006",
-   "title": "Witterung\nUmleitung über Krottenbachstraße zur Dänenstraße"
-  },
-  "R2985-410|2026-11-26T07:21:44.000+0100": {
-   "incident": "I20261126-0006",
-   "title": "Witterung\nBetrieb ab Dänenstraße"
-  },
-  "R3367-469|2026-11-26T06:48:41.000+0100": {
-   "incident": "I20261126-0024",
-   "title": "Witterung\nBetrieb ab Lilienthalgasse",
-   "begin": "2026-11-26T08:30:00+01:00"
-  },
-  "R3368-469|2026-11-26T06:48:41.000+0100": {
-   "incident": "I20261126-0024",
-   "title": "Witterung\nBetrieb ab Lilienthalgasse",
-   "begin": "2026-11-26T08:30:00+01:00"
-  },
-  "R3369-469|2026-11-26T07:17:14.000+0100": {
-   "incident": "I20261126-0024",
-   "title": "Fahrtbehinderung\nwegen Witterung",
-   "begin": "2026-11-26T08:30:00+01:00"
-  },
-  "R3370-469|2026-11-26T07:17:14.000+0100": {
-   "incident": "I20261126-0024",
-   "title": "Fahrtbehinderung\nwegen Witterung",
-   "begin": "2026-11-26T08:30:00+01:00"
   },
   "R3527-413|2026-11-26T09:08:54.000+0100": {
    "incident": "I20261126-0028",
@@ -397,20 +280,12 @@
    "incident": "I20261126-0006",
    "title": "Fahrtbehinderung\nwegen Witterung"
   },
-  "R660-413|2026-11-26T09:15:54.000+0100": {
-   "incident": "I20261126-0028",
+  "R584-448|2026-11-26T10:29:01.000+0100": {
+   "incident": "I20261126-0038",
    "title": "Fahrtbehinderung\nwegen Witterung"
   },
-  "R661-413|2026-11-26T09:15:54.000+0100": {
-   "incident": "I20261126-0028",
-   "title": "Fahrtbehinderung\nwegen Witterung"
-  },
-  "R673-413|2026-11-26T09:09:53.000+0100": {
-   "incident": "I20261126-0028",
-   "title": "Fahrtbehinderung\nwegen Witterung"
-  },
-  "R676-413|2026-11-26T09:09:53.000+0100": {
-   "incident": "I20261126-0028",
+  "R585-448|2026-11-26T10:29:01.000+0100": {
+   "incident": "I20261126-0038",
    "title": "Fahrtbehinderung\nwegen Witterung"
   },
   "R728-469|2026-11-26T06:48:39.000+0100": {
@@ -421,11 +296,6 @@
   "R773-413|2026-11-26T09:08:53.000+0100": {
    "incident": "I20261126-0028",
    "title": "Fahrtbehinderung\nwegen Witterung"
-  },
-  "R8-469|2026-11-26T06:48:39.000+0100": {
-   "incident": "I20261126-0024",
-   "title": "Witterung\nBetrieb ab Lilienthalgasse",
-   "begin": "2026-11-26T08:30:00+01:00"
   },
   "R859-438|2026-11-26T06:51:10.000+0100": {
    "incident": "I20261126-0006",

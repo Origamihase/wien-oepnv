@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261126-0019, I20261126-0018-F01, I20261126-0034, I20261126-0023, I20261126-0010, I20261020-0029, I20261126-0025-F01, I20261126-0025-F02, I20261126-0025-F03, I20261126-0032, I20261126-0024-F01, I20261126-0031-F01, I20261126-0027-F01, I20261126-0014, I20261126-0020, I20261126-0006, I20261126-0013-F01, I20261126-0021, I20261126-0029-F01, I20261126-0029-F02, I20261126-0029-F03, I20261126-0028-F01, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261126-0018-F01, I20261126-0034, I20261126-0006, I20261126-0014-F01, I20261126-0010, I20261020-0029, I20261126-0025-F01, I20261126-0025-F02, I20261126-0025-F03, I20261126-0032, I20261126-0024-F01, I20261126-0020, I20261126-0038, I20261126-0031-F01, I20261126-0027-F01, I20261126-0036, I20261126-0019, I20261126-0021, I20261126-0029-F02, I20261126-0029-F03, I20261126-0028-F01, I20261126-0035, I20261126-0023-F01, I20261126-0037-F01, I20261126-0039, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1876-101, R1880-101, R1882-101, R1881-101, R1884-101, R1875-101, R1883-101, R2373-125, R2370-125, R2359-125, R2343-125, R2343-626, R2378-627, R2373-126, R2345-127, R2558-125, R2380-627, R2379-627, R2373-127, R2372-125, R2371-125, R3886-480, R293-474, R401-101, R318-437, R1974-466, R1199-205, R500-101, R408-469, R8-469, R728-469, R3367-469, R3368-469, R859-438, R5200-438, R3370-469, R3369-469, R2985-410, R2963-410, R45-125, R45-101, R45-136, R2058-469, R1660-462, R1818-464, R773-413, R3527-413, R3528-413, R3529-413, R676-413, R673-413, R1378-146, R1376-146, R1377-146, R1375-146, R1393-146, R1394-146, R1375-149, R1486-149, R1444-149, R1443-149, R1442-149, R1441-149, R1479-149, R1478-149, R1480-149, R1487-149, R660-413, R661-413, R1408-448, R1401-448, R1375-448, R1406-448, R1411-448, R2636-448, R1527-448, R203-137, R201-137, R207-137, R2305-466, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1881-101, R1882-101, R1883-101, R1884-101, R1876-101, R1880-101, R1875-101, R2370-125, R2379-627, R2373-127, R2558-125, R2343-626, R2378-627, R2371-125, R2372-125, R2373-126, R2345-127, R2380-627, R2343-125, R2359-125, R2373-125, R3886-480, R293-474, R318-437, R401-101, R1974-466, R1199-205, R500-101, R408-469, R728-469, R859-438, R5200-438, R45-125, R45-101, R45-136, R2058-469, R1660-462, R1818-464, R773-413, R3528-413, R3527-413, R3529-413, R1393-146, R1394-146, R1375-149, R1444-149, R1443-149, R1442-149, R1441-149, R1486-149, R1479-149, R1478-149, R1487-149, R1480-149, R1408-448, R1401-448, R1406-448, R1411-448, R1375-448, R2636-448, R1527-448, R2305-466, R2160-131, R585-448, R584-448, R1528-448, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -176,21 +176,21 @@
     "attributes": {
      "relatedLineTypes": {
       "10A": "ptBusCity",
+      "14A": "ptBusCity",
       "15A": "ptBusCity",
       "38A": "ptBusCity",
-      "63A": "ptBusCity",
       "68A": "ptBusCity",
       "68B": "ptBusCity"
      }
     },
-    "description": "Linie 68B: Unregelmäßige Intervalle in beiden Richtungen. Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Linie 38A: Unregelmäßige Intervalle in beiden Richtungen. Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Linie 68A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
-    "descriptionHTML": "<p>Linie 68B:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 15A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 38A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 68A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
+    "description": "Linie 68B: Unregelmäßige Intervalle in beiden Richtungen. Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Linie 38A: Unregelmäßige Intervalle in beiden Richtungen. Linie 68A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "descriptionHTML": "<p>Linie 68B:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 15A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 38A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 68A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 68B:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 15A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 38A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 63A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 68A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
-       "descriptionPlain": "Linie 68B: Unregelmäßige Intervalle in beiden Richtungen. Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Linie 38A: Unregelmäßige Intervalle in beiden Richtungen. Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Linie 68A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
-       "title": "63A, 15A, 10A, 38A, 68A, 68B: Aktuelle Wetterlage"
+       "descriptionHtml": "<p>Linie 68B:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 14A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 15A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 38A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 68A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
+       "descriptionPlain": "Linie 68B: Unregelmäßige Intervalle in beiden Richtungen. Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Linie 38A: Unregelmäßige Intervalle in beiden Richtungen. Linie 68A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+       "title": "15A, 10A, 38A, 68A, 68B, 14A: Aktuelle Wetterlage"
       }
      }
     ],
@@ -204,9 +204,9 @@
     "relatedLines": [
      "68B",
      "10A",
+     "14A",
      "15A",
      "38A",
-     "63A",
      "68A"
     ],
     "relatedLinesDetails": [
@@ -221,6 +221,11 @@
       "vehicleType": "ptBusCity"
      },
      {
+      "lineId": 414,
+      "lineName": "14A",
+      "vehicleType": "ptBusCity"
+     },
+     {
       "lineId": 415,
       "lineName": "15A",
       "vehicleType": "ptBusCity"
@@ -228,11 +233,6 @@
      {
       "lineId": 438,
       "lineName": "38A",
-      "vehicleType": "ptBusCity"
-     },
-     {
-      "lineId": 463,
-      "lineName": "63A",
       "vehicleType": "ptBusCity"
      },
      {
@@ -244,11 +244,11 @@
     "status": "active",
     "time": {
      "created": "2026-11-26T05:36:00.000+0100",
-     "lastUpdate": "2026-11-26T08:30:00.000+0100",
+     "lastUpdate": "2026-11-26T10:12:00.000+0100",
      "resume": "2026-11-26T05:36:00.000+0100",
      "start": "2026-11-26T05:36:00.000+0100"
     },
-    "title": "63A, 15A, 10A, 38A, 68A, 68B: Aktuelle Wetterlage"
+    "title": "15A, 10A, 38A, 68A, 68B, 14A: Aktuelle Wetterlage"
    },
    {
     "alertCause": "poor weather",
@@ -296,54 +296,6 @@
     "title": "35A: Aktuelle Wetterlage"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U1": "ptMetro"
-     }
-    },
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U1: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261126-0013-F01",
-    "owner": "WL",
-    "parentName": "I20261126-0013",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 301,
-      "lineName": "U1",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "relatedStops": [
-     4109
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-26T07:11:00.000+0100",
-     "end": "2026-11-26T10:15:00.000+0100",
-     "lastUpdate": "2026-11-26T09:15:00.000+0100",
-     "start": "2026-11-26T06:47:00.000+0100"
-    },
-    "title": "U1: Schadhaftes Fahrzeug"
-   },
-   {
     "alertCause": "poor weather",
     "alertCauseId": 85,
     "attributes": {
@@ -351,19 +303,19 @@
       "39A": "ptBusCity"
      }
     },
-    "description": "Linie 39A: Betrieb nur zwischen Bahnhof Heiligenstadt S U und Bellevuestraße. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Bereich Agnesgasse.",
-    "descriptionHTML": "<p>Linie 39A:<br>Betrieb nur zwischen Bahnhof Heiligenstadt S U und Bellevuestraße.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Aktuelle Wetterlage im Bereich Agnesgasse.</p>",
+    "description": "Linie 39A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 39A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 39A:<br>Betrieb nur zwischen Bahnhof Heiligenstadt S U und Bellevuestraße.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Aktuelle Wetterlage im Bereich Agnesgasse.</p>",
-       "descriptionPlain": "Linie 39A: Betrieb nur zwischen Bahnhof Heiligenstadt S U und Bellevuestraße. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Bereich Agnesgasse.",
+       "descriptionHtml": "<p>Linie 39A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 39A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "39A: Aktuelle Wetterlage"
       }
      }
     ],
     "location": "Agnesgasse",
-    "name": "I20261126-0014",
+    "name": "I20261126-0014-F01",
     "owner": "WL",
     "parentName": "I20261126-0014",
     "priority": "1",
@@ -382,8 +334,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-26T07:01:00.000+0100",
-     "lastUpdate": "2026-11-26T08:18:00.000+0100",
+     "created": "2026-11-26T10:20:00.000+0100",
+     "lastUpdate": "2026-11-26T10:20:00.000+0100",
+     "resume": "2026-11-26T10:20:00.000+0100",
      "start": "2026-11-26T06:56:00.000+0100"
     },
     "title": "39A: Aktuelle Wetterlage"
@@ -446,20 +399,19 @@
       "2": "ptTram",
       "25": "ptTram",
       "60": "ptTram",
-      "62": "ptTram",
       "71": "ptTram",
       "D": "ptTram",
       "O": "ptTram"
      }
     },
-    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Linie 25: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Linie 62: Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
-    "descriptionHTML": "<p><strong>Linie 1:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br><strong>Linie 2:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br><strong>Linie 11:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br><strong>Linie 25:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie D:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 60:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 62:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 71:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
+    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Linie 25: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "descriptionHTML": "<p><strong>Linie 1:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br><strong>Linie 2:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br><strong>Linie 11:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br><strong>Linie 25:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie D:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 60:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 71:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p><strong>Linie 1:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br><strong>Linie 2:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br><strong>Linie 11:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br><strong>Linie 25:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie D:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 60:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 62:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 71:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
-       "descriptionPlain": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Linie 25: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Linie 62: Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
-       "title": "O, 25, 60, 11, 62, 2, D, 71, 1: Aktuelle Wetterlage"
+       "descriptionHtml": "<p><strong>Linie 1:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br><strong>Linie 2:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br><strong>Linie 11:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br><strong>Linie 25:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie D:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 60:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie O:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 71:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
+       "descriptionPlain": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Linie 25: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+       "title": "O, 25, 60, 11, 2, D, 71, 1: Aktuelle Wetterlage"
       }
      }
     ],
@@ -477,7 +429,6 @@
      "25",
      "D",
      "60",
-     "62",
      "O",
      "71"
     ],
@@ -513,11 +464,6 @@
       "vehicleType": "ptTram"
      },
      {
-      "lineId": 162,
-      "lineName": "62",
-      "vehicleType": "ptTram"
-     },
-     {
       "lineId": 170,
       "lineName": "O",
       "vehicleType": "ptTram"
@@ -531,18 +477,17 @@
     "status": "active",
     "time": {
      "created": "2026-11-26T07:37:00.000+0100",
-     "lastUpdate": "2026-11-26T09:10:00.000+0100",
+     "lastUpdate": "2026-11-26T10:09:00.000+0100",
      "resume": "2026-11-26T07:37:00.000+0100",
      "start": "2026-11-26T07:37:00.000+0100"
     },
-    "title": "O, 25, 60, 11, 62, 2, D, 71, 1: Aktuelle Wetterlage"
+    "title": "O, 25, 60, 11, 2, D, 71, 1: Aktuelle Wetterlage"
    },
    {
     "alertCause": "poor weather",
     "alertCauseId": 85,
     "attributes": {
      "relatedLineTypes": {
-      "11A": "ptBusCity",
       "17A": "ptBusCity",
       "27A": "ptBusCity",
       "34A": "ptBusCity",
@@ -551,14 +496,14 @@
       "49A": "ptBusCity"
      }
     },
-    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Linie 27A: Unregelmäßige Intervalle in beiden Richtungen. Linie 34A: Unregelmäßige Intervalle in beiden Richtungen. Linie 44A: Unregelmäßige Intervalle in beiden Richtungen. Linie 47A: Unregelmäßige Intervalle in beiden Richtungen. Linie 49A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
-    "descriptionHTML": "<p>Linie 11A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 17A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 27A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 34A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 44A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 47A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 49A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
+    "description": "Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Linie 27A: Unregelmäßige Intervalle in beiden Richtungen. Linie 34A: Unregelmäßige Intervalle in beiden Richtungen. Linie 44A: Unregelmäßige Intervalle in beiden Richtungen. Linie 47A: Unregelmäßige Intervalle in beiden Richtungen. Linie 49A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "descriptionHTML": "<p>Linie 17A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 27A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 34A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 44A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 47A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 49A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 11A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 17A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 27A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 34A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 44A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 47A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 49A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
-       "descriptionPlain": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Linie 27A: Unregelmäßige Intervalle in beiden Richtungen. Linie 34A: Unregelmäßige Intervalle in beiden Richtungen. Linie 44A: Unregelmäßige Intervalle in beiden Richtungen. Linie 47A: Unregelmäßige Intervalle in beiden Richtungen. Linie 49A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
-       "title": "17A, 11A, 27A, 34A, 44A, 47A, 49A: Aktuelle Wetterlage"
+       "descriptionHtml": "<p>Linie 17A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 27A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 34A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 44A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 47A:<br>Unregelmäßige Intervalle in beiden Richtungen.<br>Linie 49A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Aktuelle Wetterlage.</p>",
+       "descriptionPlain": "Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Linie 27A: Unregelmäßige Intervalle in beiden Richtungen. Linie 34A: Unregelmäßige Intervalle in beiden Richtungen. Linie 44A: Unregelmäßige Intervalle in beiden Richtungen. Linie 47A: Unregelmäßige Intervalle in beiden Richtungen. Linie 49A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+       "title": "17A, 27A, 34A, 44A, 47A, 49A: Aktuelle Wetterlage"
       }
      }
     ],
@@ -570,7 +515,6 @@
     "reasonName": "Aktuelle Wetterlage",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "11A",
      "17A",
      "27A",
      "34A",
@@ -579,11 +523,6 @@
      "49A"
     ],
     "relatedLinesDetails": [
-     {
-      "lineId": 411,
-      "lineName": "11A",
-      "vehicleType": "ptBusCity"
-     },
      {
       "lineId": 417,
       "lineName": "17A",
@@ -618,11 +557,11 @@
     "status": "active",
     "time": {
      "created": "2026-11-26T07:41:00.000+0100",
-     "lastUpdate": "2026-11-26T08:24:00.000+0100",
+     "lastUpdate": "2026-11-26T10:08:00.000+0100",
      "resume": "2026-11-26T07:38:00.000+0100",
      "start": "2026-11-26T07:38:00.000+0100"
     },
-    "title": "17A, 11A, 27A, 34A, 44A, 47A, 49A: Aktuelle Wetterlage"
+    "title": "17A, 27A, 34A, 44A, 47A, 49A: Aktuelle Wetterlage"
    },
    {
     "alertCause": "poor weather",
@@ -726,19 +665,19 @@
       "40A": "ptBusCity"
      }
     },
-    "description": "Linie 40A: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Bereich Hugo-Wolf-Park.",
-    "descriptionHTML": "<p>Linie 40A:<br>Fahrtbehinderung in Richtung Schottentor U.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Aktuelle Wetterlage im Bereich Hugo-Wolf-Park.</p>",
+    "description": "Linie 40A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 40A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 40A:<br>Fahrtbehinderung in Richtung Schottentor U.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Aktuelle Wetterlage im Bereich Hugo-Wolf-Park.</p>",
-       "descriptionPlain": "Linie 40A: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Bereich Hugo-Wolf-Park.",
+       "descriptionHtml": "<p>Linie 40A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 40A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "40A: Aktuelle Wetterlage"
       }
      }
     ],
     "location": "Hugo-Wolf-Park",
-    "name": "I20261126-0023",
+    "name": "I20261126-0023-F01",
     "owner": "WL",
     "parentName": "I20261126-0023",
     "priority": "1",
@@ -757,8 +696,9 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-26T08:25:00.000+0100",
-     "lastUpdate": "2026-11-26T08:25:00.000+0100",
+     "created": "2026-11-26T10:09:00.000+0100",
+     "lastUpdate": "2026-11-26T10:09:00.000+0100",
+     "resume": "2026-11-26T10:09:00.000+0100",
      "start": "2026-11-26T08:23:00.000+0100"
     },
     "title": "40A: Aktuelle Wetterlage"
@@ -1048,54 +988,6 @@
     "alertCauseId": 85,
     "attributes": {
      "relatedLineTypes": {
-      "48A": "ptBusCity"
-     }
-    },
-    "description": "Linie 48A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 48A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 48A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 48A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "48A: Aktuelle Wetterlage"
-      }
-     }
-    ],
-    "name": "I20261126-0029-F01",
-    "owner": "WL",
-    "parentName": "I20261126-0029",
-    "priority": "1",
-    "reasonId": 40,
-    "reasonName": "Aktuelle Wetterlage",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "48A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 448,
-      "lineName": "48A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "relatedStops": [
-     1375
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-26T09:29:00.000+0100",
-     "lastUpdate": "2026-11-26T09:29:00.000+0100",
-     "resume": "2026-11-26T09:29:00.000+0100",
-     "start": "2026-11-26T09:10:00.000+0100"
-    },
-    "title": "48A: Aktuelle Wetterlage"
-   },
-   {
-    "alertCause": "poor weather",
-    "alertCauseId": 85,
-    "attributes": {
-     "relatedLineTypes": {
       "46": "ptTram"
      }
     },
@@ -1329,6 +1221,245 @@
     "title": "51A, 51B: Aktuelle Wetterlage"
    },
    {
+    "alertCause": "poor weather",
+    "alertCauseId": 85,
+    "attributes": {
+     "relatedLineTypes": {
+      "9A": "ptBusCity"
+     }
+    },
+    "description": "Die Linie 9A wird in Richtung Bhf. Meidling S U, Eichenstraße zwischen Pohlgasse und Bhf. Meidling S U über Ruckergasse umgeleitet. Voraussichtliche Dauer: 10:35 Uhr. Grund: Aktuelle Wetterlage im Haltestellenbereich Dörfelstraße.",
+    "descriptionHTML": "<p>Die Linie 9A wird in Richtung Bhf. Meidling S U, Eichenstraße zwischen Pohlgasse und Bhf. Meidling S U über Ruckergasse umgeleitet.</p><p>Voraussichtliche Dauer: 10:35 Uhr.</p><p>Grund: Aktuelle Wetterlage im Haltestellenbereich Dörfelstraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Die Linie 9A wird in Richtung Bhf. Meidling S U, Eichenstraße zwischen Pohlgasse und Bhf. Meidling S U über Ruckergasse umgeleitet.</p><p>Voraussichtliche Dauer: 10:35 Uhr.</p><p>Grund: Aktuelle Wetterlage im Haltestellenbereich Dörfelstraße.</p>",
+       "descriptionPlain": "Die Linie 9A wird in Richtung Bhf. Meidling S U, Eichenstraße zwischen Pohlgasse und Bhf. Meidling S U über Ruckergasse umgeleitet. Voraussichtliche Dauer: 10:35 Uhr. Grund: Aktuelle Wetterlage im Haltestellenbereich Dörfelstraße.",
+       "title": "9A: Aktuelle Wetterlage"
+      }
+     }
+    ],
+    "name": "I20261126-0035",
+    "owner": "WL",
+    "parentName": "I20261126-0035",
+    "priority": "1",
+    "reasonId": 40,
+    "reasonName": "Aktuelle Wetterlage",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "9A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 409,
+      "lineName": "9A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "relatedStops": [
+     3221
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-26T10:00:00.000+0100",
+     "lastUpdate": "2026-11-26T10:07:00.000+0100",
+     "start": "2026-11-26T10:00:00.000+0100"
+    },
+    "title": "9A: Aktuelle Wetterlage"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "1A": "ptBusCity"
+     }
+    },
+    "description": "Linie 1A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "descriptionHTML": "<p>Linie 1A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 1A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
+       "descriptionPlain": "Linie 1A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+       "title": "1A: Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261126-0036",
+    "owner": "WL",
+    "parentName": "I20261126-0036",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 401,
+      "lineName": "1A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-26T10:03:00.000+0100",
+     "lastUpdate": "2026-11-26T10:03:00.000+0100",
+     "resume": "2026-11-26T10:03:00.000+0100",
+     "start": "2026-11-26T10:03:00.000+0100"
+    },
+    "title": "1A: Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "44": "ptTram"
+     }
+    },
+    "description": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 44: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 44: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "44: Verkehrsunfall"
+      }
+     }
+    ],
+    "location": "Montleartstraße",
+    "name": "I20261126-0037-F01",
+    "owner": "WL",
+    "parentName": "I20261126-0037",
+    "priority": "1",
+    "reasonId": 12,
+    "reasonName": "Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 144,
+      "lineName": "44",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-26T10:20:00.000+0100",
+     "lastUpdate": "2026-11-26T10:20:00.000+0100",
+     "resume": "2026-11-26T10:20:00.000+0100",
+     "start": "2026-11-26T10:13:00.000+0100"
+    },
+    "title": "44: Verkehrsunfall"
+   },
+   {
+    "alertCause": "poor weather",
+    "alertCauseId": 85,
+    "attributes": {
+     "relatedLineTypes": {
+      "48A": "ptBusCity"
+     }
+    },
+    "description": "Linie 48A: Fahrtbehinderung in Richtung Parlament, U Volkstheater. Voraussichtliche Dauer: 11:00 Uhr. Grund: Aktuelle Wetterlage im Haltestellenbereich Klinik Penzing.",
+    "descriptionHTML": "<p>Linie 48A:<br>Fahrtbehinderung in Richtung Parlament, U Volkstheater.</p><p>Voraussichtliche Dauer: 11:00 Uhr.</p><p>Grund: Aktuelle Wetterlage im Haltestellenbereich Klinik Penzing.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 48A:<br>Fahrtbehinderung in Richtung Parlament, U Volkstheater.</p><p>Voraussichtliche Dauer: 11:00 Uhr.</p><p>Grund: Aktuelle Wetterlage im Haltestellenbereich Klinik Penzing.</p>",
+       "descriptionPlain": "Linie 48A: Fahrtbehinderung in Richtung Parlament, U Volkstheater. Voraussichtliche Dauer: 11:00 Uhr. Grund: Aktuelle Wetterlage im Haltestellenbereich Klinik Penzing.",
+       "title": "48A: Aktuelle Wetterlage"
+      }
+     }
+    ],
+    "name": "I20261126-0038",
+    "owner": "WL",
+    "parentName": "I20261126-0038",
+    "priority": "1",
+    "reasonId": 40,
+    "reasonName": "Aktuelle Wetterlage",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 448,
+      "lineName": "48A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "relatedStops": [
+     1419
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-26T10:24:00.000+0100",
+     "lastUpdate": "2026-11-26T10:24:00.000+0100",
+     "start": "2026-11-26T10:23:00.000+0100"
+    },
+    "title": "48A: Aktuelle Wetterlage"
+   },
+   {
+    "alertCause": "poor weather",
+    "alertCauseId": 85,
+    "attributes": {
+     "relatedLineTypes": {
+      "11": "ptTram",
+      "71": "ptTram"
+     }
+    },
+    "description": "Linie 11: Kein Betrieb zwischen Fickeysstraße und Enkplatz U, Grillgasse. Linie 71: Kein Betrieb zwischen Fickeysstraße und Enkplatz U, Grillgasse. Ersatz: Linie U3. Voraussichtliche Dauer: 11:10 Uhr. Grund: Aktuelle Wetterlage im Haltestellenbereich Fickeysstraße.",
+    "descriptionHTML": "<p>Linie 11:<br>Kein Betrieb zwischen Fickeysstraße und Enkplatz U, Grillgasse.<br>Linie 71:<br>Kein Betrieb zwischen Fickeysstraße und Enkplatz U, Grillgasse.</p><p>Ersatz: Linie U3.</p><p>Voraussichtliche Dauer: 11:10 Uhr.</p><p>Grund: Aktuelle Wetterlage im Haltestellenbereich Fickeysstraße.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 11:<br>Kein Betrieb zwischen Fickeysstraße und Enkplatz U, Grillgasse.<br>Linie 71:<br>Kein Betrieb zwischen Fickeysstraße und Enkplatz U, Grillgasse.</p><p>Ersatz: Linie U3.</p><p>Voraussichtliche Dauer: 11:10 Uhr.</p><p>Grund: Aktuelle Wetterlage im Haltestellenbereich Fickeysstraße.</p>",
+       "descriptionPlain": "Linie 11: Kein Betrieb zwischen Fickeysstraße und Enkplatz U, Grillgasse. Linie 71: Kein Betrieb zwischen Fickeysstraße und Enkplatz U, Grillgasse. Ersatz: Linie U3. Voraussichtliche Dauer: 11:10 Uhr. Grund: Aktuelle Wetterlage im Haltestellenbereich Fickeysstraße.",
+       "title": "11, 71: Aktuelle Wetterlage"
+      }
+     }
+    ],
+    "name": "I20261126-0039",
+    "owner": "WL",
+    "parentName": "I20261126-0039",
+    "priority": "1",
+    "reasonId": 40,
+    "reasonName": "Aktuelle Wetterlage",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11",
+     "71"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 111,
+      "lineName": "11",
+      "vehicleType": "ptTram"
+     },
+     {
+      "lineId": 171,
+      "lineName": "71",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     2025
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-26T10:29:00.000+0100",
+     "lastUpdate": "2026-11-26T10:29:00.000+0100",
+     "start": "2026-11-26T10:28:00.000+0100"
+    },
+    "title": "11, 71: Aktuelle Wetterlage"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -1350,29 +1481,6 @@
      "start": "2026-11-26T04:45:27.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Witterung\nBetrieb ab Thaliastraße",
-    "name": "R1375-146",
-    "owner": "WL",
-    "parentName": "R1375-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1375
-    ],
-    "time": {
-     "end": "2026-11-26T10:11:00.000+0100",
-     "start": "2026-11-26T09:11:53.000+0100"
-    },
-    "title": "Witterung\nBetrieb ab Thaliastraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1419,75 +1527,6 @@
      "start": "2026-11-26T09:16:54.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Witterung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Witterung\nBetrieb ab Thaliastraße",
-    "name": "R1376-146",
-    "owner": "WL",
-    "parentName": "R1376-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1376
-    ],
-    "time": {
-     "end": "2026-11-26T10:11:00.000+0100",
-     "start": "2026-11-26T09:11:53.000+0100"
-    },
-    "title": "Witterung\nBetrieb ab Thaliastraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Witterung\nBetrieb ab Thaliastraße",
-    "name": "R1377-146",
-    "owner": "WL",
-    "parentName": "R1377-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1377
-    ],
-    "time": {
-     "end": "2026-11-26T10:11:00.000+0100",
-     "start": "2026-11-26T09:11:53.000+0100"
-    },
-    "title": "Witterung\nBetrieb ab Thaliastraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Witterung\nBetrieb ab Thaliastraße",
-    "name": "R1378-146",
-    "owner": "WL",
-    "parentName": "R1378-146",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "46"
-    ],
-    "relatedStops": [
-     1378
-    ],
-    "time": {
-     "end": "2026-11-26T10:11:00.000+0100",
-     "start": "2026-11-26T09:11:53.000+0100"
-    },
-    "title": "Witterung\nBetrieb ab Thaliastraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1860,6 +1899,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nwegen Witterung",
+    "name": "R1528-448",
+    "owner": "WL",
+    "parentName": "R1528-448",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "48A"
+    ],
+    "relatedStops": [
+     1528
+    ],
+    "time": {
+     "end": "2026-11-26T15:27:00.000+0100",
+     "start": "2026-11-26T10:29:02.000+0100"
+    },
+    "title": "Fahrtbehinderung\nwegen Witterung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Witterung\nBetrieb ab Dr.-Neumann-Gasse",
     "name": "R1660-462",
     "owner": "WL",
@@ -2090,52 +2152,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R201-137",
-    "owner": "WL",
-    "parentName": "R201-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     201
-    ],
-    "time": {
-     "end": "2026-11-26T10:24:00.000+0100",
-     "start": "2026-11-26T09:24:53.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R203-137",
-    "owner": "WL",
-    "parentName": "R203-137",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedStops": [
-     203
-    ],
-    "time": {
-     "end": "2026-11-26T10:24:00.000+0100",
-     "start": "2026-11-26T09:24:53.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Witterung\nBetrieb ab Rohrhofergasse",
     "name": "R2058-469",
     "owner": "WL",
@@ -2159,25 +2175,25 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R207-137",
+    "description": "Witterung\nEinstieg bei Linie 1",
+    "name": "R2160-131",
     "owner": "WL",
-    "parentName": "R207-137",
+    "parentName": "R2160-131",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "37"
+     "31"
     ],
     "relatedStops": [
-     207
+     2160
     ],
     "time": {
-     "end": "2026-11-26T10:24:00.000+0100",
-     "start": "2026-11-26T09:24:53.000+0100"
+     "end": "2026-11-26T15:17:00.000+0100",
+     "start": "2026-11-26T10:18:01.000+0100"
     },
-    "title": "Fahrtbehinderung\nFalschparker"
+    "title": "Witterung\nEinstieg bei Linie 1"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2573,52 +2589,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Witterung\nUmleitung über Krottenbachstraße zur Dänenstraße",
-    "name": "R2963-410",
-    "owner": "WL",
-    "parentName": "R2963-410",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10A"
-    ],
-    "relatedStops": [
-     2963
-    ],
-    "time": {
-     "end": "2026-11-26T10:21:00.000+0100",
-     "start": "2026-11-26T07:22:44.000+0100"
-    },
-    "title": "Witterung\nUmleitung über Krottenbachstraße zur Dänenstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Witterung\nBetrieb ab Dänenstraße",
-    "name": "R2985-410",
-    "owner": "WL",
-    "parentName": "R2985-410",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "10A"
-    ],
-    "relatedStops": [
-     2985
-    ],
-    "time": {
-     "end": "2026-11-26T10:20:00.000+0100",
-     "start": "2026-11-26T07:21:44.000+0100"
-    },
-    "title": "Witterung\nBetrieb ab Dänenstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "name": "R318-437",
     "owner": "WL",
@@ -2638,98 +2608,6 @@
      "start": "2026-11-25T00:00:29.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Witterung\nBetrieb ab Lilienthalgasse",
-    "name": "R3367-469",
-    "owner": "WL",
-    "parentName": "R3367-469",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "69A"
-    ],
-    "relatedStops": [
-     3367
-    ],
-    "time": {
-     "end": "2026-11-26T10:15:00.000+0100",
-     "start": "2026-11-26T06:48:41.000+0100"
-    },
-    "title": "Witterung\nBetrieb ab Lilienthalgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Witterung\nBetrieb ab Lilienthalgasse",
-    "name": "R3368-469",
-    "owner": "WL",
-    "parentName": "R3368-469",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "69A"
-    ],
-    "relatedStops": [
-     3368
-    ],
-    "time": {
-     "end": "2026-11-26T10:15:00.000+0100",
-     "start": "2026-11-26T06:48:41.000+0100"
-    },
-    "title": "Witterung\nBetrieb ab Lilienthalgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Witterung",
-    "name": "R3369-469",
-    "owner": "WL",
-    "parentName": "R3369-469",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "69A"
-    ],
-    "relatedStops": [
-     3369
-    ],
-    "time": {
-     "end": "2026-11-26T10:16:00.000+0100",
-     "start": "2026-11-26T07:17:14.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Witterung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Witterung",
-    "name": "R3370-469",
-    "owner": "WL",
-    "parentName": "R3370-469",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "69A"
-    ],
-    "relatedStops": [
-     3370
-    ],
-    "time": {
-     "end": "2026-11-26T10:16:00.000+0100",
-     "start": "2026-11-26T07:17:14.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Witterung"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2988,22 +2866,22 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Fahrtbehinderung\nwegen Witterung",
-    "name": "R660-413",
+    "name": "R584-448",
     "owner": "WL",
-    "parentName": "R660-413",
+    "parentName": "R584-448",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "13A"
+     "48A"
     ],
     "relatedStops": [
-     660
+     584
     ],
     "time": {
-     "end": "2026-11-26T10:15:00.000+0100",
-     "start": "2026-11-26T09:15:54.000+0100"
+     "end": "2026-11-26T15:27:00.000+0100",
+     "start": "2026-11-26T10:29:01.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Witterung"
    },
@@ -3011,68 +2889,22 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Fahrtbehinderung\nwegen Witterung",
-    "name": "R661-413",
+    "name": "R585-448",
     "owner": "WL",
-    "parentName": "R661-413",
+    "parentName": "R585-448",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "13A"
+     "48A"
     ],
     "relatedStops": [
-     661
+     585
     ],
     "time": {
-     "end": "2026-11-26T10:15:00.000+0100",
-     "start": "2026-11-26T09:15:54.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Witterung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Witterung",
-    "name": "R673-413",
-    "owner": "WL",
-    "parentName": "R673-413",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedStops": [
-     673
-    ],
-    "time": {
-     "end": "2026-11-26T10:09:00.000+0100",
-     "start": "2026-11-26T09:09:53.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Witterung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Witterung",
-    "name": "R676-413",
-    "owner": "WL",
-    "parentName": "R676-413",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "13A"
-    ],
-    "relatedStops": [
-     676
-    ],
-    "time": {
-     "end": "2026-11-26T10:09:00.000+0100",
-     "start": "2026-11-26T09:09:53.000+0100"
+     "end": "2026-11-26T15:27:00.000+0100",
+     "start": "2026-11-26T10:29:01.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Witterung"
    },
@@ -3121,29 +2953,6 @@
      "start": "2026-11-26T09:08:53.000+0100"
     },
     "title": "Fahrtbehinderung\nwegen Witterung"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Witterung\nBetrieb ab Lilienthalgasse",
-    "name": "R8-469",
-    "owner": "WL",
-    "parentName": "R8-469",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "69A"
-    ],
-    "relatedStops": [
-     8
-    ],
-    "time": {
-     "end": "2026-11-26T10:15:00.000+0100",
-     "start": "2026-11-26T06:48:39.000+0100"
-    },
-    "title": "Witterung\nBetrieb ab Lilienthalgasse"
    },
    {
     "alertCause": "undefined alert cause",

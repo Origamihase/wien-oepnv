@@ -674,14 +674,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/2/11/25/60/62/71/D/O: Aktuelle Wetterlage",
-    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Linie 25: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Linie 62: Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "title": "1/2/11/25/60/71/D/O: Aktuelle Wetterlage",
+    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Linie 25: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie 60: Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7a9645e3de569e113143b8f50f419725f17fbcae6aec517035130408b1154616",
+    "guid": "c6e4573b975b42b64efc4762ec23bef4f5ae8454d188448fccc0d436ff939b63",
     "pubDate": "2026-11-26T07:37:00+01:00",
     "starts_at": "2026-11-26T07:37:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=1,11,2,25,60,62,71,D,O|D=2026-11-26|TK=o 25 60 11 62 2 d 71 1 aktuelle wetterlage",
+    "_identity": "wl|störung|L=1,11,2,25,60,71,D,O|D=2026-11-26|TK=o 25 60 11 2 d 71 1 aktuelle wetterlage",
     "_wl_ids": [
       "I20261126-0019"
     ],
@@ -690,34 +690,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A/15A/38A/63A/68A/68B: Aktuelle Wetterlage",
-    "description": "Linie 68B: Unregelmäßige Intervalle in beiden Richtungen. Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Linie 38A: Unregelmäßige Intervalle in beiden Richtungen. Linie 63A: Unregelmäßige Intervalle in beiden Richtungen. Linie 68A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "title": "10A/14A/15A/38A/68A/68B: Aktuelle Wetterlage",
+    "description": "Linie 68B: Unregelmäßige Intervalle in beiden Richtungen. Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Linie 38A: Unregelmäßige Intervalle in beiden Richtungen. Linie 68A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "b80add16b8b4e0f2e6a49c3d022aae459602ed4b141cc6c281859ebcffbb56e1",
+    "guid": "d28fcf273d24a62adeaeb37f030e4c2b8b4ba530b118226a3b54c6d85348768c",
     "pubDate": "2026-11-26T05:36:00+01:00",
     "starts_at": "2026-11-26T05:36:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=10A,15A,38A,63A,68A,68B|D=2026-11-26|TK=63a 15a 10a 38a 68a 68b aktuelle wetterlage",
+    "_identity": "wl|störung|L=10A,14A,15A,38A,68A,68B|D=2026-11-26|TK=15a 10a 38a 68a 68b 14a aktuelle wetterlage",
     "_wl_ids": [
       "I20261126-0006"
     ],
     "_incident_start": "2026-11-26T05:36:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "11A/17A/27A/34A/44A/47A/49A: Aktuelle Wetterlage",
-    "description": "Linie 11A: Unregelmäßige Intervalle in beiden Richtungen. Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Linie 27A: Unregelmäßige Intervalle in beiden Richtungen. Linie 34A: Unregelmäßige Intervalle in beiden Richtungen. Linie 44A: Unregelmäßige Intervalle in beiden Richtungen. Linie 47A: Unregelmäßige Intervalle in beiden Richtungen. Linie 49A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "a17fcfee050fa977f57053d2e7a296dd5fec21704283bc700736397a7687a55d",
-    "pubDate": "2026-11-26T07:38:00+01:00",
-    "starts_at": "2026-11-26T07:38:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=11A,17A,27A,34A,44A,47A,49A|D=2026-11-26|TK=17a 11a 27a 34a 44a 47a 49a aktuelle wetterlage",
-    "_wl_ids": [
-      "I20261126-0020"
-    ],
-    "_incident_start": "2026-11-26T07:38:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -743,9 +727,25 @@
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "226d5fa5aee5615acafe6a0d616f9d50ab6393268911b1132ae2fd53fa663568",
     "pubDate": "2026-11-26T09:08:53+01:00",
-    "starts_at": "2026-11-26T09:15:54+01:00",
+    "starts_at": "2026-11-26T09:08:54+01:00",
     "ends_at": "2026-11-26T15:08:00+01:00",
     "_identity": "wl|störung|L=13A|D=2026-11-26|TK=fahrtbehinderung wegen witterung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "17A/27A/34A/44A/47A/49A: Aktuelle Wetterlage",
+    "description": "Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Linie 27A: Unregelmäßige Intervalle in beiden Richtungen. Linie 34A: Unregelmäßige Intervalle in beiden Richtungen. Linie 44A: Unregelmäßige Intervalle in beiden Richtungen. Linie 47A: Unregelmäßige Intervalle in beiden Richtungen. Linie 49A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "3c2f1682046436d76ec33506201ed0e5f7475c6efb02eb304429e5c479a130f2",
+    "pubDate": "2026-11-26T07:38:00+01:00",
+    "starts_at": "2026-11-26T07:38:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=17A,27A,34A,44A,47A,49A|D=2026-11-26|TK=17a 27a 34a 44a 47a 49a aktuelle wetterlage",
+    "_wl_ids": [
+      "I20261126-0020"
+    ],
+    "_incident_start": "2026-11-26T07:38:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -758,6 +758,22 @@
     "starts_at": "2026-07-13T14:07:00+02:00",
     "ends_at": "2026-12-31T14:07:00+01:00",
     "_identity": "wl|störung|L=18|D=2026-07-13|TK=haltestelle stadionbrücke im rahmen des strassenbahn neubaus der linie 18 aufgelassen bitte auf nahegelegene haltestellen ausweichen"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1A: Verkehrsunfall",
+    "description": "Linie 1A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "9c4b20eeb0989a8f43e6b6aa56a0761d9fd3f3c3c7627ef6c508b6ef4287118a",
+    "pubDate": "2026-11-26T10:03:00+01:00",
+    "starts_at": "2026-11-26T10:03:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=1A|D=2026-11-26|TK=1a verkehrsunfall",
+    "_wl_ids": [
+      "I20261126-0036"
+    ],
+    "_incident_start": "2026-11-26T10:03:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1002,6 +1018,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "31: Witterung Einstieg bei Linie 1",
+    "description": "Witterung\nEinstieg bei Linie 1",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4d6aca1b373d66a828ae4bdb5fc4c38482c1595ad5c382d20727772e225ce2a2",
+    "pubDate": "2026-11-26T10:18:01+01:00",
+    "starts_at": "2026-11-26T10:18:01+01:00",
+    "ends_at": "2026-11-26T15:17:00+01:00",
+    "_identity": "wl|störung|L=31|D=2026-11-26|TK=witterung einstieg bei linie 1"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "35A: Aktuelle Wetterlage",
     "description": "Linie 35A: Betrieb nur zwischen Spittelau S U und Neustift, Agnesgasse. Zwischen Neustift, Agnesgasse und Salmannsdorf wurde ein Shuttlebus eingerichtet. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Bereich Rathstraße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1030,18 +1058,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "37: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f",
-    "pubDate": "2026-11-26T09:24:53+01:00",
-    "starts_at": "2026-11-26T09:24:53+01:00",
-    "ends_at": "2026-11-26T10:24:00+01:00",
-    "_identity": "wl|störung|L=37|D=2026-11-26|TK=falschparker"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "38A: Fahrtbehinderung wegen Witterung",
     "description": "Fahrtbehinderung\nwegen Witterung",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1055,7 +1071,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "39A: Aktuelle Wetterlage",
-    "description": "Linie 39A: Betrieb nur zwischen Bahnhof Heiligenstadt S U und Bellevuestraße. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Bereich Agnesgasse.",
+    "description": "Linie 39A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "0d23fbb2d463fb0fe86e69cd3638808fbff922f46e60affedac393f19bcdbbca",
     "pubDate": "2026-11-26T06:56:00+01:00",
@@ -1071,7 +1087,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "40A: Aktuelle Wetterlage",
-    "description": "Linie 40A: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Bereich Hugo-Wolf-Park.",
+    "description": "Linie 40A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "040d3b9f25a98b8ff8d9244e0bd4586cbd5de0895eaf0d2269958679ad45cea0",
     "pubDate": "2026-11-26T08:23:00+01:00",
@@ -1082,6 +1098,22 @@
       "I20261126-0023"
     ],
     "_incident_start": "2026-11-26T08:23:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "44: Verkehrsunfall",
+    "description": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e78eaae06ed5d3cf090d4186a3c0813bd59271e475fa87f71ff2ee4b48e3d505",
+    "pubDate": "2026-11-26T10:13:00+01:00",
+    "starts_at": "2026-11-26T10:13:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=44|D=2026-11-26|TK=44 verkehrsunfall",
+    "_wl_ids": [
+      "I20261126-0037"
+    ],
+    "_incident_start": "2026-11-26T10:13:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1103,17 +1135,29 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "48A: Aktuelle Wetterlage",
-    "description": "Linie 48A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Linie 48A: Fahrtbehinderung in Richtung Parlament, U Volkstheater. Voraussichtliche Dauer: 11:00 Uhr. Grund: Aktuelle Wetterlage im Haltestellenbereich Klinik Penzing.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "ebf2b7e196c21988989e2dd04923be097378896318f0aace48afc593aa20cf0c",
-    "pubDate": "2026-11-26T09:10:00+01:00",
-    "starts_at": "2026-11-26T09:10:00+01:00",
+    "pubDate": "2026-11-26T10:23:00+01:00",
+    "starts_at": "2026-11-26T10:23:00+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=48A|D=2026-11-26|TK=48a aktuelle wetterlage",
     "_wl_ids": [
-      "I20261126-0029"
+      "I20261126-0038"
     ],
-    "_incident_start": "2026-11-26T09:10:00+01:00"
+    "_incident_start": "2026-11-26T10:23:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "48A: Fahrtbehinderung wegen Witterung",
+    "description": "Fahrtbehinderung\nwegen Witterung",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "bfbc8e069d44cc96ea9d304b12e19b3f412ccfb7ec519661306038f5053fc2de",
+    "pubDate": "2026-11-26T10:29:01+01:00",
+    "starts_at": "2026-11-26T10:29:02+01:00",
+    "ends_at": "2026-11-26T15:27:00+01:00",
+    "_identity": "wl|störung|L=48A|D=2026-11-26|TK=fahrtbehinderung wegen witterung"
   },
   {
     "source": "Wiener Linien",
@@ -1358,6 +1402,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "9A: Aktuelle Wetterlage",
+    "description": "Die Linie 9A wird in Richtung Bhf. Meidling S U, Eichenstraße zwischen Pohlgasse und Bhf. Meidling S U über Ruckergasse umgeleitet. Voraussichtliche Dauer: 10:35 Uhr. Grund: Aktuelle Wetterlage im Haltestellenbereich Dörfelstraße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "7d498c5b59f7d1faf141cbb58412947e88e0e17105a4e8ce017b432c3408a183",
+    "pubDate": "2026-11-26T10:00:00+01:00",
+    "starts_at": "2026-11-26T10:00:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=9A|D=2026-11-26|TK=9a aktuelle wetterlage",
+    "_wl_ids": [
+      "I20261126-0035"
+    ],
+    "_incident_start": "2026-11-26T10:00:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "9: Aktuelle Wetterlage",
     "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1382,22 +1442,6 @@
     "starts_at": "2026-11-26T08:04:17+01:00",
     "ends_at": "2026-11-26T15:03:00+01:00",
     "_identity": "wl|störung|L=D|D=2026-11-26|TK=witterung züge halten wipplingerstrasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Schadhaftes Fahrzeug",
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7",
-    "pubDate": "2026-11-26T06:47:00+01:00",
-    "starts_at": "2026-11-26T06:47:00+01:00",
-    "ends_at": "2026-11-26T10:15:00+01:00",
-    "_identity": "wl|störung|L=U1|D=2026-11-26|TK=u1 schadhaftes fahrzeug",
-    "_wl_ids": [
-      "I20261126-0013"
-    ],
-    "_incident_start": "2026-11-26T06:47:00+01:00"
   },
   {
     "source": "Wiener Linien",

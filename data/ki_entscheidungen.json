@@ -1,5 +1,18 @@
 {
  "entscheidungen": {
+  "4d6aca1b373d66a828ae4bdb5fc4c38482c1595ad5c382d20727772e225ce2a2": {
+   "abdruck": "ef092c55608cc222",
+   "art": "ploetzlich",
+   "entschieden": "2026-11-26T09:30:38+00:00",
+   "gefragt": [
+    "2026-11-26T09:30:38+00:00"
+   ],
+   "grund": "Der Text nennt 'Witterung Einstieg bei Linie 1' als witterungsbedingtes Ereignis im laufenden Betrieb.",
+   "klasse": "ohne-ursache",
+   "modell": "gemini-3.5-flash-lite",
+   "titel": "31: Witterung Einstieg bei Linie 1",
+   "zuletzt": "2026-11-26"
+  },
   "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&930498": {
    "abdruck": "ac48e9a83247f8ec",
    "art": "ploetzlich",
