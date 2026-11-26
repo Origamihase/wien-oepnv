@@ -158,13 +158,25 @@
   {
     "source": "ÖBB",
     "category": "Störung",
-    "title": "Felixdorf",
-    "description": "25.11.2026 - 26.11.2026<br/><br/>Wegen eines Schadens am Gleis sind in<b> Felixdorf Bahnhof </b><b>Zugfahrten derzeit nur eingeschränkt </b>möglich. Es kommt zu <b>vereinzelten Zugausfällen </b>und <b>Verspätungen</b> bis zu<b> </b><b>10 Minuten</b>.<br><b>Einzelne Züge</b> werden über Achau Bahnhof <b>umgeleitet</b>.<br>Beachten Sie bitte die Lautsprecherdurchsagen und Monitoranzeigen am Bahnsteig.<br>Wir bitten um Entschuldigung.",
+    "title": "Aufhebung Verkehrseinschränkung: Felixdorf",
+    "description": "25.11.2026 - 26.11.2026<br/><br/>Wegen eines Schadens am Gleis <b>waren</b> in Felixdorf Bahnhof <b>bis </b><b>14:40 Uhr</b> nur eingeschränkt Fahrten möglich. Planen Sie derzeit noch bis zu <b>10 Minuten</b> mehr Reisezeit ein. Wir bitten um Entschuldigung.",
     "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
     "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&930457",
-    "pubDate": "2026-11-26T11:34:47+01:00",
+    "pubDate": "2026-11-26T14:50:43+01:00",
     "starts_at": "2026-11-25T00:00:00+01:00",
     "ends_at": "2026-11-26T23:59:59+01:00",
     "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&930457"
+  },
+  {
+    "source": "ÖBB",
+    "category": "Störung",
+    "title": "Aufhebung Verkehrseinschränkung: Tullnerfeld ↔ Wien Meidling / Wien Hütteldorf",
+    "description": "26.11.2026<br/><br/>Wegen der derzeitigen Witterung <b>waren</b> zwischen Tullnerfeld Bahnhof und Wien Meidling Bahnhof (U) bzw. Wien Hütteldorf Bahnhof (U) <b>bis </b><b>14:23 Uhr</b> nur eingeschränkt Fahrten möglich.<br>Planen Sie derzeit noch bis zu <b>10 Minuten</b> mehr Reisezeit ein.<br>Wir bitten um Entschuldigung.",
+    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&931018",
+    "pubDate": "2026-11-26T14:29:12+01:00",
+    "starts_at": "2026-11-26T00:00:00+01:00",
+    "ends_at": "2026-11-26T23:59:59+01:00",
+    "_identity": "oebb|https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&931018"
   }
 ]

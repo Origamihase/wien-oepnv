@@ -55,12 +55,12 @@
     },
     "total": 1994
   },
-  "generated_at": "2026-11-26T15:01:08+01:00",
+  "generated_at": "2026-11-26T15:31:12+01:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 0.88,
     "by_direction": {
-      "Meidling": 8006,
+      "Meidling": 8007,
       "Praterstern": 3830
     },
     "by_hour_avg": {
@@ -102,33 +102,33 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-11-26T14:47:00+01:00",
+          "last_seen": "2026-11-26T15:25:00+01:00",
           "peer_rows_since": 0,
           "rows_in_window": 1191
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 4156,
+          "peer_rows_since": 4157,
           "rows_in_window": 0
         }
       },
       "peer_rows_required": 6,
       "poll": {
-        "last_success": "2026-11-26T15:00:49+01:00",
+        "last_success": "2026-11-26T15:30:49+01:00",
         "stale_hours": 3.0
       },
       "silence_hours": 1.0,
       "window_days": 30
     },
     "live": {
-      "avg_delay_minutes": 6.5,
+      "avg_delay_minutes": 2.5,
       "observations": 2,
       "window_minutes": 60
     },
     "max_delay_minutes": 203.0,
     "threshold_exceedances": 158,
     "threshold_minutes": 9.0,
-    "total_observations": 11836
+    "total_observations": 11837
   },
   "stoerungen": {
     "by_hour": {
@@ -147,7 +147,7 @@
       "12": 362,
       "13": 390,
       "14": 395,
-      "15": 400,
+      "15": 403,
       "16": 398,
       "17": 326,
       "18": 376,
@@ -160,19 +160,19 @@
     "by_provider": {
       "Stadt Wien – Baustellen": 180,
       "VOR/VAO": 13,
-      "Wiener Linien": 5522,
+      "Wiener Linien": 5525,
       "ÖBB": 349
     },
     "by_weekday": {
       "Di": 919,
-      "Do": 1020,
+      "Do": 1023,
       "Fr": 982,
       "Mi": 894,
       "Mo": 832,
       "Sa": 752,
       "So": 665
     },
-    "total": 6064
+    "total": 6067
   },
   "year": 2026
 }

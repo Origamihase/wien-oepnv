@@ -686,23 +686,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/6: Aktuelle Wetterlage",
-    "description": "Linie 1: Betrieb nur zwischen Schwedenplatz und Matzleinsdorfer Platz.Weiterfahrt bis Bhf. Meidling S U, Dörfelstraße.Linie 6:Umleitung in beiden Richtungenzwischen Quellenplatz und Matzleinsdorfer Platz Süber Hauptbahnhof S U.Voraussichtliche Dauer: Nicht absehbar.Grund: Aktuelle Wetterlage im Bereich Quellenstraße.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "95ee3c7d665ed9b577a7b06f87a979126e4f5db4df9c50fb379552cb9d852b22",
-    "pubDate": "2026-11-26T13:29:00+01:00",
-    "starts_at": "2026-11-26T13:53:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=1,6|D=2026-11-26|TK=1 6 aktuelle wetterlage",
-    "_wl_ids": [
-      "I20261126-0065",
-      "I20261126-0067"
-    ],
-    "_incident_start": "2026-11-26T13:29:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "10A/14A/15A/38A/68A/68B: Aktuelle Wetterlage",
     "description": "Linie 68B: Unregelmäßige Intervalle in beiden Richtungen. Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Linie 38A: Unregelmäßige Intervalle in beiden Richtungen. Linie 68A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -799,24 +782,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11: Witterung Betrieb ab Enkplatz, Grillgasse",
-    "description": "Witterung\nBetrieb ab Enkplatz, Grillgasse",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7919b9da60c7b20ba06adf851a35d83de364fdba7180864fce52b45036c32e77",
-    "pubDate": "2026-11-26T10:31:32+01:00",
-    "starts_at": "2026-11-26T10:31:32+01:00",
-    "ends_at": "2026-11-26T15:30:00+01:00",
-    "_identity": "wl|störung|L=11|D=2026-11-26|TK=witterung betrieb ab enkplatz grillgasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "11: Witterung Betrieb ab FIckeysstraße",
     "description": "Witterung\nBetrieb ab FIckeysstraße",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "15fdc03b10de53fec76f08f98adf373ecbf85c7328b933dadd8672f01d3dd3de",
-    "pubDate": "2026-11-26T10:33:02+01:00",
-    "starts_at": "2026-11-26T10:33:02+01:00",
+    "pubDate": "2026-11-26T12:11:00+01:00",
+    "starts_at": "2026-11-26T12:11:00+01:00",
     "ends_at": "2026-11-26T15:32:00+01:00",
     "_identity": "wl|störung|L=11|D=2026-11-26|TK=witterung betrieb ab fickeysstrasse"
   },
@@ -827,8 +798,8 @@
     "description": "Witterung\nEinstieg bei der Polizeistation",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "edf9596ddcd71b32e5b6bd5fec5ae712b43c1d2057d30a7cac9121b477e0f807",
-    "pubDate": "2026-11-26T10:33:32+01:00",
-    "starts_at": "2026-11-26T10:33:32+01:00",
+    "pubDate": "2026-11-26T12:11:00+01:00",
+    "starts_at": "2026-11-26T12:11:00+01:00",
     "ends_at": "2026-11-26T15:32:00+01:00",
     "_identity": "wl|störung|L=11|D=2026-11-26|TK=witterung einstieg bei der polizeistation"
   },
@@ -839,8 +810,8 @@
     "description": "Witterung\nEinstieg in der Grillgasse beim 15A",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "a89193d2b0f8aff7561f1ff7762fd26bdd9735609ca5ad51e3071477bace77dc",
-    "pubDate": "2026-11-26T10:32:02+01:00",
-    "starts_at": "2026-11-26T10:32:02+01:00",
+    "pubDate": "2026-11-26T12:11:00+01:00",
+    "starts_at": "2026-11-26T12:11:00+01:00",
     "ends_at": "2026-11-26T15:31:00+01:00",
     "_identity": "wl|störung|L=11|D=2026-11-26|TK=witterung einstieg in der grillgasse beim 15a"
   },
@@ -883,7 +854,7 @@
     "description": "Fahrtbehinderung\nwegen Witterung",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "226d5fa5aee5615acafe6a0d616f9d50ab6393268911b1132ae2fd53fa663568",
-    "pubDate": "2026-11-26T12:53:00+01:00",
+    "pubDate": "2026-11-26T12:59:45+01:00",
     "starts_at": "2026-11-26T12:59:45+01:00",
     "ends_at": "2026-11-26T16:59:00+01:00",
     "_identity": "wl|störung|L=13A|D=2026-11-26|TK=fahrtbehinderung wegen witterung"
@@ -899,22 +870,6 @@
     "starts_at": "2026-11-26T12:57:45+01:00",
     "ends_at": "2026-11-26T16:57:00+01:00",
     "_identity": "wl|störung|L=13A|D=2026-11-26|TK=witterung betrieb ab strozzigasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "14A: Verkehrsunfall",
-    "description": "Linie 14A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "45135f0f9023593102b885c7d89c0c028d3a4d83421c93a8a39180b147612974",
-    "pubDate": "2026-11-26T12:23:00+01:00",
-    "starts_at": "2026-11-26T12:23:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=14A|D=2026-11-26|TK=14a verkehrsunfall",
-    "_wl_ids": [
-      "I20261126-0055"
-    ],
-    "_incident_start": "2026-11-26T12:23:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -959,28 +914,12 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "18: Aktuelle Wetterlage",
-    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "ef8b44dfdad95aece97ab78c0702a454603fa107ab2b4f25d85ce0c9e57223d1",
-    "pubDate": "2026-11-26T13:29:00+01:00",
-    "starts_at": "2026-11-26T13:29:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=18|D=2026-11-26|TK=18 aktuelle wetterlage",
-    "_wl_ids": [
-      "I20261126-0065"
-    ],
-    "_incident_start": "2026-11-26T13:29:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Fahrtbehinderung Falschparker",
-    "description": "Linie 18: Fahrtbehinderung in Richtung Stadion U. Voraussichtliche Dauer: 15:20 Uhr. Grund: Falschparker im Bereich Stadionallee.",
+    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "42cb273712d61bf337db81e5aaf61bf1f6bb975bdc96986d2e5dcef5b1cb7a6b",
     "pubDate": "2026-11-26T14:55:00+01:00",
-    "starts_at": "2026-11-26T14:56:30+01:00",
+    "starts_at": "2026-11-26T15:01:02+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=18|D=2026-11-26|TK=falschparker",
     "_wl_ids": [
@@ -1055,30 +994,30 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Fahrtbehinderung wegen Witterung",
-    "description": "Fahrtbehinderung\nwegen Witterung",
+    "title": "1: Umleitung zum Reumannplatz",
+    "description": "Gleisbauarbeiten\nUmleitung zum Reumannplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "74354e3fed6e0700d6cd78aeaa896370b98a1cb5ddac75efbba82876c608bd36",
+    "guid": "a8ba70cda76bd25ad99c44435ef8692615c7aebef6b5a98d838a46d6688684c5",
     "pubDate": "2026-11-25T00:00:29+01:00",
-    "starts_at": "2026-11-26T13:57:25+01:00",
-    "ends_at": "2026-11-26T17:56:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-11-25|TK=fahrtbehinderung wegen witterung"
+    "starts_at": "2026-11-25T00:00:29+01:00",
+    "ends_at": "2026-11-26T23:59:59+01:00",
+    "_identity": "wl|störung|L=1|D=2026-11-25|TK=umleitung"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Stromstörung",
-    "description": "Die Linie 1 fährt derzeit nur zwischen Schwedenplatz U und Reumannplatz.Ersatz: Linien U1, 80A.Voraussichtliche Dauer: Nicht absehbar.Grund: Stromstörung im Bereich Radetzkystraße.",
+    "title": "1: Weichenstörung",
+    "description": "Linie 1: Umleitung in Richtung Prater Hauptallee zwischen Karlsplatz U und Julius-Raab-Platz über Schwarzenbergplatz und Stubentor U. Voraussichtliche Dauer: Nicht absehbar. Grund: Weichenstörung im Haltestellenbereich Schottenring U.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "d3a7d59c112413b6a0a1229407678b3d535f605e66bdc8720ef9b7e6765fe036",
-    "pubDate": "2026-11-26T14:48:00+01:00",
-    "starts_at": "2026-11-26T14:48:00+01:00",
+    "guid": "c66ecdb5fb32ff3f315fe391a7f0493f46b66622d1b0768aefc16c4965f32e35",
+    "pubDate": "2026-11-26T15:25:00+01:00",
+    "starts_at": "2026-11-26T15:25:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=1|D=2026-11-26|TK=1 stromstörung",
+    "_identity": "wl|störung|L=1|D=2026-11-26|TK=1 weichenstörung",
     "_wl_ids": [
-      "I20261126-0076"
+      "I20261126-0080"
     ],
-    "_incident_start": "2026-11-26T14:48:00+01:00"
+    "_incident_start": "2026-11-26T15:25:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1095,26 +1034,38 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Fahrtbehinderung wegen Stromstörung",
-    "description": "Fahrtbehinderung\nwegen Stromstörung",
+    "title": "1: Fahrtbehinderung wegen Weichenstörung",
+    "description": "Fahrtbehinderung\nwegen Weichenstörung",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "547019306305f78ad8b7faf3a7ef436f1ec82152ade5bc39c1e8dac5cb39ff50",
-    "pubDate": "2026-11-26T14:26:53+01:00",
-    "starts_at": "2026-11-26T14:26:55+01:00",
-    "ends_at": "2026-11-26T17:26:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-11-26|TK=fahrtbehinderung wegen stromstörung"
+    "guid": "8da6c141d651236cefb93cdbc10a7bdb4728d85f096e343906ef39c95e28a82f",
+    "pubDate": "2026-11-26T15:06:59+01:00",
+    "starts_at": "2026-11-26T15:25:00+01:00",
+    "ends_at": "2026-11-26T20:06:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-11-26|TK=fahrtbehinderung wegen weichenstörung"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1: Stromstörung Betrieb ab Salztorbrücke",
-    "description": "Stromstörung\nBetrieb ab Salztorbrücke",
+    "title": "1: Fahrtbehinderung wegen Witterung",
+    "description": "Fahrtbehinderung\nwegen Witterung",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "d0ec6b5869b173cff83c782878c8aedc15f4ec3f4f6ebd4bd023719a89bf5224",
-    "pubDate": "2026-11-26T14:26:25+01:00",
-    "starts_at": "2026-11-26T14:26:53+01:00",
-    "ends_at": "2026-11-26T17:26:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-11-26|TK=stromstörung betrieb ab salztorbrücke"
+    "guid": "74354e3fed6e0700d6cd78aeaa896370b98a1cb5ddac75efbba82876c608bd36",
+    "pubDate": "2026-11-26T13:57:25+01:00",
+    "starts_at": "2026-11-26T13:57:25+01:00",
+    "ends_at": "2026-11-26T17:56:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-11-26|TK=fahrtbehinderung wegen witterung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Weichenstörung Betrieb ab Börse",
+    "description": "Weichenstörung\nBetrieb ab Börse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "81cc13c09411d8e807dd033cc0c970a9926436aa8304fc47193f05b1ec0a1824",
+    "pubDate": "2026-11-26T15:06:29+01:00",
+    "starts_at": "2026-11-26T15:25:00+01:00",
+    "ends_at": "2026-11-26T18:05:00+01:00",
+    "_identity": "wl|störung|L=1|D=2026-11-26|TK=weichenstörung betrieb ab börse"
   },
   {
     "source": "Wiener Linien",
@@ -1127,18 +1078,6 @@
     "starts_at": "2026-11-26T13:56:55+01:00",
     "ends_at": "2026-11-26T17:56:00+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-26|TK=witterung betrieb ab matzleinsdorfer platz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Witterung Züge halten Wipplingerstraße",
-    "description": "Witterung\nZüge halten Wipplingerstraße",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "6992e2e4d2fe62251b3f16b504808777bb26b1188f109d0151827e5309041e15",
-    "pubDate": "2026-11-26T08:03:16+01:00",
-    "starts_at": "2026-11-26T08:03:16+01:00",
-    "ends_at": "2026-11-26T15:01:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-11-26|TK=witterung züge halten wipplingerstrasse"
   },
   {
     "source": "Wiener Linien",
@@ -1223,18 +1162,6 @@
     "starts_at": "2026-11-26T10:38:34+01:00",
     "ends_at": "2026-11-26T15:38:00+01:00",
     "_identity": "wl|störung|L=25|D=2026-11-26|TK=feuerwehreinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "25: Witterung Züge halten Wipplingerstraße",
-    "description": "Witterung\nZüge halten Wipplingerstraße",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "5b458a7d0ef1a290df03d08ec013c384f21174a10c54f5cf975925b0c3d0c1a4",
-    "pubDate": "2026-11-26T08:02:16+01:00",
-    "starts_at": "2026-11-26T08:02:16+01:00",
-    "ends_at": "2026-11-26T15:01:00+01:00",
-    "_identity": "wl|störung|L=25|D=2026-11-26|TK=witterung züge halten wipplingerstrasse"
   },
   {
     "source": "Wiener Linien",
@@ -1411,7 +1338,7 @@
     "description": "Fahrtbehinderung\nVerkehrsunfall",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "418c1c7d8da29f151f392023959845925a1a8a980c405f52c95079d8902565f7",
-    "pubDate": "2026-11-26T14:30:54+01:00",
+    "pubDate": "2026-11-26T14:41:55+01:00",
     "starts_at": "2026-11-26T14:41:55+01:00",
     "ends_at": "2026-11-26T15:41:00+01:00",
     "_identity": "wl|störung|L=30|D=2026-11-26|TK=fahrtbehinderung verkehrsunfall"
@@ -1439,7 +1366,7 @@
     "description": "Fahrtbehinderung\nVerkehrsunfall",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "b3bce5b56b4f9b52769c8c21ebd335d7f9ae6e17dbf3f5187526cfd046403160",
-    "pubDate": "2026-11-26T14:29:54+01:00",
+    "pubDate": "2026-11-26T14:41:25+01:00",
     "starts_at": "2026-11-26T14:52:26+01:00",
     "ends_at": "2026-11-26T15:52:00+01:00",
     "_identity": "wl|störung|L=31|D=2026-11-26|TK=fahrtbehinderung verkehrsunfall"
@@ -1448,29 +1375,13 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "31: Fahrtbehinderung Falschparker",
-    "description": "Linie 31: Fahrtbehinderung in Richtung Schottenring U. Voraussichtliche Dauer: 15:30 Uhr. Grund: Falschparker im Bereich Klosterneuburger Straße.",
+    "description": "Fahrtbehinderung\nFalschparker",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "7fc5dec6c1828e780870a54d956a3e47494ba66068f3920d342fbe84b2c28065",
     "pubDate": "2026-11-26T14:55:57+01:00",
-    "starts_at": "2026-11-26T14:57:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=31|D=2026-11-26|TK=falschparker",
-    "_wl_ids": [
-      "I20261126-0078"
-    ],
-    "_incident_start": "2026-11-26T14:57:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "31: Witterung Einstieg bei Linie 1",
-    "description": "Witterung\nEinstieg bei Linie 1",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "4d6aca1b373d66a828ae4bdb5fc4c38482c1595ad5c382d20727772e225ce2a2",
-    "pubDate": "2026-11-26T10:18:01+01:00",
-    "starts_at": "2026-11-26T10:18:01+01:00",
-    "ends_at": "2026-11-26T15:17:00+01:00",
-    "_identity": "wl|störung|L=31|D=2026-11-26|TK=witterung einstieg bei linie 1"
+    "starts_at": "2026-11-26T14:55:57+01:00",
+    "ends_at": "2026-11-26T15:55:00+01:00",
+    "_identity": "wl|störung|L=31|D=2026-11-26|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
@@ -1492,7 +1403,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "36A: Aktuelle Wetterlage",
-    "description": "Linie 36A: Fahrtbehinderung in Richtung Jedlesee, Bellgasse. Voraussichtliche Dauer: 14:50 Uhr. Grund: Aktuelle Wetterlage im Haltestellenbereich Lokomotivgasse.",
+    "description": "Linie 36A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "87469b61fc9d337a85df837f0b8334b79e1b98104e09bae8c516579a5043cddb",
     "pubDate": "2026-11-26T14:21:00+01:00",
@@ -1515,22 +1426,6 @@
     "starts_at": "2026-11-25T00:00:29+01:00",
     "ends_at": "2026-11-26T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-11-25|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "37: Falschparker",
-    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f",
-    "pubDate": "2026-11-26T11:30:00+01:00",
-    "starts_at": "2026-11-26T11:30:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=37|D=2026-11-26|TK=falschparker",
-    "_wl_ids": [
-      "I20261126-0046"
-    ],
-    "_incident_start": "2026-11-26T11:30:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1615,18 +1510,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "48A: Fahrtbehinderung wegen Witterung",
-    "description": "Fahrtbehinderung\nwegen Witterung",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "bfbc8e069d44cc96ea9d304b12e19b3f412ccfb7ec519661306038f5053fc2de",
-    "pubDate": "2026-11-26T10:29:01+01:00",
-    "starts_at": "2026-11-26T10:29:02+01:00",
-    "ends_at": "2026-11-26T15:27:00+01:00",
-    "_identity": "wl|störung|L=48A|D=2026-11-26|TK=fahrtbehinderung wegen witterung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "49: Aktuelle Wetterlage",
     "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1643,14 +1526,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "4A/7A/59A/65A/92A/94A/97A/98A: Aktuelle Wetterlage",
-    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. Linie 92A: Unregelmäßige Intervalle in beiden Richtungen. Linie 94A: Unregelmäßige Intervalle in beiden Richtungen. Linie 97A: Unregelmäßige Intervalle in beiden Richtungen. Linie 98A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "title": "4A/7A/59A/65A/92A/94A/98A: Aktuelle Wetterlage",
+    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Linie 7A: Unregelmäßige Intervalle in beiden Richtungen. Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. Linie 92A: Unregelmäßige Intervalle in beiden Richtungen. Linie 94A: Unregelmäßige Intervalle in beiden Richtungen. Linie 98A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "2987bd67a58defbb130e18eb6fb035321f94f687ae5d4524522588031172bfef",
+    "guid": "373f3b2de12745973afee5c78e26c81f42f3c7997ea5db751d50178ac89b3a8c",
     "pubDate": "2026-11-26T07:41:00+01:00",
     "starts_at": "2026-11-26T07:41:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=4A,59A,65A,7A,92A,94A,97A,98A|D=2026-11-26|TK=98a 97a 94a 92a 4a 59a 65a 7a aktuelle wetterlage",
+    "_identity": "wl|störung|L=4A,59A,65A,7A,92A,94A,98A|D=2026-11-26|TK=98a 94a 92a 4a 59a 65a 7a aktuelle wetterlage",
     "_wl_ids": [
       "I20261126-0021"
     ],
@@ -1919,18 +1802,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "66A: Witterung Umleitung über Davidgasse und Laxenburger Straße",
-    "description": "Witterung\nUmleitung über Davidgasse und Laxenburger Straße",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "dee7cf8fd5827b4414d47ca695ba84481096353bc412a6fcabac26ce0099ee3b",
-    "pubDate": "2026-11-26T11:30:38+01:00",
-    "starts_at": "2026-11-26T11:30:38+01:00",
-    "ends_at": "2026-11-26T15:29:00+01:00",
-    "_identity": "wl|störung|L=66A|D=2026-11-26|TK=umleitung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "69A: Witterung Betrieb ab Rohrhofergasse",
     "description": "Witterung\nBetrieb ab Rohrhofergasse",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1939,6 +1810,22 @@
     "starts_at": "2026-11-26T08:35:21+01:00",
     "ends_at": "2026-11-26T15:34:00+01:00",
     "_identity": "wl|störung|L=69A|D=2026-11-26|TK=witterung betrieb ab rohrhofergasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Aktuelle Wetterlage",
+    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "1878b557421f9c31529c7f306a08f3b58b635b7813531dadd627e21e5433e8a9",
+    "pubDate": "2026-11-26T13:53:00+01:00",
+    "starts_at": "2026-11-26T13:53:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=6|D=2026-11-26|TK=6 aktuelle wetterlage",
+    "_wl_ids": [
+      "I20261126-0067"
+    ],
+    "_incident_start": "2026-11-26T13:53:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -2015,30 +1902,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Witterung Einstieg bei Linie 18 Richtung Burggasse",
-    "description": "Witterung\nEinstieg bei Linie 18 Richtung Burggasse",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "a977a5b6388aac40b5b6b75d6b5618c2322bac95dc196c6e33d5e1e3499f1735",
-    "pubDate": "2026-11-26T11:53:38+01:00",
-    "starts_at": "2026-11-26T11:53:38+01:00",
-    "ends_at": "2026-11-26T15:03:00+01:00",
-    "_identity": "wl|störung|L=6|D=2026-11-26|TK=witterung einstieg bei linie 18 richtung burggasse"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "71: Aktuelle Wetterlage",
+    "title": "71: Weichenstörung",
     "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "313e5035f9f5fb5634f20417882ec44ddbfcf0f067afc8ddbc4c431717abb675",
-    "pubDate": "2026-11-26T10:28:00+01:00",
-    "starts_at": "2026-11-26T10:28:00+01:00",
+    "guid": "2355602b0565cd054c948089e4b062652f4f48965e11156ba601986007f9fda0",
+    "pubDate": "2026-11-26T15:00:00+01:00",
+    "starts_at": "2026-11-26T15:00:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=71|D=2026-11-26|TK=71 aktuelle wetterlage",
+    "_identity": "wl|störung|L=71|D=2026-11-26|TK=71 weichenstörung",
     "_wl_ids": [
-      "I20261126-0039"
+      "I20261126-0079"
     ],
-    "_incident_start": "2026-11-26T10:28:00+01:00"
+    "_incident_start": "2026-11-26T15:00:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -2047,8 +1922,8 @@
     "description": "Fahrtbehinderung\nwegen Witterung",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "52169a0bc53ac8909573c16db04eaf7707f3b4e7be2c9e6b312630b89c7e71d5",
-    "pubDate": "2026-11-26T12:22:13+01:00",
-    "starts_at": "2026-11-26T12:22:13+01:00",
+    "pubDate": "2026-11-26T15:00:00+01:00",
+    "starts_at": "2026-11-26T15:00:00+01:00",
     "ends_at": "2026-11-26T16:21:00+01:00",
     "_identity": "wl|störung|L=71|D=2026-11-26|TK=fahrtbehinderung wegen witterung"
   },
@@ -2059,8 +1934,8 @@
     "description": "Witterung\nBetrieb ab Enkplatz, Grillgasse",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "90c89587416c95851b6f466d4b2331859c70be5bc8a846168623f7bd483ccc46",
-    "pubDate": "2026-11-26T10:36:03+01:00",
-    "starts_at": "2026-11-26T10:36:03+01:00",
+    "pubDate": "2026-11-26T15:00:00+01:00",
+    "starts_at": "2026-11-26T15:00:00+01:00",
     "ends_at": "2026-11-26T15:35:00+01:00",
     "_identity": "wl|störung|L=71|D=2026-11-26|TK=witterung betrieb ab enkplatz grillgasse"
   },
@@ -2071,8 +1946,8 @@
     "description": "Witterung\nBetrieb ab Fickeysstraße",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "2866506230c5366048f4cff7956a8fc242ef745604a7745511f87d1cfeffe0d0",
-    "pubDate": "2026-11-26T10:34:32+01:00",
-    "starts_at": "2026-11-26T10:34:32+01:00",
+    "pubDate": "2026-11-26T15:00:00+01:00",
+    "starts_at": "2026-11-26T15:00:00+01:00",
     "ends_at": "2026-11-26T15:34:00+01:00",
     "_identity": "wl|störung|L=71|D=2026-11-26|TK=witterung betrieb ab fickeysstrasse"
   },
@@ -2083,8 +1958,8 @@
     "description": "Witterung\nBetrieb ab Schwarzenbergplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "74085b1cc8b45c307af1127cab5f81c5216c5de14ea57354a996e957db6f8ef1",
-    "pubDate": "2026-11-26T12:21:43+01:00",
-    "starts_at": "2026-11-26T12:21:43+01:00",
+    "pubDate": "2026-11-26T15:00:00+01:00",
+    "starts_at": "2026-11-26T15:00:00+01:00",
     "ends_at": "2026-11-26T16:20:00+01:00",
     "_identity": "wl|störung|L=71|D=2026-11-26|TK=witterung betrieb ab schwarzenbergplatz"
   },
@@ -2095,10 +1970,22 @@
     "description": "Witterung\nEinstieg bei der Polizeistation",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "4d75b93ab6b1e6c9af0ba8102879a60d1415e76eea1b92e783f6317c19c0853b",
-    "pubDate": "2026-11-26T10:35:02+01:00",
-    "starts_at": "2026-11-26T10:35:02+01:00",
+    "pubDate": "2026-11-26T15:00:00+01:00",
+    "starts_at": "2026-11-26T15:00:00+01:00",
     "ends_at": "2026-11-26T15:34:00+01:00",
     "_identity": "wl|störung|L=71|D=2026-11-26|TK=witterung einstieg bei der polizeistation"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "71: Witterung Einstieg bei Linie 1",
+    "description": "Witterung\nEinstieg bei Linie 1",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "604cb03bdc1034045e55d25ea79adbdaa4f0e21b6a2194c93e8c730f7a765232",
+    "pubDate": "2026-11-26T15:04:29+01:00",
+    "starts_at": "2026-11-26T15:04:29+01:00",
+    "ends_at": "2026-11-26T22:22:00+01:00",
+    "_identity": "wl|störung|L=71|D=2026-11-26|TK=witterung einstieg bei linie 1"
   },
   {
     "source": "Wiener Linien",
@@ -2107,8 +1994,8 @@
     "description": "Witterung\nEinstieg in der Grillgasse beim 15A",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "44b7771cfe44efbb5fa5b387ddd69fc5d3c6775393aad623adae9b9c1993faf0",
-    "pubDate": "2026-11-26T10:36:33+01:00",
-    "starts_at": "2026-11-26T10:36:33+01:00",
+    "pubDate": "2026-11-26T15:00:00+01:00",
+    "starts_at": "2026-11-26T15:00:00+01:00",
     "ends_at": "2026-11-26T15:35:00+01:00",
     "_identity": "wl|störung|L=71|D=2026-11-26|TK=witterung einstieg in der grillgasse beim 15a"
   },
@@ -2183,14 +2070,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "D: Witterung Züge halten Wipplingerstraße",
-    "description": "Witterung\nZüge halten Wipplingerstraße",
+    "title": "O: Beschädigte Fahrbahn",
+    "description": "Linie O: Fahrtbehinderung in Richtung Bruno-Marek-Allee. Voraussichtliche Dauer: Nicht absehbar. Grund: Fahrbahnschaden im Bereich Fasangasse.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "236691d6ee203435cbd5cded60bc871a188b80c282939425444b0f53a41a8bfb",
-    "pubDate": "2026-11-26T08:04:17+01:00",
-    "starts_at": "2026-11-26T08:04:17+01:00",
-    "ends_at": "2026-11-26T15:03:00+01:00",
-    "_identity": "wl|störung|L=D|D=2026-11-26|TK=witterung züge halten wipplingerstrasse"
+    "guid": "64e8afc0f17d8889d99bcde1502be1a949a29f1f8f82c7d510d26a7e33441fe4",
+    "pubDate": "2026-11-26T15:25:00+01:00",
+    "starts_at": "2026-11-26T15:25:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=O|D=2026-11-26|TK=o beschädigte fahrbahn",
+    "_wl_ids": [
+      "I20261126-0081"
+    ],
+    "_incident_start": "2026-11-26T15:25:00+01:00"
   },
   {
     "source": "Wiener Linien",
