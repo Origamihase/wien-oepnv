@@ -1,13 +1,29 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-26T06:30:57.843923+00:00",
- "built": "2026-11-26T07:30:40+01:00",
+ "updated": "2026-11-26T07:01:20.429024+00:00",
+ "built": "2026-11-26T08:00:57+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-26T07:30:40+01:00",
+  "built": "2026-11-26T08:00:57+01:00",
   "items": [
+   {
+    "title": "Wien Heiligenstadt ↔ Wien Handelskai",
+    "time_line": "Seit 07:58"
+   },
+   {
+    "title": "4A/59A/65A/92A/94A/97A/98A: Aktuelle Wetterlage",
+    "time_line": "Seit 07:41"
+   },
+   {
+    "title": "10/11/25/49/60/62/71/O/11A/17A/27A/34A/40A/44A/47A/49A: Aktuelle Wetterlage",
+    "time_line": "Seit 07:37"
+   },
+   {
+    "title": "U4: Schadhaftes Fahrzeug",
+    "time_line": "Seit 07:35"
+   },
    {
     "title": "Wien Praterstern ↔ Korneuburg",
     "time_line": "Seit 07:15"
@@ -25,73 +41,17 @@
     "time_line": "Seit 07:08"
    },
    {
-    "title": "38A: Aktuelle Wetterlage",
+    "title": "38A: Witterung",
     "time_line": "Seit 06:43"
    },
    {
     "title": "69A: Witterung, Aktuelle Wetterlage",
     "time_line": "Seit 06:41"
-   },
-   {
-    "title": "U1: Schadhaftes Fahrzeug",
-    "time_line": "Seit 06:47"
-   },
-   {
-    "title": "35A: Aktuelle Wetterlage",
-    "time_line": "Seit 06:28"
-   },
-   {
-    "title": "60A: Aktuelle Wetterlage",
-    "time_line": "Seit 06:18"
-   },
-   {
-    "title": "48A: Aktuelle Wetterlage",
-    "time_line": "Seit 06:05"
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-19T06:31:00.011792+00:00",
-   "raw": {
-    "wl-stoerungen": 39,
-    "wl-hinweise": 76,
-    "oebb": 169,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 14,
-    "oebb": 146,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 9,
-    "wl": 84
-   }
-  },
-  {
-   "t": "2026-11-19T07:00:56.108566+00:00",
-   "raw": {
-    "wl-stoerungen": 38,
-    "wl-hinweise": 76,
-    "oebb": 171,
-    "baustellen-linien": 48,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 14,
-    "oebb": 148,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 9,
-    "wl": 83
-   }
-  },
   {
    "t": "2026-11-19T07:30:37.882485+00:00",
    "raw": {
@@ -6791,17 +6751,37 @@
     "oebb": 15,
     "wl": 95
    }
+  },
+  {
+   "t": "2026-11-26T07:01:20.429024+00:00",
+   "raw": {
+    "wl-stoerungen": 61,
+    "wl-hinweise": 79,
+    "oebb": 185,
+    "baustellen-linien": 46,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 17,
+    "oebb": 156,
+    "baustellen": 56
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 16,
+    "wl": 98
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-26T06:30:57.843923+00:00"
+   "last_ok": "2026-11-26T07:01:20.429024+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-26T06:30:57.843923+00:00"
+   "last_ok": "2026-11-26T07:01:20.429024+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-26T06:30:57.843923+00:00"
+   "last_ok": "2026-11-26T07:01:20.429024+00:00"
   }
  }
 }
