@@ -170,6 +170,18 @@
   {
     "source": "Wiener Linien",
     "category": "Hinweis",
+    "title": "29B/N25: Bauarbeiten",
+    "description": "<h2>Bauarbeiten</h2><p>Wegen Bauarbeiten im Bereich Adolf-Loos-Gasse werden die Busse der Linien 29B und N25umgeleitet.</p><p><span><strong><u>Zeitraum:</u></strong></span><br>Ab Montag, 30. November 2026, etwa 06:30 Uhr auf Dauer von voraussichtlich fünf Tagen.</p><p><span><strong><u>Maßnahmen:</u></strong></span><br><span><strong>Linie 29B in Richtung Großfeldsiedlung U:<u><br></u></strong></span>Umleitung ab Adolf-Loss-Gasse # Haberditzlgasse über Haberditzlgasse – Herzmanovsky-Orlando Gasse – Wassermanngasse.</p><p><span><strong><u>Aufgelassene Haltestelle:</u></strong></span><br>- Wassermanngasse (Adolf-Loos-Gasse 3b)<br><span><strong><u><br>Ersatzhaltestelle:</u></strong></span><br>- Wassermanngasse (Herzmanovsky-Orlando-Gasse nach Bubergasse)</p><p><strong>Linie 29B in Richtung Floridsdorf S U:</strong><br>Umleitung ab Wassermanngasse # Herzmanovsky-Orlando-Gasse über Herzmanovsky-Orlando Gasse – Haberditzlgasse – Adolf-Loss-Gasse.</p><p><strong><u>Aufgelassene Haltestelle:</u></strong><br>- Wassermanngasse (Adolf-Loos-Gasse gegenüber 3b)<br><strong><u><br>Ersatzhaltestelle:</u></strong><br>- Wassermanngasse (Haberditzlgasse nach Herzmanovsky-Orlando-Gasse)</p><p><strong>Linie N25 in Richtung Großfeldsiedlung:<u><br></u></strong>Umleitung ab Adolf-Loss-Gasse # Haberditzlgasse über Haberditzlgasse – Herzmanovsky-Orlando Gasse – Wassermanngasse.</p><p><strong><u>Aufgelassene Haltestelle:</u></strong><br>- Wassermanngasse (Adolf-Loos-Gasse 3b)<br><strong><u><br>Ersatzhaltestelle:</u></strong><br>- Wassermanngasse (Herzmanovsky-Orlando-Gasse nach Bubergasse)</p>",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "65e35dd3532761a3eedc8c90943a3f24a56db24839a5d10fbcd8d29e321fba7b",
+    "pubDate": "2026-11-26T11:31:00+01:00",
+    "starts_at": "2026-11-30T00:00:00+01:00",
+    "ends_at": "2026-12-12T23:59:00+01:00",
+    "_identity": "wl|hinweis|L=29B,N25|D=2026-11-30|TK=29b n25 bauarbeiten"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Hinweis",
     "title": "31A: Kagraner Friedhof",
     "description": "<p><span><strong><u>Haltestellenverlegung der Linie 31A in Richtung Kagraner Platz U</u></strong></span></p><p><span><strong><u>Haltestelle:</u></strong> Kagraner Friedhof</span></p><p><span><strong><u>Von:</u></strong> Eipeldauer Straße vor Wagramer Straße</span></p><p><span><strong><u>Nach:</u></strong> Wagramer Straße 149, Busspur</span></p><p><span><strong><u>Dauer:</u></strong> Ab 19. August 2026, etwa 08:00 Uhr&nbsp;</span></p><p><span><strong><u>Grund:</u></strong> Straßenbauarbeiten</span></p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -674,18 +686,35 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/2/11/25/71/D/O: Aktuelle Wetterlage",
-    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Linie 25: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "title": "1/2/11/71/D/O: Aktuelle Wetterlage",
+    "description": "Linie 1: Unregelmäßige Intervalle in beiden Richtungen. Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Linie 11: Unregelmäßige Intervalle in beiden Richtungen. Linie D: Unregelmäßige Intervalle in beiden Richtungen. Linie O: Unregelmäßige Intervalle in beiden Richtungen. Linie 71: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "4f1145a620ce27f69b954bcb736a5574b73ba7252620d127b625d93eeccb6b61",
+    "guid": "128f592b09251a7d8bf6cb81ac85c763dd5d71ae41e32407f588c2bfb40ff199",
     "pubDate": "2026-11-26T07:37:00+01:00",
     "starts_at": "2026-11-26T07:37:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=1,11,2,25,71,D,O|D=2026-11-26|TK=o 25 11 2 d 71 1 aktuelle wetterlage",
+    "_identity": "wl|störung|L=1,11,2,71,D,O|D=2026-11-26|TK=o 11 2 d 71 1 aktuelle wetterlage",
     "_wl_ids": [
-      "I20261126-0019"
+      "I20261126-0019",
+      "I20261126-0039"
     ],
     "_incident_start": "2026-11-26T07:37:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "10/52: Betriebsstörung",
+    "description": "Linie 10: Kein Betrieb zwischen Hietzing U und Hütteldorfer Straße U. Linie 52: Kein Betrieb zwischen Penzinger Straße und Anschützgasse. Ersatz: Linien U3 und 10A. Voraussichtliche Dauer: 12:40 Uhr. Grund: Betriebsstörung im Bereich Schloßallee # Penzinger Straße.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "48c76da97247d45eeabda48f07abfee0228b29ac91562a32c622c9c58e37fa41",
+    "pubDate": "2026-11-26T11:45:00+01:00",
+    "starts_at": "2026-11-26T11:45:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=10,52|D=2026-11-26|TK=52 10 betriebsstörung",
+    "_wl_ids": [
+      "I20261126-0049"
+    ],
+    "_incident_start": "2026-11-26T11:45:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -755,13 +784,17 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "12A: Fahrtbehinderung Falschparker",
-    "description": "Fahrtbehinderung\nFalschparker",
+    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
     "pubDate": "2026-11-26T11:21:05+01:00",
-    "starts_at": "2026-11-26T11:21:05+01:00",
-    "ends_at": "2026-11-26T12:20:00+01:00",
-    "_identity": "wl|störung|L=12A|D=2026-11-26|TK=falschparker"
+    "starts_at": "2026-11-26T11:33:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=12A|D=2026-11-26|TK=falschparker",
+    "_wl_ids": [
+      "I20261126-0047"
+    ],
+    "_incident_start": "2026-11-26T11:33:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -823,7 +856,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "18: Fahrtbehinderung wegen Rettungseinsatz",
-    "description": "Linie 18: Fahrtbehinderung in Richtung Stadion U. Voraussichtliche Dauer: 11:40 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Ernst-Happel-Stadion.",
+    "description": "Linie 18: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "421ba2969cd14cb5112a5a584151b7d4a85739e61c9ae54c85cf5d23129ea723",
     "pubDate": "2026-11-26T11:01:00+01:00",
@@ -983,7 +1016,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "25: Fahrzeug im Gleis",
-    "description": "Die Linie 25 fährt derzeit nur zwischen Oberdorfstraße und Hausfeldstraße. Voraussichtliche Dauer: Nicht absehbar. Grund: Fahrzeug im Gleis im Bereich Mayrederbrücke.",
+    "description": "Linie 25: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "29a5d1f2995cfdaaaa1eafaa79b6e0330a28ef79356a04065cce43acca8f7ecf",
     "pubDate": "2026-11-26T10:33:00+01:00",
@@ -1158,6 +1191,22 @@
     "starts_at": "2026-11-25T00:00:29+01:00",
     "ends_at": "2026-11-26T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-11-25|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Fahrtbehinderung Falschparker",
+    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "34fe70062a4c511a8923f4e42a1fb39cc7788c496f3c9af7f97e66d332f7277f",
+    "pubDate": "2026-11-26T11:30:00+01:00",
+    "starts_at": "2026-11-26T11:37:35+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=37|D=2026-11-26|TK=falschparker",
+    "_wl_ids": [
+      "I20261126-0046"
+    ],
+    "_incident_start": "2026-11-26T11:30:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1346,18 +1395,42 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "60: Verkehrsunfall",
-    "description": "Linie 60: Kein Betrieb zwischen Hofwiesengasse und Hietzing U. Ersatz: Linien 56A, 56B. Voraussichtliche Dauer: 11:50 Uhr. Grund: Verkehrsunfall im Haltestellenbereich Gloriettegasse.",
+    "title": "60: Betriebsstörung",
+    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "f1fe5d52a5a574694cd18960683874af6f978ac62924632bfae77052d94b803d",
-    "pubDate": "2026-11-26T11:19:00+01:00",
-    "starts_at": "2026-11-26T11:19:00+01:00",
+    "guid": "bcf5e28438afd5f132c742c8c42153044a8dfa5ee88de4228d89212a67bdca71",
+    "pubDate": "2026-11-26T11:45:00+01:00",
+    "starts_at": "2026-11-26T11:45:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=60|D=2026-11-26|TK=60 verkehrsunfall",
+    "_identity": "wl|störung|L=60|D=2026-11-26|TK=60 betriebsstörung",
     "_wl_ids": [
-      "I20261126-0045"
+      "I20261126-0049"
     ],
-    "_incident_start": "2026-11-26T11:19:00+01:00"
+    "_incident_start": "2026-11-26T11:45:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Betriebsstörung Betrieb ab Anschützgasse",
+    "description": "Betriebsstörung\nBetrieb ab Anschützgasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "aa359a96e2446c2d7f7510b2239433a64d5d695dd45aadeb2b6a6cb8d44251e0",
+    "pubDate": "2026-11-26T11:45:00+01:00",
+    "starts_at": "2026-11-26T11:45:00+01:00",
+    "ends_at": "2026-11-26T15:56:00+01:00",
+    "_identity": "wl|störung|L=60|D=2026-11-26|TK=betriebsstörung betrieb ab anschützgasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Betriebsstörung Betrieb ab Hietzing",
+    "description": "Betriebsstörung\nBetrieb ab Hietzing",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "701c827cd96f396144d23195a32f164251fd7620fa2f2720eae5da8f9c2a03f3",
+    "pubDate": "2026-11-26T11:56:10+01:00",
+    "starts_at": "2026-11-26T11:56:10+01:00",
+    "ends_at": "2026-11-26T15:55:00+01:00",
+    "_identity": "wl|störung|L=60|D=2026-11-26|TK=betriebsstörung betrieb ab hietzing"
   },
   {
     "source": "Wiener Linien",
@@ -1366,8 +1439,8 @@
     "description": "Fahrtbehinderung\nVerkehrsunfall",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "d4fefbd61cffb826224497ce36210117717220dc478820ab5f401038825d1565",
-    "pubDate": "2026-11-26T11:22:07+01:00",
-    "starts_at": "2026-11-26T11:22:37+01:00",
+    "pubDate": "2026-11-26T11:45:00+01:00",
+    "starts_at": "2026-11-26T11:45:00+01:00",
     "ends_at": "2026-11-26T12:22:00+01:00",
     "_identity": "wl|störung|L=60|D=2026-11-26|TK=fahrtbehinderung verkehrsunfall"
   },
@@ -1382,6 +1455,42 @@
     "starts_at": "2026-11-26T11:05:36+01:00",
     "ends_at": "2026-11-26T12:05:00+01:00",
     "_identity": "wl|störung|L=60|D=2026-11-26|TK=falschparker"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Verkehrsunfall Betrieb ab Hietzing",
+    "description": "Verkehrsunfall\nBetrieb ab Hietzing",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "9aa64ffbe125babfe2e0cc0a6f7a03ba356a1229ede5f60259d0e4e186056b56",
+    "pubDate": "2026-11-26T11:34:38+01:00",
+    "starts_at": "2026-11-26T11:45:00+01:00",
+    "ends_at": "2026-11-26T12:33:00+01:00",
+    "_identity": "wl|störung|L=60|D=2026-11-26|TK=verkehrsunfall betrieb ab hietzing"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Verkehrsunfall Betrieb ab Hofwiesengasse",
+    "description": "Verkehrsunfall\nBetrieb ab Hofwiesengasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "58fb55c12f3a50285072650650cee8366427aae593f0d22497c59c05afa0a673",
+    "pubDate": "2026-11-26T11:33:38+01:00",
+    "starts_at": "2026-11-26T11:45:00+01:00",
+    "ends_at": "2026-11-26T12:33:00+01:00",
+    "_identity": "wl|störung|L=60|D=2026-11-26|TK=verkehrsunfall betrieb ab hofwiesengasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "60: Verkehrsunfall Einstieg bei Linie 62 Richtung Lainz",
+    "description": "Verkehrsunfall\nEinstieg bei Linie 62 Richtung Lainz",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e74df434e09a36beed89fc6e016d6315369c8dc8e52f4503cadde3946b935b80",
+    "pubDate": "2026-11-26T11:45:00+01:00",
+    "starts_at": "2026-11-26T11:45:00+01:00",
+    "ends_at": "2026-11-26T12:36:00+01:00",
+    "_identity": "wl|störung|L=60|D=2026-11-26|TK=verkehrsunfall einstieg bei linie 62 richtung lainz"
   },
   {
     "source": "Wiener Linien",
@@ -1486,6 +1595,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "66A: Witterung Umleitung über Davidgasse und Laxenburger Straße",
+    "description": "Witterung\nUmleitung über Davidgasse und Laxenburger Straße",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "dee7cf8fd5827b4414d47ca695ba84481096353bc412a6fcabac26ce0099ee3b",
+    "pubDate": "2026-11-26T11:30:38+01:00",
+    "starts_at": "2026-11-26T11:30:38+01:00",
+    "ends_at": "2026-11-26T15:29:00+01:00",
+    "_identity": "wl|störung|L=66A|D=2026-11-26|TK=umleitung"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "69A: Aktuelle Wetterlage",
     "description": "Linie 69A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1510,6 +1631,18 @@
     "starts_at": "2026-11-26T08:35:21+01:00",
     "ends_at": "2026-11-26T15:34:00+01:00",
     "_identity": "wl|störung|L=69A|D=2026-11-26|TK=witterung betrieb ab rohrhofergasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "6: Fahrtbehinderung Falschparker",
+    "description": "Fahrtbehinderung\nFalschparker",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "ed407c6dcbddf97a6d7a31e2061c6df95440e82581e6d96098e62eb26b9fd64c",
+    "pubDate": "2026-11-26T11:53:38+01:00",
+    "starts_at": "2026-11-26T12:00:39+01:00",
+    "ends_at": "2026-11-26T14:53:00+01:00",
+    "_identity": "wl|störung|L=6|D=2026-11-26|TK=falschparker"
   },
   {
     "source": "Wiener Linien",
@@ -1622,6 +1755,22 @@
     "starts_at": "2026-11-26T08:04:17+01:00",
     "ends_at": "2026-11-26T15:03:00+01:00",
     "_identity": "wl|störung|L=D|D=2026-11-26|TK=witterung züge halten wipplingerstrasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U3: Verspätungen",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-11-26T11:42:00+01:00",
+    "starts_at": "2026-11-26T11:42:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U3|D=2026-11-26|TK=u3 verspätungen",
+    "_wl_ids": [
+      "I20261126-0048"
+    ],
+    "_incident_start": "2026-11-26T11:42:00+01:00"
   },
   {
     "source": "Wiener Linien",

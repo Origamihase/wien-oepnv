@@ -8,10 +8,63 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Thu, 26 Nov 2026 11:30:51 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2026 12:00:56 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[12A: Illegally parked vehicle]]></title>
+      <title><![CDATA[10/52: Service disruption]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">48c76da97247d45eeabda48f07abfee0228b29ac91562a32c622c9c58e37fa41</guid>
+      <pubDate>Thu, 26 Nov 2026 11:45:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 26 Nov 2026 12:00:56 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Nov 2026 11:45:00 +0100</ext:starts_at>
+      <description>No service: 10 Hietzing – Hütteldorfer Straße; 52 Penzinger Straße – Anschützgasse. Expected until 12:40. [Since 11:45]</description>
+      <content:encoded><![CDATA[No service: 10 Hietzing – Hütteldorfer Straße; 52 Penzinger Straße – Anschützgasse. Expected until 12:40.<br/>[Since 11:45]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60: Service disruption, traffic accident, illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">bcf5e28438afd5f132c742c8c42153044a8dfa5ee88de4228d89212a67bdca71</guid>
+      <pubDate>Thu, 26 Nov 2026 11:45:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 26 Nov 2026 12:00:56 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Nov 2026 11:45:00 +0100</ext:starts_at>
+      <description>Service disruption: service from Anschützgasse, Hietzing. Traffic accident: service from Hofwiesengasse, Hietzing; service obstruction. [Since 11:45]</description>
+      <content:encoded><![CDATA[Service disruption: service from Anschützgasse, Hietzing. Traffic accident: service from Hofwiesengasse, Hietzing; service obstruction.<br/>[Since 11:45]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[6: Illegally parked vehicle]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">ed407c6dcbddf97a6d7a31e2061c6df95440e82581e6d96098e62eb26b9fd64c</guid>
+      <pubDate>Thu, 26 Nov 2026 11:53:38 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 26 Nov 2026 11:53:38 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Nov 2026 12:00:39 +0100</ext:starts_at>
+      <ext:ends_at>Thu, 26 Nov 2026 14:53:00 +0100</ext:ends_at>
+      <description>Service obstruction. [Since 11:53]</description>
+      <content:encoded><![CDATA[Service obstruction.<br/>[Since 11:53]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U3: Delays]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c</guid>
+      <pubDate>Thu, 26 Nov 2026 11:42:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 26 Nov 2026 11:42:00 +0100</ext:first_seen>
+      <ext:starts_at>Thu, 26 Nov 2026 11:42:00 +0100</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 11:42]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 11:42]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[37/12A: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7</guid>
       <pubDate>Thu, 26 Nov 2026 11:21:05 +0100</pubDate>
@@ -19,23 +72,9 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 26 Nov 2026 11:21:05 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Nov 2026 11:21:05 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 26 Nov 2026 12:20:00 +0100</ext:ends_at>
-      <description>Service obstruction. [Since 11:21]</description>
-      <content:encoded><![CDATA[Service obstruction.<br/>[Since 11:21]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60: Traffic accident, illegally parked vehicle]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">f1fe5d52a5a574694cd18960683874af6f978ac62924632bfae77052d94b803d</guid>
-      <pubDate>Thu, 26 Nov 2026 11:19:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 26 Nov 2026 11:19:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Nov 2026 11:19:00 +0100</ext:starts_at>
-      <description>Traffic accident: no service between Hofwiesengasse and Hietzing. Replacement: lines 56A, 56B. Illegally parked vehicle: service obstruction. [Since 11:19]</description>
-      <content:encoded><![CDATA[Traffic accident: no service between Hofwiesengasse and Hietzing. Replacement: lines 56A, 56B. Illegally parked vehicle: service obstruction.<br/>[Since 11:19]]]></content:encoded>
+      <ext:starts_at>Thu, 26 Nov 2026 11:33:00 +0100</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 11:21]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 11:21]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[18: Rescue operation]]></title>
@@ -47,8 +86,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 26 Nov 2026 11:01:00 +0100</ext:first_seen>
       <ext:starts_at>Thu, 26 Nov 2026 11:25:37 +0100</ext:starts_at>
-      <description>Service obstruction towards Stadion. Expected until 11:40. Reason: rescue operation in the stop area of Ernst-Happel-Stadion. [Since 11:01]</description>
-      <content:encoded><![CDATA[Service obstruction towards Stadion. Expected until 11:40. Reason: rescue operation in the stop area of Ernst-Happel-Stadion.<br/>[Since 11:01]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. [Since 11:01]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 11:01]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[64A: Current weather]]></title>
@@ -91,7 +130,7 @@
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 10:42]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[25: Vehicle on the track]]></title>
+      <title><![CDATA[25: Fire-brigade operation, vehicle on the track]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">29a5d1f2995cfdaaaa1eafaa79b6e0330a28ef79356a04065cce43acca8f7ecf</guid>
       <pubDate>Thu, 26 Nov 2026 10:33:00 +0100</pubDate>
@@ -99,49 +138,9 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Thu, 26 Nov 2026 10:33:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Nov 2026 10:33:00 +0100</ext:starts_at>
-      <description>The 25 line currently only runs between Oberdorfstraße and Hausfeldstraße. Expected duration: Not foreseeable. [Since 10:33]</description>
-      <content:encoded><![CDATA[The 25 line currently only runs between Oberdorfstraße and Hausfeldstraße. Expected duration: Not foreseeable.<br/>[Since 10:33]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[31: Weather conditions boarding at the stop of line 1]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">4d6aca1b373d66a828ae4bdb5fc4c38482c1595ad5c382d20727772e225ce2a2</guid>
-      <pubDate>Thu, 26 Nov 2026 10:18:01 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 26 Nov 2026 10:30:38 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Nov 2026 10:18:01 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 26 Nov 2026 15:17:00 +0100</ext:ends_at>
-      <description>[Since 10:18]</description>
-      <content:encoded><![CDATA[[Since 10:18]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9A/51A/51B: Current weather]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">7d498c5b59f7d1faf141cbb58412947e88e0e17105a4e8ce017b432c3408a183</guid>
-      <pubDate>Thu, 26 Nov 2026 09:55:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 26 Nov 2026 10:30:38 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Nov 2026 09:55:00 +0100</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 09:55]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 09:55]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[44: Traffic accident]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">e78eaae06ed5d3cf090d4186a3c0813bd59271e475fa87f71ff2ee4b48e3d505</guid>
-      <pubDate>Thu, 26 Nov 2026 10:13:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 26 Nov 2026 10:13:00 +0100</ext:first_seen>
-      <ext:starts_at>Thu, 26 Nov 2026 10:13:00 +0100</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 10:13]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 10:13]]]></content:encoded>
+      <ext:starts_at>Thu, 26 Nov 2026 10:38:34 +0100</ext:starts_at>
+      <description>Fire-brigade operation: service obstruction. Replacement bus 26E stops at Karl-Waldbrunner-Platz before Schloßhofer Straße; trains stop at Donaufelder Straße 175-177. [Since 10:33]</description>
+      <content:encoded><![CDATA[Fire-brigade operation: service obstruction. Replacement bus 26E stops at Karl-Waldbrunner-Platz before Schloßhofer Straße; trains stop at Donaufelder Straße 175-177.<br/>[Since 10:33]]]></content:encoded>
     </item>
   </channel>
 </rss>
