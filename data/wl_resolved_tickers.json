@@ -2,36 +2,5 @@
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
- "owners": {
-  "R13-101|2026-11-26T15:30:31.000+0100": {
-   "incident": "I20261126-0099",
-   "title": "Gleisschaden\nBetrieb ab Julius-Raab-Platz",
-   "begin": "2026-11-26T18:07:00+01:00"
-  },
-  "R14-101|2026-11-26T15:30:31.000+0100": {
-   "incident": "I20261126-0099",
-   "title": "Gleisschaden\nBetrieb ab Julius-Raab-Platz",
-   "begin": "2026-11-26T18:07:00+01:00"
-  },
-  "R15-101|2026-11-26T15:30:31.000+0100": {
-   "incident": "I20261126-0099",
-   "title": "Gleisschaden\nBetrieb ab Julius-Raab-Platz",
-   "begin": "2026-11-26T18:07:00+01:00"
-  },
-  "R18-101|2026-11-26T15:30:31.000+0100": {
-   "incident": "I20261126-0099",
-   "title": "Gleisschaden\nBetrieb ab Julius-Raab-Platz",
-   "begin": "2026-11-26T18:07:00+01:00"
-  },
-  "R19-101|2026-11-26T15:30:31.000+0100": {
-   "incident": "I20261126-0099",
-   "title": "Gleisschaden\nBetrieb ab Julius-Raab-Platz",
-   "begin": "2026-11-26T18:07:00+01:00"
-  },
-  "R22-101|2026-11-26T14:26:55.000+0100": {
-   "incident": "I20261126-0099",
-   "title": "Gleisschaden\nBetrieb ab Julius-Raab-Platz",
-   "begin": "2026-11-26T18:07:00+01:00"
-  }
- }
+ "owners": {}
 }

@@ -1,77 +1,57 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-26T22:31:00.595178+00:00",
- "built": "2026-11-26T23:30:42+01:00",
+ "updated": "2026-11-26T23:01:16.504050+00:00",
+ "built": "2026-11-27T00:00:59+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-26T23:30:42+01:00",
+  "built": "2026-11-27T00:00:59+01:00",
   "items": [
    {
-    "title": "5/12/37/38: Gleisschaden",
-    "time_line": "Seit 23:26"
+    "title": "42: Feuerwehreinsatz",
+    "time_line": "Seit 26.11."
    },
    {
-    "title": "11A: Feuerwehreinsatz",
-    "time_line": "Seit 23:07"
+    "title": "5/12/37/38: Gleisschaden",
+    "time_line": "Seit 26.11."
    },
    {
     "title": "26: Schadhaftes Fahrzeug",
-    "time_line": "Seit 22:17"
+    "time_line": "Seit 26.11."
    },
    {
     "title": "2: Polizeieinsatz",
-    "time_line": "Seit 22:11"
+    "time_line": "Seit 26.11."
    },
    {
     "title": "11: Weichenstörung",
-    "time_line": "Seit 21:00"
+    "time_line": "Seit 26.11."
    },
    {
-    "title": "1: Gleisschaden",
-    "time_line": "Seit 15:06"
+    "title": "29B/N25: Bauarbeiten",
+    "time_line": "Ab Mo 30.11. bis 12.12."
    },
    {
-    "title": "35A: Aktuelle Wetterlage",
-    "time_line": "Seit 06:28"
+    "title": "1/2/71/D/1A/2A/3A: Demonstration",
+    "time_line": "Ab Sa 28.11. bis So 29.11."
+   },
+   {
+    "title": "1A/2A/3A/13A: Weihnachtseinkaufstage 2026",
+    "time_line": "Ab Sa 28.11. bis 19.12."
    },
    {
     "title": "60A: Veranstaltung am 27. und 28.11.2026",
-    "time_line": "Ab Fr 27.11. bis Sa 28.11."
+    "time_line": "Bis Sa 28.11."
    },
    {
     "title": "8A/58A/58B: Küniglberg, ORF-Zentrum",
     "time_line": "Seit 25.11."
-   },
-   {
-    "title": "48A: Klinik Penzing",
-    "time_line": "Bis 17.12."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-19T23:01:09.000318+00:00",
-   "raw": {
-    "wl-stoerungen": 34,
-    "wl-hinweise": 68,
-    "oebb": 166,
-    "baustellen-linien": 51,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 13,
-    "oebb": 141,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 10,
-    "wl": 77
-   }
-  },
   {
    "t": "2026-11-19T23:30:58.493652+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 13,
     "wl": 88
    }
+  },
+  {
+   "t": "2026-11-26T23:01:16.504050+00:00",
+   "raw": {
+    "wl-stoerungen": 42,
+    "wl-hinweise": 73,
+    "oebb": 179,
+    "baustellen-linien": 47,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 14,
+    "oebb": 152,
+    "baustellen": 57
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 13,
+    "wl": 88
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-26T22:31:00.595178+00:00"
+   "last_ok": "2026-11-26T23:01:16.504050+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-26T22:31:00.595178+00:00"
+   "last_ok": "2026-11-26T23:01:16.504050+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-26T22:31:00.595178+00:00"
+   "last_ok": "2026-11-26T23:01:16.504050+00:00"
   }
  }
 }

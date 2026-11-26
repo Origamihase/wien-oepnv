@@ -686,22 +686,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "11A: Feuerwehreinsatz",
-    "description": "Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "3793e8921a58590996f02a77722a31025d55f0a3c08aca4556364c807b20d0e5",
-    "pubDate": "2026-11-26T23:07:00+01:00",
-    "starts_at": "2026-11-26T23:07:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=11A|D=2026-11-26|TK=feuerwehreinsatz",
-    "_wl_ids": [
-      "I20261126-0116"
-    ],
-    "_incident_start": "2026-11-26T23:07:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "11: Weichenstörung",
     "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -718,14 +702,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5/12/37/38: Gleisschaden",
-    "description": "Linie 5: Fahrtbehinderung in Richtung Westbahnhof S U. Line 5: Disruption towards Westbahnhof S U. Linie 12: Fahrtbehinderung in Richtung Josefstädter Straße U. Line 12: Disruption towards Josefstädter Straße. Linie 37: Fahrtbehinderung in Richtung Schottentor U. Linie 38: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 23:45 Uhr. Grund: Gleisschaden im Bereich Nußdorfer Straße 11.",
+    "title": "12: Gleisschaden",
+    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "b36833e93e354ef9ad20409191939bcbb7c480d6dbfe310f94cb4279cfb71edb",
+    "guid": "feb3b2394f33cdddae3b81bf5c1b1727154ded9b55dc6ec2514ca6736a5b27ba",
     "pubDate": "2026-11-26T23:26:00+01:00",
     "starts_at": "2026-11-26T23:26:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=12,37,38,5|D=2026-11-26|TK=5 12 37 38 gleisschaden",
+    "_identity": "wl|störung|L=12|D=2026-11-26|TK=12 gleisschaden",
     "_wl_ids": [
       "I20261126-0117"
     ],
@@ -768,7 +752,7 @@
     "guid": "722cc49eaf4e8ccbbfe11eab494c610693f50dbe6938f2a0c361d11a120d69cf",
     "pubDate": "2026-11-24T00:00:20+01:00",
     "starts_at": "2026-11-24T00:00:20+01:00",
-    "ends_at": "2026-11-26T23:59:59+01:00",
+    "ends_at": "2026-11-27T23:59:59+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-24|TK=betrieb ab knöllgasse"
   },
   {
@@ -780,7 +764,7 @@
     "guid": "ec874d834c0a5c0aa688bd397a5e8471438bf598da32edc1550ce6a027f19df7",
     "pubDate": "2026-11-24T00:00:20+01:00",
     "starts_at": "2026-11-24T00:00:20+01:00",
-    "ends_at": "2026-11-26T23:59:59+01:00",
+    "ends_at": "2026-11-27T23:59:59+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-24|TK=kein betrieb"
   },
   {
@@ -792,7 +776,7 @@
     "guid": "490d571258786cc2850533d4ea421322d4bc7f58d105e4c1b0bf76a1cefc02ca",
     "pubDate": "2026-11-24T00:00:20+01:00",
     "starts_at": "2026-11-24T00:00:20+01:00",
-    "ends_at": "2026-11-26T23:59:59+01:00",
+    "ends_at": "2026-11-27T23:59:59+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-24|TK=züge halten quellenstrasse 156 linie 6"
   },
   {
@@ -804,20 +788,8 @@
     "guid": "a8ba70cda76bd25ad99c44435ef8692615c7aebef6b5a98d838a46d6688684c5",
     "pubDate": "2026-11-25T00:00:29+01:00",
     "starts_at": "2026-11-25T00:00:29+01:00",
-    "ends_at": "2026-11-26T23:59:59+01:00",
+    "ends_at": "2026-11-27T23:59:59+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-25|TK=umleitung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "1: Gleisschaden Betrieb ab Julius-Raab-Platz",
-    "description": "Gleisschaden\nBetrieb ab Julius-Raab-Platz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "8870a3b466af07da0d78e1bc35a8bad3c081a1dc86d85d61bbbc73025edf7545",
-    "pubDate": "2026-11-26T15:06:59+01:00",
-    "starts_at": "2026-11-26T18:07:00+01:00",
-    "ends_at": "2026-11-26T23:59:00+01:00",
-    "_identity": "wl|störung|L=1|D=2026-11-26|TK=gleisschaden betrieb ab julius raab platz"
   },
   {
     "source": "Wiener Linien",
@@ -844,7 +816,7 @@
     "guid": "92b3e1526626662f64af03a055d226fd12ea9f9ee7f18ad3adc6d69e6127aa8f",
     "pubDate": "2026-11-24T00:00:22+01:00",
     "starts_at": "2026-11-24T00:00:22+01:00",
-    "ends_at": "2026-11-26T23:59:59+01:00",
+    "ends_at": "2026-11-27T23:59:59+01:00",
     "_identity": "wl|störung|L=25|D=2026-11-24|TK=ersatzbus 26e hält karl waldbrunner platz vor schlosshofer strasse"
   },
   {
@@ -856,7 +828,7 @@
     "guid": "b1de336024668692cfc392366c00463863c75ca201ea3e3f1095df9b15711853",
     "pubDate": "2026-11-24T00:00:22+01:00",
     "starts_at": "2026-11-24T00:00:22+01:00",
-    "ends_at": "2026-11-26T23:59:59+01:00",
+    "ends_at": "2026-11-27T23:59:59+01:00",
     "_identity": "wl|störung|L=25|D=2026-11-24|TK=züge halten donaufelder strasse 175 177"
   },
   {
@@ -884,7 +856,7 @@
     "guid": "74ed68a20871c9df99a595b2acb24eda6475c9b75f4c5324e420a36b068f03d7",
     "pubDate": "2026-11-24T00:00:22+01:00",
     "starts_at": "2026-11-24T00:00:22+01:00",
-    "ends_at": "2026-11-26T23:59:59+01:00",
+    "ends_at": "2026-11-27T23:59:59+01:00",
     "_identity": "wl|störung|L=26E|D=2026-11-24|TK=busse halten bessemerstrasse 1 3"
   },
   {
@@ -896,7 +868,7 @@
     "guid": "d69ee1efc28bc606f7aa2a731eedcb97ba6b6353c22eca615aa68fa75d27c771",
     "pubDate": "2026-11-24T00:00:22+01:00",
     "starts_at": "2026-11-24T00:00:22+01:00",
-    "ends_at": "2026-11-26T23:59:59+01:00",
+    "ends_at": "2026-11-27T23:59:59+01:00",
     "_identity": "wl|störung|L=26E|D=2026-11-24|TK=busse halten hossplatz 11"
   },
   {
@@ -908,7 +880,7 @@
     "guid": "2008cbaf36893e0d453fc689a916eff611bcdc08a4fc946ad2a11efd0db1eb3c",
     "pubDate": "2026-11-24T00:00:22+01:00",
     "starts_at": "2026-11-24T00:00:22+01:00",
-    "ends_at": "2026-11-26T23:59:59+01:00",
+    "ends_at": "2026-11-27T23:59:59+01:00",
     "_identity": "wl|störung|L=26E|D=2026-11-24|TK=busse halten satzingerweg 41"
   },
   {
@@ -920,7 +892,7 @@
     "guid": "cf73c65995ea0c4918cc88d67855f7a7749c1551a4fef3f02ba7c54c8550d609",
     "pubDate": "2026-11-24T00:00:22+01:00",
     "starts_at": "2026-11-24T00:00:22+01:00",
-    "ends_at": "2026-11-26T23:59:59+01:00",
+    "ends_at": "2026-11-27T23:59:59+01:00",
     "_identity": "wl|störung|L=26E|D=2026-11-24|TK=ersatzbus hält karl waldbrunner platz vor schlosshofer strasse"
   },
   {
@@ -932,7 +904,7 @@
     "guid": "544df376802b1177e5b0248149f682aaa8e4c43cffba470c30fbb130a531b8d8",
     "pubDate": "2026-11-24T00:00:22+01:00",
     "starts_at": "2026-11-24T00:00:22+01:00",
-    "ends_at": "2026-11-26T23:59:59+01:00",
+    "ends_at": "2026-11-27T23:59:59+01:00",
     "_identity": "wl|störung|L=26|D=2026-11-24|TK=züge halten in tokiostrasse"
   },
   {
@@ -960,7 +932,7 @@
     "guid": "850d1ea5a2f242340850bbce64f4516a1e196325253cc145d45d09c3a0832c88",
     "pubDate": "2026-11-24T00:00:22+01:00",
     "starts_at": "2026-11-24T00:00:22+01:00",
-    "ends_at": "2026-11-26T23:59:59+01:00",
+    "ends_at": "2026-11-27T23:59:59+01:00",
     "_identity": "wl|störung|L=27|D=2026-11-24|TK=linie 25 in tokiostrasse benützen"
   },
   {
@@ -972,7 +944,7 @@
     "guid": "a31338a0ecb32781b4cf40a6af8ec75d291bf050aaaa43964e8ab0ac144747a7",
     "pubDate": "2026-11-24T00:00:22+01:00",
     "starts_at": "2026-11-24T00:00:22+01:00",
-    "ends_at": "2026-11-26T23:59:59+01:00",
+    "ends_at": "2026-11-27T23:59:59+01:00",
     "_identity": "wl|störung|L=27|D=2026-11-24|TK=züge halten bei linie 31"
   },
   {
@@ -994,42 +966,78 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "35A: Aktuelle Wetterlage",
-    "description": "Linie 35A: Betrieb nur zwischen Spittelau S U und Neustift, Agnesgasse. Zwischen Neustift, Agnesgasse und Salmannsdorf wurde ein Shuttlebus eingerichtet. Voraussichtliche Dauer: Nicht absehbar. Grund: Aktuelle Wetterlage im Bereich Rathstraße.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "9f8cd3f43bd146662330d7e18d6aabb0400a5125795c3168af8785e9a5e9270a",
-    "pubDate": "2026-11-26T06:28:00+01:00",
-    "starts_at": "2026-11-26T06:28:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=35A|D=2026-11-26|TK=35a aktuelle wetterlage",
-    "_wl_ids": [
-      "I20261126-0010"
-    ],
-    "_incident_start": "2026-11-26T06:28:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "c29c39c9ead9f5d729dc7055450928b82f3e8164d4377cadb7e38bbb5803307c",
     "pubDate": "2026-11-25T00:00:29+01:00",
     "starts_at": "2026-11-25T00:00:29+01:00",
-    "ends_at": "2026-11-26T23:59:59+01:00",
+    "ends_at": "2026-11-27T23:59:59+01:00",
     "_identity": "wl|störung|L=37A|D=2026-11-25|TK=busse halten pasettistrasse vor hellwagstrasse bei linie 5a"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "5B: Busse halten Pappenheimgasse 24-28",
-    "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
+    "title": "37: Gleisschaden",
+    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "72637a0e7f145666712a9b4de8e489d06ed131402df1b9c8e4f4d78ca88a48da",
-    "pubDate": "2026-11-26T04:45:27+01:00",
-    "starts_at": "2026-11-26T04:45:27+01:00",
-    "ends_at": "2026-11-26T23:59:59+01:00",
-    "_identity": "wl|störung|L=5B|D=2026-11-26|TK=busse halten pappenheimgasse 24 28"
+    "guid": "531f69665df04bb54dc48544772dcff5437bc346a19864b45c8fe4827c0d31c4",
+    "pubDate": "2026-11-26T23:26:00+01:00",
+    "starts_at": "2026-11-26T23:26:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=37|D=2026-11-26|TK=37 gleisschaden",
+    "_wl_ids": [
+      "I20261126-0117"
+    ],
+    "_incident_start": "2026-11-26T23:26:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Gleisschaden",
+    "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "41232b9b5d5ab52f719f4572ad52256886f455c6583c496fed86188ccc4c5100",
+    "pubDate": "2026-11-26T23:26:00+01:00",
+    "starts_at": "2026-11-26T23:26:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=38|D=2026-11-26|TK=38 gleisschaden",
+    "_wl_ids": [
+      "I20261126-0117"
+    ],
+    "_incident_start": "2026-11-26T23:26:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Feuerwehreinsatz",
+    "description": "Linie 42: Fahrtbehinderung in beide Richtungen. Voraussichtliche Dauer: 00:15 Uhr. Grund: Feuerwehreinsatz im Bereich Währinger Gürtel 79.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "b34f0fda952402f692c12635a1908e2a423bbcc6bd0a2e557312f0f76484d5b3",
+    "pubDate": "2026-11-26T23:33:00+01:00",
+    "starts_at": "2026-11-26T23:33:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=42|D=2026-11-26|TK=feuerwehreinsatz",
+    "_wl_ids": [
+      "I20261126-0118"
+    ],
+    "_incident_start": "2026-11-26T23:33:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "5: Gleisschaden",
+    "description": "Linie 5: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "bedf723d52a68d37c43ad22546a6f03dc025175a56bf7ba4aa78fbb6f993d99b",
+    "pubDate": "2026-11-26T23:26:00+01:00",
+    "starts_at": "2026-11-26T23:26:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=5|D=2026-11-26|TK=5 gleisschaden",
+    "_wl_ids": [
+      "I20261126-0117"
+    ],
+    "_incident_start": "2026-11-26T23:26:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1052,7 +1060,7 @@
     "guid": "2797d59462910f71456b76916229f0a7dc623a8edebf6f4ac24269030a87606e",
     "pubDate": "2026-11-25T00:00:29+01:00",
     "starts_at": "2026-11-25T00:00:29+01:00",
-    "ends_at": "2026-11-26T23:59:59+01:00",
+    "ends_at": "2026-11-27T23:59:59+01:00",
     "_identity": "wl|störung|L=74A|D=2026-11-25|TK=einstieg leberstrasse vor s bahn gebäude"
   },
   {
@@ -1064,7 +1072,7 @@
     "guid": "ea6dc6157351e6aa6eb8ae0f07011aa7c794ec979aee036f3e93c7c998c73346",
     "pubDate": "2026-11-25T00:00:28+01:00",
     "starts_at": "2026-11-25T00:00:28+01:00",
-    "ends_at": "2026-11-26T23:59:59+01:00",
+    "ends_at": "2026-11-27T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-25|TK=betrieb ab vivariumstrasse 2"
   },
   {
