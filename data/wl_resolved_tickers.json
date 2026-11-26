@@ -3,6 +3,167 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [
   {
+   "key": "R1375-146|2026-11-26T09:11:53.000+0100|Witterung\nBetrieb ab Thaliastraße",
+   "name": "R1375-146",
+   "title": "Witterung\nBetrieb ab Thaliastraße",
+   "end": "2026-11-26T10:11:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R1375-149|2026-11-26T09:13:53.000+0100|Witterung\nBetrieb ab Urban-Loritz-Platz",
+   "name": "R1375-149",
+   "title": "Witterung\nBetrieb ab Urban-Loritz-Platz",
+   "end": "2026-11-26T15:13:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R1375-448|2026-11-26T09:16:54.000+0100|Fahrtbehinderung\nwegen Witterung",
+   "name": "R1375-448",
+   "title": "Fahrtbehinderung\nwegen Witterung",
+   "end": "2026-11-26T15:16:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R1376-146|2026-11-26T09:11:53.000+0100|Witterung\nBetrieb ab Thaliastraße",
+   "name": "R1376-146",
+   "title": "Witterung\nBetrieb ab Thaliastraße",
+   "end": "2026-11-26T10:11:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R1377-146|2026-11-26T09:11:53.000+0100|Witterung\nBetrieb ab Thaliastraße",
+   "name": "R1377-146",
+   "title": "Witterung\nBetrieb ab Thaliastraße",
+   "end": "2026-11-26T10:11:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R1378-146|2026-11-26T09:11:53.000+0100|Witterung\nBetrieb ab Thaliastraße",
+   "name": "R1378-146",
+   "title": "Witterung\nBetrieb ab Thaliastraße",
+   "end": "2026-11-26T10:11:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R1393-146|2026-11-26T09:12:53.000+0100|Fahrtbehinderung\nwegen Witterung",
+   "name": "R1393-146",
+   "title": "Fahrtbehinderung\nwegen Witterung",
+   "end": "2026-11-26T15:12:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R1394-146|2026-11-26T09:12:54.000+0100|Fahrtbehinderung\nwegen Witterung",
+   "name": "R1394-146",
+   "title": "Fahrtbehinderung\nwegen Witterung",
+   "end": "2026-11-26T15:12:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R1401-448|2026-11-26T09:16:54.000+0100|Fahrtbehinderung\nwegen Witterung",
+   "name": "R1401-448",
+   "title": "Fahrtbehinderung\nwegen Witterung",
+   "end": "2026-11-26T15:16:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R1406-448|2026-11-26T09:16:54.000+0100|Fahrtbehinderung\nwegen Witterung",
+   "name": "R1406-448",
+   "title": "Fahrtbehinderung\nwegen Witterung",
+   "end": "2026-11-26T15:16:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R1408-448|2026-11-26T09:16:54.000+0100|Fahrtbehinderung\nwegen Witterung",
+   "name": "R1408-448",
+   "title": "Fahrtbehinderung\nwegen Witterung",
+   "end": "2026-11-26T15:16:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R1411-448|2026-11-26T09:16:54.000+0100|Fahrtbehinderung\nwegen Witterung",
+   "name": "R1411-448",
+   "title": "Fahrtbehinderung\nwegen Witterung",
+   "end": "2026-11-26T15:16:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R1441-149|2026-11-26T09:13:54.000+0100|Witterung\nBetrieb ab Urban-Loritz-Platz",
+   "name": "R1441-149",
+   "title": "Witterung\nBetrieb ab Urban-Loritz-Platz",
+   "end": "2026-11-26T15:13:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R1442-149|2026-11-26T09:13:54.000+0100|Witterung\nBetrieb ab Urban-Loritz-Platz",
+   "name": "R1442-149",
+   "title": "Witterung\nBetrieb ab Urban-Loritz-Platz",
+   "end": "2026-11-26T15:13:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R1443-149|2026-11-26T09:13:54.000+0100|Witterung\nBetrieb ab Urban-Loritz-Platz",
+   "name": "R1443-149",
+   "title": "Witterung\nBetrieb ab Urban-Loritz-Platz",
+   "end": "2026-11-26T15:13:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R1444-149|2026-11-26T09:13:54.000+0100|Witterung\nBetrieb ab Urban-Loritz-Platz",
+   "name": "R1444-149",
+   "title": "Witterung\nBetrieb ab Urban-Loritz-Platz",
+   "end": "2026-11-26T15:13:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R1478-149|2026-11-26T09:14:24.000+0100|Fahrtbehinderung\nwegen Witterung",
+   "name": "R1478-149",
+   "title": "Fahrtbehinderung\nwegen Witterung",
+   "end": "2026-11-26T15:13:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R1479-149|2026-11-26T09:14:24.000+0100|Fahrtbehinderung\nwegen Witterung",
+   "name": "R1479-149",
+   "title": "Fahrtbehinderung\nwegen Witterung",
+   "end": "2026-11-26T15:13:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R1480-149|2026-11-26T09:14:24.000+0100|Fahrtbehinderung\nwegen Witterung",
+   "name": "R1480-149",
+   "title": "Fahrtbehinderung\nwegen Witterung",
+   "end": "2026-11-26T15:13:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R1486-149|2026-11-26T09:13:54.000+0100|Witterung\nBetrieb ab Urban-Loritz-Platz",
+   "name": "R1486-149",
+   "title": "Witterung\nBetrieb ab Urban-Loritz-Platz",
+   "end": "2026-11-26T15:13:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R1487-149|2026-11-26T09:14:24.000+0100|Fahrtbehinderung\nwegen Witterung",
+   "name": "R1487-149",
+   "title": "Fahrtbehinderung\nwegen Witterung",
+   "end": "2026-11-26T15:13:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R1527-448|2026-11-26T09:16:55.000+0100|Fahrtbehinderung\nwegen Witterung",
+   "name": "R1527-448",
+   "title": "Fahrtbehinderung\nwegen Witterung",
+   "end": "2026-11-26T15:16:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
+   "key": "R2636-448|2026-11-26T09:16:55.000+0100|Fahrtbehinderung\nwegen Witterung",
+   "name": "R2636-448",
+   "title": "Fahrtbehinderung\nwegen Witterung",
+   "end": "2026-11-26T15:16:00.000+0100",
+   "incident": "I20261126-0029"
+  },
+  {
    "key": "R2963-410|2026-11-26T07:22:44.000+0100|Witterung\nUmleitung über Krottenbachstraße zur Dänenstraße",
    "name": "R2963-410",
    "title": "Witterung\nUmleitung über Krottenbachstraße zur Dänenstraße",
@@ -71,9 +232,69 @@
    "incident": "I20261126-0010",
    "title": "Wiiterung\nBetrieb ab Agnesgasse"
   },
-  "R1282-440|2026-11-26T08:25:49.000+0100": {
-   "incident": "I20261126-0023",
+  "R1375-146|2026-11-26T09:11:53.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Witterung\nBetrieb ab Thaliastraße"
+  },
+  "R1375-149|2026-11-26T09:13:53.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Witterung\nBetrieb ab Urban-Loritz-Platz"
+  },
+  "R1375-448|2026-11-26T09:16:54.000+0100": {
+   "incident": "I20261126-0029",
    "title": "Fahrtbehinderung\nwegen Witterung"
+  },
+  "R1376-146|2026-11-26T09:11:53.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Witterung\nBetrieb ab Thaliastraße"
+  },
+  "R1377-146|2026-11-26T09:11:53.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Witterung\nBetrieb ab Thaliastraße"
+  },
+  "R1378-146|2026-11-26T09:11:53.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Witterung\nBetrieb ab Thaliastraße"
+  },
+  "R1393-146|2026-11-26T09:12:53.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Fahrtbehinderung\nwegen Witterung"
+  },
+  "R1394-146|2026-11-26T09:12:54.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Fahrtbehinderung\nwegen Witterung"
+  },
+  "R1401-448|2026-11-26T09:16:54.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Fahrtbehinderung\nwegen Witterung"
+  },
+  "R1406-448|2026-11-26T09:16:54.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Fahrtbehinderung\nwegen Witterung"
+  },
+  "R1408-448|2026-11-26T09:16:54.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Fahrtbehinderung\nwegen Witterung"
+  },
+  "R1411-448|2026-11-26T09:16:54.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Fahrtbehinderung\nwegen Witterung"
+  },
+  "R1441-149|2026-11-26T09:13:54.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Witterung\nBetrieb ab Urban-Loritz-Platz"
+  },
+  "R1442-149|2026-11-26T09:13:54.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Witterung\nBetrieb ab Urban-Loritz-Platz"
+  },
+  "R1443-149|2026-11-26T09:13:54.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Witterung\nBetrieb ab Urban-Loritz-Platz"
+  },
+  "R1444-149|2026-11-26T09:13:54.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Witterung\nBetrieb ab Urban-Loritz-Platz"
   },
   "R1446-109|2026-11-26T08:50:22.000+0100": {
    "incident": "I20261126-0027",
@@ -91,6 +312,30 @@
    "incident": "I20261126-0027",
    "title": "Fahrtbehinderung\nwegen Witterung"
   },
+  "R1478-149|2026-11-26T09:14:24.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Fahrtbehinderung\nwegen Witterung"
+  },
+  "R1479-149|2026-11-26T09:14:24.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Fahrtbehinderung\nwegen Witterung"
+  },
+  "R1480-149|2026-11-26T09:14:24.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Fahrtbehinderung\nwegen Witterung"
+  },
+  "R1486-149|2026-11-26T09:13:54.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Witterung\nBetrieb ab Urban-Loritz-Platz"
+  },
+  "R1487-149|2026-11-26T09:14:24.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Fahrtbehinderung\nwegen Witterung"
+  },
+  "R1527-448|2026-11-26T09:16:55.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Fahrtbehinderung\nwegen Witterung"
+  },
   "R1660-462|2026-11-26T08:39:50.000+0100": {
    "incident": "I20261126-0025",
    "title": "Witterung\nBetrieb ab Dr.-Neumann-Gasse"
@@ -102,6 +347,10 @@
   "R2058-469|2026-11-26T08:35:21.000+0100": {
    "incident": "I20261126-0024",
    "title": "Witterung\nBetrieb ab Rohrhofergasse"
+  },
+  "R2636-448|2026-11-26T09:16:55.000+0100": {
+   "incident": "I20261126-0029",
+   "title": "Fahrtbehinderung\nwegen Witterung"
   },
   "R2963-410|2026-11-26T07:22:44.000+0100": {
    "incident": "I20261126-0006",
@@ -131,6 +380,18 @@
    "title": "Fahrtbehinderung\nwegen Witterung",
    "begin": "2026-11-26T08:30:00+01:00"
   },
+  "R3527-413|2026-11-26T09:08:54.000+0100": {
+   "incident": "I20261126-0028",
+   "title": "Fahrtbehinderung\nwegen Witterung"
+  },
+  "R3528-413|2026-11-26T09:08:54.000+0100": {
+   "incident": "I20261126-0028",
+   "title": "Fahrtbehinderung\nwegen Witterung"
+  },
+  "R3529-413|2026-11-26T09:08:54.000+0100": {
+   "incident": "I20261126-0028",
+   "title": "Fahrtbehinderung\nwegen Witterung"
+  },
   "R408-469|2026-11-26T06:48:38.000+0100": {
    "incident": "I20261126-0024",
    "title": "Fahrtbehinderung\nwegen Witterung",
@@ -145,10 +406,6 @@
    "title": "Witterung\nZüge halten Wipplingerstraße"
   },
   "R45-136|2026-11-26T08:04:17.000+0100": {
-   "incident": "I20261126-0019",
-   "title": "Witterung\nZüge halten Wipplingerstraße"
-  },
-  "R45-171|2026-11-26T08:04:47.000+0100": {
    "incident": "I20261126-0019",
    "title": "Witterung\nZüge halten Wipplingerstraße"
   },
@@ -216,6 +473,14 @@
    "incident": "I20261126-0027",
    "title": "Fahrtbehinderung\nwegen Witterung"
   },
+  "R660-413|2026-11-26T09:15:54.000+0100": {
+   "incident": "I20261126-0028",
+   "title": "Fahrtbehinderung\nwegen Witterung"
+  },
+  "R661-413|2026-11-26T09:15:54.000+0100": {
+   "incident": "I20261126-0028",
+   "title": "Fahrtbehinderung\nwegen Witterung"
+  },
   "R665-413|2026-11-26T08:55:21.000+0100": {
    "incident": "I20261126-0028",
    "title": "Fahrtbehinderung\nwegen Witterung"
@@ -232,6 +497,14 @@
    "incident": "I20261126-0028",
    "title": "Fahrtbehinderung\nwegen Witterung"
   },
+  "R673-413|2026-11-26T09:09:53.000+0100": {
+   "incident": "I20261126-0028",
+   "title": "Fahrtbehinderung\nwegen Witterung"
+  },
+  "R676-413|2026-11-26T09:09:53.000+0100": {
+   "incident": "I20261126-0028",
+   "title": "Fahrtbehinderung\nwegen Witterung"
+  },
   "R688-413|2026-11-26T08:55:21.000+0100": {
    "incident": "I20261126-0028",
    "title": "Fahrtbehinderung\nwegen Witterung"
@@ -240,6 +513,10 @@
    "incident": "I20261126-0024",
    "title": "Fahrtbehinderung\nwegen Witterung",
    "begin": "2026-11-26T08:30:00+01:00"
+  },
+  "R773-413|2026-11-26T09:08:53.000+0100": {
+   "incident": "I20261126-0028",
+   "title": "Fahrtbehinderung\nwegen Witterung"
   },
   "R8-469|2026-11-26T06:48:39.000+0100": {
    "incident": "I20261126-0024",
