@@ -686,14 +686,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A/14A/15A/38A/68A/68B: Aktuelle Wetterlage",
-    "description": "Linie 68B: Unregelmäßige Intervalle in beiden Richtungen. Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Linie 38A: Unregelmäßige Intervalle in beiden Richtungen. Linie 68A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "title": "10A/14A/15A: Aktuelle Wetterlage",
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Linie 14A: Unregelmäßige Intervalle in beiden Richtungen. Linie 15A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "d28fcf273d24a62adeaeb37f030e4c2b8b4ba530b118226a3b54c6d85348768c",
+    "guid": "1854663b7ab5aa2ba9e2b33ba0ab468be54df74bbff8750c9463f2887837cf5a",
     "pubDate": "2026-11-26T05:36:00+01:00",
     "starts_at": "2026-11-26T05:36:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=10A,14A,15A,38A,68A,68B|D=2026-11-26|TK=15a 10a 38a 68a 68b 14a aktuelle wetterlage",
+    "_identity": "wl|störung|L=10A,14A,15A|D=2026-11-26|TK=15a 10a 14a aktuelle wetterlage",
     "_wl_ids": [
       "I20261126-0006"
     ],
@@ -778,14 +778,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "17A/27A/34A/44A/47A/49A: Aktuelle Wetterlage",
-    "description": "Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Linie 27A: Unregelmäßige Intervalle in beiden Richtungen. Linie 34A: Unregelmäßige Intervalle in beiden Richtungen. Linie 44A: Unregelmäßige Intervalle in beiden Richtungen. Linie 47A: Unregelmäßige Intervalle in beiden Richtungen. Linie 49A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "title": "17A/27A/44A/49A: Aktuelle Wetterlage",
+    "description": "Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Linie 27A: Unregelmäßige Intervalle in beiden Richtungen. Linie 44A: Unregelmäßige Intervalle in beiden Richtungen. Linie 49A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "3c2f1682046436d76ec33506201ed0e5f7475c6efb02eb304429e5c479a130f2",
+    "guid": "d5c85cb56b73ed9838f2af3b8bbd9e42ed5378db2fb6900f894b8d21b2ba2bd2",
     "pubDate": "2026-11-26T07:38:00+01:00",
     "starts_at": "2026-11-26T07:38:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=17A,27A,34A,44A,47A,49A|D=2026-11-26|TK=17a 27a 34a 44a 47a 49a aktuelle wetterlage",
+    "_identity": "wl|störung|L=17A,27A,44A,49A|D=2026-11-26|TK=17a 27a 44a 49a aktuelle wetterlage",
     "_wl_ids": [
       "I20261126-0020"
     ],
@@ -1174,22 +1174,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Weichenstörung",
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "e9673e44be830b887966ee9781b3966db3f3a618ee1d6c4267fe7a10a33ba0ff",
-    "pubDate": "2026-11-26T13:38:00+01:00",
-    "starts_at": "2026-11-26T13:38:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=2|D=2026-11-26|TK=2 weichenstörung",
-    "_wl_ids": [
-      "I20261126-0066"
-    ],
-    "_incident_start": "2026-11-26T13:38:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "2: Fahrtbehinderung Falschparker",
     "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1210,8 +1194,8 @@
     "description": "Witterung\nBetrieb ab Höchstädtplatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "23a842750a5806a4065c67ad714b249c4e849b0375927516ad94d9c27b36b6ac",
-    "pubDate": "2026-11-26T13:49:19+01:00",
-    "starts_at": "2026-11-26T13:49:21+01:00",
+    "pubDate": "2026-11-26T16:40:00+01:00",
+    "starts_at": "2026-11-26T16:40:00+01:00",
     "ends_at": "2026-11-26T17:48:00+01:00",
     "_identity": "wl|störung|L=2|D=2026-11-26|TK=witterung betrieb ab höchstädtplatz"
   },
@@ -1266,22 +1250,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "36B: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Linie 36B: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "c5dfcbf0ac6f53f5aa46354637fce7a274f1b74d1ac997528825ebf6a42a925c",
-    "pubDate": "2026-11-26T16:12:00+01:00",
-    "starts_at": "2026-11-26T16:15:04+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=36B|D=2026-11-26|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261126-0088"
-    ],
-    "_incident_start": "2026-11-26T16:12:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1322,22 +1290,6 @@
       "I20261126-0023"
     ],
     "_incident_start": "2026-11-26T08:23:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "40: Rettungseinsatz",
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "5092aa3e16264a54729d619c0073938e9a20bc79adf99a5a51f89ef26c9055eb",
-    "pubDate": "2026-11-26T15:49:00+01:00",
-    "starts_at": "2026-11-26T15:49:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=40|D=2026-11-26|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261126-0083"
-    ],
-    "_incident_start": "2026-11-26T15:49:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1390,34 +1342,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "4A/59A/65A/92A/94A/98A: Aktuelle Wetterlage",
-    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. Linie 92A: Unregelmäßige Intervalle in beiden Richtungen. Linie 94A: Unregelmäßige Intervalle in beiden Richtungen. Linie 98A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
+    "title": "4A/59A/65A/92A/98A: Aktuelle Wetterlage",
+    "description": "Linie 4A: Unregelmäßige Intervalle in beiden Richtungen. Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Derzeit kommt es bei der Linie 65A in beiden Richtungen zu unterschiedlichen Intervallen. Linie 92A: Unregelmäßige Intervalle in beiden Richtungen. Linie 98A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Aktuelle Wetterlage.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "5468a69b8961749c328d2940ad83d6069f03f6418284cf713ecd67ccb1bca4f3",
+    "guid": "d0bd2367d403458198dc27a1f02891681d13b8adaeea838313583a6034008479",
     "pubDate": "2026-11-26T07:41:00+01:00",
     "starts_at": "2026-11-26T07:41:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=4A,59A,65A,92A,94A,98A|D=2026-11-26|TK=98a 94a 92a 4a 59a 65a aktuelle wetterlage",
+    "_identity": "wl|störung|L=4A,59A,65A,92A,98A|D=2026-11-26|TK=98a 92a 4a 59a 65a aktuelle wetterlage",
     "_wl_ids": [
       "I20261126-0021"
     ],
     "_incident_start": "2026-11-26T07:41:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "51A: Aktuelle Wetterlage",
-    "description": "Linie 51A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "6df2853769174d9ba692133284b251b9f66126ba30cdcbdc43619c3cb4bc6ed2",
-    "pubDate": "2026-11-26T09:55:00+01:00",
-    "starts_at": "2026-11-26T09:55:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=51A|D=2026-11-26|TK=51a aktuelle wetterlage",
-    "_wl_ids": [
-      "I20261126-0034"
-    ],
-    "_incident_start": "2026-11-26T09:55:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1434,22 +1370,6 @@
       "I20261126-0034"
     ],
     "_incident_start": "2026-11-26T09:55:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "52: Betriebsstörung",
-    "description": "Linie 52: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "92e7200b48fe35bc6a7cc83efb2f006e5faf4f1ec5437b1aa334f522cfb7ca72",
-    "pubDate": "2026-11-26T11:45:00+01:00",
-    "starts_at": "2026-11-26T11:45:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=52|D=2026-11-26|TK=52 betriebsstörung",
-    "_wl_ids": [
-      "I20261126-0049"
-    ],
-    "_incident_start": "2026-11-26T11:45:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1538,6 +1458,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "63A: Betriebsstörung",
+    "description": "Linie 63A: Fahrtbehinderung in Richtung Am Rosenhügel. Voraussichtliche Dauer: Nicht absehbar. Grund: Betriebsstörung im Haltestellenbereich Unfallkrankenhaus Meidling.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "268fd410f5ef450f9c7a2a594e86bd0dc8db5b7815880b183dc553c14f663dfe",
+    "pubDate": "2026-11-26T17:24:00+01:00",
+    "starts_at": "2026-11-26T17:24:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=63A|D=2026-11-26|TK=63a betriebsstörung",
+    "_wl_ids": [
+      "I20261126-0094"
+    ],
+    "_incident_start": "2026-11-26T17:24:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "63A: Feuerwehreinsatz",
     "description": "Linie 63A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1550,22 +1486,6 @@
       "I20261126-0068"
     ],
     "_incident_start": "2026-11-26T13:58:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "64A: Aktuelle Wetterlage",
-    "description": "Linie 64A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "d2a3fa5578ca1b6d0e5785094c8e8021154670d4e207f54934d4ade7defabd48",
-    "pubDate": "2026-11-26T10:58:00+01:00",
-    "starts_at": "2026-11-26T10:58:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=64A|D=2026-11-26|TK=64a aktuelle wetterlage",
-    "_wl_ids": [
-      "I20261126-0042"
-    ],
-    "_incident_start": "2026-11-26T10:58:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1626,42 +1546,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Witterung Umleitung über Hauptbahnhof zum Quellenplatz",
-    "description": "Witterung\nUmleitung über Hauptbahnhof zum Quellenplatz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "ddfa904cfc2ce8c19b1dd67283667d1d174ce0e24cc6d51c25b850b50f782c9d",
-    "pubDate": "2026-11-26T14:04:26+01:00",
-    "starts_at": "2026-11-26T14:04:26+01:00",
-    "ends_at": "2026-11-26T17:03:00+01:00",
-    "_identity": "wl|störung|L=6|D=2026-11-26|TK=umleitung"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Witterung Betrieb ab Matzleinsdorfer Platz",
-    "description": "Witterung\nBetrieb ab Matzleinsdorfer Platz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "96becdc54d608aeb7f1fb4302df0cc44e70951208b76447d477886dfd54b751f",
-    "pubDate": "2026-11-26T11:53:38+01:00",
-    "starts_at": "2026-11-26T11:53:38+01:00",
-    "ends_at": "2026-11-26T17:02:00+01:00",
-    "_identity": "wl|störung|L=6|D=2026-11-26|TK=witterung betrieb ab matzleinsdorfer platz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "6: Witterung Betrieb ab Quellenplatz",
-    "description": "Witterung\nBetrieb ab Quellenplatz",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "9cad50be9b9de6f2da7cff1bd5c024eb77377424fd59d48e317836e718e0c541",
-    "pubDate": "2026-11-26T14:02:25+01:00",
-    "starts_at": "2026-11-26T14:02:25+01:00",
-    "ends_at": "2026-11-26T17:01:00+01:00",
-    "_identity": "wl|störung|L=6|D=2026-11-26|TK=witterung betrieb ab quellenplatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "71: Weichenstörung",
     "description": "Linie 71: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1714,18 +1598,6 @@
       "I20261126-0087"
     ],
     "_incident_start": "2026-11-26T16:10:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "7A: Fahrtbehinderung Schadhafter Pkw",
-    "description": "Fahrtbehinderung\nSchadhafter Pkw",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "bed8bc8882e714c7ec157e07f3abe38f77cabea3a947ec15d7b0e634c27a47fc",
-    "pubDate": "2026-11-26T16:11:04+01:00",
-    "starts_at": "2026-11-26T16:11:37+01:00",
-    "ends_at": "2026-11-26T17:10:00+01:00",
-    "_identity": "wl|störung|L=7A|D=2026-11-26|TK=fahrtbehinderung schadhafter pkw"
   },
   {
     "source": "Wiener Linien",
@@ -1822,38 +1694,6 @@
       "I20261126-0081"
     ],
     "_incident_start": "2026-11-26T15:25:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U1: Rettungseinsatz",
-    "description": "Linie U1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "06d928b6259b630b5aa902619b8ef0f371b59418c370690f3d2cb86245f9f945",
-    "pubDate": "2026-11-26T16:29:00+01:00",
-    "starts_at": "2026-11-26T16:29:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U1|D=2026-11-26|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261126-0090"
-    ],
-    "_incident_start": "2026-11-26T16:29:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "U3: Schadhaftes Fahrzeug",
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "8e76790224576dfdae9b3e9aecc059199c8985a83a797cc102d6a192509bdbc3",
-    "pubDate": "2026-11-26T16:37:00+01:00",
-    "starts_at": "2026-11-26T16:37:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=U3|D=2026-11-26|TK=u3 schadhaftes fahrzeug",
-    "_wl_ids": [
-      "I20261126-0092"
-    ],
-    "_incident_start": "2026-11-26T16:37:00+01:00"
   },
   {
     "source": "Wiener Linien",
