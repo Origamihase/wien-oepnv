@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261020-0029, I20261127-0006-F01, I20261127-0008-F01, I20261127-0002-F01, I20261127-0009-F01, I20261127-0011, I20261127-0007-F01, I20261127-0010, I20261127-0005, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261020-0029, I20261127-0006-F01, I20261127-0008-F01, I20261127-0012, I20261127-0011, I20261127-0007-F01, I20261127-0002-F01, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1881-101, R1884-101, R1883-101, R1882-101, R1875-101, R1876-101, R1880-101, R2373-125, R2343-125, R2372-125, R2378-627, R2371-125, R2370-125, R2373-126, R2345-127, R2380-627, R2359-125, R2379-627, R2373-127, R2558-125, R2343-626, R3886-480, R401-101, R293-474, R318-437, R1974-466, R1199-205, R500-101, R2632-118, R2420-118, R2422-118, R3605-118, R3606-118, R3604-118, R3602-118, R3603-118, R2750-118, R3609-118, R3607-118, R3608-118, R1616-160, R1606-160, R1615-160, R1620-160, R1619-160, R1618-160, R1617-160, R1630-160, R1629-160, R1625-160, R1607-160, R1631-160, R1633-160, R1632-160, R1634-160, R1728-162, R1616-162, R1738-162, R1737-162, R1735-162, R1634-162, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1880-101, R1881-101, R1884-101, R1883-101, R1882-101, R1875-101, R1876-101, R2372-125, R2343-125, R2558-125, R2343-626, R2378-627, R2345-127, R2380-627, R2379-627, R2373-127, R2359-125, R2373-125, R2370-125, R2371-125, R2373-126, R3886-480, R293-474, R318-437, R401-101, R1974-466, R1199-205, R500-101, R2420-118, R2422-118, R2632-118, R3605-118, R3606-118, R3602-118, R3603-118, R3604-118, R2750-118, R3609-118, R3608-118, R3607-118, R1606-160, R1615-160, R1620-160, R1619-160, R1618-160, R1617-160, R1616-160, R1607-160, R1633-160, R1632-160, R1631-160, R1630-160, R1629-160, R1625-160, R1634-160, R1728-162, R1616-162, R1737-162, R1735-162, R1738-162, R1634-162, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -210,56 +210,11 @@
     "status": "active",
     "time": {
      "created": "2026-11-27T07:01:00.000+0100",
-     "lastUpdate": "2026-11-27T07:01:00.000+0100",
-     "resume": "2026-11-27T07:01:00.000+0100",
+     "end": "2026-11-27T09:01:00.000+0100",
+     "lastUpdate": "2026-11-27T08:17:00.000+0100",
      "start": "2026-11-27T05:41:00.000+0100"
     },
     "title": "18: Weichenschaden"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U4": "ptMetro"
-     }
-    },
-    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "U4: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261127-0005",
-    "owner": "WL",
-    "parentName": "I20261127-0005",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 304,
-      "lineName": "U4",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-27T06:14:00.000+0100",
-     "lastUpdate": "2026-11-27T06:14:00.000+0100",
-     "resume": "2026-11-27T06:14:00.000+0100",
-     "start": "2026-11-27T06:14:00.000+0100"
-    },
-    "title": "U4: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
@@ -404,97 +359,6 @@
     "title": "U2: Schadhaftes Fahrzeug"
    },
    {
-    "alertCause": "miscellaneous",
-    "alertCauseId": 137,
-    "attributes": {
-     "relatedLineTypes": {
-      "U6": "ptMetro"
-     }
-    },
-    "description": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U6: Betriebsstörung"
-      }
-     }
-    ],
-    "location": "Gumpendorfer Straße",
-    "name": "I20261127-0009-F01",
-    "owner": "WL",
-    "parentName": "I20261127-0009",
-    "priority": "1",
-    "reasonId": 14,
-    "reasonName": "Betriebsstörung",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 306,
-      "lineName": "U6",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-27T07:35:00.000+0100",
-     "lastUpdate": "2026-11-27T07:35:00.000+0100",
-     "resume": "2026-11-27T07:35:00.000+0100",
-     "start": "2026-11-27T07:34:00.000+0100"
-    },
-    "title": "U6: Betriebsstörung"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "25": "ptTram"
-     }
-    },
-    "description": "Linie 25: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p><strong>Linie 25:</strong><br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p><strong>Linie 25:</strong><br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 25: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "25: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261127-0010",
-    "owner": "WL",
-    "parentName": "I20261127-0010",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "25"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 125,
-      "lineName": "25",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-27T07:44:00.000+0100",
-     "lastUpdate": "2026-11-27T07:44:00.000+0100",
-     "resume": "2026-11-27T07:44:00.000+0100",
-     "start": "2026-11-27T07:44:00.000+0100"
-    },
-    "title": "25: Verspätungen"
-   },
-   {
     "alertCause": "roadway damage",
     "alertCauseId": 67,
     "attributes": {
@@ -547,6 +411,51 @@
     "title": "60, 62: Gleisschaden"
    },
    {
+    "alertCause": "heavy traffic",
+    "alertCauseId": 60,
+    "attributes": {
+     "relatedLineTypes": {
+      "60A": "ptBusCity"
+     }
+    },
+    "description": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "descriptionHTML": "<p>Linie 60A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 60A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsüberlastung.</p>",
+       "descriptionPlain": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+       "title": "60A: Verkehrsüberlastung"
+      }
+     }
+    ],
+    "name": "I20261127-0012",
+    "owner": "WL",
+    "parentName": "I20261127-0012",
+    "priority": "1",
+    "reasonId": 46,
+    "reasonName": "Verkehrsüberlastung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "60A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 460,
+      "lineName": "60A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-27T08:20:00.000+0100",
+     "lastUpdate": "2026-11-27T08:20:00.000+0100",
+     "resume": "2026-11-27T08:19:00.000+0100",
+     "start": "2026-11-27T08:19:00.000+0100"
+    },
+    "title": "60A: Verkehrsüberlastung"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -587,7 +496,7 @@
      1606
     ],
     "time": {
-     "end": "2026-11-27T12:00:00.000+0100",
+     "end": "2026-11-27T23:45:00.000+0100",
      "start": "2026-11-27T07:47:31.000+0100"
     },
     "title": "Fahrtbehinderung\nGleisschaden"
@@ -610,7 +519,7 @@
      1607
     ],
     "time": {
-     "end": "2026-11-27T12:00:00.000+0100",
+     "end": "2026-11-27T23:45:00.000+0100",
      "start": "2026-11-27T07:48:01.000+0100"
     },
     "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
@@ -633,7 +542,7 @@
      1615
     ],
     "time": {
-     "end": "2026-11-27T12:00:00.000+0100",
+     "end": "2026-11-27T23:45:00.000+0100",
      "start": "2026-11-27T07:47:31.000+0100"
     },
     "title": "Fahrtbehinderung\nGleisschaden"
@@ -656,7 +565,7 @@
      1616
     ],
     "time": {
-     "end": "2026-11-27T12:00:00.000+0100",
+     "end": "2026-11-27T23:45:00.000+0100",
      "start": "2026-11-27T07:47:31.000+0100"
     },
     "title": "Fahrtbehinderung\nGleisschaden"
@@ -679,7 +588,7 @@
      1616
     ],
     "time": {
-     "end": "2026-11-27T12:00:00.000+0100",
+     "end": "2026-11-27T23:45:00.000+0100",
      "start": "2026-11-27T07:51:01.000+0100"
     },
     "title": "Fahrtbehinderung\nGleisschaden"
@@ -702,7 +611,7 @@
      1617
     ],
     "time": {
-     "end": "2026-11-27T12:00:00.000+0100",
+     "end": "2026-11-27T23:45:00.000+0100",
      "start": "2026-11-27T07:47:31.000+0100"
     },
     "title": "Fahrtbehinderung\nGleisschaden"
@@ -725,7 +634,7 @@
      1618
     ],
     "time": {
-     "end": "2026-11-27T12:00:00.000+0100",
+     "end": "2026-11-27T23:45:00.000+0100",
      "start": "2026-11-27T07:47:31.000+0100"
     },
     "title": "Fahrtbehinderung\nGleisschaden"
@@ -748,7 +657,7 @@
      1619
     ],
     "time": {
-     "end": "2026-11-27T12:00:00.000+0100",
+     "end": "2026-11-27T23:45:00.000+0100",
      "start": "2026-11-27T07:47:31.000+0100"
     },
     "title": "Fahrtbehinderung\nGleisschaden"
@@ -771,7 +680,7 @@
      1620
     ],
     "time": {
-     "end": "2026-11-27T12:00:00.000+0100",
+     "end": "2026-11-27T23:45:00.000+0100",
      "start": "2026-11-27T07:47:31.000+0100"
     },
     "title": "Fahrtbehinderung\nGleisschaden"
@@ -794,7 +703,7 @@
      1625
     ],
     "time": {
-     "end": "2026-11-27T12:00:00.000+0100",
+     "end": "2026-11-27T23:45:00.000+0100",
      "start": "2026-11-27T07:48:01.000+0100"
     },
     "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
@@ -817,7 +726,7 @@
      1629
     ],
     "time": {
-     "end": "2026-11-27T12:00:00.000+0100",
+     "end": "2026-11-27T23:45:00.000+0100",
      "start": "2026-11-27T07:48:01.000+0100"
     },
     "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
@@ -840,7 +749,7 @@
      1630
     ],
     "time": {
-     "end": "2026-11-27T12:00:00.000+0100",
+     "end": "2026-11-27T23:45:00.000+0100",
      "start": "2026-11-27T07:48:01.000+0100"
     },
     "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
@@ -863,7 +772,7 @@
      1631
     ],
     "time": {
-     "end": "2026-11-27T12:00:00.000+0100",
+     "end": "2026-11-27T23:45:00.000+0100",
      "start": "2026-11-27T07:48:01.000+0100"
     },
     "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
@@ -886,7 +795,7 @@
      1632
     ],
     "time": {
-     "end": "2026-11-27T12:00:00.000+0100",
+     "end": "2026-11-27T23:45:00.000+0100",
      "start": "2026-11-27T07:48:01.000+0100"
     },
     "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
@@ -909,7 +818,7 @@
      1633
     ],
     "time": {
-     "end": "2026-11-27T12:00:00.000+0100",
+     "end": "2026-11-27T23:45:00.000+0100",
      "start": "2026-11-27T07:48:01.000+0100"
     },
     "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
@@ -932,7 +841,7 @@
      1634
     ],
     "time": {
-     "end": "2026-11-27T12:00:00.000+0100",
+     "end": "2026-11-27T23:45:00.000+0100",
      "start": "2026-11-27T07:50:01.000+0100"
     },
     "title": "Gleisschaden\nZüge halten bei Li. 62 Ri. Lainz, Wolkersbergenstraße"
@@ -955,7 +864,7 @@
      1634
     ],
     "time": {
-     "end": "2026-11-27T12:00:00.000+0100",
+     "end": "2026-11-27T23:45:00.000+0100",
      "start": "2026-11-27T07:51:32.000+0100"
     },
     "title": "Gleisschaden\nBetrieb ab Wattmanngasse"
@@ -978,7 +887,7 @@
      1728
     ],
     "time": {
-     "end": "2026-11-27T12:00:00.000+0100",
+     "end": "2026-11-27T23:45:00.000+0100",
      "start": "2026-11-27T07:51:00.000+0100"
     },
     "title": "Fahrtbehinderung\nGleisschaden"
@@ -1001,7 +910,7 @@
      1735
     ],
     "time": {
-     "end": "2026-11-27T12:00:00.000+0100",
+     "end": "2026-11-27T23:45:00.000+0100",
      "start": "2026-11-27T07:51:30.000+0100"
     },
     "title": "Gleisschaden\nBetrieb ab Wattmanngasse"
@@ -1024,7 +933,7 @@
      1737
     ],
     "time": {
-     "end": "2026-11-27T12:00:00.000+0100",
+     "end": "2026-11-27T23:45:00.000+0100",
      "start": "2026-11-27T07:51:30.000+0100"
     },
     "title": "Gleisschaden\nBetrieb ab Wattmanngasse"
@@ -1047,7 +956,7 @@
      1738
     ],
     "time": {
-     "end": "2026-11-27T12:00:00.000+0100",
+     "end": "2026-11-27T23:45:00.000+0100",
      "start": "2026-11-27T07:51:30.000+0100"
     },
     "title": "Gleisschaden\nBetrieb ab Wattmanngasse"

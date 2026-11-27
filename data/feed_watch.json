@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-27T07:01:07.932121+00:00",
- "built": "2026-11-27T08:00:54+01:00",
+ "updated": "2026-11-27T07:30:57.974533+00:00",
+ "built": "2026-11-27T08:30:44+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-27T08:00:54+01:00",
+  "built": "2026-11-27T08:30:44+01:00",
   "items": [
+   {
+    "title": "60A: Verkehrsüberlastung",
+    "time_line": "Seit 08:19"
+   },
    {
     "title": "60/62: Gleisschaden",
     "time_line": "Seit 07:46"
@@ -17,24 +21,12 @@
     "time_line": "Seit 06:30"
    },
    {
-    "title": "25: Verspätungen",
-    "time_line": "Seit 07:44"
-   },
-   {
-    "title": "U6: Betriebsstörung",
-    "time_line": "Seit 07:34"
-   },
-   {
     "title": "84A: Fremder Verkehrsunfall",
     "time_line": "Seit 07:00"
    },
    {
     "title": "U2: Schadhaftes Fahrzeug",
     "time_line": "Seit 07:27"
-   },
-   {
-    "title": "U4: Schadhaftes Fahrzeug",
-    "time_line": "Seit 06:12"
    },
    {
     "title": "18: Weichenschaden",
@@ -47,31 +39,19 @@
    {
     "title": "1/2/71/D/1A/2A/3A: Demonstration",
     "time_line": "Ab Sa 28.11. bis So 29.11."
+   },
+   {
+    "title": "1A/2A/3A/13A: Weihnachtseinkaufstage 2026",
+    "time_line": "Ab Sa 28.11. bis 19.12."
+   },
+   {
+    "title": "60A: Veranstaltung am 27. und 28.11.2026",
+    "time_line": "Bis Sa 28.11."
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-20T07:30:45.851601+00:00",
-   "raw": {
-    "wl-stoerungen": 37,
-    "wl-hinweise": 67,
-    "oebb": 167,
-    "baustellen-linien": 51,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 11,
-    "oebb": 142,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 10,
-    "wl": 80
-   }
-  },
   {
    "t": "2026-11-20T08:00:52.146791+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 13,
     "wl": 91
    }
+  },
+  {
+   "t": "2026-11-27T07:30:57.974533+00:00",
+   "raw": {
+    "wl-stoerungen": 75,
+    "wl-hinweise": 72,
+    "oebb": 180,
+    "baustellen-linien": 47,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 11,
+    "oebb": 153,
+    "baustellen": 57
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 13,
+    "wl": 89
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-27T07:01:07.932121+00:00"
+   "last_ok": "2026-11-27T07:30:57.974533+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-27T07:01:07.932121+00:00"
+   "last_ok": "2026-11-27T07:30:57.974533+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-27T07:01:07.932121+00:00"
+   "last_ok": "2026-11-27T07:30:57.974533+00:00"
   }
  }
 }
