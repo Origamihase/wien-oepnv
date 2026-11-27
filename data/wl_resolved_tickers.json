@@ -3,17 +3,89 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R1387-144|2026-11-27T06:32:23.000+0100": {
-   "incident": "I20261127-0006",
-   "title": "Oberleitungsgebr\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+  "R1606-160|2026-11-27T07:47:31.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Fahrtbehinderung\nGleisschaden"
   },
-  "R241-144|2026-11-27T06:32:21.000+0100": {
-   "incident": "I20261127-0006",
-   "title": "Oberleitungsgebr\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+  "R1607-160|2026-11-27T07:48:01.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
   },
-  "R242-144|2026-11-27T06:32:21.000+0100": {
-   "incident": "I20261127-0006",
-   "title": "Oberleitungsgebr\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+  "R1615-160|2026-11-27T07:47:31.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Fahrtbehinderung\nGleisschaden"
+  },
+  "R1616-160|2026-11-27T07:47:31.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Fahrtbehinderung\nGleisschaden"
+  },
+  "R1616-162|2026-11-27T07:51:01.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Fahrtbehinderung\nGleisschaden"
+  },
+  "R1617-160|2026-11-27T07:47:31.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Fahrtbehinderung\nGleisschaden"
+  },
+  "R1618-160|2026-11-27T07:47:31.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Fahrtbehinderung\nGleisschaden"
+  },
+  "R1619-160|2026-11-27T07:47:31.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Fahrtbehinderung\nGleisschaden"
+  },
+  "R1620-160|2026-11-27T07:47:31.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Fahrtbehinderung\nGleisschaden"
+  },
+  "R1625-160|2026-11-27T07:48:01.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
+  },
+  "R1629-160|2026-11-27T07:48:01.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
+  },
+  "R1630-160|2026-11-27T07:48:01.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
+  },
+  "R1631-160|2026-11-27T07:48:01.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
+  },
+  "R1632-160|2026-11-27T07:48:01.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
+  },
+  "R1633-160|2026-11-27T07:48:01.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
+  },
+  "R1634-160|2026-11-27T07:50:01.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Gleisschaden\nZüge halten bei Li. 62 Ri. Lainz, Wolkersbergenstraße"
+  },
+  "R1634-162|2026-11-27T07:51:32.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Gleisschaden\nBetrieb ab Wattmanngasse"
+  },
+  "R1728-162|2026-11-27T07:51:00.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Fahrtbehinderung\nGleisschaden"
+  },
+  "R1735-162|2026-11-27T07:51:30.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Gleisschaden\nBetrieb ab Wattmanngasse"
+  },
+  "R1737-162|2026-11-27T07:51:30.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Gleisschaden\nBetrieb ab Wattmanngasse"
+  },
+  "R1738-162|2026-11-27T07:51:30.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Gleisschaden\nBetrieb ab Wattmanngasse"
   },
   "R2420-118|2026-11-27T05:31:48.000+0100": {
    "incident": "I20261127-0002",
@@ -23,14 +95,6 @@
    "incident": "I20261127-0002",
    "title": "Weichenschaden\nBetrieb ab Schlachthausgasse U "
   },
-  "R245-144|2026-11-27T06:32:21.000+0100": {
-   "incident": "I20261127-0006",
-   "title": "Oberleitungsgebr\nBetrieb ab Johann-Nepomuk-Berger-Platz"
-  },
-  "R246-144|2026-11-27T06:33:22.000+0100": {
-   "incident": "I20261127-0006",
-   "title": "Oberleitungsgebr\nZüge halten bei Li. 9 Ri. Westbhf. U S "
-  },
   "R2632-118|2026-11-27T05:31:48.000+0100": {
    "incident": "I20261127-0002",
    "title": "Fahrtbehinderung\nWeichenschaden"
@@ -38,14 +102,6 @@
   "R2750-118|2026-11-27T05:38:19.000+0100": {
    "incident": "I20261127-0002",
    "title": "Weichenschaden\nBetrieb ab Schlachthausgasse U "
-  },
-  "R276-144|2026-11-27T06:31:52.000+0100": {
-   "incident": "I20261127-0006",
-   "title": "Fahrtbehinderung\nGegenstände auf der Oberleitung"
-  },
-  "R277-144|2026-11-27T06:31:52.000+0100": {
-   "incident": "I20261127-0006",
-   "title": "Fahrtbehinderung\nGegenstände auf der Oberleitung"
   },
   "R3602-118|2026-11-27T05:31:49.000+0100": {
    "incident": "I20261127-0002",
