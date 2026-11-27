@@ -678,22 +678,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "10A: Polizeieinsatz",
-    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "4ac1d3869bc5b0bb0ac92b1b9d5c90e1d243d203e81f94cd301990e178423b85",
-    "pubDate": "2026-11-27T19:07:00+01:00",
-    "starts_at": "2026-11-27T19:07:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=10A|D=2026-11-27|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261127-0059"
-    ],
-    "_incident_start": "2026-11-27T19:07:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "11A: Rettungseinsatz Betrieb ab Sturgasse",
     "description": "Rettungseinsatz\nBetrieb ab Sturgasse",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -702,22 +686,6 @@
     "starts_at": "2026-11-27T18:16:33+01:00",
     "ends_at": "2026-11-27T22:22:00+01:00",
     "_identity": "wl|störung|L=11A|D=2026-11-27|TK=rettungseinsatz"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "13A: Verkehrsüberlastung",
-    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "0b00fe24c2dd37aaf07ae252d80374592513223744f2d6ecc3fa197c58c6de52",
-    "pubDate": "2026-11-27T18:54:00+01:00",
-    "starts_at": "2026-11-27T18:54:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=13A|D=2026-11-27|TK=13a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261127-0058"
-    ],
-    "_incident_start": "2026-11-27T18:54:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -862,6 +830,46 @@
     "starts_at": "2026-11-24T00:00:22+01:00",
     "ends_at": "2026-11-27T23:59:59+01:00",
     "_identity": "wl|störung|L=25|D=2026-11-24|TK=züge halten donaufelder strasse 175 177"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Schadhaftes Fahrzeug",
+    "description": "Linie 25: Kein Betrieb zwischen Kagran U und Donauspital U. Ersatz: Linien U1, U2, 26A und 95A. Voraussichtliche Dauer: 20:30 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Konstanziagasse # Hans-Steger-Gasse.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "76ec352854b559b2d1c07ec729df49b28debe6671b359e8312bc178e8f701468",
+    "pubDate": "2026-11-27T19:51:00+01:00",
+    "starts_at": "2026-11-27T19:51:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=25|D=2026-11-27|TK=25 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261127-0061"
+    ],
+    "_incident_start": "2026-11-27T19:51:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "abc260bf756a8d0275a4ce51c5b124812c4c380b787e4c627f39df2747b1c157",
+    "pubDate": "2026-11-27T19:52:10+01:00",
+    "starts_at": "2026-11-27T19:52:12+01:00",
+    "ends_at": "2026-11-27T20:51:00+01:00",
+    "_identity": "wl|störung|L=25|D=2026-11-27|TK=fahrtbehinderung schadhafter zug"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "25: Schadhafter Zug Betrieb ab Kagran",
+    "description": "Schadhafter Zug\nBetrieb ab Kagran",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "034925fef1aa3638e7a6aa672cab9e7459748a47ef84c27b3354b1a6cd706c87",
+    "pubDate": "2026-11-27T19:52:10+01:00",
+    "starts_at": "2026-11-27T20:00:11+01:00",
+    "ends_at": "2026-11-27T20:59:00+01:00",
+    "_identity": "wl|störung|L=25|D=2026-11-27|TK=schadhafter zug betrieb ab kagran"
   },
   {
     "source": "Wiener Linien",

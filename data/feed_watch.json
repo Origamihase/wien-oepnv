@@ -1,20 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-27T18:30:49.625969+00:00",
- "built": "2026-11-27T19:30:31+01:00",
+ "updated": "2026-11-27T19:00:56.110513+00:00",
+ "built": "2026-11-27T20:00:39+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-27T19:30:31+01:00",
+  "built": "2026-11-27T20:00:39+01:00",
   "items": [
+   {
+    "title": "25: Schadhaftes Fahrzeug",
+    "time_line": "Seit 19:51"
+   },
    {
     "title": "69A: Verspätungen",
     "time_line": "Seit 19:11"
-   },
-   {
-    "title": "10A: Polizeieinsatz",
-    "time_line": "Seit 19:07"
    },
    {
     "title": "40/41/42: Gleisschaden",
@@ -23,10 +23,6 @@
    {
     "title": "38: Gleisschaden",
     "time_line": "Seit 17:46"
-   },
-   {
-    "title": "13A: Verkehrsüberlastung",
-    "time_line": "Seit 18:54"
    },
    {
     "title": "U2: Betriebsstörung",
@@ -47,51 +43,15 @@
    {
     "title": "U4: Linie U4 Kein Betrieb zw.Heiligenstadt und Schottenring",
     "time_line": "Seit 14:44"
+   },
+   {
+    "title": "60/62: Gleisschaden",
+    "time_line": "Seit 07:46"
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-20T18:31:07.514144+00:00",
-   "raw": {
-    "wl-stoerungen": 47,
-    "wl-hinweise": 68,
-    "oebb": 166,
-    "baustellen-linien": 51,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 11,
-    "oebb": 141,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 11,
-    "wl": 89
-   }
-  },
-  {
-   "t": "2026-11-20T19:00:48.617488+00:00",
-   "raw": {
-    "wl-stoerungen": 58,
-    "wl-hinweise": 68,
-    "oebb": 166,
-    "baustellen-linien": 51,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 14,
-    "oebb": 141,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 11,
-    "wl": 86
-   }
-  },
   {
    "t": "2026-11-20T19:30:57.784391+00:00",
    "raw": {
@@ -6791,17 +6751,37 @@
     "oebb": 13,
     "wl": 109
    }
+  },
+  {
+   "t": "2026-11-27T19:00:56.110513+00:00",
+   "raw": {
+    "wl-stoerungen": 193,
+    "wl-hinweise": 73,
+    "oebb": 175,
+    "baustellen-linien": 47,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 12,
+    "oebb": 149,
+    "baustellen": 57
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 13,
+    "wl": 110
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-27T18:30:49.625969+00:00"
+   "last_ok": "2026-11-27T19:00:56.110513+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-27T18:30:49.625969+00:00"
+   "last_ok": "2026-11-27T19:00:56.110513+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-27T18:30:49.625969+00:00"
+   "last_ok": "2026-11-27T19:00:56.110513+00:00"
   }
  }
 }
