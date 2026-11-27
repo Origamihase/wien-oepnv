@@ -13,7 +13,7 @@
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1884-101, R1883-101, R1882-101, R1881-101, R1875-101, R1876-101, R1880-101, R2359-125, R2558-125, R2343-626, R2378-627, R2371-125, R2373-126, R2345-127, R2380-627, R2379-627, R2373-127, R2373-125, R2372-125, R2370-125, R2343-125, R3886-480, R401-101, R293-474, R318-437, R1974-466, R1199-205, R500-101, R1617-160, R1618-160, R1619-160, R1620-160, R1606-160, R1615-160, R1616-160, R1607-160, R1625-160, R1632-160, R1631-160, R1630-160, R1629-160, R1633-160, R1634-160, R1728-162, R1616-162, R1738-162, R1737-162, R1735-162, R1634-162, R352-0, R1462-0, R572-0, R1000-0, R98-0, R95-0, R51-0, R44-0, R42-0, R22-0, R20-0, R134-0, R13-0, R124-0, R121-0, R2160-0, R852-0, R826-0, R576-0, R574-0, R573-0, R429-0, R1710-0, R1678-0, R385-0, R397-0, R1596-0, R3135-0, R1610-0, R5607-0, R751-0, R725-0, R699-0, R679-0, R669-0, R176-0, R161-0, R1850-0, R1246-0, R1207-0, R2923-0, R2940-0, R3207-0, R17-0, R47-0, R15-102, R49-102, R13-171, R14-171, R15-171, R18-171, R19-171, R81-171, R15-136, R13-136, R18-136, R14-136, R19-136, R50-136, R51-136, R49-136, R46-136, R45-136, R50-101, R46-101, R51-101, R49-101, R45-101, R18-101, R14-101, R13-101, R15-101, R20-101, R19-101, R22-101, R44-171, R45-171, R46-171, R211-137, R210-137, R209-137, R150-137, R150-138, R1212-138, R1213-138, R188-138, R1212-137, R188-137, R214-137, R1213-137, R213-137, R215-137, R49-171, R51-171, R50-171, R188-140, R1213-140, R1212-140, R189-140, R147-140, R148-140, R150-140, R1213-141, R188-141, R1212-141, R189-141, R148-141, R150-141, R147-141, R1212-142, R1213-142, R188-142, R1336-142, R150-142, R148-142, R493-142, R2420-411, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R2370-125, R2359-125, R2373-126, R2372-125, R2373-125, R2373-127, R2379-627, R2343-125, R2371-125, R2380-627, R2345-127, R2558-125, R2343-626, R2378-627, R3886-480, R318-437, R293-474, R401-101, R1974-466, R1199-205, R500-101, R1619-160, R1606-160, R1620-160, R1615-160, R1616-160, R1617-160, R1618-160, R1632-160, R1633-160, R1607-160, R1625-160, R1629-160, R1630-160, R1631-160, R1634-160, R1728-162, R1616-162, R1735-162, R1738-162, R1737-162, R1634-162, R352-0, R1462-0, R1000-0, R98-0, R95-0, R51-0, R44-0, R42-0, R22-0, R20-0, R134-0, R13-0, R124-0, R121-0, R2160-0, R852-0, R826-0, R576-0, R574-0, R573-0, R572-0, R1678-0, R385-0, R397-0, R429-0, R1710-0, R1610-0, R669-0, R5607-0, R176-0, R161-0, R1850-0, R1246-0, R1207-0, R3135-0, R1596-0, R751-0, R725-0, R699-0, R679-0, R2923-0, R2940-0, R3207-0, R19-171, R15-171, R13-171, R18-171, R81-171, R14-171, R13-136, R18-136, R15-136, R14-136, R19-136, R46-136, R51-136, R50-136, R49-136, R45-136, R49-101, R51-101, R46-101, R50-101, R45-101, R13-101, R14-101, R15-101, R18-101, R22-101, R20-101, R19-101, R45-171, R44-171, R46-171, R150-137, R211-137, R210-137, R209-137, R150-138, R1212-138, R1213-138, R188-138, R188-137, R214-137, R1213-137, R1212-137, R213-137, R215-137, R1213-140, R188-140, R1212-140, R189-140, R150-140, R148-140, R147-140, R188-141, R1212-141, R1213-141, R189-141, R150-141, R148-141, R147-141, R1213-142, R1212-142, R188-142, R1336-142, R493-142, R150-142, R148-142, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -1028,29 +1028,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Demonstration\nEinstieg bei Linie 46 in der Schleife",
-    "name": "R15-102",
-    "owner": "WL",
-    "parentName": "R15-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     15
-    ],
-    "time": {
-     "end": "2026-11-27T22:26:00.000+0100",
-     "start": "2026-11-27T17:28:27.000+0100"
-    },
-    "title": "Demonstration\nEinstieg bei Linie 46 in der Schleife"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Demonstration\nBetrieb ab Börse",
     "name": "R15-136",
     "owner": "WL",
@@ -1679,26 +1656,6 @@
      "start": "2026-11-27T14:58:43.000+0100"
     },
     "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Haltestelle\naufgelassen!\n\nStop closed!",
-    "name": "R17-0",
-    "owner": "WL",
-    "parentName": "R17-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     17
-    ],
-    "time": {
-     "end": "2026-11-27T22:30:00.000+0100",
-     "start": "2026-11-27T15:00:13.000+0100"
-    },
-    "title": "Haltestelle\naufgelassen!\n\nStop closed!"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2881,29 +2838,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Rettungseinsatz\nBetrieb ab Sturgasse",
-    "name": "R2420-411",
-    "owner": "WL",
-    "parentName": "R2420-411",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11A"
-    ],
-    "relatedStops": [
-     2420
-    ],
-    "time": {
-     "end": "2026-11-27T22:22:00.000+0100",
-     "start": "2026-11-27T18:16:33.000+0100"
-    },
-    "title": "Rettungseinsatz\nBetrieb ab Sturgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
     "name": "R2558-125",
     "owner": "WL",
@@ -3380,26 +3314,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Haltestelle\naufgelassen!\n\nStop closed!",
-    "name": "R47-0",
-    "owner": "WL",
-    "parentName": "R47-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     47
-    ],
-    "time": {
-     "end": "2026-11-27T22:30:00.000+0100",
-     "start": "2026-11-27T15:00:13.000+0100"
-    },
-    "title": "Haltestelle\naufgelassen!\n\nStop closed!"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Demonstration\nBetrieb ab Resselgasse",
     "name": "R49-101",
     "owner": "WL",
@@ -3423,29 +3337,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Demonstration\nEinstieg nach Bellariastraße in der Bedarfshaltestelle",
-    "name": "R49-102",
-    "owner": "WL",
-    "parentName": "R49-102",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedStops": [
-     49
-    ],
-    "time": {
-     "end": "2026-11-27T22:28:00.000+0100",
-     "start": "2026-11-27T17:28:57.000+0100"
-    },
-    "title": "Demonstration\nEinstieg nach Bellariastraße in der Bedarfshaltestelle"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
     "name": "R49-136",
     "owner": "WL",
@@ -3463,29 +3354,6 @@
     "time": {
      "end": "2026-11-27T22:40:00.000+0100",
      "start": "2026-11-27T17:41:28.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
-    "name": "R49-171",
-    "owner": "WL",
-    "parentName": "R49-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     49
-    ],
-    "time": {
-     "end": "2026-11-27T22:06:00.000+0100",
-     "start": "2026-11-27T18:07:00.000+0100"
     },
     "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
    },
@@ -3555,29 +3423,6 @@
     "time": {
      "end": "2026-11-27T22:40:00.000+0100",
      "start": "2026-11-27T17:41:28.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
-    "name": "R50-171",
-    "owner": "WL",
-    "parentName": "R50-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     50
-    ],
-    "time": {
-     "end": "2026-11-27T22:06:00.000+0100",
-     "start": "2026-11-27T18:07:00.000+0100"
     },
     "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
    },
@@ -3667,29 +3512,6 @@
     "time": {
      "end": "2026-11-27T22:40:00.000+0100",
      "start": "2026-11-27T17:41:28.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
-    "name": "R51-171",
-    "owner": "WL",
-    "parentName": "R51-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     51
-    ],
-    "time": {
-     "end": "2026-11-27T22:06:00.000+0100",
-     "start": "2026-11-27T18:07:00.000+0100"
     },
     "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
    },
