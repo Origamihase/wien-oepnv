@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_196, ftazW_1017717, ftazW_1016543, ftazW_735, ftazW_167, ftazW_1016924"
+    "trafficInfoNameList": "ftazW_196, ftazW_1017717, ftazW_1016543, ftazW_735, ftazW_167, ftazW_1016924, ftazW_212, ftazW_1016948, ftazW_593"
    }
   ],
   "poiCategoryGroups": [
@@ -3308,6 +3308,45 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "30.11.2026 00:45",
+     "ausVon": "29.11.2026 20:45",
+     "location": "U1 Bahnsteig Richtung Leopoldau - Zwischengeschoss Zugang U2 - Ausgang Lassallestraße",
+     "rbls": [
+      4117
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2",
+      "U1"
+     ],
+     "station": "Praterstern",
+     "status": "geplante Wartung",
+     "towards": "U1 Leopoldau"
+    },
+    "description": "U1 Bahnsteig Richtung Leopoldau - Zwischengeschoss Zugang U2 - Ausgang Lassallestraße",
+    "elevatorId": "PR 01",
+    "name": "ftazW_1016948",
+    "parentName": "ftazW_1016948",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2",
+     "U1"
+    ],
+    "relatedStops": [
+     4117
+    ],
+    "time": {
+     "end": "2026-11-30T00:45:00.000+0100",
+     "start": "2026-11-29T20:45:00.000+0100"
+    },
+    "title": "Praterstern"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "27.11.2026 05:15",
      "ausVon": "27.11.2026 01:15",
      "location": "Passage - Ausgang Künstlerhaus",
@@ -3417,6 +3456,75 @@
      "start": "2026-11-27T01:15:00.000+0100"
     },
     "title": "Meidling Hauptstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "30.11.2026 00:45",
+     "ausVon": "29.11.2026 20:45",
+     "location": "U6 Mittelbahnsteig - Zwischengeschoss Zugang ÖBB Bahnsteig",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Bahnhof Meidling",
+     "status": "geplante Wartung",
+     "towards": "U6 beide Richtungen"
+    },
+    "description": "U6 Mittelbahnsteig - Zwischengeschoss Zugang ÖBB Bahnsteig",
+    "elevatorId": "PH 02",
+    "name": "ftazW_212",
+    "parentName": "ftazW_212",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "time": {
+     "end": "2026-11-30T00:45:00.000+0100",
+     "start": "2026-11-29T20:45:00.000+0100"
+    },
+    "title": "Bahnhof Meidling"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "30.11.2026 00:45",
+     "ausVon": "29.11.2026 20:45",
+     "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Kennedybrücke",
+     "rbls": [
+      4409
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Hietzing",
+     "status": "geplante Wartung",
+     "towards": "U4 Heiligenstadt"
+    },
+    "description": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Kennedybrücke",
+    "elevatorId": "HI 01",
+    "name": "ftazW_593",
+    "parentName": "ftazW_593",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4409
+    ],
+    "time": {
+     "end": "2026-11-30T00:45:00.000+0100",
+     "start": "2026-11-29T20:45:00.000+0100"
+    },
+    "title": "Hietzing"
    },
    {
     "alertCause": "undefined alert cause",

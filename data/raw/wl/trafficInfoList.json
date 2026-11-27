@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261126-0114-F01, I20261126-0117-F02, I20261126-0117-F03, I20261126-0117-F04, I20261020-0029, I20261126-0118-F01, I20261126-0115, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1875-101, R1882-101, R1884-101, R1881-101, R1883-101, R1880-101, R1876-101, R2379-627, R2380-627, R2345-127, R2373-126, R2371-125, R2558-125, R2359-125, R2343-125, R2370-125, R2372-125, R2373-125, R2373-127, R2378-627, R2343-626, R3886-480, R401-101, R318-437, R293-474, R1974-466, R2034-571, R2024-571, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1881-101, R1880-101, R1884-101, R1883-101, R1882-101, R1876-101, R1875-101, R2379-627, R2380-627, R2345-127, R2373-126, R2558-125, R2359-125, R2343-125, R2370-125, R2372-125, R2373-125, R2373-127, R2371-125, R2378-627, R2343-626, R3886-480, R293-474, R401-101, R318-437, R2034-571, R2024-571, R500-101, R1718-508, R1749-508, R407-506, R402-506, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,279 +171,50 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "2": "ptTram"
-     }
-    },
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "2: Polizeieinsatz"
-      }
-     }
-    ],
-    "location": "Kärntner Ring / Dumbastraße",
-    "name": "I20261126-0114-F01",
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A",
+    "name": "R1718-508",
     "owner": "WL",
-    "parentName": "I20261126-0114",
+    "parentName": "R1718-508",
     "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "2"
+     "N8"
     ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 102,
-      "lineName": "2",
-      "vehicleType": "ptTram"
-     }
+    "relatedStops": [
+     1718
     ],
-    "status": "active",
     "time": {
-     "created": "2026-11-26T22:22:00.000+0100",
-     "lastUpdate": "2026-11-26T22:22:00.000+0100",
-     "resume": "2026-11-26T22:22:00.000+0100",
-     "start": "2026-11-26T22:11:00.000+0100"
+     "end": "2026-11-27T04:45:00.000+0100",
+     "start": "2026-11-27T00:45:25.000+0100"
     },
-    "title": "2: Polizeieinsatz"
+    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "26": "ptTram"
-     }
-    },
-    "description": "Linie 26: Fahrtbehinderung in Richtung Kagran U. Voraussichtliche Dauer: 22:45 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Zanggasse.",
-    "descriptionHTML": "<p>Linie 26:<br>Fahrtbehinderung in Richtung Kagran U.</p><p>Voraussichtliche Dauer: 22:45 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Bereich Zanggasse.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 26:<br>Fahrtbehinderung in Richtung Kagran U.</p><p>Voraussichtliche Dauer: 22:45 Uhr.</p><p>Grund: Schadhaftes Fahrzeug im Bereich Zanggasse.</p>",
-       "descriptionPlain": "Linie 26: Fahrtbehinderung in Richtung Kagran U. Voraussichtliche Dauer: 22:45 Uhr. Grund: Schadhaftes Fahrzeug im Bereich Zanggasse.",
-       "title": "26: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "location": "Zanggasse",
-    "name": "I20261126-0115",
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
+    "name": "R1749-508",
     "owner": "WL",
-    "parentName": "I20261126-0115",
+    "parentName": "R1749-508",
     "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "26"
+     "N8"
     ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 126,
-      "lineName": "26",
-      "vehicleType": "ptTram"
-     }
+    "relatedStops": [
+     1749
     ],
-    "status": "active",
     "time": {
-     "created": "2026-11-26T22:17:00.000+0100",
-     "lastUpdate": "2026-11-26T22:17:00.000+0100",
-     "start": "2026-11-26T22:17:00.000+0100"
+     "end": "2026-11-27T05:15:00.000+0100",
+     "start": "2026-11-27T00:45:25.000+0100"
     },
-    "title": "26: Schadhaftes Fahrzeug"
-   },
-   {
-    "alertCause": "roadway damage",
-    "alertCauseId": 67,
-    "attributes": {
-     "relatedLineTypes": {
-      "12": "ptTram"
-     }
-    },
-    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "12: Gleisschaden"
-      }
-     }
-    ],
-    "location": "Nußdorfer Straße 11",
-    "name": "I20261126-0117-F02",
-    "owner": "WL",
-    "parentName": "I20261126-0117",
-    "priority": "1",
-    "reasonId": 28,
-    "reasonName": "Gleisschaden",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "12"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 112,
-      "lineName": "12",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-26T23:57:00.000+0100",
-     "lastUpdate": "2026-11-26T23:57:00.000+0100",
-     "resume": "2026-11-26T23:57:00.000+0100",
-     "start": "2026-11-26T23:26:00.000+0100"
-    },
-    "title": "12: Gleisschaden"
-   },
-   {
-    "alertCause": "roadway damage",
-    "alertCauseId": 67,
-    "attributes": {
-     "relatedLineTypes": {
-      "37": "ptTram"
-     }
-    },
-    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 37: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 37: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "37: Gleisschaden"
-      }
-     }
-    ],
-    "location": "Nußdorfer Straße 11",
-    "name": "I20261126-0117-F03",
-    "owner": "WL",
-    "parentName": "I20261126-0117",
-    "priority": "1",
-    "reasonId": 28,
-    "reasonName": "Gleisschaden",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "37"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 137,
-      "lineName": "37",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-26T23:57:00.000+0100",
-     "lastUpdate": "2026-11-26T23:57:00.000+0100",
-     "resume": "2026-11-26T23:57:00.000+0100",
-     "start": "2026-11-26T23:26:00.000+0100"
-    },
-    "title": "37: Gleisschaden"
-   },
-   {
-    "alertCause": "roadway damage",
-    "alertCauseId": 67,
-    "attributes": {
-     "relatedLineTypes": {
-      "38": "ptTram"
-     }
-    },
-    "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 38: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 38: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "38: Gleisschaden"
-      }
-     }
-    ],
-    "location": "Nußdorfer Straße 11",
-    "name": "I20261126-0117-F04",
-    "owner": "WL",
-    "parentName": "I20261126-0117",
-    "priority": "1",
-    "reasonId": 28,
-    "reasonName": "Gleisschaden",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 138,
-      "lineName": "38",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-26T23:57:00.000+0100",
-     "lastUpdate": "2026-11-26T23:57:00.000+0100",
-     "resume": "2026-11-26T23:57:00.000+0100",
-     "start": "2026-11-26T23:26:00.000+0100"
-    },
-    "title": "38: Gleisschaden"
-   },
-   {
-    "alertCause": "fire",
-    "alertCauseId": 5,
-    "attributes": {
-     "relatedLineTypes": {
-      "42": "ptTram"
-     }
-    },
-    "description": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 42: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 42: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 42: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "42: Feuerwehreinsatz"
-      }
-     }
-    ],
-    "location": "Währinger Gürtel 79",
-    "name": "I20261126-0118-F01",
-    "owner": "WL",
-    "parentName": "I20261126-0118",
-    "priority": "1",
-    "reasonId": 11,
-    "reasonName": "Feuerwehreinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "42"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 142,
-      "lineName": "42",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-27T00:03:00.000+0100",
-     "lastUpdate": "2026-11-27T00:03:00.000+0100",
-     "resume": "2026-11-27T00:03:00.000+0100",
-     "start": "2026-11-26T23:33:00.000+0100"
-    },
-    "title": "42: Feuerwehreinsatz"
+    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A"
    },
    {
     "alertCause": "undefined alert cause",
@@ -605,29 +376,6 @@
      "start": "2026-11-24T00:00:20.000+0100"
     },
     "title": "Gleisbauarbeiten\nZüge halten Quellenstraße 156 (Linie 6)"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
-    "name": "R1974-466",
-    "owner": "WL",
-    "parentName": "R1974-466",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "66A"
-    ],
-    "relatedStops": [
-     1974
-    ],
-    "time": {
-     "end": "2026-11-27T01:00:00.000+0100",
-     "start": "2026-11-26T04:40:27.000+0100"
-    },
-    "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1088,6 +836,52 @@
      "start": "2026-11-25T00:00:29.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 ",
+    "name": "R402-506",
+    "owner": "WL",
+    "parentName": "R402-506",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N6"
+    ],
+    "relatedStops": [
+     402
+    ],
+    "time": {
+     "end": "2026-11-27T05:05:00.000+0100",
+     "start": "2026-11-27T00:55:01.000+0100"
+    },
+    "title": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
+    "name": "R407-506",
+    "owner": "WL",
+    "parentName": "R407-506",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N6"
+    ],
+    "relatedStops": [
+     407
+    ],
+    "time": {
+     "end": "2026-11-27T05:04:00.000+0100",
+     "start": "2026-11-27T00:54:01.000+0100"
+    },
+    "title": "Bauarbeiten\nBusse halten Quellenstraße 189"
    },
    {
     "alertCause": "undefined alert cause",
