@@ -674,6 +674,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "12A: Falschparker Betrieb ab Schmelzbrücke",
+    "description": "Linie 12A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "55e94ed62600d285104ee02b7a3d61d225883428146726536a97c1c67a7e9db7",
+    "pubDate": "2026-11-27T08:46:00+01:00",
+    "starts_at": "2026-11-27T08:52:35+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=12A|D=2026-11-27|TK=falschparker",
+    "_wl_ids": [
+      "I20261127-0013"
+    ],
+    "_incident_start": "2026-11-27T08:46:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -698,30 +714,6 @@
       "I20261127-0002"
     ],
     "_incident_start": "2026-11-27T05:41:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Fahrtbehinderung Weichenschaden",
-    "description": "Fahrtbehinderung\nWeichenschaden",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "4b8ff60c459a76d7a4f7bd30fc3cb1a52484221ca279b23585e3e21893a6d399",
-    "pubDate": "2026-11-27T05:31:48+01:00",
-    "starts_at": "2026-11-27T05:31:49+01:00",
-    "ends_at": "2026-11-27T09:00:00+01:00",
-    "_identity": "wl|störung|L=18|D=2026-11-27|TK=fahrtbehinderung weichenschaden"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "18: Weichenschaden Betrieb ab Schlachthausgasse U",
-    "description": "Weichenschaden\nBetrieb ab Schlachthausgasse U",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "d7549c70614dc4a62eb3d10173268ada3dc6e19121359b09a24734f075ca9775",
-    "pubDate": "2026-11-27T05:31:48+01:00",
-    "starts_at": "2026-11-27T05:38:20+01:00",
-    "ends_at": "2026-11-27T09:00:00+01:00",
-    "_identity": "wl|störung|L=18|D=2026-11-27|TK=weichenschaden betrieb ab schlachthausgasse u"
   },
   {
     "source": "Wiener Linien",
@@ -954,18 +946,58 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "44: Gegenstände auf der Oberleitung",
-    "description": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "9/40/41: Schadhaftes Fahrzeug",
+    "description": "Linie 9: Fahrtbehinderung in Richtung Westbahnhof S U. Line 9: Disruption towards Westbahnhof S U. Linie 40: Fahrtbehinderung in Richtung Schottentor U. Linie 41: Fahrtbehinderung in Richtung Schottentor U. Voraussichtliche Dauer: 09:30 Uhr. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Gersthof S.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "7f45fe17b1e8a2c6a7a005f6f6a6549550984665108b17d292c3d94a7b7fe9e4",
-    "pubDate": "2026-11-27T06:30:00+01:00",
-    "starts_at": "2026-11-27T06:30:00+01:00",
+    "guid": "1c0f427ca9965bf426bab4f3f97903360884750d38b5e875ebbd432072d0b3f8",
+    "pubDate": "2026-11-27T08:46:00+01:00",
+    "starts_at": "2026-11-27T08:46:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=44|D=2026-11-27|TK=44 gegenstände auf der oberleitung",
+    "_identity": "wl|störung|L=40,41,9|D=2026-11-27|TK=40 41 9 schadhaftes fahrzeug",
     "_wl_ids": [
-      "I20261127-0006"
+      "I20261127-0014"
     ],
-    "_incident_start": "2026-11-27T06:30:00+01:00"
+    "_incident_start": "2026-11-27T08:46:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "e60afdce15be5e41a85d86d78442ae2e1ed6ab5a0dd678cf16e513616dc97fce",
+    "pubDate": "2026-11-27T08:43:35+01:00",
+    "starts_at": "2026-11-27T08:43:35+01:00",
+    "ends_at": "2026-11-27T09:43:00+01:00",
+    "_identity": "wl|störung|L=40|D=2026-11-27|TK=fahrtbehinderung schadhafter zug"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "a10e4e984c6029f45da817d126115b6afc0b18835d119354dcaddfb717d83bba",
+    "pubDate": "2026-11-27T08:43:05+01:00",
+    "starts_at": "2026-11-27T08:51:06+01:00",
+    "ends_at": "2026-11-27T09:50:00+01:00",
+    "_identity": "wl|störung|L=41|D=2026-11-27|TK=fahrtbehinderung schadhafter zug"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "49: Falschparker",
+    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "df54e3c8a25aa21b3f9620a91ff36eb8c77c2432a7f39bb7ab7692e16e0467d4",
+    "pubDate": "2026-11-27T08:46:00+01:00",
+    "starts_at": "2026-11-27T08:46:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=49|D=2026-11-27|TK=falschparker",
+    "_wl_ids": [
+      "I20261127-0013"
+    ],
+    "_incident_start": "2026-11-27T08:46:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -983,7 +1015,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "60/62: Gleisschaden",
-    "description": "Linie 60: Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse. Linie 62: Betrieb nur zwischen Oper, Karlsplatz U und Wattmanngasse. Voraussichtliche Dauer: 10:00 Uhr. Grund: Gleisschaden im Bereich Speisinger Straße.",
+    "description": "Linie 60: Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse. Linie 62: Betrieb nur zwischen Quartier Belvedere S und Wattmanngasse. Ersatz: Linien 53A, 60A, sowie den Ersatzverkehr mit Bussen zwischen Rodaun bzw. Lainz und Speising. Voraussichtliche Dauer: Nicht absehbar. Grund: Gleisschaden im Bereich Speisinger Straße.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "73b82458b6ea6ecd873eca0ef0778b874c541a192f52600a7e049b92013d8da4",
     "pubDate": "2026-11-27T07:46:00+01:00",
@@ -994,22 +1026,6 @@
       "I20261127-0011"
     ],
     "_incident_start": "2026-11-27T07:46:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "60A: Verkehrsüberlastung",
-    "description": "Linie 60A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "0c324aeb68aff0a13a99697bafb1720b1552500ec06ceef7ada487c69aa2ddcf",
-    "pubDate": "2026-11-27T08:19:00+01:00",
-    "starts_at": "2026-11-27T08:19:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=60A|D=2026-11-27|TK=60a verkehrsüberlastung",
-    "_wl_ids": [
-      "I20261127-0012"
-    ],
-    "_incident_start": "2026-11-27T08:19:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1050,18 +1066,26 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "84A: Fremder Verkehrsunfall",
-    "description": "Linie 84A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "9: Fahrtbehinderung Schadhafter Zug",
+    "description": "Fahrtbehinderung\nSchadhafter Zug",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "f0734148ab1da055a9e19c6d42b75b92c43c941bcf8a76ce37fc8fefe36cdf7e",
-    "pubDate": "2026-11-27T07:00:00+01:00",
-    "starts_at": "2026-11-27T07:00:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=84A|D=2026-11-27|TK=84a fremder verkehrsunfall",
-    "_wl_ids": [
-      "I20261127-0007"
-    ],
-    "_incident_start": "2026-11-27T07:00:00+01:00"
+    "guid": "323b6d41bc08e7d3945f4aa8067c0e597583bf7a47eaa65565deef81eb290eca",
+    "pubDate": "2026-11-27T08:44:06+01:00",
+    "starts_at": "2026-11-27T08:55:07+01:00",
+    "ends_at": "2026-11-27T09:54:00+01:00",
+    "_identity": "wl|störung|L=9|D=2026-11-27|TK=fahrtbehinderung schadhafter zug"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "9: Schadhafter Zug Betrieb ab Sommarugagasse",
+    "description": "Schadhafter Zug\nBetrieb ab Sommarugagasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "edf50e2d7b9d1a9330fd9f5713434eb059e014ee6c04bfe75a83a65ca572596f",
+    "pubDate": "2026-11-27T08:44:05+01:00",
+    "starts_at": "2026-11-27T08:44:05+01:00",
+    "ends_at": "2026-11-27T09:55:00+01:00",
+    "_identity": "wl|störung|L=9|D=2026-11-27|TK=schadhafter zug betrieb ab sommarugagasse"
   },
   {
     "source": "Wiener Linien",
