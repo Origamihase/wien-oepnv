@@ -1,19 +1,27 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-27T18:00:56.839717+00:00",
- "built": "2026-11-27T19:00:44+01:00",
+ "updated": "2026-11-27T18:30:49.625969+00:00",
+ "built": "2026-11-27T19:30:31+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-27T19:00:44+01:00",
+  "built": "2026-11-27T19:30:31+01:00",
   "items": [
+   {
+    "title": "69A: Verspätungen",
+    "time_line": "Seit 19:11"
+   },
+   {
+    "title": "10A: Polizeieinsatz",
+    "time_line": "Seit 19:07"
+   },
    {
     "title": "40/41/42: Gleisschaden",
     "time_line": "Seit 18:09"
    },
    {
-    "title": "38/40: Gleisschaden",
+    "title": "38: Gleisschaden",
     "time_line": "Seit 17:46"
    },
    {
@@ -25,10 +33,6 @@
     "time_line": "Seit 18:44"
    },
    {
-    "title": "35A: Verspätungen",
-    "time_line": "Seit 18:17"
-   },
-   {
     "title": "11A: Rettungseinsatz",
     "time_line": "Seit 18:08"
    },
@@ -37,16 +41,12 @@
     "time_line": "Seit 17:46"
    },
    {
-    "title": "59A: Verspätungen",
-    "time_line": "Seit 17:35"
-   },
-   {
     "title": "31: Betriebsstörung",
     "time_line": "Seit 17:12"
    },
    {
-    "title": "11: Verkehrsunfall",
-    "time_line": "Seit 15:21"
+    "title": "U4: Linie U4 Kein Betrieb zw.Heiligenstadt und Schottenring",
+    "time_line": "Seit 14:44"
    }
   ]
  },
@@ -6771,17 +6771,37 @@
     "oebb": 13,
     "wl": 113
    }
+  },
+  {
+   "t": "2026-11-27T18:30:49.625969+00:00",
+   "raw": {
+    "wl-stoerungen": 185,
+    "wl-hinweise": 73,
+    "oebb": 175,
+    "baustellen-linien": 47,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 12,
+    "oebb": 149,
+    "baustellen": 57
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 13,
+    "wl": 109
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-27T18:00:56.839717+00:00"
+   "last_ok": "2026-11-27T18:30:49.625969+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-27T18:00:56.839717+00:00"
+   "last_ok": "2026-11-27T18:30:49.625969+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-27T18:00:56.839717+00:00"
+   "last_ok": "2026-11-27T18:30:49.625969+00:00"
   }
  }
 }

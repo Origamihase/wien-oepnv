@@ -6,7 +6,7 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261127-0051-F01, I20261127-0051-F02, I20261127-0051-F03, I20261127-0051-F04, I20261127-0043-F03, I20261127-0057-F01, I20261020-0029, I20261127-0048-F01, I20261127-0011, I20261127-0053, I20261127-0058, I20261127-0054-F01, I20261127-0054-F02, I20261127-0054-F03, I20261127-0056, I20261127-0050, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261127-0051-F01, I20261127-0051-F02, I20261127-0051-F03, I20261127-0051-F04, I20261127-0057-F01, I20261020-0029, I20261127-0011, I20261127-0059, I20261127-0058, I20261127-0060, I20261127-0054-F01, I20261127-0050, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
@@ -221,98 +221,6 @@
      "start": "2026-11-27T07:46:00.000+0100"
     },
     "title": "60, 62: Gleisschaden"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "11": "ptTram"
-     }
-    },
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "11: Verkehrsunfall"
-      }
-     }
-    ],
-    "location": "Quellenstraße / 77",
-    "name": "I20261127-0043-F03",
-    "owner": "WL",
-    "parentName": "I20261127-0043",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 111,
-      "lineName": "11",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-27T15:43:00.000+0100",
-     "lastUpdate": "2026-11-27T15:43:00.000+0100",
-     "resume": "2026-11-27T15:43:00.000+0100",
-     "start": "2026-11-27T15:21:00.000+0100"
-    },
-    "title": "11: Verkehrsunfall"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "U3": "ptMetro"
-     }
-    },
-    "description": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie U3: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie U3: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "U3: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "location": "Stubentor",
-    "name": "I20261127-0048-F01",
-    "owner": "WL",
-    "parentName": "I20261127-0048",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 303,
-      "lineName": "U3",
-      "vehicleType": "ptMetro"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-27T16:30:00.000+0100",
-     "lastUpdate": "2026-11-27T16:30:00.000+0100",
-     "resume": "2026-11-27T16:30:00.000+0100",
-     "start": "2026-11-27T16:27:00.000+0100"
-    },
-    "title": "U3: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "miscellaneous",
@@ -544,52 +452,6 @@
     "title": "71: Demonstration"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "59A": "ptBusCity"
-     }
-    },
-    "description": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 59A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 59A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "59A: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261127-0053",
-    "owner": "WL",
-    "parentName": "I20261127-0053",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "59A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 459,
-      "lineName": "59A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-27T17:35:00.000+0100",
-     "end": "2026-11-27T19:25:00.000+0100",
-     "lastUpdate": "2026-11-27T17:35:00.000+0100",
-     "resume": "2026-11-27T17:35:00.000+0100",
-     "start": "2026-11-27T17:35:00.000+0100"
-    },
-    "title": "59A: Verspätungen"
-   },
-   {
     "alertCause": "roadway damage",
     "alertCauseId": 67,
     "attributes": {
@@ -634,144 +496,6 @@
      "start": "2026-11-27T17:46:00.000+0100"
     },
     "title": "37: Gleisschaden"
-   },
-   {
-    "alertCause": "roadway damage",
-    "alertCauseId": 67,
-    "attributes": {
-     "relatedLineTypes": {
-      "38": "ptTram"
-     }
-    },
-    "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 38: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 38: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "38: Gleisschaden"
-      }
-     }
-    ],
-    "location": "Währinger Straße",
-    "name": "I20261127-0054-F02",
-    "owner": "WL",
-    "parentName": "I20261127-0054",
-    "priority": "1",
-    "reasonId": 28,
-    "reasonName": "Gleisschaden",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "38"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 138,
-      "lineName": "38",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-27T18:33:00.000+0100",
-     "lastUpdate": "2026-11-27T18:33:00.000+0100",
-     "resume": "2026-11-27T18:33:00.000+0100",
-     "start": "2026-11-27T17:46:00.000+0100"
-    },
-    "title": "38: Gleisschaden"
-   },
-   {
-    "alertCause": "roadway damage",
-    "alertCauseId": 67,
-    "attributes": {
-     "relatedLineTypes": {
-      "40": "ptTram"
-     }
-    },
-    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 40: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "40: Gleisschaden"
-      }
-     }
-    ],
-    "location": "Währinger Straße",
-    "name": "I20261127-0054-F03",
-    "owner": "WL",
-    "parentName": "I20261127-0054",
-    "priority": "1",
-    "reasonId": 28,
-    "reasonName": "Gleisschaden",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "40"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 140,
-      "lineName": "40",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-27T18:33:00.000+0100",
-     "lastUpdate": "2026-11-27T18:33:00.000+0100",
-     "resume": "2026-11-27T18:33:00.000+0100",
-     "start": "2026-11-27T17:46:00.000+0100"
-    },
-    "title": "40: Gleisschaden"
-   },
-   {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "35A": "ptBusCity"
-     }
-    },
-    "description": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "descriptionHTML": "<p>Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 35A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
-       "descriptionPlain": "Linie 35A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-       "title": "35A: Verspätungen"
-      }
-     }
-    ],
-    "name": "I20261127-0056",
-    "owner": "WL",
-    "parentName": "I20261127-0056",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "35A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 435,
-      "lineName": "35A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-27T18:18:00.000+0100",
-     "end": "2026-11-27T19:15:00.000+0100",
-     "lastUpdate": "2026-11-27T18:48:00.000+0100",
-     "resume": "2026-11-27T18:17:00.000+0100",
-     "start": "2026-11-27T18:17:00.000+0100"
-    },
-    "title": "35A: Verspätungen"
    },
    {
     "alertCause": "miscellaneous",
@@ -865,6 +589,96 @@
      "start": "2026-11-27T18:54:00.000+0100"
     },
     "title": "13A: Verkehrsüberlastung"
+   },
+   {
+    "alertCause": "police activity",
+    "alertCauseId": 3,
+    "attributes": {
+     "relatedLineTypes": {
+      "10A": "ptBusCity"
+     }
+    },
+    "description": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+    "descriptionHTML": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 10A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Polizeieinsatz.</p>",
+       "descriptionPlain": "Linie 10A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Polizeieinsatz.",
+       "title": "10A: Polizeieinsatz"
+      }
+     }
+    ],
+    "name": "I20261127-0059",
+    "owner": "WL",
+    "parentName": "I20261127-0059",
+    "priority": "1",
+    "reasonId": 47,
+    "reasonName": "Polizeieinsatz",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "10A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 410,
+      "lineName": "10A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-27T19:07:00.000+0100",
+     "lastUpdate": "2026-11-27T19:07:00.000+0100",
+     "resume": "2026-11-27T19:07:00.000+0100",
+     "start": "2026-11-27T19:07:00.000+0100"
+    },
+    "title": "10A: Polizeieinsatz"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "69A": "ptBusCity"
+     }
+    },
+    "description": "Linie 69A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie 69A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 69A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie 69A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "69A: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261127-0060",
+    "owner": "WL",
+    "parentName": "I20261127-0060",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "69A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 469,
+      "lineName": "69A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-27T19:12:00.000+0100",
+     "lastUpdate": "2026-11-27T19:12:00.000+0100",
+     "resume": "2026-11-27T19:11:00.000+0100",
+     "start": "2026-11-27T19:11:00.000+0100"
+    },
+    "title": "69A: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",
