@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_196, ftazW_1017717, ftazW_1016543, ftazW_735, ftazW_167, ftazW_1016924, ftazW_212, ftazW_1016948, ftazW_593"
+    "trafficInfoNameList": "ftazW_212, ftazW_1016948, ftazW_593"
    }
   ],
   "poiCategoryGroups": [
@@ -3226,88 +3226,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "27.11.2026 05:15",
-     "ausVon": "27.11.2026 01:15",
-     "location": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Hietzinger Kai, Hadikgasse",
-     "rbls": [
-      4432
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4"
-     ],
-     "station": "Unter St.Veit",
-     "status": "geplante Wartung",
-     "towards": "U4 Hütteldorf"
-    },
-    "description": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Hietzinger Kai, Hadikgasse",
-    "elevatorId": "UV 02",
-    "name": "ftazW_1016543",
-    "parentName": "ftazW_1016543",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedStops": [
-     4432
-    ],
-    "time": {
-     "end": "2026-11-27T05:15:00.000+0100",
-     "start": "2026-11-27T01:15:00.000+0100"
-    },
-    "title": "Unter St.Veit"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "27.11.2026 05:15",
-     "ausVon": "27.11.2026 01:15",
-     "location": "1 Bahnsteig Richtung Stefan Fadinger Platz, 62 Bahnsteig Richtung Lainz, Badner Bahn Bahnsteig Richtung Baden - Ausgang Wiedner Hauptstraße",
-     "rbls": [
-      1714,
-      1714,
-      1751
-     ],
-     "reason": "",
-     "relatedLines": [
-      "62",
-      "1",
-      "LB"
-     ],
-     "station": "Laurenzgasse",
-     "status": "geplante Wartung",
-     "towards": "62 Lainz, Wolkersbergenstraße, 1 Stefan-Fadinger-Platz, WLB Oper, Karlsplatz U"
-    },
-    "description": "1 Bahnsteig Richtung Stefan Fadinger Platz, 62 Bahnsteig Richtung Lainz, Badner Bahn Bahnsteig Richtung Baden - Ausgang Wiedner Hauptstraße",
-    "elevatorId": "LG 02",
-    "name": "ftazW_1016924",
-    "parentName": "ftazW_1016924",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "62",
-     "1",
-     "LB"
-    ],
-    "relatedStops": [
-     1714,
-     1714,
-     1751
-    ],
-    "time": {
-     "end": "2026-11-27T05:15:00.000+0100",
-     "start": "2026-11-27T01:15:00.000+0100"
-    },
-    "title": "Laurenzgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "30.11.2026 00:45",
      "ausVon": "29.11.2026 20:45",
      "location": "U1 Bahnsteig Richtung Leopoldau - Zwischengeschoss Zugang U2 - Ausgang Lassallestraße",
@@ -3347,120 +3265,6 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
-     "ausBis": "27.11.2026 05:15",
-     "ausVon": "27.11.2026 01:15",
-     "location": "Passage - Ausgang Künstlerhaus",
-     "rbls": [],
-     "reason": "",
-     "relatedLines": [
-      "U2",
-      "U1",
-      "U4"
-     ],
-     "station": "Karlsplatz",
-     "status": "geplante Wartung",
-     "towards": ""
-    },
-    "description": "Passage - Ausgang Künstlerhaus",
-    "elevatorId": "KP 08",
-    "name": "ftazW_1017717",
-    "parentName": "ftazW_1017717",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U2",
-     "U1",
-     "U4"
-    ],
-    "time": {
-     "end": "2026-11-27T05:15:00.000+0100",
-     "start": "2026-11-27T01:15:00.000+0100"
-    },
-    "title": "Karlsplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "27.11.2026 05:15",
-     "ausVon": "27.11.2026 01:15",
-     "location": "U3 Mittelbahnsteig - Ausgang Schlachthausgasse - Ausgang Hainburger Weg",
-     "rbls": [
-      4916,
-      4901
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U3"
-     ],
-     "station": "Schlachthausgasse",
-     "status": "geplante Wartung",
-     "towards": "U3 beide Richtungen"
-    },
-    "description": "U3 Mittelbahnsteig - Ausgang Schlachthausgasse - Ausgang Hainburger Weg",
-    "elevatorId": "SG 02",
-    "name": "ftazW_167",
-    "parentName": "ftazW_167",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U3"
-    ],
-    "relatedStops": [
-     4916,
-     4901
-    ],
-    "time": {
-     "end": "2026-11-27T05:15:00.000+0100",
-     "start": "2026-11-27T01:15:00.000+0100"
-    },
-    "title": "Schlachthausgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "27.11.2026 05:15",
-     "ausVon": "27.11.2026 01:15",
-     "location": "U4 Mittelbahnsteig - Ausgang Meidling Hauptstraße/Lobkowitzbrücke",
-     "rbls": [
-      4413,
-      4424
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U4"
-     ],
-     "station": "Meidling Hauptstraße",
-     "status": "geplante Wartung",
-     "towards": "U4 beide Richtungen"
-    },
-    "description": "U4 Mittelbahnsteig - Ausgang Meidling Hauptstraße/Lobkowitzbrücke",
-    "elevatorId": "MH 01",
-    "name": "ftazW_196",
-    "parentName": "ftazW_196",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U4"
-    ],
-    "relatedStops": [
-     4413,
-     4424
-    ],
-    "time": {
-     "end": "2026-11-27T05:15:00.000+0100",
-     "start": "2026-11-27T01:15:00.000+0100"
-    },
-    "title": "Meidling Hauptstraße"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
      "ausBis": "30.11.2026 00:45",
      "ausVon": "29.11.2026 20:45",
      "location": "U6 Mittelbahnsteig - Zwischengeschoss Zugang ÖBB Bahnsteig",
@@ -3495,7 +3299,7 @@
     "attributes": {
      "ausBis": "30.11.2026 00:45",
      "ausVon": "29.11.2026 20:45",
-     "location": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Kennedybrücke",
+     "location": "Ausgang Kennedybrücke - U4 Bahnsteig Richtung Heiligenstadt",
      "rbls": [
       4409
      ],
@@ -3507,7 +3311,7 @@
      "status": "geplante Wartung",
      "towards": "U4 Heiligenstadt"
     },
-    "description": "U4 Bahnsteig Richtung Heiligenstadt - Ausgang Kennedybrücke",
+    "description": "Ausgang Kennedybrücke - U4 Bahnsteig Richtung Heiligenstadt",
     "elevatorId": "HI 01",
     "name": "ftazW_593",
     "parentName": "ftazW_593",
@@ -3525,45 +3329,6 @@
      "start": "2026-11-29T20:45:00.000+0100"
     },
     "title": "Hietzing"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "attributes": {
-     "ausBis": "27.11.2026 05:15",
-     "ausVon": "27.11.2026 01:15",
-     "location": "U1 Mittelbahnsteig - Ausgang Praterstraße",
-     "rbls": [
-      4115,
-      4114
-     ],
-     "reason": "",
-     "relatedLines": [
-      "U1"
-     ],
-     "station": "Nestroyplatz",
-     "status": "geplante Wartung",
-     "towards": "U1 beide Richtungen"
-    },
-    "description": "U1 Mittelbahnsteig - Ausgang Praterstraße",
-    "elevatorId": "NP 01",
-    "name": "ftazW_735",
-    "parentName": "ftazW_735",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refPoiCategoryId": -1,
-    "relatedLines": [
-     "U1"
-    ],
-    "relatedStops": [
-     4115,
-     4114
-    ],
-    "time": {
-     "end": "2026-11-27T05:15:00.000+0100",
-     "start": "2026-11-27T01:15:00.000+0100"
-    },
-    "title": "Nestroyplatz"
    }
   ]
  },
