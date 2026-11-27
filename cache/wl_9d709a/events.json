@@ -6,10 +6,14 @@
     "description": "<h2>Demonstration</h2><p>Wegen einer Demonstration in der inneren Stadt kommt es zu Verkehrsmaßnahmen.</p><p><strong><u>Zeitraum:</u></strong><br>Samstag, 28. November 2026, zwischen 13:30 Uhr und 18:00 Uhr</p><p><strong><u>Maßnahmen:</u></strong><br><strong>Linie D:</strong><br>Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Stubentor U - Schwedenplatz U - Schottenring U.</p><p><strong>Linie 1 in Richtung Prater Hauptallee:</strong><br>Umleitung ab Karlsplatz U über Lothringerstraße - Schwarzenbergplatz - Stubentor zum Julius-Raab-Platz.</p><p><strong>Linie 1 in Richtung Reumannplatz U:</strong><br>Die Züge fahren bis Börse, wenden dort und fahren über Schwedenplatz U - Stubentor U - Schwarzenbergplatz - Lothringerstraße - zum Karlsplatz U (Zustiegsmöglichkeit im Bereich der Schleifenanlage).</p><p><strong>Linie 2:</strong><br>Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Schwedenplatz U über Schottentor U und Schottenring U.<br>In Richtung Dornbach kann die Haltestelle Schwedenplatz U nicht eingehalten werden, benutzen Sie bitte die Haltestelle Marienbrücke.</p><p><strong>Linie 71:</strong><br>Kurzführung, Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Schwarzenbergplatz.</p><p><strong>Linien 1A, 2A und 3A:</strong><br>Diese Linien werden aufgrund des Einkaufssamtages aus Sicherheitsgründen nicht betrieben.</p><p><strong><u>Ersatz:</u></strong><br>Weichen Sie ersatzweise auf die Linien U1, U2, U3 oder U4 aus.</p><p><strong><u>Hinweis:</u></strong><br>Die genannten Einschränkungen müssen nicht gleichzeitig auftreten, Linien werden sofort nach Freiwerden der gesperrten Streckenabschnitte wieder normalisiert. Beachten Sie daher unsere Lautsprecherdurchsagen und unsere Echtzeitinformation unter <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.wienerlinien.at\">www.wienerlinien.at</a>.</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "0193b3f4313f0adc0dfbb75d880f74695f85fbde95f0e98a8efc43e1e46e65b7",
-    "pubDate": "2026-11-25T12:26:00+01:00",
+    "pubDate": "2026-11-27T17:23:00+01:00",
     "starts_at": "2026-11-28T00:00:00+01:00",
     "ends_at": "2026-11-28T18:30:00+01:00",
-    "_identity": "wl|hinweis|L=1,1A,2,2A,3A,71,D|D=2026-11-28|TK=demonstration"
+    "_identity": "wl|hinweis|L=1,1A,2,2A,3A,71,D|D=2026-11-28|TK=demonstration",
+    "_wl_ids": [
+      "I20261127-0051"
+    ],
+    "_incident_start": "2026-11-27T17:23:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -674,34 +678,14 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "1/2/71/D: Demonstration",
-    "description": "Linie 1:Umleitung in Richtung Stefan-Fadinger-PlatzWende über Börse und Umleitung bis Resselgasseüber Schwedenplatz U und Schwarzenbergplatz.Einstieg am Karlsplatz U (bei Linie 4A) möglich.Umleitung in Richtung Prater Hauptalleezwischen Karlsplatz U und Julius-Raab-Platz über Schwarzenbergplatz und Stubentor U.Fahrgäste zwischen Börse und Schwedenplatz mit dem Ziel Prater Hauptallee müssen am Julius-Raab-Platz in einen anderen Zug der Linie 1 umsteigen.Linie 2: Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Rathaus U über die Reichsratsstraße.Richtung Dornbach:Haltestelle Parlament, U Volkstheater: Die Züge halten in der Haltestelle der Linie 46.Richtung Friedrich-Engels-Platz:Parlament, U Volkstheater: Die Züge halten in der Bedarfshaltestelle am Burgring nach der Bellariastraße.Linie D:Umleitung in beiden Richtungenzwischen Schwarzenbergplatz und Börseüber Stubentor U und Schwedenplatz U.Linie 71:Betrieb nur zwischen Kaiserebersdorf und Schwarzenbergplatz.Ersatz: U-Bahnlinien.Voraussichtliche Dauer: 20:30 Uhr.Grund: Demonstration im Bereich Universitätsring.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "bd71556f0b3999c4b9221f396e4a62b33873bc5ae8eb0b8775cbaad78170136b",
-    "pubDate": "2026-11-27T17:23:00+01:00",
-    "starts_at": "2026-11-27T17:23:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=1,2,71,D|D=2026-11-27|TK=demonstration",
-    "_wl_ids": [
-      "I20261127-0051"
-    ],
-    "_incident_start": "2026-11-27T17:23:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "11A: Rettungseinsatz Betrieb ab Sturgasse",
-    "description": "Linie 11A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Rettungseinsatz\nBetrieb ab Sturgasse",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "42fd134123a418e9ad9efe9206b8aec78f4828e1289887cd32b9a179ab2ed7cd",
-    "pubDate": "2026-11-27T18:08:00+01:00",
+    "pubDate": "2026-11-27T18:16:33+01:00",
     "starts_at": "2026-11-27T18:16:33+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=11A|D=2026-11-27|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261127-0055"
-    ],
-    "_incident_start": "2026-11-27T18:08:00+01:00"
+    "ends_at": "2026-11-27T22:22:00+01:00",
+    "_identity": "wl|störung|L=11A|D=2026-11-27|TK=rettungseinsatz"
   },
   {
     "source": "Wiener Linien",
@@ -718,6 +702,22 @@
       "I20261127-0043"
     ],
     "_incident_start": "2026-11-27T15:21:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "13A: Verkehrsüberlastung",
+    "description": "Linie 13A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "0b00fe24c2dd37aaf07ae252d80374592513223744f2d6ecc3fa197c58c6de52",
+    "pubDate": "2026-11-27T18:54:00+01:00",
+    "starts_at": "2026-11-27T18:54:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=13A|D=2026-11-27|TK=13a verkehrsüberlastung",
+    "_wl_ids": [
+      "I20261127-0058"
+    ],
+    "_incident_start": "2026-11-27T18:54:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -806,6 +806,22 @@
     "starts_at": "2026-11-27T05:00:14+01:00",
     "ends_at": "2026-11-27T23:00:00+01:00",
     "_identity": "wl|störung|L=1|D=2026-11-27|TK=bhf hütteldorf öbb ersatzbus für 80"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "1: Demonstration Einstieg gegenüber für Fahrziel Reumannplatz",
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "8cc22bbfd84d131d38143c70f680c24d1c39fbf1fe455e06a3f50824d8ce8e3c",
+    "pubDate": "2026-11-27T17:23:00+01:00",
+    "starts_at": "2026-11-27T17:48:29+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=1|D=2026-11-27|TK=demonstration",
+    "_wl_ids": [
+      "I20261127-0051"
+    ],
+    "_incident_start": "2026-11-27T17:23:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -950,34 +966,34 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "30/31: Betriebsstörung",
-    "description": "Linie 30: Unregelmäßige Intervalle in beiden Richtungen. Linie 31: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
+    "title": "2: Demonstration Einstieg nach Bellariastraße in der Bedarfshaltestelle",
+    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "6c1fab808222770314b00a04f92f11ed5c405ebe4b71d3c7ac65b94594fea17d",
-    "pubDate": "2026-11-27T17:12:00+01:00",
-    "starts_at": "2026-11-27T17:12:00+01:00",
+    "guid": "3629ca20a95831a63570d0cdaf8f90603b749ac7933bdfaee0e7e19c548af3ca",
+    "pubDate": "2026-11-27T17:23:00+01:00",
+    "starts_at": "2026-11-27T17:28:57+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=30,31|D=2026-11-27|TK=31 30 betriebsstörung",
+    "_identity": "wl|störung|L=2|D=2026-11-27|TK=demonstration",
     "_wl_ids": [
-      "I20261127-0050"
+      "I20261127-0051"
     ],
-    "_incident_start": "2026-11-27T17:12:00+01:00"
+    "_incident_start": "2026-11-27T17:23:00+01:00"
   },
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "31A: Verkehrsüberlastung",
-    "description": "Linie 31A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsüberlastung.",
+    "title": "31: Betriebsstörung",
+    "description": "Linie 31: Unregelmäßige Intervalle in beiden Richtungen. Grund: Betriebsstörung.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "9b3b9554d6b4a14e102d9dc1c24aad5b257fba0af00467f4c2651f24320baa99",
-    "pubDate": "2026-11-27T17:34:00+01:00",
-    "starts_at": "2026-11-27T17:34:00+01:00",
+    "guid": "4c11a2351b8b0486be0940f4b793e99c9c78cc36ad84c6b7da64bbdf48a57f50",
+    "pubDate": "2026-11-27T17:12:00+01:00",
+    "starts_at": "2026-11-27T17:12:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=31A|D=2026-11-27|TK=31a verkehrsüberlastung",
+    "_identity": "wl|störung|L=31|D=2026-11-27|TK=31 betriebsstörung",
     "_wl_ids": [
-      "I20261127-0052"
+      "I20261127-0050"
     ],
-    "_incident_start": "2026-11-27T17:34:00+01:00"
+    "_incident_start": "2026-11-27T17:12:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -988,28 +1004,12 @@
     "guid": "67c751137c6566f442303d569ccfcae2618b18c074923f44066938ab05204482",
     "pubDate": "2026-11-27T18:17:00+01:00",
     "starts_at": "2026-11-27T18:17:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-27T19:15:00+01:00",
     "_identity": "wl|störung|L=35A|D=2026-11-27|TK=35a verspätungen",
     "_wl_ids": [
       "I20261127-0056"
     ],
     "_incident_start": "2026-11-27T18:17:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "37/38/40/41/42: Gleisschaden",
-    "description": "Linie 37: Betrieb nur zwischen Hohe Warte und Nußdorfer Straße U. Linie 38: Betrieb nur zwischen Grinzing und Spitalgasse. Weiterfahrt bis Alser Straße U. Linie 40: Betrieb nur zwischen Gersthof, Herbeckstraße und Währinger Straße, Volksoper U. Linie 41: Betrieb nur zwischen Pötzleinsdorf und Währinger Straße, Volksoper U. Linie 42: Betrieb nur zwischen Antonigasse und Währinger Straße, Volksoper U. Ersatz: Linien U4, U6, 40A. Voraussichtliche Dauer: Nicht absehbar. Grund: Gleisschaden im Bereich Währinger Straße.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "deafb6edac3d88507a458720f59ef12bf4fc027f9a543737613ffd23b4fdf281",
-    "pubDate": "2026-11-27T17:46:00+01:00",
-    "starts_at": "2026-11-27T17:46:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=37,38,40,41,42|D=2026-11-27|TK=37 38 40 41 42 gleisschaden",
-    "_wl_ids": [
-      "I20261127-0054"
-    ],
-    "_incident_start": "2026-11-27T17:46:00+01:00"
   },
   {
     "source": "Wiener Linien",
@@ -1026,18 +1026,230 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "49: Schadhaftes Fahrzeug",
-    "description": "Linie 49: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "title": "37: Gleisschaden",
+    "description": "Linie 37: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "271e840ffa1991d1a23721e9b9b2e1a23eca4d31471a299a49caff7447885f78",
-    "pubDate": "2026-11-27T14:58:00+01:00",
-    "starts_at": "2026-11-27T14:58:00+01:00",
+    "guid": "531f69665df04bb54dc48544772dcff5437bc346a19864b45c8fe4827c0d31c4",
+    "pubDate": "2026-11-27T17:46:00+01:00",
+    "starts_at": "2026-11-27T17:46:00+01:00",
     "ends_at": null,
-    "_identity": "wl|störung|L=49|D=2026-11-27|TK=49 schadhaftes fahrzeug",
+    "_identity": "wl|störung|L=37|D=2026-11-27|TK=37 gleisschaden",
     "_wl_ids": [
-      "I20261127-0041"
+      "I20261127-0054"
     ],
-    "_incident_start": "2026-11-27T14:58:00+01:00"
+    "_incident_start": "2026-11-27T17:46:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Fahrtbehinderung Gleisschaden",
+    "description": "Fahrtbehinderung\nGleisschaden",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "c903caea7c137eb91bc99faf58fd6c344fb7b26acf8f1f0f58bfcce21b03699f",
+    "pubDate": "2026-11-27T17:54:31+01:00",
+    "starts_at": "2026-11-27T17:54:31+01:00",
+    "ends_at": "2026-11-27T23:59:00+01:00",
+    "_identity": "wl|störung|L=37|D=2026-11-27|TK=fahrtbehinderung gleisschaden"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Gleisschaden Betrieb ab Nußdorfer Straße",
+    "description": "Gleisschaden\nBetrieb ab Nußdorfer Straße",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "6427fa888411eebaa35e595ed6f54f3b4f4e5453afca62e4efb064d8aa81f8e0",
+    "pubDate": "2026-11-27T18:05:32+01:00",
+    "starts_at": "2026-11-27T18:05:32+01:00",
+    "ends_at": "2026-11-27T23:59:00+01:00",
+    "_identity": "wl|störung|L=37|D=2026-11-27|TK=gleisschaden betrieb ab nussdorfer strasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "37: Gleisschaden Einstieg am Währinger Gürtel",
+    "description": "Gleisschaden\nEinstieg am Währinger Gürtel",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "77c90abfce3a70162a594177d0a47d3ebc1b5ebe39ed0ef2bac81ab32c651336",
+    "pubDate": "2026-11-27T18:06:32+01:00",
+    "starts_at": "2026-11-27T18:06:32+01:00",
+    "ends_at": "2026-11-27T23:59:00+01:00",
+    "_identity": "wl|störung|L=37|D=2026-11-27|TK=gleisschaden einstieg am währinger gürtel"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Gleisschaden",
+    "description": "Linie 38: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "41232b9b5d5ab52f719f4572ad52256886f455c6583c496fed86188ccc4c5100",
+    "pubDate": "2026-11-27T17:46:00+01:00",
+    "starts_at": "2026-11-27T17:46:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=38|D=2026-11-27|TK=38 gleisschaden",
+    "_wl_ids": [
+      "I20261127-0054"
+    ],
+    "_incident_start": "2026-11-27T17:46:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Fahrtbehinderung Gleisschaden",
+    "description": "Fahrtbehinderung\nGleisschaden",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "36291a8913f4c0e64cf9c131c1cabf9164a01e3b26a8d92b61ce6d4817630b30",
+    "pubDate": "2026-11-27T17:56:01+01:00",
+    "starts_at": "2026-11-27T17:56:01+01:00",
+    "ends_at": "2026-11-27T23:59:00+01:00",
+    "_identity": "wl|störung|L=38|D=2026-11-27|TK=fahrtbehinderung gleisschaden"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Gleisschaden Betrieb ab Spitalgasse",
+    "description": "Gleisschaden\nBetrieb ab Spitalgasse",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "d47ce1c1f732a2d83bd3b77e1628b4889bd830aac432ee322d14e7dd2ce1f69d",
+    "pubDate": "2026-11-27T17:57:01+01:00",
+    "starts_at": "2026-11-27T17:57:01+01:00",
+    "ends_at": "2026-11-27T23:59:00+01:00",
+    "_identity": "wl|störung|L=38|D=2026-11-27|TK=gleisschaden betrieb ab spitalgasse"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "38: Gleisschaden Einstieg bei Linie 5 Richtung Praterstern",
+    "description": "Gleisschaden\nEinstieg bei Linie 5 Richtung Praterstern",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "46ac94d845ded83e7189fc3990d5b9130baee56b04c061e7cfee2e34a8b9f0ef",
+    "pubDate": "2026-11-27T17:58:01+01:00",
+    "starts_at": "2026-11-27T17:58:01+01:00",
+    "ends_at": "2026-11-27T23:59:00+01:00",
+    "_identity": "wl|störung|L=38|D=2026-11-27|TK=gleisschaden einstieg bei linie 5 richtung praterstern"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40: Gleisschaden",
+    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "5e558d055d3cde260f3bbae9cd9316102390c982f1406bba670727a1bdc8fe91",
+    "pubDate": "2026-11-27T17:46:00+01:00",
+    "starts_at": "2026-11-27T17:46:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=40|D=2026-11-27|TK=40 gleisschaden",
+    "_wl_ids": [
+      "I20261127-0054"
+    ],
+    "_incident_start": "2026-11-27T17:46:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40: Fahrtbehinderung Gleisschaden",
+    "description": "Fahrtbehinderung\nGleisschaden",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "4c06cdf8868d61719444de0e05fe7247902f239ee5145de206d9394a055771d8",
+    "pubDate": "2026-11-27T18:11:02+01:00",
+    "starts_at": "2026-11-27T18:11:02+01:00",
+    "ends_at": "2026-11-27T23:59:00+01:00",
+    "_identity": "wl|störung|L=40|D=2026-11-27|TK=fahrtbehinderung gleisschaden"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40: Gleisschaden Betrieb ab Währinger Straße, Volksoper",
+    "description": "Gleisschaden\nBetrieb ab Währinger Straße, Volksoper",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "8a0f14f01fba6c5524b72ff44cfe0857af737b00ff29aedf9969af5aae29cebb",
+    "pubDate": "2026-11-27T18:09:32+01:00",
+    "starts_at": "2026-11-27T18:09:32+01:00",
+    "ends_at": "2026-11-27T23:59:00+01:00",
+    "_identity": "wl|störung|L=40|D=2026-11-27|TK=gleisschaden betrieb ab währinger strasse volksoper"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "40: Gleisschaden Einstieg am äußeren Währinger Gürtel",
+    "description": "Gleisschaden\nEinstieg am äußeren Währinger Gürtel",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "c12b927b944ac47303547ce40c410ff6ff0ef7e577bfc2f7d9c04a8c03fba923",
+    "pubDate": "2026-11-27T18:10:32+01:00",
+    "starts_at": "2026-11-27T18:10:32+01:00",
+    "ends_at": "2026-11-27T23:59:00+01:00",
+    "_identity": "wl|störung|L=40|D=2026-11-27|TK=gleisschaden einstieg am äusseren währinger gürtel"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Fahrtbehinderung Gleisschaden",
+    "description": "Fahrtbehinderung\nGleisschaden",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "add04f5fc4fe06f051cca5632191af6cf01d9ff761a482790fc6e3a31fcfe0d2",
+    "pubDate": "2026-11-27T18:12:32+01:00",
+    "starts_at": "2026-11-27T18:12:32+01:00",
+    "ends_at": "2026-11-27T23:59:00+01:00",
+    "_identity": "wl|störung|L=41|D=2026-11-27|TK=fahrtbehinderung gleisschaden"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Gleisschaden Betrieb ab Währinger Straße, Volksoper",
+    "description": "Gleisschaden\nBetrieb ab Währinger Straße, Volksoper",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "5d0a31825eb3591bcf2f9d403ae8238af1c5c1c7a2557e4afe8b63f8edd2ed9f",
+    "pubDate": "2026-11-27T18:11:32+01:00",
+    "starts_at": "2026-11-27T18:11:32+01:00",
+    "ends_at": "2026-11-27T23:59:00+01:00",
+    "_identity": "wl|störung|L=41|D=2026-11-27|TK=gleisschaden betrieb ab währinger strasse volksoper"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "41: Gleisschaden Einstieg am äußeren Währinger Gürtel",
+    "description": "Gleisschaden\nEinstieg am äußeren Währinger Gürtel",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "2ef15149af651eb047feab47d2d5cd34cd87fcaeb9cea6abb8357ec2f8322613",
+    "pubDate": "2026-11-27T18:12:02+01:00",
+    "starts_at": "2026-11-27T18:12:02+01:00",
+    "ends_at": "2026-11-27T23:59:00+01:00",
+    "_identity": "wl|störung|L=41|D=2026-11-27|TK=gleisschaden einstieg am äusseren währinger gürtel"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Fahrtbehinderung Gleisschaden",
+    "description": "Fahrtbehinderung\nGleisschaden",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "a695628c4f03eda0545c4e0c25fbcec9ba57c4e42aa2a3045e72dca61e506bda",
+    "pubDate": "2026-11-27T18:14:03+01:00",
+    "starts_at": "2026-11-27T18:14:03+01:00",
+    "ends_at": "2026-11-27T23:59:00+01:00",
+    "_identity": "wl|störung|L=42|D=2026-11-27|TK=fahrtbehinderung gleisschaden"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Gleisschaden Betrieb ab Währinger Straße, Volksoper",
+    "description": "Gleisschaden\nBetrieb ab Währinger Straße, Volksoper",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "9ebe05ec033b287039799fee5ea62f0d3b9ea11ec92d1b9a460a6ea1bf560bf2",
+    "pubDate": "2026-11-27T18:13:02+01:00",
+    "starts_at": "2026-11-27T18:13:02+01:00",
+    "ends_at": "2026-11-27T23:59:00+01:00",
+    "_identity": "wl|störung|L=42|D=2026-11-27|TK=gleisschaden betrieb ab währinger strasse volksoper"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "42: Gleisschaden Einstieg am äußeren Währinger Gürtel",
+    "description": "Gleisschaden\nEinstieg am äußeren Währinger Gürtel",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "f7723e6da666a13add2ff8567869aea9ac313091f7328149b4c3ec5d59009e0a",
+    "pubDate": "2026-11-27T18:13:34+01:00",
+    "starts_at": "2026-11-27T18:13:34+01:00",
+    "ends_at": "2026-11-27T23:59:00+01:00",
+    "_identity": "wl|störung|L=42|D=2026-11-27|TK=gleisschaden einstieg am äusseren währinger gürtel"
   },
   {
     "source": "Wiener Linien",
@@ -1098,22 +1310,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "6: Verkehrsunfall",
-    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "0db792f9373b33394ac9cbd54fe89c56f58770700c324d59539bd75f7e841cff",
-    "pubDate": "2026-11-27T15:21:00+01:00",
-    "starts_at": "2026-11-27T15:21:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=6|D=2026-11-27|TK=6 verkehrsunfall",
-    "_wl_ids": [
-      "I20261127-0043"
-    ],
-    "_incident_start": "2026-11-27T15:21:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "74A: Einstieg Leberstraße vor S-Bahn-Gebäude",
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -1134,6 +1330,38 @@
     "starts_at": "2026-11-25T00:00:28+01:00",
     "ends_at": "2026-11-27T23:59:59+01:00",
     "_identity": "wl|störung|L=80A|D=2026-11-25|TK=betrieb ab vivariumstrasse 2"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "D: Demonstration Einstieg gegenüber für Richtung Absberggasse",
+    "description": "Linie D: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "23617704b0adedf9ec79e6ea20280c4a9295bcef03cad548c5faed81118dda8e",
+    "pubDate": "2026-11-27T17:23:00+01:00",
+    "starts_at": "2026-11-27T17:42:28+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=D|D=2026-11-27|TK=demonstration",
+    "_wl_ids": [
+      "I20261127-0051"
+    ],
+    "_incident_start": "2026-11-27T17:23:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U2: Betriebsstörung",
+    "description": "Linie U2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4",
+    "pubDate": "2026-11-27T18:44:00+01:00",
+    "starts_at": "2026-11-27T18:44:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U2|D=2026-11-27|TK=u2 betriebsstörung",
+    "_wl_ids": [
+      "I20261127-0057"
+    ],
+    "_incident_start": "2026-11-27T18:44:00+01:00"
   },
   {
     "source": "Wiener Linien",
