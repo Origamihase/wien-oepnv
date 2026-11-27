@@ -1,7 +1,78 @@
 {
  "version": 1,
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
- "tickers": [],
+ "tickers": [
+  {
+   "key": "R367-105|2026-11-27T11:19:49.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R367-105",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-27T12:19:00.000+0100",
+   "incident": "I20261127-0022"
+  },
+  {
+   "key": "R374-105|2026-11-27T11:19:49.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R374-105",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-27T12:19:00.000+0100",
+   "incident": "I20261127-0022"
+  },
+  {
+   "key": "R375-105|2026-11-27T11:19:49.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R375-105",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-27T12:19:00.000+0100",
+   "incident": "I20261127-0022"
+  },
+  {
+   "key": "R377-105|2026-11-27T11:19:51.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R377-105",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-27T12:19:00.000+0100",
+   "incident": "I20261127-0022"
+  },
+  {
+   "key": "R379-105|2026-11-27T11:19:51.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R379-105",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-27T12:19:00.000+0100",
+   "incident": "I20261127-0022"
+  },
+  {
+   "key": "R380-105|2026-11-27T11:25:22.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R380-105",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-27T12:24:00.000+0100",
+   "incident": "I20261127-0022"
+  },
+  {
+   "key": "R381-105|2026-11-27T11:25:22.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R381-105",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-27T12:24:00.000+0100",
+   "incident": "I20261127-0022"
+  },
+  {
+   "key": "R382-105|2026-11-27T11:25:22.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R382-105",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-27T12:24:00.000+0100",
+   "incident": "I20261127-0022"
+  },
+  {
+   "key": "R383-105|2026-11-27T11:28:22.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R383-105",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-27T12:27:00.000+0100",
+   "incident": "I20261127-0022"
+  },
+  {
+   "key": "R384-105|2026-11-27T11:28:22.000+0100|Fahrtbehinderung\nFalschparker",
+   "name": "R384-105",
+   "title": "Fahrtbehinderung\nFalschparker",
+   "end": "2026-11-27T12:27:00.000+0100",
+   "incident": "I20261127-0022"
+  }
+ ],
  "owners": {
   "R1531-160|2026-11-27T10:42:18.000+0100": {
    "incident": "I20261127-0011",
@@ -91,18 +162,6 @@
    "incident": "I20261127-0011",
    "title": "Gleisschaden\nBetrieb ab Wattmanngasse"
   },
-  "R1636-160|2026-11-27T10:24:46.000+0100": {
-   "incident": "I20261127-0011",
-   "title": "Fahrtbehinderung\nwegen Fahrbanschäden "
-  },
-  "R1638-160|2026-11-27T10:24:46.000+0100": {
-   "incident": "I20261127-0011",
-   "title": "Fahrtbehinderung\nwegen Fahrbanschäden "
-  },
-  "R1639-160|2026-11-27T10:24:46.000+0100": {
-   "incident": "I20261127-0011",
-   "title": "Fahrtbehinderung\nwegen Fahrbanschäden "
-  },
   "R1728-162|2026-11-27T07:51:00.000+0100": {
    "incident": "I20261127-0011",
    "title": "Fahrtbehinderung\nGleisschaden"
@@ -135,6 +194,46 @@
    "incident": "I20261127-0019",
    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
   },
+  "R367-105|2026-11-27T11:19:49.000+0100": {
+   "incident": "I20261127-0022",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R374-105|2026-11-27T11:19:49.000+0100": {
+   "incident": "I20261127-0022",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R375-105|2026-11-27T11:19:49.000+0100": {
+   "incident": "I20261127-0022",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R377-105|2026-11-27T11:19:51.000+0100": {
+   "incident": "I20261127-0022",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R379-105|2026-11-27T11:19:51.000+0100": {
+   "incident": "I20261127-0022",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R380-105|2026-11-27T11:25:22.000+0100": {
+   "incident": "I20261127-0022",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R381-105|2026-11-27T11:25:22.000+0100": {
+   "incident": "I20261127-0022",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R382-105|2026-11-27T11:25:22.000+0100": {
+   "incident": "I20261127-0022",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R383-105|2026-11-27T11:28:22.000+0100": {
+   "incident": "I20261127-0022",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
+  "R384-105|2026-11-27T11:28:22.000+0100": {
+   "incident": "I20261127-0022",
+   "title": "Fahrtbehinderung\nFalschparker"
+  },
   "R521-109|2026-11-27T10:45:18.000+0100": {
    "incident": "I20261127-0019",
    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
@@ -146,10 +245,6 @@
   "R552-109|2026-11-27T10:45:18.000+0100": {
    "incident": "I20261127-0019",
    "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-  },
-  "R574-160|2026-11-27T10:24:46.000+0100": {
-   "incident": "I20261127-0011",
-   "title": "Fahrtbehinderung\nwegen Fahrbanschäden "
   },
   "R577-160|2026-11-27T10:34:17.000+0100": {
    "incident": "I20261127-0011",
