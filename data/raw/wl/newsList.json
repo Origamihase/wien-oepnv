@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_212, ftazW_1016948, ftazW_593"
+    "trafficInfoNameList": "ftazW_212, ftazW_1016948, ftazW_593, ftazW_594, ftazW_1016949, ftazW_1353814"
    }
   ],
   "poiCategoryGroups": [
@@ -3188,8 +3188,8 @@
      ],
      "reason": "",
      "relatedLines": [
-      "U1",
-      "U2"
+      "U2",
+      "U1"
      ],
      "station": "Praterstern",
      "status": "geplante Wartung",
@@ -3203,8 +3203,8 @@
     "reasonName": "undefined",
     "refPoiCategoryId": -1,
     "relatedLines": [
-     "U1",
-     "U2"
+     "U2",
+     "U1"
     ],
     "relatedStops": [
      4117
@@ -3214,6 +3214,77 @@
      "start": "2026-11-29T20:45:00.000+0100"
     },
     "title": "Praterstern"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "30.11.2026 05:15",
+     "ausVon": "30.11.2026 01:15",
+     "location": "U1 Bahnsteig Richtung Oberlaa - Zwischengeschoss Zugang U2 - Ausgang Lassallestraße",
+     "rbls": [
+      4112
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2",
+      "U1"
+     ],
+     "station": "Praterstern",
+     "status": "geplante Wartung",
+     "towards": "U1 Oberlaa"
+    },
+    "description": "U1 Bahnsteig Richtung Oberlaa - Zwischengeschoss Zugang U2 - Ausgang Lassallestraße",
+    "elevatorId": "PR 02",
+    "name": "ftazW_1016949",
+    "parentName": "ftazW_1016949",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2",
+     "U1"
+    ],
+    "relatedStops": [
+     4112
+    ],
+    "time": {
+     "end": "2026-11-30T05:15:00.000+0100",
+     "start": "2026-11-30T01:15:00.000+0100"
+    },
+    "title": "Praterstern"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "30.11.2026 05:15",
+     "ausVon": "30.11.2026 01:15",
+     "location": "Ausgang Schedifkaplatz - Zwischengeschoß Zugang ÖBB",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Bahnhof Meidling",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Ausgang Schedifkaplatz - Zwischengeschoß Zugang ÖBB",
+    "elevatorId": "PH 03",
+    "name": "ftazW_1353814",
+    "parentName": "ftazW_1353814",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "time": {
+     "end": "2026-11-30T05:15:00.000+0100",
+     "start": "2026-11-30T01:15:00.000+0100"
+    },
+    "title": "Bahnhof Meidling"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3281,6 +3352,43 @@
     "time": {
      "end": "2026-11-30T00:45:00.000+0100",
      "start": "2026-11-29T20:45:00.000+0100"
+    },
+    "title": "Hietzing"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "30.11.2026 05:15",
+     "ausVon": "30.11.2026 01:15",
+     "location": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Kennedybrücke",
+     "rbls": [
+      4428
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Hietzing",
+     "status": "geplante Wartung",
+     "towards": "U4 Hütteldorf"
+    },
+    "description": "U4 Bahnsteig Richtung Hütteldorf - Ausgang Kennedybrücke",
+    "elevatorId": "HI 02",
+    "name": "ftazW_594",
+    "parentName": "ftazW_594",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4428
+    ],
+    "time": {
+     "end": "2026-11-30T05:15:00.000+0100",
+     "start": "2026-11-30T01:15:00.000+0100"
     },
     "title": "Hietzing"
    }
