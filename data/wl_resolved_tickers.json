@@ -74,25 +74,9 @@
   }
  ],
  "owners": {
-  "R1531-160|2026-11-27T10:42:18.000+0100": {
-   "incident": "I20261127-0011",
-   "title": "Fahrtbehinderung\nwegen Fahrbanschäden"
-  },
-  "R1532-160|2026-11-27T10:42:18.000+0100": {
-   "incident": "I20261127-0011",
-   "title": "Fahrtbehinderung\nwegen Fahrbanschäden"
-  },
-  "R1548-160|2026-11-27T10:42:18.000+0100": {
-   "incident": "I20261127-0011",
-   "title": "Fahrtbehinderung\nwegen Fahrbanschäden"
-  },
-  "R1559-160|2026-11-27T10:34:17.000+0100": {
-   "incident": "I20261127-0011",
-   "title": "Fahrtbehinderung\nwegen Fahrbanschäden"
-  },
-  "R1562-160|2026-11-27T10:34:17.000+0100": {
-   "incident": "I20261127-0011",
-   "title": "Fahrtbehinderung\nwegen Fahrbanschäden"
+  "R1345-143|2026-11-27T11:52:55.000+0100": {
+   "incident": "I20261127-0025",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
   },
   "R1606-160|2026-11-27T07:47:31.000+0100": {
    "incident": "I20261127-0011",
@@ -178,21 +162,40 @@
    "incident": "I20261127-0011",
    "title": "Gleisschaden\nBetrieb ab Wattmanngasse"
   },
+  "R230-143|2026-11-27T11:42:54.000+0100": {
+   "incident": "I20261127-0025",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R231-143|2026-11-27T11:42:54.000+0100": {
+   "incident": "I20261127-0025",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
   "R232-143|2026-11-27T10:44:48.000+0100": {
-   "incident": "I20261127-0019",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   "incident": "I20261127-0025",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "begin": "2026-11-27T11:41:00+01:00"
   },
   "R233-143|2026-11-27T10:44:48.000+0100": {
-   "incident": "I20261127-0019",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   "incident": "I20261127-0025",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "begin": "2026-11-27T11:41:00+01:00"
   },
   "R234-143|2026-11-27T10:44:48.000+0100": {
-   "incident": "I20261127-0019",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+   "incident": "I20261127-0025",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
+   "begin": "2026-11-27T11:41:00+01:00"
   },
-  "R235-143|2026-11-27T10:44:48.000+0100": {
-   "incident": "I20261127-0019",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  "R235-143|2026-11-27T11:50:25.000+0100": {
+   "incident": "I20261127-0025",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R236-143|2026-11-27T11:50:25.000+0100": {
+   "incident": "I20261127-0025",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  },
+  "R237-143|2026-11-27T11:50:25.000+0100": {
+   "incident": "I20261127-0025",
+   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
   },
   "R367-105|2026-11-27T11:19:49.000+0100": {
    "incident": "I20261127-0022",
@@ -233,22 +236,6 @@
   "R384-105|2026-11-27T11:28:22.000+0100": {
    "incident": "I20261127-0022",
    "title": "Fahrtbehinderung\nFalschparker"
-  },
-  "R521-109|2026-11-27T10:45:18.000+0100": {
-   "incident": "I20261127-0019",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-  },
-  "R550-109|2026-11-27T10:45:18.000+0100": {
-   "incident": "I20261127-0019",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-  },
-  "R552-109|2026-11-27T10:45:18.000+0100": {
-   "incident": "I20261127-0019",
-   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
-  },
-  "R577-160|2026-11-27T10:34:17.000+0100": {
-   "incident": "I20261127-0011",
-   "title": "Fahrtbehinderung\nwegen Fahrbanschäden"
   }
  }
 }

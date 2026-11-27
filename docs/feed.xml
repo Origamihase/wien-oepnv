@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 27 Nov 2026 11:30:31 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 12:00:59 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[43: Rettungseinsatz]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">17e9a7fed1e0eaa8f6fe38b93eacaf76eb3ca142bc9e11cc7a41ff2d3a0a9991</guid>
+      <pubDate>Fri, 27 Nov 2026 11:41:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 27 Nov 2026 11:41:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 27 Nov 2026 11:52:55 +0100</ext:starts_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 11:41]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 11:41]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[13A: Rettungseinsatz]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -20,6 +33,7 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 27 Nov 2026 11:27:00 +0100</ext:first_seen>
       <ext:starts_at>Fri, 27 Nov 2026 11:27:00 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 27 Nov 2026 12:06:00 +0100</ext:ends_at>
       <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 11:27]</description>
       <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 11:27]]]></content:encoded>
     </item>
@@ -48,60 +62,6 @@
       <ext:starts_at>Fri, 27 Nov 2026 11:15:00 +0100</ext:starts_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall. [Seit 11:15]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.<br/>[Seit 11:15]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7</guid>
-      <pubDate>Fri, 27 Nov 2026 10:45:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 27 Nov 2026 10:45:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 27 Nov 2026 10:45:00 +0100</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 10:45]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 10:45]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[43: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">dc09402e317ed165e2af41fc0b35a65fcb1e12403d5cf26ffce248afe14ab350</guid>
-      <pubDate>Fri, 27 Nov 2026 10:43:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 27 Nov 2026 10:43:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 27 Nov 2026 10:44:48 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 27 Nov 2026 11:44:00 +0100</ext:ends_at>
-      <description>Fahrtbehinderung. [Seit 10:43]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 10:43]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[9: Feuerwehreinsatz]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">f70728020da97caa07e51eff2736191c9f68e1ac73881b3b2ca28860486dd22d</guid>
-      <pubDate>Fri, 27 Nov 2026 10:43:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 27 Nov 2026 10:43:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 27 Nov 2026 10:45:18 +0100</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 10:43]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 10:43]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60: Fahrbanschäden]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">f9b13667662928df70090f280d1196cb3b0f8392d9dee2cc930b75488aa23959</guid>
-      <pubDate>Fri, 27 Nov 2026 10:22:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 27 Nov 2026 10:30:32 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 27 Nov 2026 10:42:18 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 27 Nov 2026 11:41:00 +0100</ext:ends_at>
-      <description>Fahrtbehinderung. [Seit 10:22]</description>
-      <content:encoded><![CDATA[Fahrtbehinderung.<br/>[Seit 10:22]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[41/10A: Schadhaftes Fahrzeug]]></title>
@@ -142,6 +102,48 @@
       <ext:ends_at>Sat, 12 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Wegen Bauarbeiten im Bereich Adolf-Loos-Gasse werden die Busse der Linien 29B und N25 umgeleitet. [Ab Mo 30.11. bis 12.12.]</description>
       <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Adolf-Loos-Gasse werden die Busse der Linien 29B und N25 umgeleitet.<br/>[Ab Mo 30.11. bis 12.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/2/71/D/1A/2A/3A: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">0193b3f4313f0adc0dfbb75d880f74695f85fbde95f0e98a8efc43e1e46e65b7</guid>
+      <pubDate>Wed, 25 Nov 2026 12:52:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 27 Nov 2026 00:00:59 +0100</ext:first_seen>
+      <ext:starts_at>Sat, 28 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Sun, 29 Nov 2026 18:00:00 +0100</ext:ends_at>
+      <description>Wegen einer Demonstration in der inneren Stadt kommt es zu Verkehrsmaßnahmen. Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Stubentor … [Ab Sa 28.11. bis So 29.11.]</description>
+      <content:encoded><![CDATA[Wegen einer Demonstration in der inneren Stadt kommt es zu Verkehrsmaßnahmen. Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Stubentor …<br/>[Ab Sa 28.11. bis So 29.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1A/2A/3A/13A: Weihnachtseinkaufstage 2026]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">54250045568ba6372ffa5afbce409bc57aa1fc0e12bad9ebcb94794122b19614</guid>
+      <pubDate>Sun, 15 Nov 2026 00:00:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 27 Nov 2026 00:00:59 +0100</ext:first_seen>
+      <ext:starts_at>Sat, 28 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Sat, 19 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>An den Samstagen vor Weihnachten sowie am 8. Dezember kommt es zu Linien- und Intervallanpassungen im Netz. [Ab Sa 28.11. bis 19.12.]</description>
+      <content:encoded><![CDATA[An den Samstagen vor Weihnachten sowie am 8. Dezember kommt es zu Linien- und Intervallanpassungen im Netz.<br/>[Ab Sa 28.11. bis 19.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[60A: Veranstaltung am 27. und 28.11.2026]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">7922a9a36546404e6be9f65e8ad96bba3f8d23999a6635a6d256c6b60e8dc542</guid>
+      <pubDate>Wed, 04 Nov 2026 10:53:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Thu, 26 Nov 2026 00:00:56 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 27 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Sat, 28 Nov 2026 22:00:00 +0100</ext:ends_at>
+      <description>Wegen einer Veranstaltung in der Endresstraße wird die Linie 60A umgeleitet. Linie 60A: Umleitung in beiden Richtungen über Speisinger Straße - Franz-Graßler-Gasse … [Bis Sa 28.11.]</description>
+      <content:encoded><![CDATA[Wegen einer Veranstaltung in der Endresstraße wird die Linie 60A umgeleitet. Linie 60A: Umleitung in beiden Richtungen über Speisinger Straße - Franz-Graßler-Gasse …<br/>[Bis Sa 28.11.]]]></content:encoded>
     </item>
   </channel>
 </rss>
