@@ -1,39 +1,43 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-27T15:00:52.408556+00:00",
- "built": "2026-11-27T16:00:39+01:00",
+ "updated": "2026-11-27T15:30:59.871760+00:00",
+ "built": "2026-11-27T16:30:41+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-27T16:00:39+01:00",
+  "built": "2026-11-27T16:30:41+01:00",
   "items": [
    {
-    "title": "27/30/31: Rettungseinsatz, Betriebsstörung",
-    "time_line": "Seit 15:49"
+    "title": "40: Falschparker",
+    "time_line": "Seit 16:15"
+   },
+   {
+    "title": "41: Falschparker",
+    "time_line": "Seit 16:15"
+   },
+   {
+    "title": "27: Rettungseinsatz, Betriebsstörung",
+    "time_line": "Seit 15:47"
+   },
+   {
+    "title": "30/31: Rettungseinsatz, Betriebsstörung",
+    "time_line": "Seit 15:48"
    },
    {
     "title": "U1: Betriebsstörung",
     "time_line": "Seit 15:47"
    },
    {
-    "title": "11: Verkehrsunfall",
-    "time_line": "Seit 15:21"
-   },
-   {
     "title": "8A/63A: Betriebsstörung",
     "time_line": "Seit 15:16"
    },
    {
-    "title": "1/6: Verkehrsunfall",
+    "title": "1/6/11: Verkehrsunfall",
     "time_line": "Seit 15:21"
    },
    {
-    "title": "52: Schadhafter Zug",
-    "time_line": "Seit 14:58"
-   },
-   {
-    "title": "49: Schadhaftes Fahrzeug",
+    "title": "49/52: Schadhaftes Fahrzeug",
     "time_line": "Seit 14:58"
    },
    {
@@ -43,55 +47,11 @@
    {
     "title": "25: Schadhaftes Fahrzeug",
     "time_line": "Seit 14:38"
-   },
-   {
-    "title": "U3: Schadhaftes Fahrzeug",
-    "time_line": "Seit 14:24"
    }
   ]
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-20T15:01:00.422286+00:00",
-   "raw": {
-    "wl-stoerungen": 77,
-    "wl-hinweise": 68,
-    "oebb": 166,
-    "baustellen-linien": 51,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 11,
-    "oebb": 141,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 11,
-    "wl": 86
-   }
-  },
-  {
-   "t": "2026-11-20T15:30:54.276562+00:00",
-   "raw": {
-    "wl-stoerungen": 87,
-    "wl-hinweise": 68,
-    "oebb": 166,
-    "baustellen-linien": 51,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 11,
-    "oebb": 141,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 11,
-    "wl": 94
-   }
-  },
   {
    "t": "2026-11-20T16:00:55.653859+00:00",
    "raw": {
@@ -6791,17 +6751,37 @@
     "oebb": 13,
     "wl": 108
    }
+  },
+  {
+   "t": "2026-11-27T15:30:59.871760+00:00",
+   "raw": {
+    "wl-stoerungen": 173,
+    "wl-hinweise": 72,
+    "oebb": 177,
+    "baustellen-linien": 47,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 12,
+    "oebb": 151,
+    "baustellen": 57
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 13,
+    "wl": 107
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-27T15:00:52.408556+00:00"
+   "last_ok": "2026-11-27T15:30:59.871760+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-27T15:00:52.408556+00:00"
+   "last_ok": "2026-11-27T15:30:59.871760+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-27T15:00:52.408556+00:00"
+   "last_ok": "2026-11-27T15:30:59.871760+00:00"
   }
  }
 }
