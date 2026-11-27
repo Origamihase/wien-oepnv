@@ -55,12 +55,12 @@
     },
     "total": 2000
   },
-  "generated_at": "2026-11-27T12:30:40+01:00",
+  "generated_at": "2026-11-27T13:01:27+01:00",
   "schema_version": 1,
   "stammstrecke": {
     "avg_delay_minutes": 0.88,
     "by_direction": {
-      "Meidling": 8041,
+      "Meidling": 8042,
       "Praterstern": 3830
     },
     "by_hour_avg": {
@@ -92,7 +92,7 @@
     "by_weekday_avg": {
       "Di": 0.93,
       "Do": 0.89,
-      "Fr": 0.95,
+      "Fr": 0.94,
       "Mi": 1.18,
       "Mo": 1.0,
       "Sa": 0.61,
@@ -102,19 +102,19 @@
       "corridor_silence_hours": 8.0,
       "directions": {
         "Meidling": {
-          "last_seen": "2026-11-27T12:17:00+01:00",
+          "last_seen": "2026-11-27T12:55:00+01:00",
           "peer_rows_since": 0,
           "rows_in_window": 1192
         },
         "Praterstern": {
           "last_seen": "2026-08-14T13:57:00+02:00",
-          "peer_rows_since": 4191,
+          "peer_rows_since": 4192,
           "rows_in_window": 0
         }
       },
       "peer_rows_required": 6,
       "poll": {
-        "last_success": "2026-11-27T12:30:30+01:00",
+        "last_success": "2026-11-27T13:01:13+01:00",
         "stale_hours": 3.0
       },
       "silence_hours": 1.0,
@@ -128,7 +128,7 @@
     "max_delay_minutes": 203.0,
     "threshold_exceedances": 158,
     "threshold_minutes": 9.0,
-    "total_observations": 11871
+    "total_observations": 11872
   },
   "stoerungen": {
     "by_hour": {
@@ -145,7 +145,7 @@
       "10": 308,
       "11": 341,
       "12": 365,
-      "13": 390,
+      "13": 393,
       "14": 395,
       "15": 403,
       "16": 411,
@@ -160,19 +160,19 @@
     "by_provider": {
       "Stadt Wien – Baustellen": 180,
       "VOR/VAO": 13,
-      "Wiener Linien": 5605,
-      "ÖBB": 350
+      "Wiener Linien": 5607,
+      "ÖBB": 351
     },
     "by_weekday": {
       "Di": 919,
       "Do": 1071,
-      "Fr": 1015,
+      "Fr": 1018,
       "Mi": 894,
       "Mo": 832,
       "Sa": 752,
       "So": 665
     },
-    "total": 6148
+    "total": 6151
   },
   "year": 2026
 }

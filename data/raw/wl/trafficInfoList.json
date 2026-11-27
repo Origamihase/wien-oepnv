@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261127-0027-F01, I20261020-0029, I20261127-0021, I20261127-0022-F01, I20261127-0011, I20261127-0025-F01, I20261127-0026-F01, I20261127-0014-F04, I20261127-0026-F02, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261127-0027-F01, I20261020-0029, I20261127-0022-F01, I20261127-0011, I20261127-0025-F01, I20261127-0028-F01, I20261127-0030-F01, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1875-101, R1876-101, R1880-101, R1881-101, R1884-101, R1883-101, R1882-101, R2380-627, R2373-127, R2373-125, R2372-125, R2370-125, R2343-125, R2359-125, R2371-125, R2378-627, R2558-125, R2343-626, R2373-126, R2345-127, R2379-627, R3886-480, R318-437, R293-474, R401-101, R1974-466, R1199-205, R500-101, R1619-160, R1606-160, R1615-160, R1616-160, R1617-160, R1618-160, R1620-160, R1607-160, R1630-160, R1629-160, R1625-160, R1633-160, R1632-160, R1631-160, R1634-160, R1728-162, R1616-162, R1737-162, R1735-162, R1738-162, R1634-162, R234-143, R233-143, R232-143, R231-143, R230-143, R235-143, R236-143, R237-143, R1345-143, R2205-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1875-101, R1876-101, R1880-101, R1884-101, R1883-101, R1882-101, R1881-101, R2380-627, R2343-125, R2370-125, R2372-125, R2373-125, R2373-127, R2379-627, R2359-125, R2558-125, R2343-626, R2378-627, R2371-125, R2373-126, R2345-127, R3886-480, R318-437, R401-101, R293-474, R1974-466, R1199-205, R500-101, R1615-160, R1606-160, R1616-160, R1617-160, R1618-160, R1619-160, R1620-160, R1629-160, R1607-160, R1625-160, R1630-160, R1631-160, R1632-160, R1633-160, R1634-160, R1728-162, R1616-162, R1735-162, R1738-162, R1737-162, R1634-162, R2205-0, R236-144, R237-144, R1373-144, R1372-144, R1371-144, R1345-144, R1360-144, R218-144, R217-144, R219-144, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -223,99 +223,6 @@
     "title": "60, 62: Gleisschaden"
    },
    {
-    "alertCause": "defective vehicle",
-    "alertCauseId": 53,
-    "attributes": {
-     "relatedLineTypes": {
-      "10A": "ptBusCity"
-     }
-    },
-    "description": "Linie 10A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 10A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 10A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 10A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "10A: Schadhaftes Fahrzeug"
-      }
-     }
-    ],
-    "name": "I20261127-0014-F04",
-    "owner": "WL",
-    "parentName": "I20261127-0014",
-    "priority": "1",
-    "reasonId": 20,
-    "reasonName": "Schadhaftes Fahrzeug",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "10A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 410,
-      "lineName": "10A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "relatedStops": [
-     521
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-27T09:35:00.000+0100",
-     "lastUpdate": "2026-11-27T09:35:00.000+0100",
-     "resume": "2026-11-27T09:35:00.000+0100",
-     "start": "2026-11-27T08:46:00.000+0100"
-    },
-    "title": "10A: Schadhaftes Fahrzeug"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "17A": "ptBusCity"
-     }
-    },
-    "description": "Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-    "descriptionHTML": "<p>Linie 17A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 17A:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Verkehrsunfall.</p>",
-       "descriptionPlain": "Linie 17A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Verkehrsunfall.",
-       "title": "17A: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261127-0021",
-    "owner": "WL",
-    "parentName": "I20261127-0021",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "17A"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 417,
-      "lineName": "17A",
-      "vehicleType": "ptBusCity"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-27T11:16:00.000+0100",
-     "lastUpdate": "2026-11-27T11:16:00.000+0100",
-     "resume": "2026-11-27T11:15:00.000+0100",
-     "start": "2026-11-27T11:15:00.000+0100"
-    },
-    "title": "17A: Verkehrsunfall"
-   },
-   {
     "alertCause": "vehicle on the line",
     "alertCauseId": 71,
     "attributes": {
@@ -410,98 +317,6 @@
     "title": "43: Rettungseinsatz"
    },
    {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "30": "ptTram"
-     }
-    },
-    "description": "Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 30: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 30: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 30: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "30: Polizeieinsatz"
-      }
-     }
-    ],
-    "location": "Brünner Straße / Weisselgasse",
-    "name": "I20261127-0026-F01",
-    "owner": "WL",
-    "parentName": "I20261127-0026",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "30"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 130,
-      "lineName": "30",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-27T12:11:00.000+0100",
-     "lastUpdate": "2026-11-27T12:11:00.000+0100",
-     "resume": "2026-11-27T12:11:00.000+0100",
-     "start": "2026-11-27T12:02:00.000+0100"
-    },
-    "title": "30: Polizeieinsatz"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
-      "31": "ptTram"
-     }
-    },
-    "description": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 31: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 31: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "31: Polizeieinsatz"
-      }
-     }
-    ],
-    "location": "Brünner Straße / Weisselgasse",
-    "name": "I20261127-0026-F02",
-    "owner": "WL",
-    "parentName": "I20261127-0026",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "31"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 131,
-      "lineName": "31",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-27T12:11:00.000+0100",
-     "lastUpdate": "2026-11-27T12:11:00.000+0100",
-     "resume": "2026-11-27T12:11:00.000+0100",
-     "start": "2026-11-27T12:02:00.000+0100"
-    },
-    "title": "31: Polizeieinsatz"
-   },
-   {
     "alertCause": "miscellaneous",
     "alertCauseId": 137,
     "attributes": {
@@ -548,6 +363,100 @@
     "title": "U1: Betriebsstörung"
    },
    {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "44": "ptTram"
+     }
+    },
+    "description": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 44: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 44: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "44: Schadhafter PKW"
+      }
+     }
+    ],
+    "name": "I20261127-0028-F01",
+    "owner": "WL",
+    "parentName": "I20261127-0028",
+    "priority": "1",
+    "reasonId": 18,
+    "reasonName": "Schadhafter PKW",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 144,
+      "lineName": "44",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "relatedStops": [
+     1361
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-27T12:44:00.000+0100",
+     "lastUpdate": "2026-11-27T12:44:00.000+0100",
+     "resume": "2026-11-27T12:44:00.000+0100",
+     "start": "2026-11-27T12:34:00.000+0100"
+    },
+    "title": "44: Schadhafter PKW"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "92A": "ptBusCity"
+     }
+    },
+    "description": "Linie 92A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 92A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 92A: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 92A: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "92A: Falschparker"
+      }
+     }
+    ],
+    "location": "Schüttaustraße / Mendelssohngasse",
+    "name": "I20261127-0030-F01",
+    "owner": "WL",
+    "parentName": "I20261127-0030",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "92A"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 492,
+      "lineName": "92A",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-27T12:44:00.000+0100",
+     "lastUpdate": "2026-11-27T12:44:00.000+0100",
+     "resume": "2026-11-27T12:44:00.000+0100",
+     "start": "2026-11-27T12:38:00.000+0100"
+    },
+    "title": "92A: Falschparker"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -573,25 +482,117 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R1345-143",
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "name": "R1345-144",
     "owner": "WL",
-    "parentName": "R1345-143",
+    "parentName": "R1345-144",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "43"
+     "44"
     ],
     "relatedStops": [
      1345
     ],
     "time": {
-     "end": "2026-11-27T12:52:00.000+0100",
-     "start": "2026-11-27T11:52:55.000+0100"
+     "end": "2026-11-27T13:33:00.000+0100",
+     "start": "2026-11-27T12:34:29.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Fahrtbehinderung\nSchadhafter Pkw"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "name": "R1360-144",
+    "owner": "WL",
+    "parentName": "R1360-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     1360
+    ],
+    "time": {
+     "end": "2026-11-27T13:39:00.000+0100",
+     "start": "2026-11-27T12:39:29.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Pkw"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "name": "R1371-144",
+    "owner": "WL",
+    "parentName": "R1371-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     1371
+    ],
+    "time": {
+     "end": "2026-11-27T13:33:00.000+0100",
+     "start": "2026-11-27T12:34:29.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Pkw"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "name": "R1372-144",
+    "owner": "WL",
+    "parentName": "R1372-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     1372
+    ],
+    "time": {
+     "end": "2026-11-27T13:33:00.000+0100",
+     "start": "2026-11-27T12:34:29.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Pkw"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "name": "R1373-144",
+    "owner": "WL",
+    "parentName": "R1373-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     1373
+    ],
+    "time": {
+     "end": "2026-11-27T13:33:00.000+0100",
+     "start": "2026-11-27T12:34:29.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Pkw"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1263,6 +1264,75 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "name": "R217-144",
+    "owner": "WL",
+    "parentName": "R217-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     217
+    ],
+    "time": {
+     "end": "2026-11-27T13:39:00.000+0100",
+     "start": "2026-11-27T12:39:29.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Pkw"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "name": "R218-144",
+    "owner": "WL",
+    "parentName": "R218-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     218
+    ],
+    "time": {
+     "end": "2026-11-27T13:39:00.000+0100",
+     "start": "2026-11-27T12:39:29.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Pkw"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "name": "R219-144",
+    "owner": "WL",
+    "parentName": "R219-144",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "44"
+    ],
+    "relatedStops": [
+     219
+    ],
+    "time": {
+     "end": "2026-11-27T13:39:00.000+0100",
+     "start": "2026-11-27T12:39:29.000+0100"
+    },
+    "title": "Fahrtbehinderung\nSchadhafter Pkw"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Polizeieinsatz\nZüge halten Peitlgasse 8\n\n",
     "name": "R2205-0",
     "owner": "WL",
@@ -1279,121 +1349,6 @@
      "start": "2026-11-27T12:05:26.000+0100"
     },
     "title": "Polizeieinsatz\nZüge halten Peitlgasse 8\n\n"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R230-143",
-    "owner": "WL",
-    "parentName": "R230-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     230
-    ],
-    "time": {
-     "end": "2026-11-27T12:42:00.000+0100",
-     "start": "2026-11-27T11:42:54.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R231-143",
-    "owner": "WL",
-    "parentName": "R231-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     231
-    ],
-    "time": {
-     "end": "2026-11-27T12:42:00.000+0100",
-     "start": "2026-11-27T11:42:54.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R232-143",
-    "owner": "WL",
-    "parentName": "R232-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     232
-    ],
-    "time": {
-     "end": "2026-11-27T12:42:00.000+0100",
-     "start": "2026-11-27T10:44:48.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R233-143",
-    "owner": "WL",
-    "parentName": "R233-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     233
-    ],
-    "time": {
-     "end": "2026-11-27T12:42:00.000+0100",
-     "start": "2026-11-27T10:44:48.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R234-143",
-    "owner": "WL",
-    "parentName": "R234-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     234
-    ],
-    "time": {
-     "end": "2026-11-27T12:42:00.000+0100",
-     "start": "2026-11-27T10:44:48.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1467,29 +1422,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R235-143",
-    "owner": "WL",
-    "parentName": "R235-143",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "43"
-    ],
-    "relatedStops": [
-     235
-    ],
-    "time": {
-     "end": "2026-11-27T12:45:00.000+0100",
-     "start": "2026-11-27T11:50:25.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Ersatzbus 26E\nhält Karl-Waldbrunner-Platz vor Schloßhofer Straße",
     "name": "R2359-125",
     "owner": "WL",
@@ -1513,48 +1445,48 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R236-143",
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "name": "R236-144",
     "owner": "WL",
-    "parentName": "R236-143",
+    "parentName": "R236-144",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "43"
+     "44"
     ],
     "relatedStops": [
      236
     ],
     "time": {
-     "end": "2026-11-27T12:45:00.000+0100",
-     "start": "2026-11-27T11:50:25.000+0100"
+     "end": "2026-11-27T13:33:00.000+0100",
+     "start": "2026-11-27T12:34:29.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Fahrtbehinderung\nSchadhafter Pkw"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Rettungseinsatz",
-    "name": "R237-143",
+    "description": "Fahrtbehinderung\nSchadhafter Pkw",
+    "name": "R237-144",
     "owner": "WL",
-    "parentName": "R237-143",
+    "parentName": "R237-144",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "43"
+     "44"
     ],
     "relatedStops": [
      237
     ],
     "time": {
-     "end": "2026-11-27T12:50:00.000+0100",
-     "start": "2026-11-27T11:50:25.000+0100"
+     "end": "2026-11-27T13:33:00.000+0100",
+     "start": "2026-11-27T12:34:29.000+0100"
     },
-    "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+    "title": "Fahrtbehinderung\nSchadhafter Pkw"
    },
    {
     "alertCause": "undefined alert cause",

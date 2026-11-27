@@ -3,9 +3,25 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R1345-143|2026-11-27T11:52:55.000+0100": {
-   "incident": "I20261127-0025",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  "R1345-144|2026-11-27T12:34:29.000+0100": {
+   "incident": "I20261127-0028",
+   "title": "Fahrtbehinderung\nSchadhafter Pkw"
+  },
+  "R1360-144|2026-11-27T12:39:29.000+0100": {
+   "incident": "I20261127-0028",
+   "title": "Fahrtbehinderung\nSchadhafter Pkw"
+  },
+  "R1371-144|2026-11-27T12:34:29.000+0100": {
+   "incident": "I20261127-0028",
+   "title": "Fahrtbehinderung\nSchadhafter Pkw"
+  },
+  "R1372-144|2026-11-27T12:34:29.000+0100": {
+   "incident": "I20261127-0028",
+   "title": "Fahrtbehinderung\nSchadhafter Pkw"
+  },
+  "R1373-144|2026-11-27T12:34:29.000+0100": {
+   "incident": "I20261127-0028",
+   "title": "Fahrtbehinderung\nSchadhafter Pkw"
   },
   "R1606-160|2026-11-27T07:47:31.000+0100": {
    "incident": "I20261127-0011",
@@ -91,40 +107,25 @@
    "incident": "I20261127-0011",
    "title": "Gleisschaden\nBetrieb ab Wattmanngasse"
   },
-  "R230-143|2026-11-27T11:42:54.000+0100": {
-   "incident": "I20261127-0025",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  "R217-144|2026-11-27T12:39:29.000+0100": {
+   "incident": "I20261127-0028",
+   "title": "Fahrtbehinderung\nSchadhafter Pkw"
   },
-  "R231-143|2026-11-27T11:42:54.000+0100": {
-   "incident": "I20261127-0025",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  "R218-144|2026-11-27T12:39:29.000+0100": {
+   "incident": "I20261127-0028",
+   "title": "Fahrtbehinderung\nSchadhafter Pkw"
   },
-  "R232-143|2026-11-27T10:44:48.000+0100": {
-   "incident": "I20261127-0025",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "begin": "2026-11-27T11:41:00+01:00"
+  "R219-144|2026-11-27T12:39:29.000+0100": {
+   "incident": "I20261127-0028",
+   "title": "Fahrtbehinderung\nSchadhafter Pkw"
   },
-  "R233-143|2026-11-27T10:44:48.000+0100": {
-   "incident": "I20261127-0025",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "begin": "2026-11-27T11:41:00+01:00"
+  "R236-144|2026-11-27T12:34:29.000+0100": {
+   "incident": "I20261127-0028",
+   "title": "Fahrtbehinderung\nSchadhafter Pkw"
   },
-  "R234-143|2026-11-27T10:44:48.000+0100": {
-   "incident": "I20261127-0025",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz",
-   "begin": "2026-11-27T11:41:00+01:00"
-  },
-  "R235-143|2026-11-27T11:50:25.000+0100": {
-   "incident": "I20261127-0025",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R236-143|2026-11-27T11:50:25.000+0100": {
-   "incident": "I20261127-0025",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
-  },
-  "R237-143|2026-11-27T11:50:25.000+0100": {
-   "incident": "I20261127-0025",
-   "title": "Fahrtbehinderung\nwegen Rettungseinsatz"
+  "R237-144|2026-11-27T12:34:29.000+0100": {
+   "incident": "I20261127-0028",
+   "title": "Fahrtbehinderung\nSchadhafter Pkw"
   }
  }
 }
