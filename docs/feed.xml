@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 27 Nov 2026 22:30:37 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 23:00:34 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[40/41: Gleisschaden]]></title>
@@ -107,34 +107,6 @@
       <content:encoded><![CDATA[Betrieb nur: 60 Westbahnhof – Hofwiesengasse; 62 Quartier Belvedere – Wattmanngasse.<br/>[Seit 07:46]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[D: Demonstration]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">23617704b0adedf9ec79e6ea20280c4a9295bcef03cad548c5faed81118dda8e</guid>
-      <pubDate>Fri, 27 Nov 2026 17:23:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 27 Nov 2026 17:23:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 27 Nov 2026 17:42:28 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 27 Nov 2026 22:41:00 +0100</ext:ends_at>
-      <description>Einstieg gegenüber für Richtung Absberggasse. [Heute]</description>
-      <content:encoded><![CDATA[Einstieg gegenüber für Richtung Absberggasse.<br/>[Heute]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Demonstration, Gleisbauarbeiten]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">8cc22bbfd84d131d38143c70f680c24d1c39fbf1fe455e06a3f50824d8ce8e3c</guid>
-      <pubDate>Fri, 27 Nov 2026 17:23:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 27 Nov 2026 17:23:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 27 Nov 2026 17:48:29 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 27 Nov 2026 23:59:59 +0100</ext:ends_at>
-      <description>Demonstration: Einstieg gegenüber für Fahrziel Reumannplatz. Gleisbauarbeiten: Züge halten Quellenstraße 156 (Linie 6); Betrieb ab Knöllgasse; Kein Betrieb. [Heute]</description>
-      <content:encoded><![CDATA[Demonstration: Einstieg gegenüber für Fahrziel Reumannplatz. Gleisbauarbeiten: Züge halten Quellenstraße 156 (Linie 6); Betrieb ab Knöllgasse; Kein Betrieb.<br/>[Heute]]]></content:encoded>
-    </item>
-    <item>
       <title><![CDATA[1/2/71/D/1A/2A/3A: Demonstration]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">0193b3f4313f0adc0dfbb75d880f74695f85fbde95f0e98a8efc43e1e46e65b7</guid>
@@ -147,6 +119,34 @@
       <ext:ends_at>Sun, 29 Nov 2026 18:00:00 +0100</ext:ends_at>
       <description>Wegen einer Demonstration in der inneren Stadt kommt es zu Verkehrsmaßnahmen. Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Stubentor … [Ab Sa 28.11. bis So 29.11.]</description>
       <content:encoded><![CDATA[Wegen einer Demonstration in der inneren Stadt kommt es zu Verkehrsmaßnahmen. Linie D: Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Stubentor …<br/>[Ab Sa 28.11. bis So 29.11.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[29B/N25: Bauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">65e35dd3532761a3eedc8c90943a3f24a56db24839a5d10fbcd8d29e321fba7b</guid>
+      <pubDate>Thu, 26 Nov 2026 11:31:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 27 Nov 2026 00:00:59 +0100</ext:first_seen>
+      <ext:starts_at>Mon, 30 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Sat, 12 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>Wegen Bauarbeiten im Bereich Adolf-Loos-Gasse werden die Busse der Linien 29B und N25 umgeleitet. [Ab Mo 30.11. bis 12.12.]</description>
+      <content:encoded><![CDATA[Wegen Bauarbeiten im Bereich Adolf-Loos-Gasse werden die Busse der Linien 29B und N25 umgeleitet.<br/>[Ab Mo 30.11. bis 12.12.]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1A/2A/3A/13A: Weihnachtseinkaufstage 2026]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">54250045568ba6372ffa5afbce409bc57aa1fc0e12bad9ebcb94794122b19614</guid>
+      <pubDate>Sun, 15 Nov 2026 00:00:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 27 Nov 2026 00:00:59 +0100</ext:first_seen>
+      <ext:starts_at>Sat, 28 Nov 2026 00:00:00 +0100</ext:starts_at>
+      <ext:ends_at>Sat, 19 Dec 2026 23:59:00 +0100</ext:ends_at>
+      <description>An den Samstagen vor Weihnachten sowie am 8. Dezember kommt es zu Linien- und Intervallanpassungen im Netz. [Ab Sa 28.11. bis 19.12.]</description>
+      <content:encoded><![CDATA[An den Samstagen vor Weihnachten sowie am 8. Dezember kommt es zu Linien- und Intervallanpassungen im Netz.<br/>[Ab Sa 28.11. bis 19.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>

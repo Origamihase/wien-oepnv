@@ -13,7 +13,7 @@
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1876-101, R2370-125, R2359-125, R2373-126, R2372-125, R2373-125, R2373-127, R2379-627, R2343-125, R2371-125, R2380-627, R2345-127, R2558-125, R2343-626, R2378-627, R3886-480, R318-437, R293-474, R401-101, R1974-466, R1199-205, R500-101, R1619-160, R1606-160, R1620-160, R1615-160, R1616-160, R1617-160, R1618-160, R1632-160, R1633-160, R1607-160, R1625-160, R1629-160, R1630-160, R1631-160, R1634-160, R1728-162, R1616-162, R1735-162, R1738-162, R1737-162, R1634-162, R352-0, R1462-0, R1000-0, R98-0, R95-0, R51-0, R44-0, R42-0, R22-0, R20-0, R134-0, R13-0, R124-0, R121-0, R2160-0, R852-0, R826-0, R576-0, R574-0, R573-0, R572-0, R1678-0, R385-0, R397-0, R429-0, R1710-0, R1610-0, R669-0, R5607-0, R176-0, R161-0, R1850-0, R1246-0, R1207-0, R3135-0, R1596-0, R751-0, R725-0, R699-0, R679-0, R2923-0, R2940-0, R3207-0, R19-171, R15-171, R13-171, R18-171, R81-171, R14-171, R13-136, R18-136, R15-136, R14-136, R19-136, R46-136, R51-136, R50-136, R49-136, R45-136, R49-101, R51-101, R46-101, R50-101, R45-101, R13-101, R14-101, R15-101, R18-101, R22-101, R20-101, R19-101, R45-171, R44-171, R46-171, R150-137, R211-137, R210-137, R209-137, R150-138, R1212-138, R1213-138, R188-138, R188-137, R214-137, R1213-137, R1212-137, R213-137, R215-137, R1213-140, R188-140, R1212-140, R189-140, R150-140, R148-140, R147-140, R188-141, R1212-141, R1213-141, R189-141, R150-141, R148-141, R147-141, R1213-142, R1212-142, R188-142, R1336-142, R493-142, R150-142, R148-142, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1875-101, R1884-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R2380-627, R2345-127, R2359-125, R2371-125, R2370-125, R2343-125, R2372-125, R2373-126, R2558-125, R2343-626, R2378-627, R2373-125, R2373-127, R2379-627, R3886-480, R293-474, R318-437, R401-101, R1974-466, R1199-205, R1618-160, R1606-160, R1620-160, R1615-160, R1616-160, R1617-160, R1619-160, R1625-160, R1629-160, R1607-160, R1632-160, R1631-160, R1630-160, R1633-160, R1634-160, R1728-162, R1616-162, R1735-162, R1737-162, R1738-162, R1634-162, R352-0, R1462-0, R44-0, R826-0, R852-0, R2160-0, R1000-0, R572-0, R573-0, R574-0, R576-0, R51-0, R98-0, R95-0, R42-0, R22-0, R20-0, R134-0, R13-0, R124-0, R121-0, R397-0, R385-0, R1678-0, R1710-0, R429-0, R161-0, R751-0, R725-0, R699-0, R679-0, R669-0, R5607-0, R1596-0, R1610-0, R3135-0, R1207-0, R1246-0, R176-0, R1850-0, R2923-0, R2940-0, R3207-0, R209-137, R150-137, R211-137, R210-137, R150-138, R1212-138, R1213-138, R188-138, R213-137, R188-137, R214-137, R1213-137, R1212-137, R215-137, R1213-140, R1212-140, R188-140, R189-140, R150-140, R147-140, R148-140, R1212-141, R1213-141, R188-141, R189-141, R150-141, R147-141, R148-141, R1213-142, R188-142, R1212-142, R1336-142, R150-142, R493-142, R148-142, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -689,75 +689,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
-    "name": "R13-101",
-    "owner": "WL",
-    "parentName": "R13-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     13
-    ],
-    "time": {
-     "end": "2026-11-27T22:44:00.000+0100",
-     "start": "2026-11-27T17:45:29.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Börse",
-    "name": "R13-136",
-    "owner": "WL",
-    "parentName": "R13-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     13
-    ],
-    "time": {
-     "end": "2026-11-27T22:38:00.000+0100",
-     "start": "2026-11-27T17:39:28.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Börse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Demonstration",
-    "name": "R13-171",
-    "owner": "WL",
-    "parentName": "R13-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     13
-    ],
-    "time": {
-     "end": "2026-11-27T22:38:00.000+0100",
-     "start": "2026-11-27T17:38:28.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Demonstration"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisschaden\nEinstieg am äußeren Währinger Gürtel",
     "name": "R1336-142",
     "owner": "WL",
@@ -797,75 +728,6 @@
      "start": "2026-11-27T14:58:42.000+0100"
     },
     "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
-    "name": "R14-101",
-    "owner": "WL",
-    "parentName": "R14-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     14
-    ],
-    "time": {
-     "end": "2026-11-27T22:44:00.000+0100",
-     "start": "2026-11-27T17:45:29.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Börse",
-    "name": "R14-136",
-    "owner": "WL",
-    "parentName": "R14-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     14
-    ],
-    "time": {
-     "end": "2026-11-27T22:38:00.000+0100",
-     "start": "2026-11-27T17:39:28.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Börse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Demonstration",
-    "name": "R14-171",
-    "owner": "WL",
-    "parentName": "R14-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     14
-    ],
-    "time": {
-     "end": "2026-11-27T22:38:00.000+0100",
-     "start": "2026-11-27T17:38:28.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Demonstration"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1001,75 +863,6 @@
      "start": "2026-11-27T18:14:03.000+0100"
     },
     "title": "Fahrtbehinderung\nGleisschaden"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
-    "name": "R15-101",
-    "owner": "WL",
-    "parentName": "R15-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     15
-    ],
-    "time": {
-     "end": "2026-11-27T22:44:00.000+0100",
-     "start": "2026-11-27T17:45:29.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Börse",
-    "name": "R15-136",
-    "owner": "WL",
-    "parentName": "R15-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     15
-    ],
-    "time": {
-     "end": "2026-11-27T22:38:00.000+0100",
-     "start": "2026-11-27T17:39:28.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Börse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Demonstration",
-    "name": "R15-171",
-    "owner": "WL",
-    "parentName": "R15-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     15
-    ],
-    "time": {
-     "end": "2026-11-27T22:38:00.000+0100",
-     "start": "2026-11-27T17:38:28.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Demonstration"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1792,75 +1585,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Julius-Raab-Platz",
-    "name": "R18-101",
-    "owner": "WL",
-    "parentName": "R18-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     18
-    ],
-    "time": {
-     "end": "2026-11-27T22:44:00.000+0100",
-     "start": "2026-11-27T17:45:29.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Julius-Raab-Platz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Börse",
-    "name": "R18-136",
-    "owner": "WL",
-    "parentName": "R18-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     18
-    ],
-    "time": {
-     "end": "2026-11-27T22:38:00.000+0100",
-     "start": "2026-11-27T17:39:28.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Börse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Demonstration",
-    "name": "R18-171",
-    "owner": "WL",
-    "parentName": "R18-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     18
-    ],
-    "time": {
-     "end": "2026-11-27T22:38:00.000+0100",
-     "start": "2026-11-27T17:38:28.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Demonstration"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
     "name": "R1850-0",
     "owner": "WL",
@@ -2203,75 +1927,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Demonstration\nZüge fahren zum Reumannplatz",
-    "name": "R19-101",
-    "owner": "WL",
-    "parentName": "R19-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     19
-    ],
-    "time": {
-     "end": "2026-11-27T22:47:00.000+0100",
-     "start": "2026-11-27T17:48:29.000+0100"
-    },
-    "title": "Demonstration\nZüge fahren zum Reumannplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nEinstieg Schottenring 17 Richtung Nußdorf",
-    "name": "R19-136",
-    "owner": "WL",
-    "parentName": "R19-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     19
-    ],
-    "time": {
-     "end": "2026-11-27T22:39:00.000+0100",
-     "start": "2026-11-27T17:40:58.000+0100"
-    },
-    "title": "Demonstration\nEinstieg Schottenring 17 Richtung Nußdorf"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Demonstration",
-    "name": "R19-171",
-    "owner": "WL",
-    "parentName": "R19-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     19
-    ],
-    "time": {
-     "end": "2026-11-27T22:38:00.000+0100",
-     "start": "2026-11-27T17:38:28.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Demonstration"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "name": "R1974-466",
     "owner": "WL",
@@ -2311,29 +1966,6 @@
      "start": "2026-11-27T14:58:42.000+0100"
     },
     "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nZüge fahren zum Reumannplatz",
-    "name": "R20-101",
-    "owner": "WL",
-    "parentName": "R20-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     20
-    ],
-    "time": {
-     "end": "2026-11-27T22:47:00.000+0100",
-     "start": "2026-11-27T17:48:29.000+0100"
-    },
-    "title": "Demonstration\nZüge fahren zum Reumannplatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2512,29 +2144,6 @@
      "start": "2026-11-27T14:58:42.000+0100"
     },
     "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nZüge fahren zum Reumannplatz",
-    "name": "R22-101",
-    "owner": "WL",
-    "parentName": "R22-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     22
-    ],
-    "time": {
-     "end": "2026-11-27T22:47:00.000+0100",
-     "start": "2026-11-27T17:48:29.000+0100"
-    },
-    "title": "Demonstration\nZüge fahren zum Reumannplatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3153,213 +2762,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
-    "name": "R44-171",
-    "owner": "WL",
-    "parentName": "R44-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     44
-    ],
-    "time": {
-     "end": "2026-11-27T22:48:00.000+0100",
-     "start": "2026-11-27T17:49:29.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nEinstieg gegenüber für Fahrziel Reumannplatz",
-    "name": "R45-101",
-    "owner": "WL",
-    "parentName": "R45-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     45
-    ],
-    "time": {
-     "end": "2026-11-27T22:43:00.000+0100",
-     "start": "2026-11-27T17:44:59.000+0100"
-    },
-    "title": "Demonstration\nEinstieg gegenüber für Fahrziel Reumannplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nEinstieg gegenüber für Richtung Absberggasse",
-    "name": "R45-136",
-    "owner": "WL",
-    "parentName": "R45-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     45
-    ],
-    "time": {
-     "end": "2026-11-27T22:41:00.000+0100",
-     "start": "2026-11-27T17:42:28.000+0100"
-    },
-    "title": "Demonstration\nEinstieg gegenüber für Richtung Absberggasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
-    "name": "R45-171",
-    "owner": "WL",
-    "parentName": "R45-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     45
-    ],
-    "time": {
-     "end": "2026-11-27T22:48:00.000+0100",
-     "start": "2026-11-27T17:49:29.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Resselgasse",
-    "name": "R46-101",
-    "owner": "WL",
-    "parentName": "R46-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     46
-    ],
-    "time": {
-     "end": "2026-11-27T22:43:00.000+0100",
-     "start": "2026-11-27T17:43:28.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Resselgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
-    "name": "R46-136",
-    "owner": "WL",
-    "parentName": "R46-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     46
-    ],
-    "time": {
-     "end": "2026-11-27T22:40:00.000+0100",
-     "start": "2026-11-27T17:41:28.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
-    "name": "R46-171",
-    "owner": "WL",
-    "parentName": "R46-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     46
-    ],
-    "time": {
-     "end": "2026-11-27T22:48:00.000+0100",
-     "start": "2026-11-27T17:49:29.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Resselgasse",
-    "name": "R49-101",
-    "owner": "WL",
-    "parentName": "R49-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     49
-    ],
-    "time": {
-     "end": "2026-11-27T22:43:00.000+0100",
-     "start": "2026-11-27T17:43:28.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Resselgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
-    "name": "R49-136",
-    "owner": "WL",
-    "parentName": "R49-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     49
-    ],
-    "time": {
-     "end": "2026-11-27T22:40:00.000+0100",
-     "start": "2026-11-27T17:41:28.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Fahrtbehinderung\nGleisschaden",
     "name": "R493-142",
     "owner": "WL",
@@ -3383,75 +2785,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Resselgasse",
-    "name": "R50-101",
-    "owner": "WL",
-    "parentName": "R50-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     50
-    ],
-    "time": {
-     "end": "2026-11-27T22:43:00.000+0100",
-     "start": "2026-11-27T17:43:28.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Resselgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
-    "name": "R50-136",
-    "owner": "WL",
-    "parentName": "R50-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     50
-    ],
-    "time": {
-     "end": "2026-11-27T22:40:00.000+0100",
-     "start": "2026-11-27T17:41:28.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80",
-    "name": "R500-101",
-    "owner": "WL",
-    "parentName": "R500-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     500
-    ],
-    "time": {
-     "end": "2026-11-27T23:00:00.000+0100",
-     "start": "2026-11-27T05:00:14.000+0100"
-    },
-    "title": "Bhf. Hütteldorf\nÖBB-Ersatzbus für <80"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
     "name": "R51-0",
     "owner": "WL",
@@ -3468,52 +2801,6 @@
      "start": "2026-11-27T14:58:42.000+0100"
     },
     "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Resselgasse",
-    "name": "R51-101",
-    "owner": "WL",
-    "parentName": "R51-101",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedStops": [
-     51
-    ],
-    "time": {
-     "end": "2026-11-27T22:43:00.000+0100",
-     "start": "2026-11-27T17:43:28.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Resselgasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Demonstration\nBetrieb ab Schwarzenbergplatz",
-    "name": "R51-136",
-    "owner": "WL",
-    "parentName": "R51-136",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "D"
-    ],
-    "relatedStops": [
-     51
-    ],
-    "time": {
-     "end": "2026-11-27T22:40:00.000+0100",
-     "start": "2026-11-27T17:41:28.000+0100"
-    },
-    "title": "Demonstration\nBetrieb ab Schwarzenbergplatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3714,29 +3001,6 @@
      "start": "2026-11-27T14:58:44.000+0100"
     },
     "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Demonstration",
-    "name": "R81-171",
-    "owner": "WL",
-    "parentName": "R81-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     81
-    ],
-    "time": {
-     "end": "2026-11-27T22:38:00.000+0100",
-     "start": "2026-11-27T17:38:28.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Demonstration"
    },
    {
     "alertCause": "undefined alert cause",
