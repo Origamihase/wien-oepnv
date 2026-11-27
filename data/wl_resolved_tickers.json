@@ -3,22 +3,6 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R1212-140|2026-11-27T09:02:38.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R1212-141|2026-11-27T09:02:08.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R1213-140|2026-11-27T09:02:38.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R1213-141|2026-11-27T09:02:08.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
   "R1606-160|2026-11-27T07:47:31.000+0100": {
    "incident": "I20261127-0011",
    "title": "Fahrtbehinderung\nGleisschaden"
@@ -87,6 +71,18 @@
    "incident": "I20261127-0011",
    "title": "Gleisschaden\nBetrieb ab Wattmanngasse"
   },
+  "R1636-160|2026-11-27T10:24:46.000+0100": {
+   "incident": "I20261127-0018",
+   "title": "Fahrtbehinderung\nwegen Fahrbanschäden "
+  },
+  "R1638-160|2026-11-27T10:24:46.000+0100": {
+   "incident": "I20261127-0018",
+   "title": "Fahrtbehinderung\nwegen Fahrbanschäden "
+  },
+  "R1639-160|2026-11-27T10:24:46.000+0100": {
+   "incident": "I20261127-0018",
+   "title": "Fahrtbehinderung\nwegen Fahrbanschäden "
+  },
   "R1728-162|2026-11-27T07:51:00.000+0100": {
    "incident": "I20261127-0011",
    "title": "Fahrtbehinderung\nGleisschaden"
@@ -103,85 +99,9 @@
    "incident": "I20261127-0011",
    "title": "Gleisschaden\nBetrieb ab Wattmanngasse"
   },
-  "R1764-410|2026-11-27T09:20:09.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R177-140|2026-11-27T09:02:37.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R177-141|2026-11-27T09:09:08.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R1792-410|2026-11-27T09:20:11.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R188-140|2026-11-27T09:02:37.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R188-141|2026-11-27T09:02:07.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R189-140|2026-11-27T09:02:37.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R189-141|2026-11-27T09:02:07.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R190-140|2026-11-27T09:02:37.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R190-141|2026-11-27T09:09:08.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R192-140|2026-11-27T09:09:08.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R192-141|2026-11-27T09:09:08.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R193-141|2026-11-27T09:09:08.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R2880-410|2026-11-27T09:20:12.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R2968-410|2026-11-27T09:20:12.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R2971-410|2026-11-27T09:20:12.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R2973-410|2026-11-27T09:20:12.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R2977-410|2026-11-27T09:20:12.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R521-140|2026-11-27T09:09:08.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
-  },
-  "R898-410|2026-11-27T09:20:09.000+0100": {
-   "incident": "I20261127-0014",
-   "title": "Fahrtbehinderung\nSchadhafter Zug"
+  "R574-160|2026-11-27T10:24:46.000+0100": {
+   "incident": "I20261127-0018",
+   "title": "Fahrtbehinderung\nwegen Fahrbanschäden "
   }
  }
 }
