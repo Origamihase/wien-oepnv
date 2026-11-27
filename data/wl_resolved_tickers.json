@@ -3,6 +3,26 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
+  "R1531-160|2026-11-27T10:42:18.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Fahrtbehinderung\nwegen Fahrbanschäden"
+  },
+  "R1532-160|2026-11-27T10:42:18.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Fahrtbehinderung\nwegen Fahrbanschäden"
+  },
+  "R1548-160|2026-11-27T10:42:18.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Fahrtbehinderung\nwegen Fahrbanschäden"
+  },
+  "R1559-160|2026-11-27T10:34:17.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Fahrtbehinderung\nwegen Fahrbanschäden"
+  },
+  "R1562-160|2026-11-27T10:34:17.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Fahrtbehinderung\nwegen Fahrbanschäden"
+  },
   "R1606-160|2026-11-27T07:47:31.000+0100": {
    "incident": "I20261127-0011",
    "title": "Fahrtbehinderung\nGleisschaden"
@@ -72,15 +92,15 @@
    "title": "Gleisschaden\nBetrieb ab Wattmanngasse"
   },
   "R1636-160|2026-11-27T10:24:46.000+0100": {
-   "incident": "I20261127-0018",
+   "incident": "I20261127-0011",
    "title": "Fahrtbehinderung\nwegen Fahrbanschäden "
   },
   "R1638-160|2026-11-27T10:24:46.000+0100": {
-   "incident": "I20261127-0018",
+   "incident": "I20261127-0011",
    "title": "Fahrtbehinderung\nwegen Fahrbanschäden "
   },
   "R1639-160|2026-11-27T10:24:46.000+0100": {
-   "incident": "I20261127-0018",
+   "incident": "I20261127-0011",
    "title": "Fahrtbehinderung\nwegen Fahrbanschäden "
   },
   "R1728-162|2026-11-27T07:51:00.000+0100": {
@@ -99,9 +119,41 @@
    "incident": "I20261127-0011",
    "title": "Gleisschaden\nBetrieb ab Wattmanngasse"
   },
+  "R232-143|2026-11-27T10:44:48.000+0100": {
+   "incident": "I20261127-0019",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  },
+  "R233-143|2026-11-27T10:44:48.000+0100": {
+   "incident": "I20261127-0019",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  },
+  "R234-143|2026-11-27T10:44:48.000+0100": {
+   "incident": "I20261127-0019",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  },
+  "R235-143|2026-11-27T10:44:48.000+0100": {
+   "incident": "I20261127-0019",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  },
+  "R521-109|2026-11-27T10:45:18.000+0100": {
+   "incident": "I20261127-0019",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  },
+  "R550-109|2026-11-27T10:45:18.000+0100": {
+   "incident": "I20261127-0019",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  },
+  "R552-109|2026-11-27T10:45:18.000+0100": {
+   "incident": "I20261127-0019",
+   "title": "Fahrtbehinderung\nwegen Feuerwehreinsatz"
+  },
   "R574-160|2026-11-27T10:24:46.000+0100": {
-   "incident": "I20261127-0018",
+   "incident": "I20261127-0011",
    "title": "Fahrtbehinderung\nwegen Fahrbanschäden "
+  },
+  "R577-160|2026-11-27T10:34:17.000+0100": {
+   "incident": "I20261127-0011",
+   "title": "Fahrtbehinderung\nwegen Fahrbanschäden"
   }
  }
 }
