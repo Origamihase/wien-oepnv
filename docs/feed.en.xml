@@ -8,8 +8,35 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 27 Nov 2026 21:30:42 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 22:00:32 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[40/41: Track damage]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">2ef15149af651eb047feab47d2d5cd34cd87fcaeb9cea6abb8357ec2f8322613</guid>
+      <pubDate>Fri, 27 Nov 2026 20:27:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 27 Nov 2026 22:00:32 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 27 Nov 2026 20:27:00 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 27 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <description>Boarding on the outer Währinger Gürtel; service obstruction; service from Währinger Straße, Volksoper. [Since 20:27]</description>
+      <content:encoded><![CDATA[Boarding on the outer Währinger Gürtel; service obstruction; service from Währinger Straße, Volksoper.<br/>[Since 20:27]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U1: Contamination]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">9779e7ace261e01ddc018942c222784a1d556276f8f642723bab39617b6cccfc</guid>
+      <pubDate>Fri, 27 Nov 2026 21:42:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 27 Nov 2026 21:42:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 27 Nov 2026 21:42:00 +0100</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: contamination. [Since 21:42]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: contamination.<br/>[Since 21:42]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[37/38: Track damage]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -23,20 +50,6 @@
       <ext:ends_at>Fri, 27 Nov 2026 23:59:00 +0100</ext:ends_at>
       <description>Service obstruction; 38: service from Spitalgasse; 38: boarding at the stop of line 5 direction Praterstern. [Since 17:54]</description>
       <content:encoded><![CDATA[Service obstruction; 38: service from Spitalgasse; 38: boarding at the stop of line 5 direction Praterstern.<br/>[Since 17:54]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[40/41: Illegally parked vehicle, track damage]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">46770cbdcca7b3b0724e5953b64353d0a982642ac049261e3dfdc906c581b130</guid>
-      <pubDate>Fri, 27 Nov 2026 20:27:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 27 Nov 2026 20:27:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 27 Nov 2026 20:38:49 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 27 Nov 2026 23:59:00 +0100</ext:ends_at>
-      <description>Illegally parked vehicle: service obstruction. Track damage: boarding on the outer Währinger Gürtel; service obstruction; service from Währinger Straße, Volksoper. [Since 20:27]</description>
-      <content:encoded><![CDATA[Illegally parked vehicle: service obstruction. Track damage: boarding on the outer Währinger Gürtel; service obstruction; service from Währinger Straße, Volksoper.<br/>[Since 20:27]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[42: Track damage]]></title>
@@ -133,20 +146,6 @@
       <ext:starts_at>Fri, 27 Nov 2026 17:28:57 +0100</ext:starts_at>
       <description>Boarding after Bellariastraße at the point of demand. After a service obstruction, there are irregular intervals. [Since today]</description>
       <content:encoded><![CDATA[Boarding after Bellariastraße at the point of demand. After a service obstruction, there are irregular intervals.<br/>[Since today]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[1: Demonstration, track construction works]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">8cc22bbfd84d131d38143c70f680c24d1c39fbf1fe455e06a3f50824d8ce8e3c</guid>
-      <pubDate>Fri, 27 Nov 2026 17:23:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 27 Nov 2026 17:23:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 27 Nov 2026 17:48:29 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 27 Nov 2026 23:59:59 +0100</ext:ends_at>
-      <description>Demonstration: boarding opposite for destination Reumannplatz. Track construction works: trains stop at Quellenstraße 156 (line 6); service from Knöllgasse; no service. [Today]</description>
-      <content:encoded><![CDATA[Demonstration: boarding opposite for destination Reumannplatz. Track construction works: trains stop at Quellenstraße 156 (line 6); service from Knöllgasse; no service.<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>

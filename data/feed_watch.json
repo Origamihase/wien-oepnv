@@ -1,20 +1,24 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-27T20:30:59.695361+00:00",
- "built": "2026-11-27T21:30:42+01:00",
+ "updated": "2026-11-27T21:00:42.782943+00:00",
+ "built": "2026-11-27T22:00:32+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-27T21:30:42+01:00",
+  "built": "2026-11-27T22:00:32+01:00",
   "items": [
+   {
+    "title": "40/41: Gleisschaden",
+    "time_line": "Seit 20:27"
+   },
+   {
+    "title": "U1: Verunreinigung",
+    "time_line": "Seit 21:42"
+   },
    {
     "title": "37/38: Gleisschaden",
     "time_line": "Seit 17:54"
-   },
-   {
-    "title": "40/41: Falschparker, Gleisschaden",
-    "time_line": "Seit 20:27"
    },
    {
     "title": "42: Gleisschaden",
@@ -43,10 +47,6 @@
    {
     "title": "2: Demonstration",
     "time_line": "Seit heute"
-   },
-   {
-    "title": "1: Demonstration, Gleisbauarbeiten",
-    "time_line": "Heute"
    }
   ]
  },
@@ -6771,17 +6771,37 @@
     "oebb": 13,
     "wl": 106
    }
+  },
+  {
+   "t": "2026-11-27T21:00:42.782943+00:00",
+   "raw": {
+    "wl-stoerungen": 177,
+    "wl-hinweise": 73,
+    "oebb": 174,
+    "baustellen-linien": 47,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 12,
+    "oebb": 148,
+    "baustellen": 57
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 13,
+    "wl": 105
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-27T20:30:59.695361+00:00"
+   "last_ok": "2026-11-27T21:00:42.782943+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-27T20:30:59.695361+00:00"
+   "last_ok": "2026-11-27T21:00:42.782943+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-27T20:30:59.695361+00:00"
+   "last_ok": "2026-11-27T21:00:42.782943+00:00"
   }
  }
 }
