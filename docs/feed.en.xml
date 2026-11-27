@@ -8,38 +8,36 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 27 Nov 2026 17:00:45 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 17:30:38 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
-      <title><![CDATA[40: Illegally parked vehicle]]></title>
+      <title><![CDATA[30/31: Service disruption]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919</guid>
-      <pubDate>Fri, 27 Nov 2026 16:15:00 +0100</pubDate>
+      <guid isPermaLink="false">6c1fab808222770314b00a04f92f11ed5c405ebe4b71d3c7ac65b94594fea17d</guid>
+      <pubDate>Fri, 27 Nov 2026 17:12:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 27 Nov 2026 16:15:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 27 Nov 2026 16:15:51 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 27 Nov 2026 17:15:00 +0100</ext:ends_at>
-      <description>Operation via line 42+9. [Since 16:15]</description>
-      <content:encoded><![CDATA[Operation via line 42+9.<br/>[Since 16:15]]]></content:encoded>
+      <ext:first_seen>Fri, 27 Nov 2026 17:30:38 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 27 Nov 2026 17:12:00 +0100</ext:starts_at>
+      <description>Irregular intervals in both directions. Reason: service disruption. [Since 17:12]</description>
+      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption.<br/>[Since 17:12]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[41: Illegally parked vehicle]]></title>
+      <title><![CDATA[37: Third-party traffic accident]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">ee62a8ad49a9b94bbfb4f9c1770efb6182d582605a00cbfbac9c4e16be335aaa</guid>
-      <pubDate>Fri, 27 Nov 2026 16:15:00 +0100</pubDate>
+      <guid isPermaLink="false">c5967a225000cfa70f0360204f0e15a3823fbe67437b4556e2214a6146b37072</guid>
+      <pubDate>Fri, 27 Nov 2026 17:06:00 +0100</pubDate>
       <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 27 Nov 2026 16:15:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 27 Nov 2026 16:16:51 +0100</ext:starts_at>
-      <ext:ends_at>Fri, 27 Nov 2026 17:16:00 +0100</ext:ends_at>
-      <description>Trains stop at the stop of line 40 direction Herbeckstraße. [Since 16:15]</description>
-      <content:encoded><![CDATA[Trains stop at the stop of line 40 direction Herbeckstraße.<br/>[Since 16:15]]]></content:encoded>
+      <ext:first_seen>Fri, 27 Nov 2026 17:06:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 27 Nov 2026 17:06:00 +0100</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 17:06]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 17:06]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[27/30/31: Rescue operation]]></title>
+      <title><![CDATA[27: Rescue operation]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">6f7085c2376a70627a9c150d8d4e382ed7637fd5762a18ef6eb56a2da4f57f8c</guid>
       <pubDate>Fri, 27 Nov 2026 15:47:17 +0100</pubDate>
@@ -48,21 +46,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 27 Nov 2026 16:00:39 +0100</ext:first_seen>
       <ext:starts_at>Fri, 27 Nov 2026 15:49:00 +0100</ext:starts_at>
-      <description>After a service obstruction, there are irregular intervals. [Since 15:47]</description>
-      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 15:47]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U1: Service disruption]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">d6e9b950c72cb1e138a1bdead8167c6cfb6e28c966d485bbe0fa4767d198892a</guid>
-      <pubDate>Fri, 27 Nov 2026 15:47:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 27 Nov 2026 15:47:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 27 Nov 2026 15:47:00 +0100</ext:starts_at>
-      <description>Irregular intervals in both directions. Reason: service disruption. [Since 15:47]</description>
-      <content:encoded><![CDATA[Irregular intervals in both directions. Reason: service disruption.<br/>[Since 15:47]]]></content:encoded>
+      <description>After a service obstruction, there are irregular intervals. Use 25 line in Tokiostraße; trains stop at the stop of line 31. [Since 15:47]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals. Use 25 line in Tokiostraße; trains stop at the stop of line 31.<br/>[Since 15:47]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[1/6/11: Traffic accident]]></title>
@@ -91,7 +76,7 @@
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 14:58]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U4: Rescue operation]]></title>
+      <title><![CDATA[U4: Line U4 no service between Heiligenstadt and Schottenring]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">599f64959dce7dbef24d9b4960c2d930e1bcf2ef2e876d51d05fc1750b72319a</guid>
       <pubDate>Fri, 27 Nov 2026 14:44:00 +0100</pubDate>
@@ -99,9 +84,10 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 27 Nov 2026 14:44:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 27 Nov 2026 14:44:00 +0100</ext:starts_at>
-      <description>Line U4 no service between Heiligenstadt and Schottenring. [Since 14:44]</description>
-      <content:encoded><![CDATA[Line U4 no service between Heiligenstadt and Schottenring.<br/>[Since 14:44]]]></content:encoded>
+      <ext:starts_at>Fri, 27 Nov 2026 14:58:46 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 27 Nov 2026 23:30:00 +0100</ext:ends_at>
+      <description>Line U4 no service between Heiligenstadt and Schottenring [Since 14:44]</description>
+      <content:encoded><![CDATA[Line U4 no service between Heiligenstadt and Schottenring<br/>[Since 14:44]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[U3: Defective vehicle]]></title>
@@ -141,6 +127,19 @@
       <ext:starts_at>Fri, 27 Nov 2026 07:46:00 +0100</ext:starts_at>
       <description>Service only: 60 Westbahnhof – Hofwiesengasse; 62 Quartier Belvedere – Wattmanngasse. [Since 07:46]</description>
       <content:encoded><![CDATA[Service only: 60 Westbahnhof – Hofwiesengasse; 62 Quartier Belvedere – Wattmanngasse.<br/>[Since 07:46]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1/2/71/D/1A/2A/3A: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">0193b3f4313f0adc0dfbb75d880f74695f85fbde95f0e98a8efc43e1e46e65b7</guid>
+      <pubDate>Fri, 27 Nov 2026 17:23:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 27 Nov 2026 00:00:59 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 27 Nov 2026 17:23:00 +0100</ext:starts_at>
+      <description>Due to a demonstration in the inner city, there are service changes. Line D: diversion in both directions between Schwarzenbergplatz and Börse over Stubentor … [Since today]</description>
+      <content:encoded><![CDATA[Due to a demonstration in the inner city, there are service changes. Line D: diversion in both directions between Schwarzenbergplatz and Börse over Stubentor …<br/>[Since today]]]></content:encoded>
     </item>
   </channel>
 </rss>
