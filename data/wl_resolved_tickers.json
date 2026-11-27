@@ -3,18 +3,6 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R1000-0|2026-11-27T14:58:42.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R1207-0|2026-11-27T14:58:44.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R121-0|2026-11-27T14:58:42.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
   "R1212-137|2026-11-27T18:05:32.000+0100": {
    "incident": "I20261127-0054",
    "title": "Gleisschaden\nBetrieb ab Nußdorfer Straße"
@@ -59,29 +47,9 @@
    "incident": "I20261127-0054",
    "title": "Gleisschaden\nBetrieb ab Währinger Straße, Volksoper"
   },
-  "R124-0|2026-11-27T14:58:42.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R1246-0|2026-11-27T14:58:44.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R13-0|2026-11-27T14:58:42.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
   "R1336-142|2026-11-27T18:13:34.000+0100": {
    "incident": "I20261127-0054",
    "title": "Gleisschaden\nEinstieg am äußeren Währinger Gürtel"
-  },
-  "R134-0|2026-11-27T14:58:42.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R1462-0|2026-11-27T14:58:41.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
   },
   "R147-140|2026-11-27T18:11:02.000+0100": {
    "incident": "I20261127-0062",
@@ -129,10 +97,6 @@
    "incident": "I20261127-0054",
    "title": "Fahrtbehinderung\nGleisschaden"
   },
-  "R1596-0|2026-11-27T14:58:44.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
   "R1606-160|2026-11-27T07:47:31.000+0100": {
    "incident": "I20261127-0011",
    "title": "Fahrtbehinderung\nGleisschaden"
@@ -140,14 +104,6 @@
   "R1607-160|2026-11-27T07:48:01.000+0100": {
    "incident": "I20261127-0011",
    "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
-  },
-  "R161-0|2026-11-27T14:58:44.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R1610-0|2026-11-27T14:58:44.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
   },
   "R1615-160|2026-11-27T07:47:31.000+0100": {
    "incident": "I20261127-0011",
@@ -209,14 +165,6 @@
    "incident": "I20261127-0011",
    "title": "Gleisschaden\nBetrieb ab Wattmanngasse"
   },
-  "R1678-0|2026-11-27T14:58:43.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R1710-0|2026-11-27T14:58:43.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
   "R1728-162|2026-11-27T07:51:00.000+0100": {
    "incident": "I20261127-0011",
    "title": "Fahrtbehinderung\nGleisschaden"
@@ -232,14 +180,6 @@
   "R1738-162|2026-11-27T07:51:30.000+0100": {
    "incident": "I20261127-0011",
    "title": "Gleisschaden\nBetrieb ab Wattmanngasse"
-  },
-  "R176-0|2026-11-27T14:58:44.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R1850-0|2026-11-27T14:58:44.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
   },
   "R188-137|2026-11-27T18:05:32.000+0100": {
    "incident": "I20261127-0054",
@@ -273,10 +213,6 @@
    "title": "Gleisschaden\nEinstieg am äußeren Währinger Gürtel",
    "begin": "2026-11-27T20:27:00+01:00"
   },
-  "R20-0|2026-11-27T14:58:42.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
   "R209-137|2026-11-27T17:54:31.000+0100": {
    "incident": "I20261127-0054",
    "title": "Fahrtbehinderung\nGleisschaden"
@@ -301,117 +237,9 @@
    "incident": "I20261127-0054",
    "title": "Gleisschaden\nEinstieg am Währinger Gürtel"
   },
-  "R2160-0|2026-11-27T14:58:42.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R22-0|2026-11-27T14:58:42.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R2923-0|2026-11-27T14:58:45.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R2940-0|2026-11-27T14:58:45.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R3135-0|2026-11-27T14:58:44.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R3207-0|2026-11-27T14:58:46.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R352-0|2026-11-27T14:58:40.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R385-0|2026-11-27T14:58:43.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R397-0|2026-11-27T14:58:43.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R42-0|2026-11-27T14:58:42.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R429-0|2026-11-27T14:58:43.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R44-0|2026-11-27T14:58:42.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
   "R493-142|2026-11-27T18:14:03.000+0100": {
    "incident": "I20261127-0054",
    "title": "Fahrtbehinderung\nGleisschaden"
-  },
-  "R51-0|2026-11-27T14:58:42.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R5607-0|2026-11-27T14:58:44.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R572-0|2026-11-27T14:58:42.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R573-0|2026-11-27T14:58:42.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R574-0|2026-11-27T14:58:42.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R576-0|2026-11-27T14:58:42.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R669-0|2026-11-27T14:58:44.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R679-0|2026-11-27T14:58:44.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R699-0|2026-11-27T14:58:44.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R725-0|2026-11-27T14:58:44.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R751-0|2026-11-27T14:58:44.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R826-0|2026-11-27T14:58:42.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R852-0|2026-11-27T14:58:42.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R95-0|2026-11-27T14:58:42.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-  },
-  "R98-0|2026-11-27T14:58:42.000+0100": {
-   "incident": "I20261127-0040",
-   "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
   }
  }
 }

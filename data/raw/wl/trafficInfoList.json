@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261127-0051-F02, I20261020-0029, I20261127-0063, I20261127-0011, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261020-0029, I20261127-0063, I20261127-0011, I20261127-0064, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1875-101, R1884-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R2380-627, R2345-127, R2359-125, R2371-125, R2370-125, R2343-125, R2372-125, R2373-126, R2558-125, R2343-626, R2378-627, R2373-125, R2373-127, R2379-627, R3886-480, R293-474, R318-437, R401-101, R1974-466, R1199-205, R1618-160, R1606-160, R1620-160, R1615-160, R1616-160, R1617-160, R1619-160, R1625-160, R1629-160, R1607-160, R1632-160, R1631-160, R1630-160, R1633-160, R1634-160, R1728-162, R1616-162, R1735-162, R1737-162, R1738-162, R1634-162, R352-0, R1462-0, R44-0, R826-0, R852-0, R2160-0, R1000-0, R572-0, R573-0, R574-0, R576-0, R51-0, R98-0, R95-0, R42-0, R22-0, R20-0, R134-0, R13-0, R124-0, R121-0, R397-0, R385-0, R1678-0, R1710-0, R429-0, R161-0, R751-0, R725-0, R699-0, R679-0, R669-0, R5607-0, R1596-0, R1610-0, R3135-0, R1207-0, R1246-0, R176-0, R1850-0, R2923-0, R2940-0, R3207-0, R209-137, R150-137, R211-137, R210-137, R150-138, R1212-138, R1213-138, R188-138, R213-137, R188-137, R214-137, R1213-137, R1212-137, R215-137, R1213-140, R1212-140, R188-140, R189-140, R150-140, R147-140, R148-140, R1212-141, R1213-141, R188-141, R189-141, R150-141, R147-141, R148-141, R1213-142, R188-142, R1212-142, R1336-142, R150-142, R493-142, R148-142, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1875-101, R1876-101, R1880-101, R1884-101, R1883-101, R1882-101, R1881-101, R2343-626, R2378-627, R2359-125, R2380-627, R2343-125, R2370-125, R2373-127, R2373-125, R2372-125, R2558-125, R2371-125, R2373-126, R2345-127, R2379-627, R3886-480, R401-101, R318-437, R293-474, R1974-466, R1199-205, R1606-160, R1615-160, R1616-160, R1617-160, R1618-160, R1619-160, R1620-160, R1625-160, R1607-160, R1633-160, R1632-160, R1631-160, R1630-160, R1629-160, R1634-160, R1728-162, R1616-162, R1738-162, R1735-162, R1737-162, R1634-162, R211-137, R210-137, R209-137, R150-137, R150-138, R1213-138, R1212-138, R188-138, R1212-137, R188-137, R1213-137, R214-137, R213-137, R215-137, R188-140, R1212-140, R1213-140, R189-140, R147-140, R150-140, R148-140, R1212-141, R1213-141, R188-141, R189-141, R150-141, R148-141, R147-141, R188-142, R1212-142, R1213-142, R1336-142, R148-142, R150-142, R493-142, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -223,52 +223,6 @@
     "title": "60, 62: Gleisschaden"
    },
    {
-    "alertCause": "demonstration",
-    "alertCauseId": 122,
-    "attributes": {
-     "relatedLineTypes": {
-      "2": "ptTram"
-     }
-    },
-    "description": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 2: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 2: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "2: Demonstration"
-      }
-     }
-    ],
-    "location": "Universitätsring",
-    "name": "I20261127-0051-F02",
-    "owner": "WL",
-    "parentName": "I20261127-0051",
-    "priority": "1",
-    "reasonId": 22,
-    "reasonName": "Demonstration",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 102,
-      "lineName": "2",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-27T18:41:00.000+0100",
-     "lastUpdate": "2026-11-27T18:41:00.000+0100",
-     "resume": "2026-11-27T18:41:00.000+0100",
-     "start": "2026-11-27T17:23:00.000+0100"
-    },
-    "title": "2: Demonstration"
-   },
-   {
     "alertCause": "vandalism",
     "alertCauseId": 16,
     "attributes": {
@@ -314,24 +268,49 @@
     "title": "U1: Verunreinigung"
    },
    {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R1000-0",
-    "owner": "WL",
-    "parentName": "R1000-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1000
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:42.000+0100"
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U3": "ptMetro"
+     }
     },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U3:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U3: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261127-0064",
+    "owner": "WL",
+    "parentName": "I20261127-0064",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 303,
+      "lineName": "U3",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-27T23:29:00.000+0100",
+     "lastUpdate": "2026-11-27T23:29:00.000+0100",
+     "resume": "2026-11-27T23:29:00.000+0100",
+     "start": "2026-11-27T23:29:00.000+0100"
+    },
+    "title": "U3: Verspätungen"
    },
    {
     "alertCause": "undefined alert cause",
@@ -355,46 +334,6 @@
      "start": "2026-11-27T04:45:12.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R1207-0",
-    "owner": "WL",
-    "parentName": "R1207-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1207
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:44.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R121-0",
-    "owner": "WL",
-    "parentName": "R121-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     121
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:42.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
    },
    {
     "alertCause": "undefined alert cause",
@@ -629,66 +568,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R124-0",
-    "owner": "WL",
-    "parentName": "R124-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     124
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:42.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R1246-0",
-    "owner": "WL",
-    "parentName": "R1246-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1246
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:44.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R13-0",
-    "owner": "WL",
-    "parentName": "R13-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     13
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:42.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Gleisschaden\nEinstieg am äußeren Währinger Gürtel",
     "name": "R1336-142",
     "owner": "WL",
@@ -708,46 +587,6 @@
      "start": "2026-11-27T18:13:34.000+0100"
     },
     "title": "Gleisschaden\nEinstieg am äußeren Währinger Gürtel"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R134-0",
-    "owner": "WL",
-    "parentName": "R134-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     134
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:42.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R1462-0",
-    "owner": "WL",
-    "parentName": "R1462-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1462
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:41.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
    },
    {
     "alertCause": "undefined alert cause",
@@ -982,26 +821,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R1596-0",
-    "owner": "WL",
-    "parentName": "R1596-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1596
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:44.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Fahrtbehinderung\nGleisschaden",
     "name": "R1606-160",
     "owner": "WL",
@@ -1044,46 +863,6 @@
      "start": "2026-11-27T07:48:01.000+0100"
     },
     "title": "Gleisschaden\nBetrieb ab Hofwiesengasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R161-0",
-    "owner": "WL",
-    "parentName": "R161-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     161
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:44.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R1610-0",
-    "owner": "WL",
-    "parentName": "R1610-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1610
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:44.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1433,46 +1212,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R1678-0",
-    "owner": "WL",
-    "parentName": "R1678-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1678
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:43.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R1710-0",
-    "owner": "WL",
-    "parentName": "R1710-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1710
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:43.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Fahrtbehinderung\nGleisschaden",
     "name": "R1728-162",
     "owner": "WL",
@@ -1561,46 +1300,6 @@
      "start": "2026-11-27T07:51:30.000+0100"
     },
     "title": "Gleisschaden\nBetrieb ab Wattmanngasse"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R176-0",
-    "owner": "WL",
-    "parentName": "R176-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     176
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:44.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R1850-0",
-    "owner": "WL",
-    "parentName": "R1850-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     1850
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:44.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1950,26 +1649,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R20-0",
-    "owner": "WL",
-    "parentName": "R20-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     20
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:42.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Fahrtbehinderung\nGleisschaden",
     "name": "R209-137",
     "owner": "WL",
@@ -2104,46 +1783,6 @@
      "start": "2026-11-27T18:06:32.000+0100"
     },
     "title": "Gleisschaden\nEinstieg am Währinger Gürtel"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R2160-0",
-    "owner": "WL",
-    "parentName": "R2160-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2160
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:42.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R22-0",
-    "owner": "WL",
-    "parentName": "R22-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     22
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:42.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2470,26 +2109,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R2923-0",
-    "owner": "WL",
-    "parentName": "R2923-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2923
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:45.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -2509,46 +2128,6 @@
      "start": "2026-11-25T00:00:29.000+0100"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R2940-0",
-    "owner": "WL",
-    "parentName": "R2940-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     2940
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:45.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R3135-0",
-    "owner": "WL",
-    "parentName": "R3135-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     3135
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:44.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2576,66 +2155,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R3207-0",
-    "owner": "WL",
-    "parentName": "R3207-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     3207
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:46.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R352-0",
-    "owner": "WL",
-    "parentName": "R352-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     352
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:40.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R385-0",
-    "owner": "WL",
-    "parentName": "R385-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     385
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:43.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
     "name": "R3886-480",
     "owner": "WL",
@@ -2655,26 +2174,6 @@
      "start": "2026-11-25T00:00:28.000+0100"
     },
     "title": "Bauarbeiten\nBetrieb ab Vivariumstraße 2"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R397-0",
-    "owner": "WL",
-    "parentName": "R397-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     397
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:43.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2702,66 +2201,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R42-0",
-    "owner": "WL",
-    "parentName": "R42-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     42
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:42.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R429-0",
-    "owner": "WL",
-    "parentName": "R429-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     429
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:43.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R44-0",
-    "owner": "WL",
-    "parentName": "R44-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     44
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:42.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Fahrtbehinderung\nGleisschaden",
     "name": "R493-142",
     "owner": "WL",
@@ -2781,306 +2220,6 @@
      "start": "2026-11-27T18:14:03.000+0100"
     },
     "title": "Fahrtbehinderung\nGleisschaden"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R51-0",
-    "owner": "WL",
-    "parentName": "R51-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     51
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:42.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R5607-0",
-    "owner": "WL",
-    "parentName": "R5607-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     5607
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:44.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R572-0",
-    "owner": "WL",
-    "parentName": "R572-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     572
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:42.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R573-0",
-    "owner": "WL",
-    "parentName": "R573-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     573
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:42.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R574-0",
-    "owner": "WL",
-    "parentName": "R574-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     574
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:42.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R576-0",
-    "owner": "WL",
-    "parentName": "R576-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     576
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:42.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R669-0",
-    "owner": "WL",
-    "parentName": "R669-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     669
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:44.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R679-0",
-    "owner": "WL",
-    "parentName": "R679-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     679
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:44.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R699-0",
-    "owner": "WL",
-    "parentName": "R699-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     699
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:44.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R725-0",
-    "owner": "WL",
-    "parentName": "R725-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     725
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:44.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R751-0",
-    "owner": "WL",
-    "parentName": "R751-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     751
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:44.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R826-0",
-    "owner": "WL",
-    "parentName": "R826-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     826
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:42.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R852-0",
-    "owner": "WL",
-    "parentName": "R852-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     852
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:42.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R95-0",
-    "owner": "WL",
-    "parentName": "R95-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     95
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:42.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
-    "name": "R98-0",
-    "owner": "WL",
-    "parentName": "R98-0",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedStops": [
-     98
-    ],
-    "time": {
-     "end": "2026-11-27T23:30:00.000+0100",
-     "start": "2026-11-27T14:58:42.000+0100"
-    },
-    "title": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring"
    },
    {
     "alertCause": "undefined alert cause",

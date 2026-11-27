@@ -1,13 +1,17 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-27T22:00:42.060868+00:00",
- "built": "2026-11-27T23:00:34+01:00",
+ "updated": "2026-11-27T22:30:47.967172+00:00",
+ "built": "2026-11-27T23:30:41+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-27T23:00:34+01:00",
+  "built": "2026-11-27T23:30:41+01:00",
   "items": [
+   {
+    "title": "U3: Verspätungen",
+    "time_line": "Seit 23:29"
+   },
    {
     "title": "40/41: Gleisschaden",
     "time_line": "Seit 20:27"
@@ -29,20 +33,16 @@
     "time_line": "Seit 17:46"
    },
    {
-    "title": "U4: Linie U4 Kein Betrieb zw.Heiligenstadt und Schottenring",
-    "time_line": "Seit 14:44"
-   },
-   {
     "title": "60/62: Gleisschaden",
     "time_line": "Seit 07:46"
    },
    {
-    "title": "1/2/71/D/1A/2A/3A: Demonstration",
-    "time_line": "Ab Sa 28.11. bis So 29.11."
-   },
-   {
     "title": "29B/N25: Bauarbeiten",
     "time_line": "Ab Mo 30.11. bis 12.12."
+   },
+   {
+    "title": "1/2/71/D/1A/2A/3A: Demonstration",
+    "time_line": "Ab Sa 28.11. bis So 29.11."
    },
    {
     "title": "1A/2A/3A/13A: Weihnachtseinkaufstage 2026",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-20T22:00:56.972846+00:00",
-   "raw": {
-    "wl-stoerungen": 55,
-    "wl-hinweise": 67,
-    "oebb": 165,
-    "baustellen-linien": 51,
-    "baustellen-punkte": 15
-   },
-   "discarded": {
-    "wl": 12,
-    "oebb": 141,
-    "baustellen": 63
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 10,
-    "wl": 82
-   }
-  },
   {
    "t": "2026-11-20T22:30:52.183333+00:00",
    "raw": {
@@ -6791,17 +6771,37 @@
     "oebb": 13,
     "wl": 98
    }
+  },
+  {
+   "t": "2026-11-27T22:30:47.967172+00:00",
+   "raw": {
+    "wl-stoerungen": 94,
+    "wl-hinweise": 73,
+    "oebb": 174,
+    "baustellen-linien": 47,
+    "baustellen-punkte": 13
+   },
+   "discarded": {
+    "wl": 12,
+    "oebb": 148,
+    "baustellen": 57
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 13,
+    "wl": 98
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-27T22:00:42.060868+00:00"
+   "last_ok": "2026-11-27T22:30:47.967172+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-27T22:00:42.060868+00:00"
+   "last_ok": "2026-11-27T22:30:47.967172+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-27T22:00:42.060868+00:00"
+   "last_ok": "2026-11-27T22:30:47.967172+00:00"
   }
  }
 }

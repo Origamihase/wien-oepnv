@@ -6,14 +6,10 @@
     "description": "<h2>Demonstration</h2><p>Wegen einer Demonstration in der inneren Stadt kommt es zu Verkehrsmaßnahmen.</p><p><strong><u>Zeitraum:</u></strong><br>Samstag, 28. November 2026, zwischen 13:30 Uhr und 18:00 Uhr</p><p><strong><u>Maßnahmen:</u></strong><br><strong>Linie D:</strong><br>Umleitung in beiden Richtungen zwischen Schwarzenbergplatz und Börse über Stubentor U - Schwedenplatz U - Schottenring U.</p><p><strong>Linie 1 in Richtung Prater Hauptallee:</strong><br>Umleitung ab Karlsplatz U über Lothringerstraße - Schwarzenbergplatz - Stubentor zum Julius-Raab-Platz.</p><p><strong>Linie 1 in Richtung Reumannplatz U:</strong><br>Die Züge fahren bis Börse, wenden dort und fahren über Schwedenplatz U - Stubentor U - Schwarzenbergplatz - Lothringerstraße - zum Karlsplatz U (Zustiegsmöglichkeit im Bereich der Schleifenanlage).</p><p><strong>Linie 2:</strong><br>Umleitung in beiden Richtungen zwischen Parlament, U Volkstheater und Schwedenplatz U über Schottentor U und Schottenring U.<br>In Richtung Dornbach kann die Haltestelle Schwedenplatz U nicht eingehalten werden, benutzen Sie bitte die Haltestelle Marienbrücke.</p><p><strong>Linie 71:</strong><br>Kurzführung, Betrieb nur zwischen Kaiserebersdorf, Zinnergasse und Schwarzenbergplatz.</p><p><strong>Linien 1A, 2A und 3A:</strong><br>Diese Linien werden aufgrund des Einkaufssamtages aus Sicherheitsgründen nicht betrieben.</p><p><strong><u>Ersatz:</u></strong><br>Weichen Sie ersatzweise auf die Linien U1, U2, U3 oder U4 aus.</p><p><strong><u>Hinweis:</u></strong><br>Die genannten Einschränkungen müssen nicht gleichzeitig auftreten, Linien werden sofort nach Freiwerden der gesperrten Streckenabschnitte wieder normalisiert. Beachten Sie daher unsere Lautsprecherdurchsagen und unsere Echtzeitinformation unter <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.wienerlinien.at\">www.wienerlinien.at</a>.</p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "0193b3f4313f0adc0dfbb75d880f74695f85fbde95f0e98a8efc43e1e46e65b7",
-    "pubDate": "2026-11-27T17:23:00+01:00",
+    "pubDate": "2026-11-25T12:26:00+01:00",
     "starts_at": "2026-11-28T00:00:00+01:00",
     "ends_at": "2026-11-28T18:30:00+01:00",
-    "_identity": "wl|hinweis|L=1,1A,2,2A,3A,71,D|D=2026-11-28|TK=demonstration",
-    "_wl_ids": [
-      "I20261127-0051"
-    ],
-    "_incident_start": "2026-11-27T17:23:00+01:00"
+    "_identity": "wl|hinweis|L=1,1A,2,2A,3A,71,D|D=2026-11-28|TK=demonstration"
   },
   {
     "source": "Wiener Linien",
@@ -1166,14 +1162,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "U4: Linie U4 Kein Betrieb zw.Heiligenstadt und Schottenring",
-    "description": "Linie U4\nKein Betrieb zw.Heiligenstadt und Schottenring",
+    "title": "U3: Verspätungen",
+    "description": "Linie U3: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "9b14cf46c405cf6a3e4b451f99c995fc7d5d3b2447e3182cd60b17493de4436f",
-    "pubDate": "2026-11-27T14:58:40+01:00",
-    "starts_at": "2026-11-27T14:58:46+01:00",
-    "ends_at": "2026-11-27T23:30:00+01:00",
-    "_identity": "wl|störung|L=U4|D=2026-11-27|TK=linie u4 kein betrieb zw heiligenstadt und schottenring"
+    "guid": "4ebe4fd6bb521a383e433389a9ca22167c52d8ae91c269c548b85e8733e8bc6c",
+    "pubDate": "2026-11-27T23:29:00+01:00",
+    "starts_at": "2026-11-27T23:29:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U3|D=2026-11-27|TK=u3 verspätungen",
+    "_wl_ids": [
+      "I20261127-0064"
+    ],
+    "_incident_start": "2026-11-27T23:29:00+01:00"
   },
   {
     "source": "Wiener Linien",
