@@ -394,52 +394,6 @@
   {
    "geometry": {
     "first_position": [
-     16.28560998,
-     48.1470784
-    ],
-    "type": "LineString"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Gerhard Baumann",
-    "ANSPRECHPERSON_TEL": "Tel.: 050128/32740",
-    "ANTRAGSTELLER": "Wiener Netze - Bereich Fernwärme",
-    "BEHINDERUNGSART": "Rohrlegung",
-    "BEZEICHNUNG": "Knotzenbachgasse von Kreuzung Endresstraße und Khemetergasse bis Kreuzung Dirmhirngasse",
-    "BEZIRK": 23,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-06-28Z",
-    "OBJEKT_ENDE": "2026-11-27Z",
-    "PRESSETEXT": "DieKnotzenbachgasse wird von Khemetergasse bis und in Fahrtrichtung Dirmhirngasse zur Einbahn. Die Arbeiten im Kreuzungsplateau Dirmhirngasse werden von 20:00 Uhr bis 5:00 Uhr durchgeführt und der Verkehr wechselweise mittels Personal durchgeschleust.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
-     16.32746373,
-     48.227819
-    ],
-    "type": "LineString"
-   },
-   "properties": {
-    "ANSPRECHPERSON": "Poststelle",
-    "ANSPRECHPERSON_TEL": "Tel.: 01/4000-96915",
-    "ANTRAGSTELLER": "MA29",
-    "BEHINDERUNGSART": "Brückenbau",
-    "BEZEICHNUNG": "Kreuzgassenbrücke von Czartoryskigasse und Gersthofer Straße bis Kreuzgasse und Simonygasse",
-    "BEZIRK": 17,
-    "GISCODE": 1,
-    "GISCODE_TXT": "P90 Baustellen",
-    "OBJEKT_BEGINN": "2026-11-01Z",
-    "OBJEKT_ENDE": "2026-11-27Z",
-    "PRESSETEXT": "Ein Fahrstreifen je Fahrtrichtung bleibt aufrecht. Das Linksabbiegen kommend von der Kreuzgasse in Fahrtrichtung Gersthofer Straße weiterführend Lidlgasse ist nicht mehr möglich. Die Umleitung in Fahrtrichtung Gersthofer Straße weiterführend Lidlgasse erfolgt über: Gersthofer Straße - Scheidlstraße - Salierergasse - Czartoryskigasse - Gersthofer Straße.",
-    "SE_ANNO_CAD_DATA": null
-   }
-  },
-  {
-   "geometry": {
-    "first_position": [
      16.29763667,
      48.18594026
     ],
