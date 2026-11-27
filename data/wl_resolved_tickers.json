@@ -3,6 +3,18 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
+  "R1387-144|2026-11-27T06:32:23.000+0100": {
+   "incident": "I20261127-0006",
+   "title": "Oberleitungsgebr\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+  },
+  "R241-144|2026-11-27T06:32:21.000+0100": {
+   "incident": "I20261127-0006",
+   "title": "Oberleitungsgebr\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+  },
+  "R242-144|2026-11-27T06:32:21.000+0100": {
+   "incident": "I20261127-0006",
+   "title": "Oberleitungsgebr\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+  },
   "R2420-118|2026-11-27T05:31:48.000+0100": {
    "incident": "I20261127-0002",
    "title": "Fahrtbehinderung\nWeichenschaden"
@@ -11,32 +23,28 @@
    "incident": "I20261127-0002",
    "title": "Weichenschaden\nBetrieb ab Schlachthausgasse U "
   },
-  "R2620-118|2026-11-27T05:40:49.000+0100": {
-   "incident": "I20261127-0002",
-   "title": "Fahrtbehinderung\nWeichenschaden"
+  "R245-144|2026-11-27T06:32:21.000+0100": {
+   "incident": "I20261127-0006",
+   "title": "Oberleitungsgebr\nBetrieb ab Johann-Nepomuk-Berger-Platz"
+  },
+  "R246-144|2026-11-27T06:33:22.000+0100": {
+   "incident": "I20261127-0006",
+   "title": "Oberleitungsgebr\nZüge halten bei Li. 9 Ri. Westbhf. U S "
   },
   "R2632-118|2026-11-27T05:31:48.000+0100": {
    "incident": "I20261127-0002",
    "title": "Fahrtbehinderung\nWeichenschaden"
   },
-  "R272-112|2026-11-27T05:56:48.000+0100": {
-   "incident": "I20261127-0003",
-   "title": "Fahrtbehinderung\nGegenstände auf der Oberleitung"
-  },
   "R2750-118|2026-11-27T05:38:19.000+0100": {
    "incident": "I20261127-0002",
    "title": "Weichenschaden\nBetrieb ab Schlachthausgasse U "
   },
-  "R356-112|2026-11-27T05:56:48.000+0100": {
-   "incident": "I20261127-0003",
+  "R276-144|2026-11-27T06:31:52.000+0100": {
+   "incident": "I20261127-0006",
    "title": "Fahrtbehinderung\nGegenstände auf der Oberleitung"
   },
-  "R3568-118|2026-11-27T05:40:50.000+0100": {
-   "incident": "I20261127-0002",
-   "title": "Fahrtbehinderung\nWeichenschaden"
-  },
-  "R357-112|2026-11-27T05:56:48.000+0100": {
-   "incident": "I20261127-0003",
+  "R277-144|2026-11-27T06:31:52.000+0100": {
+   "incident": "I20261127-0006",
    "title": "Fahrtbehinderung\nGegenstände auf der Oberleitung"
   },
   "R3602-118|2026-11-27T05:31:49.000+0100": {
@@ -70,18 +78,6 @@
   "R3609-118|2026-11-27T05:38:20.000+0100": {
    "incident": "I20261127-0002",
    "title": "Weichenschaden\nBetrieb ab Schlachthausgasse U "
-  },
-  "R379-112|2026-11-27T05:57:49.000+0100": {
-   "incident": "I20261127-0003",
-   "title": "Oberleitungsgebr\nBetrieb ab Lange Gasse"
-  },
-  "R380-112|2026-11-27T05:58:19.000+0100": {
-   "incident": "I20261127-0003",
-   "title": "Oberleitungsgebr\nZüge halten bei Li. 43 Ri. Schottentor"
-  },
-  "R458-112|2026-11-27T05:57:49.000+0100": {
-   "incident": "I20261127-0003",
-   "title": "Oberleitungsgebr\nBetrieb ab Lange Gasse"
   }
  }
 }
