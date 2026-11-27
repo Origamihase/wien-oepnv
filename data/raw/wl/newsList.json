@@ -2024,14 +2024,14 @@
    {
     "alertCause": "unknown",
     "alertCauseId": 0,
-    "description": "<p><strong><u>Haltestellenverlegung der Linie 31 in Richtung Stammersdorf</u></strong></p><p><strong><u>Haltestelle:</u></strong> Wexstraße</p><p><strong><u>Von:</u></strong> Wexstraße 12</p><p><strong><u>Nach:</u></strong> Klosterneuburger Straße 88-90</p><p><strong><u>Dauer:</u></strong> Ab 09. November 2026, 04:30 Uhr, für etwa drei Wochen</p><p><strong><u>Grund:</u></strong> Haltestellenumbau</p>",
+    "description": "<p><strong><u>Haltestellenverlegung der Linie 31 in Richtung Stammersdorf</u></strong></p><p><strong><u>Haltestelle:</u></strong> Wexstraße</p><p><strong><u>Von:</u></strong> Wexstraße 12</p><p><strong><u>Nach:</u></strong> Klosterneuburger Straße 88-90</p><p><strong><u>Dauer:</u></strong> Ab 09. November 2026, 04:30 Uhr bis 01. Dezember 2026, etwa 07:00 Uhr</p><p><strong><u>Grund:</u></strong> Haltestellenumbau</p>",
     "id": "N20261105-0001",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p><strong><u>Haltestellenverlegung der Linie 31 in Richtung Stammersdorf</u></strong></p><p><strong><u>Haltestelle:</u></strong> Wexstraße</p><p><strong><u>Von:</u></strong> Wexstraße 12</p><p><strong><u>Nach:</u></strong> Klosterneuburger Straße 88-90</p><p><strong><u>Dauer:</u></strong> Ab 09. November 2026, 04:30 Uhr, für etwa drei Wochen</p><p><strong><u>Grund:</u></strong> Haltestellenumbau</p>",
-       "descriptionPlain": "Haltestellenverlegung der Linie 31 in Richtung Stammersdorf Haltestelle: Wexstraße Von: Wexstraße 12 Nach: Klosterneuburger Straße 88-90 Dauer: Ab 09. November 2026, 04:30 Uhr, für etwa drei Wochen Grund: Haltestellenumbau",
-       "title": "31: Wexstraße"
+       "descriptionHtml": "<p><strong><u>Haltestellenverlegung der Linie 31 in Richtung Stammersdorf</u></strong></p><p><strong><u>Haltestelle:</u></strong> Wexstraße</p><p><strong><u>Von:</u></strong> Wexstraße 12</p><p><strong><u>Nach:</u></strong> Klosterneuburger Straße 88-90</p><p><strong><u>Dauer:</u></strong> Ab 09. November 2026, 04:30 Uhr bis 01. Dezember 2026, etwa 07:00 Uhr</p><p><strong><u>Grund:</u></strong> Haltestellenumbau</p>",
+       "descriptionPlain": "Haltestellenverlegung der Linie 31 in Richtung Stammersdorf Haltestelle: Wexstraße Von: Wexstraße 12 Nach: Klosterneuburger Straße 88-90 Dauer: Ab 09. November 2026, 04:30 Uhr bis 01. Dezember 2026, etwa 07:00 Uhr Grund: Haltestellenumbau",
+       "title": "31: Haltestellenverlegung"
       }
      }
     ],
@@ -2058,10 +2058,11 @@
      }
     ],
     "time": {
+     "end": "2026-12-01T07:00:00.000+0100",
      "start": "2026-11-05T13:45:00.000+0100",
      "validFrom": "2026-11-09T04:30:00.000+0100"
     },
-    "title": "31: Wexstraße"
+    "title": "31: Haltestellenverlegung"
    },
    {
     "alertCause": "unknown",
