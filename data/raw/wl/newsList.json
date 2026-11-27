@@ -6,7 +6,7 @@
     "name": "aktuelles",
     "refPoiCategoryGroupId": 61,
     "title": "Aktuelles",
-    "trafficInfoNameList": "N20260209-0049, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260702-5991, N20260813-6092, N20260808-6083, N20260808-6084, N20260817-6129, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260903-6175, N20260908-6177, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261006-6258, N20261007-6260, N20261009-6270, N20261021-0001, N20261023-0001, N20261104-0001, N20261104-0002, N20261104-0004, N20261105-0001, N20261105-0002, N20261106-0002, N20261111-0001, N20261111-0003, N20261111-0004, N20261111-0005, N20261111-0007, N20261012-6272, N20261116-0001, N20261118-0003, N20261118-0004, N20261119-0001, N20261120-0001, N20261123-0001, N20261123-0002, N20261123-0003, N20261123-0004, N20261123-0005, N20261124-0001, N20261124-0002, N20261125-0001, N20261125-0002, N20261126-0001"
+    "trafficInfoNameList": "N20260209-0049, N20260209-3802, N20260209-4915, N20260209-4985, N20260211-5254, N20260210-5248, N20260223-5335, N20260224-5338, N20260325-5566, N20260513-5839, N20260519-5848, N20260610-5908, N20260610-5910, N20260610-5909, N20260623-5935, N20260625-5942, N20260702-5991, N20260813-6092, N20260808-6083, N20260808-6084, N20260817-6129, N20260820-6141, N20260821-6143, N20260825-6151, N20260831-6164, N20260831-6162, N20260831-6161, N20260903-6175, N20260908-6177, N20260916-6187, N20260918-6191, N20260921-6196, N20260923-6203, N20261005-6221, N20261006-6258, N20261007-6260, N20261009-6270, N20261021-0001, N20261023-0001, N20261104-0001, N20261104-0002, N20261104-0004, N20261105-0001, N20261105-0002, N20261106-0002, N20261111-0001, N20261111-0003, N20261111-0004, N20261111-0005, N20261111-0007, N20261012-6272, N20261116-0001, N20261118-0003, N20261118-0004, N20261119-0001, N20261120-0001, N20261123-0001, N20261123-0002, N20261123-0003, N20261123-0004, N20261123-0005, N20261124-0001, N20261124-0002, N20261125-0001, N20261125-0002, N20261126-0001, N20261120-0002"
    },
    {
     "id": -1,
@@ -2638,6 +2638,49 @@
      "validFrom": "2026-11-20T14:23:00.000+0100"
     },
     "title": "11: Wienerfeldgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "<p>Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden. Bitte achten Sie beim Ein- und Aussteigen besonders auf den Spalt zwischen Zug und Bahnsteig.</p><p>Due to the high number of passengers attending an event, the folding ramps on line U1 underground trains cannot be deployed. Please mind the gap between the platform and the train when boarding or alighting.</p><p>Zeitraum | Duration:<br>28.11.2026, 18:00- 28.11.2026, 20:15.</p>",
+    "id": "N20261120-0002",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden. Bitte achten Sie beim Ein- und Aussteigen besonders auf den Spalt zwischen Zug und Bahnsteig.</p><p>Due to the high number of passengers attending an event, the folding ramps on line U1 underground trains cannot be deployed. Please mind the gap between the platform and the train when boarding or alighting.</p><p>Zeitraum | Duration:<br>28.11.2026, 18:00- 28.11.2026, 20:15.</p>",
+       "descriptionPlain": "Wegen des hohen Fahrgastaufkommens in Zusammenhang mit einer Veranstaltung können die Klapprampen der U-Bahnzüge der Linie U1 nicht ausgefahren werden. Bitte achten Sie beim Ein- und Aussteigen besonders auf den Spalt zwischen Zug und Bahnsteig. Due to the high number of passengers attending an event, the folding ramps on line U1 underground trains cannot be deployed. Please mind the gap between the platform and the train when boarding or alighting. Zeitraum | Duration: 28.11.2026, 18:00- 28.11.2026, 20:15.",
+       "title": "U1: Klapprampensperre"
+      }
+     }
+    ],
+    "location": {
+     "properties": {
+      "attributes": {},
+      "coordName": "WGS84",
+      "type": "news"
+     },
+     "type": "Feature"
+    },
+    "name": "N20261120-0002",
+    "reasonId": 256,
+    "reasonName": "Klapprampensperre",
+    "refPoiCategoryId": 13296,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 301,
+      "lineName": "U1",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "time": {
+     "end": "2026-11-28T20:15:00.000+0100",
+     "start": "2026-11-27T17:00:00.000+0100",
+     "validFrom": "2026-11-27T14:28:00.000+0100"
+    },
+    "title": "U1: Klapprampensperre"
    },
    {
     "alertCause": "undefined alert cause",
