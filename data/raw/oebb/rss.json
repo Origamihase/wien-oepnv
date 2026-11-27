@@ -1281,14 +1281,6 @@
    "{http://purl.org/dc/elements/1.1/}creator": ""
   },
   {
-   "description": "18.03.2027 - 31.03.2027<br/><br/>Wegen Bauarbeiten fahren zwischen <b>Innsbruck Hbf</b> und <b>Zürich HB</b> von <b>18.03.2027</b> (22:30 Uhr) bis <b>31.03.2027</b> (00:59 Uhr) einige Fernverkehrszüge mit geänderten Fahrzeiten. Anschlussverbindungen können nicht garantiert werden. Aufgrund der Bauarbeiten kann es teilweise zu Einschränkungen bei der Buchung von Sitzplatzreservierungen kommen.<br>Wir bitten um Entschuldigung.. ",
-   "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&930152",
-   "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
-   "pubDate": "Wed, 25 Nov 2026 11:35:24 +0100",
-   "title": "Bauarbeiten - geänderte Fahrzeiten: Innsbruck Hbf &#60;=&#62; Zürich HB",
-   "{http://purl.org/dc/elements/1.1/}creator": ""
-  },
-  {
    "description": "18.03.2027 - 12.04.2027<br/><br/>Wegen Bauarbeiten fahren zwischen <b>Innsbruck Hbf</b> und <b>Zürich HB</b> von <b>18.03.2027</b> (22:30 Uhr) bis <b>12.04.2027</b> (05:00 Uhr) einige Nachtzüge mit geänderten Fahrzeiten. Anschlussverbindungen können nicht garantiert werden. Einige Nachtzüge werden umgeleitet. Aufgrund der Bauarbeiten kann es teilweise zu Einschränkungen bei der Buchung von Sitzplatzreservierungen kommen.<br>Wir bitten um Entschuldigung.. ",
    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&930154",
    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
@@ -1385,11 +1377,11 @@
    "{http://purl.org/dc/elements/1.1/}creator": ""
   },
   {
-   "description": "27.11.2026<br/><br/>Wegen einer Weichenstörung sind zwischen <b>Wien Praterstern Bahnhof (U) </b>und <b>Wien Floridsdorf Bahnhof (U)</b> <b>Zugfahrten derzeit nur eingeschränkt</b> möglich. Es kommt zu <b>vereinzelten Zugausfällen </b>und <b>Verspätungen </b>bis zu<b> 15 Minuten</b>.<br>Beachten Sie bitte die Lautsprecherdurchsagen und Monitoranzeigen am Bahnsteig.<br>Wir bitten um Entschuldigung. ",
+   "description": "27.11.2026<br/><br/>Wegen einer Weichenstörung <b>waren</b> zwischen Wien Praterstern Bahnhof (U) und Wien Floridsdorf Bahnhof (U) <b>bis </b><b>13:37 Uhr</b> nur eingeschränkt Fahrten möglich. Es kommt noch zu <b>vereinzelten Zugausfällen und Verzögerungen</b>. Wir bitten um Entschuldigung. ",
    "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&931546",
    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
-   "pubDate": "Fri, 27 Nov 2026 12:59:55 +0100",
-   "title": "Verkehrseinschränkung: Wien Praterstern Bahnhof (U) - Wien Floridsdorf Bahnhof (U)",
+   "pubDate": "Fri, 27 Nov 2026 13:52:26 +0100",
+   "title": "Update 1 (27.11.2026 13:52) Verkehrseinschränkung Aufhebung: Wien Praterstern Bahnhof (U) - Wien Floridsdorf Bahnhof (U)",
    "{http://purl.org/dc/elements/1.1/}creator": ""
   },
   {
@@ -1398,6 +1390,14 @@
    "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
    "pubDate": "Fri, 27 Nov 2026 13:21:26 +0100",
    "title": "Bauarbeiten - Schienenersatzverkehr/geänderte Fahrzeiten: Villach Hbf &#60;=&#62; Jesenice(SLO)",
+   "{http://purl.org/dc/elements/1.1/}creator": ""
+  },
+  {
+   "description": "20.03.2027 - 03.04.2027<br/><br/>Wegen Bauarbeiten kann<br>in <b>Telfs-Pfaffenhofen Bahnhof [in Pfaffenhofen]</b><br>am <b>20.03.2027</b><br>am <b>27.03.2027 </b>und<br>am <b>03.04.2027</b><br>der Zug RJ 1286 nicht halten.<br><br>Wir bitten um Entschuldigung. ",
+   "guid": "https://fahrplan.oebb.at/bin/query.exe/dn?ujm=1&mapType=TRACKINFO&931573",
+   "link": "https://fahrplan.oebb.at/bin/help.exe/dn?L=vs_scotty&tpl=showmap_external&",
+   "pubDate": "Fri, 27 Nov 2026 13:37:49 +0100",
+   "title": "Bauarbeiten - kein Halt in Telfs-Pfaffenhofen Bahnhof [in Pfaffenhofen]: Telfs-Pfaffenhofen Bahnhof [in Pfaffenhofen]",
    "{http://purl.org/dc/elements/1.1/}creator": ""
   }
  ]
