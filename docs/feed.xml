@@ -8,7 +8,7 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 27 Nov 2026 21:00:51 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 21:30:42 +0100</lastBuildDate>
     <ttl>15</ttl>
     <item>
       <title><![CDATA[37/38: Gleisschaden]]></title>
@@ -33,22 +33,10 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 27 Nov 2026 20:27:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 27 Nov 2026 20:41:47 +0100</ext:starts_at>
-      <description>Gleisschaden: Einstieg am äußeren Währinger Gürtel; Fahrtbehinderung; Betrieb ab Währinger Straße, Volksoper. [Seit 20:27]</description>
-      <content:encoded><![CDATA[Gleisschaden: Einstieg am äußeren Währinger Gürtel; Fahrtbehinderung; Betrieb ab Währinger Straße, Volksoper.<br/>[Seit 20:27]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[25: Schadhaftes Fahrzeug]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">76ec352854b559b2d1c07ec729df49b28debe6671b359e8312bc178e8f701468</guid>
-      <pubDate>Fri, 27 Nov 2026 19:51:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 27 Nov 2026 19:51:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 27 Nov 2026 19:51:00 +0100</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. Ersatzbus 26E hält Karl-Waldbrunner-Platz vor Schloßhofer Straße; Züge halten Donaufelder Straße 175-177. [Seit 19:51]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. Ersatzbus 26E hält Karl-Waldbrunner-Platz vor Schloßhofer Straße; Züge halten Donaufelder Straße 175-177.<br/>[Seit 19:51]]]></content:encoded>
+      <ext:starts_at>Fri, 27 Nov 2026 20:38:49 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 27 Nov 2026 23:59:00 +0100</ext:ends_at>
+      <description>Falschparker: Fahrtbehinderung. Gleisschaden: Einstieg am äußeren Währinger Gürtel; Fahrtbehinderung; Betrieb ab Währinger Straße, Volksoper. [Seit 20:27]</description>
+      <content:encoded><![CDATA[Falschparker: Fahrtbehinderung. Gleisschaden: Einstieg am äußeren Währinger Gürtel; Fahrtbehinderung; Betrieb ab Währinger Straße, Volksoper.<br/>[Seit 20:27]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[42: Gleisschaden]]></title>
@@ -63,19 +51,6 @@
       <ext:ends_at>Fri, 27 Nov 2026 23:59:00 +0100</ext:ends_at>
       <description>Betrieb ab Währinger Straße, Volksoper; Einstieg am äußeren Währinger Gürtel; Fahrtbehinderung. [Seit 18:09]</description>
       <content:encoded><![CDATA[Betrieb ab Währinger Straße, Volksoper; Einstieg am äußeren Währinger Gürtel; Fahrtbehinderung.<br/>[Seit 18:09]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[U2: Betriebsstörung]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">fa04221bd15b193d8657be6bfd7aa78af1d8f7ab3d7531c08dad9bdbffc87aa4</guid>
-      <pubDate>Fri, 27 Nov 2026 18:44:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Fri, 27 Nov 2026 18:44:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 27 Nov 2026 18:44:00 +0100</ext:starts_at>
-      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 18:44]</description>
-      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 18:44]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[11A: Rettungseinsatz]]></title>
@@ -145,6 +120,33 @@
       <ext:ends_at>Fri, 27 Nov 2026 22:41:00 +0100</ext:ends_at>
       <description>Einstieg gegenüber für Richtung Absberggasse. [Heute]</description>
       <content:encoded><![CDATA[Einstieg gegenüber für Richtung Absberggasse.<br/>[Heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[2: Demonstration]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">3629ca20a95831a63570d0cdaf8f90603b749ac7933bdfaee0e7e19c548af3ca</guid>
+      <pubDate>Fri, 27 Nov 2026 17:23:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 27 Nov 2026 17:23:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 27 Nov 2026 17:28:57 +0100</ext:starts_at>
+      <description>Einstieg nach Bellariastraße in der Bedarfshaltestelle. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit heute]</description>
+      <content:encoded><![CDATA[Einstieg nach Bellariastraße in der Bedarfshaltestelle. Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit heute]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[1: Demonstration, Gleisbauarbeiten]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">8cc22bbfd84d131d38143c70f680c24d1c39fbf1fe455e06a3f50824d8ce8e3c</guid>
+      <pubDate>Fri, 27 Nov 2026 17:23:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 27 Nov 2026 17:23:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 27 Nov 2026 17:48:29 +0100</ext:starts_at>
+      <ext:ends_at>Fri, 27 Nov 2026 23:59:59 +0100</ext:ends_at>
+      <description>Demonstration: Einstieg gegenüber für Fahrziel Reumannplatz. Gleisbauarbeiten: Züge halten Quellenstraße 156 (Linie 6); Betrieb ab Knöllgasse; Kein Betrieb. [Heute]</description>
+      <content:encoded><![CDATA[Demonstration: Einstieg gegenüber für Fahrziel Reumannplatz. Gleisbauarbeiten: Züge halten Quellenstraße 156 (Linie 6); Betrieb ab Knöllgasse; Kein Betrieb.<br/>[Heute]]]></content:encoded>
     </item>
   </channel>
 </rss>
