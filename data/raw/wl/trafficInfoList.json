@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261127-0002, I20260925-0011, I20260909-0007, I20261127-0003, I20261020-0029"
+    "trafficInfoNameList": "I20261127-0004, I20261127-0002, I20261127-0005, I20260925-0011, I20260909-0007, I20261127-0003-F01, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R1880-101, R2380-627, R2373-126, R2371-125, R2378-627, R2359-125, R2343-125, R2370-125, R2558-125, R2343-626, R2372-125, R2373-125, R2373-127, R2379-627, R2345-127, R3886-480, R293-474, R318-437, R401-101, R1974-466, R1199-205, R500-101, R2420-118, R2422-118, R2632-118, R3605-118, R3602-118, R3603-118, R3604-118, R3606-118, R2750-118, R3609-118, R3608-118, R3607-118, R2620-118, R3568-118, R272-112, R357-112, R356-112, R379-112, R458-112, R380-112, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1875-101, R1876-101, R1881-101, R1882-101, R1884-101, R1883-101, R1880-101, R2380-627, R2373-126, R2371-125, R2558-125, R2343-626, R2378-627, R2359-125, R2343-125, R2370-125, R2372-125, R2373-125, R2373-127, R2379-627, R2345-127, R3886-480, R401-101, R293-474, R318-437, R1974-466, R1199-205, R500-101, R2632-118, R2422-118, R2420-118, R3605-118, R3602-118, R3603-118, R3604-118, R3606-118, R2750-118, R3607-118, R3609-118, R3608-118, R2620-118, R3568-118, R357-112, R356-112, R272-112, R458-112, R379-112, R380-112, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -223,19 +223,19 @@
       "12": "ptTram"
      }
     },
-    "description": "Linie 12: Betrieb nur zwischen Hillerstraße und Lange Gasse. Weiterfahrt bis Alser Straße U. Voraussichtliche Dauer: 07:00 Uhr. Grund: Gegenstände auf der Oberleitung im Bereich Lerchenfelder Gürtel.",
-    "descriptionHTML": "<p><strong>Linie 12:</strong><br>Betrieb nur zwischen Hillerstraße und Lange Gasse.<br>Weiterfahrt bis Alser Straße U.</p><p>Voraussichtliche Dauer: 07:00 Uhr.</p><p>Grund: Gegenstände auf der Oberleitung im Bereich Lerchenfelder Gürtel.</p>",
+    "description": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p><strong>Linie 12:</strong><br>Betrieb nur zwischen Hillerstraße und Lange Gasse.<br>Weiterfahrt bis Alser Straße U.</p><p>Voraussichtliche Dauer: 07:00 Uhr.</p><p>Grund: Gegenstände auf der Oberleitung im Bereich Lerchenfelder Gürtel.</p>",
-       "descriptionPlain": "Linie 12: Betrieb nur zwischen Hillerstraße und Lange Gasse. Weiterfahrt bis Alser Straße U. Voraussichtliche Dauer: 07:00 Uhr. Grund: Gegenstände auf der Oberleitung im Bereich Lerchenfelder Gürtel.",
+       "descriptionHtml": "<p>Linie 12: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 12: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
        "title": "12: Gegenstände auf der Oberleitung"
       }
      }
     ],
     "location": "Lerchenfelder Gürtel",
-    "name": "I20261127-0003",
+    "name": "I20261127-0003-F01",
     "owner": "WL",
     "parentName": "I20261127-0003",
     "priority": "1",
@@ -254,11 +254,102 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-27T05:55:00.000+0100",
-     "lastUpdate": "2026-11-27T05:55:00.000+0100",
+     "created": "2026-11-27T06:21:00.000+0100",
+     "lastUpdate": "2026-11-27T06:21:00.000+0100",
+     "resume": "2026-11-27T06:21:00.000+0100",
      "start": "2026-11-27T05:52:00.000+0100"
     },
     "title": "12: Gegenstände auf der Oberleitung"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U1": "ptMetro"
+     }
+    },
+    "description": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U1:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U1: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U1: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261127-0004",
+    "owner": "WL",
+    "parentName": "I20261127-0004",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 301,
+      "lineName": "U1",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-27T06:12:00.000+0100",
+     "lastUpdate": "2026-11-27T06:12:00.000+0100",
+     "resume": "2026-11-27T06:12:00.000+0100",
+     "start": "2026-11-27T06:12:00.000+0100"
+    },
+    "title": "U1: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U4": "ptMetro"
+     }
+    },
+    "description": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U4:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U4: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U4: Schadhaftes Fahrzeug"
+      }
+     }
+    ],
+    "name": "I20261127-0005",
+    "owner": "WL",
+    "parentName": "I20261127-0005",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 304,
+      "lineName": "U4",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-27T06:14:00.000+0100",
+     "lastUpdate": "2026-11-27T06:14:00.000+0100",
+     "resume": "2026-11-27T06:14:00.000+0100",
+     "start": "2026-11-27T06:14:00.000+0100"
+    },
+    "title": "U4: Schadhaftes Fahrzeug"
    },
    {
     "alertCause": "undefined alert cause",
