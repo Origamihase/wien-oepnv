@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:ext="https://wien-oepnv.example/schema" xmlns:georss="http://www.georss.org/georss" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:ext="https://wien-oepnv.example/schema" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
   <channel>
     <title>Vienna Public Transport — Disruptions &amp; Commuter Info</title>
     <link>https://github.com/Origamihase/wien-oepnv</link>
@@ -8,8 +8,34 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 27 Nov 2026 07:01:02 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 07:30:47 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[84A: Third-party traffic accident]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">f0734148ab1da055a9e19c6d42b75b92c43c941bcf8a76ce37fc8fefe36cdf7e</guid>
+      <pubDate>Fri, 27 Nov 2026 07:00:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 27 Nov 2026 07:30:47 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 27 Nov 2026 07:00:00 +0100</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 07:00]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 07:00]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U2: Defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104</guid>
+      <pubDate>Fri, 27 Nov 2026 07:27:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 27 Nov 2026 07:27:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 27 Nov 2026 07:27:00 +0100</ext:starts_at>
+      <description>After a service obstruction, there are irregular intervals. [Since 07:27]</description>
+      <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 07:27]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[44: Overhead-line fault, objects on the overhead line]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -24,7 +50,7 @@
       <content:encoded><![CDATA[Overhead-line fault: service from Johann-Nepomuk-Berger-Platz; trains stop at the stop of line 9 direction Westbhf.<br/>[Since 06:32]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U1/U4: Defective vehicle]]></title>
+      <title><![CDATA[U4: Defective vehicle]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7</guid>
       <pubDate>Fri, 27 Nov 2026 06:12:00 +0100</pubDate>
@@ -32,7 +58,7 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 27 Nov 2026 06:12:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 27 Nov 2026 06:12:00 +0100</ext:starts_at>
+      <ext:starts_at>Fri, 27 Nov 2026 06:14:00 +0100</ext:starts_at>
       <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 06:12]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 06:12]]]></content:encoded>
     </item>
@@ -59,8 +85,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 27 Nov 2026 06:00:59 +0100</ext:first_seen>
       <ext:starts_at>Fri, 27 Nov 2026 05:31:49 +0100</ext:starts_at>
-      <description>Service only between Burggasse, Stadthalle and Schlachthausgasse. Expected until 08:00. Reason: switch damage in the area of Schnirchgasse. [Since 05:31]</description>
-      <content:encoded><![CDATA[Service only between Burggasse, Stadthalle and Schlachthausgasse. Expected until 08:00. Reason: switch damage in the area of Schnirchgasse.<br/>[Since 05:31]]]></content:encoded>
+      <description>Service from Schlachthausgasse. [Since 05:31]</description>
+      <content:encoded><![CDATA[Service from Schlachthausgasse.<br/>[Since 05:31]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[29B/N25: Construction works]]></title>
@@ -117,35 +143,6 @@
       <ext:ends_at>Sat, 28 Nov 2026 22:00:00 +0100</ext:ends_at>
       <description>Due to an event in Endresstraße, line 60A is redirected. Line 60A: diversion in both directions via Speisinger Straße - Franz-Graßler-Gasse … [Until Sat 28.11.]</description>
       <content:encoded><![CDATA[Due to an event in Endresstraße, line 60A is redirected. Line 60A: diversion in both directions via Speisinger Straße - Franz-Graßler-Gasse …<br/>[Until Sat 28.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[8A/58A/58B: Küniglberg, ORF-Zentrum]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">eb3e0204c1e47064e1548cf951957b36dcb1e8a69712b8b05d9fe73587d0b033</guid>
-      <pubDate>Mon, 23 Nov 2026 10:57:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 23 Nov 2026 10:57:00 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 25 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.175514 16.291612</georss:point>
-      <description>Verbindungsfahrbahn zwischen Würzburggasse und Küniglberggasse → Küniglberggasse 1-3, temporary stop. Stop relocation of lines 8A, 58A and 58B. … [Since 25.11.]</description>
-      <content:encoded><![CDATA[Verbindungsfahrbahn zwischen Würzburggasse und Küniglberggasse → Küniglberggasse 1-3, temporary stop. Stop relocation of lines 8A, 58A and 58B. …<br/>[Since 25.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[48A: Klinik Penzing]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">3b2a27a759116052559359d51e6ac603c1cf374a3900ce539abacc416d28bf0f</guid>
-      <pubDate>Wed, 18 Nov 2026 14:35:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 18 Nov 2026 14:35:00 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 25 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 17 Dec 2026 13:00:00 +0100</ext:ends_at>
-      <georss:point>48.205224 16.272424</georss:point>
-      <description>Sanatoriumstraße 2 → Sanatoriumstraße 2 before Krankenhauseinfahrt. Stop relocation of line 48A towards Klinik Penzing. Reason: roadworks. [Until 17.12.]</description>
-      <content:encoded><![CDATA[Sanatoriumstraße 2 → Sanatoriumstraße 2 before Krankenhauseinfahrt. Stop relocation of line 48A towards Klinik Penzing. Reason: roadworks.<br/>[Until 17.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>

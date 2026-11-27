@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:ext="https://wien-oepnv.example/schema" xmlns:georss="http://www.georss.org/georss" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:ext="https://wien-oepnv.example/schema" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
   <channel>
     <title>ÖPNV Störungen Wien &amp; Pendler</title>
     <link>https://github.com/Origamihase/wien-oepnv</link>
@@ -8,8 +8,34 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.xml" />
     <language>de</language>
     <copyright>Inoffizielles Projekt ohne Verbindung zu Wiener Linien, ÖBB, Stadt Wien und VOR/VAO; maßgeblich sind die verlinkten Originalmeldungen. Code: MIT-Lizenz. Die Meldungstexte bleiben bei ihren Quellen und sind für den Feed gekürzt und bearbeitet: Wiener Linien und Stadt Wien – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, keine offene Lizenz). GeoRSS-Koordinaten: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD-Haltestellen) und Stadt Wien – data.wien.gv.at (CC BY 4.0). Stammstrecken-Daten: Grundlage ist der VAO-„Start“-Zugang der Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Fri, 27 Nov 2026 07:01:02 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 07:30:47 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[84A: Fremder Verkehrsunfall]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">f0734148ab1da055a9e19c6d42b75b92c43c941bcf8a76ce37fc8fefe36cdf7e</guid>
+      <pubDate>Fri, 27 Nov 2026 07:00:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 27 Nov 2026 07:30:47 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 27 Nov 2026 07:00:00 +0100</ext:starts_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 07:00]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 07:00]]]></content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[U2: Schadhaftes Fahrzeug]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">0505b555ec2855a7d37b804362163224564a7f4070933c4fa66bf65a2a17d104</guid>
+      <pubDate>Fri, 27 Nov 2026 07:27:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Fri, 27 Nov 2026 07:27:00 +0100</ext:first_seen>
+      <ext:starts_at>Fri, 27 Nov 2026 07:27:00 +0100</ext:starts_at>
+      <description>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen. [Seit 07:27]</description>
+      <content:encoded><![CDATA[Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.<br/>[Seit 07:27]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[44: Oberleitungsgebrechen, Gegenstände auf der Oberleitung]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -24,7 +50,7 @@
       <content:encoded><![CDATA[Oberleitungsgebrechen: Betrieb ab Johann-Nepomuk-Berger-Platz; Züge halten bei Li. 9 Ri. Westbhf.<br/>[Seit 06:32]]]></content:encoded>
     </item>
     <item>
-      <title><![CDATA[U1/U4: Schadhaftes Fahrzeug]]></title>
+      <title><![CDATA[U4: Schadhaftes Fahrzeug]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
       <guid isPermaLink="false">0c795d72d38d86de68cac97683c0dde7ede32198c79705a36abe49edf678d2c7</guid>
       <pubDate>Fri, 27 Nov 2026 06:12:00 +0100</pubDate>
@@ -32,7 +58,7 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 27 Nov 2026 06:12:00 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 27 Nov 2026 06:12:00 +0100</ext:starts_at>
+      <ext:starts_at>Fri, 27 Nov 2026 06:14:00 +0100</ext:starts_at>
       <description>Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug. [Seit 06:12]</description>
       <content:encoded><![CDATA[Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.<br/>[Seit 06:12]]]></content:encoded>
     </item>
@@ -59,8 +85,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Fri, 27 Nov 2026 06:00:59 +0100</ext:first_seen>
       <ext:starts_at>Fri, 27 Nov 2026 05:31:49 +0100</ext:starts_at>
-      <description>Betrieb nur zwischen Burggasse, Stadthalle und Schlachthausgasse. Voraussichtlich bis 08:00 Uhr. Grund: Weichenschaden im Bereich Schnirchgasse. [Seit 05:31]</description>
-      <content:encoded><![CDATA[Betrieb nur zwischen Burggasse, Stadthalle und Schlachthausgasse. Voraussichtlich bis 08:00 Uhr. Grund: Weichenschaden im Bereich Schnirchgasse.<br/>[Seit 05:31]]]></content:encoded>
+      <description>Betrieb ab Schlachthausgasse. [Seit 05:31]</description>
+      <content:encoded><![CDATA[Betrieb ab Schlachthausgasse.<br/>[Seit 05:31]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[29B/N25: Bauarbeiten]]></title>
@@ -117,35 +143,6 @@
       <ext:ends_at>Sat, 28 Nov 2026 22:00:00 +0100</ext:ends_at>
       <description>Wegen einer Veranstaltung in der Endresstraße wird die Linie 60A umgeleitet. Linie 60A: Umleitung in beiden Richtungen über Speisinger Straße - Franz-Graßler-Gasse … [Bis Sa 28.11.]</description>
       <content:encoded><![CDATA[Wegen einer Veranstaltung in der Endresstraße wird die Linie 60A umgeleitet. Linie 60A: Umleitung in beiden Richtungen über Speisinger Straße - Franz-Graßler-Gasse …<br/>[Bis Sa 28.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[8A/58A/58B: Küniglberg, ORF-Zentrum]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">eb3e0204c1e47064e1548cf951957b36dcb1e8a69712b8b05d9fe73587d0b033</guid>
-      <pubDate>Mon, 23 Nov 2026 10:57:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Mon, 23 Nov 2026 10:57:00 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 25 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <georss:point>48.175514 16.291612</georss:point>
-      <description>Verbindungsfahrbahn zwischen Würzburggasse und Küniglberggasse → Küniglberggasse 1-3, provisorische Haltestelle. Haltestellenverlegung der Linien 8A, 58A und 58B. … [Seit 25.11.]</description>
-      <content:encoded><![CDATA[Verbindungsfahrbahn zwischen Würzburggasse und Küniglberggasse → Küniglberggasse 1-3, provisorische Haltestelle. Haltestellenverlegung der Linien 8A, 58A und 58B. …<br/>[Seit 25.11.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[48A: Klinik Penzing]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">3b2a27a759116052559359d51e6ac603c1cf374a3900ce539abacc416d28bf0f</guid>
-      <pubDate>Wed, 18 Nov 2026 14:35:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Wed, 18 Nov 2026 14:35:00 +0100</ext:first_seen>
-      <ext:starts_at>Wed, 25 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Thu, 17 Dec 2026 13:00:00 +0100</ext:ends_at>
-      <georss:point>48.205224 16.272424</georss:point>
-      <description>Sanatoriumstraße 2 → Sanatoriumstraße 2 vor Krankenhauseinfahrt. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Straßenbau. [Bis 17.12.]</description>
-      <content:encoded><![CDATA[Sanatoriumstraße 2 → Sanatoriumstraße 2 vor Krankenhauseinfahrt. Haltestellenverlegung der Linie 48A in Richtung Klinik Penzing. Grund: Straßenbau.<br/>[Bis 17.12.]]]></content:encoded>
     </item>
   </channel>
 </rss>
