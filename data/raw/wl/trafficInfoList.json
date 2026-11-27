@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260925-0011, I20260909-0007, I20261020-0029"
+    "trafficInfoNameList": "I20261127-0002, I20260925-0011, I20260909-0007, I20261127-0003, I20261020-0029"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R2372-125, R2373-127, R2379-627, R2380-627, R2345-127, R2558-125, R2373-126, R2378-627, R2371-125, R2373-125, R2343-626, R2359-125, R2343-125, R2370-125, R3886-480, R401-101, R293-474, R318-437, R1974-466, R1199-205, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R1881-101, R1882-101, R1883-101, R1884-101, R1875-101, R1876-101, R1880-101, R2380-627, R2373-126, R2371-125, R2378-627, R2359-125, R2343-125, R2370-125, R2558-125, R2343-626, R2372-125, R2373-125, R2373-127, R2379-627, R2345-127, R3886-480, R293-474, R318-437, R401-101, R1974-466, R1199-205, R500-101, R2420-118, R2422-118, R2632-118, R3605-118, R3602-118, R3603-118, R3604-118, R3606-118, R2750-118, R3609-118, R3608-118, R3607-118, R2620-118, R3568-118, R272-112, R357-112, R356-112, R379-112, R458-112, R380-112, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -169,6 +169,96 @@
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
+   },
+   {
+    "alertCause": "roadway damage",
+    "alertCauseId": 67,
+    "attributes": {
+     "relatedLineTypes": {
+      "18": "ptTram"
+     }
+    },
+    "description": "Linie 18: Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U. Voraussichtliche Dauer: 08:00 Uhr. Grund: Weichenschaden im Bereich Schnirchgasse.",
+    "descriptionHTML": "<p><strong>Linie 18:</strong><br>Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U.</p><p>Voraussichtliche Dauer: 08:00 Uhr.</p><p>Grund: Weichenschaden im Bereich Schnirchgasse.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><strong>Linie 18:</strong><br>Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U.</p><p>Voraussichtliche Dauer: 08:00 Uhr.</p><p>Grund: Weichenschaden im Bereich Schnirchgasse.</p>",
+       "descriptionPlain": "Linie 18: Betrieb nur zwischen Burggasse, Stadthalle U und Schlachthausgasse U. Voraussichtliche Dauer: 08:00 Uhr. Grund: Weichenschaden im Bereich Schnirchgasse.",
+       "title": "18: Weichenschaden"
+      }
+     }
+    ],
+    "location": "Schnirchgasse",
+    "name": "I20261127-0002",
+    "owner": "WL",
+    "parentName": "I20261127-0002",
+    "priority": "1",
+    "reasonId": 38,
+    "reasonName": "Weichenschaden",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 118,
+      "lineName": "18",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-27T05:42:00.000+0100",
+     "lastUpdate": "2026-11-27T05:42:00.000+0100",
+     "start": "2026-11-27T05:41:00.000+0100"
+    },
+    "title": "18: Weichenschaden"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "relatedLineTypes": {
+      "12": "ptTram"
+     }
+    },
+    "description": "Linie 12: Betrieb nur zwischen Hillerstraße und Lange Gasse. Weiterfahrt bis Alser Straße U. Voraussichtliche Dauer: 07:00 Uhr. Grund: Gegenstände auf der Oberleitung im Bereich Lerchenfelder Gürtel.",
+    "descriptionHTML": "<p><strong>Linie 12:</strong><br>Betrieb nur zwischen Hillerstraße und Lange Gasse.<br>Weiterfahrt bis Alser Straße U.</p><p>Voraussichtliche Dauer: 07:00 Uhr.</p><p>Grund: Gegenstände auf der Oberleitung im Bereich Lerchenfelder Gürtel.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p><strong>Linie 12:</strong><br>Betrieb nur zwischen Hillerstraße und Lange Gasse.<br>Weiterfahrt bis Alser Straße U.</p><p>Voraussichtliche Dauer: 07:00 Uhr.</p><p>Grund: Gegenstände auf der Oberleitung im Bereich Lerchenfelder Gürtel.</p>",
+       "descriptionPlain": "Linie 12: Betrieb nur zwischen Hillerstraße und Lange Gasse. Weiterfahrt bis Alser Straße U. Voraussichtliche Dauer: 07:00 Uhr. Grund: Gegenstände auf der Oberleitung im Bereich Lerchenfelder Gürtel.",
+       "title": "12: Gegenstände auf der Oberleitung"
+      }
+     }
+    ],
+    "location": "Lerchenfelder Gürtel",
+    "name": "I20261127-0003",
+    "owner": "WL",
+    "parentName": "I20261127-0003",
+    "priority": "1",
+    "reasonId": 325,
+    "reasonName": "Gegenstände auf der Oberleitung",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 112,
+      "lineName": "12",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-27T05:55:00.000+0100",
+     "lastUpdate": "2026-11-27T05:55:00.000+0100",
+     "start": "2026-11-27T05:52:00.000+0100"
+    },
+    "title": "12: Gegenstände auf der Oberleitung"
    },
    {
     "alertCause": "undefined alert cause",
@@ -679,6 +769,52 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nWeichenschaden",
+    "name": "R2420-118",
+    "owner": "WL",
+    "parentName": "R2420-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     2420
+    ],
+    "time": {
+     "end": "2026-11-27T09:00:00.000+0100",
+     "start": "2026-11-27T05:31:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nWeichenschaden"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Weichenschaden\nBetrieb ab Schlachthausgasse U ",
+    "name": "R2422-118",
+    "owner": "WL",
+    "parentName": "R2422-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     2422
+    ],
+    "time": {
+     "end": "2026-11-27T09:00:00.000+0100",
+     "start": "2026-11-27T05:31:48.000+0100"
+    },
+    "title": "Weichenschaden\nBetrieb ab Schlachthausgasse U "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148",
     "name": "R2558-125",
     "owner": "WL",
@@ -698,6 +834,98 @@
      "start": "2026-11-24T00:00:22.000+0100"
     },
     "title": "Gleisbauarbeiten\nLinie 26E hält Donaufelder Straße 148"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nWeichenschaden",
+    "name": "R2620-118",
+    "owner": "WL",
+    "parentName": "R2620-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     2620
+    ],
+    "time": {
+     "end": "2026-11-27T06:40:00.000+0100",
+     "start": "2026-11-27T05:40:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nWeichenschaden"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nWeichenschaden",
+    "name": "R2632-118",
+    "owner": "WL",
+    "parentName": "R2632-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     2632
+    ],
+    "time": {
+     "end": "2026-11-27T09:00:00.000+0100",
+     "start": "2026-11-27T05:31:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nWeichenschaden"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nGegenstände auf der Oberleitung",
+    "name": "R272-112",
+    "owner": "WL",
+    "parentName": "R272-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     272
+    ],
+    "time": {
+     "end": "2026-11-27T06:55:00.000+0100",
+     "start": "2026-11-27T05:56:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nGegenstände auf der Oberleitung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Weichenschaden\nBetrieb ab Schlachthausgasse U ",
+    "name": "R2750-118",
+    "owner": "WL",
+    "parentName": "R2750-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     2750
+    ],
+    "time": {
+     "end": "2026-11-27T09:00:00.000+0100",
+     "start": "2026-11-27T05:38:19.000+0100"
+    },
+    "title": "Weichenschaden\nBetrieb ab Schlachthausgasse U "
    },
    {
     "alertCause": "undefined alert cause",
@@ -748,6 +976,305 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nGegenstände auf der Oberleitung",
+    "name": "R356-112",
+    "owner": "WL",
+    "parentName": "R356-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     356
+    ],
+    "time": {
+     "end": "2026-11-27T06:55:00.000+0100",
+     "start": "2026-11-27T05:56:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nGegenstände auf der Oberleitung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nWeichenschaden",
+    "name": "R3568-118",
+    "owner": "WL",
+    "parentName": "R3568-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3568
+    ],
+    "time": {
+     "end": "2026-11-27T06:40:00.000+0100",
+     "start": "2026-11-27T05:40:50.000+0100"
+    },
+    "title": "Fahrtbehinderung\nWeichenschaden"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nGegenstände auf der Oberleitung",
+    "name": "R357-112",
+    "owner": "WL",
+    "parentName": "R357-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     357
+    ],
+    "time": {
+     "end": "2026-11-27T06:55:00.000+0100",
+     "start": "2026-11-27T05:56:48.000+0100"
+    },
+    "title": "Fahrtbehinderung\nGegenstände auf der Oberleitung"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nWeichenschaden",
+    "name": "R3602-118",
+    "owner": "WL",
+    "parentName": "R3602-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3602
+    ],
+    "time": {
+     "end": "2026-11-27T09:00:00.000+0100",
+     "start": "2026-11-27T05:31:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nWeichenschaden"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nWeichenschaden",
+    "name": "R3603-118",
+    "owner": "WL",
+    "parentName": "R3603-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3603
+    ],
+    "time": {
+     "end": "2026-11-27T09:00:00.000+0100",
+     "start": "2026-11-27T05:31:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nWeichenschaden"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nWeichenschaden",
+    "name": "R3604-118",
+    "owner": "WL",
+    "parentName": "R3604-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3604
+    ],
+    "time": {
+     "end": "2026-11-27T09:00:00.000+0100",
+     "start": "2026-11-27T05:31:49.000+0100"
+    },
+    "title": "Fahrtbehinderung\nWeichenschaden"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Weichenschaden\nBetrieb ab Schlachthausgasse U ",
+    "name": "R3605-118",
+    "owner": "WL",
+    "parentName": "R3605-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3605
+    ],
+    "time": {
+     "end": "2026-11-27T09:00:00.000+0100",
+     "start": "2026-11-27T05:31:49.000+0100"
+    },
+    "title": "Weichenschaden\nBetrieb ab Schlachthausgasse U "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Weichenschaden\nBetrieb ab Schlachthausgasse U ",
+    "name": "R3606-118",
+    "owner": "WL",
+    "parentName": "R3606-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3606
+    ],
+    "time": {
+     "end": "2026-11-27T09:00:00.000+0100",
+     "start": "2026-11-27T05:31:49.000+0100"
+    },
+    "title": "Weichenschaden\nBetrieb ab Schlachthausgasse U "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Weichenschaden\nBetrieb ab Schlachthausgasse U ",
+    "name": "R3607-118",
+    "owner": "WL",
+    "parentName": "R3607-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3607
+    ],
+    "time": {
+     "end": "2026-11-27T09:00:00.000+0100",
+     "start": "2026-11-27T05:38:20.000+0100"
+    },
+    "title": "Weichenschaden\nBetrieb ab Schlachthausgasse U "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Weichenschaden\nBetrieb ab Schlachthausgasse U ",
+    "name": "R3608-118",
+    "owner": "WL",
+    "parentName": "R3608-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3608
+    ],
+    "time": {
+     "end": "2026-11-27T09:00:00.000+0100",
+     "start": "2026-11-27T05:38:20.000+0100"
+    },
+    "title": "Weichenschaden\nBetrieb ab Schlachthausgasse U "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Weichenschaden\nBetrieb ab Schlachthausgasse U ",
+    "name": "R3609-118",
+    "owner": "WL",
+    "parentName": "R3609-118",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "18"
+    ],
+    "relatedStops": [
+     3609
+    ],
+    "time": {
+     "end": "2026-11-27T09:00:00.000+0100",
+     "start": "2026-11-27T05:38:20.000+0100"
+    },
+    "title": "Weichenschaden\nBetrieb ab Schlachthausgasse U "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Oberleitungsgebr\nBetrieb ab Lange Gasse",
+    "name": "R379-112",
+    "owner": "WL",
+    "parentName": "R379-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     379
+    ],
+    "time": {
+     "end": "2026-11-27T06:56:00.000+0100",
+     "start": "2026-11-27T05:57:49.000+0100"
+    },
+    "title": "Oberleitungsgebr\nBetrieb ab Lange Gasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Oberleitungsgebr\nZüge halten bei Li. 43 Ri. Schottentor",
+    "name": "R380-112",
+    "owner": "WL",
+    "parentName": "R380-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     380
+    ],
+    "time": {
+     "end": "2026-11-27T06:57:00.000+0100",
+     "start": "2026-11-27T05:58:19.000+0100"
+    },
+    "title": "Oberleitungsgebr\nZüge halten bei Li. 43 Ri. Schottentor"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBetrieb ab Vivariumstraße 2",
     "name": "R3886-480",
     "owner": "WL",
@@ -790,6 +1317,29 @@
      "start": "2026-11-25T00:00:29.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Oberleitungsgebr\nBetrieb ab Lange Gasse",
+    "name": "R458-112",
+    "owner": "WL",
+    "parentName": "R458-112",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "12"
+    ],
+    "relatedStops": [
+     458
+    ],
+    "time": {
+     "end": "2026-11-27T06:56:00.000+0100",
+     "start": "2026-11-27T05:57:49.000+0100"
+    },
+    "title": "Oberleitungsgebr\nBetrieb ab Lange Gasse"
    },
    {
     "alertCause": "undefined alert cause",
