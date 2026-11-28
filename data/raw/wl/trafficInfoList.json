@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261128-0019, I20261128-0015, I20261128-0016-F01-F01, I20261128-0020-F01, I20261020-0029, I20261128-0018-F01, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261128-0021, I20261128-0019-F01, I20261128-0019-F02, I20261128-0020-F01, I20261020-0029, I20261128-0018-F01, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R2558-125, R1880-101, R1876-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R2359-125, R2380-627, R2379-627, R2345-127, R2373-126, R2378-627, R2343-125, R2343-626, R401-101, R2373-127, R2373-125, R2372-125, R2371-125, R2370-125, R3886-480, R1974-466, R1199-205, R500-101, R3528-413, R3527-413, R3529-413, R688-413, R664-413, R665-413, R556-102, R1368-102, R248-102, R247-102, R251-102, R249-102, R49-102, R50-102, R303-162, R832-162, R831-162, R833-162, R399-162, R400-162, R1717-162, R477-162, R1720-162, R1718-162, R5943-399, R831-399, R851-399, R1751-399, R1752-399, R1753-399, R1754-399, R1756-399, R399-399, R400-399, R427-399, R477-399, R1709-399, R1711-399, R1712-399, R1713-399, R1714-399, R1715-399, R1717-399, R1718-399, R4843-399, R339-162, R849-162, R1724-162, R1723-162, R851-162, R847-162, R427-162, R848-162, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R2558-125, R1880-101, R1876-101, R1875-101, R1884-101, R1883-101, R1882-101, R1881-101, R2372-125, R2345-127, R2359-125, R2343-626, R2343-125, R2378-627, R401-101, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R2371-125, R2370-125, R3886-480, R1974-466, R1199-205, R500-101, R3528-413, R3529-413, R3527-413, R664-413, R665-413, R688-413, R556-102, R1368-102, R249-102, R248-102, R247-102, R251-102, R49-102, R50-102, R303-162, R832-162, R831-162, R833-162, R400-162, R399-162, R1720-162, R477-162, R1718-162, R1717-162, R5943-399, R477-399, R1712-399, R851-399, R831-399, R1709-399, R1711-399, R1713-399, R1714-399, R1715-399, R1717-399, R1718-399, R1751-399, R1752-399, R1753-399, R1754-399, R1756-399, R399-399, R400-399, R427-399, R4843-399, R339-162, R1723-162, R1724-162, R849-162, R427-162, R848-162, R847-162, R851-162, R1716-162, R1748-399, R1749-399, R1748-162, R1749-162, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,99 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "18": "ptTram"
-     }
-    },
-    "description": "Linie 18: Fahrtbehinderung in Richtung Stadion U. Voraussichtliche Dauer: 11:55 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Stadionbad.",
-    "descriptionHTML": "<p><strong>Linie 18:</strong><br>Fahrtbehinderung in Richtung Stadion U.</p><p>Voraussichtliche Dauer: 11:55 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Stadionbad.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p><strong>Linie 18:</strong><br>Fahrtbehinderung in Richtung Stadion U.</p><p>Voraussichtliche Dauer: 11:55 Uhr.</p><p>Grund: Rettungseinsatz im Haltestellenbereich Stadionbad.</p>",
-       "descriptionPlain": "Linie 18: Fahrtbehinderung in Richtung Stadion U. Voraussichtliche Dauer: 11:55 Uhr. Grund: Rettungseinsatz im Haltestellenbereich Stadionbad.",
-       "title": "18: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261128-0015",
-    "owner": "WL",
-    "parentName": "I20261128-0015",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "18"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 118,
-      "lineName": "18",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     2632
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-28T11:28:00.000+0100",
-     "lastUpdate": "2026-11-28T11:28:00.000+0100",
-     "start": "2026-11-28T11:27:00.000+0100"
-    },
-    "title": "18: Rettungseinsatz"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "10": "ptTram"
-     }
-    },
-    "description": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 10: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 10: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "10: Falschparker"
-      }
-     }
-    ],
-    "location": "Reinlgasse 44",
-    "name": "I20261128-0016-F01-F01",
-    "owner": "WL",
-    "parentName": "I20261128-0016",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "10"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 110,
-      "lineName": "10",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-28T11:48:00.000+0100",
-     "lastUpdate": "2026-11-28T11:48:00.000+0100",
-     "resume": "2026-11-28T11:48:00.000+0100",
-     "start": "2026-11-28T11:39:00.000+0100"
-    },
-    "title": "10: Falschparker"
-   },
-   {
     "alertCause": "vehicle on the line",
     "alertCauseId": 71,
     "attributes": {
@@ -303,8 +210,8 @@
     "status": "active",
     "time": {
      "created": "2026-11-28T12:51:00.000+0100",
-     "lastUpdate": "2026-11-28T12:51:00.000+0100",
-     "resume": "2026-11-28T12:51:00.000+0100",
+     "end": "2026-11-28T13:41:00.000+0100",
+     "lastUpdate": "2026-11-28T13:18:00.000+0100",
      "start": "2026-11-28T12:41:00.000+0100"
     },
     "title": "2: Falschparker"
@@ -314,23 +221,21 @@
     "alertCauseId": 77,
     "attributes": {
      "relatedLineTypes": {
-      "62": "ptTram",
-      "LB": "ptTramWLB"
+      "62": "ptTram"
      }
     },
-    "description": "Linie 62: Fahrtbehinderung in beiden Richtungen. Badner Bahn: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 13:30 Uhr. Grund: Fremder Verkehrsunfall im Haltestellenbereich Marx-Meidlinger-Straße.",
-    "descriptionHTML": "<p>Linie 62:<br>Fahrtbehinderung in beiden Richtungen.<br>Badner Bahn:<br>Fahrtbehinderung in beiden Richtungen.</p><p>Voraussichtliche Dauer: 13:30 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Haltestellenbereich Marx-Meidlinger-Straße.</p>",
+    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 62:<br>Fahrtbehinderung in beiden Richtungen.<br>Badner Bahn:<br>Fahrtbehinderung in beiden Richtungen.</p><p>Voraussichtliche Dauer: 13:30 Uhr.</p><p>Grund: Fremder Verkehrsunfall im Haltestellenbereich Marx-Meidlinger-Straße.</p>",
-       "descriptionPlain": "Linie 62: Fahrtbehinderung in beiden Richtungen. Badner Bahn: Fahrtbehinderung in beiden Richtungen. Voraussichtliche Dauer: 13:30 Uhr. Grund: Fremder Verkehrsunfall im Haltestellenbereich Marx-Meidlinger-Straße.",
-       "title": "62, Badner Bahn: Fremder Verkehrsunfall"
+       "descriptionHtml": "<p>Linie 62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "62: Fremder Verkehrsunfall"
       }
      }
     ],
-    "location": "max",
-    "name": "I20261128-0019",
+    "name": "I20261128-0019-F01",
     "owner": "WL",
     "parentName": "I20261128-0019",
     "priority": "1",
@@ -338,15 +243,57 @@
     "reasonName": "Fremder Verkehrsunfall",
     "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "62",
-     "LB"
+     "62"
     ],
     "relatedLinesDetails": [
      {
       "lineId": 162,
       "lineName": "62",
       "vehicleType": "ptTram"
-     },
+     }
+    ],
+    "relatedStops": [
+     1716
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-28T13:15:00.000+0100",
+     "lastUpdate": "2026-11-28T13:15:00.000+0100",
+     "resume": "2026-11-28T13:15:00.000+0100",
+     "start": "2026-11-28T12:54:00.000+0100"
+    },
+    "title": "62: Fremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "accident",
+    "alertCauseId": 77,
+    "attributes": {
+     "relatedLineTypes": {
+      "LB": "ptTramWLB"
+     }
+    },
+    "description": "Linie Badner Bahn: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie Badner Bahn: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie Badner Bahn: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie Badner Bahn: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "Badner Bahn: Fremder Verkehrsunfall"
+      }
+     }
+    ],
+    "name": "I20261128-0019-F02",
+    "owner": "WL",
+    "parentName": "I20261128-0019",
+    "priority": "1",
+    "reasonId": 13,
+    "reasonName": "Fremder Verkehrsunfall",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedLinesDetails": [
      {
       "lineId": 399,
       "lineName": "LB",
@@ -358,11 +305,12 @@
     ],
     "status": "active",
     "time": {
-     "created": "2026-11-28T12:56:00.000+0100",
-     "lastUpdate": "2026-11-28T12:56:00.000+0100",
+     "created": "2026-11-28T13:15:00.000+0100",
+     "lastUpdate": "2026-11-28T13:15:00.000+0100",
+     "resume": "2026-11-28T13:15:00.000+0100",
      "start": "2026-11-28T12:54:00.000+0100"
     },
-    "title": "62, Badner Bahn: Fremder Verkehrsunfall"
+    "title": "Badner Bahn: Fremder Verkehrsunfall"
    },
    {
     "alertCause": "miscellaneous",
@@ -413,6 +361,52 @@
     "title": "U1: Betriebsstörung"
    },
    {
+    "alertCause": "defective vehicle",
+    "alertCauseId": 53,
+    "attributes": {
+     "relatedLineTypes": {
+      "U2": "ptMetro"
+     }
+    },
+    "description": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+    "descriptionHTML": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie U2:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Schadhaftes Fahrzeug.</p>",
+       "descriptionPlain": "Linie U2: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
+       "title": "U2: Verspätungen"
+      }
+     }
+    ],
+    "name": "I20261128-0021",
+    "owner": "WL",
+    "parentName": "I20261128-0021",
+    "priority": "1",
+    "reasonId": 20,
+    "reasonName": "Schadhaftes Fahrzeug",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 302,
+      "lineName": "U2",
+      "vehicleType": "ptMetro"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-28T13:19:00.000+0100",
+     "end": "2026-11-28T13:49:00.000+0100",
+     "lastUpdate": "2026-11-28T13:20:00.000+0100",
+     "resume": "2026-11-28T13:19:00.000+0100",
+     "start": "2026-11-28T13:19:00.000+0100"
+    },
+    "title": "U2: Verspätungen"
+   },
+   {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Pappenheimgasse 24-28",
@@ -461,7 +455,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Dörfelstraße",
     "name": "R1709-399",
     "owner": "WL",
     "parentName": "R1709-399",
@@ -476,15 +470,15 @@
      1709
     ],
     "time": {
-     "end": "2026-11-28T13:55:00.000+0100",
+     "end": "2026-11-28T14:11:00.000+0100",
      "start": "2026-11-28T12:56:40.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Dörfelstraße"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Dörfelstraße",
     "name": "R1711-399",
     "owner": "WL",
     "parentName": "R1711-399",
@@ -499,15 +493,15 @@
      1711
     ],
     "time": {
-     "end": "2026-11-28T13:55:00.000+0100",
+     "end": "2026-11-28T14:11:00.000+0100",
      "start": "2026-11-28T12:56:40.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Dörfelstraße"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Dörfelstraße",
     "name": "R1712-399",
     "owner": "WL",
     "parentName": "R1712-399",
@@ -522,15 +516,15 @@
      1712
     ],
     "time": {
-     "end": "2026-11-28T13:55:00.000+0100",
+     "end": "2026-11-28T14:11:00.000+0100",
      "start": "2026-11-28T12:56:40.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Dörfelstraße"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Dörfelstraße",
     "name": "R1713-399",
     "owner": "WL",
     "parentName": "R1713-399",
@@ -545,15 +539,15 @@
      1713
     ],
     "time": {
-     "end": "2026-11-28T13:55:00.000+0100",
+     "end": "2026-11-28T14:11:00.000+0100",
      "start": "2026-11-28T12:56:40.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Dörfelstraße"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Dörfelstraße",
     "name": "R1714-399",
     "owner": "WL",
     "parentName": "R1714-399",
@@ -568,15 +562,15 @@
      1714
     ],
     "time": {
-     "end": "2026-11-28T13:55:00.000+0100",
+     "end": "2026-11-28T14:11:00.000+0100",
      "start": "2026-11-28T12:56:40.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Dörfelstraße"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Dörfelstraße",
     "name": "R1715-399",
     "owner": "WL",
     "parentName": "R1715-399",
@@ -591,15 +585,38 @@
      1715
     ],
     "time": {
-     "end": "2026-11-28T13:55:00.000+0100",
+     "end": "2026-11-28T14:11:00.000+0100",
      "start": "2026-11-28T12:56:40.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Dörfelstraße"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Dörfelstraße",
+    "name": "R1716-162",
+    "owner": "WL",
+    "parentName": "R1716-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1716
+    ],
+    "time": {
+     "end": "2026-11-28T14:09:00.000+0100",
+     "start": "2026-11-28T13:10:41.000+0100"
+    },
+    "title": "Fremdunfall\nBetrieb ab Dörfelstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fremdunfall\nBetrieb ab Dörfelstraße",
     "name": "R1717-162",
     "owner": "WL",
     "parentName": "R1717-162",
@@ -614,15 +631,15 @@
      1717
     ],
     "time": {
-     "end": "2026-11-28T13:58:00.000+0100",
+     "end": "2026-11-28T14:09:00.000+0100",
      "start": "2026-11-28T12:55:40.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Dörfelstraße"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Dörfelstraße",
     "name": "R1717-399",
     "owner": "WL",
     "parentName": "R1717-399",
@@ -637,15 +654,15 @@
      1717
     ],
     "time": {
-     "end": "2026-11-28T13:55:00.000+0100",
+     "end": "2026-11-28T14:11:00.000+0100",
      "start": "2026-11-28T12:56:40.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Dörfelstraße"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Dörfelstraße",
     "name": "R1718-162",
     "owner": "WL",
     "parentName": "R1718-162",
@@ -660,15 +677,15 @@
      1718
     ],
     "time": {
-     "end": "2026-11-28T13:58:00.000+0100",
+     "end": "2026-11-28T14:09:00.000+0100",
      "start": "2026-11-28T12:55:40.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Dörfelstraße"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Dörfelstraße",
     "name": "R1718-399",
     "owner": "WL",
     "parentName": "R1718-399",
@@ -683,10 +700,10 @@
      1718
     ],
     "time": {
-     "end": "2026-11-28T13:55:00.000+0100",
+     "end": "2026-11-28T14:11:00.000+0100",
      "start": "2026-11-28T12:56:40.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Dörfelstraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -761,6 +778,98 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1748-162",
+    "owner": "WL",
+    "parentName": "R1748-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1748
+    ],
+    "time": {
+     "end": "2026-11-28T14:14:00.000+0100",
+     "start": "2026-11-28T13:15:12.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1748-399",
+    "owner": "WL",
+    "parentName": "R1748-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     1748
+    ],
+    "time": {
+     "end": "2026-11-28T14:11:00.000+0100",
+     "start": "2026-11-28T13:11:42.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1749-162",
+    "owner": "WL",
+    "parentName": "R1749-162",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "62"
+    ],
+    "relatedStops": [
+     1749
+    ],
+    "time": {
+     "end": "2026-11-28T14:14:00.000+0100",
+     "start": "2026-11-28T13:15:12.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "name": "R1749-399",
+    "owner": "WL",
+    "parentName": "R1749-399",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "LB"
+    ],
+    "relatedStops": [
+     1749
+    ],
+    "time": {
+     "end": "2026-11-28T14:11:00.000+0100",
+     "start": "2026-11-28T13:11:42.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
     "name": "R1751-399",
     "owner": "WL",
     "parentName": "R1751-399",
@@ -775,7 +884,7 @@
      1751
     ],
     "time": {
-     "end": "2026-11-28T13:55:00.000+0100",
+     "end": "2026-11-28T14:11:00.000+0100",
      "start": "2026-11-28T12:56:40.000+0100"
     },
     "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
@@ -798,7 +907,7 @@
      1752
     ],
     "time": {
-     "end": "2026-11-28T13:55:00.000+0100",
+     "end": "2026-11-28T14:11:00.000+0100",
      "start": "2026-11-28T12:56:40.000+0100"
     },
     "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
@@ -821,7 +930,7 @@
      1753
     ],
     "time": {
-     "end": "2026-11-28T13:55:00.000+0100",
+     "end": "2026-11-28T14:11:00.000+0100",
      "start": "2026-11-28T12:56:40.000+0100"
     },
     "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
@@ -844,7 +953,7 @@
      1754
     ],
     "time": {
-     "end": "2026-11-28T13:55:00.000+0100",
+     "end": "2026-11-28T14:11:00.000+0100",
      "start": "2026-11-28T12:56:40.000+0100"
     },
     "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
@@ -867,7 +976,7 @@
      1756
     ],
     "time": {
-     "end": "2026-11-28T13:55:00.000+0100",
+     "end": "2026-11-28T14:11:00.000+0100",
      "start": "2026-11-28T12:56:40.000+0100"
     },
     "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
@@ -1511,7 +1620,7 @@
      303
     ],
     "time": {
-     "end": "2026-11-28T13:54:00.000+0100",
+     "end": "2026-11-28T14:14:00.000+0100",
      "start": "2026-11-28T12:55:08.000+0100"
     },
     "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
@@ -1542,7 +1651,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Dörfelstraße",
     "name": "R339-162",
     "owner": "WL",
     "parentName": "R339-162",
@@ -1557,10 +1666,10 @@
      339
     ],
     "time": {
-     "end": "2026-11-28T13:58:00.000+0100",
+     "end": "2026-11-28T14:09:00.000+0100",
      "start": "2026-11-28T12:59:09.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Dörfelstraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1672,7 +1781,7 @@
      399
     ],
     "time": {
-     "end": "2026-11-28T13:54:00.000+0100",
+     "end": "2026-11-28T14:14:00.000+0100",
      "start": "2026-11-28T12:55:10.000+0100"
     },
     "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
@@ -1695,7 +1804,7 @@
      399
     ],
     "time": {
-     "end": "2026-11-28T13:55:00.000+0100",
+     "end": "2026-11-28T14:11:00.000+0100",
      "start": "2026-11-28T12:56:40.000+0100"
     },
     "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
@@ -1718,7 +1827,7 @@
      400
     ],
     "time": {
-     "end": "2026-11-28T13:54:00.000+0100",
+     "end": "2026-11-28T14:14:00.000+0100",
      "start": "2026-11-28T12:55:10.000+0100"
     },
     "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
@@ -1741,7 +1850,7 @@
      400
     ],
     "time": {
-     "end": "2026-11-28T13:55:00.000+0100",
+     "end": "2026-11-28T14:11:00.000+0100",
      "start": "2026-11-28T12:56:40.000+0100"
     },
     "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
@@ -1772,7 +1881,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Dörfelstraße",
     "name": "R427-162",
     "owner": "WL",
     "parentName": "R427-162",
@@ -1787,15 +1896,15 @@
      427
     ],
     "time": {
-     "end": "2026-11-28T13:58:00.000+0100",
+     "end": "2026-11-28T14:09:00.000+0100",
      "start": "2026-11-28T12:59:10.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Dörfelstraße"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Dörfelstraße",
     "name": "R427-399",
     "owner": "WL",
     "parentName": "R427-399",
@@ -1810,10 +1919,10 @@
      427
     ],
     "time": {
-     "end": "2026-11-28T13:55:00.000+0100",
+     "end": "2026-11-28T14:11:00.000+0100",
      "start": "2026-11-28T12:56:40.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Dörfelstraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1879,7 +1988,7 @@
      4843
     ],
     "time": {
-     "end": "2026-11-28T13:55:00.000+0100",
+     "end": "2026-11-28T14:11:00.000+0100",
      "start": "2026-11-28T12:56:41.000+0100"
     },
     "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
@@ -1979,7 +2088,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Dörfelstraße",
     "name": "R5943-399",
     "owner": "WL",
     "parentName": "R5943-399",
@@ -1994,10 +2103,10 @@
      5943
     ],
     "time": {
-     "end": "2026-11-28T13:55:00.000+0100",
+     "end": "2026-11-28T14:11:00.000+0100",
      "start": "2026-11-28T12:56:17.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Dörfelstraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -2086,7 +2195,7 @@
      831
     ],
     "time": {
-     "end": "2026-11-28T13:54:00.000+0100",
+     "end": "2026-11-28T14:14:00.000+0100",
      "start": "2026-11-28T12:55:09.000+0100"
     },
     "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
@@ -2109,7 +2218,7 @@
      831
     ],
     "time": {
-     "end": "2026-11-28T13:55:00.000+0100",
+     "end": "2026-11-28T14:11:00.000+0100",
      "start": "2026-11-28T12:56:40.000+0100"
     },
     "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
@@ -2132,7 +2241,7 @@
      832
     ],
     "time": {
-     "end": "2026-11-28T13:54:00.000+0100",
+     "end": "2026-11-28T14:14:00.000+0100",
      "start": "2026-11-28T12:55:09.000+0100"
     },
     "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
@@ -2155,7 +2264,7 @@
      833
     ],
     "time": {
-     "end": "2026-11-28T13:54:00.000+0100",
+     "end": "2026-11-28T14:14:00.000+0100",
      "start": "2026-11-28T12:55:09.000+0100"
     },
     "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
@@ -2163,7 +2272,7 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Dörfelstraße",
     "name": "R847-162",
     "owner": "WL",
     "parentName": "R847-162",
@@ -2178,15 +2287,15 @@
      847
     ],
     "time": {
-     "end": "2026-11-28T13:58:00.000+0100",
+     "end": "2026-11-28T14:09:00.000+0100",
      "start": "2026-11-28T12:59:10.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Dörfelstraße"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Dörfelstraße",
     "name": "R848-162",
     "owner": "WL",
     "parentName": "R848-162",
@@ -2201,15 +2310,15 @@
      848
     ],
     "time": {
-     "end": "2026-11-28T13:58:00.000+0100",
+     "end": "2026-11-28T14:09:00.000+0100",
      "start": "2026-11-28T12:59:10.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Dörfelstraße"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Dörfelstraße",
     "name": "R849-162",
     "owner": "WL",
     "parentName": "R849-162",
@@ -2224,15 +2333,15 @@
      849
     ],
     "time": {
-     "end": "2026-11-28T13:58:00.000+0100",
+     "end": "2026-11-28T14:09:00.000+0100",
      "start": "2026-11-28T12:59:10.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Dörfelstraße"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Dörfelstraße",
     "name": "R851-162",
     "owner": "WL",
     "parentName": "R851-162",
@@ -2247,15 +2356,15 @@
      851
     ],
     "time": {
-     "end": "2026-11-28T13:58:00.000+0100",
+     "end": "2026-11-28T14:09:00.000+0100",
      "start": "2026-11-28T12:59:10.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Dörfelstraße"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFremder Verkehrsunfall",
+    "description": "Fremdunfall\nBetrieb ab Dörfelstraße",
     "name": "R851-399",
     "owner": "WL",
     "parentName": "R851-399",
@@ -2270,10 +2379,10 @@
      851
     ],
     "time": {
-     "end": "2026-11-28T13:55:00.000+0100",
+     "end": "2026-11-28T14:11:00.000+0100",
      "start": "2026-11-28T12:56:40.000+0100"
     },
-    "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+    "title": "Fremdunfall\nBetrieb ab Dörfelstraße"
    },
    {
     "alertCause": "undefined alert cause",
