@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261127-0011, I20261127-0011-F01, I20261127-0011-F02, I20261128-0001"
+    "trafficInfoNameList": "I20261020-0029, I20261127-0011-F01, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R1974-466, R318-437, R293-474, R2558-125, R1881-101, R1882-101, R1883-101, R1884-101, R1880-101, R1876-101, R1875-101, R2379-627, R2380-627, R2345-127, R401-101, R2378-627, R2343-125, R2343-626, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R3886-480, R500-101, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R293-474, R318-437, R2558-125, R1884-101, R1875-101, R1876-101, R1880-101, R1881-101, R1882-101, R1883-101, R2373-126, R2380-627, R2345-127, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2379-627, R401-101, R2378-627, R2343-125, R2343-626, R3886-480, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1974-566, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -175,60 +175,6 @@
     "alertCauseId": 67,
     "attributes": {
      "relatedLineTypes": {
-      "60": "ptTram",
-      "62": "ptTram"
-     }
-    },
-    "description": "Linie 60: Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse. Linie 62: Betrieb nur zwischen Quartier Belvedere S und Wattmanngasse. Beachten Sie, dass die Ersatzbusse die Haltestellen der Nachtbuslinien N60 und N62 einhalten. Ersatz: Linien 53A, 60A, sowie den Ersatzverkehr mit Bussen zwischen Rodaun bzw. Lainz und Speising. Voraussichtliche Dauer: Nicht absehbar. Grund: Gleisschaden im Bereich Speisinger Straße.",
-    "descriptionHTML": "<p>Linie 60:<br>Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse.<br>Linie 62:<br>Betrieb nur zwischen Quartier Belvedere S und Wattmanngasse.</p><p>Beachten Sie, dass die Ersatzbusse die Haltestellen der Nachtbuslinien N60 und N62 einhalten.</p><p>Ersatz: Linien 53A, 60A, sowie den Ersatzverkehr mit Bussen zwischen Rodaun bzw. Lainz und Speising.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Gleisschaden im Bereich Speisinger Straße.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 60:<br>Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse.<br>Linie 62:<br>Betrieb nur zwischen Quartier Belvedere S und Wattmanngasse.</p><p>Beachten Sie, dass die Ersatzbusse die Haltestellen der Nachtbuslinien N60 und N62 einhalten.</p><p>Ersatz: Linien 53A, 60A, sowie den Ersatzverkehr mit Bussen zwischen Rodaun bzw. Lainz und Speising.</p><p>Voraussichtliche Dauer: Nicht absehbar.</p><p>Grund: Gleisschaden im Bereich Speisinger Straße.</p>",
-       "descriptionPlain": "Linie 60: Betrieb nur zwischen Westbahnhof S U und Hofwiesengasse. Linie 62: Betrieb nur zwischen Quartier Belvedere S und Wattmanngasse. Beachten Sie, dass die Ersatzbusse die Haltestellen der Nachtbuslinien N60 und N62 einhalten. Ersatz: Linien 53A, 60A, sowie den Ersatzverkehr mit Bussen zwischen Rodaun bzw. Lainz und Speising. Voraussichtliche Dauer: Nicht absehbar. Grund: Gleisschaden im Bereich Speisinger Straße.",
-       "title": "60, 62: Gleisschaden"
-      }
-     }
-    ],
-    "location": "Speisinger Straße",
-    "name": "I20261127-0011",
-    "owner": "WL",
-    "parentName": "I20261127-0011",
-    "priority": "1",
-    "reasonId": 28,
-    "reasonName": "Gleisschaden",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "60",
-     "62"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 160,
-      "lineName": "60",
-      "vehicleType": "ptTram"
-     },
-     {
-      "lineId": 162,
-      "lineName": "62",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-27T07:51:00.000+0100",
-     "end": "2026-11-28T00:30:00.000+0100",
-     "lastUpdate": "2026-11-28T00:30:00.000+0100",
-     "resume": "2026-11-28T00:30:00.000+0100",
-     "start": "2026-11-27T07:46:00.000+0100"
-    },
-    "title": "60, 62: Gleisschaden"
-   },
-   {
-    "alertCause": "roadway damage",
-    "alertCauseId": 67,
-    "attributes": {
-     "relatedLineTypes": {
       "60": "ptTram"
      }
     },
@@ -272,96 +218,50 @@
     "title": "60: Gleisschaden"
    },
    {
-    "alertCause": "roadway damage",
-    "alertCauseId": 67,
-    "attributes": {
-     "relatedLineTypes": {
-      "62": "ptTram"
-     }
-    },
-    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "62: Gleisschaden"
-      }
-     }
-    ],
-    "location": "Speisinger Straße",
-    "name": "I20261127-0011-F02",
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A",
+    "name": "R1718-508",
     "owner": "WL",
-    "parentName": "I20261127-0011",
+    "parentName": "R1718-508",
     "priority": "1",
-    "reasonId": 28,
-    "reasonName": "Gleisschaden",
-    "refTrafficInfoCategoryId": 2,
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "62"
+     "N8"
     ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 162,
-      "lineName": "62",
-      "vehicleType": "ptTram"
-     }
+    "relatedStops": [
+     1718
     ],
-    "status": "active",
     "time": {
-     "created": "2026-11-28T00:30:00.000+0100",
-     "end": "2026-11-28T23:59:00.000+0100",
-     "lastUpdate": "2026-11-28T00:30:00.000+0100",
-     "resume": "2026-11-28T00:30:00.000+0100",
-     "start": "2026-11-27T07:46:00.000+0100"
+     "end": "2026-11-28T04:45:00.000+0100",
+     "start": "2026-11-28T00:45:12.000+0100"
     },
-    "title": "62: Gleisschaden"
+    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse 48 bei Linie 59A"
    },
    {
-    "alertCause": "vandalism",
-    "alertCauseId": 16,
-    "attributes": {
-     "relatedLineTypes": {
-      "27": "ptTram"
-     }
-    },
-    "description": "Linie 27: Unregelmäßige Intervalle in beiden Richtungen. Grund: Vandalismus.",
-    "descriptionHTML": "<p>Linie 27:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Vandalismus.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 27:<br>Unregelmäßige Intervalle in beiden Richtungen. <br><br>Grund: Vandalismus.</p>",
-       "descriptionPlain": "Linie 27: Unregelmäßige Intervalle in beiden Richtungen. Grund: Vandalismus.",
-       "title": "27: Vandalismus"
-      }
-     }
-    ],
-    "name": "I20261128-0001",
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A",
+    "name": "R1749-508",
     "owner": "WL",
-    "parentName": "I20261128-0001",
+    "parentName": "R1749-508",
     "priority": "1",
-    "reasonId": 52,
-    "reasonName": "Vandalismus",
-    "refTrafficInfoCategoryId": 2,
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "27"
+     "N8"
     ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 127,
-      "lineName": "27",
-      "vehicleType": "ptTram"
-     }
+    "relatedStops": [
+     1749
     ],
-    "status": "active",
     "time": {
-     "created": "2026-11-28T00:15:00.000+0100",
-     "lastUpdate": "2026-11-28T00:15:00.000+0100",
-     "resume": "2026-11-28T00:15:00.000+0100",
-     "start": "2026-11-28T00:15:00.000+0100"
+     "end": "2026-11-28T05:15:00.000+0100",
+     "start": "2026-11-28T00:45:12.000+0100"
     },
-    "title": "27: Vandalismus"
+    "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A"
    },
    {
     "alertCause": "undefined alert cause",
@@ -528,22 +428,22 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
-    "name": "R1974-466",
+    "name": "R1974-566",
     "owner": "WL",
-    "parentName": "R1974-466",
+    "parentName": "R1974-566",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "66A"
+     "N66"
     ],
     "relatedStops": [
      1974
     ],
     "time": {
-     "end": "2026-11-28T01:00:00.000+0100",
-     "start": "2026-11-27T04:40:12.000+0100"
+     "end": "2026-11-28T04:20:00.000+0100",
+     "start": "2026-11-28T01:00:13.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
    },
@@ -960,6 +860,52 @@
      "start": "2026-11-28T00:00:08.000+0100"
     },
     "title": "Gleisbauarbeiten\nUmleitung zum Reumannplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 ",
+    "name": "R402-506",
+    "owner": "WL",
+    "parentName": "R402-506",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N6"
+    ],
+    "relatedStops": [
+     402
+    ],
+    "time": {
+     "end": "2026-11-28T05:05:00.000+0100",
+     "start": "2026-11-28T00:55:13.000+0100"
+    },
+    "title": "Bauarbeiten \nBusse halten Neilreichgasse 20-22 "
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Bauarbeiten\nBusse halten Quellenstraße 189",
+    "name": "R407-506",
+    "owner": "WL",
+    "parentName": "R407-506",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N6"
+    ],
+    "relatedStops": [
+     407
+    ],
+    "time": {
+     "end": "2026-11-28T05:04:00.000+0100",
+     "start": "2026-11-28T00:54:13.000+0100"
+    },
+    "title": "Bauarbeiten\nBusse halten Quellenstraße 189"
    },
    {
     "alertCause": "undefined alert cause",

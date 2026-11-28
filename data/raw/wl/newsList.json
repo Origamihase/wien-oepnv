@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_212, ftazW_1016948, ftazW_593, ftazW_594, ftazW_1016949, ftazW_1353814"
+    "trafficInfoNameList": "ftazW_212, ftazW_1016948, ftazW_593, ftazW_594, ftazW_1016949, ftazW_1353814, ftazW_1032037, ftazW_444, ftazW_1031289, ftazW_1353815, ftazW_1017115"
    }
   ],
   "poiCategoryGroups": [
@@ -3302,6 +3302,123 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "01.12.2026 00:45",
+     "ausVon": "30.11.2026 20:45",
+     "location": "U1 Mittelbahnsteig - Ausgang Rennbahnweg",
+     "rbls": [
+      4182,
+      4187
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Rennbahnweg",
+     "status": "geplante Wartung",
+     "towards": "U1 beide Richtungen"
+    },
+    "description": "U1 Mittelbahnsteig - Ausgang Rennbahnweg",
+    "elevatorId": "RB 01",
+    "name": "ftazW_1017115",
+    "parentName": "ftazW_1017115",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4182,
+     4187
+    ],
+    "time": {
+     "end": "2026-12-01T00:45:00.000+0100",
+     "start": "2026-11-30T20:45:00.000+0100"
+    },
+    "title": "Rennbahnweg"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "01.12.2026 00:45",
+     "ausVon": "30.11.2026 20:45",
+     "location": "U2 Mittelbahnsteig - Ausgang Aspernstraße",
+     "rbls": [
+      4251,
+      4272
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Aspernstraße",
+     "status": "geplante Wartung",
+     "towards": "U2 beide Richtungen"
+    },
+    "description": "U2 Mittelbahnsteig - Ausgang Aspernstraße",
+    "elevatorId": "AP 01",
+    "name": "ftazW_1031289",
+    "parentName": "ftazW_1031289",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4251,
+     4272
+    ],
+    "time": {
+     "end": "2026-12-01T00:45:00.000+0100",
+     "start": "2026-11-30T20:45:00.000+0100"
+    },
+    "title": "Aspernstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "01.12.2026 00:45",
+     "ausVon": "30.11.2026 20:45",
+     "location": "U4 Mittelbahnsteig - Ausgang Gigergasse",
+     "rbls": [
+      4425,
+      4412
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U4"
+     ],
+     "station": "Landstraße",
+     "status": "geplante Wartung",
+     "towards": "U4 beide Richtungen"
+    },
+    "description": "U4 Mittelbahnsteig - Ausgang Gigergasse",
+    "elevatorId": "LA 06",
+    "name": "ftazW_1032037",
+    "parentName": "ftazW_1032037",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U4"
+    ],
+    "relatedStops": [
+     4425,
+     4412
+    ],
+    "time": {
+     "end": "2026-12-01T00:45:00.000+0100",
+     "start": "2026-11-30T20:45:00.000+0100"
+    },
+    "title": "Landstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "30.11.2026 05:15",
      "ausVon": "30.11.2026 01:15",
      "location": "Ausgang Schedifkaplatz - Zwischengeschoß Zugang ÖBB",
@@ -3327,6 +3444,38 @@
     "time": {
      "end": "2026-11-30T05:15:00.000+0100",
      "start": "2026-11-30T01:15:00.000+0100"
+    },
+    "title": "Bahnhof Meidling"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "01.12.2026 00:45",
+     "ausVon": "30.11.2026 20:45",
+     "location": "U6 Mittelbahnsteig - Zwischengeschoß Zugang ÖBB Bahnsteig",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Bahnhof Meidling",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "U6 Mittelbahnsteig - Zwischengeschoß Zugang ÖBB Bahnsteig",
+    "elevatorId": "PH 04",
+    "name": "ftazW_1353815",
+    "parentName": "ftazW_1353815",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "time": {
+     "end": "2026-12-01T00:45:00.000+0100",
+     "start": "2026-11-30T20:45:00.000+0100"
     },
     "title": "Bahnhof Meidling"
    },
@@ -3361,6 +3510,45 @@
      "start": "2026-11-29T20:45:00.000+0100"
     },
     "title": "Bahnhof Meidling"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "01.12.2026 00:45",
+     "ausVon": "30.11.2026 20:45",
+     "location": "U3 Mittelbahnsteig - Passage Aufgang Hütteldorfer Straße",
+     "rbls": [
+      4926,
+      4925
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Johnstraße",
+     "status": "geplante Wartung",
+     "towards": "U3 beide Richtungen"
+    },
+    "description": "U3 Mittelbahnsteig - Passage Aufgang Hütteldorfer Straße",
+    "elevatorId": "JO 03",
+    "name": "ftazW_444",
+    "parentName": "ftazW_444",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "relatedStops": [
+     4926,
+     4925
+    ],
+    "time": {
+     "end": "2026-12-01T00:45:00.000+0100",
+     "start": "2026-11-30T20:45:00.000+0100"
+    },
+    "title": "Johnstraße"
    },
    {
     "alertCause": "undefined alert cause",
