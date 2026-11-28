@@ -111,7 +111,7 @@
     "source": "Wiener Linien",
     "category": "Hinweis",
     "title": "1: Gleisbauarbeiten",
-    "description": "<h2>Gleisbauarbeiten</h2><p>Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1.</p><p><strong><u>Zeitraum:</u></strong><br>Ab 20. Oktober 2026 bis Mitte Dezember 2026.<br>Aufgrund eines spontanen Gleisgebrechens müssen die Gleisbauarbeiten vorgezogen werden.</p><p><strong><u>Maßnahmen:</u></strong><br><strong>Linie 1:</strong><br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Die Züge werden ab Knöllgasse zum Reumannplatz umgeleitet.</p><p><strong><u>Ersatz:</u></strong><br>Weichen Sie ersatzweise auf die Linien 7A oder 65A aus.</p><p><strong><u>Skizze:</u></strong><br><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/1_Umleitung_Reumannplatz.png\" alt=\"\" width=\"1000\" height=\"1000\"></p>",
+    "description": "<h2>Gleisbauarbeiten</h2><p>Wegen Gleisbauarbeiten am Stefan-Fadinger-Platz kommt es zu Einschränkungen bei der Linie 1.</p><p><strong><u>Zeitraum:</u></strong><br>Ab 20. Oktober 2026 bis 05. Dezember 2026, 04:00 Uhr.<br>Aufgrund eines spontanen Gleisgebrechens müssen die Gleisbauarbeiten vorgezogen werden.</p><p><strong><u>Maßnahmen:</u></strong><br><strong>Linie 1:</strong><br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Die Züge werden ab Knöllgasse zum Reumannplatz umgeleitet.</p><p><strong><u>Ersatz:</u></strong><br>Weichen Sie ersatzweise auf die Linien 7A oder 65A aus.</p><p><strong><u>Skizze:</u></strong><br><img src=\"https://stwlciptstruct828prod.blob.core.windows.net/fahrplane/msteams_f80a1e/Freigegebene%20Dokumente/M16%20Kundeninfo%20Dateien/12%20externe%20Synchronisation/Grafiken%20Einschraenkungen/1_Umleitung_Reumannplatz.png\" alt=\"\" width=\"1000\" height=\"1000\"></p>",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "c199b995f50a8d5b241235da3372e3b3c86fd17dc096d6c9910f31dfd4801428",
     "pubDate": "2026-10-21T06:50:00+02:00",
@@ -687,12 +687,12 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "1: Gleisbauarbeiten",
-    "description": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A und 65A. Voraussichtliche Dauer: Mitte Dezember 2026. Grund: Gleisbauarbeiten im Bereich Stefan-Fadinger-Platz.",
+    "description": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A und 65A. Voraussichtliche Dauer: 05. Dezember 2026, 04:00 Uhr. Grund: Gleisbauarbeiten im Bereich Stefan-Fadinger-Platz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "c5c8c5c0a8e2c102aee078f17cbb162af493a2e9c3b80eea4fb89ecd9716aefd",
     "pubDate": "2026-10-20T11:58:00+02:00",
     "starts_at": "2026-10-20T11:58:00+02:00",
-    "ends_at": "2026-12-05T01:00:00+01:00",
+    "ends_at": "2026-12-05T04:00:00+01:00",
     "_identity": "wl|störung|L=1|D=2026-10-20|TK=1 gleisbauarbeiten",
     "_wl_ids": [
       "I20261020-0029"
@@ -982,22 +982,6 @@
     "starts_at": "2026-11-28T01:46:50+01:00",
     "ends_at": "2026-11-28T02:45:00+01:00",
     "_identity": "wl|störung|L=N41|D=2026-11-28|TK=fahrtbehinderung verkehrsunfall"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
-    "title": "N41: Verkehrsunfall",
-    "description": "Linie N41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "8355beea2a6cd522d23691cd4ff29d420c86d26cd5468557b15048cbdca8e8d5",
-    "pubDate": "2026-11-28T01:47:00+01:00",
-    "starts_at": "2026-11-28T01:47:00+01:00",
-    "ends_at": "2026-11-28T02:03:00+01:00",
-    "_identity": "wl|störung|L=N41|D=2026-11-28|TK=n41 verkehrsunfall",
-    "_wl_ids": [
-      "I20261128-0003"
-    ],
-    "_incident_start": "2026-11-28T01:47:00+01:00"
   },
   {
     "source": "Wiener Linien",

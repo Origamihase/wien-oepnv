@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261128-0002-F01, I20261128-0003-F01"
+    "trafficInfoNameList": "I20261020-0029, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R2558-125, R1876-101, R1884-101, R1883-101, R1882-101, R1881-101, R1880-101, R1875-101, R2373-125, R2371-125, R2370-125, R2359-125, R2343-125, R2343-626, R2379-627, R2373-126, R2373-127, R2372-125, R2378-627, R401-101, R2345-127, R2380-627, R3886-480, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R2371-520, R1633-160, R1631-160, R1630-160, R1629-160, R1607-160, R1634-160, R2372-520, R2379-520, R2378-520, R146-541, R187-541, R150-541, R148-541, R147-541, R144-541, R143-541, R1316-541, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R2558-125, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R1883-101, R1884-101, R401-101, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R3886-480, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R2371-520, R2372-520, R2379-520, R2378-520, R150-541, R147-541, R146-541, R144-541, R143-541, R148-541, R187-541, R1316-541, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -132,13 +132,13 @@
       "1": "ptTram"
      }
     },
-    "description": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A und 65A. Voraussichtliche Dauer: Mitte Dezember 2026. Grund: Gleisbauarbeiten im Bereich Stefan-Fadinger-Platz.",
-    "descriptionHTML": "<p>Linie 1: <br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Weiterfahrt zum Reumannplatz U.</p><p>Ersatz: Linien 7A und 65A.</p><p>Voraussichtliche Dauer: Mitte Dezember 2026.</p><p>Grund: Gleisbauarbeiten im Bereich Stefan-Fadinger-Platz.</p>",
+    "description": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A und 65A. Voraussichtliche Dauer: 05. Dezember 2026, 04:00 Uhr. Grund: Gleisbauarbeiten im Bereich Stefan-Fadinger-Platz.",
+    "descriptionHTML": "<p><strong>Linie 1: </strong><br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Weiterfahrt zum Reumannplatz U.</p><p>Ersatz: Linien 7A und 65A.</p><p>Voraussichtliche Dauer: 05. Dezember 2026, 04:00 Uhr.</p><p>Grund: Gleisbauarbeiten im Bereich Stefan-Fadinger-Platz.</p>",
     "languages": [
      {
       "de": {
-       "descriptionHtml": "<p>Linie 1: <br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Weiterfahrt zum Reumannplatz U.</p><p>Ersatz: Linien 7A und 65A.</p><p>Voraussichtliche Dauer: Mitte Dezember 2026.</p><p>Grund: Gleisbauarbeiten im Bereich Stefan-Fadinger-Platz.</p>",
-       "descriptionPlain": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A und 65A. Voraussichtliche Dauer: Mitte Dezember 2026. Grund: Gleisbauarbeiten im Bereich Stefan-Fadinger-Platz.",
+       "descriptionHtml": "<p><strong>Linie 1: </strong><br>Betrieb nur zwischen Prater Hauptallee und Knöllgasse.<br>Weiterfahrt zum Reumannplatz U.</p><p>Ersatz: Linien 7A und 65A.</p><p>Voraussichtliche Dauer: 05. Dezember 2026, 04:00 Uhr.</p><p>Grund: Gleisbauarbeiten im Bereich Stefan-Fadinger-Platz.</p>",
+       "descriptionPlain": "Linie 1: Betrieb nur zwischen Prater Hauptallee und Knöllgasse. Weiterfahrt zum Reumannplatz U. Ersatz: Linien 7A und 65A. Voraussichtliche Dauer: 05. Dezember 2026, 04:00 Uhr. Grund: Gleisbauarbeiten im Bereich Stefan-Fadinger-Platz.",
        "title": "1: Gleisbauarbeiten"
       }
      }
@@ -164,106 +164,11 @@
     "status": "active",
     "time": {
      "created": "2026-10-20T11:59:00.000+0200",
-     "end": "2026-12-05T01:00:00.000+0100",
-     "lastUpdate": "2026-10-20T16:28:00.000+0200",
+     "end": "2026-12-05T04:00:00.000+0100",
+     "lastUpdate": "2026-11-28T02:25:00.000+0100",
      "start": "2026-10-20T11:58:00.000+0200"
     },
     "title": "1: Gleisbauarbeiten"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "60": "ptTram"
-     }
-    },
-    "description": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 60: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 60: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "60: Falschparker"
-      }
-     }
-    ],
-    "location": "Kaisersteiggasse 4",
-    "name": "I20261128-0002-F01",
-    "owner": "WL",
-    "parentName": "I20261128-0002",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 160,
-      "lineName": "60",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "resolved",
-    "time": {
-     "created": "2026-11-28T01:44:00.000+0100",
-     "end": "2026-11-28T01:58:00.000+0100",
-     "lastUpdate": "2026-11-28T01:58:00.000+0100",
-     "resume": "2026-11-28T01:58:00.000+0100",
-     "start": "2026-11-28T01:12:00.000+0100"
-    },
-    "title": "60: Falschparker"
-   },
-   {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "N41": "ptBusNight"
-     }
-    },
-    "description": "Linie N41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie N41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie N41: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie N41: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "N41: Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261128-0003-F01",
-    "owner": "WL",
-    "parentName": "I20261128-0003",
-    "priority": "1",
-    "reasonId": 12,
-    "reasonName": "Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "N41"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 541,
-      "lineName": "N41",
-      "vehicleType": "ptBusNight"
-     }
-    ],
-    "relatedStops": [
-     3729
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-28T01:52:00.000+0100",
-     "end": "2026-11-28T02:03:00.000+0100",
-     "lastUpdate": "2026-11-28T01:59:00.000+0100",
-     "start": "2026-11-28T01:47:00.000+0100"
-    },
-    "title": "N41: Verkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -425,144 +330,6 @@
      "start": "2026-11-28T01:46:46.000+0100"
     },
     "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1607-160",
-    "owner": "WL",
-    "parentName": "R1607-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1607
-    ],
-    "time": {
-     "end": "2026-11-28T02:11:00.000+0100",
-     "start": "2026-11-28T01:12:13.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1629-160",
-    "owner": "WL",
-    "parentName": "R1629-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1629
-    ],
-    "time": {
-     "end": "2026-11-28T02:11:00.000+0100",
-     "start": "2026-11-28T01:12:13.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1630-160",
-    "owner": "WL",
-    "parentName": "R1630-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1630
-    ],
-    "time": {
-     "end": "2026-11-28T02:11:00.000+0100",
-     "start": "2026-11-28T01:12:13.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1631-160",
-    "owner": "WL",
-    "parentName": "R1631-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1631
-    ],
-    "time": {
-     "end": "2026-11-28T02:11:00.000+0100",
-     "start": "2026-11-28T01:12:13.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1633-160",
-    "owner": "WL",
-    "parentName": "R1633-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1633
-    ],
-    "time": {
-     "end": "2026-11-28T02:11:00.000+0100",
-     "start": "2026-11-28T01:12:13.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nFalschparker",
-    "name": "R1634-160",
-    "owner": "WL",
-    "parentName": "R1634-160",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "60"
-    ],
-    "relatedStops": [
-     1634
-    ],
-    "time": {
-     "end": "2026-11-28T02:11:00.000+0100",
-     "start": "2026-11-28T01:12:13.000+0100"
-    },
-    "title": "Fahrtbehinderung\nFalschparker"
    },
    {
     "alertCause": "undefined alert cause",
