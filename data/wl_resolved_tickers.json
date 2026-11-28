@@ -3,161 +3,45 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R1709-399|2026-11-28T12:56:40.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  "R403-106|2026-11-28T14:05:47.000+0100": {
+   "incident": "I20261128-0025",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R1711-399|2026-11-28T12:56:40.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  "R404-106|2026-11-28T14:05:47.000+0100": {
+   "incident": "I20261128-0025",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R1712-399|2026-11-28T12:56:40.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  "R404-111|2026-11-28T14:01:17.000+0100": {
+   "incident": "I20261128-0025",
+   "title": "Falschparker\nBetrieb ab Absberggasse"
   },
-  "R1713-399|2026-11-28T12:56:40.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  "R405-106|2026-11-28T14:05:47.000+0100": {
+   "incident": "I20261128-0025",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R1714-399|2026-11-28T12:56:40.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  "R405-111|2026-11-28T14:01:17.000+0100": {
+   "incident": "I20261128-0025",
+   "title": "Falschparker\nBetrieb ab Absberggasse"
   },
-  "R1715-399|2026-11-28T12:56:40.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  "R406-106|2026-11-28T14:05:47.000+0100": {
+   "incident": "I20261128-0025",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R1716-162|2026-11-28T13:10:41.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fremdunfall\nBetrieb ab Dörfelstraße"
+  "R406-111|2026-11-28T14:01:17.000+0100": {
+   "incident": "I20261128-0025",
+   "title": "Falschparker\nBetrieb ab Absberggasse"
   },
-  "R1717-162|2026-11-28T12:55:40.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  "R408-111|2026-11-28T14:01:17.000+0100": {
+   "incident": "I20261128-0025",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R1717-399|2026-11-28T12:56:40.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  "R409-111|2026-11-28T14:01:17.000+0100": {
+   "incident": "I20261128-0025",
+   "title": "Fahrtbehinderung\nFalschparker"
   },
-  "R1718-162|2026-11-28T12:55:40.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R1718-399|2026-11-28T12:56:40.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R1748-162|2026-11-28T13:15:12.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R1748-399|2026-11-28T13:11:42.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R1749-162|2026-11-28T13:15:12.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R1749-399|2026-11-28T13:11:42.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R1751-399|2026-11-28T12:56:40.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R1752-399|2026-11-28T12:56:40.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R1753-399|2026-11-28T12:56:40.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R1754-399|2026-11-28T12:56:40.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R1756-399|2026-11-28T12:56:40.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R303-162|2026-11-28T12:55:08.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R339-162|2026-11-28T12:59:09.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R399-162|2026-11-28T12:55:10.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R399-399|2026-11-28T12:56:40.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R400-162|2026-11-28T12:55:10.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R400-399|2026-11-28T12:56:40.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R427-162|2026-11-28T12:59:10.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R427-399|2026-11-28T12:56:40.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R4843-399|2026-11-28T12:56:41.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R5943-399|2026-11-28T12:56:17.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R831-162|2026-11-28T12:55:09.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R831-399|2026-11-28T12:56:40.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R832-162|2026-11-28T12:55:09.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R833-162|2026-11-28T12:55:09.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R847-162|2026-11-28T12:59:10.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R848-162|2026-11-28T12:59:10.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R849-162|2026-11-28T12:59:10.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R851-162|2026-11-28T12:59:10.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
-  },
-  "R851-399|2026-11-28T12:56:40.000+0100": {
-   "incident": "I20261128-0019",
-   "title": "Fahrtbehinderung\nFremder Verkehrsunfall"
+  "R423-101|2026-11-28T14:07:47.000+0100": {
+   "incident": "I20261128-0025",
+   "title": "Fahrtbehinderung\nFalschparker"
   }
  }
 }
