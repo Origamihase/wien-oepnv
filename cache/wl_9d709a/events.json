@@ -978,6 +978,22 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
+    "title": "9: Fahrtbehinderung wegen Rettungseinsatz",
+    "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "2e47c4152d31bb4278e6a03f4a011dce15382eabcec213b716c1d8987745f509",
+    "pubDate": "2026-11-28T08:42:00+01:00",
+    "starts_at": "2026-11-28T08:51:46+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=9|D=2026-11-28|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261128-0009"
+    ],
+    "_incident_start": "2026-11-28T08:42:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
     "title": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Parlament zur Beschleunigung der Straßenbahnlinien dauerhaft aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
