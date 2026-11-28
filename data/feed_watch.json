@@ -1,28 +1,20 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-28T10:00:53.614995+00:00",
- "built": "2026-11-28T11:00:41+01:00",
+ "updated": "2026-11-28T10:30:45.282244+00:00",
+ "built": "2026-11-28T11:30:33+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-28T11:00:41+01:00",
+  "built": "2026-11-28T11:30:33+01:00",
   "items": [
    {
-    "title": "Wien Meidling ↔ Tullnerfeld",
-    "time_line": "Seit 10:50"
+    "title": "18: Rettungseinsatz",
+    "time_line": "Seit 11:27"
    },
    {
-    "title": "54B: Falschparker",
-    "time_line": "Seit 10:47"
-   },
-   {
-    "title": "U4: Schadhaftes Fahrzeug",
-    "time_line": "Seit 09:29"
-   },
-   {
-    "title": "40: Falschparker",
-    "time_line": "Seit 09:16"
+    "title": "U6: Rettungseinsatz",
+    "time_line": "Seit 11:03"
    },
    {
     "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
@@ -47,6 +39,14 @@
    {
     "title": "60A: Veranstaltung am 27. und 28.11.2026",
     "time_line": "Heute"
+   },
+   {
+    "title": "8A/58A/58B: Küniglberg, ORF-Zentrum",
+    "time_line": "Seit 25.11."
+   },
+   {
+    "title": "48A: Klinik Penzing",
+    "time_line": "Bis 17.12."
    }
   ]
  },
@@ -6771,17 +6771,37 @@
     "oebb": 14,
     "wl": 85
    }
+  },
+  {
+   "t": "2026-11-28T10:30:45.282244+00:00",
+   "raw": {
+    "wl-stoerungen": 51,
+    "wl-hinweise": 84,
+    "oebb": 171,
+    "baustellen-linien": 45,
+    "baustellen-punkte": 10
+   },
+   "discarded": {
+    "wl": 18,
+    "oebb": 146,
+    "baustellen": 52
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 13,
+    "wl": 84
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-28T10:00:53.614995+00:00"
+   "last_ok": "2026-11-28T10:30:45.282244+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-28T10:00:53.614995+00:00"
+   "last_ok": "2026-11-28T10:30:45.282244+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-28T10:00:53.614995+00:00"
+   "last_ok": "2026-11-28T10:30:45.282244+00:00"
   }
  }
 }
