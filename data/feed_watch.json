@@ -1,12 +1,12 @@
 {
  "version": 1,
  "description": "Feed-Wächter (scripts/feed_watch.py): the rules the last Update run broke, with the state the next run needs. A finding is a note; the feed is never changed. See docs/reference/feed_watch.md.",
- "updated": "2026-11-28T03:30:56.284679+00:00",
- "built": "2026-11-28T04:30:51+01:00",
+ "updated": "2026-11-28T04:00:54.222538+00:00",
+ "built": "2026-11-28T05:00:48+01:00",
  "findings": [],
  "rules": {},
  "previous_feed": {
-  "built": "2026-11-28T04:30:51+01:00",
+  "built": "2026-11-28T05:00:48+01:00",
   "items": [
    {
     "title": "Wien Hauptbahnhof ↔ Gramatneusiedl",
@@ -52,26 +52,6 @@
  },
  "seit_zu_frueh": [],
  "samples": [
-  {
-   "t": "2026-11-21T04:00:50.113335+00:00",
-   "raw": {
-    "wl-stoerungen": 39,
-    "wl-hinweise": 73,
-    "oebb": 164,
-    "baustellen-linien": 49,
-    "baustellen-punkte": 14
-   },
-   "discarded": {
-    "wl": 16,
-    "oebb": 140,
-    "baustellen": 60
-   },
-   "cache": {
-    "baustellen": 1,
-    "oebb": 10,
-    "wl": 83
-   }
-  },
   {
    "t": "2026-11-21T04:30:44.324608+00:00",
    "raw": {
@@ -6771,17 +6751,37 @@
     "oebb": 13,
     "wl": 86
    }
+  },
+  {
+   "t": "2026-11-28T04:00:54.222538+00:00",
+   "raw": {
+    "wl-stoerungen": 39,
+    "wl-hinweise": 78,
+    "oebb": 171,
+    "baustellen-linien": 45,
+    "baustellen-punkte": 10
+   },
+   "discarded": {
+    "wl": 16,
+    "oebb": 146,
+    "baustellen": 52
+   },
+   "cache": {
+    "baustellen": 1,
+    "oebb": 13,
+    "wl": 84
+   }
   }
  ],
  "fetch": {
   "wl": {
-   "last_ok": "2026-11-28T03:30:56.284679+00:00"
+   "last_ok": "2026-11-28T04:00:54.222538+00:00"
   },
   "oebb": {
-   "last_ok": "2026-11-28T03:30:56.284679+00:00"
+   "last_ok": "2026-11-28T04:00:54.222538+00:00"
   },
   "baustellen": {
-   "last_ok": "2026-11-28T03:30:56.284679+00:00"
+   "last_ok": "2026-11-28T04:00:54.222538+00:00"
   }
  }
 }
