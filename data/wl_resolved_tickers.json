@@ -3,37 +3,17 @@
  "description": "Display-board tickers (stoerungkurz) of Wiener-Linien incidents WL marked resolved. src/providers/wl_resolved.py drops them while WL still sends them; key = name|start|title. owners: name|start of each ticker -> the incident its start dates, the ticker's title then and, for a ticker rewritten for a newer incident, that incident's begin (rewritten_starts).",
  "tickers": [],
  "owners": {
-  "R1316-541|2026-11-28T01:46:50.000+0100": {
-   "incident": "I20261128-0003",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  "R1660-565|2026-11-28T02:40:51.000+0100": {
+   "incident": "I20261128-0004",
+   "title": "Rettungseinsatz\nEs kommt zu längeren Wartezeiten"
   },
-  "R143-541|2026-11-28T01:46:46.000+0100": {
-   "incident": "I20261128-0003",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  "R1930-565|2026-11-28T02:40:50.000+0100": {
+   "incident": "I20261128-0004",
+   "title": "Rettungseinsatz\nEs kommt zu längeren Wartezeiten"
   },
-  "R144-541|2026-11-28T01:46:46.000+0100": {
-   "incident": "I20261128-0003",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R146-541|2026-11-28T01:46:46.000+0100": {
-   "incident": "I20261128-0003",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R147-541|2026-11-28T01:46:46.000+0100": {
-   "incident": "I20261128-0003",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R148-541|2026-11-28T01:46:46.000+0100": {
-   "incident": "I20261128-0003",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R150-541|2026-11-28T01:46:46.000+0100": {
-   "incident": "I20261128-0003",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
-  },
-  "R187-541|2026-11-28T01:46:46.000+0100": {
-   "incident": "I20261128-0003",
-   "title": "Fahrtbehinderung\nVerkehrsunfall"
+  "R2254-565|2026-11-28T02:40:23.000+0100": {
+   "incident": "I20261128-0004",
+   "title": "Rettungseinsatz\nEs kommt zu längeren Wartezeiten"
   }
  }
 }

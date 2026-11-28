@@ -974,14 +974,18 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "N41: Fahrtbehinderung Verkehrsunfall",
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
+    "title": "N65: Rettungseinsatz Es kommt zu längeren Wartezeiten",
+    "description": "Derzeit kommt es bei der Linie N65 in Richtung Quellenplatz zu unterschiedlichen Intervallen. Grund: Rettungseinsatz.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "3c0d532cd8d9204b22862f551fa327f4cf32ea1afede44ed1e76edb41312e5a4",
-    "pubDate": "2026-11-28T01:46:46+01:00",
-    "starts_at": "2026-11-28T01:46:50+01:00",
-    "ends_at": "2026-11-28T02:45:00+01:00",
-    "_identity": "wl|störung|L=N41|D=2026-11-28|TK=fahrtbehinderung verkehrsunfall"
+    "guid": "65ccacde85edc0d175000462289480ad171b04988bbf0682cd7a901bd61df1aa",
+    "pubDate": "2026-11-28T02:40:00+01:00",
+    "starts_at": "2026-11-28T02:40:51+01:00",
+    "ends_at": "2026-11-28T03:39:00+01:00",
+    "_identity": "wl|störung|L=N65|D=2026-11-28|TK=rettungseinsatz",
+    "_wl_ids": [
+      "I20261128-0004"
+    ],
+    "_incident_start": "2026-11-28T02:40:00+01:00"
   },
   {
     "source": "Wiener Linien",

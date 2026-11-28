@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261020-0029, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20260909-0007, I20260925-0011, I20261020-0029, I20261128-0004"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R318-437, R293-474, R2558-125, R1882-101, R1881-101, R1880-101, R1876-101, R1875-101, R1883-101, R1884-101, R401-101, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R3886-480, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R2371-520, R2372-520, R2379-520, R2378-520, R150-541, R147-541, R146-541, R144-541, R143-541, R148-541, R187-541, R1316-541, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R2558-125, R1882-101, R1881-101, R1883-101, R1884-101, R1880-101, R1876-101, R1875-101, R401-101, R2378-627, R2343-626, R2343-125, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R3886-480, R500-101, R1718-508, R1749-508, R407-506, R402-506, R1974-566, R2371-520, R2372-520, R2379-520, R2378-520, R2254-565, R1930-565, R1660-565, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,165 +171,76 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R1316-541",
+    "alertCause": "emergency medical services",
+    "alertCauseId": 14,
+    "attributes": {
+     "relatedLineTypes": {
+      "N65": "ptBusNight"
+     }
+    },
+    "description": "Derzeit kommt es bei der Linie N65 in Richtung Quellenplatz zu unterschiedlichen Intervallen. Grund: Rettungseinsatz.",
+    "descriptionHTML": "<p>Derzeit kommt es bei der Linie N65 in Richtung Quellenplatz zu unterschiedlichen Intervallen. <br><br>Grund: Rettungseinsatz.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Derzeit kommt es bei der Linie N65 in Richtung Quellenplatz zu unterschiedlichen Intervallen. <br><br>Grund: Rettungseinsatz.</p>",
+       "descriptionPlain": "Derzeit kommt es bei der Linie N65 in Richtung Quellenplatz zu unterschiedlichen Intervallen. Grund: Rettungseinsatz.",
+       "title": "N65: Rettungseinsatz"
+      }
+     }
+    ],
+    "name": "I20261128-0004",
     "owner": "WL",
-    "parentName": "R1316-541",
+    "parentName": "I20261128-0004",
     "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
+    "reasonId": 9,
+    "reasonName": "Rettungseinsatz",
+    "refTrafficInfoCategoryId": 2,
     "relatedLines": [
-     "N41"
+     "N65"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 565,
+      "lineName": "N65",
+      "vehicleType": "ptBusNight"
+     }
     ],
     "relatedStops": [
-     1316
+     1660
     ],
+    "status": "active",
     "time": {
-     "end": "2026-11-28T02:45:00.000+0100",
-     "start": "2026-11-28T01:46:50.000+0100"
+     "created": "2026-11-28T02:41:00.000+0100",
+     "end": "2026-11-28T03:15:00.000+0100",
+     "lastUpdate": "2026-11-28T02:47:00.000+0100",
+     "resume": "2026-11-28T02:40:00.000+0100",
+     "start": "2026-11-28T02:40:00.000+0100"
     },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
+    "title": "N65: Rettungseinsatz"
    },
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R143-541",
+    "description": "Rettungseinsatz\nEs kommt zu längeren Wartezeiten",
+    "name": "R1660-565",
     "owner": "WL",
-    "parentName": "R143-541",
+    "parentName": "R1660-565",
     "priority": "1",
     "reasonId": 0,
     "reasonName": "undefined",
     "refTrafficInfoCategoryId": 3,
     "relatedLines": [
-     "N41"
+     "N65"
     ],
     "relatedStops": [
-     143
+     1660
     ],
     "time": {
-     "end": "2026-11-28T02:45:00.000+0100",
-     "start": "2026-11-28T01:46:46.000+0100"
+     "end": "2026-11-28T03:39:00.000+0100",
+     "start": "2026-11-28T02:40:51.000+0100"
     },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R144-541",
-    "owner": "WL",
-    "parentName": "R144-541",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N41"
-    ],
-    "relatedStops": [
-     144
-    ],
-    "time": {
-     "end": "2026-11-28T02:45:00.000+0100",
-     "start": "2026-11-28T01:46:46.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R146-541",
-    "owner": "WL",
-    "parentName": "R146-541",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N41"
-    ],
-    "relatedStops": [
-     146
-    ],
-    "time": {
-     "end": "2026-11-28T02:45:00.000+0100",
-     "start": "2026-11-28T01:46:46.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R147-541",
-    "owner": "WL",
-    "parentName": "R147-541",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N41"
-    ],
-    "relatedStops": [
-     147
-    ],
-    "time": {
-     "end": "2026-11-28T02:45:00.000+0100",
-     "start": "2026-11-28T01:46:46.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R148-541",
-    "owner": "WL",
-    "parentName": "R148-541",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N41"
-    ],
-    "relatedStops": [
-     148
-    ],
-    "time": {
-     "end": "2026-11-28T02:45:00.000+0100",
-     "start": "2026-11-28T01:46:46.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R150-541",
-    "owner": "WL",
-    "parentName": "R150-541",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N41"
-    ],
-    "relatedStops": [
-     150
-    ],
-    "time": {
-     "end": "2026-11-28T02:45:00.000+0100",
-     "start": "2026-11-28T01:46:46.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
+    "title": "Rettungseinsatz\nEs kommt zu längeren Wartezeiten"
    },
    {
     "alertCause": "undefined alert cause",
@@ -376,29 +287,6 @@
      "start": "2026-11-28T00:45:12.000+0100"
     },
     "title": "Gleisbauarbeiten\nBusse halten Aßmayergasse nach Flurschützstraße bei Linie 59A"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nVerkehrsunfall",
-    "name": "R187-541",
-    "owner": "WL",
-    "parentName": "R187-541",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "N41"
-    ],
-    "relatedStops": [
-     187
-    ],
-    "time": {
-     "end": "2026-11-28T02:45:00.000+0100",
-     "start": "2026-11-28T01:46:46.000+0100"
-    },
-    "title": "Fahrtbehinderung\nVerkehrsunfall"
    },
    {
     "alertCause": "undefined alert cause",
@@ -564,6 +452,29 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Rettungseinsatz\nEs kommt zu längeren Wartezeiten",
+    "name": "R1930-565",
+    "owner": "WL",
+    "parentName": "R1930-565",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N65"
+    ],
+    "relatedStops": [
+     1930
+    ],
+    "time": {
+     "end": "2026-11-28T03:39:00.000+0100",
+     "start": "2026-11-28T02:40:50.000+0100"
+    },
+    "title": "Rettungseinsatz\nEs kommt zu längeren Wartezeiten"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Bauarbeiten\nBusse halten Salvatorianerplatz",
     "name": "R1974-566",
     "owner": "WL",
@@ -583,6 +494,29 @@
      "start": "2026-11-28T01:00:13.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Rettungseinsatz\nEs kommt zu längeren Wartezeiten",
+    "name": "R2254-565",
+    "owner": "WL",
+    "parentName": "R2254-565",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "N65"
+    ],
+    "relatedStops": [
+     2254
+    ],
+    "time": {
+     "end": "2026-11-28T03:39:00.000+0100",
+     "start": "2026-11-28T02:40:23.000+0100"
+    },
+    "title": "Rettungseinsatz\nEs kommt zu längeren Wartezeiten"
    },
    {
     "alertCause": "undefined alert cause",
