@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261128-0008, I20261128-0011-F01, I20261128-0012-F01, I20261020-0029, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261128-0013, I20261128-0011-F01, I20261128-0012-F01, I20261020-0029, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R2558-125, R1875-101, R1880-101, R1881-101, R1882-101, R1883-101, R1884-101, R1876-101, R2373-127, R2370-125, R2371-125, R2372-125, R2373-125, R2373-126, R2379-627, R2380-627, R2345-127, R401-101, R2378-627, R2343-125, R2343-626, R2359-125, R3886-480, R1974-466, R1199-205, R500-101, R3528-413, R3527-413, R3529-413, R664-413, R688-413, R665-413, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R2558-125, R1884-101, R1883-101, R1882-101, R1880-101, R1881-101, R1876-101, R1875-101, R401-101, R2359-125, R2370-125, R2371-125, R2372-125, R2373-125, R2373-127, R2373-126, R2379-627, R2380-627, R2345-127, R2378-627, R2343-125, R2343-626, R3886-480, R1974-466, R1199-205, R500-101, R3527-413, R3529-413, R3528-413, R688-413, R664-413, R665-413, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,51 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "emergency medical services",
-    "alertCauseId": 14,
-    "attributes": {
-     "relatedLineTypes": {
-      "2": "ptTram"
-     }
-    },
-    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Line 2: Delays in both directions. Grund: Rettungseinsatz.",
-    "descriptionHTML": "<p><strong>Linie 2:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br><strong>Line 2:</strong><br>Delays in both directions. <br><br>Grund: Rettungseinsatz.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p><strong>Linie 2:</strong><br>Unregelmäßige Intervalle in beiden Richtungen.<br><strong>Line 2:</strong><br>Delays in both directions. <br><br>Grund: Rettungseinsatz.</p>",
-       "descriptionPlain": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Line 2: Delays in both directions. Grund: Rettungseinsatz.",
-       "title": "2: Rettungseinsatz"
-      }
-     }
-    ],
-    "name": "I20261128-0008",
-    "owner": "WL",
-    "parentName": "I20261128-0008",
-    "priority": "1",
-    "reasonId": 9,
-    "reasonName": "Rettungseinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "2"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 102,
-      "lineName": "2",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-28T08:25:00.000+0100",
-     "lastUpdate": "2026-11-28T08:25:00.000+0100",
-     "resume": "2026-11-28T08:24:00.000+0100",
-     "start": "2026-11-28T08:24:00.000+0100"
-    },
-    "title": "2: Rettungseinsatz"
-   },
-   {
     "alertCause": "vehicle on the line",
     "alertCauseId": 71,
     "attributes": {
@@ -308,6 +263,53 @@
      "start": "2026-11-28T09:29:00.000+0100"
     },
     "title": "U4: Schadhaftes Fahrzeug"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "54B": "ptBusCity"
+     }
+    },
+    "description": "Linie 54B: Fahrtbehinderung in Richtung Ober St. Veit U. Voraussichtliche Dauer: 11:10 Uhr. Grund: Falschparker im Haltestellenbereich St. Veiter Tor.",
+    "descriptionHTML": "<p>Linie 54B:<br>Fahrtbehinderung in Richtung Ober St. Veit U.</p><p>Voraussichtliche Dauer: 11:10 Uhr.</p><p>Grund: Falschparker im Haltestellenbereich St. Veiter Tor.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 54B:<br>Fahrtbehinderung in Richtung Ober St. Veit U.</p><p>Voraussichtliche Dauer: 11:10 Uhr.</p><p>Grund: Falschparker im Haltestellenbereich St. Veiter Tor.</p>",
+       "descriptionPlain": "Linie 54B: Fahrtbehinderung in Richtung Ober St. Veit U. Voraussichtliche Dauer: 11:10 Uhr. Grund: Falschparker im Haltestellenbereich St. Veiter Tor.",
+       "title": "54B: Falschparker"
+      }
+     }
+    ],
+    "name": "I20261128-0013",
+    "owner": "WL",
+    "parentName": "I20261128-0013",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "54B"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 254,
+      "lineName": "54B",
+      "vehicleType": "ptBusCity"
+     }
+    ],
+    "relatedStops": [
+     8108
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-28T10:48:00.000+0100",
+     "lastUpdate": "2026-11-28T10:48:00.000+0100",
+     "start": "2026-11-28T10:47:00.000+0100"
+    },
+    "title": "54B: Falschparker"
    },
    {
     "alertCause": "undefined alert cause",

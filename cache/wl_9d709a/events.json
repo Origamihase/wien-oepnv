@@ -914,22 +914,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "2: Rettungseinsatz",
-    "description": "Linie 2: Unregelmäßige Intervalle in beiden Richtungen. Line 2: Delays in both directions. Grund: Rettungseinsatz.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "590c53f807dc81b7e9c344602ccbe79d9b035c64bd245b7332f71b42bf0aa14b",
-    "pubDate": "2026-11-28T08:24:00+01:00",
-    "starts_at": "2026-11-28T08:24:00+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=2|D=2026-11-28|TK=rettungseinsatz",
-    "_wl_ids": [
-      "I20261128-0008"
-    ],
-    "_incident_start": "2026-11-28T08:24:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "37A: Busse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "description": "Bauarbeiten\nBusse halten Pasettistraße vor Hellwagstraße (bei Linie 5A)",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -954,6 +938,22 @@
       "I20261128-0011"
     ],
     "_incident_start": "2026-11-28T09:16:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "54B: Falschparker",
+    "description": "Linie 54B: Fahrtbehinderung in Richtung Ober St. Veit U. Voraussichtliche Dauer: 11:10 Uhr. Grund: Falschparker im Haltestellenbereich St. Veiter Tor.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "518e50e52bcd8fe86420940b2497c8f99a035c70ac0c632c0c933e21da092058",
+    "pubDate": "2026-11-28T10:47:00+01:00",
+    "starts_at": "2026-11-28T10:47:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=54B|D=2026-11-28|TK=falschparker",
+    "_wl_ids": [
+      "I20261128-0013"
+    ],
+    "_incident_start": "2026-11-28T10:47:00+01:00"
   },
   {
     "source": "Wiener Linien",
