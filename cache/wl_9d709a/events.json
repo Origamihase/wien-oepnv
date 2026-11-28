@@ -936,7 +936,7 @@
     "guid": "e01723d3d09d7a28df192342b8f386a6737bf9dd25fb97499f0a57428eb81540",
     "pubDate": "2026-11-28T09:04:00+01:00",
     "starts_at": "2026-11-28T09:04:00+01:00",
-    "ends_at": null,
+    "ends_at": "2026-11-28T10:08:00+01:00",
     "_identity": "wl|störung|L=35A|D=2026-11-28|TK=35a schadhaftes fahrzeug",
     "_wl_ids": [
       "I20261128-0010"
@@ -959,7 +959,7 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "40: Falschparker Betrieb ab Gersthof",
-    "description": "Linie 40: Betrieb nur zwischen Schottentor U und Gersthof S. Voraussichtliche Dauer: 09:50 Uhr. Grund: Falschparker im Bereich Herbeckstraße 24.",
+    "description": "Linie 40: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "0b0aa3f3299c601e02b8ec8ee4e302f584612836c1e6bb3a6dcd683a3abc5919",
     "pubDate": "2026-11-28T09:16:00+01:00",
@@ -1022,18 +1022,34 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "9: Fahrtbehinderung wegen Rettungseinsatz",
+    "title": "9: Rettungseinsatz",
     "description": "Linie 9: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "2e47c4152d31bb4278e6a03f4a011dce15382eabcec213b716c1d8987745f509",
     "pubDate": "2026-11-28T08:42:00+01:00",
-    "starts_at": "2026-11-28T08:51:46+01:00",
+    "starts_at": "2026-11-28T08:42:00+01:00",
     "ends_at": null,
     "_identity": "wl|störung|L=9|D=2026-11-28|TK=rettungseinsatz",
     "_wl_ids": [
       "I20261128-0009"
     ],
     "_incident_start": "2026-11-28T08:42:00+01:00"
+  },
+  {
+    "source": "Wiener Linien",
+    "category": "Störung",
+    "title": "U4: Schadhaftes Fahrzeug",
+    "description": "Die Linie U4 fährt derzeit in der Station Schwedenplatz in beiden Richtungen über Gleis 1 und fährt daher unregelmäßig. Voraussichtliche Dauer: 10:15. Grund: Schadhaftes Fahrzeug im Haltestellenbereich Schwedenplatz.",
+    "link": "https://www.wienerlinien.at/betriebsinfo",
+    "guid": "5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4",
+    "pubDate": "2026-11-28T09:29:00+01:00",
+    "starts_at": "2026-11-28T09:29:00+01:00",
+    "ends_at": null,
+    "_identity": "wl|störung|L=U4|D=2026-11-28|TK=u4 schadhaftes fahrzeug",
+    "_wl_ids": [
+      "I20261128-0012"
+    ],
+    "_incident_start": "2026-11-28T09:29:00+01:00"
   },
   {
     "source": "Wiener Linien",

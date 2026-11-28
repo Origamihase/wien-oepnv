@@ -8,8 +8,21 @@
     <atom:link rel="self" type="application/rss+xml" href="https://origamihase.github.io/wien-oepnv/feed.en.xml" />
     <language>en</language>
     <copyright>Unofficial project, not affiliated with Wiener Linien, ÖBB, the City of Vienna or VOR/VAO; the linked original notices are authoritative. Code: MIT licence. Notice texts remain with their sources and are shortened, edited and machine-translated for this feed: Wiener Linien and City of Vienna – data.wien.gv.at (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/), ÖBB (© ÖBB, not openly licensed). GeoRSS coordinates: Datenquelle: ÖBB-Infrastruktur AG (https://infrastruktur.oebb.at/de/; GeoNetz, CC BY 3.0 AT, https://creativecommons.org/licenses/by/3.0/at/deed.de), Wiener Linien (OGD stops) and City of Vienna – data.wien.gv.at (CC BY 4.0). S-Bahn trunk-line data: based on the VAO “Start” access of Verkehrsauskunft Österreich VAO GmbH. Details: https://github.com/Origamihase/wien-oepnv/blob/main/NOTICE.md</copyright>
-    <lastBuildDate>Sat, 28 Nov 2026 09:30:35 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 28 Nov 2026 10:00:42 +0100</lastBuildDate>
     <ttl>15</ttl>
+    <item>
+      <title><![CDATA[U4: Defective vehicle]]></title>
+      <link>https://www.wienerlinien.at/betriebsinfo</link>
+      <guid isPermaLink="false">5cd408f9640b7dfe2cf96f4adf196c7bf0b0ab497bc00d676505750e30ef6bf4</guid>
+      <pubDate>Sat, 28 Nov 2026 09:29:00 +0100</pubDate>
+      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
+      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
+      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
+      <ext:first_seen>Sat, 28 Nov 2026 09:29:00 +0100</ext:first_seen>
+      <ext:starts_at>Sat, 28 Nov 2026 09:29:00 +0100</ext:starts_at>
+      <description>The U4 line currently runs at Schwedenplatz station in both directions on track 1 and therefore runs irregularly. [Since 09:29]</description>
+      <content:encoded><![CDATA[The U4 line currently runs at Schwedenplatz station in both directions on track 1 and therefore runs irregularly.<br/>[Since 09:29]]]></content:encoded>
+    </item>
     <item>
       <title><![CDATA[40: Illegally parked vehicle]]></title>
       <link>https://www.wienerlinien.at/betriebsinfo</link>
@@ -20,8 +33,8 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sat, 28 Nov 2026 09:16:00 +0100</ext:first_seen>
       <ext:starts_at>Sat, 28 Nov 2026 09:22:19 +0100</ext:starts_at>
-      <description>Service from Gersthof. Service only between Schottentor and Gersthof. Expected until 09:50. Reason: illegally parked vehicle in the area of Herbeckstraße 24. [Since 09:16]</description>
-      <content:encoded><![CDATA[Service from Gersthof. Service only between Schottentor and Gersthof. Expected until 09:50. Reason: illegally parked vehicle in the area of Herbeckstraße 24.<br/>[Since 09:16]]]></content:encoded>
+      <description>Service from Gersthof. After a service obstruction, there are irregular intervals. [Since 09:16]</description>
+      <content:encoded><![CDATA[Service from Gersthof. After a service obstruction, there are irregular intervals.<br/>[Since 09:16]]]></content:encoded>
     </item>
     <item>
       <title><![CDATA[35A: Defective vehicle]]></title>
@@ -33,6 +46,7 @@
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sat, 28 Nov 2026 09:04:00 +0100</ext:first_seen>
       <ext:starts_at>Sat, 28 Nov 2026 09:04:00 +0100</ext:starts_at>
+      <ext:ends_at>Sat, 28 Nov 2026 10:08:00 +0100</ext:ends_at>
       <description>Irregular intervals in both directions. Reason: defective vehicle. [Since 09:04]</description>
       <content:encoded><![CDATA[Irregular intervals in both directions. Reason: defective vehicle.<br/>[Since 09:04]]]></content:encoded>
     </item>
@@ -45,7 +59,7 @@
       <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
       <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
       <ext:first_seen>Sat, 28 Nov 2026 08:42:00 +0100</ext:first_seen>
-      <ext:starts_at>Sat, 28 Nov 2026 08:51:46 +0100</ext:starts_at>
+      <ext:starts_at>Sat, 28 Nov 2026 08:42:00 +0100</ext:starts_at>
       <description>After a service obstruction, there are irregular intervals. [Since 08:42]</description>
       <content:encoded><![CDATA[After a service obstruction, there are irregular intervals.<br/>[Since 08:42]]]></content:encoded>
     </item>
@@ -132,20 +146,6 @@
       <ext:ends_at>Sat, 12 Dec 2026 23:59:00 +0100</ext:ends_at>
       <description>Due to construction works in the area of Adolf-Loos-Gasse, the buses of lines 29B and N25 are redirected. [From Mon 30.11. until 12.12.]</description>
       <content:encoded><![CDATA[Due to construction works in the area of Adolf-Loos-Gasse, the buses of lines 29B and N25 are redirected.<br/>[From Mon 30.11. until 12.12.]]]></content:encoded>
-    </item>
-    <item>
-      <title><![CDATA[60A: Event on 27. and 28.11.2026]]></title>
-      <link>https://www.wienerlinien.at/betriebsinfo</link>
-      <guid isPermaLink="false">7922a9a36546404e6be9f65e8ad96bba3f8d23999a6635a6d256c6b60e8dc542</guid>
-      <pubDate>Wed, 04 Nov 2026 10:53:00 +0100</pubDate>
-      <source url="https://www.wienerlinien.at/betriebsinfo">Wiener Linien</source>
-      <enclosure url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" length="281823" type="image/jpeg" />
-      <media:content url="https://origamihase.github.io/wien-oepnv/assets/feed-item-raufaser.jpg" type="image/jpeg" medium="image" width="1920" height="1080" />
-      <ext:first_seen>Thu, 26 Nov 2026 00:00:56 +0100</ext:first_seen>
-      <ext:starts_at>Fri, 27 Nov 2026 00:00:00 +0100</ext:starts_at>
-      <ext:ends_at>Sat, 28 Nov 2026 22:00:00 +0100</ext:ends_at>
-      <description>Due to an event in Endresstraße, line 60A is redirected. Line 60A: diversion in both directions via Speisinger Straße - Franz-Graßler-Gasse … [Today]</description>
-      <content:encoded><![CDATA[Due to an event in Endresstraße, line 60A is redirected. Line 60A: diversion in both directions via Speisinger Straße - Franz-Graßler-Gasse …<br/>[Today]]]></content:encoded>
     </item>
   </channel>
 </rss>
