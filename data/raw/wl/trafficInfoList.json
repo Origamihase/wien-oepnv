@@ -6,14 +6,14 @@
     "name": "stoerunglang",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Lang",
-    "trafficInfoNameList": "I20261128-0028-F01, I20261128-0030, I20261128-0027-F01, I20261128-0019-F01, I20261128-0022, I20261128-0026, I20261128-0025-F01, I20261128-0025-F02, I20261020-0029, I20261128-0029-F01, I20261128-0029-F02, I20260909-0007, I20260925-0011"
+    "trafficInfoNameList": "I20261128-0028-F01, I20261128-0027-F01, I20261128-0030, I20261128-0022, I20261128-0026, I20261128-0031-F01, I20261128-0031-F02, I20261128-0031-F03, I20261020-0029, I20261128-0029-F02, I20260909-0007, I20260925-0011"
    },
    {
     "id": 3,
     "name": "stoerungkurz",
     "refTrafficInfoCategoryGroupId": 1,
     "title": "Störung Kurz",
-    "trafficInfoNameList": "R293-474, R318-437, R2558-125, R1880-101, R1881-101, R1882-101, R1876-101, R1875-101, R1884-101, R1883-101, R2345-127, R2343-125, R2378-627, R2380-627, R2379-627, R2373-126, R2373-127, R2373-125, R401-101, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R3886-480, R1974-466, R1199-205, R500-101, R3529-413, R3527-413, R3528-413, R664-413, R688-413, R665-413, R2024-111, R2027-111, R2025-111, R2027-171, R2026-171, R2025-171, R2024-171, R4732-111, R4732-171, R2299-111, R2299-171, R2974-111, R2680-111, R2312-111, R17-0, R47-0, S16, S48, S2108, S2131, S4644"
+    "trafficInfoNameList": "R318-437, R293-474, R2558-125, R1882-101, R1876-101, R1875-101, R1884-101, R1883-101, R1880-101, R1881-101, R2373-127, R2372-125, R2371-125, R2370-125, R2359-125, R2343-626, R2343-125, R2378-627, R401-101, R2345-127, R2373-125, R2380-627, R2379-627, R2373-126, R3886-480, R1974-466, R1199-205, R500-101, R3527-413, R3528-413, R3529-413, R688-413, R665-413, R664-413, R17-0, R47-0, R403-106, R406-106, R405-106, R404-106, R406-111, R405-111, R404-111, R423-101, R403-101, S16, S48, S2108, S2131, S4644"
    }
   ],
   "trafficInfoCategoryGroups": [
@@ -171,54 +171,6 @@
     "title": "1: Gleisbauarbeiten"
    },
    {
-    "alertCause": "accident",
-    "alertCauseId": 77,
-    "attributes": {
-     "relatedLineTypes": {
-      "62": "ptTram"
-     }
-    },
-    "description": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 62: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 62: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "62: Fremder Verkehrsunfall"
-      }
-     }
-    ],
-    "name": "I20261128-0019-F01",
-    "owner": "WL",
-    "parentName": "I20261128-0019",
-    "priority": "1",
-    "reasonId": 13,
-    "reasonName": "Fremder Verkehrsunfall",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "62"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 162,
-      "lineName": "62",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     1716
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-28T13:15:00.000+0100",
-     "end": "2026-11-28T15:42:00.000+0100",
-     "lastUpdate": "2026-11-28T15:05:00.000+0100",
-     "start": "2026-11-28T12:54:00.000+0100"
-    },
-    "title": "62: Fremder Verkehrsunfall"
-   },
-   {
     "alertCause": "heavy traffic",
     "alertCauseId": 60,
     "attributes": {
@@ -262,98 +214,6 @@
      "start": "2026-11-28T13:35:00.000+0100"
     },
     "title": "22A: Verkehrsüberlastung"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "1": "ptTram"
-     }
-    },
-    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "1: Falschparker"
-      }
-     }
-    ],
-    "location": "Quellenstraße  72",
-    "name": "I20261128-0025-F01",
-    "owner": "WL",
-    "parentName": "I20261128-0025",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "1"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 101,
-      "lineName": "1",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-28T14:18:00.000+0100",
-     "lastUpdate": "2026-11-28T14:18:00.000+0100",
-     "resume": "2026-11-28T14:18:00.000+0100",
-     "start": "2026-11-28T14:00:00.000+0100"
-    },
-    "title": "1: Falschparker"
-   },
-   {
-    "alertCause": "vehicle on the line",
-    "alertCauseId": 71,
-    "attributes": {
-     "relatedLineTypes": {
-      "6": "ptTram"
-     }
-    },
-    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "6: Falschparker"
-      }
-     }
-    ],
-    "location": "Quellenstraße  72",
-    "name": "I20261128-0025-F02",
-    "owner": "WL",
-    "parentName": "I20261128-0025",
-    "priority": "1",
-    "reasonId": 25,
-    "reasonName": "Falschparker",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "6"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 106,
-      "lineName": "6",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-28T14:18:00.000+0100",
-     "lastUpdate": "2026-11-28T14:18:00.000+0100",
-     "resume": "2026-11-28T14:18:00.000+0100",
-     "start": "2026-11-28T14:00:00.000+0100"
-    },
-    "title": "6: Falschparker"
    },
    {
     "alertCause": "police activity",
@@ -500,54 +360,6 @@
     "alertCauseId": 3,
     "attributes": {
      "relatedLineTypes": {
-      "11": "ptTram"
-     }
-    },
-    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-    "descriptionHTML": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-    "languages": [
-     {
-      "de": {
-       "descriptionHtml": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
-       "descriptionPlain": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
-       "title": "11: Polizeieinsatz"
-      }
-     }
-    ],
-    "name": "I20261128-0029-F01",
-    "owner": "WL",
-    "parentName": "I20261128-0029",
-    "priority": "1",
-    "reasonId": 47,
-    "reasonName": "Polizeieinsatz",
-    "refTrafficInfoCategoryId": 2,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedLinesDetails": [
-     {
-      "lineId": 111,
-      "lineName": "11",
-      "vehicleType": "ptTram"
-     }
-    ],
-    "relatedStops": [
-     2024
-    ],
-    "status": "active",
-    "time": {
-     "created": "2026-11-28T15:01:00.000+0100",
-     "lastUpdate": "2026-11-28T15:01:00.000+0100",
-     "resume": "2026-11-28T15:01:00.000+0100",
-     "start": "2026-11-28T14:44:00.000+0100"
-    },
-    "title": "11: Polizeieinsatz"
-   },
-   {
-    "alertCause": "police activity",
-    "alertCauseId": 3,
-    "attributes": {
-     "relatedLineTypes": {
       "71": "ptTram"
      }
     },
@@ -630,11 +442,150 @@
     "status": "active",
     "time": {
      "created": "2026-11-28T15:23:00.000+0100",
-     "lastUpdate": "2026-11-28T15:23:00.000+0100",
+     "end": "2026-11-28T16:35:00.000+0100",
+     "lastUpdate": "2026-11-28T15:55:00.000+0100",
      "resume": "2026-11-28T15:23:00.000+0100",
      "start": "2026-11-28T15:23:00.000+0100"
     },
     "title": "37: Falschparker"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "1": "ptTram"
+     }
+    },
+    "description": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 1: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 1: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "1: Falschparker"
+      }
+     }
+    ],
+    "location": "Quellenstraße / Leibnizgasse",
+    "name": "I20261128-0031-F01",
+    "owner": "WL",
+    "parentName": "I20261128-0031",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 101,
+      "lineName": "1",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-28T15:57:00.000+0100",
+     "lastUpdate": "2026-11-28T15:57:00.000+0100",
+     "resume": "2026-11-28T15:57:00.000+0100",
+     "start": "2026-11-28T15:33:00.000+0100"
+    },
+    "title": "1: Falschparker"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "6": "ptTram"
+     }
+    },
+    "description": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 6: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 6: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "6: Falschparker"
+      }
+     }
+    ],
+    "location": "Quellenstraße / Leibnizgasse",
+    "name": "I20261128-0031-F02",
+    "owner": "WL",
+    "parentName": "I20261128-0031",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 106,
+      "lineName": "6",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-28T15:57:00.000+0100",
+     "lastUpdate": "2026-11-28T15:57:00.000+0100",
+     "resume": "2026-11-28T15:57:00.000+0100",
+     "start": "2026-11-28T15:33:00.000+0100"
+    },
+    "title": "6: Falschparker"
+   },
+   {
+    "alertCause": "vehicle on the line",
+    "alertCauseId": 71,
+    "attributes": {
+     "relatedLineTypes": {
+      "11": "ptTram"
+     }
+    },
+    "description": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "descriptionHTML": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+    "languages": [
+     {
+      "de": {
+       "descriptionHtml": "<p>Linie 11: <br>Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.</p>",
+       "descriptionPlain": "Linie 11: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+       "title": "11: Falschparker"
+      }
+     }
+    ],
+    "location": "Quellenstraße / Leibnizgasse",
+    "name": "I20261128-0031-F03",
+    "owner": "WL",
+    "parentName": "I20261128-0031",
+    "priority": "1",
+    "reasonId": 25,
+    "reasonName": "Falschparker",
+    "refTrafficInfoCategoryId": 2,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedLinesDetails": [
+     {
+      "lineId": 111,
+      "lineName": "11",
+      "vehicleType": "ptTram"
+     }
+    ],
+    "status": "active",
+    "time": {
+     "created": "2026-11-28T15:57:00.000+0100",
+     "lastUpdate": "2026-11-28T15:57:00.000+0100",
+     "resume": "2026-11-28T15:57:00.000+0100",
+     "start": "2026-11-28T15:33:00.000+0100"
+    },
+    "title": "11: Falschparker"
    },
    {
     "alertCause": "undefined alert cause",
@@ -862,236 +813,6 @@
      "start": "2026-11-28T04:40:21.000+0100"
     },
     "title": "Bauarbeiten\nBusse halten Salvatorianerplatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R2024-111",
-    "owner": "WL",
-    "parentName": "R2024-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2024
-    ],
-    "time": {
-     "end": "2026-11-28T15:43:00.000+0100",
-     "start": "2026-11-28T14:44:21.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R2024-171",
-    "owner": "WL",
-    "parentName": "R2024-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2024
-    ],
-    "time": {
-     "end": "2026-11-28T15:44:00.000+0100",
-     "start": "2026-11-28T14:44:21.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R2025-111",
-    "owner": "WL",
-    "parentName": "R2025-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2025
-    ],
-    "time": {
-     "end": "2026-11-28T15:43:00.000+0100",
-     "start": "2026-11-28T14:44:21.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R2025-171",
-    "owner": "WL",
-    "parentName": "R2025-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2025
-    ],
-    "time": {
-     "end": "2026-11-28T15:44:00.000+0100",
-     "start": "2026-11-28T14:44:21.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R2026-171",
-    "owner": "WL",
-    "parentName": "R2026-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2026
-    ],
-    "time": {
-     "end": "2026-11-28T15:44:00.000+0100",
-     "start": "2026-11-28T14:44:21.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R2027-111",
-    "owner": "WL",
-    "parentName": "R2027-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2027
-    ],
-    "time": {
-     "end": "2026-11-28T15:43:00.000+0100",
-     "start": "2026-11-28T14:44:21.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R2027-171",
-    "owner": "WL",
-    "parentName": "R2027-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2027
-    ],
-    "time": {
-     "end": "2026-11-28T15:44:00.000+0100",
-     "start": "2026-11-28T14:44:21.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R2299-111",
-    "owner": "WL",
-    "parentName": "R2299-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2299
-    ],
-    "time": {
-     "end": "2026-11-28T15:51:00.000+0100",
-     "start": "2026-11-28T14:52:21.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R2299-171",
-    "owner": "WL",
-    "parentName": "R2299-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     2299
-    ],
-    "time": {
-     "end": "2026-11-28T15:52:00.000+0100",
-     "start": "2026-11-28T14:52:51.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R2312-111",
-    "owner": "WL",
-    "parentName": "R2312-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2312
-    ],
-    "time": {
-     "end": "2026-11-28T15:56:00.000+0100",
-     "start": "2026-11-28T14:56:51.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1418,29 +1139,6 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R2680-111",
-    "owner": "WL",
-    "parentName": "R2680-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2680
-    ],
-    "time": {
-     "end": "2026-11-28T15:56:00.000+0100",
-     "start": "2026-11-28T14:56:51.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
     "description": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude",
     "name": "R293-474",
     "owner": "WL",
@@ -1460,29 +1158,6 @@
      "start": "2026-11-28T00:00:04.000+0100"
     },
     "title": "Bauarbeiten\nEinstieg Leberstraße vor S-Bahn-Gebäude"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R2974-111",
-    "owner": "WL",
-    "parentName": "R2974-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     2974
-    ],
-    "time": {
-     "end": "2026-11-28T15:54:00.000+0100",
-     "start": "2026-11-28T14:54:53.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
@@ -1625,6 +1300,213 @@
    {
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R403-101",
+    "owner": "WL",
+    "parentName": "R403-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     403
+    ],
+    "time": {
+     "end": "2026-11-28T16:38:00.000+0100",
+     "start": "2026-11-28T15:38:27.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R403-106",
+    "owner": "WL",
+    "parentName": "R403-106",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     403
+    ],
+    "time": {
+     "end": "2026-11-28T16:35:00.000+0100",
+     "start": "2026-11-28T15:35:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R404-106",
+    "owner": "WL",
+    "parentName": "R404-106",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     404
+    ],
+    "time": {
+     "end": "2026-11-28T16:35:00.000+0100",
+     "start": "2026-11-28T15:35:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Absberggasse",
+    "name": "R404-111",
+    "owner": "WL",
+    "parentName": "R404-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     404
+    ],
+    "time": {
+     "end": "2026-11-28T16:35:00.000+0100",
+     "start": "2026-11-28T15:36:56.000+0100"
+    },
+    "title": "Falschparker\nBetrieb ab Absberggasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R405-106",
+    "owner": "WL",
+    "parentName": "R405-106",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     405
+    ],
+    "time": {
+     "end": "2026-11-28T16:35:00.000+0100",
+     "start": "2026-11-28T15:35:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Absberggasse",
+    "name": "R405-111",
+    "owner": "WL",
+    "parentName": "R405-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     405
+    ],
+    "time": {
+     "end": "2026-11-28T16:35:00.000+0100",
+     "start": "2026-11-28T15:36:56.000+0100"
+    },
+    "title": "Falschparker\nBetrieb ab Absberggasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Fahrtbehinderung\nFalschparker",
+    "name": "R406-106",
+    "owner": "WL",
+    "parentName": "R406-106",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "6"
+    ],
+    "relatedStops": [
+     406
+    ],
+    "time": {
+     "end": "2026-11-28T16:35:00.000+0100",
+     "start": "2026-11-28T15:35:56.000+0100"
+    },
+    "title": "Fahrtbehinderung\nFalschparker"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Absberggasse",
+    "name": "R406-111",
+    "owner": "WL",
+    "parentName": "R406-111",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "11"
+    ],
+    "relatedStops": [
+     406
+    ],
+    "time": {
+     "end": "2026-11-28T16:35:00.000+0100",
+     "start": "2026-11-28T15:36:56.000+0100"
+    },
+    "title": "Falschparker\nBetrieb ab Absberggasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "description": "Falschparker\nBetrieb ab Neilreichgasse",
+    "name": "R423-101",
+    "owner": "WL",
+    "parentName": "R423-101",
+    "priority": "1",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refTrafficInfoCategoryId": 3,
+    "relatedLines": [
+     "1"
+    ],
+    "relatedStops": [
+     423
+    ],
+    "time": {
+     "end": "2026-11-28T16:37:00.000+0100",
+     "start": "2026-11-28T15:38:27.000+0100"
+    },
+    "title": "Falschparker\nBetrieb ab Neilreichgasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
     "description": "Haltestelle\naufgelassen!\n\nStop closed!",
     "name": "R47-0",
     "owner": "WL",
@@ -1641,52 +1523,6 @@
      "start": "2026-11-28T15:00:22.000+0100"
     },
     "title": "Haltestelle\naufgelassen!\n\nStop closed!"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R4732-111",
-    "owner": "WL",
-    "parentName": "R4732-111",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "11"
-    ],
-    "relatedStops": [
-     4732
-    ],
-    "time": {
-     "end": "2026-11-28T15:43:00.000+0100",
-     "start": "2026-11-28T14:44:22.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
-   },
-   {
-    "alertCause": "undefined alert cause",
-    "alertCauseId": 255,
-    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
-    "name": "R4732-171",
-    "owner": "WL",
-    "parentName": "R4732-171",
-    "priority": "1",
-    "reasonId": 0,
-    "reasonName": "undefined",
-    "refTrafficInfoCategoryId": 3,
-    "relatedLines": [
-     "71"
-    ],
-    "relatedStops": [
-     4732
-    ],
-    "time": {
-     "end": "2026-11-28T15:44:00.000+0100",
-     "start": "2026-11-28T14:44:22.000+0100"
-    },
-    "title": "Fahrtbehinderung\nwegen Polizeieinsatz"
    },
    {
     "alertCause": "undefined alert cause",
