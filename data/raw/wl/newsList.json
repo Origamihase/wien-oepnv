@@ -13,7 +13,7 @@
     "name": "aufzugsservice",
     "refPoiCategoryGroupId": -1,
     "title": "Aufzugsservice",
-    "trafficInfoNameList": "ftazW_212, ftazW_1016948, ftazW_593, ftazW_594, ftazW_1016949, ftazW_1353814, ftazW_1032037, ftazW_444, ftazW_1031289, ftazW_1353815, ftazW_1017115"
+    "trafficInfoNameList": "ftazW_212, ftazW_1016948, ftazW_593, ftazW_594, ftazW_1016949, ftazW_1353814, ftazW_1032037, ftazW_444, ftazW_1031289, ftazW_1353815, ftazW_1017115, ftazW_445, ftazW_262, ftazW_1017116, ftazW_211, ftazW_1016957, ftazW_1031290"
    }
   ],
   "poiCategoryGroups": [
@@ -3302,6 +3302,45 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "01.12.2026 05:15",
+     "ausVon": "01.12.2026 01:15",
+     "location": "U1 Mittelbahnsteig - Ausgang Tilgnerstraße",
+     "rbls": [
+      4107,
+      4122
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Taubstummengasse",
+     "status": "geplante Wartung",
+     "towards": "U1 beide Richtungen"
+    },
+    "description": "U1 Mittelbahnsteig - Ausgang Tilgnerstraße",
+    "elevatorId": "TA 01",
+    "name": "ftazW_1016957",
+    "parentName": "ftazW_1016957",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4107,
+     4122
+    ],
+    "time": {
+     "end": "2026-12-01T05:15:00.000+0100",
+     "start": "2026-12-01T01:15:00.000+0100"
+    },
+    "title": "Taubstummengasse"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "01.12.2026 00:45",
      "ausVon": "30.11.2026 20:45",
      "location": "U1 Mittelbahnsteig - Ausgang Rennbahnweg",
@@ -3341,6 +3380,45 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "01.12.2026 05:15",
+     "ausVon": "01.12.2026 01:15",
+     "location": "U1 Mittelbahnsteig - Ausgang Wagramerstraße",
+     "rbls": [
+      4182,
+      4187
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U1"
+     ],
+     "station": "Rennbahnweg",
+     "status": "geplante Wartung",
+     "towards": "U1 beide Richtungen"
+    },
+    "description": "U1 Mittelbahnsteig - Ausgang Wagramerstraße",
+    "elevatorId": "RB 02",
+    "name": "ftazW_1017116",
+    "parentName": "ftazW_1017116",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U1"
+    ],
+    "relatedStops": [
+     4182,
+     4187
+    ],
+    "time": {
+     "end": "2026-12-01T05:15:00.000+0100",
+     "start": "2026-12-01T01:15:00.000+0100"
+    },
+    "title": "Rennbahnweg"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "01.12.2026 00:45",
      "ausVon": "30.11.2026 20:45",
      "location": "U2 Mittelbahnsteig - Ausgang Aspernstraße",
@@ -3373,6 +3451,45 @@
     "time": {
      "end": "2026-12-01T00:45:00.000+0100",
      "start": "2026-11-30T20:45:00.000+0100"
+    },
+    "title": "Aspernstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "01.12.2026 05:15",
+     "ausVon": "01.12.2026 01:15",
+     "location": "U2 Mittelbahnsteig - Ausgang Erzherzog Karl Straße",
+     "rbls": [
+      4251,
+      4272
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U2"
+     ],
+     "station": "Aspernstraße",
+     "status": "geplante Wartung",
+     "towards": "U2 beide Richtungen"
+    },
+    "description": "U2 Mittelbahnsteig - Ausgang Erzherzog Karl Straße",
+    "elevatorId": "AP 02",
+    "name": "ftazW_1031290",
+    "parentName": "ftazW_1031290",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U2"
+    ],
+    "relatedStops": [
+     4251,
+     4272
+    ],
+    "time": {
+     "end": "2026-12-01T05:15:00.000+0100",
+     "start": "2026-12-01T01:15:00.000+0100"
     },
     "title": "Aspernstraße"
    },
@@ -3483,6 +3600,38 @@
     "alertCause": "undefined alert cause",
     "alertCauseId": 255,
     "attributes": {
+     "ausBis": "01.12.2026 05:15",
+     "ausVon": "01.12.2026 01:15",
+     "location": "Zwischengeschoss - Ausgang Wilhelmstraße",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U6"
+     ],
+     "station": "Bahnhof Meidling",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Zwischengeschoss - Ausgang Wilhelmstraße",
+    "elevatorId": "PH 01",
+    "name": "ftazW_211",
+    "parentName": "ftazW_211",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U6"
+    ],
+    "time": {
+     "end": "2026-12-01T05:15:00.000+0100",
+     "start": "2026-12-01T01:15:00.000+0100"
+    },
+    "title": "Bahnhof Meidling"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
      "ausBis": "30.11.2026 00:45",
      "ausVon": "29.11.2026 20:45",
      "location": "U6 Mittelbahnsteig - Zwischengeschoss Zugang ÖBB Bahnsteig",
@@ -3510,6 +3659,47 @@
      "start": "2026-11-29T20:45:00.000+0100"
     },
     "title": "Bahnhof Meidling"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "01.12.2026 05:15",
+     "ausVon": "01.12.2026 01:15",
+     "location": "Zwischengeschoss Zugang U3 und ÖBB Bahnsteige - U4 Mittelbahnsteig - Ausgang Landstraßer Hauptstraße",
+     "rbls": [
+      4425,
+      4412
+     ],
+     "reason": "",
+     "relatedLines": [
+      "U3",
+      "U4"
+     ],
+     "station": "Landstraße",
+     "status": "geplante Wartung",
+     "towards": "U4 beide Richtungen"
+    },
+    "description": "Zwischengeschoss Zugang U3 und ÖBB Bahnsteige - U4 Mittelbahnsteig - Ausgang Landstraßer Hauptstraße",
+    "elevatorId": "LA 01",
+    "name": "ftazW_262",
+    "parentName": "ftazW_262",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3",
+     "U4"
+    ],
+    "relatedStops": [
+     4425,
+     4412
+    ],
+    "time": {
+     "end": "2026-12-01T05:15:00.000+0100",
+     "start": "2026-12-01T01:15:00.000+0100"
+    },
+    "title": "Landstraße"
    },
    {
     "alertCause": "undefined alert cause",
@@ -3547,6 +3737,38 @@
     "time": {
      "end": "2026-12-01T00:45:00.000+0100",
      "start": "2026-11-30T20:45:00.000+0100"
+    },
+    "title": "Johnstraße"
+   },
+   {
+    "alertCause": "undefined alert cause",
+    "alertCauseId": 255,
+    "attributes": {
+     "ausBis": "01.12.2026 05:15",
+     "ausVon": "01.12.2026 01:15",
+     "location": "Passage - Zwischengeschoss Zugang Meiselmarkt - Ausgang Hütteldorfer Straße",
+     "rbls": [],
+     "reason": "",
+     "relatedLines": [
+      "U3"
+     ],
+     "station": "Johnstraße",
+     "status": "geplante Wartung",
+     "towards": ""
+    },
+    "description": "Passage - Zwischengeschoss Zugang Meiselmarkt - Ausgang Hütteldorfer Straße",
+    "elevatorId": "JO 04",
+    "name": "ftazW_445",
+    "parentName": "ftazW_445",
+    "reasonId": 0,
+    "reasonName": "undefined",
+    "refPoiCategoryId": -1,
+    "relatedLines": [
+     "U3"
+    ],
+    "time": {
+     "end": "2026-12-01T05:15:00.000+0100",
+     "start": "2026-12-01T01:15:00.000+0100"
     },
     "title": "Johnstraße"
    },
