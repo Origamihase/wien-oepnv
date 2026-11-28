@@ -674,22 +674,6 @@
   {
     "source": "Wiener Linien",
     "category": "Störung",
-    "title": "12A: Schadhaftes Fahrzeug",
-    "description": "Linie 12A: Unregelmäßige Intervalle in beiden Richtungen. Grund: Schadhaftes Fahrzeug.",
-    "link": "https://www.wienerlinien.at/betriebsinfo",
-    "guid": "c525a7b5bb30461b905f06c6a6a2cf2790b99d04ecc4e12f4a3764bb68466f7b",
-    "pubDate": "2026-11-28T05:22:00+01:00",
-    "starts_at": "2026-11-28T05:22:00+01:00",
-    "ends_at": "2026-11-28T06:07:00+01:00",
-    "_identity": "wl|störung|L=12A|D=2026-11-28|TK=12a schadhaftes fahrzeug",
-    "_wl_ids": [
-      "I20261128-0005"
-    ],
-    "_incident_start": "2026-11-28T05:22:00+01:00"
-  },
-  {
-    "source": "Wiener Linien",
-    "category": "Störung",
     "title": "18: Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "description": "Haltestelle Stadionbrücke im Rahmen des Straßenbahn-Neubaus der Linie 18 aufgelassen. Bitte auf nahegelegene Haltestellen ausweichen.",
     "link": "https://www.wienerlinien.at/betriebsinfo",
@@ -931,17 +915,13 @@
     "source": "Wiener Linien",
     "category": "Störung",
     "title": "44: Fahrtbehinderung wegen Polizeieinsatz",
-    "description": "Linie 44: Nach einer Fahrtbehinderung kommt es zu unterschiedlichen Intervallen.",
+    "description": "Fahrtbehinderung\nwegen Polizeieinsatz",
     "link": "https://www.wienerlinien.at/betriebsinfo",
     "guid": "3d45099415a09fd16e68303074ca0a8ff763363d08ba9a5db7f8979ee44a4201",
     "pubDate": "2026-11-28T05:31:55+01:00",
     "starts_at": "2026-11-28T05:42:26+01:00",
-    "ends_at": null,
-    "_identity": "wl|störung|L=44|D=2026-11-28|TK=polizeieinsatz",
-    "_wl_ids": [
-      "I20261128-0006"
-    ],
-    "_incident_start": "2026-11-28T05:32:00+01:00"
+    "ends_at": "2026-11-28T06:42:00+01:00",
+    "_identity": "wl|störung|L=44|D=2026-11-28|TK=polizeieinsatz"
   },
   {
     "source": "Wiener Linien",
